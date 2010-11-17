@@ -1471,7 +1471,7 @@ struct MyHandler : public AHandler {
 
             size_t trackIndex = 0;
             while (trackIndex < mTracks.size()
-                    && !(val == mTracks.editItemAt(trackIndex).mURL)) {
+                    && !(checkTrackURL(mTracks.editItemAt(trackIndex).mURL, val))) {
                 ++trackIndex;
             }
             CHECK_LT(trackIndex, mTracks.size());
@@ -1905,6 +1905,19 @@ private:
         msg->setInt32("rtpTime", rtpTime);
         msg->setInt64("nptUs", nptUs);
         msg->post();
+    }
+
+    bool checkTrackURL(const AString& url, const AString& val) {
+        size_t startpos = 0;
+        if (url.size() >= val.size()) {
+            startpos = url.size() - val.size();
+        }
+        // Use AString::find in order to allow the url in the RTP-Info to be a
+        // truncated variant (example: "url=trackID=1") of the complete SETUP url
+        if (url.find(val.c_str(), startpos) == -1) {
+            return false;
+        }
+        return true;
     }
 
     DISALLOW_EVIL_CONSTRUCTORS(MyHandler);
