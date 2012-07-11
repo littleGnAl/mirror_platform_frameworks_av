@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAHJX///To\u003d",
+        "filename": "media/libstagefright/id3/ID3.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-07-11T21:38:20Z",
+      "side": 1,
+      "message": "Marco - Looks like the consistent thing to do - since we added the termination at line 737, but does the client care about these two bytes?",
+      "revId": "be5016bac5c1b422d850e299d3cb11fecf0ac19d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
