@@ -16,6 +16,24 @@
       "revId": "359d8fcd30ff0a8390e4c5560d53ec55a4cc5bcd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAHMn////M\u003d",
+        "filename": "media/libstagefright/codecs/avc/enc/src/rate_control.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1002068
+      },
+      "writtenOn": "2012-07-12T18:23:48Z",
+      "side": 0,
+      "message": "It does reset the newly allocated memory when https://android-review.googlesource.com/38893 has been merged, which is a dependency of this change. That change is what you suggested during the review of https://android-review.googlesource.com/35291 before.",
+      "parentUuid": "AAAHJX///Pk\u003d",
+      "revId": "359d8fcd30ff0a8390e4c5560d53ec55a4cc5bcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
