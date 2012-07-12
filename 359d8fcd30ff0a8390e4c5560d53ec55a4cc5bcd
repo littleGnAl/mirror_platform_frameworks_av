@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAHJX///Pk\u003d",
+        "filename": "media/libstagefright/codecs/avc/enc/src/rate_control.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-07-12T18:20:18Z",
+      "side": 0,
+      "message": "MallocWrapper does not reset the newly allocated memory.\nwhat do you mean by the \"allocation callback\" already reset the memory?",
+      "revId": "359d8fcd30ff0a8390e4c5560d53ec55a4cc5bcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
