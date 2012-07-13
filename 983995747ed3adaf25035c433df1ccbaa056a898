@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAHOX///94\u003d",
+        "filename": "media/libstagefright/MPEG2TSWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 988,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2012-07-13T18:14:46Z",
+      "side": 1,
+      "message": "In the future please don\u0027t use javadoc style comments in native code.",
+      "revId": "983995747ed3adaf25035c433df1ccbaa056a898",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAHOX///90\u003d",
+        "filename": "media/libstagefright/MPEG2TSWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 989,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2012-07-13T18:14:46Z",
+      "side": 1,
+      "message": "could\u0027ve been const.",
+      "revId": "983995747ed3adaf25035c433df1ccbaa056a898",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
