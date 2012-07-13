@@ -16,6 +16,24 @@
       "revId": "be5016bac5c1b422d850e299d3cb11fecf0ac19d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAHOn///+w\u003d",
+        "filename": "media/libstagefright/id3/ID3.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1004424
+      },
+      "writtenOn": "2012-07-13T06:52:08Z",
+      "side": 1,
+      "message": "The method StringSize is used by method getAlbumArt(), and is used when calculating the length and return data.\n\n size_t descLen \u003d StringSize(\u0026data[2 + mimeLen], encoding);\n *length \u003d size - 2 - mimeLen - descLen;\n  return \u0026data[2 + mimeLen + descLen];\n\nSo if the descLen is of by 2 bytes, then the length of the album art will be wrong, and the pointer to the data will be off by 2 bytes.",
+      "parentUuid": "AAAHJX///To\u003d",
+      "revId": "be5016bac5c1b422d850e299d3cb11fecf0ac19d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
