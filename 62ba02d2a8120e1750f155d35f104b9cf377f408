@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAIbX///5A\u003d",
+        "filename": "media/libstagefright/MPEG2TSWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2012-08-15T15:52:02Z",
+      "side": 1,
+      "message": "please put the condition in parentheses.",
+      "revId": "62ba02d2a8120e1750f155d35f104b9cf377f408",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIbX///48\u003d",
+        "filename": "media/libstagefright/MPEG2TSWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 923,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2012-08-15T15:52:02Z",
+      "side": 1,
+      "message": "please add parentheses around the difference to make precedence obvious.",
+      "revId": "62ba02d2a8120e1750f155d35f104b9cf377f408",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIbX///44\u003d",
+        "filename": "media/libstagefright/MPEG2TSWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2012-08-15T15:52:02Z",
+      "side": 1,
+      "message": "no whitespace after the open parenthesis and before the closing parenthesis.",
+      "revId": "62ba02d2a8120e1750f155d35f104b9cf377f408",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
