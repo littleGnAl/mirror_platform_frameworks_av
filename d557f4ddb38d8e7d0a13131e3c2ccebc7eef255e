@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAIf3///m0\u003d",
+        "filename": "media/libstagefright/omx/SimpleSoftOMXComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-08-16T19:37:30Z",
+      "side": 1,
+      "message": "I suppose that if the target state is the same as the current state, onChangeState should never be received.",
+      "revId": "d557f4ddb38d8e7d0a13131e3c2ccebc7eef255e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
