@@ -16,6 +16,24 @@
       "revId": "f5af6314db25ff3bef9bd2eeba201bc6cc60805d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIiX////A\u003d",
+        "filename": "media/libstagefright/codecs/avc/enc/src/sad_halfpel_inline.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1002068
+      },
+      "writtenOn": "2012-08-16T07:54:58Z",
+      "side": 1,
+      "message": "It will be used if you build the code with RVCT. I don\u0027t know if that\u0027s supported for building the full Android system, but the codec code itself might be able to handle it - I haven\u0027t tested it myself. I\u0027ll see if I can get a RVCT test license...",
+      "parentUuid": "AAAIRn///fM\u003d",
+      "revId": "f5af6314db25ff3bef9bd2eeba201bc6cc60805d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
