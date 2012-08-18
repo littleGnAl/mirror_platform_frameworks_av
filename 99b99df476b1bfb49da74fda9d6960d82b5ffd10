@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAIvX////8\u003d",
+        "filename": "media/libstagefright/MPEG2TSWriter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1002068
+      },
+      "writtenOn": "2012-08-18T16:29:43Z",
+      "side": 1,
+      "message": "Hmm, yes, after rereading, I think so as well. I\u0027m out of office for a week so I can\u0027t retest it properly with that change right now (in the current form it was way better than before, but I still saw some odd glitches every now and then - I hope this would be the thing that fixes it), but it does look like it indeed should be 184.",
+      "parentUuid": "AAAIkn///Uw\u003d",
+      "revId": "99b99df476b1bfb49da74fda9d6960d82b5ffd10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAIkn///Uo\u003d",
         "filename": "media/libstagefright/MPEG2TSWriter.cpp",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2012-08-17T22:53:56Z",
       "side": 1,
       "message": "You don\u0027t actually 0-fill anything but the 2nd (if any) byte, correct?",
+      "revId": "99b99df476b1bfb49da74fda9d6960d82b5ffd10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIvX////4\u003d",
+        "filename": "media/libstagefright/MPEG2TSWriter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 962,
+      "author": {
+        "id": 1002068
+      },
+      "writtenOn": "2012-08-18T16:29:43Z",
+      "side": 1,
+      "message": "Yes, that seems right. Sorry for the unclear code comments - I\u0027m not the original author to these ones, I\u0027ve merely tried to clean them up and fix them in order to get them upstreamed.",
+      "parentUuid": "AAAIkn///Uo\u003d",
       "revId": "99b99df476b1bfb49da74fda9d6960d82b5ffd10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
