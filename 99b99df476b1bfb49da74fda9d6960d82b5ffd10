@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "AAAIvX///+E\u003d",
+        "filename": "media/libstagefright/MPEG2TSWriter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1002068
+      },
+      "writtenOn": "2012-08-20T13:51:18Z",
+      "side": 1,
+      "message": "I managed to get this tested remotely, and yes, switching this to 184 fixes the last few glitches that I saw. Thanks for spotting it! I sent a new change for this in https://android-review.googlesource.com/41821.",
+      "parentUuid": "AAAIvX////8\u003d",
+      "revId": "99b99df476b1bfb49da74fda9d6960d82b5ffd10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAIkn///Uo\u003d",
         "filename": "media/libstagefright/MPEG2TSWriter.cpp",
         "patchSetId": 2
