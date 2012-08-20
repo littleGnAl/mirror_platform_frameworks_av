@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAIu3///tU\u003d",
+        "filename": "media/libstagefright/rtsp/MyHandler.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-08-20T16:55:50Z",
+      "side": 1,
+      "message": "the caller of addSDES() may be sending invalid data since the buffer data (for instance, around line 327?)  is not constructed when getsockname() call fails.",
+      "revId": "4fe849b2f3273de6d0969a1b104638e3bae76b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
