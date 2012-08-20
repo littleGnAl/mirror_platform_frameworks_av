@@ -16,6 +16,24 @@
       "revId": "d557f4ddb38d8e7d0a13131e3c2ccebc7eef255e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIrn///2Q\u003d",
+        "filename": "media/libstagefright/omx/SimpleSoftOMXComponent.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2012-08-20T15:27:06Z",
+      "side": 1,
+      "message": "that\u0027s correct. let\u0027s leave the assertion in and debug the underlying issue instead of hiding it. Please file a bugreport with steps to repro the issue",
+      "parentUuid": "AAAIf3///m0\u003d",
+      "revId": "d557f4ddb38d8e7d0a13131e3c2ccebc7eef255e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
