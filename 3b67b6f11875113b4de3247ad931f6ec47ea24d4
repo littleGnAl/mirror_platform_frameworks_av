@@ -34,6 +34,24 @@
       "revId": "3b67b6f11875113b4de3247ad931f6ec47ea24d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIw3///xc\u003d",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2074,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-08-21T18:23:27Z",
+      "side": 1,
+      "message": "yeah, since the constant is of type long long, the result of the multiplication won\u0027t cause data overflow (the value assigned to also have time of int64_t).",
+      "parentUuid": "AAAIw3///zQ\u003d",
+      "revId": "3b67b6f11875113b4de3247ad931f6ec47ea24d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
