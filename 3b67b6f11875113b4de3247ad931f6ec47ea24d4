@@ -16,6 +16,24 @@
       "revId": "3b67b6f11875113b4de3247ad931f6ec47ea24d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAIw3///zQ\u003d",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2074,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-21T17:58:27Z",
+      "side": 1,
+      "message": "I think the code is OK, actually. The constant is a long long, which is guaranteed to be at least 64-bit, and sampleTime will be upcast as necessary to match.",
+      "parentUuid": "AAAIu3///O0\u003d",
+      "revId": "3b67b6f11875113b4de3247ad931f6ec47ea24d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
