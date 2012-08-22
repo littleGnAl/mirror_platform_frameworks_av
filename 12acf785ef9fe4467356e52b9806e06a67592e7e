@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "AAAI1X////E\u003d",
+        "filename": "media/libstagefright/AwesomePlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1795,
+      "author": {
+        "id": 1010481
+      },
+      "writtenOn": "2012-08-22T14:18:22Z",
+      "side": 1,
+      "message": "Interesting... We\u0027ve never seen an ANR because of this.... and we\u0027ve been doing it since Gingerbread.",
+      "parentUuid": "AAAI3X///8k\u003d",
+      "revId": "12acf785ef9fe4467356e52b9806e06a67592e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "AAAI3X///8g\u003d",
         "filename": "media/libstagefright/AwesomePlayer.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2012-08-22T08:46:04Z",
       "side": 1,
       "message": "My experience is, using 0 increases anr\u0027s: Also see reasoning in: https://android-review.googlesource.com/#/c/41640\nBut I consider that a low value is OK.",
+      "revId": "12acf785ef9fe4467356e52b9806e06a67592e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAI1X////A\u003d",
+        "filename": "media/libstagefright/AwesomePlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1831,
+      "author": {
+        "id": 1010481
+      },
+      "writtenOn": "2012-08-22T14:18:22Z",
+      "side": 1,
+      "message": "See above.",
+      "parentUuid": "AAAI3X///8g\u003d",
       "revId": "12acf785ef9fe4467356e52b9806e06a67592e7e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
