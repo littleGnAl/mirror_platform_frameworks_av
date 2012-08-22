@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAI13///n8\u003d",
+        "filename": "media/libstagefright/OMXCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-08-22T02:30:00Z",
+      "side": 1,
+      "message": "has this patch ever been tested at all?\nThe quirk proposes to set both profile and level, but only level is set here.\n\nUnless we see compelling reasons for this patch, we will not accept new quirks.",
+      "revId": "31088c5406a4c7151cfa776e254fee47d388b413",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
