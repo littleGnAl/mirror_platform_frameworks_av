@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAI6X//+2A\u003d",
+        "filename": "media/libstagefright/AudioPlayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-08-28T01:34:25Z",
+      "side": 1,
+      "message": "who is sending 0-length input buffers to AudioPlayer? - parser? If so, why?",
+      "revId": "b384f28d64e212d52712873d4c4d70a2ddd065ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
