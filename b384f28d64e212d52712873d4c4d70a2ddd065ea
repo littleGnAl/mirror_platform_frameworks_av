@@ -34,6 +34,40 @@
       "revId": "b384f28d64e212d52712873d4c4d70a2ddd065ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAI63//+go\u003d",
+        "filename": "media/libstagefright/AudioPlayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-28T20:03:54Z",
+      "side": 1,
+      "message": "Ack, I missed a code style issue the first time around. There should be a space after \"if\"",
+      "revId": "b384f28d64e212d52712873d4c4d70a2ddd065ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAI6X//+is\u003d",
+        "filename": "media/libstagefright/AudioPlayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-28T20:03:54Z",
+      "side": 1,
+      "message": "This line is supposed to be indented 8 characters from the previous one. I know it was wrong in the original code, but since we\u0027re re-indenting it we should use the opportunity to clean it up.",
+      "revId": "b384f28d64e212d52712873d4c4d70a2ddd065ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
