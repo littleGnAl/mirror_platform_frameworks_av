@@ -16,6 +16,24 @@
       "revId": "b384f28d64e212d52712873d4c4d70a2ddd065ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAI2n///cI\u003d",
+        "filename": "media/libstagefright/AudioPlayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1012595
+      },
+      "writtenOn": "2012-08-28T12:30:15Z",
+      "side": 1,
+      "message": "This happens for some specific clips where the final chunk of data comes in multiple of buffers and the last buffer is given as a zero length data buffer and thus the timestamp is set to the first buffer of the final chunk.",
+      "parentUuid": "AAAI6X//+2A\u003d",
+      "revId": "b384f28d64e212d52712873d4c4d70a2ddd065ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
