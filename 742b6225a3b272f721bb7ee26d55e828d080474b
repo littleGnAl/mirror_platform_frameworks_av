@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAI63//+Ds\u003d",
+        "filename": "media/libstagefright/codecs/avc/enc/SoftAVCEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-29T15:48:06Z",
+      "side": 1,
+      "message": "The canonical Android style wants braces here, but I don\u0027t know how much that applies to C++ (and I don\u0027t know the local style of this file).",
+      "revId": "742b6225a3b272f721bb7ee26d55e828d080474b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
