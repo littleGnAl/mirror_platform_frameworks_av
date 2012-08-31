@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAI63//8W4\u003d",
+        "filename": "media/libstagefright/rtsp/ARTPConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-31T16:34:27Z",
+      "side": 1,
+      "message": "Possibly over-indented -  I missed that erlier",
+      "revId": "97296cabf4bf6c7cfa697ef7e1867facb5bf1d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAI6X//8Rc\u003d",
+        "filename": "media/libstagefright/rtsp/ARTPConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 375,
+      "author": {
+        "id": 1000660
+      },
+      "writtenOn": "2012-08-31T16:34:27Z",
+      "side": 1,
+      "message": "Since we\u0027re moving this line, we could use the opportunity to use 8 spaces here.",
+      "revId": "97296cabf4bf6c7cfa697ef7e1867facb5bf1d42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
