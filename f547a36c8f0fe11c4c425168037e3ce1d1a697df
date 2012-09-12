@@ -34,6 +34,24 @@
       "revId": "f547a36c8f0fe11c4c425168037e3ce1d1a697df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAI83//80s\u003d",
+        "filename": "media/libstagefright/codecs/avc/enc/SoftAVCEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-09-12T19:38:20Z",
+      "side": 1,
+      "message": "Yup, that is exactly what I was thinking but I am not sure recordvideo is broken due to this though.",
+      "parentUuid": "AAAI5n//+Vw\u003d",
+      "revId": "f547a36c8f0fe11c4c425168037e3ce1d1a697df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
