@@ -16,6 +16,24 @@
       "revId": "f547a36c8f0fe11c4c425168037e3ce1d1a697df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAAI5n//+Vw\u003d",
+        "filename": "media/libstagefright/codecs/avc/enc/SoftAVCEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1002068
+      },
+      "writtenOn": "2012-09-12T19:34:54Z",
+      "side": 1,
+      "message": "If I remember correctly, the issue was that the EOS flag (when called from OMXCodec.cpp) comes on a separate, empty buffer.  Thus, the flags from that buffer actually never turns up in inputBufInfo-\u003emFlags here.\n\nThis fixes using the recordvideo test application (among other things, I\u0027d guess) with this encoder, FWIW.",
+      "parentUuid": "AAAI83//8/M\u003d",
+      "revId": "f547a36c8f0fe11c4c425168037e3ce1d1a697df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
