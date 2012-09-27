@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAAJfn///sg\u003d",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2372,
+      "author": {
+        "id": 1005668
+      },
+      "writtenOn": "2012-09-27T16:45:19Z",
+      "side": 1,
+      "message": "minor nit; why assign to NULL here and use clear() to release mSoaker?  Perhaps change one of these patterns to match the other?",
+      "revId": "752e18727e19431eeba7ae07b89ac526f85c94cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
