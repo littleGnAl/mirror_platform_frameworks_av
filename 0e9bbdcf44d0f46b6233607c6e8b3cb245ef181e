@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAALOX///l8\u003d",
+        "filename": "include/drm/drm_framework_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1004910
+      },
+      "writtenOn": "2012-11-02T15:37:54Z",
+      "side": 1,
+      "message": "In general I think it\u0027s a very nice fix. My only concern is that we change the api from the DrmBuffer receiving the memory it will now always make a copy out of it. In some cases in the jni layer we now get one extra memory allocation and one memcpy extra that might decrease performance slighty.\r\nHave you though about letting the DrmBuffer take the ownership of the received memory for performance reasons?",
+      "revId": "0e9bbdcf44d0f46b6233607c6e8b3cb245ef181e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
