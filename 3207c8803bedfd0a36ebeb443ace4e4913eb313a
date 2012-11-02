@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAALLn///1U\u003d",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-11-02T14:59:13Z",
+      "side": 1,
+      "message": "change ALOGV(\"Ignoring undefined buffer\") to ALOGW(\"Ignoring undefined nal type\")",
+      "revId": "3207c8803bedfd0a36ebeb443ace4e4913eb313a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
