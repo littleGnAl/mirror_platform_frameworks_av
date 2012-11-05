@@ -16,6 +16,24 @@
       "revId": "0e9bbdcf44d0f46b6233607c6e8b3cb245ef181e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAALTH////8\u003d",
+        "filename": "include/drm/drm_framework_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1014554
+      },
+      "writtenOn": "2012-11-05T00:52:03Z",
+      "side": 1,
+      "message": "The changes in this patch won\u0027t give any big deal. Because I only changed the place where memory create/delete is taking place. The data filed is still public and can be accessed or replaced directly. That\u0027s the way if performance is the concern. (You can see many code as such in DRMExtractor.cpp)",
+      "parentUuid": "AAALOX///l8\u003d",
+      "revId": "0e9bbdcf44d0f46b6233607c6e8b3cb245ef181e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
