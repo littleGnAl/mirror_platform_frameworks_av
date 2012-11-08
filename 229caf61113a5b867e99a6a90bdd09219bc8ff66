@@ -34,6 +34,24 @@
       "revId": "229caf61113a5b867e99a6a90bdd09219bc8ff66",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAALLn//+G8\u003d",
+        "filename": "libvideoeditor/vss/3gpwriter/src/M4MP4W_Writer.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 3704,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-11-08T18:14:15Z",
+      "side": 1,
+      "message": "the problem is that we have known this value much earlier (i.e., sttsTableEntryNb \u003c\u003d 1) before the code reaches here. We should fail at the earliest time when we know sttsTableEntryNb\u003c\u003d1.\nFor instance, on line 3698, sttsTableEntryNb is already being used.\n\nIn addition, I believe one item should be OK for stts, not sure why sttsTableEntryNb has to subtract one from it.",
+      "parentUuid": "AAALQH///7c\u003d",
+      "revId": "229caf61113a5b867e99a6a90bdd09219bc8ff66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
