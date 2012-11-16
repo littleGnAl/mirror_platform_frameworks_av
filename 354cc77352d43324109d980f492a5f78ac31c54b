@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAALoX///KQ\u003d",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2012-11-16T17:03:44Z",
+      "side": 1,
+      "message": "#include \u003cmedia/stagefright/foundation/ABuffer.h\u003e\n\nsp\u003cABuffer\u003e buffer \u003d new ABuffer(chunk_data_size);",
+      "revId": "354cc77352d43324109d980f492a5f78ac31c54b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAALoX///KM\u003d",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1226,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2012-11-16T17:03:44Z",
+      "side": 1,
+      "message": "readAt(data_offset, buffer-\u003edata(), ...)",
+      "revId": "354cc77352d43324109d980f492a5f78ac31c54b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAALoX///KI\u003d",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1227,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2012-11-16T17:03:44Z",
+      "side": 1,
+      "message": "Now you can get rid of the delete[]s",
+      "revId": "354cc77352d43324109d980f492a5f78ac31c54b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
