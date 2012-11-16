@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAALoX///Kk\u003d",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2012-11-16T16:59:08Z",
+      "side": 1,
+      "message": "Make sure to clear the component name in ::setState if the target state is UNINITIALIZED",
+      "revId": "ce29147d006789b3c7c1c5621802275e8cf22e72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
