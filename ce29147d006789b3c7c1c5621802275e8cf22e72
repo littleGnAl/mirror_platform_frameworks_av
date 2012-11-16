@@ -16,6 +16,24 @@
       "revId": "ce29147d006789b3c7c1c5621802275e8cf22e72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAALpn///84\u003d",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1002068
+      },
+      "writtenOn": "2012-11-16T18:48:02Z",
+      "side": 1,
+      "message": "Thanks - for simplicity I chose to clear it for both INITIALIZED and UNINITIALIZED (since there\u0027s already a code block for that in setState), since it\u0027s only updated after calling setState() here anyway) - updated patch coming...",
+      "parentUuid": "AAALoX///Kk\u003d",
+      "revId": "ce29147d006789b3c7c1c5621802275e8cf22e72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
