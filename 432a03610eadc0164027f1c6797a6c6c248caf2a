@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAALoX//+fg\u003d",
+        "filename": "media/libstagefright/rtsp/AH263Assembler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2012-11-19T17:08:52Z",
+      "side": 1,
+      "message": "Please use ALOGV, you can then also get rid of the #if",
+      "revId": "432a03610eadc0164027f1c6797a6c6c248caf2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
