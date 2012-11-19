@@ -34,6 +34,24 @@
       "revId": "ce29147d006789b3c7c1c5621802275e8cf22e72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAALoX///Ao\u003d",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2012-11-19T17:04:55Z",
+      "side": 1,
+      "message": "You don\u0027t want to clear it when going to the INITIALIZED state though because then if you stop an initialized codec it will go from configured-\u003einitialized and it should keep its codec name...",
+      "parentUuid": "AAALpn///84\u003d",
+      "revId": "ce29147d006789b3c7c1c5621802275e8cf22e72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
