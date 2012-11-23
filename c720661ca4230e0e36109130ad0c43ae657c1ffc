@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAALzH///zY\u003d",
+        "filename": "media/libmedia/ToneGenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 807,
+      "author": {
+        "id": 1014554
+      },
+      "writtenOn": "2012-11-23T01:27:31Z",
+      "side": 1,
+      "message": "mpAudioTrack should be initialized.",
+      "revId": "c720661ca4230e0e36109130ad0c43ae657c1ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "AAALzH///zc\u003d",
+        "filename": "media/libmedia/ToneGenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1014554
+      },
+      "writtenOn": "2012-11-23T01:27:31Z",
+      "side": 1,
+      "message": "If mpAudioTrack is not initialized. crash here",
+      "revId": "c720661ca4230e0e36109130ad0c43ae657c1ffc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
