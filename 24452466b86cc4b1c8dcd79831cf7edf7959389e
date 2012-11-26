@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAALvH///Mc\u003d",
+        "filename": "media/libstagefright/rtsp/ARTSPConnection.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 833,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2012-11-26T16:59:49Z",
+      "side": 1,
+      "message": "since \"i\" has nothing to do with the index asked for and it only matters that returned index is negative, just do \"*index \u003d -1\", please.",
+      "revId": "24452466b86cc4b1c8dcd79831cf7edf7959389e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
