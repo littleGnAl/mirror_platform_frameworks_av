@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "AAALvH//+9A\u003d",
+        "filename": "libvideoeditor/vss/stagefrightshells/src/VideoEditorVideoDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-11-26T22:16:04Z",
+      "side": 1,
+      "message": "Although the code looks ok to me, I was wondering how you could end up using the software video decoder? On the device, the MovieStudio app always uses HW video decoder.",
+      "revId": "e41446b59f52d88eca57d4255ea7b07c528c3eee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
