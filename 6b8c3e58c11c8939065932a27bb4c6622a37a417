@@ -16,6 +16,24 @@
       "revId": "6b8c3e58c11c8939065932a27bb4c6622a37a417",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "MPW6vo4M",
+        "filename": "media/libstagefright/rtsp/AH263Assembler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2012-11-30T16:28:53Z",
+      "side": 1,
+      "message": "Please make that ALOGW since we continue playing, i.e. this is not fatal.",
+      "parentUuid": "MQ.JVaMI",
+      "revId": "6b8c3e58c11c8939065932a27bb4c6622a37a417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
