@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "MQ.JVaMI",
+        "filename": "media/libstagefright/rtsp/AH263Assembler.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-11-30T15:25:24Z",
+      "side": 1,
+      "message": "if these are errors that renders the stream not playable, we should use ALOGE here.\nSimilarly for other cases below.",
+      "revId": "6b8c3e58c11c8939065932a27bb4c6622a37a417",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
