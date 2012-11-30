@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "MQ7-e19c",
+        "filename": "media/libstagefright/WAVExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-11-30T03:53:33Z",
+      "side": 1,
+      "message": "please add a space before \"make sure...\"",
+      "revId": "c1c8b1ebdc4941a943c02c607eb31d71150673d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "MQx-Qo8U",
+        "filename": "media/libstagefright/WAVExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-11-30T03:53:33Z",
+      "side": 1,
+      "message": "could you help split this into two lines? this line is too long.",
+      "revId": "c1c8b1ebdc4941a943c02c607eb31d71150673d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "MQ3-Vb7U",
+        "filename": "media/libstagefright/WAVExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-11-30T03:53:33Z",
+      "side": 1,
+      "message": "please add space before and after \"||\"",
+      "revId": "c1c8b1ebdc4941a943c02c607eb31d71150673d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
