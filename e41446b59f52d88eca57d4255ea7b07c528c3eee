@@ -16,6 +16,24 @@
       "revId": "e41446b59f52d88eca57d4255ea7b07c528c3eee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "M4hIpCp4",
+        "filename": "libvideoeditor/vss/stagefrightshells/src/VideoEditorVideoDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1153,
+      "author": {
+        "id": 1017056
+      },
+      "writtenOn": "2012-12-14T03:03:29Z",
+      "side": 1,
+      "message": "we are testing the SW decoder path. you can simply enable it by define macro USE_SOFTWARE_DECODER",
+      "parentUuid": "AAALvH//+9A\u003d",
+      "revId": "e41446b59f52d88eca57d4255ea7b07c528c3eee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
