@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "NFmIf13c",
+        "filename": "media/libstagefright/timedtext/TextDescriptions.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-12-20T22:11:04Z",
+      "side": 1,
+      "message": "we should avoid using tail recursion. pure overhead, unless compiler is very smart.",
+      "revId": "8d20239e1b50829bbff0dfd44bbf01e45f6eaf5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
