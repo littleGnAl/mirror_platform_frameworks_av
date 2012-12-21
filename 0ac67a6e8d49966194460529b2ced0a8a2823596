@@ -1,0 +1,72 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "NGSgkHsM",
+        "filename": "drm/drmserver/DrmManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-12-21T21:59:14Z",
+      "side": 1,
+      "message": "the naming convention of a const is starting with k.\nFor instance, kUniqueIdRange.",
+      "revId": "0ac67a6e8d49966194460529b2ced0a8a2823596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "NGagP7j4",
+        "filename": "drm/drmserver/DrmManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-12-21T21:59:14Z",
+      "side": 1,
+      "message": "please add spaces around \"\u003d\"\nremove space before \";\"",
+      "revId": "0ac67a6e8d49966194460529b2ced0a8a2823596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "NGSsa2HU",
+        "filename": "drm/drmserver/DrmManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-12-21T21:59:14Z",
+      "side": 1,
+      "message": "you can move uniqueId assignment (line 63) out of the if condition, and then reuse it inside the if condition",
+      "revId": "0ac67a6e8d49966194460529b2ced0a8a2823596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "NGWgqFpM",
+        "filename": "drm/libdrmframework/include/DrmManager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2012-12-21T21:59:14Z",
+      "side": 1,
+      "message": "type for the array should not be \"unsigned char\", but an int.",
+      "revId": "0ac67a6e8d49966194460529b2ced0a8a2823596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
