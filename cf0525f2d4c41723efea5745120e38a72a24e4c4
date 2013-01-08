@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "N556qmXE",
+        "filename": "media/libstagefright/AwesomePlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2028,
+      "author": {
+        "id": 1017178
+      },
+      "writtenOn": "2013-01-08T09:45:57Z",
+      "side": 1,
+      "message": "The Mutex is already unlocked when connection so there seems to be \nno point in adding mConnectingDataSource.disconnect() outside of the mutex\nin reset() and it is already present inside of the mutex.\n\nWhen reset_l() aborts the connection and this function returns an error it\nwill call abortPrepare that signals the preparedcondition so that reset_l can finish.",
+      "revId": "cf0525f2d4c41723efea5745120e38a72a24e4c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
