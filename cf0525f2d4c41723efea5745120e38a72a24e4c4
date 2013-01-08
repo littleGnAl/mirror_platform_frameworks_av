@@ -34,6 +34,24 @@
       "revId": "cf0525f2d4c41723efea5745120e38a72a24e4c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "N574q9ec",
+        "filename": "media/libstagefright/AwesomePlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2028,
+      "author": {
+        "id": 1017178
+      },
+      "writtenOn": "2013-01-08T10:30:38Z",
+      "side": 1,
+      "message": "OK, by not clearing mConnectingDataSource after its use you are keeping a reference to the internal http source of NuCachedSource and can interrupt it at any time.",
+      "parentUuid": "N4KiVX6I",
+      "revId": "cf0525f2d4c41723efea5745120e38a72a24e4c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
