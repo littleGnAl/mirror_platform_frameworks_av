@@ -52,6 +52,24 @@
       "revId": "cf0525f2d4c41723efea5745120e38a72a24e4c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "N536s7TY",
+        "filename": "media/libstagefright/AwesomePlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2028,
+      "author": {
+        "id": 1017178
+      },
+      "writtenOn": "2013-01-08T12:03:44Z",
+      "side": 1,
+      "message": "Though NuCachedsource will not return an error on disconnect,\nit will try to reconnect first and any read blocking from within a mutex in awesomeplayer will only get released once it is ready.\n\nSee NuCachedSource::ReadInternal",
+      "parentUuid": "N574q9ec",
+      "revId": "cf0525f2d4c41723efea5745120e38a72a24e4c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
