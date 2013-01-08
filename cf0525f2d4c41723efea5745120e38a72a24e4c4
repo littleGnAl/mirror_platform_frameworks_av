@@ -16,6 +16,24 @@
       "revId": "cf0525f2d4c41723efea5745120e38a72a24e4c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "N4KiVX6I",
+        "filename": "media/libstagefright/AwesomePlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2028,
+      "author": {
+        "id": 1015362
+      },
+      "writtenOn": "2013-01-08T10:15:32Z",
+      "side": 1,
+      "message": "Yes, what you explain is right. But this mConnectingDataSource.disconnect() is not just for interrupt  mConnectingDataSource-\u003econnect(mUri, \u0026mUriHeaders), also for other things.  For example, requesting enough data to establish extractor or meta data and so on, when these are blocked, other calling cannot acquire the lock. So add another way to interrupt from the \"mConnectingDataSource\" , make the blocking calls return err and other calling can  acquire the lock.",
+      "parentUuid": "N556qmXE",
+      "revId": "cf0525f2d4c41723efea5745120e38a72a24e4c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
