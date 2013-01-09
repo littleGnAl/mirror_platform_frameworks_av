@@ -16,6 +16,23 @@
       "revId": "8d43ceaa5e921c77612fbcbc145d42ca370bbe17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "N8lkfVxI",
+        "filename": "media/libstagefright/matroska/MatroskaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1018653
+      },
+      "writtenOn": "2013-01-09T01:15:05Z",
+      "side": 1,
+      "message": "How is this even meaningful?  If the file is invalid, then how can you even continue at all?  Shouldn\u0027t you just stop playing this file?\n\nIf you skip a cluster, you\u0027re potentially skipping intervening video frames.  The frames that follow in the next cluster aren\u0027t necessarily even decodable.\n\nDo you have a specific example of a WebM with a bad cluster, from which you were able to continue playing?",
+      "revId": "8d43ceaa5e921c77612fbcbc145d42ca370bbe17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
