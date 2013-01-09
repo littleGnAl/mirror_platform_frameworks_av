@@ -33,6 +33,24 @@
       "revId": "8d43ceaa5e921c77612fbcbc145d42ca370bbe17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "N-.OmkmM",
+        "filename": "media/libstagefright/matroska/MatroskaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1017178
+      },
+      "writtenOn": "2013-01-09T06:52:18Z",
+      "side": 1,
+      "message": "This change was to handle matroska test7.mkv\n\"This file contains junk elements (elements not defined in the specs) either at the beggining or the end of Clusters. These elements should be skipped. There is also an invalid element at 451417 that should be skipped until the next valid Cluster is found.\"\n\nI guess it is a rigged test but the requirement is to keep on playing.\nA torrent downloaded to 99% could possibly show the same behaviour but we had some partially downloaded files and those usually triggers the return error below.",
+      "parentUuid": "N8lkfVxI",
+      "revId": "8d43ceaa5e921c77612fbcbc145d42ca370bbe17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
