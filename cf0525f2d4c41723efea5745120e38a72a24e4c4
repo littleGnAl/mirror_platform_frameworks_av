@@ -70,6 +70,24 @@
       "revId": "cf0525f2d4c41723efea5745120e38a72a24e4c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "N94tt7fs",
+        "filename": "media/libstagefright/AwesomePlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2028,
+      "author": {
+        "id": 1015362
+      },
+      "writtenOn": "2013-01-09T02:47:23Z",
+      "side": 1,
+      "message": "How do you think this \"reconnect\" after you click \"BACK\" key while it is blocked in reading?",
+      "parentUuid": "N536s7TY",
+      "revId": "cf0525f2d4c41723efea5745120e38a72a24e4c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
