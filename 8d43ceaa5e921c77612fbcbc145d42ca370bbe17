@@ -105,6 +105,24 @@
       "revId": "8d43ceaa5e921c77612fbcbc145d42ca370bbe17",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "N8jG7eN8",
+        "filename": "media/libstagefright/matroska/MatroskaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1018653
+      },
+      "writtenOn": "2013-01-11T02:59:26Z",
+      "side": 1,
+      "message": "Well, I claim that this is a malformed file.  \n\nThe issue is that you have an element (nested inside a cluster) that specifies a size such that it lies beyond the end of the cluster.  We are a bit paranoid about such things (perhaps this stream is deliberately malformed), so we reject the file.\n\nOne thing we could do is, if this element is neither a simple block nor a block group (the case here, in fact), then just complete this cluster and move on to the next.  We would skip this element anyway, so this is perhaps a reasonable compromise between safety and liberalism.",
+      "parentUuid": "N8lZ3EmE",
+      "revId": "8d43ceaa5e921c77612fbcbc145d42ca370bbe17",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
