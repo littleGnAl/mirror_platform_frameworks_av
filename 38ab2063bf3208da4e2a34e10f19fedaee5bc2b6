@@ -34,6 +34,24 @@
       "revId": "38ab2063bf3208da4e2a34e10f19fedaee5bc2b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OjBatfDU",
+        "filename": "media/libstagefright/OMXCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1003360
+      },
+      "writtenOn": "2013-01-18T20:20:21Z",
+      "side": 1,
+      "message": "James...\n\nI\u0027d prefer the use of quirks for this sort of thing. I really don\u0027t understand why quirks are out of favor. IMO... changes to look for particular codec\u0027s is a bad idea.\n\nCan you suggest a way that we can resolve this without a framework change?",
+      "parentUuid": "AAAI3X///bs\u003d",
+      "revId": "38ab2063bf3208da4e2a34e10f19fedaee5bc2b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
