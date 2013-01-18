@@ -67,6 +67,24 @@
       "revId": "0ac67a6e8d49966194460529b2ced0a8a2823596",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OaTw3XZs",
+        "filename": "drm/libdrmframework/include/DrmManager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1004910
+      },
+      "writtenOn": "2013-01-18T11:28:48Z",
+      "side": 1,
+      "message": "Each member in the array just keeps a 0 or 1 to indicate if it\u0027s used or not.\r\nCurrently 4kB memory is used. Changing to int would use 16kB memory. Are you sure you want it to be a int?",
+      "parentUuid": "NGWgqFpM",
+      "revId": "0ac67a6e8d49966194460529b2ced0a8a2823596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
