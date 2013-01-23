@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "OpcnS5Mw",
+        "filename": "include/media/stagefright/MediaDefs.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2013-01-23T11:03:26Z",
+      "side": 1,
+      "message": "Place with the other audio types",
+      "revId": "d13db7ae7eded5611dd8394f9e786023bbc65ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OpSnO6Cw",
+        "filename": "media/libstagefright/MediaDefs.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2013-01-23T11:03:26Z",
+      "side": 1,
+      "message": "This should probably be placed with the other audio types",
+      "revId": "d13db7ae7eded5611dd8394f9e786023bbc65ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
