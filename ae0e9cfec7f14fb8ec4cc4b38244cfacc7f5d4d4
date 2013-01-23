@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "OvYKKYiQ",
+        "filename": "drm/libdrmframework/include/DrmManager.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-01-23T23:31:09Z",
+      "side": 1,
+      "message": "Since the value in the array just indicates whether the slot in the array is occupied or not, if I understand the change correctly, why don\u0027t we simply use bool for the type? Isn\u0027t that more descriptive than \"unsigned char\"?",
+      "revId": "ae0e9cfec7f14fb8ec4cc4b38244cfacc7f5d4d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
