@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "OoAutJYs",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-01-23T08:56:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "OpSY395o",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "OpQYy.6o",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-01-23T07:37:50Z",
       "side": 1,
       "message": "This is unnecessary",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OoKuhmZc",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-01-23T08:56:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "OpQYy.6o",
       "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "OoMumXa0",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-01-23T08:56:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "OpcYrszY",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "OpeYwL6E",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2013-01-23T07:37:50Z",
       "side": 1,
       "message": "Missing space before (",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OoGu88bo",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-01-23T08:56:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "OpeYwL6E",
       "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "OoCu26dg",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-01-23T08:56:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "OpYYmC2s",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "Opca4k.M",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2013-01-23T07:37:50Z",
       "side": 1,
       "message": "Do we need the magic number in the comment? If so please add a space for better readability.",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OoAvYxRw",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-01-23T08:56:04Z",
+      "side": 1,
+      "message": "Number is sync word for AC3. Added space and comments.",
+      "parentUuid": "Opca4k.M",
       "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "OoKvcORE",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-01-23T08:56:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "OpaYjB1s",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "OpUYgA04",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 1
@@ -132,6 +258,24 @@
       "writtenOn": "2013-01-23T07:37:50Z",
       "side": 1,
       "message": "Is it needed to cast this? It is not done in other places in this file.",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OoKvz2ZM",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-01-23T08:56:04Z",
+      "side": 1,
+      "message": "Removed the static cast.",
+      "parentUuid": "OpUYgA04",
       "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "OoGvHET0",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-01-23T08:56:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "OpWYd-xY",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "OpSbJN3w",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 1
@@ -166,6 +328,24 @@
       "writtenOn": "2013-01-23T07:37:50Z",
       "side": 1,
       "message": "Missing space after if and curly brackets, used in other places in this file even for oneliners",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OoIvE1Tc",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-01-23T08:56:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "OpSbJN3w",
       "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
