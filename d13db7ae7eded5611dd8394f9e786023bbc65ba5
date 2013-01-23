@@ -50,6 +50,41 @@
       "revId": "d13db7ae7eded5611dd8394f9e786023bbc65ba5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OpUmLNMA",
+        "filename": "media/libstagefright/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2013-01-23T11:22:05Z",
+      "side": 1,
+      "message": "I think AC3 is enough, since it is called AAC",
+      "parentUuid": "Oqwz2ox0",
+      "revId": "d13db7ae7eded5611dd8394f9e786023bbc65ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Opamz2Jg",
+        "filename": "media/libstagefright/mpeg2ts/ATSParser.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2013-01-23T11:22:05Z",
+      "side": 1,
+      "message": "Should be STREAMTYPE_AC3_AUDIO",
+      "revId": "d13db7ae7eded5611dd8394f9e786023bbc65ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
