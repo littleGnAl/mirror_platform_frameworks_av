@@ -1,0 +1,174 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "OpSY395o",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2013-01-23T07:37:50Z",
+      "side": 1,
+      "message": "Missing new lines around case",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OpQYy.6o",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2013-01-23T07:37:50Z",
+      "side": 1,
+      "message": "This is unnecessary",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OpcYrszY",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2013-01-23T07:37:50Z",
+      "side": 1,
+      "message": "Remove",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OpeYwL6E",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2013-01-23T07:37:50Z",
+      "side": 1,
+      "message": "Missing space before (",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OpYYmC2s",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2013-01-23T07:37:50Z",
+      "side": 1,
+      "message": "Missing space before + and extra space before );",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Opca4k.M",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2013-01-23T07:37:50Z",
+      "side": 1,
+      "message": "Do we need the magic number in the comment? If so please add a space for better readability.",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OpaYjB1s",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2013-01-23T07:37:50Z",
+      "side": 1,
+      "message": "Missing spaces around ( )",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OpUYgA04",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2013-01-23T07:37:50Z",
+      "side": 1,
+      "message": "Is it needed to cast this? It is not done in other places in this file.",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OpWYd-xY",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2013-01-23T07:37:50Z",
+      "side": 1,
+      "message": "Missing space after , also in many places below",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OpSbJN3w",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2013-01-23T07:37:50Z",
+      "side": 1,
+      "message": "Missing space after if and curly brackets, used in other places in this file even for oneliners",
+      "revId": "18f5210fcaf2fae0a5ace9171936c172fe57b859",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
