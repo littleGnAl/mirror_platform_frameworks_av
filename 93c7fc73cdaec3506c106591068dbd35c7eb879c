@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "Ovb1MU8c",
+        "filename": "drm/libdrmframework/plugins/forward-lock/internal-format/converter/FwdLockConv.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-01-24T21:05:22Z",
+      "side": 1,
+      "message": "one more question - I see most of the MACROS defined here in this c file also show up in FwdLockConv.c file. Shouldn\u0027t we move the definition to a single place to avoid copy \u0026 paste code?\n\nIs FwdLockGlue.h a good place to hold these MACROs?\n\nThanks",
+      "revId": "93c7fc73cdaec3506c106591068dbd35c7eb879c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "NFmLzV5g",
         "filename": "drm/libdrmframework/plugins/forward-lock/internal-format/converter/FwdLockConv.c",
         "patchSetId": 1
