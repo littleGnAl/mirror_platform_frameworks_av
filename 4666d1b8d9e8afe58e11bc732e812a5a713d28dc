@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "OvNNAIqM",
+        "filename": "media/libstagefright/rtsp/MyHandler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1222,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2013-01-24T21:28:56Z",
+      "side": 0,
+      "message": "The old logic seems much more sound to me, since we rely on the normal playtime mapping for seekability, why the need to change it?",
+      "revId": "4666d1b8d9e8afe58e11bc732e812a5a713d28dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
