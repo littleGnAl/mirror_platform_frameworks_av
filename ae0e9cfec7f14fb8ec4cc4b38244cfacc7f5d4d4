@@ -16,6 +16,24 @@
       "revId": "ae0e9cfec7f14fb8ec4cc4b38244cfacc7f5d4d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OvJFVzeg",
+        "filename": "drm/libdrmframework/include/DrmManager.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1004910
+      },
+      "writtenOn": "2013-01-24T07:16:51Z",
+      "side": 1,
+      "message": "Yes that will work since bool is only one byte. I\u0027ll fix. I\u0027m use to c-programming :-)",
+      "parentUuid": "OvYKKYiQ",
+      "revId": "ae0e9cfec7f14fb8ec4cc4b38244cfacc7f5d4d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
