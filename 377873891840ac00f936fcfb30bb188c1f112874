@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "OvcycA2Y",
+        "filename": "media/libstagefright/avc_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2013-01-24T17:08:58Z",
+      "side": 1,
+      "message": "Is this actually necessary? Won\u0027t this be contained in an IDR frame anyway?",
+      "revId": "377873891840ac00f936fcfb30bb188c1f112874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
