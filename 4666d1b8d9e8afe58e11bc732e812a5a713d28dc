@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "OvQyT.1Y",
+        "filename": "media/libstagefright/include/SDPLoader.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2013-01-24T17:06:55Z",
+      "side": 1,
+      "message": "just derive from AHandler and get rid of the reflector",
+      "revId": "4666d1b8d9e8afe58e11bc732e812a5a713d28dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OvaytB6A",
+        "filename": "media/libstagefright/rtsp/MyHandler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2013-01-24T17:06:55Z",
+      "side": 1,
+      "message": "We usually pass const sp\u003cXXX\u003e \u0026 references as parameters to avoid the brief refcount increment/decrement",
+      "revId": "4666d1b8d9e8afe58e11bc732e812a5a713d28dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OveyVPzo",
+        "filename": "media/libstagefright/rtsp/SDPLoader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2013-01-24T17:06:55Z",
+      "side": 1,
+      "message": "would be better to use sp\u003cABuffer\u003e instead of manuall malloc\u0027ing",
+      "revId": "4666d1b8d9e8afe58e11bc732e812a5a713d28dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
