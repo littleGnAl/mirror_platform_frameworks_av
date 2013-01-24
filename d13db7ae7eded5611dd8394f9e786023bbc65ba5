@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "OqQU5laY",
+        "filename": "include/media/stagefright/MediaDefs.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-01-24T04:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "OpcnS5Mw",
+      "revId": "d13db7ae7eded5611dd8394f9e786023bbc65ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "OpSnO6Cw",
         "filename": "media/libstagefright/MediaDefs.cpp",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2013-01-23T11:03:26Z",
       "side": 1,
       "message": "This should probably be placed with the other audio types",
+      "revId": "d13db7ae7eded5611dd8394f9e786023bbc65ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OqSU.GY8",
+        "filename": "media/libstagefright/MediaDefs.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-01-24T04:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "OpSnO6Cw",
       "revId": "d13db7ae7eded5611dd8394f9e786023bbc65ba5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -89,6 +125,24 @@
     },
     {
       "key": {
+        "uuid": "OqWVUEcM",
+        "filename": "media/libstagefright/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-01-24T04:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "Oq0xVe.U",
+      "revId": "d13db7ae7eded5611dd8394f9e786023bbc65ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "Opamz2Jg",
         "filename": "media/libstagefright/mpeg2ts/ATSParser.h",
         "patchSetId": 4
@@ -100,6 +154,24 @@
       "writtenOn": "2013-01-23T11:22:05Z",
       "side": 1,
       "message": "Should be STREAMTYPE_AC3_AUDIO",
+      "revId": "d13db7ae7eded5611dd8394f9e786023bbc65ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "OqUVurYw",
+        "filename": "media/libstagefright/mpeg2ts/ATSParser.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-01-24T04:22:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "Opamz2Jg",
       "revId": "d13db7ae7eded5611dd8394f9e786023bbc65ba5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
