@@ -16,6 +16,24 @@
       "revId": "377873891840ac00f936fcfb30bb188c1f112874",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "O5F5uVYw",
+        "filename": "media/libstagefright/avc_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2013-01-28T22:34:38Z",
+      "side": 1,
+      "message": "We have seen (only for MPEG DASH though) that the SPS arrives as a separate AU before the IDR, which means that the SPS AU would be discarded and the decoder would not be reconfigured correctly.",
+      "parentUuid": "OvcycA2Y",
+      "revId": "377873891840ac00f936fcfb30bb188c1f112874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
