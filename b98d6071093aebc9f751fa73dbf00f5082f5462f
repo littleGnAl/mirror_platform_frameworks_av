@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "PD9xVXMI",
+        "filename": "drm/libdrmframework/plugins/forward-lock/FwdLockEngine/src/FwdLockEngine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-01-30T18:23:47Z",
+      "side": 1,
+      "message": "Henrik,\nCould you please comment on why the change in onProcessDrmInfo and onAcquireDrmInfo is needed?\n\nIt looks to me that",
+      "revId": "b98d6071093aebc9f751fa73dbf00f5082f5462f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PD3wPaPA",
+        "filename": "drm/libdrmframework/plugins/forward-lock/FwdLockEngine/src/FwdLockEngine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-01-30T18:23:47Z",
+      "side": 1,
+      "message": "passing a on-stack temp object (DrmBuffer) to DrmInfo might be a problem leading to hidden/tough bugs. Your thoughts on this? Thanks",
+      "revId": "b98d6071093aebc9f751fa73dbf00f5082f5462f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
