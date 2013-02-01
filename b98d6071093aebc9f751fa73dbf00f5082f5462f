@@ -33,6 +33,227 @@
       "revId": "b98d6071093aebc9f751fa73dbf00f5082f5462f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PD0DpQ6A",
+        "filename": "drm/libdrmframework/plugins/forward-lock/FwdLockEngine/test/src/fwdlockTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-01T20:09:08Z",
+      "side": 1,
+      "message": "A general question - should we update the date to use 2013 in the copyright header for the new files added?",
+      "revId": "b98d6071093aebc9f751fa73dbf00f5082f5462f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PD4Bquw4",
+        "filename": "drm/libdrmframework/plugins/forward-lock/FwdLockEngine/test/src/fwdlockTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-01T20:09:08Z",
+      "side": 1,
+      "message": "for member variable, the convention is to use mXXX, such as mForwardLockEngine.",
+      "revId": "b98d6071093aebc9f751fa73dbf00f5082f5462f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PDwBg6yo",
+        "filename": "drm/libdrmframework/plugins/forward-lock/FwdLockEngine/test/src/fwdlockTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-01T20:09:08Z",
+      "side": 1,
+      "message": "same here.",
+      "revId": "b98d6071093aebc9f751fa73dbf00f5082f5462f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PD4Dc.94",
+        "filename": "drm/libdrmframework/plugins/forward-lock/FwdLockEngine/test/src/fwdlockTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-01T20:09:08Z",
+      "side": 1,
+      "message": "why ASSERT is not used but EXPECT is used?",
+      "revId": "b98d6071093aebc9f751fa73dbf00f5082f5462f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PD8C9U2k",
+        "filename": "drm/libdrmframework/plugins/forward-lock/FwdLockEngine/test/src/fwdlockTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-01T20:09:08Z",
+      "side": 1,
+      "message": "since we already check on the inFileDesc with EXPECT above, is this check still necessary?",
+      "revId": "b98d6071093aebc9f751fa73dbf00f5082f5462f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PD8B2c80",
+        "filename": "drm/libdrmframework/plugins/forward-lock/FwdLockEngine/test/src/fwdlockTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-01T20:09:08Z",
+      "side": 1,
+      "message": "similar comments.",
+      "revId": "b98d6071093aebc9f751fa73dbf00f5082f5462f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PD8BPk40",
+        "filename": "drm/libdrmframework/plugins/forward-lock/FwdLockEngine/test/src/fwdlockTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-01T20:09:08Z",
+      "side": 1,
+      "message": "what if this read just reaches the end of the file. size will not be \u003e 0, but it is not a failure?",
+      "revId": "b98d6071093aebc9f751fa73dbf00f5082f5462f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PD8BIs38",
+        "filename": "drm/libdrmframework/plugins/forward-lock/FwdLockEngine/test/src/fwdlockTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-01T20:09:08Z",
+      "side": 1,
+      "message": "isn\u0027t there a constructor for DrmBuffer taking these two parameters below?",
+      "revId": "b98d6071093aebc9f751fa73dbf00f5082f5462f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PD8Ah07c",
+        "filename": "drm/libdrmframework/plugins/forward-lock/FwdLockEngine/test/src/fwdlockTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-01T20:09:08Z",
+      "side": 1,
+      "message": "why we check these again? they are checked a couple of lines earlier using EXPECT",
+      "revId": "b98d6071093aebc9f751fa73dbf00f5082f5462f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PD4MEBSI",
+        "filename": "drm/libdrmframework/plugins/forward-lock/FwdLockEngine/test/src/fwdlockTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-01T20:09:08Z",
+      "side": 1,
+      "message": "why is this check needed?",
+      "revId": "b98d6071093aebc9f751fa73dbf00f5082f5462f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PDwNDVUY",
+        "filename": "drm/libdrmframework/plugins/forward-lock/FwdLockEngine/test/src/fwdlockTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-01T20:09:08Z",
+      "side": 1,
+      "message": "DrmConvertedStatus class may also have lifecycle management problem? Why is a const pointer used in that class...",
+      "revId": "b98d6071093aebc9f751fa73dbf00f5082f5462f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PD0OybU4",
+        "filename": "drm/libdrmframework/plugins/forward-lock/FwdLockEngine/test/src/fwdlockTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-01T20:09:08Z",
+      "side": 1,
+      "message": "why do you call next first in a do-while loop?\nwhy not use \n\nwhile (...hasNext()) {\n....\n}\n\nsimilarly for the mimeIter loop above.",
+      "revId": "b98d6071093aebc9f751fa73dbf00f5082f5462f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PDwPQ9Uw",
+        "filename": "drm/libdrmframework/plugins/forward-lock/FwdLockEngine/test/src/fwdlockTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-01T20:09:08Z",
+      "side": 1,
+      "message": "why the uniqueId is passed as a fixed constant 0?\nsimilarly for other test cases...",
+      "revId": "b98d6071093aebc9f751fa73dbf00f5082f5462f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
