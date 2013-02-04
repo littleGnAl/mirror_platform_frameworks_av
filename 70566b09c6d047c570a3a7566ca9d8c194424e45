@@ -1,0 +1,140 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "PTn3mCxE",
+        "filename": "media/libstagefright/codecs/on2/enc/NOTICE",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-04T20:15:36Z",
+      "side": 1,
+      "message": "why 2005-2008?",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PTvoU4VY",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-04T20:15:36Z",
+      "side": 1,
+      "message": "does this require us to update the OMX IL header?",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PTr01Q9k",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-04T20:15:36Z",
+      "side": 1,
+      "message": "mFrameDuration in Us? Could mFrameDurationUs be used instead?",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PTj19s2I",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-04T20:15:36Z",
+      "side": 1,
+      "message": "reciprocal was not calculated?",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PTt0dnxg",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-04T20:15:36Z",
+      "side": 1,
+      "message": "color format enum feature is missing...",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PTl1872I",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-04T20:15:36Z",
+      "side": 1,
+      "message": "is the calculation considering the reciprocal?",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PTt0Ef9A",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-04T20:15:36Z",
+      "side": 1,
+      "message": "not sure how AndroidOpaque color format is handled.",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PTl3rT9U",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-04T20:15:36Z",
+      "side": 1,
+      "message": "mFrameDurationUs instead?",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
