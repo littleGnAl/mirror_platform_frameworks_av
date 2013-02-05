@@ -177,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "Pc28mkdA",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-05T16:47:52Z",
+      "side": 1,
+      "message": "we need to get this fixed so that developers would have a way to tell what the codec is able to do. you can submit a separate patch just changing the OMX header.",
+      "parentUuid": "PbduJC8c",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "PTt0dnxg",
         "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
         "patchSetId": 1
@@ -206,6 +224,24 @@
       "side": 1,
       "message": "James, did you mean the eColorFormat the line above or was it something else I\u0027ve missed?",
       "parentUuid": "PTt0dnxg",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Pc48a1YA",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-05T16:47:52Z",
+      "side": 1,
+      "message": "eColorFormat. In OpenMAX IL, there is a way that all color formats supported by the component can be enumerated.",
+      "parentUuid": "PbR5CkUE",
       "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -276,6 +312,24 @@
       "side": 1,
       "message": "It is assumed to be planar. Is this incorrect? Other encoders seem to treat it as such at least.",
       "parentUuid": "PTt0Ef9A",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PcxLwyiE",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-05T16:47:52Z",
+      "side": 1,
+      "message": "ic. please add a simple line of comment. thanks",
+      "parentUuid": "PbTufXw8",
       "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
