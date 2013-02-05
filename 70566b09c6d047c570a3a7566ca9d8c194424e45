@@ -70,6 +70,23 @@
     },
     {
       "key": {
+        "uuid": "PXsdS4Nc",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-05T00:09:55Z",
+      "side": 1,
+      "message": "I do not see the support for querying profiles and levels. According to OpenMax IL, at least 4 levels are defined, and one profile (main) is defined. We must support the codec capability query feature.",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "PTt0dnxg",
         "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
         "patchSetId": 1
