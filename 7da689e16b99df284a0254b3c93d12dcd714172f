@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "PdK5Idys",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-02-05T05:27:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "PTpcXhlo",
+      "revId": "7da689e16b99df284a0254b3c93d12dcd714172f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "PTvcU.lY",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 6
@@ -30,6 +48,24 @@
       "writtenOn": "2013-02-04T16:41:36Z",
       "side": 1,
       "message": "const ?",
+      "revId": "7da689e16b99df284a0254b3c93d12dcd714172f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PdM5Vw8I",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-02-05T05:27:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "PTvcU.lY",
       "revId": "7da689e16b99df284a0254b3c93d12dcd714172f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "PdO5Sf9c",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-02-05T05:27:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "PTtcR-mQ",
+      "revId": "7da689e16b99df284a0254b3c93d12dcd714172f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "PTjrwGSI",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 6
@@ -64,6 +118,24 @@
       "writtenOn": "2013-02-04T16:41:36Z",
       "side": 1,
       "message": "frmsizecod has not been range-checked - it\u0027s a getBits(6) so could go up to 63 not 37, and result in buffer overrun",
+      "revId": "7da689e16b99df284a0254b3c93d12dcd714172f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PdC4PJ-E",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-02-05T05:27:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "PTjrwGSI",
       "revId": "7da689e16b99df284a0254b3c93d12dcd714172f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "PdK76N6s",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-02-05T05:27:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "PTlr-1e8",
+      "revId": "7da689e16b99df284a0254b3c93d12dcd714172f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "PTpoATQ0",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 6
@@ -98,6 +188,24 @@
       "writtenOn": "2013-02-04T16:41:36Z",
       "side": 1,
       "message": "I don\u0027t have the full context, but what guarantees a lack of buffer overrun here? It may at least need a comment",
+      "revId": "7da689e16b99df284a0254b3c93d12dcd714172f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PdC44B4g",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1018607
+      },
+      "writtenOn": "2013-02-05T05:27:47Z",
+      "side": 1,
+      "message": "Buffer overrun will not happen, as offset is calculated from the mBuffer-\u003esize()",
+      "parentUuid": "PTpoATQ0",
       "revId": "7da689e16b99df284a0254b3c93d12dcd714172f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
