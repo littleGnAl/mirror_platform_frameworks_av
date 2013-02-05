@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "PbT6ZDdk",
+        "filename": "media/libstagefright/codecs/on2/enc/NOTICE",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1017830
+      },
+      "writtenOn": "2013-02-05T14:12:51Z",
+      "side": 1,
+      "message": "This is obviously wrong, I will replace it with 2005-2013, or is there a more up-to-date version of this NOTICE files?\n\n(By the way rest of the NOTICE files in stagefright are outdated as such as well)",
+      "parentUuid": "PTn3mCxE",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "PTvoU4VY",
         "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-02-04T20:15:36Z",
       "side": 1,
       "message": "does this require us to update the OMX IL header?",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PbRvI4x4",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1017830
+      },
+      "writtenOn": "2013-02-05T14:12:51Z",
+      "side": 1,
+      "message": "I believe not, as according to frameworks/native/include/media/openmax/OMX_Core.h line 41 it is already OpenMax IL version 1.1.2",
+      "parentUuid": "PTvoU4VY",
       "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "PbZ5eoQ0",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1017830
+      },
+      "writtenOn": "2013-02-05T14:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "PTr01Q9k",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "PTj19s2I",
         "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
         "patchSetId": 1
@@ -64,6 +118,24 @@
       "writtenOn": "2013-02-04T20:15:36Z",
       "side": 1,
       "message": "reciprocal was not calculated?",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Pbb5bXRw",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1017830
+      },
+      "writtenOn": "2013-02-05T14:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "PTj19s2I",
       "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "PbduJC8c",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1017830
+      },
+      "writtenOn": "2013-02-05T14:12:51Z",
+      "side": 1,
+      "message": "If we would be willing to include 1.1.2 vp8 extension headers, I can easily fix this. Otherwise if my understanding is correct OMX IL 1.1.2 do not have a format agnostic type for profiles or levels and consequently without those extension headers, there is simply no type we can use to return codec capability info about this. (BTW profiles or levels do not apply for encoder in VP8, so there is no functional implication for this.)",
+      "parentUuid": "PXsdS4Nc",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "PTt0dnxg",
         "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
         "patchSetId": 1
@@ -98,6 +188,24 @@
       "writtenOn": "2013-02-04T20:15:36Z",
       "side": 1,
       "message": "color format enum feature is missing...",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PbR5CkUE",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1017830
+      },
+      "writtenOn": "2013-02-05T14:12:51Z",
+      "side": 1,
+      "message": "James, did you mean the eColorFormat the line above or was it something else I\u0027ve missed?",
+      "parentUuid": "PTt0dnxg",
       "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "Pbd5YGSI",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1017830
+      },
+      "writtenOn": "2013-02-05T14:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "PTl1872I",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "PTt0Ef9A",
         "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
         "patchSetId": 1
@@ -138,6 +264,24 @@
     },
     {
       "key": {
+        "uuid": "PbTufXw8",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1017830
+      },
+      "writtenOn": "2013-02-05T14:12:51Z",
+      "side": 1,
+      "message": "It is assumed to be planar. Is this incorrect? Other encoders seem to treat it as such at least.",
+      "parentUuid": "PTt0Ef9A",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "PTl3rT9U",
         "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.h",
         "patchSetId": 1
@@ -149,6 +293,24 @@
       "writtenOn": "2013-02-04T20:15:36Z",
       "side": 1,
       "message": "mFrameDurationUs instead?",
+      "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Pbf5V1eg",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1017830
+      },
+      "writtenOn": "2013-02-05T14:12:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "PTl3rT9U",
       "revId": "70566b09c6d047c570a3a7566ca9d8c194424e45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
