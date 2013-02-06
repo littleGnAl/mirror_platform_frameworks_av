@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "PhfdZ4Fk",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-06T18:39:44Z",
+      "side": 1,
+      "message": "the error message could be a bit more specific, but not a big deal.",
+      "revId": "215b6ffaafe1def77166de540b178c9da8c4fa80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "Phdd1xME",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-06T18:39:44Z",
+      "side": 1,
+      "message": "in OpenMAX IL 1.2.0 (note 1.1.2), I found that four levels are defined in section 4.3.19. In addition, within the four level versions, the higher levels mean less decoding complexity.\n\nWhen your comment said that \"vp8 encoder has no profiles or levels\", are you saying that the vp8 software encoder in Android source tree has such notion and only supports version0 and could not be set to deal with other versions/levels, or just the extension header has not defined such versions yet? Could this be a problem for future extension?",
+      "revId": "215b6ffaafe1def77166de540b178c9da8c4fa80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PhZeOHN8",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-06T18:39:44Z",
+      "side": 1,
+      "message": "please add a case OMX_IndexParamVideoProfileLevelQuerySupported. If OMX_VIDEO_VP8ProfileMain and OMX_VIDEO_VP8Level_Version0 is the only profile/level supported, please simply just return the sole combination of profile+level.\n\nYou also want to change frameworks/base/media/java/android/media/MediaCodecInfo.java to include the profile and levels for VP8. That must be done with a separate patch. I may not have time to work with you on this follow-up patch. Please work with someone from Android media team to do the follow-up patch.",
+      "revId": "215b6ffaafe1def77166de540b178c9da8c4fa80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
