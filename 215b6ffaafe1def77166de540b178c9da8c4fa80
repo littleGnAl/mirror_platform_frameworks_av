@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "PmugY038",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1017830
+      },
+      "writtenOn": "2013-02-07T17:51:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "PhfdZ4Fk",
+      "revId": "215b6ffaafe1def77166de540b178c9da8c4fa80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "Phdd1xME",
         "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
         "patchSetId": 2
@@ -54,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "PmigO6z4",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1017830
+      },
+      "writtenOn": "2013-02-07T17:51:50Z",
+      "side": 1,
+      "message": "This was a mistake from my side. I was confused because the spec document refers levels explicitly as decoding tools whereas they are part of the encoder and they are actually corresponding to profiles of the encoder, whereas the profile parameter in OMX header has nothing to do with these profiles we are talking about.",
+      "parentUuid": "PhZcynA4",
+      "revId": "215b6ffaafe1def77166de540b178c9da8c4fa80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "PhZeOHN8",
         "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
         "patchSetId": 2
@@ -65,6 +101,24 @@
       "writtenOn": "2013-02-06T18:39:44Z",
       "side": 1,
       "message": "please add a case OMX_IndexParamVideoProfileLevelQuerySupported. If OMX_VIDEO_VP8ProfileMain and OMX_VIDEO_VP8Level_Version0 is the only profile/level supported, please simply just return the sole combination of profile+level.\n\nYou also want to change frameworks/base/media/java/android/media/MediaCodecInfo.java to include the profile and levels for VP8. That must be done with a separate patch. I may not have time to work with you on this follow-up patch. Please work with someone from Android media team to do the follow-up patch.",
+      "revId": "215b6ffaafe1def77166de540b178c9da8c4fa80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "PmggLJy8",
+        "filename": "media/libstagefright/codecs/on2/enc/SoftVPXEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1017830
+      },
+      "writtenOn": "2013-02-07T17:51:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "PhZeOHN8",
       "revId": "215b6ffaafe1def77166de540b178c9da8c4fa80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
