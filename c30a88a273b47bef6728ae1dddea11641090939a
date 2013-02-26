@@ -16,6 +16,24 @@
       "revId": "c30a88a273b47bef6728ae1dddea11641090939a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "QQ8jMw7U",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2561,
+      "author": {
+        "id": 1002068
+      },
+      "writtenOn": "2013-02-26T21:05:03Z",
+      "side": 1,
+      "message": "Note, I\u0027m not touching the frame count field, that is still 1. I\u0027m changing the compressor string.",
+      "parentUuid": "QVmxLG44",
+      "revId": "c30a88a273b47bef6728ae1dddea11641090939a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
