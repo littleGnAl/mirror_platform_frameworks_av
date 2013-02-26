@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "QVmxLG44",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2561,
+      "author": {
+        "id": 1006668
+      },
+      "writtenOn": "2013-02-26T21:02:46Z",
+      "side": 1,
+      "message": "according to the spec that I have, this frame count must be 1, on page 28 in section 8.16.1; and then in section 8.16.3, \"frame_count indicates how many frames of compressed video are stored in each sample. The default is \n1, for one frame per sample; it may be more than 1 for multiple frames per sample\".\n\n0 does not make sense.",
+      "revId": "c30a88a273b47bef6728ae1dddea11641090939a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
