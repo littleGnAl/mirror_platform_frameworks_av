@@ -34,6 +34,24 @@
       "revId": "c30a88a273b47bef6728ae1dddea11641090939a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "QQwjXyz8",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2561,
+      "author": {
+        "id": 1002068
+      },
+      "writtenOn": "2013-02-26T21:07:27Z",
+      "side": 1,
+      "message": "More exactly, the spec says the following about the compressor string:\n\n\"Compressorname is a name, for informative purposes. It is formatted in a fixed 32-byte field, with the first byte set to the number of bytes to be displayed, followed by that number of bytes of displayable data, and then padding to complete 32 bytes total (including the size byte). The field may be set to 0.\"",
+      "parentUuid": "QQ8jMw7U",
+      "revId": "c30a88a273b47bef6728ae1dddea11641090939a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
