@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "QVaFepvI",
+        "filename": "media/libmedia/IMediaMetadataRetriever.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2013-02-27T17:01:46Z",
+      "side": 1,
+      "message": "My only concern here is that if you do something like:\n\nconst char *meta1 \u003d extractMetadata(foo);\nconst char *meta2 \u003d extractMetadata(bar);\n\nthen meta1 will again point to garbage.\n\nI think the only way to fix that is to keep copies of *all* the metadata here, not just the last one, for example in a keyed vector like StagefrightMetadataRetriever does.",
+      "revId": "c4c640b9a627d438303805c21f095161e0aff7b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
