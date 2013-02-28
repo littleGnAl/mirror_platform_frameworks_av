@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "QXuov4-c",
+        "filename": "media/libmedia/IMediaMetadataRetriever.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2013-02-28T04:13:19Z",
+      "side": 1,
+      "message": "please check that readCString() returned a non-NULL value before proceeding, to avoid adding unnecessary values to the vector.",
+      "revId": "fd49edb923aa8ca7ed967bef9aac7d24da1c5c9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
