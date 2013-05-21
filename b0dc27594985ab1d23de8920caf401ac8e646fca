@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "U868WOVk",
+        "filename": "services/audioflinger/AudioPolicyService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2013-05-21T23:11:04Z",
+      "side": 1,
+      "message": "we should wait with a timeout here (1- 3 seconds) s that we are not stuck if the requesting thread is stuck because ::Exit() only signals mWaitWorkCV.\nI realize there is also a problem in ::exit() because we do not signal all pending commands when exiting.",
+      "revId": "b0dc27594985ab1d23de8920caf401ac8e646fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
