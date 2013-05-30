@@ -16,6 +16,24 @@
       "revId": "b0dc27594985ab1d23de8920caf401ac8e646fca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5df75599_2b5f395a",
+        "filename": "services/audioflinger/AudioPolicyService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1021996
+      },
+      "writtenOn": "2013-05-30T08:22:46Z",
+      "side": 1,
+      "message": "Would you like the change to exit to signal the pending commands done in same commit or a different one?",
+      "parentUuid": "U868WOVk",
+      "revId": "b0dc27594985ab1d23de8920caf401ac8e646fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
