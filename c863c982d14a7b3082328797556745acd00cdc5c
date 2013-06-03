@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d879d2a_ef043526",
+        "filename": "media/libstagefright/codecs/amrwbenc/inc/acelp.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-06-03T16:05:03Z",
+      "side": 1,
+      "message": "Could the architecture-specific optimizations in this file be moved to a filename or directory name which is specific to that architecture, rather than mixing together?  The current approach does not seem scalable.  E.g. by ifdef arch include arch_name.h endif",
+      "revId": "c863c982d14a7b3082328797556745acd00cdc5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d879d2a_0f13496e",
+        "filename": "media/libstagefright/codecs/amrwbenc/src/c4t64fx.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-06-03T16:05:03Z",
+      "side": 1,
+      "message": "similar comment",
+      "revId": "c863c982d14a7b3082328797556745acd00cdc5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
