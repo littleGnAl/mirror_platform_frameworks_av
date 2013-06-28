@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0a2cb179_11ba0ef8",
+        "filename": "media/libstagefright/MetaData.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 278,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2013-06-28T16:47:39Z",
+      "side": 1,
+      "message": "not a concern since allocateStorage is only called a) in the constructor or b) after a previous clear()/freeStorage.",
+      "parentUuid": "0a2cb179_b166a2fd",
+      "revId": "fca812565cebd229fba8be32bad14983c5252a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0a2cb179_7136eae8",
         "filename": "media/libstagefright/MetaData.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2013-06-28T16:36:29Z",
       "side": 1,
       "message": "free(NULL) is a nop, so \u0027if\u0027 is unnecessary",
+      "revId": "fca812565cebd229fba8be32bad14983c5252a7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a2cb179_91735eae",
+        "filename": "media/libstagefright/MetaData.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2013-06-28T16:47:39Z",
+      "side": 1,
+      "message": "It\u0027s good form to not pass NULL to free() as some quirky implementations don\u0027t like it, I think this\u0027d be fine with android\u0027s c-library though.",
+      "parentUuid": "0a2cb179_7136eae8",
       "revId": "fca812565cebd229fba8be32bad14983c5252a7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
