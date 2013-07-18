@@ -211,14 +211,20 @@ void ASessionDescription::getFormatType(
 
     *PT = x;
 
-    char key[20];
-    sprintf(key, "a=rtpmap:%lu", x);
-
-    CHECK(findAttribute(index, key, desc));
-
-    sprintf(key, "a=fmtp:%lu", x);
-    if (!findAttribute(index, key, params)) {
+    if (x <= 95 || x >= 128) {
+        // RFC 3551 defines a number of static A/V profiles
+        // For now, let's just ignore them
         params->clear();
+    } else {
+        char key[20];
+        sprintf(key, "a=rtpmap:%lu", x);
+
+        CHECK(findAttribute(index, key, desc));
+
+        sprintf(key, "a=fmtp:%lu", x);
+        if (!findAttribute(index, key, params)) {
+            params->clear();
+        }
     }
 }
 
