@@ -1,0 +1,310 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1325d3ee_e77e02e7",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:29:04Z",
+      "side": 1,
+      "message": "If this is new code, use 2013.  If this is existing code, use that date.  We don\u0027t update the date or add additional dates for later changes.",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_c77bfef4",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:29:04Z",
+      "side": 1,
+      "message": "no hard tabs, 4 space indent",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_27681a26",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:29:04Z",
+      "side": 1,
+      "message": "no whitespace at end of line",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_47670e54",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:29:04Z",
+      "side": 1,
+      "message": "Separate .h for the coefficients, see audio-resampler/filter_coefficients.h for an example.  This permits easier updating of tables, and makes it easier to read the code without looking at coefficients.",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_47eeee79",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1322,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:29:04Z",
+      "side": 1,
+      "message": "column 1 for method bodies; method declarations in .h are indented",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_a75b6a8c",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:29:04Z",
+      "side": 1,
+      "message": "\", int16_t\" etc.",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_e7556257",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1329,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:29:04Z",
+      "side": 1,
+      "message": "\"// ...\" (one space after //)",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_8758e690",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1331,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:29:04Z",
+      "side": 1,
+      "message": "\") {\"",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_c752de6c",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:29:04Z",
+      "side": 1,
+      "message": "minimum 1 space, aligned at multiple of 4 spaces e.g. \"; //\"",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_67e97270",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1339,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:29:04Z",
+      "side": 1,
+      "message": "no space after (, one space each side of \u003d and \u003e",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_87ef4672",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1352,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:29:04Z",
+      "side": 1,
+      "message": "indent 8 for line extensions",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_c7f93e3f",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1371,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:29:04Z",
+      "side": 1,
+      "message": "\"while (\"",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_67005250",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1391,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:29:04Z",
+      "side": 1,
+      "message": "only split line if \u003e 100 characters, or for clarity; in this case it would be clearer on one line",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_a719aace",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1403,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:29:04Z",
+      "side": 1,
+      "message": "multi-line end-of-line comments should be aligned with initial",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_8716269a",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1451,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:29:04Z",
+      "side": 1,
+      "message": "split comment",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_e713a2a8",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1452,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:29:04Z",
+      "side": 1,
+      "message": "excess indentation?",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_07b23697",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1460,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:29:04Z",
+      "side": 1,
+      "message": "indent 8",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_67b7b287",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1657,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:29:04Z",
+      "side": 1,
+      "message": "split if \u003e 100",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
