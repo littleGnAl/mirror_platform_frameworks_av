@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1325d3ee_2733fa7d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:04:15Z",
+      "side": 1,
+      "message": "no need to include filename in commit message, that\u0027s available automatically.  Instead add a short description of what the CL does e.g. \"Add default value for sample rate parameter\"",
+      "revId": "c7a88e9ce61b2af50f98855c1ebf7bdda33da59e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_87fc6659",
+        "filename": "services/audioflinger/AudioResampler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:04:15Z",
+      "side": 1,
+      "message": "If you want to add a default, also add a comment above saying what the default mean (in this case 0 is unclear, whereas quality is clear).",
+      "revId": "c7a88e9ce61b2af50f98855c1ebf7bdda33da59e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
