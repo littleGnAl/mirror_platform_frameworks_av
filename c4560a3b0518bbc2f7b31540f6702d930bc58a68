@@ -70,6 +70,24 @@
     },
     {
       "key": {
+        "uuid": "1325d3ee_0aecfb40",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1022388
+      },
+      "writtenOn": "2013-07-20T01:28:11Z",
+      "side": 1,
+      "message": "There appears to be 2 conventions.  We followed the example in AudioResamplerSinc.cpp .",
+      "parentUuid": "1325d3ee_47670e54",
+      "revId": "c4560a3b0518bbc2f7b31540f6702d930bc58a68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1325d3ee_47eeee79",
         "filename": "services/audioflinger/AudioResamplerBeats.cpp",
         "patchSetId": 1
