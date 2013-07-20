@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1325d3ee_8743c6b8",
+        "filename": "services/audioflinger/AudioResampler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:11:40Z",
+      "side": 1,
+      "message": "we use 4 spaces for indentation, no hard tabs",
+      "revId": "94240340db6d36ca4b62938afc6e3128b2237523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_e750c27f",
+        "filename": "services/audioflinger/AudioResampler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:11:40Z",
+      "side": 1,
+      "message": "no whitespace at end of line",
+      "revId": "94240340db6d36ca4b62938afc6e3128b2237523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_0786b6d5",
+        "filename": "services/audioflinger/AudioResampler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:11:40Z",
+      "side": 1,
+      "message": "not clear what this comment block is for",
+      "revId": "94240340db6d36ca4b62938afc6e3128b2237523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_071fd6d5",
+        "filename": "services/audioflinger/AudioResampler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:11:40Z",
+      "side": 1,
+      "message": "separate line per variable, and initialize as part of declaration e.g. bool x \u003d y;",
+      "revId": "94240340db6d36ca4b62938afc6e3128b2237523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1325d3ee_872aa6f0",
+        "filename": "services/audioflinger/AudioResampler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:11:40Z",
+      "side": 1,
+      "message": "To permit comparisons easily, we\u0027ll want to (at least initially) not remove the previous resamplers, but rather add your new ones.  So add 3 or 4 new quality levels for your new implementation.  Later, as a separate CL, we can remove the previous implementation if and when appropriate.",
+      "revId": "94240340db6d36ca4b62938afc6e3128b2237523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
