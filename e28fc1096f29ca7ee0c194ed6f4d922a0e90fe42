@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1325d3ee_87d586d1",
+        "filename": "services/audioflinger/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-20T00:01:31Z",
+      "side": 1,
+      "message": "leading whitespace should be consistent: 4 spaces, also in next patch set, please fix the previous line too.  It was not correct in original",
+      "revId": "e28fc1096f29ca7ee0c194ed6f4d922a0e90fe42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
