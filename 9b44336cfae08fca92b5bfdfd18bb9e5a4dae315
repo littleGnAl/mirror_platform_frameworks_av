@@ -225,6 +225,24 @@
     },
     {
       "key": {
+        "uuid": "3302d7bb_d80c0d4e",
+        "filename": "services/audioflinger/AudioResampler.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1022388
+      },
+      "writtenOn": "2013-07-26T16:03:31Z",
+      "side": 1,
+      "message": "Please explain in more detail about dependent CLs.",
+      "parentUuid": "934d4312_07e7595f",
+      "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "934d4312_c7f09118",
         "filename": "services/audioflinger/AudioResamplerBeats.cpp",
         "patchSetId": 3
