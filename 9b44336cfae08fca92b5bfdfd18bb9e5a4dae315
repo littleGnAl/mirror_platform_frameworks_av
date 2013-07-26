@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "530d8be8_593003f9",
+        "filename": "services/audioflinger/Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-26T16:37:01Z",
+      "side": 1,
+      "message": "Internal note\n\nAndroid.mk is new for patch set 3; it was not present in patch set 1.  Previously the change to Android.mk was in the dependency https://android-review.googlesource.com/#/c/62455/\nI have now merged Android.mk into this CL, eliminating the dependency.\n\nThe comments at line 18 and line 26 refer to the fact that the base has changed recently: AOSP used to be \"JB 4.2\" but is now \"JB 4.3\". So there were changes to Android.mk that were unrelated to your change.",
+      "parentUuid": "3302d7bb_f8f0f117",
+      "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "934d4312_0430b716",
         "filename": "services/audioflinger/AudioResampler.cpp",
         "patchSetId": 3
@@ -134,6 +152,24 @@
       "side": 1,
       "message": "This helps us debug from ADB (setting the resampler via a global property).  We can pull it, please advise.",
       "parentUuid": "934d4312_c4296fb2",
+      "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "530d8be8_9960dbde",
+        "filename": "services/audioflinger/AudioResampler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-26T16:37:01Z",
+      "side": 1,
+      "message": "OK, then please put within #if or #ifdef instead of comment, and leave the symbol defined by default for non-debug mode.  E.g.\n\nat top of file\n#undef DEBUG_FROM_ADB\n\nat line 205\n#ifdef DEBUG_FROM_ADB\n    char value[ ... ]\n#endif",
+      "parentUuid": "93f9c300_0f08f537",
       "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -237,6 +273,24 @@
       "side": 1,
       "message": "Please explain in more detail about dependent CLs.",
       "parentUuid": "934d4312_07e7595f",
+      "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3302d7bb_9860d5de",
+        "filename": "services/audioflinger/AudioResampler.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-26T16:37:01Z",
+      "side": 1,
+      "message": "For now, ignore this comment.  After you upload next patch set, I\u0027ll split it in two.",
+      "parentUuid": "3302d7bb_d80c0d4e",
       "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
