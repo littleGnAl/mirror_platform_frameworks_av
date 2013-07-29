@@ -123,6 +123,24 @@
     },
     {
       "key": {
+        "uuid": "d3189b2e_98d8d9c5",
+        "filename": "services/audioflinger/AudioResampler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-29T16:06:14Z",
+      "side": 1,
+      "message": "Regarding how to do dependent changes, see cover comment below.",
+      "parentUuid": "934d4312_2435b306",
+      "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "934d4312_c4296fb2",
         "filename": "services/audioflinger/AudioResampler.cpp",
         "patchSetId": 3
