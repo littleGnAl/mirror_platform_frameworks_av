@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "53210b30_df2e1373",
+        "filename": "include/drm/DrmInfoEvent.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1017042
+      },
+      "writtenOn": "2013-07-29T15:41:15Z",
+      "side": 1,
+      "message": "I used simple \"Iterator\" here in the same manner as DrmConstraints.h, DrmInfo.h, DrmInforRequest.h and DrmMetadate.h, where the same combination of \"Iterator\" and \"KeyIterator\"is commonly used.\nIt could be more understandable to keep this class name as it is.",
+      "parentUuid": "934d4312_84712c51",
+      "revId": "6c337ac5b5e2f5d7503ff17318f5cd998b2e09ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "934d4312_24b5b8c9",
         "filename": "include/drm/DrmInfoEvent.h",
         "patchSetId": 3
@@ -30,6 +48,24 @@
       "writtenOn": "2013-07-24T21:23:09Z",
       "side": 1,
       "message": "Since mDrmBuffer contains allocated memory, you should either disallow copy and assign on DrmInfoEvent or implement them explicitly.   DrmBuffer does not manage the memory for you.\n\nIs there a reason to use DrmBuffer here instead of, say, Vector\u003cuint8_t\u003e, which would manage your memory automatically and avoid these issues?",
+      "revId": "6c337ac5b5e2f5d7503ff17318f5cd998b2e09ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73d60f84_ca60a30d",
+        "filename": "include/drm/DrmInfoEvent.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1017042
+      },
+      "writtenOn": "2013-07-29T15:41:15Z",
+      "side": 1,
+      "message": "You\u0027re definitely right, but DrmBuffer has been widely used in old DRM FW and it would look inconsistent if we introduce Vector\u003cuint8_t\u003e just for this class.\n\nI\u0027d prefer to use DrmBuffer by disallowing shallow copy of this class at least in this patch.\n\nAnd, I\u0027d like to create new stand-alone patch which will replace all the bad memory management of DrmBuffer with Vector\u003cuint8_t\u003e. (Or use Vector\u003cuint8_t\u003e as a internal memory of DrmBuffer.)\n\nI\u0027ll add private copy contractor and operator\u003d() in the next patch set.",
+      "parentUuid": "934d4312_24b5b8c9",
       "revId": "6c337ac5b5e2f5d7503ff17318f5cd998b2e09ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
