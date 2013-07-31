@@ -106,6 +106,24 @@
     },
     {
       "key": {
+        "uuid": "138a339d_3c8a68a9",
+        "filename": "services/audioflinger/AudioResampler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-31T00:27:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "934d4312_0430b716",
+      "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "934d4312_2435b306",
         "filename": "services/audioflinger/AudioResampler.cpp",
         "patchSetId": 3
@@ -135,6 +153,24 @@
       "side": 1,
       "message": "Regarding how to do dependent changes, see cover comment below.",
       "parentUuid": "934d4312_2435b306",
+      "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "138a339d_9c99b405",
+        "filename": "services/audioflinger/AudioResampler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-31T00:27:13Z",
+      "side": 1,
+      "message": "Per discussion, will defer this topic",
+      "parentUuid": "d3189b2e_98d8d9c5",
       "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -194,6 +230,24 @@
     },
     {
       "key": {
+        "uuid": "138a339d_dc617c13",
+        "filename": "services/audioflinger/AudioResampler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-31T00:27:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "530d8be8_9960dbde",
+      "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "934d4312_441ebf84",
         "filename": "services/audioflinger/AudioResampler.cpp",
         "patchSetId": 3
@@ -205,6 +259,24 @@
       "writtenOn": "2013-07-25T23:56:02Z",
       "side": 1,
       "message": "\") {\"",
+      "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "138a339d_fc664028",
+        "filename": "services/audioflinger/AudioResampler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-31T00:27:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "934d4312_441ebf84",
       "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -245,6 +317,24 @@
     },
     {
       "key": {
+        "uuid": "138a339d_5c764cd9",
+        "filename": "services/audioflinger/AudioResampler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-31T00:27:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "934d4312_8424c7d6",
+      "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "934d4312_641bbb93",
         "filename": "services/audioflinger/AudioResampler.h",
         "patchSetId": 3
@@ -256,6 +346,24 @@
       "writtenOn": "2013-07-25T23:56:02Z",
       "side": 1,
       "message": "8,",
+      "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "138a339d_9c70d4db",
+        "filename": "services/audioflinger/AudioResampler.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-31T00:27:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "934d4312_641bbb93",
       "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -315,6 +423,24 @@
     },
     {
       "key": {
+        "uuid": "138a339d_1c53e43f",
+        "filename": "services/audioflinger/AudioResampler.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-31T00:27:13Z",
+      "side": 1,
+      "message": "Defer discussion",
+      "parentUuid": "3302d7bb_9860d5de",
+      "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "934d4312_c7f09118",
         "filename": "services/audioflinger/AudioResamplerBeats.cpp",
         "patchSetId": 3
@@ -326,6 +452,24 @@
       "writtenOn": "2013-07-25T23:56:02Z",
       "side": 1,
       "message": "no whitespace at end of line here and below, look for red",
+      "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "138a339d_9c47f473",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-31T00:27:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "934d4312_c7f09118",
       "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -349,6 +493,24 @@
     },
     {
       "key": {
+        "uuid": "138a339d_bc44b86f",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-31T00:27:13Z",
+      "side": 1,
+      "message": "Defer",
+      "parentUuid": "934d4312_87fb69f9",
+      "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "934d4312_276135e1",
         "filename": "services/audioflinger/AudioResamplerBeats.cpp",
         "patchSetId": 3
@@ -366,6 +528,24 @@
     },
     {
       "key": {
+        "uuid": "138a339d_5c248cd5",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1681,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-31T00:27:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "934d4312_276135e1",
+      "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "934d4312_c755f1fa",
         "filename": "services/audioflinger/AudioResamplerBeats.cpp",
         "patchSetId": 3
@@ -377,6 +557,24 @@
       "writtenOn": "2013-07-25T23:56:02Z",
       "side": 1,
       "message": "same",
+      "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "138a339d_7c2150c4",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1684,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-31T00:27:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "934d4312_c755f1fa",
       "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -411,6 +609,24 @@
       "writtenOn": "2013-07-25T23:56:02Z",
       "side": 1,
       "message": "no whitespace at end of line here and below, look for red",
+      "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "138a339d_17f1ff19",
+        "filename": "services/audioflinger/AudioResamplerBeats.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-07-31T00:27:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "934d4312_a74d456f",
       "revId": "9b44336cfae08fca92b5bfdfd18bb9e5a4dae315",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
