@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d3741b7d_deb6d989",
+        "filename": "services/audioflinger/Android.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-08-01T17:25:19Z",
+      "side": 1,
+      "message": "This test program will not link correctly without the new .cpp file",
+      "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "138a339d_3c61880f",
         "filename": "services/audioflinger/AudioResampler.cpp",
         "patchSetId": 4
@@ -19,6 +36,159 @@
     },
     {
       "key": {
+        "uuid": "d3741b7d_890fc9eb",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-08-01T17:25:19Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this be within #if(def) ?  Also, see cover comment about performance of intrinsics vs. other options.",
+      "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3741b7d_feb0f5f6",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-08-01T17:25:19Z",
+      "side": 1,
+      "message": "In C and C++ (but unlike Java), these are not arrays of pointers to arrays of int16_t.  They are actually stored in memory as arrays of int16_t, but with some extra syntactic sugar for indexing provided by the compiler.  So see note below about mppFilterTaps_int16.",
+      "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3741b7d_fe22b56a",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1334,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-08-01T17:25:19Z",
+      "side": 1,
+      "message": "For C++ code such as this, we use \"for (int i...\".  For C code, we use \"int i;\\nfor (i...\".",
+      "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3741b7d_49dcd12b",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-08-01T17:25:19Z",
+      "side": 1,
+      "message": "Code such as this often gives better results than intrinsics; see cover comment.",
+      "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3741b7d_89e6e9f9",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1376,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-08-01T17:25:19Z",
+      "side": 1,
+      "message": "See cover comment about performance of intrinsics vs. other options.",
+      "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3741b7d_9ecaa162",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1453,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-08-01T17:25:19Z",
+      "side": 1,
+      "message": "Since these don\u0027t vary per instance, move to static const ... \u003d ... in the .h\n\nThe magic constants will be clearer if they are expressed as expressions, e.g. replace \"\u003d 2560;\" by \"\u003d 160 * 16\" etc. (see line 51 to 58 of .h)",
+      "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3741b7d_5e97293e",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1473,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-08-01T17:25:19Z",
+      "side": 1,
+      "message": "Given comment at line 64, mppFilterTaps_int16 should be changed to const int16_t*, and then this cast \"(const int16_t**)\" can be removed. So this can be \"mppFilterTaps_int16 \u003d \u0026h_LOW_QUALITY_44_to_48_int16[0][0];\"\n\nThis will also fix the build warnings such as these:\nwarning: dereferencing type-punned pointer will break strict-aliasing rules [-Wstrict-aliasing]",
+      "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3741b7d_fe571527",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1538,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-08-01T17:25:19Z",
+      "side": 1,
+      "message": "move up to constructor initialization list: \", mPpState(0)\"",
+      "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3741b7d_be859dca",
+        "filename": "services/audioflinger/AudioResamplerBeats.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1546,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-08-01T17:25:19Z",
+      "side": 1,
+      "message": "http://linux.die.net/man/3/memalign states:\n\nPOSIX requires that memory obtained from posix_memalign() can be freed using free(3). Some systems provide no way to reclaim memory allocated with memalign() or valloc() (because one can only pass to free(3) a pointer gotten from malloc(3), while, for example, memalign() would call malloc(3) and then align the obtained value). The glibc implementation allows memory obtained from any of these functions to be reclaimed with free(3).\n\nAndroid uses bionic C runtime library, not glibc, so I\u0027m not sure whether it is safe to use free with return value of memalign. Please confirm that bionic is similar to glibc. See $ANDROID_BUILD_TOP/bionic",
+      "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "138a339d_f7ebbb28",
         "filename": "services/audioflinger/AudioResamplerBeats.h",
         "patchSetId": 4
@@ -30,6 +200,142 @@
       "writtenOn": "2013-07-31T00:28:13Z",
       "side": 1,
       "message": "not done",
+      "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3741b7d_9ee461cb",
+        "filename": "services/audioflinger/AudioResamplerBeats.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-08-01T17:25:19Z",
+      "side": 1,
+      "message": "indent, or since the previous line is short, you could instead merge it with previous line",
+      "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3741b7d_1ed211f1",
+        "filename": "services/audioflinger/AudioResamplerBeats.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-08-01T17:25:19Z",
+      "side": 1,
+      "message": "we add \"virtual\" in front for emphasis",
+      "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3741b7d_becf5d71",
+        "filename": "services/audioflinger/AudioResamplerBeats.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-08-01T17:25:19Z",
+      "side": 1,
+      "message": "If these don\u0027t vary per instance, then use \"static const ... \u003d ... ;\" \n\nSee comment at .cpp where these are currently initialized.",
+      "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3741b7d_de5b395e",
+        "filename": "services/audioflinger/AudioResamplerBeats.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-08-01T17:25:19Z",
+      "side": 1,
+      "message": "To emphasize that these don\u0027t change after construction, we use \"const int mUpFactor;\" and similarly for mDnFactor, which then requires changing the constructor to read \": AudioResampler(...), mUpFactor(sampleRate \u003d\u003d 48000 ? 160 : 147), mDnFactor(sampleRate \u003d\u003d 48000 ? 147 : 160)\"",
+      "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3741b7d_7e6dc5fe",
+        "filename": "services/audioflinger/AudioResamplerBeats.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-08-01T17:25:19Z",
+      "side": 1,
+      "message": "Similar const, but more difficult, so let\u0027s skip for now.",
+      "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3741b7d_5ee9e9cb",
+        "filename": "services/audioflinger/AudioResamplerBeats.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-08-01T17:25:19Z",
+      "side": 1,
+      "message": "const int16_t* not **\n\nsee note at declaration and initialization of arrays in .cpp",
+      "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3741b7d_deb7b9cc",
+        "filename": "services/audioflinger/AudioResamplerBeats.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-08-01T17:25:19Z",
+      "side": 1,
+      "message": "we add \"virtual\" in front for emphasis",
+      "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3741b7d_1e00517d",
+        "filename": "services/audioflinger/AudioResamplerBeats.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-08-01T17:25:19Z",
+      "side": 1,
+      "message": "See above; no need for struct",
       "revId": "40bb6ad0ef0a674d3ac06596c3c21894d3bd3fd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
