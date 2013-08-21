@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edc77c62_965dac81",
+        "filename": "media/libstagefright/matroska/MatroskaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1017178
+      },
+      "writtenOn": "2013-08-21T12:57:21Z",
+      "side": 1,
+      "message": "FrameRate seems to be deprecated in the matroska.org standard,\nDefaultDuration on the other hand seems to be commonly used \nand contains the same information.\n\nhttp://git.chromium.org/gitweb/?p\u003dwebm/libwebm.git;a\u003dcommitdiff;h\u003da9f43fe8e7d6bb3c09476980ba3e5d0d5dd3063f",
+      "revId": "4ac41fb50a9546b5b6377c9770c3db63b7d3aace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
