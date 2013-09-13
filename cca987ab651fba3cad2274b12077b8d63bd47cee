@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27645599_d165961a",
+        "filename": "media/libmedia/AudioParameter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-09-13T18:42:41Z",
+      "side": 1,
+      "message": "why is it \u0027last\u0027 not NULL ? see man strtok_r \"... In subsequent calls, str should be NULL, ...\", at paragraph 6 of http://linux.die.net/man/3/strtok_r",
+      "revId": "cca987ab651fba3cad2274b12077b8d63bd47cee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
