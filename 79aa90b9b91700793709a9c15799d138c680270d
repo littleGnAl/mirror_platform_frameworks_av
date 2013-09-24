@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c416178f_79346fbf",
+        "filename": "media/libstagefright/codecs/avc/enc/SoftAVCEncoder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2013-09-24T20:44:05Z",
+      "side": 1,
+      "message": "This logic needs to check nAllocLen \u003e\u003d 4, and be inside the inHeader-\u003enFilledLen \u003e 0.",
+      "revId": "79aa90b9b91700793709a9c15799d138c680270d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
