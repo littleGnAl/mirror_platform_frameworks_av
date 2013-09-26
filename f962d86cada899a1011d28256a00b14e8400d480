@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04a82f8f_9b204e61",
+        "filename": "media/libmedia/mediaplayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2013-09-26T16:47:42Z",
+      "side": 1,
+      "message": "It seems that all you want to do is do p-\u003edisconnect() outside of the mutex lock.  You could do this by keeping reset_l() mostly intact.  When will clear_l() be called if mPlayer!\u003d0?",
+      "revId": "f962d86cada899a1011d28256a00b14e8400d480",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
