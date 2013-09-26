@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "a4b4c3fc_5c12fd1d",
+        "filename": "media/libstagefright/matroska/MatroskaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 410,
+      "author": {
+        "id": 1017145
+      },
+      "writtenOn": "2013-09-26T08:41:15Z",
+      "side": 1,
+      "message": "or just add 10ms to Blocktime in your current code.",
+      "parentUuid": "24d53300_a3c424e0",
+      "revId": "bcf022161102d7efb9b66156acea3d20d7636fbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84e5fff4_a1233ab2",
         "filename": "media/libstagefright/matroska/MatroskaExtractor.cpp",
         "patchSetId": 1
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "I didn\u0027t change the log.",
       "parentUuid": "84e5fff4_a1233ab2",
+      "revId": "bcf022161102d7efb9b66156acea3d20d7636fbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e4aa3b99_debf25a2",
+        "filename": "media/libstagefright/matroska/MatroskaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1017145
+      },
+      "writtenOn": "2013-09-26T08:41:15Z",
+      "side": 1,
+      "message": "No blame, just as good time as any to fix it :)",
+      "parentUuid": "44d0670f_c4d050e6",
       "revId": "bcf022161102d7efb9b66156acea3d20d7636fbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
