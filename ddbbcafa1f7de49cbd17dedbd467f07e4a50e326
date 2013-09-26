@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4d0d73d_b83915e8",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 627,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2013-09-26T16:11:00Z",
+      "side": 1,
+      "message": "Is this quicktime container specific? Why do we just skip the chunk length field, and not some other arbitrary amount?",
+      "revId": "ddbbcafa1f7de49cbd17dedbd467f07e4a50e326",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
