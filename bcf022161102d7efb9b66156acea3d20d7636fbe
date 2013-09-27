@@ -105,6 +105,24 @@
       "revId": "bcf022161102d7efb9b66156acea3d20d7636fbe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0442efdb_7ff34f1d",
+        "filename": "media/libstagefright/matroska/MatroskaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 413,
+      "author": {
+        "id": 1004496
+      },
+      "writtenOn": "2013-09-27T02:12:48Z",
+      "side": 1,
+      "message": "But I\u0027m confused. IMHO, this log will be built and could be useful to debug seeking and a/v sync.",
+      "parentUuid": "e4aa3b99_debf25a2",
+      "revId": "bcf022161102d7efb9b66156acea3d20d7636fbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
