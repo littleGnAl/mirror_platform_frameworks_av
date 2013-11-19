@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e0705cd_7a7fb53b",
+        "filename": "services/audioflinger/AudioMixer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2013-11-19T22:26:33Z",
+      "side": 1,
+      "message": "The intention is that this comes from property af.resampler.quality.  See for example device/lge/hammerhead/device.mk:    af.resampler.quality\u003d4\nand AudioResampler.h enum src_quality",
+      "revId": "372c2347dfe65c32431c3bc20f50887b0e978125",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
