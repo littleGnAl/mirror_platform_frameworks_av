@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bea77522_5e747417",
+        "filename": "media/libmediaplayerservice/ActivityManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2013-11-25T17:35:28Z",
+      "side": 1,
+      "message": "why are you writing an integer here?",
+      "revId": "beee38e7870bcff3c4005c6d4761e3b82353e5de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
