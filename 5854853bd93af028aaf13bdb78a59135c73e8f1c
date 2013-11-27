@@ -16,6 +16,24 @@
       "revId": "5854853bd93af028aaf13bdb78a59135c73e8f1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3583e70_3ab4a16c",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1002068
+      },
+      "writtenOn": "2013-11-27T16:34:06Z",
+      "side": 1,
+      "message": "I\u0027m not quite familiar myself either, but AudioTrack::createTrack_l has got a line doing almost exactly the same thing (but only for the case when the AUDIO_OUTPUT_FLAG_FAST isn\u0027t set), so I would guess it works sufficiently.\n\nThe case here is when the caller thinks this might work with the fast path (the only thing differing from the native setup is the sample rate), so AudioTrack::createTrack_l doesn\u0027t meddle with the values at all, while AudioFlinger realizes that the fast path doesn\u0027t handle it, and thus should fill in values similarly to what AudioTrack would have done. (AudioTrack::createTrack_l also has got a FIXME saying that those calculations should be moved to the server).",
+      "parentUuid": "03abca57_c500fac8",
+      "revId": "5854853bd93af028aaf13bdb78a59135c73e8f1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
