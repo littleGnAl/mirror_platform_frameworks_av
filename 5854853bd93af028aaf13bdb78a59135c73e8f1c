@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03abca57_c500fac8",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1228,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2013-11-27T16:29:15Z",
+      "side": 1,
+      "message": "I\u0027ll preface my comment by saying that I\u0027m not terribly familiar with this code, but:\n\nDoes this need to be rounded or padded up?\nThere are comments elsewhere in this file that imply the audio mixer expects a multiple of 16 frames. With this calculation, it\u0027s possible you\u0027re not getting a multiple of 16.\nAnd even if you happened to be getting a multiple of 16, it seems possible that you wouldn\u0027t actually get the required minimum number of samples to resample an input buffer to an output buffer.\nFor example, if the sample rates are 48k and 44k, and mNormalFrameCount is 960, and we have 3 such buffers, then minFrameCount will be 3134, which is not a multiple of 16, and depending on the implementation of the resampler might need one or more extra frames in order to actually be able to fill the output buffer.",
+      "revId": "5854853bd93af028aaf13bdb78a59135c73e8f1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
