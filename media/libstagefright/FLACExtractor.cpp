@@ -847,12 +847,32 @@ bool SniffFLAC(
         const sp<DataSource> &source, String8 *mimeType, float *confidence,
         sp<AMessage> *)
 {
+    off64_t pos = 0;
+
+    // Follow the FLAC reference decoder and skip one ID3v2 header that
+    // may be present in the beginning of the stream.
+    uint8_t id3v2header[10];
+    if (source->readAt(pos, id3v2header, sizeof(id3v2header))
+            != (ssize_t)sizeof(id3v2header)) {
+        return false;
+    }
+    if (memcmp("ID3", id3v2header, 3) == 0) {
+        size_t len = sizeof(id3v2header) +
+            (((id3v2header[6] & 0x7f) << 21) |
+             ((id3v2header[7] & 0x7f) << 14) |
+             ((id3v2header[8] & 0x7f) << 7) |
+              (id3v2header[9] & 0x7f));
+        pos += len;
+        ALOGV("skipped ID3 tag, new starting offset is %lld (0x%016llx)",
+            (long long)pos, (long long)pos);
+    }
+
     // first 4 is the signature word
     // second 4 is the sizeof STREAMINFO
     // 042 is the mandatory STREAMINFO
     // no need to read rest of the header, as a premature EOF will be caught later
     uint8_t header[4+4];
-    if (source->readAt(0, header, sizeof(header)) != sizeof(header)
+    if (source->readAt(pos, header, sizeof(header)) != sizeof(header)
             || memcmp("fLaC\0\0\0\042", header, 4+4))
     {
         return false;
