@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c87b8f35_4e47d390",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2333,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2013-12-18T16:30:22Z",
+      "side": 1,
+      "message": "the \"ignorev1\" argument should be set to true here, and should have a comment indicating what it is, i.e:\n\n  ID3 id3(mDataSource, true /* ignorev1 */, offset);",
+      "revId": "46a93aa7bc2c5218a607176cdfbd83da34ae3c28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
