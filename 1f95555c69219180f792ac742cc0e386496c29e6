@@ -16,6 +16,24 @@
       "revId": "1f95555c69219180f792ac742cc0e386496c29e6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a832dbd0_ad8729fa",
+        "filename": "media/mtp/MtpStringBuffer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2013-12-20T21:30:09Z",
+      "side": 0,
+      "message": "I thought of that at first, but then figured I\u0027d copy while counting since there may be either some excessive bytes or some discarded bytes at truncated characters so the correct byte length is needed as well and then it\u0027s also a bit easier to follow.",
+      "parentUuid": "685e23ff_f229080c",
+      "revId": "1f95555c69219180f792ac742cc0e386496c29e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
