@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "685e23ff_f229080c",
+        "filename": "media/mtp/MtpStringBuffer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2013-12-20T20:20:43Z",
+      "side": 0,
+      "message": "how about keeping this memcpy, and then just counting (instead of copying byte-by-byte) the characters within the loop?",
+      "revId": "1f95555c69219180f792ac742cc0e386496c29e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
