@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8649bc8_f4f018be",
+        "filename": "media/mtp/MtpStringBuffer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2013-12-20T15:26:11Z",
+      "side": 1,
+      "message": "\"length\" is the number of bytes here, not the number of characters. A character can consist of multiple bytes (which is why mBuffer is allocated at size (255*3+1)), so you might end up copying substantially less characters than needed.\nYou should instead work this into the loop below, similar to what\u0027s done for set(uint16_t*) below, and calculate the actual number of characters and bytes as you\u0027re parsing the input string.",
+      "revId": "c80d8cd6ce48ea556c2a964e639d42fb77b0e3a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
