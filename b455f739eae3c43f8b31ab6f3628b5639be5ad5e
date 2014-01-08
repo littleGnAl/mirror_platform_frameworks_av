@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dd43d2d_19124fdd",
+        "filename": "media/libmedia/MediaScanner.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2014-01-08T23:00:25Z",
+      "side": 1,
+      "message": "I don\u0027t think strcmp handles NULL pointers, so this should probably go inside the if() below, with an additional check on locale",
+      "revId": "b455f739eae3c43f8b31ab6f3628b5639be5ad5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
