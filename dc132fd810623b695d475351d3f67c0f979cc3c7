@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2dd43d2d_25e038b1",
+        "filename": "media/libstagefright/httplive/M3UParser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2014-01-09T16:01:06Z",
+      "side": 1,
+      "message": "since the result of this strlen call may not actually be used, I suggest changing the if() below to an if/else, and putting the strlen in the else branch of that.",
+      "revId": "dc132fd810623b695d475351d3f67c0f979cc3c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
