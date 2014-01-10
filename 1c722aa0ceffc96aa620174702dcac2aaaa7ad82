@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad33cd7d_a2377efc",
+        "filename": "media/libstagefright/httplive/LiveSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2014-01-10T09:07:10Z",
+      "side": 1,
+      "message": "Can the uri be empty?\nMissing { }",
+      "range": {
+        "startLine": 605,
+        "startChar": 30,
+        "endLine": 605,
+        "endChar": 33
+      },
+      "revId": "1c722aa0ceffc96aa620174702dcac2aaaa7ad82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dd6993f_8ddde1a8",
+        "filename": "media/libstagefright/httplive/LiveSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2014-01-10T09:07:10Z",
+      "side": 1,
+      "message": "Is it safe to assume that the redirected uri can resolve the ts segments as well?",
+      "range": {
+        "startLine": 654,
+        "startChar": 31,
+        "endLine": 654,
+        "endChar": 32
+      },
+      "revId": "1c722aa0ceffc96aa620174702dcac2aaaa7ad82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
