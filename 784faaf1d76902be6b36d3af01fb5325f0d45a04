@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0dd6993f_ed68e511",
+        "filename": "media/libstagefright/httplive/LiveSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1002068
+      },
+      "writtenOn": "2014-01-10T10:09:39Z",
+      "side": 1,
+      "message": "Mainly because the existing getUri() method returns String8, so I went with that. I can try to change this to AString instead if that would be preferred...",
+      "parentUuid": "ad33cd7d_624bb675",
+      "range": {
+        "startLine": 620,
+        "startChar": 4,
+        "endLine": 620,
+        "endChar": 11
+      },
+      "revId": "784faaf1d76902be6b36d3af01fb5325f0d45a04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ad33cd7d_82483a78",
         "filename": "media/libstagefright/httplive/LiveSession.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2014-01-10T10:01:33Z",
       "side": 1,
       "message": "Ok, sounds resonable. How common is this problem? We haven\u0027t seen this for HLS, but for RTSP.",
+      "range": {
+        "startLine": 655,
+        "startChar": 38,
+        "endLine": 655,
+        "endChar": 41
+      },
+      "revId": "784faaf1d76902be6b36d3af01fb5325f0d45a04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ede2251a_6f4bcd75",
+        "filename": "media/libstagefright/httplive/LiveSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1002068
+      },
+      "writtenOn": "2014-01-10T10:09:39Z",
+      "side": 1,
+      "message": "It is in actual use in some places, but the impact of it varies. If a HLS stream is launched from the browser via an \u003ca href\u003e it will first load the m3u8 with the browser before it determines that it should be played by the video player, based on the mime type - in this case the redirect for the main playlist is already taken care of by the browser and stagefright never knows about it, and thus the problem silently disappears. If you instead try to play such a stream in a \u003cvideo\u003e tag, stagefright will get the original URL prior to the redirect - and fail.\n\nAn actual website (my employer) had to work around this issue, we experimented with HLS playback in \u003cvideo\u003e tags on android but had to revert to launching the external player since the redircts fail in the former.\n\nSo yes, the problem exists, but it might not be too visible to you since users are working around it since it doesn\u0027t work right now.\n\nCan\u0027t speak for others about how common it is though.",
+      "parentUuid": "ad33cd7d_82483a78",
       "range": {
         "startLine": 655,
         "startChar": 38,
