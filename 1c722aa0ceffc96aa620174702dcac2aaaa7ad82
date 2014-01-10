@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ede2251a_2f2ca5ac",
+        "filename": "media/libstagefright/httplive/LiveSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1002068
+      },
+      "writtenOn": "2014-01-10T09:42:59Z",
+      "side": 1,
+      "message": "Yes, the uri can be empty if the source is a DataSource that doesn\u0027t implement/override the getUri method. ChromiumHTTPDataSource implements it, but e.g. FileSource doesn\u0027t. (Not sure if it\u0027s possible to trigger HLS playback from local files via stagefright, but in general we should handle the case if the data source doesn\u0027t implement the method.)\n\nI\u0027ll add the missing {} in a new revision of the patch.",
+      "parentUuid": "ad33cd7d_a2377efc",
+      "range": {
+        "startLine": 605,
+        "startChar": 30,
+        "endLine": 605,
+        "endChar": 33
+      },
+      "revId": "1c722aa0ceffc96aa620174702dcac2aaaa7ad82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0dd6993f_8ddde1a8",
         "filename": "media/libstagefright/httplive/LiveSession.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2014-01-10T09:07:10Z",
       "side": 1,
       "message": "Is it safe to assume that the redirected uri can resolve the ts segments as well?",
+      "range": {
+        "startLine": 654,
+        "startChar": 31,
+        "endLine": 654,
+        "endChar": 32
+      },
+      "revId": "1c722aa0ceffc96aa620174702dcac2aaaa7ad82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0dd6993f_ad89bd9f",
+        "filename": "media/libstagefright/httplive/LiveSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1002068
+      },
+      "writtenOn": "2014-01-10T09:42:59Z",
+      "side": 1,
+      "message": "Yes, I would say so. To use the same analogy with normal HTML pages and relative URLs as in the other case, if we request http://some-server/foo and we\u0027re redirected to http://other-server/bar/baz.html, and this page contains a \u003ca href\u003d\"123.html\"\u003e, this obviously is relative to the actual page it was loaded from, not from whichever other page on the web that originally redirected us here. The same analogy goes for m3u8 and relative filenames within the playlists as well.",
+      "parentUuid": "0dd6993f_8ddde1a8",
       "range": {
         "startLine": 654,
         "startChar": 31,
