@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "2d8fddae_7ef79100",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2182,
+      "author": {
+        "id": 1017042
+      },
+      "writtenOn": "2014-01-16T01:25:53Z",
+      "side": 1,
+      "message": "haveData() is changed to hasData() in the next patch set",
+      "revId": "254d16afc95eae87014083d8a370a7f5635f7b70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d855589_c0099e48",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2356,
+      "author": {
+        "id": 1017042
+      },
+      "writtenOn": "2014-01-16T01:25:53Z",
+      "side": 1,
+      "message": "haveData() is changed to hasData() in the next patch set",
+      "revId": "254d16afc95eae87014083d8a370a7f5635f7b70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0df0590e_06e6205b",
         "filename": "media/libstagefright/MetaData.cpp",
         "patchSetId": 3
@@ -13,6 +47,24 @@
       "writtenOn": "2014-01-15T17:22:58Z",
       "side": 1,
       "message": "please call this \"hasData\"",
+      "revId": "254d16afc95eae87014083d8a370a7f5635f7b70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d8fddae_5efad5e9",
+        "filename": "media/libstagefright/MetaData.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1017042
+      },
+      "writtenOn": "2014-01-16T01:25:53Z",
+      "side": 1,
+      "message": "thanks. done in the next patch set",
+      "parentUuid": "0df0590e_06e6205b",
       "revId": "254d16afc95eae87014083d8a370a7f5635f7b70",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
