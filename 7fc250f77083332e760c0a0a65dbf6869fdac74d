@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "12eebac6_30b4c6ff",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1045,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-01-25T01:57:40Z",
+      "side": 1,
+      "message": "(int)(intptr_t)user should work",
+      "parentUuid": "f265a62a_4355303f",
+      "range": {
+        "startLine": 1045,
+        "startChar": 46,
+        "endLine": 1045,
+        "endChar": 54
+      },
+      "revId": "7fc250f77083332e760c0a0a65dbf6869fdac74d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f265a62a_835f485f",
         "filename": "services/camera/libcameraservice/CameraService.cpp",
         "patchSetId": 1
