@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2fa0681_954646dc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1040058
+      },
+      "writtenOn": "2014-01-27T19:08:25Z",
+      "side": 1,
+      "message": "nit: typo Utils.",
+      "revId": "e3933ef9fe12e43339a792139a1250ee1ed93de8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2f7c297_d4dc5200",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1040058
+      },
+      "writtenOn": "2014-01-27T19:08:25Z",
+      "side": 1,
+      "message": "What exactly is the root cause ?\nIn the stop() code which is under a lock , we have check NULL first.\nif (mCurrentMediaBuffer !\u003d NULL) {\n            mCurrentMediaBuffer-\u003erelease();\n            mCurrentMediaBuffer \u003d NULL;\n        }",
+      "range": {
+        "startLine": 14,
+        "startChar": 13,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "e3933ef9fe12e43339a792139a1250ee1ed93de8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2fa0681_b549c2f0",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1040058
+      },
+      "writtenOn": "2014-01-27T19:08:25Z",
+      "side": 1,
+      "message": "I guess you can add setObserver() here instead of moving the add_ref() into the MediaAdapter if that really can fix the crash.",
+      "revId": "e3933ef9fe12e43339a792139a1250ee1ed93de8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
