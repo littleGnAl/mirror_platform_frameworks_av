@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "321adeb4_4664322b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-01-27T19:47:03Z",
+      "side": 1,
+      "message": "Please separate part 3 from the other parts (1 \u0026 2) of the patch.",
+      "revId": "e3933ef9fe12e43339a792139a1250ee1ed93de8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d2f7c297_d4dc5200",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -42,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "f213e69e_048cf6b0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-01-27T19:47:03Z",
+      "side": 1,
+      "message": "I think the issue is that if the buffer was not yet read, setObserver was not set, so it did not dec_ref properly.",
+      "parentUuid": "d2f7c297_d4dc5200",
+      "revId": "e3933ef9fe12e43339a792139a1250ee1ed93de8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2fa0681_b549c2f0",
         "filename": "media/libstagefright/MediaMuxer.cpp",
         "patchSetId": 1
@@ -53,6 +88,24 @@
       "writtenOn": "2014-01-27T19:08:25Z",
       "side": 1,
       "message": "I guess you can add setObserver() here instead of moving the add_ref() into the MediaAdapter if that really can fix the crash.",
+      "revId": "e3933ef9fe12e43339a792139a1250ee1ed93de8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f213e69e_e4c55ad1",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-01-27T19:47:03Z",
+      "side": 1,
+      "message": "I think that both the add_ref() and the setObserver() belong to MediaApapter::pushBuffer().",
+      "parentUuid": "f2fa0681_b549c2f0",
       "revId": "e3933ef9fe12e43339a792139a1250ee1ed93de8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
