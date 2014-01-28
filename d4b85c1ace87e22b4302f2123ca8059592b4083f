@@ -1,0 +1,191 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "321adeb4_afc0596a",
+        "filename": "media/libmedia/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-28T20:24:05Z",
+      "side": 1,
+      "message": "OK",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "321adeb4_8fbd9dea",
+        "filename": "media/libmedia/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-28T20:24:05Z",
+      "side": 1,
+      "message": "OK",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d210a297_c9fdd51f",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-28T20:24:05Z",
+      "side": 1,
+      "message": "This won\u0027t merge, please revert this portion",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f213e69e_8d12c971",
+        "filename": "services/audioflinger/AudioFlinger.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-28T20:24:05Z",
+      "side": 1,
+      "message": "This won\u0027t merge, please revert this portion",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "321adeb4_8f763daa",
+        "filename": "services/audioflinger/AudioMixer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-28T20:24:05Z",
+      "side": 1,
+      "message": "Ugh I would rather fix the API, either to use a separate API for different size types, or to make it a varargs.  Let me talk to the guy who\u0027s working on this and then will get back.",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "321adeb4_2fcd89a7",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-28T20:24:05Z",
+      "side": 1,
+      "message": "When the %p is not at end of line, should we use a %np where n is some constant so that the headings and data will align well?",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "321adeb4_0fd24d47",
+        "filename": "services/audioflinger/StateQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-28T20:24:05Z",
+      "side": 1,
+      "message": "Why don\u0027t we add an atomic_acquire_load/release_store for pointers? It will make all the uses much cleaner.",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "321adeb4_6fd78137",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1740,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-28T20:24:05Z",
+      "side": 1,
+      "message": "uint32_t in hardware/libhardware/include/hardware/audio.h",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "321adeb4_4fdc455a",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1741,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-28T20:24:05Z",
+      "side": 1,
+      "message": "extra space",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d210a297_290aa97f",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1742,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-28T20:24:05Z",
+      "side": 1,
+      "message": "I\u0027d prefer an explicit cast here to indicate the inconsistency:  \" \u003d (size_t) frames;\"",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "321adeb4_af79799e",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-28T20:24:05Z",
+      "side": 1,
+      "message": "what about using %p instead?",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
