@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12eebac6_79c63259",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-01-28T04:06:58Z",
+      "side": 1,
+      "message": "pls. submit a separate patch for 3. (1-2 can be in the same patch as they are somewhat related)",
+      "revId": "d49733aa92f2df4f67ec0120b67132a0b6dc591c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2f7c297_80044471",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-01-28T04:06:58Z",
+      "side": 1,
+      "message": "pls. remove this line instead of commenting it.",
+      "revId": "d49733aa92f2df4f67ec0120b67132a0b6dc591c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
