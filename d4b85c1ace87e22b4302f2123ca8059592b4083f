@@ -53,6 +53,24 @@
     },
     {
       "key": {
+        "uuid": "12a87aa1_9d4e4387",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-01-29T09:56:59Z",
+      "side": 1,
+      "message": "Our goal is to keep both the internal \u0026 external trees in good health. The external tree should build and run on 64 bit devices.\n\nI suggest cherry-picking the conflicting change to the external tree (and rebasing this one), or leaving this as is and dealing with the merge conflict (\"-s ours\" internally).",
+      "parentUuid": "d210a297_c9fdd51f",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f213e69e_8d12c971",
         "filename": "services/audioflinger/AudioFlinger.h",
         "patchSetId": 2
@@ -87,6 +105,24 @@
     },
     {
       "key": {
+        "uuid": "d2b1820e_5b41e353",
+        "filename": "services/audioflinger/AudioMixer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-01-29T09:56:59Z",
+      "side": 1,
+      "message": "I agree. When we\u0027ve come across this before (In the AssetManager for example) I\u0027ve changed the API instead of introducing these nasty workarounds.",
+      "parentUuid": "321adeb4_8f763daa",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "321adeb4_2fcd89a7",
         "filename": "services/audioflinger/Effects.cpp",
         "patchSetId": 2
@@ -115,6 +151,24 @@
       "writtenOn": "2014-01-28T20:24:05Z",
       "side": 1,
       "message": "Why don\u0027t we add an atomic_acquire_load/release_store for pointers? It will make all the uses much cleaner.",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "929c6a85_61907683",
+        "filename": "services/audioflinger/StateQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-01-29T09:56:59Z",
+      "side": 1,
+      "message": "It would, but I think that\u0027s beyond the scope of this change. (Unless you\u0027re suggesting we add a (static) helper method to this compilation unit)",
+      "parentUuid": "321adeb4_0fd24d47",
       "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
