@@ -89,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "12a87aa1_400e90be",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1038054
+      },
+      "writtenOn": "2014-01-30T18:14:08Z",
+      "side": 1,
+      "message": "I will try that.",
+      "parentUuid": "b2824e17_33b95af8",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f213e69e_8d12c971",
         "filename": "services/audioflinger/AudioFlinger.h",
         "patchSetId": 2
@@ -118,6 +136,24 @@
       "side": 1,
       "message": "Ditto re: uint32_t",
       "parentUuid": "f213e69e_8d12c971",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12a87aa1_60118cde",
+        "filename": "services/audioflinger/AudioFlinger.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1038054
+      },
+      "writtenOn": "2014-01-30T18:14:08Z",
+      "side": 1,
+      "message": "I will try that but vaguely remember having trouble with other modules.",
+      "parentUuid": "b2824e17_73b3d215",
       "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -230,6 +266,24 @@
     },
     {
       "key": {
+        "uuid": "929c6a85_448340ed",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1038054
+      },
+      "writtenOn": "2014-01-30T18:14:08Z",
+      "side": 1,
+      "message": "In this case n would have to be always large enough for 64bit pointers. One solution would again be https://android-review.googlesource.com/#/c/80035/2.",
+      "parentUuid": "32765e13_0ce19bed",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "321adeb4_0fd24d47",
         "filename": "services/audioflinger/StateQueue.cpp",
         "patchSetId": 2
@@ -283,6 +337,24 @@
     },
     {
       "key": {
+        "uuid": "12a87aa1_801498d0",
+        "filename": "services/audioflinger/StateQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1038054
+      },
+      "writtenOn": "2014-01-30T18:14:08Z",
+      "side": 1,
+      "message": "I\u0027m doing some experiments to introduce atomics for pointers in cutils but don\u0027t have anything ready yet.",
+      "parentUuid": "32765e13_2ce65706",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "321adeb4_6fd78137",
         "filename": "services/audioflinger/Threads.cpp",
         "patchSetId": 2
@@ -300,6 +372,24 @@
     },
     {
       "key": {
+        "uuid": "12a87aa1_7d4a57e5",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1740,
+      "author": {
+        "id": 1038054
+      },
+      "writtenOn": "2014-01-30T18:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "321adeb4_6fd78137",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "321adeb4_4fdc455a",
         "filename": "services/audioflinger/Threads.cpp",
         "patchSetId": 2
@@ -311,6 +401,24 @@
       "writtenOn": "2014-01-28T20:24:05Z",
       "side": 1,
       "message": "extra space",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12a87aa1_5d479bd9",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1741,
+      "author": {
+        "id": 1038054
+      },
+      "writtenOn": "2014-01-30T18:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "321adeb4_4fdc455a",
       "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -352,6 +460,24 @@
     },
     {
       "key": {
+        "uuid": "929c6a85_618e36d8",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1742,
+      "author": {
+        "id": 1038054
+      },
+      "writtenOn": "2014-01-30T18:14:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d210a297_290aa97f",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "321adeb4_af79799e",
         "filename": "services/audioflinger/Tracks.cpp",
         "patchSetId": 2
@@ -381,6 +507,24 @@
       "side": 1,
       "message": "Need a reply",
       "parentUuid": "321adeb4_af79799e",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "929c6a85_84794857",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1038054
+      },
+      "writtenOn": "2014-01-30T18:14:08Z",
+      "side": 1,
+      "message": "I agree the current code is incorrect. If you\u0027re not bothered with potential alignment issues in the dumps, I can certainly do that. Otherwise, I\u0027m afraid we\u0027ll have to be conservative and use very large fields unless we can rely on https://android-review.googlesource.com/#/c/80035/2 if it gets merged in the meantime.",
+      "parentUuid": "b2824e17_f39ee27d",
       "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
