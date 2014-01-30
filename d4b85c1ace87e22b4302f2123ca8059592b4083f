@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "b2824e17_33b95af8",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-30T17:57:50Z",
+      "side": 1,
+      "message": "Internally, we now use uint32_t for return type of getInputFramesLost.  If that works in AOSP also, please use uint32_t.  If it does not work, then keep size_t and I will ignore this part of the CL when it fails to merge.",
+      "parentUuid": "12a87aa1_9d4e4387",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f213e69e_8d12c971",
         "filename": "services/audioflinger/AudioFlinger.h",
         "patchSetId": 2
@@ -82,6 +100,24 @@
       "writtenOn": "2014-01-28T20:24:05Z",
       "side": 1,
       "message": "This won\u0027t merge, please revert this portion",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2824e17_73b3d215",
+        "filename": "services/audioflinger/AudioFlinger.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-30T17:57:50Z",
+      "side": 1,
+      "message": "Ditto re: uint32_t",
+      "parentUuid": "f213e69e_8d12c971",
       "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -141,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "b2824e17_93a766ce",
+        "filename": "services/audioflinger/AudioMixer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-30T17:57:50Z",
+      "side": 1,
+      "message": "It\u0027s going to too hard to change the API now.  Keep this as is now for the submit, and I\u0027m making a TODO to myself to fix this later.",
+      "parentUuid": "929c6a85_c41cf054",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "321adeb4_2fcd89a7",
         "filename": "services/audioflinger/Effects.cpp",
         "patchSetId": 2
@@ -152,6 +206,24 @@
       "writtenOn": "2014-01-28T20:24:05Z",
       "side": 1,
       "message": "When the %p is not at end of line, should we use a %np where n is some constant so that the headings and data will align well?",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32765e13_0ce19bed",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-30T17:57:50Z",
+      "side": 1,
+      "message": "Needs a reply",
+      "parentUuid": "321adeb4_2fcd89a7",
       "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -187,6 +259,24 @@
       "side": 1,
       "message": "It would, but I think that\u0027s beyond the scope of this change. (Unless you\u0027re suggesting we add a (static) helper method to this compilation unit)",
       "parentUuid": "321adeb4_0fd24d47",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "32765e13_2ce65706",
+        "filename": "services/audioflinger/StateQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-30T17:57:50Z",
+      "side": 1,
+      "message": "OK, I\u0027m making a note to self to ask someone from atomics about this.  Keep this part of the CL as is for now",
+      "parentUuid": "929c6a85_61907683",
       "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -244,6 +334,24 @@
     },
     {
       "key": {
+        "uuid": "b2824e17_d3a1deb8",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1742,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-30T17:57:50Z",
+      "side": 1,
+      "message": "Needs a reply to the above 3 comments",
+      "parentUuid": "d210a297_290aa97f",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "321adeb4_af79799e",
         "filename": "services/audioflinger/Tracks.cpp",
         "patchSetId": 2
@@ -255,6 +363,24 @@
       "writtenOn": "2014-01-28T20:24:05Z",
       "side": 1,
       "message": "what about using %p instead?",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2824e17_f39ee27d",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-30T17:57:50Z",
+      "side": 1,
+      "message": "Need a reply",
+      "parentUuid": "321adeb4_af79799e",
       "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
