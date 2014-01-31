@@ -1,0 +1,157 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12d6ba3f_36d51efa",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1013,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-31T17:32:08Z",
+      "side": 1,
+      "message": "OK",
+      "revId": "224cad3b73cd474af2d55e8e83b43462cd4c964a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12d6ba3f_16d22212",
+        "filename": "services/audioflinger/AudioFlinger.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-31T17:32:08Z",
+      "side": 1,
+      "message": "OK",
+      "revId": "224cad3b73cd474af2d55e8e83b43462cd4c964a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52811216_5ae6d406",
+        "filename": "services/audioflinger/AudioMixer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-31T17:32:08Z",
+      "side": 1,
+      "message": "OK, noted to fix API later",
+      "revId": "224cad3b73cd474af2d55e8e83b43462cd4c964a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "52811216_7a02b8d5",
+        "filename": "services/audioflinger/AudioMixer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1161,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-31T17:32:08Z",
+      "side": 1,
+      "message": "OK from rebase",
+      "revId": "224cad3b73cd474af2d55e8e83b43462cd4c964a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12d6ba3f_b697ce35",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-31T17:32:08Z",
+      "side": 1,
+      "message": "OK, will fix display alignment later",
+      "revId": "224cad3b73cd474af2d55e8e83b43462cd4c964a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12d6ba3f_f68436fb",
+        "filename": "services/audioflinger/StateQueue.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-31T17:32:08Z",
+      "side": 1,
+      "message": "OK, noted for later",
+      "revId": "224cad3b73cd474af2d55e8e83b43462cd4c964a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12d6ba3f_9693b241",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1739,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-31T17:32:08Z",
+      "side": 1,
+      "message": "OK",
+      "revId": "224cad3b73cd474af2d55e8e83b43462cd4c964a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12d6ba3f_b6658ea1",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3044,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-31T17:32:08Z",
+      "side": 1,
+      "message": "OK from rebase",
+      "revId": "224cad3b73cd474af2d55e8e83b43462cd4c964a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12d6ba3f_56766a64",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-01-31T17:32:08Z",
+      "side": 1,
+      "message": "OK, but I thought we were going to use %p here?\nI\u0027ll just fix later instead",
+      "revId": "224cad3b73cd474af2d55e8e83b43462cd4c964a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
