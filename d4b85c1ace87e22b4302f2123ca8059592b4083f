@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "12731a25_0ed8afbf",
+        "filename": "media/libeffects/lvm/wrapper/Bundle/EffectBundle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2014-01-31T18:13:28Z",
+      "side": 1,
+      "message": "BassBoost_getParameter, Virtualizer_getParameter and Volume_getParameter should be fixed too, right?",
+      "range": {
+        "startLine": 151,
+        "startChar": 32,
+        "endLine": 151,
+        "endChar": 40
+      },
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "321adeb4_afc0596a",
         "filename": "media/libmedia/AudioTrack.cpp",
         "patchSetId": 2
@@ -278,6 +301,24 @@
       "side": 1,
       "message": "In this case n would have to be always large enough for 64bit pointers. One solution would again be https://android-review.googlesource.com/#/c/80035/2.",
       "parentUuid": "32765e13_0ce19bed",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12731a25_4e91c7c8",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2014-01-31T18:13:28Z",
+      "side": 1,
+      "message": "we also need a similar macro for the title line spacing.\nOK to mover \"Buffer\" field at the end of dump though.",
+      "parentUuid": "929c6a85_448340ed",
       "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
