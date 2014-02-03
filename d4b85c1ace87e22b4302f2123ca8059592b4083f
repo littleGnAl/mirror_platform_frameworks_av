@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3202de8d_0641dac2",
+        "filename": "media/libeffects/lvm/wrapper/Bundle/EffectBundle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1038054
+      },
+      "writtenOn": "2014-02-03T12:38:02Z",
+      "side": 1,
+      "message": "Yep, done.",
+      "parentUuid": "12731a25_0ed8afbf",
+      "range": {
+        "startLine": 151,
+        "startChar": 32,
+        "endLine": 151,
+        "endChar": 40
+      },
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "321adeb4_afc0596a",
         "filename": "media/libmedia/AudioTrack.cpp",
         "patchSetId": 2
@@ -319,6 +343,24 @@
       "side": 1,
       "message": "we also need a similar macro for the title line spacing.\nOK to mover \"Buffer\" field at the end of dump though.",
       "parentUuid": "929c6a85_448340ed",
+      "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9238ea5d_e13906ba",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1038054
+      },
+      "writtenOn": "2014-02-03T12:38:02Z",
+      "side": 1,
+      "message": "Ok, then. I\u0027ve moved it to the end of the line.",
+      "parentUuid": "12731a25_4e91c7c8",
       "revId": "d4b85c1ace87e22b4302f2123ca8059592b4083f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
