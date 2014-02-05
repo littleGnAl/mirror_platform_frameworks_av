@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d212620d_3330c817",
+        "filename": "media/libstagefright/httplive/M3UParser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1002068
+      },
+      "writtenOn": "2014-02-05T16:56:30Z",
+      "side": 1,
+      "message": "Right - I can update the CL with that changed.",
+      "parentUuid": "32a1fe0c_2e44e764",
+      "revId": "b23e4518c8ccfe7ce89c090834d9a745e91269cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f2aa06eb_0c413755",
         "filename": "media/libstagefright/httplive/M3UParser.cpp",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2014-02-05T16:35:33Z",
       "side": 1,
       "message": "Can you explain this magic number 6?\nI realize it was in the original code also, but\nthis might be a good opportunity to document it.",
+      "revId": "b23e4518c8ccfe7ce89c090834d9a745e91269cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92b2aa5a_512754db",
+        "filename": "media/libstagefright/httplive/M3UParser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1002068
+      },
+      "writtenOn": "2014-02-05T16:56:30Z",
+      "side": 1,
+      "message": "It\u0027s probably to make sure the found slash isn\u0027t part of the http:// - I can add such a comment. That doesn\u0027t of course work as intended if the protocol is https:// or something else. I can add a comment about it, but solving it better is outside of the scope of this change.",
+      "parentUuid": "f2aa06eb_0c413755",
       "revId": "b23e4518c8ccfe7ce89c090834d9a745e91269cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
