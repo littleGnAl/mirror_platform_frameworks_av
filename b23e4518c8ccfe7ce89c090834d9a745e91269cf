@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32a1fe0c_2e44e764",
+        "filename": "media/libstagefright/httplive/M3UParser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-02-05T16:35:33Z",
+      "side": 1,
+      "message": "I think this should be pos \u003d end - 1, otherwise first character checked is always NUL or \u0027?\u0027.  But it\u0027s a benign extra pass through loop.",
+      "revId": "b23e4518c8ccfe7ce89c090834d9a745e91269cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2aa06eb_0c413755",
+        "filename": "media/libstagefright/httplive/M3UParser.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-02-05T16:35:33Z",
+      "side": 1,
+      "message": "Can you explain this magic number 6?\nI realize it was in the original code also, but\nthis might be a good opportunity to document it.",
+      "revId": "b23e4518c8ccfe7ce89c090834d9a745e91269cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
