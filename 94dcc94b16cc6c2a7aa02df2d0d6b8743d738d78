@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "123a3aa9_30138679",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-02-07T17:39:01Z",
+      "side": 1,
+      "message": "The out variable doesn\u0027t exist if LOG_NDEBUG is set",
+      "revId": "94dcc94b16cc6c2a7aa02df2d0d6b8743d738d78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "323d7e9f_ae70f763",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 1
@@ -25,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "123a3aa9_f0001e1d",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-02-07T17:39:01Z",
+      "side": 1,
+      "message": "See above",
+      "parentUuid": "323d7e9f_ae70f763",
+      "range": {
+        "startLine": 607,
+        "startChar": 1,
+        "endLine": 607,
+        "endChar": 3
+      },
+      "revId": "94dcc94b16cc6c2a7aa02df2d0d6b8743d738d78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "123a3aa9_adaf1d61",
         "filename": "media/libstagefright/wifi-display/source/TSPacketizer.cpp",
         "patchSetId": 1
@@ -36,6 +77,30 @@
       "writtenOn": "2014-02-07T15:45:27Z",
       "side": 1,
       "message": "Now *this* could have taken advantage of a #if as used in the previous file to hide the otherwise unused result. However, I would have opted to perform the calculations within the context of the arguments for KISS and not use the automatic to hold the interim result?",
+      "range": {
+        "startLine": 568,
+        "startChar": 8,
+        "endLine": 568,
+        "endChar": 14
+      },
+      "revId": "94dcc94b16cc6c2a7aa02df2d0d6b8743d738d78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f2468641_ccd1cf9b",
+        "filename": "media/libstagefright/wifi-display/source/TSPacketizer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2014-02-07T17:39:01Z",
+      "side": 1,
+      "message": "I expect the compiler to optimize this out for the static inline ALOGV case.  If the original author wanted it in the arguments they would have put it there, so I left it as is.",
+      "parentUuid": "123a3aa9_adaf1d61",
       "range": {
         "startLine": 568,
         "startChar": 8,
