@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "323d7e9f_ae70f763",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-02-07T15:45:27Z",
+      "side": 1,
+      "message": "Why was this ifdef added? Is there a flaw in the ALOGV definition, ALOGV should be allowed? I am sure I am missing a subtlety ...\n\nFrom log/log.h:\n\n#if LOG_NDEBUG\n#define ALOGV(...)   ((void)0)\n#else\n#define ALOGV(...) ((void)ALOG(LOG_VERBOSE, LOG_TAG, __VA_ARGS__))\n#endif",
+      "range": {
+        "startLine": 607,
+        "startChar": 1,
+        "endLine": 607,
+        "endChar": 3
+      },
+      "revId": "94dcc94b16cc6c2a7aa02df2d0d6b8743d738d78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "123a3aa9_adaf1d61",
+        "filename": "media/libstagefright/wifi-display/source/TSPacketizer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-02-07T15:45:27Z",
+      "side": 1,
+      "message": "Now *this* could have taken advantage of a #if as used in the previous file to hide the otherwise unused result. However, I would have opted to perform the calculations within the context of the arguments for KISS and not use the automatic to hold the interim result?",
+      "range": {
+        "startLine": 568,
+        "startChar": 8,
+        "endLine": 568,
+        "endChar": 14
+      },
+      "revId": "94dcc94b16cc6c2a7aa02df2d0d6b8743d738d78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
