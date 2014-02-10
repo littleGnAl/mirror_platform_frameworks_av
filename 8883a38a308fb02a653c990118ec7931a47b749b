@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef4bfd71_070838f1",
+        "filename": "media/libstagefright/httplive/M3UParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2014-02-10T17:05:17Z",
+      "side": 1,
+      "message": "strangely, when I cherrypicked the change to my internal tree it worked fine (merged\u0026built), but once gerrit automerged the change it broke, with this being the offending line.\nIt doesn\u0027t like the \"ssize_t pos - 1 \u003d end\", though I\u0027m not sure why that would work in the external tree. Different compiler version perhaps? Regardless, as written it doesn\u0027t make much sense, and probably doesn\u0027t do what you want it to do.",
+      "revId": "8883a38a308fb02a653c990118ec7931a47b749b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
