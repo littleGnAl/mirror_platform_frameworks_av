@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f3ec9eb_3f8487fa",
+        "filename": "media/libstagefright/AMRWriter.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-02-11T12:09:15Z",
+      "side": 1,
+      "message": "This cast chain from AMRWriter* -\u003e uintptr_t -\u003e void* seems pointless",
+      "revId": "377b2ec9a2885f9b6405b07ba900a9e3f4349c38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f3ec9eb_9f5dd3dd",
+        "filename": "media/libstagefright/AwesomePlayer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 2300,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-02-11T12:09:15Z",
+      "side": 1,
+      "message": "I think the better fix here is to make metaDataSize int64_t.",
+      "revId": "377b2ec9a2885f9b6405b07ba900a9e3f4349c38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0fabf157_259eae52",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1045,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-02-11T12:09:15Z",
+      "side": 1,
+      "message": "I\u0027d rather have these APIs changed. It\u0027s more correct to use getClientLockFromCookie(int user). All \"user\" values come from CameraService::Client and are ints anyway. Having them \"void*\" adds another (IMO pointless) layer of indirection.\n\n(Also, there are lots of fields in that class that could be \"const\" and are marked \"immutable after the constructor\", but that\u0027s for another day :) )",
+      "range": {
+        "startLine": 1045,
+        "startChar": 27,
+        "endLine": 1045,
+        "endChar": 44
+      },
+      "revId": "377b2ec9a2885f9b6405b07ba900a9e3f4349c38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
