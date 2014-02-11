@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f344108_477ee291",
+        "filename": "media/libstagefright/codecs/avc/enc/src/bitstream_io.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-02-11T19:53:11Z",
+      "side": 1,
+      "message": "Technically, wouldn\u0027t this supposed to be in the { } above, as writing 3 is what makes it 0?  If 4 or higher, it will get 0-ed in the byte !\u003d 0 clause.",
+      "range": {
+        "startLine": 113,
+        "startChar": 20,
+        "endLine": 113,
+        "endChar": 31
+      },
+      "revId": "265e1077be2a20b465fa501029493b5028d60e19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
