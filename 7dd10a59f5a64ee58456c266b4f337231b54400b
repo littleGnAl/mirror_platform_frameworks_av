@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf62b923_9c18498c",
+        "filename": "media/libstagefright/codecs/on2/h264dec/source/h264bsd_intra_prediction.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1126,
+      "author": {
+        "id": 1038885
+      },
+      "writtenOn": "2014-02-12T18:31:28Z",
+      "side": 1,
+      "message": "This whole section really needs i and j to be i32 so we should just declare them as such instead of casting explicitly every time there is an arithmetic issue.",
+      "range": {
+        "startLine": 1126,
+        "startChar": 21,
+        "endLine": 1126,
+        "endChar": 22
+      },
+      "revId": "7dd10a59f5a64ee58456c266b4f337231b54400b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
