@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f5ef5cf_c93ad5ac",
+        "filename": "media/libeffects/visualizer/EffectVisualizer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 582,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2014-02-18T17:57:40Z",
+      "side": 1,
+      "message": "I would prefer to move this block (lines 284 to 291) before the actual copy and do the copy in a else{} block",
+      "range": {
+        "startLine": 582,
+        "startChar": 14,
+        "endLine": 582,
+        "endChar": 15
+      },
+      "revId": "b5f2c76f4abc2fe7683c9c3809bb63b8cca45127",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
