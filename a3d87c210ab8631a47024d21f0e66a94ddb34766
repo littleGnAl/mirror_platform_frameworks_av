@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef985df7_dfcc1f52",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1002,
+      "author": {
+        "id": 1021920
+      },
+      "writtenOn": "2014-02-23T16:42:29Z",
+      "side": 1,
+      "message": "off_t should be the same as off64_t but in this file off64_t is used, so I would replace this",
+      "revId": "a3d87c210ab8631a47024d21f0e66a94ddb34766",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
