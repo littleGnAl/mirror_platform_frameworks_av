@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c3ac1c3_143a9ae0",
+        "filename": "media/libeffects/downmix/EffectDownmix.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-02-25T16:03:00Z",
+      "side": 1,
+      "message": "not related to this CL, but the *(int32_t *)pValue could fail with memory access error if parameter type is int16_t and an int16_t is passed which is not also int32_t aligned",
+      "revId": "b302bd5d288be2d3363b80053ca2392560b00b25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c3ac1c3_f41ef676",
+        "filename": "media/libeffects/lvm/lib/Common/src/InstAlloc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-02-25T16:03:00Z",
+      "side": 1,
+      "message": "nice comment on base side! :-)",
+      "revId": "b302bd5d288be2d3363b80053ca2392560b00b25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
