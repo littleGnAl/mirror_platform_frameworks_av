@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1cf89137_dcc7a4d9",
+        "filename": "libvideoeditor/lvpp/VideoEditorAudioPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-02-25T19:41:09Z",
+      "side": 1,
+      "message": "If mBGAudioPCMFileHandle is a pointer, why not just change the %u to %p and remove casts? (I\u0027m not sure if it is a pointer ... I don\u0027t have the associated .h in front of me)",
+      "revId": "2428545cd570fc2dc3b76142ca3f684d19257f38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cf89137_7c8ad099",
+        "filename": "libvideoeditor/vss/stagefrightshells/src/VideoEditorMp3Reader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-02-25T19:41:09Z",
+      "side": 1,
+      "message": "same - is %p an option?",
+      "revId": "2428545cd570fc2dc3b76142ca3f684d19257f38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
