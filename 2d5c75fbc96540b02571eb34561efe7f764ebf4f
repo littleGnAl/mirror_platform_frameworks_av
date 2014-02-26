@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c0a6d15_c141f8c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-02-26T16:47:35Z",
+      "side": 1,
+      "message": "I hate to be a pedantic pain in the arse, but I\u0027m going to be one anyway. \n\nI\u0027d prefer:\n\n\"This change fixes android.media.cts.DecoderTest#testCodeBasicH264 on 64 bit platforms\".\n\nWe tend to avoid first and second person discourse on commit messages.",
+      "revId": "2d5c75fbc96540b02571eb34561efe7f764ebf4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
