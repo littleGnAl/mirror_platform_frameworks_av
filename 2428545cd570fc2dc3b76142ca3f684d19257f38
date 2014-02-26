@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7c0a6d15_deeb158b",
+        "filename": "libvideoeditor/lvpp/VideoEditorAudioPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1040609
+      },
+      "writtenOn": "2014-02-26T11:38:21Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem to be a pointer, I\u0027ve kept the change as is.",
+      "parentUuid": "1cf89137_dcc7a4d9",
+      "revId": "2428545cd570fc2dc3b76142ca3f684d19257f38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cf89137_7c8ad099",
         "filename": "libvideoeditor/vss/stagefrightshells/src/VideoEditorMp3Reader.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2014-02-25T19:41:09Z",
       "side": 1,
       "message": "same - is %p an option?",
+      "revId": "2428545cd570fc2dc3b76142ca3f684d19257f38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c156131_ff15b7ca",
+        "filename": "libvideoeditor/vss/stagefrightshells/src/VideoEditorMp3Reader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1040609
+      },
+      "writtenOn": "2014-02-26T11:38:21Z",
+      "side": 1,
+      "message": "optionId is a uint32_t: I changed it to %u and removed the cast.\npValue seems to be a real pointer: moved to using %p and removed the casts.",
+      "parentUuid": "1cf89137_7c8ad099",
       "revId": "2428545cd570fc2dc3b76142ca3f684d19257f38",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
