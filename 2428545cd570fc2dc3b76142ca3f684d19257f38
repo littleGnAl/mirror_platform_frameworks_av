@@ -37,6 +37,23 @@
     },
     {
       "key": {
+        "uuid": "5c44c956_0346de70",
+        "filename": "libvideoeditor/lvpp/VideoEditorAudioPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-02-26T19:43:06Z",
+      "side": 1,
+      "message": "my version of frameworks/av//libvideoeditor/osal/inc/M4OSA_Types.h has:\ntypedef void*                M4OSA_Context;",
+      "revId": "2428545cd570fc2dc3b76142ca3f684d19257f38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cf89137_7c8ad099",
         "filename": "libvideoeditor/vss/stagefrightshells/src/VideoEditorMp3Reader.cpp",
         "patchSetId": 1
