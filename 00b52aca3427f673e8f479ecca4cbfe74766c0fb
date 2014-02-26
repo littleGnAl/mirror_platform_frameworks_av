@@ -16,6 +16,24 @@
       "revId": "00b52aca3427f673e8f479ecca4cbfe74766c0fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9c156131_ad3cb5d0",
+        "filename": "media/libstagefright/AudioPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1021920
+      },
+      "writtenOn": "2014-02-26T20:14:49Z",
+      "side": 1,
+      "message": "That\u0027s the reason I\u0027ve added Andreas Huber to review, however I doubt that he did it purposely. It\u0027s rather a copy-paste type of mistake. Not only it\u0027s prone to race but even if we follow this track then getMediaTimeMapping should do the same with it\u0027s parameters, not to mention other functions in libstagefright.",
+      "parentUuid": "5c44c956_c3a336c1",
+      "revId": "00b52aca3427f673e8f479ecca4cbfe74766c0fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
