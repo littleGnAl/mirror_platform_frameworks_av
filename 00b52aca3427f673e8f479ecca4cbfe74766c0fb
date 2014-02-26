@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5c44c956_c3a336c1",
+        "filename": "media/libstagefright/AudioPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-02-26T19:53:26Z",
+      "side": 1,
+      "message": "This double-assignment goes back to 2010 (commit 5295c0c5). I can only imagine that the purpose of this double-assignment was so that, during the period where we\u0027re blocked waiting on the mutex, the parameter was at least initialized to a default value.  But that\u0027s prone to a race.   I\u0027d feel more comfortable having the original author approve also.",
+      "revId": "00b52aca3427f673e8f479ecca4cbfe74766c0fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
