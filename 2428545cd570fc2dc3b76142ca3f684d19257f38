@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "9c156131_2d09c5f9",
+        "filename": "libvideoeditor/lvpp/VideoEditorAudioPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1040609
+      },
+      "writtenOn": "2014-02-27T10:57:51Z",
+      "side": 1,
+      "message": "I had noticed that but couldn\u0027t easily find any evidence it was actually used as a pointer. If you want me to switch to %p, I can do it. You probably know better than me if there are people relying on the exact format (log parsers, etc).",
+      "parentUuid": "5c44c956_0346de70",
+      "revId": "2428545cd570fc2dc3b76142ca3f684d19257f38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cf89137_7c8ad099",
         "filename": "libvideoeditor/vss/stagefrightshells/src/VideoEditorMp3Reader.cpp",
         "patchSetId": 1
