@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "3c29d585_09e15ab2",
+        "filename": "libvideoeditor/lvpp/VideoEditorAudioPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-02-27T22:03:45Z",
+      "side": 1,
+      "message": "If a log parser is depending on this, it would be walking on very shaky ground! :-)  I think it\u0027s OK to change to %p and remove the casts.",
+      "parentUuid": "9c156131_2d09c5f9",
+      "revId": "2428545cd570fc2dc3b76142ca3f684d19257f38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cf89137_7c8ad099",
         "filename": "libvideoeditor/vss/stagefrightshells/src/VideoEditorMp3Reader.cpp",
         "patchSetId": 1
