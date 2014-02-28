@@ -90,6 +90,24 @@
     },
     {
       "key": {
+        "uuid": "dc0199f4_b5f3d00e",
+        "filename": "libvideoeditor/lvpp/VideoEditorAudioPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1040609
+      },
+      "writtenOn": "2014-02-28T10:47:02Z",
+      "side": 1,
+      "message": "Yes, you\u0027re right and I would have broken such a parser anyway with the other change. I\u0027ll use %p.",
+      "parentUuid": "3c29d585_09e15ab2",
+      "revId": "2428545cd570fc2dc3b76142ca3f684d19257f38",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1cf89137_7c8ad099",
         "filename": "libvideoeditor/vss/stagefrightshells/src/VideoEditorMp3Reader.cpp",
         "patchSetId": 1
