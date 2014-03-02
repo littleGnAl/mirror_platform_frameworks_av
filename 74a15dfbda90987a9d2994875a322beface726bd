@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c52b523_03c94168",
+        "filename": "media/libmedia/MediaScannerClient.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2014-03-02T05:08:54Z",
+      "side": 1,
+      "message": "This doesn\u0027t seem right. Why does Shift-JIS need to be treated specially here?",
+      "revId": "74a15dfbda90987a9d2994875a322beface726bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
