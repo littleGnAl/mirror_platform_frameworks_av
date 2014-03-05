@@ -22,6 +22,24 @@
       "revId": "4a134cb7def40fb6e2168f82c063a5c8c0d5d354",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dc76f9c4_86520f2d",
+        "filename": "media/libmedia/AudioTrack.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1041118
+      },
+      "writtenOn": "2014-03-05T09:35:16Z",
+      "side": 1,
+      "message": "We meet an issue when doing path switch between BT and SPKR/HS during Gtalk voice call. In our audio policy it switches the output from BT to audio hardware during the process and I find that the start_output/stop_output are not paired sometimes and cause logic issue, so that I add stop() here to fix that issue. But you explanation is reasonable and I will do more tests to check it again.",
+      "parentUuid": "7c58ad41_9ae8ebd4",
+      "revId": "4a134cb7def40fb6e2168f82c063a5c8c0d5d354",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
