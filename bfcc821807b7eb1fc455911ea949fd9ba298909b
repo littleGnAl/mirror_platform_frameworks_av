@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc586570_1a0d5d98",
+        "filename": "media/libstagefright/rtsp/MyHandler.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2014-03-07T15:27:19Z",
+      "side": 1,
+      "message": "what I actually meant was: *only* change ALOGI to ALOGV.\nALOGV is stripped unless specifically enabled, so this won\u0027t actually print anything to the log, but it\u0027s handy to have for debugging.",
+      "revId": "bfcc821807b7eb1fc455911ea949fd9ba298909b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
