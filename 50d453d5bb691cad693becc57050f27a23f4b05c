@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cd4752d_39c74b34",
+        "filename": "media/libstagefright/rtsp/ASessionDescription.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1042902
+      },
+      "writtenOn": "2014-03-17T10:41:13Z",
+      "side": 1,
+      "message": "Why push an default/empty track here ?\nFurther down the code a track is added for each media type (\u0027m\u003d\u0027)\nThis gives issues with RTSP streams containing only one video-only track, causing getFormatType to fail on the dummy track.\nNet result is that Mediaplayer class aborts on playing the stream.",
+      "range": {
+        "startLine": 52,
+        "startChar": 24,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "50d453d5bb691cad693becc57050f27a23f4b05c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
