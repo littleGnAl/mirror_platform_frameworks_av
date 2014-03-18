@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcb1990e_eff57236",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 814,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-03-18T18:54:52Z",
+      "side": 1,
+      "message": "place { on same line as if ()",
+      "range": {
+        "startLine": 813,
+        "startChar": 23,
+        "endLine": 814,
+        "endChar": 4
+      },
+      "revId": "74e5d2badedacd37273bcb05ff7926638d0f8d96",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
