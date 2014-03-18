@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c08adab_0ef68f6f",
+        "filename": "media/libstagefright/AACExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-03-18T18:53:04Z",
+      "side": 0,
+      "message": "frameSize \u003d\u003d 0 also denotes a parse error, where we probably should not continue parsing as the offset can be incorrect.  perhaps augment getAdtsFrameLength to separate error and non-error conditions?",
+      "range": {
+        "startLine": 176,
+        "startChar": 71,
+        "endLine": 176,
+        "endChar": 75
+      },
+      "revId": "2ad7af29bb667d939f27417011567847c4b62f94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7c08adab_4e1367e6",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2123,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-03-18T18:53:04Z",
+      "side": 0,
+      "message": "One can argue that a writer should be able to handle multiple CSC, but how would it resolve if there is a conflict between them?  As such, with this change it is only taking the last one.\n\nHence the restriction on a single CSD.",
+      "range": {
+        "startLine": 2123,
+        "startChar": 12,
+        "endLine": 2123,
+        "endChar": 45
+      },
+      "revId": "2ad7af29bb667d939f27417011567847c4b62f94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

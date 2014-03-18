@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcb1990e_cf13d6e4",
+        "filename": "media/libstagefright/AwesomePlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 386,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-03-18T18:53:04Z",
+      "side": 1,
+      "message": "please use brackets",
+      "range": {
+        "startLine": 386,
+        "startChar": 12,
+        "endLine": 386,
+        "endChar": 20
+      },
+      "revId": "e75bf2997a17ba065e3c4903301a583e81f8022b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc0ea5b3_caaf38aa",
+        "filename": "media/libstagefright/AwesomePlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-03-18T18:53:04Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 419,
+        "startChar": 12,
+        "endLine": 419,
+        "endChar": 20
+      },
+      "revId": "e75bf2997a17ba065e3c4903301a583e81f8022b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc0ea5b3_8aaa6098",
+        "filename": "media/libstagefright/AwesomePlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1416,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-03-18T18:53:04Z",
+      "side": 1,
+      "message": "arguably, this could be an error instead of a complete message.",
+      "range": {
+        "startLine": 1416,
+        "startChar": 21,
+        "endLine": 1416,
+        "endChar": 40
+      },
+      "revId": "e75bf2997a17ba065e3c4903301a583e81f8022b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc0ea5b3_2a2c9478",
+        "filename": "media/libstagefright/AwesomePlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1635,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-03-18T18:53:04Z",
+      "side": 1,
+      "message": "space",
+      "revId": "e75bf2997a17ba065e3c4903301a583e81f8022b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc0ea5b3_ea3c3ca7",
+        "filename": "media/libstagefright/AwesomePlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1643,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-03-18T18:53:04Z",
+      "side": 1,
+      "message": "use 8-char indent",
+      "range": {
+        "startLine": 1640,
+        "startChar": 7,
+        "endLine": 1643,
+        "endChar": 10
+      },
+      "revId": "e75bf2997a17ba065e3c4903301a583e81f8022b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
