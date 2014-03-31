@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39ae4766_0c04fba9",
+        "filename": "media/libstagefright/foundation/AString.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-03-31T23:56:57Z",
+      "side": 1,
+      "message": "Can\u0027t you just always use an array of 32 chars?",
+      "revId": "84c2f533b767d906e24e7d30124b7276b4aee11d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
