@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b96a3764_4dab4d9d",
+        "filename": "services/audioflinger/AudioResamplerSinc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1042649
+      },
+      "writtenOn": "2014-04-10T17:17:25Z",
+      "side": 1,
+      "message": "This line introduces about 1% performance regression. I\u0027ve reported to the compiler team internally. Hope it can be fixed in the next gcc release.",
+      "range": {
+        "startLine": 757,
+        "startChar": 0,
+        "endLine": 757,
+        "endChar": 8
+      },
+      "revId": "2170e5c83eb00c577b985db49f55761ed8b85179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
