@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99b2d35a_715d38d7",
+        "filename": "media/libstagefright/NuCachedSource2.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-11T00:11:43Z",
+      "side": 1,
+      "message": "This shows conflict to goog/master, another CL changed %ld to %d downstream. I will just have to prepare to take the heat from the merge engine; or I can prepare for this by making a dummy CL ahead of this to change from %d to %ld to allow clean passage?",
+      "range": {
+        "startLine": 644,
+        "startChar": 4,
+        "endLine": 644,
+        "endChar": 30
+      },
+      "revId": "175b3c5bf4ee2e7784f415d1627ec1b65fea08ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
