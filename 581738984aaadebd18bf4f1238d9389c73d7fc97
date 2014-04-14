@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9980137b_90c36226",
+        "filename": "media/libstagefright/wifi-display/source/WifiDisplaySource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2014-04-14T22:55:37Z",
+      "side": 1,
+      "message": "This change is replacing the 720p30 max resolution with an resolution that\u0027s derived from the main display\u0027s display info. \n\nThis is incorrect as the secondary display\u0027s resolution is not necessary tied to the main display (rendering is separate for each display). \n\nResolution for WFD is more related to the capture/encoding capability of the platform. We use 720p30 as max, as capture and encoding at this resolution is supported by pretty much all platforms.",
+      "revId": "581738984aaadebd18bf4f1238d9389c73d7fc97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
