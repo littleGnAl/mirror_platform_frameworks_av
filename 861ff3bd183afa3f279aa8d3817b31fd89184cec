@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9c0cbc1_c96b9504",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-04-14T17:00:29Z",
+      "side": 1,
+      "message": "the \"if\" Is not necessary, as free(NULL) is a nop",
+      "revId": "861ff3bd183afa3f279aa8d3817b31fd89184cec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
