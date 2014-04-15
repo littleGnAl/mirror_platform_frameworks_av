@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9980137b_14049da9",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-04-15T21:18:45Z",
+      "side": 1,
+      "message": "Vector::size returns size_t. (for all your \"unsigned int\"s.)",
+      "revId": "312cd9e7505e5a58c807368f54894dd603f94398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
