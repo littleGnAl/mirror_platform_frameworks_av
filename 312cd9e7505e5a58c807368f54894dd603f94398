@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "b964f7c8_2fecf932",
+        "filename": "media/mtp/MtpDevice.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-15T21:43:53Z",
+      "side": 1,
+      "message": "unsigned int in downstream trees, required for synchronization. A separate CL will be required afterwards to convert to size_t.",
+      "range": {
+        "startLine": 198,
+        "startChar": 8,
+        "endLine": 198,
+        "endChar": 18
+      },
+      "revId": "312cd9e7505e5a58c807368f54894dd603f94398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b964f7c8_af000922",
+        "filename": "media/mtp/MtpDevice.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-15T21:43:53Z",
+      "side": 1,
+      "message": "downsteam has unsigned int, required to prevent merge conflicts to all trees.",
+      "range": {
+        "startLine": 256,
+        "startChar": 21,
+        "endLine": 256,
+        "endChar": 33
+      },
+      "revId": "312cd9e7505e5a58c807368f54894dd603f94398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9980137b_14049da9",
         "filename": "media/mtp/MtpServer.cpp",
         "patchSetId": 7
@@ -13,6 +59,64 @@
       "writtenOn": "2014-04-15T21:18:45Z",
       "side": 1,
       "message": "Vector::size returns size_t. (for all your \"unsigned int\"s.)",
+      "revId": "312cd9e7505e5a58c807368f54894dd603f94398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9980137b_f4df39a3",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-15T21:43:53Z",
+      "side": 1,
+      "message": "I will audit (again, individually, in each case), but this is currently unsigned int in downstream, a separate CL will be required to prevent merge conflicts.",
+      "parentUuid": "9980137b_14049da9",
+      "revId": "312cd9e7505e5a58c807368f54894dd603f94398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b964f7c8_5430e415",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-15T21:43:53Z",
+      "side": 1,
+      "message": "unsigned int in downstream, required to \u0027synchronize\u0027 the trees.",
+      "revId": "312cd9e7505e5a58c807368f54894dd603f94398",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9980137b_5481c56f",
+        "filename": "tools/resampler_tools/fir.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-04-15T21:43:53Z",
+      "side": 1,
+      "message": "unsigned int in downstream trees. This one is \u0027OK\u0027 and not a size_t var issue.",
+      "range": {
+        "startLine": 246,
+        "startChar": 13,
+        "endLine": 246,
+        "endChar": 25
+      },
       "revId": "312cd9e7505e5a58c807368f54894dd603f94398",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
