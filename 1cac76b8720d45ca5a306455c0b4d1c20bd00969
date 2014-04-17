@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c51d3f5e_1e086af5",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2014-04-17T22:30:18Z",
+      "side": 1,
+      "message": "Can you make this optional? I\u0027m afraid we might have other code path where kKeyFrameRate is not set and it will crash mediaserver. Maybe handle this similarly to \"sar-width\", \"sar-height\" below.",
+      "revId": "1cac76b8720d45ca5a306455c0b4d1c20bd00969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45586f41_e2ad0a23",
+        "filename": "media/libstagefright/wifi-display/source/PlaybackSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2014-04-17T22:30:18Z",
+      "side": 1,
+      "message": "instead of modifying the framerate on SurfaceMediaSource, could you fix RepeaterSource to return the repeating fps?\n\nCurrently RepeaterSource::getFormat() returns the SurfaceMediaSource\u0027s format directly, but the fps should actually be the repeating fps. So you probably want to make a copy of the source format, and modify the fps.",
+      "revId": "1cac76b8720d45ca5a306455c0b4d1c20bd00969",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
