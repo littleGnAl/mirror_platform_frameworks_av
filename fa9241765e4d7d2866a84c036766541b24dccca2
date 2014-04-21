@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "658813e3_cdafcc80",
+        "filename": "services/camera/libcameraservice/api1/client2/Parameters.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1753,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2014-04-21T20:20:40Z",
+      "side": 1,
+      "message": "return BAD_VALUE if intent.count \u003d\u003d 0",
+      "revId": "fa9241765e4d7d2866a84c036766541b24dccca2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
