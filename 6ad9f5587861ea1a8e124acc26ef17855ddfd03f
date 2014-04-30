@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eaf77045_837302fd",
+        "filename": "include/media/stagefright/Interpolator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2014-04-30T22:56:24Z",
+      "side": 1,
+      "message": "This seems more like weighted least squares or weighted linear regression?",
+      "range": {
+        "startLine": 29,
+        "startChar": 7,
+        "endLine": 29,
+        "endChar": 33
+      },
+      "revId": "6ad9f5587861ea1a8e124acc26ef17855ddfd03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca046c04_b00760a4",
+        "filename": "media/libstagefright/Interpolator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2014-04-30T22:56:24Z",
+      "side": 1,
+      "message": "v",
+      "range": {
+        "startLine": 129,
+        "startChar": 17,
+        "endLine": 129,
+        "endChar": 18
+      },
+      "revId": "6ad9f5587861ea1a8e124acc26ef17855ddfd03f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
