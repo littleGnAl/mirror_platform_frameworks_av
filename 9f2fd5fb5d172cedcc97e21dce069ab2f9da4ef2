@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca046c04_b0f08002",
+        "filename": "media/libstagefright/AwesomePlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2014-04-30T22:47:04Z",
+      "side": 1,
+      "message": "minor point, this parameter always seems to come from mSystemTimeSource.getRealTimeUs(), not sure if you want to remove it and put inside interpolateRealTimeUs().",
+      "range": {
+        "startLine": 1871,
+        "startChar": 55,
+        "endLine": 1871,
+        "endChar": 67
+      },
+      "revId": "9f2fd5fb5d172cedcc97e21dce069ab2f9da4ef2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
