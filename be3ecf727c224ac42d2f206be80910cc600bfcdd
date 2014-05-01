@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a587c41_0881673b",
+        "filename": "media/libstagefright/codecs/vorbis/dec/SoftVorbis.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2014-05-01T17:49:34Z",
+      "side": 1,
+      "message": "I see the spam in 32-bit targets. so:\n#if !defined(__aarch64__)\nwould be better for me",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 46
+      },
+      "revId": "be3ecf727c224ac42d2f206be80910cc600bfcdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
