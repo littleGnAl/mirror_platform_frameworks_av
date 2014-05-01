@@ -16,6 +16,24 @@
       "revId": "a61a18977f38d2842d4d7c0ee3510eee14a56e75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a292485_b43bc8bd",
+        "filename": "media/libstagefright/Interpolator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-05-01T00:52:25Z",
+      "side": 1,
+      "message": "once, every time you start playback, or resume playback.  After that the top condition will be true and interpolation will be bypassed.",
+      "parentUuid": "ca046c04_d0c30c18",
+      "revId": "a61a18977f38d2842d4d7c0ee3510eee14a56e75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
