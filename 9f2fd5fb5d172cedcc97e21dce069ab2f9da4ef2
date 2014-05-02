@@ -22,6 +22,30 @@
       "revId": "9f2fd5fb5d172cedcc97e21dce069ab2f9da4ef2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa481879_ac80276d",
+        "filename": "media/libstagefright/AwesomePlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1871,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-05-02T02:17:46Z",
+      "side": 1,
+      "message": "There are 2 reasons for the pass through:\n\n1. we are already calling getSystemTime() several times in this method alone, which can result in several context switches.\n\n2. throughout this routine and its logic it is assumed that time stands still.  Yet systemtime changes slightly throughout the calls to interpolateRealTimeUs(). \nUnfortunately, the mediaTimeSource does not allow easily passing in the systemtime to be used, which is the direction I am heading towards.",
+      "parentUuid": "ca046c04_b0f08002",
+      "range": {
+        "startLine": 1871,
+        "startChar": 55,
+        "endLine": 1871,
+        "endChar": 67
+      },
+      "revId": "9f2fd5fb5d172cedcc97e21dce069ab2f9da4ef2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
