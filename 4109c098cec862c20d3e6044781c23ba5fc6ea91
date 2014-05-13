@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ae95c2a_5149f397",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3954,
+      "author": {
+        "id": 1030069
+      },
+      "writtenOn": "2014-05-13T22:52:48Z",
+      "side": 1,
+      "message": "Add curly braces to follow the style in the file.",
+      "range": {
+        "startLine": 3954,
+        "startChar": 23,
+        "endLine": 3954,
+        "endChar": 24
+      },
+      "revId": "4109c098cec862c20d3e6044781c23ba5fc6ea91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
