@@ -22,6 +22,23 @@
       "revId": "4109c098cec862c20d3e6044781c23ba5fc6ea91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4ae95c2a_cc228c96",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3954,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2014-05-13T23:12:09Z",
+      "side": 1,
+      "message": "please test mUseAsyncWrite instead and assert on mCallbackThread !\u003d 0.\nALOG_ASSERT(mCallbackThread !\u003d 0);\nThis is for consistence with the rest of the offload thread code.\n\nalso I really discourage the use of Offload with blocking write because it will delay significantly volume and routing commands.",
+      "revId": "4109c098cec862c20d3e6044781c23ba5fc6ea91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
