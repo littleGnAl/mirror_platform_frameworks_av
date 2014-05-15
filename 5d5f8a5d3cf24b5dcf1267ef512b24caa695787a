@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a78446e_6bf2617d",
+        "filename": "media/libstagefright/foundation/ANetworkSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1014088
+      },
+      "writtenOn": "2014-05-15T15:49:55Z",
+      "side": 1,
+      "message": "There\u0027s no need to intiialize n since mOutFragments is guaranteed not to be empty, therefore the loop below will be entered and n will be assigned at least once.",
+      "revId": "5d5f8a5d3cf24b5dcf1267ef512b24caa695787a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
