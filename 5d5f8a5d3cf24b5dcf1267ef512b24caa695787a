@@ -16,6 +16,24 @@
       "revId": "5d5f8a5d3cf24b5dcf1267ef512b24caa695787a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a78446e_bdfe80d2",
+        "filename": "media/libstagefright/foundation/ANetworkSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1031448
+      },
+      "writtenOn": "2014-05-15T16:45:17Z",
+      "side": 1,
+      "message": "Ok. What do you suggest we do with this GCC-4.9 warning then? How about I submit another patch-set with \"-Wno-maybe-uninitialized\" additional CFLAG, if it is ok with you? GCC folks wont recommend that solution though.",
+      "parentUuid": "0a78446e_6bf2617d",
+      "revId": "5d5f8a5d3cf24b5dcf1267ef512b24caa695787a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
