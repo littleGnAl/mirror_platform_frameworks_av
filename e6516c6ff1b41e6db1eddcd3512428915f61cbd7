@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f8d4cf3_66ed8a70",
+        "filename": "media/libmedia/AudioTrackShared.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-05-22T01:02:22Z",
+      "side": 1,
+      "message": "I think you need to remove the minus here and below since the errno is just errno.",
+      "range": {
+        "startLine": 235,
+        "startChar": 17,
+        "endLine": 235,
+        "endChar": 18
+      },
+      "revId": "e6516c6ff1b41e6db1eddcd3512428915f61cbd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f48f879_8faaf8a7",
+        "filename": "media/libmedia/AudioTrackShared.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2014-05-22T01:02:22Z",
+      "side": 1,
+      "message": "Same as above.",
+      "range": {
+        "startLine": 443,
+        "startChar": 17,
+        "endLine": 443,
+        "endChar": 18
+      },
+      "revId": "e6516c6ff1b41e6db1eddcd3512428915f61cbd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
