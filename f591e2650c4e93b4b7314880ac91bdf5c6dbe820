@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff965405_3e93fed5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-05-23T01:13:50Z",
+      "side": 1,
+      "message": "it seems more like if the existing behavior is not supported, try encoder supported HDCP encryption.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 32
+      },
+      "revId": "f591e2650c4e93b4b7314880ac91bdf5c6dbe820",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f9d5828_04427750",
+        "filename": "media/libstagefright/wifi-display/source/PlaybackSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-05-23T01:13:50Z",
+      "side": 1,
+      "message": "is there a reason why encryptNative is not supported on a platform, but the encoder can encrypt \"natively\" on the platform?",
+      "range": {
+        "startLine": 947,
+        "startChar": 22,
+        "endLine": 947,
+        "endChar": 52
+      },
+      "revId": "f591e2650c4e93b4b7314880ac91bdf5c6dbe820",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
