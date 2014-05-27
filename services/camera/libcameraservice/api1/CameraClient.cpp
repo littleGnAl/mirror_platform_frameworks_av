@@ -236,7 +236,7 @@ void CameraClient::disconnect() {
         return;
     }
 
-    if (mClientPid <= 0) {
+    if (mClientPid <= 0 && callingPid != mServicePid) {
         LOG1("camera is unlocked (mClientPid = %d), don't tear down hardware", mClientPid);
         return;
     }
