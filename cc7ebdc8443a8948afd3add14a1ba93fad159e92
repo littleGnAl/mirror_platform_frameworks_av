@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5fc5a077_0244102e",
+        "filename": "media/libstagefright/rtsp/ARTSPConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-05-29T22:47:47Z",
+      "side": 1,
+      "message": "this should be NULL;",
+      "range": {
+        "startLine": 173,
+        "startChar": 27,
+        "endLine": 173,
+        "endChar": 55
+      },
+      "revId": "cc7ebdc8443a8948afd3add14a1ba93fad159e92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fc5a077_423b28be",
+        "filename": "media/libstagefright/rtsp/ARTSPConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-05-29T22:47:47Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be !\u003d 0?\n\nThere should not be anything between ] and :\n\nin any case this should be\n if find() !\u003d 0 then { \n  colonPos \u003d NULL\n  if bracketend + 1 !\u003d host-\u003esize() then return false\n } else {\n  colonPos \u003d host-\u003ec_str() + bracketend + 1\n }",
+      "range": {
+        "startLine": 180,
+        "startChar": 44,
+        "endLine": 180,
+        "endChar": 45
+      },
+      "revId": "cc7ebdc8443a8948afd3add14a1ba93fad159e92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fbaacee_4c0a3f41",
+        "filename": "media/libstagefright/rtsp/ARTSPConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-05-29T22:47:47Z",
+      "side": 1,
+      "message": "there should be a if (bracketstart \u003e 0) return false; somewhere to check for no data before [",
+      "range": {
+        "startLine": 201,
+        "startChar": 4,
+        "endLine": 201,
+        "endChar": 6
+      },
+      "revId": "cc7ebdc8443a8948afd3add14a1ba93fad159e92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
