@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fc0a468_2eab7f78",
+        "filename": "media/libstagefright/tests/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-05-29T20:06:54Z",
+      "side": 1,
+      "message": "the simulator was removed years ago. you can lose this cruft.",
+      "revId": "edb069b55bc605eecb38385299a3a394b1f90829",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fc5a077_c24a98e3",
+        "filename": "media/libstagefright/tests/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-05-29T20:06:54Z",
+      "side": 1,
+      "message": "isn\u0027t this weird? shouldn\u0027t they be using\n\n  include $(BUILD_NATIVE_TEST)\n\nand getting this for free?",
+      "revId": "edb069b55bc605eecb38385299a3a394b1f90829",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
