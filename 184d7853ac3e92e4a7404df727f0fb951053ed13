@@ -16,6 +16,24 @@
       "revId": "184d7853ac3e92e4a7404df727f0fb951053ed13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7f81844b_120a4c40",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/src/motion_est.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1048277
+      },
+      "writtenOn": "2014-06-05T07:49:30Z",
+      "side": 1,
+      "message": "It does indeed. However, as far as I can tell, this function is dead code in Android, as the MACRO HTFM is defined in mp4def.h. It\u0027s compiled but never invoked. We could update this function as well but it might be a little bit difficult to test, as testing would require a local change to mp4def.h to disable HTFM. Also looking at the comments in mp4def.h, HTFM has been enabled since 2001. Therefore, disabling it locally to test this fix might reveal other unrelated problems.",
+      "parentUuid": "bfe21c19_06d54e51",
+      "revId": "184d7853ac3e92e4a7404df727f0fb951053ed13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
