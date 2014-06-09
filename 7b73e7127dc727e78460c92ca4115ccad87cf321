@@ -34,6 +34,24 @@
       "revId": "7b73e7127dc727e78460c92ca4115ccad87cf321",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bffcdced_b0fb205a",
+        "filename": "camera/CameraBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1021471
+      },
+      "writtenOn": "2014-06-09T23:50:20Z",
+      "side": 1,
+      "message": "Oh, sorry, I had the diffs flipped for some reason. I thought it was removing the comment, not adding the comment.",
+      "parentUuid": "ff5d74d3_3b4f2b48",
+      "revId": "7b73e7127dc727e78460c92ca4115ccad87cf321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
