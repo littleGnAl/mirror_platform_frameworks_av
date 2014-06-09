@@ -16,6 +16,24 @@
       "revId": "7b73e7127dc727e78460c92ca4115ccad87cf321",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff5d74d3_3b4f2b48",
+        "filename": "camera/CameraBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2014-06-09T23:46:20Z",
+      "side": 1,
+      "message": "It suppresses the unused warning, trust me ;-).\n\nThe defacto standard being followed in the Android tree is one of the following:\n\nIf widespread, part of individual project\u0027s coding style, -Wno-unused added to LOCAL_CFLAGS Android.mk for the project.\n\nFor C++ unused parameter names are to be commented out (or removed, for instance, for parameter names like \u0027unused\u0027). C++ naturally recognizes that if a parameter type exists, but a name does not, that the parameter is not used within the function.\n\nFor C, or if in doubt for instance in a header used by both, one uses the bionic macro __unused (which is defined as __attribute__((__unused__)) )",
+      "parentUuid": "bffcdced_5058dc0e",
+      "revId": "7b73e7127dc727e78460c92ca4115ccad87cf321",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
