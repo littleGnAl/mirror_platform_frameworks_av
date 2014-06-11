@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3f854c8a_6a0fc8c0",
+        "filename": "include/media/mediascanner.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2014-06-11T21:20:25Z",
+      "side": 1,
+      "message": "A comment here clarifying that the dummy field is so that a pointer to a non-flat AlbumArt object can be cast to this would probably be good.",
+      "revId": "95dad7c423288d6374f2952fec40a96ff4ac5cec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
