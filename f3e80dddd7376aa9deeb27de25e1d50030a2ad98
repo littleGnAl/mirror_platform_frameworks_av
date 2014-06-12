@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fd6e483_50abc476",
+        "filename": "include/media/mediascanner.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-06-12T09:00:15Z",
+      "side": 1,
+      "message": "-Wpendantic, should be char mData[] for c99 and above.",
+      "revId": "f3e80dddd7376aa9deeb27de25e1d50030a2ad98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f6920a1_fcfac5db",
+        "filename": "media/libmediaplayerservice/MetadataRetrieverClient.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-06-12T09:00:15Z",
+      "side": 1,
+      "message": "Nice comment change.",
+      "revId": "f3e80dddd7376aa9deeb27de25e1d50030a2ad98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
