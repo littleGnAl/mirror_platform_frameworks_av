@@ -64,6 +64,8 @@ enum {
     kMaxAtomSize = 64 * 1024 * 1024,
 };
 
+static const size_t  kMaxPcmFrameSize = 8192;
+
 class MPEG4Source : public MediaSource {
 public:
     // Caller retains ownership of both "dataSource" and "sampleTable".
@@ -125,6 +127,7 @@ private:
 
     bool mIsAVC;
     bool mIsHEVC;
+    bool mIsPcm;
     size_t mNALLengthSize;
 
     bool mStarted;
@@ -316,6 +319,10 @@ static const char *FourCC2MIME(uint32_t fourcc) {
         case FOURCC('h', 'v', 'c', '1'):
         case FOURCC('h', 'e', 'v', '1'):
             return MEDIA_MIMETYPE_VIDEO_HEVC;
+
+        case FOURCC('t', 'w', 'o', 's'):
+            return MEDIA_MIMETYPE_AUDIO_RAW;
+
         default:
             CHECK(!"should not be here.");
             return NULL;
@@ -1487,6 +1494,7 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
         case FOURCC('e', 'n', 'c', 'a'):
         case FOURCC('s', 'a', 'm', 'r'):
         case FOURCC('s', 'a', 'w', 'b'):
+        case FOURCC('t', 'w', 'o', 's'):
         {
             if (mIsQT && chunk_type == FOURCC('m', 'p', '4', 'a')
                     && depth >= 1 && mPath[depth - 1] == FOURCC('w', 'a', 'v', 'e')) {
@@ -1556,6 +1564,15 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
                 // if the chunk type is enca, we'll get the type from the sinf/frma box later
                 mLastTrack->meta->setCString(kKeyMIMEType, FourCC2MIME(chunk_type));
                 AdjustChannelsAndRate(chunk_type, &num_channels, &sample_rate);
+
+                if (!strcasecmp(MEDIA_MIMETYPE_AUDIO_RAW, FourCC2MIME(chunk_type))) {
+                    mLastTrack->meta->setInt32(kKeyBitsPerSample, sample_size);
+                    if (chunk_type == FOURCC('t', 'w', 'o', 's')) {
+                        mLastTrack->meta->setCString(kKeyPcmByteOrder, "big");
+                    } else {
+                        mLastTrack->meta->setCString(kKeyPcmByteOrder, "little");
+                    }
+                }
             }
             ALOGV("*** coding='%s' %d channels, size %d, rate %d\n",
                    chunk, num_channels, sample_size, sample_rate);
@@ -3858,6 +3875,7 @@ MPEG4Source::MPEG4Source(
       mCurrentSampleInfoOffsets(NULL),
       mIsAVC(false),
       mIsHEVC(false),
+      mIsPcm(false),
       mNALLengthSize(0),
       mStarted(false),
       mGroup(NULL),
@@ -3913,6 +3931,27 @@ MPEG4Source::MPEG4Source(
         CHECK_EQ((unsigned)ptr[0], 1u);  // configurationVersion == 1
 
         mNALLengthSize = 1 + (ptr[14 + 7] & 3);
+    }
+
+    mIsPcm = !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_RAW);
+
+    if (mIsPcm) {
+        int32_t numChannels = 0;
+        int32_t bitsPerSample = 0;
+        CHECK(mFormat->findInt32(kKeyBitsPerSample, &bitsPerSample));
+        CHECK(mFormat->findInt32(kKeyChannelCount, &numChannels));
+
+        int32_t bytesPerSample = bitsPerSample >> 3;
+        int32_t pcmSampleSize = bytesPerSample * numChannels;
+
+        size_t maxSampleSize;
+        status_t err = mSampleTable->getMaxSampleSize(&maxSampleSize);
+        if (err != OK || maxSampleSize != static_cast<size_t>(pcmSampleSize)) {
+            ALOGW("PCM track with variable block size");
+            mIsPcm = false;
+        } else {
+            mFormat->setInt32(kKeyMaxInputSize, pcmSampleSize * kMaxPcmFrameSize);
+        }
     }
 
     CHECK(format->findInt32(kKeyTrackID, &mTrackId));
@@ -4777,34 +4816,81 @@ status_t MPEG4Source::read(
 
     if ((!mIsAVC && !mIsHEVC) || mWantsNALFragments) {
         if (newBuffer) {
-            ssize_t num_bytes_read =
-                mDataSource->readAt(offset, (uint8_t *)mBuffer->data(), size);
+            if (mIsPcm) {
+                // The twos' PCM block reader assumes that all samples has the same size.
 
-            if (num_bytes_read < (ssize_t)size) {
-                mBuffer->release();
-                mBuffer = NULL;
+                uint32_t samplesToRead = mSampleTable->getLastSampleIndexInChunk()
+                                                      - mCurrentSampleIndex + 1;
+                if (samplesToRead > kMaxPcmFrameSize) {
+                    samplesToRead = kMaxPcmFrameSize;
+                }
 
-                return ERROR_IO;
-            }
+                ALOGV("Reading %d PCM frames of size %zu at index %d to stop of chunk at %d",
+                      samplesToRead, size, mCurrentSampleIndex,
+                      mSampleTable->getLastSampleIndexInChunk());
 
-            CHECK(mBuffer != NULL);
-            mBuffer->set_range(0, size);
-            mBuffer->meta_data()->clear();
-            mBuffer->meta_data()->setInt64(
-                    kKeyTime, ((int64_t)cts * 1000000) / mTimescale);
-            mBuffer->meta_data()->setInt64(
-                    kKeyDuration, ((int64_t)stts * 1000000) / mTimescale);
+                size_t totalSize  = samplesToRead * size;
+                uint8_t* buf = (uint8_t *)mBuffer->data();
+                ssize_t bytesRead = mDataSource->readAt(offset, buf, totalSize);
+                if (bytesRead < (ssize_t)totalSize) {
+                    mBuffer->release();
+                    mBuffer = NULL;
 
-            if (targetSampleTimeUs >= 0) {
-                mBuffer->meta_data()->setInt64(
-                        kKeyTargetTime, targetSampleTimeUs);
-            }
+                    return ERROR_IO;
+                }
 
-            if (isSyncSample) {
+                mBuffer->meta_data()->clear();
+                mBuffer->meta_data()->setInt64(kKeyTime, ((int64_t)cts * 1000000) / mTimescale);
                 mBuffer->meta_data()->setInt32(kKeyIsSyncFrame, 1);
-            }
 
-            ++mCurrentSampleIndex;
+                const char *byteOrder;
+                CHECK(mFormat->findCString(kKeyPcmByteOrder, &byteOrder));
+
+                if (!strcasecmp(byteOrder, "big")) {
+                    //Big-endian -> little-endian
+                    if (size == 2 || size == 4) {
+                        uint16_t *dstData = (uint16_t *)buf;
+                        uint16_t *srcData = (uint16_t *)buf;
+                        size_t multiplier = size / sizeof(uint16_t);
+
+                        for (size_t j = 0; j < samplesToRead * multiplier; j++) {
+                             dstData[j] = ntohs(srcData[j]);
+                        }
+                    }
+                }
+
+                mCurrentSampleIndex += samplesToRead;
+                mBuffer->set_range(0, totalSize);
+            } else {
+                ssize_t num_bytes_read =
+                    mDataSource->readAt(offset, (uint8_t *)mBuffer->data(), size);
+
+                if (num_bytes_read < (ssize_t)size) {
+                    mBuffer->release();
+                    mBuffer = NULL;
+
+                    return ERROR_IO;
+                }
+
+                CHECK(mBuffer != NULL);
+                mBuffer->set_range(0, size);
+                mBuffer->meta_data()->clear();
+                mBuffer->meta_data()->setInt64(
+                        kKeyTime, ((int64_t)cts * 1000000) / mTimescale);
+                mBuffer->meta_data()->setInt64(
+                        kKeyDuration, ((int64_t)stts * 1000000) / mTimescale);
+
+                if (targetSampleTimeUs >= 0) {
+                    mBuffer->meta_data()->setInt64(
+                            kKeyTargetTime, targetSampleTimeUs);
+                }
+
+                if (isSyncSample) {
+                    mBuffer->meta_data()->setInt32(kKeyIsSyncFrame, 1);
+                }
+
+                ++mCurrentSampleIndex;
+            }
         }
 
         if (!mIsAVC && !mIsHEVC) {

@@ -55,6 +55,7 @@ enum {
     kKeyFrameRate         = 'frmR',  // int32_t (video frame rate fps)
     kKeyBitRate           = 'brte',  // int32_t (bps)
     kKeyMaxBitRate        = 'mxBr',  // int32_t (bps)
+    kKeyBitsPerSample     = 'bits',  // int32_t (bits per sample)
     kKeyStreamHeader      = 'stHd',  // raw data
     kKeyESDS              = 'esds',  // raw data
     kKeyAACProfile        = 'aacp',  // int32_t
@@ -216,6 +217,9 @@ enum {
     kKeyGridWidth        = 'grdW', // int32_t, HEIF grid width
     kKeyGridHeight       = 'grdH', // int32_t, HEIF grid height
     kKeyIccProfile       = 'prof', // raw data, ICC prifile data
+
+    // Key for raw PCM Byte order detecting
+    kKeyPcmByteOrder    = 'pcmb',
 };
 
 enum {
