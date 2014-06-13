@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "df74307d_813b1dbd",
+        "filename": "include/media/mediascanner.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-06-13T01:17:43Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/97806",
+      "parentUuid": "7fd6e483_50abc476",
+      "revId": "f3e80dddd7376aa9deeb27de25e1d50030a2ad98",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5f6920a1_fcfac5db",
         "filename": "media/libmediaplayerservice/MetadataRetrieverClient.cpp",
         "patchSetId": 2
