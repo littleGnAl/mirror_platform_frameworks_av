@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24a8e18f_8fff3512",
+        "filename": "media/libstagefright/wifi-display/rtp/RTPSender.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-06-23T22:26:07Z",
+      "side": 1,
+      "message": "this is really a bug.  We should check for size \u003e\u003d 28 here.",
+      "range": {
+        "startLine": 768,
+        "startChar": 4,
+        "endLine": 768,
+        "endChar": 6
+      },
+      "revId": "0cadd77d6219b4bd33170b11af2bdba920cbac35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
