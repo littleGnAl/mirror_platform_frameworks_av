@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a412110c_b9eb175c",
+        "filename": "drm/common/DrmEngineBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1005920
+      },
+      "writtenOn": "2014-07-02T18:36:57Z",
+      "side": 1,
+      "message": "Add {} brackets on single line statements throughout.\n\nif (cond) {\n   stmt\n}",
+      "revId": "87c27a919fbeef264a2890ca1de275e390e2398b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "84ad0dff_552e1ec6",
+        "filename": "drm/common/DrmEngineBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1005920
+      },
+      "writtenOn": "2014-07-02T18:36:57Z",
+      "side": 1,
+      "message": "Trailing whitespace",
+      "revId": "87c27a919fbeef264a2890ca1de275e390e2398b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
