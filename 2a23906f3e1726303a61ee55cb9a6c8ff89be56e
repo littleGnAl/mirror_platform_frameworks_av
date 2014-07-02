@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "e418892e_d871b161",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/SoftMPEG4Encoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1048277
+      },
+      "writtenOn": "2014-07-02T14:57:59Z",
+      "side": 1,
+      "message": "This should probably be a ULong for consistency.  PVEncodeVideoFrame is expecting a ULong* as its 4th parameter.",
+      "range": {
+        "startLine": 724,
+        "startChar": 12,
+        "endLine": 724,
+        "endChar": 20
+      },
+      "revId": "2a23906f3e1726303a61ee55cb9a6c8ff89be56e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84d6ed80_3e6d41d4",
         "filename": "media/libstagefright/codecs/m4v_h263/enc/include/mp4enc_api.h",
         "patchSetId": 2
