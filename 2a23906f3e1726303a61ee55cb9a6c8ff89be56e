@@ -25,6 +25,24 @@
     },
     {
       "key": {
+        "uuid": "a4a77122_9f49c349",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/SoftMPEG4Encoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2014-07-02T15:29:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e418892e_d871b161",
+      "revId": "2a23906f3e1726303a61ee55cb9a6c8ff89be56e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84d6ed80_3e6d41d4",
         "filename": "media/libstagefright/codecs/m4v_h263/enc/include/mp4enc_api.h",
         "patchSetId": 2
