@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "043d9d9e_31562ae3",
+        "filename": "media/libstagefright/codecs/avc/enc/SoftAVCEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 822,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2014-07-07T08:44:19Z",
+      "side": 1,
+      "message": "what is \"4\" ? It\u0027s clearer to express this as sizeof(whatever you expect).",
+      "revId": "fb0970295942252658a24bd147d961bf5612ffb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
