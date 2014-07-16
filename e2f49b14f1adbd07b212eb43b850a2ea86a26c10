@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39a80c90_de948980",
+        "filename": "drm/drmserver/DrmManagerService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-16T20:24:13Z",
+      "side": 1,
+      "message": "Wondering what the rationale is for some of these calls being unprotected...",
+      "revId": "e2f49b14f1adbd07b212eb43b850a2ea86a26c10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39bf2ce0_b724889c",
+        "filename": "drm/drmserver/DrmManagerService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-16T20:24:13Z",
+      "side": 1,
+      "message": "Should this also be checked by SELinux or only by this check?",
+      "revId": "e2f49b14f1adbd07b212eb43b850a2ea86a26c10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
