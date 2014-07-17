@@ -33,6 +33,40 @@
       "revId": "e2f49b14f1adbd07b212eb43b850a2ea86a26c10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1902688d_6fff4112",
+        "filename": "drm/libdrmframework/include/DrmManagerService.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-07-17T05:01:43Z",
+      "side": 1,
+      "message": "As this is only used within DrmManagerService.cpp, it feels inappropriate to expose this API to others.",
+      "revId": "e2f49b14f1adbd07b212eb43b850a2ea86a26c10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "590860ab_71ba8ac3",
+        "filename": "drm/libdrmframework/include/DrmManagerService.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-07-17T05:01:43Z",
+      "side": 1,
+      "message": "should be in DrmManagerService.cpp. Never used outside of that file. Shouldn\u0027t be exposed to others.",
+      "revId": "e2f49b14f1adbd07b212eb43b850a2ea86a26c10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
