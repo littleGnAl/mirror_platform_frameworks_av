@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "794e0458_f7ff3840",
+        "filename": "drm/libdrmframework/include/DrmManagerService.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1010111
+      },
+      "writtenOn": "2014-07-24T12:56:13Z",
+      "side": 1,
+      "message": "Thinking that you should just take this to the same location as drm_perm_labels[] to reduce likelihood of them getting out of sync.  Especially since it is not used outside of a single .cpp file?",
+      "revId": "bf8928ba10a7a528a7cb073b11d197e70aed237d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
