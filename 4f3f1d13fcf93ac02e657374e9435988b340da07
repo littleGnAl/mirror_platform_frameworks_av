@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "193d089f_3f4268c3",
+        "filename": "drm/drmserver/DrmManagerService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-24T20:44:32Z",
+      "side": 1,
+      "message": "Not able to access the enum from within android::DrmManagerService without an explicit namespace.",
+      "parentUuid": "794e0458_da3df9fb",
+      "revId": "4f3f1d13fcf93ac02e657374e9435988b340da07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "595300fd_59b4b7d1",
         "filename": "drm/drmserver/DrmManagerService.cpp",
         "patchSetId": 6
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "d9461042_fe7b7f96",
+        "filename": "drm/drmserver/DrmManagerService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-24T20:44:32Z",
+      "side": 1,
+      "message": "Will reorder so that getcon is not called if selinux is not enabled.",
+      "parentUuid": "595300fd_59b4b7d1",
+      "revId": "4f3f1d13fcf93ac02e657374e9435988b340da07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "595300fd_79b17be0",
         "filename": "drm/drmserver/DrmManagerService.cpp",
         "patchSetId": 6
@@ -47,6 +83,24 @@
       "writtenOn": "2014-07-24T20:38:07Z",
       "side": 1,
       "message": "No harm in calling selinux_set_callback either way.\nSo can either be placed under the same if (selinux_enabled \u003e 0) as the getcon or can be made unconditional without harm.",
+      "revId": "4f3f1d13fcf93ac02e657374e9435988b340da07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "193d089f_7f06b0ad",
+        "filename": "drm/drmserver/DrmManagerService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-24T20:44:32Z",
+      "side": 1,
+      "message": "Will make it unconditional.",
+      "parentUuid": "595300fd_79b17be0",
       "revId": "4f3f1d13fcf93ac02e657374e9435988b340da07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
