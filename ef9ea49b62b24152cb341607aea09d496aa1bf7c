@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b91cfc52_aff0f474",
+        "filename": "drm/drmserver/DrmManagerService.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-25T20:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d91ff043_a15d692a",
+      "revId": "ef9ea49b62b24152cb341607aea09d496aa1bf7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "96e70794_ecfe347a",
         "filename": "drm/drmserver/DrmManagerService.cpp",
         "patchSetId": 7
@@ -30,6 +48,24 @@
       "writtenOn": "2014-07-25T20:10:50Z",
       "side": 1,
       "message": "Please add parens\n\n bool allowed \u003d (selinux_check_access(...) \u003d\u003d 0);",
+      "revId": "ef9ea49b62b24152cb341607aea09d496aa1bf7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96e70794_2cfe5c15",
+        "filename": "drm/drmserver/DrmManagerService.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1048048
+      },
+      "writtenOn": "2014-07-25T20:33:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "96e70794_ecfe347a",
       "revId": "ef9ea49b62b24152cb341607aea09d496aa1bf7c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
