@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d91ff043_a15d692a",
+        "filename": "drm/drmserver/DrmManagerService.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-07-25T20:10:50Z",
+      "side": 1,
+      "message": "need index \u003c 0 check here too",
+      "revId": "ef9ea49b62b24152cb341607aea09d496aa1bf7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96e70794_ecfe347a",
+        "filename": "drm/drmserver/DrmManagerService.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2014-07-25T20:10:50Z",
+      "side": 1,
+      "message": "Please add parens\n\n bool allowed \u003d (selinux_check_access(...) \u003d\u003d 0);",
+      "revId": "ef9ea49b62b24152cb341607aea09d496aa1bf7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
