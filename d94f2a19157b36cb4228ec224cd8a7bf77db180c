@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16f157a2_fd37b3cd",
+        "filename": "media/libstagefright/codecs/amrwbenc/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-08-07T17:17:54Z",
+      "side": 1,
+      "message": "i think all of these should have a comment and a link to the bug. otherwise we\u0027re just creating a new instance of the same problem (of undocumented strange stuff in mk files) that led us here :-)",
+      "revId": "d94f2a19157b36cb4228ec224cd8a7bf77db180c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
