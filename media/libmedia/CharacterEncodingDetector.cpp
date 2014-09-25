@@ -28,6 +28,8 @@
 #include <unicode/ucsdet.h>
 #include <unicode/ustring.h>
 
+#include <cutils/properties.h>
+
 namespace android {
 
 CharacterEncodingDetector::CharacterEncodingDetector() {
@@ -37,6 +39,33 @@ CharacterEncodingDetector::CharacterEncodingDetector() {
     if (U_FAILURE(status)) {
         ALOGE("could not create UConverter for UTF-8");
         mUtf8Conv = NULL;
+    }
+
+    // Read system locale setting from system property and map to ICU encoding names.
+    mLocaleEnc = NULL;
+    char locale_value[PROPERTY_VALUE_MAX] = "";
+    if (property_get("persist.sys.locale", locale_value, NULL) > 0) {
+        const size_t len = strnlen(locale_value, sizeof(locale_value));
+        const char* splitter_pos = strstr(locale_value, "-");
+        const char* region_value = (splitter_pos != NULL) ? splitter_pos + 1 : "";
+
+        if (len == 3 && !strncmp(locale_value, "und", 3)) {
+            // Undetermined
+        } else if (!strncmp(locale_value, "th", 2)) { // Thai
+            mLocaleEnc = "windows-874-2000";
+        } else if (!strncmp(locale_value, "zh", 2)) { // Chinese
+            if (strncmp(region_value, "CN", 2)) {
+                // assume traditional for non-mainland Chinese locales (Taiwan/Hong Kong/Singapore)
+                mLocaleEnc = "Big5";
+            }
+        }
+        if (mLocaleEnc != NULL) {
+            ALOGV("System locale encoding = %s", mLocaleEnc);
+        } else {
+            ALOGV("Didn't recognize system locale setting, defaulting to en_US");
+        }
+    } else {
+        ALOGV("Couldn't read system locale setting, assuming en_US");
     }
 }
 
@@ -157,7 +186,11 @@ void CharacterEncodingDetector::detectAndConvert() {
                 }
             }
 
-            if (bestCombinedMatch != NULL) {
+            if (mLocaleEnc != NULL && !goodmatch && highest < 50) {
+                combinedenc = mLocaleEnc;
+                ALOGV("confidence is low but we have recognized predefined encoding, "
+                        "so try this (%s) instead", mLocaleEnc);
+            } else if (bestCombinedMatch != NULL) {
                 combinedenc = ucsdet_getName(bestCombinedMatch, &status);
             } else {
                 combinedenc = "ISO-8859-1";
@@ -412,6 +445,11 @@ const UCharsetMatch *CharacterEncodingDetector::getPreferred(
             if (myconfidence > 100) myconfidence = 100;
             if (myconfidence < 0) myconfidence = 0;
             confidence = myconfidence;
+        }
+        // Raise confidence if encoding matches current system locale
+        if (mLocaleEnc != NULL && demerit == 0 && !strncmp(mLocaleEnc, encname, strlen(mLocaleEnc))) {
+            ALOGV("Encoding matched system locale, raising confidence by 65");
+            confidence += 65;
         }
         ALOGV("%d-%d=%d", confidence, demerit, confidence - demerit);
         newconfidence.push_back(confidence - demerit);
