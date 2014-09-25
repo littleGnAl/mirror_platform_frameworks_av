@@ -20,6 +20,7 @@
 
 #include "../include/ID3.h"
 
+#include "../include/autodetect.h"
 #include <media/stagefright/foundation/ADebug.h>
 #include <media/stagefright/DataSource.h>
 #include <media/stagefright/Utils.h>
@@ -62,11 +63,18 @@ ID3::ID3(const sp<DataSource> &source, bool ignoreV1, off64_t offset)
       mSize(0),
       mFirstFrameOffset(0),
       mVersion(ID3_UNKNOWN),
+      mAutoDetect(NULL),
+      mSuggestedEncoding(kEncodingNone),
       mRawSize(0) {
     mIsValid = parseV2(source, offset);
 
     if (!mIsValid && !ignoreV1) {
         mIsValid = parseV1(source);
+    }
+
+    if (mIsValid) {
+        mAutoDetect = new AutoDetect();
+        mSuggestedEncoding = getEncodingSuggestion();
     }
 }
 
@@ -76,6 +84,8 @@ ID3::ID3(const uint8_t *data, size_t size, bool ignoreV1)
       mSize(0),
       mFirstFrameOffset(0),
       mVersion(ID3_UNKNOWN),
+      mAutoDetect(NULL),
+      mSuggestedEncoding(kEncodingNone),
       mRawSize(0) {
     sp<MemorySource> source = new MemorySource(data, size);
 
@@ -84,6 +94,11 @@ ID3::ID3(const uint8_t *data, size_t size, bool ignoreV1)
     if (!mIsValid && !ignoreV1) {
         mIsValid = parseV1(source);
     }
+
+    if (mIsValid) {
+        mAutoDetect = new AutoDetect();
+        mSuggestedEncoding = getEncodingSuggestion();
+    }
 }
 
 ID3::~ID3() {
@@ -91,6 +106,33 @@ ID3::~ID3() {
         free(mData);
         mData = NULL;
     }
+
+    if (mAutoDetect) {
+        delete mAutoDetect;
+        mAutoDetect = NULL;
+    }
+}
+
+Encoding ID3::getEncodingSuggestion() const {
+    Encoding suggested = kEncodingNone;
+
+    // One-byte encodings will not be autodetected, no need to iterate in that case.
+    if (mAutoDetect && (mAutoDetect->getLocaleEncoding() & ~kOneByteEncodings)) {
+        Iterator iter(*this, NULL);
+        size_t length = 0;
+        const uint8_t* data = NULL;
+
+        while (!iter.done()) {
+            if ((data = iter.getISO8859Data(&length)) && length > 0) {
+                mAutoDetect->addString((const char*)data, length);
+            }
+            iter.next();
+        }
+
+        suggested = mAutoDetect->suggestEncoding();
+    }
+
+    return suggested;
 }
 
 bool ID3::isValid() const {
@@ -415,6 +457,7 @@ ID3::Iterator::Iterator(const ID3 &parent, const char *id)
     : mParent(parent),
       mID(NULL),
       mOffset(mParent.mFirstFrameOffset),
+      mParentAutoDetect(mParent.mAutoDetect),
       mFrameData(NULL),
       mFrameSize(0) {
     if (id) {
@@ -488,6 +531,72 @@ void ID3::Iterator::getID(String8 *id) const {
     }
 }
 
+const uint8_t *ID3::Iterator::getISO8859Data(size_t* length) const {
+    if (mParent.mVersion == ID3_V1 || mParent.mVersion == ID3_V1_1) {
+        // Track number and genre are numbers, not strings.
+        if (mOffset != 126 && mOffset != 127) {
+            *length = mFrameSize;
+            return mFrameData;
+        }
+    } else if (mParent.mVersion == ID3_V2_2 || mParent.mVersion == ID3_V2_3
+            || mParent.mVersion == ID3_V2_4) {
+        if ((mParent.mData[mOffset] == 'T') &&
+            (strncmp((const char *)&mParent.mData[mOffset], "TXX", 3)) &&
+            (*mFrameData == 0x00)) {
+            *length = mFrameSize - getHeaderLength() - 1;
+            return mFrameData + 1;
+        }
+    }
+
+    return NULL;
+}
+
+void ID3::Iterator::convertToUTF8(
+        const uint8_t *data, size_t size,
+        String8 *s) const {
+    // A field that is declared as ISO 8859-1 can actually have contents encoded in other
+    // encodings, inherited from ID3v1 when only ISO 8859-1 was allowed but users needed to store
+    // text in languages not supported by it.
+    // We use the AutoDetect class to make an educated guess about what encoding is used in the file
+    // with this ID3, in order:
+    //  1) first by trying to find one encoding that handles all strings in this file, or
+    //  2) if no one encoding matches all strings, find one that matches this particular string, or
+    //  3) if no encoding can be found, assume ISO 8859-1.
+
+    size_t utf8len = 0;
+    for (size_t i = 0; i < size; ++i) {
+        if (data[i] == '\0') {
+            size = i;
+            break;
+        } else if (data[i] < 0x80) {
+            ++utf8len;
+        } else {
+            utf8len += 2;
+        }
+    }
+
+    if (utf8len == size) {
+        // Only ASCII characters present.
+        s->setTo((const char *)data, size);
+        return;
+    }
+
+    Encoding enc = mParent.mSuggestedEncoding;
+    if (enc == kEncodingNone) {
+        // No global autodetect suggestion, try a local one.
+        enc = mParentAutoDetect->suggestEncoding((const char*)data, size);
+    }
+    if (enc != kEncodingNone) {
+        if (!mParentAutoDetect->convertToUTF8((const char*)data, size, s, enc)) {
+            ALOGE("AutoDetect::convertToUTF8 failed");
+        }
+        return;
+    }
+
+    // We have no mapped encoding for the current system locale, or the data is not valid in that
+    // encoding. Pass it up as-is to the caller, who will figure out the real encoding
+    s->setTo((const char *)data, size);
+}
 
 // the 2nd argument is used to get the data following the \0 in a comment field
 void ID3::Iterator::getString(String8 *id, String8 *comment) const {
@@ -520,9 +629,10 @@ void ID3::Iterator::getstring(String8 *id, bool otherdata) const {
             return;
         }
 
-        // this is supposed to be ISO-8859-1, but pass it up as-is to the caller, who will figure
-        // out the real encoding
-        id->setTo((const char*)frameData, mFrameSize);
+        // this is supposed to be ISO-8859-1. Try to convert it with an encoding matching the system
+        // locale, if not then pass it up as-is to the caller, who will figure out the real encoding
+        convertToUTF8(frameData, mFrameSize, id);
+
         return;
     }
 
@@ -543,8 +653,9 @@ void ID3::Iterator::getstring(String8 *id, bool otherdata) const {
     }
 
     if (encoding == 0x00) {
-        // supposedly ISO 8859-1
-        id->setTo((const char*)frameData + 1, n);
+        // supposedly ISO 8859-1. Try to convert it with an encoding matching the system
+        // locale, if not then pass it up as-is to the caller, who will figure out the real encoding
+        convertToUTF8(frameData + 1, n, id);
     } else if (encoding == 0x03) {
         // supposedly UTF-8
         id->setTo((const char *)(frameData + 1), n);

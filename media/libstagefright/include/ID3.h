@@ -19,6 +19,7 @@
 #define ID3_H_
 
 #include <utils/RefBase.h>
+#include "autodetect.h"
 
 namespace android {
 
@@ -53,12 +54,14 @@ struct ID3 {
         void getID(String8 *id) const;
         void getString(String8 *s, String8 *ss = NULL) const;
         const uint8_t *getData(size_t *length) const;
+        const uint8_t *getISO8859Data(size_t* length) const;
         void next();
 
     private:
         const ID3 &mParent;
         char *mID;
         size_t mOffset;
+        const AutoDetect* mParentAutoDetect;
 
         const uint8_t *mFrameData;
         size_t mFrameSize;
@@ -70,6 +73,8 @@ struct ID3 {
 
         Iterator(const Iterator &);
         Iterator &operator=(const Iterator &);
+
+        void convertToUTF8(const uint8_t *data, size_t size, String8 *s) const;
     };
 
     size_t rawSize() const { return mRawSize; }
@@ -80,6 +85,8 @@ private:
     size_t mSize;
     size_t mFirstFrameOffset;
     Version mVersion;
+    AutoDetect* mAutoDetect;
+    Encoding mSuggestedEncoding;
 
     // size of the ID3 tag including header before any unsynchronization.
     // only valid for IDV2+
@@ -91,6 +98,8 @@ private:
     bool removeUnsynchronizationV2_4(bool iTunesHack);
 
     static bool ParseSyncsafeInteger(const uint8_t encoded[4], size_t *x);
+
+    Encoding getEncodingSuggestion() const;
 
     ID3(const ID3 &);
     ID3 &operator=(const ID3 &);
