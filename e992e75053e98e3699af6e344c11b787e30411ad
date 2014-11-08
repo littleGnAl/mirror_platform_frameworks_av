@@ -16,6 +16,24 @@
       "revId": "e992e75053e98e3699af6e344c11b787e30411ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da152730_9f26bb24",
+        "filename": "services/camera/libcameraservice/api2/CameraDeviceClient.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2014-11-08T01:17:55Z",
+      "side": 1,
+      "message": "I\u0027m doing a bit of cleanup while I\u0027m at it here, but yeah, the whole function is guarded by a null check at start.",
+      "parentUuid": "1a1b3f6c_f33970f7",
+      "revId": "e992e75053e98e3699af6e344c11b787e30411ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
