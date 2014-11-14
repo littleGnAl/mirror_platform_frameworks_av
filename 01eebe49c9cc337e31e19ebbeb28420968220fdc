@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7a8d1b44_b4360804",
+        "filename": "services/audioflinger/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2014-11-14T18:19:06Z",
+      "side": 1,
+      "message": "This means that gcc will be used for arm32 as well when targeting arm64 (this file is only parsed once). Is there a LOCAL_CLANG_arm64? If so, use that. If not, this behavior is probably fine.",
+      "revId": "01eebe49c9cc337e31e19ebbeb28420968220fdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
