@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a73f723_6bcaf57b",
+        "filename": "services/audiopolicy/AudioPolicyService.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2014-11-14T23:28:35Z",
+      "side": 1,
+      "message": "you prefer this way rather than guarding inside the header file?",
+      "range": {
+        "startLine": 33,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "c84d9d235679a4d48245b316b7b2e4c0b19413e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
