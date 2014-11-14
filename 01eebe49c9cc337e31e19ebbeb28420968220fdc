@@ -16,6 +16,24 @@
       "revId": "01eebe49c9cc337e31e19ebbeb28420968220fdc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7a8d1b44_547de453",
+        "filename": "services/audioflinger/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-11-14T18:48:02Z",
+      "side": 1,
+      "message": "Actually, clang++ aborted also for arm target.\nSo I am going to disable clang for both arm and arm64 in patch set 2.\nWe don\u0027t have LOCAL_CLANG_\u003ctarget\u003e variable yet.",
+      "parentUuid": "7a8d1b44_b4360804",
+      "revId": "01eebe49c9cc337e31e19ebbeb28420968220fdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
