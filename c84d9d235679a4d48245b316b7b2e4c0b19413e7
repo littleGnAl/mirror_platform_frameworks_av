@@ -22,6 +22,30 @@
       "revId": "c84d9d235679a4d48245b316b7b2e4c0b19413e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1ab25f12_9e675995",
+        "filename": "services/audiopolicy/AudioPolicyService.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-11-15T00:34:23Z",
+      "side": 1,
+      "message": "Yes. USE_LEGACY_AUDIO_POLICY is only defined and used by frameworks/av non-legacy audiopolicy module. If it is guarded inside the legacy .h file, then both legacy and new modules need to define USE_LEGACY_AUDIO_POLICY to include the old legacy .h file.",
+      "parentUuid": "5a73f723_6bcaf57b",
+      "range": {
+        "startLine": 33,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 30
+      },
+      "revId": "c84d9d235679a4d48245b316b7b2e4c0b19413e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
