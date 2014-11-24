@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fc50d23_5704c608",
+        "filename": "services/audioflinger/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-11-24T19:44:54Z",
+      "side": 1,
+      "message": "I think this is not necessary with line 29.\nIf we would like to compile with clang whenever possible, this change could replace line 29. However, if we care about performance of gcc -O2 vs clang -O1, maybe we should just use current line 29.",
+      "range": {
+        "startLine": 43,
+        "startChar": 0,
+        "endLine": 43,
+        "endChar": 18
+      },
+      "revId": "1edbb59d1e3485043a0ec89699137cc69747d4df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
