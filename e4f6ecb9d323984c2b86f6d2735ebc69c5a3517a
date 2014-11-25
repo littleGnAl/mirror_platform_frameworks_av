@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5fc2091f_ac483626",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-11-25T03:51:54Z",
+      "side": 0,
+      "message": "I think ALOGV is written in a way that it looks like a use to the compiler:\n\n#define ALOGV(...) do { if (0) { __ALOGV(__VA_ARGS__); } } while (0)\n\nSo yes, that would mean it\u0027s not flagged as unused.\n\n\nHowever, I don\u0027t know if ALOGV is what you want (there were no debug statements before). Maybe just commenting them out is good enough?",
+      "parentUuid": "df151930_8258a0d2",
+      "revId": "e4f6ecb9d323984c2b86f6d2735ebc69c5a3517a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fcc1153_cb4ed534",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 1
