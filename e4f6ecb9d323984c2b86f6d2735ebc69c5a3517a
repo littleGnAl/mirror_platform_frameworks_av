@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "5fc2091f_6c79eef0",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-11-25T06:37:31Z",
+      "side": 0,
+      "message": "Another alternative would be to add __unused. I don\u0027t know, however, if that just turns off the warning or makes GCC retain the computation (I think the former).",
+      "parentUuid": "1fcc1153_74321ee8",
+      "revId": "e4f6ecb9d323984c2b86f6d2735ebc69c5a3517a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fcc1153_cb4ed534",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 1
