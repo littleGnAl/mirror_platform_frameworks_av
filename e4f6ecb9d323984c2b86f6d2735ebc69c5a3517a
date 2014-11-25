@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "1fcc1153_74321ee8",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-11-25T05:35:35Z",
+      "side": 0,
+      "message": "I totally understand. I\u0027ll do whatever you prefer...\n\nIf you prefer the ALOGV, it might make sense to introduce a constant kDebugXYZ at the top (and \"if (kDebugXYZ)\" here) just to get a little bit more specific (I dislike that most projects get way too spammy when LOG_NDEBUG is set).",
+      "parentUuid": "bf0a2512_ce935c2f",
+      "revId": "e4f6ecb9d323984c2b86f6d2735ebc69c5a3517a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fcc1153_cb4ed534",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 1
