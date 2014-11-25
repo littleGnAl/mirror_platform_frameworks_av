@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "bf0a2512_ce935c2f",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000882
+      },
+      "writtenOn": "2014-11-25T05:31:25Z",
+      "side": 0,
+      "message": "The reason I asked is that the profile and level of the stream is useful information to have when debugging. If we take this out, then next time I need to this info I have to go look at the spec to see how to parse it out.\nI\u0027d even prefer just commenting these lines out instead of removing them completely.",
+      "parentUuid": "5fc2091f_ac483626",
+      "revId": "e4f6ecb9d323984c2b86f6d2735ebc69c5a3517a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fcc1153_cb4ed534",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 1
