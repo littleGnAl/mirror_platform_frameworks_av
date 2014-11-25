@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "df151930_8258a0d2",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1000882
+      },
+      "writtenOn": "2014-11-25T03:46:37Z",
+      "side": 0,
+      "message": "if instead of removing these outright we printed them with ALOGV, would that still cause compiler warnings? (since ALOGV is normally compiled out)",
+      "revId": "e4f6ecb9d323984c2b86f6d2735ebc69c5a3517a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fcc1153_cb4ed534",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 1
