@@ -16,6 +16,300 @@
       "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff99fd83_d90e6453",
+        "filename": "include/media/stagefright/Utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-12-01T23:41:58Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "ff99fd83_86039a7d",
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fa849a2_20b5c4ef",
+        "filename": "media/libstagefright/codecs/amrnb/common/src/vad1.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1533,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-12-01T23:41:58Z",
+      "side": 1,
+      "message": "please keep",
+      "range": {
+        "startLine": 1533,
+        "startChar": 17,
+        "endLine": 1533,
+        "endChar": 25
+      },
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff99fd83_d9374401",
+        "filename": "media/libstagefright/codecs/amrnb/dec/src/b_cn_cod.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-12-01T23:41:58Z",
+      "side": 1,
+      "message": "this file should not be changed.",
+      "range": {
+        "startLine": 98,
+        "startChar": 4,
+        "endLine": 98,
+        "endChar": 14
+      },
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fb555f8_bc40e163",
+        "filename": "media/libstagefright/codecs/amrnb/dec/src/b_cn_cod.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-12-01T23:41:58Z",
+      "side": 1,
+      "message": "neither this",
+      "range": {
+        "startLine": 127,
+        "startChar": 8,
+        "endLine": 127,
+        "endChar": 14
+      },
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fb555f8_3c35f1f8",
+        "filename": "media/libstagefright/codecs/amrnb/enc/src/c1035pf.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-12-01T23:41:58Z",
+      "side": 1,
+      "message": "or this",
+      "range": {
+        "startLine": 119,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 14
+      },
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fb555f8_7c7c99a5",
+        "filename": "media/libstagefright/codecs/amrwbenc/src/wb_vad.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-12-01T23:41:58Z",
+      "side": 1,
+      "message": "keep",
+      "range": {
+        "startLine": 526,
+        "startChar": 14,
+        "endLine": 526,
+        "endChar": 22
+      },
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fa849a2_002d2887",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/src/fastcodemb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-12-01T23:41:58Z",
+      "side": 1,
+      "message": "keep",
+      "range": {
+        "startLine": 528,
+        "startChar": 56,
+        "endLine": 528,
+        "endChar": 59
+      },
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fa849a2_603e2caf",
+        "filename": "media/libstagefright/codecs/on2/h264dec/omxdl/arm11/api/armCOMM_BitDec_s.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-12-01T23:41:58Z",
+      "side": 1,
+      "message": "this file should not be changed.",
+      "range": {
+        "startLine": 69,
+        "startChar": 8,
+        "endLine": 69,
+        "endChar": 13
+      },
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fb555f8_dc55ed12",
+        "filename": "media/libstagefright/codecs/on2/h264dec/omxdl/arm11/api/armCOMM_IDCT_s.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-12-01T23:41:58Z",
+      "side": 1,
+      "message": "nor this",
+      "range": {
+        "startLine": 151,
+        "startChar": 15,
+        "endLine": 151,
+        "endChar": 18
+      },
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3fb555f8_bc4a2171",
+        "filename": "media/libstagefright/codecs/on2/h264dec/omxdl/arm11/api/armCOMM_s.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-12-01T23:41:58Z",
+      "side": 1,
+      "message": "or this",
+      "range": {
+        "startLine": 27,
+        "startChar": 8,
+        "endLine": 27,
+        "endChar": 12
+      },
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fa849a2_00ff6877",
+        "filename": "media/libstagefright/codecs/on2/h264dec/omxdl/arm11/vc/api/armVCCOMM_s.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-12-01T23:41:58Z",
+      "side": 1,
+      "message": "what changed in this file?",
+      "range": {
+        "startLine": 3,
+        "startChar": 8,
+        "endLine": 3,
+        "endChar": 9
+      },
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff99fd83_d97824b3",
+        "filename": "media/libstagefright/codecs/on2/h264dec/omxdl/arm_neon/api/armCOMM_BitDec_s.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-12-01T23:41:58Z",
+      "side": 1,
+      "message": "or this one?",
+      "range": {
+        "startLine": 665,
+        "startChar": 8,
+        "endLine": 665,
+        "endChar": 11
+      },
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff99fd83_f985e82f",
+        "filename": "media/libstagefright/codecs/on2/h264dec/omxdl/arm_neon/vc/api/armVCCOMM_s.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-12-01T23:41:58Z",
+      "side": 1,
+      "message": "or this one?",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 9
+      },
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
