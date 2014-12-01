@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff99fd83_b9c9a065",
+        "filename": "media/libstagefright/codecs/aacdec/SoftAAC2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 878,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-12-01T23:52:29Z",
+      "side": 1,
+      "message": "while this is practically correct, int64_t is not ssize_t. Instead of using PRId64 macro, we agreed to use %lld and typecast argument using c-style cast in frameworks/av.  E.g. (long long)*nextTimeStamp...",
+      "range": {
+        "startLine": 878,
+        "startChar": 62,
+        "endLine": 878,
+        "endChar": 63
+      },
+      "revId": "ca4bbbf1e915b65ed597fc6ed5cbf08060828179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
