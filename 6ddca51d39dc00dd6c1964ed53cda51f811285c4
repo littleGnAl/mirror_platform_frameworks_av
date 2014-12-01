@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff99fd83_86039a7d",
+        "filename": "include/media/stagefright/Utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-12-01T20:26:25Z",
+      "side": 1,
+      "message": "In other definitions of FOURCC, the casts were applied to arguments before shift operations. That should be more portable when the arguments are char values.",
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

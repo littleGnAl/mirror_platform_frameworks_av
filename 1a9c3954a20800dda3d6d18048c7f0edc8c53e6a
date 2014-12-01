@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff99fd83_a6309e5b",
+        "filename": "media/libstagefright/codecs/amrnb/enc/src/pre_proc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-12-01T20:26:25Z",
+      "side": 0,
+      "message": "Keep this \"register\" word?",
+      "range": {
+        "startLine": 68,
+        "startChar": 43,
+        "endLine": 68,
+        "endChar": 51
+      },
+      "revId": "1a9c3954a20800dda3d6d18048c7f0edc8c53e6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff973d5c_0579b4f1",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/src/fastcodemb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 528,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-12-01T20:26:25Z",
+      "side": 0,
+      "message": "Keep it?",
+      "revId": "1a9c3954a20800dda3d6d18048c7f0edc8c53e6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1fbfb1c3_620e8828",
+        "filename": "media/libstagefright/codecs/on2/h264dec/omxdl/arm11/api/armCOMM_IDCT_s.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-12-01T20:26:25Z",
+      "side": 0,
+      "message": "Keep the \"register\" words in comments of this file?",
+      "range": {
+        "startLine": 151,
+        "startChar": 19,
+        "endLine": 151,
+        "endChar": 27
+      },
+      "revId": "1a9c3954a20800dda3d6d18048c7f0edc8c53e6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff973d5c_c56bcc11",
+        "filename": "media/libstagefright/codecs/on2/h264dec/omxdl/arm11/api/armCOMM_s.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-12-01T20:26:25Z",
+      "side": 0,
+      "message": "Keep \"register\" in comments.",
+      "range": {
+        "startLine": 27,
+        "startChar": 40,
+        "endLine": 27,
+        "endChar": 48
+      },
+      "revId": "1a9c3954a20800dda3d6d18048c7f0edc8c53e6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
