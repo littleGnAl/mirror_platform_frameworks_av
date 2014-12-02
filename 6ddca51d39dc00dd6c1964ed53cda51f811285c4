@@ -267,6 +267,24 @@
     },
     {
       "key": {
+        "uuid": "bfba25ec_d87deddd",
+        "filename": "media/libstagefright/codecs/on2/h264dec/omxdl/arm11/vc/api/armVCCOMM_s.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2014-12-02T16:35:12Z",
+      "side": 1,
+      "message": "looks like the only change in this and following files is adding a newline to the last line",
+      "parentUuid": "5fa849a2_00ff6877",
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff99fd83_d97824b3",
         "filename": "media/libstagefright/codecs/on2/h264dec/omxdl/arm_neon/api/armCOMM_BitDec_s.h",
         "patchSetId": 1
