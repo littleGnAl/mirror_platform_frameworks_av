@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fb25112_fb0d4fdc",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-12-02T00:38:50Z",
+      "side": 1,
+      "message": "have you tested that the generated MPEG4 stream is valid?  It seems that reassembleESDS hard-codes certain fields of the esds box that may not be suitable for video.",
+      "range": {
+        "startLine": 563,
+        "startChar": 12,
+        "endLine": 563,
+        "endChar": 26
+      },
+      "revId": "ff55ca6a20ee6dee69c8c6567d7789173baf7125",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
