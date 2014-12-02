@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1fbfb1c3_2272d087",
+        "filename": "media/libstagefright/codecs/amrnb/enc/src/pre_proc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2014-12-02T18:37:13Z",
+      "side": 0,
+      "message": "I made this change with a macro, so there are likely to be a few cases I messed up. Thanks.",
+      "parentUuid": "ff99fd83_a6309e5b",
+      "range": {
+        "startLine": 68,
+        "startChar": 43,
+        "endLine": 68,
+        "endChar": 51
+      },
+      "revId": "1a9c3954a20800dda3d6d18048c7f0edc8c53e6a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ff973d5c_0579b4f1",
         "filename": "media/libstagefright/codecs/m4v_h263/enc/src/fastcodemb.cpp",
         "patchSetId": 1

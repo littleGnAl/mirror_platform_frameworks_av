@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "ff973d5c_a8765fc6",
+        "filename": "include/media/stagefright/Utils.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2014-12-02T18:37:13Z",
+      "side": 1,
+      "message": "Works for me.",
+      "parentUuid": "ff99fd83_86039a7d",
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fa849a2_20b5c4ef",
         "filename": "media/libstagefright/codecs/amrnb/common/src/vad1.cpp",
         "patchSetId": 1
@@ -95,6 +113,24 @@
       "side": 1,
       "message": "+1, agreed with Lajos about the \"register\" words in comments that shouldn\u0027t be removed",
       "parentUuid": "ff99fd83_d9374401",
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffc01d6a_2e837f2c",
+        "filename": "media/libstagefright/codecs/amrnb/dec/src/b_cn_cod.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2014-12-02T18:37:13Z",
+      "side": 1,
+      "message": "*sigh* Apparently I never actually submitted my draft comments explaining this.\n\nI had made all these changes using a macro (since there are sooooo many of them), so that\u0027s why it accidentally trashed the comments as well.\n\nThere\u0027s a similar change https://android-review.googlesource.com/#/c/116493/ that was probably more careful than this one. I\u0027m going to pull that one down and see if this can be replaced with it.",
+      "parentUuid": "1fb25112_aff30100",
       "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
