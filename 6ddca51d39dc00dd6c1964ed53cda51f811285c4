@@ -83,6 +83,24 @@
     },
     {
       "key": {
+        "uuid": "1fb25112_aff30100",
+        "filename": "media/libstagefright/codecs/amrnb/dec/src/b_cn_cod.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2014-12-02T18:29:02Z",
+      "side": 1,
+      "message": "+1, agreed with Lajos about the \"register\" words in comments that shouldn\u0027t be removed",
+      "parentUuid": "ff99fd83_d9374401",
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fb555f8_bc40e163",
         "filename": "media/libstagefright/codecs/amrnb/dec/src/b_cn_cod.h",
         "patchSetId": 1
@@ -100,6 +118,23 @@
         "endLine": 127,
         "endChar": 14
       },
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfba25ec_9ea19db4",
+        "filename": "media/libstagefright/codecs/amrnb/dec/src/pstfilt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2014-12-02T18:29:02Z",
+      "side": 1,
+      "message": "could you please keep the comment \"/* index...\" aligned with the other comments above?",
       "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -129,6 +164,23 @@
     },
     {
       "key": {
+        "uuid": "ffc01d6a_e3f36031",
+        "filename": "media/libstagefright/codecs/amrnb/enc/src/levinson.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2014-12-02T18:29:02Z",
+      "side": 1,
+      "message": "could you please keep the comments \"/* temporary..\" aligned with the other comments above?",
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fb555f8_7c7c99a5",
         "filename": "media/libstagefright/codecs/amrwbenc/src/wb_vad.c",
         "patchSetId": 1
@@ -146,6 +198,23 @@
         "endLine": 526,
         "endChar": 22
       },
+      "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bfba25ec_9e2bdd71",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/src/find_min_max.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2014-12-02T18:29:02Z",
+      "side": 1,
+      "message": "indentation is off",
       "revId": "6ddca51d39dc00dd6c1964ed53cda51f811285c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
