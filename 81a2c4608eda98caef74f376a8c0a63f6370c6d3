@@ -22,6 +22,30 @@
       "revId": "81a2c4608eda98caef74f376a8c0a63f6370c6d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5f8a0930_165b62f7",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1796,
+      "author": {
+        "id": 1010077
+      },
+      "writtenOn": "2014-12-03T11:04:17Z",
+      "side": 1,
+      "message": "You\u0027re right about processDeferredActions, of course. Seems that one of your recent commits (sha1#53904f3) may have fixed the issue. We\u0027ll abandon this commit for now to test more thoroughly and get back if there\u0027s a problem. Sorry for taking your time.",
+      "parentUuid": "5fd1293e_952ce4c1",
+      "range": {
+        "startLine": 1796,
+        "startChar": 27,
+        "endLine": 1796,
+        "endChar": 41
+      },
+      "revId": "81a2c4608eda98caef74f376a8c0a63f6370c6d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
