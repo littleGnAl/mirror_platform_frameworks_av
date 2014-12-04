@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df219932_02cbd0e0",
+        "filename": "media/libstagefright/OggExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2014-12-04T16:53:39Z",
+      "side": 1,
+      "message": "I\u0027m not sure I understand the new logic here. Why only return ERROR_MALFORMED for OV_EBADHEADER and OV_EVERSION, but still abort for OV_EFAULT? Why not just return ERROR_MALFORMED for any non-zero retval?",
+      "revId": "e6480023f008006478d8c336eb46a64ba332eb63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
