@@ -1,0 +1,106 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f4ed10c_8405ac81",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-12-04T01:47:25Z",
+      "side": 1,
+      "message": "OK",
+      "revId": "1b075c9a72a08414f19f7f154bb30981b82d04a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f4ed10c_444c8408",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2873,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-12-04T01:47:25Z",
+      "side": 1,
+      "message": "I prefer an assert that state !\u003d NULL rather than an if.  If we have a fast track, we must by definition have a fast mixer and thus a fast mixer state.",
+      "revId": "1b075c9a72a08414f19f7f154bb30981b82d04a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f4ed10c_649e60f4",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2977,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-12-04T01:47:25Z",
+      "side": 1,
+      "message": "additional test is not needed if we assert earlier",
+      "revId": "1b075c9a72a08414f19f7f154bb30981b82d04a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f4ed10c_44a56440",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2994,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-12-04T01:47:25Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "1b075c9a72a08414f19f7f154bb30981b82d04a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f4ed10c_6408a098",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-12-04T01:47:25Z",
+      "side": 1,
+      "message": "OK",
+      "revId": "1b075c9a72a08414f19f7f154bb30981b82d04a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff1c9dfc_c045d272",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-12-04T01:47:25Z",
+      "side": 1,
+      "message": "I don\u0027t see an mBufferEnd",
+      "revId": "1b075c9a72a08414f19f7f154bb30981b82d04a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
