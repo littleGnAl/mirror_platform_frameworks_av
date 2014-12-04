@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f4ed10c_44bb24b4",
+        "filename": "media/libmedia/AudioEffect.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-12-04T01:34:04Z",
+      "side": 1,
+      "message": "This seems dubious to me.\nBy the time the destructor is called, there should be no other references to the object other than \"this\" in current thread.\nSo locking a member field like mShutdownLock should be a no-op.\nI think a better fix is to not call the destructor if there are references still active.\nSometimes we use weak pointers for this.\nCheck out the similar code in AudioTrack.cpp\nfunction AudioTrack::DeathNotifier::binderDied ...\nsee how it promotes a weak pointer, and if that fails, it means there are no more valid references available (object has already been destroyed).",
+      "revId": "a7dd7e7fa83129416b1e52b58857956a86fc32f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
