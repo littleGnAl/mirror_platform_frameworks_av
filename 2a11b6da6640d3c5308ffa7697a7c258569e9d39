@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f4ed10c_24ddb893",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2014-12-04T01:54:19Z",
+      "side": 1,
+      "message": "why call gmtime a second time? why not use ptr_time",
+      "revId": "2a11b6da6640d3c5308ffa7697a7c258569e9d39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
