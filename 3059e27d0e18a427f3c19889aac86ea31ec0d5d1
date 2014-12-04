@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9fbf21de_c0f8548e",
+        "filename": "media/libmediaplayerservice/MediaPlayerService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1292,
+      "author": {
+        "id": 1004466
+      },
+      "writtenOn": "2014-12-04T03:00:06Z",
+      "side": 0,
+      "message": "Closing the fd here make the decode() function do extra things that is sometimes a bad side effect.",
+      "revId": "3059e27d0e18a427f3c19889aac86ea31ec0d5d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

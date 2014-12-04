@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7fc8ad75_2541f8d8",
+        "filename": "media/libmedia/IMediaPlayerService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1004466
+      },
+      "writtenOn": "2014-12-04T03:00:06Z",
+      "side": 1,
+      "message": "Here fd is dup\u0027ed, I think it is a good idea to close it in the same function.",
+      "revId": "5225ba0632e9dcf6fab562e4632ae8d6d4312959",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
