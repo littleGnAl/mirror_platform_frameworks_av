@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff33bd7c_09aa0a19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2014-12-04T22:59:17Z",
+      "side": 1,
+      "message": "Which mClient attribute?\nThe code clears mPlayer, not mClient.",
+      "revId": "8f13aec7e3e4781e7825f0dfd2cd340de599d3b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9f69e176_0dea350b",
+        "filename": "media/libmediaplayerservice/MediaPlayerService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2014-12-04T22:59:17Z",
+      "side": 1,
+      "message": "I\u0027m not sure I fully understand why moving the clear() to here is better. Can you provide an example/stacktrace of the crash that you\u0027re trying to fix with this?",
+      "revId": "8f13aec7e3e4781e7825f0dfd2cd340de599d3b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
