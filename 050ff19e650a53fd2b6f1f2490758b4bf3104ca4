@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f9e89d1_cd2ba970",
+        "filename": "media/libstagefright/codecs/aacenc/basic_op/basic_op.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2014-12-05T05:47:45Z",
+      "side": 0,
+      "message": "Please verify that this is the right semantics. I assume it is, else assigning to L_var1 in the true-branch doesn\u0027t make much sense.",
+      "range": {
+        "startLine": 521,
+        "startChar": 4,
+        "endLine": 521,
+        "endChar": 26
+      },
+      "revId": "050ff19e650a53fd2b6f1f2490758b4bf3104ca4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
