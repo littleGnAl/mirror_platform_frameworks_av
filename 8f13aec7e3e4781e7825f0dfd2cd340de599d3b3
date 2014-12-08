@@ -33,6 +33,24 @@
       "revId": "8f13aec7e3e4781e7825f0dfd2cd340de599d3b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6424a2a4_b963dbf7",
+        "filename": "media/libmediaplayerservice/MediaPlayerService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1046838
+      },
+      "writtenOn": "2014-12-08T09:07:39Z",
+      "side": 1,
+      "message": "backtrace:\n    #00  pc ffffffff  \u003cunknown\u003e\n    #01  pc 000303a4  /system/lib/libmediaplayerservice.so (android::MediaPlayerService::Client::notify(void*, int, int, int, android::Parcel const*)+116)\n    #02  pc 000a0b1d  /system/lib/libstagefright.so (android::AwesomePlayer::notifyListener_l(int, int, int)+141)\n    #03  pc 000aa290  /system/lib/libstagefright.so (android::AwesomePlayer::onBufferingUpdate()+496)\n    #04  pc 0009f733  /system/lib/libstagefright.so (android::AwesomeEvent::fire(android::TimedEventQueue*, long long)+35)\n    #05  pc 001115ab  /system/lib/libstagefright.so (android::TimedEventQueue::threadEntry()+555)\n    #06  pc 001117e2  /system/lib/libstagefright.so (android::TimedEventQueue::ThreadWrapper(void*)+50)\n    #07  pc 0000dd88  /system/lib/libc.so (__thread_entry+248)\n    #08  pc 0001afed  /system/lib/libc.so\n    #09  pc 000162b1  /system/lib/libc.so (dlrealloc+177)\n    #10  pc 00018a09  /system/lib/libc.so (realloc+41)\n    #11  pc 000200c5  /system/lib/libbinder.so (android::IPCThreadState::executeCommand(int)+21)\n    #12  pc 0002bfce  /system/lib/libbinder.so (android::Parcel::writeInt32(int)+94)\n    #13  pc 000632f4  /system/lib/libmedia.so (android::BnMediaPlayer::onTransact(unsigned int, android::Parcel const\u0026, android::Parcel*, unsigned int)+1972)\n\nBacktrace during the crash. This issue was occurring during a stress test \n\nAnalysis:\nWe are using the mClient address in MediaPlayerService::Client::notify (in frameworks/av/media/libmediaplayerservice/MediaPlayerService.cpp) after the pointer has been deleted.\nmClient is private to MediaPlayerService::Client and is set reset (mClient.clear()) in MediaPlayerService::Client::disconnect(). So, it appears that the notify method is called after the client has been disconnected which sounds weird.",
+      "parentUuid": "9f69e176_0dea350b",
+      "revId": "8f13aec7e3e4781e7825f0dfd2cd340de599d3b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
