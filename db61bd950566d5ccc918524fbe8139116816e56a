@@ -16,6 +16,24 @@
       "revId": "db61bd950566d5ccc918524fbe8139116816e56a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44ab1e57_8b27711c",
+        "filename": "media/libstagefright/rtsp/AMPEG4AudioAssembler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-12-09T22:54:56Z",
+      "side": 1,
+      "message": "Yes, fixed it here and in other places in patch set 2.\nClang does not seem to care about the difference of signed and unsigned.",
+      "parentUuid": "24a8ea5a_ad46051a",
+      "revId": "db61bd950566d5ccc918524fbe8139116816e56a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
