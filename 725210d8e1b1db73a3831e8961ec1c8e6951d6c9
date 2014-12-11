@@ -16,6 +16,24 @@
       "revId": "725210d8e1b1db73a3831e8961ec1c8e6951d6c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4085aac_8b54b119",
+        "filename": "services/audioflinger/AudioMixerOps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-12-11T22:20:30Z",
+      "side": 1,
+      "message": "static_assert(false, \"...\") will trigger error always, even with gcc.\nIs there other static_assert to trigger error only when instantiated?",
+      "parentUuid": "c4138eda_0947a918",
+      "revId": "725210d8e1b1db73a3831e8961ec1c8e6951d6c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
