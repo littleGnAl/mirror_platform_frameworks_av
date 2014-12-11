@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4138eda_0947a918",
+        "filename": "services/audioflinger/AudioMixerOps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-12-11T22:00:15Z",
+      "side": 1,
+      "message": "there\u0027s only a handful of users. https://cs.corp.google.com/#search/\u0026q\u003d(?-i)%5CbCOMPILE_TIME_ASSERT%20pcre:yes\u0026sq\u003dpackage:%5Eandroid$\u0026type\u003dcs\u0026m\u003d100\u0026sort\u003d1 switch them to static_assert and kill the cruft?",
+      "revId": "725210d8e1b1db73a3831e8961ec1c8e6951d6c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
