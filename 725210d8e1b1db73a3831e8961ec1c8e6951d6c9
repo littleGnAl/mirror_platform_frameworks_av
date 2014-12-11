@@ -34,6 +34,24 @@
       "revId": "725210d8e1b1db73a3831e8961ec1c8e6951d6c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4085aac_8bdf111e",
+        "filename": "services/audioflinger/AudioMixerOps.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-12-11T22:26:03Z",
+      "side": 1,
+      "message": "cast to one of the template types?",
+      "parentUuid": "a4085aac_8b54b119",
+      "revId": "725210d8e1b1db73a3831e8961ec1c8e6951d6c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
