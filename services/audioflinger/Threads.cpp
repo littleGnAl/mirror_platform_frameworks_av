@@ -2603,6 +2603,11 @@ uint32_t AudioFlinger::PlaybackThread::getStrategyForSession_l(audio_session_t s
 AudioStreamOut* AudioFlinger::PlaybackThread::getOutput() const
 {
     Mutex::Autolock _l(mLock);
+    return getOutput_l();
+}
+
+AudioStreamOut* AudioFlinger::PlaybackThread::getOutput_l() const
+{
     return mOutput;
 }
 

@@ -360,6 +360,8 @@ public:
 
     void dump(int fd, const Vector<String16>& args);
 
+    void getVolume(uint32_t* left, uint32_t* right) {*left = mLeftVolume; *right = mRightVolume;}
+
 protected:
     friend class AudioFlinger;  // for mThread, mEffects
     EffectChain(const EffectChain&);
@@ -388,6 +390,8 @@ protected:
     void clearInputBuffer_l(const sp<ThreadBase>& thread);
 
     void setThread(const sp<ThreadBase>& thread);
+
+    void setVolumeForOutput(uint32_t left, uint32_t right);
 
              wp<ThreadBase> mThread;     // parent mixer thread
     mutable  Mutex mLock;        // mutex protecting effect list
