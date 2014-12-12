@@ -718,6 +718,7 @@ public:
                                 audio_port_handle_t portId);
 
                 AudioStreamOut* getOutput() const;
+                AudioStreamOut* getOutput_l() const;
                 AudioStreamOut* clearOutput();
                 virtual sp<StreamHalInterface> stream() const;
 

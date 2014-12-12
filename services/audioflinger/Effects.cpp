@@ -233,6 +233,7 @@ ssize_t AudioFlinger::EffectModule::disconnectHandle(EffectHandle *handle, bool 
 
 bool AudioFlinger::EffectModule::updateState() {
     Mutex::Autolock _l(mLock);
+    sp<ThreadBase> thread = mThread.promote();
 
     bool started = false;
     switch (mState) {
@@ -255,7 +256,9 @@ bool AudioFlinger::EffectModule::updateState() {
         }
         break;
     case STOPPING:
-        if (stop_l() == NO_ERROR) {
+        if (stop_l() == NO_ERROR &&
+            thread != 0 &&
+            thread->type() != ThreadBase::OFFLOAD) {
             mDisableWaitCnt = mMaxDisableWaitCnt;
         } else {
             mDisableWaitCnt = 1; // will cause immediate transition to IDLE
@@ -558,6 +561,20 @@ status_t AudioFlinger::EffectModule::stop_l()
     }
     status_t cmdStatus = NO_ERROR;
     uint32_t size = sizeof(status_t);
+
+    if ((mDescriptor.flags & EFFECT_FLAG_VOLUME_MASK) == EFFECT_FLAG_VOLUME_CTRL) {
+        sp<ThreadBase> thread = mThread.promote();
+        if (thread != 0) {
+            if (thread->type() == ThreadBase::OFFLOAD) {
+                sp<EffectChain>chain = mChain.promote();
+                uint32_t left = 0;
+                uint32_t right = 0;
+                chain->getVolume(&left, &right);
+                chain->setVolumeForOutput(left, right);
+            }
+        }
+    }
+
     status_t status = mEffectInterface->command(EFFECT_CMD_DISABLE,
                                                 0,
                                                 NULL,
@@ -826,6 +843,22 @@ status_t AudioFlinger::EffectModule::setVolume(uint32_t *left, uint32_t *right, 
         }
     }
     return status;
+}
+
+void AudioFlinger::EffectChain::setVolumeForOutput(uint32_t left, uint32_t right)
+{
+    sp<ThreadBase> thread = mThread.promote();
+    if (thread != 0 &&
+        (thread->type() == ThreadBase::OFFLOAD) &&
+        !isNonOffloadableEnabled_l()) {
+        PlaybackThread *t = (PlaybackThread *)thread.get();
+        StreamOutHalInterface *stream = (StreamOutHalInterface *)t->getOutput_l()->stream.get();
+        if (stream != NULL) {
+            float vol_l = (float)left / (1 << 24);
+            float vol_r = (float)right / (1 << 24);
+            stream->setVolume(vol_l, vol_r);
+        }
+    }
 }
 
 status_t AudioFlinger::EffectModule::setDevice(audio_devices_t device)
@@ -1945,6 +1978,7 @@ void AudioFlinger::EffectChain::resetVolume_l()
         uint32_t left = mLeftVolume;
         uint32_t right = mRightVolume;
         (void)setVolume_l(&left, &right, true);
+        setVolumeForOutput(left, right);
     }
 }
 
@@ -2211,6 +2245,11 @@ void AudioFlinger::EffectChain::checkSuspendOnEffectEnabled(const sp<EffectModul
 bool AudioFlinger::EffectChain::isNonOffloadableEnabled()
 {
     Mutex::Autolock _l(mLock);
+    return isNonOffloadableEnabled_l();
+}
+
+bool AudioFlinger::EffectChain::isNonOffloadableEnabled_l()
+{
     size_t size = mEffects.size();
     for (size_t i = 0; i < size; i++) {
         if (mEffects[i]->isEnabled() && !mEffects[i]->isOffloadable()) {
