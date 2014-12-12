@@ -16,6 +16,24 @@
       "revId": "650254065e7c6b5abab5e3d154f720753fe1e1cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44ff9eb8_05fd52c5",
+        "filename": "services/audioflinger/AudioMixerOps.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-12-12T00:30:16Z",
+      "side": 1,
+      "message": "Yes, C++ external template instantiation could be complicated, but gnu\u0027s external inline linkage could be even more confusing. :-) I think it is fine here to assume non-inlined template declaration, and then realize that it is undefined.",
+      "parentUuid": "c4138eda_2f8cad93",
+      "revId": "650254065e7c6b5abab5e3d154f720753fe1e1cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
