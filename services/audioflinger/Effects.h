@@ -85,6 +85,8 @@ public:
     status_t    setEnabled_l(bool enabled);
     bool isEnabled() const;
     bool isProcessEnabled() const;
+    bool isOffloadedOrDirect() const;
+    bool isVolumeControlEnabled() const;
 
     void        setInBuffer(const sp<EffectBufferHalInterface>& buffer);
     int16_t     *inBuffer() const {
@@ -128,6 +130,9 @@ public:
                         { return (mDescriptor.flags & EFFECT_FLAG_HW_ACC_MASK) == 0; }
     bool             isProcessImplemented() const
                         { return (mDescriptor.flags & EFFECT_FLAG_NO_PROCESS) == 0; }
+    bool             isVolumeControl() const
+                        { return (mDescriptor.flags & EFFECT_FLAG_VOLUME_MASK)
+                            == EFFECT_FLAG_VOLUME_CTRL; }
     status_t         setOffloaded(bool offloaded, audio_io_handle_t io);
     bool             isOffloaded() const;
     void             addEffectToHal_l();
@@ -394,6 +399,8 @@ private:
     void clearInputBuffer_l(const sp<ThreadBase>& thread);
 
     void setThread(const sp<ThreadBase>& thread);
+
+    void setVolumeForOutput_l(uint32_t left, uint32_t right);
 
              wp<ThreadBase> mThread;     // parent mixer thread
     mutable  Mutex mLock;        // mutex protecting effect list
