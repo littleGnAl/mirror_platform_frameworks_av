@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4138eda_2f8cad93",
+        "filename": "services/audioflinger/AudioMixerOps.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2014-12-12T00:14:40Z",
+      "side": 1,
+      "message": "Shouldn\u0027t the inline stay? Templates are weird...",
+      "revId": "650254065e7c6b5abab5e3d154f720753fe1e1cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
