@@ -345,6 +345,7 @@ public:
 
     // At least one non offloadable effect in the chain is enabled
     bool isNonOffloadableEnabled();
+    bool isNonOffloadableEnabled_l();
 
     void syncHalEffectsState();
 
@@ -364,6 +365,8 @@ public:
     bool isCompatibleWithThread_l(const sp<ThreadBase>& thread) const;
 
     void dump(int fd, const Vector<String16>& args);
+
+    void getVolume(uint32_t* left, uint32_t* right) {*left = mLeftVolume; *right = mRightVolume;}
 
 private:
     friend class AudioFlinger;  // for mThread, mEffects
@@ -394,6 +397,8 @@ private:
     void clearInputBuffer_l(const sp<ThreadBase>& thread);
 
     void setThread(const sp<ThreadBase>& thread);
+
+    void setVolumeForOutput_l(uint32_t left, uint32_t right);
 
              wp<ThreadBase> mThread;     // parent mixer thread
     mutable  Mutex mLock;        // mutex protecting effect list

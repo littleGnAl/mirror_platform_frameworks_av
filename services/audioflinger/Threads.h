@@ -702,6 +702,8 @@ public:
     virtual     void        setStreamMute(audio_stream_type_t stream, bool muted);
     virtual     float       streamVolume(audio_stream_type_t stream) const;
 
+                void        setVolumeForOutput_l(uint32_t left, uint32_t right);
+
                 sp<Track>   createTrack_l(
                                 const sp<AudioFlinger::Client>& client,
                                 audio_stream_type_t streamType,

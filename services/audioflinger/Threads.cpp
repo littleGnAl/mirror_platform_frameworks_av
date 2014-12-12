@@ -2129,6 +2129,13 @@ float AudioFlinger::PlaybackThread::streamVolume(audio_stream_type_t stream) con
     return mStreamTypes[stream].volume;
 }
 
+void AudioFlinger::PlaybackThread::setVolumeForOutput_l(uint32_t left, uint32_t right)
+{
+    float vol_l = (float)left / (1 << 24);
+    float vol_r = (float)right / (1 << 24);
+    mOutput->stream->setVolume(vol_l, vol_r);
+}
+
 // addTrack_l() must be called with ThreadBase::mLock held
 status_t AudioFlinger::PlaybackThread::addTrack_l(const sp<Track>& track)
 {
