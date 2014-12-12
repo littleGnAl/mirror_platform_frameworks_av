@@ -595,6 +595,7 @@ public:
                                 status_t *status /*non-NULL*/);
 
                 AudioStreamOut* getOutput() const;
+                AudioStreamOut* getOutput_l() const;
                 AudioStreamOut* clearOutput();
                 virtual audio_stream_t* stream() const;
 

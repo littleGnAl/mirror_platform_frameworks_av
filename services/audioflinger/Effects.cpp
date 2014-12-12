@@ -219,6 +219,7 @@ ssize_t AudioFlinger::EffectModule::disconnectHandle(EffectHandle *handle, bool 
 
 bool AudioFlinger::EffectModule::updateState() {
     Mutex::Autolock _l(mLock);
+    sp<ThreadBase> thread = mThread.promote();
 
     bool started = false;
     switch (mState) {
@@ -233,15 +234,19 @@ bool AudioFlinger::EffectModule::updateState() {
                    0,
                    mConfig.inputCfg.buffer.frameCount*sizeof(int32_t));
         }
-        if (start_l() == NO_ERROR) {
+        mLock.unlock();
+        if (start() == NO_ERROR) {
             mState = ACTIVE;
             started = true;
         } else {
             mState = IDLE;
         }
+        mLock.lock();
         break;
     case STOPPING:
-        if (stop_l() == NO_ERROR) {
+        if (stop_l() == NO_ERROR &&
+            thread != 0 &&
+            thread->type() != ThreadBase::OFFLOAD) {
             mDisableWaitCnt = mMaxDisableWaitCnt;
         } else {
             mDisableWaitCnt = 1; // will cause immediate transition to IDLE
@@ -545,6 +550,20 @@ status_t AudioFlinger::EffectModule::stop_l()
     }
     status_t cmdStatus = NO_ERROR;
     uint32_t size = sizeof(status_t);
+
+    if ((mDescriptor.flags & EFFECT_FLAG_VOLUME_MASK) == EFFECT_FLAG_VOLUME_CTRL) {
+        sp<ThreadBase> thread = mThread.promote();
+        if (thread != 0) {
+            if (thread->type() == ThreadBase::OFFLOAD) {
+                sp<EffectChain>chain = mChain.promote();
+                uint32_t left = 0;
+                uint32_t right = 0;
+                chain->getVolume(&left, &right);
+                chain->setVolumeForOutput(left, right);
+            }
+        }
+    }
+
     status_t status = (*mEffectInterface)->command(mEffectInterface,
                                                    EFFECT_CMD_DISABLE,
                                                    0,
@@ -792,6 +811,21 @@ status_t AudioFlinger::EffectModule::setVolume(uint32_t *left, uint32_t *right, 
         }
     }
     return status;
+}
+
+void AudioFlinger::EffectChain::setVolumeForOutput(uint32_t left, uint32_t right)
+{
+    sp<ThreadBase> thread = mThread.promote();
+    if (thread != 0 &&
+        (thread->type() == ThreadBase::OFFLOAD)) {
+        PlaybackThread *t = (PlaybackThread *)thread.get();
+        audio_stream_out_t *stream = t->getOutput_l()->stream;
+        if (stream != NULL) {
+            float vol_l = (float)left / (1 << 24);
+            float vol_r = (float)right / (1 << 24);
+            stream->set_volume(stream, vol_l, vol_r);
+        }
+    }
 }
 
 status_t AudioFlinger::EffectModule::setDevice(audio_devices_t device)
@@ -1832,14 +1866,28 @@ bool AudioFlinger::EffectChain::setVolume_l(uint32_t *left, uint32_t *right, boo
     bool hasControl = false;
     int ctrlIdx = -1;
     size_t size = mEffects.size();
+    sp<ThreadBase> thread = mThread.promote();
 
     // first update volume controller
-    for (size_t i = size; i > 0; i--) {
-        if (mEffects[i - 1]->isProcessEnabled() &&
-            (mEffects[i - 1]->desc().flags & EFFECT_FLAG_VOLUME_MASK) == EFFECT_FLAG_VOLUME_CTRL) {
-            ctrlIdx = i - 1;
-            hasControl = true;
-            break;
+    if (thread != 0 && (thread->type() == ThreadBase::OFFLOAD)) {
+        for (size_t i = size; i > 0; i--) {
+            if (mEffects[i - 1]->isEnabled() &&
+                    (mEffects[i - 1]->desc().flags & EFFECT_FLAG_VOLUME_MASK) ==
+                    EFFECT_FLAG_VOLUME_CTRL) {
+                ctrlIdx = i - 1;
+                hasControl = true;
+                break;
+            }
+        }
+    } else {
+        for (size_t i = size; i > 0; i--) {
+            if (mEffects[i - 1]->isProcessEnabled() &&
+                    (mEffects[i - 1]->desc().flags & EFFECT_FLAG_VOLUME_MASK) ==
+                    EFFECT_FLAG_VOLUME_CTRL) {
+                ctrlIdx = i - 1;
+                hasControl = true;
+                break;
+            }
         }
     }
 
@@ -1892,6 +1940,7 @@ void AudioFlinger::EffectChain::resetVolume_l()
         uint32_t left = mLeftVolume;
         uint32_t right = mRightVolume;
         (void)setVolume_l(&left, &right, true);
+        setVolumeForOutput(left, right);
     }
 }
 
