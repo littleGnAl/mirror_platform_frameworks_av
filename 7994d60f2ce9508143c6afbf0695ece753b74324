@@ -34,6 +34,24 @@
       "revId": "7994d60f2ce9508143c6afbf0695ece753b74324",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01ccb852_4b5e65c6",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1536,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2014-12-16T20:26:14Z",
+      "side": 1,
+      "message": "fix the comments then? and add a cast to FOURCC and then actually use \u0027©\u0027?",
+      "parentUuid": "417dd09e_9571e47c",
+      "revId": "7994d60f2ce9508143c6afbf0695ece753b74324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
