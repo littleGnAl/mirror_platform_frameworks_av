@@ -52,6 +52,24 @@
       "revId": "7994d60f2ce9508143c6afbf0695ece753b74324",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "217a9caa_d4af5c9d",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1536,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2014-12-16T22:19:31Z",
+      "side": 1,
+      "message": "we may want to transition to \u0027\\xa9xyz\u0027 notation of FOURCC-s... would that solve this, or is that platform dependent?  I\u0027ll pass this to hunga@ as I am OOO",
+      "parentUuid": "01ccb852_4b5e65c6",
+      "revId": "7994d60f2ce9508143c6afbf0695ece753b74324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
