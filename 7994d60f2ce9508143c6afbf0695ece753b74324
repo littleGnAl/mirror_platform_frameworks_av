@@ -16,6 +16,24 @@
       "revId": "7994d60f2ce9508143c6afbf0695ece753b74324",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "417dd09e_9571e47c",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1536,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2014-12-16T20:03:14Z",
+      "side": 1,
+      "message": "FOURCC(0xa9, ....) should be correct.\nAt line 2231 to 2256, we can see more such patterns.\nNote that clang gives warning to FOURCC(\u0027\\xA9\u0027, ...) for 64-bit targets.",
+      "parentUuid": "815d0834_e75ac2c3",
+      "revId": "7994d60f2ce9508143c6afbf0695ece753b74324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
