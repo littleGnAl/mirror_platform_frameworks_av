@@ -70,6 +70,24 @@
       "revId": "7994d60f2ce9508143c6afbf0695ece753b74324",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1ba449b_de24454d",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1536,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2014-12-16T23:03:31Z",
+      "side": 1,
+      "message": "The values of multi-char character constants are implementation defined, and any two are not even guaranteed to be distinct. In reality I believe clang and gcc agree, but I\u0027d rather just not bother with it.\n\nC++ standard, §2.14.3/1 - Character literals\n\n(...) An ordinary character literal that contains more than one c-char is a multicharacter literal . A multicharacter literal has type int and implementation-deﬁned value.",
+      "parentUuid": "217a9caa_d4af5c9d",
+      "revId": "7994d60f2ce9508143c6afbf0695ece753b74324",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
