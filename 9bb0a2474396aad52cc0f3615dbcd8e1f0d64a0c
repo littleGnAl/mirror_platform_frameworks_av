@@ -16,6 +16,24 @@
       "revId": "9bb0a2474396aad52cc0f3615dbcd8e1f0d64a0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "01e03812_ab888904",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2799,
+      "author": {
+        "id": 1015668
+      },
+      "writtenOn": "2014-12-19T02:49:00Z",
+      "side": 1,
+      "message": "The range check is done in StagefrightRecorder::clipAudioBitRate()",
+      "parentUuid": "9fee4133_a29760d1",
+      "revId": "9bb0a2474396aad52cc0f3615dbcd8e1f0d64a0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
