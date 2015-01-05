@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a12ccc7b_f1f73a98",
+        "filename": "media/libstagefright/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-01-05T16:06:51Z",
+      "side": 1,
+      "message": "also no longer needed? i don\u0027t actually see libcrypto below, so maybe this is doubly obsolete?",
+      "revId": "faaf4d8720eb8dfb3029e2d0cd1ab00be213dafc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a12ccc7b_d1f236ab",
+        "filename": "media/libstagefright/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2015-01-05T16:06:51Z",
+      "side": 1,
+      "message": "netd?!",
+      "revId": "faaf4d8720eb8dfb3029e2d0cd1ab00be213dafc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
