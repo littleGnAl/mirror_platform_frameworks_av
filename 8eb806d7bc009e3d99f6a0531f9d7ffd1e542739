@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "978b8f6f_4aefb7b8",
+        "filename": "media/libstagefright/httplive/LiveSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1482,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2015-02-02T17:26:36Z",
+      "side": 1,
+      "message": "1. Why pick highest segment start time instead of the lowest, as the original logic in the code?\n\n2. Could you please elaborate more on your comments? A simple example would help. Do you mean audio/video TO audio only? When switching FROM audio only we wouldn\u0027t have multiple (segment) start times to compare each other against, no?",
+      "revId": "8eb806d7bc009e3d99f6a0531f9d7ffd1e542739",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
