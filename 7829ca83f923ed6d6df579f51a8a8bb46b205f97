@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab159030_b9519fcf",
+        "filename": "media/libstagefright/httplive/PlaylistFetcher.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2015-02-12T23:43:52Z",
+      "side": 0,
+      "message": "Is the following logic moved else where? This is our seeking code.\n\n// SEEK_STEP_1\n\nFirst,\nmSeqNumber \u003d getSeqNumberForTime(mStartTimeUs);\nfinds the segment.\n\nThen,\nmStartTimeUs -\u003d getSegmentStartTimeUs(mSeqNumber);\ndetermines the seek time _within_ the aforementioned segment.\n\nFinally we set mStartTimeUsRelative,\nmStartTimeUsRelative \u003d true;\n\nFor the effect of setting mStartTimeUsRelative please see my comment marked SEEK_STEP_2 in extractAndQueueAccessUnitsFromTs.",
+      "revId": "7829ca83f923ed6d6df579f51a8a8bb46b205f97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bfb3434_07c37c2f",
+        "filename": "media/libstagefright/httplive/PlaylistFetcher.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2015-02-12T23:43:52Z",
+      "side": 0,
+      "message": "// SEEK_STEP_2\n\nWe decide when to stop discarding samples on startup by comparing sample timestamps with mStartTimeUs; if mStartTimeUsRelative is true we use timestamps _relative to the start of the segment_, as opposed to raw timestamps extracted from the transport stream.\n\nIn essence our seek and switch logic share the \"changeConfiguration\" code path.",
+      "revId": "7829ca83f923ed6d6df579f51a8a8bb46b205f97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
