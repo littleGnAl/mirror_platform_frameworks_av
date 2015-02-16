@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "2bee00c7_4d1a996f",
+        "filename": "media/libstagefright/httplive/PlaylistFetcher.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2015-02-16T07:27:08Z",
+      "side": 0,
+      "message": "This patch also uses \n\nmSeqNumber \u003d getSeqNumberForTime(mStartTimeUs);\n\nin order to find the segment to download at seek.\nSo far there is no difference.\n\nHowever, as you noticed, after having downloaded the first timestamp, this patch uses the same functionality that is used when switching streams, e.g. the raw timestamp from the stream is used when discarding samples on startup.\n\nRegarding the use of mStartTimeUsRelative:\n\nWe decided to always use raw timestamps, since that is what needs to be used for synchronization of live streams.\nUsing relative timestamps in some sence means trusting the playlist over the actual stream(s).",
+      "parentUuid": "ab159030_b9519fcf",
+      "revId": "7829ca83f923ed6d6df579f51a8a8bb46b205f97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4bfb3434_07c37c2f",
         "filename": "media/libstagefright/httplive/PlaylistFetcher.cpp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2015-02-12T23:43:52Z",
       "side": 0,
       "message": "// SEEK_STEP_2\n\nWe decide when to stop discarding samples on startup by comparing sample timestamps with mStartTimeUs; if mStartTimeUsRelative is true we use timestamps _relative to the start of the segment_, as opposed to raw timestamps extracted from the transport stream.\n\nIn essence our seek and switch logic share the \"changeConfiguration\" code path.",
+      "revId": "7829ca83f923ed6d6df579f51a8a8bb46b205f97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0ba85c5a_64690a85",
+        "filename": "media/libstagefright/httplive/PlaylistFetcher.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2015-02-16T07:27:08Z",
+      "side": 0,
+      "message": "If I understand correctly, Google switch logic will not use relative timestamps.\nUsing relative timestamps only when seeking, means that we might get a different result when switching to a certain time compared to when seeking to the same time.\n\nMaybe that would be ok, but we felt that it was more consistent to always use raw timestamps.\n\nHave you seen any negative impact of using raw timestamps?",
+      "parentUuid": "4bfb3434_07c37c2f",
       "revId": "7829ca83f923ed6d6df579f51a8a8bb46b205f97",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
