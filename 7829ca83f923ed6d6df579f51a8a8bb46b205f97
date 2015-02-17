@@ -69,6 +69,24 @@
       "revId": "7829ca83f923ed6d6df579f51a8a8bb46b205f97",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b513ca8_fca0c9b2",
+        "filename": "media/libstagefright/httplive/PlaylistFetcher.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1238,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2015-02-17T22:51:08Z",
+      "side": 0,
+      "message": "The problem we ran into with using raw timestamps for seek is any EXT-X-DISCONTINUITY-SEQUENCE that we would have to skip; after skipping a EXT-X-DISCONTINUITY-SEQUENCE we would need to reset the first raw timestamp, and could not do so without also fetching and parsing extra segments that are skipped during a seek.",
+      "parentUuid": "0ba85c5a_64690a85",
+      "revId": "7829ca83f923ed6d6df579f51a8a8bb46b205f97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
