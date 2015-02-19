@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "087a22aa_d490bc66",
+        "filename": "media/libstagefright/codecs/gsm/dec/SoftGSM.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2015-02-19T19:20:35Z",
+      "side": 1,
+      "message": "can we add some comments how this number is derived? (in case it needs to be updated later.)\notherwise LGTM",
+      "range": {
+        "startLine": 67,
+        "startChar": 29,
+        "endLine": 67,
+        "endChar": 36
+      },
+      "revId": "92d484df8d5f3220213fa11ae0ef64cca92b7a39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
