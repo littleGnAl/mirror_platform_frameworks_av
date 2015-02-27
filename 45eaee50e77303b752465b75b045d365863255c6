@@ -16,6 +16,24 @@
       "revId": "45eaee50e77303b752465b75b045d365863255c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c2d62b82_6ad89728",
+        "filename": "media/libstagefright/httplive/PlaylistFetcher.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2015-02-27T14:17:54Z",
+      "side": 1,
+      "message": "mStartTimeUs is relative when seeking, and raw when switching, just as before.\nWhen seeking we adjust the mStartTimeUs at line 801.\n\nWe have chosen to use mStartTimeUs as input to getSeqNumberForTime instead of mSegmentStartTimeUs in order to be able to handle cases where segment durations differ between playlists or segment borders are not fully synced.\n\nFor example: If playlist 1 contains segments with duration 10 and playlist 2 contains segments with duration 9. If switching from playlist 1 to 2 at segment 9 after 90 seconds, the segment start time would be 80, which would result in finding segment 8 in playlist 1. Then the sequence number would be stepped to 9 and we would start downloading timestamps starting at 81s, resulting in that the whole segment would be discarded.\n\nHowever, we see the advantages of using mSegmentStartTimeUs for some cases. \nWe will make new uploads where we will use mStartTimeUs only for static playlists without discontinuities.\n\nAdditionally, in our solution, we always use the functionality in synchronizeSeqNumber at bandwidth switches, see line 1302.\nThis functionality will make sure that we always find the most suitable segment to download, by synchronizing on raw timestamps.\nSo, in our solution at bw switch, the segment number that is chosen at the startup of a new fetcher, will always be adjusted if needed based on the raw timestamps in the stream.",
+      "parentUuid": "e2f96fff_1eadc9fe",
+      "revId": "45eaee50e77303b752465b75b045d365863255c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
