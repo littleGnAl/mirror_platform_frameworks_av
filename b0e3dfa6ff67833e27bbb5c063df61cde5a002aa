@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "92f6464a_03a7f28b",
+        "filename": "media/libstagefright/httplive/LiveSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2015-02-27T23:42:38Z",
+      "side": 0,
+      "message": "bandwidth polling change",
+      "revId": "b0e3dfa6ff67833e27bbb5c063df61cde5a002aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92f6464a_6398f64b",
+        "filename": "media/libstagefright/httplive/LiveSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1496,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2015-02-27T23:42:38Z",
+      "side": 0,
+      "message": "This should still be needed as createFormatChangeBuffer is called with swap equals false.",
+      "revId": "b0e3dfa6ff67833e27bbb5c063df61cde5a002aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "92f6464a_c3d90a1c",
+        "filename": "media/libstagefright/httplive/LiveSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1628,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2015-02-27T23:42:38Z",
+      "side": 0,
+      "message": "bandwidth polling change",
+      "revId": "b0e3dfa6ff67833e27bbb5c063df61cde5a002aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
