@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e2f96fff_1eadc9fe",
+        "filename": "media/libstagefright/httplive/PlaylistFetcher.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2015-02-27T02:31:55Z",
+      "side": 1,
+      "message": "Is mStartTimeUs a raw timestamp, relative timestamp, or it depends?\n\nBefore this change, mStartTimeUs is relative when seeking, and raw when switching.\n\nThe input time for getSeqNumberForTime should be relative to the start of a playlist. The original code at line 775 [marked L775] for example uses mSegmentStartTimeUs.\n\nSegment start time means the start of a segment relative to the start of a playlist. We try not to use sequence numbers for syncing variants, so we use segment start times instead. For example, when switching from variant 1 to 2,  if variant 1 has buffered 50 seconds into playlist 1, we try to switch to variant 2 also around 50 seconds into playlist 2. Raw timestamps are then used to fine tune the splice point.\n\nFor static playlists this strategy should always be accurate; for rolling playlists there is a chance that we have fetched a later version of playlist 2 than its playlist 1 counterpart, causing us to start fetching variant 2 too deep into the playlist. (This results in a large gap for variant 1 to fill, so we added logic to adjust back.)",
+      "revId": "45eaee50e77303b752465b75b045d365863255c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
