@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "a24e9754_f17ca8cc",
+        "filename": "media/libstagefright/httplive/LiveSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1556,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2015-03-02T12:58:22Z",
+      "side": 1,
+      "message": "We needed to keep the canSwitchBandwidthTo to not issue a configuration change while another switch is ongoing. After the remove of the swap functionality, a new switch can happen before the first is dequeued. Thus this code is changed in this patch.",
+      "parentUuid": "92f6464a_e3dc060e",
+      "revId": "f154b879edf94a79fd5a07526cd4b33cdbd6c7b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "32111a43_e09076c8",
         "filename": "media/libstagefright/httplive/PlaylistFetcher.cpp",
         "patchSetId": 2
@@ -30,6 +48,29 @@
       "writtenOn": "2015-02-27T23:42:38Z",
       "side": 1,
       "message": "getLastFormat change",
+      "revId": "f154b879edf94a79fd5a07526cd4b33cdbd6c7b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "62581f1b_2f1c090c",
+        "filename": "media/libstagefright/httplive/PlaylistFetcher.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1520,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2015-03-02T12:58:22Z",
+      "side": 1,
+      "message": "We need to use the last queued format here since we now only have one AnotherPacketSource. If using getFormat the format of the first enqueued data is used. That may differ from the last enqueued data. But it should be possible to use getLatestEnqueuedMeta instead of adding a new method.",
+      "range": {
+        "startLine": 1520,
+        "startChar": 38,
+        "endLine": 1520,
+        "endChar": 51
+      },
       "revId": "f154b879edf94a79fd5a07526cd4b33cdbd6c7b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
