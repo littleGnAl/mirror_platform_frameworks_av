@@ -33,6 +33,24 @@
       "revId": "89023b2467c67c8423aa8b82e202b5a07ed52083",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d2bd1ee7_77d39055",
+        "filename": "media/libstagefright/httplive/PlaylistFetcher.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2015-03-03T15:30:17Z",
+      "side": 1,
+      "message": "If we return here, we have detected that we need to do a configuration change to adapt to the current available bandwidth. If we would let the download continue a full segment would be downloaded before he configuration change can be done. This is needed especially if we are low in buffer, then a switch to a lower quality stream must be done as quickly as possible.\n  \nSince the PlaylistFetcher is running in the same message queue as LiveSession a bandwidth check message can only be executed in between downloads. There can be other messages delaying the execution of the message.\n\nIt would be possible to check the bw after the download. However we still need to abort before downloding if a reconfiguration is ongoing, e.g. if another fetcher has detected that a switch is required. We think it is better to keep it all in one place.",
+      "parentUuid": "52612e1e_f9d98f1b",
+      "revId": "89023b2467c67c8423aa8b82e202b5a07ed52083",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
