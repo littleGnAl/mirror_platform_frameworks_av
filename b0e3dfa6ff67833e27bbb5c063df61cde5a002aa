@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "12da56a9_6979c5c6",
+        "filename": "media/libstagefright/httplive/LiveSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2015-03-04T15:02:08Z",
+      "side": 1,
+      "message": "Agree, looks fishy.",
+      "parentUuid": "321d9af7_e9fb21fc",
+      "revId": "b0e3dfa6ff67833e27bbb5c063df61cde5a002aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "527a0e34_8e893b27",
         "filename": "media/libstagefright/httplive/LiveSession.cpp",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2015-03-04T01:14:08Z",
       "side": 1,
       "message": "There doesn\u0027t seem to be other places in the code that checks for this state.",
+      "revId": "b0e3dfa6ff67833e27bbb5c063df61cde5a002aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "929c86d9_ad061d9c",
+        "filename": "media/libstagefright/httplive/LiveSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2015-03-04T15:02:08Z",
+      "side": 1,
+      "message": "No, this is just to make sure that no new commands are handled while disconnecting. (There are checks for mReconfigurationState \u003d\u003d NONE)",
+      "parentUuid": "527a0e34_8e893b27",
       "revId": "b0e3dfa6ff67833e27bbb5c063df61cde5a002aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "52a68e28_8b322d76",
+        "filename": "media/libstagefright/httplive/LiveSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2015-03-04T15:02:08Z",
+      "side": 1,
+      "message": "Yes, but mReconfigurationState \u003d\u003d RECONFIGURATION_PENDING means that a configuration change is about to take place anyway and the M3UParser has already been updated.",
+      "parentUuid": "727f1222_2f7b65a8",
+      "revId": "b0e3dfa6ff67833e27bbb5c063df61cde5a002aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "321d9af7_09d455bd",
         "filename": "media/libstagefright/httplive/LiveSession.cpp",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2015-03-04T01:14:08Z",
       "side": 1,
       "message": "use LiveSession::isReconfiguring? Or maybe we should reconsider if we actually do need a LiveSession::isReconfiguring as it is quite trivial.",
+      "revId": "b0e3dfa6ff67833e27bbb5c063df61cde5a002aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "929c86d9_cd1569c2",
+        "filename": "media/libstagefright/httplive/LiveSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1630,
+      "author": {
+        "id": 1017893
+      },
+      "writtenOn": "2015-03-04T15:02:08Z",
+      "side": 1,
+      "message": "LiveSession::isReconfiguring() was introduced in https://android-review.googlesource.com/#/c/128247, where it is used by PlaylistFetcher.",
+      "parentUuid": "321d9af7_09d455bd",
       "revId": "b0e3dfa6ff67833e27bbb5c063df61cde5a002aa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
