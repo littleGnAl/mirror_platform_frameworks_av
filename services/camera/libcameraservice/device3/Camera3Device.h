@@ -219,6 +219,8 @@ class Camera3Device :
 
     Condition                  mStatusChanged;
 
+    Condition                  mInFlightEmptySignal;
+
     // Tracking cause of fatal errors when in STATUS_ERROR
     String8                    mErrorCause;
 
@@ -283,6 +285,16 @@ class Camera3Device :
 
     status_t submitRequestsHelper(const List<const CameraMetadata> &requests, bool repeating,
                                   int64_t *lastFrameNumber = NULL);
+
+    /**
+     * Wait until mInFlightMap becomes empty.
+     *
+     * If mInFlightMap is already empty, returns ture immediately.
+     * Otherwise, wait until mInFlightMap becomes empty with 2 seconds timeout.
+     * Returns true when mInFlightMap becomes empty successfully, and false
+     * in case of timeout.
+     */
+    bool waitUntilInFlightMapEmpty();
 
     /**
      * Get the last request submitted to the hal by the request thread.

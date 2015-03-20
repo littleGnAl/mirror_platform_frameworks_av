@@ -1187,6 +1187,10 @@ status_t Camera3Device::waitUntilDrainedLocked() {
         SET_ERR_L("Error waiting for HAL to drain: %s (%d)", strerror(-res),
                 res);
     }
+    // To avoid createStream during processing in HAL
+    if (!waitUntilInFlightMapEmpty()) {
+        SET_ERR_L("Timeout waiting for InFlightMap to become empty");
+    }
     return res;
 }
 
@@ -1208,8 +1212,22 @@ status_t Camera3Device::internalPauseAndWaitLocked() {
         SET_ERR_L("Can't idle device in %f seconds!",
                 kShutdownTimeout/1e9);
     }
-
+    // To avoid createStream during processing in HAL
+    if (!waitUntilInFlightMapEmpty()) {
+        SET_ERR_L("Timeout waiting for InFlightMap to become empty");
+    }
     return res;
+}
+
+// Wait until mInFlightMap becomes empty
+bool Camera3Device::waitUntilInFlightMapEmpty() {
+    Mutex::Autolock l(mInFlightLock);
+    status_t res = OK;
+    while ((mInFlightMap.size() > 0) && (res == OK)) {
+        ALOGV("%s: mInFlightMap: %d remain", __FUNCTION__, mInFlightMap.size());
+        res = mInFlightEmptySignal.waitRelative(mInFlightLock, 2000 * 1000 * 1000);
+    }
+    return (res == OK);
 }
 
 // Resume after internalPauseAndWaitLocked
@@ -2411,6 +2429,9 @@ void Camera3Device::processCaptureResult(const camera3_capture_result *result) {
         }
 
         removeInFlightRequestIfReadyLocked(idx);
+        if (mInFlightMap.size() == 0) {
+            mInFlightEmptySignal.signal();
+        }
     } // scope for mInFlightLock
 
     if (result->input_buffer != NULL) {
