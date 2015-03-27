@@ -3747,8 +3747,10 @@ status_t ACodec::setVideoFormatOnPort(
         return FAILED_TRANSACTION;
     }
 
-    video_def->nFrameWidth = width;
-    video_def->nFrameHeight = height;
+    if (width != 0 && height != 0) {
+        video_def->nFrameWidth = width;
+        video_def->nFrameHeight = height;
+    }
 
     if (portIndex == kPortIndexInput) {
         video_def->eCompressionFormat = compressionFormat;
