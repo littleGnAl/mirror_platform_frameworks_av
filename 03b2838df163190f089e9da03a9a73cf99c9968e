@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a315c284_d171f7dd",
+        "filename": "services/audiopolicy/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2015-03-31T15:45:16Z",
+      "side": 1,
+      "message": "please add a ALOGV here for this early exit",
+      "range": {
+        "startLine": 1251,
+        "startChar": 19,
+        "endLine": 1251,
+        "endChar": 36
+      },
+      "revId": "03b2838df163190f089e9da03a9a73cf99c9968e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a315c284_5147c77f",
+        "filename": "services/audiopolicy/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1262,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2015-03-31T15:45:16Z",
+      "side": 1,
+      "message": "this integer has no corresponding argument in the va list",
+      "range": {
+        "startLine": 1262,
+        "startChar": 56,
+        "endLine": 1262,
+        "endChar": 58
+      },
+      "revId": "03b2838df163190f089e9da03a9a73cf99c9968e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
