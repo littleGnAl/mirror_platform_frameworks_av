@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a371421d_054df24d",
+        "filename": "services/audiopolicy/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1251,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2015-04-01T16:34:44Z",
+      "side": 1,
+      "message": "This is not an error. It happens in normal conditions and should just be logged in verbose mode.\nIt is just that current context does not allow playback of this use case.",
+      "range": {
+        "startLine": 1251,
+        "startChar": 44,
+        "endLine": 1251,
+        "endChar": 60
+      },
+      "revId": "066f8f4b7c59853eb5a7c3e7e96c7179224a671c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
