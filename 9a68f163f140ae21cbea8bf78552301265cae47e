@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "439a4679_c712fcdb",
+        "filename": "media/libstagefright/codecs/mpeg2dec/SoftMPEG2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-04-01T15:55:02Z",
+      "side": 1,
+      "message": "On my machine this prints:\n\nIttiam decoder version number: @(#)Id:MPEG2VDEC_eval Ver:01.00 Released by ITTIAM Build: Mar 31 2015 @ 15:38:43\n\nwhich doesn\u0027t really convey any useful information. Worse, it\u0027s always printed several times in a row. Please either remove or make this an ALOGV.",
+      "range": {
+        "startLine": 143,
+        "startChar": 30,
+        "endLine": 143,
+        "endChar": 37
+      },
+      "revId": "9a68f163f140ae21cbea8bf78552301265cae47e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
