@@ -22,6 +22,30 @@
       "revId": "9a68f163f140ae21cbea8bf78552301265cae47e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03f04edb_73585a14",
+        "filename": "media/libstagefright/codecs/mpeg2dec/SoftMPEG2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1068291
+      },
+      "writtenOn": "2015-04-02T09:46:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "439a4679_c712fcdb",
+      "range": {
+        "startLine": 143,
+        "startChar": 30,
+        "endLine": 143,
+        "endChar": 37
+      },
+      "revId": "9a68f163f140ae21cbea8bf78552301265cae47e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
