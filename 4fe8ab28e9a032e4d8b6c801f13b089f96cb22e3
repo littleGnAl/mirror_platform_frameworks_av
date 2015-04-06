@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83519eaa_e21a6270",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1622,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-04-06T16:28:59Z",
+      "side": 1,
+      "message": "For backward compatibility, perhaps it would be better to just \"break;\" here.",
+      "range": {
+        "startLine": 1622,
+        "startChar": 27,
+        "endLine": 1622,
+        "endChar": 42
+      },
+      "revId": "4fe8ab28e9a032e4d8b6c801f13b089f96cb22e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
