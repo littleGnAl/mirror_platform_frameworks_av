@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63258a42_59a0e39e",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2639,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-04-07T17:08:00Z",
+      "side": 1,
+      "message": "Should this be checked at the point where track-\u003etimescale is actually set or used? Or verifyTrack() called in more places?\nEven with this change, there\u0027s the potential for division by zero: at line 1175 above, timescale is read from the file, and at line 1202 it is used in a way that could cause a divide by zero.",
+      "range": {
+        "startLine": 2639,
+        "startChar": 15,
+        "endLine": 2639,
+        "endChar": 24
+      },
+      "revId": "2ec2a0d165d967ca0eff5993209d07e7f1972aa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
