@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8316fefe_b401608d",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1286,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2015-04-08T09:06:28Z",
+      "side": 1,
+      "message": "mEOSReached is uninitialized",
+      "range": {
+        "startLine": 1286,
+        "startChar": 9,
+        "endLine": 1286,
+        "endChar": 20
+      },
+      "revId": "9c1691db5e706821924c10519e11e871835299f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
