@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0299e86_cb80dffa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 11
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-04-14T17:29:30Z",
+      "side": 1,
+      "message": "Please use domain here, e.g. MPEG4Writer:\n\nThe patch actually does this:\n\n use audio bit rate from the stream format\n\nDetail could be this:\n\n Use audio bit rate from the stream format, if it is specified. [ Otherwise, default to 96kpbs. ]",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "ab948e45f0f1be4133f93b17ba86786d5cacb029",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
