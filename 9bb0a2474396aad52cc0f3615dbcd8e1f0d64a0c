@@ -34,6 +34,29 @@
       "revId": "9bb0a2474396aad52cc0f3615dbcd8e1f0d64a0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b0242aae_ddc9c02d",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2799,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-04-14T17:25:55Z",
+      "side": 1,
+      "message": "note this is easier written as:\n\n int32_t bitRate \u003d 96000; // default bit rate\n mMeta-\u003efindInt32(kKeyBitRate, \u0026bitRate);\n mOwner-\u003ewriteInt32(bitRate); // max bit rate\n mOwner-\u003ewriteInt32(bitRate); // avg bit rate",
+      "range": {
+        "startLine": 2799,
+        "startChar": 9,
+        "endLine": 2799,
+        "endChar": 16
+      },
+      "revId": "9bb0a2474396aad52cc0f3615dbcd8e1f0d64a0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
