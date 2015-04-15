@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "b07b4aac_d44e7596",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVC.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-04-15T20:07:23Z",
+      "side": 1,
+      "message": "no (C)",
+      "range": {
+        "startLine": 2,
+        "startChar": 13,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "09f08746e05c6465ee721df1478b192e2c82fd31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d080bec6_103f1c88",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVC.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-04-15T20:07:23Z",
+      "side": 1,
+      "message": "no C",
+      "range": {
+        "startLine": 2,
+        "startChar": 13,
+        "endLine": 2,
+        "endChar": 16
+      },
+      "revId": "09f08746e05c6465ee721df1478b192e2c82fd31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23c4727c_74ca4520",
         "filename": "media/libstagefright/codecs/avcenc/SoftAVC.h",
         "patchSetId": 1
@@ -13,6 +59,30 @@
       "writtenOn": "2015-04-04T01:43:01Z",
       "side": 1,
       "message": "12 Mbps or 20 Mbps? media_codecs.xml says 12 Mbps. Is 20 Mbps feasible on a Qualcomm MSM8974 SoC?",
+      "range": {
+        "startLine": 39,
+        "startChar": 8,
+        "endLine": 39,
+        "endChar": 27
+      },
+      "revId": "09f08746e05c6465ee721df1478b192e2c82fd31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b07b4aac_d47755ca",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVC.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-04-15T20:07:23Z",
+      "side": 1,
+      "message": "I\u0027m fine with this being higher than the one in the xml, as we are more conservative in the xml generally.",
+      "parentUuid": "23c4727c_74ca4520",
       "range": {
         "startLine": 39,
         "startChar": 8,
