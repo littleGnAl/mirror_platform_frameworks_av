@@ -57,6 +57,30 @@
       "revId": "9bb0a2474396aad52cc0f3615dbcd8e1f0d64a0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f090620b_73fa28f5",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2799,
+      "author": {
+        "id": 1015668
+      },
+      "writtenOn": "2015-04-15T00:59:32Z",
+      "side": 1,
+      "message": "Can you clarify if this is just a note, or do you want this to be changed to the alternative solution?\n\nAFAICT it was written like this consistently with existing code that uses a `bool success`. Here we don\u0027t call `CHECK(success)` though.",
+      "parentUuid": "b0242aae_ddc9c02d",
+      "range": {
+        "startLine": 2799,
+        "startChar": 9,
+        "endLine": 2799,
+        "endChar": 16
+      },
+      "revId": "9bb0a2474396aad52cc0f3615dbcd8e1f0d64a0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
