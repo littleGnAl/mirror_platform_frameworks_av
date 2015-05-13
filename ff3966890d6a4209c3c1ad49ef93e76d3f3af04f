@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd1ae5b3_00217aca",
+        "filename": "include/media/stagefright/MediaCodec.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-05-13T18:02:30Z",
+      "side": 1,
+      "message": "how is this different from mCrypto !\u003d NULL?  It seems you need to consolidate mCrypto !\u003d NULL checks to mBlockOutputBuffers, and use similar code for protected audio/video.",
+      "range": {
+        "startLine": 270,
+        "startChar": 9,
+        "endLine": 270,
+        "endChar": 28
+      },
+      "revId": "ff3966890d6a4209c3c1ad49ef93e76d3f3af04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad15b184_8e70fa89",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1307,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-05-13T18:02:30Z",
+      "side": 1,
+      "message": "how do you verify that AudioTrack is secure?",
+      "range": {
+        "startLine": 1307,
+        "startChar": 47,
+        "endLine": 1307,
+        "endChar": 77
+      },
+      "revId": "ff3966890d6a4209c3c1ad49ef93e76d3f3af04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cd1ae5b3_a06ce603",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2057,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-05-13T18:02:30Z",
+      "side": 1,
+      "message": "what happens if this fails?",
+      "range": {
+        "startLine": 2057,
+        "startChar": 25,
+        "endLine": 2057,
+        "endChar": 30
+      },
+      "revId": "ff3966890d6a4209c3c1ad49ef93e76d3f3af04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
