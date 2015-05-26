@@ -22,6 +22,29 @@
       "revId": "a4bc59ad26b8790f4fc36f7f94d7815883efbecb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d99cdfb_90a9a48b",
+        "filename": "media/libstagefright/SurfaceMediaSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2015-05-26T19:16:20Z",
+      "side": 1,
+      "message": "This seems incorrect..\n\nacquireBuffer() returns a NULL mGraphicBuffer if this buffer has been acquired before, it is not an error and doesn\u0027t indicate EOS.\n\nIn GraphicBufferSource we don\u0027t fail NULL mGraphicBuffer either.",
+      "range": {
+        "startLine": 345,
+        "startChar": 4,
+        "endLine": 348,
+        "endChar": 5
+      },
+      "revId": "a4bc59ad26b8790f4fc36f7f94d7815883efbecb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
