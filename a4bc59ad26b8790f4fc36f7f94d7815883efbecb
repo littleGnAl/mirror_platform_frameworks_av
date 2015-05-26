@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d99cdfb_e2cb0251",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1010118
+      },
+      "writtenOn": "2015-05-26T18:20:11Z",
+      "side": 1,
+      "message": "Thanks for the code! Could you improve this message. I believe the change is two-fold: (1) remove mCurrentSlot - dead code removal, (2) add an extra null check. As a single sentence I have difficulty parsing this message.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 63
+      },
+      "revId": "a4bc59ad26b8790f4fc36f7f94d7815883efbecb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
