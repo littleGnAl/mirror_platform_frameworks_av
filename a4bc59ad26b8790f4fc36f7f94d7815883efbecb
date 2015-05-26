@@ -45,6 +45,30 @@
       "revId": "a4bc59ad26b8790f4fc36f7f94d7815883efbecb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ed8889a6_f3dbd89e",
+        "filename": "media/libstagefright/SurfaceMediaSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-05-26T19:26:03Z",
+      "side": 1,
+      "message": "Yes. From IGraphicBufferConsumer.h:\n\n// If the buffer returned had previously been\n// acquired then the BufferItem::mGraphicBuffer field of buffer is set to\n// NULL and it is assumed that the consumer still holds a reference to the\n// buffer.",
+      "parentUuid": "8d99cdfb_90a9a48b",
+      "range": {
+        "startLine": 345,
+        "startChar": 4,
+        "endLine": 348,
+        "endChar": 5
+      },
+      "revId": "a4bc59ad26b8790f4fc36f7f94d7815883efbecb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
