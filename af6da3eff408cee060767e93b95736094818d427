@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d96c6c17_00f96745",
+        "filename": "media/libmedia/AudioRecord.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2015-06-03T23:47:34Z",
+      "side": 1,
+      "message": "It seems like this will cause restoreRecord_l to fail even though there were no errors.",
+      "revId": "af6da3eff408cee060767e93b95736094818d427",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
