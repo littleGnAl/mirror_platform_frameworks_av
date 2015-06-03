@@ -1,0 +1,619 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b967b830_aaee93fc",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "is this still needed?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 7
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d96c6c17_b01c489d",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 639,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "space after for",
+      "range": {
+        "startLine": 639,
+        "startChar": 8,
+        "endLine": 639,
+        "endChar": 11
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b967b830_2a31e32a",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "this may overflow",
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b967b830_ea440b69",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "space after for",
+      "range": {
+        "startLine": 904,
+        "startChar": 4,
+        "endLine": 904,
+        "endChar": 7
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d96c6c17_3031582b",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 990,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "use 8 space indent for line continuation (except after \u003d)",
+      "range": {
+        "startLine": 990,
+        "startChar": 12,
+        "endLine": 990,
+        "endChar": 16
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f955b039_cb2f9542",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "use space after if and brackets always",
+      "range": {
+        "startLine": 986,
+        "startChar": 14,
+        "endLine": 996,
+        "endChar": 16
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f955b039_0b818d97",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "this should be inside: for (size_t i \u003d...",
+      "range": {
+        "startLine": 1079,
+        "startChar": 4,
+        "endLine": 1079,
+        "endChar": 13
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f955b039_2b4f310c",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1116,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "use space after for and if",
+      "range": {
+        "startLine": 1105,
+        "startChar": 12,
+        "endLine": 1116,
+        "endChar": 13
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f955b039_6b492903",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1133,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "use space after if",
+      "range": {
+        "startLine": 1133,
+        "startChar": 8,
+        "endLine": 1133,
+        "endChar": 11
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f955b039_ab5a21c6",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1218,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "no space between ( and !",
+      "range": {
+        "startLine": 1218,
+        "startChar": 10,
+        "endLine": 1218,
+        "endChar": 13
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f955b039_eb54199b",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1230,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "space after if",
+      "range": {
+        "startLine": 1230,
+        "startChar": 9,
+        "endLine": 1230,
+        "endChar": 10
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b967b830_2a8d633a",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1236,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "1 space",
+      "range": {
+        "startLine": 1236,
+        "startChar": 14,
+        "endLine": 1236,
+        "endChar": 16
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b967b830_0a1d076f",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "use !\u003d NULL here and below",
+      "range": {
+        "startLine": 1246,
+        "startChar": 11,
+        "endLine": 1246,
+        "endChar": 28
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d96c6c17_d094644e",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1246,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "space after if",
+      "range": {
+        "startLine": 1246,
+        "startChar": 8,
+        "endLine": 1246,
+        "endChar": 11
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d96c6c17_f09b6078",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1273,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 1273,
+        "startChar": 11,
+        "endLine": 1273,
+        "endChar": 15
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f955b039_2b9d71ec",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1281,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "keep this as it was. (always break after \"(\")",
+      "range": {
+        "startLine": 1279,
+        "startChar": 0,
+        "endLine": 1281,
+        "endChar": 30
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d96c6c17_f019a082",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "!\u003d NULL",
+      "range": {
+        "startLine": 1296,
+        "startChar": 12,
+        "endLine": 1296,
+        "endChar": 29
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f955b039_8b92bdd8",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "use parenthesis as this is confusing for most",
+      "range": {
+        "startLine": 1296,
+        "startChar": 33,
+        "endLine": 1296,
+        "endChar": 79
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b967b830_8a20f7a4",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1302,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "!\u003d NULL",
+      "range": {
+        "startLine": 1302,
+        "startChar": 33,
+        "endLine": 1302,
+        "endChar": 48
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b967b830_0acb4742",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1303,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "declare size_t i here",
+      "range": {
+        "startLine": 1303,
+        "startChar": 16,
+        "endLine": 1303,
+        "endChar": 17
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b967b830_2ad283fb",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1304,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "space after for/if",
+      "range": {
+        "startLine": 1303,
+        "startChar": 11,
+        "endLine": 1304,
+        "endChar": 24
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f955b039_cb22f531",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1320,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "keep as it was",
+      "range": {
+        "startLine": 1319,
+        "startChar": 8,
+        "endLine": 1320,
+        "endChar": 36
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b967b830_caae6f6f",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1369,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "spacing.... space after if/for, use !\u003d NULL for pointers. localize variables",
+      "range": {
+        "startLine": 1344,
+        "startChar": 8,
+        "endLine": 1369,
+        "endChar": 9
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b967b830_eab52bba",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1377,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "spacing",
+      "range": {
+        "startLine": 1377,
+        "startChar": 8,
+        "endLine": 1377,
+        "endChar": 14
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b967b830_8a7c776c",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1396,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "spacing",
+      "range": {
+        "startLine": 1396,
+        "startChar": 8,
+        "endLine": 1396,
+        "endChar": 21
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f955b039_0bdb4d94",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1412,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "no space here",
+      "range": {
+        "startLine": 1412,
+        "startChar": 0,
+        "endLine": 1412,
+        "endChar": 1
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b967b830_2ae3a31a",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-03T21:51:37Z",
+      "side": 1,
+      "message": "space after if and use !\u003d NULL",
+      "range": {
+        "startLine": 296,
+        "startChar": 10,
+        "endLine": 296,
+        "endChar": 11
+      },
+      "revId": "d67befabe364dd5f264581d1ce845ad4186d425f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
