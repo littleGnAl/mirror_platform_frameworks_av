@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59e07c3c_5dbe2cb1",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1366,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-12T21:17:42Z",
+      "side": 1,
+      "message": "can this be combined with the prior logic?  We also drop frames in ATSParser when creating an AVC source. That logic should be removed after this change.",
+      "range": {
+        "startLine": 1366,
+        "startChar": 22,
+        "endLine": 1366,
+        "endChar": 40
+      },
+      "revId": "e4c7aacee2c3a0334b54bd676a41a67a7434653a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59095cdc_a9d109f9",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1610,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-06-12T21:17:42Z",
+      "side": 1,
+      "message": "this should really be done once flush is complete and we are ready to decode again.",
+      "range": {
+        "startLine": 1610,
+        "startChar": 8,
+        "endLine": 1610,
+        "endChar": 26
+      },
+      "revId": "e4c7aacee2c3a0334b54bd676a41a67a7434653a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
