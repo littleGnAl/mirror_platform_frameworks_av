@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "138ee5ef_fa8da9b9",
+        "filename": "media/libstagefright/codecs/avcdec/SoftAVCDec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2015-06-29T18:00:40Z",
+      "side": 1,
+      "message": "Would it make sense to set mSignalledError to true every time we notify OMX_EventError?\n\nRight now I am only seeing it being set at one source location (where the assert fails when playing 4k clips).",
+      "revId": "62896a8525af935bfed21e9652693181e0d9cd04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93a1f560_96579cd1",
+        "filename": "media/libstagefright/codecs/avcdec/SoftAVCDec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2015-06-29T18:00:40Z",
+      "side": 1,
+      "message": "Would you please put `if` and the opening `{` on the same line? ... Well I can also do this myself before I cherry pick.",
+      "revId": "62896a8525af935bfed21e9652693181e0d9cd04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
