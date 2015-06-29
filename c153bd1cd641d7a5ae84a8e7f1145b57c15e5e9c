@@ -1,0 +1,717 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "332a09c0_efe375c4",
+        "filename": "media/libstagefright/codecs/mp3dec/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "tests",
+      "range": {
+        "startLine": 101,
+        "startChar": 21,
+        "endLine": 101,
+        "endChar": 29
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53277df4_ad3189a7",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3dec_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "prefer \"if (\" here and below.",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 7
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "332a09c0_8c6be717",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3dec_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "EXIT_FAILURE (and below)",
+      "range": {
+        "startLine": 49,
+        "startChar": 15,
+        "endLine": 49,
+        "endChar": 16
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "332a09c0_ef31b5f4",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3dec_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "combine with line 60 to be consistent?",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 21
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73f6419f_51607404",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3dec_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "prefer to compare with NULL if a pointer.",
+      "range": {
+        "startLine": 81,
+        "startChar": 7,
+        "endLine": 81,
+        "endChar": 14
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93fbb585_d2274440",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3dec_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "EXIT_SUCCESS",
+      "range": {
+        "startLine": 95,
+        "startChar": 16,
+        "endLine": 95,
+        "endChar": 17
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53277df4_ed870195",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3dec_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "while (1) {",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 5
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "132185e2_ebcc0d5d",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "please add what you\u0027re expecting to be same: version, layer, sampling rate.",
+      "range": {
+        "startLine": 191,
+        "startChar": 15,
+        "endLine": 191,
+        "endChar": 21
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "332a09c0_6c2e731d",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "(void) if you are ignoring the return value; i\u0027d prefer not to fread if the fseek fails - it\u0027s not valid data.",
+      "range": {
+        "startLine": 195,
+        "startChar": 3,
+        "endLine": 195,
+        "endChar": 9
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "332a09c0_2cdf5b85",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "use sourceReadAt()?",
+      "range": {
+        "startLine": 210,
+        "startChar": 11,
+        "endLine": 210,
+        "endChar": 17
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93fbb585_4f61f12f",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "sourceReadAt?",
+      "range": {
+        "startLine": 267,
+        "startChar": 16,
+        "endLine": 267,
+        "endChar": 21
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "332a09c0_ccdf9fcb",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "needed?  or remainingBytes +\u003d totalBytesRead.",
+      "range": {
+        "startLine": 274,
+        "startChar": 16,
+        "endLine": 274,
+        "endChar": 49
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53277df4_aa55ef47",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 307,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "const int FRAME_MATCH_REQUIRED \u003d 3",
+      "range": {
+        "startLine": 307,
+        "startChar": 28,
+        "endLine": 307,
+        "endChar": 29
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "332a09c0_8c93e760",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "use sourceReadAt()?",
+      "range": {
+        "startLine": 309,
+        "startChar": 12,
+        "endLine": 309,
+        "endChar": 42
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "132185e2_881d97f0",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "sizeof(tmp)",
+      "range": {
+        "startLine": 310,
+        "startChar": 39,
+        "endLine": 310,
+        "endChar": 40
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "332a09c0_ec7703af",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "maybe more consistent to do this on line 346?  or simply return true or break in this clause.",
+      "range": {
+        "startLine": 332,
+        "startChar": 0,
+        "endLine": 333,
+        "endChar": 20
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73f6419f_0e3d2bee",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 339,
+        "startChar": 9,
+        "endLine": 340,
+        "endChar": 9
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53277df4_2d991957",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "prefer an initializer list",
+      "range": {
+        "startLine": 351,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 15
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53277df4_6da3118b",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "do these need to be set? they are initialized in init().",
+      "range": {
+        "startLine": 352,
+        "startChar": 0,
+        "endLine": 353,
+        "endChar": 20
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "93fbb585_6f382d8d",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 361,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "if (",
+      "range": {
+        "startLine": 361,
+        "startChar": 6,
+        "endLine": 361,
+        "endChar": 7
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73f6419f_6e002f72",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "compound statement block not needed.",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 5
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73f6419f_6e84af16",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "/*match_header*/",
+      "range": {
+        "startLine": 367,
+        "startChar": 36,
+        "endLine": 367,
+        "endChar": 37
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73f6419f_2e38e7fd",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 368,
+        "startChar": 9,
+        "endLine": 368,
+        "endChar": 11
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "332a09c0_aca6ab46",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "what happens if parseHeader() returns false?  prefer to explicitly cast void if ignoring the return value.",
+      "range": {
+        "startLine": 374,
+        "startChar": 8,
+        "endLine": 374,
+        "endChar": 19
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53277df4_0a951b91",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": ") {",
+      "range": {
+        "startLine": 381,
+        "startChar": 54,
+        "endLine": 381,
+        "endChar": 55
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "73f6419f_0e124be1",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "doesn\u0027t match the other style in this file: i.e. *buffer, or *size.",
+      "range": {
+        "startLine": 381,
+        "startChar": 29,
+        "endLine": 381,
+        "endChar": 50
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "132185e2_68bdc354",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "/*out_channels*/",
+      "range": {
+        "startLine": 397,
+        "startChar": 55,
+        "endLine": 397,
+        "endChar": 56
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "132185e2_e8b09379",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "/*out_header*/",
+      "range": {
+        "startLine": 404,
+        "startChar": 49,
+        "endLine": 404,
+        "endChar": 50
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "132185e2_6894a3c4",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": ") {",
+      "range": {
+        "startLine": 424,
+        "startChar": 23,
+        "endLine": 424,
+        "endChar": 24
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "332a09c0_4c60cf04",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": ") {",
+      "range": {
+        "startLine": 429,
+        "startChar": 22,
+        "endLine": 429,
+        "endChar": 24
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53277df4_6d38318d",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3reader.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-06-29T22:15:21Z",
+      "side": 1,
+      "message": "inconsistent spacing, *buffer, *size",
+      "range": {
+        "startLine": 36,
+        "startChar": 22,
+        "endLine": 36,
+        "endChar": 42
+      },
+      "revId": "c153bd1cd641d7a5ae84a8e7f1145b57c15e5e9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
