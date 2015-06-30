@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "13b505ac_ae3cc39c",
+        "filename": "media/libstagefright/codecs/amrnb/enc/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "332a09c0_af8dfdba",
+      "range": {
+        "startLine": 121,
+        "startChar": 21,
+        "endLine": 121,
+        "endChar": 29
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73f6419f_d13e2444",
         "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2015-06-29T22:50:39Z",
       "side": 1,
       "message": "inconsistent spacing: *encCtx and below.",
+      "range": {
+        "startLine": 41,
+        "startChar": 8,
+        "endLine": 41,
+        "endChar": 12
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b367d930_b831d5a7",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73f6419f_d13e2444",
       "range": {
         "startLine": 41,
         "startChar": 8,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b367d930_982e9947",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "332a09c0_ef87f594",
+      "range": {
+        "startLine": 45,
+        "startChar": 10,
+        "endLine": 45,
+        "endChar": 11
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53277df4_8d52c55b",
         "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2015-06-29T22:50:39Z",
       "side": 1,
       "message": "no space",
+      "range": {
+        "startLine": 46,
+        "startChar": 10,
+        "endLine": 46,
+        "endChar": 11
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b367d930_f82b4d35",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53277df4_8d52c55b",
       "range": {
         "startLine": 46,
         "startChar": 10,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "d3ae0d65_ac17e74a",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73f6419f_31dfa885",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 26
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93fbb585_d5f0ce08",
         "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
         "patchSetId": 1
@@ -128,6 +248,30 @@
       "writtenOn": "2015-06-29T22:50:39Z",
       "side": 1,
       "message": "inconsistent spacing, prefer char *srcFile,",
+      "range": {
+        "startLine": 64,
+        "startChar": 21,
+        "endLine": 64,
+        "endChar": 24
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3b791b3_6dba5110",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93fbb585_d5f0ce08",
       "range": {
         "startLine": 64,
         "startChar": 21,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "d3ae0d65_4c2433bc",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93fbb585_80d60633",
+      "range": {
+        "startLine": 67,
+        "startChar": 30,
+        "endLine": 67,
+        "endChar": 32
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93fbb585_95fc8637",
         "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
         "patchSetId": 1
@@ -174,6 +342,30 @@
       "writtenOn": "2015-06-29T22:50:39Z",
       "side": 1,
       "message": "isn\u0027t this kInputSize * sizeof(uint16_t)?",
+      "range": {
+        "startLine": 113,
+        "startChar": 39,
+        "endLine": 113,
+        "endChar": 49
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3ae0d65_6cd48fe5",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "kInputSize is set to 320, which is 160 samples * 16-bit per sample.",
+      "parentUuid": "93fbb585_95fc8637",
       "range": {
         "startLine": 113,
         "startChar": 39,
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "f3a6b1c2_4fd62d36",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "See previous response.",
+      "parentUuid": "332a09c0_4f33a17f",
+      "range": {
+        "startLine": 114,
+        "startChar": 25,
+        "endLine": 114,
+        "endChar": 35
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73f6419f_51707452",
         "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
         "patchSetId": 1
@@ -220,6 +436,30 @@
       "writtenOn": "2015-06-29T22:50:39Z",
       "side": 1,
       "message": "prefer a space here \") {\" (and below).",
+      "range": {
+        "startLine": 118,
+        "startChar": 46,
+        "endLine": 118,
+        "endChar": 49
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b388b937_4dbf19fe",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73f6419f_51707452",
       "range": {
         "startLine": 118,
         "startChar": 46,
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "f3a6b1c2_6fdbf15c",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "132185e2_cedf97cb",
+      "range": {
+        "startLine": 131,
+        "startChar": 8,
+        "endLine": 131,
+        "endChar": 23
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "132185e2_eee9bbf7",
         "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
         "patchSetId": 1
@@ -266,6 +530,30 @@
       "writtenOn": "2015-06-29T22:50:39Z",
       "side": 1,
       "message": "\"if (\" here and below.",
+      "range": {
+        "startLine": 136,
+        "startChar": 8,
+        "endLine": 136,
+        "endChar": 11
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d38d2d46_ced22344",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "132185e2_eee9bbf7",
       "range": {
         "startLine": 136,
         "startChar": 8,
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "f3a6b1c2_8fef35fd",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "332a09c0_1229d293",
+      "range": {
+        "startLine": 147,
+        "startChar": 0,
+        "endLine": 147,
+        "endChar": 21
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93fbb585_805ba654",
         "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
         "patchSetId": 1
@@ -312,6 +624,30 @@
       "writtenOn": "2015-06-29T22:50:39Z",
       "side": 1,
       "message": "actually if eofReached is true, you already called break above.",
+      "range": {
+        "startLine": 149,
+        "startChar": 12,
+        "endLine": 149,
+        "endChar": 24
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13b505ac_aedfe3cb",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93fbb585_805ba654",
       "range": {
         "startLine": 149,
         "startChar": 12,
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "f3a6b1c2_afecf908",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53277df4_30517036",
+      "range": {
+        "startLine": 152,
+        "startChar": 11,
+        "endLine": 152,
+        "endChar": 12
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53277df4_b0960051",
         "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
         "patchSetId": 1
@@ -358,6 +718,30 @@
       "writtenOn": "2015-06-29T22:50:39Z",
       "side": 1,
       "message": "inconsistent spacing",
+      "range": {
+        "startLine": 180,
+        "startChar": 23,
+        "endLine": 180,
+        "endChar": 24
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d38d2d46_eecfdf9c",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53277df4_b0960051",
       "range": {
         "startLine": 180,
         "startChar": 23,
@@ -393,6 +777,30 @@
     },
     {
       "key": {
+        "uuid": "b388b937_8dc8219a",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93fbb585_d59a8ebb",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 0
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "132185e2_4e60c704",
         "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
         "patchSetId": 1
@@ -404,6 +812,30 @@
       "writtenOn": "2015-06-29T22:50:39Z",
       "side": 1,
       "message": "EXIT_FAILURE",
+      "range": {
+        "startLine": 185,
+        "startChar": 15,
+        "endLine": 185,
+        "endChar": 16
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13b505ac_4eec278d",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "132185e2_4e60c704",
       "range": {
         "startLine": 185,
         "startChar": 15,
@@ -439,6 +871,30 @@
     },
     {
       "key": {
+        "uuid": "d38d2d46_0edc2b56",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "332a09c0_f204fe4b",
+      "range": {
+        "startLine": 186,
+        "startChar": 4,
+        "endLine": 186,
+        "endChar": 10
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "332a09c0_f26ebef6",
         "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
         "patchSetId": 1
@@ -450,6 +906,30 @@
       "writtenOn": "2015-06-29T22:50:39Z",
       "side": 1,
       "message": "extra space here and below for the array brackets.",
+      "range": {
+        "startLine": 188,
+        "startChar": 20,
+        "endLine": 188,
+        "endChar": 22
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3a6b1c2_cfe93df8",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "332a09c0_f26ebef6",
       "range": {
         "startLine": 188,
         "startChar": 20,
@@ -485,6 +965,30 @@
     },
     {
       "key": {
+        "uuid": "f3a6b1c2_efe60125",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "332a09c0_d23e1a44",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 17
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93fbb585_203d92ee",
         "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
         "patchSetId": 1
@@ -508,6 +1012,30 @@
     },
     {
       "key": {
+        "uuid": "13b505ac_6ef1eb5f",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93fbb585_203d92ee",
+      "range": {
+        "startLine": 211,
+        "startChar": 31,
+        "endLine": 211,
+        "endChar": 32
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73f6419f_11126ce1",
         "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
         "patchSetId": 1
@@ -519,6 +1047,30 @@
       "writtenOn": "2015-06-29T22:50:39Z",
       "side": 1,
       "message": "case indentation appears off.",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 31
+      },
+      "revId": "a259a818c7aee08e99a2ef48d9780f85cfed6bd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13b505ac_0ee62fab",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-06-30T13:42:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73f6419f_11126ce1",
       "range": {
         "startLine": 222,
         "startChar": 0,
