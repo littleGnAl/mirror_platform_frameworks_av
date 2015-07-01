@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3d44d30_16d0dc39",
+        "filename": "media/libstagefright/codecs/amrwb/test/amrwbdec_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:12:27Z",
+      "side": 1,
+      "message": "inconsistent spacing, would suggest an additional space after the 60.",
+      "range": {
+        "startLine": 50,
+        "startChar": 67,
+        "endLine": 50,
+        "endChar": 69
+      },
+      "revId": "04e5215b59bb667609be9966ff2e8dc3426f366a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3d44d30_d6e02411",
+        "filename": "media/libstagefright/codecs/amrwb/test/amrwbdec_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:12:27Z",
+      "side": 1,
+      "message": "doesn\u0027t close resources here and below",
+      "range": {
+        "startLine": 72,
+        "startChar": 7,
+        "endLine": 72,
+        "endChar": 28
+      },
+      "revId": "04e5215b59bb667609be9966ff2e8dc3426f366a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3d44d30_b6d5a829",
+        "filename": "media/libstagefright/codecs/amrwb/test/amrwbdec_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:12:27Z",
+      "side": 1,
+      "message": "not consistent",
+      "range": {
+        "startLine": 106,
+        "startChar": 11,
+        "endLine": 106,
+        "endChar": 13
+      },
+      "revId": "04e5215b59bb667609be9966ff2e8dc3426f366a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3d44d30_f6fc4084",
+        "filename": "media/libstagefright/codecs/amrwb/test/amrwbdec_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:12:27Z",
+      "side": 1,
+      "message": "\\n here and below.",
+      "range": {
+        "startLine": 120,
+        "startChar": 62,
+        "endLine": 120,
+        "endChar": 63
+      },
+      "revId": "04e5215b59bb667609be9966ff2e8dc3426f366a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33c4c97c_b9ac7fab",
+        "filename": "media/libstagefright/codecs/amrwb/test/amrwbdec_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:12:27Z",
+      "side": 1,
+      "message": "needed?  suggest /* if (mode \u003c 9) */  if you wish to comment this.",
+      "range": {
+        "startLine": 128,
+        "startChar": 15,
+        "endLine": 128,
+        "endChar": 28
+      },
+      "revId": "04e5215b59bb667609be9966ff2e8dc3426f366a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "339be98e_a1dd5e09",
+        "filename": "media/libstagefright/codecs/amrwb/test/amrwbdec_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:12:27Z",
+      "side": 1,
+      "message": "optionally, maybe comment the number of mono samples \u003d\u003d number of pcm frames.",
+      "range": {
+        "startLine": 160,
+        "startChar": 30,
+        "endLine": 160,
+        "endChar": 31
+      },
+      "revId": "04e5215b59bb667609be9966ff2e8dc3426f366a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
