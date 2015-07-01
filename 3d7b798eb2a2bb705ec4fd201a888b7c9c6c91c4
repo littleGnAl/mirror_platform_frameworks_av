@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3da7933_dde3cbc4",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/m4v_h263_enc_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:34:07Z",
+      "side": 1,
+      "message": "duplicate",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "3d7b798eb2a2bb705ec4fd201a888b7c9c6c91c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33cf6974_218ace25",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/m4v_h263_enc_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:34:07Z",
+      "side": 1,
+      "message": "better to compute this with exact width and height?",
+      "range": {
+        "startLine": 43,
+        "startChar": 24,
+        "endLine": 43,
+        "endChar": 54
+      },
+      "revId": "3d7b798eb2a2bb705ec4fd201a888b7c9c6c91c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3d44d30_76115059",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/m4v_h263_enc_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:34:07Z",
+      "side": 1,
+      "message": "extra spaces here and below.",
+      "range": {
+        "startLine": 53,
+        "startChar": 45,
+        "endLine": 53,
+        "endChar": 46
+      },
+      "revId": "3d7b798eb2a2bb705ec4fd201a888b7c9c6c91c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3dfed21_7e3d517b",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/m4v_h263_enc_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:34:07Z",
+      "side": 1,
+      "message": "prefer NULL here and below.",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 17
+      },
+      "revId": "3d7b798eb2a2bb705ec4fd201a888b7c9c6c91c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9370151a_07ec188c",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/m4v_h263_enc_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:34:07Z",
+      "side": 1,
+      "message": "would be nice to free resources on early return, here and below.",
+      "range": {
+        "startLine": 117,
+        "startChar": 8,
+        "endLine": 117,
+        "endChar": 28
+      },
+      "revId": "3d7b798eb2a2bb705ec4fd201a888b7c9c6c91c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33cf6974_a17dfe94",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/m4v_h263_enc_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:34:07Z",
+      "side": 1,
+      "message": "ok, but shouldn\u0027t this check be before line 133?  Possibly by line 77?",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 5
+      },
+      "revId": "3d7b798eb2a2bb705ec4fd201a888b7c9c6c91c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33cf6974_6184d616",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/m4v_h263_enc_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:34:07Z",
+      "side": 1,
+      "message": "don\u0027t you already check height is a multiple of 16 on line 151? - just make a comment here that width, height are a multiple of 16.",
+      "range": {
+        "startLine": 207,
+        "startChar": 22,
+        "endLine": 207,
+        "endChar": 47
+      },
+      "revId": "3d7b798eb2a2bb705ec4fd201a888b7c9c6c91c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33cf6974_8189da2f",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/m4v_h263_enc_test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:34:07Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 208,
+        "startChar": 22,
+        "endLine": 208,
+        "endChar": 27
+      },
+      "revId": "3d7b798eb2a2bb705ec4fd201a888b7c9c6c91c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
