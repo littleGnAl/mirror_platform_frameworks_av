@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b3a6f9d3_5d91db1f",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:27:08Z",
+      "side": 1,
+      "message": "included twice.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "339be98e_01c52a03",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:27:08Z",
+      "side": 1,
+      "message": "space before and after",
+      "range": {
+        "startLine": 44,
+        "startChar": 51,
+        "endLine": 44,
+        "endChar": 55
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33c4c97c_99a77b95",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:27:08Z",
+      "side": 1,
+      "message": "inconsistent spacing",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 13
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3a6f9d3_1d8b53f4",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:27:08Z",
+      "side": 1,
+      "message": "prefer calloc if you are initializing to zero.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 29
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "339be98e_a1d31ecb",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:27:08Z",
+      "side": 1,
+      "message": "inconsistent spacing",
+      "range": {
+        "startLine": 58,
+        "startChar": 44,
+        "endLine": 58,
+        "endChar": 46
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "339be98e_41e3329f",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:27:08Z",
+      "side": 1,
+      "message": "would * 64 * 6 more clear?",
+      "range": {
+        "startLine": 65,
+        "startChar": 34,
+        "endLine": 65,
+        "endChar": 43
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3a6f9d3_7d5ff7ef",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:27:08Z",
+      "side": 1,
+      "message": "unneeded space here and below.",
+      "range": {
+        "startLine": 88,
+        "startChar": 37,
+        "endLine": 88,
+        "endChar": 42
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33c4c97c_b94b5f2f",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:27:08Z",
+      "side": 1,
+      "message": "inconsistent spacing",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 10
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3a6f9d3_fd166705",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:27:08Z",
+      "side": 1,
+      "message": "doesn\u0027t close resources. here and below.",
+      "range": {
+        "startLine": 148,
+        "startChar": 8,
+        "endLine": 148,
+        "endChar": 28
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33c4c97c_79d947ea",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:27:08Z",
+      "side": 1,
+      "message": "seems slightly complicated for what it does.",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 5
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "339be98e_8756ea50",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:27:08Z",
+      "side": 1,
+      "message": "initialization to NULL not needed,why not combine with line 213?",
+      "range": {
+        "startLine": 209,
+        "startChar": 4,
+        "endLine": 209,
+        "endChar": 32
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33c4c97c_223f1442",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:27:08Z",
+      "side": 1,
+      "message": "perhaps saving the rounded-up width and height would make the code easier to read.   \u0026~0xf is another alternative way of masking out the lower bits 4 bits, not sure if you prefer that.",
+      "range": {
+        "startLine": 210,
+        "startChar": 29,
+        "endLine": 210,
+        "endChar": 48
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "53985d8f_c5acecac",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:27:08Z",
+      "side": 1,
+      "message": "if you\u0027re going to do a memset, you could just create one reference image of vin and copy that over as AVCFrameIO vin \u003d vinReference;.  Then you only need to modify those two member variables that rely on numInputFrames.",
+      "range": {
+        "startLine": 276,
+        "startChar": 12,
+        "endLine": 276,
+        "endChar": 41
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3760d12_c614c2fa",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:27:08Z",
+      "side": 1,
+      "message": "could use rounded-up height \u0026 width stored above.",
+      "range": {
+        "startLine": 277,
+        "startChar": 25,
+        "endLine": 277,
+        "endChar": 50
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
