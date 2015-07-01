@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "53c13d6b_da384560",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-07-01T14:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53985d8f_e5013010",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 0
+      },
+      "revId": "23a33868da09f9b3cdf02a9fd0a06f6d3f1612cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5383fd1c_e404564c",
         "filename": "media/libstagefright/codecs/mp3dec/test/mp3dec_test.cpp",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "13bb45f3_78d3817b",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3dec_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-07-01T14:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5383fd1c_e404564c",
+      "range": {
+        "startLine": 69,
+        "startChar": 53,
+        "endLine": 69,
+        "endChar": 54
+      },
+      "revId": "23a33868da09f9b3cdf02a9fd0a06f6d3f1612cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "339be98e_e16fe6a6",
         "filename": "media/libstagefright/codecs/mp3dec/test/mp3dec_test.cpp",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2015-07-01T05:02:02Z",
       "side": 1,
       "message": "would prefer to release resources here and on early return below.",
+      "range": {
+        "startLine": 70,
+        "startChar": 9,
+        "endLine": 70,
+        "endChar": 28
+      },
+      "revId": "23a33868da09f9b3cdf02a9fd0a06f6d3f1612cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3ab6d9c_be41f9df",
+        "filename": "media/libstagefright/codecs/mp3dec/test/mp3dec_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1037066
+      },
+      "writtenOn": "2015-07-01T14:01:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "339be98e_e16fe6a6",
       "range": {
         "startLine": 70,
         "startChar": 9,
