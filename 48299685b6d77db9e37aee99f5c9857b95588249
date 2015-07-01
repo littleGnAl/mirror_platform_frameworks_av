@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3760d12_466b726b",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/m4v_h263_dec_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T06:02:44Z",
+      "side": 1,
+      "message": "prefer to compute this.",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 51
+      },
+      "revId": "48299685b6d77db9e37aee99f5c9857b95588249",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3da7933_1d5293e2",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/m4v_h263_dec_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T06:02:44Z",
+      "side": 1,
+      "message": "should this be set only if the return value is true?",
+      "range": {
+        "startLine": 49,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 26
+      },
+      "revId": "48299685b6d77db9e37aee99f5c9857b95588249",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3d8713c_3f6667a4",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/m4v_h263_dec_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T06:02:44Z",
+      "side": 1,
+      "message": "would it be more efficient to read a block of data at a time?",
+      "range": {
+        "startLine": 52,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 37
+      },
+      "revId": "48299685b6d77db9e37aee99f5c9857b95588249",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33cf6974_c17a029a",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/m4v_h263_dec_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T06:02:44Z",
+      "side": 1,
+      "message": "why read into nextBytes and do a copy from nextBytes into buf?  just read directly into buf.",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 43
+      },
+      "revId": "48299685b6d77db9e37aee99f5c9857b95588249",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3dfed21_3e6669a4",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/m4v_h263_dec_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T06:02:44Z",
+      "side": 1,
+      "message": "maybe do a uint32 compare, and shift the new byte in?",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 43
+      },
+      "revId": "48299685b6d77db9e37aee99f5c9857b95588249",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3d8713c_7f70ef52",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/m4v_h263_dec_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T06:02:44Z",
+      "side": 1,
+      "message": "see the previous function for comments.  would be nice to combine them.",
+      "range": {
+        "startLine": 98,
+        "startChar": 5,
+        "endLine": 98,
+        "endChar": 26
+      },
+      "revId": "48299685b6d77db9e37aee99f5c9857b95588249",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3d8713c_9f74d347",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/m4v_h263_dec_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T06:02:44Z",
+      "side": 1,
+      "message": "this isn\u0027t valid.",
+      "range": {
+        "startLine": 123,
+        "startChar": 12,
+        "endLine": 123,
+        "endChar": 41
+      },
+      "revId": "48299685b6d77db9e37aee99f5c9857b95588249",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3da7933_3d574fd3",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/m4v_h263_dec_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T06:02:44Z",
+      "side": 1,
+      "message": "can this be computed?",
+      "range": {
+        "startLine": 168,
+        "startChar": 43,
+        "endLine": 168,
+        "endChar": 60
+      },
+      "revId": "48299685b6d77db9e37aee99f5c9857b95588249",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3da7933_5d4c1b47",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/m4v_h263_dec_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T06:02:44Z",
+      "side": 1,
+      "message": "doesn\u0027t free resources; actually there is inconsistent freeing below when exiting on failure.",
+      "range": {
+        "startLine": 182,
+        "startChar": 15,
+        "endLine": 182,
+        "endChar": 27
+      },
+      "revId": "48299685b6d77db9e37aee99f5c9857b95588249",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13d6e50c_800c7647",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/m4v_h263_dec_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T06:02:44Z",
+      "side": 1,
+      "message": "retVal \u003d EXIT_FAILURE?",
+      "range": {
+        "startLine": 267,
+        "startChar": 12,
+        "endLine": 267,
+        "endChar": 18
+      },
+      "revId": "48299685b6d77db9e37aee99f5c9857b95588249",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f3d8713c_ff7b1f32",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/m4v_h263_dec_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T06:02:44Z",
+      "side": 1,
+      "message": "make this a loop constant of outputBufferSize, perhaps near line 168?",
+      "range": {
+        "startLine": 270,
+        "startChar": 29,
+        "endLine": 270,
+        "endChar": 51
+      },
+      "revId": "48299685b6d77db9e37aee99f5c9857b95588249",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
