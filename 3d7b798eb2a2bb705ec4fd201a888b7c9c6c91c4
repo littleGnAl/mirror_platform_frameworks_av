@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "9370151a_8731e8a7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-01T05:57:51Z",
+      "side": 1,
+      "message": "Before the Change-Id: can you please put on its own line\n\nBug: 17722767\n\nThanks!",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 5
+      },
+      "revId": "3d7b798eb2a2bb705ec4fd201a888b7c9c6c91c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3da7933_dde3cbc4",
         "filename": "media/libstagefright/codecs/m4v_h263/enc/test/m4v_h263_enc_test.cpp",
         "patchSetId": 4
