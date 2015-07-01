@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b3cfd99d_d5e37c52",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-01T14:27:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f37f91e4_2ababf0e",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 1
+      },
+      "revId": "a790c39bf2621c03a7c119f6672465804f7d3b76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3d8713c_3f56672e",
         "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-07-01T05:09:16Z",
       "side": 1,
       "message": "extra space",
+      "range": {
+        "startLine": 47,
+        "startChar": 57,
+        "endLine": 47,
+        "endChar": 58
+      },
+      "revId": "a790c39bf2621c03a7c119f6672465804f7d3b76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13bb45f3_b8b23953",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-01T14:27:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3d8713c_3f56672e",
       "range": {
         "startLine": 47,
         "startChar": 57,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "13a265bf_0062c638",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-01T14:27:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "13d6e50c_a0217ad9",
+      "range": {
+        "startLine": 50,
+        "startChar": 28,
+        "endLine": 50,
+        "endChar": 29
+      },
+      "revId": "a790c39bf2621c03a7c119f6672465804f7d3b76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f37f91e4_077b36ec",
         "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2015-07-01T05:09:16Z",
       "side": 1,
       "message": "does this need to change if kInputSize is in bytes?",
+      "range": {
+        "startLine": 91,
+        "startChar": 34,
+        "endLine": 91,
+        "endChar": 63
+      },
+      "revId": "a790c39bf2621c03a7c119f6672465804f7d3b76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3ab6d9c_fe0c21ca",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-01T14:27:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f37f91e4_077b36ec",
       "range": {
         "startLine": 91,
         "startChar": 34,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "53c13d6b_5ad0b56c",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-01T14:27:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3d44d30_1fca2f3f",
+      "range": {
+        "startLine": 142,
+        "startChar": 39,
+        "endLine": 142,
+        "endChar": 40
+      },
+      "revId": "a790c39bf2621c03a7c119f6672465804f7d3b76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33cf6974_a14b3e7c",
         "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
         "patchSetId": 2
@@ -151,6 +271,30 @@
       "writtenOn": "2015-07-01T05:09:16Z",
       "side": 1,
       "message": "prefer lf for double.",
+      "range": {
+        "startLine": 149,
+        "startChar": 18,
+        "endLine": 149,
+        "endChar": 19
+      },
+      "revId": "a790c39bf2621c03a7c119f6672465804f7d3b76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b3cfd99d_b52da020",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-01T14:27:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33cf6974_a14b3e7c",
       "range": {
         "startLine": 149,
         "startChar": 18,
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "13bb45f3_38c749a8",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-01T14:27:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3dfed21_5e1ed566",
+      "range": {
+        "startLine": 164,
+        "startChar": 12,
+        "endLine": 164,
+        "endChar": 13
+      },
+      "revId": "a790c39bf2621c03a7c119f6672465804f7d3b76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3d8713c_5f5b2b55",
         "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
         "patchSetId": 2
@@ -197,6 +365,30 @@
       "writtenOn": "2015-07-01T05:09:16Z",
       "side": 1,
       "message": "extra space here, line 211, line 224.",
+      "range": {
+        "startLine": 205,
+        "startChar": 73,
+        "endLine": 205,
+        "endChar": 74
+      },
+      "revId": "a790c39bf2621c03a7c119f6672465804f7d3b76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13a265bf_c05bbe7c",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-01T14:27:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3d8713c_5f5b2b55",
       "range": {
         "startLine": 205,
         "startChar": 73,
@@ -232,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "d3ab6d9c_9e987df9",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-01T14:27:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f37f91e4_47852e59",
+      "range": {
+        "startLine": 211,
+        "startChar": 27,
+        "endLine": 211,
+        "endChar": 28
+      },
+      "revId": "a790c39bf2621c03a7c119f6672465804f7d3b76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f3d8713c_7f60ef04",
         "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
         "patchSetId": 2
@@ -243,6 +459,30 @@
       "writtenOn": "2015-07-01T05:09:16Z",
       "side": 1,
       "message": "extra space",
+      "range": {
+        "startLine": 223,
+        "startChar": 25,
+        "endLine": 223,
+        "endChar": 26
+      },
+      "revId": "a790c39bf2621c03a7c119f6672465804f7d3b76",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3ab6d9c_7e8ed1b6",
+        "filename": "media/libstagefright/codecs/amrnb/enc/test/amrnb_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-01T14:27:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3d8713c_7f60ef04",
       "range": {
         "startLine": 223,
         "startChar": 25,
