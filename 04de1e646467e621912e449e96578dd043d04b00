@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33b12958_c0988855",
+        "filename": "services/camera/libcameraservice/api1/client2/Parameters.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2015-07-06T17:02:15Z",
+      "side": 1,
+      "message": "Can you change this to:\n\nif (display_info.h \u003e display_info.w) {\n   swap display_info\u0027s width and height\n}\nmax_preview_size \u003d (display_info.w \u003c MAX_PREVIEW_WIDTH) ? display_info : MAX_PREVIEW_SIZE;",
+      "range": {
+        "startLine": 86,
+        "startChar": 0,
+        "endLine": 93,
+        "endChar": 53
+      },
+      "revId": "04de1e646467e621912e449e96578dd043d04b00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
