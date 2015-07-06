@@ -328,6 +328,53 @@
       "revId": "04e5215b59bb667609be9966ff2e8dc3426f366a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "534a1d43_95db465f",
+        "filename": "media/libstagefright/codecs/amrwb/test/amrwbdec_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-06T20:52:46Z",
+      "side": 1,
+      "message": "see the comment below.",
+      "parentUuid": "53c13d6b_fd066357",
+      "range": {
+        "startLine": 160,
+        "startChar": 30,
+        "endLine": 160,
+        "endChar": 31
+      },
+      "revId": "04e5215b59bb667609be9966ff2e8dc3426f366a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "736d61b3_b93cd7f2",
+        "filename": "media/libstagefright/codecs/amrwb/test/amrwbdec_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-07-06T20:52:46Z",
+      "side": 1,
+      "message": "in other words, this should be kSamplesPerFrame / kChannels, if you want to be correct.",
+      "range": {
+        "startLine": 161,
+        "startChar": 43,
+        "endLine": 161,
+        "endChar": 59
+      },
+      "revId": "04e5215b59bb667609be9966ff2e8dc3426f366a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
