@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "736d61b3_53cd6455",
+        "filename": "services/camera/libcameraservice/api1/client2/Parameters.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2015-07-06T17:43:33Z",
+      "side": 1,
+      "message": "Please check the return code of this call, and if it is not equal to OK, log an error and return the error code, such as:\n\n  res \u003d SurfaceComposerClient::getDisplayInfo(display, \u0026display_info);\n  if (res !\u003d OK) {\n     ALOGE(\"Unable to fetch display dimensions for preview: %s (%d)\", strerror(-res), res);\n     return res;\n  }\n\nAlternatively, that could be just a warning, as long as the code then falls back to using MAX_PREVIEW_WIDTH/HEIGHT without a crash.",
+      "revId": "04de1e646467e621912e449e96578dd043d04b00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33b12958_c0988855",
         "filename": "services/camera/libcameraservice/api1/client2/Parameters.cpp",
         "patchSetId": 1
