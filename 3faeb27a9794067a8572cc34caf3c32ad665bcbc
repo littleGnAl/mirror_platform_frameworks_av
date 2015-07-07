@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "d829ca86_ae037742",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-07T09:26:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3a6f9d3_5d91db1f",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 19
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "339be98e_01c52a03",
         "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2015-07-01T05:27:08Z",
       "side": 1,
       "message": "space before and after",
+      "range": {
+        "startLine": 44,
+        "startChar": 51,
+        "endLine": 44,
+        "endChar": 55
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8f4ce42_ff637f0f",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-07T09:26:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "339be98e_01c52a03",
       "range": {
         "startLine": 44,
         "startChar": 51,
@@ -94,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "f8f4ce42_df60bb05",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-07T09:26:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33c4c97c_99a77b95",
+      "range": {
+        "startLine": 51,
+        "startChar": 11,
+        "endLine": 51,
+        "endChar": 13
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b3a6f9d3_1d8b53f4",
         "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
         "patchSetId": 2
@@ -105,6 +177,30 @@
       "writtenOn": "2015-07-01T05:27:08Z",
       "side": 1,
       "message": "prefer calloc if you are initializing to zero.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 29
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d829ca86_8e00bb36",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-07T09:26:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3a6f9d3_1d8b53f4",
       "range": {
         "startLine": 52,
         "startChar": 0,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "18f28255_a0acba25",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-07T09:26:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "339be98e_a1d31ecb",
+      "range": {
+        "startLine": 58,
+        "startChar": 44,
+        "endLine": 58,
+        "endChar": 46
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "339be98e_41e3329f",
         "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
         "patchSetId": 2
@@ -151,6 +271,30 @@
       "writtenOn": "2015-07-01T05:27:08Z",
       "side": 1,
       "message": "would * 64 * 6 more clear?",
+      "range": {
+        "startLine": 65,
+        "startChar": 34,
+        "endLine": 65,
+        "endChar": 43
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d829ca86_4e34131a",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-07T09:26:12Z",
+      "side": 1,
+      "message": "Prefer not to change it as it is consistent with code in media/libstagefright/codecs/avc/enc/AVCEncoder.cpp.",
+      "parentUuid": "339be98e_41e3329f",
       "range": {
         "startLine": 65,
         "startChar": 34,
@@ -186,6 +330,30 @@
     },
     {
       "key": {
+        "uuid": "18f28255_60a0f227",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-07T09:26:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3a6f9d3_7d5ff7ef",
+      "range": {
+        "startLine": 88,
+        "startChar": 37,
+        "endLine": 88,
+        "endChar": 42
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33c4c97c_b94b5f2f",
         "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
         "patchSetId": 2
@@ -197,6 +365,30 @@
       "writtenOn": "2015-07-01T05:27:08Z",
       "side": 1,
       "message": "inconsistent spacing",
+      "range": {
+        "startLine": 138,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 10
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d8fb8a32_9e00fd36",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-07T09:26:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33c4c97c_b94b5f2f",
       "range": {
         "startLine": 138,
         "startChar": 8,
@@ -232,6 +424,30 @@
     },
     {
       "key": {
+        "uuid": "d829ca86_ce1fe38c",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-07T09:26:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3a6f9d3_fd166705",
+      "range": {
+        "startLine": 148,
+        "startChar": 8,
+        "endLine": 148,
+        "endChar": 28
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33c4c97c_79d947ea",
         "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
         "patchSetId": 2
@@ -243,6 +459,30 @@
       "writtenOn": "2015-07-01T05:27:08Z",
       "side": 1,
       "message": "seems slightly complicated for what it does.",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 5
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f8f4ce42_3f332723",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-07T09:26:12Z",
+      "side": 1,
+      "message": "Prefer not to change this to be consistent with codecs/avc/enc/AVCEncoder.cpp",
+      "parentUuid": "33c4c97c_79d947ea",
       "range": {
         "startLine": 202,
         "startChar": 0,
@@ -301,6 +541,30 @@
     },
     {
       "key": {
+        "uuid": "d8fb8a32_9e191da9",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-07T09:26:12Z",
+      "side": 1,
+      "message": "Prefer not to change this to be consistent with codecs/avc/enc/AVCEncoder.cpp",
+      "parentUuid": "33c4c97c_223f1442",
+      "range": {
+        "startLine": 210,
+        "startChar": 29,
+        "endLine": 210,
+        "endChar": 48
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "53985d8f_c5acecac",
         "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
         "patchSetId": 2
@@ -324,6 +588,30 @@
     },
     {
       "key": {
+        "uuid": "d829ca86_ae1c9798",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-07T09:26:12Z",
+      "side": 1,
+      "message": "Prefer not to change this to be consistent with codecs/avc/enc/AVCEncoder.cpp",
+      "parentUuid": "53985d8f_c5acecac",
+      "range": {
+        "startLine": 276,
+        "startChar": 12,
+        "endLine": 276,
+        "endChar": 41
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3760d12_c614c2fa",
         "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
         "patchSetId": 2
@@ -335,6 +623,30 @@
       "writtenOn": "2015-07-01T05:27:08Z",
       "side": 1,
       "message": "could use rounded-up height \u0026 width stored above.",
+      "range": {
+        "startLine": 277,
+        "startChar": 25,
+        "endLine": 277,
+        "endChar": 50
+      },
+      "revId": "3faeb27a9794067a8572cc34caf3c32ad665bcbc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1840c241_7050d032",
+        "filename": "media/libstagefright/codecs/avc/enc/test/h264_enc_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1074037
+      },
+      "writtenOn": "2015-07-07T09:26:12Z",
+      "side": 1,
+      "message": "Prefer not to change this to be consistent with codecs/avc/enc/AVCEncoder.cpp",
+      "parentUuid": "d3760d12_c614c2fa",
       "range": {
         "startLine": 277,
         "startChar": 25,
