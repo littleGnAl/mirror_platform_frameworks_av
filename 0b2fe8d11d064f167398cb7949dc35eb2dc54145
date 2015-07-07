@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f356b1ec_e3d85a1b",
+        "filename": "services/camera/libcameraservice/api1/client2/Parameters.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2015-07-07T18:10:55Z",
+      "side": 1,
+      "message": "I\u0027d prefer this just print a warning and use the default preview size bound.",
+      "range": {
+        "startLine": 86,
+        "startChar": 8,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "0b2fe8d11d064f167398cb7949dc35eb2dc54145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f80dae2c_fd0fff36",
+        "filename": "services/camera/libcameraservice/api1/client2/Parameters.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2015-07-07T18:10:55Z",
+      "side": 1,
+      "message": "Long line. Please break this to 100 characters limit. thanks",
+      "revId": "0b2fe8d11d064f167398cb7949dc35eb2dc54145",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
