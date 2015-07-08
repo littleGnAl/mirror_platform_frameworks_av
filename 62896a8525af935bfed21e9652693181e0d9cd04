@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "53bbfd9f_104c0c46",
+        "filename": "media/libstagefright/codecs/avcdec/SoftAVCDec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1069058
+      },
+      "writtenOn": "2015-07-08T10:43:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "138ee5ef_fa8da9b9",
+      "revId": "62896a8525af935bfed21e9652693181e0d9cd04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "93a1f560_96579cd1",
         "filename": "media/libstagefright/codecs/avcdec/SoftAVCDec.cpp",
         "patchSetId": 4
@@ -30,6 +48,24 @@
       "writtenOn": "2015-06-29T18:00:40Z",
       "side": 1,
       "message": "Would you please put `if` and the opening `{` on the same line? ... Well I can also do this myself before I cherry pick.",
+      "revId": "62896a8525af935bfed21e9652693181e0d9cd04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d3436d7f_c14b047c",
+        "filename": "media/libstagefright/codecs/avcdec/SoftAVCDec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1069058
+      },
+      "writtenOn": "2015-07-08T10:43:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93a1f560_96579cd1",
       "revId": "62896a8525af935bfed21e9652693181e0d9cd04",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
