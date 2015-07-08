@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93201584_d86a5d67",
+        "filename": "services/camera/libcameraservice/api1/client2/Parameters.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2015-07-08T16:50:44Z",
+      "side": 1,
+      "message": "Sorry, one more change needed.\nThis cast is unsafe. Layout of DisplayInfo or Size may be modified. Please change this to assign w, h separately.",
+      "range": {
+        "startLine": 100,
+        "startChar": 51,
+        "endLine": 100,
+        "endChar": 74
+      },
+      "revId": "75619c4aab08aa28e36c41775474f5880fcbb278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
