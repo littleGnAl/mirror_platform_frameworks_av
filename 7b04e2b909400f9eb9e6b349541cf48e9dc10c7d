@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "387026c3_1f740b78",
+        "filename": "services/camera/libcameraservice/api1/client2/Parameters.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2015-07-09T18:51:38Z",
+      "side": 1,
+      "message": "Please also check w here. Otherwise we might be picking w and h from different source if the display_info got some weird aspect ratio.",
+      "range": {
+        "startLine": 102,
+        "startChar": 13,
+        "endLine": 102,
+        "endChar": 48
+      },
+      "revId": "7b04e2b909400f9eb9e6b349541cf48e9dc10c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
