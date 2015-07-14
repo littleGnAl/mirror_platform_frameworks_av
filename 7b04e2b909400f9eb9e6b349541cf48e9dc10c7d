@@ -22,6 +22,30 @@
       "revId": "7b04e2b909400f9eb9e6b349541cf48e9dc10c7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "389d8670_74b106ff",
+        "filename": "services/camera/libcameraservice/api1/client2/Parameters.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1075733
+      },
+      "writtenOn": "2015-07-14T06:37:04Z",
+      "side": 1,
+      "message": "MAX_PREVIEW_WIDTH and MAX_PREVIEW_HEIGHT are both 1920 definded in Parameter.h, so if we make sure display_info.w is not less than display_info.h, we won\u0027t pick w and h from different source. But in order to make our intention more clear, I will fixed it as your suggestion.",
+      "parentUuid": "387026c3_1f740b78",
+      "range": {
+        "startLine": 102,
+        "startChar": 13,
+        "endLine": 102,
+        "endChar": 48
+      },
+      "revId": "7b04e2b909400f9eb9e6b349541cf48e9dc10c7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
