@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b817b6fa_953d44ef",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-07-17T10:32:12Z",
+      "side": 1,
+      "message": "perhaps call this savedErrno ?",
+      "range": {
+        "startLine": 217,
+        "startChar": 16,
+        "endLine": 217,
+        "endChar": 25
+      },
+      "revId": "ce2c3f6aeebd957377ebe85a35c93779aefc021d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
