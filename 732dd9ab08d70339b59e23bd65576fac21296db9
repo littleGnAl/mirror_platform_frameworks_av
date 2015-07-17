@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58aebafa_521ab49c",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-07-17T10:05:05Z",
+      "side": 1,
+      "message": "does dump() change the state of mResponse (i.e is it const) ? If not, this is a change in semantics.",
+      "revId": "732dd9ab08d70339b59e23bd65576fac21296db9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
