@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d19d274_330b6863",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 791,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-07-21T09:52:47Z",
+      "side": 1,
+      "message": "I\u0027ll move this ALOGV below the errno check. the calls to writev can also set errno as a side result.",
+      "range": {
+        "startLine": 791,
+        "startChar": 4,
+        "endLine": 791,
+        "endChar": 58
+      },
+      "revId": "fe30b8db6f3802a8b83a85542d3a435a372edb5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2df2a655_00f5a6bf",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1039,
+      "author": {
+        "id": 1014443
+      },
+      "writtenOn": "2015-07-21T09:52:47Z",
+      "side": 1,
+      "message": "missing space (i\u0027ll fix)",
+      "revId": "fe30b8db6f3802a8b83a85542d3a435a372edb5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
