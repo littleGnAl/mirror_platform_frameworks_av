@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2db8e63c_b037989b",
+        "filename": "media/libstagefright/codecs/avc/enc/SoftAVCEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1051820
+      },
+      "writtenOn": "2015-07-28T14:58:19Z",
+      "side": 1,
+      "message": "extractGraphicBuffer also checks the len, can we just remove this?",
+      "range": {
+        "startLine": 564,
+        "startChar": 20,
+        "endLine": 570,
+        "endChar": 21
+      },
+      "revId": "b282b511bfa2e8a8aaff89c9921334e384c74178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
