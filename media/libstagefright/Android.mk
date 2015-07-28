@@ -129,6 +129,10 @@ endif
 LOCAL_CLANG := true
 LOCAL_SANITIZE := unsigned-integer-overflow signed-integer-overflow
 
+ifeq ($(TARGET_IS_64_BIT), true)
+LOCAL_CFLAGS += -DHAVE_OMX_ALIGNMENT
+endif
+
 LOCAL_MODULE:= libstagefright
 
 LOCAL_MODULE_TAGS := optional
