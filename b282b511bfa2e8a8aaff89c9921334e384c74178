@@ -22,6 +22,30 @@
       "revId": "b282b511bfa2e8a8aaff89c9921334e384c74178",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2db8e63c_a4a3da84",
+        "filename": "media/libstagefright/codecs/avc/enc/SoftAVCEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1004496
+      },
+      "writtenOn": "2015-07-29T01:55:22Z",
+      "side": 1,
+      "message": "Yes, I think so. Let me submit a new patch.",
+      "parentUuid": "2db8e63c_b037989b",
+      "range": {
+        "startLine": 564,
+        "startChar": 20,
+        "endLine": 570,
+        "endChar": 21
+      },
+      "revId": "b282b511bfa2e8a8aaff89c9921334e384c74178",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
