@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04b861a5_905c75fa",
+        "filename": "media/libstagefright/foundation/ABitReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-08-17T00:13:39Z",
+      "side": 1,
+      "message": "This is an error prone interface. If ABitReader::getBits() returns false, the value pout is unchanged instead of being reset to a safe value. Instead of safely crashing, the caller would end up using a random value, potentially with disastrous results.",
+      "revId": "9e894a93fe039b21a940557d136ffd16b4a9a61b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04806112_e72b827f",
+        "filename": "media/libstagefright/foundation/ABitReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-08-17T00:13:39Z",
+      "side": 1,
+      "message": "no return value checking. Instead of safely crashing, attempting to skip more bits than available will silently succeed.",
+      "revId": "9e894a93fe039b21a940557d136ffd16b4a9a61b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c471e91c_455e0a4a",
+        "filename": "media/libstagefright/foundation/ABitReader.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-08-17T00:13:39Z",
+      "side": 1,
+      "message": "no return value checking",
+      "revId": "9e894a93fe039b21a940557d136ffd16b4a9a61b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
