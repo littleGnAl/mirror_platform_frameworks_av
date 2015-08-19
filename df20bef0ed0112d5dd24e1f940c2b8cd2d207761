@@ -22,6 +22,24 @@
       "revId": "df20bef0ed0112d5dd24e1f940c2b8cd2d207761",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4a9e95f_9c67ab45",
+        "filename": "media/libstagefright/id3/ID3.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1043093
+      },
+      "writtenOn": "2015-08-19T17:33:02Z",
+      "side": 1,
+      "message": "Thanks for catching this; this check should indeed be different than the one above.",
+      "parentUuid": "243ac5f6_712117a8",
+      "revId": "df20bef0ed0112d5dd24e1f940c2b8cd2d207761",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
