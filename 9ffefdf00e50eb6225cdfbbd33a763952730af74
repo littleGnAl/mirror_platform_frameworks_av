@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84253145_3642d613",
+        "filename": "media/libstagefright/WAVExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-08-20T17:22:46Z",
+      "side": 1,
+      "message": "Doesn\u0027t this change the behavior for zero length files? (they would previously be reported as zero length files, and now they\u0027re rejected)\nI think only mSampleRate has to be checked here, no?",
+      "range": {
+        "startLine": 320,
+        "startChar": 25,
+        "endLine": 320,
+        "endChar": 36
+      },
+      "revId": "9ffefdf00e50eb6225cdfbbd33a763952730af74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
