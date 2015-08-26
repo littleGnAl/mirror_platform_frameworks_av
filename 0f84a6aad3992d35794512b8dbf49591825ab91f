@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c4700952_bb09c938",
+        "filename": "media/libstagefright/WAVExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-08-26T15:51:35Z",
+      "side": 1,
+      "message": "Thanks for this fix, good catch!",
+      "range": {
+        "startLine": 197,
+        "startChar": 33,
+        "endLine": 197,
+        "endChar": 35
+      },
+      "revId": "0f84a6aad3992d35794512b8dbf49591825ab91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "048f817d_4a948949",
+        "filename": "media/libstagefright/WAVExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-08-26T15:51:35Z",
+      "side": 1,
+      "message": "Technical Debt, taking action on whole file may be out-of-scope for this CL, but only a few instances of similar issues so worth the plunge IMHO.\n\nnNumChannels is an uint16_t, this means the format statement must be the following to print the correct type (unsigned should never use a %d) and also support 32 and 64 bit on all architectures and libc implementations:\n\n#include \u003cinttypes.h\u003e\n. . .\n    ALOGE(\"Unsupported number of channels (%\" PRIu16 \")\", nNumChannels);\n\nThese associated changes can result in exceeding the Android Coding Standard 100 character line limit, so wrap appropriately if necessary.",
+      "range": {
+        "startLine": 198,
+        "startChar": 55,
+        "endLine": 198,
+        "endChar": 57
+      },
+      "revId": "0f84a6aad3992d35794512b8dbf49591825ab91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c42ba915_c99093d4",
+        "filename": "media/libstagefright/WAVExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-08-26T15:51:35Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 204,
+        "startChar": 49,
+        "endLine": 204,
+        "endChar": 51
+      },
+      "revId": "0f84a6aad3992d35794512b8dbf49591825ab91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_df011e7b",
+        "filename": "media/libstagefright/WAVExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-08-26T15:51:35Z",
+      "side": 1,
+      "message": "...(%\" PRIu16 \")...",
+      "range": {
+        "startLine": 239,
+        "startChar": 42,
+        "endLine": 239,
+        "endChar": 43
+      },
+      "revId": "0f84a6aad3992d35794512b8dbf49591825ab91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a47f9520_ad6f4b1e",
+        "filename": "media/libstagefright/WAVExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-08-26T15:51:35Z",
+      "side": 1,
+      "message": "...(%\" PRIu16 \")...",
+      "range": {
+        "startLine": 239,
+        "startChar": 63,
+        "endLine": 239,
+        "endChar": 64
+      },
+      "revId": "0f84a6aad3992d35794512b8dbf49591825ab91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "248c8586_18f25091",
+        "filename": "media/libstagefright/WAVExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-08-26T15:51:35Z",
+      "side": 1,
+      "message": "...\u003d0x%\" PRIx32, ...",
+      "range": {
+        "startLine": 250,
+        "startChar": 53,
+        "endLine": 250,
+        "endChar": 54
+      },
+      "revId": "0f84a6aad3992d35794512b8dbf49591825ab91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4700952_db013514",
+        "filename": "media/libstagefright/WAVExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-08-26T15:51:35Z",
+      "side": 1,
+      "message": "...\u003d%\" PRIu16 \" ...",
+      "range": {
+        "startLine": 250,
+        "startChar": 36,
+        "endLine": 250,
+        "endChar": 37
+      },
+      "revId": "0f84a6aad3992d35794512b8dbf49591825ab91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4485f957_3ff14a09",
+        "filename": "media/libstagefright/WAVExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-08-26T15:51:35Z",
+      "side": 1,
+      "message": "...0x%\" PRIx32, mChannelMask);",
+      "range": {
+        "startLine": 252,
+        "startChar": 51,
+        "endLine": 252,
+        "endChar": 53
+      },
+      "revId": "0f84a6aad3992d35794512b8dbf49591825ab91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "248c8586_d8e4c8cd",
+        "filename": "media/libstagefright/WAVExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2015-08-26T15:51:35Z",
+      "side": 1,
+      "message": "...(0x%\" PRIx32 \")\",",
+      "range": {
+        "startLine": 258,
+        "startChar": 79,
+        "endLine": 258,
+        "endChar": 80
+      },
+      "revId": "0f84a6aad3992d35794512b8dbf49591825ab91f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
