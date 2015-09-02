@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84f1b2a4_ae45f77f",
+        "filename": "media/libstagefright/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2015-09-02T17:47:35Z",
+      "side": 1,
+      "message": "This can be on the same line as the above by doing\nLOCAL_SANITIZE :\u003d unsigned-integer-overflow signed-integer-overflow",
+      "range": {
+        "startLine": 122,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 41
+      },
+      "revId": "559730b020683f98b1cf94d22d37aa0f8ae467c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
