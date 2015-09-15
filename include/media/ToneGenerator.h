@@ -200,6 +200,9 @@ private:
         // SINGAPORE Supervisory tones
         TONE_SG_BUSY,               // Busy tone: 425 Hz, 750ms ON, 750ms OFF...
         TONE_SG_RINGTONE,           // Ring Tone: 425 Hz tone modulated with 24 Hz, 400ms ON, 200ms OFF, 400ms ON, 2s OFF...
+        // HONG KONG Supervisory tones
+        TONE_HK_BUSY,               // Busy tone: 480 Hz + 620 Hz, 500ms ON, 500ms OFF...
+        TONE_HK_RINGTONE,           // Ring Tone: 440 Hz + 480 Hz repeated with pattern 0,4s on, 0,2s off, 0,4s on and 3s off.
         // AUSTRALIA Supervisory tones
         TONE_AUSTRALIA_DIAL,        // Dial tone: 425 Hz tone modulated with 25 Hz, continuous
         TONE_AUSTRALIA_RINGTONE,    // Ring tone: A 400Hz + 450Hz tone repeated in a 0.4s on, 0.2s off, 0.4s on, 2.0s off pattern.
@@ -214,6 +217,7 @@ private:
         JAPAN,
         GB,
         SINGAPORE,
+        HONGKONG,
         AUSTRALIA,
         CEPT,
         NUM_REGIONS
