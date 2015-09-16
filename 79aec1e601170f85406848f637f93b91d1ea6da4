@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "a46156bd_f65bb9e5",
+        "filename": "media/libstagefright/foundation/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2015-09-16T00:10:20Z",
+      "side": 1,
+      "message": "Remove the comma, LOCAL_SANITIZE is space delimited",
+      "range": {
+        "startLine": 34,
+        "startChar": 43,
+        "endLine": 34,
+        "endChar": 44
+      },
+      "revId": "79aec1e601170f85406848f637f93b91d1ea6da4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "848ff2ac_9b238483",
         "filename": "media/libstagefright/httplive/Android.mk",
         "patchSetId": 1
@@ -18,6 +41,29 @@
         "startChar": 8,
         "endLine": 6,
         "endChar": 26
+      },
+      "revId": "79aec1e601170f85406848f637f93b91d1ea6da4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a46156bd_36761161",
+        "filename": "media/libstagefright/httplive/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1022895
+      },
+      "writtenOn": "2015-09-16T00:10:20Z",
+      "side": 1,
+      "message": "here as well",
+      "range": {
+        "startLine": 18,
+        "startChar": 43,
+        "endLine": 18,
+        "endChar": 44
       },
       "revId": "79aec1e601170f85406848f637f93b91d1ea6da4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
