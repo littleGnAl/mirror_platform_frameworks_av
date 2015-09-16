@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "648afea0_95fb4faf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-09-16T00:26:31Z",
+      "side": 1,
+      "message": "usually we prefix CL-s with a domain, e.g.\n\n\"stagefright: enable unsigned-integer-overflow for some projects\n\nSpecifically, for httplive and foundation projects.\"\n\nThe way the one liner stands, I expect unsigned-integer-overflow to be enabled for all projects under frameworks/av",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 6
+      },
+      "revId": "56d975ed13ff63d8ed2b15145972b42d7e6da3a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
