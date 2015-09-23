@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee616dea_c98911ad",
+        "filename": "media/libmedia/AudioTrack.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1079886
+      },
+      "writtenOn": "2015-09-23T23:34:35Z",
+      "side": 1,
+      "message": "Would this be more clear if rewritten to check mServer \u003e newServer and set delta accordingly? (as an uint32_t, since that\u0027s what its returned as). That way, you don\u0027t have multiple typecasts on multiple variables.",
+      "revId": "479a34d89b96ff23b39200c0746fdde957e0eecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
