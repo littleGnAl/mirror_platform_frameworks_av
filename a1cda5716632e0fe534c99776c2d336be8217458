@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ae5bf53d_482509ec",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-09-28T23:06:36Z",
+      "side": 1,
+      "message": "Please get rid of the \"revert revert\" and just put:\n\n  Enable integer overflow detection in libmedia\n\nIn general, the resubmission of a previously reverted patch should reuse the commit message associated with the original patch.",
+      "revId": "a1cda5716632e0fe534c99776c2d336be8217458",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
