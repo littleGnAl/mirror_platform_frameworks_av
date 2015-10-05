@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab804cc5_d68524cf",
+        "filename": "media/libstagefright/codecs/avcdec/SoftAVCDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1051820
+      },
+      "writtenOn": "2015-10-05T17:19:37Z",
+      "side": 1,
+      "message": "do we want to hard code the size limit here in framework code?\n\nShouldn\u0027t the check be done inside the codec, who actually knows the limit.",
+      "range": {
+        "startLine": 479,
+        "startChar": 8,
+        "endLine": 479,
+        "endChar": 76
+      },
+      "revId": "94e7c6fe3d610cb8298a2c481d7872dde21ca041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
