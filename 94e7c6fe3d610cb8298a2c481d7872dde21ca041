@@ -22,6 +22,30 @@
       "revId": "94e7c6fe3d610cb8298a2c481d7872dde21ca041",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "55884e36_30e5c64a",
+        "filename": "media/libstagefright/codecs/avcdec/SoftAVCDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2015-10-06T02:59:37Z",
+      "side": 1,
+      "message": "Sure. Will modify this patch and upload a corresponding patch to libavc to return error for unsupported resolutions.",
+      "parentUuid": "ab804cc5_d68524cf",
+      "range": {
+        "startLine": 479,
+        "startChar": 8,
+        "endLine": 479,
+        "endChar": 76
+      },
+      "revId": "94e7c6fe3d610cb8298a2c481d7872dde21ca041",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
