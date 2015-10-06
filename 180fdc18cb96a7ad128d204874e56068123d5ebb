@@ -22,6 +22,30 @@
       "revId": "180fdc18cb96a7ad128d204874e56068123d5ebb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f5822218_8dd3c578",
+        "filename": "media/libstagefright/codecs/avcdec/SoftAVCDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2015-10-06T16:53:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b92a812_4c52e74a",
+      "range": {
+        "startLine": 582,
+        "startChar": 0,
+        "endLine": 591,
+        "endChar": 13
+      },
+      "revId": "180fdc18cb96a7ad128d204874e56068123d5ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
