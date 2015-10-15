@@ -22,6 +22,30 @@
       "revId": "de7fa31668bd90dba80ff2c0c462492fed873c3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "99f12aa5_c27132cb",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1795,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2015-10-15T23:56:58Z",
+      "side": 1,
+      "message": "I have not looked into details of this PreProcessing.cpp file,\nbut the comment for class AudioFrame in\nwebrtc/src/modules/interface/module_common_types.h\nlooks like so.\n\nThe older version says:\n\n * - _payloadDataLengthInSamples is the number of\n *   samples per channel. Therefore, the total\n *   number of samples in _payloadData is\n *   (_payloadDataLengthInSamples * _audioChannel).\n\nand the newer version says:\n\n * - The total number of samples in |data_| is\n *   samples_per_channel_ * num_channels_\n\nThe other code in module_common_types.h also look like\na simple rename of data members in the AudioFrame class.",
+      "parentUuid": "39611e20_b9ba7745",
+      "range": {
+        "startLine": 1795,
+        "startChar": 27,
+        "endLine": 1795,
+        "endChar": 47
+      },
+      "revId": "de7fa31668bd90dba80ff2c0c462492fed873c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
