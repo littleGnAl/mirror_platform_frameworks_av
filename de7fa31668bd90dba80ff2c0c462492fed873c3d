@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39611e20_b9ba7745",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1795,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2015-10-15T22:45:35Z",
+      "side": 1,
+      "message": "does sample samples_per_channel_ mean the same thing as _payloadDataLengthInSamples?\nThe name seems to indicate differently.\nIt seems to be the number of multi channel samples that is \nsession-\u003eapmFrameCount should not be multiplied by session-\u003einChannelCount",
+      "range": {
+        "startLine": 1795,
+        "startChar": 27,
+        "endLine": 1795,
+        "endChar": 47
+      },
+      "revId": "de7fa31668bd90dba80ff2c0c462492fed873c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
