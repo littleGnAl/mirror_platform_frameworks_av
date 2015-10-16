@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b90b4ea8_0a379b14",
+        "filename": "media/libstagefright/SampleTable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1068404
+      },
+      "writtenOn": "2015-10-16T19:32:07Z",
+      "side": 1,
+      "message": "I think there are a few other places (like here) where it could still potentially overflow. Can you fix these too? Thanks!",
+      "revId": "acf12d0cb9c0469e6d9964ce544ac866ceea1ebe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
