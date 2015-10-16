@@ -46,6 +46,30 @@
       "revId": "de7fa31668bd90dba80ff2c0c462492fed873c3d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9550e3b_4be9c5af",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1795,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2015-10-16T01:38:39Z",
+      "side": 1,
+      "message": "If the old comment was correct then the code here is broken.\nWe never had a problem maybe because it was only used with mono content?\n\nAndrew, what do you think?",
+      "parentUuid": "99f12aa5_c27132cb",
+      "range": {
+        "startLine": 1795,
+        "startChar": 27,
+        "endLine": 1795,
+        "endChar": 47
+      },
+      "revId": "de7fa31668bd90dba80ff2c0c462492fed873c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
