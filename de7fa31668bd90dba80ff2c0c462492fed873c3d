@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "190ffab2_6a59776e",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1084298
+      },
+      "writtenOn": "2015-10-16T16:25:57Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 1283,
+        "startChar": 28,
+        "endLine": 1283,
+        "endChar": 48
+      },
+      "revId": "de7fa31668bd90dba80ff2c0c462492fed873c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39611e20_b9ba7745",
         "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
         "patchSetId": 1
@@ -61,6 +84,30 @@
       "side": 1,
       "message": "If the old comment was correct then the code here is broken.\nWe never had a problem maybe because it was only used with mono content?\n\nAndrew, what do you think?",
       "parentUuid": "99f12aa5_c27132cb",
+      "range": {
+        "startLine": 1795,
+        "startChar": 27,
+        "endLine": 1795,
+        "endChar": 47
+      },
+      "revId": "de7fa31668bd90dba80ff2c0c462492fed873c3d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b90b4ea8_c71e1eaa",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1795,
+      "author": {
+        "id": 1084298
+      },
+      "writtenOn": "2015-10-16T16:25:57Z",
+      "side": 1,
+      "message": "Yeah we changed the name of that member (and others) a long time ago, because they were very confusing. I agree with your assessment Eric.\n\nThis should now be\nsession-\u003erevFrame-\u003esamples_per_channel_ \u003d session-\u003eapmFrameCount;\n\nIs it possible to unit test this?\n\n(BTW we\u0027re adopting the use of num_frames instead of samples_per_channel in new code which appears to align with the convention here.)",
+      "parentUuid": "b9550e3b_4be9c5af",
       "range": {
         "startLine": 1795,
         "startChar": 27,
