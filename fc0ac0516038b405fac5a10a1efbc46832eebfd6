@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79fd56bf_c8162fd1",
+        "filename": "media/libstagefright/SampleTable.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-10-16T21:15:30Z",
+      "side": 1,
+      "message": "couldn\u0027t you do:\n\nif ((data_size - 8) / 4 \u003c mNumChunkOffset) {..}\n\n?\n\n(data_size is already guaranteed to be \u003e 8 by line 179)",
+      "revId": "fc0ac0516038b405fac5a10a1efbc46832eebfd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
