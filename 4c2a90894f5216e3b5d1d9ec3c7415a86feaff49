@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99020a8c_da79554f",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2015-10-19T18:22:11Z",
+      "side": 1,
+      "message": "minor: sufficient to compare nullptr directly against clientToDisconnect, don\u0027t need to call get()",
+      "revId": "4c2a90894f5216e3b5d1d9ec3c7415a86feaff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
