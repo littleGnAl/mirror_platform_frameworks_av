@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d90802ae_57b8964d",
+        "filename": "include/media/stagefright/SkipCutBuffer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-10-19T16:56:34Z",
+      "side": 1,
+      "message": "ah yes, I need to update the comment",
+      "parentUuid": "79fd56bf_7440366c",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 55
+      },
+      "revId": "9728be854d31d7ba9284ded23348e284b83b9f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79d47637_bc6fad2a",
         "filename": "include/media/stagefright/SkipCutBuffer.h",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-10-19T16:52:20Z",
       "side": 1,
       "message": "Do we want to make this more generic, e.g., change num16Channels to 2 arguments as numChannels and bytesPerSample?",
+      "range": {
+        "startLine": 35,
+        "startChar": 50,
+        "endLine": 35,
+        "endChar": 63
+      },
+      "revId": "9728be854d31d7ba9284ded23348e284b83b9f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79fd56bf_747276d0",
+        "filename": "include/media/stagefright/SkipCutBuffer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-10-19T16:56:34Z",
+      "side": 1,
+      "message": "I thought about that, but we really only support 16 bit at this point, so didn\u0027t want to go overboard.",
+      "parentUuid": "79d47637_bc6fad2a",
       "range": {
         "startLine": 35,
         "startChar": 50,
@@ -99,6 +147,30 @@
       "writtenOn": "2015-10-19T16:52:20Z",
       "side": 1,
       "message": "Not sure about the newly added restrictions. Is it good to just check possible integer overflow for line 34 and 35 and keep previous restriction?",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 68
+      },
+      "revId": "9728be854d31d7ba9284ded23348e284b83b9f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39de7e5b_ff44078d",
+        "filename": "media/libstagefright/SkipCutBuffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-10-19T16:56:34Z",
+      "side": 1,
+      "message": "I prefer to add the extra restriction. If we get a stream with \u003e 64 channels, something is very likely wrong.",
+      "parentUuid": "39de7e5b_5f0b1b69",
       "range": {
         "startLine": 29,
         "startChar": 8,
