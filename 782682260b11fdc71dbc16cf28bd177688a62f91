@@ -22,6 +22,30 @@
       "revId": "782682260b11fdc71dbc16cf28bd177688a62f91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b90b4ea8_a91894bc",
+        "filename": "media/libstagefright/SkipCutBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-10-19T18:07:55Z",
+      "side": 1,
+      "message": "See, it\u0027s getting more and more involved. We should have just stuck with #2...",
+      "parentUuid": "39de7e5b_5f143b0c",
+      "range": {
+        "startLine": 39,
+        "startChar": 26,
+        "endLine": 39,
+        "endChar": 35
+      },
+      "revId": "782682260b11fdc71dbc16cf28bd177688a62f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
