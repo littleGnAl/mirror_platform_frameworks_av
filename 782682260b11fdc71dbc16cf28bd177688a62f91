@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39de7e5b_5f143b0c",
+        "filename": "media/libstagefright/SkipCutBuffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2015-10-19T18:05:58Z",
+      "side": 1,
+      "message": "need check frameSize against 0.",
+      "range": {
+        "startLine": 39,
+        "startChar": 26,
+        "endLine": 39,
+        "endChar": 35
+      },
+      "revId": "782682260b11fdc71dbc16cf28bd177688a62f91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
