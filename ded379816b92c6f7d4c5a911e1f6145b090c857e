@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9f26ee4_49b925b0",
+        "filename": "media/libstagefright/SkipCutBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2015-10-19T21:48:01Z",
+      "side": 1,
+      "message": "mCapacity is an int32t, so it is signed and not size_t-ish.",
+      "range": {
+        "startLine": 52,
+        "startChar": 33,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "ded379816b92c6f7d4c5a911e1f6145b090c857e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
