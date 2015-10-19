@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "79fd56bf_7440366c",
+        "filename": "include/media/stagefright/SkipCutBuffer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2015-10-19T16:52:20Z",
+      "side": 1,
+      "message": "now \u0027skip\u0027 and \u0027cut\u0027 become the number of frames to ...",
+      "range": {
+        "startLine": 32,
+        "startChar": 7,
+        "endLine": 33,
+        "endChar": 55
+      },
+      "revId": "9728be854d31d7ba9284ded23348e284b83b9f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79d47637_bc6fad2a",
+        "filename": "include/media/stagefright/SkipCutBuffer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2015-10-19T16:52:20Z",
+      "side": 1,
+      "message": "Do we want to make this more generic, e.g., change num16Channels to 2 arguments as numChannels and bytesPerSample?",
+      "range": {
+        "startLine": 35,
+        "startChar": 50,
+        "endLine": 35,
+        "endChar": 63
+      },
+      "revId": "9728be854d31d7ba9284ded23348e284b83b9f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79fd56bf_7954af8d",
         "filename": "media/libstagefright/SkipCutBuffer.cpp",
         "patchSetId": 2
@@ -35,6 +81,29 @@
         "startChar": 15,
         "endLine": 29,
         "endChar": 24
+      },
+      "revId": "9728be854d31d7ba9284ded23348e284b83b9f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39de7e5b_5f0b1b69",
+        "filename": "media/libstagefright/SkipCutBuffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2015-10-19T16:52:20Z",
+      "side": 1,
+      "message": "Not sure about the newly added restrictions. Is it good to just check possible integer overflow for line 34 and 35 and keep previous restriction?",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 29,
+        "endChar": 68
       },
       "revId": "9728be854d31d7ba9284ded23348e284b83b9f6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
