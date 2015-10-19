@@ -49,7 +49,7 @@ SkipCutBuffer::SkipCutBuffer(size_t skip, size_t cut, size_t num16BitChannels) {
     mBackPadding = cut;
     mCapacity = cut + 4096;
     mCutBuffer = new (std::nothrow) char[mCapacity];
-    ALOGV("skipcutbuffer %d %d %d", skip, cut, mCapacity);
+    ALOGV("skipcutbuffer %zu %zu %zu", skip, cut, mCapacity);
 }
 
 SkipCutBuffer::~SkipCutBuffer() {
