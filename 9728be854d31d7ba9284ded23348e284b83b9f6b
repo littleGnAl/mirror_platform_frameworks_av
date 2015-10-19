@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79fd56bf_7954af8d",
+        "filename": "media/libstagefright/SkipCutBuffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-10-19T15:00:51Z",
+      "side": 1,
+      "message": "Making the arguments unsigned and moving the calculations from OMXCodec and ACodec to here fixes the issue with compiler overflow checks firing before our own.",
+      "revId": "9728be854d31d7ba9284ded23348e284b83b9f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b9ec2e3d_9f4a733f",
+        "filename": "media/libstagefright/SkipCutBuffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-10-19T15:00:51Z",
+      "side": 1,
+      "message": "Values chosen so that they cover any reasonable input file (and even most unreasonable ones), while not allowing overflows. Purposely not defined as constants because that gives them an air of authority they don\u0027t really have.",
+      "range": {
+        "startLine": 29,
+        "startChar": 15,
+        "endLine": 29,
+        "endChar": 24
+      },
+      "revId": "9728be854d31d7ba9284ded23348e284b83b9f6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d90802ae_770efa7a",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4450,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-10-19T15:00:51Z",
+      "side": 0,
+      "message": "Previous overflow for one of the security test files was here.",
+      "range": {
+        "startLine": 4450,
+        "startChar": 32,
+        "endLine": 4450,
+        "endChar": 33
+      },
+      "revId": "dc897061d8bb9c2fe8c5d0afee1664cdfaaeeea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79fd56bf_993e4b53",
+        "filename": "media/libstagefright/OMXCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1761,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-10-19T15:00:51Z",
+      "side": 0,
+      "message": "Previous overflow for one of the security test files was here.",
+      "range": {
+        "startLine": 1761,
+        "startChar": 78,
+        "endLine": 1761,
+        "endChar": 79
+      },
+      "revId": "dc897061d8bb9c2fe8c5d0afee1664cdfaaeeea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b90b4ea8_7b2dc72f",
+        "filename": "media/libstagefright/SkipCutBuffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-10-19T15:00:51Z",
+      "side": 0,
+      "message": "overflowed value was checked here, so it was OK",
+      "range": {
+        "startLine": 29,
+        "startChar": 24,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "dc897061d8bb9c2fe8c5d0afee1664cdfaaeeea4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
