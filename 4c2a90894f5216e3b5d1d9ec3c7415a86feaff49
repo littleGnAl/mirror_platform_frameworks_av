@@ -16,6 +16,24 @@
       "revId": "4c2a90894f5216e3b5d1d9ec3c7415a86feaff49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79fd56bf_a4f79786",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1014249
+      },
+      "writtenOn": "2015-10-20T08:02:55Z",
+      "side": 1,
+      "message": "Indeed. I was just being consistent with line 321 below. The .get() could be removed from both, and from many other places in this source file.",
+      "parentUuid": "99020a8c_da79554f",
+      "revId": "4c2a90894f5216e3b5d1d9ec3c7415a86feaff49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
