@@ -242,7 +242,7 @@ std::list<FrameRenderTracker::Info> SoftwareRenderer::render(
                 buf->stride, buf->height,
                 0, 0, mCropWidth - 1, mCropHeight - 1);
     } else if (mColorFormat == OMX_COLOR_FormatYUV420Planar) {
-        if ((size_t)mWidth * mHeight * 3 / 2 > size) {
+        if ((size_t)mCropWidth * mCropHeight * 3 / 2 > size) {
             goto skip_copying;
         }
         const uint8_t *src_y = (const uint8_t *)data;
@@ -275,7 +275,7 @@ std::list<FrameRenderTracker::Info> SoftwareRenderer::render(
         }
     } else if (mColorFormat == OMX_TI_COLOR_FormatYUV420PackedSemiPlanar
             || mColorFormat == OMX_COLOR_FormatYUV420SemiPlanar) {
-        if ((size_t)mWidth * mHeight * 3 / 2 > size) {
+        if ((size_t)mCropWidth * mCropHeight * 3 / 2 > size) {
             goto skip_copying;
         }
         const uint8_t *src_y = (const uint8_t *)data;
