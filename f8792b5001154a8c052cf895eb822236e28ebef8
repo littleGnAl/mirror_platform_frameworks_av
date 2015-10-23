@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f66f95e4_732d40cb",
+        "filename": "media/libstagefright/rtsp/APacketSource.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-10-23T16:15:14Z",
+      "side": 1,
+      "message": "Does this need to be -1?\n(java MediaPlayer.getDuration() is documented to return -1 for unknown duration, but I\u0027m not sure if any translation is done between here and there)",
+      "range": {
+        "startLine": 421,
+        "startChar": 40,
+        "endLine": 421,
+        "endChar": 41
+      },
+      "revId": "f8792b5001154a8c052cf895eb822236e28ebef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
