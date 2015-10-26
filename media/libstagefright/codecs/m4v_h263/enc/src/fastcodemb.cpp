@@ -527,6 +527,7 @@ Int getBlockSAV(Short block[])
 /*  Modified :                                                              */
 /*      8/15/01,  - do 4 pixel at a time    assuming 32 bit register        */
 /* ======================================================================== */
+__attribute((no_sanitize("integer")))
 Int Sad8x8(UChar *cur, UChar *prev, Int width)
 {
     UChar *end = cur + (width << 3);
@@ -590,7 +591,7 @@ Int Sad8x8(UChar *cur, UChar *prev, Int width)
 /*  Modified :                                                              */
 /*          8/15/01,  - SIMD 4 pixels at a time                         */
 /* ======================================================================== */
-
+__attribute((no_sanitize("integer")))
 Int getBlockSum(UChar *cur, Int width)
 {
     Int sad = 0, sum4 = 0, sum2 = 0;
