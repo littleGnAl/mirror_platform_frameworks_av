@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36f76de3_c6e744c3",
+        "filename": "media/libmedia/AudioTrack.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2015-10-27T23:32:54Z",
+      "side": 1,
+      "message": "I don\u0027t think this is the same. AUDIO_RESAMPLER_UP_RATIO_MAX is 65536. If effectiveRate\u003d1 and mSampleRate\u003d65537, the two statements work out to be:\n\n  if ((1*65536) \u003c 65537)\n\nvs\n\n  if (1 \u003c (65537 / 65536))\n\nThe first one is true, and the second one is false.",
+      "revId": "18220bd6f11e40b4694efa63010ff548887ae7bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
