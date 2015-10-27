@@ -22,6 +22,30 @@
       "revId": "f8792b5001154a8c052cf895eb822236e28ebef8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36b04d09_1b323bd5",
+        "filename": "media/libstagefright/rtsp/APacketSource.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1002951
+      },
+      "writtenOn": "2015-10-27T14:08:22Z",
+      "side": 1,
+      "message": "Without larger changes elsewhere it should be 0 here.\n\nIf set to -1 it would still be translated to 0 in RTSPSource:\nframeworks/av/media/libmediaplayerservice/nuplayer/RTSPSource.cpp#274 (RTSPSource::getDuration)\n\nWe tried modifying RTSPSource::getDuration so \"*durationUs \u003d -1ll\" then\ngetDuration returns -1. But with that change the Google\u0027s \"Photos\"\napplication shows \"Can\u0027t play video\" with it.\n\nThe intention with this patch is just not to display \"1 hour\" for live\nstreaming (since that dont make any sense). Larger refactoring should be part of some other CL.",
+      "parentUuid": "f66f95e4_732d40cb",
+      "range": {
+        "startLine": 421,
+        "startChar": 40,
+        "endLine": 421,
+        "endChar": 41
+      },
+      "revId": "f8792b5001154a8c052cf895eb822236e28ebef8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
