@@ -828,7 +828,7 @@ status_t AudioTrack::setPlaybackRate(const AudioPlaybackRate &playbackRate)
         return BAD_VALUE;
     }
 
-    if (effectiveRate * AUDIO_RESAMPLER_UP_RATIO_MAX < mSampleRate) {
+    if (effectiveRate < mSampleRate / AUDIO_RESAMPLER_UP_RATIO_MAX) {
         ALOGV("setPlaybackRate(%f, %f) failed. Resample rate below min accepted value",
                         playbackRate.mSpeed, playbackRate.mPitch);
         return BAD_VALUE;
