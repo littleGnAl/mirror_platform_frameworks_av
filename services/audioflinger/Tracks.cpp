@@ -1008,7 +1008,7 @@ bool AudioFlinger::PlaybackThread::Track::presentationComplete(size_t framesWrit
                   mPresentationCompleteFrames, audioHalFrames);
     }
 
-    if (framesWritten >= mPresentationCompleteFrames || isOffloaded()) {
+    if (framesWritten >= mPresentationCompleteFrames || isOffloaded() || !audio_is_linear_pcm(mFormat)) {
         triggerEvents(AudioSystem::SYNC_EVENT_PRESENTATION_COMPLETE);
         mAudioTrackServerProxy->setStreamEndDone();
         return true;
