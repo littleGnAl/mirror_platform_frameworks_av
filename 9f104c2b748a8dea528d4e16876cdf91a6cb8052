@@ -116,6 +116,30 @@
       "revId": "9f104c2b748a8dea528d4e16876cdf91a6cb8052",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6d955b5_4c684f6d",
+        "filename": "media/libmedia/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1079886
+      },
+      "writtenOn": "2015-10-28T18:53:28Z",
+      "side": 1,
+      "message": "Removing the parentheses here triggers a sanitize abort. Leaving them as is does not.",
+      "parentUuid": "d6d0d18a_686d43ed",
+      "range": {
+        "startLine": 831,
+        "startChar": 8,
+        "endLine": 831,
+        "endChar": 77
+      },
+      "revId": "9f104c2b748a8dea528d4e16876cdf91a6cb8052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
