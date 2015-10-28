@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6d955b5_293b4db4",
+        "filename": "media/libmedia/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-10-28T16:53:46Z",
+      "side": 1,
+      "message": "cast on effectiveRate not needed since binary operator integer promotion/conversion rules apply, but i guess it is more clear.",
+      "range": {
+        "startLine": 825,
+        "startChar": 8,
+        "endLine": 825,
+        "endChar": 18
+      },
+      "revId": "9f104c2b748a8dea528d4e16876cdf91a6cb8052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96cad9dc_a6cf6617",
+        "filename": "media/libmedia/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-10-28T16:53:46Z",
+      "side": 1,
+      "message": "(uint64_t) cast must be inside the left paren, or simply drop the parenthesis.",
+      "range": {
+        "startLine": 825,
+        "startChar": 44,
+        "endLine": 825,
+        "endChar": 45
+      },
+      "revId": "9f104c2b748a8dea528d4e16876cdf91a6cb8052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6d0d18a_686d43ed",
+        "filename": "media/libmedia/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-10-28T16:53:46Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 831,
+        "startChar": 8,
+        "endLine": 831,
+        "endChar": 77
+      },
+      "revId": "9f104c2b748a8dea528d4e16876cdf91a6cb8052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
