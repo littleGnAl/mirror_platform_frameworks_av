@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "964739ec_4180f4c1",
+        "filename": "media/libmedia/AudioTrack.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-10-28T00:05:25Z",
+      "side": 1,
+      "message": "this should be fixed, too, although much less likely to overflow.",
+      "range": {
+        "startLine": 825,
+        "startChar": 24,
+        "endLine": 825,
+        "endChar": 38
+      },
+      "revId": "18220bd6f11e40b4694efa63010ff548887ae7bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "36f76de3_c6e744c3",
         "filename": "media/libmedia/AudioTrack.cpp",
         "patchSetId": 1
@@ -31,6 +54,24 @@
       "side": 1,
       "message": "Why not do the * in 64-bit?",
       "parentUuid": "36f76de3_c6e744c3",
+      "revId": "18220bd6f11e40b4694efa63010ff548887ae7bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d63d314e_86228eb7",
+        "filename": "media/libmedia/AudioTrack.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-10-28T00:05:25Z",
+      "side": 1,
+      "message": "+1, perhaps unsigned long long or uint64_t",
+      "parentUuid": "d63d314e_e6103a69",
       "revId": "18220bd6f11e40b4694efa63010ff548887ae7bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
