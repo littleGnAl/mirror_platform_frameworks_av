@@ -48,6 +48,54 @@
     },
     {
       "key": {
+        "uuid": "769c85d8_cdc8c93f",
+        "filename": "media/libmedia/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1079886
+      },
+      "writtenOn": "2015-10-28T17:18:00Z",
+      "side": 1,
+      "message": "This gave a type mismatch compile error on the new version of clang when I left it as 32 bit. I also like clarity.",
+      "parentUuid": "f6d955b5_293b4db4",
+      "range": {
+        "startLine": 825,
+        "startChar": 8,
+        "endLine": 825,
+        "endChar": 18
+      },
+      "revId": "9f104c2b748a8dea528d4e16876cdf91a6cb8052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56ab01f0_2cfcf368",
+        "filename": "media/libmedia/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1079886
+      },
+      "writtenOn": "2015-10-28T17:18:00Z",
+      "side": 1,
+      "message": "oops, will fix",
+      "parentUuid": "96cad9dc_a6cf6617",
+      "range": {
+        "startLine": 825,
+        "startChar": 44,
+        "endLine": 825,
+        "endChar": 45
+      },
+      "revId": "9f104c2b748a8dea528d4e16876cdf91a6cb8052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d6d0d18a_686d43ed",
         "filename": "media/libmedia/AudioTrack.cpp",
         "patchSetId": 2
