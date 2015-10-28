@@ -140,6 +140,30 @@
       "revId": "9f104c2b748a8dea528d4e16876cdf91a6cb8052",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "56ab01f0_2f0fc575",
+        "filename": "media/libmedia/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-10-28T19:09:11Z",
+      "side": 1,
+      "message": "seems like a bug in the sanitizer. as i understand it, the operation by removing the parentheses should be equivalent to both arguments converted to uint64_t and the multiplication operation performed (which should not overflow).\n\nDoes it overflow when both effectiveRate and AUDIO_RESAMPLER_UP_RATIO_MAX are cast to uint64_t?",
+      "parentUuid": "f6d955b5_4c684f6d",
+      "range": {
+        "startLine": 831,
+        "startChar": 8,
+        "endLine": 831,
+        "endChar": 77
+      },
+      "revId": "9f104c2b748a8dea528d4e16876cdf91a6cb8052",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
