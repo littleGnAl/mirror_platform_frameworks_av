@@ -39,6 +39,24 @@
       "revId": "c1d653bbb1a99908aaf385a830aa101a3c5f1aa8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f6d955b5_bef12dc9",
+        "filename": "media/libstagefright/VideoFrameScheduler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1079886
+      },
+      "writtenOn": "2015-10-29T15:57:47Z",
+      "side": 1,
+      "message": "Both of these could be optimized further, I\u0027m sure. My main concern was eliminating the overflow condition that was triggering the SIGABRT. Since these just are used for logging purposes, I figured the changes with the least impact would be those that limited the FRAME_VSYNCS value, as they would be invalid after an over/underflow anyway.",
+      "parentUuid": "769c85d8_fcdc55f9",
+      "revId": "c1d653bbb1a99908aaf385a830aa101a3c5f1aa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
