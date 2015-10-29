@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7621e584_2e0a4bf4",
+        "filename": "media/libstagefright/VideoFrameScheduler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-10-29T05:20:25Z",
+      "side": 1,
+      "message": "this does not really make sense as written here, as if vsyncsForLastFrame was already 0, we should instead skip the whole VSYNC correction. BTW, it is really hard for me to imagine how mTimeCorrection could be positive if vsyncsForLastFrame was in fact 0.  The better fix would have been to add \u0026\u0026 vsyncsForLastFrame \u003e 0 after line 457.",
+      "range": {
+        "startLine": 463,
+        "startChar": 20,
+        "endLine": 463,
+        "endChar": 38
+      },
+      "revId": "c1d653bbb1a99908aaf385a830aa101a3c5f1aa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "769c85d8_fcdc55f9",
+        "filename": "media/libstagefright/VideoFrameScheduler.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2015-10-29T05:20:25Z",
+      "side": 1,
+      "message": "similarly here. note that vsyncsForLastFrame can only be ULONG_MAX if nextVsyncTime has already overflown, and we measured vsyncperiod to be 1nsec.",
+      "revId": "c1d653bbb1a99908aaf385a830aa101a3c5f1aa8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
