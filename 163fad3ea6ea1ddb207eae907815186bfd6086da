@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "161fca56_1164db24",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/StreamDescriptor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2015-11-02T17:26:54Z",
+      "side": 1,
+      "message": "mIndexMax",
+      "range": {
+        "startLine": 38,
+        "startChar": 48,
+        "endLine": 38,
+        "endChar": 49
+      },
+      "revId": "163fad3ea6ea1ddb207eae907815186bfd6086da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5625c29e_4be185be",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/StreamDescriptor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2015-11-02T17:26:54Z",
+      "side": 1,
+      "message": "more clear if we use mIndexMax instead of one",
+      "range": {
+        "startLine": 41,
+        "startChar": 44,
+        "endLine": 41,
+        "endChar": 45
+      },
+      "revId": "163fad3ea6ea1ddb207eae907815186bfd6086da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
