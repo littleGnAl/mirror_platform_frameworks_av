@@ -16,6 +16,24 @@
       "revId": "b875f69d8e867cb64bd101e66d85a880537c2b72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16d0aae3_6cfa5be2",
+        "filename": "media/libstagefright/codecs/amrnb/common/src/syn_filt.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1079886
+      },
+      "writtenOn": "2015-11-03T21:01:58Z",
+      "side": 1,
+      "message": "I especially like the negative array index on line 283. The only conditions I actually was able to trigger however where the overflow checks in 304-336. Also, the lg variable is constrained to constant values -does not appear to be directly set from user provided input. A rewrite would be better, but disabling for this function at least protects the rest of the codec",
+      "parentUuid": "d6bb729e_2ab43fa8",
+      "revId": "b875f69d8e867cb64bd101e66d85a880537c2b72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
