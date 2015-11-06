@@ -22,7 +22,7 @@ LOCAL_SHARED_LIBRARIES  += liblog
 
 LOCAL_LDFLAGS := -Wl,-Bsymbolic
 LOCAL_CLANG := true
-LOCAL_SANITIZE := signed-integer-overflow
+LOCAL_SANITIZE := signed-integer-overflow unsigned-integer-overflow
 
 include $(BUILD_SHARED_LIBRARY)
 
