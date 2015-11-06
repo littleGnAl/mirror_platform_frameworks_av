@@ -98,7 +98,7 @@ ifeq ($(TARGET_ARCH),arm)
 endif
 
 LOCAL_CLANG := true
-LOCAL_SANITIZE := signed-integer-overflow
+LOCAL_SANITIZE := signed-integer-overflow unsigned-integer-overflow
 
 LOCAL_SHARED_LIBRARIES := \
 	libstagefright libstagefright_omx libstagefright_foundation libutils liblog \
