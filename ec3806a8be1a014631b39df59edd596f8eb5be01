@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "760646d1_f715a0ca",
+        "filename": "media/libmedia/AudioTrack.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2195,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-11-09T20:50:41Z",
+      "side": 1,
+      "message": "\"unsigned-integer-overflow\"\nThis way we get to keep signed overflow, shift and divide-by-zero checks.",
+      "revId": "ec3806a8be1a014631b39df59edd596f8eb5be01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
