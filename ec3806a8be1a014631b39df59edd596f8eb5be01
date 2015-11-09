@@ -34,6 +34,24 @@
       "revId": "ec3806a8be1a014631b39df59edd596f8eb5be01",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d6ae12f9_d26224bb",
+        "filename": "media/libmedia/AudioTrack.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2195,
+      "author": {
+        "id": 1005967
+      },
+      "writtenOn": "2015-11-09T21:03:25Z",
+      "side": 1,
+      "message": "Not really. \"integer\" is an alias for these four, and the attribute takes the same set of names as -fsanitize\u003d flag.",
+      "parentUuid": "b60c3eef_f9b9173c",
+      "revId": "ec3806a8be1a014631b39df59edd596f8eb5be01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
