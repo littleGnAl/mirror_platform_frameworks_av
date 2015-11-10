@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7689e6a7_223170c8",
+        "filename": "media/libstagefright/SampleTable.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-11-10T17:04:07Z",
+      "side": 1,
+      "message": "This broke playback of some legitimate files.\nBased on the calculation at line 254, the check should be:\n(SIZE_MAX - 8 - (i * 12) \u003c mSampleToChunkOffset)\n\nI\u0027ll upload a fix.",
+      "revId": "ffd7950633edeb8e990770e4c8abb81bdcaa6f32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
