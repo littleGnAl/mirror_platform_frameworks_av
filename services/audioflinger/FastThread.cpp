@@ -24,6 +24,7 @@
 #include <sys/syscall.h>
 #include <utils/Log.h>
 #include <utils/Trace.h>
+#include <cutils/properties.h>
 #include "FastThread.h"
 #include "FastThreadDumpState.h"
 
@@ -34,6 +35,24 @@
 #define MAX_WARMUP_CYCLES         10    // maximum number of loop cycles to wait for warmup
 
 namespace android {
+
+// The actual value to use, which can be specified per-device via property af.fast_mixer_max_warmup.
+static int sFastMixerMaxWarmupCycles = MAX_WARMUP_CYCLES;
+
+// ----------------------------------------------------------------------------
+
+static void sFastMixerWarmupCycles()
+{
+    char value[PROPERTY_VALUE_MAX];
+    if (property_get("af.fast_mixer_max_warmup", value, NULL) > 0) {
+        char *endptr;
+        unsigned long ul = strtoul(value, &endptr, 0);
+        if (*endptr == '\0' && MIN_WARMUP_CYCLES <= ul && ul <= MAX_WARMUP_CYCLES) {
+            sFastMixerMaxWarmupCycles = (int) ul;
+        }
+    }
+    ALOGI("warmup cycles %d", sFastMixerMaxWarmupCycles);
+}
 
 FastThread::FastThread() : Thread(false /*canCallJava*/),
     // re-initialized to &sInitial by subclass constructor
@@ -77,6 +96,7 @@ FastThread::FastThread() : Thread(false /*canCallJava*/),
     mOldTs.tv_nsec = 0;
     mMeasuredWarmupTs.tv_sec = 0;
     mMeasuredWarmupTs.tv_nsec = 0;
+    sFastMixerWarmupCycles();
 }
 
 FastThread::~FastThread()
@@ -247,7 +267,7 @@ bool FastThread::threadLoop()
                         mWarmupConsecutiveInRangeCycles = 0;
                     }
                     if ((mWarmupConsecutiveInRangeCycles >= MIN_WARMUP_CYCLES) ||
-                            (mWarmupCycles >= MAX_WARMUP_CYCLES)) {
+                            (mWarmupCycles >= (uint32_t) sFastMixerMaxWarmupCycles)) {
                         mIsWarm = true;
                         mDumpState->mMeasuredWarmupTs = mMeasuredWarmupTs;
                         mDumpState->mWarmupCycles = mWarmupCycles;
