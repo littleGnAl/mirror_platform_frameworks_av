@@ -121,7 +121,7 @@ float Element<audio_stream_type_t>::volIndexToDb(Volume::device_category deviceC
     // find what part of the curve this index volume belongs to, or if it's out of bounds
     int segment = 0;
     if (volIdx < curve[Volume::VOLMIN].mIndex) {         // out of bounds
-        return 0.0f;
+        return VOLUME_MIN_DB;
     } else if (volIdx < curve[Volume::VOLKNEE1].mIndex) {
         segment = 0;
     } else if (volIdx < curve[Volume::VOLKNEE2].mIndex) {
