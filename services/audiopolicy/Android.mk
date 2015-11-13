@@ -109,6 +109,7 @@ LOCAL_STATIC_LIBRARIES := \
 LOCAL_C_INCLUDES += \
     $(TOPDIR)frameworks/av/services/audiopolicy/common/include \
     $(TOPDIR)frameworks/av/services/audiopolicy/engine/interface \
+    $(TOPDIR)frameworks/av/services/audiopolicy/common/managerdefinitions/include
 
 LOCAL_MODULE:= libaudiopolicymanager
 
