@@ -4783,7 +4783,7 @@ bool AudioFlinger::DirectOutputThread::shouldStandby_l()
                            mTracks[mTracks.size() - 1]->mState == TrackBase::IDLE;
     }
 
-    return !mStandby && !(trackPaused || (mHwPaused && !trackStopped));
+    return !mStandby && !((mType == OFFLOAD && trackPaused) || (mHwPaused && !trackStopped));
 }
 
 // getTrackName_l() must be called with ThreadBase::mLock held
