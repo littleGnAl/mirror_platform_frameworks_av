@@ -1038,6 +1038,9 @@ void NuPlayer::Renderer::postDrainVideoQueue() {
                 mMediaClock->updateAnchor(mediaTimeUs, nowUs, mediaTimeUs);
                 mAnchorTimeMediaUs = mediaTimeUs;
                 realTimeUs = nowUs;
+            } else if (!mVideoSampleReceived) {
+                // Always render the first video frame.
+                realTimeUs = nowUs;
             } else {
                 realTimeUs = getRealTimeUs(mediaTimeUs, nowUs);
             }
@@ -1137,6 +1140,12 @@ void NuPlayer::Renderer::onDrainVideoQueue() {
             Mutex::Autolock autoLock(mLock);
             clearAnchorTime_l();
         }
+    }
+
+    // Always render the first video frame while keeping stats on A/V sync.
+    if (!mVideoSampleReceived) {
+        realTimeUs = nowUs;
+        tooLate = false;
     }
 
     entry->mNotifyConsumed->setInt64("timestampNs", realTimeUs * 1000ll);
