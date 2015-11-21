@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db271bf3_53fb4ea1",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerCCDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-11-21T21:43:53Z",
+      "side": 1,
+      "message": "should check first that (payload_size * 8) won\u0027t overflow",
+      "range": {
+        "startLine": 238,
+        "startChar": 35,
+        "endLine": 238,
+        "endChar": 51
+      },
+      "revId": "811fc4e67dabc2c33f62a68077b3d8d9b15af2f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
