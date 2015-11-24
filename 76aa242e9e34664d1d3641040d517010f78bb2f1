@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbc4277e_e21b5c4e",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2015-11-24T19:53:45Z",
+      "side": 1,
+      "message": "Right now framesReadyIsCalledByMultipleThreads is never set, as it is commented out here.  shouldn\u0027t this fix the issue?",
+      "range": {
+        "startLine": 438,
+        "startChar": 0,
+        "endLine": 438,
+        "endChar": 73
+      },
+      "revId": "76aa242e9e34664d1d3641040d517010f78bb2f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
