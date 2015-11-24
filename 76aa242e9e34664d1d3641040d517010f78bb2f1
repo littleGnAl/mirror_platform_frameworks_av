@@ -22,6 +22,30 @@
       "revId": "76aa242e9e34664d1d3641040d517010f78bb2f1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5bac0bb5_5e9b15e4",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1057645
+      },
+      "writtenOn": "2015-11-24T20:44:56Z",
+      "side": 1,
+      "message": "Yes this will fix this issue. This change was not part of our internal android code-base. Will cherry-pick it there.",
+      "parentUuid": "bbc4277e_e21b5c4e",
+      "range": {
+        "startLine": 438,
+        "startChar": 0,
+        "endLine": 438,
+        "endChar": 73
+      },
+      "revId": "76aa242e9e34664d1d3641040d517010f78bb2f1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
