@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b1b2bb8_1aac3ff2",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2015-11-25T22:35:43Z",
+      "side": 1,
+      "message": "Initialize() can be called several time on the same APM instance?",
+      "range": {
+        "startLine": 926,
+        "startChar": 27,
+        "endLine": 926,
+        "endChar": 37
+      },
+      "revId": "2c12c2d5f2bf461a70a0612a7cd7f38b2c50d48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fbb05f0b_da0e047c",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2015-11-25T22:35:43Z",
+      "side": 1,
+      "message": "the reverse port (echo reference) channel config is not necessarily the same as the forward port config.\nWe should apply session-\u003einChannelCount and session-\u003eoutChannelCount here for forward channel",
+      "range": {
+        "startLine": 1044,
+        "startChar": 52,
+        "endLine": 1044,
+        "endChar": 63
+      },
+      "revId": "2c12c2d5f2bf461a70a0612a7cd7f38b2c50d48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
