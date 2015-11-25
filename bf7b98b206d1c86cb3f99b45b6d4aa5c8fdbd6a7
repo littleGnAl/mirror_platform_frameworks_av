@@ -22,6 +22,30 @@
       "revId": "bf7b98b206d1c86cb3f99b45b6d4aa5c8fdbd6a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9bbbe3f1_be48e108",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2015-11-25T01:17:17Z",
+      "side": 1,
+      "message": "good catch! code updated.",
+      "parentUuid": "1b153384_4bd6f6ea",
+      "range": {
+        "startLine": 1147,
+        "startChar": 21,
+        "endLine": 1147,
+        "endChar": 27
+      },
+      "revId": "bf7b98b206d1c86cb3f99b45b6d4aa5c8fdbd6a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
