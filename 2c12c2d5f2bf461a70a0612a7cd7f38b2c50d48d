@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bbc4277e_428323e9",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 926,
+      "author": {
+        "id": 1083718
+      },
+      "writtenOn": "2015-11-26T00:21:43Z",
+      "side": 1,
+      "message": "Yes, actually it re-initializes itself every time the input sample rate or number of samples changes.",
+      "parentUuid": "5b1b2bb8_1aac3ff2",
+      "range": {
+        "startLine": 926,
+        "startChar": 27,
+        "endLine": 926,
+        "endChar": 37
+      },
+      "revId": "2c12c2d5f2bf461a70a0612a7cd7f38b2c50d48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fbb05f0b_da0e047c",
         "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2015-11-25T22:35:43Z",
       "side": 1,
       "message": "the reverse port (echo reference) channel config is not necessarily the same as the forward port config.\nWe should apply session-\u003einChannelCount and session-\u003eoutChannelCount here for forward channel",
+      "range": {
+        "startLine": 1044,
+        "startChar": 52,
+        "endLine": 1044,
+        "endChar": 63
+      },
+      "revId": "2c12c2d5f2bf461a70a0612a7cd7f38b2c50d48d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b2123e5_a0e500ce",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1083718
+      },
+      "writtenOn": "2015-11-26T00:21:43Z",
+      "side": 1,
+      "message": "Great catch! I thought it was because in Session_SetConfig it uses the same one. Done.",
+      "parentUuid": "fbb05f0b_da0e047c",
       "range": {
         "startLine": 1044,
         "startChar": 52,
