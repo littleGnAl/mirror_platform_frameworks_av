@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "db0f1bb0_0d8b3541",
+        "filename": "media/mediaserver/main_mediaserver.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2015-11-30T21:00:33Z",
+      "side": 1,
+      "message": "Should probably replace with an add of $(TOP)/external/icu/android_utils/include to LOCAL_C_INCLUDES in Android.mk -- if so, this should actually be done regardless of the outcome of this patch.\n\n(This is my fault for hacking around this in a prototype, sorry.)",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 18
+      },
+      "revId": "fe4d42fa057e7c1e84942efaee1fd9e4fe8b0546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
