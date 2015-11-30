@@ -31,13 +31,16 @@
 // from LOCAL_C_INCLUDES
 #include "AudioFlinger.h"
 #include "CameraService.h"
-#include "IcuUtils.h"
 #include "MediaLogService.h"
 #include "MediaPlayerService.h"
 #include "ResourceManagerService.h"
 #include "service/AudioPolicyService.h"
 #include "SoundTriggerHwService.h"
 #include "RadioService.h"
+
+#ifndef __BRILLO__
+#include "IcuUtils.h"
+#endif
 
 using namespace android;
 
@@ -125,7 +128,11 @@ int main(int argc __unused, char** argv)
             prctl(PR_SET_PDEATHSIG, SIGKILL);   // if parent media.log dies before me, kill me also
             setpgid(0, 0);                      // but if I die first, don't kill my parent
         }
+#ifndef __BRILLO__
+        // Brillo is headless and very resource constrained. As such, it doesn't
+        // need an internationalization library for now.
         InitializeIcuOrDie();
+#endif
         sp<ProcessState> proc(ProcessState::self());
         sp<IServiceManager> sm = defaultServiceManager();
         ALOGI("ServiceManager: %p", sm.get());
