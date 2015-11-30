@@ -18,10 +18,8 @@ LOCAL_SHARED_LIBRARIES := \
 	libaudiopolicyservice \
 	libcamera_metadata\
 	libcameraservice \
-	libicuuc \
 	libmedialogservice \
 	libresourcemanagerservice \
-	libcutils \
 	libnbaio \
 	libmedia \
 	libmediaplayerservice \
@@ -30,6 +28,13 @@ LOCAL_SHARED_LIBRARIES := \
 	libbinder \
 	libsoundtriggerservice \
 	libradioservice
+
+#ifndef BRILLO
+LOCAL_SHARED_LIBRARIES += \
+	libicuuc \
+	libcutils \
+
+#endif
 
 LOCAL_STATIC_LIBRARIES := \
         libicuandroid_utils \
@@ -48,6 +53,7 @@ LOCAL_C_INCLUDES := \
     $(call include-path-for, audio-utils) \
     frameworks/av/services/soundtrigger \
     frameworks/av/services/radio \
+    external/icu/android_utils/include \
     external/sonic
 
 LOCAL_MODULE:= mediaserver
