@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "5b1deb19_a58c881d",
+        "filename": "media/libstagefright/SampleTable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-12-02T23:18:53Z",
+      "side": 1,
+      "message": "that\u0027s mNumSampleToChunkOffsets (which is a uint32_t), not mSampleToChunkOffset (which is an off64_t)",
+      "parentUuid": "dbae3bf9_813a04a1",
+      "revId": "7a85c00879f35cfa9ecf1f920f8ef71cd46538eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b1deb19_254b58ab",
         "filename": "media/libstagefright/SampleTable.cpp",
         "patchSetId": 1
