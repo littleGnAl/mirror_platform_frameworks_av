@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "dbae3bf9_813a04a1",
+        "filename": "media/libstagefright/SampleTable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1061414
+      },
+      "writtenOn": "2015-12-02T23:13:05Z",
+      "side": 1,
+      "message": "See here mNumSampleToChunkOffsets read from file is maximum 4 bytes only.",
+      "revId": "7a85c00879f35cfa9ecf1f920f8ef71cd46538eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b1deb19_254b58ab",
         "filename": "media/libstagefright/SampleTable.cpp",
         "patchSetId": 1
