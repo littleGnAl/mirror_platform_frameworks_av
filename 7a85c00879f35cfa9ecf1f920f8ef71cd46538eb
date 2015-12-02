@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "fba69f26_65144a2a",
+        "filename": "media/libstagefright/SampleTable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1061414
+      },
+      "writtenOn": "2015-12-02T23:28:25Z",
+      "side": 1,
+      "message": "my bad, it is from data_offset.",
+      "parentUuid": "5b1deb19_a58c881d",
+      "revId": "7a85c00879f35cfa9ecf1f920f8ef71cd46538eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5b1deb19_254b58ab",
         "filename": "media/libstagefright/SampleTable.cpp",
         "patchSetId": 1
@@ -48,6 +66,30 @@
       "writtenOn": "2015-12-02T23:09:57Z",
       "side": 1,
       "message": "I *think* this might impact the ability to read 4GB+ files.\nSeems like INT64_MAX would be more appropriate?",
+      "range": {
+        "startLine": 249,
+        "startChar": 22,
+        "endLine": 249,
+        "endChar": 32
+      },
+      "revId": "7a85c00879f35cfa9ecf1f920f8ef71cd46538eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ba24b12_1894cab5",
+        "filename": "media/libstagefright/SampleTable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1061414
+      },
+      "writtenOn": "2015-12-02T23:28:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b1deb19_254b58ab",
       "range": {
         "startLine": 249,
         "startChar": 22,
