@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1bac5306_d5b20ebe",
+        "filename": "services/audiopolicy/engineconfigurable/src/Stream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2015-12-02T16:18:11Z",
+      "side": 1,
+      "message": "same problem here: return 0.0f",
+      "range": {
+        "startLine": 132,
+        "startChar": 17,
+        "endLine": 132,
+        "endChar": 19
+      },
+      "revId": "cc672393e968ddab11e9cc8edb0b431c0bc5dd7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
