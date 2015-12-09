@@ -91,7 +91,7 @@ ssize_t DeviceVector::add(const sp<DeviceDescriptor>& item)
     ssize_t ret = indexOf(item);
 
     if (ret < 0) {
-        ret = SortedVector::add(item);
+        ret = Vector::add(item);
         if (ret >= 0) {
             refreshTypes();
         }
@@ -110,7 +110,7 @@ ssize_t DeviceVector::remove(const sp<DeviceDescriptor>& item)
     if (ret < 0) {
         ALOGW("DeviceVector::remove device %08x not in", item->type());
     } else {
-        ret = SortedVector::removeAt(ret);
+        ret = Vector::removeAt(ret);
         if (ret >= 0) {
             refreshTypes();
         }

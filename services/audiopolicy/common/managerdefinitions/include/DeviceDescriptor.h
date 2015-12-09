@@ -19,7 +19,7 @@
 #include "AudioPort.h"
 #include <utils/Errors.h>
 #include <utils/String8.h>
-#include <utils/SortedVector.h>
+#include <utils/Vector.h>
 #include <cutils/config_utils.h>
 #include <system/audio.h>
 #include <system/audio_policy.h>
@@ -61,10 +61,10 @@ private:
 friend class DeviceVector;
 };
 
-class DeviceVector : public SortedVector< sp<DeviceDescriptor> >
+class DeviceVector : public Vector< sp<DeviceDescriptor> >
 {
 public:
-    DeviceVector() : SortedVector(), mDeviceTypes(AUDIO_DEVICE_NONE) {}
+    DeviceVector() : Vector(), mDeviceTypes(AUDIO_DEVICE_NONE) {}
 
     ssize_t add(const sp<DeviceDescriptor>& item);
     ssize_t remove(const sp<DeviceDescriptor>& item);
