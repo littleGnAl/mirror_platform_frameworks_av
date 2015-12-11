@@ -92,6 +92,24 @@
       "revId": "70b29cf47f08434ab62f9ec2cd91df4fb77e5a49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05e5d2f2_3e1ca5b4",
+        "filename": "media/mediaserver/Android.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2015-12-11T23:52:42Z",
+      "side": 1,
+      "message": "When libicuuc is taken out of LOCAL_SHARED_LIBRARIES the include path disappears as well.  It might not be necessary to remove the LOCAL_SHARED_LIBRARIES entry if there\u0027s no actual references to it, can experiment with that.",
+      "parentUuid": "25ead6c4_3c80311b",
+      "revId": "70b29cf47f08434ab62f9ec2cd91df4fb77e5a49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
