@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "c5b81ad7_b90fffb6",
+        "filename": "media/mediaserver/Android.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2015-12-11T23:38:24Z",
+      "side": 1,
+      "message": "Oh that does need to be ifndef/endif, no # sign.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 14
+      },
+      "revId": "70b29cf47f08434ab62f9ec2cd91df4fb77e5a49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5cc3e7f_02db0a68",
         "filename": "media/mediaserver/Android.mk",
         "patchSetId": 4
@@ -30,6 +53,24 @@
       "writtenOn": "2015-12-11T23:29:33Z",
       "side": 1,
       "message": "Why was this added?",
+      "revId": "70b29cf47f08434ab62f9ec2cd91df4fb77e5a49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5cf3a71_c44850b1",
+        "filename": "media/mediaserver/Android.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1004277
+      },
+      "writtenOn": "2015-12-11T23:38:24Z",
+      "side": 1,
+      "message": "main_mediaserver.cpp include of \"IcuUtils.h\"\n\nfails if LOCAL_SHARED_LIBRARIES doesn\u0027t bring in its exported includes.  There may be a better way to handle this?",
+      "parentUuid": "e5cc3e7f_02db0a68",
       "revId": "70b29cf47f08434ab62f9ec2cd91df4fb77e5a49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
