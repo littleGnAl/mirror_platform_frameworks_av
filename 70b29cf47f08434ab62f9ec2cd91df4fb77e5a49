@@ -74,6 +74,24 @@
       "revId": "70b29cf47f08434ab62f9ec2cd91df4fb77e5a49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "25ead6c4_3c80311b",
+        "filename": "media/mediaserver/Android.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-12-11T23:42:56Z",
+      "side": 1,
+      "message": "But that include in main_mediaserver.cpp isn\u0027t new. Did it never build on brillo?",
+      "parentUuid": "c5cf3a71_c44850b1",
+      "revId": "70b29cf47f08434ab62f9ec2cd91df4fb77e5a49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
