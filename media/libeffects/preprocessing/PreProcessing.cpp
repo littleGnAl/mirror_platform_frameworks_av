@@ -584,11 +584,32 @@ int NsGetParameter(preproc_effect_t  *effect __unused,
     return status;
 }
 
-int NsSetParameter (preproc_effect_t *effect __unused,
-                    void *pParam __unused,
-                    void *pValue __unused)
+int NsSetParameter (preproc_effect_t *effect, void *pParam, void *pValue)
 {
     int status = 0;
+    webrtc::NoiseSuppression *ns = static_cast<webrtc::NoiseSuppression *>(effect->engine);
+    uint32_t param = *(uint32_t *)pParam;
+    uint32_t value = *(uint32_t *)pValue;
+
+    if (param == NS_PARAM_LEVEL) {
+        if (value < NS_LEVEL_MULTI_MIC) {
+            ns->set_level((webrtc::NoiseSuppression::Level)*(uint32_t *)pValue);
+            ALOGV("NsSetParameter() level %d, status %d", *(uint32_t *)pValue, status);
+        } else {
+            // TODO(aluebs): Make the geometry settable.
+            std::vector<webrtc::Point> geometry;
+            geometry.push_back(webrtc::Point(-0.03f, 0.f, 0.f));
+            geometry.push_back(webrtc::Point(-0.01f, 0.f, 0.f));
+            geometry.push_back(webrtc::Point(0.01f, 0.f, 0.f));
+            geometry.push_back(webrtc::Point(0.03f, 0.f, 0.f));
+            effect->session->apm->SetArrayGeometry(geometry);
+            ALOGV("NsSetParameter() multi mic %d, status %d", value, status);
+        }
+    } else {
+        ALOGW("NsSetParameter() unknown param %08x value %08x", param, *(uint32_t *)pValue);
+        status = -EINVAL;
+    }
+
     return status;
 }
 
@@ -597,6 +618,7 @@ void NsEnable(preproc_effect_t *effect)
     webrtc::NoiseSuppression *ns = static_cast<webrtc::NoiseSuppression *>(effect->engine);
     ALOGV("NsEnable ns %p", ns);
     ns->Enable(true);
+    effect->session->apm->EnableBeamformer(true);
 }
 
 void NsDisable(preproc_effect_t *effect)
@@ -604,6 +626,7 @@ void NsDisable(preproc_effect_t *effect)
     ALOGV("NsDisable");
     webrtc::NoiseSuppression *ns = static_cast<webrtc::NoiseSuppression *>(effect->engine);
     ns->Enable(false);
+    effect->session->apm->EnableBeamformer(false);
 }
 
 static const preproc_ops_t sNsOps = {
@@ -896,17 +919,6 @@ int Session_SetConfig(preproc_session_t *session, effect_config_t *config)
     ALOGV("Session_SetConfig sr %d cnl %08x",
          config->inputCfg.samplingRate, config->inputCfg.channels);
     int status;
-
-    // if at least one process is enabled, do not accept configuration changes
-    if (session->enabledMsk) {
-        if (session->samplingRate != config->inputCfg.samplingRate ||
-                session->inChannelCount != inCnl ||
-                session->outChannelCount != outCnl) {
-            return -ENOSYS;
-        } else {
-            return 0;
-        }
-    }
 
     // AEC implementation is limited to 16kHz
     if (config->inputCfg.samplingRate >= 32000 && !(session->createdMsk & (1 << PREPROC_AEC))) {
@@ -1290,8 +1302,7 @@ int PreProcessingFx_Process(effect_handle_t     self,
             }
             session->framesIn = 0;
         }
-        session->procFrame->samples_per_channel_ =
-                session->apmFrameCount * session->inChannelCount;
+        session->procFrame->samples_per_channel_ = session->apmFrameCount;
 
         effect->session->apm->ProcessStream(session->procFrame);
 
@@ -1802,8 +1813,7 @@ int PreProcessingFx_ProcessReverse(effect_handle_t     self,
             }
             session->framesRev = 0;
         }
-        session->revFrame->samples_per_channel_ =
-                session->apmFrameCount * session->inChannelCount;
+        session->revFrame->samples_per_channel_ = session->apmFrameCount;
         effect->session->apm->AnalyzeReverseStream(session->revFrame);
         return 0;
     } else {
