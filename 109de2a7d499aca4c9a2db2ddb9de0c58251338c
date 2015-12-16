@@ -16,6 +16,24 @@
       "revId": "109de2a7d499aca4c9a2db2ddb9de0c58251338c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85b2a2f4_fdeebfac",
+        "filename": "media/libstagefright/FLACExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1037953
+      },
+      "writtenOn": "2015-12-16T15:52:50Z",
+      "side": 1,
+      "message": "Will look into updating the commit.\n\nHowever please note that the current upload brings it more in line with how the reference sniffer in external/flac/libFLAC/metadata_iterators.c handles ID3v2 tags. By adding additional checks on the file would make Android more strict than the reference sniffer.\nIs this wanted and expected?",
+      "parentUuid": "85d9c240_28ef0aab",
+      "revId": "109de2a7d499aca4c9a2db2ddb9de0c58251338c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
