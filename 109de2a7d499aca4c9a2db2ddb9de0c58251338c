@@ -34,6 +34,24 @@
       "revId": "109de2a7d499aca4c9a2db2ddb9de0c58251338c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "455a6ade_a529be7a",
+        "filename": "media/libstagefright/FLACExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2015-12-16T16:23:38Z",
+      "side": 1,
+      "message": "It can be argued both ways. I expect the reference implementation to fail on id3v2.4 files with footer (because it will end up at the wrong offset in the file). Making the change I suggested would make it work with such files. On the other hand, we\u0027d be less forgiving with files that are technically in violation of the spec, whereas the reference parser would accept those anyway.\n\nNote that the id3 parser at frameworks/av/media/libstagefright/id3/ID3.cpp doesn\u0027t deal with footers either, but it does check that the version fields are valid.\n\nPerhaps a compromise here could be to check the version and flags, but only specifically for v2.4+footer. That way flac files that specify the id3 version wrong would still be accepted, while files that correctly specify the version and footer flag could be parsed too.",
+      "parentUuid": "85b2a2f4_fdeebfac",
+      "revId": "109de2a7d499aca4c9a2db2ddb9de0c58251338c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
