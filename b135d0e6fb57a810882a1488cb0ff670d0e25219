@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5d1668e_4b08393d",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 901,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2015-12-17T00:11:04Z",
+      "side": 0,
+      "message": "I suppose you verified that changing the config on the fly was OK for all effect types (AGC, AEC and NS)?",
+      "range": {
+        "startLine": 901,
+        "startChar": 17,
+        "endLine": 901,
+        "endChar": 27
+      },
+      "revId": "b135d0e6fb57a810882a1488cb0ff670d0e25219",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
