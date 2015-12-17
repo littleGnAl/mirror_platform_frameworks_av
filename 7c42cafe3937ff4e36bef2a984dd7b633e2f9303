@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa593347_e88053e3",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3843,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2015-12-17T21:56:24Z",
+      "side": 1,
+      "message": "I couldn\u0027t quickly find where these formats are defined, so if you would rather add a corresponding OMX_COLOR_Format, I\u0027d be just as happy.",
+      "revId": "7c42cafe3937ff4e36bef2a984dd7b633e2f9303",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
