@@ -405,6 +405,19 @@ void NuPlayer::HTTPLiveSource::onSessionNotify(const sp<AMessage> &msg) {
             break;
         }
 
+        case LiveSession::kWhatUpdateSeekableRange:
+        {
+            int32_t start, end;
+            CHECK(msg->findInt32("seek-range-start", &start));
+            CHECK(msg->findInt32("seek-range-end", &end));
+            sp<AMessage> notify = dupNotify();
+            notify->setInt32("what", kWhatUpdateSeekableRange);
+            notify->setInt32("seek-range-start", start);
+            notify->setInt32("seek-range-end", end);
+            notify->post();
+            break;
+        }
+
         case LiveSession::kWhatError:
         {
             break;

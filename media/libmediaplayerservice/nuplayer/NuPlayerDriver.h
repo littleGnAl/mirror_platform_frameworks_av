@@ -78,6 +78,7 @@ struct NuPlayerDriver : public MediaPlayerInterface {
     void notifySeekComplete_l();
     void notifyListener(int msg, int ext1 = 0, int ext2 = 0, const Parcel *in = NULL);
     void notifyFlagsChanged(uint32_t flags);
+    void notifySeekRangeUpdate(int32_t start, int32_t end);
 
 protected:
     virtual ~NuPlayerDriver();
@@ -121,6 +122,10 @@ private:
     bool mAtEOS;
     bool mLooping;
     bool mAutoLoop;
+    bool mSeekRangeUpdate;
+
+    int32_t mSeekRangeStart;
+    int32_t mSeekRangeEnd;
 
     status_t prepare_l();
     status_t start_l();

@@ -45,7 +45,10 @@ NuPlayerDriver::NuPlayerDriver(pid_t pid)
       mPlayerFlags(0),
       mAtEOS(false),
       mLooping(false),
-      mAutoLoop(false) {
+      mAutoLoop(false),
+      mSeekRangeUpdate(false),
+      mSeekRangeStart(0),
+      mSeekRangeEnd(0)  {
     ALOGV("NuPlayerDriver(%p)", this);
     mLooper->setName("NuPlayerDriver Looper");
 
@@ -597,6 +600,19 @@ status_t NuPlayerDriver::getMetadata(
             Metadata::kSeekAvailable,
             mPlayerFlags & NuPlayer::Source::FLAG_CAN_SEEK);
 
+    if (mSeekRangeUpdate) {
+
+        meta.appendInt32(
+                Metadata::kSeekRangeStart,
+                mSeekRangeStart);
+
+        meta.appendInt32(
+                Metadata::kSeekRangeEnd,
+                mSeekRangeEnd);
+
+        mSeekRangeUpdate = false;
+    }
+
     return OK;
 }
 
@@ -816,6 +832,12 @@ void NuPlayerDriver::notifyFlagsChanged(uint32_t flags) {
     Mutex::Autolock autoLock(mLock);
 
     mPlayerFlags = flags;
+}
+
+void NuPlayerDriver::notifySeekRangeUpdate(int32_t start, int32_t end) {
+    mSeekRangeUpdate = true;
+    mSeekRangeStart = start;
+    mSeekRangeEnd = end;
 }
 
 }  // namespace android

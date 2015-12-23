@@ -55,6 +55,7 @@ struct NuPlayer::Source : public AHandler {
         kWhatQueueDecoderShutdown,
         kWhatDrmNoLicense,
         kWhatInstantiateSecureDecoders,
+        kWhatUpdateSeekableRange,
     };
 
     // The provides message is used to notify the player about various

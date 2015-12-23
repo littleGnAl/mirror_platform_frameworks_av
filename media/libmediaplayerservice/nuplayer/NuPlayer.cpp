@@ -2350,6 +2350,20 @@ void NuPlayer::onSourceNotify(const sp<AMessage> &msg) {
             break;
         }
 
+        case Source::kWhatUpdateSeekableRange:
+        {
+            int32_t seekRangeStart, seekRangeEnd;
+            CHECK(msg->findInt32("seek-range-start", &seekRangeStart));
+            CHECK(msg->findInt32("seek-range-end", &seekRangeEnd));
+
+            sp<NuPlayerDriver> driver = mDriver.promote();
+            if (driver != NULL) {
+                driver->notifySeekRangeUpdate(seekRangeStart,seekRangeEnd);
+            }
+            notifyListener(MEDIA_INFO, MEDIA_INFO_METADATA_UPDATE, 0);
+            break;
+        }
+
         default:
             TRESPASS();
     }
