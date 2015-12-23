@@ -305,7 +305,13 @@ LiveSession::LiveSession(
       mFirstTimeUsValid(false),
       mFirstTimeUs(0),
       mLastSeekTimeUs(0),
-      mHasMetadata(false) {
+      mHasMetadata(false),
+      mSendSeekableRanges(false),
+      mSendRangeForStream(0),
+      mSeekableRangeStart(-1),
+      mSeekableRangeEnd(-1),
+      mSeqNumberNotifiedSeekRange(-1),
+      mTimeStampOffset(0) {
     mStreams[kAudioIndex] = StreamItem("audio");
     mStreams[kVideoIndex] = StreamItem("video");
     mStreams[kSubtitleIndex] = StreamItem("subtitles");
@@ -434,6 +440,10 @@ status_t LiveSession::dequeueAccessUnit(
             strm.mLastDequeuedTimeUs = timeUs;
             timeUs = calculateMediaTimeUs(firstTimeUs, timeUs, discontinuitySeq);
 
+            // Live stream timestamp should start from timeoffset of segment from start of session
+            if (mTimeStampOffset > 0)
+                timeUs += mTimeStampOffset;
+
             ALOGV("[%s] dequeueAccessUnit: time %lld us, original %lld us",
                     streamStr, (long long)timeUs, (long long)originalTimeUs);
             (*accessUnit)->meta()->setInt64("timeUs",  timeUs);
@@ -519,11 +529,37 @@ status_t LiveSession::disconnect() {
 }
 
 status_t LiveSession::seekTo(int64_t timeUs) {
+    int64_t seekOffset = timeUs;
+    int64_t timeStampOffset = 0;
+
+    /* Cache the last seekable ranges,
+     truncate them to seconds as mediaplayer reports seekable ranges in seconds*/
+    int32_t seekableRangeStart = (mSeekableRangeStart >= 0) ? (mSeekableRangeStart / 1000) : 0,
+            seekableRangeEnd = (mSeekableRangeEnd / 1000);
+    // seek offset is relative to start of session, map in current playlist
+    if (seekableRangeEnd > 0) {
+       int64_t seekableRangeStartUs = seekableRangeStart * 1000000ll;
+       int64_t seekableRangeEndUs = seekableRangeEnd * 1000000ll;
+       if ((seekOffset < seekableRangeStartUs) || (seekOffset > seekableRangeEndUs)) {
+           //Ignore seek beyond limit
+           return OK;
+       }
+       seekOffset -= seekableRangeStartUs;
+       timeStampOffset = seekableRangeStartUs;
+       if (seekOffset == 0) {
+           // Playlist fetcher cannot differentiate between seekto "0" and
+           // StartTime 0 at start of live playback, set minimal seek value
+           seekOffset = 1ll;
+       }
+    }
+
     sp<AMessage> msg = new AMessage(kWhatSeek, this);
-    msg->setInt64("timeUs", timeUs);
+    msg->setInt64("timeUs", seekOffset);
 
     sp<AMessage> response;
     status_t err = msg->postAndAwaitResponse(&response);
+    //Seek is done, update time stamp offset
+    mTimeStampOffset = timeStampOffset;
 
     return err;
 }
@@ -891,6 +927,58 @@ void LiveSession::onMessageReceived(const sp<AMessage> &msg) {
                         sp<AMessage> notify = mNotify->dup();
                         notify->setInt32("what", kWhatMetadataDetected);
                         notify->post();
+                    }
+                    break;
+                }
+
+                case PlaylistFetcher::kWhatSendSeekableRanges:
+                {
+                    if (!mSendSeekableRanges) {
+                        mSendSeekableRanges = true;
+
+                        // Report sekable range for first time
+                        mSeekableRangeStart = 0;
+                        CHECK(msg->findInt32("seekableRangeEnd", &mSeekableRangeEnd));
+                        CHECK(msg->findInt32("firstSeqNumberInPlaylist", &mSeqNumberNotifiedSeekRange));
+                        sp<AMessage> notify = mNotify->dup();
+                        notify->setInt32("what", kWhatUpdateSeekableRange);
+                        // truncate ms remainder as webview expects integer seconds
+                        notify->setInt32("seek-range-start", (mSeekableRangeStart / 1000));
+                        notify->setInt32("seek-range-end", (mSeekableRangeEnd / 1000));
+                        notify->post();
+                    }
+                    break;
+                }
+
+                case PlaylistFetcher::kWhatStartOffset:
+                {
+                    CHECK(msg->findInt64("offset", &mTimeStampOffset));
+                    break;
+                }
+
+                case PlaylistFetcher::kWhatPlaylistStartSeq:
+                {
+                    if (mSendSeekableRanges) {
+                        int32_t firstSeqNumberInPlaylist;
+                        int32_t firstSeqDuration;
+
+                        CHECK(msg->findInt32("firstSeqNumberInPlaylist", &firstSeqNumberInPlaylist));
+                        CHECK(msg->findInt32("firstSeqDuration", &firstSeqDuration));
+
+                        if (firstSeqNumberInPlaylist > mSeqNumberNotifiedSeekRange) {
+                            int32_t playlistProgress = (firstSeqNumberInPlaylist - mSeqNumberNotifiedSeekRange)
+                                                        * firstSeqDuration;
+                            mSeekableRangeStart += playlistProgress;
+                            mSeekableRangeEnd += playlistProgress;
+
+                            sp<AMessage> notify = mNotify->dup();
+                            notify->setInt32("what", kWhatUpdateSeekableRange);
+                            // truncate ms remainder as webview expects integer seconds
+                            notify->setInt32("seek-range-start", (mSeekableRangeStart / 1000));
+                            notify->setInt32("seek-range-end", (mSeekableRangeEnd / 1000));
+                            notify->post();
+                            mSeqNumberNotifiedSeekRange = firstSeqNumberInPlaylist;
+                        }
                     }
                     break;
                 }

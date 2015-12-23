@@ -51,6 +51,9 @@ struct PlaylistFetcher : public AHandler {
         kWhatStopReached,
         kWhatPlaylistFetched,
         kWhatMetadataDetected,
+        kWhatSendSeekableRanges,
+        kWhatStartOffset,
+        kWhatPlaylistStartSeq,
     };
 
     PlaylistFetcher(
@@ -167,6 +170,7 @@ private:
 
     sp<ATSParser> mTSParser;
 
+    bool mReportedOffset;
     bool mFirstPTSValid;
     int64_t mFirstTimeUs;
     int64_t mSegmentFirstPTS;

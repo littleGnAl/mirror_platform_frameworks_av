@@ -249,6 +249,13 @@ private:
     int64_t mLastSeekTimeUs;
     bool mHasMetadata;
 
+    bool mSendSeekableRanges;
+    int32_t mSendRangeForStream;
+    int32_t mSeekableRangeStart;
+    int32_t mSeekableRangeEnd;
+    int32_t mSeqNumberNotifiedSeekRange;
+    int64_t mTimeStampOffset;
+
     KeyedVector<size_t, int64_t> mDiscontinuityAbsStartTimesUs;
     KeyedVector<size_t, int64_t> mDiscontinuityOffsetTimesUs;
 

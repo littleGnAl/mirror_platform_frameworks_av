@@ -164,6 +164,7 @@ PlaylistFetcher::PlaylistFetcher(
       mSubtitleGeneration(subtitleGeneration),
       mLastDiscontinuitySeq(-1ll),
       mRefreshState(INITIAL_MINIMUM_RELOAD_DELAY),
+      mReportedOffset(false),
       mFirstPTSValid(false),
       mFirstTimeUs(-1ll),
       mVideoBuffer(new AnotherPacketSource(NULL)),
@@ -876,6 +877,18 @@ status_t PlaylistFetcher::refreshPlaylist() {
         } else {
             mRefreshState = INITIAL_MINIMUM_RELOAD_DELAY;
             mPlaylist = playlist;
+            int32_t firstSeqNumberInPlaylist, lastSeqNumberInPlaylist;
+
+            // Report current status of playlist to livesession
+            mPlaylist->getSeqNumberRange(
+                &firstSeqNumberInPlaylist, &lastSeqNumberInPlaylist);
+
+            sp<AMessage> notify = mNotify->dup();
+            notify->setInt32("what", kWhatPlaylistStartSeq);
+            notify->setInt32("firstSeqNumberInPlaylist", firstSeqNumberInPlaylist);
+            notify->setInt32("firstSeqDuration",
+                getSegmentDurationUs(firstSeqNumberInPlaylist) / 1000l);
+            notify->post();
 
             //Update duration for stream
             updateDuration();
@@ -982,15 +995,28 @@ bool PlaylistFetcher::initDownloadState(
 
         if (mSegmentStartTimeUs < 0) {
             if (!mPlaylist->isComplete() && !mPlaylist->isEvent()) {
+                sp<AMessage> notify = mNotify->dup();
+                notify->setInt32("what", kWhatSendSeekableRanges);
+                notify->setInt32("seekableRangeEnd",
+                   getSegmentStartTimeUs(lastSeqNumberInPlaylist - 2) / 1000l);
+                notify->setInt32("firstSeqNumberInPlaylist", firstSeqNumberInPlaylist);
+                notify->post();
                 if (mStartTimeUs > 0) {
                     // Handle seek within playlist for live streams
                     mSeqNumber = getSeqNumberForTime(mStartTimeUs);
                     mStartTimeUs = 0;
                 } else {
                     // If this is a live session, start 3 segments from the end on connect
-                    mSeqNumber = lastSeqNumberInPlaylist - 3;
+                    mSeqNumber = lastSeqNumberInPlaylist - 2;
                     if (mSeqNumber < firstSeqNumberInPlaylist) {
                         mSeqNumber = firstSeqNumberInPlaylist;
+                    }
+                    if (!mReportedOffset) {
+                        mReportedOffset = true;
+                        sp<AMessage> notify = mNotify->dup();
+                        notify->setInt32("what", kWhatStartOffset);
+                        notify->setInt64("offset", getSegmentStartTimeUs(mSeqNumber));
+                        notify->post();
                     }
                 }
             } else {
@@ -1579,12 +1605,14 @@ const sp<ABuffer> &PlaylistFetcher::setAccessUnitProperties(
     }
 
     accessUnit->meta()->setInt32("discontinuitySeq", mDiscontinuitySeq);
+    accessUnit->meta()->setInt32("sequenceNumber", mSeqNumber);
     accessUnit->meta()->setInt64("segmentStartTimeUs", getSegmentStartTimeUs(mSeqNumber));
     accessUnit->meta()->setInt64("segmentFirstTimeUs", mSegmentFirstPTS);
     accessUnit->meta()->setInt64("segmentDurationUs", getSegmentDurationUs(mSeqNumber));
     if (!mPlaylist->isComplete() && !mPlaylist->isEvent()) {
         accessUnit->meta()->setInt64("playlistTimeUs", mPlaylistTimeUs);
     }
+
     return accessUnit;
 }
 
