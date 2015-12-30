@@ -877,9 +877,9 @@ status_t PlaylistFetcher::refreshPlaylist() {
             mRefreshState = INITIAL_MINIMUM_RELOAD_DELAY;
             mPlaylist = playlist;
 
-            if (mPlaylist->isComplete() || mPlaylist->isEvent()) {
-                updateDuration();
-            }
+            //Update duration for stream
+            updateDuration();
+
             // Notify LiveSession to use target-duration based buffering level
             // for up/down switch. Default LiveSession::kUpSwitchMark may not
             // be reachable for live streams, as our max buffering amount is
@@ -982,10 +982,16 @@ bool PlaylistFetcher::initDownloadState(
 
         if (mSegmentStartTimeUs < 0) {
             if (!mPlaylist->isComplete() && !mPlaylist->isEvent()) {
-                // If this is a live session, start 3 segments from the end on connect
-                mSeqNumber = lastSeqNumberInPlaylist - 3;
-                if (mSeqNumber < firstSeqNumberInPlaylist) {
-                    mSeqNumber = firstSeqNumberInPlaylist;
+                if (mStartTimeUs > 0) {
+                    // Handle seek within playlist for live streams
+                    mSeqNumber = getSeqNumberForTime(mStartTimeUs);
+                    mStartTimeUs = 0;
+                } else {
+                    // If this is a live session, start 3 segments from the end on connect
+                    mSeqNumber = lastSeqNumberInPlaylist - 3;
+                    if (mSeqNumber < firstSeqNumberInPlaylist) {
+                        mSeqNumber = firstSeqNumberInPlaylist;
+                    }
                 }
             } else {
                 // When seeking mSegmentStartTimeUs is unavailable (< 0), we
@@ -2083,15 +2089,20 @@ status_t PlaylistFetcher::extractAndQueueAccessUnits(
 
 void PlaylistFetcher::updateDuration() {
     int64_t durationUs = 0ll;
-    for (size_t index = 0; index < mPlaylist->size(); ++index) {
-        sp<AMessage> itemMeta;
-        CHECK(mPlaylist->itemAt(
-                    index, NULL /* uri */, &itemMeta));
+    if (mPlaylist->isComplete() || mPlaylist->isEvent()) {
+        for (size_t index = 0; index < mPlaylist->size(); ++index) {
+            sp<AMessage> itemMeta;
+            CHECK(mPlaylist->itemAt(
+                        index, NULL /* uri */, &itemMeta));
 
-        int64_t itemDurationUs;
-        CHECK(itemMeta->findInt64("durationUs", &itemDurationUs));
+            int64_t itemDurationUs;
+            CHECK(itemMeta->findInt64("durationUs", &itemDurationUs));
 
-        durationUs += itemDurationUs;
+            durationUs += itemDurationUs;
+        }
+    } else {
+        // Set max duration for live streams to allow seek
+        durationUs = LLONG_MAX;
     }
 
     sp<AMessage> msg = mNotify->dup();
