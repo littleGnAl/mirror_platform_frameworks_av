@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8a1aaf01_1ab9f9ea",
+        "filename": "media/libstagefright/codecs/amrwbenc/src/math_op.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2016-01-05T20:34:16Z",
+      "side": 1,
+      "message": "It\u0027s 0x8000 * 0x8000, so this is special-casing SHORT_MIN*SHORT_MIN. The multiply function in basic_op.h does it that way too.",
+      "parentUuid": "8a41cfd9_a24ea06f",
+      "range": {
+        "startLine": 209,
+        "startChar": 41,
+        "endLine": 209,
+        "endChar": 42
+      },
+      "revId": "9f6cffe4ffbbe354187c241f3a7b14ae7c252726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca202730_b97a5f01",
         "filename": "media/libstagefright/codecs/amrwbenc/src/voAMRWBEnc.c",
         "patchSetId": 1
@@ -36,6 +60,24 @@
       "writtenOn": "2016-01-05T20:17:11Z",
       "side": 1,
       "message": "is the elimination of the left shift intentional?",
+      "revId": "9f6cffe4ffbbe354187c241f3a7b14ae7c252726",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8a41cfd9_42179431",
+        "filename": "media/libstagefright/codecs/amrwbenc/src/voAMRWBEnc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2016-01-05T20:34:16Z",
+      "side": 1,
+      "message": "Yes, because L_mult() does that internally. Weird, I know.",
+      "parentUuid": "ca202730_b97a5f01",
       "revId": "9f6cffe4ffbbe354187c241f3a7b14ae7c252726",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
