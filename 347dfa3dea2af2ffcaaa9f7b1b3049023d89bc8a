@@ -22,6 +22,30 @@
       "revId": "347dfa3dea2af2ffcaaa9f7b1b3049023d89bc8a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "aa1773d7_8ca0770e",
+        "filename": "media/mtp/MtpUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-01-06T16:32:16Z",
+      "side": 1,
+      "message": "no. they mean that non-\"Z\" doesn\u0027t necessarily imply local time. it might be that you\u0027re in Asia/Seoul on vacation and your Android device has noticed this via the network, but your camera was set to America/Los_Angeles once when you bought it and doesn\u0027t know where it is right now, so the camera says \"20160106T081700-0800\" but we just ignore the \"-0800\" and assume local time which is actually \"+0900\".\n\nshort of switching to icu4c (or doing this in Java rather than native code), i can\u0027t off the top of my head think of a reasonable way to support that. strptime(3) doesn\u0027t support time zones, and mktime(3) ignores tm_gmtoff. i guess what you\u0027d have to do is use timegm and then manually add/subtract the UTC offset (with wrapping). so since this isn\u0027t a regression i wasn\u0027t volunteering :-)",
+      "parentUuid": "6a31fb81_f6f540eb",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "347dfa3dea2af2ffcaaa9f7b1b3049023d89bc8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
