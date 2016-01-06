@@ -22,6 +22,30 @@
       "revId": "b135d0e6fb57a810882a1488cb0ff670d0e25219",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6a481bfe_c448920e",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 901,
+      "author": {
+        "id": 1083718
+      },
+      "writtenOn": "2016-01-06T02:11:16Z",
+      "side": 0,
+      "message": "I verified on AGC and NS, but not on AEC, since the HAL for the device I am testing with doesn\u0027t support it, but the is no reason why it wouldn\u0027t work from a WebRTC perspective.",
+      "parentUuid": "a5d1668e_4b08393d",
+      "range": {
+        "startLine": 901,
+        "startChar": 17,
+        "endLine": 901,
+        "endChar": 27
+      },
+      "revId": "b135d0e6fb57a810882a1488cb0ff670d0e25219",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
