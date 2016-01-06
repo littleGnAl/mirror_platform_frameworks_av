@@ -19,8 +19,6 @@
 #include <stdio.h>
 #include <time.h>
 
-#include <../private/bionic_time.h> /* TODO: switch this code to icu4c! */
-
 #include "MtpUtils.h"
 
 namespace android {
@@ -36,22 +34,18 @@ second (00-59). The ".s" is optional, and represents tenths of a second.
 
 bool parseDateTime(const char* dateTime, time_t& outSeconds) {
     int year, month, day, hour, minute, second;
-    struct tm tm;
-
     if (sscanf(dateTime, "%04d%02d%02dT%02d%02d%02d",
-            &year, &month, &day, &hour, &minute, &second) != 6)
+               &year, &month, &day, &hour, &minute, &second) != 6)
         return false;
-    const char* tail = dateTime + 15;
+
     // skip optional tenth of second
-    if (tail[0] == '.' && tail[1])
-        tail += 2;
+    const char* tail = dateTime + 15;
+    if (tail[0] == '.' && tail[1]) tail += 2;
+
     //FIXME - support +/-hhmm
     bool useUTC = (tail[0] == 'Z');
 
-    // hack to compute timezone
-    time_t dummy;
-    localtime_r(&dummy, &tm);
-
+    struct tm tm = {0};
     tm.tm_sec = second;
     tm.tm_min = minute;
     tm.tm_hour = hour;
@@ -60,10 +54,7 @@ bool parseDateTime(const char* dateTime, time_t& outSeconds) {
     tm.tm_year = year - 1900;
     tm.tm_wday = 0;
     tm.tm_isdst = -1;
-    if (useUTC)
-        outSeconds = mktime(&tm);
-    else
-        outSeconds = mktime_tz(&tm, tm.tm_zone);
+    outSeconds = useUTC ? timegm(&tm) : mktime(&tm);
 
     return true;
 }
