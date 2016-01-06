@@ -1019,7 +1019,7 @@ OMX_ERRORTYPE SoftAVC::internalSetParameter(OMX_INDEXTYPE index, const OMX_PTR p
                 mBframes = avcType->nBFrames;
             }
 
-            mIInterval = (avcType->nPFrames + 1) * (avcType->nBFrames + 1);
+            mIDRInterval = mIInterval = (avcType->nPFrames + 1) * (avcType->nBFrames + 1);
             mConstrainedIntraFlag = avcType->bconstIpred;
 
             if (OMX_VIDEO_AVCLoopFilterDisable == avcType->eLoopFilterMode)
