@@ -18,7 +18,9 @@
 #define LOG_TAG "OMXClient"
 
 #ifdef __LP64__
+#ifndef USE_64BITMEDIA
 #define OMX_ANDROID_COMPILE_AS_32BIT_ON_64BIT_PLATFORMS
+#endif
 #endif
 
 #include <utils/Log.h>
@@ -183,9 +185,13 @@ bool MuxOMX::isLocalNode_l(node_id node) const {
 // static
 bool MuxOMX::CanLiveLocally(const char *name) {
 #ifdef __LP64__
+#ifndef USE_64BITMEDIA
     (void)name; // disable unused parameter warning
     // 64 bit processes always run OMX remote on MediaServer
     return false;
+#else
+    return !strncasecmp(name, "OMX.google.", 11);
+#endif
 #else
     // 32 bit processes run only OMX.google.* components locally
     return !strncasecmp(name, "OMX.google.", 11);

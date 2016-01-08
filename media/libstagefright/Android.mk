@@ -127,6 +127,10 @@ LOCAL_SHARED_LIBRARIES += \
         libdl \
         libRScpp \
 
+ifeq ($(BOARD_USE_64BITMEDIA),true)
+LOCAL_CFLAGS += -DUSE_64BITMEDIA
+endif
+
 LOCAL_CFLAGS += -Wno-multichar -Werror -Wno-error=deprecated-declarations -Wall
 
 # enable experiments only in userdebug and eng builds
