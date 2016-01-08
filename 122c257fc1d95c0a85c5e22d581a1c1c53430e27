@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa5f73f8_589f3d23",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1525,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2016-01-08T17:55:59Z",
+      "side": 1,
+      "message": "it\u0027s unfortunately not valid for us to skip this eviction step; it would break API guarantees about being able to access the camera when there is another user.",
+      "revId": "122c257fc1d95c0a85c5e22d581a1c1c53430e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
