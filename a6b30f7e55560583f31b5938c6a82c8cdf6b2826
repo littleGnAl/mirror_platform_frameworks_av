@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a8b57a3_031712d6",
+        "filename": "services/camera/libcameraservice/api1/CameraClient.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1060491
+      },
+      "writtenOn": "2016-01-09T00:30:03Z",
+      "side": 1,
+      "message": "I think this change will fix the problem but now whenever this is TRUE, the condition in line 234 will be TRUE too. So you can just remove line 239 to line 242.",
+      "range": {
+        "startLine": 239,
+        "startChar": 4,
+        "endLine": 239,
+        "endChar": 55
+      },
+      "revId": "a6b30f7e55560583f31b5938c6a82c8cdf6b2826",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
