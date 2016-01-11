@@ -16,6 +16,24 @@
       "revId": "122c257fc1d95c0a85c5e22d581a1c1c53430e27",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4a8b57a3_f16d9009",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1525,
+      "author": {
+        "id": 1091938
+      },
+      "writtenOn": "2016-01-11T02:06:53Z",
+      "side": 1,
+      "message": "I find there only one function CameraService::binderDied() call evictClientIdByRemote(), it will wait 1s timeout to get the lock, if lock didn\u0027t get success, it will return and leave the client to be removed by next time Binder transaction.\nbut if you guarantees the API to access the camera and wait the lock forever, it can not fix the deadlock case when the called already gotten the lock, and here try to lock it again.",
+      "parentUuid": "aa5f73f8_589f3d23",
+      "revId": "122c257fc1d95c0a85c5e22d581a1c1c53430e27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
