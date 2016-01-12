@@ -34,6 +34,24 @@
       "revId": "7c42cafe3937ff4e36bef2a984dd7b633e2f9303",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e759a674_74c2a85d",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3843,
+      "author": {
+        "id": 1043625
+      },
+      "writtenOn": "2016-01-12T21:27:40Z",
+      "side": 1,
+      "message": "Not yet, but I want to name the HAL_PIXEL_FORMAT enum in graphics.h, at which point this will cause an error.",
+      "parentUuid": "274e5eac_eb325dc5",
+      "revId": "7c42cafe3937ff4e36bef2a984dd7b633e2f9303",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
