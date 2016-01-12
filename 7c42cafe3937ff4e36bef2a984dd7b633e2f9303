@@ -16,6 +16,24 @@
       "revId": "7c42cafe3937ff4e36bef2a984dd7b633e2f9303",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "274e5eac_eb325dc5",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3843,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2016-01-12T21:20:04Z",
+      "side": 1,
+      "message": "Is this resulting in a compiler error now?\n\nNote we use C-style casting in frameworks/av/media, e.g. (OMX_COLOR_FORMATTYPE)HAL_PIXEL_FORMAT_YV12...",
+      "parentUuid": "aa593347_e88053e3",
+      "revId": "7c42cafe3937ff4e36bef2a984dd7b633e2f9303",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
