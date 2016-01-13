@@ -16,6 +16,24 @@
       "revId": "653d3e63ee320d375f49ba3b54d7e6f03e982da8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07623a24_0836b3bb",
+        "filename": "cmds/stagefright/stagefright.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2016-01-13T19:14:31Z",
+      "side": 1,
+      "message": "The problem is that AudioPlayer is on top of MediaSource and we are also removing OMXCodec which was generally used as the MediaSource in these cmd utils, but is not used otherwise anywhere once AwesomePlayer is gone... We have MediaCodecSource, but it wraps encoders while we would want to have a decoder source",
+      "parentUuid": "c75ca266_62fb0769",
+      "revId": "653d3e63ee320d375f49ba3b54d7e6f03e982da8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
