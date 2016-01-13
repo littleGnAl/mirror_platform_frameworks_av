@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c75ca266_62fb0769",
+        "filename": "cmds/stagefright/stagefright.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2016-01-13T17:11:52Z",
+      "side": 1,
+      "message": "it looks like you can just remove the few references to AwesomePlayer from AudioPlayer, but leave AudioPlayer as a way for the stagefright command to play audio.",
+      "revId": "653d3e63ee320d375f49ba3b54d7e6f03e982da8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
