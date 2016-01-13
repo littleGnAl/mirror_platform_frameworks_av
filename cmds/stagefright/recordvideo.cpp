@@ -298,6 +298,9 @@ int main(int argc, char **argv) {
         enc_meta->setInt32(kKeyVideoProfile, profile);
     }
 
+#if 0
+    // TODO: rewrite this using MediaCodec
+
     sp<MediaSource> encoder =
         OMXCodec::Create(
                 client.interface(), enc_meta, true /* createEncoder */, source,
@@ -321,12 +324,15 @@ int main(int argc, char **argv) {
 
     fprintf(stderr, "$\n");
     client.disconnect();
+#endif
 
     if (err != OK && err != ERROR_END_OF_STREAM) {
         fprintf(stderr, "record failed: %d\n", err);
         return 1;
     }
+#if 0
     fprintf(stderr, "encoding %d frames in %" PRId64 " us\n", nFrames, (end-start)/1000);
     fprintf(stderr, "encoding speed is: %.2f fps\n", (nFrames * 1E9) / (end-start));
+#endif
     return 0;
 }

@@ -108,6 +108,9 @@ int main(int argc, char* argv[])
         meta->setInt32(kKeyMaxInputSize, maxInputSize);
     }
 
+#if 0
+    // TODO: rewrite this using MediaCodec
+
     sp<MediaSource> encoder = OMXCodec::Create(
             client.interface(),
             meta, true /* createEncoder */,
@@ -160,6 +163,9 @@ int main(int argc, char* argv[])
         }
 #endif
     }
+#else
+    (void)playToSpeaker;
+#endif
 
     return 0;
 }

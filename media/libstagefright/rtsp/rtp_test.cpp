@@ -178,6 +178,8 @@ int main(int argc, char **argv) {
     CHECK_EQ(session->countTracks(), 1u);
     sp<MediaSource> source = session->trackAt(0);
 
+    // TODO: switch to MediaCodec
+#if 0
     OMXClient client;
     CHECK_EQ(client.connect(), (status_t)OK);
 
@@ -223,6 +225,7 @@ int main(int argc, char **argv) {
     }
 
     CHECK_EQ(decoder->stop(), (status_t)OK);
+#endif
 
     looper->stop();
 

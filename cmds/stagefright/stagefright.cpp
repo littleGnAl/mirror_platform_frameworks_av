@@ -180,11 +180,16 @@ static void playSource(OMXClient *client, sp<MediaSource> &source) {
             CHECK(!gPreferSoftwareCodec);
             flags |= OMXCodec::kHardwareCodecsOnly;
         }
+#if 0
+        // sf2 test handles stagefright testing using ACodec.
         rawSource = OMXCodec::Create(
             client->interface(), meta, false /* createEncoder */, source,
             NULL /* matchComponentName */,
             flags,
             gSurface);
+#else
+        (void)client;
+#endif
 
         if (rawSource == NULL) {
             fprintf(stderr, "Failed to instantiate decoder for '%s'.\n", mime);
@@ -1097,6 +1102,7 @@ int main(int argc, char **argv) {
         } else if (dumpStream) {
             dumpSource(mediaSource, dumpStreamFilename);
         } else if (dumpPCMStream) {
+#if 0
             OMXClient client;
             CHECK_EQ(client.connect(), (status_t)OK);
 
@@ -1110,6 +1116,9 @@ int main(int argc, char **argv) {
                         0);
 
             dumpSource(decSource, dumpStreamFilename);
+#else
+            printf("dumping PCM stream no longer supported\n");
+#endif
         } else if (seekTest) {
             performSeekTest(mediaSource);
         } else {

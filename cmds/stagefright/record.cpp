@@ -324,6 +324,9 @@ int main(int /* argc */, char ** /* argv */) {
     encMeta->setInt32(kKeyMaxInputSize, 8192);
     encMeta->setInt32(kKeyBitRate, kAudioBitRate);
 
+#if 0
+    // TODO: rewrite this using MediaCodec
+
     sp<MediaSource> encoder =
         OMXCodec::Create(client.interface(), encMeta, true, audioSource);
 
@@ -346,6 +349,7 @@ int main(int /* argc */, char ** /* argv */) {
     printf("$\n");
 
     encoder->stop();
+#endif
 
     client.disconnect();
 
