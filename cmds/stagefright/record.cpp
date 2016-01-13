@@ -18,7 +18,6 @@
 
 #include <binder/ProcessState.h>
 #include <media/stagefright/foundation/ADebug.h>
-#include <media/stagefright/AudioPlayer.h>
 #include <media/stagefright/CameraSource.h>
 #include <media/stagefright/FileSource.h>
 #include <media/stagefright/MediaBufferGroup.h>

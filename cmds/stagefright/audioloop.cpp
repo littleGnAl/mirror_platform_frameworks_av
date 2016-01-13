@@ -24,7 +24,6 @@
 #include <media/mediarecorder.h>
 #include <media/stagefright/foundation/ADebug.h>
 #include <media/stagefright/AMRWriter.h>
-#include <media/stagefright/AudioPlayer.h>
 #include <media/stagefright/AudioSource.h>
 #include <media/stagefright/MediaDefs.h>
 #include <media/stagefright/MetaData.h>
@@ -128,6 +127,12 @@ int main(int argc, char* argv[])
         writer->stop();
     } else {
         // otherwise decode to speaker
+
+        // TODO: implement this on top of NuPlayer
+#if 1
+        printf("must use a file output");
+        (void)playToSpeaker;
+#else
         sp<MediaSource> decoder = OMXCodec::Create(
                 client.interface(),
                 meta, false /* createEncoder */,
@@ -153,6 +158,7 @@ int main(int argc, char* argv[])
             }
             CHECK_EQ(decoder->stop(), (status_t)OK);
         }
+#endif
     }
 
     return 0;

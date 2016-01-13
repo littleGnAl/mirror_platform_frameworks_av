@@ -23,7 +23,6 @@
 
 #include <binder/ProcessState.h>
 #include <media/stagefright/foundation/ADebug.h>
-#include <media/stagefright/AudioPlayer.h>
 #include <media/stagefright/MediaBufferGroup.h>
 #include <media/stagefright/MediaDefs.h>
 #include <media/stagefright/MetaData.h>

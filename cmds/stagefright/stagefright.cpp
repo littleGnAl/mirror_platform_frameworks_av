@@ -35,7 +35,6 @@
 #include <media/IMediaPlayerService.h>
 #include <media/stagefright/foundation/ALooper.h>
 #include "include/NuCachedSource2.h"
-#include <media/stagefright/AudioPlayer.h>
 #include <media/stagefright/DataSource.h>
 #include <media/stagefright/JPEGSource.h>
 #include <media/stagefright/MediaDefs.h>
@@ -204,6 +203,7 @@ static void playSource(OMXClient *client, sp<MediaSource> &source) {
     }
 
     if (gPlaybackAudio) {
+#if 0
         AudioPlayer *player = new AudioPlayer(NULL);
         player->setSource(rawSource);
         rawSource.clear();
@@ -217,7 +217,7 @@ static void playSource(OMXClient *client, sp<MediaSource> &source) {
 
         delete player;
         player = NULL;
-
+#endif
         return;
     } else if (gReproduceBug >= 3 && gReproduceBug <= 5) {
         int64_t durationUs;
