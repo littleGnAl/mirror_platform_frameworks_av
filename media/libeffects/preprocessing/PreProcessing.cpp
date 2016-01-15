@@ -919,10 +919,10 @@ int Session_SetConfig(preproc_session_t *session, effect_config_t *config)
     }
 
     const webrtc::ProcessingConfig processing_config = {
-      {{static_cast<int>(session->apmSamplingRate), static_cast<int>(inCnl)},
-       {static_cast<int>(session->apmSamplingRate), static_cast<int>(outCnl)},
-       {static_cast<int>(session->apmSamplingRate), static_cast<int>(inCnl)},
-       {static_cast<int>(session->apmSamplingRate), static_cast<int>(inCnl)}}};
+      {{static_cast<int>(session->apmSamplingRate), inCnl},
+       {static_cast<int>(session->apmSamplingRate), outCnl},
+       {static_cast<int>(session->apmSamplingRate), inCnl},
+       {static_cast<int>(session->apmSamplingRate), inCnl}}};
     status = session->apm->Initialize(processing_config);
     if (status < 0) {
         return -EINVAL;
@@ -1040,14 +1040,10 @@ int Session_SetReverseConfig(preproc_session_t *session, effect_config_t *config
     }
     uint32_t inCnl = audio_channel_count_from_out_mask(config->inputCfg.channels);
     const webrtc::ProcessingConfig processing_config = {
-       {{static_cast<int>(session->apmSamplingRate),
-         static_cast<int>(session->inChannelCount)},
-        {static_cast<int>(session->apmSamplingRate),
-         static_cast<int>(session->outChannelCount)},
-        {static_cast<int>(session->apmSamplingRate),
-         static_cast<int>(inCnl)},
-        {static_cast<int>(session->apmSamplingRate),
-         static_cast<int>(inCnl)}}};
+       {{static_cast<int>(session->apmSamplingRate), session->inChannelCount},
+        {static_cast<int>(session->apmSamplingRate), session->outChannelCount},
+        {static_cast<int>(session->apmSamplingRate), inCnl},
+        {static_cast<int>(session->apmSamplingRate), inCnl}}};
     int status = session->apm->Initialize(processing_config);
     if (status < 0) {
         return -EINVAL;
