@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e759a674_eff250c2",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 887,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2016-01-16T00:06:18Z",
+      "side": 1,
+      "message": "I just noticed that this should be  audio_channel_count_from_in_mask",
+      "range": {
+        "startLine": 887,
+        "startChar": 21,
+        "endLine": 887,
+        "endChar": 54
+      },
+      "revId": "7f607d720210b9d808bfdadade23fa542293e5ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
