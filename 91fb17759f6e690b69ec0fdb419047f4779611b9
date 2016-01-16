@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07495aa4_16e6c0d3",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 888,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2016-01-16T00:36:48Z",
+      "side": 1,
+      "message": "sorry same here. outCnl is \"out\" as in output of the process but as this is preprocessing all channel masks are input channel masks.",
+      "range": {
+        "startLine": 888,
+        "startChar": 22,
+        "endLine": 888,
+        "endChar": 55
+      },
+      "revId": "91fb17759f6e690b69ec0fdb419047f4779611b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
