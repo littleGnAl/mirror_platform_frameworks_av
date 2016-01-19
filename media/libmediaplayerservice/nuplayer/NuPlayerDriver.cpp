@@ -753,6 +753,8 @@ void NuPlayerDriver::notifyListener_l(
 
                 mPlayer->pause();
                 mState = STATE_PAUSED;
+
+                (void)mPlayer->getCurrentPosition(&mPositionUs);
             }
             // fall through
         }
