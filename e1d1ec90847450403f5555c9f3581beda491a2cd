@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d4eb7261_04e7f841",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerDriver.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2016-01-21T19:34:50Z",
+      "side": 1,
+      "message": "This will affect one corner case: immediately after seekTo() is called, MEDIA_PLAYBACK_COMPLETE is received by NuPlayerDriver. Then client will not get sought position when it calls getCurrentPosition().\n\nThere are a couple of alternative fixes.\n1. call getCurrentPosition() here. Since getCurrentPosition will acquire mLock, getCurrentPosition_l() version is needed.\n\n2. In getCurrentPosition(), check \"(mState \u003d\u003d STATE_PAUSED \u0026\u0026 !mAtEOS)\" instead of mState \u003d\u003d STATE_PAUSED.\n\nIn setPlaybackSettings(), getCurrentPosition() should be called, instead of mPlayer-\u003egetCurrentPosition(). I will fix that.",
+      "range": {
+        "startLine": 757,
+        "startChar": 16,
+        "endLine": 757,
+        "endChar": 64
+      },
+      "revId": "e1d1ec90847450403f5555c9f3581beda491a2cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
