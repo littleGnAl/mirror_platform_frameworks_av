@@ -3434,13 +3434,6 @@ status_t ACodec::setupAVCEncoderParameters(const sp<AMessage> &msg) {
         h264type.eLevel = static_cast<OMX_VIDEO_AVCLEVELTYPE>(level);
     }
 
-    // XXX
-    if (h264type.eProfile != OMX_VIDEO_AVCProfileBaseline) {
-        ALOGW("Use baseline profile instead of %d for AVC recording",
-            h264type.eProfile);
-        h264type.eProfile = OMX_VIDEO_AVCProfileBaseline;
-    }
-
     if (h264type.eProfile == OMX_VIDEO_AVCProfileBaseline) {
         h264type.nSliceHeaderSpacing = 0;
         h264type.bUseHadamard = OMX_TRUE;
