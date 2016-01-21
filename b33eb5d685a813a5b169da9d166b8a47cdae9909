@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7ae06f9_9b48b766",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2016-01-21T01:06:55Z",
+      "side": 1,
+      "message": "1) shouldn\u0027t we reset beamforming if value !\u003d NS_TYPE_MULTI_CHANNEL\n2) do we have to disable/re enable the effect if the parameter is received while enabled?",
+      "range": {
+        "startLine": 614,
+        "startChar": 12,
+        "endLine": 614,
+        "endChar": 13
+      },
+      "revId": "b33eb5d685a813a5b169da9d166b8a47cdae9909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
