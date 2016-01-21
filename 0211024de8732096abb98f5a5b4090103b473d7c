@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "671db61a_3c5539d5",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1083718
+      },
+      "writtenOn": "2016-01-21T01:05:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07123a0e_b9d157f7",
+      "range": {
+        "startLine": 596,
+        "startChar": 36,
+        "endLine": 596,
+        "endChar": 41
+      },
+      "revId": "0211024de8732096abb98f5a5b4090103b473d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4718b22c_1b24c388",
         "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "c70ca2f0_621eec3e",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 611,
+      "author": {
+        "id": 1083718
+      },
+      "writtenOn": "2016-01-21T01:05:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4718b22c_1b24c388",
+      "range": {
+        "startLine": 611,
+        "startChar": 40,
+        "endLine": 611,
+        "endChar": 45
+      },
+      "revId": "0211024de8732096abb98f5a5b4090103b473d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07f95afe_a17aba99",
         "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
         "patchSetId": 3
@@ -59,6 +107,30 @@
       "writtenOn": "2016-01-20T23:42:39Z",
       "side": 1,
       "message": "should beamforming be set to true regardless of NS_PARAM_TYPE ?",
+      "range": {
+        "startLine": 629,
+        "startChar": 48,
+        "endLine": 629,
+        "endChar": 59
+      },
+      "revId": "0211024de8732096abb98f5a5b4090103b473d7c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07123a0e_59b00346",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 629,
+      "author": {
+        "id": 1083718
+      },
+      "writtenOn": "2016-01-21T01:05:51Z",
+      "side": 1,
+      "message": "That is a good point, I thought WebRTC would do the right thing when the geometry was never set, but apparently it doesn\u0027t. Now I added a subtype to the struct and test for that, what do you think of that approach?",
+      "parentUuid": "07f95afe_a17aba99",
       "range": {
         "startLine": 629,
         "startChar": 48,
