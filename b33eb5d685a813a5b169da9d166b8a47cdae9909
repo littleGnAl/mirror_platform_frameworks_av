@@ -22,6 +22,30 @@
       "revId": "b33eb5d685a813a5b169da9d166b8a47cdae9909",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07123a0e_7cffad7e",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 614,
+      "author": {
+        "id": 1083718
+      },
+      "writtenOn": "2016-01-21T02:45:38Z",
+      "side": 1,
+      "message": "1) I didn\u0027t know you could send 2 parameters to setting it and then un-setting it, but done.\n2) I didn\u0027t know you could enable before setting the parameters, but done.",
+      "parentUuid": "e7ae06f9_9b48b766",
+      "range": {
+        "startLine": 614,
+        "startChar": 12,
+        "endLine": 614,
+        "endChar": 13
+      },
+      "revId": "b33eb5d685a813a5b169da9d166b8a47cdae9909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
