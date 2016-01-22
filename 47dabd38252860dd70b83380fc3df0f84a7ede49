@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94b81aa8_871d2643",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3460,
+      "author": {
+        "id": 1051820
+      },
+      "writtenOn": "2016-01-22T18:28:53Z",
+      "side": 0,
+      "message": "This piece of code doesn\u0027t have the equivalent for other profiles, I\u0027m not sure if that\u0027s ok.",
+      "range": {
+        "startLine": 3445,
+        "startChar": 0,
+        "endLine": 3460,
+        "endChar": 35
+      },
+      "revId": "47dabd38252860dd70b83380fc3df0f84a7ede49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
