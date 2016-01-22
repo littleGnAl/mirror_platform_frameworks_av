@@ -22,6 +22,30 @@
       "revId": "32e144b2e6754324287ee9319430d707a635df7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "54aa2254_ceac97af",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1083718
+      },
+      "writtenOn": "2016-01-22T23:29:02Z",
+      "side": 1,
+      "message": "Was trying to keep it as tight as possible, but it looks weird. Now I widened it to the whole case.",
+      "parentUuid": "54c14218_d3e44cce",
+      "range": {
+        "startLine": 623,
+        "startChar": 8,
+        "endLine": 623,
+        "endChar": 9
+      },
+      "revId": "32e144b2e6754324287ee9319430d707a635df7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
