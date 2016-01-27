@@ -956,6 +956,10 @@ status_t WifiDisplaySource::PlaybackSession::addSource(
         format->setInt32("profile-idc", profileIdc);
         format->setInt32("level-idc", levelIdc);
         format->setInt32("constraint-set", constraintSet);
+
+        sp<RepeaterSource> repeater = static_cast<RepeaterSource *>(source.get());
+        double frameRate = repeater->getFrameRate();
+        format->setInt32("frame-rate", (int32_t)frameRate);
     } else {
         format->setString(
                 "mime",
