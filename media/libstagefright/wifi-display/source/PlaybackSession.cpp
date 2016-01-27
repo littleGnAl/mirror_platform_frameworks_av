@@ -956,6 +956,11 @@ status_t WifiDisplaySource::PlaybackSession::addSource(
         format->setInt32("profile-idc", profileIdc);
         format->setInt32("level-idc", levelIdc);
         format->setInt32("constraint-set", constraintSet);
+
+        int32_t frameRate;
+        if (source->getFormat()->findInt32(kKeyFrameRate, &frameRate) && frameRate > 0) {
+            format->setInt32("frame-rate", frameRate);
+        }
     } else {
         format->setString(
                 "mime",
@@ -1046,6 +1051,7 @@ status_t WifiDisplaySource::PlaybackSession::addVideoSource(
     sp<SurfaceMediaSource> source = new SurfaceMediaSource(width, height);
 
     source->setUseAbsoluteTimestamps();
+    source->setFrameRate(framesPerSecond);
 
     sp<RepeaterSource> videoSource =
         new RepeaterSource(source, framesPerSecond);
