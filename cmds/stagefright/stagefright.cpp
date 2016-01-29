@@ -129,6 +129,199 @@ static void displayAVCProfileLevelIfPossible(const sp<MetaData>& meta) {
     }
 }
 
+class OneShotDecodingSource : public IMediaSource {
+public:
+    static sp<DecodingSource> Create(const sp<MediaSource> &source) {
+        const char *mime = NULL;
+        bool success = meta->findCString(kKeyMIMEType, &mime);
+
+        sp<AMessage> format;
+        convertMetaDataToMessage(source->getFormat(), &format);
+
+        Vector<CodecNameAndQuirks> matchingCodecs;
+        OMXCodec::findMatchingCodecs(
+                mime, false /* encoder */, 0 /* matchCodecName */,
+                0 /* flags */, &matchingCodecs);
+
+        sp<ALooper> looper = new ALooper;
+        looper->setName("stagefright");
+        looper->start();
+
+        sp<MediaCodec> codec;
+
+        for (size_t i = 0; i < matchingCodecs.size(); ++i) {
+            const char *componentName = matchingCodecs[i].mName.string();
+
+            ALOGV("Attempting to allocate codec '%s'", componentName);
+
+            codec = MediaCodec::CreateByComponentName(looper, componentNameBase);
+            if (mCodec != NULL) {
+                ALOGV("Successfully allocated codec '%s'", componentName);
+
+                err = codec->configure(format, NULL /* surface */, NULL /* crypto */, 0 /* flags */);
+                if (err == OK) {
+                    return new DecodingSource(source, codec, looper);
+                }
+
+                ALOGV("Failed to configure codec '%s'", componentName);
+                codec->release();
+                codec = NULL;
+            }
+        }
+
+        ALOGV("No matching decoder! (mime: %s)", mime);
+        return NULL;
+    }
+
+private:
+    DecodingSource(const sp<MediaCodec> &codec, const sp<MediaSource> &source, const sp<ALooper> &looper)
+        : mCodec(codec),
+          mSource(source),
+          mLooper(looper),
+          mState(INIT) {
+        CHECK_EQ(mCodec->getOutputFormat(&mFormat), (status_t)OK);
+    }
+
+    sp<MediaCodec> mCodec;
+    sp<MediaSource> mSource;
+    sp<ALooper> mLooper;
+    sp<AMessage> mFormat;
+    enum {
+        INIT,
+        STARTED,
+        STOPPED,
+        ERROR,
+    } mState;
+
+    virtual ~DecodingSource() {
+        mCodec->release();
+        mLooper->stop();
+    }
+
+    virtual status_t start(MetaData *params = NULL) {
+        if (mState != INIT) {
+            return -EINVAL;
+        }
+        status_t res = mCodec->start();
+        mState = res == OK ? STARTED : ERROR;
+        return res;
+    }
+
+    virtual status_t stop() {
+        if (mState != STARTED) {
+            return -EINVAL;
+        }
+        status_t res = mCodec->stop();
+        mState = res == OK ? STOPPED : ERROR;
+        return res;
+    }
+
+    virtual sp<MetaData> getFormat() {
+        if (mState == STARTED || mState == INIT) {
+            return mFormat.dup();
+        }
+        return NULL;
+    }
+
+    virtual status_t read(
+            MediaBuffer **buffer, const ReadOptions *options)  {
+        size_t out_ix, in_ix, out_offset, out_size;
+        int64_t out_pts;
+        uint32_t out_flags;
+        status_t res;
+
+        for (int retries = 3; --retries >= 0; ) {
+            // If we fill all available input buffers, we should expect that
+            // the codec produces at least one output buffer. Also, the codec
+            // should produce an output buffer in at most 1 seconds. Retry a
+            // few times nonetheless.
+            while (!mInputEOS) {
+                res = mCodec->dequeueInputBuffer(&in_ix, 0);
+                if (res == -EAGAIN) {
+                    // no available input buffers
+                    break;
+                }
+                CHECK_EQ(res, (status_t)OK);
+
+                sp<ABuffer> in_buffer;
+                sp<AMessage> in_format;
+                CHECK_EQ(mCodec->getBufferAndFormat(
+                            kPortInput, in_ix, &in_buffer, &in_format),
+                         (status_t)OK);
+
+                MediaBuffer *in_buf;
+                while (true) {
+                    in_buf = NULL;
+                    res = mSource->read(&in_buf, options);
+                    if (res != OK) {
+                        mInputEOS = true;
+                        CHECK_EQ(mCodec->queueInputBuffer(
+                                     in_ix, 0 /* offset */, 0 /* size */,
+                                     0 /* pts */, MediaCodec::BUFFER_FLAG_EOS),
+                                 (status_t)OK);
+                        if (in_buf != NULL) {
+                            in_buf->release();
+                        }
+                        if (res != ERROR_END_OF_STREAM) {
+                            mState = ERROR;
+                            return res;
+                        }
+                        break;
+                    }
+                    if (in_buf == NULL) { // should not happen
+                        continue;
+                    } else if (in_buf->range_length() == 0) {
+                        in_buf->release();
+                        continue;
+                    }
+                }
+
+                int64_t timestampUs = 0;
+                CHECK(in_buf->meta_data()->findInt64(kKeyTime, &timestampUs));
+                CHECK(in_buf->range_length() <= in_buffer->capacity());
+                memcpy(in_buffer->base(), in_buf->data() + in_buf->range_offset(),
+                       min(in_buf->range_length(), in_buffer->capacity());
+
+                CHECK_EQ(mCodec->queueInputBuffer(
+                        in_ix, 0 /* offset */, in_buf->range_length(),
+                        timestampUs, 0 /* flags */);
+                        MetaData *dr;
+                        dr->findInt64(kKeyTime)
+                in_buf->release();
+            }
+
+            res = mCodec->dequeueOutputBuffer(&out_ix, &offset, &size, &pts,
+                                              &flags, 1000000 /* timeoutUs */);
+            if (res == -EAGAIN) {
+                ALOGV("codec '%s' did not produce an output buffer. retry count: %d",
+                      mCodec->getName().c_string(), retry);
+                continue;
+            } else if (res == INFO_FORMAT_CHANGED) {
+                CHECK_EQ(mCodec->getOutputFormat(&mFormat), (status_t)OK);
+                return res;
+            } else if (res != OK) {
+                mState = ERROR;
+                return res;
+            }
+
+            sp<ABuffer> out_buffer;
+            sp<AMessage> out_format;
+            CHECK_EQ(mCodec->getBufferAndFormat(
+                            kPortInput, in_ix, &buffer, &inputFormat), (status_t)OK);
+
+            *buffer = new MediaBuffer(size);
+            memcpy(buffer->data(), out_buffer->data(), out_buffer->size());
+            return OK;
+        }
+        return ERROR_TIMED_OUT;
+    }
+
+    virtual status_t pause() { return UNSUPPORTED; }
+
+    virtual status_t setBuffers() { return UNSUPPORTED; }
+};
+
+
 static void dumpSource(const sp<MediaSource> &source, const String8 &filename) {
     FILE *out = fopen(filename.string(), "wb");
 
@@ -162,6 +355,11 @@ static void dumpSource(const sp<MediaSource> &source, const String8 &filename) {
     out = NULL;
 }
 
+
+static void dumpSourceViaCodec(const sp<MediaSource> &source, const String8 &filename) {
+
+}
+
 static void playSource(OMXClient *client, sp<MediaSource> &source) {
     sp<MetaData> meta = source->getFormat();
 
@@ -180,17 +378,7 @@ static void playSource(OMXClient *client, sp<MediaSource> &source) {
             CHECK(!gPreferSoftwareCodec);
             flags |= OMXCodec::kHardwareCodecsOnly;
         }
-#if 0
-        // sf2 test handles stagefright testing using ACodec.
-        rawSource = OMXCodec::Create(
-            client->interface(), meta, false /* createEncoder */, source,
-            NULL /* matchComponentName */,
-            flags,
-            gSurface);
-#else
-        (void)client;
-#endif
-
+        rawSource = OneShotDecodingSource::Create(source, flags, gSurface);
         if (rawSource == NULL) {
             fprintf(stderr, "Failed to instantiate decoder for '%s'.\n", mime);
             return;
@@ -1102,23 +1290,8 @@ int main(int argc, char **argv) {
         } else if (dumpStream) {
             dumpSource(mediaSource, dumpStreamFilename);
         } else if (dumpPCMStream) {
-#if 0
-            OMXClient client;
-            CHECK_EQ(client.connect(), (status_t)OK);
-
-            sp<MediaSource> decSource =
-                OMXCodec::Create(
-                        client.interface(),
-                        mediaSource->getFormat(),
-                        false,
-                        mediaSource,
-                        0,
-                        0);
-
+            sp<MediaSource> decSource = OneShotDecodingSource::Create(mediaSource);
             dumpSource(decSource, dumpStreamFilename);
-#else
-            printf("dumping PCM stream no longer supported\n");
-#endif
         } else if (seekTest) {
             performSeekTest(mediaSource);
         } else {
