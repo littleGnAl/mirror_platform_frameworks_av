@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "711bb8b8_49c0c555",
+        "filename": "media/libstagefright/codecs/amrwbenc/inc/basic_op.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2016-02-02T18:39:04Z",
+      "side": 1,
+      "message": "The original fix in shl() in patch set 1 was incorrect (I accidentally replaced a multiply with add).\nThis new fix should do the trick.",
+      "revId": "19f462b7e55893633c918aeb97407646909333ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
