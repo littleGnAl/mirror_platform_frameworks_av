@@ -386,6 +386,7 @@ static_vo Word16 mult (Word16 var1, Word16 var2)
 |___________________________________________________________________________|
 */
 
+__attribute__((no_sanitize("integer")))
 static_vo Word32 L_mult (Word16 var1, Word16 var2)
 {
     Word32 L_var_out;
@@ -746,6 +747,7 @@ static_vo Word32 L_shl (Word32 L_var1, Word16 var2)
     return (L_var_out);
 }
 
+__attribute__((no_sanitize("integer")))
 static_vo Word32 L_shl2(Word32 L_var1, Word16 var2)
 {
     Word32 L_var_out = 0L;
