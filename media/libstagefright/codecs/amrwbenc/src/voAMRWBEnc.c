@@ -39,6 +39,10 @@
 #include "mem_align.h"
 #include "cmnMemory.h"
 
+#include <stdio.h>
+#include <string.h>
+#include <log/log.h>
+
 #define UNUSED(x) (void)(x)
 
 #ifdef __cplusplus
@@ -148,6 +152,7 @@ void Reset_encoder(void *st, Word16 reset_all)
 *   ->Main coder routine.                                         *
 *                                                                 *
 *-----------------------------------------------------------------*/
+__attribute__((no_sanitize("integer")))
 void coder(
         Word16 * mode,                        /* input :  used mode                             */
         Word16 speech16k[],                   /* input :  320 new speech samples (at 16 kHz)    */
@@ -1216,16 +1221,59 @@ void coder(
         if (*ser_size >= NBBITS_24k)
             Copy(&exc[i_subfr], exc2, L_SUBFR);
 
-        for (i = 0; i < L_SUBFR; i++)
         {
-            Word32 tmp;
-            /* code in Q9, gain_pit in Q14 */
-            L_tmp = L_mult(gain_code, code[i]);
-            L_tmp = L_shl(L_tmp, 5);
-            tmp = L_mult(exc[i + i_subfr], gain_pit); // (exc[i + i_subfr] * gain_pit)<<1
-            L_tmp = L_add(L_tmp, tmp);
-            L_tmp = L_shl2(L_tmp, 1);
-            exc[i + i_subfr] = extract_h(L_add(L_tmp, 0x8000));
+            short exc_copy[L_SUBFR + L_FRAME];
+            int different = false;
+
+            for (i = 0; i < L_SUBFR; i++)
+            {
+                exc_copy[i + i_subfr] = exc[i + i_subfr];
+            }
+
+            // clang normally generates NEON code for the loop below, which results in broken code
+            // when both L_mult (in basic_op.h) and coder (this function) are unsanitized.
+            // By uncommenting the "fix1" ALOGI below, the compiler is forced to generate plain
+            // ARM code instead, which produces the correct result.
+            // If you leave the "fix1" ALOGI commented, and uncomment the other two loops below, it
+            // will compare the output of the NEON and ARM code for the same input, and it will
+            // be different.
+            for (i = 0; i < L_SUBFR; i++)
+            {
+                Word32 tmp;
+                /* code in Q9, gain_pit in Q14 */
+                L_tmp = L_mult(gain_code, code[i]);
+                L_tmp = (L_tmp << 5);
+                //ALOGI("fix1");
+                tmp = L_mult(exc[i + i_subfr], gain_pit); // (exc[i + i_subfr] * gain_pit)<<1
+                L_tmp = L_add(L_tmp, tmp);
+                L_tmp = L_shl2(L_tmp, 1);
+                exc[i + i_subfr] = extract_h(L_add(L_tmp, 0x8000));
+            }
+
+//            for (i = 0; i < L_SUBFR; i++)
+//            {
+//                Word32 tmp;
+//                /* code in Q9, gain_pit in Q14 */
+//                L_tmp = L_mult(gain_code, code[i]);
+//                L_tmp = (L_tmp << 5);
+//                ALOGI("fix2");
+//                tmp = L_mult(exc_copy[i + i_subfr], gain_pit); // (exc[i + i_subfr] * gain_pit)<<1
+//                L_tmp = L_add(L_tmp, tmp);
+//                L_tmp = L_shl2(L_tmp, 1);
+//                exc_copy[i + i_subfr] = extract_h(L_add(L_tmp, 0x8000));
+//            }
+//
+//
+//            for (int i = 0; i < L_SUBFR; i++) {
+//                if (exc[i + i_subfr] != exc_copy[i + i_subfr]) {
+//                    ALOGI("different @ %d: %d vs %d", i, exc[i + i_subfr], exc_copy[i + i_subfr]);
+//                    different = true;
+//                    break;
+//                }
+//            }
+//            if (!different) {
+//                ALOGI("outputs were identical");
+//            }
         }
 
         Syn_filt(p_Aq,&exc[i_subfr], synth, L_SUBFR, st->mem_syn, 1);

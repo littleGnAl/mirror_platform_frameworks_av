@@ -91,7 +91,7 @@ LOCAL_ARM_MODE := arm
 
 LOCAL_STATIC_LIBRARIES :=
 
-LOCAL_SHARED_LIBRARIES :=
+LOCAL_SHARED_LIBRARIES := liblog
 
 LOCAL_C_INCLUDES := \
 	frameworks/av/include \
@@ -102,7 +102,7 @@ LOCAL_C_INCLUDES := \
 
 LOCAL_CFLAGS += -Werror
 LOCAL_CLANG := true
-LOCAL_SANITIZE := signed-integer-overflow
+LOCAL_SANITIZE := signed-integer-overflow # debug-mode
 
 include $(BUILD_STATIC_LIBRARY)
 
@@ -120,7 +120,7 @@ LOCAL_C_INCLUDES := \
 
 LOCAL_CFLAGS += -Werror
 LOCAL_CLANG := true
-LOCAL_SANITIZE := signed-integer-overflow
+LOCAL_SANITIZE := signed-integer-overflow # debug-mode
 
 LOCAL_STATIC_LIBRARIES := \
         libstagefright_amrwbenc
