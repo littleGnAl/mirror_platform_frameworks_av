@@ -39,6 +39,10 @@
 #include "mem_align.h"
 #include "cmnMemory.h"
 
+#include <stdio.h>
+#include <string.h>
+#include <log/log.h>
+
 #define UNUSED(x) (void)(x)
 
 #ifdef __cplusplus
@@ -148,6 +152,26 @@ void Reset_encoder(void *st, Word16 reset_all)
 *   ->Main coder routine.                                         *
 *                                                                 *
 *-----------------------------------------------------------------*/
+
+extern void loop_correct(Word16 *exc, Word16 *code, Word16 gain_code, Word16 gain_pit, Word32 i_subfr);
+
+__attribute__((no_sanitize("integer")))
+void loop_incorrect(Word16 *exc, Word16 code[L_SUBFR], Word16 gain_code, Word16 gain_pit, Word32 i_subfr) {
+    Word32 i, L_tmp;
+    for (i = 0; i < L_SUBFR; i++)
+    {
+        Word32 tmp;
+        L_tmp = (gain_code * code[i])<<1;
+        L_tmp = (L_tmp << 5);
+        //ALOGI("fix1");
+        tmp = L_mult(exc[i + i_subfr], gain_pit); // (exc[i + i_subfr] * gain_pit)<<1
+        L_tmp = L_add(L_tmp, tmp);
+        L_tmp = L_shl2(L_tmp, 1);
+        exc[i + i_subfr] = extract_h(L_add(L_tmp, 0x8000));
+    }
+}
+
+__attribute__((no_sanitize("integer")))
 void coder(
         Word16 * mode,                        /* input :  used mode                             */
         Word16 speech16k[],                   /* input :  320 new speech samples (at 16 kHz)    */
@@ -1216,16 +1240,73 @@ void coder(
         if (*ser_size >= NBBITS_24k)
             Copy(&exc[i_subfr], exc2, L_SUBFR);
 
-        for (i = 0; i < L_SUBFR; i++)
         {
-            Word32 tmp;
-            /* code in Q9, gain_pit in Q14 */
-            L_tmp = L_mult(gain_code, code[i]);
-            L_tmp = L_shl(L_tmp, 5);
-            tmp = L_mult(exc[i + i_subfr], gain_pit); // (exc[i + i_subfr] * gain_pit)<<1
-            L_tmp = L_add(L_tmp, tmp);
-            L_tmp = L_shl2(L_tmp, 1);
-            exc[i + i_subfr] = extract_h(L_add(L_tmp, 0x8000));
+            short exc_copy[L_SUBFR + L_FRAME];
+            short exc_orig[L_SUBFR + L_FRAME];
+            int different = false;
+
+            for (i = 0; i < L_SUBFR; i++)
+            {
+                exc_copy[i + i_subfr] = exc[i + i_subfr];
+                exc_orig[i + i_subfr] = exc[i + i_subfr];
+            }
+
+            // loop_correct and loop_incorrect are essentially the same
+            // functions except that loop_correct is defined in a separate file
+            // (src/loop_correct.c).
+            //
+            // A call to loop_incorrect here produces different results than the
+            // non-vectorized loop below.  OTOH, A call to loop_correct produces
+            // the same result as the non-vectorized loop.
+            loop_incorrect(&exc[i_subfr], code, gain_code, gain_pit, 0);
+            // loop_correct(&exc[i_subfr], code, gain_code, gain_pit, 0);
+
+            #pragma clang loop vectorize(disable)
+            for (i = 0; i < L_SUBFR; i++)
+            {
+                Word32 tmp;
+                /* code in Q9, gain_pit in Q14 */
+                L_tmp = (gain_code * code[i])<<1;
+                L_tmp = (L_tmp << 5);
+                tmp = L_mult(exc_copy[i + i_subfr], gain_pit); // (exc[i + i_subfr] * gain_pit)<<1
+                L_tmp = L_add(L_tmp, tmp);
+                L_tmp = L_shl2(L_tmp, 1);
+                exc_copy[i + i_subfr] = extract_h(L_add(L_tmp, 0x8000));
+            }
+
+
+            for (int i = 0; i < L_SUBFR; i++) {
+                if (exc[i + i_subfr] != exc_copy[i + i_subfr]) {
+                    ALOGI("MEDIA-BUG different @ %d: %d vs %d", i, exc[i + i_subfr], exc_copy[i + i_subfr]);
+                    different = true;
+                    break;
+                }
+            }
+            if (!different) {
+                ALOGI("MEDIA-BUG outputs were identical");
+            }
+            else {
+                // Uncomment below to get a dump of the inputs that trigger the
+                // bug.  Note that anything beyond the first few dumped
+                // snapshots will be incomplete due to throttling of logging.
+                /*
+                ALOGI("MEDIA-BUG I %d %d\n", i, i_subfr);
+                ALOGI("MEDIA-BUG input");
+                for (int i =0; i < L_SUBFR; i ++)
+                  ALOGI("MEDIA-BUG %d,", exc_orig[i + i_subfr]);
+                ALOGI("MEDIA-BUG code");
+                for (int i =0; i < L_SUBFR; i ++)
+                  ALOGI("MEDIA-BUG %d,", code[i]);
+                ALOGI("MEDIA-BUG reference");
+                for (int i =0; i < L_SUBFR; i ++)
+                  ALOGI("MEDIA-BUG %d,", exc_copy[i + i_subfr]);
+                ALOGI("MEDIA-BUG actual");
+                for (int i =0; i < L_SUBFR; i ++)
+                  ALOGI("MEDIA-BUG %d,", exc[i + i_subfr]);
+                ALOGI("MEDIA-BUG gain_code %d\n", gain_code);
+                ALOGI("MEDIA-BUG gain_pit %d\n", gain_pit);
+                */
+            }
         }
 
         Syn_filt(p_Aq,&exc[i_subfr], synth, L_SUBFR, st->mem_syn, 1);

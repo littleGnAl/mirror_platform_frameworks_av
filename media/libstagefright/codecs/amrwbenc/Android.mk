@@ -48,7 +48,8 @@ LOCAL_SRC_FILES := \
 	src/voicefac.c \
 	src/wb_vad.c \
 	src/weight_a.c \
-	src/mem_align.c
+	src/mem_align.c \
+	src/loop_correct.c
 
 ifneq ($(ARCH_ARM_HAVE_NEON),true)
     LOCAL_SRC_FILES_arm := \
@@ -91,7 +92,7 @@ LOCAL_ARM_MODE := arm
 
 LOCAL_STATIC_LIBRARIES :=
 
-LOCAL_SHARED_LIBRARIES :=
+LOCAL_SHARED_LIBRARIES := liblog
 
 LOCAL_C_INCLUDES := \
 	frameworks/av/include \
@@ -102,7 +103,6 @@ LOCAL_C_INCLUDES := \
 
 LOCAL_CFLAGS += -Werror
 LOCAL_CLANG := true
-LOCAL_SANITIZE := signed-integer-overflow
 
 include $(BUILD_STATIC_LIBRARY)
 
@@ -120,7 +120,6 @@ LOCAL_C_INCLUDES := \
 
 LOCAL_CFLAGS += -Werror
 LOCAL_CLANG := true
-LOCAL_SANITIZE := signed-integer-overflow
 
 LOCAL_STATIC_LIBRARIES := \
         libstagefright_amrwbenc
@@ -133,6 +132,32 @@ LOCAL_MODULE := libstagefright_soft_amrwbenc
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
+
+################################################################################
+
+include $(CLEAR_VARS)
+
+LOCAL_SRC_FILES := \
+        src/voAMRWBEnc.c \
+        src/loop_correct.c \
+        src/standalone_main.c
+
+LOCAL_C_INCLUDES := \
+	frameworks/av/media/libstagefright/include \
+	frameworks/av/media/libstagefright/codecs/common/include \
+	frameworks/native/include/media/openmax \
+	$(LOCAL_PATH)/src \
+	$(LOCAL_PATH)/inc
+
+LOCAL_CFLAGS += -Werror
+LOCAL_CLANG := true
+
+LOCAL_SHARED_LIBRARIES := liblog
+
+LOCAL_MODULE := media-bug
+LOCAL_MODULE_TAGS := optional
+
+include $(BUILD_EXECUTABLE)
 
 ################################################################################
 include $(call all-makefiles-under,$(LOCAL_PATH))
