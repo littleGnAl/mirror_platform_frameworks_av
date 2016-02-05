@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "315940ea_44256e87",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2016-02-05T19:00:39Z",
+      "side": 1,
+      "message": "866-\u003e869 should be retained even with brillo, since otherwise the reporting of client UID/PID in the camera service will be incorrect (in dumpsys, etc).  (just set clientUid \u003d getCallingUid(), clientPid \u003d getCallingPid() )\n\nAlso, how do you expect service arbitration to work (or are you leaving that for a future problem?)\n\nI\u0027d also be happier with this if we factored out the body within the #if into a separate method (maybe validateClientPermissionsLocked?) so that the #ifdef is harder to mess up.",
+      "revId": "0cf07dd4df628f91420f464229e5bb852bf9b955",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
