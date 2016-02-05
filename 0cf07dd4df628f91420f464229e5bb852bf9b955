@@ -16,6 +16,24 @@
       "revId": "0cf07dd4df628f91420f464229e5bb852bf9b955",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1e38448_21e34e36",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2016-02-05T19:24:11Z",
+      "side": 1,
+      "message": "Ah, good point re: lines and I agree that I should refactor this a little more.\n\nI\u0027m unsure what you mean by service arbitration.  I\u0027ll clarify offline then respond for posterity.",
+      "parentUuid": "315940ea_44256e87",
+      "revId": "0cf07dd4df628f91420f464229e5bb852bf9b955",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
