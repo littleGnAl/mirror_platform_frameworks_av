@@ -1293,10 +1293,12 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
 
         if (mBitrateUpdated) {
             setBitRate();
+            mBitrateUpdated = false;
         }
 
         if (mKeyFrameRequested) {
             setFrameType(IV_IDR_FRAME);
+            mKeyFrameRequested = false;
         }
 
         if ((inputBufferHeader != NULL)
