@@ -862,6 +862,7 @@ status_t CameraService::getLegacyParametersLazy(int cameraId,
 status_t CameraService::validateConnectLocked(const String8& cameraId, /*inout*/int& clientUid)
         const {
 
+#if !defined(__BRILLO__)
     int callingPid = getCallingPid();
 
     if (clientUid == USE_CALLING_UID) {
@@ -908,6 +909,7 @@ status_t CameraService::validateConnectLocked(const String8& cameraId, /*inout*/
                 toString(mAllowedUsers).string());
         return PERMISSION_DENIED;
     }
+#endif  // !defined(__BRILLO__)
 
     return checkIfDeviceIsUsable(cameraId);
 }
