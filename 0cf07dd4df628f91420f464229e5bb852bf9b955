@@ -34,6 +34,24 @@
       "revId": "0cf07dd4df628f91420f464229e5bb852bf9b955",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "518b14a3_605a8c7a",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 869,
+      "author": {
+        "id": 1057759
+      },
+      "writtenOn": "2016-02-06T00:29:04Z",
+      "side": 1,
+      "message": "I chatted with etalvala@ a little offline.  To start, we\u0027re fine with clients racing for control of the camera.  Because the functionality of the system is controlled by a single device maker (i.e. no applications, all functional pieces configured by a single individual/company), resource sharing becomes less important (they have only themselves to blame if one piece of their software locks another piece of their software out).\n\nIf it\u0027s easy to do the most Android thing and use your prioritization logic, I think thats what we should do.  If it isn\u0027t easy (e.g. you need to talk about packages or applications with particular uids or permissions) then we\u0027re fine with the race for basic functionality.",
+      "parentUuid": "d1e38448_21e34e36",
+      "revId": "0cf07dd4df628f91420f464229e5bb852bf9b955",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
