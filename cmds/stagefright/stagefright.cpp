@@ -63,6 +63,7 @@ static long gNumRepetitions;
 static long gMaxNumFrames;  // 0 means decode all available.
 static long gReproduceBug;  // if not -1.
 static bool gPreferSoftwareCodec;
+static bool gForceToUseSoftwareCodec;
 static bool gForceToUseHardwareCodec;
 static bool gPlaybackAudio;
 static bool gWriteMP4;
@@ -177,8 +178,14 @@ static void playSource(OMXClient *client, sp<MediaSource> &source) {
         if (gPreferSoftwareCodec) {
             flags |= OMXCodec::kPreferSoftwareCodecs;
         }
+        if (gForceToUseSoftwareCodec) {
+            CHECK(!gPreferSoftwareCodec);
+            CHECK(!gForceToUseHardwareCodec);
+            flags |= OMXCodec::kSoftwareCodecsOnly;
+        }
         if (gForceToUseHardwareCodec) {
             CHECK(!gPreferSoftwareCodec);
+            CHECK(!gForceToUseSoftwareCodec);
             flags |= OMXCodec::kHardwareCodecsOnly;
         }
         rawSource = OMXCodec::Create(
@@ -606,6 +613,7 @@ static void usage(const char *me) {
     fprintf(stderr, "       -p(rofiles) dump decoder profiles supported\n");
     fprintf(stderr, "       -t(humbnail) extract video thumbnail or album art\n");
     fprintf(stderr, "       -s(oftware) prefer software codec\n");
+    fprintf(stderr, "       -R(software) force to use software codec\n");
     fprintf(stderr, "       -r(hardware) force to use hardware codec\n");
     fprintf(stderr, "       -o playback audio\n");
     fprintf(stderr, "       -w(rite) filename (write to .mp4 file)\n");
@@ -679,6 +687,7 @@ int main(int argc, char **argv) {
     gMaxNumFrames = 0;
     gReproduceBug = -1;
     gPreferSoftwareCodec = false;
+    gForceToUseSoftwareCodec = false;
     gForceToUseHardwareCodec = false;
     gPlaybackAudio = false;
     gWriteMP4 = false;
@@ -687,7 +696,7 @@ int main(int argc, char **argv) {
     sp<ALooper> looper;
 
     int res;
-    while ((res = getopt(argc, argv, "han:lm:b:ptsrow:kxSTd:D:")) >= 0) {
+    while ((res = getopt(argc, argv, "han:lm:b:ptsRrow:kxSTd:D:")) >= 0) {
         switch (res) {
             case 'a':
             {
@@ -760,6 +769,12 @@ int main(int argc, char **argv) {
             case 's':
             {
                 gPreferSoftwareCodec = true;
+                break;
+            }
+
+            case 'R':
+            {
+                gForceToUseSoftwareCodec = true;
                 break;
             }
 
