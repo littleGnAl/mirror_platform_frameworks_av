@@ -16,6 +16,24 @@
       "revId": "dce1cb46ae800fd4838b8ebaf331acf2c0eccc68",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bd83441c_8419dabf",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1296,
+      "author": {
+        "id": 1022116
+      },
+      "writtenOn": "2016-02-10T04:21:38Z",
+      "side": 1,
+      "message": "typo should be:\nif (mUpdateFlag) {\n  if (mUpdateFlag \u0026 config1) {\n  ....\n  }\n  if (mUpdateFlag \u0026 config2) {\n  }\n  // Reset flag\n  mUpdateFlag \u003d 0;\n}",
+      "parentUuid": "3d8e7442_0e350bc0",
+      "revId": "dce1cb46ae800fd4838b8ebaf331acf2c0eccc68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
