@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2015 The Android Open Source Project
+ * Copyright (C) 2015 Broadcom Corporation
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -458,6 +459,20 @@ audio_devices_t Engine::getDeviceForStrategy(routing_strategy strategy) const
         // handleIncallSonification().
         if (isInCall()) {
             device = getDeviceForStrategy(STRATEGY_PHONE);
+            break;
+        }
+        if ((mForceUse[AUDIO_POLICY_FORCE_FOR_COMMUNICATION] == AUDIO_POLICY_FORCE_BT_SCO) &&
+            (mPhoneState == AUDIO_MODE_RINGTONE)) {
+            if(device == AUDIO_DEVICE_NONE) {
+                device= availableOutputDevicesType & AUDIO_DEVICE_OUT_BLUETOOTH_SCO_CARKIT;
+            }
+            if(device == AUDIO_DEVICE_NONE) {
+                device = availableOutputDevicesType & AUDIO_DEVICE_OUT_BLUETOOTH_SCO_HEADSET;
+            }
+            if (device == AUDIO_DEVICE_NONE) {
+                device = availableOutputDevicesType & AUDIO_DEVICE_OUT_BLUETOOTH_SCO;
+            }
+            if(device == AUDIO_DEVICE_NONE) break;
             break;
         }
         // FALL THROUGH
