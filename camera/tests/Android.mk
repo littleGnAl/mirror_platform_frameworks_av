@@ -39,7 +39,7 @@ LOCAL_C_INCLUDES += \
 	frameworks/av/include/camera \
 	frameworks/native/include \
 
-LOCAL_CFLAGS += -Wall -Wextra
+LOCAL_CFLAGS += -Wall -Wextra -Wno-unused-parameter
 
 LOCAL_MODULE:= camera_client_test
 LOCAL_MODULE_TAGS := tests

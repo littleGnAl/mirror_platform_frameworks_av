@@ -463,8 +463,7 @@ TEST_F(CameraClientBinderTest, CheckBinderCameraDeviceUser) {
         requestList.push_back(request4);
 
         callbacks->clearStatus();
-        int requestId3 = device->submitRequestList(requestList, /*streaming*/false,
-                /*out*/&lastFrameNumber);
+        device->submitRequestList(requestList, /*streaming*/false, /*out*/&lastFrameNumber);
         EXPECT_TRUE(callbacks->waitForStatus(TestCameraDeviceCallbacks::SENT_RESULT));
         EXPECT_TRUE(callbacks->waitForIdle());
         EXPECT_LE(lastFrameNumberPrev, lastFrameNumber);

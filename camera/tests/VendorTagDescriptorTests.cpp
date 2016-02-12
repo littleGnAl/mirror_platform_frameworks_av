@@ -197,7 +197,6 @@ TEST(VendorTagDescriptorTest, ErrorConditions) {
     EXPECT_EQ(VENDOR_TAG_TYPE_ERR, vDesc->getTagType(BAD_TAG));
 
     // Make sure global can be set/cleared
-    const vendor_tag_ops_t *fakeOps = &fakevendor_ops;
     sp<VendorTagDescriptor> prevGlobal = VendorTagDescriptor::getGlobalVendorTagDescriptor();
     VendorTagDescriptor::clearGlobalVendorTagDescriptor();
 

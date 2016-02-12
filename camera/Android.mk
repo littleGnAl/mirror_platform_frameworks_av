@@ -49,6 +49,8 @@ LOCAL_SHARED_LIBRARIES := \
 	libgui \
 	libcamera_metadata \
 
+LOCAL_CFLAGS := -Wno-unused-parameter
+
 LOCAL_C_INCLUDES += \
 	system/media/camera/include \
 	system/media/private/camera/include \
