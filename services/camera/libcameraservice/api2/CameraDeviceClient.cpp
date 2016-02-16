@@ -439,6 +439,13 @@ status_t CameraDeviceClient::createStream(const OutputConfiguration &outputConfi
         return res;
     }
 
+    if (format != HAL_PIXEL_FORMAT_BLOB &&
+        consumerUsage & GraphicBuffer::USAGE_SW_READ_MASK) {
+        ALOGW("%s: Camera %d: Overriding format %#x to YCbCr_420_888 as SW Encoder desires",
+              __FUNCTION__, mCameraId, format);
+        format = HAL_PIXEL_FORMAT_YCbCr_420_888;
+    }
+
     // FIXME: remove this override since the default format should be
     //       IMPLEMENTATION_DEFINED. b/9487482
     if (format >= HAL_PIXEL_FORMAT_RGBA_8888 &&
