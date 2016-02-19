@@ -155,9 +155,14 @@ GraphicBufferSource::GraphicBufferSource(
         BufferQueue::createBufferQueue(&mProducer, &mConsumer);
         mConsumer->setConsumerName(name);
 
-        // use consumer usage bits queried from encoder, but always add HW_VIDEO_ENCODER
-        // for backward compatibility.
-        consumerUsage |= GRALLOC_USAGE_HW_VIDEO_ENCODER;
+        if (consumerUsage & GRALLOC_USAGE_SW_READ_OFTEN) {
+            ALOGI("Set the default color format to YCbCr_420_888 for SW Encoder");
+            mConsumer->setDefaultBufferFormat(HAL_PIXEL_FORMAT_YCbCr_420_888);
+        } else {
+            // use consumer usage bits queried from encoder, but always add HW_VIDEO_ENCODER
+            // for backward compatibility.
+            consumerUsage |= GRALLOC_USAGE_HW_VIDEO_ENCODER;
+        }
         mConsumer->setConsumerUsageBits(consumerUsage);
 
         mInitCheck = mConsumer->setMaxAcquiredBufferCount(bufferCount);
