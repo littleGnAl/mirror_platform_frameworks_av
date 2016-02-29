@@ -172,7 +172,7 @@ void CameraService::onFirstRef()
 
     mNumberOfCameras = mModule->getNumberOfCameras();
     mNumberOfNormalCameras = mNumberOfCameras;
-
+    mNumberOfExternalCameras = 0;
     // Setup vendor tags before we call get_camera_info the first time
     // because HAL might need to setup static vendor keys in get_camera_info
     VendorTagDescriptor::clearGlobalVendorTagDescriptor();
@@ -189,7 +189,9 @@ void CameraService::onFirstRef()
 
     int latestStrangeCameraId = INT_MAX;
     for (int i = 0; i < mNumberOfCameras; i++) {
-        if (initCameraStatus(i, &latestStrangeCameraId) != OK) {
+        // built-in camera init status must be STATUS_PRESENT
+        if (initCameraStatus(i, ICameraServiceListener::STATUS_PRESENT,
+                             &latestStrangeCameraId) != OK) {
             return;
         }
     }
@@ -238,9 +240,21 @@ void CameraService::onDeviceStatusChanged(int  cameraId,
     String8 id = String8::format("%d", cameraId);
     std::shared_ptr<CameraState> state = getCameraState(id);
 
-    if (state == nullptr) {
-        ALOGE("%s: Bad camera ID %d", __FUNCTION__, cameraId);
+    if (state == nullptr && !newExternalCameraPluggedIn(cameraId, newStatus)) {
+        ALOGE("%s: Bad status %d for camera ID %d. %d built-in cameras, %d external cameras",
+                __FUNCTION__, newStatus, cameraId, mNumberOfCameras, mNumberOfExternalCameras);
         return;
+    }
+
+    // new external camera plugged in
+    if (state == nullptr) {
+        status_t ret = handleNewExternalCameraPluggedIn(cameraId);
+        if (ret != OK ) {
+            ALOGE("%s: Fail to add new external camera ID %d.", __FUNCTION__, cameraId);
+            return;
+        }
+        // retrieve the status again
+        state = getCameraState(id);
     }
 
     ICameraServiceListener::Status oldStatus = state->getStatus();
@@ -252,7 +266,7 @@ void CameraService::onDeviceStatusChanged(int  cameraId,
 
     if (newStatus == CAMERA_DEVICE_STATUS_NOT_PRESENT) {
         logDeviceRemoved(id, String8::format("Device status changed from %d to %d", oldStatus,
-                newStatus));
+            newStatus));
         sp<BasicClient> clientToDisconnect;
         {
             // Don't do this in updateStatus to avoid deadlock over mServiceLock
@@ -289,12 +303,43 @@ void CameraService::onDeviceStatusChanged(int  cameraId,
     } else {
         if (oldStatus == ICameraServiceListener::Status::STATUS_NOT_PRESENT) {
             logDeviceAdded(id, String8::format("Device status changed from %d to %d", oldStatus,
-                    newStatus));
+                newStatus));
         }
         updateStatus(static_cast<ICameraServiceListener::Status>(newStatus), id);
     }
 
 }
+
+bool CameraService::newExternalCameraPluggedIn(int cameraId,
+        camera_device_status_t newStatus) {
+    if ((cameraId == getNumberOfCameras(CAMERA_TYPE_ALL)) &&
+        (newStatus == CAMERA_DEVICE_STATUS_PRESENT ||
+         newStatus == CAMERA_DEVICE_STATUS_ENUMERATING)) {
+        return true;
+    }
+    return false;
+}
+
+status_t CameraService::handleNewExternalCameraPluggedIn(int cameraId) {
+    // what should be the camera id constraint for external camera?
+    int lastStrangeCameraId = INT_MAX;
+    status_t ret = initCameraStatus(cameraId, ICameraServiceListener::STATUS_NOT_PRESENT,
+            &lastStrangeCameraId);
+    if (ret != OK) {
+        return ret;
+    }
+
+    {
+        Mutex::Autolock lock(mExternalCameraLock);
+        mNumberOfExternalCameras++;
+        ALOGI("new external camera plugged in , now have %d external cameras",
+                mNumberOfExternalCameras);
+    }
+
+    return OK;
+}
+
+
 
 void CameraService::onTorchStatusChanged(const String8& cameraId,
         ICameraServiceListener::TorchStatus newStatus) {
@@ -367,11 +412,12 @@ int32_t CameraService::getNumberOfCameras() {
 
 int32_t CameraService::getNumberOfCameras(int type) {
     ATRACE_CALL();
+    Mutex::Autolock lock(mExternalCameraLock);
     switch (type) {
         case CAMERA_TYPE_BACKWARD_COMPATIBLE:
             return mNumberOfNormalCameras;
         case CAMERA_TYPE_ALL:
-            return mNumberOfCameras;
+            return mNumberOfCameras + mNumberOfExternalCameras;
         default:
             ALOGW("%s: Unknown camera type %d, returning 0",
                     __FUNCTION__, type);
@@ -386,7 +432,7 @@ status_t CameraService::getCameraInfo(int cameraId,
         return -ENODEV;
     }
 
-    if (cameraId < 0 || cameraId >= mNumberOfCameras) {
+    if (cameraId < 0 || cameraId >= getNumberOfCameras(CAMERA_TYPE_ALL)) {
         return BAD_VALUE;
     }
 
@@ -506,7 +552,7 @@ status_t CameraService::getCameraCharacteristics(int cameraId,
         return -ENODEV;
     }
 
-    if (cameraId < 0 || cameraId >= mNumberOfCameras) {
+    if (cameraId < 0 || cameraId >= getNumberOfCameras(CAMERA_TYPE_ALL)) {
         ALOGE("%s: Invalid camera id: %d", __FUNCTION__, cameraId);
         return BAD_VALUE;
     }
@@ -812,7 +858,8 @@ status_t CameraService::getLegacyParametersLazy(int cameraId,
     return INVALID_OPERATION;
 }
 
-status_t CameraService::initCameraStatus(int id, int *latestStrangeCameraId) {
+status_t CameraService::initCameraStatus(int id, ICameraServiceListener::Status status,
+                                         int *latestStrangeCameraId) {
     String8 cameraId = String8::format("%d", id);
 
     // Get camera info
@@ -856,7 +903,7 @@ status_t CameraService::initCameraStatus(int id, int *latestStrangeCameraId) {
     // Initialize state for each camera device
     {
       Mutex::Autolock lock(mCameraStatesLock);
-      mCameraStates.emplace(cameraId, std::make_shared<CameraState>(cameraId, cost,
+      mCameraStates.emplace(cameraId, std::make_shared<CameraState>(cameraId, status, cost,
               conflicting));
     }
 
@@ -2141,9 +2188,9 @@ void CameraService::Client::OpsCallback::opChanged(int32_t op,
 //                  CameraState
 // ----------------------------------------------------------------------------
 
-CameraService::CameraState::CameraState(const String8& id, int cost,
-        const std::set<String8>& conflicting) : mId(id),
-        mStatus(ICameraServiceListener::STATUS_PRESENT), mCost(cost), mConflicting(conflicting) {}
+CameraService::CameraState::CameraState(const String8& id, ICameraServiceListener::Status status,
+        int cost, const std::set<String8>& conflicting) : mId(id),
+        mStatus(status), mCost(cost), mConflicting(conflicting) {}
 
 CameraService::CameraState::~CameraState() {}
 
@@ -2324,7 +2371,7 @@ status_t CameraService::dump(int fd, const Vector<String16>& args) {
         result.appendFormat("Camera module API version: 0x%x\n", mModule->getModuleApiVersion());
         result.appendFormat("Camera module name: %s\n", mModule->getModuleName());
         result.appendFormat("Camera module author: %s\n", mModule->getModuleAuthor());
-        result.appendFormat("Number of camera devices: %d\n", mNumberOfCameras);
+        result.appendFormat("Number of camera devices: %d\n", getNumberOfCameras(CAMERA_TYPE_ALL));
         String8 activeClientString = mActiveClientManager.toString();
         result.appendFormat("Active Camera Clients:\n%s", activeClientString.string());
         result.appendFormat("Allowed users:\n%s\n", toString(mAllowedUsers).string());

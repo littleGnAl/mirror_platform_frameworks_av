@@ -417,7 +417,8 @@ private:
          * Make a new CameraState and set the ID, cost, and conflicting devices using the values
          * returned in the HAL's camera_info struct for each device.
          */
-        CameraState(const String8& id, int cost, const std::set<String8>& conflicting);
+        CameraState(const String8& id, ICameraServiceListener::Status status,
+                    int cost, const std::set<String8>& conflicting);
         virtual ~CameraState();
 
         /**
@@ -482,7 +483,8 @@ private:
 
     // Init the camera status, called for build-in camera on service start and
     // for usb/external cameras on first plugin
-    status_t initCameraStatus(int cameraId, int *latestStrangeCameraId);
+    status_t initCameraStatus(int cameraId, ICameraServiceListener::Status status,
+                              int *latestStrangeCameraId);
 
     // Check if we can connect, before we acquire the service lock.
     status_t validateConnectLocked(const String8& cameraId, /*inout*/int& clientUid) const;
@@ -569,6 +571,16 @@ private:
     static int cameraIdToInt(const String8& cameraId);
 
     /**
+     * Is this a valid new camera plugged in event.
+     */
+    bool newExternalCameraPluggedIn(int cameraId, camera_device_status_t newStatus);
+
+    /**
+     * initial the camera status to NOT_PRESENT for new plugged in camera
+     */
+    status_t handleNewExternalCameraPluggedIn(int cameraId);
+
+    /**
      * Remove a single client corresponding to the given camera id from the list of active clients.
      * If none exists, return an empty strongpointer.
      *
@@ -635,6 +647,10 @@ private:
 
     int                 mNumberOfCameras;
     int                 mNumberOfNormalCameras;
+
+    // Guarded by mExternalCameraLock
+    int                 mNumberOfExternalCameras;
+    Mutex               mExternalCameraLock;
 
     // sounds
     MediaPlayer*        newMediaPlayer(const char *file);
