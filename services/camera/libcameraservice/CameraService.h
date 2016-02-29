@@ -480,6 +480,10 @@ private:
     // Delay-load the Camera HAL module
     virtual void onFirstRef();
 
+    // Init the camera status, called for build-in camera on service start and
+    // for usb/external cameras on first plugin
+    status_t initCameraStatus(int cameraId, int *latestStrangeCameraId);
+
     // Check if we can connect, before we acquire the service lock.
     status_t validateConnectLocked(const String8& cameraId, /*inout*/int& clientUid) const;
     status_t validateClientPermissionsLocked(const String8& cameraId, /*inout*/int& clientUid) const;
