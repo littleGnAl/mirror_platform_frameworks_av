@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c26bb568_e13d5aa6",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1011,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2016-03-02T01:26:59Z",
+      "side": 1,
+      "message": "or maybe isDirect() here? Seems like this could be a common problem with all direct tracks. Eric might be able to comment better than me.",
+      "range": {
+        "startLine": 1011,
+        "startChar": 70,
+        "endLine": 1011,
+        "endChar": 102
+      },
+      "revId": "1b103ed69d49632213d707d7ffd7cf731d7367e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
