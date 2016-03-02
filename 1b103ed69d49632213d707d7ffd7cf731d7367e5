@@ -22,6 +22,30 @@
       "revId": "1b103ed69d49632213d707d7ffd7cf731d7367e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8209bdb1_57d09617",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1011,
+      "author": {
+        "id": 1057645
+      },
+      "writtenOn": "2016-03-02T04:19:58Z",
+      "side": 1,
+      "message": "On nvidia platforms we use direct output for multi-channel and hra streams and we have not seen any issue for that. But we faced this issue for IEC958 streams.\nFor PCM direct streams (framesWritten \u003e\u003d mPresentationCompleteFrames) condition will satisfy but that does not happen for a non-pcm stream.",
+      "parentUuid": "c26bb568_e13d5aa6",
+      "range": {
+        "startLine": 1011,
+        "startChar": 70,
+        "endLine": 1011,
+        "endChar": 102
+      },
+      "revId": "1b103ed69d49632213d707d7ffd7cf731d7367e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
