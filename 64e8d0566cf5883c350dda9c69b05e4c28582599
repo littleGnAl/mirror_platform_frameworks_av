@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e27a7932_3f5db8f3",
+        "filename": "services/audioflinger/FastMixer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2016-03-02T01:41:22Z",
+      "side": 1,
+      "message": "I believe this only needs to be cleared if there are no tracks to mix (none are enabled).  We might be able to check this condition on line 412, and if mMixerBufferState is not ZEROED, set mMixerBufferState to UNDEFINED.  That should clear the buffer on line 419.\n\nGlenn would know better...",
+      "range": {
+        "startLine": 390,
+        "startChar": 20,
+        "endLine": 390,
+        "endChar": 62
+      },
+      "revId": "64e8d0566cf5883c350dda9c69b05e4c28582599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
