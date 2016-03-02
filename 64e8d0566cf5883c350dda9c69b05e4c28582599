@@ -70,6 +70,30 @@
       "revId": "64e8d0566cf5883c350dda9c69b05e4c28582599",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02594de9_0e4d4c68",
+        "filename": "services/audioflinger/FastMixer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2016-03-02T02:54:37Z",
+      "side": 1,
+      "message": "If the logic is similar to the normal mixer, then we should clear the mix buffer only if all tracks are underruning because in this case the mixer process function will be a nop.\nTo answer Glenn\u0027s concern this takes place before the actual mixer process() so there is no risk to lose data from a previous track.",
+      "parentUuid": "42318581_4ce258eb",
+      "range": {
+        "startLine": 390,
+        "startChar": 20,
+        "endLine": 390,
+        "endChar": 62
+      },
+      "revId": "64e8d0566cf5883c350dda9c69b05e4c28582599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
