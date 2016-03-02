@@ -46,6 +46,30 @@
       "revId": "1b103ed69d49632213d707d7ffd7cf731d7367e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02594de9_842cbbdd",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1011,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2016-03-02T19:47:28Z",
+      "side": 1,
+      "message": "Just discussed with Eric - please see the calling function:\n\nAudioFlinger::DirectOutputThread::prepareTracks_l()\n\nit seems audioHalFrames should be 0 if !audio_is_linear_pcm(mFormat).  So this check should not be needed here unless (1) we have a stale value of mPresentationCompleteFrames or (2) mFormat in the track differs from the DirectOutputThread. Would it be possible to check this case again and see why this new clause is needed?\n\nThanks!",
+      "parentUuid": "8209bdb1_57d09617",
+      "range": {
+        "startLine": 1011,
+        "startChar": 70,
+        "endLine": 1011,
+        "endChar": 102
+      },
+      "revId": "1b103ed69d49632213d707d7ffd7cf731d7367e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
