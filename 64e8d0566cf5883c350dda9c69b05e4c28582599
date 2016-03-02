@@ -22,6 +22,54 @@
       "revId": "64e8d0566cf5883c350dda9c69b05e4c28582599",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42318581_4ce258eb",
+        "filename": "services/audioflinger/FastMixer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2016-03-02T02:40:34Z",
+      "side": 1,
+      "message": "I am away from the full source code at the moment,\nso it is difficult for me to review this right now.\nHowever, the intention of mMixerBufferState is to keeo track\nof the state of the mix buffer, and to only zero it when necessary.\nWe definitely would want to keep that optimization to eliminate\nunnecessary zero operations. \n\nAgain, I\u0027m not seeing all the code, but it seems like\nit would be incorrect to clear the mix buffer for each track.\nIs this new code being executed for _every_ track\n(that is in underrun)?  And what happens if a previous\ntrack was not in underrun ... would we lose the previously\nmixed data? Either would be bad.",
+      "parentUuid": "e27a7932_3f5db8f3",
+      "range": {
+        "startLine": 390,
+        "startChar": 20,
+        "endLine": 390,
+        "endChar": 62
+      },
+      "revId": "64e8d0566cf5883c350dda9c69b05e4c28582599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "02986d84_58e34ac2",
+        "filename": "services/audioflinger/FastMixer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2016-03-02T02:40:34Z",
+      "side": 1,
+      "message": "I am away from the full source code at the moment,\nso it is difficult for me to review this right now.\nHowever, the intention of mMixerBufferState is to keeo track\nof the state of the mix buffer, and to only zero it when necessary.\nWe definitely would want to keep that optimization to eliminate\nunnecessary zero operations. \n\nAgain, I\u0027m not seeing all the code, but it seems like\nit would be incorrect to clear the mix buffer for each track.\nIs this new code being executed for _every_ track\n(that is in underrun)?  And what happens if a previous\ntrack was not in underrun ... would we lose the previously\nmixed data? Either would be bad.",
+      "parentUuid": "e27a7932_3f5db8f3",
+      "range": {
+        "startLine": 390,
+        "startChar": 20,
+        "endLine": 390,
+        "endChar": 62
+      },
+      "revId": "64e8d0566cf5883c350dda9c69b05e4c28582599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
