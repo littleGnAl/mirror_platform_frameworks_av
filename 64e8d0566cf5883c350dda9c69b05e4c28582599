@@ -94,6 +94,30 @@
       "revId": "64e8d0566cf5883c350dda9c69b05e4c28582599",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42034591_2c96f773",
+        "filename": "services/audioflinger/FastMixer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1057645
+      },
+      "writtenOn": "2016-03-02T09:27:34Z",
+      "side": 1,
+      "message": "As eric mentioned any data loss will not happen in this case because mixer-\u003eprocess() gets called after processing all the tracks. So memset will happen before actual mixing happens.\n\nBut yes if there are possibility of unnecessary memset() operations with this change.\n\nProblem is we can\u0027t just set mMixerBufferState to UNDEFINED when there is a underrun for a track, since some other track may have ready data.\n\nMy suggestion to avoid extra memset is :\n\n\u003d\u003e Add a new MixerBufferState as READY\n\u003d\u003e Set mMixerBufferState to UNDEFINED at start of every onWork() loop. Set mMixerBufferState to READY if for any track data is available.\n\u003d\u003e Call mixer-\u003eprocess() only if mMixerBufferState is READY.\n\nLet me know how this sounds. If you agree i will update the commit.",
+      "parentUuid": "02594de9_0e4d4c68",
+      "range": {
+        "startLine": 390,
+        "startChar": 20,
+        "endLine": 390,
+        "endChar": 62
+      },
+      "revId": "64e8d0566cf5883c350dda9c69b05e4c28582599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
