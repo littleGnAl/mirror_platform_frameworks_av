@@ -23,6 +23,7 @@
 #include "include/avc_utils.h"
 #include "include/ID3.h"
 #include "include/VBRISeeker.h"
+#include "include/VBRSeeker.h"
 #include "include/XINGSeeker.h"
 
 #include <media/stagefright/foundation/ADebug.h>
@@ -317,6 +318,20 @@ MP3Extractor::MP3Extractor(
         }
         mFirstFramePos = pos;
         mFixedHeader = header;
+    }
+
+    int64_t unused = 0;
+    if (mSeeker == NULL || !mSeeker->getOffsetForTime(&unused, &unused)) {
+
+        // Disable when size of content via http server is unknown.
+        //  ex) live streaming
+        off64_t size = 0;
+        if (OK == mDataSource->getSize(&size) && size > 0) {
+            sp<MP3Seeker> seeker = VBRSeeker::CreateFromSource(mDataSource, mFirstFramePos);
+            if (seeker != NULL) {
+                mSeeker = seeker;
+            }
+        }
     }
 
     size_t frame_size;
