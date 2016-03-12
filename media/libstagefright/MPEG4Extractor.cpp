@@ -2856,6 +2856,9 @@ status_t MPEG4Extractor::updateAudioTrackInfoFromESDS_MPEG4Audio(
             if (numChannels == 0) {
                 int32_t channelsEffectiveNum = 0;
                 int32_t channelsNum = 0;
+                if (br.numBitsLeft() < 32) {
+                    return ERROR_MALFORMED;
+                }
                 const int32_t ElementInstanceTag = br.getBits(4);
                 const int32_t Profile = br.getBits(2);
                 const int32_t SamplingFrequencyIndex = br.getBits(4);
