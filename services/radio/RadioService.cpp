@@ -350,6 +350,8 @@ sp<IMemory> RadioService::CallbackThread::prepareEvent(radio_hal_event_t *halEve
         break;
     case RADIO_EVENT_TA:
     case RADIO_EVENT_ANTENNA:
+    case RADIO_EVENT_VOL_BUT_DOWN:
+    case RADIO_EVENT_VOL_BUT_UP:
     case RADIO_EVENT_CONTROL:
         event->on = halEvent->on;
         break;
