@@ -90,6 +90,7 @@ NuPlayer::Renderer::Renderer(
       mFlags(flags),
       mNumFramesWritten(0),
       mDrainAudioQueuePending(false),
+      mPortSettingsChangedPending(false),
       mDrainVideoQueuePending(false),
       mAudioQueueGeneration(0),
       mVideoQueueGeneration(0),
@@ -350,6 +351,20 @@ status_t NuPlayer::Renderer::openAudioSink(
         bool hasVideo,
         uint32_t flags,
         bool *isOffloaded) {
+
+    mPortSettingsChangedPending = true;
+
+    /* Drain all the audio buffers before reopening audiosink.
+       Only when not offloading audio */
+    if (!offloadingAudio()) {
+         /*Make sure AudioSink is set and ready*/
+        if(mAudioSink != NULL && mAudioSink->ready()) {
+            while (!mAudioQueue.empty()) {
+                postDrainAudioQueue_l();
+            }
+        }
+    }
+
     sp<AMessage> msg = new AMessage(kWhatOpenAudioSink, this);
     msg->setMessage("format", format);
     msg->setInt32("offload-only", offloadOnly);
@@ -367,6 +382,7 @@ status_t NuPlayer::Renderer::openAudioSink(
         CHECK(response->findInt32("offload", &offload));
         *isOffloaded = (offload != 0);
     }
+    mPortSettingsChangedPending = false;
     return err;
 }
 
@@ -1203,6 +1219,10 @@ void NuPlayer::Renderer::onQueueBuffer(const sp<AMessage> &msg) {
             mVideoScheduler = new VideoFrameScheduler();
             mVideoScheduler->init();
         }
+    }
+
+    if (audio && mPortSettingsChangedPending) {
+        return;
     }
 
     sp<ABuffer> buffer;

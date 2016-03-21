@@ -143,6 +143,7 @@ private:
     sp<VideoFrameScheduler> mVideoScheduler;
 
     bool mDrainAudioQueuePending;
+    bool mPortSettingsChangedPending;
     bool mDrainVideoQueuePending;
     int32_t mAudioQueueGeneration;
     int32_t mVideoQueueGeneration;
