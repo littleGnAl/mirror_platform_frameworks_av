@@ -46,6 +46,30 @@
       "revId": "1e70916d4a10ec40606255d3fd51a803ca001b97",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcf63e9d_8ca3d1c9",
+        "filename": "media/libstagefright/SampleTable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2016-03-21T17:45:03Z",
+      "side": 1,
+      "message": "mSampleToChunkOffset is initialized to a negative value to indicate an invalid/uninitialized state (see constructor and isValid() method above), and setSampleToChunkParams is only called with positive values (from MPEG4Extractor). I can add a specific check for that if that would help.",
+      "parentUuid": "dcf63e9d_b1a426e4",
+      "range": {
+        "startLine": 249,
+        "startChar": 48,
+        "endLine": 249,
+        "endChar": 68
+      },
+      "revId": "1e70916d4a10ec40606255d3fd51a803ca001b97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
