@@ -22,6 +22,30 @@
       "revId": "1e70916d4a10ec40606255d3fd51a803ca001b97",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "dcf63e9d_b1a426e4",
+        "filename": "media/libstagefright/SampleTable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1079886
+      },
+      "writtenOn": "2016-03-21T17:40:51Z",
+      "side": 1,
+      "message": "Can you elaborate on how this will never be negative? data_offset is an off64_t? It\u0027s not clear that\u0027s the case in this function.",
+      "parentUuid": "dcf63e9d_b18266c1",
+      "range": {
+        "startLine": 249,
+        "startChar": 48,
+        "endLine": 249,
+        "endChar": 68
+      },
+      "revId": "1e70916d4a10ec40606255d3fd51a803ca001b97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
