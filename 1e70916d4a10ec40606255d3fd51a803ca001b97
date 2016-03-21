@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dcf63e9d_b18266c1",
+        "filename": "media/libstagefright/SampleTable.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2016-03-21T16:37:00Z",
+      "side": 1,
+      "message": "This will never be negative here, so casting to size_t is OK.",
+      "range": {
+        "startLine": 249,
+        "startChar": 48,
+        "endLine": 249,
+        "endChar": 68
+      },
+      "revId": "1e70916d4a10ec40606255d3fd51a803ca001b97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
