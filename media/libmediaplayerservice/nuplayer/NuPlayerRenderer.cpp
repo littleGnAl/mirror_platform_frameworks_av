@@ -1776,10 +1776,26 @@ status_t NuPlayer::Renderer::onOpenAudioSink(
         uint32_t pcmFlags = flags;
         pcmFlags &= ~AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD;
 
+        audio_format_t audioFormat = AUDIO_FORMAT_PCM_16_BIT;
+        int32_t bitspersample;
+        if (format->findInt32("bits-persample", &bitspersample)) {
+            switch (bitspersample) {
+                case 8:
+                    audioFormat = AUDIO_FORMAT_PCM_8_BIT;
+                    break;
+                case 24:
+                    audioFormat = AUDIO_FORMAT_PCM_24_BIT_PACKED;
+                    break;
+                case 16:
+                default:
+                    audioFormat = AUDIO_FORMAT_PCM_16_BIT;
+            }
+        }
+
         const PcmInfo info = {
                 (audio_channel_mask_t)channelMask,
                 (audio_output_flags_t)pcmFlags,
-                AUDIO_FORMAT_PCM_16_BIT, // TODO: change to audioFormat
+                audioFormat,
                 numChannels,
                 sampleRate
         };
@@ -1814,7 +1830,7 @@ status_t NuPlayer::Renderer::onOpenAudioSink(
                     sampleRate,
                     numChannels,
                     (audio_channel_mask_t)channelMask,
-                    AUDIO_FORMAT_PCM_16_BIT,
+                    audioFormat,
                     0 /* bufferCount - unused */,
                     mUseAudioCallback ? &NuPlayer::Renderer::AudioSinkCallback : NULL,
                     mUseAudioCallback ? this : NULL,
