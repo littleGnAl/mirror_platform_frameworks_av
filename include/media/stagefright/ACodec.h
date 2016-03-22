@@ -262,6 +262,8 @@ private:
 
     bool mChannelMaskPresent;
     int32_t mChannelMask;
+    bool mBitsPerSamplePresent;
+    int32_t mBitsPerSample;
     unsigned mDequeueCounter;
     MetadataBufferType mInputMetadataType;
     MetadataBufferType mOutputMetadataType;

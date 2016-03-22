@@ -2157,6 +2157,12 @@ status_t ACodec::configureCodec(
         mChannelMaskPresent = false;
     }
 
+    if (msg->findInt32("bits-persample", &mBitsPerSample)) {
+        mBitsPerSamplePresent = true;
+    } else {
+        mBitsPerSamplePresent = false;
+    }
+
     int32_t maxInputSize;
     if (msg->findInt32("max-input-size", &maxInputSize)) {
         err = setMinBufferSize(kPortIndexInput, (size_t)maxInputSize);
@@ -4227,6 +4233,9 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
 
                     if (mChannelMaskPresent) {
                         notify->setInt32("channel-mask", mChannelMask);
+                    }
+                    if (mBitsPerSamplePresent) {
+                        notify->setInt32("bits-persample", mBitsPerSample);
                     }
                     break;
                 }
