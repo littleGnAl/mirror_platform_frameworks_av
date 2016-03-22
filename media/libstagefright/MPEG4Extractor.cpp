@@ -364,6 +364,7 @@ MPEG4Extractor::MPEG4Extractor(const sp<DataSource> &source)
       mInitCheck(NO_INIT),
       mHasVideo(false),
       mHeaderTimescale(0),
+      mEmptyMediaHdr(false),
       mFirstTrack(NULL),
       mLastTrack(NULL),
       mFileMetaData(new MetaData),
@@ -947,11 +948,14 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
                     return OK;
                 }
 
-                status_t err = verifyTrack(mLastTrack);
+                if (!mEmptyMediaHdr) {
+                    status_t err = verifyTrack(mLastTrack);
 
-                if (err != OK) {
-                    return err;
+                    if (err != OK) {
+                        return err;
+                    }
                 }
+                mEmptyMediaHdr = false;
             } else if (chunk_type == FOURCC('m', 'o', 'o', 'v')) {
                 mInitCheck = OK;
 
@@ -2096,6 +2100,13 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
 
             parseID3v2MetaData(data_offset + 6);
 
+            break;
+        }
+
+        case FOURCC('n','m','h','d'):
+        {
+            mEmptyMediaHdr = true;
+            *offset += chunk_size;
             break;
         }
 
