@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dcf63e9d_31cbff1d",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2016-03-24T18:29:54Z",
+      "side": 1,
+      "message": "since we require the built-in cameras to have contiguous numbering, we have to allow external cameras to have IDs higher than all built-in cameras.",
+      "parentUuid": "c20f35b0_f00c388f",
+      "revId": "c75e7144592a701d85a7c90049a2e250f441da57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2251944_3393c884",
         "filename": "services/camera/libcameraservice/CameraService.cpp",
         "patchSetId": 4
