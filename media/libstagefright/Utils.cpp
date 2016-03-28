@@ -889,6 +889,19 @@ bool canOffloadStream(const sp<MetaData>& meta, bool hasVideo,
     return AudioSystem::isOffloadSupported(info);
 }
 
+bool canPassthroughStream(const sp<MetaData>& meta)
+{
+    const char *mime;
+    if (meta == NULL) {
+        return false;
+    }
+    CHECK(meta->findCString(kKeyMIMEType, &mime));
+    return (!strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_AC3)    ||
+            !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_EAC3)   ||
+            !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_DTS));
+
+}
+
 AString uriDebugString(const AString &uri, bool incognito) {
     if (incognito) {
         return AString("<URI suppressed>");

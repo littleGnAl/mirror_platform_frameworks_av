@@ -171,6 +171,7 @@ NuPlayer::NuPlayer(pid_t pid)
       mPID(pid),
       mSourceFlags(0),
       mOffloadAudio(false),
+      mPassthroughAudio(false),
       mAudioDecoderGeneration(0),
       mVideoDecoderGeneration(0),
       mRendererGeneration(0),
@@ -1319,6 +1320,10 @@ void NuPlayer::onStart(int64_t startPositionUs) {
         flags |= Renderer::FLAG_OFFLOAD_AUDIO;
     }
 
+    mPassthroughAudio = canPassthroughStream(audioMeta);
+    if (mPassthroughAudio) {
+        flags |= Renderer::FLAG_PASSTHROUGH_AUDIO;
+    }
     sp<AMessage> notify = new AMessage(kWhatRendererNotify, this);
     ++mRendererGeneration;
     notify->setInt32("generation", mRendererGeneration);
@@ -1542,7 +1547,7 @@ status_t NuPlayer::instantiateDecoder(bool audio, sp<DecoderBase> *decoder) {
         notify->setInt32("generation", mAudioDecoderGeneration);
 
         determineAudioModeChange();
-        if (mOffloadAudio) {
+        if (mOffloadAudio || mPassthroughAudio) {
             const bool hasVideo = (mSource->getFormat(false /*audio */) != NULL);
             format->setInt32("has-video", hasVideo);
             *decoder = new DecoderPassThrough(notify, mSource, mRenderer);

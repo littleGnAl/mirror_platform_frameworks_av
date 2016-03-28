@@ -116,6 +116,7 @@ NuPlayer::Renderer::Renderer(
       mAudioTornDown(false),
       mCurrentOffloadInfo(AUDIO_INFO_INITIALIZER),
       mCurrentPcmInfo(AUDIO_PCMINFO_INITIALIZER),
+      mCurrentPassthroughInfo(AUDIO_PCMINFO_INITIALIZER),
       mTotalBuffersQueued(0),
       mLastAudioBufferDrained(0),
       mUseAudioCallback(false),
@@ -126,7 +127,7 @@ NuPlayer::Renderer::Renderer(
 }
 
 NuPlayer::Renderer::~Renderer() {
-    if (offloadingAudio()) {
+    if (offloadingAudio() || passthroughAudio()) {
         mAudioSink->stop();
         mAudioSink->flush();
         mAudioSink->close();
@@ -961,7 +962,9 @@ bool NuPlayer::Renderer::onDrainAudioQueue() {
 
 int64_t NuPlayer::Renderer::getDurationUsIfPlayedAtSampleRate(uint32_t numFrames) {
     int32_t sampleRate = offloadingAudio() ?
-            mCurrentOffloadInfo.sample_rate : mCurrentPcmInfo.mSampleRate;
+            mCurrentOffloadInfo.sample_rate : (passthroughAudio() ?
+            mCurrentPassthroughInfo.mSampleRate: mCurrentPcmInfo.mSampleRate);
+
     if (sampleRate == 0) {
         ALOGE("sampleRate is 0 in %s mode", offloadingAudio() ? "offload" : "non-offload");
         return 0;
@@ -1355,7 +1358,7 @@ void NuPlayer::Renderer::onFlush(const sp<AMessage> &msg) {
 
         mDrainAudioQueuePending = false;
 
-        if (offloadingAudio()) {
+        if (offloadingAudio() || passthroughAudio()) {
             mAudioSink->pause();
             mAudioSink->flush();
             if (!mPaused) {
@@ -1439,7 +1442,7 @@ bool NuPlayer::Renderer::dropBufferIfStale(
 }
 
 void NuPlayer::Renderer::onAudioSinkChanged() {
-    if (offloadingAudio()) {
+    if (offloadingAudio() || passthroughAudio()) {
         return;
     }
     CHECK(!mDrainAudioQueuePending);
@@ -1457,6 +1460,15 @@ void NuPlayer::Renderer::onAudioSinkChanged() {
 void NuPlayer::Renderer::onDisableOffloadAudio() {
     Mutex::Autolock autoLock(mLock);
     mFlags &= ~FLAG_OFFLOAD_AUDIO;
+    ++mAudioDrainGeneration;
+    if (mAudioRenderingStartGeneration != -1) {
+        prepareForMediaRenderingStart_l();
+    }
+}
+
+void NuPlayer::Renderer::onDisablePassThroughAudio() {
+    Mutex::Autolock autoLock(mLock);
+    mFlags &= ~FLAG_PASSTHROUGH_AUDIO;
     ++mAudioDrainGeneration;
     if (mAudioRenderingStartGeneration != -1) {
         prepareForMediaRenderingStart_l();
@@ -1663,8 +1675,8 @@ status_t NuPlayer::Renderer::onOpenAudioSink(
         bool offloadOnly,
         bool hasVideo,
         uint32_t flags) {
-    ALOGV("openAudioSink: offloadOnly(%d) offloadingAudio(%d)",
-            offloadOnly, offloadingAudio());
+    ALOGV("openAudioSink: offloadOnly(%d) offloadingAudio(%d) passthroughAudio(%d)",
+            offloadOnly, offloadingAudio(),passthroughAudio());
     bool audioSinkChanged = false;
 
     int32_t numChannels;
@@ -1723,6 +1735,7 @@ status_t NuPlayer::Renderer::onOpenAudioSink(
                 return OK;
             }
             mCurrentPcmInfo = AUDIO_PCMINFO_INITIALIZER;
+            mCurrentPassthroughInfo = AUDIO_PCMINFO_INITIALIZER;
 
             ALOGV("openAudioSink: try to open AudioSink in offload mode");
             uint32_t offloadFlags = flags;
@@ -1771,7 +1784,78 @@ status_t NuPlayer::Renderer::onOpenAudioSink(
             }
         }
     }
-    if (!offloadOnly && !offloadingAudio()) {
+    if (passthroughAudio()) {
+        audio_format_t audioFormat = AUDIO_FORMAT_PCM_16_BIT;
+        AString mime;
+        CHECK(format->findString("mime", &mime));
+        status_t err = mapMimeToAudioFormat(audioFormat, mime.c_str());
+
+        if (err != OK) {
+            ALOGE("Couldn't map mime \"%s\" to a valid "
+                    "audio_format", mime.c_str());
+            onDisablePassThroughAudio();
+        } else {
+            ALOGV("Mime \"%s\" mapped to audio_format 0x%x",
+                    mime.c_str(), audioFormat);
+
+            int avgBitRate = -1;
+            format->findInt32("bit-rate", &avgBitRate);
+            uint32_t passthroughflags = flags;
+            passthroughflags |= AUDIO_OUTPUT_FLAG_DIRECT;
+            passthroughflags |= AUDIO_OUTPUT_FLAG_IEC958_NONAUDIO;
+            passthroughflags &= ~AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD;
+            const PcmInfo passthroughinfo = {
+                    (audio_channel_mask_t)channelMask,
+                    (audio_output_flags_t)passthroughflags,
+                    audioFormat,
+                    numChannels,
+                    sampleRate
+            };
+            if (memcmp(&mCurrentPassthroughInfo, &passthroughinfo, sizeof(passthroughinfo)) == 0) {
+                ALOGV("openAudioSink: no change in passthrough mode");
+                // no change from previous configuration, everything ok.
+                return OK;
+            }
+            ALOGV("openAudioSink: try to open AudioSink in passthrough mode");
+            mCurrentPcmInfo = AUDIO_PCMINFO_INITIALIZER;
+            mCurrentOffloadInfo = AUDIO_INFO_INITIALIZER;
+            audioSinkChanged = true;
+            mAudioSink->close();
+            err = mAudioSink->open(
+                    sampleRate,
+                    numChannels,
+                    (audio_channel_mask_t)channelMask,
+                    audioFormat,
+                    0 /* bufferCount - unused */,
+                    &NuPlayer::Renderer::AudioSinkCallback,
+                    this,
+                    (audio_output_flags_t)passthroughflags);
+
+            if (err == OK) {
+                err = mAudioSink->setPlaybackRate(mPlaybackSettings);
+            }
+
+            if (err == OK) {
+                mCurrentPassthroughInfo = passthroughinfo;
+                if (!mPaused) { // for preview mode, don't start if paused
+                    err = mAudioSink->start();
+                }
+                ALOGV_IF(err == OK, "openAudioSink: passthrough succeeded");
+            }
+            if (err != OK) {
+                // Clean up, fall back to non offload mode.
+                mAudioSink->close();
+                onDisablePassThroughAudio();
+                mCurrentPassthroughInfo = AUDIO_PCMINFO_INITIALIZER;
+                ALOGV("openAudioSink: passthrough failed");
+                return err;
+            } else {
+                mUseAudioCallback = true;  // passthrough mode transfers data through callback
+                ++mAudioDrainGeneration;  // discard pending kWhatDrainAudioQueue message.
+            }
+        }
+    }
+    if (!offloadOnly && !offloadingAudio() && !passthroughAudio()) {
         ALOGV("openAudioSink: open AudioSink in NON-offload mode");
         uint32_t pcmFlags = flags;
         pcmFlags &= ~AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD;
@@ -1792,6 +1876,7 @@ status_t NuPlayer::Renderer::onOpenAudioSink(
         audioSinkChanged = true;
         mAudioSink->close();
         mCurrentOffloadInfo = AUDIO_INFO_INITIALIZER;
+        mCurrentPassthroughInfo = AUDIO_PCMINFO_INITIALIZER;
         // Note: It is possible to set up the callback, but not use it to send audio data.
         // This requires a fix in AudioSink to explicitly specify the transfer mode.
         mUseAudioCallback = getUseAudioCallbackSetting();
@@ -1846,6 +1931,7 @@ status_t NuPlayer::Renderer::onOpenAudioSink(
 void NuPlayer::Renderer::onCloseAudioSink() {
     mAudioSink->close();
     mCurrentOffloadInfo = AUDIO_INFO_INITIALIZER;
+    mCurrentPassthroughInfo = AUDIO_PCMINFO_INITIALIZER;
     mCurrentPcmInfo = AUDIO_PCMINFO_INITIALIZER;
 }
 

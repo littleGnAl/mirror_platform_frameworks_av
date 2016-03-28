@@ -146,6 +146,7 @@ private:
     sp<MediaPlayerBase::AudioSink> mAudioSink;
     sp<DecoderBase> mVideoDecoder;
     bool mOffloadAudio;
+    bool mPassthroughAudio;
     sp<DecoderBase> mAudioDecoder;
     sp<CCDecoder> mCCDecoder;
     sp<Renderer> mRenderer;

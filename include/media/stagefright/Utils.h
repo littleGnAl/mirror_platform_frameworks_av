@@ -63,6 +63,8 @@ status_t sendMetaDataToHal(sp<MediaPlayerBase::AudioSink>& sink, const sp<MetaDa
 bool canOffloadStream(const sp<MetaData>& meta, bool hasVideo,
                       bool isStreaming, audio_stream_type_t streamType);
 
+bool canPassthroughStream(const sp<MetaData>& meta);
+
 AString uriDebugString(const AString &uri, bool incognito = false);
 
 struct HLSTime {

@@ -34,6 +34,7 @@ struct NuPlayer::Renderer : public AHandler {
     enum Flags {
         FLAG_REAL_TIME = 1,
         FLAG_OFFLOAD_AUDIO = 2,
+        FLAG_PASSTHROUGH_AUDIO = 4,
     };
     Renderer(const sp<MediaPlayerBase::AudioSink> &sink,
              const sp<AMessage> &notify,
@@ -192,6 +193,7 @@ private:
         int32_t mSampleRate;
     };
     PcmInfo mCurrentPcmInfo;
+    PcmInfo mCurrentPassthroughInfo;
     static const PcmInfo AUDIO_PCMINFO_INITIALIZER;
 
     int32_t mTotalBuffersQueued;
@@ -234,6 +236,7 @@ private:
     void onFlush(const sp<AMessage> &msg);
     void onAudioSinkChanged();
     void onDisableOffloadAudio();
+    void onDisablePassThroughAudio();
     void onEnableOffloadAudio();
     status_t onConfigPlayback(const AudioPlaybackRate &rate /* sanitized */);
     status_t onGetPlaybackSettings(AudioPlaybackRate *rate /* nonnull */);
@@ -266,6 +269,7 @@ private:
     void syncQueuesDone_l();
 
     bool offloadingAudio() const { return (mFlags & FLAG_OFFLOAD_AUDIO) != 0; }
+    bool passthroughAudio() const { return (mFlags & FLAG_PASSTHROUGH_AUDIO) != 0; }
 
     void startAudioOffloadPauseTimeout();
     void cancelAudioOffloadPauseTimeout();

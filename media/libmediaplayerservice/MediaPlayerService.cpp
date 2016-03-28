@@ -1546,7 +1546,8 @@ status_t MediaPlayerService::AudioOutput::open(
 
     // compute frame count for the AudioTrack internal buffer
     size_t frameCount;
-    if ((flags & AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD) != 0) {
+    if ((flags & AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD) != 0
+         || (flags & AUDIO_OUTPUT_FLAG_IEC958_NONAUDIO) != 0) {
         frameCount = 0; // AudioTrack will get frame count from AudioFlinger
     } else {
         // try to estimate the buffer processing fetch size from AudioFlinger.
