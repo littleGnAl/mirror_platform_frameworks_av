@@ -216,6 +216,8 @@ void  SoftAVC::initEncParams() {
     mEntropyMode = DEFAULT_ENTROPY_MODE;
     mBframes = DEFAULT_B_FRAMES;
 
+    memset(&mVuiParams, 0, sizeof(ih264e_vui_ip_t));
+
     gettimeofday(&mTimeStart, NULL);
     gettimeofday(&mTimeEnd, NULL);
 
@@ -610,6 +612,26 @@ void SoftAVC::logVersion() {
     return;
 }
 
+
+OMX_ERRORTYPE SoftAVC::setVuiParams() {
+    ih264e_vui_op_t s_vui_params_op;
+    IV_STATUS_T status;
+
+    mVuiParams.e_cmd = IVE_CMD_VIDEO_CTL;
+    mVuiParams.e_sub_cmd = IVE_CMD_CTL_SET_VUI_PARAMS;
+
+    mVuiParams.u4_size = sizeof(ih264e_vui_ip_t);
+    s_vui_params_op.u4_size = sizeof(ih264e_vui_op_t);
+
+    status = ive_api_function(mCodecCtx, &mVuiParams, &s_ipe_params_op);
+    if (status != IV_SUCCESS) {
+        ALOGE("Unable to set vui params = 0x%x\n",
+                s_ipe_params_op.u4_error_code);
+        return OMX_ErrorUndefined;
+    }
+    return OMX_ErrorNone;
+}
+
 OMX_ERRORTYPE SoftAVC::initEncoder() {
     IV_STATUS_T status;
     WORD32 level;
@@ -866,6 +888,9 @@ OMX_ERRORTYPE SoftAVC::initEncoder() {
 
     /* Video control Set Profile params */
     setProfileParams();
+
+    /* Video usability information params */
+    setVuiParams();
 
     /* Video control Set in Encode header mode */
     setEncMode(IVE_ENC_MODE_HEADER);
