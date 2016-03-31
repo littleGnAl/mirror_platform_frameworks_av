@@ -202,6 +202,7 @@ private:
     UWORD32 mDisableDeblkLevel;
     IVE_AIR_MODE_T mAIRMode;
     UWORD32 mAIRRefreshPeriod;
+    ih264e_vui_ip_t mVuiParams;
 
     void initEncParams();
     OMX_ERRORTYPE initEncoder();
@@ -240,6 +241,7 @@ private:
     OMX_ERRORTYPE setProfileParams();
     OMX_ERRORTYPE setDeblockParams();
     OMX_ERRORTYPE setVbvParams();
+    OMX_ERRORTYPE setVuiParams();
     void logVersion();
     OMX_ERRORTYPE setEncodeArgs(
         ive_video_encode_ip_t *ps_encode_ip,
