@@ -426,6 +426,12 @@ void BlockIterator::seek(
             if (pTrack && pTrack->GetType() == 1 && pCP->Find(pTrack)) { // VIDEO_TRACK
                 track.mCuePoints.push_back(pCP);
             }
+            if (pTrack && pTrack->GetType() == 2 &&
+               pTracks->GetTracksCount() == 1 && pCP->Find(pTrack)) { // Handle Audio Only Seek
+                MatroskaExtractor::TrackInfo& track = mExtractor->mTracks.editItemAt(index);
+                track.mCuePoints.push_back(pCP);
+            }
+
         }
 
         if (pCP->GetTime(pSegment) >= seekTimeNs) {
@@ -437,6 +443,9 @@ void BlockIterator::seek(
     const mkvparser::CuePoint::TrackPosition *pTP = NULL;
     const mkvparser::Track *thisTrack = pTracks->GetTrackByNumber(mTrackNum);
     if (thisTrack->GetType() == 1) { // video
+        MatroskaExtractor::TrackInfo& track = mExtractor->mTracks.editItemAt(mIndex);
+        pTP = track.find(seekTimeNs);
+    } else if (thisTrack->GetType() == 2 && pTracks->GetTracksCount() == 1) { // handle audio only seek
         MatroskaExtractor::TrackInfo& track = mExtractor->mTracks.editItemAt(mIndex);
         pTP = track.find(seekTimeNs);
     } else {
