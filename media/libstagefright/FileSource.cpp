@@ -132,6 +132,8 @@ status_t FileSource::getSize(off64_t *size) {
 }
 
 sp<DecryptHandle> FileSource::DrmInitialization(const char *mime) {
+    Mutex::Autolock autoLock(mLock);
+
     if (mDrmManagerClient == NULL) {
         mDrmManagerClient = new DrmManagerClient();
     }
