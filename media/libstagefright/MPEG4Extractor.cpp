@@ -4228,6 +4228,10 @@ status_t MPEG4Source::read(
                     continue;
                 }
 
+                if (nalLength < 0) {
+                    return ERROR_MALFORMED;
+                }
+
                 CHECK(dstOffset + 4 <= mBuffer->size());
 
                 dstData[dstOffset++] = 0;
@@ -4543,6 +4547,10 @@ status_t MPEG4Source::fragmentedRead(
 
                 if (nalLength == 0) {
                     continue;
+                }
+
+                if ((nalLength < 0) {
+                    return ERROR_MALFORMED;
                 }
 
                 if (dstOffset > SIZE_MAX - 4 ||
