@@ -238,7 +238,7 @@ private:
 
     void resetDataSource();
 
-    status_t initFromDataSource();
+    status_t initFromDataSource(uint32_t *extractorFlags);
     void checkDrmStatus(const sp<DataSource>& dataSource);
     int64_t getLastReadPosition();
     void setDrmPlaybackStatusIfNeeded(int playbackStatus, int64_t position);
