@@ -97,9 +97,16 @@ public:
     }
 
     virtual uint32_t flags() const {
-        ALOGV("flags NOT IMPLEMENTED");
-        return 0;
-    }
+        ALOGV("flags");
+        Parcel data, reply;
+        data.writeInterfaceToken(BpMediaExtractor::getInterfaceDescriptor());
+        status_t ret = remote()->transact(FLAGS, data, &reply);
+        uint32_t flags = 0;
+        if (ret == NO_ERROR) {
+            flags = reply.readUint32();
+        }
+        return flags;
+     }
 
     virtual void setDrmFlag(bool flag __unused) {
         ALOGV("setDrmFlag NOT IMPLEMENTED");
@@ -177,6 +184,13 @@ status_t BnMediaExtractor::onTransact(
                 return NO_ERROR;
             }
             return UNKNOWN_ERROR;
+        }
+        case FLAGS: {
+            ALOGV("flags");
+            CHECK_INTERFACE(IMediaExtractor, data, reply);
+            uint32_t flag = this->flags();
+            reply->writeUint32(flag);
+            return NO_ERROR;
         }
         default:
             return BBinder::onTransact(code, data, reply, flags);

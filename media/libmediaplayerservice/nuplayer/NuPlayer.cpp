@@ -1203,6 +1203,18 @@ void NuPlayer::onMessageReceived(const sp<AMessage> &msg) {
             ALOGV("kWhatSeek seekTimeUs=%lld us, needNotify=%d",
                     (long long)seekTimeUs, needNotify);
 
+            // Source's capability is sent to APP in metadata. APP can use it to filter user's operation.
+            // Just have a loose check here.
+            if(!(mSourceFlags & (Source::FLAG_CAN_SEEK
+                                | Source::FLAG_CAN_SEEK_FORWARD
+                                | Source::FLAG_CAN_SEEK_BACKWARD) )
+                 && (seekTimeUs > 0)){
+                if (needNotify)
+                    notifyDriverSeekComplete();
+                ALOGW("Unseekable stream!");
+                break;
+            }
+
             if (!mStarted) {
                 // Seek before the player is started. In order to preview video,
                 // need to start the player and pause it. This branch is called
@@ -2200,7 +2212,9 @@ void NuPlayer::onSourceNotify(const sp<AMessage> &msg) {
 
             sp<NuPlayerDriver> driver = mDriver.promote();
             if (driver != NULL) {
-                if ((flags & NuPlayer::Source::FLAG_CAN_SEEK) == 0) {
+                if ((flags & (NuPlayer::Source::FLAG_CAN_SEEK
+                             | NuPlayer::Source::FLAG_CAN_SEEK_FORWARD
+                             | NuPlayer::Source::FLAG_CAN_SEEK_BACKWARD)) == 0) {
                     driver->notifyListener(
                             MEDIA_INFO, MEDIA_INFO_NOT_SEEKABLE, 0);
                 }

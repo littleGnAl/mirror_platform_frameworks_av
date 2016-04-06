@@ -139,7 +139,7 @@ sp<MetaData> NuPlayer::GenericSource::getFileFormatMeta() const {
     return mFileMeta;
 }
 
-status_t NuPlayer::GenericSource::initFromDataSource() {
+status_t NuPlayer::GenericSource::initFromDataSource(uint32_t *extractorFlags) {
     sp<IMediaExtractor> extractor;
     String8 mimeType;
     float confidence;
@@ -288,6 +288,9 @@ status_t NuPlayer::GenericSource::initFromDataSource() {
 
     mBitrate = totalBitrate;
 
+    if(extractorFlags)
+        *extractorFlags = extractor->flags();
+
     return OK;
 }
 
@@ -420,8 +423,10 @@ void NuPlayer::GenericSource::onPrepareAsync() {
     // in that case, so must check the flag now.
     mIsStreaming = (mIsWidevine || mCachedSource != NULL);
 
+    uint32_t extractorFlags = 0;
+
     // init extractor from data source
-    status_t err = initFromDataSource();
+    status_t err = initFromDataSource(&extractorFlags);
 
     if (err != OK) {
         ALOGE("Failed to init from data source!");
@@ -440,13 +445,21 @@ void NuPlayer::GenericSource::onPrepareAsync() {
         notifyVideoSizeChanged(msg);
     }
 
-    notifyFlagsChanged(
-            (mIsSecure ? FLAG_SECURE : 0)
-            | (mDecryptHandle != NULL ? FLAG_PROTECTED : 0)
-            | FLAG_CAN_PAUSE
-            | FLAG_CAN_SEEK_BACKWARD
-            | FLAG_CAN_SEEK_FORWARD
-            | FLAG_CAN_SEEK);
+    uint32_t flags =
+        (mIsSecure ? FLAG_SECURE : 0)
+        | (mDecryptHandle != NULL ? FLAG_PROTECTED : 0)
+        | FLAG_CAN_PAUSE ;
+
+    if(extractorFlags & MediaExtractor::CAN_SEEK)
+        flags |= FLAG_CAN_SEEK;
+    if(extractorFlags & MediaExtractor::CAN_SEEK_FORWARD)
+        flags |= FLAG_CAN_SEEK_FORWARD;
+    if(extractorFlags & MediaExtractor::CAN_SEEK_BACKWARD)
+        flags |= FLAG_CAN_SEEK_BACKWARD;
+
+    ALOGV("flags %x", flags);
+
+    notifyFlagsChanged(flags);
 
     if (mIsSecure) {
         // secure decoders must be instantiated before starting widevine source
