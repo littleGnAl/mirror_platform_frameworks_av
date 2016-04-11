@@ -123,6 +123,10 @@ void NuPlayer::RTSPSource::stop() {
 }
 
 void NuPlayer::RTSPSource::pause() {
+    if (mState != CONNECTED) {
+        return;
+    }
+
     int64_t mediaDurationUs = 0;
     getDuration(&mediaDurationUs);
     for (size_t index = 0; index < mTracks.size(); index++) {
@@ -140,6 +144,10 @@ void NuPlayer::RTSPSource::pause() {
 }
 
 void NuPlayer::RTSPSource::resume() {
+    if (mState != CONNECTED) {
+        return;
+    }
+
     if (mHandler != NULL) {
         mHandler->resume();
     }
