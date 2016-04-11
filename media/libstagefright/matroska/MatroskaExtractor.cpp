@@ -303,8 +303,27 @@ void BlockIterator::advance_l() {
 
                 mCluster = NULL;
                 break;
-            }
+            } else if (res == 4) { //skip the dummy elements in the cluster
+                ALOGV("Skipping rest of this cluster and moving to next!");
+                const mkvparser::Cluster *nextCluster;
+                res = mExtractor->mSegment->ParseNext(
+                        mCluster, nextCluster, pos, len);
+                if (res != 0) {
+                    // EOF or error
 
+                    mCluster = NULL;
+                    break;
+                }
+
+                CHECK_EQ(res, 0);
+                CHECK(nextCluster != NULL);
+                CHECK(!nextCluster->EOS());
+
+                mCluster = nextCluster;
+
+                res = mCluster->Parse(pos, len);
+                mBlockEntryIndex = 0;
+            }
             continue;
         } else if (res == 0) {
             // We're done with this cluster
