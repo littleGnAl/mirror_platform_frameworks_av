@@ -122,6 +122,7 @@ status_t MediaMuxer::start() {
     if (mState == INITIALIZED) {
         mState = STARTED;
         mFileMeta->setInt32(kKeyRealTimeRecording, false);
+        mFileMeta->setInt32(kKey64BitFileOffset, true);
         return mWriter->start(mFileMeta.get());
     } else {
         ALOGE("start() is called in invalid state %d", mState);
