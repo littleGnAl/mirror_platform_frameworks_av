@@ -1474,7 +1474,8 @@ status_t ATSParser::parseTS(ABitReader *br, SyncEvent *event) {
     }
 
     if (br->getBits(1)) {  // transport_error_indicator
-        // silently ignore.
+        // silently ignore, skip packet
+        br->skipBits(br->numBitsLeft());
         return OK;
     }
 
