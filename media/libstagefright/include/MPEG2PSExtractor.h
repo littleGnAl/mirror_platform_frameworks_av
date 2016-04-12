@@ -56,6 +56,7 @@ private:
     sp<ABuffer> mBuffer;
     KeyedVector<unsigned, sp<Track> > mTracks;
     bool mScanning;
+    bool mpeg1Stream;
 
     bool mProgramStreamMapValid;
     KeyedVector<unsigned, unsigned> mStreamTypeByESID;
@@ -66,6 +67,7 @@ private:
     ssize_t dequeuePack();
     ssize_t dequeueSystemHeader();
     ssize_t dequeuePES();
+    ssize_t dequeueMPEG1PES();
 
     DISALLOW_EVIL_CONSTRUCTORS(MPEG2PSExtractor);
 };
