@@ -544,6 +544,24 @@ void StagefrightMetadataRetriever::parseMetaData() {
         return;
     }
 
+    size_t numTracks = mExtractor->countTracks();
+
+    // Make sure we have file mime type and atleast one track with metadata
+    size_t trackIdx;
+    for (trackIdx = 0; trackIdx < numTracks; ++trackIdx) {
+        sp<MetaData> trackMeta = mExtractor->getTrackMetaData(trackIdx);
+        if (trackMeta != NULL) {
+            break;
+        }
+    }
+
+    const char *fileMIME;
+    if (numTracks == 0 || trackIdx == numTracks ||
+            !meta->findCString(kKeyMIMEType, &fileMIME)) {
+        ALOGE("Corrupt file! cannot extract track metadata");
+        return;
+    }
+
     struct Map {
         int from;
         int to;
@@ -608,8 +626,6 @@ void StagefrightMetadataRetriever::parseMetaData() {
         mAlbumArt = MediaAlbumArt::fromData(dataSize, data);
     }
 
-    size_t numTracks = mExtractor->countTracks();
-
     char tmp[32];
     sprintf(tmp, "%zu", numTracks);
 
@@ -633,6 +649,8 @@ void StagefrightMetadataRetriever::parseMetaData() {
     String8 timedTextLang;
     for (size_t i = 0; i < numTracks; ++i) {
         sp<MetaData> trackMeta = mExtractor->getTrackMetaData(i);
+        if (trackMeta == NULL)
+            continue;
 
         int64_t durationUs;
         if (trackMeta->findInt64(kKeyDuration, &durationUs)) {
