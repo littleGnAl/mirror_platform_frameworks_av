@@ -493,6 +493,18 @@ VideoFrame *StagefrightMetadataRetriever::getFrameAtTime(
         ALOGV("%s failed to extract thumbnail, trying next decoder.", componentName.c_str());
     }
 
+    // try again with timestamp as zero
+    for (size_t i = 0; i < matchingCodecs.size(); ++i) {
+        const AString &componentName = matchingCodecs[i];
+        VideoFrame *frame =
+            extractVideoFrame(componentName, trackMeta, source, 0, option);
+
+        if (frame != NULL) {
+            return frame;
+        }
+        ALOGV("%s failed to extract thumbnail, trying next decoder with ts zero", componentName.c_str());
+    }
+
     return NULL;
 }
 
