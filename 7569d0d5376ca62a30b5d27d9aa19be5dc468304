@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0bac0e06_3b142365",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4231,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2016-04-13T20:58:52Z",
+      "side": 1,
+      "message": "nalLength is a size_t, which is unsigned and will therefore never be \u003c0",
+      "range": {
+        "startLine": 4231,
+        "startChar": 20,
+        "endLine": 4231,
+        "endChar": 29
+      },
+      "revId": "7569d0d5376ca62a30b5d27d9aa19be5dc468304",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
