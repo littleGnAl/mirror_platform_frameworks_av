@@ -543,6 +543,12 @@ void SoftMPEG2::onQueueFilled(OMX_U32 portIndex) {
     List<BufferInfo *> &inQueue = getPortQueue(kInputPortIndex);
     List<BufferInfo *> &outQueue = getPortQueue(kOutputPortIndex);
 
+    if (outputBufferWidth() != mStride) {
+        /* Set the run-time (dynamic) parameters */
+        mStride = outputBufferWidth();
+        setParams(mStride);
+    }
+
     /* If input EOS is seen and decoder is not in flush mode,
      * set the decoder in flush mode.
      * There can be a case where EOS is sent along with last picture data
@@ -677,6 +683,8 @@ void SoftMPEG2::onQueueFilled(OMX_U32 portIndex) {
                 mChangingResolution = false;
                 resetDecoder();
                 resetPlugin();
+                mStride = outputBufferWidth();
+                setParams(mStride);
                 continue;
             }
 
