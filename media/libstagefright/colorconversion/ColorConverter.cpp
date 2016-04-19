@@ -47,6 +47,8 @@ bool ColorConverter::isValid() const {
         case OMX_QCOM_COLOR_FormatYVU420SemiPlanar:
         case OMX_COLOR_FormatYUV420SemiPlanar:
         case OMX_TI_COLOR_FormatYUV420PackedSemiPlanar:
+        case OMX_COLOR_FormatYUV422Planar:
+        case OMX_COLOR_FormatYUV422SemiPlanar:
             return true;
 
         default:
@@ -122,6 +124,14 @@ status_t ColorConverter::convert(
             err = convertTIYUV420PackedSemiPlanar(src, dst);
             break;
 
+        case OMX_COLOR_FormatYUV422Planar:
+            err = convertYUV422Planar(src, dst);
+            break;
+
+        case OMX_COLOR_FormatYUV422SemiPlanar:
+            err = convertYUV422SemiPlanar(src, dst);
+            break;
+
         default:
         {
             CHECK(!"Should not be here. Unknown color conversion.");
@@ -130,6 +140,184 @@ status_t ColorConverter::convert(
     }
 
     return err;
+}
+
+status_t ColorConverter::convertYUV422Planar(
+        const BitmapParams &src, const BitmapParams &dst) {
+
+    uint8_t *kAdjustedClip = initClip();
+
+    if (!((src.mCropLeft & 1) == 0
+        && src.cropWidth() == dst.cropWidth()
+        && src.cropHeight() == dst.cropHeight())) {
+        return ERROR_UNSUPPORTED;
+    }
+
+   uint32_t *dst_ptr = (uint32_t *)dst.mBits
+        + dst.mCropTop * dst.mWidth + dst.mCropLeft;
+
+    const uint8_t *src_y =
+        (const uint8_t *)src.mBits + src.mCropTop * src.mWidth + src.mCropLeft;
+
+    const uint8_t *src_u =
+        (const uint8_t *)src.mBits + src.mWidth * src.mHeight
+        + src.mCropTop * (src.mWidth / 2) + src.mCropLeft / 2;
+
+    const uint8_t *src_v =
+        src_u + (src.mWidth / 2) * src.mHeight;
+
+    for (size_t y = 0; y < src.cropHeight(); ++y) {
+        for (size_t x = 0; x < src.cropWidth(); x += 2) {
+            // B = 1.164 * (Y - 16) + 2.018 * (U - 128)
+            // G = 1.164 * (Y - 16) - 0.813 * (V - 128) - 0.391 * (U - 128)
+            // R = 1.164 * (Y - 16) + 1.596 * (V - 128)
+
+            // B = 298/256 * (Y - 16) + 517/256 * (U - 128)
+            // G = .................. - 208/256 * (V - 128) - 100/256 * (U - 128)
+            // R = .................. + 409/256 * (V - 128)
+
+            // min_B = (298 * (- 16) + 517 * (- 128)) / 256 = -277
+            // min_G = (298 * (- 16) - 208 * (255 - 128) - 100 * (255 - 128)) / 256 = -172
+            // min_R = (298 * (- 16) + 409 * (- 128)) / 256 = -223
+
+            // max_B = (298 * (255 - 16) + 517 * (255 - 128)) / 256 = 534
+            // max_G = (298 * (255 - 16) - 208 * (- 128) - 100 * (- 128)) / 256 = 432
+            // max_R = (298 * (255 - 16) + 409 * (255 - 128)) / 256 = 481
+
+            // clip range -278 .. 535
+
+            signed y1 = (signed)src_y[x] - 16;
+            signed y2 = (signed)src_y[x + 1] - 16;
+
+            signed u = (signed)src_u[x / 2] - 128;
+            signed v = (signed)src_v[x / 2] - 128;
+
+            signed u_b = u * 517;
+            signed u_g = -u * 100;
+            signed v_g = -v * 208;
+            signed v_r = v * 409;
+
+            signed tmp1 = y1 * 298;
+            signed b1 = (tmp1 + u_b) / 256;
+            signed g1 = (tmp1 + v_g + u_g) / 256;
+            signed r1 = (tmp1 + v_r) / 256;
+
+            signed tmp2 = y2 * 298;
+            signed b2 = (tmp2 + u_b) / 256;
+            signed g2 = (tmp2 + v_g + u_g) / 256;
+            signed r2 = (tmp2 + v_r) / 256;
+
+
+            uint32_t rgb1 =
+                ((kAdjustedClip[r1] >> 3) << 11)
+                | ((kAdjustedClip[g1] >> 2) << 5)
+                | (kAdjustedClip[b1] >> 3);
+
+            uint32_t rgb2 =
+                ((kAdjustedClip[r2] >> 3) << 11)
+                | ((kAdjustedClip[g2] >> 2) << 5)
+                | (kAdjustedClip[b2] >> 3);
+
+            dst_ptr[x / 2] = (rgb2 << 16) | rgb1;
+        }
+
+        src_y += src.mWidth;
+        src_u += src.mWidth / 2;
+        src_v += src.mWidth / 2;
+
+        dst_ptr += dst.mWidth / 2;
+    }
+
+    return OK;
+}
+
+status_t ColorConverter::convertYUV422SemiPlanar(
+        const BitmapParams &src, const BitmapParams &dst) {
+
+    uint8_t *kAdjustedClip = initClip();
+
+    if (!((src.mCropLeft & 1) == 0
+        && src.cropWidth() == dst.cropWidth()
+        && src.cropHeight() == dst.cropHeight())) {
+        return ERROR_UNSUPPORTED;
+    }
+
+    uint16_t *dst_ptr = (uint16_t *)dst.mBits
+        + dst.mCropTop * dst.mWidth + dst.mCropLeft;
+
+    const uint8_t *src_y =
+        (const uint8_t *)src.mBits + src.mCropTop * src.mWidth + src.mCropLeft;
+
+    const uint8_t *src_v =
+        (const uint8_t *)src_y + src.mWidth * src.mHeight
+        + src.mCropTop * src.mWidth + src.mCropLeft;
+
+    for (size_t y = 0; y < src.cropHeight(); ++y) {
+        for (size_t x = 0; x < src.cropWidth(); x += 2) {
+            // B = 1.164 * (Y - 16) + 2.018 * (U - 128)
+            // G = 1.164 * (Y - 16) - 0.813 * (V - 128) - 0.391 * (U - 128)
+            // R = 1.164 * (Y - 16) + 1.596 * (V - 128)
+
+            // B = 298/256 * (Y - 16) + 517/256 * (U - 128)
+            // G = .................. - 208/256 * (V - 128) - 100/256 * (U - 128)
+            // R = .................. + 409/256 * (V - 128)
+
+            // min_B = (298 * (- 16) + 517 * (- 128)) / 256 = -277
+            // min_G = (298 * (- 16) - 208 * (255 - 128) - 100 * (255 - 128)) / 256 = -172
+            // min_R = (298 * (- 16) + 409 * (- 128)) / 256 = -223
+
+            // max_B = (298 * (255 - 16) + 517 * (255 - 128)) / 256 = 534
+            // max_G = (298 * (255 - 16) - 208 * (- 128) - 100 * (- 128)) / 256 = 432
+            // max_R = (298 * (255 - 16) + 409 * (255 - 128)) / 256 = 481
+
+            // clip range -278 .. 535
+
+            signed y1 = (signed)src_y[x] - 16;
+            signed y2 = (signed)src_y[x + 1] - 16;
+
+            signed v = (signed)src_v[x & ~1] - 128;
+            signed u = (signed)src_v[(x & ~1) + 1] - 128;
+
+            signed u_b = u * 517;
+            signed u_g = -u * 100;
+            signed v_g = -v * 208;
+            signed v_r = v * 409;
+
+            signed tmp1 = y1 * 298;
+            signed b1 = (tmp1 + u_b) / 256;
+            signed g1 = (tmp1 + v_g + u_g) / 256;
+            signed r1 = (tmp1 + v_r) / 256;
+
+            signed tmp2 = y2 * 298;
+            signed b2 = (tmp2 + u_b) / 256;
+            signed g2 = (tmp2 + v_g + u_g) / 256;
+            signed r2 = (tmp2 + v_r) / 256;
+
+
+            uint32_t rgb1 =
+                ((kAdjustedClip[r1] >> 3) << 11)
+                | ((kAdjustedClip[g1] >> 2) << 5)
+                | (kAdjustedClip[b1] >> 3);
+
+            uint32_t rgb2 =
+                ((kAdjustedClip[r2] >> 3) << 11)
+                | ((kAdjustedClip[g2] >> 2) << 5)
+                | (kAdjustedClip[b2] >> 3);
+
+             if (x + 1 < src.cropWidth()) {
+                *(uint32_t *)(&dst_ptr[x]) = (rgb2 << 16) | rgb1;
+            } else {
+                dst_ptr[x] = rgb1;
+            }
+        }
+
+        src_y += src.mWidth;
+        src_v += src.mWidth;
+
+        dst_ptr += dst.mWidth;
+    }
+
+    return OK;
 }
 
 status_t ColorConverter::convertCbYCrY(
