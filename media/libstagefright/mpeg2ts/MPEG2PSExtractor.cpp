@@ -61,6 +61,7 @@ private:
 
     unsigned mStreamID;
     unsigned mStreamType;
+    int64_t mTimeUs;
     ElementaryStreamQueue *mQueue;
     sp<AnotherPacketSource> mSource;
 
@@ -592,6 +593,7 @@ MPEG2PSExtractor::Track::Track(
     : mExtractor(extractor),
       mStreamID(stream_id),
       mStreamType(stream_type),
+      mTimeUs(0),
       mQueue(NULL) {
     bool supported = true;
     ElementaryStreamQueue::Mode mode;
@@ -688,14 +690,11 @@ status_t MPEG2PSExtractor::Track::appendPESData(
         return OK;
     }
 
-    int64_t timeUs;
     if (PTS_DTS_flags == 2 || PTS_DTS_flags == 3) {
-        timeUs = (PTS * 100) / 9;
-    } else {
-        timeUs = 0;
+        mTimeUs = (PTS * 100) / 9;
     }
 
-    status_t err = mQueue->appendData(data, size, timeUs);
+    status_t err = mQueue->appendData(data, size, mTimeUs);
 
     if (err != OK) {
         return err;
