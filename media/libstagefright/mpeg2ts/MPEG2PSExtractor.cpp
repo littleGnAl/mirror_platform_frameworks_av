@@ -197,8 +197,18 @@ status_t MPEG2PSExtractor::dequeueChunk() {
         return -EAGAIN;
     }
 
-    if (memcmp("\x00\x00\x01", mBuffer->data(), 3)) {
-        return ERROR_MALFORMED;
+    while(memcmp("\x00\x00\x01", mBuffer->data(), 3)) {
+        if(memcmp("\x00", mBuffer->data(), 1)) { // padding bytes are all zeros
+            // not padding byte; go to next chunk
+            mBuffer->setRange(0, 0);
+            return -EAGAIN;
+        } else {
+            // skip padding byte
+            mBuffer->setRange(mBuffer->offset() + 1, mBuffer->size() - 1);
+            if (mBuffer->size() < 4) {
+                return -EAGAIN;
+            }
+        }
     }
 
     unsigned chunkType = mBuffer->data()[3];
