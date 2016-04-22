@@ -1667,6 +1667,7 @@ void LiveSession::onChangeConfiguration2(const sp<AMessage> &msg) {
             // authoritative (and possibly same) format once content from the new
             // position is dequeued.
             packetSource->setFormat(format);
+            packetSource->queueDiscontinuity(ATSParser::DISCONTINUITY_FORMAT_ONLY, NULL, true);
         }
 
         for (size_t i = 0; i < kMaxStreams; ++i) {
