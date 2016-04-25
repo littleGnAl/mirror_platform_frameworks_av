@@ -62,9 +62,15 @@ private:
     unsigned mStreamID;
     unsigned mStreamType;
     int64_t mTimeUs;
+    int64_t mTrackFirstPTS;
+    int64_t mDuration;
+    bool mSeekable;
+    bool mTrackFirstPTSAvailable;
     ElementaryStreamQueue *mQueue;
     sp<AnotherPacketSource> mSource;
 
+    status_t flush();
+    void setDuration(int64_t dur);
     status_t appendPESData(
             unsigned PTS_DTS_flags,
             uint64_t PTS, uint64_t DTS,
@@ -100,7 +106,12 @@ MPEG2PSExtractor::MPEG2PSExtractor(const sp<DataSource> &source)
       mOffset(0),
       mFinalResult(OK),
       mBuffer(new ABuffer(0)),
+      mFirstPTS(0),
+      mLastPTS(0),
+      mZeroPTS(false),
+      mSeeking(false),
       mScanning(true),
+      mReverseScan(false),
       mpeg1Stream(false),
       mProgramStreamMapValid(false) {
     for (size_t i = 0; i < 500; ++i) {
@@ -115,7 +126,7 @@ MPEG2PSExtractor::MPEG2PSExtractor(const sp<DataSource> &source)
             mTracks.removeItemsAt(i);
         }
     }
-
+    getDuration();
     mScanning = false;
 }
 
@@ -150,8 +161,24 @@ sp<MetaData> MPEG2PSExtractor::getMetaData() {
     return meta;
 }
 
+void MPEG2PSExtractor::seekTo(int64_t seekTimeUs)
+{
+    Mutex::Autolock autoLock(mLock);
+    off64_t offset =(filesize / (1.0 * mDuration)) * seekTimeUs;
+    ALOGV("Seek to  %" PRIu64 "and seekoffset %" PRIu64, seekTimeUs,offset);
+    offset -= offset % 2048;
+    ALOGV("offset after boundry correction %" PRIu64, offset);
+    for(size_t i=0;i<mTracks.size();i++)
+    {
+        mTracks.editValueAt(i)->flush();
+    }
+
+    mOffset = offset;
+    mSeeking = true;
+}
+
 uint32_t MPEG2PSExtractor::flags() const {
-    return CAN_PAUSE;
+    return (CAN_PAUSE | CAN_SEEK_FORWARD | CAN_SEEK_BACKWARD | CAN_SEEK);
 }
 
 status_t MPEG2PSExtractor::feedMore() {
@@ -199,8 +226,30 @@ status_t MPEG2PSExtractor::dequeueChunk() {
         return -EAGAIN;
     }
 
+    ssize_t offset = 0;
+    uint8_t *data = mBuffer->data();
+    ssize_t size = mBuffer->size();
+
+    if (mSeeking == true) {
+        while(offset + 4 < size) {
+            if(!memcmp("\x00\x00\x01\xba", &data[offset], 4)) {
+                mBuffer->setRange(offset, size-offset);
+                mSeeking = false;
+                break;
+            } else {
+                ++offset;
+            }
+        }
+
+        if (mSeeking == true) {
+            mBuffer->setRange(0, 0);
+            return -EAGAIN;
+        }
+    }
+
     if (memcmp("\x00\x00\x01", mBuffer->data(), 3)) {
-        return ERROR_MALFORMED;
+        mBuffer->setRange(0, 0);
+        return -EAGAIN;
     }
 
     unsigned chunkType = mBuffer->data()[3];
@@ -367,6 +416,15 @@ ssize_t MPEG2PSExtractor::dequeueMPEG1PES() {
 
             ALOGV("PTS = %" PRIu64, PTS);
 
+            if (mScanning)
+            {
+                if (PTS > 0 && mFirstPTS == 0 && !mZeroPTS)
+                    mFirstPTS = PTS;
+
+                if (PTS > 0 && mLastPTS == 0)
+                    mLastPTS = PTS;
+             }
+
             if (PTS_DTS_flags == 3) {
                 CHECK_EQ(br.getBits(4), 1u);
                 DTS = ((uint64_t)br.getBits(3)) << 30;
@@ -419,7 +477,7 @@ ssize_t MPEG2PSExtractor::dequeueMPEG1PES() {
 
         status_t err = OK;
 
-        if (index >= 0) {
+        if (index >= 0 && !mReverseScan) {
             err =
                 mTracks.editValueAt(index)->appendPESData(
                     PTS_DTS_flags, PTS, DTS, br.data(), dataLength);
@@ -609,6 +667,14 @@ ssize_t MPEG2PSExtractor::dequeuePES() {
             }
 
             ALOGV("PTS = %" PRIu64, PTS);
+            if (mScanning)
+            {
+                if (PTS > 0 && mFirstPTS == 0 && !mZeroPTS)
+                    mFirstPTS = PTS;
+
+                if (PTS > 0 && mLastPTS == 0)
+                    mLastPTS = PTS;
+             }
             // ALOGI("PTS = %.2f secs", PTS / 90000.0f);
 
             optional_bytes_remaining -= 5;
@@ -740,7 +806,7 @@ ssize_t MPEG2PSExtractor::dequeuePES() {
 
         status_t err = OK;
 
-        if (index >= 0) {
+        if (index >= 0 && !mReverseScan) {
             err =
                 mTracks.editValueAt(index)->appendPESData(
                     PTS_DTS_flags, PTS, DTS, br.data(), dataLength);
@@ -766,6 +832,74 @@ ssize_t MPEG2PSExtractor::dequeuePES() {
     return n;
 }
 
+status_t MPEG2PSExtractor::scanpacketHeader() {
+    for(size_t i=0; i< mBuffer->size(); i++)
+    {
+        if (!memcmp("\x00\x00\x01\xba", mBuffer->data()+i, 4)) {
+            ALOGV("GOT Packet Header");
+            mBuffer->setRange(mBuffer->offset() + i, mBuffer->size()-i);
+            return OK;
+        }
+    }
+    return -EAGAIN;
+}
+
+ssize_t MPEG2PSExtractor::getDuration() {
+    Mutex::Autolock autoLock(mLock);
+
+    off64_t offset =0;
+    bool invalidmedia=false;
+    static const size_t kChunkSize = 4096;
+    ssize_t res=-EAGAIN;
+
+    sp<ABuffer> newBuffer = new ABuffer(kChunkSize);;
+    sp<ABuffer> oldBuffer = mBuffer;
+
+    ALOGV("First PTS =%" PRIu64, mFirstPTS);
+    if(mDataSource->getSize(&filesize) == OK)
+    {
+        ALOGV("File Size = %" PRIu64, filesize);
+    }
+    mLastPTS = 0;
+    if (mFirstPTS == 0) {
+        mZeroPTS = true;
+    }
+    mReverseScan = true;
+    offset = (filesize - kChunkSize) & ~(kChunkSize-1);
+    mBuffer = newBuffer;
+    for(int i=0;i<500;i++)
+    {
+        if((mLastPTS != 0) && (mLastPTS > mFirstPTS))
+            break;
+        if(res == OK)
+           res = dequeueChunk();
+        if(res == -EAGAIN || res == -11)
+        {
+            mBuffer->setRange(0,mBuffer->capacity());
+            mDataSource->readAt(offset, mBuffer->data(),kChunkSize);
+            offset = offset - kChunkSize;
+            res = scanpacketHeader();
+        }
+    }
+
+    ALOGV("Last PTS =%" PRIu64, mLastPTS);
+    mReverseScan = false;
+    if(!invalidmedia && (mLastPTS > mFirstPTS))
+    {
+        mDuration = (mLastPTS - mFirstPTS) * 100 / 9;
+        ALOGV("Duration of File is %" PRIu64, mDuration);
+    } else {
+        mDuration = 0;
+    }
+    for(size_t i=0;i<mTracks.size();i++)
+    {
+        mTracks.editValueAt(i)->setDuration(mDuration);
+    }
+    mBuffer = oldBuffer;
+    newBuffer->setRange(0,0);
+    return OK;
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 
 MPEG2PSExtractor::Track::Track(
@@ -774,6 +908,9 @@ MPEG2PSExtractor::Track::Track(
       mStreamID(stream_id),
       mStreamType(stream_type),
       mTimeUs(0),
+      mTrackFirstPTS(0),
+      mSeekable(true),
+      mTrackFirstPTSAvailable(false),
       mQueue(NULL) {
     bool supported = true;
     ElementaryStreamQueue::Mode mode;
@@ -784,10 +921,12 @@ MPEG2PSExtractor::Track::Track(
             break;
         case ATSParser::STREAMTYPE_MPEG2_AUDIO_ADTS:
             mode = ElementaryStreamQueue::AAC;
+            mSeekable = false;
             break;
         case ATSParser::STREAMTYPE_MPEG1_AUDIO:
         case ATSParser::STREAMTYPE_MPEG2_AUDIO:
             mode = ElementaryStreamQueue::MPEG_AUDIO;
+            mSeekable = false;
             break;
 
         case ATSParser::STREAMTYPE_MPEG1_VIDEO:
@@ -832,12 +971,30 @@ status_t MPEG2PSExtractor::Track::stop() {
     return mSource->stop();
 }
 
+void MPEG2PSExtractor::Track::setDuration(int64_t dur) {
+    mDuration = dur;
+}
+
+status_t MPEG2PSExtractor::Track::flush() {
+    if (mSource == NULL) {
+        return NO_INIT;
+    }
+
+    mQueue->clear(true);
+    mExtractor->mBuffer->setRange(0, 0);
+
+    mSource->queueDiscontinuity( ATSParser::DISCONTINUITY_TIME, NULL, true);
+    return OK;
+}
+
 sp<MetaData> MPEG2PSExtractor::Track::getFormat() {
     if (mSource == NULL) {
         return NULL;
     }
 
-    return mSource->getFormat();
+    sp<MetaData> meta = mSource->getFormat();
+    meta->setInt64(kKeyDuration, mDuration);
+    return meta;
 }
 
 status_t MPEG2PSExtractor::Track::read(
@@ -847,6 +1004,13 @@ status_t MPEG2PSExtractor::Track::read(
     }
 
     status_t finalResult;
+    int64_t seekTimeUs;
+    ReadOptions::SeekMode seekMode;
+
+    if (mSeekable && options && options->getSeekTo(&seekTimeUs, &seekMode)) {
+        mExtractor->seekTo(seekTimeUs);
+    }
+
     while (!mSource->hasBufferAvailable(&finalResult)) {
         if (finalResult != OK) {
             return ERROR_END_OF_STREAM;
@@ -872,6 +1036,13 @@ status_t MPEG2PSExtractor::Track::appendPESData(
 
     if (PTS_DTS_flags == 2 || PTS_DTS_flags == 3) {
         mTimeUs = (PTS * 100) / 9;
+
+        if (!mTrackFirstPTSAvailable || mTrackFirstPTS > mTimeUs) {
+            mTrackFirstPTS = mTimeUs;
+            mTrackFirstPTSAvailable = true;
+        }
+
+        mTimeUs = mTimeUs - mTrackFirstPTS;
     }
 
     status_t err = mQueue->appendData(data, size, mTimeUs);

@@ -40,6 +40,7 @@ struct MPEG2PSExtractor : public MediaExtractor {
     virtual sp<MetaData> getMetaData();
 
     virtual uint32_t flags() const;
+    void seekTo(int64_t seekTimeUs);
 
 protected:
     virtual ~MPEG2PSExtractor();
@@ -52,10 +53,17 @@ private:
     sp<DataSource> mDataSource;
 
     off64_t mOffset;
+    off64_t filesize;
+    uint64_t mDuration;
     status_t mFinalResult;
     sp<ABuffer> mBuffer;
+    uint64_t mFirstPTS;
+    uint64_t mLastPTS;
+    bool mZeroPTS;
+    bool mSeeking;
     KeyedVector<unsigned, sp<Track> > mTracks;
     bool mScanning;
+    bool mReverseScan;
     bool mpeg1Stream;
 
     bool mProgramStreamMapValid;
@@ -68,6 +76,8 @@ private:
     ssize_t dequeueSystemHeader();
     ssize_t dequeuePES();
     ssize_t dequeueMPEG1PES();
+    ssize_t getDuration();
+    status_t scanpacketHeader();
 
     DISALLOW_EVIL_CONSTRUCTORS(MPEG2PSExtractor);
 };
