@@ -1552,6 +1552,11 @@ void NuPlayer::GenericSource::readBuffer(
                     NULL,
                     false /* discard */);
 #endif
+        } else if (err == INFO_DISCONTINUITY) {
+            track->mPackets->queueDiscontinuity(
+                    ATSParser::DISCONTINUITY_TIME,
+                    NULL /* extra */,
+                    true /* discard */);
         } else {
             queueDiscontinuityIfNeeded(seeking, formatChange, trackType, track);
             track->mPackets->signalEOS(err);

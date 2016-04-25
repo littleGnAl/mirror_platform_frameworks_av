@@ -209,37 +209,31 @@ static bool IsSeeminglyValidADTSHeader(
 }
 
 static bool IsSeeminglyValidMPEGAudioHeader(const uint8_t *ptr, size_t size) {
-    if (size < 3) {
-        // Not enough data to verify header.
-        return false;
-    }
+    size_t frameSize = 0;
+    int    samplerate = 0;
+    int    channels = 0;
+    int    bitrate = 0;
+    int    num_out_samples = 0;
+    size_t offset = 0;
+    uint8_t success = 0;
 
-    if (ptr[0] != 0xff || (ptr[1] >> 5) != 0x07) {
-        return false;
-    }
-
-    unsigned ID = (ptr[1] >> 3) & 3;
-
-    if (ID == 1) {
-        return false;  // reserved
-    }
-
-    unsigned layer = (ptr[1] >> 1) & 3;
-
-    if (layer == 0) {
-        return false;  // reserved
-    }
-
-    unsigned bitrateIndex = (ptr[2] >> 4);
-
-    if (bitrateIndex == 0x0f) {
-        return false;  // reserved
-    }
-
-    unsigned samplingRateIndex = (ptr[2] >> 2) & 3;
-
-    if (samplingRateIndex == 3) {
-        return false;  // reserved
+    while (offset < (size - 4)) {
+        uint32_t header = U32_AT(ptr + offset);
+        bool ret = GetMPEGAudioFrameSize(header,
+                                   &frameSize,
+                                   &samplerate,
+                                   &channels,
+                                   &bitrate,
+                                   &num_out_samples);
+        if (!ret) {
+            //hexdump(&header, 4); // keeping it, intentional
+            ALOGV("Incorrect mp3 sync, resyncing");
+            return false;
+        }
+        offset += frameSize;
+        success++;
+        if (success == 3) // 3 back to back frames is enough to trust
+           break;
     }
 
     return true;
