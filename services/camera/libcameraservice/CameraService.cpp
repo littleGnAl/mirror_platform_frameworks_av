@@ -1544,8 +1544,7 @@ bool CameraService::evictClientIdByRemote(const wp<IBinder>& remote) {
     bool ret = false;
     {
         // Acquire mServiceLock and prevent other clients from connecting
-        std::unique_ptr<AutoConditionLock> lock =
-                AutoConditionLock::waitAndAcquire(mServiceLockWrapper);
+        mServiceLock.lock();
 
 
         std::vector<sp<BasicClient>> evicted;
@@ -1579,9 +1578,6 @@ bool CameraService::evictClientIdByRemote(const wp<IBinder>& remote) {
                 ret = true;
             }
         }
-
-        // Reacquire mServiceLock
-        mServiceLock.lock();
 
     } // lock is destroyed, allow further connect calls
 
