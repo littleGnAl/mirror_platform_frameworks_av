@@ -458,6 +458,11 @@ void BlockIterator::seek(
         return;
     }
 
+    if (pTP == NULL) {
+        ALOGI("Can't find TrackPosition");
+        return OK;
+    }
+
     mCluster = pSegment->FindOrPreloadCluster(pTP->m_pos);
 
     CHECK(mCluster);
