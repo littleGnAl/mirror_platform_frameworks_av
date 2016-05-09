@@ -62,6 +62,29 @@
       "revId": "6915f3e18f3d9ad95816f395062512384632e5c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "123fe8e9_3dfdaf17",
+        "filename": "media/libstagefright/NuCachedSource2.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1090168
+      },
+      "writtenOn": "2016-05-09T05:15:38Z",
+      "side": 1,
+      "message": "On 64-bit cpu, off64_t will be automatically converted into unsigned type operations.",
+      "range": {
+        "startLine": 646,
+        "startChar": 0,
+        "endLine": 646,
+        "endChar": 62
+      },
+      "revId": "6915f3e18f3d9ad95816f395062512384632e5c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
