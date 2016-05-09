@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "123fe8e9_83cf423b",
+        "filename": "media/libstagefright/NuCachedSource2.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2016-05-09T16:29:56Z",
+      "side": 1,
+      "message": "Why not add the check in this function then? That seems safer in case another caller to this function is ever added.",
+      "parentUuid": "123fe8e9_7d14573c",
+      "range": {
+        "startLine": 628,
+        "startChar": 0,
+        "endLine": 628,
+        "endChar": 41
+      },
+      "revId": "6915f3e18f3d9ad95816f395062512384632e5c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "123fe8e9_9d0a0317",
         "filename": "media/libstagefright/NuCachedSource2.cpp",
         "patchSetId": 2
@@ -76,6 +100,30 @@
       "writtenOn": "2016-05-09T05:15:38Z",
       "side": 1,
       "message": "On 64-bit cpu, off64_t will be automatically converted into unsigned type operations.",
+      "range": {
+        "startLine": 646,
+        "startChar": 0,
+        "endLine": 646,
+        "endChar": 62
+      },
+      "revId": "6915f3e18f3d9ad95816f395062512384632e5c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "123fe8e9_c30dca32",
+        "filename": "media/libstagefright/NuCachedSource2.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2016-05-09T16:29:56Z",
+      "side": 1,
+      "message": "We don\u0027t yet support running the media framework in 64-bit (it runs in 32-bit mode even on 64-bit CPUs).\nCan you update the commit message to say that this is a fix for 64-bit mode?\nAnd still, this is only a problem if offset is negative, right? Who\u0027s calling it with a negative offset?",
+      "parentUuid": "123fe8e9_3dfdaf17",
       "range": {
         "startLine": 646,
         "startChar": 0,
