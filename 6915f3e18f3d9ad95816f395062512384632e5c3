@@ -133,6 +133,53 @@
       "revId": "6915f3e18f3d9ad95816f395062512384632e5c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9286782c_88472a69",
+        "filename": "media/libstagefright/NuCachedSource2.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1090168
+      },
+      "writtenOn": "2016-05-10T03:20:31Z",
+      "side": 1,
+      "message": "There are also problems on 32bit.\nE.g.\nwhen offset \u003c 0.\n\n    if (offset \u003c mCacheOffset\n            || offset \u003e\u003d (off64_t)(mCacheOffset + mCache-\u003etotalSize())) {\n        ...\n        seekInternal_l(seekOffset); // seekOffset \u003d 0; mCacheOffset \u003d seekOffset \u003d 0;\n        ...\n    }\n    size_t delta \u003d offset - mCacheOffset; // delta \u003d (size_t)(offset) \n    if (offset + size \u003c\u003d mCacheOffset + mCache-\u003etotalSize()) {   // mCacheOffset + mCache-\u003etotalSize() \u003d\u003d 0, when offset + size \u003c 0, but delta \u003e 0.\n\n    mCache-\u003ecopy(delta, data, size); // delta is very large.\n    ...\n   }",
+      "parentUuid": "123fe8e9_c30dca32",
+      "range": {
+        "startLine": 646,
+        "startChar": 0,
+        "endLine": 646,
+        "endChar": 62
+      },
+      "revId": "6915f3e18f3d9ad95816f395062512384632e5c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9286782c_28247ea3",
+        "filename": "media/libstagefright/NuCachedSource2.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 646,
+      "author": {
+        "id": 1090168
+      },
+      "writtenOn": "2016-05-10T03:20:31Z",
+      "side": 1,
+      "message": "Who\u0027s calling it with a negative offset?\nMany vendor(e.g.: qcom, mediatek) multimedia library calls MediaSource, causing a large number of crash, many crash because offset negative. Therefore, we can avoid this problem when you call readAt.",
+      "range": {
+        "startLine": 646,
+        "startChar": 4,
+        "endLine": 646,
+        "endChar": 62
+      },
+      "revId": "6915f3e18f3d9ad95816f395062512384632e5c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
