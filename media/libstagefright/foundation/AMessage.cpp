@@ -225,7 +225,7 @@ void AMessage::set##NAME(const char *name, TYPENAME value) {            \
     item->u.FIELDNAME = value;                                          \
 }                                                                       \
                                                                         \
-bool AMessage::find##NAME(const char *name, TYPENAME *value) const {    \
+bool AMessage::find##NAME(const char *name, TYPENAME *value) const {  /* NOLINT */ \
     const Item *item = findItem(name, kType##NAME);                     \
     if (item) {                                                         \
         *value = item->u.FIELDNAME;                                     \
