@@ -48,6 +48,9 @@
 #define UINT32_MAX       (4294967295U)
 #endif
 
+#define AVCC_SIZE_MAX    0x01000000
+#define HVCC_SIZE_MAX    0x01000000
+
 namespace android {
 
 class MPEG4Source : public MediaSource {
@@ -1700,6 +1703,9 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
         {
             *offset += chunk_size;
 
+            if (chunk_data_size > AVCC_SIZE_MAX)
+                return ERROR_UNSUPPORTED;
+
             sp<ABuffer> buffer = new ABuffer(chunk_data_size);
 
             if (mDataSource->readAt(
@@ -1717,6 +1723,9 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
         }
         case FOURCC('h', 'v', 'c', 'C'):
         {
+            if (chunk_data_size > HVCC_SIZE_MAX)
+                return ERROR_UNSUPPORTED;
+
             sp<ABuffer> buffer = new ABuffer(chunk_data_size);
 
             if (mDataSource->readAt(
