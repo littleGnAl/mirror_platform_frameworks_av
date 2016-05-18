@@ -313,7 +313,10 @@ void NuPlayer::Renderer::setVideoFrameRate(float fps) {
 
 // Called on any threads.
 status_t NuPlayer::Renderer::getCurrentPosition(int64_t *mediaUs) {
-    return mMediaClock->getMediaTime(ALooper::GetNowUs(), mediaUs);
+    if(mPaused)
+        return mMediaClock->getAnchor(mediaUs, NULL);
+    else
+        return mMediaClock->getMediaTime(ALooper::GetNowUs(), mediaUs);
 }
 
 void NuPlayer::Renderer::clearAudioFirstAnchorTime_l() {
@@ -1847,6 +1850,21 @@ void NuPlayer::Renderer::onCloseAudioSink() {
     mAudioSink->close();
     mCurrentOffloadInfo = AUDIO_INFO_INITIALIZER;
     mCurrentPcmInfo = AUDIO_PCMINFO_INITIALIZER;
+}
+
+status_t MediaClock::getAnchor(
+            int64_t *anchorTimeMediaUs,
+            int64_t *anchorTimeRealUs) const {
+    if ((mAnchorTimeMediaUs == -1) || (mAnchorTimeRealUs == -1))
+        return NO_INIT;
+
+    if (anchorTimeMediaUs)
+        *anchorTimeMediaUs = mAnchorTimeMediaUs;
+
+    if (anchorTimeRealUs)
+        *anchorTimeRealUs = mAnchorTimeRealUs;
+
+    return OK;
 }
 
 }  // namespace android
