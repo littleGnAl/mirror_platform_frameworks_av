@@ -16,6 +16,24 @@
       "revId": "83fbbb8f8705445a4d4a9532d17690098f36f50f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "570b1261_a3f6b2e4",
+        "filename": "include/media/stagefright/foundation/ABase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2016-05-18T01:23:34Z",
+      "side": 1,
+      "message": "Clang-tidy gave wrong warning about missing parentheses around the first \u0027name\u0027 since it is followed by a binary operator.",
+      "parentUuid": "570b1261_d52f2c78",
+      "revId": "83fbbb8f8705445a4d4a9532d17690098f36f50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
