@@ -54,6 +54,8 @@ struct MediaClock : public RefBase {
     // The result is saved in |outRealUs|.
     status_t getRealTimeFor(int64_t targetMediaUs, int64_t *outRealUs) const;
 
+    status_t getAnchor(int64_t *anchorTimeMediaUs, int64_t *anchorTimeRealUs) const;
+
 protected:
     virtual ~MediaClock();
 

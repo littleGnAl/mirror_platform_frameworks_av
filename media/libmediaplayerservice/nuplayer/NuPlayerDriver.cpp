@@ -423,7 +423,7 @@ status_t NuPlayerDriver::getCurrentPosition(int *msec) {
     int64_t tempUs = 0;
     {
         Mutex::Autolock autoLock(mLock);
-        if (mSeekInProgress || mState == STATE_PAUSED) {
+        if (mSeekInProgress) {
             tempUs = (mPositionUs <= 0) ? 0 : mPositionUs;
             *msec = (int)divRound(tempUs, (int64_t)(1000));
             return OK;
