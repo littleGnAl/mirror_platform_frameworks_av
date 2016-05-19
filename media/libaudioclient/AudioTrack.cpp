@@ -774,6 +774,36 @@ status_t AudioTrack::setVolume(float volume)
     return setVolume(volume, volume);
 }
 
+status_t AudioTrack::setVolumeRamp(float volume, int32_t delayMs, audio_easing_type_t type)
+{
+    // This duplicates a test by AudioTrack JNI, but that is not the only caller
+    if (((isnanf(volume) || volume < GAIN_FLOAT_ZERO || volume > GAIN_FLOAT_UNITY))
+            || (delayMs >= MAX_RAMP_DURATION_MS) || (delayMs < 0)
+            || !((type == AUDIO_EASING_CUBIC_OUT) || (type == AUDIO_EASING_CUBIC_IN) || (type == AUDIO_EASING_LINEAR))) {
+        return BAD_VALUE;
+    }
+
+    AutoMutex lock(mLock);
+    // If the track "dies", it will be recreated with its last set volume.
+    mVolume[AUDIO_INTERLEAVE_LEFT]  = volume;
+    mVolume[AUDIO_INTERLEAVE_RIGHT] = volume;
+    mProxy->setVolumeRamp(volume, delayMs, type);
+
+    if (isOffloaded_l()) {
+        mAudioTrack->signal();
+    }
+
+    return NO_ERROR;
+}
+
+status_t AudioTrack::getLastAppliedVolume(float *volume)
+{
+    AutoMutex lock(mLock);
+    *volume = mProxy->getCurrentVolume();
+
+    return NO_ERROR;
+}
+
 status_t AudioTrack::setAuxEffectSendLevel(float level)
 {
     // This duplicates a test by AudioTrack JNI, but that is not the only caller

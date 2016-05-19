@@ -19,6 +19,8 @@
     #error This header file should only be included from AudioFlinger.h
 #endif
 
+#include <private/media/AudioTrackShared.h>
+
 class ThreadBase : public Thread {
 public:
 
@@ -993,11 +995,25 @@ protected:
     // volumes last sent to audio HAL with stream->set_volume()
     float mLeftVolFloat;
     float mRightVolFloat;
+    // volume last sent to audio HAL with stream->set_global_volume()
+    float   mSystemGain;
+    // last applied Volume Ramp requested
+    int32_t mLastAppliedRampID;
+
 
     DirectOutputThread(const sp<AudioFlinger>& audioFlinger, AudioStreamOut* output,
                         audio_io_handle_t id, uint32_t device, ThreadBase::type_t type,
                         bool systemReady);
     void processVolume_l(Track *track, bool lastTrack);
+
+    bool rampApplied(int32_t rampID) {
+        if (rampID == mLastAppliedRampID) {
+            return true;
+        }
+
+        mLastAppliedRampID = rampID;
+        return false;
+    }
 
     // prepareTracks_l() tells threadLoop_mix() the name of the single active track
     sp<Track>               mActiveTrack;

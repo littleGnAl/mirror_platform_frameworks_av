@@ -29,6 +29,7 @@
 #include <media/AudioTimestamp.h>
 #include <media/Modulo.h>
 #include <media/SingleStateQueue.h>
+#include <hardware/audio.h>
 
 namespace android {
 
@@ -123,6 +124,14 @@ typedef SingleStateQueue<ExtendedTimestamp> ExtendedTimestampQueue;
 
 // ----------------------------------------------------------------------------
 
+struct audio_volume_ramp_t
+{
+    gain_minifloat_t        mTargetVolume;
+    int32_t                 mDuration;     // duration of the ramp in millisecond
+    audio_easing_type_t     mType;
+    int32_t                 mRequestID;    // ensures a given request is processed only once.
+};
+
 // Important: do not add any virtual methods, including ~
 struct audio_track_cblk_t
 {
@@ -163,6 +172,10 @@ private:
 
                 // Stereo gains for AudioTrack only, not used by AudioRecord.
                 gain_minifloat_packed_t mVolumeLR;
+
+                // Gain applied to all channels for AudioTrack only, not used by AudioRecord.
+                audio_volume_ramp_t     mVolumeRamp;
+                float                   mCurrentVolume;
 
                 uint32_t    mSampleRate;    // AudioTrack only: client's requested sample rate in Hz
                                             // or 0 == default. Write-only client, read-only server.
@@ -373,6 +386,27 @@ public:
     // set stereo gains
     void        setVolumeLR(gain_minifloat_packed_t volumeLR) {
         mCblk->mVolumeLR = volumeLR;
+        // default : report the stereo gain applied.
+        mCblk->mCurrentVolume = float_from_gain(gain_minifloat_unpack_left(volumeLR));
+    }
+
+    // setup a new target gain to be applied to all channels following a specified ramp profile
+    void        setVolumeRamp(float targetVolume, int32_t rampDuration, audio_easing_type_t rampType) {
+        gain_minifloat_t targetVolumeLR = gain_from_float(targetVolume);
+        // record the corresponding new stereo volume (used for legacy fallback situation)
+        setVolumeLR(gain_minifloat_pack(targetVolumeLR, targetVolumeLR));
+
+        // record the new volume ramp request
+        mCblk->mVolumeRamp.mTargetVolume = targetVolumeLR;
+        mCblk->mVolumeRamp.mDuration     = rampDuration;
+        mCblk->mVolumeRamp.mType         = rampType;
+
+        android_atomic_inc(&mCblk->mVolumeRamp.mRequestID);
+    }
+
+    // query the current gain applied to all channels
+    float        getCurrentVolume() {
+        return mCblk->mCurrentVolume;
     }
 
     void        setSampleRate(uint32_t sampleRate) {
@@ -563,6 +597,13 @@ public:
     uint32_t    getSampleRate() const { return mCblk->mSampleRate; }
     uint16_t    getSendLevel_U4_12() const { return mCblk->mSendLevel; }
     gain_minifloat_packed_t getVolumeLR() const { return mCblk->mVolumeLR; }
+    void        getVolumeRamp(audio_volume_ramp_t * volumeRamp) const {
+        volumeRamp->mRequestID    = android_atomic_acquire_load(&mCblk->mVolumeRamp.mRequestID);
+        volumeRamp->mTargetVolume = mCblk->mVolumeRamp.mTargetVolume;
+        volumeRamp->mDuration     = mCblk->mVolumeRamp.mDuration;
+        volumeRamp->mType         = mCblk->mVolumeRamp.mType;
+    }
+    void        setCurrentVolume(float volume) { mCblk->mCurrentVolume = volume; }
 
     // estimated total number of filled frames available to server to read,
     // which may include non-contiguous frames

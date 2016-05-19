@@ -48,9 +48,12 @@ static uint32_t incrementSequence(uint32_t self, uint32_t other) {
 audio_track_cblk_t::audio_track_cblk_t()
     : mServer(0), mFutex(0), mMinimum(0)
     , mVolumeLR(GAIN_MINIFLOAT_PACKED_UNITY), mSampleRate(0), mSendLevel(0)
+    , mVolumeRamp()
+    , mCurrentVolume(GAIN_FLOAT_UNITY)
     , mBufferSizeInFrames(0)
     , mFlags(0)
 {
+    mVolumeRamp.mTargetVolume = GAIN_FLOAT_UNITY;
     memset(&u, 0, sizeof(u));
 }
 

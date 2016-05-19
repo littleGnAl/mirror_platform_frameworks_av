@@ -4803,7 +4803,24 @@ void AudioFlinger::DirectOutputThread::processVolume_l(Track *track, bool lastTr
     float left, right;
 
     if (mMasterMute || mStreamTypes[track->streamType()].mute) {
-        left = right = 0;
+        // A mute request shall have priority over any ongoing ramp.
+        // Still, an Audio HAL supporting "ramp_volume" should continue
+        // calculating the progression along the ramp curve while applying
+        // mute globally.
+        if (lastTrack) {
+            if (!mEffectChains.isEmpty()) {
+                uint32_t effectVolume = 0;
+                mEffectChains[0]->setVolume_l(&effectVolume, &effectVolume);
+            }
+            if (mOutput->audioHwDev->version() >= AUDIO_DEVICE_API_VERSION_4_0
+                    && mOutput->stream->set_global_volume) {
+                // change in streamType global volume must be applied immediately
+                mOutput->stream->set_global_volume(mOutput->stream, 0);
+            } else if (mOutput->stream->set_volume) {
+                mOutput->stream->set_volume(mOutput->stream, 0, 0);
+            }
+            mSystemGain = 0;
+        }
     } else {
         float typeVolume = mStreamTypes[track->streamType()].volume;
         float v = mMasterVolume * typeVolume;
@@ -4813,33 +4830,64 @@ void AudioFlinger::DirectOutputThread::processVolume_l(Track *track, bool lastTr
         if (left > GAIN_FLOAT_UNITY) {
             left = GAIN_FLOAT_UNITY;
         }
-        left *= v;
         right = float_from_gain(gain_minifloat_unpack_right(vlr));
         if (right > GAIN_FLOAT_UNITY) {
             right = GAIN_FLOAT_UNITY;
         }
-        right *= v;
-    }
 
-    if (lastTrack) {
-        if (left != mLeftVolFloat || right != mRightVolFloat) {
-            mLeftVolFloat = left;
-            mRightVolFloat = right;
+        if ((lastTrack) && (v != mSystemGain)) {
+            // change in streamType global volume or from mute to unmute
+            // will be applied immediately
+            mSystemGain = v;
 
-            // Convert volumes from float to 8.24
-            uint32_t vl = (uint32_t)(left * (1 << 24));
-            uint32_t vr = (uint32_t)(right * (1 << 24));
-
-            // Delegate volume control to effect in track effect chain if needed
-            // only one effect chain can be present on DirectOutputThread, so if
-            // there is one, the track is connected to it
-            if (!mEffectChains.isEmpty()) {
-                mEffectChains[0]->setVolume_l(&vl, &vr);
-                left = (float)vl / (1 << 24);
-                right = (float)vr / (1 << 24);
+            if (mOutput->audioHwDev->version() >= AUDIO_DEVICE_API_VERSION_4_0
+                    && mOutput->stream->set_global_volume) {
+                mOutput->stream->set_global_volume(mOutput->stream, v);
+                v = 1.0;
             }
-            if (mOutput->stream->set_volume) {
-                mOutput->stream->set_volume(mOutput->stream, left, right);
+        }
+
+        audio_volume_ramp_t ramp;
+        proxy->getVolumeRamp(&ramp);
+
+        if (lastTrack) {
+            int                 rampDuration = 0;
+            audio_easing_type_t rampType     = AUDIO_EASING_LINEAR;
+
+            if (!rampApplied(ramp.mRequestID)) {
+                left         = float_from_gain(ramp.mTargetVolume);
+                right        = float_from_gain(ramp.mTargetVolume);
+                rampDuration = ramp.mDuration;
+                rampType     = ramp.mType;
+            }
+
+            left  *= v;
+            right *= v;
+
+            if (left != mLeftVolFloat || right != mRightVolFloat) {
+                mLeftVolFloat  = left;
+                mRightVolFloat = right;
+
+                // Convert volumes from float to 8.24
+                uint32_t vl = (uint32_t)(left  * (1 << 24));
+                uint32_t vr = (uint32_t)(right * (1 << 24));
+
+                // Delegate volume control to effect in track effect chain if needed
+                // only one effect chain can be present on DirectOutputThread, so if
+                // there is one, the track is connected to it
+                if (!mEffectChains.isEmpty()) {
+                    mEffectChains[0]->setVolume_l(&vl, &vr);
+
+                    left  = (float)vl / (1 << 24);
+                    right = (float)vr / (1 << 24);
+                }
+
+                if (left == right && mOutput->audioHwDev->version() >= AUDIO_DEVICE_API_VERSION_4_0
+                        && mOutput->stream->ramp_volume) {
+                    mOutput->stream->ramp_volume(mOutput->stream, left, rampDuration, rampType);
+                } else if (mOutput->stream->set_volume) {
+                    mOutput->stream->set_volume(mOutput->stream, left, right);
+                }
             }
         }
     }
@@ -5068,6 +5116,16 @@ void AudioFlinger::DirectOutputThread::threadLoop_mix()
 {
     size_t frameCount = mFrameCount;
     int8_t *curBuf = (int8_t *)mSinkBuffer;
+
+    AudioTrackServerProxy *proxy = mActiveTrack->mAudioTrackServerProxy;
+    if (mOutput->audioHwDev->version() >= AUDIO_DEVICE_API_VERSION_4_0
+            && mOutput->stream->get_current_volume) {
+        float  volume;
+        if (NO_ERROR == mOutput->stream->get_current_volume(mOutput->stream, &volume)) {
+            proxy->setCurrentVolume(volume);
+        }
+    }
+
     // output audio to hardware
     while (frameCount) {
         AudioBufferProvider::Buffer buffer;
