@@ -23,6 +23,7 @@
 #include <media/IAudioTrack.h>
 #include <media/AudioResamplerPublic.h>
 #include <utils/threads.h>
+#include <hardware/audio.h>
 
 namespace android {
 
@@ -363,6 +364,19 @@ public:
      * especially for multi-channel content.
      */
             status_t    setVolume(float volume);
+
+    /* Ramp the volume of all channels to a given target volume within a given duration in
+     * milliseconds and according to a specified easing function.
+     */
+            status_t    setVolumeRamp(float               targetVolume,
+                                      int32_t             rampDuration,
+                                      audio_easing_type_t rampType);
+
+    /* Get volume for all channels.
+     * This allows caller to find out what the currently applied
+     * volume is when the volume is ramping up or down.
+     */
+            status_t    getLastAppliedVolume(float * volume);
 
     /* Set the send level for this track. An auxiliary effect should be attached
      * to the track with attachEffect(). Level must be >= 0.0 and <= 1.0.
@@ -811,6 +825,9 @@ protected:
 
     sp<AudioTrackThread>    mAudioTrackThread;
 
+    audio_easing_type_t     mRampType;
+    int32_t                 mRampDuration;
+    float                   mTargetVolume;
     float                   mVolume[2];
     float                   mSendLevel;
     mutable uint32_t        mSampleRate;            // mutable because getSampleRate() can update it
