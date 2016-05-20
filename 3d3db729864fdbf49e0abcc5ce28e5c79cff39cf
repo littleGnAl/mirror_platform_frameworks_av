@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b7ae0ef8_921ffc58",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 2969,
+      "author": {
+        "id": 1022116
+      },
+      "writtenOn": "2016-05-20T18:02:04Z",
+      "side": 1,
+      "message": "I do not understand why you need to add the offset as per the standard this duration is only about the track: \n\nduration is an integer that indicates the duration of this track (in the timescale indicated in the Movie\nHeader Box). The value of this field is equal to the sum of the durations of all of the track’s edits. If\nthere is no edit list, then the duration is the sum of the sample durations, converted into the timescale\nin the Movie Header Box. If the duration of this track cannot be determined then duration is set to all\n1s.\n\nDid I miss anything?",
+      "range": {
+        "startLine": 2969,
+        "startChar": 1,
+        "endLine": 2969,
+        "endChar": 56
+      },
+      "revId": "3d3db729864fdbf49e0abcc5ce28e5c79cff39cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
