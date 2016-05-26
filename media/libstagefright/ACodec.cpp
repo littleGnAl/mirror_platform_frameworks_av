@@ -537,6 +537,8 @@ ACodec::ACodec()
     mPortEOS[kPortIndexInput] = mPortEOS[kPortIndexOutput] = false;
     mInputEOSResult = OK;
 
+    memset(&mLastNativeWindowCrop, 0, sizeof(mLastNativeWindowCrop));
+
     changeState(mUninitializedState);
 }
 
@@ -911,6 +913,8 @@ status_t ACodec::setupNativeWindowSizeFormatAndUsage(
 
     usage |= kVideoGrallocUsage;
     *finalUsage = usage;
+
+    memset(&mLastNativeWindowCrop, 0, sizeof(mLastNativeWindowCrop));
 
     ALOGV("gralloc usage: %#x(OMX) => %#x(ACodec)", omxUsage, usage);
     return setNativeWindowSizeFormatAndUsage(
@@ -4464,6 +4468,8 @@ void ACodec::sendFormatChange(const sp<AMessage> &reply) {
         // notify renderer of the crop change
         // NOTE: native window uses extended right-bottom coordinate
         reply->setRect("crop", left, top, right + 1, bottom + 1);
+        // also remember this in the output format
+        mOutputFormat->setRect("crop", left, top, right, bottom);
     } else if (mime == MEDIA_MIMETYPE_AUDIO_RAW &&
                (mEncoderDelay || mEncoderPadding)) {
         int32_t channelCount, sampleRate;
@@ -5180,6 +5186,13 @@ bool ACodec::BaseState::onOMXFillBufferDone(
 
             if (!mCodec->mSentFormat && rangeLength > 0) {
                 mCodec->sendFormatChange(reply);
+            } else if (rangeLength > 0 && mCodec->mNativeWindow != NULL) {
+                // set crop info for every output frame
+                int32_t left, top, right, bottom;
+                if (mCodec->mOutputFormat->findRect("crop", &left, &top, &right, &bottom)) {
+                    // NOTE: native window uses extended right-bottom coordinate
+                    reply->setRect("crop", left, top, right + 1, bottom + 1);
+                }
             }
             if (mCodec->usingMetadataOnEncoderOutput()) {
                 native_handle_t *handle = NULL;
@@ -5273,7 +5286,9 @@ void ACodec::BaseState::onOutputBufferDrained(const sp<AMessage> &msg) {
     }
 
     android_native_rect_t crop;
-    if (msg->findRect("crop", &crop.left, &crop.top, &crop.right, &crop.bottom)) {
+    if (msg->findRect("crop", &crop.left, &crop.top, &crop.right, &crop.bottom)
+            && memcmp(&crop, &mCodec->mLastNativeWindowCrop, sizeof(crop)) != 0) {
+        mCodec->mLastNativeWindowCrop = crop;
         status_t err = native_window_set_crop(mCodec->mNativeWindow.get(), &crop);
         ALOGW_IF(err != NO_ERROR, "failed to set crop: %d", err);
     }
