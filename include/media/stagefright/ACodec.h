@@ -235,6 +235,7 @@ private:
 
     sp<ANativeWindow> mNativeWindow;
     int mNativeWindowUsageBits;
+    android_native_rect_t mLastNativeWindowCrop;
     sp<AMessage> mInputFormat;
     sp<AMessage> mOutputFormat;
     sp<AMessage> mBaseOutputFormat;
