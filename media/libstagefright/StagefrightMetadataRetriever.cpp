@@ -536,7 +536,28 @@ const char *StagefrightMetadataRetriever::extractMetadata(int keyCode) {
     return mMetaData.valueAt(index).string();
 }
 
+static bool checkFileValidity(sp<IMediaExtractor> &extractor) {
+    //Make sure we have file mime type and atleast one track with metadata
+    const char *trackMIME;
+    sp<MetaData> meta = extractor->getMetaData();
+
+    if ((meta != NULL) && (meta->findCString(kKeyMIMEType, &trackMIME))) {
+        for (size_t i = 0; i < extractor->countTracks(); i++) {
+            sp<MetaData> trackMeta = extractor->getTrackMetaData(i);
+            if (trackMeta != NULL)
+                return true;
+        }
+    }
+
+    return false;
+}
+
 void StagefrightMetadataRetriever::parseMetaData() {
+    if (!checkFileValidity(mExtractor)) {
+        ALOGW("Corrupt file! cannot extract metadata");
+        return;
+    }
+
     sp<MetaData> meta = mExtractor->getMetaData();
 
     if (meta == NULL) {
@@ -633,6 +654,9 @@ void StagefrightMetadataRetriever::parseMetaData() {
     String8 timedTextLang;
     for (size_t i = 0; i < numTracks; ++i) {
         sp<MetaData> trackMeta = mExtractor->getTrackMetaData(i);
+
+        if (trackMeta == NULL)
+            continue;
 
         int64_t durationUs;
         if (trackMeta->findInt64(kKeyDuration, &durationUs)) {
