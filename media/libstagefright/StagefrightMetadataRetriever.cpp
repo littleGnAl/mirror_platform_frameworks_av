@@ -489,9 +489,25 @@ VideoFrame *StagefrightMetadataRetriever::getFrameAtTime(
             extractVideoFrame(componentName, trackMeta, source, timeUs, option);
 
         if (frame != NULL) {
+            ALOGD("%s extract thumbnail successfully", componentName.c_str());
             return frame;
         }
-        ALOGV("%s failed to extract thumbnail, trying next decoder.", componentName.c_str());
+        ALOGD("%s failed to extract thumbnail, trying next decoder.", componentName.c_str());
+    }
+
+    if (timeUs == -1) {
+        ALOGV("%s try to decode thumbnail again by using timeUs=0", __FUNCTION__);
+        for (size_t i = 0; i < matchingCodecs.size(); ++i) {
+            const AString &componentName = matchingCodecs[i];
+            VideoFrame *frame =
+                extractVideoFrame(componentName, trackMeta, source, 0, option);
+
+            if (frame != NULL) {
+                ALOGD("%s extract thumbnail successfully", componentName.c_str());
+                return frame;
+            }
+            ALOGD("%s failed to extract thumbnail, trying next decoder.", componentName.c_str());
+        }
     }
 
     return NULL;
