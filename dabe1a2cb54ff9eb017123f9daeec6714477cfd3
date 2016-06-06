@@ -91,6 +91,30 @@
       "revId": "dabe1a2cb54ff9eb017123f9daeec6714477cfd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "63213ce2_0ea1af07",
+        "filename": "media/libstagefright/codecs/amrwbenc/src/voAMRWBEnc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1233,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2016-06-06T22:26:04Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/#/c/235874/ is the corresponding other patch to demonstrate how this is broken. Both of these patches are just here to help reproduce the bug externally for ARM (an email which I am writing up right now).",
+      "parentUuid": "a6aee2f7_b2e7a0bb",
+      "range": {
+        "startLine": 1233,
+        "startChar": 87,
+        "endLine": 1233,
+        "endChar": 93
+      },
+      "revId": "dabe1a2cb54ff9eb017123f9daeec6714477cfd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
