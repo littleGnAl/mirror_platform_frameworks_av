@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e34c4c8d_24fd7278",
+        "filename": "media/libstagefright/codecs/amrwbenc/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1010121
+      },
+      "writtenOn": "2016-06-06T10:04:21Z",
+      "side": 1,
+      "message": "The only use of liblog in the patch is commented out -- so there shouldn\u0027t be a need to link liblog",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 22
+      },
+      "revId": "dabe1a2cb54ff9eb017123f9daeec6714477cfd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "069deed3_2d418da0",
+        "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1010121
+      },
+      "writtenOn": "2016-06-06T10:04:21Z",
+      "side": 1,
+      "message": "The only use of liblog is commented out -- so there shouldn\u0027t be a need to link to it",
+      "range": {
+        "startLine": 18,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 10
+      },
+      "revId": "dabe1a2cb54ff9eb017123f9daeec6714477cfd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06188e2b_d8641137",
+        "filename": "media/libstagefright/codecs/amrwbenc/src/voAMRWBEnc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1010121
+      },
+      "writtenOn": "2016-06-06T10:04:21Z",
+      "side": 1,
+      "message": "exc_copy is only used in code that is commented out - no point in creating and filling it unconditionally",
+      "range": {
+        "startLine": 1225,
+        "startChar": 0,
+        "endLine": 1231,
+        "endChar": 13
+      },
+      "revId": "dabe1a2cb54ff9eb017123f9daeec6714477cfd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a6aee2f7_b2e7a0bb",
+        "filename": "media/libstagefright/codecs/amrwbenc/src/voAMRWBEnc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1233,
+      "author": {
+        "id": 1010121
+      },
+      "writtenOn": "2016-06-06T10:04:21Z",
+      "side": 1,
+      "message": "please explain broken -- is it just rounding errors from NEON not going the IEEE754 route, or does it make an audible difference?",
+      "range": {
+        "startLine": 1233,
+        "startChar": 87,
+        "endLine": 1233,
+        "endChar": 93
+      },
+      "revId": "dabe1a2cb54ff9eb017123f9daeec6714477cfd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
