@@ -115,6 +115,30 @@
       "revId": "dabe1a2cb54ff9eb017123f9daeec6714477cfd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "83cf1072_a1289ed0",
+        "filename": "media/libstagefright/codecs/amrwbenc/src/voAMRWBEnc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1233,
+      "author": {
+        "id": 1038207
+      },
+      "writtenOn": "2016-06-07T10:41:01Z",
+      "side": 1,
+      "message": "Hi Stephen,\n\nThe patch you pointed at is a Java file, how does that relate to Clang?\n\nAlso, if you could report a bug in LLVM\u0027s bugzilla with a reduced self-contained source file (C/C++/IR) where the problem shows itself, and the command line to show it, it\u0027d be much easier to try and guess what\u0027s wrong. :)",
+      "parentUuid": "63213ce2_0ea1af07",
+      "range": {
+        "startLine": 1233,
+        "startChar": 87,
+        "endLine": 1233,
+        "endChar": 93
+      },
+      "revId": "dabe1a2cb54ff9eb017123f9daeec6714477cfd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
