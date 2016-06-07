@@ -139,6 +139,30 @@
       "revId": "dabe1a2cb54ff9eb017123f9daeec6714477cfd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c392e865_ab986979",
+        "filename": "media/libstagefright/codecs/amrwbenc/src/voAMRWBEnc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1233,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2016-06-07T16:17:53Z",
+      "side": 1,
+      "message": "The other patch is for the test app you\u0027d run in order to trigger the problem here, since there is no way to trigger it from the command line.",
+      "parentUuid": "83cf1072_a1289ed0",
+      "range": {
+        "startLine": 1233,
+        "startChar": 87,
+        "endLine": 1233,
+        "endChar": 93
+      },
+      "revId": "dabe1a2cb54ff9eb017123f9daeec6714477cfd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
