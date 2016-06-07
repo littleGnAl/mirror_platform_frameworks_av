@@ -163,6 +163,30 @@
       "revId": "dabe1a2cb54ff9eb017123f9daeec6714477cfd3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c392e865_4bfd4577",
+        "filename": "media/libstagefright/codecs/amrwbenc/src/voAMRWBEnc.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 1233,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2016-06-07T16:21:16Z",
+      "side": 1,
+      "message": "Yes, we are trying to reduce this, but it is substantial to do so. Pirama has isolated part of it, but it still requires some more cleanup before we have something more that we can share. In the meantime, the repro instructions we have require us to use CTS (and Java) + manual verification of the audio stream.",
+      "parentUuid": "c392e865_ab986979",
+      "range": {
+        "startLine": 1233,
+        "startChar": 87,
+        "endLine": 1233,
+        "endChar": 93
+      },
+      "revId": "dabe1a2cb54ff9eb017123f9daeec6714477cfd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
