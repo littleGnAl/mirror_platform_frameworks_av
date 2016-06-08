@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63d13c8c_b1e8428d",
+        "filename": "media/libstagefright/codecs/amrwbenc/src/voAMRWBEnc.c",
+        "patchSetId": 2
+      },
+      "lineNbr": 1240,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2016-06-08T19:45:14Z",
+      "side": 1,
+      "message": "This is the loop that hits the bad codegen.",
+      "revId": "f751f01bb4dd925cbb68898e6f242502978a1ada",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
