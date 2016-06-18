@@ -163,6 +163,9 @@ private:
     static bool roundBufferDimensionNearest(int32_t width, int32_t height, int32_t format,
             const CameraMetadata& info, /*out*/int32_t* outWidth, /*out*/int32_t* outHeight);
 
+    //check if format is not custom format
+    static bool isPublicFormat(int32_t format);
+
     // IGraphicsBufferProducer binder -> Stream ID
     KeyedVector<sp<IBinder>, int> mStreamMap;
 
