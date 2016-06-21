@@ -132,7 +132,6 @@ GraphicBufferSource::GraphicBufferSource(
     mRepeatLastFrameTimestamp(-1ll),
     mLatestBufferId(-1),
     mLatestBufferFrameNum(0),
-    mLatestBufferUseCount(0),
     mLatestBufferFence(Fence::NO_FENCE),
     mRepeatBufferDeferred(false),
     mTimePerCaptureUs(-1ll),
@@ -389,10 +388,11 @@ void GraphicBufferSource::codecBufferEmptied(OMX_BUFFERHEADERTYPE* header, int f
         ALOGV("cbi %d matches bq slot %d, handle=%p",
                 cbi, id, mBufferSlot[id]->handle);
 
-        if (id == mLatestBufferId) {
-            CHECK_GT(mLatestBufferUseCount--, 0);
-        } else {
+        mBufferUseCount[id]--;
+        if (mBufferUseCount[id] == 0) {
             releaseBuffer(id, codecBuffer.mFrameNumber, mBufferSlot[id], fence);
+        } else if (mBufferUseCount[id] < 0) {
+            ALOGW("mBufferUseCount for bq slot %d < 0 (=%d)", id, mBufferUseCount[id]);
         }
     } else {
         ALOGV("codecBufferEmptied: no match for emptied buffer in cbi %d",
@@ -532,6 +532,7 @@ bool GraphicBufferSource::fillCodecBuffer_l() {
     if (item.mGraphicBuffer != NULL) {
         ALOGV("fillCodecBuffer_l: setting mBufferSlot %d", item.mBuf);
         mBufferSlot[item.mBuf] = item.mGraphicBuffer;
+        mBufferUseCount[item.mBuf] = 0;
     }
 
     err = UNKNOWN_ERROR;
@@ -611,7 +612,7 @@ bool GraphicBufferSource::repeatLatestBuffer_l() {
         return false;
     }
 
-    ++mLatestBufferUseCount;
+    ++mBufferUseCount[item.mBuf];
 
     /* repeat last frame up to kRepeatLastFrameCount times.
      * in case of static scene, a single repeat might not get rid of encoder
@@ -635,7 +636,7 @@ void GraphicBufferSource::setLatestBuffer_l(
     ALOGV("setLatestBuffer_l");
 
     if (mLatestBufferId >= 0) {
-        if (mLatestBufferUseCount == 0) {
+        if (mBufferUseCount[mLatestBufferId] == 0) {
             releaseBuffer(mLatestBufferId, mLatestBufferFrameNum,
                     mBufferSlot[mLatestBufferId], mLatestBufferFence);
             // mLatestBufferFence will be set to new fence just below
@@ -646,7 +647,9 @@ void GraphicBufferSource::setLatestBuffer_l(
     mLatestBufferFrameNum = item.mFrameNumber;
     mRepeatLastFrameTimestamp = item.mTimestamp + mRepeatAfterUs * 1000;
 
-    mLatestBufferUseCount = dropped ? 0 : 1;
+    if (!dropped) {
+        ++mBufferUseCount[item.mBuf];
+    }
     mRepeatBufferDeferred = false;
     mRepeatLastFrameCount = kRepeatLastFrameCount;
     mLatestBufferFence = item.mFence;
@@ -882,6 +885,7 @@ void GraphicBufferSource::onFrameAvailable(const BufferItem& /*item*/) {
             if (item.mGraphicBuffer != NULL) {
                 ALOGV("onFrameAvailable: setting mBufferSlot %d", item.mBuf);
                 mBufferSlot[item.mBuf] = item.mGraphicBuffer;
+                mBufferUseCount[item.mBuf] = 0;
             }
 
             releaseBuffer(item.mBuf, item.mFrameNumber,
@@ -915,6 +919,7 @@ void GraphicBufferSource::onBuffersReleased() {
     for (int i = 0; i < BufferQueue::NUM_BUFFER_SLOTS; i++) {
         if ((slotMask & 0x01) != 0) {
             mBufferSlot[i] = NULL;
+            mBufferUseCount[i] = 0;
         }
         slotMask >>= 1;
     }
