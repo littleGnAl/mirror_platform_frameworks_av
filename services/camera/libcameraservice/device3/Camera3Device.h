@@ -63,7 +63,7 @@ class Camera3Device :
             private camera3_callback_ops {
   public:
 
-    Camera3Device(int id);
+    explicit Camera3Device(int id);
 
     virtual ~Camera3Device();
 
@@ -200,7 +200,7 @@ class Camera3Device :
     struct Size {
         uint32_t width;
         uint32_t height;
-        Size(uint32_t w = 0, uint32_t h = 0) : width(w), height(h){}
+        explicit Size(uint32_t w = 0, uint32_t h = 0) : width(w), height(h){}
     };
     // Map from format to size.
     Vector<Size>               mSupportedOpaqueInputSizes;

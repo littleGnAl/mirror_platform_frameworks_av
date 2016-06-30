@@ -41,7 +41,7 @@ class Parameters;
 class CallbackProcessor:
             public Thread, public CpuConsumer::FrameAvailableListener {
   public:
-    CallbackProcessor(sp<Camera2Client> client);
+    explicit CallbackProcessor(sp<Camera2Client> client);
     ~CallbackProcessor();
 
     void onFrameAvailable(const BufferItem& item);

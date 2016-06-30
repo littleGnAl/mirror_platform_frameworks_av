@@ -167,7 +167,7 @@ class MediaPlayerService : public BnMediaPlayerService
         class CallbackData {
             friend AudioOutput;
         public:
-            CallbackData(AudioOutput *cookie) {
+            explicit CallbackData(AudioOutput *cookie) {
                 mData = cookie;
                 mSwitching = false;
             }
