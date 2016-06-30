@@ -41,7 +41,7 @@ class SurfaceMediaSource;
 struct ALooper;
 
 struct StagefrightRecorder : public MediaRecorderBase {
-    StagefrightRecorder(const String16 &opPackageName);
+    explicit StagefrightRecorder(const String16 &opPackageName);
     virtual ~StagefrightRecorder();
 
     virtual status_t init();
@@ -148,7 +148,7 @@ private:
     status_t setupMediaSource(sp<MediaSource> *mediaSource);
     status_t setupCameraSource(sp<CameraSource> *cameraSource);
     status_t setupAudioEncoder(const sp<MediaWriter>& writer);
-    status_t setupVideoEncoder(sp<MediaSource> cameraSource, sp<MediaSource> *source);
+    status_t setupVideoEncoder(const sp<MediaSource>& cameraSource, sp<MediaSource> *source);
 
     // Encoding parameter handling utilities
     status_t setParameter(const String8 &key, const String8 &value);
