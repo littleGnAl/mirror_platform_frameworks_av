@@ -33,7 +33,7 @@ class MetaData;
 struct NuPlayerDriver;
 
 struct NuPlayer : public AHandler {
-    NuPlayer(pid_t pid);
+    explicit NuPlayer(pid_t pid);
 
     void setUID(uid_t uid);
 

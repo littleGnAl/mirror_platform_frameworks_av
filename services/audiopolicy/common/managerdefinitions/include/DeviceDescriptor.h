@@ -29,7 +29,7 @@ namespace android {
 class DeviceDescriptor : public AudioPort, public AudioPortConfig
 {
 public:
-    DeviceDescriptor(audio_devices_t type);
+    explicit DeviceDescriptor(audio_devices_t type);
 
     virtual ~DeviceDescriptor() {}
 
