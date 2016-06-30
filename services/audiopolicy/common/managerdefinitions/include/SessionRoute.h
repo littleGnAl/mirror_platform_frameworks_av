@@ -86,7 +86,7 @@ public:
         MAPTYPE_OUTPUT = 1
     } session_route_map_type_t;
 
-    SessionRouteMap(session_route_map_type_t mapType) :
+    explicit SessionRouteMap(session_route_map_type_t mapType) :
         mMapType(mapType)
     {}
 

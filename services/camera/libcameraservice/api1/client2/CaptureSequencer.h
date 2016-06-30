@@ -45,7 +45,7 @@ class CaptureSequencer:
             virtual public Thread,
             virtual public FrameProcessor::FilteredListener {
   public:
-    CaptureSequencer(wp<Camera2Client> client);
+    explicit CaptureSequencer(wp<Camera2Client> client);
     ~CaptureSequencer();
 
     // Get reference to the ZslProcessor, which holds the ZSL buffers and frames

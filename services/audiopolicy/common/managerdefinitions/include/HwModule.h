@@ -31,7 +31,7 @@ class IOProfile;
 class HwModule : public RefBase
 {
 public:
-    HwModule(const char *name);
+    explicit HwModule(const char *name);
     ~HwModule();
 
     status_t loadOutput(cnode *root);

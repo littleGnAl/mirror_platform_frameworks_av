@@ -70,7 +70,7 @@ struct HLSTime {
     int64_t mTimeUs;
     sp<AMessage> mMeta;
 
-    HLSTime(const sp<AMessage> &meta = NULL);
+    explicit HLSTime(const sp<AMessage> &meta = NULL);
     int64_t getSegmentTimeUs() const;
 };
 

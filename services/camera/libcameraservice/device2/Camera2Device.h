@@ -35,7 +35,7 @@ namespace android {
  */
 class Camera2Device: public CameraDeviceBase {
   public:
-    Camera2Device(int id);
+    explicit Camera2Device(int id);
 
     virtual ~Camera2Device();
 
@@ -201,7 +201,7 @@ class Camera2Device: public CameraDeviceBase {
      */
     class StreamAdapter: public camera2_stream_ops, public virtual RefBase {
       public:
-        StreamAdapter(camera2_device_t *d);
+        explicit StreamAdapter(camera2_device_t *d);
 
         ~StreamAdapter();
 
@@ -287,7 +287,7 @@ class Camera2Device: public CameraDeviceBase {
      */
     class ReprocessStreamAdapter: public camera2_stream_in_ops, public virtual RefBase {
       public:
-        ReprocessStreamAdapter(camera2_device_t *d);
+        explicit ReprocessStreamAdapter(camera2_device_t *d);
 
         ~ReprocessStreamAdapter();
 

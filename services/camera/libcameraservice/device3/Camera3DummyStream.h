@@ -42,7 +42,7 @@ class Camera3DummyStream :
      * Set up a dummy stream; doesn't actually connect to anything, and uses
      * a default dummy format and size.
      */
-    Camera3DummyStream(int id);
+    explicit explicit Camera3DummyStream(int id);
 
     virtual ~Camera3DummyStream();
 

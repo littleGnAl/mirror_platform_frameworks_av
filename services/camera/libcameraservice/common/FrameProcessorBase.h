@@ -36,7 +36,7 @@ namespace camera2 {
  */
 class FrameProcessorBase: public Thread {
   public:
-    FrameProcessorBase(wp<CameraDeviceBase> device);
+    explicit FrameProcessorBase(wp<CameraDeviceBase> device);
     virtual ~FrameProcessorBase();
 
     struct FilteredListener: virtual public RefBase {
