@@ -496,7 +496,7 @@ private:
     // server side of the client's IAudioTrack
     class TrackHandle : public android::BnAudioTrack {
     public:
-                            TrackHandle(const sp<PlaybackThread::Track>& track);
+        explicit            TrackHandle(const sp<PlaybackThread::Track>& track);
         virtual             ~TrackHandle();
         virtual sp<IMemory> getCblk() const;
         virtual status_t    start();
@@ -524,7 +524,7 @@ private:
     // server side of the client's IAudioRecord
     class RecordHandle : public android::BnAudioRecord {
     public:
-        RecordHandle(const sp<RecordThread::RecordTrack>& recordTrack);
+        explicit RecordHandle(const sp<RecordThread::RecordTrack>& recordTrack);
         virtual             ~RecordHandle();
         virtual status_t    start(int /*AudioSystem::sync_event_t*/ event, int triggerSession);
         virtual void        stop();

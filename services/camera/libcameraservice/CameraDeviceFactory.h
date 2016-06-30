@@ -35,7 +35,7 @@ class CameraDeviceFactory : public virtual RefBase {
     // Prerequisite: Call registerService.
     static sp<CameraDeviceBase> createDevice(int cameraId);
   private:
-    CameraDeviceFactory(wp<CameraService> service);
+    explicit CameraDeviceFactory(wp<CameraService> service);
 
     static wp<CameraService> sService;
 };

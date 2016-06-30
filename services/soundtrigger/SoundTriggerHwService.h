@@ -156,7 +156,7 @@ public:
     class CallbackThread : public Thread {
     public:
 
-        CallbackThread(const wp<SoundTriggerHwService>& service);
+        explicit CallbackThread(const wp<SoundTriggerHwService>& service);
 
         virtual             ~CallbackThread();
 

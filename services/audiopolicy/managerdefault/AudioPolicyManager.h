@@ -83,7 +83,7 @@ class AudioPolicyManager : public AudioPolicyInterface, public AudioPolicyManage
 {
 
 public:
-                AudioPolicyManager(AudioPolicyClientInterface *clientInterface);
+        explicit AudioPolicyManager(AudioPolicyClientInterface *clientInterface);
         virtual ~AudioPolicyManager();
 
         // AudioPolicyInterface

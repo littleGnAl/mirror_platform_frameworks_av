@@ -397,7 +397,7 @@ private:
     class AudioPolicyClient : public AudioPolicyClientInterface
     {
      public:
-        AudioPolicyClient(AudioPolicyService *service) : mAudioPolicyService(service) {}
+        explicit AudioPolicyClient(AudioPolicyService *service) : mAudioPolicyService(service) {}
         virtual ~AudioPolicyClient() {}
 
         //
