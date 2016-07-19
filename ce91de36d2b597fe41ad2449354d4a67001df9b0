@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0a425b4c_64201005",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2016-07-19T14:41:31Z",
+      "side": 1,
+      "message": "I\u0027ll admit I don\u0027t understand what this actually improves. Doesn\u0027t the compiler see that \u0027elems\u0027 has a fixed size and so will already consider nElems to be a compile time constant?\nDoes this actually change the generated assembly code in a meaningful way?",
+      "range": {
+        "startLine": 455,
+        "startChar": 4,
+        "endLine": 455,
+        "endChar": 16
+      },
+      "revId": "ce91de36d2b597fe41ad2449354d4a67001df9b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a425b4c_242a08e5",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2016-07-19T14:41:31Z",
+      "side": 1,
+      "message": "are these the \"variable-length arrays\" you mention in the commit message? If so what\u0027s variable length about them? They get created with length nElems, and don\u0027t/can\u0027t change after that.",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 1
+      },
+      "revId": "ce91de36d2b597fe41ad2449354d4a67001df9b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
