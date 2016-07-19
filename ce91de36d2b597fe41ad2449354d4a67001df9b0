@@ -45,6 +45,30 @@
       "revId": "ce91de36d2b597fe41ad2449354d4a67001df9b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2a8b9fe1_605d7224",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1069238
+      },
+      "writtenOn": "2016-07-19T17:51:10Z",
+      "side": 1,
+      "message": "These are C99 variable length arrays rather than fixed-size arrays - it\u0027s technically not standard C++, but I don\u0027t care about that aspect. It\u0027s essentially doing alloca here although optimization likely changes it to identical code as a fixed-size array.\n\nThe motivation for removing them is making auditing via -Wvla easier. Variable length arrays can be exploited if the length is attacker controlled, and these ones are in a location that looks scary until you see that the size is really constant.\n\nSee these if you\u0027re able to for cases where it\u0027s actually bad:\n\nhttps://code.google.com/p/android/issues/detail?id\u003d216257\nhttps://code.google.com/p/android/issues/detail?id\u003d216252",
+      "parentUuid": "0a425b4c_242a08e5",
+      "range": {
+        "startLine": 456,
+        "startChar": 0,
+        "endLine": 458,
+        "endChar": 1
+      },
+      "revId": "ce91de36d2b597fe41ad2449354d4a67001df9b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
