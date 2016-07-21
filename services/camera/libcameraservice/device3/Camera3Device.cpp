@@ -167,6 +167,9 @@ status_t Camera3Device::initialize(CameraModule *module)
         return res;
     }
 
+    /** Register in-flight map to the status tracker */
+    mInFlightStatusId = mStatusTracker->addComponent();
+
     bool aeLockAvailable = false;
     camera_metadata_ro_entry aeLockAvailableEntry;
     res = find_camera_metadata_ro_entry(info.static_camera_characteristics,
@@ -1924,6 +1927,10 @@ status_t Camera3Device::registerInFlight(uint32_t frameNumber,
             aeTriggerCancelOverride));
     if (res < 0) return res;
 
+    if (mInFlightMap.size() == 1) {
+        mStatusTracker->markComponentActive(mInFlightStatusId);
+    }
+
     return OK;
 }
 
@@ -2149,6 +2156,11 @@ void Camera3Device::removeInFlightRequestIfReadyLocked(int idx) {
             request.pendingOutputBuffers.size(), 0);
 
         mInFlightMap.removeItemsAt(idx, 1);
+
+        // Indicate idle inFlightMap to the status tracker
+        if (mInFlightMap.size() == 0) {
+            mStatusTracker->markComponentIdle(mInFlightStatusId, Fence::NO_FENCE);
+        }
 
         ALOGVV("%s: removed frame %d from InFlightMap", __FUNCTION__, frameNumber);
      }
