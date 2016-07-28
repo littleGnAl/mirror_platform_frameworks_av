@@ -100,7 +100,7 @@ sp<PinnedBufferItem> RingBufferConsumer::pinSelectedBuffer(
             return NULL;
         }
 
-        pinnedBuffer = new PinnedBufferItem(this, *accIt);
+        pinnedBuffer = new PinnedBufferItem(wp<RingBufferConsumer>(this), *accIt);
         pinBufferLocked(pinnedBuffer->getBufferItem());
 
     } // end scope of mMutex autolock

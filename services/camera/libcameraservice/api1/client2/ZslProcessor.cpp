@@ -58,7 +58,7 @@ ZslProcessor::ZslProcessor(
     mZslQueue.insertAt(0, kZslBufferDepth);
     mFrameList.insertAt(0, kFrameListDepth);
     sp<CaptureSequencer> captureSequencer = mSequencer.promote();
-    if (captureSequencer != 0) captureSequencer->setZslProcessor(this);
+    if (captureSequencer != 0) captureSequencer->setZslProcessor(wp<ZslProcessorInterface>(this));
 }
 
 ZslProcessor::~ZslProcessor() {
@@ -138,7 +138,7 @@ status_t ZslProcessor::updateStream(const Parameters &params) {
         mZslConsumer = new BufferItemConsumer(consumer,
             GRALLOC_USAGE_HW_CAMERA_ZSL,
             kZslBufferDepth);
-        mZslConsumer->setFrameAvailableListener(this);
+        mZslConsumer->setFrameAvailableListener(wp<FrameAvailableListener>(this));
         mZslConsumer->setName(String8("Camera2-ZslConsumer"));
         mZslWindow = new Surface(producer);
     }
@@ -204,7 +204,7 @@ status_t ZslProcessor::updateStream(const Parameters &params) {
     }
     client->registerFrameListener(Camera2Client::kPreviewRequestIdStart,
             Camera2Client::kPreviewRequestIdEnd,
-            this,
+            wp<FilteredListener>(this),
             /*sendPartials*/false);
 
     return OK;
@@ -341,7 +341,7 @@ status_t ZslProcessor::pushToReprocess(int32_t requestId) {
         }
         // TODO: have push-and-clear be atomic
         res = client->getCameraDevice()->pushReprocessBuffer(mZslReprocessStreamId,
-                handle, this);
+                handle, wp<BufferReleasedListener>(this));
         if (res != OK) {
             ALOGE("%s: Unable to push buffer for reprocessing: %s (%d)",
                     __FUNCTION__, strerror(-res), res);

@@ -651,13 +651,13 @@ RadioService::ModuleClient::ModuleClient(const sp<Module>& module,
 
 void RadioService::ModuleClient::onFirstRef()
 {
-    mCallbackThread = new CallbackThread(this);
+    mCallbackThread = new CallbackThread(wp<RadioService::ModuleClient>(this));
     IInterface::asBinder(mClient)->linkToDeath(this);
 }
 
 RadioService::ModuleClient::~ModuleClient() {
     if (mClient != 0) {
-        IInterface::asBinder(mClient)->unlinkToDeath(this);
+        IInterface::asBinder(mClient)->unlinkToDeath(wp<IBinder::DeathRecipient>(this));
         mClient.clear();
     }
     if (mCallbackThread != 0) {
@@ -677,7 +677,7 @@ void RadioService::ModuleClient::detach() {
     {
         AutoMutex lock(mLock);
         if (mClient != 0) {
-            IInterface::asBinder(mClient)->unlinkToDeath(this);
+            IInterface::asBinder(mClient)->unlinkToDeath(wp<IBinder::DeathRecipient>(this));
             mClient.clear();
         }
     }

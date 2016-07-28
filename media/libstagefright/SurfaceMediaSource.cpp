@@ -68,7 +68,7 @@ SurfaceMediaSource::SurfaceMediaSource(uint32_t bufferWidth, uint32_t bufferHeig
     // reference once the ctor ends, as that would cause the refcount of 'this'
     // dropping to 0 at the end of the ctor.  Since all we need is a wp<...>
     // that's what we create.
-    wp<ConsumerListener> listener = static_cast<ConsumerListener*>(this);
+    wp<ConsumerListener> listener(static_cast<ConsumerListener*>(this));
     sp<BufferQueue::ProxyConsumerListener> proxy = new BufferQueue::ProxyConsumerListener(listener);
 
     status_t err = mConsumer->consumerConnect(proxy, false);

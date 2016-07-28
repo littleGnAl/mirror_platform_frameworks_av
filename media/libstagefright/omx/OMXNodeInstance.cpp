@@ -935,7 +935,7 @@ status_t OMXNodeInstance::createPersistentInputSurface(
     consumer->setConsumerUsageBits(GRALLOC_USAGE_HW_VIDEO_ENCODER);
 
     sp<BufferQueue::ProxyConsumerListener> proxy =
-        new BufferQueue::ProxyConsumerListener(NULL);
+        new BufferQueue::ProxyConsumerListener(wp<ConsumerListener>());
     status_t err = consumer->consumerConnect(proxy, false);
     if (err != NO_ERROR) {
         ALOGE("Error connecting to BufferQueue: %s (%d)",

@@ -157,7 +157,7 @@ status_t Camera3Device::initialize(CameraModule *module)
     }
 
     /** Start up status tracker thread */
-    mStatusTracker = new StatusTracker(this);
+    mStatusTracker = new StatusTracker(wp<Camera3Device>(this));
     res = mStatusTracker->run(String8::format("C3Dev-%d-Status", mId).string());
     if (res != OK) {
         SET_ERR_L("Unable to start status tracking thread: %s (%d)",
@@ -177,7 +177,8 @@ status_t Camera3Device::initialize(CameraModule *module)
     }
 
     /** Start up request queue thread */
-    mRequestThread = new RequestThread(this, mStatusTracker, device, aeLockAvailable);
+    mRequestThread = new RequestThread(wp<Camera3Device>(this), mStatusTracker,
+            device, aeLockAvailable);
     res = mRequestThread->run(String8::format("C3Dev-%d-ReqQueue", mId).string());
     if (res != OK) {
         SET_ERR_L("Unable to start request queue thread: %s (%d)",

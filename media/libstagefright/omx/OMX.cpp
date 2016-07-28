@@ -277,7 +277,7 @@ status_t OMX::freeNode(node_id node) {
         mLiveNodes.removeItemsAt(index);
     }
 
-    IInterface::asBinder(instance->observer())->unlinkToDeath(this);
+    IInterface::asBinder(instance->observer())->unlinkToDeath(wp<IBinder::DeathRecipient>(this));
 
     status_t err = instance->freeNode(mMaster);
 

@@ -89,7 +89,7 @@ void SoundTriggerHwService::onFirstRef()
     sp<ISoundTriggerClient> client;
     sp<Module> module = new Module(this, dev, descriptor, client);
     mModules.add(descriptor.handle, module);
-    mCallbackThread = new CallbackThread(this);
+    mCallbackThread = new CallbackThread(wp<SoundTriggerHwService>(this));
 }
 
 SoundTriggerHwService::~SoundTriggerHwService()
@@ -510,7 +510,7 @@ void SoundTriggerHwService::Module::detach() {
         mModels.clear();
     }
     if (mClient != 0) {
-        IInterface::asBinder(mClient)->unlinkToDeath(this);
+        IInterface::asBinder(mClient)->unlinkToDeath(wp<SoundTriggerHwService::Module>(this));
     }
     sp<SoundTriggerHwService> service = mService.promote();
     if (service == 0) {
@@ -813,7 +813,7 @@ void SoundTriggerHwService::Module::setCaptureState_l(bool active)
 
     for (size_t i = 0; i < events.size(); i++) {
         service->sendCallbackEvent_l(new CallbackEvent(CallbackEvent::TYPE_RECOGNITION, events[i],
-                                                     this));
+                                                     wp<SoundTriggerHwService::Module>(this)));
     }
 
 exit:

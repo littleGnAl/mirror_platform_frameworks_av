@@ -119,7 +119,7 @@ MediaCodec::ResourceManagerServiceProxy::ResourceManagerServiceProxy(pid_t pid)
 
 MediaCodec::ResourceManagerServiceProxy::~ResourceManagerServiceProxy() {
     if (mService != NULL) {
-        IInterface::asBinder(mService)->unlinkToDeath(this);
+        IInterface::asBinder(mService)->unlinkToDeath(wp<DeathRecipient>(this));
     }
 }
 

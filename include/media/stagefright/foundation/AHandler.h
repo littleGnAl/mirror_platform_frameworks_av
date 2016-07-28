@@ -47,7 +47,7 @@ struct AHandler : public RefBase {
 
     wp<AHandler> getHandler() const {
         // allow getting a weak reference to a const handler
-        return const_cast<AHandler *>(this);
+        return wp<AHandler>(const_cast<AHandler *>(this));
     }
 
 protected:

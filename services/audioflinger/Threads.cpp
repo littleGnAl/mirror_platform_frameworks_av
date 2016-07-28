@@ -540,7 +540,7 @@ AudioFlinger::ThreadBase::ThreadBase(const sp<AudioFlinger>& audioFlinger, audio
         mPrevOutDevice(AUDIO_DEVICE_NONE), mPrevInDevice(AUDIO_DEVICE_NONE),
         mAudioSource(AUDIO_SOURCE_DEFAULT), mId(id),
         // mName will be set by concrete (non-virtual) subclass
-        mDeathRecipient(new PMDeathRecipient(this)),
+        mDeathRecipient(new PMDeathRecipient(wp<ThreadBase>(this))),
         mSystemReady(systemReady)
 {
     memset(&mPatch, 0, sizeof(struct audio_patch));
@@ -2125,7 +2125,7 @@ void AudioFlinger::PlaybackThread::readOutputParameters_l()
         if (mOutput->stream->set_callback(mOutput->stream,
                                       AudioFlinger::PlaybackThread::asyncCallback, this) == 0) {
             mUseAsyncWrite = true;
-            mCallbackThread = new AudioFlinger::AsyncCallbackThread(this);
+            mCallbackThread = new AudioFlinger::AsyncCallbackThread(wp<PlaybackThread>(this));
         }
     }
 
@@ -6197,7 +6197,7 @@ status_t AudioFlinger::RecordThread::start(RecordThread::RecordTrack* recordTrac
                                        triggerSession,
                                        recordTrack->sessionId(),
                                        syncStartEventCallback,
-                                       recordTrack);
+                                       wp<RefBase>(recordTrack));
         // Sync event can be cancelled by the trigger session if the track is not in a
         // compatible state in which case we start record immediately
         if (recordTrack->mSyncStartEvent->isCancelled()) {

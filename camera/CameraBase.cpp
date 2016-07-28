@@ -121,7 +121,7 @@ void CameraBase<TCam, TCamTraits>::disconnect()
     ALOGV("%s: disconnect", __FUNCTION__);
     if (mCamera != 0) {
         mCamera->disconnect();
-        IInterface::asBinder(mCamera)->unlinkToDeath(this);
+        IInterface::asBinder(mCamera)->unlinkToDeath(wp<DeathRecipient>(this));
         mCamera = 0;
     }
     ALOGV("%s: disconnect (done)", __FUNCTION__);

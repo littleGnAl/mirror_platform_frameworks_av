@@ -136,7 +136,7 @@ void Radio::detach() {
     mCallback.clear();
     if (mIRadio != 0) {
         mIRadio->detach();
-        IInterface::asBinder(mIRadio)->unlinkToDeath(this);
+        IInterface::asBinder(mIRadio)->unlinkToDeath(wp<IBinder::DeathRecipient>(this));
         mIRadio = 0;
     }
 }

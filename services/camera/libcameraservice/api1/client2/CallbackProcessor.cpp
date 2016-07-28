@@ -114,7 +114,7 @@ status_t CallbackProcessor::updateStream(const Parameters &params) {
         sp<IGraphicBufferConsumer> consumer;
         BufferQueue::createBufferQueue(&producer, &consumer);
         mCallbackConsumer = new CpuConsumer(consumer, kCallbackHeapCount);
-        mCallbackConsumer->setFrameAvailableListener(this);
+        mCallbackConsumer->setFrameAvailableListener(wp<FrameAvailableListener>(this));
         mCallbackConsumer->setName(String8("Camera2-CallbackConsumer"));
         mCallbackWindow = new Surface(producer);
     }

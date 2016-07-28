@@ -101,7 +101,7 @@ status_t Camera2Client::initialize(CameraModule *module)
             mCameraId);
     mFrameProcessor->run(threadName.string());
 
-    mCaptureSequencer = new CaptureSequencer(this);
+    mCaptureSequencer = new CaptureSequencer(wp<Camera2Client>(this));
     threadName = String8::format("C2-%d-CaptureSeq",
             mCameraId);
     mCaptureSequencer->run(threadName.string());

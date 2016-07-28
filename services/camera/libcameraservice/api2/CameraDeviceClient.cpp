@@ -89,7 +89,7 @@ status_t CameraDeviceClient::initialize(CameraModule *module)
 
     mFrameProcessor->registerListener(FRAME_PROCESSOR_LISTENER_MIN_ID,
                                       FRAME_PROCESSOR_LISTENER_MAX_ID,
-                                      /*listener*/this,
+                                      /*listener*/wp<FilteredListener>(this),
                                       /*sendPartials*/true);
 
     return OK;
@@ -899,7 +899,7 @@ void CameraDeviceClient::detachDevice() {
 
     mFrameProcessor->removeListener(FRAME_PROCESSOR_LISTENER_MIN_ID,
                                     FRAME_PROCESSOR_LISTENER_MAX_ID,
-                                    /*listener*/this);
+                                    /*listener*/wp<FilteredListener>(this));
     mFrameProcessor->requestExit();
     ALOGV("Camera %d: Waiting for threads", mCameraId);
     mFrameProcessor->join();

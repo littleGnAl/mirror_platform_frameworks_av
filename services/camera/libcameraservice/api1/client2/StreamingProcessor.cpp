@@ -431,7 +431,7 @@ status_t StreamingProcessor::updateRecordingStream(const Parameters &params) {
         mRecordingConsumer = new BufferItemConsumer(consumer,
                 mRecordingGrallocUsage,
                 mRecordingHeapCount + 1);
-        mRecordingConsumer->setFrameAvailableListener(this);
+        mRecordingConsumer->setFrameAvailableListener(wp<FrameAvailableListener>(this));
         mRecordingConsumer->setName(String8("Camera2-RecordingConsumer"));
         mRecordingWindow = new Surface(producer);
         newConsumer = true;

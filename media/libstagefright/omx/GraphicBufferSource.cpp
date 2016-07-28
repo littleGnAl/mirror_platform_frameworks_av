@@ -174,7 +174,7 @@ GraphicBufferSource::GraphicBufferSource(
     // reference once the ctor ends, as that would cause the refcount of 'this'
     // dropping to 0 at the end of the ctor.  Since all we need is a wp<...>
     // that's what we create.
-    wp<BufferQueue::ConsumerListener> listener = static_cast<BufferQueue::ConsumerListener*>(this);
+    wp<BufferQueue::ConsumerListener> listener(static_cast<BufferQueue::ConsumerListener*>(this));
     sp<IConsumerListener> proxy;
     if (!mIsPersistent) {
         proxy = new BufferQueue::ProxyConsumerListener(listener);

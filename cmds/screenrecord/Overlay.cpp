@@ -179,7 +179,7 @@ status_t Overlay::setup_l() {
     mGlConsumer->setDefaultMaxBufferCount(5);
     mGlConsumer->setConsumerUsageBits(GRALLOC_USAGE_HW_TEXTURE);
 
-    mGlConsumer->setFrameAvailableListener(this);
+    mGlConsumer->setFrameAvailableListener(wp<FrameAvailableListener>(this));
 
     return NO_ERROR;
 }

@@ -77,7 +77,7 @@ status_t FrameOutput::createInputSurface(int width, int height,
     mGlConsumer->setDefaultMaxBufferCount(5);
     mGlConsumer->setConsumerUsageBits(GRALLOC_USAGE_HW_TEXTURE);
 
-    mGlConsumer->setFrameAvailableListener(this);
+    mGlConsumer->setFrameAvailableListener(wp<FrameAvailableListener>(this));
 
     mPixelBuf = new uint8_t[width * height * kGlBytesPerPixel];
 

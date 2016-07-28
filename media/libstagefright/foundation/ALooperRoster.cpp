@@ -67,7 +67,7 @@ void ALooperRoster::unregisterHandler(ALooper::handler_id handlerID) {
     sp<AHandler> handler = info.mHandler.promote();
 
     if (handler != NULL) {
-        handler->setID(0, NULL);
+        handler->setID(0, wp<ALooper>());
     }
 
     mHandlers.removeItemsAt(index);

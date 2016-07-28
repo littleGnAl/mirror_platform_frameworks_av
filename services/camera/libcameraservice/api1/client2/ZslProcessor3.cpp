@@ -89,7 +89,7 @@ ZslProcessor3::ZslProcessor3(
     mZslQueue.insertAt(0, mBufferQueueDepth);
     mFrameList.insertAt(0, mFrameListDepth);
     sp<CaptureSequencer> captureSequencer = mSequencer.promote();
-    if (captureSequencer != 0) captureSequencer->setZslProcessor(this);
+    if (captureSequencer != 0) captureSequencer->setZslProcessor(wp<ZslProcessorInterface>(this));
 }
 
 ZslProcessor3::~ZslProcessor3() {
@@ -195,12 +195,12 @@ status_t ZslProcessor3::updateStream(const Parameters &params) {
         }
 
         // Only add the camera3 buffer listener when the stream is created.
-        mZslStream->addBufferListener(this);
+        mZslStream->addBufferListener(wp<Camera3StreamBufferListener>(this));
     }
 
     client->registerFrameListener(Camera2Client::kPreviewRequestIdStart,
             Camera2Client::kPreviewRequestIdEnd,
-            this,
+            wp<FilteredListener>(this),
             /*sendPartials*/false);
 
     return OK;

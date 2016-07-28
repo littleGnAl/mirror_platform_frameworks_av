@@ -74,12 +74,15 @@ void AudioPolicyService::onFirstRef()
     {
         Mutex::Autolock _l(mLock);
 
-        // start tone playback thread
-        mTonePlaybackThread = new AudioCommandThread(String8("ApmTone"), this);
-        // start audio commands thread
-        mAudioCommandThread = new AudioCommandThread(String8("ApmAudio"), this);
-        // start output activity command thread
-        mOutputCommandThread = new AudioCommandThread(String8("ApmOutput"), this);
+        {
+            wp<AudioPolicyService> wpThis(this);
+            // start tone playback thread
+            mTonePlaybackThread = new AudioCommandThread(String8("ApmTone"), wpThis);
+            // start audio commands thread
+            mAudioCommandThread = new AudioCommandThread(String8("ApmAudio"), wpThis);
+            // start output activity command thread
+            mOutputCommandThread = new AudioCommandThread(String8("ApmOutput"), wpThis);
+        }
 
 #ifdef USE_LEGACY_AUDIO_POLICY
         ALOGI("AudioPolicyService CSTOR in legacy mode");

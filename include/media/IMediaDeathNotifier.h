@@ -26,8 +26,8 @@ namespace android {
 class IMediaDeathNotifier: virtual public RefBase
 {
 public:
-    IMediaDeathNotifier() { addObitRecipient(this); }
-    virtual ~IMediaDeathNotifier() { removeObitRecipient(this); }
+    IMediaDeathNotifier() { addObitRecipient(wp<IMediaDeathNotifier>(this)); }
+    virtual ~IMediaDeathNotifier() { removeObitRecipient(wp<IMediaDeathNotifier>(this)); }
 
     virtual void died() = 0;
     static const sp<IMediaPlayerService>& getMediaPlayerService();

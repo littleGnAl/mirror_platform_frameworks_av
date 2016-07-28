@@ -247,7 +247,7 @@ void CameraService::onFirstRef()
         mModule->setCallbacks(this);
     }
 
-    CameraDeviceFactory::registerService(this);
+    CameraDeviceFactory::registerService(wp<CameraService>(this));
 
     CameraService::pingCameraServiceProxy();
 }
@@ -1347,12 +1347,12 @@ status_t CameraService::setTorchMode(const String16& cameraId, bool enabled,
             if (index == NAME_NOT_FOUND) {
                 mTorchClientMap.add(id, clientBinder);
             } else {
-                mTorchClientMap.valueAt(index)->unlinkToDeath(this);
+                mTorchClientMap.valueAt(index)->unlinkToDeath(wp<IBinder::DeathRecipient>(this));
                 mTorchClientMap.replaceValueAt(index, clientBinder);
             }
             clientBinder->linkToDeath(this);
         } else if (index != NAME_NOT_FOUND) {
-            mTorchClientMap.valueAt(index)->unlinkToDeath(this);
+            mTorchClientMap.valueAt(index)->unlinkToDeath(wp<IBinder::DeathRecipient>(this));
         }
     }
 
@@ -1998,7 +1998,7 @@ status_t CameraService::BasicClient::startCameraOps() {
 
     int32_t res;
     // Notify app ops that the camera is not available
-    mOpsCallback = new OpsCallback(this);
+    mOpsCallback = new OpsCallback(wp<BasicClient>(this));
 
     {
         ALOGV("%s: Start camera ops, package name = %s, client UID = %d",

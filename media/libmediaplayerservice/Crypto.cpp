@@ -145,7 +145,7 @@ bool Crypto::loadLibraryForScheme(const String8 &path, const uint8_t uuid[16]) {
     if (index >= 0) {
         mLibrary = mLibraryPathToOpenLibraryMap[index].promote();
     } else {
-        index = mLibraryPathToOpenLibraryMap.add(path, NULL);
+        index = mLibraryPathToOpenLibraryMap.add(path, wp<SharedLibrary>());
     }
 
     if (!mLibrary.get()) {

@@ -115,7 +115,7 @@ status_t Drm::setListener(const sp<IDrmClient>& listener)
 {
     Mutex::Autolock lock(mEventLock);
     if (mListener != NULL){
-        IInterface::asBinder(mListener)->unlinkToDeath(this);
+        IInterface::asBinder(mListener)->unlinkToDeath(wp<IBinder::DeathRecipient>(this));
     }
     if (listener != NULL) {
         IInterface::asBinder(listener)->linkToDeath(this);
@@ -260,7 +260,7 @@ bool Drm::loadLibraryForScheme(const String8 &path, const uint8_t uuid[16]) {
     if (index >= 0) {
         mLibrary = mLibraryPathToOpenLibraryMap[index].promote();
     } else {
-        index = mLibraryPathToOpenLibraryMap.add(path, NULL);
+        index = mLibraryPathToOpenLibraryMap.add(path, wp<SharedLibrary>());
     }
 
     if (!mLibrary.get()) {

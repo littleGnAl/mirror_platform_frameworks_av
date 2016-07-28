@@ -184,7 +184,7 @@ MediaMetadataRetriever::DeathNotifier::~DeathNotifier()
 {
     Mutex::Autolock lock(sServiceLock);
     if (sService != 0) {
-        IInterface::asBinder(sService)->unlinkToDeath(this);
+        IInterface::asBinder(sService)->unlinkToDeath(wp<DeathRecipient>(this));
     }
 }
 

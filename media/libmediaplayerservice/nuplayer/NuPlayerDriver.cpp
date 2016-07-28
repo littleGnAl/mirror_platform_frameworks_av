@@ -58,7 +58,7 @@ NuPlayerDriver::NuPlayerDriver(pid_t pid)
     mPlayer = new NuPlayer(pid);
     mLooper->registerHandler(mPlayer);
 
-    mPlayer->setDriver(this);
+    mPlayer->setDriver(wp<NuPlayerDriver>(this));
 }
 
 NuPlayerDriver::~NuPlayerDriver() {

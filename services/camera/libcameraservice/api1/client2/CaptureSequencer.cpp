@@ -369,7 +369,7 @@ CaptureSequencer::CaptureState CaptureSequencer::manageZslStart(
 
     // We don't want to get partial results for ZSL capture.
     client->registerFrameListener(mCaptureId, mCaptureId + 1,
-            this,
+            wp<FilteredListener>(this),
             /*sendPartials*/false);
 
     // TODO: Actually select the right thing here.
@@ -418,7 +418,7 @@ CaptureSequencer::CaptureState CaptureSequencer::manageStandardStart(
     // TODO: Update to use the HALv3 shutter notification for remove the
     // need for this listener and make it faster. see bug 12530628.
     client->registerFrameListener(mCaptureId, mCaptureId + 1,
-            this,
+            wp<FilteredListener>(this),
             /*sendPartials*/false);
 
     {
@@ -655,7 +655,7 @@ CaptureSequencer::CaptureState CaptureSequencer::manageStandardCaptureWait(
         } else {
             ALOGE("Timestamp metadata is malformed!");
         }
-        client->removeFrameListener(mCaptureId, mCaptureId + 1, this);
+        client->removeFrameListener(mCaptureId, mCaptureId + 1, wp<FilteredListener>(this));
 
         mNewFrameReceived = false;
         mNewCaptureReceived = false;
@@ -682,7 +682,7 @@ CaptureSequencer::CaptureState CaptureSequencer::manageBurstCaptureStart(
         //
         // check for burst mode type in mParameters here
         //
-        mBurstCapture = new BurstCapture(client, this);
+        mBurstCapture = new BurstCapture(client, wp<CaptureSequencer>(this));
     }
 
     res = mCaptureRequest.update(ANDROID_REQUEST_ID, &mCaptureId, 1);

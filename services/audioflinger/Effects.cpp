@@ -1478,7 +1478,7 @@ status_t AudioFlinger::EffectChain::addEffect_l(const sp<EffectModule>& effect)
     uint32_t insertPref = desc.flags & EFFECT_FLAG_INSERT_MASK;
 
     Mutex::Autolock _l(mLock);
-    effect->setChain(this);
+    effect->setChain(wp<AudioFlinger::EffectChain>(this));
     sp<ThreadBase> thread = mThread.promote();
     if (thread == 0) {
         return NO_INIT;

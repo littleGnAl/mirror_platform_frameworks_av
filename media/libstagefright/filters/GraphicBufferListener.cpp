@@ -45,8 +45,8 @@ status_t GraphicBufferListener::init(
         return err;
     }
 
-    wp<BufferQueue::ConsumerListener> listener =
-        static_cast<BufferQueue::ConsumerListener*>(this);
+    wp<BufferQueue::ConsumerListener> listener(
+        static_cast<BufferQueue::ConsumerListener*>(this));
     sp<BufferQueue::ProxyConsumerListener> proxy =
         new BufferQueue::ProxyConsumerListener(listener);
 

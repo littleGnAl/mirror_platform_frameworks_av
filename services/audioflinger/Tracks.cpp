@@ -736,7 +736,8 @@ void AudioFlinger::PlaybackThread::Track::stop()
         if (state == RESUMING || state == ACTIVE || state == PAUSING || state == PAUSED) {
             // If the track is not active (PAUSED and buffers full), flush buffers
             PlaybackThread *playbackThread = (PlaybackThread *)thread.get();
-            if (playbackThread->mActiveTracks.indexOf(this) < 0) {
+            if (playbackThread
+                    ->mActiveTracks.indexOf(wp<AudioFlinger::PlaybackThread::Track>(this)) < 0) {
                 reset();
                 mState = STOPPED;
             } else if (!isFastTrack() && !isOffloaded() && !isDirect()) {
@@ -833,7 +834,8 @@ void AudioFlinger::PlaybackThread::Track::flush()
             if (isDirect()) {
                 mFlushHwPending = true;
             }
-            if (playbackThread->mActiveTracks.indexOf(this) < 0) {
+            if (playbackThread
+                    ->mActiveTracks.indexOf(wp<AudioFlinger::PlaybackThread::Track>(this)) < 0) {
                 reset();
             }
         }

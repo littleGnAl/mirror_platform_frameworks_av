@@ -144,7 +144,7 @@ void SoundTrigger::detach() {
     mCallback.clear();
     if (mISoundTrigger != 0) {
         mISoundTrigger->detach();
-        IInterface::asBinder(mISoundTrigger)->unlinkToDeath(this);
+        IInterface::asBinder(mISoundTrigger)->unlinkToDeath(wp<IBinder::DeathRecipient>(this));
         mISoundTrigger = 0;
     }
 }
