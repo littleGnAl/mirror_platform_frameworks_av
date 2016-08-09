@@ -1165,9 +1165,15 @@ void MediaCodecList::findMatchingCodecs(
         CHECK(info != NULL);
         AString componentName = info->getCodecName();
 
-        if (!((flags & kHardwareCodecsOnly) && !isSoftwareCodec(componentName))) {
-            matches->push(componentName);
-            ALOGV("matching '%s'", componentName.c_str());
+        switch(flags) {
+            case kHardwareCodecsOnly:
+                if (isSoftwareCodec(componentName)) continue; //skip S/W codec
+                // FALL-THROUGH
+            case kPreferSoftwareCodecs:
+                // FALL-THROUGH
+            default:
+                matches->push(componentName);
+                ALOGV("matching '%s'", componentName.c_str());
         }
     }
 
