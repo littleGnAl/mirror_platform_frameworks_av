@@ -42,6 +42,7 @@ static const CodecProfileLevel kH263ProfileLevels[] = {
     { OMX_VIDEO_H263ProfileBaseline, OMX_VIDEO_H263Level10 },
     { OMX_VIDEO_H263ProfileBaseline, OMX_VIDEO_H263Level20 },
     { OMX_VIDEO_H263ProfileBaseline, OMX_VIDEO_H263Level30 },
+    { OMX_VIDEO_H263ProfileBaseline, OMX_VIDEO_H263Level40 },
     { OMX_VIDEO_H263ProfileBaseline, OMX_VIDEO_H263Level45 },
     { OMX_VIDEO_H263ProfileISWV2,    OMX_VIDEO_H263Level10 },
     { OMX_VIDEO_H263ProfileISWV2,    OMX_VIDEO_H263Level20 },
