@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5950b7ef_5af9091b",
+        "filename": "media/libstagefright/MediaCodecList.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1169,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2016-08-11T01:23:39Z",
+      "side": 1,
+      "message": "I think technically flags is a bitfield (even though only two flags are currently defined, and they\u0027re mutually exclusive), so comparing flags with a switch/case seems inappropriate.\nI also don\u0027t think that the new code is any more clear than before, in fact I find it less readable.",
+      "range": {
+        "startLine": 1169,
+        "startChar": 12,
+        "endLine": 1169,
+        "endChar": 36
+      },
+      "revId": "e4ed0a8d12950fefd96ebf4f7f96b737e9a39a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
