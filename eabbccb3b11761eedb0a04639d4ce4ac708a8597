@@ -63,6 +63,30 @@
       "revId": "eabbccb3b11761eedb0a04639d4ce4ac708a8597",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de5c8dda_e5101661",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1089784
+      },
+      "writtenOn": "2016-08-15T03:58:38Z",
+      "side": 1,
+      "message": "In addition, the cts passed when I do NOT comment out this call.",
+      "parentUuid": "de5c8dda_4519ea8f",
+      "range": {
+        "startLine": 58,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 41
+      },
+      "revId": "eabbccb3b11761eedb0a04639d4ce4ac708a8597",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
