@@ -22,6 +22,29 @@
       "revId": "e05551983910801c4bf3c157a000246e26713609",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1bde37f7_18442455",
+        "filename": "media/libstagefright/MediaCodecList.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1168,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2016-08-16T16:37:15Z",
+      "side": 0,
+      "message": "I still prefer to just remove this negation and leave it at that.",
+      "range": {
+        "startLine": 1168,
+        "startChar": 47,
+        "endLine": 1168,
+        "endChar": 48
+      },
+      "revId": "e05551983910801c4bf3c157a000246e26713609",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
