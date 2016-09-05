@@ -23,6 +23,10 @@
 #include <unistd.h>
 
 #include "MediaUtils.h"
+#include <string.h>
+#ifndef UINT32_256M
+#define UINT32_256M (262144000U)
+#endif
 
 extern "C" size_t __cfi_shadow_size();
 
@@ -60,6 +64,15 @@ void limitProcessMemory(
         ALOGW("couldn't determine total RAM");
     }
 
+    if (maxMem < UINT32_256M && !strcmp(property, "ro.media.maxmem")) {
+        /* Add by mtk: Consideration of gmo 512M project low mem:
+         * set limit 256M for media.extractor process when necessary
+         * Note: 256M maybe have risk for gmo 512M, it can adjust 256M to smaller
+         * if media.extractor process allow
+         */
+        maxMem = UINT32_256M;
+        ALOGV("maxMem: %zu too small, set to fixed 256M Bytes", maxMem);
+    }
     int64_t propVal = property_get_int64(property, maxMem);
     if (propVal > 0 && uint64_t(propVal) <= SIZE_MAX) {
         maxMem = propVal;
