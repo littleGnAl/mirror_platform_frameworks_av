@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbe692fe_915cbc1f",
+        "filename": "include/media/Visualizer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2016-09-12T15:30:52Z",
+      "side": 1,
+      "message": "why not call setCaptureCallBack() with a NULL cbk?",
+      "range": {
+        "startLine": 100,
+        "startChar": 9,
+        "endLine": 100,
+        "endChar": 30
+      },
+      "revId": "10e6ec8d2e67f6558342dd1c3775ba9d3f735024",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
