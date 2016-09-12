@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb277249_54b0ace1",
+        "filename": "media/libstagefright/NuCachedSource2.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2016-09-12T18:44:21Z",
+      "side": 1,
+      "message": "The commit message explains why offset shouldn\u0027t be \u003c0, but what about the check against mHighwaterThresholdBytes ?\nIt seems that check could cause the read to return an error when it should be waiting for the cache to fill.",
+      "range": {
+        "startLine": 514,
+        "startChar": 22,
+        "endLine": 514,
+        "endChar": 61
+      },
+      "revId": "a6088fba5ba1318b4cf8548bd43840a8feba985a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
