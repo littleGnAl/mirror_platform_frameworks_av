@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8b6c9a82_93370de7",
+        "filename": "media/libstagefright/omx/GraphicBufferSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2016-09-15T00:54:30Z",
+      "side": 1,
+      "message": "This will be problematic. We can\u0027t release the lastest buffer as soon as it\u0027s emptied, since we might need to repeat it later. Also, this will cause a double-release in setLatestBuffer_l().\n\nPreviously, if it\u0027s the mLatestBufferId, we don\u0027t release it here. We only release it when setLatestBuffer_l sets a new buffer to replace the latest buffer.",
+      "range": {
+        "startLine": 392,
+        "startChar": 8,
+        "endLine": 392,
+        "endChar": 39
+      },
+      "revId": "508c34b12bc3a236fa46f6634f967f7665057edd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
