@@ -30,8 +30,6 @@
 #include <utils/KeyedVector.h>
 #include <utils/String8.h>
 
-class ANativeWindow;
-
 namespace android {
 
 struct AVSyncSettings;
