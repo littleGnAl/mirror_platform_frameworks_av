@@ -497,6 +497,7 @@ String8 devicesToString(audio_devices_t devices)
         {AUDIO_DEVICE_IN_LOOPBACK,          "LOOPBACK"},
         {AUDIO_DEVICE_IN_IP,                "IP"},
         {AUDIO_DEVICE_IN_BUS,               "BUS"},
+        {AUDIO_DEVICE_IN_BLUETOOTH_MIC,     "BLUETOOTH_MIC"},
         {AUDIO_DEVICE_NONE,                 "NONE"},        // must be last
     };
     String8 result;
