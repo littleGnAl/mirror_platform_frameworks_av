@@ -1,0 +1,10 @@
+--- frameworks/av/services/audioflinger/Threads.cpp
++++ b/services/audioflinger/Threads.cpp
+@@ -497,6 +497,7 @@
+         {AUDIO_DEVICE_IN_LOOPBACK,          "LOOPBACK"},
+         {AUDIO_DEVICE_IN_IP,                "IP"},
+         {AUDIO_DEVICE_IN_BUS,               "BUS"},
++        {AUDIO_DEVICE_IN_BLUETOOTH_MIC,     "BLUETOOTH_MIC"},
+         {AUDIO_DEVICE_NONE,                 "NONE"},        // must be last
+     };
+     String8 result;
