@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a5850fca_a2effe74",
+        "filename": "include/ndk/NdkMediaError.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2016-09-23T23:47:05Z",
+      "side": 1,
+      "message": "Not sure does it matters for enum, but these IMGREADER error codes are added in level 24. Does that matter?",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 31
+      },
+      "revId": "2975a24dc42c8953125b39a5194da3aec244cbef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
