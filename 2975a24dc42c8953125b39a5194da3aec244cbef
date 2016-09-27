@@ -22,6 +22,30 @@
       "revId": "2975a24dc42c8953125b39a5194da3aec244cbef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "45ba9338_af18d939",
+        "filename": "include/ndk/NdkMediaError.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2016-09-27T20:50:20Z",
+      "side": 1,
+      "message": "No, that shouldn\u0027t be a problem.\n\nIt could be a problem if these were arguments to an API and the APIs weren\u0027t checking for invalid values, but error codes should be fine.",
+      "parentUuid": "a5850fca_a2effe74",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 31
+      },
+      "revId": "2975a24dc42c8953125b39a5194da3aec244cbef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
