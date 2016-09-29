@@ -22,9 +22,11 @@
 #include <stdlib.h>
 #include <dlfcn.h>
 
-#include <cutils/misc.h>
+#include <android/log.h>
 #include <cutils/config_utils.h>
+#include <cutils/misc.h>
 #include <cutils/properties.h>
+
 #include <audio_effects/audio_effects_conf.h>
 
 static list_elem_t *gEffectList; // list of effect_entry_t: all currently created effects
