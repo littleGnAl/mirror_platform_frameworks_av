@@ -59,7 +59,7 @@ terms listed above has been obtained from the copyright holder.
 /*----------------------------------------------------------------------------
 ; INCLUDES
 ----------------------------------------------------------------------------*/
-#include <log/log.h>
+#include <android/log.h>
 
 #include "a_refl.h"
 #include "typedef.h"
