@@ -35,10 +35,12 @@
 /*------------------------------------------------------------------------------
     1. Include headers
 ------------------------------------------------------------------------------*/
-#include <log/log.h>
 
 #include <stdlib.h>
 #include <string.h>
+
+#include <android/log.h>
+
 #include "basetype.h"
 #include "h264bsd_container.h"
 #include "H264SwDecApi.h"
