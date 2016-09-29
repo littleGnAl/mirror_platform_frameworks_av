@@ -16,12 +16,11 @@
 
 #ifndef LE_FX_ENGINE_DSP_CORE_INTERPOLATOR_BASE_INL_H_
 #define LE_FX_ENGINE_DSP_CORE_INTERPOLATOR_BASE_INL_H_
+//#define LOG_NDEBUG 0
+
+#include <android/log.h>
 
 #include "dsp/core/basic.h"
-
-//#define LOG_NDEBUG 0
-#include <cutils/log.h>
-
 
 namespace le_fx {
 

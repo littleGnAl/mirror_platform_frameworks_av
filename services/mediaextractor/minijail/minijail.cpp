@@ -15,7 +15,7 @@
 ** limitations under the License.
 */
 
-#include <cutils/log.h>
+#include <android/log.h>
 #include <libminijail.h>
 
 #include "minijail.h"

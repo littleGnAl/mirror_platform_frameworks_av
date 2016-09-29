@@ -17,11 +17,10 @@
 #define LE_FX_ENGINE_DSP_CORE_DYNAMIC_RANGE_COMPRESSION_INL_H_
 
 //#define LOG_NDEBUG 0
-#include <cutils/log.h>
 
+#include <android/log.h>
 
 namespace le_fx {
-
 
 inline void AdaptiveDynamicRangeCompression::set_knee_threshold(float decibel) {
   // Converts to 1og-base
