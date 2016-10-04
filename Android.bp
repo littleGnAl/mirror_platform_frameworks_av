@@ -15,5 +15,6 @@ ndk_headers {
 subdirs = [
     "camera/ndk",
     "media/libmedia",
+    "media/libnbaio",
     "media/libstagefright/foundation",
 ]
