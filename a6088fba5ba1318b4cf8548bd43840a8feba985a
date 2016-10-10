@@ -22,6 +22,30 @@
       "revId": "a6088fba5ba1318b4cf8548bd43840a8feba985a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7fe6485b_4142d295",
+        "filename": "media/libstagefright/NuCachedSource2.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1090168
+      },
+      "writtenOn": "2016-10-10T07:49:06Z",
+      "side": 1,
+      "message": "mHighwaterThresholdBytes colud can not be checked here, since there is also a check on mHighwaterThresholdBytes in readInternal, but this will cause the mediaserver crash.",
+      "parentUuid": "cb277249_54b0ace1",
+      "range": {
+        "startLine": 514,
+        "startChar": 22,
+        "endLine": 514,
+        "endChar": 61
+      },
+      "revId": "a6088fba5ba1318b4cf8548bd43840a8feba985a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
