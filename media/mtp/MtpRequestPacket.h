@@ -17,9 +17,11 @@
 #ifndef _MTP_REQUEST_PACKET_H
 #define _MTP_REQUEST_PACKET_H
 
+#include "IMtpHandle.h"
 #include "MtpPacket.h"
 #include "mtp.h"
 
+class IMtpHandle;
 struct usb_request;
 
 namespace android {
@@ -31,8 +33,8 @@ public:
     virtual             ~MtpRequestPacket();
 
 #ifdef MTP_DEVICE
-    // fill our buffer with data from the given file descriptor
-    int                 read(int fd);
+    // fill our buffer with data from the given usb handle
+    int                 read(IMtpHandle *h);
 #endif
 
 #ifdef MTP_HOST
