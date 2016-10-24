@@ -23,8 +23,11 @@
 #include "MtpEventPacket.h"
 #include "mtp.h"
 #include "MtpUtils.h"
+#include "IMtpHandle.h"
 
 #include <utils/threads.h>
+#include <queue>
+#include <mutex>
 
 namespace android {
 
@@ -34,9 +37,6 @@ class MtpStorage;
 class MtpServer {
 
 private:
-    // file descriptor for MTP kernel driver
-    int                 mFD;
-
     MtpDatabase*        mDatabase;
 
     // appear as a PTP device
@@ -56,9 +56,14 @@ private:
     MtpRequestPacket    mRequest;
     MtpDataPacket       mData;
     MtpResponsePacket   mResponse;
-    MtpEventPacket      mEvent;
+
+    // events are queued asynchronously
+    std::queue<MtpEventPacket>      mEventQueue;
+    std::mutex          mEventLock;
 
     MtpStorageList      mStorages;
+
+    static IMtpHandle*  sHandle;
 
     // handle for new object, set by SendObjectInfo and used by SendObject
     MtpObjectHandle     mSendObjectHandle;
@@ -90,7 +95,7 @@ private:
     Vector<ObjectEdit*>  mObjectEditList;
 
 public:
-                        MtpServer(int fd, MtpDatabase* database, bool ptp,
+                        MtpServer(MtpDatabase* database, bool ptp,
                                     int fileGroup, int filePerm, int directoryPerm);
     virtual             ~MtpServer();
 
@@ -100,6 +105,7 @@ public:
     void                addStorage(MtpStorage* storage);
     void                removeStorage(MtpStorage* storage);
 
+    static int          configure(bool usePtp);
     void                run();
 
     void                sendObjectAdded(MtpObjectHandle handle);
