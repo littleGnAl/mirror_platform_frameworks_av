@@ -14,18 +14,17 @@
  * limitations under the License.
  */
 
+#include <cutils/properties.h>
+#include <dirent.h>
+#include <errno.h>
+#include <fcntl.h>
+#include <inttypes.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include <sys/types.h>
-#include <sys/ioctl.h>
 #include <sys/stat.h>
-#include <fcntl.h>
-#include <inttypes.h>
-#include <errno.h>
 #include <sys/stat.h>
-#include <dirent.h>
-
-#include <cutils/properties.h>
+#include <time.h>
 
 #define LOG_TAG "MtpServer"
 
@@ -36,8 +35,6 @@
 #include "MtpServer.h"
 #include "MtpStorage.h"
 #include "MtpStringBuffer.h"
-
-#include <linux/usb/f_mtp.h>
 
 namespace android {
 
@@ -97,16 +94,16 @@ static const MtpEventCode kSupportedEventCodes[] = {
     MTP_EVENT_DEVICE_PROP_CHANGED,
 };
 
-MtpServer::MtpServer(int fd, MtpDatabase* database, bool ptp,
+MtpServer::MtpServer(MtpDatabase* database, bool ptp,
                     int fileGroup, int filePerm, int directoryPerm)
-    :   mFD(fd),
-        mDatabase(database),
+    :   mDatabase(database),
         mPtp(ptp),
         mFileGroup(fileGroup),
         mFilePermission(filePerm),
         mDirectoryPermission(directoryPerm),
         mSessionID(0),
         mSessionOpen(false),
+        mEventLock(PTHREAD_MUTEX_INITIALIZER),
         mSendObjectHandle(kInvalidObjectHandle),
         mSendObjectFormat(0),
         mSendObjectFileSize(0)
@@ -114,6 +111,17 @@ MtpServer::MtpServer(int fd, MtpDatabase* database, bool ptp,
 }
 
 MtpServer::~MtpServer() {
+}
+
+IUsbHandle* MtpServer::usb = nullptr;
+
+void MtpServer::configure(bool usePtp) {
+    if (usb == nullptr) {
+        bool ffs_ok = access(ffs_mtp_ep0, W_OK) == 0;
+        usb = ffs_ok ? get_ffs_handle() : get_mtp_handle();
+    }
+
+    usb->configure(usePtp);
 }
 
 void MtpServer::addStorage(MtpStorage* storage) {
@@ -143,22 +151,26 @@ MtpStorage* MtpServer::getStorage(MtpStorageID id) {
         if (storage->getStorageID() == id)
             return storage;
     }
-    return NULL;
+    return nullptr;
 }
 
 bool MtpServer::hasStorage(MtpStorageID id) {
     if (id == 0 || id == 0xFFFFFFFF)
         return mStorages.size() > 0;
-    return (getStorage(id) != NULL);
+    return (getStorage(id) != nullptr);
 }
 
 void MtpServer::run() {
-    int fd = mFD;
-
-    ALOGV("MtpServer::run fd: %d\n", fd);
+    // Wait for the driver to be ready
+    if (usb) {
+        usb->start();
+    } else {
+        ALOGE("No usb driver installed!");
+        return;
+    }
 
     while (1) {
-        int ret = mRequest.read(fd);
+        int ret = mRequest.read(usb);
         if (ret < 0) {
             ALOGV("request read returned %d, errno: %d", ret, errno);
             if (errno == ECANCELED) {
@@ -171,15 +183,13 @@ void MtpServer::run() {
         MtpTransactionID transaction = mRequest.getTransactionID();
 
         ALOGV("operation: %s", MtpDebug::getOperationCodeName(operation));
-        mRequest.dump();
-
         // FIXME need to generalize this
         bool dataIn = (operation == MTP_OPERATION_SEND_OBJECT_INFO
                     || operation == MTP_OPERATION_SET_OBJECT_REFERENCES
                     || operation == MTP_OPERATION_SET_OBJECT_PROP_VALUE
                     || operation == MTP_OPERATION_SET_DEVICE_PROP_VALUE);
         if (dataIn) {
-            int ret = mData.read(fd);
+            int ret = mData.read(usb);
             if (ret < 0) {
                 ALOGE("data read returned %d, errno: %d", ret, errno);
                 if (errno == ECANCELED) {
@@ -189,7 +199,6 @@ void MtpServer::run() {
                 break;
             }
             ALOGV("received data:");
-            mData.dump();
         } else {
             mData.reset();
         }
@@ -199,8 +208,7 @@ void MtpServer::run() {
                 mData.setOperationCode(operation);
                 mData.setTransactionID(transaction);
                 ALOGV("sending data:");
-                mData.dump();
-                ret = mData.write(fd);
+                ret = mData.write(usb);
                 if (ret < 0) {
                     ALOGE("request write returned %d, errno: %d", ret, errno);
                     if (errno == ECANCELED) {
@@ -213,9 +221,8 @@ void MtpServer::run() {
 
             mResponse.setTransactionID(transaction);
             ALOGV("sending response %04X", mResponse.getResponseCode());
-            ret = mResponse.write(fd);
+            ret = mResponse.write(usb);
             const int savedErrno = errno;
-            mResponse.dump();
             if (ret < 0) {
                 ALOGE("request write returned %d, errno: %d", ret, errno);
                 if (savedErrno == ECANCELED) {
@@ -226,6 +233,21 @@ void MtpServer::run() {
             }
         } else {
             ALOGV("skipping response\n");
+        }
+
+        // Some hosts, such as linux, do not like events interleaved with
+        // ceratin operations and will hang.
+        if (operation != MTP_OPERATION_GET_OBJECT_PROP_DESC &&
+                operation != MTP_OPERATION_OPEN_SESSION &&
+                operation != MTP_OPERATION_GET_DEVICE_PROP_DESC &&
+                operation != MTP_OPERATION_GET_DEVICE_INFO) {
+            // Send any accumulated events
+            while (!mEventQueue.empty()) {
+                pthread_mutex_lock(&mEventLock);
+                mEventQueue.front().write(usb);
+                mEventQueue.pop();
+                pthread_mutex_unlock(&mEventLock);
+            }
         }
     }
 
@@ -240,8 +262,9 @@ void MtpServer::run() {
 
     if (mSessionOpen)
         mDatabase->sessionEnded();
-    close(fd);
-    mFD = -1;
+
+    // Close the driver
+    usb->close();
 }
 
 void MtpServer::sendObjectAdded(MtpObjectHandle handle) {
@@ -270,12 +293,14 @@ void MtpServer::sendDevicePropertyChanged(MtpDeviceProperty property) {
 }
 
 void MtpServer::sendEvent(MtpEventCode code, uint32_t param1) {
+    MtpEventPacket event;
     if (mSessionOpen) {
-        mEvent.setEventCode(code);
-        mEvent.setTransactionID(mRequest.getTransactionID());
-        mEvent.setParameter(1, param1);
-        int ret = mEvent.write(mFD);
-        ALOGV("mEvent.write returned %d\n", ret);
+        event.setEventCode(code);
+        event.setTransactionID(mRequest.getTransactionID());
+        event.setParameter(1, param1);
+        pthread_mutex_lock(&mEventLock);
+        mEventQueue.push(event);
+        pthread_mutex_unlock(&mEventLock);
     }
 }
 
@@ -291,7 +316,7 @@ MtpServer::ObjectEdit* MtpServer::getEditObject(MtpObjectHandle handle) {
         ObjectEdit* edit = mObjectEditList[i];
         if (edit->mHandle == handle) return edit;
     }
-    return NULL;
+    return nullptr;
 }
 
 void MtpServer::removeEditObject(MtpObjectHandle handle) {
@@ -763,6 +788,7 @@ MtpResponseCode MtpServer::doGetObjectInfo() {
 }
 
 MtpResponseCode MtpServer::doGetObject() {
+    time_t start_time = time(nullptr);
     if (!hasStorage())
         return MTP_RESPONSE_INVALID_OBJECT_HANDLE;
     if (mRequest.getParameterCount() < 1)
@@ -787,7 +813,7 @@ MtpResponseCode MtpServer::doGetObject() {
     mfr.transaction_id = mRequest.getTransactionID();
 
     // then transfer the file
-    int ret = ioctl(mFD, MTP_SEND_FILE_WITH_HEADER, (unsigned long)&mfr);
+    int ret = usb->sendFile(mfr);
     if (ret < 0) {
         if (errno == ECANCELED) {
             result = MTP_RESPONSE_TRANSACTION_CANCELLED;
@@ -798,7 +824,13 @@ MtpResponseCode MtpServer::doGetObject() {
         result = MTP_RESPONSE_OK;
     }
 
-    ALOGV("MTP_SEND_FILE_WITH_HEADER returned %d\n", ret);
+    time_t donetime = time(nullptr);
+    struct stat sstat;
+    fstat(mfr.fd, &sstat);
+    uint64_t finalsize = sstat.st_size;
+    ALOGV("Got a file over MTP. Time: %lds, Size: %" PRIu64 ", Rate: %f bytes/s",
+            donetime - start_time, finalsize,
+            ((double) finalsize) / ((double) (donetime - start_time)));
     close(mfr.fd);
     return result;
 }
@@ -813,7 +845,7 @@ MtpResponseCode MtpServer::doGetThumb() {
         // send data
         mData.setOperationCode(mRequest.getOperationCode());
         mData.setTransactionID(mRequest.getTransactionID());
-        mData.writeData(mFD, thumb, thumbSize);
+        mData.writeData(usb, thumb, thumbSize);
         free(thumb);
         return MTP_RESPONSE_OK;
     } else {
@@ -867,7 +899,7 @@ MtpResponseCode MtpServer::doGetPartialObject(MtpOperationCode operation) {
     mResponse.setParameter(1, length);
 
     // transfer the file
-    int ret = ioctl(mFD, MTP_SEND_FILE_WITH_HEADER, (unsigned long)&mfr);
+    int ret = usb->sendFile(mfr);
     ALOGV("MTP_SEND_FILE_WITH_HEADER returned %d\n", ret);
     result = MTP_RESPONSE_OK;
     if (ret < 0) {
@@ -984,6 +1016,7 @@ MtpResponseCode MtpServer::doSendObjectInfo() {
 }
 
 MtpResponseCode MtpServer::doSendObject() {
+    time_t start_time = time(nullptr);
     if (!hasStorage())
         return MTP_RESPONSE_GENERAL_ERROR;
     MtpResponseCode result = MTP_RESPONSE_OK;
@@ -998,7 +1031,7 @@ MtpResponseCode MtpServer::doSendObject() {
     }
 
     // read the header, and possibly some data
-    ret = mData.read(mFD);
+    ret = mData.read(usb);
     if (ret < MTP_CONTAINER_HEADER_SIZE) {
         result = MTP_RESPONSE_GENERAL_ERROR;
         goto done;
@@ -1034,9 +1067,8 @@ MtpResponseCode MtpServer::doSendObject() {
                 mfr.length = mSendObjectFileSize - initialData;
             }
 
-            ALOGV("receiving %s\n", (const char *)mSendObjectFilePath);
             // transfer the file
-            ret = ioctl(mFD, MTP_RECEIVE_FILE, (unsigned long)&mfr);
+            ret = usb->receiveFile(mfr);
             if ((ret < 0) && (errno == ECANCELED)) {
                 isCanceled = true;
             }
@@ -1044,6 +1076,8 @@ MtpResponseCode MtpServer::doSendObject() {
             ALOGV("MTP_RECEIVE_FILE returned %d\n", ret);
         }
     }
+    struct stat sstat;
+    fstat(mfr.fd, &sstat);
     close(mfr.fd);
 
     if (ret < 0) {
@@ -1062,6 +1096,12 @@ done:
             result == MTP_RESPONSE_OK);
     mSendObjectHandle = kInvalidObjectHandle;
     mSendObjectFormat = 0;
+
+    time_t donetime = time(nullptr);
+    uint64_t finalsize = sstat.st_size;
+    ALOGV("Got a file over MTP. Time: %lds, Size: %" PRIu64 ", Rate: %f bytes/s",
+            donetime - start_time, finalsize,
+            ((double) finalsize) / ((double) (donetime - start_time)));
     return result;
 }
 
@@ -1205,7 +1245,7 @@ MtpResponseCode MtpServer::doSendPartialObject() {
     ALOGV("receiving partial %s %" PRIu64 " %" PRIu32, filePath, offset, length);
 
     // read the header, and possibly some data
-    int ret = mData.read(mFD);
+    int ret = mData.read(usb);
     if (ret < MTP_CONTAINER_HEADER_SIZE)
         return MTP_RESPONSE_GENERAL_ERROR;
     int initialData = ret - MTP_CONTAINER_HEADER_SIZE;
@@ -1227,11 +1267,10 @@ MtpResponseCode MtpServer::doSendPartialObject() {
             mfr.length = length;
 
             // transfer the file
-            ret = ioctl(mFD, MTP_RECEIVE_FILE, (unsigned long)&mfr);
+            ret = usb->receiveFile(mfr);
             if ((ret < 0) && (errno == ECANCELED)) {
                 isCanceled = true;
             }
-            ALOGV("MTP_RECEIVE_FILE returned %d", ret);
         }
     }
     if (ret < 0) {

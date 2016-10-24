@@ -34,11 +34,14 @@ LOCAL_SRC_FILES:=                                       \
                   MtpStringBuffer.cpp                   \
                   MtpStorage.cpp                        \
                   MtpUtils.cpp                          \
+                  UsbFfsHandle.cpp                      \
+                  UsbMtpHandle.cpp                      \
+                  AsyncIO.cpp                           \
 
 LOCAL_MODULE:= libmtp
 
 LOCAL_CFLAGS := -DMTP_DEVICE -DMTP_HOST -Wall -Wextra -Werror
 
-LOCAL_SHARED_LIBRARIES := libutils libcutils liblog libusbhost libbinder
+LOCAL_SHARED_LIBRARIES := libbase libutils libcutils liblog libusbhost libbinder
 
 include $(BUILD_SHARED_LIBRARY)

@@ -95,12 +95,12 @@ public:
 
 
 #ifdef MTP_DEVICE
-    // fill our buffer with data from the given file descriptor
-    int                 read(int fd);
+    // fill our buffer with data from the given usb handle
+    int                 read(IUsbHandle *h);
 
-    // write our data to the given file descriptor
-    int                 write(int fd);
-    int                 writeData(int fd, void* data, uint32_t length);
+    // write our data to the given usb handle
+    int                 write(IUsbHandle *h);
+    int                 writeData(IUsbHandle *h, void* data, uint32_t length);
 #endif
 
 #ifdef MTP_HOST
