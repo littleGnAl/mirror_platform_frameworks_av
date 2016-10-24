@@ -34,6 +34,9 @@ LOCAL_SRC_FILES:=                                       \
                   MtpStringBuffer.cpp                   \
                   MtpStorage.cpp                        \
                   MtpUtils.cpp                          \
+                  UsbFfsHandle.cpp                      \
+                  UsbMtpHandle.cpp                      \
+                  aio.cpp                               \
 
 LOCAL_MODULE:= libmtp
 

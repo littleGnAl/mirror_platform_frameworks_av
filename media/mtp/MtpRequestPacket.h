@@ -1,4 +1,5 @@
 /*
+ *
  * Copyright (C) 2010 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -31,8 +32,8 @@ public:
     virtual             ~MtpRequestPacket();
 
 #ifdef MTP_DEVICE
-    // fill our buffer with data from the given file descriptor
-    int                 read(int fd);
+    // fill our buffer with data from the given usb handle
+    int                 read(UsbHandle *h);
 #endif
 
 #ifdef MTP_HOST
