@@ -29,8 +29,8 @@ public:
     virtual             ~MtpEventPacket();
 
 #ifdef MTP_DEVICE
-    // write our data to the given file descriptor
-    int                 write(int fd);
+    // write our data to the given usb handle
+    int                 write(IMtpHandle *h);
 #endif
 
 #ifdef MTP_HOST
