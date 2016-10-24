@@ -18,6 +18,7 @@
 #define _MTP_PACKET_H
 
 #include "MtpTypes.h"
+#include "IMtpHandle.h"
 
 struct usb_device;
 struct usb_request;
