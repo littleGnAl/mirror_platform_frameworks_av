@@ -1505,6 +1505,7 @@ static const struct mime_conv_t mimeLookup[] = {
     { MEDIA_MIMETYPE_AUDIO_AAC,         AUDIO_FORMAT_AAC },
     { MEDIA_MIMETYPE_AUDIO_VORBIS,      AUDIO_FORMAT_VORBIS },
     { MEDIA_MIMETYPE_AUDIO_OPUS,        AUDIO_FORMAT_OPUS},
+    { MEDIA_MIMETYPE_AUDIO_AC4,         AUDIO_FORMAT_AC4 },
     { 0, AUDIO_FORMAT_INVALID }
 };
 
