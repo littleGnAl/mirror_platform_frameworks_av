@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "810004b4_ecce736a",
+        "filename": "media/libstagefright/SampleTable.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2016-10-26T18:07:48Z",
+      "side": 1,
+      "message": "mSyncSamples[i] \u003d\u003d 0 means the stream is malformed. It\u0027s better to at least log this, e.g.,\n\n        if (mSyncSamples[i] \u003d\u003d 0) {\n            ALOGE(\"b/32423862, unexpected zero value in stss\");\n            continue;\n        }\n        mSyncSamples[i] \u003d ntohl(mSyncSamples[i]) - 1;",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 9
+      },
+      "revId": "e87298737b3a1a519a621d8d6d230947b5f2ef6c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
