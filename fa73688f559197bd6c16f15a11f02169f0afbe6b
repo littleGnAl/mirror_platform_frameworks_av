@@ -59,6 +59,24 @@
     },
     {
       "key": {
+        "uuid": "810004b4_ccce0f16",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T17:45:10Z",
+      "side": 1,
+      "message": "MtpReceiver will invoke this when mtp or ptp is enabled in config, but not connected. This tells functionfs to write the descriptors, and connecting is not possible until that happens. Check out the other commits in this topic",
+      "parentUuid": "e16c60ba_13b04cc4",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "610b10aa_47490ed0",
         "filename": "media/mtp/MtpServer.cpp",
         "patchSetId": 2
@@ -70,6 +88,24 @@
       "writtenOn": "2016-10-26T01:18:51Z",
       "side": 1,
       "message": "Sending MTP Mtp Event! -\u003e Sending MTP Event!",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_eccdd317",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T17:45:10Z",
+      "side": 1,
+      "message": "whoops, left over from debugging",
+      "parentUuid": "610b10aa_47490ed0",
       "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -385,6 +421,30 @@
     },
     {
       "key": {
+        "uuid": "810004b4_a1ada486",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T17:45:10Z",
+      "side": 1,
+      "message": "Unfortunately it\u0027s just different enough that they don\u0027t really have any common structures or elements that can be generalized",
+      "parentUuid": "810004b4_9e5a7d0a",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 2
+      },
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "810004b4_9e839d26",
         "filename": "media/mtp/UsbFfsHandle.cpp",
         "patchSetId": 2
@@ -396,6 +456,24 @@
       "writtenOn": "2016-10-26T16:03:12Z",
       "side": 1,
       "message": "shouldn\u0027t the destructor close the endpoints?",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_8c56d771",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T17:45:10Z",
+      "side": 1,
+      "message": "The handles are static to MtpServer, and live longer than a single server instance. MtpServer will call close() which handles closing the endpoint files. As for ep0, there\u0027s actually no real need to close it unless the descriptors change, we save some time by leaving it open so we don\u0027t have to write the descriptors again the next time we start up.",
+      "parentUuid": "810004b4_9e839d26",
       "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -436,6 +514,30 @@
       "writtenOn": "2016-10-26T16:03:12Z",
       "side": 1,
       "message": "is this needed? should these actually be in the destructor?",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 449,
+        "endChar": 18
+      },
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_ecf1537b",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T17:45:10Z",
+      "side": 1,
+      "message": "see above comment on the destructor",
+      "parentUuid": "810004b4_3e937177",
       "range": {
         "startLine": 447,
         "startChar": 0,
@@ -493,6 +595,24 @@
       "writtenOn": "2016-10-26T16:03:12Z",
       "side": 1,
       "message": "do you really want to go through the loop once if file_length is 0? comment why if so, otherwise use while loop?",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_ec1833eb",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T17:45:10Z",
+      "side": 1,
+      "message": "you might be right, let me make sure",
+      "parentUuid": "810004b4_3e189137",
       "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -699,6 +819,24 @@
       "writtenOn": "2016-10-26T16:03:12Z",
       "side": 1,
       "message": "this should either go in libc (with tests), or be renamed to not clash with \u003caio.h\u003e.\n\nbut the splice stuff makes this a *superset* of POSIX, no?\n\nbut it seems like you\u0027re not actually using the splice stuff?",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_0c9767d4",
+        "filename": "media/mtp/aio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T17:45:10Z",
+      "side": 1,
+      "message": "I\u0027m not using the splice stuff atm, but once I get splice actually implemented for functionfs in the kernel it will give a slight performance increase.\n\nMy original intent was to have just the posix stuff and remove this file when aio is added to bionic, but since the splice stuff may be necessary in the future it would probably be better to just rename this.",
+      "parentUuid": "810004b4_3e41b103",
       "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
