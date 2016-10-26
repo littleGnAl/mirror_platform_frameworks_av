@@ -19,6 +19,29 @@
     },
     {
       "key": {
+        "uuid": "810004b4_5e674500",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-10-26T15:25:53Z",
+      "side": 1,
+      "message": "nullptr",
+      "range": {
+        "startLine": 39,
+        "startChar": 20,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e16c60ba_13b04cc4",
         "filename": "media/mtp/MtpServer.cpp",
         "patchSetId": 2
@@ -338,6 +361,24 @@
     },
     {
       "key": {
+        "uuid": "810004b4_fe8e197b",
+        "filename": "media/mtp/UsbHandle.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-10-26T15:25:53Z",
+      "side": 1,
+      "message": "Not if you want the string concatentation macros below to work...\n\nWhether they are necessary at all is the question...",
+      "parentUuid": "e16c60ba_337f081d",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e16c60ba_f3caf036",
         "filename": "media/mtp/UsbMtpHandle.cpp",
         "patchSetId": 2
@@ -366,6 +407,29 @@
       "writtenOn": "2016-10-26T01:18:51Z",
       "side": 1,
       "message": "nit: break line is not needed.",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_7e832952",
+        "filename": "media/mtp/UsbMtpHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2016-10-26T15:25:53Z",
+      "side": 1,
+      "message": "This is C++, please do not use C-style casts.",
+      "range": {
+        "startLine": 71,
+        "startChar": 39,
+        "endLine": 71,
+        "endChar": 54
+      },
       "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
