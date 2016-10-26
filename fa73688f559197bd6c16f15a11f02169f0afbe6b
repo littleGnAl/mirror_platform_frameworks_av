@@ -42,6 +42,48 @@
     },
     {
       "key": {
+        "uuid": "810004b4_6788bcab",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "610b10aa_674c12e2",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_878b50a8",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "810004b4_5e674500",
+      "range": {
+        "startLine": 39,
+        "startChar": 20,
+        "endLine": 39,
+        "endChar": 24
+      },
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e16c60ba_13b04cc4",
         "filename": "media/mtp/MtpServer.cpp",
         "patchSetId": 2
@@ -129,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "810004b4_e7504c4c",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Left over from experimenting with events, removed.",
+      "parentUuid": "610b10aa_272f3aea",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "810004b4_bef021ea",
         "filename": "media/mtp/MtpServer.cpp",
         "patchSetId": 2
@@ -140,6 +200,30 @@
       "writtenOn": "2016-10-26T16:03:12Z",
       "side": 1,
       "message": "\"m\" was meant to mean \"member\", so this should just be \"event\" now.",
+      "range": {
+        "startLine": 293,
+        "startChar": 19,
+        "endLine": 293,
+        "endChar": 25
+      },
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_072580dc",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "810004b4_bef021ea",
       "range": {
         "startLine": 293,
         "startChar": 19,
@@ -192,6 +276,48 @@
     },
     {
       "key": {
+        "uuid": "810004b4_473f78ec",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "610b10aa_c745feb2",
+      "range": {
+        "startLine": 828,
+        "startChar": 4,
+        "endLine": 828,
+        "endChar": 9
+      },
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_273c04f6",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 828,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "610b10aa_e74002a5",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "610b10aa_873f061d",
         "filename": "media/mtp/MtpServer.cpp",
         "patchSetId": 2
@@ -238,6 +364,54 @@
     },
     {
       "key": {
+        "uuid": "810004b4_07f3c034",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "610b10aa_a73a0a2d",
+      "range": {
+        "startLine": 1099,
+        "startChar": 4,
+        "endLine": 1099,
+        "endChar": 9
+      },
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_a7fdb400",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "610b10aa_873f061d",
+      "range": {
+        "startLine": 1099,
+        "startChar": 72,
+        "endLine": 1099,
+        "endChar": 73
+      },
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "610b10aa_6735323c",
         "filename": "media/mtp/MtpServer.cpp",
         "patchSetId": 2
@@ -249,6 +423,30 @@
       "writtenOn": "2016-10-26T01:18:51Z",
       "side": 1,
       "message": "You can use PRIu64 as a formatter for uint64_t.",
+      "range": {
+        "startLine": 1100,
+        "startChar": 35,
+        "endLine": 1100,
+        "endChar": 50
+      },
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_47edb848",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1100,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "610b10aa_6735323c",
       "range": {
         "startLine": 1100,
         "startChar": 35,
@@ -278,6 +476,24 @@
     },
     {
       "key": {
+        "uuid": "810004b4_27ea4432",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1101,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "610b10aa_47322e56",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "610b10aa_8766e666",
         "filename": "media/mtp/MtpServer.h",
         "patchSetId": 2
@@ -289,6 +505,24 @@
       "writtenOn": "2016-10-26T01:18:51Z",
       "side": 1,
       "message": "nit: UsbHandle*      usb? to make the line consistent with #42?",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_0728e09a",
+        "filename": "media/mtp/MtpServer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "610b10aa_8766e666",
       "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -330,6 +564,42 @@
     },
     {
       "key": {
+        "uuid": "810004b4_c7f0a8eb",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "810004b4_3ee53123",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_6771dc8d",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "610b10aa_072c36f1",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "810004b4_7edfa94e",
         "filename": "media/mtp/UsbFfsHandle.cpp",
         "patchSetId": 2
@@ -341,6 +611,24 @@
       "writtenOn": "2016-10-26T16:03:12Z",
       "side": 1,
       "message": "\u003candroid-base/properties.h\u003e instead?",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_8774f07f",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "810004b4_7edfa94e",
       "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -364,6 +652,24 @@
     },
     {
       "key": {
+        "uuid": "810004b4_d2f22481",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "610b10aa_e7a5a257",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e16c60ba_33ad4869",
         "filename": "media/mtp/UsbFfsHandle.cpp",
         "patchSetId": 2
@@ -381,6 +687,24 @@
     },
     {
       "key": {
+        "uuid": "810004b4_32044079",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e16c60ba_33ad4869",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "810004b4_be7e615a",
         "filename": "media/mtp/UsbFfsHandle.cpp",
         "patchSetId": 2
@@ -392,6 +716,24 @@
       "writtenOn": "2016-10-26T16:03:12Z",
       "side": 1,
       "message": "std::mutex in new code? http://en.cppreference.com/w/cpp/thread/mutex",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_ff3290bd",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "810004b4_be7e615a",
       "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -503,6 +845,30 @@
     },
     {
       "key": {
+        "uuid": "810004b4_b24b3075",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "810004b4_de64f5d1",
+      "range": {
+        "startLine": 400,
+        "startChar": 12,
+        "endLine": 400,
+        "endChar": 17
+      },
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "810004b4_3e937177",
         "filename": "media/mtp/UsbFfsHandle.cpp",
         "patchSetId": 2
@@ -567,6 +933,24 @@
     },
     {
       "key": {
+        "uuid": "810004b4_f2b4888b",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "This gets me the current offset in the file",
+      "parentUuid": "810004b4_fe2d795c",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "810004b4_be230173",
         "filename": "media/mtp/UsbFfsHandle.cpp",
         "patchSetId": 2
@@ -578,6 +962,24 @@
       "writtenOn": "2016-10-26T16:03:12Z",
       "side": 1,
       "message": "missing null checks.\n\nbut better to use std::vector and lose the gotos.",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_825dfb5e",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "810004b4_be230173",
       "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -659,6 +1061,24 @@
     },
     {
       "key": {
+        "uuid": "810004b4_75d5ff44",
+        "filename": "media/mtp/UsbHandle.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e16c60ba_b3723857",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e16c60ba_d377b445",
         "filename": "media/mtp/UsbHandle.h",
         "patchSetId": 2
@@ -670,6 +1090,24 @@
       "writtenOn": "2016-10-26T01:18:51Z",
       "side": 1,
       "message": "\u0027public:\u0027 lines should not increase indent level.",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_157643bb",
+        "filename": "media/mtp/UsbHandle.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e16c60ba_d377b445",
       "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -728,6 +1166,24 @@
     },
     {
       "key": {
+        "uuid": "810004b4_b54b1775",
+        "filename": "media/mtp/UsbMtpHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e16c60ba_f3caf036",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e16c60ba_d3c5f429",
         "filename": "media/mtp/UsbMtpHandle.cpp",
         "patchSetId": 2
@@ -745,6 +1201,24 @@
     },
     {
       "key": {
+        "uuid": "810004b4_15412355",
+        "filename": "media/mtp/UsbMtpHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e16c60ba_d3c5f429",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "810004b4_7e832952",
         "filename": "media/mtp/UsbMtpHandle.cpp",
         "patchSetId": 2
@@ -756,6 +1230,30 @@
       "writtenOn": "2016-10-26T15:25:53Z",
       "side": 1,
       "message": "This is C++, please do not use C-style casts.",
+      "range": {
+        "startLine": 71,
+        "startChar": 39,
+        "endLine": 71,
+        "endChar": 54
+      },
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_f5458f60",
+        "filename": "media/mtp/UsbMtpHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "810004b4_7e832952",
       "range": {
         "startLine": 71,
         "startChar": 39,
@@ -791,6 +1289,30 @@
     },
     {
       "key": {
+        "uuid": "810004b4_d51deb7c",
+        "filename": "media/mtp/aio.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e16c60ba_33a8e860",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 16
+      },
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e16c60ba_d390942d",
         "filename": "media/mtp/aio.h",
         "patchSetId": 2
@@ -802,6 +1324,24 @@
       "writtenOn": "2016-10-26T01:18:51Z",
       "side": 1,
       "message": "Please add the licence header.",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_5556fb45",
+        "filename": "media/mtp/aio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e16c60ba_d390942d",
       "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -860,6 +1400,24 @@
     },
     {
       "key": {
+        "uuid": "810004b4_9560931a",
+        "filename": "media/mtp/aio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e16c60ba_93bb7cac",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e16c60ba_53a56487",
         "filename": "media/mtp/aio.h",
         "patchSetId": 2
@@ -871,6 +1429,24 @@
       "writtenOn": "2016-10-26T01:18:51Z",
       "side": 1,
       "message": "nit: Please add // _AIO_H",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_755dff5b",
+        "filename": "media/mtp/aio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-26T23:20:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e16c60ba_53a56487",
       "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
