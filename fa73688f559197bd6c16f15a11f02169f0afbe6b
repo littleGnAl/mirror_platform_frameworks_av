@@ -93,6 +93,29 @@
     },
     {
       "key": {
+        "uuid": "810004b4_bef021ea",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-26T16:03:12Z",
+      "side": 1,
+      "message": "\"m\" was meant to mean \"member\", so this should just be \"event\" now.",
+      "range": {
+        "startLine": 293,
+        "startChar": 19,
+        "endLine": 293,
+        "endChar": 25
+      },
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "610b10aa_e74002a5",
         "filename": "media/mtp/MtpServer.cpp",
         "patchSetId": 2
@@ -253,6 +276,41 @@
     },
     {
       "key": {
+        "uuid": "810004b4_3ee53123",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-26T16:03:12Z",
+      "side": 1,
+      "message": "you probably don\u0027t want this *and* \u003candroid-base/logging.h\u003e... prefer the latter.",
+      "parentUuid": "610b10aa_072c36f1",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_7edfa94e",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-26T16:03:12Z",
+      "side": 1,
+      "message": "\u003candroid-base/properties.h\u003e instead?",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "610b10aa_e7a5a257",
         "filename": "media/mtp/UsbFfsHandle.cpp",
         "patchSetId": 2
@@ -281,6 +339,160 @@
       "writtenOn": "2016-10-26T01:18:51Z",
       "side": 1,
       "message": "private: line should not increase the indent level.",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_be7e615a",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-26T16:03:12Z",
+      "side": 1,
+      "message": "std::mutex in new code? http://en.cppreference.com/w/cpp/thread/mutex",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_9e5a7d0a",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-26T16:03:12Z",
+      "side": 1,
+      "message": "can we put this in a header somewhere? (seems like some of this is copy \u0026 paste from adb?)",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 326,
+        "endChar": 2
+      },
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_9e839d26",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-26T16:03:12Z",
+      "side": 1,
+      "message": "shouldn\u0027t the destructor close the endpoints?",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_de64f5d1",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-26T16:03:12Z",
+      "side": 1,
+      "message": "or just\n\n  PLOG(ERROR) \u003c\u003c USB_FFS_MTP_EP0 \u003c\u003c \": cannot open control endpoint\";",
+      "range": {
+        "startLine": 400,
+        "startChar": 12,
+        "endLine": 400,
+        "endChar": 17
+      },
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_3e937177",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-26T16:03:12Z",
+      "side": 1,
+      "message": "is this needed? should these actually be in the destructor?",
+      "range": {
+        "startLine": 447,
+        "startChar": 0,
+        "endLine": 449,
+        "endChar": 18
+      },
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_fe2d795c",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-26T16:03:12Z",
+      "side": 1,
+      "message": "short seek?",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_be230173",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-26T16:03:12Z",
+      "side": 1,
+      "message": "missing null checks.\n\nbut better to use std::vector and lose the gotos.",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_3e189137",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-26T16:03:12Z",
+      "side": 1,
+      "message": "do you really want to go through the loop once if file_length is 0? comment why if so, otherwise use while loop?",
       "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -470,6 +682,23 @@
       "writtenOn": "2016-10-26T01:18:51Z",
       "side": 1,
       "message": "Please add the licence header.",
+      "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "810004b4_3e41b103",
+        "filename": "media/mtp/aio.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-10-26T16:03:12Z",
+      "side": 1,
+      "message": "this should either go in libc (with tests), or be renamed to not clash with \u003caio.h\u003e.\n\nbut the splice stuff makes this a *superset* of POSIX, no?\n\nbut it seems like you\u0027re not actually using the splice stuff?",
       "revId": "fa73688f559197bd6c16f15a11f02169f0afbe6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
