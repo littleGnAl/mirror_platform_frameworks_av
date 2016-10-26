@@ -135,6 +135,7 @@ const char *formatToString(audio_format_t format) {
     case AUDIO_FORMAT_DTS: return "dts";
     case AUDIO_FORMAT_DTS_HD: return "dts-hd";
     case AUDIO_FORMAT_DOLBY_TRUEHD: return "dolby-truehd";
+    case AUDIO_FORMAT_AC4: return "ac-4";
     default:
         break;
     }
