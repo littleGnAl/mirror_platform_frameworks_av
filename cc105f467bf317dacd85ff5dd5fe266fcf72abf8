@@ -1,0 +1,350 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e16c60ba_f6cade36",
+        "filename": "media/mtp/Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "nit: Please sort the lines.",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_76b7aeba",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "nit: Should be 2016?",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_96e44acc",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "anonymous namespace is better for C++ code than static?",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_b6e946a3",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "You can use constexpr here.",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_36d616dd",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "It\u0027s OK to access done without locking?",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_36ad3669",
+        "filename": "media/mtp/AsyncIO.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "nit: 2007 -\u003e 2016?",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_b60ea6a3",
+        "filename": "media/mtp/IUsbHandle.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "nit: 2016",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_36045679",
+        "filename": "media/mtp/IUsbHandle.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "If this is MTP specific, IMtpHandle is better?",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_56d392eb",
+        "filename": "media/mtp/IUsbHandle.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "nit: Please remove the intent.",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_16075a80",
+        "filename": "media/mtp/IUsbHandle.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "Please add comments about the returning value. Same for others.",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_161e7ad4",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "Need to set usb \u003d nullptr here? Maybe need to add mutex to avoid race condition?",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_d61322ce",
+        "filename": "media/mtp/MtpServer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "Can we remove this since we have MtpServer#configure?",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_f6181eeb",
+        "filename": "media/mtp/MtpServer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "Static member should start with prefix s.",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_7625ee1e",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "Please add m prefix for private member variables.",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_361b76e5",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "nit: Remove the intent",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_5628f2f7",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_96f28a80",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "nit: Fix the style to make it consistent with others.",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_b6f7866f",
+        "filename": "media/mtp/UsbMtpHandle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "nit: Make it constexpr",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_f6f1fe7a",
+        "filename": "media/mtp/UsbMtpHandle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "nit: mFd",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_d6ec02a2",
+        "filename": "media/mtp/UsbMtpHandle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-27T09:04:25Z",
+      "side": 1,
+      "message": "nit: Decrease indent level.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 32
+      },
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
