@@ -645,6 +645,7 @@ status_t AudioRecord::openRecord_l(const Modulo<uint32_t> &epoch, const String16
             ALOGW("AUDIO_INPUT_FLAG_FAST denied by server; frameCount %zu", frameCount);
             mFlags = (audio_input_flags_t) (mFlags & ~(AUDIO_INPUT_FLAG_FAST |
                     AUDIO_INPUT_FLAG_RAW));
+            AudioSystem::releaseInput(input, mSessionId);
             continue;   // retry
         }
     }
