@@ -1008,7 +1008,8 @@ status_t ACodec::configureOutputBuffersFromNativeWindow(
 
     if (err == OK) {
         err = setupNativeWindowSizeFormatAndUsage(
-                mNativeWindow.get(), &mNativeWindowUsageBits, preregister /* reconnect */);
+                mNativeWindow.get(), &mNativeWindowUsageBits,
+                preregister && !mTunneled /* reconnect */);
     }
     if (err != OK) {
         mNativeWindowUsageBits = 0;
