@@ -60,15 +60,15 @@ status_t MediaHTTP::connect(
 
     bool success = mHTTPConnection->connect(uri, &extHeaders);
 
-    mLastHeaders = extHeaders;
-    mLastURI = uri;
-
     mCachedSizeValid = false;
 
     if (success) {
         AString sanitized = uriDebugString(uri);
         mName = String8::format("MediaHTTP(%s)", sanitized.c_str());
     }
+
+    mLastHeaders = extHeaders;
+    mLastURI = uri;
 
     return success ? OK : UNKNOWN_ERROR;
 }
