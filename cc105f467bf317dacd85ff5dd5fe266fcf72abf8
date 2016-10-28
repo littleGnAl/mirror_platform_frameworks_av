@@ -177,6 +177,24 @@
     },
     {
       "key": {
+        "uuid": "e16c60ba_3665363a",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-28T00:44:43Z",
+      "side": 1,
+      "message": "How about the case the client invokes aio_pool_splice_init then it invokes aio_pool_write_init ? It looks the done flag is unintentionally initialized.",
+      "parentUuid": "a617de36_39f46f17",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e16c60ba_36ad3669",
         "filename": "media/mtp/AsyncIO.h",
         "patchSetId": 3
@@ -282,6 +300,24 @@
     },
     {
       "key": {
+        "uuid": "e16c60ba_969c4af9",
+        "filename": "media/mtp/IUsbHandle.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-28T00:44:43Z",
+      "side": 1,
+      "message": "Maybe MtpKernelHandle or MtpDriverHandle is better for child name?",
+      "parentUuid": "06318aec_52727456",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e16c60ba_56d392eb",
         "filename": "media/mtp/IUsbHandle.h",
         "patchSetId": 3
@@ -311,6 +347,24 @@
       "side": 1,
       "message": "Do you mean to remove the public specifier? Without it all these functions become private by default",
       "parentUuid": "e16c60ba_56d392eb",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_b67866e8",
+        "filename": "media/mtp/IUsbHandle.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-28T00:44:43Z",
+      "side": 1,
+      "message": "Sorry it was typo. I meant that please remove the indent.",
+      "parentUuid": "06318aec_127cec26",
       "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -352,6 +406,40 @@
     },
     {
       "key": {
+        "uuid": "e16c60ba_b6a14634",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-28T00:44:43Z",
+      "side": 1,
+      "message": "Please check the return value of usb-\u003econfigure",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_d696c2d6",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-28T00:44:43Z",
+      "side": 1,
+      "message": "Please check the return value of usb-\u003estart().",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e16c60ba_161e7ad4",
         "filename": "media/mtp/MtpServer.cpp",
         "patchSetId": 3
@@ -381,6 +469,24 @@
       "side": 1,
       "message": "yeah there is a slight chance that the next configure could somehow arrive before this close call so that would work.\n\nthere is not a need to set usb to nullptr though, since it has a lifetime longer than mtpserver",
       "parentUuid": "e16c60ba_161e7ad4",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_f69bbefb",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-28T00:44:43Z",
+      "side": 1,
+      "message": "Ah yes. I misunderstood usb is unusable after invoking #close. But we can reopen it by calling #start.\n\nPlease check the return value of close().",
+      "parentUuid": "06318aec_92945c28",
       "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -457,6 +563,23 @@
     },
     {
       "key": {
+        "uuid": "e16c60ba_16911add",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-28T00:44:43Z",
+      "side": 1,
+      "message": "nit: Constant name should be like FFS_MTP_EP_OUT. Same for others.",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e16c60ba_7625ee1e",
         "filename": "media/mtp/UsbFfsHandle.cpp",
         "patchSetId": 3
@@ -527,6 +650,24 @@
     },
     {
       "key": {
+        "uuid": "e16c60ba_5672b204",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-28T00:44:43Z",
+      "side": 1,
+      "message": "This should be indent. Sorry for confusion.",
+      "parentUuid": "06318aec_75bf9a98",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e16c60ba_5628f2f7",
         "filename": "media/mtp/UsbFfsHandle.cpp",
         "patchSetId": 3
@@ -573,6 +714,24 @@
       "side": 1,
       "message": "what style elements specifically?",
       "parentUuid": "e16c60ba_96f28a80",
+      "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e16c60ba_766fae17",
+        "filename": "media/mtp/UsbFfsHandle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-28T00:44:43Z",
+      "side": 1,
+      "message": "I meant the position of \u0027{\u0027. Same for #353. Sorry for unclear description.",
+      "parentUuid": "06318aec_b5a1827f",
       "revId": "cc105f467bf317dacd85ff5dd5fe266fcf72abf8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
