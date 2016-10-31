@@ -1,0 +1,209 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "268cce49_0df0b174",
+        "filename": "media/mtp/AsyncIO.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-31T02:05:06Z",
+      "side": 1,
+      "message": "nit: Remove the trailing space.",
+      "range": {
+        "startLine": 62,
+        "startChar": 62,
+        "endLine": 62,
+        "endChar": 63
+      },
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "268cce49_2df56d65",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-31T02:05:06Z",
+      "side": 1,
+      "message": "nit: The structures should be const?",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "268cce49_4deab988",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-31T02:05:06Z",
+      "side": 1,
+      "message": "Maybe we should use the same value for bInterfaceClass, bInterfaceSubClass, bInterfaceProtocol, defined in f_mtp.c ?\n\nhttps://cs.corp.google.com/android/hardware/bsp/kernel/common/v4.4/drivers/usb/gadget/function/f_mtp.c?q\u003dpackage:android+mtp_usb\u0026dr\u003dC\u0026l\u003d1048",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "268cce49_6def7597",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-31T02:05:06Z",
+      "side": 1,
+      "message": "source should be USB_DIR_IN?",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "268cce49_8d03c173",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-31T02:05:06Z",
+      "side": 1,
+      "message": "sink should be USB_DIR_OUT?",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "268cce49_ad007d67",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-31T02:05:06Z",
+      "side": 1,
+      "message": "nit: Debug code?",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "268cce49_4d65595d",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-31T02:05:06Z",
+      "side": 1,
+      "message": "This should be mClosedLock.",
+      "range": {
+        "startLine": 553,
+        "startChar": 36,
+        "endLine": 553,
+        "endChar": 46
+      },
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "268cce49_8d4e61dc",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-31T02:05:06Z",
+      "side": 1,
+      "message": "1. configure()\n2. configure()\n3. start()\n\nwill cause dead lock here because mClosed will not be true at the second configure call.",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "268cce49_6d6a1530",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-31T02:05:06Z",
+      "side": 1,
+      "message": "We have dead lock here?\n\n1. configure()\n2. configure() // Return here because mBulkIn \u003e 0.\n3. start() // mReadyCond.wait does not return because mReady will not be true.",
+      "range": {
+        "startLine": 562,
+        "startChar": 4,
+        "endLine": 562,
+        "endChar": 30
+      },
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "268cce49_cd26a92e",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-31T02:05:06Z",
+      "side": 1,
+      "message": "If mBulkIn has already been opened, it\u0027s OK not to check mPtp !\u003d usePtp?",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "268cce49_cdfdc94a",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-10-31T02:05:06Z",
+      "side": 1,
+      "message": "Can we define everything except for get_ffs_handle in an anonymous namespace?",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
