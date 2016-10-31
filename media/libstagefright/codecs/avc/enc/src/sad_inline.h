@@ -36,6 +36,9 @@ extern "C"
         return sad;
     }
 
+#if defined(__clang__)
+__attribute__((no_sanitize("signed-integer-overflow")))
+#endif
     __inline int32 sad_4pixel(int32 src1, int32 src2, int32 mask)
     {
         int32 x7;
@@ -75,7 +78,9 @@ extern "C"
 #define SHIFT 8
 #include "sad_mb_offset.h"
 
-
+#if defined(__clang__)
+__attribute__((no_sanitize("signed-integer-overflow")))
+#endif
     __inline int32 simd_sad_mb(uint8 *ref, uint8 *blk, int dmin, int lx)
     {
         int32 x4, x5, x6, x8, x9, x10, x11, x12, x14;

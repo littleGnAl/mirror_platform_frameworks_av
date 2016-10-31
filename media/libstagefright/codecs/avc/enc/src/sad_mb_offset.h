@@ -20,6 +20,10 @@
  * slightly slower than the plain C version on modern GCC versions. */
 #if !defined(__CC_ARM) /* Generic C version */
 
+#if defined(__clang__)
+__attribute__((no_sanitize("signed-integer-overflow")))
+#endif
+
 #if (NUMBER==3)
 __inline int32 sad_mb_offset3(uint8 *ref, uint8 *blk, int lx, int dmin)
 #elif (NUMBER==2)
