@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2675ae07_392db7c8",
+        "filename": "media/mtp/AsyncIO.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-31T21:14:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "268cce49_0df0b174",
+      "range": {
+        "startLine": 62,
+        "startChar": 62,
+        "endLine": 62,
+        "endChar": 63
+      },
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "268cce49_2df56d65",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 6
@@ -36,6 +60,24 @@
       "writtenOn": "2016-10-31T02:05:06Z",
       "side": 1,
       "message": "nit: The structures should be const?",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2675ae07_1ac38949",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-31T21:14:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "268cce49_2df56d65",
       "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "2675ae07_3a104530",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-31T21:14:05Z",
+      "side": 1,
+      "message": "So according to the MTP protocol, compliant class and subclass should be the same as those for PTP. The vendor specific codes are necessary for windows, which for some time didn\u0027t support the compliant version and instead required a special handshake. There isn\u0027t really a clean way to implement this handshake with ffs and on my testing with windows 10, it seems like windows now also supports the standard compliant values without the handshake. It would be easy to move to these new values, although we might lose compatibility with some older versions of windows. I haven\u0027t gotten my hands on an older windows device to test yet though. Do you have any thoughts on this? \n\nSee slide 6 in http://events.linuxfoundation.org/sites/events/files/slides/Media%20Transfer%20Protocol.pdf for this info.",
+      "parentUuid": "268cce49_4deab988",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "268cce49_6def7597",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 6
@@ -70,6 +130,24 @@
       "writtenOn": "2016-10-31T02:05:06Z",
       "side": 1,
       "message": "source should be USB_DIR_IN?",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2675ae07_d93ae3e0",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-31T21:14:05Z",
+      "side": 1,
+      "message": "For usb endpoints, IN always refers to device to host, and OUT refers to host to device.",
+      "parentUuid": "268cce49_6def7597",
       "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "2675ae07_19447b67",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-31T21:14:05Z",
+      "side": 1,
+      "message": "see above",
+      "parentUuid": "268cce49_8d03c173",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "268cce49_ad007d67",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 6
@@ -104,6 +200,24 @@
       "writtenOn": "2016-10-31T02:05:06Z",
       "side": 1,
       "message": "nit: Debug code?",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2675ae07_7a363db1",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-31T21:14:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "268cce49_ad007d67",
       "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -133,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "2675ae07_0e9fca35",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 553,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-31T21:14:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "268cce49_4d65595d",
+      "range": {
+        "startLine": 553,
+        "startChar": 36,
+        "endLine": 553,
+        "endChar": 46
+      },
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "268cce49_8d4e61dc",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 6
@@ -144,6 +282,24 @@
       "writtenOn": "2016-10-31T02:05:06Z",
       "side": 1,
       "message": "1. configure()\n2. configure()\n3. start()\n\nwill cause dead lock here because mClosed will not be true at the second configure call.",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2675ae07_f9d31f5d",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-31T21:14:05Z",
+      "side": 1,
+      "message": "you\u0027re right this block should be below the check for ffs being already open so the second configure does not wait.",
+      "parentUuid": "268cce49_8d4e61dc",
       "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -190,6 +346,48 @@
     },
     {
       "key": {
+        "uuid": "466e220f_ab3e997c",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-31T21:14:05Z",
+      "side": 1,
+      "message": "If the first configure sets mReady to true, additional configures shouldn\u0027t affect that value.",
+      "parentUuid": "268cce49_6d6a1530",
+      "range": {
+        "startLine": 562,
+        "startChar": 4,
+        "endLine": 562,
+        "endChar": 30
+      },
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2675ae07_b96527cd",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-31T21:14:05Z",
+      "side": 1,
+      "message": "A configuration change from mtp to ptp will cause mtpserver to shut down and close the non config endpoints. Configure would be called, but it would have to wait for the server to finish closing before resetting the config",
+      "parentUuid": "268cce49_cd26a92e",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "268cce49_cdfdc94a",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 6
@@ -201,6 +399,24 @@
       "writtenOn": "2016-10-31T02:05:06Z",
       "side": 1,
       "message": "Can we define everything except for get_ffs_handle in an anonymous namespace?",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2675ae07_1a4e293a",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-10-31T21:14:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "268cce49_cdfdc94a",
       "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
