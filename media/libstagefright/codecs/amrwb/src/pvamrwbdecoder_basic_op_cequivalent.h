@@ -464,6 +464,9 @@ extern "C"
         return (((((int32)hi*n)) + ((((int32)lo*n) >> 15))) << 1);
     }
 
+#if defined(__clang__)
+__attribute__((no_sanitize("signed-integer-overflow")))
+#endif
     __inline  int32 fxp_mac_16by16(int16 var1,  int16 var2, int32 L_add)
     {
 
