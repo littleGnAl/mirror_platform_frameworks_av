@@ -1,0 +1,170 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "268cce49_8d302103",
+        "filename": "media/mtp/IMtpHandle.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-01T01:05:53Z",
+      "side": 1,
+      "message": "nit: Please remove it.",
+      "range": {
+        "startLine": 39,
+        "startChar": 28,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "268cce49_2d22cdbf",
+        "filename": "media/mtp/MtpDevHandle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-01T01:05:53Z",
+      "side": 1,
+      "message": "nit: Please remove the indent.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 4
+      },
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "268cce49_4d2719cf",
+        "filename": "media/mtp/MtpDevHandle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-01T01:05:53Z",
+      "side": 1,
+      "message": "nit: Please remove the indent.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "268cce49_6d2cd5b2",
+        "filename": "media/mtp/MtpDevHandle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-01T01:05:53Z",
+      "side": 1,
+      "message": "nit: Remove extra spaces.",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 58,
+        "endChar": 8
+      },
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "268cce49_ad2dddad",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-01T01:05:53Z",
+      "side": 1,
+      "message": "Should we set:\nandroid::base::SetProperty(\"sys.usb.ffs.ready\", \"0\");\n?",
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "268cce49_cd3a29e1",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-01T01:05:53Z",
+      "side": 1,
+      "message": "I think we still have race condition.\n\n1. Host reconnect our Android device.\n2. MtpServer loop breaks and it invokes MtpFfsHandle::close.\n   The thread switch happens just before #530.\n3. UsbService sends an intent and it\u0027s handled by MtpReceiver.\n4. MtpFfsHandle::configure is invoked. It returns because mBulkIn is not 0.\n5. mBulkIn is closed. And it will not be reopened.",
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "268cce49_ed37e5f5",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-01T01:05:53Z",
+      "side": 1,
+      "message": "nit: Please remove this.",
+      "range": {
+        "startLine": 564,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 4
+      },
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "268cce49_0d443167",
+        "filename": "media/mtp/MtpRequestPacket.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-01T01:05:53Z",
+      "side": 1,
+      "message": "nit: Please remove the line.",
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
