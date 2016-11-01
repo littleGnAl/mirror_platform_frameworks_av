@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "06cc2aaa_fd9f7b99",
+        "filename": "media/mtp/IMtpHandle.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-01T19:06:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "268cce49_8d302103",
+      "range": {
+        "startLine": 39,
+        "startChar": 28,
+        "endLine": 39,
+        "endChar": 29
+      },
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "268cce49_2d22cdbf",
         "filename": "media/mtp/MtpDevHandle.cpp",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2016-11-01T01:05:53Z",
       "side": 1,
       "message": "nit: Please remove the indent.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 4
+      },
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06cc2aaa_dda4bff4",
+        "filename": "media/mtp/MtpDevHandle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-01T19:06:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "268cce49_2d22cdbf",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "06cc2aaa_bd9903b7",
+        "filename": "media/mtp/MtpDevHandle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-01T19:06:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "268cce49_4d2719cf",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 4
+      },
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "268cce49_6d2cd5b2",
         "filename": "media/mtp/MtpDevHandle.cpp",
         "patchSetId": 7
@@ -82,6 +154,30 @@
       "writtenOn": "2016-11-01T01:05:53Z",
       "side": 1,
       "message": "nit: Remove extra spaces.",
+      "range": {
+        "startLine": 58,
+        "startChar": 6,
+        "endLine": 58,
+        "endChar": 8
+      },
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06cc2aaa_7db48b1d",
+        "filename": "media/mtp/MtpDevHandle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-01T19:06:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "268cce49_6d2cd5b2",
       "range": {
         "startLine": 58,
         "startChar": 6,
@@ -111,6 +207,24 @@
     },
     {
       "key": {
+        "uuid": "06cc2aaa_dd171f68",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-01T19:06:52Z",
+      "side": 1,
+      "message": "That is handled by init.usb.configfs.rc when configfs is enabled. If configfs is not enabled, the property isn\u0027t used for anything.",
+      "parentUuid": "268cce49_ad2dddad",
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "268cce49_cd3a29e1",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 7
@@ -122,6 +236,24 @@
       "writtenOn": "2016-11-01T01:05:53Z",
       "side": 1,
       "message": "I think we still have race condition.\n\n1. Host reconnect our Android device.\n2. MtpServer loop breaks and it invokes MtpFfsHandle::close.\n   The thread switch happens just before #530.\n3. UsbService sends an intent and it\u0027s handled by MtpReceiver.\n4. MtpFfsHandle::configure is invoked. It returns because mBulkIn is not 0.\n5. mBulkIn is closed. And it will not be reopened.",
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06cc2aaa_5d878f5f",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-01T19:06:52Z",
+      "side": 1,
+      "message": "Yeah this is a tricky one. Without additional information somehow we don\u0027t know from inside configure whether the configure comes from a different instance of the server than previous configures. The only way I can think of that would perhaps work is to add a field to the intent that is set only on config change, and have MtpReceiver filter for that field. This way we would only ever receive one configure call per server startup, and we wouldn\u0027t have to worry about ignoring other calls. This would require a decent number of changes in UsbDeviceManager. Do you have any ideas?",
+      "parentUuid": "268cce49_cd3a29e1",
       "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -151,6 +283,30 @@
     },
     {
       "key": {
+        "uuid": "06cc2aaa_3d84d358",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-01T19:06:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "268cce49_ed37e5f5",
+      "range": {
+        "startLine": 564,
+        "startChar": 0,
+        "endLine": 564,
+        "endChar": 4
+      },
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "268cce49_0d443167",
         "filename": "media/mtp/MtpRequestPacket.h",
         "patchSetId": 7
@@ -162,6 +318,24 @@
       "writtenOn": "2016-11-01T01:05:53Z",
       "side": 1,
       "message": "nit: Please remove the line.",
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06cc2aaa_9dc767a1",
+        "filename": "media/mtp/MtpRequestPacket.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-01T19:06:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "268cce49_0d443167",
       "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
