@@ -51,7 +51,7 @@ LOCAL_SHARED_LIBRARIES := \
         libcamera_client libstagefright_foundation \
         libgui libdl libaudioutils libaudioclient
 
-LOCAL_EXPORT_SHARED_LIBRARY_HEADERS := libbinder
+LOCAL_EXPORT_SHARED_LIBRARY_HEADERS := libbinder libaudioutils
 
 LOCAL_WHOLE_STATIC_LIBRARIES := libmedia_helper
 
@@ -68,6 +68,11 @@ LOCAL_C_INCLUDES := \
     $(TOP)/frameworks/av/media/libstagefright \
     $(call include-path-for, audio-effects) \
     $(call include-path-for, audio-utils)
+
+LOCAL_EXPORT_C_INCLUDE_DIRS := \
+    frameworks/av/include \
+    frameworks/av/include/media \
+    frameworks/av/media/libmedia/aidl
 
 LOCAL_CFLAGS += -Werror -Wno-error=deprecated-declarations -Wall
 LOCAL_CLANG := true

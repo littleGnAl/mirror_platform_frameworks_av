@@ -69,7 +69,10 @@ LOCAL_C_INCLUDES += \
 
 LOCAL_EXPORT_C_INCLUDE_DIRS := \
 	system/media/camera/include \
-	frameworks/av/include/camera
+	$(LOCAL_PATH)/include \
+	$(LOCAL_PATH)/include/camera
+
+LOCAL_EXPORT_SHARED_LIBRARY_HEADERS := libbinder
 
 LOCAL_CFLAGS += -Werror -Wall -Wextra
 

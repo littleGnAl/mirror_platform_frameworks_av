@@ -24,7 +24,7 @@ cc_library_shared {
         "hexdump.cpp",
     ],
 
-    include_dirs: ["frameworks/av/include/media/stagefright/foundation"],
+    include_dirs: ["frameworks/av/media/libmedia/include/media/stagefright/foundation"],
 
     shared_libs: [
         "libbinder",
