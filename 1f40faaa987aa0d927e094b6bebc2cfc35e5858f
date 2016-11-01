@@ -137,6 +137,24 @@
     },
     {
       "key": {
+        "uuid": "06cc2aaa_9b6bec11",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-01T19:06:52Z",
+      "side": 1,
+      "message": "Yeah I will do some testing on older windows machines soon so we can be sure. I\u0027m not sure that a lot of users still use windows xp, but 7 and above are definitely important.",
+      "parentUuid": "268cce49_0d1d117b",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "268cce49_6def7597",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 6
@@ -184,6 +202,24 @@
       "side": 1,
       "message": "Could you double check? In f_mtp.c, there are three endpoints, in, out, intr. And the directions look like USB_DIR_IN for in, USB_DIR_OUT for out, USB_DIR_IN for intr.\n\nhttps://cs.corp.google.com/android/hardware/bsp/kernel/common/v4.4/drivers/usb/gadget/function/f_mtp.c?rcl\u003d4ecd03a43349a6dab58bc7f964de13698a5cef0e\u0026l\u003d213\n\nIn the func_desc structure in this file, there are also three endpoints: source, sink, intr. And the directions look like USB_DIR_OUT for source, USB_DIR_IN for sink, and USB_DIR_IN for intr.\n\nI\u0027m not sure if the difference of orders (USB_DIR_IN, USB_DIR_OUT, USB_DIR_IN) vs (USB_DIR_OUT, USB_DIR_IN, USB_DIR_IN) is matter. But wondered why the two definitions are different.",
       "parentUuid": "2675ae07_d93ae3e0",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "06cc2aaa_7bb1302c",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-01T19:06:52Z",
+      "side": 1,
+      "message": "Except for the difference in orders, which I didn\u0027t realize, this is all consistent. I used the conventions from /system/core/adb/usb_linux_client.cpp where hs_source is the source for the device, but the endpoint name (bulk_out) refers to the hosts perspective and USB_DIR_OUT refers to the host\u0027s perspective as well. See https://developer.android.com/reference/android/hardware/usb/UsbConstants.html#USB_DIR_IN. f_mtp doesn\u0027t use the terms source and sink but you can see that ep_in is used as the sink and ep_out is used as the source.",
+      "parentUuid": "268cce49_8ded814f",
       "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
