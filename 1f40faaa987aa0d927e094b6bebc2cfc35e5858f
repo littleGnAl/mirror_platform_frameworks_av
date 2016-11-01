@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "268cce49_0d1d117b",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-01T01:05:53Z",
+      "side": 1,
+      "message": "I\u0027m still thinking if there is benefit for users if we follow the spec. I agree with that we basically should follow the spec. But in this case, changing the classes may break old Windows or AFT (https://www.android.com/filetransfer/). Following the spec does not give us better compatibility here.",
+      "parentUuid": "2675ae07_3a104530",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "268cce49_6def7597",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 6
@@ -148,6 +166,24 @@
       "side": 1,
       "message": "For usb endpoints, IN always refers to device to host, and OUT refers to host to device.",
       "parentUuid": "268cce49_6def7597",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "268cce49_8ded814f",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-01T01:05:53Z",
+      "side": 1,
+      "message": "Could you double check? In f_mtp.c, there are three endpoints, in, out, intr. And the directions look like USB_DIR_IN for in, USB_DIR_OUT for out, USB_DIR_IN for intr.\n\nhttps://cs.corp.google.com/android/hardware/bsp/kernel/common/v4.4/drivers/usb/gadget/function/f_mtp.c?rcl\u003d4ecd03a43349a6dab58bc7f964de13698a5cef0e\u0026l\u003d213\n\nIn the func_desc structure in this file, there are also three endpoints: source, sink, intr. And the directions look like USB_DIR_OUT for source, USB_DIR_IN for sink, and USB_DIR_IN for intr.\n\nI\u0027m not sure if the difference of orders (USB_DIR_IN, USB_DIR_OUT, USB_DIR_IN) vs (USB_DIR_OUT, USB_DIR_IN, USB_DIR_IN) is matter. But wondered why the two definitions are different.",
+      "parentUuid": "2675ae07_d93ae3e0",
       "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
