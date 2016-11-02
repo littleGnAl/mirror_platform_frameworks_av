@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0670aa87_f44018a3",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-02T09:24:12Z",
+      "side": 1,
+      "message": "Sorry for asking this in last minute, but can we add unit tests for AsyncIO?\nhttps://g3doc.corp.google.com/wireless/android/test_tools/g3doc/apct/development/native.md?cl\u003dhead",
+      "revId": "0f39e906d1f2574a1b9414032fa835fa4ec9a6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0670aa87_344c50e3",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-02T09:24:12Z",
+      "side": 1,
+      "message": "I think it\u0027s unclear who should free the buffer.\nwrite_pool_func frees\u0027s the buffer though aio_write does not.",
+      "revId": "0f39e906d1f2574a1b9414032fa835fa4ec9a6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0670aa87_14367446",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-02T09:24:12Z",
+      "side": 1,
+      "message": "Sorry for asking this in last minute, but can we add unit tests for MtpFfsHandle?\nhttps://g3doc.corp.google.com/wireless/android/test_tools/g3doc/apct/development/native.md?cl\u003dhead",
+      "revId": "0f39e906d1f2574a1b9414032fa835fa4ec9a6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
