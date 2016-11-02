@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "86b57a46_25b084c0",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-02T21:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0670aa87_144f54da",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0670aa87_b4f4e069",
         "filename": "media/mtp/AsyncIO.cpp",
         "patchSetId": 6
@@ -30,6 +48,30 @@
       "writtenOn": "2016-11-02T09:24:12Z",
       "side": 1,
       "message": "Should use std::unique_ptr instead of raw pointer?",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 24
+      },
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86b57a46_372ef7a8",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-02T21:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0670aa87_b4f4e069",
       "range": {
         "startLine": 54,
         "startChar": 11,
@@ -59,6 +101,24 @@
     },
     {
       "key": {
+        "uuid": "86b57a46_65d1ecde",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-02T21:27:30Z",
+      "side": 1,
+      "message": "Why is it not? If the lock isn\u0027t unlocked then other threads cannot continue.",
+      "parentUuid": "0670aa87_3401b06b",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0670aa87_f469f83a",
         "filename": "media/mtp/AsyncIO.cpp",
         "patchSetId": 6
@@ -70,6 +130,24 @@
       "writtenOn": "2016-11-02T09:24:12Z",
       "side": 1,
       "message": "Can we reuse splice_write_func?",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86b57a46_e59e7c9b",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-02T21:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0670aa87_f469f83a",
       "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -93,6 +171,24 @@
     },
     {
       "key": {
+        "uuid": "86b57a46_c508989f",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-02T21:27:30Z",
+      "side": 1,
+      "message": "same as above",
+      "parentUuid": "0670aa87_54fe2c46",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0670aa87_74fb2855",
         "filename": "media/mtp/AsyncIO.cpp",
         "patchSetId": 6
@@ -104,6 +200,24 @@
       "writtenOn": "2016-11-02T09:24:12Z",
       "side": 1,
       "message": "notify_one should be invoked after lk.unlock()?\n\nIt looks the thread invoking write_cond.wait try to acquire queue_lock mutex before checking the condition. Keeping the lock while calling notify_one block the thread immediately again, so it\u0027s not efficient.\nhttp://en.cppreference.com/w/cpp/thread/condition_variable/notify_one",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86b57a46_c5a4185e",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-02T21:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0670aa87_74fb2855",
       "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -127,6 +241,24 @@
     },
     {
       "key": {
+        "uuid": "86b57a46_c50a5805",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-02T21:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0670aa87_d464fc63",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0670aa87_f4ee5899",
         "filename": "media/mtp/AsyncIO.cpp",
         "patchSetId": 6
@@ -138,6 +270,24 @@
       "writtenOn": "2016-11-02T09:24:12Z",
       "side": 1,
       "message": "Adding CHECK is useful to prevent double call of aio_pool_init ?\n\nhttps://cs.corp.google.com/android/system/core/base/include/android-base/logging.h?q\u003dpackage:android+CHECK\u0026l\u003d204",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86b57a46_451b0834",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-02T21:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0670aa87_f4ee5899",
       "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -161,6 +311,24 @@
     },
     {
       "key": {
+        "uuid": "86b57a46_652d6cf1",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-02T21:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0670aa87_945a849a",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0670aa87_b45f8089",
         "filename": "media/mtp/AsyncIO.cpp",
         "patchSetId": 6
@@ -172,6 +340,24 @@
       "writtenOn": "2016-11-02T09:24:12Z",
       "side": 1,
       "message": "unlock before invoking notify_one.",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86b57a46_053c6027",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-02T21:27:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0670aa87_b45f8089",
       "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -432,6 +618,24 @@
       "side": 1,
       "message": "I wonder if any order of endpoints is acceptable for USB hosts. I checked Android MTP host implementation and it looks it can handle any order. Not sure for others. Do you have information about that?",
       "parentUuid": "06cc2aaa_7bb1302c",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86b57a46_17c3f397",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-02T21:27:30Z",
+      "side": 1,
+      "message": "It seems like they can handle any order since using this order has never failed to work for me. There\u0027s no real reason to not make them consistent though so I will change them.",
+      "parentUuid": "0670aa87_5459cc9f",
       "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
