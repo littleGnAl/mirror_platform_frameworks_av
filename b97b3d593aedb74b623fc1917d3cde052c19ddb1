@@ -278,6 +278,24 @@
     },
     {
       "key": {
+        "uuid": "86b57a46_d74deb3d",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-02T21:27:30Z",
+      "side": 1,
+      "message": "I checked it out and I think you are right about configure always being finished before start. However I\u0027m not sure if a mutex by itself solves the problem of this race. Lets say :\nFirst intent -\u003e configure -\u003e Connected intent -\u003e start -\u003e more intents -\u003e configure will wait -\u003e new intent, switch to ptp mode -\u003e close.\n\nI\u0027m not sure what will happen in that case where 2 configures are both sleeping and waiting for the lock. Perhaps they will both wake up and just reset the config unnecessarily. I also remember that BroadcastReceivers shouldn\u0027t take on long running tasks that require sleeps.",
+      "parentUuid": "0670aa87_7456c870",
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "268cce49_ed37e5f5",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 7
