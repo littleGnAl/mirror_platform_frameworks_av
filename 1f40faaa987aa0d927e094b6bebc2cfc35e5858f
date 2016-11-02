@@ -2,6 +2,182 @@
   "comments": [
     {
       "key": {
+        "uuid": "0670aa87_144f54da",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-02T09:24:12Z",
+      "side": 1,
+      "message": "It looks it\u0027s OK to type the argument as aiocb* instead of void*, because std::thread processes a function and its arguments by using template.\nhttp://en.cppreference.com/w/cpp/thread/thread/thread",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0670aa87_b4f4e069",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-02T09:24:12Z",
+      "side": 1,
+      "message": "Should use std::unique_ptr instead of raw pointer?",
+      "range": {
+        "startLine": 54,
+        "startChar": 11,
+        "endLine": 54,
+        "endChar": 24
+      },
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0670aa87_3401b06b",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-02T09:24:12Z",
+      "side": 1,
+      "message": "nit: lk.unlock() is not needed?",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0670aa87_f469f83a",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-02T09:24:12Z",
+      "side": 1,
+      "message": "Can we reuse splice_write_func?",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0670aa87_54fe2c46",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-02T09:24:12Z",
+      "side": 1,
+      "message": "nit: lk.unlock() is not needed?",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0670aa87_74fb2855",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-02T09:24:12Z",
+      "side": 1,
+      "message": "notify_one should be invoked after lk.unlock()?\n\nIt looks the thread invoking write_cond.wait try to acquire queue_lock mutex before checking the condition. Keeping the lock while calling notify_one block the thread immediately again, so it\u0027s not efficient.\nhttp://en.cppreference.com/w/cpp/thread/condition_variable/notify_one",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0670aa87_d464fc63",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-02T09:24:12Z",
+      "side": 1,
+      "message": "Can we reuse write_func?",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0670aa87_f4ee5899",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-02T09:24:12Z",
+      "side": 1,
+      "message": "Adding CHECK is useful to prevent double call of aio_pool_init ?\n\nhttps://cs.corp.google.com/android/system/core/base/include/android-base/logging.h?q\u003dpackage:android+CHECK\u0026l\u003d204",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0670aa87_945a849a",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-02T09:24:12Z",
+      "side": 1,
+      "message": "unlock before invoking notify_one.",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0670aa87_b45f8089",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-02T09:24:12Z",
+      "side": 1,
+      "message": "unlock before invoking notify_one.",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "268cce49_0df0b174",
         "filename": "media/mtp/AsyncIO.h",
         "patchSetId": 6
@@ -155,6 +331,24 @@
     },
     {
       "key": {
+        "uuid": "0670aa87_d43b1c30",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-02T09:24:12Z",
+      "side": 1,
+      "message": "I read the article you attached and SGTM. Thank you!",
+      "parentUuid": "06cc2aaa_9b6bec11",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "268cce49_6def7597",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 6
@@ -220,6 +414,24 @@
       "side": 1,
       "message": "Except for the difference in orders, which I didn\u0027t realize, this is all consistent. I used the conventions from /system/core/adb/usb_linux_client.cpp where hs_source is the source for the device, but the endpoint name (bulk_out) refers to the hosts perspective and USB_DIR_OUT refers to the host\u0027s perspective as well. See https://developer.android.com/reference/android/hardware/usb/UsbConstants.html#USB_DIR_IN. f_mtp doesn\u0027t use the terms source and sink but you can see that ep_in is used as the sink and ep_out is used as the source.",
       "parentUuid": "268cce49_8ded814f",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0670aa87_5459cc9f",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-02T09:24:12Z",
+      "side": 1,
+      "message": "I wonder if any order of endpoints is acceptable for USB hosts. I checked Android MTP host implementation and it looks it can handle any order. Not sure for others. Do you have information about that?",
+      "parentUuid": "06cc2aaa_7bb1302c",
       "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
