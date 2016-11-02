@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "86b57a46_173e53d1",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-02T21:27:30Z",
+      "side": 1,
+      "message": "I\u0027ll start working on that",
+      "parentUuid": "0670aa87_f44018a3",
+      "revId": "0f39e906d1f2574a1b9414032fa835fa4ec9a6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0670aa87_344c50e3",
         "filename": "media/mtp/AsyncIO.cpp",
         "patchSetId": 8
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "86b57a46_b77307c9",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-02T21:27:30Z",
+      "side": 1,
+      "message": "aio_write allows the caller to manage the buffer which avoids unnecessary allocs. With the pool, the caller doesn\u0027t know when the buffer is done being used so the caller can\u0027t reuse buffers or even know when to free them, so it is easiest to free them immediately.",
+      "parentUuid": "0670aa87_344c50e3",
+      "revId": "0f39e906d1f2574a1b9414032fa835fa4ec9a6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0670aa87_14367446",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 8
@@ -47,6 +83,24 @@
       "writtenOn": "2016-11-02T09:24:12Z",
       "side": 1,
       "message": "Sorry for asking this in last minute, but can we add unit tests for MtpFfsHandle?\nhttps://g3doc.corp.google.com/wireless/android/test_tools/g3doc/apct/development/native.md?cl\u003dhead",
+      "revId": "0f39e906d1f2574a1b9414032fa835fa4ec9a6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "86b57a46_3760b7ea",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-02T21:27:30Z",
+      "side": 1,
+      "message": "I will start working on them",
+      "parentUuid": "0670aa87_14367446",
       "revId": "0f39e906d1f2574a1b9414032fa835fa4ec9a6dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
