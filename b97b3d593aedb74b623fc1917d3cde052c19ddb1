@@ -260,6 +260,24 @@
     },
     {
       "key": {
+        "uuid": "0670aa87_7456c870",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-02T09:24:12Z",
+      "side": 1,
+      "message": "You explained start() may be called before configure is completed() and I wonder when it happens. It looks MtpReceiver always invoke start() after configure(). Could you explain the details of the situation? I\u0027m asking this because if we can ensure the order of two calls, the problem is much simper and we can just using mutex to wait for configure completion.",
+      "parentUuid": "06cc2aaa_5d878f5f",
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "268cce49_ed37e5f5",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 7
