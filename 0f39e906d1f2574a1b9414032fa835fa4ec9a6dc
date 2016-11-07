@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "2b7f379a_f5e3781e",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-07T05:10:27Z",
+      "side": 1,
+      "message": "Adding comments to the header file may help to let users of the class know about that. Also how about adding new field aio_pool_buf that is std::unique_ptr or std::vector? Currently it\u0027s a bit easy to miss the difference between aio_write and aio_pool_write.",
+      "parentUuid": "86b57a46_b77307c9",
+      "revId": "0f39e906d1f2574a1b9414032fa835fa4ec9a6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0670aa87_14367446",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 8
