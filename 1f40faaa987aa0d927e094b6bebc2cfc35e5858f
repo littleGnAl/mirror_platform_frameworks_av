@@ -119,6 +119,24 @@
     },
     {
       "key": {
+        "uuid": "2b7f379a_d5e67c31",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-07T05:10:27Z",
+      "side": 1,
+      "message": "Because unique_lock should unlock the mutex object in the destructor.",
+      "parentUuid": "86b57a46_65d1ecde",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0670aa87_f469f83a",
         "filename": "media/mtp/AsyncIO.cpp",
         "patchSetId": 6
@@ -636,6 +654,24 @@
       "side": 1,
       "message": "It seems like they can handle any order since using this order has never failed to work for me. There\u0027s no real reason to not make them consistent though so I will change them.",
       "parentUuid": "0670aa87_5459cc9f",
+      "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b7f379a_95e00414",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-07T05:10:27Z",
+      "side": 1,
+      "message": "SGTM. Thank you!",
+      "parentUuid": "86b57a46_17c3f397",
       "revId": "1f40faaa987aa0d927e094b6bebc2cfc35e5858f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
