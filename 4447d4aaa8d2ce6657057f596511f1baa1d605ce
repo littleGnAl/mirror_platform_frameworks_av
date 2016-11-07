@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b7f379a_357c905e",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-07T05:40:40Z",
+      "side": 1,
+      "message": "PLOG is used when we would like to output errno. Here please use LOG instead. Same for others.",
+      "revId": "4447d4aaa8d2ce6657057f596511f1baa1d605ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b7f379a_5526ec86",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-07T05:40:40Z",
+      "side": 1,
+      "message": "buf2_len can be negative. Is it OK?",
+      "range": {
+        "startLine": 596,
+        "startChar": 27,
+        "endLine": 596,
+        "endChar": 35
+      },
+      "revId": "4447d4aaa8d2ce6657057f596511f1baa1d605ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b7f379a_f58db84f",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-07T05:40:40Z",
+      "side": 1,
+      "message": "Please use C++ cast. Same for others.",
+      "range": {
+        "startLine": 616,
+        "startChar": 54,
+        "endLine": 616,
+        "endChar": 59
+      },
+      "revId": "4447d4aaa8d2ce6657057f596511f1baa1d605ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b7f379a_958a4435",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-07T05:40:40Z",
+      "side": 1,
+      "message": "It looks we can add an else closure here instead of starting new if closure.",
+      "range": {
+        "startLine": 651,
+        "startChar": 8,
+        "endLine": 651,
+        "endChar": 46
+      },
+      "revId": "4447d4aaa8d2ce6657057f596511f1baa1d605ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b7f379a_b587402e",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-07T05:40:40Z",
+      "side": 1,
+      "message": "Please remove the semicolon.",
+      "range": {
+        "startLine": 665,
+        "startChar": 5,
+        "endLine": 665,
+        "endChar": 6
+      },
+      "revId": "4447d4aaa8d2ce6657057f596511f1baa1d605ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2b7f379a_752be84b",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-07T05:40:40Z",
+      "side": 1,
+      "message": "buf2_len can be negative. Is it OK?",
+      "range": {
+        "startLine": 696,
+        "startChar": 26,
+        "endLine": 696,
+        "endChar": 34
+      },
+      "revId": "4447d4aaa8d2ce6657057f596511f1baa1d605ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
