@@ -296,6 +296,24 @@
     },
     {
       "key": {
+        "uuid": "2b7f379a_557d8c5c",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-07T05:10:27Z",
+      "side": 1,
+      "message": "Let\u0027s assume the more intents are dispatched by UsbDeviceManager because a user select different role in the USB device role dialog. (e.g. MTP -\u003e MIDI)\n\nIn this case, do we explicitly need to close the current configuration mControl here, or the kernel close the connection internally and mControl will go automatically to an invalid state?\n\nIt looks we close mControl here only when the MTP and PTP is switched. So I guess the kernel automatically close the connection internally, then mControl and the endpoints go to the invalid state.\n\nIt means, if the receiver receives more intents with different configuration, MtpServer starts getting errors from the mControl and endpoints and it eventually invokes MtpFfsHandle#close.\n\nSo I guess the behavior should be:\n\n1. First intent -\u003e configure.\n2. Connected intent -\u003e start.\n3. More intents -\u003e configure will wait.\n4. MtpFfsHandle::close is invoked.\n5. configure is invoked with different settings. Maybe settings with the last intent should be honored?\n6. start() is invoked.\n\nIf we cannot wait in BroadcastReceivers, we can use a queue to remember configure requests.",
+      "parentUuid": "86b57a46_d74deb3d",
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "268cce49_ed37e5f5",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 7
