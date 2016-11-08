@@ -515,8 +515,8 @@ status_t FwdLockEngine::onOpenDecryptSession(int /* uniqueId */,
         } else {
             LOG_VERBOSE("FwdLockEngine::onOpenDecryptSession Integrity Check failed for the fd");
             FwdLockFile_detach(fileDesc);
-            delete decodeSession;
         }
+        delete decodeSession;
     }
 
     if (DRM_NO_ERROR != result && -1 < fileDesc) {
