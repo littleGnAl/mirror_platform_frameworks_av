@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2bde5729_8b456b8e",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1061109
+      },
+      "writtenOn": "2016-11-08T23:00:50Z",
+      "side": 1,
+      "message": "I\u0027d suggest that instead of forcing ALL the effects to have stereo output, just make sure this is the case for auxiliary effects: \n\nif ((mDescriptor.flags \u0026 EFFECT_FLAG_TYPE_MASK) \u003d\u003d EFFECT_FLAG_TYPE_AUXILIARY) {\n        mConfig.inputCfg.channels \u003d AUDIO_CHANNEL_OUT_MONO;\n        mConfig.outputCfg.channels \u003d AUDIO_CHANNEL_OUT_STEREO;\n    }\n\n\nThis will make easier to improve the logic in the future when we tackle multichannel effects.",
+      "range": {
+        "startLine": 340,
+        "startChar": 4,
+        "endLine": 343,
+        "endChar": 5
+      },
+      "revId": "8beae026e6496201863ed0c0381a51e099f39edb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2bde5729_8b172b6a",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 353,
+      "author": {
+        "id": 1061109
+      },
+      "writtenOn": "2016-11-08T23:00:50Z",
+      "side": 1,
+      "message": "(continuing my previous comment). Keep the statement here: \n\nmConfig.outputCfg.channels \u003d AUDIO_CHANNEL_OUT_STEREO;",
+      "revId": "8beae026e6496201863ed0c0381a51e099f39edb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
