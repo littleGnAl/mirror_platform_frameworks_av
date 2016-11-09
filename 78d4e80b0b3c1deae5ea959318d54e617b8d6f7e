@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b8e8f82_6f8e514d",
+        "filename": "services/mediacodec/minijail/Android.mk",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2016-11-09T19:13:24Z",
+      "side": 1,
+      "message": "At first glance, this doesn\u0027t seem right... If $BOARD_SECCOMP_POLICY expands to more than 1 entry, then this wildcard won\u0027t work.\n\nBOARD_SECCOMP_POLICY :\u003d a/b\nBOARD_SECCOMP_POLICY +\u003d c/d\n\n$(wildcard a/b c/d/mediacodec-seccomp.policy)\n\nwill only expand out to c/d/mediacodec-seccomp.policy, and a/b will be ignored.",
+      "revId": "78d4e80b0b3c1deae5ea959318d54e617b8d6f7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
