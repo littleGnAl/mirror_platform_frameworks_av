@@ -16,6 +16,24 @@
       "revId": "008054dc179fc07fbd0d084bf4435f7d96c0a7bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4b49cb00_3e8aa9a6",
+        "filename": "services/mediacodec/minijail/Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1092708
+      },
+      "writtenOn": "2016-11-09T20:01:39Z",
+      "side": 1,
+      "message": "I think the extensions coming from BOARD_SECCOMP_POLICY are meant to be applied on all architectures.",
+      "parentUuid": "6b8e8f82_92d2ba18",
+      "revId": "008054dc179fc07fbd0d084bf4435f7d96c0a7bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
