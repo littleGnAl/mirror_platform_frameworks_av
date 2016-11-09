@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2b7f379a_38ffa58d",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1022419
+      },
+      "writtenOn": "2016-11-09T04:48:37Z",
+      "side": 1,
+      "message": "Thanks you for your review. I uploaded new patch set to follow your comment.",
+      "parentUuid": "2bde5729_8b456b8e",
+      "range": {
+        "startLine": 340,
+        "startChar": 4,
+        "endLine": 343,
+        "endChar": 5
+      },
+      "revId": "8beae026e6496201863ed0c0381a51e099f39edb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2bde5729_8b172b6a",
         "filename": "services/audioflinger/Effects.cpp",
         "patchSetId": 2
