@@ -34,6 +34,24 @@
       "revId": "008054dc179fc07fbd0d084bf4435f7d96c0a7bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6b8e8f82_729cf650",
+        "filename": "services/mediacodec/minijail/Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1076138
+      },
+      "writtenOn": "2016-11-09T20:02:41Z",
+      "side": 1,
+      "message": "I would assume that the board-specific policy will contain architecture-appropriate syscalls. E.g. a 64-bit ARM device should have 32-bit syscalls in its device-specific policy. This is OK because for a specific device, mediacoded should always run with the same bitness.",
+      "parentUuid": "6b8e8f82_92d2ba18",
+      "revId": "008054dc179fc07fbd0d084bf4435f7d96c0a7bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
