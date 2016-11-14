@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cb669bd0_9ed8c406",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2016-11-14T19:21:18Z",
+      "side": 1,
+      "message": "to be specific: please limit the first sentence to ~65 characters. That\u0027ll require reformatting the rest of the commit message.  So for example:\n\n\"Add missing mTriggerMutex lock.\n\nThere is thread safety problem for mTriggerMap\nwhen using mTriggerMutex and mRequestLock. For correctness, \nadd mTriggerMutex before mTriggermap.clear().\n\"",
+      "revId": "c00609363cbc6cb63518d1cd21b59d27eaffa446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
