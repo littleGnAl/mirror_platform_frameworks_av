@@ -1603,6 +1603,7 @@ void AudioMixer::process__OneTrack16BitsStereoNoResampling(state_t* state)
     const int16_t vl = t.volume[0];
     const int16_t vr = t.volume[1];
     const uint32_t vrl = t.volumeRL;
+    size_t oriNumFrames = numFrames;
     while (numFrames) {
         b.frameCount = numFrames;
         t.bufferProvider->getNextBuffer(&b);
@@ -1611,7 +1612,8 @@ void AudioMixer::process__OneTrack16BitsStereoNoResampling(state_t* state)
         // in == NULL can happen if the track was flushed just after having
         // been enabled for mixing.
         if (in == NULL || (((uintptr_t)in) & 3)) {
-            memset(out, 0, numFrames
+            size_t offset = (originNumFrames - numFrames) * t.mMixerChannelCount * audio_bytes_per_sample(t.mMixerFormat);
+            memset((char*)out+offset, 0, numFrames
                     * t.mMixerChannelCount * audio_bytes_per_sample(t.mMixerFormat));
             ALOGE_IF((((uintptr_t)in) & 3),
                     "process__OneTrack16BitsStereoNoResampling: misaligned buffer"
