@@ -107,6 +107,30 @@
     },
     {
       "key": {
+        "uuid": "d0bc8cd0_c2883cb4",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 616,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-17T22:27:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b7f379a_f58db84f",
+      "range": {
+        "startLine": 616,
+        "startChar": 54,
+        "endLine": 616,
+        "endChar": 59
+      },
+      "revId": "4447d4aaa8d2ce6657057f596511f1baa1d605ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b7f379a_958a4435",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 9
