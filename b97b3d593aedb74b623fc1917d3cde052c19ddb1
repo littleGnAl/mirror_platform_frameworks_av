@@ -314,6 +314,24 @@
     },
     {
       "key": {
+        "uuid": "7037600d_4d09ba4d",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-17T22:27:34Z",
+      "side": 1,
+      "message": "so the issue with what you stated is that in step 5, we do not know when to actually invoke configure. The correct configure that actually is intended to set the next functions could have been sent before close() or after close() and you do not know, even after close finishes, whether the most recent intent is actually the right one. I am going to try a solution that involves creating a custom field in the intent that is only set when UsbDeviceManager wants to change the config, and only call configure if that is set.",
+      "parentUuid": "2b7f379a_557d8c5c",
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "268cce49_ed37e5f5",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 7
