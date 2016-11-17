@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "7037600d_bc488c2f",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-17T00:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b7f379a_357c905e",
+      "revId": "4447d4aaa8d2ce6657057f596511f1baa1d605ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b7f379a_5526ec86",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 9
@@ -30,6 +48,30 @@
       "writtenOn": "2016-11-07T05:40:40Z",
       "side": 1,
       "message": "buf2_len can be negative. Is it OK?",
+      "range": {
+        "startLine": 596,
+        "startChar": 27,
+        "endLine": 596,
+        "endChar": 35
+      },
+      "revId": "4447d4aaa8d2ce6657057f596511f1baa1d605ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7037600d_367c8cd6",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-17T00:26:46Z",
+      "side": 1,
+      "message": "Seems like it will throw std::bad_alloc. I\u0027ll use max",
+      "parentUuid": "2b7f379a_5526ec86",
       "range": {
         "startLine": 596,
         "startChar": 27,
@@ -88,6 +130,30 @@
     },
     {
       "key": {
+        "uuid": "7037600d_1c0898d8",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 651,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-17T00:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b7f379a_958a4435",
+      "range": {
+        "startLine": 651,
+        "startChar": 8,
+        "endLine": 651,
+        "endChar": 46
+      },
+      "revId": "4447d4aaa8d2ce6657057f596511f1baa1d605ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b7f379a_b587402e",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 9
@@ -111,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "7037600d_5c12200a",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 665,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-17T00:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b7f379a_b587402e",
+      "range": {
+        "startLine": 665,
+        "startChar": 5,
+        "endLine": 665,
+        "endChar": 6
+      },
+      "revId": "4447d4aaa8d2ce6657057f596511f1baa1d605ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b7f379a_752be84b",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 9
@@ -122,6 +212,30 @@
       "writtenOn": "2016-11-07T05:40:40Z",
       "side": 1,
       "message": "buf2_len can be negative. Is it OK?",
+      "range": {
+        "startLine": 696,
+        "startChar": 26,
+        "endLine": 696,
+        "endChar": 34
+      },
+      "revId": "4447d4aaa8d2ce6657057f596511f1baa1d605ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7037600d_5662f02d",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 696,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-11-17T00:26:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b7f379a_752be84b",
       "range": {
         "startLine": 696,
         "startChar": 26,
