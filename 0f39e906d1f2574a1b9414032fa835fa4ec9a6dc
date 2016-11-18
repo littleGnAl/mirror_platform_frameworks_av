@@ -108,6 +108,24 @@
     },
     {
       "key": {
+        "uuid": "707a00f8_c89f6f3a",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-18T02:29:39Z",
+      "side": 1,
+      "message": "I meant adding new unique_ptr\u003cchar[]\u003e aio_pool_buf to aiocb as well as void* aio_buf.\n\nMy concern is it\u0027s unclear if aio_buf has owner ship of memory region. Actually it depends on the function the client code invokes. In this situation, the client code can wrongly use the memory after free, or miss releasing the memory. The bug is difficult to find.\n\nThe purpose of adding new aio_pool_buf is explicitly telling the client code that write_pool function takes the ownership of the memory while write function using aio_buf does not take the ownership of memory. It also easy to find the bug when the client code uses the wrong buffer.",
+      "parentUuid": "d0bc8cd0_2290109f",
+      "revId": "0f39e906d1f2574a1b9414032fa835fa4ec9a6dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0670aa87_14367446",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 8
