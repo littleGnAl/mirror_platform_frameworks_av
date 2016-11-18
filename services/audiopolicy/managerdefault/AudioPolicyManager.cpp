@@ -5221,6 +5221,11 @@ bool AudioPolicyManager::isStrategyActive(const sp<AudioOutputDescriptor>& outpu
                                           routing_strategy strategy, uint32_t inPastMs,
                                           nsecs_t sysTime) const
 {
+	if ( NULL == outputDesc ) {
+        ALOGE("%s: Input parameter outputDesc is NULL ", __FUNCTION__);
+	    return false;
+	}
+
     if ((sysTime == 0) && (inPastMs != 0)) {
         sysTime = systemTime();
     }
