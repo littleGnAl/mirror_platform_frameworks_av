@@ -332,6 +332,24 @@
     },
     {
       "key": {
+        "uuid": "707a00f8_08e0a7b0",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-11-18T02:29:39Z",
+      "side": 1,
+      "message": "I still wonder why configure cannot wait until the close method is invoked.\n\nMaybe talking on VC is faster if you are fine. Let me add my thought here.\n\n* Two operations are conducted on MtpFfshandle. a) configure() and b) message loop (containing start() and close())\n* a) configure and b) message loop cannot be done at the same time. We need to guard by using mutex.\n* b) message loop will automatically finish if the loop is using old condition. (My assumption here is the kernel makes mControl invalid when configuration is changed).\n\nSo the configure and the message loop will be done sequentially while we cannot ensure the order of two operations.\n\nFor example)\n\nconfigure -\u003e message loop -\u003e configure -\u003e configure -\u003e message loop ...\n\nOR\n\nmessage loop -\u003e configure -\u003e configure -\u003e message loop ...\n\nSo the simple rule:\n\n1. configure and message loop shares the same lock to run sequentially.\n2. Message loop fail if no configure call is invoked so far. (It\u0027s fine as we always call message loop after configure)\n3. Before obtaining lock, each configure and message loop increments a counter stored in std::atomic_integer and remember the value.\n4. After obtaining lock, configure and message loop checks the counter value, and if the counter value is updated, it just returns as there is another the most recent call.\n\ndoes not work?",
+      "parentUuid": "7037600d_4d09ba4d",
+      "revId": "b97b3d593aedb74b623fc1917d3cde052c19ddb1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "268cce49_ed37e5f5",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 7
