@@ -232,6 +232,91 @@ template<>
 const size_t StreamTypeConverter::mSize = sizeof(StreamTypeConverter::mTable) /
         sizeof(StreamTypeConverter::mTable[0]);
 
+template <>
+const MixTypeConverter::Table MixTypeConverter::mTable[] = {
+    MAKE_STRING_FROM_ENUM(MIX_TYPE_INVALID),
+    MAKE_STRING_FROM_ENUM(MIX_TYPE_PLAYERS),
+    MAKE_STRING_FROM_ENUM(MIX_TYPE_RECORDERS),
+};
+
+template<>
+const size_t MixTypeConverter::mSize = sizeof(MixTypeConverter::mTable) /
+        sizeof(MixTypeConverter::mTable[0]);
+
+template <>
+const RouteFlagTypeConverter::Table RouteFlagTypeConverter::mTable[] = {
+    MAKE_STRING_FROM_ENUM(MIX_ROUTE_FLAG_RENDER),
+    MAKE_STRING_FROM_ENUM(MIX_ROUTE_FLAG_LOOP_BACK),
+    MAKE_STRING_FROM_ENUM(MIX_ROUTE_FLAG_ALL),
+};
+
+template<>
+const size_t RouteFlagTypeConverter::mSize = sizeof(RouteFlagTypeConverter::mTable) /
+        sizeof(RouteFlagTypeConverter::mTable[0]);
+
+template <>
+const RuleTypeConverter::Table RuleTypeConverter::mTable[] = {
+    MAKE_STRING_FROM_ENUM(RULE_EXCLUSION_MASK),
+    MAKE_STRING_FROM_ENUM(RULE_MATCH_ATTRIBUTE_USAGE),
+    MAKE_STRING_FROM_ENUM(RULE_MATCH_ATTRIBUTE_CAPTURE_PRESET),
+    MAKE_STRING_FROM_ENUM(RULE_MATCH_UID),
+    MAKE_STRING_FROM_ENUM(RULE_EXCLUDE_ATTRIBUTE_USAGE),
+    MAKE_STRING_FROM_ENUM(RULE_EXCLUDE_ATTRIBUTE_CAPTURE_PRESET),
+    MAKE_STRING_FROM_ENUM(RULE_EXCLUDE_UID),
+};
+
+template<>
+const size_t RuleTypeConverter::mSize = sizeof(RuleTypeConverter::mTable) /
+        sizeof(RuleTypeConverter::mTable[0]);
+
+template <>
+const UsageTypeConverter::Table UsageTypeConverter::mTable[] = {
+    MAKE_STRING_FROM_ENUM(AUDIO_USAGE_UNKNOWN),
+    MAKE_STRING_FROM_ENUM(AUDIO_USAGE_MEDIA),
+    MAKE_STRING_FROM_ENUM(AUDIO_USAGE_VOICE_COMMUNICATION),
+    MAKE_STRING_FROM_ENUM(AUDIO_USAGE_VOICE_COMMUNICATION_SIGNALLING),
+    MAKE_STRING_FROM_ENUM(AUDIO_USAGE_ALARM),
+    MAKE_STRING_FROM_ENUM(AUDIO_USAGE_NOTIFICATION),
+    MAKE_STRING_FROM_ENUM(AUDIO_USAGE_NOTIFICATION_TELEPHONY_RINGTONE),
+    MAKE_STRING_FROM_ENUM(AUDIO_USAGE_NOTIFICATION_COMMUNICATION_REQUEST),
+    MAKE_STRING_FROM_ENUM(AUDIO_USAGE_NOTIFICATION_COMMUNICATION_INSTANT),
+    MAKE_STRING_FROM_ENUM(AUDIO_USAGE_NOTIFICATION_COMMUNICATION_DELAYED),
+    MAKE_STRING_FROM_ENUM(AUDIO_USAGE_NOTIFICATION_EVENT),
+    MAKE_STRING_FROM_ENUM(AUDIO_USAGE_ASSISTANCE_ACCESSIBILITY),
+    MAKE_STRING_FROM_ENUM(AUDIO_USAGE_ASSISTANCE_NAVIGATION_GUIDANCE),
+    MAKE_STRING_FROM_ENUM(AUDIO_USAGE_ASSISTANCE_SONIFICATION),
+    MAKE_STRING_FROM_ENUM(AUDIO_USAGE_GAME),
+    MAKE_STRING_FROM_ENUM(AUDIO_USAGE_VIRTUAL_SOURCE),
+    MAKE_STRING_FROM_ENUM(AUDIO_USAGE_CNT),
+    MAKE_STRING_FROM_ENUM(AUDIO_USAGE_MAX),
+};
+
+template<>
+const size_t UsageTypeConverter::mSize = sizeof(UsageTypeConverter::mTable) /
+        sizeof(UsageTypeConverter::mTable[0]);
+
+template <>
+const SourceTypeConverter::Table SourceTypeConverter::mTable[] = {
+    MAKE_STRING_FROM_ENUM(AUDIO_SOURCE_DEFAULT),
+    MAKE_STRING_FROM_ENUM(AUDIO_SOURCE_MIC),
+    MAKE_STRING_FROM_ENUM(AUDIO_SOURCE_VOICE_UPLINK),
+    MAKE_STRING_FROM_ENUM(AUDIO_SOURCE_VOICE_DOWNLINK),
+    MAKE_STRING_FROM_ENUM(AUDIO_SOURCE_VOICE_CALL),
+    MAKE_STRING_FROM_ENUM(AUDIO_SOURCE_CAMCORDER),
+    MAKE_STRING_FROM_ENUM(AUDIO_SOURCE_VOICE_RECOGNITION),
+    MAKE_STRING_FROM_ENUM(AUDIO_SOURCE_VOICE_COMMUNICATION),
+    MAKE_STRING_FROM_ENUM(AUDIO_SOURCE_REMOTE_SUBMIX),
+    MAKE_STRING_FROM_ENUM(AUDIO_SOURCE_UNPROCESSED),
+    MAKE_STRING_FROM_ENUM(AUDIO_SOURCE_CNT),
+    MAKE_STRING_FROM_ENUM(AUDIO_SOURCE_MAX),
+    MAKE_STRING_FROM_ENUM(AUDIO_SOURCE_FM_TUNER),
+    MAKE_STRING_FROM_ENUM(AUDIO_SOURCE_HOTWORD),
+};
+
+template<>
+const size_t SourceTypeConverter::mSize = sizeof(SourceTypeConverter::mTable) /
+        sizeof(SourceTypeConverter::mTable[0]);
+
 template <class Traits>
 bool TypeConverter<Traits>::toString(const typename Traits::Type &value, std::string &str)
 {
@@ -298,6 +383,10 @@ template class TypeConverter<ChannelIndexTraits>;
 template class TypeConverter<GainModeTraits>;
 template class TypeConverter<StreamTraits>;
 template class TypeConverter<DeviceCategoryTraits>;
-
+template class TypeConverter<MixTypeTraits>;
+template class TypeConverter<RouteFlagTraits>;
+template class TypeConverter<RuleTraits>;
+template class TypeConverter<UsageTraits>;
+template class TypeConverter<SourceTraits>;
 }; // namespace android
 

@@ -18,6 +18,7 @@
 
 #include "policy.h"
 #include <Volume.h>
+#include <media/AudioPolicy.h>
 #include <system/audio.h>
 #include <convert/convert.h>
 #include <utils/Log.h>
@@ -75,6 +76,31 @@ struct DeviceCategoryTraits
   typedef device_category Type;
   typedef Vector<Type> Collection;
 };
+struct MixTypeTraits
+{
+  typedef int32_t Type;
+  typedef Vector<Type> Collection;
+};
+struct RouteFlagTraits
+{
+  typedef uint32_t Type;
+  typedef Vector<Type> Collection;
+};
+struct RuleTraits
+{
+  typedef uint32_t Type;
+  typedef Vector<Type> Collection;
+};
+struct UsageTraits
+{
+  typedef audio_usage_t Type;
+  typedef Vector<Type> Collection;
+};
+struct SourceTraits
+{
+  typedef audio_source_t Type;
+  typedef Vector<Type> Collection;
+};
 template <typename T>
 struct DefaultTraits
 {
@@ -130,6 +156,11 @@ typedef TypeConverter<ChannelIndexTraits> ChannelIndexConverter;
 typedef TypeConverter<GainModeTraits> GainModeConverter;
 typedef TypeConverter<StreamTraits> StreamTypeConverter;
 typedef TypeConverter<DeviceCategoryTraits> DeviceCategoryConverter;
+typedef TypeConverter<MixTypeTraits> MixTypeConverter;
+typedef TypeConverter<RouteFlagTraits> RouteFlagTypeConverter;
+typedef TypeConverter<RuleTraits> RuleTypeConverter;
+typedef TypeConverter<UsageTraits> UsageTypeConverter;
+typedef TypeConverter<SourceTraits> SourceTypeConverter;
 
 inline
 static SampleRateTraits::Collection samplingRatesFromString(const std::string &samplingRates,
