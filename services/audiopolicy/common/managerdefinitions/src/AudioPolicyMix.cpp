@@ -18,6 +18,7 @@
 //#define LOG_NDEBUG 0
 
 #include "AudioPolicyMix.h"
+#include "TypeConverter.h"
 #include "HwModule.h"
 #include "AudioPort.h"
 #include "IOProfile.h"
@@ -49,6 +50,49 @@ void AudioPolicyMix::setMix(AudioMix &mix)
 android::AudioMix *AudioPolicyMix::getMix()
 {
     return &mMix;
+}
+
+status_t AudioPolicyMix::dump(int fd, int spaces, int index) const
+{
+    const size_t SIZE = 256;
+    char buffer[SIZE];
+    String8 result;
+
+    snprintf(buffer, SIZE, "%*sAudio Policy Mix %d:\n", spaces, "", index+1);
+    result.append(buffer);
+    snprintf(buffer, SIZE, "%*s- mix type: %s\n", spaces, "",
+             mixTypeConversion.at(mMix.mMixType).c_str());
+    result.append(buffer);
+    snprintf(buffer, SIZE, "%*s- Route Flags: %s\n", spaces, "",
+             routeFlagsConversion.at(mMix.mRouteFlags).c_str());
+    result.append(buffer);
+    std::string deviceLiteral;
+    DeviceConverter::toString(mMix.mDeviceType, deviceLiteral);
+    snprintf(buffer, SIZE, "%*s- device type: %s\n", spaces, "", deviceLiteral.c_str());
+    result.append(buffer);
+    snprintf(buffer, SIZE, "%*s- device address: %s\n", spaces, "", mMix.mDeviceAddress.string());
+    result.append(buffer);
+
+    int indexCriterion = 0;
+    for (const auto &criterion : mMix.mCriteria) {
+        snprintf(buffer, SIZE, "%*s- Criterion %d:\n", spaces + 2, "", indexCriterion++);
+        result.append(buffer);
+        snprintf(buffer, SIZE, "%*s- Usage:%s\n", spaces + 4, "",
+                 usageConversion.at(criterion.mValue.mUsage).c_str());
+        result.append(buffer);
+        if (mMix.mMixType == MIX_TYPE_RECORDERS) {
+            snprintf(buffer, SIZE, "%*s- Source:%s\n", spaces + 4, "",
+                     sourceConversion.at(criterion.mValue.mSource).c_str());
+            result.append(buffer);
+        }
+        snprintf(buffer, SIZE, "%*s- Uid:%d\n", spaces + 4, "", criterion.mValue.mUid);
+        result.append(buffer);
+        snprintf(buffer, SIZE, "%*s- Rule:%s\n", spaces + 4, "",
+                 ruleConversion.at(criterion.mRule).c_str());
+        result.append(buffer);
+    }
+    write(fd, result.string(), result.size());
+    return NO_ERROR;
 }
 
 status_t AudioPolicyMixCollection::registerMix(const String8& address, AudioMix mix,
@@ -285,6 +329,18 @@ status_t AudioPolicyMixCollection::getInputMixForAttr(audio_attributes_t attr, A
         return BAD_VALUE;
     }
     *policyMix = mix;
+    return NO_ERROR;
+}
+
+status_t AudioPolicyMixCollection::dump(int fd) const
+{
+    const size_t SIZE = 256;
+    char buffer[SIZE];
+    snprintf(buffer, SIZE, "\nAudio Policy Mix:\n");
+    write(fd, buffer, strlen(buffer));
+    for (size_t i = 0; i < size(); i++) {
+        valueAt(i)->dump(fd, 2, i);
+    }
     return NO_ERROR;
 }
 

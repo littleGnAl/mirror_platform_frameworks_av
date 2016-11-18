@@ -2258,6 +2258,7 @@ status_t AudioPolicyManager::dump(int fd)
     mVolumeCurves->dump(fd);
     mEffects.dump(fd);
     mAudioPatches.dump(fd);
+    mPolicyMixes.dump(fd);
 
     return NO_ERROR;
 }
