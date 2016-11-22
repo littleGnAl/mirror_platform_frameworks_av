@@ -347,6 +347,9 @@ static const char *FourCC2MIME(uint32_t fourcc) {
         case FOURCC('h', 'v', 'c', '1'):
         case FOURCC('h', 'e', 'v', '1'):
             return MEDIA_MIMETYPE_VIDEO_HEVC;
+
+        case FOURCC('a', 'c', '-', '4'):
+            return MEDIA_MIMETYPE_AUDIO_AC4;
         default:
             CHECK(!"should not be here.");
             return NULL;
@@ -1396,6 +1399,7 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
         case FOURCC('e', 'n', 'c', 'a'):
         case FOURCC('s', 'a', 'm', 'r'):
         case FOURCC('s', 'a', 'w', 'b'):
+        case FOURCC('a', 'c', '-', '4'):
         {
             if (mIsQT && chunk_type == FOURCC('m', 'p', '4', 'a')
                     && depth >= 1 && mPath[depth - 1] == FOURCC('w', 'a', 'v', 'e')) {
