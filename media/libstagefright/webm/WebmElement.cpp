@@ -383,10 +383,11 @@ sp<WebmElement> WebmElement::VideoTrackEntry(
         aspects.mTransfer = ColorAspects::TransferUnspecified;
         aspects.mMatrixCoeffs = ColorAspects::MatrixUnspecified;
         aspects.mRange = ColorAspects::RangeUnspecified;
-        bool havePrimaries = meta->findInt32(kKeyColorPrimaries, (int32_t*)&aspects.mPrimaries);
-        bool haveTransfer = meta->findInt32(kKeyTransferFunction, (int32_t*)&aspects.mTransfer);
-        bool haveCoeffs = meta->findInt32(kKeyColorMatrix, (int32_t*)&aspects.mMatrixCoeffs);
-        bool haveRange = meta->findInt32(kKeyColorRange, (int32_t*)&aspects.mRange);
+        // Add casts to (void *) to avoid -Waddress-of-packed-member.
+        bool havePrimaries = meta->findInt32(kKeyColorPrimaries, (int32_t*)(void*)&aspects.mPrimaries);
+        bool haveTransfer = meta->findInt32(kKeyTransferFunction, (int32_t*)(void*)&aspects.mTransfer);
+        bool haveCoeffs = meta->findInt32(kKeyColorMatrix, (int32_t*)(void*)&aspects.mMatrixCoeffs);
+        bool haveRange = meta->findInt32(kKeyColorRange, (int32_t*)(void*)&aspects.mRange);
 
         int32_t primaries, transfer, coeffs;
         bool fullRange;
