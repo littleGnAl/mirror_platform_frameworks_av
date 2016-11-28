@@ -48,7 +48,7 @@ public:
 
     virtual void info(const string &log)
     {
-        ALOGD("policy-parameter-manager: %s", log.c_str());
+        ALOGV("policy-parameter-manager: %s", log.c_str());
     }
     virtual void warning(const string &log)
     {
@@ -101,14 +101,14 @@ ParameterManagerWrapper::~ParameterManagerWrapper()
 
 status_t ParameterManagerWrapper::start()
 {
-    ALOGD("%s: in", __FUNCTION__);
+    ALOGV("%s: in", __FUNCTION__);
     /// Start PFW
     std::string error;
     if (!mPfwConnector->start(error)) {
         ALOGE("%s: Policy PFW start error: %s", __FUNCTION__, error.c_str());
         return NO_INIT;
     }
-    ALOGD("%s: Policy PFW successfully started!", __FUNCTION__);
+    ALOGV("%s: Policy PFW successfully started!", __FUNCTION__);
     return NO_ERROR;
 }
 
@@ -117,7 +117,7 @@ void ParameterManagerWrapper::addCriterionType(const string &typeName, bool isIn
 {
     ALOG_ASSERT(mPolicyCriterionTypes.find(typeName) == mPolicyCriterionTypes.end(),
                       "CriterionType %s already added", typeName.c_str());
-    ALOGD("%s: Adding new criterionType %s", __FUNCTION__, typeName.c_str());
+    ALOGV("%s: Adding new criterionType %s", __FUNCTION__, typeName.c_str());
 
     mPolicyCriterionTypes[typeName] = mPfwConnector->createSelectionCriterionType(isInclusive);
 }
@@ -297,7 +297,7 @@ void ParameterManagerWrapper::loadConfig(cnode *root)
         ALOGW("%s: Could not find node for pfw", __FUNCTION__);
         return;
     }
-    ALOGD("%s: Loading conf for pfw", __FUNCTION__);
+    ALOGV("%s: Loading conf for pfw", __FUNCTION__);
     loadInclusiveCriterionType(node);
     loadExclusiveCriterionType(node);
     loadCriteria(node);
@@ -309,7 +309,7 @@ status_t ParameterManagerWrapper::loadAudioPolicyCriteriaConfig(const char *path
     ALOG_ASSERT(path != NULL, "error in parsing file: empty path");
     cnode *root;
     char *data;
-    ALOGD("%s", __FUNCTION__);
+    ALOGV("%s", __FUNCTION__);
     data = (char *)load_file(path, NULL);
     if (data == NULL) {
         return -ENODEV;
@@ -323,7 +323,7 @@ status_t ParameterManagerWrapper::loadAudioPolicyCriteriaConfig(const char *path
     config_free(root);
     free(root);
     free(data);
-    ALOGD("%s: loaded", __FUNCTION__);
+    ALOGV("%s: loaded", __FUNCTION__);
     return NO_ERROR;
 }
 
