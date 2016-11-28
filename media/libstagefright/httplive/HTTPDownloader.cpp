@@ -267,7 +267,7 @@ sp<M3UParser> HTTPDownloader::fetchPlaylist(
 
     if (playlist->initCheck() != OK) {
         ALOGE("failed to parse .m3u8 playlist");
-
+        memset(curPlaylistHash, 0 , sizeof(hash));
         return NULL;
     }
 
