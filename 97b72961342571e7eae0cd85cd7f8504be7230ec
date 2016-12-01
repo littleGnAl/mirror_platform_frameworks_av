@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd47938e_84caa701",
+        "filename": "services/audiopolicy/engineconfigurable/parameter-framework/examples/Settings/device_for_strategy_accessibility.pfw",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2016-12-01T16:50:47Z",
+      "side": 1,
+      "message": "How after this change the case of \"ForceUseForMedia Is ForceSpeaker AND ForceUseForCommunication Is ForceSpeaker\" is handled?",
+      "range": {
+        "startLine": 378,
+        "startChar": 6,
+        "endLine": 378,
+        "endChar": 41
+      },
+      "revId": "97b72961342571e7eae0cd85cd7f8504be7230ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
