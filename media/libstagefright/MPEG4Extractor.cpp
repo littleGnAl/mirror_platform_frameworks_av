@@ -989,7 +989,8 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
                         while (cur && cur->next != mLastTrack) {
                             cur = cur->next;
                         }
-                        cur->next = NULL;
+                        if (cur)
+                            cur->next = NULL;
                         delete mLastTrack;
                         mLastTrack = cur;
                     }
