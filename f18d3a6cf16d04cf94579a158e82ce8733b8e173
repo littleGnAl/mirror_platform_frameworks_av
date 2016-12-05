@@ -1,0 +1,208 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d8f4f3f_4e3f131b",
+        "filename": "media/mtp/MtpDevHandle.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-05T00:47:22Z",
+      "side": 1,
+      "message": "Coudl you use unique_fd?\nhttps://cs.corp.google.com/android/system/core/base/include/android-base/unique_fd.h?q\u003dpackage:android+unique_fd\u0026dr\u003dCSs",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d8f4f3f_8e381b31",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-05T00:47:22Z",
+      "side": 1,
+      "message": "Maybe we can change the return type of close from int to void?",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d8f4f3f_ae35d739",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-05T00:47:22Z",
+      "side": 1,
+      "message": "Maybe we can change the return type of start from int to void?",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d8f4f3f_6e44cfb8",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-05T00:47:22Z",
+      "side": 1,
+      "message": "nit: Please remove the spaces.",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d8f4f3f_2e4ac7c5",
+        "filename": "media/mtp/MtpFfsHandle.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-05T00:47:22Z",
+      "side": 1,
+      "message": "Can we use unique_fd for the FDs?\nhttps://cs.corp.google.com/android/system/core/base/include/android-base/unique_fd.h?q\u003dpackage:android+unique_fd\u0026dr\u003dCSs",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d8f4f3f_eebc3f6b",
+        "filename": "media/mtp/tests/AsyncIO_test.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-05T00:47:22Z",
+      "side": 1,
+      "message": "Please use TempFile.\nhttps://cs.corp.google.com/android/system/core/base/include/android-base/test_utils.h?rcl\u003d2aaa485e1503e35890e8570546e1866bfd783a20\u0026l\u003d24",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d8f4f3f_ee2fdfe1",
+        "filename": "media/mtp/tests/AsyncIO_test.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-05T00:47:22Z",
+      "side": 1,
+      "message": "Please remove the spaces.",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d8f4f3f_0ea26b4b",
+        "filename": "media/mtp/tests/AsyncIO_test.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-05T00:47:22Z",
+      "side": 1,
+      "message": "Please remove the spaces.",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d8f4f3f_4eac733c",
+        "filename": "media/mtp/tests/MtpFfsHandle_test.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-05T00:47:22Z",
+      "side": 1,
+      "message": "Maybe we can remove the field after turning ffs_handle-\u003e{mBulkIn, mBulkOut, mIntr} into unique_fd since we don\u0027t need to close the FDs manually.",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d8f4f3f_8eb57b83",
+        "filename": "media/mtp/tests/MtpFfsHandle_test.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-05T00:47:22Z",
+      "side": 1,
+      "message": "Please use unique_ptr.",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d8f4f3f_6eb12f95",
+        "filename": "media/mtp/tests/MtpFfsHandle_test.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-05T00:47:22Z",
+      "side": 1,
+      "message": "Please use unique_fd for the FDs.",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d8f4f3f_aeb23796",
+        "filename": "media/mtp/tests/MtpFfsHandle_test.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-05T00:47:22Z",
+      "side": 1,
+      "message": "Please use TemporaryFile here.\nhttps://cs.corp.google.com/android/system/core/base/include/android-base/test_utils.h?rcl\u003d2aaa485e1503e35890e8570546e1866bfd783a20\u0026l\u003d24",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
