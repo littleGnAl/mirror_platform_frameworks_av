@@ -22,6 +22,30 @@
       "revId": "49df4b90f6d2b9a09f9535c6eef55d1ef302b44c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4d0ba3a9_6757721e",
+        "filename": "services/audiopolicy/common/managerdefinitions/include/TypeConverter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1103033
+      },
+      "writtenOn": "2016-12-05T13:23:34Z",
+      "side": 1,
+      "message": "sure, i will move this to cpp",
+      "parentUuid": "cd47938e_c7c824b6",
+      "range": {
+        "startLine": 33,
+        "startChar": 5,
+        "endLine": 33,
+        "endChar": 41
+      },
+      "revId": "49df4b90f6d2b9a09f9535c6eef55d1ef302b44c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
