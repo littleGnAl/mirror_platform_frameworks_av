@@ -1123,6 +1123,7 @@ const sp<AMessage> MediaCodecList::getGlobalSettings() const {
 //static
 bool MediaCodecList::isSoftwareCodec(const AString &componentName) {
     return componentName.startsWithIgnoreCase("OMX.google.")
+        || componentName.startsWithIgnoreCase("OMX.dolby.")
         || !componentName.startsWithIgnoreCase("OMX.");
 }
 
