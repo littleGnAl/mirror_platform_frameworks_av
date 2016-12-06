@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2d8f4f3f_cec1433e",
+        "filename": "media/mtp/MtpServer.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-06T03:43:20Z",
+      "side": 1,
+      "message": "Copying MtpEventPacket causes double free in MtpPacket\u0027s destructor.\nPlease use std::queue\u003cunique_ptr\u003cMtpEventPacket\u003e\u003e instead.",
+      "revId": "9b1a648ac8be306932213b0d091e6390aefb4ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
