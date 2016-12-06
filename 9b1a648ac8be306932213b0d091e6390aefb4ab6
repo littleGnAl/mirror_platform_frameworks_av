@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "2d8f4f3f_316f8a6b",
+        "filename": "media/mtp/MtpPacket.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-06T04:06:13Z",
+      "side": 1,
+      "message": "nit: Can we remove this?",
+      "revId": "9b1a648ac8be306932213b0d091e6390aefb4ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d8f4f3f_116a8e5a",
+        "filename": "media/mtp/MtpPacket.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-06T04:06:13Z",
+      "side": 1,
+      "message": "Could you add DISALLOW_COPY_AND_ASSIGN(MtpPacket) here while you are working here?\nhttps://cs.corp.google.com/android/system/core/base/include/android-base/macros.h?rcl\u003dd96446712c4ddd365100fea3b52aeef0cbb56e03\u0026l\u003d44",
+      "revId": "9b1a648ac8be306932213b0d091e6390aefb4ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d8f4f3f_cec1433e",
         "filename": "media/mtp/MtpServer.h",
         "patchSetId": 19
