@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8decbb0b_f479c0e6",
+        "filename": "media/mtp/MtpDevHandle.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-06T01:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d8f4f3f_4e3f131b",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d8f4f3f_8e381b31",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 17
@@ -30,6 +48,24 @@
       "writtenOn": "2016-12-05T00:47:22Z",
       "side": 1,
       "message": "Maybe we can change the return type of close from int to void?",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "adc25f6f_ee1227d0",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-06T01:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d8f4f3f_8e381b31",
       "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "adc25f6f_ce1763be",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-06T01:30:54Z",
+      "side": 1,
+      "message": "FfsHandle can\u0027t have an error during start, but DevHandle can -- it can fail to open the driver file",
+      "parentUuid": "2d8f4f3f_ae35d739",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d8f4f3f_6e44cfb8",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 17
@@ -64,6 +118,24 @@
       "writtenOn": "2016-12-05T00:47:22Z",
       "side": 1,
       "message": "nit: Please remove the spaces.",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8decbb0b_9461542c",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-06T01:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d8f4f3f_6e44cfb8",
       "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -87,6 +159,24 @@
     },
     {
       "key": {
+        "uuid": "8decbb0b_7412707d",
+        "filename": "media/mtp/MtpFfsHandle.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-06T01:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d8f4f3f_2e4ac7c5",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d8f4f3f_eebc3f6b",
         "filename": "media/mtp/tests/AsyncIO_test.cpp",
         "patchSetId": 17
@@ -98,6 +188,24 @@
       "writtenOn": "2016-12-05T00:47:22Z",
       "side": 1,
       "message": "Please use TempFile.\nhttps://cs.corp.google.com/android/system/core/base/include/android-base/test_utils.h?rcl\u003d2aaa485e1503e35890e8570546e1866bfd783a20\u0026l\u003d24",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8decbb0b_54340c99",
+        "filename": "media/mtp/tests/AsyncIO_test.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-06T01:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d8f4f3f_eebc3f6b",
       "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -121,6 +229,24 @@
     },
     {
       "key": {
+        "uuid": "8decbb0b_34f628ba",
+        "filename": "media/mtp/tests/AsyncIO_test.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-06T01:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d8f4f3f_ee2fdfe1",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d8f4f3f_0ea26b4b",
         "filename": "media/mtp/tests/AsyncIO_test.cpp",
         "patchSetId": 17
@@ -132,6 +258,24 @@
       "writtenOn": "2016-12-05T00:47:22Z",
       "side": 1,
       "message": "Please remove the spaces.",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8decbb0b_14fb24a1",
+        "filename": "media/mtp/tests/AsyncIO_test.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-06T01:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d8f4f3f_0ea26b4b",
       "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -155,6 +299,24 @@
     },
     {
       "key": {
+        "uuid": "8decbb0b_d4047cc9",
+        "filename": "media/mtp/tests/MtpFfsHandle_test.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-06T01:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d8f4f3f_4eac733c",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d8f4f3f_8eb57b83",
         "filename": "media/mtp/tests/MtpFfsHandle_test.cpp",
         "patchSetId": 17
@@ -166,6 +328,24 @@
       "writtenOn": "2016-12-05T00:47:22Z",
       "side": 1,
       "message": "Please use unique_ptr.",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8decbb0b_940714ca",
+        "filename": "media/mtp/tests/MtpFfsHandle_test.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-06T01:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d8f4f3f_8eb57b83",
       "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -189,6 +369,24 @@
     },
     {
       "key": {
+        "uuid": "8decbb0b_7414b0f6",
+        "filename": "media/mtp/tests/MtpFfsHandle_test.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-06T01:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d8f4f3f_6eb12f95",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d8f4f3f_aeb23796",
         "filename": "media/mtp/tests/MtpFfsHandle_test.cpp",
         "patchSetId": 17
@@ -200,6 +398,24 @@
       "writtenOn": "2016-12-05T00:47:22Z",
       "side": 1,
       "message": "Please use TemporaryFile here.\nhttps://cs.corp.google.com/android/system/core/base/include/android-base/test_utils.h?rcl\u003d2aaa485e1503e35890e8570546e1866bfd783a20\u0026l\u003d24",
+      "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8decbb0b_5411ac04",
+        "filename": "media/mtp/tests/MtpFfsHandle_test.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-06T01:30:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d8f4f3f_aeb23796",
       "revId": "f18d3a6cf16d04cf94579a158e82ce8733b8e173",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
