@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8decbb0b_68df3029",
+        "filename": "media/mtp/MtpFfsHandle.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-06T20:15:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d8f4f3f_cee22315",
+      "revId": "64a91c74d24ec8d6bd4dfcff7b58ae477652f35f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d8f4f3f_ce886342",
         "filename": "media/mtp/MtpFfsHandle.h",
         "patchSetId": 18
@@ -30,6 +48,24 @@
       "writtenOn": "2016-12-06T02:18:17Z",
       "side": 1,
       "message": "It\u0027s a bit strange publishing definition in the anonymous namespace.\nMtpFfsHandle.cc and MtpFfsHandle_test..cc refers different (their own) MtpFfsHandle, though it works since the two implementations of MtpFfsHandle has the exactly same definition.\n\nCould you move MtpFfsHandle from the anonymous namespace to the android namespace?",
+      "revId": "64a91c74d24ec8d6bd4dfcff7b58ae477652f35f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8decbb0b_08d3041c",
+        "filename": "media/mtp/MtpFfsHandle.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-06T20:15:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d8f4f3f_ce886342",
       "revId": "64a91c74d24ec8d6bd4dfcff7b58ae477652f35f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "8decbb0b_e8a1e08b",
+        "filename": "media/mtp/MtpFfsHandle.h",
+        "patchSetId": 18
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-06T20:15:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d8f4f3f_aee5d71f",
+      "revId": "64a91c74d24ec8d6bd4dfcff7b58ae477652f35f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d8f4f3f_ae6237bc",
         "filename": "media/mtp/MtpServer.cpp",
         "patchSetId": 18
@@ -64,6 +118,24 @@
       "writtenOn": "2016-12-06T02:18:17Z",
       "side": 1,
       "message": "I think this is introducing new race condition because configure is invoked without synchronizing with UsbDeviceManager.\n\n1. MSG_SET_CURRENT_FUNCTIONS (MTP)\n2.     Receive intnet issued by step 1. MtpServer::configure(/* isPtp */ false)\n3. Process of MtpServer is killed.\n4. MSG_UPDATE_STATE\n5. MSG_SET_CURRENT_FUNCTIONS (PTP)\n6.     Receive intnet issued by step 4. MtpServer::run() -\u003e MtpServer::configure(/* isPtp */ false)\n\nStep 5 configures the drive as MTP though the current functions in UsbDeviceManager is PTP.\nAlso it\u0027s not efficient to re-invoke MtpServer::configure.\n\nCannot we remove the lines and let MtpServer keep living after configure succeeded?",
+      "revId": "64a91c74d24ec8d6bd4dfcff7b58ae477652f35f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8decbb0b_280008b4",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-06T20:15:06Z",
+      "side": 1,
+      "message": "Yeah it might be better to leave it the way it was. The issue I was trying to fix is when MtpServer is killed and restarted, UsbDeviceManager does not take any action since no Usb state changed, but the new server does not have a usb driver and will close immediately.",
+      "parentUuid": "2d8f4f3f_ae6237bc",
       "revId": "64a91c74d24ec8d6bd4dfcff7b58ae477652f35f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
