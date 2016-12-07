@@ -296,6 +296,11 @@ noiselessCounter(SECTION_DATA *sectionData,
     case SHORT_WINDOW:
       sideInfoTab = sideInfoTabShort;
       break;
+    default:
+      /* Should not really reach this case, as all the valid block types are
+       * covered above.  */
+      sideInfoTab = sideInfoTabShort;
+      break;
   }
 
 
