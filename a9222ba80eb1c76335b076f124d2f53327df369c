@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ad1edff1_9c6657d2",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-07T22:01:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dcea7f1_c891cf33",
+      "range": {
+        "startLine": 465,
+        "startChar": 0,
+        "endLine": 465,
+        "endChar": 1
+      },
+      "revId": "a9222ba80eb1c76335b076f124d2f53327df369c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6dcea7f1_e88c9319",
         "filename": "media/mtp/MtpFfsHandle.h",
         "patchSetId": 22
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "ad1edff1_7c6d83a9",
+        "filename": "media/mtp/MtpFfsHandle.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-07T22:01:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dcea7f1_e88c9319",
+      "revId": "a9222ba80eb1c76335b076f124d2f53327df369c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6dcea7f1_28a7cb90",
         "filename": "media/mtp/MtpServer.cpp",
         "patchSetId": 22
@@ -53,6 +95,24 @@
       "writtenOn": "2016-12-07T01:07:38Z",
       "side": 1,
       "message": "Should we add return; here?",
+      "revId": "a9222ba80eb1c76335b076f124d2f53327df369c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad1edff1_5c375f9f",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-07T22:01:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dcea7f1_28a7cb90",
       "revId": "a9222ba80eb1c76335b076f124d2f53327df369c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
