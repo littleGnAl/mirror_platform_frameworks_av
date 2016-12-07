@@ -633,6 +633,10 @@ ATSParser::Stream::Stream(
             mQueue = new ElementaryStreamQueue(
                     ElementaryStreamQueue::METADATA);
             break;
+        case STREAMTYPE_EAC3:
+            mQueue = new ElementaryStreamQueue(
+                    ElementaryStreamQueue::EAC3);
+            break;
 
         default:
             break;
@@ -757,6 +761,7 @@ bool ATSParser::Stream::isAudio() const {
         case STREAMTYPE_MPEG2_AUDIO_ADTS:
         case STREAMTYPE_LPCM_AC3:
         case STREAMTYPE_AC3:
+        case STREAMTYPE_EAC3:
             return true;
 
         default:

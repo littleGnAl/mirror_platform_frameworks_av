@@ -33,6 +33,7 @@ struct ElementaryStreamQueue {
         H264,
         AAC,
         AC3,
+        EAC3,
         MPEG_AUDIO,
         MPEG_VIDEO,
         MPEG4_VIDEO,
@@ -77,6 +78,9 @@ private:
     sp<ABuffer> dequeueAccessUnitMPEG4Video();
     sp<ABuffer> dequeueAccessUnitPCMAudio();
     sp<ABuffer> dequeueAccessUnitMetadata();
+    sp<ABuffer> dequeueAccessUnitEAC3();
+    unsigned mNumIndependentStreamsProcessed;
+    unsigned mNumChannelsIndependentStream;
 
     // consume a logical (compressed) access unit of size "size",
     // returns its timestamp in us (or -1 if no time information).

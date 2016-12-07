@@ -136,6 +136,8 @@ struct ATSParser : public RefBase {
         // Stream type 0x83 is non-standard,
         // it could be LPCM or TrueHD AC3
         STREAMTYPE_LPCM_AC3             = 0x83,
+        // From ATSC A/52:2012, Annex G, 3.1
+        STREAMTYPE_EAC3                 = 0x87,
     };
 
 protected:

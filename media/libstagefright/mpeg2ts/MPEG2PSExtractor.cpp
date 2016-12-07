@@ -608,6 +608,12 @@ MPEG2PSExtractor::Track::Track(
             mode = ElementaryStreamQueue::MPEG_AUDIO;
             break;
 
+        case ATSParser::STREAMTYPE_AC3:
+            mode = ElementaryStreamQueue::AC3;
+            break;
+        case ATSParser::STREAMTYPE_EAC3:
+            mode = ElementaryStreamQueue::EAC3;
+            break;
         case ATSParser::STREAMTYPE_MPEG1_VIDEO:
         case ATSParser::STREAMTYPE_MPEG2_VIDEO:
             mode = ElementaryStreamQueue::MPEG_VIDEO;

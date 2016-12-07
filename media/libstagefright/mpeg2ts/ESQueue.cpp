@@ -40,6 +40,8 @@ ElementaryStreamQueue::ElementaryStreamQueue(Mode mode, uint32_t flags)
     : mMode(mode),
       mFlags(flags),
       mEOSReached(false) {
+    mNumIndependentStreamsProcessed = 0;
+    mNumChannelsIndependentStream = 0;
 }
 
 sp<MetaData> ElementaryStreamQueue::getFormat() {
@@ -245,6 +247,12 @@ static bool IsSeeminglyValidMPEGAudioHeader(const uint8_t *ptr, size_t size) {
     return true;
 }
 
+static bool IsSeeminglyValidEAC3AudioHeader(const uint8_t *ptr, size_t size) {
+    if (size < 2) return false;
+    if (ptr[0] == 0x0b && ptr[1] == 0x77) return true;
+    if (ptr[0] == 0x77 && ptr[1] == 0x0b) return true;
+    return false;
+}
 status_t ElementaryStreamQueue::appendData(
         const void *data, size_t size, int64_t timeUs) {
 
@@ -389,6 +397,32 @@ status_t ElementaryStreamQueue::appendData(
                 break;
             }
 
+            case EAC3:
+            {
+                uint8_t *ptr = (uint8_t *)data;
+
+                ssize_t startOffset = -1;
+                for (size_t i = 0; i < size; ++i) {
+                    if (IsSeeminglyValidEAC3AudioHeader(&ptr[i], size - i)) {
+                        startOffset = i;
+                        break;
+                    }
+                }
+
+                if (startOffset < 0) {
+                    return ERROR_MALFORMED;
+                }
+
+                if (startOffset > 0) {
+                    ALOGI("found something resembling an EAC3 audio "
+                         "syncword at offset %zd",
+                         startOffset);
+                }
+
+                data = &ptr[startOffset];
+                size -= startOffset;
+                break;
+            }
             case MPEG_AUDIO:
             {
                 uint8_t *ptr = (uint8_t *)data;
@@ -496,6 +530,8 @@ sp<ABuffer> ElementaryStreamQueue::dequeueAccessUnit() {
             return dequeueAccessUnitAAC();
         case AC3:
             return dequeueAccessUnitAC3();
+        case EAC3:
+            return dequeueAccessUnitEAC3();
         case MPEG_VIDEO:
             return dequeueAccessUnitMPEGVideo();
         case MPEG4_VIDEO:
@@ -751,6 +787,216 @@ sp<ABuffer> ElementaryStreamQueue::dequeueAccessUnitAAC() {
     return accessUnit;
 }
 
+/* Based on ATSC Standard: Digital Audio Compression Standard (AC-3, E-AC-3),
+ * Revision B, Document A/52B. 14 June 2005
+ */
+static int getEac3StreamInfo(const uint8_t *ptr, size_t size, int32_t *chanCount,
+                                     int32_t *smplRate, unsigned *chanMap) {
+    static const unsigned acmod_to_nfchans[] = {2, 1, 2, 3, 3, 4, 4, 5};
+    static const unsigned samplingRateTable[2][3] = {{48000, 44100, 32000},
+                                                  {24000, 22050, 16000}};
+
+    ABitReader bits(ptr, size);
+
+    // 16 + 2 + 3 + 11 + 2 + 2 + 3 + 1 + 5 + 5 + 1
+    if (bits.numBitsLeft() < 51) {
+        return -1;
+    }
+    if (bits.getBits(16) != 0x0B77) {
+        ALOGE("Invalid syncword in EAC3 header");
+        return -1;
+    }
+
+    unsigned strmtyp = bits.getBits(2);
+    bits.skipBits(14);  // substreamid, frmsiz
+
+    unsigned fscod = bits.getBits(2);
+    int32_t samplingRate = 0;
+    if (fscod == 3) {
+        unsigned fscod2 = bits.getBits(2);
+        samplingRate = samplingRateTable[1][fscod2];
+    } else {
+        bits.skipBits(2);   // numblkscod
+        samplingRate = samplingRateTable[0][fscod];
+    }
+
+    unsigned acmod = bits.getBits(3);
+    unsigned lfeon = bits.getBits(1);
+    bits.skipBits(10);   // bsid, dialnorm
+    if (bits.getBits(1)) {  // compre
+        if (bits.numBitsLeft() < 8) {
+            return -1;
+        }
+        bits.skipBits(8);   // compr
+    }
+    if (!acmod) { // if 1+1 mode (dual mono)
+        if (bits.numBitsLeft() < 6) {
+            return -1;
+        }
+        bits.skipBits(5);   // dialnorm2
+        if (bits.getBits(1)) {  // compr2e
+            if (bits.numBitsLeft() < 8) {
+                return -1;
+            }
+            bits.skipBits(8); // compr2
+        }
+    }
+
+    int32_t channelCount = 0;
+    // Get channel count for this frame
+    if (!strmtyp) {
+        // Independent (sub)stream. Only indication of channel count is nfchans + lfeon
+        channelCount = acmod_to_nfchans[acmod] + lfeon;
+    } else if (strmtyp == 1) { // Dependent substream
+        if (bits.numBitsLeft() < 1) {
+            return -1;
+        }
+        unsigned chanmape = bits.getBits(1);
+        // Ensure dependent substream has chanmap enabled. Otherwise use nfchans + lfeon
+        if (chanmape) {
+            if (bits.numBitsLeft() < 16) {
+                return -1;
+            }
+            unsigned channelmap = bits.getBits(16);
+            *chanMap = channelmap;
+        } else {
+            channelCount = acmod_to_nfchans[acmod] + lfeon;
+        }
+    }
+
+    *chanCount = channelCount;
+    *smplRate = samplingRate;
+
+    return strmtyp;
+}
+
+sp<ABuffer> ElementaryStreamQueue::dequeueAccessUnitEAC3() {
+    unsigned int size;
+    unsigned char* ptr;
+    unsigned bsid;
+    unsigned frmsiz;
+    size_t frame_size = 0;
+    size_t auSize = 0;
+
+    size = mBuffer->size();
+    ptr = mBuffer->data();
+
+    /* parse the header */
+    if (size <= 6) {
+        return NULL;
+    }
+
+    if (mFormat == NULL) {
+        int32_t sampleRate = 0;
+        int32_t numChannels = 0;
+        unsigned chanmap = 0;
+        int strmtyp = getEac3StreamInfo(mBuffer->data(), mBuffer->size(),
+                                                   &numChannels, &sampleRate, &chanmap);
+        if (strmtyp < 0) {
+            ALOGE("Unable to parse EAC3 header for channel count and sample rate");
+            return NULL;
+        }
+
+        if (!mNumIndependentStreamsProcessed) {
+            mNumChannelsIndependentStream = numChannels;
+        } else {
+            numChannels = mNumChannelsIndependentStream;
+        }
+
+        if (mNumIndependentStreamsProcessed > 0 ||
+            strmtyp == 2 /* independent (sub)stream previously coded in AC-3) */) {
+            if (strmtyp == 1) { // Dependent substream
+                if (chanmap & 0x400) { // Lc/Rc pair
+                    numChannels += 2;
+                }
+                if (chanmap & 0x200) { // Lrs/Rrs pair
+                    numChannels += 2;
+                }
+                if (chanmap & 0x100) { // Cs
+                    numChannels += 1;
+                }
+                if (chanmap & 0x80) { // Ts
+                    numChannels += 1;
+                }
+                if (chanmap & 0x40) { // Lsd/Rsd pair
+                    numChannels +=2 ;
+                }
+                if (chanmap & 0x20) { // Lw/Rw pair
+                    numChannels += 2;
+                }
+                if (chanmap & 0x10) { // Vhl/Vhr pair
+                    numChannels += 2;
+                }
+                if (chanmap & 0x8) { // Vhc
+                    numChannels += 1;
+                }
+                if (chanmap & 0x4) { // Lts/Rts pair
+                    numChannels += 2;
+                }
+                if (chanmap & 0x2) { // LFE2
+                    numChannels += 1;
+                }
+            }
+
+            sp<MetaData> meta = new MetaData;
+            meta->setCString(kKeyMIMEType, MEDIA_MIMETYPE_AUDIO_EAC3);
+            meta->setInt32(kKeySampleRate, sampleRate);
+            meta->setInt32(kKeyChannelCount, numChannels);
+
+            ALOGV("sampleRate: %d. numChannels: %d", sampleRate, numChannels);
+
+            mFormat = meta;
+        }
+        if (strmtyp == 0) { // Independent (sub)stream
+            mNumIndependentStreamsProcessed++;
+        }
+    }
+
+    // Decoders with 10 < bsid < 16 are backwards compatible with version 16 decoders.
+    ABitReader bits(ptr, size);
+
+    bits.skipBits(21);          // syncword, strmtyp, substreamid
+    frmsiz = bits.getBits(11);
+    bits.skipBits(8);           // fscod, fscod2/numblkscod, acmod, lfeon
+    bsid = bits.getBits(5);
+    if (bsid > 10 && bsid <= 16) {
+        frame_size = 2 * (frmsiz + 1);
+    } else {
+        ALOGW("bsid %d not supported. Invalid frame size", bsid);
+        return NULL;
+    }
+
+    if (size < frame_size) {
+        ALOGW("Buffer size insufficient for frame size");
+        return NULL;
+    }
+
+    auSize += frame_size;
+
+    // Make Timestamp
+    int64_t timeUs = -1;
+    if (!mRangeInfos.empty()) {
+        timeUs = fetchTimestamp(frame_size);
+    } else {
+        ALOGW("Timestamp not created because mRangeInfos was empty");
+    }
+    if (timeUs < 0ll) {
+        ALOGE("negative timeUs");
+        return NULL;
+    }
+
+    // Now create an access unit
+    sp<ABuffer> accessUnit = new ABuffer(auSize);
+    // Put data into buffer
+    memcpy(accessUnit->data(), mBuffer->data(), frame_size);
+
+    memmove(mBuffer->data(), mBuffer->data() + frame_size, mBuffer->size() - frame_size);
+    mBuffer->setRange(0, mBuffer->size() - frame_size);
+
+    accessUnit->meta()->setInt64("timeUs", timeUs);
+
+    return accessUnit;
+}
 int64_t ElementaryStreamQueue::fetchTimestamp(size_t size) {
     int64_t timeUs = -1;
     bool first = true;
