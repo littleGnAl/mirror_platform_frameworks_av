@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6dcea7f1_a8b73bbc",
+        "filename": "media/mtp/MtpPacket.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-07T01:07:38Z",
+      "side": 1,
+      "message": "I think it\u0027s better to do:\n\n1. Add forward declaration \"class IMtpHandle;\" to each packet header.\n2. Add #include \"IMtpHandle.h\" to each packet source.\n\nSee the header file section: https://docs.google.com/a/google.com/document/d/1QivJI_03TcfRAyMGWkTNHEdiQh8h_F-rYGup9soSeLA/edit?usp\u003dsharing",
+      "parentUuid": "ad1edff1_2edcbf74",
+      "revId": "9b1a648ac8be306932213b0d091e6390aefb4ab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2d8f4f3f_116a8e5a",
         "filename": "media/mtp/MtpPacket.h",
         "patchSetId": 19
