@@ -139,6 +139,24 @@
       "revId": "64a91c74d24ec8d6bd4dfcff7b58ae477652f35f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6dcea7f1_c8c6ef37",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-07T01:07:38Z",
+      "side": 1,
+      "message": "I think we should fix the issue in MtpService.\nCurrently MtpService ask MediaProvider to bind service so that the process will not be killed by the system.\nhttps://cs.corp.google.com/android/packages/providers/MediaProvider/src/com/android/providers/media/MtpReceiver.java?rcl\u003ded9ec79b7f8e8001042ebb5678f8e88de3ad986a\u0026l\u003d62\n\nSo that the process will not be killed after MtpService is running. However MtpService process may be killed between configure()  and MtpService launches. We can fix this by letting MediaProvider bind MtpService just after configure.",
+      "parentUuid": "8decbb0b_280008b4",
+      "revId": "64a91c74d24ec8d6bd4dfcff7b58ae477652f35f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
