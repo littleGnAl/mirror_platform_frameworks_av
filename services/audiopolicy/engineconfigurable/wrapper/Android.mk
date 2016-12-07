@@ -26,7 +26,7 @@ LOCAL_MODULE:= libaudiopolicypfwwrapper
 LOCAL_EXPORT_C_INCLUDE_DIRS := $(LOCAL_PATH)/include
 
 LOCAL_MODULE_TAGS := optional
-LOCAL_CFLAGS := -Wall -Werror -Wextra
+LOCAL_CFLAGS := -Wall -Werror -Wextra -DLOG_NDEBUG=1
 
 include $(BUILD_STATIC_LIBRARY)
 
