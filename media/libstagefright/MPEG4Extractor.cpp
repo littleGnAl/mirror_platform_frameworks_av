@@ -347,6 +347,10 @@ static const char *FourCC2MIME(uint32_t fourcc) {
         case FOURCC('h', 'v', 'c', '1'):
         case FOURCC('h', 'e', 'v', '1'):
             return MEDIA_MIMETYPE_VIDEO_HEVC;
+        case FOURCC('a', 'c', '-', '3'):
+            return MEDIA_MIMETYPE_AUDIO_AC3;
+        case FOURCC('e', 'c', '-', '3'):
+            return MEDIA_MIMETYPE_AUDIO_EAC3;
         default:
             CHECK(!"should not be here.");
             return NULL;
@@ -1396,6 +1400,8 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
         case FOURCC('e', 'n', 'c', 'a'):
         case FOURCC('s', 'a', 'm', 'r'):
         case FOURCC('s', 'a', 'w', 'b'):
+        case FOURCC('a', 'c', '-', '3'):
+        case FOURCC('e', 'c', '-', '3'):
         {
             if (mIsQT && chunk_type == FOURCC('m', 'p', '4', 'a')
                     && depth >= 1 && mPath[depth - 1] == FOURCC('w', 'a', 'v', 'e')) {
@@ -1483,7 +1489,123 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
             }
             break;
         }
+        case FOURCC('d', 'a', 'c', '3'):
+        {
+            uint8_t buffer[3];
+            if (chunk_data_size < (ssize_t)sizeof(buffer)) {
+                // 3 bytes for AC3SpecificBox.
+                return ERROR_MALFORMED;
+            }
 
+            if (mDataSource->readAt(
+                        data_offset, buffer, sizeof(buffer)) < (ssize_t)sizeof(buffer)) {
+                return ERROR_IO;
+            }
+            uint32_t acmod = (buffer[1] >> 3) & 0x7;
+            uint32_t lfeon = (buffer[1] >> 2) & 0x1;
+
+            static const uint32_t channelCountTable[] = {2, 1, 2, 3, 3, 4, 4, 5};
+            uint32_t num_channels = channelCountTable[acmod] + lfeon;
+
+            mLastTrack->meta->setInt32(kKeyChannelCount, num_channels);
+            *offset += chunk_size;
+            break;
+        }
+
+        case FOURCC('d', 'e', 'c', '3'):
+        {
+            // Only allowed on E-AC3 tracks
+            if (!(mPath.size() >= 2 && (
+                    mPath[mPath.size() - 2] == FOURCC('e', 'c', '-', '3')))) {
+                return ERROR_MALFORMED;
+            }
+
+            // Minimum EC3SpecificBox Length
+            if (chunk_data_size < 5) {
+                return ERROR_MALFORMED;
+            }
+
+            // EC3SpecificBox has a maximum size of
+            // 16 + 7 * (32) = 240 bits = 30 bytes
+            uint8_t buffer[30];
+            if (chunk_data_size > (off64_t)sizeof(buffer)) {
+                return ERROR_BUFFER_TOO_SMALL;
+            }
+
+            if (mDataSource->readAt(
+                    data_offset, buffer, chunk_data_size) < chunk_data_size) {
+                return ERROR_IO;
+            }
+
+            // Valid EC3SpecificBox detected
+            uint8_t data_offset = 1; // Skip 13-bit bitrate field
+            uint32_t acmod;
+            uint32_t lfeon;
+            uint16_t chan_loc;
+            uint32_t num_channels;
+            static const uint32_t acmod_to_nfchans[] = {2, 1, 2, 3, 3, 4, 4, 5};
+            uint8_t num_ind_sub = (buffer[data_offset] & 0x7) + 1;
+            uint8_t num_dep_sub;
+
+            // Support maximum of 1 independent substream
+            if (num_ind_sub > 1) {
+                return ERROR_UNSUPPORTED;
+            }
+
+            for (uint8_t i = 0; i < num_ind_sub; i++) {
+                data_offset += 2;
+                acmod = (buffer[data_offset] >> 1) & 0x7;
+                lfeon = buffer[data_offset] & 0x1;
+
+                num_channels = acmod_to_nfchans[acmod] + lfeon;
+
+                data_offset++;
+                num_dep_sub = (buffer[data_offset] >> 1) & 0xF;
+
+                // Support maximum of 1 dependent substream
+                if (num_dep_sub > 1) {
+                    return ERROR_UNSUPPORTED;
+                }
+
+                if (num_dep_sub > 0) {
+                    chan_loc = (buffer[data_offset] << 8) & 0x0100;
+                    data_offset++;
+                    chan_loc = chan_loc | buffer[data_offset];
+                    if (chan_loc & 0x1) { // Lc/Rc pair
+                        num_channels += 2;
+                    }
+                    if (chan_loc & 0x2) { // Lrs/Rrs pair
+                        num_channels += 2;
+                    }
+                    if (chan_loc & 0x4) { // Cs
+                        num_channels += 1;
+                    }
+                    if (chan_loc & 0x8) { // Ts
+                        num_channels += 1;
+                    }
+                    if (chan_loc & 0x10) { // Lsd/Rsd pair
+                        num_channels += 2;
+                    }
+                    if (chan_loc & 0x20) { // Lw/Rw pair
+                        num_channels += 2;
+                    }
+                    if (chan_loc & 0x40) { // Lvh/Rvh pair
+                        num_channels += 2;
+                    }
+                    if (chan_loc & 0x80) { // Cvh
+                        num_channels += 1;
+                    }
+                    if (chan_loc & 0x100) { // LFE2
+                        num_channels += 1;
+                    }
+                }
+            }
+
+            mLastTrack->meta->setInt32(kKeyChannelCount, num_channels);
+
+            *offset += chunk_size;
+            break;
+        }
         case FOURCC('m', 'p', '4', 'v'):
         case FOURCC('e', 'n', 'c', 'v'):
         case FOURCC('s', '2', '6', '3'):
