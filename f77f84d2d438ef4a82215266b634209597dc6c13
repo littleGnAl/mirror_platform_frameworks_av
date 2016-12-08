@@ -16,6 +16,24 @@
       "revId": "f77f84d2d438ef4a82215266b634209597dc6c13",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad1edff1_8364ab29",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-08T01:44:52Z",
+      "side": 1,
+      "message": "At some point I thought that an event sent in the middle of say a file transfer would interrupt that file transfer, so we should not send events asyncronously. Now I realize that that is incorrect -- in fact sending events synchronously is wrong. Interrupts require the host to poll the device, so if the host is not reading from the event endpoint, then the write will continue to block and stop the whole server. Furthermore, since the event endpoint is a separate endpoint, it won\u0027t affect other endpoint data.",
+      "parentUuid": "6dcea7f1_c8d26f16",
+      "revId": "f77f84d2d438ef4a82215266b634209597dc6c13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
