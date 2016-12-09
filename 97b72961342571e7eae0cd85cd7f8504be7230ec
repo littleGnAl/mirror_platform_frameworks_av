@@ -46,6 +46,30 @@
       "revId": "97b72961342571e7eae0cd85cd7f8504be7230ec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a26a7ad_2bf3e97c",
+        "filename": "services/audiopolicy/engineconfigurable/parameter-framework/examples/Settings/device_for_strategy_accessibility.pfw",
+        "patchSetId": 1
+      },
+      "lineNbr": 378,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2016-12-09T16:51:41Z",
+      "side": 1,
+      "message": "OK. Yes, actually I realized that \"TelephonyMode IsNot InCommunication\" implies that we are not very much interested in the value of \"ForceUseForCommunication\", so now your change makes sense to me.",
+      "parentUuid": "6dd9470d_f3538a2e",
+      "range": {
+        "startLine": 378,
+        "startChar": 6,
+        "endLine": 378,
+        "endChar": 41
+      },
+      "revId": "97b72961342571e7eae0cd85cd7f8504be7230ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
