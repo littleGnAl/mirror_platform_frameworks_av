@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "6d5147f4_502c8c07",
+        "filename": "media/mtp/MtpDataPacket.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-09T00:56:00Z",
+      "side": 1,
+      "message": "Got it, please keep this as it is then.",
+      "parentUuid": "3a26a7ad_b9e3db19",
+      "revId": "d58c132fb9e94a25ffe45b942884078792a6ed3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d5147f4_90e0b4b4",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 26
@@ -66,6 +84,24 @@
       "side": 1,
       "message": "In that situation the endpoints will be individually closed by unique_fd::reset. in the case where the config is closed, the endpoints must all be closed at the same time since functionfs refcounts open files and doesn\u0027t reset until everything is closed",
       "parentUuid": "6d5147f4_90e0b4b4",
+      "revId": "d58c132fb9e94a25ffe45b942884078792a6ed3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d5147f4_10220418",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-09T00:56:00Z",
+      "side": 1,
+      "message": "Do we need to output warning in initFunctionFs if the case is expected?",
+      "parentUuid": "3a26a7ad_1991af9e",
       "revId": "d58c132fb9e94a25ffe45b942884078792a6ed3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
