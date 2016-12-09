@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "3a26a7ad_b9e3db19",
+        "filename": "media/mtp/MtpDataPacket.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-09T00:26:11Z",
+      "side": 1,
+      "message": "This include is causing the entire patch to fail to merge into master. The issue is that the includes on master are sorted differently. What would be the best solution here? I\u0027m trying different placements of the line to see if any of them merge better",
+      "parentUuid": "6d5147f4_70b350cb",
+      "revId": "d58c132fb9e94a25ffe45b942884078792a6ed3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d5147f4_90e0b4b4",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 26
@@ -30,6 +48,24 @@
       "writtenOn": "2016-12-09T00:20:37Z",
       "side": 1,
       "message": "When mPtp \u003d\u003d usePtp case, don\u0027t we need to call closeEndpoints() ?\nIt results in warning in initFunctionfs.",
+      "revId": "d58c132fb9e94a25ffe45b942884078792a6ed3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a26a7ad_1991af9e",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-09T00:26:11Z",
+      "side": 1,
+      "message": "In that situation the endpoints will be individually closed by unique_fd::reset. in the case where the config is closed, the endpoints must all be closed at the same time since functionfs refcounts open files and doesn\u0027t reset until everything is closed",
+      "parentUuid": "6d5147f4_90e0b4b4",
       "revId": "d58c132fb9e94a25ffe45b942884078792a6ed3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
