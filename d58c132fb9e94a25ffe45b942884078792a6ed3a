@@ -105,6 +105,42 @@
       "revId": "d58c132fb9e94a25ffe45b942884078792a6ed3a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a26a7ad_7c9ad100",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-09T01:00:09Z",
+      "side": 1,
+      "message": "This would only occur in initFunctionFs if a configure followed another configure without a server being started in between. This should be a rare situation, and if it were to cause a problem I think having the message would be helpful.",
+      "parentUuid": "6d5147f4_10220418",
+      "revId": "d58c132fb9e94a25ffe45b942884078792a6ed3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a26a7ad_3c9459cf",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 26
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-09T01:00:09Z",
+      "side": 1,
+      "message": "The warning only happens if a configure follows a configure without the server being started in the middle. This should be rare, so if there were ever problems or bugs it would be helpful to have the warning message so we know.",
+      "parentUuid": "6d5147f4_10220418",
+      "revId": "d58c132fb9e94a25ffe45b942884078792a6ed3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
