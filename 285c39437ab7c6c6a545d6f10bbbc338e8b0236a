@@ -68,6 +68,30 @@
       "revId": "285c39437ab7c6c6a545d6f10bbbc338e8b0236a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa632f25_34a15048",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2016-12-12T20:36:08Z",
+      "side": 1,
+      "message": "(or std::chrono::steady_clock in modern C++.)",
+      "parentUuid": "3a26a7ad_9e7d8f5c",
+      "range": {
+        "startLine": 820,
+        "startChar": 4,
+        "endLine": 820,
+        "endChar": 16
+      },
+      "revId": "285c39437ab7c6c6a545d6f10bbbc338e8b0236a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
