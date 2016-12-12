@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a26a7ad_7edcf300",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2016-12-12T18:45:10Z",
+      "side": 1,
+      "message": "In Android, \"logical not\" operator is used in a form of \"!\".",
+      "range": {
+        "startLine": 64,
+        "startChar": 8,
+        "endLine": 64,
+        "endChar": 12
+      },
+      "revId": "20be05bec0e4ec5248fb515bd7e51cf86dad28cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a26a7ad_be5f2b8f",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioPolicyMix.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2016-12-12T18:45:10Z",
+      "side": 1,
+      "message": "Why can\u0027t we just pass a string literal to \u0027write\u0027 directly?",
+      "range": {
+        "startLine": 359,
+        "startChar": 4,
+        "endLine": 359,
+        "endChar": 52
+      },
+      "revId": "20be05bec0e4ec5248fb515bd7e51cf86dad28cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
