@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "6d2a2762_ee22fbc7",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-12T22:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a26a7ad_7ef073df",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 61
+      },
+      "revId": "285c39437ab7c6c6a545d6f10bbbc338e8b0236a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3a26a7ad_9e7d8f5c",
         "filename": "media/mtp/MtpServer.cpp",
         "patchSetId": 28
@@ -83,6 +107,30 @@
       "side": 1,
       "message": "(or std::chrono::steady_clock in modern C++.)",
       "parentUuid": "3a26a7ad_9e7d8f5c",
+      "range": {
+        "startLine": 820,
+        "startChar": 4,
+        "endLine": 820,
+        "endChar": 16
+      },
+      "revId": "285c39437ab7c6c6a545d6f10bbbc338e8b0236a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa632f25_3de2d3bc",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-12T22:31:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa632f25_34a15048",
       "range": {
         "startLine": 820,
         "startChar": 4,
