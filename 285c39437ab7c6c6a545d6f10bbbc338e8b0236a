@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a26a7ad_3e031bf2",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-12T19:16:02Z",
+      "side": 1,
+      "message": "This makes me so happy.  \u003c3",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 574,
+        "endChar": 76
+      },
+      "revId": "285c39437ab7c6c6a545d6f10bbbc338e8b0236a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a26a7ad_7ef073df",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-12T19:16:02Z",
+      "side": 1,
+      "message": "So we mark the property as being ready, even if the configure above failed?",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 61
+      },
+      "revId": "285c39437ab7c6c6a545d6f10bbbc338e8b0236a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3a26a7ad_9e7d8f5c",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1006166
+      },
+      "writtenOn": "2016-12-12T19:16:02Z",
+      "side": 1,
+      "message": "If you\u0027re measuring time-between-events, you probably want to use:\n\n  nsecs_t time \u003d systemTime(SYSTEM_TIME_BOOTTIME);\n\nSince it gives you a nice single value to add/subtract for deltas, and it uses the monotonic clock that won\u0027t be at-risk for shuffling around due to NITZ.",
+      "range": {
+        "startLine": 820,
+        "startChar": 4,
+        "endLine": 820,
+        "endChar": 16
+      },
+      "revId": "285c39437ab7c6c6a545d6f10bbbc338e8b0236a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
