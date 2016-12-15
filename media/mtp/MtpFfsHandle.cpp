@@ -107,16 +107,6 @@ const struct usb_interface_descriptor mtp_interface_desc = {
     .bInterfaceProtocol = 1,
 };
 
-const struct usb_interface_descriptor ptp_interface_desc = {
-    .bLength = USB_DT_INTERFACE_SIZE,
-    .bDescriptorType = USB_DT_INTERFACE,
-    .bInterfaceNumber = 0,
-    .bNumEndpoints = 3,
-    .bInterfaceClass = USB_CLASS_STILL_IMAGE,
-    .bInterfaceSubClass = 1,
-    .bInterfaceProtocol = 1,
-};
-
 const struct usb_endpoint_descriptor_no_audio fs_sink = {
     .bLength = USB_DT_ENDPOINT_SIZE,
     .bDescriptorType = USB_DT_ENDPOINT,
@@ -233,30 +223,6 @@ const struct ss_func_desc mtp_ss_descriptors = {
     .intr_comp = ss_intr_comp,
 };
 
-const struct func_desc ptp_fs_descriptors = {
-    .intf = ptp_interface_desc,
-    .sink = fs_sink,
-    .source = fs_source,
-    .intr = fs_intr,
-};
-
-const struct func_desc ptp_hs_descriptors = {
-    .intf = ptp_interface_desc,
-    .sink = hs_sink,
-    .source = hs_source,
-    .intr = hs_intr,
-};
-
-const struct ss_func_desc ptp_ss_descriptors = {
-    .intf = ptp_interface_desc,
-    .sink = ss_sink,
-    .sink_comp = ss_sink_comp,
-    .source = ss_source,
-    .source_comp = ss_source_comp,
-    .intr = ss_intr,
-    .intr_comp = ss_intr_comp,
-};
-
 const struct {
     struct usb_functionfs_strings_head header;
 } __attribute__((packed)) strings = {
@@ -296,9 +262,9 @@ bool MtpFfsHandle::initFunctionfs() {
     v2_descriptor.fs_count = 4;
     v2_descriptor.hs_count = 4;
     v2_descriptor.ss_count = 7;
-    v2_descriptor.fs_descs = mPtp ? ptp_fs_descriptors : mtp_fs_descriptors;
-    v2_descriptor.hs_descs = mPtp ? ptp_hs_descriptors : mtp_hs_descriptors;
-    v2_descriptor.ss_descs = mPtp ? ptp_ss_descriptors : mtp_ss_descriptors;
+    v2_descriptor.fs_descs = mtp_fs_descriptors;
+    v2_descriptor.hs_descs = mtp_hs_descriptors;
+    v2_descriptor.ss_descs = mtp_ss_descriptors;
 
     if (mControl < 0) { // might have already done this before
         mControl.reset(TEMP_FAILURE_RETRY(open(FFS_MTP_EP0, O_RDWR)));
@@ -313,8 +279,8 @@ bool MtpFfsHandle::initFunctionfs() {
             v1_descriptor.header.length = cpu_to_le32(sizeof(v1_descriptor));
             v1_descriptor.header.fs_count = 4;
             v1_descriptor.header.hs_count = 4;
-            v1_descriptor.fs_descs = mPtp ? ptp_fs_descriptors : mtp_fs_descriptors;
-            v1_descriptor.hs_descs = mPtp ? ptp_hs_descriptors : mtp_hs_descriptors;
+            v1_descriptor.fs_descs = mtp_fs_descriptors;
+            v1_descriptor.hs_descs = mtp_hs_descriptors;
             PLOG(ERROR) << FFS_MTP_EP0 << "Switching to V1 descriptor format";
             ret = TEMP_FAILURE_RETRY(::write(mControl, &v1_descriptor, sizeof(v1_descriptor)));
             if (ret < 0) {
@@ -437,16 +403,9 @@ int MtpFfsHandle::start() {
     return 0;
 }
 
-int MtpFfsHandle::configure(bool usePtp) {
+int MtpFfsHandle::configure() {
     // Wait till previous server invocation has closed
     std::lock_guard<std::mutex> lk(mLock);
-
-    // If ptp is changed, the configuration must be rewritten
-    if (mPtp != usePtp) {
-        closeEndpoints();
-        closeConfig();
-    }
-    mPtp = usePtp;
 
     if (!initFunctionfs()) {
         return -1;
