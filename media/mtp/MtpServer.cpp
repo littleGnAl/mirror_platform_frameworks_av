@@ -122,13 +122,13 @@ MtpServer::~MtpServer() {
 
 IMtpHandle* MtpServer::sHandle = nullptr;
 
-int MtpServer::configure(bool usePtp) {
+int MtpServer::configure() {
     if (sHandle == nullptr) {
         bool ffs_ok = access(FFS_MTP_EP0, W_OK) == 0;
         sHandle = ffs_ok ? get_ffs_handle() : get_mtp_handle();
     }
 
-    int ret = sHandle->configure(usePtp);
+    int ret = sHandle->configure();
     if (ret) ALOGE("Failed to configure MTP driver!");
     else android::base::SetProperty("sys.usb.ffs.mtp.ready", "1");
 
