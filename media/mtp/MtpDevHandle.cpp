@@ -52,7 +52,7 @@ public:
     int start();
     void close();
 
-    int configure(bool ptp);
+    int configure();
 };
 
 MtpDevHandle::MtpDevHandle()
@@ -90,7 +90,7 @@ void MtpDevHandle::close() {
     mFd.reset();
 }
 
-int MtpDevHandle::configure(bool) {
+int MtpDevHandle::configure() {
     // Nothing to do, driver can configure itself
     return 0;
 }

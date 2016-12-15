@@ -34,8 +34,6 @@ private:
     void closeConfig();
     void closeEndpoints();
 
-    bool mPtp;
-
     std::mutex mLock;
 
     android::base::unique_fd mControl;
@@ -59,7 +57,7 @@ public:
     int start();
     void close();
 
-    int configure(bool ptp);
+    int configure();
 
     MtpFfsHandle();
     ~MtpFfsHandle();
