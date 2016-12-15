@@ -117,7 +117,7 @@ public:
     void                addStorage(MtpStorage* storage);
     void                removeStorage(MtpStorage* storage);
 
-    static int          configure(bool usePtp);
+    static int          configure();
     void                run();
 
     void                sendObjectAdded(MtpObjectHandle handle);
