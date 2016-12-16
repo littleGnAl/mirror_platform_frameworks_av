@@ -445,15 +445,18 @@ status_t AudioFlinger::PatchPanel::createPatchConnections(Patch *patch,
         patch->mPlaybackPatchHandle = AUDIO_PATCH_HANDLE_NONE;
     }
 
-    // use a pseudo LCM between input and output framecount
-    size_t playbackFrameCount = patch->mPlaybackThread->frameCount();
-    int playbackShift = __builtin_ctz(playbackFrameCount);
+    // use a max between input and output framecount
+    size_t playbackFrameCount = patch->mPlaybackThread->frameCountHAL();
     size_t recordFramecount = patch->mRecordThread->frameCount();
-    int shift = __builtin_ctz(recordFramecount);
-    if (playbackShift < shift) {
-        shift = playbackShift;
-    }
-    size_t frameCount = (playbackFrameCount * recordFramecount) >> shift;
+    size_t frameCount;
+    if (playbackFrameCount > recordFramecount)
+        frameCount = playbackFrameCount;
+    else
+        frameCount = recordFramecount;
+
+    // seems to reduce the voice-call latency
+    frameCount <<= 1;
+
     ALOGV("createPatchConnections() playframeCount %zu recordFramecount %zu frameCount %zu",
           playbackFrameCount, recordFramecount, frameCount);
 
@@ -464,6 +467,15 @@ status_t AudioFlinger::PatchPanel::createPatchConnections(Patch *patch,
     uint32_t sampleRate = patch->mPlaybackThread->sampleRate();
     audio_format_t format = patch->mPlaybackThread->format();
 
+    audio_input_flags_t input_flags = AUDIO_INPUT_FLAG_NONE;
+
+    // check if recordthread has fast-capture, if yes queue this track to its
+    // fast-capture if sample rate matches
+    if (patch->mRecordThread->hasFastCapture()) {
+        if (patch->mRecordThread->sampleRate() == sampleRate)
+            input_flags = AUDIO_INPUT_FLAG_FAST;
+    }
+
     patch->mPatchRecord = new RecordThread::PatchRecord(
                                              patch->mRecordThread.get(),
                                              sampleRate,
@@ -471,7 +483,7 @@ status_t AudioFlinger::PatchPanel::createPatchConnections(Patch *patch,
                                              format,
                                              frameCount,
                                              NULL,
-                                             AUDIO_INPUT_FLAG_NONE);
+                                             input_flags);
     if (patch->mPatchRecord == 0) {
         return NO_MEMORY;
     }
@@ -480,6 +492,15 @@ status_t AudioFlinger::PatchPanel::createPatchConnections(Patch *patch,
         return status;
     }
     patch->mRecordThread->addPatchRecord(patch->mPatchRecord);
+
+    audio_output_flags_t output_flags = AUDIO_OUTPUT_FLAG_NONE;
+
+    // check if playbackthread has fast-mixer, if yes queue this track to its
+    // fast-mixer
+    // there will not be any SRC since the track's sample rate is
+    // playback's thread's sample rate, so fast-mixer should help
+    if (patch->mPlaybackThread->hasFastMixer())
+        output_flags = AUDIO_OUTPUT_FLAG_FAST;
 
     // create a special playback track to render to playback thread.
     // this track is given the same buffer as the PatchRecord buffer
@@ -491,7 +512,7 @@ status_t AudioFlinger::PatchPanel::createPatchConnections(Patch *patch,
                                            format,
                                            frameCount,
                                            patch->mPatchRecord->buffer(),
-                                           AUDIO_OUTPUT_FLAG_NONE);
+                                           output_flags);
     if (patch->mPatchTrack == 0) {
         return NO_MEMORY;
     }
