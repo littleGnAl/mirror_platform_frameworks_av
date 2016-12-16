@@ -31,10 +31,7 @@ LOCAL_SRC_FILES := \
     Utils.cpp \
 
 LOCAL_C_INCLUDES := \
-    external/jsmn \
     frameworks/av/drm/mediadrm/plugins/clearkey \
-    frameworks/av/include \
-    frameworks/native/include \
 
 LOCAL_MODULE := libdrmclearkeyplugin
 
