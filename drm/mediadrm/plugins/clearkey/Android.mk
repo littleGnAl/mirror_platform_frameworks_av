@@ -31,10 +31,7 @@ LOCAL_SRC_FILES := \
     Utils.cpp \
 
 LOCAL_C_INCLUDES := \
-    external/jsmn \
     frameworks/av/drm/mediadrm/plugins/clearkey \
-    frameworks/av/include \
-    frameworks/native/include \
 
 LOCAL_MODULE := libdrmclearkeyplugin
 
@@ -44,8 +41,12 @@ LOCAL_MODULE_RELATIVE_PATH := mediadrm
 LOCAL_SHARED_LIBRARIES := \
     libcrypto \
     liblog \
+    liblog_vndk_headers \
     libstagefright_foundation \
     libutils \
+    libcutils_vndk_headers \
+    libmedia \
+    libmedia_headers \
 
 LOCAL_STATIC_LIBRARIES := \
     libjsmn \
