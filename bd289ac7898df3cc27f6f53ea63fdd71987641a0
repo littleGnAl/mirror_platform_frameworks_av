@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "da93cbd8_1b405b73",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-19T01:48:53Z",
+      "side": 1,
+      "message": "Why don\u0027t we have the definition of IOCTL in functionfs.h ?\nhttps://cs.corp.google.com/android/external/kernel-headers/original/uapi/linux/usb/functionfs.h?q\u003dpackage:android+functionfs.h\u0026dr\u003dCSs\u0026l\u003d283",
+      "revId": "bd289ac7898df3cc27f6f53ea63fdd71987641a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da93cbd8_bb30471a",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 1
