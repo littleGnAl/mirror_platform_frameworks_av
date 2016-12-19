@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1a772381_9d029571",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-19T19:28:34Z",
+      "side": 1,
+      "message": "The ioctl is android only (for now, I wrote it). bionic team only wants upstream definitions in their headers.",
+      "parentUuid": "da93cbd8_1b405b73",
+      "revId": "bd289ac7898df3cc27f6f53ea63fdd71987641a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da93cbd8_bb30471a",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 1
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "1a772381_5d863d69",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-19T19:28:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da93cbd8_bb30471a",
+      "revId": "bd289ac7898df3cc27f6f53ea63fdd71987641a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "da93cbd8_db2513db",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 1
@@ -47,6 +83,24 @@
       "writtenOn": "2016-12-19T01:45:43Z",
       "side": 1,
       "message": "How about defining helper class like ScopedEndpointBufferAlloc that increases buffer size at the constructor and resets buffer size to zero at the destructor?",
+      "revId": "bd289ac7898df3cc27f6f53ea63fdd71987641a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a772381_7d83f957",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2016-12-19T19:28:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da93cbd8_db2513db",
       "revId": "bd289ac7898df3cc27f6f53ea63fdd71987641a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
