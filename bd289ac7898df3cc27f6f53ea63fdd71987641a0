@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da93cbd8_bb30471a",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-19T01:45:43Z",
+      "side": 1,
+      "message": "Please check result of ioctl and add logging for error case.",
+      "revId": "bd289ac7898df3cc27f6f53ea63fdd71987641a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "da93cbd8_db2513db",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-19T01:45:43Z",
+      "side": 1,
+      "message": "How about defining helper class like ScopedEndpointBufferAlloc that increases buffer size at the constructor and resets buffer size to zero at the destructor?",
+      "revId": "bd289ac7898df3cc27f6f53ea63fdd71987641a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
