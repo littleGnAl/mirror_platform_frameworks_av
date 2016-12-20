@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17961e08_5d913b31",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-20T00:09:54Z",
+      "side": 1,
+      "message": "nit: Please add const",
+      "revId": "ae1b2a3f415db35d04edb7c6a6c5364198cb2ab0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17961e08_7d96772c",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-20T00:09:54Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "ae1b2a3f415db35d04edb7c6a6c5364198cb2ab0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17961e08_1d8bb303",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 486,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2016-12-20T00:09:54Z",
+      "side": 1,
+      "message": "Now return -1 is enough. Same for others.",
+      "revId": "ae1b2a3f415db35d04edb7c6a6c5364198cb2ab0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
