@@ -96,12 +96,20 @@ static const MtpEventCode kSupportedEventCodes[] = {
 };
 
 MtpServer::MtpServer(MtpDatabase* database, bool ptp,
-                    int fileGroup, int filePerm, int directoryPerm)
+                    int fileGroup, int filePerm, int directoryPerm,
+                    MtpString deviceInfoManufacturer,
+                    MtpString deviceInfoModel,
+                    MtpString deviceInfoDeviceVersion,
+                    MtpString deviceInfoSerialNumber)
     :   mDatabase(database),
         mPtp(ptp),
         mFileGroup(fileGroup),
         mFilePermission(filePerm),
         mDirectoryPermission(directoryPerm),
+        mDeviceInfoManufacturer(deviceInfoManufacturer),
+        mDeviceInfoModel(deviceInfoModel),
+        mDeviceInfoDeviceVersion(deviceInfoDeviceVersion),
+        mDeviceInfoSerialNumber(deviceInfoSerialNumber),
         mSessionID(0),
         mSessionOpen(false),
         mSendObjectHandle(kInvalidObjectHandle),
@@ -451,7 +459,6 @@ bool MtpServer::handleRequest() {
 
 MtpResponseCode MtpServer::doGetDeviceInfo() {
     MtpStringBuffer   string;
-    char prop_value[PROPERTY_VALUE_MAX];
 
     MtpObjectFormatList* playbackFormats = mDatabase->getSupportedPlaybackFormats();
     MtpObjectFormatList* captureFormats = mDatabase->getSupportedCaptureFormats();
@@ -483,19 +490,10 @@ MtpResponseCode MtpServer::doGetDeviceInfo() {
     mData.putAUInt16(captureFormats); // Capture Formats
     mData.putAUInt16(playbackFormats);  // Playback Formats
 
-    property_get("ro.product.manufacturer", prop_value, "unknown manufacturer");
-    string.set(prop_value);
-    mData.putString(string);   // Manufacturer
-
-    property_get("ro.product.model", prop_value, "MTP Device");
-    string.set(prop_value);
-    mData.putString(string);   // Model
-    string.set("1.0");
-    mData.putString(string);   // Device Version
-
-    property_get("ro.serialno", prop_value, "????????");
-    string.set(prop_value);
-    mData.putString(string);   // Serial Number
+    mData.putString(mDeviceInfoManufacturer); // Manufactuerer
+    mData.putString(mDeviceInfoModel); // Model
+    mData.putString(mDeviceInfoDeviceVersion); // Device Version
+    mData.putString(mDeviceInfoSerialNumber); // Serial Number
 
     delete playbackFormats;
     delete captureFormats;
