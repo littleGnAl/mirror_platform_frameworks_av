@@ -22,6 +22,30 @@
       "revId": "f47a19daf2d3c8a8cccf71f87c91f05a3751117b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7c9e645_c36e7eaa",
+        "filename": "include/media/AudioSystem.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1002682
+      },
+      "writtenOn": "2016-12-28T20:12:34Z",
+      "side": 1,
+      "message": "handleDeviceConfigChange(audio_devices_t device, ...)",
+      "parentUuid": "d7c9e645_e307faf8",
+      "range": {
+        "startLine": 203,
+        "startChar": 20,
+        "endLine": 203,
+        "endChar": 51
+      },
+      "revId": "f47a19daf2d3c8a8cccf71f87c91f05a3751117b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
