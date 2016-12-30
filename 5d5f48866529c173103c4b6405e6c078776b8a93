@@ -22,6 +22,30 @@
       "revId": "5d5f48866529c173103c4b6405e6c078776b8a93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17961e08_8313e241",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3294,
+      "author": {
+        "id": 1105578
+      },
+      "writtenOn": "2016-12-30T02:52:24Z",
+      "side": 1,
+      "message": "but even you change the type from int32 to uint32, it still overflows when you call writeInt32(), as MPEG4 has the version 1 mdhd definition, I think it is better to use int64 in case of recording longer time.",
+      "parentUuid": "d7c9e645_45a1297a",
+      "range": {
+        "startLine": 3294,
+        "startChar": 23,
+        "endLine": 3294,
+        "endChar": 32
+      },
+      "revId": "5d5f48866529c173103c4b6405e6c078776b8a93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
