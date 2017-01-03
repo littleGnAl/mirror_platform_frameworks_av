@@ -46,6 +46,30 @@
       "revId": "5d5f48866529c173103c4b6405e6c078776b8a93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7c9e645_58c7c759",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3294,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-01-03T16:42:16Z",
+      "side": 1,
+      "message": "Not sure I follow. All of the values in the mdhd box are unsigned, regardless of whether it\u0027s version 0 or 1, so if the duration is \u003c\u003d UINT32_MAX it can be written as a version 0 box.\nThat being said, how about always writing a version 1 box? Is there any reason (other than saving 12 bytes) to write a version 0 box?",
+      "parentUuid": "17961e08_8313e241",
+      "range": {
+        "startLine": 3294,
+        "startChar": 23,
+        "endLine": 3294,
+        "endChar": 32
+      },
+      "revId": "5d5f48866529c173103c4b6405e6c078776b8a93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
