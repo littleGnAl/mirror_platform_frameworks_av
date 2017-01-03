@@ -70,6 +70,30 @@
       "revId": "5d5f48866529c173103c4b6405e6c078776b8a93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7c9e645_a9cc5f4d",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3294,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-01-03T19:21:51Z",
+      "side": 1,
+      "message": "marco: would a version 0 box (aside from being slightly more compact :-) be considered more compatible with early players?\n\nxiahong: yes, it will still eventually overflow for UINT32_MAX, but it might be more appropriate for the check.  int32 and uint32 are compatible as the cast does not change the bit representation for 2\u0027s complement processors; the casting will not trigger an integer sanitization abort either.",
+      "parentUuid": "d7c9e645_58c7c759",
+      "range": {
+        "startLine": 3294,
+        "startChar": 23,
+        "endLine": 3294,
+        "endChar": 32
+      },
+      "revId": "5d5f48866529c173103c4b6405e6c078776b8a93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
