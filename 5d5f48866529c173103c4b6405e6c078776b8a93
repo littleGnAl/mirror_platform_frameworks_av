@@ -94,6 +94,30 @@
       "revId": "5d5f48866529c173103c4b6405e6c078776b8a93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7c9e645_e9534754",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3294,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-01-03T19:32:48Z",
+      "side": 1,
+      "message": "Version 1 was part of the first 14496-12 spec in 2004, so any parser *should* support it. If compatibility is a concern though, that would be one more reason to check against UINT32_MAX (since you\u0027d end up using version 0 for more videos)",
+      "parentUuid": "d7c9e645_a9cc5f4d",
+      "range": {
+        "startLine": 3294,
+        "startChar": 23,
+        "endLine": 3294,
+        "endChar": 32
+      },
+      "revId": "5d5f48866529c173103c4b6405e6c078776b8a93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
