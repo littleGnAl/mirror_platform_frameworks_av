@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "d7c9e645_0f733356",
+        "filename": "media/libstagefright/wifi-display/rtp/RTPSender.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 660,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-01-03T21:40:26Z",
+      "side": 1,
+      "message": "return value ignored.",
+      "range": {
+        "startLine": 660,
+        "startChar": 15,
+        "endLine": 660,
+        "endChar": 45
+      },
+      "revId": "a99adecacf8c3efe51aa9116da27912d5c46f9bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d7c9e645_5b660a47",
         "filename": "media/libstagefright/wifi-display/rtp/RTPSender.cpp",
         "patchSetId": 9
@@ -13,6 +36,24 @@
       "writtenOn": "2017-01-03T19:38:50Z",
       "side": 1,
       "message": "Must this function always return OK? In case the buffer is too small, would you want to send back an error code?",
+      "revId": "a99adecacf8c3efe51aa9116da27912d5c46f9bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d7c9e645_efa02779",
+        "filename": "media/libstagefright/wifi-display/rtp/RTPSender.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 783,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-01-03T21:40:26Z",
+      "side": 1,
+      "message": "The return code is ignored by the caller, I would expect the owner/maintainer of the wifi-display tree to fix this discrepancy, if it is an issue, as a separate bug and CL.\n\nThis is merely a precise check to ensure that data access is not outside the buffer, without the check possibly leading to a security information leakage issue.",
+      "parentUuid": "d7c9e645_5b660a47",
       "revId": "a99adecacf8c3efe51aa9116da27912d5c46f9bb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
