@@ -118,6 +118,30 @@
       "revId": "5d5f48866529c173103c4b6405e6c078776b8a93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17961e08_e61f54d1",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3294,
+      "author": {
+        "id": 1105578
+      },
+      "writtenOn": "2017-01-04T01:54:01Z",
+      "side": 1,
+      "message": "I upload patch 2 that use UINT32_MAX instead of INT32_MAX.\nUse both version 0 and version 1 box would be more compatible considering that if there are some parsers that only support version 0 box.",
+      "parentUuid": "d7c9e645_a9cc5f4d",
+      "range": {
+        "startLine": 3294,
+        "startChar": 23,
+        "endLine": 3294,
+        "endChar": 32
+      },
+      "revId": "5d5f48866529c173103c4b6405e6c078776b8a93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
