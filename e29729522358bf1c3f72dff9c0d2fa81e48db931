@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "17c7fe66_14e26d16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-01-04T21:32:41Z",
+      "side": 1,
+      "message": "I had been looking at moving the headers that this library owned to it\u0027s subdirectory and exporting that, but that turned into more effort than is necessary to just convert this library.",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "e29729522358bf1c3f72dff9c0d2fa81e48db931",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17c7fe66_34f769dd",
+        "filename": "media/libaudioclient/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-01-04T21:32:41Z",
+      "side": 1,
+      "message": "None of these are actually used (no compiler errors, and the same binary is produced)",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 45
+      },
+      "revId": "e29729522358bf1c3f72dff9c0d2fa81e48db931",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
