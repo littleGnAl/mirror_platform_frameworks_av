@@ -93,6 +93,30 @@
       "revId": "e29729522358bf1c3f72dff9c0d2fa81e48db931",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97c76e81_ad2435d6",
+        "filename": "media/libaudioclient/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-01-05T01:59:23Z",
+      "side": 1,
+      "message": "We\u0027ve got a set of default include directory for platform libraries that contain frameworks/native/include and frameworks/av/include (and others: https://android.googlesource.com/platform/build/soong/+/98dbb3bc2dda9633222fc66786cc122d79b4b33d/cc/config/global.go#100 )\n\nThe plan to clean that up is to move the headers out of those global directories into the libraries that actually own them one by one, fixing any users as we go. Much of the work so far has been focused on removing the warnings that -isystem has been hiding, frameworks/av is the last one in that list. Some of the VNDK requirements have been speeding this up, since we should only be exposing stable headers to code in the vendor partition, which means we can\u0027t use the default global paths.\n\nIt\u0027s better to drop unnecessary include_dirs entries, since leaving them just makes it harder to clean up those giant directories later, and new cases really ought to be using exported includes anyways instead of hardcoded paths.",
+      "parentUuid": "97c76e81_4d035978",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 45
+      },
+      "revId": "e29729522358bf1c3f72dff9c0d2fa81e48db931",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
