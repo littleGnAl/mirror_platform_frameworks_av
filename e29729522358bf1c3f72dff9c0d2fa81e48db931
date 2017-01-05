@@ -141,6 +141,30 @@
       "revId": "e29729522358bf1c3f72dff9c0d2fa81e48db931",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97c76e81_ed26ad7f",
+        "filename": "media/libaudioclient/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-01-05T02:28:57Z",
+      "side": 1,
+      "message": "No, that wouldn\u0027t help. Those will cease to exist at some point, but the headers will be assigned to a library, and that library will export it\u0027s headers automatically to its users. So we\u0027d prefer not to change the users if we don\u0027t need to.",
+      "parentUuid": "97c76e81_4d6eb9ab",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 45
+      },
+      "revId": "e29729522358bf1c3f72dff9c0d2fa81e48db931",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
