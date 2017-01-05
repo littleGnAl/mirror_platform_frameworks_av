@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "97c76e81_0279b06d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2017-01-05T01:50:02Z",
+      "side": 1,
+      "message": "Yup, and no dependencies are currently using these exported headers. Therefore removing them at this stage is an easy and fail-safe solution.",
+      "parentUuid": "17c7fe66_14e26d16",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 54
+      },
+      "revId": "e29729522358bf1c3f72dff9c0d2fa81e48db931",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "17c7fe66_34f769dd",
         "filename": "media/libaudioclient/Android.bp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-01-04T21:32:41Z",
       "side": 1,
       "message": "None of these are actually used (no compiler errors, and the same binary is produced)",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 45
+      },
+      "revId": "e29729522358bf1c3f72dff9c0d2fa81e48db931",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97c76e81_4d035978",
+        "filename": "media/libaudioclient/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1121403
+      },
+      "writtenOn": "2017-01-05T01:50:02Z",
+      "side": 1,
+      "message": "This is actually true. I kept them here because I wanted to respect the original Android.mk file. The included headers for this library are rooted at \"frameworks/av/include\", \"frameworks/base/include\", etc. Any idea on why Soong can find these headers even though we do not explicitly include them?",
+      "parentUuid": "17c7fe66_34f769dd",
       "range": {
         "startLine": 35,
         "startChar": 0,
