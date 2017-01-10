@@ -93,6 +93,30 @@
       "revId": "f862bc6a7a35054e38cb50fa16ae7a07f683ee01",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97c76e81_cff72ada",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2017-01-10T16:27:50Z",
+      "side": 1,
+      "message": "Yes, please remove those checks from here an above.\nAudioPolicyManager already has the same checks for setDeviceConnectionState() so just add them there for handleDeviceConfigChange()\n\nThanks",
+      "parentUuid": "97c76e81_6c2cacc4",
+      "range": {
+        "startLine": 75,
+        "startChar": 9,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "f862bc6a7a35054e38cb50fa16ae7a07f683ee01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
