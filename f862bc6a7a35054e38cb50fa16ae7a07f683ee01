@@ -117,6 +117,30 @@
       "revId": "f862bc6a7a35054e38cb50fa16ae7a07f683ee01",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97c76e81_fbb870a5",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2017-01-10T19:46:39Z",
+      "side": 1,
+      "message": "Done in the follow-up CL:\nhttps://android-review.googlesource.com/#/c/320493/",
+      "parentUuid": "97c76e81_cff72ada",
+      "range": {
+        "startLine": 75,
+        "startChar": 9,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "f862bc6a7a35054e38cb50fa16ae7a07f683ee01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
