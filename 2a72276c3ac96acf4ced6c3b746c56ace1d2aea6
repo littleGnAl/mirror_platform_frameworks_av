@@ -22,6 +22,30 @@
       "revId": "2a72276c3ac96acf4ced6c3b746c56ace1d2aea6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97c76e81_4253f187",
+        "filename": "media/libaudioclient/IAudioPolicyService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2017-01-10T17:25:34Z",
+      "side": 1,
+      "message": "what if the remote just does not write the strings? You would get a null ptr from data.readCString() no?\nWe had similar security issues on other binder calls.",
+      "parentUuid": "97c76e81_ef366e9f",
+      "range": {
+        "startLine": 837,
+        "startChar": 12,
+        "endLine": 837,
+        "endChar": 44
+      },
+      "revId": "2a72276c3ac96acf4ced6c3b746c56ace1d2aea6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
