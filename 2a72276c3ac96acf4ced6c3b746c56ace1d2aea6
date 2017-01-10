@@ -46,6 +46,30 @@
       "revId": "2a72276c3ac96acf4ced6c3b746c56ace1d2aea6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97c76e81_e2332507",
+        "filename": "media/libaudioclient/IAudioPolicyService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-01-10T17:49:44Z",
+      "side": 1,
+      "message": "yes, if the data parcel is too small, then a nullptr occurs.  but should this be considered a valid binder transaction?\n\nRather than interpreting it as a valid one by setting device_address \u003d \"\" and calling setDeviceConnectionState (i think this might be confusing), perhaps it is more clear skip the setDeviceConnectionState call, write an ALOGE, and put a bad status code in the reply?  at least, the error handling for the binder transaction would be at the right layer.",
+      "parentUuid": "97c76e81_4253f187",
+      "range": {
+        "startLine": 837,
+        "startChar": 12,
+        "endLine": 837,
+        "endChar": 44
+      },
+      "revId": "2a72276c3ac96acf4ced6c3b746c56ace1d2aea6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
