@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "97c76e81_8caa6021",
+        "filename": "media/libaudioclient/IAudioPolicyService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 859,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2017-01-10T07:29:35Z",
+      "side": 1,
+      "message": "If I remember correctly, this was mostly copy-and-paste from\nthe \"case SET_DEVICE_CONNECTION_STATE:\" above, so it looks like\nwe have the same issue in other places as well.\n\nNevertheless, all corresponding issues are addressed in the following CL:\nhttps://android-review.googlesource.com/#/c/320493/",
+      "parentUuid": "97c76e81_b739ff91",
+      "range": {
+        "startLine": 859,
+        "startChar": 24,
+        "endLine": 859,
+        "endChar": 38
+      },
+      "revId": "f862bc6a7a35054e38cb50fa16ae7a07f683ee01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "97c76e81_d70593c4",
         "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2017-01-09T20:15:32Z",
       "side": 1,
       "message": "these checks should be in AudioPolicyManager.cpp",
+      "range": {
+        "startLine": 75,
+        "startChar": 9,
+        "endLine": 75,
+        "endChar": 31
+      },
+      "revId": "f862bc6a7a35054e38cb50fa16ae7a07f683ee01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "97c76e81_6c2cacc4",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2017-01-10T07:29:35Z",
+      "side": 1,
+      "message": "The code here was copied from the original code in AudioPolicyService::setDeviceConnectionState() above.\n\nDo we want all those checks to be moved to AudioPolicyManager.cpp ?",
+      "parentUuid": "97c76e81_d70593c4",
       "range": {
         "startLine": 75,
         "startChar": 9,
