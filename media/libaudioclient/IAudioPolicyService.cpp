@@ -95,6 +95,15 @@ public:
                                     const char *device_address,
                                     const char *device_name)
     {
+        if (device_address == nullptr) {
+            ALOGE("setDeviceConnectionState(): NULL device address for device %u", device);
+            return BAD_VALUE;
+        }
+        if (device_name == nullptr) {
+            ALOGE("setDeviceConnectionState(): NULL device name for device %u", device);
+            return BAD_VALUE;
+        }
+
         Parcel data, reply;
         data.writeInterfaceToken(IAudioPolicyService::getInterfaceDescriptor());
         data.writeInt32(static_cast <uint32_t>(device));
@@ -109,6 +118,11 @@ public:
                                     audio_devices_t device,
                                     const char *device_address)
     {
+        if (device_address == nullptr) {
+            ALOGE("getDeviceConnectionState(): NULL device address for device %u", device);
+            return AUDIO_POLICY_DEVICE_STATE_UNAVAILABLE;
+        }
+
         Parcel data, reply;
         data.writeInterfaceToken(IAudioPolicyService::getInterfaceDescriptor());
         data.writeInt32(static_cast <uint32_t>(device));
@@ -121,6 +135,15 @@ public:
                                               const char *device_address,
                                               const char *device_name)
     {
+        if (device_address == nullptr) {
+            ALOGE("handleDeviceConfigChange(): NULL device address for device %u", device);
+            return BAD_VALUE;
+        }
+        if (device_name == nullptr) {
+            ALOGE("handleDeviceConfigChange(): NULL device name for device %u", device);
+            return BAD_VALUE;
+        }
+
         Parcel data, reply;
         data.writeInterfaceToken(IAudioPolicyService::getInterfaceDescriptor());
         data.writeInt32(static_cast <uint32_t>(device));
