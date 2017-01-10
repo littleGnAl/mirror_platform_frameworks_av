@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97c76e81_ef366e9f",
+        "filename": "media/libaudioclient/IAudioPolicyService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 837,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-01-10T17:01:10Z",
+      "side": 1,
+      "message": "this doesn\u0027t seem possible with a well-formed binder transaction.  if this is nullptr then the binder transaction has been corrupted and perhaps the method shouldn\u0027t be called, and the binder transaction should fail?\n\nSee the matching writeCString definition here.\nhttps://cs.corp.google.com/android/system/libhwbinder/Parcel.cpp?rcl\u003dfe01fec4d25cac0b5ea9768ce1ce5a93c08602a9\u0026l\u003d1056",
+      "range": {
+        "startLine": 837,
+        "startChar": 12,
+        "endLine": 837,
+        "endChar": 44
+      },
+      "revId": "2a72276c3ac96acf4ced6c3b746c56ace1d2aea6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
