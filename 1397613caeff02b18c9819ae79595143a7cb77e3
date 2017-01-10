@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "97c76e81_fb03d075",
+        "filename": "media/libaudioclient/IAudioPolicyService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-01-10T19:54:55Z",
+      "side": 1,
+      "message": "we don\u0027t check the binder transaction return code at the Bp level.  so either that needs to change, or we need to return the code in the reply.",
+      "range": {
+        "startLine": 839,
+        "startChar": 22,
+        "endLine": 839,
+        "endChar": 32
+      },
+      "revId": "1397613caeff02b18c9819ae79595143a7cb77e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
