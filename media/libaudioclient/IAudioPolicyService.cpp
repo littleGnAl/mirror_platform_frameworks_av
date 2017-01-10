@@ -834,7 +834,13 @@ status_t BnAudioPolicyService::onTransact(
             audio_policy_dev_state_t state =
                     static_cast <audio_policy_dev_state_t>(data.readInt32());
             const char *device_address = data.readCString();
+            if (device_address == nullptr) {
+                device_address = "";
+            }
             const char *device_name = data.readCString();
+            if (device_name == nullptr) {
+                device_name = "";
+            }
             reply->writeInt32(static_cast<uint32_t> (setDeviceConnectionState(device,
                                                                               state,
                                                                               device_address,
@@ -847,6 +853,9 @@ status_t BnAudioPolicyService::onTransact(
             audio_devices_t device =
                     static_cast<audio_devices_t> (data.readInt32());
             const char *device_address = data.readCString();
+            if (device_address == nullptr) {
+              device_address = "";
+            }
             reply->writeInt32(static_cast<uint32_t> (getDeviceConnectionState(device,
                                                                               device_address)));
             return NO_ERROR;
@@ -857,7 +866,13 @@ status_t BnAudioPolicyService::onTransact(
             audio_devices_t device =
                     static_cast <audio_devices_t>(data.readInt32());
             const char *device_address = data.readCString();
+            if (device_address == nullptr) {
+                device_address = "";
+            }
             const char *device_name = data.readCString();
+            if (device_name == nullptr) {
+                device_name = "";
+            }
             reply->writeInt32(static_cast<uint32_t> (handleDeviceConfigChange(device,
                                                                               device_address,
                                                                               device_name)));
