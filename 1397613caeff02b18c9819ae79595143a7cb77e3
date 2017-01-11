@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "a364350b_418dc816",
+        "filename": "media/libaudioclient/IAudioPolicyService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2017-01-11T04:34:49Z",
+      "side": 1,
+      "message": "Patch Set 3 was wrong: I overlooked that I was modifying\nmethod setDeviceConnectionState() with the same name,\nbut on the client side in class BpAudioPolicyService (same file).\n\nShould be corrected in Patch Set 4.",
+      "parentUuid": "a364350b_be31610e",
+      "range": {
+        "startLine": 839,
+        "startChar": 22,
+        "endLine": 839,
+        "endChar": 32
+      },
+      "revId": "1397613caeff02b18c9819ae79595143a7cb77e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a364350b_dea8d564",
         "filename": "media/libaudioclient/IAudioPolicyService.cpp",
         "patchSetId": 2
