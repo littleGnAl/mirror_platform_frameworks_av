@@ -22,6 +22,30 @@
       "revId": "e1d1bb0c667586a07a5c7a7885b8d0ccbf337f6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a364350b_019fd041",
+        "filename": "media/libaudioclient/IAudioPolicyService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1071489
+      },
+      "writtenOn": "2017-01-11T04:34:49Z",
+      "side": 1,
+      "message": "Please ignore this change (Patch Set 3 and 4), because this\nwasn\u0027t my intention.\n\nAfter in-person discussion with Andy, I realized I had modified\nthe wrong methods setDeviceConnectionState() and friends\nwith the same name, but on the client side in class BpAudioPolicyService (same file).\n\nCorrected in Patch Set 5.\n\nAlso, based on Andy\u0027s recommendation, I removed the checks\nhere on the client side - if the client is doing something obviously\nwrong, it should crash instead of hiding / masking the issue.",
+      "parentUuid": "a364350b_5e5fe5f5",
+      "range": {
+        "startLine": 142,
+        "startChar": 12,
+        "endLine": 142,
+        "endChar": 23
+      },
+      "revId": "e1d1bb0c667586a07a5c7a7885b8d0ccbf337f6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
