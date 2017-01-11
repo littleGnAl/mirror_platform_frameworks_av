@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a364350b_5e5fe5f5",
+        "filename": "media/libaudioclient/IAudioPolicyService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2017-01-11T03:44:44Z",
+      "side": 1,
+      "message": "the checks must also be on server side in case of malicious apps directly calling the binder interface with the transaction code.",
+      "range": {
+        "startLine": 142,
+        "startChar": 12,
+        "endLine": 142,
+        "endChar": 23
+      },
+      "revId": "e1d1bb0c667586a07a5c7a7885b8d0ccbf337f6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
