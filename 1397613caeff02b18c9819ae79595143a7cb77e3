@@ -46,6 +46,99 @@
       "revId": "1397613caeff02b18c9819ae79595143a7cb77e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a364350b_1ebf2da1",
+        "filename": "media/libaudioclient/IAudioPolicyService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 839,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-01-11T02:31:40Z",
+      "side": 1,
+      "message": "perhaps we should return the error in the writeInt32 on line 846 to avoid unnecessary error translation.",
+      "parentUuid": "97c76e81_5b251cd0",
+      "range": {
+        "startLine": 839,
+        "startChar": 22,
+        "endLine": 839,
+        "endChar": 32
+      },
+      "revId": "1397613caeff02b18c9819ae79595143a7cb77e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a364350b_dea8d564",
+        "filename": "media/libaudioclient/IAudioPolicyService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 846,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-01-11T02:31:40Z",
+      "side": 1,
+      "message": "BAD_VALUE here on error.",
+      "range": {
+        "startLine": 846,
+        "startChar": 30,
+        "endLine": 846,
+        "endChar": 31
+      },
+      "revId": "1397613caeff02b18c9819ae79595143a7cb77e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a364350b_5edcc5f8",
+        "filename": "media/libaudioclient/IAudioPolicyService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-01-11T02:31:40Z",
+      "side": 1,
+      "message": "AUDIO_POLICY_DEVICE_STATE_UNAVAILABLE on error",
+      "range": {
+        "startLine": 862,
+        "startChar": 30,
+        "endLine": 862,
+        "endChar": 31
+      },
+      "revId": "1397613caeff02b18c9819ae79595143a7cb77e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a364350b_5eb5a5be",
+        "filename": "media/libaudioclient/IAudioPolicyService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 881,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-01-11T02:31:40Z",
+      "side": 1,
+      "message": "BAD_VALUE on error",
+      "range": {
+        "startLine": 881,
+        "startChar": 51,
+        "endLine": 881,
+        "endChar": 52
+      },
+      "revId": "1397613caeff02b18c9819ae79595143a7cb77e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
