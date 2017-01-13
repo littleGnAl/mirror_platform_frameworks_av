@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3bbe9cf_f3a7d0f6",
+        "filename": "services/audioflinger/PatchPanel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2017-01-13T22:25:06Z",
+      "side": 1,
+      "message": "using the HAL framecount will work only if there is a fast mixer and we use a fast track",
+      "range": {
+        "startLine": 449,
+        "startChar": 56,
+        "endLine": 449,
+        "endChar": 69
+      },
+      "revId": "25c37e6dce15e81c4c6d1df6c78939736d16bde1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3bbe9cf_539f9ca4",
+        "filename": "services/audioflinger/PatchPanel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2017-01-13T22:25:06Z",
+      "side": 1,
+      "message": "seems like a hack: what guaranty do we have it will be enough?",
+      "range": {
+        "startLine": 458,
+        "startChar": 4,
+        "endLine": 458,
+        "endChar": 14
+      },
+      "revId": "25c37e6dce15e81c4c6d1df6c78939736d16bde1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
