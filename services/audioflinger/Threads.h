@@ -1,6 +1,7 @@
 /*
 **
 ** Copyright 2012, The Android Open Source Project
+** Copyright (C) 2014 Sony Mobile Communications Inc.
 **
 ** Licensed under the Apache License, Version 2.0 (the "License");
 ** you may not use this file except in compliance with the License.
@@ -13,6 +14,9 @@
 ** WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 ** See the License for the specific language governing permissions and
 ** limitations under the License.
+**
+** NOTE: This file has been modified by Sony Mobile Communications Inc.
+** Modifications are licensed under the License.
 */
 
 #ifndef INCLUDING_FROM_AUDIOFLINGER_H
@@ -1018,6 +1022,7 @@ protected:
     virtual     int         getTrackName_l(audio_channel_mask_t channelMask, audio_format_t format,
                                            audio_session_t sessionId, uid_t uid);
     virtual     void        deleteTrackName_l(int name);
+    virtual     uint32_t    activeSleepTimeUs() const;
     virtual     uint32_t    idleSleepTimeUs() const;
     virtual     uint32_t    suspendSleepTimeUs() const;
     virtual     void        cacheParameters_l();
