@@ -1018,6 +1018,7 @@ protected:
     virtual     int         getTrackName_l(audio_channel_mask_t channelMask, audio_format_t format,
                                            audio_session_t sessionId, uid_t uid);
     virtual     void        deleteTrackName_l(int name);
+    virtual     uint32_t    activeSleepTimeUs() const;
     virtual     uint32_t    idleSleepTimeUs() const;
     virtual     uint32_t    suspendSleepTimeUs() const;
     virtual     void        cacheParameters_l();

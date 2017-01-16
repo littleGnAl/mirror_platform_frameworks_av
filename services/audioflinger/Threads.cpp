@@ -4774,6 +4774,17 @@ void AudioFlinger::MixerThread::dumpInternals(int fd, const Vector<String16>& ar
 
 }
 
+uint32_t AudioFlinger::MixerThread::activeSleepTimeUs() const
+{
+    uint32_t time = PlaybackThread::activeSleepTimeUs();
+
+    // Reduce sleep time in case of using FastMixer
+    if (mFastMixer != 0) {
+        time = time / 2;
+    }
+    return time;
+}
+
 uint32_t AudioFlinger::MixerThread::idleSleepTimeUs() const
 {
     return (uint32_t)(((mNormalFrameCount * 1000) / mSampleRate) * 1000) / 2;
