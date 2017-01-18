@@ -488,13 +488,15 @@ public:
         mFd(fd),
         mAllocSize(alloc_size) {
         if (ioctl(mFd, FUNCTIONFS_ENDPOINT_ALLOC, static_cast<__u32>(mAllocSize)))
-            PLOG(DEBUG) << "FFS endpoint alloc failed!";
+            PLOG(ERROR) << "FFS endpoint alloc failed!";
     }
 
     ~ScopedEndpointBufferAlloc() {
         if (ioctl(mFd, FUNCTIONFS_ENDPOINT_ALLOC, static_cast<__u32>(0)))
-            PLOG(DEBUG) << "FFS endpoint alloc reset failed!";
+            PLOG(ERROR) << "FFS endpoint alloc reset failed!";
     }
+
+    DISALLOW_COPY_AND_ASSIGN(ScopedEndpointBufferAlloc);
 };
 
 /* Read from USB and write to a local file. */
@@ -524,7 +526,7 @@ int MtpFfsHandle::receiveFile(mtp_file_range mfr) {
     bool write = false;
 
     posix_fadvise(mfr.fd, 0, 0, POSIX_FADV_SEQUENTIAL | POSIX_FADV_NOREUSE);
-    ScopedEndpointBufferAlloc(mBulkOut, mMaxRead);
+    ScopedEndpointBufferAlloc scoped_alloc(mBulkOut, mMaxRead);
 
     // Break down the file into pieces that fit in buffers
     while (file_length > 0 || write) {
@@ -640,7 +642,7 @@ int MtpFfsHandle::sendFile(mtp_file_range mfr) {
     if (writeHandle(mBulkIn, data, packet_size) == -1) return -1;
     if (file_length == 0) return 0;
 
-    ScopedEndpointBufferAlloc(mBulkIn, mMaxWrite);
+    ScopedEndpointBufferAlloc scoped_alloc(mBulkIn, mMaxWrite);
 
     // Break down the file into pieces that fit in buffers
     while(file_length > 0) {
