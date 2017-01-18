@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "835651ec_8fd5f59d",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 497,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2017-01-18T21:35:05Z",
+      "side": 1,
+      "message": "Please add DISALLOW_COPY_AND_ASSIGN here.\nhttps://cs.corp.google.com/android/system/core/base/include/android-base/macros.h?q\u003dpackage:android+DISALLOW_COPY+file:macro\u0026dr\u003dCSs\u0026l\u003d41",
+      "revId": "d4f9d9cf1250a3668b32f264b9ec1bdba86c7156",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "835651ec_4fcdcd13",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 527,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2017-01-18T21:35:05Z",
+      "side": 1,
+      "message": "Is this copy initialization?\nhttp://en.cppreference.com/w/cpp/language/copy_initialization\n\nMaybe ScopedEndpointBufferAlloc scoped_alloc(mBulkOut, mMaxRead); ?",
+      "revId": "d4f9d9cf1250a3668b32f264b9ec1bdba86c7156",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "835651ec_6fca91fe",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 643,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2017-01-18T21:35:05Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "d4f9d9cf1250a3668b32f264b9ec1bdba86c7156",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
