@@ -67,9 +67,9 @@ LOCAL_SHARED_LIBRARIES := \
 
 ifeq ($(USE_CONFIGURABLE_AUDIO_POLICY), 1)
 
-ifneq ($(USE_XML_AUDIO_POLICY_CONF), 1)
-$(error Configurable policy does not support legacy conf file)
-endif #ifneq ($(USE_XML_AUDIO_POLICY_CONF), 1)
+#ifneq ($(USE_XML_AUDIO_POLICY_CONF), 1)
+#$(error Configurable policy does not support legacy conf file)
+#endif #ifneq ($(USE_XML_AUDIO_POLICY_CONF), 1)
 
 LOCAL_REQUIRED_MODULES := \
     parameter-framework.policy \
