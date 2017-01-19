@@ -7,7 +7,7 @@
 #
 ################################################################################################
 
-ifeq (1, 0)
+ifeq (1, 1)
 
 LOCAL_PATH := $(call my-dir)
 
@@ -15,6 +15,8 @@ PFW_CORE := external/parameter-framework
 BUILD_PFW_SETTINGS := $(PFW_CORE)/support/android/build_pfw_settings.mk
 PFW_DEFAULT_SCHEMAS_DIR := $(PFW_CORE)/upstream/schemas
 PFW_SCHEMAS_DIR := $(PFW_DEFAULT_SCHEMAS_DIR)
+
+pfw_rebuild_settings = true
 
 ##################################################################
 # CONFIGURATION FILES
