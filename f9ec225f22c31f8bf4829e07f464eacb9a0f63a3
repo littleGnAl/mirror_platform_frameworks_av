@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "79f5415f_2ec5b76b",
+        "filename": "drm/mediadrm/plugins/clearkey/Android.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-01-26T23:28:47Z",
+      "side": 1,
+      "message": "This exports the include directory, which will take precedence over the liblog_vndk_headers. If you swap these lines, will you get what you want (this piece built under the vndk rather than the ndk)",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 12
+      },
+      "revId": "f9ec225f22c31f8bf4829e07f464eacb9a0f63a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
