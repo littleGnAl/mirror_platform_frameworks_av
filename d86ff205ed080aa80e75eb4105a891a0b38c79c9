@@ -22,6 +22,29 @@
       "revId": "d86ff205ed080aa80e75eb4105a891a0b38c79c9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f08d35d9_8051a511",
+        "filename": "media/libstagefright/codecs/aacenc/src/dyn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-01-26T04:37:16Z",
+      "side": 1,
+      "message": "Sounds reasonable to me; done.",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 12
+      },
+      "revId": "d86ff205ed080aa80e75eb4105a891a0b38c79c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
