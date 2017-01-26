@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe3720c9_e25b64a5",
+        "filename": "media/libstagefright/codecs/aacenc/src/dyn_bits.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-01-26T03:56:46Z",
+      "side": 1,
+      "message": "I\u0027d prefer a CHECK, since this being called with the wrong value means something is seriously wrong.\nA simple ALOGE-and-return would be OK too.",
+      "range": {
+        "startLine": 300,
+        "startChar": 0,
+        "endLine": 303,
+        "endChar": 12
+      },
+      "revId": "d86ff205ed080aa80e75eb4105a891a0b38c79c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
