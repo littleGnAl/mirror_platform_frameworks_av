@@ -45,6 +45,23 @@
       "revId": "92a010085b94cd83df67dbc930f176d16a78c111",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65fb061c_985fd803",
+        "filename": "media/libmedia/Android.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-01-27T01:12:15Z",
+      "side": 1,
+      "message": "And everything will eventually be in Android.bp files, so we should not be adding non-local exports. Only the third item in this list is valid, though it doesn\u0027t exist, so it\u0027s not valid either.",
+      "revId": "92a010085b94cd83df67dbc930f176d16a78c111",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
