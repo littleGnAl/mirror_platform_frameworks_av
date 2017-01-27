@@ -22,6 +22,29 @@
       "revId": "92a010085b94cd83df67dbc930f176d16a78c111",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b2d3f8ed_af50e29a",
+        "filename": "media/libmedia/Android.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1123943
+      },
+      "writtenOn": "2017-01-27T01:08:51Z",
+      "side": 1,
+      "message": "Only Android.mk needs full path for export. All such makefiles are using LOCAL_PATH. Android.bp doesnt need full path, just subdir works.",
+      "range": {
+        "startLine": 73,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 17
+      },
+      "revId": "92a010085b94cd83df67dbc930f176d16a78c111",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
