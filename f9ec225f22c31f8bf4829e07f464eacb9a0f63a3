@@ -19,6 +19,52 @@
     },
     {
       "key": {
+        "uuid": "5051319a_2d1b5f68",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-01-30T15:43:31Z",
+      "side": 1,
+      "message": "Since there are no bundled users, and this is for the VNDK, could we set up a simple gTest that could access the expected APIs, breaking the build if not available?",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 34
+      },
+      "revId": "f9ec225f22c31f8bf4829e07f464eacb9a0f63a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "731f6b25_e15c67b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-01-30T15:43:31Z",
+      "side": 1,
+      "message": "Is there a Bug: number for these changes?",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 2
+      },
+      "revId": "f9ec225f22c31f8bf4829e07f464eacb9a0f63a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "79f5415f_2ec5b76b",
         "filename": "drm/mediadrm/plugins/clearkey/Android.mk",
         "patchSetId": 4
