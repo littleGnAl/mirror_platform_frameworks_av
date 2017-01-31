@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33a8a56d_46ea5fa0",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_ApplyNewSettings.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-01-31T23:24:55Z",
+      "side": 1,
+      "message": "dynamic stack allocation to prevent data overrun?\n\nLVM_INT32 G[NumberOfDelayLines] \u003d {0};\n\n?",
+      "range": {
+        "startLine": 313,
+        "startChar": 34,
+        "endLine": 313,
+        "endChar": 35
+      },
+      "revId": "1a97086705c6688c48e3a59259503f17df531eed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "203c49f9_8d9d6aae",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_ApplyNewSettings.c",
+        "patchSetId": 1
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2017-01-31T23:24:55Z",
+      "side": 1,
+      "message": "If the variable is assigned a value greater than 4 (it isn\u0027t yet, but that is not the point) then G[] will be overrun.",
+      "range": {
+        "startLine": 326,
+        "startChar": 24,
+        "endLine": 326,
+        "endChar": 42
+      },
+      "revId": "1a97086705c6688c48e3a59259503f17df531eed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
