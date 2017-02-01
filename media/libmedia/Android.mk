@@ -47,11 +47,11 @@ LOCAL_SRC_FILES:= \
     StringArray.cpp \
 
 LOCAL_SHARED_LIBRARIES := \
-	libui liblog libcutils libutils libbinder libsonivox libicuuc libicui18n libexpat \
+        libui liblog libcutils libutils libbinder libsonivox libicuuc libicui18n libexpat \
         libcamera_client libstagefright_foundation \
         libgui libdl libaudioutils libaudioclient
 
-LOCAL_EXPORT_SHARED_LIBRARY_HEADERS := libbinder
+LOCAL_EXPORT_SHARED_LIBRARY_HEADERS := libbinder libaudioutils
 
 LOCAL_WHOLE_STATIC_LIBRARIES := libmedia_helper
 
@@ -64,10 +64,13 @@ LOCAL_ADDITIONAL_DEPENDENCIES := $(LOCAL_PATH)/Android.mk
 
 LOCAL_C_INCLUDES := \
     $(TOP)/frameworks/native/include/media/openmax \
-    $(TOP)/frameworks/av/include/media/ \
+    $(LOCAL_PATH)/include \
     $(TOP)/frameworks/av/media/libstagefright \
     $(call include-path-for, audio-effects) \
     $(call include-path-for, audio-utils)
+
+LOCAL_EXPORT_C_INCLUDE_DIRS := \
+    $(LOCAL_PATH)/include
 
 LOCAL_CFLAGS += -Werror -Wno-error=deprecated-declarations -Wall
 LOCAL_CLANG := true
