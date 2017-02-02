@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bca4b704_cbc3246a",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2017-02-02T07:56:50Z",
+      "side": 1,
+      "message": "mLock.unlock here is better since start() fails?",
+      "revId": "a0ad9b712cabac1fdac86dadf25683541ac587d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c78f4527_81634c4e",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2017-02-02T07:56:50Z",
+      "side": 1,
+      "message": "nit: Please use the same style for #506 and #507",
+      "range": {
+        "startLine": 507,
+        "startChar": 8,
+        "endLine": 507,
+        "endChar": 10
+      },
+      "revId": "a0ad9b712cabac1fdac86dadf25683541ac587d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
