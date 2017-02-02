@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "ae156446_a9bcbdd0",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-02-02T08:04:20Z",
+      "side": 1,
+      "message": "Is this preferred to calling close() in MtpServer.run() when start() fails? That way is convenient because I don\u0027t have to keep adding unlocks, even if I add other return branches, and can do other cleanup if that exists",
+      "revId": "a0ad9b712cabac1fdac86dadf25683541ac587d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c78f4527_81634c4e",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 3
