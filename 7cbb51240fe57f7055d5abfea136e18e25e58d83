@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08ec6e7f_fa23bef9",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2017-02-02T07:56:50Z",
+      "side": 1,
+      "message": "nit: It seems the line does not fit with 100 column.",
+      "range": {
+        "startLine": 454,
+        "startChar": 100,
+        "endLine": 454,
+        "endChar": 101
+      },
+      "revId": "7cbb51240fe57f7055d5abfea136e18e25e58d83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e0bef82_f6bf4eec",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2017-02-02T07:56:50Z",
+      "side": 1,
+      "message": "ditto.",
+      "revId": "7cbb51240fe57f7055d5abfea136e18e25e58d83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0cf87945_c789f4e2",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2017-02-02T07:56:50Z",
+      "side": 1,
+      "message": "Sending data shorter than MTP_BUFFER_SIZE may cause a problem. Please take a look at ag/1512322.",
+      "range": {
+        "startLine": 653,
+        "startChar": 52,
+        "endLine": 653,
+        "endChar": 62
+      },
+      "revId": "7cbb51240fe57f7055d5abfea136e18e25e58d83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
