@@ -62,6 +62,29 @@
       "revId": "7cbb51240fe57f7055d5abfea136e18e25e58d83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6aedaf1_d2cc2631",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-02-02T08:04:20Z",
+      "side": 1,
+      "message": "I think I\u0027ll just take these parts out, they\u0027re not needed for the bug fix.",
+      "range": {
+        "startLine": 653,
+        "startChar": 52,
+        "endLine": 653,
+        "endChar": 62
+      },
+      "revId": "7cbb51240fe57f7055d5abfea136e18e25e58d83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
