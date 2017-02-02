@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "2cf60c7a_45319c4e",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1091002
+      },
+      "writtenOn": "2017-02-02T09:35:12Z",
+      "side": 1,
+      "message": "Either way is fine.\n(My thought was: if start() fails, technically it has not been started. So the client code should not need to invoke close. But it\u0027s up to you. Either way should work)",
+      "revId": "a0ad9b712cabac1fdac86dadf25683541ac587d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c78f4527_81634c4e",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 3
