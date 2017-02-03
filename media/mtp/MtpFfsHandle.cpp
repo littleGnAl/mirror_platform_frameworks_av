@@ -459,11 +459,18 @@ int MtpFfsHandle::start() {
     mMaxWrite = android::base::GetIntProperty("sys.usb.ffs.max_write", USB_FFS_MAX_WRITE);
     mMaxRead = android::base::GetIntProperty("sys.usb.ffs.max_read", USB_FFS_MAX_READ);
 
-    while (mMaxWrite > USB_FFS_MAX_WRITE && mMaxRead > USB_FFS_MAX_READ) {
+    int attempts = 0;
+    while (mMaxWrite > USB_FFS_MAX_WRITE && mMaxRead > USB_FFS_MAX_READ && attempts < 10) {
         // If larger contiguous chunks of memory aren't available, attempt to try
         // smaller allocations.
         if (ioctl(mBulkIn, FUNCTIONFS_ENDPOINT_ALLOC, static_cast<__u32>(mMaxWrite)) ||
             ioctl(mBulkOut, FUNCTIONFS_ENDPOINT_ALLOC, static_cast<__u32>(mMaxRead))) {
+            if (errno == ENODEV) {
+                // Driver hasn't enabled endpoints yet.
+                std::this_thread::sleep_for(std::chrono::milliseconds(100));
+                attempts += 1;
+                continue;
+            }
             mMaxWrite /= 2;
             mMaxRead /=2;
         } else {
