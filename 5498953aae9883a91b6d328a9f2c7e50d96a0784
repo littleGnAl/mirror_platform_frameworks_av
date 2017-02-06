@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5d6f99dc_bd367f53",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-02-06T19:32:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfb67ee1_0e10de67",
+      "range": {
+        "startLine": 462,
+        "startChar": 4,
+        "endLine": 462,
+        "endChar": 7
+      },
+      "revId": "5498953aae9883a91b6d328a9f2c7e50d96a0784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "265ef9f9_112227f2",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 2
@@ -71,6 +95,54 @@
     },
     {
       "key": {
+        "uuid": "f86aff72_551414d3",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-02-06T19:32:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27d20637_b706f73a",
+      "range": {
+        "startLine": 463,
+        "startChar": 88,
+        "endLine": 463,
+        "endChar": 90
+      },
+      "revId": "5498953aae9883a91b6d328a9f2c7e50d96a0784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a436e5af_f3aca8d2",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-02-06T19:32:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "265ef9f9_112227f2",
+      "range": {
+        "startLine": 463,
+        "startChar": 24,
+        "endLine": 463,
+        "endChar": 41
+      },
+      "revId": "5498953aae9883a91b6d328a9f2c7e50d96a0784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fb4013e7_94ab3abd",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2017-02-06T16:56:24Z",
       "side": 1,
       "message": "Document this (especially the overall timeout this implies) somewhere, probably in the header declaration for this function.",
+      "range": {
+        "startLine": 468,
+        "startChar": 12,
+        "endLine": 473,
+        "endChar": 13
+      },
+      "revId": "5498953aae9883a91b6d328a9f2c7e50d96a0784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eec0d771_456dc691",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-02-06T19:32:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb4013e7_94ab3abd",
       "range": {
         "startLine": 468,
         "startChar": 12,
