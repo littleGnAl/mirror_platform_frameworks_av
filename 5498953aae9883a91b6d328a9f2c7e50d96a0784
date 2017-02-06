@@ -114,6 +114,30 @@
       "revId": "5498953aae9883a91b6d328a9f2c7e50d96a0784",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8ef0599c_94c76150",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-02-06T19:12:07Z",
+      "side": 1,
+      "message": "Yeah its not necessary for the memory to be pre allocated; without it each read write call will allocate and free its own memory. Partner kernels without the ioctl implemented will encounter this.",
+      "parentUuid": "e166d921_b0fb7c90",
+      "range": {
+        "startLine": 480,
+        "startChar": 4,
+        "endLine": 482,
+        "endChar": 13
+      },
+      "revId": "5498953aae9883a91b6d328a9f2c7e50d96a0784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
