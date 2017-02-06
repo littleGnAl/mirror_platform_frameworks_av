@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "62b609df_0919063f",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-02-06T16:16:42Z",
+      "side": 1,
+      "message": "Put a comment about the effect of the widening to uint64_t and then shortening to uint32_t (and why that\u0027s intended) - one could contend that it\u0027s not very readable...",
+      "range": {
+        "startLine": 605,
+        "startChar": 4,
+        "endLine": 606,
+        "endChar": 87
+      },
+      "revId": "4d70ede98cd17f3b9604ece7ea4b57fd096eea3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
