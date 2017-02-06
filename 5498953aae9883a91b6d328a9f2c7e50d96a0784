@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bfb67ee1_0e10de67",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-02-06T16:56:24Z",
+      "side": 1,
+      "message": "size_t",
+      "range": {
+        "startLine": 462,
+        "startChar": 4,
+        "endLine": 462,
+        "endChar": 7
+      },
+      "revId": "5498953aae9883a91b6d328a9f2c7e50d96a0784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "265ef9f9_112227f2",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-02-06T16:56:24Z",
+      "side": 1,
+      "message": "static_assert the #defines are \u003e 0.",
+      "range": {
+        "startLine": 463,
+        "startChar": 24,
+        "endLine": 463,
+        "endChar": 41
+      },
+      "revId": "5498953aae9883a91b6d328a9f2c7e50d96a0784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27d20637_b706f73a",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-02-06T16:56:24Z",
+      "side": 1,
+      "message": "Put the \"10\" into a named constexpr somewhere.",
+      "range": {
+        "startLine": 463,
+        "startChar": 88,
+        "endLine": 463,
+        "endChar": 90
+      },
+      "revId": "5498953aae9883a91b6d328a9f2c7e50d96a0784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fb4013e7_94ab3abd",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-02-06T16:56:24Z",
+      "side": 1,
+      "message": "Document this (especially the overall timeout this implies) somewhere, probably in the header declaration for this function.",
+      "range": {
+        "startLine": 468,
+        "startChar": 12,
+        "endLine": 473,
+        "endChar": 13
+      },
+      "revId": "5498953aae9883a91b6d328a9f2c7e50d96a0784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e166d921_b0fb7c90",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-02-06T16:56:24Z",
+      "side": 1,
+      "message": "Does this make sense, in general? Where will it recover later?",
+      "range": {
+        "startLine": 480,
+        "startChar": 4,
+        "endLine": 482,
+        "endChar": 13
+      },
+      "revId": "5498953aae9883a91b6d328a9f2c7e50d96a0784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
