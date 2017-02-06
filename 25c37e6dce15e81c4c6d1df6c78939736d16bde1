@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4ab8a0b2_aebe1851",
+        "filename": "services/audioflinger/PatchPanel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1133208
+      },
+      "writtenOn": "2017-02-06T14:02:37Z",
+      "side": 1,
+      "message": "Thanks for the update, I guess I simply overlooked this point.",
+      "parentUuid": "c3bbe9cf_f3a7d0f6",
+      "range": {
+        "startLine": 449,
+        "startChar": 56,
+        "endLine": 449,
+        "endChar": 69
+      },
+      "revId": "25c37e6dce15e81c4c6d1df6c78939736d16bde1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3bbe9cf_539f9ca4",
         "filename": "services/audioflinger/PatchPanel.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2017-01-13T22:25:06Z",
       "side": 1,
       "message": "seems like a hack: what guaranty do we have it will be enough?",
+      "range": {
+        "startLine": 458,
+        "startChar": 4,
+        "endLine": 458,
+        "endChar": 14
+      },
+      "revId": "25c37e6dce15e81c4c6d1df6c78939736d16bde1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0d8d78c2_1107821d",
+        "filename": "services/audioflinger/PatchPanel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 458,
+      "author": {
+        "id": 1133208
+      },
+      "writtenOn": "2017-02-06T14:02:37Z",
+      "side": 1,
+      "message": "Yes this change was based on observations. As you said it does not provide any kind of guarantee.\n\nPlease refer to top-level comment on this commit. I have attempted to write down my thoughts about this change.\n\nThanks.",
+      "parentUuid": "c3bbe9cf_539f9ca4",
       "range": {
         "startLine": 458,
         "startChar": 4,
