@@ -864,6 +864,10 @@ ToneGenerator::ToneGenerator(audio_stream_type_t streamType, float volume, bool 
     if (property_get("gsm.operator.iso-country", value, "") == 0) {
         property_get("gsm.sim.operator.iso-country", value, "");
     }
+    if (strlen(value) == 1 && strstr(value, ",") != NULL) {
+        property_get("gsm.sim.operator.iso-country", value, "");
+    }
+
     if (strstr(value, "us") != NULL ||
         strstr(value, "ca") != NULL) {
         mRegion = ANSI;
