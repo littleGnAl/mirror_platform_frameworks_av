@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4258ff08_dbe2c1ef",
+        "filename": "media/libstagefright/SampleIterator.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-02-07T19:05:02Z",
+      "side": 1,
+      "message": "if this fails, would prefer to return ERROR_OUT_OF_RANGE instead of leaving the while loop (which may not be safe as sampleIndex is not guaranteed to be \u003c mTTSSampleIndex + mTTSCount).",
+      "range": {
+        "startLine": 308,
+        "startChar": 11,
+        "endLine": 308,
+        "endChar": 55
+      },
+      "revId": "ab474b0a71d1987842fa10d950d0f0bdd95efbed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
