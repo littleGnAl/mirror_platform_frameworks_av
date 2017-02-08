@@ -770,6 +770,7 @@ OSCL_EXPORT_REF Bool    PVInitVideoEncoder(VideoEncControls *encoderControl, Vid
     size = pitch * max_height;
 
     if (size > INT32_MAX - (size >> 1)
+            || size == 0
             || (size_t)(size + (size >> 1)) > SIZE_MAX / sizeof(PIXEL)) {
         goto CLEAN_UP;
     }
