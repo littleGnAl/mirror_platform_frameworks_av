@@ -3,4 +3,5 @@ service cameraserver /system/bin/cameraserver
     user cameraserver
     group audio camera input drmrpc
     ioprio rt 4
-    writepid /dev/cpuset/camera-daemon/tasks /dev/stune/top-app/tasks
+    cpuset /camera-daemon/tasks
+    writepid /dev/stune/top-app/tasks
