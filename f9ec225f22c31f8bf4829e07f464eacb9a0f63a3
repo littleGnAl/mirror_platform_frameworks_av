@@ -88,6 +88,30 @@
     },
     {
       "key": {
+        "uuid": "6c8c7291_9f3e8504",
+        "filename": "drm/mediadrm/plugins/clearkey/Android.mk",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1123943
+      },
+      "writtenOn": "2017-02-11T00:19:58Z",
+      "side": 1,
+      "message": "The way Dan has setup includes processing for VNDK is that it strips out any lib that is already in NDK. Then for linking, it adds it back. So ordering shouldnt matter here since liblog is stripped out (for includes). And thats why modules complain of missing log/log.h, whose right version liblog_vndk_headers provide.",
+      "parentUuid": "79f5415f_2ec5b76b",
+      "range": {
+        "startLine": 43,
+        "startChar": 4,
+        "endLine": 43,
+        "endChar": 12
+      },
+      "revId": "f9ec225f22c31f8bf4829e07f464eacb9a0f63a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4c78528_01732042",
         "filename": "drm/mediadrm/plugins/clearkey/Android.mk",
         "patchSetId": 4
