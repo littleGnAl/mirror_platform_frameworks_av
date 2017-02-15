@@ -45,8 +45,7 @@ private:
     android::base::unique_fd mBulkOut;
     android::base::unique_fd mIntr;
 
-    int mMaxWrite;
-    int mMaxRead;
+    int mMaxRW;
 
     std::vector<char> mBuffer1;
     std::vector<char> mBuffer2;

@@ -55,15 +55,12 @@ constexpr int MAX_PACKET_SIZE_SS = 1024;
 // Must be divisible by all max packet size values
 constexpr int MAX_FILE_CHUNK_SIZE = 3145728;
 
-// Safe values since some devices cannot handle large DMAs
-// To get good performance, override these with
-// higher values per device using the properties
-// sys.usb.ffs.max_read and sys.usb.ffs.max_write
-constexpr int USB_FFS_MAX_WRITE = MTP_BUFFER_SIZE;
-constexpr int USB_FFS_MAX_READ = MTP_BUFFER_SIZE;
+// Safe value since some devices cannot handle large DMAs
+// To get good performance, override this with
+// sys.usb.ffs.max_rw.
+constexpr int USB_FFS_SAFE_RW = MTP_BUFFER_SIZE;
 
-static_assert(USB_FFS_MAX_WRITE > 0, "Max r/w values must be > 0!");
-static_assert(USB_FFS_MAX_READ > 0, "Max r/w values must be > 0!");
+static_assert(USB_FFS_SAFE_RW > 0, "Safe r/w value must be > 0!");
 
 constexpr unsigned int MAX_MTP_FILE_SIZE = 0xFFFFFFFF;
 
@@ -292,8 +289,7 @@ const struct {
 namespace android {
 
 MtpFfsHandle::MtpFfsHandle() :
-    mMaxWrite(USB_FFS_MAX_WRITE),
-    mMaxRead(USB_FFS_MAX_READ) {}
+    mMaxRW(USB_FFS_SAFE_RW) {}
 
 MtpFfsHandle::~MtpFfsHandle() {}
 
@@ -366,7 +362,7 @@ int MtpFfsHandle::writeHandle(int fd, const void* data, int len) {
     int ret = 0;
     const char* buf = static_cast<const char*>(data);
     while (len > 0) {
-        int write_len = std::min(mMaxWrite, len);
+        int write_len = std::min(mMaxRW, len);
         int n = TEMP_FAILURE_RETRY(::write(fd, buf, write_len));
 
         if (n < 0) {
@@ -389,7 +385,7 @@ int MtpFfsHandle::readHandle(int fd, void* data, int len) {
     int ret = 0;
     char* buf = static_cast<char*>(data);
     while (len > 0) {
-        int read_len = std::min(mMaxRead, len);
+        int read_len = std::min(mMaxRW, len);
         int n = TEMP_FAILURE_RETRY(::read(fd, buf, read_len));
         if (n < 0) {
             PLOG(ERROR) << "read ERROR: fd = " << fd << ", n = " << n;
@@ -409,7 +405,7 @@ int MtpFfsHandle::spliceReadHandle(int fd, int pipe_out, int len) {
     int ret = 0;
     loff_t dummyoff;
     while (len > 0) {
-        int read_len = std::min(mMaxRead, len);
+        int read_len = std::min(mMaxRW, len);
         dummyoff = 0;
         int n = TEMP_FAILURE_RETRY(splice(fd, &dummyoff, pipe_out, nullptr, read_len, 0));
         if (n < 0) {
@@ -461,29 +457,27 @@ int MtpFfsHandle::start() {
             POSIX_MADV_SEQUENTIAL | POSIX_MADV_WILLNEED);
 
     // Get device specific r/w size
-    mMaxWrite = android::base::GetIntProperty("sys.usb.ffs.max_write", USB_FFS_MAX_WRITE);
-    mMaxRead = android::base::GetIntProperty("sys.usb.ffs.max_read", USB_FFS_MAX_READ);
+    mMaxRW = android::base::GetIntProperty("sys.usb.ffs.max_rw", USB_FFS_SAFE_RW);
 
     size_t attempts = 0;
-    while (mMaxWrite >= USB_FFS_MAX_WRITE && mMaxRead >= USB_FFS_MAX_READ &&
-            attempts < ENDPOINT_ALLOC_RETRIES) {
+    while (mMaxRW >= USB_FFS_SAFE_RW && attempts < ENDPOINT_ALLOC_RETRIES) {
         // If larger contiguous chunks of memory aren't available, attempt to try
         // smaller allocations.
-        if (ioctl(mBulkIn, FUNCTIONFS_ENDPOINT_ALLOC, static_cast<__u32>(mMaxWrite)) ||
-            ioctl(mBulkOut, FUNCTIONFS_ENDPOINT_ALLOC, static_cast<__u32>(mMaxRead))) {
+        if (ioctl(mBulkIn, FUNCTIONFS_ENDPOINT_ALLOC, static_cast<__u32>(mMaxRW)) ||
+            ioctl(mBulkOut, FUNCTIONFS_ENDPOINT_ALLOC, static_cast<__u32>(mMaxRW))) {
             if (errno == ENODEV) {
                 // Driver hasn't enabled endpoints yet.
                 std::this_thread::sleep_for(std::chrono::milliseconds(100));
                 attempts += 1;
                 continue;
             }
-            mMaxWrite /= 2;
-            mMaxRead /=2;
+            mMaxRW /= 2;
         } else {
             return 0;
         }
     }
     // Try to start MtpServer anyway, with the smallest max r/w values
+    mMaxRW = USB_FFS_SAFE_RW;
     PLOG(ERROR) << "Functionfs could not allocate any memory!";
     return 0;
 }
