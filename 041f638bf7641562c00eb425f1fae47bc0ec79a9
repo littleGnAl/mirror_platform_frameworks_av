@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bc8cb5bc_1d83c9a5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-02-15T02:11:23Z",
+      "side": 1,
+      "message": "Nit: I think Android just does the bug number without the \"b:\" (at least, Gerrit will auto-link to bugs if you just put the number there)",
+      "revId": "041f638bf7641562c00eb425f1fae47bc0ec79a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
