@@ -581,6 +581,7 @@ String8 outputFlagsToString(audio_output_flags_t flags)
         {AUDIO_OUTPUT_FLAG_RAW,             "RAW"},
         {AUDIO_OUTPUT_FLAG_SYNC,            "SYNC"},
         {AUDIO_OUTPUT_FLAG_IEC958_NONAUDIO, "IEC958_NONAUDIO"},
+        {AUDIO_OUTPUT_FLAG_HW_MIX,          "HW_MIX"},
         {AUDIO_OUTPUT_FLAG_NONE,            "NONE"},        // must be last
     };
     String8 result;

@@ -701,7 +701,7 @@ sp<IOProfile> AudioPolicyManager::getProfileForDirectOutput(
     // only retain flags that will drive the direct output profile selection
     // if explicitly requested
     static const uint32_t kRelevantFlags =
-            (AUDIO_OUTPUT_FLAG_HW_AV_SYNC | AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD);
+            (AUDIO_OUTPUT_FLAG_HW_AV_SYNC | AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD | AUDIO_OUTPUT_FLAG_HW_MIX);
     flags =
         (audio_output_flags_t)((flags & kRelevantFlags) | AUDIO_OUTPUT_FLAG_DIRECT);
 
@@ -822,6 +822,10 @@ status_t AudioPolicyManager::getOutputForAttr(const audio_attributes_t *attr,
         flags = (audio_output_flags_t)(flags | AUDIO_OUTPUT_FLAG_HW_AV_SYNC);
     }
 
+    if ((attributes.flags & AUDIO_FLAG_HW_MIX) != 0) {
+        flags = (audio_output_flags_t)(flags | AUDIO_OUTPUT_FLAG_HW_MIX);
+    }
+
     ALOGV("getOutputForAttr() device 0x%x, samplingRate %d, format %x, channelMask %x, flags %x",
           device, samplingRate, format, channelMask, flags);
 
@@ -899,6 +903,9 @@ audio_io_handle_t AudioPolicyManager::getOutputForDevice(
         flags = (audio_output_flags_t)(flags | AUDIO_OUTPUT_FLAG_DIRECT);
     }
     if ((flags & AUDIO_OUTPUT_FLAG_HW_AV_SYNC) != 0) {
+        flags = (audio_output_flags_t)(flags | AUDIO_OUTPUT_FLAG_DIRECT);
+    }
+    if ((flags & AUDIO_OUTPUT_FLAG_HW_MIX) != 0) {
         flags = (audio_output_flags_t)(flags | AUDIO_OUTPUT_FLAG_DIRECT);
     }
     // only allow deep buffering for music stream type

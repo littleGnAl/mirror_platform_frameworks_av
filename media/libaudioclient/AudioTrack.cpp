@@ -373,6 +373,9 @@ status_t AudioTrack::set(
         if ((mAttributes.flags & AUDIO_FLAG_LOW_LATENCY) != 0) {
             flags = (audio_output_flags_t) (flags | AUDIO_OUTPUT_FLAG_FAST);
         }
+        if ((mAttributes.flags & AUDIO_FLAG_HW_MIX) != 0) {
+            flags = (audio_output_flags_t)(flags | AUDIO_OUTPUT_FLAG_HW_MIX);
+        }
     }
 
     // these below should probably come from the audioFlinger too...
