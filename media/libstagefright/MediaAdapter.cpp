@@ -26,6 +26,7 @@ namespace android {
 
 MediaAdapter::MediaAdapter(const sp<MetaData> &meta)
     : mCurrentMediaBuffer(NULL),
+      mError(false),
       mStarted(false),
       mOutputFormat(meta) {
 }
@@ -123,10 +124,21 @@ status_t MediaAdapter::pushBuffer(MediaBuffer *buffer) {
     mCurrentMediaBuffer->setObserver(this);
     mBufferReadCond.signal();
 
+    if (mError) {
+        return -ENOSPC;
+    }
     ALOGV("wait for the buffer returned @ pushBuffer! %p", buffer);
     mBufferReturnedCond.wait(mAdapterLock);
-
+    if (mError) {
+        return -ENOSPC;
+    }
     return OK;
+}
+
+void MediaAdapter::handleError(int /*msg*/) {
+    Mutex::Autolock autoLock(mAdapterLock);
+    mError = true;
+    mBufferReturnedCond.signal();
 }
 
 }  // namespace android
