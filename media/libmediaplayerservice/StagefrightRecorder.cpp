@@ -598,7 +598,9 @@ status_t StagefrightRecorder::setParamMaxFileSizeBytes(int64_t bytes) {
         ALOGW("Target file size (%lld bytes) is too small to be respected", (long long)bytes);
     }
 
-    mMaxFileSizeBytes = bytes;
+    if (mMaxFileSizeBytes == 0 || mMaxFileSizeBytes > bytes) {
+        mMaxFileSizeBytes = bytes;
+    }
     return OK;
 }
 

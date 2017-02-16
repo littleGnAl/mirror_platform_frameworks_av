@@ -58,6 +58,10 @@ MediaMuxer::MediaMuxer(int fd, OutputFormat format)
     }
 
     if (mWriter != NULL) {
+        mMediaMuxerClient = new MediaMuxerClient(this);
+        if (mMediaMuxerClient != NULL) {
+            mWriter->setListener(mMediaMuxerClient);
+        }
         mFileMeta = new MetaData;
         if (format == OUTPUT_FORMAT_HEIF) {
             // Note that the key uses recorder file types.
@@ -76,6 +80,7 @@ MediaMuxer::~MediaMuxer() {
     mFileMeta.clear();
     mWriter.clear();
     mTrackList.clear();
+    mMediaMuxerClient.clear();
 }
 
 ssize_t MediaMuxer::addTrack(const sp<AMessage> &format) {
@@ -202,6 +207,57 @@ status_t MediaMuxer::writeSampleData(const sp<ABuffer> &buffer, size_t trackInde
     sp<MediaAdapter> currentTrack = mTrackList[trackIndex];
     // This pushBuffer will wait until the mediaBuffer is consumed.
     return currentTrack->pushBuffer(mediaBuffer);
+}
+
+status_t MediaMuxer::setMaxFileSize(int64_t maxFileSize) {
+    Mutex::Autolock autoLock(mMuxerLock);
+    if (mState != INITIALIZED) {
+        ALOGE("SetMaxFileSize() must be called before start().");
+        return INVALID_OPERATION;
+    }
+
+    if (maxFileSize > 0) {
+        mWriter->setMaxFileSize(maxFileSize);
+    }
+    return OK;
+}
+
+void MediaMuxer::handleMsg(int msg) {
+    for (int retry = 0; retry < 5; retry++) {
+        if (mMuxerLock.tryLock() == NO_ERROR) {
+            if (mState == STARTED) {
+                for (size_t i = 0; i < mTrackList.size(); i++) {
+                    mTrackList[i]->handleError(msg);
+                }
+            }
+            mMuxerLock.unlock();
+            break;
+        }
+        usleep(100000);
+    }
+    ALOGW("handleMsg was called (msg = %d).", msg);
+}
+
+MediaMuxerClient::MediaMuxerClient(MediaMuxer *owner) {
+    mOwner = owner;
+}
+
+MediaMuxerClient::~MediaMuxerClient() {
+}
+
+void MediaMuxerClient::notify(int msg, int ext1, int /*ext2*/) {
+    if (msg == MEDIA_RECORDER_EVENT_INFO) {
+        switch (ext1) {
+            case MEDIA_RECORDER_INFO_MAX_FILESIZE_REACHED:
+            case MEDIA_RECORDER_INFO_MAX_DURATION_REACHED:
+                if (mOwner != NULL) {
+                    mOwner->handleMsg(ext1);
+                }
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 }  // namespace android

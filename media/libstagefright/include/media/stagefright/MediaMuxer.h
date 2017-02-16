@@ -21,6 +21,8 @@
 #include <utils/RefBase.h>
 #include <utils/Vector.h>
 #include <utils/threads.h>
+#include <media/IMediaRecorderClient.h>
+#include <media/mediarecorder.h>
 
 #include "foundation/ABase.h"
 
@@ -33,6 +35,16 @@ class MediaBuffer;
 struct MediaSource;
 class MetaData;
 struct MediaWriter;
+struct MediaMuxer;
+
+struct MediaMuxerClient : public BnMediaRecorderClient {
+public:
+    MediaMuxerClient(MediaMuxer *owner);
+    virtual ~MediaMuxerClient();
+    void notify(int msg, int ext1, int ext2);
+private:
+    MediaMuxer *mOwner;
+};
 
 // MediaMuxer is used to mux multiple tracks into a video. Currently, we only
 // support a mp4 file as the output.
@@ -117,11 +129,16 @@ public:
     status_t writeSampleData(const sp<ABuffer> &buffer, size_t trackIndex,
                              int64_t timeUs, uint32_t flags) ;
 
+    status_t setMaxFileSize(int64_t maxFileSize);
+
+    void handleMsg(int msg);
+
 private:
     const OutputFormat mFormat;
     sp<MediaWriter> mWriter;
     Vector< sp<MediaAdapter> > mTrackList;  // Each track has its MediaAdapter.
     sp<MetaData> mFileMeta;  // Metadata for the whole file.
+    sp<MediaMuxerClient> mMediaMuxerClient;
 
     Mutex mMuxerLock;
 
