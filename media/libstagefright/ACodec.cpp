@@ -8301,4 +8301,30 @@ status_t ACodec::getOMXChannelMapping(size_t numChannels, OMX_AUDIO_CHANNELTYPE 
     return OK;
 }
 
+//static
+int ACodec::convertOMXColorFormatToHalPixelFormat(int format) {
+    switch (eColorFormat)
+    {
+        case OMX_COLOR_FormatYUV420Planar:
+            format = HAL_PIXEL_FORMAT_YV12;
+            break;
+        case OMX_COLOR_FormatYUV420SemiPlanar:
+            format = HAL_PIXEL_FORMAT_YCrCb_420_SP;
+            break;
+        case OMX_COLOR_FormatYCbYCr:
+            format = HAL_PIXEL_FORMAT_YCbCr_422_I;
+            break;
+        case OMX_COLOR_Format16bitRGB565:
+            format = HAL_PIXEL_FORMAT_RGB_565;
+            break;
+        case OMX_COLOR_Format24bitRGB888:
+            format = HAL_PIXEL_FORMAT_RGB_888;
+            break;
+        default:
+            break;
+    }
+
+    return format;
+}
+
 }  // namespace android
