@@ -13,6 +13,9 @@ LOCAL_C_INCLUDES := \
 LOCAL_STATIC_LIBRARIES := \
         libyuv_static \
 
+LOCAL_HEADER_LIBRARIES := \
+        libutils_headers \
+
 LOCAL_CFLAGS += -Werror
 LOCAL_CLANG := true
 LOCAL_SANITIZE := signed-integer-overflow
