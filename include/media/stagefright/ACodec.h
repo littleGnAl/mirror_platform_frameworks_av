@@ -112,6 +112,8 @@ struct ACodec : public AHierarchicalStateMachine, public CodecBase {
 
     static status_t getOMXChannelMapping(size_t numChannels, OMX_AUDIO_CHANNELTYPE map[]);
 
+    static int convertOMXColorFormatToHalPixelFormat(int format);
+
 protected:
     virtual ~ACodec();
 
