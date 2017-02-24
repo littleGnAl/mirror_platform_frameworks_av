@@ -345,6 +345,7 @@ private:
 
     bool mHaveInputSurface;
     bool mHavePendingInputBuffers;
+    bool mResourcesPreempted;
 
     MediaCodec(const sp<ALooper> &looper, pid_t pid);
 
