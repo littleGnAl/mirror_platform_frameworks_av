@@ -279,6 +279,7 @@ MediaCodec::MediaCodec(const sp<ALooper> &looper, pid_t pid)
       mDequeueOutputReplyID(0),
       mHaveInputSurface(false),
       mHavePendingInputBuffers(false) {
+      mResourcesPreempted = false;
 }
 
 MediaCodec::~MediaCodec() {
@@ -678,6 +679,7 @@ status_t MediaCodec::reset() {
     mDequeueInputTimeoutGeneration = 0;
     mDequeueOutputTimeoutGeneration = 0;
     mHaveInputSurface = false;
+    mResourcesPreempted = false;
 
     if (err == OK) {
         err = init(mInitName, mInitNameIsType, mInitIsEncoder);
@@ -1145,13 +1147,31 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                                 }
                                 (new AMessage)->postReply(mReplyID);
                             }
+                            if (actionCode == ACTION_CODE_FATAL
+                                    && err == OMX_ErrorResourcesPreempted) {
+                                ALOGD("Resource preempted, release codec instance.");
+                                mResourcesPreempted = true;
+                                setState(RELEASING);
+                                mCodec->initiateShutdown(false);
+
+                                returnBuffersToCodec();
+                            }
                             break;
                         }
 
                         case FLUSHING:
                         {
                             if (actionCode == ACTION_CODE_FATAL) {
-                                setState(UNINITIALIZED);
+                                if (err == OMX_ErrorResourcesPreempted) {
+                                    ALOGD("Resource preempted, release codec instance.");
+                                    mResourcesPreempted = true;
+                                    setState(RELEASING);
+                                    mCodec->initiateShutdown(false);
+
+                                    returnBuffersToCodec();
+                                } else {
+                                    setState(UNINITIALIZED);
+                                }
                             } else {
                                 setState(
                                         (mFlags & kFlagIsAsync) ? FLUSHED : STARTED);
@@ -1179,7 +1199,17 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                                 setState(INITIALIZED);
                                 break;
                             default:
-                                setState(UNINITIALIZED);
+                                if (actionCode == ACTION_CODE_FATAL
+                                        && err == OMX_ErrorResourcesPreempted) {
+                                    ALOGD("Resource preempted, release codec instance.");
+                                    mResourcesPreempted = true;
+                                    setState(RELEASING);
+                                    mCodec->initiateShutdown(false);
+
+                                    returnBuffersToCodec();
+                                } else {
+                                    setState(UNINITIALIZED);
+                                }
                                 break;
                             }
                             break;
@@ -1206,7 +1236,17 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                                 setState(INITIALIZED);
                                 break;
                             default:
-                                setState(UNINITIALIZED);
+                                if (actionCode == ACTION_CODE_FATAL
+                                        && err == OMX_ErrorResourcesPreempted) {
+                                    ALOGD("Resource preempted, release codec instance.");
+                                    mResourcesPreempted = true;
+                                    setState(RELEASING);
+                                    mCodec->initiateShutdown(false);
+
+                                    returnBuffersToCodec();
+                                } else {
+                                    setState(UNINITIALIZED);
+                                }
                                 break;
                             }
                             break;
@@ -1596,8 +1636,12 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                 {
                     if (mState == STOPPING) {
                         setState(INITIALIZED);
+                    } else if (mState == UNINITIALIZED) {
+                        ALOGW("component has been released");
                     } else {
-                        CHECK_EQ(mState, RELEASING);
+                        if (mState != INITIALIZED) {
+                            CHECK_EQ(mState, RELEASING);
+                        }
                         setState(UNINITIALIZED);
                         mComponentName.clear();
                     }
@@ -1917,7 +1961,8 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
 
             if (!((mFlags & kFlagIsComponentAllocated) && targetState == UNINITIALIZED) // See 1
                     && mState != INITIALIZED
-                    && mState != CONFIGURED && !isExecuting()) {
+                    && mState != CONFIGURED && !isExecuting()
+                    && !(mState == RELEASING && mResourcesPreempted)) {
                 // 1) Permit release to shut down the component if allocated.
                 //
                 // 2) We may be in "UNINITIALIZED" state already and
@@ -2361,6 +2406,9 @@ void MediaCodec::setState(State newState) {
     }
 
     mState = newState;
+    if (mState != RELEASING) {
+        mResourcesPreempted = false;
+    }
 
     cancelPendingDequeueOperations();
 
