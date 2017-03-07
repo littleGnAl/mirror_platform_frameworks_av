@@ -1603,9 +1603,9 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                     }
                     mFlags &= ~kFlagIsComponentAllocated;
 
+                    (new AMessage)->postReply(mReplyID);
                     mResourceManagerService->removeResource(getId(mResourceManagerClient));
 
-                    (new AMessage)->postReply(mReplyID);
                     break;
                 }
 
