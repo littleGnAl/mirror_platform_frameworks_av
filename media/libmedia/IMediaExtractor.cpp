@@ -23,10 +23,13 @@
 
 #include <binder/IPCThreadState.h>
 #include <binder/Parcel.h>
+#include <binder/PermissionCache.h>
 #include <media/IMediaExtractor.h>
 #include <media/stagefright/MetaData.h>
 
 namespace android {
+
+const String16 sDumpPermission("android.permission.DUMP");
 
 enum {
     COUNTTRACKS = IBinder::FIRST_CALL_TRANSACTION,
@@ -272,13 +275,21 @@ void registerMediaExtractor(
 
 status_t dumpExtractors(int fd, const Vector<String16>&) {
     String8 out;
-    out.append("Recent extractors, most recent first:\n");
-    {
-        Mutex::Autolock lock(sExtractorsLock);
-        for (size_t i = 0; i < sExtractors.size(); i++) {
-            const ExtractorInstance &instance = sExtractors.itemAt(i);
-            out.append("  ");
-            out.append(instance.toString());
+    const IPCThreadState* ipc = IPCThreadState::self();
+    const int pid = ipc->getCallingPid();
+    const int uid = ipc->getCallingUid();
+    if (!PermissionCache::checkPermission(sDumpPermission, pid, uid)) {
+        out.appendFormat("Permission Denial: "
+                "can't dump MediaExtractor from pid=%d, uid=%d\n", pid, uid);
+    } else {
+        out.append("Recent extractors, most recent first:\n");
+        {
+            Mutex::Autolock lock(sExtractorsLock);
+            for (size_t i = 0; i < sExtractors.size(); i++) {
+                const ExtractorInstance &instance = sExtractors.itemAt(i);
+                out.append("  ");
+                out.append(instance.toString());
+            }
         }
     }
     write(fd, out.string(), out.size());
