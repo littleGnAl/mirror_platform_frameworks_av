@@ -412,6 +412,10 @@ bool ResourceManagerService::getLowestPriorityBiggestClient_l(
     if (!getLowestPriorityPid_l(type, &lowestPriorityPid, &lowestPriority)) {
         return false;
     }
+    if (lowestPriorityPid == callingPid) {
+        ALOGE("getLowestPriorityBiggestClient_l: lowest priority PID is the calling PID[%d]", lowestPriorityPid);
+        return false;
+    }
     if (lowestPriority <= callingPriority) {
         ALOGE("getLowestPriorityBiggestClient_l: lowest priority %d vs caller priority %d",
                 lowestPriority, callingPriority);
