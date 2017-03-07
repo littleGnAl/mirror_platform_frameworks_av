@@ -4175,7 +4175,7 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::MixerThread::prepareTrac
                 // lacks any synchronization or barrier so VolumeProvider may read a stale value
                 track->mCachedVolume = masterVolume * mStreamTypes[track->streamType()].volume;
                 ++fastTracks;
-            } else {
+            } else if (!(state->mCommand & FastMixerState::IDLE)) {
                 // was it previously active?
                 if (state->mTrackMask & (1 << j)) {
                     fastTrack->mBufferProvider = NULL;
