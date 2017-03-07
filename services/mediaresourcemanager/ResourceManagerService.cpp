@@ -409,7 +409,7 @@ bool ResourceManagerService::getLowestPriorityBiggestClient_l(
                 callingPid);
         return false;
     }
-    if (!getLowestPriorityPid_l(type, &lowestPriorityPid, &lowestPriority)) {
+    if (!getLowestPriorityPid_l(type, &lowestPriorityPid, &lowestPriority, callingPid)) {
         return false;
     }
     if (lowestPriority <= callingPriority) {
@@ -425,7 +425,7 @@ bool ResourceManagerService::getLowestPriorityBiggestClient_l(
 }
 
 bool ResourceManagerService::getLowestPriorityPid_l(
-        MediaResource::Type type, int *lowestPriorityPid, int *lowestPriority) {
+        MediaResource::Type type, int *lowestPriorityPid, int *lowestPriority, int skipPid) {
     int pid = -1;
     int priority = -1;
     for (size_t i = 0; i < mMap.size(); ++i) {
@@ -438,6 +438,9 @@ bool ResourceManagerService::getLowestPriorityPid_l(
             continue;
         }
         int tempPid = mMap.keyAt(i);
+        if (skipPid == tempPid) {
+            continue;
+        }
         int tempPriority;
         if (!mProcessInfo->getPriority(tempPid, &tempPriority)) {
             ALOGV("getLowestPriorityPid_l: can't get priority of pid %d, skipped", tempPid);

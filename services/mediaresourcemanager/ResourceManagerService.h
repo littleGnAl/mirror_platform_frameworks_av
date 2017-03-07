@@ -90,7 +90,7 @@ private:
 
     // Gets lowest priority process that has the specified resource type.
     // Returns false if failed. The output parameters will remain unchanged if failed.
-    bool getLowestPriorityPid_l(MediaResource::Type type, int *pid, int *priority);
+    bool getLowestPriorityPid_l(MediaResource::Type type, int *pid, int *priority, int skipPid);
 
     // Gets the client who owns biggest piece of specified resource type from pid.
     // Returns false if failed. The client will remain unchanged if failed.
