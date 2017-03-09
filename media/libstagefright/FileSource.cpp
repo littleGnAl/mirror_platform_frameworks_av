@@ -26,6 +26,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <fcntl.h>
+#include <cutils/ashmem.h>
 
 namespace android {
 
@@ -75,16 +76,24 @@ FileSource::FileSource(int fd, int64_t offset, int64_t length)
     if (mLength > INT64_MAX - mOffset) {
         mLength = INT64_MAX - mOffset;
     }
+    int64_t size = 0;
     struct stat s;
-    if (fstat(fd, &s) == 0) {
-        if (mOffset > s.st_size) {
-            mOffset = s.st_size;
+    if (!strncmp(nameForFd(fd).c_str(), "/dev/ashmem", 11)) {
+        size = ashmem_get_size_region(fd);
+    } else if (fstat(fd, &s) == 0) {
+        size = s.st_size;
+    }
+
+    if (size >= 0) {
+        if (mOffset > size) {
+            mOffset = size;
             mLength = 0;
         }
-        if (mOffset + mLength > s.st_size) {
-            mLength = s.st_size - mOffset;
+        if (mOffset + mLength > size) {
+            mLength = size - mOffset;
         }
     }
+
     if (mOffset != offset || mLength != length) {
         ALOGW("offset/length adjusted from %lld/%lld to %lld/%lld",
                 (long long) offset, (long long) length,
