@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "54910259_c019e351",
+        "filename": "media/libstagefright/FileSource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-03-09T17:20:29Z",
+      "side": 1,
+      "message": "this is kind of a heavyweight function, so it would be better to call it once and then use the result here and below.\nAlternatively, if ashmem_get_size_region() is safe to be called on non-ashmem fds, then perhaps just get the ashmem size if getting the size using fstat() fails, or vice versa?",
+      "range": {
+        "startLine": 81,
+        "startChar": 17,
+        "endLine": 81,
+        "endChar": 26
+      },
+      "revId": "ceba0ba16cdbef2393f07e5e31d1c7c053787d47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
