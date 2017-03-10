@@ -403,6 +403,7 @@ AudioFlinger::PlaybackThread::Track::Track(
     mAuxEffectId(0), mHasVolumeController(false),
     mPresentationCompleteFrames(0),
     mFrameMap(16 /* sink-frame-to-track-frame map memory */),
+    mVolumeInitialized(false),
     mVolumeHandler(new media::VolumeHandler(sampleRate)),
     // mSinkTimestamp
     mFastIndex(-1),
