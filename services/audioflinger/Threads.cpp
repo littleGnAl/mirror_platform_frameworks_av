@@ -4537,12 +4537,14 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::MixerThread::prepareTrac
                 track->mFillingUpStatus = Track::FS_ACTIVE;
                 if (track->mState == TrackBase::RESUMING) {
                     track->mState = TrackBase::ACTIVE;
-                    param = AudioMixer::RAMP_VOLUME;
+                    if (track->mVolumeInitialized) {
+                        param = AudioMixer::RAMP_VOLUME;
+                    }
                 }
                 mAudioMixer->setParameter(name, AudioMixer::RESAMPLE, AudioMixer::RESET, NULL);
                 mLeftVolFloat = -1.0;
             // FIXME should not make a decision based on mServer
-            } else if (cblk->mServer != 0) {
+            } else if (track->mVolumeInitialized && cblk->mServer != 0) {
                 // If the track is stopped before the first frame was mixed,
                 // do not apply ramp
                 param = AudioMixer::RAMP_VOLUME;
@@ -4641,6 +4643,8 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::MixerThread::prepareTrac
             mAudioMixer->setParameter(name, param, AudioMixer::VOLUME0, &vlf);
             mAudioMixer->setParameter(name, param, AudioMixer::VOLUME1, &vrf);
             mAudioMixer->setParameter(name, param, AudioMixer::AUXLEVEL, &vaf);
+            track->mVolumeInitialized = true;
+
             mAudioMixer->setParameter(
                 name,
                 AudioMixer::TRACK,

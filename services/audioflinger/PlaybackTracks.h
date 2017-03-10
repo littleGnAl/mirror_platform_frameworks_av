@@ -184,6 +184,8 @@ protected:
     // access these three variables only when holding thread lock.
     LinearMap<int64_t> mFrameMap;           // track frame to server frame mapping
 
+    bool                mVolumeInitialized;
+
     ExtendedTimestamp  mSinkTimestamp;
 
     sp<media::VolumeHandler>  mVolumeHandler; // handles multiple VolumeShaper configs and operations
