@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "82c6e4b8_2fc67453",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-03-13T21:12:44Z",
+      "side": 1,
+      "message": "no new copyright headers please",
+      "revId": "1d6d6ab9ebc1cbc6bffec49a4e30950dfe0e195d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "15cbc9cf_5bacd9e5",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-03-13T21:12:44Z",
+      "side": 1,
+      "message": "1000 is certainly too long, but 30 seems a tad low.\nI\u0027m also not sure this actually makes a difference in practice, because AFAIK the caller (MediaRecorder and/or MediaMuxer) will force an I-frame more frequently than that.",
+      "range": {
+        "startLine": 84,
+        "startChar": 36,
+        "endLine": 84,
+        "endChar": 38
+      },
+      "revId": "1d6d6ab9ebc1cbc6bffec49a4e30950dfe0e195d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
