@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0c80013_63f9cf0e",
+        "filename": "media/libmedia/IMediaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-03-13T21:35:35Z",
+      "side": 1,
+      "message": "no new copyright headers please",
+      "revId": "8c2eaaf7be9e617a7ff07f60d3d2f55272a7ebc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1f67674_72cb9ff6",
+        "filename": "media/libmedia/IMediaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-03-13T21:35:35Z",
+      "side": 1,
+      "message": "\u0027flags\u0027 was in fact the correct spelling here. If there\u0027s a conflict with calling flags() below, you could use this-\u003eflags() there",
+      "range": {
+        "startLine": 139,
+        "startChar": 63,
+        "endLine": 139,
+        "endChar": 67
+      },
+      "revId": "8c2eaaf7be9e617a7ff07f60d3d2f55272a7ebc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0e5cd562_f0f09297",
+        "filename": "media/libmediaplayerservice/nuplayer/GenericSource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-03-13T21:35:35Z",
+      "side": 1,
+      "message": "can these flags be obtained above in initFromDataSource() and cached? That way GenericSource doesn\u0027t have to keep a reference to the MediaExtractor.",
+      "range": {
+        "startLine": 450,
+        "startChar": 0,
+        "endLine": 456,
+        "endChar": 40
+      },
+      "revId": "8c2eaaf7be9e617a7ff07f60d3d2f55272a7ebc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8226d42f_0b8cf8f0",
+        "filename": "media/libmediaplayerservice/nuplayer/GenericSource.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 239,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-03-13T21:35:35Z",
+      "side": 1,
+      "message": "not sure I like that GenericSource now holds a reference to a MediaExtractor. Seems like there is the potential for circular reference and hence memory leaks there.",
+      "revId": "8c2eaaf7be9e617a7ff07f60d3d2f55272a7ebc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7ea0d0e0_9fbf7703",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-03-13T21:35:35Z",
+      "side": 1,
+      "message": "no new copyright headers please",
+      "revId": "8c2eaaf7be9e617a7ff07f60d3d2f55272a7ebc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e399e6db_ceebcb0e",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-03-13T21:35:35Z",
+      "side": 1,
+      "message": "This seems overly restrictive. What if the seek time is very small, and so we could just keep reading the source to get there? Or what if the source has already cached all of the needed data?",
+      "range": {
+        "startLine": 1207,
+        "startChar": 0,
+        "endLine": 1212,
+        "endChar": 13
+      },
+      "revId": "8c2eaaf7be9e617a7ff07f60d3d2f55272a7ebc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
