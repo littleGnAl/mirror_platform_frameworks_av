@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "411da0b4_61b2e1e1",
+        "filename": "include/media/stagefright/ColorConverter.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-03-13T21:17:50Z",
+      "side": 1,
+      "message": "no new copyright headers please",
+      "revId": "803187385e3e429398c411cadcf759513bec8d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d803ac89_e8ff0f8a",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-03-13T21:17:50Z",
+      "side": 1,
+      "message": "no new copyright headers please",
+      "revId": "803187385e3e429398c411cadcf759513bec8d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "12ae1491_b22d8bdc",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-03-13T21:17:50Z",
+      "side": 1,
+      "message": "seems like maybe this needs a check on the crop-rectangle similar to all the other converters above?",
+      "revId": "803187385e3e429398c411cadcf759513bec8d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
