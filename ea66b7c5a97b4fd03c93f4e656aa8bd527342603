@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c209333b_6b73148d",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/SoftMPEG4Encoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-03-13T20:30:33Z",
+      "side": 1,
+      "message": "I\u0027m not sure I follow. An entry was already erased on line 511 above. Are you saying there is another entry that needs to be erased? Where did that extra entry come from? Why is it simply erased without ever using it?",
+      "revId": "ea66b7c5a97b4fd03c93f4e656aa8bd527342603",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
