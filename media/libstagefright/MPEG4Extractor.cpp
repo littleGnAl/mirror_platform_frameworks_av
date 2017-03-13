@@ -347,6 +347,15 @@ static const char *FourCC2MIME(uint32_t fourcc) {
         case FOURCC('h', 'v', 'c', '1'):
         case FOURCC('h', 'e', 'v', '1'):
             return MEDIA_MIMETYPE_VIDEO_HEVC;
+
+        case FOURCC('d', 't', 's', 'c'):
+            return MEDIA_MIMETYPE_AUDIO_DTS;
+
+        case FOURCC('d', 't', 's', 'h'):
+        case FOURCC('d', 't', 's', 'l'):
+        case FOURCC('d', 't', 's', 'e'):
+            return MEDIA_MIMETYPE_AUDIO_DTSHD;
+
         default:
             CHECK(!"should not be here.");
             return NULL;
