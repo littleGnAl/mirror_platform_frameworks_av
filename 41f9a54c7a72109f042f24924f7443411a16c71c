@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ae264e4_c5ae2db6",
+        "filename": "media/libmedia/IMediaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-03-14T21:11:50Z",
+      "side": 1,
+      "message": "I don\u0027t think this has to be checked. The shell has DUMP permission.",
+      "range": {
+        "startLine": 280,
+        "startChar": 9,
+        "endLine": 280,
+        "endChar": 25
+      },
+      "revId": "41f9a54c7a72109f042f24924f7443411a16c71c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c8045e2e_e6689db6",
+        "filename": "media/libmedia/IMediaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-03-14T21:11:50Z",
+      "side": 1,
+      "message": "this doesn\u0027t seem to be defined anywhere?",
+      "range": {
+        "startLine": 281,
+        "startChar": 49,
+        "endLine": 281,
+        "endChar": 64
+      },
+      "revId": "41f9a54c7a72109f042f24924f7443411a16c71c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "168ea3ae_4f2afe7d",
+        "filename": "media/libmedia/IMediaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 283,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-03-14T21:11:50Z",
+      "side": 1,
+      "message": "this isn\u0027t SurfaceFlinger",
+      "range": {
+        "startLine": 283,
+        "startChar": 28,
+        "endLine": 283,
+        "endChar": 42
+      },
+      "revId": "41f9a54c7a72109f042f24924f7443411a16c71c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
