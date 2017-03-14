@@ -1139,6 +1139,15 @@ void AudioFlinger::EffectModule::dump(int fd, const Vector<String16>& args __unu
         }
     }
 
+    memset(buffer, 0, SIZE);
+    status_t status = mEffectInterface->command(EFFECT_CMD_DUMP,
+                                                0, NULL,
+                                                (uint32_t *)&SIZE,
+                                                buffer);
+    if (status == OK) {
+        result.append(buffer);
+    }
+
     write(fd, result.string(), result.length());
 
     if (locked) {
