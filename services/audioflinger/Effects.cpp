@@ -1438,13 +1438,23 @@ void AudioFlinger::EffectModule::dump(int fd, const Vector<String16>& args __unu
 
     result.appendFormat("\t\t%zu Clients:\n", mHandles.size());
     result.append("\t\t\t  Pid Priority Ctrl Locked client server\n");
-    char buffer[256];
+    char buffer[2048];
     for (size_t i = 0; i < mHandles.size(); ++i) {
         EffectHandle *handle = mHandles[i];
         if (handle != NULL && !handle->disconnected()) {
             handle->dumpToBuffer(buffer, sizeof(buffer));
             result.append(buffer);
         }
+    }
+
+    memset(buffer, 0, sizeof(buffer));
+    uint32_t size = sizeof(buffer);
+    status_t status = mEffectInterface->command(EFFECT_CMD_DUMP,
+                                                0 /* cmdSize */, NULL /* pCmdData */,
+                                                &size,
+                                                buffer);
+    if (status == OK && size <= sizeof(buffer) && size > 0 && buffer[size - 1] == 0) {
+        result.append(buffer);
     }
 
     write(fd, result.string(), result.length());
