@@ -37,11 +37,19 @@ public:
     EAS_FILE_LOCATOR getLocator();
 
 private:
+    int readFromDataSource(void *buffer, off64_t offset, size_t size);
+
+private:
     int mFd;
     off64_t mBase;
     int64_t  mLength;
     sp<DataSource> mDataSource;
     EAS_FILE mEasFile;
+
+    uint8_t* mCache;
+    off64_t mCachedOffset;
+    size_t mCachedSize;
+    size_t mCacheSize;
 };
 
 
