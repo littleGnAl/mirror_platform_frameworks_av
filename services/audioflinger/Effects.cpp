@@ -1062,7 +1062,7 @@ String8 effectFlagsToString(uint32_t flags) {
 
 void AudioFlinger::EffectModule::dump(int fd, const Vector<String16>& args __unused)
 {
-    const size_t SIZE = 256;
+    const size_t SIZE = 512;
     char buffer[SIZE];
     String8 result;
 
@@ -1137,6 +1137,15 @@ void AudioFlinger::EffectModule::dump(int fd, const Vector<String16>& args __unu
             handle->dumpToBuffer(buffer, SIZE);
             result.append(buffer);
         }
+    }
+
+    memset(buffer, 0, sizeof(buffer));
+    status_t status = mEffectInterface->command(EFFECT_CMD_DUMP,
+                                                0, NULL,
+                                                (uint32_t *)&SIZE,
+                                                buffer);
+    if (status == OK) {
+        result.append(buffer);
     }
 
     write(fd, result.string(), result.length());
