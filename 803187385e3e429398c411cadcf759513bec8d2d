@@ -50,6 +50,24 @@
       "revId": "803187385e3e429398c411cadcf759513bec8d2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44128945_40c7fd76",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1108598
+      },
+      "writtenOn": "2017-03-15T03:06:07Z",
+      "side": 1,
+      "message": "this function has only one input parmeter. and it just convert yuv 422 frame buffer to yuv 420 format, frame width \u0026 height are not changed. As buffer size of yuv 422 is larger than yuv 420, no need to worry about memory overflow.\nother functions have crop check because they need to read from source and write to destination buffer. In this function, source and destination are same buffer.",
+      "parentUuid": "12ae1491_b22d8bdc",
+      "revId": "803187385e3e429398c411cadcf759513bec8d2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
