@@ -1329,7 +1329,7 @@ void MatroskaExtractor::findThumbnails() {
         int32_t j = 0;
         int64_t thumbnailTimeUs = 0;
         size_t maxBlockSize = 0;
-        while (!iter.eos() && j < 20) {
+        while (!iter.eos() && j < 2) {
             if (iter.block()->IsKey()) {
                 ++j;
 
