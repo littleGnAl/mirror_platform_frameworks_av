@@ -119,6 +119,30 @@
       "revId": "8c2eaaf7be9e617a7ff07f60d3d2f55272a7ebc7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82b5dae0_ecefaf40",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1212,
+      "author": {
+        "id": 1107294
+      },
+      "writtenOn": "2017-03-16T06:26:35Z",
+      "side": 1,
+      "message": "If extractor says it can\u0027t seek this file, it mostly means no index table in file, or file format doesn\u0027t support seeking. Even if file content has already been cached, extractor can\u0027t still seek on these data. This seek flag doesn\u0027t relate to streaming server\u0027s capability of seeking. So ,that case (streaming server can\u0027t seek but extractor can seek on cached data) won\u0027t be blocked by this code segment because the flags is CAN_SEEK.",
+      "parentUuid": "e399e6db_ceebcb0e",
+      "range": {
+        "startLine": 1207,
+        "startChar": 0,
+        "endLine": 1212,
+        "endChar": 13
+      },
+      "revId": "8c2eaaf7be9e617a7ff07f60d3d2f55272a7ebc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
