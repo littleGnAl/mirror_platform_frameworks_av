@@ -3051,6 +3051,12 @@ sp<IEffect> AudioFlinger::createEffect(
         }
     }
 
+    if (lStatus != NO_ERROR && lStatus != ALREADY_EXISTS) {
+        if (handle != 0) {
+            handle.clear();
+        }
+    }
+
 Exit:
     *status = lStatus;
     return handle;
