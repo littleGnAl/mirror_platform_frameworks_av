@@ -3041,13 +3041,20 @@ sp<IEffect> AudioFlinger::createEffect(
         bool pinned = (sessionId > AUDIO_SESSION_OUTPUT_MIX) && isSessionAcquired_l(sessionId);
         handle = thread->createEffect_l(client, effectClient, priority, sessionId,
                 &desc, enabled, &lStatus, pinned);
-        if (handle != 0 && id != NULL) {
-            *id = handle->id();
-        }
-        if (handle == 0) {
+        if (lStatus == NO_ERROR || lStatus == ALREADY_EXISTS) {
+            if (handle != 0 && id != NULL) {
+                *id = handle->id();
+            }
+        } else {
             // remove local strong reference to Client with mClientLock held
             Mutex::Autolock _cl(mClientLock);
             client.clear();
+        }
+    }
+
+    if (lStatus != NO_ERROR && lStatus != ALREADY_EXISTS) {
+        if (handle != 0) {
+            handle.clear();
         }
     }
 
