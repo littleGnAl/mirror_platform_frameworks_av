@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb46db8c_838eb5f2",
+        "filename": "media/libmedia/IMediaExtractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-03-21T17:41:23Z",
+      "side": 1,
+      "message": "you can just call checkCallingPermission(sDumpPermission) here, which will get the calling pid and uid internally",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 68
+      },
+      "revId": "87c65b1d29cd253f1837e811d09df24bd9d6bef3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
