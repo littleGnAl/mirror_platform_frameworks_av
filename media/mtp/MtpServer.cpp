@@ -1084,6 +1084,11 @@ MtpResponseCode MtpServer::doSendObject() {
             result = MTP_RESPONSE_GENERAL_ERROR;
     }
 
+    auto end = std::chrono::steady_clock::now();
+    std::chrono::duration<double> diff = end - start;
+    uint64_t finalsize = sstat.st_size;
+    ALOGV("Got a file over MTP. Time: %fs, Size: %" PRIu64 ", Rate: %f bytes/s",
+            diff.count(), finalsize, ((double) finalsize) / diff.count());
 done:
     // reset so we don't attempt to send the data back
     mData.reset();
@@ -1093,11 +1098,6 @@ done:
     mSendObjectHandle = kInvalidObjectHandle;
     mSendObjectFormat = 0;
 
-    auto end = std::chrono::steady_clock::now();
-    std::chrono::duration<double> diff = end - start;
-    uint64_t finalsize = sstat.st_size;
-    ALOGV("Got a file over MTP. Time: %fs, Size: %" PRIu64 ", Rate: %f bytes/s",
-            diff.count(), finalsize, ((double) finalsize) / diff.count());
     return result;
 }
 
