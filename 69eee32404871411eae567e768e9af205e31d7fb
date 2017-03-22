@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "60fbebd0_c2a47030",
+        "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2017-03-22T16:08:48Z",
+      "side": 1,
+      "message": "I am not sure why this is needed. If lowestPriorityPid \u003d\u003d callingPid, lowestPriority *should* be the same as callingPriority, so the logic below will return false anyway.\n\nIs this a racing condition where the process priority changes while this method is executing? Please elaborate the scenario for which this change is necessary.",
+      "revId": "69eee32404871411eae567e768e9af205e31d7fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
