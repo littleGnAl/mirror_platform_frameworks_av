@@ -16,6 +16,24 @@
       "revId": "69eee32404871411eae567e768e9af205e31d7fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6d86f416_27792446",
+        "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1023624
+      },
+      "writtenOn": "2017-03-23T08:23:21Z",
+      "side": 1,
+      "message": "For instance, after executing mProcessInfo-\u003egetPriority() \u0026 before executing getLowestPriorityPid_l(), at this moment the client app changing status from foreground to background.\nThe same pid will report two different priority by two times mProcessInfo-\u003egetPriority() calling.\nThe possibility is very small, but it still exists.\nOur stress test hits it sometimes.\nJust a suggestion, \"lowestPriorityPid \u003d\u003d callingPid\" will be helpful for this condition.",
+      "parentUuid": "60fbebd0_c2a47030",
+      "revId": "69eee32404871411eae567e768e9af205e31d7fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
