@@ -297,19 +297,14 @@ status_t OMX::freeNode(node_id node) {
             return OK;
         }
         mLiveNodes.removeItemsAt(index);
-    }
 
-    IInterface::asBinder(instance->observer())->unlinkToDeath(this);
-
-    status_t err = instance->freeNode(mMaster);
-
-    {
-        Mutex::Autolock autoLock(mLock);
         ssize_t index = mDispatchers.indexOfKey(node);
         CHECK(index >= 0);
         mDispatchers.removeItemsAt(index);
     }
 
+    IInterface::asBinder(instance->observer())->unlinkToDeath(this);
+    status_t err = instance->freeNode(mMaster);
     return err;
 }
 
