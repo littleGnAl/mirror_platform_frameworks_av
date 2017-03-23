@@ -5417,6 +5417,7 @@ void AudioPolicyManager::filterSurroundFormats(FormatVector *formatsPtr) {
                 supportsAC3 = true;
                 break;
             case AUDIO_FORMAT_E_AC3:
+            case AUDIO_FORMAT_E_AC3_JOC:
             case AUDIO_FORMAT_DTS:
             case AUDIO_FORMAT_DTS_HD:
                 supportsOtherSurround = true;
@@ -5439,6 +5440,7 @@ void AudioPolicyManager::filterSurroundFormats(FormatVector *formatsPtr) {
                 switch(format) {
                     case AUDIO_FORMAT_AC3:
                     case AUDIO_FORMAT_E_AC3:
+                    case AUDIO_FORMAT_E_AC3_JOC:
                     case AUDIO_FORMAT_DTS:
                     case AUDIO_FORMAT_DTS_HD:
                     case AUDIO_FORMAT_IEC61937:
@@ -5467,6 +5469,7 @@ void AudioPolicyManager::filterSurroundFormats(FormatVector *formatsPtr) {
         if ((forceUse == AUDIO_POLICY_FORCE_ENCODED_SURROUND_ALWAYS)
                 && !supportsOtherSurround) {
             formats.add(AUDIO_FORMAT_E_AC3);
+            formats.add(AUDIO_FORMAT_E_AC3_JOC);
             formats.add(AUDIO_FORMAT_DTS);
             formats.add(AUDIO_FORMAT_DTS_HD);
             supportsOtherSurround = true;
