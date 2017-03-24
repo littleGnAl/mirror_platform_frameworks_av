@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3c111077_f1558ed6",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2017-03-24T15:43:44Z",
+      "side": 1,
+      "message": "I would prefer a rule where the USB mic is only selected if an USB output device is also present",
+      "range": {
+        "startLine": 624,
+        "startChar": 13,
+        "endLine": 625,
+        "endChar": 62
+      },
+      "revId": "5cbf58a59fe38e07c2ea23105428bbfb8124f81f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
