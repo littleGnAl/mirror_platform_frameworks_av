@@ -621,6 +621,9 @@ audio_devices_t Engine::getDeviceForInputSource(audio_source_t inputSource) cons
         default:    // FORCE_NONE
             if (availableDeviceTypes & AUDIO_DEVICE_IN_WIRED_HEADSET) {
                 device = AUDIO_DEVICE_IN_WIRED_HEADSET;
+            } else if ((availableOutputDevices.types() & AUDIO_DEVICE_OUT_WIRED_HEADPHONE) &&
+                    (getPhoneState() == AUDIO_MODE_IN_CALL)) {
+                device = AUDIO_DEVICE_IN_BUILTIN_MIC;
             } else if (availableDeviceTypes & AUDIO_DEVICE_IN_USB_DEVICE) {
                 device = AUDIO_DEVICE_IN_USB_DEVICE;
             } else if (availableDeviceTypes & AUDIO_DEVICE_IN_BUILTIN_MIC) {
