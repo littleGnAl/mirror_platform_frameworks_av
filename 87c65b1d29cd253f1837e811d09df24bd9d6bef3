@@ -22,6 +22,30 @@
       "revId": "87c65b1d29cd253f1837e811d09df24bd9d6bef3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fac16054_cf687565",
+        "filename": "media/libmedia/IMediaExtractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1144533
+      },
+      "writtenOn": "2017-03-24T05:49:46Z",
+      "side": 1,
+      "message": "But that way we cannot print calling pid/uid in the error message, is it still OK?",
+      "parentUuid": "bb46db8c_838eb5f2",
+      "range": {
+        "startLine": 278,
+        "startChar": 1,
+        "endLine": 281,
+        "endChar": 68
+      },
+      "revId": "87c65b1d29cd253f1837e811d09df24bd9d6bef3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
