@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "75f8b82e_644b97bf",
+        "filename": "media/libmediaplayerservice/nuplayer/GenericSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-03-27T18:10:15Z",
+      "side": 1,
+      "message": "style nit: space after if, e.g. \"if (\".\n\nalso we prefer to have braces even for single line ifs.\n\nif () {\n...\n} else {\n...\n}\n\nor: \nconst bool counterpartFormatChange \u003d counterpartType \u003d\u003d MEDIA_TRACK_TYPE_VIDEO ? false : formatChange;",
+      "range": {
+        "startLine": 669,
+        "startChar": 12,
+        "endLine": 669,
+        "endChar": 13
+      },
+      "revId": "78a1a189453dfd096ea69a0e4b97c63dd959f5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e1bb939f_02cf11f4",
+        "filename": "media/libmediaplayerservice/nuplayer/GenericSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-03-27T18:10:15Z",
+      "side": 1,
+      "message": "nit: can you please annotate with the argument name when passing in constants?\n\n(counterpartType, -1 /* seekTimeUs */, NULL /* actualTimeUs */, false /* formatChange */)\n\nalso line length (\u003e\u003d 100)",
+      "range": {
+        "startLine": 670,
+        "startChar": 49,
+        "endLine": 670,
+        "endChar": 53
+      },
+      "revId": "78a1a189453dfd096ea69a0e4b97c63dd959f5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1cf3e262_87ed0d47",
+        "filename": "media/libmediaplayerservice/nuplayer/GenericSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 670,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-03-27T18:10:15Z",
+      "side": 1,
+      "message": "not that familiar with this code, but do we need to issue a readBuffer at all in this case?  seems like we could skip it.",
+      "range": {
+        "startLine": 670,
+        "startChar": 99,
+        "endLine": 670,
+        "endChar": 117
+      },
+      "revId": "78a1a189453dfd096ea69a0e4b97c63dd959f5fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
