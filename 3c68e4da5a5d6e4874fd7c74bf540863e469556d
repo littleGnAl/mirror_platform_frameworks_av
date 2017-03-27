@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2f813b55_7f9d9c48",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1022116
+      },
+      "writtenOn": "2017-03-27T18:23:50Z",
+      "side": 1,
+      "message": "#ifdef USE_LIBYUV\n            err \u003d convertYUV420PlanarUseLibYUV(src, dst);\n#else\n            err \u003d convertYUV420Planar(src, dst);\n#endif",
+      "range": {
+        "startLine": 135,
+        "startChar": 18,
+        "endLine": 135,
+        "endChar": 37
+      },
+      "revId": "3c68e4da5a5d6e4874fd7c74bf540863e469556d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
