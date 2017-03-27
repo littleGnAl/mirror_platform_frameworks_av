@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "73debed3_5b307912",
+        "filename": "include/media/stagefright/ColorConverter.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-03-27T18:46:36Z",
+      "side": 1,
+      "message": "style nit: empty line above for consistency.\n\nbtw, why not have src and dst arguments like the functions above?  you can make a comment that src \u003d\u003d dst (in place conversion) is possible and is optimized.",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 4
+      },
+      "revId": "3c68e4da5a5d6e4874fd7c74bf540863e469556d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4f6b96b3_a308af72",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-03-27T18:46:36Z",
+      "side": 1,
+      "message": "nit: one empty line above for consistency?",
+      "range": {
+        "startLine": 133,
+        "startChar": 1,
+        "endLine": 133,
+        "endChar": 4
+      },
+      "revId": "3c68e4da5a5d6e4874fd7c74bf540863e469556d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1c26780d_60b0630d",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-03-27T18:46:36Z",
+      "side": 1,
+      "message": "this modifies src, which is declared const on line 85.  not a fan of doing that.",
+      "range": {
+        "startLine": 134,
+        "startChar": 51,
+        "endLine": 134,
+        "endChar": 57
+      },
+      "revId": "3c68e4da5a5d6e4874fd7c74bf540863e469556d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2f813b55_7f9d9c48",
         "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
         "patchSetId": 3
@@ -18,6 +87,167 @@
         "startChar": 18,
         "endLine": 135,
         "endChar": 37
+      },
+      "revId": "3c68e4da5a5d6e4874fd7c74bf540863e469556d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "04731c51_d5c4f964",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 548,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-03-27T18:46:36Z",
+      "side": 1,
+      "message": "one line space above.  wondering if it is better to make the convertYUVToRGB(y1, y2, u, v, rgb1, rgb2) an inline function (see lines 499 - 528), and directly convert to rgb here, instead of doing this as 422 -\u003e 420 -\u003e RGB, to prevent modifying a const source.",
+      "range": {
+        "startLine": 548,
+        "startChar": 0,
+        "endLine": 548,
+        "endChar": 7
+      },
+      "revId": "3c68e4da5a5d6e4874fd7c74bf540863e469556d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ab52678a_3bcaabad",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 561,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-03-27T18:46:36Z",
+      "side": 1,
+      "message": "if you have a separate dst, then\n\nif (dst_ptr !\u003d src_ptr) {\n    memcpy(...)\n}\n\nstyle nit, space after the comma.",
+      "range": {
+        "startLine": 561,
+        "startChar": 0,
+        "endLine": 561,
+        "endChar": 10
+      },
+      "revId": "3c68e4da5a5d6e4874fd7c74bf540863e469556d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d4318544_c4d45418",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 563,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-03-27T18:46:36Z",
+      "side": 1,
+      "message": "style nit: space after for, e.g. \"for (\"\nstyle nit: spaces around the opequals: \"i +\u003d 2\"",
+      "range": {
+        "startLine": 563,
+        "startChar": 39,
+        "endLine": 563,
+        "endChar": 45
+      },
+      "revId": "3c68e4da5a5d6e4874fd7c74bf540863e469556d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "733da6ef_101087eb",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-03-27T18:46:36Z",
+      "side": 1,
+      "message": "spaces after comma and \"mWidth / 2\"",
+      "range": {
+        "startLine": 564,
+        "startChar": 39,
+        "endLine": 564,
+        "endChar": 41
+      },
+      "revId": "3c68e4da5a5d6e4874fd7c74bf540863e469556d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "961cbd6a_ae7d7cb2",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 567,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-03-27T18:46:36Z",
+      "side": 1,
+      "message": "sigh, we don\u0027t do filtered subsampling.",
+      "range": {
+        "startLine": 567,
+        "startChar": 0,
+        "endLine": 567,
+        "endChar": 5
+      },
+      "revId": "3c68e4da5a5d6e4874fd7c74bf540863e469556d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e09be285_dd1e9b01",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-03-27T18:46:36Z",
+      "side": 1,
+      "message": "ditto here.",
+      "range": {
+        "startLine": 568,
+        "startChar": 0,
+        "endLine": 568,
+        "endChar": 2
+      },
+      "revId": "3c68e4da5a5d6e4874fd7c74bf540863e469556d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "edbc271c_306b3050",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-03-27T18:46:36Z",
+      "side": 1,
+      "message": "style nit: empty line after",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 574,
+        "endChar": 1
       },
       "revId": "3c68e4da5a5d6e4874fd7c74bf540863e469556d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
