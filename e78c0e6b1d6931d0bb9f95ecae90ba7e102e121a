@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24883e13_b9e264fb",
+        "filename": "media/libmediaplayerservice/nuplayer/GenericSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1427,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-03-27T17:51:56Z",
+      "side": 1,
+      "message": "may not merge internally - right now this is always 64.",
+      "range": {
+        "startLine": 1427,
+        "startChar": 9,
+        "endLine": 1427,
+        "endChar": 31
+      },
+      "revId": "e78c0e6b1d6931d0bb9f95ecae90ba7e102e121a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
