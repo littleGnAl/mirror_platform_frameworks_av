@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5896ae46_5677a127",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-03-27T18:55:45Z",
+      "side": 1,
+      "message": "for editing purposes, 30 is reasonable to me.  for better compression, maybe we want higher (60), but not sure if this is a concern...",
+      "range": {
+        "startLine": 84,
+        "startChar": 36,
+        "endLine": 84,
+        "endChar": 38
+      },
+      "revId": "4d22f9eb8792fe51d1f095462e23302cbadb0b37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
