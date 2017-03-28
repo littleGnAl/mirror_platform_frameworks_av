@@ -51,6 +51,7 @@ bool ColorConverter::isValid() const {
         case OMX_QCOM_COLOR_FormatYVU420SemiPlanar:
         case OMX_COLOR_FormatYUV420SemiPlanar:
         case OMX_TI_COLOR_FormatYUV420PackedSemiPlanar:
+        case OMX_COLOR_FormatYUV420PackedSemiPlanar:
             return true;
 
         default:
@@ -128,6 +129,18 @@ status_t ColorConverter::convert(
 
         case OMX_TI_COLOR_FormatYUV420PackedSemiPlanar:
             err = convertTIYUV420PackedSemiPlanar(src, dst);
+            break;
+
+        case OMX_COLOR_FormatYUV422Planar:
+            err = convertYUV422PlanartoYUV420Planar(src,src);
+            if(err)
+                break;
+
+#ifdef USE_LIBYUV
+            err = convertYUV420PlanarUseLibYUV(src, dst);
+#else
+            err = convertYUV420Planar(src, dst);
+#endif
             break;
 
         default:
@@ -537,6 +550,49 @@ status_t ColorConverter::convertTIYUV420PackedSemiPlanar(
         }
 
         dst_ptr += dst.mWidth;
+    }
+
+    return OK;
+}
+
+status_t ColorConverter::convertYUV422PlanartoYUV420Planar(
+        const BitmapParams &src, const BitmapParams &dst)
+{
+    if (!((src.mCropLeft & 1) == 0
+            && src.cropWidth() == dst.cropWidth()
+            && src.cropHeight() == dst.cropHeight())) {
+        return ERROR_UNSUPPORTED;
+    }
+
+    uint8_t *dst_ptr = (uint8_t *)dst.mBits;
+
+    const uint8_t *src_y =
+        (const uint8_t *)src.mBits;
+
+    const uint8_t *src_u =
+        (const uint8_t *)src_y + src.mWidth * src.mHeight;
+
+    const uint8_t *src_v =
+        src_u + (src.mWidth / 2) * src.mHeight;
+
+    if(dst_ptr != src_y){
+        memcpy(dst_ptr, src_y, src.mWidth * src.mHeight);
+    }
+
+    dst_ptr += src.mWidth * src.mHeight;
+
+    //drop U & V each alternate line
+
+    for(size_t i = 0; i < src.mHeight; i += 2){
+        memcpy(dst_ptr, src_u, src.mWidth / 2);
+        dst_ptr += src.mWidth / 2;
+        src_u += src.mWidth;
+    }
+
+    for(size_t i = 0; i < src.mHeight; i += 2){
+        memcpy(dst_ptr, src_v, src.mWidth / 2);
+        dst_ptr += src.mWidth / 2;
+        src_v += src.mWidth;
     }
 
     return OK;
