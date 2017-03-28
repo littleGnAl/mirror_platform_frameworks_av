@@ -46,6 +46,75 @@
       "revId": "87c65b1d29cd253f1837e811d09df24bd9d6bef3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "205fffec_6c46ecd4",
+        "filename": "media/libmedia/IMediaExtractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1060916
+      },
+      "writtenOn": "2017-03-28T04:47:43Z",
+      "side": 1,
+      "message": "Didn\u0027t you mean this? - \n\n    if ((uid !\u003d AID_SHELL) \u0026\u0026\n        !PermissionCache::checkPermission(\n                String16(\"android.permission.DUMP\"), pid, uid))\n\nIt\u0027s also cleaner as it eliminates the need for sDumpPermission, which isn\u0027t used anywhere else.",
+      "range": {
+        "startLine": 281,
+        "startChar": 8,
+        "endLine": 281,
+        "endChar": 68
+      },
+      "revId": "87c65b1d29cd253f1837e811d09df24bd9d6bef3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "fa553542_65315179",
+        "filename": "media/libmedia/IMediaExtractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1060916
+      },
+      "writtenOn": "2017-03-28T04:47:43Z",
+      "side": 1,
+      "message": "What is the purpose of this extra block?",
+      "range": {
+        "startLine": 286,
+        "startChar": 0,
+        "endLine": 286,
+        "endChar": 9
+      },
+      "revId": "87c65b1d29cd253f1837e811d09df24bd9d6bef3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4bfa98bd_c9228de9",
+        "filename": "media/libmedia/IMediaExtractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1060916
+      },
+      "writtenOn": "2017-03-28T04:47:43Z",
+      "side": 1,
+      "message": "Same as above.  Please explain.",
+      "range": {
+        "startLine": 292,
+        "startChar": 0,
+        "endLine": 292,
+        "endChar": 13
+      },
+      "revId": "87c65b1d29cd253f1837e811d09df24bd9d6bef3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
