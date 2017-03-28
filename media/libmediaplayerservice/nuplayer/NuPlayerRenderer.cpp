@@ -110,6 +110,7 @@ NuPlayer::Renderer::Renderer(
       mVideoLateByUs(0ll),
       mHasAudio(false),
       mHasVideo(false),
+      mAudioEOS(false),
       mNotifyCompleteAudio(false),
       mNotifyCompleteVideo(false),
       mSyncQueues(false),
@@ -1183,7 +1184,7 @@ void NuPlayer::Renderer::postDrainVideoQueue() {
                 realTimeUs = nowUs;
             }
         }
-        if (!mHasAudio) {
+        if (!mHasAudio || mAudioEOS) {
             // smooth out videos >= 10fps
             mMediaClock->updateMaxTimeMedia(mediaTimeUs + 100000);
         }
@@ -1327,6 +1328,9 @@ void NuPlayer::Renderer::notifyVideoRenderingStart() {
 }
 
 void NuPlayer::Renderer::notifyEOS(bool audio, status_t finalResult, int64_t delayUs) {
+    if (audio)
+        mAudioEOS = true;
+
     if (audio && delayUs > 0) {
         sp<AMessage> msg = new AMessage(kWhatEOS, this);
         msg->setInt32("audioEOSGeneration", mAudioEOSGeneration);
@@ -1357,6 +1361,7 @@ void NuPlayer::Renderer::onQueueBuffer(const sp<AMessage> &msg) {
 
     if (audio) {
         mHasAudio = true;
+        mAudioEOS = false;
     } else {
         mHasVideo = true;
     }
