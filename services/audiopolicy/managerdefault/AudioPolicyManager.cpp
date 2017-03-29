@@ -920,7 +920,7 @@ audio_io_handle_t AudioPolicyManager::getOutputForDevice(
     // and not explicitly requested
     if (((flags & AUDIO_OUTPUT_FLAG_DIRECT) == 0) &&
             audio_is_linear_pcm(format) && samplingRate <= SAMPLE_RATE_HZ_MAX &&
-            audio_channel_count_from_out_mask(channelMask) <= 2) {
+            audio_channel_count_from_out_mask(channelMask) <= 8) {
         goto non_direct_output;
     }
 
