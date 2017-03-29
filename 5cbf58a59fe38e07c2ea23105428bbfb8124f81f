@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "6a7a1c44_4c16b382",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 605,
+      "author": {
+        "id": 1143064
+      },
+      "writtenOn": "2017-03-29T08:15:46Z",
+      "side": 1,
+      "message": "AUDIO_DEVICE_OUT_TELEPHONY_TX means platform can support voice call even with device is not for primary HAL.",
+      "range": {
+        "startLine": 605,
+        "startChar": 50,
+        "endLine": 605,
+        "endChar": 79
+      },
+      "revId": "5cbf58a59fe38e07c2ea23105428bbfb8124f81f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3c111077_f1558ed6",
         "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
         "patchSetId": 2
@@ -37,6 +60,30 @@
       "side": 1,
       "message": "Hi Eric\nI really appreciate your review. I understand your view.\nIn this function, all we can do is to get all available output devices. Then the issue happen when Both USB device and Headphone are available. So we need to get USB output device is actually used. Since getDeviceForStrategy() can not be used (it will lead to phone infinite loop), I will consider alternative solution.",
       "parentUuid": "3c111077_f1558ed6",
+      "range": {
+        "startLine": 624,
+        "startChar": 13,
+        "endLine": 625,
+        "endChar": 62
+      },
+      "revId": "5cbf58a59fe38e07c2ea23105428bbfb8124f81f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "104a8749_2114c479",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1143064
+      },
+      "writtenOn": "2017-03-29T08:15:46Z",
+      "side": 1,
+      "message": "I have considerd the solution then concluded that it is difficult to fix this with only framework change.\nAs I mentioned above, available AUDIO_DEVICE_OUT_TELEPHONY_TX means platform can support voice call even with device is not for primary HAL. However actually, some device pair can not be supported. (as Headphone output and USB mic). I will close the issue once then re-consider the proper solution.",
+      "parentUuid": "f0a2ada9_ea7a897e",
       "range": {
         "startLine": 624,
         "startChar": 13,
