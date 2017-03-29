@@ -950,8 +950,6 @@ status_t Parameters::buildFastInfo() {
         arrayHeight = activeArraySize.data.i32[3];
     } else return NO_INIT;
 
-    // We'll set the target FPS range for still captures to be as wide
-    // as possible to give the HAL maximum latitude for exposure selection
     camera_metadata_ro_entry_t availableFpsRanges =
         staticInfo(ANDROID_CONTROL_AE_AVAILABLE_TARGET_FPS_RANGES, 2);
     if (availableFpsRanges.count < 2 || availableFpsRanges.count % 2 != 0) {
@@ -977,22 +975,20 @@ status_t Parameters::buildFastInfo() {
         return NO_INIT;
     }
 
+    const int32_t PREFERRED_FPS_RANGE[2] = {10, 30};
+
     int32_t bestStillCaptureFpsRange[2] = {
         supportedPreviewFpsRanges[0].low, supportedPreviewFpsRanges[0].high
     };
-    int32_t curRange =
-            bestStillCaptureFpsRange[1] - bestStillCaptureFpsRange[0];
-    for (size_t i = 1; i < supportedPreviewFpsRanges.size(); i ++) {
-        int32_t nextRange =
-                supportedPreviewFpsRanges[i].high -
-                supportedPreviewFpsRanges[i].low;
-        if ( (nextRange > curRange) ||       // Maximize size of FPS range first
-                (nextRange == curRange &&    // Then minimize low-end FPS
-                 bestStillCaptureFpsRange[0] > supportedPreviewFpsRanges[i].low)) {
 
-            bestStillCaptureFpsRange[0] = supportedPreviewFpsRanges[i].low;
-            bestStillCaptureFpsRange[1] = supportedPreviewFpsRanges[i].high;
-            curRange = nextRange;
+    // Pick an FPS range closest to the preffered range
+    for (size_t i = 2; i < availableFpsRanges.count; i += 2) {
+        if ((abs(availableFpsRanges.data.i32[i] - PREFERRED_FPS_RANGE[0]) <
+             abs(bestStillCaptureFpsRange[0] - PREFERRED_FPS_RANGE[0])) &&
+            (abs(availableFpsRanges.data.i32[i + 1] - PREFERRED_FPS_RANGE[1]) <
+             abs(bestStillCaptureFpsRange[1] - PREFERRED_FPS_RANGE[1]))) {
+           bestStillCaptureFpsRange[0] = availableFpsRanges.data.i32[i];
+           bestStillCaptureFpsRange[1] = availableFpsRanges.data.i32[i + 1];
         }
     }
 
