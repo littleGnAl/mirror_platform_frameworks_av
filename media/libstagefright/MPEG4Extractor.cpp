@@ -120,6 +120,7 @@ private:
 
     bool mIsAVC;
     bool mIsHEVC;
+    bool mIsDolbyVision;
     size_t mNALLengthSize;
 
     bool mStarted;
@@ -347,6 +348,13 @@ static const char *FourCC2MIME(uint32_t fourcc) {
         case FOURCC('h', 'v', 'c', '1'):
         case FOURCC('h', 'e', 'v', '1'):
             return MEDIA_MIMETYPE_VIDEO_HEVC;
+
+        case FOURCC('d', 'v', 'a', 'v'):
+        case FOURCC('d', 'v', 'a', '1'):
+        case FOURCC('d', 'v', 'h', 'e'):
+        case FOURCC('d', 'v', 'h', '1'):
+            return MEDIA_MIMETYPE_VIDEO_DOLBY_VISION;
+
         default:
             CHECK(!"should not be here.");
             return NULL;
@@ -1492,6 +1500,10 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
         case FOURCC('a', 'v', 'c', '1'):
         case FOURCC('h', 'v', 'c', '1'):
         case FOURCC('h', 'e', 'v', '1'):
+        case FOURCC('d', 'v', 'a', 'v'):
+        case FOURCC('d', 'v', 'a', '1'):
+        case FOURCC('d', 'v', 'h', 'e'):
+        case FOURCC('d', 'v', 'h', '1'):
         {
             uint8_t buffer[78];
             if (chunk_data_size < (ssize_t)sizeof(buffer)) {
@@ -1634,6 +1646,7 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
                 const char *mime;
                 CHECK(mLastTrack->meta->findCString(kKeyMIMEType, &mime));
                 if (!strcmp(mime, MEDIA_MIMETYPE_VIDEO_AVC)
+                        || !strcmp(mime, MEDIA_MIMETYPE_VIDEO_DOLBY_VISION)
                         || !strcmp(mime, MEDIA_MIMETYPE_VIDEO_HEVC)) {
                     // AVC & HEVC requires compression ratio of at least 2, and uses
                     // macroblocks
@@ -1907,7 +1920,29 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
             *offset += chunk_size;
             break;
         }
+        case FOURCC('d', 'v', 'c', 'C'):
+        {
+            sp<ABuffer> buffer = new ABuffer(chunk_data_size);
 
+            if (buffer->data() == NULL) {
+                ALOGE("b/28471206");
+                return NO_MEMORY;
+            }
+
+            if (mDataSource->readAt(
+                        data_offset, buffer->data(), chunk_data_size) < chunk_data_size) {
+                return ERROR_IO;
+            }
+
+            if (mLastTrack == NULL)
+                return ERROR_MALFORMED;
+
+            mLastTrack->meta->setData(
+                    kKeyDVCC, kTypeDVCC, buffer->data(), chunk_data_size);
+
+            *offset += chunk_size;
+            break;
+        }
         case FOURCC('d', '2', '6', '3'):
         {
             *offset += chunk_size;
@@ -3171,6 +3206,19 @@ sp<IMediaSource> MPEG4Extractor::getTrack(size_t index) {
         if (size < 22 || ptr[0] != 1) {  // configurationVersion == 1
             return NULL;
         }
+    } else if (!strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_DOLBY_VISION)) {
+        uint32_t type;
+        const void *data;
+        size_t size;
+        if (!track->meta->findData(kKeyDVCC, &type, &data, &size)) {
+            return NULL;
+        }
+
+        const uint8_t *ptr = (const uint8_t *)data;
+
+        if (size != 24 || ptr[0] != 1 || ptr[1] != 0) {  // dv_version_major == 1, dv_version_minor == 0;
+            return NULL;
+        }
     }
 
     return new MPEG4Source(this,
@@ -3201,6 +3249,11 @@ status_t MPEG4Extractor::verifyTrack(Track *track) {
             || !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_AAC)) {
         if (!track->meta->findData(kKeyESDS, &type, &data, &size)
                 || type != kTypeESDS) {
+            return ERROR_MALFORMED;
+        }
+    } else if (!strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_DOLBY_VISION)) {
+        if (!track->meta->findData(kKeyDVCC, &type, &data, &size)
+            || type != kTypeDVCC) {
             return ERROR_MALFORMED;
         }
     }
@@ -3579,6 +3632,7 @@ MPEG4Source::MPEG4Source(
       mCurrentSampleInfoOffsets(NULL),
       mIsAVC(false),
       mIsHEVC(false),
+      mIsDolbyVision(false),
       mNALLengthSize(0),
       mStarted(false),
       mGroup(NULL),
@@ -3606,6 +3660,7 @@ MPEG4Source::MPEG4Source(
 
     mIsAVC = !strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_AVC);
     mIsHEVC = !strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_HEVC);
+    mIsDolbyVision = !strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_DOLBY_VISION);
 
     if (mIsAVC) {
         uint32_t type;
@@ -3632,6 +3687,39 @@ MPEG4Source::MPEG4Source(
         CHECK_EQ((unsigned)ptr[0], 1u);  // configurationVersion == 1
 
         mNALLengthSize = 1 + (ptr[14 + 7] & 3);
+    } else if (mIsDolbyVision) {
+        ALOGV("%s DolbyVision stream detected", __FUNCTION__);
+        uint32_t type;
+        const void *data;
+        size_t size;
+        CHECK(format->findData(kKeyDVCC, &type, &data, &size));
+
+        const uint8_t *ptr = (const uint8_t *)data;
+
+        CHECK(size == 24);
+        CHECK_EQ((unsigned)ptr[0], 1u);  // dv_major_version == 1
+        CHECK_EQ((unsigned)ptr[1], 0u);  // dv_minor_version == 0
+
+        if ((ptr[2] >> 1) > 1) { // profile == 0, 1 --> avc; profile > 1 --> hevc;
+            CHECK(format->findData(kKeyHVCC, &type, &data, &size));
+
+            const uint8_t *ptr = (const uint8_t *)data;
+
+            CHECK(size >= 22);
+            CHECK_EQ((unsigned)ptr[0], 1u);  // configurationVersion == 1
+
+            mNALLengthSize = 1 + (ptr[14 + 7] & 3);
+        } else {
+            CHECK(format->findData(kKeyAVCC, &type, &data, &size));
+
+            const uint8_t *ptr = (const uint8_t *)data;
+
+            CHECK(size >= 7);
+            CHECK_EQ((unsigned)ptr[0], 1u);  // configurationVersion == 1
+
+            // The number of bytes used to encode the length of a NAL unit.
+            mNALLengthSize = 1 + (ptr[4] & 3);
+        }
     }
 
     CHECK(format->findInt32(kKeyTrackID, &mTrackId));
@@ -4440,7 +4528,7 @@ status_t MPEG4Source::read(
         }
     }
 
-    if ((!mIsAVC && !mIsHEVC) || mWantsNALFragments) {
+    if ((!mIsAVC && !mIsDolbyVision && !mIsHEVC) || mWantsNALFragments) {
         if (newBuffer) {
             ssize_t num_bytes_read =
                 mDataSource->readAt(offset, (uint8_t *)mBuffer->data(), size);
@@ -4472,7 +4560,7 @@ status_t MPEG4Source::read(
             ++mCurrentSampleIndex;
         }
 
-        if (!mIsAVC && !mIsHEVC) {
+        if (!mIsAVC && !mIsDolbyVision && !mIsHEVC) {
             *out = mBuffer;
             mBuffer = NULL;
 
@@ -4736,7 +4824,7 @@ status_t MPEG4Source::fragmentedRead(
         bufmeta->setData(kKeyCryptoKey, 0, mCryptoKey, 16);
     }
 
-    if ((!mIsAVC && !mIsHEVC)|| mWantsNALFragments) {
+    if ((!mIsAVC && !mIsDolbyVision && !mIsHEVC)|| mWantsNALFragments) {
         if (newBuffer) {
             if (!isInRange((size_t)0u, mBuffer->size(), size)) {
                 mBuffer->release();
@@ -4782,7 +4870,7 @@ status_t MPEG4Source::fragmentedRead(
             ++mCurrentSampleIndex;
         }
 
-        if (!mIsAVC && !mIsHEVC) {
+        if (!mIsAVC && !mIsDolbyVision && !mIsHEVC) {
             *out = mBuffer;
             mBuffer = NULL;
 
