@@ -294,6 +294,11 @@ status_t AACSource::read(
             int64_t seekFrame = seekTimeUs / mFrameDurationUs;
             mCurrentTimeUs = seekFrame * mFrameDurationUs;
 
+            // seek to the EOS, seekFrame == mOffsetVector.size()
+            if (seekFrame >= (int64_t)mOffsetVector.size()) {
+                seekFrame = mOffsetVector.size() - 1;
+            }
+
             mOffset = mOffsetVector.itemAt(seekFrame);
         }
     }
