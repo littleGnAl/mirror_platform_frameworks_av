@@ -248,6 +248,53 @@ static void parseAvcProfileLevelFromAvcc(const uint8_t *ptr, size_t size, sp<AMe
     }
 }
 
+static void parseDolbyVisionProfileLevelFromDvcc(const uint8_t *ptr, size_t size,
+                                                 sp<AMessage> &format)
+{
+    if (size != 24 || ptr[0] != 1 || ptr[1] != 0) {  // dv_major_version == 1, dv_minor_version == 0
+        return;
+    }
+
+    const uint8_t profile = ptr[2] >> 1;
+    const uint8_t level = ((ptr[2] & 0x1) << 5) | ((ptr[3] >> 3) & 0x1f);
+
+    ALOGV("%s profile-level value in dvcc box %d-%d", __FUNCTION__, profile, level);
+
+    const static ALookup<uint8_t, OMX_VIDEO_DOLBYVISIONPROFILETYPE> profiles {
+        { 0, OMX_VIDEO_DolbyVisionProfileDvavPer },
+        { 1, OMX_VIDEO_DolbyVisionProfileDvavPen },
+        { 2, OMX_VIDEO_DolbyVisionProfileDvheDer },
+        { 3, OMX_VIDEO_DolbyVisionProfileDvheDen },
+        { 4, OMX_VIDEO_DolbyVisionProfileDvheDtr },
+        { 5, OMX_VIDEO_DolbyVisionProfileDvheStn },
+        { 6, OMX_VIDEO_DolbyVisionProfileDvheDth },
+        { 7, OMX_VIDEO_DolbyVisionProfileDvheDtb },
+    };
+
+    const static ALookup<uint8_t, OMX_VIDEO_DOLBYVISIONLEVELTYPE> levels {
+        { 0, OMX_VIDEO_DolbyVisionLevelUnknown },
+        { 1, OMX_VIDEO_DolbyVisionLevelHd24 },
+        { 2, OMX_VIDEO_DolbyVisionLevelHd30 },
+        { 3, OMX_VIDEO_DolbyVisionLevelFhd24 },
+        { 4, OMX_VIDEO_DolbyVisionLevelFhd30 },
+        { 5, OMX_VIDEO_DolbyVisionLevelFhd60 },
+        { 6, OMX_VIDEO_DolbyVisionLevelUhd24 },
+        { 7, OMX_VIDEO_DolbyVisionLevelUhd30 },
+        { 8, OMX_VIDEO_DolbyVisionLevelUhd48 },
+        { 9, OMX_VIDEO_DolbyVisionLevelUhd60 },
+    };
+
+    // set profile & level if they are recognized
+    OMX_VIDEO_DOLBYVISIONPROFILETYPE codecProfile;
+    OMX_VIDEO_DOLBYVISIONLEVELTYPE codecLevel;
+    if (profiles.map(profile, &codecProfile)) {
+        format->setInt32("profile", codecProfile);
+        if (levels.map(level, &codecLevel)) {
+            format->setInt32("level", codecLevel);
+        }
+    }
+}
+
 static void parseH263ProfileLevelFromD263(const uint8_t *ptr, size_t size, sp<AMessage> &format) {
     if (size < 7) {
         return;
@@ -1047,6 +1094,12 @@ status_t convertMetaDataToMessage(
         msg->setBuffer("csd-0", buffer);
 
         parseVp9ProfileLevelFromCsd(buffer, msg);
+    }
+
+    if (meta->findData(kKeyDVCC, &type, &data, &size)) {
+        const uint8_t *ptr = (const uint8_t *)data;
+
+        parseDolbyVisionProfileLevelFromDvcc(ptr, size, msg);
     }
 
     // TODO expose "crypto-key"/kKeyCryptoKey through public api
