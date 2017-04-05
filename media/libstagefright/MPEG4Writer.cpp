@@ -1670,6 +1670,8 @@ void MPEG4Writer::Track::getCodecSpecificDataFromInputFormatIfPossible() {
         mMeta->findData(kKeyAVCC, &type, &data, &size);
     } else if (!strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_HEVC)) {
         mMeta->findData(kKeyHVCC, &type, &data, &size);
+    } else if (!strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_DOLBY_VISION)) {
+        mMeta->findData(kKeyDVCC, &type, &data, &size);
     } else if (!strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_MPEG4)
             || !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_AAC)) {
         if (mMeta->findData(kKeyESDS, &type, &data, &size)) {
