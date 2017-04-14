@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2de72018_ea3241de",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1101714
+      },
+      "writtenOn": "2017-04-14T23:51:59Z",
+      "side": 1,
+      "message": "libyuv has a function for this: I422ToI420()",
+      "revId": "48b3be322ea6ab596ff95a556f7f76d604a25804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c4192c12_a8db0953",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 587,
+      "author": {
+        "id": 1101714
+      },
+      "writtenOn": "2017-04-14T23:51:59Z",
+      "side": 1,
+      "message": "if you support odd width images, its good to round up the UV size.\nmemcpy(dst_ptr, src_u, (src.mWidth + 1)/ 2);",
+      "revId": "48b3be322ea6ab596ff95a556f7f76d604a25804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
