@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "5ff7f1e3_c694cab1",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1101714
+      },
+      "writtenOn": "2017-04-18T21:24:54Z",
+      "side": 1,
+      "message": "it would be better to average the 2 rows of UV.\nlibyuv:I422ToI420 will do this efficiently and ends up using InterpolateRow_NEON / AVX2 etc with specialized code for 50/50 blend.\n\nThe arm code looks like this:\n\n    // Blend 50 / 50.\n  \"50:                                         \\n\"\n    \"ld1        {v0.16b}, [%1], #16            \\n\"\n    \"ld1        {v1.16b}, [%2], #16            \\n\"\n    \"subs       %w3, %w3, #16                  \\n\"\n    \"urhadd     v0.16b, v0.16b, v1.16b         \\n\"\n    \"st1        {v0.16b}, [%0], #16            \\n\"\n    \"b.gt       50b                            \\n\"\n    \"b          99f                            \\n\"\n\nIntel SSSE3 code:\n\na2:   movdqu (%rsi),%xmm0\n      movdqu (%rsi,%rdx,1),%xmm1\n      pavgb  %xmm1,%xmm0\n      movdqu %xmm0,(%rsi,%rdi,1)\n      lea    0x10(%rsi),%rsi\n      sub    $0x10,%ecx\n\n\nUsing linux sandy bridge, I420ToI420 unittest is a fast memcpy (erms), while I422ToI420 does 50/50 blend using averaging.\n\nLibYUVConvertTest.I420ToI420_Opt (148 ms)\nLibYUVConvertTest.I422ToI420_Opt (174 ms)\n\n17% slower with averaging.",
+      "revId": "48b3be322ea6ab596ff95a556f7f76d604a25804",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c4192c12_a8db0953",
         "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
         "patchSetId": 4
