@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d9a6149_3d3fd326",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2017-04-18T16:01:55Z",
+      "side": 1,
+      "message": "we cannot release the lock here. we need to find another way to reset the volume while keeping the lock",
+      "range": {
+        "startLine": 237,
+        "startChar": 14,
+        "endLine": 237,
+        "endChar": 20
+      },
+      "revId": "8bf4371791d9827c1793e43fa765c1f0f32edf42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
