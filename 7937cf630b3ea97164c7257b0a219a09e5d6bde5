@@ -16,6 +16,24 @@
       "revId": "7937cf630b3ea97164c7257b0a219a09e5d6bde5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "13f7d730_69034801",
+        "filename": "camera/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-04-20T06:16:07Z",
+      "side": 1,
+      "message": "Done, since the export was causing problems anyways, since the warnings were no longer hidden. (The Android.mk didn\u0027t export include either, though it really should have)",
+      "parentUuid": "6788c09c_fd0fb1ef",
+      "revId": "7937cf630b3ea97164c7257b0a219a09e5d6bde5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
