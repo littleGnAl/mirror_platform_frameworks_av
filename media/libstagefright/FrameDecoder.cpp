@@ -272,6 +272,7 @@ status_t FrameDecoder::extractInternal() {
     status_t err = OK;
     bool done = false;
     size_t retriesLeft = kRetryCount;
+    bool pendingEos = false;
     do {
         size_t index;
         int64_t ptsUs = 0ll;
@@ -304,7 +305,8 @@ status_t FrameDecoder::extractInternal() {
                 ALOGW("Input Error or EOS");
                 mHaveMoreInputs = false;
                 if (!mFirstSample && err == ERROR_END_OF_STREAM) {
-                    err = OK;
+                    err = mDecoder->queueInputBuffer(
+                            index, 0, 0, 0, MediaCodec::BUFFER_FLAG_EOS);
                 }
                 break;
             }
@@ -329,6 +331,16 @@ status_t FrameDecoder::extractInternal() {
             mediaBuffer->release();
 
             if (mHaveMoreInputs) {
+                if (pendingEos) {
+                    flags |= MediaCodec::BUFFER_FLAG_EOS;
+                } else if ((flags & MediaCodec::BUFFER_FLAG_EOS) != 0) {
+                    // Wait next frame for interlaced content
+                    flags &= ~MediaCodec::BUFFER_FLAG_EOS;
+                    pendingEos = true;
+
+                    ALOGV("EOS flag pending, wait next frame");
+                }
+
                 ALOGV("QueueInput: size=%zu ts=%" PRId64 " us flags=%x",
                         codecBuffer->size(), ptsUs, flags);
 
