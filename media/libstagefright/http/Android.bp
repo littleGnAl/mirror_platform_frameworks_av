@@ -1,0 +1,38 @@
+// ANDROIDMK TRANSLATION ERROR: unsupported conditional
+// ifneq ($(TARGET_BUILD_PDK), true)
+
+cc_library_shared {
+    name: "libstagefright_http_support",
+
+    srcs: ["HTTPHelper.cpp"],
+
+    include_dirs: [
+        "frameworks/av/media/libstagefright",
+        "frameworks/native/include/media/openmax",
+        "frameworks/base/core/jni",
+    ],
+
+    shared_libs: [
+        "liblog",
+        "libutils",
+        "libbinder",
+        "libandroid_runtime",
+        "libmedia",
+    ],
+
+
+    cflags: [
+        "-Wno-multichar",
+        "-Werror",
+        "-Wall",
+    ],
+
+    sanitize: {
+        misc_undefined: [
+            "signed-integer-overflow",
+        ],
+    },
+}
+
+// ANDROIDMK TRANSLATION ERROR: endif from unsupported contitional
+// endif
