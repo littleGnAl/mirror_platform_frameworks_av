@@ -22,6 +22,30 @@
       "revId": "8bf4371791d9827c1793e43fa765c1f0f32edf42",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b0ed493_c3f01e14",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1143064
+      },
+      "writtenOn": "2017-04-24T08:09:35Z",
+      "side": 1,
+      "message": "Hi Eric,\nThank you for your review.\nWe have confirmed we do not need to change start_l() function and unlock here. since resetvolume_l is trrigers after this function called. So could you review again?",
+      "parentUuid": "1d9a6149_3d3fd326",
+      "range": {
+        "startLine": 237,
+        "startChar": 14,
+        "endLine": 237,
+        "endChar": 20
+      },
+      "revId": "8bf4371791d9827c1793e43fa765c1f0f32edf42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
