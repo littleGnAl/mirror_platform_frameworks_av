@@ -31,6 +31,8 @@ LOCAL_C_INCLUDES += \
     $(TOP)/frameworks/av/include \
     $(TOP)/frameworks/native/include/media
 
+LOCAL_CFLAGS := -Werror -Wall
+
 # Set the following flag to enable the decryption passthru flow
 #LOCAL_CFLAGS += -DENABLE_PASSTHRU_DECRYPTION
 
