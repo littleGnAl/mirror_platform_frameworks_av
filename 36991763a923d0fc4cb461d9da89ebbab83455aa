@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "737f60fd_849d803a",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-04-26T23:03:36Z",
+      "side": 1,
+      "message": "ALOGW might be more appropriate, perhaps?",
+      "range": {
+        "startLine": 1084,
+        "startChar": 12,
+        "endLine": 1084,
+        "endChar": 13
+      },
+      "revId": "36991763a923d0fc4cb461d9da89ebbab83455aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
