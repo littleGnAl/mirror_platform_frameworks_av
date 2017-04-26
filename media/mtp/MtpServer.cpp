@@ -25,6 +25,7 @@
 #include <sys/types.h>
 #include <sys/stat.h>
 #include <sys/stat.h>
+#include <sys/time.h>
 
 #define LOG_TAG "MtpServer"
 
@@ -113,7 +114,8 @@ MtpServer::MtpServer(MtpDatabase* database, bool ptp,
         mSessionOpen(false),
         mSendObjectHandle(kInvalidObjectHandle),
         mSendObjectFormat(0),
-        mSendObjectFileSize(0)
+        mSendObjectFileSize(0),
+        mModifiedTime(0)
 {
 }
 
@@ -999,6 +1001,7 @@ MtpResponseCode MtpServer::doSendObjectInfo() {
         // save the handle for the SendObject call, which should follow
         mSendObjectHandle = handle;
         mSendObjectFormat = format;
+        mModifiedTime = modifiedTime;
     }
 
     mResponse.setParameter(1, storageID);
@@ -1075,6 +1078,18 @@ MtpResponseCode MtpServer::doSendObject() {
     fstat(mfr.fd, &sstat);
     close(mfr.fd);
 
+    // Update last modified time if we are on sdcardfs.
+    if (base::GetBoolProperty("ro.sys.sdcardfs", false)) {
+        struct timeval newTime[2];
+        newTime[0].tv_sec = sstat.st_atim.tv_sec;
+        newTime[0].tv_usec = sstat.st_atim.tv_nsec / 1000;
+        newTime[1].tv_sec = mModifiedTime;
+        newTime[1].tv_usec = 0;
+        ret = utimes(mSendObjectFilePath, newTime);
+        if (ret < 0)
+            ALOGE("utimes failed: %s\n", strerror(errno));
+    }
+
     if (ret < 0) {
         ALOGE("Mtp receive file got error %s", strerror(errno));
         unlink(mSendObjectFilePath);
@@ -1092,6 +1107,7 @@ done:
             result == MTP_RESPONSE_OK);
     mSendObjectHandle = kInvalidObjectHandle;
     mSendObjectFormat = 0;
+    mModifiedTime = 0;
 
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> diff = end - start;
