@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2fc2dfbc_11fc997e",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1081,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-04-26T17:58:16Z",
+      "side": 1,
+      "message": "I\u0027d rather try to set the time regardless and maybe log any errors that happen. Its possible that non sdcardfs filesystems will someday support this, or even that the property indicating sdcardfs support could change.",
+      "revId": "205ed41c9fbad480aecab37294bf26b3207c2971",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
