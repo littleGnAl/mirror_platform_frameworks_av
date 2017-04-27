@@ -1176,7 +1176,8 @@ void NuPlayer::Renderer::postDrainVideoQueue() {
             } else if (mAudioFirstAnchorTimeMediaUs < 0
                 || mMediaClock->getRealTimeFor(mediaTimeUs, &realTimeUs) == OK) {
                 realTimeUs = getRealTimeUs(mediaTimeUs, nowUs);
-            } else if (mediaTimeUs - mAudioFirstAnchorTimeMediaUs >= 0) {
+            } else if (mediaTimeUs - mAudioFirstAnchorTimeMediaUs >= 0
+                    && mLastAudioMediaTimeUs == -1) {
                 needRepostDrainVideoQueue = true;
                 realTimeUs = nowUs;
             } else {
