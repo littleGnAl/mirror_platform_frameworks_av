@@ -22,6 +22,30 @@
       "revId": "38614aaeb47aedc604f0e92f9ba5762cc5e55c00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f7bcac9_55ff0f01",
+        "filename": "drm/mediadrm/plugins/mock/MockDrmCryptoPlugin.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2017-04-28T17:44:32Z",
+      "side": 1,
+      "message": "Renamed.  I was just focusing on this specific bug, and will leave the framework-wide renaming for future work, if you\u0027re okay with that.",
+      "parentUuid": "57d85861_12dc750e",
+      "range": {
+        "startLine": 160,
+        "startChar": 32,
+        "endLine": 160,
+        "endChar": 45
+      },
+      "revId": "38614aaeb47aedc604f0e92f9ba5762cc5e55c00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
