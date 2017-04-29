@@ -29,7 +29,6 @@
 #include <media/stagefright/MediaSource.h>
 #include <media/stagefright/MetaData.h>
 #include <utils/String8.h>
-#include <cutils/bitops.h>
 
 #define CHANNEL_MASK_USE_CHANNEL_ORDER 0
 
