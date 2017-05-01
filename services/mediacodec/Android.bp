@@ -1,0 +1,40 @@
+cc_library_shared {
+    name: "libmediacodecservice",
+    srcs: ["MediaCodecService.cpp"],
+    shared_libs: [
+        "libmedia",
+        "libbinder",
+        "libutils",
+        "liblog",
+        "libstagefright_omx",
+    ],
+    include_dirs: [
+          "frameworks/av/media/libstagefright",
+          "frameworks/native/include/media/openmax",
+    ],
+    compile_multilib: "32",
+}
+
+cc_binary {
+    name: "mediacodec",
+    srcs: [
+        "main_codecservice.cpp",
+        "minijail/minijail.cpp",
+    ],
+    include_dirs: [
+          "frameworks/av/media/libstagefright",
+          "frameworks/native/include/media/openmax",
+    ],
+    shared_libs: [
+       "libmedia",
+       "libmediacodecservice",
+       "libbinder",
+       "libutils",
+       "liblog",
+       "libminijail",
+    ],
+    compile_multilib: "32",
+    required: ["mediacodec-seccomp.policy"],
+    init_rc: ["mediacodec.rc"],
+}
+
