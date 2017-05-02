@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "24f61f8a_3f467c3d",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2017-05-02T18:05:41Z",
+      "side": 1,
+      "message": "This is not the signal for audio EOS. The real audio EOS is when notifyEOS is called for audio without delay.\n\nMeanwhile, it will help if postDrainVideoQueue() could check if AudioSink is rendering, just like getCurrentPosition() does.",
+      "range": {
+        "startLine": 1180,
+        "startChar": 23,
+        "endLine": 1180,
+        "endChar": 50
+      },
+      "revId": "4a9861950aee37b8ac23892706e48009409e3132",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
