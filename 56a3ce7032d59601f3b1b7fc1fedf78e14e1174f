@@ -16,6 +16,24 @@
       "revId": "56a3ce7032d59601f3b1b7fc1fedf78e14e1174f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4a9b7e7_53149b39",
+        "filename": "services/mediacodec/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1123943
+      },
+      "writtenOn": "2017-05-02T21:40:19Z",
+      "side": 1,
+      "message": "You are right. make libmediacodecservice or make mediacodec does not work with this CL. It works with Android.mk since build/make finds it using first-makefiles-under. I assume Soong does not do that, only parses referenced .bp files.\n\nWhats the way to fix the abs path in local_include_dirs? Have the libs export their headers?",
+      "parentUuid": "dfa0a254_a0e58464",
+      "revId": "56a3ce7032d59601f3b1b7fc1fedf78e14e1174f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
