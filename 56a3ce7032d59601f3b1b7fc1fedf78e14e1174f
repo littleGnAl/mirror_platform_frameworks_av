@@ -34,6 +34,24 @@
       "revId": "56a3ce7032d59601f3b1b7fc1fedf78e14e1174f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "220b16bf_b2a07c56",
+        "filename": "services/mediacodec/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-02T21:54:23Z",
+      "side": 1,
+      "message": "First try deleting them, there\u0027s a lot of copying and pasting in here and they may not even be needed.  If at least one of them is needed, put it in with include_dirs instead of local_include_dirs.  This whole directory is going to need a separate pass to untangle the header directories.",
+      "parentUuid": "b4a9b7e7_53149b39",
+      "revId": "56a3ce7032d59601f3b1b7fc1fedf78e14e1174f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
