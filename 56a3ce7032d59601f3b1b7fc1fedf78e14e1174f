@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfa0a254_a0e58464",
+        "filename": "services/mediacodec/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-05-02T19:37:20Z",
+      "side": 1,
+      "message": "local_include_dirs is supposed to be paths that are relative to the Android.bp file.  Soong will fail very early, except that its not even parsing this file because it is not referenced by frameworks/av/Android.bp",
+      "revId": "56a3ce7032d59601f3b1b7fc1fedf78e14e1174f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
