@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d66d75ce_e59c1262",
+        "filename": "drm/mediadrm/plugins/clearkey/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-02T21:17:47Z",
+      "side": 1,
+      "message": "This is exported from libjsmn",
+      "range": {
+        "startLine": 36,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "83e80803155ef3e9c0e245ee6b39379266037815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d335505_e4f96a82",
+        "filename": "drm/mediadrm/plugins/clearkey/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-02T21:17:47Z",
+      "side": 1,
+      "message": "Isn\u0027t this the current directory?",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 54
+      },
+      "revId": "83e80803155ef3e9c0e245ee6b39379266037815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d340db1_9d6c2676",
+        "filename": "drm/mediadrm/plugins/clearkey/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-02T21:17:47Z",
+      "side": 1,
+      "message": "This should probably be vendor: true, since this is opensource code, but we need to clean up everything else too, so no big deal either way",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 15
+      },
+      "revId": "83e80803155ef3e9c0e245ee6b39379266037815",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
