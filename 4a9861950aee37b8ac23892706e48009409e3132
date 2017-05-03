@@ -22,6 +22,30 @@
       "revId": "4a9861950aee37b8ac23892706e48009409e3132",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae8ac254_1b09fcf3",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1180,
+      "author": {
+        "id": 1120611
+      },
+      "writtenOn": "2017-05-03T03:26:34Z",
+      "side": 1,
+      "message": "Thanks Jia.\n\nIn fact we met an issue that the playback can not exit because the same video frame always post in a loop after seeking to the end.\n\nAnd, the gap of the actual audio EOS is postEOSDelayUs, right?\n\nbool NuPlayer::Renderer::onDrainAudioQueue() {\n    ...\n    notifyEOS(true /* audio */, entry-\u003emFinalResult, postEOSDelayUs);\n    mLastAudioMediaTimeUs \u003d getDurationUsIfPlayedAtSampleRate(mNumFramesWritten);\n    ...\n}\n\nIf AudioSink is rendering, mMediaClock-\u003eupdateAnchor() will be called, then video frame can be sync with audio track, which means it will access to path below for av sync, right?\n\n    (((!(mFlags \u0026 FLAG_VUDU_SESSION) \u0026\u0026 mAudioFirstAnchorTimeMediaUs \u003c 0)\n        || mMediaClock-\u003egetRealTimeFor(mediaTimeUs, \u0026realTimeUs) \u003d\u003d OK))\n\t\t\nSo, the change can be for situation that audio input data to audio sink but doesn\u0027t render because of fast-finish, right?",
+      "parentUuid": "24f61f8a_3f467c3d",
+      "range": {
+        "startLine": 1180,
+        "startChar": 23,
+        "endLine": 1180,
+        "endChar": 50
+      },
+      "revId": "4a9861950aee37b8ac23892706e48009409e3132",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
