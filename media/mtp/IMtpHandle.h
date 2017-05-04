@@ -18,6 +18,8 @@
 
 #include <linux/usb/f_mtp.h>
 
+namespace android {
+
 constexpr char FFS_MTP_EP0[] = "/dev/usb-ffs/mtp/ep0";
 
 class IMtpHandle {
@@ -40,8 +42,9 @@ public:
     virtual ~IMtpHandle() {}
 };
 
-IMtpHandle *get_ffs_handle();
 IMtpHandle *get_mtp_handle();
+
+}
 
 #endif // _IMTP_HANDLE_H
 
