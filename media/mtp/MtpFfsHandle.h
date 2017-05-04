@@ -18,21 +18,36 @@
 #define _MTP_FFS_HANDLE_H
 
 #include <android-base/unique_fd.h>
+#include <linux/aio_abi.h>
+#include <mutex>
+#include <sys/select.h>
+#include <time.h>
+#include <vector>
+
 #include <IMtpHandle.h>
 
 namespace android {
 
-class MtpFfsHandleTest;
+constexpr int NUM_IO_BUFS = 2;
+
+struct io_buffer {
+    std::vector<struct iocb> iocbs;     // Holds memory for all iocbs. Not used directly.
+    std::vector<struct iocb*> iocb;     // Pointers to individual iocbs, for syscalls
+    std::vector<unsigned char> bufs;    // A large buffer, used with filesystem io
+    std::vector<unsigned char*> buf;    // Pointers within the larger buffer, for syscalls
+    unsigned actual;                    // The number of buffers submitted for this request
+};
+
+template <class T> class MtpFfsHandleTest;
 
 class MtpFfsHandle : public IMtpHandle {
-    friend class android::MtpFfsHandleTest;
-private:
-    int writeHandle(int fd, const void *data, int len);
-    int readHandle(int fd, void *data, int len);
-    int spliceReadHandle(int fd, int fd_out, int len);
+    template <class T> friend class android::MtpFfsHandleTest;
+protected:
     bool initFunctionfs();
     void closeConfig();
     void closeEndpoints();
+
+    static int getPacketSize(int ffs_fd);
 
     bool mPtp;
 
@@ -45,28 +60,32 @@ private:
     android::base::unique_fd mBulkOut;
     android::base::unique_fd mIntr;
 
-    int mMaxWrite;
-    int mMaxRead;
+    aio_context_t mCtx;
+    struct io_buffer mIobuf[NUM_IO_BUFS];
 
-    std::vector<char> mBuffer1;
-    std::vector<char> mBuffer2;
+    // Submit an io request of given length. Return amount submitted or -1.
+    int iobufSubmit(struct io_buffer *buf, int fd, unsigned length, bool read);
+
+    // Cancel submitted requests from start to end in the given array. Return 0 or -1.
+    int cancelEvents(struct iocb **iocb, struct io_event *events, unsigned start, unsigned end);
+
+    // Wait for at minimum the given number of events. Returns the amount of data in the returned
+    // events. Increments counter by the number of events returned.
+    int waitEvents(struct io_buffer *buf, int min_events, struct io_event *events, int *counter,
+            struct timespec *timeout);
 
 public:
-    int read(void *data, int len);
-    int write(const void *data, int len);
+    int read(void *data, int len) override;
+    int write(const void *data, int len) override;
 
-    int receiveFile(mtp_file_range mfr, bool zero_packet);
-    int sendFile(mtp_file_range mfr);
-    int sendEvent(mtp_event me);
+    int receiveFile(mtp_file_range mfr, bool zero_packet) override;
+    int sendFile(mtp_file_range mfr) override;
+    int sendEvent(mtp_event me) override;
 
-    /**
-     * Open ffs endpoints and allocate necessary kernel and user memory.
-     * Will sleep until endpoints are enabled, for up to 1 second.
-     */
-    int start();
-    void close();
+    int start() override;
+    void close() override;
 
-    int configure(bool ptp);
+    int configure(bool ptp) override;
 
     MtpFfsHandle();
     ~MtpFfsHandle();
@@ -85,5 +104,5 @@ struct mtp_data_header {
 
 } // namespace android
 
-#endif // _MTP_FF_HANDLE_H
+#endif // _MTP_FFS_HANDLE_H
 
