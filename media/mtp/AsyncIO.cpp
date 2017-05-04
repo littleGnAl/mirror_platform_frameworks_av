@@ -19,6 +19,8 @@
 #include <memory>
 #include <mutex>
 #include <queue>
+#include <sys/syscall.h>
+#include <unistd.h>
 
 #include "AsyncIO.h"
 
@@ -36,107 +38,10 @@ void write_func(struct aiocb *aiocbp) {
     if (aiocbp->ret == -1) aiocbp->error = errno;
 }
 
-void splice_read_func(struct aiocb *aiocbp) {
-    loff_t long_offset = aiocbp->aio_offset;
-    aiocbp->ret = TEMP_FAILURE_RETRY(splice(aiocbp->aio_fildes,
-                &long_offset, aiocbp->aio_sink,
-                NULL, aiocbp->aio_nbytes, 0));
-    if (aiocbp->ret == -1) aiocbp->error = errno;
-}
-
-void splice_write_func(struct aiocb *aiocbp) {
-    loff_t long_offset = aiocbp->aio_offset;
-    aiocbp->ret = TEMP_FAILURE_RETRY(splice(aiocbp->aio_fildes, NULL,
-                aiocbp->aio_sink, &long_offset,
-                aiocbp->aio_nbytes, 0));
-    if (aiocbp->ret == -1) aiocbp->error = errno;
-}
-
-std::queue<std::unique_ptr<struct aiocb>> queue;
-std::mutex queue_lock;
-std::condition_variable queue_cond;
-std::condition_variable write_cond;
-int done = 1;
-void splice_write_pool_func(int) {
-    while(1) {
-        std::unique_lock<std::mutex> lk(queue_lock);
-        queue_cond.wait(lk, []{return !queue.empty() || done;});
-        if (queue.empty() && done) {
-            return;
-        }
-        std::unique_ptr<struct aiocb> aiocbp = std::move(queue.front());
-        queue.pop();
-        lk.unlock();
-        write_cond.notify_one();
-        splice_write_func(aiocbp.get());
-        close(aiocbp->aio_fildes);
-    }
-}
-
-void write_pool_func(int) {
-    while(1) {
-        std::unique_lock<std::mutex> lk(queue_lock);
-        queue_cond.wait(lk, []{return !queue.empty() || done;});
-        if (queue.empty() && done) {
-            return;
-        }
-        std::unique_ptr<struct aiocb> aiocbp = std::move(queue.front());
-        queue.pop();
-        lk.unlock();
-        write_cond.notify_one();
-        aiocbp->ret = TEMP_FAILURE_RETRY(pwrite(aiocbp->aio_fildes,
-                    aiocbp->aio_pool_buf.get(), aiocbp->aio_nbytes, aiocbp->aio_offset));
-        if (aiocbp->ret == -1) aiocbp->error = errno;
-    }
-}
-
-constexpr int NUM_THREADS = 1;
-constexpr int MAX_QUEUE_SIZE = 10;
-std::thread pool[NUM_THREADS];
-
 } // end anonymous namespace
 
 aiocb::~aiocb() {
     CHECK(!thread.joinable());
-}
-
-void aio_pool_init(void(f)(int)) {
-    CHECK(done == 1);
-    done = 0;
-    for (int i = 0; i < NUM_THREADS; i++) {
-        pool[i] = std::thread(f, i);
-    }
-}
-
-void aio_pool_splice_init() {
-    aio_pool_init(splice_write_pool_func);
-}
-
-void aio_pool_write_init() {
-    aio_pool_init(write_pool_func);
-}
-
-void aio_pool_end() {
-    done = 1;
-    for (int i = 0; i < NUM_THREADS; i++) {
-        std::unique_lock<std::mutex> lk(queue_lock);
-        lk.unlock();
-        queue_cond.notify_one();
-    }
-
-    for (int i = 0; i < NUM_THREADS; i++) {
-        pool[i].join();
-    }
-}
-
-// used for both writes and splices depending on which init was used before.
-int aio_pool_write(struct aiocb *aiocbp) {
-    std::unique_lock<std::mutex> lk(queue_lock);
-    write_cond.wait(lk, []{return queue.size() < MAX_QUEUE_SIZE;});
-    queue.push(std::unique_ptr<struct aiocb>(aiocbp));
-    lk.unlock();
-    queue_cond.notify_one();
-    return 0;
 }
 
 int aio_read(struct aiocb *aiocbp) {
@@ -146,16 +51,6 @@ int aio_read(struct aiocb *aiocbp) {
 
 int aio_write(struct aiocb *aiocbp) {
     aiocbp->thread = std::thread(write_func, aiocbp);
-    return 0;
-}
-
-int aio_splice_read(struct aiocb *aiocbp) {
-    aiocbp->thread = std::thread(splice_read_func, aiocbp);
-    return 0;
-}
-
-int aio_splice_write(struct aiocb *aiocbp) {
-    aiocbp->thread = std::thread(splice_write_func, aiocbp);
     return 0;
 }
 
@@ -175,8 +70,40 @@ int aio_suspend(struct aiocb *aiocbp[], int n,
     return 0;
 }
 
-int aio_cancel(int, struct aiocb *) {
-    // Not implemented
-    return -1;
+void aio_prepare(struct aiocb *aiocbp, void* buf, size_t count, off_t offset) {
+    aiocbp->aio_buf = buf;
+    aiocbp->aio_offset = offset;
+    aiocbp->aio_nbytes = count;
 }
 
+int io_setup(unsigned nr, aio_context_t *ctxp) {
+    return syscall(__NR_io_setup, nr, ctxp);
+}
+
+int io_destroy(aio_context_t ctx) {
+    return syscall(__NR_io_destroy, ctx);
+}
+
+int io_submit(aio_context_t ctx, long nr, struct iocb **iocbpp) {
+    return syscall(__NR_io_submit, ctx, nr, iocbpp);
+}
+
+int io_getevents(aio_context_t ctx, long min_nr, long max_nr,
+                struct io_event *events, struct timespec *timeout) {
+    return syscall(__NR_io_getevents, ctx, min_nr, max_nr, events, timeout);
+}
+
+int io_cancel(aio_context_t ctx, struct iocb *iocbp, struct io_event *result) {
+    return syscall(__NR_io_cancel, ctx, iocbp, result);
+}
+
+void io_prep(struct iocb *iocb, int fd, void *buf, uint64_t count, int64_t offset, bool read)
+{
+    memset(iocb, 0, sizeof(*iocb));
+    iocb->aio_fildes = fd;
+    iocb->aio_lio_opcode = read ? IOCB_CMD_PREAD : IOCB_CMD_PWRITE;
+    iocb->aio_reqprio = 0;
+    iocb->aio_buf = reinterpret_cast<decltype(iocb->aio_buf)>(buf);
+    iocb->aio_nbytes = count;
+    iocb->aio_offset = offset;
+}

@@ -27,7 +27,6 @@
 namespace android {
 
 constexpr int TEST_PACKET_SIZE = 512;
-constexpr int POOL_COUNT = 10;
 
 static const std::string dummyDataStr =
     "/*\n * Copyright 2015 The Android Open Source Project\n *\n * Licensed un"
@@ -96,97 +95,6 @@ TEST_F(AsyncIOTest, testError) {
     EXPECT_EQ(aio_suspend(aiol, 1, nullptr), 0);
     EXPECT_EQ(aio_return(&aio), -1);
     EXPECT_EQ(aio_error(&aio), EBADF);
-}
-
-TEST_F(AsyncIOTest, testSpliceRead) {
-    char buf[TEST_PACKET_SIZE + 1];
-    buf[TEST_PACKET_SIZE] = '\0';
-    int pipeFd[2];
-    EXPECT_EQ(pipe(pipeFd), 0);
-    EXPECT_EQ(write(dummy_file.fd, dummyDataStr.c_str(), TEST_PACKET_SIZE), TEST_PACKET_SIZE);
-    struct aiocb aio;
-    struct aiocb *aiol[] = {&aio};
-    aio.aio_fildes = dummy_file.fd;
-    aio.aio_sink = pipeFd[1];
-    aio.aio_offset = 0;
-    aio.aio_nbytes = TEST_PACKET_SIZE;
-
-    EXPECT_EQ(aio_splice_read(&aio), 0);
-    EXPECT_EQ(aio_suspend(aiol, 1, nullptr), 0);
-    EXPECT_EQ(aio_return(&aio), TEST_PACKET_SIZE);
-
-    EXPECT_EQ(read(pipeFd[0], buf, TEST_PACKET_SIZE), TEST_PACKET_SIZE);
-    EXPECT_STREQ(buf, dummyDataStr.c_str());
-}
-
-TEST_F(AsyncIOTest, testSpliceWrite) {
-    char buf[TEST_PACKET_SIZE + 1];
-    buf[TEST_PACKET_SIZE] = '\0';
-    int pipeFd[2];
-    EXPECT_EQ(pipe(pipeFd), 0);
-    EXPECT_EQ(write(pipeFd[1], dummyDataStr.c_str(), TEST_PACKET_SIZE), TEST_PACKET_SIZE);
-    struct aiocb aio;
-    struct aiocb *aiol[] = {&aio};
-    aio.aio_fildes = pipeFd[0];
-    aio.aio_sink = dummy_file.fd;
-    aio.aio_offset = 0;
-    aio.aio_nbytes = TEST_PACKET_SIZE;
-
-    EXPECT_EQ(aio_splice_write(&aio), 0);
-    EXPECT_EQ(aio_suspend(aiol, 1, nullptr), 0);
-    EXPECT_EQ(aio_return(&aio), TEST_PACKET_SIZE);
-    EXPECT_EQ(read(dummy_file.fd, buf, TEST_PACKET_SIZE), TEST_PACKET_SIZE);
-    EXPECT_STREQ(buf, dummyDataStr.c_str());
-}
-
-TEST_F(AsyncIOTest, testPoolWrite) {
-    aio_pool_write_init();
-    char buf[TEST_PACKET_SIZE * POOL_COUNT + 1];
-    buf[TEST_PACKET_SIZE * POOL_COUNT] = '\0';
-
-    for (int i = 0; i < POOL_COUNT; i++) {
-        struct aiocb *aiop = new struct aiocb;
-        aiop->aio_fildes = dummy_file.fd;
-        aiop->aio_pool_buf = std::unique_ptr<char[]>(new char[TEST_PACKET_SIZE]);
-        memcpy(aiop->aio_pool_buf.get(), dummyDataStr.c_str(), TEST_PACKET_SIZE);
-        aiop->aio_offset = i * TEST_PACKET_SIZE;
-        aiop->aio_nbytes = TEST_PACKET_SIZE;
-        EXPECT_EQ(aio_pool_write(aiop), 0);
-    }
-    aio_pool_end();
-    EXPECT_EQ(read(dummy_file.fd, buf, TEST_PACKET_SIZE * POOL_COUNT), TEST_PACKET_SIZE * POOL_COUNT);
-
-    std::stringstream ss;
-    for (int i = 0; i < POOL_COUNT; i++)
-        ss << dummyDataStr;
-
-    EXPECT_STREQ(buf, ss.str().c_str());
-}
-
-TEST_F(AsyncIOTest, testSplicePoolWrite) {
-    aio_pool_splice_init();
-    char buf[TEST_PACKET_SIZE * POOL_COUNT + 1];
-    buf[TEST_PACKET_SIZE * POOL_COUNT] = '\0';
-
-    for (int i = 0; i < POOL_COUNT; i++) {
-        int pipeFd[2];
-        EXPECT_EQ(pipe(pipeFd), 0);
-        EXPECT_EQ(write(pipeFd[1], dummyDataStr.c_str(), TEST_PACKET_SIZE), TEST_PACKET_SIZE);
-        struct aiocb *aiop = new struct aiocb;
-        aiop->aio_fildes = pipeFd[0];
-        aiop->aio_sink = dummy_file.fd;
-        aiop->aio_offset = i * TEST_PACKET_SIZE;
-        aiop->aio_nbytes = TEST_PACKET_SIZE;
-        EXPECT_EQ(aio_pool_write(aiop), 0);
-    }
-    aio_pool_end();
-    EXPECT_EQ(read(dummy_file.fd, buf, TEST_PACKET_SIZE * POOL_COUNT), TEST_PACKET_SIZE * POOL_COUNT);
-
-    std::stringstream ss;
-    for (int i = 0; i < POOL_COUNT; i++)
-        ss << dummyDataStr;
-
-    EXPECT_STREQ(buf, ss.str().c_str());
 }
 
 } // namespace android
