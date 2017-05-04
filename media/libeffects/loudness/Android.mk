@@ -16,6 +16,9 @@ LOCAL_SHARED_LIBRARIES := \
 LOCAL_MODULE_RELATIVE_PATH := soundfx
 LOCAL_MODULE:= libldnhncr
 
+LOCAL_HEADER_LIBRARIES := \
+    libaudioeffects
+
 LOCAL_C_INCLUDES := \
 	$(call include-path-for, audio-effects) \
 
