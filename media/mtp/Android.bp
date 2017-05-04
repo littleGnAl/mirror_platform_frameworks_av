@@ -17,7 +17,6 @@
 cc_library_shared {
     name: "libmtp",
     srcs: [
-        "AsyncIO.cpp",
         "MtpDataPacket.cpp",
         "MtpDebug.cpp",
         "MtpDevHandle.cpp",
@@ -35,6 +34,7 @@ cc_library_shared {
         "MtpStorageInfo.cpp",
         "MtpStringBuffer.cpp",
         "MtpUtils.cpp",
+        "PosixAsyncIO.cpp",
     ],
     export_include_dirs: ["."],
     cflags: [
@@ -45,6 +45,7 @@ cc_library_shared {
         "-Werror",
     ],
     shared_libs: [
+        "libasyncio",
         "libbase",
         "libutils",
         "liblog",
