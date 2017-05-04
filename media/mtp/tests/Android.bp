@@ -31,7 +31,7 @@ cc_test {
 
 cc_test {
     name: "async_io_test",
-    srcs: ["AsyncIO_test.cpp"],
+    srcs: ["PosixAsyncIO_test.cpp"],
     shared_libs: [
         "libbase",
         "libmtp",
