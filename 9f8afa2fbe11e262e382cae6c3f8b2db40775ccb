@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b3daca6a_976232ca",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2017-05-05T23:29:02Z",
+      "side": 1,
+      "message": "Well, kinda, with your other patch.",
+      "parentUuid": "1a5ba61e_d8f5b26f",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "9f8afa2fbe11e262e382cae6c3f8b2db40775ccb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "57b2d87b_e70848fb",
         "filename": "media/libeffects/loudness/Android.mk",
         "patchSetId": 3
