@@ -85,6 +85,8 @@ void CharacterEncodingDetector::detectAndConvert() {
         UErrorCode status = U_ZERO_ERROR;
         UCharsetDetector *csd = ucsdet_open(&status);
         const UCharsetMatch *ucm;
+        bool goodmatch = true;
+        int highest = 0;
 
         // try combined detection of artist/album/title etc.
         char buf[1024];
@@ -116,8 +118,6 @@ void CharacterEncodingDetector::detectAndConvert() {
             ucsdet_setText(csd, buf, strlen(buf), &status);
             int32_t matches;
             const UCharsetMatch** ucma = ucsdet_detectAll(csd, &matches, &status);
-            bool goodmatch = true;
-            int highest = 0;
             const UCharsetMatch* bestCombinedMatch = getPreferred(buf, strlen(buf),
                     ucma, matches, &goodmatch, &highest);
 
@@ -180,8 +180,21 @@ void CharacterEncodingDetector::detectAndConvert() {
                     !strcmp(name, "genre") ||
                     !strcmp(name, "album") ||
                     !strcmp(name, "title"))) {
-                // use encoding determined from the combination of artist/album/title etc.
-                enc = combinedenc;
+                if (!goodmatch && highest < 15) {
+                    // Give it one more chance if there is no good match.
+                    ALOGV("Trying to detect %s separately", name);
+                    int32_t matches;
+                    bool goodmatch_single = true;
+                    int highest_single = 0;
+                    ucsdet_setText(csd, s, inputLength, &status);
+                    const UCharsetMatch** ucma = ucsdet_detectAll(csd, &matches, &status);
+                    const UCharsetMatch* bestCombinedMatch = getPreferred(s, inputLength,
+                            ucma, matches, &goodmatch_single, &highest_single);
+                    enc = ucsdet_getName(bestCombinedMatch, &status);
+                } else {
+                    // use encoding determined from the combination of artist/album/title etc.
+                    enc = combinedenc;
+                }
             } else {
                 if (isPrintableAscii(s, inputLength)) {
                     enc = "UTF-8";
