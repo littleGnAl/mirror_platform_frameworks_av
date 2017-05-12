@@ -692,6 +692,12 @@ status_t M3UParser::parse(const void *_data, size_t size) {
             ALOGE("Media playlist missing #EXT-X-TARGETDURATION");
             return ERROR_MALFORMED;
         }
+
+        if (mItems.size() == 0) {
+            ALOGE("Media playlist missing media URIs");
+            return ERROR_MALFORMED;
+        }
+
         mTargetDurationUs = targetDurationSecs * 1000000ll;
 
         mFirstSeqNumber = 0;
