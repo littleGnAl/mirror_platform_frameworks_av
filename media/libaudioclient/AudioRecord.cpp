@@ -924,6 +924,8 @@ ssize_t AudioRecord::read(void* buffer, size_t userSize, bool blocking)
         return BAD_VALUE;
     }
 
+    AutoMutex lock(mReadLock);
+
     ssize_t read = 0;
     Buffer audioBuffer;
 
