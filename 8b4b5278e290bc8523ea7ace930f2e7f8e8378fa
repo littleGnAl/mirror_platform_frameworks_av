@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "61db4da7_cb9a0f93",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1156341
+      },
+      "writtenOn": "2017-05-24T08:31:07Z",
+      "side": 1,
+      "message": "The modifications in the current commit are based on the publicly available spec v1.3 as detailed here:\n\nhttps://www.dolby.com/us/en/technologies/dolby-vision/dolby-vision-bitstreams-within-the-iso-base-media-file-format-v1.3.pdf",
+      "parentUuid": "b08cb3d6_8bae34bb",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 62
+      },
+      "revId": "8b4b5278e290bc8523ea7ace930f2e7f8e8378fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "355cfe90_3a40a270",
         "filename": "media/libstagefright/MPEG4Extractor.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-05-23T17:13:19Z",
       "side": 1,
       "message": "Indent should be only four spaces.",
+      "range": {
+        "startLine": 3256,
+        "startChar": 12,
+        "endLine": 3256,
+        "endChar": 20
+      },
+      "revId": "8b4b5278e290bc8523ea7ace930f2e7f8e8378fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "220d04fe_5600dcf2",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3256,
+      "author": {
+        "id": 1156341
+      },
+      "writtenOn": "2017-05-24T08:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "355cfe90_3a40a270",
       "range": {
         "startLine": 3256,
         "startChar": 12,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "741c11b5_a47bc6a4",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4533,
+      "author": {
+        "id": 1156341
+      },
+      "writtenOn": "2017-05-24T08:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "accd1086_a80e144f",
+      "range": {
+        "startLine": 4531,
+        "startChar": 0,
+        "endLine": 4533,
+        "endChar": 45
+      },
+      "revId": "8b4b5278e290bc8523ea7ace930f2e7f8e8378fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64b1f18c_dc474ee7",
         "filename": "media/libstagefright/MPEG4Extractor.cpp",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2017-05-23T17:13:19Z",
       "side": 1,
       "message": "Could be in one line.",
+      "range": {
+        "startLine": 4565,
+        "startChar": 0,
+        "endLine": 4567,
+        "endChar": 22
+      },
+      "revId": "8b4b5278e290bc8523ea7ace930f2e7f8e8378fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f0d29e4_1b58db21",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4567,
+      "author": {
+        "id": 1156341
+      },
+      "writtenOn": "2017-05-24T08:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64b1f18c_dc474ee7",
       "range": {
         "startLine": 4565,
         "startChar": 0,
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "30b2e4a3_a47aee83",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4833,
+      "author": {
+        "id": 1156341
+      },
+      "writtenOn": "2017-05-24T08:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a9c0d2e7_72dbe75d",
+      "range": {
+        "startLine": 4831,
+        "startChar": 0,
+        "endLine": 4833,
+        "endChar": 40
+      },
+      "revId": "8b4b5278e290bc8523ea7ace930f2e7f8e8378fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ebcd38c9_16957320",
         "filename": "media/libstagefright/MPEG4Extractor.cpp",
         "patchSetId": 3
@@ -128,6 +248,30 @@
       "writtenOn": "2017-05-23T17:13:19Z",
       "side": 1,
       "message": "Could be in one line.",
+      "range": {
+        "startLine": 4878,
+        "startChar": 0,
+        "endLine": 4881,
+        "endChar": 22
+      },
+      "revId": "8b4b5278e290bc8523ea7ace930f2e7f8e8378fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "34a10452_5d640a37",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4881,
+      "author": {
+        "id": 1156341
+      },
+      "writtenOn": "2017-05-24T08:31:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebcd38c9_16957320",
       "range": {
         "startLine": 4878,
         "startChar": 0,
