@@ -434,6 +434,13 @@ status_t AudioFlinger::EffectModule::configure()
         status = cmdStatus;
     }
 
+    // Ignore error if non-offloadble effect is created on offload thread.
+    // Will be switched to non-offload thread when the effect is enabled.
+    if (thread->type() == ThreadBase::OFFLOAD && !isOffloaded()) {
+        ALOGV("Ignore error since it's non-offloadable effect on offload thread");
+        status = NO_ERROR;
+    }
+
     if (status == 0 &&
             (memcmp(&mDescriptor.type, SL_IID_VISUALIZATION, sizeof(effect_uuid_t)) == 0)) {
         uint32_t buf32[sizeof(effect_param_t) / sizeof(uint32_t) + 2];
