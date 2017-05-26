@@ -48,6 +48,8 @@
 
 #define min(a, b) ((a) < (b) ? (a) : (b))
 
+#define DEFAULT_OUTPUT_SAMPLE_RATE 48000
+
 namespace android {
 
 // ----------------------------------------------------------------------------
@@ -382,7 +384,14 @@ status_t AudioFlinger::EffectModule::configure()
 
     mConfig.inputCfg.format = AUDIO_FORMAT_PCM_16_BIT;
     mConfig.outputCfg.format = AUDIO_FORMAT_PCM_16_BIT;
-    mConfig.inputCfg.samplingRate = thread->sampleRate();
+
+    // Don't use sample rate for thread if effect isn't offloadable.
+    if ((thread->type() == ThreadBase::OFFLOAD) && !isOffloaded()) {
+        mConfig.inputCfg.samplingRate = DEFAULT_OUTPUT_SAMPLE_RATE;
+        ALOGV("Overriding effect input as 48kHz");
+    } else {
+        mConfig.inputCfg.samplingRate = thread->sampleRate();
+    }
     mConfig.outputCfg.samplingRate = mConfig.inputCfg.samplingRate;
     mConfig.inputCfg.bufferProvider.cookie = NULL;
     mConfig.inputCfg.bufferProvider.getBuffer = NULL;
