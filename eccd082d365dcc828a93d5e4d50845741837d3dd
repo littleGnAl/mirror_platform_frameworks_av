@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16dadb24_f8538faf",
+        "filename": "media/libmedia/CharacterEncodingDetector.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-06-01T20:16:00Z",
+      "side": 1,
+      "message": "this should probably be called \"bestSingleMatch\" or something",
+      "range": {
+        "startLine": 191,
+        "startChar": 41,
+        "endLine": 191,
+        "endChar": 58
+      },
+      "revId": "eccd082d365dcc828a93d5e4d50845741837d3dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a3af43fc_f8749047",
+        "filename": "media/libmedia/CharacterEncodingDetector.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-06-01T20:16:00Z",
+      "side": 1,
+      "message": "should this also check that highest_single is greater than highest?",
+      "revId": "eccd082d365dcc828a93d5e4d50845741837d3dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
