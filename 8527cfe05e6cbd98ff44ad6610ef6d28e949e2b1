@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a369a716_aca06e6b",
+        "filename": "include/media/stagefright/MediaDefs.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-06-01T16:10:59Z",
+      "side": 1,
+      "message": "please remove this",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "8527cfe05e6cbd98ff44ad6610ef6d28e949e2b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5dab1eda_2c58a408",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-06-01T16:10:59Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "8527cfe05e6cbd98ff44ad6610ef6d28e949e2b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b482bdca_d8b28580",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-06-01T16:10:59Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "8527cfe05e6cbd98ff44ad6610ef6d28e949e2b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf54bf12_153dd8e8",
+        "filename": "media/libstagefright/MediaDefs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-06-01T16:10:59Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 32,
+        "endChar": 33
+      },
+      "revId": "8527cfe05e6cbd98ff44ad6610ef6d28e949e2b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a23ba225_7f608c1e",
+        "filename": "media/libstagefright/MediaDefs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-06-01T16:10:59Z",
+      "side": 1,
+      "message": "this does not appear to be an officially registered mime type (looking at https://www.iana.org/assignments/media-types/media-types.xhtml for reference)\nShould this be \"audio/vnd.dts\" ?",
+      "range": {
+        "startLine": 86,
+        "startChar": 39,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "8527cfe05e6cbd98ff44ad6610ef6d28e949e2b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9ad1eb6f_03ec6fc6",
+        "filename": "media/libstagefright/omx/SoftOMXPlugin.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-06-01T16:10:59Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 15,
+        "startChar": 1,
+        "endLine": 31,
+        "endChar": 33
+      },
+      "revId": "8527cfe05e6cbd98ff44ad6610ef6d28e949e2b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
