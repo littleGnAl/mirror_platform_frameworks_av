@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c24e3e74_1a8e89fd",
+        "filename": "OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-06-06T21:09:14Z",
+      "side": 1,
+      "message": "I\u0027m not the best person to review changes within this directory.",
+      "revId": "85c55e33841be704098c242132ec3d0c33e4d814",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e12ce5a7_b8addf09",
+        "filename": "services/mediacodec/OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-06-06T21:09:14Z",
+      "side": 1,
+      "message": "external people shouldn\u0027t be in the OWNERs file.",
+      "revId": "85c55e33841be704098c242132ec3d0c33e4d814",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0918dab4_b96f2765",
+        "filename": "services/mediaextractor/OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1003966
+      },
+      "writtenOn": "2017-06-06T21:09:14Z",
+      "side": 1,
+      "message": "external person",
+      "revId": "85c55e33841be704098c242132ec3d0c33e4d814",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
