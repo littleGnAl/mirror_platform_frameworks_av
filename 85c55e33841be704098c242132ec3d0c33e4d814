@@ -19,6 +19,75 @@
     },
     {
       "key": {
+        "uuid": "5aaf8a3f_8b0185ab",
+        "filename": "cmds/OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2017-06-06T21:56:07Z",
+      "side": 1,
+      "message": "add elaurent@",
+      "range": {
+        "startLine": 2,
+        "startChar": 15,
+        "endLine": 2,
+        "endChar": 18
+      },
+      "revId": "85c55e33841be704098c242132ec3d0c33e4d814",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "03c18049_03cb81ad",
+        "filename": "include/OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2017-06-06T21:56:07Z",
+      "side": 1,
+      "message": "add elaurent@",
+      "range": {
+        "startLine": 5,
+        "startChar": 17,
+        "endLine": 5,
+        "endChar": 20
+      },
+      "revId": "85c55e33841be704098c242132ec3d0c33e4d814",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "79cc735f_4e1f7311",
+        "filename": "radio/OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2017-06-06T21:56:07Z",
+      "side": 1,
+      "message": "remove gkasten and ask if Tomasz (twasilczyk@) if he is OK to be listed here.",
+      "range": {
+        "startLine": 2,
+        "startChar": 8,
+        "endLine": 2,
+        "endChar": 15
+      },
+      "revId": "85c55e33841be704098c242132ec3d0c33e4d814",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e12ce5a7_b8addf09",
         "filename": "services/mediacodec/OWNERS",
         "patchSetId": 3
@@ -47,6 +116,75 @@
       "writtenOn": "2017-06-06T21:09:14Z",
       "side": 1,
       "message": "external person",
+      "revId": "85c55e33841be704098c242132ec3d0c33e4d814",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad1ac0f0_aebde9b6",
+        "filename": "services/radio/OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2017-06-06T21:56:07Z",
+      "side": 1,
+      "message": "remove marcone and hunga and ask if Tomasz (twasilczyk@) if he is OK to be listed here.",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 18
+      },
+      "revId": "85c55e33841be704098c242132ec3d0c33e4d814",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6cc76172_19ac8703",
+        "filename": "services/soundtrigger/OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2017-06-06T21:56:07Z",
+      "side": 1,
+      "message": "remove marcone and ask Chris (thorntonc@) if he is OK to be listed here",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 18
+      },
+      "revId": "85c55e33841be704098c242132ec3d0c33e4d814",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "43802fbd_7d2effee",
+        "filename": "soundtrigger/OWNERS",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2017-06-06T21:56:07Z",
+      "side": 1,
+      "message": "remove gkasten and ask Chris (thorntonc@) if he is OK to be listed here",
+      "range": {
+        "startLine": 2,
+        "startChar": 0,
+        "endLine": 2,
+        "endChar": 19
+      },
       "revId": "85c55e33841be704098c242132ec3d0c33e4d814",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
