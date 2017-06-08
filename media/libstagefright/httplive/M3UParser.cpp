@@ -698,7 +698,10 @@ status_t M3UParser::parse(const void *_data, size_t size) {
         if (mMeta != NULL) {
             mMeta->findInt32("media-sequence", &mFirstSeqNumber);
         }
-        mLastSeqNumber = mFirstSeqNumber + mItems.size() - 1;
+        mLastSeqNumber = mFirstSeqNumber + int32_t(mItems.size()) - 1;
+        if (mLastSeqNumber == -1) {
+            return ERROR_MALFORMED;
+        }
     }
 
     for (size_t i = 0; i < mItems.size(); ++i) {
