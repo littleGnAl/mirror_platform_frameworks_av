@@ -477,6 +477,11 @@ bool M3UParser::hasType(size_t index, const char *key) const {
 static bool MakeURL(const char *baseURL, const char *url, AString *out) {
     out->clear();
 
+    char *poundChar = (char *)strchr(baseURL, '#');
+    if (poundChar ){
+        *poundChar = '\0';
+    }
+
     if (strncasecmp("http://", baseURL, 7)
             && strncasecmp("https://", baseURL, 8)
             && strncasecmp("file://", baseURL, 7)) {
