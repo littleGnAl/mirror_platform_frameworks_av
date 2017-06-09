@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "642e02b4_25e151b2",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2017-06-09T16:40:27Z",
+      "side": 1,
+      "message": "I would prefer setOutputVolume() to be a method of the PlaybackThread class called here and at line 1927.\nSo not need for getOutput_l(() method",
+      "range": {
+        "startLine": 555,
+        "startChar": 33,
+        "endLine": 555,
+        "endChar": 34
+      },
+      "revId": "667daf3155b26db474d25906b46939c298a2e3e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
