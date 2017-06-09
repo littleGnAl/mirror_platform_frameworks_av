@@ -2745,44 +2745,46 @@ sp<IEffect> AudioFlinger::createEffect(
             io = AudioSystem::getOutputForEffect(&desc);
             ALOGV("createEffect got output %d", io);
         }
+        {
+            Mutex::Autolock _l(mLock);
 
-        Mutex::Autolock _l(mLock);
-
-        // If output is not specified try to find a matching audio session ID in one of the
-        // output threads.
-        // If output is 0 here, sessionId is neither SESSION_OUTPUT_STAGE nor SESSION_OUTPUT_MIX
-        // because of code checking output when entering the function.
-        // Note: io is never 0 when creating an effect on an input
-        if (io == AUDIO_IO_HANDLE_NONE) {
-            if (sessionId == AUDIO_SESSION_OUTPUT_STAGE) {
-                // output must be specified by AudioPolicyManager when using session
-                // AUDIO_SESSION_OUTPUT_STAGE
-                lStatus = BAD_VALUE;
-                goto Exit;
-            }
-            // look for the thread where the specified audio session is present
-            for (size_t i = 0; i < mPlaybackThreads.size(); i++) {
-                if (mPlaybackThreads.valueAt(i)->hasAudioSession(sessionId) != 0) {
-                    io = mPlaybackThreads.keyAt(i);
-                    break;
+            // If output is not specified try to find a matching audio session ID in one of the
+            // output threads.
+            // If output is 0 here, sessionId is neither SESSION_OUTPUT_STAGE nor SESSION_OUTPUT_MIX
+            // because of code checking output when entering the function.
+            // Note: io is never 0 when creating an effect on an input
+            if (io == AUDIO_IO_HANDLE_NONE) {
+                if (sessionId == AUDIO_SESSION_OUTPUT_STAGE) {
+                    // output must be specified by AudioPolicyManager when using session
+                    // AUDIO_SESSION_OUTPUT_STAGE
+                    lStatus = BAD_VALUE;
+                    goto Exit;
                 }
-            }
-            if (io == 0) {
-                for (size_t i = 0; i < mRecordThreads.size(); i++) {
-                    if (mRecordThreads.valueAt(i)->hasAudioSession(sessionId) != 0) {
-                        io = mRecordThreads.keyAt(i);
+                // look for the thread where the specified audio session is present
+                for (size_t i = 0; i < mPlaybackThreads.size(); i++) {
+                    if (mPlaybackThreads.valueAt(i)->hasAudioSession(sessionId) != 0) {
+                        io = mPlaybackThreads.keyAt(i);
                         break;
                     }
                 }
+                if (io == 0) {
+                    for (size_t i = 0; i < mRecordThreads.size(); i++) {
+                        if (mRecordThreads.valueAt(i)->hasAudioSession(sessionId) != 0) {
+                            io = mRecordThreads.keyAt(i);
+                            break;
+                        }
+                    }
+                }
+                // If no output thread contains the requested session ID, default to
+                // first output. The effect chain will be moved to the correct output
+                // thread when a track with the same session ID is created
+                if (io == AUDIO_IO_HANDLE_NONE && mPlaybackThreads.size() > 0) {
+                    io = mPlaybackThreads.keyAt(0);
+                }
+                ALOGV("createEffect() got io %d for effect %s", io, desc.name);
             }
-            // If no output thread contains the requested session ID, default to
-            // first output. The effect chain will be moved to the correct output
-            // thread when a track with the same session ID is created
-            if (io == AUDIO_IO_HANDLE_NONE && mPlaybackThreads.size() > 0) {
-                io = mPlaybackThreads.keyAt(0);
-            }
-            ALOGV("createEffect() got io %d for effect %s", io, desc.name);
         }
+
         ThreadBase *thread = checkRecordThread_l(io);
         if (thread == NULL) {
             thread = checkPlaybackThread_l(io);
