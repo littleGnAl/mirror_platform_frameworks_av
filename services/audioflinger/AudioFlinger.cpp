@@ -2783,6 +2783,7 @@ sp<IEffect> AudioFlinger::createEffect(
             }
             ALOGV("createEffect() got io %d for effect %s", io, desc.name);
         }
+
         ThreadBase *thread = checkRecordThread_l(io);
         if (thread == NULL) {
             thread = checkPlaybackThread_l(io);
