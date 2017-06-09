@@ -27,7 +27,8 @@ LOCAL_C_INCLUDES += \
 	$(LOCAL_PATH)/Bundle \
 	$(LOCAL_PATH)/../lib/Common/lib/ \
 	$(LOCAL_PATH)/../lib/Bundle/lib/ \
-	$(call include-path-for, audio-effects)
+
+LOCAL_HEADER_LIBRARIES += libaudioeffects
 
 include $(BUILD_SHARED_LIBRARY)
 
@@ -58,6 +59,7 @@ LOCAL_C_INCLUDES += \
     $(LOCAL_PATH)/Reverb \
     $(LOCAL_PATH)/../lib/Common/lib/ \
     $(LOCAL_PATH)/../lib/Reverb/lib/ \
-    $(call include-path-for, audio-effects)
+
+LOCAL_HEADER_LIBRARIES += libaudioeffects
 
 include $(BUILD_SHARED_LIBRARY)

@@ -17,8 +17,6 @@ LOCAL_SHARED_LIBRARIES := \
 LOCAL_MODULE_RELATIVE_PATH := soundfx
 LOCAL_MODULE:= libvisualizer
 
-LOCAL_C_INCLUDES := \
-	$(call include-path-for, audio-effects)
-
+LOCAL_HEADER_LIBRARIES += libaudioeffects
 
 include $(BUILD_SHARED_LIBRARY)
