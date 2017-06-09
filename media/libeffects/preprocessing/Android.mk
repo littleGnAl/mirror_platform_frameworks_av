@@ -15,7 +15,6 @@ LOCAL_C_INCLUDES += \
     external/webrtc \
     external/webrtc/webrtc/modules/include \
     external/webrtc/webrtc/modules/audio_processing/include \
-    $(call include-path-for, audio-effects)
 
 LOCAL_SHARED_LIBRARIES := \
     libwebrtc_audio_preprocessing \
@@ -27,6 +26,8 @@ LOCAL_SHARED_LIBRARIES += libdl
 
 LOCAL_CFLAGS += \
     -DWEBRTC_POSIX
+
+LOCAL_HEADER_LIBRARIES += libaudioeffects
 
 LOCAL_CFLAGS += -fvisibility=hidden
 
