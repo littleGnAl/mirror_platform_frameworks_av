@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa409b50_595f1ddb",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2748,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2017-06-09T01:28:14Z",
+      "side": 1,
+      "message": "Audioflinger lock cannot be release while calling checkRecordThread_l() checkPlaybackThread_l getOrphanEffectChain_l ...\nWe need to find another solution",
+      "range": {
+        "startLine": 2748,
+        "startChar": 8,
+        "endLine": 2748,
+        "endChar": 9
+      },
+      "revId": "ff35031c83c6eda58bf7197fa7f360c7683636b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
