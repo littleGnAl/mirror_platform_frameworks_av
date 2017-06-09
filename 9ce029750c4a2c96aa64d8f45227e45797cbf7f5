@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "312f1cec_be96b78e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-06-09T14:23:06Z",
+      "side": 1,
+      "message": "on failure and clearing handle",
+      "range": {
+        "startLine": 9,
+        "startChar": 65,
+        "endLine": 10,
+        "endChar": 28
+      },
+      "revId": "9ce029750c4a2c96aa64d8f45227e45797cbf7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cafca2bf_9b158200",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-06-09T14:23:06Z",
+      "side": 1,
+      "message": "would executing effect.clear() before handle.clear() remove the last reference to the effect and prevent this thread/TheadBase from being called again in the relevant cases you are seeing?",
+      "range": {
+        "startLine": 1491,
+        "startChar": 0,
+        "endLine": 1491,
+        "endChar": 9
+      },
+      "revId": "9ce029750c4a2c96aa64d8f45227e45797cbf7f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
