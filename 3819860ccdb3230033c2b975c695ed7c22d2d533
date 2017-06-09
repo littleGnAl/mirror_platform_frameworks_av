@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c1372f2_3b1d23fc",
+        "filename": "media/libstagefright/httplive/M3UParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-06-09T14:28:48Z",
+      "side": 1,
+      "message": "marco knows this code better than me. Would it be better to check all cases of overflow on line 707 (including sequence number overflow).",
+      "range": {
+        "startLine": 696,
+        "startChar": 0,
+        "endLine": 699,
+        "endChar": 9
+      },
+      "revId": "3819860ccdb3230033c2b975c695ed7c22d2d533",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ce2b400c_a73ebeb0",
+        "filename": "media/libstagefright/httplive/M3UParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-06-09T14:28:48Z",
+      "side": 1,
+      "message": "i suppose you could also cast this to (signed) and get legacy M behavior.",
+      "range": {
+        "startLine": 707,
+        "startChar": 42,
+        "endLine": 707,
+        "endChar": 43
+      },
+      "revId": "3819860ccdb3230033c2b975c695ed7c22d2d533",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
