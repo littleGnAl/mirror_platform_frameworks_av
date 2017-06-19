@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8717390a_45b174ea",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1041833
+      },
+      "writtenOn": "2017-06-19T17:54:36Z",
+      "side": 1,
+      "message": "Should this be uint64_t? Or how about decltype(aio_buf)?",
+      "range": {
+        "startLine": 106,
+        "startChar": 37,
+        "endLine": 106,
+        "endChar": 55
+      },
+      "revId": "1e5502403a253775e87280cea1246e35b8f61e36",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
