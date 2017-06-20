@@ -246,8 +246,8 @@ void MediaPlayerFactory::registerBuiltinFactories() {
     if (sInitComplete)
         return;
 
-    registerFactory_l(new NuPlayerFactory(), NU_PLAYER);
-    registerFactory_l(new TestPlayerFactory(), TEST_PLAYER);
+    registerFactory_l(new NuPlayerFactory(), NU_PLAYER); //NOLINT
+    registerFactory_l(new TestPlayerFactory(), TEST_PLAYER); //NOLINT
 
     sInitComplete = true;
 }
