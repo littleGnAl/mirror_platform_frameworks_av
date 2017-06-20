@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "226833cd_f855523e",
+        "filename": "media/libmediaplayerservice/MediaPlayerFactory.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-06-20T22:42:48Z",
+      "side": 1,
+      "message": "I don\u0027t think this is quite right; what if we get ALREADY_EXISTS or UNKNOWN_ERROR from calling this method?\n\nI think it would be better if we either CHECK\u0027ed that calling this returns OK, or if we deleted NuPlayerFactory/TestPlayerFactory if the result isn\u0027t OK. Would either of those make this warning go away?\n\n(I\u0027m assuming registerFactory_l is a public-ish method, so making it take a unique_ptr may be nontrivial)",
+      "revId": "355c4b5c96efc00207cb589feb698b69cce15a11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
