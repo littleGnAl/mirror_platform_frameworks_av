@@ -134,6 +134,7 @@ public:
     static const char *getFourCCForMime(const char *mime);
     const char *getTrackType() const;
     void resetInternal();
+    void stopping();
 
 private:
     enum {
@@ -283,6 +284,7 @@ private:
     sp<MetaData> mMeta;
     sp<MediaSource> mSource;
     volatile bool mDone;
+    volatile bool mStopping;
     volatile bool mPaused;
     volatile bool mResumed;
     volatile bool mStarted;
@@ -1086,6 +1088,10 @@ status_t MPEG4Writer::reset(bool stopSource) {
     int32_t nonImageTrackCount = 0;
     for (List<Track *>::iterator it = mTracks.begin();
         it != mTracks.end(); ++it) {
+        (*it)->stopping();
+    }
+    for (List<Track *>::iterator it = mTracks.begin();
+        it != mTracks.end(); ++it) {
         status_t status = (*it)->stop(stopSource);
         if (err == OK && status != OK) {
             err = status;
@@ -1760,6 +1766,7 @@ MPEG4Writer::Track::Track(
       mMeta(source->getFormat()),
       mSource(source),
       mDone(false),
+      mStopping(false),
       mPaused(false),
       mResumed(false),
       mStarted(false),
@@ -1840,9 +1847,14 @@ MPEG4Writer::Track::Track(
     }
 }
 
+void MPEG4Writer::Track::stopping() {
+    mStopping = true;
+}
+
 // Clear all the internal states except the CSD data.
 void MPEG4Writer::Track::resetInternal() {
       mDone = false;
+      mStopping = false;
       mPaused = false;
       mResumed = false;
       mStarted = false;
@@ -2898,7 +2910,7 @@ status_t MPEG4Writer::Track::threadEntry() {
     status_t err = OK;
     MediaBufferBase *buffer;
     const char *trackName = getTrackType();
-    while (!mDone && (err = mSource->read(&buffer)) == OK) {
+    while (!(mDone || mStopping) && (err = mSource->read(&buffer)) == OK) {
         if (buffer->range_length() == 0) {
             buffer->release();
             buffer = NULL;
