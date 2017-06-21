@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83d0bf6f_1d218605",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1780,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-06-21T18:04:52Z",
+      "side": 1,
+      "message": "style question:\n\n\u0026buffer[0]\n\nor\n\nbuffer-\u003eget()\n\n?",
+      "range": {
+        "startLine": 1780,
+        "startChar": 25,
+        "endLine": 1780,
+        "endChar": 35
+      },
+      "revId": "bd4bad2ce9780e546616f1425a0a5a4c939f7af1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
