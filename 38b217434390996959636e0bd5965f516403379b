@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f6bab5c_db7883fb",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4753,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-06-22T19:01:50Z",
+      "side": 1,
+      "message": "should we just skip the notify if right or bottom are zero?",
+      "range": {
+        "startLine": 4748,
+        "startChar": 0,
+        "endLine": 4753,
+        "endChar": 44
+      },
+      "revId": "38b217434390996959636e0bd5965f516403379b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
