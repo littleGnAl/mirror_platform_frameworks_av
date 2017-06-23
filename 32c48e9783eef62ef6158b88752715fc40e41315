@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0ae134f7_e660eb40",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 3219,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2017-06-23T21:34:06Z",
+      "side": 1,
+      "message": "line exceeds the limit of 100 chars.",
+      "range": {
+        "startLine": 3219,
+        "startChar": 100,
+        "endLine": 3219,
+        "endChar": 105
+      },
+      "revId": "32c48e9783eef62ef6158b88752715fc40e41315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1b953804_d99e8278",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2017-06-23T21:34:06Z",
+      "side": 1,
+      "message": "should this return some value indicating the parsing succeeds or not?",
+      "range": {
+        "startLine": 251,
+        "startChar": 7,
+        "endLine": 251,
+        "endChar": 11
+      },
+      "revId": "32c48e9783eef62ef6158b88752715fc40e41315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "17a57822_4c43cef9",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2017-06-23T21:34:06Z",
+      "side": 1,
+      "message": "Would this be \"else if\"? Does DVCC coexists with any codec above?",
+      "range": {
+        "startLine": 1099,
+        "startChar": 4,
+        "endLine": 1099,
+        "endChar": 6
+      },
+      "revId": "32c48e9783eef62ef6158b88752715fc40e41315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "33ccf091_667cc47b",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2017-06-23T21:34:06Z",
+      "side": 1,
+      "message": "What if the conversion failed?",
+      "range": {
+        "startLine": 1102,
+        "startChar": 8,
+        "endLine": 1102,
+        "endChar": 44
+      },
+      "revId": "32c48e9783eef62ef6158b88752715fc40e41315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
