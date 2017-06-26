@@ -187,6 +187,30 @@
       "revId": "32c48e9783eef62ef6158b88752715fc40e41315",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a1feb2e9_8a7c39b1",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-06-26T20:54:42Z",
+      "side": 1,
+      "message": "wouldn\u0027t it better though to fail before that, i.e. do the error checking much earlier, and not even expose the malformed Dolby Vision track from the extractor?",
+      "parentUuid": "cdc3e1ea_c42c9d43",
+      "range": {
+        "startLine": 1102,
+        "startChar": 8,
+        "endLine": 1102,
+        "endChar": 44
+      },
+      "revId": "32c48e9783eef62ef6158b88752715fc40e41315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
