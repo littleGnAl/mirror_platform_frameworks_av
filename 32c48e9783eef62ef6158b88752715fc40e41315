@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c7a968fc_d217de0f",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 3219,
+      "author": {
+        "id": 1156341
+      },
+      "writtenOn": "2017-06-26T05:15:00Z",
+      "side": 1,
+      "message": "Ack. Fixed.",
+      "parentUuid": "0ae134f7_e660eb40",
+      "range": {
+        "startLine": 3219,
+        "startChar": 100,
+        "endLine": 3219,
+        "endChar": 105
+      },
+      "revId": "32c48e9783eef62ef6158b88752715fc40e41315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b953804_d99e8278",
         "filename": "media/libstagefright/Utils.cpp",
         "patchSetId": 7
@@ -36,6 +60,30 @@
       "writtenOn": "2017-06-23T21:34:06Z",
       "side": 1,
       "message": "should this return some value indicating the parsing succeeds or not?",
+      "range": {
+        "startLine": 251,
+        "startChar": 7,
+        "endLine": 251,
+        "endChar": 11
+      },
+      "revId": "32c48e9783eef62ef6158b88752715fc40e41315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8faa1a95_18aade7d",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1156341
+      },
+      "writtenOn": "2017-06-26T05:15:00Z",
+      "side": 1,
+      "message": "This function prototype is closely aligned to the prototypes for parseAvcProfileLevelFromAvcc() \u0026 parseHevcProfileLevelFromHvcc().\n\nSuccess or failure of this function is determined by checking the output argument of this function - \u0027sp\u003cAMessage\u003e \u0026format\u0027.\n\nIf the keys \"profile\" and \"level\" are set in the \u0027format\u0027 argument of this function, the parsing is deemed to have succeeded. \n\nIf no \"profile\" and \"level\" keys are found in the \u0027format\u0027 argument, the parsing is deemed to have failed.",
+      "parentUuid": "1b953804_d99e8278",
       "range": {
         "startLine": 251,
         "startChar": 7,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "bce3dbd1_8648e0b0",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1099,
+      "author": {
+        "id": 1156341
+      },
+      "writtenOn": "2017-06-26T05:15:00Z",
+      "side": 1,
+      "message": "No, it should be \"if\" and not \"else if\" because DVCC does coexist with other keys above, specifically one of kKeyAVCC or kKeyHVCC.\n\nPlease see the table on Page 9 of the spec: https://www.dolby.com/us/en/technologies/dolby-vision/dolby-vision-bitstreams-within-the-iso-base-media-file-format-v1.3.pdf",
+      "parentUuid": "17a57822_4c43cef9",
+      "range": {
+        "startLine": 1099,
+        "startChar": 4,
+        "endLine": 1099,
+        "endChar": 6
+      },
+      "revId": "32c48e9783eef62ef6158b88752715fc40e41315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33ccf091_667cc47b",
         "filename": "media/libstagefright/Utils.cpp",
         "patchSetId": 7
@@ -82,6 +154,30 @@
       "writtenOn": "2017-06-23T21:34:06Z",
       "side": 1,
       "message": "What if the conversion failed?",
+      "range": {
+        "startLine": 1102,
+        "startChar": 8,
+        "endLine": 1102,
+        "endChar": 44
+      },
+      "revId": "32c48e9783eef62ef6158b88752715fc40e41315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cdc3e1ea_c42c9d43",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1156341
+      },
+      "writtenOn": "2017-06-26T05:15:00Z",
+      "side": 1,
+      "message": "If the conversion fails, the AMessage argument won\u0027t have \"profile\"/\"level\" keys set. As a result, the MediaFormat returned to the client will not have this specific info.\n\nAny instantiation of a downstream MediaCodec component for Dolby Vision depends upon the client knowing \"profile\"/\"level\" info of the stream and matching it to \"profile\"/\"level\" capabilities of the MediaCodec component.\n\nAs such, a failure at this point (signalled via unset \"profile\"/\"level\") is handled by failure to find an appropriate Dolby Vision decoder for the presented bitstream, as it should be.",
+      "parentUuid": "33ccf091_667cc47b",
       "range": {
         "startLine": 1102,
         "startChar": 8,
