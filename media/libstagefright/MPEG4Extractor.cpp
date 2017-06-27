@@ -19,6 +19,7 @@
 
 #include <ctype.h>
 #include <inttypes.h>
+#include <memory.h>
 #include <stdint.h>
 #include <stdlib.h>
 #include <string.h>
@@ -1740,6 +1741,7 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
         // \xA9xyz
         case FOURCC(0xA9, 'x', 'y', 'z'):
         {
+            ALOGI("parsing xyz tag");
             *offset += chunk_size;
 
             // Best case the total data length inside "\xA9xyz" box
