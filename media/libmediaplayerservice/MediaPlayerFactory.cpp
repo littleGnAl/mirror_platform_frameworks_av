@@ -44,18 +44,21 @@ status_t MediaPlayerFactory::registerFactory_l(IFactory* factory,
     if (NULL == factory) {
         ALOGE("Failed to register MediaPlayerFactory of type %d, factory is"
               " NULL.", type);
+	delete factory;
         return BAD_VALUE;
     }
 
     if (sFactoryMap.indexOfKey(type) >= 0) {
         ALOGE("Failed to register MediaPlayerFactory of type %d, type is"
               " already registered.", type);
+	delete factory;
         return ALREADY_EXISTS;
     }
 
     if (sFactoryMap.add(type, factory) < 0) {
         ALOGE("Failed to register MediaPlayerFactory of type %d, failed to add"
               " to map.", type);
+	delete factory;
         return UNKNOWN_ERROR;
     }
 
