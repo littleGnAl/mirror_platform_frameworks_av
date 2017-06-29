@@ -211,6 +211,30 @@
       "revId": "32c48e9783eef62ef6158b88752715fc40e41315",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b226dec8_5447a866",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1156341
+      },
+      "writtenOn": "2017-06-29T01:19:19Z",
+      "side": 1,
+      "message": "Agreed.",
+      "parentUuid": "a1feb2e9_8a7c39b1",
+      "range": {
+        "startLine": 1102,
+        "startChar": 8,
+        "endLine": 1102,
+        "endChar": 44
+      },
+      "revId": "32c48e9783eef62ef6158b88752715fc40e41315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
