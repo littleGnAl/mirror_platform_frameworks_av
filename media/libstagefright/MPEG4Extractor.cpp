@@ -3703,7 +3703,9 @@ MPEG4Source::MPEG4Source(
         CHECK_EQ((unsigned)ptr[0], 1u);  // dv_major_version == 1
         CHECK_EQ((unsigned)ptr[1], 0u);  // dv_minor_version == 0
 
-        if ((ptr[2] >> 1) > 1) { // profile == 0, 1 --> avc; profile > 1 --> hevc;
+        const uint8_t profile = ptr[2] >> 1;
+        // profile == (0, 1, 9) --> AVC; profile = (2,3,4,5,6,7,8) --> HEVC;
+        if (profile > 1 &&  profile < 9) {
             CHECK(format->findData(kKeyHVCC, &type, &data, &size));
 
             const uint8_t *ptr = (const uint8_t *)data;

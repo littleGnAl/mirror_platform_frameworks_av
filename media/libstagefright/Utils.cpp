@@ -257,8 +257,10 @@ static void parseDolbyVisionProfileLevelFromDvcc(const uint8_t *ptr, size_t size
 
     const uint8_t profile = ptr[2] >> 1;
     const uint8_t level = ((ptr[2] & 0x1) << 5) | ((ptr[3] >> 3) & 0x1f);
+    const int32_t bl_compatibility_id = (int32_t)(ptr[4] >> 4);
 
-    ALOGV("%s profile-level value in dvcc box %d-%d", __FUNCTION__, profile, level);
+    ALOGV("%s profile-level-compatibility value in dvcc box %d-%d-%d", __FUNCTION__,
+        profile, level, bl_compatibility_id);
 
     const static ALookup<uint8_t, OMX_VIDEO_DOLBYVISIONPROFILETYPE> profiles {
         { 0, OMX_VIDEO_DolbyVisionProfileDvavPer },
@@ -269,6 +271,8 @@ static void parseDolbyVisionProfileLevelFromDvcc(const uint8_t *ptr, size_t size
         { 5, OMX_VIDEO_DolbyVisionProfileDvheStn },
         { 6, OMX_VIDEO_DolbyVisionProfileDvheDth },
         { 7, OMX_VIDEO_DolbyVisionProfileDvheDtb },
+        { 8, OMX_VIDEO_DolbyVisionProfileDvheSt },
+        { 9, OMX_VIDEO_DolbyVisionProfileDvavSe },
     };
 
     const static ALookup<uint8_t, OMX_VIDEO_DOLBYVISIONLEVELTYPE> levels {
@@ -289,6 +293,10 @@ static void parseDolbyVisionProfileLevelFromDvcc(const uint8_t *ptr, size_t size
     OMX_VIDEO_DOLBYVISIONLEVELTYPE codecLevel;
     if (profiles.map(profile, &codecProfile)) {
         format->setInt32("profile", codecProfile);
+        if(codecProfile == OMX_VIDEO_DolbyVisionProfileDvheSt ||
+           codecProfile == OMX_VIDEO_DolbyVisionProfileDvavSe){
+            format->setInt32("bl_compatibility_id", bl_compatibility_id);
+        }
         if (levels.map(level, &codecLevel)) {
             format->setInt32("level", codecLevel);
         }
