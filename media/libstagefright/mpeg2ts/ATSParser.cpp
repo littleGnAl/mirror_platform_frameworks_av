@@ -418,7 +418,8 @@ status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
 #else
         unsigned info_bytes_remaining = ES_info_length;
         while (info_bytes_remaining >= 2) {
-            MY_LOGV("      tag = 0x%02x", br->getBits(8));
+            unsigned descTag = br->getBits(8);
+            ALOGV("      tag = 0x%02x", descTag);
 
             unsigned descLength = br->getBits(8);
             ALOGV("      len = %u", descLength);
@@ -426,7 +427,19 @@ status_t ATSParser::Program::parseProgramMap(ABitReader *br) {
             if (info_bytes_remaining < descLength) {
                 return ERROR_MALFORMED;
             }
-            br->skipBits(descLength * 8);
+
+	    if (descTag == 0x05 && descLength == 4) {
+	        // registration_descriptor
+	        unsigned descValue = br->getBits(32);
+		if (streamType == 0x06) {
+		    // STREAMTYPE private data
+		    if (descValue == 0x48455643) { // HEVC
+		        streamType = STREAMTYPE_H265;
+		    }
+		}
+	    } else {
+                br->skipBits(descLength * 8);
+	    }
 
             info_bytes_remaining -= descLength + 2;
         }
@@ -603,6 +616,9 @@ ATSParser::Stream::Stream(
                     (mProgram->parserFlags() & ALIGNED_VIDEO_DATA)
                         ? ElementaryStreamQueue::kFlag_AlignedData : 0);
             break;
+        case STREAMTYPE_H265:
+            mQueue = new ElementaryStreamQueue(ElementaryStreamQueue::H265);
+            break;
         case STREAMTYPE_MPEG2_AUDIO_ADTS:
             mQueue = new ElementaryStreamQueue(ElementaryStreamQueue::AAC);
             break;
@@ -740,6 +756,7 @@ status_t ATSParser::Stream::parse(
 bool ATSParser::Stream::isVideo() const {
     switch (mStreamType) {
         case STREAMTYPE_H264:
+        case STREAMTYPE_H265:
         case STREAMTYPE_MPEG1_VIDEO:
         case STREAMTYPE_MPEG2_VIDEO:
         case STREAMTYPE_MPEG4_VIDEO:
