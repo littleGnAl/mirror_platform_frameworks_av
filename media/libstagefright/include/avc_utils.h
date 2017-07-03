@@ -82,6 +82,7 @@ status_t getNextNALUnit(
 
 class MetaData;
 sp<MetaData> MakeAVCCodecSpecificData(const sp<ABuffer> &accessUnit);
+sp<MetaData> MakeHEVCCodecSpecificData(const sp<ABuffer> &accessUnit);
 
 bool IsIDR(const sp<ABuffer> &accessUnit);
 bool IsAVCReferenceFrame(const sp<ABuffer> &accessUnit);
