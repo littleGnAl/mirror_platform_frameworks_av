@@ -254,6 +254,61 @@ void FindAVCDimensions(
     }
 }
 
+// Determine HEVC video dimensions from the sequence parameterset.
+// Refer to https://www.itu.int/rec/T-REC-H.265
+static void FindHEVCDimensions(
+        const sp<ABuffer> &seqParamSet,
+        int32_t *width, int32_t *height) {
+    uint8_t *data = seqParamSet->data() + 2;
+    size_t size = seqParamSet->size() - 2;
+    size_t offset = 0;
+
+    // drop emulation_prevention_three_byte
+    while (offset + 2 <= size) {
+        if (data[offset] == 0 && data[offset+1] == 0 && data[offset+2] == 3) {
+            if (offset + 2 == size) {
+                --size;
+                break;
+            }
+            offset += 2;
+            memcpy(data+offset, data+(offset+1), size - offset);
+            --size;
+            continue;
+        }
+        ++offset;
+    }
+
+    ABitReader br(data, size);
+    br.skipBits(4); //sps_video_parameter_set_id
+
+    unsigned sublayers = br.getBits(3); //sub layers num minus 1
+    br.skipBits(1); // sps_temporal_id_nesting_flag;
+    br.skipBits(96); // general profile
+    if (sublayers > 0) { // profile_tier_level
+        unsigned profile[8], level[8];
+        for (unsigned i = 0; i < sublayers; ++i) {
+            profile[i] = br.getBits(1); // sub_layer_profile_present_flag
+            level[i] = br.getBits(1); // sub_layer_level_present_flag
+        }
+        for (unsigned i = sublayers; i < 8; ++i) {
+	    br.skipBits(2); // reserved_zero_2bits
+        }
+        for (unsigned i = 0; i < sublayers; ++i) {
+            if (profile[i]) br.skipBits(88); // sub_layer_profile
+            if (level[i]) br.skipBits(8); // sub_layer_level_idc
+        }
+    }
+
+    parseUE(&br); // sps_seq_parameter_set_id
+    unsigned chroma_format_idc = parseUE(&br);
+    if (chroma_format_idc == 3) {
+        br.skipBits(1); // separate_colour_plane_flag
+    }
+
+    *width = parseUE(&br); // pic_width_in_luma_samples
+    *height = parseUE(&br); // pic_height_in_luma_samples
+}
+
 status_t getNextNALUnit(
         const uint8_t **_data, size_t *_size,
         const uint8_t **nalStart, size_t *nalSize,
@@ -339,6 +394,20 @@ static sp<ABuffer> FindNAL(const uint8_t *data, size_t size, unsigned nalType) {
 
     return NULL;
 }
+
+static sp<ABuffer> FindHEVCNAL(const uint8_t *data, size_t size, unsigned nalType) {
+    const uint8_t *nalStart;
+    size_t nalSize;
+    while (getNextNALUnit(&data, &size, &nalStart, &nalSize, true) == OK) {
+        if (((nalStart[0] & 0x7e)>>1) == nalType) {
+            sp<ABuffer> buffer = new ABuffer(nalSize);
+            memcpy(buffer->data(), nalStart, nalSize);
+            return buffer;
+        }
+    }
+    return NULL;
+}
+
 
 const char *AVCProfileToString(uint8_t profile) {
     switch (profile) {
@@ -444,6 +513,28 @@ sp<MetaData> MakeAVCCodecSpecificData(const sp<ABuffer> &accessUnit) {
              level % 10);
     }
 
+    return meta;
+}
+
+sp<MetaData> MakeHEVCCodecSpecificData(const sp<ABuffer> &accessUnit) {
+    const uint8_t *data = accessUnit->data();
+    size_t size = accessUnit->size();
+
+    sp<ABuffer> seqParamSet = FindHEVCNAL(data, size, 33);
+    if (seqParamSet == NULL) {
+        return NULL;
+    }
+
+    int32_t width, height;
+    FindHEVCDimensions(seqParamSet, &width, &height);
+
+    sp<MetaData> meta = new MetaData;
+    meta->setCString(kKeyMIMEType, MEDIA_MIMETYPE_VIDEO_HEVC);
+
+    meta->setInt32(kKeyWidth, width);
+    meta->setInt32(kKeyHeight, height);
+
+    ALOGI("found HEVC codec config (%d x %d)", width, height);
     return meta;
 }
 
