@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "056f0d23_0bcf09c9",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-07-10T22:14:05Z",
+      "side": 1,
+      "message": "I wanted to match posix aio api http://man7.org/linux/man-pages/man7/aio.7.html so that in theory I could switch to it later if I wanted",
+      "parentUuid": "16fe687b_991a598e",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "850c5660d70a9cd345b00ac077b1e0405e37efe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "259f64ef_189e2319",
         "filename": "media/mtp/MtpFfsCompatHandle.cpp",
         "patchSetId": 10
@@ -93,6 +117,24 @@
       "writtenOn": "2017-07-10T21:50:26Z",
       "side": 1,
       "message": "If I\u0027m following this correctly, this does a blocking read from the USB fd, starts an AIO write which spawns a thread that calls write (to disk?), and then this thread calls aio_suspend, which just joins the thread?\n\nWouldn\u0027t it be faster and simpler to just have a blocking queue with a mutex and condition variable?\n\n(After writing this, I just noticed that this is actually the old code moved over, but the same applies to the new code.)",
+      "revId": "850c5660d70a9cd345b00ac077b1e0405e37efe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cb4736a_4e5232f2",
+        "filename": "media/mtp/MtpFfsCompatHandle.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-07-10T22:14:05Z",
+      "side": 1,
+      "message": "yeah I was intending the AsyncIO implementation to be temporary until a version of posix aio was added to android. It doesn\u0027t look like that\u0027s going to happen anytime soon so it might be better to reimplement with a queue.",
+      "parentUuid": "bf505392_53b1278c",
       "revId": "850c5660d70a9cd345b00ac077b1e0405e37efe0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
