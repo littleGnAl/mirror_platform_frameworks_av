@@ -75,8 +75,8 @@ signed parseSEWithFallback(ABitReader *br, signed fallback) {
 }
 
 static void skipScalingList(ABitReader *br, size_t sizeOfScalingList) {
-    size_t lastScale = 8;
-    size_t nextScale = 8;
+    signed lastScale = 8;
+    signed nextScale = 8;
     for (size_t j = 0; j < sizeOfScalingList; ++j) {
         if (nextScale != 0) {
             signed delta_scale = parseSE(br);
