@@ -694,10 +694,12 @@ private:
      */
     void updateStatus(StatusInternal status,
             const String8& cameraId,
+            bool updateTorchStatus,
             std::initializer_list<StatusInternal>
                 rejectedSourceStates);
     void updateStatus(StatusInternal status,
-            const String8& cameraId);
+            const String8& cameraId,
+            bool updateTorchStatus);
 
     // flashlight control
     sp<CameraFlashlight> mFlashlight;
