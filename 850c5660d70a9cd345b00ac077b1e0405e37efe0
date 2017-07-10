@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16fe687b_991a598e",
+        "filename": "media/mtp/AsyncIO.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-07-10T21:50:26Z",
+      "side": 1,
+      "message": "This was already here, but taking a timeout argument and just ignoring it seems like a pretty bad lie?",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "850c5660d70a9cd345b00ac077b1e0405e37efe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "259f64ef_189e2319",
+        "filename": "media/mtp/MtpFfsCompatHandle.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-07-10T21:50:26Z",
+      "side": 1,
+      "message": "2017 :-)",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "850c5660d70a9cd345b00ac077b1e0405e37efe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34fefee4_180e219e",
+        "filename": "media/mtp/MtpFfsCompatHandle.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-07-10T21:50:26Z",
+      "side": 1,
+      "message": "Is this attempting to prefault the pages? If so, use mlock instead?\nAlso, check the return value and log if it fails?",
+      "revId": "850c5660d70a9cd345b00ac077b1e0405e37efe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0b6be7c_66885ab9",
+        "filename": "media/mtp/MtpFfsCompatHandle.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-07-10T21:50:26Z",
+      "side": 1,
+      "message": "The \"attempts \u003c ENDPOINT_ALLOC_RETRIES\" check should probably be moved into here, right now, if you time out, it\u0027ll fall through to the bottom, log the misleading error message, and return 0.",
+      "revId": "850c5660d70a9cd345b00ac077b1e0405e37efe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf505392_53b1278c",
+        "filename": "media/mtp/MtpFfsCompatHandle.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-07-10T21:50:26Z",
+      "side": 1,
+      "message": "If I\u0027m following this correctly, this does a blocking read from the USB fd, starts an AIO write which spawns a thread that calls write (to disk?), and then this thread calls aio_suspend, which just joins the thread?\n\nWouldn\u0027t it be faster and simpler to just have a blocking queue with a mutex and condition variable?\n\n(After writing this, I just noticed that this is actually the old code moved over, but the same applies to the new code.)",
+      "revId": "850c5660d70a9cd345b00ac077b1e0405e37efe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3e3ea99_7b0459cb",
+        "filename": "media/mtp/MtpFfsCompatHandle.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1079148
+      },
+      "writtenOn": "2017-07-10T21:50:26Z",
+      "side": 1,
+      "message": "Use size_t for this/readHandle/the max read/write lengths?",
+      "range": {
+        "startLine": 29,
+        "startChar": 46,
+        "endLine": 29,
+        "endChar": 49
+      },
+      "revId": "850c5660d70a9cd345b00ac077b1e0405e37efe0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
