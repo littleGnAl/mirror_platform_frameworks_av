@@ -462,6 +462,63 @@ sp<MetaData> MPEG4Extractor::getTrackMetaData(
         return NULL;
     }
 
+    int64_t duration;
+    int32_t samplerate;
+    if (track->has_elst && mHeaderTimescale != 0 &&
+            track->meta->findInt64(kKeyDuration, &duration) &&
+            track->meta->findInt32(kKeySampleRate, &samplerate)) {
+
+        track->has_elst = false;
+
+        if (track->elst_segment_duration > INT64_MAX) {
+            goto editlistoverflow;
+        }
+        int64_t segment_duration = track->elst_segment_duration;
+        int64_t media_time = track->elst_media_time;
+        int64_t halfscale = mHeaderTimescale / 2;
+
+        if (media_time > INT64_MAX / samplerate ||
+                media_time * samplerate > INT64_MAX - halfscale) {
+            goto editlistoverflow;
+        }
+        int64_t delay = ((media_time * samplerate) + halfscale) / mHeaderTimescale;
+        if (delay > INT32_MAX) {
+            goto editlistoverflow;
+        }
+        track->meta->setInt32(kKeyEncoderDelay, delay);
+
+        if (duration > INT64_MAX / mHeaderTimescale ||
+                duration * mHeaderTimescale > INT64_MAX - 500000) {
+            goto editlistoverflow;
+        }
+        int64_t scaled_duration = ((duration * mHeaderTimescale) + 500000) / 1000000;
+
+        if ((media_time > 0 && segment_duration > INT64_MAX - media_time)) {
+            // don't need to check for underflow, because segment_duration
+            // cannot be negative
+            goto editlistoverflow;
+        }
+        int64_t segment_end = segment_duration + media_time;
+
+        int64_t padding = scaled_duration - segment_end;
+        if (padding < 0) {
+            // track duration from media header (which is what kKeyDuration is) might
+            // be slightly shorter than the segment duration, which would make the
+            // padding negative. Clamp to zero.
+            padding = 0;
+        }
+        if (padding > INT64_MAX / samplerate ||
+                padding * samplerate > INT64_MAX - halfscale) {
+            goto editlistoverflow;
+        }
+        int64_t paddingsamples = ((padding * samplerate) + halfscale) / mHeaderTimescale;
+        if (paddingsamples > INT32_MAX) {
+            goto editlistoverflow;
+        }
+        track->meta->setInt32(kKeyEncoderPadding, paddingsamples);
+    }
+    editlistoverflow:
+
     if ((flags & kIncludeExtensiveMetaData)
             && !track->includes_expensive_metadata) {
         track->includes_expensive_metadata = true;
@@ -984,6 +1041,7 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
                 track->skipTrack = false;
                 track->timescale = 0;
                 track->meta->setCString(kKeyMIMEType, "application/octet-stream");
+                track->has_elst = false;
             }
 
             off64_t stop_offset = *offset + chunk_size;
@@ -1050,6 +1108,10 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
         {
             *offset += chunk_size;
 
+            if (!mLastTrack) {
+                return ERROR_MALFORMED;
+            }
+
             // See 14496-12 8.6.6
             uint8_t version;
             if (mDataSource->readAt(data_offset, &version, 1) < 1) {
@@ -1064,8 +1126,6 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
             if (entry_count != 1) {
                 // we only support a single entry at the moment, for gapless playback
                 ALOGW("ignoring edit list with %d entries", entry_count);
-            } else if (mHeaderTimescale == 0) {
-                ALOGW("ignoring edit list because timescale is 0");
             } else {
                 off64_t entriesoffset = data_offset + 8;
                 uint64_t segment_duration;
@@ -1089,31 +1149,12 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
                     return ERROR_IO;
                 }
 
-                uint64_t halfscale = mHeaderTimescale / 2;
-                segment_duration = (segment_duration * 1000000 + halfscale)/ mHeaderTimescale;
-                media_time = (media_time * 1000000 + halfscale) / mHeaderTimescale;
-
-                int64_t duration;
-                int32_t samplerate;
-                if (!mLastTrack) {
-                    return ERROR_MALFORMED;
-                }
-                if (mLastTrack->meta->findInt64(kKeyDuration, &duration) &&
-                        mLastTrack->meta->findInt32(kKeySampleRate, &samplerate)) {
-
-                    int64_t delay = (media_time  * samplerate + 500000) / 1000000;
-                    mLastTrack->meta->setInt32(kKeyEncoderDelay, delay);
-
-                    int64_t paddingus = duration - (int64_t)(segment_duration + media_time);
-                    if (paddingus < 0) {
-                        // track duration from media header (which is what kKeyDuration is) might
-                        // be slightly shorter than the segment duration, which would make the
-                        // padding negative. Clamp to zero.
-                        paddingus = 0;
-                    }
-                    int64_t paddingsamples = (paddingus * samplerate + 500000) / 1000000;
-                    mLastTrack->meta->setInt32(kKeyEncoderPadding, paddingsamples);
-                }
+                // save these for later, because the elst atom might precede
+                // the atoms that actually gives us the duration and sample rate
+                // needed to calculate the padding and delay values
+                mLastTrack->has_elst = true;
+                mLastTrack->elst_media_time = media_time;
+                mLastTrack->elst_segment_duration = segment_duration;
             }
             break;
         }
