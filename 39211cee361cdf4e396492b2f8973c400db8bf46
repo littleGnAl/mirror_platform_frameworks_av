@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "87d8cf33_1ca57bfd",
+        "filename": "media/libstagefright/MediaDefs.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2017-07-11T19:28:16Z",
+      "side": 1,
+      "message": "we used x-vnd for some other mimes...",
+      "range": {
+        "startLine": 69,
+        "startChar": 46,
+        "endLine": 69,
+        "endChar": 49
+      },
+      "revId": "39211cee361cdf4e396492b2f8973c400db8bf46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d1cfa624_aa009fda",
+        "filename": "media/libstagefright/omx/SoftOMXPlugin.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2017-07-11T19:28:16Z",
+      "side": 1,
+      "message": "are these software codecs provided to some vendors/OEMs? If so, these should be included in the vendor/OEM code that adds these codecs.",
+      "range": {
+        "startLine": 62,
+        "startChar": 6,
+        "endLine": 63,
+        "endChar": 70
+      },
+      "revId": "39211cee361cdf4e396492b2f8973c400db8bf46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
