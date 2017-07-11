@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aab35b6d_bcb8fdc5",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-07-11T18:59:13Z",
+      "side": 1,
+      "message": "this is essentially the code that was removed below, but slightly rewritten and with lots of added checks",
+      "range": {
+        "startLine": 473,
+        "startChar": 0,
+        "endLine": 518,
+        "endChar": 66
+      },
+      "revId": "3d1a4e666438e0bfe26847daf5a46165708c484f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8b679ac0_29769cc0",
+        "filename": "media/libstagefright/include/MPEG4Extractor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-07-11T18:59:13Z",
+      "side": 1,
+      "message": "Since the existing struct already had camelCase and underscored_variables, I picked the latter for these new members.",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 85,
+        "endChar": 39
+      },
+      "revId": "3d1a4e666438e0bfe26847daf5a46165708c484f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
