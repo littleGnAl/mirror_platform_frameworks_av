@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c16235b1_a3db897a",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2740,
+      "author": {
+        "id": 1205181
+      },
+      "writtenOn": "2017-07-12T01:46:53Z",
+      "side": 1,
+      "message": "In Android N, this line is needed since torch API is supported only in module HAL 2.4.\n\nIn Android O, this line should be removed since torch API must be supported by device HAL.",
+      "revId": "7ee489de9653c8faefb86381bba808d75a0aad99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
