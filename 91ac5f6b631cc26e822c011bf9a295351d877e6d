@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e26b3dc3_42f0afca",
+        "filename": "media/ndk/include/media/NdkMediaCodec.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1043845
+      },
+      "writtenOn": "2017-07-17T20:42:05Z",
+      "side": 1,
+      "message": "marcone: Alternatively, we could define these APIs using `int32_t` in this case to provide an ABI compatible declaration. The problem with that approach is that anyone passing an `off_t` to this API in that case will have that offset silently (assuming they aren\u0027t using -Wconversion, and no one does) truncated to 32-bits, which leads to different run time surprises.\n\nAny opinion? idk how cripple the API is without these two functions.",
+      "range": {
+        "startLine": 136,
+        "startChar": 32,
+        "endLine": 136,
+        "endChar": 44
+      },
+      "revId": "91ac5f6b631cc26e822c011bf9a295351d877e6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
