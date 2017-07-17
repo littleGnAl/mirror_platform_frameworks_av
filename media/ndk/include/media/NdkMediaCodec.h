@@ -130,6 +130,21 @@ uint8_t* AMediaCodec_getOutputBuffer(AMediaCodec*, size_t idx, size_t *out_size)
  */
 ssize_t AMediaCodec_dequeueInputBuffer(AMediaCodec*, int64_t timeoutUs);
 
+/*
+ * __USE_FILE_OFFSET64 changes the type of off_t in LP32. These declarations do
+ * not match the platform in that case. Using them will result in surprising
+ * runtime issues for the user, so hide them.
+ *
+ * https://github.com/android-ndk/ndk/issues/459
+ */
+#if !defined(__USE_FILE_OFFSET64) || defined(__LP64__)
+
+#if defined(__cplusplus) || __STDC_VERSION__ >= 201112L
+static_assert(sizeof(off_t) == sizeof(long),
+              "off_t does not match the NDK ABI. See "
+              "https://github.com/android-ndk/ndk/issues/459.");
+#endif
+
 /**
  * Send the specified buffer to the codec for processing.
  */
@@ -141,6 +156,8 @@ media_status_t AMediaCodec_queueInputBuffer(AMediaCodec*,
  */
 media_status_t AMediaCodec_queueSecureInputBuffer(AMediaCodec*,
         size_t idx, off_t offset, AMediaCodecCryptoInfo*, uint64_t time, uint32_t flags);
+
+#endif  /* !defined(__USE_FILE_OFFSET64) || defined(__LP64__) */
 
 /**
  * Get the index of the next available buffer of processed data.
