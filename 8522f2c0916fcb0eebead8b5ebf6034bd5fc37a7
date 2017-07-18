@@ -52,6 +52,24 @@
       "revId": "8522f2c0916fcb0eebead8b5ebf6034bd5fc37a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ba06c9e7_9e6d5faf",
+        "filename": "services/camera/libcameraservice/api1/client2/Parameters.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2111,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2017-07-18T18:39:43Z",
+      "side": 1,
+      "message": "I see in the bug that you are hitting this while running CTS metering area test (which does issue a very small metering area, but I don\u0027t think that test is using digital zoom?\n(Not saying we shouldn\u0027t make this change, but would like to understand what exactly triggered your CTS failure)",
+      "parentUuid": "2cae398b_30eebae1",
+      "revId": "8522f2c0916fcb0eebead8b5ebf6034bd5fc37a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
