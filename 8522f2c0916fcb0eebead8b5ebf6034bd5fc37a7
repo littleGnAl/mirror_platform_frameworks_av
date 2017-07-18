@@ -34,6 +34,24 @@
       "revId": "8522f2c0916fcb0eebead8b5ebf6034bd5fc37a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2cae398b_30eebae1",
+        "filename": "services/camera/libcameraservice/api1/client2/Parameters.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2111,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2017-07-18T18:37:14Z",
+      "side": 1,
+      "message": "Yeah, I expect you\u0027d hit this most when zoomed and doing tap to focus.\n\nNot that a metering region that small would be expected to be stable, but API1 doesn\u0027t really have a way to communicate that to the app.  \n\nIn API2, I\u0027d recommend apps clamp the minimum region size to some number of active pixels (10x10? probably too small still), but not sure we\u0027d want to do that unilaterally in the API1-\u003eHAL3 logic.",
+      "parentUuid": "18201641_d3b3cebe",
+      "revId": "8522f2c0916fcb0eebead8b5ebf6034bd5fc37a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
