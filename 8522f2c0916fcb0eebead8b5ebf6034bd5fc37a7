@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00c36f09_4bcf56a7",
+        "filename": "services/camera/libcameraservice/api1/client2/Parameters.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2111,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2017-07-18T18:14:23Z",
+      "side": 1,
+      "message": "if we\u0027re going to account for this, we also need to make sure the adjusted region doesn\u0027t exceed the bounds of the active array after it\u0027s increased.",
+      "revId": "8522f2c0916fcb0eebead8b5ebf6034bd5fc37a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
