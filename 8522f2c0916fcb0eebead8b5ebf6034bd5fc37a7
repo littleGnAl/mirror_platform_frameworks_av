@@ -70,6 +70,42 @@
       "revId": "8522f2c0916fcb0eebead8b5ebf6034bd5fc37a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a15a20d3_272a8eb8",
+        "filename": "services/camera/libcameraservice/api1/client2/Parameters.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2111,
+      "author": {
+        "id": 1022419
+      },
+      "writtenOn": "2017-07-19T03:04:00Z",
+      "side": 1,
+      "message": "Hi Eddy and Yin-Chia, thanks for your review.\n\nYes, CTS metering area test actually doesn’t use digital zoom. CTS failure happens when active array size itself is enough small. Concretely issue happens when width or height less than 2000. \n\nEven if active array size is not small, rounding error happens when zooming.",
+      "parentUuid": "ba06c9e7_9e6d5faf",
+      "revId": "8522f2c0916fcb0eebead8b5ebf6034bd5fc37a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5fc019cc_ee198934",
+        "filename": "services/camera/libcameraservice/api1/client2/Parameters.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2111,
+      "author": {
+        "id": 1022419
+      },
+      "writtenOn": "2017-07-19T03:04:00Z",
+      "side": 1,
+      "message": "Hi Eddy, thanks for your review.\n\nAccording to this implementation,\n\n int Parameters::normalizedXToCrop(int x) const {\n     CropRegion previewCrop \u003d calculateCropRegion(/*previewOnly*/ true);\n     return (x + 1000) * (previewCrop.width - 1) / 2000;\n }\n\nx \u003d 1000 is only the case that calculated region has the max value for the bounds of active array. In case that x \u003d 999, calculated region has less value than max value for the bounds of active array. Therefore, in case of (999, 999, 1000, 1000), the condition \"reqMeteringAreas[i + 0] \u003d\u003d reqMeteringAreas[i + 2]\" has to be false and increment will not happen.\n\nIn other any case, calculated region always less than max value -1 for the bounds of active array. Even if we add +1 for them, it should not exceed the bounds of active array.",
+      "parentUuid": "00c36f09_4bcf56a7",
+      "revId": "8522f2c0916fcb0eebead8b5ebf6034bd5fc37a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
