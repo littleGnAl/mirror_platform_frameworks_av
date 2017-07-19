@@ -2287,8 +2287,7 @@ status_t AudioPolicyManager::setStreamVolumeIndex(audio_stream_type_t stream,
                 continue;
             }
             routing_strategy curStrategy = getStrategy((audio_stream_type_t)curStream);
-            audio_devices_t curStreamDevice = Volume::getDeviceForVolume(getDeviceForStrategy(
-                    curStrategy, false /*fromCache*/));
+            audio_devices_t curStreamDevice = getDeviceForStrategy(curStrategy, false /*fromCache*/);
             if ((device != AUDIO_DEVICE_OUT_DEFAULT_FOR_VOLUME) &&
                     ((curStreamDevice & device) == 0)) {
                 continue;
@@ -2296,10 +2295,10 @@ status_t AudioPolicyManager::setStreamVolumeIndex(audio_stream_type_t stream,
             bool applyVolume;
             if (device != AUDIO_DEVICE_OUT_DEFAULT_FOR_VOLUME) {
                 curStreamDevice |= device;
-                applyVolume = (curDevice & curStreamDevice) != 0;
+                applyVolume = (curDevice & Volume::getDeviceForVolume(curStreamDevice)) != 0;
             } else {
                 applyVolume = !mVolumeCurves->hasVolumeIndexForDevice(
-                        stream, curStreamDevice);
+                        stream, Volume::getDeviceForVolume(curStreamDevice));
             }
 
             if (applyVolume) {
@@ -2307,7 +2306,7 @@ status_t AudioPolicyManager::setStreamVolumeIndex(audio_stream_type_t stream,
                 // delayed volume change for system stream to be removed when the problem is
                 // handled by system UI
                 status_t volStatus =
-                        checkAndSetVolume((audio_stream_type_t)curStream, index, desc, curDevice,
+                        checkAndSetVolume((audio_stream_type_t)curStream, index, desc, curStreamDevice,
                             (stream == AUDIO_STREAM_SYSTEM) ? TOUCH_SOUND_FIXED_DELAY_MS : 0);
                 if (volStatus != NO_ERROR) {
                     status = volStatus;
