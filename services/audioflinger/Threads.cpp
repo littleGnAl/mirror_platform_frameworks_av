@@ -5657,6 +5657,16 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::OffloadThread::prepareTr
         processVolume_l(track, last);
     }
 
+    // if an active track did not command a flush, check for pending flush on stopped tracks
+    if (!mFlushPending) {
+        for (size_t i = 0; i < mTracks.size(); i++) {
+            if (mTracks[i]->isFlushPending()) {
+                mTracks[i]->flushAck();
+                mFlushPending = true;
+            }
+        }
+    }
+
     // make sure the pause/flush/resume sequence is executed in the right order.
     // If a flush is pending and a track is active but the HW is not paused, force a HW pause
     // before flush and then resume HW. This can happen in case of pause/flush/resume
