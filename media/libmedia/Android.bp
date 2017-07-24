@@ -16,7 +16,6 @@ cc_library {
     shared: {
       shared_libs: ["libutils", "liblog"],
     },
-    clang: true,
 }
 
 cc_library_shared {
