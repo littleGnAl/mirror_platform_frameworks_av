@@ -48,6 +48,5 @@ LOCAL_MODULE:= mediametrics
 LOCAL_INIT_RC := mediametrics.rc
 
 LOCAL_CFLAGS := -Werror -Wall -Wno-error=deprecated-declarations
-LOCAL_CLANG := true
 
 include $(BUILD_EXECUTABLE)

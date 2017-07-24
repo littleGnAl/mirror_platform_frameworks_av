@@ -16,7 +16,6 @@ cc_library {
     shared: {
       shared_libs: ["libutils", "liblog"],
     },
-    clang: true,
 }
 
 // TODO(b/35449087): merge back with libmedia when OMX implementatoins

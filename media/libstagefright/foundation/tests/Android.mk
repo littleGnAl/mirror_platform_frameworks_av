@@ -21,7 +21,6 @@ LOCAL_C_INCLUDES := \
 	frameworks/av/include \
 
 LOCAL_CFLAGS += -Werror -Wall
-LOCAL_CLANG := true
 
 include $(BUILD_NATIVE_TEST)
 

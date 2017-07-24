@@ -23,7 +23,6 @@ LOCAL_C_INCLUDES := \
 	$(TOP)/frameworks/native/include/media/openmax \
 
 LOCAL_CFLAGS += -Werror -Wall -std=c++14
-LOCAL_CLANG := true
 
 include $(BUILD_NATIVE_TEST)
 
