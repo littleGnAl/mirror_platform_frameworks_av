@@ -55,8 +55,6 @@ cc_defaults {
         "-Wall",
     ],
 
-    clang: true,
-
     sanitize: {
         misc_undefined: [
             "unsigned-integer-overflow",

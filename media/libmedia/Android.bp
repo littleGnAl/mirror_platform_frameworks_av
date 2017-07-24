@@ -6,7 +6,6 @@ cc_library_static {
         "-Wno-error=deprecated-declarations",
         "-Wall",
     ],
-    clang: true,
 }
 
 cc_library_shared {
