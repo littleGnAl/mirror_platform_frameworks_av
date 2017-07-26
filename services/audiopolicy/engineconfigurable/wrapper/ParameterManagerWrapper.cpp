@@ -65,6 +65,8 @@ namespace audio_policy
 {
 const char *const ParameterManagerWrapper::mPolicyPfwDefaultConfFileName =
     "/etc/parameter-framework/ParameterFrameworkConfigurationPolicy.xml";
+const char *const ParameterManagerWrapper::mPolicyPfwVendorConfFileName =
+    "/vendor/etc/parameter-framework/ParameterFrameworkConfigurationPolicy.xml";
 
 template <>
 struct ParameterManagerWrapper::parameterManagerElementSupported<ISelectionCriterionInterface> {};
@@ -75,7 +77,11 @@ ParameterManagerWrapper::ParameterManagerWrapper()
     : mPfwConnectorLogger(new ParameterMgrPlatformConnectorLogger)
 {
     // Connector
-    mPfwConnector = new CParameterMgrPlatformConnector(mPolicyPfwDefaultConfFileName);
+    if (access(mPolicyPfwVendorConfFileName, R_OK) == 0) {
+        mPfwConnector = new CParameterMgrPlatformConnector(mPolicyPfwVendorConfFileName);
+    } else {
+        mPfwConnector = new CParameterMgrPlatformConnector(mPolicyPfwDefaultConfFileName);
+    }
 
     // Logger
     mPfwConnector->setLogger(mPfwConnectorLogger);
