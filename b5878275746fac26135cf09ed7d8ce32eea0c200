@@ -22,6 +22,30 @@
       "revId": "b5878275746fac26135cf09ed7d8ce32eea0c200",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ad4c98fa_8e6b67c2",
+        "filename": "media/libeffects/data/audio_effects.conf",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1071688
+      },
+      "writtenOn": "2017-08-09T09:45:39Z",
+      "side": 1,
+      "message": "Nope, it works just fine like this as these path are relative to /system/",
+      "parentUuid": "86052abc_18d71ba8",
+      "range": {
+        "startLine": 13,
+        "startChar": 10,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "b5878275746fac26135cf09ed7d8ce32eea0c200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
