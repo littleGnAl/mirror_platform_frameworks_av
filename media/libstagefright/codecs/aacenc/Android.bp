@@ -1,3 +1,5 @@
+subdirs = ["SampleCode"]
+
 cc_library_static {
     name: "libstagefright_aacenc",
 
