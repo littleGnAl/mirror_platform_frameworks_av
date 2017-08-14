@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c3360317_eec85825",
+        "filename": "media/mtp/MtpFfsCompatHandle.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-08-14T23:26:59Z",
+      "side": 1,
+      "message": "these are actually fairly useless; I\u0027ll just remove them",
+      "parentUuid": "e3f40fb2_bf6dfc04",
+      "range": {
+        "startLine": 71,
+        "startChar": 59,
+        "endLine": 71,
+        "endChar": 64
+      },
+      "revId": "ff523d1cfe9ea8ff798617c6dedf3b57d0ede651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8c77b7c2_901d154f",
         "filename": "media/mtp/MtpFfsCompatHandle.cpp",
         "patchSetId": 19
@@ -36,6 +60,30 @@
       "writtenOn": "2017-08-14T21:19:32Z",
       "side": 1,
       "message": "same as above",
+      "range": {
+        "startLine": 94,
+        "startChar": 58,
+        "endLine": 94,
+        "endChar": 62
+      },
+      "revId": "ff523d1cfe9ea8ff798617c6dedf3b57d0ede651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a93e809_8a232b5d",
+        "filename": "media/mtp/MtpFfsCompatHandle.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-08-14T23:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c77b7c2_901d154f",
       "range": {
         "startLine": 94,
         "startChar": 58,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "70ddc994_2548f93a",
+        "filename": "media/mtp/MtpFfsCompatHandle.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-08-14T23:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b3d02f19_7c2e052f",
+      "range": {
+        "startLine": 292,
+        "startChar": 8,
+        "endLine": 292,
+        "endChar": 11
+      },
+      "revId": "ff523d1cfe9ea8ff798617c6dedf3b57d0ede651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9b00843a_21e71939",
         "filename": "media/mtp/MtpFfsHandle.cpp",
         "patchSetId": 19
@@ -82,6 +154,30 @@
       "writtenOn": "2017-08-14T21:19:32Z",
       "side": 1,
       "message": "switch this to returning bool instead?",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 293,
+        "endChar": 3
+      },
+      "revId": "ff523d1cfe9ea8ff798617c6dedf3b57d0ede651",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c9b04e9_18c8e94f",
+        "filename": "media/mtp/MtpFfsHandle.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-08-14T23:26:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b00843a_21e71939",
       "range": {
         "startLine": 293,
         "startChar": 0,
