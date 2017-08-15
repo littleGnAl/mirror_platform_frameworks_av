@@ -504,7 +504,11 @@ status_t FwdLockEngine::onOpenDecryptSession(int /* uniqueId */,
 
         if (retVal && NULL != decodeSession) {
             decodeSessionMap.addValue(decryptHandle->decryptId, decodeSession);
-            const char *pmime= FwdLockFile_GetContentType(fileDesc);
+            // Compiler reports false positive warning that decodeSession causes
+            // leak of memory. Marked it as nolint.
+            // decodeSesion added to class decodeSessionMap as value and should
+            // not be deleted.
+            const char *pmime= FwdLockFile_GetContentType(fileDesc); //NOLINT
             String8 contentType = String8(pmime == NULL ? "" : pmime);
             contentType.toLower();
             decryptHandle->mimeType = MimeTypeUtil::convertMimeType(contentType);
