@@ -502,8 +502,8 @@ status_t FwdLockEngine::onOpenDecryptSession(int /* uniqueId */,
         int retVal = FwdLockFile_CheckHeaderIntegrity(fileDesc);
         DecodeSession* decodeSession = new DecodeSession(fileDesc);
 
-        if (retVal && NULL != decodeSession) {
-            decodeSessionMap.addValue(decryptHandle->decryptId, decodeSession);
+        if (retVal && NULL != decodeSession &&
+           decodeSessionMap.addValue(decryptHandle->decryptId, decodeSession)) {
             const char *pmime= FwdLockFile_GetContentType(fileDesc);
             String8 contentType = String8(pmime == NULL ? "" : pmime);
             contentType.toLower();
