@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5ec06e13_f99e4209",
+        "filename": "drm/libdrmframework/plugins/forward-lock/FwdLockEngine/src/FwdLockEngine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2017-08-16T00:01:48Z",
+      "side": 1,
+      "message": "Looks like addValue can fail, in which case this is a leak.\n\nDoes CHECK()ing (or assert()ing, or whatever the right thing is in this directory) the result of addValue work? In general, NOLINT should be a last resort.",
+      "revId": "5567b1336e66167423bd4ac9980b12847a5926c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
