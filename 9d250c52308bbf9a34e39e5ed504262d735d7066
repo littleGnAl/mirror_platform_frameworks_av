@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2398ef3a_990966fa",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1279,
+      "author": {
+        "id": 1143064
+      },
+      "writtenOn": "2017-08-21T06:56:42Z",
+      "side": 1,
+      "message": "Added below log for debug:\nALOGV(\"Additional log: startSource() setting volume index for stream \u003d %d, device \u003d 0x%X\", stream, device);",
+      "range": {
+        "startLine": 1279,
+        "startChar": 0,
+        "endLine": 1279,
+        "endChar": 0
+      },
+      "revId": "9d250c52308bbf9a34e39e5ed504262d735d7066",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6748c981_09a3d491",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4420,
+      "author": {
+        "id": 1143064
+      },
+      "writtenOn": "2017-08-21T06:56:42Z",
+      "side": 1,
+      "message": "This is selected if alarm is active.",
+      "range": {
+        "startLine": 4420,
+        "startChar": 0,
+        "endLine": 4420,
+        "endChar": 72
+      },
+      "revId": "9d250c52308bbf9a34e39e5ed504262d735d7066",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "96938a9a_de3e361e",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4734,
+      "author": {
+        "id": 1143064
+      },
+      "writtenOn": "2017-08-21T06:56:42Z",
+      "side": 1,
+      "message": "Added below log for debug:\nALOGV(\"Additional log: device us updated to 0x%X from supported device\", device);",
+      "range": {
+        "startLine": 4734,
+        "startChar": 14,
+        "endLine": 4734,
+        "endChar": 29
+      },
+      "revId": "9d250c52308bbf9a34e39e5ed504262d735d7066",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a5f717eb_5d1a2f59",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5014,
+      "author": {
+        "id": 1143064
+      },
+      "writtenOn": "2017-08-21T06:56:42Z",
+      "side": 1,
+      "message": "Added below log for debug:\nALOGV(\"Additional log: computeVolume stream \u003d %d index \u003d %d device \u003d 0x%X\", stream, index, device);",
+      "range": {
+        "startLine": 5014,
+        "startChar": 0,
+        "endLine": 5014,
+        "endChar": 0
+      },
+      "revId": "9d250c52308bbf9a34e39e5ed504262d735d7066",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
