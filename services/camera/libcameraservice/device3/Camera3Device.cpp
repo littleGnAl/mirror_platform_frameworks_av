@@ -2372,7 +2372,7 @@ void Camera3Device::removeInFlightRequestIfReadyLocked(int idx) {
     // In the case of a unsuccessful request:
     //      all input and output buffers arrived.
     if (request.numBuffersLeft == 0 &&
-            (request.requestStatus != OK ||
+            (request.skipResultMetadata ||
             (request.haveResultMetadata && shutterTimestamp != 0))) {
         ATRACE_ASYNC_END("frame capture", frameNumber);
 
@@ -2753,6 +2753,11 @@ void Camera3Device::notifyError(const camera3_error_msg_t &msg,
                     InFlightRequest &r = mInFlightMap.editValueAt(idx);
                     r.requestStatus = msg.error_code;
                     resultExtras = r.resultExtras;
+                    if (hardware::camera2::ICameraDeviceCallbacks::ERROR_CAMERA_RESULT == errorCode
+                            ||  hardware::camera2::ICameraDeviceCallbacks::ERROR_CAMERA_REQUEST ==
+                            errorCode) {
+                        r.skipResultMetadata = true;
+                    }
                     if (hardware::camera2::ICameraDeviceCallbacks::ERROR_CAMERA_RESULT ==
                             errorCode) {
                         // In case of missing result check whether the buffers

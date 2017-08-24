@@ -873,6 +873,11 @@ class Camera3Device :
         // is not for constrained high speed recording, this flag will also be true.
         bool hasCallback;
 
+        // Whether the result metadata for this request is to be skipped. The
+        // result metadata should be skipped in the case of
+        // REQUEST/RESULT error.
+        bool skipResultMetadata;
+
         // Default constructor needed by KeyedVector
         InFlightRequest() :
                 shutterTimestamp(0),
@@ -881,7 +886,8 @@ class Camera3Device :
                 haveResultMetadata(false),
                 numBuffersLeft(0),
                 hasInputBuffer(false),
-                hasCallback(true) {
+                hasCallback(true),
+                skipResultMetadata(false) {
         }
 
         InFlightRequest(int numBuffers, CaptureResultExtras extras, bool hasInput,
@@ -893,7 +899,8 @@ class Camera3Device :
                 numBuffersLeft(numBuffers),
                 resultExtras(extras),
                 hasInputBuffer(hasInput),
-                hasCallback(hasAppCallback) {
+                hasCallback(hasAppCallback),
+                skipResultMetadata(false) {
         }
     };
 
