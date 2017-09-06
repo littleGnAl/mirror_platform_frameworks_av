@@ -468,8 +468,6 @@ status_t OMXNodeInstance::freeNode() {
             ALOGV("forcing Idle->Loaded");
             sendCommand(OMX_CommandStateSet, OMX_StateLoaded);
 
-            freeActiveBuffers();
-
             OMX_ERRORTYPE err;
             int32_t iteration = 0;
             while ((err = OMX_GetState(mHandle, &state)) == OMX_ErrorNone
@@ -491,6 +489,9 @@ status_t OMXNodeInstance::freeNode() {
         }
 
         case OMX_StateLoaded:
+            freeActiveBuffers();
+            break;
+
         case OMX_StateInvalid:
             break;
 
