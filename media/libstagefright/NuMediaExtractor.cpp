@@ -565,7 +565,7 @@ bool NuMediaExtractor::getCachedDuration(
         *eos = (finalStatus != OK);
         return true;
     } else if ((mDataSource->flags() & DataSource::kIsCachingDataSource)
-            && getTotalBitrate(&bitrate)) {
+            && getTotalBitrate(&bitrate) && bitrate > 0) {
         sp<NuCachedSource2> cachedSource =
             static_cast<NuCachedSource2 *>(mDataSource.get());
 
