@@ -46,6 +46,30 @@
       "revId": "27cd33e7ab73465d0ae344d8667b1a95eece2825",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7cd13590_06e49157",
+        "filename": "media/libaudioclient/ToneGenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2017-09-20T15:20:53Z",
+      "side": 1,
+      "message": "OK.\nThen add a comment similar to the commit message below so that the reason why we check for single \",\" is clear from reading the code.",
+      "parentUuid": "95cd32f3_1d87bd6a",
+      "range": {
+        "startLine": 865,
+        "startChar": 22,
+        "endLine": 865,
+        "endChar": 50
+      },
+      "revId": "27cd33e7ab73465d0ae344d8667b1a95eece2825",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
