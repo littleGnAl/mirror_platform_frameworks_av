@@ -22,6 +22,30 @@
       "revId": "27cd33e7ab73465d0ae344d8667b1a95eece2825",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "95cd32f3_1d87bd6a",
+        "filename": "media/libaudioclient/ToneGenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1143064
+      },
+      "writtenOn": "2017-09-20T09:22:27Z",
+      "side": 1,
+      "message": "yes it will also fix the issue. However I assume this code looks  priotizing \"gsm.operator.iso-country\" than \"gsm.operator.iso-country\" intentionally. Typical usecase would be using another country sim card. For example real netowrk(\"gsm.operator.iso-country\" is \"jp\") then SIM card(\"gsm.sim.operator.iso-country\" is \"hk\"), basically expected ringback tone would be \"jp\". If network is not connected (e.g. flight mode), \"gsm.operator.iso-country\" should be null so need to check \"gsm.sim.operator.iso-country\".\nThe problem is that , Dual sim case, \"gsm.operator.iso-country\" is set as \",\" from telephony side. So we would like to fix that case.",
+      "parentUuid": "ec46c34e_aae16d95",
+      "range": {
+        "startLine": 865,
+        "startChar": 22,
+        "endLine": 865,
+        "endChar": 50
+      },
+      "revId": "27cd33e7ab73465d0ae344d8667b1a95eece2825",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
