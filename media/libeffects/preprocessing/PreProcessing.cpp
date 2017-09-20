@@ -1904,6 +1904,10 @@ int PreProcessingLib_Create(const effect_uuid_t *uuid,
         return -EINVAL;
     }
     procId = UuidToProcId(&desc->type);
+    if (procId == PREPROC_NUM_EFFECTS) {
+        ALOGE("EffectCreate: No procId found with uuid: %08x", desc->type.timeLow);
+        return -EINVAL;
+    }
 
     session = PreProc_GetSession(procId, sessionId, ioId);
     if (session == NULL) {
