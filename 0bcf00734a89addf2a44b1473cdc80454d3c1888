@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aeb3638c_5e346827",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3473,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-09-22T19:19:55Z",
+      "side": 1,
+      "message": "this should probably also check the validity of the bitrates, similarly to what\u0027s done at line 1895 and further above.",
+      "revId": "0bcf00734a89addf2a44b1473cdc80454d3c1888",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
