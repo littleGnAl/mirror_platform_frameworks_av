@@ -13,7 +13,9 @@ LOCAL_SHARED_LIBRARIES := \
     libstagefright_xmlparser
 LOCAL_MODULE:= libmediacodecservice
 LOCAL_VENDOR_MODULE := true
+ifneq ($(BOARD_USE_64BITMEDIA),true)
 LOCAL_32_BIT_ONLY := true
+endif
 include $(BUILD_SHARED_LIBRARY)
 
 # service executable
@@ -40,7 +42,9 @@ LOCAL_SHARED_LIBRARIES := \
 LOCAL_MODULE := android.hardware.media.omx@1.0-service
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_VENDOR_MODULE := true
+ifneq ($(BOARD_USE_64BITMEDIA),true)
 LOCAL_32_BIT_ONLY := true
+endif
 LOCAL_INIT_RC := android.hardware.media.omx@1.0-service.rc
 include $(BUILD_EXECUTABLE)
 

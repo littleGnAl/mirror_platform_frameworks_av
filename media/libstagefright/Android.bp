@@ -162,7 +162,7 @@ cc_library_shared {
     arch: {
         arm64: {
             // Fix OMX API issue between 32/64 bit processes
-            cflags: ["-DHAVE_OMX_ALIGNMENT"],
+            cflags: ["-DHAVE_OMX_ALIGNMENT","-DUSE_64BITMEDIA"],
         },
     },
 }

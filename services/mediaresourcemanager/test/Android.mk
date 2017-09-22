@@ -22,7 +22,9 @@ LOCAL_C_INCLUDES := \
 
 LOCAL_CFLAGS += -Werror -Wall
 
+ifneq ($(BOARD_USE_64BITMEDIA),true)
 LOCAL_32_BIT_ONLY := true
+endif
 
 include $(BUILD_NATIVE_TEST)
 
@@ -47,6 +49,8 @@ LOCAL_C_INCLUDES := \
 
 LOCAL_CFLAGS += -Werror -Wall
 
+ifneq ($(BOARD_USE_64BITMEDIA),true)
 LOCAL_32_BIT_ONLY := true
+endif
 
 include $(BUILD_NATIVE_TEST)
