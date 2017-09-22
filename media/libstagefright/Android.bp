@@ -158,6 +158,13 @@ cc_library_shared {
             cfi: true,
         },
     },
+
+    arch: {
+        arm64: {
+            // Fix OMX API issue between 32/64 bit processes
+            cflags: ["-DHAVE_OMX_ALIGNMENT"],
+        },
+    },
 }
 
 subdirs = [
