@@ -63,7 +63,10 @@ LOCAL_CFLAGS += -Werror -Wno-error=deprecated-declarations -Wall
 
 LOCAL_MODULE:= libmediaplayerservice
 
+ifneq ($(BOARD_USE_64BITMEDIA),true)
 LOCAL_32_BIT_ONLY := true
+endif
+
 
 LOCAL_SANITIZE := cfi
 LOCAL_SANITIZE_DIAG := cfi

@@ -8,7 +8,9 @@ LOCAL_SHARED_LIBRARIES := libmedia libmediautils libbinder libutils liblog
 
 LOCAL_MODULE:= libresourcemanagerservice
 
+ifneq ($(BOARD_USE_64BITMEDIA),true)
 LOCAL_32_BIT_ONLY := true
+endif
 
 LOCAL_C_INCLUDES += \
     frameworks/av/include
