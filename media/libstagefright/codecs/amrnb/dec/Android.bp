@@ -104,7 +104,15 @@ cc_library_shared {
         "liblog",
         "libstagefright_amrnb_common",
     ],
-    compile_multilib: "32",
+
+    arch: {
+        arm64: {
+            compile_multilib: "64",
+        },
+        arm: {
+            compile_multilib: "32",
+        },
+    },
 }
 
 //###############################################################################

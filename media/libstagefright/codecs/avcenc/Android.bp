@@ -34,5 +34,13 @@ cc_library_shared {
     },
 
     ldflags: ["-Wl,-Bsymbolic"],
-    compile_multilib: "32",
+
+    arch: {
+        arm64: {
+            compile_multilib: "64",
+        },
+        arm: {
+            compile_multilib: "32",
+        },
+    },
 }

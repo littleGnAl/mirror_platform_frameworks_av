@@ -31,5 +31,13 @@ cc_library_shared {
         "libutils",
         "liblog",
     ],
-    compile_multilib: "32",
+
+    arch: {
+        arm64: {
+            compile_multilib: "64",
+        },
+        arm: {
+            compile_multilib: "32",
+        },
+    },
 }

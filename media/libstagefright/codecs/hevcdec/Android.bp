@@ -37,5 +37,13 @@ cc_library_shared {
     // requires unsupported dynamic reloc R_ARM_REL32; recompile with -fPIC
     // Bug: 16853291
     ldflags: ["-Wl,-Bsymbolic"],
-    compile_multilib: "32",
+    arch: {
+        arm64: {
+            compile_multilib: "64",
+        },
+        arm: {
+            compile_multilib: "32",
+        },
+    },
+
 }
