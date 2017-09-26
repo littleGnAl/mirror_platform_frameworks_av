@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0533ce00_6286e23c",
+        "filename": "media/ndk/include/media/NdkMediaCodec.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2017-09-26T20:54:41Z",
+      "side": 1,
+      "message": "is this missing a \"struct AMediaCodecCryptoInfo;\" on the line above?",
+      "revId": "f6d1049dfb04b6ba7cc7fe883c9e1689ed7ce174",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
