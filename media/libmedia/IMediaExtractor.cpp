@@ -229,9 +229,14 @@ void registerMediaSource(
         if (extractor != NULL && extractor == ex) {
             if (instance.tracks.size() > 5) {
                 instance.tracks.resize(5);
+                instance.trackDescriptions.resize(5);
             }
             instance.tracks.push_front(source);
-            instance.trackDescriptions.add(source->getFormat()->toString());
+            if (source != NULL) {
+                instance.trackDescriptions.push_front(source->getFormat()->toString());
+            } else {
+                instance.trackDescriptions.push_front(String8::empty());
+            }
             break;
         }
     }
