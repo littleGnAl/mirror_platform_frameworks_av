@@ -3,6 +3,8 @@ cc_library_shared {
 
     srcs: ["SoftOpus.cpp"],
 
+    cflags: ["-Wall", "-Werror"],
+
     include_dirs: [
         "frameworks/av/media/libstagefright/include",
         "frameworks/native/include/media/openmax",
