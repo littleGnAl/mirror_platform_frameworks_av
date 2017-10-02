@@ -96,6 +96,8 @@ cc_library_shared {
         },
     },
 
+    cflags: ["-Wall", "-Werror"],
+
     include_dirs: [
         "frameworks/av/media/libstagefright/include",
         "frameworks/native/include/media/openmax",

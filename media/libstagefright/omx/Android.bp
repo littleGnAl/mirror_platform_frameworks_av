@@ -83,6 +83,7 @@ cc_library_shared {
 cc_library_static {
     name: "libstagefright_omx_utils",
     srcs: ["OMXUtils.cpp"],
+    cflags: ["-Wall", "-Werror"],
     include_dirs: [
         "frameworks/av/media/libstagefright",
         "frameworks/native/include/media/hardware",
