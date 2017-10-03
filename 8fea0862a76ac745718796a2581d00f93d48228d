@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8f4499f9_2a5a0541",
+        "filename": "drm/libdrmframework/plugins/forward-lock/FwdLockEngine/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-03T22:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e31f8744_35bd45b6",
+      "revId": "8fea0862a76ac745718796a2581d00f93d48228d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dcb2563a_5806eae0",
         "filename": "media/libeffects/factory/Android.bp",
         "patchSetId": 1
@@ -30,6 +48,24 @@
       "writtenOn": "2017-10-02T22:43:46Z",
       "side": 1,
       "message": "-Wno-unused-variable",
+      "revId": "8fea0862a76ac745718796a2581d00f93d48228d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2e7e7653_43c8e40b",
+        "filename": "media/libeffects/factory/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-03T22:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcb2563a_5806eae0",
       "revId": "8fea0862a76ac745718796a2581d00f93d48228d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "0d8eb48a_a8c5526a",
+        "filename": "media/libstagefright/codecs/avcdec/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-03T22:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fe838d4_c49c3f83",
+      "revId": "8fea0862a76ac745718796a2581d00f93d48228d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2111ff20_e432d624",
         "filename": "media/libstagefright/codecs/hevcdec/Android.bp",
         "patchSetId": 1
@@ -70,6 +124,24 @@
     },
     {
       "key": {
+        "uuid": "de3a14ca_10177337",
+        "filename": "media/libstagefright/codecs/hevcdec/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-03T22:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2111ff20_e432d624",
+      "revId": "8fea0862a76ac745718796a2581d00f93d48228d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68b90576_eed6aba9",
         "filename": "media/libstagefright/codecs/mpeg2dec/Android.bp",
         "patchSetId": 1
@@ -81,6 +153,24 @@
       "writtenOn": "2017-10-02T22:43:46Z",
       "side": 1,
       "message": "-Wno-unused-variable",
+      "revId": "8fea0862a76ac745718796a2581d00f93d48228d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "31e48149_789e1c02",
+        "filename": "media/libstagefright/codecs/mpeg2dec/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-10-03T22:57:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68b90576_eed6aba9",
       "revId": "8fea0862a76ac745718796a2581d00f93d48228d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
