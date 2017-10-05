@@ -29,6 +29,7 @@
 #include <media/stagefright/foundation/AString.h>
 #include <media/stagefright/foundation/hexdump.h>
 #include <media/stagefright/MediaErrors.h>
+#include <hidlmemory/FrameworkUtils.h>
 
 using ::android::hardware::drm::V1_0::BufferType;
 using ::android::hardware::drm::V1_0::DestinationBuffer;
@@ -227,6 +228,8 @@ bool CryptoHal::requiresSecureDecoderComponent(const char *mime) const {
  * are sent by providing an offset into the heap and a buffer size.
  */
 int32_t CryptoHal::setHeapBase(const sp<IMemoryHeap>& heap) {
+    using ::android::hardware::fromHeap;
+
     if (heap == NULL) {
         ALOGE("setHeapBase(): heap is NULL");
         return -1;
@@ -240,10 +243,7 @@ int32_t CryptoHal::setHeapBase(const sp<IMemoryHeap>& heap) {
     Mutex::Autolock autoLock(mLock);
 
     int32_t seqNum = mHeapSeqNum++;
-    int fd = heap->getHeapID();
-    nativeHandle->data[0] = fd;
-    auto hidlHandle = hidl_handle(nativeHandle);
-    auto hidlMemory = hidl_memory("ashmem", hidlHandle, heap->getSize());
+    auto hidlMemory = fromHeap(heap);
     mHeapBases.add(seqNum, mNextBufferId);
     Return<void> hResult = mPlugin->setSharedBufferBase(hidlMemory, mNextBufferId++);
     ALOGE_IF(!hResult.isOk(), "setSharedBufferBase(): remote call failed");
