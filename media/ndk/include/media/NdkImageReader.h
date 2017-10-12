@@ -38,7 +38,6 @@
 
 #include <sys/cdefs.h>
 
-#include <android/native_window.h>
 #include "NdkMediaError.h"
 #include "NdkImage.h"
 
@@ -47,6 +46,9 @@ extern "C" {
 #endif
 
 #if __ANDROID_API__ >= 24
+
+struct ANativeWindow;
+typedef struct ANativeWindow ANativeWindow;
 
 /**
  * AImage is an opaque type that allows direct application access to image data rendered into a
