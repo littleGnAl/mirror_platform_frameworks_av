@@ -22,6 +22,30 @@
       "revId": "0c411418d01d477b60f087f7bc685cf176ae197c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6bf2e4c9_d66c856d",
+        "filename": "media/libstagefright/matroska/MatroskaExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1407,
+      "author": {
+        "id": 1233895
+      },
+      "writtenOn": "2017-10-12T01:04:07Z",
+      "side": 1,
+      "message": "As written in commit message, Matroska can return 3 (e.g. \"fre\") or more (\"fre-ca\") letters.\nSee Appendix section in below.\nhttps://www.matroska.org/technical/specs/index.html\n\nOn the other hand, getLanguage() can return up to 3 letters.\nRef)\nhttps://developer.android.com/reference/android/media/MediaPlayer.TrackInfo.html#getLanguage()\nhttps://en.wikipedia.org/wiki/List_of_ISO_639-1_codes\n\nSo, we think strings should be truncated.",
+      "parentUuid": "12cb7be6_fbf000f8",
+      "range": {
+        "startLine": 1407,
+        "startChar": 47,
+        "endLine": 1407,
+        "endChar": 51
+      },
+      "revId": "0c411418d01d477b60f087f7bc685cf176ae197c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
