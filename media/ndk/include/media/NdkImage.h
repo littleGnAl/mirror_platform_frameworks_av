@@ -37,11 +37,14 @@
 #define _NDK_IMAGE_H
 
 #include <sys/cdefs.h>
+#include <stdint.h>
 
 #include "NdkMediaError.h"
 
 #if __ANDROID_API__ >= 26
-#include <android/hardware_buffer.h>
+struct AHardwareBuffer;
+typedef struct AHardwareBuffer AHardwareBuffer;
+
 #endif /* __ANDROID_API__ >= 26 */
 
 #ifdef __cplusplus

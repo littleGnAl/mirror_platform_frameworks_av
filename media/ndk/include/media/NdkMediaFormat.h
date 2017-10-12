@@ -29,6 +29,7 @@
 
 #include <sys/cdefs.h>
 #include <sys/types.h>
+#include <stdbool.h>
 
 #include "NdkMediaError.h"
 
