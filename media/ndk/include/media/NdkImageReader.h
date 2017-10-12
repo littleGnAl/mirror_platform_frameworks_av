@@ -38,11 +38,12 @@
 
 #include <sys/cdefs.h>
 
-#include <android/native_window.h>
 #include "NdkMediaError.h"
 #include "NdkImage.h"
 
 __BEGIN_DECLS
+
+typedef struct ANativeWindow ANativeWindow;
 
 /**
  * AImage is an opaque type that allows direct application access to image data rendered into a
