@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "914531f3_92767e85",
+        "filename": "drm/libmediadrm/CryptoHal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-10-12T08:09:11Z",
+      "side": 1,
+      "message": "Don\u0027t forget to remove this.",
+      "range": {
+        "startLine": 237,
+        "startChar": 3,
+        "endLine": 241,
+        "endChar": 5
+      },
+      "revId": "b7229c1413c69a4276dba4612293fe6c72180704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59d60411_5be99efd",
+        "filename": "drm/libmediadrm/CryptoHal.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1013030
+      },
+      "writtenOn": "2017-10-12T08:09:11Z",
+      "side": 1,
+      "message": "Pawin/Jeff: I guess the heap is always already mapped when this is called? Otherwise heap-\u003egetHeapId() wouldn\u0027t return a valid fd.",
+      "range": {
+        "startLine": 246,
+        "startChar": 31,
+        "endLine": 246,
+        "endChar": 35
+      },
+      "revId": "b7229c1413c69a4276dba4612293fe6c72180704",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
