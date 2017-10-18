@@ -22,6 +22,30 @@
       "revId": "99963c8c6470ee54c38531bc060853ef188ba1fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb4b3a48_146625b4",
+        "filename": "media/mtp/MtpUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-10-18T19:46:38Z",
+      "side": 1,
+      "message": "I\u0027m ok with just ignoring them. I\u0027m not sure if external storage even supports links",
+      "parentUuid": "ab95c09c_809b9afc",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 5
+      },
+      "revId": "99963c8c6470ee54c38531bc060853ef188ba1fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
