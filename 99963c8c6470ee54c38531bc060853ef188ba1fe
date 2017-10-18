@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab95c09c_809b9afc",
+        "filename": "media/mtp/MtpUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-10-18T18:27:08Z",
+      "side": 1,
+      "message": "does this code need to worry about symbolic links, specifically ones that point outside of the folder being copied or moved?\n(probably not, but I thought I\u0027d ask)",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 5
+      },
+      "revId": "99963c8c6470ee54c38531bc060853ef188ba1fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
