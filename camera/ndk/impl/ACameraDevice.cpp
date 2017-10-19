@@ -1200,34 +1200,41 @@ CameraDevice::ServiceCallback::onDeviceIdle() {
         return ret; // device has been closed
     }
 
-    Mutex::Autolock _l(dev->mDeviceLock);
-    if (dev->isClosed() || dev->mRemote == nullptr) {
-        return ret;
-    }
-
-    if (dev->mIdle) {
-        // Already in idle state. Possibly other thread did waitUntilIdle
-        return ret;
-    }
-
-    if (dev->mCurrentSession != nullptr) {
-        ALOGE("onDeviceIdle sending state cb");
-        if (dev->mBusySession != dev->mCurrentSession) {
-            ALOGE("Current session != busy session");
-            dev->setCameraDeviceErrorLocked(ACAMERA_ERROR_CAMERA_DEVICE);
+    sp<AMessage> msg = nullptr;
+    {
+        Mutex::Autolock _l(dev->mDeviceLock);
+        if (dev->isClosed() || dev->mRemote == nullptr) {
             return ret;
         }
-        sp<AMessage> msg = new AMessage(kWhatSessionStateCb, dev->mHandler);
-        msg->setPointer(kContextKey, dev->mBusySession->mUserSessionCallback.context);
-        msg->setObject(kSessionSpKey, dev->mBusySession);
-        msg->setPointer(kCallbackFpKey, (void*) dev->mBusySession->mUserSessionCallback.onReady);
-        // Make sure we clear the sp first so the session destructor can
-        // only happen on handler thread (where we don't hold device/session lock)
-        dev->mBusySession.clear();
+
+        if (dev->mIdle) {
+            // Already in idle state. Possibly other thread did waitUntilIdle
+            return ret;
+        }
+
+        if (dev->mCurrentSession != nullptr) {
+            ALOGE("onDeviceIdle sending state cb");
+            if (dev->mBusySession != dev->mCurrentSession) {
+                ALOGE("Current session != busy session");
+                dev->setCameraDeviceErrorLocked(ACAMERA_ERROR_CAMERA_DEVICE);
+                return ret;
+            }
+            msg = new AMessage(kWhatSessionStateCb, dev->mHandler);
+            msg->setPointer(kContextKey, dev->mBusySession->mUserSessionCallback.context);
+            msg->setObject(kSessionSpKey, dev->mBusySession);
+            msg->setPointer(kCallbackFpKey, (void*) dev->mBusySession->mUserSessionCallback.onReady);
+            // Make sure we clear the sp first so the session destructor can
+            // only happen on handler thread (where we don't hold device/session lock)
+            dev->mBusySession.clear();
+        }
+        dev->mIdle = true;
+        dev->mFlushing = false;
+    }
+
+    if (msg != nullptr) {
         msg->post();
     }
-    dev->mIdle = true;
-    dev->mFlushing = false;
+
     return ret;
 }
 
@@ -1290,51 +1297,57 @@ CameraDevice::ServiceCallback::onResultReceived(
         ALOGV("SeqId %d frame %" PRId64 " result arrive.", sequenceId, frameNumber);
     }
 
-    Mutex::Autolock _l(dev->mDeviceLock);
-    if (dev->mRemote == nullptr) {
-        return ret; // device has been disconnected
-    }
+    sp<AMessage> msg = nullptr;
+    {
+        Mutex::Autolock _l(dev->mDeviceLock);
+        if (dev->mRemote == nullptr) {
+            return ret; // device has been disconnected
+        }
 
-    if (dev->isClosed()) {
+        if (dev->isClosed()) {
+            if (!isPartialResult) {
+                dev->mFrameNumberTracker.updateTracker(frameNumber, /*isError*/false);
+            }
+            // early return to avoid callback sent to closed devices
+            return ret;
+        }
+
+        CameraMetadata metadataCopy = metadata;
+        metadataCopy.update(ANDROID_LENS_INFO_SHADING_MAP_SIZE, dev->mShadingMapSize, /*data_count*/2);
+        metadataCopy.update(ANDROID_SYNC_FRAME_NUMBER, &frameNumber, /*data_count*/1);
+
+        auto it = dev->mSequenceCallbackMap.find(sequenceId);
+        if (it != dev->mSequenceCallbackMap.end()) {
+            CallbackHolder cbh = (*it).second;
+            ACameraCaptureSession_captureCallback_result onResult = isPartialResult ?
+                    cbh.mCallbacks.onCaptureProgressed :
+                    cbh.mCallbacks.onCaptureCompleted;
+            sp<ACameraCaptureSession> session = cbh.mSession;
+            if ((size_t) burstId >= cbh.mRequests.size()) {
+                ALOGE("%s: Error: request index %d out of bound (size %zu)",
+                        __FUNCTION__, burstId, cbh.mRequests.size());
+                dev->setCameraDeviceErrorLocked(ACAMERA_ERROR_CAMERA_SERVICE);
+            }
+            sp<CaptureRequest> request = cbh.mRequests[burstId];
+            sp<ACameraMetadata> result(new ACameraMetadata(
+                    metadataCopy.release(), ACameraMetadata::ACM_RESULT));
+
+            msg = new AMessage(kWhatCaptureResult, dev->mHandler);
+            msg->setPointer(kContextKey, cbh.mCallbacks.context);
+            msg->setObject(kSessionSpKey, session);
+            msg->setPointer(kCallbackFpKey, (void*) onResult);
+            msg->setObject(kCaptureRequestKey, request);
+            msg->setObject(kCaptureResultKey, result);
+        }
+
         if (!isPartialResult) {
             dev->mFrameNumberTracker.updateTracker(frameNumber, /*isError*/false);
+            dev->checkAndFireSequenceCompleteLocked();
         }
-        // early return to avoid callback sent to closed devices
-        return ret;
     }
 
-    CameraMetadata metadataCopy = metadata;
-    metadataCopy.update(ANDROID_LENS_INFO_SHADING_MAP_SIZE, dev->mShadingMapSize, /*data_count*/2);
-    metadataCopy.update(ANDROID_SYNC_FRAME_NUMBER, &frameNumber, /*data_count*/1);
-
-    auto it = dev->mSequenceCallbackMap.find(sequenceId);
-    if (it != dev->mSequenceCallbackMap.end()) {
-        CallbackHolder cbh = (*it).second;
-        ACameraCaptureSession_captureCallback_result onResult = isPartialResult ?
-                cbh.mCallbacks.onCaptureProgressed :
-                cbh.mCallbacks.onCaptureCompleted;
-        sp<ACameraCaptureSession> session = cbh.mSession;
-        if ((size_t) burstId >= cbh.mRequests.size()) {
-            ALOGE("%s: Error: request index %d out of bound (size %zu)",
-                    __FUNCTION__, burstId, cbh.mRequests.size());
-            dev->setCameraDeviceErrorLocked(ACAMERA_ERROR_CAMERA_SERVICE);
-        }
-        sp<CaptureRequest> request = cbh.mRequests[burstId];
-        sp<ACameraMetadata> result(new ACameraMetadata(
-                metadataCopy.release(), ACameraMetadata::ACM_RESULT));
-
-        sp<AMessage> msg = new AMessage(kWhatCaptureResult, dev->mHandler);
-        msg->setPointer(kContextKey, cbh.mCallbacks.context);
-        msg->setObject(kSessionSpKey, session);
-        msg->setPointer(kCallbackFpKey, (void*) onResult);
-        msg->setObject(kCaptureRequestKey, request);
-        msg->setObject(kCaptureResultKey, result);
+    if (msg != nullptr) {
         msg->post();
-    }
-
-    if (!isPartialResult) {
-        dev->mFrameNumberTracker.updateTracker(frameNumber, /*isError*/false);
-        dev->checkAndFireSequenceCompleteLocked();
     }
 
     return ret;
