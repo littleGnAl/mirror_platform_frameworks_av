@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0fe92ffa_4afff975",
+        "filename": "media/mtp/MtpDescriptors.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-10-23T18:50:41Z",
+      "side": 1,
+      "message": "Which part of the style here is non-uniform?",
+      "parentUuid": "21fbecdd_c25ddd20",
+      "range": {
+        "startLine": 78,
+        "startChar": 6,
+        "endLine": 78,
+        "endChar": 30
+      },
+      "revId": "f6c104e017bacb3d8bf62595e4eb92ea4b470bb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41725904_67aac688",
         "filename": "media/mtp/tests/MtpFfsHandle_test.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2017-10-23T17:10:31Z",
       "side": 1,
       "message": "What if the descriptor falls back to v1 version while writing ? wouldn\u0027t this test fail ?",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 69
+      },
+      "revId": "f6c104e017bacb3d8bf62595e4eb92ea4b470bb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "69f5d72e_98272c58",
+        "filename": "media/mtp/tests/MtpFfsHandle_test.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-10-23T18:50:41Z",
+      "side": 1,
+      "message": "This test won\u0027t fail because the actual endpoints are mocked out with pipes, which will always allow writing.",
+      "parentUuid": "41725904_67aac688",
       "range": {
         "startLine": 104,
         "startChar": 4,
