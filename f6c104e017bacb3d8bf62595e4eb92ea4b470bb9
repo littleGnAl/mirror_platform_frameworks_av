@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "4e9a9e90_cd1186b7",
+        "filename": "media/mtp/MtpDescriptors.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1113594
+      },
+      "writtenOn": "2017-10-23T22:22:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fa2be59e_abdcf690",
+      "range": {
+        "startLine": 78,
+        "startChar": 6,
+        "endLine": 78,
+        "endChar": 30
+      },
+      "revId": "f6c104e017bacb3d8bf62595e4eb92ea4b470bb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41725904_67aac688",
         "filename": "media/mtp/tests/MtpFfsHandle_test.cpp",
         "patchSetId": 3
