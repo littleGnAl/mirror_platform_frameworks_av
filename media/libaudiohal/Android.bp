@@ -1,0 +1,67 @@
+cc_defaults {
+    // Use audiohal directly w/o hwbinder middleware.
+    // This is for performance comparison and debugging only.
+    name: "libaudiohal_legacy_audio_hal",
+    srcs: [
+        "EffectBufferHalLocal.cpp",
+        "EffectsFactoryHalLocal.cpp",
+        "EffectHalLocal.cpp",
+    ],
+    shared_libs: ["libeffects"],
+    cflags: ["-DUSE_LEGACY_LOCAL_AUDIO_HAL"],
+}
+
+cc_defaults {
+    name: "libaudiohal_non_legacy_audio_hal",
+    srcs: [
+        "ConversionHelperHidl.cpp",
+        "HalDeathHandlerHidl.cpp",
+        "DeviceHalHidl.cpp",
+        "DevicesFactoryHalHidl.cpp",
+        "EffectBufferHalHidl.cpp",
+        "EffectHalHidl.cpp",
+        "EffectsFactoryHalHidl.cpp",
+        "StreamHalHidl.cpp",
+    ],
+    shared_libs: [
+        "libbase",
+        "libfmq",
+        "libhwbinder",
+        "libhidlbase",
+        "libhidlmemory",
+        "libhidltransport",
+        "android.hardware.audio@2.0",
+        "android.hardware.audio.common@2.0",
+        "android.hardware.audio.common@2.0-util",
+        "android.hardware.audio.effect@2.0",
+        "android.hidl.allocator@1.0",
+        "android.hidl.memory@1.0",
+        "libmedia_helper",
+        "libmediautils",
+    ],
+}
+
+cc_library_shared {
+    name: "libaudiohal",
+    defaults: ["libaudiohal_non_legacy_audio_hal"],
+
+    shared_libs: [
+        "libaudioutils",
+        "libcutils",
+        "liblog",
+        "libutils",
+        "libhardware",
+    ],
+    srcs: [
+        "DeviceHalLocal.cpp",
+        "DevicesFactoryHalHybrid.cpp",
+        "DevicesFactoryHalLocal.cpp",
+        "StreamHalLocal.cpp",
+    ],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+
+    export_include_dirs: ["include"],
+}
