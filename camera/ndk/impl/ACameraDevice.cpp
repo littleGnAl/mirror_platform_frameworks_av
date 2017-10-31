@@ -296,6 +296,7 @@ CameraDevice::allocateCaptureRequest(
     sp<CaptureRequest> req(new CaptureRequest());
     req->mMetadata = request->settings->getInternalData();
     req->mIsReprocess = false; // NDK does not support reprocessing yet
+    req->mContext = request->context;
 
     for (auto outputTarget : request->targets->mOutputs) {
         ANativeWindow* anw = outputTarget.mWindow;
@@ -322,6 +323,7 @@ CameraDevice::allocateACaptureRequest(sp<CaptureRequest>& req) {
         ACameraOutputTarget outputTarget(anw);
         pRequest->targets->mOutputs.insert(outputTarget);
     }
+    pRequest->context = req->mContext;
     return pRequest;
 }
 
