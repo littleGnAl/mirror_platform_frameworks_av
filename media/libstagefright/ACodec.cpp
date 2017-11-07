@@ -90,6 +90,22 @@ static inline status_t statusFromOMXError(int32_t omxError) {
     }
 }
 
+static inline int omxFormatToHalPixelFormat(int omxFormat) {
+    switch (omxFormat) {
+    case OMX_COLOR_FormatYUV420Planar:
+    case OMX_COLOR_FormatYUV420SemiPlanar:
+        return HAL_PIXEL_FORMAT_YV12;
+    case OMX_COLOR_Format24bitRGB888:
+        return HAL_PIXEL_FORMAT_RGB_888;
+    case OMX_COLOR_Format32bitARGB8888:
+    case OMX_COLOR_Format32BitRGBA8888:
+        return HAL_PIXEL_FORMAT_RGBA_8888;
+    // TODO: map all the other omxFormat to hal format
+    default:
+        return HAL_PIXEL_FORMAT_IMPLEMENTATION_DEFINED;
+    }
+}
+
 // checks and converts status_t to a non-side-effect status_t
 static inline status_t makeNoSideEffectStatus(status_t err) {
     switch (err) {
@@ -989,7 +1005,7 @@ status_t ACodec::setupNativeWindowSizeFormatAndUsage(
             nativeWindow,
             def.format.video.nFrameWidth,
             def.format.video.nFrameHeight,
-            def.format.video.eColorFormat,
+            omxFormatToHalPixelFormat(def.format.video.eColorFormat),
             mRotationDegrees,
             usage,
             reconnect);
