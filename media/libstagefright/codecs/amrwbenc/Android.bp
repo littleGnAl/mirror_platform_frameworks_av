@@ -178,7 +178,6 @@ cc_library_shared {
         "liblog",
         "libstagefright_enc_common",
     ],
-    compile_multilib: "32",
 }
 
 //###############################################################################

@@ -115,7 +115,6 @@ cc_library_shared {
         "liblog",
         "libstagefright_amrnb_common",
     ],
-    compile_multilib: "32",
 }
 
 //###############################################################################
