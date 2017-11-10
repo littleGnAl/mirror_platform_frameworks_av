@@ -33,5 +33,4 @@ cc_library_shared {
         "libutils",
         "liblog",
     ],
-    compile_multilib: "32",
 }

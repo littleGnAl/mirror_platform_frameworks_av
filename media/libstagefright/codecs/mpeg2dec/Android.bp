@@ -40,5 +40,4 @@ cc_library_shared {
             cfi: true,
         },
     },
-    compile_multilib: "32",
 }

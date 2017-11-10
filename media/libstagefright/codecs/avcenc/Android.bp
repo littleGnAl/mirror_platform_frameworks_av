@@ -39,5 +39,4 @@ cc_library_shared {
         "-Wno-unused-variable",
     ],
     ldflags: ["-Wl,-Bsymbolic"],
-    compile_multilib: "32",
 }
