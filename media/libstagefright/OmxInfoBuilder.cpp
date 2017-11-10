@@ -38,6 +38,7 @@
 #include <media/IOMX.h>
 #include <media/MediaDefs.h>
 #include <media/omx/1.0/WOmx.h>
+#include <media/stagefright/omx/1.0/OmxStore.h>
 
 #include <media/openmax/OMX_Index.h>
 #include <media/openmax/OMX_IndexExt.h>
@@ -102,31 +103,8 @@ status_t OmxInfoBuilder::buildMediaCodecList(MediaCodecListWriter* writer) {
             return NO_INIT;
         }
 
-        // List service attributes (global settings)
-        Status status;
-        hidl_vec<IOmxStore::ServiceAttribute> serviceAttributes;
-        auto transStatus = omxStore->listServiceAttributes(
-                [&status, &serviceAttributes]
-                (Status inStatus, const hidl_vec<IOmxStore::ServiceAttribute>&
-                        inAttributes) {
-                    status = inStatus;
-                    serviceAttributes = inAttributes;
-                });
-        if (!transStatus.isOk()) {
-            ALOGE("Fail to obtain global settings from IOmxStore.");
-            return NO_INIT;
-        }
-        if (status != Status::OK) {
-            ALOGE("IOmxStore reports parsing error.");
-            return NO_INIT;
-        }
-        for (const auto& p : serviceAttributes) {
-            writer->addGlobalSetting(
-                    p.key.c_str(), p.value.c_str());
-        }
-
         // List roles and convert to IOMXStore's format
-        transStatus = omxStore->listRoles(
+        auto transStatus = omxStore->listRoles(
                 [&roles]
                 (const hidl_vec<IOmxStore::RoleInfo>& inRoleList) {
                     roles.reserve(inRoleList.size());
@@ -160,7 +138,75 @@ status_t OmxInfoBuilder::buildMediaCodecList(MediaCodecListWriter* writer) {
         if (!transStatus.isOk()) {
             ALOGE("Fail to obtain codec roles from IOmxStore.");
             return NO_INIT;
+        } else if (roles.size() == 0) {
+            ALOGW("IOmxStore has empty implementation. "
+                    "Creating a local default instance...");
+            omxStore = new implementation::OmxStore();
+            if (omxStore == nullptr) {
+                ALOGE("Cannot create a local default instance.");
+                return NO_INIT;
+            }
+            ALOGI("IOmxStore local default instance created.");
+            transStatus = omxStore->listRoles(
+                    [&roles] (
+                    const hidl_vec<IOmxStore::RoleInfo>& inRoleList) {
+                        roles.reserve(inRoleList.size());
+                        for (const auto& inRole : inRoleList) {
+                            IOMXStore::RoleInfo role;
+                            role.role = inRole.role;
+                            role.type = inRole.type;
+                            role.isEncoder = inRole.isEncoder;
+                            role.preferPlatformNodes = inRole.preferPlatformNodes;
+                            std::vector<IOMXStore::NodeInfo>& nodes =
+                                    role.nodes;
+                            nodes.reserve(inRole.nodes.size());
+                            for (const auto& inNode : inRole.nodes) {
+                                IOMXStore::NodeInfo node;
+                                node.name = inNode.name;
+                                node.owner = inNode.owner;
+                                std::vector<IOMXStore::Attribute>& attributes =
+                                        node.attributes;
+                                attributes.reserve(inNode.attributes.size());
+                                for (const auto& inAttr : inNode.attributes) {
+                                    IOMXStore::Attribute attr;
+                                    attr.key = inAttr.key;
+                                    attr.value = inAttr.value;
+                                    attributes.push_back(std::move(attr));
+                                }
+                                nodes.push_back(std::move(node));
+                            }
+                            roles.push_back(std::move(role));
+                        }
+                    });
+            if (!transStatus.isOk()) {
+                ALOGE("Fail to obtain codec roles from local IOmxStore.");
+                return NO_INIT;
+            }
         }
+
+        // List service attributes (global settings)
+        Status status;
+        hidl_vec<IOmxStore::ServiceAttribute> serviceAttributes;
+        transStatus = omxStore->listServiceAttributes(
+                [&status, &serviceAttributes]
+                (Status inStatus, const hidl_vec<IOmxStore::ServiceAttribute>&
+                        inAttributes) {
+                    status = inStatus;
+                    serviceAttributes = inAttributes;
+                });
+        if (!transStatus.isOk()) {
+            ALOGE("Fail to obtain global settings from IOmxStore.");
+            return NO_INIT;
+        }
+        if (status != Status::OK) {
+            ALOGE("IOmxStore reports parsing error.");
+            return NO_INIT;
+        }
+        for (const auto& p : serviceAttributes) {
+            writer->addGlobalSetting(
+                    p.key.c_str(), p.value.c_str());
+        }
+
     } else {
         // Obtain IOMXStore
         sp<IServiceManager> sm = defaultServiceManager();
