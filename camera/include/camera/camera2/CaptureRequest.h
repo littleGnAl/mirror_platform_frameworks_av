@@ -41,7 +41,18 @@ struct CaptureRequest : public Parcelable {
     virtual ~CaptureRequest();
 
     CameraMetadata          mMetadata;
+
+    // Starting in Android O, create a Surface from Parcel will take one extra
+    // IPC call.
     Vector<sp<Surface> >    mSurfaceList;
+
+    // Optional way of passing surface list since passing Surface over binder
+    // is expensive. Use the stream/surface index from current output configuration
+    // to represent an configured output Surface. When stream/surface index is used,
+    // set mSurfaceList to zero length to save unparcel time.
+    Vector<int>             mStreamIdxList;
+    Vector<int>             mSurfaceIdxList; // per stream surface list index
+
     bool                    mIsReprocess;
 
     /**
