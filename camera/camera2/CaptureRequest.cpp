@@ -44,6 +44,8 @@ status_t CaptureRequest::readFromParcel(const android::Parcel* parcel) {
 
     mMetadata.clear();
     mSurfaceList.clear();
+    mStreamIdxList.clear();
+    mSurfaceIdxList.clear();
 
     status_t err = OK;
 
@@ -61,7 +63,7 @@ status_t CaptureRequest::readFromParcel(const android::Parcel* parcel) {
     ALOGV("%s: Read surface list size = %d", __FUNCTION__, size);
 
     // Do not distinguish null arrays from 0-sized arrays.
-    for (int i = 0; i < size; ++i) {
+    for (int32_t i = 0; i < size; ++i) {
         // Parcel.writeParcelableArray
         size_t len;
         const char16_t* className = parcel->readString16Inplace(&len);
@@ -86,6 +88,28 @@ status_t CaptureRequest::readFromParcel(const android::Parcel* parcel) {
         }
 
         mSurfaceList.push_back(surface);
+    }
+
+    int32_t streamSurfaceSize;
+    if ((err = parcel->readInt32(&streamSurfaceSize)) != OK) {
+        ALOGE("%s: Failed to read streamSurfaceSize from parcel", __FUNCTION__);
+        return err;
+    }
+
+    for (int32_t i = 0; i < streamSurfaceSize; ++i) {
+        int streamIdx;
+        if ((err = parcel->readInt32(&streamIdx)) != OK) {
+            ALOGE("%s: Failed to read stream index from parcel", __FUNCTION__);
+            return err;
+        }
+        mStreamIdxList.push_back(streamIdx);
+
+        int surfaceIdx;
+        if ((err = parcel->readInt32(&surfaceIdx)) != OK) {
+            ALOGE("%s: Failed to read surface index from parcel", __FUNCTION__);
+            return err;
+        }
+        mSurfaceIdxList.push_back(surfaceIdx);
     }
 
     int isReprocess = 0;
@@ -129,6 +153,20 @@ status_t CaptureRequest::writeToParcel(android::Parcel* parcel) const {
             return err;
         }
     }
+
+    parcel->writeInt32(mStreamIdxList.size());
+    for (int32_t i = 0; i < mStreamIdxList.size(); ++i) {
+        if ((err = parcel->writeInt32(mStreamIdxList[i])) != OK) {
+            ALOGE("%s: Failed to write stream index to parcel", __FUNCTION__);
+            return err;
+        }
+        if ((err = parcel->writeInt32(mSurfaceIdxList[i])) != OK) {
+            ALOGE("%s: Failed to write surface index to parcel", __FUNCTION__);
+            return err;
+        }
+    }
+
+
 
     parcel->writeInt32(mIsReprocess ? 1 : 0);
 

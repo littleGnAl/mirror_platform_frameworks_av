@@ -42,6 +42,8 @@ struct CaptureRequest : public Parcelable {
 
     CameraMetadata          mMetadata;
     Vector<sp<Surface> >    mSurfaceList;
+    Vector<int>             mStreamIdxList;
+    Vector<int>             mSurfaceIdxList; // per stream surface list index
     bool                    mIsReprocess;
 
     /**
