@@ -200,6 +200,10 @@ private:
             return mSurfaceId;
         }
 
+        bool operator==(const StreamSurfaceId& other) {
+            return mStreamId == other.mStreamId && mSurfaceId == other.mSurfaceId;
+        }
+
     private:
         int32_t mStreamId;
         int32_t mSurfaceId;
