@@ -174,7 +174,7 @@ binder::Status CameraDeviceClient::submitRequestList(
                    __FUNCTION__, mCameraIdStr.string());
             return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT,
                     "Request settings are empty");
-        } else if (request.mSurfaceList.isEmpty()) {
+        } else if (request.mSurfaceList.isEmpty() && request.mStreamIdxList.size() == 0) {
             ALOGE("%s: Camera %s: Requests must have at least one surface target. "
                     "Rejecting request.", __FUNCTION__, mCameraIdStr.string());
             return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT,
@@ -193,31 +193,65 @@ binder::Status CameraDeviceClient::submitRequestList(
          */
         SurfaceMap surfaceMap;
         Vector<int32_t> outputStreamIds;
-        for (sp<Surface> surface : request.mSurfaceList) {
-            if (surface == 0) continue;
+        if (request.mSurfaceList.size() > 0) {
+            for (sp<Surface> surface : request.mSurfaceList) {
+                if (surface == 0) continue;
 
-            sp<IGraphicBufferProducer> gbp = surface->getIGraphicBufferProducer();
-            int idx = mStreamMap.indexOfKey(IInterface::asBinder(gbp));
+                sp<IGraphicBufferProducer> gbp = surface->getIGraphicBufferProducer();
+                int idx = mStreamMap.indexOfKey(IInterface::asBinder(gbp));
 
-            // Trying to submit request with surface that wasn't created
-            if (idx == NAME_NOT_FOUND) {
-                ALOGE("%s: Camera %s: Tried to submit a request with a surface that"
-                        " we have not called createStream on",
-                        __FUNCTION__, mCameraIdStr.string());
-                return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT,
-                        "Request targets Surface that is not part of current capture session");
+                // Trying to submit request with surface that wasn't created
+                if (idx == NAME_NOT_FOUND) {
+                    ALOGE("%s: Camera %s: Tried to submit a request with a surface that"
+                            " we have not called createStream on",
+                            __FUNCTION__, mCameraIdStr.string());
+                    return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT,
+                            "Request targets Surface that is not part of current capture session");
+                }
+
+                const StreamSurfaceId& streamSurfaceId = mStreamMap.valueAt(idx);
+                if (surfaceMap.find(streamSurfaceId.streamId()) == surfaceMap.end()) {
+                    surfaceMap[streamSurfaceId.streamId()] = std::vector<size_t>();
+                    outputStreamIds.push_back(streamSurfaceId.streamId());
+                }
+                surfaceMap[streamSurfaceId.streamId()].push_back(streamSurfaceId.surfaceId());
+
+                ALOGV("%s: Camera %s: Appending output stream %d surface %d to request",
+                        __FUNCTION__, mCameraIdStr.string(), streamSurfaceId.streamId(),
+                        streamSurfaceId.surfaceId());
             }
+        } else {
+            for (size_t i = 0; i < request.mStreamIdxList.size(); i++) {
+                int streamId = request.mStreamIdxList.itemAt(i);
+                int surfaceId = request.mSurfaceIdxList.itemAt(i);
+                StreamSurfaceId streamSurfaceId(streamId, surfaceId);
 
-            const StreamSurfaceId& streamSurfaceId = mStreamMap.valueAt(idx);
-            if (surfaceMap.find(streamSurfaceId.streamId()) == surfaceMap.end()) {
-                surfaceMap[streamSurfaceId.streamId()] = std::vector<size_t>();
-                outputStreamIds.push_back(streamSurfaceId.streamId());
+                bool found = false;
+                for (size_t j = 0; j < mStreamMap.size(); j++) {
+                    if (streamSurfaceId == mStreamMap.valueAt(j)) {
+                        found = true;
+                        break;
+                    }
+                }
+
+                if (!found) {
+                    ALOGE("%s: Camera %s: Tried to submit a request with a surface that"
+                            " we have not called createStream on: stream %d, surface %d",
+                            __FUNCTION__, mCameraIdStr.string(), streamId, surfaceId);
+                    return STATUS_ERROR(CameraService::ERROR_ILLEGAL_ARGUMENT,
+                            "Request targets Surface that is not part of current capture session");
+                }
+
+                if (surfaceMap.find(streamId) == surfaceMap.end()) {
+                    surfaceMap[streamId] = std::vector<size_t>();
+                    outputStreamIds.push_back(streamId);
+                }
+                surfaceMap[streamId].push_back(surfaceId);
+
+                ALOGV("%s: Camera %s: Appending output stream %d surface %d to request",
+                        __FUNCTION__, mCameraIdStr.string(), streamSurfaceId.streamId(),
+                        streamSurfaceId.surfaceId());
             }
-            surfaceMap[streamSurfaceId.streamId()].push_back(streamSurfaceId.surfaceId());
-
-            ALOGV("%s: Camera %s: Appending output stream %d surface %d to request",
-                    __FUNCTION__, mCameraIdStr.string(), streamSurfaceId.streamId(),
-                    streamSurfaceId.surfaceId());
         }
 
         metadata.update(ANDROID_REQUEST_OUTPUT_STREAMS, &outputStreamIds[0],
