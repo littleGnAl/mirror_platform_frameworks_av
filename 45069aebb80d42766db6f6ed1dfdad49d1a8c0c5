@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d815bcc5_55cca611",
+        "filename": "camera/camera2/CaptureRequest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2017-11-14T21:07:46Z",
+      "side": 1,
+      "message": "size_t will likely be 32-bit in 32-bit processes, and 64-bit on 64-bit processes; maybe not the best choice if you want to do bounds-check. One option is to check if\n\n   parcel-\u003edataAvail() / 2 / sizeof(int32_t) \u003e streamSurfaceSize \n\nso divide instead of multiply, or just use an uint64_t explicitly to store remainingDataSize. Right now, the comparison with INT_MAX isn\u0027t terribly helpful.  \n\nUnsigned 32bit size_t will only have one extra bit, which the *2 will consume anyway, so remainingDataSize can still overflow. For example, if I set streamSurfaceSize to 0x60000000, then remainingDataSize will end up as 0 (0x60000000 * 8 \u003d 0x300000000, truncates to 0x00000000), which will easily pass this check.\n\nNow, you\u0027ll error out in the for loop since you\u0027ll run out of parcel anyway, so no actual security issue, but the check either needs to be removed (since we don\u0027t use remainingDataSize for any allocation), or fixed so that it can\u0027t overflow.",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 111,
+        "endChar": 10
+      },
+      "revId": "45069aebb80d42766db6f6ed1dfdad49d1a8c0c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

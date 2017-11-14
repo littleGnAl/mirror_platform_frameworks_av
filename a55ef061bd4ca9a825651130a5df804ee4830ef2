@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab1ec0d3_68766fe6",
+        "filename": "camera/camera2/CaptureRequest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2017-11-14T21:07:46Z",
+      "side": 1,
+      "message": "while this check is fine, it\u0027s not necessary in this case, since you\u0027re not pre-allocating any arrays, just pushing into dynamic ones. The readInt32 calls themselves will error out if you run off the end of the array. Of course, if you want to call mStreamIdxList.capacity() to optimize the dynamic array writing etc, then this validation is necessary first.",
+      "revId": "a55ef061bd4ca9a825651130a5df804ee4830ef2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ca84396_7858482c",
+        "filename": "camera/include/camera/camera2/CaptureRequest.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2017-11-14T21:07:46Z",
+      "side": 1,
+      "message": "need docs here - these seem to be exclusive with mSurfaceList, so docs needed on the meaning and when each can be valid.",
+      "revId": "a55ef061bd4ca9a825651130a5df804ee4830ef2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
