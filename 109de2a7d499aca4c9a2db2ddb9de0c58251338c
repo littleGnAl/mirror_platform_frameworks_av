@@ -52,6 +52,24 @@
       "revId": "109de2a7d499aca4c9a2db2ddb9de0c58251338c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a58fdf1e_e1cf0863",
+        "filename": "media/libstagefright/FLACExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 861,
+      "author": {
+        "id": 1037953
+      },
+      "writtenOn": "2017-11-16T14:00:00Z",
+      "side": 1,
+      "message": "After doing testing the code has been updated to only check for one single instance of a ID3v2 header without footers.\n\nThis is to match what external/flac/libFLAC/stream_decoder.c - skip_id3v2_tag_ does. If we accept a more complicated header (with footers) the sniffer will accept the file but the playback will fail because the footer will not be skipped.\n\nIf footer support is required then the upstream FLAC project also needs patching.",
+      "parentUuid": "455a6ade_a529be7a",
+      "revId": "109de2a7d499aca4c9a2db2ddb9de0c58251338c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
