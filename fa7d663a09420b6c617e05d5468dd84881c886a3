@@ -22,6 +22,30 @@
       "revId": "fa7d663a09420b6c617e05d5468dd84881c886a3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "750fc13a_4b009ccd",
+        "filename": "media/libstagefright/MP3Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2017-11-20T18:52:23Z",
+      "side": 1,
+      "message": "ALOGE or ALOGV",
+      "parentUuid": "d01e262d_f7f9c745",
+      "range": {
+        "startLine": 681,
+        "startChar": 8,
+        "endLine": 681,
+        "endChar": 51
+      },
+      "revId": "fa7d663a09420b6c617e05d5468dd84881c886a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
