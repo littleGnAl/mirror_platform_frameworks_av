@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d01e262d_f7f9c745",
+        "filename": "media/libstagefright/MP3Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1026966
+      },
+      "writtenOn": "2017-11-20T18:37:43Z",
+      "side": 1,
+      "message": "would ALOGI\u003d\u003eALOGV MPEG1\u003d\u003eMPEG1PS be better here?",
+      "range": {
+        "startLine": 681,
+        "startChar": 8,
+        "endLine": 681,
+        "endChar": 51
+      },
+      "revId": "fa7d663a09420b6c617e05d5468dd84881c886a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
