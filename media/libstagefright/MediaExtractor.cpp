@@ -31,6 +31,9 @@
 #include "include/AACExtractor.h"
 #include "include/MidiExtractor.h"
 
+#include "AsfExtractor.h"
+#include "MetaDataExt.h"
+
 #include "matroska/MatroskaExtractor.h"
 
 #include <binder/IServiceManager.h>
@@ -185,6 +188,8 @@ sp<MediaExtractor> MediaExtractor::CreateFromService(
         ret = new OggExtractor(source);
     } else if (!strcasecmp(mime, MEDIA_MIMETYPE_CONTAINER_MATROSKA)) {
         ret = new MatroskaExtractor(source);
+    } else if (!strcasecmp(mime, MEDIA_MIMETYPE_CONTAINER_ASF)) {
+        ret = new AsfExtractor(source);
     } else if (!strcasecmp(mime, MEDIA_MIMETYPE_CONTAINER_MPEG2TS)) {
         ret = new MPEG2TSExtractor(source);
     } else if (!strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_AAC_ADTS)) {
@@ -287,6 +292,7 @@ void MediaExtractor::RegisterDefaultSniffers() {
     RegisterSniffer_l(SniffAAC);
     RegisterSniffer_l(SniffMPEG2PS);
     RegisterSniffer_l(SniffMidi);
+    RegisterSniffer_l(SniffAsf);
 
     gSniffersRegistered = true;
 }

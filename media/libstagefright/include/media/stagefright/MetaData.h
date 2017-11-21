@@ -216,6 +216,9 @@ enum {
     kKeyGridWidth        = 'grdW', // int32_t, HEIF grid width
     kKeyGridHeight       = 'grdH', // int32_t, HEIF grid height
     kKeyIccProfile       = 'prof', // raw data, ICC prifile data
+    kKeyWmaBlockAlign     = 'blka',
+    kKeyWmaFormatTag      = 'frmt',
+    kKeyBitPerSample      = 'btps',
 };
 
 enum {

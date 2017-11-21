@@ -26,6 +26,7 @@
 
 #include "include/ESDS.h"
 #include "include/HevcUtils.h"
+#include "MetaDataExt.h"
 
 #include <arpa/inet.h>
 #include <cutils/properties.h>
@@ -1096,6 +1097,13 @@ status_t convertMetaDataToMessage(
         msg->setBuffer("csd-0", buffer);
 
         parseVp9ProfileLevelFromCsd(buffer, msg);
+    } else if (meta->findData(kKeyConfigData, &type, &data, &size)) {
+        sp<ABuffer> buffer = new (std::nothrow) ABuffer(size);
+        memcpy(buffer->data(), data, size);
+
+        buffer->meta()->setInt32("csd", true);
+        buffer->meta()->setInt64("timeUs", 0);
+        msg->setBuffer("csd-0", buffer);
     }
 
     // TODO expose "crypto-key"/kKeyCryptoKey through public api

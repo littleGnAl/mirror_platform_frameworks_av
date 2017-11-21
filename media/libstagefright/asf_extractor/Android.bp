@@ -1,0 +1,29 @@
+cc_library_static {
+    name: "libasfextractor",
+    srcs: [
+        "AsfExtractor.cpp",
+    ],
+
+    include_dirs: [
+        "system/core/base/include",
+        "frameworks/av/media/libstagefright/include",
+        "frameworks/av/media/libstagefright/asfparser",
+        "bionic"
+    ],
+
+    cflags: [
+        "-Werror",
+        "-Wall",
+    ],
+
+    sanitize: {
+        misc_undefined: [
+            "unsigned-integer-overflow",
+            "signed-integer-overflow",
+        ],
+        cfi: true,
+        diag: {
+            cfi: true,
+        },
+    },
+}

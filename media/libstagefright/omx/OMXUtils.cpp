@@ -26,6 +26,7 @@
 #include <media/hardware/HardwareAPI.h>
 #include <media/MediaDefs.h>
 #include <system/graphics-base.h>
+#include "MetaDataExt.h"
 
 namespace android {
 
@@ -137,6 +138,8 @@ const char *GetComponentRole(bool isEncoder, const char *mime) {
             "audio_decoder.g711mlaw", "audio_encoder.g711mlaw" },
         { MEDIA_MIMETYPE_AUDIO_G711_ALAW,
             "audio_decoder.g711alaw", "audio_encoder.g711alaw" },
+        { MEDIA_MIMETYPE_VIDEO_WMV,
+            "video_decoder.wmv", "video_encoder.wmv" },
         { MEDIA_MIMETYPE_VIDEO_AVC,
             "video_decoder.avc", "video_encoder.avc" },
         { MEDIA_MIMETYPE_VIDEO_HEVC,

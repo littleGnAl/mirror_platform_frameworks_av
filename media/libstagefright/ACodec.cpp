@@ -61,6 +61,7 @@
 #include "include/SecureBuffer.h"
 #include "include/SharedMemoryBuffer.h"
 #include <media/stagefright/omx/OMXUtils.h>
+#include "MetaDataExt.h"
 
 namespace android {
 
@@ -3211,6 +3212,7 @@ static const struct VideoCodingMapEntry {
     const char *mMime;
     OMX_VIDEO_CODINGTYPE mVideoCodingType;
 } kVideoCodingMapEntry[] = {
+    { MEDIA_MIMETYPE_VIDEO_WMV, OMX_VIDEO_CodingWMV },
     { MEDIA_MIMETYPE_VIDEO_AVC, OMX_VIDEO_CodingAVC },
     { MEDIA_MIMETYPE_VIDEO_HEVC, OMX_VIDEO_CodingHEVC },
     { MEDIA_MIMETYPE_VIDEO_MPEG4, OMX_VIDEO_CodingMPEG4 },

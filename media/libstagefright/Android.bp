@@ -71,6 +71,7 @@ cc_library_shared {
     ],
 
     shared_libs: [
+        "libasfparser",
         "libaudioutils",
         "libbinder",
         "libcamera_client",
@@ -122,6 +123,7 @@ cc_library_shared {
         "libstagefright_mpeg2ts",
         "libstagefright_id3",
         "libFLAC",
+        "libasfextractor"
     ],
 
     export_shared_lib_headers: [
@@ -160,6 +162,8 @@ cc_library_shared {
 }
 
 subdirs = [
+    "asfparser",
+    "asf_extractor",
     "codecs/*",
     "colorconversion",
     "filters",
