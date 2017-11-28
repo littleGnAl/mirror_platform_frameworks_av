@@ -445,7 +445,8 @@ private:
          * Make a new CameraState and set the ID, cost, and conflicting devices using the values
          * returned in the HAL's camera_info struct for each device.
          */
-        CameraState(const String8& id, int cost, const std::set<String8>& conflicting);
+        CameraState(const String8& id, int cost, const std::set<String8>& conflicting,
+                    StatusInternal status);
         virtual ~CameraState();
 
         /**
@@ -511,6 +512,9 @@ private:
 
     // Eumerate all camera providers in the system
     status_t enumerateProviders();
+
+    // Add a new camera to camera and torch state lists or remove an unplugged one
+    void addStates(const String8 id, StatusInternal status);
 
     // Check if we can connect, before we acquire the service lock.
     // The returned originalClientPid is the PID of the original process that wants to connect to
