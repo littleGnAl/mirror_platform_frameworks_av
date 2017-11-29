@@ -2235,8 +2235,11 @@ status_t CameraService::BasicClient::finishCameraOps() {
                 mClientPackageName);
         mOpsActive = false;
 
+        // This function is called when a client disconnects. This should
+        // release the camera, but actually only if was in a proper functional
+        // state, i.e. with status NOT_AVAILABLE
         std::initializer_list<StatusInternal> rejected = {StatusInternal::PRESENT,
-                StatusInternal::ENUMERATING};
+                StatusInternal::ENUMERATING, StatusInternal::NOT_PRESENT};
 
         // Transition to PRESENT if the camera is not in either of the rejected states
         sCameraService->updateStatus(StatusInternal::PRESENT,
