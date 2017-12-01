@@ -45,6 +45,30 @@
       "revId": "d683dc67adf292351e86db05238af946677d02fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6001770_78bb0630",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 1061109
+      },
+      "writtenOn": "2017-12-01T23:43:34Z",
+      "side": 1,
+      "message": "Good suggestion.  Will 256 bytes be enough for all the possible parameters in effects? would it make sense to increase this buffer size in line 1065?",
+      "parentUuid": "d27b787e_4ea708b7",
+      "range": {
+        "startLine": 1148,
+        "startChar": 22,
+        "endLine": 1148,
+        "endChar": 28
+      },
+      "revId": "d683dc67adf292351e86db05238af946677d02fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
