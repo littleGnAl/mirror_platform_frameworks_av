@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8e91525f_5c59a873",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2017-12-01T19:37:13Z",
+      "side": 1,
+      "message": "Also, I think we still need to send onDeviceStatusChanged after addStates. So maybe it should be:\nif (!cameraFound) {\n    addStates(id8);\n}\nonDeviceStatusChanged(id8, CameraDeviceStatus::PRESENT);",
+      "parentUuid": "67436a07_2fc2879a",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 68
+      },
+      "revId": "13a550ffffce3018e8722af1ca3fb6dd9d91fdb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b4f7d2ae_7d6c282c",
         "filename": "services/camera/libcameraservice/CameraService.cpp",
         "patchSetId": 1
