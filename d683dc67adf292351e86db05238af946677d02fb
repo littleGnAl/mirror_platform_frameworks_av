@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccfe466e_8bc4d18e",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-12-01T19:44:44Z",
+      "side": 1,
+      "message": "would prefer sizeof(buffer)",
+      "range": {
+        "startLine": 1142,
+        "startChar": 22,
+        "endLine": 1142,
+        "endChar": 26
+      },
+      "revId": "d683dc67adf292351e86db05238af946677d02fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d27b787e_4ea708b7",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-12-01T19:44:44Z",
+      "side": 1,
+      "message": "please ensure the buffer is terminated with \\n\\0",
+      "range": {
+        "startLine": 1148,
+        "startChar": 22,
+        "endLine": 1148,
+        "endChar": 28
+      },
+      "revId": "d683dc67adf292351e86db05238af946677d02fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
