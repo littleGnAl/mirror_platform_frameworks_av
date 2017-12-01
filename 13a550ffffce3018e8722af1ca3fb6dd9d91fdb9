@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67436a07_2fc2879a",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2017-12-01T00:14:30Z",
+      "side": 1,
+      "message": "Style nit:\n\nif (cameraFound) {\n    onDeviceStatusChanged(id8, CameraDeviceStatus::PRESENT);\n} else {\n    addStates(id8);\n}",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 68
+      },
+      "revId": "13a550ffffce3018e8722af1ca3fb6dd9d91fdb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b4f7d2ae_7d6c282c",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2017-12-01T00:14:30Z",
+      "side": 1,
+      "message": "indent 4 spaces",
+      "range": {
+        "startLine": 284,
+        "startChar": 0,
+        "endLine": 284,
+        "endChar": 8
+      },
+      "revId": "13a550ffffce3018e8722af1ca3fb6dd9d91fdb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
