@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f4d7cb1b_fd9257bd",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2017-12-04T08:51:49Z",
+      "side": 1,
+      "message": "Thanks for your comment, done.",
+      "parentUuid": "ccfe466e_8bc4d18e",
+      "range": {
+        "startLine": 1142,
+        "startChar": 22,
+        "endLine": 1142,
+        "endChar": 26
+      },
+      "revId": "d683dc67adf292351e86db05238af946677d02fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d27b787e_4ea708b7",
         "filename": "services/audioflinger/Effects.cpp",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "Good suggestion.  Will 256 bytes be enough for all the possible parameters in effects? would it make sense to increase this buffer size in line 1065?",
       "parentUuid": "d27b787e_4ea708b7",
+      "range": {
+        "startLine": 1148,
+        "startChar": 22,
+        "endLine": 1148,
+        "endChar": 28
+      },
+      "revId": "d683dc67adf292351e86db05238af946677d02fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75df277f_56fd2ffc",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2017-12-04T08:51:49Z",
+      "side": 1,
+      "message": "Thanks for your comment. As far as I tried, 256 bytes is a little small for this purpose so let me change the size to 512 bytes.",
+      "parentUuid": "a6001770_78bb0630",
       "range": {
         "startLine": 1148,
         "startChar": 22,
