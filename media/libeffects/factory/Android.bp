@@ -12,6 +12,8 @@ cc_library_shared {
     vendor: true,
     srcs: ["EffectsFactory.c"],
 
+    cflags: ["-Wall", "-Werror"],
+
     shared_libs: [
         "libcutils",
         "liblog",
