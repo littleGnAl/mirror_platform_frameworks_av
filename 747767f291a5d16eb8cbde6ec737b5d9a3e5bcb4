@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "74a7ce0a_c9e97ba1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-06T20:36:07Z",
+      "side": 1,
+      "message": "Use git cherry-pick -x and git will automatically insert the line we normally use to mark cherry-picks at the bottom.",
+      "revId": "747767f291a5d16eb8cbde6ec737b5d9a3e5bcb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93e05b9e_a53c0e9f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2017-12-06T20:36:07Z",
+      "side": 1,
+      "message": "Add:\nMerged-In: I39e165ec539e4e45755691184e801770e9492df8",
+      "revId": "747767f291a5d16eb8cbde6ec737b5d9a3e5bcb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
