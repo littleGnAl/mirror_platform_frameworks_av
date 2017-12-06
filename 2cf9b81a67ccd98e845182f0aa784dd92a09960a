@@ -16,6 +16,24 @@
       "revId": "2cf9b81a67ccd98e845182f0aa784dd92a09960a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7bd4e9f7_e5ff9471",
+        "filename": "media/libstagefright/foundation/include/media/stagefright/foundation/ADebug.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2017-12-06T23:38:33Z",
+      "side": 1,
+      "message": "I don\u0027t know much about the media code that depend on this.\nHere I just follow the work at line 102 to make all these CHECK_* macros work with -Wall.",
+      "parentUuid": "438a3588_f544863f",
+      "revId": "2cf9b81a67ccd98e845182f0aa784dd92a09960a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
