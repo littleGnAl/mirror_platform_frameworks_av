@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ec56bfe7_5c4dfff9",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1011728
+      },
+      "writtenOn": "2017-12-06T17:41:14Z",
+      "side": 1,
+      "message": "Nice! I had to add this call to updateStatus() in my local version too, but! I had to modify it a bit. My first version was just like this oone from you. But it didn\u0027t work! The reason was, that the status was the same: the \"if (oldStatus \u003d\u003d status)\" condition in CameraService::CameraState::updateStatus() was true and the app wasn\u0027t signaled! To overcome that problem I had to add a \"status\" parameter to addStates() and here first add the camera with status NOT_PRESENT. Then when updateStatus() with status PRESENT was called, the rest worked too... This isn\u0027t very elegant, but that\u0027s the only solution I\u0027ve got for now. Another possibility would be to provide an additional \"oldStatus\" parameter to CameraService::CameraState::updateStatus(), that would be more correct. Which way would you prefer? And I am curious - how did this work for you?? Why didn\u0027t you get the same problem?",
+      "range": {
+        "startLine": 322,
+        "startChar": 12,
+        "endLine": 322,
+        "endChar": 24
+      },
+      "revId": "2cd6702ca461d017e689587b23c6cc954a35030c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
