@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "975f8ff1_50656ee4",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2017-12-06T19:58:23Z",
+      "side": 1,
+      "message": "You are right. I think we need to fire a callback to app explicitly in addStates in this case. Forgot about the previous state check will prevent the callback fired.",
+      "parentUuid": "0ba6bef2_94b9fb33",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 68
+      },
+      "revId": "13a550ffffce3018e8722af1ca3fb6dd9d91fdb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4f7d2ae_7d6c282c",
         "filename": "services/camera/libcameraservice/CameraService.cpp",
         "patchSetId": 1
