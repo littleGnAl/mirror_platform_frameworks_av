@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0ba6bef2_94b9fb33",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1011728
+      },
+      "writtenOn": "2017-12-06T17:33:36Z",
+      "side": 1,
+      "message": "Maybe you\u0027re right, but I\u0027d like to understand your reasoning. The reason, why I put an \"else\" there is, that if cameraFound is false, then addStates() adds the camera to the mCameraStates map, using the default status PRESENT from the CameraState(id, cost, conflicting) constructor. Then onDeviceStatusChanged() would check \"if (oldStatus \u003d\u003d newStatus)\" and issue a\n\nState transition to the same status 0x1 not allowed\n\nand return. Am I misunderstanding something?",
+      "parentUuid": "8e91525f_5c59a873",
+      "range": {
+        "startLine": 245,
+        "startChar": 0,
+        "endLine": 248,
+        "endChar": 68
+      },
+      "revId": "13a550ffffce3018e8722af1ca3fb6dd9d91fdb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b4f7d2ae_7d6c282c",
         "filename": "services/camera/libcameraservice/CameraService.cpp",
         "patchSetId": 1
