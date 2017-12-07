@@ -36,6 +36,14 @@ static int ALIGN(int x, int y) {
     return (x + y - 1) & ~(y - 1);
 }
 
+static int noHardWareYUV12() {
+    char prop[PROPERTY_VALUE_MAX];
+    // Test if it's running on Chrome OS inside emulator.
+    // TODO: change to use a single property if there is another use case.
+    return (property_get("ro.hardware.gralloc", prop, NULL) > 0 &&
+            !strcmp(prop, "cros") && property_get_int32("ro.boot.vm", 0) == 1);
+}
+
 SoftwareRenderer::SoftwareRenderer(
         const sp<ANativeWindow> &nativeWindow, int32_t rotation)
     : mColorFormat(OMX_COLOR_FormatUnused),
@@ -140,6 +148,11 @@ void SoftwareRenderer::resetFormatIfChanged(const sp<AMessage> &format) {
     if (halFormat == HAL_PIXEL_FORMAT_RGB_565) {
         mConverter = new ColorConverter(
                 mColorFormat, OMX_COLOR_Format16bitRGB565);
+        CHECK(mConverter->isValid());
+    } else if (mColorFormat == OMX_COLOR_FormatYUV420Planar && noHardWareYUV12()) {
+        halFormat = HAL_PIXEL_FORMAT_RGBA_8888;
+        mConverter = new ColorConverter(
+                mColorFormat, OMX_COLOR_Format32BitRGBA8888);
         CHECK(mConverter->isValid());
     }
 
