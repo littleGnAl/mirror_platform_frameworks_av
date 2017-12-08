@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4c17e4ad_7dd29078",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2339,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2017-12-08T00:38:46Z",
+      "side": 1,
+      "message": "Hmm... maybe we can just change this default value from PRESENT to NOT_PRESENT for the same effect?",
+      "range": {
+        "startLine": 2339,
+        "startChar": 16,
+        "endLine": 2339,
+        "endChar": 22
+      },
+      "revId": "6daca138aaedfa7dfbfa234848adc232359a1478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
