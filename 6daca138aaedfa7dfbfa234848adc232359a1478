@@ -22,6 +22,30 @@
       "revId": "6daca138aaedfa7dfbfa234848adc232359a1478",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8975650b_897566ed",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2339,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2017-12-08T22:42:57Z",
+      "side": 1,
+      "message": "It does look like addStates is the only place where we construct a CameraState, and all calls to addStates are with NOT_PRESENT.  So agree that we can just default to NOT_PRESENT and remove the argument.",
+      "parentUuid": "4c17e4ad_7dd29078",
+      "range": {
+        "startLine": 2339,
+        "startChar": 16,
+        "endLine": 2339,
+        "endChar": 22
+      },
+      "revId": "6daca138aaedfa7dfbfa234848adc232359a1478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
