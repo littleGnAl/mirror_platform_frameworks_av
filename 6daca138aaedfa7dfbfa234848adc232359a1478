@@ -46,6 +46,30 @@
       "revId": "6daca138aaedfa7dfbfa234848adc232359a1478",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "00f8c368_c20befed",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2339,
+      "author": {
+        "id": 1011728
+      },
+      "writtenOn": "2017-12-11T09:55:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8975650b_897566ed",
+      "range": {
+        "startLine": 2339,
+        "startChar": 16,
+        "endLine": 2339,
+        "endChar": 22
+      },
+      "revId": "6daca138aaedfa7dfbfa234848adc232359a1478",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
