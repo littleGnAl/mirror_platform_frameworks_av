@@ -467,9 +467,21 @@ extern "C"
     __inline  int32 fxp_mac_16by16(int16 var1,  int16 var2, int32 L_add)
     {
 
-        L_add += (int32)var1 * var2;
+        int32 L_var_out;
 
-        return L_add;
+        L_var_out = (int32)var1 * var2;
+
+        if (L_var_out < 0) {
+            if (L_add < MIN_32 - L_var_out) {
+                return MIN_32;
+            }
+        } else {
+            if (L_add > MAX_32 - L_var_out) {
+                return MAX_32;
+            }
+        }
+
+        return L_add + L_var_out;
     }
 
     __inline  int32 fxp_mul_16by16(int16 var1, const int16 var2)
