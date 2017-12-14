@@ -61,7 +61,8 @@ cc_library_shared {
 
     include_dirs: [
         "system/media/private/camera/include",
-        "frameworks/native/include/media/openmax",
+        "frameworks/native/headers/media_plugin",
+        "frameworks/native/headers/media_plugin/media/openmax",
     ],
     export_include_dirs: [
          "include",

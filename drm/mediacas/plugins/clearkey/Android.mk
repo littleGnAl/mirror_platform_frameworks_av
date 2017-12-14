@@ -56,6 +56,7 @@ LOCAL_C_INCLUDES += \
     external/jsmn \
     frameworks/av/include \
     frameworks/native/include/media \
+    frameworks/native/headers/media_plugin \
     $(call proto_includes)
 
 LOCAL_EXPORT_C_INCLUDE_DIRS := \

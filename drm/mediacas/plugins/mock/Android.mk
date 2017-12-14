@@ -33,6 +33,7 @@ LOCAL_HEADER_LIBRARIES := media_plugin_headers
 LOCAL_C_INCLUDES += \
     $(TOP)/frameworks/av/include \
     $(TOP)/frameworks/native/include/media \
+    $(TOP)/frameworks/native/headers/media_plugin \
 
 LOCAL_MODULE_TAGS := optional
 

@@ -36,6 +36,7 @@ LOCAL_C_INCLUDES += \
     $(TOP)/frameworks/av/drm/mediacas/plugins/clearkey \
     $(TOP)/frameworks/av/include \
     $(TOP)/frameworks/native/include/media \
+    frameworks/native/headers/media_plugin \
 
 LOCAL_MODULE_TAGS := tests
 

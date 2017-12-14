@@ -13,6 +13,7 @@ cc_library_shared {
     include_dirs: [
         "frameworks/av/include",
         "frameworks/native/include",
+        "frameworks/native/headers/media_plugin",
     ],
 
     local_include_dirs: [

@@ -18,7 +18,7 @@ cc_library_shared {
         "external/libmpeg2/decoder",
         "external/libmpeg2/common",
         "frameworks/av/media/libstagefright/include",
-        "frameworks/native/include/media/openmax",
+        "frameworks/native/headers/media_plugin/media/openmax",
     ],
 
     shared_libs: [

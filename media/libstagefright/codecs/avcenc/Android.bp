@@ -12,8 +12,8 @@ cc_library_shared {
         "external/libavc/encoder",
         "external/libavc/common",
         "frameworks/av/media/libstagefright/include",
-        "frameworks/native/include/media/hardware",
-        "frameworks/native/include/media/openmax",
+        "frameworks/native/headers/media_plugin/media/hardware",
+        "frameworks/native/headers/media_plugin/media/openmax",
     ],
 
     shared_libs: [

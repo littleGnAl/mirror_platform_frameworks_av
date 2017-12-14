@@ -27,7 +27,10 @@ cc_library_static {
         "WebmWriter.cpp",
     ],
 
-    include_dirs: ["frameworks/av/include"],
+    include_dirs: [
+        "frameworks/av/include",
+        "frameworks/native/headers/media_plugin",
+    ],
 
     shared_libs: [
         "libstagefright_foundation",

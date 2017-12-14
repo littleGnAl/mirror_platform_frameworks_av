@@ -48,7 +48,7 @@ cc_library_shared {
     include_dirs: [
         "bionic/libc/private",
         "frameworks/base/core/jni",
-        "frameworks/native/include/media/openmax",
+        "frameworks/native/headers/media_plugin/media/openmax",
         "system/media/camera/include",
     ],
 

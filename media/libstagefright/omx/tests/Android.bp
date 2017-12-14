@@ -22,7 +22,7 @@ cc_test {
 
     include_dirs: [
         "frameworks/av/media/libstagefright",
-        "frameworks/native/include/media/openmax",
+        "frameworks/native/headers/media_plugin/media/openmax",
     ],
 
     cflags: [

@@ -16,7 +16,7 @@ LOCAL_SHARED_LIBRARIES := \
 LOCAL_C_INCLUDES:= \
         frameworks/av/media/libstagefright \
         frameworks/av/media/libstagefright/include \
-        frameworks/native/include/media/openmax \
+        frameworks/native/headers/media_plugin/media/openmax \
         external/jpeg \
 
 LOCAL_CFLAGS += -Wno-multichar -Werror -Wall
@@ -40,8 +40,8 @@ LOCAL_SHARED_LIBRARIES := \
 
 LOCAL_C_INCLUDES:= \
         frameworks/av/media/libstagefright \
-        frameworks/native/include/media/openmax \
-        frameworks/native/include/media/hardware
+        frameworks/native/headers/media_plugin/media/openmax \
+        frameworks/native/headers/media_plugin/media/hardware
 
 LOCAL_CFLAGS += -Wno-multichar -Werror -Wall
 
@@ -64,8 +64,8 @@ LOCAL_SHARED_LIBRARIES := \
 
 LOCAL_C_INCLUDES:= \
         frameworks/av/media/libstagefright \
-        frameworks/native/include/media/openmax \
-        frameworks/native/include/media/hardware
+        frameworks/native/headers/media_plugin/media/openmax \
+        frameworks/native/headers/media_plugin/media/hardware
 
 LOCAL_CFLAGS += -Wno-multichar -Werror -Wall
 
@@ -89,7 +89,7 @@ LOCAL_SHARED_LIBRARIES := \
 
 LOCAL_C_INCLUDES:= \
         frameworks/av/media/libstagefright \
-        frameworks/native/include/media/openmax
+        frameworks/native/headers/media_plugin/media/openmax
 
 LOCAL_CFLAGS += -Wno-multichar -Werror -Wall
 
@@ -112,7 +112,7 @@ LOCAL_SHARED_LIBRARIES := \
 
 LOCAL_C_INCLUDES:= \
         frameworks/av/media/libstagefright \
-        frameworks/native/include/media/openmax
+        frameworks/native/headers/media_plugin/media/openmax
 
 LOCAL_CFLAGS += -Wno-multichar -Werror -Wall
 
@@ -136,7 +136,7 @@ LOCAL_SHARED_LIBRARIES := \
 
 LOCAL_C_INCLUDES:= \
         frameworks/av/media/libstagefright \
-        frameworks/native/include/media/openmax
+        frameworks/native/headers/media_plugin/media/openmax
 
 LOCAL_CFLAGS += -Wno-multichar -Werror -Wall
 
@@ -169,7 +169,7 @@ LOCAL_SHARED_LIBRARIES := \
 
 LOCAL_C_INCLUDES:= \
         frameworks/av/media/libstagefright \
-        frameworks/native/include/media/openmax \
+        frameworks/native/headers/media_plugin/media/openmax \
         frameworks/rs/cpp \
         frameworks/rs \
 
@@ -203,7 +203,7 @@ LOCAL_SHARED_LIBRARIES := \
 
 LOCAL_C_INCLUDES:= \
         frameworks/av/media/libstagefright \
-        frameworks/native/include/media/openmax
+        frameworks/native/headers/media_plugin/media/openmax
 
 LOCAL_CFLAGS += -Wno-multichar -Werror -Wall
 

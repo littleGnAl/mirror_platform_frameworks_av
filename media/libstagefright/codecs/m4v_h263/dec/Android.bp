@@ -40,7 +40,7 @@ cc_library_static {
 
     include_dirs: [
         "frameworks/av/media/libstagefright/include",
-        "frameworks/native/include/media/openmax",
+        "frameworks/native/headers/media_plugin/media/openmax",
     ],
 
     local_include_dirs: ["src"],
@@ -77,7 +77,7 @@ cc_library_shared {
 
     include_dirs: [
         "frameworks/av/media/libstagefright/include",
-        "frameworks/native/include/media/openmax",
+        "frameworks/native/headers/media_plugin/media/openmax",
     ],
 
     local_include_dirs: ["src"],

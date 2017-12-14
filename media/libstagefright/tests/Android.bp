@@ -27,8 +27,8 @@ cc_test {
     include_dirs: [
         "frameworks/av/media/libstagefright",
         "frameworks/av/media/libstagefright/include",
-        "frameworks/native/include/media/openmax",
-        "frameworks/native/include/media/hardware",
+        "frameworks/native/headers/media_plugin/media/openmax",
+        "frameworks/native/headers/media_plugin/media/hardware",
     ],
 
     cflags: [
@@ -56,7 +56,7 @@ cc_test {
     include_dirs: [
         "frameworks/av/media/libstagefright",
         "frameworks/av/media/libstagefright/include",
-        "frameworks/native/include/media/openmax",
+        "frameworks/native/headers/media_plugin/media/openmax",
     ],
 
     compile_multilib: "32",

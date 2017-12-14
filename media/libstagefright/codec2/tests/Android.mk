@@ -20,7 +20,7 @@ LOCAL_SHARED_LIBRARIES := \
 LOCAL_C_INCLUDES := \
 	frameworks/av/media/libstagefright/codec2/include \
 	frameworks/av/media/libstagefright/codec2/vndk/include \
-	$(TOP)/frameworks/native/include/media/openmax \
+	$(TOP)/frameworks/native/headers/media_plugin/media/openmax \
 
 LOCAL_CFLAGS += -Werror -Wall -std=c++14
 LOCAL_CLANG := true

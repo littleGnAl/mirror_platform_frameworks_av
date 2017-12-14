@@ -18,7 +18,7 @@ cc_library_shared {
         "external/libhevc/decoder",
         "external/libhevc/common",
         "frameworks/av/media/libstagefright/include",
-        "frameworks/native/include/media/openmax",
+        "frameworks/native/headers/media_plugin/media/openmax",
     ],
 
     sanitize: {

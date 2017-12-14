@@ -55,8 +55,8 @@ LOCAL_C_INCLUDES :=                                                 \
     frameworks/av/media/libstagefright/webm                  \
     $(LOCAL_PATH)/include/media                              \
     frameworks/av/include/camera                             \
-    frameworks/native/include/media/openmax                  \
-    frameworks/native/include/media/hardware                 \
+    frameworks/native/headers/media_plugin/media/openmax                  \
+    frameworks/native/headers/media_plugin/media/hardware                 \
     external/tremolo/Tremolo                                 \
 
 LOCAL_CFLAGS += -Werror -Wno-error=deprecated-declarations -Wall

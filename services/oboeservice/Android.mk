@@ -18,6 +18,7 @@ LOCAL_C_INCLUDES := \
     $(TOP)/frameworks/av/media/libaaudio/include \
     $(TOP)/frameworks/av/media/utils/include \
     frameworks/native/include \
+    frameworks/native/headers/media_plugin \
     $(TOP)/external/tinyalsa/include \
     $(TOP)/frameworks/av/media/libaaudio/src
 

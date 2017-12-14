@@ -75,7 +75,7 @@ enum {
 // Use the statusFromOMXError(int32_t omxError) function.
 //
 // Currently this is a direct map.
-// See frameworks/native/include/media/openmax/OMX_Core.h
+// See frameworks/native/headers/media_plugin/media/openmax/OMX_Core.h
 //
 // Vendor OMX errors     from 0x90000000 - 0x9000FFFF
 // Extension OMX errors  from 0x8F000000 - 0x90000000

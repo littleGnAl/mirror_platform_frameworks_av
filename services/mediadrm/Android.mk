@@ -30,6 +30,9 @@ LOCAL_SHARED_LIBRARIES:= \
     libhidltransport \
     android.hardware.drm@1.0
 
+ LOCAL_C_INCLUDES += \
+    frameworks/native/headers/media_plugin
+
 LOCAL_CFLAGS += -Wall -Wextra -Werror
 
 LOCAL_MODULE:= mediadrmserver

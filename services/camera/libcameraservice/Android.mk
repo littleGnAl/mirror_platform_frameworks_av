@@ -84,7 +84,7 @@ LOCAL_EXPORT_SHARED_LIBRARY_HEADERS := libbinder libcamera_client libfmq
 
 LOCAL_C_INCLUDES += \
     system/media/private/camera/include \
-    frameworks/native/include/media/openmax
+    frameworks/native/headers/media_plugin/media/openmax
 
 LOCAL_EXPORT_C_INCLUDE_DIRS := \
     frameworks/av/services/camera/libcameraservice

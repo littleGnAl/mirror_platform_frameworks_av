@@ -20,6 +20,10 @@ cc_library_shared {
         "protos/plugin_metrics.proto",
     ],
 
+    include_dirs: [
+        "frameworks/native/headers/media_plugin",
+    ],
+
     proto: {
         type: "lite",
     },

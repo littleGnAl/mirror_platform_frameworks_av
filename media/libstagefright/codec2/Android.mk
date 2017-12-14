@@ -6,7 +6,7 @@ LOCAL_SRC_FILES:= \
 
 LOCAL_C_INCLUDES += \
         $(TOP)/frameworks/av/media/libstagefright/codec2/include \
-        $(TOP)/frameworks/native/include/media/hardware \
+        $(TOP)/frameworks/native/headers/media_plugin/media/hardware \
 
 LOCAL_MODULE:= libstagefright_codec2
 LOCAL_CFLAGS += -Werror -Wall
