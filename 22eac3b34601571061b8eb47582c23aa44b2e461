@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "110ead85_aab644f2",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2554,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-12-15T01:26:23Z",
+      "side": 1,
+      "message": "\u003e\u003e hasFastMixer();\n\n// halve the sleep time if fast mixer is present to avoid underruns.\n\n\nThe exact value (i.e. / 2 versus / 3, etc.) might be different depending on the ratio of the normal mixer period versus the fast mixer period.  Also perhaps this could be computed from the MonoPipe fullness.",
+      "range": {
+        "startLine": 2554,
+        "startChar": 82,
+        "endLine": 2554,
+        "endChar": 83
+      },
+      "revId": "22eac3b34601571061b8eb47582c23aa44b2e461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bda98fa_6c44b98b",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4777,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2017-12-15T01:26:23Z",
+      "side": 1,
+      "message": "may not be necessary if the code is placed in PlaybackThread::activeSleepTimeUs().",
+      "range": {
+        "startLine": 4777,
+        "startChar": 0,
+        "endLine": 4777,
+        "endChar": 61
+      },
+      "revId": "22eac3b34601571061b8eb47582c23aa44b2e461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
