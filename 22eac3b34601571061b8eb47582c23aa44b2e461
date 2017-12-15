@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0658c2f5_948ea342",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2554,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2017-12-15T17:46:39Z",
+      "side": 1,
+      "message": "Yes I agree with Andy that the ratio should not be hard-coded constant 2.",
+      "parentUuid": "110ead85_aab644f2",
+      "range": {
+        "startLine": 2554,
+        "startChar": 82,
+        "endLine": 2554,
+        "endChar": 83
+      },
+      "revId": "22eac3b34601571061b8eb47582c23aa44b2e461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bda98fa_6c44b98b",
         "filename": "services/audioflinger/Threads.cpp",
         "patchSetId": 2
