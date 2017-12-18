@@ -199,6 +199,7 @@ void deleteRecursive(const char* path) {
     struct dirent* entry;
     while ((entry = readdir(dir))) {
         const char* name = entry->d_name;
+        int pathLength = pathStr.length();
 
         // ignore "." and ".."
         if (name[0] == '.' && (name[1] == 0 || (name[1] == '.' && name[2] == 0))) {
@@ -211,6 +212,7 @@ void deleteRecursive(const char* path) {
         } else {
             unlink(pathStr.c_str());
         }
+        pathStr.erase(pathStr.begin() + pathLength, pathStr.end());
     }
     closedir(dir);
 }
