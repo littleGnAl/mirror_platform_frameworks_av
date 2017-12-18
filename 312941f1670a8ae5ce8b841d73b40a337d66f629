@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e5d9d4f_a3361f1c",
+        "filename": "media/mtp/MtpUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1251788
+      },
+      "writtenOn": "2017-12-18T17:21:13Z",
+      "side": 1,
+      "message": "Wondering if we put the length calculation before (outside) the while loop... I will think about this later.",
+      "revId": "312941f1670a8ae5ce8b841d73b40a337d66f629",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
