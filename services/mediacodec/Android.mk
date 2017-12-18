@@ -16,6 +16,29 @@ LOCAL_VENDOR_MODULE := true
 LOCAL_32_BIT_ONLY := true
 include $(BUILD_SHARED_LIBRARY)
 
+_software_codecs := \
+    libstagefright_soft_aacdec \
+    libstagefright_soft_aacenc \
+    libstagefright_soft_amrdec \
+    libstagefright_soft_amrnbenc \
+    libstagefright_soft_amrwbenc \
+    libstagefright_soft_avcdec \
+    libstagefright_soft_avcenc \
+    libstagefright_soft_flacdec \
+    libstagefright_soft_flacenc \
+    libstagefright_soft_g711dec \
+    libstagefright_soft_gsmdec \
+    libstagefright_soft_hevcdec \
+    libstagefright_soft_mp3dec \
+    libstagefright_soft_mpeg2dec \
+    libstagefright_soft_mpeg4dec \
+    libstagefright_soft_mpeg4enc \
+    libstagefright_soft_opusdec \
+    libstagefright_soft_rawdec \
+    libstagefright_soft_vorbisdec \
+    libstagefright_soft_vpxdec \
+    libstagefright_soft_vpxenc \
+
 # service executable
 include $(CLEAR_VARS)
 LOCAL_REQUIRED_MODULES_arm := mediacodec.policy
@@ -40,6 +63,14 @@ LOCAL_MODULE := android.hardware.media.omx@1.0-service
 LOCAL_MODULE_RELATIVE_PATH := hw
 LOCAL_VENDOR_MODULE := true
 LOCAL_32_BIT_ONLY := true
+# Only the 32-bit variant of the software codec libs are installed to save space
+LOCAL_REQUIRED_MODULES := \
+$(foreach codec,$(_software_codecs),\
+  $(eval _vendor_suffix := $(if $(filter current,$(BOARD_VNDK_VERSION)),.vendor))\
+  $(eval _arch_suffix := $(if $(filter true,$(TARGET_TRANSLATE_2ND_ARCH)),\
+      $(if $(filter true,$(LOCAL_32_BIT_ONLY)),$(TARGET_2ND_ARCH_MODULE_SUFFIX))))\
+  $(codec)$(_vendor_suffix)$(_arch_suffix)\
+)
 LOCAL_INIT_RC := android.hardware.media.omx@1.0-service.rc
 include $(BUILD_EXECUTABLE)
 
