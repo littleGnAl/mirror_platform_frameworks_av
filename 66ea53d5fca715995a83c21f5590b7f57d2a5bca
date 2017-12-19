@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a043bf6_f49a0bac",
+        "filename": "camera/ndk/impl/ACameraManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2017-12-19T18:50:16Z",
+      "side": 1,
+      "message": "This one is a bit complicated.\n\nThis is the NDK API client and changes here usually comes with similar update to the java API client in frameworks/base project.",
+      "revId": "66ea53d5fca715995a83c21f5590b7f57d2a5bca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
