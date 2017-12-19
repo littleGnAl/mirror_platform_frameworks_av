@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83ab4155_f6db736c",
+        "filename": "services/mediacodec/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1014807
+      },
+      "writtenOn": "2017-12-19T01:36:36Z",
+      "side": 1,
+      "message": "How about $(BOARD_VNDK_VERSION)?",
+      "range": {
+        "startLine": 69,
+        "startChar": 32,
+        "endLine": 69,
+        "endChar": 71
+      },
+      "revId": "c867aa5fec18f91994beb5787481673096f73ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
