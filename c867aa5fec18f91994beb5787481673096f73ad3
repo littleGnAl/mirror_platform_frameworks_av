@@ -22,6 +22,53 @@
       "revId": "c867aa5fec18f91994beb5787481673096f73ad3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e0282f0_1e2d41b9",
+        "filename": "services/mediacodec/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-19T03:45:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83ab4155_f6db736c",
+      "range": {
+        "startLine": 69,
+        "startChar": 32,
+        "endLine": 69,
+        "endChar": 71
+      },
+      "revId": "c867aa5fec18f91994beb5787481673096f73ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ca2251d6_b963b66a",
+        "filename": "services/mediacodec/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2017-12-19T03:45:57Z",
+      "side": 1,
+      "message": "This is removed as this is already done by select-bitness-of-required-modules in build/make/core/main.mk",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 83
+      },
+      "revId": "c867aa5fec18f91994beb5787481673096f73ad3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
