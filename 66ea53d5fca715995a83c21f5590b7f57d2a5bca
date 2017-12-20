@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "70080ce3_5666a231",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2017-12-20T18:06:15Z",
+      "side": 1,
+      "message": "store? (at least that\u0027s google suggests when I search stpre :P)",
+      "range": {
+        "startLine": 9,
+        "startChar": 46,
+        "endLine": 9,
+        "endChar": 47
+      },
+      "revId": "66ea53d5fca715995a83c21f5590b7f57d2a5bca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a043bf6_f49a0bac",
         "filename": "camera/ndk/impl/ACameraManager.cpp",
         "patchSetId": 3
