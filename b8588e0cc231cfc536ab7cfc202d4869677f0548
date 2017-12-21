@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7aeec94_d5493a75",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2017-12-21T16:53:04Z",
+      "side": 1,
+      "message": "I would like to understand how we end up with a non offloadable effect on an offload thread?",
+      "range": {
+        "startLine": 389,
+        "startChar": 52,
+        "endLine": 389,
+        "endChar": 63
+      },
+      "revId": "b8588e0cc231cfc536ab7cfc202d4869677f0548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
