@@ -22,6 +22,30 @@
       "revId": "b8588e0cc231cfc536ab7cfc202d4869677f0548",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb48be38_953fcd30",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2017-12-22T03:45:18Z",
+      "side": 1,
+      "message": "\"configure()\" is called in initialization of AudioEffect so non-offloadable effect on offload thread should allow at this timing.\nFinally in invalidateTracks(Line 1245) will be called in \"EffectHandle::enabled()\" then switched to non-offload thread.",
+      "parentUuid": "e7aeec94_d5493a75",
+      "range": {
+        "startLine": 389,
+        "startChar": 52,
+        "endLine": 389,
+        "endChar": 63
+      },
+      "revId": "b8588e0cc231cfc536ab7cfc202d4869677f0548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
