@@ -6345,6 +6345,9 @@ reacquire_wakelock:
             if (framesRead <= (ssize_t) sleepFrames) {
                 sleepUs = (sleepFrames * 1000000LL) / mSampleRate;
             }
+            if (framesToRead <= mPipeSource->availableToRead()) {
+                sleepUs /= 2;
+            }
             if (framesRead < 0) {
                 status_t status = (status_t) framesRead;
                 switch (status) {
