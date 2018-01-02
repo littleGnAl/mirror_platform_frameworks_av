@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48178b20_997954ad",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6350,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-01-02T21:13:12Z",
+      "side": 1,
+      "message": "i would prefer these lines moved into the if statatement (6347), but more about the fix.\n\nAs I understand it, lines 6345-6346 are intended to slow down the amount of reads to something more manageable.  See internal ag/1231917.\n\nHowever, there may still be a considerable number of frames still left in the read buffer after the read on line 6339.  I\u0027m not sure if I\u0027d compare mPipeSource-\u003eavailableToRead() with framesToRead because that\u0027s comparing the pipe buffer depth with the resampler buffer depth. Rather, I\u0027d prefer the computation for sleepUs to be based on mPipeSource-\u003eavailableToRead(), e.g. using min(sleepFrames, mPipeFramesP2 - mPipeSource-\u003eavailableToRead()) or some such equivalent on line 6346.",
+      "range": {
+        "startLine": 6348,
+        "startChar": 0,
+        "endLine": 6350,
+        "endChar": 13
+      },
+      "revId": "6e4f857b7ccddc5ff1217f29b8d30246f8e8ae5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
