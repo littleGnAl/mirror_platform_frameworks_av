@@ -831,6 +831,11 @@ void MediaCodecSource::onMessageReceived(const sp<AMessage> &msg) {
         int32_t eos = 0;
         if (msg->findInt32("eos", &eos) && eos) {
             ALOGV("puller (%s) reached EOS", mIsVideo ? "video" : "audio");
+            MediaBuffer* mbuf = NULL;
+            while (mPuller->readBuffer(&mbuf)) {
+                ALOGW("puller (%s) has queued buffers. Releasing...", mIsVideo ? "video" : "audio");
+                mbuf->release();
+            }
             signalEOS();
             break;
         }
