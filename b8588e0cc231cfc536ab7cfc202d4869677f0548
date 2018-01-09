@@ -46,6 +46,30 @@
       "revId": "b8588e0cc231cfc536ab7cfc202d4869677f0548",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "943018aa_73cbcb5f",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2018-01-09T20:27:55Z",
+      "side": 1,
+      "message": "in this case a better solution maybe to just force the configuration status to NO_ERROR at line 441  when (thread-\u003etype() \u003d\u003d ThreadBase::OFFLOAD) \u0026\u0026 !isOffloaded() because we don\u0027t care about the result in this case.\nThis will avoid using a default value of 48000 which we are not sure is suitable to the SW implementation and also solve a similar issue for format and channel mask.",
+      "parentUuid": "bb48be38_953fcd30",
+      "range": {
+        "startLine": 389,
+        "startChar": 52,
+        "endLine": 389,
+        "endChar": 63
+      },
+      "revId": "b8588e0cc231cfc536ab7cfc202d4869677f0548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
