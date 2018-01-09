@@ -404,7 +404,11 @@ status_t LiveSession::dequeueAccessUnit(
                     offsetTimeUs += strm.mLastSampleDurationUs;
                 }
 
-                mDiscontinuityOffsetTimesUs.add(discontinuitySeq, offsetTimeUs);
+                // Only add offsetTimeUs once at the first time
+                // for unifying the offsetTimeUs with the same discontinuitySeq.
+                if (mDiscontinuityAbsStartTimesUs.indexOfKey(discontinuitySeq) < 0) {
+                    mDiscontinuityOffsetTimesUs.add(discontinuitySeq, offsetTimeUs);
+                }
                 strm.mCurDiscontinuitySeq = discontinuitySeq;
             }
 
