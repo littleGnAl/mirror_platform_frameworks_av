@@ -162,7 +162,11 @@ cc_library_shared {
     arch: {
         arm64: {
             // Fix OMX API issue between 32/64 bit processes
-            cflags: ["-DHAVE_OMX_ALIGNMENT","-DUSE_64BITMEDIA"],
+            cflags: ["-DUSE_64BITMEDIA"],
+        },
+        arm: {
+            // Force OMX_PTR to be 8 bytes aligned to work with 64 bit components
+            cflags: ["-DHAVE_OMX_ALIGNMENT"],
         },
     },
 }
