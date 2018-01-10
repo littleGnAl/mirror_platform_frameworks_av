@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c5021823_2140c4ec",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 435,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2018-01-10T15:26:32Z",
+      "side": 1,
+      "message": "This condition can be removed.",
+      "range": {
+        "startLine": 435,
+        "startChar": 8,
+        "endLine": 435,
+        "endChar": 27
+      },
+      "revId": "f2136aecd4a908d4e325e9d21bf0738822376814",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
