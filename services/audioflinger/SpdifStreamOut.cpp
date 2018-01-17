@@ -64,6 +64,7 @@ status_t SpdifStreamOut::open(
         case AUDIO_FORMAT_AC3:
         case AUDIO_FORMAT_DTS:
         case AUDIO_FORMAT_DTS_HD:
+        case AUDIO_FORMAT_AC4:
             mRateMultiplier = 1;
             break;
         default:
