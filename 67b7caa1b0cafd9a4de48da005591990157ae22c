@@ -94,6 +94,30 @@
       "revId": "67b7caa1b0cafd9a4de48da005591990157ae22c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "804e08ce_0534382b",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5661,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2018-01-18T16:57:59Z",
+      "side": 1,
+      "message": "there may be some implications when transitioning from one track to the next. For offload this sequence can be tricky and we don\u0027t want the terminated track to cause a flush and discard all data already written to the HAL by the starting track.\nThis is less of a problem on direct output where we buffer less data.\n\nYou should run git blame and see which problem was fixed by this behavior on direct output and see if this applies to offloaded output.",
+      "parentUuid": "f2ab87dc_deef957b",
+      "range": {
+        "startLine": 5661,
+        "startChar": 7,
+        "endLine": 5661,
+        "endChar": 23
+      },
+      "revId": "67b7caa1b0cafd9a4de48da005591990157ae22c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
