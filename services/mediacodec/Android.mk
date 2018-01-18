@@ -20,6 +20,7 @@ include $(BUILD_SHARED_LIBRARY)
 include $(CLEAR_VARS)
 # seccomp is not required for coverage build.
 ifneq ($(NATIVE_COVERAGE),true)
+LOCAL_REQUIRED_MODULES := crash_dump.policy
 LOCAL_REQUIRED_MODULES_arm := mediacodec.policy
 LOCAL_REQUIRED_MODULES_x86 := mediacodec.policy
 endif
