@@ -22,6 +22,30 @@
       "revId": "67b7caa1b0cafd9a4de48da005591990157ae22c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d19749a_0e733991",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5661,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-01-18T02:36:23Z",
+      "side": 1,
+      "message": "OTOH, if there is an active track, perhaps flushAck() could be called on the stopped track but mFlushPending would not be set true.  Eric would know better on this behavior.",
+      "parentUuid": "d5ccea1a_9d893290",
+      "range": {
+        "startLine": 5661,
+        "startChar": 7,
+        "endLine": 5661,
+        "endChar": 23
+      },
+      "revId": "67b7caa1b0cafd9a4de48da005591990157ae22c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
