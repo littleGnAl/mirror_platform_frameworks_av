@@ -70,6 +70,30 @@
       "revId": "67b7caa1b0cafd9a4de48da005591990157ae22c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2ab87dc_deef957b",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5661,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-01-18T03:43:34Z",
+      "side": 1,
+      "message": "Eric originally wrote that DirectOutputThread code in (internal) ag/603919, perhaps he might be able to comment more.  I think it is important to have consistent behavior for offload \u0026 direct tracks.",
+      "parentUuid": "987eb5b6_9f8c75a4",
+      "range": {
+        "startLine": 5661,
+        "startChar": 7,
+        "endLine": 5661,
+        "endChar": 23
+      },
+      "revId": "67b7caa1b0cafd9a4de48da005591990157ae22c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
