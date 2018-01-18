@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d5ccea1a_9d893290",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5661,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-01-18T02:30:16Z",
+      "side": 1,
+      "message": "Isn\u0027t it better to check that mActiveTracks.size() \u003d\u003d 0 here instead of !mFlushPending?  Otherwise you could be flushing when there is an active track playing.",
+      "range": {
+        "startLine": 5661,
+        "startChar": 7,
+        "endLine": 5661,
+        "endChar": 23
+      },
+      "revId": "67b7caa1b0cafd9a4de48da005591990157ae22c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
