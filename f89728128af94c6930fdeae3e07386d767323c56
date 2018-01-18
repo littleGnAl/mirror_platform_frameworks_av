@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "caa5b8d9_dcdf6962",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-01-18T04:12:44Z",
+      "side": 1,
+      "message": "suggest 2048.  this shouldn\u0027t be a const or a size_t if you are passing it into command. suggest using uint32_t so you don\u0027t need to cast on line 1145.",
+      "range": {
+        "startLine": 1065,
+        "startChar": 24,
+        "endLine": 1065,
+        "endChar": 27
+      },
+      "revId": "f89728128af94c6930fdeae3e07386d767323c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "985611c2_92c40d02",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-01-18T04:12:44Z",
+      "side": 1,
+      "message": "to be safe, ensure that buffer[SIZE - 1] \u003d 0;",
+      "range": {
+        "startLine": 1147,
+        "startChar": 22,
+        "endLine": 1147,
+        "endChar": 23
+      },
+      "revId": "f89728128af94c6930fdeae3e07386d767323c56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
