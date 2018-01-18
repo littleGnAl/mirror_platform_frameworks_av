@@ -118,6 +118,30 @@
       "revId": "67b7caa1b0cafd9a4de48da005591990157ae22c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ef3c83d_0fa0f252",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5661,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-01-18T18:50:42Z",
+      "side": 1,
+      "message": "Maybe replace the if () { ... } block with \n\n    for (const auto \u0026track : mTracks) {\n        if (mActiveTracks.indexOf(track) \u003c 0 \u0026\u0026 track-\u003eisFlushPending()) {\n            // for non-active tracks acknowledge to clear buffer\n            track-\u003eflushAck();\n\n            // only issue hw flush if there are no active tracks\n            // to prevent dropping data during consecutive/gapless playback.\n            if (count \u003d\u003d 0) mFlushPending \u003d true;\n        }\n    }",
+      "parentUuid": "804e08ce_0534382b",
+      "range": {
+        "startLine": 5661,
+        "startChar": 7,
+        "endLine": 5661,
+        "endChar": 23
+      },
+      "revId": "67b7caa1b0cafd9a4de48da005591990157ae22c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
