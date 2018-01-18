@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c95491ee_b4359dbd",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-01-18T18:10:59Z",
+      "side": 1,
+      "message": "sorry for the change, think the following is better:\n\nconst size_t SIZE \u003d 2048;",
+      "range": {
+        "startLine": 1065,
+        "startChar": 4,
+        "endLine": 1065,
+        "endChar": 12
+      },
+      "revId": "7c32347ef13b5de077ccca6bc1a33b5c6e4141c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "512c1f7e_42ca46ad",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1142,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-01-18T18:10:59Z",
+      "side": 1,
+      "message": "uint32_t size \u003d SIZE;",
+      "range": {
+        "startLine": 1142,
+        "startChar": 37,
+        "endLine": 1142,
+        "endChar": 38
+      },
+      "revId": "7c32347ef13b5de077ccca6bc1a33b5c6e4141c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fc4fb35_9d4aa5ef",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-01-18T18:10:59Z",
+      "side": 1,
+      "message": "0 /* cmdSize */, NULL /* pCmdData */",
+      "range": {
+        "startLine": 1144,
+        "startChar": 47,
+        "endLine": 1144,
+        "endChar": 56
+      },
+      "revId": "7c32347ef13b5de077ccca6bc1a33b5c6e4141c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57084b19_6db8672e",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-01-18T18:10:59Z",
+      "side": 1,
+      "message": "\u0026size",
+      "range": {
+        "startLine": 1145,
+        "startChar": 49,
+        "endLine": 1145,
+        "endChar": 53
+      },
+      "revId": "7c32347ef13b5de077ccca6bc1a33b5c6e4141c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c855ca35_e34da46c",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-01-18T18:10:59Z",
+      "side": 1,
+      "message": "if (status \u003d\u003d OK \u0026\u0026 size \u003c\u003d SIZE \u0026\u0026 size \u003e 0 \u0026\u0026 buffer[size - 1] \u003d\u003d 0) {",
+      "range": {
+        "startLine": 1147,
+        "startChar": 21,
+        "endLine": 1147,
+        "endChar": 23
+      },
+      "revId": "7c32347ef13b5de077ccca6bc1a33b5c6e4141c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
