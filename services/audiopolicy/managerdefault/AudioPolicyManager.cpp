@@ -1311,6 +1311,12 @@ status_t AudioPolicyManager::startSource(const sp<AudioOutputDescriptor>& output
                 }
             }
         }
+
+        if (stream == AUDIO_STREAM_ENFORCED_AUDIBLE &&
+                mEngine->getForceUse(AUDIO_POLICY_FORCE_FOR_SYSTEM) == AUDIO_POLICY_FORCE_SYSTEM_ENFORCED) {
+            setStrategyMute(STRATEGY_SONIFICATION, true, outputDesc);
+        }
+
         uint32_t muteWaitMs = setOutputDevice(outputDesc, device, force, 0, NULL, address);
 
         // handle special case for sonification while in call
@@ -1430,6 +1436,12 @@ status_t AudioPolicyManager::stopSource(const sp<AudioOutputDescriptor>& outputD
                     }
                 }
             }
+
+            if (stream == AUDIO_STREAM_ENFORCED_AUDIBLE &&
+                    mEngine->getForceUse(AUDIO_POLICY_FORCE_FOR_SYSTEM) == AUDIO_POLICY_FORCE_SYSTEM_ENFORCED) {
+                setStrategyMute(STRATEGY_SONIFICATION, false, outputDesc);
+            }
+
             // update the outputs if stopping one with a stream that can affect notification routing
             handleNotificationRoutingForStream(stream);
         }
