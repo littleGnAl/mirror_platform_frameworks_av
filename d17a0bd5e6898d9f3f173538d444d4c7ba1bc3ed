@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cdbb424_ed3b3ce4",
+        "filename": "services/mediacodec/Android.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-01-22T20:22:23Z",
+      "side": 1,
+      "message": "nit: clear variable later?",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 16
+      },
+      "revId": "d17a0bd5e6898d9f3f173538d444d4c7ba1bc3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20d36644_a2258a63",
+        "filename": "services/mediacodec/Android.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2018-01-22T20:22:23Z",
+      "side": 1,
+      "message": "would like to see TODO(b/*) for this since it\u0027s a bug and required modules should inherit \u0027vendor-ness\u0027 from parent",
+      "range": {
+        "startLine": 72,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 1
+      },
+      "revId": "d17a0bd5e6898d9f3f173538d444d4c7ba1bc3ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
