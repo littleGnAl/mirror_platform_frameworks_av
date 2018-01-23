@@ -179,8 +179,6 @@ void Omx::serviceDied(uint64_t /* cookie */, wp<IBase> const& who) {
         }
 
         instance = mLiveNodes.editValueAt(index);
-        mLiveNodes.removeItemsAt(index);
-        mNode2Observer.removeItem(instance.get());
     }
     instance->onObserverDied();
 }
