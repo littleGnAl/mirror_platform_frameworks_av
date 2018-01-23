@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57c2ae12_82698eb6",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1315,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2018-01-23T19:56:33Z",
+      "side": 1,
+      "message": "better move this out of if (outputDesc-\u003emRefCount[stream] \u003d\u003d 1 || device !\u003d AUDIO_DEVICE_NONE) here and if (outputDesc-\u003emRefCount[stream] \u003d\u003d 0 || forceDeviceUpdate) in stopSource() as the conditions are not symmetrical and it can cause the mute/unmute count to go out of sync.",
+      "range": {
+        "startLine": 1315,
+        "startChar": 0,
+        "endLine": 1315,
+        "endChar": 54
+      },
+      "revId": "667c8987e31e4b211bd8551e9634ff7405b58eb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
