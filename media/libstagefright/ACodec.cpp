@@ -3067,6 +3067,9 @@ status_t ACodec::configureTunneledVideoPlayback(
         return err;
     }
 
+    native_handle_close(sidebandHandle);
+    native_handle_delete(sidebandHandle);
+
     return OK;
 }
 
