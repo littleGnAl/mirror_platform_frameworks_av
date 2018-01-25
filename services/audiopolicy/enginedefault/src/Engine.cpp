@@ -314,8 +314,9 @@ audio_devices_t Engine::getDeviceForStrategyInt(routing_strategy strategy,
         //   - cannot route from voice call RX OR
         //   - audio HAL version is < 3.0 and TX device is on the primary HW module
         if (getPhoneState() == AUDIO_MODE_IN_CALL) {
-            audio_devices_t txDevice = getDeviceForInputSource(AUDIO_SOURCE_VOICE_COMMUNICATION);
             sp<AudioOutputDescriptor> primaryOutput = outputs.getPrimaryOutput();
+            if (primaryOutput == NULL) break;
+            audio_devices_t txDevice = getDeviceForInputSource(AUDIO_SOURCE_VOICE_COMMUNICATION);
             audio_devices_t availPrimaryInputDevices =
                  availableInputDevices.getDevicesFromHwModule(primaryOutput->getModuleHandle());
             audio_devices_t availPrimaryOutputDevices =
