@@ -19,6 +19,7 @@
 //#define LOG_NDEBUG 0
 #define LOG_TAG "CameraSourceTimeLapse"
 
+#include <media/hardware/HardwareAPI.h>
 #include <binder/IPCThreadState.h>
 #include <binder/MemoryBase.h>
 #include <binder/MemoryHeapBase.h>
@@ -172,8 +173,13 @@ void CameraSourceTimeLapse::signalBufferReturned(MediaBufferBase* buffer) {
     ALOGV("signalBufferReturned");
     Mutex::Autolock autoLock(mQuickStopLock);
     if (mQuickStop && (buffer == mLastReadBufferCopy)) {
+        if (metaDataStoredInVideoBuffers() == kMetadataBufferTypeNativeHandleSource) {
+            native_handle_delete(((VideoNativeHandleMetadata*)(mLastReadBufferCopy->data()))->pHandle);
+        }
         buffer->setObserver(NULL);
         buffer->release();
+        mLastReadBufferCopy = NULL;
+        mForceRead = true;
     } else {
         return CameraSource::signalBufferReturned(buffer);
     }
@@ -183,6 +189,7 @@ void createMediaBufferCopy(
         const MediaBufferBase& sourceBuffer,
         int64_t frameTime,
         MediaBufferBase **newBuffer) {
+        int32_t mVideoBufferMode) {
 
     ALOGV("createMediaBufferCopy");
     size_t sourceSize = sourceBuffer.size();
@@ -191,6 +198,11 @@ void createMediaBufferCopy(
     (*newBuffer) = new MediaBuffer(sourceSize);
     memcpy((*newBuffer)->data(), sourcePointer, sourceSize);
 
+    if (mVideoBufferMode == kMetadataBufferTypeNativeHandleSource) {
+        ((VideoNativeHandleMetadata*)((*newBuffer)->data()))->pHandle =
+            native_handle_clone(((VideoNativeHandleMetadata*)(sourceBuffer.data()))->pHandle);
+    }
+
     (*newBuffer)->meta_data().setInt64(kKeyTime, frameTime);
 }
 
@@ -198,7 +210,7 @@ void CameraSourceTimeLapse::fillLastReadBufferCopy(MediaBufferBase& sourceBuffer
     ALOGV("fillLastReadBufferCopy");
     int64_t frameTime;
     CHECK(sourceBuffer.meta_data().findInt64(kKeyTime, &frameTime));
-    createMediaBufferCopy(sourceBuffer, frameTime, &mLastReadBufferCopy);
+    createMediaBufferCopy(sourceBuffer, frameTime, &mLastReadBufferCopy, metaDataStoredInVideoBuffers());
     mLastReadBufferCopy->add_ref();
     mLastReadBufferCopy->setObserver(this);
 }
