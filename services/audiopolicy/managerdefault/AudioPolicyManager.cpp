@@ -49,6 +49,9 @@
 #include "TypeConverter.h"
 #include <policy.h>
 
+#define STREAM_RING_TRUE                "ringtone=true"
+#define STREAM_RING_FALSE               "ringtone=false"
+
 namespace android {
 
 //FIXME: workaround for truncated touch sounds
@@ -1311,6 +1314,12 @@ status_t AudioPolicyManager::startSource(const sp<AudioOutputDescriptor>& output
                 }
             }
         }
+
+        if (stream == AUDIO_STREAM_RING) {
+            force = true;
+            mpClientInterface->setParameters(0, String8(STREAM_RING_TRUE));
+        }
+
         uint32_t muteWaitMs = setOutputDevice(outputDesc, device, force, 0, NULL, address);
 
         // handle special case for sonification while in call
@@ -1400,6 +1409,13 @@ status_t AudioPolicyManager::stopSource(const sp<AudioOutputDescriptor>& outputD
 
         // store time at which the stream was stopped - see isStreamActive()
         if (outputDesc->mRefCount[stream] == 0 || forceDeviceUpdate) {
+
+            bool force = false;
+            if (stream == AUDIO_STREAM_RING && outputDesc->mRefCount[AUDIO_STREAM_RING] == 0) {
+                force = true;
+                mpClientInterface->setParameters(0, String8(STREAM_RING_FALSE));
+            }
+
             outputDesc->mStopTime[stream] = systemTime();
             audio_devices_t newDevice = getNewOutputDevice(outputDesc, false /*fromCache*/);
             // delay the device switch by twice the latency because stopOutput() is executed when
@@ -1407,7 +1423,7 @@ status_t AudioPolicyManager::stopSource(const sp<AudioOutputDescriptor>& outputD
             // still contain data that needs to be drained. The latency only covers the audio HAL
             // and kernel buffers. Also the latency does not always include additional delay in the
             // audio path (audio DSP, CODEC ...)
-            setOutputDevice(outputDesc, newDevice, false, outputDesc->latency()*2);
+            setOutputDevice(outputDesc, newDevice, force, outputDesc->latency()*2);
 
             // force restoring the device selection on other active outputs if it differs from the
             // one being selected for this output
