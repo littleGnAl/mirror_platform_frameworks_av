@@ -535,6 +535,9 @@ status_t OMXNodeInstance::sendCommand(
     }
 
     Mutex::Autolock autoLock(mLock);
+    if (mHandle == NULL) {
+        return DEAD_OBJECT;
+    }
 
     if (cmd == OMX_CommandStateSet) {
         // There are no configurations past first StateSet command.
@@ -599,6 +602,9 @@ bool OMXNodeInstance::isProhibitedIndex_l(OMX_INDEXTYPE index) {
 status_t OMXNodeInstance::getParameter(
         OMX_INDEXTYPE index, void *params, size_t /* size */) {
     Mutex::Autolock autoLock(mLock);
+    if (mHandle == NULL) {
+        return DEAD_OBJECT;
+    }
 
     if (isProhibitedIndex_l(index)) {
         android_errorWriteLog(0x534e4554, "29422020");
@@ -617,6 +623,10 @@ status_t OMXNodeInstance::getParameter(
 status_t OMXNodeInstance::setParameter(
         OMX_INDEXTYPE index, const void *params, size_t size) {
     Mutex::Autolock autoLock(mLock);
+    if (mHandle == NULL) {
+        return DEAD_OBJECT;
+    }
+
     OMX_INDEXEXTTYPE extIndex = (OMX_INDEXEXTTYPE)index;
     CLOG_CONFIG(setParameter, "%s(%#x), %zu@%p)", asString(extIndex), index, size, params);
 
@@ -638,6 +648,9 @@ status_t OMXNodeInstance::setParameter(
 status_t OMXNodeInstance::getConfig(
         OMX_INDEXTYPE index, void *params, size_t /* size */) {
     Mutex::Autolock autoLock(mLock);
+    if (mHandle == NULL) {
+        return DEAD_OBJECT;
+    }
 
     if (isProhibitedIndex_l(index)) {
         android_errorWriteLog(0x534e4554, "29422020");
@@ -656,6 +669,10 @@ status_t OMXNodeInstance::getConfig(
 status_t OMXNodeInstance::setConfig(
         OMX_INDEXTYPE index, const void *params, size_t size) {
     Mutex::Autolock autoLock(mLock);
+    if (mHandle == NULL) {
+        return DEAD_OBJECT;
+    }
+
     OMX_INDEXEXTTYPE extIndex = (OMX_INDEXEXTTYPE)index;
     CLOG_CONFIG(setConfig, "%s(%#x), %zu@%p)", asString(extIndex), index, size, params);
 
@@ -672,6 +689,9 @@ status_t OMXNodeInstance::setConfig(
 
 status_t OMXNodeInstance::setPortMode(OMX_U32 portIndex, IOMX::PortMode mode) {
     Mutex::Autolock autoLock(mLock);
+    if (mHandle == NULL) {
+        return DEAD_OBJECT;
+    }
 
     if (portIndex >= NELEM(mPortMode)) {
         ALOGE("b/31385713, portIndex(%u)", portIndex);
@@ -854,6 +874,9 @@ status_t OMXNodeInstance::enableNativeBuffers_l(
 status_t OMXNodeInstance::getGraphicBufferUsage(
         OMX_U32 portIndex, OMX_U32* usage) {
     Mutex::Autolock autoLock(mLock);
+    if (mHandle == NULL) {
+        return DEAD_OBJECT;
+    }
 
     OMX_INDEXTYPE index;
     OMX_STRING name = const_cast<OMX_STRING>(
@@ -967,6 +990,10 @@ status_t OMXNodeInstance::prepareForAdaptivePlayback(
         OMX_U32 portIndex, OMX_BOOL enable, OMX_U32 maxFrameWidth,
         OMX_U32 maxFrameHeight) {
     Mutex::Autolock autolock(mLock);
+    if (mHandle == NULL) {
+        return DEAD_OBJECT;
+    }
+
     if (mSailed) {
         android_errorWriteLog(0x534e4554, "29422020");
         return INVALID_OPERATION;
@@ -1007,6 +1034,10 @@ status_t OMXNodeInstance::configureVideoTunnelMode(
         OMX_U32 portIndex, OMX_BOOL tunneled, OMX_U32 audioHwSync,
         native_handle_t **sidebandHandle) {
     Mutex::Autolock autolock(mLock);
+    if (mHandle == NULL) {
+        return DEAD_OBJECT;
+    }
+
     if (mSailed) {
         android_errorWriteLog(0x534e4554, "29422020");
         return INVALID_OPERATION;
@@ -1061,6 +1092,10 @@ status_t OMXNodeInstance::useBuffer(
     }
 
     Mutex::Autolock autoLock(mLock);
+    if (mHandle == NULL) {
+        return DEAD_OBJECT;
+    }
+
     if (!mSailed) {
         ALOGE("b/35467458");
         android_errorWriteLog(0x534e4554, "35467458");
@@ -1476,6 +1511,9 @@ status_t OMXNodeInstance::updateNativeHandleInMeta_l(
 status_t OMXNodeInstance::setInputSurface(
         const sp<IOMXBufferSource> &bufferSource) {
     Mutex::Autolock autolock(mLock);
+    if (mHandle == NULL) {
+        return DEAD_OBJECT;
+    }
 
     status_t err;
 
@@ -1542,6 +1580,9 @@ status_t OMXNodeInstance::allocateSecureBuffer(
     }
 
     Mutex::Autolock autoLock(mLock);
+    if (mHandle == NULL) {
+        return DEAD_OBJECT;
+    }
 
     if (!mSailed) {
         ALOGE("b/35467458");
@@ -1598,6 +1639,10 @@ status_t OMXNodeInstance::allocateSecureBuffer(
 status_t OMXNodeInstance::freeBuffer(
         OMX_U32 portIndex, IOMX::buffer_id buffer) {
     Mutex::Autolock autoLock(mLock);
+    if (mHandle == NULL) {
+        return DEAD_OBJECT;
+    }
+
     CLOG_BUFFER(freeBuffer, "%s:%u %#x", portString(portIndex), portIndex, buffer);
 
     removeActiveBuffer(portIndex, buffer);
@@ -1622,6 +1667,9 @@ status_t OMXNodeInstance::freeBuffer(
 status_t OMXNodeInstance::fillBuffer(
         IOMX::buffer_id buffer, const OMXBuffer &omxBuffer, int fenceFd) {
     Mutex::Autolock autoLock(mLock);
+    if (mHandle == NULL) {
+        return DEAD_OBJECT;
+    }
 
     OMX_BUFFERHEADERTYPE *header = findBufferHeader(buffer, kPortIndexOutput);
     if (header == NULL) {
@@ -1672,6 +1720,9 @@ status_t OMXNodeInstance::emptyBuffer(
         buffer_id buffer, const OMXBuffer &omxBuffer,
         OMX_U32 flags, OMX_TICKS timestamp, int fenceFd) {
     Mutex::Autolock autoLock(mLock);
+    if (mHandle == NULL) {
+        return DEAD_OBJECT;
+    }
 
     switch (omxBuffer.mBufferType) {
     case OMXBuffer::kBufferTypePreset:
@@ -1986,6 +2037,9 @@ void OMXNodeInstance::codecBufferFilled(omx_message &msg) {
 status_t OMXNodeInstance::getExtensionIndex(
         const char *parameterName, OMX_INDEXTYPE *index) {
     Mutex::Autolock autoLock(mLock);
+    if (mHandle == NULL) {
+        return DEAD_OBJECT;
+    }
 
     OMX_ERRORTYPE err = OMX_GetExtensionIndex(
             mHandle, const_cast<char *>(parameterName), index);
