@@ -1545,6 +1545,7 @@ sp<ABuffer> ElementaryStreamQueue::dequeueAccessUnitMPEG4Video() {
                     state = EXPECT_VISUAL_OBJECT_START;
                 } else {
                     discard = true;
+                    offset += 3;
                 }
                 break;
             }
