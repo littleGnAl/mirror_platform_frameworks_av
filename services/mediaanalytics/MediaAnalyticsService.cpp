@@ -259,6 +259,7 @@ MediaAnalyticsItem::SessionID_t MediaAnalyticsService::submit(MediaAnalyticsItem
             break;
     }
 
+    Mutex::Autolock _l(mLock);
 
     // Overwrite package name and version if the caller was untrusted.
     if (!isTrusted) {
@@ -299,7 +300,6 @@ MediaAnalyticsItem::SessionID_t MediaAnalyticsService::submit(MediaAnalyticsItem
 
     bool finalizing = item->getFinalized();
 
-    Mutex::Autolock _l(mLock);
 
     // if finalizing, we'll remove it
     MediaAnalyticsItem *oitem = findItem(mOpen, item, finalizing | forcenew);
