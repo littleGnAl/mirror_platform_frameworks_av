@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9550f6a3_ff1d55f6",
+        "filename": "media/libstagefright/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2018-02-06T03:44:31Z",
+      "side": 1,
+      "message": "Is it necessary to set height to slice_height? If not can we use height here, and only replace src width with stride? It seems the color converter would work with height.",
+      "range": {
+        "startLine": 510,
+        "startChar": 50,
+        "endLine": 510,
+        "endChar": 64
+      },
+      "revId": "6586e35e38fe3e9339cc28e9244a8accd0f0583b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
