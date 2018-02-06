@@ -485,11 +485,15 @@ status_t AudioFlinger::PatchPanel::createPatchConnections(Patch *patch,
     }
     patch->mRecordThread->addPatchRecord(patch->mPatchRecord);
 
+    LOG_ALWAYS_FATAL_IF(audioPatch->num_sources < 1);
+    const audio_stream_type_t streamType =
+        audioPatch->sources[audioPatch->num_sources - 1].ext.mix.usecase.stream;
+
     // create a special playback track to render to playback thread.
     // this track is given the same buffer as the PatchRecord buffer
     patch->mPatchTrack = new PlaybackThread::PatchTrack(
                                            patch->mPlaybackThread.get(),
-                                           audioPatch->sources[1].ext.mix.usecase.stream,
+                                           streamType,
                                            sampleRate,
                                            outChannelMask,
                                            format,
