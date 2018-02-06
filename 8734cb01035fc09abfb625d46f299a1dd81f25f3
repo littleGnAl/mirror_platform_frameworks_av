@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a5e0ddda_73d22278",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1537,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2018-02-06T19:56:11Z",
+      "side": 1,
+      "message": "this would seem to be an error (and possibly run off the end of the buffer) if chunkSize \u003c 4",
+      "revId": "8734cb01035fc09abfb625d46f299a1dd81f25f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4252f7b7_9432d491",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 2
@@ -22,6 +39,23 @@
       "revId": "8734cb01035fc09abfb625d46f299a1dd81f25f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1546d6c5_2ca04ea7",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1616,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2018-02-06T19:56:11Z",
+      "side": 1,
+      "message": "should we also be adjusting offset here?",
+      "revId": "8734cb01035fc09abfb625d46f299a1dd81f25f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
