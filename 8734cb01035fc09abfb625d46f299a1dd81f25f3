@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "2b81efa6_32536677",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 1065013
+      },
+      "writtenOn": "2018-02-07T02:52:51Z",
+      "side": 1,
+      "message": "Thanks!  3 is the length of PES\u0027s start header 00 00 01, so skip 3 bytes is safe. But, it seems skip chunkSize is also OK, and better.  I will check it.",
+      "parentUuid": "4252f7b7_9432d491",
+      "range": {
+        "startLine": 1548,
+        "startChar": 30,
+        "endLine": 1548,
+        "endChar": 32
+      },
+      "revId": "8734cb01035fc09abfb625d46f299a1dd81f25f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1546d6c5_2ca04ea7",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 2
