@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "b874ac5b_17d2ef47",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1537,
+      "author": {
+        "id": 1065013
+      },
+      "writtenOn": "2018-02-07T02:11:14Z",
+      "side": 1,
+      "message": "function getNextChunkSize()  protect this:  chunkSize \u003e\u003d4, OR chunkSize \u003c 0.\n\nstatic ssize_t getNextChunkSize(\n        const uint8_t *data, size_t size) {\n    static const char kStartCode[] \u003d \"\\x00\\x00\\x01\";\n\n    if (size \u003c 3) {\n        return -EAGAIN;\n    }\n\n    if (memcmp(kStartCode, data, 3)) {\n        return -EAGAIN;\n    }\n\n    size_t offset \u003d 3;\n    while (offset + 2 \u003c size) {\n        if (!memcmp(\u0026data[offset], kStartCode, 3)) {\n            return offset;\n        }\n\n        ++offset;\n    }\n\n    return -EAGAIN;\n}",
+      "parentUuid": "a5e0ddda_73d22278",
+      "revId": "8734cb01035fc09abfb625d46f299a1dd81f25f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4252f7b7_9432d491",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 2
@@ -53,6 +71,24 @@
       "writtenOn": "2018-02-06T19:56:11Z",
       "side": 1,
       "message": "should we also be adjusting offset here?",
+      "revId": "8734cb01035fc09abfb625d46f299a1dd81f25f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "85c3c27e_76420bc0",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1616,
+      "author": {
+        "id": 1065013
+      },
+      "writtenOn": "2018-02-07T02:11:14Z",
+      "side": 1,
+      "message": "State is changed to SKIP_TO_VOP_START, so not adjusting offset.",
+      "parentUuid": "1546d6c5_2ca04ea7",
       "revId": "8734cb01035fc09abfb625d46f299a1dd81f25f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
