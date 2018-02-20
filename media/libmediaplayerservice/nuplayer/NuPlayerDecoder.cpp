@@ -358,6 +358,7 @@ void NuPlayer::Decoder::onConfigure(const sp<AMessage> &format) {
         return;
     }
     rememberCodecSpecificData(format);
+    mSourceInputFormat = format;
 
     // the following should work in configured state
     CHECK_EQ((status_t)OK, mCodec->getOutputFormat(&mOutputFormat));
@@ -1215,6 +1216,10 @@ void NuPlayer::Decoder::finishHandleDiscontinuity(bool flushOnTimeChange) {
 
 bool NuPlayer::Decoder::supportsSeamlessAudioFormatChange(
         const sp<AMessage> &targetFormat) const {
+    if (mSourceInputFormat == NULL) {
+        return false;
+    }
+
     if (targetFormat == NULL) {
         return true;
     }
@@ -1229,7 +1234,7 @@ bool NuPlayer::Decoder::supportsSeamlessAudioFormatChange(
         const char * keys[] = { "channel-count", "sample-rate", "is-adts" };
         for (unsigned int i = 0; i < sizeof(keys) / sizeof(keys[0]); i++) {
             int32_t oldVal, newVal;
-            if (!mInputFormat->findInt32(keys[i], &oldVal) ||
+            if (!mSourceInputFormat->findInt32(keys[i], &oldVal) ||
                     !targetFormat->findInt32(keys[i], &newVal) ||
                     oldVal != newVal) {
                 return false;
@@ -1237,7 +1242,7 @@ bool NuPlayer::Decoder::supportsSeamlessAudioFormatChange(
         }
 
         sp<ABuffer> oldBuf, newBuf;
-        if (mInputFormat->findBuffer("csd-0", &oldBuf) &&
+        if (mSourceInputFormat->findBuffer("csd-0", &oldBuf) &&
                 targetFormat->findBuffer("csd-0", &newBuf)) {
             if (oldBuf->size() != newBuf->size()) {
                 return false;
