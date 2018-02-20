@@ -73,6 +73,7 @@ private:
     sp<Renderer> mRenderer;
     sp<CCDecoder> mCCDecoder;
 
+    sp<AMessage> mSourceInputFormat;
     sp<AMessage> mInputFormat;
     sp<AMessage> mOutputFormat;
     sp<MediaCodec> mCodec;
