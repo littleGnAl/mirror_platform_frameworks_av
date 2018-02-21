@@ -2008,6 +2008,30 @@ status_t ACodec::configureCodec(
         } else {
             mRotationDegrees = 0;
         }
+
+        int windowComposer = 0;
+        err = mNativeWindow->query(
+                mNativeWindow.get(), NATIVE_WINDOW_QUEUES_TO_WINDOW_COMPOSER,
+                &windowComposer);
+        if (err == OK) {
+            OMX_INDEXTYPE index;
+            err = mOMXNode->getExtensionIndex(
+                    "OMX.google.android.index.queueToWindowComposer",
+                    &index);
+            if (err == OK) {
+                OMX_PARAM_U32TYPE params;
+                InitOMXParams(&params);
+                params.nPortIndex = kPortIndexOutput;
+                params.nU32 = (OMX_U32)windowComposer;
+
+                err = mOMXNode->setParameter(index, &params, sizeof(params));
+
+                if (err != OK) {
+                    ALOGW("Fail to set queueToWindowComposer: %d, %d", windowComposer, err);
+                }
+            }
+        }
+        err = OK;
     }
 
     AudioEncoding pcmEncoding = kAudioEncodingPcm16bit;
