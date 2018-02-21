@@ -1650,6 +1650,7 @@ AudioFlinger::PlaybackThread::PlaybackThread(const sp<AudioFlinger>& audioFlinge
         mEffectBufferSize(0),
         mEffectBufferFormat(AUDIO_FORMAT_INVALID),
         mEffectBufferValid(false),
+        mPrevEffectBufferValid(false),
         mSuspended(0), mBytesWritten(0),
         mFramesWritten(0),
         mSuspendedFrames(0),
@@ -3160,6 +3161,14 @@ bool AudioFlinger::PlaybackThread::threadLoop()
             // during mixing and effect process as the audio buffers could be deleted
             // or modified if an effect is created or deleted
             lockEffectChains_l(effectChains);
+            if ((mType == MIXER) && (mEffectBufferValid != mPrevEffectBufferValid)) {
+                // In case of activate/inactivate track using effect, send flush request
+                // to effect in order to flush work buffer.
+                for (size_t i = 0; i < effectChains.size(); i ++) {
+                    effectChains[i]->flush();
+                }
+                mPrevEffectBufferValid = mEffectBufferValid;
+            }
         } // mLock scope ends
 
         if (mBytesRemaining == 0) {

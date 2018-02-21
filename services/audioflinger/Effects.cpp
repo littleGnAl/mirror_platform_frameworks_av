@@ -905,6 +905,14 @@ bool AudioFlinger::EffectModule::suspended() const
     return mSuspended;
 }
 
+void AudioFlinger::EffectModule::flush()
+{
+    if (mEffectInterface != 0) {
+        mEffectInterface->command(EFFECT_CMD_FLUSH,
+                                  0, NULL, 0, NULL);
+    }
+}
+
 bool AudioFlinger::EffectModule::purgeHandles()
 {
     bool enabled = false;
@@ -2218,6 +2226,13 @@ bool AudioFlinger::EffectChain::isNonOffloadableEnabled()
         }
     }
     return false;
+}
+
+void AudioFlinger::EffectChain::flush()
+{
+    for (size_t i = 0; i < mEffects.size(); i++) {
+        mEffects[i]->flush();
+    }
 }
 
 void AudioFlinger::EffectChain::setThread(const sp<ThreadBase>& thread)

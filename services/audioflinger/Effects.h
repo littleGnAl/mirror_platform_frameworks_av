@@ -114,6 +114,7 @@ public:
     status_t         stop();
     void             setSuspended(bool suspended);
     bool             suspended() const;
+    void             flush();
 
     EffectHandle*    controlHandle_l();
 
@@ -345,6 +346,9 @@ public:
 
     // At least one non offloadable effect in the chain is enabled
     bool isNonOffloadableEnabled();
+
+    // flush for effect
+    void flush();
 
     void syncHalEffectsState();
 

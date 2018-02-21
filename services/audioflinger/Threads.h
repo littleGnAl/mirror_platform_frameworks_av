@@ -845,6 +845,9 @@ protected:
     // for any processing (including output processing).
     bool                            mEffectBufferValid;
 
+    // mEffectBufferValid's condition of previous process cycle.
+    bool                            mPrevEffectBufferValid;
+
     // suspend count, > 0 means suspended.  While suspended, the thread continues to pull from
     // tracks and mix, but doesn't write to HAL.  A2DP and SCO HAL implementations can't handle
     // concurrent use of both of them, so Audio Policy Service suspends one of the threads to
