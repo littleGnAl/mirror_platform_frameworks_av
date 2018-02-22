@@ -16,6 +16,10 @@ subdirs = ["ndk"]
 
 cc_library_shared {
     name: "libcamera_client",
+    vendor_available: true,
+    vndk: {
+        enabled: true,
+    },
 
     aidl: {
         export_aidl_headers: true,
@@ -67,6 +71,7 @@ cc_library_shared {
     include_dirs: [
         "system/media/private/camera/include",
         "frameworks/native/include/media/openmax",
+        "frameworks/native/headers/media_plugin",
     ],
     export_include_dirs: [
          "include",

@@ -19,6 +19,7 @@
 // #define LOG_NDEBUG 0
 #include <utils/Log.h>
 
+#include <unistd.h>
 #include <string.h>
 #include <stdlib.h>
 #include <camera/CameraParameters2.h>
