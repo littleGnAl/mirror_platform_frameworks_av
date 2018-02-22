@@ -16,6 +16,10 @@ subdirs = ["ndk"]
 
 cc_library_shared {
     name: "libcamera_client",
+    vendor_available: true,
+    vndk: {
+        enabled: true,
+    },
 
     aidl: {
         export_aidl_headers: true,
