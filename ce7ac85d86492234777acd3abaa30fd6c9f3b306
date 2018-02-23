@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d7791bff_4fbbaa41",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 910,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-02-23T20:58:37Z",
+      "side": 1,
+      "message": "i believe you should take the lock here.\n\n\n    Mutex::Autolock _l(mLock);\n    if (mStatus !\u003d NO_ERROR) {\n        return mStatus;\n    }\n    return ...",
+      "range": {
+        "startLine": 910,
+        "startChar": 0,
+        "endLine": 910,
+        "endChar": 32
+      },
+      "revId": "ce7ac85d86492234777acd3abaa30fd6c9f3b306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8934d01f_8ebc2546",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2231,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-02-23T20:58:37Z",
+      "side": 1,
+      "message": "// flush() must be called with the EffectChain::mLock held",
+      "range": {
+        "startLine": 2231,
+        "startChar": 0,
+        "endLine": 2231,
+        "endChar": 6
+      },
+      "revId": "ce7ac85d86492234777acd3abaa30fd6c9f3b306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2919d8c3_d6c6f41e",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3164,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-02-23T20:58:37Z",
+      "side": 1,
+      "message": "To avoid flushing twice, I think it is better to determine whether to flush on effects becoming valid or becoming invalid, but not both.\n\nAs Eric points out, normally we drain the effect to allow the effect tail to be realized, so any flush should be when the effect becomes valid.\n\nAgain, implemented this way, the flush may cause more problems. I believe we need to identify the exact nature of the pop to see the best corrective solution (e.g. we fail to drain the effect, or fail to disable/reset/enable effect or some such).",
+      "range": {
+        "startLine": 3164,
+        "startChar": 36,
+        "endLine": 3164,
+        "endChar": 82
+      },
+      "revId": "ce7ac85d86492234777acd3abaa30fd6c9f3b306",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
