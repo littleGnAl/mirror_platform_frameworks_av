@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9521d72a_8eb15507",
+        "filename": "media/libstagefright/CameraSourceTimeLapse.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1060491
+      },
+      "writtenOn": "2018-02-27T22:18:20Z",
+      "side": 1,
+      "message": "Why do you need to set mForceRead to true here?",
+      "range": {
+        "startLine": 182,
+        "startChar": 8,
+        "endLine": 182,
+        "endChar": 26
+      },
+      "revId": "e95d32b3d5fc33d2edd6505baf1cc8d8e8cb3b0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
