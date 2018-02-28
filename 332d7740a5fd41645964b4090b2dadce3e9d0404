@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f82872a3_dce3365b",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3044,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2018-02-28T08:29:38Z",
+      "side": 1,
+      "message": "both conditions here an at line 3047 must be changes as handle !\u003d 0 is not a condition of success aymore",
+      "range": {
+        "startLine": 3044,
+        "startChar": 12,
+        "endLine": 3044,
+        "endChar": 18
+      },
+      "revId": "332d7740a5fd41645964b4090b2dadce3e9d0404",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
