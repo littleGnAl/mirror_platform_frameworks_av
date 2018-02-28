@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "f81b1587_0a758aad",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1537,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2018-02-28T19:52:27Z",
+      "side": 1,
+      "message": "seems to me that if the buffer has:\n0 0 1 0 0 1\nthen getNextChunkSize() will return 3\n\nthat may very well be an improperly formed input stream, but it still means that getNextChunkSize() can return 3 and therefore we will wind up with a bad value for chunkType.\n\n\ni don\u0027t see it going beyond the end of the buffer -- because the second \"0 0 1\" exists in the buffer.\nBut it means we have a bad value for chunkType.",
+      "parentUuid": "b874ac5b_17d2ef47",
+      "revId": "8734cb01035fc09abfb625d46f299a1dd81f25f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4252f7b7_9432d491",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 2
@@ -84,6 +102,30 @@
     },
     {
       "key": {
+        "uuid": "5ccf0f2f_2578e289",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2018-02-28T19:52:27Z",
+      "side": 1,
+      "message": "chunksize vs 3 are going to be different results.\n\nI think we need to discard the entire chunk -- so chunkSize seems more appropriate to me. I\u0027m not convinced that 3 is correct.",
+      "parentUuid": "2b81efa6_32536677",
+      "range": {
+        "startLine": 1548,
+        "startChar": 30,
+        "endLine": 1548,
+        "endChar": 32
+      },
+      "revId": "8734cb01035fc09abfb625d46f299a1dd81f25f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1546d6c5_2ca04ea7",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 2
@@ -113,6 +155,24 @@
       "side": 1,
       "message": "State is changed to SKIP_TO_VOP_START, so not adjusting offset.",
       "parentUuid": "1546d6c5_2ca04ea7",
+      "revId": "8734cb01035fc09abfb625d46f299a1dd81f25f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4301612_003833f4",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1616,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2018-02-28T19:52:27Z",
+      "side": 1,
+      "message": "got it now -- we don\u0027t actually discard this chunk; we shift everything down to the beginning of the buffer and re-process the same chunk but from our new state.",
+      "parentUuid": "85c3c27e_76420bc0",
       "revId": "8734cb01035fc09abfb625d46f299a1dd81f25f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
