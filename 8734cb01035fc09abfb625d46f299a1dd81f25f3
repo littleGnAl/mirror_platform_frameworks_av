@@ -55,6 +55,24 @@
     },
     {
       "key": {
+        "uuid": "600741e0_7384c883",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1537,
+      "author": {
+        "id": 1065013
+      },
+      "writtenOn": "2018-03-01T08:46:06Z",
+      "side": 1,
+      "message": "hi Ray Essick, you are right!  In that case, it seems trigger a bug in getNextChunkSize().",
+      "parentUuid": "f81b1587_0a758aad",
+      "revId": "8734cb01035fc09abfb625d46f299a1dd81f25f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4252f7b7_9432d491",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 2
