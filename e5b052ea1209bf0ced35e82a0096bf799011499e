@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f3d941ed_1793464c",
+        "filename": "media/libaudioclient/ToneGenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1049,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-03-01T23:08:36Z",
+      "side": 1,
+      "message": "Not a part of this cleanup but this ideally would use a scoped lock, rather than relying on the developer to remember to unlock before returning.",
+      "revId": "e5b052ea1209bf0ced35e82a0096bf799011499e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1d65b203_fc955f74",
+        "filename": "media/libaudioclient/ToneGenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1063,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-03-01T23:08:36Z",
+      "side": 1,
+      "message": "In cases like this, readability is helped by just returning false instead of an initialized variable from 30 lines ago. It is then more clear that this was an error condition (same goes for a handful of other returns of lResult in this function).",
+      "revId": "e5b052ea1209bf0ced35e82a0096bf799011499e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
