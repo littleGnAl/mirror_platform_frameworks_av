@@ -109,6 +109,24 @@
     },
     {
       "key": {
+        "uuid": "547c4053_4d044ae1",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1537,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2018-03-01T22:31:45Z",
+      "side": 1,
+      "message": "(or we have to fix getNextChunkSize() so that it won\u0027t return 3).",
+      "parentUuid": "dbb67199_a0707873",
+      "revId": "8734cb01035fc09abfb625d46f299a1dd81f25f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4252f7b7_9432d491",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 2
