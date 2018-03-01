@@ -73,6 +73,24 @@
     },
     {
       "key": {
+        "uuid": "84ba9885_e0a3e9de",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1537,
+      "author": {
+        "id": 1269628
+      },
+      "writtenOn": "2018-03-01T09:15:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "600741e0_7384c883",
+      "revId": "8734cb01035fc09abfb625d46f299a1dd81f25f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4252f7b7_9432d491",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 2
@@ -155,6 +173,30 @@
       "writtenOn": "2018-03-01T08:54:09Z",
       "side": 1,
       "message": "I test chunksize and 3,  both work fine with the PoC file.   In +3 case,  the other data discarded by in the next while() loop.   But, chunkSize is  more appropriate.",
+      "parentUuid": "5ccf0f2f_2578e289",
+      "range": {
+        "startLine": 1548,
+        "startChar": 30,
+        "endLine": 1548,
+        "endChar": 32
+      },
+      "revId": "8734cb01035fc09abfb625d46f299a1dd81f25f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "800aca71_701c65d7",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1548,
+      "author": {
+        "id": 1269628
+      },
+      "writtenOn": "2018-03-01T09:15:39Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "5ccf0f2f_2578e289",
       "range": {
         "startLine": 1548,
