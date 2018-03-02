@@ -127,6 +127,24 @@
     },
     {
       "key": {
+        "uuid": "eb19833d_57d3e5e6",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1537,
+      "author": {
+        "id": 1065013
+      },
+      "writtenOn": "2018-03-02T03:36:22Z",
+      "side": 1,
+      "message": "Hi Ray Essick, only insert if(chunkSize \u003c 4) or fix getNextChunkSize() could not break the infinite loop.\n\nif the buffer has: \n0 0 1 0 0 0 1 \nAND state \u003d\u003d SKIP_TO_VISUAL_OBJECT_SEQ_START,  offset \u003d\u003d 0,  \nwill get chunkSize \u003d 4;  set chunkType \u003d 0x00, \n\nthen do \n1.  \"switch case  SKIP_TO_VISUAL_OBJECT_SEQ_START: \", then  set discard \u003d true;\n2.   do codes:\n        if (discard) {\n            (void)fetchTimestamp(offset);\n            memmove(data, \u0026data[offset], size - offset);\n            size -\u003d offset;\n            offset \u003d 0;\n            mBuffer-\u003esetRange(0, size);\n3.  do \"while(...)\" again with the same buffer, the same state, the same offset\u003d\u003d0.  \n\nCPU enter infinite loop now...",
+      "parentUuid": "547c4053_4d044ae1",
+      "revId": "8734cb01035fc09abfb625d46f299a1dd81f25f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4252f7b7_9432d491",
         "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
         "patchSetId": 2
