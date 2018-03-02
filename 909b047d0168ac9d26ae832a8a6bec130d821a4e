@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ed3c913_52a2e09f",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1497,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-03-02T20:31:44Z",
+      "side": 1,
+      "message": "per Ray\u0027s comment this should be 4.  \n\nnot sure if we want to make it a different CL.",
+      "range": {
+        "startLine": 1497,
+        "startChar": 20,
+        "endLine": 1497,
+        "endChar": 22
+      },
+      "revId": "909b047d0168ac9d26ae832a8a6bec130d821a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
