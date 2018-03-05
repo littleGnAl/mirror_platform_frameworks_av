@@ -46,6 +46,30 @@
       "revId": "909b047d0168ac9d26ae832a8a6bec130d821a4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d576a72_73d5bf8d",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1497,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-03-05T18:21:35Z",
+      "side": 1,
+      "message": "An offset of 4 is correct per ISO/IEC 14496-2 6.2.1, the start code prefix + start code is exactly 4 bytes long.  Hence, the search for the next start code should take place with an offset of 4.  \n\nWhen we set to 4, it is not only more efficient, it voids false start codes with a video_object_start_code of 00 00 01 00 followed by 00 01, as mentioned by Ray.\n\nI\u0027ve discussed with Ray - perhaps this change should be in a different CL, so let\u0027s keep this separate.  Thanks!",
+      "parentUuid": "6cceeb27_dfa1ec89",
+      "range": {
+        "startLine": 1497,
+        "startChar": 20,
+        "endLine": 1497,
+        "endChar": 22
+      },
+      "revId": "909b047d0168ac9d26ae832a8a6bec130d821a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
