@@ -22,6 +22,30 @@
       "revId": "909b047d0168ac9d26ae832a8a6bec130d821a4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6cceeb27_dfa1ec89",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1497,
+      "author": {
+        "id": 1065013
+      },
+      "writtenOn": "2018-03-05T06:50:47Z",
+      "side": 1,
+      "message": "4?  if set to 4, will get a wrong value for chunkSize.",
+      "parentUuid": "9ed3c913_52a2e09f",
+      "range": {
+        "startLine": 1497,
+        "startChar": 20,
+        "endLine": 1497,
+        "endChar": 22
+      },
+      "revId": "909b047d0168ac9d26ae832a8a6bec130d821a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
