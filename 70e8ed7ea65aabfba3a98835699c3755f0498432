@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "891b7385_01b0c0ea",
+        "filename": "media/libstagefright/foundation/ColorUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2018-03-08T19:54:26Z",
+      "side": 1,
+      "message": "This is a cherry pick from internal master so I cannot change this CL here.",
+      "parentUuid": "5e269cac_9ccccf81",
+      "range": {
+        "startLine": 65,
+        "startChar": 36,
+        "endLine": 65,
+        "endChar": 37
+      },
+      "revId": "70e8ed7ea65aabfba3a98835699c3755f0498432",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "326c419d_975f3fa9",
         "filename": "media/libstagefright/foundation/ColorUtils.cpp",
         "patchSetId": 1
