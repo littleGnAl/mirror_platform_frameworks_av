@@ -885,7 +885,7 @@ void CameraDevice::CallbackHandler::onMessageReceived(
                         return;
                     }
                     if (onState == nullptr) {
-                        return;
+                        break;
                     }
                     (*onState)(context, session.get());
                     break;
@@ -899,7 +899,7 @@ void CameraDevice::CallbackHandler::onMessageReceived(
                         return;
                     }
                     if (onStart == nullptr) {
-                        return;
+                        break;
                     }
                     int64_t timestamp;
                     found = msg->findInt64(kTimeStampKey, &timestamp);
@@ -921,7 +921,7 @@ void CameraDevice::CallbackHandler::onMessageReceived(
                         return;
                     }
                     if (onResult == nullptr) {
-                        return;
+                        break;
                     }
 
                     found = msg->findObject(kCaptureResultKey, &obj);
@@ -944,7 +944,7 @@ void CameraDevice::CallbackHandler::onMessageReceived(
                         return;
                     }
                     if (onFail == nullptr) {
-                        return;
+                        break;
                     }
 
                     found = msg->findObject(kCaptureFailureKey, &obj);
@@ -970,7 +970,7 @@ void CameraDevice::CallbackHandler::onMessageReceived(
                         return;
                     }
                     if (onSeqEnd == nullptr) {
-                        return;
+                        break;
                     }
                     int seqId;
                     found = msg->findInt32(kSequenceIdKey, &seqId);
@@ -996,7 +996,7 @@ void CameraDevice::CallbackHandler::onMessageReceived(
                         return;
                     }
                     if (onSeqAbort == nullptr) {
-                        return;
+                        break;
                     }
                     int seqId;
                     found = msg->findInt32(kSequenceIdKey, &seqId);
@@ -1016,7 +1016,7 @@ void CameraDevice::CallbackHandler::onMessageReceived(
                         return;
                     }
                     if (onBufferLost == nullptr) {
-                        return;
+                        break;
                     }
 
                     ANativeWindow* anw;
@@ -1042,6 +1042,7 @@ void CameraDevice::CallbackHandler::onMessageReceived(
             break;
         }
     }
+    msg->clear();
 }
 
 CameraDevice::CallbackHolder::CallbackHolder(
