@@ -819,6 +819,7 @@ void MediaAnalyticsService::setPkgInfo(MediaAnalyticsItem *item, uid_t uid, bool
     struct UidToPkgMap mapping;
     mapping.uid = (-1);
 
+    mLock_mappings.lock();
     ssize_t i = mPkgMappings.indexOfKey(uid);
     if (i >= 0) {
         mapping = mPkgMappings.valueAt(i);
@@ -830,9 +831,12 @@ void MediaAnalyticsService::setPkgInfo(MediaAnalyticsItem *item, uid_t uid, bool
             mPkgMappings.removeItemsAt(i, 1);
             // could cheat and use a goto back to the top of the routine.
             // a good compiler should recognize the local tail recursion...
+            mLock_mappings.unlock();
             return setPkgInfo(item, uid, setName, setVersion);
         }
+        mLock_mappings.unlock();
     } else {
+        mLock_mappings.unlock();
         AString pkg;
         std::string installer = "";
         int32_t versionCode = 0;
