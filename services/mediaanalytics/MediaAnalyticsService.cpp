@@ -816,22 +816,25 @@ void MediaAnalyticsService::setPkgInfo(MediaAnalyticsItem *item, uid_t uid, bool
 
     nsecs_t now = systemTime(SYSTEM_TIME_REALTIME);
     struct UidToPkgMap mapping;
-    mapping.uid = (-1);
+    mapping.uid = (uid_t) (-1);
 
-    ssize_t i = mPkgMappings.indexOfKey(uid);
-    if (i >= 0) {
-        mapping = mPkgMappings.valueAt(i);
-        ALOGV("Expiration? uid %d expiration %" PRId64 " now %" PRId64,
+    {
+        Mutex::Autolock _l(mLock_mappings);
+        ssize_t i = mPkgMappings.indexOfKey(uid);
+        if (i >= 0) {
+            mapping = mPkgMappings.valueAt(i);
+            ALOGV("Expiration? uid %d expiration %" PRId64 " now %" PRId64,
               uid, mapping.expiration, now);
-        if (mapping.expiration < now) {
-            // purge our current entry and re-query
-            ALOGV("entry for uid %d expired, now= %" PRId64 "", uid, now);
-            mPkgMappings.removeItemsAt(i, 1);
-            // could cheat and use a goto back to the top of the routine.
-            // a good compiler should recognize the local tail recursion...
-            return setPkgInfo(item, uid, setName, setVersion);
+            if (mapping.expiration < now) {
+                // purge our current entry and re-query
+                ALOGV("entry for uid %d expired, now= %" PRId64 "", uid, now);
+                mPkgMappings.removeItemsAt(i, 1);
+                mapping.uid = (uid_t) (-1);
+            }
         }
-    } else {
+    }
+
+    if (mapping.uid == (uid_t)(-1)) {
         AString pkg;
         std::string installer = "";
         int32_t versionCode = 0;
