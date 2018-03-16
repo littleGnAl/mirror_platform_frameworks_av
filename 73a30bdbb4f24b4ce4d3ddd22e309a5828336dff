@@ -190,6 +190,54 @@
       "revId": "73a30bdbb4f24b4ce4d3ddd22e309a5828336dff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "703b46d7_23ea5ff0",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1596,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-03-16T12:37:34Z",
+      "side": 1,
+      "message": "Hi Andy,\nSorry I still can not imagine how we can implement to avoid the pop by using VolumeShaper etc. Our effect engine has an internal buffer so it should be consumed when switching track, and I think one of the simplest way is to flush the buffer. It also might be avoided by volume ramping / fade but the ramp duration depends on the internal buffer so I still can not imagine how to implement it.\nIf reset is acceptable in this case, I would like to use reset.",
+      "parentUuid": "d8f1710e_c24b0508",
+      "range": {
+        "startLine": 1594,
+        "startChar": 0,
+        "endLine": 1596,
+        "endChar": 5
+      },
+      "revId": "73a30bdbb4f24b4ce4d3ddd22e309a5828336dff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef2738ad_e09cf122",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1596,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-03-16T12:37:34Z",
+      "side": 1,
+      "message": "Hi Andy,\nAs far as we tried, clearInputBuffer_l() is called many times so",
+      "parentUuid": "723ead8b_d942c102",
+      "range": {
+        "startLine": 1594,
+        "startChar": 0,
+        "endLine": 1596,
+        "endChar": 5
+      },
+      "revId": "73a30bdbb4f24b4ce4d3ddd22e309a5828336dff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
