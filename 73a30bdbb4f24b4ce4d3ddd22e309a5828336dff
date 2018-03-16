@@ -70,6 +70,30 @@
       "revId": "73a30bdbb4f24b4ce4d3ddd22e309a5828336dff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43657cd7_676237f7",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1596,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-03-16T07:13:09Z",
+      "side": 1,
+      "message": "Hi Andy,\n\nSorry I could not understand what your below comment means. \n\"i\u0027m not sure if this reset is suitable in clearInputBuffer() either since this is invoked for underruns, which may very well be intentional by the application.\"\n\nWhat kind of problem could happen with this change?",
+      "parentUuid": "e21e4c5f_8e7a335d",
+      "range": {
+        "startLine": 1594,
+        "startChar": 0,
+        "endLine": 1596,
+        "endChar": 5
+      },
+      "revId": "73a30bdbb4f24b4ce4d3ddd22e309a5828336dff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
