@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "df72b8a2_c98b553d",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 3054,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-03-16T21:43:12Z",
+      "side": 1,
+      "message": "sigh, probably safer to hold the AF lock here as id() is not protected by the any lock as it is not a part of the public IEffect interface.",
+      "range": {
+        "startLine": 3054,
+        "startChar": 3,
+        "endLine": 3054,
+        "endChar": 12
+      },
+      "revId": "0636c15e2f850127c3507d1a009fa7013353e56e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
