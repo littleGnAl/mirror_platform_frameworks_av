@@ -118,6 +118,30 @@
       "revId": "73a30bdbb4f24b4ce4d3ddd22e309a5828336dff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d767c35_ee82419d",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1596,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-03-16T07:26:46Z",
+      "side": 1,
+      "message": "OK.. I got it. I\u0027m not sure if it causes actual problem from end user perspective since application stops playback intentionally in this case. Do you think the current change is not acceptable?",
+      "parentUuid": "a150df29_6b054771",
+      "range": {
+        "startLine": 1594,
+        "startChar": 0,
+        "endLine": 1596,
+        "endChar": 5
+      },
+      "revId": "73a30bdbb4f24b4ce4d3ddd22e309a5828336dff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
