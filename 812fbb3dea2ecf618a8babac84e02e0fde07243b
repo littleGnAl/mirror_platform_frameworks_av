@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0eff3ca_937a80b8",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3055,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-03-16T02:16:30Z",
+      "side": 1,
+      "message": "I believe this to be true, since ALREADY_EXISTS should be returned AudioFlinger::EffectModule::addHandle() when called with a valid handle.\n\nBut, based on history of the caller (see internal ag/706074), i\u0027ll be on the safe side.",
+      "range": {
+        "startLine": 3055,
+        "startChar": 8,
+        "endLine": 3055,
+        "endChar": 37
+      },
+      "revId": "812fbb3dea2ecf618a8babac84e02e0fde07243b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
