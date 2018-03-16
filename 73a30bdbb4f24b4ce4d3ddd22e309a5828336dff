@@ -166,6 +166,30 @@
       "revId": "73a30bdbb4f24b4ce4d3ddd22e309a5828336dff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8f1710e_c24b0508",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1596,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-03-16T07:34:39Z",
+      "side": 1,
+      "message": "By that comment, the application becomes responsible for ensuring audio seamlessness by the data it sends, rather than imposing the burden on the underlying engine.  We have tools such as the VolumeShaper to make this easier.  I\u0027m not exactly sure your case of track switching, so if you can elaborate why reset must be done in the server, that would help me understand better, thanks!",
+      "parentUuid": "a99aa882_43cdb5ab",
+      "range": {
+        "startLine": 1594,
+        "startChar": 0,
+        "endLine": 1596,
+        "endChar": 5
+      },
+      "revId": "73a30bdbb4f24b4ce4d3ddd22e309a5828336dff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
