@@ -110,7 +110,7 @@ status_t AudioPolicyManager::setDeviceConnectionStateInt(audio_devices_t device,
                                                          const char *device_address,
                                                          const char *device_name)
 {
-    ALOGV("setDeviceConnectionStateInt() device: 0x%X, state %d, address %s name %s",
+    ALOGD("setDeviceConnectionStateInt() device: 0x%X, state %d, address %s name %s",
             device, state, device_address, device_name);
 
     // connect/disconnect only 1 device at a time
@@ -439,7 +439,7 @@ uint32_t AudioPolicyManager::updateCallRouting(audio_devices_t rxDevice, uint32_
         return muteWaitMs;
     }
     audio_devices_t txDevice = getDeviceAndMixForInputSource(AUDIO_SOURCE_VOICE_COMMUNICATION);
-    ALOGV("updateCallRouting device rxDevice %08x txDevice %08x", rxDevice, txDevice);
+    ALOGD("updateCallRouting device rxDevice %08x txDevice %08x", rxDevice, txDevice);
 
     // release existing RX patch if any
     if (mCallRxPatch != 0) {
@@ -671,7 +671,7 @@ audio_mode_t AudioPolicyManager::getPhoneState() {
 void AudioPolicyManager::setForceUse(audio_policy_force_use_t usage,
                                          audio_policy_forced_cfg_t config)
 {
-    ALOGV("setForceUse() usage %d, config %d, mPhoneState %d", usage, config, mEngine->getPhoneState());
+    ALOGD("setForceUse() usage %d, config %d, mPhoneState %d", usage, config, mEngine->getPhoneState());
     if (config == mEngine->getForceUse(usage)) {
         return;
     }
@@ -861,7 +861,7 @@ status_t AudioPolicyManager::getOutputForAttr(const audio_attributes_t *attr,
         *flags = (audio_output_flags_t)(*flags | AUDIO_OUTPUT_FLAG_HW_AV_SYNC);
     }
 
-    ALOGV("getOutputForAttr() device 0x%x, sampling rate %d, format %#x, channel mask %#x, "
+    ALOGD("getOutputForAttr() device 0x%x, sampling rate %d, format %#x, channel mask %#x, "
           "flags %#x",
           device, config->sample_rate, config->format, config->channel_mask, *flags);
 
@@ -1126,7 +1126,7 @@ status_t AudioPolicyManager::startOutput(audio_io_handle_t output,
                                              audio_stream_type_t stream,
                                              audio_session_t session)
 {
-    ALOGV("startOutput() output %d, stream %d, session %d",
+    ALOGD("startOutput() output %d, stream %d, session %d",
           output, stream, session);
     ssize_t index = mOutputs.indexOfKey(output);
     if (index < 0) {
@@ -1336,7 +1336,7 @@ status_t AudioPolicyManager::stopOutput(audio_io_handle_t output,
                                             audio_stream_type_t stream,
                                             audio_session_t session)
 {
-    ALOGV("stopOutput() output %d, stream %d, session %d", output, stream, session);
+    ALOGD("stopOutput() output %d, stream %d, session %d", output, stream, session);
     ssize_t index = mOutputs.indexOfKey(output);
     if (index < 0) {
         ALOGW("stopOutput() unknown output %d", output);
@@ -1449,7 +1449,7 @@ void AudioPolicyManager::releaseOutput(audio_io_handle_t output,
                                        audio_stream_type_t stream __unused,
                                        audio_session_t session __unused)
 {
-    ALOGV("releaseOutput() %d", output);
+    ALOGD("releaseOutput() %d", output);
     ssize_t index = mOutputs.indexOfKey(output);
     if (index < 0) {
         ALOGW("releaseOutput() releasing unknown output %d", output);
@@ -1484,7 +1484,7 @@ status_t AudioPolicyManager::getInputForAttr(const audio_attributes_t *attr,
                                              input_type_t *inputType,
                                              audio_port_handle_t *portId)
 {
-    ALOGV("getInputForAttr() source %d, sampling rate %d, format %#x, channel mask %#x,"
+    ALOGD("getInputForAttr() source %d, sampling rate %d, format %#x, channel mask %#x,"
             "session %d, flags %#x",
           attr->source, config->sample_rate, config->format, config->channel_mask, session, flags);
 
@@ -1893,7 +1893,7 @@ status_t AudioPolicyManager::startInput(audio_io_handle_t input,
                                         concurrency_type__mask_t *concurrency)
 {
 
-    ALOGV("AudioPolicyManager::startInput(input:%d, session:%d, silenced:%d, concurrency:%d)",
+    ALOGD("AudioPolicyManager::startInput(input:%d, session:%d, silenced:%d, concurrency:%d)",
             input, session, silenced, *concurrency);
 
     *concurrency = API_INPUT_CONCURRENCY_NONE;
@@ -2086,7 +2086,7 @@ status_t AudioPolicyManager::startInput(audio_io_handle_t input,
 status_t AudioPolicyManager::stopInput(audio_io_handle_t input,
                                        audio_session_t session)
 {
-    ALOGV("stopInput() input %d", input);
+    ALOGD("stopInput() input %d", input);
     ssize_t index = mInputs.indexOfKey(input);
     if (index < 0) {
         ALOGW("stopInput() unknown input %d", input);
@@ -2157,7 +2157,7 @@ status_t AudioPolicyManager::stopInput(audio_io_handle_t input,
 void AudioPolicyManager::releaseInput(audio_io_handle_t input,
                                       audio_session_t session)
 {
-    ALOGV("releaseInput() %d", input);
+    ALOGD("releaseInput() %d", input);
     ssize_t index = mInputs.indexOfKey(input);
     if (index < 0) {
         ALOGW("releaseInput() releasing unknown input %d", input);
@@ -2255,7 +2255,7 @@ status_t AudioPolicyManager::setStreamVolumeIndex(audio_stream_type_t stream,
     // Force max volume if stream cannot be muted
     if (!mVolumeCurves->canBeMuted(stream)) index = mVolumeCurves->getVolumeIndexMax(stream);
 
-    ALOGV("setStreamVolumeIndex() stream %d, device %08x, index %d",
+    ALOGD("setStreamVolumeIndex() stream %d, device %08x, index %d",
           stream, device, index);
 
     // update other private stream volumes which follow this one
@@ -2683,7 +2683,7 @@ status_t AudioPolicyManager::dump(int fd)
 // of the system.
 bool AudioPolicyManager::isOffloadSupported(const audio_offload_info_t& offloadInfo)
 {
-    ALOGV("isOffloadSupported: SR=%u, CM=0x%x, Format=0x%x, StreamType=%d,"
+    ALOGD("isOffloadSupported: SR=%u, CM=0x%x, Format=0x%x, StreamType=%d,"
      " BitRate=%u, duration=%" PRId64 " us, has_video=%d",
      offloadInfo.sample_rate, offloadInfo.channel_mask,
      offloadInfo.format,
@@ -2746,7 +2746,7 @@ bool AudioPolicyManager::isOffloadSupported(const audio_offload_info_t& offloadI
                                             offloadInfo.format,
                                             offloadInfo.channel_mask,
                                             AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD);
-    ALOGV("isOffloadSupported() profile %sfound", profile != 0 ? "" : "NOT ");
+    ALOGD("isOffloadSupported() profile %sfound", profile != 0 ? "" : "NOT ");
     return (profile != 0);
 }
 
@@ -4584,7 +4584,7 @@ status_t AudioPolicyManager::checkInputsForDevice(const sp<DeviceDescriptor>& de
 
 void AudioPolicyManager::closeOutput(audio_io_handle_t output)
 {
-    ALOGV("closeOutput(%d)", output);
+    ALOGD("closeOutput(%d)", output);
 
     sp<SwAudioOutputDescriptor> outputDesc = mOutputs.valueFor(output);
     if (outputDesc == NULL) {
@@ -4645,7 +4645,7 @@ void AudioPolicyManager::closeOutput(audio_io_handle_t output)
 
 void AudioPolicyManager::closeInput(audio_io_handle_t input)
 {
-    ALOGV("closeInput(%d)", input);
+    ALOGD("closeInput(%d)", input);
 
     sp<AudioInputDescriptor> inputDesc = mInputs.valueFor(input);
     if (inputDesc == NULL) {
@@ -4901,7 +4901,7 @@ audio_devices_t AudioPolicyManager::getNewOutputDevice(const sp<AudioOutputDescr
         device = getDeviceForStrategy(STRATEGY_REROUTING, fromCache);
     }
 
-    ALOGV("getNewOutputDevice() selected device %x", device);
+    ALOGD("getNewOutputDevice() selected device %x", device);
     return device;
 }
 
@@ -5187,7 +5187,7 @@ uint32_t AudioPolicyManager::setOutputDevice(const sp<AudioOutputDescriptor>& ou
                                              const char *address,
                                              bool requiresMuteCheck)
 {
-    ALOGV("setOutputDevice() device %04x delayMs %d", device, delayMs);
+    ALOGD("setOutputDevice() device %04x delayMs %d", device, delayMs);
     AudioParameter param;
     uint32_t muteWaitMs;
 
@@ -5210,7 +5210,7 @@ uint32_t AudioPolicyManager::setOutputDevice(const sp<AudioOutputDescriptor>& ou
 
     audio_devices_t prevDevice = outputDesc->mDevice;
 
-    ALOGV("setOutputDevice() prevDevice 0x%04x", prevDevice);
+    ALOGD("setOutputDevice() prevDevice 0x%04x", prevDevice);
 
     if (device != AUDIO_DEVICE_NONE) {
         outputDesc->mDevice = device;
@@ -5237,7 +5237,7 @@ uint32_t AudioPolicyManager::setOutputDevice(const sp<AudioOutputDescriptor>& ou
         return muteWaitMs;
     }
 
-    ALOGV("setOutputDevice() changing device");
+    ALOGD("setOutputDevice() changing device");
 
     // do the routing
     if (device == AUDIO_DEVICE_NONE) {
