@@ -286,6 +286,30 @@
       "revId": "73a30bdbb4f24b4ce4d3ddd22e309a5828336dff",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75053ae3_c8cf5c86",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1596,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-03-26T18:43:56Z",
+      "side": 1,
+      "message": "The issue is that we may do a reset here to prevent effect continuity on underrun or track change, but another application may rely on effect continuity.  I\u0027m not convinced the reset here is always a good thing.\n\nIdeally the application that wanted to prevent effect continuity would \"disable/enable\" the effect at the track stop/change. Unfortunately there is no good way to attempt this synchronization.  I\u0027m wondering if it is possible to use different session ids to separate out the effect behaviors between different tracks and attempting to disable the associated track effect processing when the original track stops.\n\nCan you please help explain exactly the problematic behavior, referring to tracks, effects, sessions, operations. scenarios involved?  Thanks!",
+      "parentUuid": "73c57db3_e191843f",
+      "range": {
+        "startLine": 1594,
+        "startChar": 0,
+        "endLine": 1596,
+        "endChar": 5
+      },
+      "revId": "73a30bdbb4f24b4ce4d3ddd22e309a5828336dff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
