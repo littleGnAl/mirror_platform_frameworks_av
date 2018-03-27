@@ -68,6 +68,7 @@ public:
           mSize((width * height * 3) / 2) {
 
         mGroup.add_buffer(new MediaBuffer(mSize));
+        mGroup.add_buffer(new MediaBuffer(mSize));
     }
 
     virtual sp<MetaData> getFormat() {
