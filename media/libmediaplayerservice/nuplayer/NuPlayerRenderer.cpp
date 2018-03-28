@@ -1420,9 +1420,10 @@ void NuPlayer::Renderer::notifyEOS_l(bool audio, status_t finalResult, int64_t d
         mHasAudio = false;
         if (mNextVideoTimeMediaUs >= 0) {
             int64_t mediaUs = 0;
-            mMediaClock->getMediaTime(ALooper::GetNowUs(), &mediaUs);
+            int64_t nowUs = ALooper::GetNowUs();
+            mMediaClock->getMediaTime(nowUs, &mediaUs);
             if (mNextVideoTimeMediaUs > mediaUs) {
-                mMediaClock->updateMaxTimeMedia(mNextVideoTimeMediaUs);
+                mMediaClock->updateAnchor(mediaUs, nowUs, mNextVideoTimeMediaUs);
             }
         }
     }
