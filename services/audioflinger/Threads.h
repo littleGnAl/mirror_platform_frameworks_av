@@ -1456,6 +1456,9 @@ private:
             // If a fast capture is present, the Pipe as IMemory, otherwise clear
             sp<IMemory>                         mPipeMemory;
 
+            // Time elapsed since the last mono pipe read
+            nsecs_t                             mLastPipeReadTime;
+
             static const size_t                 kFastCaptureLogSize = 4 * 1024;
             sp<NBLog::Writer>                   mFastCaptureNBLogWriter;
 

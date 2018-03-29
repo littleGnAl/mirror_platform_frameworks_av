@@ -5973,6 +5973,7 @@ AudioFlinger::RecordThread::RecordThread(const sp<AudioFlinger>& audioFlinger,
     // mPipeSource
     , mPipeFramesP2(0)
     // mPipeMemory
+    , mLastPipeReadTime(-1)
     // mFastCaptureNBLogWriter
     , mFastTrackAvail(false)
     , mBtNrecSuspended(false)
@@ -6342,6 +6343,12 @@ reacquire_wakelock:
             framesToRead = min(mRsmpInFramesOA - rear, mRsmpInFramesP2 / 2);
             framesRead = mPipeSource->read((uint8_t*)mRsmpInBuffer + rear * mFrameSize,
                     framesToRead);
+
+            nsecs_t now = systemTime();
+            uint32_t sinceLastRead = (mLastPipeReadTime == -1) ?
+                    0 : (uint32_t)ns2us(now - mLastPipeReadTime);
+            mLastPipeReadTime = now;
+
             // since pipe is non-blocking, simulate blocking input by waiting for 1/2 of
             // buffer size or at least for 20ms.
             size_t sleepFrames = max(
@@ -6349,6 +6356,17 @@ reacquire_wakelock:
             if (framesRead <= (ssize_t) sleepFrames) {
                 sleepUs = (sleepFrames * 1000000LL) / mSampleRate;
             }
+
+            // Compensate for the additional execution time (in excess of the requested
+            // sleep time) between two consecutive pipe reads to prevent pipe overruns
+            if (sinceLastRead > sleepUs) {
+                sleepUs -= (sinceLastRead - sleepUs);
+                // Reduce the sleep time slightly when there are enough frames to read
+                if ((size_t)mPipeSource->availableToRead() >= framesToRead) {
+                    sleepUs = (9 * sleepUs) / 10;
+                }
+            }
+
             if (framesRead < 0) {
                 status_t status = (status_t) framesRead;
                 switch (status) {
