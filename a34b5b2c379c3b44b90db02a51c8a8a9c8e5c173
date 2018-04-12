@@ -22,6 +22,29 @@
       "revId": "a34b5b2c379c3b44b90db02a51c8a8a9c8e5c173",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c05a3ba2_eebe54a9",
+        "filename": "media/libstagefright/SampleIterator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-04-12T18:09:24Z",
+      "side": 1,
+      "message": "can this addition overflow?",
+      "range": {
+        "startLine": 335,
+        "startChar": 27,
+        "endLine": 335,
+        "endChar": 28
+      },
+      "revId": "a34b5b2c379c3b44b90db02a51c8a8a9c8e5c173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
