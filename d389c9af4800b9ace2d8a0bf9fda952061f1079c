@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c7b03f55_74c239aa",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2018-04-12T23:03:20Z",
+      "side": 1,
+      "message": "this function returns status_t. The position is returned in *mediaUs.",
+      "range": {
+        "startLine": 360,
+        "startChar": 19,
+        "endLine": 360,
+        "endChar": 47
+      },
+      "revId": "d389c9af4800b9ace2d8a0bf9fda952061f1079c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
