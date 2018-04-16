@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "af9b9662_fc0869f6",
+        "filename": "media/libstagefright/SampleIterator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 333,
+      "author": {
+        "id": 1305561
+      },
+      "writtenOn": "2018-04-16T06:16:49Z",
+      "side": 1,
+      "message": "I have updated accordingly and removed division in the check",
+      "parentUuid": "ef73a88c_96f25a32",
+      "range": {
+        "startLine": 331,
+        "startChar": 1,
+        "endLine": 333,
+        "endChar": 5
+      },
+      "revId": "a34b5b2c379c3b44b90db02a51c8a8a9c8e5c173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c05a3ba2_eebe54a9",
         "filename": "media/libstagefright/SampleIterator.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2018-04-12T18:09:24Z",
       "side": 1,
       "message": "can this addition overflow?",
+      "range": {
+        "startLine": 335,
+        "startChar": 27,
+        "endLine": 335,
+        "endChar": 28
+      },
+      "revId": "a34b5b2c379c3b44b90db02a51c8a8a9c8e5c173",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c6d48ad8_90c42ed5",
+        "filename": "media/libstagefright/SampleIterator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1305561
+      },
+      "writtenOn": "2018-04-16T06:16:49Z",
+      "side": 1,
+      "message": "Addition may overflow, but I don\u0027t have any streams which could cause the overflow. \nThis particular multiplication overflow is observed during AFL fuzz testing. \nI have shared the test file at https://issuetracker.google.com/issues/77940355",
+      "parentUuid": "c05a3ba2_eebe54a9",
       "range": {
         "startLine": 335,
         "startChar": 27,
