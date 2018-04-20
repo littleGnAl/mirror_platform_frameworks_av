@@ -1044,12 +1044,30 @@ bool NuPlayer::Decoder::onInputBufferFetched(const sp<AMessage> &msg) {
         uint32_t flags = 0;
         CHECK(buffer->meta()->findInt64("timeUs", &timeUs));
 
-        int32_t eos, csd;
+        int32_t eos, csd, cvo;
         // we do not expect SYNCFRAME for decoder
         if (buffer->meta()->findInt32("eos", &eos) && eos) {
             flags |= MediaCodec::BUFFER_FLAG_EOS;
         } else if (buffer->meta()->findInt32("csd", &csd) && csd) {
             flags |= MediaCodec::BUFFER_FLAG_CODECCONFIG;
+        }
+
+        if (buffer->meta()->findInt32("cvo", &cvo)) {
+            ALOGV("[%s] cvo(%d) found at %lld us", mComponentName.c_str(), cvo, (long long)timeUs);
+            switch (cvo) {
+                case 0:
+                    flags |= MediaCodec::BUFFER_FLAG_CVO_0;
+                    break;
+                case 1:
+                    flags |= MediaCodec::BUFFER_FLAG_CVO_1;
+                    break;
+                case 2:
+                    flags |= MediaCodec::BUFFER_FLAG_CVO_2;
+                    break;
+                case 3:
+                    flags |= MediaCodec::BUFFER_FLAG_CVO_3;
+                    break;
+            }
         }
 
         // Modular DRM

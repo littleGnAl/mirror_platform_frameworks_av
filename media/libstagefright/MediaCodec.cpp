@@ -3264,6 +3264,26 @@ status_t MediaCodec::onQueueInputBuffer(const sp<AMessage> &msg) {
     }
 
     sp<MediaCodecBuffer> buffer = info->mData;
+
+    const uint32_t cvoflag = flags &
+        (BUFFER_FLAG_CVO_0 | BUFFER_FLAG_CVO_1 | BUFFER_FLAG_CVO_2 | BUFFER_FLAG_CVO_3);
+    switch (cvoflag) {
+        case BUFFER_FLAG_CVO_0:
+            buffer->meta()->setInt32("cvo", 0);
+            break;
+        case BUFFER_FLAG_CVO_1:
+            buffer->meta()->setInt32("cvo", 90);
+            break;
+        case BUFFER_FLAG_CVO_2:
+            buffer->meta()->setInt32("cvo", 180);
+            break;
+        case BUFFER_FLAG_CVO_3:
+            buffer->meta()->setInt32("cvo", 270);
+            break;
+        default:
+            break;
+    }
+
     status_t err = OK;
     if (hasCryptoOrDescrambler()) {
         AString *errorDetailMsg;
