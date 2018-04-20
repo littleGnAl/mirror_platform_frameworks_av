@@ -3375,6 +3375,7 @@ status_t MediaCodec::onQueueInputBuffer(const sp<AMessage> &msg) {
     }
 
     sp<MediaCodecBuffer> buffer = info->mData;
+
     status_t err = OK;
     if (hasCryptoOrDescrambler()) {
         AString *errorDetailMsg;
