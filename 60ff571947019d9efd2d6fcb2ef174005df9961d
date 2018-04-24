@@ -22,6 +22,23 @@
       "revId": "60ff571947019d9efd2d6fcb2ef174005df9961d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2464ca34_8a4e50f1",
+        "filename": "media/libstagefright/SampleIterator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1136369
+      },
+      "writtenOn": "2018-04-24T04:29:49Z",
+      "side": 1,
+      "message": "I feel its safer to use the intrinsic with overflow detection.\nSee https://clang.llvm.org/docs/LanguageExtensions.html#checked-arithmetic-builtins",
+      "revId": "60ff571947019d9efd2d6fcb2ef174005df9961d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
