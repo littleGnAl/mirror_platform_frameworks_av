@@ -15,6 +15,7 @@ include $(CLEAR_VARS)
 LOCAL_REQUIRED_MODULES_arm := mediaextractor.policy
 LOCAL_REQUIRED_MODULES_arm64 := mediaextractor.policy
 LOCAL_REQUIRED_MODULES_x86 := mediaextractor.policy
+LOCAL_REQUIRED_MODULES_x86_64 := mediaextractor.policy
 LOCAL_SRC_FILES := main_extractorservice.cpp
 LOCAL_SHARED_LIBRARIES := libmedia libmediaextractorservice libbinder libutils \
     liblog libbase libicuuc libavservices_minijail
@@ -26,7 +27,7 @@ LOCAL_CFLAGS := -Wall -Werror
 include $(BUILD_EXECUTABLE)
 
 # service seccomp filter
-ifeq ($(TARGET_ARCH), $(filter $(TARGET_ARCH), arm arm64 x86))
+ifeq ($(TARGET_ARCH), $(filter $(TARGET_ARCH), arm arm64 x86 x86_64))
 include $(CLEAR_VARS)
 LOCAL_MODULE := mediaextractor.policy
 LOCAL_MODULE_CLASS := ETC
