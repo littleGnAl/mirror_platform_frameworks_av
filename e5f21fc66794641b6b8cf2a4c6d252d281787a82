@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a8a88008_e319d539",
+        "filename": "services/mediacodec/seccomp_policy/mediacodec-x86.policy",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1112054
+      },
+      "writtenOn": "2018-05-04T22:10:38Z",
+      "side": 1,
+      "message": "We have similar policy in the internal branch which is overall a super set of this, but it misses few options: socketcall, sigaction and fcntl64. Are these really required?",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 12
+      },
+      "revId": "e5f21fc66794641b6b8cf2a4c6d252d281787a82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
