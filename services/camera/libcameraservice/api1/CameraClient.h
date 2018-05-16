@@ -101,6 +101,9 @@ private:
     // internal function used by sendCommand to enable/disable shutter sound.
     status_t                enableShutterSound(bool enable);
 
+    // internal function used by sendCommand to enable/disable recording sound.
+    status_t                enableRecordingSound(bool enable);
+
     static sp<CameraClient>        getClientFromCookie(void* user);
 
     // these are static callback functions
@@ -141,6 +144,7 @@ private:
     int                             mPreviewCallbackFlag;
     int                             mOrientation;     // Current display orientation
     bool                            mPlayShutterSound;
+    bool                            mPlayRecordingSound;
     bool                            mLegacyMode; // camera2 api legacy mode?
 
     // Ensures atomicity among the public methods
