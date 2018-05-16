@@ -107,6 +107,9 @@ OSCL_EXPORT_REF Bool PVInitVideoDecoder(VideoDecControls *decCtrl, uint8 *volbuf
 #else
         if ((size_t)nLayers > SIZE_MAX / sizeof(Vol *)) {
             status = PV_FALSE;
+#ifndef DEC_INTERNAL_MEMORY_OPT
+            free(video);
+#endif
             goto fail;
         }
 
