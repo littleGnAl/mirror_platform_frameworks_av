@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9660f90f_cdc163ad",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/src/pvdec_api.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2018-05-16T22:14:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad0f3851_4512f62c",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 31
+      },
+      "revId": "87a5f151d4d89599a742ab964a5fea918642f909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e767f45a_ce940618",
         "filename": "media/libstagefright/codecs/m4v_h263/dec/src/pvdec_api.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "87a5f151d4d89599a742ab964a5fea918642f909",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce2cdd49_a2d0bd9a",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/src/pvdec_api.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2018-05-16T22:14:29Z",
+      "side": 1,
+      "message": "...Are you sure? To me, it looks like everything after the `decCtrl-\u003evideoDecoderData \u003d (void *) video;` on line 124 is safe.\n\nI\u0027m not at all familiar with this code though, so I\u0027m happy to believe you either way. :)",
+      "parentUuid": "e767f45a_ce940618",
+      "range": {
+        "startLine": 111,
+        "startChar": 12,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "87a5f151d4d89599a742ab964a5fea918642f909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
