@@ -59,6 +59,7 @@ CameraClient::CameraClient(const sp<CameraService>& cameraService,
     mOrientation = getOrientation(0, mCameraFacing == CAMERA_FACING_FRONT);
     mLegacyMode = legacyMode;
     mPlayShutterSound = true;
+    mPlayRecordingSound = true;
     LOG1("CameraClient::CameraClient X (pid %d, id %d)", callingPid, cameraId);
 }
 
@@ -451,7 +452,8 @@ status_t CameraClient::startRecordingMode() {
 
     // start recording mode
     enableMsgType(CAMERA_MSG_VIDEO_FRAME);
-    sCameraService->playSound(CameraService::SOUND_RECORDING_START);
+    if (mPlayRecordingSound)
+        sCameraService->playSound(CameraService::SOUND_RECORDING_START);
     result = mHardware->startRecording();
     if (result != NO_ERROR) {
         ALOGE("mHardware->startRecording() failed with status %d", result);
@@ -484,7 +486,8 @@ void CameraClient::stopRecording() {
 
         disableMsgType(CAMERA_MSG_VIDEO_FRAME);
         mHardware->stopRecording();
-        sCameraService->playSound(CameraService::SOUND_RECORDING_STOP);
+        if (mPlayRecordingSound)
+            sCameraService->playSound(CameraService::SOUND_RECORDING_STOP);
 
         mPreviewBuffer.clear();
     }
@@ -739,6 +742,22 @@ status_t CameraClient::enableShutterSound(bool enable) {
     return OK;
 }
 
+// enable recording sound
+status_t CameraClient::enableRecordingSound(bool enable) {
+    LOG1("enableRecordingSound (pid %d)", CameraThreadState::getCallingPid());
+
+    status_t result = checkPidAndHardware();
+    if (result != NO_ERROR) return result;
+
+    if (enable) {
+        mPlayRecordingSound = true;
+        return OK;
+    }
+
+    mPlayRecordingSound = false;
+    return OK;
+}
+
 status_t CameraClient::sendCommand(int32_t cmd, int32_t arg1, int32_t arg2) {
     LOG1("sendCommand (pid %d)", getCallingPid());
     int orientation;
@@ -769,7 +788,15 @@ status_t CameraClient::sendCommand(int32_t cmd, int32_t arg1, int32_t arg2) {
         }
         return OK;
     } else if (cmd == CAMERA_CMD_PLAY_RECORDING_SOUND) {
-        sCameraService->playSound(CameraService::SOUND_RECORDING_START);
+        switch (arg1) {
+            case 0:
+                return enableRecordingSound(false);
+            case 1:
+                return enableRecordingSound(true);
+            default:
+                return BAD_VALUE;
+        }
+        return OK;
     } else if (cmd == CAMERA_CMD_SET_VIDEO_BUFFER_COUNT) {
         // Silently ignore this command
         return INVALID_OPERATION;

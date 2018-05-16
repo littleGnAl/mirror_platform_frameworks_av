@@ -155,6 +155,7 @@ struct Parameters {
     // One of ICamera::VIDEO_BUFFER_MODE_*
     int32_t videoBufferMode;
     bool playShutterSound;
+    bool playRecordingSound;
     bool enableFaceDetect;
 
     bool enableFocusMoveMessages;

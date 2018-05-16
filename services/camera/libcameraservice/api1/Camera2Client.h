@@ -175,7 +175,7 @@ private:
     status_t commandStopSmoothZoomL();
     status_t commandSetDisplayOrientationL(int degrees);
     status_t commandEnableShutterSoundL(bool enable);
-    status_t commandPlayRecordingSoundL();
+    status_t commandPlayRecordingSoundL(bool enable);
     status_t commandStartFaceDetectionL(int type);
     status_t commandStopFaceDetectionL(Parameters &params);
     status_t commandEnableFocusMoveMsgL(bool enable);
