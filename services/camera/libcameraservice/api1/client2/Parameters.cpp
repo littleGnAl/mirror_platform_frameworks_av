@@ -918,6 +918,7 @@ status_t Parameters::initialize(CameraDeviceBase *device, int deviceVersion) {
     videoDataSpace = HAL_DATASPACE_V0_BT709;
     videoBufferMode = hardware::ICamera::VIDEO_BUFFER_MODE_DATA_CALLBACK_YUV;
     playShutterSound = true;
+    playRecordingSound = true;
     enableFaceDetect = false;
 
     enableFocusMoveMessages = false;

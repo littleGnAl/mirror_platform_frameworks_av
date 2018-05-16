@@ -1098,7 +1098,8 @@ status_t Camera2Client::startRecordingL(Parameters &params, bool restart) {
     }
 
     if (!restart) {
-        sCameraService->playSound(CameraService::SOUND_RECORDING_START);
+        if (params.playRecordingSound)
+            sCameraService->playSound(CameraService::SOUND_RECORDING_START);
         mStreamingProcessor->updateRecordingRequest(params);
         if (res != OK) {
             ALOGE("%s: Camera %d: Unable to update recording request: %s (%d)",
@@ -1255,7 +1256,8 @@ void Camera2Client::stopRecording() {
             return;
     };
 
-    sCameraService->playSound(CameraService::SOUND_RECORDING_STOP);
+    if (l.mParameters.playRecordingSound)
+        sCameraService->playSound(CameraService::SOUND_RECORDING_STOP);
 
     // Remove recording stream because the video target may be abandoned soon.
     res = stopStream();
@@ -1609,7 +1611,7 @@ status_t Camera2Client::sendCommand(int32_t cmd, int32_t arg1, int32_t arg2) {
         case CAMERA_CMD_ENABLE_SHUTTER_SOUND:
             return commandEnableShutterSoundL(arg1 == 1);
         case CAMERA_CMD_PLAY_RECORDING_SOUND:
-            return commandPlayRecordingSoundL();
+            return commandPlayRecordingSoundL(arg1 == 1);
         case CAMERA_CMD_START_FACE_DETECTION:
             return commandStartFaceDetectionL(arg1);
         case CAMERA_CMD_STOP_FACE_DETECTION: {
@@ -1691,8 +1693,14 @@ status_t Camera2Client::commandEnableShutterSoundL(bool enable) {
     return OK;
 }
 
-status_t Camera2Client::commandPlayRecordingSoundL() {
-    sCameraService->playSound(CameraService::SOUND_RECORDING_START);
+status_t Camera2Client::commandPlayRecordingSoundL(bool enable) {
+    SharedParameters::Lock l(mParameters);
+    if (enable) {
+        l.mParameters.playRecordingSound = true;
+        return OK;
+    }
+
+    l.mParameters.playRecordingSound = false;
     return OK;
 }
 
