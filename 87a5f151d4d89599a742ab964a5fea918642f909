@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad0f3851_4512f62c",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/src/pvdec_api.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2018-05-16T21:01:58Z",
+      "side": 1,
+      "message": "This is not needed due to line 105 and 107.",
+      "range": {
+        "startLine": 110,
+        "startChar": 0,
+        "endLine": 110,
+        "endChar": 31
+      },
+      "revId": "87a5f151d4d89599a742ab964a5fea918642f909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e767f45a_ce940618",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/src/pvdec_api.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2018-05-16T21:01:58Z",
+      "side": 1,
+      "message": "line 151 has the same issue. Could you also add it there?",
+      "range": {
+        "startLine": 111,
+        "startChar": 12,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "87a5f151d4d89599a742ab964a5fea918642f909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
