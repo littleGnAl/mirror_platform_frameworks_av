@@ -93,6 +93,53 @@
       "revId": "87a5f151d4d89599a742ab964a5fea918642f909",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1967cdf5_f1845bb1",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/src/pvdec_api.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2018-05-17T00:41:49Z",
+      "side": 1,
+      "message": "You are right. video is saved in decCtrl-\u003evideoDecoderData and is freed in PVCleanUpVideoDecoder. However line 124 could cause leakage since decCtrl-\u003evideoDecoderData could have existing data. Also see comments below.\n\nBTW, I missed one issue here: free should be oscl_free.",
+      "parentUuid": "ce2cdd49_a2d0bd9a",
+      "range": {
+        "startLine": 111,
+        "startChar": 12,
+        "endLine": 111,
+        "endChar": 24
+      },
+      "revId": "87a5f151d4d89599a742ab964a5fea918642f909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2fa9d1f1_f47a4111",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/src/pvdec_api.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2018-05-17T00:41:49Z",
+      "side": 1,
+      "message": "This should be cleaned up before being overridden by video. This could be done by calling PVCleanUpVideoDecoder(decCtrl).",
+      "range": {
+        "startLine": 124,
+        "startChar": 17,
+        "endLine": 124,
+        "endChar": 33
+      },
+      "revId": "87a5f151d4d89599a742ab964a5fea918642f909",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
