@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2796a73c_68c56767",
+        "filename": "media/libstagefright/foundation/include/media/stagefright/foundation/AString.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1105338
+      },
+      "writtenOn": "2018-05-18T00:01:00Z",
+      "side": 1,
+      "message": "What issue will this change fix?\n\nAnd if we are changing this, can we make it constexpr const char*?",
+      "range": {
+        "startLine": 96,
+        "startChar": 23,
+        "endLine": 96,
+        "endChar": 29
+      },
+      "revId": "f2941d19b335ba76c0da600a3c04dbcc927ea31d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
