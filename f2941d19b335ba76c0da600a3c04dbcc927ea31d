@@ -46,6 +46,30 @@
       "revId": "f2941d19b335ba76c0da600a3c04dbcc927ea31d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8abb46b8_fd26ca47",
+        "filename": "media/libstagefright/foundation/include/media/stagefright/foundation/AString.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1105338
+      },
+      "writtenOn": "2018-05-18T14:15:58Z",
+      "side": 1,
+      "message": "It probably won\u0027t buy us anything right now.",
+      "parentUuid": "a9234e1b_6a909970",
+      "range": {
+        "startLine": 96,
+        "startChar": 23,
+        "endLine": 96,
+        "endChar": 29
+      },
+      "revId": "f2941d19b335ba76c0da600a3c04dbcc927ea31d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
