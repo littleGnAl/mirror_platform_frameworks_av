@@ -330,7 +330,7 @@ void AudioPolicyEffects::EffectVector::setProcessorEnabled(bool enabled)
 // Audio processing configuration
 // ----------------------------------------------------------------------------
 
-/*static*/ const char * const AudioPolicyEffects::kInputSourceNames[AUDIO_SOURCE_CNT -1] = {
+/*static*/ const char * const AudioPolicyEffects::kInputSourceNames[AUDIO_SOURCE_CNT] = {
     MIC_SRC_TAG,
     VOICE_UL_SRC_TAG,
     VOICE_DL_SRC_TAG,
