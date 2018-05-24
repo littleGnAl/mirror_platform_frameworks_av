@@ -521,7 +521,7 @@ void PlaylistFetcher::setStoppingThreshold(float thresholdRatio, bool disconnect
         mThresholdRatio = thresholdRatio;
     }
     if (disconnect) {
-        mHTTPDownloader->disconnect();
+        (new AMessage(kWhatDisconnect, this))->post();
     }
 }
 
@@ -628,6 +628,12 @@ void PlaylistFetcher::onMessageReceived(const sp<AMessage> &msg) {
             notify->setInt32("what", kWhatStarted);
             notify->setInt32("err", err);
             notify->post();
+            break;
+        }
+
+        case kWhatDisconnect:
+        {
+            mHTTPDownloader->disconnect();
             break;
         }
 
