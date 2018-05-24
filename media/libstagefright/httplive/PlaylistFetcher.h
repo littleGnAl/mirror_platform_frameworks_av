@@ -52,6 +52,7 @@ struct PlaylistFetcher : public AHandler {
         kWhatStopReached,
         kWhatPlaylistFetched,
         kWhatMetadataDetected,
+        kWhatDisconnect,
     };
 
     PlaylistFetcher(
