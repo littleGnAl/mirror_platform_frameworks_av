@@ -7985,6 +7985,16 @@ bool ACodec::ExecutingToIdleState::onMessageReceived(const sp<AMessage> &msg) {
             break;
         }
 
+        case kWhatReleaseCodecInstance:
+        {
+            if (!mComponentNowIdle) {
+                usleep(100000);
+                mCodec->deferMessage(msg);
+                handled = true;
+            }
+            break;
+        }
+
         default:
             handled = BaseState::onMessageReceived(msg);
             break;
