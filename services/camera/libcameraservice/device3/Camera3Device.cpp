@@ -4154,6 +4154,7 @@ bool Camera3Device::RequestThread::threadLoop() {
 status_t Camera3Device::RequestThread::prepareHalRequests() {
     ATRACE_CALL();
 
+    bool batchedRequest = mNextRequests[0].captureRequest->mBatchSize > 1;
     for (size_t i = 0; i < mNextRequests.size(); i++) {
         auto& nextRequest = mNextRequests.editItemAt(i);
         sp<CaptureRequest> captureRequest = nextRequest.captureRequest;
@@ -4177,7 +4178,11 @@ status_t Camera3Device::RequestThread::prepareHalRequests() {
         mPrevTriggers = triggerCount;
 
         // If the request is the same as last, or we had triggers last time
-        if (mPrevRequest != captureRequest || triggersMixedIn) {
+        bool newRequest = (mPrevRequest != captureRequest || triggersMixedIn) &&
+                // Request settings are all the same within one batch, so only treat the first
+                // request in a batch as new
+                !(batchedRequest && i >= 0);
+        if (newRequest) {
             /**
              * HAL workaround:
              * Insert a dummy trigger ID if a trigger is set but no trigger ID is
