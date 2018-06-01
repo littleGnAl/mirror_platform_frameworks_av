@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "15b62578_120ac13d",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-06-01T22:23:43Z",
+      "side": 1,
+      "message": "Is this in bytes, samples, something else?",
+      "range": {
+        "startLine": 67,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 45
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c93fc5d1_8f9efb8f",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1569,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-06-01T22:23:43Z",
+      "side": 1,
+      "message": "so for pcm data the sample_size field indicates the number of bits, not the usual number of bytes?",
+      "range": {
+        "startLine": 1569,
+        "startChar": 0,
+        "endLine": 1569,
+        "endChar": 79
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "75bea513_87f85de7",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1570,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-06-01T22:23:43Z",
+      "side": 1,
+      "message": "this check seems unnecessary, since it will always be true (the only way to get here is if chunk_type is \u0027twos\u0027 so the check on line 1568 passes)",
+      "range": {
+        "startLine": 1570,
+        "startChar": 0,
+        "endLine": 1570,
+        "endChar": 67
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "84b7f49e_ab50a0ab",
         "filename": "media/libstagefright/MPEG4Extractor.cpp",
         "patchSetId": 1
@@ -71,6 +140,29 @@
     },
     {
       "key": {
+        "uuid": "7d323ec5_7afb3e2c",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4859,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-06-01T22:23:43Z",
+      "side": 1,
+      "message": "I don\u0027t understand this code. It seems like its purpose is to support both 16 and 32 bit samples, by truncating 32 bit samples to 16? But then shouldn\u0027t the loop be something like:\n\nfor (size_t j \u003d 0; j \u003c samplesToRead; j++) {\n    dstData[j] \u003d ntohs(srcData[j * multiplier]);\n}",
+      "range": {
+        "startLine": 4851,
+        "startChar": 0,
+        "endLine": 4859,
+        "endChar": 21
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "52865aa2_d37d50ad",
         "filename": "media/libstagefright/MPEG4Extractor.cpp",
         "patchSetId": 1
@@ -82,6 +174,30 @@
       "writtenOn": "2018-06-01T16:27:11Z",
       "side": 1,
       "message": "does this assume little endian CPU?",
+      "range": {
+        "startLine": 4866,
+        "startChar": 20,
+        "endLine": 4866,
+        "endChar": 39
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5d9d29c_05c4d7ec",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4866,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-06-01T22:23:43Z",
+      "side": 1,
+      "message": "This (and the lines you commented on just below) are all in the \"else\" case for \"not pcm\". The endianness block ended on line 4860 above.",
+      "parentUuid": "52865aa2_d37d50ad",
       "range": {
         "startLine": 4866,
         "startChar": 20,
