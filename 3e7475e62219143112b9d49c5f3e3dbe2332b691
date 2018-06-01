@@ -210,6 +210,30 @@
     },
     {
       "key": {
+        "uuid": "389dd39d_a6e318cf",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4866,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2018-06-01T22:32:46Z",
+      "side": 1,
+      "message": "Thanks, Marco, for pointing this out! That\u0027s correct - this is the old code unchanged, so never mind my comments below.",
+      "parentUuid": "a5d9d29c_05c4d7ec",
+      "range": {
+        "startLine": 4866,
+        "startChar": 20,
+        "endLine": 4866,
+        "endChar": 39
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5ac770c1_5e67b8d9",
         "filename": "media/libstagefright/MPEG4Extractor.cpp",
         "patchSetId": 1
@@ -233,6 +257,30 @@
     },
     {
       "key": {
+        "uuid": "570aa371_543dc4cd",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4881,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2018-06-01T22:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5ac770c1_5e67b8d9",
+      "range": {
+        "startLine": 4877,
+        "startChar": 16,
+        "endLine": 4881,
+        "endChar": 60
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "44e73298_92abf905",
         "filename": "media/libstagefright/MPEG4Extractor.cpp",
         "patchSetId": 1
@@ -253,6 +301,30 @@
       "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74b8fa31_037b7d3f",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4888,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2018-06-01T22:32:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44e73298_92abf905",
+      "range": {
+        "startLine": 4888,
+        "startChar": 20,
+        "endLine": 4888,
+        "endChar": 32
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
