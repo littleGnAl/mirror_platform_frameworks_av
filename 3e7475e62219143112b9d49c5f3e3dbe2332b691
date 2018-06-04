@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "993037f3_6e665363",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1569,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-04T06:49:28Z",
+      "side": 1,
+      "message": "Yes sample_size here indicates the number of bits then converts to bytes in L3944.",
+      "parentUuid": "c93fc5d1_8f9efb8f",
+      "range": {
+        "startLine": 1569,
+        "startChar": 0,
+        "endLine": 1569,
+        "endChar": 79
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "75bea513_87f85de7",
         "filename": "media/libstagefright/MPEG4Extractor.cpp",
         "patchSetId": 1
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "311e76a5_d0041c85",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1570,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-04T06:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "75bea513_87f85de7",
+      "range": {
+        "startLine": 1570,
+        "startChar": 0,
+        "endLine": 1570,
+        "endChar": 67
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "84b7f49e_ab50a0ab",
         "filename": "media/libstagefright/MPEG4Extractor.cpp",
         "patchSetId": 1
@@ -82,6 +130,30 @@
       "writtenOn": "2018-06-01T16:27:11Z",
       "side": 1,
       "message": "can we use some endianness constants here instead of string?",
+      "range": {
+        "startLine": 1571,
+        "startChar": 53,
+        "endLine": 1571,
+        "endChar": 69
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac58b095_b3fd849e",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1571,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-04T06:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84b7f49e_ab50a0ab",
       "range": {
         "startLine": 1571,
         "startChar": 53,
@@ -117,6 +189,30 @@
     },
     {
       "key": {
+        "uuid": "9a91139c_b0f78c53",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4832,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-04T06:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a96bc50_7d66bdd1",
+      "range": {
+        "startLine": 4832,
+        "startChar": 32,
+        "endLine": 4832,
+        "endChar": 33
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a22eb428_6e4a407a",
         "filename": "media/libstagefright/MPEG4Extractor.cpp",
         "patchSetId": 1
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "562d7d02_25f3b244",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4850,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-04T06:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a22eb428_6e4a407a",
+      "range": {
+        "startLine": 4850,
+        "startChar": 20,
+        "endLine": 4850,
+        "endChar": 22
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7d323ec5_7afb3e2c",
         "filename": "media/libstagefright/MPEG4Extractor.cpp",
         "patchSetId": 1
@@ -151,6 +271,30 @@
       "writtenOn": "2018-06-01T22:23:43Z",
       "side": 1,
       "message": "I don\u0027t understand this code. It seems like its purpose is to support both 16 and 32 bit samples, by truncating 32 bit samples to 16? But then shouldn\u0027t the loop be something like:\n\nfor (size_t j \u003d 0; j \u003c samplesToRead; j++) {\n    dstData[j] \u003d ntohs(srcData[j * multiplier]);\n}",
+      "range": {
+        "startLine": 4851,
+        "startChar": 0,
+        "endLine": 4859,
+        "endChar": 21
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37dab6b9_cc2649b9",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4859,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-04T06:49:28Z",
+      "side": 1,
+      "message": "Since this is converting endian per 16bit, I believe the current code works properly. Could you elaborate your concern?",
+      "parentUuid": "7d323ec5_7afb3e2c",
       "range": {
         "startLine": 4851,
         "startChar": 0,
@@ -351,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "b9821a5a_61720027",
+        "filename": "media/libstagefright/include/SampleIterator.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-04T06:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f9d4294_15862b12",
+      "range": {
+        "startLine": 41,
+        "startChar": 84,
+        "endLine": 41,
+        "endChar": 85
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a882f6e9_e6a94ba4",
         "filename": "media/libstagefright/include/SampleTable.h",
         "patchSetId": 1
@@ -374,6 +542,30 @@
     },
     {
       "key": {
+        "uuid": "b1e8d671_e6864968",
+        "filename": "media/libstagefright/include/SampleTable.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-04T06:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a882f6e9_e6a94ba4",
+      "range": {
+        "startLine": 72,
+        "startChar": 7,
+        "endLine": 72,
+        "endChar": 32
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d52a6aa_4ec5119a",
         "filename": "media/libstagefright/include/media/stagefright/MetaData.h",
         "patchSetId": 1
@@ -385,6 +577,30 @@
       "writtenOn": "2018-06-01T16:27:11Z",
       "side": 1,
       "message": "please align this and add data type in comments - just as all keys above",
+      "range": {
+        "startLine": 222,
+        "startChar": 23,
+        "endLine": 222,
+        "endChar": 24
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13ea0dc2_9b5bec0a",
+        "filename": "media/libstagefright/include/media/stagefright/MetaData.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-04T06:49:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d52a6aa_4ec5119a",
       "range": {
         "startLine": 222,
         "startChar": 23,
