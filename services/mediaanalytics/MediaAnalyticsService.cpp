@@ -774,6 +774,7 @@ void MediaAnalyticsService::summarize(MediaAnalyticsItem *item) {
         return;
     }
 
+    Mutex::Autolock _l(mLock);
     nsecs_t now = systemTime(SYSTEM_TIME_REALTIME);
     if (mCurrentSet == NULL
         || (mCurrentSet->getStarted() + mNewSetInterval < now)) {
