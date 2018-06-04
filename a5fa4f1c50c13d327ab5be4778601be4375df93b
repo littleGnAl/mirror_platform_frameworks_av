@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7e194937_0f60c73a",
+        "filename": "services/audiopolicy/engineconfigurable/wrapper/ParameterManagerWrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1110792
+      },
+      "writtenOn": "2018-06-04T20:24:28Z",
+      "side": 1,
+      "message": "From internal review,\n\nIs this required to run the GSI image?\nThis makes the format and contents of the config file part of the Treble surface.\nHow can we ensure the framework code remains backward compatible across desert release updates?",
+      "revId": "a5fa4f1c50c13d327ab5be4778601be4375df93b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
