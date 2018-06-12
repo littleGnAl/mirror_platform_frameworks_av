@@ -307,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "e42a7277_62109ed1",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4859,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-06-12T18:49:49Z",
+      "side": 1,
+      "message": "\u0027size\u0027 is the size of a single sample, right? (i.e. 16-bit or 32-bit)\n\u0027srcData\u0027 and \u0027dstData\u0027 both point at a buffer, and let\u0027s say this buffer contains the following bytes:\n{ 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88 }\nor, since srcData and dstData are both uint16_t*, it contains these values:\n{ 0x2211, 0x4433, 0x6655, 0x8877 }\nIf the buffer contains 32-bit samples (size\u003d\u003d4), then this would correspond to two (big-endian) samples, with values 0x11223344 and 0x55667788.\nThe loop will effectively do:\ndstData[0] \u003d ntohs(srcData[0]);\ndstData[1] \u003d ntohs(srcData[1]);\ndstData[2] \u003d ntohs(srcData[2]);\ndstData[3] \u003d ntohs(srcData[3]);\n\nThis means that after endian-conversion, and when interpreted as 16-bit values, the data will be:\n\n{ 0x1122, 0x3344, 0x5566, 0x7788 }\n\nor as bytes:\n\n{ 0x22, 0x11, 0x44, 0x33, 0x66, 0x55, 0x88, 0x77 }\n\nHowever, since these are 32-bit samples, the correct bytes would be:\n\n{ 0x44, 0x33, 0x22, 0x11, 0x88, 0x77, 0x66, 0x55 }\n\nAnd if the intention was to convert from 32-bit to 16-bit at the same time as doing the endianness conversion, then the output bytes should be:\n\n{ 0x22, 0x11, 0x66, 0x55 }, or { 0x1122, 0x5566 } when interpreted as 16 bit values. i.e. the high 16 bits of the two 32 bit samples.\n\nAs written, the loop either provides badly-swapped 32-bit samples, or 16-bit samples interleaved with garbage.\n\nPerhaps I\u0027m just misunderstanding what you\u0027re trying to do here though.",
+      "parentUuid": "37dab6b9_cc2649b9",
+      "range": {
+        "startLine": 4851,
+        "startChar": 0,
+        "endLine": 4859,
+        "endChar": 21
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52865aa2_d37d50ad",
         "filename": "media/libstagefright/MPEG4Extractor.cpp",
         "patchSetId": 1
