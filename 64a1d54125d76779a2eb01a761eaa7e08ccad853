@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "94ea1016_ca3d7919",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-06-12T18:23:48Z",
+      "side": 1,
+      "message": "delay is in frames at the sample rate.  wondering if 4096 should be described on the same level e.g. (sampleRate / 10) /* \u003d\u003d 100ms */ which is generally how long 4096 frames is.",
+      "range": {
+        "startLine": 475,
+        "startChar": 22,
+        "endLine": 475,
+        "endChar": 62
+      },
+      "revId": "64a1d54125d76779a2eb01a761eaa7e08ccad853",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
