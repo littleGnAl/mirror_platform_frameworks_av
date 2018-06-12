@@ -69,6 +69,30 @@
       "revId": "64a1d54125d76779a2eb01a761eaa7e08ccad853",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a10b602_0c61b3c3",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 475,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-06-12T21:15:44Z",
+      "side": 1,
+      "message": "I think you mean AAC frames here (vs PCM frames).  As I recall large AAC frames can be 1024 or 960 samples, with 1024 being much more common.  \n\nhttps://wiki.multimedia.cx/index.php/Understanding_AAC",
+      "parentUuid": "e393bd48_65fb056c",
+      "range": {
+        "startLine": 475,
+        "startChar": 47,
+        "endLine": 475,
+        "endChar": 48
+      },
+      "revId": "64a1d54125d76779a2eb01a761eaa7e08ccad853",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
