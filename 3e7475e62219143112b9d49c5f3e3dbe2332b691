@@ -355,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "b20836a1_3b96df69",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4859,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-06-13T22:35:36Z",
+      "side": 1,
+      "message": "Does this code not support 32-bit samples then? I got the impression from the code above (line 1569 and further, and 3938 and further, where it sets and reads kKeyBitsPerSample) that different sample sizes are supported.",
+      "parentUuid": "7e126f26_b4cd0baa",
+      "range": {
+        "startLine": 4851,
+        "startChar": 0,
+        "endLine": 4859,
+        "endChar": 21
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52865aa2_d37d50ad",
         "filename": "media/libstagefright/MPEG4Extractor.cpp",
         "patchSetId": 1
