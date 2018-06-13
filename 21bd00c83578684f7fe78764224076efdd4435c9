@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ed64ab2_d940eafc",
+        "filename": "media/libstagefright/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 510,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2018-06-13T18:15:53Z",
+      "side": 1,
+      "message": "The output buffer index needs to be released before continue.\n\nThis null pointer is already handled on oc-mr1 release (commit is 5b5f81c36fd1239e71b278d9b902eb7d0241014c). On P, the code will be quite different, and it will be rebased.",
+      "range": {
+        "startLine": 510,
+        "startChar": 24,
+        "endLine": 510,
+        "endChar": 32
+      },
+      "revId": "21bd00c83578684f7fe78764224076efdd4435c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
