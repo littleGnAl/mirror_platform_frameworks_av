@@ -503,6 +503,13 @@ static VideoFrame *extractVideoFrame(
                     sp<MediaCodecBuffer> videoFrameBuffer = outputBuffers.itemAt(index);
 
                     int32_t width, height;
+                    if (outputFormat == NULL) {
+                        ALOGW("Received an output buffer without INFO_FORMAT_CHANGED");
+                        err = decoder->getOutputFormat(&outputFormat);
+                    }
+                    if (err != OK) {
+                        continue;
+                    }
                     CHECK(outputFormat != NULL);
                     CHECK(outputFormat->findInt32("width", &width));
                     CHECK(outputFormat->findInt32("height", &height));
