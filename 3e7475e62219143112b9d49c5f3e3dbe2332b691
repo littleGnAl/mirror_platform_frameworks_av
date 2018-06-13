@@ -331,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "7e126f26_b4cd0baa",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4859,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-13T00:12:31Z",
+      "side": 1,
+      "message": "This contains both L and R data.\n\nIn case of { 0x11, 0x22, 0x33, 0x44, 0x55, 0x66, 0x77, 0x88 },\n\nIt contains\n\n{ 0x2211(L), 0x4433(R), 0x6655(L), 0x8877(R) }\n\nSo the expected result after endian conversion should be\n\n{ 0x1122(L), 0x3344(R), 0x5566(L), 0x7788(R) }",
+      "parentUuid": "e42a7277_62109ed1",
+      "range": {
+        "startLine": 4851,
+        "startChar": 0,
+        "endLine": 4859,
+        "endChar": 21
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52865aa2_d37d50ad",
         "filename": "media/libstagefright/MPEG4Extractor.cpp",
         "patchSetId": 1
