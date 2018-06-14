@@ -379,6 +379,30 @@
     },
     {
       "key": {
+        "uuid": "57aebd7e_ccbc1a8b",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4859,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-14T00:01:02Z",
+      "side": 1,
+      "message": "Yes, this code supports up to 16-bit/sample.",
+      "parentUuid": "b20836a1_3b96df69",
+      "range": {
+        "startLine": 4851,
+        "startChar": 0,
+        "endLine": 4859,
+        "endChar": 21
+      },
+      "revId": "3e7475e62219143112b9d49c5f3e3dbe2332b691",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "52865aa2_d37d50ad",
         "filename": "media/libstagefright/MPEG4Extractor.cpp",
         "patchSetId": 1
