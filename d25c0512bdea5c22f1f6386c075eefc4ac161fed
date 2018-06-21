@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "deccec6b_d746fc10",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1129688
+      },
+      "writtenOn": "2018-06-21T20:42:31Z",
+      "side": 1,
+      "message": "Line wrap cleanup?",
+      "revId": "d25c0512bdea5c22f1f6386c075eefc4ac161fed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11b35f5f_7961b02b",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2352,
+      "author": {
+        "id": 1129688
+      },
+      "writtenOn": "2018-06-21T20:42:31Z",
+      "side": 1,
+      "message": "This is simple enough as written, but should it be using the builder?",
+      "revId": "d25c0512bdea5c22f1f6386c075eefc4ac161fed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2af68551_1e262caf",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2355,
+      "author": {
+        "id": 1129688
+      },
+      "writtenOn": "2018-06-21T20:42:31Z",
+      "side": 1,
+      "message": "Add space between \u0027if\u0027 and \u0027(\u0027",
+      "revId": "d25c0512bdea5c22f1f6386c075eefc4ac161fed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
