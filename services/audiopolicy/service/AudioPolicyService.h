@@ -220,7 +220,7 @@ public:
             virtual status_t clientSetAudioPortConfig(const struct audio_port_config *config,
                                                       int delayMs);
 
-            void removeNotificationClient(uid_t uid);
+            void removeNotificationClient(uid_t uid, pid_t pid);
             void onAudioPortListUpdate();
             void doOnAudioPortListUpdate();
             void onAudioPatchListUpdate();
@@ -532,7 +532,7 @@ private:
     public:
                             NotificationClient(const sp<AudioPolicyService>& service,
                                                 const sp<IAudioPolicyServiceClient>& client,
-                                                uid_t uid);
+                                                uid_t uid, pid_t pid);
         virtual             ~NotificationClient();
 
                             void      onAudioPortListUpdate();
@@ -545,6 +545,10 @@ private:
                                         audio_patch_handle_t patchHandle);
                             void      setAudioPortCallbacksEnabled(bool enabled);
 
+                            uid_t uid() {
+                                return mUid;
+                            }
+
                 // IBinder::DeathRecipient
                 virtual     void        binderDied(const wp<IBinder>& who);
 
@@ -554,6 +558,7 @@ private:
 
         const wp<AudioPolicyService>        mService;
         const uid_t                         mUid;
+        const pid_t                         mPid;
         const sp<IAudioPolicyServiceClient> mAudioPolicyServiceClient;
               bool                          mAudioPortCallbacksEnabled;
     };
@@ -576,7 +581,7 @@ private:
     AudioPolicyInterface *mAudioPolicyManager;
     AudioPolicyClient *mAudioPolicyClient;
 
-    DefaultKeyedVector< uid_t, sp<NotificationClient> >    mNotificationClients;
+    DefaultKeyedVector< int64_t, sp<NotificationClient> >    mNotificationClients;
     Mutex mNotificationClientsLock;  // protects mNotificationClients
     // Manage all effects configured in audio_effects.conf
     sp<AudioPolicyEffects> mAudioPolicyEffects;
