@@ -22,6 +22,30 @@
       "revId": "667daf3155b26db474d25906b46939c298a2e3e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7794e3dd_400b0547",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-22T09:22:03Z",
+      "side": 1,
+      "message": "Hi Eric,\nSorry for so late response. Since owner has been changed, could you continue review on the below CL?\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/708789\n\nAs you can find in the new CL, we added checking if NonOffloadable is enabled or not in setVolumeForOutput since we found an issue that music volume becomes max for an instant when enabling non-offloadable effect during offload playback. So it might be better to keep setVolumeForOutput in EffectChain. Please give us your comment in new CL. Thanks!",
+      "parentUuid": "642e02b4_25e151b2",
+      "range": {
+        "startLine": 555,
+        "startChar": 33,
+        "endLine": 555,
+        "endChar": 34
+      },
+      "revId": "667daf3155b26db474d25906b46939c298a2e3e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
