@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "da71934b_659550e9",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-06-25T19:48:15Z",
+      "side": 1,
+      "message": "can this have more limited scope?",
+      "range": {
+        "startLine": 236,
+        "startChar": 4,
+        "endLine": 236,
+        "endChar": 46
+      },
+      "revId": "b5483803586579244e7bda9fc81d33a105769c30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c94c4240_f111d500",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2132,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-06-25T19:48:15Z",
+      "side": 1,
+      "message": "would prefer this to be float when entering the playback thread.",
+      "range": {
+        "startLine": 2132,
+        "startChar": 55,
+        "endLine": 2132,
+        "endChar": 86
+      },
+      "revId": "b5483803586579244e7bda9fc81d33a105769c30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
