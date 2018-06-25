@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f7852f25_f6476385",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 848,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-25T02:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f9e2a04_780dad3b",
+      "range": {
+        "startLine": 848,
+        "startChar": 32,
+        "endLine": 848,
+        "endChar": 50
+      },
+      "revId": "acf7dd92ce469846ff6a59a950e6c3e8db62c2b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5fdbd7f8_e59f2529",
         "filename": "services/audioflinger/Effects.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "acf7dd92ce469846ff6a59a950e6c3e8db62c2b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e975b506_6c8344b1",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 860,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-25T02:58:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5fdbd7f8_e59f2529",
+      "range": {
+        "startLine": 855,
+        "startChar": 0,
+        "endLine": 860,
+        "endChar": 9
+      },
+      "revId": "acf7dd92ce469846ff6a59a950e6c3e8db62c2b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
