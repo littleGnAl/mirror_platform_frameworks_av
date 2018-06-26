@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ed65802_ddeed920",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-06-26T19:33:07Z",
+      "side": 1,
+      "message": "what\u0027s the reason for this?  should this also include ThreadBase::DIRECT?",
+      "range": {
+        "startLine": 260,
+        "startChar": 49,
+        "endLine": 260,
+        "endChar": 68
+      },
+      "revId": "120fce0185b7974c44028783f0790de7f147eb68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64704897_6648d211",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-06-26T19:33:07Z",
+      "side": 1,
+      "message": "Since start calls chain-\u003eresetVolume_l(), shouldn\u0027t stop_l() call chain-\u003eresetVolume_l() for symmetry?",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 575,
+        "endChar": 9
+      },
+      "revId": "120fce0185b7974c44028783f0790de7f147eb68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f882ca54_d3c5dcc9",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-06-26T19:33:07Z",
+      "side": 1,
+      "message": "should this include thread-\u003etype() \u003d\u003d ThreadBase::DIRECT as well?",
+      "range": {
+        "startLine": 852,
+        "startChar": 8,
+        "endLine": 852,
+        "endChar": 50
+      },
+      "revId": "120fce0185b7974c44028783f0790de7f147eb68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3462c97b_304a254a",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-06-26T19:33:07Z",
+      "side": 1,
+      "message": "is this needed?",
+      "range": {
+        "startLine": 853,
+        "startChar": 8,
+        "endLine": 853,
+        "endChar": 36
+      },
+      "revId": "120fce0185b7974c44028783f0790de7f147eb68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd88a607_0ef85f52",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1978,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-06-26T19:33:07Z",
+      "side": 1,
+      "message": "perhaps EffectChain::setVolume_l should call setVolumeForOutput_l(left, right) for DIRECT and OFFLOAD threads.  we\u0027ll have to do some modifications to Threads.cpp (see my note there).",
+      "range": {
+        "startLine": 1978,
+        "startChar": 8,
+        "endLine": 1978,
+        "endChar": 42
+      },
+      "revId": "120fce0185b7974c44028783f0790de7f147eb68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb024d2d_3e187aa4",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-06-26T19:33:07Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 97
+      },
+      "revId": "120fce0185b7974c44028783f0790de7f147eb68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87fbebd6_acb99102",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4904,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-06-26T19:33:07Z",
+      "side": 1,
+      "message": "i\u0027m thinking this might be best delegated to the effect chain for Direct/Offload threads.\n\ne.g.\n\nif (!mEffectChains.isEmpty()) {\n    // if effect chain exists, volume is handled by it.\n    // Convert volumes from float to 8.24\n    uint32_t vl \u003d (uint32_t)(left * (1 \u003c\u003c 24));\n    uint32_t vr \u003d (uint32_t)(right * (1 \u003c\u003c 24));\n    (void)mEffectChains[0]-\u003esetVolume_l(\u0026vl, \u0026vr);\n} else {\n    // otherwise we directly set the volume.\n    result \u003d setVolumeForOutput_l(left, right);\n}",
+      "range": {
+        "startLine": 4899,
+        "startChar": 0,
+        "endLine": 4904,
+        "endChar": 70
+      },
+      "revId": "120fce0185b7974c44028783f0790de7f147eb68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
