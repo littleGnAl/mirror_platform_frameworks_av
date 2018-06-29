@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f7e5da84_e58711b0",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-29T04:30:59Z",
+      "side": 1,
+      "message": "Since volume control should be changed from framework to Audio DSP immediately, mDisableWaitCnt\u003d1 needs to be set for offload thread.\nRegarding \"ThreadBase::DIRECT\", it should be added as you said to modified in the new patch set.",
+      "parentUuid": "2ed65802_ddeed920",
+      "range": {
+        "startLine": 260,
+        "startChar": 49,
+        "endLine": 260,
+        "endChar": 68
+      },
+      "revId": "120fce0185b7974c44028783f0790de7f147eb68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "64704897_6648d211",
         "filename": "services/audioflinger/Effects.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-06-26T19:33:07Z",
       "side": 1,
       "message": "Since start calls chain-\u003eresetVolume_l(), shouldn\u0027t stop_l() call chain-\u003eresetVolume_l() for symmetry?",
+      "range": {
+        "startLine": 566,
+        "startChar": 0,
+        "endLine": 575,
+        "endChar": 9
+      },
+      "revId": "120fce0185b7974c44028783f0790de7f147eb68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd06acfa_ccfdb9ad",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 575,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-29T04:30:59Z",
+      "side": 1,
+      "message": "I think \"chain-\u003eresetVolume_l\" can not be used here.\nVolume at Audio DSP needs to be updated before disabling effect otherwise output volume becomes maximum for a moment. resetVolume_l gets the volume at Audio DSP by using setVolume but maximum volume will return when the effect module is enabled so that correct volume can not be set.\nThat\u0027s why we are using getVolume here to get the current volume then set it to DSP volume.",
+      "parentUuid": "64704897_6648d211",
       "range": {
         "startLine": 566,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5db2dfcd_6c9860be",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 852,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-29T04:30:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f882ca54_d3c5dcc9",
+      "range": {
+        "startLine": 852,
+        "startChar": 8,
+        "endLine": 852,
+        "endChar": 50
+      },
+      "revId": "120fce0185b7974c44028783f0790de7f147eb68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3462c97b_304a254a",
         "filename": "services/audioflinger/Effects.cpp",
         "patchSetId": 3
@@ -82,6 +154,30 @@
       "writtenOn": "2018-06-26T19:33:07Z",
       "side": 1,
       "message": "is this needed?",
+      "range": {
+        "startLine": 853,
+        "startChar": 8,
+        "endLine": 853,
+        "endChar": 36
+      },
+      "revId": "120fce0185b7974c44028783f0790de7f147eb68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "125ae7cc_30ba42d6",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-29T04:30:59Z",
+      "side": 1,
+      "message": "Yes, it\u0027s needed to prevent that music volume becomes max for an instant when enabling non-offloadable effect during offload playback.",
+      "parentUuid": "3462c97b_304a254a",
       "range": {
         "startLine": 853,
         "startChar": 8,
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "68b6923d_703a0ea4",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 369,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-29T04:30:59Z",
+      "side": 1,
+      "message": "I think it\u0027s still needed. Please see comments in Effects.cpp.",
+      "parentUuid": "eb024d2d_3e187aa4",
+      "range": {
+        "startLine": 369,
+        "startChar": 0,
+        "endLine": 369,
+        "endChar": 97
+      },
+      "revId": "120fce0185b7974c44028783f0790de7f147eb68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "87fbebd6_acb99102",
         "filename": "services/audioflinger/Threads.cpp",
         "patchSetId": 3
@@ -151,6 +271,30 @@
       "writtenOn": "2018-06-26T19:33:07Z",
       "side": 1,
       "message": "i\u0027m thinking this might be best delegated to the effect chain for Direct/Offload threads.\n\ne.g.\n\nif (!mEffectChains.isEmpty()) {\n    // if effect chain exists, volume is handled by it.\n    // Convert volumes from float to 8.24\n    uint32_t vl \u003d (uint32_t)(left * (1 \u003c\u003c 24));\n    uint32_t vr \u003d (uint32_t)(right * (1 \u003c\u003c 24));\n    (void)mEffectChains[0]-\u003esetVolume_l(\u0026vl, \u0026vr);\n} else {\n    // otherwise we directly set the volume.\n    result \u003d setVolumeForOutput_l(left, right);\n}",
+      "range": {
+        "startLine": 4899,
+        "startChar": 0,
+        "endLine": 4904,
+        "endChar": 70
+      },
+      "revId": "120fce0185b7974c44028783f0790de7f147eb68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "478ad514_d4bfc94d",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4904,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-06-29T04:30:59Z",
+      "side": 1,
+      "message": "Sorry I could not understand your example.\nmEffectChains[0]-\u003esetVolume_l return the volume to be set to output(Audio DSP) so that I think setVolumeForOutput_l should always be called here.\nIs my understanding correct?",
+      "parentUuid": "87fbebd6_acb99102",
       "range": {
         "startLine": 4899,
         "startChar": 0,
