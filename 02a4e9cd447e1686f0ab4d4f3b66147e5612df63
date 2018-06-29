@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fcefdfb1_f0f4a2fc",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-06-29T17:36:27Z",
+      "side": 1,
+      "message": "please make a comment and do this for\n// volume control for offload and direct threads must take effect immediately.\n(mDescriptor.flags \u0026 EFFECT_FLAG_VOLUME_MASK) !\u003d EFFECT_FLAG_VOLUME_CTRL || ...",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 58
+      },
+      "revId": "02a4e9cd447e1686f0ab4d4f3b66147e5612df63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c92d9ba_1a9e4ca3",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-06-29T17:36:27Z",
+      "side": 1,
+      "message": "maybe this should be a helper inline function bool isVolumeControl() const { return (mDescriptor.flags \u0026 EFFECT_FLAG_VOLUME_MASK) \u003d\u003d EFFECT_FLAG_VOLUME_CTRL; }",
+      "range": {
+        "startLine": 566,
+        "startChar": 8,
+        "endLine": 566,
+        "endChar": 82
+      },
+      "revId": "02a4e9cd447e1686f0ab4d4f3b66147e5612df63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1dadc5c4_d72b77a7",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-06-29T17:36:27Z",
+      "side": 1,
+      "message": "i would really prefer this to be a call to resetVolume_l() and change setVolume_l to ignore this effect for stopping/stopped states of offload/direct EffectModules.\n\nthat way setting volumes is done consistently.",
+      "range": {
+        "startLine": 568,
+        "startChar": 0,
+        "endLine": 577,
+        "endChar": 5
+      },
+      "revId": "02a4e9cd447e1686f0ab4d4f3b66147e5612df63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb4bc16d_4bab6388",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1979,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-06-29T17:36:27Z",
+      "side": 1,
+      "message": "i believe this should always be called at the end of setVolume_l.  (we remove it here and from Threads.cpp).  That way it is synchronized with the effect setting.",
+      "range": {
+        "startLine": 1979,
+        "startChar": 0,
+        "endLine": 1979,
+        "endChar": 42
+      },
+      "revId": "02a4e9cd447e1686f0ab4d4f3b66147e5612df63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a0086df_ed76cbe5",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4904,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-06-29T17:36:27Z",
+      "side": 1,
+      "message": "as mentioned on the previous PS3, i feel it is better that output volume is either completely delegated to the effect chain, or handled here.  The prior code had output volume sometimes set by the effect chain, and sometimes set here.  I feel the code should be the following, where the effect chain always takes responsibility to change the output volume setting properly.\n\n\nif (!mEffectChains.isEmpty()) {\n    // if effect chain exists, volume is handled by it.\n    // Convert volumes from float to 8.24\n    uint32_t vl \u003d (uint32_t)(left * (1 \u003c\u003c 24));\n    uint32_t vr \u003d (uint32_t)(right * (1 \u003c\u003c 24));\n    // Direct/Offload effect chains set output volume in setVolume_l().\n    (void)mEffectChains[0]-\u003esetVolume_l(\u0026vl, \u0026vr);\n} else {\n    // otherwise we directly set the volume.\n    result \u003d setVolumeForOutput_l(left, right);\n}",
+      "range": {
+        "startLine": 4899,
+        "startChar": 0,
+        "endLine": 4904,
+        "endChar": 70
+      },
+      "revId": "02a4e9cd447e1686f0ab4d4f3b66147e5612df63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
