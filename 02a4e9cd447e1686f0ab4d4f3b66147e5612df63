@@ -95,6 +95,53 @@
     },
     {
       "key": {
+        "uuid": "37838b7d_128d151d",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-07-02T16:43:36Z",
+      "side": 1,
+      "message": "see below on setVolume_l().",
+      "parentUuid": "15d7a66a_1e2aaf8e",
+      "range": {
+        "startLine": 568,
+        "startChar": 0,
+        "endLine": 577,
+        "endChar": 5
+      },
+      "revId": "02a4e9cd447e1686f0ab4d4f3b66147e5612df63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5b6e8b0_dc0cc904",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1923,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-07-02T16:43:36Z",
+      "side": 1,
+      "message": "I think this could be replaced with a method in EffectModule\n\nmEffects-\u003eisVolumeControlEnabled()\n\nwhich is:\n\nbool isVolumeControlEnabled const () {\n    // volume control changes for offload are immediate and are removed in stopping/stopped states.\n    return isVolumeControl() \u0026\u0026 (isOffloadedOrDirect() ? isEnabled() : isProcessedEnabled())\n}",
+      "range": {
+        "startLine": 1922,
+        "startChar": 12,
+        "endLine": 1923,
+        "endChar": 97
+      },
+      "revId": "02a4e9cd447e1686f0ab4d4f3b66147e5612df63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb4bc16d_4bab6388",
         "filename": "services/audioflinger/Effects.cpp",
         "patchSetId": 4

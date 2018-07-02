@@ -190,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "28e16218_71e6fdbf",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-07-02T16:43:36Z",
+      "side": 1,
+      "message": "Seems strange, why would a non-offloadable effect change volume unless it is also a volume control?  Perhaps this is a check that should be done elsewhere?",
+      "parentUuid": "125ae7cc_30ba42d6",
+      "range": {
+        "startLine": 853,
+        "startChar": 8,
+        "endLine": 853,
+        "endChar": 36
+      },
+      "revId": "120fce0185b7974c44028783f0790de7f147eb68",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bd88a607_0ef85f52",
         "filename": "services/audioflinger/Effects.cpp",
         "patchSetId": 3
