@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "15d7a66a_1e2aaf8e",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-07-02T10:58:57Z",
+      "side": 1,
+      "message": "Sorry I still can not understand what the below means.\n\"change setVolume_l to ignore this effect for stopping/stopped states of offload/direct EffectModules.\"\nCould you show me the example?",
+      "parentUuid": "1dadc5c4_d72b77a7",
+      "range": {
+        "startLine": 568,
+        "startChar": 0,
+        "endLine": 577,
+        "endChar": 5
+      },
+      "revId": "02a4e9cd447e1686f0ab4d4f3b66147e5612df63",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb4bc16d_4bab6388",
         "filename": "services/audioflinger/Effects.cpp",
         "patchSetId": 4
