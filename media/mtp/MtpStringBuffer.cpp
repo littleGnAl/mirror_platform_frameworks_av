@@ -109,4 +109,14 @@ void MtpStringBuffer::writeToPacket(MtpDataPacket* packet) const {
     packet->putUInt16(0);
 }
 
+// add trim function for trailing whitespace
+void MtpStringBuffer::trim() {
+    if (mString.empty())
+    {
+        return;
+    }
+    mString.erase(0,mString.find_first_not_of(" "));
+    mString.erase(mString.find_last_not_of(" ") + 1);
+}
+
 }  // namespace android

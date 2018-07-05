@@ -50,6 +50,7 @@ public:
 
     bool            readFromPacket(MtpDataPacket* packet);
     void            writeToPacket(MtpDataPacket* packet) const;
+    void            trim();
 
     inline bool     isEmpty() const { return mString.empty(); }
     inline int      size() const { return mString.length(); }

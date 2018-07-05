@@ -946,7 +946,9 @@ MtpResponseCode MtpServer::doSendObjectInfo() {
     if (!mData.getString(modified)) return MTP_RESPONSE_INVALID_PARAMETER;     // date modified
     // keywords follow
 
-    ALOGV("name: %s format: %04X\n", (const char *)name, format);
+    ALOGD("name: %s format: %04X\n", (const char *)name, format);
+    name.trim();
+    ALOGD(" after trim, name: %s.\n", (const char *)name);
     time_t modifiedTime;
     if (!parseDateTime(modified, modifiedTime))
         modifiedTime = 0;
