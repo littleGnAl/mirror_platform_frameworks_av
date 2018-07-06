@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "49108e04_82a6d3fa",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-07-06T16:48:07Z",
+      "side": 1,
+      "message": "\u0026\u0026 !(isVolumeControl() \u0026\u0026 isOffloadedOrDirect())",
+      "range": {
+        "startLine": 260,
+        "startChar": 10,
+        "endLine": 260,
+        "endChar": 37
+      },
+      "revId": "8a31bef2445dae82b7f5664cac22c1aa73d75720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7c85f5c_11fd69e1",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 565,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-07-06T16:48:07Z",
+      "side": 1,
+      "message": "combine into one clause (isVolumeControl() \u0026\u0026 isOffloadedOrDirect())",
+      "range": {
+        "startLine": 564,
+        "startChar": 7,
+        "endLine": 565,
+        "endChar": 35
+      },
+      "revId": "8a31bef2445dae82b7f5664cac22c1aa73d75720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d1510f5_47a7fde5",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 789,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-07-06T16:48:07Z",
+      "side": 1,
+      "message": "use cached value mThreadType (cached when setting thread).",
+      "range": {
+        "startLine": 788,
+        "startChar": 0,
+        "endLine": 789,
+        "endChar": 91
+      },
+      "revId": "8a31bef2445dae82b7f5664cac22c1aa73d75720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6435b881_ac166dd2",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-07-06T16:48:07Z",
+      "side": 1,
+      "message": "please cache mThreadType here.  A thread\u0027s type won\u0027t change.",
+      "range": {
+        "startLine": 100,
+        "startChar": 55,
+        "endLine": 100,
+        "endChar": 77
+      },
+      "revId": "8a31bef2445dae82b7f5664cac22c1aa73d75720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
