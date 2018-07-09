@@ -22,6 +22,53 @@
       "revId": "8fe03aaffc1a11fd85853e651a3729026380a680",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec07a376_343ed937",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-07-09T19:22:44Z",
+      "side": 1,
+      "message": "we already have the EffectChain lock and the EffectModule lock when we\u0027re here, and in the proper locking order. i\u0027d prefer to carve an exception to permit thread reentrancy rather than risk inconsistent state.  Unfortunately, there is no simple way with the current locking code, so we need to create a new autolock to guarantee safety.\n\nI think we can do this by adding the following nested class to EffectModule:\n\nclass AutoLockReentrant {\npublic:\n    AutoLockReentrant(Mutex\u0026 mutex, pid_t allowedTid)\n        : mMutex(gettid() \u003d\u003d allowedTid ? nullptr : \u0026mutex)\n        {\n            if (mMutex !\u003d nullptr) mMutex-\u003elock();\n        }\n    }\n\n    ~AutoLockReentrant() {\n        if (mMutex !\u003d nullptr) mMutex-\u003eunlock();\n    }\n\nprivate:\n    Mutex * const mMutex;\n}\n\nstatic constexpr pid_t INVALID_PID \u003d (pid_t)-1;\npid_t mSetVolumeReentrantTid \u003d INVALID_PID; // this tid is allowed to call setVolume() without acquiring the mutex.\n\nand here:\n\n// We have the EffectChain and EffectModule lock, permit a reentrant call to setVolume:\n// resetVolume_l --\u003e setVolume_l --\u003e EffectModule::setVolume\nmSetVolumeReentrantTid \u003d gettid();\nchain-\u003eresetVolume_l();\nmSetVolumeReentrantTid \u003d INVALID_PID;\n\nand on line 820 for EffectModule::setVolume()\n\nAutoLockReentrant _l(mLock, mSetVolumeReentrantTid);",
+      "parentUuid": "00570e8b_227dad37",
+      "range": {
+        "startLine": 566,
+        "startChar": 8,
+        "endLine": 568,
+        "endChar": 21
+      },
+      "revId": "8fe03aaffc1a11fd85853e651a3729026380a680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83a95f59_eeed826f",
+        "filename": "services/audioflinger/Threads.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-07-09T19:22:44Z",
+      "side": 1,
+      "message": "can this be const?",
+      "range": {
+        "startLine": 705,
+        "startChar": 73,
+        "endLine": 705,
+        "endChar": 74
+      },
+      "revId": "8fe03aaffc1a11fd85853e651a3729026380a680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
