@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00570e8b_227dad37",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 568,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-07-09T10:27:09Z",
+      "side": 1,
+      "message": "If we want to use resetVolume_l here, we have to unlock here otherwise deadlock happens(resetVolume_l --\u003e setVolume_l --\u003e EffectModule::setVolume).\nHow do you think this code?",
+      "range": {
+        "startLine": 566,
+        "startChar": 8,
+        "endLine": 568,
+        "endChar": 21
+      },
+      "revId": "8fe03aaffc1a11fd85853e651a3729026380a680",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
