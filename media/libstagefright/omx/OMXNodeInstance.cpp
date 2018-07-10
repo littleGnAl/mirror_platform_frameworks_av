@@ -467,7 +467,10 @@ status_t OMXNodeInstance::freeNode() {
             ALOGV("forcing Idle->Loaded");
             sendCommand(OMX_CommandStateSet, OMX_StateLoaded);
 
-            freeActiveBuffers();
+            {
+                Mutex::Autolock _l(mLock);
+                freeActiveBuffers();
+            }
 
             OMX_ERRORTYPE err;
             int32_t iteration = 0;
@@ -499,6 +502,7 @@ status_t OMXNodeInstance::freeNode() {
     }
 
     Mutex::Autolock _l(mLock);
+    freeActiveBuffers();
 
     status_t err = mOwner->freeNode(this);
 
@@ -1558,7 +1562,6 @@ status_t OMXNodeInstance::allocateSecureBuffer(
 
 status_t OMXNodeInstance::freeBuffer(
         OMX_U32 portIndex, IOMX::buffer_id buffer) {
-    Mutex::Autolock autoLock(mLock);
     CLOG_BUFFER(freeBuffer, "%s:%u %#x", portString(portIndex), portIndex, buffer);
 
     removeActiveBuffer(portIndex, buffer);
