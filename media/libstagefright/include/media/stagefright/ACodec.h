@@ -262,6 +262,7 @@ private:
     bool mShutdownInProgress;
     bool mExplicitShutdown;
     bool mIsLegacyVP9Decoder;
+    bool mIsStreamCorruptFree;
 
     // If "mKeepComponentAllocated" we only transition back to Loaded state
     // and do not release the component instance.
