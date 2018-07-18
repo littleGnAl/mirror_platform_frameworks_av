@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9b2fc7f_a10ef8b4",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4184,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2018-07-18T16:48:19Z",
+      "side": 1,
+      "message": "should be \u003e",
+      "range": {
+        "startLine": 4184,
+        "startChar": 38,
+        "endLine": 4184,
+        "endChar": 40
+      },
+      "revId": "2d34f4da8f3c852d26899f14610794a5f8ffa083",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
