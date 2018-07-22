@@ -1367,16 +1367,14 @@ void ToneGenerator::audioCallback(int event, void* user, void *info) {
                         lWaveCmd = WaveGenerator::WAVEGEN_START;
                     }
 
-                    ALOGV("New segment %d, Next Time: %d", lpToneGen->mCurSegment,
-                            (lpToneGen->mNextSegSmp*1000)/lpToneGen->mSamplingRate);
+                    ALOGV("New segment %d", lpToneGen->mCurSegment);
 
                 } else {
                     lGenSmp = 0;
                     ALOGV("End repeat, time: %d", (unsigned int)(systemTime()/1000000));
                 }
             } else {
-                ALOGV("New segment %d, Next Time: %d", lpToneGen->mCurSegment,
-                        (lpToneGen->mNextSegSmp*1000)/lpToneGen->mSamplingRate);
+                ALOGV("New segment %d", lpToneGen->mCurSegment);
                 if (lpToneDesc->segments[lpToneGen->mCurSegment].waveFreq[0] != 0) {
                     // If next segment is not silent,  OFF -> ON transition : reset wave generator
                     lWaveCmd = WaveGenerator::WAVEGEN_START;
