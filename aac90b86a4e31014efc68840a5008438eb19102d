@@ -22,6 +22,30 @@
       "revId": "aac90b86a4e31014efc68840a5008438eb19102d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ed4b2e5_30773cc6",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1100068
+      },
+      "writtenOn": "2018-07-23T05:44:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2471b9cd_51891f0c",
+      "range": {
+        "startLine": 683,
+        "startChar": 10,
+        "endLine": 683,
+        "endChar": 71
+      },
+      "revId": "aac90b86a4e31014efc68840a5008438eb19102d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
