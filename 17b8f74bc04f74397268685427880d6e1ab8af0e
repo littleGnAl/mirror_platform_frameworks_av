@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8af1622_cc469f68",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1569,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-07-24T21:19:22Z",
+      "side": 1,
+      "message": "You mentioned in the previous patch set that up to 16 bits per sample are supported, but there don\u0027t appear to be any checks anywhere that this value is limited to 16, the value is just used as-is.\nI suspect weird sizes like 3, 7 or 9 bits per sample are also not supported, and that really ONLY 16 bit is supported, so there should be checks for that, before using the value in further calculations.",
+      "revId": "17b8f74bc04f74397268685427880d6e1ab8af0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ca05431_7d8414ef",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4847,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-07-24T21:19:22Z",
+      "side": 1,
+      "message": "What if size has a different value? Should there be an \u0027else\u0027 case that returns an error?\n\nAlso, can you confirm that my understanding here is correct: size \u003d\u003d 2 means a single 16-bit value, and size \u003d\u003d 4 means two 16-bit values (i.e. stereo) ?\nIf that is correct, then as written this code will support 1 or 2 big-endian channels, but any number of little-endian channels. That\u0027s probably not what you intended.",
+      "revId": "17b8f74bc04f74397268685427880d6e1ab8af0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
