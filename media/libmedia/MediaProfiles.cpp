@@ -546,9 +546,9 @@ void MediaProfiles::checkAndAddRequiredProfilesIfNecessary() {
 
             if (info->mHasRefProfile) {
 
-                CamcorderProfile *profile =
-                    new CamcorderProfile(
-                            *mCamcorderProfiles[info->mRefProfileIndex]);
+                std::unique_ptr<CamcorderProfile> profile{
+                      new CamcorderProfile(
+                              *mCamcorderProfiles[info->mRefProfileIndex])};
 
                 // Overwrite the quality
                 switch (j % kNumRequiredProfiles) {
@@ -581,7 +581,7 @@ void MediaProfiles::checkAndAddRequiredProfilesIfNecessary() {
                         mCamcorderProfiles[info->mRefProfileIndex]->mQuality,
                         profile->mQuality, cameraId);
 
-                mCamcorderProfiles.add(profile);
+                mCamcorderProfiles.add(profile.release());
             }
         }
     }
