@@ -22,6 +22,30 @@
       "revId": "215545be9a8133a196633af8400616ca822080fb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24092a7c_6b82dc6b",
+        "filename": "media/libmedia/MediaProfiles.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2018-07-25T18:37:20Z",
+      "side": 1,
+      "message": "There are four uses of `auto` in this entire directory, so that\u0027s inconsistent with local style. I moderately prefer local consistency when it makes no difference.\n\nIf you (or anyone else) strongly believe that `auto` is the only right way here, I\u0027ll change it.",
+      "parentUuid": "37900b3e_c9be160f",
+      "range": {
+        "startLine": 549,
+        "startChar": 16,
+        "endLine": 549,
+        "endChar": 49
+      },
+      "revId": "215545be9a8133a196633af8400616ca822080fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
