@@ -2,6 +2,57 @@
   "comments": [
     {
       "key": {
+        "uuid": "dce99c40_78d9d135",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-07-25T21:42:33Z",
+      "side": 1,
+      "message": "also add support for \u0027sowt\u0027 atom (see also my comment below)",
+      "revId": "17b8f74bc04f74397268685427880d6e1ab8af0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58e7b797_f152b14d",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1497,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-07-25T21:42:33Z",
+      "side": 1,
+      "message": "also add support for \u0027sowt\u0027 atom (see also my comment below)",
+      "revId": "17b8f74bc04f74397268685427880d6e1ab8af0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c584d0d_fc8569d0",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1568,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-07-25T21:42:33Z",
+      "side": 1,
+      "message": "check against (chunk_type \u003d\u003d FOURCC(\u0027t\u0027, \u0027w\u0027, \u0027o\u0027, \u0027s\u0027)) instead of the mime type.\nSee also my comment below.",
+      "revId": "17b8f74bc04f74397268685427880d6e1ab8af0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c8af1622_cc469f68",
         "filename": "media/libstagefright/MPEG4Extractor.cpp",
         "patchSetId": 2
@@ -48,6 +99,24 @@
       "side": 1,
       "message": "Thanks for your comment, I will consider \"else\" case.\n\nRegarding your last comment, I could not understand it so let me ask you the intention. Does it mean we should add something for little-endian case? This change is adding \"twos\" support so only big-endian channels are target here.",
       "parentUuid": "0ca05431_7d8414ef",
+      "revId": "17b8f74bc04f74397268685427880d6e1ab8af0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4e194ec_bcdb0703",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4847,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-07-25T21:42:33Z",
+      "side": 1,
+      "message": "What I mean is: the big-to-little endian conversion code only supports one or two channels, and does nothing for other numbers of channels.\nThe second part of my comments was about little-endian support, but I realize now that this code does not actually support little-endian PCM. It probably should though, if only for feature parity with ExoPlayer. It should be fairly trivial to do, see my comments above.\nAside from not supporting little-endian PCM:\n- big-endian mono or stereo is converted to little-endian mono or stereo\n- big-endian 6-channel (for example) will not be converted, and will therefore sound bad\nI suggest reworking the code so that it simply converts all the values in the buffer, regardless of how many channels there are.",
+      "parentUuid": "e729d6a5_b1d71be1",
       "revId": "17b8f74bc04f74397268685427880d6e1ab8af0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
