@@ -33,6 +33,24 @@
       "revId": "17b8f74bc04f74397268685427880d6e1ab8af0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e729d6a5_b1d71be1",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4847,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-07-25T08:05:15Z",
+      "side": 1,
+      "message": "Thanks for your comment, I will consider \"else\" case.\n\nRegarding your last comment, I could not understand it so let me ask you the intention. Does it mean we should add something for little-endian case? This change is adding \"twos\" support so only big-endian channels are target here.",
+      "parentUuid": "0ca05431_7d8414ef",
+      "revId": "17b8f74bc04f74397268685427880d6e1ab8af0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
