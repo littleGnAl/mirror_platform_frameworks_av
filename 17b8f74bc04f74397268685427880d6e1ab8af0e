@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "0f5d8345_184347b8",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-07-26T12:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dce99c40_78d9d135",
+      "revId": "17b8f74bc04f74397268685427880d6e1ab8af0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58e7b797_f152b14d",
         "filename": "media/libstagefright/MPEG4Extractor.cpp",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "17b8f74bc04f74397268685427880d6e1ab8af0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8da01cd_76480b1d",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1497,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-07-26T12:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58e7b797_f152b14d",
+      "revId": "17b8f74bc04f74397268685427880d6e1ab8af0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -53,6 +89,24 @@
     },
     {
       "key": {
+        "uuid": "e4676159_56b9d798",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1568,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-07-26T12:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c584d0d_fc8569d0",
+      "revId": "17b8f74bc04f74397268685427880d6e1ab8af0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8af1622_cc469f68",
         "filename": "media/libstagefright/MPEG4Extractor.cpp",
         "patchSetId": 2
@@ -64,6 +118,24 @@
       "writtenOn": "2018-07-24T21:19:22Z",
       "side": 1,
       "message": "You mentioned in the previous patch set that up to 16 bits per sample are supported, but there don\u0027t appear to be any checks anywhere that this value is limited to 16, the value is just used as-is.\nI suspect weird sizes like 3, 7 or 9 bits per sample are also not supported, and that really ONLY 16 bit is supported, so there should be checks for that, before using the value in further calculations.",
+      "revId": "17b8f74bc04f74397268685427880d6e1ab8af0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bc4adb3_cecb3fe3",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1569,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-07-26T12:09:03Z",
+      "side": 1,
+      "message": "Checking in L3949 in patch set 3",
+      "parentUuid": "c8af1622_cc469f68",
       "revId": "17b8f74bc04f74397268685427880d6e1ab8af0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -120,6 +192,24 @@
       "revId": "17b8f74bc04f74397268685427880d6e1ab8af0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba21113d_bd0cc0b9",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4847,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-07-26T12:09:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f4e194ec_bcdb0703",
+      "revId": "17b8f74bc04f74397268685427880d6e1ab8af0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
