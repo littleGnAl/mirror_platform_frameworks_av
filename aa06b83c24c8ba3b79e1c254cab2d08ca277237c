@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1761de9_f13f8d44",
+        "filename": "media/libstagefright/MPEG4Extractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4855,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-07-26T16:00:56Z",
+      "side": 1,
+      "message": "I think this would be easier to read/understand if it converted (bytesRead / sizeof(uint16_t)) values, instead of using the multiplier.",
+      "range": {
+        "startLine": 4853,
+        "startChar": 0,
+        "endLine": 4855,
+        "endChar": 77
+      },
+      "revId": "aa06b83c24c8ba3b79e1c254cab2d08ca277237c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
