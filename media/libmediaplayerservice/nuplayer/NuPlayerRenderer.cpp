@@ -104,6 +104,7 @@ NuPlayer::Renderer::Renderer(
       mVideoDrainGeneration(0),
       mAudioEOSGeneration(0),
       mPlaybackSettings(AUDIO_PLAYBACK_RATE_DEFAULT),
+      mAudioPlayoutDurationUs(-1),
       mAudioFirstAnchorTimeMediaUs(-1),
       mAnchorTimeMediaUs(-1),
       mAnchorNumFramesWritten(-1),
@@ -1199,10 +1200,14 @@ void NuPlayer::Renderer::onNewAudioMediaTime(int64_t mediaTimeUs) {
     int64_t nowUs = ALooper::GetNowUs();
     if (mNextAudioClockUpdateTimeUs >= 0) {
         if (nowUs >= mNextAudioClockUpdateTimeUs) {
-            int64_t nowMediaUs = mediaTimeUs - getPendingAudioPlayoutDurationUs(nowUs);
-            mMediaClock->updateAnchor(nowMediaUs, nowUs, mediaTimeUs);
-            mUseVirtualAudioSink = false;
-            mNextAudioClockUpdateTimeUs = nowUs + kMinimumAudioClockUpdatePeriodUs;
+            int64_t audioPlayoutDurationUs = getPendingAudioPlayoutDurationUs(nowUs);
+            if (audioPlayoutDurationUs > mAudioPlayoutDurationUs){
+                int64_t nowMediaUs = mediaTimeUs - getPendingAudioPlayoutDurationUs(nowUs);
+                mMediaClock->updateAnchor(nowMediaUs, nowUs, mediaTimeUs);
+                mUseVirtualAudioSink = false;
+                mNextAudioClockUpdateTimeUs = nowUs + kMinimumAudioClockUpdatePeriodUs;
+                mAudioPlayoutDurationUs = audioPlayoutDurationUs;
+            }
         }
     } else {
         int64_t unused;
