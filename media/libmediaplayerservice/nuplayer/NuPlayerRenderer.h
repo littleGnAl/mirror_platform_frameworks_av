@@ -173,6 +173,7 @@ private:
     float mVideoFpsHint;
 
     int64_t mAudioFirstAnchorTimeMediaUs;
+    int64_t mAudioPlayoutDurationUs;
     int64_t mAnchorTimeMediaUs;
     int64_t mAnchorNumFramesWritten;
     int64_t mVideoLateByUs;
