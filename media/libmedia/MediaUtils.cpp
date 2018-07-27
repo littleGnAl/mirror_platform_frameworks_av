@@ -33,8 +33,8 @@ void limitProcessMemory(
     size_t numberOfBytes,
     size_t percentageOfTotalMem) {
 
-    if (running_with_asan()) {
-        ALOGW("Running with ASan, skip enforcing memory limitations.");
+    if (running_with_asan_or_hwasan()) {
+        ALOGW("Running with (HW)ASan, skip enforcing memory limitations.");
         return;
     }
 
