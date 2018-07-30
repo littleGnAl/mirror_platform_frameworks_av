@@ -442,6 +442,10 @@ public:
         return 0;
     }
 
+    virtual uint32_t    getUnderrunCount() const {
+        return 0;
+    }
+
 private:
     StaticAudioTrackSingleStateQueue::Mutator   mMutator;
     StaticAudioTrackPosLoopQueue::Observer      mPosLoopObserver;
