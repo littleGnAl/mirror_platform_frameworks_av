@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b516a548_13368319",
+        "filename": "media/libaudioclient/ToneGenerator.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1371,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-07-30T18:03:42Z",
+      "side": 1,
+      "message": "please cast to \"long long\" to fix build error on arm64 (LP64).",
+      "range": {
+        "startLine": 1371,
+        "startChar": 30,
+        "endLine": 1371,
+        "endChar": 37
+      },
+      "revId": "b30d16b6299b12ab3625c3e5e08f5a2f07f1b380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58b22823_0e6b59b8",
+        "filename": "media/libaudioclient/ToneGenerator.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1380,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-07-30T18:03:42Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1380,
+        "startChar": 26,
+        "endLine": 1380,
+        "endChar": 33
+      },
+      "revId": "b30d16b6299b12ab3625c3e5e08f5a2f07f1b380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
