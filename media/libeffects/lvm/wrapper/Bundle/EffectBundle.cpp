@@ -1243,6 +1243,8 @@ void LvmEffect_free(EffectContext *pContext){
 
                 free(MemTab.Region[i].pBaseAddress);
 
+                // Suppress bogus use-after-free of pBaseAddress
+                // NOLINTNEXTLINE(clang-analyzer-unix.Malloc)
                 ALOGV("\tLvmEffect_free - END   freeing %" PRIu32 " bytes for region %u at %p\n",
                         MemTab.Region[i].Size, i, MemTab.Region[i].pBaseAddress);
             }else{

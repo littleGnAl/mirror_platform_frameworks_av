@@ -694,6 +694,8 @@ void Reverb_free(ReverbContext *pContext){
 
                 free(MemTab.Region[i].pBaseAddress);
 
+                // Suppress bogus use-after-free of pBaseAddress
+                // NOLINTNEXTLINE(clang-analyzer-unix.Malloc)
                 ALOGV("\tfree() - END   freeing %" PRIu32 " bytes for region %u at %p\n",
                         MemTab.Region[i].Size, i, MemTab.Region[i].pBaseAddress);
             }else{
