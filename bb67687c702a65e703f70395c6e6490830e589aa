@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "443aa391_8412a4c6",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 700,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-01T14:32:17Z",
+      "side": 1,
+      "message": "One would think that clang would _know_ that a %p printf argument is not a use-after-free. Shouldn\u0027t we fix clang instead?\n\nONLY out of curiosity, would the following trick clang?\n\nuintptr_t base \u003d MemTab.Region[i].pBaseAddress;\nif (base) {\n    ALOGV(\"\\tfree() - START freeing %\" PRIu32 \" bytes for region %u at %p\\n\",\n                        MemTab.Region[i].Size, i, base);\n    free(MemTab.Region[i].pBaseAddress);\n    ALOGV(\"\\tfree() - END   freeing %\" PRIu32 \" bytes for region %u at %p\\n\",\n                        MemTab.Region[i].Size, i, base);\n}",
+      "range": {
+        "startLine": 700,
+        "startChar": 50,
+        "endLine": 700,
+        "endChar": 80
+      },
+      "revId": "bb67687c702a65e703f70395c6e6490830e589aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98c2099d_7e691eaf",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1032276
+      },
+      "writtenOn": "2018-08-01T14:32:17Z",
+      "side": 1,
+      "message": "nit: For C++ this should be nullptr\n\nThis looks like a compiler/clang bug, why here and not line 890?",
+      "range": {
+        "startLine": 892,
+        "startChar": 23,
+        "endLine": 892,
+        "endChar": 27
+      },
+      "revId": "bb67687c702a65e703f70395c6e6490830e589aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
