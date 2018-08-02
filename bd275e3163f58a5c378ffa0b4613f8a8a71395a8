@@ -22,6 +22,30 @@
       "revId": "bd275e3163f58a5c378ffa0b4613f8a8a71395a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1114b9c1_8e419f8f",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 4904,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-08-02T23:48:18Z",
+      "side": 1,
+      "message": "As Andy mentioned in the patch set 4, it\u0027s intentionally changed. The effect chain always takes responsibility to change the output volume setting properly so that setVolumeFotOutput_l is need to be called only when the effect chain is empty.",
+      "parentUuid": "03595562_e9536077",
+      "range": {
+        "startLine": 4904,
+        "startChar": 16,
+        "endLine": 4904,
+        "endChar": 34
+      },
+      "revId": "bd275e3163f58a5c378ffa0b4613f8a8a71395a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
