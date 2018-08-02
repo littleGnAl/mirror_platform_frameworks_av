@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "03595562_e9536077",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 4904,
+      "author": {
+        "id": 1061109
+      },
+      "writtenOn": "2018-08-02T20:42:18Z",
+      "side": 1,
+      "message": "we are calling this only if mEffectChains.isEmpty(),  but we used to execute\n\nstatus_t result \u003d mOutput-\u003estream-\u003esetVolume(left, right);\n\neven if not empty.   Is this part of what is being fixed? (just started following the changes).",
+      "range": {
+        "startLine": 4904,
+        "startChar": 16,
+        "endLine": 4904,
+        "endChar": 34
+      },
+      "revId": "bd275e3163f58a5c378ffa0b4613f8a8a71395a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
