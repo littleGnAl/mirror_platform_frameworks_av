@@ -22,6 +22,30 @@
       "revId": "a0dc75f19a8836aa9829b5e1a84bc068a510f02f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2302fa58_42937bcd",
+        "filename": "services/mediacodec/seccomp_policy/mediacodec-arm.policy",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1276894
+      },
+      "writtenOn": "2018-08-02T02:15:09Z",
+      "side": 1,
+      "message": "Aha, removed! Thanks!",
+      "parentUuid": "ad3e8e7d_29caba94",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 91,
+        "endChar": 13
+      },
+      "revId": "a0dc75f19a8836aa9829b5e1a84bc068a510f02f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
