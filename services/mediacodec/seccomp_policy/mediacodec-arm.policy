@@ -1,3 +1,17 @@
+# Copyright (C) 2018 The Android Open Source Project
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
 # Organized by frequency of systemcall - in descending order for
 # best performance.
 futex: 1
@@ -20,7 +34,7 @@ getrandom: 1
 # on ARM is statically loaded at 0xffff 0000. See
 # http://infocenter.arm.com/help/index.jsp?topic=/com.arm.doc.ddi0211h/Babfeega.html
 # for more details.
-mremap: arg3 == 3
+mremap: arg3 == MREMAP_MAYMOVE|MREMAP_FIXED
 munmap: 1
 mprotect: 1
 madvise: 1
@@ -53,20 +67,14 @@ sched_setscheduler: 1
 fstatat64: 1
 ugetrlimit: 1
 getdents64: 1
-getrandom: 1
 
-# for attaching to debuggerd on process crash
-sigaction: 1
-tgkill: 1
-socket: 1
-connect: 1
-fcntl64: 1
-rt_tgsigqueueinfo: 1
-geteuid32: 1
-getgid32: 1
-getegid32: 1
-getgroups32: 1
-recvmsg: 1
+# Used by UBSan diagnostic messages
+readlink: 1
+open: 1
+
 getpid: 1
 gettid: 1
-process_vm_readv: 1
+mremap: 1
+stat64: 1
+
+@include /system/etc/seccomp_policy/crash_dump.arm.policy
