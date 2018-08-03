@@ -2190,13 +2190,13 @@ void Camera3Device::setErrorStateLockedV(const char *fmt, va_list args) {
 
 status_t Camera3Device::registerInFlight(uint32_t frameNumber,
         int32_t numBuffers, CaptureResultExtras resultExtras, bool hasInput,
-        const AeTriggerCancelOverride_t &aeTriggerCancelOverride) {
+        const AeTriggerCancelOverride_t &aeTriggerCancelOverride, bool isStillCapture) {
     ATRACE_CALL();
     Mutex::Autolock l(mInFlightLock);
 
     ssize_t res;
     res = mInFlightMap.add(frameNumber, InFlightRequest(numBuffers, resultExtras, hasInput,
-            aeTriggerCancelOverride));
+            aeTriggerCancelOverride, isStillCapture));
     if (res < 0) return res;
 
     if (mInFlightMap.size() == 1) {
@@ -2240,6 +2240,10 @@ void Camera3Device::removeInFlightRequestIfReadyLocked(int idx) {
     if (request.numBuffersLeft == 0 &&
             (request.requestStatus != OK ||
             (request.haveResultMetadata && shutterTimestamp != 0))) {
+        if (request.stillCapture) {
+            ATRACE_ASYNC_END("still capture", frameNumber);
+        }
+
         ATRACE_ASYNC_END("frame capture", frameNumber);
 
         // Sanity check - if sensor timestamp matches shutter timestamp
@@ -3343,10 +3347,20 @@ status_t Camera3Device::RequestThread::prepareHalRequests() {
             CLOGE("RequestThread: Parent is gone");
             return INVALID_OPERATION;
         }
+        bool isStillCapture = false;
+        if (!mNextRequests[0].captureRequest->mSettings.isEmpty()) {
+            camera_metadata_ro_entry_t e = camera_metadata_ro_entry_t();
+            find_camera_metadata_ro_entry(halRequest->settings, ANDROID_CONTROL_CAPTURE_INTENT, &e);
+            if ((e.count > 0) && (e.data.u8[0] == ANDROID_CONTROL_CAPTURE_INTENT_STILL_CAPTURE)) {
+                isStillCapture = true;
+                ATRACE_ASYNC_BEGIN("still capture", captureRequest->mResultExtras.frameNumber);
+            }
+        }
+
         res = parent->registerInFlight(halRequest->frame_number,
                 totalNumBuffers, captureRequest->mResultExtras,
                 /*hasInput*/halRequest->input_buffer != NULL,
-                captureRequest->mAeTriggerCancelOverride);
+                captureRequest->mAeTriggerCancelOverride, isStillCapture);
         ALOGVV("%s: registered in flight requestId = %" PRId32 ", frameNumber = %" PRId64
                ", burstId = %" PRId32 ".",
                 __FUNCTION__,
