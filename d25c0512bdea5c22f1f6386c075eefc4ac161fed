@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ec1aebe4_322d4b80",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 813,
+      "author": {
+        "id": 1136064
+      },
+      "writtenOn": "2018-08-06T09:32:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "deccec6b_d746fc10",
+      "revId": "d25c0512bdea5c22f1f6386c075eefc4ac161fed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11b35f5f_7961b02b",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 2
@@ -50,6 +68,24 @@
       "revId": "d25c0512bdea5c22f1f6386c075eefc4ac161fed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e0c42cb_ce257a08",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2355,
+      "author": {
+        "id": 1136064
+      },
+      "writtenOn": "2018-08-06T09:32:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2af68551_1e262caf",
+      "revId": "d25c0512bdea5c22f1f6386c075eefc4ac161fed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
