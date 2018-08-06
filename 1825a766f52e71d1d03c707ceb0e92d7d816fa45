@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a338ea7_89f6225c",
+        "filename": "services/mediacodec/seccomp_policy/mediacodec-arm.policy",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2018-08-06T16:25:58Z",
+      "side": 1,
+      "message": "I think that the @include of crash_dump.arm.policy is intended to replace these lines.",
+      "range": {
+        "startLine": 75,
+        "startChar": 0,
+        "endLine": 89,
+        "endChar": 19
+      },
+      "revId": "1825a766f52e71d1d03c707ceb0e92d7d816fa45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f70f9fe_e6f41364",
+        "filename": "services/mediacodec/seccomp_policy/mediacodec-x86.policy",
+        "patchSetId": 4
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2018-08-06T16:25:58Z",
+      "side": 1,
+      "message": "I think this block is intended to be replaced by the @include crash_dump.x86.policy",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 8
+      },
+      "revId": "1825a766f52e71d1d03c707ceb0e92d7d816fa45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

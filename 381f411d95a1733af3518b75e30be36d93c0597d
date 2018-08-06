@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ad310b4a_48710c95",
+        "filename": "services/mediacodec/seccomp_policy/mediacodec-arm.policy",
+        "patchSetId": 4
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2018-08-06T16:25:58Z",
+      "side": 0,
+      "message": "I think that we may need this.\nand perhaps it should be added to the x86 policy instead of removed from here.\n\ncommit 2dde5ecefdf2691bdced553e4dfc276da1d9c17e\nAuthor: Daniel Micay \u003cdanielmicay@gmail.com\u003e\nDate:   Fri Sep 1 15:53:29 2017 -0400\n\n    whitelist getrandom for arc4random usage\n    \n    arc4random is called by the linker for dlopen to randomize the library\n    load order, among other uses. It\u0027s becoming more widely used over time.\n    It calls getentropy at regular intervals to reseed itself, which uses\n    the getrandom system call. This wasn\u0027t noticed because it reseeds only\n    very rarely with typical usage in Android.",
+      "revId": "381f411d95a1733af3518b75e30be36d93c0597d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
