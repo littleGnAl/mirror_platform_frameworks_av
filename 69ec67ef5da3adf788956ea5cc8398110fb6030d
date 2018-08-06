@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "09a04cde_afd5182c",
+        "filename": "media/libaudioclient/ToneGenerator.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1371,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-08-06T16:50:27Z",
+      "side": 1,
+      "message": "You could probably use a C++ static_cast here or instead multiply by 1000LL.",
+      "revId": "69ec67ef5da3adf788956ea5cc8398110fb6030d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
