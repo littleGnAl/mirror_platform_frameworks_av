@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "917039ec_6cbce10c",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 636,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-08-07T16:50:17Z",
+      "side": 1,
+      "message": "local style is to have braces even for a single line. \nif (...) {\n...\n}",
+      "range": {
+        "startLine": 636,
+        "startChar": 30,
+        "endLine": 636,
+        "endChar": 31
+      },
+      "revId": "4ae91d7754597f464e935cb6c40116a497ae2d30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
