@@ -414,6 +414,7 @@ protected:
      effect_descriptor_t     mDescriptor;        // effect descriptor
      int32_t                 mId;                // system wide unique effect engine instance ID
      Mutex                   mLock;              // Mutex for mEnabled access
+     Mutex                   mConstructLock;     // Mutex for integrality construction
 
      String16                mOpPackageName;     // The package name used for app op checks.
 
@@ -440,12 +441,14 @@ private:
         virtual void controlStatusChanged(bool controlGranted) {
             sp<AudioEffect> effect = mEffect.promote();
             if (effect != 0) {
+                AutoMutex lock(effect->mConstructLock);
                 effect->controlStatusChanged(controlGranted);
             }
         }
         virtual void enableStatusChanged(bool enabled) {
             sp<AudioEffect> effect = mEffect.promote();
             if (effect != 0) {
+                AutoMutex lock(effect->mConstructLock);
                 effect->enableStatusChanged(enabled);
             }
         }
@@ -456,6 +459,7 @@ private:
                                      void *pReplyData) {
             sp<AudioEffect> effect = mEffect.promote();
             if (effect != 0) {
+                AutoMutex lock(effect->mConstructLock);
                 effect->commandExecuted(
                     cmdCode, cmdSize, pCmdData, replySize, pReplyData);
             }
