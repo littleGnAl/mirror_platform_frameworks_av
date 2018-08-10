@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8bba02b6_b0a7473f",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 4899,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-08-10T00:13:13Z",
+      "side": 1,
+      "message": "Hi Ricardo,\n\nThank you for your comment.\nAs far as I checked the latest Threads.cpp, it\u0027s done by hand in many places.\nhttps://android.googlesource.com/platform/frameworks/av/+/master/services/audioflinger/Threads.cpp\n\nLet me keep the current change to fit with local style.",
+      "parentUuid": "bfcc6831_175a79ce",
+      "range": {
+        "startLine": 4898,
+        "startChar": 15,
+        "endLine": 4899,
+        "endChar": 59
+      },
+      "revId": "bd275e3163f58a5c378ffa0b4613f8a8a71395a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "03595562_e9536077",
         "filename": "services/audioflinger/Threads.cpp",
         "patchSetId": 7
