@@ -16,6 +16,24 @@
       "revId": "69ec67ef5da3adf788956ea5cc8398110fb6030d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05cb534d_dd6b5c23",
+        "filename": "media/libaudioclient/ToneGenerator.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1371,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-08-16T22:04:00Z",
+      "side": 1,
+      "message": "can you please follow Stephen\u0027s suggestion - multiply by 1000LL would do integral promotion (and be shorter code). Thanks!\n\nhttps://en.cppreference.com/w/cpp/language/implicit_conversion#Numeric_promotions",
+      "parentUuid": "09a04cde_afd5182c",
+      "revId": "69ec67ef5da3adf788956ea5cc8398110fb6030d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
