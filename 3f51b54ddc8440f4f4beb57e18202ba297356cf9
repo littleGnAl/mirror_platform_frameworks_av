@@ -46,6 +46,30 @@
       "revId": "3f51b54ddc8440f4f4beb57e18202ba297356cf9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5568e67b_c7629e8b",
+        "filename": "media/libaudioclient/include/media/AudioEffect.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-08-16T16:53:44Z",
+      "side": 1,
+      "message": "There is no material difference.  One can AutoLock the new EffectClient mutex right after creating the EffectClient, and it would release when set() returns (so long as set() sets mStatus before returning).\n\nThis is just for clarity.",
+      "parentUuid": "8f96bb92_22b7b1fc",
+      "range": {
+        "startLine": 417,
+        "startChar": 5,
+        "endLine": 417,
+        "endChar": 86
+      },
+      "revId": "3f51b54ddc8440f4f4beb57e18202ba297356cf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
