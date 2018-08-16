@@ -22,6 +22,30 @@
       "revId": "3f51b54ddc8440f4f4beb57e18202ba297356cf9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f96bb92_22b7b1fc",
+        "filename": "media/libaudioclient/include/media/AudioEffect.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1353159
+      },
+      "writtenOn": "2018-08-16T02:39:49Z",
+      "side": 1,
+      "message": "if acquire the Mutex in AudioEffect::set(), there is also the chance of deleting of AudioEffect when constructor ongoing.",
+      "parentUuid": "f65ba73f_56f2a676",
+      "range": {
+        "startLine": 417,
+        "startChar": 5,
+        "endLine": 417,
+        "endChar": 86
+      },
+      "revId": "3f51b54ddc8440f4f4beb57e18202ba297356cf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
