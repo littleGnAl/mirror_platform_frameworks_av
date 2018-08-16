@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f65ba73f_56f2a676",
+        "filename": "media/libaudioclient/include/media/AudioEffect.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-08-16T01:53:27Z",
+      "side": 1,
+      "message": "seems this is used only for EffectClient control, so is the Mutex better put into the EffectClient class?  AudioEffect::set() would acquire this Mutex as needed and set mStatus under lock (rather than on return).",
+      "range": {
+        "startLine": 417,
+        "startChar": 5,
+        "endLine": 417,
+        "endChar": 86
+      },
+      "revId": "3f51b54ddc8440f4f4beb57e18202ba297356cf9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
