@@ -815,8 +815,8 @@ void SoftXAAC::onQueueFilled(OMX_U32 /* portIndex */) {
                     return;
                 }
 
-                signed short *outBuffer =
-                        reinterpret_cast<signed short *>(outHeader->pBuffer + outHeader->nOffset);
+                uint16_t *outBuffer =
+                        reinterpret_cast<uint16_t *>(outHeader->pBuffer + outHeader->nOffset);
                 int samplesize = mNumChannels * sizeof(int16_t);
                 if (outHeader->nOffset
                         + mOutputFrameLength * samplesize
