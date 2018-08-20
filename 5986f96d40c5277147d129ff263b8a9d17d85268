@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed9a0758_8619b5f9",
+        "filename": "media/libaudioclient/AudioRecord.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 868,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-08-20T22:27:12Z",
+      "side": 1,
+      "message": "would prefer we add a method\n\naudio_utils_timespec_from_ns()\n\nto handle time conversions, probably here:\n\nsystem/media/audio_utils/include/audio_utils/clock.h",
+      "range": {
+        "startLine": 868,
+        "startChar": 8,
+        "endLine": 868,
+        "endChar": 56
+      },
+      "revId": "5986f96d40c5277147d129ff263b8a9d17d85268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef8fb480_d7381f91",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1637,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-08-20T22:27:12Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1637,
+        "startChar": 8,
+        "endLine": 1637,
+        "endChar": 14
+      },
+      "revId": "5986f96d40c5277147d129ff263b8a9d17d85268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bcbb23e1_d5500cfc",
+        "filename": "media/libaudioclient/ToneGenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1260,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-08-20T22:27:12Z",
+      "side": 1,
+      "message": "i feel int16_t * would be more clear than auto here.",
+      "range": {
+        "startLine": 1260,
+        "startChar": 4,
+        "endLine": 1260,
+        "endChar": 8
+      },
+      "revId": "5986f96d40c5277147d129ff263b8a9d17d85268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6701e619_beccd9f7",
+        "filename": "media/libaudioclient/ToneGenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1332,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-08-20T22:27:12Z",
+      "side": 1,
+      "message": "and uint16_t here",
+      "range": {
+        "startLine": 1332,
+        "startChar": 16,
+        "endLine": 1332,
+        "endChar": 20
+      },
+      "revId": "5986f96d40c5277147d129ff263b8a9d17d85268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "538135ee_78a51939",
+        "filename": "media/libaudioclient/ToneGenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1418,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-08-20T22:27:12Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1418,
+        "startChar": 12,
+        "endLine": 1418,
+        "endChar": 16
+      },
+      "revId": "5986f96d40c5277147d129ff263b8a9d17d85268",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
