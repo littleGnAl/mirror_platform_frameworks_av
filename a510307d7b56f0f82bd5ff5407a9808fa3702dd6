@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "defe32cf_ea39ef0a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1346899
+      },
+      "writtenOn": "2018-08-21T03:39:06Z",
+      "side": 1,
+      "message": "video stuck",
+      "parentUuid": "ffb18b45_2f727b8c",
+      "range": {
+        "startLine": 8,
+        "startChar": 20,
+        "endLine": 8,
+        "endChar": 25
+      },
+      "revId": "a510307d7b56f0f82bd5ff5407a9808fa3702dd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5cee83be_8c0271ab",
         "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "a510307d7b56f0f82bd5ff5407a9808fa3702dd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a459b2e_bb4edb39",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1203,
+      "author": {
+        "id": 1346899
+      },
+      "writtenOn": "2018-08-21T03:39:06Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "5cee83be_8c0271ab",
+      "range": {
+        "startLine": 1203,
+        "startChar": 12,
+        "endLine": 1203,
+        "endChar": 19
+      },
+      "revId": "a510307d7b56f0f82bd5ff5407a9808fa3702dd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "d4851272_f596e212",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1204,
+      "author": {
+        "id": 1346899
+      },
+      "writtenOn": "2018-08-21T03:39:06Z",
+      "side": 1,
+      "message": "Hi Wei，\nI don\u0027t think this is the best way to modify it. At present, I can only use this method to avoid problems,the problem is as follows\n\n1、Continuously output logs \"possible video time jump of 1733ms ....\" when video playback is not smooth,  which caused by getting wrong times from the function \"getPlayedOutDurationUs\". \n   Calculation method:\n   durationUs \u003d (int64_t)((int32_t)numFramesPlayed * 1000000LL / mSampleRateHz) + nowUs - numFramesPlayedAtUs;\n   \n2、According to the calculation method, the first getting time maybe less than the second one after playback resuming.\n   (1)、the first getting value of getPlayedOutDurationUs after resuming is 15058640, approximately equal to  ts.mPosition*1000000/SampleRateHz + pause time\n   (2)、the second getting value of getPlayedOutDurationUs after resuming 200ms is 13366070, approximately equal to  ts.mPosition*1000000/SampleRateHz\n   (3)、ts.mPosition grows normally\n\n3、the outputs of LOG:\n07-12 03:44:34.875  2304  4968 E AudioSink: getPlayedOutDurationUs(13091430) nowUs(213298392) frames(626592) framesAt(213260962)\n07-12 03:44:36.843  2304  4968 E AudioSink: getPlayedOutDurationUs(15058640) nowUs(215265602) frames(626592) framesAt(213260962)\n07-12 03:44:37.098  2304  4968 E AudioSink: getPlayedOutDurationUs(13366070) nowUs(215521116) frames(639696) framesAt(215482046)\n07-12 03:44:37.116  2304  4968 I NuPlayerRenderer: possible video time jump of 2032ms (15416666 : 0) or uninitialized media clock, retrying in 500ms\n07-12 03:44:37.616  2304  4968 I NuPlayerRenderer: possible video time jump of 1532ms (15416666 : 0) or uninitialized media clock, retrying in 500ms",
+      "parentUuid": "ded0066b_17a47892",
+      "range": {
+        "startLine": 1204,
+        "startChar": 12,
+        "endLine": 1204,
+        "endChar": 65
+      },
+      "revId": "a510307d7b56f0f82bd5ff5407a9808fa3702dd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e2920a5_887853d8",
         "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "a510307d7b56f0f82bd5ff5407a9808fa3702dd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "707ca5ba_e6afb3b1",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1205,
+      "author": {
+        "id": 1346899
+      },
+      "writtenOn": "2018-08-21T03:39:06Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "0e2920a5_887853d8",
+      "range": {
+        "startLine": 1205,
+        "startChar": 16,
+        "endLine": 1205,
+        "endChar": 23
+      },
+      "revId": "a510307d7b56f0f82bd5ff5407a9808fa3702dd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
