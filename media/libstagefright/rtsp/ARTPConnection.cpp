@@ -714,6 +714,13 @@ status_t ARTPConnection::parseRTCP(StreamInfo *s, const sp<ABuffer> &buffer) {
         sp<AMessage> notify = s->mNotifyMsg->dup();
         notify->setInt32("first-rtcp", true);
         notify->post();
+
+        ALOGI("send first-rtcp event to upper layer as ImsRxNotice");
+        sp<AMessage> imsNotify = s->mNotifyMsg->dup();
+        imsNotify->setInt32("IMS-Rx-notice", 1);
+        imsNotify->setInt32("payload-type", 101);
+        imsNotify->setInt32("feedback-type", 0);
+        imsNotify->post();
     }
 
     const uint8_t *data = buffer->data();
