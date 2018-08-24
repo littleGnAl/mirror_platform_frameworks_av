@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a40256f8_575bfd2f",
+        "filename": "services/mediacodec/seccomp_policy/mediacodec-x86.policy",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2018-08-24T17:49:37Z",
+      "side": 1,
+      "message": "setscheduler makes sense -- that\u0027s matches what we have in the arm code.\n\nmkdirat and uname are less obvious about why they need to be there.\n\nThe referenced bug talks about a radeon driver invoking uname() -- my initial question is \"why?\" and i\u0027m inclined to suggest changing the radeon driver so that it doesn\u0027t invoke uname(); none of the other minijails for the media system allow uname() through.\n\nI can\u0027t find any reference as to why mkdirat() is added here; I didn\u0027t see it described in the bug.",
+      "revId": "815d87c12648db36adaefb312928a867c2f06399",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
