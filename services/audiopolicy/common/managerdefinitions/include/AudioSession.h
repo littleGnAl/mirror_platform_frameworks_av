@@ -42,6 +42,7 @@ public:
                  bool isSoundTrigger,
                  AudioMix* policyMix,
                  AudioPolicyClientInterface *clientInterface);
+    virtual ~AudioSession();
 
     status_t dump(int fd, int spaces, int index) const;
 
