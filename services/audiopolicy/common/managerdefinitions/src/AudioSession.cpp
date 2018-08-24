@@ -46,6 +46,16 @@ AudioSession::AudioSession(audio_session_t session,
 {
 }
 
+AudioSession::~AudioSession() {
+    // The function closeInput/releaseInput may be called without stopInput.
+    // In this situation, there will be an active recorder.
+    // Need to notify RecordingActivityMonitor in order to update RecordingConfiguration.
+    if (mActiveCount > 0) {
+        int delta = -((int)mActiveCount);
+        changeActiveCount(delta);
+    }
+}
+
 uint32_t AudioSession::changeOpenCount(int delta)
 {
     if ((delta + (int)mOpenCount) < 0) {
