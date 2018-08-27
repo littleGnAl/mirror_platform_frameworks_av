@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "196b13b7_1ef356c5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-08-27T23:04:45Z",
+      "side": 1,
+      "message": "typo: destroyed\nHere and below",
+      "range": {
+        "startLine": 7,
+        "startChar": 42,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "862acefb417c0e1efe329261895c3d5cb110224a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0b32118_e1e223d8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-08-27T23:04:45Z",
+      "side": 1,
+      "message": "typo: stores",
+      "range": {
+        "startLine": 9,
+        "startChar": 25,
+        "endLine": 9,
+        "endChar": 30
+      },
+      "revId": "862acefb417c0e1efe329261895c3d5cb110224a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9362f8c4_df883693",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-08-27T23:04:45Z",
+      "side": 1,
+      "message": "typo: is called",
+      "range": {
+        "startLine": 11,
+        "startChar": 37,
+        "endLine": 11,
+        "endChar": 40
+      },
+      "revId": "862acefb417c0e1efe329261895c3d5cb110224a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c37ee4c0_7465afa6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-08-27T23:04:45Z",
+      "side": 1,
+      "message": "Remove \"without remove\"",
+      "range": {
+        "startLine": 14,
+        "startChar": 17,
+        "endLine": 14,
+        "endChar": 32
+      },
+      "revId": "862acefb417c0e1efe329261895c3d5cb110224a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0367c081_b62b33e8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-08-27T23:04:45Z",
+      "side": 1,
+      "message": "type: switching",
+      "range": {
+        "startLine": 15,
+        "startChar": 5,
+        "endLine": 15,
+        "endChar": 11
+      },
+      "revId": "862acefb417c0e1efe329261895c3d5cb110224a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b3fb2a2_8f3de781",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-08-27T23:04:45Z",
+      "side": 1,
+      "message": "Unclear phrase. Should it be \"AudioPolicyManager::checkInputsForDevice is called, and it causes closeInput() to be called without stopInput()\"?",
+      "range": {
+        "startLine": 15,
+        "startChar": 74,
+        "endLine": 15,
+        "endChar": 88
+      },
+      "revId": "862acefb417c0e1efe329261895c3d5cb110224a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa217480_52bc1857",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-08-27T23:04:45Z",
+      "side": 1,
+      "message": "The repro case is not needed in the commit description.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 25
+      },
+      "revId": "862acefb417c0e1efe329261895c3d5cb110224a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f6ec885_dac3c461",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-08-27T23:04:45Z",
+      "side": 1,
+      "message": "typo: is",
+      "range": {
+        "startLine": 21,
+        "startChar": 16,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "862acefb417c0e1efe329261895c3d5cb110224a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cacfddf1_759e412d",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-08-27T23:04:45Z",
+      "side": 1,
+      "message": "typo: is called",
+      "range": {
+        "startLine": 52,
+        "startChar": 23,
+        "endLine": 52,
+        "endChar": 31
+      },
+      "revId": "862acefb417c0e1efe329261895c3d5cb110224a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29e4b559_043a56a3",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-08-27T23:04:45Z",
+      "side": 1,
+      "message": "typo: notify",
+      "range": {
+        "startLine": 52,
+        "startChar": 47,
+        "endLine": 52,
+        "endChar": 52
+      },
+      "revId": "862acefb417c0e1efe329261895c3d5cb110224a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1ee4b9a_4a421e79",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioSession.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-08-27T23:04:45Z",
+      "side": 1,
+      "message": "It would make more sense to convert `mActiveCount` to a signed type before negating it.",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 40
+      },
+      "revId": "862acefb417c0e1efe329261895c3d5cb110224a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
