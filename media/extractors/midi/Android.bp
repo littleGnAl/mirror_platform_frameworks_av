@@ -19,8 +19,6 @@ cc_library_shared {
     name: "libmidiextractor",
     relative_install_path: "extractors",
 
-    compile_multilib: "first",
-
     cflags: [
         "-Werror",
         "-Wall",
