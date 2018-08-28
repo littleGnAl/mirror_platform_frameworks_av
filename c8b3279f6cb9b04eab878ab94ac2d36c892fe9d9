@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cbb9bc57_bde674d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-08-28T16:22:33Z",
+      "side": 1,
+      "message": "typo: occures",
+      "range": {
+        "startLine": 16,
+        "startChar": 70,
+        "endLine": 16,
+        "endChar": 76
+      },
+      "revId": "c8b3279f6cb9b04eab878ab94ac2d36c892fe9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70ca329b_3aab403c",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-08-28T16:22:33Z",
+      "side": 1,
+      "message": "Simpler version: \"In this situation, there will be an active recorder. Need to notify RecordingActivityMonitor in order to update RecordingConfiguration.\"",
+      "range": {
+        "startLine": 51,
+        "startChar": 7,
+        "endLine": 53,
+        "endChar": 40
+      },
+      "revId": "c8b3279f6cb9b04eab878ab94ac2d36c892fe9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8205bc8b_dfe7632c",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioSession.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-08-28T16:22:33Z",
+      "side": 1,
+      "message": "nit: I would prefer just using unary minus: -((int)mActiveCount)",
+      "range": {
+        "startLine": 55,
+        "startChar": 20,
+        "endLine": 55,
+        "endChar": 43
+      },
+      "revId": "c8b3279f6cb9b04eab878ab94ac2d36c892fe9d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
