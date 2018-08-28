@@ -31,7 +31,6 @@ cc_defaults {
     ],
     version_script: "exports.lds",
     relative_install_path: "extractors",
-    compile_multilib: "first",
 }
 
 cc_library_shared {
