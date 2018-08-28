@@ -21,8 +21,6 @@ cc_library_shared {
     name: "liboggextractor",
     relative_install_path: "extractors",
 
-    compile_multilib: "first",
-
     cflags: [
         "-Werror",
         "-Wall",
