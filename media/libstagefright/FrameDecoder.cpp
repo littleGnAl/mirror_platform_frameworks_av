@@ -525,9 +525,15 @@ status_t VideoFrameDecoder::onOutputReceived(
     ColorConverter converter((OMX_COLOR_FORMATTYPE)srcFormat, dstFormat());
 
     if (converter.isValid()) {
+        int32_t stride;
+        int32_t sliceHeight;
+
+        CHECK(outputFormat->findInt32("stride", &stride));
+        CHECK(outputFormat->findInt32("slice-height", &sliceHeight));
+
         converter.convert(
                 (const uint8_t *)videoFrameBuffer->data(),
-                width, height,
+                stride, sliceHeight,
                 crop_left, crop_top, crop_right, crop_bottom,
                 frame->getFlattenedData(),
                 frame->mWidth,
@@ -722,9 +728,15 @@ status_t ImageDecoder::onOutputReceived(
     *done = (++mTilesDecoded >= mTargetTiles);
 
     if (converter.isValid()) {
+        int32_t stride;
+        int32_t sliceHeight;
+
+        CHECK(outputFormat->findInt32("stride", &stride));
+        CHECK(outputFormat->findInt32("slice-height", &sliceHeight));
+
         converter.convert(
                 (const uint8_t *)videoFrameBuffer->data(),
-                width, height,
+                stride, sliceHeight,
                 crop_left, crop_top, crop_right, crop_bottom,
                 mFrame->getFlattenedData(),
                 mFrame->mWidth,
