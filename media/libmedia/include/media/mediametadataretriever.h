@@ -70,6 +70,9 @@ enum {
     METADATA_KEY_EXIF_LENGTH     = 34,
 
     // Add more here...
+    METADATA_KEY_COLOR_STANDARD  = 1002,
+    METADATA_KEY_COLOR_TRANSFER  = 1003,
+    METADATA_KEY_COLOR_RANGE     = 1004,
 };
 
 class MediaMetadataRetriever: public RefBase
