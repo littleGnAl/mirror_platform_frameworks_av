@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58e927db_bd308c7d",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/src/mp4def.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1010056
+      },
+      "writtenOn": "2018-08-29T04:26:12Z",
+      "side": 0,
+      "message": "This code looks sketchy actually. I would expect SInt to refer to a \"signed int\", and not a signed short. Stagefright folks, can you double check that this is the intention here?",
+      "revId": "71a2d52f19d868751413e7664f208757b9214907",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
