@@ -61,6 +61,10 @@ public:
         mMemory = nullptr;
     }
     virtual uint32_t getFlags() {
+        // fix: timing issue of media.extractor NE
+        // GenericSource::disconnect() may call flags() when media.extractor just released FileSource
+        Mutex::Autolock lock(mCloseLock);
+        if (mSource == nullptr) return 0;
         return mSource->flags();
     }
     virtual String8 toString()  {
