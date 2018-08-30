@@ -125,12 +125,12 @@ void AString::setTo(const AString &from, size_t offset, size_t n) {
 }
 
 void AString::clear() {
-    if (mData && mData != kEmptyString) {
-        free(mData);
-        mData = NULL;
+    if (mData != kEmptyString) {
+        if (mData) {
+            free(mData);
+        }
+        mData = (char *)kEmptyString;
     }
-
-    mData = (char *)kEmptyString;
     mSize = 0;
     mAllocSize = 1;
 }
