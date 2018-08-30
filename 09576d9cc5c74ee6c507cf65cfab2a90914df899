@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ad6fb91_8b2c399a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1002682
+      },
+      "writtenOn": "2018-08-30T19:02:44Z",
+      "side": 1,
+      "message": "shouldn\u0027t that be the real source of the bug. Here this is fixing the \"side effect\" of the notification API, not addressing the fact that something got closed with a non-zero ref count. I\u0027m afraid by using your patch we are just hiding the real bug, and we can\u0027t rely on a destructor to do the cleanup.",
+      "range": {
+        "startLine": 15,
+        "startChar": 36,
+        "endLine": 16,
+        "endChar": 52
+      },
+      "revId": "09576d9cc5c74ee6c507cf65cfab2a90914df899",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
