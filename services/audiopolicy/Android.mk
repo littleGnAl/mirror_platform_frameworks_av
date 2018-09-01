@@ -21,7 +21,7 @@ LOCAL_SHARED_LIBRARIES := \
     liblog \
     libbinder \
     libaudioclient \
-    libhardware_legacy \
+    libpower \
     libserviceutility \
     libaudiopolicymanager \
     libmedia_helper \
