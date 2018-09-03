@@ -16,6 +16,24 @@
       "revId": "815d87c12648db36adaefb312928a867c2f06399",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b135d6d_f9041ef7",
+        "filename": "services/mediacodec/seccomp_policy/mediacodec-x86.policy",
+        "patchSetId": 2
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1276894
+      },
+      "writtenOn": "2018-09-03T04:44:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a40256f8_575bfd2f",
+      "revId": "815d87c12648db36adaefb312928a867c2f06399",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
