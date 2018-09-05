@@ -317,10 +317,10 @@ sp<AudioInputDescriptor> AudioInputCollection::getInputFromId(audio_port_handle_
     for (size_t i = 0; i < size(); i++) {
         inputDesc = valueAt(i);
         if (inputDesc->getId() == id) {
-            break;
+            return inputDesc;
         }
     }
-    return inputDesc;
+    return NULL;
 }
 
 uint32_t AudioInputCollection::activeInputsCountOnDevices(audio_devices_t devices) const

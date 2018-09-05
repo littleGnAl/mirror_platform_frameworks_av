@@ -685,10 +685,10 @@ sp<SwAudioOutputDescriptor> SwAudioOutputCollection::getOutputFromId(audio_port_
     for (size_t i = 0; i < size(); i++) {
         outputDesc = valueAt(i);
         if (outputDesc->getId() == id) {
-            break;
+            return outputDesc;
         }
     }
-    return outputDesc;
+    return NULL;
 }
 
 bool SwAudioOutputCollection::isAnyOutputActive(audio_stream_type_t streamToIgnore) const
