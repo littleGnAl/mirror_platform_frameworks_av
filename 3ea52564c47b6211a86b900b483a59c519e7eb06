@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e4828abd_f39d8cbb",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2231,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2018-09-05T07:15:54Z",
+      "side": 1,
+      "message": "move this block to for loop above: getting active sessions on any input (active or not) will only return sessions on active inputs so it will work the same way.",
+      "range": {
+        "startLine": 2225,
+        "startChar": 0,
+        "endLine": 2231,
+        "endChar": 9
+      },
+      "revId": "3ea52564c47b6211a86b900b483a59c519e7eb06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
