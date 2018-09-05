@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6867bb8_036ce2ed",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2216,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2018-09-05T07:59:58Z",
+      "side": 1,
+      "message": "we should not call releaseInput here as it can remove the input from mInputs list we are traversing.\n\nWhat needs to be done by releaseInput() is done below.",
+      "range": {
+        "startLine": 2216,
+        "startChar": 0,
+        "endLine": 2216,
+        "endChar": 62
+      },
+      "revId": "b9e8a4714f5dedbeebae39c7c7004c86ed78a9c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
