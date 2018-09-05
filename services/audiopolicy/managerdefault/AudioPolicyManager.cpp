@@ -719,6 +719,13 @@ void AudioPolicyManager::setForceUse(audio_policy_force_use_t usage,
                 (newDevice & ~AUDIO_DEVICE_BIT_IN)) {
             setInputDevice(activeDesc->mIoHandle, newDevice);
         } else {
+            // stop active input before closeInput
+            AudioSessionCollection activeSessions =
+                activeDesc->getAudioSessions(true /*activeOnly*/);
+            for (size_t j = 0; j < activeSessions.size(); j++) {
+                audio_session_t activeSession = activeSessions.keyAt(j);
+                stopInput(activeDesc->mIoHandle, activeSession);
+            }
             closeInput(activeDesc->mIoHandle);
         }
     }
@@ -2201,6 +2208,14 @@ void AudioPolicyManager::closeAllInputs() {
 
     for (size_t input_index = 0; input_index < mInputs.size(); input_index++) {
         sp<AudioInputDescriptor> inputDesc = mInputs.valueAt(input_index);
+        AudioSessionCollection activeSessions =
+            inputDesc->getAudioSessions(true /*activeOnly*/);
+        for (size_t j = 0; j < activeSessions.size(); j++) {
+            audio_session_t activeSession = activeSessions.keyAt(j);
+            stopInput(inputDesc->mIoHandle, activeSession);
+            releaseInput(inputDesc->mIoHandle, activeSession);
+        }
+
         ssize_t patch_index = mAudioPatches.indexOfKey(inputDesc->getPatchHandle());
         if (patch_index >= 0) {
             sp<AudioPatch> patchDesc = mAudioPatches.valueAt(patch_index);
