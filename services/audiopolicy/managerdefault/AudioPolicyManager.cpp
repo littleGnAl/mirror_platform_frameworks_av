@@ -719,6 +719,13 @@ void AudioPolicyManager::setForceUse(audio_policy_force_use_t usage,
                 (newDevice & ~AUDIO_DEVICE_BIT_IN)) {
             setInputDevice(activeDesc->mIoHandle, newDevice);
         } else {
+            // stop active input before closeInput
+            AudioSessionCollection activeSessions =
+                activeDesc->getAudioSessions(true /*activeOnly*/);
+            for (size_t j = 0; j < activeSessions.size(); j++) {
+                audio_session_t activeSession = activeSessions.keyAt(j);
+                stopInput(activeDesc->mIoHandle, activeSession);
+            }
             closeInput(activeDesc->mIoHandle);
         }
     }
@@ -2210,6 +2217,20 @@ void AudioPolicyManager::closeAllInputs() {
         }
         inputDesc->close();
     }
+
+    // stop all the active inputs before clear mInputs
+    Vector<sp <AudioInputDescriptor> > activeInputs = mInputs.getActiveInputs();
+    for (size_t i = 0; i < activeInputs.size(); i++) {
+        sp<AudioInputDescriptor> activeDesc = activeInputs[i];
+        AudioSessionCollection activeSessions =
+            activeDesc->getAudioSessions(true /*activeOnly*/);
+        for (size_t j = 0; j < activeSessions.size(); j++) {
+            audio_session_t activeSession = activeSessions.keyAt(j);
+            stopInput(activeDesc->mIoHandle, activeSession);
+            releaseInput(activeDesc->mIoHandle, activeSession);
+        }
+    }
+
     mInputRoutes.clear();
     mInputs.clear();
     SoundTrigger::setCaptureState(false);
