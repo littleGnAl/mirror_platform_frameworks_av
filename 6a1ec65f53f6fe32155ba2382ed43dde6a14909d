@@ -45,6 +45,30 @@
       "revId": "6a1ec65f53f6fe32155ba2382ed43dde6a14909d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f09d756f_99902f3b",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1143570
+      },
+      "writtenOn": "2018-09-06T13:00:26Z",
+      "side": 1,
+      "message": "Hi MikHail, according to Eric\u0027s comment, we should not call releaseInput here as it can remove the input from mInputs list we are traversing. What needs to be done by releaseInput() is done below.",
+      "parentUuid": "0c202bcc_ed2e63f1",
+      "range": {
+        "startLine": 728,
+        "startChar": 12,
+        "endLine": 728,
+        "endChar": 13
+      },
+      "revId": "6a1ec65f53f6fe32155ba2382ed43dde6a14909d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
