@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "776d02bf_b8fdb3a7",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-09-06T00:43:31Z",
+      "side": 1,
+      "message": "I would suggest inlining this variable as its name is trivial.",
+      "range": {
+        "startLine": 726,
+        "startChar": 16,
+        "endLine": 726,
+        "endChar": 72
+      },
+      "revId": "6a1ec65f53f6fe32155ba2382ed43dde6a14909d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c202bcc_ed2e63f1",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-09-06T00:43:31Z",
+      "side": 1,
+      "message": "Do we also need to call \u0027releaseInput\u0027 (see similar code in createTelephonyPatch)? If no, please add a comment explaining why. If yes, please factor this code out so it\u0027s not get copied 3 times.",
+      "range": {
+        "startLine": 728,
+        "startChar": 12,
+        "endLine": 728,
+        "endChar": 13
+      },
+      "revId": "6a1ec65f53f6fe32155ba2382ed43dde6a14909d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
