@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "1f49fd2f_6ff00610",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-09-07T16:23:03Z",
+      "side": 1,
+      "message": "Please address this, as having this local variable makes me think that this block is missing something, like another operation on \u0027activeSession\u0027, and that\u0027s why I had the comment below.",
+      "parentUuid": "776d02bf_b8fdb3a7",
+      "range": {
+        "startLine": 726,
+        "startChar": 16,
+        "endLine": 726,
+        "endChar": 72
+      },
+      "revId": "6a1ec65f53f6fe32155ba2382ed43dde6a14909d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0c202bcc_ed2e63f1",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 4
@@ -69,6 +93,30 @@
       "revId": "6a1ec65f53f6fe32155ba2382ed43dde6a14909d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "572fbf0c_e5cf6016",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-09-07T16:23:03Z",
+      "side": 1,
+      "message": "OK. I was thinking that it only relates to \u0027closeAllInputs\u0027. But \u0027closeInput\u0027 also seem to remove the input from mInputs.",
+      "parentUuid": "f09d756f_99902f3b",
+      "range": {
+        "startLine": 728,
+        "startChar": 12,
+        "endLine": 728,
+        "endChar": 13
+      },
+      "revId": "6a1ec65f53f6fe32155ba2382ed43dde6a14909d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
