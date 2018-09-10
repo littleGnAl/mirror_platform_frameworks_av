@@ -52,6 +52,24 @@
       "revId": "955afe5e1e04b7d44e6f8f9d0aaf5eb4661db6cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4661860_29b6ab08",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4884,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2018-09-10T18:00:15Z",
+      "side": 1,
+      "message": "How do I know the time taken for a stage of a pipeline (especially when there is HIGH_QUALITY filters involved?)",
+      "parentUuid": "d8c829f4_ddb22cfe",
+      "revId": "955afe5e1e04b7d44e6f8f9d0aaf5eb4661db6cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
