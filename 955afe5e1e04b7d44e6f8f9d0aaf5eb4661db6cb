@@ -34,6 +34,24 @@
       "revId": "955afe5e1e04b7d44e6f8f9d0aaf5eb4661db6cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8c829f4_ddb22cfe",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4884,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2018-09-10T17:58:13Z",
+      "side": 1,
+      "message": "A fixed value seems problematic, for the exact reason for why we\u0027re calling getExpectedInFlightDuration here. Can we calculate something based on the reported pipeline latency of the device?",
+      "parentUuid": "6f016d35_a4c7ec22",
+      "revId": "955afe5e1e04b7d44e6f8f9d0aaf5eb4661db6cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
