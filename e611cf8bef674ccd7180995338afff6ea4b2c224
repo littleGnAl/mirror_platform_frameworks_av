@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "12cb2202_2c6d920b",
+        "filename": "media/libmedia/include/media/mediametadataretriever.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2018-09-12T01:46:07Z",
+      "side": 1,
+      "message": "I think these should just be 35,336,37. They should also be added to //frameworks/base/media/java/android/media/MediaMetadataRetriever.java as @hidden.\n(the EXIF_OFFSET and EXIF_LENGTH above are hidden too)",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 40
+      },
+      "revId": "e611cf8bef674ccd7180995338afff6ea4b2c224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
