@@ -22,6 +22,29 @@
       "revId": "e611cf8bef674ccd7180995338afff6ea4b2c224",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3840adc_d2f52d5b",
+        "filename": "media/libstagefright/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2018-09-12T01:46:59Z",
+      "side": 1,
+      "message": "nit: need to wrap, it\u0027s \u003e100char",
+      "range": {
+        "startLine": 409,
+        "startChar": 8,
+        "endLine": 409,
+        "endChar": 101
+      },
+      "revId": "e611cf8bef674ccd7180995338afff6ea4b2c224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
