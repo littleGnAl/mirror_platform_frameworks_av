@@ -606,6 +606,7 @@ int32_t SoftAAC2::outputDelayRingBufferSpaceLeft() {
 }
 
 
+__attribute__((no_sanitize("cfi-icall")))
 void SoftAAC2::onQueueFilled(OMX_U32 /* portIndex */) {
     if (mSignalledError || mOutputPortSettingsChange != NONE) {
         return;
