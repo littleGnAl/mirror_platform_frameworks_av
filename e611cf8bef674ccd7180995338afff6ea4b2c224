@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a6dfa1b1_d2970e83",
+        "filename": "media/libmedia/include/media/mediametadataretriever.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1233895
+      },
+      "writtenOn": "2018-09-12T09:35:45Z",
+      "side": 1,
+      "message": "\u003e\u003e I think these should just be 35,336,37.\n\nDone in patch set 3.\n\n\u003e\u003e hey should also be added to //frameworks/base/media/java/android/media/MediaMetadataRetriever.java as @hidden.\n\nSorry, I missed to upload it. Now I upload it. https://android-review.googlesource.com/c/platform/frameworks/base/+/754468",
+      "parentUuid": "12cb2202_2c6d920b",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 75,
+        "endChar": 40
+      },
+      "revId": "e611cf8bef674ccd7180995338afff6ea4b2c224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3840adc_d2f52d5b",
         "filename": "media/libstagefright/StagefrightMetadataRetriever.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "e611cf8bef674ccd7180995338afff6ea4b2c224",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a407916a_af4d9a0d",
+        "filename": "media/libstagefright/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 409,
+      "author": {
+        "id": 1233895
+      },
+      "writtenOn": "2018-09-12T09:35:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3840adc_d2f52d5b",
+      "range": {
+        "startLine": 409,
+        "startChar": 8,
+        "endLine": 409,
+        "endChar": 101
+      },
+      "revId": "e611cf8bef674ccd7180995338afff6ea4b2c224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
