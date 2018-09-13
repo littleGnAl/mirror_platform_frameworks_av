@@ -16,6 +16,24 @@
       "revId": "a5fa4f1c50c13d327ab5be4778601be4375df93b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "781f96ac_bb8b16b6",
+        "filename": "services/audiopolicy/engineconfigurable/wrapper/ParameterManagerWrapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1044078
+      },
+      "writtenOn": "2018-09-13T08:44:09Z",
+      "side": 1,
+      "message": "It is not required to run the GSI image.\nBut it is required by BSP which support customized configurable audio implementation.\nAbout the backward compatible issue, AOSP have similar impl in other domain.",
+      "parentUuid": "7e194937_0f60c73a",
+      "revId": "a5fa4f1c50c13d327ab5be4778601be4375df93b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
