@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d1f3135a_25ec2fc1",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioInputDescriptor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-09-13T16:18:56Z",
+      "side": 1,
+      "message": "Could you please move \u0027inputDesc\u0027 variable inside the loop as it\u0027s done in \u0027isSourceActive\u0027 above?",
+      "range": {
+        "startLine": 318,
+        "startChar": 8,
+        "endLine": 318,
+        "endChar": 31
+      },
+      "revId": "99f07ed87f3d34eacc6f4e0dd4490b3dbdee6a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "69753530_93f41664",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-09-13T16:18:56Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 686,
+        "startChar": 8,
+        "endLine": 686,
+        "endChar": 32
+      },
+      "revId": "99f07ed87f3d34eacc6f4e0dd4490b3dbdee6a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
