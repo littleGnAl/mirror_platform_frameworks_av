@@ -87,14 +87,14 @@ int parseCSV(const char *string, Vector<int>& values)
                 }
                 return numValues;
             }
-            // fall through
+            FALLTHROUGH_INTENDED;
         case ',':
             if (hadDigit) {
                 hadDigit = false;
                 numValues++;
                 break;
             }
-            // fall through
+            FALLTHROUGH_INTENDED;
         default:
             return -1;
         }
