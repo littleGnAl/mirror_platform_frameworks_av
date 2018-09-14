@@ -46,6 +46,30 @@
       "revId": "fcc59757951e04f054723a7f7a38163e084403e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ba262c7_bdf29e64",
+        "filename": "services/camera/libcameraservice/device3/Camera3StreamInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2018-09-14T17:01:54Z",
+      "side": 1,
+      "message": "In that case, would an app fail if it calls prepare and immediately send capture request? (I thought we call preapre on binder thread so app cannot send a request while preparing is running :P)",
+      "parentUuid": "3ac440f9_baa08262",
+      "range": {
+        "startLine": 163,
+        "startChar": 7,
+        "endLine": 163,
+        "endChar": 19
+      },
+      "revId": "fcc59757951e04f054723a7f7a38163e084403e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
