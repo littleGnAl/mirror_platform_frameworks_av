@@ -94,6 +94,30 @@
       "revId": "fcc59757951e04f054723a7f7a38163e084403e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "320d434e_bdcf6864",
+        "filename": "services/camera/libcameraservice/device3/Camera3StreamInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2018-09-14T21:08:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "addc43bb_8ce983d9",
+      "range": {
+        "startLine": 163,
+        "startChar": 7,
+        "endLine": 163,
+        "endChar": 19
+      },
+      "revId": "fcc59757951e04f054723a7f7a38163e084403e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
