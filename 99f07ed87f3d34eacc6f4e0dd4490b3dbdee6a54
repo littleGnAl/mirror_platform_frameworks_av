@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0de269c9_4e74c11e",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioInputDescriptor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1061057
+      },
+      "writtenOn": "2018-09-16T14:49:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5712690_7d1e6510",
+      "range": {
+        "startLine": 318,
+        "startChar": 8,
+        "endLine": 318,
+        "endChar": 31
+      },
+      "revId": "99f07ed87f3d34eacc6f4e0dd4490b3dbdee6a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "69753530_93f41664",
         "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
         "patchSetId": 1
@@ -93,6 +117,30 @@
       "revId": "99f07ed87f3d34eacc6f4e0dd4490b3dbdee6a54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e46dd964_c6829be2",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 686,
+      "author": {
+        "id": 1061057
+      },
+      "writtenOn": "2018-09-16T14:49:14Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eda7a976_e1ed8403",
+      "range": {
+        "startLine": 686,
+        "startChar": 8,
+        "endLine": 686,
+        "endChar": 32
+      },
+      "revId": "99f07ed87f3d34eacc6f4e0dd4490b3dbdee6a54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
