@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e058dee4_49bfe235",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-09-17T18:47:23Z",
+      "side": 1,
+      "message": "maybe move to line 26?",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 32
+      },
+      "revId": "00f2b7bfbd76dfd70df4db12f8c27f7bb81dff09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83f40c30_13e7c004",
+        "filename": "media/libaudioclient/include/media/AudioPolicyHelper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-09-17T18:47:23Z",
+      "side": 1,
+      "message": "please add // attributes in common with STREAM_SYSTEM",
+      "range": {
+        "startLine": 85,
+        "startChar": 28,
+        "endLine": 85,
+        "endChar": 29
+      },
+      "revId": "00f2b7bfbd76dfd70df4db12f8c27f7bb81dff09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
