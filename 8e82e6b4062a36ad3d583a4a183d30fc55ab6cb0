@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e0045bb3_9f62f1e2",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-09-17T18:44:56Z",
+      "side": 1,
+      "message": "minor nit, could this be put on line 28?  thinking stricmp collation.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 32
+      },
+      "revId": "8e82e6b4062a36ad3d583a4a183d30fc55ab6cb0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
