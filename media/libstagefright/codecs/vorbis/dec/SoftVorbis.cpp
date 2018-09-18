@@ -427,6 +427,14 @@ void SoftVorbis::onQueueFilled(OMX_U32 /* portIndex */) {
             if (inHeader->nFlags & OMX_BUFFERFLAG_EOS) {
                 mSawInputEos = true;
             }
+            if (inHeader->nFlags & OMX_BUFFERFLAG_CODECCONFIG) {
+                ALOGV("CSD queued after configured; ignoring");
+                inQueue.erase(inQueue.begin());
+                inInfo->mOwnedByUs = false;
+                notifyEmptyBufferDone(inHeader);
+                ++mInputBufferCount;
+                continue;
+            }
 
             if (inHeader->nFilledLen || !mSawInputEos) {
                 if (inHeader->nFilledLen < sizeof(numPageSamples)) {
