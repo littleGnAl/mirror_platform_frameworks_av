@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69ce0c9e_a97a9d5e",
+        "filename": "media/libstagefright/codecs/vorbis/dec/SoftVorbis.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 438,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2018-09-18T23:39:32Z",
+      "side": 1,
+      "message": "would it be good to reset members when flushing?",
+      "range": {
+        "startLine": 430,
+        "startChar": 0,
+        "endLine": 438,
+        "endChar": 0
+      },
+      "revId": "21f350820eb9793efd2fb314fb774b5658c50c13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
