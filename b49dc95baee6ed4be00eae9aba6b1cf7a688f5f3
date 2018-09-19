@@ -16,6 +16,24 @@
       "revId": "b49dc95baee6ed4be00eae9aba6b1cf7a688f5f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eab05046_031146ce",
+        "filename": "media/libstagefright/codecs/vorbis/dec/SoftVorbis.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2018-09-19T20:00:49Z",
+      "side": 0,
+      "message": "We deleted mState instead of restart here.",
+      "parentUuid": "b1e909ad_91df3c40",
+      "revId": "b49dc95baee6ed4be00eae9aba6b1cf7a688f5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
