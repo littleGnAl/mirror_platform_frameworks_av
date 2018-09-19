@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b1e909ad_91df3c40",
+        "filename": "media/libstagefright/codecs/vorbis/dec/SoftVorbis.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-09-19T19:55:34Z",
+      "side": 0,
+      "message": "so the codec doesn\u0027t need to be restarted anymore after a flush?\nDoes C2SoftVorbis need a similar change? (it does very little in onFlush_sm(), but it does call vorbis_dsp_restart() there)",
+      "revId": "b49dc95baee6ed4be00eae9aba6b1cf7a688f5f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
