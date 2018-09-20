@@ -1643,6 +1643,17 @@ void NuPlayer::Renderer::onFlush(const sp<AMessage> &msg) {
 
     mVideoSampleReceived = false;
 
+    if (audio && !mHasAudio) {
+        // Call postDrainVideoQueue() proactively in case audio decoder is
+        // shut down due to the unsupported mime type and video track can
+        // still be resumed after being paused.
+        if (mDrainVideoQueuePending) {
+            // postDrainVideoQueue() may have been called before flush
+            mDrainVideoQueuePending = false;
+            postDrainVideoQueue();
+        }
+    }
+
     if (notifyComplete) {
         notifyFlushComplete(audio);
     }
