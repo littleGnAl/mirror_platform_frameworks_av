@@ -23,9 +23,11 @@
 #include <algorithm>
 #include <cutils/properties.h>
 #include <media/stagefright/foundation/ADebug.h>
+#include <media/stagefright/foundation/ALookup.h>
 #include <media/stagefright/foundation/AMessage.h>
 #include <media/stagefright/foundation/AUtils.h>
 #include <media/stagefright/MediaClock.h>
+#include <media/stagefright/MediaDefs.h>
 #include <media/stagefright/MediaErrors.h>
 #include <media/stagefright/MetaData.h>
 #include <media/stagefright/Utils.h>
@@ -1855,6 +1857,14 @@ void NuPlayer::Renderer::cancelAudioOffloadPauseTimeout() {
     ++mAudioOffloadPauseTimeoutGeneration;
 }
 
+ALookup<audio_format_t, int32_t> sAudioFormatToPcmEncoding {
+    {
+        { AUDIO_FORMAT_PCM_16_BIT, kAudioEncodingPcm16bit },
+        { AUDIO_FORMAT_PCM_8_BIT,  kAudioEncodingPcm8bit  },
+        { AUDIO_FORMAT_PCM_FLOAT,  kAudioEncodingPcmFloat },
+    }
+};
+
 status_t NuPlayer::Renderer::onOpenAudioSink(
         const sp<AMessage> &format,
         bool offloadOnly,
@@ -1977,10 +1987,16 @@ status_t NuPlayer::Renderer::onOpenAudioSink(
         uint32_t pcmFlags = flags;
         pcmFlags &= ~AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD;
 
+        audio_format_t audioFormat = AUDIO_FORMAT_PCM_16_BIT;
+        int32_t pcmEncoding = -1;
+        if (format->findInt32("pcm-encoding", &pcmEncoding)) {
+            sAudioFormatToPcmEncoding.map(pcmEncoding, &audioFormat);
+        }
+
         const PcmInfo info = {
                 (audio_channel_mask_t)channelMask,
                 (audio_output_flags_t)pcmFlags,
-                AUDIO_FORMAT_PCM_16_BIT, // TODO: change to audioFormat
+                audioFormat,
                 numChannels,
                 sampleRate
         };
@@ -2019,7 +2035,7 @@ status_t NuPlayer::Renderer::onOpenAudioSink(
                     sampleRate,
                     numChannels,
                     (audio_channel_mask_t)channelMask,
-                    AUDIO_FORMAT_PCM_16_BIT,
+                    audioFormat,
                     0 /* bufferCount - unused */,
                     mUseAudioCallback ? &NuPlayer::Renderer::AudioSinkCallback : NULL,
                     mUseAudioCallback ? this : NULL,
