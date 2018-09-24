@@ -159,24 +159,13 @@ status_t CameraService::enumerateProviders() {
             }
         }
 
-
         // Setup vendor tags before we call get_camera_info the first time
         // because HAL might need to setup static vendor keys in get_camera_info
         // TODO: maybe put this into CameraProviderManager::initialize()?
         mCameraProviderManager->setUpVendorTags();
 
-        if (nullptr == mFlashlight.get()) {
-            mFlashlight = new CameraFlashlight(mCameraProviderManager, this);
-        }
-
-        res = mFlashlight->findFlashUnits();
-        if (res != OK) {
-            ALOGE("Failed to enumerate flash units: %s (%d)", strerror(-res), res);
-        }
-
         deviceIds = mCameraProviderManager->getCameraDeviceIds();
     }
-
 
     for (auto& cameraId : deviceIds) {
         String8 id8 = String8(cameraId.c_str());
@@ -231,6 +220,16 @@ void CameraService::addStates(const String8 id) {
         ALOGE("Failed to query device resource cost: %s (%d)", strerror(-res), res);
         return;
     }
+
+    if (nullptr == mFlashlight.get()) {
+        mFlashlight = new CameraFlashlight(mCameraProviderManager, this);
+    }
+
+    res = mFlashlight->findFlashUnits();
+    if (res != OK) {
+        ALOGE("Failed to enumerate flash units: %s (%d)", strerror(-res), res);
+    }
+
     std::set<String8> conflicting;
     for (size_t i = 0; i < cost.conflictingDevices.size(); i++) {
         conflicting.emplace(String8(cost.conflictingDevices[i].c_str()));
