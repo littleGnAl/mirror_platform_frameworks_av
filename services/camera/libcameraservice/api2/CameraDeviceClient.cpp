@@ -82,7 +82,8 @@ CameraDeviceClient::CameraDeviceClient(const sp<CameraService>& cameraService,
                 cameraFacing, clientPid, clientUid, servicePid),
     mInputStream(),
     mStreamingRequestId(REQUEST_ID_NONE),
-    mRequestIdCounter(0) {
+    mRequestIdCounter(0),
+    mNoRGBOutput(true) {
 
     ATRACE_CALL();
     ALOGI("CameraDeviceClient %s: Opened", cameraId.string());
@@ -120,6 +121,18 @@ status_t CameraDeviceClient::initializeImpl(TProviderPtr providerPtr, const Stri
         mSupportedPhysicalRequestKeys.insert(mSupportedPhysicalRequestKeys.begin(),
                 physicalKeysEntry.data.i32,
                 physicalKeysEntry.data.i32 + physicalKeysEntry.count);
+    }
+
+    camera_metadata_entry configs =
+            deviceInfo.find(ANDROID_SCALER_AVAILABLE_STREAM_CONFIGURATIONS);
+    for (uint32_t i = 0; i < configs.count; i += 4) {
+        int32_t format = configs.data.i32[i];
+        int32_t streamType = configs.data.i32[i + 3];
+        if (((format >= HAL_PIXEL_FORMAT_RGBA_8888) && (format <= HAL_PIXEL_FORMAT_BGRA_8888)) &&
+                (streamType == ANDROID_SCALER_AVAILABLE_STREAM_CONFIGURATIONS_OUTPUT)) {
+            mNoRGBOutput = false;
+            break;
+        }
     }
 
     return OK;
@@ -1093,8 +1106,8 @@ binder::Status CameraDeviceClient::createSurfaceFromGbp(
     // FIXME: remove this override since the default format should be
     //       IMPLEMENTATION_DEFINED. b/9487482 & b/35317944
     if ((format >= HAL_PIXEL_FORMAT_RGBA_8888 && format <= HAL_PIXEL_FORMAT_BGRA_8888) &&
-            ((consumerUsage & GRALLOC_USAGE_HW_MASK) &&
-             ((consumerUsage & GRALLOC_USAGE_SW_READ_MASK) == 0))) {
+            (((consumerUsage & GRALLOC_USAGE_HW_MASK) &&
+             ((consumerUsage & GRALLOC_USAGE_SW_READ_MASK) == 0)) || mNoRGBOutput)) {
         ALOGW("%s: Camera %s: Overriding format %#x to IMPLEMENTATION_DEFINED",
                 __FUNCTION__, mCameraIdStr.string(), format);
         format = HAL_PIXEL_FORMAT_IMPLEMENTATION_DEFINED;
