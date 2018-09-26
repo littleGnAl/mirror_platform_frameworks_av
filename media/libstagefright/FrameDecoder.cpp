@@ -505,6 +505,11 @@ status_t VideoFrameDecoder::onOutputReceived(
     CHECK(outputFormat->findInt32("width", &width));
     CHECK(outputFormat->findInt32("height", &height));
 
+    //  Fix thumbnail has green bar issue.
+    int32_t slice_height = -1;
+    if (outputFormat->findInt32("slice-height", &slice_height) && slice_height > height)
+        height = slice_height;
+
     int32_t crop_left, crop_top, crop_right, crop_bottom;
     if (!outputFormat->findRect("crop", &crop_left, &crop_top, &crop_right, &crop_bottom)) {
         crop_left = crop_top = 0;
