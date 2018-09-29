@@ -56,6 +56,19 @@ Visualizer::~Visualizer()
     setCaptureCallBack(NULL, NULL, 0, 0);
 }
 
+void Visualizer::release()
+{
+    ALOGV("Visualizer::release()");
+    setEnabled(false);
+    Mutex::Autolock _l(mCaptureLock);
+
+    if (mCaptureThread != 0) {
+        mCaptureLock.unlock();
+        mCaptureThread->requestExit();
+        mCaptureLock.lock();
+    }
+}
+
 status_t Visualizer::setEnabled(bool enabled)
 {
     Mutex::Autolock _l(mCaptureLock);
@@ -402,7 +415,7 @@ void Visualizer::controlStatusChanged(bool controlGranted) {
 
 //-------------------------------------------------------------------------
 
-Visualizer::CaptureThread::CaptureThread(Visualizer& receiver, uint32_t captureRate,
+Visualizer::CaptureThread::CaptureThread(sp<Visualizer> receiver, uint32_t captureRate,
         bool bCanCallJava)
     : Thread(bCanCallJava), mReceiver(receiver)
 {
@@ -416,8 +429,9 @@ bool Visualizer::CaptureThread::threadLoop()
     while (!exitPending())
     {
         usleep(mSleepTimeUs);
-        mReceiver.periodicCapture();
+        mReceiver->periodicCapture();
     }
+    mReceiver.clear();
     ALOGV("CaptureThread %p exiting", this);
     return false;
 }
