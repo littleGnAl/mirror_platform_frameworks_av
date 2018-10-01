@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69dafb61_e20f8646",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-10-01T18:02:52Z",
+      "side": 1,
+      "message": "is it possible to move this logic into the destructor?  would prefer not to add a release() here since the lifetime ought to be controlled by the refcount in refbase.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "a2a8e7d230a1db73ffbfa1945f400dfd2ad93f62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aead679d_2c537115",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-10-01T18:02:52Z",
+      "side": 1,
+      "message": "Storing sp\u003c\u003e is bit fragile as it creates an internal reference to the object (a cycle). This requires the capture thread to be destroyed before removing the last external reference to the visualizer (otherwise this thread is silently orphaned). the previous use of a regular C++ reference is fine, perhaps better than storing a wp\u003c\u003e and promoting.",
+      "range": {
+        "startLine": 422,
+        "startChar": 41,
+        "endLine": 422,
+        "endChar": 56
+      },
+      "revId": "a2a8e7d230a1db73ffbfa1945f400dfd2ad93f62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
