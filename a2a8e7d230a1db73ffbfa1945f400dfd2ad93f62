@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "85d84a22_326d49aa",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-10-01T22:04:51Z",
+      "side": 1,
+      "message": "The added code looks a lot like the code of \u0027setCaptureCallback\u0027. Can we reuse it here instead of rolling out a slightly modified version of it?",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 26
+      },
+      "revId": "a2a8e7d230a1db73ffbfa1945f400dfd2ad93f62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7e2b564_039a6164",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-10-01T22:04:51Z",
+      "side": 1,
+      "message": "Why is it OK to terminate the thread asynchronously vs. synchronously as in \u0027setCaptureCallback\u0027?",
+      "range": {
+        "startLine": 66,
+        "startChar": 24,
+        "endLine": 66,
+        "endChar": 38
+      },
+      "revId": "a2a8e7d230a1db73ffbfa1945f400dfd2ad93f62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69dafb61_e20f8646",
         "filename": "media/libmedia/Visualizer.cpp",
         "patchSetId": 2
@@ -13,6 +59,30 @@
       "writtenOn": "2018-10-01T18:02:52Z",
       "side": 1,
       "message": "is it possible to move this logic into the destructor?  would prefer not to add a release() here since the lifetime ought to be controlled by the refcount in refbase.",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "a2a8e7d230a1db73ffbfa1945f400dfd2ad93f62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb04d6e7_577be9e4",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-10-01T22:04:51Z",
+      "side": 1,
+      "message": "For a refcount-managed objects, it might make sense to have a dedicated \u0027release\u0027 method since it can be called on a thread of our choice, whereas the destructor will be called on the thread where the last reference has ceased to exist.\n\nAlso, the Java object actually has a \u0027release\u0027 method, so we can just plumb it through--I believe this is what this patch is attempting to do.",
+      "parentUuid": "69dafb61_e20f8646",
       "range": {
         "startLine": 62,
         "startChar": 0,
