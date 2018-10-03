@@ -22,6 +22,30 @@
       "revId": "05f179e1050703063c77a45f2250b9250bb380b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fa16357_712a5b73",
+        "filename": "media/libaudioclient/ToneGenerator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1012,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-10-03T03:44:50Z",
+      "side": 1,
+      "message": "Thank you for your review.\nit\u0027s not intended so I have changed it to strstr.",
+      "parentUuid": "2e299ffa_d43c4c77",
+      "range": {
+        "startLine": 1012,
+        "startChar": 15,
+        "endLine": 1012,
+        "endChar": 21
+      },
+      "revId": "05f179e1050703063c77a45f2250b9250bb380b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
