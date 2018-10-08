@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dfd8998c_b0dcb621",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-10-08T18:27:08Z",
+      "side": 1,
+      "message": "If we call \u0027clear\u0027 here, thus freeing up the instance of \u0027CaptureThread\u0027 class, while the thread hasn\u0027t been terminated execution yet, it means CaptureThread::threadLoop() will attempt to access memory that has been freed. That\u0027s why it\u0027s important to wait for the thread to join. That\u0027s why I was asking to use \u0027setCaptureCallback\u0027 which handles thread termination correctly.",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "efcae22997bf46dcb851b5c4acc02b704a337c4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6576ca8c_7c979024",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-10-08T18:27:08Z",
+      "side": 1,
+      "message": "Please do not create an sp\u003c\u003e scoped at whole lifetime of the thread. This is roughly equivalent to having an sp\u003c\u003e as a data member of CaptureThread class. You need to attempt to promote a wp\u003c\u003e to sp\u003c\u003e in a very limited scope--when you are attempting to call \u0027periodicCapture\u0027. You also need to check whether wp\u003c\u003e::promote returns a non-null pointer. Please consult the documentation in the beginning of system/core/libutils/include/utils/RefBase.h.",
+      "range": {
+        "startLine": 433,
+        "startChar": 4,
+        "endLine": 433,
+        "endChar": 27
+      },
+      "revId": "efcae22997bf46dcb851b5c4acc02b704a337c4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
