@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a64fe438_f5dc0fa9",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1143570
+      },
+      "writtenOn": "2018-10-08T10:26:30Z",
+      "side": 1,
+      "message": "It looks like the code of setCaptureCallback really. In this situation, we could terminate the thread without checking for mEnabled. To reuse this code, I think we may have to add an parameter for the function of setCaptureCallBack.",
+      "parentUuid": "85d84a22_326d49aa",
+      "range": {
+        "startLine": 59,
+        "startChar": 5,
+        "endLine": 59,
+        "endChar": 26
+      },
+      "revId": "a2a8e7d230a1db73ffbfa1945f400dfd2ad93f62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d7e2b564_039a6164",
         "filename": "media/libmedia/Visualizer.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "a2a8e7d230a1db73ffbfa1945f400dfd2ad93f62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92f82915_db7471dc",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1143570
+      },
+      "writtenOn": "2018-10-08T10:26:30Z",
+      "side": 1,
+      "message": "If we terminate the thread synchronously, the function of Visualizer::release() may cost a long time which will cause ANR.",
+      "parentUuid": "d7e2b564_039a6164",
+      "range": {
+        "startLine": 66,
+        "startChar": 24,
+        "endLine": 66,
+        "endChar": 38
+      },
+      "revId": "a2a8e7d230a1db73ffbfa1945f400dfd2ad93f62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "6774a5b1_c2f9a184",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1143570
+      },
+      "writtenOn": "2018-10-08T10:26:30Z",
+      "side": 1,
+      "message": "Hi Andy,\nIf we move the logic into the destructor, since termination the thread is asynchronously, visualizer may be destroyed before mCaptureThread terminated, then the app will crash when periodicCapture is called in CaptureThread.\nIf we terminate the thread synchronously in the destructor, getWaveForm may cost a long time, which will result in ANR of APP.\nSo I try to terminate the thread asynchronously, and destroy the Visualizer after terminated (If Visualizer is destroyed before the termination of CaptureThread, native crash will happen).",
+      "parentUuid": "bb04d6e7_577be9e4",
+      "range": {
+        "startLine": 62,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "a2a8e7d230a1db73ffbfa1945f400dfd2ad93f62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "aead679d_2c537115",
         "filename": "media/libmedia/Visualizer.cpp",
         "patchSetId": 2
@@ -106,6 +178,30 @@
       "writtenOn": "2018-10-01T18:02:52Z",
       "side": 1,
       "message": "Storing sp\u003c\u003e is bit fragile as it creates an internal reference to the object (a cycle). This requires the capture thread to be destroyed before removing the last external reference to the visualizer (otherwise this thread is silently orphaned). the previous use of a regular C++ reference is fine, perhaps better than storing a wp\u003c\u003e and promoting.",
+      "range": {
+        "startLine": 422,
+        "startChar": 41,
+        "endLine": 422,
+        "endChar": 56
+      },
+      "revId": "a2a8e7d230a1db73ffbfa1945f400dfd2ad93f62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccf126c8_86e80e72",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1143570
+      },
+      "writtenOn": "2018-10-08T10:26:30Z",
+      "side": 1,
+      "message": "I will fix it later. The purpose of holding reference of Visualizer is to prevent the visualizer to be destroyed before capture thread exit.",
+      "parentUuid": "aead679d_2c537115",
       "range": {
         "startLine": 422,
         "startChar": 41,
