@@ -93,6 +93,30 @@
       "revId": "efcae22997bf46dcb851b5c4acc02b704a337c4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "82f3011c_37904865",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-10-09T17:39:32Z",
+      "side": 1,
+      "message": "OK, so you are trying to prevent a crash by making sure that the instance of Visualizer does not get destroyed while the thread is running.\n\nAs I understand from the CL description, the Visualizer destructor may avoid finishing the CaptureThread if \u0027setEnabled\u0027 call in the destructor has failed, thus leaving \u0027mEnabling\u0027 status to be \u0027true\u0027. To me, it seems more logical to fix that problem in the first place. For example, split out a private helper function from \u0027setCaptureCallBack\u0027 that takes care of stopping the thread, regardless of \u0027mEnabled\u0027 state. If stopping the thread is done synchronously (with \u0027requestExitAndWait\u0027), this will ensure that the thread will not outlive its Visualizer instance.\n\nThis is how this could be done, hopefully without the need make any other changes:\n\n    Visualizer::~Visualizer()\n    {\n        ALOGV(\"Visualizer::~Visualizer()\");\n        setEnabled(false);\n        Mutex::Autolock _l(mCaptureLock);\n        // This ensures that the capture thread exits before we leave the destructor.\n        stopCaptureCallBack_l();\n    }\n\n    // private\n    status_t Visualizer::stopCaptureCallBack_l()\n    {\n        if (mCaptureThread !\u003d 0) {\n            mCaptureLock.unlock();\n            mCaptureThread-\u003erequestExitAndWait();\n            mCaptureLock.lock();\n        }\n\n        mCaptureThread.clear();\n        mCaptureCallBack \u003d nullptr;\n        return NO_ERROR;\n    }\n\n    status_t Visualizer::setCaptureCallBack(capture_cbk_t cbk, void* user, uint32_t flags,\n            uint32_t rate)\n    {\n        if (rate \u003e CAPTURE_RATE_MAX) {\n            return BAD_VALUE;\n        }\n        Mutex::Autolock _l(mCaptureLock);\n\n        if (mEnabled) {\n            return INVALID_OPERATION;\n        }\n\n        stopCaptureCallBack_l();\n        mCaptureCallBack \u003d cbk;\n        mCaptureCbkUser \u003d user;\n        mCaptureFlags \u003d flags;\n        mCaptureRate \u003d rate;\n\n        if (cbk !\u003d NULL) {\n            mCaptureThread \u003d new CaptureThread(*this, rate, ((flags \u0026 CAPTURE_CALL_JAVA) !\u003d 0));\n        }\n        ALOGV(\"setCaptureCallBack() rate: %d thread %p flags 0x%08x\",\n                rate, mCaptureThread.get(), mCaptureFlags);\n        return NO_ERROR;\n    }",
+      "parentUuid": "207d8d5a_23f445cb",
+      "range": {
+        "startLine": 433,
+        "startChar": 4,
+        "endLine": 433,
+        "endChar": 27
+      },
+      "revId": "efcae22997bf46dcb851b5c4acc02b704a337c4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
