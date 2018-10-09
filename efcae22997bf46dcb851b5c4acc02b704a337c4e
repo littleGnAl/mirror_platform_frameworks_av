@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d4716a81_61d8f957",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1143570
+      },
+      "writtenOn": "2018-10-09T11:57:27Z",
+      "side": 1,
+      "message": "We should not clear here, mCaptureThread should be clear in the destructor. I will fix it later",
+      "parentUuid": "dfd8998c_b0dcb621",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "efcae22997bf46dcb851b5c4acc02b704a337c4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6576ca8c_7c979024",
         "filename": "media/libmedia/Visualizer.cpp",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "efcae22997bf46dcb851b5c4acc02b704a337c4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "207d8d5a_23f445cb",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1143570
+      },
+      "writtenOn": "2018-10-09T11:57:27Z",
+      "side": 1,
+      "message": "If we promote a wp\u003c\u003e to sp\u003c\u003e before calling \u0027periodicCapture\u0027, there may also be native crash. The Visulalizer may have been decStrong in jni before promote in threadLoop, then destructor will be called. At the same time, we promte the wp\u003c\u003e to sp\u003c\u003e before the end of destructor, wp\u003c\u003e::promote returns a non-null pointer and periodicCapture also will be called after destroy.\nActually we could reproduce this issue with our device. After move promote to while loop, the probability of this issue reduce, but it still happen.",
+      "parentUuid": "6576ca8c_7c979024",
+      "range": {
+        "startLine": 433,
+        "startChar": 4,
+        "endLine": 433,
+        "endChar": 27
+      },
+      "revId": "efcae22997bf46dcb851b5c4acc02b704a337c4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
