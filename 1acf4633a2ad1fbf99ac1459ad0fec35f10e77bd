@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe01e488_c1579a63",
+        "filename": "services/mediaanalytics/MediaAnalyticsService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-10-09T20:04:42Z",
+      "side": 1,
+      "message": "wonder whether a range-based for would look nicer here\nfor (item : mItems) {\n... s/(*it)/item/\n}",
+      "range": {
+        "startLine": 411,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 42
+      },
+      "revId": "1acf4633a2ad1fbf99ac1459ad0fec35f10e77bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
