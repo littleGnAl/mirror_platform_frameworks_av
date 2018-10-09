@@ -1077,6 +1077,9 @@ audio_io_handle_t AudioPolicyManager::selectOutput(const SortedVector<audio_io_h
                     if (format != outputDesc->mFormat) {
                         continue;
                     }
+                    if ((flags & AUDIO_OUTPUT_FLAG_DIRECT) == 0) {
+                        continue;
+                    }
                 } else if (!audio_is_linear_pcm(format)) {
                     continue;
                 }
