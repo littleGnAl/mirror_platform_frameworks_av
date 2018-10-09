@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ce789187_2a1f0ae2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2018-10-09T23:52:59Z",
+      "side": 1,
+      "message": "The erase() operation for List looks pretty darn fast;\nretrieve pointers, update pointers so the specified guy is not there;\n\nonly difference appears to be in when we delete the internal Node that we just removed from the data structure -- it seems that perhaps std::deque batches these, where List does them right away. and deque may do them as a single allocation -- so where List will \u0027delete\u0027 5 items individually, std:deque may get all 5 of them in a single free() call.\n\nthis is based on a quick scan of the code for each; I\u0027m sure I\u0027ve not covered all points, but  the free()/delete overhead seems the only place that the std:deque might have an advantage.\n\n[correct me if I\u0027m off-base here]",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 45
+      },
+      "revId": "1acf4633a2ad1fbf99ac1459ad0fec35f10e77bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fe01e488_c1579a63",
         "filename": "services/mediaanalytics/MediaAnalyticsService.cpp",
         "patchSetId": 1
