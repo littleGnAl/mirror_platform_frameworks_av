@@ -1084,9 +1084,7 @@ audio_io_handle_t AudioPolicyManager::selectOutput(const SortedVector<audio_io_h
             // if a valid format is specified, skip output if not compatible
             if (format != AUDIO_FORMAT_INVALID) {
                 if (outputDesc->mFlags & AUDIO_OUTPUT_FLAG_DIRECT) {
-                    if (format != outputDesc->mFormat) {
-                        continue;
-                    }
+                    continue;
                 } else if (!audio_is_linear_pcm(format)) {
                     continue;
                 }
