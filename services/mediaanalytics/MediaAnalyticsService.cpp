@@ -44,7 +44,6 @@
 #include <binder/MemoryBase.h>
 #include <gui/Surface.h>
 #include <utils/Errors.h>  // for status_t
-#include <utils/List.h>
 #include <utils/String8.h>
 #include <utils/SystemClock.h>
 #include <utils/Timers.h>
@@ -117,7 +116,7 @@ MediaAnalyticsService::~MediaAnalyticsService() {
 
     while (mItems.size() > 0) {
         MediaAnalyticsItem * oitem = *(mItems.begin());
-        mItems.erase(mItems.begin());
+        mItems.pop_front();
         delete oitem;
         mItemsDiscarded++;
         mItemsDiscardedCount++;
@@ -329,7 +328,7 @@ status_t MediaAnalyticsService::dump(int fd, const Vector<String16>& args)
         // remove everything from the finalized queue
         while (mItems.size() > 0) {
             MediaAnalyticsItem * oitem = *(mItems.begin());
-            mItems.erase(mItems.begin());
+            mItems.pop_front();
             delete oitem;
             mItemsDiscarded++;
         }
@@ -409,18 +408,17 @@ String8 MediaAnalyticsService::dumpQueue(nsecs_t ts_since, const char * only) {
     if (mItems.empty()) {
             result.append("empty\n");
     } else {
-        List<MediaAnalyticsItem *>::iterator it = mItems.begin();
-        for (; it != mItems.end(); it++) {
-            nsecs_t when = (*it)->getTimestamp();
+        for (MediaAnalyticsItem* item : mItems) {
+            nsecs_t when = item->getTimestamp();
             if (when < ts_since) {
                 continue;
             }
             if (only != NULL &&
-                strcmp(only, (*it)->getKey().c_str()) != 0) {
-                ALOGV("Omit '%s', it's not '%s'", (*it)->getKey().c_str(), only);
+                strcmp(only, item->getKey().c_str()) != 0) {
+                ALOGV("Omit '%s', it's not '%s'", item->getKey().c_str(), only);
                 continue;
             }
-            std::string entry = (*it)->toString(mDumpProto);
+            std::string entry = item->toString(mDumpProto);
             result.appendFormat("%5d: %s\n", slot, entry.c_str());
             slot++;
         }
@@ -449,7 +447,7 @@ void MediaAnalyticsService::saveItem(MediaAnalyticsItem * item)
             if (oitem == item) {
                 break;
             }
-            mItems.erase(mItems.begin());
+            mItems.pop_front();
             delete oitem;
             mItemsDiscarded++;
             mItemsDiscardedCount++;
@@ -471,7 +469,7 @@ void MediaAnalyticsService::saveItem(MediaAnalyticsItem * item)
                 // this (and the rest) are recent enough to keep
                 break;
             }
-            mItems.erase(mItems.begin());
+            mItems.pop_front();
             delete oitem;
             mItemsDiscarded++;
             mItemsDiscardedExpire++;

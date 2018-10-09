@@ -20,11 +20,12 @@
 
 #include <arpa/inet.h>
 
+#include <deque>
+
 #include <utils/threads.h>
 #include <utils/Errors.h>
 #include <utils/KeyedVector.h>
 #include <utils/String8.h>
-#include <utils/List.h>
 
 #include <media/IMediaAnalyticsService.h>
 
@@ -76,7 +77,7 @@ class MediaAnalyticsService : public BnMediaAnalyticsService
     bool rateLimited(MediaAnalyticsItem *);
 
     // (oldest at front) so it prints nicely for dumpsys
-    List<MediaAnalyticsItem *> mItems;
+    std::deque<MediaAnalyticsItem *> mItems;
     void saveItem(MediaAnalyticsItem *);
 
     // support for generating output
