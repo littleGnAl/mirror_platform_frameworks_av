@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7fd51ee5_4e8998fa",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1143570
+      },
+      "writtenOn": "2018-10-10T02:19:02Z",
+      "side": 1,
+      "message": "Hi Ray,\n   You are right, if we just operate the front and end item, deque is more suitable than List.",
+      "parentUuid": "ce789187_2a1f0ae2",
+      "range": {
+        "startLine": 10,
+        "startChar": 4,
+        "endLine": 10,
+        "endChar": 45
+      },
+      "revId": "1acf4633a2ad1fbf99ac1459ad0fec35f10e77bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe01e488_c1579a63",
         "filename": "services/mediaanalytics/MediaAnalyticsService.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "1acf4633a2ad1fbf99ac1459ad0fec35f10e77bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d92ffdb_c1203d11",
+        "filename": "services/mediaanalytics/MediaAnalyticsService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1143570
+      },
+      "writtenOn": "2018-10-10T02:19:02Z",
+      "side": 1,
+      "message": "Hi Andy,\n   I test it on our device, range_based for is faster. It cost about 1/3 time than the old one. I have fixed it.",
+      "parentUuid": "fe01e488_c1579a63",
+      "range": {
+        "startLine": 411,
+        "startChar": 0,
+        "endLine": 412,
+        "endChar": 42
+      },
+      "revId": "1acf4633a2ad1fbf99ac1459ad0fec35f10e77bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
