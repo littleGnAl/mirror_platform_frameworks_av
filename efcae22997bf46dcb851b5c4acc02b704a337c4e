@@ -117,6 +117,30 @@
       "revId": "efcae22997bf46dcb851b5c4acc02b704a337c4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1fe642e_7afa5477",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1143570
+      },
+      "writtenOn": "2018-10-10T01:50:08Z",
+      "side": 1,
+      "message": "Hi MikHail,\n   We tried to fix it like your comment (call requestExitAndWait in the destructor) a long time ago. It works, and native crash would not happen. But APP which call Visualizer::release may ANR, because periodicCapture may take a long time which result in requestExitAndWait failing to return immediatly.",
+      "parentUuid": "82f3011c_37904865",
+      "range": {
+        "startLine": 433,
+        "startChar": 4,
+        "endLine": 433,
+        "endChar": 27
+      },
+      "revId": "efcae22997bf46dcb851b5c4acc02b704a337c4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
