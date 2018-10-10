@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "90acdb8c_b8ee4a17",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-10-10T18:21:00Z",
+      "side": 1,
+      "message": "I suggest to change the wording in order to fully describe the problem and the solution. Proposed description:\n\n\"When the Visualizer effect is released, synchronous wait for the CaptureThread can cause ANR in an app. This is why an asynchronous \u0027release\u0027 method is introduced which is used by Visualizer.release() method on the Java side. Since CaptureThread may still be running while the the last reference to the Visualizer instance is released, CaptureThread now holds a strong reference to the Visualizer, which it releases upon exit from the thread loop.\n\n\u0027release\u0027 method does not check for \u0027enabled\u0027 status because setEnabled(false) may fail due to ??? [please explain what \"we don\u0027t grant control\" means]\"",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 0
+      },
+      "revId": "efcae22997bf46dcb851b5c4acc02b704a337c4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edcde4cb_f6d76f16",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-10-10T18:21:00Z",
+      "side": 1,
+      "message": "Add a comment here that this is intentionally asynchronous to avoid causing an ANR in the app if CaptureThread is slow to exit.",
+      "range": {
+        "startLine": 66,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 38
+      },
+      "revId": "efcae22997bf46dcb851b5c4acc02b704a337c4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "dfd8998c_b0dcb621",
         "filename": "media/libmedia/Visualizer.cpp",
         "patchSetId": 3
@@ -46,6 +92,30 @@
       "revId": "efcae22997bf46dcb851b5c4acc02b704a337c4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd2d56c4_04be3119",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-10-10T18:21:00Z",
+      "side": 1,
+      "message": "Since \u0027threadLoop\u0027 holds a strong reference, clearing mCaptureThread will not release it, so it\u0027s OK to clear it here.",
+      "parentUuid": "d4716a81_61d8f957",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 27
+      },
+      "revId": "efcae22997bf46dcb851b5c4acc02b704a337c4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -141,6 +211,53 @@
       "revId": "efcae22997bf46dcb851b5c4acc02b704a337c4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5ed27d5f_677198b1",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-10-10T18:21:00Z",
+      "side": 1,
+      "message": "Ah, I apologize, I was unaware of this attempt. Now I understand the reasoning for your approach completely.",
+      "parentUuid": "b1fe642e_7afa5477",
+      "range": {
+        "startLine": 433,
+        "startChar": 4,
+        "endLine": 433,
+        "endChar": 27
+      },
+      "revId": "efcae22997bf46dcb851b5c4acc02b704a337c4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5a1751ef_833131c3",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 433,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-10-10T18:21:00Z",
+      "side": 1,
+      "message": "Still need to add a check that receiver is not nullptr after promotion--in case if Visualizer got deleted before the thread actually started. In this case we should just exit the thread.",
+      "range": {
+        "startLine": 433,
+        "startChar": 30,
+        "endLine": 433,
+        "endChar": 50
+      },
+      "revId": "efcae22997bf46dcb851b5c4acc02b704a337c4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
