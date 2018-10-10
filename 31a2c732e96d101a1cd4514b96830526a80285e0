@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f0b191cc_ca8c56c2",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2018-10-10T20:57:23Z",
+      "side": 1,
+      "message": "For progressive (non-interlaced content), it seems this would cause 1 more input buffer/access unit to be queued into the decoder.",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 0
+      },
+      "revId": "31a2c732e96d101a1cd4514b96830526a80285e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
