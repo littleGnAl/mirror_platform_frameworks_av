@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23323582_9974d443",
+        "filename": "services/oboeservice/AAudioServiceStreamBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1355908
+      },
+      "writtenOn": "2018-10-11T16:56:27Z",
+      "side": 1,
+      "message": "Should I add more details to this comment?",
+      "revId": "281105f2e48b1ef8508f95bf9d030c32945e2b6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d86099e_f293bb52",
+        "filename": "services/oboeservice/AAudioServiceStreamBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1355908
+      },
+      "writtenOn": "2018-10-11T16:56:27Z",
+      "side": 1,
+      "message": "Is there a case where we wouldn\u0027t want to keep trying to obtain the timestamp? Or is it sufficient to assume that the AAUDIO_ERROR_INVALID_STATE error will be resolved if we wait long enough?",
+      "revId": "281105f2e48b1ef8508f95bf9d030c32945e2b6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
