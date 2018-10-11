@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "132ae71e_fa893d2f",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2018-10-11T16:09:40Z",
+      "side": 1,
+      "message": "if several pids with same uids can connect and the callback is based on uid then the right fix is to base the callback on uid+pid and not just uid.",
+      "range": {
+        "startLine": 775,
+        "startChar": 17,
+        "endLine": 775,
+        "endChar": 37
+      },
+      "revId": "c7ea72e27eee1eabc799e13bfae882a694811a35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
