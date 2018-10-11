@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c6d571e_40123954",
+        "filename": "media/libmedia/Visualizer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2018-10-11T20:49:43Z",
+      "side": 1,
+      "message": "why call requestExit() again here: it is already called in setEnabled(false)",
+      "range": {
+        "startLine": 67,
+        "startChar": 24,
+        "endLine": 67,
+        "endChar": 35
+      },
+      "revId": "f3d7a4e37c8863ec99a4f5eda99d402aa299bf89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
