@@ -108,6 +108,7 @@ status_t Camera3StreamSplitter::connect(const std::unordered_map<size_t, sp<Surf
     mHeight = height;
     mFormat = format;
     mProducerUsage = producerUsage;
+    mAcquiredInputBuffers = 0;
 
     SP_LOGV("%s: connected", __FUNCTION__);
     return res;
@@ -147,6 +148,7 @@ void Camera3StreamSplitter::disconnect() {
 
     mMaxHalBuffers = 0;
     mMaxConsumerBuffers = 0;
+    mAcquiredInputBuffers = 0;
     SP_LOGV("%s: Disconnected", __FUNCTION__);
 }
 
@@ -266,7 +268,17 @@ status_t Camera3StreamSplitter::removeOutput(size_t surfaceId) {
         return res;
     }
 
-    res = mConsumer->setMaxAcquiredBufferCount(mMaxConsumerBuffers+1);
+    if (mMaxConsumerBuffers < mAcquiredInputBuffers) {
+        ALOGW("%s: Maximum acquired input buffers: %zu larger than maximum"
+                "consumer buffer count: %zu", __FUNCTION__, mAcquiredInputBuffers,
+                mMaxConsumerBuffers);
+        mMaxConsumerBuffers = mAcquiredInputBuffers;
+    } else {
+        ALOGW("%s: max consumer buffer count: %zu mAcquiredInputBuffers: %zu", __func__,
+                mMaxConsumerBuffers, mAcquiredInputBuffers);
+    }
+
+    res = mConsumer->setMaxAcquiredBufferCount(mMaxConsumerBuffers + 1);
     if (res != OK) {
         SP_LOGE("%s: setMaxAcquiredBufferCount failed %d", __FUNCTION__, res);
         return res;
@@ -497,6 +509,7 @@ void Camera3StreamSplitter::onFrameAvailable(const BufferItem& /*item*/) {
         return;
     }
 
+    mAcquiredInputBuffers++;
     SP_LOGV("acquired buffer %" PRId64 " from input at slot %d",
             bufferItem.mGraphicBuffer->getId(), bufferItem.mSlot);
 
@@ -594,6 +607,12 @@ void Camera3StreamSplitter::decrementBufRefCountLocked(uint64_t id, size_t surfa
             SP_LOGE("%s: detachBuffer returns %d", __FUNCTION__, res);
         } else {
             SP_LOGE("%s: releaseBuffer returns %d", __FUNCTION__, res);
+        }
+    } else {
+        if (mAcquiredInputBuffers == 0) {
+            ALOGW("%s: Acquired input buffer count already at zero!", __FUNCTION__);
+        } else {
+            mAcquiredInputBuffers--;
         }
     }
 }
