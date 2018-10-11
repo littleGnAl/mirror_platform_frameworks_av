@@ -303,7 +303,9 @@ void AAudioServiceStreamBase::run() {
     while(mThreadEnabled.load()) {
         if (AudioClock::getNanoseconds() >= nextTime) {
             aaudio_result_t result = sendCurrentTimestamp();
-            if (result != AAUDIO_OK) {
+            // According to the docs for AAudioStream_getTimestamp(),
+            // AAUDIO_ERROR_INVALID_STATE should not be treated as a fatal error.
+            if (result != AAUDIO_OK && result != AAUDIO_ERROR_INVALID_STATE) {
                 break;
             }
             nextTime = timestampScheduler.nextAbsoluteTime();
