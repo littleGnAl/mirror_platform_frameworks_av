@@ -22,6 +22,30 @@
       "revId": "31a2c732e96d101a1cd4514b96830526a80285e0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2170f228_9a08e801",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1233895
+      },
+      "writtenOn": "2018-10-11T01:52:24Z",
+      "side": 1,
+      "message": "Yes, you are right. But unfortunately it is difficult to distinguish whether the stream is progressive or interlace in this layer. We sacrificed the efficiency... Maybe if there is some flag to identify stream type (p or i), then we can utilize it. But currently no.\n\nDo you have any ideas to solve this interlace thumbnail issue?",
+      "parentUuid": "f0b191cc_ca8c56c2",
+      "range": {
+        "startLine": 334,
+        "startChar": 0,
+        "endLine": 343,
+        "endChar": 0
+      },
+      "revId": "31a2c732e96d101a1cd4514b96830526a80285e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
