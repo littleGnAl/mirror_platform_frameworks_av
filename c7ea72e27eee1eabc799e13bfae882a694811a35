@@ -22,6 +22,30 @@
       "revId": "c7ea72e27eee1eabc799e13bfae882a694811a35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f64760c9_cbf14293",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 775,
+      "author": {
+        "id": 1226158
+      },
+      "writtenOn": "2018-10-12T03:55:35Z",
+      "side": 1,
+      "message": "Okay, I will try to find better way. thanks",
+      "parentUuid": "132ae71e_fa893d2f",
+      "range": {
+        "startLine": 775,
+        "startChar": 17,
+        "endLine": 775,
+        "endChar": 37
+      },
+      "revId": "c7ea72e27eee1eabc799e13bfae882a694811a35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
