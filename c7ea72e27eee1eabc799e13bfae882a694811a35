@@ -46,6 +46,29 @@
       "revId": "c7ea72e27eee1eabc799e13bfae882a694811a35",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6497f54_14c98743",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 776,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2018-10-12T15:44:21Z",
+      "side": 1,
+      "message": "but looking at the implementation of setAudioPortCallbacksEnabled() in AudioPolicyService.cpp I see that we use a token made of uid+pid to keep track of this problem.\nThis has been fixed by CL I43970ca0ab78ef47bd34d1c7191d4c8c3ad2b793 and merged in our internal master due to merge conflict.",
+      "range": {
+        "startLine": 776,
+        "startChar": 16,
+        "endLine": 776,
+        "endChar": 44
+      },
+      "revId": "c7ea72e27eee1eabc799e13bfae882a694811a35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
