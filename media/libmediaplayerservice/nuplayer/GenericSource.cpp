@@ -84,6 +84,7 @@ NuPlayer::GenericSource::GenericSource(
     mBufferingSettings.mInitialMarkMs = kInitialMarkMs;
     mBufferingSettings.mResumePlaybackMarkMs = kResumePlaybackMarkMs;
     resetDataSource();
+    mSeekingCount = 0;
 }
 
 void NuPlayer::GenericSource::resetDataSource() {
@@ -826,6 +827,14 @@ status_t NuPlayer::GenericSource::dequeueAccessUnit(
         return -EWOULDBLOCK;
     }
 
+    if (mCachedSource != NULL) {
+        Mutex::Autolock _l(mSeekingLock);
+        if (mSeekingCount > 0) {
+            ALOGV("return -EWOULDBLOCK when seeking");
+            return -EWOULDBLOCK;
+        }
+    }
+
     Track *track = audio ? &mAudioTrack : &mVideoTrack;
 
     if (track->mSource == NULL) {
@@ -1104,6 +1113,15 @@ status_t NuPlayer::GenericSource::seekTo(int64_t seekTimeUs, MediaPlayerSeekMode
     msg->setInt64("seekTimeUs", seekTimeUs);
     msg->setInt32("mode", mode);
 
+    if (mCachedSource != NULL) {
+        {
+            Mutex::Autolock _l(mSeekingLock);
+            mSeekingCount++;
+        }
+        msg->post();
+        return OK;
+    }
+
     // Need to call readBuffer on |mLooper| to ensure the calls to
     // IMediaSource::read* are serialized. Note that IMediaSource::read*
     // is called without |mLock| acquired and MediaSource is not thread safe.
@@ -1122,8 +1140,30 @@ void NuPlayer::GenericSource::onSeek(const sp<AMessage>& msg) {
     CHECK(msg->findInt64("seekTimeUs", &seekTimeUs));
     CHECK(msg->findInt32("mode", &mode));
 
+    if (mCachedSource != NULL) {
+        Mutex::Autolock _l(mSeekingLock);
+        if (mSeekingCount > 1) {
+            mSeekingCount--;
+            mSeekingLock.unlock();
+            notifySeekDone(OK);
+            ALOGD("miss seek: seekTimeUs %lld, mSeekingCount %d",
+                    (long long)seekTimeUs, mSeekingCount);
+            return;
+        }
+    }
+
     sp<AMessage> response = new AMessage;
     status_t err = doSeek(seekTimeUs, (MediaPlayerSeekMode)mode);
+
+    if (mCachedSource != NULL) {
+        {
+            Mutex::Autolock _l(mSeekingLock);
+            mSeekingCount--;
+        }
+        notifySeekDone(OK);
+        return;
+    }
+
     response->setInt32("err", err);
 
     sp<AReplyToken> replyID;
@@ -1683,6 +1723,13 @@ void NuPlayer::GenericSource::signalBufferReturned(MediaBufferBase *buffer)
 
     buffer->setObserver(NULL);
     buffer->release(); // this leads to delete since that there is no observor
+}
+
+void NuPlayer::GenericSource::notifySeekDone(status_t err) {
+    sp<AMessage> msg = dupNotify();
+    msg->setInt32("what", kWhatSeekDone);
+    msg->setInt32("err", err);
+    msg->post();
 }
 
 }  // namespace android

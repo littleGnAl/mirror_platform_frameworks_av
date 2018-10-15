@@ -341,6 +341,7 @@ private:
     status_t onPrepareDrm(const sp<AMessage> &msg);
     status_t onReleaseDrm();
 
+    bool mSourceSeekDone;
     DISALLOW_EVIL_CONSTRUCTORS(NuPlayer);
 };
 

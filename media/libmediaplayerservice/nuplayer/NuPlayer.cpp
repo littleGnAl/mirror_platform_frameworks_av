@@ -210,6 +210,7 @@ NuPlayer::NuPlayer(pid_t pid, const sp<MediaClock> &mediaClock)
       mDataSourceType(DATA_SOURCE_TYPE_NONE) {
     CHECK(mediaClock != NULL);
     clearFlushComplete();
+    mSourceSeekDone = true;
 }
 
 NuPlayer::~NuPlayer() {
@@ -1373,6 +1374,11 @@ void NuPlayer::onMessageReceived(const sp<AMessage> &msg) {
                     new FlushDecoderAction(FLUSH_CMD_FLUSH /* audio */,
                                            FLUSH_CMD_FLUSH /* video */));
 
+            // for http audio only case, notify seek complete when source seek done
+            if (mDataSourceType == DATA_SOURCE_TYPE_GENERIC_URL && needNotify && mVideoDecoder == NULL) {
+                mSourceSeekDone = false;
+            }
+
             mDeferredActions.push_back(
                     new SeekAction(seekTimeUs, (MediaPlayerSeekMode)mode));
 
@@ -2426,9 +2432,14 @@ void NuPlayer::performResumeDecoders(bool needNotify) {
     if (needNotify) {
         mResumePending = true;
         if (mVideoDecoder == NULL) {
-            // if audio-only, we can notify seek complete now,
-            // as the resume operation will be relatively fast.
-            finishResume();
+            if (mDataSourceType == DATA_SOURCE_TYPE_GENERIC_URL) {
+                // for http audio only case, notify seek complete when source seek done
+                mResumePending = false;
+            } else {
+                // if audio-only, we can notify seek complete now,
+                // as the resume operation will be relatively fast.
+                finishResume();
+            }
         }
     }
 
@@ -2705,6 +2716,20 @@ void NuPlayer::onSourceNotify(const sp<AMessage> &msg) {
         case Source::kWhatDrmNoLicense:
         {
             notifyListener(MEDIA_ERROR, MEDIA_ERROR_UNKNOWN, ERROR_DRM_NO_LICENSE);
+            break;
+        }
+
+        case Source::kWhatSeekDone:
+        {
+            if (mDataSourceType == DATA_SOURCE_TYPE_GENERIC_URL && !mSourceSeekDone) {
+                mSourceSeekDone = true;
+                if (mDriver != NULL) {
+                    sp<NuPlayerDriver> driver = mDriver.promote();
+                    if (driver != NULL) {
+                        driver->notifySeekComplete();
+                    }
+                }
+            }
             break;
         }
 

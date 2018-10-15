@@ -238,6 +238,10 @@ private:
 
     status_t checkDrmInfo();
 
+    int mSeekingCount;
+    mutable Mutex mSeekingLock;
+    void notifySeekDone(status_t err);
+
     DISALLOW_EVIL_CONSTRUCTORS(GenericSource);
 };
 
