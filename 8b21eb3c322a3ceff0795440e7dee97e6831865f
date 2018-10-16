@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a45a3390_2b227d0d",
+        "filename": "camera/ndk/impl/ACameraDevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2018-10-16T20:20:59Z",
+      "side": 1,
+      "message": "I\u0027ve not added an enum  field to NdkCameraDevice.h in order to avoid possibly breaking abi (if some apps depend on the set of errors being finite, they might break).",
+      "range": {
+        "startLine": 1309,
+        "startChar": 49,
+        "endLine": 1309,
+        "endChar": 70
+      },
+      "revId": "8b21eb3c322a3ceff0795440e7dee97e6831865f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
