@@ -46,6 +46,30 @@
       "revId": "8b21eb3c322a3ceff0795440e7dee97e6831865f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbc759be_14dc2db9",
+        "filename": "camera/ndk/impl/ACameraDevice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1309,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2018-10-16T23:53:18Z",
+      "side": 1,
+      "message": "Uploaded slightly cleaner version.",
+      "parentUuid": "aa95133c_5dbe6a04",
+      "range": {
+        "startLine": 1309,
+        "startChar": 49,
+        "endLine": 1309,
+        "endChar": 70
+      },
+      "revId": "8b21eb3c322a3ceff0795440e7dee97e6831865f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
