@@ -1294,22 +1294,24 @@ CameraDevice::ServiceCallback::onDeviceError(
         case ERROR_CAMERA_DEVICE:
         case ERROR_CAMERA_SERVICE:
         {
+            sp<AMessage> msg = new AMessage(kWhatOnError, dev->mHandler);
             switch (errorCode) {
                 case ERROR_CAMERA_DEVICE:
                     dev->setCameraDeviceErrorLocked(ACAMERA_ERROR_CAMERA_DEVICE);
+                    msg->setInt32(kErrorCodeKey, ::ERROR_CAMERA_DEVICE);
                     break;
                 case ERROR_CAMERA_SERVICE:
                     dev->setCameraDeviceErrorLocked(ACAMERA_ERROR_CAMERA_SERVICE);
+                    msg->setInt32(kErrorCodeKey, ::ERROR_CAMERA_SERVICE);
                     break;
                 default:
                     dev->setCameraDeviceErrorLocked(ACAMERA_ERROR_UNKNOWN);
+                    msg->setInt32(kErrorCodeKey, ::ERROR_CAMERA_DEVICE);
                     break;
             }
-            sp<AMessage> msg = new AMessage(kWhatOnError, dev->mHandler);
             msg->setPointer(kContextKey, dev->mAppCallbacks.context);
             msg->setPointer(kDeviceKey, (void*) dev->getWrapper());
             msg->setPointer(kCallbackFpKey, (void*) dev->mAppCallbacks.onError);
-            msg->setInt32(kErrorCodeKey, errorCode);
             msg->post();
             break;
         }
