@@ -46,6 +46,30 @@
       "revId": "3380527804ed823d2c54dc47aee122bfb17b3699",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d8aa8f4_2651f8fe",
+        "filename": "camera/ndk/impl/ACameraDevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1304,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2018-10-17T17:21:42Z",
+      "side": 1,
+      "message": "Discussed offline, there can be more states. ERROR_CAMERA_INVALID_ERROR for instance.",
+      "parentUuid": "7f102725_772c2da2",
+      "range": {
+        "startLine": 1304,
+        "startChar": 20,
+        "endLine": 1304,
+        "endChar": 23
+      },
+      "revId": "3380527804ed823d2c54dc47aee122bfb17b3699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
