@@ -38,6 +38,11 @@ void limitProcessMemory(
         return;
     }
 
+    if (running_with_64bit_scudo()) {
+        ALOGW("Running with 64-bit Scudo, skip enforcing memory limitations.");
+        return;
+    }
+
     long pageSize = sysconf(_SC_PAGESIZE);
     long numPages = sysconf(_SC_PHYS_PAGES);
     size_t maxMem = SIZE_MAX;
