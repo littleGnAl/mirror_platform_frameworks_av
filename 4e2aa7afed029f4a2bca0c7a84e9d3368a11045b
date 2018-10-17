@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "36c2397c_ff67b78d",
+        "filename": "media/libstagefright/codecs/amrwb/src/normalize_amr_wb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2018-10-17T16:13:54Z",
+      "side": 1,
+      "message": "for completeness, i\u0027d add a break here too.",
+      "range": {
+        "startLine": 175,
+        "startChar": 15,
+        "endLine": 175,
+        "endChar": 16
+      },
+      "revId": "4e2aa7afed029f4a2bca0c7a84e9d3368a11045b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d18de40e_f3dfeefe",
+        "filename": "media/libstagefright/codecs/mp3dec/src/pvmp3_normalize.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2018-10-17T16:13:54Z",
+      "side": 1,
+      "message": "for completeness, a break here.\nI expect the \"no fallthrough\" flag probably doesn\u0027t complain since it\u0027s the last one in the switch().",
+      "range": {
+        "startLine": 165,
+        "startChar": 8,
+        "endLine": 165,
+        "endChar": 15
+      },
+      "revId": "4e2aa7afed029f4a2bca0c7a84e9d3368a11045b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
