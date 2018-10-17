@@ -22,6 +22,30 @@
       "revId": "3380527804ed823d2c54dc47aee122bfb17b3699",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f102725_772c2da2",
+        "filename": "camera/ndk/impl/ACameraDevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1304,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2018-10-17T16:45:58Z",
+      "side": 1,
+      "message": "Since you are going to upload a new PS anyway...\nLooking at this code now, I don\u0027t know why I used a switch statement instead of just a if statement here... since there are just two states.....",
+      "parentUuid": "d3b6773e_7ea5268a",
+      "range": {
+        "startLine": 1304,
+        "startChar": 20,
+        "endLine": 1304,
+        "endChar": 23
+      },
+      "revId": "3380527804ed823d2c54dc47aee122bfb17b3699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
