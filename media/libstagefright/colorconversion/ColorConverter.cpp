@@ -71,9 +71,12 @@ bool ColorConverter::isValid() const {
 
         case OMX_COLOR_FormatCbYCrY:
         case OMX_QCOM_COLOR_FormatYVU420SemiPlanar:
-        case OMX_COLOR_FormatYUV420SemiPlanar:
         case OMX_TI_COLOR_FormatYUV420PackedSemiPlanar:
             return mDstFormat == OMX_COLOR_Format16bitRGB565;
+
+        case OMX_COLOR_FormatYUV420SemiPlanar:
+            return mDstFormat == OMX_COLOR_Format16bitRGB565
+                    || mDstFormat == OMX_COLOR_Format32BitRGBA8888;
 
         default:
             return false;
@@ -201,7 +204,11 @@ status_t ColorConverter::convert(
             break;
 
         case OMX_COLOR_FormatYUV420SemiPlanar:
-            err = convertYUV420SemiPlanar(src, dst);
+            if (mDstFormat == OMX_COLOR_Format32BitRGBA8888)
+                err = convertYUV420SemiPlanarUseLibYUV(src, dst);
+            else
+                err = convertYUV420SemiPlanarWithDithering(src, dst);
+            break;
             break;
 
         case OMX_TI_COLOR_FormatYUV420PackedSemiPlanar:
@@ -310,6 +317,39 @@ status_t ColorConverter::convertYUV420PlanarUseLibYUV(
     default:
         return ERROR_UNSUPPORTED;
     }
+
+    return OK;
+}
+
+status_t ColorConverter::convertYUV420SemiPlanarUseLibYUV(
+        const BitmapParams &src, const BitmapParams &dst) {
+    uint8_t *dst_ptr = (uint8_t *)dst.mBits
+        + dst.mCropTop * dst.mStride + dst.mCropLeft * dst.mBpp;
+
+    const uint8_t *src_y =
+        (const uint8_t *)src.mBits + src.mCropTop * src.mStride + src.mCropLeft;
+
+    const uint8_t *src_u =
+        (const uint8_t *)src.mBits + src.mStride * src.mHeight;
+
+    uint8_t *tmp_u = new uint8_t[src.mStride / 2 * src.mHeight / 2];
+    uint8_t *tmp_v = new uint8_t[src.mStride / 2 * src.mHeight / 2];
+
+    for (uint32_t i = 0; i < src.mHeight * src.mStride / 4; i++){
+        *tmp_u++ = *src_u++;
+        *tmp_v++ = *src_u++;
+    }
+
+    tmp_u -= src.mStride / 2 * src.mHeight / 2;
+    tmp_v -= src.mStride / 2 * src.mHeight / 2;
+    tmp_u += (src.mCropTop / 2) * (src.mStride / 2) + (src.mCropLeft / 2);
+    tmp_v += (src.mCropTop / 2) * (src.mStride / 2) + (src.mCropLeft / 2);
+
+    libyuv::ConvertFromI420(src_y, src.mStride, tmp_u, src.mStride / 2, tmp_v, src.mStride / 2,
+            (uint8 *)dst_ptr, dst.mStride, src.cropWidth(), src.cropHeight(), libyuv::FOURCC_ABGR);
+
+    delete []tmp_u;
+    delete []tmp_v;
 
     return OK;
 }
