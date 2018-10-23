@@ -852,7 +852,11 @@ status_t AudioPolicyManager::getOutputForAttr(const audio_attributes_t *attr,
     if (*selectedDeviceId != AUDIO_PORT_HANDLE_NONE) {
         deviceDesc = mAvailableOutputDevices.getDeviceFromId(*selectedDeviceId);
     }
-    mOutputRoutes.addRoute(session, *stream, SessionRoute::SOURCE_TYPE_NA, deviceDesc, uid);
+
+    {
+        Mutex::Autolock _l(mRoutesLock);
+        mOutputRoutes.addRoute(session, *stream, SessionRoute::SOURCE_TYPE_NA, deviceDesc, uid);
+    }
 
     routing_strategy strategy = (routing_strategy) getStrategyForAttr(&attributes);
     audio_devices_t device = getDeviceForStrategy(strategy, false /*fromCache*/);
@@ -867,7 +871,10 @@ status_t AudioPolicyManager::getOutputForAttr(const audio_attributes_t *attr,
 
     *output = getOutputForDevice(device, session, *stream, config, flags);
     if (*output == AUDIO_IO_HANDLE_NONE) {
-        mOutputRoutes.removeRoute(session);
+        {
+            Mutex::Autolock _l(mRoutesLock);
+            mOutputRoutes.removeRoute(session);
+        }
         return INVALID_OPERATION;
     }
 
@@ -1142,8 +1149,12 @@ status_t AudioPolicyManager::startOutput(audio_io_handle_t output,
     }
 
     // Routing?
-    mOutputRoutes.incRouteActivity(session);
-
+    bool hasRouteChanged;
+    {
+        Mutex::Autolock _l(mRoutesLock);
+        mOutputRoutes.incRouteActivity(session);
+        hasRouteChanged = mOutputRoutes.getAndClearRouteChanged(session);
+    }
     audio_devices_t newDevice;
     AudioMix *policyMix = NULL;
     const char *address = NULL;
@@ -1155,7 +1166,7 @@ status_t AudioPolicyManager::startOutput(audio_io_handle_t output,
         } else {
             newDevice = AUDIO_DEVICE_OUT_REMOTE_SUBMIX;
         }
-    } else if (mOutputRoutes.getAndClearRouteChanged(session)) {
+    } else if (hasRouteChanged) {
         newDevice = getNewOutputDevice(outputDesc, false /*fromCache*/);
         if (newDevice != outputDesc->device()) {
             checkStrategyRoute(getStrategy(stream), output);
@@ -1169,7 +1180,10 @@ status_t AudioPolicyManager::startOutput(audio_io_handle_t output,
     status = startSource(outputDesc, stream, newDevice, address, &delayMs);
 
     if (status != NO_ERROR) {
-        mOutputRoutes.decRouteActivity(session);
+        {
+            Mutex::Autolock _l(mRoutesLock);
+            mOutputRoutes.decRouteActivity(session);
+        }
         outputDesc->stop();
         return status;
     }
@@ -1361,9 +1375,11 @@ status_t AudioPolicyManager::stopOutput(audio_io_handle_t output,
     // Routing?
     bool forceDeviceUpdate = false;
     if (outputDesc->mRefCount[stream] > 0) {
-        int activityCount = mOutputRoutes.decRouteActivity(session);
-        forceDeviceUpdate = (mOutputRoutes.hasRoute(session) && (activityCount == 0));
-
+        {
+            Mutex::Autolock _l(mRoutesLock);
+            int activityCount = mOutputRoutes.decRouteActivity(session);
+            forceDeviceUpdate = (mOutputRoutes.hasRoute(session) && (activityCount == 0));
+        }
         if (forceDeviceUpdate) {
             checkStrategyRoute(getStrategy(stream), AUDIO_IO_HANDLE_NONE);
         }
@@ -1457,8 +1473,10 @@ void AudioPolicyManager::releaseOutput(audio_io_handle_t output,
     }
 
     // Routing
-    mOutputRoutes.removeRoute(session);
-
+    {
+        Mutex::Autolock _l(mRoutesLock);
+        mOutputRoutes.removeRoute(session);
+    }
     sp<SwAudioOutputDescriptor> desc = mOutputs.valueAt(index);
     if (desc->mFlags & AUDIO_OUTPUT_FLAG_DIRECT) {
         if (desc->mDirectOpenCount <= 0) {
@@ -3296,10 +3314,22 @@ void AudioPolicyManager::clearSessionRoutes(uid_t uid)
 {
     // remove output routes associated with this uid
     SortedVector<routing_strategy> affectedStrategies;
-    for (ssize_t i = (ssize_t)mOutputRoutes.size() - 1; i >= 0; i--)  {
-        sp<SessionRoute> route = mOutputRoutes.valueAt(i);
+    ssize_t outputRoutesSize;
+    {
+        Mutex::Autolock _l(mRoutesLock);
+        outputRoutesSize = (ssize_t)mOutputRoutes.size();
+    }
+    for (ssize_t i = outputRoutesSize - 1; i >= 0; i--)  {
+        sp<SessionRoute> route;
+        {
+            Mutex::Autolock _l(mRoutesLock);
+            route = mOutputRoutes.valueAt(i);
+        }
         if (route->mUid == uid) {
-            mOutputRoutes.removeItemsAt(i);
+            {
+                Mutex::Autolock _l(mRoutesLock);
+                mOutputRoutes.removeItemsAt(i);
+            }
             if (route->mDeviceDescriptor != 0) {
                 affectedStrategies.add(getStrategy(route->mStreamType));
             }

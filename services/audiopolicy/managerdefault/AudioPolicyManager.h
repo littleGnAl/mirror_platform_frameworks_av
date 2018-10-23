@@ -558,6 +558,8 @@ protected:
         DeviceVector  mAvailableOutputDevices; // all available output devices
         DeviceVector  mAvailableInputDevices;  // all available input devices
 
+        Mutex   mRoutesLock;
+
         SessionRouteMap mOutputRoutes = SessionRouteMap(SessionRouteMap::MAPTYPE_OUTPUT);
         SessionRouteMap mInputRoutes = SessionRouteMap(SessionRouteMap::MAPTYPE_INPUT);
 
