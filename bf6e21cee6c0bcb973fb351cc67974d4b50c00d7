@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "45f5b742_e2046717",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1233895
+      },
+      "writtenOn": "2018-10-23T06:23:45Z",
+      "side": 1,
+      "message": "to wait for mutex lock. \n\nsimilar reference code:\nhttps://android.googlesource.com/platform/frameworks/av/+/master/services/camera/libcameraservice/api1/CameraClient.cpp#799",
+      "parentUuid": "cc46b8f7_4def7b32",
+      "range": {
+        "startLine": 221,
+        "startChar": 12,
+        "endLine": 221,
+        "endChar": 45
+      },
+      "revId": "bf6e21cee6c0bcb973fb351cc67974d4b50c00d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d7fdf21e_e706d34a",
         "filename": "media/libstagefright/MediaMuxer.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-10-22T17:32:05Z",
       "side": 1,
       "message": "Why is this hardcode?",
+      "range": {
+        "startLine": 231,
+        "startChar": 8,
+        "endLine": 231,
+        "endChar": 23
+      },
+      "revId": "bf6e21cee6c0bcb973fb351cc67974d4b50c00d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eec97614_57aee1e6",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1233895
+      },
+      "writtenOn": "2018-10-23T06:23:45Z",
+      "side": 1,
+      "message": "to wait for mutex lock. \n\nsimilar reference code:\nhttps://android.googlesource.com/platform/frameworks/av/+/master/services/camera/libcameraservice/api1/CameraClient.cpp#799\n\nIt looks reference code is also no clear reason to wait 10ms.",
+      "parentUuid": "d7fdf21e_e706d34a",
       "range": {
         "startLine": 231,
         "startChar": 8,
@@ -68,6 +116,30 @@
       "revId": "bf6e21cee6c0bcb973fb351cc67974d4b50c00d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53f6472b_be978370",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1233895
+      },
+      "writtenOn": "2018-10-23T06:23:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a6db492_e7a75cd7",
+      "range": {
+        "startLine": 249,
+        "startChar": 28,
+        "endLine": 249,
+        "endChar": 39
+      },
+      "revId": "bf6e21cee6c0bcb973fb351cc67974d4b50c00d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
