@@ -520,6 +520,11 @@ void MPEG4Writer::initInternal(int fd, bool isFirstSession) {
         mAreGeoTagsAvailable = false;
         mSwitchPending = false;
         mIsFileSizeLimitExplicitlyRequested = false;
+    } else {
+        /* In !isFirstSession (setNextOutputFile() call path)
+         * fd is already duplicated in upper class (e.g. StagefrightRecorder)
+         * So should release orphand fd */
+        close(fd);
     }
 
     // Verify mFd is seekable
