@@ -1,0 +1,54 @@
+cc_library_static {
+    name: "libaudiopolicycomponents_test",
+
+    srcs: [
+        "src/DeviceDescriptor.cpp",
+        "src/AudioGain.cpp",
+        "src/HwModule.cpp",
+        "src/IOProfile.cpp",
+        "src/AudioPort.cpp",
+        "src/AudioProfile.cpp",
+        "src/AudioRoute.cpp",
+        "src/AudioPolicyMix.cpp",
+        "src/AudioPatch.cpp",
+        "src/AudioInputDescriptor.cpp",
+        "src/AudioOutputDescriptor.cpp",
+        "src/AudioCollections.cpp",
+        "src/EffectDescriptor.cpp",
+        "src/SoundTriggerSession.cpp",
+        "src/SessionRoute.cpp",
+        "src/AudioSourceDescriptor.cpp",
+        "src/VolumeCurve.cpp",
+        "src/TypeConverter.cpp",
+        "src/AudioSession.cpp",
+        "src/Serializer.cpp",
+    ],
+    shared_libs: [
+        "libcutils",
+        "libmedia",
+        "libutils",
+        "liblog",
+        "libicuuc",
+        "libxml2",
+    ],
+    export_shared_lib_headers: ["libmedia"],
+
+    header_libs: [
+        "libaudiopolicycommon",
+    ],
+    export_header_lib_headers: ["libaudiopolicycommon"],
+
+    include_dirs: [
+        "frameworks/av/services/audiopolicy/common/include",
+        "frameworks/av/services/audiopolicy",
+        "system/media/audio_utils/include",
+    ],
+
+    export_include_dirs: ["include"],
+
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
+
+}
