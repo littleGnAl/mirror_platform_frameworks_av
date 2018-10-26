@@ -1396,6 +1396,7 @@ status_t AudioPolicyManager::stopSource(const sp<AudioOutputDescriptor>& outputD
         // store time at which the stream was stopped - see isStreamActive()
         if (outputDesc->mRefCount[stream] == 0 || forceDeviceUpdate) {
             outputDesc->mStopTime[stream] = systemTime();
+            audio_devices_t prevDevice = outputDesc->device();
             audio_devices_t newDevice = getNewOutputDevice(outputDesc, false /*fromCache*/);
             // delay the device switch by twice the latency because stopOutput() is executed when
             // the track stop() command is received and at that time the audio track buffer can
@@ -1406,7 +1407,6 @@ status_t AudioPolicyManager::stopSource(const sp<AudioOutputDescriptor>& outputD
 
             // force restoring the device selection on other active outputs if it differs from the
             // one being selected for this output
-            uint32_t delayMs = outputDesc->latency()*2;
             for (size_t i = 0; i < mOutputs.size(); i++) {
                 sp<AudioOutputDescriptor> desc = mOutputs.valueAt(i);
                 if (desc != outputDesc &&
@@ -1415,6 +1415,7 @@ status_t AudioPolicyManager::stopSource(const sp<AudioOutputDescriptor>& outputD
                         (newDevice != desc->device())) {
                     audio_devices_t newDevice2 = getNewOutputDevice(desc, false /*fromCache*/);
                     bool force = desc->device() != newDevice2;
+                    uint32_t delayMs = (newDevice2 == prevDevice) ? 0 : outputDesc->latency() * 2;
 
                     setOutputDevice(desc,
                                     newDevice2,
