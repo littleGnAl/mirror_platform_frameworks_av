@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "3be6260a_71d8c095",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1022116
+      },
+      "writtenOn": "2018-10-29T17:29:47Z",
+      "side": 1,
+      "message": "But those code are in camera and it is also camera1.... \n\nAnd I am not a fan of doing this without clear reason.",
+      "parentUuid": "45f5b742_e2046717",
+      "range": {
+        "startLine": 221,
+        "startChar": 12,
+        "endLine": 221,
+        "endChar": 45
+      },
+      "revId": "bf6e21cee6c0bcb973fb351cc67974d4b50c00d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d7fdf21e_e706d34a",
         "filename": "media/libstagefright/MediaMuxer.cpp",
         "patchSetId": 3
