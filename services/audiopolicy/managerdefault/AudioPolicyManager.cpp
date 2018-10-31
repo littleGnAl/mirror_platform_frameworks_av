@@ -15,7 +15,12 @@
  */
 
 #define LOG_TAG "APM_AudioPolicyManager"
-//#define LOG_NDEBUG 0
+
+// Need to keep the log statements even in production builds
+// to enable VERBOSE logging dynamically.
+// You can enable VERBOSE logging as follows:
+// adb shell setprop persist.log.tag.APM_AudioPolicyManager V
+#define LOG_NDEBUG 0
 
 //#define VERY_VERBOSE_LOGGING
 #ifdef VERY_VERBOSE_LOGGING
@@ -4167,6 +4172,12 @@ status_t AudioPolicyManager::initialize() {
     if (mPrimaryOutput == 0) {
         ALOGE("Failed to open primary output");
         status = NO_INIT;
+    }
+
+    // Set log level for ALOGV to DEBUG if not set
+    char propValue[PROPERTY_VALUE_MAX];
+    if (!property_get("persist.log.tag.APM_AudioPolicyManager", propValue, NULL)) {
+        property_set("persist.log.tag.APM_AudioPolicyManager", "D");
     }
 
     updateDevicesAndOutputs();
