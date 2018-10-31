@@ -33,6 +33,8 @@
 #define AUDIO_POLICY_XML_CONFIG_FILE_NAME "audio_policy_configuration.xml"
 #define AUDIO_POLICY_A2DP_OFFLOAD_DISABLED_XML_CONFIG_FILE_NAME \
         "audio_policy_configuration_a2dp_offload_disabled.xml"
+#define AUDIO_POLICY_BLUETOOTH_HAL_ENABLED_XML_CONFIG_FILE_NAME \
+        "audio_policy_configuration_bluetooth_hal_enabled.xml"
 
 #include <inttypes.h>
 #include <math.h>
@@ -3909,6 +3911,11 @@ static status_t deserializeAudioPolicyXmlConfig(AudioPolicyConfig &config) {
         property_get_bool("persist.bluetooth.a2dp_offload.disabled", false)) {
         // A2DP offload supported but disabled: try to use special XML file
         fileNames.push_back(AUDIO_POLICY_A2DP_OFFLOAD_DISABLED_XML_CONFIG_FILE_NAME);
+    }
+    if (!property_get_bool("ro.bluetooth.a2dp_offload.supported", false) &&
+        property_get_bool("persist.bluetooth.bluetooth_audio_hal.enabled", false)) {
+        // A2DP offload not supported but but use BluetoothAudio HAL V2
+        fileNames.push_back(AUDIO_POLICY_BLUETOOTH_HAL_ENABLED_XML_CONFIG_FILE_NAME);
     }
     fileNames.push_back(AUDIO_POLICY_XML_CONFIG_FILE_NAME);
 
