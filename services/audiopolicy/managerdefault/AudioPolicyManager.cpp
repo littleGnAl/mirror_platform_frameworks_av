@@ -15,7 +15,9 @@
  */
 
 #define LOG_TAG "APM_AudioPolicyManager"
-//#define LOG_NDEBUG 0
+
+// You can enable VERBOSE logging as follows:
+// adb shell setprop persist.log.tag.APM_AudioPolicyManager V
 
 //#define VERY_VERBOSE_LOGGING
 #ifdef VERY_VERBOSE_LOGGING
@@ -49,6 +51,11 @@
 #include <Serializer.h>
 #include "TypeConverter.h"
 #include <policy.h>
+
+// Need to keep the log statements even in production builds
+// to enable VERBOSE logging dynamically.
+#undef ALOGV
+#define ALOGV(...) ALOG(LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
 
 namespace android {
 
