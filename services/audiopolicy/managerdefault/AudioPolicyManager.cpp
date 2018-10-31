@@ -3916,6 +3916,11 @@ static status_t deserializeAudioPolicyXmlConfig(AudioPolicyConfig &config) {
             fileNames.push_back(AUDIO_POLICY_A2DP_OFFLOAD_DISABLED_XML_CONFIG_FILE_NAME);
         }
     }
+    if (!property_get_bool("ro.bluetooth.a2dp_offload.supported", false) &&
+        property_get_bool("persist.bluetooth.bluetooth_audio_hal.enabled", false)) {
+        // A2DP offload not supported but but use BluetoothAudio HAL V2
+        fileNames.push_back(AUDIO_POLICY_BLUETOOTH_HAL_ENABLED_XML_CONFIG_FILE_NAME);
+    }
     fileNames.push_back(AUDIO_POLICY_XML_CONFIG_FILE_NAME);
 
     for (const char* fileName : fileNames) {
