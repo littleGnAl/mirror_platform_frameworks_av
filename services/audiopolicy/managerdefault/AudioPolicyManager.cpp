@@ -80,6 +80,9 @@ static const audio_format_t AAC_FORMATS[] = {
     AUDIO_FORMAT_AAC_XHE,
 };
 
+#undef ALOGV
+#define ALOGV(...) ALOG(LOG_VERBOSE, LOG_TAG, __VA_ARGS__)
+
 // ----------------------------------------------------------------------------
 // AudioPolicyInterface implementation
 // ----------------------------------------------------------------------------
