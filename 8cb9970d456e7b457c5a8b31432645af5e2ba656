@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "141eb0fe_124b4398",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1418,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2018-10-31T18:22:25Z",
+      "side": 1,
+      "message": "this means that the new device on this OTHER output is the same as previous device on the OUTPUT BEING STOPPED. This does not mean the device on the OTHER output does not change.\n\nBetter do this modification in setOutputDevice() in case force is true and there is no device change",
+      "range": {
+        "startLine": 1418,
+        "startChar": 40,
+        "endLine": 1418,
+        "endChar": 50
+      },
+      "revId": "8cb9970d456e7b457c5a8b31432645af5e2ba656",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
