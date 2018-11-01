@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bbd173c5_6368ab07",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-11-01T17:24:47Z",
+      "side": 1,
+      "message": "Since verbose logging will now be controlled via setprop, please remove this line, because uncommenting it will not do anything, and add a comment instead with the instruction on how to enable verbose logging.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "2f84189de641b2750d9be471b6d48229b7a754ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc8d459f_89cf42b2",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-11-01T17:24:47Z",
+      "side": 1,
+      "message": "Please move it higher, right after the includes section, and add a comment describing the purpose of redefinition (say about the need to keep the log statements even in production builds).",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 12
+      },
+      "revId": "2f84189de641b2750d9be471b6d48229b7a754ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
