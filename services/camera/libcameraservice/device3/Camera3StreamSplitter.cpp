@@ -324,11 +324,11 @@ status_t Camera3StreamSplitter::removeOutputLocked(size_t surfaceId) {
     }
 
     mNotifiers[gbp] = nullptr;
-    if (mConsumerBufferCount[surfaceId] < mMaxHalBuffers) {
-        mMaxConsumerBuffers -= mConsumerBufferCount[surfaceId];
-    } else {
-        SP_LOGE("%s: Cached consumer buffer count mismatch!", __FUNCTION__);
+    if (mConsumerBufferCount[surfaceId] > mMaxHalBuffers) {
+        SP_LOGW("%s: Consumer buffer count %zu larger than max. Hal buffers: %zu", __FUNCTION__,
+                mConsumerBufferCount[surfaceId], mMaxHalBuffers);
     }
+    mMaxConsumerBuffers -= mConsumerBufferCount[surfaceId];
     mConsumerBufferCount[surfaceId] = 0;
 
     return res;
