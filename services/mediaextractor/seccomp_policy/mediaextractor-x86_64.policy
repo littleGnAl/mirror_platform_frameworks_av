@@ -30,6 +30,10 @@ faccessat: 1
 sched_setscheduler: 1
 getrlimit: 1
 nanosleep: 1
+fstat: 1
+fstatfs: 1
+pread64: 1
+mremap: 1
 
 # for FileSource
 readlinkat: 1
@@ -55,3 +59,5 @@ gettid: 1
 sched_yield: 1
 getpid: 1
 gettid: 1
+
+@include /system/etc/seccomp_policy/crash_dump.x86_64.policy
