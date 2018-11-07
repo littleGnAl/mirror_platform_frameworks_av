@@ -34,8 +34,8 @@ LOCAL_REQUIRED_MODULES += \
 
 LOCAL_SRC_FILES := main_extractorservice.cpp
 LOCAL_SHARED_LIBRARIES := libmedia libmediaextractorservice libbinder libutils \
-    liblog libbase libicuuc libavservices_minijail
-LOCAL_STATIC_LIBRARIES := libicuandroid_utils
+    liblog libbase libicuuc libavservices_minijail libcutils
+LOCAL_STATIC_LIBRARIES := libicuandroid_utils libmedia_process_limit
 LOCAL_MODULE:= mediaextractor
 LOCAL_INIT_RC := mediaextractor.rc
 LOCAL_C_INCLUDES := frameworks/av/media/libmedia

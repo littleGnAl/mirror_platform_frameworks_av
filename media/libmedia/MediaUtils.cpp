@@ -19,13 +19,58 @@
 #include <utils/Log.h>
 
 #include <cutils/properties.h>
+#include <dlfcn.h>
 #include <sys/resource.h>
 #include <unistd.h>
+#include <utils/Mutex.h>
 
 #include "MediaUtils.h"
 
 extern "C" size_t __cfi_shadow_size();
 extern "C" void __scudo_set_rss_limit(size_t, int) __attribute__((weak));
+
+#ifdef __aarch64__
+
+namespace {
+
+android::Mutex gRLimit;
+
+void adjustAddressSpaceLimitBy(ssize_t delta) {
+  android::Mutex::Autolock rlimitLock(gRLimit);
+  struct rlimit limit;
+  getrlimit(RLIMIT_AS, &limit);
+  if (limit.rlim_cur == SIZE_MAX) return;
+  limit.rlim_cur += delta;
+  setrlimit(RLIMIT_AS, &limit);
+}
+
+}
+
+// Processes that use limitProcessMemory must also arrange to adjust RLIMIT_AS
+// on thread entry and exit in order to accommodate the address space consumed
+// by each thread's shadow call stack guard region. This is done by intercepting
+// pthread_create and pthread_exit (which is called internally by libc on thread
+// termination).
+const auto real_pthread_create = reinterpret_cast<int (*)(
+        pthread_t* thread, const pthread_attr_t* attr, void* (*start_routine)(void*), void* arg)>(
+        dlsym(RTLD_NEXT, "pthread_create"));
+const auto real_pthread_exit =
+        reinterpret_cast<void (*)(void* retval)>(dlsym(RTLD_NEXT, "pthread_exit"));
+
+extern "C" int pthread_create(pthread_t* thread, const pthread_attr_t* attr,
+                              void* (*start_routine)(void*), void* arg) {
+    // TODO(pcc): Add an API to bionic to let us access the guard region size and use it here.
+    adjustAddressSpaceLimitBy(16*1024*1024);
+    return real_pthread_create(thread, attr, start_routine, arg);
+}
+
+extern "C" void pthread_exit(void* retval) {
+    // TODO(pcc): Add an API to bionic to let us access the guard region size and use it here.
+    adjustAddressSpaceLimitBy(-16*1024*1024);
+    real_pthread_exit(retval);
+}
+
+#endif
 
 namespace android {
 

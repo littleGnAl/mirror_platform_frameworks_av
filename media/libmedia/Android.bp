@@ -150,6 +150,18 @@ filegroup {
     ],
 }
 
+cc_library_static {
+    name: "libmedia_process_limit",
+
+    srcs: [
+        "MediaUtils.cpp",
+    ],
+
+    shared_libs: [
+        "libcutils",
+    ],
+}
+
 cc_library {
     name: "libmedia",
 
@@ -173,7 +185,6 @@ cc_library {
         "IResourceManagerClient.cpp",
         "IResourceManagerService.cpp",
         "IStreamSource.cpp",
-        "MediaUtils.cpp",
         "Metadata.cpp",
         "mediarecorder.cpp",
         "IMediaMetadataRetriever.cpp",
