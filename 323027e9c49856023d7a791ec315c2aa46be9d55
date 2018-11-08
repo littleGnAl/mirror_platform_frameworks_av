@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c3f759fc_bb6aaf63",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-11-08T21:16:54Z",
+      "side": 1,
+      "message": "See Colin\u0027s comment. What you can do instead is to \u0027#define LOG_NDEBUG 0\u0027 *before* including Log.h. In this case ALOGV will not be stripped. Sorry for not thinking about this earlier.",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 58
+      },
+      "revId": "323027e9c49856023d7a791ec315c2aa46be9d55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
