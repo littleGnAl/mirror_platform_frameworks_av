@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a9186b5f_01be00ff",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1146,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-11-08T18:43:40Z",
+      "side": 1,
+      "message": "since \u0027size\u0027 is read from the file, should check here that this calculation does not underflow (or maybe just include a check at line 1140 above that size \u003d\u003d 36 ?)",
+      "revId": "81b8fb8466d4ec35a2181f1408373f695c3d349d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b818f0c7_daee597e",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1615,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-11-08T18:43:40Z",
+      "side": 1,
+      "message": "couldn\u0027t this simply check that chunk_type equals \u0027alac\u0027 ?",
+      "range": {
+        "startLine": 1614,
+        "startChar": 0,
+        "endLine": 1615,
+        "endChar": 86
+      },
+      "revId": "81b8fb8466d4ec35a2181f1408373f695c3d349d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c13d0c09_440e4f2f",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-11-08T18:43:40Z",
+      "side": 1,
+      "message": "please also add conversion code to go the other way (from AMessage to MetaData)",
+      "range": {
+        "startLine": 1138,
+        "startChar": 0,
+        "endLine": 1149,
+        "endChar": 5
+      },
+      "revId": "81b8fb8466d4ec35a2181f1408373f695c3d349d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
