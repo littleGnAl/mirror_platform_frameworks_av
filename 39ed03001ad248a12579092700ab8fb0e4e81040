@@ -16,6 +16,24 @@
       "revId": "39ed03001ad248a12579092700ab8fb0e4e81040",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0378db34_d41fcf5f",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 4178,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-11-09T01:46:06Z",
+      "side": 1,
+      "message": "Colin,\n\nBelow link is not visible for me.\n\u003e https://cs.corp.google.com/android/system/core/liblog/include/log/log_main.h?rcl\u003d917c7968560f96ed56f3ee4090008573dd18d75f\u0026l\u003d380\n\nCould you point out in the below link?\nhttps://android.googlesource.com/platform/system/core/+/master/liblog/include/log/log_main.h",
+      "parentUuid": "f8932009_aa2ced78",
+      "revId": "39ed03001ad248a12579092700ab8fb0e4e81040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
