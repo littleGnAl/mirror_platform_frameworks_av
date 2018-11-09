@@ -34,6 +34,24 @@
       "revId": "39ed03001ad248a12579092700ab8fb0e4e81040",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f580f1aa_f6842ef6",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 4178,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2018-11-09T02:51:37Z",
+      "side": 1,
+      "message": "Sorry, https://android.googlesource.com/platform/system/core/+/master/liblog/include/log/log_main.h#380",
+      "parentUuid": "0378db34_d41fcf5f",
+      "revId": "39ed03001ad248a12579092700ab8fb0e4e81040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
