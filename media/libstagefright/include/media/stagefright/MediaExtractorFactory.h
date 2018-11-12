@@ -31,12 +31,12 @@ struct ExtractorPlugin;
 
 class MediaExtractorFactory {
 public:
-    static sp<IMediaExtractor> Create(
-            const sp<DataSource> &source, const char *mime = NULL);
-    static sp<IMediaExtractor> CreateFromService(
-            const sp<DataSource> &source, const char *mime = NULL);
-    static void LoadPlugins(const ::std::string& apkPath);
-    static status_t dump(int fd, const Vector<String16>& args);
+  static sp<IMediaExtractor> Create(
+      const sp<DataSource> &source, const char *mime = NULL, const Vector<uint8_t> *drmUuid = NULL, const Vector<uint8_t> *drmSessionId = NULL);
+  static sp<IMediaExtractor> CreateFromService(
+      const sp<DataSource> &source, const char *mime = NULL, const Vector<uint8_t> *drmUuid = NULL, const Vector<uint8_t> *drmSessionId = NULL);
+  static void LoadPlugins(const ::std::string &apkPath);
+  static status_t dump(int fd, const Vector<String16> &args);
 
 private:
     static Mutex gPluginMutex;
@@ -52,7 +52,7 @@ private:
 
     static MediaExtractor::CreatorFunc sniff(DataSourceBase *source,
             float *confidence, void **meta, MediaExtractor::FreeMetaFunc *freeMeta,
-            sp<ExtractorPlugin> &plugin);
+            sp<ExtractorPlugin> &plugin, const Vector<uint8_t> *drmUuid = NULL);
 
     static void UpdateExtractors(const char *newUpdateApkPath);
 };

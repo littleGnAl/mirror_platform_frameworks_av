@@ -333,10 +333,10 @@ MediaExtractor::ExtractorDef GETEXTRACTORDEF() {
         1,
         "MIDI Extractor",
         [](
-                DataSourceBase *source,
-                float *confidence,
-                void **,
-                MediaExtractor::FreeMetaFunc *) -> MediaExtractor::CreatorFunc {
+            DataSourceBase *source,
+            float *confidence,
+            void **,
+            MediaExtractor::FreeMetaFunc *) -> MediaExtractor::CreatorFunc {
             if (SniffMidi(source, confidence)) {
                 return [](
                         DataSourceBase *source,
@@ -344,7 +344,8 @@ MediaExtractor::ExtractorDef GETEXTRACTORDEF() {
                     return new MidiExtractor(source);};
             }
             return NULL;
-        }
+        },
+        MediaExtractor::CanHandleDrmScheme
     };
 }
 

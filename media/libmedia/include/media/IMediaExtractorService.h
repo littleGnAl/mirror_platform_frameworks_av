@@ -30,7 +30,7 @@ class IMediaExtractorService: public IInterface
 public:
     DECLARE_META_INTERFACE(MediaExtractorService);
 
-    virtual sp<IMediaExtractor> makeExtractor(const sp<IDataSource> &source, const char *mime) = 0;
+    virtual sp<IMediaExtractor> makeExtractor(const sp<IDataSource> &source, const char *mime, const Vector<uint8_t> *drmUuid = NULL, const Vector<uint8_t> *drmSessionId = NULL) = 0;
 
     virtual sp<IDataSource> makeIDataSource(int fd, int64_t offset, int64_t length) = 0;
 };

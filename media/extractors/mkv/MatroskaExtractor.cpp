@@ -1645,10 +1645,10 @@ MediaExtractor::ExtractorDef GETEXTRACTORDEF() {
         1,
         "Matroska Extractor",
         [](
-                DataSourceBase *source,
-                float *confidence,
-                void **,
-                MediaExtractor::FreeMetaFunc *) -> MediaExtractor::CreatorFunc {
+            DataSourceBase *source,
+            float *confidence,
+            void **,
+            MediaExtractor::FreeMetaFunc *) -> MediaExtractor::CreatorFunc {
             if (SniffMatroska(source, confidence)) {
                 return [](
                         DataSourceBase *source,
@@ -1656,7 +1656,8 @@ MediaExtractor::ExtractorDef GETEXTRACTORDEF() {
                     return new MatroskaExtractor(source);};
             }
             return NULL;
-        }
+        },
+        MediaExtractor::CanHandleDrmScheme
     };
 }
 
