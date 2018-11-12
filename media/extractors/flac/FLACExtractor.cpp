@@ -878,7 +878,8 @@ MediaExtractor::ExtractorDef GETEXTRACTORDEF() {
                         return new FLACExtractor(source);};
                 }
                 return NULL;
-            }
+            },
+            MediaExtractor::CanHandleDrmScheme
      };
 }
 

@@ -586,7 +586,8 @@ MediaExtractor::ExtractorDef GETEXTRACTORDEF() {
         UUID("7d613858-5837-4a38-84c5-332d1cddee27"),
         1, // version
         "WAV Extractor",
-        Sniff
+        Sniff,
+        MediaExtractor::CanHandleDrmScheme
     };
 }
 

@@ -38,13 +38,14 @@ namespace android {
 
 // static
 sp<IMediaExtractor> MediaExtractorFactory::Create(
-        const sp<DataSource> &source, const char *mime) {
+        const sp<DataSource> &source, const char *mime,
+        const Vector<uint8_t> *drmUuid, const Vector<uint8_t> *drmSessionId) {
     ALOGV("MediaExtractorFactory::Create %s", mime);
 
     if (!property_get_bool("media.stagefright.extractremote", true)) {
         // local extractor
         ALOGW("creating media extractor in calling process");
-        return CreateFromService(source, mime);
+        return CreateFromService(source, mime, drmUuid, drmSessionId);
     } else {
         // remote extractor
         ALOGV("get service manager");
@@ -53,7 +54,7 @@ sp<IMediaExtractor> MediaExtractorFactory::Create(
         if (binder != 0) {
             sp<IMediaExtractorService> mediaExService(interface_cast<IMediaExtractorService>(binder));
             sp<IMediaExtractor> ex = mediaExService->makeExtractor(
-                    CreateIDataSourceFromDataSource(source), mime);
+                    CreateIDataSourceFromDataSource(source), mime, drmUuid, drmSessionId);
             return ex;
         } else {
             ALOGE("extractor service not running");
@@ -64,7 +65,8 @@ sp<IMediaExtractor> MediaExtractorFactory::Create(
 }
 
 sp<IMediaExtractor> MediaExtractorFactory::CreateFromService(
-        const sp<DataSource> &source, const char *mime) {
+        const sp<DataSource> &source, const char *mime,
+        const Vector<uint8_t> *drmUuid, const Vector<uint8_t> *drmSessionId) {
 
     ALOGV("MediaExtractorFactory::CreateFromService %s", mime);
 
@@ -78,7 +80,7 @@ sp<IMediaExtractor> MediaExtractorFactory::CreateFromService(
     MediaExtractor::FreeMetaFunc freeMeta = nullptr;
     float confidence;
     sp<ExtractorPlugin> plugin;
-    creator = sniff(source.get(), &confidence, &meta, &freeMeta, plugin);
+    creator = sniff(source.get(), &confidence, &meta, &freeMeta, plugin, drmUuid);
     if (!creator) {
         ALOGV("FAILED to autodetect media content.");
         return NULL;
@@ -87,6 +89,10 @@ sp<IMediaExtractor> MediaExtractorFactory::CreateFromService(
     MediaExtractor *ret = creator(source.get(), meta);
     if (meta != nullptr && freeMeta != nullptr) {
         freeMeta(meta);
+    }
+
+    if (drmSessionId != NULL) {
+        ret->setMediaDrmSession(drmSessionId);
     }
 
     ALOGV("Created an extractor '%s' with confidence %.2f",
@@ -129,7 +135,9 @@ bool MediaExtractorFactory::gPluginsRegistered = false;
 // static
 MediaExtractor::CreatorFunc MediaExtractorFactory::sniff(
         DataSourceBase *source, float *confidence, void **meta,
-        MediaExtractor::FreeMetaFunc *freeMeta, sp<ExtractorPlugin> &plugin) {
+        MediaExtractor::FreeMetaFunc *freeMeta, sp<ExtractorPlugin> &plugin,
+        const Vector<uint8_t> *drmUuid) {
+
     *confidence = 0.0f;
     *meta = nullptr;
 
@@ -148,7 +156,14 @@ MediaExtractor::CreatorFunc MediaExtractorFactory::sniff(
         float newConfidence;
         void *newMeta = nullptr;
         MediaExtractor::FreeMetaFunc newFreeMeta = nullptr;
-        if ((curCreator = (*it)->def.sniff(source, &newConfidence, &newMeta, &newFreeMeta))) {
+        if (drmUuid != NULL) {
+            if ((*it)->def.def_version >= 2
+                    && (curCreator = (*it)->def.cah_handle_drm_scheme(drmUuid)) != NULL) {
+                *confidence = 1.0f;
+                bestCreator = curCreator;
+                break;
+            }
+        } else if ((curCreator = (*it)->def.sniff(source, &newConfidence, &newMeta, &newFreeMeta))) {
             if (newConfidence > *confidence) {
                 *confidence = newConfidence;
                 if (*meta != nullptr && *freeMeta != nullptr) {
