@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "2976726f_17c95c71",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1233895
+      },
+      "writtenOn": "2018-11-12T08:51:45Z",
+      "side": 1,
+      "message": "Another example is \n\nhttps://android.googlesource.com/platform/frameworks/av/+/master/services/medialog/MediaLogService.cpp#86\n\nhttps://android.googlesource.com/platform/frameworks/av/+/master/media/libmediaplayer2/nuplayer2/NuPlayer2Driver.cpp\n\nAll of them are doing similar loop.\n\n    static const int kDumpLockRetries \u003d 50;\n    static const int kDumpLockSleepUs \u003d 20000;\n\n    for (int i \u003d 0; i \u003c kDumpLockRetries; ++i) {\n        if (mLock.tryLock() \u003d\u003d NO_ERROR) {\n            locked \u003d true;\n            break;\n        }\n        usleep(kDumpLockSleepUs);\n    } \n\nOr do you think it\u0027s better to use defined static const value instead of hard coded value like the example above?",
+      "parentUuid": "3be6260a_71d8c095",
+      "range": {
+        "startLine": 221,
+        "startChar": 12,
+        "endLine": 221,
+        "endChar": 45
+      },
+      "revId": "bf6e21cee6c0bcb973fb351cc67974d4b50c00d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d7fdf21e_e706d34a",
         "filename": "media/libstagefright/MediaMuxer.cpp",
         "patchSetId": 3
