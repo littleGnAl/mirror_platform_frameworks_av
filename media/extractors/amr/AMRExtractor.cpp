@@ -383,7 +383,8 @@ MediaExtractor::ExtractorDef GETEXTRACTORDEF() {
                     return new AMRExtractor(source);};
             }
             return NULL;
-        }
+        },
+        MediaExtractor::CanHandleDrmScheme
     };
 }
 

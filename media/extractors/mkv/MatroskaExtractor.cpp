@@ -1656,7 +1656,8 @@ MediaExtractor::ExtractorDef GETEXTRACTORDEF() {
                     return new MatroskaExtractor(source);};
             }
             return NULL;
-        }
+        },
+        MediaExtractor::CanHandleDrmScheme
     };
 }
 

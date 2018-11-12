@@ -5742,7 +5742,8 @@ MediaExtractor::ExtractorDef GETEXTRACTORDEF() {
         UUID("27575c67-4417-4c54-8d3d-8e626985a164"),
         1, // version
         "MP4 Extractor",
-        Sniff
+        Sniff,
+        MediaExtractor::CanHandleDrmScheme
     };
 }
 

@@ -344,7 +344,8 @@ MediaExtractor::ExtractorDef GETEXTRACTORDEF() {
                     return new MidiExtractor(source);};
             }
             return NULL;
-        }
+        },
+        MediaExtractor::CanHandleDrmScheme
     };
 }
 
