@@ -24,13 +24,13 @@
 #include <utils/Errors.h>
 #include <utils/Log.h>
 #include <utils/RefBase.h>
+#include <utils/Vector.h>
 
 namespace android {
 
 class DataSourceBase;
 class MetaDataBase;
 struct MediaTrack;
-
 
 class ExtractorAllocTracker {
 public:
@@ -77,10 +77,11 @@ public:
         return INVALID_OPERATION;
     }
 
+    virtual status_t setMediaDrmSession(const Vector<uint8_t>* /*sessionId*/) { return false; }
+
     virtual const char * name() { return "<unspecified>"; }
 
-    typedef MediaExtractor* (*CreatorFunc)(
-            DataSourceBase *source, void *meta);
+    typedef MediaExtractor* (*CreatorFunc)(DataSourceBase *source, void *meta);
     typedef void (*FreeMetaFunc)(void *meta);
 
     // The sniffer can optionally fill in an opaque object, "meta", that helps
@@ -90,6 +91,8 @@ public:
     typedef CreatorFunc (*SnifferFunc)(
             DataSourceBase *source, float *confidence,
             void **meta, FreeMetaFunc *freeMeta);
+
+    typedef CreatorFunc (*CanHandleDrmFunc)(const Vector<uint8_t>* drmUuid);
 
     typedef struct {
         const uint8_t b[16];
@@ -113,11 +116,17 @@ public:
 
         // the sniffer function
         const SnifferFunc sniff;
+
+        // the function to judge whether this extractor can handle specified
+        // drm scheme or not
+        const CanHandleDrmFunc can_handle_drm_scheme;
     } ExtractorDef;
 
-    static const uint32_t EXTRACTORDEF_VERSION = 1;
+    static const uint32_t EXTRACTORDEF_VERSION = 2;
 
     typedef ExtractorDef (*GetExtractorDef)();
+
+    static CreatorFunc CanHandleDrmScheme(const Vector<uint8_t> * /*drmUuid*/) { return NULL; }
 
 protected:
     MediaExtractor();

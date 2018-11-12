@@ -50,7 +50,8 @@ MediaExtractor::ExtractorDef GETEXTRACTORDEF() {
                             return new MPEG2PSExtractor(source);};
             }
             return NULL;
-        }
+        },
+        MediaExtractor::CanHandleDrmScheme
     };
 }
 

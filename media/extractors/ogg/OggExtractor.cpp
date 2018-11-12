@@ -1278,7 +1278,8 @@ MediaExtractor::ExtractorDef GETEXTRACTORDEF() {
         UUID("8cc5cd06-f772-495e-8a62-cba9649374e9"),
         1, // version
         "Ogg Extractor",
-        Sniff
+        Sniff,
+        MediaExtractor::CanHandleDrmScheme
     };
 }
 
