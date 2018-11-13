@@ -4,3 +4,7 @@ service cameraserver /system/bin/cameraserver
     group audio camera input drmrpc
     ioprio rt 4
     writepid /dev/cpuset/camera-daemon/tasks /dev/stune/top-app/tasks
+    disabled
+
+on property:config.disable_cameraservice=0
+    enable cameraserver
