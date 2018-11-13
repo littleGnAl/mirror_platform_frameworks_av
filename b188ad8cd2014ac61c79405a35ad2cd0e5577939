@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "051bf2a1_961cf8ce",
+        "filename": "apex/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2018-11-13T03:50:47Z",
+      "side": 1,
+      "message": "Not now, but we have a plan to restrict that the key name should be the same as the apex name which is com.android.media in this case. Just FYI.",
+      "range": {
+        "startLine": 38,
+        "startChar": 17,
+        "endLine": 38,
+        "endChar": 22
+      },
+      "revId": "b188ad8cd2014ac61c79405a35ad2cd0e5577939",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
