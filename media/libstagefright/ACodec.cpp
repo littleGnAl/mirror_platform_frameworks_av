@@ -5418,7 +5418,14 @@ void ACodec::sendFormatChange() {
                 ALOGW("Replacing SkipCutBuffer holding %zu bytes", prevbufsize);
             }
         }
-        mSkipCutBuffer = new SkipCutBuffer(mEncoderDelay, mEncoderPadding, channelCount);
+        if (mLastOutputFormat) {
+            int32_t lastChannelCount, lastSampleRate;
+            CHECK(mLastOutputFormat->findInt32("channel-count", &lastChannelCount));
+            CHECK(mLastOutputFormat->findInt32("sample-rate", &lastSampleRate));
+            if (channelCount != lastChannelCount || mSampleRate != lastSampleRate) {
+                mSkipCutBuffer = new SkipCutBuffer(mEncoderDelay, mEncoderPadding, channelCount);
+            }
+        }
     }
 
     // mLastOutputFormat is not used when tunneled; doing this just to stay consistent
