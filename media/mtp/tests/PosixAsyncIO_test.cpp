@@ -15,11 +15,12 @@
  */
 #define LOG_TAG "PosixAsyncIO_test.cpp"
 
-#include <android-base/test_utils.h>
 #include <fcntl.h>
 #include <gtest/gtest.h>
 #include <string>
 #include <unistd.h>
+
+#include <android-base/file.h>
 #include <log/log.h>
 
 #include "PosixAsyncIO.h"

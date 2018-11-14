@@ -15,14 +15,16 @@
  */
 #define LOG_TAG "MtpFfsHandle_test.cpp"
 
-#include <android-base/unique_fd.h>
-#include <android-base/test_utils.h>
 #include <fcntl.h>
-#include <gtest/gtest.h>
+#include <unistd.h>
+
 #include <memory>
 #include <random>
 #include <string>
-#include <unistd.h>
+
+#include <android-base/file.h>
+#include <android-base/unique_fd.h>
+#include <gtest/gtest.h>
 #include <log/log.h>
 
 #include "MtpDescriptors.h"
