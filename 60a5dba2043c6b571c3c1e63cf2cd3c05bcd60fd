@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46608a81_bd006941",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-11-14T17:19:19Z",
+      "side": 1,
+      "message": "Please replace with:\n\nKeep verbose log statements, but silence them by default\n\nDo not strip out ALOGV statements in production builds,\nbut keep them silent by setting the default log level\nfor AudioPolicyManager to D.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "60a5dba2043c6b571c3c1e63cf2cd3c05bcd60fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c296a684_6b28d009",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-11-14T17:19:19Z",
+      "side": 1,
+      "message": "Please replace with:\n\nTest: adb shell setprop log.tag.APM_AudioPolicyManager V\n      check logcat for verbose log messages from APM",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 32
+      },
+      "revId": "60a5dba2043c6b571c3c1e63cf2cd3c05bcd60fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26742476_ea3050f6",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 4177,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-11-14T17:19:19Z",
+      "side": 1,
+      "message": "Please replace with \"Silence ALOGV statements\".",
+      "range": {
+        "startLine": 4177,
+        "startChar": 7,
+        "endLine": 4177,
+        "endChar": 39
+      },
+      "revId": "60a5dba2043c6b571c3c1e63cf2cd3c05bcd60fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba002b82_9a439cd3",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 4178,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-11-14T17:19:19Z",
+      "side": 1,
+      "message": "Please replace with:\n\n    \"log.tag.\" LOG_TAG\n\nTo ensure that we use module\u0027s log tag. C/C++ will automatically \"glue\" these two string literals together.",
+      "range": {
+        "startLine": 4178,
+        "startChar": 17,
+        "endLine": 4178,
+        "endChar": 49
+      },
+      "revId": "60a5dba2043c6b571c3c1e63cf2cd3c05bcd60fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
