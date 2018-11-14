@@ -52,6 +52,23 @@
       "revId": "39ed03001ad248a12579092700ab8fb0e4e81040",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99c37dbd_28c86924",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 4180,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2018-11-14T00:39:57Z",
+      "side": 1,
+      "message": "Note that log.tag.\u003ctagname\u003e also works too.  It would be better to use that rather than polluting the stored persist. properties.",
+      "revId": "39ed03001ad248a12579092700ab8fb0e4e81040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
