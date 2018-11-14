@@ -69,6 +69,24 @@
       "revId": "39ed03001ad248a12579092700ab8fb0e4e81040",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ec5f830_45c2694e",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 4180,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-11-14T01:35:26Z",
+      "side": 1,
+      "message": "Thank you for your comment. I do not think it should be persist so I have changed to use log.tag.\u003ctagname\u003e.",
+      "parentUuid": "99c37dbd_28c86924",
+      "revId": "39ed03001ad248a12579092700ab8fb0e4e81040",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
