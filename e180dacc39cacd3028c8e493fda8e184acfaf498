@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1fa410f2_632f6a15",
+        "filename": "media/mtp/MtpDevice.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 532,
+      "author": {
+        "id": 1330244
+      },
+      "writtenOn": "2018-11-15T09:42:55Z",
+      "side": 1,
+      "message": "mData.write() would return -1 upon error.\nIf writeResult changed to unsigned int, it may not be able to handle exception case.\n(i.e. the return condition \"writeResult \u003e 0\" below is always true)\nHave you ever checked this condition?",
+      "revId": "e180dacc39cacd3028c8e493fda8e184acfaf498",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
