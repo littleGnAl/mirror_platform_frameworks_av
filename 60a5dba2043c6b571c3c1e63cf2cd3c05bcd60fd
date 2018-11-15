@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "cacd8572_168f43f2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-11-15T00:19:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46608a81_bd006941",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 0
+      },
+      "revId": "60a5dba2043c6b571c3c1e63cf2cd3c05bcd60fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c296a684_6b28d009",
         "filename": "/COMMIT_MSG",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "60a5dba2043c6b571c3c1e63cf2cd3c05bcd60fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29b5f860_ad3658b2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-11-15T00:19:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c296a684_6b28d009",
+      "range": {
+        "startLine": 15,
+        "startChar": 6,
+        "endLine": 16,
+        "endChar": 32
+      },
+      "revId": "60a5dba2043c6b571c3c1e63cf2cd3c05bcd60fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b041608e_2bbfb6c7",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 4177,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-11-15T00:19:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26742476_ea3050f6",
+      "range": {
+        "startLine": 4177,
+        "startChar": 7,
+        "endLine": 4177,
+        "endChar": 39
+      },
+      "revId": "60a5dba2043c6b571c3c1e63cf2cd3c05bcd60fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba002b82_9a439cd3",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 7
@@ -91,6 +163,30 @@
       "revId": "60a5dba2043c6b571c3c1e63cf2cd3c05bcd60fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11f28900_d3f5796b",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 4178,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2018-11-15T00:19:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba002b82_9a439cd3",
+      "range": {
+        "startLine": 4178,
+        "startChar": 17,
+        "endLine": 4178,
+        "endChar": 49
+      },
+      "revId": "60a5dba2043c6b571c3c1e63cf2cd3c05bcd60fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
