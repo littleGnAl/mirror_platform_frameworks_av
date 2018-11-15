@@ -286,6 +286,18 @@ void MediaExtractorFactory::RegisterExtractorsInSystem(
         }
 
         closedir(libDir);
+
+        for (auto it = pluginList.begin(); it != pluginList.end(); ++it) {
+            ALOGI("Go through the plugin list: %s", (*it)->def.extractor_name);
+            if (!strncmp((*it)->def.extractor_name, "MP4 Extractor", 13)) {
+                ALOGI("Move MPEG4Extractor to the front");
+                if (it != pluginList.begin()) {
+                    pluginList.push_front(*it);
+                    pluginList.erase(it);
+                }
+                break;
+            }
+        }
     } else {
         ALOGE("couldn't opendir(%s)", libDirPath);
     }
