@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9676d206_92be72a5",
+        "filename": "media/libeffects/preprocessing/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1136369
+      },
+      "writtenOn": "2018-11-19T18:04:10Z",
+      "side": 1,
+      "message": "seems that the header libs libwebrtc_headers and libwebrtc_modules_headers export those two first one.\n\nUnfortunatly for the last line, there is no libwebrtc_apm_headers :( So you would have to leave it.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 66
+      },
+      "revId": "154fce4cc73b2e56fb669abd7bf8f9a508a18b90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
