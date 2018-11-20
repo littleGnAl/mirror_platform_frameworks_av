@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "871b9e89_061df8cb",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1086,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2018-11-20T21:01:41Z",
+      "side": 1,
+      "message": "yes but his is not only when the format is specified. this test should be moved outside of if (format !\u003d AUDIO_FORMAT_INVALID) {}",
+      "range": {
+        "startLine": 1086,
+        "startChar": 0,
+        "endLine": 1086,
+        "endChar": 68
+      },
+      "revId": "416aa8be54c914e6472074d0b9207dd214517c2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
