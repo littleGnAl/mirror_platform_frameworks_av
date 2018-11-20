@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "018566eb_14f94026",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1570,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2018-11-20T20:49:33Z",
+      "side": 1,
+      "message": "line length is \u003e 100; you can break it up like the ALOGE above it.  indentation is also inconsistent with rest of file.",
+      "revId": "d6e8f7c416af7a76973e91d1a675d93a8b208120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
