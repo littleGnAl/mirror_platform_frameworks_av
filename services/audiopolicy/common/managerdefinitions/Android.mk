@@ -42,11 +42,10 @@ ifeq ($(USE_XML_AUDIO_POLICY_CONF), 1)
 
 LOCAL_SRC_FILES += src/Serializer.cpp
 
-LOCAL_SHARED_LIBRARIES += libicuuc libxml2
+LOCAL_SHARED_LIBRARIES += libicu_androidshim libxml2
 
 LOCAL_C_INCLUDES += \
-    external/libxml2/include \
-    external/icu/icu4c/source/common
+    external/libxml2/include
 
 else
 
