@@ -46,6 +46,30 @@
       "revId": "54f762e4d4690b0060321c31ea8bdd93afba7f48",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c9e0db4_b38eae01",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2018-11-21T01:40:11Z",
+      "side": 1,
+      "message": "that\u0027s better",
+      "parentUuid": "4f968b37_28818aad",
+      "range": {
+        "startLine": 7,
+        "startChar": 3,
+        "endLine": 7,
+        "endChar": 8
+      },
+      "revId": "54f762e4d4690b0060321c31ea8bdd93afba7f48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
