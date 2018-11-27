@@ -200,6 +200,7 @@ private:
     sp<ABuffer> mBuffer;
     sp<AnotherPacketSource> mSource;
     bool mPayloadStarted;
+    size_t mPESPacketLength;
     bool mEOSReached;
 
     uint64_t mPrevPTS;
@@ -728,6 +729,7 @@ ATSParser::Stream::Stream(
       mPCR_PID(PCR_PID),
       mExpectedContinuityCounter(-1),
       mPayloadStarted(false),
+      mPESPacketLength(-1),
       mEOSReached(false),
       mPrevPTS(0),
       mQueue(NULL),
@@ -894,6 +896,7 @@ status_t ATSParser::Stream::parse(
         ALOGI("discontinuity on stream pid 0x%04x", mElementaryPID);
 
         mPayloadStarted = false;
+        mPESPacketLength = -1;
         mPesStartOffsets.clear();
         mBuffer->setRange(0, 0);
         mSubSamples.clear();
@@ -917,6 +920,14 @@ status_t ATSParser::Stream::parse(
     mExpectedContinuityCounter = (continuity_counter + 1) & 0x0f;
 
     if (payload_unit_start_indicator) {
+        if (!mScrambled) {
+            if (br->numBitsLeft() >= 48) {
+                ABitReader tmp(br->data(), 6);
+                tmp.skipBits(32);
+                mPESPacketLength = tmp.getBits(16) + 6;
+            }
+        }
+
         off64_t offset = (event != NULL) ? event->getOffset() : 0;
         if (mPayloadStarted) {
             // Otherwise we run the danger of receiving the trailing bytes
@@ -960,6 +971,12 @@ status_t ATSParser::Stream::parse(
     if (mScrambled) {
         mSubSamples.push_back({payloadSizeBits / 8,
                  transport_scrambling_control, random_access_indicator});
+    }
+
+    if (!mScrambled) {
+        if (mPayloadStarted && mBuffer->size() == mPESPacketLength) {
+            return flush(event);
+        }
     }
 
     return OK;
