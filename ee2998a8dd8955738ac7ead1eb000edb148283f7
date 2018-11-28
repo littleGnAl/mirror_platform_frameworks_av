@@ -25,6 +25,29 @@
     },
     {
       "key": {
+        "uuid": "8e0b5bd9_8d6a1cf3",
+        "filename": "media/libstagefright/mpeg2ts/ATSParser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 928,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2018-11-28T02:58:40Z",
+      "side": 1,
+      "message": "This doesn\u0027t work for scrambled streams, the PES header is scrambled and you can\u0027t read from it.\n\nThe optimization needs to be disabled if it\u0027s scrambled.",
+      "range": {
+        "startLine": 926,
+        "startChar": 8,
+        "endLine": 928,
+        "endChar": 0
+      },
+      "revId": "ee2998a8dd8955738ac7ead1eb000edb148283f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "2c56eeae_01ae7f08",
         "filename": "media/libstagefright/mpeg2ts/ATSParser.cpp",
         "patchSetId": 1
