@@ -24,21 +24,13 @@
 
 #include "MediaUtils.h"
 
-extern "C" size_t __cfi_shadow_size();
 extern "C" void __scudo_set_rss_limit(size_t, int) __attribute__((weak));
+extern "C" void android_set_allocation_limit(size_t limit);
 
 namespace android {
 
-void limitProcessMemory(
-    const char *property,
-    size_t numberOfBytes,
-    size_t percentageOfTotalMem) {
-
-    if (running_with_asan()) {
-        ALOGW("Running with (HW)ASan, skip enforcing memory limitations.");
-        return;
-    }
-
+void limitProcessMemory(const char *property, size_t numberOfBytes,
+                        size_t percentageOfTotalMem) {
     long pageSize = sysconf(_SC_PAGESIZE);
     long numPages = sysconf(_SC_PHYS_PAGES);
     size_t maxMem = SIZE_MAX;
@@ -74,30 +66,7 @@ void limitProcessMemory(
       return;
     }
 
-    // Increase by the size of the CFI shadow mapping. Most of the shadow is not
-    // backed with physical pages, and it is possible for the result to be
-    // higher than total physical memory. This is fine for RLIMIT_AS.
-    size_t cfi_size = __cfi_shadow_size();
-    if (cfi_size) {
-      ALOGV("cfi shadow size: %zu", cfi_size);
-      if (maxMem <= SIZE_MAX - cfi_size) {
-        maxMem += cfi_size;
-      } else {
-        maxMem = SIZE_MAX;
-      }
-    }
-    ALOGV("actual limit: %zu", maxMem);
-
-    struct rlimit limit;
-    getrlimit(RLIMIT_AS, &limit);
-    ALOGV("original limits: %lld/%lld", (long long)limit.rlim_cur, (long long)limit.rlim_max);
-    limit.rlim_cur = maxMem;
-    setrlimit(RLIMIT_AS, &limit);
-    limit.rlim_cur = -1;
-    limit.rlim_max = -1;
-    getrlimit(RLIMIT_AS, &limit);
-    ALOGV("new limits: %lld/%lld", (long long)limit.rlim_cur, (long long)limit.rlim_max);
-
+    android_set_allocation_limit(maxMem);
 }
 
 } // namespace android
