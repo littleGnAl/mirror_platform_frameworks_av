@@ -16,6 +16,24 @@
       "revId": "398e8027cb3d80411ced96716c0f0d3a109148f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "385e7ab1_14c663ca",
+        "filename": "media/libmedia/MediaUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1067098
+      },
+      "writtenOn": "2018-11-29T23:27:27Z",
+      "side": 1,
+      "message": "According to my understanding of how scudo will be integrated, it looks like we still need it. See\nhttps://android-review.googlesource.com/c/platform/bionic/+/818973/2/libc/bionic/malloc_common.cpp#314",
+      "parentUuid": "f2a1aa80_ff7f65e6",
+      "revId": "398e8027cb3d80411ced96716c0f0d3a109148f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
