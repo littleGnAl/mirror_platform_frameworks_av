@@ -232,6 +232,10 @@ cc_library {
         "libmedia_midiiowrapper",
     ],
 
+    include_dirs: [
+        "bionic/libc/private",
+    ],
+
     export_include_dirs: [
         "include",
     ],
@@ -294,6 +298,10 @@ cc_library {
     static_libs: [
         "libstagefright_rtsp",
         "libstagefright_timedtext",
+    ],
+
+    include_dirs: [
+        "bionic/libc/private",
     ],
 
     export_include_dirs: [
