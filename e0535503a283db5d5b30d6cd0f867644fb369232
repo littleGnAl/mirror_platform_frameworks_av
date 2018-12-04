@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e5537a59_a34294f2",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1391132
+      },
+      "writtenOn": "2018-12-04T10:43:53Z",
+      "side": 1,
+      "message": "i will remove the code related of this function in this patch, thanks.",
+      "parentUuid": "7f913efa_a2e047bf",
+      "range": {
+        "startLine": 210,
+        "startChar": 22,
+        "endLine": 210,
+        "endChar": 58
+      },
+      "revId": "e0535503a283db5d5b30d6cd0f867644fb369232",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "019f19fb_5f9a89f5",
         "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
         "patchSetId": 2
@@ -59,6 +83,30 @@
       "writtenOn": "2018-12-03T23:16:44Z",
       "side": 1,
       "message": "why are these allocations needed?",
+      "range": {
+        "startLine": 335,
+        "startChar": 4,
+        "endLine": 336,
+        "endChar": 68
+      },
+      "revId": "e0535503a283db5d5b30d6cd0f867644fb369232",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a09a202a_56f7dd2e",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1391132
+      },
+      "writtenOn": "2018-12-04T10:43:53Z",
+      "side": 1,
+      "message": "these are temporarily used to save UV data, then the data will be as the input of ConvertFromI420, thanks.",
+      "parentUuid": "ffe85d0b_50a92857",
       "range": {
         "startLine": 335,
         "startChar": 4,
