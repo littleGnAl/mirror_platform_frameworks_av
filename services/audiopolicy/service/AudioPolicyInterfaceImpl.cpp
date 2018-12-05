@@ -1036,4 +1036,16 @@ status_t AudioPolicyService::setSurroundFormatEnabled(audio_format_t audioFormat
     return mAudioPolicyManager->setSurroundFormatEnabled(audioFormat, enabled);
 }
 
+status_t AudioPolicyService::systemReady()
+{
+    Mutex::Autolock _l(mLock);
+    if (mSystemReady) {
+        ALOGW("%s called twice", __FUNCTION__);
+        return NO_ERROR;
+    }
+    mSystemReady = true;
+    mUidPolicy->registerSelf();
+    return NO_ERROR;
+}
+
 } // namespace android

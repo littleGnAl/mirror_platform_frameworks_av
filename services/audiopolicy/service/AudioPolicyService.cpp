@@ -61,7 +61,8 @@ static const String16 sManageAudioPolicyPermission("android.permission.MANAGE_AU
 
 AudioPolicyService::AudioPolicyService()
     : BnAudioPolicyService(), mpAudioPolicyDev(NULL), mpAudioPolicy(NULL),
-      mAudioPolicyManager(NULL), mAudioPolicyClient(NULL), mPhoneState(AUDIO_MODE_INVALID)
+      mAudioPolicyManager(NULL), mAudioPolicyClient(NULL), mPhoneState(AUDIO_MODE_INVALID),
+      mSystemReady(false)
 {
 }
 
@@ -88,7 +89,6 @@ void AudioPolicyService::onFirstRef()
     }
 
     mUidPolicy = new UidPolicy(this);
-    mUidPolicy->registerSelf();
 }
 
 AudioPolicyService::~AudioPolicyService()
@@ -502,6 +502,8 @@ status_t AudioPolicyService::printHelp(int out) {
 // -----------  AudioPolicyService::UidPolicy implementation ----------
 
 void AudioPolicyService::UidPolicy::registerSelf() {
+    Mutex::Autolock _l(mLock);
+    if (mObserverRegistered) return;
     ActivityManager am;
     am.registerUidObserver(this, ActivityManager::UID_OBSERVER_GONE
             | ActivityManager::UID_OBSERVER_IDLE
@@ -510,7 +512,6 @@ void AudioPolicyService::UidPolicy::registerSelf() {
             String16("audioserver"));
     status_t res = am.linkToDeath(this);
     if (!res) {
-        Mutex::Autolock _l(mLock);
         mObserverRegistered = true;
     } else {
         ALOGE("UidPolicy::registerSelf linkToDeath failed: %d", res);

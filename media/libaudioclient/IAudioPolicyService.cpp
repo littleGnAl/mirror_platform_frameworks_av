@@ -82,7 +82,8 @@ enum {
     GET_MASTER_MONO,
     GET_STREAM_VOLUME_DB,
     GET_SURROUND_FORMATS,
-    SET_SURROUND_FORMAT_ENABLED
+    SET_SURROUND_FORMAT_ENABLED,
+    SYSTEM_READY
 };
 
 #define MAX_ITEMS_PER_LIST 1024
@@ -879,6 +880,14 @@ public:
         }
         return reply.readInt32();
     }
+
+    virtual status_t systemReady()
+    {
+        Parcel data, reply;
+        data.writeInterfaceToken(IAudioPolicyService::getInterfaceDescriptor());
+        return remote()->transact(SYSTEM_READY, data, &reply, IBinder::FLAG_ONEWAY);
+    }
+
 };
 
 IMPLEMENT_META_INTERFACE(AudioPolicyService, "android.media.IAudioPolicyService");
@@ -935,12 +944,15 @@ status_t BnAudioPolicyService::onTransact(
         case START_AUDIO_SOURCE:
         case STOP_AUDIO_SOURCE:
         case GET_SURROUND_FORMATS:
-        case SET_SURROUND_FORMAT_ENABLED: {
+        case SET_SURROUND_FORMAT_ENABLED:
+        case SYSTEM_READY: {
             if (multiuser_get_app_id(IPCThreadState::self()->getCallingUid()) >= AID_APP_START) {
                 ALOGW("%s: transaction %d received from PID %d unauthorized UID %d",
                       __func__, code, IPCThreadState::self()->getCallingPid(),
                       IPCThreadState::self()->getCallingUid());
-                reply->writeInt32(static_cast<int32_t> (INVALID_OPERATION));
+                if (code != SYSTEM_READY) {
+                    reply->writeInt32(static_cast<int32_t> (INVALID_OPERATION));
+                }
                 return OK;
             }
         } break;
@@ -1584,6 +1596,12 @@ status_t BnAudioPolicyService::onTransact(
             bool enabled = data.readBool();
             status_t status = setSurroundFormatEnabled(audioFormat, enabled);
             reply->writeInt32(status);
+            return NO_ERROR;
+        }
+
+        case SYSTEM_READY: {
+            CHECK_INTERFACE(IAudioPolicyService, data, reply);
+            systemReady();
             return NO_ERROR;
         }
 
