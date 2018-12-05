@@ -116,6 +116,30 @@
       "revId": "e0535503a283db5d5b30d6cd0f867644fb369232",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a38eb02_ad54517b",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2018-12-05T17:37:12Z",
+      "side": 1,
+      "message": "libyuv already has methods like NV12ToARGB, why do you have to copy to temp buffer to use convertFromI420?",
+      "parentUuid": "a09a202a_56f7dd2e",
+      "range": {
+        "startLine": 335,
+        "startChar": 4,
+        "endLine": 336,
+        "endChar": 68
+      },
+      "revId": "e0535503a283db5d5b30d6cd0f867644fb369232",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
