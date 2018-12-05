@@ -88,7 +88,6 @@ void AudioPolicyService::onFirstRef()
     }
 
     mUidPolicy = new UidPolicy(this);
-    mUidPolicy->registerSelf();
 }
 
 AudioPolicyService::~AudioPolicyService()
