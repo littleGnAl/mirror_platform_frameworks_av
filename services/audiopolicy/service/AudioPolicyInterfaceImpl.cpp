@@ -1036,4 +1036,10 @@ status_t AudioPolicyService::setSurroundFormatEnabled(audio_format_t audioFormat
     return mAudioPolicyManager->setSurroundFormatEnabled(audioFormat, enabled);
 }
 
+status_t AudioPolicyService::systemReady()
+{
+    mUidPolicy->registerSelf();
+    return NO_ERROR;
+}
+
 } // namespace android
