@@ -457,6 +457,10 @@ audio_hw_sync_t AudioSystem::getAudioHwSyncForSession(audio_session_t sessionId)
 
 status_t AudioSystem::systemReady()
 {
+    const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
+    if (aps  == 0) return NO_INIT;
+    aps->systemReady();
+
     const sp<IAudioFlinger>& af = AudioSystem::get_audio_flinger();
     if (af == 0) return NO_INIT;
     return af->systemReady();
