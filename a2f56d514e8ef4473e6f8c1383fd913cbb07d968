@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a7f82f6_b9abe93f",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1426,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2018-12-06T23:39:33Z",
+      "side": 1,
+      "message": "Based on the description of this CL, it suggests that audio has not updated MediaClock before this EOS. If that\u0027s the case, line 1423 would return NO_INIT, and therefore mediaUs is not meaningful. Then this updateAnchor call will let MediaClock start from media time 0 which is probably incorrect.\n\nIf the above assumption stands, i.e., after seek, audio has only EOS buffer, while video still has some data buffers, then the more appropriate fix would be below. Please let me know if this would fix the issue.\n\ndiff --git a/media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp b/media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp\nindex b2583326a5..3e07eeb548 100644\n--- a/media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp\n+++ b/media/libmediaplayerservice/nuplayer/NuPlayerRenderer.cpp\n@@ -1458,8 +1458,17 @@ void NuPlayer::Renderer::onQueueBuffer(const sp\u003cAMessage\u003e \u0026msg) {\n         return;\n     }\n \n+    sp\u003cRefBase\u003e obj;\n+    CHECK(msg-\u003efindObject(\"buffer\", \u0026obj));\n+    sp\u003cMediaCodecBuffer\u003e buffer \u003d static_cast\u003cMediaCodecBuffer *\u003e(obj.get());\n+\n+    sp\u003cAMessage\u003e notifyConsumed;\n+    CHECK(msg-\u003efindMessage(\"notifyConsumed\", \u0026notifyConsumed));\n+\n     if (audio) {\n-        mHasAudio \u003d true;\n+        if (buffer !\u003d NULL || notifyConsumed !\u003d nullptr) {\n+            mHasAudio \u003d true;\n+        }\n     } else {\n         mHasVideo \u003d true;\n     }\n@@ -1471,13 +1480,6 @@ void NuPlayer::Renderer::onQueueBuffer(const sp\u003cAMessage\u003e \u0026msg) {\n         }\n     }\n \n-    sp\u003cRefBase\u003e obj;\n-    CHECK(msg-\u003efindObject(\"buffer\", \u0026obj));\n-    sp\u003cMediaCodecBuffer\u003e buffer \u003d static_cast\u003cMediaCodecBuffer *\u003e(obj.get());\n-\n-    sp\u003cAMessage\u003e notifyConsumed;\n-    CHECK(msg-\u003efindMessage(\"notifyConsumed\", \u0026notifyConsumed));\n-\n     QueueEntry entry;\n     entry.mBuffer \u003d buffer;\n     entry.mNotifyConsumed \u003d notifyConsumed;",
+      "range": {
+        "startLine": 1426,
+        "startChar": 16,
+        "endLine": 1426,
+        "endChar": 81
+      },
+      "revId": "a2f56d514e8ef4473e6f8c1383fd913cbb07d968",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
