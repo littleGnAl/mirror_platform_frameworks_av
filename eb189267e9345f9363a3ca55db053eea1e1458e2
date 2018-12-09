@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f23c5906_00eed426",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1406842
+      },
+      "writtenOn": "2018-12-09T02:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44d460cf_a3874304",
+      "range": {
+        "startLine": 9,
+        "startChar": 10,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "eb189267e9345f9363a3ca55db053eea1e1458e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1b4cb061_e28add22",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "a84d8c7b_47e17f50",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1406842
+      },
+      "writtenOn": "2018-12-09T02:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b4cb061_e28add22",
+      "range": {
+        "startLine": 11,
+        "startChar": 79,
+        "endLine": 11,
+        "endChar": 88
+      },
+      "revId": "eb189267e9345f9363a3ca55db053eea1e1458e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "98dfe494_d7748644",
         "filename": "/COMMIT_MSG",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2018-12-05T17:02:10Z",
       "side": 1,
       "message": "Is there a bug for this issue? Please add \"Bug: \u003cbug number\u003e\" before Change-Id:",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 10
+      },
+      "revId": "eb189267e9345f9363a3ca55db053eea1e1458e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c4d9f91_a7ecd267",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1406842
+      },
+      "writtenOn": "2018-12-09T02:22:37Z",
+      "side": 1,
+      "message": "t\u0027s an optimization not a bug.  Audio server starts much slower in Android P than in Android O . Removing this can improve audio server\u0027s initialization  and it will attempt to reregister afterwards.",
+      "parentUuid": "98dfe494_d7748644",
       "range": {
         "startLine": 22,
         "startChar": 1,
@@ -91,6 +163,30 @@
       "revId": "eb189267e9345f9363a3ca55db053eea1e1458e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a93993c_21784858",
+        "filename": "services/audiopolicy/service/AudioPolicyService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1406842
+      },
+      "writtenOn": "2018-12-09T02:22:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1138913_c9bd9096",
+      "range": {
+        "startLine": 91,
+        "startChar": 18,
+        "endLine": 91,
+        "endChar": 30
+      },
+      "revId": "eb189267e9345f9363a3ca55db053eea1e1458e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
