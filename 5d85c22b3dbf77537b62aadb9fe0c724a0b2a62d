@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8d964ae0_43b87067",
+        "filename": "media/libmediaextractor/include/media/MediaExtractor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-12-10T16:39:31Z",
+      "side": 1,
+      "message": "I don\u0027t like the idea of having two seperate functions that both return a CreatorFunc. Can the uuid just be passed to the SnifferFunc as an additional parameter?",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 76
+      },
+      "revId": "5d85c22b3dbf77537b62aadb9fe0c724a0b2a62d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b143eb50_c4b9a07f",
+        "filename": "media/libmediaextractor/include/media/MediaExtractor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-12-10T16:39:31Z",
+      "side": 1,
+      "message": "just change this to \u00272\u0027. There is no need to for a separate symbol for this.",
+      "range": {
+        "startLine": 127,
+        "startChar": 49,
+        "endLine": 127,
+        "endChar": 87
+      },
+      "revId": "5d85c22b3dbf77537b62aadb9fe0c724a0b2a62d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
