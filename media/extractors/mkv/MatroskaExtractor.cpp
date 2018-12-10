@@ -1523,6 +1523,8 @@ void MatroskaExtractor::addTracks() {
                 } else if (!strcmp("A_FLAC", codecID)) {
                     meta.setCString(kKeyMIMEType, MEDIA_MIMETYPE_AUDIO_FLAC);
                     err = addFlacMetadata(meta, codecPrivate, codecPrivateSize);
+                } else if (!strcmp("A_PCM/INT/LIT", codecID)) {
+                    meta.setCString(kKeyMIMEType, MEDIA_MIMETYPE_AUDIO_RAW);
                 } else {
                     ALOGW("%s is not supported.", codecID);
                     continue;
