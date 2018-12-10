@@ -175,7 +175,7 @@ MidiEngine::MidiEngine(DataSourceBase *dataSource,
 
     if (trackMetadata != NULL) {
         trackMetadata->setCString(kKeyMIMEType, MEDIA_MIMETYPE_AUDIO_RAW);
-        trackMetadata->setInt64(kKeyDuration, 1000ll * temp); // milli->micro
+        trackMetadata->setInt64(kKeyDuration, 1000LL * temp); // milli->micro
         mEasConfig = EAS_Config();
         trackMetadata->setInt32(kKeySampleRate, mEasConfig->sampleRate);
         trackMetadata->setInt32(kKeyChannelCount, mEasConfig->numChannels);
@@ -238,7 +238,7 @@ MediaBufferBase* MidiEngine::readBuffer() {
     }
     EAS_I32 timeMs;
     EAS_GetLocation(mEasData, mEasHandle, &timeMs);
-    int64_t timeUs = 1000ll * timeMs;
+    int64_t timeUs = 1000LL * timeMs;
     buffer->meta_data().setInt64(kKeyTime, timeUs);
 
     EAS_PCM* p = (EAS_PCM*) buffer->data();

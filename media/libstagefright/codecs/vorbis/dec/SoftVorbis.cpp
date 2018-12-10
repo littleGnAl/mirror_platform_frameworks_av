@@ -526,7 +526,7 @@ void SoftVorbis::onQueueFilled(OMX_U32 /* portIndex */) {
 
         outHeader->nTimeStamp =
             mAnchorTimeUs
-                + (mNumFramesOutput * 1000000ll) / mVi->rate;
+                + (mNumFramesOutput * 1000000LL) / mVi->rate;
 
         mNumFramesOutput += numFrames;
 

@@ -159,7 +159,7 @@ ANetworkSession::Session::Session(
       mSawReceiveFailure(false),
       mSawSendFailure(false),
       mUDPRetries(kMaxUDPRetries),
-      mLastStallReportUs(-1ll) {
+      mLastStallReportUs(-1LL) {
     if (mState == CONNECTED) {
         struct sockaddr_in localAddr;
         socklen_t localAddrLen = sizeof(localAddr);

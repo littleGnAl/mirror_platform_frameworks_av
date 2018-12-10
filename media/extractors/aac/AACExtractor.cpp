@@ -172,7 +172,7 @@ AACExtractor::AACExtractor(
         }
 
         // Round up and get the duration
-        mFrameDurationUs = (1024 * 1000000ll + (sr - 1)) / sr;
+        mFrameDurationUs = (1024 * 1000000LL + (sr - 1)) / sr;
         duration = numFrames * mFrameDurationUs;
         mMeta.setInt64(kKeyDuration, duration);
     }

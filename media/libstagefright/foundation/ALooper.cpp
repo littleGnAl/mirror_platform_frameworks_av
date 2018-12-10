@@ -66,7 +66,7 @@ private:
 
 // static
 int64_t ALooper::GetNowUs() {
-    return systemTime(SYSTEM_TIME_MONOTONIC) / 1000ll;
+    return systemTime(SYSTEM_TIME_MONOTONIC) / 1000LL;
 }
 
 ALooper::ALooper()
@@ -208,7 +208,7 @@ bool ALooper::loop() {
 
         if (whenUs > nowUs) {
             int64_t delayUs = whenUs - nowUs;
-            mQueueChangedCondition.waitRelative(mLock, delayUs * 1000ll);
+            mQueueChangedCondition.waitRelative(mLock, delayUs * 1000LL);
 
             return true;
         }

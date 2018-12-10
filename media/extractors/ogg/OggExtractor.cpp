@@ -184,10 +184,10 @@ struct MyVorbisExtractor : public MyOggExtractor {
 
 protected:
     virtual int64_t getTimeUsOfGranule(uint64_t granulePos) const {
-        if (granulePos > INT64_MAX / 1000000ll) {
+        if (granulePos > INT64_MAX / 1000000LL) {
             return INT64_MAX;
         }
-        return granulePos * 1000000ll / mVi.rate;
+        return granulePos * 1000000LL / mVi.rate;
     }
 
     virtual status_t verifyHeader(MediaBufferBase *buffer, uint8_t type);
@@ -426,7 +426,7 @@ status_t MyOggExtractor::seekToTime(int64_t timeUs) {
             return INVALID_OPERATION;
         }
 
-        off64_t pos = timeUs * bps / 8000000ll;
+        off64_t pos = timeUs * bps / 8000000LL;
 
         ALOGV("seeking to offset %lld", (long long)pos);
         return seekToOffset(pos);
@@ -759,12 +759,12 @@ status_t MyOggExtractor::_readNextPacket(MediaBufferBase **out, bool calcVorbisT
                         mCurrentPage.mPrevPacketSize = curBlockSize;
                         mCurrentPage.mPrevPacketPos =
                                 mCurrentPage.mGranulePosition - mCurrentPageSamples;
-                        timeUs = mCurrentPage.mPrevPacketPos * 1000000ll / mVi.rate;
+                        timeUs = mCurrentPage.mPrevPacketPos * 1000000LL / mVi.rate;
                     } else {
                         // The effective block size is the average of the two overlapped blocks
                         int32_t actualBlockSize =
                                 (curBlockSize + mCurrentPage.mPrevPacketSize) / 2;
-                        timeUs = mCurrentPage.mPrevPacketPos * 1000000ll / mVi.rate;
+                        timeUs = mCurrentPage.mPrevPacketPos * 1000000LL / mVi.rate;
                         // The actual size output by the decoder will be half the effective
                         // size, due to the overlap
                         mCurrentPage.mPrevPacketPos += actualBlockSize / 2;
@@ -946,10 +946,10 @@ int64_t MyOpusExtractor::getTimeUsOfGranule(uint64_t granulePos) const {
     if (granulePos > mCodecDelay) {
         pcmSamplePosition = granulePos - mCodecDelay;
     }
-    if (pcmSamplePosition > INT64_MAX / 1000000ll) {
+    if (pcmSamplePosition > INT64_MAX / 1000000LL) {
         return INT64_MAX;
     }
-    return pcmSamplePosition * 1000000ll / kOpusSampleRate;
+    return pcmSamplePosition * 1000000LL / kOpusSampleRate;
 }
 
 status_t MyOpusExtractor::verifyHeader(MediaBufferBase *buffer, uint8_t type) {
@@ -986,7 +986,7 @@ status_t MyOpusExtractor::verifyOpusHeader(MediaBufferBase *buffer) {
     mMeta.setInt32(kKeyChannelCount, mChannelCount);
     mMeta.setInt64(kKeyOpusSeekPreRoll /* ns */, kOpusSeekPreRollUs * 1000 /* = 80 ms*/);
     mMeta.setInt64(kKeyOpusCodecDelay /* ns */,
-            mCodecDelay /* sample/s */ * 1000000000ll / kOpusSampleRate);
+            mCodecDelay /* sample/s */ * 1000000000LL / kOpusSampleRate);
 
     return OK;
 }
@@ -1140,7 +1140,7 @@ status_t MyVorbisExtractor::verifyHeader(
             if (mSource->getSize(&size) == OK) {
                 uint64_t bps = approxBitrate();
                 if (bps != 0) {
-                    mMeta.setInt64(kKeyDuration, size * 8000000ll / bps);
+                    mMeta.setInt64(kKeyDuration, size * 8000000LL / bps);
                 }
             }
             break;

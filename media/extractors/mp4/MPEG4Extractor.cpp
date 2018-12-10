@@ -4900,7 +4900,7 @@ status_t MPEG4Source::read(
 
             if (mode == ReadOptions::SEEK_CLOSEST
                 || mode == ReadOptions::SEEK_FRAME_INDEX) {
-                targetSampleTimeUs = (sampleTime * 1000000ll) / mTimescale;
+                targetSampleTimeUs = (sampleTime * 1000000LL) / mTimescale;
             }
 
 #if 0
@@ -5233,7 +5233,7 @@ status_t MPEG4Source::fragmentedRead(
             if (err != OK) {
                 return err;
             }
-            mCurrentTime = totalTime * mTimescale / 1000000ll;
+            mCurrentTime = totalTime * mTimescale / 1000000LL;
         } else {
             // without sidx boxes, we can only seek to 0
             mCurrentMoofOffset = mFirstMoofOffset;
@@ -5623,11 +5623,11 @@ static bool isCompatibleBrand(uint32_t fourcc) {
 // the metadata.
 static bool BetterSniffMPEG4(DataSourceBase *source, float *confidence) {
     // We scan up to 128 bytes to identify this file as an MP4.
-    static const off64_t kMaxScanOffset = 128ll;
+    static const off64_t kMaxScanOffset = 128LL;
 
-    off64_t offset = 0ll;
+    off64_t offset = 0LL;
     bool foundGoodFileType = false;
-    off64_t moovAtomEndOffset = -1ll;
+    off64_t moovAtomEndOffset = -1LL;
     bool done = false;
 
     while (!done && offset < kMaxScanOffset) {

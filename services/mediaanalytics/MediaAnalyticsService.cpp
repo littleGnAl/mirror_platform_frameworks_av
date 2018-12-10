@@ -83,7 +83,7 @@ namespace android {
 // age: <= 36 hours (1.5 days)
 // count: hard limit of # records
 // (0 for either of these disables that threshold)
-static const nsecs_t kMaxRecordAgeNs =  36 * 3600 * (1000*1000*1000ll);
+static const nsecs_t kMaxRecordAgeNs =  36 * 3600 * (1000*1000*1000LL);
 static const int kMaxRecords    = 0;
 
 static const char *kServiceName = "media.metrics";
