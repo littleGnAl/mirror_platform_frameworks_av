@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "ff3ff39c_a11bf74b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-12-10T16:59:41Z",
+      "side": 1,
+      "message": "There is a bug in fact: 120228073. Please add \"Bug: 120228073\" before \"Change-Id:\".",
+      "parentUuid": "9c4d9f91_a7ecd267",
+      "range": {
+        "startLine": 22,
+        "startChar": 1,
+        "endLine": 22,
+        "endChar": 10
+      },
+      "revId": "eb189267e9345f9363a3ca55db053eea1e1458e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a1138913_c9bd9096",
         "filename": "services/audiopolicy/service/AudioPolicyService.cpp",
         "patchSetId": 1
