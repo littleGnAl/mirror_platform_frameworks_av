@@ -401,19 +401,19 @@ void BlockIterator::seek(
         int64_t *actualFrameTimeUs) {
     Mutex::Autolock autoLock(mExtractor->mLock);
 
-    *actualFrameTimeUs = -1ll;
+    *actualFrameTimeUs = -1LL;
 
-    if (seekTimeUs > INT64_MAX / 1000ll ||
-            seekTimeUs < INT64_MIN / 1000ll ||
+    if (seekTimeUs > INT64_MAX / 1000LL ||
+            seekTimeUs < INT64_MIN / 1000LL ||
             (mExtractor->mSeekPreRollNs > 0 &&
-                    (seekTimeUs * 1000ll) < INT64_MIN + mExtractor->mSeekPreRollNs) ||
+                    (seekTimeUs * 1000LL) < INT64_MIN + mExtractor->mSeekPreRollNs) ||
             (mExtractor->mSeekPreRollNs < 0 &&
-                    (seekTimeUs * 1000ll) > INT64_MAX + mExtractor->mSeekPreRollNs)) {
+                    (seekTimeUs * 1000LL) > INT64_MAX + mExtractor->mSeekPreRollNs)) {
         ALOGE("cannot seek to %lld", (long long) seekTimeUs);
         return;
     }
 
-    const int64_t seekTimeNs = seekTimeUs * 1000ll - mExtractor->mSeekPreRollNs;
+    const int64_t seekTimeNs = seekTimeUs * 1000LL - mExtractor->mSeekPreRollNs;
 
     mkvparser::Segment* const pSegment = mExtractor->mSegment;
 
@@ -544,7 +544,7 @@ int64_t BlockIterator::blockTimeUs() const {
     if (mCluster == NULL || mBlockEntry == NULL) {
         return -1;
     }
-    return (mBlockEntry->GetBlock()->GetTime(mCluster) + 500ll) / 1000ll;
+    return (mBlockEntry->GetBlock()->GetTime(mCluster) + 500LL) / 1000LL;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -767,7 +767,7 @@ status_t MatroskaSource::read(
         MediaBufferBase **out, const ReadOptions *options) {
     *out = NULL;
 
-    int64_t targetSampleTimeUs = -1ll;
+    int64_t targetSampleTimeUs = -1LL;
 
     int64_t seekTimeUs;
     ReadOptions::SeekMode mode;
@@ -804,7 +804,7 @@ status_t MatroskaSource::read(
     mPendingFrames.erase(mPendingFrames.begin());
 
     if ((mType != AVC && mType != HEVC) || mNALSizeLen == 0) {
-        if (targetSampleTimeUs >= 0ll) {
+        if (targetSampleTimeUs >= 0LL) {
             frame->meta_data().setInt64(
                     kKeyTargetTime, targetSampleTimeUs);
         }
@@ -909,7 +909,7 @@ status_t MatroskaSource::read(
         frame = NULL;
     }
 
-    if (targetSampleTimeUs >= 0ll) {
+    if (targetSampleTimeUs >= 0LL) {
         buffer->meta_data().setInt64(
                 kKeyTargetTime, targetSampleTimeUs);
     }
