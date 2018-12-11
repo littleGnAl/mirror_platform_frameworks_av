@@ -88,7 +88,7 @@ static int64_t getNowUs() {
     struct timeval tv;
     gettimeofday(&tv, NULL);
 
-    return (int64_t)tv.tv_usec + tv.tv_sec * 1000000ll;
+    return (int64_t)tv.tv_usec + tv.tv_sec * 1000000LL;
 }
 
 static int CompareIncreasing(const int64_t *a, const int64_t *b) {
@@ -222,7 +222,7 @@ static void playSource(sp<MediaSource> &source) {
 
         status_t finalStatus;
         while (!player->reachedEOS(&finalStatus)) {
-            usleep(100000ll);
+            usleep(100000LL);
         }
 
         delete player;
@@ -530,7 +530,7 @@ static void writeSourcesToMP4(
 #endif
 
     // at most one minute.
-    writer->setMaxFileDuration(60000000ll);
+    writer->setMaxFileDuration(60000000LL);
 
     for (size_t i = 0; i < sources.size(); ++i) {
         sp<MediaSource> source = sources.editItemAt(i);
@@ -557,7 +557,7 @@ static void performSeekTest(const sp<MediaSource> &source) {
     CHECK(source->getFormat()->findInt64(kKeyDuration, &durationUs));
 
     for (int64_t seekTimeUs = 0; seekTimeUs <= durationUs;
-            seekTimeUs += 60000ll) {
+            seekTimeUs += 60000LL) {
         MediaSource::ReadOptions options;
         options.setSeekTo(
                 seekTimeUs, MediaSource::ReadOptions::SEEK_PREVIOUS_SYNC);
@@ -873,7 +873,7 @@ int main(int argc, char **argv) {
             CHECK_GE(fd, 0);
 
             off64_t fileSize = lseek64(fd, 0, SEEK_END);
-            CHECK_GE(fileSize, 0ll);
+            CHECK_GE(fileSize, 0LL);
 
             CHECK_EQ(retriever->setDataSource(fd, 0, fileSize), (status_t)OK);
 
