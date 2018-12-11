@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08f10815_10723d4d",
+        "filename": "services/audioflinger/BufLog.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-12-11T22:43:51Z",
+      "side": 1,
+      "message": "please remove the L, thanks!",
+      "range": {
+        "startLine": 118,
+        "startChar": 18,
+        "endLine": 118,
+        "endChar": 19
+      },
+      "revId": "9466c23b47ec5ca051412d18a3ec3b270180eace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
