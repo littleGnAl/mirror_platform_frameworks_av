@@ -70,12 +70,12 @@ DEFINE_WRITE(uint64_t)
 DEFINE_WRITE(int64_t)
 
 status_t EndianOutput::write(const float* buf, size_t offset, size_t count) {
-    assert(sizeof(float) == sizeof(uint32_t));
+    static_assert(sizeof(float) == sizeof(uint32_t), "");
     return writeHelper<uint32_t>(reinterpret_cast<const uint32_t*>(buf), offset, count);
 }
 
 status_t EndianOutput::write(const double* buf, size_t offset, size_t count) {
-    assert(sizeof(double) == sizeof(uint64_t));
+    static_assert(sizeof(double) == sizeof(uint64_t), "");
     return writeHelper<uint64_t>(reinterpret_cast<const uint64_t*>(buf), offset, count);
 }
 
