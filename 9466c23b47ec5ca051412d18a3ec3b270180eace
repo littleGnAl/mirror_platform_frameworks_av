@@ -22,6 +22,30 @@
       "revId": "9466c23b47ec5ca051412d18a3ec3b270180eace",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc3967a5_78b9361d",
+        "filename": "services/audioflinger/BufLog.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1052399
+      },
+      "writtenOn": "2018-12-11T22:56:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "08f10815_10723d4d",
+      "range": {
+        "startLine": 118,
+        "startChar": 18,
+        "endLine": 118,
+        "endChar": 19
+      },
+      "revId": "9466c23b47ec5ca051412d18a3ec3b270180eace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
