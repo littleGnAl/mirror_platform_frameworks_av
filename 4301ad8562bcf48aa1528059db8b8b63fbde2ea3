@@ -34,6 +34,24 @@
       "revId": "4301ad8562bcf48aa1528059db8b8b63fbde2ea3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca2a0a83_6afec208",
+        "filename": "media/ndk/libmediandk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1026966
+      },
+      "writtenOn": "2018-12-11T06:30:27Z",
+      "side": 1,
+      "message": "One thing to note is that in the original change, this was incorrectly marked as 21 instead of 28. I am not sure whether fixing these annotation in aosp is meaningful, but fixed header file also.\n\nFor downstream branch, uploaded ag/5772526.",
+      "parentUuid": "3b2e9178_c54b0afb",
+      "revId": "4301ad8562bcf48aa1528059db8b8b63fbde2ea3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
