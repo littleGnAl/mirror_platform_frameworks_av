@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "afc4292f_25f6704e",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2018-12-11T18:23:47Z",
+      "side": 1,
+      "message": "Convert with libYUV method should only be called when USE_LIBYUV is defined, see above line 179.\n\nAlso, convertYUV420SemiPlanar and convertYUV420SemiPlanarUseLibYUV should both support the two destination formats advertised (RGB565, RGBa8888) (see convertYUV420PlanarUseLibYUV, convertYUV420Planar). Here convertYUV420SemiPlanarUseLibYUV only supported RGB8888 dst, while convertYUV420Planar only supported RGB565 dst.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 56
+      },
+      "revId": "5ef35f2d8d6b779f2068335a1381bc563192b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5709811a_89db67f5",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2018-12-11T18:23:47Z",
+      "side": 1,
+      "message": "this line is \u003e 100 char long",
+      "range": {
+        "startLine": 335,
+        "startChar": 0,
+        "endLine": 335,
+        "endChar": 130
+      },
+      "revId": "5ef35f2d8d6b779f2068335a1381bc563192b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
