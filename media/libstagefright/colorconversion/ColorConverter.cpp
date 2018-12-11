@@ -25,6 +25,7 @@
 #include <media/stagefright/MediaErrors.h>
 
 #include "libyuv/convert_from.h"
+#include "libyuv/convert_argb.h"
 #include "libyuv/video_common.h"
 #include <functional>
 #include <sys/time.h>
@@ -71,9 +72,12 @@ bool ColorConverter::isValid() const {
 
         case OMX_COLOR_FormatCbYCrY:
         case OMX_QCOM_COLOR_FormatYVU420SemiPlanar:
-        case OMX_COLOR_FormatYUV420SemiPlanar:
         case OMX_TI_COLOR_FormatYUV420PackedSemiPlanar:
             return mDstFormat == OMX_COLOR_Format16bitRGB565;
+
+        case OMX_COLOR_FormatYUV420SemiPlanar:
+            return mDstFormat == OMX_COLOR_Format16bitRGB565
+                    || mDstFormat == OMX_COLOR_Format32BitRGBA8888;
 
         default:
             return false;
@@ -201,7 +205,10 @@ status_t ColorConverter::convert(
             break;
 
         case OMX_COLOR_FormatYUV420SemiPlanar:
-            err = convertYUV420SemiPlanar(src, dst);
+            if (mDstFormat == OMX_COLOR_Format32BitRGBA8888)
+                err = convertYUV420SemiPlanarUseLibYUV(src, dst);
+            else
+                err = convertYUV420SemiPlanar(src, dst);
             break;
 
         case OMX_TI_COLOR_FormatYUV420PackedSemiPlanar:
@@ -310,6 +317,22 @@ status_t ColorConverter::convertYUV420PlanarUseLibYUV(
     default:
         return ERROR_UNSUPPORTED;
     }
+
+    return OK;
+}
+
+status_t ColorConverter::convertYUV420SemiPlanarUseLibYUV(
+        const BitmapParams &src, const BitmapParams &dst) {
+    uint8_t *dst_ptr = (uint8_t *)dst.mBits
+        + dst.mCropTop * dst.mStride + dst.mCropLeft * dst.mBpp;
+
+    const uint8_t *src_y =
+        (const uint8_t *)src.mBits + src.mCropTop * src.mStride + src.mCropLeft;
+
+    const uint8_t *src_u =
+        (const uint8_t *)src.mBits + src.mStride * src.mHeight;
+
+    libyuv::NV12ToARGB(src_y, src.mStride, src_u, src.mStride , (uint8 *)dst_ptr, dst.mStride, src.cropWidth(), src.cropHeight());
 
     return OK;
 }
