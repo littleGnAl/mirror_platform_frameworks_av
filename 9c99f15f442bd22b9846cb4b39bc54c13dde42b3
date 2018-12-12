@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fbdfde87_e328ac4e",
+        "filename": "media/libaudioprocessing/BufferProviders.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-12-12T19:21:32Z",
+      "side": 1,
+      "message": "prefer to have the containing directory specified as well, if this isn\u0027t a system include.",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "9c99f15f442bd22b9846cb4b39bc54c13dde42b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
