@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b6bd2c3_e930ad79",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 340,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2018-12-12T16:24:08Z",
+      "side": 1,
+      "message": "This doesn\u0027t account for crops.",
+      "range": {
+        "startLine": 338,
+        "startChar": 0,
+        "endLine": 340,
+        "endChar": 0
+      },
+      "revId": "7a71c12af687ac31fd51f68fa7eb47573611472e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
