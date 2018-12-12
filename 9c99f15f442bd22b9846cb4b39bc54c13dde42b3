@@ -22,6 +22,30 @@
       "revId": "9c99f15f442bd22b9846cb4b39bc54c13dde42b3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53b1d68a_d2a9c7dc",
+        "filename": "media/libaudioprocessing/BufferProviders.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2018-12-12T20:30:59Z",
+      "side": 1,
+      "message": "Then external/sonic will need to change in order to export a header that has a prefix. You should not be using absolute paths from the top of the source tree.",
+      "parentUuid": "fbdfde87_e328ac4e",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 18
+      },
+      "revId": "9c99f15f442bd22b9846cb4b39bc54c13dde42b3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
