@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5168b1d2_a4bfab0e",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1391132
+      },
+      "writtenOn": "2018-12-12T11:57:58Z",
+      "side": 1,
+      "message": "Hi Chong,\n\nplease review patch set 4, thanks a lot.",
+      "parentUuid": "afc4292f_25f6704e",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 56
+      },
+      "revId": "5ef35f2d8d6b779f2068335a1381bc563192b152",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5709811a_89db67f5",
         "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
         "patchSetId": 3
