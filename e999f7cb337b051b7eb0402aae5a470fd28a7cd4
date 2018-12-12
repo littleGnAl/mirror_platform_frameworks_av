@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "81070228_6d636130",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1406842
+      },
+      "writtenOn": "2018-12-12T11:35:20Z",
+      "side": 1,
+      "message": "Do not check audio policy",
+      "parentUuid": "d452ddca_d462242a",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 36
+      },
+      "revId": "e999f7cb337b051b7eb0402aae5a470fd28a7cd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fff79c53_7ce88265",
         "filename": "media/libaudioclient/IAudioPolicyService.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2018-12-11T17:16:06Z",
       "side": 1,
       "message": "add SYSTEM_READY here\n\nalso skip returning a reply below for SYSTEM_READY as this is a oneway call:\n        if (code !\u003d SYSTEM_READY) {\n             reply-\u003ewriteInt32(static_cast\u003cint32_t\u003e (INVALID_OPERATION));\n        }",
+      "range": {
+        "startLine": 947,
+        "startChar": 13,
+        "endLine": 947,
+        "endChar": 40
+      },
+      "revId": "e999f7cb337b051b7eb0402aae5a470fd28a7cd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56784773_88acb97b",
+        "filename": "media/libaudioclient/IAudioPolicyService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1406842
+      },
+      "writtenOn": "2018-12-12T11:35:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fff79c53_7ce88265",
       "range": {
         "startLine": 947,
         "startChar": 13,
