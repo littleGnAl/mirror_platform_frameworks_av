@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "3369b378_bfa7be98",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2018-12-12T20:21:19Z",
+      "side": 1,
+      "message": "Bug: 38185944",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 15
+      },
+      "revId": "3819860ccdb3230033c2b975c695ed7c22d2d533",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c1372f2_3b1d23fc",
         "filename": "media/libstagefright/httplive/M3UParser.cpp",
         "patchSetId": 3
