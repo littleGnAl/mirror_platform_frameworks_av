@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "0a2e6a97_6f09fe36",
+        "filename": "media/libstagefright/httplive/M3UParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2018-12-13T00:12:07Z",
+      "side": 1,
+      "message": "if mItems.size() \u003d\u003d 0, we don\u0027t have any items, let along a first and last.\nBailing out here seems right to me.\n\n\nOne could argue that we should perhaps also do:   mFirstSeqNumber \u003d mLastSeqNumber \u003d -1; \nat this point to indicate that there are no items what-so-ever.\nthat depends on whether we do any more processing after the ERROR_MALFORMED or if that means that this instance is irrevocably broken and we\u0027ll be discarding it soon.",
+      "parentUuid": "4c1372f2_3b1d23fc",
+      "range": {
+        "startLine": 696,
+        "startChar": 0,
+        "endLine": 699,
+        "endChar": 9
+      },
+      "revId": "3819860ccdb3230033c2b975c695ed7c22d2d533",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce2b400c_a73ebeb0",
         "filename": "media/libstagefright/httplive/M3UParser.cpp",
         "patchSetId": 3
@@ -83,6 +107,30 @@
       "side": 1,
       "message": "by legacy M behavior, I mean not triggering unsigned overflow.",
       "parentUuid": "ce2b400c_a73ebeb0",
+      "range": {
+        "startLine": 707,
+        "startChar": 42,
+        "endLine": 707,
+        "endChar": 43
+      },
+      "revId": "3819860ccdb3230033c2b975c695ed7c22d2d533",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6803c3dc_1699492e",
+        "filename": "media/libstagefright/httplive/M3UParser.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 707,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2018-12-13T00:12:07Z",
+      "side": 1,
+      "message": "keep the integer sanitizations enabled.",
+      "parentUuid": "ea3840b4_3b5dbc4a",
       "range": {
         "startLine": 707,
         "startChar": 42,
