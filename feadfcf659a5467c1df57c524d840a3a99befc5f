@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a956e35_7ff5af4e",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1042,
+      "author": {
+        "id": 1406842
+      },
+      "writtenOn": "2018-12-14T03:32:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c81b201_6909a764",
+      "range": {
+        "startLine": 1042,
+        "startChar": 0,
+        "endLine": 1042,
+        "endChar": 30
+      },
+      "revId": "feadfcf659a5467c1df57c524d840a3a99befc5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "15e7f819_efa53353",
         "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2018-12-12T17:22:57Z",
       "side": 1,
       "message": "I think we can leverage already existing variable mObserverRegistered in AudioPolicyService::UidPolicy. We just need AudioPolicyService::UidPolicy::registerSelf to check it (under lock) to avoid calling registerUidObserver twice. This is what CameraService::UidPolicy::registerSelf does, see https://android.googlesource.com/platform/frameworks/av/+/master/services/camera/libcameraservice/CameraService.cpp#2388",
+      "range": {
+        "startLine": 1043,
+        "startChar": 8,
+        "endLine": 1043,
+        "endChar": 20
+      },
+      "revId": "feadfcf659a5467c1df57c524d840a3a99befc5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bc0727a_af31978a",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1406842
+      },
+      "writtenOn": "2018-12-14T03:32:30Z",
+      "side": 1,
+      "message": "We add lock at the beginning in AudioPolicyService::UidPolicy::registerSelf() and check mObserverRegistered because AudioPolicyService::systemReady and  AudioPolicyService::UidPolicy::isUidActive  may have synchronized problem if audio sever crash and restart while an audio record already existed. \nAlso we keep mSystemReady in case some days later we need to do more work in systemReady and avoid calling systemReady twice.",
+      "parentUuid": "15e7f819_efa53353",
       "range": {
         "startLine": 1043,
         "startChar": 8,
