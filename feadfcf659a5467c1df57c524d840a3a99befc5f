@@ -93,6 +93,53 @@
       "revId": "feadfcf659a5467c1df57c524d840a3a99befc5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4a8bfff_8a9ff365",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1043,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-12-14T17:32:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1bc0727a_af31978a",
+      "range": {
+        "startLine": 1043,
+        "startChar": 8,
+        "endLine": 1043,
+        "endChar": 20
+      },
+      "revId": "feadfcf659a5467c1df57c524d840a3a99befc5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "efbd8938_bb6518b4",
+        "filename": "services/audiopolicy/service/AudioPolicyService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-12-14T17:32:59Z",
+      "side": 1,
+      "message": "Eric, Svetoslav, I\u0027m curious why mUidPolicy gets initialized outside of mLock here, unlike other protected variables. Should this be fixed?",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 37
+      },
+      "revId": "feadfcf659a5467c1df57c524d840a3a99befc5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
