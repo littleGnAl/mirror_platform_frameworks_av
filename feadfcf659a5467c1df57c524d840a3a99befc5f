@@ -140,6 +140,30 @@
       "revId": "feadfcf659a5467c1df57c524d840a3a99befc5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5be53c9_68a1d696",
+        "filename": "services/audiopolicy/service/AudioPolicyService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2018-12-18T18:15:56Z",
+      "side": 1,
+      "message": "I guess it was an oversight given this is executed in onFirstref the need for the lock is not super important but this could be done under the lock for consistency.",
+      "parentUuid": "efbd8938_bb6518b4",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 37
+      },
+      "revId": "feadfcf659a5467c1df57c524d840a3a99befc5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
