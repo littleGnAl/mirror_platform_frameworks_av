@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "e8c24325_a58af314",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 461,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-12-18T19:26:16Z",
+      "side": 1,
+      "message": "extra space before \u0027\u003d\u003d\u0027",
+      "range": {
+        "startLine": 461,
+        "startChar": 11,
+        "endLine": 461,
+        "endChar": 12
+      },
+      "revId": "feadfcf659a5467c1df57c524d840a3a99befc5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f653526_4055a5d1",
+        "filename": "media/libaudioclient/IAudioPolicyService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-12-18T19:26:16Z",
+      "side": 1,
+      "message": "I think it\u0027s better to make the client part of \u0027systemReady\u0027 to actually return the result of the remote call.",
+      "range": {
+        "startLine": 953,
+        "startChar": 16,
+        "endLine": 953,
+        "endChar": 43
+      },
+      "revId": "feadfcf659a5467c1df57c524d840a3a99befc5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "328442bf_8cc0cc8b",
+        "filename": "media/libaudioclient/IAudioPolicyService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1604,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-12-18T19:26:16Z",
+      "side": 1,
+      "message": "I\u0027m not sure why to ignore the result from \u0027systemReady\u0027 call here. It might be helpful for the caller to know that they are calling too early.",
+      "range": {
+        "startLine": 1604,
+        "startChar": 12,
+        "endLine": 1604,
+        "endChar": 26
+      },
+      "revId": "feadfcf659a5467c1df57c524d840a3a99befc5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c81b201_6909a764",
         "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
         "patchSetId": 4
@@ -164,6 +233,30 @@
       "revId": "feadfcf659a5467c1df57c524d840a3a99befc5f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13656b66_87f14bcb",
+        "filename": "services/audiopolicy/service/AudioPolicyService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2018-12-18T19:26:16Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e5be53c9_68a1d696",
+      "range": {
+        "startLine": 91,
+        "startChar": 4,
+        "endLine": 91,
+        "endChar": 37
+      },
+      "revId": "feadfcf659a5467c1df57c524d840a3a99befc5f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
