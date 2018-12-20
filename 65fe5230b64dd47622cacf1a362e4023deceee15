@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "030ead6a_7dd76ae9",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1391132
+      },
+      "writtenOn": "2018-12-20T02:49:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "10b75d5a_d27dcfdd",
+      "range": {
+        "startLine": 334,
+        "startChar": 44,
+        "endLine": 334,
+        "endChar": 45
+      },
+      "revId": "65fe5230b64dd47622cacf1a362e4023deceee15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1fb0ac79_3a74423b",
         "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "65fe5230b64dd47622cacf1a362e4023deceee15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0117dc4_485b8246",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1391132
+      },
+      "writtenOn": "2018-12-20T02:49:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fb0ac79_3a74423b",
+      "range": {
+        "startLine": 342,
+        "startChar": 24,
+        "endLine": 342,
+        "endChar": 25
+      },
+      "revId": "65fe5230b64dd47622cacf1a362e4023deceee15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
