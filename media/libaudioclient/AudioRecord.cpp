@@ -20,6 +20,7 @@
 
 #include <inttypes.h>
 #include <android-base/macros.h>
+#include <processgroup/sched_policy.h>
 #include <sys/resource.h>
 
 #include <binder/IPCThreadState.h>

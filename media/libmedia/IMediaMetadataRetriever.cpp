@@ -18,6 +18,7 @@
 #include <inttypes.h>
 #include <stdint.h>
 #include <sys/types.h>
+#include <processgroup/sched_policy.h>
 
 #include <binder/Parcel.h>
 #include <media/IDataSource.h>

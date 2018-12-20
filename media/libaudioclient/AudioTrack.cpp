@@ -20,6 +20,7 @@
 
 #include <inttypes.h>
 #include <math.h>
+#include <processgroup/sched_policy.h>
 #include <sys/resource.h>
 
 #include <android-base/macros.h>
