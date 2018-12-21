@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "e0f18344_4dc401d8",
+        "filename": "media/libstagefright/CameraSourceTimeLapse.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1415958
+      },
+      "writtenOn": "2018-12-21T09:20:43Z",
+      "side": 1,
+      "message": "mLastReadBufferCopy-\u003erelease() would call signalBufferReturned() where the handle would be closed and deleted. We should not do it here.",
+      "parentUuid": "1257d375_665f3860",
+      "revId": "1a3d94a6c38c3b603b4a95e54f2e2b6108bd0d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0bff76f2_094c2c68",
         "filename": "media/libstagefright/CameraSourceTimeLapse.cpp",
         "patchSetId": 2
@@ -33,6 +51,24 @@
       "revId": "1a3d94a6c38c3b603b4a95e54f2e2b6108bd0d9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75a55f33_d2ce7386",
+        "filename": "media/libstagefright/CameraSourceTimeLapse.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1415958
+      },
+      "writtenOn": "2018-12-21T09:20:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bff76f2_094c2c68",
+      "revId": "1a3d94a6c38c3b603b4a95e54f2e2b6108bd0d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -59,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "d7daa85a_7be9e3b8",
+        "filename": "media/libstagefright/CameraSourceTimeLapse.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1415958
+      },
+      "writtenOn": "2018-12-21T09:20:43Z",
+      "side": 1,
+      "message": "The variable mForceRead and mLastReadBufferCopy intend to make CameraSourceTimeLapse::read() return quickly and accelerate stop process. After mLastReadBufferCopy gets released in signalBufferReturned(), we need to read next buffer and fulfill mLastReadBufferCopy again immediately. So we set mForceRead true here.",
+      "parentUuid": "9dbd8106_67071380",
+      "range": {
+        "startLine": 182,
+        "startChar": 8,
+        "endLine": 182,
+        "endChar": 25
+      },
+      "revId": "1a3d94a6c38c3b603b4a95e54f2e2b6108bd0d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1857aa13_c337ee49",
         "filename": "media/libstagefright/CameraSourceTimeLapse.cpp",
         "patchSetId": 2
@@ -82,6 +142,30 @@
     },
     {
       "key": {
+        "uuid": "dc809f97_dba71001",
+        "filename": "media/libstagefright/CameraSourceTimeLapse.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1415958
+      },
+      "writtenOn": "2018-12-21T09:20:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1857aa13_c337ee49",
+      "range": {
+        "startLine": 192,
+        "startChar": 16,
+        "endLine": 192,
+        "endChar": 32
+      },
+      "revId": "1a3d94a6c38c3b603b4a95e54f2e2b6108bd0d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3915615_a48338c5",
         "filename": "media/libstagefright/CameraSourceTimeLapse.cpp",
         "patchSetId": 2
@@ -96,6 +180,24 @@
       "revId": "1a3d94a6c38c3b603b4a95e54f2e2b6108bd0d9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a31a447_6abf1cdd",
+        "filename": "media/libstagefright/CameraSourceTimeLapse.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1415958
+      },
+      "writtenOn": "2018-12-21T09:20:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3915615_a48338c5",
+      "revId": "1a3d94a6c38c3b603b4a95e54f2e2b6108bd0d9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
