@@ -69,6 +69,8 @@ cc_library_shared {
         cfi: true,
     },
 
+    native_coverage: false,
+
 }
 
 subdirs = ["*"]
