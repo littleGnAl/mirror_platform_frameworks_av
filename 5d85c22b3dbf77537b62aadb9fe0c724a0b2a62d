@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "006a572b_576817cc",
+        "filename": "media/libmediaextractor/include/media/MediaExtractor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1238642
+      },
+      "writtenOn": "2018-12-21T08:50:50Z",
+      "side": 1,
+      "message": "The reasons why the function CanHanleDrmFunc is devided from SnifferFunc are following:\n\n1. Reduce the time of Sniff function (performance)\nIf the UUID for MediaDrm is set and the suitable Extractor exists according to its UUID,\nit is enough to select corresponding extractor and it is not necessary to do sniffer function.\nIt can reduce the time for sniff that takes some time to select the extractor.\n\n2. Avoid the bug\nThere is the possibility that encrypted dataSource has the similar structure with\nTS data or other decrypted data format and Sniffer function would select wrong MediaExtractor.\n\nCould you please let me know more details of what you expected?",
+      "parentUuid": "8d964ae0_43b87067",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 76
+      },
+      "revId": "5d85c22b3dbf77537b62aadb9fe0c724a0b2a62d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b143eb50_c4b9a07f",
         "filename": "media/libmediaextractor/include/media/MediaExtractor.h",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "5d85c22b3dbf77537b62aadb9fe0c724a0b2a62d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83278f63_ecaac562",
+        "filename": "media/libmediaextractor/include/media/MediaExtractor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1238642
+      },
+      "writtenOn": "2018-12-21T08:50:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b143eb50_c4b9a07f",
+      "range": {
+        "startLine": 127,
+        "startChar": 49,
+        "endLine": 127,
+        "endChar": 87
+      },
+      "revId": "5d85c22b3dbf77537b62aadb9fe0c724a0b2a62d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
