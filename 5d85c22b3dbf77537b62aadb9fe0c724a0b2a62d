@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0c639c0f_d5b323ca",
+        "filename": "media/libmediaextractor/include/media/MediaExtractor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2018-12-21T15:54:36Z",
+      "side": 1,
+      "message": "Re: (1) if I\u0027m understanding your patch correctly, this would mean there can only ever be one extractor that supports an encrypted datasource. That seems undesirable. What if someone wants to support both encrypted mp4 and encrypted mkv?\nRe: (2) seems extremely unlikely, since encrypted data will look like random data and never match any other file format. Even if it were to hit the one-in-4-billion chance that the first 4 encrypted bytes look like \"\\x00\\x00\\x01\\xba\", this should be resolved by returning a higher confidence level for MediaDrm streams.\n\nFinally, it appears that CanHandleDrmFunc doesn\u0027t even actually look at the data (since it doesn\u0027t get the datasource like SnifferFunc), it matches solely based on whether the stream is encrypted.",
+      "parentUuid": "006a572b_576817cc",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 76
+      },
+      "revId": "5d85c22b3dbf77537b62aadb9fe0c724a0b2a62d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b143eb50_c4b9a07f",
         "filename": "media/libmediaextractor/include/media/MediaExtractor.h",
         "patchSetId": 3
