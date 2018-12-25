@@ -278,6 +278,10 @@ status_t AACSource::read(
     int64_t seekTimeUs;
     ReadOptions::SeekMode mode;
     if (options && options->getSeekTo(&seekTimeUs, &mode)) {
+        int64_t duration;
+        if (mMeta.findInt64(kKeyDuration, &duration)) {
+            seekTimeUs =  (seekTimeUs >= duration) ? (duration - (mFrameDurationUs<<2)) : seekTimeUs;
+        }
         if (mFrameDurationUs > 0) {
             int64_t seekFrame = seekTimeUs / mFrameDurationUs;
             if (seekFrame < 0 || seekFrame >= (int64_t)mOffsetVector.size()) {
