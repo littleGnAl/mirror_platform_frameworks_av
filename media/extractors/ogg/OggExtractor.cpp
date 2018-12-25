@@ -313,6 +313,7 @@ MyOggExtractor::MyOggExtractor(
       mSeekPreRollUs(seekPreRollUs),
       mFirstDataOffset(-1) {
     mCurrentPage.mNumSegments = 0;
+    mCurrentPage.mFlags = 0;
 
     vorbis_info_init(&mVi);
     vorbis_comment_init(&mVc);
@@ -395,19 +396,18 @@ status_t MyOggExtractor::findPrevGranulePosition(
 
     ALOGV("prevPageOffset at %lld, pageOffset at %lld",
             (long long)prevPageOffset, (long long)pageOffset);
-
+    uint8_t flag = 0;
     for (;;) {
         Page prevPage;
         ssize_t n = readPage(prevPageOffset, &prevPage);
 
         if (n <= 0) {
-            return (status_t)n;
+            return (flag & 0x4) ? OK : (status_t)n;
         }
-
+        flag = prevPage.mFlags;
         prevPageOffset += n;
-
+        *granulePos = prevPage.mGranulePosition;
         if (prevPageOffset == pageOffset) {
-            *granulePos = prevPage.mGranulePosition;
             return OK;
         }
     }
@@ -783,6 +783,7 @@ status_t MyOggExtractor::_readNextPacket(MediaBufferBase **out, bool calcVorbisT
         CHECK_EQ(mNextLaceIndex, mCurrentPage.mNumSegments);
 
         mOffset += mCurrentPageSize;
+        uint8_t flag = mCurrentPage.mFlags;
         ssize_t n = readPage(mOffset, &mCurrentPage);
 
         if (n <= 0) {
@@ -793,7 +794,7 @@ status_t MyOggExtractor::_readNextPacket(MediaBufferBase **out, bool calcVorbisT
 
             ALOGV("readPage returned %zd", n);
 
-            return n < 0 ? n : (status_t)ERROR_END_OF_STREAM;
+            return (n < 0 && !(flag & 0x4)) ? n : (status_t)ERROR_END_OF_STREAM;
         }
 
         // Prevent a harmless unsigned integer overflow by clamping to 0
