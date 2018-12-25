@@ -37,6 +37,7 @@
 #include <media/stagefright/MetaData.h>
 #include <utils/String8.h>
 
+#include <media/stagefright/foundation/ABitReader.h>
 #include "mpeg2ts/AnotherPacketSource.h"
 #include "mpeg2ts/ATSParser.h"
 
@@ -129,7 +130,8 @@ MPEG2TSExtractor::MPEG2TSExtractor(DataSourceBase *source)
     : mDataSource(source),
       mParser(new ATSParser),
       mLastSyncEvent(0),
-      mOffset(0) {
+      mOffset(0),
+      mEstimateDuration(-1) {
     init();
 }
 
@@ -274,7 +276,7 @@ void MPEG2TSExtractor::init() {
         List<int64_t> durations;
         // Estimate duration --- stabilize until you get <500ms deviation.
         while (feedMore() == OK
-                && ALooper::GetNowUs() - startTime <= 2000000ll) {
+                && ALooper::GetNowUs() - startTime <= 3000000ll) {
             if (mSeekSyncPoints->size() > prevSyncSize) {
                 prevSyncSize = mSeekSyncPoints->size();
                 int64_t diffUs = mSeekSyncPoints->keyAt(prevSyncSize - 1)
@@ -296,13 +298,29 @@ void MPEG2TSExtractor::init() {
                         }
                     }
                     if (max - min < 500 * 1000) {
-                        durationUs = currentDurationUs;
+                        //durationUs = currentDurationUs;
                         break;
                     }
                 }
             }
         }
-
+        if(durationUs < 0){
+        while (feedMore() == OK
+                && ALooper::GetNowUs() - startTime <= 3000000ll) {
+                if(mEstimateDuration < 0 ){
+                    int64_t end_PTS = estimateDuration(true);
+                    ALOGD("end_PTS = %f", end_PTS / 90000.0);
+                    int64_t start_PTS = estimateDuration(false);
+                    ALOGD("start_PTS = %f", start_PTS / 90000.0);
+                    durationUs = end_PTS - start_PTS;
+                    mEstimateDuration = durationUs;
+            }else{
+               durationUs = mEstimateDuration;
+            }
+            durations.push_back(durationUs);
+            break;
+          }
+        }
         bool found = false;
         for (int i = 0; i < ATSParser::NUM_SOURCE_TYPES; ++i) {
             ATSParser::SourceType type = static_cast<ATSParser::SourceType>(i);
@@ -334,6 +352,128 @@ void MPEG2TSExtractor::init() {
 
     ALOGI("haveAudio=%d, haveVideo=%d, elaspedTime=%" PRId64,
             haveAudio, haveVideo, ALooper::GetNowUs() - startTime);
+}
+
+int64_t MPEG2TSExtractor::estimateDuration(bool flip) {
+    Mutex::Autolock autoLock(mLock);
+    int64_t  filesize;
+    int64_t  offset = 0;
+    uint64_t PTS = 0;
+    int retry=1;
+    status_t ret = mDataSource->getSize(&filesize);
+    if (ret != OK) {
+        ALOGE("Failed to get file size");
+        return ERROR_MALFORMED;
+    }
+    uint8_t  packet[kTSPacketSize];
+    unsigned payload_unit_start_indicator = 0;
+    unsigned PID = 0;
+    unsigned adaptation_field_control = 0;
+    int64_t startTime = ALooper::GetNowUs();
+    while (ALooper::GetNowUs() - startTime < 4000000ll) {
+        if(flip == true){
+            ALOGV("-------Calculate end_PTS-------");
+            offset = filesize - kTSPacketSize*retry;
+        }else{
+            offset += kTSPacketSize;
+            ALOGV("-------Calculate start_PTS-------");
+        }
+        ssize_t n = mDataSource->readAt(offset, packet, kTSPacketSize);
+        if (n < (ssize_t)kTSPacketSize) {
+            return (n < 0) ? (status_t)n : ERROR_END_OF_STREAM;
+        }
+        ABitReader* br = new ABitReader((const uint8_t *)packet, kTSPacketSize);
+        unsigned sync_byte = br->getBits(8);
+        CHECK_EQ(sync_byte, 0x47u);
+        sync_byte++;
+        br->skipBits(1);
+        payload_unit_start_indicator = br->getBits(1);
+        br->skipBits(1);
+        PID = br->getBits(13);
+        br->skipBits(2);
+        adaptation_field_control = br->getBits(2);
+        ALOGV("%s %d payload_unit_start_indicator = %d", __FUNCTION__, __LINE__,
+            payload_unit_start_indicator);
+        ALOGV("%s %d adaptation_field_control = %d PID = %d", __FUNCTION__, __LINE__,
+            adaptation_field_control,PID);
+        if ((payload_unit_start_indicator == 1) && ((adaptation_field_control == 1) || (adaptation_field_control == 3)) &&
+            (PID != 0x00u) && (PID != 0x01u) && (PID != 0x02u)&& (PID != 0x11u)) {
+            delete br;
+            br = new ABitReader((const uint8_t *)packet, kTSPacketSize);
+            br->skipBits(8 + 3 + 13);
+            br->skipBits(2);
+            adaptation_field_control = br->getBits(2);
+            ALOGV("%s %d adaptation_field_control = %u",  __FUNCTION__, __LINE__, adaptation_field_control);
+            br->skipBits(4);
+            if (adaptation_field_control == 2 || adaptation_field_control == 3) {
+               unsigned adaptation_field_length = br->getBits(8);
+               if (adaptation_field_length > 0) {
+                   br->skipBits(adaptation_field_length * 8);
+               }
+               ALOGV("%s %d adaptation_field_length = %u",  __FUNCTION__, __LINE__, adaptation_field_length);
+            }
+            if (adaptation_field_control == 1 || adaptation_field_control == 3) {
+                unsigned packet_start_code_prefix = br->getBits(24);
+
+                ALOGV("%s %d packet_start_code_prefix = 0x%08x",  __FUNCTION__, __LINE__, packet_start_code_prefix);
+
+                if(packet_start_code_prefix != 0x000001u){
+                    delete br;
+                    ALOGV("packet_start_code_prefix = %d [Warning Not equal 0x000001u]",packet_start_code_prefix);
+                    continue;
+                }
+
+                unsigned stream_id = br->getBits(8);
+                ALOGV("%s %d stream_id = 0x%02x",  __FUNCTION__, __LINE__, stream_id);
+                br->skipBits(16);
+
+                if (stream_id != 0xbc            // program_stream_map
+                        && stream_id != 0xbe     // padding_stream
+                        && stream_id != 0xbf     // private_stream_2
+                        && stream_id != 0xf0     // ECM
+                        && stream_id != 0xf1     // EMM
+                        && stream_id != 0xff     // program_stream_directory
+                        && stream_id != 0xf2     // DSMCC
+                        && stream_id != 0xf8) {  // H.222.1 type E
+                    CHECK_EQ(br->getBits(2), 2u);
+                    br->skipBits(6);
+                    unsigned PTS_DTS_flags = br->getBits(2);
+                    ALOGV("%s %d PTS_DTS_flags = %u",  __FUNCTION__, __LINE__, PTS_DTS_flags);
+                    br->skipBits(6);
+
+                    unsigned PES_header_data_length = br->getBits(8);
+
+                    unsigned optional_bytes_remaining = PES_header_data_length;
+
+                    if (PTS_DTS_flags == 2 || PTS_DTS_flags == 3) {
+                        ALOGV("%s %d optional_bytes_remaining = %x", __FUNCTION__, __LINE__, optional_bytes_remaining);
+                        CHECK_GE(optional_bytes_remaining, 5u);
+                        CHECK_EQ(br->getBits(4), PTS_DTS_flags);
+                        PTS = ((uint64_t)br->getBits(3)) << 30;
+                        CHECK_EQ(br->getBits(1), 1u);
+
+                        PTS |= ((uint64_t)br->getBits(15)) << 15;
+                        CHECK_EQ(br->getBits(1), 1u);
+
+                        PTS |= br->getBits(15);
+                        CHECK_EQ(br->getBits(1), 1u);
+
+                        ALOGV("%s %d PTS = %.2f secs",  __FUNCTION__, __LINE__, PTS / 90000.0f);
+                        PTS = ((PTS / 90000.0f)) * 90000.0f;
+                        PTS = (PTS * 1000 * 1000ll) / 90000;
+                    }
+                }
+            }
+
+            if (PTS > 0){
+                delete br;
+                break;
+            }
+        }
+        retry++;
+        delete br;
+    }
+    return PTS;
 }
 
 status_t MPEG2TSExtractor::feedMore(bool isInit) {
