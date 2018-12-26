@@ -318,6 +318,9 @@ static const char *FourCC2MIME(uint32_t fourcc) {
         case FOURCC('m', 'p', '4', 'v'):
             return MEDIA_MIMETYPE_VIDEO_MPEG4;
 
+        case FOURCC('.', 'm', 'p', '3'):
+            return MEDIA_MIMETYPE_AUDIO_MPEG;
+
         case FOURCC('s', '2', '6', '3'):
         case FOURCC('h', '2', '6', '3'):
         case FOURCC('H', '2', '6', '3'):
@@ -335,6 +338,10 @@ static const char *FourCC2MIME(uint32_t fourcc) {
             return MEDIA_MIMETYPE_AUDIO_RAW;
         case FOURCC('a', 'l', 'a', 'c'):
             return MEDIA_MIMETYPE_AUDIO_ALAC;
+
+        case FOURCC('j', 'p', 'e', 'g'):
+        case FOURCC('M', 'J', 'P', 'G'):
+            return "video/mjpg";
 
         default:
             ALOGW("Unknown fourcc: %c%c%c%c",
@@ -581,7 +588,7 @@ status_t MPEG4Extractor::getTrackMetaData(
                 }
             } else {
                 uint32_t sampleIndex;
-                uint32_t sampleTime;
+                uint64_t sampleTime;
                 if (track->timescale != 0 &&
                         track->sampleTable->findThumbnailSample(&sampleIndex) == OK
                         && track->sampleTable->getMetaDataForSample(
@@ -1546,6 +1553,7 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
         case FOURCC('t', 'w', 'o', 's'):
         case FOURCC('s', 'o', 'w', 't'):
         case FOURCC('a', 'l', 'a', 'c'):
+        case FOURCC('.', 'm', 'p', '3'):
         {
             if (mIsQT && chunk_type == FOURCC('m', 'p', '4', 'a')
                     && depth >= 1 && mPath[depth - 1] == FOURCC('w', 'a', 'v', 'e')) {
@@ -1683,6 +1691,8 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
         case FOURCC('a', 'v', 'c', '1'):
         case FOURCC('h', 'v', 'c', '1'):
         case FOURCC('h', 'e', 'v', '1'):
+        case FOURCC('j', 'p', 'e', 'g'):
+        case FOURCC('M', 'J', 'P', 'G'):
         {
             uint8_t buffer[78];
             if (chunk_data_size < (ssize_t)sizeof(buffer)) {
@@ -3667,6 +3677,12 @@ status_t MPEG4Extractor::updateAudioTrackInfoFromESDS_MPEG4Audio(
         return OK;
     }
 
+    if ((objectTypeIndication == 0x6b) || (objectTypeIndication == 0x69)) {
+        //mp3 sprd
+        mLastTrack->meta->setCString(kKeyMIMEType, MEDIA_MIMETYPE_AUDIO_MPEG);
+        return OK;
+    }
+/*
     if (objectTypeIndication  == 0x6b) {
         // The media subtype is MP3 audio
         // Our software MP3 audio decoder may not be able to handle
@@ -3674,7 +3690,7 @@ status_t MPEG4Extractor::updateAudioTrackInfoFromESDS_MPEG4Audio(
         ALOGE("MP3 track in MP4/3GPP file is not supported");
         return ERROR_UNSUPPORTED;
     }
-
+*/
     if (mLastTrack != NULL) {
         uint32_t maxBitrate = 0;
         uint32_t avgBitrate = 0;
@@ -4928,7 +4944,8 @@ status_t MPEG4Source::read(
 
     off64_t offset = 0;
     size_t size = 0;
-    uint32_t cts, stts;
+    uint64_t cts;
+    uint32_t stts;
     bool isSyncSample;
     bool newBuffer = false;
     if (mBuffer == NULL) {
@@ -4949,6 +4966,15 @@ status_t MPEG4Source::read(
         }
 
         if (err != OK) {
+            if (err == ERROR_OUT_OF_RANGE) {
+                // An attempt to seek past the end of the stream would
+                // normally cause this ERROR_OUT_OF_RANGE error. Propagating
+                // this all the way to the MediaPlayer would cause abnormal
+                // termination. Legacy behaviour appears to be to behave as if
+                // we had seeked to the end of stream, ending normally.
+                err = ERROR_END_OF_STREAM;
+            }
+            ALOGV("end of stream");
             return err;
         }
 
@@ -5571,7 +5597,8 @@ static bool LegacySniffMPEG4(DataSourceBase *source, float *confidence) {
         || !memcmp(header, "ftypM4A ", 8) || !memcmp(header, "ftypf4v ", 8)
         || !memcmp(header, "ftypkddi", 8) || !memcmp(header, "ftypM4VP", 8)
         || !memcmp(header, "ftypmif1", 8) || !memcmp(header, "ftypheic", 8)
-        || !memcmp(header, "ftypmsf1", 8) || !memcmp(header, "ftyphevc", 8)) {
+        || !memcmp(header, "ftypmsf1", 8) || !memcmp(header, "ftyphevc", 8)
+        || !memcmp(header, "ftypwmf",7)) {
         *confidence = 0.4;
 
         return true;
@@ -5591,6 +5618,7 @@ static bool isCompatibleBrand(uint32_t fourcc) {
         FOURCC('m', 'p', '4', '1'),
         FOURCC('m', 'p', '4', '2'),
         FOURCC('d', 'a', 's', 'h'),
+        FOURCC('w', 'm', 'f', ' '),
 
         // Won't promise that the following file types can be played.
         // Just give these file types a chance.
