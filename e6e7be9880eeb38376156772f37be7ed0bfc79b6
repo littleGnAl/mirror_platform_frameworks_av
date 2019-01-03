@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4326535_5b90d33a",
+        "filename": "services/mediaextractor/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1118746
+      },
+      "writtenOn": "2019-01-03T03:54:24Z",
+      "side": 1,
+      "message": "I think we only need to add one new line for x86_64: LOCAL_REQUIRED_MODULES_x86_64 :\u003d mediaextractor.policy\nwe should to keep LOCAL_REQUIRED_MODULES_x86 :\u003d mediaextractor.policy for x86",
+      "range": {
+        "startLine": 21,
+        "startChar": 31,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "e6e7be9880eeb38376156772f37be7ed0bfc79b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
