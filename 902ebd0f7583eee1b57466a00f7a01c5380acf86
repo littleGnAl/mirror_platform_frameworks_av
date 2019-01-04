@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d1331a7_56a9dedf",
+        "filename": "services/mediaextractor/Android.mk",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1118746
+      },
+      "writtenOn": "2019-01-04T01:36:17Z",
+      "side": 1,
+      "message": "I think we can remove crash_dump.policy from LOCAL_REQUIRED_MODULES_x86_64, since it\u0027s already included in the LOCAL_REQUIRED_MODULES.",
+      "range": {
+        "startLine": 22,
+        "startChar": 33,
+        "endLine": 22,
+        "endChar": 43
+      },
+      "revId": "902ebd0f7583eee1b57466a00f7a01c5380acf86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
