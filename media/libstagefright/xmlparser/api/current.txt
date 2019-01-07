@@ -1,0 +1,107 @@
+package media.codecs {
+
+  public class Decoders {
+    ctor public Decoders();
+    method public java.util.List<media.codecs.MediaCodec> getMediaCodec();
+  }
+
+  public class Encoders {
+    ctor public Encoders();
+    method public java.util.List<media.codecs.MediaCodec> getMediaCodec();
+  }
+
+  public class Feature {
+    ctor public Feature();
+    method public java.lang.String getName();
+    method public java.lang.String getOptional();
+    method public java.lang.String getRequired();
+    method public java.lang.String getValue();
+    method public void setName(java.lang.String);
+    method public void setOptional(java.lang.String);
+    method public void setRequired(java.lang.String);
+    method public void setValue(java.lang.String);
+  }
+
+  public class Limit {
+    ctor public Limit();
+    method public java.lang.String getIn();
+    method public java.lang.String getMax();
+    method public java.lang.String getMin();
+    method public java.lang.String getName();
+    method public java.lang.String getRange();
+    method public java.lang.String getRanges();
+    method public java.lang.String getScale();
+    method public java.lang.String getValue();
+    method public java.lang.String get_default();
+    method public void setIn(java.lang.String);
+    method public void setMax(java.lang.String);
+    method public void setMin(java.lang.String);
+    method public void setName(java.lang.String);
+    method public void setRange(java.lang.String);
+    method public void setRanges(java.lang.String);
+    method public void setScale(java.lang.String);
+    method public void setValue(java.lang.String);
+    method public void set_default(java.lang.String);
+  }
+
+  public class MediaCodec {
+    ctor public MediaCodec();
+    method public java.util.List<media.codecs.Feature> getFeature();
+    method public java.util.List<media.codecs.Limit> getLimit();
+    method public java.lang.String getName();
+    method public java.util.List<media.codecs.Quirk> getQuirk();
+    method public java.util.List<media.codecs.Type> getType();
+    method public java.lang.String getType();
+    method public java.lang.String getUpdate();
+    method public void setName(java.lang.String);
+    method public void setType(java.lang.String);
+    method public void setUpdate(java.lang.String);
+  }
+
+  public class MediaCodecs {
+    ctor public MediaCodecs();
+    method public java.util.List<media.codecs.Decoders> getDecoders();
+    method public java.util.List<media.codecs.Encoders> getEncoders();
+    method public java.util.List<media.codecs.Settings> getSettings();
+  }
+
+  public class Quirk {
+    ctor public Quirk();
+    method public java.lang.String getName();
+    method public void setName(java.lang.String);
+  }
+
+  public class Setting {
+    ctor public Setting();
+    method public java.lang.String getName();
+    method public java.lang.String getUpdate();
+    method public java.lang.String getValue();
+    method public void setName(java.lang.String);
+    method public void setUpdate(java.lang.String);
+    method public void setValue(java.lang.String);
+  }
+
+  public class Settings {
+    ctor public Settings();
+    method public java.util.List<media.codecs.Setting> getSetting();
+  }
+
+  public class Type {
+    ctor public Type();
+    method public java.util.List<media.codecs.Feature> getFeature();
+    method public java.util.List<media.codecs.Limit> getLimit();
+    method public java.lang.String getName();
+    method public java.lang.String getUpdate();
+    method public void setName(java.lang.String);
+    method public void setUpdate(java.lang.String);
+  }
+
+  public class XmlParser {
+    ctor public XmlParser();
+    method public static media.codecs.MediaCodecs read(java.io.InputStream) throws javax.xml.datatype.DatatypeConfigurationException, java.io.IOException, org.xmlpull.v1.XmlPullParserException;
+    method public static java.lang.String readText(org.xmlpull.v1.XmlPullParser) throws java.io.IOException, org.xmlpull.v1.XmlPullParserException;
+    method public static void skip(org.xmlpull.v1.XmlPullParser) throws java.io.IOException, org.xmlpull.v1.XmlPullParserException;
+  }
+
+}
+
