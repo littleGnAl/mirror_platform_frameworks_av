@@ -53,14 +53,14 @@ struct SampleTable::CompositionDeltaLookup {
     CompositionDeltaLookup();
 
     void setEntries(
-            const int32_t *deltaEntries, size_t numDeltaEntries);
+            const uint32_t *deltaEntries, size_t numDeltaEntries);
 
-    int32_t getCompositionTimeOffset(uint32_t sampleIndex);
+    uint32_t getCompositionTimeOffset(uint32_t sampleIndex);
 
 private:
     Mutex mLock;
 
-    const int32_t *mDeltaEntries;
+    const uint32_t *mDeltaEntries;
     size_t mNumDeltaEntries;
 
     size_t mCurrentDeltaEntry;
@@ -77,7 +77,7 @@ SampleTable::CompositionDeltaLookup::CompositionDeltaLookup()
 }
 
 void SampleTable::CompositionDeltaLookup::setEntries(
-        const int32_t *deltaEntries, size_t numDeltaEntries) {
+        const uint32_t *deltaEntries, size_t numDeltaEntries) {
     Mutex::Autolock autolock(mLock);
 
     mDeltaEntries = deltaEntries;
@@ -86,7 +86,7 @@ void SampleTable::CompositionDeltaLookup::setEntries(
     mCurrentEntrySampleIndex = 0;
 }
 
-int32_t SampleTable::CompositionDeltaLookup::getCompositionTimeOffset(
+uint32_t SampleTable::CompositionDeltaLookup::getCompositionTimeOffset(
         uint32_t sampleIndex) {
     Mutex::Autolock autolock(mLock);
 
@@ -492,7 +492,7 @@ status_t SampleTable::setCompositionTimeToSampleParams(
         return ERROR_OUT_OF_RANGE;
     }
 
-    mCompositionTimeDeltaEntries = new (std::nothrow) int32_t[2 * numEntries];
+    mCompositionTimeDeltaEntries = new (std::nothrow) uint32_t[2 * numEntries];
     if (!mCompositionTimeDeltaEntries) {
         ALOGE("Cannot allocate composition-time-to-sample table with %llu "
                 "entries.", (unsigned long long)numEntries);
@@ -614,7 +614,7 @@ status_t SampleTable::getMaxSampleSize(size_t *max_size) {
     return OK;
 }
 
-uint32_t abs_difference(uint32_t time1, uint32_t time2) {
+uint64_t abs_difference(uint64_t time1, uint64_t time2) {
     return time1 > time2 ? time1 - time2 : time2 - time1;
 }
 
@@ -662,7 +662,7 @@ void SampleTable::buildSampleEntriesTable() {
     }
 
     uint32_t sampleIndex = 0;
-    uint32_t sampleTime = 0;
+    uint64_t sampleTime = 0;
 
     for (uint32_t i = 0; i < mTimeToSampleCount; ++i) {
         uint32_t n = mTimeToSample[2 * i];
@@ -676,17 +676,17 @@ void SampleTable::buildSampleEntriesTable() {
 
                 mSampleTimeEntries[sampleIndex].mSampleIndex = sampleIndex;
 
-                int32_t compTimeDelta =
+                int64_t compTimeDelta =
                     mCompositionDeltaLookup->getCompositionTimeOffset(
                             sampleIndex);
 
                 if ((compTimeDelta < 0 && sampleTime <
-                        (compTimeDelta == INT32_MIN ?
-                                INT32_MAX : uint32_t(-compTimeDelta)))
+                        (compTimeDelta == INT64_MIN ?
+                                INT64_MAX : uint64_t(-compTimeDelta)))
                         || (compTimeDelta > 0 &&
-                                sampleTime > UINT32_MAX - compTimeDelta)) {
-                    ALOGE("%u + %d would overflow, clamping",
-                            sampleTime, compTimeDelta);
+                                sampleTime > UINT64_MAX - compTimeDelta)) {
+                    ALOGE("%llu + %lld would overflow, clamping",
+                            (unsigned long long)sampleTime, (long long)compTimeDelta);
                     if (compTimeDelta < 0) {
                         sampleTime = 0;
                     } else {
@@ -696,15 +696,14 @@ void SampleTable::buildSampleEntriesTable() {
                 }
 
                 mSampleTimeEntries[sampleIndex].mCompositionTime =
-                        compTimeDelta > 0 ? sampleTime + compTimeDelta:
-                                sampleTime - (-compTimeDelta);
+                    sampleTime + compTimeDelta;
             }
 
             ++sampleIndex;
-            if (sampleTime > UINT32_MAX - delta) {
-                ALOGE("%u + %u would overflow, clamping",
+            if (sampleTime > UINT64_MAX - delta) {
+                ALOGE("%llu + %u would overflow, clamping",
                     sampleTime, delta);
-                sampleTime = UINT32_MAX;
+                sampleTime = UINT64_MAX;
             } else {
                 sampleTime += delta;
             }
@@ -955,7 +954,7 @@ status_t SampleTable::getMetaDataForSample(
         uint32_t sampleIndex,
         off64_t *offset,
         size_t *size,
-        uint32_t *compositionTime,
+        uint64_t *compositionTime,
         bool *isSyncSample,
         uint32_t *sampleDuration) {
     Mutex::Autolock autoLock(mLock);
@@ -1006,7 +1005,7 @@ status_t SampleTable::getMetaDataForSample(
     return OK;
 }
 
-int32_t SampleTable::getCompositionTimeOffset(uint32_t sampleIndex) {
+uint32_t SampleTable::getCompositionTimeOffset(uint32_t sampleIndex) {
     return mCompositionDeltaLookup->getCompositionTimeOffset(sampleIndex);
 }
 
