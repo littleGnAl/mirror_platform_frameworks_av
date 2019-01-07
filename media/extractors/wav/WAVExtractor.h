@@ -52,6 +52,7 @@ private:
     uint16_t mBitsPerSample;
     off64_t mDataOffset;
     size_t mDataSize;
+    uint16_t mBlockAlign;
     MetaDataBase mTrackMeta;
 
     status_t init();
