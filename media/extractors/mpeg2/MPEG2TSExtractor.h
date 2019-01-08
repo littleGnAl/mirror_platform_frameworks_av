@@ -75,6 +75,7 @@ private:
     off64_t mOffset;
 
     static bool isScrambledFormat(MetaDataBase &format);
+    int64_t mEstimateDuration;
 
     void init();
     void addSource(const sp<AnotherPacketSource> &impl);
@@ -95,6 +96,7 @@ private:
 
     // Add a SynPoint derived from |event|.
     void addSyncPoint_l(const ATSParser::SyncEvent &event);
+    int64_t  estimateDuration(bool filp);
 
     status_t  estimateDurationsFromTimesUsAtEnd();
 
