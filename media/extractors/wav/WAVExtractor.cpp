@@ -40,6 +40,7 @@ enum {
     WAVE_FORMAT_IEEE_FLOAT = 0x0003,
     WAVE_FORMAT_ALAW       = 0x0006,
     WAVE_FORMAT_MULAW      = 0x0007,
+    WAVE_FORMAT_IMAADPCM   = 0x0011,
     WAVE_FORMAT_MSGSM      = 0x0031,
     WAVE_FORMAT_EXTENSIBLE = 0xFFFE
 };
@@ -61,7 +62,8 @@ struct WAVSource : public MediaTrack {
             MetaDataBase &meta,
             uint16_t waveFormat,
             int32_t bitsPerSample,
-            off64_t offset, size_t size);
+            off64_t offset, size_t size,
+            int32_t blockAlign);
 
     virtual status_t start(MetaDataBase *params = NULL);
     virtual status_t stop();
@@ -86,6 +88,7 @@ private:
     int32_t mBitsPerSample;
     off64_t mOffset;
     size_t mSize;
+    uint32_t mBlockAlign;
     bool mStarted;
     MediaBufferGroup *mGroup;
     off64_t mCurrentPos;
@@ -124,7 +127,7 @@ MediaTrack *WAVExtractor::getTrack(size_t index) {
 
     return new WAVSource(
             mDataSource, mTrackMeta,
-            mWaveFormat, mBitsPerSample, mDataOffset, mDataSize);
+            mWaveFormat, mBitsPerSample, mDataOffset, mDataSize, mBlockAlign);
 }
 
 status_t WAVExtractor::getTrackMetaData(
@@ -184,7 +187,8 @@ status_t WAVExtractor::init() {
                     && mWaveFormat != WAVE_FORMAT_ALAW
                     && mWaveFormat != WAVE_FORMAT_MULAW
                     && mWaveFormat != WAVE_FORMAT_MSGSM
-                    && mWaveFormat != WAVE_FORMAT_EXTENSIBLE) {
+                    && mWaveFormat != WAVE_FORMAT_EXTENSIBLE
+                    && mWaveFormat != WAVE_FORMAT_IMAADPCM) {
                 return ERROR_UNSUPPORTED;
             }
 
@@ -216,6 +220,7 @@ status_t WAVExtractor::init() {
                 return ERROR_MALFORMED;
             }
 
+            mBlockAlign = U16_LE_AT(&formatSpec[12]);
             mBitsPerSample = U16_LE_AT(&formatSpec[14]);
 
             if (mWaveFormat == WAVE_FORMAT_EXTENSIBLE) {
@@ -274,10 +279,17 @@ status_t WAVExtractor::init() {
                 if (mBitsPerSample != 8) {
                     return ERROR_UNSUPPORTED;
                 }
+            } else if (mWaveFormat == WAVE_FORMAT_IMAADPCM) {
+                if (mBitsPerSample != 4 || mBlockAlign <= 4 || mBlockAlign % (mNumChannels * 4) != 0) {
+                    return ERROR_UNSUPPORTED;
+                }
             } else {
                 return ERROR_UNSUPPORTED;
             }
-
+            // fix wrong BLockAligns in case
+            if (mWaveFormat != WAVE_FORMAT_IMAADPCM && mWaveFormat != WAVE_FORMAT_MSGSM) {
+                mBlockAlign = mNumChannels * ((mBitsPerSample + 7) >> 3);
+            }
             mValidFormat = true;
         } else if (!memcmp(chunkHeader, "data", 4)) {
             if (mValidFormat) {
@@ -300,6 +312,11 @@ status_t WAVExtractor::init() {
                         mTrackMeta.setCString(
                                 kKeyMIMEType, MEDIA_MIMETYPE_AUDIO_MSGSM);
                         break;
+                    case WAVE_FORMAT_IMAADPCM:
+                          mTrackMeta.setCString(
+                                  kKeyMIMEType, "audio/ima-adpcm");
+                          mTrackMeta.setInt32('blka', mBlockAlign);
+                          break;
                     default:
                         CHECK_EQ(mWaveFormat, (uint16_t)WAVE_FORMAT_MULAW);
                         mTrackMeta.setCString(
@@ -318,6 +335,9 @@ status_t WAVExtractor::init() {
                     // 65 bytes decode to 320 8kHz samples
                     durationUs =
                         1000000LL * (mDataSize / 65 * 320) / 8000;
+                } else if (mWaveFormat == WAVE_FORMAT_IMAADPCM) {
+                    int samples_per_frame = ((mBlockAlign / mNumChannels - 4) << 1) + 1;
+                    durationUs = 1000000LL * (mDataSize / mBlockAlign) * samples_per_frame /mSampleRate;
                 } else {
                     size_t bytesPerSample = mBitsPerSample >> 3;
 
@@ -352,7 +372,7 @@ WAVSource::WAVSource(
         MetaDataBase &meta,
         uint16_t waveFormat,
         int32_t bitsPerSample,
-        off64_t offset, size_t size)
+        off64_t offset, size_t size, int32_t blockAlign)
     : mDataSource(dataSource),
       mMeta(meta),
       mWaveFormat(waveFormat),
@@ -361,6 +381,7 @@ WAVSource::WAVSource(
       mBitsPerSample(bitsPerSample),
       mOffset(offset),
       mSize(size),
+      mBlockAlign(blockAlign),
       mStarted(false),
       mGroup(NULL) {
     CHECK(mMeta.findInt32(kKeySampleRate, &mSampleRate));
@@ -379,6 +400,7 @@ status_t WAVSource::start(MetaDataBase * /* params */) {
     ALOGV("WAVSource::start");
 
     CHECK(!mStarted);
+    CHECK(mBlockAlign <= kMaxFrameSize);
 
     // some WAV files may have large audio buffers that use shared memory transfer.
     mGroup = new MediaBufferGroup(4 /* buffers */, kMaxFrameSize);
@@ -433,6 +455,9 @@ status_t WAVSource::read(
             int64_t samplenumber = (seekTimeUs * mSampleRate) / 1000000;
             int64_t framenumber = samplenumber / 320;
             pos = framenumber * 65;
+        } else if (mWaveFormat == WAVE_FORMAT_IMAADPCM) {
+            int samples_per_frame = ((mBlockAlign / mNumChannels - 4) << 1) + 1;
+            pos = (seekTimeUs * mSampleRate) / 1000000 / samples_per_frame * mBlockAlign;
         } else {
             pos = (seekTimeUs * mSampleRate) / 1000000 * mNumChannels * (mBitsPerSample >> 3);
         }
@@ -468,6 +493,8 @@ status_t WAVSource::read(
             maxBytesToRead = 1024;
         }
         maxBytesToRead = (maxBytesToRead / 65) * 65;
+    } else if (mWaveFormat == WAVE_FORMAT_IMAADPCM) {
+        maxBytesToRead = mBlockAlign;
     } else {
         // read only integral amounts of audio unit frames.
         const size_t inputUnitFrameSize = mNumChannels * mBitsPerSample / 8;
@@ -527,6 +554,9 @@ status_t WAVSource::read(
 
     if (mWaveFormat == WAVE_FORMAT_MSGSM) {
         timeStampUs = 1000000LL * (mCurrentPos - mOffset) * 320 / 65 / mSampleRate;
+    } else if (mWaveFormat == WAVE_FORMAT_IMAADPCM) {
+        int samples_per_frame = ((mBlockAlign / mNumChannels - 4) << 1) + 1;
+        timeStampUs = 1000000LL * ((mCurrentPos - mOffset) / mBlockAlign) * samples_per_frame / mSampleRate;
     } else {
         size_t bytesPerSample = mBitsPerSample >> 3;
         timeStampUs = 1000000LL * (mCurrentPos - mOffset)
