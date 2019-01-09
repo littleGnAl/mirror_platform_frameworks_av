@@ -70,6 +70,7 @@ cc_library_shared {
     vendor_available: true,
     vndk: {
         enabled: true,
+        must_use_vendor_variant: true,
     },
 
     srcs: ["SoftMPEG4.cpp"],

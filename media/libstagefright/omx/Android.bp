@@ -3,6 +3,7 @@ cc_library_shared {
     vendor_available: true,
     vndk: {
         enabled: true,
+        must_use_vendor_variant: true,
     },
 
     srcs: [
@@ -87,6 +88,7 @@ cc_library_shared {
     vendor_available: true,
     vndk: {
         enabled: true,
+        must_use_vendor_variant: true,
     },
     srcs: ["OMXUtils.cpp"],
     export_include_dirs: [
