@@ -5591,6 +5591,7 @@ static bool isCompatibleBrand(uint32_t fourcc) {
         FOURCC('m', 'p', '4', '1'),
         FOURCC('m', 'p', '4', '2'),
         FOURCC('d', 'a', 's', 'h'),
+        FOURCC('n', 'v', 'r', '1'),
 
         // Won't promise that the following file types can be played.
         // Just give these file types a chance.
