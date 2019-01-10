@@ -52,6 +52,7 @@ public:
         TYPE_DEFAULT,
         TYPE_OUTPUT,
         TYPE_PATCH,
+        TYPE_IO
     };
 
                         TrackBase(ThreadBase *thread,
@@ -92,7 +93,9 @@ public:
     virtual bool        isDirect() const = 0;
             bool        isOutputTrack() const { return (mType == TYPE_OUTPUT); }
             bool        isPatchTrack() const { return (mType == TYPE_PATCH); }
-            bool        isExternalTrack() const { return !isOutputTrack() && !isPatchTrack(); }
+            bool        isIOTrack() const { return (mType == TYPE_IO); }
+            bool        isExternalTrack() const {
+                    return !isOutputTrack() && !isPatchTrack() && !isIOTrack(); }
 
     virtual void        invalidate() { mIsInvalid = true; }
             bool        isInvalid() const { return mIsInvalid; }

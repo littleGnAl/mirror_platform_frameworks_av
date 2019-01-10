@@ -88,7 +88,7 @@ private:
             swap(other);
             return *this;
         }
-        ~Endpoint() {
+        virtual ~Endpoint() {
             ALOGE_IF(mHandle != AUDIO_PATCH_HANDLE_NONE,
                     "A non empty Patch Endpoint leaked, handle %d", mHandle);
         }
@@ -103,24 +103,22 @@ private:
         sp<const ThreadType> const_thread() const { return mThread; }
         sp<const TrackType> const_track() const { return mTrack; }
 
+        audio_patch_handle_t* handlePtr() { return &mHandle; }
+        void setThread(const sp<ThreadType>& thread, bool closeThread = true) {
+            mThread = thread;
+            mCloseThread = closeThread;
+        }
+        void stopTrack() { if (mTrack) mTrack->stop(); }
         void closeConnections(PatchPanel *panel) {
             if (mHandle != AUDIO_PATCH_HANDLE_NONE) {
                 panel->releaseAudioPatch(mHandle);
                 mHandle = AUDIO_PATCH_HANDLE_NONE;
             }
             if (mThread != 0) {
-                if (mTrack != 0) {
-                    mThread->deletePatchTrack(mTrack);
-                }
                 if (mCloseThread) {
                     panel->mAudioFlinger.closeThreadInternal_l(mThread);
                 }
             }
-        }
-        audio_patch_handle_t* handlePtr() { return &mHandle; }
-        void setThread(const sp<ThreadType>& thread, bool closeThread = true) {
-            mThread = thread;
-            mCloseThread = closeThread;
         }
         template <typename T>
         void setTrackAndPeer(const sp<TrackType>& track, const sp<T> &peer) {
@@ -129,7 +127,6 @@ private:
             mTrack->setPeerProxy(peer, true /* holdReference */);
         }
         void clearTrackPeer() { if (mTrack) mTrack->clearPeerProxy(); }
-        void stopTrack() { if (mTrack) mTrack->stop(); }
 
         void swap(Endpoint &other) noexcept {
             using std::swap;
@@ -143,11 +140,70 @@ private:
             a.swap(b);
         }
 
-    private:
+    protected:
         sp<ThreadType> mThread;
         bool mCloseThread = true;
         audio_patch_handle_t mHandle = AUDIO_PATCH_HANDLE_NONE;
         sp<TrackType> mTrack;
+    };
+
+    template<typename ThreadType, typename TrackType>
+    class PatchEndpoint : public Endpoint<ThreadType, TrackType> {
+    public:
+        PatchEndpoint() = default;
+        PatchEndpoint(PatchEndpoint&& other) { swap(*this, other); }
+        PatchEndpoint& operator=(PatchEndpoint&& other) {
+            swap(*this, other);
+            other.mHandle = AUDIO_PATCH_HANDLE_NONE;
+            return *this;
+        }
+        virtual ~PatchEndpoint() {};
+
+        void closeConnections(PatchPanel *panel) {
+            if (this->mTrack != 0) {
+                this->mThread->deletePatchTrack(this->mTrack);
+            }
+            Endpoint<ThreadType, TrackType>::closeConnections(panel);
+        }
+        template <typename T>
+        void setTrackAndPeer(const sp<TrackType>& track,
+                             const sp<T>& peer) {
+            this->mTrack = track;
+            this->mThread->addPatchTrack(this->mTrack);
+            this->mTrack->setPeerProxy(peer, true /* holdReference */);
+        }
+
+    private:
+        PatchEndpoint(const PatchEndpoint&) = default;
+        PatchEndpoint& operator=(const PatchEndpoint&) = default;
+    };
+
+    template<typename ThreadType, typename TrackType>
+    class IOEndpoint : public Endpoint<ThreadType, TrackType> {
+    public:
+        IOEndpoint() = default;
+        IOEndpoint(IOEndpoint&& other) { swap(*this, other); }
+        IOEndpoint& operator=(IOEndpoint&& other) {
+            swap(*this, other);
+            other.mHandle = AUDIO_PATCH_HANDLE_NONE;
+            return *this;
+        }
+        virtual ~IOEndpoint() {};
+
+        void closeConnections(PatchPanel *panel) {
+            if (this->mTrack != 0) {
+                this->mThread->deleteIOTrack(this->mTrack);
+            }
+            Endpoint<ThreadType, TrackType>::closeConnections(panel);
+        }
+        void setTrack(const sp<TrackType>& track) {
+            this->mTrack = track;
+            this->mThread->addIOTrack(this->mTrack);
+        }
+
+    private:
+        IOEndpoint(const IOEndpoint&) = default;
+        IOEndpoint& operator=(const IOEndpoint&) = default;
     };
 
     class Patch {
@@ -159,13 +215,17 @@ private:
         Patch& operator=(const Patch&) = delete;
         Patch& operator=(Patch&&) = default;
 
-        status_t createConnections(PatchPanel *panel);
+        status_t createConnections(PatchPanel *panel, bool isMsdPatch = false);
         void clearConnections(PatchPanel *panel);
         bool isSoftware() const {
+            return isSoftwarePeerPatch() || isSoftwareIOPatch(); }
+        bool isSoftwarePeerPatch() const {
             return mRecord.handle() != AUDIO_PATCH_HANDLE_NONE ||
                     mPlayback.handle() != AUDIO_PATCH_HANDLE_NONE; }
+        bool isSoftwareIOPatch() const {
+            return mIOPlayback.handle() != AUDIO_PATCH_HANDLE_NONE; }
 
-        // returns the latency of the patch (from record to playback).
+        // returns the latency of the patch.
         status_t getLatencyMs(double *latencyMs) const;
 
         String8 dump(audio_patch_handle_t myHandle) const;
@@ -174,14 +234,21 @@ private:
         struct audio_patch              mAudioPatch;
         // handle for audio HAL patch handle present only when the audio HAL version is >= 3.0
         audio_patch_handle_t            mHalHandle = AUDIO_PATCH_HANDLE_NONE;
-        // below members are used by a software audio patch connecting a source device from a
-        // given audio HW module to a sink device on an other audio HW module.
+
+        // below members are used by a peered software audio patch connecting a source
+        // device from a given audio HW module to a sink device on an other audio HW module.
         // the objects are created by createConnections() and released by clearConnections()
-        // playback thread is created if no existing playback thread can be used
-        // connects playback thread output to sink device
-        Endpoint<PlaybackThread, PlaybackThread::PatchTrack> mPlayback;
+        // playback thread is created if no existing playback thread can be used connects
+        // playback thread output to sink device
+        PatchEndpoint<PlaybackThread, PlaybackThread::PatchTrack> mPlayback;
         // connects source device to record thread input
-        Endpoint<RecordThread, RecordThread::PatchRecord> mRecord;
+        PatchEndpoint<RecordThread, RecordThread::PatchRecord> mRecord;
+
+        // below member is used by a IO software audio patch which directly reads
+        // from a source device from a given audio HW module to a sink device on an other audio
+        // HW module via an IOTrack.
+        // connects IOTrack (reads from source device)--> playback thread --> output to sink device
+        IOEndpoint<PlaybackThread, PlaybackThread::IOTrack> mIOPlayback;
     };
 
     AudioHwDevice* findAudioHwDeviceByModule(audio_module_handle_t module);

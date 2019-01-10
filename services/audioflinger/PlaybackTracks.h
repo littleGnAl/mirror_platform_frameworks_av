@@ -404,3 +404,37 @@ private:
             void restartIfDisabled();
 
 };  // end of PatchTrack
+
+// playback track, used by PatchPanel
+class IOTrack : public Track, public PatchProxyBufferProvider{
+public:
+
+                        IOTrack(RecordThread *recordThread,
+                                PlaybackThread *playbackThread,
+                                audio_stream_type_t streamType,
+                                uint32_t sampleRate,
+                                audio_channel_mask_t channelMask,
+                                audio_format_t format,
+                                size_t frameCount,
+                                void *buffer,
+                                size_t bufferSize,
+                                audio_output_flags_t flags);
+    ~IOTrack() override;
+
+    status_t    start(AudioSystem::sync_event_t event =
+                                    AudioSystem::SYNC_EVENT_NONE,
+                             audio_session_t triggerSession = AUDIO_SESSION_NONE) override;
+
+    status_t    getNextBuffer(AudioBufferProvider::Buffer* buffer) override;
+    void        releaseBuffer(AudioBufferProvider::Buffer* buffer) override;
+
+    // PatchProxyBufferProvider interface
+    status_t    obtainBuffer(Proxy::Buffer* buffer,
+                                     const struct timespec *timeOut = NULL) override;
+    void        releaseBuffer(Proxy::Buffer* buffer) override;
+
+private:
+            void restartIfDisabled();
+            sp<ClientProxy>             mProxy;
+            StreamInHalInterface* mInputStream;
+}; // end of IOTrack

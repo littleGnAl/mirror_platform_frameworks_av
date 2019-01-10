@@ -4090,6 +4090,19 @@ void AudioFlinger::PlaybackThread::deletePatchTrack(const sp<PatchTrack>& track)
     destroyTrack_l(track);
 }
 
+void AudioFlinger::PlaybackThread::addIOTrack(const sp<IOTrack>& track)
+{
+    Mutex::Autolock _l(mLock);
+    mTracks.add(track);
+}
+
+void AudioFlinger::PlaybackThread::deleteIOTrack(const sp<IOTrack>& track)
+{
+    Mutex::Autolock _l(mLock);
+    destroyTrack_l(track);
+}
+
+
 void AudioFlinger::PlaybackThread::toAudioPortConfig(struct audio_port_config *config)
 {
     ThreadBase::toAudioPortConfig(config);
@@ -4865,8 +4878,9 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::MixerThread::prepareTrac
             traceName += std::to_string(trackId);
             ATRACE_INT(traceName.c_str(), framesReady);
         }
-        if ((framesReady >= minFrames) && track->isReady() &&
-                !track->isPaused() && !track->isTerminated())
+        // IOTrack buffers are not filled by a client, so exclude from frames ready check.
+        if (track->isIOTrack() || ((framesReady >= minFrames) && track->isReady() &&
+                !track->isPaused() && !track->isTerminated()))
         {
             ALOGVV("track(%d) s=%08x [OK] on thread %p", trackId, cblk->mServer, this);
 
@@ -5646,8 +5660,9 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::DirectOutputThread::prep
             minFrames = 1;
         }
 
-        if ((track->framesReady() >= minFrames) && track->isReady() && !track->isPaused() &&
-                !track->isStopping_2() && !track->isStopped())
+        // IOTrack buffers are not filled by a client, so exclude from frames ready check.
+        if (((track->isIOTrack()) || ((track->framesReady() >= minFrames) && track->isReady()))
+              && !track->isPaused() && !track->isStopping_2() && !track->isStopped())
         {
             ALOGVV("track(%d) s=%08x [OK]", track->id(), cblk->mServer);
 
@@ -8017,6 +8032,15 @@ void AudioFlinger::RecordThread::ResamplerBufferProvider::releaseBuffer(
     mRsmpInFront = audio_utils::safe_add_overflow(mRsmpInFront, stepCount);
     buffer->raw = NULL;
     buffer->frameCount = 0;
+}
+
+StreamInHalInterface * AudioFlinger::RecordThread::inStreamInterface() const
+{
+    Mutex::Autolock _l(mLock);
+    if (mInput == NULL) {
+        return NULL;
+    }
+    return mInput->stream.get();
 }
 
 void AudioFlinger::RecordThread::checkBtNrec()
