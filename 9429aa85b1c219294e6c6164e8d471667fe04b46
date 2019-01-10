@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b9c7b84_feae92ef",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2019-01-10T23:39:03Z",
+      "side": 1,
+      "message": "please describe what this patch actually does",
+      "range": {
+        "startLine": 7,
+        "startChar": 14,
+        "endLine": 7,
+        "endChar": 35
+      },
+      "revId": "9429aa85b1c219294e6c6164e8d471667fe04b46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c59f34a_71920aea",
+        "filename": "media/extractors/mp3/MP3Extractor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2019-01-10T23:39:03Z",
+      "side": 1,
+      "message": "line too long. There are also numerous lines in the .cpp file that are too long",
+      "revId": "9429aa85b1c219294e6c6164e8d471667fe04b46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
