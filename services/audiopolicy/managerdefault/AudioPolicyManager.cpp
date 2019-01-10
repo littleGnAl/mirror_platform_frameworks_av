@@ -1362,6 +1362,14 @@ status_t AudioPolicyManager::getBestMsdAudioProfileFor(const sp<DeviceDescriptor
     // For encoded streams force direct flag to prevent downstream mixing.
     sinkConfig->flags.output = static_cast<audio_output_flags_t>(
             sinkConfig->flags.output | AUDIO_OUTPUT_FLAG_DIRECT);
+    if (!audio_is_linear_pcm(sinkConfig->format)) {
+        // For encoded streams, the record thread input from MSD will be IEC61937 framed. We append
+        // the AUDIO_OUTPUT_FLAG_IEC958_NONAUDIO flag to signal this to the downstream audio HAL.
+        // FIXME: Remove this once audio format IEC61937 with subformat types are available for use
+        // to signal the audio format to the downstream audio HAL.
+        sinkConfig->flags.output = static_cast<audio_output_flags_t>(
+                sinkConfig->flags.output | AUDIO_OUTPUT_FLAG_IEC958_NONAUDIO);
+    }
     sourceConfig->sample_rate = bestSinkConfig.sample_rate;
     // Specify exact channel mask to prevent guessing by bit count in PatchPanel.
     sourceConfig->channel_mask = audio_channel_mask_out_to_in(bestSinkConfig.channel_mask);

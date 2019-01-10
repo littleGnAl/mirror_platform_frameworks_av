@@ -867,6 +867,9 @@ public:
                 void        addPatchTrack(const sp<PatchTrack>& track);
                 void        deletePatchTrack(const sp<PatchTrack>& track);
 
+                void        addIOTrack(const sp<IOTrack>& track);
+                void        deleteIOTrack(const sp<IOTrack>& track);
+
     virtual     void        toAudioPortConfig(struct audio_port_config *config);
 
                 // Return the asynchronous signal wait time.
@@ -1611,6 +1614,7 @@ public:
                         }
     virtual bool        isOutput() const override { return false; }
 
+            StreamInHalInterface * inStreamInterface() const;
             void        checkBtNrec();
 
             // Sets the UID records silence

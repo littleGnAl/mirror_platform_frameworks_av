@@ -213,6 +213,7 @@ status_t AudioFlinger::PatchPanel::createAudioPatch(const struct audio_patch *pa
                   !audioHwDevice->supportsAudioPatches()))) {
                 audio_devices_t outputDevice = patch->sinks[0].ext.device.type;
                 String8 outputDeviceAddress = String8(patch->sinks[0].ext.device.address);
+                bool isMsdPatch = false;
                 if (patch->num_sources == 2) {
                     if (patch->sources[1].type != AUDIO_PORT_TYPE_MIX ||
                             (patch->num_sinks != 0 && patch->sinks[0].ext.device.hw_module !=
@@ -260,7 +261,17 @@ status_t AudioFlinger::PatchPanel::createAudioPatch(const struct audio_patch *pa
                         status = NO_MEMORY;
                         goto exit;
                     }
-                    newPatch.mPlayback.setThread(reinterpret_cast<PlaybackThread*>(thread.get()));
+                    AudioHwDevice *audioHwDevice =
+                        findAudioHwDeviceByModule(patch->sources[0].ext.device.hw_module);
+                    isMsdPatch =
+                        (strcmp(AUDIO_HARDWARE_MODULE_ID_MSD, audioHwDevice->moduleName()) == 0);
+                    if (isMsdPatch) {
+                        newPatch.mIOPlayback.setThread(
+                                reinterpret_cast<PlaybackThread*>(thread.get()));
+                    } else {
+                        newPatch.mPlayback.setThread(
+                                reinterpret_cast<PlaybackThread*>(thread.get()));
+                    }
                 }
                 audio_devices_t device = patch->sources[0].ext.device.type;
                 String8 address = String8(patch->sources[0].ext.device.address);
@@ -270,18 +281,24 @@ status_t AudioFlinger::PatchPanel::createAudioPatch(const struct audio_patch *pa
                 if (patch->sources[0].config_mask & AUDIO_PORT_CONFIG_SAMPLE_RATE) {
                     config.sample_rate = patch->sources[0].sample_rate;
                 } else {
-                    config.sample_rate = newPatch.mPlayback.thread()->sampleRate();
+                    config.sample_rate = ((isMsdPatch) ?
+                                          newPatch.mIOPlayback.thread()->sampleRate() :
+                                          newPatch.mPlayback.thread()->sampleRate());
                 }
                 if (patch->sources[0].config_mask & AUDIO_PORT_CONFIG_CHANNEL_MASK) {
                     config.channel_mask = patch->sources[0].channel_mask;
                 } else {
-                    config.channel_mask = audio_channel_in_mask_from_count(
-                            newPatch.mPlayback.thread()->channelCount());
+                    uint32_t channelCount = ((isMsdPatch) ?
+                                              newPatch.mIOPlayback.thread()->format() :
+                                              newPatch.mPlayback.thread()->format());
+                    config.channel_mask = audio_channel_in_mask_from_count(channelCount);
                 }
                 if (patch->sources[0].config_mask & AUDIO_PORT_CONFIG_FORMAT) {
                     config.format = patch->sources[0].format;
                 } else {
-                    config.format = newPatch.mPlayback.thread()->format();
+                    config.format = ((isMsdPatch) ?
+                                      newPatch.mIOPlayback.thread()->format() :
+                                      newPatch.mPlayback.thread()->format());
                 }
                 audio_input_flags_t flags =
                         patch->sources[0].config_mask & AUDIO_PORT_CONFIG_FLAGS ?
@@ -303,7 +320,7 @@ status_t AudioFlinger::PatchPanel::createAudioPatch(const struct audio_patch *pa
                     goto exit;
                 }
                 newPatch.mRecord.setThread(reinterpret_cast<RecordThread*>(thread.get()));
-                status = newPatch.createConnections(this);
+                status = newPatch.createConnections(this, isMsdPatch);
                 if (status != NO_ERROR) {
                     goto exit;
                 }
@@ -416,11 +433,11 @@ exit:
 
 AudioFlinger::PatchPanel::Patch::~Patch()
 {
-    ALOGE_IF(isSoftware(), "Software patch connections leaked %d %d",
-            mRecord.handle(), mPlayback.handle());
+    ALOGE_IF(isSoftware(), "Software patch connections leaked %d %d %d",
+            mRecord.handle(), mPlayback.handle(), mIOPlayback.handle());
 }
 
-status_t AudioFlinger::PatchPanel::Patch::createConnections(PatchPanel *panel)
+status_t AudioFlinger::PatchPanel::Patch::createConnections(PatchPanel *panel, bool isMsdPatch)
 {
     // create patch from source device to record thread input
     status_t status = panel->createAudioPatch(
@@ -432,181 +449,289 @@ status_t AudioFlinger::PatchPanel::Patch::createConnections(PatchPanel *panel)
         return status;
     }
 
-    // create patch from playback thread output to sink device
-    if (mAudioPatch.num_sinks != 0) {
-        status = panel->createAudioPatch(
-                PatchBuilder().addSource(mPlayback.thread()).addSink(mAudioPatch.sinks[0]).patch(),
-                mPlayback.handlePtr());
+    if (isMsdPatch) {
+        // create patch from playback thread output to sink device
+        if (mAudioPatch.num_sinks != 0) {
+            status = panel->createAudioPatch(
+                    PatchBuilder().addSource(
+                        mIOPlayback.thread()).addSink(mAudioPatch.sinks[0]).patch(),
+                        mIOPlayback.handlePtr());
+            if (status != NO_ERROR) {
+                *mIOPlayback.handlePtr() = AUDIO_PATCH_HANDLE_NONE;
+                return status;
+            }
+        } else {
+            *mIOPlayback.handlePtr() = AUDIO_PATCH_HANDLE_NONE;
+        }
+
+        const audio_channel_mask_t channelMask =
+                audio_channel_mask_in_to_out(mRecord.thread()->channelMask());
+        const audio_format_t inputFormat = mRecord.thread()->format();
+        audio_format_t format = mIOPlayback.thread()->format();
+        if (!audio_is_linear_pcm(inputFormat)) {
+            // The playbackThread format will say PCM for IEC61937 packetized stream.
+            // Use recordThread format.
+            format = inputFormat;
+        }
+
+        const size_t frameCount = std::max(mIOPlayback.thread()->frameCount(),
+                mRecord.thread()->frameCount());
+        const audio_output_flags_t outputFlags =
+                (mAudioPatch.sinks[0].config_mask & AUDIO_PORT_CONFIG_FLAGS) ?
+                    mAudioPatch.sinks[0].flags.output : AUDIO_OUTPUT_FLAG_NONE;
+
+        // create a special playback track to render to playback thread.
+        // This track reads directly from RecordThread input stream in getNextBuffer
+        sp<PlaybackThread::IOTrack> tempIOTrack = new (std::nothrow) PlaybackThread::IOTrack(
+                                               mRecord.thread().get(),
+                                               mIOPlayback.thread().get(),
+                                               AUDIO_STREAM_PATCH,
+                                               mRecord.thread()->sampleRate(),
+                                               channelMask,
+                                               format,
+                                               frameCount,
+                                               NULL,
+                                               0/* bufferSize */,
+                                               outputFlags);
+        status = mIOPlayback.checkTrack(tempIOTrack.get());
         if (status != NO_ERROR) {
-            *mPlayback.handlePtr() = AUDIO_PATCH_HANDLE_NONE;
             return status;
         }
+        mIOPlayback.setTrack(tempIOTrack);
+        // start playback
+        mIOPlayback.track()->start();
+
     } else {
-        *mPlayback.handlePtr() = AUDIO_PATCH_HANDLE_NONE;
-    }
+        // create patch from playback thread output to sink device
+        if (mAudioPatch.num_sinks != 0) {
+            status = panel->createAudioPatch(
+                    PatchBuilder().addSource(
+                        mPlayback.thread()).addSink(mAudioPatch.sinks[0]).patch(),
+                        mPlayback.handlePtr());
+            if (status != NO_ERROR) {
+                *mPlayback.handlePtr() = AUDIO_PATCH_HANDLE_NONE;
+                return status;
+            }
+        } else {
+            *mPlayback.handlePtr() = AUDIO_PATCH_HANDLE_NONE;
+        }
 
-    // use a pseudo LCM between input and output framecount
-    size_t playbackFrameCount = mPlayback.thread()->frameCount();
-    int playbackShift = __builtin_ctz(playbackFrameCount);
-    size_t recordFrameCount = mRecord.thread()->frameCount();
-    int shift = __builtin_ctz(recordFrameCount);
-    if (playbackShift < shift) {
-        shift = playbackShift;
-    }
-    size_t frameCount = (playbackFrameCount * recordFrameCount) >> shift;
-    ALOGV("%s() playframeCount %zu recordFrameCount %zu frameCount %zu",
-            __func__, playbackFrameCount, recordFrameCount, frameCount);
+        // use a pseudo LCM between input and output framecount
+        size_t playbackFrameCount = mPlayback.thread()->frameCount();
+        int playbackShift = __builtin_ctz(playbackFrameCount);
+        size_t recordFrameCount = mRecord.thread()->frameCount();
+        int shift = __builtin_ctz(recordFrameCount);
+        if (playbackShift < shift) {
+            shift = playbackShift;
+        }
+        size_t frameCount = (playbackFrameCount * recordFrameCount) >> shift;
+        ALOGV("%s() playframeCount %zu recordFrameCount %zu frameCount %zu",
+                __func__, playbackFrameCount, recordFrameCount, frameCount);
 
-    // create a special record track to capture from record thread
-    uint32_t channelCount = mPlayback.thread()->channelCount();
-    audio_channel_mask_t inChannelMask = audio_channel_in_mask_from_count(channelCount);
-    audio_channel_mask_t outChannelMask = mPlayback.thread()->channelMask();
-    uint32_t sampleRate = mPlayback.thread()->sampleRate();
-    audio_format_t format = mPlayback.thread()->format();
+        // create a special record track to capture from record thread
+        uint32_t channelCount = mPlayback.thread()->channelCount();
+        audio_channel_mask_t inChannelMask = audio_channel_in_mask_from_count(channelCount);
+        audio_channel_mask_t outChannelMask = mPlayback.thread()->channelMask();
+        uint32_t sampleRate = mPlayback.thread()->sampleRate();
+        audio_format_t format = mPlayback.thread()->format();
 
-    audio_format_t inputFormat = mRecord.thread()->format();
-    if (!audio_is_linear_pcm(inputFormat)) {
-        // The playbackThread format will say PCM for IEC61937 packetized stream.
-        // Use recordThread format.
-        format = inputFormat;
-    }
-    audio_input_flags_t inputFlags = mAudioPatch.sources[0].config_mask & AUDIO_PORT_CONFIG_FLAGS ?
-            mAudioPatch.sources[0].flags.input : AUDIO_INPUT_FLAG_NONE;
-    if (sampleRate == mRecord.thread()->sampleRate() &&
-            inChannelMask == mRecord.thread()->channelMask() &&
-            mRecord.thread()->fastTrackAvailable() &&
-            mRecord.thread()->hasFastCapture()) {
-        // Create a fast track if the record thread has fast capture to get better performance.
-        // Only enable fast mode when there is no resample needed.
-        inputFlags = (audio_input_flags_t) (inputFlags | AUDIO_INPUT_FLAG_FAST);
-    } else {
-        // Fast mode is not available in this case.
-        inputFlags = (audio_input_flags_t) (inputFlags & ~AUDIO_INPUT_FLAG_FAST);
-    }
-    sp<RecordThread::PatchRecord> tempRecordTrack = new (std::nothrow) RecordThread::PatchRecord(
-                                             mRecord.thread().get(),
-                                             sampleRate,
-                                             inChannelMask,
-                                             format,
-                                             frameCount,
-                                             NULL,
-                                             (size_t)0 /* bufferSize */,
-                                             inputFlags);
-    status = mRecord.checkTrack(tempRecordTrack.get());
-    if (status != NO_ERROR) {
-        return status;
-    }
+        audio_format_t inputFormat = mRecord.thread()->format();
+        if (!audio_is_linear_pcm(inputFormat)) {
+            // The playbackThread format will say PCM for IEC61937 packetized stream.
+            // Use recordThread format.
+            format = inputFormat;
+        }
+        audio_input_flags_t inputFlags =
+                mAudioPatch.sources[0].config_mask & AUDIO_PORT_CONFIG_FLAGS ?
+                mAudioPatch.sources[0].flags.input : AUDIO_INPUT_FLAG_NONE;
+        if (sampleRate == mRecord.thread()->sampleRate() &&
+                inChannelMask == mRecord.thread()->channelMask() &&
+                mRecord.thread()->fastTrackAvailable() &&
+                mRecord.thread()->hasFastCapture()) {
+            // Create a fast track if the record thread has fast capture to get better performance.
+            // Only enable fast mode when there is no resample needed.
+            inputFlags = (audio_input_flags_t) (inputFlags | AUDIO_INPUT_FLAG_FAST);
+        } else {
+            // Fast mode is not available in this case.
+            inputFlags = (audio_input_flags_t) (inputFlags & ~AUDIO_INPUT_FLAG_FAST);
+        }
+        sp<RecordThread::PatchRecord> tempRecordTrack =
+                new (std::nothrow) RecordThread::PatchRecord(
+                                                 mRecord.thread().get(),
+                                                 sampleRate,
+                                                 inChannelMask,
+                                                 format,
+                                                 frameCount,
+                                                 NULL,
+                                                 (size_t)0 /* bufferSize */,
+                                                 inputFlags);
+        status = mRecord.checkTrack(tempRecordTrack.get());
+        if (status != NO_ERROR) {
+            return status;
+        }
 
-    audio_output_flags_t outputFlags = mAudioPatch.sinks[0].config_mask & AUDIO_PORT_CONFIG_FLAGS ?
-            mAudioPatch.sinks[0].flags.output : AUDIO_OUTPUT_FLAG_NONE;
-    audio_stream_type_t streamType = AUDIO_STREAM_PATCH;
-    if (mAudioPatch.num_sources == 2 && mAudioPatch.sources[1].type == AUDIO_PORT_TYPE_MIX) {
-        // "reuse one existing output mix" case
-        streamType = mAudioPatch.sources[1].ext.mix.usecase.stream;
+        audio_output_flags_t outputFlags =
+                mAudioPatch.sinks[0].config_mask & AUDIO_PORT_CONFIG_FLAGS ?
+                mAudioPatch.sinks[0].flags.output : AUDIO_OUTPUT_FLAG_NONE;
+        audio_stream_type_t streamType = AUDIO_STREAM_PATCH;
+        if (mAudioPatch.num_sources == 2 && mAudioPatch.sources[1].type == AUDIO_PORT_TYPE_MIX) {
+            // "reuse one existing output mix" case
+            streamType = mAudioPatch.sources[1].ext.mix.usecase.stream;
+        }
+        if (mPlayback.thread()->hasFastMixer()) {
+            // Create a fast track if the playback thread has fast mixer to get better performance.
+            // Note: we should have matching channel mask, sample rate, and format by the logic
+            // above.
+            outputFlags = (audio_output_flags_t) (outputFlags | AUDIO_OUTPUT_FLAG_FAST);
+        } else {
+            outputFlags = (audio_output_flags_t) (outputFlags & ~AUDIO_OUTPUT_FLAG_FAST);
+        }
+
+        // create a special playback track to render to playback thread.
+        // this track is given the same buffer as the PatchRecord buffer
+        sp<PlaybackThread::PatchTrack> tempPatchTrack =
+                new (std::nothrow) PlaybackThread::PatchTrack(
+                                               mPlayback.thread().get(),
+                                               streamType,
+                                               sampleRate,
+                                               outChannelMask,
+                                               format,
+                                               frameCount,
+                                               tempRecordTrack->buffer(),
+                                               tempRecordTrack->bufferSize(),
+                                               outputFlags);
+        status = mPlayback.checkTrack(tempPatchTrack.get());
+        if (status != NO_ERROR) {
+            return status;
+        }
+
+        // tie playback and record tracks together
+        mRecord.setTrackAndPeer(tempRecordTrack, tempPatchTrack);
+        mPlayback.setTrackAndPeer(tempPatchTrack, tempRecordTrack);
+
+        // start capture and playback
+        mRecord.track()->start(AudioSystem::SYNC_EVENT_NONE, AUDIO_SESSION_NONE);
+        mPlayback.track()->start();
     }
-    if (mPlayback.thread()->hasFastMixer()) {
-        // Create a fast track if the playback thread has fast mixer to get better performance.
-        // Note: we should have matching channel mask, sample rate, and format by the logic above.
-        outputFlags = (audio_output_flags_t) (outputFlags | AUDIO_OUTPUT_FLAG_FAST);
-    } else {
-        outputFlags = (audio_output_flags_t) (outputFlags & ~AUDIO_OUTPUT_FLAG_FAST);
-    }
-
-    // create a special playback track to render to playback thread.
-    // this track is given the same buffer as the PatchRecord buffer
-    sp<PlaybackThread::PatchTrack> tempPatchTrack = new (std::nothrow) PlaybackThread::PatchTrack(
-                                           mPlayback.thread().get(),
-                                           streamType,
-                                           sampleRate,
-                                           outChannelMask,
-                                           format,
-                                           frameCount,
-                                           tempRecordTrack->buffer(),
-                                           tempRecordTrack->bufferSize(),
-                                           outputFlags);
-    status = mPlayback.checkTrack(tempPatchTrack.get());
-    if (status != NO_ERROR) {
-        return status;
-    }
-
-    // tie playback and record tracks together
-    mRecord.setTrackAndPeer(tempRecordTrack, tempPatchTrack);
-    mPlayback.setTrackAndPeer(tempPatchTrack, tempRecordTrack);
-
-    // start capture and playback
-    mRecord.track()->start(AudioSystem::SYNC_EVENT_NONE, AUDIO_SESSION_NONE);
-    mPlayback.track()->start();
-
     return status;
 }
 
 void AudioFlinger::PatchPanel::Patch::clearConnections(PatchPanel *panel)
 {
-    ALOGV("%s() mRecord.handle %d mPlayback.handle %d",
-            __func__, mRecord.handle(), mPlayback.handle());
-    mRecord.stopTrack();
-    mPlayback.stopTrack();
-    mRecord.clearTrackPeer(); // mRecord stop is synchronous. Break PeerProxy sp<> cycle.
-    mRecord.closeConnections(panel);
-    mPlayback.closeConnections(panel);
+    if (isSoftwareIOPatch()) {
+        ALOGV("%s() mRecord.handle %d mIOPlayback.handle %d",
+                __func__, mRecord.handle(), mIOPlayback.handle());
+        mIOPlayback.stopTrack();
+        mRecord.closeConnections(panel);
+        mIOPlayback.closeConnections(panel);
+    } else if (isSoftwarePeerPatch()) {
+        ALOGV("%s() mRecord.handle %d mPlayback.handle %d",
+                __func__, mRecord.handle(), mPlayback.handle());
+        mRecord.stopTrack();
+        mPlayback.stopTrack();
+        mRecord.clearTrackPeer(); // mRecord stop is synchronous. Break PeerProxy sp<> cycle.
+        mRecord.closeConnections(panel);
+        mPlayback.closeConnections(panel);
+    }
 }
 
 status_t AudioFlinger::PatchPanel::Patch::getLatencyMs(double *latencyMs) const
 {
     if (!isSoftware()) return INVALID_OPERATION;
+    if (isSoftwareIOPatch()) {
+        auto playbackTrack = mIOPlayback.const_track();
+        if (playbackTrack.get() == nullptr) return INVALID_OPERATION;
 
-    auto recordTrack = mRecord.const_track();
-    if (recordTrack.get() == nullptr) return INVALID_OPERATION;
+        StreamInHalInterface *streamIn = mRecord.const_thread().get()->inStreamInterface();
+        if (streamIn == nullptr) return INVALID_OPERATION;
 
-    auto playbackTrack = mPlayback.const_track();
-    if (playbackTrack.get() == nullptr) return INVALID_OPERATION;
+        int64_t inFrames, inTimeNs;
+        int ret = streamIn->getCapturePosition(&inFrames, &inTimeNs);
+        if (ret != NO_ERROR) {
+           return BAD_VALUE;
+        }
 
-    // Latency information for tracks may be called without obtaining
-    // the underlying thread lock.
-    //
-    // We use record server latency + playback track latency (generally smaller than the
-    // reverse due to internal biases).
-    //
-    // TODO: is this stable enough? Consider a PatchTrack synchronized version of this.
+        // See if playback kernel latency is available.
+        // If so, do a frame diff and time difference computation between stream in and playback
+        // track to estimate the total patch latency. This requires that frame counts are reported
+        // by the HAL are matched properly in the case of playback underruns.
+        ThreadBase::TrackBase::FrameTime playFT{};
+        playbackTrack->getKernelFrameTime(&playFT);
+        if (inTimeNs > 0 && playFT.timeNs > 0) {
+            // Convert playback track kernel (HAL) frames to track sample rate referred frames,
+            // in case of playback thread supporting sample rate conversion (e.g. MixerThread)
+            const int64_t frameDiff = inFrames -
+                    (playFT.frames * 1.f * playbackTrack->sampleRate() /
+                     mIOPlayback.const_thread()->sampleRate());
+            const int64_t timeDiffNs = inTimeNs - playFT.timeNs;
 
-    // For PCM tracks get server latency.
-    if (audio_is_linear_pcm(recordTrack->format())) {
-        double recordServerLatencyMs, playbackTrackLatencyMs;
-        if (recordTrack->getServerLatencyMs(&recordServerLatencyMs) == OK
-                && playbackTrack->getTrackLatencyMs(&playbackTrackLatencyMs) == OK) {
-            *latencyMs = recordServerLatencyMs + playbackTrackLatencyMs;
-            return OK;
+            // We arbitrarily choose the maximum timestamp time difference based on how often we
+            // expect the timestamps to update in normal operation
+            // (typical should be no more than 50 ms).
+            //
+            // If the timestamps aren't sampled close enough, the patch latency is not
+            // considered valid.
+            //
+            // TODO: change this based on more experiments.
+            constexpr int64_t maxValidTimeDiffNs = 1000 * NANOS_PER_MILLISECOND;
+            if (std::abs(timeDiffNs) < maxValidTimeDiffNs) {
+                *latencyMs = frameDiff * 1e3 / playbackTrack->sampleRate()
+                        - timeDiffNs * 1e-6;
+                return OK;
+            }
+        }
+    } else if (isSoftwarePeerPatch()) {
+        auto recordTrack = mRecord.const_track();
+        if (recordTrack.get() == nullptr) return INVALID_OPERATION;
+
+        auto playbackTrack = mPlayback.const_track();
+        if (playbackTrack.get() == nullptr) return INVALID_OPERATION;
+
+        // Latency information for tracks may be called without obtaining
+        // the underlying thread lock.
+        //
+        // We use record server latency + playback track latency (generally smaller than the
+        // reverse due to internal biases).
+        //
+        // TODO: is this stable enough? Consider a PatchTrack synchronized version of this.
+        // For PCM tracks get server latency.
+        if (audio_is_linear_pcm(recordTrack->format())) {
+            double recordServerLatencyMs, playbackTrackLatencyMs;
+            if (recordTrack->getServerLatencyMs(&recordServerLatencyMs) == OK
+                    && playbackTrack->getTrackLatencyMs(&playbackTrackLatencyMs) == OK) {
+                *latencyMs = recordServerLatencyMs + playbackTrackLatencyMs;
+                return OK;
+            }
+        }
+
+        // See if kernel latencies are available.
+        // If so, do a frame diff and time difference computation to estimate
+        // the total patch latency. This requires that frame counts are reported by the
+        // HAL are matched properly in the case of record overruns and playback underruns.
+        ThreadBase::TrackBase::FrameTime recordFT{}, playFT{};
+        recordTrack->getKernelFrameTime(&recordFT);
+        playbackTrack->getKernelFrameTime(&playFT);
+        if (recordFT.timeNs > 0 && playFT.timeNs > 0) {
+            const int64_t frameDiff = recordFT.frames - playFT.frames;
+            const int64_t timeDiffNs = recordFT.timeNs - playFT.timeNs;
+
+            // It is possible that the patch track and patch record have a large time disparity
+            // because one thread runs but another is stopped.  We arbitrarily choose the maximum
+            // timestamp time difference based on how often we expect the timestamps to update in
+            // normal operation (typical should be no more than 50 ms).
+            //
+            // If the timestamps aren't sampled close enough, the patch latency is not
+            // considered valid.
+            //
+            // TODO: change this based on more experiments.
+            constexpr int64_t maxValidTimeDiffNs = 200 * NANOS_PER_MILLISECOND;
+            if (std::abs(timeDiffNs) < maxValidTimeDiffNs) {
+                *latencyMs = frameDiff * 1e3 / recordTrack->sampleRate()
+                       - timeDiffNs * 1e-6;
+                return OK;
+            }
         }
     }
-
-    // See if kernel latencies are available.
-    // If so, do a frame diff and time difference computation to estimate
-    // the total patch latency. This requires that frame counts are reported by the
-    // HAL are matched properly in the case of record overruns and playback underruns.
-    ThreadBase::TrackBase::FrameTime recordFT{}, playFT{};
-    recordTrack->getKernelFrameTime(&recordFT);
-    playbackTrack->getKernelFrameTime(&playFT);
-    if (recordFT.timeNs > 0 && playFT.timeNs > 0) {
-        const int64_t frameDiff = recordFT.frames - playFT.frames;
-        const int64_t timeDiffNs = recordFT.timeNs - playFT.timeNs;
-
-        // It is possible that the patch track and patch record have a large time disparity because
-        // one thread runs but another is stopped.  We arbitrarily choose the maximum timestamp
-        // time difference based on how often we expect the timestamps to update in normal operation
-        // (typical should be no more than 50 ms).
-        //
-        // If the timestamps aren't sampled close enough, the patch latency is not
-        // considered valid.
-        //
-        // TODO: change this based on more experiments.
-        constexpr int64_t maxValidTimeDiffNs = 200 * NANOS_PER_MILLISECOND;
-        if (std::abs(timeDiffNs) < maxValidTimeDiffNs) {
-            *latencyMs = frameDiff * 1e3 / recordTrack->sampleRate()
-                   - timeDiffNs * 1e-6;
-            return OK;
-        }
-    }
-
     return INVALID_OPERATION;
 }
 
@@ -614,7 +739,9 @@ String8 AudioFlinger::PatchPanel::Patch::dump(audio_patch_handle_t myHandle) con
 {
     // TODO: Consider table dump form for patches, just like tracks.
     String8 result = String8::format("Patch %d: thread %p => thread %p",
-            myHandle, mRecord.const_thread().get(), mPlayback.const_thread().get());
+            myHandle, mRecord.const_thread().get(),
+            isSoftwareIOPatch() ?
+            mIOPlayback.const_thread().get() : mPlayback.const_thread().get());
 
     // add latency if it exists
     double latencyMs;
@@ -713,9 +840,15 @@ status_t AudioFlinger::PatchPanel::getDownstreamSoftwarePatches(
                 const auto& patch_iter = mPatches.find(patchHandle);
                 if (patch_iter != mPatches.end()) {
                     const Patch &patch = patch_iter->second;
-                    patches->emplace_back(*this, patchHandle,
-                            patch.mPlayback.const_thread()->id(),
-                            patch.mRecord.const_thread()->id());
+                    if (patch.isSoftwareIOPatch()) {
+                        patches->emplace_back(*this, patchHandle,
+                                patch.mIOPlayback.const_thread()->id(),
+                                patch.mRecord.const_thread()->id());
+                    } else if (patch.isSoftwarePeerPatch()) {
+                        patches->emplace_back(*this, patchHandle,
+                                patch.mPlayback.const_thread()->id(),
+                                patch.mRecord.const_thread()->id());
+                    }
                 } else {
                     ALOGE("Stale patch handle in the cache: %d", patchHandle);
                 }
@@ -783,7 +916,9 @@ void AudioFlinger::PatchPanel::dump(int fd) const
     for (const auto& iter : mPatches) {
         if (iter.second.isSoftware()) {
             if (!headerPrinted) {
-                patchPanelDump += "\nSoftware patches:\n";
+                if (iter.second.isSoftware()) {
+                    patchPanelDump += "\nSoftware patches:\n";
+                }
                 headerPrinted = true;
             }
             patchPanelDump.appendFormat("%s%s\n", indent, iter.second.dump(iter.first).string());
