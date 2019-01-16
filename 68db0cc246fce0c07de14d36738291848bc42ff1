@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "48b747cf_0b66bc7e",
+        "filename": "media/libmedia/CharacterEncodingDetector.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2019-01-16T19:14:40Z",
+      "side": 1,
+      "message": "this is never called, because windows-874-2000 is not part of ICU\u0027s recognizers, and so it will never be included in the \"ucma\" list of recognized encodings.",
+      "range": {
+        "startLine": 442,
+        "startChar": 0,
+        "endLine": 446,
+        "endChar": 9
+      },
+      "revId": "68db0cc246fce0c07de14d36738291848bc42ff1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
