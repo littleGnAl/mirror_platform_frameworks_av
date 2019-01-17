@@ -22,6 +22,30 @@
       "revId": "68db0cc246fce0c07de14d36738291848bc42ff1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d171c249_3eac1018",
+        "filename": "media/libmedia/CharacterEncodingDetector.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1243029
+      },
+      "writtenOn": "2019-01-17T00:24:11Z",
+      "side": 1,
+      "message": "Thank you for your review.\nThis is old code so I removed it.",
+      "parentUuid": "48b747cf_0b66bc7e",
+      "range": {
+        "startLine": 442,
+        "startChar": 0,
+        "endLine": 446,
+        "endChar": 9
+      },
+      "revId": "68db0cc246fce0c07de14d36738291848bc42ff1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
