@@ -1,0 +1,42 @@
+commit 9cf32138ce6d18e1486bacc6e5011b6f7b056f1f
+Author: kunal.mehindru <kunal.mehindru@spreadtrum.com>
+Date:   Wed Dec 26 18:49:07 2018 +0530
+
+    Bug #122335290 CTS MultiViewTest#testSharedSurfaces fails sometimes
+    due to crash in camera native framework.
+    
+    [root cause  ]Test crashes sometimes in native camera framework
+    due to NULL memory access of gbp during buffer attachment. Existing
+    'gbp' memory is destroyed & allocated with a new memory due to new
+    output surface gbp addition in 'mOutput' vector push_back in
+    “platform/frameworks/av/services/camera/libcameraservice/device3/
+    Camera3StreamSplitter.cpp”.
+    [changes     ]Instead of using reference of gbp to mOutputs[surface_id],
+    use gbp value of mOutputs[surface_id].
+    [side effects]none
+    [self test   ]:All camera CTS, camera baisc sanity
+    [download normally]:yes
+    [power on/off normally]:yes
+    [do common repository/branch inspection]:yes
+    [is there dependence]:no
+    [confirm dependent commit]:none
+    [board]:9832e
+    [test case]:Run cts MultiViewTest#testSharedSurfaces
+    [reviewers   ]prabhjot.singh
+    
+    Change-Id: I6c5dc16eec198c349c2e505c872bcc10615215aa
+    Signed-off-by: kunal.mehindru <kunal.mehindru@spreadtrum.com>
+
+diff --git a/services/camera/libcameraservice/device3/Camera3StreamSplitter.cpp b/services/camera/libcameraservice/device3/Camera3StreamSplitter.cpp
+index a0a50c2..4a0d93d 100644
+--- a/services/camera/libcameraservice/device3/Camera3StreamSplitter.cpp
++++ b/services/camera/libcameraservice/device3/Camera3StreamSplitter.cpp
+@@ -306,7 +306,7 @@ status_t Camera3StreamSplitter::attachBufferToOutputs(ANativeWindowBuffer* anb,
+     auto tracker = std::make_unique<BufferTracker>(gb, surface_ids);
+ 
+     for (auto& surface_id : surface_ids) {
+-        sp<IGraphicBufferProducer>& gbp = mOutputs[surface_id];
++        sp<IGraphicBufferProducer> gbp = mOutputs[surface_id];
+         int slot = BufferItem::INVALID_BUFFER_SLOT;
+         //Temporarly Unlock the mutex when trying to attachBuffer to the output
+         //queue, because attachBuffer could block in case of a slow consumer. If

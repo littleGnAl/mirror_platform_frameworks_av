@@ -306,7 +306,7 @@ status_t Camera3StreamSplitter::attachBufferToOutputs(ANativeWindowBuffer* anb,
     auto tracker = std::make_unique<BufferTracker>(gb, surface_ids);
 
     for (auto& surface_id : surface_ids) {
-        sp<IGraphicBufferProducer>& gbp = mOutputs[surface_id];
+        sp<IGraphicBufferProducer> gbp = mOutputs[surface_id];
         int slot = BufferItem::INVALID_BUFFER_SLOT;
         //Temporarly Unlock the mutex when trying to attachBuffer to the output
         //queue, because attachBuffer could block in case of a slow consumer. If
