@@ -581,7 +581,7 @@ status_t MPEG4Extractor::getTrackMetaData(
                 }
             } else {
                 uint32_t sampleIndex;
-                uint32_t sampleTime;
+                uint64_t sampleTime;
                 if (track->timescale != 0 &&
                         track->sampleTable->findThumbnailSample(&sampleIndex) == OK
                         && track->sampleTable->getMetaDataForSample(
@@ -4879,7 +4879,7 @@ status_t MPEG4Source::read(
                         sampleIndex, &syncSampleIndex, findFlags);
             }
 
-            uint32_t sampleTime;
+            uint64_t sampleTime;
             if (err == OK) {
                 err = mSampleTable->getMetaDataForSample(
                         sampleIndex, NULL, NULL, &sampleTime);
@@ -4928,7 +4928,7 @@ status_t MPEG4Source::read(
 
     off64_t offset = 0;
     size_t size = 0;
-    uint32_t cts, stts;
+    uint64_t cts, stts;
     bool isSyncSample;
     bool newBuffer = false;
     if (mBuffer == NULL) {
