@@ -407,9 +407,12 @@ sp<ABuffer> AMPEG4AudioAssembler::removeLATMFraming(const sp<ABuffer> &buffer) {
                 break;
             }
         }
-        
-        CHECK_LT(offset, buffer->size());
-        CHECK_LE(payloadLength, buffer->size() - offset);
+
+        // in case of packet lost
+        if ((offset > buffer->size()) || (payloadLength > buffer->size() - offset)) {
+            mAccessUnitDamaged = true;
+            return out;
+        }
 
         memcpy(out->data() + out->size(), &ptr[offset], payloadLength);
         out->setRange(0, out->size() + payloadLength);
@@ -420,7 +423,10 @@ sp<ABuffer> AMPEG4AudioAssembler::removeLATMFraming(const sp<ABuffer> &buffer) {
             // We want to stay byte-aligned.
 
             CHECK((mOtherDataLenBits % 8) == 0);
-            CHECK_LE(offset + (mOtherDataLenBits / 8), buffer->size());
+            if ((offset > buffer->size()) || (offset > buffer->size() - (mOtherDataLenBits / 8))) {
+                mAccessUnitDamaged = true;
+                return out;
+            }
             offset += mOtherDataLenBits / 8;
         }
     }
