@@ -22,6 +22,30 @@
       "revId": "cf0e89a9746c16657964ed22be5ef389e199a062",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8865e605_a1861f05",
+        "filename": "services/audiopolicy/common/managerdefinitions/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1136369
+      },
+      "writtenOn": "2019-01-22T21:37:33Z",
+      "side": 1,
+      "message": "yea, I don\u0027t understand why libaudiopolicycomponents_test is not find when it is defined here. Do you know ? Anyway I do not have the time to look into this until Q feature complete.",
+      "parentUuid": "de2259bd_085f9cd0",
+      "range": {
+        "startLine": 2,
+        "startChar": 11,
+        "endLine": 2,
+        "endChar": 40
+      },
+      "revId": "cf0e89a9746c16657964ed22be5ef389e199a062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
