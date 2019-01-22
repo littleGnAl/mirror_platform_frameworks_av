@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "de2259bd_085f9cd0",
+        "filename": "services/audiopolicy/common/managerdefinitions/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1241863
+      },
+      "writtenOn": "2019-01-22T19:01:02Z",
+      "side": 1,
+      "message": "Kevin, the VTS test is failing on error: hardware/interfaces/audio/core/4.0/vts/functional/Android.bp:17:1: \"VtsHalAudioV4_0TargetTest\" depends on undefined module \"libaudiopolicycomponents_test\"",
+      "range": {
+        "startLine": 2,
+        "startChar": 11,
+        "endLine": 2,
+        "endChar": 40
+      },
+      "revId": "cf0e89a9746c16657964ed22be5ef389e199a062",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
