@@ -2,5 +2,6 @@ service mediametrics /system/bin/mediametrics
     class main
     user media
     group media
+    updatable
     ioprio rt 4
     writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
