@@ -2,5 +2,6 @@ service vendor.media.omx /vendor/bin/hw/android.hardware.media.omx@1.0-service
     class main
     user mediacodec
     group camera drmrpc mediadrm
+    updatable
     ioprio rt 4
     writepid /dev/cpuset/foreground/tasks
