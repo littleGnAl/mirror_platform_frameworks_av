@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "769c0c83_d0d28eae",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-23T12:35:14Z",
+      "side": 1,
+      "message": "I filed b/123275379 to track this. Please mention it here.",
+      "revId": "718686a8ae89c91cf898bc99aebf982067c4156c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff0fb5fc_20dfe22f",
+        "filename": "media/mediaserver/mediaserver.rc",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1373864
+      },
+      "writtenOn": "2019-01-23T12:35:14Z",
+      "side": 1,
+      "message": "Please add TODO(b/123275379) comments for these changes to better keep track of reverting them.",
+      "revId": "718686a8ae89c91cf898bc99aebf982067c4156c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
