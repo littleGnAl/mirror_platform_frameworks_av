@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d0ec6a31_68a8039b",
+        "filename": "media/libmediaplayerservice/nuplayer/GenericSource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1147,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2019-01-23T22:50:50Z",
+      "side": 1,
+      "message": "this will cause mSeekingLock unlocked twice.",
+      "range": {
+        "startLine": 1147,
+        "startChar": 12,
+        "endLine": 1147,
+        "endChar": 34
+      },
+      "revId": "6134157f192601a8e12771fdd38e359b0f2c4e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e571d1a_8dd95b8c",
+        "filename": "media/libmediaplayerservice/nuplayer/GenericSource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1149,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2019-01-23T22:50:50Z",
+      "side": 1,
+      "message": "skip seek",
+      "range": {
+        "startLine": 1149,
+        "startChar": 19,
+        "endLine": 1149,
+        "endChar": 28
+      },
+      "revId": "6134157f192601a8e12771fdd38e359b0f2c4e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70dda2d6_239a57ab",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1378,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2019-01-23T22:50:50Z",
+      "side": 1,
+      "message": "line exceeds limit (100 chars per line)",
+      "range": {
+        "startLine": 1378,
+        "startChar": 98,
+        "endLine": 1378,
+        "endChar": 105
+      },
+      "revId": "6134157f192601a8e12771fdd38e359b0f2c4e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1425445_716d978f",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2438,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2019-01-23T22:50:50Z",
+      "side": 1,
+      "message": "When mVideoDecoder !\u003d NULL, mVideoDecoder will be resumed (line 2452), but mResumePending is still true. That\u0027s inconsistent.",
+      "range": {
+        "startLine": 2435,
+        "startChar": 12,
+        "endLine": 2438,
+        "endChar": 13
+      },
+      "revId": "6134157f192601a8e12771fdd38e359b0f2c4e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8c32c27_82aef68b",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2732,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2019-01-23T22:50:50Z",
+      "side": 1,
+      "message": "This is NuPlayer::notifyDriverSeekComplete(). Or should finishResume() be called here?",
+      "range": {
+        "startLine": 2726,
+        "startChar": 0,
+        "endLine": 2732,
+        "endChar": 0
+      },
+      "revId": "6134157f192601a8e12771fdd38e359b0f2c4e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
