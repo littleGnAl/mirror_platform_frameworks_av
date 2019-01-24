@@ -117,6 +117,7 @@ terms listed above has been obtained from the copyright holder.
 ; FUNCTION CODE
 ----------------------------------------------------------------------------*/
 
+__attribute__((no_sanitize("integer")))
 void deemphasis_32(
     int16 x_hi[],                        /* (i)     : input signal (bit31..16) */
     int16 x_lo[],                        /* (i)     : input signal (bit15..4)  */

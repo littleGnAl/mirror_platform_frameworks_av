@@ -85,6 +85,7 @@ extern "C"
                    range : 0xffff 8000 <= var_out <= 0x0000 7fff.
 
      ----------------------------------------------------------------------------*/
+    __attribute__((no_sanitize("integer")))
     __inline int16 add_int16(int16 var1, int16 var2)
     {
         int32 L_sum;
@@ -124,6 +125,7 @@ extern "C"
                    range : 0xffff 8000 <= var_out <= 0x0000 7fff.
 
      ----------------------------------------------------------------------------*/
+    __attribute__((no_sanitize("integer")))
     __inline int16 sub_int16(int16 var1, int16 var2)
     {
         int32 L_diff;
@@ -162,6 +164,7 @@ extern "C"
 
      ----------------------------------------------------------------------------*/
 
+    __attribute__((no_sanitize("integer")))
     __inline int16 mult_int16(int16 var1, int16 var2)
     {
         int32 L_product;
@@ -202,6 +205,7 @@ extern "C"
      ----------------------------------------------------------------------------*/
 
 
+    __attribute__((no_sanitize("integer")))
     __inline  int32 add_int32(int32 L_var1, int32 L_var2)
     {
         int32 L_var_out;
@@ -248,6 +252,7 @@ extern "C"
      ----------------------------------------------------------------------------*/
 
 
+    __attribute__((no_sanitize("integer")))
     __inline  int32 sub_int32(int32 L_var1, int32 L_var2)
     {
         //L_var_out = L_var1 - L_var2;
@@ -291,6 +296,7 @@ extern "C"
      ----------------------------------------------------------------------------*/
 
 
+    __attribute__((no_sanitize("integer")))
     __inline  int32 mul_16by16_to_int32(int16 var1, int16 var2)
     {
         int32 L_mul;
@@ -339,6 +345,7 @@ extern "C"
      ----------------------------------------------------------------------------*/
 
 
+    __attribute__((no_sanitize("integer")))
     __inline  int32 mac_16by16_to_int32(int32 L_var3, int16 var1, int16 var2)
     {
         return add_int32(L_var3, mul_16by16_to_int32(var1, var2));
@@ -373,6 +380,7 @@ extern "C"
 
      ----------------------------------------------------------------------------*/
 
+    __attribute__((no_sanitize("integer")))
     __inline  int32 msu_16by16_from_int32(int32 L_var3, int16 var1, int16 var2)
     {
         return sub_int32(L_var3, mul_16by16_to_int32(var1, var2));
@@ -398,6 +406,7 @@ extern "C"
                    range : 0xffff 8000 <= var_out <= 0x0000 7fff.
 
      ----------------------------------------------------------------------------*/
+    __attribute__((no_sanitize("integer")))
     __inline int16 amr_wb_round(int32 L_var1)
     {
         if (L_var1 <= (MAX_32 - 0x00008000L))
@@ -426,6 +435,7 @@ extern "C"
                    range : 0xffff 8000 <= var_out <= 0x0000 7fff.
 
      ----------------------------------------------------------------------------*/
+    __attribute__((no_sanitize("integer")))
     __inline int16 amr_wb_shl1_round(int32 L_var1)
     {
         int16 var_out;
@@ -459,11 +469,13 @@ extern "C"
          ----------------------------------------------------------------------------*/
 
 
+    __attribute__((no_sanitize("integer")))
     __inline int32 mul_32by16(int16 hi, int16 lo, int16 n)
     {
         return (((((int32)hi*n)) + ((((int32)lo*n) >> 15))) << 1);
     }
 
+    __attribute__((no_sanitize("integer")))
     __inline  int32 fxp_mac_16by16(int16 var1,  int16 var2, int32 L_add)
     {
 
@@ -477,6 +489,7 @@ extern "C"
         return L_add;
     }
 
+    __attribute__((no_sanitize("integer")))
     __inline  int32 fxp_mul_16by16(int16 var1, const int16 var2)
     {
         int32 L_mul = (int32)var1 * var2;
@@ -484,6 +497,7 @@ extern "C"
         return L_mul;
     }
 
+    __attribute__((no_sanitize("integer")))
     __inline  int32 fxp_mul32_by_16b(int32 L_var1, const int32 L_var2)
     {
 
