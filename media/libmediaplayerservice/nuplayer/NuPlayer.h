@@ -52,6 +52,8 @@ struct NuPlayer : public AHandler {
 
     void setDataSourceAsync(const sp<DataSource> &source);
 
+    void setDataSourceAsync(const String8& rtpParams);
+
     status_t getBufferingSettings(BufferingSettings* buffering /* nonnull */);
     status_t setBufferingSettings(const BufferingSettings& buffering);
 
@@ -118,6 +120,7 @@ private:
     struct GenericSource;
     struct HTTPLiveSource;
     struct Renderer;
+    struct RTPSource;
     struct RTSPSource;
     struct StreamingSource;
     struct Action;
