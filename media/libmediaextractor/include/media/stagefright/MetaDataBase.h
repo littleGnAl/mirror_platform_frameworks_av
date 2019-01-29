@@ -231,6 +231,9 @@ enum {
 
     // Key for ALAC Magic Cookie
     kKeyAlacMagicCookie  = 'almc', // raw data
+
+    kKeySps              = 'sSps', // int32_t, indicates that a buffer is sps.
+    kKeyPps              = 'sPps', // int32_t, indicates that a buffer is pps.
 };
 
 enum {
