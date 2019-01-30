@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22de632b_e94f9a42",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2019-01-30T21:13:56Z",
+      "side": 1,
+      "message": "better move this to the 2 constructors where this is missing.",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 454,
+        "endChar": 62
+      },
+      "revId": "82ac16500c9a77936d1e05ded4685bfae7320262",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
