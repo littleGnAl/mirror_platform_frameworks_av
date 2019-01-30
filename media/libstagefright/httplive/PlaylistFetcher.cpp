@@ -1857,6 +1857,17 @@ status_t PlaylistFetcher::extractAndQueueAccessUnitsFromTs(const sp<ABuffer> &bu
                     if (!startTimeReached || (isAvc && !mIDRFound)) {
                         continue;
                     }
+                    if (stream == LiveSession::STREAMTYPE_AUDIO) {
+                        continue;
+                    }
+                }
+            } else {
+                if (isAvc && !mIDRFound) {
+                    // corner case, buffer is corrupted, no preceding IDR found, find the next one
+                    if (isAvc && !IsIDR(accessUnit->data(), accessUnit->size())) {
+                        continue;
+                    }
+                    mIDRFound = true;
                 }
             }
 
