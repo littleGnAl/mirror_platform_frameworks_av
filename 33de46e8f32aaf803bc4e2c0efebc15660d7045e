@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a3f31ce_4320b66c",
+        "filename": "cmds/screenrecord/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2019-02-01T14:15:53Z",
+      "side": 1,
+      "message": "I know this was copied over from the Android.mk, but I\u0027ll nitpick anyway: since this is a new file, either update the copyright, or remove the copyright header altogether since none of the other makefile have copyright headers.",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "33de46e8f32aaf803bc4e2c0efebc15660d7045e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
