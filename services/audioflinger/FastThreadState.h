@@ -41,6 +41,7 @@ struct FastThreadState {
     Command     mCommand;       // current command
     int32_t*    mColdFutexAddr; // for COLD_IDLE only, pointer to the associated futex
     unsigned    mColdGen;       // increment when COLD_IDLE is requested so it's only performed once
+    bool        mIsWarm;        // for COLD_IDLE only, set warm up state after COLD_IDLE
 
     // This might be a one-time configuration rather than per-state
     FastThreadDumpState* mDumpState; // if non-NULL, then update dump state periodically

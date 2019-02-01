@@ -1081,6 +1081,27 @@ protected:
                 // volumes last sent to audio HAL with stream->setVolume()
                 float mLeftVolFloat;
                 float mRightVolFloat;
+    // Whether to use fast mixer
+    enum FastMixerMode {
+        FastMixer_Never,    // never initialize or use: for debugging only
+        FastMixer_Always,   // always initialize and use, even if not needed: for debugging only
+                            // normal mixer multiplier is 1
+        FastMixer_Static,   // initialize if needed, then use all the time if initialized,
+                            // multiplier is calculated based on min & max normal mixer buffer size
+        FastMixer_Dynamic,  // initialize if needed, then use dynamically depending on track load,
+                            // multiplier is calculated based on min & max normal mixer buffer size
+                            // FIXME for FastMixer_Dynamic:
+                            // Supporting this option will require fixing HALs that can't handle large writes.
+                            // For example, one HAL implementation returns an error from a large write,
+                            // and another HAL implementation corrupts memory, possibly in the sample rate converter.
+                            // We could either fix the HAL implementations, or provide a wrapper that breaks
+                            // up large writes into smaller ones, and the wrapper would need to deal with scheduler.
+    };
+
+    FastMixerMode   mUseFastMixer;
+    audio_format_t  mDynamicOutSinkFormat;
+    size_t          mDynamicOutSinkBufferSize;
+    void*           mDynamicOutSinkBuffer;
 };
 
 class MixerThread : public PlaybackThread {
@@ -1165,6 +1186,7 @@ protected:
                 // Blending with limiter is not idempotent,
                 // and blending without limiter is idempotent but inefficient to do twice.
     virtual     bool       requireMonoBlend() { return mMasterMono.load() && !hasFastMixer(); }
+    virtual     void        preExit();
 };
 
 class DirectOutputThread : public PlaybackThread {
