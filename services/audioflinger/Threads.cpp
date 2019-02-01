@@ -153,23 +153,6 @@ static const nsecs_t kDirectMinSleepTimeUs = 10000;
 // it appropriately.
 #define FMS_20 20
 
-// Whether to use fast mixer
-static const enum {
-    FastMixer_Never,    // never initialize or use: for debugging only
-    FastMixer_Always,   // always initialize and use, even if not needed: for debugging only
-                        // normal mixer multiplier is 1
-    FastMixer_Static,   // initialize if needed, then use all the time if initialized,
-                        // multiplier is calculated based on min & max normal mixer buffer size
-    FastMixer_Dynamic,  // initialize if needed, then use dynamically depending on track load,
-                        // multiplier is calculated based on min & max normal mixer buffer size
-    // FIXME for FastMixer_Dynamic:
-    //  Supporting this option will require fixing HALs that can't handle large writes.
-    //  For example, one HAL implementation returns an error from a large write,
-    //  and another HAL implementation corrupts memory, possibly in the sample rate converter.
-    //  We could either fix the HAL implementations, or provide a wrapper that breaks
-    //  up large writes into smaller ones, and the wrapper would need to deal with scheduler.
-} kUseFastMixer = FastMixer_Static;
-
 // Whether to use fast capture
 static const enum {
     FastCapture_Never,  // never initialize or use: for debugging only
@@ -1687,7 +1670,11 @@ AudioFlinger::PlaybackThread::PlaybackThread(const sp<AudioFlinger>& audioFlinge
         // index 0 is reserved for normal mixer's submix
         mFastTrackAvailMask(((1 << FastMixerState::sMaxFastTracks) - 1) & ~1),
         mHwSupportsPause(false), mHwPaused(false), mFlushPending(false),
-        mLeftVolFloat(-1.0), mRightVolFloat(-1.0)
+        mLeftVolFloat(-1.0), mRightVolFloat(-1.0),
+        mUseFastMixer(FastMixer_Static),
+        mDynamicOutSinkFormat(AUDIO_FORMAT_PCM_16_BIT),
+        mDynamicOutSinkBufferSize(0),
+        mDynamicOutSinkBuffer(NULL)
 {
     snprintf(mThreadName, kThreadNameLength, "AudioOut_%X", id);
     mNBLogWriter = audioFlinger->newWriter_l(kLogSize, mThreadName);
@@ -2548,8 +2535,8 @@ void AudioFlinger::PlaybackThread::readOutputParameters_l()
 
     // Calculate size of normal sink buffer relative to the HAL output buffer size
     double multiplier = 1.0;
-    if (mType == MIXER && (kUseFastMixer == FastMixer_Static ||
-            kUseFastMixer == FastMixer_Dynamic)) {
+    if (mType == MIXER && (mUseFastMixer == FastMixer_Static ||
+            mUseFastMixer == FastMixer_Dynamic)) {
         size_t minNormalFrameCount = (kMinNormalSinkBufferSizeMs * mSampleRate) / 1000;
         size_t maxNormalFrameCount = (kMaxNormalSinkBufferSizeMs * mSampleRate) / 1000;
 
@@ -2846,7 +2833,17 @@ ssize_t AudioFlinger::PlaybackThread::threadLoop_write()
                         (pipe->maxFrames() * 7) / 8 : mNormalFrameCount * 2);
             }
         }
-        ssize_t framesWritten = mNormalSink->write((char *)mSinkBuffer + offset, count);
+        void *sinkBuffer = mSinkBuffer;
+        // When using dynamic fast mixer, if mixer format is diffrient from hal buffer format,
+        // we should convert sink buffer to match the hal buffer.
+        if (mUseFastMixer == FastMixer_Dynamic) {
+            if ((mNormalSink == mOutputSink) && (mDynamicOutSinkFormat != mFormat)) {
+                memcpy_by_audio_format(mDynamicOutSinkBuffer, mDynamicOutSinkFormat, mSinkBuffer, mFormat,
+                            mNormalFrameCount * mChannelCount);
+                sinkBuffer = mDynamicOutSinkBuffer;
+            }
+        }
+        ssize_t framesWritten = mNormalSink->write((char *)sinkBuffer + offset, count);
         ATRACE_END();
         if (framesWritten > 0) {
             bytesWritten = framesWritten * mFrameSize;
@@ -3825,7 +3822,7 @@ AudioFlinger::MixerThread::MixerThread(const sp<AudioFlinger>& audioFlinger, Aud
 
     // initialize fast mixer depending on configuration
     bool initFastMixer;
-    switch (kUseFastMixer) {
+    switch (mUseFastMixer) {
     case FastMixer_Never:
         initFastMixer = false;
         break;
@@ -3838,8 +3835,8 @@ AudioFlinger::MixerThread::MixerThread(const sp<AudioFlinger>& audioFlinger, Aud
         // where the period is less than an experimentally determined threshold that can be
         // scheduled reliably with CFS. However, the BT A2DP HAL is
         // bursty (does not pull at a regular rate) and so cannot operate with FastMixer.
-        initFastMixer = mFrameCount < mNormalFrameCount
-                && (mOutDevice & AUDIO_DEVICE_OUT_ALL_A2DP) == 0;
+        initFastMixer = mFrameCount < mNormalFrameCount;
+
         break;
     }
     ALOGW_IF(initFastMixer == false && mFrameCount < mNormalFrameCount,
@@ -3851,6 +3848,11 @@ AudioFlinger::MixerThread::MixerThread(const sp<AudioFlinger>& audioFlinger, Aud
             fastMixerFormat = AUDIO_FORMAT_PCM_FLOAT;
         } else {
             fastMixerFormat = AUDIO_FORMAT_PCM_16_BIT;
+        }
+        if (mUseFastMixer == FastMixer_Dynamic) {
+            mDynamicOutSinkFormat = mFormat;
+            mDynamicOutSinkBufferSize = mChannelCount * audio_bytes_per_sample(mFormat) * mNormalFrameCount;
+            (void)posix_memalign(&mDynamicOutSinkBuffer, 32, mDynamicOutSinkBufferSize);
         }
         if (mFormat != fastMixerFormat) {
             // change our Sink format to accept our intermediate precision
@@ -3931,6 +3933,7 @@ AudioFlinger::MixerThread::MixerThread(const sp<AudioFlinger>& audioFlinger, Aud
         //mFastMixerFutex = 0;
         state->mColdFutexAddr = &mFastMixerFutex;
         state->mColdGen++;
+        state->mIsWarm = (mUseFastMixer == FastMixer_Dynamic);
         state->mDumpState = &mFastMixerDumpState;
 #ifdef TEE_SINK
         state->mTeeSink = mTeeSink.get();
@@ -3957,7 +3960,7 @@ AudioFlinger::MixerThread::MixerThread(const sp<AudioFlinger>& audioFlinger, Aud
 
     }
 
-    switch (kUseFastMixer) {
+    switch (mUseFastMixer) {
     case FastMixer_Never:
     case FastMixer_Dynamic:
         mNormalSink = mOutputSink;
@@ -3971,7 +3974,7 @@ AudioFlinger::MixerThread::MixerThread(const sp<AudioFlinger>& audioFlinger, Aud
     }
 }
 
-AudioFlinger::MixerThread::~MixerThread()
+void AudioFlinger::MixerThread::preExit()
 {
     if (mFastMixer != 0) {
         FastMixerStateQueue *sq = mFastMixer->sq();
@@ -3994,6 +3997,10 @@ AudioFlinger::MixerThread::~MixerThread()
         FastTrack *fastTrack = &state->mFastTracks[0];
         ALOG_ASSERT(fastTrack->mBufferProvider != NULL);
         delete fastTrack->mBufferProvider;
+        if (mUseFastMixer == FastMixer_Dynamic) {
+            free(mDynamicOutSinkBuffer);
+            mDynamicOutSinkBuffer = NULL;
+        }
         sq->end(false /*didModify*/);
         mFastMixer.clear();
 #ifdef AUDIO_WATCHDOG
@@ -4004,6 +4011,11 @@ AudioFlinger::MixerThread::~MixerThread()
         }
 #endif
     }
+    PlaybackThread::preExit();
+}
+
+AudioFlinger::MixerThread::~MixerThread()
+{
     mAudioFlinger->unregisterWriter(mFastMixerNBLogWriter);
     delete mAudioMixer;
 }
@@ -4032,7 +4044,7 @@ ssize_t AudioFlinger::MixerThread::threadLoop_write()
         FastMixerStateQueue *sq = mFastMixer->sq();
         FastMixerState *state = sq->begin();
         if (state->mCommand != FastMixerState::MIX_WRITE &&
-                (kUseFastMixer != FastMixer_Dynamic || state->mTrackMask > 1)) {
+                (mUseFastMixer != FastMixer_Dynamic || state->mTrackMask > 1)) {
             if (state->mCommand == FastMixerState::COLD_IDLE) {
 
                 // FIXME workaround for first HAL write being CPU bound on some devices
@@ -4057,7 +4069,7 @@ ssize_t AudioFlinger::MixerThread::threadLoop_write()
 #endif
             sq->end();
             sq->push(FastMixerStateQueue::BLOCK_UNTIL_PUSHED);
-            if (kUseFastMixer == FastMixer_Dynamic) {
+            if (mUseFastMixer == FastMixer_Dynamic) {
                 mNormalSink = mPipeSink;
             }
         } else {
@@ -4086,13 +4098,14 @@ void AudioFlinger::MixerThread::threadLoop_standby()
             state->mCommand = FastMixerState::COLD_IDLE;
             state->mColdFutexAddr = &mFastMixerFutex;
             state->mColdGen++;
+            state->mIsWarm = (mUseFastMixer == FastMixer_Dynamic);
             mFastMixerFutex = 0;
+            if (mUseFastMixer == FastMixer_Dynamic) {
+                mNormalSink = mOutputSink;
+            }
             sq->end();
             // BLOCK_UNTIL_PUSHED would be insufficient, as we need it to stop doing I/O now
             sq->push(FastMixerStateQueue::BLOCK_UNTIL_ACKED);
-            if (kUseFastMixer == FastMixer_Dynamic) {
-                mNormalSink = mOutputSink;
-            }
 #ifdef AUDIO_WATCHDOG
             if (mAudioWatchdog != 0) {
                 mAudioWatchdog->pause();
@@ -4784,15 +4797,14 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::MixerThread::prepareTrac
     if (didModify) {
         state->mFastTracksGen++;
         // if the fast mixer was active, but now there are no fast tracks, then put it in cold idle
-        if (kUseFastMixer == FastMixer_Dynamic &&
+        if (mUseFastMixer == FastMixer_Dynamic &&
                 state->mCommand == FastMixerState::MIX_WRITE && state->mTrackMask <= 1) {
             state->mCommand = FastMixerState::COLD_IDLE;
             state->mColdFutexAddr = &mFastMixerFutex;
             state->mColdGen++;
+            state->mIsWarm = true;
             mFastMixerFutex = 0;
-            if (kUseFastMixer == FastMixer_Dynamic) {
-                mNormalSink = mOutputSink;
-            }
+            mNormalSink = mOutputSink;
             // If we go into cold idle, need to wait for acknowledgement
             // so that fast mixer stops doing I/O.
             block = FastMixerStateQueue::BLOCK_UNTIL_ACKED;
@@ -6571,7 +6583,7 @@ reacquire_wakelock:
             bool didModify = false;
             FastCaptureStateQueue::block_t block = FastCaptureStateQueue::BLOCK_UNTIL_PUSHED;
             if (state->mCommand != FastCaptureState::READ_WRITE /* FIXME &&
-                    (kUseFastMixer != FastMixer_Dynamic || state->mTrackMask > 1)*/) {
+                    (mUseFastMixer != FastMixer_Dynamic || state->mTrackMask > 1)*/) {
                 if (state->mCommand == FastCaptureState::COLD_IDLE) {
                     int32_t old = android_atomic_inc(&mFastCaptureFutex);
                     if (old == -1) {

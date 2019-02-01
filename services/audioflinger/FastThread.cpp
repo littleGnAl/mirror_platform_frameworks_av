@@ -179,7 +179,7 @@ bool FastThread::threadLoop()
                 }
                 // This may be overly conservative; there could be times that the normal mixer
                 // requests such a brief cold idle that it doesn't require resetting this flag.
-                mIsWarm = false;
+                mIsWarm = mCurrent->mIsWarm;
                 mMeasuredWarmupTs.tv_sec = 0;
                 mMeasuredWarmupTs.tv_nsec = 0;
                 mWarmupCycles = 0;
