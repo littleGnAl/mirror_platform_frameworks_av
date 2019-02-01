@@ -16,6 +16,24 @@
       "revId": "33bba18b2edaa8e2e09cc9368eda2fe8ca9a17dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f490766d_50bbd658",
+        "filename": "services/audiopolicy/config/audio_policy_configuration.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1318371
+      },
+      "writtenOn": "2019-02-01T08:03:03Z",
+      "side": 0,
+      "message": "After removed a2dp_audio_policy_configuration.xml and hearing_aid_audio_policy_configuration.xml, we can\u0027t switch between UIPC and Bluetooth Audio HAL V2 anymore. Now HAL V2 does not merge and not dogfood test yet, so I suggest to keep them and refine those xml after HAL V2 is stable.\nBtw, there is A2DP input in a2dp_audio_policy_configuration.xml even HAL V2 is running.",
+      "parentUuid": "73c51764_61d8c493",
+      "revId": "33bba18b2edaa8e2e09cc9368eda2fe8ca9a17dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
