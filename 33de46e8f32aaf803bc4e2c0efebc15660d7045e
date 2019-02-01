@@ -22,6 +22,30 @@
       "revId": "33de46e8f32aaf803bc4e2c0efebc15660d7045e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4ae0c3b_33f60c23",
+        "filename": "cmds/screenrecord/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2019-02-01T14:18:50Z",
+      "side": 1,
+      "message": "I know the soong team has been keeping these unchanged for all their mk -\u003e bp conversion. I\u0027m not sure if it counts as a \"rename\" or not (which are meant to keep the original year), but at least it\u0027s an established practice and I\u0027d prefer to follow it (obviously, I don\u0027t feel too strongly..).",
+      "parentUuid": "4a3f31ce_4320b66c",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 17
+      },
+      "revId": "33de46e8f32aaf803bc4e2c0efebc15660d7045e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
