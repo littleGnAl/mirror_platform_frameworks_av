@@ -1276,7 +1276,7 @@ status_t AudioPolicyManager::startSource(const sp<AudioOutputDescriptor>& output
                 // In this case, the audio HAL must receive the new device selection so that it can
                 // change the device currently selected by the other output.
                 if (sharedDevice &&
-                        desc->device() != device &&
+                        //desc->device() != device &&
                         desc->getPatchHandle() != AUDIO_PATCH_HANDLE_NONE) {
                     force = true;
                 }
