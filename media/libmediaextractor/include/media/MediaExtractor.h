@@ -24,13 +24,13 @@
 #include <utils/Errors.h>
 #include <utils/Log.h>
 #include <utils/RefBase.h>
+#include <utils/Vector.h>
 
 namespace android {
 
 class DataSourceBase;
 class MetaDataBase;
 struct MediaTrack;
-
 
 class ExtractorAllocTracker {
 public:
@@ -77,6 +77,8 @@ public:
         return INVALID_OPERATION;
     }
 
+    virtual status_t setMediaDrmSession(const Vector<uint8_t>* /*sessionId*/) { return false; }
+
     virtual const char * name() { return "<unspecified>"; }
 
     typedef MediaExtractor* (*CreatorFunc)(
@@ -89,7 +91,8 @@ public:
     // called against the opaque object when it is no longer used.
     typedef CreatorFunc (*SnifferFunc)(
             DataSourceBase *source, float *confidence,
-            void **meta, FreeMetaFunc *freeMeta);
+            void **meta, FreeMetaFunc *freeMeta, const Vector<uint8_t> *drmUuid,
+            const Vector<uint8_t> *drmSessionId);
 
     typedef struct {
         const uint8_t b[16];
@@ -115,7 +118,7 @@ public:
         const SnifferFunc sniff;
     } ExtractorDef;
 
-    static const uint32_t EXTRACTORDEF_VERSION = 1;
+    static const uint32_t EXTRACTORDEF_VERSION = 2;
 
     typedef ExtractorDef (*GetExtractorDef)();
 

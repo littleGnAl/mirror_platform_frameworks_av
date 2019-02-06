@@ -37,7 +37,9 @@ MediaExtractor::ExtractorDef GETEXTRACTORDEF() {
                 DataSourceBase *source,
                 float *confidence,
                 void **,
-                MediaExtractor::FreeMetaFunc *) -> MediaExtractor::CreatorFunc {
+                MediaExtractor::FreeMetaFunc *,
+                const Vector<uint8_t> *,
+                const Vector<uint8_t> *) -> MediaExtractor::CreatorFunc {
             if (SniffMPEG2TS(source, confidence)) {
                 return [](
                         DataSourceBase *source,

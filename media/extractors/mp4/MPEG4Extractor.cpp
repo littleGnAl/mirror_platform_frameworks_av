@@ -5734,7 +5734,10 @@ static MediaExtractor* CreateExtractor(DataSourceBase *source, void *) {
 
 static MediaExtractor::CreatorFunc Sniff(
         DataSourceBase *source, float *confidence, void **,
-        MediaExtractor::FreeMetaFunc *) {
+        MediaExtractor::FreeMetaFunc *,
+        const Vector<uint8_t> *drmUuid, const Vector<uint8_t> *drmSessionId) {
+    (void)drmUuid;
+    (void)drmSessionId;
     if (BetterSniffMPEG4(source, confidence)) {
         return CreateExtractor;
     }

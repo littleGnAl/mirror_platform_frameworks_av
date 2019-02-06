@@ -555,7 +555,11 @@ static MediaExtractor::CreatorFunc Sniff(
         DataSourceBase *source,
         float *confidence,
         void **,
-        MediaExtractor::FreeMetaFunc *) {
+        MediaExtractor::FreeMetaFunc *,
+        const Vector<uint8_t> *drmUuid,
+        const Vector<uint8_t> *drmSessionId) {
+    (void)drmUuid;
+    (void)drmSessionId;
     char header[12];
     if (source->readAt(0, header, sizeof(header)) < (ssize_t)sizeof(header)) {
         return NULL;

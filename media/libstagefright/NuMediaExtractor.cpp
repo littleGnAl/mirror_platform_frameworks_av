@@ -88,7 +88,7 @@ status_t NuMediaExtractor::setDataSource(
         return -ENOENT;
     }
 
-    mImpl = MediaExtractorFactory::Create(dataSource);
+    mImpl = MediaExtractorFactory::Create(dataSource, NULL, &mUUID, &mSessionId);
 
     if (mImpl == NULL) {
         return ERROR_UNSUPPORTED;
@@ -124,7 +124,7 @@ status_t NuMediaExtractor::setDataSource(int fd, off64_t offset, off64_t size) {
         return err;
     }
 
-    mImpl = MediaExtractorFactory::Create(fileSource);
+    mImpl = MediaExtractorFactory::Create(fileSource, NULL, &mUUID, &mSessionId);
 
     if (mImpl == NULL) {
         return ERROR_UNSUPPORTED;
@@ -154,7 +154,7 @@ status_t NuMediaExtractor::setDataSource(const sp<DataSource> &source) {
         return err;
     }
 
-    mImpl = MediaExtractorFactory::Create(source);
+    mImpl = MediaExtractorFactory::Create(source, NULL, &mUUID, &mSessionId);
 
     if (mImpl == NULL) {
         return ERROR_UNSUPPORTED;
@@ -806,6 +806,14 @@ bool NuMediaExtractor::getCachedDuration(
     }
 
     return false;
+}
+
+status_t NuMediaExtractor::setMediaDrmSession(
+        const Vector<uint8_t> &drmUuid, const Vector<uint8_t> &sessionId) {
+    mSessionId = sessionId;
+    mUUID = drmUuid;
+
+    return OK;
 }
 
 }  // namespace android
