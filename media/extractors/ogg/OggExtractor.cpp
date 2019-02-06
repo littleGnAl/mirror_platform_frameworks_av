@@ -1258,7 +1258,11 @@ static MediaExtractor::CreatorFunc Sniff(
         DataSourceBase *source,
         float *confidence,
         void **,
-        MediaExtractor::FreeMetaFunc *) {
+        MediaExtractor::FreeMetaFunc *,
+        const Vector<uint8_t> *drmUuid,
+        const Vector<uint8_t> *drmSessionId) {
+    (void)drmUuid;
+    (void)drmSessionId;
     char tmp[4];
     if (source->readAt(0, tmp, 4) < 4 || memcmp(tmp, "OggS", 4)) {
         return NULL;

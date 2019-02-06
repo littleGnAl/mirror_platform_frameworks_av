@@ -97,6 +97,10 @@ struct NuMediaExtractor : public RefBase {
 
     bool getCachedDuration(int64_t *durationUs, bool *eos) const;
 
+    status_t setMediaDrmSession(
+        const Vector<uint8_t> &uuid,
+        const Vector<uint8_t> &sessionId);
+
 protected:
     virtual ~NuMediaExtractor();
 
@@ -137,6 +141,9 @@ private:
     Vector<TrackInfo> mSelectedTracks;
     int64_t mTotalBitrate;  // in bits/sec
     int64_t mDurationUs;
+
+    Vector<uint8_t> mSessionId;
+    Vector<uint8_t> mUUID;
 
     ssize_t fetchAllTrackSamples(
             int64_t seekTimeUs = -1ll,

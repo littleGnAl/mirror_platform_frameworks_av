@@ -332,7 +332,10 @@ static MediaExtractor* CreateExtractor(
 
 static MediaExtractor::CreatorFunc Sniff(
         DataSourceBase *source, float *confidence, void **meta,
-        MediaExtractor::FreeMetaFunc *freeMeta) {
+        MediaExtractor::FreeMetaFunc *freeMeta,
+        const Vector<uint8_t> *drmUuid, const Vector<uint8_t> *drmSessionId) {
+    (void)drmUuid;
+    (void)drmSessionId;
     off64_t pos = 0;
 
     for (;;) {

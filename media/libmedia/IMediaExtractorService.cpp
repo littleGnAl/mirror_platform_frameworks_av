@@ -40,12 +40,19 @@ public:
     {
     }
 
-    virtual sp<IMediaExtractor> makeExtractor(const sp<IDataSource> &source, const char *mime) {
+    virtual sp<IMediaExtractor> makeExtractor(const sp<IDataSource> &source, const char *mime,
+            const Vector<uint8_t> *drmUuid, const Vector<uint8_t> *drmSessionId) {
         Parcel data, reply;
         data.writeInterfaceToken(IMediaExtractorService::getInterfaceDescriptor());
         data.writeStrongBinder(IInterface::asBinder(source));
         if (mime != NULL) {
             data.writeCString(mime);
+        }
+        if (drmUuid != NULL) {
+            data.writeByteArray(drmUuid->size(), drmUuid->array());
+        }
+        if (drmSessionId != NULL) {
+            data.writeByteArray(drmSessionId->size(), drmSessionId->array());
         }
         status_t ret = remote()->transact(MAKE_EXTRACTOR, data, &reply);
         if (ret == NO_ERROR) {
