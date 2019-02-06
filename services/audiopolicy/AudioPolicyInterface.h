@@ -251,7 +251,7 @@ public:
                                         bool reported) = 0;
     virtual status_t setSurroundFormatEnabled(audio_format_t audioFormat, bool enabled) = 0;
 
-    virtual void     setRecordSilenced(uid_t uid, bool silenced);
+    virtual void     setRecordSilenced(uid_t uid, bool silenced) = 0;
 };
 
 
