@@ -4905,7 +4905,7 @@ audio_devices_t AudioPolicyManager::getNewOutputDevice(const sp<AudioOutputDescr
     // FIXME: extend use of isStrategyActiveOnSameModule() to all strategies
     // with a refined rule considering mutually exclusive devices (using same backend)
     // as opposed to all streams on the same audio HAL module.
-    if (isStrategyActive(outputDesc, STRATEGY_ENFORCED_AUDIBLE) &&
+    if (isStrategyActiveOnSameModule(outputDesc, STRATEGY_ENFORCED_AUDIBLE) &&
         mEngine->getForceUse(AUDIO_POLICY_FORCE_FOR_SYSTEM) == AUDIO_POLICY_FORCE_SYSTEM_ENFORCED) {
         device = getDeviceForStrategy(STRATEGY_ENFORCED_AUDIBLE, fromCache);
     } else if (isInCall() ||
