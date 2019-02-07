@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "de7f9909_67c0ede5",
+        "filename": "media/libmediaextractor/include/media/MediaExtractor.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1238642
+      },
+      "writtenOn": "2019-02-07T05:05:00Z",
+      "side": 1,
+      "message": "Sorry to late response.\nWe modified let the uuid(and sessionID) just be passed to the SnifferFunc as an additional parameter and removed the CanHanleDrmFunc.\nCould you please review this CL again?\nThanks in advance.",
+      "parentUuid": "0c639c0f_d5b323ca",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 97,
+        "endChar": 76
+      },
+      "revId": "5d85c22b3dbf77537b62aadb9fe0c724a0b2a62d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b143eb50_c4b9a07f",
         "filename": "media/libmediaextractor/include/media/MediaExtractor.h",
         "patchSetId": 3
