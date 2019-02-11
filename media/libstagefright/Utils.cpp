@@ -221,6 +221,74 @@ static void parseAvcProfileLevelFromAvcc(const uint8_t *ptr, size_t size, sp<AMe
     }
 }
 
+static void parseDolbyVisionProfileLevelFromDvcc(const uint8_t *ptr, size_t size, sp<AMessage> &format)
+{
+    if (size < 4 || ptr[0] != 1 || ptr[1] != 0) {  // dv_major_version == 1, dv_minor_version == 0
+        return;
+    }
+
+    const uint8_t profile = ptr[2] >> 1;
+    const uint8_t level = ((ptr[2] & 0x1) << 5) | ((ptr[3] >> 3) & 0x1f);
+    const uint8_t rpu_present_flag = (ptr[3] >> 2) & 0x01;
+    const uint8_t el_present_flag = (ptr[3] >> 1) & 0x01;
+    const uint8_t bl_present_flag = (ptr[3] & 0x01);
+
+
+    int32_t bl_compatibility_id = 0;
+    if (size == 4) {
+        bl_compatibility_id = (int32_t)(ptr[4] >> 4);
+    }
+
+    ALOGV("%s profile-level-compatibility value in dv(c|v)c box %d-%d-%d", __FUNCTION__,
+                                                profile, level, bl_compatibility_id);
+
+    ALOGV("%s profile-level value in dv(c|v)c box %d-%d", __FUNCTION__, profile, level);
+    /* All Dolby Profiles will have profile and level info in MediaFormat
+        Profile 8 and 9 will have bl_compatibility_id too.
+    */
+    const static ALookup<uint8_t, OMX_VIDEO_DOLBYVISIONPROFILETYPE> profiles {
+        { 1, OMX_VIDEO_DolbyVisionProfileDvavPen },
+        { 3, OMX_VIDEO_DolbyVisionProfileDvheDen },
+        { 4, OMX_VIDEO_DolbyVisionProfileDvheDtr },
+        { 5, OMX_VIDEO_DolbyVisionProfileDvheStn },
+        { 6, OMX_VIDEO_DolbyVisionProfileDvheDth },
+        { 7, OMX_VIDEO_DolbyVisionProfileDvheDtb },
+        { 8, OMX_VIDEO_DolbyVisionProfileDvheSt },
+        { 9, OMX_VIDEO_DolbyVisionProfileDvavSe },
+    };
+
+    const static ALookup<uint8_t, OMX_VIDEO_DOLBYVISIONLEVELTYPE> levels {
+        { 0, OMX_VIDEO_DolbyVisionLevelUnknown },
+        { 1, OMX_VIDEO_DolbyVisionLevelHd24 },
+        { 2, OMX_VIDEO_DolbyVisionLevelHd30 },
+        { 3, OMX_VIDEO_DolbyVisionLevelFhd24 },
+        { 4, OMX_VIDEO_DolbyVisionLevelFhd30 },
+        { 5, OMX_VIDEO_DolbyVisionLevelFhd60 },
+        { 6, OMX_VIDEO_DolbyVisionLevelUhd24 },
+        { 7, OMX_VIDEO_DolbyVisionLevelUhd30 },
+        { 8, OMX_VIDEO_DolbyVisionLevelUhd48 },
+        { 9, OMX_VIDEO_DolbyVisionLevelUhd60 },
+    };
+    //set rpuAssoc
+    if (rpu_present_flag && el_present_flag && !bl_present_flag)
+    {
+         format->setInt32("rpuAssoc", 1);
+    }
+    // set profile & level if they are recognized
+    OMX_VIDEO_DOLBYVISIONPROFILETYPE codecProfile;
+    OMX_VIDEO_DOLBYVISIONLEVELTYPE codecLevel;
+    if (profiles.map(profile, &codecProfile)) {
+        format->setInt32("profile", codecProfile);
+        if(codecProfile == OMX_VIDEO_DolbyVisionProfileDvheSt ||
+           codecProfile == OMX_VIDEO_DolbyVisionProfileDvavSe){
+            format->setInt32("bl_compatibility_id", bl_compatibility_id);
+        }
+        if (levels.map(level, &codecLevel)) {
+            format->setInt32("level", codecLevel);
+        }
+    }
+}
+
 static void parseH263ProfileLevelFromD263(const uint8_t *ptr, size_t size, sp<AMessage> &format) {
     if (size < 7) {
         return;
@@ -1542,6 +1610,10 @@ void convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
             std::vector<uint8_t> hvcc(csd0size + 1024);
             size_t outsize = reassembleHVCC(csd0, hvcc.data(), hvcc.size(), 4);
             meta->setData(kKeyHVCC, kKeyHVCC, hvcc.data(), outsize);
+        } else if (mime ==  MEDIA_MIMETYPE_VIDEO_DOLBY_VISION) {
+            uint8_t dvcc[1024];
+            size_t outsize = reassembleHVCC(csd0, dvcc, 1024, 4);
+            meta->setData(kKeyDVCC, kKeyDVCC, dvcc, outsize);
         } else if (mime == MEDIA_MIMETYPE_VIDEO_VP9) {
             meta->setData(kKeyVp9CodecPrivate, 0, csd0->data(), csd0->size());
         } else if (mime == MEDIA_MIMETYPE_AUDIO_OPUS) {
@@ -1931,4 +2003,3 @@ AString nameForFd(int fd) {
 }
 
 }  // namespace android
-
