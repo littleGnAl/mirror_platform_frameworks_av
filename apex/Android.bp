@@ -31,10 +31,16 @@ apex {
         "libmedia2_jni",
     ],
     key: "com.android.media.key",
+    certificate: ":com.android.media.certificate",
 }
 
 apex_key {
     name: "com.android.media.key",
     public_key: "com.android.media.avbpubkey",
     private_key: "com.android.media.pem",
+}
+
+android_app_certificate {
+    name: "com.android.media.certificate",
+    certificate: "com.android.media",
 }
