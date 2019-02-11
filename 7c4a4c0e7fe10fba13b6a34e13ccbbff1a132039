@@ -22,6 +22,30 @@
       "revId": "7c4a4c0e7fe10fba13b6a34e13ccbbff1a132039",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "516b095f_6dc1937c",
+        "filename": "media/libstagefright/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2019-02-11T23:52:19Z",
+      "side": 1,
+      "message": "Yes that would be better.",
+      "parentUuid": "b0b7ead4_cb0e0e77",
+      "range": {
+        "startLine": 690,
+        "startChar": 18,
+        "endLine": 690,
+        "endChar": 38
+      },
+      "revId": "7c4a4c0e7fe10fba13b6a34e13ccbbff1a132039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
