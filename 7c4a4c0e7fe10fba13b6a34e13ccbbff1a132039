@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b0b7ead4_cb0e0e77",
+        "filename": "media/libstagefright/StagefrightMetadataRetriever.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 690,
+      "author": {
+        "id": 1060405
+      },
+      "writtenOn": "2019-02-11T23:39:09Z",
+      "side": 1,
+      "message": "Would it be better to change to something below?\nif (trackMeta !\u003d nullptr) {\n    CHECK(trackMeta-\u003efindCString(kKeyMIMEType, \u0026trackMIME));\n}",
+      "range": {
+        "startLine": 690,
+        "startChar": 18,
+        "endLine": 690,
+        "endChar": 38
+      },
+      "revId": "7c4a4c0e7fe10fba13b6a34e13ccbbff1a132039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
