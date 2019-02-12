@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "203c4c2a_a608e1cf",
+        "filename": "media/libstagefright/MediaCodecSource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1022116
+      },
+      "writtenOn": "2019-02-12T19:05:38Z",
+      "side": 1,
+      "message": "Does mEncoderReachedEOS means EOS error? OR just EOS?",
+      "range": {
+        "startLine": 765,
+        "startChar": 86,
+        "endLine": 765,
+        "endChar": 95
+      },
+      "revId": "e44e8aa81234a15f2a7fb4718db62da5f70b3bdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
