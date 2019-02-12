@@ -41,7 +41,77 @@
 #include <inttypes.h>
 #include <vector>
 
+// big endian fourcc
+#define BFOURCC(c1, c2, c3, c4) \
+    (c4 << 24 | c3 << 16 | c2 << 8 | c1)
+
 namespace android {
+
+const char *MEDIA_MIMETYPE_VIDEO_DIVX = "video/divx";
+
+static uint8_t charLower(uint8_t ch) {
+    uint8_t ch_out = ch;
+    if (ch >= 'A' && ch <= 'Z') {
+        ch_out = ch + 32;
+    }
+    return ch_out;
+}
+
+/* trans all FOURCC  to lower char */
+static uint32_t FourCCtoLower(uint32_t fourcc) {
+    uint8_t ch_1 = (uint8_t)charLower(fourcc >> 24);
+    uint8_t ch_2 = (uint8_t)charLower(fourcc >> 16);
+    uint8_t ch_3 = (uint8_t)charLower(fourcc >> 8);
+    uint8_t ch_4 = (uint8_t)charLower(fourcc);
+    uint32_t fourcc_out = ch_1 << 24 | ch_2 << 16 | ch_3 << 8 | ch_4;
+
+    return fourcc_out;
+}
+
+static const char *BMKVFourCC2MIME(uint32_t fourcc) {
+    ALOGD("BMKVFourCC2MIME fourcc 0x%8.8x", fourcc);
+    uint32_t lowerFourcc = FourCCtoLower(fourcc);
+    ALOGD("BMKVFourCC2MIME fourcc to lower 0x%8.8x", lowerFourcc);
+    switch (lowerFourcc) {
+        case BFOURCC('m', 'p', '4', 'a'):
+            return MEDIA_MIMETYPE_AUDIO_AAC;
+
+        case BFOURCC('s', 'a', 'm', 'r'):
+            return MEDIA_MIMETYPE_AUDIO_AMR_NB;
+
+        case BFOURCC('s', 'a', 'w', 'b'):
+            return MEDIA_MIMETYPE_AUDIO_AMR_WB;
+
+        case BFOURCC('d', 'i', 'v', 'x'):
+        case BFOURCC('x', 'v', 'i', 'd'):
+            return MEDIA_MIMETYPE_VIDEO_DIVX;
+
+        case BFOURCC('d', 'x', '5', '0'):
+        case BFOURCC('m', 'p', '4', 'v'):
+        case BFOURCC('f', 'm', 'p', '4'):
+            return MEDIA_MIMETYPE_VIDEO_MPEG4;
+
+        case BFOURCC('s', '2', '6', '3'):
+        case BFOURCC('h', '2', '6', '3'):
+            return MEDIA_MIMETYPE_VIDEO_H263;
+
+        case BFOURCC('a', 'v', 'c', '1'):
+        case BFOURCC('h', '2', '6', '4'):
+            return MEDIA_MIMETYPE_VIDEO_AVC;
+
+        case BFOURCC('m', 'p', 'g', '2'):
+            return MEDIA_MIMETYPE_VIDEO_MPEG2;
+
+        case BFOURCC('h', 'e', 'v', 'c'):
+        case FOURCC('h', 'e', 'v', '1'):
+            return MEDIA_MIMETYPE_VIDEO_HEVC;
+
+        default:
+            ALOGW("unknown fourcc 0x%8.8x", fourcc);
+            return "";
+    }
+}
+
 
 struct DataSourceBaseReader : public mkvparser::IMkvReader {
     explicit DataSourceBaseReader(DataSourceBase *source)
@@ -113,10 +183,15 @@ private:
     MatroskaExtractor *mExtractor;
     long long mTrackNum;
     unsigned long mIndex;
+    long mTrackType;
 
     const mkvparser::Cluster *mCluster;
     const mkvparser::BlockEntry *mBlockEntry;
     long mBlockEntryIndex;
+
+    void backward();
+    bool backward_eos(const mkvparser::Cluster*, const mkvparser::BlockEntry*);
+    void seekWithoutCues(int64_t seekTimeUs);
 
     void advance_l();
 
@@ -142,6 +217,8 @@ private:
     enum Type {
         AVC,
         AAC,
+        FLAC,
+        MPEG4,
         HEVC,
         OTHER
     };
@@ -151,7 +228,9 @@ private:
     Type mType;
     bool mIsAudio;
     BlockIterator mBlockIter;
-    ssize_t mNALSizeLen;  // for type AVC or HEVC
+    long long mCompressedLen;
+    unsigned char* mCompressedData;
+    ssize_t mNALSizeLen;  // for type AVC
 
     List<MediaBufferBase *> mPendingFrames;
 
@@ -160,7 +239,7 @@ private:
     status_t setWebmBlockCryptoInfo(MediaBufferBase *mbuf);
     status_t readBlock();
     void clearPendingFrames();
-
+    void getContentCompSettings(long long* size, unsigned char** data);
     MatroskaSource(const MatroskaSource &);
     MatroskaSource &operator=(const MatroskaSource &);
 };
@@ -221,6 +300,8 @@ MatroskaSource::MatroskaSource(
       mBlockIter(mExtractor,
                  mExtractor->mTracks.itemAt(index).mTrackNum,
                  index),
+      mCompressedLen(0),
+      mCompressedData(0),
       mNALSizeLen(-1) {
     MetaDataBase &meta = mExtractor->mTracks.editItemAt(index).mMeta;
 
@@ -262,7 +343,16 @@ MatroskaSource::MatroskaSource(
         }
     } else if (!strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_AAC)) {
         mType = AAC;
+    } else if (!strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_FLAC)) {
+        mType = FLAC;
+    } else if (!strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_MPEG4)) {
+        mType = MPEG4;
+    } else if (!strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_DIVX)) {
+        mType = MPEG4;
+    } else {
+        ALOGD("mimeType is %s", mime);
     }
+    getContentCompSettings(&mCompressedLen, &mCompressedData);
 }
 
 MatroskaSource::~MatroskaSource() {
@@ -300,6 +390,7 @@ BlockIterator::BlockIterator(
       mCluster(NULL),
       mBlockEntry(NULL),
       mBlockEntryIndex(0) {
+    mTrackType = mExtractor->mSegment->GetTracks()->GetTrackByNumber(trackNum)->GetType();
     reset();
 }
 
@@ -453,6 +544,7 @@ void BlockIterator::seek(
 
         if (!pCues) {
             ALOGE("No Cues in file");
+            seekWithoutCues(seekTimeUs);
             return;
         }
     }
@@ -493,7 +585,8 @@ void BlockIterator::seek(
         unsigned long int trackCount = pTracks->GetTracksCount();
         for (size_t index = 0; index < trackCount; ++index) {
             const mkvparser::Track *pTrack = pTracks->GetTrackByIndex(index);
-            if (pTrack && pTrack->GetType() == 1 && pCues->Find(seekTimeNs, pTrack, pCP, pTP)) {
+            bool cues_find  =  pCues->Find(seekTimeNs, pTrack, pCP, pTP);
+            if (pTrack && pTrack->GetType() == 1 && cues_find) {
                 ALOGV("Video track located at %zu", index);
                 break;
             }
@@ -545,6 +638,121 @@ int64_t BlockIterator::blockTimeUs() const {
         return -1;
     }
     return (mBlockEntry->GetBlock()->GetTime(mCluster) + 500ll) / 1000ll;
+}
+
+void BlockIterator::backward() {
+    while ((mCluster != NULL) && (mCluster != &mExtractor->mSegment->m_eos)) {
+        if (mBlockEntry != NULL) {
+            mBlockEntry = mCluster->GetPrev(mBlockEntry);
+        } else if (mCluster != NULL) {
+            mCluster = mExtractor->mSegment->GetPrev(mCluster);
+
+            if (mCluster == &mExtractor->mSegment->m_eos) {
+                break;
+            }
+            const long status = mCluster->GetLast(mBlockEntry);
+            if (status < 0){  //error
+                ALOGE("get last blockenry failed!");
+                mCluster=NULL;
+                return ;
+            }
+        }
+        if (mBlockEntry != NULL
+                && mBlockEntry->GetBlock()->GetTrackNumber() == mTrackNum) {
+            break;
+        }
+    }
+}
+
+bool BlockIterator::backward_eos(const mkvparser::Cluster* oldCluster, const mkvparser::BlockEntry* oldBlock) {
+    if (mCluster == &mExtractor->mSegment->m_eos) {
+        //cannot seek I frame backward, so we seek I frame forward again
+        mCluster = oldCluster;
+        mBlockEntry = oldBlock;
+        mBlockEntryIndex = oldBlock->GetIndex()+1;
+        while (!eos() && (mTrackType != 2) && !block()->IsKey()) {
+            advance();
+        }
+        return true;
+    }
+    return false;
+}
+
+void BlockIterator::seekWithoutCues(int64_t seekTimeUs) {
+    mCluster = mExtractor->mSegment->FindCluster(seekTimeUs * 1000ll);
+    const long status = mCluster->GetFirst(mBlockEntry);
+    if (status < 0) {
+    ALOGE("get last blockenry failed!");
+    mCluster=NULL;
+    return ;
+    }
+
+    mBlockEntryIndex = 0;
+    const mkvparser::Cluster* startCluster = mCluster;
+    const mkvparser::Cluster* iframe_cluster = NULL;
+    const mkvparser::BlockEntry* iframe_block = NULL;
+    bool find_iframe = false;
+    assert(startCluster != NULL);
+
+    if (mBlockEntry) {
+        if ((mTrackType != 2) && (block()->GetTrackNumber() == mTrackNum) && (block()->IsKey())) {
+             find_iframe = true;
+             iframe_cluster = mCluster;
+             iframe_block = mBlockEntry;
+        }
+    }
+
+    while (!eos() && ((block()->GetTrackNumber() != mTrackNum) || (blockTimeUs() < seekTimeUs))) {
+
+          advance_l();
+
+          if (mBlockEntry) {
+              if ((mTrackType != 2) && (block()->GetTrackNumber() == mTrackNum) && (block()->IsKey())) {
+                   find_iframe = true;
+                   iframe_cluster = mCluster;
+                   iframe_block = mBlockEntry;
+              }
+          }
+    }
+
+    if (!eos() && (mTrackType != 2) && (!block()->IsKey())) {
+          if (!find_iframe) {
+          const mkvparser::Cluster* oldCluster = mCluster;
+          const mkvparser::BlockEntry* oldBlock = mBlockEntry;
+          mCluster = mExtractor->mSegment->GetPrev(startCluster);
+
+            if (backward_eos(oldCluster, oldBlock))
+                return;
+
+            const long status = mCluster->GetLast(mBlockEntry);
+            if (status < 0) {  //error
+                ALOGE("get last blockenry failed!");
+                mCluster=NULL;
+                return ;
+            }
+
+            while ((mCluster != &mExtractor->mSegment->m_eos)
+                         && ((block()->GetTrackNumber() != mTrackNum) || (!block()->IsKey()))) {
+
+                    backward();
+
+            }
+
+            mBlockEntryIndex=mBlockEntry->GetIndex()+1;
+
+            if (backward_eos(oldCluster, oldBlock))
+                return;
+          } else {
+              mCluster = iframe_cluster;
+              mBlockEntry = iframe_block;
+              mBlockEntryIndex = iframe_block->GetIndex()+1;
+          }
+    }
+
+    while (!eos() && !mBlockEntry->GetBlock()->IsKey() && (mTrackType != 2)/*Audio*/) {
+
+          advance_l();
+    }
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -711,6 +919,46 @@ status_t MatroskaSource::setWebmBlockCryptoInfo(MediaBufferBase *mbuf) {
     return OK;
 }
 
+/*
+ * The compression algorithm used. Algorithms that have been specified so far are:
+ * 0 - zlib,
+ * 1 - bzlib,
+ * 2 - lzo1x
+ * 3 - Header Stripping
+ * we can only handle "Header Stripping", and get the header stripping info from
+ * the first CompressionEntry of the first ContentEncodingEntry.
+ *
+ * Settings that might be needed by the decompressor.
+ * For Header Stripping (ContentCompAlgo=3), the bytes that were removed from
+ * the beggining of each frames of the track.
+ */
+
+void MatroskaSource::getContentCompSettings(long long* size, unsigned char** data) {
+    int index = 0;
+    mkvparser::Tracks const *pTracks = mExtractor->mSegment->GetTracks();
+    const mkvparser::Track *pTrack = pTracks->GetTrackByIndex(mTrackIndex);
+
+    unsigned long count = pTrack->GetContentEncodingCount();
+
+    if (count > 0) {
+        index = count - 1;
+        const mkvparser::ContentEncoding *content = pTrack->GetContentEncodingByIndex(index);
+        if (content) {
+            count = content->GetCompressionCount();
+            if (count > 0) {
+                index = count - 1;
+                ALOGV("Compression count = %lu", count);
+                if (content->GetCompressionByIndex(index)->algo != 3)
+                    return;
+
+                *size = content->GetCompressionByIndex(index)->settings_len;
+                *data = content->GetCompressionByIndex(index)->settings;
+                ALOGV("Compressed length: %lld ", *size);
+            }
+        }
+    }
+}
+
 status_t MatroskaSource::readBlock() {
     CHECK(mPendingFrames.empty());
 
@@ -730,17 +978,15 @@ status_t MatroskaSource::readBlock() {
             return ERROR_MALFORMED;
         }
 
-        len += trackInfo->mHeaderLen;
-        MediaBufferBase *mbuf = MediaBufferBase::Create(len);
-        uint8_t *data = static_cast<uint8_t *>(mbuf->data());
-        if (trackInfo->mHeader) {
-            memcpy(data, trackInfo->mHeader, trackInfo->mHeaderLen);
-        }
+    MediaBufferBase * mbuf = MediaBufferBase::Create(frame.len+mCompressedLen);
+    mbuf->meta_data().setInt64(kKeyTime, timeUs);
+    mbuf->meta_data().setInt32(kKeyIsSyncFrame, block->IsKey());
 
-        mbuf->meta_data().setInt64(kKeyTime, timeUs);
-        mbuf->meta_data().setInt32(kKeyIsSyncFrame, block->IsKey());
+    if (mCompressedLen) {
+        memcpy(mbuf->data(), mCompressedData, mCompressedLen);
+    }
+    status_t err = frame.Read(mExtractor->mReader, static_cast<uint8_t *>(mbuf->data())+mCompressedLen);
 
-        status_t err = frame.Read(mExtractor->mReader, data + trackInfo->mHeaderLen);
         if (err == OK
                 && mExtractor->mIsWebm
                 && trackInfo->mEncrypted) {
@@ -812,6 +1058,22 @@ status_t MatroskaSource::read(
         *out = frame;
 
         return OK;
+    }
+    MetaDataBase meta = mExtractor->mTracks.itemAt(mTrackIndex).mMeta;
+    const uint8_t *data = (const uint8_t*)frame->data();
+    if ((!meta.hasData(kKeyAVCC))&&(!meta.hasData(kKeyHVCC))) {
+        /**
+         * Detect Nal start code 0x00 0x00 0x00 0x01 or 0x00 0x00 0x01
+         * in first four or three bytes of each frame
+         */
+        if (U32_AT(data) == 0x01 || U24_AT(data) == 0x01) {
+            ALOGV("Frame already has Nal start code + Nal data, return frame directly.");
+            *out = frame;
+            return OK;
+        } else {
+            ALOGE("ERROR: Without CodecPrivate data and frame doesn't have nal start code!");
+            return ERROR_UNSUPPORTED;
+        }
     }
 
     // Each input frame contains one or more NAL fragments, each fragment
@@ -1427,9 +1689,28 @@ void MatroskaExtractor::addTracks() {
                     } else {
                         ALOGW("%s is detected, but does not have configuration.",
                                 codecID);
-                        continue;
+                        meta.setCString(
+                                kKeyMIMEType, MEDIA_MIMETYPE_VIDEO_MPEG4);
                     }
-                } else if (!strcmp("V_VP8", codecID)) {
+                } else if (!strcmp("V_MS/VFW/FOURCC", codecID)) {
+                    if ((NULL == codecPrivate) || (codecPrivateSize < 20)) {
+                        ALOGE("Unsupport video: V_MS/VFW/FOURCC has no invalid private data: \n");
+                        ALOGE("codecPrivate = %p, codecPrivateSize = %zu", codecPrivate, codecPrivateSize);
+                        //mFileMetaData->setInt32(kKeyHasUnsupportVideo, true);
+                        continue;
+                    } else {
+                        uint32_t fourcc = *(uint32_t *)(codecPrivate + 16);
+                        const char* mime = BMKVFourCC2MIME(fourcc);
+                        ALOGD("V_MS/VFW/FOURCC type is %s", mime);
+                        if (!strncasecmp("video/", mime, 6)) {
+                            meta.setCString(kKeyMIMEType, MEDIA_MIMETYPE_VIDEO_MPEG4);
+                        } else {
+                            ALOGE("V_MS/VFW/FOURCC continue,unsupport video type");
+                            //mFileMetaData->setInt32(kKeyHasUnsupportVideo, true);
+                            continue;
+                        }
+                    }
+                }  else if (!strcmp("V_VP8", codecID)) {
                     meta.setCString(kKeyMIMEType, MEDIA_MIMETYPE_VIDEO_VP8);
                 } else if (!strcmp("V_VP9", codecID)) {
                     meta.setCString(kKeyMIMEType, MEDIA_MIMETYPE_VIDEO_VP9);
@@ -1440,6 +1721,8 @@ void MatroskaExtractor::addTracks() {
                               kKeyVp9CodecPrivate, 0, codecPrivate,
                               codecPrivateSize);
                     }
+                } else if (!strcmp("V_MPEG2", codecID)) {
+                    meta.setCString(kKeyMIMEType, MEDIA_MIMETYPE_VIDEO_MPEG2);
                 } else {
                     ALOGW("%s is not supported.", codecID);
                     continue;
@@ -1523,6 +1806,12 @@ void MatroskaExtractor::addTracks() {
                 } else if (!strcmp("A_FLAC", codecID)) {
                     meta.setCString(kKeyMIMEType, MEDIA_MIMETYPE_AUDIO_FLAC);
                     err = addFlacMetadata(meta, codecPrivate, codecPrivateSize);
+                } else if(!strcmp("A_MPEG/L2", codecID)) {/*sprd add*/
+                    meta.setCString(kKeyMIMEType, MEDIA_MIMETYPE_AUDIO_MPEG_LAYER_II);
+                } else if(!strcmp("A_MPEG/L1", codecID)) {/*sprd add*/
+                    meta.setCString(kKeyMIMEType, MEDIA_MIMETYPE_AUDIO_MPEG_LAYER_I);
+                } else if (!strcmp("A_PCM/INT/LIT", codecID)) {
+                    meta.setCString(kKeyMIMEType, MEDIA_MIMETYPE_AUDIO_RAW);
                 } else {
                     ALOGW("%s is not supported.", codecID);
                     continue;
