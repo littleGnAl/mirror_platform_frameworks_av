@@ -65,7 +65,7 @@ public:
             uint32_t sampleIndex,
             off64_t *offset,
             size_t *size,
-            uint32_t *compositionTime,
+            uint64_t *compositionTime,
             bool *isSyncSample = NULL,
             uint32_t *sampleDuration = NULL);
 
@@ -123,11 +123,11 @@ private:
 
     struct SampleTimeEntry {
         uint32_t mSampleIndex;
-        uint32_t mCompositionTime;
+        uint64_t mCompositionTime;
     };
     SampleTimeEntry *mSampleTimeEntries;
 
-    int32_t *mCompositionTimeDeltaEntries;
+    uint32_t *mCompositionTimeDeltaEntries;
     size_t mNumCompositionTimeDeltaEntries;
     CompositionDeltaLookup *mCompositionDeltaLookup;
 
@@ -159,7 +159,7 @@ private:
     }
 
     status_t getSampleSize_l(uint32_t sample_index, size_t *sample_size);
-    int32_t getCompositionTimeOffset(uint32_t sampleIndex);
+    uint32_t getCompositionTimeOffset(uint32_t sampleIndex);
 
     static int CompareIncreasingTime(const void *, const void *);
 

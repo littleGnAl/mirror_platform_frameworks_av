@@ -108,6 +108,11 @@ status_t SampleIterator::seekTo(uint32_t sampleIndex) {
 
         for (uint32_t i = 0; i < mSamplesPerChunk; ++i) {
             size_t sampleSize;
+            if (firstChunkSampleIndex + i >= mTable->mNumSampleSizes)
+            {
+                ALOGI("wrong sample count");
+                break;
+            }
             if ((err = getSampleSizeDirect(
                             firstChunkSampleIndex + i, &sampleSize)) != OK) {
                 ALOGE("getSampleSizeDirect return error");
@@ -301,7 +306,7 @@ status_t SampleIterator::getSampleSizeDirect(
 }
 
 status_t SampleIterator::findSampleTimeAndDuration(
-        uint32_t sampleIndex, uint32_t *time, uint32_t *duration) {
+        uint32_t sampleIndex, uint64_t *time, uint32_t *duration) {
     if (sampleIndex >= mTable->mNumSampleSizes) {
         return ERROR_OUT_OF_RANGE;
     }
@@ -328,15 +333,19 @@ status_t SampleIterator::findSampleTimeAndDuration(
         ++mTimeToSampleIndex;
     }
 
-    *time = mTTSSampleTime + mTTSDuration * (sampleIndex - mTTSSampleIndex);
+    *time = mTTSDuration;
+    *time = *time * (sampleIndex - mTTSSampleIndex);
+    *time += mTTSSampleTime;
 
     int32_t offset = mTable->getCompositionTimeOffset(sampleIndex);
+/*
     if ((offset < 0 && *time < (offset == INT32_MIN ?
             INT32_MAX : uint32_t(-offset))) ||
             (offset > 0 && *time > UINT32_MAX - offset)) {
         ALOGE("%u + %d would overflow", *time, offset);
         return ERROR_OUT_OF_RANGE;
     }
+*/
     if (offset > 0) {
         *time += offset;
     } else {
