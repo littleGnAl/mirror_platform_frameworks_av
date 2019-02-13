@@ -40,6 +40,7 @@ public:
     virtual status_t getTrackMetaData(MetaDataBase& meta, size_t index, uint32_t flags);
 
     virtual status_t getMetaData(MetaDataBase& meta);
+    bool TestVBR(const sp<DataSource> &source, int *avg_bitrate, uint32_t match_header,off64_t inout_pos);
     virtual const char * name() { return "MP3Extractor"; }
 
 private:
@@ -50,6 +51,7 @@ private:
     MetaDataBase mMeta;
     uint32_t mFixedHeader;
     MP3Seeker *mSeeker;
+    bool mIsVbr;
 
     MP3Extractor(const MP3Extractor &);
     MP3Extractor &operator=(const MP3Extractor &);
