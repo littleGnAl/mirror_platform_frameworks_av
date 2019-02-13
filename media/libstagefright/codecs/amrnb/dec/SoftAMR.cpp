@@ -416,10 +416,22 @@ void SoftAMR::onQueueFilled(OMX_U32 /* portIndex */) {
             if (numBytesRead == -1) {
                 ALOGE("PV AMR decoder AMRDecode() call failed");
 
-                notify(OMX_EventError, OMX_ErrorUndefined, 0, NULL);
-                mSignalledError = true;
+                //notify(OMX_EventError, OMX_ErrorUndefined, 0, NULL);
+                //mSignalledError = true;
 
-                return;
+                //return;
+
+                static const size_t kFrameSizeNB[16] = {
+                    95, 103, 118, 134, 148, 159, 204, 244,
+                    39, 43, 38, 37, // SID
+                    0, 0, 0, // future use
+                    0 // no data
+                };
+                size_t frameSize = kFrameSizeNB[((inputPtr[0] >> 3) & 0x0f)];
+                // Round up bits to bytes.
+                numBytesRead = (frameSize + 7) / 8;
+                // silence for speech lost or no data.
+                memset(outHeader->pBuffer, 0, kNumSamplesPerFrameNB * sizeof(int16_t));
             }
 
             ++numBytesRead;  // Include the frame type header byte.
