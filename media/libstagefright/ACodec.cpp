@@ -2234,6 +2234,17 @@ status_t ACodec::configureCodec(
         } else {
             err = setupEAC3Codec(encoder, numChannels, sampleRate);
         }
+    } else if (!strcasecmp(mime, "audio/ima-adpcm")) {
+        int32_t numChannels;
+        int32_t sampleRate;
+        int32_t blockAlign;
+        if (!msg->findInt32("channel-count", &numChannels)
+                || !msg->findInt32("sample-rate", &sampleRate)
+                || !msg->findInt32("block-align", &blockAlign)) {
+            err = INVALID_OPERATION;
+        } else {
+            err = setIMAADPCMFormat(numChannels, sampleRate, blockAlign);
+        }
     }
 
     if (err != OK) {
@@ -5304,6 +5315,29 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                     notify->setString("mime", MEDIA_MIMETYPE_AUDIO_MSGSM);
                     notify->setInt32("channel-count", params.nChannels);
                     notify->setInt32("sample-rate", params.nSamplingRate);
+                    break;
+                }
+
+                case OMX_AUDIO_CodingIMAADPCM:
+                {
+                    OMX_INDEXTYPE index;
+                    status_t err = mOMXNode->getExtensionIndex(
+                            "OMX.sprd.index.AudioImaadpam",
+                            &index);
+                    int32_t IMAADPCMFormat[4] = {0};
+                    if (err == OK) {
+                        err = mOMXNode->getParameter(
+                            index,
+                            &IMAADPCMFormat,
+                            sizeof(IMAADPCMFormat));
+                    }
+                    if (err != OK) {
+                        ALOGE("Failed to get parameter 'codingimaadpcm' (err %d)", err);
+                        return err;
+                    }
+                    notify->setString("mime", "audio/ima-adpcm");
+                    notify->setInt32("channel-count", IMAADPCMFormat[0]);
+                    notify->setInt32("sample-rate", IMAADPCMFormat[2]);
                     break;
                 }
 
@@ -8514,6 +8548,52 @@ status_t ACodec::getOMXChannelMapping(size_t numChannels, OMX_AUDIO_CHANNELTYPE 
     }
 
     return OK;
+}
+
+status_t ACodec::setIMAADPCMFormat(int32_t numChannels, int32_t sampleRate,
+    int32_t blockAlign) {
+        CHECK(!mIsEncoder);
+
+        // port definition
+        OMX_PARAM_PORTDEFINITIONTYPE def;
+        InitOMXParams(&def);
+        def.nPortIndex = kPortIndexInput;
+        status_t err = mOMXNode->getParameter(
+                OMX_IndexParamPortDefinition, &def, sizeof(def));
+        if (err != OK) {
+            return err;
+        }
+
+        def.format.audio.eEncoding = (OMX_AUDIO_CODINGTYPE)OMX_AUDIO_CodingIMAADPCM;
+        err = mOMXNode->setParameter(OMX_IndexParamPortDefinition,
+                &def, sizeof(def));
+        if (err != OK) {
+            return err;
+        }
+
+        // pcm param
+
+        OMX_INDEXTYPE index;
+        err = mOMXNode->getExtensionIndex(
+                        "OMX.sprd.index.AudioImaadpam",
+                        &index);
+        if (err == OK) {
+            int32_t IMAADPCMFormat[4] = {0};
+            IMAADPCMFormat[0] = numChannels;
+            IMAADPCMFormat[1] = 4;
+            IMAADPCMFormat[2] = sampleRate;
+            IMAADPCMFormat[3] = blockAlign;
+            err = mOMXNode->setParameter(
+                    index,
+                    &IMAADPCMFormat,
+                    sizeof(IMAADPCMFormat));
+        }
+        if (err != OK) {
+            ALOGE("Failed to set parameter 'audioimaadpam' (err %d)", err);
+            return err;
+        }
+
+        return err;
 }
 
 }  // namespace android
