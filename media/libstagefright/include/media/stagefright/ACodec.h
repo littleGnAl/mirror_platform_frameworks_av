@@ -564,6 +564,9 @@ private:
     // Force EXEC->IDLE->LOADED shutdown sequence if not stale.
     void forceStateTransition(int generation);
 
+    // add for IMAADPCMF
+    status_t setIMAADPCMFormat(int32_t numChannels, int32_t sampleRate, int32_t blockAlign);
+
     DISALLOW_EVIL_CONSTRUCTORS(ACodec);
 };
 

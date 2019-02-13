@@ -751,6 +751,11 @@ status_t convertMetaDataToMessage(
         if (meta->findInt32(kKeyPcmEncoding, &pcmEncoding)) {
             msg->setInt32("pcm-encoding", pcmEncoding);
         }
+
+        int32_t blockAlign = 0;
+        if (meta->findInt32('blka', &blockAlign)) {
+            msg->setInt32("block-align", blockAlign);
+        }
     }
 
     int32_t maxInputSize;
