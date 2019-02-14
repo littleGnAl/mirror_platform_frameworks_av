@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3cf9b6ec_fdadcb7f",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3918,
+      "author": {
+        "id": 1220282
+      },
+      "writtenOn": "2019-02-14T23:51:18Z",
+      "side": 1,
+      "message": "Replace with\n\nif (property_get_bool(\"ro.bluetooth.a2dp_offload.supported\", false) \u0026\u0026\n         property_get_bool(\"persist.bluetooth.a2dp_offload.disabled\", false)) {\n         // A2DP offload supported but disabled: try to use special XML file\n         fileNames.push_back(AUDIO_POLICY_A2DP_OFFLOAD_DISABLED_XML_CONFIG_FILE_NAME);\n     }",
+      "range": {
+        "startLine": 3910,
+        "startChar": 4,
+        "endLine": 3918,
+        "endChar": 5
+      },
+      "revId": "989fe9fcaa4292df3510b36f138f8efc3321e224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
