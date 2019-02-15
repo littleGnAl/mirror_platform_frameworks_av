@@ -22,6 +22,30 @@
       "revId": "989fe9fcaa4292df3510b36f138f8efc3321e224",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a5a599c_b726f19d",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3918,
+      "author": {
+        "id": 1318371
+      },
+      "writtenOn": "2019-02-15T08:11:05Z",
+      "side": 1,
+      "message": "I plan to have 3 choices:\n1) default BluetoothAudioHAL + offload,\n2) offload disabled (BluetoothAudioHAL for SW only by Developer options), and\n3) All disabled (setprop).\nImpl:\nif (property_get_bool(\"ro.bluetooth.a2dp_offload.supported\", false)) {\n  if (property_get_bool(\"persist.bluetooth.a2dp_offload.disabled\", false)) {\n    // A2DP offload supported but disabled: try to use special XML file\n    if (property_get_bool(\"persist.bluetooth.bluetooth_audio_hal.disabled\", false)) {\n      fileNames.push_back(AUDIO_POLICY_BLUETOOTH_HAL_DISABLED_XML_CONFIG_FILE_NAME);\n    } else {\n      fileNames.push_back(AUDIO_POLICY_A2DP_OFFLOAD_DISABLED_XML_CONFIG_FILE_NAME);\n    }\n  }\n} else if (property_get_bool(\"persist.bluetooth.bluetooth_audio_hal.disabled\", false)) {\n  fileNames.push_back(AUDIO_POLICY_BLUETOOTH_HAL_DISABLED_XML_CONFIG_FILE_NAME);\n}",
+      "parentUuid": "3cf9b6ec_fdadcb7f",
+      "range": {
+        "startLine": 3910,
+        "startChar": 4,
+        "endLine": 3918,
+        "endChar": 5
+      },
+      "revId": "989fe9fcaa4292df3510b36f138f8efc3321e224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
