@@ -650,6 +650,14 @@ void MediaCodecSource::signalEOS(status_t err) {
             releaseEncoder();
         }
     }
+    // !mStopping means only setStopTime() was called, stop() was not.
+    // Puller reads null from source and triggers this EOS.
+    // We need to flush buffers and stop source for stop() which should
+    // perform these operations would be skipped when reachedEOS detected
+    if (!mStopping && mPuller != nullptr) {
+        mPuller->stop();  // just flush buffers, no other effects
+        mPuller->stopSource();
+    }
 
     if (mStopping && reachedEOS) {
         ALOGI("encoder (%s) stopped", mIsVideo ? "video" : "audio");
