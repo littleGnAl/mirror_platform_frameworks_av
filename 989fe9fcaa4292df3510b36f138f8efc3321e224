@@ -70,6 +70,30 @@
       "revId": "989fe9fcaa4292df3510b36f138f8efc3321e224",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c329e86b_60541658",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3918,
+      "author": {
+        "id": 1220282
+      },
+      "writtenOn": "2019-02-17T23:10:06Z",
+      "side": 1,
+      "message": "I think when a2dp offload is supported, and enabled, we should also use AUDIO_POLICY_BLUETOOTH_HAL_ENABLED_XML_CONFIG_FILE_NAME",
+      "parentUuid": "b8b4c596_41547ed4",
+      "range": {
+        "startLine": 3910,
+        "startChar": 4,
+        "endLine": 3918,
+        "endChar": 5
+      },
+      "revId": "989fe9fcaa4292df3510b36f138f8efc3321e224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
