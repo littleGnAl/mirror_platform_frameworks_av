@@ -46,6 +46,30 @@
       "revId": "989fe9fcaa4292df3510b36f138f8efc3321e224",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8b4c596_41547ed4",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3918,
+      "author": {
+        "id": 1220282
+      },
+      "writtenOn": "2019-02-17T22:06:40Z",
+      "side": 1,
+      "message": "Hi Cheney,\n\nI agree with your suggestion, but can we do still disable bluetooth_audio_hal by default here, and flip the flag in a later CL, after Pixel 1 and 2 regression test is done?\n\nI think AUDIO_POLICY_BLUETOOTH_HAL_DISABLED_XML_CONFIG_FILE_NAME is just the default audio policy config xml?\n\nif (property_get_bool(\"ro.bluetooth.a2dp_offload.supported\", false)) {\n  if (property_get_bool(\"persist.bluetooth.a2dp_offload.disabled\", false)) {\n    // A2DP offload supported but disabled: try to use special XML file\n    if (property_get_bool(\"persist.bluetooth.bluetooth_audio_hal.enabled\", false)) {\n      fileNames.push_back(AUDIO_POLICY_BLUETOOTH_HAL_ENABLED_XML_CONFIG_FILE_NAME);\n    } else {\n      fileNames.push_back(AUDIO_POLICY_A2DP_OFFLOAD_DISABLED_XML_CONFIG_FILE_NAME);\n    }\n  }\n} else if (property_get_bool(\"persist.bluetooth.bluetooth_audio_hal.enabled\", false)) {\n  fileNames.push_back(AUDIO_POLICY_BLUETOOTH_HAL_ENABLED_XML_CONFIG_FILE_NAME);\n}",
+      "parentUuid": "1a5a599c_b726f19d",
+      "range": {
+        "startLine": 3910,
+        "startChar": 4,
+        "endLine": 3918,
+        "endChar": 5
+      },
+      "revId": "989fe9fcaa4292df3510b36f138f8efc3321e224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
