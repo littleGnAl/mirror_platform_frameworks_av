@@ -94,6 +94,30 @@
       "revId": "989fe9fcaa4292df3510b36f138f8efc3321e224",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92650407_5fc4fd82",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3918,
+      "author": {
+        "id": 1220282
+      },
+      "writtenOn": "2019-02-17T23:12:35Z",
+      "side": 1,
+      "message": "^ Actually I\u0027m not sure. Do we use \"primary\" module or \"bluetooth\" module for A2DP offload?",
+      "parentUuid": "c329e86b_60541658",
+      "range": {
+        "startLine": 3910,
+        "startChar": 4,
+        "endLine": 3918,
+        "endChar": 5
+      },
+      "revId": "989fe9fcaa4292df3510b36f138f8efc3321e224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
