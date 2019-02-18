@@ -22,6 +22,30 @@
       "revId": "4a87d1b7c277f28c69d7b3bf15ea83ee4831c7b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "212d9e02_48463658",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3917,
+      "author": {
+        "id": 1220282
+      },
+      "writtenOn": "2019-02-18T22:08:53Z",
+      "side": 1,
+      "message": "Done\nYes, we plan to remove persist.bluetooth.bluetooth_audio_hal.enabled once we finish testing and have some soak time to enable it by default.",
+      "parentUuid": "c296eb39_33049af1",
+      "range": {
+        "startLine": 3913,
+        "startChar": 0,
+        "endLine": 3917,
+        "endChar": 85
+      },
+      "revId": "4a87d1b7c277f28c69d7b3bf15ea83ee4831c7b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
