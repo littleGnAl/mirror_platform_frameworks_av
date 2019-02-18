@@ -118,6 +118,30 @@
       "revId": "989fe9fcaa4292df3510b36f138f8efc3321e224",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec2cb314_051c6acf",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3918,
+      "author": {
+        "id": 1318371
+      },
+      "writtenOn": "2019-02-18T03:26:28Z",
+      "side": 1,
+      "message": "For BluetoothAudio disabled by default, I think we should support 3 conditions:\n1) Default offload enabled + BluetoothAudioHAL disabled (current audio_policy_configuration.xml)\n2) Both offload + BluetoothAudioHAL enabled (bluetooth_audio_policy_configuration.xml), or offload unsupported + BluetoothAudioHAL enabled.\n3) Both offload + BluetoothAudioHAL disabled (current audio_policy_configuration_a2dp_offload_disabled.xml).\nIt means we have to keep current audio_policy_configuration.xml and audio_policy_configuration_a2dp_offload_disabled.xml.\nAbout offload disabled + BluetoothAudioHAL enabled, to make things simple, I think we should not set the property when offload disabled.\n\nSo, bluetooth_audio_policy_configuration.xml will be like:\n# Pixel 3:\n  audio_policy_configuration.xml + BluetoothAudioHAL for hearing aid only + a2dp_in_audio_policy_configuration.xml. \n# Pixel 1/2:\n  audio_policy_configuration.xml + BluetoothAudioHAL for both A2DP and hearing aid + a2dp_in_audio_policy_configuration.xml.",
+      "parentUuid": "92650407_5fc4fd82",
+      "range": {
+        "startLine": 3910,
+        "startChar": 4,
+        "endLine": 3918,
+        "endChar": 5
+      },
+      "revId": "989fe9fcaa4292df3510b36f138f8efc3321e224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
