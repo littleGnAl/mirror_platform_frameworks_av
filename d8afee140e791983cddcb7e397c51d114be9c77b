@@ -46,6 +46,30 @@
       "revId": "d8afee140e791983cddcb7e397c51d114be9c77b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24f34a76_e494cb58",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2019-02-20T00:40:30Z",
+      "side": 1,
+      "message": "Changed the words a little bit.",
+      "parentUuid": "0960a410_7447c24e",
+      "range": {
+        "startLine": 10,
+        "startChar": 3,
+        "endLine": 10,
+        "endChar": 22
+      },
+      "revId": "d8afee140e791983cddcb7e397c51d114be9c77b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
