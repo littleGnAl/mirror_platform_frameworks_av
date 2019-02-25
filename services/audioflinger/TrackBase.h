@@ -211,6 +211,7 @@ protected:
     sp<NBAIO_Sink>      mTeeSink;
     sp<NBAIO_Source>    mTeeSource;
     bool                mTerminated;
+    alloc_type          mAllocType; // must be one of ALLOC_{*}
     track_type          mType;      // must be one of TYPE_DEFAULT, TYPE_OUTPUT, TYPE_PATCH ...
     audio_io_handle_t   mThreadIoHandle; // I/O handle of the thread the track is attached to
     audio_port_handle_t mPortId; // unique ID for this track used by audio policy

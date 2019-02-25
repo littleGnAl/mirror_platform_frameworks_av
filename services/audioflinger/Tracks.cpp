@@ -96,6 +96,7 @@ AudioFlinger::ThreadBase::TrackBase::TrackBase(
         mIsOut(isOut),
         mId(android_atomic_inc(&nextTrackId)),
         mTerminated(false),
+        mAllocType(alloc),
         mType(type),
         mThreadIoHandle(thread->id()),
         mPortId(portId),
@@ -263,6 +264,9 @@ AudioFlinger::ThreadBase::TrackBase::~TrackBase()
         // must run with AudioFlinger lock held. Thus the explicit clear() rather than
         // relying on the automatic clear() at end of scope.
         mClient.clear();
+    }
+    if (mAllocType == ALLOC_LOCAL && this->mBuffer != NULL) {
+        free(this->mBuffer);
     }
     // flush the binder command buffer
     IPCThreadState::self()->flushCommands();
