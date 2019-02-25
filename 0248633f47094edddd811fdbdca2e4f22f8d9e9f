@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c170b17_443930c9",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1220282
+      },
+      "writtenOn": "2019-02-25T18:31:00Z",
+      "side": 1,
+      "message": "You need a default audio_policy_configuration_bluetooth_legacy_hal.xml in frameworks/av for all devices.",
+      "revId": "0248633f47094edddd811fdbdca2e4f22f8d9e9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
