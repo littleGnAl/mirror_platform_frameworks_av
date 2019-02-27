@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "baa892e8_b6ec08e9",
+        "filename": "services/audioflinger/Threads.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-02-27T16:53:20Z",
+      "side": 1,
+      "message": "Note: if you instead use \"enum class\" you can remove prefixes on the enum values as they will be prefixed with the class name:\n\n  enum class FastMixerMode {\n    Never, ...\n  };\n\n  mode \u003d FastMixerMode::Never;",
+      "range": {
+        "startLine": 1085,
+        "startChar": 4,
+        "endLine": 1085,
+        "endChar": 24
+      },
+      "revId": "d9268c2058f9a50b4001df86280f2c122570a4aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "086a01be_29724ae9",
+        "filename": "services/audioflinger/Threads.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1104,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-02-27T16:53:20Z",
+      "side": 1,
+      "message": "This looks like a fragile design to me--all these fields are initialized in MixerThread instances, but are declared in PlaybackThread. It seems that they actually belong to MixerThread. And that fragment of code that uses them in PlaybackThread::write should be a virtual function that gets overridden in MixerThread.",
+      "range": {
+        "startLine": 1101,
+        "startChar": 0,
+        "endLine": 1104,
+        "endChar": 42
+      },
+      "revId": "d9268c2058f9a50b4001df86280f2c122570a4aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42ad40dd_7403ab00",
+        "filename": "services/audioflinger/Threads.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1189,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-02-27T16:53:20Z",
+      "side": 1,
+      "message": "nit: extra space",
+      "range": {
+        "startLine": 1189,
+        "startChar": 27,
+        "endLine": 1189,
+        "endChar": 28
+      },
+      "revId": "d9268c2058f9a50b4001df86280f2c122570a4aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
