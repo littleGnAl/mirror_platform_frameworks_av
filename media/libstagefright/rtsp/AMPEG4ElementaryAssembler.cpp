@@ -179,12 +179,10 @@ AMPEG4ElementaryAssembler::AMPEG4ElementaryAssembler(
 
         mHasAUHeader =
             mSizeLength > 0
-            || mIndexLength > 0
             || mIndexDeltaLength > 0
             || mCTSDeltaLength > 0
             || mDTSDeltaLength > 0
-            || mRandomAccessIndication
-            || mStreamStateIndication > 0;
+            || mRandomAccessIndication;
 
         int32_t sampleRate, numChannels;
         ASessionDescription::ParseFormatDesc(
@@ -248,6 +246,10 @@ ARTPAssembler::AssemblyStatus AMPEG4ElementaryAssembler::addPacket(
     if (!mIsGeneric) {
         mPackets.push_back(buffer);
     } else {
+        if (!mHasAUHeader) {
+            return MALFORMED_PACKET;
+        }
+
         // hexdump(buffer->data(), buffer->size());
         if (buffer->size() < 2) {
             return MALFORMED_PACKET;
