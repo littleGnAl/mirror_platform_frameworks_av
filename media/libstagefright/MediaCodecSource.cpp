@@ -329,6 +329,9 @@ void MediaCodecSource::Puller::onMessageReceived(const sp<AMessage> &msg) {
                 mNotify->post();
                 msg->post();
             } else {
+                if (mIsAudio) {
+                    stop();
+                }
                 handleEOS();
             }
             break;
