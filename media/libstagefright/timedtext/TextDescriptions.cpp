@@ -20,6 +20,8 @@
 
 namespace android {
 
+static const int LEAST_CHUNK_SIZE = 8;
+
 TextDescriptions::TextDescriptions() {
 }
 
@@ -383,7 +385,7 @@ status_t TextDescriptions::extract3GPPGlobalDescriptions(
         tmpData += 8;
         size_t remaining = size - 8;
 
-        if (size < chunkSize) {
+        if ((chunkSize <= LEAST_CHUNK_SIZE) || (size < chunkSize)) {
             return OK;
         }
         switch(chunkType) {
