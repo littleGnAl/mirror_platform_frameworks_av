@@ -134,6 +134,8 @@ int encode(
 	if(handle == 0)
 	{
 		printf("open dll error......");
+		fclose(fsrc);
+		fclose(fdst);
 		return -1;
 	}
 
@@ -141,6 +143,9 @@ int encode(
 	if(pfunc == 0)
 	{
 		printf("open function error......");
+		fclose(fsrc);
+		fclose(fdst);
+		dlclose(handle);
 		return -1;
 	}
 
@@ -150,6 +155,9 @@ int encode(
 	if(returnCode)
 	{
 		printf("get APIs error......");
+		fclose(fsrc);
+		fclose(fdst);
+		dlclose(handle);
 		return -1;
 	}
 #else
