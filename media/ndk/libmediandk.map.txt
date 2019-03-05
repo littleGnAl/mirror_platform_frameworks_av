@@ -104,6 +104,7 @@ LIBMEDIANDK {
     AMediaCodecCryptoInfo_new;
     AMediaCodecCryptoInfo_setPattern; # introduced=24
     AMediaCodec_configure;
+    AMediaCodec_configureWithDescrambler; # introduced=30
     AMediaCodec_createCodecByName;
     AMediaCodec_createDecoderByType;
     AMediaCodec_createEncoderByType;
@@ -215,6 +216,26 @@ LIBMEDIANDK {
     AMediaMuxer_start;
     AMediaMuxer_stop;
     AMediaMuxer_writeSampleData;
+    AMediaCas_enumeratePlugins; # introduced=30
+    AMediaCas_releasePluginsArray; # introduced=30
+    AMediaCas_isSystemIdSupported; # introduced=30
+    AMediaCas_createByID; # introduced=30
+    AMediaCas_close; # introduced=30
+    AMediaCas_setEventListener; # introduced=30
+    AMediaCas_setPrivateData; # introduced=30
+    AMediaCas_openSession; # introduced=30
+    AMediaCas_closeSession; # introduced=30
+    AMediaCas_setSessionPrivateData; # introduced=30
+    AMediaCas_processEcm; # introduced=30
+    AMediaCas_processEmm; # introduced=30
+    AMediaCas_sendEvent; # introduced=30
+    AMediaCas_provision; # introduced=30
+    AMediaCas_refreshEntitlements; # introduced=30
+    AMediaDescrambler_create; # introduced=30
+    AMediaDescrambler_release; # introduced=30
+    AMediaDescrambler_setMediaCasSession; # introduced=30
+    AMediaDescrambler_requiresSecureDecoderComponent; # introduced=30
+    AMediaDescrambler_descramble; # introduced=30
   local:
     *;
 };

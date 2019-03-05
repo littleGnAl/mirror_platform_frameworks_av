@@ -48,7 +48,6 @@ __BEGIN_DECLS
 struct ANativeWindow;
 typedef struct ANativeWindow ANativeWindow;
 
-
 struct AMediaCodec;
 typedef struct AMediaCodec AMediaCodec;
 
@@ -156,6 +155,20 @@ media_status_t AMediaCodec_configure(
         AMediaCrypto *crypto,
         uint32_t flags) __INTRODUCED_IN(21);
 
+#if __ANDROID_API__ >= __ANDROID_API_FUTURE__
+
+typedef struct AMediaDescrambler AMediaDescrambler;
+
+/**
+ * Configure the codec. Configure codec to be used with a descrambler. 
+ */
+media_status_t AMediaCodec_configureWithDescrambler(
+        AMediaCodec*,
+        const AMediaFormat* format,
+        ANativeWindow* window,
+        uint32_t flags,
+        AMediaDescrambler *descrambler);
+#endif /* __ANDROID_API__ >= __ANDROID_API_FUTURE__ */
 /**
  * Start the codec. A codec must be configured before it can be started, and must be started
  * before buffers can be sent to it.
