@@ -23,6 +23,7 @@
 #include <media/NdkMediaError.h>
 #include "NdkMediaCryptoPriv.h"
 #include "NdkMediaFormatPriv.h"
+#include "NdkMediaDescramblerPriv.h"
 
 #include <utils/Log.h>
 #include <utils/StrongPointer.h>
@@ -422,6 +423,30 @@ media_status_t AMediaCodec_configure(
 }
 
 EXPORT
+media_status_t AMediaCodec_configureWithDescrambler(
+        AMediaCodec* mData,
+        const AMediaFormat* format,
+        ANativeWindow* window,
+        uint32_t flags,
+        AMediaDescrambler *descrambler) {
+    sp<AMessage> nativeFormat;
+    AMediaFormat_getFormat(format, &nativeFormat);
+    ALOGV("configure descrambler with format: %s", nativeFormat->debugString(0).c_str());
+    sp<Surface> surface = NULL;
+    if (window != NULL) {
+        surface = (Surface*) window;
+    }
+
+    status_t err = mData->mCodec->configure(nativeFormat, surface, NULL,
+            descrambler ? descrambler->mDescrambler : NULL, flags);
+    if (err != OK) {
+        ALOGE("configure: err(%d), failed with format: %s",
+              err, nativeFormat->debugString(0).c_str());
+    }
+    return translate_error(err);
+}
+
+EXPORT
 media_status_t AMediaCodec_setAsyncNotifyCallback(
         AMediaCodec *mData,
         AMediaCodecOnAsyncNotifyCallback callback,
@@ -811,13 +836,7 @@ AMediaCodecCryptoInfo *AMediaCodecCryptoInfo_new(
         size_t *encryptedbytes) {
 
     // size needed to store all the crypto data
-    size_t cryptosize;
-    // = sizeof(AMediaCodecCryptoInfo) + sizeof(size_t) * numsubsamples * 2;
-    if (__builtin_mul_overflow(sizeof(size_t) * 2, numsubsamples, &cryptosize) ||
-            __builtin_add_overflow(cryptosize, sizeof(AMediaCodecCryptoInfo), &cryptosize)) {
-        ALOGE("crypto size overflow");
-        return NULL;
-    }
+    size_t cryptosize = sizeof(AMediaCodecCryptoInfo) + sizeof(size_t) * numsubsamples * 2;
     AMediaCodecCryptoInfo *ret = (AMediaCodecCryptoInfo*) malloc(cryptosize);
     if (!ret) {
         ALOGE("couldn't allocate %zu bytes", cryptosize);
