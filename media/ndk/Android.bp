@@ -62,9 +62,11 @@ cc_library_shared {
 
     static_libs: [
         "libgrallocusage",
+        "libjni_lazy",
     ],
 
     shared_libs: [
+        "libbase",
         "libbinder",
         "libmedia",
         "libmedia_omx",
