@@ -16,6 +16,24 @@
       "revId": "654ee27d3b2e922dc4e8063e13e5f93f780fdb9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df94608b_0e1f84ff",
+        "filename": "camera/ndk/impl/ACameraMetadata.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2019-03-08T17:55:30Z",
+      "side": 1,
+      "message": "The java CTS will cover that",
+      "parentUuid": "0acdecf8_8bc3f300",
+      "revId": "654ee27d3b2e922dc4e8063e13e5f93f780fdb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
