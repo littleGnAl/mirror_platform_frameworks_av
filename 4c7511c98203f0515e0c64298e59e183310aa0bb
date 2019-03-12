@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d49044a_9f853b77",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2035,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2019-03-12T19:35:51Z",
+      "side": 1,
+      "message": "Should we rename this to loadSoundLocked, and adjust the rest of the code accordingly because loadSound is only called by playSound?",
+      "range": {
+        "startLine": 2035,
+        "startChar": 20,
+        "endLine": 2035,
+        "endChar": 29
+      },
+      "revId": "4c7511c98203f0515e0c64298e59e183310aa0bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9b03728_944365be",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2059,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2019-03-12T19:35:51Z",
+      "side": 1,
+      "message": "nit: to be symmetric with increaseSoundRef, we may change this to decreaseSoundRef.",
+      "range": {
+        "startLine": 2059,
+        "startChar": 20,
+        "endLine": 2059,
+        "endChar": 32
+      },
+      "revId": "4c7511c98203f0515e0c64298e59e183310aa0bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
