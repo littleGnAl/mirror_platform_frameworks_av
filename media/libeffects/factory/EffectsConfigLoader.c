@@ -49,8 +49,6 @@ int EffectLoadEffectConfig()
 {
     if (access(AUDIO_EFFECT_VENDOR_CONFIG_FILE, R_OK) == 0) {
         return loadEffectConfigFile(AUDIO_EFFECT_VENDOR_CONFIG_FILE);
-    } else if (access(AUDIO_EFFECT_DEFAULT_CONFIG_FILE, R_OK) == 0) {
-        return loadEffectConfigFile(AUDIO_EFFECT_DEFAULT_CONFIG_FILE);
     }
     return 0;
 }
