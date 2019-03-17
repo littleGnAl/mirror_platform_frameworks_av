@@ -203,6 +203,7 @@ status_t MediaRecorder::setOutputFormat(int of)
         mCurrentState = MEDIA_RECORDER_ERROR;
         return ret;
     }
+    mOutputFormat = of;
     mCurrentState = MEDIA_RECORDER_DATASOURCE_CONFIGURED;
     return ret;
 }
@@ -438,6 +439,13 @@ status_t MediaRecorder::setParameters(const String8& params) {
                            (MEDIA_RECORDER_PREPARED |
                             MEDIA_RECORDER_RECORDING |
                             MEDIA_RECORDER_ERROR));
+
+    // For RTP video, parameter should be set dynamically.
+    if (isInvalidState) {
+        if (mCurrentState == MEDIA_RECORDER_RECORDING &&
+            mOutputFormat == OUTPUT_FORMAT_RTP_AVP)
+            isInvalidState = false;
+    }
     if (isInvalidState) {
         ALOGE("setParameters is called in an invalid state: %d", mCurrentState);
         return INVALID_OPERATION;
@@ -696,6 +704,7 @@ void MediaRecorder::doCleanUp()
     mIsAudioEncoderSet = false;
     mIsVideoEncoderSet = false;
     mIsOutputFileSet   = false;
+    mOutputFormat      = 0;
 }
 
 // Release should be OK in any state
