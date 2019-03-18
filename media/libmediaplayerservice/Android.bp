@@ -12,6 +12,8 @@ cc_library_shared {
 
     shared_libs: [
         "android.hardware.media.omx@1.0",
+        "libandroid",
+        "libandroid_net",
         "libaudioclient",
         "libbinder",
         "libcamera_client",
