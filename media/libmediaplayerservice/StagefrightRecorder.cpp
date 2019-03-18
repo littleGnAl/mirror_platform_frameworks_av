@@ -116,6 +116,7 @@ StagefrightRecorder::StagefrightRecorder(const String16 &opPackageName)
       mVideoSource(VIDEO_SOURCE_LIST_END),
       mRTPCVOExtMap(-1),
       mRTPCVODegrees(0),
+      mRTPSockNetwork(0),
       mLastSeqNo(0),
       mStarted(false),
       mSelectedDeviceId(AUDIO_PORT_HANDLE_NONE),
@@ -846,6 +847,16 @@ status_t StagefrightRecorder::setRTPCVODegrees(int32_t cvoDegrees) {
     return OK;
 }
 
+status_t StagefrightRecorder::setSocketNetwork(int64_t networkHandle) {
+    ALOGV("setSocketNetwork: %llu", (unsigned long long) networkHandle);
+
+    mRTPSockNetwork = networkHandle;
+    if (mStarted && mOutputFormat == OUTPUT_FORMAT_RTP_AVP) {
+        mWriter->updateSocketNetwork(mRTPSockNetwork);
+    }
+    return OK;
+}
+
 status_t StagefrightRecorder::requestIDRFrame() {
     status_t ret = BAD_VALUE;
     if (mVideoEncoderSource != NULL) {
@@ -1007,6 +1018,11 @@ status_t StagefrightRecorder::setParameter(
         }
     } else if (key == "video-param-request-i-frame") {
         return requestIDRFrame();
+    } else if (key == "rtp-param-set-socket-network") {
+        int64_t networkHandle;
+        if (safe_strtoi64(value.string(), &networkHandle)) {
+            return setSocketNetwork(networkHandle);
+        }
     } else {
         ALOGE("setParameter: failed to find key %s", key.string());
     }
@@ -1170,6 +1186,7 @@ status_t StagefrightRecorder::start() {
             meta->setInt64(kKeyTime, startTimeUs);
             meta->setInt32(kKeySelfID, mSelfID);
             meta->setInt32(kKeyPayloadType, mPayloadType);
+            meta->setInt64(kKeySocketNetwork, mRTPSockNetwork);
             if (mRTPCVOExtMap > 0) {
                 meta->setInt32(kKeyRtpExtMap, mRTPCVOExtMap);
                 meta->setInt32(kKeyRtpCvoDegrees, mRTPCVODegrees);
