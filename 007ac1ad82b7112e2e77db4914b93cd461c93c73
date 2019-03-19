@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d81ce43_f0bb9d0f",
+        "filename": "media/libmedia/MediaUtils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2019-03-19T00:53:38Z",
+      "side": 1,
+      "message": "do we need the same maxMem !\u003d SIZE_MAX test as on line 63?",
+      "range": {
+        "startLine": 69,
+        "startChar": 7,
+        "endLine": 69,
+        "endChar": 9
+      },
+      "revId": "007ac1ad82b7112e2e77db4914b93cd461c93c73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8cbc63e_7fc52309",
+        "filename": "services/mediaextractor/seccomp_policy/mediaextractor-arm.policy",
+        "patchSetId": 7
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2019-03-19T00:53:38Z",
+      "side": 1,
+      "message": "do we need the same change for mediaextractor-arm64.policy and mediaextractor-x86_64.policy?",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 7
+      },
+      "revId": "007ac1ad82b7112e2e77db4914b93cd461c93c73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
