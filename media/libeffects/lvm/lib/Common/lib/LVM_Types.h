@@ -25,7 +25,6 @@
 #ifndef LVM_TYPES_H
 #define LVM_TYPES_H
 
-
 #include <stdint.h>
 
 /****************************************************************************************/
@@ -93,38 +92,16 @@ typedef     int32_t             LVM_INT32;          /* Signed 32-bit word */
 typedef     uint32_t            LVM_UINT32;         /* Unsigned 32-bit word */
 typedef     int64_t             LVM_INT64;          /* Signed 64-bit word */
 
-#ifdef BUILD_FLOAT
-
 #define LVM_MAXFLOAT            1.f
 
 typedef     float               LVM_FLOAT;          /* single precision floating point */
 
-// If NATIVE_FLOAT_BUFFER is defined, we expose effects as floating point format;
-// otherwise we expose as integer 16 bit and translate to float for the effect libraries.
-// Hence, NATIVE_FLOAT_BUFFER should only be enabled under BUILD_FLOAT compilation.
-
-#define NATIVE_FLOAT_BUFFER
-
-#endif // BUILD_FLOAT
-
 // Select whether we expose int16_t or float buffers.
-#ifdef NATIVE_FLOAT_BUFFER
 
 #define    EFFECT_BUFFER_FORMAT AUDIO_FORMAT_PCM_FLOAT
 typedef     float               effect_buffer_t;
 
-#else // NATIVE_FLOAT_BUFFER
-
-#define    EFFECT_BUFFER_FORMAT AUDIO_FORMAT_PCM_16_BIT
-typedef     int16_t             effect_buffer_t;
-
-#endif // NATIVE_FLOAT_BUFFER
-
-#ifdef SUPPORT_MC
 #define LVM_MAX_CHANNELS 8 // FCC_8
-#else
-#define LVM_MAX_CHANNELS 2 // FCC_2
-#endif
 
 /****************************************************************************************/
 /*                                                                                      */
@@ -140,19 +117,15 @@ typedef enum
     LVM_MODE_DUMMY  = LVM_MAXENUM
 } LVM_Mode_en;
 
-
 /* Format */
 typedef enum
 {
     LVM_STEREO          = 0,
     LVM_MONOINSTEREO    = 1,
     LVM_MONO            = 2,
-#ifdef SUPPORT_MC
     LVM_MULTICHANNEL    = 3,
-#endif
     LVM_SOURCE_DUMMY    = LVM_MAXENUM
 } LVM_Format_en;
-
 
 /* LVM sampling rates */
 typedef enum
@@ -166,16 +139,13 @@ typedef enum
     LVM_FS_32000 = 6,
     LVM_FS_44100 = 7,
     LVM_FS_48000 = 8,
-#ifdef HIGHER_FS
     LVM_FS_88200 = 9,
     LVM_FS_96000 = 10,
     LVM_FS_176400 = 11,
     LVM_FS_192000 = 12,
-#endif
     LVM_FS_INVALID = LVM_MAXENUM-1,
     LVM_FS_DUMMY = LVM_MAXENUM
 } LVM_Fs_en;
-
 
 /* Memory Types */
 typedef enum
@@ -187,7 +157,6 @@ typedef enum
     LVM_MEMORYTYPE_DUMMY        = LVM_MAXENUM
 } LVM_MemoryTypes_en;
 
-
 /* Memory region definition */
 typedef struct
 {
@@ -196,13 +165,11 @@ typedef struct
     void                        *pBaseAddress;          /* Pointer to the region base address */
 } LVM_MemoryRegion_st;
 
-
 /* Memory table containing the region definitions */
 typedef struct
 {
     LVM_MemoryRegion_st         Region[LVM_NR_MEMORY_REGIONS];  /* One definition for each region */
 } LVM_MemoryTable_st;
-
 
 /****************************************************************************************/
 /*                                                                                      */
@@ -213,12 +180,10 @@ typedef LVM_INT32 (*LVM_Callback)(void          *pCallbackData,     /* Pointer t
                                   void          *pGeneralPurpose,   /* General purpose pointer (e.g. to a data structure needed in the callback) */
                                   LVM_INT16     GeneralPurpose );   /* General purpose variable (e.g. to be used as callback ID) */
 
-
 /****************************************************************************************/
 /*                                                                                      */
 /*  End of file                                                                         */
 /*                                                                                      */
 /****************************************************************************************/
-
 
 #endif  /* LVM_TYPES_H */
