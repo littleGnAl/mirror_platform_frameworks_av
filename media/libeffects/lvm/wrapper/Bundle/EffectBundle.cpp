@@ -81,7 +81,6 @@ int SessionIndex[LVM_MAX_SESSIONS];
     }                                         \
 }
 
-
 // NXP SW BassBoost UUID
 const effect_descriptor_t gBassBoostDescriptor = {
         {0x0634f220, 0xddd4, 0x11db, 0xa0fc, { 0x00, 0x02, 0xa5, 0xd5, 0xc5, 0x1b }},
@@ -258,27 +257,6 @@ extern "C" int EffectCreate(const effect_uuid_t *uuid,
         pContext->pBundledContext->firstVolume              = LVM_TRUE;
         pContext->pBundledContext->volume                   = 0;
 
-        #ifdef LVM_PCM
-        char fileName[256];
-        snprintf(fileName, 256, "/data/tmp/bundle_%p_pcm_in.pcm", pContext->pBundledContext);
-        pContext->pBundledContext->PcmInPtr = fopen(fileName, "w");
-        if (pContext->pBundledContext->PcmInPtr == NULL) {
-            ALOGV("cannot open %s", fileName);
-            ret = -EINVAL;
-            goto exit;
-        }
-
-        snprintf(fileName, 256, "/data/tmp/bundle_%p_pcm_out.pcm", pContext->pBundledContext);
-        pContext->pBundledContext->PcmOutPtr = fopen(fileName, "w");
-        if (pContext->pBundledContext->PcmOutPtr == NULL) {
-            ALOGV("cannot open %s", fileName);
-            fclose(pContext->pBundledContext->PcmInPtr);
-           pContext->pBundledContext->PcmInPtr = NULL;
-           ret = -EINVAL;
-           goto exit;
-        }
-        #endif
-
         /* Saved strength is used to return the exact strength that was used in the set to the get
          * because we map the original strength range of 0:1000 to 1:15, and this will avoid
          * quantisation like effect when returning
@@ -295,10 +273,6 @@ extern "C" int EffectCreate(const effect_uuid_t *uuid,
         pContext->pBundledContext->SamplesToExitCountVirt   = 0;
         pContext->pBundledContext->SamplesToExitCountBb     = 0;
         pContext->pBundledContext->SamplesToExitCountEq     = 0;
-#if defined(BUILD_FLOAT) && !defined(NATIVE_FLOAT_BUFFER)
-        pContext->pBundledContext->pInputBuffer             = NULL;
-        pContext->pBundledContext->pOutputBuffer            = NULL;
-#endif
         for (int i = 0; i < FIVEBAND_NUMBANDS; i++) {
             pContext->pBundledContext->bandGaindB[i] = EQNB_5BandSoftPresets[i];
         }
@@ -443,17 +417,6 @@ extern "C" int EffectRelease(effect_handle_t handle){
             (pSessionContext->bEqualizerInstantiated ==LVM_FALSE) &&
             (pSessionContext->bVirtualizerInstantiated==LVM_FALSE))
     {
-#ifdef LVM_PCM
-        if (pContext->pBundledContext->PcmInPtr != NULL) {
-            fclose(pContext->pBundledContext->PcmInPtr);
-            pContext->pBundledContext->PcmInPtr = NULL;
-        }
-        if (pContext->pBundledContext->PcmOutPtr != NULL) {
-            fclose(pContext->pBundledContext->PcmOutPtr);
-            pContext->pBundledContext->PcmOutPtr = NULL;
-        }
-#endif
-
 
         // Clear the SessionIndex
         for(int i=0; i<LVM_MAX_SESSIONS; i++){
@@ -474,10 +437,6 @@ extern "C" int EffectRelease(effect_handle_t handle){
         if (pContext->pBundledContext->workBuffer != NULL) {
             free(pContext->pBundledContext->workBuffer);
         }
-#if defined(BUILD_FLOAT) && !defined(NATIVE_FLOAT_BUFFER)
-        free(pContext->pBundledContext->pInputBuffer);
-        free(pContext->pBundledContext->pOutputBuffer);
-#endif
         delete pContext->pBundledContext;
         pContext->pBundledContext = LVM_NULL;
     }
@@ -658,9 +617,7 @@ int LvmBundle_init(EffectContext *pContext){
     params.SpeakerType            = LVM_HEADPHONES;
 
     pContext->pBundledContext->SampleRate = LVM_FS_44100;
-#ifdef SUPPORT_MC
     pContext->pBundledContext->ChMask = AUDIO_CHANNEL_OUT_STEREO;
-#endif
 
     /* Concert Sound parameters */
     params.VirtualizerOperatingMode   = LVM_MODE_OFF;
@@ -706,11 +663,9 @@ int LvmBundle_init(EffectContext *pContext){
     params.TE_OperatingMode       = LVM_TE_OFF;
     params.TE_EffectLevel         = 0;
 
-#ifdef SUPPORT_MC
     params.NrChannels             =
         audio_channel_count_from_out_mask(AUDIO_CHANNEL_OUT_STEREO);
     params.ChMask                 = AUDIO_CHANNEL_OUT_STEREO;
-#endif
     /* Activate the initial settings */
     LvmStatus = LVM_SetControlParameters(pContext->pBundledContext->hInstance,
                                          &params);
@@ -759,7 +714,6 @@ int LvmBundle_init(EffectContext *pContext){
 //  pOut:       pointer to updated stereo 16 bit output data
 //
 //----------------------------------------------------------------------------
-#ifdef BUILD_FLOAT
 int LvmBundle_process(effect_buffer_t  *pIn,
                       effect_buffer_t  *pOut,
                       int              frameCount,
@@ -769,30 +723,6 @@ int LvmBundle_process(effect_buffer_t  *pIn,
     effect_buffer_t         *pOutTmp;
     const LVM_INT32 NrChannels =
         audio_channel_count_from_out_mask(pContext->config.inputCfg.channels);
-#ifndef NATIVE_FLOAT_BUFFER
-    if (pContext->pBundledContext->pInputBuffer == nullptr ||
-            pContext->pBundledContext->frameCount < frameCount) {
-        free(pContext->pBundledContext->pInputBuffer);
-        pContext->pBundledContext->pInputBuffer =
-                (LVM_FLOAT *)calloc(frameCount, sizeof(LVM_FLOAT) * NrChannels);
-    }
-
-    if (pContext->pBundledContext->pOutputBuffer == nullptr ||
-            pContext->pBundledContext->frameCount < frameCount) {
-        free(pContext->pBundledContext->pOutputBuffer);
-        pContext->pBundledContext->pOutputBuffer =
-                (LVM_FLOAT *)calloc(frameCount, sizeof(LVM_FLOAT) * NrChannels);
-    }
-
-    if (pContext->pBundledContext->pInputBuffer == nullptr ||
-            pContext->pBundledContext->pOutputBuffer == nullptr) {
-        ALOGE("LVM_ERROR : LvmBundle_process memory allocation for float buffer's failed");
-        return -EINVAL;
-    }
-
-    LVM_FLOAT * const pInputBuff = pContext->pBundledContext->pInputBuffer;
-    LVM_FLOAT * const pOutputBuff = pContext->pBundledContext->pOutputBuffer;
-#endif
 
     if (pContext->config.outputCfg.accessMode == EFFECT_BUFFER_ACCESS_WRITE){
         pOutTmp = pOut;
@@ -814,122 +744,22 @@ int LvmBundle_process(effect_buffer_t  *pIn,
         return -EINVAL;
     }
 
-#ifdef LVM_PCM
-    fwrite(pIn,
-           frameCount * sizeof(effect_buffer_t) * NrChannels,
-           1,
-           pContext->pBundledContext->PcmInPtr);
-    fflush(pContext->pBundledContext->PcmInPtr);
-#endif
-
-#ifndef NATIVE_FLOAT_BUFFER
-    /* Converting input data from fixed point to float point */
-    memcpy_to_float_from_i16(pInputBuff, pIn, frameCount * NrChannels);
-
-    /* Process the samples */
-    LvmStatus = LVM_Process(pContext->pBundledContext->hInstance, /* Instance handle */
-                            pInputBuff,                           /* Input buffer */
-                            pOutputBuff,                          /* Output buffer */
-                            (LVM_UINT16)frameCount,               /* Number of samples to read */
-                            0);                                   /* Audio Time */
-
-    /* Converting output data from float point to fixed point */
-    memcpy_to_i16_from_float(pOutTmp, pOutputBuff, frameCount * NrChannels);
-
-#else
     /* Process the samples */
     LvmStatus = LVM_Process(pContext->pBundledContext->hInstance, /* Instance handle */
                             pIn,                                  /* Input buffer */
                             pOutTmp,                              /* Output buffer */
                             (LVM_UINT16)frameCount,               /* Number of samples to read */
                             0);                                   /* Audio Time */
-#endif
     LVM_ERROR_CHECK(LvmStatus, "LVM_Process", "LvmBundle_process")
     if(LvmStatus != LVM_SUCCESS) return -EINVAL;
-
-#ifdef LVM_PCM
-    fwrite(pOutTmp,
-           frameCount * sizeof(effect_buffer_t) * NrChannels,
-           1,
-           pContext->pBundledContext->PcmOutPtr);
-    fflush(pContext->pBundledContext->PcmOutPtr);
-#endif
 
     if (pContext->config.outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE){
         for (int i = 0; i < frameCount * NrChannels; i++) {
-#ifndef NATIVE_FLOAT_BUFFER
-            pOut[i] = clamp16((LVM_INT32)pOut[i] + (LVM_INT32)pOutTmp[i]);
-#else
             pOut[i] = pOut[i] + pOutTmp[i];
-#endif
         }
     }
     return 0;
 }    /* end LvmBundle_process */
-
-#else // BUILD_FLOAT
-
-int LvmBundle_process(LVM_INT16        *pIn,
-                      LVM_INT16        *pOut,
-                      int              frameCount,
-                      EffectContext    *pContext) {
-
-    LVM_ReturnStatus_en     LvmStatus = LVM_SUCCESS;                /* Function call status */
-    LVM_INT16               *pOutTmp;
-
-    if (pContext->config.outputCfg.accessMode == EFFECT_BUFFER_ACCESS_WRITE){
-        pOutTmp = pOut;
-    } else if (pContext->config.outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE){
-        if (pContext->pBundledContext->frameCount != frameCount) {
-            if (pContext->pBundledContext->workBuffer != NULL) {
-                free(pContext->pBundledContext->workBuffer);
-            }
-            pContext->pBundledContext->workBuffer =
-                    (effect_buffer_t *)calloc(frameCount, sizeof(effect_buffer_t) * FCC_2);
-            if (pContext->pBundledContext->workBuffer == NULL) {
-                return -ENOMEM;
-            }
-            pContext->pBundledContext->frameCount = frameCount;
-        }
-        pOutTmp = pContext->pBundledContext->workBuffer;
-    } else {
-        ALOGV("LVM_ERROR : LvmBundle_process invalid access mode");
-        return -EINVAL;
-    }
-
-#ifdef LVM_PCM
-    fwrite(pIn, frameCount * sizeof(*pIn) * FCC_2,
-            1 /* nmemb */, pContext->pBundledContext->PcmInPtr);
-    fflush(pContext->pBundledContext->PcmInPtr);
-#endif
-
-    //ALOGV("Calling LVM_Process");
-
-    /* Process the samples */
-    LvmStatus = LVM_Process(pContext->pBundledContext->hInstance, /* Instance handle */
-                            pIn,                                  /* Input buffer */
-                            pOutTmp,                              /* Output buffer */
-                            (LVM_UINT16)frameCount,               /* Number of samples to read */
-                            0);                                   /* Audio Time */
-
-    LVM_ERROR_CHECK(LvmStatus, "LVM_Process", "LvmBundle_process")
-    if(LvmStatus != LVM_SUCCESS) return -EINVAL;
-
-#ifdef LVM_PCM
-    fwrite(pOutTmp, frameCount * sizeof(*pOutTmp) * FCC_2,
-            1 /* nmemb */, pContext->pBundledContext->PcmOutPtr);
-    fflush(pContext->pBundledContext->PcmOutPtr);
-#endif
-
-    if (pContext->config.outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE){
-        for (int i=0; i<frameCount*2; i++){
-            pOut[i] = clamp16((LVM_INT32)pOut[i] + (LVM_INT32)pOutTmp[i]);
-        }
-    }
-    return 0;
-}    /* end LvmBundle_process */
-
-#endif // BUILD_FLOAT
 
 //----------------------------------------------------------------------------
 // EqualizerUpdateActiveParams()
@@ -952,7 +782,6 @@ void EqualizerUpdateActiveParams(EffectContext *pContext) {
     //ALOGV("\tEqualizerUpdateActiveParams Succesfully returned from LVM_GetControlParameters\n");
     //ALOGV("\tEqualizerUpdateActiveParams just Got -> %d\n",
     //          ActiveParams.pEQNB_BandDefinition[band].Gain);
-
 
     for (int i = 0; i < FIVEBAND_NUMBANDS; i++) {
            ActiveParams.pEQNB_BandDefinition[i].Frequency = EQNB_5BandPresetsFrequencies[i];
@@ -1254,11 +1083,7 @@ int Effect_setConfig(EffectContext *pContext, effect_config_t *pConfig){
     CHECK_ARG(pConfig->inputCfg.samplingRate == pConfig->outputCfg.samplingRate);
     CHECK_ARG(pConfig->inputCfg.channels == pConfig->outputCfg.channels);
     CHECK_ARG(pConfig->inputCfg.format == pConfig->outputCfg.format);
-#ifdef SUPPORT_MC
     CHECK_ARG(audio_channel_count_from_out_mask(pConfig->inputCfg.channels) <= LVM_MAX_CHANNELS);
-#else
-    CHECK_ARG(pConfig->inputCfg.channels == AUDIO_CHANNEL_OUT_STEREO);
-#endif
     CHECK_ARG(pConfig->outputCfg.accessMode == EFFECT_BUFFER_ACCESS_WRITE
               || pConfig->outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE);
     CHECK_ARG(pConfig->inputCfg.format == EFFECT_BUFFER_FORMAT);
@@ -1290,7 +1115,6 @@ int Effect_setConfig(EffectContext *pContext, effect_config_t *pConfig){
         SampleRate = LVM_FS_48000;
         pContext->pBundledContext->SamplesPerSecond = 48000 * NrChannels;
         break;
-#if defined(BUILD_FLOAT) && defined(HIGHER_FS)
     case 88200:
         SampleRate = LVM_FS_88200;
         pContext->pBundledContext->SamplesPerSecond = 88200 * NrChannels;
@@ -1307,18 +1131,13 @@ int Effect_setConfig(EffectContext *pContext, effect_config_t *pConfig){
         SampleRate = LVM_FS_192000;
         pContext->pBundledContext->SamplesPerSecond = 192000 * NrChannels;
         break;
-#endif
     default:
         ALOGV("\tEffect_setConfig invalid sampling rate %d", pConfig->inputCfg.samplingRate);
         return -EINVAL;
     }
 
-#ifdef SUPPORT_MC
     if (pContext->pBundledContext->SampleRate != SampleRate ||
         pContext->pBundledContext->ChMask != pConfig->inputCfg.channels) {
-#else
-    if(pContext->pBundledContext->SampleRate != SampleRate){
-#endif
 
         LVM_ControlParams_t     ActiveParams;
         LVM_ReturnStatus_en     LvmStatus = LVM_SUCCESS;
@@ -1334,19 +1153,15 @@ int Effect_setConfig(EffectContext *pContext, effect_config_t *pConfig){
 
         ActiveParams.SampleRate = SampleRate;
 
-#ifdef SUPPORT_MC
         ActiveParams.NrChannels = NrChannels;
         ActiveParams.ChMask = pConfig->inputCfg.channels;
-#endif
 
         LvmStatus = LVM_SetControlParameters(pContext->pBundledContext->hInstance, &ActiveParams);
 
         LVM_ERROR_CHECK(LvmStatus, "LVM_SetControlParameters", "Effect_setConfig")
         ALOGV("\tEffect_setConfig Succesfully called LVM_SetControlParameters\n");
         pContext->pBundledContext->SampleRate = SampleRate;
-#ifdef SUPPORT_MC
         pContext->pBundledContext->ChMask = pConfig->inputCfg.channels;
-#endif
 
         LvmEffect_limitLevel(pContext);
 
@@ -2051,8 +1866,6 @@ int VolumeSetStereoPosition(EffectContext *pContext, int16_t position){
     LVM_ReturnStatus_en     LvmStatus=LVM_SUCCESS;     /* Function call status */
     LVM_INT16               Balance = 0;
 
-
-
     pContext->pBundledContext->positionSaved = position;
     Balance = VolumeConvertStereoPosition(pContext->pBundledContext->positionSaved);
 
@@ -2096,7 +1909,6 @@ int VolumeSetStereoPosition(EffectContext *pContext, int16_t position){
     //pContext->pBundledContext->positionSaved);
     return 0;
 }    /* end VolumeSetStereoPosition */
-
 
 //----------------------------------------------------------------------------
 // VolumeGetStereoPosition()
@@ -2970,7 +2782,6 @@ int Volume_getParameter(EffectContext *pContext,
     return status;
 } /* end Volume_getParameter */
 
-
 //----------------------------------------------------------------------------
 // Volume_setParameter()
 //----------------------------------------------------------------------------
@@ -3422,17 +3233,10 @@ int Effect_process(effect_handle_t     self,
         pContext->pBundledContext->NumberEffectsCalled = 0;
         /* Process all the available frames, block processing is
            handled internalLY by the LVM bundle */
-#ifdef NATIVE_FLOAT_BUFFER
         processStatus = android::LvmBundle_process(inBuffer->f32,
                                                    outBuffer->f32,
                                                    outBuffer->frameCount,
                                                    pContext);
-#else
-        processStatus = android::LvmBundle_process(inBuffer->s16,
-                                                   outBuffer->s16,
-                                                   outBuffer->frameCount,
-                                                   pContext);
-#endif
         if (processStatus != 0){
             ALOGV("\tLVM_ERROR : LvmBundle_process returned error %d", processStatus);
             if (status == 0) {
@@ -3447,11 +3251,7 @@ int Effect_process(effect_handle_t     self,
 
         if (pContext->config.outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE) {
             for (size_t i = 0; i < outBuffer->frameCount * NrChannels; ++i) {
-#ifdef NATIVE_FLOAT_BUFFER
                 outBuffer->f32[i] += inBuffer->f32[i];
-#else
-                outBuffer->s16[i] = clamp16((LVM_INT32)outBuffer->s16[i] + inBuffer->s16[i]);
-#endif
             }
         } else if (outBuffer->raw != inBuffer->raw) {
             memcpy(outBuffer->raw,
