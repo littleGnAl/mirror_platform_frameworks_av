@@ -91,8 +91,7 @@ LVCS_ReturnStatus_en LVCS_Process_CS(LVCS_Handle_t              hInstance,
     }
 #endif
 
-    pScratch  = (LVM_FLOAT *) \
-                  pInstance->MemoryTable.Region[LVCS_MEMREGION_TEMPORARY_FAST].pBaseAddress;
+    pScratch  = (LVM_FLOAT *)pInstance->pScratch;
 
     /*
      * Check if the processing is inplace

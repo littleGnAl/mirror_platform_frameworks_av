@@ -106,7 +106,6 @@ typedef struct
 typedef struct
 {
     /* Public parameters */
-    LVCS_MemTab_t           MemoryTable;        /* Instance memory allocation table */
     LVCS_Params_t           Params;             /* Instance parameters */
     LVCS_Capabilities_t     Capabilities;       /* Initialisation capabilities */
 
@@ -129,6 +128,9 @@ typedef struct
     LVM_INT16               bTimerDone;                         /* Timer completion flag */
     LVM_Timer_Params_t      TimerParams;                        /* Timer parameters */
     LVM_Timer_Instance_t    TimerInstance;                      /* Timer instance */
+    void                    *pCoeff;
+    void                    *pData;
+    void                    *pScratch;
 
 } LVCS_Instance_t;
 
