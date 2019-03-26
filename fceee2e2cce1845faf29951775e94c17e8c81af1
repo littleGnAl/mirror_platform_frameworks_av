@@ -22,6 +22,30 @@
       "revId": "fceee2e2cce1845faf29951775e94c17e8c81af1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be89fed1_dc521993",
+        "filename": "media/libstagefright/MediaCodecSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2019-03-26T18:08:28Z",
+      "side": 1,
+      "message": "We have taken a fix for a similar issue on internal master, \nhttps://googleplex-android-review.git.corp.google.com/c/platform/frameworks/av/+/6333821\n\nCan you try that patch and see if it fixes the issue on your side? If so we\u0027ll just use the existing fix.",
+      "parentUuid": "e4d72b8e_3c4c6de9",
+      "range": {
+        "startLine": 332,
+        "startChar": 15,
+        "endLine": 334,
+        "endChar": 17
+      },
+      "revId": "fceee2e2cce1845faf29951775e94c17e8c81af1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
