@@ -17,14 +17,12 @@
 
 #include "BIQUAD.h"
 #include "DC_2I_D16_TRC_WRA_01_Private.h"
-#ifdef BUILD_FLOAT
 void  DC_2I_D16_TRC_WRA_01_Init(Biquad_FLOAT_Instance_t   *pInstance)
 {
     PFilter_FLOAT_State pBiquadState  = (PFilter_FLOAT_State) pInstance;
     pBiquadState->LeftDC        = 0.0f;
     pBiquadState->RightDC       = 0.0f;
 }
-#ifdef SUPPORT_MC
 void  DC_Mc_D16_TRC_WRA_01_Init(Biquad_FLOAT_Instance_t   *pInstance)
 {
     PFilter_FLOAT_State_Mc pBiquadState  = (PFilter_FLOAT_State_Mc) pInstance;
@@ -34,12 +32,3 @@ void  DC_Mc_D16_TRC_WRA_01_Init(Biquad_FLOAT_Instance_t   *pInstance)
         pBiquadState->ChDC[i] = 0.0f;
     }
 }
-#endif
-#else
-void  DC_2I_D16_TRC_WRA_01_Init(Biquad_Instance_t   *pInstance)
-{
-    PFilter_State pBiquadState  = (PFilter_State) pInstance;
-    pBiquadState->LeftDC        = 0;
-    pBiquadState->RightDC       = 0;
-}
-#endif
