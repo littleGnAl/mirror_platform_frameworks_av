@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e98254dd_0987bdf0",
+        "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2019-03-29T00:01:54Z",
+      "side": 1,
+      "message": "lgtm... btw, code on line 114, 120, 169 goes to safe_exit instead of closing/returning.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 12
+      },
+      "revId": "43113d13d239587f1106f6fda59fa507d575ad88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
