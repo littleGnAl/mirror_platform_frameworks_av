@@ -22,6 +22,30 @@
       "revId": "43113d13d239587f1106f6fda59fa507d575ad88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "abb025dd_866694aa",
+        "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2019-03-29T00:11:48Z",
+      "side": 1,
+      "message": "I saw that.  That might be the correct behavior for these places as well, but it would change the behavior (outside of fixing the leaks), so I didn\u0027t do that.  If someone more familiar with the code says that changing that behavior as well is the right thing to do, I\u0027ll modify this CL to goto safe_exit after setting \u0027ret\u0027 to -1.",
+      "parentUuid": "e98254dd_0987bdf0",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 139,
+        "endChar": 12
+      },
+      "revId": "43113d13d239587f1106f6fda59fa507d575ad88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
