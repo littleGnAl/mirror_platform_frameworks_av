@@ -19,6 +19,41 @@
     },
     {
       "key": {
+        "uuid": "272578bf_197cad18",
+        "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1136369
+      },
+      "writtenOn": "2019-04-02T17:45:58Z",
+      "side": 1,
+      "message": "See my comments in safe_exit to make sure the behavior is not changed as worried in the previous patchset.",
+      "parentUuid": "628026c4_4fba37cd",
+      "revId": "93e9ad7359d10e1bf6a63a342a560e9dc08a15d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26e5a682_a055b2da",
+        "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1136369
+      },
+      "writtenOn": "2019-04-02T17:45:58Z",
+      "side": 1,
+      "message": "if (hCodec) AudioAPI.Uninit(hCodec)",
+      "revId": "93e9ad7359d10e1bf6a63a342a560e9dc08a15d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48db2478_be68fdb0",
         "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
         "patchSetId": 5
