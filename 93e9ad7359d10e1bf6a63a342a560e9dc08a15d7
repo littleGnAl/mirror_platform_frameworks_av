@@ -72,6 +72,24 @@
     },
     {
       "key": {
+        "uuid": "73322469_250077c8",
+        "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1136369
+      },
+      "writtenOn": "2019-04-02T21:55:32Z",
+      "side": 1,
+      "message": "As you point out, it is safe to call AudioAPI.Uninit(NULL). So I guess this \"if (hCodec)\" is indeed not needed.",
+      "parentUuid": "49d85b57_7fa811c2",
+      "revId": "93e9ad7359d10e1bf6a63a342a560e9dc08a15d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48db2478_be68fdb0",
         "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
         "patchSetId": 5
@@ -101,6 +119,24 @@
       "side": 1,
       "message": "\u003e if (handle)\n\nSimilarly, technically this is a behavior change if the code goes via line 114 or line 120.  I can see a good argument that this is what we\u0027d want (it seems like the documentation on dlclose() is unclear on whether or not it handles NULL (contrasted with something like free() which explicitly allows NULL, by definition)).  But again we are modifying behavior outside of the two leak cases we\u0027re claiming to only change.",
       "parentUuid": "48db2478_be68fdb0",
+      "revId": "93e9ad7359d10e1bf6a63a342a560e9dc08a15d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3229e0dd_ee6561c1",
+        "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1136369
+      },
+      "writtenOn": "2019-04-02T21:55:32Z",
+      "side": 1,
+      "message": "dlclose is a standard posix function, we know it is safe to *not* call it with NULL. (dlclose(null) behaviour is not even properly documented).",
+      "parentUuid": "745f2276_91c03b6d",
       "revId": "93e9ad7359d10e1bf6a63a342a560e9dc08a15d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
