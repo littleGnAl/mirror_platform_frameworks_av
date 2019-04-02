@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "3ba2c738_11834deb",
+        "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2019-04-02T22:10:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "272578bf_197cad18",
+      "revId": "93e9ad7359d10e1bf6a63a342a560e9dc08a15d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "26e5a682_a055b2da",
         "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
         "patchSetId": 5
@@ -87,6 +105,24 @@
       "revId": "93e9ad7359d10e1bf6a63a342a560e9dc08a15d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "527a9425_ea6e1790",
+        "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2019-04-02T22:10:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "73322469_250077c8",
+      "revId": "93e9ad7359d10e1bf6a63a342a560e9dc08a15d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -143,6 +179,24 @@
     },
     {
       "key": {
+        "uuid": "08c27d9f_1dd0e0a9",
+        "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2019-04-02T22:10:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3229e0dd_ee6561c1",
+      "revId": "93e9ad7359d10e1bf6a63a342a560e9dc08a15d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "80613b70_a7eeb565",
         "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
         "patchSetId": 5
@@ -163,6 +217,30 @@
       "revId": "93e9ad7359d10e1bf6a63a342a560e9dc08a15d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1344077d_eee446d9",
+        "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2019-04-02T22:10:46Z",
+      "side": 1,
+      "message": "I didn\u0027t change the balance of these, but did confirm my NULL check was within the ifdef LINUX.",
+      "parentUuid": "80613b70_a7eeb565",
+      "range": {
+        "startLine": 265,
+        "startChar": 1,
+        "endLine": 265,
+        "endChar": 6
+      },
+      "revId": "93e9ad7359d10e1bf6a63a342a560e9dc08a15d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
