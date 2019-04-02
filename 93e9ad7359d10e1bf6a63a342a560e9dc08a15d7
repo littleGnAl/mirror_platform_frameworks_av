@@ -54,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "49d85b57_7fa811c2",
+        "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2019-04-02T20:02:29Z",
+      "side": 1,
+      "message": "\u003e if (hCodec) AudioAPI.Uninit(hCodec)\n\n\nThis is a behavior-changing modification.  If we use the \u0027goto\u0027 on line 114 or line 120, \u0027hCodec\u0027 is NULL.  I don\u0027t know this code well enough to know if that\u0027s desirable, but it\u0027s definitely a change beyond just fixing memory leaks.",
+      "parentUuid": "26e5a682_a055b2da",
+      "revId": "93e9ad7359d10e1bf6a63a342a560e9dc08a15d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48db2478_be68fdb0",
         "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
         "patchSetId": 5
@@ -65,6 +83,24 @@
       "writtenOn": "2019-04-02T17:41:49Z",
       "side": 1,
       "message": "if (handle)",
+      "revId": "93e9ad7359d10e1bf6a63a342a560e9dc08a15d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "745f2276_91c03b6d",
+        "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2019-04-02T20:02:29Z",
+      "side": 1,
+      "message": "\u003e if (handle)\n\nSimilarly, technically this is a behavior change if the code goes via line 114 or line 120.  I can see a good argument that this is what we\u0027d want (it seems like the documentation on dlclose() is unclear on whether or not it handles NULL (contrasted with something like free() which explicitly allows NULL, by definition)).  But again we are modifying behavior outside of the two leak cases we\u0027re claiming to only change.",
+      "parentUuid": "48db2478_be68fdb0",
       "revId": "93e9ad7359d10e1bf6a63a342a560e9dc08a15d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
