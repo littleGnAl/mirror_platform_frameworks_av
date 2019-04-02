@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "628026c4_4fba37cd",
+        "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1136369
+      },
+      "writtenOn": "2019-04-02T17:41:49Z",
+      "side": 1,
+      "message": "I think you should use \"goto safe_exit\" instead of early return.",
+      "revId": "93e9ad7359d10e1bf6a63a342a560e9dc08a15d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48db2478_be68fdb0",
+        "filename": "media/libstagefright/codecs/amrwbenc/SampleCode/AMRWB_E_SAMPLE.c",
+        "patchSetId": 5
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1136369
+      },
+      "writtenOn": "2019-04-02T17:41:49Z",
+      "side": 1,
+      "message": "if (handle)",
+      "revId": "93e9ad7359d10e1bf6a63a342a560e9dc08a15d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
