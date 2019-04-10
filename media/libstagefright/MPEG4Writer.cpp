@@ -73,6 +73,7 @@ static const int64_t kInitialDelayTimeUs     = 700000LL;
 static const int64_t kMaxMetadataSize = 0x4000000LL;   // 64MB max per-frame metadata size
 static const int64_t kMaxCttsOffsetTimeUs = 30 * 60 * 1000000LL;  // 30 minutes
 static const size_t kESDSScratchBufferSize = 10;  // kMaxAtomSize in Mpeg4Extractor 64MB
+static const nsecs_t kWaitDuration = 1000000000LL; //1sec   ~30frames delay 
 
 static const char kMetaKey_Version[]    = "com.android.version";
 static const char kMetaKey_Manufacturer[]      = "com.android.manufacturer";
@@ -452,6 +453,10 @@ private:
 
     Track(const Track &);
     Track &operator=(const Track &);
+
+    bool mIsStopping;
+    Mutex mTrackCompletionLock;
+    Condition mTrackCompletionSignal;
 };
 
 MPEG4Writer::MPEG4Writer(int fd) {
@@ -1855,6 +1860,8 @@ MPEG4Writer::Track::Track(
             mIsPrimary = false;
         }
     }
+
+    mIsStopping = false;
 }
 
 // Clear all the internal states except the CSD data.
@@ -2524,6 +2531,17 @@ status_t MPEG4Writer::Track::stop(bool stopSource) {
 
     if (mDone) {
         return OK;
+    }
+
+    if (!mIsAudio && mOwner->getLastAudioTimeStamp() &&
+        !mOwner->exceedsFileDurationLimit() &&
+        !mOwner->exceedsFileSizeLimit() &&
+        !mIsMalformed) {
+        Mutex::Autolock lock(mTrackCompletionLock);
+        mIsStopping = true;
+        if (mTrackCompletionSignal.waitRelative(mTrackCompletionLock, kWaitDuration)) {
+            ALOGW("Timed-out waiting for video track to reach final audio timestamp !");
+        }
     }
 
     if (stopSource) {
@@ -3386,6 +3404,14 @@ status_t MPEG4Writer::Track::threadEntry() {
             }
         }
 
+        if (mIsAudio) {
+            mOwner->setLastAudioTimeStamp(lastTimestampUs);
+        } else if (mIsStopping && timestampUs >= mOwner->getLastAudioTimeStamp()) {
+            ALOGI("Video time (%lld) reached last audio time (%lld)", (long long)timestampUs, (long long)mOwner->getLastAudioTimeStamp());
+            Mutex::Autolock lock(mTrackCompletionLock);
+            mTrackCompletionSignal.signal();
+            break;
+        }
     }
 
     if (isTrackMalFormed()) {
