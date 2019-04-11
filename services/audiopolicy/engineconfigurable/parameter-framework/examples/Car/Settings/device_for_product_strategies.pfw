@@ -171,6 +171,17 @@ supDomain: DeviceForProductStrategies
 				/Policy/policy/product_strategies/radio/device_address = BUS09_OEM2
 
 		domain: SelectedDevice
+			conf: Speaker
+				AvailableOutputDevices Includes Speaker
+				ANY
+				# Allows using speaker if ForceUseForMedia requested it
+				# and as a fallback if the dedicated bus is not available
+					ForceUseForMedia Is ForceSpeaker
+					AvailableOutputDevicesAddresses Excludes BUS09_OEM2
+
+				component: /Policy/policy/product_strategies/radio/selected_output_devices/mask
+					speaker = 1
+					bus = 0
 			conf: Bus
 				AvailableOutputDevices Includes Bus
 				AvailableOutputDevicesAddresses Includes BUS09_OEM2
@@ -178,12 +189,6 @@ supDomain: DeviceForProductStrategies
 				component: /Policy/policy/product_strategies/radio/selected_output_devices/mask
 					speaker = 0
 					bus = 1
-
-			conf: Speaker
-				AvailableOutputDevices Includes Speaker
-				component: /Policy/policy/product_strategies/radio/selected_output_devices/mask
-					speaker = 1
-					bus = 0
 
 			conf: Default
 				component: /Policy/policy/product_strategies/radio/selected_output_devices/mask
