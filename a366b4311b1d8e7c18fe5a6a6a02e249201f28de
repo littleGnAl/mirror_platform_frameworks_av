@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3a6f933a_20ff8285",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 512,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2019-04-19T17:12:21Z",
+      "side": 1,
+      "message": "This code doesn\u0027t look right, the slice-height from decoder usually should not be larger than the frame itself, otherwise we might access memory out of bound somewhere. This looks like something wrong from the decoder.",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 512,
+        "endChar": 0
+      },
+      "revId": "a366b4311b1d8e7c18fe5a6a6a02e249201f28de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
