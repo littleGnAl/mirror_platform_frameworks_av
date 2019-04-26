@@ -286,6 +286,8 @@ void DrmHal::closeOpenSessions() {
 
 DrmHal::~DrmHal() {
     DrmSessionManager::Instance()->removeDrm(mDrmSessionClient);
+    mFactories.clear();
+    IPCThreadState::self()->flushCommands();
 }
 
 void DrmHal::cleanup() {

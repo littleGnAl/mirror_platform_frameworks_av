@@ -179,7 +179,7 @@ private:
     mutable Mutex mEventLock;
     mutable Mutex mNotifyLock;
 
-    const Vector<sp<IDrmFactory>> mFactories;
+    Vector<sp<IDrmFactory>> mFactories;
     sp<IDrmPlugin> mPlugin;
     sp<drm::V1_1::IDrmPlugin> mPluginV1_1;
     String8 mAppPackageName;
