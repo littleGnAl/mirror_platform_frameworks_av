@@ -554,12 +554,14 @@ status_t StagefrightRecorder::setParamVideoEncodingBitRate(int32_t bitRate) {
     mVideoBitRate = bitRate;
 
     // A new bitrate(TMMBR) should be applied on runtime as well if OutputFormat is RTP_AVP
-    if (mOutputFormat == OUTPUT_FORMAT_RTP_AVP &&  mStarted && mPauseStartTimeUs == 0) {
+    if (mOutputFormat == OUTPUT_FORMAT_RTP_AVP) {
         /* Regular I frames overloads on the network so we should consider about it.
          * Discounted encoding bitrate will be margins for the overloads.
          * But applied bitrate reply(TMMBN) must be sent as same as TMMBR */
         const float coefficient = 0.8f;
         mVideoBitRate = (bitRate * coefficient) / 1000 * 1000;
+    }
+    if (mOutputFormat == OUTPUT_FORMAT_RTP_AVP &&  mStarted && mPauseStartTimeUs == 0) {
         mVideoEncoderSource->setEncodingBitrate(mVideoBitRate);
         ARTPWriter* rtpWriter  = static_cast<ARTPWriter*>(mWriter.get());
         rtpWriter->setTMMBNInfo(mOpponentID, bitRate);
