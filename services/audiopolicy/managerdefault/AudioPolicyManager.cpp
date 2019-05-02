@@ -888,8 +888,22 @@ audio_io_handle_t AudioPolicyManager::getOutput(audio_stream_type_t stream)
     // getOutput() solely on audio_stream_type such as AudioSystem::getOutputFrameCount()
     // and AudioSystem::getOutputSamplingRate().
 
-    SortedVector<audio_io_handle_t> outputs = getOutputsForDevices(devices, mOutputs);
-    const audio_io_handle_t output = selectOutput(outputs);
+    // Prefer MSD device if available.
+    const DeviceVector msdDevices = getMsdAudioOutDevices();
+    SortedVector<audio_io_handle_t> outputs;
+    audio_io_handle_t output = AUDIO_IO_HANDLE_NONE;
+    if (!msdDevices.isEmpty()) {
+        outputs = getOutputsForDevices(msdDevices, mOutputs);
+        if (outputs.size() > 0) {
+            ALOGV("%s() Using MSD device %s instead of device %s",
+                    __func__, msdDevices.toString().c_str(), devices.toString().c_str());
+            devices = msdDevices;
+        }
+    }
+    if (outputs.size() == 0) {
+        outputs = getOutputsForDevices(devices, mOutputs);
+    }
+    output = selectOutput(outputs, AUDIO_OUTPUT_FLAG_NONE, AUDIO_FORMAT_INVALID);
 
     ALOGV("getOutput() stream %d selected devices %s, output %d", stream,
           devices.toString().c_str(), output);
