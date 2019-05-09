@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c0e206eb_38b9905b",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2019-05-09T17:13:18Z",
+      "side": 1,
+      "message": "can you add case OMX_COLOR_Format32bitBGRA8888 and use NV12ToARGB? \nbitmap factory path might use OMX_COLOR_Format32bitBGRA8888.",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 351,
+        "endChar": 0
+      },
+      "revId": "67af1037d35accfc673534d648f7333eb79927aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
