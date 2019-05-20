@@ -63,6 +63,8 @@ struct ARTPSource : public RefBase {
     int64_t mFirstSysTime;
     int32_t mClockRate;
 
+    int32_t mFirstSsrc;
+
 private:
 
     uint32_t mID;
