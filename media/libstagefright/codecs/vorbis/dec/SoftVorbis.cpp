@@ -572,16 +572,18 @@ void SoftVorbis::onQueueFilled(OMX_U32 /* portIndex */) {
 }
 
 void SoftVorbis::onPortFlushCompleted(OMX_U32 portIndex) {
-    if (portIndex == 0 && mState != NULL) {
-        // Make sure that the next buffer output does not still
-        // depend on fragments from the last one decoded.
-
+    if (portIndex == 0) {
         mInputBufferCount = 0;
-        mNumFramesOutput = 0;
-        mSawInputEos = false;
-        mSignalledOutputEos = false;
-        mNumFramesLeftOnPage = -1;
-        vorbis_dsp_restart(mState);
+        if (mState != NULL) {
+            // Make sure that the next buffer output does not still
+            // depend on fragments from the last one decoded.
+
+            mNumFramesOutput = 0;
+            mSawInputEos = false;
+            mSignalledOutputEos = false;
+            mNumFramesLeftOnPage = -1;
+            vorbis_dsp_restart(mState);
+        }
     }
 }
 
