@@ -71,6 +71,7 @@ typedef enum acamera_metadata_section {
     ACAMERA_DEPTH,
     ACAMERA_LOGICAL_MULTI_CAMERA,
     ACAMERA_DISTORTION_CORRECTION,
+    ACAMERA_OEM,
     ACAMERA_SECTION_COUNT,
 
     ACAMERA_VENDOR = 0x8000
@@ -112,6 +113,7 @@ typedef enum acamera_metadata_section_start {
     ACAMERA_DISTORTION_CORRECTION_START
                                    = ACAMERA_DISTORTION_CORRECTION
                                                                 << 16,
+    ACAMERA_OEM_START              = ACAMERA_OEM               << 16,
     ACAMERA_VENDOR_START           = ACAMERA_VENDOR            << 16
 } acamera_metadata_section_start_t;
 
@@ -5349,6 +5351,22 @@ typedef enum acamera_metadata_tag {
     ACAMERA_DISTORTION_CORRECTION_AVAILABLE_MODES =             // byte[n]
             ACAMERA_DISTORTION_CORRECTION_START + 1,
     ACAMERA_DISTORTION_CORRECTION_END,
+
+    /**
+     * <p>String for camera module vendor information.</p>
+     *
+     * <p>Type: byte</p>
+     *
+     * <p>This tag may appear in:
+     * <ul>
+     *   <li>ACameraMetadata from ACameraManager_getCameraCharacteristics</li>
+     * </ul></p>
+     *
+     * <p>this value should be return name of module vendor not a specific number.</p>
+     */
+    ACAMERA_OEM_CAMERA_MODULE =                                 // byte
+            ACAMERA_OEM_START,
+    ACAMERA_OEM_END,
 
 } acamera_metadata_tag_t;
 
