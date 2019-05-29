@@ -1189,7 +1189,8 @@ audio_io_handle_t AudioPolicyManager::getOutputForDevices(
                 if ((config->sample_rate == desc->mSamplingRate) &&
                     (config->format == desc->mFormat) &&
                     (channelMask == desc->mChannelMask) &&
-                    (session == desc->mDirectClientSession)) {
+                    ((session == desc->mDirectClientSession) ||
+                    (*flags & AUDIO_OUTPUT_FLAG_DIRECT))) {
                     desc->mDirectOpenCount++;
                     ALOGI("%s reusing direct output %d for session %d", __func__, 
                         mOutputs.keyAt(i), session);
