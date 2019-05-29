@@ -5819,7 +5819,6 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::OffloadThread::prepareTr
                     mLeftVolFloat = mRightVolFloat = -1.0;
                 }
             }
-
             if (last) {
                 sp<Track> previousTrack = mPreviousTrack.promote();
                 if (previousTrack != 0) {
@@ -5936,7 +5935,9 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::OffloadThread::prepareTr
             }
         }
         // compute volume for this track
-        processVolume_l(track, last);
+        if (track->isReady()) {  // check ready to prevent premature start.
+            processVolume_l(track, last);
+        }
     }
 
     // make sure the pause/flush/resume sequence is executed in the right order.
