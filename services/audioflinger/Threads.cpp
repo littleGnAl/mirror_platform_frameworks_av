@@ -5819,6 +5819,8 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::OffloadThread::prepareTr
                     mLeftVolFloat = mRightVolFloat = -1.0;
                 }
             }
+            // compute volume for this track
+            processVolume_l(track, last);
 
             if (last) {
                 sp<Track> previousTrack = mPreviousTrack.promote();
