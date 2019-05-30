@@ -27,6 +27,8 @@
 #include <utils/Errors.h>
 #include <utils/misc.h>
 
+#include <dlfcn.h>
+
 #include "MediaPlayerFactory.h"
 
 #include "TestPlayerStub.h"
@@ -238,6 +240,88 @@ class TestPlayerFactory : public MediaPlayerFactory::IFactory {
     }
 };
 
+#define PLAYER_PLUGIN_CFG_FILE "/vendor/etc/VendorPlayer.cfg"
+#define MAX_LINE_LEN 256
+#define DELIMITERS " \t\r\n"
+
+void MediaPlayerFactory::registerVendorFactories() {
+    FILE *fp = NULL;
+    char cstr[MAX_LINE_LEN];
+
+    do {
+        if ((fp = fopen(PLAYER_PLUGIN_CFG_FILE, "r")) == NULL) {
+            ALOGE("Parse failed. Can't open %s", PLAYER_PLUGIN_CFG_FILE);
+            break;
+        }
+
+        while (!feof(fp)) {
+            if (fgets(cstr, MAX_LINE_LEN, fp) == NULL) {
+                break;
+            }
+
+            if (strstr(cstr, "#")) {
+                continue;
+            }
+
+            char* pch;
+            char *last;
+            pch = strtok_r(cstr, DELIMITERS, &last);
+
+            while (pch != NULL) {
+                registerVendorFactory(pch);
+
+                pch = strtok_r(NULL, DELIMITERS, &last);
+            }
+        }
+    } while (0);
+
+    if (fp) {
+        fclose(fp);
+    }
+}
+
+void MediaPlayerFactory::registerVendorFactory(const char *libname) {
+    do {
+        void* libHandle = dlopen(libname, RTLD_NOW);
+
+        if (libHandle == NULL) {
+            ALOGE("unable to dlopen %s", libname);
+            break;
+        }
+
+        typedef IFactory *(*CreateVendorPlayerFactory)();
+        CreateVendorPlayerFactory createPlayerFactoryFunc =
+            (CreateVendorPlayerFactory)dlsym(
+                    libHandle, "createVendorPlayerFactory");
+        if (createPlayerFactoryFunc == NULL) {
+            createPlayerFactoryFunc = (CreateVendorPlayerFactory)dlsym(
+                    libHandle, "_ZN7android25createVendorPlayerFactoryEv");
+        }
+
+        if (createPlayerFactoryFunc == NULL) {
+            ALOGE("createVendorPlayerFactory is not found in %s", libname);
+            break;
+        }
+
+        typedef player_type (*GetVendorPlayerType)();
+        GetVendorPlayerType getPlayerTypeFunc = (GetVendorPlayerType)dlsym(
+                libHandle, "getVendorPlayerType");
+        if (getPlayerTypeFunc == NULL) {
+            getPlayerTypeFunc = (GetVendorPlayerType)dlsym(
+                    libHandle, "_ZN7android19getVendorPlayerTypeEv");
+        }
+
+        if (getPlayerTypeFunc == NULL) {
+            ALOGE("getVendorPlayerType is not found in %s", libname);
+            break;
+        }
+
+        registerFactory_l((*createPlayerFactoryFunc)(), (*getPlayerTypeFunc)());
+    } while (0);
+
+    return;
+}
+
 void MediaPlayerFactory::registerBuiltinFactories() {
     Mutex::Autolock lock_(&sLock);
 
@@ -250,6 +334,7 @@ void MediaPlayerFactory::registerBuiltinFactories() {
     factory = new TestPlayerFactory();
     if (registerFactory_l(factory, TEST_PLAYER) != OK)
         delete factory;
+    registerVendorFactories();
 
     sInitComplete = true;
 }
