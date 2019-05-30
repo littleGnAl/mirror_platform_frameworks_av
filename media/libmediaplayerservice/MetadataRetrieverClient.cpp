@@ -23,6 +23,7 @@
 #include <sys/stat.h>
 #include <dirent.h>
 #include <unistd.h>
+#include <dlfcn.h>
 
 #include <string.h>
 #include <cutils/atomic.h>
@@ -81,6 +82,108 @@ void MetadataRetrieverClient::disconnect()
     IPCThreadState::self()->flushCommands();
 }
 
+#define PLAYER_PLUGIN_CFG_FILE "/vendor/etc/VendorPlayer.cfg"
+#define MAX_LINE_LEN 256
+#define DELIMITERS " \t\r\n"
+
+static sp<MediaMetadataRetrieverBase> tryVendorMetadataRetriever(
+        player_type playerType, const char *libname) {
+    sp<MediaMetadataRetrieverBase> p = NULL;
+
+    do {
+        void* libHandle = dlopen(libname, RTLD_NOW);
+
+        if (libHandle == NULL) {
+            ALOGE("unable to dlopen %s", libname);
+            break;
+        }
+
+        typedef player_type (*GetVendorPlayerType)();
+        GetVendorPlayerType getPlayerTypeFunc =
+            (GetVendorPlayerType)dlsym(libHandle, "getVendorPlayerType");
+        if (getPlayerTypeFunc == NULL) {
+            getPlayerTypeFunc = (GetVendorPlayerType)dlsym(
+                    libHandle, "_ZN7android19getVendorPlayerTypeEv");
+        }
+
+        if (getPlayerTypeFunc == NULL) {
+            ALOGE("getVendorPlayerType is not found in %s", libname);
+            break;
+        }
+
+        if (playerType != getPlayerTypeFunc()) {
+            break;
+        }
+
+        typedef MediaMetadataRetrieverBase *(*CreateVendorMetadataRetriever)();
+        CreateVendorMetadataRetriever createMetadataRetrieverFunc =
+            (CreateVendorMetadataRetriever)dlsym(
+                    libHandle, "createVendorMetadataRetriever");
+        if (createMetadataRetrieverFunc == NULL) {
+            createMetadataRetrieverFunc = (CreateVendorMetadataRetriever)dlsym(
+                    libHandle, "_ZN7android29createVendorMetadataRetrieverEv");
+        }
+
+        if (createMetadataRetrieverFunc == NULL) {
+            ALOGE("createVendorMetadataRetriever is not found in %s", libname);
+            break;
+        }
+
+        p = (*createMetadataRetrieverFunc)();
+    } while (0);
+
+    return p;
+}
+
+static sp<MediaMetadataRetrieverBase> tryVendorMetadataRetrievers(
+        player_type playerType) {
+    sp<MediaMetadataRetrieverBase> p = NULL;
+    FILE *fp = NULL;
+    char cstr[MAX_LINE_LEN];
+
+    do {
+        if ((fp = fopen(PLAYER_PLUGIN_CFG_FILE, "r")) == NULL) {
+            ALOGE("Parse failed. Can't open %s", PLAYER_PLUGIN_CFG_FILE);
+            break;
+        }
+
+        while (!feof(fp)) {
+            if (fgets(cstr, MAX_LINE_LEN, fp) == NULL) {
+                break;
+            }
+
+            if (strstr(cstr, "#")) {
+                continue;
+            }
+
+            char* pch;
+            char *last;
+            pch = strtok_r(cstr, DELIMITERS, &last);
+            while (pch != NULL) {
+                p = tryVendorMetadataRetriever(playerType, pch);
+
+                // MetadataRetriever found
+                if (p != NULL) {
+                    break;
+                }
+
+                pch = strtok_r(NULL, DELIMITERS, &last);
+            }
+
+            // MetadataRetriever found
+            if (p != NULL) {
+                break;
+            }
+        }
+    } while (0);
+
+    if (fp) {
+        fclose(fp);
+    }
+
+    return p;
+}
+
 static sp<MediaMetadataRetrieverBase> createRetriever(player_type playerType)
 {
     sp<MediaMetadataRetrieverBase> p;
@@ -92,9 +195,12 @@ static sp<MediaMetadataRetrieverBase> createRetriever(player_type playerType)
             break;
         }
         default:
+            p = tryVendorMetadataRetrievers(playerType);
+            if (p == NULL) {
             // TODO:
             // support for TEST_PLAYER
             ALOGE("player type %d is not supported",  playerType);
+            }
             break;
     }
     if (p == NULL) {
