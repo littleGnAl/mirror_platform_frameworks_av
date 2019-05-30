@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8040c23_50d34835",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2019-05-30T23:52:54Z",
+      "side": 1,
+      "message": "Vorbis, here and below.",
+      "range": {
+        "startLine": 7,
+        "startChar": 40,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "cd8417d45a1650e3fce1a3462c1c12d64cf765bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "834c10b4_7e510095",
+        "filename": "media/libstagefright/codecs/vorbis/dec/SoftVorbis.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 584,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2019-05-30T23:52:54Z",
+      "side": 1,
+      "message": "please put these after L576",
+      "range": {
+        "startLine": 581,
+        "startChar": 12,
+        "endLine": 584,
+        "endChar": 38
+      },
+      "revId": "cd8417d45a1650e3fce1a3462c1c12d64cf765bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "facfd220_189baf0b",
+        "filename": "media/libstagefright/codecs/vorbis/dec/SoftVorbis.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2019-05-30T23:52:54Z",
+      "side": 1,
+      "message": "Please put mNumFramesLeftOnPage \u003d -1 here as well.",
+      "revId": "cd8417d45a1650e3fce1a3462c1c12d64cf765bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
