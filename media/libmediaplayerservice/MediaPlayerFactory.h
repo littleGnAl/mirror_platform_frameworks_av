@@ -77,6 +77,8 @@ class MediaPlayerFactory {
 
     static status_t registerFactory_l(IFactory* factory,
                                       player_type type);
+    static void registerVendorFactories();
+    static void registerVendorFactory(const char *libname);
 
     static Mutex       sLock;
     static tFactoryMap sFactoryMap;
