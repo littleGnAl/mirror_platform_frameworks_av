@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bdcda39b_6319c09d",
+        "filename": "media/audioserver/Android.mk",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1074628
+      },
+      "writtenOn": "2019-06-10T20:12:38Z",
+      "side": 0,
+      "message": "This was causing me some issue with a build system refactor, then I noticed that this was already removed in master, so I just cherry-picked this patch out.",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 4
+      },
+      "revId": "1224227e19b418b42056cd9eb4e03ce9d68fce35",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
