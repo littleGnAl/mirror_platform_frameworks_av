@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7efb8165_ace12700",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1241863
+      },
+      "writtenOn": "2019-06-13T15:30:58Z",
+      "side": 1,
+      "message": "Shouldn\u0027t this line be deleted? See comment 27 in https://issuetracker.google.com/122630389 for more details",
+      "range": {
+        "startLine": 778,
+        "startChar": 0,
+        "endLine": 778,
+        "endChar": 84
+      },
+      "revId": "665b7a07298e7742630374681e9899b76510fca9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
