@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "445a4970_6929d3ce",
+        "filename": "services/audioflinger/FastThread.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2019-06-17T15:56:25Z",
+      "side": 1,
+      "message": "We could handle longer underruns by using uint64_t.\nBut monotonicNs is only used for logging, and 3 seconds is a very long underrun,\nso extended range is not critical.",
+      "range": {
+        "startLine": 306,
+        "startChar": 29,
+        "endLine": 306,
+        "endChar": 40
+      },
+      "revId": "f5d54302b046fced65aebfa9d4c3856231a299f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
