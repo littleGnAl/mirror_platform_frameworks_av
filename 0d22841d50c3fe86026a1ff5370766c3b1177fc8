@@ -22,6 +22,30 @@
       "revId": "0d22841d50c3fe86026a1ff5370766c3b1177fc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24975a82_360e5d6c",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1136369
+      },
+      "writtenOn": "2019-06-18T21:52:01Z",
+      "side": 1,
+      "message": "The only case where a track is allowed to reuse (aka steal) the output of an existing direct track is for the gapless playback use-case.\n\nIn all other use case, starting a track should not reuse any other track output. Aka a first come first serve policy is implemented for all except gapless playback.\n\nGapless playback is detected by checking if both track have the same session id. This change is making all track behave like gapless playback instead of first come first serve.\nWith this change if two app play with the same audio characteristics and are eligible as direct, the last one that starts will stop the one that first started... not good.\n\nIf you are hitting a bug during gapless playback, why is your session id different ? Your app needs to set the same session id on each track for it to be gapless.",
+      "parentUuid": "fd69f8e0_7f378048",
+      "range": {
+        "startLine": 981,
+        "startChar": 30,
+        "endLine": 981,
+        "endChar": 54
+      },
+      "revId": "0d22841d50c3fe86026a1ff5370766c3b1177fc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
