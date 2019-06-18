@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fd69f8e0_7f378048",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 981,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2019-06-18T21:26:30Z",
+      "side": 1,
+      "message": "this defeats the purpose of checking the session ID because this condition is always true here.",
+      "range": {
+        "startLine": 981,
+        "startChar": 30,
+        "endLine": 981,
+        "endChar": 54
+      },
+      "revId": "0d22841d50c3fe86026a1ff5370766c3b1177fc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
