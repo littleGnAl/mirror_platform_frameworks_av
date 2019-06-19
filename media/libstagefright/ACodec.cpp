@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 #define LOG_TAG "ACodec"
 
 #ifdef __LP64__
@@ -23,6 +23,7 @@
 
 #include <inttypes.h>
 #include <utils/Trace.h>
+#include <cutils/properties.h>
 
 #include <gui/Surface.h>
 
@@ -61,6 +62,12 @@
 #include <media/stagefright/omx/OMXUtils.h>
 
 namespace android {
+
+static bool sVerboseLog = false;
+#ifdef ALOGV
+#undef ALOGV
+#endif
+#define ALOGV(...) ALOGV_IF(sVerboseLog, __VA_ARGS__)
 
 using binder::Status;
 
@@ -578,6 +585,7 @@ ACodec::ACodec()
       mDescribeHDRStaticInfoIndex((OMX_INDEXTYPE)0),
       mStateGeneration(0),
       mVendorExtensionsStatus(kExtensionsUnchecked) {
+    sVerboseLog = (bool)property_get_int32("media.acodec.verbose.log", 0);
     memset(&mLastHDRStaticInfo, 0, sizeof(mLastHDRStaticInfo));
 
     mUninitializedState = new UninitializedState(this);
@@ -6298,6 +6306,12 @@ void ACodec::BaseState::onOutputBufferDrained(const sp<AMessage> &msg) {
             // move read fence into write fence to avoid clobbering
             info->mIsReadFence = false;
             ATRACE_NAME("frame-drop");
+            if (sVerboseLog)
+            {
+                int64_t timeUs = 0;
+                info->mData->meta()->findInt64("timeUs", &timeUs);
+                ALOGD("[%s] frame-drop PTS = %lld", mCodec->mComponentName.c_str(), timeUs);
+            }
         }
         info->mStatus = BufferInfo::OWNED_BY_US;
     }
