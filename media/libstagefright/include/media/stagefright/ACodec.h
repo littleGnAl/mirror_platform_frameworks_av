@@ -301,6 +301,7 @@ private:
     std::optional<uint32_t> mLatency;
 
     bool mTunneled;
+    native_handle_t* mSidebandHandle;
 
     OMX_INDEXTYPE mDescribeColorAspectsIndex;
     OMX_INDEXTYPE mDescribeHDRStaticInfoIndex;

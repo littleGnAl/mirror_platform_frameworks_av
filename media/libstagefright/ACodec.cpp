@@ -580,6 +580,7 @@ ACodec::ACodec()
       mCaptureFps(-1.0),
       mCreateInputBuffersSuspended(false),
       mTunneled(false),
+      mSidebandHandle(nullptr),
       mDescribeColorAspectsIndex((OMX_INDEXTYPE)0),
       mDescribeHDRStaticInfoIndex((OMX_INDEXTYPE)0),
       mDescribeHDR10PlusInfoIndex((OMX_INDEXTYPE)0),
@@ -612,6 +613,10 @@ ACodec::ACodec()
 }
 
 ACodec::~ACodec() {
+    if (mSidebandHandle != nullptr) {
+        native_handle_close(mSidebandHandle);
+        native_handle_delete(mSidebandHandle);
+    }
 }
 
 void ACodec::initiateSetup(const sp<AMessage> &msg) {
@@ -3250,19 +3255,23 @@ status_t ACodec::setupRawAudioFormat(
 
 status_t ACodec::configureTunneledVideoPlayback(
         int32_t audioHwSync, const sp<ANativeWindow> &nativeWindow) {
-    native_handle_t* sidebandHandle;
+    if (mSidebandHandle != nullptr) {
+        native_handle_close(mSidebandHandle);
+        native_handle_delete(mSidebandHandle);
+        mSidebandHandle = nullptr;
+    }
 
     status_t err = mOMXNode->configureVideoTunnelMode(
-            kPortIndexOutput, OMX_TRUE, audioHwSync, &sidebandHandle);
+            kPortIndexOutput, OMX_TRUE, audioHwSync, &mSidebandHandle);
     if (err != OK) {
         ALOGE("configureVideoTunnelMode failed! (err %d).", err);
         return err;
     }
 
-    err = native_window_set_sideband_stream(nativeWindow.get(), sidebandHandle);
+    err = native_window_set_sideband_stream(nativeWindow.get(), mSidebandHandle);
     if (err != OK) {
         ALOGE("native_window_set_sideband_stream(%p) failed! (err %d).",
-                sidebandHandle, err);
+                mSidebandHandle, err);
         return err;
     }
 
@@ -6734,6 +6743,12 @@ void ACodec::UninitializedState::stateEntered() {
             }
         }
         mDeathNotifier.clear();
+    }
+
+    if (mCodec->mSidebandHandle != nullptr) {
+        native_handle_close(mCodec->mSidebandHandle);
+        native_handle_delete(mCodec->mSidebandHandle);
+        mCodec->mSidebandHandle = nullptr;
     }
 
     mCodec->mUsingNativeWindow = false;
