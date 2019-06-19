@@ -570,6 +570,7 @@ ACodec::ACodec()
       mCaptureFps(-1.0),
       mCreateInputBuffersSuspended(false),
       mTunneled(false),
+      mSidebandHandle(NULL),
       mDescribeColorAspectsIndex((OMX_INDEXTYPE)0),
       mDescribeHDRStaticInfoIndex((OMX_INDEXTYPE)0),
       mDescribeHDR10PlusInfoIndex((OMX_INDEXTYPE)0),
@@ -3147,19 +3148,23 @@ status_t ACodec::setupRawAudioFormat(
 
 status_t ACodec::configureTunneledVideoPlayback(
         int32_t audioHwSync, const sp<ANativeWindow> &nativeWindow) {
-    native_handle_t* sidebandHandle;
+    if(mSidebandHandle != NULL)
+    {
+        native_handle_close(mSidebandHandle);
+        native_handle_delete(mSidebandHandle);
+    }
 
     status_t err = mOMXNode->configureVideoTunnelMode(
-            kPortIndexOutput, OMX_TRUE, audioHwSync, &sidebandHandle);
+            kPortIndexOutput, OMX_TRUE, audioHwSync, &mSidebandHandle);
     if (err != OK) {
         ALOGE("configureVideoTunnelMode failed! (err %d).", err);
         return err;
     }
 
-    err = native_window_set_sideband_stream(nativeWindow.get(), sidebandHandle);
+    err = native_window_set_sideband_stream(nativeWindow.get(), mSidebandHandle);
     if (err != OK) {
         ALOGE("native_window_set_sideband_stream(%p) failed! (err %d).",
-                sidebandHandle, err);
+                mSidebandHandle, err);
         return err;
     }
 
@@ -6580,6 +6585,12 @@ void ACodec::UninitializedState::stateEntered() {
             }
         }
         mDeathNotifier.clear();
+    }
+
+    if(mCodec->mSidebandHandle != NULL)
+    {
+        native_handle_close(mCodec->mSidebandHandle);
+        native_handle_delete(mCodec->mSidebandHandle);
     }
 
     mCodec->mUsingNativeWindow = false;
