@@ -16,6 +16,24 @@
       "revId": "5d89838d7cbeb7f37ea057956218a17365d6539c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8031a74c_703eb76d",
+        "filename": "media/libstagefright/SurfaceUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1140781
+      },
+      "writtenOn": "2019-06-24T07:03:57Z",
+      "side": 1,
+      "message": "Please define to uint64_t finaUsage to match below api.\n\nstatic inline int native_window_set_usage(struct ANativeWindow* window, uint64_t usage) {\n    return window-\u003eperform(window, NATIVE_WINDOW_SET_USAGE64, usage);\n}",
+      "parentUuid": "7cba2d4c_f4b37c56",
+      "revId": "5d89838d7cbeb7f37ea057956218a17365d6539c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
