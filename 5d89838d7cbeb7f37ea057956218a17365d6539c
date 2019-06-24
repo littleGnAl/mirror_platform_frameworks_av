@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7cba2d4c_f4b37c56",
+        "filename": "media/libstagefright/SurfaceUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1107294
+      },
+      "writtenOn": "2019-06-24T06:49:28Z",
+      "side": 1,
+      "message": "native_window_set_usage\u0027s second parameter is defined as uint64, if flag GRALLOC_USAGE_PRIVATE_3 (0x80000000U) is included in argument finalUsage, the conversion from int to uint64 will make all upper bytes to 0xFF because the highest bit of finalUsage is 1.",
+      "revId": "5d89838d7cbeb7f37ea057956218a17365d6539c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
