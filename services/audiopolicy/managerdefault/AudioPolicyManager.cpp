@@ -5265,8 +5265,20 @@ uint32_t AudioPolicyManager::setOutputDevice(const sp<AudioOutputDescriptor>& ou
     if ((device == AUDIO_DEVICE_NONE || device == prevDevice) &&
         !force &&
         outputDesc->getPatchHandle() != 0) {
-        ALOGV("setOutputDevice() setting same device 0x%04x or null device", device);
-        return muteWaitMs;
+        //Do not skip routing if the address is different from the earlier AudioPatch's sink Address
+        sp<AudioPatch> patch = mAudioPatches.valueFor(outputDesc->getPatchHandle());
+        if ((device == prevDevice) && (address != NULL) && (strlen(address) != 0)
+                && (patch != 0) && (patch->mPatch.num_sinks != 0)
+                && (patch->mPatch.sinks[0].type == AUDIO_PORT_TYPE_DEVICE)
+                && (patch->mPatch.sinks[0].ext.device.type == device)
+                && (strncmp(patch->mPatch.sinks[0].ext.device.address, address,
+                        AUDIO_DEVICE_MAX_ADDRESS_LEN) != 0)) {
+            ALOGV("setOutputDevice() setting device %04x address %s", device, address);
+        }
+        else {
+            ALOGV("setOutputDevice() setting same device 0x%04x or null device", device);
+            return muteWaitMs;
+        }
     }
 
     ALOGV("setOutputDevice() changing device");
