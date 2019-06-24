@@ -430,11 +430,11 @@ status_t AudioPolicyService::shellCommand(int in, int out, int err, Vector<Strin
     if (in == BAD_TYPE || out == BAD_TYPE || err == BAD_TYPE) {
         return BAD_VALUE;
     }
-    if (args.size() == 3 && args[0] == String16("set-uid-state")) {
+    if (args.size() == 4 && args[0] == String16("set-uid-state")) {
         return handleSetUidState(args, err);
-    } else if (args.size() == 2 && args[0] == String16("reset-uid-state")) {
+    } else if (args.size() == 3 && args[0] == String16("reset-uid-state")) {
         return handleResetUidState(args, err);
-    } else if (args.size() == 2 && args[0] == String16("get-uid-state")) {
+    } else if (args.size() == 3 && args[0] == String16("get-uid-state")) {
         return handleGetUidState(args, out, err);
     } else if (args.size() == 1 && args[0] == String16("help")) {
         printHelp(out);
@@ -459,7 +459,10 @@ status_t AudioPolicyService::handleSetUidState(Vector<String16>& args, int err) 
         ALOGE("Expected active or idle but got: '%s'", String8(args[2]).string());
         return BAD_VALUE;
     }
-    mUidPolicy->addOverrideUid(uid, active);
+    int userId = 0;
+    userId = std::stoi(String8(args[3]).string());
+    int currUid = multiuser_get_uid(userId, multiuser_get_app_id(uid));
+    mUidPolicy->addOverrideUid(currUid, active);
     return NO_ERROR;
 }
 
@@ -471,7 +474,10 @@ status_t AudioPolicyService::handleResetUidState(Vector<String16>& args, int err
         dprintf(err, "Unknown package: '%s'\n", String8(args[1]).string());
         return BAD_VALUE;
     }
-    mUidPolicy->removeOverrideUid(uid);
+    int userId = 0;
+    userId = std::stoi(String8(args[2]).string());
+    int currUid = multiuser_get_uid(userId, multiuser_get_app_id(uid));
+    mUidPolicy->removeOverrideUid(currUid);
     return NO_ERROR;
 }
 
@@ -483,7 +489,10 @@ status_t AudioPolicyService::handleGetUidState(Vector<String16>& args, int out, 
         dprintf(err, "Unknown package: '%s'\n", String8(args[1]).string());
         return BAD_VALUE;
     }
-    if (mUidPolicy->isUidActive(uid)) {
+    int userId = 0;
+    userId = std::stoi(String8(args[2]).string());
+    int currUid = multiuser_get_uid(userId, multiuser_get_app_id(uid));
+    if (mUidPolicy->isUidActive(currUid)) {
         return dprintf(out, "active\n");
     } else {
         return dprintf(out, "idle\n");
@@ -492,9 +501,9 @@ status_t AudioPolicyService::handleGetUidState(Vector<String16>& args, int out, 
 
 status_t AudioPolicyService::printHelp(int out) {
     return dprintf(out, "Audio policy service commands:\n"
-        "  get-uid-state <PACKAGE> gets the uid state\n"
-        "  set-uid-state <PACKAGE> <active|idle> overrides the uid state\n"
-        "  reset-uid-state <PACKAGE> clears the uid state override\n"
+        "  get-uid-state <PACKAGE> userId gets the uid state\n"
+        "  set-uid-state <PACKAGE> <active|idle> userId overrides the uid state\n"
+        "  reset-uid-state <PACKAGE> userId clears the uid state override\n"
         "  help print this message\n");
 }
 
