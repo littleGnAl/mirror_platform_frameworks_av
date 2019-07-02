@@ -33,7 +33,6 @@
 
 #include <android-base/macros.h>
 #include <android-base/parseint.h>
-#include <binder/ActivityManager.h>
 #include <binder/AppOpsManager.h>
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
@@ -2395,14 +2394,13 @@ void CameraService::Client::OpsCallback::opChanged(int32_t op,
 void CameraService::UidPolicy::registerSelf() {
     Mutex::Autolock _l(mUidLock);
 
-    ActivityManager am;
     if (mRegistered) return;
-    am.registerUidObserver(this, ActivityManager::UID_OBSERVER_GONE
+    mAm.registerUidObserver(this, ActivityManager::UID_OBSERVER_GONE
             | ActivityManager::UID_OBSERVER_IDLE
             | ActivityManager::UID_OBSERVER_ACTIVE,
             ActivityManager::PROCESS_STATE_UNKNOWN,
             String16("cameraserver"));
-    status_t res = am.linkToDeath(this);
+    status_t res = mAm.linkToDeath(this);
     if (res == OK) {
         mRegistered = true;
         ALOGV("UidPolicy: Registered with ActivityManager");
@@ -2412,9 +2410,8 @@ void CameraService::UidPolicy::registerSelf() {
 void CameraService::UidPolicy::unregisterSelf() {
     Mutex::Autolock _l(mUidLock);
 
-    ActivityManager am;
-    am.unregisterUidObserver(this);
-    am.unlinkToDeath(this);
+    mAm.unregisterUidObserver(this);
+    mAm.unlinkToDeath(this);
     mRegistered = false;
     mActiveUids.clear();
     ALOGV("UidPolicy: Unregistered with ActivityManager");
