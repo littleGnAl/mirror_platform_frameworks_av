@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dc9b037f_fc678e80",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2405,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-02T23:06:21Z",
+      "side": 0,
+      "message": "this code was already broken since the internal binder inside of ActivityManager may be different between these two lines. I\u0027ll fix it in the next PS.",
+      "range": {
+        "startLine": 2400,
+        "startChar": 0,
+        "endLine": 2405,
+        "endChar": 40
+      },
+      "revId": "4c76131a07107e12df9344366b3ac8a0035e1cb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
