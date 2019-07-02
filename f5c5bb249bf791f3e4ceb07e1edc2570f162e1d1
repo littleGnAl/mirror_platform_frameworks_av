@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e9665cb5_3bfc8bc7",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2400,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-02T23:16:19Z",
+      "side": 1,
+      "message": "This is still broken since this line could technically fail.",
+      "range": {
+        "startLine": 2400,
+        "startChar": 8,
+        "endLine": 2400,
+        "endChar": 27
+      },
+      "revId": "f5c5bb249bf791f3e4ceb07e1edc2570f162e1d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
