@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be89a5d3_07b86c73",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2399,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2019-07-03T23:56:13Z",
+      "side": 1,
+      "message": "Given that we really don\u0027t need an ActivityManager instance around after this one call, since there are no further calls on it in practice, I think it\u0027s unfortunate that we may need to now.",
+      "revId": "6a9fc9ee546ebda6d8dbd4dfd2f1945dab158708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08da3028_2c1953ec",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2414,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2019-07-03T23:56:13Z",
+      "side": 1,
+      "message": "in practice, this code never executes (called only by ~CameraService(), which doesn\u0027t happen unless cameraserver quits at which point it doesn\u0027t matter anyway).",
+      "revId": "6a9fc9ee546ebda6d8dbd4dfd2f1945dab158708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
