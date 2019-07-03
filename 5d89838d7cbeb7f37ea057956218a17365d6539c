@@ -34,6 +34,24 @@
       "revId": "5d89838d7cbeb7f37ea057956218a17365d6539c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f398e2c5_9b097238",
+        "filename": "media/libstagefright/SurfaceUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1107294
+      },
+      "writtenOn": "2019-07-03T03:01:55Z",
+      "side": 1,
+      "message": "If define finalUsage as uint64_t, same occurs to assigning int32_t (usage|comsumerUsage) to uint64_t finalUsage. Have to convert usage and consumerUsage to uint32_t before assigning them to finalUsage like below:\nuint64_t finalUsage \u003d (uint32_t)usage | (uint32_t)consumerUsage;\nThese two methods can both resolve the issue.",
+      "parentUuid": "8031a74c_703eb76d",
+      "revId": "5d89838d7cbeb7f37ea057956218a17365d6539c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
