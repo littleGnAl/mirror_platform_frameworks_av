@@ -91,7 +91,7 @@ using android::UNKNOWN_ERROR;
 
 static const uint32_t kMinBitRate = 100000;         // 0.1Mbps
 static const uint32_t kMaxBitRate = 200 * 1000000;  // 200Mbps
-static const uint32_t kMaxTimeLimitSec = 181;       // 3 minutes
+static const uint32_t kMaxTimeLimitSec = 43200;     // 12 hours
 static const uint32_t kFallbackWidth = 1280;        // 720p
 static const uint32_t kFallbackHeight = 720;
 static const char* kMimeTypeAvc = "video/avc";
@@ -405,6 +405,7 @@ static status_t runEncoder(const sp<MediaCodec>& encoder,
         ALOGV("Calling dequeueOutputBuffer");
         err = encoder->dequeueOutputBuffer(&bufIndex, &offset, &size, &ptsUsec,
                 &flags, kTimeout);
+        
         ALOGV("dequeueOutputBuffer returned %d", err);
         switch (err) {
         case NO_ERROR:
