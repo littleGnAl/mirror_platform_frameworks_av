@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "d73ca768_4029d3b7",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2399,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-04T00:04:03Z",
+      "side": 1,
+      "message": "Before this change, it was also kept around (the binder) until unlinkToDeath. Now we have the potential to delete a lot of unnecessary code that keeps track of unlinkToDeath (many, many places get this wrong anyway and have leaks in some circumstances). The gain elsewhere is much larger than the loss here.",
+      "parentUuid": "be89a5d3_07b86c73",
+      "revId": "6a9fc9ee546ebda6d8dbd4dfd2f1945dab158708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "08da3028_2c1953ec",
         "filename": "services/camera/libcameraservice/CameraService.cpp",
         "patchSetId": 8
@@ -30,6 +48,24 @@
       "writtenOn": "2019-07-03T23:56:13Z",
       "side": 1,
       "message": "in practice, this code never executes (called only by ~CameraService(), which doesn\u0027t happen unless cameraserver quits at which point it doesn\u0027t matter anyway).",
+      "revId": "6a9fc9ee546ebda6d8dbd4dfd2f1945dab158708",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "edfe0fc7_c58b6bfb",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2414,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-07-04T00:04:03Z",
+      "side": 1,
+      "message": "We should probably rip out all unnecessary code, but this change is mostly to fix other code (it doesn\u0027t fix anything here). If you want, I can file a bug/follow up.",
+      "parentUuid": "08da3028_2c1953ec",
       "revId": "6a9fc9ee546ebda6d8dbd4dfd2f1945dab158708",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
