@@ -6468,6 +6468,7 @@ bool ACodec::UninitializedState::onAllocateComponent(const sp<AMessage> &msg) {
     ALOGV("onAllocateComponent");
 
     CHECK(mCodec->mOMXNode == NULL);
+    mCodec->mFatalError = false;
 
     sp<AMessage> notify = new AMessage(kWhatOMXDied, mCodec);
 
