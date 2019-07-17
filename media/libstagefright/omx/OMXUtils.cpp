@@ -166,6 +166,8 @@ const char *GetComponentRole(bool isEncoder, const char *mime) {
             "audio_decoder.eac3", "audio_encoder.eac3" },
         { MEDIA_MIMETYPE_IMAGE_ANDROID_HEIC,
             "image_decoder.heic", "image_encoder.heic" },
+        { MEDIA_MIMETYPE_AUDIO_HW_AAC,
+            "audio_decoder.hwaac", "audio_encoder.hwaac" },
     };
 
     static const size_t kNumMimeToRole =
