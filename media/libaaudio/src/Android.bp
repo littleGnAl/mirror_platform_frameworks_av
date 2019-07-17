@@ -14,34 +14,7 @@ cc_library {
     export_header_lib_headers: ["libaaudio_headers"],
 
     srcs: [
-        "core/AudioStream.cpp",
-        "core/AudioStreamBuilder.cpp",
         "core/AAudioAudio.cpp",
-        "core/AAudioStreamParameters.cpp",
-        "legacy/AudioStreamLegacy.cpp",
-        "legacy/AudioStreamRecord.cpp",
-        "legacy/AudioStreamTrack.cpp",
-        "utility/AAudioUtilities.cpp",
-        "utility/FixedBlockAdapter.cpp",
-        "utility/FixedBlockReader.cpp",
-        "utility/FixedBlockWriter.cpp",
-        "utility/LinearRamp.cpp",
-        "fifo/FifoBuffer.cpp",
-        "fifo/FifoControllerBase.cpp",
-        "client/AudioEndpoint.cpp",
-        "client/AudioStreamInternal.cpp",
-        "client/AudioStreamInternalCapture.cpp",
-        "client/AudioStreamInternalPlay.cpp",
-        "client/IsochronousClockModel.cpp",
-        "binding/AudioEndpointParcelable.cpp",
-        "binding/AAudioBinderClient.cpp",
-        "binding/AAudioStreamRequest.cpp",
-        "binding/AAudioStreamConfiguration.cpp",
-        "binding/IAAudioClient.cpp",
-        "binding/IAAudioService.cpp",
-        "binding/RingBufferParcelable.cpp",
-        "binding/SharedMemoryParcelable.cpp",
-        "binding/SharedRegionParcelable.cpp",
     ],
 
     cflags: [
@@ -56,11 +29,73 @@ cc_library {
     ],
 
     shared_libs: [
+        "libaaudio_internal",
         "libaudioclient",
         "libaudioutils",
         "liblog",
         "libcutils",
         "libutils",
         "libbinder",
+    ],
+}
+
+cc_library {
+    name: "libaaudio_internal",
+
+    local_include_dirs: [
+        "binding",
+        "client",
+        "core",
+        "fifo",
+        "legacy",
+        "utility",
+    ],
+
+    header_libs: ["libaaudio_headers"],
+
+    shared_libs: [
+        "libaudioclient",
+        "libaudioutils",
+        "liblog",
+        "libcutils",
+        "libutils",
+        "libbinder",
+    ],
+
+    cflags: [
+        "-Wno-unused-parameter",
+        "-Wall",
+        "-Werror",
+    ],
+
+    srcs: [
+        "core/AudioGlobal.cpp",
+        "core/AudioStream.cpp",
+        "core/AudioStreamBuilder.cpp",
+        "core/AAudioStreamParameters.cpp",
+        "client/AudioEndpoint.cpp",
+        "client/AudioStreamInternal.cpp",
+        "client/AudioStreamInternalCapture.cpp",
+        "client/AudioStreamInternalPlay.cpp",
+        "client/IsochronousClockModel.cpp",
+        "legacy/AudioStreamLegacy.cpp",
+        "legacy/AudioStreamRecord.cpp",
+        "legacy/AudioStreamTrack.cpp",
+        "utility/AAudioUtilities.cpp",
+        "utility/FixedBlockAdapter.cpp",
+        "utility/FixedBlockReader.cpp",
+        "utility/FixedBlockWriter.cpp",
+        "utility/LinearRamp.cpp",
+        "fifo/FifoBuffer.cpp",
+        "fifo/FifoControllerBase.cpp",
+        "binding/AudioEndpointParcelable.cpp",
+        "binding/AAudioBinderClient.cpp",
+        "binding/AAudioStreamRequest.cpp",
+        "binding/AAudioStreamConfiguration.cpp",
+        "binding/IAAudioClient.cpp",
+        "binding/IAAudioService.cpp",
+        "binding/RingBufferParcelable.cpp",
+        "binding/SharedMemoryParcelable.cpp",
+        "binding/SharedRegionParcelable.cpp",
     ],
 }
