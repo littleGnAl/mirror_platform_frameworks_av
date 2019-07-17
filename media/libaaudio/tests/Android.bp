@@ -12,6 +12,7 @@ cc_test {
     srcs: ["test_marshalling.cpp"],
     shared_libs: [
         "libaaudio",
+        "libaaudio_internal",
         "libbinder",
         "libcutils",
         "libutils",
