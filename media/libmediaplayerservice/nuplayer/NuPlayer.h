@@ -103,6 +103,8 @@ struct NuPlayer : public AHandler {
 
     void updateInternalTimers();
 
+    void setTargetBitrate(int bitrate);
+
 protected:
     virtual ~NuPlayer();
 
