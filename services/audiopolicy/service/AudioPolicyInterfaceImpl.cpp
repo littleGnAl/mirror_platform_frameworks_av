@@ -312,9 +312,14 @@ status_t AudioPolicyService::getInputForAttr(const audio_attributes_t *attr,
         return NO_INIT;
     }
 
+    audio_source_t inputSource = attr->source;
+    if (inputSource == AUDIO_SOURCE_DEFAULT) {
+        inputSource = AUDIO_SOURCE_MIC;
+    }
+
     // already checked by client, but double-check in case the client wrapper is bypassed
-    if (attr->source < AUDIO_SOURCE_DEFAULT && attr->source >= AUDIO_SOURCE_CNT &&
-            attr->source != AUDIO_SOURCE_HOTWORD && attr->source != AUDIO_SOURCE_FM_TUNER) {
+    if (inputSource < AUDIO_SOURCE_DEFAULT && inputSource >= AUDIO_SOURCE_CNT &&
+            inputSource != AUDIO_SOURCE_HOTWORD && inputSource != AUDIO_SOURCE_FM_TUNER) {
         return BAD_VALUE;
     }
 
@@ -342,14 +347,14 @@ status_t AudioPolicyService::getInputForAttr(const audio_attributes_t *attr,
         return PERMISSION_DENIED;
     }
 
-    if ((attr->source == AUDIO_SOURCE_VOICE_UPLINK ||
-        attr->source == AUDIO_SOURCE_VOICE_DOWNLINK ||
-        attr->source == AUDIO_SOURCE_VOICE_CALL) &&
+    if ((inputSource == AUDIO_SOURCE_VOICE_UPLINK ||
+        inputSource == AUDIO_SOURCE_VOICE_DOWNLINK ||
+        inputSource == AUDIO_SOURCE_VOICE_CALL) &&
         !captureAudioOutputAllowed(pid, uid)) {
         return PERMISSION_DENIED;
     }
 
-    if ((attr->source == AUDIO_SOURCE_HOTWORD) && !captureHotwordAllowed(pid, uid)) {
+    if ((inputSource == AUDIO_SOURCE_HOTWORD) && !captureHotwordAllowed(pid, uid)) {
         return BAD_VALUE;
     }
 
@@ -414,7 +419,7 @@ status_t AudioPolicyService::getInputForAttr(const audio_attributes_t *attr,
 
     if (audioPolicyEffects != 0) {
         // create audio pre processors according to input source
-        status_t status = audioPolicyEffects->addInputEffects(*input, attr->source, session);
+        status_t status = audioPolicyEffects->addInputEffects(*input, inputSource, session);
         if (status != NO_ERROR && status != ALREADY_EXISTS) {
             ALOGW("Failed to add effects on input %d", *input);
         }
