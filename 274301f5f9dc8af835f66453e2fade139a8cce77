@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a84e331a_b89d5656",
+        "filename": "media/libstagefright/colorconversion/SoftwareRenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2019-07-19T14:45:56Z",
+      "side": 1,
+      "message": "When in put is YUV and output is RGB565, mConverter will be used. But this code will leave dst uninitialized and crash.\nThe mConverter check needs to be outside of (mColorFormat \u003d\u003d OMX_COLOR_FormatYUV420Planar16 \u0026\u0026 !mConverter), if there is a converter it has to use lock.",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 5
+      },
+      "revId": "274301f5f9dc8af835f66453e2fade139a8cce77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
