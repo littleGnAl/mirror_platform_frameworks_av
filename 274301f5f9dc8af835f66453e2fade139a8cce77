@@ -22,6 +22,30 @@
       "revId": "274301f5f9dc8af835f66453e2fade139a8cce77",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8c87bcc_3f38b242",
+        "filename": "media/libstagefright/colorconversion/SoftwareRenderer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1414712
+      },
+      "writtenOn": "2019-07-22T02:06:15Z",
+      "side": 1,
+      "message": "Thanks so much for your comments. I\u0027ve already updated, please help review patchset 2.",
+      "parentUuid": "a84e331a_b89d5656",
+      "range": {
+        "startLine": 269,
+        "startChar": 0,
+        "endLine": 282,
+        "endChar": 5
+      },
+      "revId": "274301f5f9dc8af835f66453e2fade139a8cce77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
