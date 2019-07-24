@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fa623908_e27fd178",
+        "filename": "media/extractors/amr/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1026966
+      },
+      "writtenOn": "2019-07-24T02:22:24Z",
+      "side": 1,
+      "message": "I don\u0027t understand why compiler update requires this change. Do you mean currently libcutils is implicitly included by other shared|static_libs? then, which one is that?",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "a321de21d1f0f8f15e9409d1c09a54de50cd9949",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
