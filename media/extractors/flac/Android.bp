@@ -13,6 +13,7 @@ cc_library_shared {
     ],
 
     static_libs: [
+        "libutils",
         "libFLAC",
         "libstagefright_foundation",
     ],
