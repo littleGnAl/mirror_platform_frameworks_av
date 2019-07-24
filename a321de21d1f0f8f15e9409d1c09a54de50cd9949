@@ -22,6 +22,30 @@
       "revId": "a321de21d1f0f8f15e9409d1c09a54de50cd9949",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8839ee9_329048b9",
+        "filename": "media/extractors/amr/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1087625
+      },
+      "writtenOn": "2019-07-24T21:24:50Z",
+      "side": 1,
+      "message": "The linker is intentionally making the change to be more lenient. http://ag/3908662 added the dependency for some libraries but missed the others.",
+      "parentUuid": "fa623908_e27fd178",
+      "range": {
+        "startLine": 11,
+        "startChar": 8,
+        "endLine": 11,
+        "endChar": 20
+      },
+      "revId": "a321de21d1f0f8f15e9409d1c09a54de50cd9949",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
