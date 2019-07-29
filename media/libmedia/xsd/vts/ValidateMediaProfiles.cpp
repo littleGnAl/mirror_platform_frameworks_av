@@ -14,6 +14,7 @@
  * limitations under the License.
  */
 
+#include <cutils/properties.h>
 #include "utility/ValidateXml.h"
 
 TEST(CheckConfig, mediaProfilesValidation) {
@@ -21,8 +22,21 @@ TEST(CheckConfig, mediaProfilesValidation) {
                    "Verify that the media profiles file "
                    "is valid according to the schema");
 
-    const char* location = "/vendor/etc";
+    char value[PROPERTY_VALUE_MAX];
+    char location[PROPERTY_VALUE_MAX] = "/vendor/etc";
+    char fileName[PROPERTY_VALUE_MAX] = "media_profiles_V1_0.xml";
 
-    EXPECT_ONE_VALID_XML_MULTIPLE_LOCATIONS("media_profiles_V1_0.xml", {location},
+    if (property_get("media.settings.xml", value, NULL) > 0) {
+        char *delimiter;
+        delimiter=strrchr(value,'/');
+
+        if (delimiter != NULL) {
+            value[delimiter-value] = '\0';
+            strcpy(location, value);
+            strcpy(fileName, delimiter+1);
+        }
+    }
+
+    EXPECT_ONE_VALID_XML_MULTIPLE_LOCATIONS(fileName, {location},
                                             "/data/local/tmp/media_profiles.xsd");
 }
