@@ -534,6 +534,7 @@ c2_status_t C2SoftHevcEnc::initEncoder() {
         mIDRInterval = mIntf->getSyncFramePeriod_l();
         mComplexity = mIntf->getComplexity_l();
         mQuality = mIntf->getQuality_l();
+        mRequestSync = mIntf->getRequestSync_l();
     }
 
     c2_status_t status = initEncParams();
@@ -862,10 +863,14 @@ void C2SoftHevcEnc::process(const std::unique_ptr<C2Work>& work,
         }
     }
 
+    ihevce_inp_buf_t s_encode_ip{};
+    ihevce_out_buf_t s_encode_op{};
+    std::shared_ptr<C2StreamRequestSyncFrameTuning::output> requestSync;
     // handle dynamic config parameters
     {
         IntfImpl::Lock lock = mIntf->lock();
         std::shared_ptr<C2StreamBitrateInfo::output> bitrate = mIntf->getBitrate_l();
+        requestSync = mIntf->getRequestSync_l();
         lock.unlock();
 
         if (bitrate != mBitrate) {
@@ -877,8 +882,6 @@ void C2SoftHevcEnc::process(const std::unique_ptr<C2Work>& work,
         }
     }
 
-    ihevce_inp_buf_t s_encode_ip{};
-    ihevce_out_buf_t s_encode_op{};
     uint64_t workIndex = work->input.ordinal.frameIndex.peekull();
 
     status = setEncodeArgs(&s_encode_ip, view.get(), workIndex);
@@ -888,6 +891,20 @@ void C2SoftHevcEnc::process(const std::unique_ptr<C2Work>& work,
         work->result = status;
         work->workletsProcessed = 1u;
         return;
+    }
+
+    if (requestSync != mRequestSync) {
+        // we can handle IDR immediately
+        if (requestSync->value) {
+            // unset request
+            C2StreamRequestSyncFrameTuning::output clearSync(0u, C2_FALSE);
+            std::vector<std::unique_ptr<C2SettingResult>> failures;
+            mIntf->config({ &clearSync }, C2_MAY_BLOCK, &failures);
+            ALOGV("Got sync request");
+            //set FrameType as IV_IDR_FRAME
+            s_encode_ip.i4_force_idr_flag = 1;
+        }
+        mRequestSync = requestSync;
     }
 
     uint64_t timeDelay = 0;
