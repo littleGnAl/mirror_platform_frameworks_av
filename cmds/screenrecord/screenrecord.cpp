@@ -39,6 +39,7 @@
 #include <utils/Errors.h>
 #include <utils/Timers.h>
 #include <utils/Trace.h>
+#include <cutils/trace.h>
 
 #include <gui/Surface.h>
 #include <gui/SurfaceComposerClient.h>
@@ -378,6 +379,7 @@ static status_t runEncoder(const sp<MediaCodec>& encoder,
     int64_t startWhenNsec = systemTime(CLOCK_MONOTONIC);
     int64_t endWhenNsec = startWhenNsec + seconds_to_nanoseconds(gTimeLimitSec);
     DisplayInfo mainDpyInfo;
+    bool firstFrame = true;
 
     assert((rawFp == NULL && muxer != NULL) || (rawFp != NULL && muxer == NULL));
 
@@ -393,6 +395,12 @@ static status_t runEncoder(const sp<MediaCodec>& encoder,
         size_t bufIndex, offset, size;
         int64_t ptsUsec;
         uint32_t flags;
+
+        if (firstFrame) {
+          ATRACE_BEGIN("first_frame");
+          firstFrame = false;
+          ATRACE_END();
+        }
 
         if (systemTime(CLOCK_MONOTONIC) > endWhenNsec) {
             if (gVerbose) {
