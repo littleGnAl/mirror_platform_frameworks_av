@@ -2023,9 +2023,10 @@ status_t PlaylistFetcher::extractAndQueueAccessUnits(
                     return ERROR_MALFORMED;
                 }
 
-                static const char *kMatchName =
+                static constexpr const char kMatchName[] =
                     "com.apple.streaming.transportStreamTimestamp";
-                static const size_t kMatchNameLen = strlen(kMatchName);
+                static constexpr size_t kMatchNameLen =
+                    std::char_traits<char>::length(kMatchName);
 
                 if (length == kMatchNameLen + 1 + 8
                         && !strncmp((const char *)data, kMatchName, kMatchNameLen)) {
