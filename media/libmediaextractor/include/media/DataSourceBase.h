@@ -18,6 +18,7 @@
 
 #define DATA_SOURCE_BASE_H_
 
+#include <media/stagefright/MediaErrors.h>
 #include <sys/types.h>
 #include <utils/Errors.h>
 
@@ -56,9 +57,13 @@ public:
     bool getUInt64Var(off64_t offset, uint64_t *x, size_t size);
 
     // May return ERROR_UNSUPPORTED.
-    virtual status_t getSize(off64_t *size);
+    virtual status_t getSize(off64_t * /* size */) {
+      return ERROR_UNSUPPORTED;
+    }
 
-    virtual bool getUri(char *uriString, size_t bufferSize);
+    virtual bool getUri(char * /* uriString */, size_t /* bufferSize */) {
+      return false;
+    }
 
     virtual uint32_t flags() {
         return 0;
