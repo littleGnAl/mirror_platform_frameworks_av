@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "50910ec9_815b6b27",
+        "filename": "media/libstagefright/foundation/MediaDefs.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2019-08-14T19:21:14Z",
+      "side": 1,
+      "message": "per https://tools.ietf.org/html/rfc5334 - audio/ogg is for primarily audio files.\n\n\"\n   As such, the application/ogg type is the recommended choice to serve\n   content aimed at scientific and other applications that require\n   various multiplexed signals or streams of continuous data, with or\n   without scriptable control of content.  For bitstreams containing\n   visual, timed text, and any other type of material that requires a\n   visual interface, but that is not complex enough to warrant serving\n   under application/ogg, the video/ogg type is recommended.  In\n   situations where the Ogg bitstream predominantly contains audio data\n   (lyrics, metadata, or cover art notwithstanding), it is recommended\n   to use the audio/ogg type.\n\"",
+      "range": {
+        "startLine": 58,
+        "startChar": 43,
+        "endLine": 58,
+        "endChar": 55
+      },
+      "revId": "818dadf468621c119858bb72ebba3b4a19995225",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
