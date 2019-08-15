@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f2ab332_7db996b3",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 5823,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2019-08-15T20:52:02Z",
+      "side": 1,
+      "message": "not needed (duplicated with line 5940)",
+      "range": {
+        "startLine": 5822,
+        "startChar": 0,
+        "endLine": 5823,
+        "endChar": 41
+      },
+      "revId": "56f24f71998888e387762dd6f235cb7991d26d39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "036f9582_034f88fc",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 5941,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2019-08-15T20:52:02Z",
+      "side": 1,
+      "message": "I think you still need to exclude the case when the track is not ready to avoid premature triggering.\n\n// compute volume for this track\nif (track-\u003eisReady()) {  // check ready to prevent premature start.\n  processVolume_l(track, last);\n}",
+      "range": {
+        "startLine": 5940,
+        "startChar": 0,
+        "endLine": 5941,
+        "endChar": 37
+      },
+      "revId": "56f24f71998888e387762dd6f235cb7991d26d39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
