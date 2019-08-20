@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9b9fdd1b_6f77745e",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 5823,
+      "author": {
+        "id": 1179935
+      },
+      "writtenOn": "2019-08-20T08:14:59Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "8f2ab332_7db996b3",
+      "range": {
+        "startLine": 5822,
+        "startChar": 0,
+        "endLine": 5823,
+        "endChar": 41
+      },
+      "revId": "56f24f71998888e387762dd6f235cb7991d26d39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "036f9582_034f88fc",
         "filename": "services/audioflinger/Threads.cpp",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "56f24f71998888e387762dd6f235cb7991d26d39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17a5b4fa_a2a5c8a5",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 5941,
+      "author": {
+        "id": 1179935
+      },
+      "writtenOn": "2019-08-20T08:14:59Z",
+      "side": 1,
+      "message": "done",
+      "parentUuid": "036f9582_034f88fc",
+      "range": {
+        "startLine": 5940,
+        "startChar": 0,
+        "endLine": 5941,
+        "endChar": 37
+      },
+      "revId": "56f24f71998888e387762dd6f235cb7991d26d39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
