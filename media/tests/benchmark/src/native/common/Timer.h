@@ -45,25 +45,17 @@ class Timer {
     std::vector<nsecs_t> mOutputTimer;
 
   public:
-    nsecs_t getCurTime() {
-        return systemTime(CLOCK_MONOTONIC);
-    }
+    nsecs_t getCurTime() { return systemTime(CLOCK_MONOTONIC); }
 
     void setInitTime(nsecs_t initTime) { mInitTimeNs = initTime; }
 
     void setDeInitTime(nsecs_t deInitTime) { mDeInitTimeNs = deInitTime; }
 
-    void setStartTime() {
-        mStartTimeNs = systemTime(CLOCK_MONOTONIC);
-    }
+    void setStartTime() { mStartTimeNs = systemTime(CLOCK_MONOTONIC); }
 
-    void addInputTime() {
-        mInputTimer.push_back(systemTime(CLOCK_MONOTONIC));
-    }
+    void addInputTime() { mInputTimer.push_back(systemTime(CLOCK_MONOTONIC)); }
 
-    void addOutputTime() {
-        mOutputTimer.push_back(systemTime(CLOCK_MONOTONIC));
-    }
+    void addOutputTime() { mOutputTimer.push_back(systemTime(CLOCK_MONOTONIC)); }
 
     void resetTimers() {
         if (!mInputTimer.empty()) mInputTimer.clear();
@@ -83,7 +75,7 @@ class Timer {
         return (*(mOutputTimer.end() - 1) - mStartTimeNs);
     }
 
-    void dumpStatistics(std::string inputFile);
+    void dumpStatistics(std::string inputReference, int64_t duarationUs);
 };
 
 #endif  // __TIMER_H__

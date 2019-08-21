@@ -23,15 +23,14 @@
 
 #include "Timer.h"
 
-typedef std::numeric_limits<double> dbl;
-
-void Timer::dumpStatistics(std::string inputFile) {
+void Timer::dumpStatistics(std::string inputReference, int64_t duarationUs) {
     ALOGV("In %s", __func__);
     if (!mOutputTimer.size()) {
         ALOGE("No output produced");
         return;
     }
     nsecs_t totalTimeTakenNs = getTotalTime();
+    nsecs_t timeTakenPerSec = (totalTimeTakenNs * 1000000) / duarationUs;
     nsecs_t timeToFirstFrameNs = *mOutputTimer.begin() - mStartTimeNs;
     // get min and max output intervals.
     nsecs_t intervalNs;
@@ -45,12 +44,16 @@ void Timer::dumpStatistics(std::string inputFile) {
         else if (maxTimeTakenNs < intervalNs) maxTimeTakenNs = intervalNs;
     }
 
+    int32_t index = inputReference.find(":");
+    std::string operation = inputReference.substr(0, index);
+    std::string reference = inputReference.substr(index + 1);
     // Print the Stats
-    std::cout<< "File Name : " << inputFile << endl;
+    std::cout << "Reference : " << reference << endl;
     std::cout << "Setup Time in nano sec : " << mInitTimeNs << endl;
-    std::cout.precision(dbl::max_digits10);
     std::cout << "Average Time in nano sec : " << totalTimeTakenNs / mOutputTimer.size() << endl;
     std::cout << "Time to first frame in nano sec : " << timeToFirstFrameNs << endl;
+    std::cout << "Time taken (in nano sec) to " << operation
+              << " 1 sec of content : " << timeTakenPerSec << endl;
     std::cout << "Minimum Time in nano sec : " << minTimeTakenNs << endl;
     std::cout << "Maximum Time in nano sec : " << maxTimeTakenNs << endl;
     std::cout << "Destroy Time in nano sec : " << mDeInitTimeNs << endl;
