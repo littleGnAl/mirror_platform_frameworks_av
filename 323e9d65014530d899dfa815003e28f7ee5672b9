@@ -1,0 +1,164 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5a950c6f_1d0bdd5b",
+        "filename": "media/tests/benchmark/src/native/extractor/Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-21T16:20:44Z",
+      "side": 1,
+      "message": "Remove if(!mTimer)\n\nAssume setupExtractor is called only once for each extractor instance.",
+      "revId": "323e9d65014530d899dfa815003e28f7ee5672b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27e22240_a5e88fe8",
+        "filename": "media/tests/benchmark/src/native/extractor/Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-21T16:20:44Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 22
+      },
+      "revId": "323e9d65014530d899dfa815003e28f7ee5672b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0384aae8_0335cc20",
+        "filename": "media/tests/benchmark/src/native/extractor/Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-21T16:20:44Z",
+      "side": 1,
+      "message": "Move to line 32 after AMediaExtractor_new().",
+      "revId": "323e9d65014530d899dfa815003e28f7ee5672b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bee3e112_83d79cd9",
+        "filename": "media/tests/benchmark/src/native/extractor/Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-21T16:20:44Z",
+      "side": 1,
+      "message": "sizeof(csdName)",
+      "range": {
+        "startLine": 49,
+        "startChar": 22,
+        "endLine": 49,
+        "endChar": 35
+      },
+      "revId": "323e9d65014530d899dfa815003e28f7ee5672b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c4e90e5_d1482edd",
+        "filename": "media/tests/benchmark/src/native/extractor/Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-21T16:20:44Z",
+      "side": 1,
+      "message": "Need to delete Timer as well.",
+      "revId": "323e9d65014530d899dfa815003e28f7ee5672b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "976ed8db_314b325e",
+        "filename": "media/tests/benchmark/src/native/extractor/Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-21T16:20:44Z",
+      "side": 1,
+      "message": "Can this delete be done now that we don\u0027t have a loop?",
+      "revId": "323e9d65014530d899dfa815003e28f7ee5672b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4de72e3_345dec04",
+        "filename": "media/tests/benchmark/src/native/extractor/Extractor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-21T16:20:44Z",
+      "side": 1,
+      "message": "Rename as initExtractor(), that matches with deInitExtractor().",
+      "range": {
+        "startLine": 33,
+        "startChar": 12,
+        "endLine": 33,
+        "endChar": 26
+      },
+      "revId": "323e9d65014530d899dfa815003e28f7ee5672b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fc48c5e6_85ee4e30",
+        "filename": "media/tests/benchmark/src/native/extractor/Extractor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-21T16:20:44Z",
+      "side": 1,
+      "message": "Remove this and instead add a dumpStatistics() which calls mTimer-\u003edumpStatistics().",
+      "range": {
+        "startLine": 51,
+        "startChar": 4,
+        "endLine": 51,
+        "endChar": 40
+      },
+      "revId": "323e9d65014530d899dfa815003e28f7ee5672b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
