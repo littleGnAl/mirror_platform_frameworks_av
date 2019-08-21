@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d1b4c0c_327eed62",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2019-08-21T00:36:00Z",
+      "side": 1,
+      "message": "One more thing, can you please add a line in the commit message that indicated how you tested the fix?  I\u0027d like to ensure this change was verified working for you. Thanks!\n\nExample:\n\nTest: using xyz blah, etc.",
+      "revId": "7f604fac9344ac92c49ae752f093a6543dff10ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
