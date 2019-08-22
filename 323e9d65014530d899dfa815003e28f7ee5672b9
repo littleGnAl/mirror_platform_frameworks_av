@@ -116,6 +116,23 @@
     },
     {
       "key": {
+        "uuid": "7a559fa1_6fb3a499",
+        "filename": "media/tests/benchmark/src/native/extractor/Extractor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-22T13:55:38Z",
+      "side": 1,
+      "message": "Keep empty destructor",
+      "revId": "323e9d65014530d899dfa815003e28f7ee5672b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a4de72e3_345dec04",
         "filename": "media/tests/benchmark/src/native/extractor/Extractor.h",
         "patchSetId": 1
