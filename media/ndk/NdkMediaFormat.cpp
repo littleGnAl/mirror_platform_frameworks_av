@@ -385,6 +385,27 @@ EXPORT const char* AMEDIAFORMAT_KEY_TRACK_INDEX = "track-index";
 EXPORT const char* AMEDIAFORMAT_KEY_VALID_SAMPLES = "valid-samples";
 EXPORT const char* AMEDIAFORMAT_KEY_WIDTH = "width";
 EXPORT const char* AMEDIAFORMAT_KEY_YEAR = "year";
+EXPORT const char* AMEDIAFORMAT_KEY_WMVC = "wmvc";
+EXPORT const char* AMEDIAFORMAT_KEY_WMAC = "wmac";
+EXPORT const char* AMEDIAFORMAT_KEY_RVC = "rvcs";
+EXPORT const char* AMEDIAFORMAT_KEY_RAC = "racs";
+EXPORT const char* AMEDIAFORMAT_KEY_COMPTYPE = "compression-type";
+EXPORT const char* AMEDIAFORMAT_KEY_SAMPLES_PERFRAME = "sample-per-frame";
+EXPORT const char* AMEDIAFORMAT_KEY_TOTAL_FRAME = "total-frame";
+EXPORT const char* AMEDIAFORMAT_KEY_FINAL_SAMPLE = "final-sample";
+EXPORT const char* AMEDIAFORMAT_KEY_BUFFER_SIZE = "buffer-size";
+EXPORT const char* AMEDIAFORMAT_KEY_SUBTITLE_HEADER = "sbtl";
+EXPORT const char* AMEDIAFORMAT_KEY_GROUP = "_grp";
+EXPORT const char* AMEDIAFORMAT_KEY_BLOCKALIGN = "block-align";
+EXPORT const char* AMEDIAFORMAT_KEY_DV_PRIVATE = "dv-info";
+EXPORT const char* AMEDIAFORMAT_KEY_CSD_AVCE = "csd-avce";
+EXPORT const char* AMEDIAFORMAT_KEY_CSD_HVCE = "csd-hvce";
+EXPORT const char* AMEDIAFORMAT_KEY_AUDIO_FORMAT = "audio-format";
+EXPORT const char* AMEDIAFORMAT_KEY_AUDIO_PROFILE = "audio-profile";
+EXPORT const char* AMEDIAFORMAT_KEY_SUPER_BLOCKALIGN = "sblock-align";
+EXPORT const char* AMEDIAFORMAT_KEY_ENCODE_OPTIONS = "encode-op";
+EXPORT const char* AMEDIAFORMAT_KEY_BITS_PER_FRAME = "bits-per-frame";
+EXPORT const char* AMEDIAFORMAT_KEY_FILE_TYPE = "file-type";
 
 } // extern "C"
 

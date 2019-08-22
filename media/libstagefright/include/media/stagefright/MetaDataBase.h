@@ -197,6 +197,30 @@ enum {
 
     // MPEG user data offsets
     kKeyMpegUserData      = 'mpud', // size_t[]
+    kKeyWMVC              = 'wmvc',  // raw data
+    kKeyWMAC              = 'wmac',  // raw data
+    kKeyRVC               = 'rvcs',  // raw data
+    kKeyRAC               = 'racs',  // raw data
+    kKeyCompType          = 'cmpt',  // int32_t, compression type
+    kKeySamplesPerFrame   = 'smpf',  // int32_t
+    kKeyTotalFrame        = 'totf',  // int32_t
+    kKeyFinalSample       = 'fsmp',  // int32_t
+    kKeyBufferSize        = 'bsiz',  // int32_t
+    kKeySubtitleHeader    = 'sbtl',  // raw data
+    kKeyGroup             = '_grp',  // int32_t
+    kKeyBlockAlign        = 'blka',  // int32_t
+
+    // Dolby vision related
+    kKeyDVPrivate        = 'dvpr', // raw data (dolby vision csd0 information)
+    kKeyAVCE             = 'avce', // raw data (dolby vision csd2 information)
+    kKeyHVCE             = 'hvce', // raw data (dolby vision csd2 information)
+
+    kKeyAudioFormat      = 'afmt',
+    kKeyAudioProfile     = 'apro',
+    kKeySuperBlockAlign  = 'sblk',
+    kKeyEncodeOptions    = 'enop',
+
+    kKeyBitsPerFrame     = 'btpf',  // int32_t
 
     // HDR related
     kKeyHdrStaticInfo    = 'hdrS', // HDRStaticInfo
