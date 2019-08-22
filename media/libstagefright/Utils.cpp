@@ -66,6 +66,23 @@ static status_t copyNALUToABuffer(sp<ABuffer> *buffer, const uint8_t *ptr, size_
     return OK;
 }
 
+static status_t copyENALUToABuffer(sp<ABuffer> *buffer, const uint8_t *ptr, size_t length) {
+    if (((*buffer)->size() + 6 + length) > ((*buffer)->capacity() - (*buffer)->offset())) {
+        sp<ABuffer> tmpBuffer = new (std::nothrow) ABuffer((*buffer)->size() + 6 + length + 1024);
+        if (tmpBuffer.get() == NULL || tmpBuffer->base() == NULL) {
+            return NO_MEMORY;
+        }
+        memcpy(tmpBuffer->data(), (*buffer)->data(), (*buffer)->size());
+        tmpBuffer->setRange(0, (*buffer)->size());
+        (*buffer) = tmpBuffer;
+    }
+
+    memcpy((*buffer)->data() + (*buffer)->size(), "\x00\x00\x00\x01\x7e\x01", 6);
+    memcpy((*buffer)->data() + (*buffer)->size() + 6, ptr, length);
+    (*buffer)->setRange((*buffer)->offset(), (*buffer)->size() + 6 + length);
+    return OK;
+}
+
 #if 0
 static void convertMetaDataToMessageInt32(
         const sp<MetaData> &meta, sp<AMessage> &msg, uint32_t key, const char *name) {
@@ -816,6 +833,48 @@ void convertMetaDataToMessageFromMappings(const MetaDataBase *meta, sp<AMessage>
     }
 }
 
+static void parseDolbyVisionProfileLevelFromCsd(const uint8_t *ptr, size_t size, sp<AMessage> &format) {
+    if (size < 12) {
+        return;
+    }
+    const uint8_t profile = ptr[7];
+    const uint8_t level = ptr[8];
+
+    const static ALookup<uint8_t, OMX_VIDEO_DOLBYVISIONLEVELTYPE> levels {
+        { 1, OMX_VIDEO_DolbyVisionLevelHd24 },
+        { 2, OMX_VIDEO_DolbyVisionLevelHd30  },
+        { 3, OMX_VIDEO_DolbyVisionLevelFhd24 },
+        { 4, OMX_VIDEO_DolbyVisionLevelFhd30 },
+        { 5, OMX_VIDEO_DolbyVisionLevelFhd60 },
+        { 6, OMX_VIDEO_DolbyVisionLevelUhd24 },
+        { 7, OMX_VIDEO_DolbyVisionLevelUhd30  },
+        { 8, OMX_VIDEO_DolbyVisionLevelUhd48 },
+        { 9, OMX_VIDEO_DolbyVisionLevelUhd60 },
+    };
+    const static ALookup<uint8_t, OMX_VIDEO_DOLBYVISIONPROFILETYPE> profiles {
+        { 0, OMX_VIDEO_DolbyVisionProfileDvavPer },
+        { 1, OMX_VIDEO_DolbyVisionProfileDvavPen     },
+        { 2, OMX_VIDEO_DolbyVisionProfileDvheDer },
+        { 3, OMX_VIDEO_DolbyVisionProfileDvheDen    },
+        { 4, OMX_VIDEO_DolbyVisionProfileDvheDtr  },
+        { 5, OMX_VIDEO_DolbyVisionProfileDvheStn },
+        { 6, OMX_VIDEO_DolbyVisionProfileDvheDth },
+        { 7, OMX_VIDEO_DolbyVisionProfileDvheDtb },
+        { 8, OMX_VIDEO_DolbyVisionProfileDvheSt },
+        { 9, OMX_VIDEO_DolbyVisionProfileDvavSe },
+    };
+
+    // set profile & level if they are recognized
+    OMX_VIDEO_DOLBYVISIONPROFILETYPE codecProfile;
+    OMX_VIDEO_DOLBYVISIONLEVELTYPE codecLevel;
+    if (profiles.map(profile, &codecProfile)) {
+        format->setInt32("profile", codecProfile);
+        if (levels.map(level, &codecLevel)) {
+            format->setInt32("level", codecLevel);
+        }
+    }
+}
+
 status_t convertMetaDataToMessage(
         const sp<MetaData> &meta, sp<AMessage> *format) {
     return convertMetaDataToMessage(meta.get(), format);
@@ -895,6 +954,11 @@ status_t convertMetaDataToMessage(
     int32_t isSync;
     if (meta->findInt32(kKeyIsSyncFrame, &isSync) && isSync != 0) {
         msg->setInt32("is-sync-frame", 1);
+    }
+
+    int32_t group;
+    if (meta->findInt32(kKeyGroup, &group)) {
+        msg->setInt32("group", group);
     }
 
     const char *lang;
@@ -1030,6 +1094,66 @@ status_t convertMetaDataToMessage(
         if (meta->findInt32(kKeyHapticChannelCount, &hapticChannelCount)) {
             msg->setInt32("haptic-channel-count", hapticChannelCount);
         }
+
+        int32_t finalSample;
+        if (meta->findInt32(kKeyFinalSample, &finalSample)) {
+            msg->setInt32("final-sample", finalSample);
+        }
+
+        int32_t totalFrame;
+        if (meta->findInt32(kKeyTotalFrame, &totalFrame)) {
+            msg->setInt32("total-frame", totalFrame);
+        }
+
+        int32_t sampPerFrame;
+        if (meta->findInt32(kKeySamplesPerFrame, &sampPerFrame)) {
+            msg->setInt32("sample-per-frame", sampPerFrame);
+        }
+
+        int32_t compType;
+        if (meta->findInt32(kKeyCompType, &compType)) {
+            msg->setInt32("compression-type", compType);
+        }
+
+        int32_t fileType;
+        if (meta->findInt32(kKeyFileType, &fileType)) {
+            msg->setInt32("file-type", fileType);
+        }
+
+        int32_t bufferSize;
+        if (meta->findInt32(kKeyBufferSize, &bufferSize)) {
+            msg->setInt32("buffer-size", bufferSize);
+        }
+
+        int32_t blockAlign;
+        if (meta->findInt32(kKeyBlockAlign, &blockAlign)) {
+            msg->setInt32("block-align", blockAlign);
+        }
+
+        int32_t audioFormat;
+        if (meta->findInt32(kKeyAudioFormat, &audioFormat)) {
+            msg->setInt32("audio-format", audioFormat);
+        }
+
+        int32_t audioProfile;
+        if (meta->findInt32(kKeyAudioProfile, &audioProfile)) {
+            msg->setInt32("audio-profile", audioProfile);
+        }
+
+        int32_t sBlockAlign;
+        if (meta->findInt32(kKeySuperBlockAlign, &sBlockAlign)) {
+            msg->setInt32("sblock-align", sBlockAlign);
+        }
+
+        int32_t encodeOp;
+        if (meta->findInt32(kKeyEncodeOptions, &encodeOp)) {
+            msg->setInt32("encode-op", encodeOp);
+        }
+
+        int32_t bitsPerFrame;
+        if (meta->findInt32(kKeyBitsPerFrame, &bitsPerFrame)) {
+            msg->setInt32("bits-per-frame", bitsPerFrame);
+        }
     }
 
     int32_t maxInputSize;
@@ -1057,7 +1181,308 @@ status_t convertMetaDataToMessage(
         msg->setInt32("frame-rate", fps);
     }
 
-    if (meta->findData(kKeyAVCC, &type, &data, &size)) {
+    if (meta->findData(kKeyDVPrivate, &type, &data, &size)) {
+        const uint8_t *ptr0 = (const uint8_t *)data;
+        const size_t size0 = (const size_t)size;
+
+        sp<ABuffer> buffer = new (std::nothrow) ABuffer(1024);
+        if (buffer.get() == NULL || buffer->base() == NULL) {
+            ALOGE("new buffer failed");
+            return NO_MEMORY;
+        }
+        buffer->setRange(0, 0);
+
+        if (meta->findData(kKeyAVCC, &type, &data, &size)) {
+            // Parse the AVCDecoderConfigurationRecord
+
+            const uint8_t *ptr1 = (const uint8_t *)data;
+
+            if (size < 7 || ptr1[0] != 1) {  // configurationVersion == 1
+                ALOGE("b/23680780");
+                return BAD_VALUE;
+            }
+
+            // There is decodable content out there that fails the following
+            // assertion, let's be lenient for now...
+            // CHECK((ptr[4] >> 2) == 0x3f);  // reserved
+
+            size_t lengthSize __unused = 1 + (ptr1[4] & 3);
+
+            // commented out check below as H264_QVGA_500_NO_AUDIO.3gp
+            // violates it...
+            // CHECK((ptr[5] >> 5) == 7);  // reserved
+
+            size_t numSeqParameterSets = ptr1[5] & 31;
+
+            ptr1 += 6;
+            size -= 6;
+
+            for (size_t i = 0; i < numSeqParameterSets; ++i) {
+               if (size < 2) {
+                    ALOGE("b/23680780");
+                    return BAD_VALUE;
+                }
+                size_t length = U16_AT(ptr1);
+
+                ptr1 += 2;
+                size -= 2;
+
+                if (size < length) {
+                    return BAD_VALUE;
+                }
+                status_t err = copyNALUToABuffer(&buffer, ptr1, length);
+                if (err != OK) {
+                    return err;
+                }
+
+                ptr1 += length;
+                size -= length;
+            }
+
+            if (size < 1) {
+                ALOGE("b/23680780");
+                return BAD_VALUE;
+            }
+            size_t numPictureParameterSets = *ptr1;
+            ++ptr1;
+            --size;
+
+            for (size_t i = 0; i < numPictureParameterSets; ++i) {
+                if (size < 2) {
+                    ALOGE("b/23680780");
+                    return BAD_VALUE;
+                }
+                size_t length = U16_AT(ptr1);
+
+                ptr1 += 2;
+                size -= 2;
+
+                if (size < length) {
+                    return BAD_VALUE;
+                }
+                status_t err = copyNALUToABuffer(&buffer, ptr1, length);
+                if (err != OK) {
+                    return err;
+                }
+
+                ptr1 += length;
+                size -= length;
+            }
+        }
+
+        if (meta->findData(kKeyHVCC, &type, &data, &size))
+        {
+            const uint8_t *ptr1 = (const uint8_t *)data;
+
+            if (size < 23 || ptr1[0] != 1) {  // configurationVersion == 1
+                ALOGE("b/23680780");
+                return BAD_VALUE;
+            }
+
+            ptr1 += 22;
+            size -= 22;
+
+            size_t numofArrays = (char)ptr1[0];
+            ptr1 += 1;
+            size -= 1;
+            size_t j = 0, i = 0;
+
+            HevcParameterSets hvcc;
+            for (i = 0; i < numofArrays; i++) {
+                if (size < 3) {
+                    ALOGE("b/23680780");
+                    return BAD_VALUE;
+                }
+                ptr1 += 1;
+                size -= 1;
+
+                //Num of nals
+                size_t numofNals = U16_AT(ptr1);
+
+                ptr1 += 2;
+                size -= 2;
+                for (j = 0; j < numofNals; j++) {
+                    if (size < 2) {
+                        ALOGE("b/23680780");
+                        return BAD_VALUE;
+                    }
+                    size_t length = U16_AT(ptr1);
+
+                    ptr1 += 2;
+                    size -= 2;
+
+                    if (size < length) {
+                        return BAD_VALUE;
+                    }
+                    status_t err = copyNALUToABuffer(&buffer, ptr1, length);
+                    if (err != OK) {
+                        return err;
+                    }
+                    (void)hvcc.addNalUnit(ptr1, length);
+
+                    ptr1 += length;
+                    size -= length;
+                }
+            }
+
+            // if we saw VUI color information we know whether this is HDR because VUI trumps other
+            // format parameters for HEVC.
+            HevcParameterSets::Info info = hvcc.getInfo();
+            if (info & hvcc.kInfoHasColorDescription) {
+                msg->setInt32("android._is-hdr", (info & hvcc.kInfoIsHdr) != 0);
+            }
+        }
+
+        if (meta->findData(kKeyAVCE, &type, &data, &size))
+        {
+            // Parse the AVCDecoderConfigurationRecord
+
+            const uint8_t *ptr2 = (const uint8_t *)data;
+
+            if (size < 7 || ptr2[0] != 1) {  // configurationVersion == 1
+                ALOGE("b/23680780");
+                return BAD_VALUE;
+            }
+
+            // There is decodable content out there that fails the following
+            // assertion, let's be lenient for now...
+            // CHECK((ptr[4] >> 2) == 0x3f);  // reserved
+
+            size_t lengthSize __unused = 1 + (ptr2[4] & 3);
+
+            // commented out check below as H264_QVGA_500_NO_AUDIO.3gp
+            // violates it...
+            // CHECK((ptr[5] >> 5) == 7);  // reserved
+
+            size_t numSeqParameterSets = ptr2[5] & 31;
+
+            ptr2 += 6;
+            size -= 6;
+
+            for (size_t i = 0; i < numSeqParameterSets; ++i) {
+                if (size < 2) {
+                    ALOGE("b/23680780");
+                    return BAD_VALUE;
+                }
+                size_t length = U16_AT(ptr2);
+
+                ptr2 += 2;
+                size -= 2;
+
+                if (size < length) {
+                    return BAD_VALUE;
+                }
+                status_t err = copyENALUToABuffer(&buffer, ptr2, length);
+                if (err != OK) {
+                    return err;
+                }
+
+                ptr2 += length;
+                size -= length;
+            }
+
+            if (size < 1) {
+                ALOGE("b/23680780");
+                return BAD_VALUE;
+            }
+            size_t numPictureParameterSets = *ptr2;
+            ++ptr2;
+            --size;
+
+            for (size_t i = 0; i < numPictureParameterSets; ++i) {
+                if (size < 2) {
+                    ALOGE("b/23680780");
+                    return BAD_VALUE;
+                }
+                size_t length = U16_AT(ptr2);
+
+                ptr2 += 2;
+                size -= 2;
+
+                if (size < length) {
+                    return BAD_VALUE;
+                }
+                status_t err = copyENALUToABuffer(&buffer, ptr2, length);
+                if (err != OK) {
+                    return err;
+                }
+
+                ptr2 += length;
+                size -= length;
+            }
+        }
+
+        if (meta->findData(kKeyHVCE, &type, &data, &size)) {
+            const uint8_t *ptr2 = (const uint8_t *)data;
+
+            if (size < 23 || ptr2[0] != 1) {  // configurationVersion == 1
+                ALOGE("b/23680780");
+                return BAD_VALUE;
+            }
+
+            ptr2 += 22;
+            size -= 22;
+
+            size_t numofArrays = (char)ptr2[0];
+            ptr2 += 1;
+            size -= 1;
+            size_t j = 0, i = 0;
+
+            for (i = 0; i < numofArrays; i++) {
+                if (size < 3) {
+                    ALOGE("b/23680780");
+                    return BAD_VALUE;
+                }
+                ptr2 += 1;
+                size -= 1;
+                //Num of nals
+                size_t numofNals = U16_AT(ptr2);
+
+                ptr2 += 2;
+                size -= 2;
+                for (j = 0; j < numofNals; j++) {
+                    if (size < 2) {
+                        ALOGE("b/23680780");
+                        return BAD_VALUE;
+                    }
+                    size_t length = U16_AT(ptr2);
+
+                    ptr2 += 2;
+                    size -= 2;
+
+                    if (size < length) {
+                        return BAD_VALUE;
+                    }
+                    status_t err = copyENALUToABuffer(&buffer, ptr2, length);
+                    if (err != OK) {
+                        return err;
+                    }
+
+                    ptr2 += length;
+                    size -= length;
+                }
+            }
+        }
+
+        if ((buffer->size() + size0) > (buffer->capacity() - buffer->offset())) {
+            sp<ABuffer> tmpBuffer = new (std::nothrow) ABuffer(buffer->size() + size0 + 1024);
+            if (tmpBuffer.get() == NULL || tmpBuffer->base() == NULL) {
+                return NO_MEMORY;
+            }
+            memcpy(tmpBuffer->data(), buffer->data(), buffer->size());
+           tmpBuffer->setRange(0, buffer->size());
+           buffer = tmpBuffer;
+        }
+
+        memcpy(buffer->data() + buffer->size(), ptr0, size0);
+        buffer->setRange(buffer->offset(), buffer->size() + size0);
+
+        parseDolbyVisionProfileLevelFromCsd(ptr0, size0, msg);
+
+        buffer->meta()->setInt32("csd", true);
+        buffer->meta()->setInt64("timeUs", 0);
+        msg->setBuffer("csd-0", buffer);
+    } else  if (meta->findData(kKeyAVCC, &type, &data, &size)) {
         // Parse the AVCDecoderConfigurationRecord
 
         const uint8_t *ptr = (const uint8_t *)data;
@@ -1393,6 +1818,41 @@ status_t convertMetaDataToMessage(
         msg->setBuffer("csd-0", buffer);
 
         parseVp9ProfileLevelFromCsd(buffer, msg);
+    }else if (meta->findData(kKeyWMAC, &type, &data, &size)) {
+        sp<ABuffer> buffer = new ABuffer(size);
+        memcpy(buffer->data(), data, size);
+
+        buffer->meta()->setInt32("csd", true);
+        buffer->meta()->setInt64("timeUs", 0);
+        msg->setBuffer("csd-0", buffer);
+    } else if (meta->findData(kKeyWMVC, &type, &data, &size)) {
+        sp<ABuffer> buffer = new ABuffer(size);
+        memcpy(buffer->data(), data, size);
+
+        buffer->meta()->setInt32("csd", true);
+        buffer->meta()->setInt64("timeUs", 0);
+        msg->setBuffer("csd-0", buffer);
+    } else if (meta->findData(kKeyRVC, &type, &data, &size)) {
+        sp<ABuffer> buffer = new ABuffer(size);
+        memcpy(buffer->data(), data, size);
+
+        buffer->meta()->setInt32("csd", true);
+        buffer->meta()->setInt64("timeUs", 0);
+        msg->setBuffer("csd-0", buffer);
+    } else if (meta->findData(kKeyRAC, &type, &data, &size)) {
+        sp<ABuffer> buffer = new ABuffer(size);
+        memcpy(buffer->data(), data, size);
+
+        buffer->meta()->setInt32("csd", true);
+        buffer->meta()->setInt64("timeUs", 0);
+        msg->setBuffer("csd-0", buffer);
+    } else if (meta->findData(kKeySubtitleHeader, &type, &data, &size)) {
+        sp<ABuffer> buffer = new ABuffer(size);
+        memcpy(buffer->data(), data, size);
+
+        buffer->meta()->setInt32("csd", true);
+        buffer->meta()->setInt64("timeUs", 0);
+        msg->setBuffer("csd-0", buffer);
     } else if (meta->findData(kKeyAlacMagicCookie, &type, &data, &size)) {
         ALOGV("convertMetaDataToMessage found kKeyAlacMagicCookie of size %zu\n", size);
         sp<ABuffer> buffer = new (std::nothrow) ABuffer(size);
@@ -1629,6 +2089,11 @@ void convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
         meta->setInt32(kKeyIsSyncFrame, 1);
     }
 
+    int32_t group;
+    if (msg->findInt32("group", &group)) {
+        meta->setInt32(kKeyGroup, group);
+    }
+
     int32_t avgBitrate = 0;
     int32_t maxBitrate;
     if (msg->findInt32("bitrate", &avgBitrate) && avgBitrate > 0) {
@@ -1779,6 +2244,66 @@ void convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
         if (msg->findInt32("haptic-channel-count", &hapticChannelCount)) {
             meta->setInt32(kKeyHapticChannelCount, hapticChannelCount);
         }
+
+        int32_t compType;
+        if (msg->findInt32("compression-type", &compType)) {
+            meta->setInt32(kKeyCompType, compType);
+        }
+
+        int32_t fileType;
+        if (msg->findInt32("file-type", &fileType)) {
+            meta->setInt32(kKeyFileType, fileType);
+        }
+
+        int32_t sampPerFrame;
+        if (msg->findInt32("sample-per-frame", &sampPerFrame)) {
+            meta->setInt32(kKeySamplesPerFrame, sampPerFrame);
+        }
+
+        int32_t totalFrame;
+        if (msg->findInt32("total-frame", &totalFrame)) {
+            meta->setInt32(kKeyTotalFrame, totalFrame);
+        }
+
+        int32_t finalSample;
+        if (msg->findInt32("final-sample", &finalSample)) {
+            meta->setInt32(kKeyFinalSample, finalSample);
+        }
+
+        int32_t bufferSize;
+        if (msg->findInt32("buffer-size", &bufferSize)) {
+            meta->setInt32(kKeyBufferSize, bufferSize);
+        }
+
+        int32_t blockAlign;
+        if (msg->findInt32("block-align", &blockAlign)) {
+            meta->setInt32(kKeyBlockAlign, blockAlign);
+        }
+
+        int32_t audioFormat;
+        if (msg->findInt32("audio-format", &audioFormat)) {
+            meta->setInt32(kKeyAudioFormat, audioFormat);
+        }
+
+        int32_t audioProfile;
+        if (msg->findInt32("audio-profile", &audioProfile)) {
+            meta->setInt32(kKeyAudioProfile, audioProfile);
+        }
+
+        int32_t sBlockAlign;
+        if (msg->findInt32("sblock-align", &sBlockAlign)) {
+            meta->setInt32(kKeySuperBlockAlign, sBlockAlign);
+        }
+
+        int32_t encodeOp;
+        if (msg->findInt32("encode-op", &encodeOp)) {
+            meta->setInt32(kKeyEncodeOptions, encodeOp);
+        }
+
+        int32_t bitsPerFrame;
+        if (msg->findInt32("bits-per-frame", &bitsPerFrame)) {
+            meta->setInt32(kKeyBitsPerFrame, bitsPerFrame);
+        }
     }
 
     int32_t maxInputSize;
@@ -1868,6 +2393,34 @@ void convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
             }
         } else if (mime == MEDIA_MIMETYPE_AUDIO_ALAC) {
             meta->setData(kKeyAlacMagicCookie, 0, csd0->data(), csd0->size());
+        } else if (mime == MEDIA_MIMETYPE_VIDEO_WMV || mime == MEDIA_MIMETYPE_VIDEO_VC1 ||
+                mime == MEDIA_MIMETYPE_VIDEO_MJPEG || mime == MEDIA_MIMETYPE_VIDEO_DIVX4 ||
+                mime == MEDIA_MIMETYPE_VIDEO_MPEG2 || mime == MEDIA_MIMETYPE_VIDEO_VP8) {
+            meta->setData(kKeyWMVC, 0, csd0->data(), csd0->size());
+        } else if (mime == MEDIA_MIMETYPE_AUDIO_WMAPRO || mime == MEDIA_MIMETYPE_AUDIO_VORBIS ||
+                mime == MEDIA_MIMETYPE_AUDIO_MPEG_LAYER_I) {
+            meta->setData(kKeyWMAC, 0, csd0->data(), csd0->size());
+        } else if (mime == MEDIA_MIMETYPE_VIDEO_REAL_VIDEO) {
+            meta->setData(kKeyRVC, 0, csd0->data(), csd0->size());
+        } else if (mime == MEDIA_MIMETYPE_AUDIO_REAL_AUDIO) {
+            meta->setData(kKeyRAC, 0, csd0->data(), csd0->size());
+        }
+    } else if (mime == MEDIA_MIMETYPE_VIDEO_DOLBY_VISION) {
+        sp<ABuffer> csdDv, csdAvcc, csdAvce, csdHvcc, csdHvce;
+        if (msg->findBuffer("dv-info", &csdDv)) {
+            meta->setData(kKeyDVPrivate, 'dvpr', csdDv->data(), csdDv->size());
+        }
+        if (msg->findBuffer("csd-avc", &csdAvcc)) {
+            meta->setData(kKeyAVCC, kTypeAVCC, csdAvcc->data(), csdAvcc->size());
+        }
+        if (msg->findBuffer("csd-hevc", &csdHvcc)) {
+            meta->setData(kKeyHVCC, kTypeHVCC, csdHvcc->data(), csdHvcc->size());
+        }
+        if (msg->findBuffer("csd-avce", &csdAvce)) {
+            meta->setData(kKeyAVCE, 'avce', csdAvce->data(), csdAvce->size());
+        }
+        if (msg->findBuffer("csd-hvce", &csdHvce)) {
+            meta->setData(kKeyHVCE, 'hvce', csdHvce->data(), csdHvce->size());
         }
     } else if (mime == MEDIA_MIMETYPE_VIDEO_AVC && msg->findBuffer("csd-avc", &csd0)) {
         meta->setData(kKeyAVCC, kTypeAVCC, csd0->data(), csd0->size());
