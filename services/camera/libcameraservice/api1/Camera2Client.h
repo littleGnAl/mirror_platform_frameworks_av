@@ -122,6 +122,8 @@ public:
 
     camera2::SharedParameters& getParameters();
 
+    void notifyRequestId(int32_t requestId);
+
     int getPreviewStreamId() const;
     int getCaptureStreamId() const;
     int getCallbackStreamId() const;
@@ -227,6 +229,12 @@ private:
     status_t initializeImpl(TProviderPtr providerPtr, const String8& monitorTags);
 
     bool isZslEnabledInStillTemplate();
+
+    mutable Mutex mLatestRequestMutex;
+    Condition mLatestRequestSignal;
+    int32_t mLatestRequestId = -1;
+    status_t waitUntilRequestIdApplied(int32_t requestId, nsecs_t timeout);
+    status_t waitUntilCurrentRequestIdLocked();
 };
 
 }; // namespace android
