@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9e0a6d73_c8a0df75",
+        "filename": "media/tests/benchmark/src/native/common/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-24T00:30:02Z",
+      "side": 1,
+      "message": "use defaults defined below to avoid repeating shared_libs, clags, include_dirs etc.",
+      "range": {
+        "startLine": 31,
+        "startChar": 2,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "1b98ec224cbc387fd27dfe88c7c130aedaace35f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2ca5b61_2c499814",
+        "filename": "media/tests/benchmark/src/native/common/BenchmarkTimer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-24T00:30:02Z",
+      "side": 1,
+      "message": "Rename the file as Timer.cpp to match class name",
+      "revId": "1b98ec224cbc387fd27dfe88c7c130aedaace35f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eea44974_44d25677",
+        "filename": "media/tests/benchmark/src/native/common/BenchmarkTimer.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-24T00:30:02Z",
+      "side": 1,
+      "message": "Rename the file as Timer.h to match class name",
+      "revId": "1b98ec224cbc387fd27dfe88c7c130aedaace35f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
