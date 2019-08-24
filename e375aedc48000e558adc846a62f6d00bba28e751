@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe871a2a_fc98e973",
+        "filename": "media/tests/benchmark/src/native/extractor/Extractor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-24T00:27:33Z",
+      "side": 1,
+      "message": "Pass filename here and then to mTimer-\u003edumpStatistics() as well.\nNeed to print filename along with profile data.",
+      "range": {
+        "startLine": 112,
+        "startChar": 16,
+        "endLine": 112,
+        "endChar": 32
+      },
+      "revId": "e375aedc48000e558adc846a62f6d00bba28e751",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3bf1850_8323da18",
+        "filename": "media/tests/benchmark/src/native/extractor/Extractor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-24T00:27:33Z",
+      "side": 1,
+      "message": "Pass duration to dumpStatistics() as well and compute and print timetakePerSec inside the function.",
+      "revId": "e375aedc48000e558adc846a62f6d00bba28e751",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a15dd6_22e02be2",
+        "filename": "media/tests/benchmark/tests/BenchmarkTestEnvironment.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-24T00:27:33Z",
+      "side": 1,
+      "message": "Doesn\u0027t match file name",
+      "range": {
+        "startLine": 17,
+        "startChar": 10,
+        "endLine": 17,
+        "endChar": 25
+      },
+      "revId": "e375aedc48000e558adc846a62f6d00bba28e751",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28665cd9_48a726f1",
+        "filename": "media/tests/benchmark/tests/BenchmarkTestEnvironment.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-24T00:27:33Z",
+      "side": 1,
+      "message": "This is not specific to MediaCodec.\nRename the class to BenchmarkTestEnvironment to match the file name.",
+      "range": {
+        "startLine": 26,
+        "startChar": 6,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "e375aedc48000e558adc846a62f6d00bba28e751",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "44666e7c_efd82fe2",
+        "filename": "media/tests/benchmark/tests/BenchmarkTestEnvironment.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-24T00:27:33Z",
+      "side": 1,
+      "message": "path",
+      "range": {
+        "startLine": 42,
+        "startChar": 40,
+        "endLine": 42,
+        "endChar": 43
+      },
+      "revId": "e375aedc48000e558adc846a62f6d00bba28e751",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5df755d5_516887d6",
+        "filename": "media/tests/benchmark/tests/BenchmarkTestEnvironment.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-24T00:27:33Z",
+      "side": 1,
+      "message": "path",
+      "range": {
+        "startLine": 67,
+        "startChar": 23,
+        "endLine": 67,
+        "endChar": 26
+      },
+      "revId": "e375aedc48000e558adc846a62f6d00bba28e751",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7870686b_4a71dd20",
+        "filename": "media/tests/benchmark/tests/ExtractorTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-24T00:27:33Z",
+      "side": 1,
+      "message": "If audio files are ready, add them too.",
+      "range": {
+        "startLine": 68,
+        "startChar": 27,
+        "endLine": 71,
+        "endChar": 96
+      },
+      "revId": "e375aedc48000e558adc846a62f6d00bba28e751",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "376b6da7_8ac61cb5",
+        "filename": "media/tests/benchmark/tests/ExtractorTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-24T00:27:33Z",
+      "side": 1,
+      "message": "Not C2.",
+      "range": {
+        "startLine": 80,
+        "startChar": 15,
+        "endLine": 80,
+        "endChar": 17
+      },
+      "revId": "e375aedc48000e558adc846a62f6d00bba28e751",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
