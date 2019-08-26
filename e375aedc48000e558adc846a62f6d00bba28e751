@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "e70b52e3_bb3c0449",
+        "filename": "media/tests/benchmark/src/native/extractor/Extractor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-08-26T16:49:18Z",
+      "side": 1,
+      "message": "timeTakenPerSecond is useful for extractor and codecs too.\nMoving this inside will help in dumping output to XML from a single place.\nLet us pass duration to timer\u0027s dumpStatistics() and print this inside.",
+      "parentUuid": "cdcdcf23_6e2b369d",
+      "revId": "e375aedc48000e558adc846a62f6d00bba28e751",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c4a15dd6_22e02be2",
         "filename": "media/tests/benchmark/tests/BenchmarkTestEnvironment.h",
         "patchSetId": 4
