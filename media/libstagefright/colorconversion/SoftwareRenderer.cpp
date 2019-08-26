@@ -31,11 +31,6 @@
 
 namespace android {
 
-static int ALIGN(int x, int y) {
-    // y must be a power of 2.
-    return (x + y - 1) & ~(y - 1);
-}
-
 SoftwareRenderer::SoftwareRenderer(
         const sp<ANativeWindow> &nativeWindow, int32_t rotation)
     : mColorFormat(OMX_COLOR_FormatUnused),
@@ -305,7 +300,7 @@ std::list<FrameRenderTracker::Info> SoftwareRenderer::render(
         uint8_t *dst_y = (uint8_t *)ycbcr.y;
         uint8_t *dst_v = (uint8_t *)ycbcr.cr;
         uint8_t *dst_u = (uint8_t *)ycbcr.cb;
-        size_t dst_c_stride = ALIGN(buf->stride / 2, 16);
+        size_t dst_c_stride = buf->stride / 2;
 
         dst_y += mCropTop * buf->stride + mCropLeft;
         dst_v += (mCropTop/2) * dst_c_stride + mCropLeft/2;
@@ -339,7 +334,7 @@ std::list<FrameRenderTracker::Info> SoftwareRenderer::render(
         uint8_t *dst_y = (uint8_t *)ycbcr.y;
         uint8_t *dst_v = (uint8_t *)ycbcr.cr;
         uint8_t *dst_u = (uint8_t *)ycbcr.cb;
-        size_t dst_c_stride = ALIGN(buf->stride / 2, 16);
+        size_t dst_c_stride = buf->stride / 2;
 
         dst_y += mCropTop * buf->stride + mCropLeft;
         dst_v += (mCropTop / 2) * dst_c_stride + mCropLeft / 2;
@@ -377,7 +372,7 @@ std::list<FrameRenderTracker::Info> SoftwareRenderer::render(
         uint8_t *dst_y = (uint8_t *)ycbcr.y;
         uint8_t *dst_v = (uint8_t *)ycbcr.cr;
         uint8_t *dst_u = (uint8_t *)ycbcr.cb;
-        size_t dst_c_stride = ALIGN(buf->stride / 2, 16);
+        size_t dst_c_stride = buf->stride / 2;
 
         dst_y += mCropTop * buf->stride + mCropLeft;
         dst_v += (mCropTop/2) * dst_c_stride + mCropLeft/2;
