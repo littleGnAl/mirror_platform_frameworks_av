@@ -198,7 +198,7 @@ void SoftwareRenderer::resetFormatIfChanged(
     // Width must be multiple of 32???
     CHECK_EQ(0, native_window_set_buffers_dimensions(
                 mNativeWindow.get(),
-                bufWidth,
+                ALIGN(bufWidth, 32),
                 bufHeight));
     CHECK_EQ(0, native_window_set_buffers_format(
                 mNativeWindow.get(),
