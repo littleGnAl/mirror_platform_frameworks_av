@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "6cdf4d42_b77c4d01",
+        "filename": "media/tests/benchmark/tests/ExtractorTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-08-27T18:34:35Z",
+      "side": 1,
+      "message": "not sure I want to go that route... but let me think about it for a day so that i\u0027m not just reacting to it being a different approach than what I had considered.",
+      "parentUuid": "fc550c1e_3c81184c",
+      "range": {
+        "startLine": 29,
+        "startChar": 7,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "615fd156fbccbb2dfeb3a026322bac6b54393a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1d7662fc_7fcca106",
         "filename": "media/tests/benchmark/tests/ExtractorTest.cpp",
         "patchSetId": 5
@@ -148,6 +172,30 @@
       "side": 1,
       "message": "We are assuming that there is a single track in the file.\nNo use case currently requires both audio and video in a single file currently and benchmarking one track at a time keeps the code simple and makes it easier to accumulate results if required later.",
       "parentUuid": "1d7662fc_7fcca106",
+      "range": {
+        "startLine": 52,
+        "startChar": 17,
+        "endLine": 52,
+        "endChar": 23
+      },
+      "revId": "615fd156fbccbb2dfeb3a026322bac6b54393a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffe89985_cb3d31d4",
+        "filename": "media/tests/benchmark/tests/ExtractorTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-08-27T18:34:35Z",
+      "side": 1,
+      "message": "ok to having this test just 1 track (as we discussed in this morning\u0027s meeting).\nlet\u0027s pass in the track number as an argument instead of assuming it\u0027s always 0.\n\nwhile the current set of inputs are all single-track files, i want to be able to test fils\nthat have video+audio (e.g. 2+ tracks) because skipping over the other track is very much a part of normal use.",
+      "parentUuid": "aaf61d59_44bdb258",
       "range": {
         "startLine": 52,
         "startChar": 17,
