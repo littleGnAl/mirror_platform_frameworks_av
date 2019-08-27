@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "dfcbc298_9a33c910",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-08-27T12:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97460e96_aaf9ccfe",
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6efdf7ce_8f5c9b35",
         "filename": "media/tests/benchmark/src/native/common/BenchmarkCommon.h",
         "patchSetId": 7
@@ -30,6 +48,30 @@
       "writtenOn": "2019-08-27T02:40:36Z",
       "side": 1,
       "message": "these codec-specific constants belong somewhere other than in a file common to all benchmarking.",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 53
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4aae6749_238a6b5b",
+        "filename": "media/tests/benchmark/src/native/common/BenchmarkCommon.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-08-27T12:54:05Z",
+      "side": 1,
+      "message": "Removed the flag.\nOther constants are common for all benchmark modules (decoder, muxer etc).",
+      "parentUuid": "6efdf7ce_8f5c9b35",
       "range": {
         "startLine": 24,
         "startChar": 8,
@@ -112,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "9b84c0e9_491b818f",
+        "filename": "media/tests/benchmark/src/native/common/Timer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-08-27T12:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "719b1e53_cee6715c",
+      "range": {
+        "startLine": 30,
+        "startChar": 15,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6211259_acec5cff",
         "filename": "media/tests/benchmark/src/native/common/Timer.cpp",
         "patchSetId": 7
@@ -132,6 +198,30 @@
       "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e300f22_f3f2c971",
+        "filename": "media/tests/benchmark/src/native/common/Timer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-08-27T12:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6211259_acec5cff",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -158,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "88d79f35_8573ca06",
+        "filename": "media/tests/benchmark/src/native/common/Timer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-08-27T12:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb7b65b0_89b9f77a",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 28
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "92d3fcc3_5a6cbc4f",
         "filename": "media/tests/benchmark/src/native/common/Timer.cpp",
         "patchSetId": 7
@@ -178,6 +292,30 @@
       "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "657aefab_49d22b33",
+        "filename": "media/tests/benchmark/src/native/common/Timer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-08-27T12:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92d3fcc3_5a6cbc4f",
+      "range": {
+        "startLine": 55,
+        "startChar": 39,
+        "endLine": 55,
+        "endChar": 44
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -204,6 +342,30 @@
     },
     {
       "key": {
+        "uuid": "c1de3fb3_f0cf4932",
+        "filename": "media/tests/benchmark/src/native/common/Timer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-08-27T12:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ea542bb_d25de630",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 11
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37cae21f_201ad9b6",
         "filename": "media/tests/benchmark/src/native/common/Timer.h",
         "patchSetId": 7
@@ -224,6 +386,30 @@
       "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd52e79a_34f7b7f9",
+        "filename": "media/tests/benchmark/src/native/common/Timer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-08-27T12:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "37cae21f_201ad9b6",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -250,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "6805bc17_a9583873",
+        "filename": "media/tests/benchmark/src/native/common/Timer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-08-27T12:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "024805c5_0f359aa2",
+      "range": {
+        "startLine": 66,
+        "startChar": 9,
+        "endLine": 66,
+        "endChar": 21
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c284a15_295f0a17",
         "filename": "media/tests/benchmark/src/native/common/Timer.h",
         "patchSetId": 7
@@ -273,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "71006611_62502a49",
+        "filename": "media/tests/benchmark/src/native/common/Timer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-08-27T12:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c284a15_295f0a17",
+      "range": {
+        "startLine": 77,
+        "startChar": 9,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ca3fe2ce_07a426a4",
         "filename": "media/tests/benchmark/src/native/common/Timer.h",
         "patchSetId": 7
@@ -293,6 +527,30 @@
       "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "818cfca3_4248287f",
+        "filename": "media/tests/benchmark/src/native/common/Timer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-08-27T12:54:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca3fe2ce_07a426a4",
+      "range": {
+        "startLine": 90,
+        "startChar": 39,
+        "endLine": 90,
+        "endChar": 61
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
