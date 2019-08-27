@@ -16,6 +16,75 @@
       "revId": "615fd156fbccbb2dfeb3a026322bac6b54393a5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90122c3a_5f0f88e3",
+        "filename": "media/tests/benchmark/src/native/extractor/Extractor.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-08-27T03:01:56Z",
+      "side": 1,
+      "message": "took me a bit to figure out just what we\u0027re trying to calculate here.\nit\u0027s \"rate relative to real time\".\nso if it takes us 10 seconds to extract a 10 second video -- we\u0027d print 1.\nif we extract a 10 second video in 5 seconds, we\u0027d print 0.5.\n\na number \u003e 1 would be bad -- means we can not extract it fast enough to play it in real time, even if all the other steps take no time.\n\nlet\u0027s find a better caption.  \"Fraction of track duration spent extracting\" or something close to that.",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 71
+      },
+      "revId": "615fd156fbccbb2dfeb3a026322bac6b54393a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d62a7dc1_22ea2614",
+        "filename": "media/tests/benchmark/tests/ExtractorTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-08-27T03:01:56Z",
+      "side": 1,
+      "message": "so flow here for this test is open the file, connect it to an extractor,\nextract the contents and stop. one time.\n\nthe first time we run this, we\u0027ll likely be measuring the bandwidth of reading the file from flash into RAM.\n\nif we\u0027re really trying to measure the performance of the extractor we need to\n-- read/extract the file once to get it into ram\n-- do the extraction several times so that we smooth out any variations over multiple runs.",
+      "range": {
+        "startLine": 29,
+        "startChar": 7,
+        "endLine": 29,
+        "endChar": 20
+      },
+      "revId": "615fd156fbccbb2dfeb3a026322bac6b54393a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d7662fc_7fcca106",
+        "filename": "media/tests/benchmark/tests/ExtractorTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-08-27T03:01:56Z",
+      "side": 1,
+      "message": "if we\u0027re supposed to be testing video, this assumes that track 0 is always the video track.\nhow legitimate is that?\n\nalso -- how do we measure the extraction time for the audio track.",
+      "range": {
+        "startLine": 52,
+        "startChar": 17,
+        "endLine": 52,
+        "endChar": 23
+      },
+      "revId": "615fd156fbccbb2dfeb3a026322bac6b54393a5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
