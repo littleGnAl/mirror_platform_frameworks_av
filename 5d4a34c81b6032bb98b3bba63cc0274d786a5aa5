@@ -16,6 +16,259 @@
       "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6efdf7ce_8f5c9b35",
+        "filename": "media/tests/benchmark/src/native/common/BenchmarkCommon.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-08-27T02:40:36Z",
+      "side": 1,
+      "message": "these codec-specific constants belong somewhere other than in a file common to all benchmarking.",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 53
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48d325d8_06f79c77",
+        "filename": "media/tests/benchmark/src/native/common/Timer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-08-27T02:40:36Z",
+      "side": 1,
+      "message": "for a common routine, this is biased.  Not all tests will involve an input file. Or any file.",
+      "range": {
+        "startLine": 27,
+        "startChar": 39,
+        "endLine": 27,
+        "endChar": 48
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "719b1e53_cee6715c",
+        "filename": "media/tests/benchmark/src/native/common/Timer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-08-27T02:40:36Z",
+      "side": 1,
+      "message": "the test I was just reading that uses these was for an extractor, not a codec.",
+      "range": {
+        "startLine": 30,
+        "startChar": 15,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6211259_acec5cff",
+        "filename": "media/tests/benchmark/src/native/common/Timer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-08-27T02:40:36Z",
+      "side": 1,
+      "message": "initialize these to MAX_INT64 and 0 respectively. this means that you don\u0027t need any special logic inside the loop.\n\nthen loop reduces to:\n\nminTimeTaken \u003d MAX_UINT64;\nminTimeTaken \u003d 0;\nint64_t before \u003d mStartTime\nfor (idx \u003d 0; idx \u003c mOutputTimer.size(); idx++)\n{ interval \u003d mOutputTimers.at(idx) - before;\n  before \u003d mOutputTimer.at(idx);\n  if (minTimeTaken \u003e interval) minTimeTaken \u003d interval;\n  else if (maxTimeTaken \u003c interval) maxTimeTaken \u003d interval;\n}",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 25
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb7b65b0_89b9f77a",
+        "filename": "media/tests/benchmark/src/native/common/Timer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-08-27T02:40:36Z",
+      "side": 1,
+      "message": "specify units for all of these;   I think you want nanoseconds to go along with the changes I suggest elsewhere for how time is collected.",
+      "range": {
+        "startLine": 53,
+        "startChar": 24,
+        "endLine": 53,
+        "endChar": 28
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "92d3fcc3_5a6cbc4f",
+        "filename": "media/tests/benchmark/src/native/common/Timer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-08-27T02:40:36Z",
+      "side": 1,
+      "message": "if we\u0027re doing nanoseconds, then we can probably do this all with integer math.",
+      "range": {
+        "startLine": 55,
+        "startChar": 39,
+        "endLine": 55,
+        "endChar": 44
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ea542bb_d25de630",
+        "filename": "media/tests/benchmark/src/native/common/Timer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-08-27T02:40:36Z",
+      "side": 1,
+      "message": "if change to systemTime() operation, than all of these should be nsecs_t instead of int64_t.",
+      "range": {
+        "startLine": 50,
+        "startChar": 4,
+        "endLine": 50,
+        "endChar": 11
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37cae21f_201ad9b6",
+        "filename": "media/tests/benchmark/src/native/common/Timer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-08-27T02:40:36Z",
+      "side": 1,
+      "message": "nsecs_t now \u003d systemTime(SYSTEM_TIME_REALTIME);\n\nwhich can hold a finer grained time than the microseconds that gettimeofday() returns.\n[the clock is not necessarily that precise, but if we use nsecs here instead of usecs, \nwe\u0027re in a position for that to happen.\n\nshould probably also use SYSTEM_TIME_MONOTONIC because that is guaranteed to always tick upwards; SYSTEM_TIME_REALTIME is subject to jumps and discontinuities for things like synchronizing to network time.",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 38
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "024805c5_0f359aa2",
+        "filename": "media/tests/benchmark/src/native/common/Timer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-08-27T02:40:36Z",
+      "side": 1,
+      "message": "confusing name -- since the other two addXXXTime() routines push into a vector and this one does not.",
+      "range": {
+        "startLine": 66,
+        "startChar": 9,
+        "endLine": 66,
+        "endChar": 21
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c284a15_295f0a17",
+        "filename": "media/tests/benchmark/src/native/common/Timer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-08-27T02:40:36Z",
+      "side": 1,
+      "message": "resetTimers() -- plural.",
+      "range": {
+        "startLine": 77,
+        "startChar": 9,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca3fe2ce_07a426a4",
+        "filename": "media/tests/benchmark/src/native/common/Timer.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-08-27T02:40:36Z",
+      "side": 1,
+      "message": "isn\u0027t this invalid if the mOutputTimer vector is empty?",
+      "range": {
+        "startLine": 90,
+        "startChar": 39,
+        "endLine": 90,
+        "endChar": 61
+      },
+      "revId": "5d4a34c81b6032bb98b3bba63cc0274d786a5aa5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
