@@ -1,0 +1,147 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a06d6295_a4f0b7f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-03T03:35:41Z",
+      "side": 1,
+      "message": "Bug:",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 7
+      },
+      "revId": "4a3f2d4895244be57b64e0a6224e4d12f2c7423d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79352c44_51e92545",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-03T03:35:41Z",
+      "side": 1,
+      "message": "```\n$ mmm frameworks/av/media/tests/benchmark/\n```",
+      "range": {
+        "startLine": 4,
+        "startChar": 0,
+        "endLine": 5,
+        "endChar": 27
+      },
+      "revId": "4a3f2d4895244be57b64e0a6224e4d12f2c7423d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34f7f99a_848df285",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-03T03:35:41Z",
+      "side": 1,
+      "message": "Remove 3. \nuse $OUT instead of out/target/product/blueline to make it generic.\nAlso mention copy the generated binaries to /data/local/tmp/",
+      "range": {
+        "startLine": 6,
+        "startChar": 56,
+        "endLine": 6,
+        "endChar": 83
+      },
+      "revId": "4a3f2d4895244be57b64e0a6224e4d12f2c7423d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76df1933_37ca9136",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-03T03:35:41Z",
+      "side": 1,
+      "message": "Add the following\nPush the resource files to a directory (eg: /sdcard/res/) on device",
+      "revId": "4a3f2d4895244be57b64e0a6224e4d12f2c7423d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20142b13_2cda8c57",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 8
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-03T03:35:41Z",
+      "side": 1,
+      "message": "$ adb shell /data/local/tmp/extractorTest -P /sdcard/res/",
+      "revId": "4a3f2d4895244be57b64e0a6224e4d12f2c7423d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e6ffee5_5e4628ab",
+        "filename": "media/tests/benchmark/src/native/common/Timer.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-03T03:35:41Z",
+      "side": 1,
+      "message": "It would be good to not make style changes here.\nIf these changes are needed, let us make them in the base CL where these were added.",
+      "revId": "4a3f2d4895244be57b64e0a6224e4d12f2c7423d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9f20310_1686d9f2",
+        "filename": "media/tests/benchmark/src/native/extractor/Extractor.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-03T03:35:41Z",
+      "side": 1,
+      "message": "// TODO (b/140128505) Multiple calls result in DoS. \n// Uncomment call to AMediaExtractor_delete() once this is resolved",
+      "range": {
+        "startLine": 126,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 72
+      },
+      "revId": "4a3f2d4895244be57b64e0a6224e4d12f2c7423d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
