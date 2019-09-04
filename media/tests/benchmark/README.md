@@ -28,3 +28,13 @@ The path to these files on the device is required to be given for the test.
 ```
 adb shell /data/local/tmp/extractorTest -P /sdcard/res/
 ```
+
+## Muxer
+
+The test muxes elementary stream and benchmarks the muxers available in NDK.
+
+Setup steps are same as extractor.
+
+```
+adb shell /data/local/tmp/muxerTest -P /sdcard/res/
+```
