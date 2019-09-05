@@ -62,6 +62,24 @@
       "revId": "a20f536b0d9c073afa0f3a0bd5eebcd21ff64672",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9ecbbf6d_29afa345",
+        "filename": "media/tests/benchmark/src/native/common/Timer.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-05T04:00:56Z",
+      "side": 1,
+      "message": "I think this is getting too complicated.\nShould we just pass two different arguments\nTimer::dumpStatistics(std::string operation, std::string inputReference, int64_t duarationUs)?\nThis will keep it simple and force the calling function to pass operation and inputReference?",
+      "parentUuid": "96a31251_69f11d0d",
+      "revId": "a20f536b0d9c073afa0f3a0bd5eebcd21ff64672",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
