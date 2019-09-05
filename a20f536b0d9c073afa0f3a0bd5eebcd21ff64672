@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ff345fe3_186f68e6",
+        "filename": "media/tests/benchmark/src/native/common/Timer.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-09-05T03:48:46Z",
+      "side": 1,
+      "message": "this description doesn\u0027t say anything about the colon that sits between the two strings.",
+      "range": {
+        "startLine": 29,
+        "startChar": 25,
+        "endLine": 29,
+        "endChar": 37
+      },
+      "revId": "a20f536b0d9c073afa0f3a0bd5eebcd21ff64672",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea9b86a7_40000f88",
+        "filename": "media/tests/benchmark/src/native/common/Timer.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-09-05T03:48:46Z",
+      "side": 1,
+      "message": "should be the variable inputReference, not the literal string \"inputReference\"",
+      "range": {
+        "startLine": 59,
+        "startChar": 20,
+        "endLine": 59,
+        "endChar": 37
+      },
+      "revId": "a20f536b0d9c073afa0f3a0bd5eebcd21ff64672",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96a31251_69f11d0d",
+        "filename": "media/tests/benchmark/src/native/common/Timer.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-09-05T03:48:46Z",
+      "side": 1,
+      "message": "we\u0027ll get interesting output if the string is \":\" or \"whatever:\" or \":whatever\".\n\nmaybe a flow like:\n\nstd::string operation, reference;\nindex \u003d inputReference.find(\":\");\nif (index \u003c 0)\n    reference \u003d inputReference;\nelse {\n    operation \u003d inputReference.substr(0,index);\n    reference \u003d inputReference.substr(index+1);\n}\nif (operation.length() \u003d\u003d 0 ) operation \u003d \"process\";\nif (reference.length() \u003d\u003d 0 ) reference \u003d \"inputdata\";",
+      "revId": "a20f536b0d9c073afa0f3a0bd5eebcd21ff64672",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
