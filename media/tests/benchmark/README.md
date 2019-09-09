@@ -38,3 +38,13 @@ Setup steps are same as extractor.
 ```
 adb shell /data/local/tmp/decoderTest -P /sdcard/res/
 ```
+
+## Encoder
+
+The test encodes input stream and benchmarks the encoders available in NDK.
+
+Setup steps are same as extractor.
+
+```
+adb shell /data/local/tmp/encoderTest -P /sdcard/res/
+```
