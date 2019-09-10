@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ac33ba9b_991f66b0",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 13
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-09-10T18:18:04Z",
+      "side": 1,
+      "message": "as a follow-on work for this:\nlet\u0027s consider 32-bit mode tests.\nfor something like this, I expect very little change since the test is trying to stress the extractor code in a different process - so it\u0027s the (hopefully lightweight) harness code that we\u0027re talking about being in 32-bit or 64-bit.\n\nbut it will let us know whether there\u0027s some unexpected strangeness in having the 64-bit service talk to a 32-bit client.",
+      "range": {
+        "startLine": 10,
+        "startChar": 21,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "dc204de26d7ff3b7a3df2091cc64f6d0961fd45c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
