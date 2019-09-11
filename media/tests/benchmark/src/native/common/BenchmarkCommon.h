@@ -27,7 +27,7 @@
 #include <media/NdkMediaCodec.h>
 #include <media/NdkMediaError.h>
 
-#include "Timer.h"
+#include "Stats.h"
 
 using namespace std;
 
@@ -69,11 +69,11 @@ class CallBackQueue {
 
 class CallBackHandle {
   public:
-    CallBackHandle() : mSawError(false), mIsDone(false), mTimer(nullptr) {}
+    CallBackHandle() : mSawError(false), mIsDone(false), mStats(nullptr) {}
 
     virtual ~CallBackHandle() {
         if (mIOThread.joinable()) mIOThread.join();
-        if (mTimer) delete mTimer;
+        if (mStats) delete mStats;
     }
 
     void ioThread();
@@ -94,7 +94,7 @@ class CallBackHandle {
         (void)bufferInfo;
     }
 
-    virtual Timer *getTimer() { return mTimer; }
+    virtual Stats *getStats() { return mStats; }
 
     // Keep a queue of all function callbacks.
     typedef function<void()> IOTask;
@@ -104,7 +104,7 @@ class CallBackHandle {
     bool mIsDone;
 
   private:
-    Timer *mTimer;
+    Stats *mStats;
 };
 
 // Async API's callback
