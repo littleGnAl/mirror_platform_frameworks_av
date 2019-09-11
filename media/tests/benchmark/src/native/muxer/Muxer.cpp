@@ -78,6 +78,7 @@ int32_t Muxer::mux(uint8_t *inputBuffer, vector<AMediaCodecBufferInfo> &frameInf
             return -1;
         }
         mTimer->addOutputTime();
+        mTimer->addFrameSize(info.size);
         frameIdx++;
     }
     return 0;

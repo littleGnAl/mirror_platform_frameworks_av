@@ -81,6 +81,7 @@ void Decoder::onInputAvailable(AMediaCodec *mediaCodec, int32_t bufIdx) {
             mDecoderDoneCondition.notify_one();
             return;
         }
+        mTimer->addFrameSize(bytesRead);
         mNumInputFrame++;
     }
 }

@@ -40,6 +40,7 @@ void Timer::dumpStatistics(std::string operation, std::string inputReference, in
     nsecs_t totalTimeTakenNs = getTotalTime();
     nsecs_t timeTakenPerSec = (totalTimeTakenNs * 1000000) / duarationUs;
     nsecs_t timeToFirstFrameNs = *mOutputTimer.begin() - mStartTimeNs;
+    int32_t size = std::accumulate(mFrameSizes.begin(), mFrameSizes.end(), 0);
     // get min and max output intervals.
     nsecs_t intervalNs;
     nsecs_t minTimeTakenNs = INT64_MAX;
@@ -59,6 +60,7 @@ void Timer::dumpStatistics(std::string operation, std::string inputReference, in
     std::cout << "Time to first frame in nano sec : " << timeToFirstFrameNs << endl;
     std::cout << "Time taken (in nano sec) to " << operation
               << " 1 sec of content : " << timeTakenPerSec << endl;
+    std::cout << "Total bytes " << operation << "ed : " << size << endl;
     std::cout << "Minimum Time in nano sec : " << minTimeTakenNs << endl;
     std::cout << "Maximum Time in nano sec : " << maxTimeTakenNs << endl;
     std::cout << "Destroy Time in nano sec : " << mDeInitTimeNs << endl;

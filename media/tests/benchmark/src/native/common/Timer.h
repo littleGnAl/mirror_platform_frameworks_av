@@ -33,6 +33,7 @@ class Timer {
     }
 
     ~Timer() {
+        if (!mFrameSizes.empty()) mFrameSizes.clear();
         if (!mInputTimer.empty()) mInputTimer.clear();
         if (!mOutputTimer.empty()) mOutputTimer.clear();
     }
@@ -41,6 +42,7 @@ class Timer {
     nsecs_t mInitTimeNs;
     nsecs_t mDeInitTimeNs;
     nsecs_t mStartTimeNs;
+    std::vector<int32_t> mFrameSizes;
     std::vector<nsecs_t> mInputTimer;
     std::vector<nsecs_t> mOutputTimer;
 
@@ -52,6 +54,8 @@ class Timer {
     void setDeInitTime(nsecs_t deInitTime) { mDeInitTimeNs = deInitTime; }
 
     void setStartTime() { mStartTimeNs = systemTime(CLOCK_MONOTONIC); }
+
+    void addFrameSize(int32_t size) { mFrameSizes.push_back(size); }
 
     void addInputTime() { mInputTimer.push_back(systemTime(CLOCK_MONOTONIC)); }
 

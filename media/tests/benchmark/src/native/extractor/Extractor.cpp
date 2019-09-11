@@ -52,6 +52,7 @@ void *Extractor::getCSDSample(AMediaCodecBufferInfo &frameInfo, int32_t csdIndex
     bool csdFound = AMediaFormat_getBuffer(mFormat, csdName, &csdBuffer, &size);
     if (!csdFound) return nullptr;
     frameInfo.size = (int32_t)size;
+    mTimer->addFrameSize(frameInfo.size);
 
     return csdBuffer;
 }
@@ -62,6 +63,7 @@ int32_t Extractor::getFrameSample(AMediaCodecBufferInfo &frameInfo) {
 
     frameInfo.flags = AMediaExtractor_getSampleFlags(mExtractor);
     frameInfo.size = size;
+    mTimer->addFrameSize(frameInfo.size);
     frameInfo.presentationTimeUs = AMediaExtractor_getSampleTime(mExtractor);
     AMediaExtractor_advance(mExtractor);
 
