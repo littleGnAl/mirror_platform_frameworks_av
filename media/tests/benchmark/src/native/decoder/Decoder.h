@@ -25,7 +25,7 @@
 
 #include "BenchmarkCommon.h"
 #include "Extractor.h"
-#include "Timer.h"
+#include "Stats.h"
 
 class Decoder : public CallBackHandle {
   public:
@@ -33,7 +33,7 @@ class Decoder : public CallBackHandle {
         : mCodec(nullptr),
           mFormat(nullptr),
           mExtractor(nullptr),
-          mTimer(nullptr),
+          mStats(nullptr),
           mNumInputFrame(0),
           mNumOutputFrame(0),
           mSawInputEOS(false),
@@ -45,11 +45,8 @@ class Decoder : public CallBackHandle {
     }
 
     virtual ~Decoder() {
-        if (mTimer) delete mTimer;
         if (mExtractor) delete mExtractor;
     }
-
-    Timer *getTimer() override { return mTimer; }
 
     Extractor *getExtractor() { return mExtractor; }
 
@@ -80,7 +77,7 @@ class Decoder : public CallBackHandle {
 
     Extractor *mExtractor;
 
-    Timer *mTimer;
+    Stats *mStats;
 
     int32_t mNumInputFrame;
     int32_t mNumOutputFrame;

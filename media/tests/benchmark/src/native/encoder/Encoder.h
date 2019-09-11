@@ -24,7 +24,7 @@
 #include <thread>
 
 #include "BenchmarkCommon.h"
-#include "Timer.h"
+#include "Stats.h"
 
 struct encParameter {
     int32_t bitrate = -1;
@@ -45,18 +45,14 @@ class Encoder : public CallBackHandle {
     Encoder()
         : mCodec(nullptr),
           mFormat(nullptr),
-          mTimer(nullptr),
+          mStats(nullptr),
           mNumInputFrame(0),
           mNumOutputFrame(0),
           mSawInputEOS(false),
           mSawOutputEOS(false),
           mSignalledError(false) {}
 
-    virtual ~Encoder() {
-        if (mTimer) delete mTimer;
-    }
-
-    Timer *getTimer() override { return mTimer; }
+    virtual ~Encoder() {}
 
     // Encoder related utilities
     void setupEncoder();
@@ -83,7 +79,7 @@ class Encoder : public CallBackHandle {
     AMediaCodec *mCodec;
     AMediaFormat *mFormat;
 
-    Timer *mTimer;
+    Stats *mStats;
 
     int32_t mNumInputFrame;
     int32_t mNumOutputFrame;
