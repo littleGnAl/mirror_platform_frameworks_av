@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cccda586_53e228d5",
+        "filename": "media/extractors/flac/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2019-09-12T18:41:38Z",
+      "side": 1,
+      "message": "can this be alphabetical?",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 18
+      },
+      "revId": "b7922dd77353bf1fba197b38e8da09154b87cac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ae53b11_55e0da40",
+        "filename": "media/extractors/flac/FLACExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2019-09-12T18:41:38Z",
+      "side": 1,
+      "message": "if this is ever false, then some CTS tests may fail.",
+      "range": {
+        "startLine": 52,
+        "startChar": 89,
+        "endLine": 52,
+        "endChar": 93
+      },
+      "revId": "b7922dd77353bf1fba197b38e8da09154b87cac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
