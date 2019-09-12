@@ -11,6 +11,7 @@ cc_library_shared {
         "libbinder_ndk",
         "liblog",
         "libmediandk",
+        "libbase",
     ],
 
     static_libs: [
