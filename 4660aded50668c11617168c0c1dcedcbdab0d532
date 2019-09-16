@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4476adda_e6060a3e",
+        "filename": "media/tests/benchmark/src/native/common/Timer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-09-16T02:41:57Z",
+      "side": 1,
+      "message": "have this call reset() [formerly resetTimers]",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 54
+      },
+      "revId": "4660aded50668c11617168c0c1dcedcbdab0d532",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "418a8d51_15c44f77",
+        "filename": "media/tests/benchmark/src/native/common/Timer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-09-16T02:41:57Z",
+      "side": 1,
+      "message": "we should be resetting the framesizes queue too at this point.\nand that would seem to point to this being more simply named \"reset\".",
+      "range": {
+        "startLine": 64,
+        "startChar": 9,
+        "endLine": 64,
+        "endChar": 20
+      },
+      "revId": "4660aded50668c11617168c0c1dcedcbdab0d532",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5241971e_9ac1f3f5",
+        "filename": "media/tests/benchmark/src/native/decoder/Decoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-09-16T02:41:57Z",
+      "side": 1,
+      "message": "there\u0027s a little disconnect between this having been a timer and that we\u0027re adding more and more stuff to it. frameSize doesn\u0027t quite fit with the concept of times. \n... it\u0027s probably more of a mStats or such now.\n\n[let\u0027s think about how such a change might make sense.]",
+      "range": {
+        "startLine": 84,
+        "startChar": 8,
+        "endLine": 84,
+        "endChar": 29
+      },
+      "revId": "4660aded50668c11617168c0c1dcedcbdab0d532",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
