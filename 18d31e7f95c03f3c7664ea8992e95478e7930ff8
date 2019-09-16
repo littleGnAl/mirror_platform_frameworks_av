@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "dbb6e2e5_c478f59a",
+        "filename": "services/audioflinger/PatchPanel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2019-09-16T08:17:15Z",
+      "side": 1,
+      "message": "Is this code too specific to MSD HAL?",
+      "range": {
+        "startLine": 661,
+        "startChar": 0,
+        "endLine": 681,
+        "endChar": 13
+      },
+      "revId": "18d31e7f95c03f3c7664ea8992e95478e7930ff8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
