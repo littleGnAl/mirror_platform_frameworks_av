@@ -68,6 +68,30 @@
       "revId": "4660aded50668c11617168c0c1dcedcbdab0d532",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4dff425_21fbe33b",
+        "filename": "media/tests/benchmark/src/native/decoder/Decoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-16T21:05:04Z",
+      "side": 1,
+      "message": "Agreed.\nManisha, Let us rename the files and class as Stats.cpp, Stats.h, Stats and mStats.",
+      "parentUuid": "5241971e_9ac1f3f5",
+      "range": {
+        "startLine": 84,
+        "startChar": 8,
+        "endLine": 84,
+        "endChar": 29
+      },
+      "revId": "4660aded50668c11617168c0c1dcedcbdab0d532",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
