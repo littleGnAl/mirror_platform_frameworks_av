@@ -108,7 +108,12 @@ TEST_P(DecoderTest, Decode) {
         string codecName = get<1>(params);
         bool asyncMode = get<2>(params);
         decoder->setupDecoder();
-        status = decoder->decode(inputBuffer, frameInfo, codecName, asyncMode);
+        FILE *outFp = nullptr;
+        #ifdef DUMP_OUTPUT
+        string fileName = "/data/local/tmp/" +  get<0>(params) + "decoded";
+        outFp = fopen(fileName.c_str(), "wb");
+        #endif
+        status = decoder->decode(inputBuffer, frameInfo, codecName, asyncMode, outFp);
         if (status != AMEDIA_OK) {
             cout << "[   WARN   ] Test Skipped. Decode returned error \n";
             free(inputBuffer);
@@ -120,6 +125,7 @@ TEST_P(DecoderTest, Decode) {
         decoder->dumpStatistics(inputReference);
         free(inputBuffer);
         decoder->resetDecoder();
+        if (outFp) fclose(outFp);
     }
     fclose(inputFp);
     extractor->deInitExtractor();
