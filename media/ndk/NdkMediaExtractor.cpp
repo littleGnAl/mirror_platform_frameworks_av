@@ -70,7 +70,7 @@ AMediaExtractor* AMediaExtractor_new() {
 EXPORT
 media_status_t AMediaExtractor_delete(AMediaExtractor *mData) {
     ALOGV("dtor");
-    delete mData;
+    mData = nullptr;
     return AMEDIA_OK;
 }
 
