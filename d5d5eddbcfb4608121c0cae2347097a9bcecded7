@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "077cea91_a20d0a92",
+        "filename": "media/tests/benchmark/src/native/decoder/Decoder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-09-18T20:35:52Z",
+      "side": 1,
+      "message": "why can\u0027t we use the instance in the parent class?\n[and that would make the override of the getStats() method unnecessary]",
+      "range": {
+        "startLine": 83,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 18
+      },
+      "revId": "d5d5eddbcfb4608121c0cae2347097a9bcecded7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
