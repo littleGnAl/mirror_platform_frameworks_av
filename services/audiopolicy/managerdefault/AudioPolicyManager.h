@@ -179,6 +179,8 @@ public:
         status_t getVolumeIndex(const IVolumeCurves &curves, int &index,
                                 audio_devices_t device) const;
 
+        virtual status_t setMsdEnable(bool enable);
+
         // return the strategy corresponding to a given stream type
         virtual uint32_t getStrategyForStream(audio_stream_type_t stream)
         {
@@ -746,6 +748,7 @@ protected:
         bool mTtsOutputAvailable;       // true if a dedicated output for TTS stream is available
 
         bool mMasterMono;               // true if we wish to force all outputs to mono
+        bool mMsdEnable;                // true if we wish to use MSD if available
         AudioPolicyMixCollection mPolicyMixes; // list of registered mixes
         audio_io_handle_t mMusicEffectOutput;     // output selected for music effects
 
@@ -765,6 +768,7 @@ private:
         void modifySurroundChannelMasks(ChannelsVector *channelMasksPtr);
 
         // Support for Multi-Stream Decoder (MSD) module
+        sp<HwModule> getMsdModule() const;
         sp<DeviceDescriptor> getMsdAudioInDevice() const;
         DeviceVector getMsdAudioOutDevices() const;
         const AudioPatchCollection getMsdPatches() const;
@@ -774,6 +778,7 @@ private:
                                            audio_port_config *sinkConfig) const;
         PatchBuilder buildMsdPatch(const sp<DeviceDescriptor> &outputDevice) const;
         status_t setMsdPatch(const sp<DeviceDescriptor> &outputDevice = nullptr);
+        void releaseMsdPatches(DeviceVector devices, String8 address);
 
         // If any, resolve any "dynamic" fields of an Audio Profiles collection
         void updateAudioProfiles(const sp<DeviceDescriptor>& devDesc, audio_io_handle_t ioHandle,

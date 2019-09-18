@@ -357,6 +357,8 @@ public:
     static status_t setMasterMono(bool mono);
     static status_t getMasterMono(bool *mono);
 
+    static status_t setMsdEnable(bool enable);
+
     static status_t setMasterBalance(float balance);
     static status_t getMasterBalance(float *balance);
 

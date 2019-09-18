@@ -85,6 +85,7 @@ enum {
     SET_AUDIO_VOLUME_GROUP_CALLBACK_ENABLED,
     SET_MASTER_MONO,
     GET_MASTER_MONO,
+    SET_MSD_ENABLE,
     GET_STREAM_VOLUME_DB,
     GET_SURROUND_FORMATS,
     SET_SURROUND_FORMAT_ENABLED,
@@ -938,6 +939,18 @@ public:
         return status;
     }
 
+    virtual status_t setMsdEnable(bool enable)
+    {
+        Parcel data, reply;
+        data.writeInterfaceToken(IAudioPolicyService::getInterfaceDescriptor());
+        data.writeInt32(static_cast<int32_t>(enable));
+        status_t status = remote()->transact(SET_MSD_ENABLE, data, &reply);
+        if (status != NO_ERROR) {
+            return status;
+        }
+        return static_cast<status_t>(reply.readInt32());
+    }
+
     virtual float getStreamVolumeDB(audio_stream_type_t stream, int index, audio_devices_t device)
     {
         Parcel data, reply;
@@ -1337,6 +1350,7 @@ status_t BnAudioPolicyService::onTransact(
         case SET_STREAM_VOLUME:
         case REGISTER_POLICY_MIXES:
         case SET_MASTER_MONO:
+        case SET_MSD_ENABLE:
         case GET_SURROUND_FORMATS:
         case SET_SURROUND_FORMAT_ENABLED:
         case SET_ASSISTANT_UID:
@@ -2048,6 +2062,14 @@ status_t BnAudioPolicyService::onTransact(
             if (status == NO_ERROR) {
                 reply->writeInt32(static_cast<int32_t>(mono));
             }
+            return NO_ERROR;
+        } break;
+
+        case SET_MSD_ENABLE: {
+            CHECK_INTERFACE(IAudioPolicyService, data, reply);
+            bool enable = static_cast<bool>(data.readInt32());
+            status_t status = setMsdEnable(enable);
+            reply->writeInt32(status);
             return NO_ERROR;
         } break;
 

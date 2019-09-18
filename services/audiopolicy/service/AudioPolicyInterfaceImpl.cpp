@@ -1325,4 +1325,14 @@ status_t AudioPolicyService::setRttEnabled(bool enabled)
     return NO_ERROR;
 }
 
+status_t AudioPolicyService::setMsdEnable(bool enable)
+{
+    if (mAudioPolicyManager == NULL) {
+        return NO_INIT;
+    }
+    Mutex::Autolock _l(mLock);
+    AutoCallerClear acc;
+    return mAudioPolicyManager->setMsdEnable(enable);
+}
+
 } // namespace android

@@ -1207,20 +1207,7 @@ audio_io_handle_t AudioPolicyManager::getOutputForDevices(
 
         // MSD patch may be using the only output stream that can service this request. Release
         // MSD patch to prioritize this request over any active output on MSD.
-        AudioPatchCollection msdPatches = getMsdPatches();
-        for (size_t i = 0; i < msdPatches.size(); i++) {
-            const auto& patch = msdPatches[i];
-            for (size_t j = 0; j < patch->mPatch.num_sinks; ++j) {
-                const struct audio_port_config *sink = &patch->mPatch.sinks[j];
-                if (sink->type == AUDIO_PORT_TYPE_DEVICE &&
-                        (sink->ext.device.type & devices.types()) != AUDIO_DEVICE_NONE &&
-                        (address.isEmpty() || strncmp(sink->ext.device.address, address.string(),
-                                AUDIO_DEVICE_MAX_ADDRESS_LEN) == 0)) {
-                    releaseAudioPatch(patch->mHandle, mUidCached);
-                    break;
-                }
-            }
-        }
+        releaseMsdPatches(devices, address);
 
         status = outputDesc->open(config, devices, stream, *flags, &output);
 
@@ -1282,19 +1269,35 @@ non_direct_output:
     return output;
 }
 
+sp<HwModule> AudioPolicyManager::getMsdModule() const {
+    sp<HwModule> msdModule = mHwModules.getModuleFromName(AUDIO_HARDWARE_MODULE_ID_MSD);
+    if (msdModule != 0 && !mMsdEnable) {
+        ALOGI("use of the MSD module is disabled");
+        return 0;
+    }
+    return msdModule;
+}
+
 sp<DeviceDescriptor> AudioPolicyManager::getMsdAudioInDevice() const {
-    auto msdInDevices = mHwModules.getAvailableDevicesFromModuleName(AUDIO_HARDWARE_MODULE_ID_MSD,
-                                                                     mAvailableInputDevices);
-    return msdInDevices.isEmpty()? nullptr : msdInDevices.itemAt(0);
+    if (getMsdModule() != 0) {
+        auto msdInDevices = mHwModules.getAvailableDevicesFromModuleName(AUDIO_HARDWARE_MODULE_ID_MSD,
+                                                                         mAvailableInputDevices);
+        return msdInDevices.isEmpty()? nullptr : msdInDevices.itemAt(0);
+    }
+    return 0;
 }
 
 DeviceVector AudioPolicyManager::getMsdAudioOutDevices() const {
-    return mHwModules.getAvailableDevicesFromModuleName(AUDIO_HARDWARE_MODULE_ID_MSD,
-                                                        mAvailableOutputDevices);
+    if (getMsdModule() != 0) {
+        return mHwModules.getAvailableDevicesFromModuleName(AUDIO_HARDWARE_MODULE_ID_MSD,
+                                                            mAvailableOutputDevices);
+    }
+    return DeviceVector();
 }
 
 const AudioPatchCollection AudioPolicyManager::getMsdPatches() const {
     AudioPatchCollection msdPatches;
+    // This function ignores mMsdEnable to allow patch teardown.
     sp<HwModule> msdModule = mHwModules.getModuleFromName(AUDIO_HARDWARE_MODULE_ID_MSD);
     if (msdModule != 0) {
         for (size_t i = 0; i < mAudioPatches.size(); ++i) {
@@ -1314,7 +1317,7 @@ const AudioPatchCollection AudioPolicyManager::getMsdPatches() const {
 status_t AudioPolicyManager::getBestMsdAudioProfileFor(const sp<DeviceDescriptor> &outputDevice,
         bool hwAvSync, audio_port_config *sourceConfig, audio_port_config *sinkConfig) const
 {
-    sp<HwModule> msdModule = mHwModules.getModuleFromName(AUDIO_HARDWARE_MODULE_ID_MSD);
+    sp<HwModule> msdModule = getMsdModule();
     if (msdModule == nullptr) {
         ALOGE("%s() unable to get MSD module", __func__);
         return NO_INIT;
@@ -1435,6 +1438,34 @@ status_t AudioPolicyManager::setMsdPatch(const sp<DeviceDescriptor> &outputDevic
              device->toString().c_str(), patch->sources[0].format,
              patch->sources[0].channel_mask, patch->sources[0].sample_rate);
     return status;
+}
+
+void AudioPolicyManager::releaseMsdPatches(DeviceVector devices, String8 address) {
+    AudioPatchCollection msdPatches = getMsdPatches();
+    for (size_t i = 0; i < msdPatches.size(); i++) {
+        const auto& patch = msdPatches[i];
+        for (size_t j = 0; j < patch->mPatch.num_sinks; ++j) {
+            const struct audio_port_config *sink = &patch->mPatch.sinks[j];
+            if (sink->type == AUDIO_PORT_TYPE_DEVICE &&
+                    (sink->ext.device.type & devices.types()) != AUDIO_DEVICE_NONE &&
+                    (address.isEmpty() || strncmp(sink->ext.device.address, address.string(),
+                            AUDIO_DEVICE_MAX_ADDRESS_LEN) == 0)) {
+                releaseAudioPatch(patch->mHandle, mUidCached);
+                break;
+            }
+        }
+    }
+}
+
+status_t AudioPolicyManager::setMsdEnable(bool enable)
+{
+    mMsdEnable = enable;
+    if (mMsdEnable) {
+         setMsdPatch();
+    } else {
+        releaseMsdPatches(DeviceVector(new DeviceDescriptor(AUDIO_DEVICE_OUT_ALL)), String8(""));
+    }
+    return NO_ERROR;
 }
 
 audio_io_handle_t AudioPolicyManager::selectOutput(const SortedVector<audio_io_handle_t>& outputs,
@@ -4286,6 +4317,7 @@ AudioPolicyManager::AudioPolicyManager(AudioPolicyClientInterface *clientInterfa
     mBeaconMuted(false),
     mTtsOutputAvailable(false),
     mMasterMono(false),
+    mMsdEnable(true),
     mMusicEffectOutput(AUDIO_IO_HANDLE_NONE)
 {
 }
@@ -5015,7 +5047,7 @@ void AudioPolicyManager::checkForDeviceAndOutputChanges(std::function<bool()> on
     checkSecondaryOutputs();
     if (onOutputsChecked != nullptr && onOutputsChecked()) checkA2dpSuspend();
     updateDevicesAndOutputs();
-    if (mHwModules.getModuleFromName(AUDIO_HARDWARE_MODULE_ID_MSD) != 0) {
+    if (getMsdModule() != 0) {
         setMsdPatch();
     }
 }

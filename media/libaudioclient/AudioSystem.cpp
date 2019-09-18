@@ -1364,6 +1364,13 @@ status_t AudioSystem::getMasterMono(bool *mono)
     return aps->getMasterMono(mono);
 }
 
+status_t AudioSystem::setMsdEnable(bool enable)
+{
+    const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
+    if (aps == 0) return PERMISSION_DENIED;
+    return aps->setMsdEnable(enable);
+}
+
 status_t AudioSystem::setMasterBalance(float balance)
 {
     const sp<IAudioFlinger>& af = AudioSystem::get_audio_flinger();
