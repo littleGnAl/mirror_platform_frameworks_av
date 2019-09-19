@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1c881582_9973daac",
+        "filename": "media/tests/benchmark/src/native/common/BenchmarkCommon.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-09-19T22:15:07Z",
+      "side": 1,
+      "message": "if this is protected vs private -- then we can use it in the derived classes.\n\nand we won\u0027t have to make a copy into the derived classes.",
+      "range": {
+        "startLine": 109,
+        "startChar": 11,
+        "endLine": 109,
+        "endChar": 17
+      },
+      "revId": "fa7719b52cfca72d30c880255976ac48133a6850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48f63da8_a7795a14",
+        "filename": "media/tests/benchmark/src/native/decoder/Decoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-09-19T22:15:07Z",
+      "side": 1,
+      "message": "this makes a local copy of the pointer to the entity in the parent class.\nwe should be using the parent class instance directly.\n\nthat means changing the parent class \u0027mStats\u0027 from private to protected.",
+      "range": {
+        "startLine": 132,
+        "startChar": 4,
+        "endLine": 132,
+        "endChar": 37
+      },
+      "revId": "fa7719b52cfca72d30c880255976ac48133a6850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bee45a5_b37a7584",
+        "filename": "media/tests/benchmark/src/native/decoder/Decoder.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-09-19T22:15:07Z",
+      "side": 1,
+      "message": "I think this should also be removed.",
+      "range": {
+        "startLine": 80,
+        "startChar": 3,
+        "endLine": 80,
+        "endChar": 18
+      },
+      "revId": "fa7719b52cfca72d30c880255976ac48133a6850",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
