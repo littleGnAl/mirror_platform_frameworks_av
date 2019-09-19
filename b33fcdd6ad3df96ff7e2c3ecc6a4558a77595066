@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d69e08e_659e933e",
+        "filename": "media/tests/benchmark/tests/DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-19T18:52:53Z",
+      "side": 1,
+      "message": "Since we are not sending format from extractor to decoder, this may be necessary for some decoders.\nCan we confirm if aac decoder works with this change by dumping output from decoder?",
+      "revId": "b33fcdd6ad3df96ff7e2c3ecc6a4558a77595066",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
