@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c55d5459_ec6863e7",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-09-19T23:30:58Z",
+      "side": 1,
+      "message": "I think it\u0027s an over-generalization. MSD is selected only when it can handle the format. The current code is an over-generalization, too. However, I think the actual solution should be more precise.",
+      "range": {
+        "startLine": 891,
+        "startChar": 4,
+        "endLine": 892,
+        "endChar": 60
+      },
+      "revId": "ac7d5cdd47020e5919c39cb4c89c4a12cf09a489",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
