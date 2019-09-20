@@ -46,6 +46,30 @@
       "revId": "ac7d5cdd47020e5919c39cb4c89c4a12cf09a489",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "900a39a7_4aa53cac",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-09-20T00:49:53Z",
+      "side": 1,
+      "message": "The problem is with `AudioPolicyManager::getOutput\u0027 interface itself. With MSD, the same stream type can be rendered either via MSD or directly to HDMI depending on the actual track parameters, and we can\u0027t give a correct answer without knowing them. It definitely depends on the audio format, for example.\n\nSo I don\u0027t yet know how to fix this properly. We might need to extend this function to require more parameters. Also, I don\u0027t know how severe the problem is. Is it only 1 test that fails?",
+      "parentUuid": "51f098c4_2715d34e",
+      "range": {
+        "startLine": 891,
+        "startChar": 4,
+        "endLine": 892,
+        "endChar": 60
+      },
+      "revId": "ac7d5cdd47020e5919c39cb4c89c4a12cf09a489",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
