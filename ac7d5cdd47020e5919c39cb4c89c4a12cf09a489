@@ -22,6 +22,30 @@
       "revId": "ac7d5cdd47020e5919c39cb4c89c4a12cf09a489",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51f098c4_2715d34e",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2019-09-20T00:35:45Z",
+      "side": 1,
+      "message": "Hi Mikhail, would you be able to provide me with more details on what you think the solution should look like? Do you mean that the problem is that we don\u0027t filter the MSD device based on audio_stream_type_t here as in the first line of this function?",
+      "parentUuid": "c55d5459_ec6863e7",
+      "range": {
+        "startLine": 891,
+        "startChar": 4,
+        "endLine": 892,
+        "endChar": 60
+      },
+      "revId": "ac7d5cdd47020e5919c39cb4c89c4a12cf09a489",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
