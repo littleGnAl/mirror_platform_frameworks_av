@@ -70,6 +70,30 @@
       "revId": "ac7d5cdd47020e5919c39cb4c89c4a12cf09a489",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e20f07b7_a1081618",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 892,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2019-09-20T01:29:18Z",
+      "side": 1,
+      "message": "Yes, this is the only known test that is affected.",
+      "parentUuid": "900a39a7_4aa53cac",
+      "range": {
+        "startLine": 891,
+        "startChar": 4,
+        "endLine": 892,
+        "endChar": 60
+      },
+      "revId": "ac7d5cdd47020e5919c39cb4c89c4a12cf09a489",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
