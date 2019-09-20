@@ -1,9 +1,14 @@
 # Benchmark tests
 
+Benchmark app analyses the time taken by MediaCodec, MediaExtractor and MediaMuxer for given set of inputs. It is used to benchmark these modules on android devices.
+This page describes steps to run the NDK and SDK layer test.
+
 Run the following steps to build the test suite:
 ```
 mmm frameworks/av/media/tests/benchmark/
 ```
+To run the test suite for measuring performance of the native layer, follow the following steps:
+# NDK
 
 The binaries will be created in the following path : ${OUT}/data/nativetest64/
 
@@ -57,4 +62,32 @@ Setup steps are same as extractor.
 
 ```
 adb shell /data/local/tmp/encoderTest -P /sdcard/res/
+```
+
+To run the test suite for measuring performance of the SDK layer, follow the following steps:
+# SDK
+
+The apk will be created in the following path:
+${OUT}/testcases/MediaBenchmarkApp/arm64/
+
+The resource files for the tests are taken from [here](https://drive.google.com/open?id=1ghMr17BBJ7n0pqbm7oREiTN_MNemJUqy)
+
+## For installing the apk, run the command:
+```
+adb install -f -r ${OUT}/testcases/MediaBenchmarkApp/arm64/MediaBenchmarkApp.apk
+```
+
+## Running specific tests:
+
+The strings.xml file, present in src/main/res/values/ defines "inputFilePath" variable for the input clips.
+Push the resource files to "inputFilePath" on the device.
+```
+adb push <clips> /data/local/tmp/MediaBenchmark/res/
+```
+
+## Extractor
+
+The test extracts elementary stream and benchmarks the extractors available in SDK.
+```
+adb shell am instrument -w -r -e class 'com.android.media.benchmark.tests.ExtractorTest' com.android.media.benchmark/androidx.test.runner.AndroidJUnitRunner
 ```
