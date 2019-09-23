@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f26e8c5e_2d799db2",
+        "filename": "media/ndk/NdkMediaExtractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-23T03:46:57Z",
+      "side": 1,
+      "message": "Can you try \"delete mData-\u003emImpl; delete mData;\" and see if that resolves the issue seen?",
+      "revId": "f4495b66347ef887a32734ea9d8c83e731b918e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
