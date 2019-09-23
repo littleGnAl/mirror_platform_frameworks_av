@@ -48,6 +48,7 @@ struct ARTPSource : public RefBase {
     void addTMMBR(const sp<ABuffer> &buffer, int32_t targetBitrate);
     uint32_t getSelfID();
     void setSelfID(const uint32_t selfID);
+    void setJbTime(const uint32_t jbTime);
     void notifyPktInfo(int32_t bitrate, int64_t time);
 
     void noticeAbandonBuffer(int cnt=1);
@@ -56,6 +57,8 @@ struct ARTPSource : public RefBase {
     int32_t mFirstRtpTime;
     int64_t mFirstSysTime;
     int32_t mClockRate;
+
+    uint32_t mJbTime;
 
     int32_t mFirstSsrc;
 
