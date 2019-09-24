@@ -6271,6 +6271,10 @@ bool ACodec::BaseState::onOMXFillBufferDone(
 
     PortMode mode = getPortMode(kPortIndexOutput);
 
+    // do not free eos frame directly when PortSettingChanging
+    if (mode == FREE_BUFFERS && (flags & OMX_BUFFERFLAG_EOS))
+        mode = RESUBMIT_BUFFERS;
+
     switch (mode) {
         case KEEP_BUFFERS:
             break;
