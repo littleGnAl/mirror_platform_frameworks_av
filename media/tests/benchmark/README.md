@@ -91,3 +91,10 @@ The test extracts elementary stream and benchmarks the extractors available in S
 ```
 adb shell am instrument -w -r -e class 'com.android.media.benchmark.tests.ExtractorTest' com.android.media.benchmark/androidx.test.runner.AndroidJUnitRunner
 ```
+
+## Muxer
+
+The test muxes elementary stream and benchmarks different writers available in SDK.
+```
+adb shell am instrument -w -r -e class 'com.android.media.benchmark.tests.MuxerTest' com.android.media.benchmark/androidx.test.runner.AndroidJUnitRunner
+```
