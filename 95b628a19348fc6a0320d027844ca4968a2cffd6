@@ -1,0 +1,193 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b8ba871c_d4163cf8",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-24T18:57:14Z",
+      "side": 1,
+      "message": "Remove /target/product/blueline\n${OUT} already includes this.",
+      "range": {
+        "startLine": 71,
+        "startChar": 6,
+        "endLine": 71,
+        "endChar": 30
+      },
+      "revId": "95b628a19348fc6a0320d027844ca4968a2cffd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30ea44e4_30deea45",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-24T18:57:14Z",
+      "side": 1,
+      "message": "Remove here too.",
+      "range": {
+        "startLine": 75,
+        "startChar": 24,
+        "endLine": 75,
+        "endChar": 48
+      },
+      "revId": "95b628a19348fc6a0320d027844ca4968a2cffd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c7b0a39_5a9b39f1",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-24T18:57:14Z",
+      "side": 1,
+      "message": "Add new line at the end of file",
+      "revId": "95b628a19348fc6a0320d027844ca4968a2cffd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb757646_571d95c7",
+        "filename": "media/tests/benchmark/src/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-24T18:57:14Z",
+      "side": 1,
+      "message": "bpfmt -w Android.bp",
+      "revId": "95b628a19348fc6a0320d027844ca4968a2cffd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "864f0a95_53622c9f",
+        "filename": "media/tests/benchmark/src/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-24T18:57:14Z",
+      "side": 1,
+      "message": "New line here",
+      "range": {
+        "startLine": 1,
+        "startChar": 37,
+        "endLine": 1,
+        "endChar": 39
+      },
+      "revId": "95b628a19348fc6a0320d027844ca4968a2cffd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "547a21dc_c52fd0d1",
+        "filename": "media/tests/benchmark/src/androidTest/java/com/android/media/benchmark/ExtractorTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-24T18:57:14Z",
+      "side": 1,
+      "message": "clang-format -style\u003dGoogle -i ExtractorTest.java\nand similarly for rest of the files",
+      "revId": "95b628a19348fc6a0320d027844ca4968a2cffd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d813c63_8c5dfa8b",
+        "filename": "media/tests/benchmark/src/androidTest/java/com/android/media/benchmark/ExtractorTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-24T18:57:14Z",
+      "side": 1,
+      "message": "Ensure the files used are same as the ones used in ExtractorTest.cpp and maintain the same order.",
+      "range": {
+        "startLine": 54,
+        "startChar": 16,
+        "endLine": 78,
+        "endChar": 64
+      },
+      "revId": "95b628a19348fc6a0320d027844ca4968a2cffd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "12edfcdb_50d9fd2b",
+        "filename": "media/tests/benchmark/src/androidTest/java/com/android/media/benchmark/ExtractorTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-24T18:57:14Z",
+      "side": 1,
+      "message": "Does this print entire file path when printing statistics?\nNDK version only prints the filename (excluding the path). We may need to preserve just the file name and pass here.",
+      "range": {
+        "startLine": 97,
+        "startChar": 37,
+        "endLine": 97,
+        "endChar": 51
+      },
+      "revId": "95b628a19348fc6a0320d027844ca4968a2cffd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3cfb312_8b0a1202",
+        "filename": "media/tests/benchmark/src/main/res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-24T18:57:14Z",
+      "side": 1,
+      "message": "Can\u0027t we use /sdcard/res here?\nNDK tests use that path.",
+      "range": {
+        "startLine": 2,
+        "startChar": 33,
+        "endLine": 2,
+        "endChar": 53
+      },
+      "revId": "95b628a19348fc6a0320d027844ca4968a2cffd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
