@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6e98b9d9_30bdd3ab",
+        "filename": "media/mtp/MtpServer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 949,
+      "author": {
+        "id": 1330244
+      },
+      "writtenOn": "2019-09-25T02:27:51Z",
+      "side": 1,
+      "message": "Since this issue only occurs on FAT-like file system, it might be better to add a check as being only applied to non-Internal Storage",
+      "revId": "fd335dcaab80a37d68d73ce9c5b2481f444c27fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a74e5615_93efd500",
+        "filename": "media/mtp/MtpStringBuffer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1330244
+      },
+      "writtenOn": "2019-09-25T02:27:51Z",
+      "side": 1,
+      "message": "Any reason to create a new trimming function? (or difference from existing generic one like android::base::Trim() in below example?)\nhttps://android.googlesource.com/platform/frameworks/native/+/ccddf4c9f5830d5c7b9e35d000f9e6eec5b0fdec/services/vr/performanced/task.cpp#126",
+      "revId": "fd335dcaab80a37d68d73ce9c5b2481f444c27fb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
