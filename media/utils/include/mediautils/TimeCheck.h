@@ -33,7 +33,8 @@ public:
     // The default timeout is chosen to be less than system server watchdog timeout
     static constexpr uint32_t kDefaultTimeOutMs = 5000;
 
-            TimeCheck(const char *tag, uint32_t timeoutMs = kDefaultTimeOutMs);
+            TimeCheck(const char *tag, uint32_t timeoutMs = kDefaultTimeOutMs,
+                bool dumpServicesOfInterest = true);
             ~TimeCheck();
 
 private:
@@ -41,7 +42,8 @@ private:
     class TimeCheckThread : public Thread {
     public:
 
-                            TimeCheckThread() {}
+        explicit            TimeCheckThread(bool dumpServicesOfInterest = true) :
+                                mDumpServicesOfInterest(dumpServicesOfInterest) {}
         virtual             ~TimeCheckThread() override;
 
                 nsecs_t     startMonitoring(const char *tag, uint32_t timeoutMs);
@@ -60,9 +62,10 @@ private:
                 // using the end time in ns as key is OK given the risk is low that two entries
                 // are added in such a way that <add time> + <timeout> are the same for both.
                 KeyedVector< nsecs_t, const char*>  mMonitorRequests;
+                const bool          mDumpServicesOfInterest;
     };
 
-    static sp<TimeCheckThread> getTimeCheckThread();
+    static sp<TimeCheckThread> getTimeCheckThread(bool dumpServicesOfInterest = true);
 
     const           nsecs_t mEndTimeNs;
 };

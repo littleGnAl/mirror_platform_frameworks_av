@@ -20,10 +20,13 @@
 #include <binder/IPCThreadState.h>
 #include <binder/IServiceManager.h>
 #include <binder/PermissionCache.h>
+#include "android/hidl/manager/1.0/IServiceManager.h"
+#include "debuggerd/handler.h"
 #include "mediautils/ServiceUtilities.h"
 
 #include <iterator>
 #include <algorithm>
+#include <set>
 
 /* When performing permission checks we do not use permission cache for
  * runtime permissions (protection level dangerous) as they may change at
@@ -309,6 +312,34 @@ void MediaPackageManager::dump(int fd, int spaces) const {
                     package.playbackCaptureAllowed ? "true " : "false",
                     package.name.c_str());
         }
+    }
+}
+
+void dumpServicesOfInterest() {
+    using android::hidl::manager::V1_0::IServiceManager;
+    using android::hardware::Return;
+
+    sp<IServiceManager> sm = IServiceManager::getService();
+    std::set<pid_t> pids;
+
+    Return<void> ret = sm->debugDump([&](auto& serviceInfos) {
+        for (const auto& info : serviceInfos) {
+            if (info.pid == static_cast<pid_t>(IServiceManager::PidConstant::NO_PID)) {
+                continue;
+            }
+            if (strncmp("android.hardware.audio@",
+                        info.interfaceName.c_str(),
+                        strlen("android.hardware.audio@"))) {
+                continue;
+            }
+            ALOGI("%s requesting tombstone for service %s pid %d",
+                __func__, info.interfaceName.c_str(), info.pid);
+            pids.insert(info.pid);
+        }
+    });
+
+    for (const auto& pid : pids) {
+        sigqueue(pid, DEBUGGER_SIGNAL, {.sival_int = 0});
     }
 }
 

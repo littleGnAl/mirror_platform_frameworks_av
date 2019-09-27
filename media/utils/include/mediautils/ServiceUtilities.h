@@ -85,6 +85,8 @@ bool bypassInterruptionPolicyAllowed(pid_t pid, uid_t uid);
 
 status_t checkIMemory(const sp<IMemory>& iMemory);
 
+void dumpServicesOfInterest();
+
 class MediaPackageManager {
 public:
     /** Query the PackageManager to check if all apps of an UID allow playback capture. */

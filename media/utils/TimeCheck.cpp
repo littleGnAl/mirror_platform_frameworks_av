@@ -16,20 +16,22 @@
 
 
 #include <utils/Log.h>
-#include <mediautils/TimeCheck.h>
 #include <mediautils/EventLog.h>
+#include <mediautils/ServiceUtilities.h>
+#include <mediautils/TimeCheck.h>
 
 namespace android {
 
 /* static */
-sp<TimeCheck::TimeCheckThread> TimeCheck::getTimeCheckThread()
+sp<TimeCheck::TimeCheckThread> TimeCheck::getTimeCheckThread(bool dumpServicesOfInterest)
 {
-    static sp<TimeCheck::TimeCheckThread> sTimeCheckThread = new TimeCheck::TimeCheckThread();
+    static sp<TimeCheck::TimeCheckThread> sTimeCheckThread =
+        new TimeCheck::TimeCheckThread(dumpServicesOfInterest);
     return sTimeCheckThread;
 }
 
-TimeCheck::TimeCheck(const char *tag, uint32_t timeoutMs)
-    : mEndTimeNs(getTimeCheckThread()->startMonitoring(tag, timeoutMs))
+TimeCheck::TimeCheck(const char *tag, uint32_t timeoutMs, bool dumpServicesOfInterest)
+    : mEndTimeNs(getTimeCheckThread(dumpServicesOfInterest)->startMonitoring(tag, timeoutMs))
 {
 }
 
@@ -84,6 +86,12 @@ bool TimeCheck::TimeCheckThread::threadLoop()
         }
     }
     if (status != NO_ERROR) {
+        // Generate tombstones for audio HAL processes and allow time to complete
+        // before forcing restart
+        if (mDumpServicesOfInterest) {
+            dumpServicesOfInterest();
+            sleep(1);
+        }
         LOG_EVENT_STRING(LOGTAG_AUDIO_BINDER_TIMEOUT, tag);
         LOG_ALWAYS_FATAL("TimeCheck timeout for %s", tag);
     }
