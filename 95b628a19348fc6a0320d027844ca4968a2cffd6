@@ -362,6 +362,30 @@
       "revId": "95b628a19348fc6a0320d027844ca4968a2cffd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "560bd05e_98595462",
+        "filename": "media/tests/benchmark/src/main/res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-09-27T17:39:54Z",
+      "side": 1,
+      "message": "Android-10 doesn\u0027t allow reads from /sdcard/.\nFor now this is fine.",
+      "parentUuid": "b3cfb312_8b0a1202",
+      "range": {
+        "startLine": 2,
+        "startChar": 33,
+        "endLine": 2,
+        "endChar": 53
+      },
+      "revId": "95b628a19348fc6a0320d027844ca4968a2cffd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
