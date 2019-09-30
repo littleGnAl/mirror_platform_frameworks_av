@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b59ce3ca_d9fc285d",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-09-30T23:38:01Z",
+      "side": 1,
+      "message": "where are these sourced? are they embedded in the apk (I didn\u0027t see that).\ndo we need to push clips to /data/local/tmp/res/  for the above apk to test anything?\n\ni\u0027d prefer a different name than /data/local/tmp/res.\nthe /data/local/tmp/ part is fine, but let\u0027s replace \"res\" with something that is indicative of what\u0027s going on here -- so maybe /data/local/tmp/MediaBenchmark/  or /data/local/tmp/MediaBenchmark/res/",
+      "range": {
+        "startLine": 83,
+        "startChar": 9,
+        "endLine": 83,
+        "endChar": 17
+      },
+      "revId": "e542026f5423ae6e717979ed6e12ea479960de58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f33d0439_dc5a1637",
+        "filename": "media/tests/benchmark/src/androidTest/java/com/android/media/benchmark/tests/ExtractorTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-09-30T23:38:01Z",
+      "side": 1,
+      "message": "provide the name (and maybe the path too)  -- \"can\u0027t find X in directory Y\".",
+      "range": {
+        "startLine": 87,
+        "startChar": 34,
+        "endLine": 87,
+        "endChar": 62
+      },
+      "revId": "e542026f5423ae6e717979ed6e12ea479960de58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "feabbbff_6db67e16",
+        "filename": "media/tests/benchmark/src/main/res/values/strings.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-09-30T23:38:01Z",
+      "side": 1,
+      "message": "I don\u0027t like lumping it into a generic \"res\"\nsee earlier comment about that as part of reviewing the readme.md file.",
+      "range": {
+        "startLine": 2,
+        "startChar": 38,
+        "endLine": 2,
+        "endChar": 53
+      },
+      "revId": "e542026f5423ae6e717979ed6e12ea479960de58",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
