@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf2025de_8677a04b",
+        "filename": "media/utils/ServiceUtilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-09-30T15:59:18Z",
+      "side": 1,
+      "message": "I think it would be more correct to query \u0027interfaceDescriptor\u0027 string from IDeviceFactory instances that AudioFlinger uses and check against them. But that\u0027s surely a more complicated way.",
+      "range": {
+        "startLine": 330,
+        "startChar": 16,
+        "endLine": 332,
+        "endChar": 58
+      },
+      "revId": "bce8080d6700096e948e74d6fcc4dd878f7ad990",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34e3f39d_80f1d2f4",
+        "filename": "media/utils/include/mediautils/TimeCheck.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-09-30T15:59:18Z",
+      "side": 1,
+      "message": "Do we ever need to create TimeCheckThread and don\u0027t dump other services? If not, then maybe remove this argument and the field and assume they always true.",
+      "range": {
+        "startLine": 45,
+        "startChar": 44,
+        "endLine": 45,
+        "endChar": 78
+      },
+      "revId": "bce8080d6700096e948e74d6fcc4dd878f7ad990",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
