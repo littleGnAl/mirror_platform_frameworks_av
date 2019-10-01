@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "429f9e2d_5eb51ceb",
+        "filename": "media/tests/benchmark/src/androidTest/java/com/android/media/benchmark/tests/MuxerTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1261213
+      },
+      "writtenOn": "2019-10-01T04:37:33Z",
+      "side": 1,
+      "message": "Need to make a copy of this sample buffer before adding to list of input buffers.\n\nByteBuffer tempSampleBuffer \u003d ByteBuffer.allocate(bufferInfo.size);\ntempSampleBuffer .put(extractor.getFrameBuffer().array(), 0, bufferInfo.size);\ninputBuffer.add(tempSampleBuffer);",
+      "range": {
+        "startLine": 112,
+        "startChar": 36,
+        "endLine": 112,
+        "endChar": 62
+      },
+      "revId": "1752c505748c5947e0c4edaeeec408d9d22376a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
