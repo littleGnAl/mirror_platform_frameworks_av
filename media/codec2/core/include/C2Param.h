@@ -136,7 +136,7 @@ public:
      * vendor.
      */
     typedef uint32_t type_index_t;
-    enum : uint32_t {
+    enum type_index_enum : uint32_t {
             TYPE_INDEX_VENDOR_START = 0x00008000, ///< vendor indices SHALL start after this
     };
 
@@ -157,14 +157,14 @@ public:
      */
     struct CoreIndex {
     //public:
-        enum : uint32_t {
+        enum core_index_enum : uint32_t {
             IS_FLEX_FLAG    = 0x00010000,
             IS_REQUEST_FLAG = 0x00020000,
         };
 
     protected:
-        enum : uint32_t {
-            KIND_MASK      = 0xC0000000,
+        enum core_index_protected_enum : uint32_t {
+            KIND_MASK      = 0xC0000001,
             KIND_STRUCT    = 0x00000000,
             KIND_TUNING    = 0x40000000,
             KIND_SETTING   = 0x80000000,
@@ -591,7 +591,7 @@ protected:
     template<typename ...Args>
     inline C2Setting(const Args(&... args)) : C2Param(args...) { }
 public: // TODO
-    enum : uint32_t { PARAM_KIND = Type::KIND_SETTING };
+    enum c2setting_enum : uint32_t { PARAM_KIND = Type::KIND_SETTING };
 };
 
 /**
@@ -602,7 +602,7 @@ protected:
     template<typename ...Args>
     inline C2Tuning(const Args(&... args)) : C2Setting(args...) { }
 public: // TODO
-    enum : uint32_t { PARAM_KIND = Type::KIND_TUNING };
+    enum c2tuning_enum : uint32_t { PARAM_KIND = Type::KIND_TUNING };
 };
 
 /**
@@ -613,7 +613,7 @@ protected:
     template<typename ...Args>
     inline C2Info(const Args(&... args)) : C2Param(args...) { }
 public: // TODO
-    enum : uint32_t { PARAM_KIND = Type::KIND_INFO };
+    enum c2info_enum : uint32_t { PARAM_KIND = Type::KIND_INFO };
 };
 
 /**
@@ -1286,7 +1286,7 @@ public: \
 /// Define a structure with matching CORE_INDEX.
 #define DEFINE_C2STRUCT(name) \
 public: \
-    enum : uint32_t { CORE_INDEX = kParamIndex##name }; \
+    enum name##_enum : uint32_t { CORE_INDEX = kParamIndex##name }; \
     DEFINE_BASE_C2STRUCT(name)
 
 /// Define a flexible structure without CORE_INDEX.
@@ -1299,7 +1299,7 @@ public: \
 #define DEFINE_FLEX_C2STRUCT(name, flexMember) \
 public: \
     FLEX(C2##name##Struct, flexMember) \
-    enum : uint32_t { CORE_INDEX = kParamIndex##name | C2Param::CoreIndex::IS_FLEX_FLAG }; \
+    enum name##_enum : uint32_t { CORE_INDEX = kParamIndex##name | C2Param::CoreIndex::IS_FLEX_FLAG }; \
     DEFINE_BASE_C2STRUCT(name)
 
 /// \ingroup internal
