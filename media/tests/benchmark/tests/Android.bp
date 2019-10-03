@@ -75,3 +75,19 @@ cc_test {
         "libbenchmark_encoder",
     ],
 }
+
+cc_test {
+    name: "C2DecoderTest",
+    gtest: true,
+    defaults: [
+        "libbenchmark_codec2_common-defaults",
+        //"libbenchmark_soft_sanitize_all-defaults",
+    ],
+
+    srcs: ["C2DecoderTest.cpp"],
+
+    static_libs: [
+        "libbenchmark_extractor",
+        "libbenchmark_codec2_decoder",
+    ],
+}

@@ -62,6 +62,57 @@ cc_defaults {
     ]
 }
 
+cc_library_static {
+    name: "libbenchmark_codec2_common",
+    defaults: [
+        "libbenchmark_common-defaults",
+        "libcodec2-hidl-client-defaults",
+        //"libbenchmark_soft_sanitize_all-defaults",
+    ],
+
+    include_dirs: [
+        "frameworks/av/media/codec2/hidl/client/include",
+    ],
+
+    shared_libs: [
+        "libcodec2_client",
+    ],
+
+    srcs: [
+        "BenchmarkC2Common.cpp",
+    ],
+
+    export_include_dirs: ["."],
+
+    ldflags: ["-Wl,-Bsymbolic"]
+}
+
+cc_defaults {
+    name: "libbenchmark_codec2_common-defaults",
+
+    defaults: [
+        "libbenchmark_common-defaults",
+        "libcodec2-hidl-client-defaults",
+    ],
+
+    header_libs: [
+        "libcodec2_headers",
+    ],
+
+    include_dirs: [
+        "frameworks/av/media/codec2/vndk/include",
+        "frameworks/av/media/codec2/hidl/client/include",
+    ],
+
+    static_libs: [
+        "libbenchmark_codec2_common",
+    ],
+
+    shared_libs: [
+        "libcodec2_client",
+    ]
+}
+
 // public dependency for native implementation
 // to be used by code under media/benchmark/* only
 cc_defaults {
