@@ -17,6 +17,7 @@
 cc_test {
     name: "VtsVndkHidlBufferpoolV1_0TargetSingleTest",
     defaults: ["VtsHalTargetTestDefaults"],
+    test_suites: ["vts-core"],
     srcs: [
         "allocator.cpp",
         "single.cpp",
