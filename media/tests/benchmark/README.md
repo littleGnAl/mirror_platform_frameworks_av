@@ -103,3 +103,10 @@ The test decodes input stream and benchmarks the decoders available in SDK.
 ```
 adb shell am instrument -w -r -e class 'com.android.media.benchmark.tests.DecoderTest' com.android.media.benchmark/androidx.test.runner.AndroidJUnitRunner
 ```
+
+## Encoder
+
+The test encodes input stream and benchmarks the encoders available in SDK.
+```
+adb shell am instrument -w -r -e class 'com.android.media.benchmark.tests.EncoderTest' com.android.media.benchmark/androidx.test.runner.AndroidJUnitRunner
+```
