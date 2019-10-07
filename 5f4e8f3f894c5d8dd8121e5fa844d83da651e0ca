@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ddb7197f_f9caee99",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-10-07T20:42:02Z",
+      "side": 1,
+      "message": "Reverted to old location.",
+      "parentUuid": "41919c74_c7f98570",
+      "revId": "5f4e8f3f894c5d8dd8121e5fa844d83da651e0ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9568fa09_d37d44e3",
         "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
         "patchSetId": 2
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "ca90a360_8ac52ae1",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-10-07T20:42:02Z",
+      "side": 1,
+      "message": "Moved it to its own block with a lock",
+      "parentUuid": "9568fa09_d37d44e3",
+      "revId": "5f4e8f3f894c5d8dd8121e5fa844d83da651e0ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ec767fa_01a03682",
         "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
         "patchSetId": 2
@@ -47,6 +83,24 @@
       "writtenOn": "2019-10-07T19:02:17Z",
       "side": 1,
       "message": "wondering why we don\u0027t have this code here set up as the bitrate code was before:\nlock, get new param, unlock, process the new param.\n(so that fetching the requestSync is right next to where we actually use it.)\n\nif it\u0027s to reduce locking invocations....\ncould lines 896..908 be placed immediately after line 882, so that it\u0027s in the same \u0027block\u0027 as the bitrate change.",
+      "revId": "5f4e8f3f894c5d8dd8121e5fa844d83da651e0ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78c1b12d_7174c2d2",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-10-07T20:42:02Z",
+      "side": 1,
+      "message": "Followed the requested method similar to bitrate handling.",
+      "parentUuid": "3ec767fa_01a03682",
       "revId": "5f4e8f3f894c5d8dd8121e5fa844d83da651e0ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
