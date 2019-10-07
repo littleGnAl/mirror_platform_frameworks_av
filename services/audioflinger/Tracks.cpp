@@ -2414,7 +2414,8 @@ status_t AudioFlinger::RecordThread::PassthruPatchRecord::obtainBuffer(
     if (!stream) return NO_INIT;  // If there is no stream, RecordThread is not reading.
 
     status_t result = NO_ERROR;
-    struct timespec newTimeOut = *timeOut;
+    struct timespec newTimeOut;
+    if (timeOut) newTimeOut = *timeOut;
     size_t bytesRead = 0;
     {
         ATRACE_NAME("read");
@@ -2445,7 +2446,7 @@ status_t AudioFlinger::RecordThread::PassthruPatchRecord::obtainBuffer(
         newTimeOut.tv_sec = newTimeOutNs / NANOS_PER_SECOND;
         newTimeOut.tv_nsec = newTimeOutNs - newTimeOut.tv_sec * NANOS_PER_SECOND;
     }
-    return PatchRecord::obtainBuffer(buffer, &newTimeOut);
+    return PatchRecord::obtainBuffer(buffer, timeOut ? &newTimeOut : nullptr);
 
 stream_error:
     stream->standby();
