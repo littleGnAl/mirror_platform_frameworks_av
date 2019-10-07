@@ -592,6 +592,11 @@ private:
     status_t getCameraCharacteristicsLocked(const std::string &id,
             CameraMetadata* characteristics) const;
     void filterLogicalCameraIdsLocked(std::vector<std::string>& deviceIds) const;
+
+    bool isPublicallyHiddenSecureCameraLocked(const std::string& id);
+
+    std::pair<bool, CameraProviderManager::ProviderInfo::DeviceInfo *>
+            isHiddenPhysicalCameraInternal(const std::string& cameraId);
 };
 
 } // namespace android
