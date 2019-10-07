@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41919c74_c7f98570",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 867,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-07T19:02:17Z",
+      "side": 1,
+      "message": "i don\u0027t understand why these moved up here from their original location.\nIt doesn\u0027t appear that we added a reference to them that required moving them forward.",
+      "revId": "5f4e8f3f894c5d8dd8121e5fa844d83da651e0ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9568fa09_d37d44e3",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-07T19:02:17Z",
+      "side": 1,
+      "message": "strange placement.",
+      "revId": "5f4e8f3f894c5d8dd8121e5fa844d83da651e0ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ec767fa_01a03682",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-07T19:02:17Z",
+      "side": 1,
+      "message": "wondering why we don\u0027t have this code here set up as the bitrate code was before:\nlock, get new param, unlock, process the new param.\n(so that fetching the requestSync is right next to where we actually use it.)\n\nif it\u0027s to reduce locking invocations....\ncould lines 896..908 be placed immediately after line 882, so that it\u0027s in the same \u0027block\u0027 as the bitrate change.",
+      "revId": "5f4e8f3f894c5d8dd8121e5fa844d83da651e0ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
