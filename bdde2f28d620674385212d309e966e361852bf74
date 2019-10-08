@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef48c778_7771d17d",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/MuxerTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-08T04:07:43Z",
+      "side": 1,
+      "message": "indicate which input file has the bad format.\n\n\"muxertest failed for whatever.webm, returned invalid format\"\nor something along those lines.\nit tells us what test (muxer vs codec)\nit tells us which input file\nit tells us what was wrong.\n\nexact formatting could be different, but i\u0027d want it to convey those three facts.\ni saw that this stuff gets emitted with Log.i, so we\u0027re going to be capturing logcat output\nto get at these results.\nI\u0027d like to be able to do something like\n.. run the benchmarks\n   adb logcat -d | grep MediaBenchmark \u003e all-the-results\n\nand then be able to get all of the needed information from the file \"all-the-results\".\nI\u0027d even look for enough consistency that I could write a shell script or awk [or your choice of scripting tools] that would parse that file into an appropriate CSV file for me.",
+      "range": {
+        "startLine": 132,
+        "startChar": 31,
+        "endLine": 132,
+        "endChar": 49
+      },
+      "revId": "bdde2f28d620674385212d309e966e361852bf74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9407badc_cbac468b",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/MuxerTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-08T04:07:43Z",
+      "side": 1,
+      "message": "this should follow the same standard that we set up based on my comments after line 132.",
+      "range": {
+        "startLine": 138,
+        "startChar": 18,
+        "endLine": 138,
+        "endChar": 80
+      },
+      "revId": "bdde2f28d620674385212d309e966e361852bf74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88c6ae5b_bac57e7f",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-08T04:07:43Z",
+      "side": 1,
+      "message": "where are the results emitted?\ndisplay, logcat, a file somewhere?\n[i looked at the source and see that they go to logcat]\n\nwhere to find the results needs to be documented in this file, not just the source code.\nThis will apply to all of the benchmarks (muxer, extractor, etc).",
+      "revId": "bdde2f28d620674385212d309e966e361852bf74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
