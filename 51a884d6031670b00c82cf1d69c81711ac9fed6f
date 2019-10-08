@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f9fe6ccd_17b8cceb",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/res/values/strings.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-08T03:59:31Z",
+      "side": 1,
+      "message": "i know I had you move this from /data/local/tmp/res to a further subdirectory.\n\naren\u0027t the native tests using a directory in /sdcard?\n\nIt would seem to me that we should have a common place between both native and sdk test suites. We are using the same data sets for both of them.\n\nand if we\u0027re doing that, I would think somewhere in /sdcard (a named subdirectory that holds just the test data for these tests.   I know that this means reworking some directory configurations across multiple places within these tests.",
+      "range": {
+        "startLine": 2,
+        "startChar": 36,
+        "endLine": 2,
+        "endChar": 71
+      },
+      "revId": "51a884d6031670b00c82cf1d69c81711ac9fed6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d436e7d_08b578fc",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/ExtractorTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-08T03:59:31Z",
+      "side": 1,
+      "message": "it would be great if we could derive this list from the files that are in the directory.\nor have the default list of files (and for this set, track #s too) included as a file in that test directory....\n\nmake that a future change.",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 65
+      },
+      "revId": "51a884d6031670b00c82cf1d69c81711ac9fed6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0992ffd6_26186a90",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Stats.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-08T03:59:31Z",
+      "side": 1,
+      "message": "perhaps add a \"bytes/second\" metric here indicating how fast we work through the file.\nThat also gives us an idea of how much slower than the raw \"read a file\" speed offered by the underlying filesystem we\u0027re at.\n\nall of these are still \u0027wall time\u0027 and don\u0027t tell us just how much of the CPU we might have used to do the processing.  I\u0027m interested in that, but do not know best how to measure it at this point, especially with extractors and codecs doing a bunch of their work in a separate process. Put that on the list of things to look at later.",
+      "range": {
+        "startLine": 130,
+        "startChar": 8,
+        "endLine": 130,
+        "endChar": 63
+      },
+      "revId": "51a884d6031670b00c82cf1d69c81711ac9fed6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd00b90f_022b0c41",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-08T03:59:31Z",
+      "side": 1,
+      "message": "let\u0027s get 1 consistent set of directories between all the tests.\nwe have /data/local/tmp, /sdcard/res, /data/local/tmp/MediaBenchmark/res/\n\nI think a good common spot is /sdcard/MediaBenchmark/  -- and however we want to arrange things under there.",
+      "range": {
+        "startLine": 64,
+        "startChar": 41,
+        "endLine": 64,
+        "endChar": 53
+      },
+      "revId": "51a884d6031670b00c82cf1d69c81711ac9fed6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a7b8b53_7d6022a0",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-08T03:59:31Z",
+      "side": 1,
+      "message": "all files in that directory?\n\n\nto simplify experience for the user -- we should probably have the test data in a zip file so we can download 1 zip file, unpack it, and push the contents to the device...",
+      "revId": "51a884d6031670b00c82cf1d69c81711ac9fed6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "637ef1a7_41332ba9",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-08T03:59:31Z",
+      "side": 1,
+      "message": "will adb create the target directory for us, or should we do:\nadb shell mkdir /data/local/tmp/MediaBenchmark/res/\nbefore this step?",
+      "range": {
+        "startLine": 85,
+        "startChar": 17,
+        "endLine": 85,
+        "endChar": 52
+      },
+      "revId": "51a884d6031670b00c82cf1d69c81711ac9fed6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a2e74f6_43e9a34a",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-08T03:59:31Z",
+      "side": 1,
+      "message": "do we (or can we) have an invocation that will run all of the tests...  extractor, codecs, muxer, etc.  so we can issue 1 command to run them all  (and that means that we have to make sure we have enough information in wherever we write the results that can grab that and parse it into the appropriate tables representing the appropriate tests).",
+      "range": {
+        "startLine": 92,
+        "startChar": 30,
+        "endLine": 92,
+        "endChar": 88
+      },
+      "revId": "51a884d6031670b00c82cf1d69c81711ac9fed6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
