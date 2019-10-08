@@ -158,6 +158,24 @@
       "revId": "5f4e8f3f894c5d8dd8121e5fa844d83da651e0ca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "98022721_381d1b95",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 896,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-08T22:43:35Z",
+      "side": 1,
+      "message": "just looked at the vpx encoder... i see that it has this block done at line 882...\nI know that is different than you solved it in the next patchset.",
+      "parentUuid": "e4309d6f_33d57e76",
+      "revId": "5f4e8f3f894c5d8dd8121e5fa844d83da651e0ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
