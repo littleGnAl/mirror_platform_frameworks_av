@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "897ac6cc_81f9a776",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/MuxerTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-09T16:52:27Z",
+      "side": 1,
+      "message": "sdk/decoder test uses phrasing like \"test skipped. Cannot find ...\"\nlet\u0027s align the two diagnostics.\n[i like the sdk/decoder phrasing better than this one]",
+      "range": {
+        "startLine": 139,
+        "startChar": 23,
+        "endLine": 139,
+        "endChar": 38
+      },
+      "revId": "54df1a12053f9e4659092e099317226cb83f7737",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
