@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6d895af0_e60654d3",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/MuxerTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-10-09T14:38:57Z",
+      "side": 1,
+      "message": "The TAG tells us which module has failed. Changed the error message to display the input file and cause of error.\nTo collect all the logs related to benchmark app we can grep \u0027com.android.media.benchmark\u0027",
+      "parentUuid": "ef48c778_7771d17d",
+      "range": {
+        "startLine": 132,
+        "startChar": 31,
+        "endLine": 132,
+        "endChar": 49
+      },
+      "revId": "bdde2f28d620674385212d309e966e361852bf74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9407badc_cbac468b",
         "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/MuxerTest.java",
         "patchSetId": 3
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f55d9189_ca476b7d",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/MuxerTest.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-10-09T14:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9407badc_cbac468b",
+      "range": {
+        "startLine": 138,
+        "startChar": 18,
+        "endLine": 138,
+        "endChar": 80
+      },
+      "revId": "bdde2f28d620674385212d309e966e361852bf74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88c6ae5b_bac57e7f",
         "filename": "media/tests/benchmark/README.md",
         "patchSetId": 3
@@ -62,6 +110,24 @@
       "revId": "bdde2f28d620674385212d309e966e361852bf74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65e2aea0_6c248a4f",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-10-09T14:38:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88c6ae5b_bac57e7f",
+      "revId": "bdde2f28d620674385212d309e966e361852bf74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
