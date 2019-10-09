@@ -37,10 +37,21 @@ namespace android {
 #endif
 
 #if defined(__SSSE3__)  // Should be supported in x86 ABI for both 32 & 64-bit.
+
 #define USE_SSE (true)
+
 #include <tmmintrin.h>
+#if defined(__AVX2__)  // Should be supported in x86 ABI for both 32 & 64-bit.
+#define USE_AVX2 (true)
+#include <immintrin.h>
 #else
+#define USE_AVX2(false)
+#endif
+
+#else
+
 #define USE_SSE (false)
+
 #endif
 
 template<typename T, typename U>
