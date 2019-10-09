@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ba70ac5d_d9c65552",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-09T16:52:16Z",
+      "side": 1,
+      "message": "since this is going to hold files that we generate as part of running and we should be able to discard them at any time if we wanted to reclaim space...\n\nI like a subdirectory from there, \"generated\" or \"results\" or \"testOutput\" or a name like that.\nIt makes it more obvious what files we can discard if we have to manually clean the directory for some reason.",
+      "range": {
+        "startLine": 3,
+        "startChar": 52,
+        "endLine": 3,
+        "endChar": 67
+      },
+      "revId": "1451d75b473e823baad35fc09f45d387db696b34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
