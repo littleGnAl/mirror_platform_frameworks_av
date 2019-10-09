@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a8a0c191_fa2a062c",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/res/values/strings.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-10-09T14:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9fe6ccd_17b8cceb",
+      "range": {
+        "startLine": 2,
+        "startChar": 36,
+        "endLine": 2,
+        "endChar": 71
+      },
+      "revId": "51a884d6031670b00c82cf1d69c81711ac9fed6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d436e7d_08b578fc",
         "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/ExtractorTest.java",
         "patchSetId": 6
@@ -36,6 +60,30 @@
       "writtenOn": "2019-10-08T03:59:31Z",
       "side": 1,
       "message": "it would be great if we could derive this list from the files that are in the directory.\nor have the default list of files (and for this set, track #s too) included as a file in that test directory....\n\nmake that a future change.",
+      "range": {
+        "startLine": 54,
+        "startChar": 2,
+        "endLine": 66,
+        "endChar": 65
+      },
+      "revId": "51a884d6031670b00c82cf1d69c81711ac9fed6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a41f2a8_c6641bf2",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/ExtractorTest.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-10-09T14:19:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5d436e7d_08b578fc",
       "range": {
         "startLine": 54,
         "startChar": 2,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "7509d91b_d07b4318",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Stats.java",
+        "patchSetId": 6
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-10-09T14:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0992ffd6_26186a90",
+      "range": {
+        "startLine": 130,
+        "startChar": 8,
+        "endLine": 130,
+        "endChar": 63
+      },
+      "revId": "51a884d6031670b00c82cf1d69c81711ac9fed6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cd00b90f_022b0c41",
         "filename": "media/tests/benchmark/README.md",
         "patchSetId": 6
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "32da46ca_bcd2bcae",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-10-09T14:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cd00b90f_022b0c41",
+      "range": {
+        "startLine": 64,
+        "startChar": 41,
+        "endLine": 64,
+        "endChar": 53
+      },
+      "revId": "51a884d6031670b00c82cf1d69c81711ac9fed6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a7b8b53_7d6022a0",
         "filename": "media/tests/benchmark/README.md",
         "patchSetId": 6
@@ -108,6 +204,24 @@
       "revId": "51a884d6031670b00c82cf1d69c81711ac9fed6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "169ee896_ffe6c3be",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-10-09T14:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a7b8b53_7d6022a0",
+      "revId": "51a884d6031670b00c82cf1d69c81711ac9fed6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "caea5aa2_af62f495",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-10-09T14:19:40Z",
+      "side": 1,
+      "message": "adb will create the target directory for us. We do not need to give mkdir command.",
+      "parentUuid": "637ef1a7_41332ba9",
+      "range": {
+        "startLine": 85,
+        "startChar": 17,
+        "endLine": 85,
+        "endChar": 52
+      },
+      "revId": "51a884d6031670b00c82cf1d69c81711ac9fed6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a2e74f6_43e9a34a",
         "filename": "media/tests/benchmark/README.md",
         "patchSetId": 6
@@ -154,6 +292,30 @@
       "revId": "51a884d6031670b00c82cf1d69c81711ac9fed6f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5feeaa7_23181c1b",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-10-09T14:19:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a2e74f6_43e9a34a",
+      "range": {
+        "startLine": 92,
+        "startChar": 30,
+        "endLine": 92,
+        "endChar": 88
+      },
+      "revId": "51a884d6031670b00c82cf1d69c81711ac9fed6f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
