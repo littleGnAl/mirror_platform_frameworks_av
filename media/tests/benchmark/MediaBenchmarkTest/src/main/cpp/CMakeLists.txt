@@ -20,6 +20,8 @@ add_library( # Sets the name of the library.
         SHARED
 
         # Provides a relative path to your source file(s).
+        NativeExtractor.cpp
+        NativeMuxer.cpp
         NativeDecoder.cpp
         NativeEncoder.cpp
 
@@ -27,12 +29,14 @@ add_library( # Sets the name of the library.
         ${native_source_path}/common/Stats.cpp
         ${native_source_path}/common/Timers.cpp
         ${native_source_path}/extractor/Extractor.cpp
+        ${native_source_path}/muxer/Muxer.cpp
         ${native_source_path}/decoder/Decoder.cpp
         ${native_source_path}/encoder/Encoder.cpp
         )
 
 include_directories(${native_source_path}/common)
 include_directories(${native_source_path}/extractor)
+include_directories(${native_source_path}/muxer)
 include_directories(${native_source_path}/decoder)
 include_directories(${native_source_path}/encoder)
 
