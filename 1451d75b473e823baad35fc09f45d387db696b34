@@ -22,6 +22,30 @@
       "revId": "1451d75b473e823baad35fc09f45d387db696b34",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "554da71b_cc3f4aea",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/res/values/strings.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2019-10-11T04:36:46Z",
+      "side": 1,
+      "message": "Now we are checking and creating a sub-directory \"output\" and decoder output is stored here if write output is enabled.",
+      "parentUuid": "ba70ac5d_d9c65552",
+      "range": {
+        "startLine": 3,
+        "startChar": 52,
+        "endLine": 3,
+        "endChar": 67
+      },
+      "revId": "1451d75b473e823baad35fc09f45d387db696b34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
