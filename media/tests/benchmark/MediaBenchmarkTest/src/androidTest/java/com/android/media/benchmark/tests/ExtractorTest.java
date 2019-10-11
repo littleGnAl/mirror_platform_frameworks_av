@@ -18,6 +18,7 @@ package com.android.media.benchmark.tests;
 
 import com.android.media.benchmark.R;
 import com.android.media.benchmark.library.Extractor;
+import com.android.media.benchmark.library.Native;
 
 import android.content.Context;
 import android.util.Log;
@@ -86,6 +87,27 @@ public class ExtractorTest {
             fileInput.close();
         } else {
             Log.e(TAG, "Cannot find " + mInputFileName + " in directory " + mInputFilePath);
+        }
+        assertThat(status, is(equalTo(0)));
+    }
+
+    @Test
+    public void sampleExtractNativeTest() throws IOException {
+        Native nativeExtractor = new Native();
+        int status = -1;
+        File inputFile = new File(mInputFilePath + mInputFileName);
+        if (inputFile.exists()) {
+            FileInputStream fileInput = new FileInputStream(inputFile);
+            status = nativeExtractor.Extract(mInputFilePath, mInputFileName);
+            fileInput.close();
+            if (status != 0) {
+                Log.w(TAG, "Warning: " + mInputFileName + " extraction failed.");
+            } else {
+                Log.v(TAG, "Extracted " + mInputFileName + " successfully.");
+            }
+        } else {
+            Log.v(TAG, "Test Skipped. Cannot find " + inputFile + " in directory " +
+                    mInputFilePath);
         }
         assertThat(status, is(equalTo(0)));
     }
