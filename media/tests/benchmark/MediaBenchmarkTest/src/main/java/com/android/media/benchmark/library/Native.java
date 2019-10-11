@@ -24,4 +24,9 @@ public class Native {
 
     public native int Encode(String inputFilePath, String inputFileName, String outputFilePath,
             String codecName);
+
+    public native int Extract(String inputFilePath, String inputFileName);
+
+    public native int Mux(String inputFilePath, String inputFileName, String outputFilePath,
+            String format);
 }
