@@ -219,9 +219,10 @@ sp<DeviceDescriptor> DeviceVector::getDevice(audio_devices_t type, const String8
             // If format is specified, match it and ignore address
             // Otherwise if address is specified match it
             // Otherwise always match
-            if (((address == "" || itemAt(i)->address() == address) &&
-                 format == AUDIO_FORMAT_DEFAULT) ||
-                (itemAt(i)->supportsFormat(format) && format != AUDIO_FORMAT_DEFAULT)) {
+            if (((address == "" || (audio_is_remote_submix_device(type) &&
+                itemAt(i)->address() == "0") || itemAt(i)->address() == address) &&
+                format == AUDIO_FORMAT_DEFAULT) || (itemAt(i)->supportsFormat(format) &&
+                format != AUDIO_FORMAT_DEFAULT)) {
                 device = itemAt(i);
                 if (itemAt(i)->address() == address) {
                     break;
