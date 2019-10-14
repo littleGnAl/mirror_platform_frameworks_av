@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "71bf6713_106c4825",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/DecoderTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-14T16:39:13Z",
+      "side": 1,
+      "message": "it\u0027s not a warning, it\u0027s an error -- we said Log.e()\n\nI\u0027d probably just drop that piece:\n    Log.e(TAG, \"Extraction failed. no tracks for file: \" + mInputFile);",
+      "range": {
+        "startLine": 133,
+        "startChar": 28,
+        "endLine": 133,
+        "endChar": 35
+      },
+      "revId": "cc6134b7983fc37120ea5dac4fc7dc47e0580039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdcc810a_ef4cc6d5",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/DecoderTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-14T16:39:13Z",
+      "side": 1,
+      "message": "go ahead and include the filename here.\nif we\u0027re going to log this, let\u0027s not make someone reading have to search for more context.",
+      "range": {
+        "startLine": 179,
+        "startChar": 50,
+        "endLine": 179,
+        "endChar": 55
+      },
+      "revId": "cc6134b7983fc37120ea5dac4fc7dc47e0580039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38e5847e_d6fdb952",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Decoder.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-14T16:39:13Z",
+      "side": 1,
+      "message": "Log.e() isn\u0027t a warning.",
+      "range": {
+        "startLine": 84,
+        "startChar": 24,
+        "endLine": 84,
+        "endChar": 31
+      },
+      "revId": "cc6134b7983fc37120ea5dac4fc7dc47e0580039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "697b7cea_bbc0f06e",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Decoder.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-14T16:39:13Z",
+      "side": 1,
+      "message": "Log.i(TAG, \"ignoring deprecated flag: INFO_OUTPUT_BUFFERS_CHANGED\");\n\ntighter wording.",
+      "range": {
+        "startLine": 200,
+        "startChar": 33,
+        "endLine": 201,
+        "endChar": 35
+      },
+      "revId": "cc6134b7983fc37120ea5dac4fc7dc47e0580039",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
