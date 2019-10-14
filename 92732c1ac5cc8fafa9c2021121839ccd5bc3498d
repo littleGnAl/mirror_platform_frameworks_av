@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3a83fe0f_3118bc5d",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1828,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2019-10-14T17:45:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e646ac1_ce11a075",
+      "range": {
+        "startLine": 1828,
+        "startChar": 53,
+        "endLine": 1828,
+        "endChar": 72
+      },
+      "revId": "92732c1ac5cc8fafa9c2021121839ccd5bc3498d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "017b43eb_0f2dd4ca",
         "filename": "services/camera/libcameraservice/CameraService.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "92732c1ac5cc8fafa9c2021121839ccd5bc3498d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f4d44198_19ffc152",
+        "filename": "services/camera/libcameraservice/CameraService.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2019-10-14T17:45:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "017b43eb_0f2dd4ca",
+      "range": {
+        "startLine": 539,
+        "startChar": 8,
+        "endLine": 539,
+        "endChar": 12
+      },
+      "revId": "92732c1ac5cc8fafa9c2021121839ccd5bc3498d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
