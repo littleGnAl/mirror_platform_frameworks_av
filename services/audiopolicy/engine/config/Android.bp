@@ -25,3 +25,16 @@ cc_library {
         "libaudioclient_headers",
     ],
 }
+
+filegroup {
+    name: "audio_policy_engine_configuration.xsd",
+    srcs: [
+        "schemas/audio_policy_engine_configuration.xsd",
+    ],
+}
+
+xsd_config {
+    name: "audio_policy_engine_configuration_V1_0",
+    srcs: [":audio_policy_engine_configuration.xsd"],
+    package_name: "audio_policy_engine_configuration.V1_0",
+}
