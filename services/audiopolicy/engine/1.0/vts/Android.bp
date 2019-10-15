@@ -1,0 +1,20 @@
+cc_test {
+    name: "VtsAudioPolicyEngineV1_0TargetTest",
+    defaults: ["vts_target_tests_defaults"],
+    srcs: ["ValidateEngineConfiguration.cpp"],
+    static_libs: [
+        "android.hardware.audio.common.test.utility",
+        "libxml2",
+        "liblog",
+    ],
+    cflags: [
+        "-DXSD_DIR=\"/data/local/tmp\"",
+        "-Wall",
+        "-Werror",
+        "-Wno-unused-function",
+        "-O0",
+        "-g",
+    ],
+    gtest: true,
+    test_suites: ["general-tests"],
+}
