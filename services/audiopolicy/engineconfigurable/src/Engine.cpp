@@ -79,8 +79,9 @@ Engine::~Engine()
 
 status_t Engine::initCheck()
 {
-    if (mPolicyParameterMgr == nullptr || mPolicyParameterMgr->start() != NO_ERROR) {
-        ALOGE("%s: could not start Policy PFW", __FUNCTION__);
+    std::string error;
+    if (mPolicyParameterMgr == nullptr || mPolicyParameterMgr->start(error) != NO_ERROR) {
+        ALOGE("%s: could not start Policy PFW: %s", __FUNCTION__, error.c_str());
         return NO_INIT;
     }
     return EngineBase::initCheck();
@@ -161,15 +162,15 @@ audio_policy_forced_cfg_t Engine::getForceUse(audio_policy_force_use_t usage) co
     return mPolicyParameterMgr->getForceUse(usage);
 }
 
-status_t Engine::setDeviceConnectionState(const sp<DeviceDescriptor> devDesc,
+status_t Engine::setDeviceConnectionState(const sp<DeviceDescriptor> device,
                                           audio_policy_dev_state_t state)
 {
-    mPolicyParameterMgr->setDeviceConnectionState(devDesc, state);
-
-    if (audio_is_output_device(devDesc->type())) {
+    mPolicyParameterMgr->setDeviceConnectionState(
+                device->type(), device->address().string(), state);
+    if (audio_is_output_device(device->type())) {
         return mPolicyParameterMgr->setAvailableOutputDevices(
                     getApmObserver()->getAvailableOutputDevices().types());
-    } else if (audio_is_input_device(devDesc->type())) {
+    } else if (audio_is_input_device(device->type())) {
         return mPolicyParameterMgr->setAvailableInputDevices(
                     getApmObserver()->getAvailableInputDevices().types());
     }
