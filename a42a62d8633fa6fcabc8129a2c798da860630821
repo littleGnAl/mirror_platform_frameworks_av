@@ -22,6 +22,30 @@
       "revId": "a42a62d8633fa6fcabc8129a2c798da860630821",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0d8aa0a_47bfb7f0",
+        "filename": "media/libmedia/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1026966
+      },
+      "writtenOn": "2019-10-15T16:57:42Z",
+      "side": 1,
+      "message": "Nice catch. Interestingly, I don\u0027t see this on internal master branch. Let me address this with a separate change.",
+      "parentUuid": "263a52f1_20d60fc1",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 30
+      },
+      "revId": "a42a62d8633fa6fcabc8129a2c798da860630821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
