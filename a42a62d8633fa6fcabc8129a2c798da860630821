@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "263a52f1_20d60fc1",
+        "filename": "media/libmedia/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2019-10-15T15:53:17Z",
+      "side": 1,
+      "message": "should this link with libmedia_codeclist instead of including its own copy of IMediaCodecList and MediaCodecInfo ?",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 63,
+        "endChar": 30
+      },
+      "revId": "a42a62d8633fa6fcabc8129a2c798da860630821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
