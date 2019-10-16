@@ -132,11 +132,16 @@ void NuPlayer::RTPSource::prepareAsync() {
 
         if (info->mIsAudio) {
             mAudioTrack = source;
+            info->mTimeScale = 16000;
         } else {
             mVideoTrack = source;
+            info->mTimeScale = 90000;
         }
 
         info->mSource = source;
+        info->mRTPTime = 0;
+        info->mNormalPlaytimeUs = 0;
+        info->mNPTMappingValid = false;
     }
 
     CHECK_EQ(mState, (int)DISCONNECTED);
@@ -346,6 +351,11 @@ void NuPlayer::RTPSource::onPollBuffering() {
     schedulePollBuffering();
 }
 
+bool NuPlayer::RTPSource::isRealTime() const {
+    ALOGD("RTPSource::isRealTime=%d", true);
+    return true;
+}
+
 void NuPlayer::RTPSource::onMessageReceived(const sp<AMessage> &msg) {
     ALOGV("onMessageReceived =%d", msg->what());
 
@@ -426,7 +436,6 @@ void NuPlayer::RTPSource::onMessageReceived(const sp<AMessage> &msg) {
                     source->queueAccessUnit(accessUnit);
                     break;
                 }
-                */
 
                 int64_t nptUs =
                     ((double)rtpTime - (double)info->mRTPTime)
@@ -434,7 +443,8 @@ void NuPlayer::RTPSource::onMessageReceived(const sp<AMessage> &msg) {
                         * 1000000ll
                         + info->mNormalPlaytimeUs;
 
-                accessUnit->meta()->setInt64("timeUs", nptUs);
+                */
+                accessUnit->meta()->setInt64("timeUs", ALooper::GetNowUs());
 
                 source->queueAccessUnit(accessUnit);
             }
