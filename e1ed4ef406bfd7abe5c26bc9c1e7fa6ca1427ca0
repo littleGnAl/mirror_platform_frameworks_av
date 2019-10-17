@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21eaa6e6_234eec9b",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-17T22:00:47Z",
+      "side": 1,
+      "message": "it\u0027s an error, not a warning.",
+      "range": {
+        "startLine": 108,
+        "startChar": 16,
+        "endLine": 108,
+        "endChar": 36
+      },
+      "revId": "e1ed4ef406bfd7abe5c26bc9c1e7fa6ca1427ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3d22c0a_cb9c7473",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-17T22:00:47Z",
+      "side": 1,
+      "message": "should we do these only if sampleSize \u003e 0 ?",
+      "range": {
+        "startLine": 120,
+        "startChar": 20,
+        "endLine": 126,
+        "endChar": 43
+      },
+      "revId": "e1ed4ef406bfd7abe5c26bc9c1e7fa6ca1427ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3f88ea0c_bec1283f",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-17T22:00:47Z",
+      "side": 1,
+      "message": "i always like to encode a unique id somewhere in here.\npid\u0027s are often useful -- so decoder.\u003cpid\u003e.out could be the format.\n\nwhen we set up the filename that we, it opens the way for concurrent test runs later on.\nor at least doesn\u0027t block them because of an undstated dependency.",
+      "range": {
+        "startLine": 133,
+        "startChar": 70,
+        "endLine": 133,
+        "endChar": 83
+      },
+      "revId": "e1ed4ef406bfd7abe5c26bc9c1e7fa6ca1427ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0add3cbe_11c71c51",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-17T22:00:47Z",
+      "side": 1,
+      "message": "technically \"complete\". we don\u0027t know if it produced correct output, since we\u0027re not verifying that as part of this work.\n\nI think that this is ok -- these tests are explicitly for speed and not correctness. at least not correctness of the output.",
+      "range": {
+        "startLine": 238,
+        "startChar": 53,
+        "endLine": 238,
+        "endChar": 63
+      },
+      "revId": "e1ed4ef406bfd7abe5c26bc9c1e7fa6ca1427ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
