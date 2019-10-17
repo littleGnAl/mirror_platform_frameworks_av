@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "165a1edb_c8f936ff",
+        "filename": "services/camera/libcameraservice/common/CameraProviderManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1071,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2019-10-17T00:59:13Z",
+      "side": 1,
+      "message": "Do we use this method somewhere?",
+      "range": {
+        "startLine": 1071,
+        "startChar": 28,
+        "endLine": 1071,
+        "endChar": 50
+      },
+      "revId": "fd39db81e44e191baa476a579de6cc2618de025a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
