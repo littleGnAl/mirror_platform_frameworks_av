@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1ad68c39_330a9d03",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/MuxerTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-17T22:18:51Z",
+      "side": 1,
+      "message": "we\u0027re testing speed for a dozen or so different files.\nthis means a failure in file #4 causes the rest not to run.\n\ndo we want that, or do we want to flag this particular file as failing and continue with the others?  We had that other behavior before we added this line.\n\nI know CTS tends to follow that behavior -- a test will assert/abort as soon as it goes bad and if that\u0027s on the first of a list of 10 things that it wants to do, the other 9 go unexecuted.",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 43
+      },
+      "revId": "384055b3e41b6cafd3562584d663c143ce5c002d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b87e844e_1511a2b2",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Muxer.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-17T22:18:51Z",
+      "side": 1,
+      "message": "document the fact that it\u0027s no longer a void; what are the return values?",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 13
+      },
+      "revId": "384055b3e41b6cafd3562584d663c143ce5c002d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3fc0810b_70eb74f1",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Muxer.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-17T22:18:51Z",
+      "side": 1,
+      "message": "so this particular loop finishes off the rest of the input even after an earlier sample has failed; that\u0027s different than the behavior i questioned in the earlier file where we stopped as soon as one of the files failed.\n\ni mostly want a consistent policy on how we treat these cases -- all \u0027fail immediately\u0027 or all run the rest of the data, etc.",
+      "range": {
+        "startLine": 74,
+        "startChar": 15,
+        "endLine": 76,
+        "endChar": 13
+      },
+      "revId": "384055b3e41b6cafd3562584d663c143ce5c002d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
