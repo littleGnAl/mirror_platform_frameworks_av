@@ -26,6 +26,7 @@
 #include <media/NdkMediaError.h>
 
 #include "Stats.h"
+#define UNUSED(x) (void)(x)
 
 using namespace std;
 
