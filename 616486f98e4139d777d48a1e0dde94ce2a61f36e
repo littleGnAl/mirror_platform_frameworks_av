@@ -34,6 +34,24 @@
       "revId": "616486f98e4139d777d48a1e0dde94ce2a61f36e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e51e11d_06a2ccde",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1579802
+      },
+      "writtenOn": "2019-10-17T18:48:47Z",
+      "side": 1,
+      "message": "I mean the array does not contain entries for profiles 0, or 2.\nHow do I get to see ag/9549098 from here?",
+      "parentUuid": "046fa5ec_2081c485",
+      "revId": "616486f98e4139d777d48a1e0dde94ce2a61f36e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
