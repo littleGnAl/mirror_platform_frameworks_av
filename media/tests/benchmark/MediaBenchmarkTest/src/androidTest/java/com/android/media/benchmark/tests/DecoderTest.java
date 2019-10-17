@@ -27,6 +27,7 @@ import com.android.media.benchmark.R;
 import com.android.media.benchmark.library.CodecUtils;
 import com.android.media.benchmark.library.Decoder;
 import com.android.media.benchmark.library.Extractor;
+import com.android.media.benchmark.library.Native;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -187,6 +188,40 @@ public class DecoderTest {
                 frameInfo.clear();
             }
             extractor.deinitExtractor();
+            fileInput.close();
+        } else {
+            Log.w(TAG,
+                    "Warning: Test Skipped. Cannot find " + mInputFile + " in directory "
+                            + mInputFilePath);
+        }
+    }
+
+    @Test
+    public void testNativeDecoder() throws IOException {
+        File inputFile = new File(mInputFilePath + mInputFile);
+        if (inputFile.exists()) {
+            FileInputStream fileInput = new FileInputStream(inputFile);
+            FileDescriptor fileDescriptor = fileInput.getFD();
+            Extractor extractor = new Extractor();
+            int trackCount = extractor.setUpExtractor(fileDescriptor);
+            if (trackCount <= 0) {
+                Log.w(TAG, "Warning. Extraction failed. No tracks for file: " + mInputFile);
+                return;
+            }
+            for (int currentTrack = 0; currentTrack < trackCount; currentTrack++) {
+                extractor.selectExtractorTrack(currentTrack);
+                MediaFormat format = extractor.getFormat(currentTrack);
+                String mime = format.getString(MediaFormat.KEY_MIME);
+                ArrayList<String> mediaCodecs = CodecUtils.selectCodecs(mime, false);
+                Boolean[] decodeMode = {true, false};
+                for (Boolean asyncMode : decodeMode) {
+                    for (String codecName : mediaCodecs) {
+                        Log.i("Test: %s\n", mInputFile);
+                        Native nativeDecoder = new Native();
+                        nativeDecoder.Decode(mInputFilePath, mInputFile, codecName, asyncMode);
+                    }
+                }
+            }
             fileInput.close();
         } else {
             Log.w(TAG,
