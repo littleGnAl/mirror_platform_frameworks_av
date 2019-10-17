@@ -27,7 +27,7 @@ cc_library_static {
 
     export_include_dirs: ["."],
 
-    ldflags: ["-Wl,-Bsymbolic"]
+    ldflags: ["-Wl,-Bsymbolic"],
 }
 
 cc_library_static {
@@ -46,5 +46,21 @@ cc_library_static {
 
     export_include_dirs: ["."],
 
-    ldflags: ["-Wl,-Bsymbolic"]
+    ldflags: ["-Wl,-Bsymbolic"],
+}
+
+cc_library_static {
+    name: "libmediabenchmark_decoder_jni",
+    defaults: [
+        "libmediabenchmark_common-defaults_jni",
+        "libmediabenchmark_soft_sanitize_all-defaults",
+    ],
+
+    srcs: ["Decoder.cpp"],
+
+    static_libs: ["libmediabenchmark_extractor_jni"],
+
+    export_include_dirs: ["."],
+
+    ldflags: ["-Wl,-Bsymbolic"],
 }

@@ -14,30 +14,14 @@
  * limitations under the License.
  */
 
-cc_library_static {
-    name: "libmediabenchmark_extractor",
-    defaults: [
-        "libmediabenchmark_common-defaults",
-        "libmediabenchmark_soft_sanitize_all-defaults",
-    ],
+package com.android.media.benchmark.library;
 
-    srcs: ["Extractor.cpp"],
+public class Native {
+    static { System.loadLibrary("mediabenchmark_jni"); }
 
-    export_include_dirs: ["."],
+    public native int Decode(String inputFilePath, String inputFileName, String codecName,
+            boolean asyncMode);
 
-    ldflags: ["-Wl,-Bsymbolic"],
-}
-
-cc_library_static {
-    name: "libmediabenchmark_extractor_jni",
-    defaults: [
-        "libmediabenchmark_common-defaults_jni",
-        "libmediabenchmark_soft_sanitize_all-defaults",
-    ],
-
-    srcs: ["Extractor.cpp"],
-
-    export_include_dirs: ["."],
-
-    ldflags: ["-Wl,-Bsymbolic"],
+    public native int Encode(String inputFilePath, String inputFileName, String outputFilePath,
+            String codecName);
 }

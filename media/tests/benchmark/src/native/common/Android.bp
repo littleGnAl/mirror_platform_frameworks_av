@@ -29,7 +29,7 @@ cc_library_static {
 
     export_include_dirs: ["."],
 
-    ldflags: ["-Wl,-Bsymbolic"]
+    ldflags: ["-Wl,-Bsymbolic"],
 }
 
 cc_defaults {
@@ -55,7 +55,7 @@ cc_defaults {
     cflags: [
         "-Wall",
         "-Werror",
-    ]
+    ],
 }
 
 cc_library_static {
@@ -70,7 +70,55 @@ cc_library_static {
 
     export_include_dirs: ["."],
 
-    ldflags: ["-Wl,-Bsymbolic"]
+    ldflags: ["-Wl,-Bsymbolic"],
+}
+
+cc_library_static {
+    name: "libmediabenchmark_common_jni",
+    defaults: [
+        "libmediabenchmark-defaults_jni",
+        "libmediabenchmark_soft_sanitize_all-defaults",
+    ],
+
+    srcs: [
+        "BenchmarkCommon.cpp",
+        "Stats.cpp",
+        "utils/Timers.cpp",
+    ],
+
+    export_include_dirs: ["."],
+
+    ldflags: ["-Wl,-Bsymbolic"],
+}
+
+cc_defaults {
+    name: "libmediabenchmark_common-defaults_jni",
+
+    defaults: [
+        "libmediabenchmark-defaults_jni",
+    ],
+
+    static_libs: [
+        "libmediabenchmark_common_jni",
+    ],
+}
+
+cc_defaults {
+    name: "libmediabenchmark-defaults_jni",
+
+    shared_libs: [
+        "libmediandk",
+        "liblog",
+    ],
+
+    stl: "libc++_static",
+
+    sdk_version: "current",
+
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
 }
 
 cc_defaults {
@@ -88,7 +136,7 @@ cc_defaults {
 
     shared_libs: [
         "libcodec2_client",
-    ]
+    ],
 }
 
 // public dependency for native implementation
@@ -102,5 +150,5 @@ cc_defaults {
             "signed-integer-overflow",
         ],
         cfi: true,
-    }
+    },
 }

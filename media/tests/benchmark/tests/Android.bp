@@ -24,7 +24,7 @@ cc_test {
 
     srcs: ["ExtractorTest.cpp"],
 
-    static_libs: ["libmediabenchmark_extractor"]
+    static_libs: ["libmediabenchmark_extractor"],
 }
 
 cc_test {
