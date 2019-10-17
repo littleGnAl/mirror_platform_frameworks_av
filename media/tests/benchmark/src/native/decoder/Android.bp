@@ -33,7 +33,6 @@ cc_library_static {
 cc_library_static {
     name: "libmediabenchmark_codec2_decoder",
     defaults: [
-        "libmediabenchmark_common-defaults",
         "libmediabenchmark_codec2_common-defaults",
     ],
 
@@ -41,7 +40,7 @@ cc_library_static {
 
     static_libs: [
         "libmediabenchmark_codec2_common",
-        "libmediabenchmark_extractor",
+        "libmediabenchmark_codec2_extractor",
     ],
 
     export_include_dirs: ["."],
