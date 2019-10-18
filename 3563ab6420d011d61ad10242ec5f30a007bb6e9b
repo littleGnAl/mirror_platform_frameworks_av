@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fe14de7d_7b9f7b8d",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-10-18T17:46:30Z",
+      "side": 1,
+      "message": "resource",
+      "range": {
+        "startLine": 116,
+        "startChar": 11,
+        "endLine": 116,
+        "endChar": 18
+      },
+      "revId": "3563ab6420d011d61ad10242ec5f30a007bb6e9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b22c6de2_30c03502",
+        "filename": "media/tests/benchmark/src/native/decoder/C2Decoder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-10-18T17:46:30Z",
+      "side": 1,
+      "message": "(((_sz) + ((_align) - 1)) \u0026 ~((_align) - 1))",
+      "range": {
+        "startLine": 26,
+        "startChar": 27,
+        "endLine": 26,
+        "endChar": 65
+      },
+      "revId": "3563ab6420d011d61ad10242ec5f30a007bb6e9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
