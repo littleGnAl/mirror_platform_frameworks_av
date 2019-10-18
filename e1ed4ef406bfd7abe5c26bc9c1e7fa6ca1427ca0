@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9a117992_19e7719e",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-10-18T12:03:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21eaa6e6_234eec9b",
+      "range": {
+        "startLine": 108,
+        "startChar": 16,
+        "endLine": 108,
+        "endChar": 36
+      },
+      "revId": "e1ed4ef406bfd7abe5c26bc9c1e7fa6ca1427ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3d22c0a_cb9c7473",
         "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "e1ed4ef406bfd7abe5c26bc9c1e7fa6ca1427ca0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0690cc3_3773044d",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-10-18T12:03:55Z",
+      "side": 1,
+      "message": "Extractor returns negative sample size upon encountering end of file. So we added this loop to accumulate the buffers till we see EOS and then send the input to decoder.",
+      "parentUuid": "d3d22c0a_cb9c7473",
+      "range": {
+        "startLine": 120,
+        "startChar": 20,
+        "endLine": 126,
+        "endChar": 43
+      },
+      "revId": "e1ed4ef406bfd7abe5c26bc9c1e7fa6ca1427ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "b3cbe8b3_881275e6",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-10-18T12:03:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f88ea0c_bec1283f",
+      "range": {
+        "startLine": 133,
+        "startChar": 70,
+        "endLine": 133,
+        "endChar": 83
+      },
+      "revId": "e1ed4ef406bfd7abe5c26bc9c1e7fa6ca1427ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0add3cbe_11c71c51",
         "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "e1ed4ef406bfd7abe5c26bc9c1e7fa6ca1427ca0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e73752d7_874fe7ed",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-10-18T12:03:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0add3cbe_11c71c51",
+      "range": {
+        "startLine": 238,
+        "startChar": 53,
+        "endLine": 238,
+        "endChar": 63
+      },
+      "revId": "e1ed4ef406bfd7abe5c26bc9c1e7fa6ca1427ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
