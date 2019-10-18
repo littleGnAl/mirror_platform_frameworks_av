@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "75c1905b_52dd7148",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/MuxerTest.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-10-18T13:02:55Z",
+      "side": 1,
+      "message": "Failure in file #4 will not cause other tests to fail. Assert will just fail the current test vector. Other test vectors will continue to run till completion or fail when encountered error without disturbing the execution of other inputs.",
+      "parentUuid": "1ad68c39_330a9d03",
+      "range": {
+        "startLine": 150,
+        "startChar": 8,
+        "endLine": 150,
+        "endChar": 43
+      },
+      "revId": "384055b3e41b6cafd3562584d663c143ce5c002d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b87e844e_1511a2b2",
         "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Muxer.java",
         "patchSetId": 5
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "2f6e41b6_dc24dea3",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Muxer.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-10-18T13:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b87e844e_1511a2b2",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 61,
+        "endChar": 13
+      },
+      "revId": "384055b3e41b6cafd3562584d663c143ce5c002d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3fc0810b_70eb74f1",
         "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Muxer.java",
         "patchSetId": 5
@@ -68,6 +116,30 @@
       "revId": "384055b3e41b6cafd3562584d663c143ce5c002d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8206033_cbd290a7",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Muxer.java",
+        "patchSetId": 5
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-10-18T13:02:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fc0810b_70eb74f1",
+      "range": {
+        "startLine": 74,
+        "startChar": 15,
+        "endLine": 76,
+        "endChar": 13
+      },
+      "revId": "384055b3e41b6cafd3562584d663c143ce5c002d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
