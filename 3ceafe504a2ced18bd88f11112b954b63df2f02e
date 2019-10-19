@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ca4b441c_efb7e141",
+        "filename": "media/tests/benchmark/src/native/common/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-19T16:36:02Z",
+      "side": 1,
+      "message": "let\u0027s change the \"libbenchmark\" to \"libmediabenchmark\" across all of this work.\nsince this name is visible to the entire android build, I\u0027d like to make it a little more targeted than \"libbenchmark\"\n\nthis can be a subsequent CL, since it will interact with a bunch of other things we\u0027ve got in flight right now.",
+      "range": {
+        "startLine": 18,
+        "startChar": 11,
+        "endLine": 18,
+        "endChar": 30
+      },
+      "revId": "3ceafe504a2ced18bd88f11112b954b63df2f02e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
