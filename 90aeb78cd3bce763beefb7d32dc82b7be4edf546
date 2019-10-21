@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a4210a1d_df21fa24",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-21T16:59:54Z",
+      "side": 1,
+      "message": "i\u0027d like to make both 32 and 64 bit versions of the test.\nThis will tell us whether there are any differences based on the client\u0027s mode; I expect that the difference will be negligible because all the heavy work is in the service side.",
+      "range": {
+        "startLine": 112,
+        "startChar": 21,
+        "endLine": 112,
+        "endChar": 33
+      },
+      "revId": "90aeb78cd3bce763beefb7d32dc82b7be4edf546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0dcf9727_5958bcd4",
+        "filename": "media/tests/benchmark/src/native/common/BenchmarkC2Common.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-21T16:59:54Z",
+      "side": 1,
+      "message": "i would like to be able to vary this per-test;  so we can see just how much (or how little)\nwe gain or lose by playing with this parameter.  And whether that\u0027s different for audio vs video.\n\nas mentioned back where the constant is defined -- I am ok with making this a followup bug / CL if it is not trivial to change it right now.",
+      "range": {
+        "startLine": 42,
+        "startChar": 24,
+        "endLine": 42,
+        "endChar": 41
+      },
+      "revId": "90aeb78cd3bce763beefb7d32dc82b7be4edf546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a70cb4c_969d5018",
+        "filename": "media/tests/benchmark/src/native/common/BenchmarkC2Common.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-21T16:59:54Z",
+      "side": 1,
+      "message": "can we make this tunable as part of the test -- so that we can experiment with what speed\nwe get if we increase/reduce the number of buffers.\n\nscope how we\u0027ll do it; if it\u0027s an esay change, fold it in now. If it\u0027s more complicated then we can do it as a later CL (and we\u0027ll make a separate bug for it).",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 27
+      },
+      "revId": "90aeb78cd3bce763beefb7d32dc82b7be4edf546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3b94ce6_b775f83b",
+        "filename": "media/tests/benchmark/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-21T16:59:54Z",
+      "side": 1,
+      "message": "can we make both 32-bit and 64-bit versions of this test.\nsince most of the work is on the service side, it should yield similar numbers.\nI\u0027d like to have that confirmed.\n\n[this can be a followup CL/bug]",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 7
+      },
+      "revId": "90aeb78cd3bce763beefb7d32dc82b7be4edf546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afcd4f05_30f712af",
+        "filename": "media/tests/benchmark/tests/C2DecoderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-21T16:59:54Z",
+      "side": 1,
+      "message": "i think this be a continue -- so that we move on to the next codec with this content.\n\ne.g when we support AVC with both hardware and software versions, they will both be in the list\nand we want to benchmark both of them.",
+      "range": {
+        "startLine": 154,
+        "startChar": 20,
+        "endLine": 154,
+        "endChar": 26
+      },
+      "revId": "90aeb78cd3bce763beefb7d32dc82b7be4edf546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70b49cb3_6de56a84",
+        "filename": "media/tests/benchmark/tests/C2DecoderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-21T16:59:54Z",
+      "side": 1,
+      "message": "this one will look very good relative to the others since it is such a small picture size.",
+      "range": {
+        "startLine": 199,
+        "startChar": 33,
+        "endLine": 199,
+        "endChar": 43
+      },
+      "revId": "90aeb78cd3bce763beefb7d32dc82b7be4edf546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1457cee7_0aebf2ac",
+        "filename": "media/tests/benchmark/tests/C2DecoderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-21T16:59:54Z",
+      "side": 1,
+      "message": "i would like to see a complete set of sizes:\n\n1080p, 720, 480p, etc.\n\ncan be a separate CL/Bug \"add rest of resolutions\".",
+      "range": {
+        "startLine": 201,
+        "startChar": 27,
+        "endLine": 201,
+        "endChar": 62
+      },
+      "revId": "90aeb78cd3bce763beefb7d32dc82b7be4edf546",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
