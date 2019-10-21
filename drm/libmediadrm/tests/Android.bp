@@ -3,6 +3,7 @@
 cc_test {
     name: "CounterMetric_test",
     srcs: ["CounterMetric_test.cpp"],
+    header_libs: ["libmedia_headers"],
     shared_libs: ["libmediadrm"],
     include_dirs: ["frameworks/av/include/media"],
     cflags: [
@@ -14,6 +15,9 @@ cc_test {
 cc_test {
     name: "DrmMetrics_test",
     srcs: ["DrmMetrics_test.cpp"],
+    header_libs: [
+        "libmedia_headers"
+    ],
     shared_libs: [
       "android.hardware.drm@1.0",
       "android.hardware.drm@1.1",
