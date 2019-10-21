@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6f06027_30fbf973",
+        "filename": "media/libaudioprocessing/tests/fuzzer/libaudioprocessing_resampler_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2019-10-21T17:49:10Z",
+      "side": 1,
+      "message": "9?",
+      "revId": "96f9acaf527b5a2f89a8fc4b03f3676b85f17139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3590b52_6341dad9",
+        "filename": "media/libaudioprocessing/tests/fuzzer/libaudioprocessing_resampler_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2019-10-21T17:49:10Z",
+      "side": 1,
+      "message": "Andy - this is the key line.  There is one fuzzer per main program,\nand main() is automatically provided.",
+      "range": {
+        "startLine": 112,
+        "startChar": 15,
+        "endLine": 112,
+        "endChar": 37
+      },
+      "revId": "96f9acaf527b5a2f89a8fc4b03f3676b85f17139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
