@@ -1579,6 +1579,9 @@ status_t AudioPolicyManager::startOutput(audio_port_handle_t portId)
     ALOGV("startOutput() output %d, stream %d, session %d",
           outputDesc->mIoHandle, client->stream(), client->session());
 
+    if ((outputDesc->mFlags & AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD) && mEffects.isNonOffloadableEffectEnabled())
+        return BAD_VALUE;
+
     status_t status = outputDesc->start();
     if (status != NO_ERROR) {
         return status;
