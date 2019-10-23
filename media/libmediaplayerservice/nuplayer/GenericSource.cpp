@@ -23,8 +23,8 @@
 #include "AnotherPacketSource.h"
 #include <binder/IServiceManager.h>
 #include <cutils/properties.h>
-#include <datasource/PlayerServiceDataSourceFactory.h>
-#include <datasource/PlayerServiceFileSource.h>
+#include <datasource/DataSourceFactory.h>
+#include <datasource/FileSource.h>
 #include <datasource/HTTPBase.h>
 #include <datasource/NuCachedSource2.h>
 #include <media/DataSource.h>
@@ -385,8 +385,7 @@ void NuPlayer::GenericSource::onPrepareAsync() {
             if (!strncasecmp("http://", uri, 7) || !strncasecmp("https://", uri, 8)) {
                 sp<DataSource> httpSource;
                 mDisconnectLock.unlock();
-                httpSource = PlayerServiceDataSourceFactory::getInstance()
-                        ->CreateMediaHTTP(mHTTPService);
+                httpSource = DataSourceFactory::getInstance()->CreateMediaHTTP(mHTTPService);
                 if (httpSource == NULL) {
                     ALOGE("Failed to create http source!");
                     notifyPreparedAndCleanup(UNKNOWN_ERROR);
@@ -402,9 +401,9 @@ void NuPlayer::GenericSource::onPrepareAsync() {
             mLock.unlock();
             mDisconnectLock.unlock();
             // This might take long time if connection has some issue.
-            sp<DataSource> dataSource = PlayerServiceDataSourceFactory::getInstance()
-                    ->CreateFromURI(mHTTPService, uri, &mUriHeaders, &contentType,
-                            static_cast<HTTPBase *>(mHttpSource.get()));
+            sp<DataSource> dataSource = DataSourceFactory::getInstance()->CreateFromURI(
+                   mHTTPService, uri, &mUriHeaders, &contentType,
+                   static_cast<HTTPBase *>(mHttpSource.get()));
             mDisconnectLock.lock();
             mLock.lock();
             if (!mDisconnected) {
@@ -412,8 +411,7 @@ void NuPlayer::GenericSource::onPrepareAsync() {
             }
         } else {
             if (property_get_bool("media.stagefright.extractremote", true) &&
-                    !PlayerServiceFileSource::requiresDrm(
-                            mFd, mOffset, mLength, nullptr /* mime */)) {
+                    !FileSource::requiresDrm(mFd, mOffset, mLength, nullptr /* mime */)) {
                 sp<IBinder> binder =
                         defaultServiceManager()->getService(String16("media.extractor"));
                 if (binder != nullptr) {
@@ -440,7 +438,7 @@ void NuPlayer::GenericSource::onPrepareAsync() {
             }
             if (mDataSource == nullptr) {
                 ALOGD("FileSource local");
-                mDataSource = new PlayerServiceFileSource(mFd, mOffset, mLength);
+                mDataSource = new FileSource(mFd, mOffset, mLength);
             }
             // TODO: close should always be done on mFd, see the lines following
             // CreateDataSourceFromIDataSource above,

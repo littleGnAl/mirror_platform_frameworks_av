@@ -2,6 +2,8 @@ cc_library {
     name: "libdatasource",
 
     srcs: [
+        "ClearFileSource.cpp",
+        "ClearMediaHTTP.cpp",
         "DataSourceFactory.cpp",
         "DataURISource.cpp",
         "FileSource.cpp",
@@ -29,6 +31,7 @@ cc_library {
     shared_libs: [
         "liblog",
         "libcutils",
+        "libdrmframework",
         "libutils",
         "libstagefright_foundation",
         "libdl",
