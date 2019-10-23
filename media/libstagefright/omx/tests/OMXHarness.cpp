@@ -278,7 +278,7 @@ private:
 
 static sp<IMediaExtractor> CreateExtractorFromURI(const char *uri) {
     sp<DataSource> source =
-        DataSourceFactory::getInstance()->CreateFromURI(NULL /* httpService */, uri);
+        DataSourceFactory::CreateFromURI(NULL /* httpService */, uri);
 
     if (source == NULL) {
         return NULL;

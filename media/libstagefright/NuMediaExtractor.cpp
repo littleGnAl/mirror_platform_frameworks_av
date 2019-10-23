@@ -82,7 +82,7 @@ status_t NuMediaExtractor::setDataSource(
     }
 
     sp<DataSource> dataSource =
-        DataSourceFactory::getInstance()->CreateFromURI(httpService, path, headers);
+        DataSourceFactory::CreateFromURI(httpService, path, headers);
 
     if (dataSource == NULL) {
         return -ENOENT;
