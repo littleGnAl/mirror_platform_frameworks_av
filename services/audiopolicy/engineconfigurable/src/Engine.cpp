@@ -311,6 +311,19 @@ sp<DeviceDescriptor> Engine::getInputDeviceForAttributes(const audio_attributes_
     const auto availableInputDevices = getApmObserver()->getAvailableInputDevices();
     const auto &inputs = getApmObserver()->getInputs();
     std::string address;
+
+    // Prioritize USB devices over BUS devices
+    const auto usbInputDevices = availableInputDevices.getDevicesFromTypeMask(AUDIO_DEVICE_IN_ALL_USB);
+    const auto hasUsbInputDevices = usbInputDevices.size() > 0;
+
+    if (hasUsbInputDevices) {
+        ALOGV("%s(): USB input devices are available", __func__);
+
+        for (const auto devDesc : usbInputDevices) {
+            ALOGV("%s() USB input device dump: %s", __func__, devDesc->toString().c_str());
+            return devDesc;
+        }
+    }
     //
     // Explicit Routing ??? what is the priority of explicit routing? Shall it be considered
     // first as it used to be by APM?
