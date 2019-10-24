@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "41e8507b_21b6f353",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-24T00:21:54Z",
+      "side": 1,
+      "message": "you said static... so i\u0027m guessing it said \"you can leak on these lines\" and that they probably correspond to the line i flagged in the first file (audiopolicy) as \"this is where I expect it leaks\".",
+      "range": {
+        "startLine": 9,
+        "startChar": 13,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "500a1b8b471982ec60fa1a7c2cd223e2e83287f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "25661f84_e6c9afe7",
+        "filename": "services/mediaanalytics/statsd_audiopolicy.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-24T00:21:54Z",
+      "side": 1,
+      "message": "didn\u0027t realize there was a variant that took a std::string instead of a char*\ni will admit i didn\u0027t look very hard.",
+      "range": {
+        "startLine": 65,
+        "startChar": 40,
+        "endLine": 65,
+        "endChar": 61
+      },
+      "revId": "500a1b8b471982ec60fa1a7c2cd223e2e83287f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9ed9eb2_cf0baaca",
+        "filename": "services/mediaanalytics/statsd_audiopolicy.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-24T00:21:54Z",
+      "side": 1,
+      "message": "that would have been where we leaked the char* versions, i expect.\n\n[and since all of these routines follow the same pattern, I expect that it\u0027s this line in all of them]",
+      "range": {
+        "startLine": 108,
+        "startChar": 7,
+        "endLine": 108,
+        "endChar": 21
+      },
+      "revId": "500a1b8b471982ec60fa1a7c2cd223e2e83287f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
