@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "37c26a43_03a2820c",
+        "filename": "services/mediaanalytics/statsd_audiopolicy.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2019-10-24T01:17:56Z",
+      "side": 1,
+      "message": "See the variants between const char *, std::string\u0026\u0026, const std::string\u0026\n\nhttps://cs.corp.google.com/android/external/protobuf/src/google/protobuf/compiler/cpp/cpp_string_field.cc?rcl\u003d6da4f690cf5c623743156a37d6422b88ad8b46c2\u0026l\u003d217",
+      "parentUuid": "25661f84_e6c9afe7",
+      "range": {
+        "startLine": 65,
+        "startChar": 40,
+        "endLine": 65,
+        "endChar": 61
+      },
+      "revId": "500a1b8b471982ec60fa1a7c2cd223e2e83287f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d9ed9eb2_cf0baaca",
         "filename": "services/mediaanalytics/statsd_audiopolicy.cpp",
         "patchSetId": 2
