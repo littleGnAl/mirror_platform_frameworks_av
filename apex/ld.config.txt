@@ -131,3 +131,9 @@ namespace.sphal.link.platform.shared_libs = libEGL.so:libGLESv1_CM.so:libGLESv2.
 
 # Add a link for libz.so which is llndk on devices where VNDK is not enforced.
 namespace.sphal.link.platform.shared_libs += libz.so
+
+# With VNDK APEX, /system/${LIB}/vndk-sp${VNDK_VER} is a symlink to the following.
+# Add /apex/... pat to the permitted paths because linker uses realpath(3)
+# to check the accessibility of the lib.
+namespace.sphal.permitted.paths += /apex/com.android.vndk.${VNDK_APEX_VER}/${LIB}
+
