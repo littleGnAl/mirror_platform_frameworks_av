@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d9701c4_fe42a933",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1583,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-10-28T16:13:47Z",
+      "side": 1,
+      "message": "Please add parentheses around the branch code. See https://google.github.io/styleguide/cppguide.html#Conditionals",
+      "range": {
+        "startLine": 1583,
+        "startChar": 8,
+        "endLine": 1583,
+        "endChar": 25
+      },
+      "revId": "b5bddb67968c3cfffed97ba7de526012cb8e5378",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
