@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2018 The Android Open Source Project
+ * Copyright (C) 2013 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,52 +18,26 @@
 
 #define MEDIA_HTTP_H_
 
+#include <datasource/ClearMediaHTTP.h>
 #include <media/stagefright/foundation/AString.h>
-
-#include "HTTPBase.h"
 
 namespace android {
 
 struct MediaHTTPConnection;
 
-struct MediaHTTP : public HTTPBase {
+struct MediaHTTP : public ClearMediaHTTP {
     MediaHTTP(const sp<MediaHTTPConnection> &conn);
-
-    virtual status_t connect(
-            const char *uri,
-            const KeyedVector<String8, String8> *headers,
-            off64_t offset);
-
-    virtual void close();
-
-    virtual void disconnect();
-
-    virtual status_t initCheck() const;
-
-    virtual ssize_t readAt(off64_t offset, void *data, size_t size);
-
-    virtual status_t getSize(off64_t *size);
-
-    virtual uint32_t flags();
-
-    virtual status_t reconnectAtOffset(off64_t offset);
 
 protected:
     virtual ~MediaHTTP();
 
-    virtual String8 getUri();
-    virtual String8 getMIMEType() const;
-
-    AString mLastURI;
+    virtual sp<DecryptHandle> DrmInitialization(const char* mime);
 
 private:
-    status_t mInitCheck;
-    sp<MediaHTTPConnection> mHTTPConnection;
+    sp<DecryptHandle> mDecryptHandle;
+    DrmManagerClient *mDrmManagerClient;
 
-    KeyedVector<String8, String8> mLastHeaders;
-
-    bool mCachedSizeValid;
-    off64_t mCachedSize;
+    void clearDRMState_l();
 
     DISALLOW_EVIL_CONSTRUCTORS(MediaHTTP);
 };

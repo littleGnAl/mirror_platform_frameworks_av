@@ -44,12 +44,11 @@ public:
 
 protected:
     virtual sp<DataSource> CreateFileSource(const char *uri);
-    DataSourceFactory() {};
-    virtual ~DataSourceFactory() {};
 
 private:
     static sp<DataSourceFactory> sInstance;
     static Mutex sInstanceLock;
+    DataSourceFactory() {};
 };
 
 }  // namespace android

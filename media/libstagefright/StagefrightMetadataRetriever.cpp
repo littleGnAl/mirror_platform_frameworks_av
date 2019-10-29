@@ -22,11 +22,11 @@
 #include <utils/Log.h>
 #include <cutils/properties.h>
 
-#include "StagefrightMetadataRetriever.h"
-#include "FrameDecoder.h"
+#include "include/FrameDecoder.h"
+#include "include/StagefrightMetadataRetriever.h"
 
-#include <datasource/PlayerServiceDataSourceFactory.h>
-#include <datasource/PlayerServiceFileSource.h>
+#include <datasource/DataSourceFactory.h>
+#include <datasource/FileSource.h>
 #include <media/IMediaHTTPService.h>
 #include <media/stagefright/foundation/ADebug.h>
 #include <media/stagefright/foundation/AMessage.h>
@@ -63,8 +63,7 @@ status_t StagefrightMetadataRetriever::setDataSource(
     ALOGV("setDataSource(%s)", uri);
 
     clearMetadata();
-    mSource = PlayerServiceDataSourceFactory::getInstance()->CreateFromURI(
-            httpService, uri, headers);
+    mSource = DataSourceFactory::getInstance()->CreateFromURI(httpService, uri, headers);
 
     if (mSource == NULL) {
         ALOGE("Unable to create data source for '%s'.", uri);
@@ -92,7 +91,7 @@ status_t StagefrightMetadataRetriever::setDataSource(
     ALOGV("setDataSource(%d, %" PRId64 ", %" PRId64 ")", fd, offset, length);
 
     clearMetadata();
-    mSource = new PlayerServiceFileSource(fd, offset, length);
+    mSource = new FileSource(fd, offset, length);
 
     status_t err;
     if ((err = mSource->initCheck()) != OK) {
