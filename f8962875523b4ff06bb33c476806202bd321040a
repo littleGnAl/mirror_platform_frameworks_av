@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "395106ab_9459b36b",
+        "filename": "media/libaudioprocessing/AudioResamplerFirOps.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2019-10-30T17:14:10Z",
+      "side": 1,
+      "message": "#define USE_SSE (true)",
+      "range": {
+        "startLine": 40,
+        "startChar": 21,
+        "endLine": 40,
+        "endChar": 23
+      },
+      "revId": "f8962875523b4ff06bb33c476806202bd321040a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc227e69_2d4289d6",
+        "filename": "media/libaudioprocessing/AudioResamplerFirOps.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2019-10-30T17:14:10Z",
+      "side": 1,
+      "message": "#define USE_AVX2 (false)",
+      "range": {
+        "startLine": 43,
+        "startChar": 21,
+        "endLine": 43,
+        "endChar": 22
+      },
+      "revId": "f8962875523b4ff06bb33c476806202bd321040a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
