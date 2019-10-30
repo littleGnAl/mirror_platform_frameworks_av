@@ -63,6 +63,7 @@ class CameraManagerGlobal final : public RefBase {
      * Return camera IDs that support camera2
      */
     void getCameraIdList(std::vector<String8> *cameraIds);
+    bool supportsCamera2Api(const String16 &cameraId);
 
   private:
     sp<hardware::ICameraService> mCameraService;

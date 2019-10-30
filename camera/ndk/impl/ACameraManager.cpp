@@ -236,6 +236,20 @@ void CameraManagerGlobal::unregisterAvailabilityCallback(
     mCallbacks.erase(cb);
 }
 
+bool CameraManagerGlobal::supportsCamera2Api(const String16 &cameraId) {
+    auto cs = getCameraService();
+    bool camera2Support = false;
+    binder::Status serviceRet =
+        cs->supportsCameraApi(String16(cameraId),
+                hardware::ICameraService::API_VERSION_2, &camera2Support);
+    if (!serviceRet.isOk()) {
+        ALOGE("%s: supportsCameraApi() call failed for cameraId  %s",
+                __FUNCTION__, String8(cameraId).c_str());
+        return false;
+    }
+    return camera2Support;
+}
+
 void CameraManagerGlobal::getCameraIdList(std::vector<String8>* cameraIds) {
     // Ensure that we have initialized/refreshed the list of available devices
     auto cs = getCameraService();
@@ -246,10 +260,7 @@ void CameraManagerGlobal::getCameraIdList(std::vector<String8>* cameraIds) {
                 deviceStatus.second == hardware::ICameraServiceListener::STATUS_ENUMERATING) {
             continue;
         }
-        bool camera2Support = false;
-        binder::Status serviceRet = cs->supportsCameraApi(String16(deviceStatus.first),
-                hardware::ICameraService::API_VERSION_2, &camera2Support);
-        if (!serviceRet.isOk() || !camera2Support) {
+        if (!supportsCamera2Api(String16(deviceStatus.first))) {
             continue;
         }
         cameraIds->push_back(deviceStatus.first);
@@ -341,7 +352,12 @@ binder::Status CameraManagerGlobal::CameraServiceListener::onStatusChanged(
         int32_t status, const String16& cameraId) {
     sp<CameraManagerGlobal> cm = mCameraManager.promote();
     if (cm != nullptr) {
-        cm->onStatusChanged(status, String8(cameraId));
+        if (cm->supportsCamera2Api(cameraId)) {
+            cm->onStatusChanged(status, String8(cameraId));
+        } else {
+            ALOGW("%s:camera id %s doesn't support camera2 api, skipping status changed callback",
+                    __FUNCTION__, String8(cameraId).c_str());
+        }
     } else {
         ALOGE("Cannot deliver status change. Global camera manager died");
     }
