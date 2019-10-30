@@ -66,9 +66,10 @@ class CameraManagerGlobal final : public RefBase {
 
   private:
     sp<hardware::ICameraService> mCameraService;
-    const int          kCameraServicePollDelay = 500000; // 0.5s
-    const char*        kCameraServiceName      = "media.camera";
-    Mutex              mLock;
+    const int                    kCameraServicePollDelay = 500000; // 0.5s
+    const char*                  kCameraServiceName      = "media.camera";
+    Mutex                        mLock;
+    std::map<String8, bool>     mCameraIdToApi2Support;
 
     class DeathNotifier : public IBinder::DeathRecipient {
       public:
@@ -156,12 +157,14 @@ class CameraManagerGlobal final : public RefBase {
     sp<CallbackHandler> mHandler;
     sp<ALooper>         mCbLooper; // Looper thread where callbacks actually happen on
 
+    sp<hardware::ICameraService> getCameraServiceLocked();
     void onCameraAccessPrioritiesChanged();
     void onStatusChanged(int32_t status, const String8& cameraId);
     void onStatusChangedLocked(int32_t status, const String8& cameraId);
     // Utils for status
     static bool validStatus(int32_t status);
     static bool isStatusAvailable(int32_t status);
+    bool supportsCamera2ApiLocked(const String8 &cameraId);
 
     // The sort logic must match the logic in
     // libcameraservice/common/CameraProviderManager.cpp::getAPI1CompatibleCameraDeviceIds
