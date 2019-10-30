@@ -75,6 +75,10 @@ static bool isCameraServiceDisabled() {
 }
 
 sp<hardware::ICameraService> CameraManagerGlobal::getCameraService() {
+    return getCameraServiceLocked();
+}
+
+sp<hardware::ICameraService> CameraManagerGlobal::getCameraServiceLocked() {
     Mutex::Autolock _l(mLock);
     if (mCameraService.get() == nullptr) {
         if (isCameraServiceDisabled()) {
@@ -236,20 +240,37 @@ void CameraManagerGlobal::unregisterAvailabilityCallback(
     mCallbacks.erase(cb);
 }
 
+bool CameraManagerGlobal::supportsCamera2ApiLocked(const String8 &cameraId) {
+    auto it = mCameraIdToApi2Support.find(cameraId);
+    if (it != mCameraIdToApi2Support.end()) {
+        return it->second;
+    }
+    bool camera2Support = false;
+    auto cs = getCameraServiceLocked();
+    binder::Status serviceRet =
+        cs->supportsCameraApi(String16(cameraId),
+                hardware::ICameraService::API_VERSION_2, &camera2Support);
+    if (!serviceRet.isOk()) {
+        ALOGE("%s: supportsCameraApi() call failed for cameraId  %s",
+                __FUNCTION__, cameraId.c_str());
+        return false;
+    }
+    mCameraIdToApi2Support.emplace(cameraId, camera2Support);
+    return camera2Support;
+}
+
 void CameraManagerGlobal::getCameraIdList(std::vector<String8>* cameraIds) {
     // Ensure that we have initialized/refreshed the list of available devices
-    auto cs = getCameraService();
     Mutex::Autolock _l(mLock);
 
+    // Needed to make sure we're connected to cameraservice
+    getCameraServiceLocked();
     for(auto& deviceStatus : mDeviceStatusMap) {
         if (deviceStatus.second == hardware::ICameraServiceListener::STATUS_NOT_PRESENT ||
                 deviceStatus.second == hardware::ICameraServiceListener::STATUS_ENUMERATING) {
             continue;
         }
-        bool camera2Support = false;
-        binder::Status serviceRet = cs->supportsCameraApi(String16(deviceStatus.first),
-                hardware::ICameraService::API_VERSION_2, &camera2Support);
-        if (!serviceRet.isOk() || !camera2Support) {
+        if (!supportsCamera2ApiLocked(deviceStatus.first)) {
             continue;
         }
         cameraIds->push_back(deviceStatus.first);
@@ -364,6 +385,11 @@ void CameraManagerGlobal::onCameraAccessPrioritiesChanged() {
 void CameraManagerGlobal::onStatusChanged(
         int32_t status, const String8& cameraId) {
     Mutex::Autolock _l(mLock);
+    if (!supportsCamera2ApiLocked(cameraId)) {
+        ALOGW("%s:camera id %s doesn't support camera2 api, skipping status changed callback",
+                __FUNCTION__, cameraId.c_str());
+        return;
+    }
     onStatusChangedLocked(status, cameraId);
 }
 
