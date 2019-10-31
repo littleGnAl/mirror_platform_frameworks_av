@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6a1d7d5f_09dfe052",
+        "filename": "media/tests/benchmark/src/native/common/Stats.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-31T23:15:38Z",
+      "side": 1,
+      "message": "can\u0027t decide whether these should be protected with #ifndef ALOGI constructs.\nor if we should #undefine them to make sure they are gone...",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "55f9922e538c972560371ad2290c612e6d042e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b7e5ad9_27037e75",
+        "filename": "media/tests/benchmark/src/native/common/Stats.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-31T23:15:38Z",
+      "side": 1,
+      "message": "changed since we\u0027ve copied Timers.h/Timers.cpp from system/core/utils/ into this directory.",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "55f9922e538c972560371ad2290c612e6d042e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaf9d6d3_a18aa8af",
+        "filename": "media/tests/benchmark/src/native/common/Timers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-31T23:15:38Z",
+      "side": 1,
+      "message": "I\u0027m trying to decide the best way to highlight and otherwise identify that these\ncame from system/core/utils, so that if someone were to ever want to change this back\nto using those versions of the routines, they would be able to figure out\n\n-- why we copied those files here (e.g. so we didn\u0027t have to link against libutils and\n   would be at a point where we could link against things that are purely part of the NDK\n-- what changes were made to these files (I think none) so that someone doesn\u0027t spend any time\n   trying to figure out \"they must have changed something or they would have used the others\"\n-- and they\u0027ll know that they don\u0027t have to bring anything back from here to the android\n   version of these files.\n\nI\u0027m thinking that perhaps we might want to put these 2 files into a ./utils subdirectory\nso that they stand out as being imported from elsewhere...",
+      "revId": "55f9922e538c972560371ad2290c612e6d042e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1e9be46_6e2dc505",
+        "filename": "media/tests/benchmark/src/native/common/Timers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-10-31T23:15:38Z",
+      "side": 1,
+      "message": "this file (and Timers.cpp) are both directly lifted from their respective places in $android/system/core/... \n\nlicense-wise, that is ok.\n\ntrying to decide whether the #ifndef/#define here should change.",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "55f9922e538c972560371ad2290c612e6d042e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
