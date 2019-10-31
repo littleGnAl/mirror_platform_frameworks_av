@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "69469444_b52df489",
+        "filename": "media/libaudioprocessing/AudioResamplerFirOps.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1272703
+      },
+      "writtenOn": "2019-10-31T03:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c8cb560_ba1b96d8",
+      "range": {
+        "startLine": 40,
+        "startChar": 47,
+        "endLine": 40,
+        "endChar": 57
+      },
+      "revId": "37d8b3fb9886c914de25de3208ea2c40fa58d81b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c9bc062e_0096de44",
         "filename": "media/libaudioprocessing/AudioResamplerFirOps.h",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "37d8b3fb9886c914de25de3208ea2c40fa58d81b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "833da705_5a57ba71",
+        "filename": "media/libaudioprocessing/AudioResamplerFirOps.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1272703
+      },
+      "writtenOn": "2019-10-31T03:49:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9bc062e_0096de44",
+      "range": {
+        "startLine": 43,
+        "startChar": 50,
+        "endLine": 43,
+        "endChar": 51
+      },
+      "revId": "37d8b3fb9886c914de25de3208ea2c40fa58d81b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
