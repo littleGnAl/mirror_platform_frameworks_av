@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd46e0a8_779bc83f",
+        "filename": "camera/ndk/impl/ACameraManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2019-10-31T00:08:09Z",
+      "side": 1,
+      "message": "instead of adding another binder call in this path (it\u0027s a bit silly go to camera service -\u003e app -\u003e cameraservice -\u003e app here), could we just add a field to tell the listener what HAL is in question?",
+      "revId": "44e642a74b597db6e18d59174d2f88016bc23aec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
