@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c031604f_d1ed3b2a",
+        "filename": "camera/ndk/impl/ACameraManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2019-11-01T00:15:11Z",
+      "side": 1,
+      "message": "This isn\u0027t the best pattern here, however since our constructor can\u0027t fail, we\u0027d need to have an initSucceeded() check everywhere if we were to make an init() function do this work.",
+      "range": {
+        "startLine": 266,
+        "startChar": 4,
+        "endLine": 266,
+        "endChar": 29
+      },
+      "revId": "815a14fd4412b0941eb912d9321cb43eb8248778",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
