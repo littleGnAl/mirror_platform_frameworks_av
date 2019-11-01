@@ -457,7 +457,11 @@ void NuPlayer::Decoder::onSetParameters(const sp<AMessage> &params) {
         }
 
         sp<AMessage> codecParams = new AMessage();
-        codecParams->setFloat("operating-rate", decodeFrameRate * mPlaybackSpeed);
+        float operating_rate = decodeFrameRate * mPlaybackSpeed;
+        if (operating_rate > 100.f) {
+            mRequestInputBufferDelay = (1000.f/operating_rate) * 1000LL;
+        }
+        codecParams->setFloat("operating-rate", operating_rate);
         mCodec->setParameters(codecParams);
     }
 }
