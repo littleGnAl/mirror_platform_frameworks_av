@@ -1325,4 +1325,44 @@ status_t AudioPolicyService::setRttEnabled(bool enabled)
     return NO_ERROR;
 }
 
+bool AudioPolicyService::isCallScreenModeSupported()
+{
+    if (mAudioPolicyManager == NULL) {
+        ALOGW("%s, mAudioPolicyManager == NULL", __func__);
+        return false;
+    }
+    Mutex::Autolock _l(mLock);
+    AutoCallerClear acc;
+    return mAudioPolicyManager->isCallScreenModeSupported();
+}
+
+status_t AudioPolicyService::setPreferredDeviceForStrategy(product_strategy_t strategy,
+                                                   const AudioDeviceTypeAddr &device)
+{
+    if (mAudioPolicyManager == NULL) {
+        return NO_INIT;
+    }
+    Mutex::Autolock _l(mLock);
+    return mAudioPolicyManager->setPreferredDeviceForStrategy(strategy, device);
+}
+
+status_t AudioPolicyService::removePreferredDeviceForStrategy(product_strategy_t strategy)
+{
+    if (mAudioPolicyManager == NULL) {
+        return NO_INIT;
+    }
+    Mutex::Autolock _l(mLock);
+    return mAudioPolicyManager->removePreferredDeviceForStrategy(strategy);
+}
+
+status_t AudioPolicyService::getPreferredDeviceForStrategy(product_strategy_t strategy,
+                                                   AudioDeviceTypeAddr &device)
+{
+    if (mAudioPolicyManager == NULL) {
+        return NO_INIT;
+    }
+    Mutex::Autolock _l(mLock);
+    return mAudioPolicyManager->getPreferredDeviceForStrategy(strategy, device);
+}
+
 } // namespace android
