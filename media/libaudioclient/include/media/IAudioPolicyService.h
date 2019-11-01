@@ -223,6 +223,19 @@ public:
                                                        volume_group_t &volumeGroup) = 0;
 
     virtual status_t setRttEnabled(bool enabled) = 0;
+<<<<<<< HEAD
+=======
+
+    virtual bool     isCallScreenModeSupported() = 0;
+
+    virtual status_t setPreferredDeviceForStrategy(product_strategy_t strategy,
+                                                   const AudioDeviceTypeAddr &device) = 0;
+
+    virtual status_t removePreferredDeviceForStrategy(product_strategy_t strategy) = 0;
+
+    virtual status_t getPreferredDeviceForStrategy(product_strategy_t strategy,
+                                                   AudioDeviceTypeAddr &device) = 0;
+>>>>>>> 30857159e8... APM: support product strategy routing
 };
 
 
