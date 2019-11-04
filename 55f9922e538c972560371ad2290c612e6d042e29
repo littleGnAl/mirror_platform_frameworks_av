@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "17ea01c7_3566be9c",
+        "filename": "media/tests/benchmark/src/native/common/Stats.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2019-11-04T13:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a1d7d5f_09dfe052",
+      "range": {
+        "startLine": 24,
+        "startChar": 8,
+        "endLine": 24,
+        "endChar": 13
+      },
+      "revId": "55f9922e538c972560371ad2290c612e6d042e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b7e5ad9_27037e75",
         "filename": "media/tests/benchmark/src/native/common/Stats.h",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3023202e_a6e80e52",
+        "filename": "media/tests/benchmark/src/native/common/Stats.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2019-11-04T13:34:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b7e5ad9_27037e75",
+      "range": {
+        "startLine": 38,
+        "startChar": 1,
+        "endLine": 38,
+        "endChar": 19
+      },
+      "revId": "55f9922e538c972560371ad2290c612e6d042e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eaf9d6d3_a18aa8af",
         "filename": "media/tests/benchmark/src/native/common/Timers.cpp",
         "patchSetId": 1
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "5599d5a8_2572dec9",
+        "filename": "media/tests/benchmark/src/native/common/Timers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2019-11-04T13:34:56Z",
+      "side": 1,
+      "message": "moved to utils subdirectory.",
+      "parentUuid": "eaf9d6d3_a18aa8af",
+      "revId": "55f9922e538c972560371ad2290c612e6d042e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1e9be46_6e2dc505",
         "filename": "media/tests/benchmark/src/native/common/Timers.h",
         "patchSetId": 1
@@ -76,6 +142,30 @@
       "writtenOn": "2019-10-31T23:15:38Z",
       "side": 1,
       "message": "this file (and Timers.cpp) are both directly lifted from their respective places in $android/system/core/... \n\nlicense-wise, that is ok.\n\ntrying to decide whether the #ifndef/#define here should change.",
+      "range": {
+        "startLine": 21,
+        "startChar": 1,
+        "endLine": 23,
+        "endChar": 0
+      },
+      "revId": "55f9922e538c972560371ad2290c612e6d042e29",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0625270_3ba8c9fc",
+        "filename": "media/tests/benchmark/src/native/common/Timers.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2019-11-04T13:34:56Z",
+      "side": 1,
+      "message": "This will prevent including the original header file. It is currently unmodified.",
+      "parentUuid": "b1e9be46_6e2dc505",
       "range": {
         "startLine": 21,
         "startChar": 1,
