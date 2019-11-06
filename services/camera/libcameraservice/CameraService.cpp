@@ -16,7 +16,8 @@
 
 #define LOG_TAG "CameraService"
 #define ATRACE_TAG ATRACE_TAG_CAMERA
-//#define LOG_NDEBUG 0
+// TODO: Comment out
+#define LOG_NDEBUG 0
 
 #include <algorithm>
 #include <climits>

@@ -197,11 +197,18 @@ Return<void> HidlCameraService::addListener(const sp<HCameraServiceListener>& hC
               binder::Status sRet =
                             mAidlICameraService->supportsCameraApi(String16(s.cameraId),
                                     hardware::ICameraService::API_VERSION_2, &supportsHAL3);
+              // TODO: Remove
+              ALOGW("%s: supportsCameraApi returned %d", __FUNCTION__, supportsHAL3);
+
               return !sRet.isOk() || !supportsHAL3;
             }), cameraStatusAndIds.end());
     hidl_vec<HCameraStatusAndId> hCameraStatusAndIds;
     //Convert cameraStatusAndIds to HIDL and call callback
     convertToHidl(cameraStatusAndIds, &hCameraStatusAndIds);
+    // TODO: Remove
+    for (auto &csId : hCameraStatusAndIds) {
+        ALOGE(" HIDL addListener cameraId %s", csId.cameraId.c_str());
+    }
     _hidl_cb(status, hCameraStatusAndIds);
     return Void();
 }
