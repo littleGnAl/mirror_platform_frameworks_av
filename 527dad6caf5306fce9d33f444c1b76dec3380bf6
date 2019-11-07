@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f17cb6e9_f3c96dbc",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-11-07T22:27:25Z",
+      "side": 1,
+      "message": "this will be different on a 32-bit only system.\nwe might have both nativetest64 and nativetest on a device that has both.\nlet\u0027s figure out a way to express that.",
+      "range": {
+        "startLine": 17,
+        "startChar": 63,
+        "endLine": 17,
+        "endChar": 75
+      },
+      "revId": "527dad6caf5306fce9d33f444c1b76dec3380bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c812eea3_ac172bdb",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-11-07T22:27:25Z",
+      "side": 1,
+      "message": "32-bit vs 64-bit assumption here.\nlike the \u0027nativetest\u0027 vs \u0027nativetest64\u0027 above, we need to figure a way to express\nthis here.   We also need to be able to express it for non-arm architectures.",
+      "range": {
+        "startLine": 81,
+        "startChar": 34,
+        "endLine": 81,
+        "endChar": 40
+      },
+      "revId": "527dad6caf5306fce9d33f444c1b76dec3380bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
