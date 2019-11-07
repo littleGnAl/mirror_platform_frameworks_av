@@ -22,6 +22,30 @@
       "revId": "85b47442863d1826a19efb0a46fc0dec18927308",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f487aef_1fcd36b2",
+        "filename": "services/audiopolicy/engineconfigurable/src/Engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1418656
+      },
+      "writtenOn": "2019-11-07T14:38:45Z",
+      "side": 1,
+      "message": "Thanks Francois for your review. This is for automotive platform. We’re using Bus devices for output. However, when USB microphone is connected we would like to prioritize it. Do you mean, we can handle this in configuration itself ?",
+      "parentUuid": "93cbad4a_8678a6bf",
+      "range": {
+        "startLine": 315,
+        "startChar": 4,
+        "endLine": 315,
+        "endChar": 46
+      },
+      "revId": "85b47442863d1826a19efb0a46fc0dec18927308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
