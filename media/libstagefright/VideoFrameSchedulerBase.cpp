@@ -393,12 +393,20 @@ nsecs_t VideoFrameSchedulerBase::schedule(nsecs_t renderTime) {
     if (videoPeriod > 0) {
         // Smooth out rendering
         size_t N = 12;
-        nsecs_t fiveSixthDev =
-            abs(((videoPeriod * 5 + mVsyncPeriod) % (mVsyncPeriod * 6)) - mVsyncPeriod)
-                    / (mVsyncPeriod / 100);
-        // use 20 samples if we are doing 5:6 ratio +- 1% (e.g. playing 50Hz on 60Hz)
-        if (fiveSixthDev < 12) {  /* 12% / 6 = 2% */
-            N = 20;
+
+        // Use only 1 sample if the video period is a near multiple of the vsync period
+        // as the edgeRemainder simplification assumes somewhat of a scattered vsync offset
+        // remainder over the next few frames.
+        if (periodicError(videoPeriod, mVsyncPeriod) < (mVsyncPeriod / N)) {
+            N = 1;
+        } else {
+            nsecs_t fiveSixthDev =
+                abs(((videoPeriod * 5 + mVsyncPeriod) % (mVsyncPeriod * 6)) - mVsyncPeriod)
+                        / (mVsyncPeriod / 100);
+            // use 20 samples if we are doing 5:6 ratio +- 1% (e.g. playing 50Hz on 60Hz)
+            if (fiveSixthDev < 12) {  /* 12% / 6 = 2% */
+                N = 20;
+            }
         }
 
         nsecs_t offset = 0;
