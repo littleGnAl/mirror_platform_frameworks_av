@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d46a24a_e404e01b",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-11-08T00:09:51Z",
+      "side": 1,
+      "message": "let\u0027s include the filename here. and also on line 302.  \n\nprobably  directory+filename \u003d\u003d the entire pathname.",
+      "range": {
+        "startLine": 300,
+        "startChar": 52,
+        "endLine": 300,
+        "endChar": 68
+      },
+      "revId": "4097204a35042321f9cdf4214ddd750522c808cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f13e229c_8fd9b165",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-11-08T00:09:51Z",
+      "side": 1,
+      "message": "ALOGW for all of these",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 14
+      },
+      "revId": "4097204a35042321f9cdf4214ddd750522c808cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9747417b_5aa6d4bd",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-11-08T00:09:51Z",
+      "side": 1,
+      "message": "my thinking is that we need to know what pathname failed here.\nand probably for all of the diagnostics along here.",
+      "range": {
+        "startLine": 51,
+        "startChar": 46,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "4097204a35042321f9cdf4214ddd750522c808cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4dc85f30_1bac805a",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-11-08T00:09:51Z",
+      "side": 1,
+      "message": "if a file is not present, we\u0027re going to see this 2 times, right?\nonce for asyncmode \u003d\u003d true, once for \u003d\u003d false.",
+      "range": {
+        "startLine": 127,
+        "startChar": 15,
+        "endLine": 127,
+        "endChar": 61
+      },
+      "revId": "4097204a35042321f9cdf4214ddd750522c808cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e59ff372_64fab928",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-11-08T00:09:51Z",
+      "side": 1,
+      "message": "followed by encoder \u003d nullptr ?",
+      "range": {
+        "startLine": 175,
+        "startChar": 19,
+        "endLine": 175,
+        "endChar": 26
+      },
+      "revId": "4097204a35042321f9cdf4214ddd750522c808cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "448e2a83_9433188d",
+        "filename": "media/tests/benchmark/src/native/common/Stats.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-11-08T00:09:51Z",
+      "side": 1,
+      "message": "is this here purely so that the ALOGV() gets printed?\n\ni know that some of the ALOGV() calls I saw elsewhere should really be ALOGW;\nconsider whether that makes this unneeded.",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "4097204a35042321f9cdf4214ddd750522c808cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
