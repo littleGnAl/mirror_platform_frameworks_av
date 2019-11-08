@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8e86d7e0_66b20ef7",
+        "filename": "media/libmediaplayerservice/MetadataRetrieverClient.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1060415
+      },
+      "writtenOn": "2019-11-08T01:12:25Z",
+      "side": 1,
+      "message": "nit: please arrange it in alphabetical order",
+      "revId": "1a017ba94e4b41aaa2fed140c87fd291c8c1b26c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f74a0528_2ddfc710",
+        "filename": "media/libmediaplayerservice/MetadataRetrieverClient.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1060415
+      },
+      "writtenOn": "2019-11-08T01:12:25Z",
+      "side": 1,
+      "message": "instead of doing a do { } while (0); loop, it\u0027s cleaner just change the break to \"return NULL\"",
+      "revId": "1a017ba94e4b41aaa2fed140c87fd291c8c1b26c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1f1477e_e6f255fc",
+        "filename": "media/libmediaplayerservice/MetadataRetrieverClient.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1060415
+      },
+      "writtenOn": "2019-11-08T01:12:25Z",
+      "side": 1,
+      "message": "Is it necessary to call dlclose() ?",
+      "revId": "1a017ba94e4b41aaa2fed140c87fd291c8c1b26c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
