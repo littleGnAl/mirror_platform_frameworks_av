@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "1b8bc416_baf5c9fe",
+        "filename": "media/libmediaplayerservice/MetadataRetrieverClient.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1179935
+      },
+      "writtenOn": "2019-11-08T07:18:51Z",
+      "side": 1,
+      "message": "As the other header files are arranged in alphabetical order\nI\u0027m not sure where to put the line ...",
+      "parentUuid": "8e86d7e0_66b20ef7",
+      "revId": "1a017ba94e4b41aaa2fed140c87fd291c8c1b26c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f74a0528_2ddfc710",
         "filename": "media/libmediaplayerservice/MetadataRetrieverClient.cpp",
         "patchSetId": 6
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "744d320c_17b526cf",
+        "filename": "media/libmediaplayerservice/MetadataRetrieverClient.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1179935
+      },
+      "writtenOn": "2019-11-08T07:18:51Z",
+      "side": 1,
+      "message": "fixed as suggested",
+      "parentUuid": "f74a0528_2ddfc710",
+      "revId": "1a017ba94e4b41aaa2fed140c87fd291c8c1b26c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d1f1477e_e6f255fc",
         "filename": "media/libmediaplayerservice/MetadataRetrieverClient.cpp",
         "patchSetId": 6
@@ -50,6 +86,24 @@
       "revId": "1a017ba94e4b41aaa2fed140c87fd291c8c1b26c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b81c4643_db5cf56e",
+        "filename": "media/libmediaplayerservice/MetadataRetrieverClient.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1179935
+      },
+      "writtenOn": "2019-11-08T07:18:51Z",
+      "side": 1,
+      "message": "yes we don\u0027t need to keep a copy of the shared library at all times\nfixed as suggested",
+      "parentUuid": "d1f1477e_e6f255fc",
+      "revId": "1a017ba94e4b41aaa2fed140c87fd291c8c1b26c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
