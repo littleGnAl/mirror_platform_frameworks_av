@@ -3,7 +3,7 @@ service audioserver /system/bin/audioserver
     user audioserver
     # media gid needed for /dev/fm (radio) and for /data/misc/media (tee)
     group audio camera drmrpc media mediadrm net_bt net_bt_admin net_bw_acct wakelock
-    capabilities BLOCK_SUSPEND
+    capabilities SYS_NICE BLOCK_SUSPEND
     ioprio rt 4
     writepid /dev/cpuset/foreground/tasks /dev/stune/foreground/tasks
     onrestart restart vendor.audio-hal
