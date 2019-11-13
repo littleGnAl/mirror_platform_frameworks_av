@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f4b30656_8f38668c",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-11-13T17:48:35Z",
+      "side": 1,
+      "message": "a better diagnostic here is \"unable to open for writing\".",
+      "range": {
+        "startLine": 125,
+        "startChar": 24,
+        "endLine": 125,
+        "endChar": 39
+      },
+      "revId": "3a14969a99ed2cdcd86230ff8b1d784683e6097e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
