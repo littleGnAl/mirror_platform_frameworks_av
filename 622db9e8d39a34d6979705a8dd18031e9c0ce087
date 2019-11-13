@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "be74bb46_ca5de406",
+        "filename": "media/libstagefright/tests/writer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-11-13T19:04:37Z",
+      "side": 1,
+      "message": "$OUT or ${OUT} everywhere.\n$(OUT) doesn\u0027t work",
+      "range": {
+        "startLine": 16,
+        "startChar": 9,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "622db9e8d39a34d6979705a8dd18031e9c0ce087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8d22fa3_c7b2bb89",
+        "filename": "media/libstagefright/tests/writer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-11-13T19:04:37Z",
+      "side": 1,
+      "message": "prefix $ANDROID_BUILD_TOP/ to path",
+      "revId": "622db9e8d39a34d6979705a8dd18031e9c0ce087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1b761081_9a5e4aa8",
         "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
         "patchSetId": 1
