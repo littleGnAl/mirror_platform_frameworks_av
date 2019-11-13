@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d7bb70a_e5db1431",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeExtractor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-11-13T17:41:56Z",
+      "side": 1,
+      "message": "there is no need to get malloc() involved in this.\nnote that the current candidate allocates the space and never frees it.\n\nA better construct is:\n\nstruct stat buf;\nstat(sFilePath.c_str(), \u0026buf);\nfileSize \u003d buf.st_size;",
+      "range": {
+        "startLine": 40,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 33
+      },
+      "revId": "f8e20a869c88341649582b20d45acd3653507d86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0f27dfb_d8bc1f37",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Native.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-11-13T17:41:56Z",
+      "side": 1,
+      "message": "this change of order..... just a desire to keep these in alphabetical order?\nthat seems to be about the only motivation I can come up with for this.\n\nit\u0027s not wrong and it doesn\u0027t need to be changed -- i just want to confirm the motivation.",
+      "revId": "f8e20a869c88341649582b20d45acd3653507d86",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
