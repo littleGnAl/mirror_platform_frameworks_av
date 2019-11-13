@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "482ec4dd_b9915bfb",
+        "filename": "media/tests/benchmark/src/native/decoder/Decoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-11-13T22:37:57Z",
+      "side": 1,
+      "message": "the error code and the ALOGE() message no longer match.\nis it malformed or is it insufficient resources?",
+      "range": {
+        "startLine": 36,
+        "startChar": 29,
+        "endLine": 36,
+        "endChar": 51
+      },
+      "revId": "109250928962e040f35abb3a4d08b258092ab716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7614b255_019891b2",
+        "filename": "media/tests/benchmark/src/native/decoder/Decoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-11-13T22:37:57Z",
+      "side": 1,
+      "message": "looks like this changed to match the work at lines 35/36 -- might have to be reworked if we change the code at those lines.\n\nnote that we could say \"mErrorCode \u003d flag\" here, the same way that we do on line 82.",
+      "range": {
+        "startLine": 68,
+        "startChar": 19,
+        "endLine": 69,
+        "endChar": 47
+      },
+      "revId": "109250928962e040f35abb3a4d08b258092ab716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00f8775f_1a2acd3b",
+        "filename": "media/tests/benchmark/src/native/decoder/Decoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-11-13T22:37:57Z",
+      "side": 1,
+      "message": "this is an error callback.... can we ever see a callback where the err value indicates no error? would seem strange.\n\nperhaps we can indicate that with an ALOG() call",
+      "range": {
+        "startLine": 136,
+        "startChar": 12,
+        "endLine": 136,
+        "endChar": 17
+      },
+      "revId": "109250928962e040f35abb3a4d08b258092ab716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a013f90_d3adec93",
+        "filename": "media/tests/benchmark/src/native/decoder/Decoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-11-13T22:37:57Z",
+      "side": 1,
+      "message": "at line 214, we use mErrorCode to record the error value.\nshould we be saving this value in mErrorCode for later?\n\nsame question applies at line 185.",
+      "range": {
+        "startLine": 205,
+        "startChar": 23,
+        "endLine": 205,
+        "endChar": 29
+      },
+      "revId": "109250928962e040f35abb3a4d08b258092ab716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b388007_485eac58",
+        "filename": "media/tests/benchmark/src/native/encoder/Encoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-11-13T22:37:57Z",
+      "side": 1,
+      "message": "will we ever get called with this set to 0?\nit feels redundant -- calling onError() but without an error to report.",
+      "range": {
+        "startLine": 145,
+        "startChar": 10,
+        "endLine": 145,
+        "endChar": 18
+      },
+      "revId": "109250928962e040f35abb3a4d08b258092ab716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f934c16e_033e5fff",
+        "filename": "media/tests/benchmark/tests/EncoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-11-13T22:37:57Z",
+      "side": 1,
+      "message": "skipped or failed?",
+      "range": {
+        "startLine": 165,
+        "startChar": 38,
+        "endLine": 165,
+        "endChar": 46
+      },
+      "revId": "109250928962e040f35abb3a4d08b258092ab716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
