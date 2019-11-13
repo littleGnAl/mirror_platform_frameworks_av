@@ -114,11 +114,7 @@ struct BpDataSource : public BpInterface<IDataSource> {
             handle->decryptApiType = reply.readInt32();
             handle->status = reply.readInt32();
 
-            const int bufferLength = data.readInt32();
-            if (bufferLength != -1) {
-                handle->decryptInfo = new DecryptInfo();
-                handle->decryptInfo->decryptBufferLength = bufferLength;
-            }
+            handle->decryptBufferLength = data.readInt32();
 
             size_t size = data.readInt32();
             for (size_t i = 0; i < size; ++i) {
@@ -192,11 +188,7 @@ status_t BnDataSource::onTransact(
                 reply->writeInt32(handle->decryptApiType);
                 reply->writeInt32(handle->status);
 
-                if (handle->decryptInfo != NULL) {
-                    reply->writeInt32(handle->decryptInfo->decryptBufferLength);
-                } else {
-                    reply->writeInt32(-1);
-                }
+                reply->writeInt32(handle->decryptBufferLength);
 
                 size_t size = handle->copyControlVector.size();
                 reply->writeInt32(size);

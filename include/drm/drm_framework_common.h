@@ -291,7 +291,7 @@ public:
      * Information required to decrypt content
      * e.g. size of memory to be allocated to get the decrypted content.
      */
-    DecryptInfo* decryptInfo;
+    int decryptBufferLength;
     /**
      * Defines a vector for the copy control settings sent from the DRM plugin
      * to the player
@@ -310,12 +310,10 @@ public:
             mimeType(""),
             decryptApiType(INVALID_VALUE),
             status(INVALID_VALUE),
-            decryptInfo(NULL) {
-
+            decryptBufferLength(-1) {
     }
 
     ~DecryptHandle() {
-        delete decryptInfo; decryptInfo = NULL;
     }
 };
 

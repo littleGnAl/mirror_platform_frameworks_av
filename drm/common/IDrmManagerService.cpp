@@ -59,11 +59,7 @@ static void writeDecryptHandleToParcelData(
         data->writeString8(handle->extendedData.valueAt(i));
     }
 
-    if (NULL != handle->decryptInfo) {
-        data->writeInt32(handle->decryptInfo->decryptBufferLength);
-    } else {
-        data->writeInt32(INVALID_BUFFER_LENGTH);
-    }
+    data->writeInt32(handle->decryptBufferLength);
 }
 
 static void readDecryptHandleFromParcelData(
@@ -91,22 +87,14 @@ static void readDecryptHandleFromParcelData(
         handle->extendedData.add(key, value);
     }
 
-    handle->decryptInfo = NULL;
-    const int bufferLen = data.readInt32();
-    if (INVALID_BUFFER_LENGTH != bufferLen) {
-        handle->decryptInfo = new DecryptInfo();
-        handle->decryptInfo->decryptBufferLength = bufferLen;
-    }
+    handle->decryptBufferLength = data.readInt32();
 }
 
 static void clearDecryptHandle(sp<DecryptHandle> &handle) {
     if (handle == NULL) {
         return;
     }
-    if (handle->decryptInfo) {
-        delete handle->decryptInfo;
-        handle->decryptInfo = NULL;
-    }
+    handle->decryptBufferLength = INVALID_BUFFER_LENGTH;
     handle->copyControlVector.clear();
     handle->extendedData.clear();
 }
