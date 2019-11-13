@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1b761081_9a5e4aa8",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-11-13T18:52:03Z",
+      "side": 1,
+      "message": "Remove.",
+      "range": {
+        "startLine": 264,
+        "startChar": 36,
+        "endLine": 264,
+        "endChar": 47
+      },
+      "revId": "622db9e8d39a34d6979705a8dd18031e9c0ce087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f310dfd_60f46d14",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-11-13T18:52:03Z",
+      "side": 1,
+      "message": "while writing to a file seems redundant and may mislead to say issue is in writing to a file.\nsendBuffersToWriter() can fail due to different reasons. So just say \"Writer failed\"",
+      "range": {
+        "startLine": 267,
+        "startChar": 48,
+        "endLine": 267,
+        "endChar": 71
+      },
+      "revId": "622db9e8d39a34d6979705a8dd18031e9c0ce087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa84452c_24459c31",
+        "filename": "media/libstagefright/tests/writer/WriterTestEnvironment.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-11-13T18:52:03Z",
+      "side": 1,
+      "message": "arguments",
+      "range": {
+        "startLine": 30,
+        "startChar": 31,
+        "endLine": 30,
+        "endChar": 39
+      },
+      "revId": "622db9e8d39a34d6979705a8dd18031e9c0ce087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11eae5dd_242f3cae",
+        "filename": "media/libstagefright/tests/writer/WriterUtility.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-11-13T18:52:03Z",
+      "side": 1,
+      "message": "Add av1, mpeg4 and h263\nall audio files followed by video files\nAnd move the table definition to the WriterTest.cpp to make it easier to understand which codec and output format combinations are tested.",
+      "revId": "622db9e8d39a34d6979705a8dd18031e9c0ce087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
