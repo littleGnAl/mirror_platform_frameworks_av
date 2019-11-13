@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f3b35a06_6ad5b59a",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-11-13T14:17:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d46a24a_e404e01b",
+      "range": {
+        "startLine": 300,
+        "startChar": 52,
+        "endLine": 300,
+        "endChar": 68
+      },
+      "revId": "4097204a35042321f9cdf4214ddd750522c808cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f13e229c_8fd9b165",
         "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "4097204a35042321f9cdf4214ddd750522c808cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2a8364b_eee03089",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-11-13T14:17:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f13e229c_8fd9b165",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 14
+      },
+      "revId": "4097204a35042321f9cdf4214ddd750522c808cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "e089acd6_02f262ad",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-11-13T14:17:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9747417b_5aa6d4bd",
+      "range": {
+        "startLine": 51,
+        "startChar": 46,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "4097204a35042321f9cdf4214ddd750522c808cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4dc85f30_1bac805a",
         "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "4097204a35042321f9cdf4214ddd750522c808cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2593673_f40eb160",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-11-13T14:17:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "4dc85f30_1bac805a",
+      "range": {
+        "startLine": 127,
+        "startChar": 15,
+        "endLine": 127,
+        "endChar": 61
+      },
+      "revId": "4097204a35042321f9cdf4214ddd750522c808cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "7dfd50a8_f664c3a2",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-11-13T14:17:12Z",
+      "side": 1,
+      "message": "Added",
+      "parentUuid": "e59ff372_64fab928",
+      "range": {
+        "startLine": 175,
+        "startChar": 19,
+        "endLine": 175,
+        "endChar": 26
+      },
+      "revId": "4097204a35042321f9cdf4214ddd750522c808cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "448e2a83_9433188d",
         "filename": "media/tests/benchmark/src/native/common/Stats.h",
         "patchSetId": 2
@@ -128,6 +248,30 @@
       "writtenOn": "2019-11-08T00:09:51Z",
       "side": 1,
       "message": "is this here purely so that the ALOGV() gets printed?\n\ni know that some of the ALOGV() calls I saw elsewhere should really be ALOGW;\nconsider whether that makes this unneeded.",
+      "range": {
+        "startLine": 30,
+        "startChar": 8,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "4097204a35042321f9cdf4214ddd750522c808cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2e1d9c52_dc8fbda8",
+        "filename": "media/tests/benchmark/src/native/common/Stats.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-11-13T14:17:12Z",
+      "side": 1,
+      "message": "It\u0027s needed for debugging. Also, replaced the ALOGVs with ALOGW.",
+      "parentUuid": "448e2a83_9433188d",
       "range": {
         "startLine": 30,
         "startChar": 8,
