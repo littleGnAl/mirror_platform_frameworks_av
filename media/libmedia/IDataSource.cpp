@@ -111,28 +111,9 @@ struct BpDataSource : public BpInterface<IDataSource> {
             handle = new DecryptHandle();
             handle->decryptId = reply.readInt32();
             handle->mimeType = reply.readString8();
+            handle->mimeType = "foo/bar";
             handle->decryptApiType = reply.readInt32();
             handle->status = reply.readInt32();
-
-            const int bufferLength = data.readInt32();
-            if (bufferLength != -1) {
-                handle->decryptInfo = new DecryptInfo();
-                handle->decryptInfo->decryptBufferLength = bufferLength;
-            }
-
-            size_t size = data.readInt32();
-            for (size_t i = 0; i < size; ++i) {
-                DrmCopyControl key = (DrmCopyControl)data.readInt32();
-                int value = data.readInt32();
-                handle->copyControlVector.add(key, value);
-            }
-
-            size = data.readInt32();
-            for (size_t i = 0; i < size; ++i) {
-                String8 key = data.readString8();
-                String8 value = data.readString8();
-                handle->extendedData.add(key, value);
-            }
         }
         return handle;
     }
@@ -191,26 +172,6 @@ status_t BnDataSource::onTransact(
                 reply->writeString8(handle->mimeType);
                 reply->writeInt32(handle->decryptApiType);
                 reply->writeInt32(handle->status);
-
-                if (handle->decryptInfo != NULL) {
-                    reply->writeInt32(handle->decryptInfo->decryptBufferLength);
-                } else {
-                    reply->writeInt32(-1);
-                }
-
-                size_t size = handle->copyControlVector.size();
-                reply->writeInt32(size);
-                for (size_t i = 0; i < size; ++i) {
-                    reply->writeInt32(handle->copyControlVector.keyAt(i));
-                    reply->writeInt32(handle->copyControlVector.valueAt(i));
-                }
-
-                size = handle->extendedData.size();
-                reply->writeInt32(size);
-                for (size_t i = 0; i < size; ++i) {
-                    reply->writeString8(handle->extendedData.keyAt(i));
-                    reply->writeString8(handle->extendedData.valueAt(i));
-                }
             }
             return NO_ERROR;
         } break;
