@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "ee0f34a0_a5301407",
+        "filename": "media/libstagefright/tests/writer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-11-14T00:02:22Z",
+      "side": 1,
+      "message": "Prefer to use static libraries for libraries that contain the code being tested.\nThis helps in building these with sanitizers easily without having to modify Android.bp of the library.\n\nIn this case all libstagefright related modules will be included as static_libraries and rest like cutils,log, utils, binder etc are included as shared.\n\n\n    shared_libs: [\n        \"libbinder\",\n        \"libcutils\",\n        \"liblog\",\n        \"libutils\",\n    ],\n\n    static_libs: [\n        \"libstagefright_webm\",\n        \"libdatasource\",\n        \"libstagefright\",\n        \"libstagefright_foundation\",\n        \"libstagefright_esds\",\n        \"libogg\",\n    ],\n\n    header_libs:[\n        \"libaudioclient_headers\",\n        \"libmediadrm_headers\",\n        \"libstagefright_headers\",\n        \"libstagefright_xmlparser_headers\",\n        \"media_ndk_headers\",\n        \"libmedia_headers\",\n    ],",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "622db9e8d39a34d6979705a8dd18031e9c0ce087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be74bb46_ca5de406",
         "filename": "media/libstagefright/tests/writer/README.md",
         "patchSetId": 1
