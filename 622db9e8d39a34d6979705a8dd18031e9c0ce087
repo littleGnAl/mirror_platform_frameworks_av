@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f4aee174_04f77300",
+        "filename": "media/libstagefright/tests/writer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-11-14T16:36:50Z",
+      "side": 1,
+      "message": "Not all dependencies need to be static.\ncore libraries that are tested (in this case libstagefright* and underlying writer libraries) are enough.\nYou can use the libs that I have listed here and update the current CL itself.",
+      "parentUuid": "d2a25e96_122ad067",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "622db9e8d39a34d6979705a8dd18031e9c0ce087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be74bb46_ca5de406",
         "filename": "media/libstagefright/tests/writer/README.md",
         "patchSetId": 1
