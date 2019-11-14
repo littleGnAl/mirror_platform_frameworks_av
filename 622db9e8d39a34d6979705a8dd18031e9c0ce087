@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d2a25e96_122ad067",
+        "filename": "media/libstagefright/tests/writer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-11-14T12:31:04Z",
+      "side": 1,
+      "message": "we will submit another CL which makes all dependencies static",
+      "parentUuid": "ee0f34a0_a5301407",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 6
+      },
+      "revId": "622db9e8d39a34d6979705a8dd18031e9c0ce087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be74bb46_ca5de406",
         "filename": "media/libstagefright/tests/writer/README.md",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "1f8982e3_08d6a5df",
+        "filename": "media/libstagefright/tests/writer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-11-14T12:31:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be74bb46_ca5de406",
+      "range": {
+        "startLine": 16,
+        "startChar": 9,
+        "endLine": 16,
+        "endChar": 15
+      },
+      "revId": "622db9e8d39a34d6979705a8dd18031e9c0ce087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8d22fa3_c7b2bb89",
         "filename": "media/libstagefright/tests/writer/README.md",
         "patchSetId": 1
@@ -62,6 +110,24 @@
       "revId": "622db9e8d39a34d6979705a8dd18031e9c0ce087",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ee8cb4e_3271002d",
+        "filename": "media/libstagefright/tests/writer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-11-14T12:31:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8d22fa3_c7b2bb89",
+      "revId": "622db9e8d39a34d6979705a8dd18031e9c0ce087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -88,6 +154,30 @@
     },
     {
       "key": {
+        "uuid": "15863063_b5709035",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-11-14T12:31:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b761081_9a5e4aa8",
+      "range": {
+        "startLine": 264,
+        "startChar": 36,
+        "endLine": 264,
+        "endChar": 47
+      },
+      "revId": "622db9e8d39a34d6979705a8dd18031e9c0ce087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7f310dfd_60f46d14",
         "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
         "patchSetId": 1
@@ -108,6 +198,30 @@
       "revId": "622db9e8d39a34d6979705a8dd18031e9c0ce087",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1529f11_25f3891d",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-11-14T12:31:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f310dfd_60f46d14",
+      "range": {
+        "startLine": 267,
+        "startChar": 48,
+        "endLine": 267,
+        "endChar": 71
+      },
+      "revId": "622db9e8d39a34d6979705a8dd18031e9c0ce087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -134,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "4a33ee2c_f97ce622",
+        "filename": "media/libstagefright/tests/writer/WriterTestEnvironment.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-11-14T12:31:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa84452c_24459c31",
+      "range": {
+        "startLine": 30,
+        "startChar": 31,
+        "endLine": 30,
+        "endChar": 39
+      },
+      "revId": "622db9e8d39a34d6979705a8dd18031e9c0ce087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "11eae5dd_242f3cae",
         "filename": "media/libstagefright/tests/writer/WriterUtility.h",
         "patchSetId": 1
@@ -148,6 +286,24 @@
       "revId": "622db9e8d39a34d6979705a8dd18031e9c0ce087",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3daed0dc_5cf11710",
+        "filename": "media/libstagefright/tests/writer/WriterUtility.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-11-14T12:31:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11eae5dd_242f3cae",
+      "revId": "622db9e8d39a34d6979705a8dd18031e9c0ce087",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
