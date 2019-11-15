@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1f96b414_d5812ba4",
+        "filename": "camera/ndk/impl/ACameraManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 254,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2019-11-15T17:09:54Z",
+      "side": 1,
+      "message": "nit, \"supportsCamera2ApiLocked\"",
+      "range": {
+        "startLine": 254,
+        "startChar": 19,
+        "endLine": 254,
+        "endChar": 36
+      },
+      "revId": "8176b99ee3c1b2e3e864e694a3918ffcd403cb2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
