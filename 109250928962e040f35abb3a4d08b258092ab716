@@ -260,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "5b3f9683_968ebea6",
+        "filename": "media/tests/benchmark/tests/DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1237180
+      },
+      "writtenOn": "2019-11-15T15:06:29Z",
+      "side": 1,
+      "message": "CSD data is configured as part of codec.configure. There is no need to queue it twice. Flac decoder fails if CSD is submitted twice. Hence subsequent patchset removed this extraction and submission to the component. b/141225164",
+      "parentUuid": "77f7b9be_51f3bfe4",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 23
+      },
+      "revId": "109250928962e040f35abb3a4d08b258092ab716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a3d639c_c6bb4ca5",
         "filename": "media/tests/benchmark/tests/EncoderTest.cpp",
         "patchSetId": 1
@@ -271,6 +295,30 @@
       "writtenOn": "2019-11-15T14:51:35Z",
       "side": 1,
       "message": "this csd-extracting loop is gone in patchset 2.\nhelp me understand why we don\u0027t need it.",
+      "range": {
+        "startLine": 77,
+        "startChar": 9,
+        "endLine": 77,
+        "endChar": 23
+      },
+      "revId": "109250928962e040f35abb3a4d08b258092ab716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76518c9c_2bf22a97",
+        "filename": "media/tests/benchmark/tests/EncoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1237180
+      },
+      "writtenOn": "2019-11-15T15:06:29Z",
+      "side": 1,
+      "message": "CSD data is configured as part of codec.configure. There is no need to queue it twice. Flac decoder fails if CSD is submitted twice. Hence subsequent patchset removed this extraction and submission to the component. b/141225164",
+      "parentUuid": "7a3d639c_c6bb4ca5",
       "range": {
         "startLine": 77,
         "startChar": 9,
