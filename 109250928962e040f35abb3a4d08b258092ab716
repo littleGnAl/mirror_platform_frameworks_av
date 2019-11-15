@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "958d50b9_a726bc55",
+        "filename": "media/tests/benchmark/src/native/decoder/Decoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1237180
+      },
+      "writtenOn": "2019-11-15T14:35:28Z",
+      "side": 1,
+      "message": "Updated the Error message. \nWe were returning AMEDIACODEC_ERROR_INSUFFICIENT_RESOURCE which is relevant in case of insufficient resource from codec. We corrected it to this error for an invalid sample read.",
+      "parentUuid": "482ec4dd_b9915bfb",
+      "range": {
+        "startLine": 36,
+        "startChar": 29,
+        "endLine": 36,
+        "endChar": 51
+      },
+      "revId": "109250928962e040f35abb3a4d08b258092ab716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7614b255_019891b2",
         "filename": "media/tests/benchmark/src/native/decoder/Decoder.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "109250928962e040f35abb3a4d08b258092ab716",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db66efa4_54da7981",
+        "filename": "media/tests/benchmark/src/native/decoder/Decoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1237180
+      },
+      "writtenOn": "2019-11-15T14:35:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7614b255_019891b2",
+      "range": {
+        "startLine": 68,
+        "startChar": 19,
+        "endLine": 69,
+        "endChar": 47
+      },
+      "revId": "109250928962e040f35abb3a4d08b258092ab716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "257e24a6_6154defb",
+        "filename": "media/tests/benchmark/src/native/decoder/Decoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1237180
+      },
+      "writtenOn": "2019-11-15T14:35:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "00f8775f_1a2acd3b",
+      "range": {
+        "startLine": 136,
+        "startChar": 12,
+        "endLine": 136,
+        "endChar": 17
+      },
+      "revId": "109250928962e040f35abb3a4d08b258092ab716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a013f90_d3adec93",
         "filename": "media/tests/benchmark/src/native/decoder/Decoder.cpp",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "109250928962e040f35abb3a4d08b258092ab716",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "120760ec_e7419f12",
+        "filename": "media/tests/benchmark/src/native/decoder/Decoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1237180
+      },
+      "writtenOn": "2019-11-15T14:35:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a013f90_d3adec93",
+      "range": {
+        "startLine": 205,
+        "startChar": 23,
+        "endLine": 205,
+        "endChar": 29
+      },
+      "revId": "109250928962e040f35abb3a4d08b258092ab716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "bc85e20d_fe00955b",
+        "filename": "media/tests/benchmark/src/native/encoder/Encoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1237180
+      },
+      "writtenOn": "2019-11-15T14:35:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1b388007_485eac58",
+      "range": {
+        "startLine": 145,
+        "startChar": 10,
+        "endLine": 145,
+        "endChar": 18
+      },
+      "revId": "109250928962e040f35abb3a4d08b258092ab716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f934c16e_033e5fff",
         "filename": "media/tests/benchmark/tests/EncoderTest.cpp",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "109250928962e040f35abb3a4d08b258092ab716",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "89b20110_c1e2cb63",
+        "filename": "media/tests/benchmark/tests/EncoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1237180
+      },
+      "writtenOn": "2019-11-15T14:35:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f934c16e_033e5fff",
+      "range": {
+        "startLine": 165,
+        "startChar": 38,
+        "endLine": 165,
+        "endChar": 46
+      },
+      "revId": "109250928962e040f35abb3a4d08b258092ab716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
