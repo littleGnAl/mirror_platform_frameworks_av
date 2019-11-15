@@ -22,6 +22,29 @@
       "revId": "8176b99ee3c1b2e3e864e694a3918ffcd403cb2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70bcfcec_7c032738",
+        "filename": "camera/ndk/impl/ACameraManager.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2019-11-15T17:19:10Z",
+      "side": 1,
+      "message": "nitpick: Maybe just call this \"struct Status\"? StatusAndHAL3 sounds a bit odd.",
+      "range": {
+        "startLine": 189,
+        "startChar": 11,
+        "endLine": 189,
+        "endChar": 24
+      },
+      "revId": "8176b99ee3c1b2e3e864e694a3918ffcd403cb2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
