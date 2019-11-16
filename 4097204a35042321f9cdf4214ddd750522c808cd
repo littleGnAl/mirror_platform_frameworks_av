@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "3f7b86b9_35a861ff",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 300,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-11-16T09:45:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c590c370_676ea45d",
+      "range": {
+        "startLine": 300,
+        "startChar": 52,
+        "endLine": 300,
+        "endChar": 68
+      },
+      "revId": "4097204a35042321f9cdf4214ddd750522c808cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f13e229c_8fd9b165",
         "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
         "patchSetId": 2
@@ -144,6 +168,30 @@
     },
     {
       "key": {
+        "uuid": "38059e13_3a9784f1",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-11-16T09:45:35Z",
+      "side": 1,
+      "message": "Okay. Will take care in future.",
+      "parentUuid": "569b6e63_c8e8b0d8",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 14
+      },
+      "revId": "4097204a35042321f9cdf4214ddd750522c808cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9747417b_5aa6d4bd",
         "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
         "patchSetId": 2
@@ -203,6 +251,30 @@
       "side": 1,
       "message": "Doesn\u0027t respond to comment about path name.\nReopening the comment.",
       "parentUuid": "e089acd6_02f262ad",
+      "range": {
+        "startLine": 51,
+        "startChar": 46,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "4097204a35042321f9cdf4214ddd750522c808cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1808baa8_8f42c9a2",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-11-16T09:45:35Z",
+      "side": 1,
+      "message": "We are returning -1 whenever \"Test Skipping\" condition is met. This will be taken by the EncoderTest.java as status and if returned -1, it prints the name of the file that got skipped.",
+      "parentUuid": "554dfc19_a3d8649a",
       "range": {
         "startLine": 51,
         "startChar": 46,
