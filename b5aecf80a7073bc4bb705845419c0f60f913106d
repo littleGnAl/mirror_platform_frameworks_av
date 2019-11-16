@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "26e8cacc_1cfa4360",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2255,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2019-11-16T19:13:52Z",
+      "side": 1,
+      "message": "+4 indent spaces",
+      "range": {
+        "startLine": 2254,
+        "startChar": 7,
+        "endLine": 2255,
+        "endChar": 65
+      },
+      "revId": "b5aecf80a7073bc4bb705845419c0f60f913106d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3b439a8_eeec9dc4",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2263,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2019-11-16T19:13:52Z",
+      "side": 1,
+      "message": "missing space",
+      "range": {
+        "startLine": 2263,
+        "startChar": 5,
+        "endLine": 2263,
+        "endChar": 6
+      },
+      "revId": "b5aecf80a7073bc4bb705845419c0f60f913106d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f92e8603_71a4a7f0",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 3074,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2019-11-16T19:13:52Z",
+      "side": 1,
+      "message": "Do this first, same for all the other codecs.",
+      "range": {
+        "startLine": 3071,
+        "startChar": 0,
+        "endLine": 3074,
+        "endChar": 5
+      },
+      "revId": "b5aecf80a7073bc4bb705845419c0f60f913106d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4612983_898edccd",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 3101,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2019-11-16T19:13:52Z",
+      "side": 1,
+      "message": "superBlockAlign - no need to abbreviate",
+      "range": {
+        "startLine": 3101,
+        "startChar": 34,
+        "endLine": 3101,
+        "endChar": 45
+      },
+      "revId": "b5aecf80a7073bc4bb705845419c0f60f913106d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73ce1ba3_f0eb54d8",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 3101,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2019-11-16T19:13:52Z",
+      "side": 1,
+      "message": "encodeOptions - no need to abbreviate",
+      "range": {
+        "startLine": 3101,
+        "startChar": 16,
+        "endLine": 3101,
+        "endChar": 24
+      },
+      "revId": "b5aecf80a7073bc4bb705845419c0f60f913106d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
