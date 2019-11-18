@@ -375,6 +375,78 @@ TEST_P(WriterTest, PauseWriterTest) {
     close(fd);
 }
 
+TEST_P(WriterTest, MultiStartStopPauseTest) {
+    // TODO: (b/144821804)
+    // Enable the test for MPE2TS writer
+    if (mDisableTest || mWriterName == standardWriters::MPEG2TS) return;
+    ALOGV("Test writers for multiple start, stop and pause calls");
+
+    string outputFile = OUTPUT_FILE_NAME;
+    int32_t fd =
+            open(outputFile.c_str(), O_CREAT | O_LARGEFILE | O_TRUNC | O_RDWR, S_IRUSR | S_IWUSR);
+    if (fd < 0) return;
+
+    string writerFormat = GetParam().first;
+    int32_t status = createWriter(fd);
+    if (status) {
+        cout << "Failed to create writer for output format:" << writerFormat << "\n";
+        ASSERT_TRUE(false);
+    }
+    string inputFile = gEnv->getRes();
+    string inputInfo = gEnv->getRes();
+    configFormat param;
+    bool isAudio;
+    int32_t inputFileIdx = GetParam().second;
+    getFileDetails(inputFile, inputInfo, param, isAudio, inputFileIdx);
+    if (!inputFile.compare(gEnv->getRes())) {
+        ALOGV("No input file specified");
+        return;
+    }
+    getInputBufferInfo(inputFile, inputInfo);
+    status = addWriterSource(isAudio, param);
+    if (status) {
+        cout << "Failed to add source for " << writerFormat << "Writer \n";
+        ASSERT_TRUE(false);
+    }
+    // first start should succeed.
+    status = mWriter->start(mFileMeta.get());
+    if (status != (status_t)OK) {
+        cout << "Couldn't start the writer\n";
+        ASSERT_TRUE(false);
+    }
+    // Multiple start() may/may not succeed.
+    // Writers are expected to not crash on multiple start() calls.
+    for (int32_t count = 0; count < kMaxCount; count++) {
+        mWriter->start(mFileMeta.get());
+    }
+
+    (void)sendBuffersToWriter(mInputStream, mBufferInfo, mInputFrameId, mCurrentTrack, 0,
+                              mBufferInfo.size() / 4);
+    for (int32_t count = 0; count < kMaxCount; count++) {
+        mWriter->pause();
+    }
+
+    int32_t numFramesPaused = mBufferInfo.size() / 4;
+    (void)sendBuffersToWriter(mInputStream, mBufferInfo, mInputFrameId, mCurrentTrack,
+                              mInputFrameId, numFramesPaused, true);
+    for (int32_t count = 0; count < kMaxCount; count++) {
+        mWriter->start(mFileMeta.get());
+    }
+
+    (void)sendBuffersToWriter(mInputStream, mBufferInfo, mInputFrameId, mCurrentTrack,
+                              mInputFrameId, mBufferInfo.size());
+    mCurrentTrack->stop();
+
+    // first stop should succeed.
+    CHECK_EQ((status_t)OK, mWriter->stop());
+    // Multiple stop() may/may not succeed.
+    // Writers are expected to not crash on multiple stop() calls.
+    for (int32_t count = 0; count < kMaxCount; count++) {
+        mWriter->stop();
+    }
+    close(fd);
+}
+
 // TODO: (b/144476164)
 // Add AAC_ADTS, FLAC, AV1 input
 INSTANTIATE_TEST_SUITE_P(WriterTestAll, WriterTest,
