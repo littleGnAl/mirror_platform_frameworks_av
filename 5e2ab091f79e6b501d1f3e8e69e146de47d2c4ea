@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20a1606b_b364f3af",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5737,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2019-11-18T20:28:11Z",
+      "side": 1,
+      "message": "normally we should wait for presentationComplete() on line 5735 instead of directly checking stopped.  Is this a Direct output thread (not offloaded) with a non PCM Format?  That logic for presentation complete might not work as expected.",
+      "range": {
+        "startLine": 5737,
+        "startChar": 31,
+        "endLine": 5737,
+        "endChar": 40
+      },
+      "revId": "5e2ab091f79e6b501d1f3e8e69e146de47d2c4ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
