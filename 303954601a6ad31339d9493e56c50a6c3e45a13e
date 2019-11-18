@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f1eb2ae8_b5522ba6",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2019-11-18T16:58:08Z",
+      "side": 1,
+      "message": "This bounds check looks incorrect.  If \u0027streamIndex\u0027 \u003d\u003d \u0027sizeof(kInputData) / sizeof(kInputData[0])\u0027, then that index is out of bounds.  But this check would let that \u0027streamIndex\u0027 through and use it to access the array.\n\nI\u0027ve put up a follow-up CL to fix:  https://android-review.googlesource.com/c/platform/frameworks/av/+/1168724",
+      "revId": "303954601a6ad31339d9493e56c50a6c3e45a13e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
