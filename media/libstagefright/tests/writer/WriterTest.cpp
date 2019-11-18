@@ -144,6 +144,9 @@ class WriterTest : public ::testing::TestWithParam<pair<string, int32_t>> {
     int32_t mInputFrameId;
     ifstream mInputStream;
     vector<BufferInfo> mBufferInfo;
+
+    condition_variable mWriterDoneCondition;
+    mutex mWriterMutex;
 };
 
 void WriterTest::getInputBufferInfo(string inputFileName, string inputInfo) {
@@ -307,6 +310,11 @@ TEST_P(WriterTest, WriterTest) {
         mWriter->stop();
         ASSERT_TRUE(false);
     }
+
+    // wait for all the inputs to be consumed by the writers
+    unique_lock<std::mutex> lock(mWriterMutex);
+    mWriterDoneCondition.wait_for(lock, TIME_OUT, [this]() { return mWriter->reachedEOS(); });
+    ASSERT_TRUE(mWriter->reachedEOS());
     CHECK_EQ((status_t)OK, mWriter->stop());
     close(fd);
 }
@@ -371,7 +379,84 @@ TEST_P(WriterTest, PauseWriterTest) {
         mWriter->stop();
         ASSERT_TRUE(false);
     }
+
+    // wait for all the inputs to be consumed by the writers
+    unique_lock<std::mutex> lock(mWriterMutex);
+    mWriterDoneCondition.wait_for(lock, TIME_OUT, [this]() { return mWriter->reachedEOS(); });
+    ASSERT_TRUE(mWriter->reachedEOS());
     CHECK_EQ((status_t)OK, mWriter->stop());
+    close(fd);
+}
+
+TEST_P(WriterTest, MultiStartStopPauseTest) {
+    // TODO: (b/144821804)
+    // Enable the test for MPE2TS writer
+    if (mDisableTest || mWriterName == standardWriters::MPEG2TS) return;
+    ALOGV("Test writers for multiple start, stop and pause calls");
+
+    string outputFile = OUTPUT_FILE_NAME;
+    int32_t fd =
+            open(outputFile.c_str(), O_CREAT | O_LARGEFILE | O_TRUNC | O_RDWR, S_IRUSR | S_IWUSR);
+    if (fd < 0) return;
+
+    string writerFormat = GetParam().first;
+    int32_t status = createWriter(fd);
+    if (status) {
+        cout << "Failed to create writer for output format:" << writerFormat << "\n";
+        ASSERT_TRUE(false);
+    }
+    string inputFile = gEnv->getRes();
+    string inputInfo = gEnv->getRes();
+    configFormat param;
+    bool isAudio;
+    int32_t inputFileIdx = GetParam().second;
+    getFileDetails(inputFile, inputInfo, param, isAudio, inputFileIdx);
+    if (!inputFile.compare(gEnv->getRes())) {
+        ALOGV("No input file specified");
+        return;
+    }
+    getInputBufferInfo(inputFile, inputInfo);
+    status = addWriterSource(isAudio, param);
+    if (status) {
+        cout << "Failed to add source for " << writerFormat << "Writer \n";
+        ASSERT_TRUE(false);
+    }
+    // first start should succeed.
+    status = mWriter->start(mFileMeta.get());
+    if (status != (status_t)OK) {
+        cout << "Couldn't start the writer\n";
+        ASSERT_TRUE(false);
+    }
+    // Multiple start() may/may not succeed.
+    // Writers are expected to not crash on multiple start() calls.
+    for (int32_t count = 0; count < kMaxCount; count++) {
+        mWriter->start(mFileMeta.get());
+    }
+
+    (void)sendBuffersToWriter(mInputStream, mBufferInfo, mInputFrameId, mCurrentTrack, 0,
+                              mBufferInfo.size() / 4);
+    for (int32_t count = 0; count < kMaxCount; count++) {
+        mWriter->pause();
+    }
+
+    int32_t numFramesPaused = mBufferInfo.size() / 4;
+    (void)sendBuffersToWriter(mInputStream, mBufferInfo, mInputFrameId, mCurrentTrack,
+                              mInputFrameId, numFramesPaused, true);
+    for (int32_t count = 0; count < kMaxCount; count++) {
+        mWriter->start(mFileMeta.get());
+    }
+
+    (void)sendBuffersToWriter(mInputStream, mBufferInfo, mInputFrameId, mCurrentTrack,
+                              mInputFrameId, mBufferInfo.size());
+    mCurrentTrack->stop();
+
+    // first stop should succeed.
+    CHECK_EQ((status_t)OK, mWriter->stop());
+    // Multiple stop() may/may not succeed.
+    // Writers are expected to not crash on multiple stop() calls.
+    for (int32_t count = 0; count < kMaxCount; count++) {
+        mWriter->stop();
+    }
     close(fd);
 }
 
