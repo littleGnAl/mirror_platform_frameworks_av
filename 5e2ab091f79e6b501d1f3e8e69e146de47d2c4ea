@@ -142,6 +142,30 @@
       "revId": "5e2ab091f79e6b501d1f3e8e69e146de47d2c4ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e62a1db_aa116717",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5737,
+      "author": {
+        "id": 1497372
+      },
+      "writtenOn": "2019-11-19T03:00:10Z",
+      "side": 1,
+      "message": "Yes. I just know your meaning. I will check it on my side and give feedback once finished. Thanks for your comments.",
+      "parentUuid": "c018d357_4c41c9aa",
+      "range": {
+        "startLine": 5737,
+        "startChar": 31,
+        "endLine": 5737,
+        "endChar": 40
+      },
+      "revId": "5e2ab091f79e6b501d1f3e8e69e146de47d2c4ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
