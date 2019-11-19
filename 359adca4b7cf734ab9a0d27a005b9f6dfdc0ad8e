@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "819652e9_4487f6a7",
+        "filename": "services/camera/libcameraservice/device3/Camera3StreamSplitter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2019-11-19T17:11:50Z",
+      "side": 1,
+      "message": "Hmmm should we err out here itself if mConsumer / mProducer are nullptr ?",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 59
+      },
+      "revId": "359adca4b7cf734ab9a0d27a005b9f6dfdc0ad8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
