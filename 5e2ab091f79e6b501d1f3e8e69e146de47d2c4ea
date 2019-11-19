@@ -22,6 +22,30 @@
       "revId": "5e2ab091f79e6b501d1f3e8e69e146de47d2c4ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "494e4e3a_3bc89cab",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5737,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2019-11-19T02:17:32Z",
+      "side": 1,
+      "message": "would track-\u003eisPaused() || mHwPaused work here?  That would preserve the drain logic.",
+      "parentUuid": "20a1606b_b364f3af",
+      "range": {
+        "startLine": 5737,
+        "startChar": 31,
+        "endLine": 5737,
+        "endChar": 40
+      },
+      "revId": "5e2ab091f79e6b501d1f3e8e69e146de47d2c4ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
