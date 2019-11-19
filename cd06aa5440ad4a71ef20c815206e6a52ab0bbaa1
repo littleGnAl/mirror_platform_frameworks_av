@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8cdaae90_fb524485",
+        "filename": "services/audiopolicy/engine/config/schemas/audio_policy_engine_configuration.xsd",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-11-19T21:31:24Z",
+      "side": 1,
+      "message": "I think this file belongs to hardware/interfaces, under the core audio HAL because it depends on what audio HAL knows about audio policy configuration. Leaving it here makes it effectively unversioned.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "cd06aa5440ad4a71ef20c815206e6a52ab0bbaa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c673fd2_7f6bd0a6",
+        "filename": "services/audiopolicy/engine/vts/ValidateEngineConfiguration.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-11-19T21:31:24Z",
+      "side": 1,
+      "message": "Should \"#include \u003cgtest/gtest.h\u003e\" I believe",
+      "revId": "cd06aa5440ad4a71ef20c815206e6a52ab0bbaa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
