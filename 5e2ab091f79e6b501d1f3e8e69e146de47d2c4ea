@@ -46,6 +46,30 @@
       "revId": "5e2ab091f79e6b501d1f3e8e69e146de47d2c4ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3e0884f8_39736dcb",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5737,
+      "author": {
+        "id": 1497372
+      },
+      "writtenOn": "2019-11-19T02:24:12Z",
+      "side": 1,
+      "message": "No, track stopped just before \"track-\u003eisPaused()\", so isPaused doesn\u0027t work. Actually, it is a random issue and not too easy to reproduce.",
+      "parentUuid": "494e4e3a_3bc89cab",
+      "range": {
+        "startLine": 5737,
+        "startChar": 31,
+        "endLine": 5737,
+        "endChar": 40
+      },
+      "revId": "5e2ab091f79e6b501d1f3e8e69e146de47d2c4ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
