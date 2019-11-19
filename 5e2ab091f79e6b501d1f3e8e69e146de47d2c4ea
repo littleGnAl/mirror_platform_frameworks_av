@@ -94,6 +94,30 @@
       "revId": "5e2ab091f79e6b501d1f3e8e69e146de47d2c4ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f199978_c911e676",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5737,
+      "author": {
+        "id": 1497372
+      },
+      "writtenOn": "2019-11-19T02:38:35Z",
+      "side": 1,
+      "message": "Yes, mHwPaused is true. But thread still has no chance to remove this track from ActiveTracks.",
+      "parentUuid": "45f3b8cd_b0cc1322",
+      "range": {
+        "startLine": 5737,
+        "startChar": 31,
+        "endLine": 5737,
+        "endChar": 40
+      },
+      "revId": "5e2ab091f79e6b501d1f3e8e69e146de47d2c4ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
