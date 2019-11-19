@@ -118,6 +118,30 @@
       "revId": "5e2ab091f79e6b501d1f3e8e69e146de47d2c4ea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c018d357_4c41c9aa",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5737,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2019-11-19T02:52:03Z",
+      "side": 1,
+      "message": "but if you change the code from\n\ntrack-\u003eisPaused()\n\nto\n\ntrack-\u003eisPaused() || mHwPaused\n\nThat would fix the problem, right?  And be more consistent with the stop handling.",
+      "parentUuid": "8f199978_c911e676",
+      "range": {
+        "startLine": 5737,
+        "startChar": 31,
+        "endLine": 5737,
+        "endChar": 40
+      },
+      "revId": "5e2ab091f79e6b501d1f3e8e69e146de47d2c4ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
