@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0691437b_fe270b0c",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-11-20T02:36:58Z",
+      "side": 1,
+      "message": "missing space",
+      "range": {
+        "startLine": 590,
+        "startChar": 80,
+        "endLine": 590,
+        "endChar": 96
+      },
+      "revId": "550b70326352b102bf34f61bf2fcd7c7f1fec720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f971cabe_6a2fc6ef",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-11-20T02:36:58Z",
+      "side": 1,
+      "message": "I would name them \u0027createAudioPatchInternal\u0027 to avoid confusion with \u0027int\u0027 type.",
+      "range": {
+        "startLine": 873,
+        "startChar": 17,
+        "endLine": 873,
+        "endChar": 36
+      },
+      "revId": "550b70326352b102bf34f61bf2fcd7c7f1fec720",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
