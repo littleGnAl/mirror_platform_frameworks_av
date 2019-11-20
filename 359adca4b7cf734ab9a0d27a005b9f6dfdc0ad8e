@@ -46,6 +46,30 @@
       "revId": "359adca4b7cf734ab9a0d27a005b9f6dfdc0ad8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b905c9e_ef1a0f98",
+        "filename": "services/camera/libcameraservice/device3/Camera3StreamSplitter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2019-11-20T16:05:12Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "22674272_c8e95b32",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 59
+      },
+      "revId": "359adca4b7cf734ab9a0d27a005b9f6dfdc0ad8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
