@@ -951,6 +951,9 @@ c2_status_t C2SoftAvcEnc::initEncoder() {
 
     mStride = width;
 
+    // Assume worst case output buffer size to be equal to number of bytes in input
+    mOutBufferSize = width * height * 3 / 2;
+
     // TODO
     mIvVideoColorFormat = IV_YUV_420P;
 
