@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d918383e_bbc2b66b",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2019-11-22T18:02:45Z",
+      "side": 1,
+      "message": "we should still keep the possibility to pass a delay here even if not use by current implementation.",
+      "range": {
+        "startLine": 882,
+        "startChar": 70,
+        "endLine": 882,
+        "endChar": 71
+      },
+      "revId": "21bcb2671710ad777546901a7c9b8d223facac28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
