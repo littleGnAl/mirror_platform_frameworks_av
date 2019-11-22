@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "1c25ab0b_a0ca2b28",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3935,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2019-11-22T18:59:39Z",
+      "side": 1,
+      "message": "swOutput-\u003estop();\nreleaseOutput(sourceDesc-\u003eportId());",
+      "range": {
+        "startLine": 3934,
+        "startChar": 12,
+        "endLine": 3935,
+        "endChar": 29
+      },
+      "revId": "21bcb2671710ad777546901a7c9b8d223facac28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d647f14_cb764dd9",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4195,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2019-11-22T18:59:39Z",
+      "side": 1,
+      "message": "I realize that we were not callnig releaseOutput(). This is problematic if connectAudioSource() created a direct output in createAudioPatchInternal() (previously getOutputForAttrInt()).",
+      "range": {
+        "startLine": 4195,
+        "startChar": 8,
+        "endLine": 4195,
+        "endChar": 53
+      },
+      "revId": "21bcb2671710ad777546901a7c9b8d223facac28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d918383e_bbc2b66b",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
         "patchSetId": 3
