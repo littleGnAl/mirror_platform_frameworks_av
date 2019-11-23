@@ -31,7 +31,5 @@ cc_binary {
             required: ["codec2.vendor.base.policy"],
         },
     },
-
-    compile_multilib: "32",
 }
 
