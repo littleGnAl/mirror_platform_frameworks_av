@@ -413,7 +413,7 @@ sp<WebmElement> WebmElement::VideoTrackEntry(
         const void *data;
         size_t size;
         if (meta->findData(kKeyHdrStaticInfo, &type, &data, &size)
-                && type == 'hdrS' && size == sizeof(*info)) {
+                && type == 'hdrS' && size == kHdrstaticinfo_type1_size) {
             info = (const HDRStaticInfo*)data;
             if (info->mID == HDRStaticInfo::kType1) {
                 List<sp<WebmElement> > masteringInfo;
