@@ -412,10 +412,10 @@ sp<WebmElement> WebmElement::VideoTrackEntry(
         uint32_t type;
         const void *data;
         size_t size;
-        if (meta->findData(kKeyHdrStaticInfo, &type, &data, &size)
-                && type == 'hdrS' && size == sizeof(*info)) {
+        if (meta->findData(kKeyHdrStaticInfo, &type, &data, &size) && type == 'hdrS') {
             info = (const HDRStaticInfo*)data;
-            if (info->mID == HDRStaticInfo::kType1) {
+            if (((info->mID == HDRStaticInfo::kType1)||(info->mID == HDRStaticInfo::kType2))&&
+                    (size >= kHdrstaticinfo_type1_size)) {
                 List<sp<WebmElement> > masteringInfo;
 
                 // convert HDRStaticInfo values to matroska equivalent values for each non-0 group
