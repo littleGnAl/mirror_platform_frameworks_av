@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4b8396e9_4668e00c",
+        "filename": "services/audiopolicy/engine/config/schemas/audio_policy_engine_configuration.xsd",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2019-11-27T13:36:42Z",
+      "side": 1,
+      "message": "Moved to hardware/interfaces.\nQuid of the test itself? shall we keep the code here?",
+      "parentUuid": "8cdaae90_fb524485",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "cd06aa5440ad4a71ef20c815206e6a52ab0bbaa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c673fd2_7f6bd0a6",
         "filename": "services/audiopolicy/engine/vts/ValidateEngineConfiguration.cpp",
         "patchSetId": 1
@@ -42,6 +66,24 @@
     },
     {
       "key": {
+        "uuid": "1c70c624_0c2557bc",
+        "filename": "services/audiopolicy/engine/vts/ValidateEngineConfiguration.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2019-11-27T13:36:42Z",
+      "side": 1,
+      "message": "already done by ValidateXml.h, added again however",
+      "parentUuid": "6c673fd2_7f6bd0a6",
+      "revId": "cd06aa5440ad4a71ef20c815206e6a52ab0bbaa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6a51dbe8_7e853b08",
         "filename": "services/audiopolicy/engineconfigurable/vts/Android.bp",
         "patchSetId": 1
@@ -53,6 +95,30 @@
       "writtenOn": "2019-11-19T21:35:05Z",
       "side": 1,
       "message": "Eric, it seems that we need to upstream libaudiofoundation first. Because in internal master, this test doesn\u0027t link because it is missing a dependency on libaudiofoundation, but we can only added here if it\u0027s in AOSP.",
+      "range": {
+        "startLine": 5,
+        "startChar": 4,
+        "endLine": 6,
+        "endChar": 18
+      },
+      "revId": "cd06aa5440ad4a71ef20c815206e6a52ab0bbaa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9af63224_139afa92",
+        "filename": "services/audiopolicy/engineconfigurable/vts/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2019-11-27T13:36:42Z",
+      "side": 1,
+      "message": "Got the libaudiofoundation now.",
+      "parentUuid": "6a51dbe8_7e853b08",
       "range": {
         "startLine": 5,
         "startChar": 4,
