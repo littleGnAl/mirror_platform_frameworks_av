@@ -94,6 +94,8 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexMasteringDisplayColorVolume,
     kParamIndexChromaOffset,
     kParamIndexGopLayer,
+    kParamIndexAmbientViewingEnvironment,
+    kParamIndexContentColorVolume,
 
     /* =================================== parameter indices =================================== */
 
@@ -1549,17 +1551,67 @@ struct C2MasteringDisplayColorVolumeStruct {
     C2FIELD(minLuminance, "min-luminance")
 };
 
+struct C2AmbientViewingEnvironmentStruct {
+    int64_t ambientIlluminance;  ///< ambient illuminance in 0.0001 lux
+    C2ColorXyStruct ambientLight;    ///< chromaticity
+
+    DEFINE_AND_DESCRIBE_C2STRUCT(AmbientViewingEnvironment)
+    C2FIELD(ambientIlluminance, "ambient-illuminance")
+    C2FIELD(ambientLight, "ambient-light")
+};
+
+struct C2ContentColorVolumeStruct {
+    float   cancelFlag;    ///< cancel insertion of CCV message
+    float   persistenceFlag;    ///< persistence of CCV message
+    float   primariesPresentFlag;    ///< validity of color primaries in this instance
+    float   maxLuminancePresentFlag; ///< validity of max content luminance in this instance
+    float   minLuminancePresentFlag; ///< validity of min content luminance in this instance
+    float   avgLuminancePresentFlag; ///< validity of average content luminance in this instance
+
+    C2ColorXyStruct red;    ///< coordinates of red content primary
+    C2ColorXyStruct green;  ///< coordinates of green content primary
+    C2ColorXyStruct blue;   ///< coordinates of blue content primary
+
+    float maxLuminance;  ///< max content luminance in cd/m^2
+    float minLuminance;  ///< min content luminance in cd/m^2
+    float avgLuminance;  ///< average content luminance in cd/m^2
+
+    DEFINE_AND_DESCRIBE_C2STRUCT(ContentColorVolume)
+    C2FIELD(cancelFlag, "cancel-flag")
+    C2FIELD(persistenceFlag, "persistence-flag")
+    C2FIELD(primariesPresentFlag, "primaries-present-flag")
+    C2FIELD(maxLuminancePresentFlag, "max-luminance-flag")
+    C2FIELD(minLuminancePresentFlag, "min-luminance-flag")
+    C2FIELD(avgLuminancePresentFlag, "avg-luminance-flag")
+
+    C2FIELD(red, "red")
+    C2FIELD(green, "green")
+    C2FIELD(blue, "blue")
+
+    C2FIELD(maxLuminance, "max-luminance")
+    C2FIELD(minLuminance, "min-luminance")
+    C2FIELD(avgLuminance, "avg-luminance")
+};
+
 struct C2HdrStaticMetadataStruct {
     C2MasteringDisplayColorVolumeStruct mastering;
 
     // content descriptors
     float maxCll;  ///< max content light level (pixel luminance) in cd/m^2
     float maxFall; ///< max frame average light level (frame luminance) in cd/m^2
+    float hdrType; ///< type1 or type2 HDR static metadata
+    float validFields; ///< specifies presence of different metadata
+    C2AmbientViewingEnvironmentStruct ave; ///< Ambient Viewing Environment
+    C2ContentColorVolumeStruct ccv; ///< Content Color Volume
 
     DEFINE_AND_DESCRIBE_BASE_C2STRUCT(HdrStaticMetadata)
     C2FIELD(mastering, "mastering")
     C2FIELD(maxCll, "max-cll")
     C2FIELD(maxFall, "max-fall")
+    C2FIELD(hdrType, "hdr-type")
+    C2FIELD(validFields, "valid-hdr-fields")
+    C2FIELD(ave, "ave")
+    C2FIELD(ccv, "ccv")
 };
 typedef C2StreamParam<C2Info, C2HdrStaticMetadataStruct, kParamIndexHdrStaticMetadata>
         C2StreamHdrStaticInfo;

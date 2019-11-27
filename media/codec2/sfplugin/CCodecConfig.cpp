@@ -44,6 +44,8 @@
 #define PROP_DRC_OVERRIDE_ENC_LEVEL  "aac_drc_enc_target_level"
 #define PROP_DRC_OVERRIDE_EFFECT     "ro.aac_drc_effect_type"
 
+#define IN_RANGE_INCLUSIVE(val, min, max) (((min) <= (val)) && ((val) <= (max)))
+
 namespace android {
 
 // CCodecConfig
@@ -460,6 +462,10 @@ void CCodecConfig::initializeStandardParams() {
         .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
 
     // HDR
+    add(ConfigMapper("hdr-type", C2_PARAMKEY_HDR_STATIC_INFO, "hdr-type")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("valid-hdr-fields", C2_PARAMKEY_HDR_STATIC_INFO, "valid-hdr-fields")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
     add(ConfigMapper("smpte2086.red.x", C2_PARAMKEY_HDR_STATIC_INFO, "mastering.red.x")
         .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
     add(ConfigMapper("smpte2086.red.y", C2_PARAMKEY_HDR_STATIC_INFO, "mastering.red.y")
@@ -476,13 +482,59 @@ void CCodecConfig::initializeStandardParams() {
         .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
     add(ConfigMapper("smpte2086.white.y", C2_PARAMKEY_HDR_STATIC_INFO, "mastering.white.y")
         .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
-    add(ConfigMapper("smpte2086.max-luminance", C2_PARAMKEY_HDR_STATIC_INFO, "mastering.max-luminance")
+    add(ConfigMapper("smpte2086.max-luminance", C2_PARAMKEY_HDR_STATIC_INFO,
+                                                "mastering.max-luminance")
         .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
-    add(ConfigMapper("smpte2086.min-luminance", C2_PARAMKEY_HDR_STATIC_INFO, "mastering.min-luminance")
+    add(ConfigMapper("smpte2086.min-luminance", C2_PARAMKEY_HDR_STATIC_INFO,
+                                               "mastering.min-luminance")
         .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
     add(ConfigMapper("cta861.max-cll", C2_PARAMKEY_HDR_STATIC_INFO, "max-cll")
         .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
     add(ConfigMapper("cta861.max-fall", C2_PARAMKEY_HDR_STATIC_INFO, "max-fall")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("ave.ambient-illuminance",
+        C2_PARAMKEY_HDR_STATIC_INFO, "ave.ambient-illuminance")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("ave.ambient-light.x",
+        C2_PARAMKEY_HDR_STATIC_INFO, "ave.ambient-light.x")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("ave.ambient-light.y",
+        C2_PARAMKEY_HDR_STATIC_INFO, "ave.ambient-light.y")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("ccv.cancel-flag", C2_PARAMKEY_HDR_STATIC_INFO, "ccv.cancel-flag")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("ccv.persistence-flag",
+        C2_PARAMKEY_HDR_STATIC_INFO, "ccv.persistence-flag")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("ccv.primaries-present-flag",
+        C2_PARAMKEY_HDR_STATIC_INFO, "ccv.primaries-present-flag")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("ccv.max-luminance-flag",
+        C2_PARAMKEY_HDR_STATIC_INFO, "ccv.max-luminance-flag")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("ccv.min-luminance-flag",
+        C2_PARAMKEY_HDR_STATIC_INFO, "ccv.min-luminance-flag")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("ccv.avg-luminance-flag",
+        C2_PARAMKEY_HDR_STATIC_INFO, "ccv.avg-luminance-flag")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("ccv.red.x", C2_PARAMKEY_HDR_STATIC_INFO, "ccv.red.x")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("ccv.red.y", C2_PARAMKEY_HDR_STATIC_INFO, "ccv.red.y")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("ccv.green.x", C2_PARAMKEY_HDR_STATIC_INFO, "ccv.green.x")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("ccv.green.y", C2_PARAMKEY_HDR_STATIC_INFO, "ccv.green.y")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("ccv.blue.x", C2_PARAMKEY_HDR_STATIC_INFO, "ccv.blue.x")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("ccv.blue.y", C2_PARAMKEY_HDR_STATIC_INFO, "ccv.blue.y")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("ccv.max-luminance", C2_PARAMKEY_HDR_STATIC_INFO, "ccv.max-luminance")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("ccv.min-luminance", C2_PARAMKEY_HDR_STATIC_INFO, "ccv.min-luminance")
+        .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
+    add(ConfigMapper("ccv.avg-luminance", C2_PARAMKEY_HDR_STATIC_INFO, "ccv.avg-luminance")
         .limitTo((D::VIDEO | D::IMAGE) & D::RAW));
 
     add(ConfigMapper(std::string(KEY_FEATURE_) + FEATURE_SecurePlayback,
@@ -1016,6 +1068,7 @@ status_t CCodecConfig::initialize(
                           C2_PARAMKEY_SURFACE_SCALING_MODE);
         } else {
             addLocalParam(new C2StreamColorAspectsInfo::input(0u), C2_PARAMKEY_COLOR_ASPECTS);
+            addLocalParam<C2StreamHdrStaticInfo::input>(C2_PARAMKEY_HDR_STATIC_INFO);
         }
     }
 
@@ -1352,59 +1405,339 @@ sp<AMessage> CCodecConfig::getFormatForDomain(
         // HDR static info
 
         C2HdrStaticMetadataStruct hdr;
-        if (msg->findFloat("smpte2086.red.x", &hdr.mastering.red.x)
-                && msg->findFloat("smpte2086.red.y", &hdr.mastering.red.y)
-                && msg->findFloat("smpte2086.green.x", &hdr.mastering.green.x)
-                && msg->findFloat("smpte2086.green.y", &hdr.mastering.green.y)
-                && msg->findFloat("smpte2086.blue.x", &hdr.mastering.blue.x)
-                && msg->findFloat("smpte2086.blue.y", &hdr.mastering.blue.y)
-                && msg->findFloat("smpte2086.white.x", &hdr.mastering.white.x)
-                && msg->findFloat("smpte2086.white.y", &hdr.mastering.white.y)
-                && msg->findFloat("smpte2086.max-luminance", &hdr.mastering.maxLuminance)
-                && msg->findFloat("smpte2086.min-luminance", &hdr.mastering.minLuminance)
-                && msg->findFloat("cta861.max-cll", &hdr.maxCll)
-                && msg->findFloat("cta861.max-fall", &hdr.maxFall)) {
-            if (hdr.mastering.red.x >= 0                && hdr.mastering.red.x <= 1
-                    && hdr.mastering.red.y >= 0         && hdr.mastering.red.y <= 1
-                    && hdr.mastering.green.x >= 0       && hdr.mastering.green.x <= 1
-                    && hdr.mastering.green.y >= 0       && hdr.mastering.green.y <= 1
-                    && hdr.mastering.blue.x >= 0        && hdr.mastering.blue.x <= 1
-                    && hdr.mastering.blue.y >= 0        && hdr.mastering.blue.y <= 1
-                    && hdr.mastering.white.x >= 0       && hdr.mastering.white.x <= 1
-                    && hdr.mastering.white.y >= 0       && hdr.mastering.white.y <= 1
-                    && hdr.mastering.maxLuminance >= 0  && hdr.mastering.maxLuminance <= 65535
-                    && hdr.mastering.minLuminance >= 0  && hdr.mastering.minLuminance <= 6.5535
-                    && hdr.maxCll >= 0                  && hdr.maxCll <= 65535
-                    && hdr.maxFall >= 0                 && hdr.maxFall <= 65535) {
-                HDRStaticInfo meta;
-                meta.mID = meta.kType1;
-                meta.sType1.mR.x = hdr.mastering.red.x / 0.00002 + 0.5;
-                meta.sType1.mR.y = hdr.mastering.red.y / 0.00002 + 0.5;
-                meta.sType1.mG.x = hdr.mastering.green.x / 0.00002 + 0.5;
-                meta.sType1.mG.y = hdr.mastering.green.y / 0.00002 + 0.5;
-                meta.sType1.mB.x = hdr.mastering.blue.x / 0.00002 + 0.5;
-                meta.sType1.mB.y = hdr.mastering.blue.y / 0.00002 + 0.5;
-                meta.sType1.mW.x = hdr.mastering.white.x / 0.00002 + 0.5;
-                meta.sType1.mW.y = hdr.mastering.white.y / 0.00002 + 0.5;
-                meta.sType1.mMaxDisplayLuminance = hdr.mastering.maxLuminance + 0.5;
-                meta.sType1.mMinDisplayLuminance = hdr.mastering.minLuminance / 0.0001 + 0.5;
-                meta.sType1.mMaxContentLightLevel = hdr.maxCll + 0.5;
-                meta.sType1.mMaxFrameAverageLightLevel = hdr.maxFall + 0.5;
-                msg->removeEntryAt(msg->findEntryByName("smpte2086.red.x"));
-                msg->removeEntryAt(msg->findEntryByName("smpte2086.red.y"));
-                msg->removeEntryAt(msg->findEntryByName("smpte2086.green.x"));
-                msg->removeEntryAt(msg->findEntryByName("smpte2086.green.y"));
-                msg->removeEntryAt(msg->findEntryByName("smpte2086.blue.x"));
-                msg->removeEntryAt(msg->findEntryByName("smpte2086.blue.y"));
-                msg->removeEntryAt(msg->findEntryByName("smpte2086.white.x"));
-                msg->removeEntryAt(msg->findEntryByName("smpte2086.white.y"));
-                msg->removeEntryAt(msg->findEntryByName("smpte2086.max-luminance"));
-                msg->removeEntryAt(msg->findEntryByName("smpte2086.min-luminance"));
-                msg->removeEntryAt(msg->findEntryByName("cta861.max-cll"));
-                msg->removeEntryAt(msg->findEntryByName("cta861.max-fall"));
-                msg->setBuffer(KEY_HDR_STATIC_INFO, ABuffer::CreateAsCopy(&meta, sizeof(meta)));
-            } else {
-                ALOGD("found invalid HDR static metadata %s", msg->debugString(8).c_str());
+        int32_t status = 0;
+        memset(&hdr, 0, sizeof(C2HdrStaticMetadataStruct));
+
+        if (!(msg->findFloat("hdr-type", &hdr.hdrType))) {
+            // Default HDR metadata type is assumed to be HDRStaticInfo::Type1
+            hdr.hdrType = HDRStaticInfo::kType1;
+        }
+
+        if ((int32_t)hdr.hdrType == HDRStaticInfo::kType1) {
+            if (msg->findFloat("smpte2086.red.x", &hdr.mastering.red.x)
+                    && msg->findFloat("smpte2086.red.y", &hdr.mastering.red.y)
+                    && msg->findFloat("smpte2086.green.x", &hdr.mastering.green.x)
+                    && msg->findFloat("smpte2086.green.y", &hdr.mastering.green.y)
+                    && msg->findFloat("smpte2086.blue.x", &hdr.mastering.blue.x)
+                    && msg->findFloat("smpte2086.blue.y", &hdr.mastering.blue.y)
+                    && msg->findFloat("smpte2086.white.x", &hdr.mastering.white.x)
+                    && msg->findFloat("smpte2086.white.y", &hdr.mastering.white.y)
+                    && msg->findFloat("smpte2086.max-luminance", &hdr.mastering.maxLuminance)
+                    && msg->findFloat("smpte2086.min-luminance", &hdr.mastering.minLuminance)
+                    && msg->findFloat("cta861.max-cll", &hdr.maxCll)
+                    && msg->findFloat("cta861.max-fall", &hdr.maxFall)) {
+
+                if (!IN_RANGE_INCLUSIVE(hdr.mastering.red.x, kDispPrimXLow, kDispPrimXHigh)) {
+                    status = -1;
+                }
+                if (!IN_RANGE_INCLUSIVE(hdr.mastering.red.y, kDispPrimYLow, kDispPrimYHigh)) {
+                    status = -1;
+                }
+                if (!IN_RANGE_INCLUSIVE(hdr.mastering.green.x, kDispPrimXLow, kDispPrimXHigh)) {
+                    status = -1;
+                }
+                if (!IN_RANGE_INCLUSIVE(hdr.mastering.green.y, kDispPrimYLow, kDispPrimYHigh)) {
+                    status = -1;
+                }
+                if (!IN_RANGE_INCLUSIVE(hdr.mastering.blue.x, kDispPrimXLow, kDispPrimXHigh)) {
+                    status = -1;
+                }
+                if (!IN_RANGE_INCLUSIVE(hdr.mastering.blue.y, kDispPrimYLow, kDispPrimYHigh)) {
+                    status = -1;
+                }
+                if (!IN_RANGE_INCLUSIVE(hdr.mastering.white.x, kDispPrimXLow, kDispPrimXHigh)) {
+                    status = -1;
+                }
+                if (!IN_RANGE_INCLUSIVE(hdr.mastering.white.y, kDispPrimYLow, kDispPrimYHigh)) {
+                    status = -1;
+                }
+                // Comparison in cd / m^2
+                if (!IN_RANGE_INCLUSIVE(hdr.mastering.maxLuminance, kMaxDispLuminanceLow,
+                                                                    kMaxDispLuminanceHigh)) {
+                    status = -1;
+                }
+                // Comparison in cd / m^2
+                if (!IN_RANGE_INCLUSIVE(hdr.mastering.minLuminance, kMinDispLuminanceLow,
+                                                                    kMaxDispLuminanceHigh)) {
+                    status = -1;
+                }
+                if (!IN_RANGE_INCLUSIVE(hdr.maxCll, kContentLightLevelLow,
+                                                    kContentLightLevelHigh)) {
+                    status = -1;
+                }
+                if (!IN_RANGE_INCLUSIVE(hdr.maxFall, kContentLightLevelLow,
+                                                     kContentLightLevelHigh)) {
+                    status = -1;
+                }
+                if (!(hdr.mastering.maxLuminance > hdr.mastering.minLuminance)) {
+                    status = -1;
+                }
+
+                if (0 == status) {
+                    HDRStaticInfo meta;
+                    memset(&meta, 0, sizeof(HDRStaticInfo));
+                    meta.mID = HDRStaticInfo::kType1;
+                    meta.sType1.mR.x = hdr.mastering.red.x / kNormDispPrimaries + 0.5;
+                    meta.sType1.mR.y = hdr.mastering.red.y / kNormDispPrimaries + 0.5;
+                    meta.sType1.mG.x = hdr.mastering.green.x / kNormDispPrimaries + 0.5;
+                    meta.sType1.mG.y = hdr.mastering.green.y / kNormDispPrimaries + 0.5;
+                    meta.sType1.mB.x = hdr.mastering.blue.x / kNormDispPrimaries + 0.5;
+                    meta.sType1.mB.y = hdr.mastering.blue.y / kNormDispPrimaries + 0.5;
+                    meta.sType1.mW.x = hdr.mastering.white.x / kNormDispPrimaries + 0.5;
+                    meta.sType1.mW.y = hdr.mastering.white.y / kNormDispPrimaries + 0.5;
+                    meta.sType1.mMaxDisplayLuminance = hdr.mastering.maxLuminance + 0.5;
+                    meta.sType1.mMinDisplayLuminance =
+                                  hdr.mastering.minLuminance / kNormDispLuminance + 0.5;
+                    meta.sType1.mMaxContentLightLevel = hdr.maxCll + 0.5;
+                    meta.sType1.mMaxFrameAverageLightLevel = hdr.maxFall + 0.5;
+                    msg->removeEntryAt(msg->findEntryByName("smpte2086.red.x"));
+                    msg->removeEntryAt(msg->findEntryByName("smpte2086.red.y"));
+                    msg->removeEntryAt(msg->findEntryByName("smpte2086.green.x"));
+                    msg->removeEntryAt(msg->findEntryByName("smpte2086.green.y"));
+                    msg->removeEntryAt(msg->findEntryByName("smpte2086.blue.x"));
+                    msg->removeEntryAt(msg->findEntryByName("smpte2086.blue.y"));
+                    msg->removeEntryAt(msg->findEntryByName("smpte2086.white.x"));
+                    msg->removeEntryAt(msg->findEntryByName("smpte2086.white.y"));
+                    msg->removeEntryAt(msg->findEntryByName("smpte2086.max-luminance"));
+                    msg->removeEntryAt(msg->findEntryByName("smpte2086.min-luminance"));
+                    msg->removeEntryAt(msg->findEntryByName("cta861.max-cll"));
+                    msg->removeEntryAt(msg->findEntryByName("cta861.max-fall"));
+                    msg->setBuffer(KEY_HDR_STATIC_INFO,
+                        ABuffer::CreateAsCopy(&meta, kHdrstaticinfo_type1_size));
+                } else {
+                    ALOGV("found invalid HDR static metadata %s", msg->debugString(8).c_str());
+                }
+            }
+        } else if ((int32_t)hdr.hdrType == HDRStaticInfo::kType2) {
+            if (msg->findFloat("valid-hdr-fields", &hdr.validFields)
+                    && msg->findFloat("smpte2086.red.x", &hdr.mastering.red.x)
+                    && msg->findFloat("smpte2086.red.y", &hdr.mastering.red.y)
+                    && msg->findFloat("smpte2086.green.x", &hdr.mastering.green.x)
+                    && msg->findFloat("smpte2086.green.y", &hdr.mastering.green.y)
+                    && msg->findFloat("smpte2086.blue.x", &hdr.mastering.blue.x)
+                    && msg->findFloat("smpte2086.blue.y", &hdr.mastering.blue.y)
+                    && msg->findFloat("smpte2086.white.x", &hdr.mastering.white.x)
+                    && msg->findFloat("smpte2086.white.y", &hdr.mastering.white.y)
+                    && msg->findFloat("smpte2086.max-luminance", &hdr.mastering.maxLuminance)
+                    && msg->findFloat("smpte2086.min-luminance", &hdr.mastering.minLuminance)
+                    && msg->findFloat("cta861.max-cll", &hdr.maxCll)
+                    && msg->findFloat("cta861.max-fall", &hdr.maxFall)
+                    && msg->findInt64("ave.ambient-illuminance", &hdr.ave.ambientIlluminance)
+                    && msg->findFloat("ave.ambient-light.x", &hdr.ave.ambientLight.x)
+                    && msg->findFloat("ave.ambient-light.y", &hdr.ave.ambientLight.y)
+                    && msg->findFloat("ccv.cancel-flag", &hdr.ccv.cancelFlag)
+                    && msg->findFloat("ccv.persistence-flag", &hdr.ccv.persistenceFlag)
+                    && msg->findFloat("ccv.primaries-present-flag", &hdr.ccv.primariesPresentFlag)
+                    && msg->findFloat("ccv.max-luminance-flag", &hdr.ccv.maxLuminancePresentFlag)
+                    && msg->findFloat("ccv.min-luminance-flag", &hdr.ccv.minLuminancePresentFlag)
+                    && msg->findFloat("ccv.avg-luminance-flag", &hdr.ccv.avgLuminancePresentFlag)
+                    && msg->findFloat("ccv.red.x", &hdr.ccv.red.x)
+                    && msg->findFloat("ccv.red.y", &hdr.ccv.red.y)
+                    && msg->findFloat("ccv.green.x", &hdr.ccv.green.x)
+                    && msg->findFloat("ccv.green.y", &hdr.ccv.green.y)
+                    && msg->findFloat("ccv.blue.x", &hdr.ccv.blue.x)
+                    && msg->findFloat("ccv.blue.y", &hdr.ccv.blue.y)
+                    && msg->findFloat("ccv.max-luminance", &hdr.ccv.maxLuminance)
+                    && msg->findFloat("ccv.min-luminance", &hdr.ccv.minLuminance)
+                    && msg->findFloat("ccv.avg-luminance", &hdr.ccv.avgLuminance)) {
+                if (!IN_RANGE_INCLUSIVE(hdr.validFields, 0, 15)) {
+                    status = -1;
+                }
+                if (0 != ((int32_t)hdr.validFields & HDRStaticInfo::Type2::kDisplayColorVolume)) {
+                    if (!IN_RANGE_INCLUSIVE(hdr.mastering.red.x, kDispPrimXLow, kDispPrimXHigh)) {
+                        status = -1;
+                    }
+                    if (!IN_RANGE_INCLUSIVE(hdr.mastering.red.y, kDispPrimYLow, kDispPrimYHigh)) {
+                        status = -1;
+                    }
+                    if (!IN_RANGE_INCLUSIVE(hdr.mastering.green.x, kDispPrimXLow, kDispPrimXHigh)) {
+                        status = -1;
+                    }
+                    if (!IN_RANGE_INCLUSIVE(hdr.mastering.green.y, kDispPrimYLow, kDispPrimYHigh)) {
+                        status = -1;
+                    }
+                    if (!IN_RANGE_INCLUSIVE(hdr.mastering.blue.x, kDispPrimXLow, kDispPrimXHigh)) {
+                        status = -1;
+                    }
+                    if (!IN_RANGE_INCLUSIVE(hdr.mastering.blue.y, kDispPrimYLow, kDispPrimYHigh)) {
+                        status = -1;
+                    }
+                    if (!IN_RANGE_INCLUSIVE(hdr.mastering.white.x, kDispPrimXLow, kDispPrimXHigh)) {
+                        status = -1;
+                    }
+                    if (!IN_RANGE_INCLUSIVE(hdr.mastering.white.y, kDispPrimYLow, kDispPrimYHigh)) {
+                        status = -1;
+                    }
+                    // Comparison in cd / m^2
+                    if (!IN_RANGE_INCLUSIVE(hdr.mastering.maxLuminance, kMaxDispLuminanceLow,
+                                                                      kMaxDispLuminanceHigh)) {
+                        status = -1;
+                    }
+                    // Comparison in cd / m^2
+                    if (!IN_RANGE_INCLUSIVE(hdr.mastering.minLuminance, kMinDispLuminanceLow,
+                                                                      kMinDispLuminanceHigh)) {
+                        status = -1;
+                    }
+                    if (!(hdr.mastering.maxLuminance > hdr.mastering.minLuminance)) {
+                        status = -1;
+                    }
+                }
+                if (0 != ((int32_t)hdr.validFields & HDRStaticInfo::Type2::kContentLightLevel)) {
+                    if (!IN_RANGE_INCLUSIVE(hdr.maxCll, kContentLightLevelLow,
+                                                      kContentLightLevelHigh)) {
+                        status = -1;
+                    }
+                    if (!IN_RANGE_INCLUSIVE(hdr.maxFall, kContentLightLevelLow,
+                                                       kContentLightLevelHigh)) {
+                        status = -1;
+                    }
+                }
+                if (0 != ((int32_t)hdr.validFields & HDRStaticInfo::Type2::kAmbientViewingEnv)) {
+                    if (!IN_RANGE_INCLUSIVE(hdr.ave.ambientIlluminance, kAmbientLuminanceLow,
+                                                                      kAmbientLuminanceHigh)) {
+                        status = -1;
+                    }
+                    if (!IN_RANGE_INCLUSIVE(hdr.ave.ambientLight.x, kAmbientLightLow,
+                                                                  kAmbientLightHigh)) {
+                        status = -1;
+                    }
+                    if (!IN_RANGE_INCLUSIVE(hdr.ave.ambientLight.y, kAmbientLightLow,
+                                                                  kAmbientLightHigh)) {
+                        status = -1;
+                    }
+                }
+                if (0 != ((int32_t)hdr.validFields & HDRStaticInfo::Type2::kContentColorVolume)) {
+                    if (!IN_RANGE_INCLUSIVE(hdr.ccv.cancelFlag, 0, 1)) {
+                        status = -1;
+                    }
+                    if (0 == hdr.ccv.cancelFlag) {
+                        if (!IN_RANGE_INCLUSIVE(hdr.ccv.persistenceFlag, 0, 1)) {
+                            status = -1;
+                        }
+                        if (!IN_RANGE_INCLUSIVE(hdr.ccv.primariesPresentFlag, 0, 1)) {
+                            status = -1;
+                        }
+                        if (!IN_RANGE_INCLUSIVE(hdr.ccv.maxLuminancePresentFlag, 0, 1)) {
+                            status = -1;
+                        }
+                        if (!IN_RANGE_INCLUSIVE(hdr.ccv.minLuminancePresentFlag, 0, 1)) {
+                            status = -1;
+                        }
+                        if (!IN_RANGE_INCLUSIVE(hdr.ccv.avgLuminancePresentFlag, 0, 1)) {
+                            status = -1;
+                        }
+                        if (0 == hdr.ccv.primariesPresentFlag) {
+                            if (!IN_RANGE_INCLUSIVE(hdr.ccv.red.x, kCCVPrimLow, kCCVPrimHigh)) {
+                                status = -1;
+                            }
+                            if (!IN_RANGE_INCLUSIVE(hdr.ccv.red.y, kCCVPrimLow, kCCVPrimHigh)) {
+                                status = -1;
+                            }
+                            if (!IN_RANGE_INCLUSIVE(hdr.ccv.green.x, kCCVPrimLow, kCCVPrimHigh)) {
+                                status = -1;
+                            }
+                            if (!IN_RANGE_INCLUSIVE(hdr.ccv.green.y, kCCVPrimLow, kCCVPrimHigh)) {
+                                status = -1;
+                            }
+                            if (!IN_RANGE_INCLUSIVE(hdr.ccv.blue.x, kCCVPrimLow, kCCVPrimHigh)) {
+                                status = -1;
+                            }
+                            if (!IN_RANGE_INCLUSIVE(hdr.ccv.blue.y, kCCVPrimLow, kCCVPrimHigh)) {
+                                status = -1;
+                            }
+                        }
+                        if ((1 == hdr.ccv.maxLuminancePresentFlag) &&
+                            (!IN_RANGE_INCLUSIVE(hdr.ccv.maxLuminance, kCCVLuminanceLow,
+                                kCCVLuminanceHigh))) {
+                            status = -1;
+                        }
+                        if ((1 == hdr.ccv.minLuminancePresentFlag) &&
+                            (!IN_RANGE_INCLUSIVE(hdr.ccv.minLuminance, kCCVLuminanceLow,
+                                kCCVLuminanceHigh))) {
+                            status = -1;
+                        }
+                        if ((1 == hdr.ccv.avgLuminancePresentFlag) &&
+                            (!IN_RANGE_INCLUSIVE(hdr.ccv.avgLuminance, kCCVLuminanceLow,
+                                kCCVLuminanceHigh))) {
+                            status = -1;
+                        }
+                        if ((1 == hdr.ccv.maxLuminancePresentFlag) &&
+                            (1 == hdr.ccv.minLuminancePresentFlag) &&
+                            (hdr.ccv.maxLuminance < hdr.ccv.minLuminance)) {
+                            status = -1;
+                        }
+                        if ((1 == hdr.ccv.maxLuminancePresentFlag) &&
+                            (1 == hdr.ccv.avgLuminancePresentFlag) &&
+                            (hdr.ccv.maxLuminance < hdr.ccv.avgLuminance)) {
+                            status = -1;
+                        }
+                        if ((1 == hdr.ccv.minLuminancePresentFlag) &&
+                            (1 == hdr.ccv.avgLuminancePresentFlag) &&
+                            (hdr.ccv.minLuminance > hdr.ccv.avgLuminance)) {
+                            status = -1;
+                        }
+                    }
+                }
+
+                if (0 == status) {
+                    HDRStaticInfo meta;
+                    meta.mID = HDRStaticInfo::kType2;
+                    meta.sType2.mValidFields = hdr.validFields;
+                    meta.sType2.mR.x = hdr.mastering.red.x / kNormDispPrimaries + 0.5;
+                    meta.sType2.mR.y = hdr.mastering.red.y / kNormDispPrimaries + 0.5;
+                    meta.sType2.mG.x = hdr.mastering.green.x / kNormDispPrimaries + 0.5;
+                    meta.sType2.mG.y = hdr.mastering.green.y / kNormDispPrimaries + 0.5;
+                    meta.sType2.mB.x = hdr.mastering.blue.x / kNormDispPrimaries + 0.5;
+                    meta.sType2.mB.y = hdr.mastering.blue.y / kNormDispPrimaries + 0.5;
+                    meta.sType2.mW.x = hdr.mastering.white.x / kNormDispPrimaries + 0.5;
+                    meta.sType2.mW.y = hdr.mastering.white.y / kNormDispPrimaries + 0.5;
+                    meta.sType2.mMaxDisplayLuminance =
+                            hdr.mastering.maxLuminance + 0.5;
+                    meta.sType2.mMinDisplayLuminance =
+                            hdr.mastering.minLuminance / kNormDispLuminance + 0.5;
+                    meta.sType2.mMaxContentLightLevel = hdr.maxCll + 0.5;
+                    meta.sType2.mMaxFrameAverageLightLevel = hdr.maxFall + 0.5;
+                    meta.sType2.mAmbientIlluminance = hdr.ave.ambientIlluminance ;
+                    meta.sType2.mAmbientLight.x = hdr.ave.ambientLight.x / kNormAmbientLight + 0.5;
+                    meta.sType2.mAmbientLight.y = hdr.ave.ambientLight.y / kNormAmbientLight + 0.5;
+                    meta.sType2.mCCVCancelFlag = hdr.ccv.cancelFlag;
+                    meta.sType2.mCCVPersistenceFlag = hdr.ccv.persistenceFlag;
+                    meta.sType2.mCCVPrimariesPresentFlag = hdr.ccv.primariesPresentFlag;
+                    meta.sType2.mCCVMaxContentLuminancePresentFlag =
+                            hdr.ccv.maxLuminancePresentFlag;
+                    meta.sType2.mCCVMinContentLuminancePresentFlag =
+                            hdr.ccv.minLuminancePresentFlag;
+                    meta.sType2.mCCVAvgContentLuminancePresentFlag =
+                            hdr.ccv.avgLuminancePresentFlag;
+                    meta.sType2.mCCVR.x = (hdr.ccv.red.x >= 0) ?
+                           (hdr.ccv.red.x / kNormCCVPrimaries) + 0.5 :
+                           (hdr.ccv.red.x / kNormCCVPrimaries) - 0.5;
+                    meta.sType2.mCCVR.y = (hdr.ccv.red.y >=0) ?
+                           (hdr.ccv.red.y / kNormCCVPrimaries) + 0.5 :
+                           (hdr.ccv.red.y / kNormCCVPrimaries) - 0.5;
+                    meta.sType2.mCCVG.x = (hdr.ccv.green.x >= 0) ?
+                           (hdr.ccv.green.x / kNormCCVPrimaries) + 0.5 :
+                           (hdr.ccv.green.x / kNormCCVPrimaries) - 0.5;
+                    meta.sType2.mCCVG.y = (hdr.ccv.green.y >= 0) ?
+                           (hdr.ccv.green.y / kNormCCVPrimaries) + 0.5 :
+                           (hdr.ccv.green.y / kNormCCVPrimaries) - 0.5;
+                    meta.sType2.mCCVB.x = (hdr.ccv.blue.x >=0) ?
+                           (hdr.ccv.blue.x / kNormCCVPrimaries) + 0.5 :
+                           (hdr.ccv.blue.x / kNormCCVPrimaries) - 0.5;
+                    meta.sType2.mCCVB.y = (hdr.ccv.blue.y >= 0) ?
+                           (hdr.ccv.blue.y / kNormCCVPrimaries  ) + 0.5 :
+                           (hdr.ccv.blue.y / kNormCCVPrimaries) - 0.5;
+                    meta.sType2.mMaxContentLuminance =
+                           hdr.ccv.maxLuminance / kNormCCVLuminance + 0.5;
+                    meta.sType2.mMinContentLuminance =
+                           hdr.ccv.minLuminance / kNormCCVLuminance + 0.5;
+                    meta.sType2.mAvgContentLuminance =
+                           hdr.ccv.avgLuminance / kNormCCVLuminance + 0.5;
+                    msg->setBuffer(KEY_HDR_STATIC_INFO,
+                        ABuffer::CreateAsCopy(&meta, kHdrstaticinfo_type2_size));
+                } else {
+                    ALOGV("found invalid HDR static metadata %s", msg->debugString(8).c_str());
+                }
             }
         }
     }
@@ -1569,22 +1902,71 @@ ReflectedParamUpdater::Dict CCodecConfig::getReflectedFormat(
         }
 
         sp<ABuffer> hdrMeta;
-        if (params->findBuffer(KEY_HDR_STATIC_INFO, &hdrMeta)
-                && hdrMeta->size() == sizeof(HDRStaticInfo)) {
+        if (params->findBuffer(KEY_HDR_STATIC_INFO, &hdrMeta)){
             HDRStaticInfo *meta = (HDRStaticInfo*)hdrMeta->data();
-            if (meta->mID == meta->kType1) {
-                params->setFloat("smpte2086.red.x", meta->sType1.mR.x * 0.00002);
-                params->setFloat("smpte2086.red.y", meta->sType1.mR.y * 0.00002);
-                params->setFloat("smpte2086.green.x", meta->sType1.mG.x * 0.00002);
-                params->setFloat("smpte2086.green.y", meta->sType1.mG.y * 0.00002);
-                params->setFloat("smpte2086.blue.x", meta->sType1.mB.x * 0.00002);
-                params->setFloat("smpte2086.blue.y", meta->sType1.mB.y * 0.00002);
-                params->setFloat("smpte2086.white.x", meta->sType1.mW.x * 0.00002);
-                params->setFloat("smpte2086.white.y", meta->sType1.mW.y * 0.00002);
+            if (meta->mID == HDRStaticInfo::kType1
+                && hdrMeta->size() == (kHdrstaticinfo_type1_size)) {
+                params->setFloat("hdr-type", HDRStaticInfo::kType1);
+                params->setFloat("smpte2086.red.x", meta->sType1.mR.x * kNormDispPrimaries);
+                params->setFloat("smpte2086.red.y", meta->sType1.mR.y * kNormDispPrimaries);
+                params->setFloat("smpte2086.green.x", meta->sType1.mG.x * kNormDispPrimaries);
+                params->setFloat("smpte2086.green.y", meta->sType1.mG.y * kNormDispPrimaries);
+                params->setFloat("smpte2086.blue.x", meta->sType1.mB.x * kNormDispPrimaries);
+                params->setFloat("smpte2086.blue.y", meta->sType1.mB.y * kNormDispPrimaries);
+                params->setFloat("smpte2086.white.x", meta->sType1.mW.x * kNormDispPrimaries);
+                params->setFloat("smpte2086.white.y", meta->sType1.mW.y * kNormDispPrimaries);
                 params->setFloat("smpte2086.max-luminance", meta->sType1.mMaxDisplayLuminance);
-                params->setFloat("smpte2086.min-luminance", meta->sType1.mMinDisplayLuminance * 0.0001);
+                params->setFloat("smpte2086.min-luminance",
+                                 meta->sType1.mMinDisplayLuminance * kNormDispLuminance);
                 params->setFloat("cta861.max-cll", meta->sType1.mMaxContentLightLevel);
                 params->setFloat("cta861.max-fall", meta->sType1.mMaxFrameAverageLightLevel);
+            } else if (meta->mID == HDRStaticInfo::kType2
+                       && hdrMeta->size() == (kHdrstaticinfo_type2_size)) {
+                params->setFloat("hdr-type", HDRStaticInfo::kType2);
+                params->setFloat("valid-hdr-fields", meta->sType2.mValidFields);
+                params->setFloat("smpte2086.red.x", meta->sType2.mR.x * kNormDispPrimaries);
+                params->setFloat("smpte2086.red.y", meta->sType2.mR.y * kNormDispPrimaries);
+                params->setFloat("smpte2086.green.x", meta->sType2.mG.x * kNormDispPrimaries);
+                params->setFloat("smpte2086.green.y", meta->sType2.mG.y * kNormDispPrimaries);
+                params->setFloat("smpte2086.blue.x", meta->sType2.mB.x * kNormDispPrimaries);
+                params->setFloat("smpte2086.blue.y", meta->sType2.mB.y * kNormDispPrimaries);
+                params->setFloat("smpte2086.white.x", meta->sType2.mW.x * kNormDispPrimaries);
+                params->setFloat("smpte2086.white.y", meta->sType2.mW.y * kNormDispPrimaries);
+                params->setFloat("smpte2086.max-luminance", meta->sType2.mMaxDisplayLuminance);
+                params->setFloat("smpte2086.min-luminance",
+                                 meta->sType2.mMinDisplayLuminance * kNormDispLuminance);
+                params->setFloat("cta861.max-cll", meta->sType2.mMaxContentLightLevel);
+                params->setFloat("cta861.max-fall", meta->sType2.mMaxFrameAverageLightLevel);
+                params->setInt64("ave.ambient-illuminance", meta->sType2.mAmbientIlluminance);
+                params->setFloat("ave.ambient-light.x",
+                                meta->sType2.mAmbientLight.x * kNormAmbientLight);
+                params->setFloat("ave.ambient-light.y",
+                                meta->sType2.mAmbientLight.y * kNormAmbientLight);
+                params->setFloat("ccv.cancel-flag", meta->sType2.mCCVCancelFlag);
+                params->setFloat("ccv.persistence-flag", meta->sType2.mCCVPersistenceFlag);
+                params->setFloat("ccv.primaries-present-flag",
+                                 meta->sType2.mCCVPrimariesPresentFlag);
+                params->setFloat("ccv.max-luminance-flag",
+                                 meta->sType2.mCCVMaxContentLuminancePresentFlag);
+                params->setFloat("ccv.min-luminance-flag",
+                                 meta->sType2.mCCVMinContentLuminancePresentFlag);
+                params->setFloat("ccv.avg-luminance-flag",
+                                 meta->sType2.mCCVAvgContentLuminancePresentFlag);
+                params->setFloat("ccv.red.x", meta->sType2.mCCVR.x * kNormCCVPrimaries);
+                params->setFloat("ccv.red.y", meta->sType2.mCCVR.y * kNormCCVPrimaries);
+                params->setFloat("ccv.green.x", meta->sType2.mCCVG.x * kNormCCVPrimaries);
+                params->setFloat("ccv.green.y", meta->sType2.mCCVG.y * kNormCCVPrimaries);
+                params->setFloat("ccv.blue.x", meta->sType2.mCCVB.x * kNormCCVPrimaries);
+                params->setFloat("ccv.blue.y", meta->sType2.mCCVB.y * kNormCCVPrimaries);
+                params->setFloat("ccv.max-luminance",
+                                 meta->sType2.mMaxContentLuminance * kNormCCVLuminance);
+                params->setFloat("ccv.min-luminance",
+                                 meta->sType2.mMinContentLuminance * kNormCCVLuminance);
+                params->setFloat("ccv.avg-luminance",
+                                 meta->sType2.mAvgContentLuminance * kNormCCVLuminance);
+            }
+            else {
+                ALOGV("Unknown metadata type : %d", meta->mID);
             }
         }
     }
