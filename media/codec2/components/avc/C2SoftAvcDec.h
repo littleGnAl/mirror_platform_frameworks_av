@@ -139,6 +139,12 @@ private:
     status_t resetDecoder();
     void resetPlugin();
     status_t deleteDecoder();
+    bool getHDRStaticParams(ivd_video_decode_op_t *ps_decode_op,
+                            const std::unique_ptr<C2Work> &work);
+    bool getMDCV();
+    bool getCLL();
+    bool getAVE();
+    bool getCCV();
 
     std::shared_ptr<IntfImpl> mIntf;
 
@@ -189,6 +195,9 @@ private:
 #ifdef FILE_DUMP_ENABLE
     char mInFile[200];
 #endif /* FILE_DUMP_ENABLE */
+
+    HDRStaticInfo mHdrStaticInfoLocal;
+    HDRStaticInfo mHdrStaticInfo;
 
     C2_DO_NOT_COPY(C2SoftAvcDec);
 };
