@@ -26,6 +26,7 @@
 #include "ih264_typedefs.h"
 #include "iv2.h"
 #include "ive2.h"
+#include "ih264e.h"
 
 namespace android {
 
@@ -192,6 +193,7 @@ private:
     std::shared_ptr<C2StreamFrameRateInfo::output> mFrameRate;
     std::shared_ptr<C2StreamBitrateInfo::output> mBitrate;
     std::shared_ptr<C2StreamRequestSyncFrameTuning::output> mRequestSync;
+    std::shared_ptr<C2StreamHdrStaticInfo::input> mHdrStaticInfo;
 
     uint32_t mOutBufferSize;
     UWORD32 mHeaderGenerated;
@@ -239,6 +241,23 @@ private:
     c2_status_t drainInternal(uint32_t drainMode,
             const std::shared_ptr<C2BlockPool> &pool,
             const std::unique_ptr<C2Work> &work);
+
+    c2_status_t setHdrStaticParams();
+    c2_status_t setMDCV(
+            ih264e_ctl_set_sei_mdcv_params_ip_t* ps_mdcv_ip,
+            ih264e_ctl_set_sei_mdcv_params_op_t* ps_mdcv_op);
+
+    c2_status_t setCLL(
+            ih264e_ctl_set_sei_cll_params_ip_t* ps_cll_ip,
+            ih264e_ctl_set_sei_cll_params_op_t* ps_cll_op);
+
+    c2_status_t setAVE(
+            ih264e_ctl_set_sei_ave_params_ip_t* ps_ave_ip,
+            ih264e_ctl_set_sei_ave_params_op_t* ps_ave_op);
+
+    c2_status_t setCCV(
+            ih264e_ctl_set_sei_ccv_params_ip_t* ps_ccv_ip,
+            ih264e_ctl_set_sei_ccv_params_op_t* ps_ccv_op);
 
     C2_DO_NOT_COPY(C2SoftAvcEnc);
 };
