@@ -49,6 +49,9 @@ namespace android {
     diff = (((end).tv_sec - (start).tv_sec) * 1000000) + \
             ((end).tv_usec - (start).tv_usec);
 
+/** Used to remove warnings about unused parameters */
+#define UNUSED(x) ((void)(x))
+
 #ifdef FILE_DUMP_ENABLE
     #define INPUT_DUMP_PATH     "/sdcard/clips/avcd_input"
     #define INPUT_DUMP_EXT      "h264"
@@ -139,6 +142,8 @@ private:
     status_t resetDecoder();
     void resetPlugin();
     status_t deleteDecoder();
+    bool getHDRStaticParams(ivd_video_decode_op_t *ps_decode_op,
+                            const std::unique_ptr<C2Work> &work);
 
     std::shared_ptr<IntfImpl> mIntf;
 
@@ -189,6 +194,8 @@ private:
 #ifdef FILE_DUMP_ENABLE
     char mInFile[200];
 #endif /* FILE_DUMP_ENABLE */
+
+    HDRStaticInfo mHdrStaticInfo;
 
     C2_DO_NOT_COPY(C2SoftAvcDec);
 };
