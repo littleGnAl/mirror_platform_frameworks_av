@@ -967,7 +967,7 @@ status_t convertMetaDataToMessage(
         const void *data;
         size_t size;
         if (meta->findData(kKeyHdrStaticInfo, &type, &data, &size)
-                && type == 'hdrS' && size == sizeof(HDRStaticInfo)) {
+                && type == 'hdrS' && size == SIZE_HDRSTATICINFO_TYPE1) {
             ColorUtils::setHDRStaticInfoIntoFormat(*(HDRStaticInfo*)data, msg);
         }
 
@@ -1709,7 +1709,7 @@ void convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
         if (msg->contains("hdr-static-info")) {
             HDRStaticInfo info;
             if (ColorUtils::getHDRStaticInfoFromFormat(msg, &info)) {
-                meta->setData(kKeyHdrStaticInfo, 'hdrS', &info, sizeof(info));
+                meta->setData(kKeyHdrStaticInfo, 'hdrS', &info, SIZE_HDRSTATICINFO_TYPE1);
             }
         }
 
