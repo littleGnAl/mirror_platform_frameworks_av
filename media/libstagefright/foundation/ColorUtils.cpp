@@ -34,6 +34,11 @@ typedef ColorUtils CU;
 #define HI_UINT16(a) (((a) >> 8) & 0xFF)
 #define LO_UINT16(a) ((a) & 0xFF)
 
+#define BYTE_3_UINT32(a) (((a) >> 24) & 0xFF)
+#define BYTE_2_UINT32(a) (((a) >> 16) & 0xFF)
+#define BYTE_1_UINT32(a) (((a) >> 8) & 0xFF)
+#define BYTE_0_UINT32(a) ((a) & 0xFF)
+
 const static
 ALookup<CU::ColorRange, CA::Range> sRanges{
     {
@@ -703,10 +708,18 @@ void ColorUtils::setHDRStaticInfoIntoAMediaFormat(
 // static
 void ColorUtils::setHDRStaticInfoIntoFormat(
         const HDRStaticInfo &info, sp<AMessage> &format) {
-    sp<ABuffer> infoBuffer = new ABuffer(25);
-
+    /*if (info.mID == HDRStaticInfo::kType1) {
+        sp<ABuffer> infoBuffer = new ABuffer(kHdrstaticinfo_type1_size);
+    }
+    else if (info.mID == HDRStaticInfo::kType2) {
+        sp<ABuffer> infoBuffer = new ABuffer(kHdrstaticinfo_type2_size);
+    }
+*/
+    if (info.mID == HDRStaticInfo::kType1) {
+      sp<ABuffer> infoBuffer = new ABuffer(kHdrstaticinfo_type1_size);
     // Convert the data in infoBuffer to little endian format as defined by CTA-861-3
     uint8_t *data = infoBuffer->data();
+      
     // Static_Metadata_Descriptor_ID
     data[0] = info.mID;
 
@@ -749,13 +762,134 @@ void ColorUtils::setHDRStaticInfoIntoFormat(
     // MaxFrameAverageLightLevel
     data[23] = LO_UINT16(info.sType1.mMaxFrameAverageLightLevel);
     data[24] = HI_UINT16(info.sType1.mMaxFrameAverageLightLevel);
+      
+      format->setBuffer("hdr-static-info", infoBuffer);
+  }
+  else if (info.mID == HDRStaticInfo::kType2) {
+      sp<ABuffer> infoBuffer = new ABuffer(kHdrstaticinfo_type2_size);
+      // Convert the data in infoBuffer to little endian format as defined by CTA-861-3
+      uint8_t *data = infoBuffer->data();
+      
+      // Static_Metadata_Descriptor_ID
+      data[0] = info.mID;
+      
+      // Enable / disable specific fields in this structure
+      data[1] = info.sType2.mValidFields;
 
-    format->setBuffer("hdr-static-info", infoBuffer);
+      // display primary 0
+      data[2] = LO_UINT16(info.sType2.mR.x);
+      data[3] = HI_UINT16(info.sType2.mR.x);
+      data[4] = LO_UINT16(info.sType2.mR.y);
+      data[5] = HI_UINT16(info.sType2.mR.y);
+
+      // display primary 1
+      data[6] = LO_UINT16(info.sType2.mG.x);
+      data[7] = HI_UINT16(info.sType2.mG.x);
+      data[8] = LO_UINT16(info.sType2.mG.y);
+      data[9] = HI_UINT16(info.sType2.mG.y);
+
+      // display primary 2
+      data[10] = LO_UINT16(info.sType2.mB.x);
+      data[11] = HI_UINT16(info.sType2.mB.x);
+      data[12] = LO_UINT16(info.sType2.mB.y);
+      data[13] = HI_UINT16(info.sType2.mB.y);
+
+      // white point
+      data[14] = LO_UINT16(info.sType2.mW.x);
+      data[15] = HI_UINT16(info.sType2.mW.x);
+      data[16] = LO_UINT16(info.sType2.mW.y);
+      data[17] = HI_UINT16(info.sType2.mW.y);
+
+      // MaxDisplayLuminance
+      data[18] = LO_UINT16(info.sType2.mMaxDisplayLuminance);
+      data[19] = HI_UINT16(info.sType2.mMaxDisplayLuminance);
+
+      // MinDisplayLuminance
+      data[20] = LO_UINT16(info.sType2.mMinDisplayLuminance);
+      data[21] = HI_UINT16(info.sType2.mMinDisplayLuminance);
+
+      // MaxContentLightLevel
+      data[22] = LO_UINT16(info.sType2.mMaxContentLightLevel);
+      data[23] = HI_UINT16(info.sType2.mMaxContentLightLevel);
+
+      // MaxFrameAverageLightLevel
+      data[24] = LO_UINT16(info.sType2.mMaxFrameAverageLightLevel);
+      data[25] = HI_UINT16(info.sType2.mMaxFrameAverageLightLevel);
+      
+      // AmbientIlluminance
+      data[26] = BYTE_0_UINT32(info.sType2.mAmbientIlluminance);
+      data[27] = BYTE_1_UINT32(info.sType2.mAmbientIlluminance);
+      data[28] = BYTE_2_UINT32(info.sType2.mAmbientIlluminance);
+      data[29] = BYTE_3_UINT32(info.sType2.mAmbientIlluminance);
+      
+      // Ambient Light
+      data[30] = LO_UINT16(info.sType2.mAmbientLight.x);
+      data[31] = HI_UINT16(info.sType2.mAmbientLight.x);
+      data[32] = LO_UINT16(info.sType2.mAmbientLight.y);
+      data[33] = HI_UINT16(info.sType2.mAmbientLight.y);
+      
+      //CCV flags
+      data[34] = info.sType2.mCCVCancelFlag;
+      data[35] = info.sType2.mCCVPersistenceFlag;
+      data[36] = info.sType2.mCCVPrimariesPresentFlag;
+      data[37] = info.sType2.mCCVMaxContentLuminancePresentFlag;
+      data[38] = info.sType2.mCCVMinContentLuminancePresentFlag;
+      data[39] = info.sType2.mCCVAvgContentLuminancePresentFlag;
+      
+      // CCV Primaries
+      data[40] = BYTE_0_UINT32(info.sType2.mCCVR.x);
+      data[41] = BYTE_1_UINT32(info.sType2.mCCVR.x);
+      data[42] = BYTE_2_UINT32(info.sType2.mCCVR.x);
+      data[43] = BYTE_3_UINT32(info.sType2.mCCVR.x);
+      data[44] = BYTE_0_UINT32(info.sType2.mCCVR.y);
+      data[45] = BYTE_1_UINT32(info.sType2.mCCVR.y);
+      data[46] = BYTE_2_UINT32(info.sType2.mCCVR.y);
+      data[47] = BYTE_3_UINT32(info.sType2.mCCVR.y);
+      
+      data[48] = BYTE_0_UINT32(info.sType2.mCCVG.x);
+      data[49] = BYTE_1_UINT32(info.sType2.mCCVG.x);
+      data[50] = BYTE_2_UINT32(info.sType2.mCCVG.x);
+      data[51] = BYTE_3_UINT32(info.sType2.mCCVG.x);
+      data[52] = BYTE_0_UINT32(info.sType2.mCCVG.y);
+      data[53] = BYTE_1_UINT32(info.sType2.mCCVG.y);
+      data[54] = BYTE_2_UINT32(info.sType2.mCCVG.y);
+      data[55] = BYTE_3_UINT32(info.sType2.mCCVG.y);
+      
+      data[56] = BYTE_0_UINT32(info.sType2.mCCVB.x);
+      data[57] = BYTE_1_UINT32(info.sType2.mCCVB.x);
+      data[58] = BYTE_2_UINT32(info.sType2.mCCVB.x);
+      data[59] = BYTE_3_UINT32(info.sType2.mCCVB.x);
+      data[60] = BYTE_0_UINT32(info.sType2.mCCVB.y);
+      data[61] = BYTE_1_UINT32(info.sType2.mCCVB.y);
+      data[62] = BYTE_2_UINT32(info.sType2.mCCVB.y);
+      data[63] = BYTE_3_UINT32(info.sType2.mCCVB.y);
+      
+      data[64] = BYTE_0_UINT32(info.sType2.mMaxContentLuminance);
+      data[65] = BYTE_1_UINT32(info.sType2.mMaxContentLuminance);
+      data[66] = BYTE_2_UINT32(info.sType2.mMaxContentLuminance);
+      data[67] = BYTE_3_UINT32(info.sType2.mMaxContentLuminance);
+      
+      data[68] = BYTE_0_UINT32(info.sType2.mMinContentLuminance);
+      data[69] = BYTE_1_UINT32(info.sType2.mMinContentLuminance);
+      data[70] = BYTE_2_UINT32(info.sType2.mMinContentLuminance);
+      data[71] = BYTE_3_UINT32(info.sType2.mMinContentLuminance);
+      
+      data[72] = BYTE_0_UINT32(info.sType2.mAvgContentLuminance);
+      data[73] = BYTE_1_UINT32(info.sType2.mAvgContentLuminance);
+      data[74] = BYTE_2_UINT32(info.sType2.mAvgContentLuminance);
+      data[75] = BYTE_3_UINT32(info.sType2.mAvgContentLuminance);
+      
+      format->setBuffer("hdr-static-info", infoBuffer);
+  }
+    
 }
 
 // a simple method copied from Utils.cpp
 static uint16_t U16LE_AT(const uint8_t *ptr) {
     return ptr[0] | (ptr[1] << 8);
+}
+static uint32_t U32LE_AT(const uint8_t *ptr) {
+    return ptr[0] | (ptr[1] << 8) | (ptr[2] << 16) | (ptr[3] << 24);
 }
 
 // static
@@ -765,18 +899,20 @@ bool ColorUtils::getHDRStaticInfoFromFormat(const sp<AMessage> &format, HDRStati
         return false;
     }
 
-    // TODO: Make this more flexible when adding more members to HDRStaticInfo
-    if (buf->size() != 25 /* static Metadata Type 1 size */) {
+    // Adding HDRStaticInfo static Metadata Type 1 and Type 2 sizes
+    if (buf->size() != kHdrstaticinfo_type1_size 
+            && buf->size() != kHdrstaticinfo_type2_size) {
         ALOGW("Ignore invalid HDRStaticInfo with size: %zu", buf->size());
         return false;
     }
 
     const uint8_t *data = buf->data();
-    if (*data != HDRStaticInfo::kType1) {
+    if (*data != HDRStaticInfo::kType1 && *data != HDRStaticInfo::kType2) {
         ALOGW("Unsupported static Metadata Type %u", *data);
         return false;
     }
 
+    if (*data == HDRStaticInfo::kType1) {
     info->mID = HDRStaticInfo::kType1;
     info->sType1.mR.x = U16LE_AT(&data[1]);
     info->sType1.mR.y = U16LE_AT(&data[3]);
@@ -791,13 +927,83 @@ bool ColorUtils::getHDRStaticInfoFromFormat(const sp<AMessage> &format, HDRStati
     info->sType1.mMaxContentLightLevel = U16LE_AT(&data[21]);
     info->sType1.mMaxFrameAverageLightLevel = U16LE_AT(&data[23]);
 
-    ALOGV("Got HDRStaticInfo from config (R: %u %u, G: %u %u, B: %u, %u, W: %u, %u, "
-            "MaxDispL: %u, MinDispL: %u, MaxContentL: %u, MaxFrameAvgL: %u)",
-            info->sType1.mR.x, info->sType1.mR.y, info->sType1.mG.x, info->sType1.mG.y,
-            info->sType1.mB.x, info->sType1.mB.y, info->sType1.mW.x, info->sType1.mW.y,
-            info->sType1.mMaxDisplayLuminance, info->sType1.mMinDisplayLuminance,
-            info->sType1.mMaxContentLightLevel, info->sType1.mMaxFrameAverageLightLevel);
+        ALOGV("Got Type_1 HDRStaticInfo from config"
+              "(R: %u, %u, G: %u, %u, B: %u, %u, W: %u, %u, MaxDispL: %u,"
+              "MinDispL: %u, MaxContentL: %u, MaxFrameAvgL: %u)",
+                info->sType1.mR.x, info->sType1.mR.y, info->sType1.mG.x,
+                info->sType1.mG.y, info->sType1.mB.x, info->sType1.mB.y,
+                info->sType1.mW.x, info->sType1.mW.y,
+                info->sType1.mMaxDisplayLuminance,
+                info->sType1.mMinDisplayLuminance,
+                info->sType1.mMaxContentLightLevel,
+                info->sType1.mMaxFrameAverageLightLevel);
     return true;
+    }
+    else if (*data == HDRStaticInfo::kType2) {
+        info->mID = HDRStaticInfo::kType2;
+        info->sType2.mValidFields = data[1];
+        info->sType2.mR.x = U16LE_AT(&data[2]);
+        info->sType2.mR.y = U16LE_AT(&data[4]);
+        info->sType2.mG.x = U16LE_AT(&data[6]);
+        info->sType2.mG.y = U16LE_AT(&data[8]);
+        info->sType2.mB.x = U16LE_AT(&data[10]);
+        info->sType2.mB.y = U16LE_AT(&data[12]);
+        info->sType2.mW.x = U16LE_AT(&data[14]);
+        info->sType2.mW.y = U16LE_AT(&data[16]);
+        info->sType2.mMaxDisplayLuminance = U16LE_AT(&data[18]);
+        info->sType2.mMinDisplayLuminance = U16LE_AT(&data[20]);
+        info->sType2.mMaxContentLightLevel = U16LE_AT(&data[22]);
+        info->sType2.mMaxFrameAverageLightLevel = U16LE_AT(&data[24]);
+        info->sType2.mAmbientIlluminance = U32LE_AT(&data[26]);
+        info->sType2.mAmbientLight.x = U16LE_AT(&data[30]);
+        info->sType2.mAmbientLight.y = U16LE_AT(&data[32]);
+        info->sType2.mCCVCancelFlag = data[34];
+        info->sType2.mCCVPersistenceFlag = data[35];
+        info->sType2.mCCVPrimariesPresentFlag = data[36];
+        info->sType2.mCCVMaxContentLuminancePresentFlag = data[37];
+        info->sType2.mCCVMinContentLuminancePresentFlag = data[38];
+        info->sType2.mCCVAvgContentLuminancePresentFlag = data[39];
+        info->sType2.mCCVR.x = U32LE_AT(&data[40]);
+        info->sType2.mCCVR.y = U32LE_AT(&data[44]);
+        info->sType2.mCCVG.x = U32LE_AT(&data[48]);
+        info->sType2.mCCVG.y = U32LE_AT(&data[52]);
+        info->sType2.mCCVB.x = U32LE_AT(&data[56]);
+        info->sType2.mCCVB.y = U32LE_AT(&data[60]);
+        info->sType2.mMaxContentLuminance = U32LE_AT(&data[64]);
+        info->sType2.mMinContentLuminance = U32LE_AT(&data[68]);
+        info->sType2.mAvgContentLuminance = U32LE_AT(&data[72]);
+        
+        ALOGV("Got Type_2 HDRStaticInfo from config "
+              "(R: %u, %u, G: %u, %u, B: %u, %u, W: %u, %u, MaxDispL: %u,"
+              "MinDispL: %u, MaxContentL: %u, MaxFrameAvgL: %u,"
+              "AmbIllum: %u, AmbL: %u %u,"
+              "CCVCancelF: %u, CCVPersF: %u, CCVPrimPresentF: %u,"
+              "CCVMaxFlag: %u, CCVMinFlag: %u, CCVAvgFlag: %u, "
+              "CCVR: %u %u, CCVG: %u %u, CCVB: %u %u,"
+              "MaxContL: %u,MinContL: %u, AvgContL: %u)",
+                info->sType2.mR.x, info->sType2.mR.y, info->sType2.mG.x,
+                info->sType2.mG.y, info->sType2.mB.x, info->sType2.mB.y,
+                info->sType2.mW.x, info->sType2.mW.y,
+                info->sType2.mMaxDisplayLuminance,
+                info->sType2.mMinDisplayLuminance,
+                info->sType2.mMaxContentLightLevel,
+                info->sType2.mMaxFrameAverageLightLevel,
+                info->sType2.mAmbientIlluminance,
+                info->sType2.mAmbientLight.x, info->sType2.mAmbientLight.y,
+                info->sType2.mCCVCancelFlag, info->sType2.mCCVPersistenceFlag,
+                info->sType2.mCCVPrimariesPresentFlag,
+                info->sType2.mCCVMaxContentLuminancePresentFlag,
+                info->sType2.mCCVMinContentLuminancePresentFlag,
+                info->sType2.mCCVAvgContentLuminancePresentFlag,
+                info->sType2.mCCVR.x, info->sType2.mCCVR.y,
+                info->sType2.mCCVG.x, info->sType2.mCCVG.y,
+                info->sType2.mCCVB.x, info->sType2.mCCVB.y,
+                info->sType2.mMaxContentLuminance,
+                info->sType2.mMinContentLuminance,
+                info->sType2.mAvgContentLuminance);
+        return true;
+    }
+    return false;
 }
 
 }  // namespace android
