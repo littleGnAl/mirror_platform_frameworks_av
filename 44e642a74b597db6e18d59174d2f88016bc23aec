@@ -16,6 +16,24 @@
       "revId": "44e642a74b597db6e18d59174d2f88016bc23aec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b55e2ce_fd8fa7dc",
+        "filename": "camera/ndk/impl/ACameraManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2019-11-27T07:11:11Z",
+      "side": 1,
+      "message": "Done, cached HAL3 support.",
+      "parentUuid": "cd46e0a8_779bc83f",
+      "revId": "44e642a74b597db6e18d59174d2f88016bc23aec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
