@@ -26,6 +26,7 @@
 #include "ih264_typedefs.h"
 #include "iv2.h"
 #include "ive2.h"
+#include "ih264e.h"
 
 namespace android {
 
@@ -192,6 +193,7 @@ private:
     std::shared_ptr<C2StreamFrameRateInfo::output> mFrameRate;
     std::shared_ptr<C2StreamBitrateInfo::output> mBitrate;
     std::shared_ptr<C2StreamRequestSyncFrameTuning::output> mRequestSync;
+    std::shared_ptr<C2StreamHdrStaticInfo::input> mHdrStaticInfo;
 
     uint32_t mOutBufferSize;
     UWORD32 mHeaderGenerated;
@@ -239,6 +241,15 @@ private:
     c2_status_t drainInternal(uint32_t drainMode,
             const std::shared_ptr<C2BlockPool> &pool,
             const std::unique_ptr<C2Work> &work);
+
+    void setHdrStaticParams();
+    c2_status_t setMDCV();
+
+    c2_status_t setCLL();
+
+    c2_status_t setAVE();
+
+    c2_status_t setCCV();
 
     C2_DO_NOT_COPY(C2SoftAvcEnc);
 };
