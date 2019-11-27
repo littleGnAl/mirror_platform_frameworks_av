@@ -1025,12 +1025,16 @@ status_t convertMetaDataToMessage(
             msg->setInt32("rotation-degrees", rotationDegrees);
         }
 
+        const HDRStaticInfo *info;
         uint32_t type;
         const void *data;
         size_t size;
-        if (meta->findData(kKeyHdrStaticInfo, &type, &data, &size)
-                && type == 'hdrS' && size == sizeof(HDRStaticInfo)) {
-            ColorUtils::setHDRStaticInfoIntoFormat(*(HDRStaticInfo*)data, msg);
+        if (meta->findData(kKeyHdrStaticInfo, &type, &data, &size) && type == 'hdrS') {
+            info = (const HDRStaticInfo*)data;
+            if ((info->mID == HDRStaticInfo::kType1 || info->mID == HDRStaticInfo::kType2)
+                                                   && size >= kHdrstaticinfo_type1_size) {
+                ColorUtils::setHDRStaticInfoIntoFormat(*(HDRStaticInfo*)data, msg);
+            }
         }
 
         if (meta->findData(kKeyHdr10PlusInfo, &type, &data, &size)
@@ -1781,7 +1785,9 @@ status_t convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
         if (msg->contains("hdr-static-info")) {
             HDRStaticInfo info;
             if (ColorUtils::getHDRStaticInfoFromFormat(msg, &info)) {
-                meta->setData(kKeyHdrStaticInfo, 'hdrS', &info, sizeof(info));
+                if (info.mID == HDRStaticInfo::kType1 || info.mID == HDRStaticInfo::kType2) {
+                    meta->setData(kKeyHdrStaticInfo, 'hdrS', &info, kHdrstaticinfo_type1_size);
+                }
             }
         }
 
