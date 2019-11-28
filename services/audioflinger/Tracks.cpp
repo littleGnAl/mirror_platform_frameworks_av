@@ -1872,6 +1872,17 @@ void AudioFlinger::PlaybackThread::PatchTrack::releaseBuffer(Proxy::Buffer* buff
 {
     mProxy->releaseBuffer(buffer);
     restartIfDisabled();
+
+    // check if active PatchTrack has enough data to write once.
+    sp<ThreadBase> thread = mThread.promote();
+    if (thread != 0) {
+        PlaybackThread *playbackThread = (PlaybackThread *)thread.get();
+        if ((mFillingUpStatus == FS_ACTIVE) &&
+                (framesReady() < playbackThread->frameCount())) {
+            ALOGD("%s(%d) No enough data. wait for filling buffer", __func__, mId);
+            mFillingUpStatus = FS_FILLING;
+        }
+    }
 }
 
 void AudioFlinger::PlaybackThread::PatchTrack::restartIfDisabled()
