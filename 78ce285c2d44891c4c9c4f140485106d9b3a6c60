@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ec5aa169_b25c66b9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2019-11-28T12:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "933c5207_93076906",
+      "revId": "78ce285c2d44891c4c9c4f140485106d9b3a6c60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14c37ef8_9a628217",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 1
@@ -39,6 +57,30 @@
       "revId": "78ce285c2d44891c4c9c4f140485106d9b3a6c60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35cdd56c_439d8b1c",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1578,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2019-11-28T12:38:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14c37ef8_9a628217",
+      "range": {
+        "startLine": 1575,
+        "startChar": 0,
+        "endLine": 1578,
+        "endChar": 35
+      },
+      "revId": "78ce285c2d44891c4c9c4f140485106d9b3a6c60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
