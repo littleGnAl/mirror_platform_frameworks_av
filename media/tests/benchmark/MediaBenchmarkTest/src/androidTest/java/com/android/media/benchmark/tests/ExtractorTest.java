@@ -19,12 +19,14 @@ package com.android.media.benchmark.tests;
 import com.android.media.benchmark.R;
 import com.android.media.benchmark.library.Extractor;
 import com.android.media.benchmark.library.Native;
+import com.android.media.benchmark.library.Stats;
 
 import android.content.Context;
 import android.util.Log;
 
 import androidx.test.platform.app.InstrumentationRegistry;
 
+import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -32,6 +34,7 @@ import org.junit.runners.Parameterized;
 import java.io.File;
 import java.io.FileDescriptor;
 import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Collection;
@@ -39,11 +42,15 @@ import java.util.Collection;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
 
+import static org.junit.Assert.assertTrue;
+
 @RunWith(Parameterized.class)
 public class ExtractorTest {
     private static Context mContext =
             InstrumentationRegistry.getInstrumentation().getTargetContext();
     private static final String mInputFilePath = mContext.getString(R.string.input_file_path);
+    private static final String mStatsFile =
+            mContext.getFilesDir() + "/Extractor" + System.currentTimeMillis() + ".out";
     private static final String TAG = "ExtractorTest";
     private String mInputFileName;
     private int mTrackId;
@@ -71,6 +78,13 @@ public class ExtractorTest {
         this.mTrackId = track;
     }
 
+    @BeforeClass
+    public static void writeStatsHeaderToFile() throws IOException {
+        Stats mStats = new Stats();
+        boolean status = mStats.writeStatsHeader(mStatsFile);
+        assertTrue("Unable to open stats file for writing!", status);
+    }
+
     @Test
     public void sampleExtractTest() throws IOException {
         File inputFile = new File(mInputFilePath + mInputFileName);
@@ -84,7 +98,7 @@ public class ExtractorTest {
         assertEquals("Extraction failed for " + mInputFileName, 0, status);
         Log.i(TAG, "Extracted " + mInputFileName + " successfully.");
         extractor.deinitExtractor();
-        extractor.dumpStatistics(mInputFileName);
+        extractor.dumpStatistics(mInputFileName + "_SDK", "", mStatsFile);
         fileInput.close();
     }
 
@@ -95,7 +109,7 @@ public class ExtractorTest {
         assertTrue("Cannot find " + mInputFileName + " in directory " + mInputFilePath,
                 inputFile.exists());
         FileInputStream fileInput = new FileInputStream(inputFile);
-        int status = nativeExtractor.Extract(mInputFilePath, mInputFileName);
+        int status = nativeExtractor.Extract(mInputFilePath, mInputFileName, mStatsFile);
         fileInput.close();
         assertEquals("Extraction failed for " + mInputFileName, 0, status);
         Log.i(TAG, "Extracted " + mInputFileName + " successfully.");

@@ -328,10 +328,13 @@ public class Encoder {
      *
      * @param inputReference The operation being performed, in this case encode
      * @param durationUs     Duration of the clip in microseconds
+     * @param codecName      Name of the codec
+     * @param statsFile      The output file where the stats data is written
      */
-    public void dumpStatistics(String inputReference, long durationUs) {
+    public void dumpStatistics(String inputReference, long durationUs, String codecName,
+            String statsFile) throws IOException {
         String operation = "encode";
-        mStats.dumpStatistics(operation, inputReference, durationUs);
+        mStats.dumpStatistics(operation, inputReference, durationUs, codecName, statsFile);
     }
 
     /**

@@ -167,9 +167,12 @@ public class Extractor {
      * Write the benchmark logs for the given input file
      *
      * @param inputReference Name of the input file
+     * @param codecName      Name of the codec
+     * @param statsFile      The output file where the stats data is written
      */
-    public void dumpStatistics(String inputReference) {
+    public void dumpStatistics(String inputReference, String codecName, String statsFile)
+            throws IOException {
         String operation = "extract";
-        mStats.dumpStatistics(operation, inputReference, mDurationUs);
+        mStats.dumpStatistics(operation, inputReference, mDurationUs, codecName, statsFile);
     }
 }

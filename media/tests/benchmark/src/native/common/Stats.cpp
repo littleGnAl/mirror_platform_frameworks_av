@@ -19,6 +19,7 @@
 
 #include <iostream>
 #include <stdint.h>
+#include <fstream>
 
 #include "Stats.h"
 
@@ -30,7 +31,8 @@
  * \param inputReference input media
  * \param duarationUs    is a duration of the input media in microseconds.
  */
-void Stats::dumpStatistics(std::string operation, std::string inputReference, int64_t duarationUs) {
+void Stats::dumpStatistics(string operation, string inputReference, int64_t duarationUs,
+                           string codecName, string statsFile) {
     ALOGV("In %s", __func__);
     if (!mOutputTimer.size()) {
         ALOGE("No output produced");
@@ -52,15 +54,28 @@ void Stats::dumpStatistics(std::string operation, std::string inputReference, in
         else if (maxTimeTakenNs < intervalNs) maxTimeTakenNs = intervalNs;
     }
 
-    // Print the Stats
-    ALOGI("Input Reference : %s \n", inputReference.c_str());
-    ALOGI("Setup Time in nano sec : %" PRId64 "\n", mInitTimeNs);
-    ALOGI("Average Time in nano sec : %" PRId64 "\n", totalTimeTakenNs / mOutputTimer.size());
-    ALOGI("Time to first frame in nano sec : %" PRId64 "\n", timeToFirstFrameNs);
-    ALOGI("Time taken (in nano sec) to %s 1 sec of content : %" PRId64 "\n", operation.c_str(),
-          timeTakenPerSec);
-    ALOGI("Total bytes %sed : %d\n", operation.c_str(), size);
-    ALOGI("Minimum Time in nano sec : %" PRId64 "\n", minTimeTakenNs);
-    ALOGI("Maximum Time in nano sec : %" PRId64 "\n", maxTimeTakenNs);
-    ALOGI("Destroy Time in nano sec : %" PRId64 "\n", mDeInitTimeNs);
+    // Write the stats data to file.
+    int64_t dataSize = size;
+    int64_t bytesPerSec = ((int64_t)dataSize * 1000000000) / totalTimeTakenNs;
+    string rowData = "";
+    rowData.append(inputReference + "_" + operation + ", ");
+    rowData.append(codecName + ", ");
+    rowData.append(to_string(mInitTimeNs) + ", ");
+    rowData.append(to_string(mDeInitTimeNs) + ", ");
+    rowData.append(to_string(minTimeTakenNs) + ", ");
+    rowData.append(to_string(maxTimeTakenNs) + ", ");
+    rowData.append(to_string(totalTimeTakenNs / mOutputTimer.size()) + ", ");
+    rowData.append(to_string(timeTakenPerSec) + ", ");
+    rowData.append(to_string(bytesPerSec) + ", ");
+    rowData.append(to_string(timeToFirstFrameNs) + ", ");
+    rowData.append(to_string(size) + ",");
+    rowData.append(to_string(totalTimeTakenNs) + ",\n");
+
+    ofstream out(statsFile, ios::out | ios::app);
+    if(out.bad()) {
+        ALOGE("Failed to open stats file for writing!");
+        return;
+    }
+    out << rowData;
+    out.close();
 }
