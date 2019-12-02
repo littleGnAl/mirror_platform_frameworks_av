@@ -71,7 +71,7 @@ class Decoder : public CallBackHandle {
     int32_t decode(uint8_t *inputBuffer, vector<AMediaCodecBufferInfo> &frameInfo,
                    string &codecName, bool asyncMode, FILE *outFp = nullptr);
 
-    void dumpStatistics(string inputReference);
+    void dumpStatistics(string inputReference, string codecName = "", string statsFile = "");
 
   private:
     AMediaCodec *mCodec;
