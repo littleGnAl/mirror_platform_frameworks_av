@@ -18,6 +18,7 @@
 #define LOG_TAG "NativeMuxer"
 
 #include <jni.h>
+#include <fstream>
 #include <string>
 #include <sys/stat.h>
 
@@ -25,11 +26,9 @@
 
 MUXER_OUTPUT_T getMuxerOutFormat(const char *fmt);
 
-extern "C"
-JNIEXPORT int32_t JNICALL
-Java_com_android_media_benchmark_library_Native_Mux(JNIEnv *env, jobject thiz,
-                                                    jstring jInputFilePath, jstring jInputFileName,
-                                                    jstring jOutputFilePath, jstring jFormat) {
+extern "C" JNIEXPORT int32_t JNICALL Java_com_android_media_benchmark_library_Native_Mux(
+        JNIEnv *env, jobject thiz, jstring jInputFilePath, jstring jInputFileName,
+        jstring jOutputFilePath, jstring jStatsFile, jstring jFormat) {
     UNUSED(thiz);
     ALOGV("Mux the samples given by extractor");
     const char *inputFilePath = env->GetStringUTFChars(jInputFilePath, nullptr);
@@ -43,7 +42,6 @@ Java_com_android_media_benchmark_library_Native_Mux(JNIEnv *env, jobject thiz,
 
     const char *fmt = env->GetStringUTFChars(jFormat, nullptr);
     MUXER_OUTPUT_T outputFormat = getMuxerOutFormat(fmt);
-    env->ReleaseStringUTFChars(jFormat, fmt);
     if (outputFormat == MUXER_OUTPUT_FORMAT_INVALID) {
         ALOGE("output format is MUXER_OUTPUT_FORMAT_INVALID");
         return MUXER_OUTPUT_FORMAT_INVALID;
@@ -138,7 +136,10 @@ Java_com_android_media_benchmark_library_Native_Mux(JNIEnv *env, jobject thiz,
             return -1;
         }
         muxerObj->deInitMuxer();
-        muxerObj->dumpStatistics(inputFileName);
+        const char *statsFile = env->GetStringUTFChars(jStatsFile, nullptr);
+        string muxFormat(fmt);
+        muxerObj->dumpStatistics(string(inputFileName) + "_" + muxFormat + "_NDK", "", statsFile);
+        env->ReleaseStringUTFChars(jStatsFile, statsFile);
         env->ReleaseStringUTFChars(jInputFilePath, inputFilePath);
         env->ReleaseStringUTFChars(jInputFileName, inputFileName);
 
@@ -156,6 +157,7 @@ Java_com_android_media_benchmark_library_Native_Mux(JNIEnv *env, jobject thiz,
         fclose(inputFp);
         inputFp = nullptr;
     }
+    env->ReleaseStringUTFChars(jFormat, fmt);
     extractor->deInitExtractor();
     delete muxerObj;
 

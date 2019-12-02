@@ -18,16 +18,15 @@
 #define LOG_TAG "NativeExtractor"
 
 #include <jni.h>
+#include <fstream>
 #include <string>
 #include <sys/stat.h>
 
 #include "Extractor.h"
 
-extern "C"
-JNIEXPORT int32_t JNICALL
-Java_com_android_media_benchmark_library_Native_Extract(JNIEnv *env, jobject thiz,
-                                                        jstring jInputFilePath,
-                                                        jstring jInputFileName) {
+extern "C" JNIEXPORT int32_t JNICALL Java_com_android_media_benchmark_library_Native_Extract(
+        JNIEnv *env, jobject thiz, jstring jInputFilePath, jstring jInputFileName,
+        jstring jStatsFile) {
     UNUSED(thiz);
     const char *inputFilePath = env->GetStringUTFChars(jInputFilePath, nullptr);
     const char *inputFileName = env->GetStringUTFChars(jInputFileName, nullptr);
@@ -58,8 +57,9 @@ Java_com_android_media_benchmark_library_Native_Extract(JNIEnv *env, jobject thi
         inputFp = nullptr;
     }
     extractObj->deInitExtractor();
-    extractObj->dumpStatistics(inputFileName);
-
+    const char *statsFile = env->GetStringUTFChars(jStatsFile, nullptr);
+    extractObj->dumpStatistics(string(inputFileName) + "_NDK", "", statsFile);
+    env->ReleaseStringUTFChars(jStatsFile, statsFile);
     env->ReleaseStringUTFChars(jInputFilePath, inputFilePath);
     env->ReleaseStringUTFChars(jInputFileName, inputFileName);
 
