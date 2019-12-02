@@ -238,10 +238,10 @@ void Decoder::deInitCodec() {
     mStats->setDeInitTime(timeTaken);
 }
 
-void Decoder::dumpStatistics(string inputReference) {
+void Decoder::dumpStatistics(string inputReference, string codecName, string statsFile) {
     int64_t durationUs = mExtractor->getClipDuration();
     string operation = "decode";
-    mStats->dumpStatistics(operation, inputReference, durationUs);
+    mStats->dumpStatistics(operation, inputReference, durationUs, codecName, statsFile);
 }
 
 void Decoder::resetDecoder() {

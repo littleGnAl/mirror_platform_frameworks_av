@@ -31,7 +31,7 @@
 
 extern "C" JNIEXPORT int JNICALL Java_com_android_media_benchmark_library_Native_Encode(
         JNIEnv *env, jobject thiz, jstring jFilePath, jstring jFileName, jstring jOutFilePath,
-        jstring jCodecName) {
+        jstring jStatsFile, jstring jCodecName) {
     const char *filePath = env->GetStringUTFChars(jFilePath, nullptr);
     const char *fileName = env->GetStringUTFChars(jFileName, nullptr);
     string sFilePath = string(filePath) + string(fileName);
@@ -169,7 +169,11 @@ extern "C" JNIEXPORT int JNICALL Java_com_android_media_benchmark_library_Native
             encoder->deInitCodec();
             cout << "codec : " << codecName << endl;
             ALOGV(" asyncMode = %d \n", asyncMode[i]);
-            encoder->dumpStatistics(sInputReference, extractor->getClipDuration());
+            const char *statsFile = env->GetStringUTFChars(jStatsFile, nullptr);
+            encoder->dumpStatistics(
+                    sInputReference + "_NDK" + (asyncMode[i] ? "_Async" : "_Sync"),
+                    extractor->getClipDuration(), sCodecName, statsFile);
+            env->ReleaseStringUTFChars(jStatsFile, statsFile);
             encoder->resetEncoder();
             delete encoder;
             encoder = nullptr;

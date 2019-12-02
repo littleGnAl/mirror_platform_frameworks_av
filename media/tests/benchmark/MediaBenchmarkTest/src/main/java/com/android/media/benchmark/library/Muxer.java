@@ -102,9 +102,12 @@ public class Muxer {
      *
      * @param inputReference Name of the input file
      * @param clipDuration   Duration of the given inputReference file
+     * @param codecName      Name of the codec
+     * @param statsFile      The output file where the stats data is written
      */
-    public void dumpStatistics(String inputReference, long clipDuration) {
+    public void dumpStatistics(String inputReference, long clipDuration, String codecName,
+            String statsFile) throws IOException {
         String operation = "mux";
-        mStats.dumpStatistics(operation, inputReference, clipDuration);
+        mStats.dumpStatistics(operation, inputReference, clipDuration, codecName, statsFile);
     }
 }

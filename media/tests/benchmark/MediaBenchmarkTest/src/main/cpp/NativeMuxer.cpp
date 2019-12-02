@@ -18,6 +18,7 @@
 #define LOG_TAG "NativeMuxer"
 
 #include <jni.h>
+#include <fstream>
 #include <string>
 #include <sys/stat.h>
 
@@ -25,11 +26,9 @@
 
 MUXER_OUTPUT_T getMuxerOutFormat(const char *fmt);
 
-extern "C"
-JNIEXPORT int32_t JNICALL
-Java_com_android_media_benchmark_library_Native_Mux(JNIEnv *env, jobject thiz,
-                                                    jstring jInputFilePath, jstring jInputFileName,
-                                                    jstring jOutputFilePath, jstring jFormat) {
+extern "C" JNIEXPORT int32_t JNICALL Java_com_android_media_benchmark_library_Native_Mux(
+        JNIEnv *env, jobject thiz, jstring jInputFilePath, jstring jInputFileName,
+        jstring jOutputFilePath, jstring jStatsFile, jstring jFormat) {
     UNUSED(thiz);
     ALOGV("Mux the samples given by extractor");
     const char *inputFilePath = env->GetStringUTFChars(jInputFilePath, nullptr);
@@ -138,7 +137,9 @@ Java_com_android_media_benchmark_library_Native_Mux(JNIEnv *env, jobject thiz,
             return -1;
         }
         muxerObj->deInitMuxer();
-        muxerObj->dumpStatistics(inputFileName);
+        const char *statsFile = env->GetStringUTFChars(jStatsFile, nullptr);
+        muxerObj->dumpStatistics(string(inputFileName) + "_NDK", "", statsFile);
+        env->ReleaseStringUTFChars(jStatsFile, statsFile);
         env->ReleaseStringUTFChars(jInputFilePath, inputFilePath);
         env->ReleaseStringUTFChars(jInputFileName, inputFileName);
 
