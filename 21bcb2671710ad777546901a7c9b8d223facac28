@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2990abcc_602e2670",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3935,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2019-12-02T16:35:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c25ab0b_a0ca2b28",
+      "range": {
+        "startLine": 3934,
+        "startChar": 12,
+        "endLine": 3935,
+        "endChar": 29
+      },
+      "revId": "21bcb2671710ad777546901a7c9b8d223facac28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d647f14_cb764dd9",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-11-22T18:59:39Z",
       "side": 1,
       "message": "I realize that we were not callnig releaseOutput(). This is problematic if connectAudioSource() created a direct output in createAudioPatchInternal() (previously getOutputForAttrInt()).",
+      "range": {
+        "startLine": 4195,
+        "startChar": 8,
+        "endLine": 4195,
+        "endChar": 53
+      },
+      "revId": "21bcb2671710ad777546901a7c9b8d223facac28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ffd5e9f_8954ebd9",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4195,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2019-12-02T16:35:55Z",
+      "side": 1,
+      "message": "Ok, I need to add a test case for this, and silently return OK after calling releaseaudioPatchInternal at the end,  since the patch may be released by releaseOutput for direct",
+      "parentUuid": "6d647f14_cb764dd9",
       "range": {
         "startLine": 4195,
         "startChar": 8,
@@ -68,6 +116,30 @@
       "revId": "21bcb2671710ad777546901a7c9b8d223facac28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1d7c479_1afd664d",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2019-12-02T16:35:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d918383e_bbc2b66b",
+      "range": {
+        "startLine": 882,
+        "startChar": 70,
+        "endLine": 882,
+        "endChar": 71
+      },
+      "revId": "21bcb2671710ad777546901a7c9b8d223facac28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
