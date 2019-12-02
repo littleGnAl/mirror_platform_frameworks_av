@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6ac6556f_a1c6a70c",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/CMakeLists.txt",
+        "patchSetId": 6
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1261213
+      },
+      "writtenOn": "2019-12-02T06:28:27Z",
+      "side": 1,
+      "message": "Timers.cpp is moved to common/utils/ path.",
+      "range": {
+        "startLine": 28,
+        "startChar": 24,
+        "endLine": 28,
+        "endChar": 31
+      },
+      "revId": "4b053e5a08325672b976c015d84b32c4fa9baf75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
