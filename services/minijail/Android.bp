@@ -23,7 +23,9 @@ cc_library_shared {
 // Small library for media.extractor and media.codec sandboxing.
 cc_library_shared {
     name: "libavservices_minijail_vendor",
-    vendor: true,
+    // This is for vendor and product variants but not core.
+    product_specific: true,
+    vendor_available: true,
     defaults: ["libavservices_minijail_defaults"],
     export_include_dirs: ["."],
 }
