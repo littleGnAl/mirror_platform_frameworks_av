@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ade7e70_f1ea3566",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3537,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2019-12-03T16:09:07Z",
+      "side": 1,
+      "message": "@Eric: this condition was reported from startAudioSource.\nIs it safe to factorize to all Device to Device patch creation to enable or not SW bridge?\nIf no, I can filter this condition only if sourceDesc is not null (aka from startAudioSourcer)",
+      "range": {
+        "startLine": 3536,
+        "startChar": 85,
+        "endLine": 3537,
+        "endChar": 73
+      },
+      "revId": "a12b89d204c0e2e57fcd5766dc7b008367b1a067",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e66db584_c1dc46d1",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3902,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2019-12-03T16:09:07Z",
+      "side": 1,
+      "message": "@Eric: while adding the Direct Output test case, I realized that I never propagated the source config, as a result, I could not match any profile on my Direct Output.",
+      "range": {
+        "startLine": 3902,
+        "startChar": 61,
+        "endLine": 3902,
+        "endChar": 70
+      },
+      "revId": "a12b89d204c0e2e57fcd5766dc7b008367b1a067",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
