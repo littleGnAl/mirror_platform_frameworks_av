@@ -53,7 +53,7 @@ sp<IMediaExtractor> MediaExtractorService::makeExtractor(
     return nullptr;
 }
 
-sp<IDataSource> MediaExtractorService::makeIDataSource(int fd, int64_t offset, int64_t length)
+sp<IDataSource> MediaExtractorService::makeIDataSource(base::unique_fd fd, int64_t offset, int64_t length)
 {
     sp<DataSource> source = DataSourceFactory::getInstance()->CreateFromFd(fd, offset, length);
     return CreateIDataSourceFromDataSource(source);
