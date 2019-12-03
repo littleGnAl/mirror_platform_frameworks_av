@@ -35,7 +35,7 @@ public:
 
     virtual sp<IMediaExtractor> makeExtractor(const sp<IDataSource> &source, const char *mime);
 
-    virtual sp<IDataSource> makeIDataSource(int fd, int64_t offset, int64_t length);
+    virtual sp<IDataSource> makeIDataSource(base::unique_fd fd, int64_t offset, int64_t length);
 
     virtual std::unordered_set<std::string> getSupportedTypes();
 

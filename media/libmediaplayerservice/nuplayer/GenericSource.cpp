@@ -420,8 +420,8 @@ void NuPlayer::GenericSource::onPrepareAsync() {
                     ALOGD("FileSource remote");
                     sp<IMediaExtractorService> mediaExService(
                             interface_cast<IMediaExtractorService>(binder));
-                    sp<IDataSource> source =
-                            mediaExService->makeIDataSource(mFd, mOffset, mLength);
+                    sp<IDataSource> source = mediaExService->makeIDataSource(
+                            base::unique_fd(dup(mFd.get())), mOffset, mLength);
                     ALOGV("IDataSource(FileSource): %p %d %lld %lld",
                             source.get(), mFd, (long long)mOffset, (long long)mLength);
                     if (source.get() != nullptr) {
