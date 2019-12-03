@@ -12,7 +12,7 @@ cc_binary {
     shared_libs: [
         "android.hardware.media.c2@1.0",
         "android.hardware.media.omx@1.0",
-        "libavservices_minijail_vendor",
+        "libavservices_minijail",
         "libbinder",
         "libcodec2_hidl@1.0",
         "libcodec2_vndk",
