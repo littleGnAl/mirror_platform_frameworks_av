@@ -245,7 +245,7 @@ sp<content::pm::IPackageManagerNative> MediaPackageManager::retreivePackageManag
     return interface_cast<content::pm::IPackageManagerNative>(packageManager);
 }
 
-std::optional<bool> MediaPackageManager::doIsAllowed(uid_t uid) {
+std::optional<std::vector<string>, std::vector<bool>> MediaPackageManager::querryPM(uid_t uid) {
     if (mPackageManager == nullptr) {
         /** Can not fetch package manager at construction it may not yet be registered. */
         mPackageManager = retreivePackageManager();
@@ -280,8 +280,34 @@ std::optional<bool> MediaPackageManager::doIsAllowed(uid_t uid) {
         return std::nullopt;
     }
 
+    return {std::move(packageNames), std::move(isAllowed)};
+}
+
+std::optional<bool> MediaPackageManager::doIsAllowed(uid_t uid, pid_t pid) {
+    // Lets first check if we have cached such request
+    if (auto previousRequestIt = mPreviousRequests.find(pid);
+        previousRequestIt != mPreviousRequests.end() && previousRequestIt->second == uid) {
+        // It is virtually possible that an app was updated but kept its pid,
+        // in that case we will not query the PM again.
+        if (auto cacheIt = mCache.find(uid); cacheIt == mCache.end()) {
+            // Should never happen
+            ALOGE("%s: Request was made but not cached for uid/pid %u/%u!", __func__, uid, pid);
+        } else {
+           return cacheIt->second->playbackCaptureAllowed;
+        }
+    }
+
+    auto response = querryPM(uid);
+    if (!response) {
+        return std::nullopt;
+    }
+    auto& [packageNames, isAllowed] = response;
+
+    // Cache the PM response
+    mPreviousRequests[pid] = uid;
+    auto& uidCache = mCache[uid];
+    Packages& packages = uidCache.packages;
     // Zip together packageNames and isAllowed for debug logs
-    Packages& packages = mDebugLog[uid];
     packages.resize(packageNames.size()); // Reuse all objects
     std::transform(begin(packageNames), end(packageNames), begin(isAllowed),
                    begin(packages), [] (auto& name, bool isAllowed) -> Package {
@@ -291,25 +317,32 @@ std::optional<bool> MediaPackageManager::doIsAllowed(uid_t uid) {
     // Only allow playback record if all packages in this UID allow it
     bool playbackCaptureAllowed = std::all_of(begin(isAllowed), end(isAllowed),
                                                   [](bool b) { return b; });
-
+    uidCache.playbackCaptureAllowed = playbackCaptureAllowed;
     return playbackCaptureAllowed;
+
 }
 
 void MediaPackageManager::dump(int fd, int spaces) const {
-    dprintf(fd, "%*sAllow playback capture log:\n", spaces, "");
+    dprintf(fd, "%*sAllow playback capture cache:\n", spaces, "");
     if (mPackageManager == nullptr) {
         dprintf(fd, "%*sNo package manager\n", spaces + 2, "");
     }
     dprintf(fd, "%*sPackage manager errors: %u\n", spaces + 2, "", mPackageManagerErrors);
 
-    for (const auto& uidCache : mDebugLog) {
-        for (const auto& package : std::get<Packages>(uidCache)) {
-            dprintf(fd, "%*s- uid=%5u, allowPlaybackCapture=%s, packageName=%s\n", spaces + 2, "",
-                    std::get<const uid_t>(uidCache),
-                    package.playbackCaptureAllowed ? "true " : "false",
-                    package.name.c_str());
+    for (const auto& [uid, uidCache] : mCache) {
+        auto boolToStr = [](bool b) { b ? "true " : "false" };
+        dprintf(fd, "%*s- uid=%5u, allowPlaybackCapture=%s\n", spaces + 2, "",
+                uid, boolToStr(uidCache.playbackCaptureAllowed));
+        for (const auto& package : uidCache.packages) {
+            dprintf(fd, "%*s         + allowPlaybackCapture=%s, packageName=%s\n", spaces + 2, "",
+                    boolToStr(package.playbackCaptureAllowed), package.name.c_str());
         }
     }
+    dprintf(fd, "%*sPackage manager cache valid for (uid/pid):\n", spaces + 2, "");
+    for (auto& [uid, pid] = mPreviousRequests) {
+        dprintf(fd, " %5u/%5u", uid, pid);
+    }
+    dprintf(fd, "\n");
 }
 
 } // namespace android
