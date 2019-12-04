@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6fb672ce_3a50f80c",
+        "filename": "services/audiopolicy/engineconfigurable/wrapper/ParameterManagerWrapper.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2019-12-04T16:40:09Z",
+      "side": 1,
+      "message": "use reference",
+      "revId": "81ade69f335510eef8e83f7cc84ce577794cf9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7820580b_cb7c111a",
+        "filename": "services/audiopolicy/engineconfigurable/wrapper/include/ParameterManagerWrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2019-12-04T16:40:09Z",
+      "side": 1,
+      "message": "use reference",
+      "revId": "81ade69f335510eef8e83f7cc84ce577794cf9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
