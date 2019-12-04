@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "91a6e6fd_c7915534",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2019-12-04T22:29:07Z",
+      "side": 1,
+      "message": "Where is the call to unlinkToDeath? Did you add that?",
+      "revId": "5b4b06ec6771f2fa87479b1212b18807285893a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b1a56572_4dd311ee",
         "filename": "services/oboeservice/AAudioClientTracker.cpp",
         "patchSetId": 1
@@ -13,6 +30,30 @@
       "writtenOn": "2019-12-04T22:11:41Z",
       "side": 1,
       "message": "should this also be linked to death against?",
+      "range": {
+        "startLine": 108,
+        "startChar": 81,
+        "endLine": 108,
+        "endChar": 94
+      },
+      "revId": "5b4b06ec6771f2fa87479b1212b18807285893a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1a6959b0_34b7a5a9",
+        "filename": "services/oboeservice/AAudioClientTracker.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2019-12-04T22:29:07Z",
+      "side": 1,
+      "message": "No. This is used to register streams that are created internally by the service. There is no Binder client in this case.",
+      "parentUuid": "b1a56572_4dd311ee",
       "range": {
         "startLine": 108,
         "startChar": 81,
