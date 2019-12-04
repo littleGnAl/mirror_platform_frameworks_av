@@ -190,7 +190,7 @@ status_t AudioPolicyService::getOutputForAttr(audio_attributes_t *attr,
                 "%s uid %d tried to pass itself off as %d", __FUNCTION__, callingUid, uid);
         uid = callingUid;
     }
-    if (!mPackageManager.allowPlaybackCapture(uid)) {
+    if (!mPackageManager.allowPlaybackCapture(uid, pid)) {
         attr->flags |= AUDIO_FLAG_NO_MEDIA_PROJECTION;
     }
     if (((attr->flags & (AUDIO_FLAG_BYPASS_INTERRUPTION_POLICY|AUDIO_FLAG_BYPASS_MUTE)) != 0)
