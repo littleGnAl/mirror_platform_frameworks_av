@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "8edcc6f5_4f04f488",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-04T22:49:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91a6e6fd_c7915534",
+      "revId": "5b4b06ec6771f2fa87479b1212b18807285893a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b1a56572_4dd311ee",
         "filename": "services/oboeservice/AAudioClientTracker.cpp",
         "patchSetId": 1
@@ -54,6 +72,30 @@
       "side": 1,
       "message": "No. This is used to register streams that are created internally by the service. There is no Binder client in this case.",
       "parentUuid": "b1a56572_4dd311ee",
+      "range": {
+        "startLine": 108,
+        "startChar": 81,
+        "endLine": 108,
+        "endChar": 94
+      },
+      "revId": "5b4b06ec6771f2fa87479b1212b18807285893a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b803bf3_da2f036b",
+        "filename": "services/oboeservice/AAudioClientTracker.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2019-12-04T22:49:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1a6959b0_34b7a5a9",
       "range": {
         "startLine": 108,
         "startChar": 81,
