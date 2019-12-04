@@ -88,8 +88,8 @@ status_t checkIMemory(const sp<IMemory>& iMemory);
 class MediaPackageManager {
 public:
     /** Query the PackageManager to check if all apps of an UID allow playback capture. */
-    bool allowPlaybackCapture(uid_t uid) {
-        auto result = doIsAllowed(uid);
+    bool allowPlaybackCapture(uid_t uid, pid_t pid) {
+        auto result = doIsAllowed(uid, pid);
         if (!result) {
             mPackageManagerErrors++;
         }
@@ -98,16 +98,23 @@ public:
     void dump(int fd, int spaces = 0) const;
 private:
     static constexpr const char* nativePackageManagerName = "package_native";
-    std::optional<bool> doIsAllowed(uid_t uid);
+    std::optional<std::vector<string>, std::vector<bool>> querryPM(uid_t uid);
+    std::optional<bool> doIsAllowed(uid_t uid, pid_t pid);
     sp<content::pm::IPackageManagerNative> retreivePackageManager();
     sp<content::pm::IPackageManagerNative> mPackageManager; // To check apps manifest
     uint_t mPackageManagerErrors = 0;
-    struct Package {
+    struct PackageInfo {
         std::string name;
         bool playbackCaptureAllowed = false;
     };
-    using Packages = std::vector<Package>;
-    std::map<uid_t, Packages> mDebugLog;
+    struct UidCache {
+        bool playbackCaptureAllowed = false;
+        std::vector<Package> packages; // For dumpsys
+    }
+    // If a package has a pid change (update), its permission might have change,
+    // thus its associated cache must be invalidated
+    std::map<pid_t, uid_t> mPreviousRequests; // pair of uid/pid for which the cache is valid
+    std::map<uid_t, UidCache> mCache;
 };
 }
 
