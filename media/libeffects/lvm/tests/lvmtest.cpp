@@ -684,10 +684,26 @@ int lvmMainProcess(EffectContext *pContext,
 #else
     memcpy(floatOut.data(), floatIn.data(), frameLength * frameSize);
 #endif
-    memcpy_to_i16_from_float(out.data(), floatOut.data(), frameLength * channelCount);
-    if (ioChannelCount != channelCount) {
+    if (channelCount == 1) {
+      /*
+       * Output will contain stereo data even if the input is mono.
+       */
+      memcpy_to_i16_from_float(out.data(), floatOut.data(), frameLength * 2);
+    } else {
+      memcpy_to_i16_from_float(out.data(), floatOut.data(), frameLength * channelCount);
+    }
+
+    if (ioChannelCount != channelCount || channelCount == 1) {
+      if (ioChannelCount == 1) {
+        short *pTemp = out.data();
+        short chOffset = channelCount == 1 ? 2 : channelCount;
+        for (int i = 0; i < frameLength; i++) {
+          pTemp[i] = pTemp[chOffset * i];
+        }
+      } else {
         adjust_channels(out.data(), channelCount, out.data(), ioChannelCount,
                sizeof(short), frameLength * channelCount * sizeof(short));
+      }
     }
     (void) fwrite(out.data(), ioFrameSize, frameLength, fout);
     frameCounter += frameLength;

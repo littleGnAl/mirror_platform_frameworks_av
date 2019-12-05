@@ -63,6 +63,9 @@ flags_arr=(
     "-tE -eqE -vcBal:-96 -M"
     "-tE -eqE -vcBal:0 -M"
     "-tE -eqE -bE -vcBal:30 -M"
+    "-tE -eqE -csE -M -fch:1"
+    "-tE -eqE -csE -M -vcBal:30 -fch:1"
+    "-tE -eqE -bE -M -vcBal:30 -fch:1"
 )
 
 fs_arr=(
@@ -106,13 +109,27 @@ do
                 # two channel files should be identical to higher channel
                 # computation (first 2 channels).
                 # Do not compare cases where -bE is in flags (due to mono computation)
-                if [[ $flags != *"-bE"* ]] && [[ "$chMask" -gt 1 ]]
+                # When "-fch:1" and "-M" options are enabled, mono output is expected to be
+                # identical with higher channel.
+                # Do not compare cases where -bE is in flags (due to mono computation)
+                if [[ $flags != *"-bE"* ]] && [[ "$chMask" -gt 1 ]] && [[ $flags != *"-fch:1"* ]]
                 then
                     adb shell cmp $testdir/sinesweep_1_$((fs)).raw \
                         $testdir/sinesweep_$((chMask))_$((fs)).raw
-                elif [[ $flags == *"-bE"* ]] && [[ "$chMask" -gt 1 ]]
+                elif [[ $flags == *"-bE"* ]] && [[ "$chMask" -gt 1 ]] \
+                        && [[ $flags != *"-fch:1"* ]]
                 then
                     adb shell $testdir/snr $testdir/sinesweep_1_$((fs)).raw \
+                        $testdir/sinesweep_$((chMask))_$((fs)).raw -thr:90.308998
+                elif [[ $flags != *"-bE"* ]] && [[ "$chMask" -gt 0 ]] \
+                        && [[ $flags == *"-fch:1"* ]]
+                then
+                    adb shell cmp $testdir/sinesweep_0_$((fs)).raw \
+                        $testdir/sinesweep_$((chMask))_$((fs)).raw
+                elif [[ $flags == *"-bE"* ]] && [[ "$chMask" -gt 0 ]] \
+                        && [[ $flags == *"-fch:1"* ]]
+                then
+                    adb shell $testdir/snr $testdir/sinesweep_0_$((fs)).raw \
                         $testdir/sinesweep_$((chMask))_$((fs)).raw -thr:90.308998
                 fi
 
