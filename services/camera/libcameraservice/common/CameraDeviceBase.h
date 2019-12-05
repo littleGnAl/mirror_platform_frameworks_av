@@ -33,6 +33,7 @@
 #include "camera/CaptureResult.h"
 #include "gui/IGraphicBufferProducer.h"
 #include "device3/Camera3StreamInterface.h"
+#include "device3/StatusTracker.h"
 #include "binder/Status.h"
 
 namespace android {
@@ -383,6 +384,11 @@ class CameraDeviceBase : public virtual RefBase {
      * drop buffers for stream of streamId.
      */
     virtual status_t dropStreamBuffers(bool /*dropping*/, int /*streamId*/) = 0;
+
+    /**
+     * Get the status tracker of the camera device
+     */
+    virtual wp<camera3::StatusTracker> getStatusTracker() = 0;
 };
 
 }; // namespace android

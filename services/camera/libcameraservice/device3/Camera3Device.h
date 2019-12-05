@@ -194,6 +194,9 @@ class Camera3Device :
      */
     status_t dropStreamBuffers(bool dropping, int streamId) override;
 
+    // Get the status trackeer for the camera device
+    wp<camera3::StatusTracker> getStatusTracker() { return mStatusTracker; }
+
     /**
      * Helper functions to map between framework and HIDL values
      */
