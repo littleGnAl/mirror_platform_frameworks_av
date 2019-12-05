@@ -22,6 +22,30 @@
       "revId": "542d80e11e65110709a7e41b7814a652595f30d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b40efc4_64c23c36",
+        "filename": "services/minijail/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-05T10:17:11Z",
+      "side": 1,
+      "message": "This must be confusing, but as defined in https://docs.google.com/document/d/14ge6wfCvv3zvRdh4cX95wqyTx00YmoinXzDRnMpluyM/edit#heading\u003dh.t5uw31ng05s6, it is \"product_speicific\" but \"available to vendor\". So it only has product and vendor variants but not core variant.",
+      "parentUuid": "ff2102ee_ddfa2ceb",
+      "range": {
+        "startLine": 26,
+        "startChar": 47,
+        "endLine": 26,
+        "endChar": 60
+      },
+      "revId": "542d80e11e65110709a7e41b7814a652595f30d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
