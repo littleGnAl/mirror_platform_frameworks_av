@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a3149d14_8c2915a2",
+        "filename": "services/audiopolicy/engine/config/schemas/audio_policy_engine_configuration.xsd",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-12-07T01:37:52Z",
+      "side": 1,
+      "message": "Apologies for a delay wit replying.\n\nSorry, I don\u0027t see it in https://android-review.googlesource.com/c/platform/hardware/interfaces/+/1169744.\n\nYes, tests should be moved to hardware/interfaces. The reason is that updates to the VTS test suite (if a vendor finds a bug in test) use a branch in hardware/interfaces, but frameworks/av doesn\u0027t have a branch for this.",
+      "parentUuid": "4b8396e9_4668e00c",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 1
+      },
+      "revId": "cd06aa5440ad4a71ef20c815206e6a52ab0bbaa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6c673fd2_7f6bd0a6",
         "filename": "services/audiopolicy/engine/vts/ValidateEngineConfiguration.cpp",
         "patchSetId": 1
