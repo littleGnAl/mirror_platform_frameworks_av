@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b39d9731_f142cede",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 3319,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-12-07T01:52:22Z",
+      "side": 1,
+      "message": "Perhaps it would make sense to remove ALOGV (since there is one in the implementation function) and move to class definition in .h file?",
+      "range": {
+        "startLine": 3313,
+        "startChar": 0,
+        "endLine": 3319,
+        "endChar": 1
+      },
+      "revId": "6cdbb59d1c67da00490523a3a7555c7e3f87232f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ad1b128_83df8c71",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 864,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-12-07T01:52:22Z",
+      "side": 1,
+      "message": "[in]",
+      "range": {
+        "startLine": 864,
+        "startChar": 17,
+        "endLine": 864,
+        "endChar": 22
+      },
+      "revId": "6cdbb59d1c67da00490523a3a7555c7e3f87232f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f5d42e6_b3f8a89b",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 865,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-12-07T01:52:22Z",
+      "side": 1,
+      "message": "[in]",
+      "range": {
+        "startLine": 865,
+        "startChar": 17,
+        "endLine": 865,
+        "endChar": 22
+      },
+      "revId": "6cdbb59d1c67da00490523a3a7555c7e3f87232f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a442c4ce_8284e766",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-12-07T01:52:22Z",
+      "side": 1,
+      "message": "This isn\u0027t really an \u0027out\u0027 parameter as the method modifies the object pointed to, not the pointer itself. Otherwise, implicit \u0027this\u0027 would be called an \u0027out\u0027 parameter too.",
+      "range": {
+        "startLine": 866,
+        "startChar": 20,
+        "endLine": 866,
+        "endChar": 24
+      },
+      "revId": "6cdbb59d1c67da00490523a3a7555c7e3f87232f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "560ecec5_71d66156",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 872,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-12-07T01:52:22Z",
+      "side": 1,
+      "message": "Add \u0027\u003d 0\u0027? The doc implies it\u0027s optional.",
+      "range": {
+        "startLine": 872,
+        "startChar": 62,
+        "endLine": 872,
+        "endChar": 69
+      },
+      "revId": "6cdbb59d1c67da00490523a3a7555c7e3f87232f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dda890e4_d58eb34c",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 873,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-12-07T01:52:22Z",
+      "side": 1,
+      "message": "Remove const? This is documented as [in, out].",
+      "range": {
+        "startLine": 873,
+        "startChar": 42,
+        "endLine": 873,
+        "endChar": 47
+      },
+      "revId": "6cdbb59d1c67da00490523a3a7555c7e3f87232f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db10dcca_ee505273",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 877,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-12-07T01:52:22Z",
+      "side": 1,
+      "message": "[in]",
+      "range": {
+        "startLine": 877,
+        "startChar": 17,
+        "endLine": 877,
+        "endChar": 22
+      },
+      "revId": "6cdbb59d1c67da00490523a3a7555c7e3f87232f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
