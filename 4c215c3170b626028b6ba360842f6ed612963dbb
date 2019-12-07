@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "11a61123_5a262215",
+        "filename": "services/audiopolicy/functionaltests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-12-07T03:12:12Z",
+      "side": 1,
+      "message": "This should be added automatically for test targets.",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 19
+      },
+      "revId": "4c215c3170b626028b6ba360842f6ed612963dbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb24f9c9_05c3c291",
+        "filename": "services/audiopolicy/functionaltests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-12-07T03:12:12Z",
+      "side": 1,
+      "message": "Already in defaults, here and below.",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 48,
+        "endChar": 16
+      },
+      "revId": "4c215c3170b626028b6ba360842f6ed612963dbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fa317ea_d94a1274",
+        "filename": "services/audiopolicy/functionaltests/AudioProductStrategyTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-12-07T03:12:12Z",
+      "side": 1,
+      "message": "\u0027android::\u0027 should not be needed as you import the namespace",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 23
+      },
+      "revId": "4c215c3170b626028b6ba360842f6ed612963dbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "06f3216b_12255317",
+        "filename": "services/audiopolicy/functionaltests/AudioVolumeTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-12-07T03:12:12Z",
+      "side": 1,
+      "message": "Should be sorted",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "4c215c3170b626028b6ba360842f6ed612963dbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
