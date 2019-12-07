@@ -21,9 +21,9 @@
 #include <iostream>
 #include <limits>
 
-#include "BenchmarkTestEnvironment.h"
 #include "C2Decoder.h"
 #include "Extractor.h"
+#include "BenchmarkTestEnvironment.h"
 
 static BenchmarkTestEnvironment *gEnv = nullptr;
 
@@ -43,18 +43,21 @@ void C2DecoderTest::setupC2DecoderTest() {
     if (!mDecoder) {
         cout << "[   WARN   ] Test Skipped. C2Decoder creation failed\n";
         disableTest = true;
+        ASSERT_NE(mDecoder, nullptr); 
         return;
     }
     int32_t status = mDecoder->setupCodec2();
     if (status != 0) {
         cout << "[   WARN   ] Test Skipped. Codec2 setup failed \n";
         disableTest = true;
+        ASSERT_EQ(status, 0);
         return;
     }
     mCodecList = mDecoder->getSupportedComponentList(false /* isEncoder*/);
     if (!mCodecList.size()) {
         cout << "[   WARN   ] Test Skipped. Codec2 client didn't recognise any component \n";
         disableTest = true;
+        ASSERT_NE(mCodecList.size(), 0);
         return;
     }
 }
@@ -68,12 +71,14 @@ TEST_P(C2DecoderTest, Codec2Decode) {
     if (!inputFp) {
         cout << "[   WARN   ] Test Skipped. Unable to open input file" << inputFile
              << " for reading \n";
+        ASSERT_NE(inputFp, nullptr);
         return;
     }
 
     Extractor *extractor = new Extractor();
     if (!extractor) {
         cout << "[   WARN   ] Test Skipped. Extractor creation failed \n";
+        ASSERT_NE(extractor, nullptr);
         return;
     }
 
@@ -86,23 +91,27 @@ TEST_P(C2DecoderTest, Codec2Decode) {
     if (fileSize > kMaxBufferSize) {
         cout << "[   WARN   ] Test Skipped. Input file size is greater than the threshold memory "
                 "dedicated to the test \n";
+        ASSERT_LE(fileSize, kMaxBufferSize);
     }
 
     int32_t trackCount = extractor->initExtractor(fd, fileSize);
     if (trackCount <= 0) {
         cout << "[   WARN   ] Test Skipped. initExtractor failed\n";
+        ASSERT_GT(trackCount, 0);
         return;
     }
     for (int32_t curTrack = 0; curTrack < trackCount; curTrack++) {
         int32_t status = extractor->setupTrackFormat(curTrack);
         if (status != 0) {
             cout << "[   WARN   ] Test Skipped. Track Format invalid \n";
+            ASSERT_EQ(status, 0);
             return;
         }
 
         uint8_t *inputBuffer = (uint8_t *)malloc(fileSize);
         if (!inputBuffer) {
             cout << "[   WARN   ] Test Skipped. Insufficient memory \n";
+            ASSERT_NE(inputBuffer, nullptr);
             return;
         }
 
@@ -118,6 +127,7 @@ TEST_P(C2DecoderTest, Codec2Decode) {
             // copy the meta data and buffer to be passed to decoder
             if (inputBufferOffset + info.size > fileSize) {
                 cout << "[   WARN   ] Test Skipped. Memory allocated not sufficient\n";
+                ASSERT_LE(inputBufferOffset + info.size, fileSize);
                 free(inputBuffer);
                 return;
             }
@@ -134,6 +144,7 @@ TEST_P(C2DecoderTest, Codec2Decode) {
             // copy the meta data and buffer to be passed to decoder
             if (inputBufferOffset + info.size > fileSize) {
                 cout << "[   WARN   ] Test Skipped. Memory allocated not sufficient\n";
+                ASSERT_LE(inputBufferOffset + info.size, fileSize);
                 free(inputBuffer);
                 return;
             }
@@ -151,6 +162,7 @@ TEST_P(C2DecoderTest, Codec2Decode) {
                 if (status != 0) {
                     cout << "[   WARN   ] Test Skipped. Create component failed for " << codecName
                          << "\n";
+                    ASSERT_EQ(status, 0);
                     continue;
                 }
 
@@ -159,6 +171,7 @@ TEST_P(C2DecoderTest, Codec2Decode) {
                 mDecoder->waitOnInputConsumption();
                 if (!mDecoder->mEos) {
                     cout << "[   WARN   ] Test Failed. Didn't receive EOS \n";
+                    ASSERT_NE(mDecoder->mEos, 0);
                 }
                 mDecoder->deInitCodec();
                 int64_t durationUs = extractor->getClipDuration();

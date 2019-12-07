@@ -41,6 +41,22 @@ class BenchmarkTestEnvironment : public ::testing::Environment {
 int BenchmarkTestEnvironment::initFromOptions(int argc, char **argv) {
     static struct option options[] = {{"path", required_argument, 0, 'P'}, {0, 0, 0, 0}};
 
+    // default location (dirname $argv[0])/res
+    char *p = strdup(argv[0]);
+    if (p == NULL) return -1;
+    char *sep = strrchr(p,'/');
+    if (sep == NULL) return -1;
+    if (sep == p) return -1;
+    *sep = '\0';
+    int len = strlen(p) + strlen("/res/") + 1;
+    char *q = (char *)malloc(len);
+    if (q == NULL) return -1;
+    snprintf(q, len, "%s/res/", p);
+    free(p);
+    ALOGD("RBE -- defaulting res directory to '%s'", q);
+    setRes(q);
+    // q persists through lifetime of program, even if overridden with -P flag
+
     while (true) {
         int index = 0;
         int c = getopt_long(argc, argv, "P:", options, &index);

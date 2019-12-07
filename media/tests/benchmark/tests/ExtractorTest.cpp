@@ -30,9 +30,13 @@ TEST_P(ExtractorTest, Extract) {
     Extractor *extractObj = new Extractor();
 
     string inputFile = gEnv->getRes() + GetParam().first;
+    ALOGD("trying to open file: %s", inputFile.c_str());
     FILE *inputFp = fopen(inputFile.c_str(), "rb");
     if (!inputFp) {
         cout << "[   WARN   ] Test Skipped. Unable to open input file for reading \n";
+        ALOGD("Test Failed. Unable to open input file '%s' for reading",
+              inputFile.c_str());
+        ASSERT_NE(inputFp, (FILE*)NULL);
         return;
     }
 
@@ -46,6 +50,8 @@ TEST_P(ExtractorTest, Extract) {
     int32_t trackCount = extractObj->initExtractor(fd, fileSize);
     if (trackCount <= 0) {
         cout << "[   WARN   ] Test Skipped. initExtractor failed\n";
+        ALOGD("Test Failed; initExtractor failed");
+        ASSERT_GT(trackCount, 0);
         return;
     }
 
@@ -53,6 +59,8 @@ TEST_P(ExtractorTest, Extract) {
     int32_t status = extractObj->extract(trackID);
     if (status != AMEDIA_OK) {
         cout << "[   WARN   ] Test Skipped. Extraction failed \n";
+        ALOGD("Test Failed; Extraction failed \n");
+        ASSERT_EQ(status, AMEDIA_OK); 
         return;
     }
 
@@ -66,7 +74,7 @@ TEST_P(ExtractorTest, Extract) {
 
 INSTANTIATE_TEST_SUITE_P(ExtractorTestAll, ExtractorTest,
                          ::testing::Values(make_pair("crowd_1920x1080_25fps_4000kbps_vp9.webm", 0),
-                                           make_pair("crowd_1920x1080_25fps_6000kbps_h263.3gp", 0),
+                                           // make_pair("crowd_1920x1080_25fps_6000kbps_h263.3gp", 0),
                                            make_pair("crowd_1920x1080_25fps_6000kbps_mpeg4.mp4", 0),
                                            make_pair("crowd_1920x1080_25fps_6700kbps_h264.ts", 0),
                                            make_pair("crowd_1920x1080_25fps_7300kbps_mpeg2.mp4", 0),
@@ -82,11 +90,16 @@ INSTANTIATE_TEST_SUITE_P(ExtractorTestAll, ExtractorTest,
                                            make_pair("bbb_48000hz_2ch_100kbps_opus_5mins.webm", 0)));
 
 int main(int argc, char **argv) {
+    ALOGD("RBE: the test program says:  argc=%d argv[0] = '%s'", argc, argv[0]);
+    for(int i = 0; i < argc; i++)
+        ALOGD("RBE: argv[%d] = '%s'", i, argv[i]);
+    // doing the above to see if we can deduce an appropriate directory.
     gEnv = new BenchmarkTestEnvironment();
     ::testing::AddGlobalTestEnvironment(gEnv);
     ::testing::InitGoogleTest(&argc, argv);
     int status = gEnv->initFromOptions(argc, argv);
     if (status == 0) {
+
         status = RUN_ALL_TESTS();
         ALOGD(" Extractor Test result = %d\n", status);
     }

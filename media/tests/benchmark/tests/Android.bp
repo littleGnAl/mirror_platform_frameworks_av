@@ -24,7 +24,24 @@ cc_test {
 
     srcs: ["ExtractorTest.cpp"],
 
-    static_libs: ["libmediabenchmark_extractor"]
+    static_libs: ["libmediabenchmark_extractor"],
+
+    data: [
+        "res/bbb_16000hz_1ch_9kbps_amrwb_5mins.3gp",
+        "res/bbb_44100hz_2ch_128kbps_aac_5mins.mp4",
+        "res/bbb_44100hz_2ch_128kbps_mp3_5mins.mp3",
+        "res/bbb_44100hz_2ch_600kbps_flac_5mins.flac",
+        "res/bbb_44100hz_2ch_80kbps_vorbis_5mins.mp4",
+        "res/bbb_48000hz_2ch_100kbps_opus_5mins.webm",
+        "res/bbb_8000hz_1ch_8kbps_amrnb_5mins.3gp",
+        "res/crowd_1920x1080_25fps_4000kbps_av1.webm",
+        "res/crowd_1920x1080_25fps_4000kbps_h265.mkv",
+        "res/crowd_1920x1080_25fps_4000kbps_vp8.webm",
+        "res/crowd_1920x1080_25fps_4000kbps_vp9.webm",
+        "res/crowd_1920x1080_25fps_6000kbps_mpeg4.mp4",
+        "res/crowd_1920x1080_25fps_6700kbps_h264.ts",
+        "res/crowd_1920x1080_25fps_7300kbps_mpeg2.mp4",
+    ]
 }
 
 cc_test {
@@ -41,6 +58,24 @@ cc_test {
         "libmediabenchmark_extractor",
         "libmediabenchmark_decoder",
     ],
+
+    data: [
+        "res/bbb_16000hz_1ch_9kbps_amrwb_30sec.3gp",
+        "res/bbb_44100hz_2ch_128kbps_aac_30sec.mp4",
+        "res/bbb_44100hz_2ch_128kbps_mp3_30sec.mp3",
+        "res/bbb_44100hz_2ch_600kbps_flac_30sec.mp4",
+        "res/bbb_44100hz_2ch_80kbps_vorbis_30sec.mp4",
+        "res/bbb_48000hz_2ch_100kbps_opus_30sec.webm",
+        "res/bbb_8000hz_1ch_8kbps_amrnb_30sec.3gp",
+        "res/crowd_1920x1080_25fps_4000kbps_av1.webm",
+        "res/crowd_1920x1080_25fps_4000kbps_h265.mkv",
+        "res/crowd_1920x1080_25fps_4000kbps_vp8.webm",
+        "res/crowd_1920x1080_25fps_4000kbps_vp9.webm",
+        "res/crowd_1920x1080_25fps_6000kbps_mpeg4.mp4",
+        "res/crowd_1920x1080_25fps_6700kbps_h264.ts",
+        "res/crowd_1920x1080_25fps_7300kbps_mpeg2.mp4",
+        "res/crowd_352x288_25fps_6000kbps_h263.3gp",
+    ]
 }
 
 cc_test {
@@ -57,6 +92,20 @@ cc_test {
         "libmediabenchmark_extractor",
         "libmediabenchmark_muxer",
     ],
+
+    data: [
+        "res/bbb_16000hz_1ch_9kbps_amrwb_5mins.3gp",
+        "res/bbb_44100hz_2ch_128kbps_aac_5mins.mp4",
+        "res/bbb_44100hz_2ch_80kbps_vorbis_5mins.mp4",
+        "res/bbb_48000hz_2ch_100kbps_opus_5mins.webm",
+        "res/bbb_8000hz_1ch_8kbps_amrnb_5mins.3gp",
+        "res/crowd_1920x1080_25fps_4000kbps_h265.mkv",
+        "res/crowd_1920x1080_25fps_4000kbps_vp8.webm",
+        "res/crowd_1920x1080_25fps_4000kbps_vp9.webm",
+        "res/crowd_1920x1080_25fps_6000kbps_mpeg4.mp4",
+        "res/crowd_1920x1080_25fps_6700kbps_h264.ts",
+        "res/crowd_352x288_25fps_6000kbps_h263.3gp",
+    ]
 }
 
 cc_test {
@@ -74,6 +123,20 @@ cc_test {
         "libmediabenchmark_decoder",
         "libmediabenchmark_encoder",
     ],
+
+    data: [
+        "res/bbb_16000hz_1ch_9kbps_amrwb_30sec.3gp",
+        "res/bbb_44100hz_2ch_128kbps_aac_30sec.mp4",
+        "res/bbb_44100hz_2ch_600kbps_flac_30sec.mp4",
+        "res/bbb_48000hz_2ch_100kbps_opus_30sec.webm",
+        "res/bbb_8000hz_1ch_8kbps_amrnb_30sec.3gp",
+        "res/crowd_176x144_25fps_6000kbps_h263.3gp",
+        "res/crowd_176x144_25fps_6000kbps_mpeg4.mp4",
+        "res/crowd_1920x1080_25fps_4000kbps_h265.mkv",
+        "res/crowd_1920x1080_25fps_4000kbps_vp8.webm",
+        "res/crowd_1920x1080_25fps_4000kbps_vp9.webm",
+        "res/crowd_1920x1080_25fps_6700kbps_h264.ts",
+    ],
 }
 
 cc_test {
@@ -90,5 +153,23 @@ cc_test {
         "libmediabenchmark_extractor",
         "libmediabenchmark_codec2_common",
         "libmediabenchmark_codec2_decoder",
+    ],
+
+    data: [
+        "res/bbb_16000hz_1ch_9kbps_amrwb_30sec.3gp",
+        "res/bbb_44100hz_2ch_128kbps_aac_30sec.mp4",
+        "res/bbb_44100hz_2ch_128kbps_mp3_30sec.mp3",
+        "res/bbb_44100hz_2ch_600kbps_flac_30sec.mp4",
+        "res/bbb_44100hz_2ch_80kbps_vorbis_30sec.mp4",
+        "res/bbb_48000hz_2ch_100kbps_opus_30sec.webm",
+        "res/bbb_8000hz_1ch_8kbps_amrnb_30sec.3gp",
+        "res/crowd_1920x1080_25fps_4000kbps_av1.webm",
+        "res/crowd_1920x1080_25fps_4000kbps_h265.mkv",
+        "res/crowd_1920x1080_25fps_4000kbps_vp8.webm",
+        "res/crowd_1920x1080_25fps_4000kbps_vp9.webm",
+        "res/crowd_1920x1080_25fps_6000kbps_mpeg4.mp4",
+        "res/crowd_1920x1080_25fps_6700kbps_h264.ts",
+        "res/crowd_1920x1080_25fps_7300kbps_mpeg2.mp4",
+        "res/crowd_352x288_25fps_6000kbps_h263.3gp",
     ],
 }

@@ -36,6 +36,7 @@ TEST_P(DecoderTest, Decode) {
     FILE *inputFp = fopen(inputFile.c_str(), "rb");
     if (!inputFp) {
         cout << "[   WARN   ] Test Skipped. Unable to open input file for reading \n";
+        ASSERT_NE(inputFp, (FILE *)NULL);
         return;
     }
 
@@ -43,6 +44,7 @@ TEST_P(DecoderTest, Decode) {
     Extractor *extractor = decoder->getExtractor();
     if (!extractor) {
         cout << "[   WARN   ] Test Skipped. Extractor creation failed \n";
+        ASSERT_NE(extractor, (Extractor *) NULL);
         return;
     }
 
@@ -55,18 +57,21 @@ TEST_P(DecoderTest, Decode) {
     int32_t trackCount = extractor->initExtractor(fd, fileSize);
     if (trackCount <= 0) {
         cout << "[   WARN   ] Test Skipped. initExtractor failed\n";
+        ASSERT_GT(trackCount, 0);
         return;
     }
     for (int curTrack = 0; curTrack < trackCount; curTrack++) {
         int32_t status = extractor->setupTrackFormat(curTrack);
         if (status != 0) {
             cout << "[   WARN   ] Test Skipped. Track Format invalid \n";
+            ASSERT_EQ(status, 0);
             return;
         }
 
         uint8_t *inputBuffer = (uint8_t *)malloc(kMaxBufferSize);
         if (!inputBuffer) {
             cout << "[   WARN   ] Test Skipped. Insufficient memory \n";
+            ASSERT_NE(inputBuffer, (uint8_t*)NULL);
             return;
         }
         vector<AMediaCodecBufferInfo> frameInfo;
@@ -80,6 +85,7 @@ TEST_P(DecoderTest, Decode) {
             // copy the meta data and buffer to be passed to decoder
             if (inputBufferOffset + info.size > kMaxBufferSize) {
                 cout << "[   WARN   ] Test Skipped. Memory allocated not sufficient\n";
+                ASSERT_LE(inputBufferOffset + info.size, kMaxBufferSize);
                 free(inputBuffer);
                 return;
             }
@@ -94,6 +100,7 @@ TEST_P(DecoderTest, Decode) {
         status = decoder->decode(inputBuffer, frameInfo, codecName, asyncMode);
         if (status != AMEDIA_OK) {
             cout << "[   WARN   ] Test Failed. Decode returned error " << status << endl;
+            ASSERT_EQ(status, AMEDIA_OK);
             free(inputBuffer);
             return;
         }

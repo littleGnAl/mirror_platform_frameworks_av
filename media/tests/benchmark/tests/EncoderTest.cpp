@@ -19,9 +19,11 @@
 
 #include <fstream>
 
-#include "BenchmarkTestEnvironment.h"
+#include <gtest/gtest.h>
+
 #include "Encoder.h"
 #include "Decoder.h"
+#include "BenchmarkTestEnvironment.h"
 
 static BenchmarkTestEnvironment *gEnv = nullptr;
 
@@ -35,6 +37,7 @@ TEST_P(EncoderTest, Encode) {
     FILE *inputFp = fopen(inputFile.c_str(), "rb");
     if (!inputFp) {
         cout << "[   WARN   ] Test Skipped. Unable to open input file for reading \n";
+        ASSERT_NE(inputFp, nullptr);
         return;
     }
 
@@ -42,6 +45,7 @@ TEST_P(EncoderTest, Encode) {
     Extractor *extractor = decoder->getExtractor();
     if (!extractor) {
         cout << "[   WARN   ] Test Skipped. Extractor creation failed \n";
+        ASSERT_NE(extractor, nullptr);
         return;
     }
     // Read file properties
@@ -53,6 +57,7 @@ TEST_P(EncoderTest, Encode) {
     int32_t trackCount = extractor->initExtractor(fd, fileSize);
     if (trackCount <= 0) {
         cout << "[   WARN   ] Test Skipped. initExtractor failed\n";
+        ASSERT_GT(trackCount, 0);
         return;
     }
 
@@ -61,12 +66,14 @@ TEST_P(EncoderTest, Encode) {
         int32_t status = extractor->setupTrackFormat(curTrack);
         if (status != 0) {
             cout << "[   WARN   ] Test Skipped. Track Format invalid \n";
+            ASSERT_EQ(status, 0);
             return;
         }
 
         uint8_t *inputBuffer = (uint8_t *)malloc(kMaxBufferSize);
         if (!inputBuffer) {
             cout << "[   WARN   ] Test Skipped. Insufficient memory \n";
+            ASSERT_NE(inputBuffer, nullptr);
             return;
         }
         vector<AMediaCodecBufferInfo> frameInfo;
@@ -80,6 +87,7 @@ TEST_P(EncoderTest, Encode) {
             // copy the meta data and buffer to be passed to decoder
             if (inputBufferOffset + info.size > kMaxBufferSize) {
                 cout << "[   WARN   ] Test Skipped. Memory allocated not sufficient\n";
+                ASSERT_LE(inputBufferOffset + info.size, kMaxBufferSize);
                 free(inputBuffer);
                 return;
             }
@@ -93,12 +101,14 @@ TEST_P(EncoderTest, Encode) {
         FILE *outFp = fopen(outputFileName.c_str(), "wb");
         if (outFp == nullptr) {
             ALOGE("Unable to open output file for writing");
+            ASSERT_NE(outFp, nullptr);
             return;
         }
         decoder->setupDecoder();
         status = decoder->decode(inputBuffer, frameInfo, decName, false /*asyncMode */, outFp);
         if (status != AMEDIA_OK) {
             cout << "[   WARN   ] Test Skipped. Decode returned error \n";
+            ASSERT_EQ(status, AMEDIA_OK);
             return;
         }
 
@@ -113,6 +123,7 @@ TEST_P(EncoderTest, Encode) {
         AMediaFormat_getString(format, AMEDIAFORMAT_KEY_MIME, &mime);
         if (!mime) {
             ALOGE("Error in AMediaFormat_getString");
+            ASSERT_NE(mime, nullptr);
             return;
         }
         // Get encoder params
@@ -145,6 +156,7 @@ TEST_P(EncoderTest, Encode) {
         status = encoder->encode(codecName, eleStream, eleSize, asyncMode, encParams, (char *)mime);
         if (status != AMEDIA_OK) {
             cout << "[   WARN   ] Test Failed. Encode returned error " << status << endl;
+            ASSERT_EQ(status, AMEDIA_OK);
             free(inputBuffer);
             return;
         }

@@ -31,6 +31,11 @@ unzip MediaBenchmark.zip
 adb push MediaBenchmark /data/local/tmp
 ```
 
+If these tests are invoked with no arguments, they will look for the files in a
+subdirectory "res" located in the same directory as the test binary.
+Phrased another way, an invocation /data/local/tmp/extractorTest will look for its
+data files in the directory /data/local/tmp/res/.
+
 ## Extractor
 
 The test extracts elementary stream and benchmarks the extractors available in NDK.
