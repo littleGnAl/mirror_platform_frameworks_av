@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "7a021f29_46020ceb",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-09T01:42:03Z",
+      "side": 1,
+      "message": "Let us use /data/local/tmp/ directory always for output.",
+      "parentUuid": "4d90416d_b3fbc16e",
+      "range": {
+        "startLine": 208,
+        "startChar": 8,
+        "endLine": 208,
+        "endChar": 80
+      },
+      "revId": "609de6e3aca1fc5b444af1ebea6a2aa1614a2d71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "78db7fa7_215bdd34",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 2
