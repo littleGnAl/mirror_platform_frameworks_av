@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e4623b7_82df3664",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-09T01:21:41Z",
+      "side": 1,
+      "message": "MIDI is removed?\nEven if it doesn\u0027t work, it is better to have a case here, so that once it is ready, we can just add a clip.",
+      "revId": "609de6e3aca1fc5b444af1ebea6a2aa1614a2d71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d90b5745_172d03a6",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-09T01:21:41Z",
+      "side": 1,
+      "message": "Let us add a command line argument to enable saving output and make this conditional.",
+      "range": {
+        "startLine": 208,
+        "startChar": 8,
+        "endLine": 208,
+        "endChar": 80
+      },
+      "revId": "609de6e3aca1fc5b444af1ebea6a2aa1614a2d71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78db7fa7_215bdd34",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-09T01:21:41Z",
+      "side": 1,
+      "message": "This should never happen right?\nMay be just use ASSERT_*() to ensure these are not null?",
+      "range": {
+        "startLine": 248,
+        "startChar": 3,
+        "endLine": 252,
+        "endChar": 5
+      },
+      "revId": "609de6e3aca1fc5b444af1ebea6a2aa1614a2d71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "83dc2044_1e514ea1",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-09T01:21:41Z",
+      "side": 1,
+      "message": "Combine to a single ASSERT_*() \u003c\u003c \"Failed to get track\"",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 258,
+        "endChar": 9
+      },
+      "revId": "609de6e3aca1fc5b444af1ebea6a2aa1614a2d71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c9d9b7b_d3a81260",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-09T01:21:41Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 263,
+        "endChar": 9
+      },
+      "revId": "609de6e3aca1fc5b444af1ebea6a2aa1614a2d71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4827c895_1ea0d8f5",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-09T01:21:41Z",
+      "side": 1,
+      "message": "Combine to a single line using ASSERT_*()",
+      "range": {
+        "startLine": 319,
+        "startChar": 0,
+        "endLine": 322,
+        "endChar": 5
+      },
+      "revId": "609de6e3aca1fc5b444af1ebea6a2aa1614a2d71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3482a8ba_1cc904ba",
+        "filename": "media/extractors/tests/ExtractorUnitTestEnvironment.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-09T01:21:41Z",
+      "side": 1,
+      "message": "Add a case for saveOutput",
+      "revId": "609de6e3aca1fc5b444af1ebea6a2aa1614a2d71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
