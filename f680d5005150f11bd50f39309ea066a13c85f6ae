@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4d6d914f_c5af5f58",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-09T01:45:44Z",
+      "side": 1,
+      "message": "Combine to a single line ASSERT_*()",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 5
+      },
+      "revId": "f680d5005150f11bd50f39309ea066a13c85f6ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af4fd23a_c8676e3b",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-09T01:45:44Z",
+      "side": 1,
+      "message": "handle is too generic. outFileHandle is better?",
+      "range": {
+        "startLine": 139,
+        "startChar": 13,
+        "endLine": 139,
+        "endChar": 20
+      },
+      "revId": "f680d5005150f11bd50f39309ea066a13c85f6ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5d96411_173cdd9b",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-09T01:45:44Z",
+      "side": 1,
+      "message": "dump to /data/local/tmp/ instead of current directory.\nAlso define a macro for this and use it everywhere.",
+      "range": {
+        "startLine": 139,
+        "startChar": 47,
+        "endLine": 139,
+        "endChar": 62
+      },
+      "revId": "f680d5005150f11bd50f39309ea066a13c85f6ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
