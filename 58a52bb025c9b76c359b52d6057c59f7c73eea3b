@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "c1838b22_aff5d642",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-12-10T12:21:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d85142b_0472fc24",
+      "range": {
+        "startLine": 56,
+        "startChar": 16,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "58a52bb025c9b76c359b52d6057c59f7c73eea3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5110e3f0_9f35f516",
         "filename": "media/libstagefright/id3/test/ID3Test.cpp",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "afbccdd4_176730b2",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-12-10T12:21:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5110e3f0_9f35f516",
+      "range": {
+        "startLine": 63,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 5
+      },
+      "revId": "58a52bb025c9b76c359b52d6057c59f7c73eea3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "37b92fa8_8a1bddae",
         "filename": "media/libstagefright/id3/test/ID3Test.cpp",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2019-12-09T02:19:14Z",
       "side": 1,
       "message": "Should this be moved out of while loop?",
+      "range": {
+        "startLine": 78,
+        "startChar": 7,
+        "endLine": 78,
+        "endChar": 60
+      },
+      "revId": "58a52bb025c9b76c359b52d6057c59f7c73eea3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daa0525c_2280318c",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-12-10T12:21:16Z",
+      "side": 1,
+      "message": "Removing this check as this is redundant. getID() gives an empty string in error cases. Added a check for the same in the loop.",
+      "parentUuid": "37b92fa8_8a1bddae",
       "range": {
         "startLine": 78,
         "startChar": 7,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "c238fe5b_4d4afd8c",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-12-10T12:21:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "803c78f1_8ac2d669",
+      "range": {
+        "startLine": 102,
+        "startChar": 16,
+        "endLine": 102,
+        "endChar": 31
+      },
+      "revId": "58a52bb025c9b76c359b52d6057c59f7c73eea3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f0723378_0e018e37",
         "filename": "media/libstagefright/id3/test/ID3Test.cpp",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2019-12-09T02:19:14Z",
       "side": 1,
       "message": "What is the expected behavior here?\nwhen textFrame is false, no tags should start with \u0027T\u0027.\nwhen textFrame is true, is the expectation that there is at least one tag starting \u0027T\u0027 or all of them should start with \u0027T\u0027.",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 133,
+        "endChar": 9
+      },
+      "revId": "58a52bb025c9b76c359b52d6057c59f7c73eea3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8fce5dac_cd5575d7",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-12-10T12:21:16Z",
+      "side": 1,
+      "message": "A tag can represent text and image amongst various other things. So, the purpose of this test is if it has atleast one tag starting with \u0027T\u0027 i.e. a text frame, the test should pass, the other tags can be anything like \"APIC\", \"AENC\" etc.",
+      "parentUuid": "f0723378_0e018e37",
       "range": {
         "startLine": 124,
         "startChar": 8,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "7d23a21a_894dfa0b",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-12-10T12:21:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "65f62a89_7393fb9b",
+      "range": {
+        "startLine": 169,
+        "startChar": 4,
+        "endLine": 169,
+        "endChar": 51
+      },
+      "revId": "58a52bb025c9b76c359b52d6057c59f7c73eea3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "549a81ea_c6d95cfe",
         "filename": "media/libstagefright/id3/test/ID3Test.cpp",
         "patchSetId": 1
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "defc5871_b6162506",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-12-10T12:21:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "549a81ea_c6d95cfe",
+      "range": {
+        "startLine": 198,
+        "startChar": 4,
+        "endLine": 198,
+        "endChar": 25
+      },
+      "revId": "58a52bb025c9b76c359b52d6057c59f7c73eea3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "698d9048_2b93ab48",
         "filename": "media/libstagefright/id3/test/ID3Test.cpp",
         "patchSetId": 1
@@ -183,6 +351,30 @@
       "revId": "58a52bb025c9b76c359b52d6057c59f7c73eea3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f53e41a7_b7eb9bcf",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-12-10T12:21:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "698d9048_2b93ab48",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 99
+      },
+      "revId": "58a52bb025c9b76c359b52d6057c59f7c73eea3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
