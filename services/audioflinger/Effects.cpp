@@ -2244,9 +2244,7 @@ status_t AudioFlinger::EffectChain::addEffect_ll(const sp<EffectModule>& effect)
         ALOGV("addEffect_l() effect %p, added in chain %p at rank %zu", effect.get(), this,
                 idx_insert);
     }
-    effect->configure();
-
-    return NO_ERROR;
+    return effect->configure();
 }
 
 // removeEffect_l() must be called with ThreadBase::mLock held
