@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b14b2db0_3591326d",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-10T13:45:31Z",
+      "side": 1,
+      "message": "i think this should flag a failure.",
+      "range": {
+        "startLine": 387,
+        "startChar": 4,
+        "endLine": 387,
+        "endChar": 13
+      },
+      "revId": "ea7dec707884b95c31a0a4f2bd0821dc34930224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac252004_95c890d9",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-10T13:45:31Z",
+      "side": 1,
+      "message": "Harish pointed this out in a different CL, but a lot of this is cleaner as\n\nASSERT_EQ(status, STATUS_OK);\n\nI also thought there was a version of these that allowed us to include a diagnostics too\n\nassert(condition, \"message printed if we fail the condition\");\nbut I don\u0027t remember whether we\u0027d have to do:\nassert(status\u003d\u003dSTATUS_OK, \"message\");\nor\nassert_eq(status, STATUS_OK, \"messages\");",
+      "range": {
+        "startLine": 391,
+        "startChar": 4,
+        "endLine": 394,
+        "endChar": 5
+      },
+      "revId": "ea7dec707884b95c31a0a4f2bd0821dc34930224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d91a860_b9ca0d07",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-10T13:45:31Z",
+      "side": 1,
+      "message": "we just set this on line 395 so that it should match.\nor does getFileDetails() modify its parameters, so that it might change inputFile?",
+      "range": {
+        "startLine": 401,
+        "startChar": 9,
+        "endLine": 401,
+        "endChar": 44
+      },
+      "revId": "ea7dec707884b95c31a0a4f2bd0821dc34930224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac75e4be_4ae7ab8b",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-10T13:45:31Z",
+      "side": 1,
+      "message": "should be fatal / assert\nsame comments about structure of this condition as at line 394.\n(all the stuff with the pattern at line 394 should be changed similarly to\nwhat is suggested there).",
+      "range": {
+        "startLine": 403,
+        "startChar": 8,
+        "endLine": 403,
+        "endChar": 14
+      },
+      "revId": "ea7dec707884b95c31a0a4f2bd0821dc34930224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "17e8739f_42af9885",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 428,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-10T13:45:31Z",
+      "side": 1,
+      "message": "a sequence of pause/pause/pause?  no intervening starts?",
+      "range": {
+        "startLine": 425,
+        "startChar": 4,
+        "endLine": 428,
+        "endChar": 0
+      },
+      "revId": "ea7dec707884b95c31a0a4f2bd0821dc34930224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c35b6496_22ac0b1a",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-10T13:45:31Z",
+      "side": 1,
+      "message": "where does the 4 come from?\nis 4 \u003d\u003d kMaxCount?",
+      "range": {
+        "startLine": 429,
+        "startChar": 50,
+        "endLine": 429,
+        "endChar": 53
+      },
+      "revId": "ea7dec707884b95c31a0a4f2bd0821dc34930224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d98fde54_b4fa28dd",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-10T13:45:31Z",
+      "side": 1,
+      "message": "i have a preference for style:\n\nstatus \u003d mWriter-\u003estop();\nCHECK_EQ(status, OK);\n\nand I think we want ASSERT_EQ() here instead of CHECK_EQ.",
+      "range": {
+        "startLine": 441,
+        "startChar": 3,
+        "endLine": 441,
+        "endChar": 44
+      },
+      "revId": "ea7dec707884b95c31a0a4f2bd0821dc34930224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
