@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "801b52e7_fe01a6d8",
+        "filename": "media/tests/benchmark/tests/BenchmarkTestEnvironment.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-10T18:37:53Z",
+      "side": 1,
+      "message": "I was trying, but the installation scripts in Android.bp (the data:[] clause) and the AndroidTest.xml file  caused the data to get be placed in (dirname $0)/res/",
+      "parentUuid": "70567dc3_05aaea93",
+      "revId": "b4c836dbb93ef02e9016394a6b907a7e7c460341",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "deaa0fb3_595c92d9",
         "filename": "media/tests/benchmark/tests/C2DecoderTest.cpp",
         "patchSetId": 1
