@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "aa7568fd_f2b75c56",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-10T13:55:19Z",
+      "side": 1,
+      "message": "and then mFpInput\u003dnullptr;\n\nwhich makes this code safe if it is called multiple times.\n\nsimilarly for mInputBuf and mOutputBuf -- clear the pointer after discarding those buffers.",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "1e97c99bdae8a8a97e5171457ae6aba13ce2923f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd82d01a_2d30d267",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-10T13:55:19Z",
+      "side": 1,
+      "message": "if we Setup() doesn\u0027t get called for some reason, these have garbage.\n\ni think we need a constructor for this class that will ensure that these are always\ninitialized.",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "1e97c99bdae8a8a97e5171457ae6aba13ce2923f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bb10c2e_ac36b2f4",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-10T13:55:19Z",
+      "side": 1,
+      "message": "I worry about how to ensure these are on device when we invoke these through atest.\n\nI think we need to know how to do that through the AndroidTest.xml file;\nwe can\u0027t rely on user-intervention to fetch from a web site, download to device and unzip.",
+      "range": {
+        "startLine": 175,
+        "startChar": 25,
+        "endLine": 177,
+        "endChar": 0
+      },
+      "revId": "1e97c99bdae8a8a97e5171457ae6aba13ce2923f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
