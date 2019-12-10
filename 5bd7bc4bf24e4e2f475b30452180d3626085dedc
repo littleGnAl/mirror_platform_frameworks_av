@@ -22,6 +22,30 @@
       "revId": "5bd7bc4bf24e4e2f475b30452180d3626085dedc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0a3e206_b230ff96",
+        "filename": "services/audiopolicy/AudioPolicyInterface.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1002682
+      },
+      "writtenOn": "2019-12-10T22:25:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea23d2c8_1152676c",
+      "range": {
+        "startLine": 275,
+        "startChar": 4,
+        "endLine": 275,
+        "endChar": 53
+      },
+      "revId": "5bd7bc4bf24e4e2f475b30452180d3626085dedc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
