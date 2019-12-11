@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59d574f7_88943238",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-11T17:51:45Z",
+      "side": 1,
+      "message": "If there are cases where extractors only support SEEK_BACKWARD, then instead of completely ignoring following tests, can we move the check inside switch case for SEEK modes?",
+      "range": {
+        "startLine": 390,
+        "startChar": 4,
+        "endLine": 396,
+        "endChar": 5
+      },
+      "revId": "ba389dce8ce632730eb1f985808de4e0e7661800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "006d8319_cf72ae36",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-11T17:51:45Z",
+      "side": 1,
+      "message": "Once extractor-\u003eflags() are checked inside, we can update this appropriately.",
+      "range": {
+        "startLine": 477,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 62
+      },
+      "revId": "ba389dce8ce632730eb1f985808de4e0e7661800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
