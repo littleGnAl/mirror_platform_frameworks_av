@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b4f3c67c_f61324c5",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTestEnvironment.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-11T17:25:14Z",
+      "side": 1,
+      "message": "Ray,\nThese are currently different modules with no dependency between them.\nWe will look at feasibility making a common module which maintains the common files like this. Can we follow this up in a subsequent CL, so that the current CL is not blocked on that?",
+      "parentUuid": "87f077e3_5e85fac3",
+      "range": {
+        "startLine": 26,
+        "startChar": 5,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "5c623197469b04fdc166d8b9bca02a3bc9cce03b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d30ac318_dd77f303",
         "filename": "media/libstagefright/flac/dec/test/FlacDecoderTestEnvironment.h",
         "patchSetId": 1
