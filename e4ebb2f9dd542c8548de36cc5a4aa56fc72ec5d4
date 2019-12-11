@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "801a1c50_f96f377e",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 5
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T18:23:30Z",
+      "side": 1,
+      "message": "for a followon CL: the other places where we have this sentence don\u0027t appear to\nmake it a clickable link. let\u0027s make them all be this clickable link style.",
+      "range": {
+        "startLine": 152,
+        "startChar": 25,
+        "endLine": 152,
+        "endChar": 48
+      },
+      "revId": "e4ebb2f9dd542c8548de36cc5a4aa56fc72ec5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a049e3f5_83142ba9",
+        "filename": "media/tests/benchmark/src/native/encoder/C2Encoder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T18:23:30Z",
+      "side": 1,
+      "message": "we should be doing mIsAudioEncoder \u003d false here\n\ni see it being initialized in the constructor, but I still like the idea of forcing it\nhere.  That makes it safe later in the even that we would ever re-use an instance of\nthe class.",
+      "revId": "e4ebb2f9dd542c8548de36cc5a4aa56fc72ec5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f17a8077_50cbb6ab",
+        "filename": "media/tests/benchmark/src/native/encoder/C2Encoder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T18:23:30Z",
+      "side": 1,
+      "message": "mFrameRate is never initialized, so if a media file doesn\u0027t specify it, we\u0027ll get here with\ngarbage in the variable.\n\ni would think this if() should be based on the return code from the getInt32() call, which\nshould return true/false based on whether it found that field.",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 27
+      },
+      "revId": "e4ebb2f9dd542c8548de36cc5a4aa56fc72ec5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7811c20_e98b17d7",
+        "filename": "media/tests/benchmark/src/native/encoder/C2Encoder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T18:23:30Z",
+      "side": 1,
+      "message": "make this a defined constant in C2Encoder.h",
+      "range": {
+        "startLine": 53,
+        "startChar": 25,
+        "endLine": 53,
+        "endChar": 27
+      },
+      "revId": "e4ebb2f9dd542c8548de36cc5a4aa56fc72ec5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21f645d2_d0ee52fc",
+        "filename": "media/tests/benchmark/src/native/encoder/C2Encoder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T18:23:30Z",
+      "side": 1,
+      "message": "who does the ASSERT() so that this will report a broken test case.\nit\u0027s ok for me if that\u0027s the caller.\n\ni\u0027m looking to see definitive failures when these things go bad; I want to avoid being in a\nposition where a not-running/failing test prints a few warnings and proceeds; I want the\ntest come come to a visible, impossible-to-miss halt if one of such things fails.",
+      "range": {
+        "startLine": 116,
+        "startChar": 3,
+        "endLine": 119,
+        "endChar": 5
+      },
+      "revId": "e4ebb2f9dd542c8548de36cc5a4aa56fc72ec5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bd2e11ba_a8a1e09d",
+        "filename": "media/tests/benchmark/src/native/encoder/C2Encoder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T18:23:30Z",
+      "side": 1,
+      "message": "so this tests when EOS is attached to the final frame.\n\nwhat if final frame and the actual EOS are separate work items to the encoder?\nhow do we test that.\n\nprobably need to be able to test both ways [unless you tell me that \"eos by itself with\nno input buffer\" is illegal and this is the only thing we can do.",
+      "range": {
+        "startLine": 149,
+        "startChar": 7,
+        "endLine": 151,
+        "endChar": 56
+      },
+      "revId": "e4ebb2f9dd542c8548de36cc5a4aa56fc72ec5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be6f2ac6_b98dede0",
+        "filename": "media/tests/benchmark/tests/C2EncoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T18:23:30Z",
+      "side": 1,
+      "message": "my usual recent missive about ASSERT() and friends, so that we are forced to see it\nwhen something had gone wrong.",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 46,
+        "endChar": 15
+      },
+      "revId": "e4ebb2f9dd542c8548de36cc5a4aa56fc72ec5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1991d1ee_483671fa",
+        "filename": "media/tests/benchmark/tests/C2EncoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T18:23:30Z",
+      "side": 1,
+      "message": "all of these to something similar to:\n\n      ASSERT_EQ(status, AMEDIA_OK) \u003c\u003c \"[   WARN   ] Test Skipped. Decode returned error : \" \u003c\u003c status \u003c\u003c \"\\n",
+      "range": {
+        "startLine": 137,
+        "startChar": 8,
+        "endLine": 140,
+        "endChar": 9
+      },
+      "revId": "e4ebb2f9dd542c8548de36cc5a4aa56fc72ec5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
