@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "4c1f1b83_a7ae2e80",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-11T17:34:46Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "daa0525c_2280318c",
+      "range": {
+        "startLine": 78,
+        "startChar": 7,
+        "endLine": 78,
+        "endChar": 60
+      },
+      "revId": "58a52bb025c9b76c359b52d6057c59f7c73eea3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "803c78f1_8ac2d669",
         "filename": "media/libstagefright/id3/test/ID3Test.cpp",
         "patchSetId": 1
@@ -225,6 +249,30 @@
       "side": 1,
       "message": "A tag can represent text and image amongst various other things. So, the purpose of this test is if it has atleast one tag starting with \u0027T\u0027 i.e. a text frame, the test should pass, the other tags can be anything like \"APIC\", \"AENC\" etc.",
       "parentUuid": "f0723378_0e018e37",
+      "range": {
+        "startLine": 124,
+        "startChar": 8,
+        "endLine": 133,
+        "endChar": 9
+      },
+      "revId": "58a52bb025c9b76c359b52d6057c59f7c73eea3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e8119c9_e96dfc72",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-11T17:34:46Z",
+      "side": 1,
+      "message": "In that case ASSERT_EQ(textFrameFlag, 1) in else needs to be moved out while loop like below.\nif (textFrame) {\n    ASSERT_EQ(textFrameFlag, 1);\n}\n\nIn the current form, test expects first tag to be starting with \u0027T\u0027 when textFrame is true.\nSo test would fail if the first tag is not a text tag, but has text tags later.",
+      "parentUuid": "8fce5dac_cd5575d7",
       "range": {
         "startLine": 124,
         "startChar": 8,
