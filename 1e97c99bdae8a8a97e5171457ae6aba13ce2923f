@@ -68,6 +68,76 @@
       "revId": "1e97c99bdae8a8a97e5171457ae6aba13ce2923f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55ea1b3c_c30bbf97",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-11T17:41:00Z",
+      "side": 1,
+      "message": "I will explore ways to use MediaPreparer to push the files. That approach is needed for all unit tests.",
+      "parentUuid": "0bb10c2e_ac36b2f4",
+      "range": {
+        "startLine": 175,
+        "startChar": 25,
+        "endLine": 177,
+        "endChar": 0
+      },
+      "revId": "1e97c99bdae8a8a97e5171457ae6aba13ce2923f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c2a4047_b0de94a6",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-11T17:41:00Z",
+      "side": 1,
+      "message": "Upload a CL that builds both static and shared libraries for libstagefright_amrnb_common.\nRebase this CL on top of that and use static library here.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 38
+      },
+      "revId": "1e97c99bdae8a8a97e5171457ae6aba13ce2923f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fe45c39_2b901fc9",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-11T17:41:00Z",
+      "side": 1,
+      "message": "Move libaudioutils to static_libs",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 24
+      },
+      "revId": "1e97c99bdae8a8a97e5171457ae6aba13ce2923f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
