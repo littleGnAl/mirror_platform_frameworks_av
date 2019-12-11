@@ -134,6 +134,30 @@
     },
     {
       "key": {
+        "uuid": "a332fb6c_1ccb91bf",
+        "filename": "media/tests/benchmark/src/native/encoder/C2Encoder.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-11T18:32:13Z",
+      "side": 1,
+      "message": "Ray,\nAs these modules are for benchmarking C2 encoders\u0027 performance, we just need to use one of the ways of signalling EOS.\nActual testing of EOS on last frame or EOS in a separate call are testing Codec 2 VTS tests along with other tests.",
+      "parentUuid": "bd2e11ba_a8a1e09d",
+      "range": {
+        "startLine": 149,
+        "startChar": 7,
+        "endLine": 151,
+        "endChar": 56
+      },
+      "revId": "e4ebb2f9dd542c8548de36cc5a4aa56fc72ec5d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "be6f2ac6_b98dede0",
         "filename": "media/tests/benchmark/tests/C2EncoderTest.cpp",
         "patchSetId": 5
