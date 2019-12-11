@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06442546_783706d3",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T19:15:46Z",
+      "side": 1,
+      "message": "needs to be a fail() call or something like that. \n\nthe principle being -- if it\u0027s something that is supposed to work, then i want the test to\nfail -- as opposed to printing a diagnostic but otherwise appearing to work.",
+      "range": {
+        "startLine": 282,
+        "startChar": 16,
+        "endLine": 282,
+        "endChar": 23
+      },
+      "revId": "ed3844571168b59690d3668af0c85f6f61307335",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "99fa8ee6_237d190b",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 9
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T19:15:46Z",
+      "side": 1,
+      "message": "needs to error out.\n\nthis looks like the place that the native/jni code is hooked in -- so the \"return -1\"\nin that file all come back through here.... and this would be the guy where we declare the test a failure and we abort.",
+      "range": {
+        "startLine": 294,
+        "startChar": 20,
+        "endLine": 298,
+        "endChar": 21
+      },
+      "revId": "ed3844571168b59690d3668af0c85f6f61307335",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60dbc73e_faeabcf7",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T19:15:46Z",
+      "side": 1,
+      "message": "caller does an ASSERT_EQ(whatever, success) equivalent, right?\n\nMy preference here is that the test says \"fail\" instead of \"skipped\". [it is ok with me if the caller is where we\u0027re saying fail... it doesn\u0027t have to be each of the \u0027return -1\u0027 lines in this routine]\n\nThe only place where I might weaken on this is what Harish and I talked about where the matrix of what must be supported is \u0027sparse\u0027. an example of that might be:\n\n   for (container in all container types)\n      for (codec in all codec types)\n         encode with codec into container.\n\nour codex x container array is sparse -- there are definitely containers that don\u0027t handle all codec types.  I don\u0027t want to fail because we try one of those unsupported combinations. but if a supported combination fails for any reason -- we need an assert/abort in the test case.",
+      "range": {
+        "startLine": 60,
+        "startChar": 7,
+        "endLine": 60,
+        "endChar": 18
+      },
+      "revId": "ed3844571168b59690d3668af0c85f6f61307335",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d6a1009c_37304904",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T19:15:46Z",
+      "side": 1,
+      "message": "i\u0027m a fan of:\nif (outFp) { fclose(outFp); outFp \u003d nullptr;}",
+      "range": {
+        "startLine": 172,
+        "startChar": 8,
+        "endLine": 172,
+        "endChar": 33
+      },
+      "revId": "ed3844571168b59690d3668af0c85f6f61307335",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
