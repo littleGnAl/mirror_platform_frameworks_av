@@ -46,6 +46,30 @@
       "revId": "542d80e11e65110709a7e41b7814a652595f30d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58aaffab_542932f9",
+        "filename": "services/minijail/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1132673
+      },
+      "writtenOn": "2019-12-11T01:25:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5b40efc4_64c23c36",
+      "range": {
+        "startLine": 26,
+        "startChar": 47,
+        "endLine": 26,
+        "endChar": 60
+      },
+      "revId": "542d80e11e65110709a7e41b7814a652595f30d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
