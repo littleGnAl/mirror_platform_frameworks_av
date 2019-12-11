@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "04835c1f_13a2ae58",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T19:27:57Z",
+      "side": 1,
+      "message": "should all of these have a default value assigned as part of construction. I think so.\n\nexample:  f \u003d new FlacDecoderTest;   f.TearDown()\nthis will crash because mFlacDecoder hasn\u0027t been properly initialized.",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 24
+      },
+      "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21077490_16f91c25",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T19:27:57Z",
+      "side": 1,
+      "message": "\u0027data\u0027 leaks here.",
+      "range": {
+        "startLine": 110,
+        "startChar": 16,
+        "endLine": 110,
+        "endChar": 22
+      },
+      "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ec3904e_d2e01005",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T19:27:57Z",
+      "side": 1,
+      "message": "this flows better as:\n\nif (decodeErr \u003d\u003d WOULD_BLOCK) {\n}\nif (decodeErr !\u003d OK) {\n}\n// the stuff that is in the final else clause\n\nin particular it avoids what I see as awkwardness in the current line 108.",
+      "range": {
+        "startLine": 108,
+        "startChar": 12,
+        "endLine": 123,
+        "endChar": 13
+      },
+      "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33a14927_d38da972",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T19:27:57Z",
+      "side": 1,
+      "message": "is int16_t better?  not sure.",
+      "range": {
+        "startLine": 125,
+        "startChar": 75,
+        "endLine": 125,
+        "endChar": 80
+      },
+      "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eff8057_ee2f75c4",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T19:27:57Z",
+      "side": 1,
+      "message": "leak of \u0027data\u0027 here.",
+      "range": {
+        "startLine": 131,
+        "startChar": 36,
+        "endLine": 131,
+        "endChar": 42
+      },
+      "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cca4ad31_1645cdcd",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T19:27:57Z",
+      "side": 1,
+      "message": "leak of out_buf here.\n\nleak of \u0027data\u0027 here too.",
+      "range": {
+        "startLine": 136,
+        "startChar": 15,
+        "endLine": 136,
+        "endChar": 34
+      },
+      "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47314972_e94cabd5",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T19:27:57Z",
+      "side": 1,
+      "message": "good -- the various \u0027return -1\u0027 and other failurs in processFlacDecoder get turned into\nan assert/abort here.  this is what I want.",
+      "range": {
+        "startLine": 177,
+        "startChar": 4,
+        "endLine": 177,
+        "endChar": 44
+      },
+      "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2d48832_8b0b8324",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTestEnvironment.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-11T19:27:57Z",
+      "side": 1,
+      "message": "I was talking with Harish about how I\u0027d like to see all of the tests share the same code here.\nI was doing it from the perspective of how I was getting the directory where the executing binary is located -- so I could then find the input files with that.\n\nbut it applies from a code-reuse standpoint.  all of the different instances of these are the same except for the name...",
+      "range": {
+        "startLine": 26,
+        "startChar": 6,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
