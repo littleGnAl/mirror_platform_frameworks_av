@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4b724f28_0c4ffe93",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2019-12-12T14:10:03Z",
+      "side": 1,
+      "message": "gtest recommends either constructor or SetUp() \nif we use constructors we won\u0027t be able to use  ASSERTs. Hence we have used SetUp() for our test.\nSince SetUp() will be called everytime before a test runs, mFlacDecoder will always have a valid value. \nShould I still add a constructor and initialize class variables to default values?",
+      "parentUuid": "04835c1f_13a2ae58",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 24
+      },
+      "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21077490_16f91c25",
         "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a9e57dc_153ce5f1",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2019-12-12T14:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "21077490_16f91c25",
+      "range": {
+        "startLine": 110,
+        "startChar": 16,
+        "endLine": 110,
+        "endChar": 22
+      },
+      "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "9700655d_8c8f0fd9",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2019-12-12T14:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ec3904e_d2e01005",
+      "range": {
+        "startLine": 108,
+        "startChar": 12,
+        "endLine": 123,
+        "endChar": 13
+      },
+      "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33a14927_d38da972",
         "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bab8bf4f_756239ac",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2019-12-12T14:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33a14927_d38da972",
+      "range": {
+        "startLine": 125,
+        "startChar": 75,
+        "endLine": 125,
+        "endChar": 80
+      },
+      "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "524c979f_15c1ce1c",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2019-12-12T14:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3eff8057_ee2f75c4",
+      "range": {
+        "startLine": 131,
+        "startChar": 36,
+        "endLine": 131,
+        "endChar": 42
+      },
+      "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cca4ad31_1645cdcd",
         "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
         "patchSetId": 5
@@ -137,6 +257,30 @@
       "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d3386dc_8b981be8",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2019-12-12T14:10:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cca4ad31_1645cdcd",
+      "range": {
+        "startLine": 136,
+        "startChar": 15,
+        "endLine": 136,
+        "endChar": 34
+      },
+      "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "9e9834ac_210135da",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2019-12-12T14:10:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "47314972_e94cabd5",
+      "range": {
+        "startLine": 177,
+        "startChar": 4,
+        "endLine": 177,
+        "endChar": 44
+      },
+      "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2d48832_8b0b8324",
         "filename": "media/libstagefright/flac/dec/test/FlacDecoderTestEnvironment.h",
         "patchSetId": 5
@@ -183,6 +351,30 @@
       "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5506c582_a0885b93",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTestEnvironment.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2019-12-12T14:10:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e2d48832_8b0b8324",
+      "range": {
+        "startLine": 26,
+        "startChar": 6,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
