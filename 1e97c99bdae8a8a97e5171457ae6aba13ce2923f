@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "4dae478b_05f27bba",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-12T05:49:16Z",
+      "side": 1,
+      "message": "SetUp() and TearDown() are methods recommended by gtest.\nSetUp() will be called immediately after the constructor (right before each test), so there won\u0027t be a case these being garbage.\n\ngtest recommends either constructor or SetUp(), but constructors do not support ASSERT_*().\nNot sure if it is a good idea to have both constructor and SetUp defined.",
+      "parentUuid": "dd82d01a_2d30d267",
+      "range": {
+        "startLine": 66,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 0
+      },
+      "revId": "1e97c99bdae8a8a97e5171457ae6aba13ce2923f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0bb10c2e_ac36b2f4",
         "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
         "patchSetId": 2
