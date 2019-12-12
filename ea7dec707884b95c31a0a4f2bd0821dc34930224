@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "251d85c2_a6a3f278",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-12-12T12:55:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b14b2db0_3591326d",
+      "range": {
+        "startLine": 387,
+        "startChar": 4,
+        "endLine": 387,
+        "endChar": 13
+      },
+      "revId": "ea7dec707884b95c31a0a4f2bd0821dc34930224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ac252004_95c890d9",
         "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "997c7416_5fb9db63",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-12-12T12:55:16Z",
+      "side": 1,
+      "message": "Done\nI will add another CL dependent on this one to accommodate this change throughout the file for other tests as well",
+      "parentUuid": "ac252004_95c890d9",
+      "range": {
+        "startLine": 391,
+        "startChar": 4,
+        "endLine": 394,
+        "endChar": 5
+      },
+      "revId": "ea7dec707884b95c31a0a4f2bd0821dc34930224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6d91a860_b9ca0d07",
         "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2019-12-10T13:45:31Z",
       "side": 1,
       "message": "we just set this on line 395 so that it should match.\nor does getFileDetails() modify its parameters, so that it might change inputFile?",
+      "range": {
+        "startLine": 401,
+        "startChar": 9,
+        "endLine": 401,
+        "endChar": 44
+      },
+      "revId": "ea7dec707884b95c31a0a4f2bd0821dc34930224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30324a9a_8aebf5f3",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-12-12T12:55:16Z",
+      "side": 1,
+      "message": "getFileDetails() adds the file name to the input directory path (which we get from -P option).\nIf the index we have sent in the function call is invalid, \u0027inputFile\u0027 will just contain the directory path, not the full file path of the input clip",
+      "parentUuid": "6d91a860_b9ca0d07",
       "range": {
         "startLine": 401,
         "startChar": 9,
@@ -91,6 +163,30 @@
       "revId": "ea7dec707884b95c31a0a4f2bd0821dc34930224",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cac8b5a_abe2a7ab",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-12-12T12:55:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ac75e4be_4ae7ab8b",
+      "range": {
+        "startLine": 403,
+        "startChar": 8,
+        "endLine": 403,
+        "endChar": 14
+      },
+      "revId": "ea7dec707884b95c31a0a4f2bd0821dc34930224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "1da5e851_36029a2d",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-12-12T12:55:16Z",
+      "side": 1,
+      "message": "No, kMaxCount for now is set to 20\nSince number of frames can vary depending on test vectors, instead of choosing a fix value, the test pauses the writers after processing 1/4th of the data.\nWe can change this to a specific number if the need be so.",
+      "parentUuid": "c35b6496_22ac0b1a",
+      "range": {
+        "startLine": 429,
+        "startChar": 50,
+        "endLine": 429,
+        "endChar": 53
+      },
+      "revId": "ea7dec707884b95c31a0a4f2bd0821dc34930224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d98fde54_b4fa28dd",
         "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
         "patchSetId": 2
@@ -160,6 +280,30 @@
       "revId": "ea7dec707884b95c31a0a4f2bd0821dc34930224",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3c244d4b_f1b4b4d0",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-12-12T12:55:16Z",
+      "side": 1,
+      "message": "Done\nSimilar changes for other tests will be added in the followon CL",
+      "parentUuid": "d98fde54_b4fa28dd",
+      "range": {
+        "startLine": 441,
+        "startChar": 3,
+        "endLine": 441,
+        "endChar": 44
+      },
+      "revId": "ea7dec707884b95c31a0a4f2bd0821dc34930224",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
