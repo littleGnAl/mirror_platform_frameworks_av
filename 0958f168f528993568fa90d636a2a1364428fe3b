@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3f2b2df_8ff1fa45",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 10
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-12T16:19:10Z",
+      "side": 1,
+      "message": "Combine this with if () in line 294.\nBy keeping it here, only the return value of last iteration of nativeEncoder.Encode() is checked.",
+      "revId": "0958f168f528993568fa90d636a2a1364428fe3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
