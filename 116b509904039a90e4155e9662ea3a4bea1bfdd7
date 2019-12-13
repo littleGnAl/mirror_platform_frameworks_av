@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "33ac75b4_05081c91",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-13T20:24:59Z",
+      "side": 1,
+      "message": "i\u0027d like a constructor to initialize those appropriately.\n\nyou can continue to initialize them in Setup()... but I want there to be no window\nwhere we don\u0027t have a legitimate value in those pointers.",
+      "parentUuid": "4b724f28_0c4ffe93",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 24
+      },
+      "revId": "116b509904039a90e4155e9662ea3a4bea1bfdd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "21077490_16f91c25",
         "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
         "patchSetId": 5
