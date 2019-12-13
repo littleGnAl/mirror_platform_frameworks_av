@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "568217a2_1be18294",
+        "filename": "services/audiopolicy/engine/1.0/vts/ValidateEngineConfiguration.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-12-13T19:24:04Z",
+      "side": 1,
+      "message": "I think this test must be gated by the \"engine\" setting in the main APM config. If the engine is not configurable then the test must expect to find this additional config.",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 55
+      },
+      "revId": "16eaa9b82c6f95cac2e1f2793588df2ee3ab7a5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "682fb10d_04a8edc5",
         "filename": "services/audiopolicy/engine/1.0/vts/ValidateEngineConfiguration.cpp",
         "patchSetId": 5
