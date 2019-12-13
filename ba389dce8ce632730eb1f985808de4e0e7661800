@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4ef8ad85_961db69c",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-13T19:33:17Z",
+      "side": 1,
+      "message": "On looking at the code further, CAN_SEEK_BACKWARD and CAN_SEEK_FORWARD are not related to the random seek that we are doing in this test. \nLet us just check for CAN_SEEK in this test.\n\nWe will need to see how to test SEEK_FORWARD and SEEK_BACKWARD (10 secs at a time) separately, which we can do in a follow up CL.",
+      "parentUuid": "59d574f7_88943238",
+      "range": {
+        "startLine": 390,
+        "startChar": 4,
+        "endLine": 396,
+        "endChar": 5
+      },
+      "revId": "ba389dce8ce632730eb1f985808de4e0e7661800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "006d8319_cf72ae36",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-11T17:51:45Z",
       "side": 1,
       "message": "Once extractor-\u003eflags() are checked inside, we can update this appropriately.",
+      "range": {
+        "startLine": 477,
+        "startChar": 0,
+        "endLine": 479,
+        "endChar": 62
+      },
+      "revId": "ba389dce8ce632730eb1f985808de4e0e7661800",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16193f51_8a4bd723",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-13T19:33:17Z",
+      "side": 1,
+      "message": "MPEG2TS doesn\u0027t support seek. Once check in 390 is updated, MPEG2TS won\u0027t have any seek tests, so update this test approprirately.",
+      "parentUuid": "006d8319_cf72ae36",
       "range": {
         "startLine": 477,
         "startChar": 0,
