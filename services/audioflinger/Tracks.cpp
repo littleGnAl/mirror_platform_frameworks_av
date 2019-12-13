@@ -2287,6 +2287,7 @@ void AudioFlinger::RecordThread::RecordTrack::updateTrackFrameInfo(
         int64_t trackFramesReleased, int64_t sourceFramesRead,
         uint32_t halSampleRate, const ExtendedTimestamp &timestamp)
 {
+    MTK_ALOGV("updateTrackFrameInfo %lld, %lld",(long long) trackFramesReleased, (long long) sourceFramesRead );
    // Make the kernel frametime available.
     const FrameTime ft{
             timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL],
@@ -2307,6 +2308,7 @@ void AudioFlinger::RecordThread::RecordTrack::updateTrackFrameInfo(
             const int64_t relativeTrackFrames = relativeServerFrames
                     * mSampleRate / halSampleRate; // TODO: potential computation overflow
             local.mPosition[i] = relativeTrackFrames + trackFramesReleased;
+            MTK_ALOGV("local.mPosition[%d] =%lld, relativeServerFrames %lld, relativeTrackFrames %lld", i,(long long)local.mPosition[i],  (long long)relativeServerFrames,  (long long)relativeTrackFrames);
         }
     }
     mServerProxy->setTimestamp(local);

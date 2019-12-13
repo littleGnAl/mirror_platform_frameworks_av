@@ -148,7 +148,11 @@ static inline size_t destinationFramesPossible(size_t srcFrames, uint32_t srcSam
         return srcFrames;
     }
     uint64_t dstFrames = (uint64_t)srcFrames * dstSampleRate / srcSampleRate;
+#if defined(MTK_AUDIO_FIX_DEFAULT_DEFECT)
+    return dstFrames;
+#else
     return dstFrames > 2 ? dstFrames - 2 : 0;
+#endif
 }
 
 static inline size_t sourceFramesNeededWithTimestretch(
