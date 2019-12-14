@@ -69,6 +69,29 @@
       "revId": "16eaa9b82c6f95cac2e1f2793588df2ee3ab7a5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5abccead_f7b59196",
+        "filename": "services/audiopolicy/engineconfigurable/vts/ValidateEngineConfigurableConfiguration.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2019-12-14T01:52:31Z",
+      "side": 1,
+      "message": "I realized, we can\u0027t read audio_policy_configuration.xml in this test. We need to validate it first, and for that we need to depend on the XSD file specific to core audio HAL version. I think, for simplicity it\u0027s better to assume that if there is audio_policy_engine_configuration.xml, then it\u0027s configurable engine, otherwise isn\u0027t. I will update tests accordingly.",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 83
+      },
+      "revId": "16eaa9b82c6f95cac2e1f2793588df2ee3ab7a5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
