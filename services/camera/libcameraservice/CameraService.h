@@ -29,7 +29,6 @@
 #include <binder/AppOpsManager.h>
 #include <binder/BinderService.h>
 #include <binder/IAppOpsCallback.h>
-#include <binder/IUidObserver.h>
 #include <hardware/camera.h>
 
 #include <android/hardware/camera/common/1.0/types.h>
