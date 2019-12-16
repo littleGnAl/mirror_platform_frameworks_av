@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67975ab7_f286bc44",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-16T05:31:24Z",
+      "side": 1,
+      "message": "just looked at this.\n\n64 bytes is all the larger this is going to be?\nI\u0027d make it a simple array:\n   int8_t mInputBuf[kInputBufferSize];    \n   \n\nif it was a variable size or if it was something in the size of 10\u0027s of kbytes, or if\nthis is something that would be allocated on a stack then\ni would agree with using malloc().\n\nbut if it\u0027s a fixed modest size and it\u0027s contained within a class instance that is itself\nalready being allocated out of the heap...... \n\nI\u0027d just define it as an array within the class definition.",
+      "range": {
+        "startLine": 47,
+        "startChar": 43,
+        "endLine": 47,
+        "endChar": 67
+      },
+      "revId": "902aff1f8572af42ac951cdee2535a112b867f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a818fc53_3d1be221",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-16T05:31:24Z",
+      "side": 1,
+      "message": "same logic here, since kSamplesPerFrame * kBitsPerSample / 8 \u003d\u003d L_FRAME * 8000/8 \u003d\u003d\n160 * 8000/8 \u003d\u003d 160k\n\nthis one is on the edge of what i\u0027d like to allocate as an array vs via malloc.\nfor a short duration... and because it really simplifies the logic here... I\u0027d\nprobably go ahead and use a static array to match it up with the mInputBuf allocation.\n\n\n[it does seem strange that the two sizes are so different in scale -- 64 bytes of input\nand 160kbytes of output. did I make a math mistake? or misunderstand how they are used?",
+      "range": {
+        "startLine": 50,
+        "startChar": 35,
+        "endLine": 50,
+        "endChar": 73
+      },
+      "revId": "902aff1f8572af42ac951cdee2535a112b867f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b898cc0_a069fe8d",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-16T05:31:24Z",
+      "side": 1,
+      "message": "line 94 gives us frameType in 0..15;\nkFrameSizes[] is 0..7\n\nAMR_SID \u003d\u003d 8, so lines 95..98 ensure we get here with 0..7\n\nAnother way to do this:\nkFrameSizes[16] -- so 0..15 to match all possible values we parse on line 94\nfill in the unsupported values as \u0027-1\u0027\nand then we do \nframeSize \u003d kFrameSizes[frameType]\nif (frameSize \u003c 0) return -1;",
+      "range": {
+        "startLine": 100,
+        "startChar": 40,
+        "endLine": 100,
+        "endChar": 49
+      },
+      "revId": "902aff1f8572af42ac951cdee2535a112b867f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "331faf22_1383e503",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-16T05:31:24Z",
+      "side": 1,
+      "message": "current most we read is 31 bytes.\noutput buffer is 160k of capacity.\nseems larger than needed -- or a really efficient encoding scheme.\n\nI think my question here is to double check the math on the buffer size allocation.",
+      "range": {
+        "startLine": 104,
+        "startChar": 63,
+        "endLine": 105,
+        "endChar": 62
+      },
+      "revId": "902aff1f8572af42ac951cdee2535a112b867f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
