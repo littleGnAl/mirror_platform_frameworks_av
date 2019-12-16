@@ -94,6 +94,30 @@
       "revId": "542d80e11e65110709a7e41b7814a652595f30d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f0c1f49_da3c2ca1",
+        "filename": "services/minijail/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2019-12-16T06:23:55Z",
+      "side": 1,
+      "message": "I missed that \"libavservices_minijail\" and \"libavservices_minijail_vendor\" are exactly the same. I checked the history. The reason that we had \"libavservices_minijail_vendor\" was that \"libavservices_minijail\" was written in Android.mk that cannot have \"vendor_available: true\". As a workaround for that, we made \"libavservices_minijail_vendor\" for the vendor modules.\nBut now, \"libavservices_minijail\" is described in Android.bp, we may add \"vendor_available: true\" to it and remove \"libavservices_minijail_vendor\".\n\nLet me work on it. (b/146313710)\nIt requires to update many vendor modules. While we update the vendor modules, let me mark libavservices_minijail with \"vendor_available: true\".\nI will removed \"libavservices_minijail_vendor\" once it is cleaned up.",
+      "parentUuid": "d68e8448_e7a46cec",
+      "range": {
+        "startLine": 26,
+        "startChar": 47,
+        "endLine": 26,
+        "endChar": 60
+      },
+      "revId": "542d80e11e65110709a7e41b7814a652595f30d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
