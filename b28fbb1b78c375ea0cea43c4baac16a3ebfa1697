@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eac49232_6af37429",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-16T06:00:49Z",
+      "side": 1,
+      "message": "any requirements that we go around this a minimum number of times?\ncan the set of tags be empty (so we would have it.done() at the initial entry?)\nis there a limit to how many tags?\n\nI don\u0027t know the answers there, but they would affect the path through this loop.",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 23
+      },
+      "revId": "b28fbb1b78c375ea0cea43c4baac16a3ebfa1697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a8687d1_2b8f570a",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-16T06:00:49Z",
+      "side": 1,
+      "message": "what if there are 2 or more text tags?\n[is that allowed]\nwe only count 1 here\nand we only test for 0/1 on line 96.\n\nif can have multiple text frames, then we need to count here\nand check against that count on 96.\n\ncould change the GetParam.second() so that instead of boolean, it\npases in an integer reflecting the # of frames expected [0 being none].",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 30
+      },
+      "revId": "b28fbb1b78c375ea0cea43c4baac16a3ebfa1697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39ebf0e1_015afcf9",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-16T06:00:49Z",
+      "side": 1,
+      "message": "is this a specification limit?\nthe comment on 117 makes it sound like it\u0027s just how large our id3 library supports,\nwhich is different from what we might find in a file.\n\naccording to wikipedia:\nID3v2 tags are of variable size, and usually occur at the start of the file, which aids streaming media as the metadata is essentially available as soon as the file starts streaming instead of requiring the entire file to be read first as is the case with ID3v1. ID3v2 tags consist of a number of frames, each of which contains a piece of metadata. For example, the TIT2 frame contains the title, and the WOAR frame contains the URL of the artist\u0027s website. Frames can be up to 16MB in length, while total tag size is limited to 256MB. The internationalization problem was solved by allowing the encoding of strings not only in ISO-8859-1, but also in Unicode.\n\nso the ID3 implementation isn\u0027t what we should use as a limit here.\nwe should be ensuring that what comes back is legal by the standard.",
+      "range": {
+        "startLine": 119,
+        "startChar": 27,
+        "endLine": 119,
+        "endChar": 44
+      },
+      "revId": "b28fbb1b78c375ea0cea43c4baac16a3ebfa1697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
