@@ -70,6 +70,30 @@
       "revId": "542d80e11e65110709a7e41b7814a652595f30d7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d68e8448_e7a46cec",
+        "filename": "services/minijail/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-16T05:38:12Z",
+      "side": 1,
+      "message": "could we combine this with the above libavservices_minijail and just\nmake it available to all 3 variants (core, vendor, product). \nand have everyone refer to it as \u0027libavservices_minijail\u0027\nand retire the name \u0027libavservices_minijail_vendor\u0027\n\nthat would seem more consistent and everyone is just saying \"i want whatever version of libavservices is appropriate to where I get installed\".\n\nI don\u0027t know you say that with combinations of \u0027product_specific\u0027 and \u0027vendor_available\u0027 and\nperhaps something else to indicate core availability.",
+      "parentUuid": "58aaffab_542932f9",
+      "range": {
+        "startLine": 26,
+        "startChar": 47,
+        "endLine": 26,
+        "endChar": 60
+      },
+      "revId": "542d80e11e65110709a7e41b7814a652595f30d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
