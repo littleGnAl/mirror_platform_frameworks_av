@@ -22,6 +22,30 @@
       "revId": "e9449464a998151992281b3ef5eddecf51e6684e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5802afaf_c6af4229",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-16T18:57:07Z",
+      "side": 1,
+      "message": "I would, but the CL that merged into master doesn\u0027t have\na Change-Id line that I can copy/tweak into here.\nNot sure why gerrit didn\u0027t add one.\n\nthis is a cherry pick from that CL and the treehugger run did not complain, so I\u0027m going to assume it\u0027ll work out. I\u0027ll rerun\ntree hugger before I submit this.",
+      "parentUuid": "39454f7e_dd31f194",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 57
+      },
+      "revId": "e9449464a998151992281b3ef5eddecf51e6684e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
