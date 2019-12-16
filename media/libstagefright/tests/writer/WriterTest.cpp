@@ -29,9 +29,9 @@
 
 #include <media/stagefright/AACWriter.h>
 #include <media/stagefright/AMRWriter.h>
-#include <media/stagefright/OggWriter.h>
-#include <media/stagefright/MPEG4Writer.h>
 #include <media/stagefright/MPEG2TSWriter.h>
+#include <media/stagefright/MPEG4Writer.h>
+#include <media/stagefright/OggWriter.h>
 #include <webm/WebmWriter.h>
 
 #include "WriterTestEnvironment.h"
@@ -258,14 +258,11 @@ TEST_P(WriterTest, CreateWriterTest) {
     string outputFile = OUTPUT_FILE_NAME;
     int32_t fd =
             open(outputFile.c_str(), O_CREAT | O_LARGEFILE | O_TRUNC | O_RDWR, S_IRUSR | S_IWUSR);
-    if (fd < 0) return;
+    ASSERT_GE(fd, 0) << "Failed to open output file to dump writer's data";
 
     // Creating writer within a test scope. Destructor should be called when the test ends
-    int32_t status = createWriter(fd);
-    if (status) {
-        cout << "Failed to create writer for output format:" << GetParam().first << "\n";
-        ASSERT_TRUE(false);
-    }
+    ASSERT_EQ((status_t)OK, createWriter(fd))
+            << "Failed to create writer for output format:" << GetParam().first;
 }
 
 TEST_P(WriterTest, WriterTest) {
@@ -276,38 +273,32 @@ TEST_P(WriterTest, WriterTest) {
     string outputFile = OUTPUT_FILE_NAME;
     int32_t fd =
             open(outputFile.c_str(), O_CREAT | O_LARGEFILE | O_TRUNC | O_RDWR, S_IRUSR | S_IWUSR);
-    if (fd < 0) return;
+    ASSERT_GE(fd, 0) << "Failed to open output file to dump writer's data";
+
     int32_t status = createWriter(fd);
-    if (status) {
-        cout << "Failed to create writer for output format:" << writerFormat << "\n";
-        ASSERT_TRUE(false);
-    }
+    ASSERT_EQ((status_t)OK, status) << "Failed to create writer for output format:" << writerFormat;
+
     string inputFile = gEnv->getRes();
     string inputInfo = gEnv->getRes();
     configFormat param;
     bool isAudio;
     int32_t inputFileIdx = GetParam().second;
     getFileDetails(inputFile, inputInfo, param, isAudio, inputFileIdx);
-    if (!inputFile.compare(gEnv->getRes())) {
-        ALOGV("No input file specified");
-        return;
-    }
+    ASSERT_NE(inputFile.compare(gEnv->getRes()), 0) << "No input file specified";
+
     getInputBufferInfo(inputFile, inputInfo);
     status = addWriterSource(isAudio, param);
-    if (status) {
-        cout << "Failed to add source for " << writerFormat << "Writer \n";
-        ASSERT_TRUE(false);
-    }
-    CHECK_EQ((status_t)OK, mWriter->start(mFileMeta.get()));
+    ASSERT_EQ((status_t)OK, status) << "Failed to add source for " << writerFormat << "Writer";
+
+    status = mWriter->start(mFileMeta.get());
+    ASSERT_EQ((status_t)OK, status);
     status = sendBuffersToWriter(mInputStream, mBufferInfo, mInputFrameId, mCurrentTrack, 0,
                                  mBufferInfo.size());
     mCurrentTrack->stop();
-    if (status) {
-        cout << writerFormat << " writer failed \n";
-        mWriter->stop();
-        ASSERT_TRUE(false);
-    }
-    CHECK_EQ((status_t)OK, mWriter->stop());
+    ASSERT_EQ((status_t)OK, status) << writerFormat << " writer failed";
+
+    status = mWriter->stop();
+    ASSERT_EQ((status_t)OK, status) << "Failed to stop the writer";
     close(fd);
 }
 
@@ -319,41 +310,33 @@ TEST_P(WriterTest, PauseWriterTest) {
     string outputFile = OUTPUT_FILE_NAME;
     int32_t fd =
             open(outputFile.c_str(), O_CREAT | O_LARGEFILE | O_TRUNC | O_RDWR, S_IRUSR | S_IWUSR);
-    if (fd < 0) return;
+    ASSERT_GE(fd, 0) << "Failed to open output file to dump writer's data";
+
     int32_t status = createWriter(fd);
-    if (status) {
-        cout << "Failed to create writer for output format:" << writerFormat << "\n";
-        ASSERT_TRUE(false);
-    }
+    ASSERT_EQ((status_t)OK, status) << "Failed to create writer for output format:" << writerFormat;
+
     string inputFile = gEnv->getRes();
     string inputInfo = gEnv->getRes();
     configFormat param;
     bool isAudio;
     int32_t inputFileIdx = GetParam().second;
     getFileDetails(inputFile, inputInfo, param, isAudio, inputFileIdx);
-    if (!inputFile.compare(gEnv->getRes())) {
-        ALOGV("No input file specified");
-        return;
-    }
+    ASSERT_NE(inputFile.compare(gEnv->getRes()), 0) << "No input file specified";
+
     getInputBufferInfo(inputFile, inputInfo);
     status = addWriterSource(isAudio, param);
-    if (status) {
-        cout << "Failed to add source for " << writerFormat << "Writer \n";
-        ASSERT_TRUE(false);
-    }
-    CHECK_EQ((status_t)OK, mWriter->start(mFileMeta.get()));
+    ASSERT_EQ((status_t)OK, status) << "Failed to add source for " << writerFormat << "Writer";
+
+    status = mWriter->start(mFileMeta.get());
+    ASSERT_EQ((status_t)OK, status);
     status = sendBuffersToWriter(mInputStream, mBufferInfo, mInputFrameId, mCurrentTrack, 0,
                                  mBufferInfo.size() / 4);
-    if (status) {
-        cout << writerFormat << " writer failed \n";
-        mCurrentTrack->stop();
-        mWriter->stop();
-        ASSERT_TRUE(false);
-    }
+    ASSERT_EQ((status_t)OK, status) << writerFormat << " writer failed";
 
     bool isPaused = false;
     if ((mWriterName != standardWriters::MPEG2TS) && (mWriterName != standardWriters::MPEG4)) {
-        CHECK_EQ((status_t)OK, mWriter->pause());
+        status = mWriter->pause();
+        ASSERT_EQ((status_t)OK, status);
         isPaused = true;
     }
     // In the pause state, writers shouldn't write anything. Testing the writers for the same
@@ -361,17 +344,16 @@ TEST_P(WriterTest, PauseWriterTest) {
     status |= sendBuffersToWriter(mInputStream, mBufferInfo, mInputFrameId, mCurrentTrack,
                                   mInputFrameId, numFramesPaused, isPaused);
     if (isPaused) {
-        CHECK_EQ((status_t)OK, mWriter->start(mFileMeta.get()));
+        status = mWriter->start(mFileMeta.get());
+        ASSERT_EQ((status_t)OK, status);
     }
     status |= sendBuffersToWriter(mInputStream, mBufferInfo, mInputFrameId, mCurrentTrack,
                                   mInputFrameId, mBufferInfo.size());
     mCurrentTrack->stop();
-    if (status) {
-        cout << writerFormat << " writer failed \n";
-        mWriter->stop();
-        ASSERT_TRUE(false);
-    }
-    CHECK_EQ((status_t)OK, mWriter->stop());
+    ASSERT_EQ((status_t)OK, status) << writerFormat << " writer failed";
+
+    status = mWriter->stop();
+    ASSERT_EQ((status_t)OK, status) << "Failed to stop the writer";
     close(fd);
 }
 
@@ -384,7 +366,7 @@ TEST_P(WriterTest, MultiStartStopPauseTest) {
     string outputFile = OUTPUT_FILE_NAME;
     int32_t fd =
             open(outputFile.c_str(), O_CREAT | O_LARGEFILE | O_TRUNC | O_RDWR, S_IRUSR | S_IWUSR);
-    ASSERT_GE(fd, 0) << "Cannot open output file to dump writer's data";
+    ASSERT_GE(fd, 0) << "Failed to open output file to dump writer's data";
 
     string writerFormat = GetParam().first;
     int32_t status = createWriter(fd);
@@ -404,7 +386,7 @@ TEST_P(WriterTest, MultiStartStopPauseTest) {
 
     // first start should succeed.
     status = mWriter->start(mFileMeta.get());
-    ASSERT_EQ((status_t)OK, status) << "Couldn't start the writer";
+    ASSERT_EQ((status_t)OK, status) << "Could not start the writer";
 
     // Multiple start() may/may not succeed.
     // Writers are expected to not crash on multiple start() calls.
@@ -433,7 +415,7 @@ TEST_P(WriterTest, MultiStartStopPauseTest) {
 
     // first stop should succeed.
     status = mWriter->stop();
-    ASSERT_EQ((status_t)OK, status) << "Couldn't stop the writer";
+    ASSERT_EQ((status_t)OK, status) << "Failed to stop the writer";
     // Multiple stop() may/may not succeed.
     // Writers are expected to not crash on multiple stop() calls.
     for (int32_t count = 0; count < kMaxCount; count++) {
