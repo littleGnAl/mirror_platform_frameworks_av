@@ -22,6 +22,30 @@
       "revId": "22ecc222f50b4926d01f19cb308f14d82c5a5ff9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6049bf6f_aa47271e",
+        "filename": "media/libstagefright/codecs/amrwb/test/AmrwbDecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-12-16T13:30:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "184a331d_2eae1aae",
+      "range": {
+        "startLine": 50,
+        "startChar": 45,
+        "endLine": 50,
+        "endChar": 67
+      },
+      "revId": "22ecc222f50b4926d01f19cb308f14d82c5a5ff9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
