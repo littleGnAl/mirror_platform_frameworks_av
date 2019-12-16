@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "81e7fbc5_b4e3d8bc",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-12-16T13:31:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67975ab7_f286bc44",
+      "range": {
+        "startLine": 47,
+        "startChar": 43,
+        "endLine": 47,
+        "endChar": 67
+      },
+      "revId": "902aff1f8572af42ac951cdee2535a112b867f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a818fc53_3d1be221",
         "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2019-12-16T05:31:24Z",
       "side": 1,
       "message": "same logic here, since kSamplesPerFrame * kBitsPerSample / 8 \u003d\u003d L_FRAME * 8000/8 \u003d\u003d\n160 * 8000/8 \u003d\u003d 160k\n\nthis one is on the edge of what i\u0027d like to allocate as an array vs via malloc.\nfor a short duration... and because it really simplifies the logic here... I\u0027d\nprobably go ahead and use a static array to match it up with the mInputBuf allocation.\n\n\n[it does seem strange that the two sizes are so different in scale -- 64 bytes of input\nand 160kbytes of output. did I make a math mistake? or misunderstand how they are used?",
+      "range": {
+        "startLine": 50,
+        "startChar": 35,
+        "endLine": 50,
+        "endChar": 73
+      },
+      "revId": "902aff1f8572af42ac951cdee2535a112b867f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1900d472_b06b1a72",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-12-16T13:31:28Z",
+      "side": 1,
+      "message": "The value of kBitsPerSample is 16 and not 8000. So value of outputBufferSize comes to be 320. \nAlso the max value of L_TOTAL is 320.",
+      "parentUuid": "a818fc53_3d1be221",
       "range": {
         "startLine": 50,
         "startChar": 35,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cbe47fa5_8ff203e2",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-12-16T13:31:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b898cc0_a069fe8d",
+      "range": {
+        "startLine": 100,
+        "startChar": 40,
+        "endLine": 100,
+        "endChar": 49
+      },
+      "revId": "902aff1f8572af42ac951cdee2535a112b867f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "331faf22_1383e503",
         "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "902aff1f8572af42ac951cdee2535a112b867f5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63290469_2b09097e",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-12-16T13:31:28Z",
+      "side": 1,
+      "message": "Output buffer is 320 bytes of capacity.",
+      "parentUuid": "331faf22_1383e503",
+      "range": {
+        "startLine": 104,
+        "startChar": 63,
+        "endLine": 105,
+        "endChar": 62
+      },
+      "revId": "902aff1f8572af42ac951cdee2535a112b867f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
