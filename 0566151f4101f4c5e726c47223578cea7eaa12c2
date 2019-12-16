@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58dc7cff_82d57850",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-16T18:44:50Z",
+      "side": 1,
+      "message": "Create a constructor and destructor for this class and do all default initializations and deinit calls which don\u0027t require error checks on return values.\nLet us do this for all gtest classes that we have implemented recently.",
+      "range": {
+        "startLine": 42,
+        "startChar": 6,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "0566151f4101f4c5e726c47223578cea7eaa12c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e29142bb_f3fea05c",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-16T18:44:50Z",
+      "side": 1,
+      "message": "Define this as a constant along with others on line 35.",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 69
+      },
+      "revId": "0566151f4101f4c5e726c47223578cea7eaa12c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
