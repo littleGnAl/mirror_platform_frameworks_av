@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8651c655_fc58f61c",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-17T19:59:28Z",
+      "side": 1,
+      "message": "Move to line 312 above stop() as this is checking return of sendBuffersToWrite()",
+      "range": {
+        "startLine": 313,
+        "startChar": 3,
+        "endLine": 313,
+        "endChar": 72
+      },
+      "revId": "95ed8ca6ace0bd72a20b47cc0999b61234944566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de8b95f8_08c053b8",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-17T19:59:28Z",
+      "side": 1,
+      "message": "Should this be added below both calls to sendBuffersToWriter and remove status |\u003d and instead make it status \u003d ?",
+      "range": {
+        "startLine": 368,
+        "startChar": 4,
+        "endLine": 368,
+        "endChar": 19
+      },
+      "revId": "95ed8ca6ace0bd72a20b47cc0999b61234944566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dde6f65b_72b6c57d",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 412,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-17T19:59:28Z",
+      "side": 1,
+      "message": "Should we test return value here and below on 427 or they are allowed to fail?",
+      "range": {
+        "startLine": 412,
+        "startChar": 4,
+        "endLine": 412,
+        "endChar": 10
+      },
+      "revId": "95ed8ca6ace0bd72a20b47cc0999b61234944566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
