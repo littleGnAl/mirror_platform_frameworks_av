@@ -45,6 +45,30 @@
       "revId": "78f24aa4a7d23330eae9ef00a07c1bc1abf9b923",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f540b3ce_ff220067",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-17T05:18:35Z",
+      "side": 1,
+      "message": "Sure. we will explore this in a follow up CL.\nthere are few gtest requirements w.r.t. calling asserts in functions that aren\u0027t test routines.\nwe may need to check the return status differently.",
+      "parentUuid": "3624f253_b9256294",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 0
+      },
+      "revId": "78f24aa4a7d23330eae9ef00a07c1bc1abf9b923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
