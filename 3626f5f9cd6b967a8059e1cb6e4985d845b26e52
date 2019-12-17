@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "524061e8_c5f0bb89",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-17T05:26:24Z",
+      "side": 1,
+      "message": "i like these to be in a constructor.\nHarish pointed me at some documentation about \u0027constructor or Setup()\u0027.  one of the args for Setup() is that they can\u0027t use the ASSERT() constructs in the constructor.\n\nI like -- especially for pointers -- that we initialize them in a constructor\nand  probably delete them in a destructor.  and \u0027delete them\u0027 means:\nif (ptr) { delete ptr; ptr\u003dnullptr;}  so that we know it\u0027s been taken care of.",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aef6b208_e623b42b",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-17T05:26:24Z",
+      "side": 1,
+      "message": "this could be static const.",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 66
+      },
+      "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5866016_165b9a8f",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-17T05:26:24Z",
+      "side": 1,
+      "message": "what\u0027s the difference between EXPECT_EQ() and ASSERT_EQ()?\n\nwe do want it to fail at this point (e.g. if it didn\u0027t successfully setDataSource())",
+      "range": {
+        "startLine": 213,
+        "startChar": 4,
+        "endLine": 213,
+        "endChar": 14
+      },
+      "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b1cc638_3529ad1e",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-17T05:26:24Z",
+      "side": 1,
+      "message": "track \u003d nullptr;\n\nactually, don\u0027t declare it here.",
+      "range": {
+        "startLine": 270,
+        "startChar": 21,
+        "endLine": 270,
+        "endChar": 28
+      },
+      "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3bcc36f0_df8e07db",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-17T05:26:24Z",
+      "side": 1,
+      "message": "sequencing:\ndeclare / assert / declare / assert\ninstead of the current declare/declare/assert/assert\n\ni\u0027d probably move line 270 (declaration of track) to either front or end of this sequence\ninstead of the middle.  to avoid disrupting the declare/assert/declare/assert... sequence\nwhich causes me to say \"hey wait -- where\u0027s the assert for this\".",
+      "range": {
+        "startLine": 271,
+        "startChar": 4,
+        "endLine": 274,
+        "endChar": 85
+      },
+      "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e8469c2_2104c11d",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-17T05:26:24Z",
+      "side": 1,
+      "message": "declare track here.\n\ndo we get our own copy of the track?  e.g. are we supposed to delete it or\ndoes the destruction of mExtractor delete it?\n\nsee my comments about this in the next routine down...",
+      "range": {
+        "startLine": 277,
+        "startChar": 8,
+        "endLine": 277,
+        "endChar": 13
+      },
+      "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14ce6cda_44d88978",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-17T05:26:24Z",
+      "side": 1,
+      "message": "move this up inside of the loop... afte rline 324.",
+      "range": {
+        "startLine": 326,
+        "startChar": 11,
+        "endLine": 326,
+        "endChar": 16
+      },
+      "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f68c663_2e533405",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-17T05:26:24Z",
+      "side": 1,
+      "message": "declare track here",
+      "range": {
+        "startLine": 349,
+        "startChar": 12,
+        "endLine": 349,
+        "endChar": 17
+      },
+      "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
