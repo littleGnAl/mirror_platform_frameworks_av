@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2d7c5f6_b279ba5c",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-17T05:07:28Z",
+      "side": 1,
+      "message": "bytesCount and size are signed; this means we could invoke malloc() in line 102 with a\nnegative number. which would be interpreted as being hugely positive.",
+      "range": {
+        "startLine": 101,
+        "startChar": 8,
+        "endLine": 101,
+        "endChar": 50
+      },
+      "revId": "78f24aa4a7d23330eae9ef00a07c1bc1abf9b923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3624f253_b9256294",
+        "filename": "media/libstagefright/flac/dec/test/FlacDecoderTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-17T05:07:28Z",
+      "side": 1,
+      "message": "going forward....\nI have a preference for doing the ASSERT_NE(data,nullptr) test here because\nit hightlights exactly where we failed.\n\nyes, there is an ALOG() before we return and we do an assert at the return point.\nBut what I like more is \"here\u0027s the exact place it went bad in a non-recoverable way\".\n\nit\u0027s a bit of a stylistic preference; not a correctness problem.",
+      "range": {
+        "startLine": 103,
+        "startChar": 8,
+        "endLine": 107,
+        "endChar": 0
+      },
+      "revId": "78f24aa4a7d23330eae9ef00a07c1bc1abf9b923",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
