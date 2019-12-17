@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b2492318_3d3fd086",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-12-17T11:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "524061e8_c5f0bb89",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 56,
+        "endChar": 29
+      },
+      "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "aef6b208_e623b42b",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 7
@@ -45,6 +69,30 @@
       "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1a8bedd_40f5ed01",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-12-17T11:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aef6b208_e623b42b",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 66
+      },
+      "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "961563c1_b7f73ec2",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-12-17T11:20:47Z",
+      "side": 1,
+      "message": "Done\nChanged to ASSERT in other places too.\nHowever, I have retained EXPECT in seek test while comparing timestamps. ASSERT will abort the test. Seek Test runs for multiple seek modes and a cumulative report of what all modes failed would give better results. Should I change it to ASSERT too?",
+      "parentUuid": "e5866016_165b9a8f",
+      "range": {
+        "startLine": 213,
+        "startChar": 4,
+        "endLine": 213,
+        "endChar": 14
+      },
+      "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b1cc638_3529ad1e",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 7
@@ -91,6 +163,30 @@
       "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1af3bf0e_d7a0eb13",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-12-17T11:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b1cc638_3529ad1e",
+      "range": {
+        "startLine": 270,
+        "startChar": 21,
+        "endLine": 270,
+        "endChar": 28
+      },
+      "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "62648606_1ae991ed",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-12-17T11:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3bcc36f0_df8e07db",
+      "range": {
+        "startLine": 271,
+        "startChar": 4,
+        "endLine": 274,
+        "endChar": 85
+      },
+      "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1e8469c2_2104c11d",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 7
@@ -128,6 +248,30 @@
       "writtenOn": "2019-12-17T05:26:24Z",
       "side": 1,
       "message": "declare track here.\n\ndo we get our own copy of the track?  e.g. are we supposed to delete it or\ndoes the destruction of mExtractor delete it?\n\nsee my comments about this in the next routine down...",
+      "range": {
+        "startLine": 277,
+        "startChar": 8,
+        "endLine": 277,
+        "endChar": 13
+      },
+      "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "890cebe9_e73da119",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-12-17T11:20:47Z",
+      "side": 1,
+      "message": "getTrack creates a new Source and returns it to the caller.\nfor eg: return new WAVSource(..);\nSince this is not tracked by any class variable, destructor cannot delete it\nSo it become\u0027s the caller\u0027s responsibility to delete this object.",
+      "parentUuid": "1e8469c2_2104c11d",
       "range": {
         "startLine": 277,
         "startChar": 8,
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "24704a75_23fcc967",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 326,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-12-17T11:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14ce6cda_44d88978",
+      "range": {
+        "startLine": 326,
+        "startChar": 11,
+        "endLine": 326,
+        "endChar": 16
+      },
+      "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9f68c663_2e533405",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 7
@@ -183,6 +351,30 @@
       "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ca0b0d0_51d40a61",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2019-12-17T11:20:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f68c663_2e533405",
+      "range": {
+        "startLine": 349,
+        "startChar": 12,
+        "endLine": 349,
+        "endChar": 17
+      },
+      "revId": "3626f5f9cd6b967a8059e1cb6e4985d845b26e52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
