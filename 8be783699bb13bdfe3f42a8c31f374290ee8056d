@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4680a3fe_ee720fee",
+        "filename": "media/libstagefright/codecs/amrwb/test/AmrwbDecoderTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-18T22:19:51Z",
+      "side": 1,
+      "message": "we could declare this [16] since we know the size limitations.\n(based on a 4-bit field we parse frome the mode byte.",
+      "range": {
+        "startLine": 39,
+        "startChar": 24,
+        "endLine": 39,
+        "endChar": 27
+      },
+      "revId": "8be783699bb13bdfe3f42a8c31f374290ee8056d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9683ce48_43da9544",
+        "filename": "media/libstagefright/codecs/amrwb/test/AmrwbDecoderTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-18T22:19:51Z",
+      "side": 1,
+      "message": "i like the fixed size allocations.\ni like even more that it\u0027s local to the DecodeFrames() routine instead of\nbeing in the enclosing class.",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 12
+      },
+      "revId": "8be783699bb13bdfe3f42a8c31f374290ee8056d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5d83ba4b_e092a0bf",
+        "filename": "media/libstagefright/codecs/amrwb/test/AmrwbDecoderTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-18T22:19:51Z",
+      "side": 1,
+      "message": "should be 0xFFFC or 0xfffc  -- consistent case.\n\nwe\u0027re dropping the bottom 2 bits of each sample... what\u0027s the reason.",
+      "range": {
+        "startLine": 112,
+        "startChar": 38,
+        "endLine": 112,
+        "endChar": 42
+      },
+      "revId": "8be783699bb13bdfe3f42a8c31f374290ee8056d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
