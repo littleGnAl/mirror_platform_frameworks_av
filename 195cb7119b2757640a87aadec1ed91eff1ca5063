@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0db80c39_9dc89b7a",
+        "filename": "media/libstagefright/codecs/mp3dec/test/Mp3DecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-18T21:57:09Z",
+      "side": 1,
+      "message": "we should assert that this is non-zero.",
+      "range": {
+        "startLine": 112,
+        "startChar": 11,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "195cb7119b2757640a87aadec1ed91eff1ca5063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c194cfea_71fb40be",
+        "filename": "media/libstagefright/codecs/mp3dec/test/Mp3DecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-18T21:57:09Z",
+      "side": 1,
+      "message": "assert this is non-zero; check all places we\u0027re doing this.",
+      "range": {
+        "startLine": 142,
+        "startChar": 11,
+        "endLine": 142,
+        "endChar": 26
+      },
+      "revId": "195cb7119b2757640a87aadec1ed91eff1ca5063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e7ebcd3_1df430d9",
+        "filename": "media/libstagefright/codecs/mp3dec/test/Mp3DecoderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-18T21:57:09Z",
+      "side": 1,
+      "message": "this will need the work that sets these up to be downloaded...\nwhat goes into an AndroidTest.xml;\nHarish is working on some of the underpinnings that need to be handled for that.",
+      "range": {
+        "startLine": 179,
+        "startChar": 42,
+        "endLine": 183,
+        "endChar": 0
+      },
+      "revId": "195cb7119b2757640a87aadec1ed91eff1ca5063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
