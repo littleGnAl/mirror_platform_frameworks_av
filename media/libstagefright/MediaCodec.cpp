@@ -59,6 +59,8 @@
 #include <media/stagefright/PersistentSurface.h>
 #include <media/stagefright/SurfaceUtils.h>
 #include <private/android_filesystem_config.h>
+#include <ui/GraphicBufferMapper.h>
+#include <ui/GraphicBuffer.h>
 #include <utils/Singleton.h>
 
 namespace android {
@@ -2041,7 +2043,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                     }
 
                     const char *owner = mCodecInfo->getOwnerName();
-                    if (mComponentName.startsWith("OMX.google.")
+                    if (mComponentName.startsWith("OMX.xgoogle.")
                             && (owner == nullptr || strncmp(owner, "default", 8) == 0)) {
                         mFlags |= kFlagUsesSoftwareRenderer;
                     } else {
@@ -2092,7 +2094,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                         // meaningful and confusing for an encoder in a transcoder scenario
                         mInputFormat->setInt32("allow-frame-drop", mAllowFrameDroppingBySurface);
                     }
-                    ALOGV("[%s] configured as input format: %s, output format: %s",
+                    ALOGE("hubo:[%s] configured as input format: %s, output format: %s",
                             mComponentName.c_str(),
                             mInputFormat->debugString(4).c_str(),
                             mOutputFormat->debugString(4).c_str());
@@ -2100,6 +2102,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                     if (mOutputFormat->findInt32("using-sw-renderer", &usingSwRenderer)
                             && usingSwRenderer) {
                         mFlags |= kFlagUsesSoftwareRenderer;
+                        ALOGE("hubo: using software renderer %s %d", __func__, __LINE__);
                     }
                     setState(CONFIGURED);
                     (new AMessage)->postReply(mReplyID);
@@ -3473,6 +3476,7 @@ status_t MediaCodec::onReleaseOutputBuffer(const sp<AMessage> &msg) {
                 }
             }
         }
+        ALOGE("hubo: renderOutputBuffer here %s %d", __func__, __LINE__);
         mBufferChannel->renderOutputBuffer(buffer, renderTimeNs);
     } else {
         mBufferChannel->discardBuffer(buffer);

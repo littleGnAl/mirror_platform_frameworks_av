@@ -706,6 +706,8 @@ status_t OMXNodeInstance::setPortMode(OMX_U32 portIndex, IOMX::PortMode mode) {
         return INVALID_OPERATION;
     }
 
+    ALOGE("hubo: setting mode %s(%d), port %d", asString(mode), mode, portIndex);
+
     CLOG_CONFIG(setPortMode, "%s(%d), port %d", asString(mode), mode, portIndex);
 
     status_t err = OK;
@@ -724,11 +726,15 @@ status_t OMXNodeInstance::setPortMode(OMX_U32 portIndex, IOMX::PortMode mode) {
             err = enableNativeBuffers_l(
                     portIndex, OMX_TRUE /*graphic*/, OMX_TRUE);
             if (err != OK) {
+                ALOGE("hubo: enable nativebuffers failed");
                 break;
             }
         }
         (void)enableNativeBuffers_l(portIndex, OMX_FALSE /*graphic*/, OMX_FALSE);
         err = storeMetaDataInBuffers_l(portIndex, OMX_TRUE, NULL);
+            if (err != OK) {
+                ALOGE("hubo: enable storemetadatainbuffers failed");
+            }
         break;
     }
 
@@ -811,6 +817,8 @@ status_t OMXNodeInstance::setPortMode(OMX_U32 portIndex, IOMX::PortMode mode) {
 
     if (err == OK) {
         mPortMode[portIndex] = mode;
+    } else {
+                ALOGE("hubo: setport mode failed %d", err);
     }
     return err;
 }
@@ -839,8 +847,8 @@ status_t OMXNodeInstance::enableNativeBuffers_l(
         params.enable = enable;
 
         err = OMX_SetParameter(mHandle, index, &params);
-        CLOG_IF_ERROR(setParameter, err, "%s(%#x): %s:%u en=%d", name, index,
-                      portString(portIndex), portIndex, enable);
+        CLOG_IF_ERROR(setParameter, err, "%s(%#x): %s:%u en=%d", name, index, portString(portIndex), portIndex, enable);
+        ALOGE("inside enableNativeBuffers_l hubo: %s(%#x): %s:%u en=%d", name, index, portString(portIndex), portIndex, enable);
         if (!graphic) {
             if (err == OMX_ErrorNone) {
                 mSecureBufferType[portIndex] =
