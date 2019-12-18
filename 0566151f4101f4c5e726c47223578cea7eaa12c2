@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "62723a2a_7759a714",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-12-18T04:04:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58dc7cff_82d57850",
+      "range": {
+        "startLine": 42,
+        "startChar": 6,
+        "endLine": 42,
+        "endChar": 22
+      },
+      "revId": "0566151f4101f4c5e726c47223578cea7eaa12c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e29142bb_f3fea05c",
         "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "0566151f4101f4c5e726c47223578cea7eaa12c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ef2f35a_b18d6ff4",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-12-18T04:04:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e29142bb_f3fea05c",
+      "range": {
+        "startLine": 69,
+        "startChar": 4,
+        "endLine": 69,
+        "endChar": 69
+      },
+      "revId": "0566151f4101f4c5e726c47223578cea7eaa12c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
