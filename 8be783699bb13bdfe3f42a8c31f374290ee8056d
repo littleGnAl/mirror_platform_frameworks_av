@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "060bc05a_3bc6329c",
+        "filename": "media/libstagefright/codecs/amrwb/test/AmrwbDecoderTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-12-19T17:11:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4680a3fe_ee720fee",
+      "range": {
+        "startLine": 39,
+        "startChar": 24,
+        "endLine": 39,
+        "endChar": 27
+      },
+      "revId": "8be783699bb13bdfe3f42a8c31f374290ee8056d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9683ce48_43da9544",
         "filename": "media/libstagefright/codecs/amrwb/test/AmrwbDecoderTest.cpp",
         "patchSetId": 7
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "134b970a_7e0e1b4f",
+        "filename": "media/libstagefright/codecs/amrwb/test/AmrwbDecoderTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-12-19T17:11:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "9683ce48_43da9544",
+      "range": {
+        "startLine": 74,
+        "startChar": 4,
+        "endLine": 76,
+        "endChar": 12
+      },
+      "revId": "8be783699bb13bdfe3f42a8c31f374290ee8056d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5d83ba4b_e092a0bf",
         "filename": "media/libstagefright/codecs/amrwb/test/AmrwbDecoderTest.cpp",
         "patchSetId": 7
@@ -68,6 +116,30 @@
       "revId": "8be783699bb13bdfe3f42a8c31f374290ee8056d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8dc641d0_c0ebce10",
+        "filename": "media/libstagefright/codecs/amrwb/test/AmrwbDecoderTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2019-12-19T17:11:13Z",
+      "side": 1,
+      "message": "AMR decoders is supposed to have 14-bit output.",
+      "parentUuid": "5d83ba4b_e092a0bf",
+      "range": {
+        "startLine": 112,
+        "startChar": 38,
+        "endLine": 112,
+        "endChar": 42
+      },
+      "revId": "8be783699bb13bdfe3f42a8c31f374290ee8056d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
