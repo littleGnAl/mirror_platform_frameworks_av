@@ -46,6 +46,30 @@
       "revId": "9f1c7b7a3382c5f38a2bbc4865f51d9402a8c18b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "499ce897_090e2c4d",
+        "filename": "media/tests/benchmark/src/native/common/Stats.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-19T00:15:47Z",
+      "side": 1,
+      "message": "Marking this as resolved to ensure submit is not blocked once treehugger validates the build",
+      "parentUuid": "69d597cf_19bdb3b5",
+      "range": {
+        "startLine": 62,
+        "startChar": 4,
+        "endLine": 66,
+        "endChar": 1
+      },
+      "revId": "9f1c7b7a3382c5f38a2bbc4865f51d9402a8c18b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
