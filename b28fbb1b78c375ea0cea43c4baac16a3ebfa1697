@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "88e0bfdd_8b3d1ba3",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-19T16:15:11Z",
+      "side": 1,
+      "message": "ok. then this loop control seems fine.",
+      "parentUuid": "09e45fc1_a6c8108d",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 23
+      },
+      "revId": "b28fbb1b78c375ea0cea43c4baac16a3ebfa1697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a8687d1_2b8f570a",
         "filename": "media/libstagefright/id3/test/ID3Test.cpp",
         "patchSetId": 4
@@ -136,6 +160,53 @@
         "startChar": 27,
         "endLine": 119,
         "endChar": 44
+      },
+      "revId": "b28fbb1b78c375ea0cea43c4baac16a3ebfa1697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ec5b08d_0deac011",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-19T16:15:11Z",
+      "side": 1,
+      "message": "for a test case that we know has legal album art (even large album art), we should be flagging an error if the library does not return that album art.\n\ni think that we need to change the test so that it fails in this case...\nthat will mean that we will have a bug to file against the underlying id3 library; that\u0027s ok.\n\nthe check on the size using 3mb -- that has to be reworked here in the test.\n\n(I wrote this last comment before I read the updated patch. it appears that most of\nit is handled in patchset 5. only thing missing is that we should file a bug against the id3 library for not handling the large-but-legal album art).",
+      "parentUuid": "cc5adb47_38e9fd55",
+      "range": {
+        "startLine": 119,
+        "startChar": 27,
+        "endLine": 119,
+        "endChar": 44
+      },
+      "revId": "b28fbb1b78c375ea0cea43c4baac16a3ebfa1697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f0faa7e_ad67b972",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-19T16:15:11Z",
+      "side": 1,
+      "message": "should we check that we can read each of these pieces of album art,\nnot just the headers, but retrieve the album art itself.\ninvoke the equivalent of tag.getAlbumArt() as we do in line 110, although I\u0027m not\nsure just how it gets flavored with the iterator so that we know which art we\u0027re getting.",
+      "range": {
+        "startLine": 143,
+        "startChar": 8,
+        "endLine": 143,
+        "endChar": 67
       },
       "revId": "b28fbb1b78c375ea0cea43c4baac16a3ebfa1697",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",

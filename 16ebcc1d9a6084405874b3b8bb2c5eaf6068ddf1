@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e634eb6b_d46043b0",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-19T16:15:11Z",
+      "side": 1,
+      "message": "the calls here would be better as:\nASSERT_NE(data, nullptr)\nand\nASSERT_EQ(data, nullptr)",
+      "range": {
+        "startLine": 112,
+        "startChar": 8,
+        "endLine": 112,
+        "endChar": 25
+      },
+      "revId": "16ebcc1d9a6084405874b3b8bb2c5eaf6068ddf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9fc605b_c9721554",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-19T16:15:11Z",
+      "side": 1,
+      "message": "this one has large-but-legal album art, right?\nif so, this needs to be true.\nYes, it means the test will report a failure.  that\u0027s what we want when the underlying\nid3 library is not performing correctly (e.g. to spec).",
+      "range": {
+        "startLine": 183,
+        "startChar": 87,
+        "endLine": 183,
+        "endChar": 93
+      },
+      "revId": "16ebcc1d9a6084405874b3b8bb2c5eaf6068ddf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f625e878_33c6b428",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2019-12-19T16:15:11Z",
+      "side": 1,
+      "message": "this one as 1 piece of album art, not 0.\n\nI\u0027d like to see a couple files from lines 177.183 also appear here.\ni want the multi-test to see if a single-album-art file returns 1\ni want to see if a no-album-art file returns 0.",
+      "range": {
+        "startLine": 189,
+        "startChar": 85,
+        "endLine": 189,
+        "endChar": 89
+      },
+      "revId": "16ebcc1d9a6084405874b3b8bb2c5eaf6068ddf1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
