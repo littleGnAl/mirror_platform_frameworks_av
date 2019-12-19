@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "09e45fc1_a6c8108d",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-12-19T04:03:18Z",
+      "side": 1,
+      "message": "There is not limit on the number of tags, only metadata size limit is imposed by the specification. The list may be empty depending on the test vector. This test is iterating through all tags returned by the component.",
+      "parentUuid": "eac49232_6af37429",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 23
+      },
+      "revId": "b28fbb1b78c375ea0cea43c4baac16a3ebfa1697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a8687d1_2b8f570a",
         "filename": "media/libstagefright/id3/test/ID3Test.cpp",
         "patchSetId": 4
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "4ef0e1fa_6e3f40e7",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-12-19T04:03:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a8687d1_2b8f570a",
+      "range": {
+        "startLine": 89,
+        "startChar": 11,
+        "endLine": 89,
+        "endChar": 30
+      },
+      "revId": "b28fbb1b78c375ea0cea43c4baac16a3ebfa1697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39ebf0e1_015afcf9",
         "filename": "media/libstagefright/id3/test/ID3Test.cpp",
         "patchSetId": 4
@@ -59,6 +107,30 @@
       "writtenOn": "2019-12-16T06:00:49Z",
       "side": 1,
       "message": "is this a specification limit?\nthe comment on 117 makes it sound like it\u0027s just how large our id3 library supports,\nwhich is different from what we might find in a file.\n\naccording to wikipedia:\nID3v2 tags are of variable size, and usually occur at the start of the file, which aids streaming media as the metadata is essentially available as soon as the file starts streaming instead of requiring the entire file to be read first as is the case with ID3v1. ID3v2 tags consist of a number of frames, each of which contains a piece of metadata. For example, the TIT2 frame contains the title, and the WOAR frame contains the URL of the artist\u0027s website. Frames can be up to 16MB in length, while total tag size is limited to 256MB. The internationalization problem was solved by allowing the encoding of strings not only in ISO-8859-1, but also in Unicode.\n\nso the ID3 implementation isn\u0027t what we should use as a limit here.\nwe should be ensuring that what comes back is legal by the standard.",
+      "range": {
+        "startLine": 119,
+        "startChar": 27,
+        "endLine": 119,
+        "endChar": 44
+      },
+      "revId": "b28fbb1b78c375ea0cea43c4baac16a3ebfa1697",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc5adb47_38e9fd55",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2019-12-19T04:03:18Z",
+      "side": 1,
+      "message": "Added a test vector which has an album art of size greater than 3MB, the library takes it as no album art and hence, our test passes. \nTest vector: \"bbb_44100hz_2ch_128kbps_mp3_5mins_largeSize.mp3\"\nAlso, the library gives extra number of tags in this test vector some of which are empty.",
+      "parentUuid": "39ebf0e1_015afcf9",
       "range": {
         "startLine": 119,
         "startChar": 27,
