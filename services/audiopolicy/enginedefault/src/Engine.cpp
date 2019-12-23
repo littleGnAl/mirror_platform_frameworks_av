@@ -212,6 +212,8 @@ DeviceVector Engine::getDevicesForStrategyInt(legacy_strategy strategy,
                     primaryOutput->supportedDevices().types());
             availPrimaryOutputDevices.add(
                     availableOutputDevices.getDevicesFromType(AUDIO_DEVICE_OUT_HEARING_AID));
+            availPrimaryOutputDevices.add(
+                    availableOutputDevices.getDevicesFromType(AUDIO_DEVICE_OUT_BLE_HEADSET));
 
             if ((availableInputDevices.getDevice(AUDIO_DEVICE_IN_TELEPHONY_RX,
                     String8(""), AUDIO_FORMAT_DEFAULT) == nullptr) ||
@@ -238,6 +240,9 @@ DeviceVector Engine::getDevicesForStrategyInt(legacy_strategy strategy,
 
         default:    // FORCE_NONE
             devices = availableOutputDevices.getDevicesFromType(AUDIO_DEVICE_OUT_HEARING_AID);
+            if (!devices.isEmpty()) break;
+
+            devices = availableOutputDevices.getDevicesFromType(AUDIO_DEVICE_OUT_BLE_HEADSET);
             if (!devices.isEmpty()) break;
             // when not in a phone call, phone strategy should route STREAM_VOICE_CALL to A2DP
             if (!isInCall() &&
@@ -388,6 +393,12 @@ DeviceVector Engine::getDevicesForStrategyInt(legacy_strategy strategy,
         if ((devices2.isEmpty()) &&
                 (getForceUse(AUDIO_POLICY_FORCE_FOR_MEDIA) != AUDIO_POLICY_FORCE_NO_BT_A2DP)) {
             devices2 = availableOutputDevices.getDevicesFromType(AUDIO_DEVICE_OUT_HEARING_AID);
+            if (devices2.isEmpty()) {
+                devices2 = availableOutputDevices.getDevicesFromType(AUDIO_DEVICE_OUT_BLE_HEADSET);
+                if (devices2.isEmpty()) {
+                    devices2 = availableOutputDevices.getDevicesFromType(AUDIO_DEVICE_OUT_BLE_SPEAKER);
+                }
+            }
         }
         if ((devices2.isEmpty()) &&
             (getForceUse(AUDIO_POLICY_FORCE_FOR_MEDIA) == AUDIO_POLICY_FORCE_SPEAKER)) {
@@ -533,6 +544,7 @@ sp<DeviceDescriptor> Engine::getDeviceForInputSource(audio_source_t inputSource)
 
         default:    // FORCE_NONE
             device = availableDevices.getFirstExistingDevice({
+                    AUDIO_DEVICE_IN_BLE_HEADSET,
                     AUDIO_DEVICE_IN_WIRED_HEADSET, AUDIO_DEVICE_IN_USB_HEADSET,
                     AUDIO_DEVICE_IN_USB_DEVICE, AUDIO_DEVICE_IN_BUILTIN_MIC});
             break;
@@ -556,7 +568,8 @@ sp<DeviceDescriptor> Engine::getDeviceForInputSource(audio_source_t inputSource)
             if (device != nullptr) break;
         }
         device = availableDevices.getFirstExistingDevice({
-                AUDIO_DEVICE_IN_WIRED_HEADSET, AUDIO_DEVICE_IN_USB_HEADSET,
+                AUDIO_DEVICE_IN_BLE_HEADSET, AUDIO_DEVICE_IN_WIRED_HEADSET,
+                AUDIO_DEVICE_IN_USB_HEADSET,
                 AUDIO_DEVICE_IN_USB_DEVICE, AUDIO_DEVICE_IN_BUILTIN_MIC});
         break;
     case AUDIO_SOURCE_CAMCORDER:
@@ -573,6 +586,7 @@ sp<DeviceDescriptor> Engine::getDeviceForInputSource(audio_source_t inputSource)
         break;
     case AUDIO_SOURCE_VOICE_PERFORMANCE:
         device = availableDevices.getFirstExistingDevice({
+                AUDIO_DEVICE_IN_BLE_HEADSET,
                 AUDIO_DEVICE_IN_WIRED_HEADSET, AUDIO_DEVICE_IN_USB_HEADSET,
                 AUDIO_DEVICE_IN_USB_DEVICE, AUDIO_DEVICE_IN_BUILTIN_MIC});
         break;
