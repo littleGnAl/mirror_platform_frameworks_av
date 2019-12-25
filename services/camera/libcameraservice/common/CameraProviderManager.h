@@ -78,6 +78,7 @@ public:
                 &notification) = 0;
         virtual sp<hardware::camera::provider::V2_4::ICameraProvider> getService(
                 const std::string &serviceName) = 0;
+        virtual hardware::hidl_vec<hardware::hidl_string> listServices() = 0;
         virtual ~ServiceInteractionProxy() {}
     };
 
@@ -95,6 +96,8 @@ public:
                 const std::string &serviceName) override {
             return hardware::camera::provider::V2_4::ICameraProvider::getService(serviceName);
         }
+
+        virtual hardware::hidl_vec<hardware::hidl_string> listServices() override;
     };
 
     /**
@@ -270,7 +273,11 @@ public:
     bool isLogicalCamera(const std::string& id, std::vector<std::string>* physicalCameraIds);
 
     bool isPublicallyHiddenSecureCamera(const std::string& id) const;
+<<<<<<< HEAD   (11c3ba Merge changes from topic "debug-hide-non-HAL3-gsi" into andr)
     bool isHiddenPhysicalCamera(const std::string& cameraId) const;
+=======
+    bool isHiddenPhysicalCamera(const std::string& cameraId);
+>>>>>>> BRANCH (d6f189 Merge cherrypicks of [9537713, 9537701, 9537702, 9537538, 95)
 
     static const float kDepthARTolerance;
 private:
@@ -567,7 +574,7 @@ private:
             hardware::hidl_version minVersion = hardware::hidl_version{0,0},
             hardware::hidl_version maxVersion = hardware::hidl_version{1000,0}) const;
 
-    status_t addProviderLocked(const std::string& newProvider, bool expected = true);
+    status_t addProviderLocked(const std::string& newProvider);
 
     status_t removeProvider(const std::string& provider);
     sp<StatusListener> getStatusListener() const;
