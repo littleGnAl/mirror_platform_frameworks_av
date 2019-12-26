@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23e36dd2_2f0fccbd",
+        "filename": "media/libstagefright/codecs/amrwbenc/test/AmrwbEncoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-26T18:20:16Z",
+      "side": 1,
+      "message": "As these are all default initializations and do not have any ASSERT_* checks, move them to constructor and remove SetUp. If needed at a later point, SetUp and TearDown can be added back.",
+      "range": {
+        "startLine": 48,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 52
+      },
+      "revId": "573a9d565c162de7e6557ed5000f30a09f63b19b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94ac7e7e_96ae57a0",
+        "filename": "media/libstagefright/codecs/amrwbenc/test/AmrwbEncoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-26T18:20:16Z",
+      "side": 1,
+      "message": "TEST_P with mode being parameter.",
+      "range": {
+        "startLine": 69,
+        "startChar": 0,
+        "endLine": 69,
+        "endChar": 48
+      },
+      "revId": "573a9d565c162de7e6557ed5000f30a09f63b19b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "80252fc7_355f2657",
+        "filename": "media/libstagefright/codecs/amrwbenc/test/AmrwbEncoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2019-12-26T18:20:16Z",
+      "side": 1,
+      "message": "Pass mode also as a parameter and remove loop here.",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 103,
+        "endChar": 70
+      },
+      "revId": "573a9d565c162de7e6557ed5000f30a09f63b19b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
