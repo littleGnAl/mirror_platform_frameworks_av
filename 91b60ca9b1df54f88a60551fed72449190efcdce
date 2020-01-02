@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e8dec9a6_4b781a49",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-02T19:42:56Z",
+      "side": 1,
+      "message": "I think this is always defined (see system/core/liblog/include/log/log.h)\ni think we need to be differentiating based on the value here (0 or 1)\n\n\nso #if LOG_NDEBUG  \nwhich is defined to work even if LOG_NDEBUG is not defined (it maps to #if 0 in that case).",
+      "range": {
+        "startLine": 143,
+        "startChar": 7,
+        "endLine": 143,
+        "endChar": 17
+      },
+      "revId": "91b60ca9b1df54f88a60551fed72449190efcdce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
