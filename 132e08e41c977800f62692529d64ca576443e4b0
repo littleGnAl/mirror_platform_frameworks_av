@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "633d2ca6_8261fb3c",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/DecoderTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-03T04:19:17Z",
+      "side": 1,
+      "message": ".csv instead of .out?",
+      "range": {
+        "startLine": 60,
+        "startChar": 81,
+        "endLine": 60,
+        "endChar": 85
+      },
+      "revId": "132e08e41c977800f62692529d64ca576443e4b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8e22566_e5ee66d1",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/DecoderTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-03T04:19:17Z",
+      "side": 1,
+      "message": "perhaps \"Decoder.\u003ctime\u003e.out\"\nthe extra . after \u0027Decoder\u0027 perhaps making it simpler to isolate those files.",
+      "range": {
+        "startLine": 60,
+        "startChar": 44,
+        "endLine": 60,
+        "endChar": 49
+      },
+      "revId": "132e08e41c977800f62692529d64ca576443e4b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7873af86_4bd75c0d",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-03T04:19:17Z",
+      "side": 1,
+      "message": "my comments about in Decoder about \u0027Encoder.\u003ctime\u003e.csv\" probably apply across the entire CL.",
+      "range": {
+        "startLine": 60,
+        "startChar": 36,
+        "endLine": 60,
+        "endChar": 86
+      },
+      "revId": "132e08e41c977800f62692529d64ca576443e4b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c140fe59_f387a16f",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/MuxerTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-03T04:19:17Z",
+      "side": 1,
+      "message": "it would be great to include this as a field in each line of the table\nthat lets us sort on a timestamp and we can trivially see how things have changed/evolved\n(hopefully for the better).",
+      "range": {
+        "startLine": 61,
+        "startChar": 48,
+        "endLine": 61,
+        "endChar": 76
+      },
+      "revId": "132e08e41c977800f62692529d64ca576443e4b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "77906109_681e1a5a",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/MuxerTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-03T04:19:17Z",
+      "side": 1,
+      "message": "how can we make this be 3 columns {file, format, sdk/ndk}\n\nwhere I\u0027m hoping to get is the csv data is:\n\ninput, format, sdk/ndk, sync/async, all,the,other,data\n\nand then I can sort that one table to do things like get sdk/ndk or sync/async right next\nto each other so that I can see how alike/different they may be.",
+      "range": {
+        "startLine": 149,
+        "startChar": 50,
+        "endLine": 149,
+        "endChar": 73
+      },
+      "revId": "132e08e41c977800f62692529d64ca576443e4b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6c1c4e4_0cbd1bf8",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Stats.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-03T04:19:17Z",
+      "side": 1,
+      "message": "why join these?  why not separate columns.\nyes, that means the header up on line 108 also needs some modifications.",
+      "range": {
+        "startLine": 151,
+        "startChar": 19,
+        "endLine": 151,
+        "endChar": 59
+      },
+      "revId": "132e08e41c977800f62692529d64ca576443e4b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "066c784b_a6cf1298",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Stats.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-03T04:19:17Z",
+      "side": 1,
+      "message": "last field shouldn\u0027t have a trailing comma",
+      "range": {
+        "startLine": 162,
+        "startChar": 38,
+        "endLine": 162,
+        "endChar": 43
+      },
+      "revId": "132e08e41c977800f62692529d64ca576443e4b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
