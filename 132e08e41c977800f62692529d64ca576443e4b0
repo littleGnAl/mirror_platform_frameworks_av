@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "e73d42bb_3a62b3b5",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/DecoderTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-01-03T05:38:30Z",
+      "side": 1,
+      "message": "Ray, we wanted to keep the names generic so that when needed we could change from csv to a different format (e.g. xml or json).\nBut as you have suggested, we will name these as .csv for now and later see how to change these when we support other formats.\nNeel,\nPlease change to .csv as suggested without changing variable names.",
+      "parentUuid": "633d2ca6_8261fb3c",
+      "range": {
+        "startLine": 60,
+        "startChar": 81,
+        "endLine": 60,
+        "endChar": 85
+      },
+      "revId": "132e08e41c977800f62692529d64ca576443e4b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7873af86_4bd75c0d",
         "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
         "patchSetId": 4
@@ -105,6 +129,30 @@
       "writtenOn": "2020-01-03T04:19:17Z",
       "side": 1,
       "message": "how can we make this be 3 columns {file, format, sdk/ndk}\n\nwhere I\u0027m hoping to get is the csv data is:\n\ninput, format, sdk/ndk, sync/async, all,the,other,data\n\nand then I can sort that one table to do things like get sdk/ndk or sync/async right next\nto each other so that I can see how alike/different they may be.",
+      "range": {
+        "startLine": 149,
+        "startChar": 50,
+        "endLine": 149,
+        "endChar": 73
+      },
+      "revId": "132e08e41c977800f62692529d64ca576443e4b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6fb7c87_97d9ce0c",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/MuxerTest.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-01-03T05:38:30Z",
+      "side": 1,
+      "message": "Neel,\nLet us update dumpStatistics interface to accept\ncurTime, inputFileName, componentName, bool isNDK, bool isASync, [ remaining arguments ]\n\ncomponentName for decoder and encoder will be name of the codec (c2.android.* etc) and for extractors it will be mime of the track being extracted and for muxer it will be output format\n\nSystem.currentTimeMillis() to be passed for curTime and dumped in each line",
+      "parentUuid": "77906109_681e1a5a",
       "range": {
         "startLine": 149,
         "startChar": 50,
