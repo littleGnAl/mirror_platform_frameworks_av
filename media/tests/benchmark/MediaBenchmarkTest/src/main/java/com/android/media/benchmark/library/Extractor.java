@@ -81,6 +81,24 @@ public class Extractor {
     public long getClipDuration() { return this.mDurationUs; }
 
     /**
+     * Checks if CSD buffers are present in the given track and add the size of it to stats
+     *
+     * @param trackId Index of the track
+     * @return -1 if failed to get csd buffer if it exists, 0 otherwise
+     */
+    private int addCSDSampleSize(int trackId) {
+        MediaFormat format = getFormat(trackId);
+        for (int i = 0; format.containsKey("csd-" + i); i++) {
+            ByteBuffer csd = format.getByteBuffer("csd-" + i);
+            if (csd == null) {
+                return -1;
+            }
+            mStats.addFrameSize(csd.limit());
+        }
+        return 0;
+    }
+
+    /**
      * Retrieve the current sample and store it in the byte buffer
      * Also, sets the information related to extracted sample and store it in buffer info
      *
@@ -148,6 +166,11 @@ public class Extractor {
         status = selectExtractorTrack(currentTrack);
         if (status == -1) {
             Log.e(TAG, "Failed to select track");
+            return -1;
+        }
+        status = addCSDSampleSize(currentTrack);
+        if (status == -1) {
+            Log.e(TAG, "Failed to add CSD Sample Size");
             return -1;
         }
         mStats.setStartTime();
