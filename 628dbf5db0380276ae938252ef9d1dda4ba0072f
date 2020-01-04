@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d756ab7_e221dae4",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1261213
+      },
+      "writtenOn": "2020-01-04T15:18:35Z",
+      "side": 1,
+      "message": "This line will be added by the build process. \nAdding target_sdk_version: \"29\" in makefile is equivalent\n\nIt also conflicts with gradle build.",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 72
+      },
+      "revId": "628dbf5db0380276ae938252ef9d1dda4ba0072f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
