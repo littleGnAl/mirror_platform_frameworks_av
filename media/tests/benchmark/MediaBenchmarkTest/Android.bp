@@ -21,6 +21,7 @@ android_test {
     srcs: ["src/androidTest/**/*.java"],
 
     sdk_version: "system_current",
+    min_sdk_version: "28",
 
     resource_dirs: ["res"],
 
@@ -43,6 +44,7 @@ android_library {
     srcs: ["src/main/**/*.java"],
 
     sdk_version: "system_current",
+    min_sdk_version: "28",
 
     static_libs: [
         "androidx.test.core",
