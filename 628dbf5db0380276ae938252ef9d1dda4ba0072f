@@ -22,6 +22,30 @@
       "revId": "628dbf5db0380276ae938252ef9d1dda4ba0072f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "414e9dc3_ceb1f758",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/AndroidManifest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-01-04T18:21:05Z",
+      "side": 1,
+      "message": "I am fine with that change if apk built using mm works on Android 9.0.\nI will test and update the CL",
+      "parentUuid": "7d756ab7_e221dae4",
+      "range": {
+        "startLine": 25,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 72
+      },
+      "revId": "628dbf5db0380276ae938252ef9d1dda4ba0072f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
