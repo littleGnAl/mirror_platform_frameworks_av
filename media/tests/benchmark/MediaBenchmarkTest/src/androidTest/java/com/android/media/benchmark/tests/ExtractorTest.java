@@ -51,7 +51,7 @@ public class ExtractorTest {
             InstrumentationRegistry.getInstrumentation().getTargetContext();
     private static final String mInputFilePath = mContext.getString(R.string.input_file_path);
     private static final String mStatsFile =
-            mContext.getFilesDir() + "/Extractor." + System.currentTimeMillis() + ".csv";
+            mContext.getExternalFilesDir() + "/Extractor." + System.currentTimeMillis() + ".csv";
     private static final String TAG = "ExtractorTest";
     private String mInputFileName;
     private int mTrackId;

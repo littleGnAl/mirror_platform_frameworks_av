@@ -58,7 +58,7 @@ public class MuxerTest {
             InstrumentationRegistry.getInstrumentation().getTargetContext();
     private static final String mInputFilePath = mContext.getString(R.string.input_file_path);
     private static final String mStatsFile =
-            mContext.getFilesDir() + "/Muxer." + System.currentTimeMillis() + ".csv";
+            mContext.getExternalFilesDir() + "/Muxer." + System.currentTimeMillis() + ".csv";
     private static final String TAG = "MuxerTest";
     private static final Map<String, Integer> mMapFormat = new Hashtable<String, Integer>() {
         {
