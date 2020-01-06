@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "37cd3851_771086d7",
+        "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-06T17:29:42Z",
+      "side": 1,
+      "message": "i see now... i looked at samplerate instead of bitspersample. that\u0027s why my numbers\nwere so far off... thanks for catching my mistake.",
+      "parentUuid": "1900d472_b06b1a72",
+      "range": {
+        "startLine": 50,
+        "startChar": 35,
+        "endLine": 50,
+        "endChar": 73
+      },
+      "revId": "902aff1f8572af42ac951cdee2535a112b867f5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b898cc0_a069fe8d",
         "filename": "media/libstagefright/codecs/amrnb/dec/test/AmrnbDecoderTest.cpp",
         "patchSetId": 3
