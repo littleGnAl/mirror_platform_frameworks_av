@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "042f140a_883a5403",
+        "filename": "media/tests/benchmark/src/native/encoder/Encoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-06T19:18:30Z",
+      "side": 1,
+      "message": "if we return here, we never log the DeInitTime() value.\n\nshould this instead be:\n  if (mCodec) { AMediaCodec_stop(mCodec); AMediaCodec_delete(mCodec); }\n\nso that it does fall through to log the time spent in this routine?\nit looks like the default initializer for the mStats will set mDeInitTimeNS to 0.\n\nit does feel strange to talk about de-init time when there was no codec to de-init.\n[which raises the question -- should the deinit time include the time to delete\nthe mFormat  or just the time to delete the mCodec?]\n\nso:\n\n1. should we always be invoking setDeInitTime()\n2. should the time measured include the delete of the mFormat, since that\u0027s not actually\n   part of the codec.",
+      "range": {
+        "startLine": 162,
+        "startChar": 17,
+        "endLine": 162,
+        "endChar": 23
+      },
+      "revId": "2d133fe6f7a50bd6b0e93f7d92b9c70054ef6860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
