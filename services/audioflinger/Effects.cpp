@@ -1856,12 +1856,14 @@ status_t AudioFlinger::EffectHandle::command(uint32_t cmdCode,
             }
 
             // copy to local memory in case of client corruption b/32220769
-            param = (effect_param_t *)realloc(param, size);
-            if (param == NULL) {
+            auto *new_param = (effect_param_t *)realloc(param, size);
+            if (new_param == NULL) {
                 ALOGW("command(): out of memory");
                 status = NO_MEMORY;
+                free(param);
                 break;
             }
+            param = new_param;
             memcpy(param, p, size);
 
             int reply = 0;
