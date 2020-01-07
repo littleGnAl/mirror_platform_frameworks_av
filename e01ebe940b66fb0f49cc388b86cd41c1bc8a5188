@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21fd594e_de25c898",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-07T23:17:17Z",
+      "side": 1,
+      "message": "should we collect these into a common descriptor and then have both tests\ninclude that common descriptor...\n\ncc_defaults {\n   name: \"mediabench_defaults\",\n   min_sdk_version ...\n}\nandroid_test {\n    defaults: [ \"mediabench_defaults\" ],\n    ...\n}",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 25,
+        "endChar": 29
+      },
+      "revId": "e01ebe940b66fb0f49cc388b86cd41c1bc8a5188",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
