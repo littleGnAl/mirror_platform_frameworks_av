@@ -907,8 +907,27 @@ status_t AudioPolicyEffects::loadAudioEffectXmlConfig() {
             streams.add(stream.type, effectDescs.release());
         }
     };
+
+    auto loadDeviceProcessingChain = [](auto &processingChain, auto& deviceEffects) {
+        for (auto& deviceProcess : processingChain) {
+            auto effectDescs = std::make_unique<DeviceEffect>(
+                        deviceProcess.type, deviceProcess.address);
+            for (auto& effect : deviceProcess.effects) {
+                // Waiting for new constructor...
+//                effectDescs->mEffects.push_back(
+//                        std::make_unique<AudioEffect>(&effect.get().uuid,
+//                                                      deviceProcess.type,
+//                                                      deviceProcess.address));
+                effectDescs->mEffects.push_back(
+                        std::make_unique<AudioEffect>(&effect.get().uuid, String16("android")));
+            }
+            deviceEffects.emplace(deviceProcess.address, std::move(effectDescs));
+        }
+    };
+
     loadProcessingChain(result.parsedConfig->preprocess, mInputSources);
     loadProcessingChain(result.parsedConfig->postprocess, mOutputStreams);
+    loadDeviceProcessingChain(result.parsedConfig->deviceprocess, mDeviceEffects);
     // Casting from ssize_t to status_t is probably safe, there should not be more than 2^31 errors
     return result.nbSkippedElement;
 }

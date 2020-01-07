@@ -192,6 +192,23 @@ private:
         Vector< sp<AudioEffect> >mEffects;
     };
 
+    /**
+     * @brief The DeviceEffect class stores the effects associated to a given Device Port.
+     */
+    class DeviceEffect {
+    public:
+        explicit DeviceEffect(audio_devices_t device, const std::string& address) :
+            mDeviceType(device), mDeviceAddress(address) {}
+        /*virtual*/ ~DeviceEffect() = default;
+
+        std::vector<std::unique_ptr<AudioEffect>> mEffects;
+        audio_devices_t getDeviceType() const { return mDeviceType; }
+        std::string getDeviceAddress() const { return mDeviceAddress; }
+    private:
+        const audio_devices_t mDeviceType;
+        const std::string mDeviceAddress;
+    };
+
 
     static const char * const kInputSourceNames[AUDIO_SOURCE_CNT -1];
     static audio_source_t inputSourceNameToEnum(const char *name);
@@ -237,6 +254,11 @@ private:
     KeyedVector< audio_stream_type_t, EffectDescVector* > mOutputStreams;
     // Automatic output effects are unique for audiosession ID
     KeyedVector< audio_session_t, EffectVector* > mOutputSessions;
+
+    /**
+     * @brief mDeviceEffects map of device effects indexed by the device address
+     */
+    std::map<std::string, std::unique_ptr<DeviceEffect>> mDeviceEffects;
 };
 
 } // namespace android
