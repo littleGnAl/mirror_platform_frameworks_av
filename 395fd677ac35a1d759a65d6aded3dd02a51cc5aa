@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "33a4844c_d7ed9f5a",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/AndroidTest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-07T23:10:38Z",
+      "side": 1,
+      "message": "i understand that if we clean up the apps, we also wind up cleaning up the files\nthat we write at getExternalFilesDir().  and that\u0027s why we do this.\n\nwe need to figure out how to combine preserving our output files and cleaning up the apk when we\u0027re done.",
+      "range": {
+        "startLine": 18,
+        "startChar": 10,
+        "endLine": 18,
+        "endChar": 52
+      },
+      "revId": "395fd677ac35a1d759a65d6aded3dd02a51cc5aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
