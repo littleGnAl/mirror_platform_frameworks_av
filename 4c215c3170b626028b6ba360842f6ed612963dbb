@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "9b30e671_b5e66422",
+        "filename": "services/audiopolicy/functionaltests/AudioProductStrategyTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-01-07T15:49:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1fa317ea_d94a1274",
+      "range": {
+        "startLine": 26,
+        "startChar": 14,
+        "endLine": 26,
+        "endChar": 23
+      },
+      "revId": "4c215c3170b626028b6ba360842f6ed612963dbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "06f3216b_12255317",
         "filename": "services/audiopolicy/functionaltests/AudioVolumeTest.cpp",
         "patchSetId": 2
@@ -91,6 +115,30 @@
       "revId": "4c215c3170b626028b6ba360842f6ed612963dbb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88aa28fb_5131caa6",
+        "filename": "services/audiopolicy/functionaltests/AudioVolumeTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-01-07T15:49:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "06f3216b_12255317",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 17
+      },
+      "revId": "4c215c3170b626028b6ba360842f6ed612963dbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
