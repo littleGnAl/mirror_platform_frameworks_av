@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "07b566f1_829687c5",
+        "filename": "media/libstagefright/tests/writer/AndroidTest.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-07T18:23:07Z",
+      "side": 1,
+      "message": "NB: this is dependent on the tradefed patch that is still pending.\nso we can\u0027t merge until that gets merged.",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 23,
+        "endChar": 53
+      },
+      "revId": "81559430823292436e82878e05df51a27c48569c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
