@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "00df6de4_ffa84995",
+        "filename": "services/audiopolicy/service/AudioPolicyEffects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-01-07T22:07:42Z",
+      "side": 1,
+      "message": "at some point we also need to enable the effect",
+      "range": {
+        "startLine": 921,
+        "startChar": 0,
+        "endLine": 921,
+        "endChar": 48
+      },
+      "revId": "1ee72a06176248b87e6e981247c4cc29df84ea5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "33f8ff35_77682e55",
+        "filename": "services/audiopolicy/service/AudioPolicyEffects.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-01-07T22:07:42Z",
+      "side": 1,
+      "message": "DeviceEffect",
+      "range": {
+        "startLine": 198,
+        "startChar": 10,
+        "endLine": 198,
+        "endChar": 23
+      },
+      "revId": "1ee72a06176248b87e6e981247c4cc29df84ea5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
