@@ -259,7 +259,7 @@ bool parseStream(const XMLElement& xmlStream, Effects& effects, std::vector<Stre
 }
 
 bool parseDeviceEffects(
-        const XMLElement& xmlDevice, Effects& effects, std::vector<DeviceEffects>* deviceEffects) {
+        const XMLElement& xmlDevice, Effects& effects, std::vector<DeviceEffect>* deviceEffects) {
 
     const char* address = xmlDevice.Attribute("address");
     if (address == nullptr) {
@@ -267,7 +267,9 @@ bool parseDeviceEffects(
         return false;
     }
     bool success = parseStream(xmlDevice, effects, deviceEffects);
-
+    if (!sucess) {
+        return success;
+    }
     deviceEffects->back().address = address;
     return success;
 }

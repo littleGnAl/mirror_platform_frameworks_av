@@ -76,7 +76,7 @@ struct Stream {
 using OutputStream = Stream<audio_stream_type_t>;
 using InputStream = Stream<audio_source_t>;
 
-struct DeviceEffects : Stream<audio_devices_t> {
+struct DeviceEffect : Stream<audio_devices_t> {
     std::string address;
 };
 
@@ -93,7 +93,7 @@ struct Config {
     Effects effects;
     std::vector<OutputStream> postprocess;
     std::vector<InputStream> preprocess;
-    std::vector<DeviceEffects> deviceprocess;
+    std::vector<DeviceEffect> deviceprocess;
 };
 
 /** Result of `parse(const char*)` */
