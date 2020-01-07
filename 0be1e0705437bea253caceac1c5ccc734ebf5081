@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9931226f_1752aac9",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-01-07T21:09:27Z",
+      "side": 1,
+      "message": "I would suggest adding a comment here that APM will also translate attr-\u003esource the same way.",
+      "range": {
+        "startLine": 415,
+        "startChar": 12,
+        "endLine": 415,
+        "endChar": 90
+      },
+      "revId": "0be1e0705437bea253caceac1c5ccc734ebf5081",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
