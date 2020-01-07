@@ -908,8 +908,34 @@ status_t AudioPolicyEffects::loadAudioEffectXmlConfig() {
             streams.add(stream.type, effectDescs.release());
         }
     };
+
+    auto loadDeviceProcessingChain = [](auto &processingChain, auto& deviceEffects) {
+        for (auto& deviceProcess : processingChain) {
+            auto effectDescs = std::make_unique<DeviceEffects>(
+                        deviceProcess.type, deviceProcess.address);
+            for (auto& effect : deviceProcess.effects) {
+                auto fx = std::make_unique<AudioEffect>(
+                            EFFECT_UUID_NULL, String16("android"), &effect.get().uuid, 0, nullptr, nullptr,
+                            AUDIO_SESSION_DEVICE, AUDIO_IO_HANDLE_NONE,
+                            AudioDeviceTypeAddr{deviceProcess.type, deviceProcess.address});
+                status_t status = fx->initCheck();
+                if (status != NO_ERROR && status != ALREADY_EXISTS) {
+                    ALOGW("%s(): failed to create Fx %s on port type=%d address=%s", __func__,
+                          effect.get().name.c_str(), deviceProcess.type,
+                          deviceProcess.address.c_str());
+                    // fx goes out of scope and strong ref on AudioEffect is released
+                    continue;
+                }
+                fx->setEnabled(true);
+                effectDescs->mEffects.push_back(std::move(fx));
+            }
+            deviceEffects.emplace(deviceProcess.address, std::move(effectDescs));
+        }
+    };
+
     loadProcessingChain(result.parsedConfig->preprocess, mInputSources);
     loadProcessingChain(result.parsedConfig->postprocess, mOutputStreams);
+    loadDeviceProcessingChain(result.parsedConfig->deviceprocess, mDeviceEffects);
     // Casting from ssize_t to status_t is probably safe, there should not be more than 2^31 errors
     return result.nbSkippedElement;
 }
