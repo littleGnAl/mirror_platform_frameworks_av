@@ -21,6 +21,8 @@ namespace.default.visible = true
 
 namespace.default.search.paths      = /apex/com.android.media.swcodec/${LIB}
 namespace.default.asan.search.paths = /apex/com.android.media.swcodec/${LIB}
+namespace.default.permitted.paths   = /system/${LIB}
+namespace.default.asan.permitted.paths = /system/${LIB}
 
 namespace.default.links = platform
 
