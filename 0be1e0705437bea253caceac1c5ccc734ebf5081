@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "b2dc21c9_3506462f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-01-07T21:10:40Z",
+      "side": 1,
+      "message": "Add Merged-In if you are going to submit to internal first.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 52
+      },
+      "revId": "0be1e0705437bea253caceac1c5ccc734ebf5081",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9931226f_1752aac9",
         "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
         "patchSetId": 3
