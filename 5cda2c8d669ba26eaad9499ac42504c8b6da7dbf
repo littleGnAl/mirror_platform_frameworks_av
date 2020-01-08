@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c2709c45_2658c4d0",
+        "filename": "media/extractors/tests/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-08T23:16:18Z",
+      "side": 1,
+      "message": "this was reworked to provide static and shared.",
+      "range": {
+        "startLine": 29,
+        "startChar": 9,
+        "endLine": 29,
+        "endChar": 25
+      },
+      "revId": "5cda2c8d669ba26eaad9499ac42504c8b6da7dbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "067f5ee2_586fc354",
+        "filename": "media/extractors/tests/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-08T23:16:18Z",
+      "side": 1,
+      "message": "this is shared only",
+      "range": {
+        "startLine": 39,
+        "startChar": 9,
+        "endLine": 39,
+        "endChar": 33
+      },
+      "revId": "5cda2c8d669ba26eaad9499ac42504c8b6da7dbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
