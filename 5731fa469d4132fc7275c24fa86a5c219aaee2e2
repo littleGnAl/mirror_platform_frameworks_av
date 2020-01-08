@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b076daf4_9f2b7df4",
+        "filename": "media/libeffects/config/include/media/EffectsConfig.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-01-08T16:55:01Z",
+      "side": 1,
+      "message": "I missed that.\nCurrent implementation of device effect management in audio flinger only supports one effect per device.\nThis is a limitation that I will have to remove.\nSo we can leave the parser implementation as is and support more than one effect per device.",
+      "parentUuid": "f288bb40_6822edf5",
+      "range": {
+        "startLine": 79,
+        "startChar": 7,
+        "endLine": 79,
+        "endChar": 20
+      },
+      "revId": "5731fa469d4132fc7275c24fa86a5c219aaee2e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "310de5e8_5bc5e0dc",
         "filename": "media/libeffects/config/src/EffectsConfig.cpp",
         "patchSetId": 2
