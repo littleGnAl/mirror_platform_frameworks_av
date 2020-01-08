@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bcce2f84_c51709da",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-01-08T17:46:02Z",
+      "side": 1,
+      "message": "No. Required alignment is done when fetchGraphicBlock() is called.",
+      "parentUuid": "c6a52284_3f8653ac",
+      "revId": "4fa256ca83ab2e3eb90c145db83c8a1b562ddf8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8625dd31_b8db9123",
         "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
         "patchSetId": 2
@@ -30,6 +48,24 @@
       "writtenOn": "2020-01-08T17:05:01Z",
       "side": 1,
       "message": "I don\u0027t 100% understand why we\u0027re using width instead of stride here.. could you please explain?",
+      "revId": "4fa256ca83ab2e3eb90c145db83c8a1b562ddf8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c65f6b1a_80fb9d7d",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-01-08T17:46:02Z",
+      "side": 1,
+      "message": "when calling fetchGraphicBlock, buffer is requested with width aligned to 32. So the check here is to ensure the outblock still matches what is asked.\nEarlier stride was hardcoded as ALIGN64(mWidth) and was being checked.\nSo checking for ALIGN32(mWidth) is the correct check here. Stride could be larger than ALIGN32(mWidth) in some cases.",
+      "parentUuid": "8625dd31_b8db9123",
       "revId": "4fa256ca83ab2e3eb90c145db83c8a1b562ddf8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
