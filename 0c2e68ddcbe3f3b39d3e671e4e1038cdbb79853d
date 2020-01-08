@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e7f7f24a_510a9bd4",
+        "filename": "apex/ld.config.txt",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1026966
+      },
+      "writtenOn": "2020-01-08T02:55:41Z",
+      "side": 1,
+      "message": "iiuc, this will allow dlopen(\"/system/lib/foo.so\") while dlopen(\"foo.so\") will fail in the namespace, right?\nThis doesn\u0027t look trivial to understand without the background in the commit message, would it make sense to copy the summary of the background in the commit message here?",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "0c2e68ddcbe3f3b39d3e671e4e1038cdbb79853d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
