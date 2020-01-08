@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f288bb40_6822edf5",
+        "filename": "media/libeffects/config/include/media/EffectsConfig.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-01-08T10:53:41Z",
+      "side": 1,
+      "message": "As I inherits from Stream, I do have a vector of Effect. Do we consider that we will only support one effect on a DevicePort?",
+      "parentUuid": "ca2fa35e_bcaf2748",
+      "range": {
+        "startLine": 79,
+        "startChar": 7,
+        "endLine": 79,
+        "endChar": 20
+      },
+      "revId": "5731fa469d4132fc7275c24fa86a5c219aaee2e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "310de5e8_5bc5e0dc",
         "filename": "media/libeffects/config/src/EffectsConfig.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "5731fa469d4132fc7275c24fa86a5c219aaee2e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28beae2f_dc19def2",
+        "filename": "media/libeffects/config/src/EffectsConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-01-08T10:53:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "310de5e8_5bc5e0dc",
+      "range": {
+        "startLine": 271,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 44
+      },
+      "revId": "5731fa469d4132fc7275c24fa86a5c219aaee2e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
