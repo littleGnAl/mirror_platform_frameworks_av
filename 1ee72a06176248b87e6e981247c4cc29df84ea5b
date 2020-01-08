@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "643255fc_d3fc8662",
+        "filename": "services/audiopolicy/service/AudioPolicyEffects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-01-08T16:57:29Z",
+      "side": 1,
+      "message": "No the DeviceEffectProxy will only propagate the state of the effect to all actual instances of corresponding effects either on SW or HW bridges.\nBut the owner of the device effect still controls its state.",
+      "parentUuid": "f7df0d60_891483a0",
+      "range": {
+        "startLine": 921,
+        "startChar": 0,
+        "endLine": 921,
+        "endChar": 48
+      },
+      "revId": "1ee72a06176248b87e6e981247c4cc29df84ea5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33f8ff35_77682e55",
         "filename": "services/audiopolicy/service/AudioPolicyEffects.h",
         "patchSetId": 2
