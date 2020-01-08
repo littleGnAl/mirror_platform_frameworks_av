@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f7df0d60_891483a0",
+        "filename": "services/audiopolicy/service/AudioPolicyEffects.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 921,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-01-08T15:31:21Z",
+      "side": 1,
+      "message": "I though that DeviceEffectProxy would do it, whatever the effect is on a SW bridge or HW bridge. I might have missed something.",
+      "parentUuid": "00df6de4_ffa84995",
+      "range": {
+        "startLine": 921,
+        "startChar": 0,
+        "endLine": 921,
+        "endChar": 48
+      },
+      "revId": "1ee72a06176248b87e6e981247c4cc29df84ea5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "33f8ff35_77682e55",
         "filename": "services/audiopolicy/service/AudioPolicyEffects.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "1ee72a06176248b87e6e981247c4cc29df84ea5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9afbb9ec_c9ccbfc8",
+        "filename": "services/audiopolicy/service/AudioPolicyEffects.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-01-08T15:31:21Z",
+      "side": 1,
+      "message": "done, but I though we wanted to support more than one effect on a DevicePort. Otherwise, it may be renamed as DeviceEffectChain?",
+      "parentUuid": "33f8ff35_77682e55",
+      "range": {
+        "startLine": 198,
+        "startChar": 10,
+        "endLine": 198,
+        "endChar": 23
+      },
+      "revId": "1ee72a06176248b87e6e981247c4cc29df84ea5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
