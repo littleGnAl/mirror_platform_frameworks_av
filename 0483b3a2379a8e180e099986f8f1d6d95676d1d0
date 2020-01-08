@@ -46,6 +46,30 @@
       "revId": "0483b3a2379a8e180e099986f8f1d6d95676d1d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3af91139_c72f58c7",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Extractor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-08T22:02:51Z",
+      "side": 1,
+      "message": "i don\u0027t know that we have proof that those times are negligible -- selectTrack(), getTrackFormat(), and then unpacking the CSD data from the latter.\nlet\u0027s measure those and know -- the number may be tiny and support the \u0027negligible\u0027 claim;\nI would be surprised if it is a significant number.  But if we don\u0027t measure it, we won\u0027t know for sure and we won\u0027t know if it takes some sudden change for the worse.\n\n\nspecific to the CSD bytes -- I think we need to keep them in lockstep. If we are going to\ncount the bytes as being extracted, then we need to count the time it took to extract them.\nIf we don\u0027t want to count the time - then we should not count the bytes.",
+      "parentUuid": "64c50425_c1f6f61c",
+      "range": {
+        "startLine": 171,
+        "startChar": 17,
+        "endLine": 171,
+        "endChar": 47
+      },
+      "revId": "0483b3a2379a8e180e099986f8f1d6d95676d1d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
