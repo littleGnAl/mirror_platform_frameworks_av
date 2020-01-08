@@ -22,6 +22,30 @@
       "revId": "0483b3a2379a8e180e099986f8f1d6d95676d1d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64c50425_c1f6f61c",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Extractor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-01-08T13:54:00Z",
+      "side": 1,
+      "message": "Time taken for some operations is not tracked since it is negligible. This includes selectTrack() and getTrackFormat() which contains the CSD. \nTime taken to get CSD is equivalent to time to create format which can be ignored because it is so small as to be not worth considering. Thus this change only includes CSD bytes as part total extracted output.",
+      "parentUuid": "79887fc6_a69150a7",
+      "range": {
+        "startLine": 171,
+        "startChar": 17,
+        "endLine": 171,
+        "endChar": 47
+      },
+      "revId": "0483b3a2379a8e180e099986f8f1d6d95676d1d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
