@@ -22,6 +22,30 @@
       "revId": "2d133fe6f7a50bd6b0e93f7d92b9c70054ef6860",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bbaa05bf_5473476c",
+        "filename": "media/tests/benchmark/src/native/encoder/Encoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-01-08T23:51:33Z",
+      "side": 1,
+      "message": "I have uploaded a follow up CL https://android-review.googlesource.com/c/platform/frameworks/av/+/1203545 where\n\ndeInitTime now includes only stop() and delete() calls to the codec.\nmedia format delete is now excluded from this time.\n\nin case mCodec is null we would effectively not have anything to measure, so no need to call setDeInitTime() when mCodec is null.",
+      "parentUuid": "042f140a_883a5403",
+      "range": {
+        "startLine": 162,
+        "startChar": 17,
+        "endLine": 162,
+        "endChar": 23
+      },
+      "revId": "2d133fe6f7a50bd6b0e93f7d92b9c70054ef6860",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
