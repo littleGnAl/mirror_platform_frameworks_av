@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6a52284_3f8653ac",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-01-08T17:05:01Z",
+      "side": 1,
+      "message": "don\u0027t we need to align here?",
+      "revId": "4fa256ca83ab2e3eb90c145db83c8a1b562ddf8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8625dd31_b8db9123",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-01-08T17:05:01Z",
+      "side": 1,
+      "message": "I don\u0027t 100% understand why we\u0027re using width instead of stride here.. could you please explain?",
+      "revId": "4fa256ca83ab2e3eb90c145db83c8a1b562ddf8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
