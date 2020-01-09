@@ -117,6 +117,30 @@
       "revId": "1ee72a06176248b87e6e981247c4cc29df84ea5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c7c01956_0ca16293",
+        "filename": "services/audiopolicy/service/AudioPolicyEffects.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-01-09T17:36:43Z",
+      "side": 1,
+      "message": "current implementation in DeviceEffectManager only supports one effect per device.\nI can change that if needed so we can leave the plural here",
+      "parentUuid": "9afbb9ec_c9ccbfc8",
+      "range": {
+        "startLine": 198,
+        "startChar": 10,
+        "endLine": 198,
+        "endChar": 23
+      },
+      "revId": "1ee72a06176248b87e6e981247c4cc29df84ea5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
