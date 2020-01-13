@@ -87,6 +87,18 @@
         </stream>
     </postprocess>
 
+    <deviceEffects>
+        <devicePort type="AUDIO_DEVICE_OUT_BUS" address="BUS00_USAGE_MAIN">
+            <apply effect="equalizer"/>
+        </devicePort>
+        <devicePort type="AUDIO_DEVICE_OUT_BUS" address="BUS04_USAGE_VOICE">
+            <apply effect="volume"/>
+        </devicePort>
+        <devicePort type="AUDIO_DEVICE_IN_FM_TUNER" address="FW_SW">
+            <apply effect="agc"/>
+        </devicePort>
+    </deviceEffects>
+
     <!-- Audio pre processor configurations.
          The pre processor configuration is described in a "preprocess" element and consists in a
          list of elements each describing pre processor settings for a given use case or "stream".
