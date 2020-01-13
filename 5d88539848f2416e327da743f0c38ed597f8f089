@@ -68,6 +68,30 @@
       "revId": "5d88539848f2416e327da743f0c38ed597f8f089",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee2a7a88_9a4c905e",
+        "filename": "services/audioflinger/Effects.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-01-13T17:06:45Z",
+      "side": 1,
+      "message": "Because I preferred that the EffectBase keeps a strong reference on the callback and then the various callback implementations hold weak references on what ever objects they need to implement the function.\nIf The EffectChain is the callback implementation then you have a strong reference look between EffectChain and Effectmodule.",
+      "parentUuid": "8a4d2ee3_9b25c251",
+      "range": {
+        "startLine": 467,
+        "startChar": 3,
+        "endLine": 467,
+        "endChar": 58
+      },
+      "revId": "5d88539848f2416e327da743f0c38ed597f8f089",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
