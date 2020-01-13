@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7343bdd7_35fffa57",
+        "filename": "services/audioflinger/DeviceEffectManager.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-01-13T12:25:57Z",
+      "side": 1,
+      "message": "I am surprised with the naming, I would also even have considered these API as callback (onCreateAudioPatch / onReleaseAudioPatch) and specified an Interface class.\n\nOn the other hand, we can consider that the patch is fully created once effects thay may be added are also created...",
+      "range": {
+        "startLine": 40,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 56
+      },
+      "revId": "caa0316e66204b9991ce25691fb06cfe8310f4c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f793900c_cb1d1070",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2989,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-01-13T12:25:57Z",
+      "side": 1,
+      "message": "checkPort is doing more than check ;-) Understand now why it is not const.\nI would rename/split it to better reflect the reality. I would propose checkAndSetDeviceEffect",
+      "range": {
+        "startLine": 2989,
+        "startChar": 42,
+        "endLine": 2989,
+        "endChar": 51
+      },
+      "revId": "caa0316e66204b9991ce25691fb06cfe8310f4c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
