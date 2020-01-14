@@ -3938,20 +3938,11 @@ status_t AudioFlinger::PlaybackThread::getTimestamp_l(AudioTimestamp& timestamp)
         return status;
     }
     if ((mType == OFFLOAD || mType == DIRECT) && mOutput != NULL) {
-        uint64_t position64;
-        if (mOutput->getPresentationPosition(&position64, &timestamp.mTime) == OK) {
-            timestamp.mPosition = (uint32_t)position64;
-            if (mDownstreamLatencyStatMs.getN() > 0) {
-                const uint32_t positionOffset =
-                    (uint32_t)(mDownstreamLatencyStatMs.getMean() * mSampleRate * 1e-3);
-                if (positionOffset > timestamp.mPosition) {
-                    timestamp.mPosition = 0;
-                } else {
-                    timestamp.mPosition -= positionOffset;
-                }
-            }
-            return NO_ERROR;
-        }
+        timestamp.mPosition = mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL];
+        const int64_t time = mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL];
+        timestamp.mTime.tv_sec = time / NANOS_PER_SECOND;
+        timestamp.mTime.tv_nsec = time - timestamp.mTime.tv_sec * NANOS_PER_SECOND;
+        return NO_ERROR;
     }
     return INVALID_OPERATION;
 }
