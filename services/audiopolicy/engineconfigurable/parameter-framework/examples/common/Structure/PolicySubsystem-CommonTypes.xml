@@ -152,8 +152,9 @@
             <ValuePair Literal="dtmf" Numerical="8"/>
             <ValuePair Literal="tts" Numerical="9"/>
             <ValuePair Literal="accessibility" Numerical="10"/>
-            <ValuePair Literal="rerouting" Numerical="11"/>
-            <ValuePair Literal="patch" Numerical="12"/>
+            <ValuePair Literal="assistant" Numerical="11"/>
+            <ValuePair Literal="rerouting" Numerical="12"/>
+            <ValuePair Literal="patch" Numerical="13"/>
         </EnumParameter>
     </ComponentType>
 
