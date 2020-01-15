@@ -133,3 +133,28 @@ genrule_defaults {
     ],
     out: ["ProductStrategies.xml"],
 }
+
+//##################################################################################################
+// Tools for policy parameter-framework common type structure file generation
+//
+python_binary_host {
+    name: "buildCommonTypesStructureFile.py",
+    main: "buildCommonTypesStructureFile.py",
+    srcs: [
+        "buildCommonTypesStructureFile.py",
+    ],
+    defaults: ["tools_default"],
+}
+
+genrule_defaults {
+    name: "buildcommontypesstructurerule",
+    tools: ["buildCommonTypesStructureFile.py"],
+    cmd: "$(location buildCommonTypesStructureFile.py) " +
+         " --androidaudiobaseheader system/media/audio/include/system/audio-base.h " +
+         "--commontypesstructure $(location :common_types_structure_template) " +
+         "--outputfile $(out)",
+    srcs: [
+        ":common_types_structure_template",
+    ],
+    out: ["PolicySubsystem-CommonTypes.xml"],
+}
