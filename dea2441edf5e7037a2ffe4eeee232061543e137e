@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "57a22c1b_2c1aae81",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-01-16T19:25:51Z",
+      "side": 1,
+      "message": "Test and add c2encoder and c2decoder too.",
+      "revId": "dea2441edf5e7037a2ffe4eeee232061543e137e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ff0c8025_1ce81106",
+        "filename": "media/tests/benchmark/src/native/common/BenchmarkC2Common.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-01-16T19:25:51Z",
+      "side": 1,
+      "message": "w",
+      "range": {
+        "startLine": 121,
+        "startChar": 46,
+        "endLine": 121,
+        "endChar": 49
+      },
+      "revId": "dea2441edf5e7037a2ffe4eeee232061543e137e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1a95fcb_88404d1b",
+        "filename": "media/tests/benchmark/src/native/common/BenchmarkCommon.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-01-16T19:25:51Z",
+      "side": 1,
+      "message": "\"w\"",
+      "range": {
+        "startLine": 115,
+        "startChar": 46,
+        "endLine": 115,
+        "endChar": 49
+      },
+      "revId": "dea2441edf5e7037a2ffe4eeee232061543e137e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1428203_db3b7e8d",
+        "filename": "media/tests/benchmark/src/native/decoder/C2Decoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-01-16T19:25:51Z",
+      "side": 1,
+      "message": "async for c2 decode and encode",
+      "range": {
+        "startLine": 160,
+        "startChar": 18,
+        "endLine": 160,
+        "endChar": 20
+      },
+      "revId": "dea2441edf5e7037a2ffe4eeee232061543e137e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9499251_52139c38",
+        "filename": "media/tests/benchmark/src/native/encoder/C2Encoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-01-16T19:25:51Z",
+      "side": 1,
+      "message": "async",
+      "range": {
+        "startLine": 257,
+        "startChar": 18,
+        "endLine": 257,
+        "endChar": 20
+      },
+      "revId": "dea2441edf5e7037a2ffe4eeee232061543e137e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1403e59_4736cf5e",
+        "filename": "media/tests/benchmark/tests/C2DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-01-16T19:25:51Z",
+      "side": 1,
+      "message": "create mStatsFile in C2DecoderTest and initialize this variable in constructor\nUse that on line 151 too.\n\nThese comments apply to all the files.",
+      "range": {
+        "startLine": 47,
+        "startChar": 8,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "dea2441edf5e7037a2ffe4eeee232061543e137e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "905b2f68_5962f216",
+        "filename": "media/tests/benchmark/tests/C2DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-01-16T19:25:51Z",
+      "side": 1,
+      "message": "} else {\n   fclose(fpStats);\n}",
+      "range": {
+        "startLine": 52,
+        "startChar": 8,
+        "endLine": 52,
+        "endChar": 9
+      },
+      "revId": "dea2441edf5e7037a2ffe4eeee232061543e137e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3dc1454_1b8bf8f8",
+        "filename": "media/tests/benchmark/tests/C2DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-01-16T19:25:51Z",
+      "side": 1,
+      "message": "Instead of using SetUpTestSuite which is per test suite (but we need something that runs once before for all test suites in a file), can we add methods setStatsFile(filePrefix) and getStatsFile() to BenchmarkTestEnvironment and call setStatsFile(\"Decoder/Encoder/...\") from main() and getStatsFile where it is used?\n\nwriteStatsHeader can also be called in mail().\nsetStatsFile() can add a time prefix too like SDK tests.\n\nIf for some reason this doesn\u0027t work, then follow up on the review comments on line 47 and 52.\nIf this approach works where we remove SetUpTestSuite() then ignore those two comments.",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 5
+      },
+      "revId": "dea2441edf5e7037a2ffe4eeee232061543e137e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
