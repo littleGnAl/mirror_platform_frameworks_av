@@ -584,7 +584,7 @@ Return<void> DrmPlugin::queryKeyStatus(
 
 Return<void> DrmPlugin::getNumberOfSessions(getNumberOfSessions_cb _hidl_cb) {
         uint32_t currentSessions = mSessionLibrary->numOpenSessions();
-        uint32_t maxSessions = 10;
+        uint32_t maxSessions = UINT32_MAX;
         _hidl_cb(Status::OK, currentSessions, maxSessions);
         return Void();
 }
