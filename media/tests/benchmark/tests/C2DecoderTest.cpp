@@ -41,6 +41,17 @@ class C2DecoderTest : public ::testing::TestWithParam<pair<string, string>> {
         }
     }
 
+    static void SetUpTestSuite() {
+        string statsFile;
+        FILE *fpStats = nullptr;
+        statsFile = gEnv->getRes() + "/C2Decoder.csv";
+        fpStats = fopen(statsFile.c_str(), "rb");
+        if(fpStats == nullptr) {
+            bool status = writeStatsHeader(statsFile);
+            ASSERT_TRUE(status) << "Failed to open the stats file!";
+        }
+    }
+
     virtual void SetUp() override { setupC2DecoderTest(); }
 
     void setupC2DecoderTest();
@@ -136,7 +147,8 @@ TEST_P(C2DecoderTest, Codec2Decode) {
                 mDecoder->deInitCodec();
                 int64_t durationUs = extractor->getClipDuration();
                 ALOGV("codec : %s", codecName.c_str());
-                mDecoder->dumpStatistics(GetParam().first, durationUs);
+                string statsFile = gEnv->getRes() + "/C2Decoder.csv";
+                mDecoder->dumpStatistics(GetParam().first, durationUs, codecName, statsFile);
                 mDecoder->resetDecoder();
             }
         }

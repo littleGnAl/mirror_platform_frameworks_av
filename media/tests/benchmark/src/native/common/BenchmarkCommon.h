@@ -129,4 +129,7 @@ void OnErrorCB(AMediaCodec *codec, void * /* userdata */, media_status_t err, in
 AMediaCodec *createMediaCodec(AMediaFormat *format, const char *mime, string codecName,
                               bool isEncoder);
 
+// Function to write the stats header to the file.
+bool writeStatsHeader(string);
+
 #endif  // __BENCHMARK_COMMON_H__

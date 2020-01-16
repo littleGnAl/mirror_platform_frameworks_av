@@ -101,3 +101,27 @@ AMediaCodec *createMediaCodec(AMediaFormat *format, const char *mime, string cod
     }
     return codec;
 }
+
+/**
+ * Writes the stats header to a file
+ * <p>
+ * \param statsFile    file where the stats data is to be written
+ **/
+bool writeStatsHeader(string statsFile) {
+    char statsHeader[] =
+        "currentTime, fileName, operation, componentName, NDK/SDK, sync/async, setupTime, "
+        "destroyTime, minimumTime, maximumTime, averageTime, timeToProcess1SecContent, "
+        "totalBytesProcessedPerSec, timeToFirstFrame, totalSizeInBytes, totalTime\n";
+    FILE *fpStats = fopen(statsFile.c_str(), "ab+");
+    if(!fpStats) {
+        ALOGE("Failed to open the stats file!");
+        return false;
+    }
+    int32_t numBytes = fwrite(statsHeader, sizeof(char), sizeof(statsHeader), fpStats);
+    if(numBytes != sizeof(statsHeader)) {
+        ALOGE("Failed to write the stats header!");
+        return false;
+    }
+    fclose(fpStats);
+    return true;
+}

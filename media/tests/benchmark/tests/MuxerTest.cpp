@@ -28,7 +28,19 @@
 
 static BenchmarkTestEnvironment *gEnv = nullptr;
 
-class MuxerTest : public ::testing::TestWithParam<pair<string, string>> {};
+class MuxerTest : public ::testing::TestWithParam<pair<string, string>> {
+  public:
+    static void SetUpTestSuite() {
+        string statsFile;
+        FILE *fpStats = nullptr;
+        statsFile = gEnv->getRes() + "/Muxer.csv";
+        fpStats = fopen(statsFile.c_str(), "rb");
+        if(fpStats == nullptr) {
+            bool status = writeStatsHeader(statsFile);
+            ASSERT_TRUE(status) << "Failed to open the stats file!";
+        }
+    }
+};
 
 static MUXER_OUTPUT_T getMuxerOutFormat(string fmt) {
     static const struct {
@@ -113,7 +125,8 @@ TEST_P(MuxerTest, Mux) {
         ASSERT_EQ(status, 0) << "Mux failed";
 
         muxerObj->deInitMuxer();
-        muxerObj->dumpStatistics(GetParam().first + "." + fmt.c_str());
+        string statsFile = gEnv->getRes() + "/Muxer.csv";
+        muxerObj->dumpStatistics(GetParam().first + "." + fmt.c_str(), fmt, statsFile);
         free(inputBuffer);
         fclose(outputFp);
         muxerObj->resetMuxer();

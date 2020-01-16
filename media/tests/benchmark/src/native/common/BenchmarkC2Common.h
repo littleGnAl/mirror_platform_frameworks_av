@@ -121,6 +121,9 @@ class BenchmarkC2Common {
     // callback function to process onWorkDone received by Listener
     void handleWorkDone(std::list<std::unique_ptr<C2Work>> &workItems);
 
+    // write the stats header to a file.
+    bool writeStatsHeader(std::string statsFile);
+
     bool mEos;
   protected:
     Stats *mStats;

@@ -25,7 +25,19 @@
 
 static BenchmarkTestEnvironment *gEnv = nullptr;
 
-class EncoderTest : public ::testing::TestWithParam<tuple<string, string, bool>> {};
+class EncoderTest : public ::testing::TestWithParam<tuple<string, string, bool>> {
+  public:
+    static void SetUpTestSuite() {
+        string statsFile;
+        FILE *fpStats = nullptr;
+        statsFile = gEnv->getRes() + "/Encoder.csv";
+        fpStats = fopen(statsFile.c_str(), "rb");
+        if(fpStats == nullptr) {
+            bool status = writeStatsHeader(statsFile);
+            ASSERT_TRUE(status) << "Failed to open the stats file!";
+        }
+    }
+};
 
 TEST_P(EncoderTest, Encode) {
     ALOGD("Encode test for all codecs");
@@ -78,7 +90,7 @@ TEST_P(EncoderTest, Encode) {
         }
 
         string decName = "";
-        string outputFileName = "decode.out";
+        string outputFileName = "/data/local/tmp/decode.out";
         FILE *outFp = fopen(outputFileName.c_str(), "wb");
         ASSERT_NE(outFp, nullptr) << "Unable to open output file" << outputFileName
                                   << " for dumping decoder's output";
@@ -133,7 +145,9 @@ TEST_P(EncoderTest, Encode) {
         encoder->deInitCodec();
         ALOGV("codec : %s", codecName.c_str());
         string inputReference = get<0>(params);
-        encoder->dumpStatistics(inputReference, extractor->getClipDuration());
+        string statsFile = gEnv->getRes() + "/Encoder.csv";
+        encoder->dumpStatistics(inputReference, extractor->getClipDuration(), codecName,
+                                (asyncMode ? "async" : "sync"), statsFile);
         eleStream.close();
         if (outFp) fclose(outFp);
 

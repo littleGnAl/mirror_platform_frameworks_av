@@ -24,7 +24,19 @@
 
 static BenchmarkTestEnvironment *gEnv = nullptr;
 
-class ExtractorTest : public ::testing::TestWithParam<pair<string, int32_t>> {};
+class ExtractorTest : public ::testing::TestWithParam<pair<string, int32_t>> {
+  public:
+    static void SetUpTestSuite() {
+        string statsFile;
+        FILE *fpStats = nullptr;
+        statsFile = gEnv->getRes() + "/Extractor.csv";
+        fpStats = fopen(statsFile.c_str(), "rb");
+        if(fpStats == nullptr) {
+            bool status = writeStatsHeader(statsFile);
+            ASSERT_TRUE(status) << "Failed to open the stats file!";
+        }
+    }
+};
 
 TEST_P(ExtractorTest, Extract) {
     Extractor *extractObj = new Extractor();
@@ -48,8 +60,8 @@ TEST_P(ExtractorTest, Extract) {
     ASSERT_EQ(status, AMEDIA_OK) << "Extraction failed \n";
 
     extractObj->deInitExtractor();
-
-    extractObj->dumpStatistics(GetParam().first);
+    string statsFile = gEnv->getRes() + "/Extractor.csv";
+    extractObj->dumpStatistics(GetParam().first, "", statsFile);
 
     fclose(inputFp);
     delete extractObj;

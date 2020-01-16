@@ -26,7 +26,19 @@
 
 static BenchmarkTestEnvironment *gEnv = nullptr;
 
-class DecoderTest : public ::testing::TestWithParam<tuple<string, string, bool>> {};
+class DecoderTest : public ::testing::TestWithParam<tuple<string, string, bool>> {
+  public:
+    static void SetUpTestSuite() {
+        string statsFile;
+        FILE *fpStats = nullptr;
+        statsFile = gEnv->getRes() + "/Decoder.csv";
+        fpStats = fopen(statsFile.c_str(), "rb");
+        if(fpStats == nullptr) {
+            bool status = writeStatsHeader(statsFile);
+            ASSERT_TRUE(status) << "Failed to open the stats file!";
+        }
+    }
+};
 
 TEST_P(DecoderTest, Decode) {
     ALOGV("Decode the samples given by extractor");
@@ -84,7 +96,9 @@ TEST_P(DecoderTest, Decode) {
         decoder->deInitCodec();
         ALOGV("codec : %s", codecName.c_str());
         string inputReference = get<0>(params);
-        decoder->dumpStatistics(inputReference);
+        string statsFile = gEnv->getRes() + "/Decoder.csv";
+        decoder->dumpStatistics(inputReference, codecName, (asyncMode ? "async" : "sync"),
+                                statsFile);
         free(inputBuffer);
         decoder->resetDecoder();
     }
