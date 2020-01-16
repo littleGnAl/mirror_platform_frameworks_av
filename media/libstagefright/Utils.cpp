@@ -1283,15 +1283,31 @@ status_t convertMetaDataToMessage(
 
         parseHevcProfileLevelFromHvcc((const uint8_t *)data, dataSize, msg);
     } else if (meta->findData(kKeyAV1C, &type, &data, &size)) {
-        sp<ABuffer> buffer = new (std::nothrow) ABuffer(size);
+        const uint8_t *ptr = (const uint8_t *)data;
+
+        if (size < 4 || ptr[0] != 0x81) {  // configurationVersion == 1
+            return BAD_VALUE;
+        }
+
+        const size_t dataSize = size; // save for later
+        ptr += 4;
+        size -= 4;
+
+        sp<ABuffer> buffer = new (std::nothrow) ABuffer(dataSize);
         if (buffer.get() == NULL || buffer->base() == NULL) {
             return NO_MEMORY;
         }
-        memcpy(buffer->data(), data, size);
+        memcpy(buffer->data(), data, dataSize);
 
-        buffer->meta()->setInt32("csd", true);
-        buffer->meta()->setInt64("timeUs", 0);
-        msg->setBuffer("csd-0", buffer);
+        sp<ABuffer> bufferCsd = new (std::nothrow) ABuffer(size);
+        if (bufferCsd.get() == NULL || bufferCsd->base() == NULL) {
+            return NO_MEMORY;
+        }
+        memcpy(bufferCsd->data(), ptr, size);
+
+        bufferCsd->meta()->setInt32("csd", true);
+        bufferCsd->meta()->setInt64("timeUs", 0);
+        msg->setBuffer("csd-0", bufferCsd);
         parseAV1ProfileLevelFromCsd(buffer, msg);
     } else if (meta->findData(kKeyESDS, &type, &data, &size)) {
         ESDS esds((const char *)data, size);
