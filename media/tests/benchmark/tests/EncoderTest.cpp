@@ -78,7 +78,7 @@ TEST_P(EncoderTest, Encode) {
         }
 
         string decName = "";
-        string outputFileName = "decode.out";
+        string outputFileName = "/data/local/tmp/decode.out";
         FILE *outFp = fopen(outputFileName.c_str(), "wb");
         ASSERT_NE(outFp, nullptr) << "Unable to open output file" << outputFileName
                                   << " for dumping decoder's output";
@@ -133,7 +133,9 @@ TEST_P(EncoderTest, Encode) {
         encoder->deInitCodec();
         ALOGV("codec : %s", codecName.c_str());
         string inputReference = get<0>(params);
-        encoder->dumpStatistics(inputReference, extractor->getClipDuration());
+        string statsFile = gEnv->getRes() + "/Encoder.csv";
+        encoder->dumpStatistics(inputReference, extractor->getClipDuration(), codecName,
+                                (asyncMode ? "async" : "sync"), statsFile);
         eleStream.close();
         if (outFp) fclose(outFp);
 
@@ -214,8 +216,11 @@ int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     int status = gEnv->initFromOptions(argc, argv);
     if (status == 0) {
+        gEnv->setStatsFile("/Encoder.csv");
+        status = gEnv->writeStatsHeader(gEnv->getStatsFile());
+        ALOGV("Stats file header write = %d\n", status);
         status = RUN_ALL_TESTS();
-        ALOGD("Encoder Test result = %d\n", status);
+        ALOGV("Encoder Test result = %d\n", status);
     }
     return status;
 }

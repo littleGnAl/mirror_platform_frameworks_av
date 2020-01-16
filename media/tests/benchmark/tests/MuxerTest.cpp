@@ -113,7 +113,8 @@ TEST_P(MuxerTest, Mux) {
         ASSERT_EQ(status, 0) << "Mux failed";
 
         muxerObj->deInitMuxer();
-        muxerObj->dumpStatistics(GetParam().first + "." + fmt.c_str());
+        string statsFile = gEnv->getRes() + "/Muxer.csv";
+        muxerObj->dumpStatistics(GetParam().first + "." + fmt.c_str(), fmt, statsFile);
         free(inputBuffer);
         fclose(outputFp);
         muxerObj->resetMuxer();
@@ -151,8 +152,11 @@ int main(int argc, char **argv) {
     ::testing::InitGoogleTest(&argc, argv);
     int status = gEnv->initFromOptions(argc, argv);
     if (status == 0) {
+        gEnv->setStatsFile("/Muxer.csv");
+        status = gEnv->writeStatsHeader(gEnv->getStatsFile());
+        ALOGV("Stats file header write = %d\n", status);
         status = RUN_ALL_TESTS();
-        ALOGV("Test result = %d\n", status);
+        ALOGV("Muxer Test result = %d\n", status);
     }
     return status;
 }
