@@ -129,21 +129,21 @@ INSTANTIATE_TEST_SUITE_P(VideDecoderSyncTest, DecoderTest,
                                  make_tuple("crowd_1920x1080_25fps_4000kbps_h265.mkv", "", false),
                                  // Software codecs
                                  make_tuple("crowd_1920x1080_25fps_4000kbps_vp9.webm",
-                                            "c2.android.vp9.decoder", false),
+                                            "OMX.google.vp9.decoder", false),
                                  make_tuple("crowd_1920x1080_25fps_4000kbps_vp8.webm",
-                                            "c2.android.vp8.decoder", false),
+                                            "OMX.google.vp8.decoder", false),
                                  make_tuple("crowd_1920x1080_25fps_4000kbps_av1.webm",
                                             "c2.android.av1.decoder", false),
                                  make_tuple("crowd_1920x1080_25fps_7300kbps_mpeg2.mp4",
-                                            "c2.android.mpeg2.decoder", false),
+                                            "OMX.google.mpeg2.decoder", false),
                                  make_tuple("crowd_1920x1080_25fps_6000kbps_mpeg4.mp4",
-                                            "c2.android.mpeg4.decoder", false),
+                                            "OMX.google.mpeg4.decoder", false),
                                  make_tuple("crowd_352x288_25fps_6000kbps_h263.3gp",
-                                            "c2.android.h263.decoder", false),
+                                            "OMX.google.h263.decoder", false),
                                  make_tuple("crowd_1920x1080_25fps_6700kbps_h264.ts",
-                                            "c2.android.avc.decoder", false),
+                                            "OMX.google.h264.decoder", false),
                                  make_tuple("crowd_1920x1080_25fps_4000kbps_h265.mkv",
-                                            "c2.android.hevc.decoder", false)));
+                                            "OMX.google.hevc.decoder", false)));
 
 INSTANTIATE_TEST_SUITE_P(VideoDecoderAsyncTest, DecoderTest,
                          ::testing::Values(
@@ -158,21 +158,21 @@ INSTANTIATE_TEST_SUITE_P(VideoDecoderAsyncTest, DecoderTest,
                                  make_tuple("crowd_1920x1080_25fps_4000kbps_h265.mkv", "", true),
                                  // Software codecs
                                  make_tuple("crowd_1920x1080_25fps_4000kbps_vp9.webm",
-                                            "c2.android.vp9.decoder", true),
+                                            "OMX.google.vp9.decoder", true),
                                  make_tuple("crowd_1920x1080_25fps_4000kbps_vp8.webm",
-                                            "c2.android.vp8.decoder", true),
+                                            "OMX.google.vp8.decoder", true),
                                  make_tuple("crowd_1920x1080_25fps_4000kbps_av1.webm",
                                             "c2.android.av1.decoder", true),
                                  make_tuple("crowd_1920x1080_25fps_7300kbps_mpeg2.mp4",
-                                            "c2.android.mpeg2.decoder", true),
+                                            "OMX.google.mpeg2.decoder", true),
                                  make_tuple("crowd_1920x1080_25fps_6000kbps_mpeg4.mp4",
-                                            "c2.android.mpeg4.decoder", true),
+                                            "OMX.google.mpeg4.decoder", true),
                                  make_tuple("crowd_352x288_25fps_6000kbps_h263.3gp",
-                                            "c2.android.h263.decoder", true),
+                                            "OMX.google.h263.decoder", true),
                                  make_tuple("crowd_1920x1080_25fps_6700kbps_h264.ts",
-                                            "c2.android.avc.decoder", true),
+                                            "OMX.google.h264.decoder", true),
                                  make_tuple("crowd_1920x1080_25fps_4000kbps_h265.mkv",
-                                            "c2.android.hevc.decoder", true)));
+                                            "OMX.google.hevc.decoder", true)));
 
 int main(int argc, char **argv) {
     gEnv = new BenchmarkTestEnvironment();
