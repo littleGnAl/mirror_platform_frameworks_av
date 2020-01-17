@@ -2267,6 +2267,37 @@ status_t ACodec::configureCodec(
         } else {
             err = setupDTSCodec(encoder, numChannels, sampleRate);
         }
+    } else if (!strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_WMA)
+            || !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_WMAPRO)) {
+        int32_t numChannels, sampleRate;
+        if (!msg->findInt32("channel-count", &numChannels)
+                || !msg->findInt32("sample-rate", &sampleRate)) {
+            err = INVALID_OPERATION;
+        } else {
+            int32_t blockAlign, bitRate, audioFormat, audioProfile, encodeOptions, superBlockAlign;
+            if (!msg->findInt32("block-align", &blockAlign)) {
+                blockAlign = -1;
+            }
+            if (!msg->findInt32("bitrate", &bitRate)) {
+                bitRate = -1;
+            }
+            if (!msg->findInt32("audio-format", &audioFormat)) {
+                audioFormat = -1;
+            }
+            if (!msg->findInt32("audio-profile", &audioProfile)) {
+                audioProfile = -1;
+            }
+            if (!msg->findInt32("encode-op", &encodeOptions)) {
+                encodeOptions = -1;
+            }
+            if (!msg->findInt32("sblock-align", &superBlockAlign)) {
+                superBlockAlign = -1;
+            }
+
+            err = setupWMACodec(encoder, numChannels, sampleRate, blockAlign,
+                        bitRate, (OMX_AUDIO_WMAFORMATTYPE)audioFormat,
+                        (OMX_AUDIO_WMAPROFILETYPE)audioProfile, encodeOptions, superBlockAlign);
+        }
     } else if (!strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_APE)) {
         int32_t numChannels, sampleRate;
         if (!msg->findInt32("channel-count", &numChannels)
@@ -3055,6 +3086,50 @@ status_t ACodec::setupDTSCodec(
 
     return mOMXNode->setParameter(
             (OMX_INDEXTYPE)OMX_IndexParamAudioAndroidDts,
+            &def,
+            sizeof(def));
+}
+
+status_t ACodec::setupWMACodec(
+        bool encoder, int32_t numChannels, int32_t sampleRate, int32_t blockAlign,
+        int32_t bitRate, OMX_AUDIO_WMAFORMATTYPE format, OMX_AUDIO_WMAPROFILETYPE profile,
+        int32_t encodeOptions, int32_t superBlockAlign) {
+    status_t err = setupRawAudioFormat(
+            encoder ? kPortIndexInput : kPortIndexOutput, sampleRate, numChannels);
+
+    if (err != OK) {
+        return err;
+    }
+
+    if (encoder) {
+        ALOGW("WMA encoding is not supported.");
+        return INVALID_OPERATION;
+    }
+
+    OMX_AUDIO_PARAM_WMATYPE def;
+    InitOMXParams(&def);
+    def.nPortIndex = kPortIndexInput;
+
+    err = mOMXNode->getParameter(
+            (OMX_INDEXTYPE)OMX_IndexParamAudioWma,
+            &def,
+            sizeof(def));
+
+    if (err != OK) {
+        return err;
+    }
+
+    def.nChannels = numChannels;
+    def.nSamplingRate = sampleRate;
+    def.nBlockAlign = blockAlign;
+    def.nBitRate = bitRate;
+    def.eFormat = format;
+    def.eProfile = profile;
+    def.nEncodeOptions = encodeOptions;
+    def.nSuperBlockAlign = superBlockAlign;
+
+    return mOMXNode->setParameter(
+            (OMX_INDEXTYPE)OMX_IndexParamAudioWma,
             &def,
             sizeof(def));
 }
@@ -5657,6 +5732,30 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                     notify->setString("mime", MEDIA_MIMETYPE_AUDIO_DTS);
                     notify->setInt32("channel-count", params.nChannels);
                     notify->setInt32("sample-rate", params.nSampleRate);
+                    break;
+                }
+
+                case OMX_AUDIO_CodingWMA:
+                {
+                    OMX_AUDIO_PARAM_WMATYPE params;
+                    InitOMXParams(&params);
+                    params.nPortIndex = portIndex;
+
+                    err = mOMXNode->getParameter(
+                            OMX_IndexParamAudioWma, &params, sizeof(params));
+                    if (err != OK) {
+                        return err;
+                    }
+
+                    const char *mime = NULL;
+                    if (params.eFormat == OMX_AUDIO_WMAFormat8) {
+                        mime = MEDIA_MIMETYPE_AUDIO_WMA;
+                    } else {
+                        mime = MEDIA_MIMETYPE_AUDIO_WMAPRO;
+                    }
+                    notify->setString("mime", mime);
+                    notify->setInt32("channel-count", params.nChannels);
+                    notify->setInt32("sample-rate", params.nSamplingRate);
                     break;
                 }
 

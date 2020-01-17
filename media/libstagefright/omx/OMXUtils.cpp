@@ -180,6 +180,10 @@ const char *GetComponentRole(bool isEncoder, const char *mime) {
             "audio_decoder.dtse", "audio_encoder.dtse" },
         { MEDIA_MIMETYPE_AUDIO_APE,
             "audio_decoder.ape", "audio_encoder.ape" },
+        { MEDIA_MIMETYPE_AUDIO_WMA,
+            "audio_decoder.wma", "audio_encoder.wma" },
+        { MEDIA_MIMETYPE_AUDIO_WMAPRO,
+            "audio_decoder.wmapro", "audio_encoder.wmapro" },
         { MEDIA_MIMETYPE_AUDIO_REAL_AUDIO,
             "audio_decoder.ra", "audio_encoder.ra" },
     };
