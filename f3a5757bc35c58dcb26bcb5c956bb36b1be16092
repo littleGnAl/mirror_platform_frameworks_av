@@ -2,6 +2,75 @@
   "comments": [
     {
       "key": {
+        "uuid": "061e2a54_af8fa528",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-17T21:40:36Z",
+      "side": 1,
+      "message": "these do not appear anywhere else in this CL, so they can\u0027t be too important.\nI expect they should be discarded.",
+      "range": {
+        "startLine": 33,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "f3a5757bc35c58dcb26bcb5c956bb36b1be16092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3025fa3a_451cb1f8",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-17T21:40:36Z",
+      "side": 1,
+      "message": "any reason not unsigned-integer also?",
+      "range": {
+        "startLine": 42,
+        "startChar": 13,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "f3a5757bc35c58dcb26bcb5c956bb36b1be16092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4ead2439_a3346cbc",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Mpeg4H263EncoderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-17T21:40:36Z",
+      "side": 1,
+      "message": "chosen for max output resolution?\n\ndo we need to validate that mWidth and mHeight are within these bounds?",
+      "range": {
+        "startLine": 34,
+        "startChar": 38,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "f3a5757bc35c58dcb26bcb5c956bb36b1be16092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3f66e290_836547ed",
         "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Mpeg4H263EncoderTest.cpp",
         "patchSetId": 2
