@@ -65,6 +65,7 @@ const char *MEDIA_MIMETYPE_AUDIO_REAL_AUDIO = "audio/vnd.rn-realaudio";
 const char *MEDIA_MIMETYPE_AUDIO_SCRAMBLED = "audio/scrambled";
 const char *MEDIA_MIMETYPE_AUDIO_ALAC = "audio/alac";
 const char *MEDIA_MIMETYPE_AUDIO_WMA = "audio/x-ms-wma";
+const char *MEDIA_MIMETYPE_AUDIO_WMAPRO = "audio/x-ms-wmapro";
 const char *MEDIA_MIMETYPE_AUDIO_MS_ADPCM = "audio/x-adpcm-ms";
 const char *MEDIA_MIMETYPE_AUDIO_DVI_IMA_ADPCM = "audio/x-adpcm-dvi-ima";
 

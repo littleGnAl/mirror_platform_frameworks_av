@@ -481,6 +481,13 @@ private:
 
     status_t setupDTSCodec(bool encoder, int32_t numChannels, int32_t sampleRate);
 
+    status_t setupWMACodec(
+            bool encoder,
+            int32_t numChannels, int32_t sampleRate,
+            int32_t blockAlign, int32_t bitRate,
+            OMX_AUDIO_WMAFORMATTYPE format, OMX_AUDIO_WMAPROFILETYPE profile,
+            int32_t encodeOptions, int32_t superBlockAlign);
+
     status_t setupAPECodec(
             bool encoder,
             int32_t sourceBufferSize, int32_t fileVersion, int32_t compressionType,

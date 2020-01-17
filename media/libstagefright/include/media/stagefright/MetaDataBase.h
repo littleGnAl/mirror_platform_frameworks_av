@@ -209,6 +209,11 @@ enum {
     kKeyAVCE             = 'avce', // raw data (dolby vision csd2 information)
     kKeyHVCE             = 'hvce', // raw data (dolby vision csd2 information)
 
+    kKeyAudioFormat      = 'afmt',
+    kKeyAudioProfile     = 'apro',
+    kKeySuperBlockAlign  = 'sblk',
+    kKeyEncodeOptions    = 'enop',
+    kKeyBlockAlign       = 'blka',  // int32_t
     kKeyBitsPerFrame     = 'btpf',  // int32_t
 
     // HDR related

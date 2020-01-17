@@ -154,10 +154,15 @@ LIBMEDIANDK {
     AMEDIAFORMAT_KEY_TOTAL_FRAME; # introduced=28
     AMEDIAFORMAT_KEY_FINAL_SAMPLE; # introduced=28
     AMEDIAFORMAT_KEY_BUFFER_SIZE; # introduced=28
+    AMEDIAFORMAT_KEY_BLOCKALIGN; # introduced=28
     AMEDIAFORMAT_KEY_DV_PRIVATE; # introduced=28
     AMEDIAFORMAT_KEY_CSD_AVCE; # introduced=28
     AMEDIAFORMAT_KEY_CSD_HVCE; # introduced=28
     AMEDIAFORMAT_KEY_FILE_TYPE; # introduced=28
+    AMEDIAFORMAT_KEY_AUDIO_FORMAT; # introduced=28
+    AMEDIAFORMAT_KEY_AUDIO_PROFILE; # introduced=28
+    AMEDIAFORMAT_KEY_SUPER_BLOCKALIGN; # introduced=28
+    AMEDIAFORMAT_KEY_ENCODE_OPTIONS; # introduced=28
     AMEDIAFORMAT_KEY_BITS_PER_FRAME; # introduced=28
     AMediaCodecActionCode_isRecoverable; # introduced=28
     AMediaCodecActionCode_isTransient; # introduced=28
