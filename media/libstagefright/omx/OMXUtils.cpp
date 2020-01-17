@@ -172,6 +172,12 @@ const char *GetComponentRole(bool isEncoder, const char *mime) {
             "audio_decoder.ac4", "audio_encoder.ac4" },
         { MEDIA_MIMETYPE_IMAGE_ANDROID_HEIC,
             "image_decoder.heic", "image_encoder.heic" },
+        { MEDIA_MIMETYPE_AUDIO_DTS,
+            "audio_decoder.dts", "audio_encoder.dts" },
+        { MEDIA_MIMETYPE_AUDIO_DTS_HD,
+            "audio_decoder.dtshd", "audio_encoder.dtshd" },
+        { MEDIA_MIMETYPE_AUDIO_DTS_EXPRESS,
+            "audio_decoder.dtse", "audio_encoder.dtse" },
         { MEDIA_MIMETYPE_AUDIO_APE,
             "audio_decoder.ape", "audio_encoder.ape" },
     };
