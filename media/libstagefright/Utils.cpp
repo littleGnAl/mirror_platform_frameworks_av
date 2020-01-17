@@ -958,6 +958,11 @@ status_t convertMetaDataToMessage(
         msg->setInt32("is-sync-frame", 1);
     }
 
+    int32_t group;
+    if (meta->findInt32(kKeyGroup, &group)) {
+        msg->setInt32("group", group);
+    }
+
     const char *lang;
     if (meta->findCString(kKeyMediaLanguage, &lang)) {
         msg->setString("language", lang);
@@ -2065,6 +2070,11 @@ void convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
     int32_t isSync;
     if (msg->findInt32("is-sync-frame", &isSync) && isSync != 0) {
         meta->setInt32(kKeyIsSyncFrame, 1);
+    }
+
+    int32_t group;
+    if (msg->findInt32("group", &group)) {
+        meta->setInt32(kKeyGroup, group);
     }
 
     int32_t avgBitrate = 0;
