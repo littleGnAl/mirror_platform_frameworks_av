@@ -2257,6 +2257,42 @@ status_t ACodec::configureCodec(
         } else {
             err = setupAC4Codec(encoder, numChannels, sampleRate);
         }
+    } else if (!strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_APE)) {
+        int32_t numChannels, sampleRate;
+        if (!msg->findInt32("channel-count", &numChannels)
+                || !msg->findInt32("sample-rate", &sampleRate)) {
+            err = INVALID_OPERATION;
+        } else {
+            int32_t sourceBufferSize, fileVersion;
+            int32_t compressionType, blocksPerFrame;
+            int32_t totalFrames, finalFrameBlocks, bitRate;
+
+            if (!msg->findInt32("buffer-size", &sourceBufferSize)) {
+                sourceBufferSize = -1;
+            }
+            if (!msg->findInt32("file-type", &fileVersion)) {
+                fileVersion = -1;
+            }
+            if (!msg->findInt32("compression-type", &compressionType)) {
+                compressionType = -1;
+            }
+            if (!msg->findInt32("sample-per-frame", &blocksPerFrame)) {
+                blocksPerFrame = -1;
+            }
+            if (!msg->findInt32("total-frame", &totalFrames)) {
+                totalFrames = -1;
+            }
+            if (!msg->findInt32("final-sample", &finalFrameBlocks)) {
+                finalFrameBlocks = -1;
+            }
+            if (!msg->findInt32("bitrate", &bitRate)) {
+                bitRate = -1;
+            }
+
+            err = setupAPECodec(
+                     encoder, sourceBufferSize, fileVersion, compressionType, blocksPerFrame,
+                     totalFrames, finalFrameBlocks, numChannels, sampleRate, bitRate);
+        }
     }
 
     if (err != OK) {
@@ -2960,6 +2996,76 @@ status_t ACodec::setupAC4Codec(
 
     return mOMXNode->setParameter(
             (OMX_INDEXTYPE)OMX_IndexParamAudioAndroidAc4, &def, sizeof(def));
+}
+
+status_t ACodec::setupAPECodec(
+        bool encoder,
+        int32_t sourceBufferSize, int32_t fileVersion, int32_t compressionType,
+        int32_t blocksPerFrame, int32_t totalFrames, int32_t finalFrameBlocks,
+        int32_t channels, int32_t sampleRate, int32_t bitRate) {
+    if (encoder) {
+        ALOGW("APE encoding is not supported.");
+        return INVALID_OPERATION;
+    }
+
+    OMX_AUDIO_PARAM_ANDROID_APETYPE profile;
+    InitOMXParams(&profile);
+    profile.nPortIndex = OMX_DirInput;
+
+    status_t err = mOMXNode->getParameter(
+            (OMX_INDEXTYPE)OMX_IndexParamAudioAndroidApe, &profile, sizeof(profile));
+    if (err != OK) {
+        return err;
+    }
+
+    profile.nSourceBufferSize = sourceBufferSize;
+    profile.nFileVersion = fileVersion;
+    profile.nCompressionType = compressionType;
+    profile.nBlocksPerFrame = blocksPerFrame;
+    profile.nTotalFrames = totalFrames;
+    profile.nFinalFrameBlocks = finalFrameBlocks;
+    profile.nChannels = channels;
+    profile.nSampleRate = sampleRate;
+    profile.nBitRate = bitRate;
+
+    profile.nBitsPerCodedSample = (profile.nSampleRate > 0)
+            ? (OMX_U16)(profile.nBitRate / (profile.nChannels * profile.nSampleRate))
+            : 0;
+
+    err = mOMXNode->setParameter(
+            (OMX_INDEXTYPE)OMX_IndexParamAudioAndroidApe, &profile, sizeof(profile));
+
+    OMX_PARAM_PORTDEFINITIONTYPE def;
+    InitOMXParams(&def);
+    def.nPortIndex = OMX_DirInput;
+
+    err = mOMXNode->getParameter(
+            OMX_IndexParamPortDefinition, &def, sizeof(def));
+    if (err != OK) {
+        return err;
+    }
+
+    def.nBufferSize = profile.nSourceBufferSize;
+    err = mOMXNode->setParameter(
+            OMX_IndexParamPortDefinition, &def, sizeof(def));
+    if (err != OK) {
+        return err;
+    }
+
+    if (profile.nBitsPerCodedSample == 24) {
+        InitOMXParams(&def);
+        def.nPortIndex = OMX_DirOutput;
+        err = mOMXNode->getParameter(OMX_IndexParamPortDefinition, &def, sizeof(def));
+        if (err != OK) {
+            return err;
+        }
+        def.nBufferSize <<= 1;
+        err = mOMXNode->setParameter(OMX_IndexParamPortDefinition, &def, sizeof(def));
+        if (err != OK) {
+            return err;
+        }
+    }
+    return err;
 }
 
 static OMX_AUDIO_AMRBANDMODETYPE pickModeFromBitRate(
@@ -5434,6 +5540,25 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                     notify->setString("mime", MEDIA_MIMETYPE_AUDIO_MSGSM);
                     notify->setInt32("channel-count", params.nChannels);
                     notify->setInt32("sample-rate", params.nSamplingRate);
+                    break;
+                }
+
+                case OMX_AUDIO_CodingAndroidAPE:
+                {
+                    OMX_AUDIO_PARAM_ANDROID_APETYPE params;
+                    InitOMXParams(&params);
+                    params.nPortIndex = portIndex;
+
+                    err = mOMXNode->getParameter(
+                            (OMX_INDEXTYPE)OMX_IndexParamAudioAndroidApe,
+                            &params, sizeof(params));
+                    if (err != OK) {
+                        return err;
+                    }
+
+                    notify->setString("mime", MEDIA_MIMETYPE_AUDIO_APE);
+                    notify->setInt32("channel-count", params.nChannels);
+                    notify->setInt32("sample-rate", params.nSampleRate);
                     break;
                 }
 
