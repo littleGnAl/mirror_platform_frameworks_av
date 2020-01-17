@@ -22,6 +22,30 @@
       "revId": "e4c0e28cf690c4d526e8e99ae7773cfa0d63b2a8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8652fc4_dcd3a22f",
+        "filename": "media/libeffects/data/audio_effects.xml",
+        "patchSetId": 9
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-01-17T07:40:03Z",
+      "side": 1,
+      "message": "I wanted to give an example with the topology I introduced in /device/generic/car/emulation_policy_configurable.\nIf it is confusing, I can just remove this example.",
+      "parentUuid": "78cad2a2_890393da",
+      "range": {
+        "startLine": 123,
+        "startChar": 65,
+        "endLine": 123,
+        "endChar": 73
+      },
+      "revId": "e4c0e28cf690c4d526e8e99ae7773cfa0d63b2a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
