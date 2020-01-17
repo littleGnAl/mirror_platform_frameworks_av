@@ -479,6 +479,12 @@ private:
 
     status_t setupEAC3Codec(bool encoder, int32_t numChannels, int32_t sampleRate);
 
+    status_t setupAPECodec(
+            bool encoder,
+            int32_t sourceBufferSize, int32_t fileVersion, int32_t compressionType,
+            int32_t blocksPerFrame, int32_t totalFrames, int32_t finalFrameBlocks,
+            int32_t channels, int32_t sampleRate, int32_t bitRate);
+
     status_t setupAC4Codec(bool encoder, int32_t numChannels, int32_t sampleRate);
 
     status_t selectAudioPortFormat(

@@ -59,6 +59,7 @@ extern const char *MEDIA_MIMETYPE_AUDIO_AC3;
 extern const char *MEDIA_MIMETYPE_AUDIO_EAC3;
 extern const char *MEDIA_MIMETYPE_AUDIO_EAC3_JOC;
 extern const char *MEDIA_MIMETYPE_AUDIO_AC4;
+extern const char *MEDIA_MIMETYPE_AUDIO_APE;
 extern const char *MEDIA_MIMETYPE_AUDIO_SCRAMBLED;
 extern const char *MEDIA_MIMETYPE_AUDIO_ALAC;
 extern const char *MEDIA_MIMETYPE_AUDIO_WMA;

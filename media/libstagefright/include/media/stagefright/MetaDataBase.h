@@ -198,6 +198,12 @@ enum {
     // MPEG user data offsets
     kKeyMpegUserData      = 'mpud', // size_t[]
 
+    kKeyCompType          = 'cmpt',  // int32_t, compression type
+    kKeySamplesPerFrame   = 'smpf',  // int32_t
+    kKeyTotalFrame        = 'totf',  // int32_t
+    kKeyFinalSample       = 'fsmp',  // int32_t
+    kKeyBufferSize        = 'bsiz',  // int32_t
+
     // Dolby vision related
     kKeyDVPrivate        = 'dvpr', // raw data (dolby vision csd0 information)
     kKeyAVCE             = 'avce', // raw data (dolby vision csd2 information)
