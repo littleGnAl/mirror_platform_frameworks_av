@@ -599,8 +599,8 @@ private:
 
             struct Setter {
                 static C2R setIonUsage(bool /* mayBlock */, C2P<C2StoreIonUsageInfo> &me) {
-                    me.set().heapMask = ~0;
-                    me.set().allocFlags = 0;
+                    me.set().heapMask = 1;
+                    me.set().allocFlags = 1;
                     me.set().minAlignment = 0;
                     return C2R::Ok();
                 }
