@@ -2257,6 +2257,16 @@ status_t ACodec::configureCodec(
         } else {
             err = setupAC4Codec(encoder, numChannels, sampleRate);
         }
+    } else if (!strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_DTS)
+        || !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_DTS_HD)
+        || !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_DTS_EXPRESS)) {
+        int32_t numChannels, sampleRate;
+        if (!msg->findInt32("channel-count", &numChannels)
+                || !msg->findInt32("sample-rate", &sampleRate)) {
+            err = INVALID_OPERATION;
+        } else {
+            err = setupDTSCodec(encoder, numChannels, sampleRate);
+        }
     } else if (!strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_APE)) {
         int32_t numChannels, sampleRate;
         if (!msg->findInt32("channel-count", &numChannels)
@@ -2996,6 +3006,42 @@ status_t ACodec::setupAC4Codec(
 
     return mOMXNode->setParameter(
             (OMX_INDEXTYPE)OMX_IndexParamAudioAndroidAc4, &def, sizeof(def));
+}
+
+status_t ACodec::setupDTSCodec(
+        bool encoder, int32_t numChannels, int32_t sampleRate) {
+    status_t err = setupRawAudioFormat(
+            encoder ? kPortIndexInput : kPortIndexOutput, sampleRate, numChannels);
+
+    if (err != OK) {
+        return err;
+    }
+
+    if (encoder) {
+        ALOGW("DTS encoding is not supported.");
+        return INVALID_OPERATION;
+    }
+
+    OMX_AUDIO_PARAM_ANDROID_DTSTYPE def;
+    InitOMXParams(&def);
+    def.nPortIndex = kPortIndexInput;
+
+    err = mOMXNode->getParameter(
+            (OMX_INDEXTYPE)OMX_IndexParamAudioAndroidDts,
+            &def,
+            sizeof(def));
+
+    if (err != OK) {
+        return err;
+    }
+
+    def.nChannels = numChannels;
+    def.nSampleRate = sampleRate;
+
+    return mOMXNode->setParameter(
+            (OMX_INDEXTYPE)OMX_IndexParamAudioAndroidDts,
+            &def,
+            sizeof(def));
 }
 
 status_t ACodec::setupAPECodec(
@@ -5540,6 +5586,25 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                     notify->setString("mime", MEDIA_MIMETYPE_AUDIO_MSGSM);
                     notify->setInt32("channel-count", params.nChannels);
                     notify->setInt32("sample-rate", params.nSamplingRate);
+                    break;
+                }
+
+                case OMX_AUDIO_CodingAndroidDTS:
+                {
+                    OMX_AUDIO_PARAM_ANDROID_DTSTYPE params;
+                    InitOMXParams(&params);
+                    params.nPortIndex = portIndex;
+
+                    err = mOMXNode->getParameter(
+                                (OMX_INDEXTYPE)OMX_IndexParamAudioAndroidDts,
+                                &params, sizeof(params));
+                    if (err != OK) {
+                        return err;
+                    }
+
+                    notify->setString("mime", MEDIA_MIMETYPE_AUDIO_DTS);
+                    notify->setInt32("channel-count", params.nChannels);
+                    notify->setInt32("sample-rate", params.nSampleRate);
                     break;
                 }
 
