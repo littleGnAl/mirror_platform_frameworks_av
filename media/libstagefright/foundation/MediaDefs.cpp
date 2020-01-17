@@ -60,6 +60,8 @@ const char *MEDIA_MIMETYPE_AUDIO_AC4 = "audio/ac4";
 const char *MEDIA_MIMETYPE_AUDIO_DTS = "audio/vnd.dts";
 const char *MEDIA_MIMETYPE_AUDIO_DTS_HD = "audio/vnd.dts.hd";
 const char *MEDIA_MIMETYPE_AUDIO_DTS_EXPRESS = "audio/vnd.dts.hd;profile=lbr";
+const char *MEDIA_MIMETYPE_AUDIO_ADPCM_IMA = "audio/x-adpcm-ima";
+const char *MEDIA_MIMETYPE_AUDIO_ADPCM_MS = "audio/x-adpcm-ms";
 const char *MEDIA_MIMETYPE_AUDIO_APE = "audio/ape";
 const char *MEDIA_MIMETYPE_AUDIO_WMAPRO = "audio/x-ms-wmapro";
 const char *MEDIA_MIMETYPE_AUDIO_REAL_AUDIO = "audio/vnd.rn-realaudio";
