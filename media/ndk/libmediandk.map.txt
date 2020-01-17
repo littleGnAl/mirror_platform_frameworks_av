@@ -158,6 +158,7 @@ LIBMEDIANDK {
     AMEDIAFORMAT_KEY_CSD_AVCE; # introduced=28
     AMEDIAFORMAT_KEY_CSD_HVCE; # introduced=28
     AMEDIAFORMAT_KEY_FILE_TYPE; # introduced=28
+    AMEDIAFORMAT_KEY_BITS_PER_FRAME; # introduced=28
     AMediaCodecActionCode_isRecoverable; # introduced=28
     AMediaCodecActionCode_isTransient; # introduced=28
     AMediaCodecCryptoInfo_delete;

@@ -61,6 +61,7 @@ const char *MEDIA_MIMETYPE_AUDIO_DTS = "audio/vnd.dts";
 const char *MEDIA_MIMETYPE_AUDIO_DTS_HD = "audio/vnd.dts.hd";
 const char *MEDIA_MIMETYPE_AUDIO_DTS_EXPRESS = "audio/vnd.dts.hd;profile=lbr";
 const char *MEDIA_MIMETYPE_AUDIO_APE = "audio/ape";
+const char *MEDIA_MIMETYPE_AUDIO_REAL_AUDIO = "audio/vnd.rn-realaudio";
 const char *MEDIA_MIMETYPE_AUDIO_SCRAMBLED = "audio/scrambled";
 const char *MEDIA_MIMETYPE_AUDIO_ALAC = "audio/alac";
 const char *MEDIA_MIMETYPE_AUDIO_WMA = "audio/x-ms-wma";
