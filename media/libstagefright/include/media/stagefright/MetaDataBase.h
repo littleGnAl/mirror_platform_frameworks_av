@@ -198,6 +198,11 @@ enum {
     // MPEG user data offsets
     kKeyMpegUserData      = 'mpud', // size_t[]
 
+    // Dolby vision related
+    kKeyDVPrivate        = 'dvpr', // raw data (dolby vision csd0 information)
+    kKeyAVCE             = 'avce', // raw data (dolby vision csd2 information)
+    kKeyHVCE             = 'hvce', // raw data (dolby vision csd2 information)
+
     // HDR related
     kKeyHdrStaticInfo    = 'hdrS', // HDRStaticInfo
     kKeyHdr10PlusInfo    = 'hdrD', // raw data
