@@ -2298,6 +2298,18 @@ status_t ACodec::configureCodec(
                         bitRate, (OMX_AUDIO_WMAFORMATTYPE)audioFormat,
                         (OMX_AUDIO_WMAPROFILETYPE)audioProfile, encodeOptions, superBlockAlign);
         }
+    } else if (!strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_ADPCM_MS)
+            || !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_ADPCM_IMA)) {
+        int32_t numChannels, sampleRate, blockAlign;
+        if (!msg->findInt32("channel-count", &numChannels)
+                || !msg->findInt32("sample-rate", &sampleRate)) {
+            err = INVALID_OPERATION;
+        } else {
+            if (!msg->findInt32("block-align", &blockAlign)) {
+                blockAlign = 2048;
+            }
+            err = setupADPCMCodec(encoder, numChannels, sampleRate, blockAlign);
+        }
     } else if (!strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_APE)) {
         int32_t numChannels, sampleRate;
         if (!msg->findInt32("channel-count", &numChannels)
@@ -3130,6 +3142,43 @@ status_t ACodec::setupWMACodec(
 
     return mOMXNode->setParameter(
             (OMX_INDEXTYPE)OMX_IndexParamAudioWma,
+            &def,
+            sizeof(def));
+}
+
+status_t ACodec::setupADPCMCodec(
+        bool encoder, int32_t numChannels, int32_t sampleRate, int32_t blockAlign) {
+    status_t err = setupRawAudioFormat(
+            encoder ? kPortIndexInput : kPortIndexOutput, sampleRate, numChannels);
+
+    if (err != OK) {
+        return err;
+    }
+
+    if (encoder) {
+        ALOGW("ADPCM encoding is not supported.");
+        return INVALID_OPERATION;
+    }
+
+    OMX_AUDIO_PARAM_ANDROID_ADPCMTYPE def;
+    InitOMXParams(&def);
+    def.nPortIndex = kPortIndexInput;
+
+    err = mOMXNode->getParameter(
+            (OMX_INDEXTYPE)OMX_IndexParamAudioAdpcm,
+            &def,
+            sizeof(def));
+
+    if (err != OK) {
+        return err;
+    }
+
+    def.nChannels = numChannels;
+    def.nSampleRate = sampleRate;
+    def.nBlockAlign = blockAlign;
+
+    return mOMXNode->setParameter(
+            (OMX_INDEXTYPE)OMX_IndexParamAudioAdpcm,
             &def,
             sizeof(def));
 }
@@ -5775,6 +5824,30 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                     notify->setString("mime", MEDIA_MIMETYPE_AUDIO_REAL_AUDIO);
                     notify->setInt32("channel-count", params.nChannels);
                     notify->setInt32("sample-rate", params.nSamplingRate);
+                    break;
+                }
+
+                case OMX_AUDIO_CodingADPCM:
+                {
+                    OMX_AUDIO_PARAM_ANDROID_ADPCMTYPE params;
+                    InitOMXParams(&params);
+                    params.nPortIndex = portIndex;
+
+                    err = mOMXNode->getParameter(
+                            OMX_IndexParamAudioAdpcm, &params, sizeof(params));
+                    if (err != OK) {
+                        return err;
+                    }
+
+                    const char *mime = NULL;
+                    if (params.eADPCMType == OMX_AUDIO_Android_ADPCMModeIMA) {
+                        mime = MEDIA_MIMETYPE_AUDIO_ADPCM_IMA;
+                    } else {
+                        mime = MEDIA_MIMETYPE_AUDIO_ADPCM_MS;
+                    }
+                    notify->setString("mime", mime);
+                    notify->setInt32("channel-count", params.nChannels);
+                    notify->setInt32("sample-rate", params.nSampleRate);
                     break;
                 }
 
