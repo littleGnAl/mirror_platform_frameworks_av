@@ -390,6 +390,7 @@ EXPORT const char* AMEDIAFORMAT_KEY_SAMPLES_PERFRAME = "sample-per-frame";
 EXPORT const char* AMEDIAFORMAT_KEY_TOTAL_FRAME = "total-frame";
 EXPORT const char* AMEDIAFORMAT_KEY_FINAL_SAMPLE = "final-sample";
 EXPORT const char* AMEDIAFORMAT_KEY_BUFFER_SIZE = "buffer-size";
+EXPORT const char* AMEDIAFORMAT_KEY_GROUP = "_grp";
 EXPORT const char* AMEDIAFORMAT_KEY_BLOCKALIGN = "block-align";
 EXPORT const char* AMEDIAFORMAT_KEY_DV_PRIVATE = "dv-info";
 EXPORT const char* AMEDIAFORMAT_KEY_CSD_AVCE = "csd-avce";

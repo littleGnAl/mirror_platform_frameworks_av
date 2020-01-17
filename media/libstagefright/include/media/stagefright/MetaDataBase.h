@@ -204,6 +204,8 @@ enum {
     kKeyFinalSample       = 'fsmp',  // int32_t
     kKeyBufferSize        = 'bsiz',  // int32_t
 
+    kKeyGroup             = '_grp',  // int32_t
+
     // Dolby vision related
     kKeyDVPrivate        = 'dvpr', // raw data (dolby vision csd0 information)
     kKeyAVCE             = 'avce', // raw data (dolby vision csd2 information)
