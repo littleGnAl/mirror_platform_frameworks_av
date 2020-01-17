@@ -46,6 +46,30 @@
       "revId": "a9e5a8b8a40ede2e3a1d2cbc8662cd2a9c2ac20b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b09f271_a872c82a",
+        "filename": "media/libeffects/config/src/EffectsConfig.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-01-17T07:47:51Z",
+      "side": 1,
+      "message": "BTW, I became aware I have completely forgotten to update xsd... so new CL in hardware/interfaces",
+      "parentUuid": "9cccfddb_9e7667da",
+      "range": {
+        "startLine": 120,
+        "startChar": 9,
+        "endLine": 120,
+        "endChar": 30
+      },
+      "revId": "a9e5a8b8a40ede2e3a1d2cbc8662cd2a9c2ac20b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
