@@ -209,6 +209,8 @@ enum {
     kKeyAVCE             = 'avce', // raw data (dolby vision csd2 information)
     kKeyHVCE             = 'hvce', // raw data (dolby vision csd2 information)
 
+    kKeyBitsPerFrame     = 'btpf',  // int32_t
+
     // HDR related
     kKeyHdrStaticInfo    = 'hdrS', // HDRStaticInfo
     kKeyHdr10PlusInfo    = 'hdrD', // raw data

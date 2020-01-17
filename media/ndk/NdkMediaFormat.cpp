@@ -394,6 +394,7 @@ EXPORT const char* AMEDIAFORMAT_KEY_DV_PRIVATE = "dv-info";
 EXPORT const char* AMEDIAFORMAT_KEY_CSD_AVCE = "csd-avce";
 EXPORT const char* AMEDIAFORMAT_KEY_CSD_HVCE = "csd-hvce";
 EXPORT const char* AMEDIAFORMAT_KEY_FILE_TYPE = "file-type";
+EXPORT const char* AMEDIAFORMAT_KEY_BITS_PER_FRAME = "bits-per-frame";
 
 } // extern "C"
 

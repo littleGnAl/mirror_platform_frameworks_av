@@ -1121,6 +1121,11 @@ status_t convertMetaDataToMessage(
         if (meta->findInt32(kKeyBufferSize, &bufferSize)) {
             msg->setInt32("buffer-size", bufferSize);
         }
+
+        int32_t bitsPerFrame;
+        if (meta->findInt32(kKeyBitsPerFrame, &bitsPerFrame)) {
+            msg->setInt32("bits-per-frame", bitsPerFrame);
+        }
     }
 
     int32_t maxInputSize;
@@ -2216,6 +2221,11 @@ void convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
         int32_t bufferSize;
         if (msg->findInt32("buffer-size", &bufferSize)) {
             meta->setInt32(kKeyBufferSize, bufferSize);
+        }
+
+        int32_t bitsPerFrame;
+        if (msg->findInt32("bits-per-frame", &bitsPerFrame)) {
+            meta->setInt32(kKeyBitsPerFrame, bitsPerFrame);
         }
     }
 
