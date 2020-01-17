@@ -385,6 +385,9 @@ EXPORT const char* AMEDIAFORMAT_KEY_TRACK_INDEX = "track-index";
 EXPORT const char* AMEDIAFORMAT_KEY_VALID_SAMPLES = "valid-samples";
 EXPORT const char* AMEDIAFORMAT_KEY_WIDTH = "width";
 EXPORT const char* AMEDIAFORMAT_KEY_YEAR = "year";
+EXPORT const char* AMEDIAFORMAT_KEY_DOLBY_VISION_PRIVATE = "dv-info";
+EXPORT const char* AMEDIAFORMAT_KEY_CSD_AVCE = "csd-avce";
+EXPORT const char* AMEDIAFORMAT_KEY_CSD_HVCE = "csd-hvce";
 
 } // extern "C"
 

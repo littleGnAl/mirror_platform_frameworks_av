@@ -149,6 +149,9 @@ LIBMEDIANDK {
     AMEDIAFORMAT_KEY_VALID_SAMPLES; # var introduced=29
     AMEDIAFORMAT_KEY_WIDTH; # var introduced=21
     AMEDIAFORMAT_KEY_YEAR; # var introduced=29
+    AMEDIAFORMAT_KEY_DOLBY_VISION_PRIVATE; # introduced=28
+    AMEDIAFORMAT_KEY_CSD_AVCE; # introduced=28
+    AMEDIAFORMAT_KEY_CSD_HVCE; # introduced=28
     AMediaCodecActionCode_isRecoverable; # introduced=28
     AMediaCodecActionCode_isTransient; # introduced=28
     AMediaCodecCryptoInfo_delete;
