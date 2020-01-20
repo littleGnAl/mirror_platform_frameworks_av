@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b05e63fb_f41d9874",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 3586,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-01-20T18:56:30Z",
+      "side": 1,
+      "message": "the comment seems to mean the opposite of the code. \nThe code forces a SW patch when there is no gain controller AND sourceDesc.\n\nso the logic it to force a software patch when called from startSource and there is no gain controller on the source device:\n\"- called from startAudioSource (sourceDesc !\u003d nullptr) and source device does not have a gain controller\"",
+      "range": {
+        "startLine": 3586,
+        "startChar": 0,
+        "endLine": 3586,
+        "endChar": 98
+      },
+      "revId": "300fb30b3dcaa2b3ae8d1708e637b1d9fdad1505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8755e581_8a136791",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 3590,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-01-20T18:56:30Z",
+      "side": 1,
+      "message": "line length",
+      "range": {
+        "startLine": 3590,
+        "startChar": 0,
+        "endLine": 3590,
+        "endChar": 103
+      },
+      "revId": "300fb30b3dcaa2b3ae8d1708e637b1d9fdad1505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1b09c6e_266e610a",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 3624,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-01-20T18:56:30Z",
+      "side": 1,
+      "message": "couldn\u0027t we call getOutputForAttrInt() in both cases?\nIf no sourceDesc is provided, we can use the uid passed as argument and pass default attributes and config and force the device by reading the port ID from sinkDevice and copy it to selectedDeviceId. should work no?",
+      "range": {
+        "startLine": 3619,
+        "startChar": 0,
+        "endLine": 3624,
+        "endChar": 55
+      },
+      "revId": "300fb30b3dcaa2b3ae8d1708e637b1d9fdad1505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7f88c9e8_ac9a8dd2",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 3635,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-01-20T18:56:30Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 3635,
+        "startChar": 0,
+        "endLine": 3635,
+        "endChar": 85
+      },
+      "revId": "300fb30b3dcaa2b3ae8d1708e637b1d9fdad1505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "341762b2_8fe63d4f",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 4004,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-01-20T18:56:30Z",
+      "side": 1,
+      "message": "we did not do it before either but why not release the audio patch in this case of failure?\nshould have a single exit point with cleanup",
+      "range": {
+        "startLine": 4004,
+        "startChar": 0,
+        "endLine": 4004,
+        "endChar": 88
+      },
+      "revId": "300fb30b3dcaa2b3ae8d1708e637b1d9fdad1505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
