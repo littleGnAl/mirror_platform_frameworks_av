@@ -2172,7 +2172,8 @@ sp<AudioFlinger::PlaybackThread::Track> AudioFlinger::PlaybackThread::createTrac
 
     case DIRECT:
         if (audio_is_linear_pcm(format)) { // TODO maybe use audio_has_proportional_frames()?
-            if (sampleRate != mSampleRate || format != mFormat || channelMask != mChannelMask) {
+            if (sampleRate != mSampleRate || format != mFormat ||
+                    channelMask != (mChannelMask | mHapticChannelMask)) {
                 ALOGE("createTrack_l() Bad parameter: sampleRate %u format %#x, channelMask 0x%08x "
                         "for output %p with format %#x",
                         sampleRate, format, channelMask, mOutput, mFormat);
