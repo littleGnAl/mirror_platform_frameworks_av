@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b143d6bd_f2351328",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-01-20T14:08:56Z",
+      "side": 1,
+      "message": "The mp4enc_api.h use OSCL_IMPORT_REF along with function return type. For example, OSCL_IMPORT_REF Bool PVInitVideoEncoder(VideoEncControls *encCtrl, VideoEncOptions *encOption);\n\nHence, the build fails if not included in the bp file. Removed \"OSCL_EXPORT_REF\u003d\" as it\u0027s not used anywhere.",
+      "parentUuid": "061e2a54_af8fa528",
+      "range": {
+        "startLine": 33,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "f3a5757bc35c58dcb26bcb5c956bb36b1be16092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3025fa3a_451cb1f8",
         "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Android.bp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "f3a5757bc35c58dcb26bcb5c956bb36b1be16092",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94237f3f_7c3b16cb",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-01-20T14:08:56Z",
+      "side": 1,
+      "message": "Added.",
+      "parentUuid": "3025fa3a_451cb1f8",
+      "range": {
+        "startLine": 42,
+        "startChar": 13,
+        "endLine": 42,
+        "endChar": 19
+      },
+      "revId": "f3a5757bc35c58dcb26bcb5c956bb36b1be16092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "839c4706_095f8145",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Mpeg4H263EncoderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-01-20T14:08:56Z",
+      "side": 1,
+      "message": "Added.",
+      "parentUuid": "4ead2439_a3346cbc",
+      "range": {
+        "startLine": 34,
+        "startChar": 38,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "f3a5757bc35c58dcb26bcb5c956bb36b1be16092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3f66e290_836547ed",
         "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Mpeg4H263EncoderTest.cpp",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "aeba3ce2_2395e88d",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Mpeg4H263EncoderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-01-20T14:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f66e290_836547ed",
+      "range": {
+        "startLine": 126,
+        "startChar": 32,
+        "endLine": 126,
+        "endChar": 42
+      },
+      "revId": "f3a5757bc35c58dcb26bcb5c956bb36b1be16092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e2fff3ba_0abb50ab",
         "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Mpeg4H263EncoderTest.cpp",
         "patchSetId": 2
@@ -114,6 +210,30 @@
       "revId": "f3a5757bc35c58dcb26bcb5c956bb36b1be16092",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "364f6bad_cc70d99c",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Mpeg4H263EncoderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-01-20T14:08:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e2fff3ba_0abb50ab",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 1
+      },
+      "revId": "f3a5757bc35c58dcb26bcb5c956bb36b1be16092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
