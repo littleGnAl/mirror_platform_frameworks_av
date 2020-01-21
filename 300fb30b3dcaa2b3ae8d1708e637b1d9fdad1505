@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "642f95ac_33d7b40f",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 3586,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-01-21T12:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b05e63fb_f41d9874",
+      "range": {
+        "startLine": 3586,
+        "startChar": 0,
+        "endLine": 3586,
+        "endChar": 98
+      },
+      "revId": "300fb30b3dcaa2b3ae8d1708e637b1d9fdad1505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8755e581_8a136791",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 13
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "3644866d_26ae7b2d",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 3590,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-01-21T12:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8755e581_8a136791",
+      "range": {
+        "startLine": 3590,
+        "startChar": 0,
+        "endLine": 3590,
+        "endChar": 103
+      },
+      "revId": "300fb30b3dcaa2b3ae8d1708e637b1d9fdad1505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1b09c6e_266e610a",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 13
@@ -59,6 +107,30 @@
       "writtenOn": "2020-01-20T18:56:30Z",
       "side": 1,
       "message": "couldn\u0027t we call getOutputForAttrInt() in both cases?\nIf no sourceDesc is provided, we can use the uid passed as argument and pass default attributes and config and force the device by reading the port ID from sinkDevice and copy it to selectedDeviceId. should work no?",
+      "range": {
+        "startLine": 3619,
+        "startChar": 0,
+        "endLine": 3624,
+        "endChar": 55
+      },
+      "revId": "300fb30b3dcaa2b3ae8d1708e637b1d9fdad1505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7a12288_fa3c94da",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 3624,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-01-21T12:27:51Z",
+      "side": 1,
+      "message": "yes, pros: factorize code, cons: add more processing compared to simple getOutputsForDevices function.\nI want to go through the battery of functional test before releasing it. \nHowever, quite stuked on aosp/master since zygote is crashing in loop without any backtrace.\n\nI managed to start apm and af by stopping zygote but I cannot access any java services...\n\nIf no clue on your side on this regression, I will switch on qpr2 to test this change",
+      "parentUuid": "e1b09c6e_266e610a",
       "range": {
         "startLine": 3619,
         "startChar": 0,
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "d9a251a5_1b32229c",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 3635,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-01-21T12:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f88c9e8_ac9a8dd2",
+      "range": {
+        "startLine": 3635,
+        "startChar": 0,
+        "endLine": 3635,
+        "endChar": 85
+      },
+      "revId": "300fb30b3dcaa2b3ae8d1708e637b1d9fdad1505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "341762b2_8fe63d4f",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 13
@@ -114,6 +210,30 @@
       "revId": "300fb30b3dcaa2b3ae8d1708e637b1d9fdad1505",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c536c7e_4a798133",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 4004,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-01-21T12:27:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "341762b2_8fe63d4f",
+      "range": {
+        "startLine": 4004,
+        "startChar": 0,
+        "endLine": 4004,
+        "endChar": 88
+      },
+      "revId": "300fb30b3dcaa2b3ae8d1708e637b1d9fdad1505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
