@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9106661_610ebe4a",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 6509,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-01-21T21:57:43Z",
+      "side": 1,
+      "message": "Instead of L6471, can we add something like this here?\n\n  if (err \u003d\u003d NO_MEMORY) {\n      // resource error at allocate is not fatal\n      mCodec-\u003emFatalError \u003d false;\n  }",
+      "revId": "dbccfe396d849344da7bfc5f655d512a1d6a6f19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
