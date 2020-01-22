@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c35f3d06_c8f814c0",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Mpeg4H263EncoderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-22T17:29:40Z",
+      "side": 1,
+      "message": "this still doesn\u0027t tell us what these represent.\ne.g. give some explanatory comment about why 250*1024.\nwhy not the prior 720*1024? why not some other values?",
+      "range": {
+        "startLine": 34,
+        "startChar": 38,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "82c6fab70f35b32cd562f403073229ed9f8f15ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23d1b455_4bccad1b",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Mpeg4H263EncoderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-22T17:29:40Z",
+      "side": 1,
+      "message": "glad to see all of these checked.\nbut i\u0027d prefer that they be handled individually:\n\nASSERT_TRUE(mFrameWidth %16 \u003d\u003d 0);\nASSERT_TRUE(mFrameHeight %16 \u003d\u003d 0);\nASSERT_TRUE(mFrameHeight \u003c\u003d 480);\nASSERT_TRUE(mFrameWidth \u003c\u003d 720);\n\nthis is easier to read than the existing expression of the tests",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 78,
+        "endChar": 84
+      },
+      "revId": "82c6fab70f35b32cd562f403073229ed9f8f15ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
