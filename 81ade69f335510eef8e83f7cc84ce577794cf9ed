@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "65cb0a2f_6ede2303",
+        "filename": "services/audiopolicy/engineconfigurable/wrapper/ParameterManagerWrapper.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-01-22T18:04:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6fb672ce_3a50f80c",
+      "revId": "81ade69f335510eef8e83f7cc84ce577794cf9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7820580b_cb7c111a",
         "filename": "services/audiopolicy/engineconfigurable/wrapper/include/ParameterManagerWrapper.h",
         "patchSetId": 3
@@ -33,6 +51,24 @@
       "revId": "81ade69f335510eef8e83f7cc84ce577794cf9ed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8927eef8_91f89376",
+        "filename": "services/audiopolicy/engineconfigurable/wrapper/include/ParameterManagerWrapper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-01-22T18:04:01Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7820580b_cb7c111a",
+      "revId": "81ade69f335510eef8e83f7cc84ce577794cf9ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
