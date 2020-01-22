@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fe28b49b_437571fe",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1261213
+      },
+      "writtenOn": "2020-01-22T06:27:43Z",
+      "side": 1,
+      "message": "They are required for dependency on libstagefright_m4vh263enc header files. \n\nThese flags are also part of frameworks/av/media/libstagefright/codecs/m4v_h263/enc/Android.bp library build file.",
+      "parentUuid": "b143d6bd_f2351328",
+      "range": {
+        "startLine": 33,
+        "startChar": 9,
+        "endLine": 35,
+        "endChar": 18
+      },
+      "revId": "f3a5757bc35c58dcb26bcb5c956bb36b1be16092",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3025fa3a_451cb1f8",
         "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Android.bp",
         "patchSetId": 2
