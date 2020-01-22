@@ -38,6 +38,7 @@ struct encParameter {
     int32_t frameRate = -1;
     int32_t profile = 0;
     int32_t level = 0;
+    int32_t colorFormat = 0;
 };
 
 class Encoder : public CallBackHandle {

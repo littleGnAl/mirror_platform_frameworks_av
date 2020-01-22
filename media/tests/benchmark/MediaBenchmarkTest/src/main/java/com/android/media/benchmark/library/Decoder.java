@@ -256,6 +256,13 @@ public class Decoder {
      */
     public void resetDecoder() { mStats.reset(); }
 
+    /**
+     * Return the output media format of the codec
+     */
+    public MediaFormat getFormat() {
+        return mCodec.getOutputFormat();
+    }
+
     private void onInputAvailable(int inputBufferId, MediaCodec mediaCodec) {
         if ((inputBufferId >= 0) && !mSawInputEOS) {
             ByteBuffer inputCodecBuffer = mediaCodec.getInputBuffer(inputBufferId);

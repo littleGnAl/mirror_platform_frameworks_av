@@ -65,6 +65,7 @@ public class EncoderTest {
     private static final int ENCODE_DEFAULT_FRAME_RATE = 25;
     private static final int ENCODE_DEFAULT_BIT_RATE = 8000000 /* 8 Mbps */;
     private static final int ENCODE_MIN_BIT_RATE = 600000 /* 600 Kbps */;
+    private static final int ENCODE_DEFAULT_AUDIO_BIT_RATE = 128000 /* 128 Kbps */;
     private String mInputFile;
 
     @Parameterized.Parameters
@@ -107,6 +108,7 @@ public class EncoderTest {
         int profile = 0;
         int level = 0;
         int frameRate = 0;
+        int colorFormat = 0;
         //Parameters for audio
         int bitRate = 0;
         int sampleRate = 0;
@@ -148,6 +150,7 @@ public class EncoderTest {
             status = decoder.decode(inputBuffer, frameInfo, false, format, "");
             assertEquals("Decoder returned error " + status + " for file: " + mInputFile, 0,
                     status);
+            MediaFormat decoderFormat = decoder.getFormat();
             decoder.deInitCodec();
             extractor.unselectExtractorTrack(currentTrack);
             inputBuffer.clear();
@@ -203,10 +206,17 @@ public class EncoderTest {
                         if (format.containsKey(MediaFormat.KEY_PROFILE)) {
                             level = format.getInteger(MediaFormat.KEY_LEVEL);
                         }
+                        if (decoderFormat.containsKey(MediaFormat.KEY_COLOR_FORMAT)) {
+                            colorFormat = decoderFormat.getInteger(MediaFormat.KEY_COLOR_FORMAT);
+                        }
                     } else {
                         sampleRate = format.getInteger(MediaFormat.KEY_SAMPLE_RATE);
                         numChannels = format.getInteger(MediaFormat.KEY_CHANNEL_COUNT);
-                        bitRate = sampleRate * numChannels * 16;
+                        if (decoderFormat.containsKey(MediaFormat.KEY_BIT_RATE)) {
+                            bitRate = decoderFormat.getInteger(MediaFormat.KEY_BIT_RATE);
+                        } else {
+                            bitRate = ENCODE_DEFAULT_AUDIO_BIT_RATE;
+                        }
                     }
                     /*Setup Encode Format*/
                     MediaFormat encodeFormat;
@@ -219,6 +229,7 @@ public class EncoderTest {
                         encodeFormat.setInteger(MediaFormat.KEY_LEVEL, level);
                         encodeFormat.setInteger(MediaFormat.KEY_I_FRAME_INTERVAL, 1);
                         encodeFormat.setInteger(MediaFormat.KEY_MAX_INPUT_SIZE, frameSize);
+                        encodeFormat.setInteger(MediaFormat.KEY_COLOR_FORMAT, colorFormat);
                     } else {
                         encodeFormat = MediaFormat.createAudioFormat(mime, sampleRate, numChannels);
                         encodeFormat.setInteger(MediaFormat.KEY_BIT_RATE, bitRate);
@@ -255,7 +266,7 @@ public class EncoderTest {
         fileInput.close();
     }
 
-    @Test
+    @Test(timeout = PER_TEST_TIMEOUT_MS)
     public void testNativeEncoder() throws Exception {
         File inputFile = new File(mInputFilePath + mInputFile);
         assertTrue("Cannot find " + mInputFile + " in directory " + mInputFilePath,
