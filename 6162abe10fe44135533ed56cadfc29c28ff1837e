@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "298a3527_f8bf5607",
+        "filename": "media/libeffects/lvm/lib/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-01-23T04:59:49Z",
+      "side": 1,
+      "message": "Saketh, Puneeth,\nAs you flagged, since libreverb doesn\u0027t support multi-channel cases, let us not clean up code related to SUPPORT_MC in all the files for now.",
+      "revId": "6162abe10fe44135533ed56cadfc29c28ff1837e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
