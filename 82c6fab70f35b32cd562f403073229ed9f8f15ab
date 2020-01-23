@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "44da04dc_5efe289b",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Mpeg4H263EncoderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-01-23T14:30:18Z",
+      "side": 1,
+      "message": "The max. width * height for Mpeg4 and H263 is 720 * 480 and 352 * 288 respectively. Thus, the max. input buffer size would be 720 * 480 * 3/2 bytes. Assuming a worst case scenerio of 2X compression, the maxOutputBufferSize \u003d (720 * 480 * 3/2)/2, we get approximately 250 * 1024 bytes. \nNow, we have generalized the outputBuffer for any valid width * height, i.e. outputBufferSize \u003d (width * height * 3/2)/compressionRatio and hence removed kOutputBufferSize.",
+      "parentUuid": "c35f3d06_c8f814c0",
+      "range": {
+        "startLine": 34,
+        "startChar": 38,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "82c6fab70f35b32cd562f403073229ed9f8f15ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "23d1b455_4bccad1b",
         "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Mpeg4H263EncoderTest.cpp",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "82c6fab70f35b32cd562f403073229ed9f8f15ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b959ad48_0cdc5b16",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Mpeg4H263EncoderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-01-23T14:30:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23d1b455_4bccad1b",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 78,
+        "endChar": 84
+      },
+      "revId": "82c6fab70f35b32cd562f403073229ed9f8f15ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
