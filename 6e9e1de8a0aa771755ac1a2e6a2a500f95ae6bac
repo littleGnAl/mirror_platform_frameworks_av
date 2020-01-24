@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4824208f_7ac45b86",
+        "filename": "media/libstagefright/codecs/amrwbenc/test/AmrwbEncoderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-24T17:03:31Z",
+      "side": 1,
+      "message": "and what if mFrameType has some other value.\nwe should probably have:\n\n  } else { fail(\"not configured to test frametype\" + mFrameType); }\n\nor something like that.",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 5
+      },
+      "revId": "6e9e1de8a0aa771755ac1a2e6a2a500f95ae6bac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6308c7d5_252bb91f",
+        "filename": "media/libstagefright/codecs/amrwbenc/test/AmrwbEncoderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-24T17:03:31Z",
+      "side": 1,
+      "message": "if the file is empty, we get buffLength \u003d 0\nand the feof() test skips the assert\n\nand then we call into the loop below...\n\nI think we want to make sure that buffLength !\u003d 0 before we fall into the loop;\nnote that it\u0027s one of the tests on like 145 to break out of the loop...",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 122,
+        "endChar": 5
+      },
+      "revId": "6e9e1de8a0aa771755ac1a2e6a2a500f95ae6bac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
