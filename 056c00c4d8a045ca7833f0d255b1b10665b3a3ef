@@ -22,6 +22,30 @@
       "revId": "056c00c4d8a045ca7833f0d255b1b10665b3a3ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbe2379e_b716876f",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 3628,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-01-24T16:15:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "201981f8_6a775da3",
+      "range": {
+        "startLine": 3628,
+        "startChar": 74,
+        "endLine": 3628,
+        "endChar": 89
+      },
+      "revId": "056c00c4d8a045ca7833f0d255b1b10665b3a3ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
