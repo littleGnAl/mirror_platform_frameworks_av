@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "61351c7e_ed29a11d",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-26T06:16:37Z",
+      "side": 1,
+      "message": "1088 instead of 1080?",
+      "range": {
+        "startLine": 37,
+        "startChar": 24,
+        "endLine": 37,
+        "endChar": 29
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d9478c3c_6a18ec1e",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-26T06:16:37Z",
+      "side": 1,
+      "message": "break these out as individual conditionals:\nASSERT_TRUE(range+offset \u003c\u003d Info.size()) \u003c\u003c \"diagnostic\";\nASSERT_TRUE(range \u003e\u003d 0) \u003c\u003c \"diagnostic\";\n...and so on",
+      "range": {
+        "startLine": 162,
+        "startChar": 4,
+        "endLine": 165,
+        "endChar": 5
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5b5645d2_0757742d",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-26T06:16:37Z",
+      "side": 1,
+      "message": "magic number.\n\nI expect this also depends on the endian-ness of the host. since we\u0027re reading this\nfrom the file so it\u0027s in whatever order that standard requires.\n\nmore portable approaches:\n\nstatic const uint8_t volinfo[] \u003d { 0x00, 0x00, 0x01, 0xb0};   // verify this pattern\nvolHeader \u003d memcmp(mInputBuffer, volinfo, 4) \u003d\u003d 0;\n\nor perhaps *mInputBuffer \u003d\u003d ntohl(...);",
+      "range": {
+        "startLine": 176,
+        "startChar": 42,
+        "endLine": 176,
+        "endChar": 52
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "768de8e3_8559598e",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-26T06:16:37Z",
+      "side": 1,
+      "message": "could have stopped at:\n   bool codeConfig \u003d flags \u003d\u003d CODEC_CONFIG_FLAG\nthe \"? true: false\" is unnecessary.",
+      "range": {
+        "startLine": 187,
+        "startChar": 12,
+        "endLine": 187,
+        "endChar": 75
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88cf9c76_b0100c8e",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-26T06:16:37Z",
+      "side": 1,
+      "message": "don\u0027t like these casts.\nif PVGetVideoDimensions() wants to an int32, we should be handing it int32.",
+      "range": {
+        "startLine": 261,
+        "startChar": 41,
+        "endLine": 261,
+        "endChar": 60
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1515a625_cc442ada",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-26T06:16:37Z",
+      "side": 1,
+      "message": "same issue with casting here.",
+      "range": {
+        "startLine": 264,
+        "startChar": 42,
+        "endLine": 264,
+        "endChar": 51
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86f059cd_0d09e80d",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-26T06:16:37Z",
+      "side": 1,
+      "message": "my understanding of EXPECT_* instead of ASSERT_* is that the EXPECT_* records \nthat the test failed, but allows it to proceed.\nWhich I see as being ok -- as long as things are safe to continue.\n\nHere, I\u0027m not sure that it\u0027s safe to continue -- because we\u0027re dealing with a frame that is larger than our allocated buffer. I think that proceeding from this point is almost a guaranteed buffer over-run.\n\nSo I think these two lines probably need to be ASSERT_LE()",
+      "range": {
+        "startLine": 266,
+        "startChar": 8,
+        "endLine": 266,
+        "endChar": 17
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b0121d3_4dd38ac7",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-26T06:16:37Z",
+      "side": 1,
+      "message": "might be useful to include which frame number in the diagnostic.",
+      "range": {
+        "startLine": 274,
+        "startChar": 56,
+        "endLine": 274,
+        "endChar": 69
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "301089a6_99e8bb88",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-26T06:16:37Z",
+      "side": 1,
+      "message": "add a diagnostic; include the filename.",
+      "range": {
+        "startLine": 299,
+        "startChar": 34,
+        "endLine": 299,
+        "endChar": 39
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b75db234_e0fa2e63",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-26T06:16:37Z",
+      "side": 1,
+      "message": "same construct (size/3) as down at line 374.\n\nin addition my worries about the 1/3 value,\n\nwe should initialize a variable like \"firstFrameExamined\" with the desired value\nand use that in both of these places.",
+      "range": {
+        "startLine": 366,
+        "startChar": 45,
+        "endLine": 366,
+        "endChar": 61
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "24415b72_24deb751",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-26T06:16:37Z",
+      "side": 1,
+      "message": "the size/3 seems.... arbitrary.\n\nwith a value like this -- need some documentation that tells us why we picked that.\nif this is just to \"get part of the way\", then it should say something about\nhow we chose it and why it meets our needs.",
+      "range": {
+        "startLine": 374,
+        "startChar": 18,
+        "endLine": 374,
+        "endChar": 36
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
