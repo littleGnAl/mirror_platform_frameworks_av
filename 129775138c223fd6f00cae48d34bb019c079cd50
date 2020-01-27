@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0c43d6e8_47f5a9d3",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2020-01-27T14:47:02Z",
+      "side": 1,
+      "message": "Mpeg4 codec expects input size to be 16 bit aligned. This change is now been taken care in the code itself so changing it back to 1080.",
+      "parentUuid": "61351c7e_ed29a11d",
+      "range": {
+        "startLine": 37,
+        "startChar": 24,
+        "endLine": 37,
+        "endChar": 29
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9478c3c_6a18ec1e",
         "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "039b8572_248d1eb6",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2020-01-27T14:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9478c3c_6a18ec1e",
+      "range": {
+        "startLine": 162,
+        "startChar": 4,
+        "endLine": 165,
+        "endChar": 5
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cc87c3b0_4df9391c",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 176,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2020-01-27T14:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5b5645d2_0757742d",
+      "range": {
+        "startLine": 176,
+        "startChar": 42,
+        "endLine": 176,
+        "endChar": 52
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "768de8e3_8559598e",
         "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b89a82e_dd3f6c6f",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2020-01-27T14:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "768de8e3_8559598e",
+      "range": {
+        "startLine": 187,
+        "startChar": 12,
+        "endLine": 187,
+        "endChar": 75
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "fd53e285_912e1f13",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2020-01-27T14:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88cf9c76_b0100c8e",
+      "range": {
+        "startLine": 261,
+        "startChar": 41,
+        "endLine": 261,
+        "endChar": 60
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1515a625_cc442ada",
         "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
         "patchSetId": 1
@@ -137,6 +257,30 @@
       "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21052b20_ec6f6d91",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2020-01-27T14:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1515a625_cc442ada",
+      "range": {
+        "startLine": 264,
+        "startChar": 42,
+        "endLine": 264,
+        "endChar": 51
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "0421d1bc_d51b0581",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2020-01-27T14:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86f059cd_0d09e80d",
+      "range": {
+        "startLine": 266,
+        "startChar": 8,
+        "endLine": 266,
+        "endChar": 17
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3b0121d3_4dd38ac7",
         "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
         "patchSetId": 1
@@ -183,6 +351,30 @@
       "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a6a1efa_9f8933b6",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 274,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2020-01-27T14:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b0121d3_4dd38ac7",
+      "range": {
+        "startLine": 274,
+        "startChar": 56,
+        "endLine": 274,
+        "endChar": 69
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "89524cc0_294c5155",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2020-01-27T14:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "301089a6_99e8bb88",
+      "range": {
+        "startLine": 299,
+        "startChar": 34,
+        "endLine": 299,
+        "endChar": 39
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b75db234_e0fa2e63",
         "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
         "patchSetId": 1
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "666119b7_c9cd713d",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 366,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2020-01-27T14:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b75db234_e0fa2e63",
+      "range": {
+        "startLine": 366,
+        "startChar": 45,
+        "endLine": 366,
+        "endChar": 61
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "24415b72_24deb751",
         "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
         "patchSetId": 1
@@ -252,6 +492,30 @@
       "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a73e54b5_3de17da2",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/Mpeg4H263DecoderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 374,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2020-01-27T14:47:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24415b72_24deb751",
+      "range": {
+        "startLine": 374,
+        "startChar": 18,
+        "endLine": 374,
+        "endChar": 36
+      },
+      "revId": "129775138c223fd6f00cae48d34bb019c079cd50",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
