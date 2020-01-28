@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b97ab6ce_dabf5e73",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-01-28T19:45:35Z",
+      "side": 1,
+      "message": "COLOR_FormatYUV420Flexible instead of 0.\nhttps://developer.android.com/reference/android/media/MediaCodecInfo.CodecCapabilities.html#COLOR_FormatYUV420Flexible",
+      "range": {
+        "startLine": 111,
+        "startChar": 26,
+        "endLine": 111,
+        "endChar": 28
+      },
+      "revId": "ed3012af091f50e3f9b539201d7377972d991530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8bc72f9d_df81eded",
+        "filename": "media/tests/benchmark/src/native/encoder/Encoder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-01-28T19:45:35Z",
+      "side": 1,
+      "message": "17 default\nCheck if there is an equivalent constant defined in NDK api for\nhttps://developer.android.com/reference/android/media/MediaCodecInfo.CodecCapabilities.html#COLOR_FormatYUV420Flexible",
+      "range": {
+        "startLine": 41,
+        "startChar": 26,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "ed3012af091f50e3f9b539201d7377972d991530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
