@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43cbf5d8_ab676061",
+        "filename": "media/ndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-28T23:39:56Z",
+      "side": 0,
+      "message": "i think i\u0027d like to keep a comment in here to the effect \"linker failures when built with coverage on Q, but remedied from R forward\".\n\nMy worry is that with mainline and if we have to build some of our code to run back on Q,\nthat we might re-encounter this for that build environment. I\u0027d love to have some sort of\npointer so that we can quickly recognize what\u0027s going on.",
+      "range": {
+        "startLine": 117,
+        "startChar": 6,
+        "endLine": 119,
+        "endChar": 27
+      },
+      "revId": "e5f01a7d5edd517c3a52ca11e6908aead47ba916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
