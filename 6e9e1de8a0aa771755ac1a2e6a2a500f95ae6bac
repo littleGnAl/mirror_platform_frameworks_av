@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a4c1b65b_f44cc563",
+        "filename": "media/libstagefright/codecs/amrwbenc/test/AmrwbEncoderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-01-28T12:55:37Z",
+      "side": 1,
+      "message": "This is the special case for which we write the header info to the output file. Hence we cannot have else condition and fail the test.",
+      "parentUuid": "4824208f_7ac45b86",
+      "range": {
+        "startLine": 117,
+        "startChar": 2,
+        "endLine": 117,
+        "endChar": 5
+      },
+      "revId": "6e9e1de8a0aa771755ac1a2e6a2a500f95ae6bac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6308c7d5_252bb91f",
         "filename": "media/libstagefright/codecs/amrwbenc/test/AmrwbEncoderTest.cpp",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "6e9e1de8a0aa771755ac1a2e6a2a500f95ae6bac",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a80666b_d25a9bdb",
+        "filename": "media/libstagefright/codecs/amrwbenc/test/AmrwbEncoderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-01-28T12:55:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6308c7d5_252bb91f",
+      "range": {
+        "startLine": 120,
+        "startChar": 4,
+        "endLine": 122,
+        "endChar": 5
+      },
+      "revId": "6e9e1de8a0aa771755ac1a2e6a2a500f95ae6bac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
