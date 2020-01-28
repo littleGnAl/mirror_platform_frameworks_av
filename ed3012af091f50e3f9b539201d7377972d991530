@@ -25,6 +25,99 @@
     },
     {
       "key": {
+        "uuid": "bb3f030c_0e2e5cf0",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-28T21:10:48Z",
+      "side": 1,
+      "message": "should this be declared inside the for loop starting at line 126?\nthat would also cause it to be reset for each new video track, which would seem important.",
+      "parentUuid": "b97ab6ce_dabf5e73",
+      "range": {
+        "startLine": 111,
+        "startChar": 26,
+        "endLine": 111,
+        "endChar": 28
+      },
+      "revId": "ed3012af091f50e3f9b539201d7377972d991530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a502cdb9_b20f9bac",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-28T21:10:48Z",
+      "side": 1,
+      "message": "need to set this to a default if the decoder doesn\u0027t give us a color format.\nas it stands, the code will leave garbage in there if there is no color_format key.",
+      "range": {
+        "startLine": 161,
+        "startChar": 38,
+        "endLine": 161,
+        "endChar": 61
+      },
+      "revId": "ed3012af091f50e3f9b539201d7377972d991530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "557a030b_19499334",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-28T21:10:48Z",
+      "side": 1,
+      "message": "feels like it should be a constant somewhere.\n\nanother way to look at it is..... why this particular bitrate?\nhow hard does this make our encoders work?  or is that bitrate such that they don\u0027t have\nto compress very hard.",
+      "range": {
+        "startLine": 166,
+        "startChar": 36,
+        "endLine": 166,
+        "endChar": 42
+      },
+      "revId": "ed3012af091f50e3f9b539201d7377972d991530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "381c1478_bc8435fa",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Decoder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-28T21:10:48Z",
+      "side": 1,
+      "message": "this is a decoder, so the output is a set of images.\nso \u0027output format\u0027 is probably the wrong thing.\n\nisn\u0027t this the format of the incoming media stream that we then turn into that series of\nimages (or for audio, that we turn into a series of PCM frames).",
+      "range": {
+        "startLine": 260,
+        "startChar": 18,
+        "endLine": 260,
+        "endChar": 24
+      },
+      "revId": "ed3012af091f50e3f9b539201d7377972d991530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8bc72f9d_df81eded",
         "filename": "media/tests/benchmark/src/native/encoder/Encoder.h",
         "patchSetId": 1
