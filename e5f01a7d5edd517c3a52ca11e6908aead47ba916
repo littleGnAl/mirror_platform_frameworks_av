@@ -22,6 +22,30 @@
       "revId": "e5f01a7d5edd517c3a52ca11e6908aead47ba916",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23c32acc_57ababe4",
+        "filename": "media/ndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2020-01-29T00:34:56Z",
+      "side": 0,
+      "message": "Turns out we could build this with coverage on the Q branch so we don\u0027t need a comment here.  We can cherry-pick this change to the Q branch.",
+      "parentUuid": "43cbf5d8_ab676061",
+      "range": {
+        "startLine": 117,
+        "startChar": 6,
+        "endLine": 119,
+        "endChar": 27
+      },
+      "revId": "e5f01a7d5edd517c3a52ca11e6908aead47ba916",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
