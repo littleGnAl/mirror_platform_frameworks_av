@@ -23,7 +23,6 @@
 #include <LVM.h>
 #include <limits.h>
 
-
 #define FIVEBAND_NUMBANDS          5
 #define MAX_NUM_BANDS              5
 #define MAX_CALL_SIZE              256
@@ -96,14 +95,6 @@ struct BundledEffectContext{
     int                             frameCount;
     int32_t                         bandGaindB[FIVEBAND_NUMBANDS];
     int                             volume;
-    #ifdef LVM_PCM
-    FILE                            *PcmInPtr;
-    FILE                            *PcmOutPtr;
-    #endif
-#if defined(BUILD_FLOAT) && !defined(NATIVE_FLOAT_BUFFER)
-    LVM_FLOAT                       *pInputBuffer;
-    LVM_FLOAT                       *pOutputBuffer;
-#endif
 #ifdef SUPPORT_MC
     LVM_INT32                       ChMask;
 #endif
@@ -133,7 +124,6 @@ struct EffectContext{
     lvm_effect_en                   EffectType;
     BundledEffectContext            *pBundledContext;
 };
-
 
 /* enumerated parameter settings for Volume effect */
 typedef enum
@@ -224,7 +214,5 @@ static const float LimitLevel_bassBoostEnergyCrossCoefficient[FIVEBAND_NUMBANDS]
 static const float LimitLevel_bassBoostEnergyCoefficient = 9.00;
 
 static const float LimitLevel_virtualizerContribution = 1.9;
-
-
 
 #endif /*ANDROID_EFFECTBUNDLE_H_*/

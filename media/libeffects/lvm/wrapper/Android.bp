@@ -16,8 +16,6 @@ cc_library_shared {
 
     cppflags: [
         "-fvisibility=hidden",
-        "-DBUILD_FLOAT",
-        "-DHIGHER_FS",
         "-DSUPPORT_MC",
 
         "-Wall",
@@ -58,8 +56,6 @@ cc_library_shared {
 
     cppflags: [
         "-fvisibility=hidden",
-        "-DBUILD_FLOAT",
-        "-DHIGHER_FS",
 
         "-Wall",
         "-Werror",
