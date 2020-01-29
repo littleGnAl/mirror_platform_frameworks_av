@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6f1c0270_a2a7a3da",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2020-01-29T17:02:37Z",
+      "side": 1,
+      "message": "Could you create a bug for that?",
+      "revId": "4533c353743c3a6144bcfb21a75a51c45070d623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "174fe810_5e637eca",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2175,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2020-01-29T17:02:37Z",
+      "side": 1,
+      "message": "Space",
+      "range": {
+        "startLine": 2175,
+        "startChar": 94,
+        "endLine": 2175,
+        "endChar": 95
+      },
+      "revId": "4533c353743c3a6144bcfb21a75a51c45070d623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a6f3d2c_f4ae6b86",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2175,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2020-01-29T17:02:37Z",
+      "side": 1,
+      "message": "Over 100 line.",
+      "range": {
+        "startLine": 2175,
+        "startChar": 108,
+        "endLine": 2175,
+        "endChar": 116
+      },
+      "revId": "4533c353743c3a6144bcfb21a75a51c45070d623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
