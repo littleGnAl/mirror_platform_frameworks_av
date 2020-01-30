@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "be97fe06_68d3b13f",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-01-30T03:35:17Z",
+      "side": 1,
+      "message": "not needed anymore, here and elsewhere.\n\nPerhaps fix this in a later CL to minimize changes here.",
+      "range": {
+        "startLine": 134,
+        "startChar": 64,
+        "endLine": 134,
+        "endChar": 94
+      },
+      "revId": "12f16c89172ff0e5d9ad0da84e48d398cd7ecebf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
