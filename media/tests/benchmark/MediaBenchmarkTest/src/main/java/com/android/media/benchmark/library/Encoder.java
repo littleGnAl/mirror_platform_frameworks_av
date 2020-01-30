@@ -29,7 +29,7 @@ import java.io.IOException;
 import java.nio.ByteBuffer;
 
 public class Encoder {
-    private static final int ENCODE_DEFAULT_MAX_INPUT_SIZE = 3840;
+    private static final int ENCODE_DEFAULT_MAX_INPUT_SIZE = 4096;
     private static final String TAG = "Encoder";
     private static final boolean DEBUG = false;
     private static final int kQueueDequeueTimeoutUs = 1000;
@@ -285,9 +285,11 @@ public class Encoder {
         if (mInputBufferSize - mOffset < mFrameSize) {
             bytesRead = (int) (mInputBufferSize - mOffset);
         }
-        if (bufSize < bytesRead) {
-            mSignalledError = true;
-            return;
+        //b/148655275 - Update Frame size, as Format value may not be valid
+        if (bufSize < bytesRead && mNumInputFrame == 0) {
+            mFrameSize = bufSize;
+            bytesRead = bufSize;
+            mNumFrames = (int) ((mInputBufferSize + mFrameSize - 1) / mFrameSize);
         }
         byte[] inputArray = new byte[bytesRead];
         mInputStream.read(inputArray, 0, bytesRead);

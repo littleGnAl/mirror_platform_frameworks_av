@@ -51,6 +51,12 @@ void Encoder::onInputAvailable(AMediaCodec *mediaCodec, int32_t bufIdx) {
         if (mInputBufferSize - mOffset < mParams.frameSize) {
             bytesRead = mInputBufferSize - mOffset;
         }
+        //b/148655275 - Update Frame size, as Format value may not be valid
+        if (bufSize < bytesRead && mNumInputFrame == 0) {
+            mParams.frameSize = bufSize;
+            bytesRead = bufSize;
+            mParams.numFrames = (mInputBufferSize + mParams.frameSize - 1) / mParams.frameSize;
+        }
         if (bufSize < bytesRead) {
             ALOGE("bytes to read %zu bufSize %zu \n", bytesRead, bufSize);
             mErrorCode = AMEDIA_ERROR_MALFORMED;
@@ -219,13 +225,12 @@ int32_t Encoder::encode(string &codecName, ifstream &eleStream, size_t eleSize,
     if (!strncmp(mMime, "video/", 6)) {
         mParams.frameSize = mParams.width * mParams.height * 3 / 2;
     } else {
-        mParams.frameSize = 4096;
+        mParams.frameSize = kDefaultAudioEncodeFrameSize;
         // Get mInputMaxBufSize
         AMediaFormat *inputFormat = AMediaCodec_getInputFormat(mCodec);
         AMediaFormat_getInt32(inputFormat, AMEDIAFORMAT_KEY_MAX_INPUT_SIZE, &mParams.maxFrameSize);
         if (mParams.maxFrameSize < 0) {
-            ALOGE("Invalid mParams.maxFrameSize %d\n", mParams.maxFrameSize);
-            return AMEDIA_ERROR_INVALID_PARAMETER;
+            mParams.maxFrameSize = kDefaultAudioEncodeFrameSize;
         }
         if (mParams.frameSize > mParams.maxFrameSize) {
             mParams.frameSize = mParams.maxFrameSize;
