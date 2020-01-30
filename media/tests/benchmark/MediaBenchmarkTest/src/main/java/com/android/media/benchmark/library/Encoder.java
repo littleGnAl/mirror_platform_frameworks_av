@@ -286,8 +286,9 @@ public class Encoder {
             bytesRead = (int) (mInputBufferSize - mOffset);
         }
         if (bufSize < bytesRead) {
-            mSignalledError = true;
-            return;
+            mFrameSize = bufSize;
+            bytesRead = bufSize;
+            mNumFrames = (int) ((mInputBufferSize + mFrameSize - 1) / mFrameSize);
         }
         byte[] inputArray = new byte[bytesRead];
         mInputStream.read(inputArray, 0, bytesRead);
