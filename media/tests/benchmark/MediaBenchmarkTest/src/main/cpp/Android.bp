@@ -3,6 +3,7 @@ cc_test_library {
 
     defaults: [
         "libmediabenchmark_common-defaults",
+        "libmediabenchmark_codec2_common-defaults",
         "libmediabenchmark_soft_sanitize_all-defaults",
     ],
 
@@ -19,10 +20,13 @@ cc_test_library {
 
     static_libs: [
         "libmediabenchmark_common",
+        "libmediabenchmark_codec2_common",
         "libmediabenchmark_extractor",
         "libmediabenchmark_muxer",
         "libmediabenchmark_decoder",
         "libmediabenchmark_encoder",
+        "libmediabenchmark_codec2_decoder",
+        "libmediabenchmark_codec2_encoder",
     ],
 
     cflags: [
