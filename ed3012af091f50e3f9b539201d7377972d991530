@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "a7fb2097_06fe78de",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-01-30T11:28:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb3f030c_0e2e5cf0",
+      "range": {
+        "startLine": 111,
+        "startChar": 26,
+        "endLine": 111,
+        "endChar": 28
+      },
+      "revId": "ed3012af091f50e3f9b539201d7377972d991530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a502cdb9_b20f9bac",
         "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
         "patchSetId": 1
@@ -69,6 +93,30 @@
       "revId": "ed3012af091f50e3f9b539201d7377972d991530",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddb35c3e_8744c991",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-01-30T11:28:43Z",
+      "side": 1,
+      "message": "encParams.colorFormat is set to default value of AIMAGE_FORMAT_YUV_420_888.",
+      "parentUuid": "a502cdb9_b20f9bac",
+      "range": {
+        "startLine": 161,
+        "startChar": 38,
+        "endLine": 161,
+        "endChar": 61
+      },
+      "revId": "ed3012af091f50e3f9b539201d7377972d991530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -95,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "fa0932d3_f52899c1",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeEncoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-01-30T11:28:43Z",
+      "side": 1,
+      "message": "In the CTS ecoder test, different codecs are using different range of bitrate. Among them 64Kbps and 128Kbps are commonly used for audio encoders and hence we are picking one of these values.",
+      "parentUuid": "557a030b_19499334",
+      "range": {
+        "startLine": 166,
+        "startChar": 36,
+        "endLine": 166,
+        "endChar": 42
+      },
+      "revId": "ed3012af091f50e3f9b539201d7377972d991530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "381c1478_bc8435fa",
         "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Decoder.java",
         "patchSetId": 1
@@ -118,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "5790cfea_71024189",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Decoder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 260,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-01-30T11:28:43Z",
+      "side": 1,
+      "message": "This isn\u0027t the format of the incoming media stream, instead it contains parameters like bitrate, color-format, etc. which is obtained from decoder\u0027s output and is being used by encoder to configure.",
+      "parentUuid": "381c1478_bc8435fa",
+      "range": {
+        "startLine": 260,
+        "startChar": 18,
+        "endLine": 260,
+        "endChar": 24
+      },
+      "revId": "ed3012af091f50e3f9b539201d7377972d991530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8bc72f9d_df81eded",
         "filename": "media/tests/benchmark/src/native/encoder/Encoder.h",
         "patchSetId": 1
@@ -138,6 +234,30 @@
       "revId": "ed3012af091f50e3f9b539201d7377972d991530",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d23c4cdf_c3ee9df8",
+        "filename": "media/tests/benchmark/src/native/encoder/Encoder.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-01-30T11:28:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bc72f9d_df81eded",
+      "range": {
+        "startLine": 41,
+        "startChar": 26,
+        "endLine": 41,
+        "endChar": 28
+      },
+      "revId": "ed3012af091f50e3f9b539201d7377972d991530",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
