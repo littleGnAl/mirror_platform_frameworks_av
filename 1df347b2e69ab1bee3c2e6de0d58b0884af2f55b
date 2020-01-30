@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "06f6ac89_fb8b533a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2020-01-30T18:46:21Z",
+      "side": 1,
+      "message": "This looks like an existing bug but not related to this issue. I will create an internal one and cherry-pick this change to internal branch. Thanks for the code.",
+      "range": {
+        "startLine": 9,
+        "startChar": 5,
+        "endLine": 9,
+        "endChar": 14
+      },
+      "revId": "1df347b2e69ab1bee3c2e6de0d58b0884af2f55b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
