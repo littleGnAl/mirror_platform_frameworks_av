@@ -35,6 +35,7 @@ using namespace std;
 constexpr uint32_t kQueueDequeueTimeoutUs = 1000;
 constexpr uint32_t kMaxCSDStrlen = 16;
 constexpr uint32_t kMaxBufferSize = 1024 * 1024 * 16;
+constexpr uint32_t kDefaultAudioEncodeFrameSize = 4096;
 
 template <typename T>
 class CallBackQueue {
