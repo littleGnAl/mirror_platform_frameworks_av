@@ -283,7 +283,8 @@ volume_group_t ProductStrategyMap::getVolumeGroupForAttributes(const audio_attri
     return getDefaultVolumeGroup();
 }
 
-volume_group_t ProductStrategyMap::getVolumeGroupForStreamType(audio_stream_type_t stream) const
+volume_group_t ProductStrategyMap::getVolumeGroupForStreamType(
+        audio_stream_type_t stream, bool fallbackOnDefault) const
 {
     for (const auto &iter : *this) {
         volume_group_t group = iter.second->getVolumeGroupForStreamType(stream);
@@ -292,7 +293,7 @@ volume_group_t ProductStrategyMap::getVolumeGroupForStreamType(audio_stream_type
         }
     }
     ALOGW("%s: no volume group for %s, using default", __func__, toString(stream).c_str());
-    return getDefaultVolumeGroup();
+    return fallbackOnDefault ? getDefaultVolumeGroup() : VOLUME_GROUP_NONE;
 }
 
 volume_group_t ProductStrategyMap::getDefaultVolumeGroup() const
