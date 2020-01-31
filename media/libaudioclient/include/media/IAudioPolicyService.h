@@ -220,8 +220,10 @@ public:
                                                            product_strategy_t &productStrategy) = 0;
 
     virtual status_t listAudioVolumeGroups(AudioVolumeGroupVector &groups) = 0;
-    virtual status_t getVolumeGroupFromAudioAttributes(const AudioAttributes &aa,
-                                                       volume_group_t &volumeGroup) = 0;
+    virtual status_t getVolumeGroupFromAudioAttributes(
+            const AudioAttributes &aa, volume_group_t &volumeGroup, bool fallbackOnDefault) = 0;
+    virtual status_t getVolumeGroupFromStreamType(
+            audio_stream_type_t stream, volume_group_t &volumeGroup, bool fallbackOnDefault) = 0;
 
     virtual status_t setRttEnabled(bool enabled) = 0;
 

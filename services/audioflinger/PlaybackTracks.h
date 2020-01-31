@@ -96,6 +96,8 @@ public:
             audio_stream_type_t streamType() const {
                 return mStreamType;
             }
+            VolumeSource getVolumeSource() const { return mVolumeSource; }
+
             bool        isOffloaded() const
                                 { return (mFlags & AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD) != 0; }
             bool        isDirect() const override
@@ -235,6 +237,7 @@ protected:
 
     bool                mResetDone;
     const audio_stream_type_t mStreamType;
+    const VolumeSource  mVolumeSource;
     effect_buffer_t     *mMainBuffer;
 
     int32_t             *mAuxBuffer;

@@ -321,14 +321,16 @@ VolumeGroupVector EngineBase::getVolumeGroups() const
     return group;
 }
 
-volume_group_t EngineBase::getVolumeGroupForAttributes(const audio_attributes_t &attr) const
+volume_group_t EngineBase::getVolumeGroupForAttributes(
+        const audio_attributes_t &attr, bool fallbackOnDefault) const
 {
-    return mProductStrategies.getVolumeGroupForAttributes(attr);
+    return mProductStrategies.getVolumeGroupForAttributes(attr, fallbackOnDefault);
 }
 
-volume_group_t EngineBase::getVolumeGroupForStreamType(audio_stream_type_t stream) const
+volume_group_t EngineBase::getVolumeGroupForStreamType(
+        audio_stream_type_t stream, bool fallbackOnDefault) const
 {
-    return mProductStrategies.getVolumeGroupForStreamType(stream);
+    return mProductStrategies.getVolumeGroupForStreamType(stream, fallbackOnDefault);
 }
 
 status_t EngineBase::listAudioVolumeGroups(AudioVolumeGroupVector &groups) const

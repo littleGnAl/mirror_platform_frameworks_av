@@ -122,12 +122,10 @@ status_t AudioPolicyService::AudioPolicyClient::closeInput(audio_io_handle_t inp
     return af->closeInput(input);
 }
 
-status_t AudioPolicyService::AudioPolicyClient::setStreamVolume(audio_stream_type_t stream,
-                     float volume, audio_io_handle_t output,
-                     int delay_ms)
+status_t AudioPolicyService::AudioPolicyClient::setVolumeSourceVolume(
+        VolumeSource volumeSource, float volume, audio_io_handle_t output, int delay_ms)
 {
-    return mAudioPolicyService->setStreamVolume(stream, volume, output,
-                                               delay_ms);
+    return mAudioPolicyService->setVolumeSourceVolume(volumeSource, volume, output, delay_ms);
 }
 
 status_t AudioPolicyService::AudioPolicyClient::invalidateStream(audio_stream_type_t stream)

@@ -102,6 +102,7 @@ enum {
     GET_STRATEGY_FOR_ATTRIBUTES,
     LIST_AUDIO_VOLUME_GROUPS,
     GET_VOLUME_GROUP_FOR_ATTRIBUTES,
+    GET_VOLUME_GROUP_FOR_STREAM_TYPE,
     SET_ALLOWED_CAPTURE_POLICY,
     MOVE_EFFECTS_TO_IO,
     SET_RTT_ENABLED,
@@ -1256,8 +1257,8 @@ public:
         return NO_ERROR;
     }
 
-    virtual status_t getVolumeGroupFromAudioAttributes(const AudioAttributes &aa,
-                                                       volume_group_t &volumeGroup)
+    virtual status_t getVolumeGroupFromAudioAttributes(
+            const AudioAttributes &aa, volume_group_t &volumeGroup, bool fallbackOnDefault)
     {
         Parcel data, reply;
         data.writeInterfaceToken(IAudioPolicyService::getInterfaceDescriptor());
@@ -1265,7 +1266,30 @@ public:
         if (status != NO_ERROR) {
             return status;
         }
+        data.writeBool(fallbackOnDefault);
         status = remote()->transact(GET_VOLUME_GROUP_FOR_ATTRIBUTES, data, &reply);
+        if (status != NO_ERROR) {
+            return status;
+        }
+        status = static_cast<status_t>(reply.readInt32());
+        if (status != NO_ERROR) {
+            return status;
+        }
+        volumeGroup = static_cast<volume_group_t>(reply.readInt32());
+        return NO_ERROR;
+    }
+
+    virtual status_t getVolumeGroupFromStreamType(
+            audio_stream_type_t stream, volume_group_t &volumeGroup, bool fallbackOnDefault)
+    {
+        Parcel data, reply;
+        data.writeInterfaceToken(IAudioPolicyService::getInterfaceDescriptor());
+        status_t status = data.writeInt32(static_cast<int32_t>(stream));
+        if (status != NO_ERROR) {
+            return status;
+        }
+        data.writeBool(fallbackOnDefault);
+        status = remote()->transact(GET_VOLUME_GROUP_FOR_STREAM_TYPE, data, &reply);
         if (status != NO_ERROR) {
             return status;
         }
@@ -1406,6 +1430,7 @@ status_t BnAudioPolicyService::onTransact(
         case GET_OFFLOAD_FORMATS_A2DP:
         case LIST_AUDIO_VOLUME_GROUPS:
         case GET_VOLUME_GROUP_FOR_ATTRIBUTES:
+        case GET_VOLUME_GROUP_FOR_STREAM_TYPE:
         case SET_RTT_ENABLED:
         case SET_PREFERRED_DEVICE_FOR_PRODUCT_STRATEGY:
         case REMOVE_PREFERRED_DEVICE_FOR_PRODUCT_STRATEGY:
@@ -2407,8 +2432,23 @@ status_t BnAudioPolicyService::onTransact(
             if (status != NO_ERROR) {
                 return status;
             }
+            bool fallbackOnDefault = data.readBool();
             volume_group_t group;
-            status = getVolumeGroupFromAudioAttributes(attributes, group);
+            status = getVolumeGroupFromAudioAttributes(attributes, group, fallbackOnDefault);
+            reply->writeInt32(status);
+            if (status != NO_ERROR) {
+                return NO_ERROR;
+            }
+            reply->writeUint32(static_cast<int>(group));
+            return NO_ERROR;
+        }
+
+        case GET_VOLUME_GROUP_FOR_STREAM_TYPE: {
+            CHECK_INTERFACE(IAudioPolicyService, data, reply);
+            audio_stream_type_t stream = static_cast<audio_stream_type_t>(data.readInt32());
+            bool fallbackOnDefault = data.readBool();
+            volume_group_t group;
+            status_t status = getVolumeGroupFromStreamType(stream, group, fallbackOnDefault);
             reply->writeInt32(status);
             if (status != NO_ERROR) {
                 return NO_ERROR;
