@@ -711,10 +711,9 @@ class VolumeInterface {
 
     virtual void        setMasterVolume(float value) = 0;
     virtual void        setMasterMute(bool muted) = 0;
-    virtual void        setStreamVolume(audio_stream_type_t stream, float value) = 0;
-    virtual void        setStreamMute(audio_stream_type_t stream, bool muted) = 0;
-    virtual float       streamVolume(audio_stream_type_t stream) const = 0;
-
+    virtual void        setVolumeSourceVolume(VolumeSource volumeSource, float value) = 0;
+    virtual void        setVolumeSourceMute(VolumeSource volumeSource, bool muted) = 0;
+    virtual float       getVolumeSourceVolume(VolumeSource volumeSource) const = 0;
 };
 
 // --- PlaybackThread ---
@@ -820,9 +819,10 @@ public:
     virtual     void        setMasterVolume(float value);
     virtual     void        setMasterBalance(float balance);
     virtual     void        setMasterMute(bool muted);
-    virtual     void        setStreamVolume(audio_stream_type_t stream, float value);
-    virtual     void        setStreamMute(audio_stream_type_t stream, bool muted);
-    virtual     float       streamVolume(audio_stream_type_t stream) const;
+
+                void        setVolumeSourceVolume(VolumeSource volumeSource, float value) override;
+                void        setVolumeSourceMute(VolumeSource volumeSource, bool muted) override;
+                float       getVolumeSourceVolume(VolumeSource volumeSource) const override;
 
                 void        setVolumeForOutput_l(float left, float right) const override;
 
@@ -1109,8 +1109,7 @@ private:
     };
 
     Tracks<Track>                   mTracks;
-
-    stream_type_t                   mStreamTypes[AUDIO_STREAM_CNT];
+    std::map<VolumeSource, VolumeSourceControl> mVolumeSources;
     AudioStreamOut                  *mOutput;
 
     float                           mMasterVolume;
@@ -1811,6 +1810,7 @@ class MmapThread : public ThreadBase
     virtual     void        processVolume_l() {}
                 void        checkInvalidTracks_l();
 
+    virtual     VolumeSource getVolumeSource() const { return VOLUME_SOURCE_NONE; }
     virtual     audio_stream_type_t streamType() { return AUDIO_STREAM_DEFAULT; }
 
     virtual     void        invalidateTracks(audio_stream_type_t streamType __unused) {}
@@ -1862,15 +1862,18 @@ public:
                 // VolumeInterface
     virtual     void        setMasterVolume(float value);
     virtual     void        setMasterMute(bool muted);
-    virtual     void        setStreamVolume(audio_stream_type_t stream, float value);
-    virtual     void        setStreamMute(audio_stream_type_t stream, bool muted);
-    virtual     float       streamVolume(audio_stream_type_t stream) const;
+
+                void        setVolumeSourceVolume(VolumeSource volumeSource, float value) override;
+                void        setVolumeSourceMute(VolumeSource volumeSource, bool muted) override;
+                float       getVolumeSourceVolume(VolumeSource volumeSource) const override;
 
                 void        setMasterMute_l(bool muted) { mMasterMute = muted; }
 
     virtual     void        invalidateTracks(audio_stream_type_t streamType);
 
     virtual     audio_stream_type_t streamType() { return mStreamType; }
+                VolumeSource getVolumeSource() const override { return mVolumeSource; }
+
     virtual     void        checkSilentMode_l();
                 void        processVolume_l() override;
 
@@ -1883,11 +1886,12 @@ public:
 protected:
                 void        dumpInternals_l(int fd, const Vector<String16>& args) override;
 
-                audio_stream_type_t         mStreamType;
+                audio_stream_type_t         mStreamType; /**< Deprecated, use VolumeSource. */
+                VolumeSource                mVolumeSource = VOLUME_SOURCE_NONE;
+                float                       mVolumeSourceVolume = 1.0f;
+                bool                        mVolumeSourceMute = false;
                 float                       mMasterVolume;
-                float                       mStreamVolume;
                 bool                        mMasterMute;
-                bool                        mStreamMute;
                 AudioStreamOut*             mOutput;
 };
 
