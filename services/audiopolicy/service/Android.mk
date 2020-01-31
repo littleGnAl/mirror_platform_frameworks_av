@@ -15,7 +15,8 @@ LOCAL_C_INCLUDES := \
 LOCAL_HEADER_LIBRARIES := \
     libaudiopolicycommon \
     libaudiopolicyengine_interface_headers \
-    libaudiopolicymanager_interface_headers
+    libaudiopolicymanager_interface_headers \
+    libaudioclient_headers
 
 LOCAL_SHARED_LIBRARIES := \
     libcutils \
