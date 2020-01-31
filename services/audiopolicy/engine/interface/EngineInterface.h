@@ -278,10 +278,13 @@ public:
      * @brief getVolumeGroupForStreamType gets the appropriate volume group to be used for a given
      * legacy stream type
      * @param stream type to be considered
+     * @param fallbackOnDefault if true, will return the fallback volume group if the stream type
+     * is not associated to any volume group.
      * @return volume group associated to the given stream type, default group if none applicable,
      * VOLUME_GROUP_NONE if no default group defined.
      */
-    virtual volume_group_t getVolumeGroupForStreamType(audio_stream_type_t stream) const = 0;
+    virtual volume_group_t getVolumeGroupForStreamType(
+            audio_stream_type_t stream, bool fallbackOnDefault = true) const = 0;
 
     /**
      * @brief listAudioVolumeGroups introspection API to get the Audio Volume Groups, aka
