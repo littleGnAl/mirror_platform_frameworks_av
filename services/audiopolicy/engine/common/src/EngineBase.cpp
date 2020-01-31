@@ -326,9 +326,10 @@ volume_group_t EngineBase::getVolumeGroupForAttributes(const audio_attributes_t 
     return mProductStrategies.getVolumeGroupForAttributes(attr);
 }
 
-volume_group_t EngineBase::getVolumeGroupForStreamType(audio_stream_type_t stream) const
+volume_group_t EngineBase::getVolumeGroupForStreamType(
+        audio_stream_type_t stream, bool fallbackOnDefault) const
 {
-    return mProductStrategies.getVolumeGroupForStreamType(stream);
+    return mProductStrategies.getVolumeGroupForStreamType(stream, fallbackOnDefault);
 }
 
 status_t EngineBase::listAudioVolumeGroups(AudioVolumeGroupVector &groups) const
