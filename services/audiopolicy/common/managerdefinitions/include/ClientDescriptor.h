@@ -24,6 +24,7 @@
 #include <system/audio.h>
 #include <audiomanager/AudioManager.h>
 #include <media/AudioProductStrategy.h>
+#include <media/AudioVolumeGroup.h>
 #include <utils/Errors.h>
 #include <utils/KeyedVector.h>
 #include <utils/RefBase.h>
