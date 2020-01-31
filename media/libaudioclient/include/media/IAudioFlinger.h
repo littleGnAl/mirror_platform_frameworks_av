@@ -21,6 +21,7 @@
 #include <sys/types.h>
 #include <unistd.h>
 
+#include <media/AudioVolumeGroup.h>
 #include <utils/RefBase.h>
 #include <utils/Errors.h>
 #include <binder/IInterface.h>
@@ -371,13 +372,12 @@ public:
     /* set/get stream type state. This will probably be used by
      * the preference panel, mostly.
      */
-    virtual     status_t    setStreamVolume(audio_stream_type_t stream, float value,
-                                    audio_io_handle_t output) = 0;
-    virtual     status_t    setStreamMute(audio_stream_type_t stream, bool muted) = 0;
-
-    virtual     float       streamVolume(audio_stream_type_t stream,
-                                    audio_io_handle_t output) const = 0;
-    virtual     bool        streamMute(audio_stream_type_t stream) const = 0;
+    virtual     status_t    setVolumeSourceVolume(VolumeSource volumeSource, float value,
+                                                  audio_io_handle_t output) = 0;
+    virtual     status_t    setVolumeSourceMute(VolumeSource volumeSource, bool muted) = 0;
+    virtual     float       getVolumeSourceVolume(VolumeSource volumeSource,
+                                                  audio_io_handle_t output) const = 0;
+    virtual     bool        getVolumeSourceMute(VolumeSource volumeSource) const = 0;
 
     // set audio mode
     virtual     status_t    setMode(audio_mode_t mode) = 0;
