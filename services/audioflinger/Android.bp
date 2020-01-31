@@ -55,6 +55,7 @@ cc_library_shared {
         "libmemunreachable",
         "libmedia_helper",
         "libvibrator",
+        "libaudiopolicy",
     ],
 
     static_libs: [
@@ -64,6 +65,7 @@ cc_library_shared {
 
     header_libs: [
         "libmedia_headers",
+        "libaudiopolicycommon",
     ],
 
     cflags: [

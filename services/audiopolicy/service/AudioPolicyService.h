@@ -181,10 +181,10 @@ public:
                                const char *keyValuePairs,
                                int delayMs);
 
-    virtual status_t setStreamVolume(audio_stream_type_t stream,
-                                     float volume,
-                                     audio_io_handle_t output,
-                                     int delayMs = 0);
+    virtual status_t setVolumeSourceVolume(VolumeSource volumeSource,
+                                           float volume,
+                                           audio_io_handle_t output,
+                                           int delayMs = 0);
     virtual status_t setVoiceVolume(float volume, int delayMs = 0);
     status_t setAllowedCapturePolicy(uint_t uid, audio_flags_mask_t capturePolicy) override;
     virtual bool isOffloadSupported(const audio_offload_info_t &config);
@@ -266,6 +266,9 @@ public:
 
     virtual status_t getVolumeGroupFromAudioAttributes(const AudioAttributes &aa,
                                                        volume_group_t &volumeGroup);
+
+    virtual status_t getVolumeGroupFromStreamType(
+            audio_stream_type_t stream, volume_group_t &volumeGroup, bool fallbackOnDefault);
 
     virtual status_t setRttEnabled(bool enabled);
 
@@ -465,7 +468,7 @@ private:
         virtual     bool        threadLoop();
 
                     void        exit();
-                    status_t    volumeCommand(audio_stream_type_t stream, float volume,
+                    status_t    volumeCommand(VolumeSource volumeSource, float volume,
                                             audio_io_handle_t output, int delayMs = 0);
                     status_t    parametersCommand(audio_io_handle_t ioHandle,
                                             const char *keyValuePairs, int delayMs = 0);
@@ -530,7 +533,7 @@ private:
 
         class VolumeData : public AudioCommandData {
         public:
-            audio_stream_type_t mStream;
+            VolumeSource mVolumeSource;
             float mVolume;
             audio_io_handle_t mIO;
         };
@@ -669,7 +672,8 @@ private:
 
         // set a stream volume for a particular output. For the same user setting, a given stream type can have different volumes
         // for each output (destination device) it is attached to.
-        virtual status_t setStreamVolume(audio_stream_type_t stream, float volume, audio_io_handle_t output, int delayMs = 0);
+        virtual status_t setVolumeSourceVolume(
+                VolumeSource volumeSource, float volume, audio_io_handle_t output, int delayMs = 0);
 
         // invalidate a stream type, causing a reroute to an unspecified new output
         virtual status_t invalidateStream(audio_stream_type_t stream);

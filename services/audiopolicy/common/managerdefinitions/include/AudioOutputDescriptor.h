@@ -159,7 +159,7 @@ public:
     virtual uint32_t latency() { return 0; }
     virtual bool isFixedVolume(const DeviceTypeSet& deviceTypes);
     virtual bool setVolume(float volumeDb,
-                           VolumeSource volumeSource, const StreamTypeVector &streams,
+                           VolumeSource volumeSource,
                            const DeviceTypeSet& deviceTypes,
                            uint32_t delayMs,
                            bool force);
@@ -344,7 +344,7 @@ public:
         }
     }
     virtual bool setVolume(float volumeDb,
-                           VolumeSource volumeSource, const StreamTypeVector &streams,
+                           VolumeSource volumeSource,
                            const DeviceTypeSet& device,
                            uint32_t delayMs,
                            bool force);
@@ -418,7 +418,7 @@ public:
             void dump(String8 *dst) const override;
 
     virtual bool setVolume(float volumeDb,
-                           VolumeSource volumeSource, const StreamTypeVector &streams,
+                           VolumeSource volumeSource,
                            const DeviceTypeSet& deviceTypes,
                            uint32_t delayMs,
                            bool force);
