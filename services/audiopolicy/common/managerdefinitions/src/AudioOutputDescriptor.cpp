@@ -415,6 +415,16 @@ bool SwAudioOutputDescriptor::setVolume(float volumeDb,
         return false;
     }
     if (streams.empty()) {
+        if (!isActive(vs) && !getActiveVolumeSources().empty()) {
+            // Another source is active on this SwOuput. This volumeSource is not associated to any
+            // legacy stream types. There is high risk to overwrite the volume for active source
+            // until AudioFlinger is migrated to volume source.
+            // As a temporary WA: bail out
+            ALOGW("%s: output %d volumesource %d not active, other source currently active"
+                  " RISK OF OVERWRITING VOLUME STREAM MUSIC, bailing out", __func__, mIoHandle, vs);
+            return true;
+        }
+        // No other mean to control this volume source by assigning default stream type aka MUSIC
         streams.push_back(AUDIO_STREAM_MUSIC);
     }
     for (const auto& devicePort : devices()) {
