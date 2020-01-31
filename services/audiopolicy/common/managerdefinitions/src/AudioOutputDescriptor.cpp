@@ -414,20 +414,6 @@ bool SwAudioOutputDescriptor::setVolume(float volumeDb,
     if (!AudioOutputDescriptor::setVolume(volumeDb, vs, streamTypes, deviceTypes, delayMs, force)) {
         return false;
     }
-    if (streams.empty()) {
-        if (!isActive(vs) && !getActiveVolumeSources().empty()) {
-            // Another source is active on this SwOuput. This volumeSource is not associated to any
-            // legacy stream types. There is high risk to overwrite the volume for active source
-            // until AudioFlinger is migrated to volume source.
-            // As a temporary WA: bail out
-            ALOGW("%s: output %d volumesource %d Active %d, other source currently active"
-                  " RISK OF OVERWRITTING VOLUME STREAM MUSIC, bailing out",
-                  __func__, mIoHandle, vs, isActive(vs));
-            return true;
-        }
-        // No other mean to control this volume source by assigning default stream type aka MUSIC
-        streams.push_back(AUDIO_STREAM_MUSIC);
-    }
     for (const auto& devicePort : devices()) {
         // APM loops on all group, so filter on active group to set the port gain,
         // let the other groups set the stream volume as per legacy
@@ -440,9 +426,7 @@ bool SwAudioOutputDescriptor::setVolume(float volumeDb,
             //
             // @todo: default stream volume to max (0) when using HW Port gain?
             float volumeAmpl = Volume::DbToAmpl(0);
-            for (const auto &stream : streams) {
-                mClientInterface->setStreamVolume(stream, volumeAmpl, mIoHandle, delayMs);
-            }
+            mClientInterface->setVolumeSourceVolume(vs, volumeAmpl, mIoHandle, delayMs);
 
             AudioGains gains = devicePort->getGains();
             int gainMinValueInMb = gains[0]->getMinValueInMb();
@@ -461,13 +445,12 @@ bool SwAudioOutputDescriptor::setVolume(float volumeDb,
     // Force VOICE_CALL to track BLUETOOTH_SCO stream volume when bluetooth audio is enabled
     float volumeAmpl = Volume::DbToAmpl(getCurVolume(vs));
     if (hasStream(streams, AUDIO_STREAM_BLUETOOTH_SCO)) {
-        mClientInterface->setStreamVolume(AUDIO_STREAM_VOICE_CALL, volumeAmpl, mIoHandle, delayMs);
+        // TODO
+//        mClientInterface->setVolumeSourceVolume(toVolumeSource(AUDIO_STREAM_VOICE_CALL), volumeAmpl, mIoHandle, delayMs);
     }
-    for (const auto &stream : streams) {
-        ALOGV("%s output %d for volumeSource %d, volume %f, delay %d stream=%s", __func__,
-              mIoHandle, vs, volumeDb, delayMs, toString(stream).c_str());
-        mClientInterface->setStreamVolume(stream, volumeAmpl, mIoHandle, delayMs);
-    }
+    ALOGD("%s output %d for volumeSource %d, volume %f, delay %d active=%d", __func__,
+          mIoHandle, vs, volumeDb, delayMs, isActive(vs));
+    mClientInterface->setVolumeSourceVolume(vs, volumeAmpl, mIoHandle, delayMs);
     return true;
 }
 
