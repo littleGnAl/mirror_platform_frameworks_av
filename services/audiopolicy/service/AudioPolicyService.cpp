@@ -1124,12 +1124,12 @@ bool AudioPolicyService::AudioCommandThread::threadLoop()
                 switch (command->mCommand) {
                 case SET_VOLUME: {
                     VolumeData *data = (VolumeData *)command->mParam.get();
-                    ALOGV("AudioCommandThread() processing set volume stream %d, \
-                            volume %f, output %d", data->mStream, data->mVolume, data->mIO);
+                    ALOGV("AudioCommandThread() processing set volume Source %d, \
+                            volume %f, output %d", data->mVolumeSource, data->mVolume, data->mIO);
                     mLock.unlock();
-                    command->mStatus = AudioSystem::setStreamVolume(data->mStream,
-                                                                    data->mVolume,
-                                                                    data->mIO);
+                    command->mStatus = AudioSystem::setVolumeSourceVolume(data->mVolumeSource,
+                                                                          data->mVolume,
+                                                                          data->mIO);
                     mLock.lock();
                     }break;
                 case SET_PARAMETERS: {
@@ -1374,7 +1374,7 @@ status_t AudioPolicyService::AudioCommandThread::dump(int fd)
     return NO_ERROR;
 }
 
-status_t AudioPolicyService::AudioCommandThread::volumeCommand(audio_stream_type_t stream,
+status_t AudioPolicyService::AudioCommandThread::volumeCommand(VolumeSource volumeSource,
                                                                float volume,
                                                                audio_io_handle_t output,
                                                                int delayMs)
@@ -1382,13 +1382,13 @@ status_t AudioPolicyService::AudioCommandThread::volumeCommand(audio_stream_type
     sp<AudioCommand> command = new AudioCommand();
     command->mCommand = SET_VOLUME;
     sp<VolumeData> data = new VolumeData();
-    data->mStream = stream;
+    data->mVolumeSource = volumeSource;
     data->mVolume = volume;
     data->mIO = output;
     command->mParam = data;
     command->mWaitStatus = true;
-    ALOGV("AudioCommandThread() adding set volume stream %d, volume %f, output %d",
-            stream, volume, output);
+    ALOGV("AudioCommandThread() adding set volume volumeSource %d, volume %f, output %d",
+            volumeSource, volume, output);
     return sendCommand(command, delayMs);
 }
 
@@ -1671,9 +1671,9 @@ void AudioPolicyService::AudioCommandThread::insertCommand_l(sp<AudioCommand>& c
             VolumeData *data = (VolumeData *)command->mParam.get();
             VolumeData *data2 = (VolumeData *)command2->mParam.get();
             if (data->mIO != data2->mIO) break;
-            if (data->mStream != data2->mStream) break;
+            if (data->mVolumeSource != data2->mVolumeSource) break;
             ALOGV("Filtering out volume command on output %d for stream %d",
-                    data->mIO, data->mStream);
+                    data->mIO, data->mVolumeSource);
             removedCommands.add(command2);
             command->mTime = command2->mTime;
             // force delayMs to non 0 so that code below does not request to wait for
@@ -1810,12 +1810,12 @@ void AudioPolicyService::setParameters(audio_io_handle_t ioHandle,
                                            delayMs);
 }
 
-int AudioPolicyService::setStreamVolume(audio_stream_type_t stream,
-                                        float volume,
-                                        audio_io_handle_t output,
-                                        int delayMs)
+int AudioPolicyService::setVolumeSourceVolume(VolumeSource volumeSource,
+                                              float volume,
+                                              audio_io_handle_t output,
+                                              int delayMs)
 {
-    return (int)mAudioCommandThread->volumeCommand(stream, volume,
+    return (int)mAudioCommandThread->volumeCommand(volumeSource, volume,
                                                    output, delayMs);
 }
 

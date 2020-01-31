@@ -51,4 +51,13 @@ private:
 
 using AudioVolumeGroupVector = std::vector<AudioVolumeGroup>;
 
+/**
+ * VolumeSource is the discriminant for volume management on an output.
+ * It used to be the stream type by legacy, it may host a volume group or a volume curve if
+ * we allow to have more than one curve per volume group (mandatory to get rid of AudioServer
+ * stream aliases).
+ */
+enum VolumeSource : std::underlying_type<volume_group_t>::type;
+static const VolumeSource VOLUME_SOURCE_NONE = static_cast<VolumeSource>(VOLUME_GROUP_NONE);
+
 } // namespace android
