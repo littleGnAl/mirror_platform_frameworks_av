@@ -1327,8 +1327,19 @@ status_t AudioPolicyService::getVolumeGroupFromAudioAttributes(const AudioAttrib
     if (mAudioPolicyManager == NULL) {
         return NO_INIT;
     }
-    Mutex::Autolock _l(mLock);
+    // DO NOT LOCK, may be called from AudioFlinger with lock held, reaching deadlock
     return mAudioPolicyManager->getVolumeGroupFromAudioAttributes(aa, volumeGroup);
+}
+
+status_t AudioPolicyService::getVolumeGroupFromStreamType(
+        audio_stream_type_t stream, volume_group_t &volumeGroup, bool fallbackOnDefault)
+{
+    if (mAudioPolicyManager == NULL) {
+        return NO_INIT;
+    }
+    // DO NOT LOCK, may be called from AudioFlinger with lock held, reaching deadlock
+    return mAudioPolicyManager->getVolumeGroupFromStreamType(
+                stream, volumeGroup, fallbackOnDefault);
 }
 
 status_t AudioPolicyService::setRttEnabled(bool enabled)
