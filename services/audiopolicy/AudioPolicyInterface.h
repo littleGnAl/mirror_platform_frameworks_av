@@ -19,6 +19,7 @@
 
 #include <media/AudioDeviceTypeAddr.h>
 #include <media/AudioSystem.h>
+#include <media/AudioVolumeGroup.h>
 #include <media/AudioPolicy.h>
 #include <media/DeviceDescriptorBase.h>
 #include <utils/String8.h>
@@ -276,6 +277,9 @@ public:
     virtual status_t getVolumeGroupFromAudioAttributes(const AudioAttributes &aa,
                                                        volume_group_t &volumeGroup) = 0;
 
+    virtual status_t getVolumeGroupFromStreamType(
+            audio_stream_type_t stream, volume_group_t &volumeGroup, bool fallbackOnDefault) = 0;
+
     virtual status_t setPreferredDeviceForStrategy(product_strategy_t strategy,
                                                    const AudioDeviceTypeAddr &device) = 0;
 
@@ -344,7 +348,8 @@ public:
 
     // set a stream volume for a particular output. For the same user setting, a given stream type can have different volumes
     // for each output (destination device) it is attached to.
-    virtual status_t setStreamVolume(audio_stream_type_t stream, float volume, audio_io_handle_t output, int delayMs = 0) = 0;
+    virtual status_t setVolumeSourceVolume(
+            VolumeSource volumeSource, float volume, audio_io_handle_t output, int delayMs = 0) = 0;
 
     // invalidate a stream type, causing a reroute to an unspecified new output
     virtual status_t invalidateStream(audio_stream_type_t stream) = 0;
