@@ -315,6 +315,16 @@ public:
             return volumeGroup != VOLUME_GROUP_NONE ? NO_ERROR : BAD_VALUE;
         }
 
+        virtual status_t getVolumeGroupFromStreamType(
+                audio_stream_type_t stream, volume_group_t &volumeGroup, bool fallbackOnDefault)
+        {
+            volumeGroup =  mEngine->getVolumeGroupForStreamType(stream, fallbackOnDefault);
+            if (!fallbackOnDefault) {
+                return NO_ERROR;
+            }
+            return volumeGroup != VOLUME_GROUP_NONE ? NO_ERROR : BAD_VALUE;
+        }
+
         status_t initialize();
 
 protected:

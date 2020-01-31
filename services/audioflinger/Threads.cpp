@@ -1807,7 +1807,6 @@ AudioFlinger::PlaybackThread::PlaybackThread(const sp<AudioFlinger>& audioFlinge
         mFramesWritten(0),
         mSuspendedFrames(0),
         mActiveTracks(&this->mLocalLog),
-        // mStreamTypes[] initialized in constructor body
         mTracks(type == MIXER),
         mOutput(output),
         mNumWrites(0), mNumDelayedWrites(0), mInWrite(false),
@@ -1860,16 +1859,6 @@ AudioFlinger::PlaybackThread::PlaybackThread(const sp<AudioFlinger>& audioFlinge
                 (int64_t)(mIsMsdDevice ? AUDIO_DEVICE_OUT_BUS // turn on by default for MSD
                                        : AUDIO_DEVICE_NONE));
     }
-
-    // ++ operator does not compile
-    for (audio_stream_type_t stream = AUDIO_STREAM_MIN; stream < AUDIO_STREAM_FOR_POLICY_CNT;
-            stream = (audio_stream_type_t) (stream + 1)) {
-        mStreamTypes[stream].volume = 0.0f;
-        mStreamTypes[stream].mute = mAudioFlinger->streamMute_l(stream);
-    }
-    // Audio patch volume is always max
-    mStreamTypes[AUDIO_STREAM_PATCH].volume = 1.0f;
-    mStreamTypes[AUDIO_STREAM_PATCH].mute = false;
 }
 
 AudioFlinger::PlaybackThread::~PlaybackThread()
@@ -1901,15 +1890,16 @@ void AudioFlinger::PlaybackThread::dumpTracks_l(int fd, const Vector<String16>& 
 {
     String8 result;
 
-    result.appendFormat("  Stream volumes in dB: ");
-    for (int i = 0; i < AUDIO_STREAM_CNT; ++i) {
-        const stream_type_t *st = &mStreamTypes[i];
-        if (i > 0) {
-            result.appendFormat(", ");
-        }
-        result.appendFormat("%d:%.2g", i, 20.0 * log10(st->volume));
-        if (st->mute) {
+    result.appendFormat("  VolumeSources in dB: ");
+    const auto& lastVolumeSource = mVolumeSources.rbegin()->first;
+    for (const auto &iter : mVolumeSources) {
+        const auto& volumeSource = iter.second;
+        result.appendFormat("%d:%.2g", iter.first, 20.0 * log10(volumeSource.getVolume()));
+        if (volumeSource.isMuted()) {
             result.append("M");
+        }
+        if (iter.first != lastVolumeSource) {
+            result.appendFormat(", ");
         }
     }
     result.append("\n");
@@ -2394,24 +2384,25 @@ void AudioFlinger::PlaybackThread::setMasterMute(bool muted)
     }
 }
 
-void AudioFlinger::PlaybackThread::setStreamVolume(audio_stream_type_t stream, float value)
+void AudioFlinger::PlaybackThread::setVolumeSourceVolume(VolumeSource volumeSource, float value)
 {
     Mutex::Autolock _l(mLock);
-    mStreamTypes[stream].volume = value;
+    mVolumeSources[volumeSource].setVolume(value);
     broadcast_l();
 }
 
-void AudioFlinger::PlaybackThread::setStreamMute(audio_stream_type_t stream, bool muted)
+void AudioFlinger::PlaybackThread::setVolumeSourceMute(VolumeSource volumeSource, bool muted)
 {
     Mutex::Autolock _l(mLock);
-    mStreamTypes[stream].mute = muted;
+    mVolumeSources[volumeSource].setMuted(muted);
     broadcast_l();
 }
 
-float AudioFlinger::PlaybackThread::streamVolume(audio_stream_type_t stream) const
+float AudioFlinger::PlaybackThread::getVolumeSourceVolume(VolumeSource volumeSource) const
 {
     Mutex::Autolock _l(mLock);
-    return mStreamTypes[stream].volume;
+    const auto& iter = mVolumeSources.find(volumeSource);
+    return iter != end(mVolumeSources) ? iter->second.getVolume() : 0.0f;
 }
 
 void AudioFlinger::PlaybackThread::setVolumeForOutput_l(float left, float right) const
@@ -4855,10 +4846,11 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::MixerThread::prepareTrac
                 }
                 sp<AudioTrackServerProxy> proxy = track->mAudioTrackServerProxy;
                 float volume;
-                if (track->isPlaybackRestricted() || mStreamTypes[track->streamType()].mute) {
+                if (track->isPlaybackRestricted()
+                        || mVolumeSources[track->getVolumeSource()].isMuted()) {
                     volume = 0.f;
                 } else {
-                    volume = masterVolume * mStreamTypes[track->streamType()].volume;
+                    volume = masterVolume * mVolumeSources[track->getVolumeSource()].getVolume();
                 }
 
                 handleVoipVolume_l(&volume);
@@ -5015,13 +5007,14 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::MixerThread::prepareTrac
             uint32_t vl, vr;       // in U8.24 integer format
             float vlf, vrf, vaf;   // in [0.0, 1.0] float format
             // read original volumes with volume control
-            float v = masterVolume * mStreamTypes[track->streamType()].volume;
+            float v = masterVolume * mVolumeSources[track->getVolumeSource()].getVolume();
             // Always fetch volumeshaper volume to ensure state is updated.
             const sp<AudioTrackServerProxy> proxy = track->mAudioTrackServerProxy;
             const float vh = track->getVolumeHandler()->getVolume(
                     track->mAudioTrackServerProxy->framesReleased()).first;
 
-            if (mStreamTypes[track->streamType()].mute || track->isPlaybackRestricted()) {
+            if (mVolumeSources[track->getVolumeSource()].isMuted()
+                    || track->isPlaybackRestricted()) {
                 v = 0;
             }
 
@@ -5563,10 +5556,11 @@ void AudioFlinger::DirectOutputThread::processVolume_l(Track *track, bool lastTr
             proxy->framesReleased());
     mVolumeShaperActive = shaperActive;
 
-    if (mMasterMute || mStreamTypes[track->streamType()].mute || track->isPlaybackRestricted()) {
+    if (mMasterMute || mVolumeSources[track->getVolumeSource()].isMuted()
+            || track->isPlaybackRestricted()) {
         left = right = 0;
     } else {
-        float typeVolume = mStreamTypes[track->streamType()].volume;
+        float typeVolume = mVolumeSources[track->getVolumeSource()].getVolume();
         const float v = mMasterVolume * typeVolume * shaperVolume;
 
         gain_minifloat_packed_t vlr = proxy->getVolumeLR();
@@ -6611,7 +6605,7 @@ void AudioFlinger::DuplicatingThread::addOutputTrack(MixerThread *thread)
         ALOGE("addOutputTrack() initCheck failed %d", status);
         return;
     }
-    thread->setStreamVolume(AUDIO_STREAM_PATCH, 1.0f);
+    thread->setVolumeSourceVolume(AudioFlinger::toVolumeSource(AUDIO_STREAM_PATCH), 1.0f);
     mOutputTracks.add(outputTrack);
     ALOGV("addOutputTrack() track %p, on thread %p", outputTrack.get(), thread);
     updateWaitTime_l();
@@ -9204,8 +9198,6 @@ AudioFlinger::MmapPlaybackThread::MmapPlaybackThread(
         AudioHwDevice *hwDev,  AudioStreamOut *output, bool systemReady)
     : MmapThread(audioFlinger, id, hwDev, output->stream, systemReady),
       mStreamType(AUDIO_STREAM_MUSIC),
-      mStreamVolume(1.0),
-      mStreamMute(false),
       mOutput(output)
 {
     snprintf(mThreadName, kThreadNameLength, "AudioMmapOut_%X", id);
@@ -9232,6 +9224,8 @@ void AudioFlinger::MmapPlaybackThread::configure(const audio_attributes_t *attr,
 {
     MmapThread::configure(attr, streamType, sessionId, callback, deviceId, portId);
     mStreamType = streamType;
+    mVolumeSource = *attr != AUDIO_ATTRIBUTES_INITIALIZER ?
+            AudioFlinger::toVolumeSource(*attr) : AudioFlinger::toVolumeSource(streamType);
 }
 
 AudioStreamOut* AudioFlinger::MmapPlaybackThread::clearOutput()
@@ -9265,31 +9259,30 @@ void AudioFlinger::MmapPlaybackThread::setMasterMute(bool muted)
     }
 }
 
-void AudioFlinger::MmapPlaybackThread::setStreamVolume(audio_stream_type_t stream, float value)
+void AudioFlinger::MmapPlaybackThread::setVolumeSourceVolume(VolumeSource volumeSource, float value)
 {
     Mutex::Autolock _l(mLock);
-    if (stream == mStreamType) {
-        mStreamVolume = value;
-        broadcast_l();
+    if (volumeSource != mVolumeSource) {
+        return;
     }
+    mVolumeSourceVolume = value;
+    broadcast_l();
 }
 
-float AudioFlinger::MmapPlaybackThread::streamVolume(audio_stream_type_t stream) const
+void AudioFlinger::MmapPlaybackThread::setVolumeSourceMute(VolumeSource volumeSource, bool muted)
 {
     Mutex::Autolock _l(mLock);
-    if (stream == mStreamType) {
-        return mStreamVolume;
+    if (volumeSource != mVolumeSource) {
+        return;
     }
-    return 0.0f;
+    mVolumeSourceMute = muted;
+    broadcast_l();
 }
 
-void AudioFlinger::MmapPlaybackThread::setStreamMute(audio_stream_type_t stream, bool muted)
+float AudioFlinger::MmapPlaybackThread::getVolumeSourceVolume(VolumeSource volumeSource) const
 {
     Mutex::Autolock _l(mLock);
-    if (stream == mStreamType) {
-        mStreamMute= muted;
-        broadcast_l();
-    }
+    return volumeSource == mVolumeSource ? mVolumeSourceVolume : 0.0f;
 }
 
 void AudioFlinger::MmapPlaybackThread::invalidateTracks(audio_stream_type_t streamType)
@@ -9307,10 +9300,10 @@ void AudioFlinger::MmapPlaybackThread::processVolume_l()
 {
     float volume;
 
-    if (mMasterMute || mStreamMute) {
+    if (mMasterMute || mVolumeSourceMute) {
         volume = 0;
     } else {
-        volume = mMasterVolume * mStreamVolume;
+        volume = mMasterVolume * mVolumeSourceVolume;
     }
 
     if (volume != mHalVolFloat) {
@@ -9405,8 +9398,9 @@ void AudioFlinger::MmapPlaybackThread::dumpInternals_l(int fd, const Vector<Stri
 {
     MmapThread::dumpInternals_l(fd, args);
 
-    dprintf(fd, "  Stream type: %d Stream volume: %f HAL volume: %f Stream mute %d\n",
-            mStreamType, mStreamVolume, mHalVolFloat, mStreamMute);
+    dprintf(fd, "  Stream type: %d Volume Source: %d Volume Source volume: %f HAL volume: %f "
+                "Volume Source mute %d\n",
+            mStreamType, mVolumeSource, mVolumeSourceVolume, mHalVolFloat, mVolumeSourceMute);
     dprintf(fd, "  Master volume: %f Master mute %d\n", mMasterVolume, mMasterMute);
 }
 
