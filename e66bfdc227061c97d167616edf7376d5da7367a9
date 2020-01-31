@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b90e7a27_979dc955",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-01-31T16:45:50Z",
+      "side": 1,
+      "message": "best way is to handle it from APM",
+      "range": {
+        "startLine": 448,
+        "startChar": 0,
+        "endLine": 449,
+        "endChar": 35
+      },
+      "revId": "e66bfdc227061c97d167616edf7376d5da7367a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0b4339a_250f64fd",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-01-31T16:45:50Z",
+      "side": 1,
+      "message": "ALOGV",
+      "range": {
+        "startLine": 451,
+        "startChar": 4,
+        "endLine": 451,
+        "endChar": 9
+      },
+      "revId": "e66bfdc227061c97d167616edf7376d5da7367a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
