@@ -434,15 +434,14 @@ bool SwAudioOutputDescriptor::setVolume(float volumeDb,
         // TODO: Pass in the device address and check against it.
         if (isSingleDeviceType(deviceTypes, devicePort->type()) &&
                 devicePort->hasGainController(true) && isActive(vs)) {
+            ALOGD("%s: output %d volumesource %d Active %d GainController", __func__, mIoHandle, vs, isActive(vs));
             ALOGV("%s: device %s has gain controller", __func__, devicePort->toString().c_str());
             // @todo: here we might be in trouble if the SwOutput has several active clients with
             // different Volume Source (or if we allow several curves within same volume group)
             //
             // @todo: default stream volume to max (0) when using HW Port gain?
             float volumeAmpl = Volume::DbToAmpl(0);
-            for (const auto &stream : streams) {
-                mClientInterface->setStreamVolume(stream, volumeAmpl, mIoHandle, delayMs);
-            }
+            mClientInterface->setVolumeSourceVolume(vs, volumeAmpl, mIoHandle, delayMs);
 
             AudioGains gains = devicePort->getGains();
             int gainMinValueInMb = gains[0]->getMinValueInMb();
@@ -461,13 +460,12 @@ bool SwAudioOutputDescriptor::setVolume(float volumeDb,
     // Force VOICE_CALL to track BLUETOOTH_SCO stream volume when bluetooth audio is enabled
     float volumeAmpl = Volume::DbToAmpl(getCurVolume(vs));
     if (hasStream(streams, AUDIO_STREAM_BLUETOOTH_SCO)) {
-        mClientInterface->setStreamVolume(AUDIO_STREAM_VOICE_CALL, volumeAmpl, mIoHandle, delayMs);
+        // TODO
+//        mClientInterface->setVolumeSourceVolume(toVolumeSource(AUDIO_STREAM_VOICE_CALL), volumeAmpl, mIoHandle, delayMs);
     }
-    for (const auto &stream : streams) {
-        ALOGV("%s output %d for volumeSource %d, volume %f, delay %d stream=%s", __func__,
-              mIoHandle, vs, volumeDb, delayMs, toString(stream).c_str());
-        mClientInterface->setStreamVolume(stream, volumeAmpl, mIoHandle, delayMs);
-    }
+    ALOGD("%s output %d for volumeSource %d, volume %f, delay %d active=%d", __func__,
+          mIoHandle, vs, volumeDb, delayMs, isActive(vs));
+    mClientInterface->setVolumeSourceVolume(vs, volumeAmpl, mIoHandle, delayMs);
     return true;
 }
 

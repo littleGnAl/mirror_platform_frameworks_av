@@ -1826,6 +1826,7 @@ status_t AudioPolicyManager::stopSource(const sp<SwAudioOutputDescriptor>& outpu
             uint32_t delayMs = outputDesc->latency()*2;
             for (size_t i = 0; i < mOutputs.size(); i++) {
                 sp<SwAudioOutputDescriptor> desc = mOutputs.valueAt(i);
+                ALOGD("%s evaluating output %d active=%d (newDevices != desc->devices()=%d", __func__, desc->mIoHandle, desc->isActive(), (newDevices != desc->devices()));
                 if (desc != outputDesc &&
                         desc->isActive() &&
                         outputDesc->sharesHwModuleWith(desc) &&
@@ -1837,7 +1838,10 @@ status_t AudioPolicyManager::stopSource(const sp<SwAudioOutputDescriptor>& outpu
 
                     // re-apply device specific volume if not done by setOutputDevice()
                     if (!force) {
+                        ALOGD("%s evaluating output %d force false", __func__, desc->mIoHandle);
                         applyStreamVolumes(desc, newDevices2.types(), delayMs);
+                    } else {
+                        ALOGD("%s evaluating output %d force true", __func__, desc->mIoHandle);
                     }
                 }
             }

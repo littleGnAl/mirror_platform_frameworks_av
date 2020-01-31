@@ -42,10 +42,10 @@ enum {
     SET_MASTER_MUTE,
     MASTER_VOLUME,
     MASTER_MUTE,
-    SET_STREAM_VOLUME,
-    SET_STREAM_MUTE,
-    STREAM_VOLUME,
-    STREAM_MUTE,
+    SET_VOLUME_SOURCE_VOLUME,
+    SET_VOLUME_SOURCE_MUTE,
+    GET_VOLUME_SOURCE_VOLUME,
+    GET_VOLUME_SOURCE_MUTE,
     SET_MODE,
     SET_MIC_MUTE,
     GET_MIC_MUTE,
@@ -275,44 +275,44 @@ public:
         return NO_ERROR;
     }
 
-    virtual status_t setStreamVolume(audio_stream_type_t stream, float value,
+    virtual status_t setVolumeSourceVolume(VolumeSource volumeSource, float value,
             audio_io_handle_t output)
     {
         Parcel data, reply;
         data.writeInterfaceToken(IAudioFlinger::getInterfaceDescriptor());
-        data.writeInt32((int32_t) stream);
+        data.writeInt32((int32_t) volumeSource);
         data.writeFloat(value);
         data.writeInt32((int32_t) output);
-        remote()->transact(SET_STREAM_VOLUME, data, &reply);
+        remote()->transact(SET_VOLUME_SOURCE_VOLUME, data, &reply);
         return reply.readInt32();
     }
 
-    virtual status_t setStreamMute(audio_stream_type_t stream, bool muted)
+    virtual status_t setVolumeSourceMute(VolumeSource volumeSource, bool muted)
     {
         Parcel data, reply;
         data.writeInterfaceToken(IAudioFlinger::getInterfaceDescriptor());
-        data.writeInt32((int32_t) stream);
+        data.writeInt32((int32_t) volumeSource);
         data.writeInt32(muted);
-        remote()->transact(SET_STREAM_MUTE, data, &reply);
+        remote()->transact(SET_VOLUME_SOURCE_MUTE, data, &reply);
         return reply.readInt32();
     }
 
-    virtual float streamVolume(audio_stream_type_t stream, audio_io_handle_t output) const
+    virtual float getVolumeSourceVolume(VolumeSource volumeSource, audio_io_handle_t output) const
     {
         Parcel data, reply;
         data.writeInterfaceToken(IAudioFlinger::getInterfaceDescriptor());
-        data.writeInt32((int32_t) stream);
+        data.writeInt32((int32_t) volumeSource);
         data.writeInt32((int32_t) output);
-        remote()->transact(STREAM_VOLUME, data, &reply);
+        remote()->transact(GET_VOLUME_SOURCE_VOLUME, data, &reply);
         return reply.readFloat();
     }
 
-    virtual bool streamMute(audio_stream_type_t stream) const
+    virtual bool getVolumeSourceMute(VolumeSource volumeSource) const
     {
         Parcel data, reply;
         data.writeInterfaceToken(IAudioFlinger::getInterfaceDescriptor());
-        data.writeInt32((int32_t) stream);
-        remote()->transact(STREAM_MUTE, data, &reply);
+        data.writeInt32((int32_t) volumeSource);
+        remote()->transact(GET_VOLUME_SOURCE_MUTE, data, &reply);
         return reply.readInt32();
     }
 
@@ -933,8 +933,8 @@ status_t BnAudioFlinger::onTransact(
 {
     // make sure transactions reserved to AudioPolicyManager do not come from other processes
     switch (code) {
-        case SET_STREAM_VOLUME:
-        case SET_STREAM_MUTE:
+        case SET_VOLUME_SOURCE_VOLUME:
+        case SET_VOLUME_SOURCE_MUTE:
         case OPEN_OUTPUT:
         case OPEN_DUPLICATE_OUTPUT:
         case CLOSE_OUTPUT:
@@ -1130,31 +1130,31 @@ status_t BnAudioFlinger::onTransact(
             }
             return NO_ERROR;
         } break;
-        case SET_STREAM_VOLUME: {
+        case SET_VOLUME_SOURCE_VOLUME: {
             CHECK_INTERFACE(IAudioFlinger, data, reply);
-            int stream = data.readInt32();
+            VolumeSource volumeSource = static_cast<VolumeSource>(data.readInt32());
             float volume = data.readFloat();
-            audio_io_handle_t output = (audio_io_handle_t) data.readInt32();
-            reply->writeInt32( setStreamVolume((audio_stream_type_t) stream, volume, output) );
+            audio_io_handle_t output = static_cast<audio_io_handle_t>(data.readInt32());
+            reply->writeInt32(setVolumeSourceVolume(volumeSource, volume, output));
             return NO_ERROR;
         } break;
-        case SET_STREAM_MUTE: {
+        case SET_VOLUME_SOURCE_MUTE: {
             CHECK_INTERFACE(IAudioFlinger, data, reply);
-            int stream = data.readInt32();
-            reply->writeInt32( setStreamMute((audio_stream_type_t) stream, data.readInt32()) );
+            VolumeSource volumeSource = static_cast<VolumeSource>(data.readInt32());
+            reply->writeInt32(setVolumeSourceMute(volumeSource, data.readInt32()));
             return NO_ERROR;
         } break;
-        case STREAM_VOLUME: {
+        case GET_VOLUME_SOURCE_VOLUME: {
             CHECK_INTERFACE(IAudioFlinger, data, reply);
-            int stream = data.readInt32();
+            VolumeSource volumeSource = static_cast<VolumeSource>(data.readInt32());
             int output = data.readInt32();
-            reply->writeFloat( streamVolume((audio_stream_type_t) stream, output) );
+            reply->writeFloat(getVolumeSourceVolume(volumeSource, output));
             return NO_ERROR;
         } break;
-        case STREAM_MUTE: {
+        case GET_VOLUME_SOURCE_MUTE: {
             CHECK_INTERFACE(IAudioFlinger, data, reply);
-            int stream = data.readInt32();
-            reply->writeInt32( streamMute((audio_stream_type_t) stream) );
+            VolumeSource volumeSource = static_cast<VolumeSource>(data.readInt32());
+            reply->writeInt32(getVolumeSourceMute(volumeSource));
             return NO_ERROR;
         } break;
         case SET_MODE: {

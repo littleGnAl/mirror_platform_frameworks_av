@@ -34,6 +34,7 @@
 #include <media/nbaio/Pipe.h>
 #include <media/nbaio/PipeReader.h>
 #include <media/RecordBufferConverter.h>
+
 #include <mediautils/ServiceUtilities.h>
 #include <audio_utils/minifloat.h>
 
@@ -525,6 +526,7 @@ AudioFlinger::PlaybackThread::Track::Track(
     // mRetryCount initialized later when needed
     mSharedBuffer(sharedBuffer),
     mStreamType(streamType),
+    mVolumeSource(AudioFlinger::toVolumeSource(streamType)),
     mMainBuffer(thread->sinkBuffer()),
     mAuxBuffer(NULL),
     mAuxEffectId(0), mHasVolumeController(false),

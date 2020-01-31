@@ -32,8 +32,8 @@ namespace android {
  * we allow to have more than one curve per volume group (mandatory to get rid of AudioServer
  * stream aliases.
  */
-enum VolumeSource : std::underlying_type<volume_group_t>::type;
-static const VolumeSource VOLUME_SOURCE_NONE = static_cast<VolumeSource>(VOLUME_GROUP_NONE);
+//enum VolumeSource : std::underlying_type<volume_group_t>::type;
+//static const VolumeSource VOLUME_SOURCE_NONE = static_cast<VolumeSource>(VOLUME_GROUP_NONE);
 
 } // namespace android
 
