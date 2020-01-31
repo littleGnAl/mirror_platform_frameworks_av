@@ -22,6 +22,30 @@
       "revId": "6032bc8b8e0a160f75b3aaa393e1616b36fb8d5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ceb45ac4_323b50ce",
+        "filename": "media/tests/benchmark/src/native/encoder/Encoder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-01-31T22:57:00Z",
+      "side": 1,
+      "message": "Ray,\nIn this case encParameter is just a struct. There is no constructor, no methods etc.",
+      "parentUuid": "ede05a3d_e28085da",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "6032bc8b8e0a160f75b3aaa393e1616b36fb8d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
