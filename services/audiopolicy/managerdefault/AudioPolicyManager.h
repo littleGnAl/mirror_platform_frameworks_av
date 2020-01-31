@@ -308,10 +308,11 @@ public:
             return mEngine->listAudioVolumeGroups(groups);
         }
 
-        virtual status_t getVolumeGroupFromAudioAttributes(const AudioAttributes &aa,
-                                                           volume_group_t &volumeGroup)
+        virtual status_t getVolumeGroupFromAudioAttributes(
+                const AudioAttributes &aa, volume_group_t &volumeGroup, bool fallbackOnDefault)
         {
-            volumeGroup = mEngine->getVolumeGroupForAttributes(aa.getAttributes());
+            volumeGroup = mEngine->getVolumeGroupForAttributes(
+                        aa.getAttributes(), fallbackOnDefault);
             return volumeGroup != VOLUME_GROUP_NONE ? NO_ERROR : BAD_VALUE;
         }
 

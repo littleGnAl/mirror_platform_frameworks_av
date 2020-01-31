@@ -1314,80 +1314,78 @@ bool AudioFlinger::masterMute_l() const
     return mMasterMute;
 }
 
-status_t AudioFlinger::checkStreamType(audio_stream_type_t stream) const
+status_t AudioFlinger::checkVolumeSource(VolumeSource volumeSource) const
 {
-    if (uint32_t(stream) >= AUDIO_STREAM_CNT) {
-        ALOGW("checkStreamType() invalid stream %d", stream);
+    if (volumeSource == VOLUME_SOURCE_NONE) {
+        ALOGW("%s() invalid volumeSource %d", __func__, volumeSource);
         return BAD_VALUE;
     }
     const uid_t callerUid = IPCThreadState::self()->getCallingUid();
-    if (uint32_t(stream) >= AUDIO_STREAM_PUBLIC_CNT && !isAudioServerUid(callerUid)) {
-        ALOGW("checkStreamType() uid %d cannot use internal stream type %d", callerUid, stream);
+    if (!isAudioServerUid(callerUid) &&
+            (volumeSource == toVolumeSource(AUDIO_STREAM_PATCH, false/*fallbackOnDefault*/) ||
+             volumeSource == toVolumeSource(AUDIO_STREAM_REROUTING, false/*fallbackOnDefault*/))){
+        ALOGW("%s() uid %d cannot use internal volume source patch/rerouting", __func__, callerUid);
         return PERMISSION_DENIED;
     }
-
     return NO_ERROR;
 }
 
-status_t AudioFlinger::setStreamVolume(audio_stream_type_t stream, float value,
-        audio_io_handle_t output)
+status_t AudioFlinger::setVolumeSourceVolume(VolumeSource volumeSource, float value,
+                                             audio_io_handle_t output)
 {
     // check calling permissions
     if (!settingsAllowed()) {
         return PERMISSION_DENIED;
     }
 
-    status_t status = checkStreamType(stream);
+    status_t status = checkVolumeSource(volumeSource);
     if (status != NO_ERROR) {
         return status;
     }
     if (output == AUDIO_IO_HANDLE_NONE) {
         return BAD_VALUE;
     }
-    LOG_ALWAYS_FATAL_IF(stream == AUDIO_STREAM_PATCH && value != 1.0f,
-                        "AUDIO_STREAM_PATCH must have full scale volume");
-
     AutoMutex lock(mLock);
     VolumeInterface *volumeInterface = getVolumeInterface_l(output);
     if (volumeInterface == NULL) {
         return BAD_VALUE;
     }
-    volumeInterface->setStreamVolume(stream, value);
+    volumeInterface->setVolumeSourceVolume(volumeSource, value);
 
     return NO_ERROR;
 }
 
-status_t AudioFlinger::setStreamMute(audio_stream_type_t stream, bool muted)
+status_t AudioFlinger::setVolumeSourceMute(VolumeSource volumeSource, bool muted)
 {
     // check calling permissions
     if (!settingsAllowed()) {
         return PERMISSION_DENIED;
     }
 
-    status_t status = checkStreamType(stream);
+    status_t status = checkVolumeSource(volumeSource);
     if (status != NO_ERROR) {
         return status;
     }
-    ALOG_ASSERT(stream != AUDIO_STREAM_PATCH, "attempt to mute AUDIO_STREAM_PATCH");
-
-    if (uint32_t(stream) == AUDIO_STREAM_ENFORCED_AUDIBLE) {
-        ALOGE("setStreamMute() invalid stream %d", stream);
+    ALOG_ASSERT(volumeSource != toVolumeSource(AUDIO_STREAM_PATCH, false/*fallbackOnDefault*/),
+                "attempt to mute AUDIO_STREAM_PATCH");
+    auto enforcedAudibleAttr = attributes_initializer_flags(AUDIO_FLAG_AUDIBILITY_ENFORCED);
+    if (volumeSource == toVolumeSource(enforcedAudibleAttr, false/*fallbackOnDefault*/)) {
+        ALOGE("%s() invalid volumeSource %d", __func__, volumeSource);
         return BAD_VALUE;
     }
-
     AutoMutex lock(mLock);
-    mStreamTypes[stream].mute = muted;
+    mVolumeSources[volumeSource].setMuted(muted);
     Vector<VolumeInterface *> volumeInterfaces = getAllVolumeInterfaces_l();
     for (size_t i = 0; i < volumeInterfaces.size(); i++) {
-        volumeInterfaces[i]->setStreamMute(stream, muted);
+        volumeInterfaces[i]->setVolumeSourceMute(volumeSource, muted);
     }
 
     return NO_ERROR;
 }
 
-float AudioFlinger::streamVolume(audio_stream_type_t stream, audio_io_handle_t output) const
+float AudioFlinger::getVolumeSourceVolume(VolumeSource volumeSource, audio_io_handle_t output) const
 {
-    status_t status = checkStreamType(stream);
+    status_t status = checkVolumeSource(volumeSource);
     if (status != NO_ERROR) {
         return 0.0f;
     }
@@ -1401,20 +1399,19 @@ float AudioFlinger::streamVolume(audio_stream_type_t stream, audio_io_handle_t o
         return 0.0f;
     }
 
-    return volumeInterface->streamVolume(stream);
+    return volumeInterface->getVolumeSourceVolume(volumeSource);
 }
 
-bool AudioFlinger::streamMute(audio_stream_type_t stream) const
+bool AudioFlinger::getVolumeSourceMute(VolumeSource volumeSource) const
 {
-    status_t status = checkStreamType(stream);
+    status_t status = checkVolumeSource(volumeSource);
     if (status != NO_ERROR) {
         return true;
     }
 
     AutoMutex lock(mLock);
-    return streamMute_l(stream);
+    return getVolumeSourceMute_l(volumeSource);
 }
-
 
 void AudioFlinger::broacastParametersToRecordThreads_l(const String8& keyValuePairs)
 {
@@ -3882,6 +3879,30 @@ status_t AudioFlinger::onTransact(
         uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)
 {
     return BnAudioFlinger::onTransact(code, data, reply, flags);
+}
+
+/*static*/
+VolumeSource AudioFlinger::toVolumeSource(audio_stream_type_t streamType, bool fallbackOnDefault)
+{
+    auto aa = AudioSystem::streamTypeToAttributes(streamType);
+    if (!fallbackOnDefault && aa == AUDIO_ATTRIBUTES_INITIALIZER) {
+        ALOGE("%s: no attributes matching stream %s", __func__, toString(streamType).c_str());
+        return VOLUME_SOURCE_NONE;
+    }
+    return toVolumeSource(aa, fallbackOnDefault);
+}
+
+/*static*/
+VolumeSource AudioFlinger::toVolumeSource(
+        const audio_attributes_t& attributes, bool fallbackOnDefault)
+{
+    volume_group_t volumeGroup;
+    if (AudioSystem::getVolumeGroupFromAudioAttributes(
+                attributes, volumeGroup, fallbackOnDefault) != NO_ERROR) {
+        ALOGE("%s: no volume group for attributes %s", __func__, toString(attributes).c_str());
+        return VOLUME_SOURCE_NONE;
+    }
+    return static_cast<VolumeSource>(volumeGroup);
 }
 
 } // namespace android

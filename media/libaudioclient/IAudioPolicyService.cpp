@@ -1256,8 +1256,8 @@ public:
         return NO_ERROR;
     }
 
-    virtual status_t getVolumeGroupFromAudioAttributes(const AudioAttributes &aa,
-                                                       volume_group_t &volumeGroup)
+    virtual status_t getVolumeGroupFromAudioAttributes(
+            const AudioAttributes &aa, volume_group_t &volumeGroup, bool fallbackOnDefault)
     {
         Parcel data, reply;
         data.writeInterfaceToken(IAudioPolicyService::getInterfaceDescriptor());
@@ -1265,6 +1265,7 @@ public:
         if (status != NO_ERROR) {
             return status;
         }
+        data.writeBool(fallbackOnDefault);
         status = remote()->transact(GET_VOLUME_GROUP_FOR_ATTRIBUTES, data, &reply);
         if (status != NO_ERROR) {
             return status;
@@ -2407,8 +2408,9 @@ status_t BnAudioPolicyService::onTransact(
             if (status != NO_ERROR) {
                 return status;
             }
+            bool fallbackOnDefault = data.readBool();
             volume_group_t group;
-            status = getVolumeGroupFromAudioAttributes(attributes, group);
+            status = getVolumeGroupFromAudioAttributes(attributes, group, fallbackOnDefault);
             reply->writeInt32(status);
             if (status != NO_ERROR) {
                 return NO_ERROR;
