@@ -79,9 +79,11 @@ public:
 
     VolumeGroupVector getVolumeGroups() const override;
 
-    volume_group_t getVolumeGroupForAttributes(const audio_attributes_t &attr) const override;
+    volume_group_t getVolumeGroupForAttributes(
+            const audio_attributes_t &attr, bool fallbackOnDefault = true) const override;
 
-    volume_group_t getVolumeGroupForStreamType(audio_stream_type_t stream) const override;
+    volume_group_t getVolumeGroupForStreamType(
+            audio_stream_type_t stream, bool fallbackOnDefault = true) const override;
 
     status_t listAudioVolumeGroups(AudioVolumeGroupVector &groups) const override;
 
