@@ -22,6 +22,30 @@
       "revId": "88f9a5fbd2a1607db167eb7104f7fc690f0d09bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6dd172d1_c7502b3f",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3941,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2020-01-31T10:13:03Z",
+      "side": 1,
+      "message": "Thanks Andy for your feedback and understand the problem.\n\nWe can re-work this here so that new HAL positions are fetched and timestamp statistics updated, thereby fixing this particular problem, however we are concerned that updating the timestamp (and verifier) asynchronously to threadLoop (write) may affect the statistics integrity (e.g. statistics may change based on the rate of this function call). Could you share your thoughts on this?",
+      "parentUuid": "0f832509_83f351a4",
+      "range": {
+        "startLine": 3941,
+        "startChar": 8,
+        "endLine": 3941,
+        "endChar": 87
+      },
+      "revId": "88f9a5fbd2a1607db167eb7104f7fc690f0d09bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
