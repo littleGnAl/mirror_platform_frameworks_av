@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ede05a3d_e28085da",
+        "filename": "media/tests/benchmark/src/native/encoder/Encoder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-01-31T22:54:29Z",
+      "side": 1,
+      "message": "let\u0027s use class {} instead of struct{}\n\ni know that \"struct\" \u003d\u003d \"class with everything public\".\nbut saying \"class\" sets an expectation that there\u0027s a constructor -- and that things get initialized.",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "6032bc8b8e0a160f75b3aaa393e1616b36fb8d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
