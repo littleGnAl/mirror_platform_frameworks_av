@@ -152,7 +152,8 @@ public:
 
     volume_group_t getVolumeGroupForAttributes(const audio_attributes_t &attr) const;
 
-    volume_group_t getVolumeGroupForStreamType(audio_stream_type_t stream) const;
+    volume_group_t getVolumeGroupForStreamType(
+            audio_stream_type_t stream, bool fallbackOnDefault = true) const;
 
     volume_group_t getDefaultVolumeGroup() const;
 

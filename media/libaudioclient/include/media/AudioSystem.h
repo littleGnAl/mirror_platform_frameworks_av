@@ -74,14 +74,14 @@ public:
     static status_t getMasterMute(bool* mute);
 
     // set/get stream volume on specified output
-    static status_t setStreamVolume(audio_stream_type_t stream, float value,
-                                    audio_io_handle_t output);
-    static status_t getStreamVolume(audio_stream_type_t stream, float* volume,
-                                    audio_io_handle_t output);
+    static status_t setVolumeSourceVolume(VolumeSource volumeSource, float value,
+                                          audio_io_handle_t output);
+    static status_t getVolumeSourceVolume(VolumeSource volumeSource, float* volume,
+                                          audio_io_handle_t output);
 
     // mute/unmute stream
-    static status_t setStreamMute(audio_stream_type_t stream, bool mute);
-    static status_t getStreamMute(audio_stream_type_t stream, bool* mute);
+    static status_t setVolumeSourceMute(VolumeSource volumeSource, bool mute);
+    static status_t getVolumeSourceMute(VolumeSource volumeSource, bool* mute);
 
     // set audio mode in audio hardware
     static status_t setMode(audio_mode_t mode);
@@ -395,6 +395,9 @@ public:
 
     static status_t getVolumeGroupFromAudioAttributes(const AudioAttributes &aa,
                                                       volume_group_t &volumeGroup);
+
+    static status_t getVolumeGroupFromStreamType(
+            audio_stream_type_t stream, volume_group_t &volumeGroup, bool fallbackOnDefault = true);
 
     static status_t setRttEnabled(bool enabled);
 

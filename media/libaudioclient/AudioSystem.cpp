@@ -160,41 +160,41 @@ status_t AudioSystem::getMasterMute(bool* mute)
     return NO_ERROR;
 }
 
-status_t AudioSystem::setStreamVolume(audio_stream_type_t stream, float value,
+status_t AudioSystem::setVolumeSourceVolume(VolumeSource volumeSource, float value,
         audio_io_handle_t output)
 {
-    if (uint32_t(stream) >= AUDIO_STREAM_CNT) return BAD_VALUE;
+    if (volumeSource == VOLUME_SOURCE_NONE) return BAD_VALUE;
     const sp<IAudioFlinger>& af = AudioSystem::get_audio_flinger();
     if (af == 0) return PERMISSION_DENIED;
-    af->setStreamVolume(stream, value, output);
+    af->setVolumeSourceVolume(volumeSource, value, output);
     return NO_ERROR;
 }
 
-status_t AudioSystem::setStreamMute(audio_stream_type_t stream, bool mute)
+status_t AudioSystem::setVolumeSourceMute(VolumeSource volumeSource, bool mute)
 {
-    if (uint32_t(stream) >= AUDIO_STREAM_CNT) return BAD_VALUE;
+    if (volumeSource == VOLUME_SOURCE_NONE) return BAD_VALUE;
     const sp<IAudioFlinger>& af = AudioSystem::get_audio_flinger();
     if (af == 0) return PERMISSION_DENIED;
-    af->setStreamMute(stream, mute);
+    af->setVolumeSourceMute(volumeSource, mute);
     return NO_ERROR;
 }
 
-status_t AudioSystem::getStreamVolume(audio_stream_type_t stream, float* volume,
+status_t AudioSystem::getVolumeSourceVolume(VolumeSource volumeSource, float* volume,
         audio_io_handle_t output)
 {
-    if (uint32_t(stream) >= AUDIO_STREAM_CNT) return BAD_VALUE;
+    if (volumeSource == VOLUME_SOURCE_NONE) return BAD_VALUE;
     const sp<IAudioFlinger>& af = AudioSystem::get_audio_flinger();
     if (af == 0) return PERMISSION_DENIED;
-    *volume = af->streamVolume(stream, output);
+    *volume = af->getVolumeSourceVolume(volumeSource, output);
     return NO_ERROR;
 }
 
-status_t AudioSystem::getStreamMute(audio_stream_type_t stream, bool* mute)
+status_t AudioSystem::getVolumeSourceMute(VolumeSource volumeSource, bool* mute)
 {
-    if (uint32_t(stream) >= AUDIO_STREAM_CNT) return BAD_VALUE;
+    if (volumeSource == VOLUME_SOURCE_NONE) return BAD_VALUE;
     const sp<IAudioFlinger>& af = AudioSystem::get_audio_flinger();
     if (af == 0) return PERMISSION_DENIED;
-    *mute = af->streamMute(stream);
+    *mute = af->getVolumeSourceMute(volumeSource);
     return NO_ERROR;
 }
 
@@ -1530,6 +1530,14 @@ status_t AudioSystem::getVolumeGroupFromAudioAttributes(const AudioAttributes &a
     const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
     if (aps == 0) return PERMISSION_DENIED;
     return aps->getVolumeGroupFromAudioAttributes(aa, volumeGroup);
+}
+
+status_t AudioSystem::getVolumeGroupFromStreamType(
+        audio_stream_type_t stream, volume_group_t &volumeGroup, bool fallbackOnDefault)
+{
+    const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
+    if (aps == 0) return PERMISSION_DENIED;
+    return aps->getVolumeGroupFromStreamType(stream, volumeGroup, fallbackOnDefault);
 }
 
 status_t AudioSystem::setRttEnabled(bool enabled)
