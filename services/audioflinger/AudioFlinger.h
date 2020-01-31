@@ -47,6 +47,7 @@
 #include <media/AudioTrack.h>
 #include <media/MmapStreamInterface.h>
 #include <media/MmapStreamCallback.h>
+#include <media/TypeConverter.h>
 
 #include <utils/Errors.h>
 #include <utils/threads.h>
@@ -153,13 +154,12 @@ public:
                 status_t    setMasterBalance(float balance) override;
                 status_t    getMasterBalance(float *balance) const override;
 
-    virtual     status_t    setStreamVolume(audio_stream_type_t stream, float value,
-                                            audio_io_handle_t output);
-    virtual     status_t    setStreamMute(audio_stream_type_t stream, bool muted);
-
-    virtual     float       streamVolume(audio_stream_type_t stream,
-                                         audio_io_handle_t output) const;
-    virtual     bool        streamMute(audio_stream_type_t stream) const;
+                status_t    setVolumeSourceVolume(VolumeSource volumeSource, float value,
+                                                  audio_io_handle_t output) override;
+                status_t    setVolumeSourceMute(VolumeSource volumeSource, bool muted) override;
+                float       getVolumeSourceVolume(VolumeSource volumeSource,
+                                                  audio_io_handle_t output) const override;
+                bool        getVolumeSourceMute(VolumeSource volumeSource) const override;
 
     virtual     status_t    setMode(audio_mode_t mode);
 
@@ -553,15 +553,16 @@ private:
     struct TeePatch;
     using TeePatches = std::vector<TeePatch>;
 
-
-    struct  stream_type_t {
-        stream_type_t()
-            :   volume(1.0f),
-                mute(false)
-        {
-        }
-        float       volume;
-        bool        mute;
+    class VolumeSourceControl {
+    public:
+        VolumeSourceControl() = default;
+        float getVolume() const { return mVolume; }
+        bool isMuted() const { return mIsMuted; }
+        void setVolume(float volume) { mVolume = volume; }
+        void setMuted(bool muted) { mIsMuted = muted; }
+    private:
+        float mVolume = 1.0f;
+        bool mIsMuted = false;
     };
 
     // Abstraction for the Audio Source for the RecordThread (HAL or PassthruPatchRecord).
@@ -706,9 +707,15 @@ using effect_buffer_t = int16_t;
               void closeOutputFinish(const sp<PlaybackThread>& thread);
               void closeInputFinish(const sp<RecordThread>& thread);
 
-              // no range check, AudioFlinger::mLock held
-              bool streamMute_l(audio_stream_type_t stream) const
-                                { return mStreamTypes[stream].mute; }
+              /**
+               * @brief getVolumeSourceMute_l mLock must held
+               * @param volumeSource
+               * @return mute attribute if volume source is found, true otherwise
+               */
+              bool getVolumeSourceMute_l(VolumeSource volumeSource) const {
+                  const auto& iter = mVolumeSources.find(volumeSource);
+                  return iter != end(mVolumeSources) ? iter->second.isMuted() : true;
+              }
               void ioConfigChanged(audio_io_config_event event,
                                    const sp<AudioIoDescriptor>& ioDesc,
                                    pid_t pid = 0);
@@ -859,7 +866,7 @@ using effect_buffer_t = int16_t;
 
 
                 DefaultKeyedVector< audio_io_handle_t, sp<PlaybackThread> >  mPlaybackThreads;
-                stream_type_t                       mStreamTypes[AUDIO_STREAM_CNT];
+                std::map<VolumeSource, VolumeSourceControl> mVolumeSources;
 
                 // member variables below are protected by mLock
                 float                               mMasterVolume;
@@ -910,8 +917,7 @@ private:
     void        closeThreadInternal_l(const sp<RecordThread>& thread);
     void        setAudioHwSyncForSession_l(PlaybackThread *thread, audio_session_t sessionId);
 
-    status_t    checkStreamType(audio_stream_type_t stream) const;
-
+    status_t    checkVolumeSource(VolumeSource volumeSource) const;
     void        filterReservedParameters(String8& keyValuePairs, uid_t callingUid);
     void        logFilteredParameters(size_t originalKVPSize, const String8& originalKVPs,
                                       size_t rejectedKVPSize, const String8& rejectedKVPs,
@@ -922,6 +928,19 @@ public:
     // though the variables are updated with mLock.
     bool    isLowRamDevice() const { return mIsLowRamDevice; }
     size_t getClientSharedHeapSize() const;
+
+    /**
+     * @brief toVolumeSource helper function to convert a streamType into a volume source.
+     * The implementation below AudioSystem is using Audio Policy, so it must be called outside
+     * initialization of the APM / AF servers.
+     * @param streamType to convert
+     * @param fallbackOnDefault if true, allows to retrieve the default group.
+     * @return volume source associated with the streamType, of the default if not found and if
+     * fallbackOnDefault is set.
+     */
+    static VolumeSource toVolumeSource(audio_stream_type_t streamType,
+                                       bool fallbackOnDefault = true);
+    static VolumeSource toVolumeSource(const audio_attributes_t& attributes);
 
 private:
     std::atomic<bool> mIsLowRamDevice;
