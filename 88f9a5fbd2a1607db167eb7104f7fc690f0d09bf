@@ -46,6 +46,30 @@
       "revId": "88f9a5fbd2a1607db167eb7104f7fc690f0d09bf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f17eeb7_ee78bca5",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3941,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-02-01T04:30:37Z",
+      "side": 1,
+      "message": "Perhaps refetch if stale?  I think maybe for direct mode, we could avoid refetching, but offload can go up to 30s without an update.  The timestamp verifier should be ok with an irregular interval.",
+      "parentUuid": "6dd172d1_c7502b3f",
+      "range": {
+        "startLine": 3941,
+        "startChar": 8,
+        "endLine": 3941,
+        "endChar": 87
+      },
+      "revId": "88f9a5fbd2a1607db167eb7104f7fc690f0d09bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
