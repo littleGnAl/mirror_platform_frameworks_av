@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "37fc2f14_fbe51a35",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-01T01:04:00Z",
+      "side": 1,
+      "message": "pass two more params as\nisCodecDelayValid\nisSeekPreRollValid",
+      "range": {
+        "startLine": 59,
+        "startChar": 83,
+        "endLine": 59,
+        "endChar": 88
+      },
+      "revId": "a555e1056df7e2e152956e4f9ead6196eb991a9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31921afc_c24af034",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-01T01:04:00Z",
+      "side": 1,
+      "message": "add a comment after each datatype to say what are the variables\nhere and previous declaration",
+      "range": {
+        "startLine": 62,
+        "startChar": 65,
+        "endLine": 62,
+        "endChar": 81
+      },
+      "revId": "a555e1056df7e2e152956e4f9ead6196eb991a9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "898707cb_c5561676",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-01T01:04:00Z",
+      "side": 1,
+      "message": "Should channels \u003e 8 be rejected by OpusHeader?",
+      "range": {
+        "startLine": 70,
+        "startChar": 34,
+        "endLine": 70,
+        "endChar": 48
+      },
+      "revId": "a555e1056df7e2e152956e4f9ead6196eb991a9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b10bbb0b_c9a4a06d",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-01T01:04:00Z",
+      "side": 1,
+      "message": "compare num_streams, channel_mapping as well",
+      "revId": "a555e1056df7e2e152956e4f9ead6196eb991a9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdaf242c_75598214",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-01T01:04:00Z",
+      "side": 1,
+      "message": "Move to line 115\nrename as isOpusHeadValid",
+      "range": {
+        "startLine": 135,
+        "startChar": 3,
+        "endLine": 135,
+        "endChar": 34
+      },
+      "revId": "a555e1056df7e2e152956e4f9ead6196eb991a9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ade4894_f0cb0c3f",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-01T01:04:00Z",
+      "side": 1,
+      "message": "Need to add cases where we test CodecDelay and SeekPreRoll are parsed correctly as well",
+      "revId": "a555e1056df7e2e152956e4f9ead6196eb991a9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
