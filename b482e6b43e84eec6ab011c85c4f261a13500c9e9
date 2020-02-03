@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c02c56b6_4f8ad6c3",
+        "filename": "media/ndk/NdkMediaFormat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T14:05:16Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 393,
+        "endChar": 51
+      },
+      "revId": "b482e6b43e84eec6ab011c85c4f261a13500c9e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a369417_d13fbec1",
+        "filename": "media/ndk/include/media/NdkMediaFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T14:05:16Z",
+      "side": 1,
+      "message": "I\u0027m not sure we can introduce these, since R is locked down and this is an API change. I believe this particular change will have to wait till S? Wonsik?",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 62
+      },
+      "revId": "b482e6b43e84eec6ab011c85c4f261a13500c9e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce2a4737_7a4311eb",
+        "filename": "media/ndk/libmediandk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T14:05:16Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 157,
+        "endChar": 43
+      },
+      "revId": "b482e6b43e84eec6ab011c85c4f261a13500c9e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
