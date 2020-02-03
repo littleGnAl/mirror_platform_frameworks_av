@@ -190,6 +190,29 @@
     },
     {
       "key": {
+        "uuid": "be9c1ac1_2b4c73c6",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1313,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-02-03T16:48:37Z",
+      "side": 1,
+      "message": "moved to APM since cannot use AudioSystem:: within this context",
+      "range": {
+        "startLine": 1312,
+        "startChar": 1,
+        "endLine": 1313,
+        "endChar": 74
+      },
+      "revId": "e66bfdc227061c97d167616edf7376d5da7367a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b14ea5f_bda1ddce",
         "filename": "services/audioflinger/AudioFlinger.cpp",
         "patchSetId": 2
