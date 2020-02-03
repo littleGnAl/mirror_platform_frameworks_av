@@ -1,0 +1,326 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "86b60ca4_2dd11ee2",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 836,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T15:34:35Z",
+      "side": 1,
+      "message": "Line too long - line wrap please",
+      "range": {
+        "startLine": 836,
+        "startChar": 0,
+        "endLine": 836,
+        "endChar": 104
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bda4f6d_b3dc8722",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T15:34:35Z",
+      "side": 1,
+      "message": "fix spaces",
+      "range": {
+        "startLine": 856,
+        "startChar": 49,
+        "endLine": 866,
+        "endChar": 51
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02d711cb_a8b07bdc",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T15:34:35Z",
+      "side": 1,
+      "message": "DolbyVision",
+      "range": {
+        "startLine": 1121,
+        "startChar": 27,
+        "endLine": 1121,
+        "endChar": 29
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31eff1f9_d3a46c9f",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1140,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T15:34:35Z",
+      "side": 1,
+      "message": "A lot of this is copy and pasted from the other codec parsing, we should probably try to refactor this out into separate methods that can be re-used?\n\nWonsik, what do you think about making each of these, inside the \u0027findData\u0027 \u0027if\u0027 statements, their own methods?\n\nFor example, see line 1425. I think we should try to eliminate this duplicate code?",
+      "range": {
+        "startLine": 1132,
+        "startChar": 1,
+        "endLine": 1140,
+        "endChar": 13
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e92a4338_de78e6f2",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2189,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T15:34:35Z",
+      "side": 1,
+      "message": "should we be using csd-0, csd-1, csd-2, etc. here instead?",
+      "range": {
+        "startLine": 2189,
+        "startChar": 69,
+        "endLine": 2189,
+        "endChar": 78
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "40ca9927_5203136b",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2191,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T15:34:35Z",
+      "side": 1,
+      "message": "This should probably have a constant associated with it per the other codecs?",
+      "range": {
+        "startLine": 2191,
+        "startChar": 37,
+        "endLine": 2191,
+        "endChar": 43
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "865a89c8_f2f9c728",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2191,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T15:34:35Z",
+      "side": 1,
+      "message": "KeyDolbyVisionPrivate",
+      "range": {
+        "startLine": 2191,
+        "startChar": 22,
+        "endLine": 2191,
+        "endChar": 35
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35c20c7c_f812ac6b",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2199,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T15:34:35Z",
+      "side": 1,
+      "message": "This should probably have a constant associated with it per the other codecs?",
+      "range": {
+        "startLine": 2199,
+        "startChar": 37,
+        "endLine": 2199,
+        "endChar": 41
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9e591b2f_8e6dceee",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2202,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T15:34:35Z",
+      "side": 1,
+      "message": "This should probably have a constant associated with it per the other codecs?",
+      "range": {
+        "startLine": 2202,
+        "startChar": 37,
+        "endLine": 2202,
+        "endChar": 41
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0755a936_dc5b2dc8",
+        "filename": "media/ndk/NdkMediaFormat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T15:34:35Z",
+      "side": 1,
+      "message": "KEY_DOLBY_VISION_PRIVATE",
+      "range": {
+        "startLine": 388,
+        "startChar": 19,
+        "endLine": 388,
+        "endChar": 46
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e7a89e5_4e37f967",
+        "filename": "media/ndk/NdkMediaFormat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T15:34:35Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 58
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f69dcefd_a70fbbaa",
+        "filename": "media/ndk/include/media/NdkMediaFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T15:34:35Z",
+      "side": 1,
+      "message": "KEY_DOLBY_VISION_PRIVATE",
+      "range": {
+        "startLine": 193,
+        "startChar": 19,
+        "endLine": 193,
+        "endChar": 46
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e639779c_7fbd4dfe",
+        "filename": "media/ndk/include/media/NdkMediaFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T15:34:35Z",
+      "side": 1,
+      "message": "I\u0027m not sure we can introduce these, since R is locked down and this is an API change. I believe this particular change will have to wait till S? Wonsik?",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 65
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daef5e23_57fb7414",
+        "filename": "media/ndk/libmediandk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T15:34:35Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 46
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
