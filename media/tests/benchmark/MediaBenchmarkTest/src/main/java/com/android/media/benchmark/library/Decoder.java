@@ -308,6 +308,6 @@ public class Decoder {
             }
         }
         mediaCodec.releaseOutputBuffer(outputBufferId, false);
-        mSawOutputEOS = (outputBufferInfo.flags == MediaCodec.BUFFER_FLAG_END_OF_STREAM);
+        mSawOutputEOS = (outputBufferInfo.flags & MediaCodec.BUFFER_FLAG_END_OF_STREAM) != 0;
     }
 }
