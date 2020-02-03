@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf1dccf0_66bca610",
+        "filename": "media/libstagefright/foundation/MediaDefs.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T13:49:11Z",
+      "side": 1,
+      "message": "Put this next to WMA",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 62
+      },
+      "revId": "2a021d57ecd01d290a14610fbe419d9610d895e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f33fff0_384aba1f",
+        "filename": "media/libstagefright/foundation/include/media/stagefright/foundation/MediaDefs.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T13:49:11Z",
+      "side": 1,
+      "message": "Put this next to WMA",
+      "range": {
+        "startLine": 65,
+        "startChar": 44,
+        "endLine": 66,
+        "endChar": 47
+      },
+      "revId": "2a021d57ecd01d290a14610fbe419d9610d895e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2fed7ca_7db566fc",
+        "filename": "media/libstagefright/include/media/stagefright/ACodec.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T13:49:11Z",
+      "side": 1,
+      "message": "line is too long... wrap line here",
+      "range": {
+        "startLine": 484,
+        "startChar": 82,
+        "endLine": 484,
+        "endChar": 101
+      },
+      "revId": "2a021d57ecd01d290a14610fbe419d9610d895e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4037d703_9c9d2257",
+        "filename": "media/libstagefright/include/media/stagefright/MetaDataBase.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T13:49:11Z",
+      "side": 1,
+      "message": "extra space",
+      "range": {
+        "startLine": 216,
+        "startChar": 25,
+        "endLine": 216,
+        "endChar": 26
+      },
+      "revId": "2a021d57ecd01d290a14610fbe419d9610d895e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5dd5e8e1_c434c457",
+        "filename": "media/ndk/NdkMediaFormat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T13:49:11Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 393,
+        "startChar": 0,
+        "endLine": 401,
+        "endChar": 65
+      },
+      "revId": "2a021d57ecd01d290a14610fbe419d9610d895e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88b556e5_b66dff2b",
+        "filename": "media/ndk/include/media/NdkMediaFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T13:49:11Z",
+      "side": 1,
+      "message": "I\u0027m not sure we can introduce these, since R is locked down and this is an API change. I believe this particular change will have to wait till S? Wonsik?",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 206,
+        "endChar": 71
+      },
+      "revId": "2a021d57ecd01d290a14610fbe419d9610d895e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7190a0f0_c3d1008b",
+        "filename": "media/ndk/libmediandk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1580654
+      },
+      "writtenOn": "2020-02-03T13:49:11Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 157,
+        "startChar": 0,
+        "endLine": 165,
+        "endChar": 52
+      },
+      "revId": "2a021d57ecd01d290a14610fbe419d9610d895e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
