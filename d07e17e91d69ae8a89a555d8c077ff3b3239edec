@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efdb7903_01c2c2d0",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Decoder.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-03T20:40:29Z",
+      "side": 1,
+      "message": "bit mask instead of equality?",
+      "range": {
+        "startLine": 214,
+        "startChar": 39,
+        "endLine": 214,
+        "endChar": 49
+      },
+      "revId": "d07e17e91d69ae8a89a555d8c077ff3b3239edec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a7148dd6_41b64580",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Decoder.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 272,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-03T20:40:29Z",
+      "side": 1,
+      "message": "bit mask instead of equality?",
+      "range": {
+        "startLine": 272,
+        "startChar": 16,
+        "endLine": 272,
+        "endChar": 69
+      },
+      "revId": "d07e17e91d69ae8a89a555d8c077ff3b3239edec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
