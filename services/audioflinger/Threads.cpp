@@ -3282,7 +3282,6 @@ bool AudioFlinger::PlaybackThread::threadLoop()
 
     mStandbyTimeNs = systemTime();
     int64_t lastLoopCountWritten = -2; // never matches "previous" loop, when loopCount = 0.
-    int64_t lastFramesWritten = -1;    // track changes in timestamp server frames written
 
     // MIXER
     nsecs_t lastWarning = 0;
@@ -3397,135 +3396,8 @@ bool AudioFlinger::PlaybackThread::threadLoop()
                 logString = NULL;
             }
 
-            // Collect timestamp statistics for the Playback Thread types that support it.
-            if (mType == MIXER
-                    || mType == DUPLICATING
-                    || mType == DIRECT
-                    || mType == OFFLOAD) { // no indentation
-            // Gather the framesReleased counters for all active tracks,
-            // and associate with the sink frames written out.  We need
-            // this to convert the sink timestamp to the track timestamp.
-            bool kernelLocationUpdate = false;
-            ExtendedTimestamp timestamp; // use private copy to fetch
-            if (mStandby) {
-                mTimestampVerifier.discontinuity();
-            } else if (threadloop_getHalTimestamp_l(&timestamp) == OK) {
-                mTimestampVerifier.add(timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL],
-                        timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL],
-                        mSampleRate);
+            collectTimestamps_l();
 
-                if (isTimestampCorrectionEnabled()) {
-                    ALOGV("TS_BEFORE: %d %lld %lld", id(),
-                            (long long)timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL],
-                            (long long)timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]);
-                    auto correctedTimestamp = mTimestampVerifier.getLastCorrectedTimestamp();
-                    timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]
-                            = correctedTimestamp.mFrames;
-                    timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL]
-                            = correctedTimestamp.mTimeNs;
-                    ALOGV("TS_AFTER: %d %lld %lld", id(),
-                            (long long)timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL],
-                            (long long)timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]);
-
-                    // Note: Downstream latency only added if timestamp correction enabled.
-                    if (mDownstreamLatencyStatMs.getN() > 0) { // we have latency info.
-                        const int64_t newPosition =
-                                timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]
-                                - int64_t(mDownstreamLatencyStatMs.getMean() * mSampleRate * 1e-3);
-                        // prevent retrograde
-                        timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL] = max(
-                                newPosition,
-                                (mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]
-                                        - mSuspendedFrames));
-                    }
-                }
-
-                // We always fetch the timestamp here because often the downstream
-                // sink will block while writing.
-
-                // We keep track of the last valid kernel position in case we are in underrun
-                // and the normal mixer period is the same as the fast mixer period, or there
-                // is some error from the HAL.
-                if (mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL] >= 0) {
-                    mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL_LASTKERNELOK] =
-                            mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL];
-                    mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL_LASTKERNELOK] =
-                            mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL];
-
-                    mTimestamp.mPosition[ExtendedTimestamp::LOCATION_SERVER_LASTKERNELOK] =
-                            mTimestamp.mPosition[ExtendedTimestamp::LOCATION_SERVER];
-                    mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_SERVER_LASTKERNELOK] =
-                            mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_SERVER];
-                }
-
-                if (timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL] >= 0) {
-                    kernelLocationUpdate = true;
-                } else {
-                    ALOGVV("getTimestamp error - no valid kernel position");
-                }
-
-                // copy over kernel info
-                mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL] =
-                        timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]
-                        + mSuspendedFrames; // add frames discarded when suspended
-                mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL] =
-                        timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL];
-            } else {
-                mTimestampVerifier.error();
-            }
-
-            // mFramesWritten for non-offloaded tracks are contiguous
-            // even after standby() is called. This is useful for the track frame
-            // to sink frame mapping.
-            bool serverLocationUpdate = false;
-            if (mFramesWritten != lastFramesWritten) {
-                serverLocationUpdate = true;
-                lastFramesWritten = mFramesWritten;
-            }
-            // Only update timestamps if there is a meaningful change.
-            // Either the kernel timestamp must be valid or we have written something.
-            if (kernelLocationUpdate || serverLocationUpdate) {
-                if (serverLocationUpdate) {
-                    // use the time before we called the HAL write - it is a bit more accurate
-                    // to when the server last read data than the current time here.
-                    //
-                    // If we haven't written anything, mLastIoBeginNs will be -1
-                    // and we use systemTime().
-                    mTimestamp.mPosition[ExtendedTimestamp::LOCATION_SERVER] = mFramesWritten;
-                    mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_SERVER] = mLastIoBeginNs == -1
-                            ? systemTime() : mLastIoBeginNs;
-                }
-
-                for (const sp<Track> &t : mActiveTracks) {
-                    if (!t->isFastTrack()) {
-                        t->updateTrackFrameInfo(
-                                t->mAudioTrackServerProxy->framesReleased(),
-                                mFramesWritten,
-                                mSampleRate,
-                                mTimestamp);
-                    }
-                }
-            }
-
-            if (audio_has_proportional_frames(mFormat)) {
-                const double latencyMs = mTimestamp.getOutputServerLatencyMs(mSampleRate);
-                if (latencyMs != 0.) { // note 0. means timestamp is empty.
-                    mLatencyMs.add(latencyMs);
-                }
-            }
-
-            } // if (mType ... ) { // no indentation
-#if 0
-            // logFormat example
-            if (z % 100 == 0) {
-                timespec ts;
-                clock_gettime(CLOCK_MONOTONIC, &ts);
-                LOGT("This is an integer %d, this is a float %f, this is my "
-                    "pid %p %% %s %t", 42, 3.14, "and this is a timestamp", ts);
-                LOGT("A deceptive null-terminated string %\0");
-            }
-            ++z;
-#endif
             saveOutputTracks();
             if (mSignalPending) {
                 // A signal was raised while we were unlocked
@@ -3956,6 +3828,149 @@ bool AudioFlinger::PlaybackThread::threadLoop()
     return false;
 }
 
+void AudioFlinger::PlaybackThread::collectTimestamps_l()
+{
+    bool kernelLocationUpdate = false;
+    // Collect timestamp statistics for the Playback Thread types that support it.
+    if (mType == MIXER
+            || mType == DUPLICATING
+            || mType == DIRECT
+            || mType == OFFLOAD) {
+        // Gather the framesReleased counters for all active tracks,
+        // and associate with the sink frames written out.  We need
+        // this to convert the sink timestamp to the track timestamp.
+        ExtendedTimestamp timestamp; // use private copy to fetch
+        if (mStandby) {
+            mTimestampVerifier.discontinuity();
+        } else if (threadloop_getHalTimestamp_l(&timestamp) == OK) {
+            if ((mLastHalTimestampKernelFrames
+                   != timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL])
+                   || (mLastHalTimestampKernelTimeNs
+                   != timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL])) {
+                mTimestampVerifier.add(timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL],
+                        timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL],
+                        mSampleRate);
+                mLastHalTimestampKernelFrames
+                        = timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL];
+                mLastHalTimestampKernelTimeNs
+                        = timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL];
+            }
+
+            if (isTimestampCorrectionEnabled()) {
+                ALOGV("TS_BEFORE: %d %lld %lld", id(),
+                        (long long)timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL],
+                        (long long)timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]);
+                auto correctedTimestamp = mTimestampVerifier.getLastCorrectedTimestamp();
+                timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]
+                        = correctedTimestamp.mFrames;
+                timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL]
+                        = correctedTimestamp.mTimeNs;
+                ALOGV("TS_AFTER: %d %lld %lld", id(),
+                        (long long)timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL],
+                        (long long)timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]);
+
+                // Note: Downstream latency only added if timestamp correction enabled.
+                if (mDownstreamLatencyStatMs.getN() > 0) { // we have latency info.
+                    const int64_t newPosition =
+                            timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]
+                            - int64_t(mDownstreamLatencyStatMs.getMean() * mSampleRate * 1e-3);
+                    // prevent retrograde
+                    timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL] = max(
+                            newPosition,
+                            (mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]
+                                    - mSuspendedFrames));
+                }
+            }
+
+            // We always fetch the timestamp here because often the downstream
+            // sink will block while writing.
+
+            // We keep track of the last valid kernel position in case we are in underrun
+            // and the normal mixer period is the same as the fast mixer period, or there
+            // is some error from the HAL.
+            if (mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL] >= 0) {
+                mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL_LASTKERNELOK] =
+                        mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL];
+                mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL_LASTKERNELOK] =
+                        mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL];
+
+                mTimestamp.mPosition[ExtendedTimestamp::LOCATION_SERVER_LASTKERNELOK] =
+                        mTimestamp.mPosition[ExtendedTimestamp::LOCATION_SERVER];
+                mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_SERVER_LASTKERNELOK] =
+                        mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_SERVER];
+            }
+
+            if (timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL] >= 0) {
+                kernelLocationUpdate = true;
+            } else {
+                ALOGW("getTimestamp error - no valid kernel position");
+                mTimestampVerifier.error();
+            }
+
+            // copy over kernel info
+            mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL] =
+                    timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]
+                    + mSuspendedFrames; // add frames discarded when suspended
+            mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL] =
+                    timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL];
+        } else {
+            mTimestampVerifier.error();
+        }
+
+        // mFramesWritten for non-offloaded tracks are contiguous
+        // even after standby() is called. This is useful for the track frame
+        // to sink frame mapping.
+        bool serverLocationUpdate = false;
+        if (mFramesWritten != mLastFramesWritten) {
+            serverLocationUpdate = true;
+            mLastFramesWritten = mFramesWritten;
+        }
+        // Only update timestamps if there is a meaningful change.
+        // Either the kernel timestamp must be valid or we have written something.
+        if (kernelLocationUpdate || serverLocationUpdate) {
+            if (serverLocationUpdate) {
+                // use the time before we called the HAL write - it is a bit more accurate
+                // to when the server last read data than the current time here.
+                //
+                // If we haven't written anything, mLastIoBeginNs will be -1
+                // and we use systemTime().
+                mTimestamp.mPosition[ExtendedTimestamp::LOCATION_SERVER] = mFramesWritten;
+                mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_SERVER] = mLastIoBeginNs == -1
+                        ? systemTime() : mLastIoBeginNs;
+            }
+
+            for (const sp<Track> &t : mActiveTracks) {
+                if (!t->isFastTrack()) {
+                    t->updateTrackFrameInfo(
+                            t->mAudioTrackServerProxy->framesReleased(),
+                            mFramesWritten,
+                            mSampleRate,
+                            mTimestamp);
+                }
+            }
+        }
+
+        if (audio_has_proportional_frames(mFormat)) {
+            const double latencyMs = mTimestamp.getOutputServerLatencyMs(mSampleRate);
+            if (latencyMs != 0.) { // note 0. means timestamp is empty.
+                mLatencyMs.add(latencyMs);
+            }
+        }
+    }
+#if 0
+    // logFormat example
+    if (z % 100 == 0) {
+        timespec ts;
+        clock_gettime(CLOCK_MONOTONIC, &ts);
+        LOGT("This is an integer %d, this is a float %f, this is my "
+            "pid %p %% %s %t", 42, 3.14, "and this is a timestamp", ts);
+        LOGT("A deceptive null-terminated string %\0");
+    }
+    ++z;
+#endif
+    return;
+}
+
 // removeTracks_l() must be called with ThreadBase::mLock held
 void AudioFlinger::PlaybackThread::removeTracks_l(const Vector< sp<Track> >& tracksToRemove)
 {
@@ -4002,20 +4017,15 @@ status_t AudioFlinger::PlaybackThread::getTimestamp_l(AudioTimestamp& timestamp)
         return status;
     }
     if ((mType == OFFLOAD || mType == DIRECT) && mOutput != NULL) {
-        uint64_t position64;
-        if (mOutput->getPresentationPosition(&position64, &timestamp.mTime) == OK) {
-            timestamp.mPosition = (uint32_t)position64;
-            if (mDownstreamLatencyStatMs.getN() > 0) {
-                const uint32_t positionOffset =
-                    (uint32_t)(mDownstreamLatencyStatMs.getMean() * mSampleRate * 1e-3);
-                if (positionOffset > timestamp.mPosition) {
-                    timestamp.mPosition = 0;
-                } else {
-                    timestamp.mPosition -= positionOffset;
-                }
-            }
-            return NO_ERROR;
+        collectTimestamps_l();
+        if (mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL] <= 0) {
+            return INVALID_OPERATION;
         }
+        timestamp.mPosition = mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL];
+        const int64_t time = mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL];
+        timestamp.mTime.tv_sec = time / NANOS_PER_SECOND;
+        timestamp.mTime.tv_nsec = time - timestamp.mTime.tv_sec * NANOS_PER_SECOND;
+        return NO_ERROR;
     }
     return INVALID_OPERATION;
 }
