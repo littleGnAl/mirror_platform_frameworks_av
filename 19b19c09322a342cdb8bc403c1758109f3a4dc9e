@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b511551_af30dce8",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3907,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-02-04T02:00:22Z",
+      "side": 1,
+      "message": "How often can this happen? Does it make sense to change the log priority to ALOGW so developers can see a log message if getTimestamp fails due to this condition?",
+      "range": {
+        "startLine": 3907,
+        "startChar": 16,
+        "endLine": 3907,
+        "endChar": 22
+      },
+      "revId": "19b19c09322a342cdb8bc403c1758109f3a4dc9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
