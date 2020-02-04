@@ -16,6 +16,29 @@
       "revId": "41865fc66819e963630b68295dda9221678e7385",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ddbef3f9_4304d572",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-04T18:36:21Z",
+      "side": 1,
+      "message": "reading this comment....  \n\nit sounds like those extractors would function correctly, but some things like \"sync_nearest\" have an easy answer out. what i\u0027m worried about here is that this \u0027skip them\u0027 is based on particulars of our current implementation of those extractors.\n\nunless the specs say that the seek() operations do not work for flac/wav/midi, I think we want to run those through this test.",
+      "range": {
+        "startLine": 383,
+        "startChar": 3,
+        "endLine": 388,
+        "endChar": 0
+      },
+      "revId": "41865fc66819e963630b68295dda9221678e7385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
