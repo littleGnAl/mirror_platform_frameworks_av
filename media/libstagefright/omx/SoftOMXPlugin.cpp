@@ -16,6 +16,7 @@
 
 //#define LOG_NDEBUG 0
 #define LOG_TAG "SoftOMXPlugin"
+#include <cutils/properties.h>
 #include <utils/Log.h>
 
 #include <media/stagefright/omx/SoftOMXPlugin.h>
@@ -45,7 +46,6 @@ static const struct {
     { "OMX.google.amrnb.encoder", "amrnbenc", "audio_encoder.amrnb" },
     { "OMX.google.amrwb.decoder", "amrdec", "audio_decoder.amrwb" },
     { "OMX.google.amrwb.encoder", "amrwbenc", "audio_encoder.amrwb" },
-    { "OMX.google.h264.decoder", "avcdec", "video_decoder.avc" },
     { "OMX.google.h264.encoder", "avcenc", "video_encoder.avc" },
     { "OMX.google.hevc.decoder", "hevcdec", "video_decoder.hevc" },
     { "OMX.google.g711.alaw.decoder", "g711dec", "audio_decoder.g711alaw" },
@@ -66,6 +66,7 @@ static const struct {
     { "OMX.google.flac.decoder", "flacdec", "audio_decoder.flac" },
     { "OMX.google.flac.encoder", "flacenc", "audio_encoder.flac" },
     { "OMX.google.gsm.decoder", "gsmdec", "audio_decoder.gsm" },
+    { "OMX.google.h264.decoder", "avcdec", "video_decoder.avc" },
 };
 
 static const size_t kNumComponents =
@@ -82,6 +83,17 @@ extern "C" void destroyOMXPlugin(OMXPluginBase* plugin) {
 }
 
 SoftOMXPlugin::SoftOMXPlugin() {
+}
+
+static bool useGoldfishComponentInstance(const char* libname) {
+    // We have a property set indicating whether to use the host side codec
+    // or not (ro.kernel.qemu.hwcodec.<mLibNameSuffix>).
+    char propValue[1024];
+    AString prop = "ro.kernel.qemu.hwcodec.";
+    prop.append(libname);
+
+    return property_get(prop.c_str(), propValue, "") > 0 &&
+           strcmp("1", propValue) == 0;
 }
 
 OMX_ERRORTYPE SoftOMXPlugin::makeComponentInstance(
@@ -191,6 +203,10 @@ OMX_ERRORTYPE SoftOMXPlugin::enumerateComponents(
         size_t /* size */,
         OMX_U32 index) {
     if (index >= kNumComponents) {
+        return OMX_ErrorNoMore;
+    }
+
+    if (useGoldfishComponentInstance(kComponents[index].mLibNameSuffix)) {
         return OMX_ErrorNoMore;
     }
 
