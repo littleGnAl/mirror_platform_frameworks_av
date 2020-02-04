@@ -134,6 +134,9 @@ void SoftwareRenderer::resetFormatIfChanged(
             case OMX_COLOR_FormatYUV420SemiPlanar:
             case OMX_TI_COLOR_FormatYUV420PackedSemiPlanar:
             {
+                ALOGE("bohu: mColorFormat OMX_COLOR_FormatYUV420Planar %d to "
+                        " HAL_PIXEL_FORMAT_YV12 %d %x", mColorFormat,
+                        HAL_PIXEL_FORMAT_YV12,HAL_PIXEL_FORMAT_YV12);
                 halFormat = HAL_PIXEL_FORMAT_YV12;
                 bufWidth = (mCropWidth + 1) & ~1;
                 bufHeight = (mCropHeight + 1) & ~1;
@@ -301,6 +304,7 @@ std::list<FrameRenderTracker::Info> SoftwareRenderer::render(
                 buf->stride, buf->height, 0,
                 0, 0, mCropWidth - 1, mCropHeight - 1);
     } else if (mColorFormat == OMX_COLOR_FormatYUV420Planar) {
+        ALOGE("bohu: %s %d convert OMX_COLOR_FormatYUV420Planar to YV12 ?", __func__, __LINE__);
         const uint8_t *src_y = (const uint8_t *)data + mCropTop * mStride + mCropLeft;
         const uint8_t *src_u = (const uint8_t *)data + mStride * mHeight + mCropTop * mStride / 4;
         const uint8_t *src_v = (const uint8_t *)src_u + mStride * mHeight / 4;

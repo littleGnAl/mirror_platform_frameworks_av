@@ -171,6 +171,7 @@ status_t SoftAVC::setParams(size_t stride) {
 status_t SoftAVC::resetPlugin() {
     mIsInFlush = false;
     mReceivedEOS = false;
+                ALOGE("mReceivedEOS false from %s at %d", __func__, __LINE__);
 
     memset(mTimeStamps, 0, sizeof(mTimeStamps));
     memset(mTimeStampsValid, 0, sizeof(mTimeStampsValid));
@@ -367,6 +368,9 @@ bool SoftAVC::getVUIParams() {
     int32_t coeffs = s_ctl_get_vui_params_op.u1_matrix_coeffs;
     bool fullRange = s_ctl_get_vui_params_op.u1_video_full_range_flag;
 
+    ALOGE("primaries %d, transfer %d, coeffs %d, %s",
+            (int)primaries, (int)transfer, (int)coeffs, fullRange ? "full":"notfull");
+
     ColorAspects colorAspects;
     ColorUtils::convertIsoColorAspectsToCodecAspects(
             primaries, transfer, coeffs, fullRange, colorAspects);
@@ -401,11 +405,17 @@ bool SoftAVC::setDecodeArgs(
         ps_dec_ip->pv_stream_buffer =
             inHeader->pBuffer + inHeader->nOffset + mInputOffset;
         ps_dec_ip->u4_num_Bytes = inHeader->nFilledLen - mInputOffset;
+        ALOGE("got input timestamp %lld in-addr-base %p real-data-offset %d inputoffset %d", (long long)(mTimeStamps[timeStampIx]),
+                inHeader->pBuffer, inHeader->nOffset + mInputOffset, mInputOffset);
+
     } else {
         ps_dec_ip->u4_ts = 0;
         ps_dec_ip->pv_stream_buffer = NULL;
         ps_dec_ip->u4_num_Bytes = 0;
     }
+
+    ALOGE("input fram index %lld, timestamp %lld", (long long)(ps_dec_ip->u4_ts),
+                        (long long)(mTimeStamps[timeStampIx]));
 
     sizeUV = sizeY / 4;
     ps_dec_ip->s_out_buffer.u4_min_out_buf_size[0] = sizeY;
@@ -415,9 +425,13 @@ bool SoftAVC::setDecodeArgs(
     uint8_t *pBuf;
     if (outHeader) {
         if (outHeader->nAllocLen < sizeY + (sizeUV * 2)) {
+            ALOGE("bad outHeader->nAllocLen %d < needed size %d", outHeader->nAllocLen, sizeY + sizeUV * 2);
             android_errorWriteLog(0x534e4554, "27833616");
             return false;
+        } else {
+            ALOGE("good outHeader->nAllocLen %d > needed size %d", outHeader->nAllocLen, sizeY + sizeUV * 2);
         }
+
         pBuf = outHeader->pBuffer;
     } else {
         // mFlushOutBuffer always has the right size.
@@ -470,14 +484,20 @@ void SoftAVC::onPortFlushCompleted(OMX_U32 portIndex) {
 }
 
 void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
+        static int count1=0;
+    ALOGE("\n\n\n\ncalling %s count %d", __func__, ++count1);
+
     UNUSED(portIndex);
     OMX_BUFFERHEADERTYPE *inHeader = NULL;
     BufferInfo *inInfo = NULL;
 
+    ALOGE("calling %s at %d", __func__, __LINE__);
     if (mSignalledError) {
+        ALOGE("return from %s at %d", __func__, __LINE__);
         return;
     }
     if (mOutputPortSettingsChange != NONE) {
+        ALOGE("return from %s at %d", __func__, __LINE__);
         return;
     }
 
@@ -486,6 +506,7 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
             ALOGE("Failed to initialize decoder");
             notify(OMX_EventError, OMX_ErrorUnsupportedSetting, 0, NULL);
             mSignalledError = true;
+        ALOGE("return from %s at %d", __func__, __LINE__);
             return;
         }
     }
@@ -498,7 +519,9 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
     List<BufferInfo *> &inQueue = getPortQueue(kInputPortIndex);
     List<BufferInfo *> &outQueue = getPortQueue(kOutputPortIndex);
 
+    int count2 = 0;
     while (!outQueue.empty()) {
+       ALOGE("\n\ncalling %s in while loop count %d", __func__, ++count2);
         BufferInfo *outInfo;
         OMX_BUFFERHEADERTYPE *outHeader;
         size_t timeStampIx = 0;
@@ -510,6 +533,7 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
                 if (inHeader == NULL) {
                     inQueue.erase(inQueue.begin());
                     inInfo->mOwnedByUs = false;
+                    ALOGE("continue from %s at %d", __func__, __LINE__);
                     continue;
                 }
             } else {
@@ -530,14 +554,17 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
                 notifyEmptyBufferDone(inHeader);
 
                 if (!(inHeader->nFlags & OMX_BUFFERFLAG_EOS)) {
+        ALOGE("return from %s at %d", __func__, __LINE__);
                     return;
                 }
 
                 mReceivedEOS = true;
+                ALOGE("mReceivedEOS true from %s at %d", __func__, __LINE__);
                 inHeader = NULL;
                 setFlushMode();
             } else if (inHeader->nFlags & OMX_BUFFERFLAG_EOS) {
                 mReceivedEOS = true;
+                ALOGE("mReceivedEOS true from %s at %d", __func__, __LINE__);
             }
         }
 
@@ -566,6 +593,7 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
                 ALOGE("Decoder arg setup failed");
                 notify(OMX_EventError, OMX_ErrorUndefined, 0, NULL);
                 mSignalledError = true;
+        ALOGE("return from %s at %d", __func__, __LINE__);
                 return;
             }
             // If input dump is enabled, then write to file
@@ -587,6 +615,7 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
                 ALOGE("Unsupported resolution : %dx%d", mWidth, mHeight);
                 notify(OMX_EventError, OMX_ErrorUnsupportedSetting, 0, NULL);
                 mSignalledError = true;
+        ALOGE("return from %s at %d", __func__, __LINE__);
                 return;
             }
 
@@ -595,6 +624,7 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
                 ALOGE("Allocation failure in decoder");
                 notify(OMX_EventError, OMX_ErrorUnsupportedSetting, 0, NULL);
                 mSignalledError = true;
+        ALOGE("return from %s at %d", __func__, __LINE__);
                 return;
             }
 
@@ -602,6 +632,7 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
                 ALOGE("Fatal Error : 0x%x", s_dec_op.u4_error_code);
                 notify(OMX_EventError, OMX_ErrorUnsupportedSetting, 0, NULL);
                 mSignalledError = true;
+        ALOGE("return from %s at %d", __func__, __LINE__);
                 return;
             }
 
@@ -613,16 +644,18 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
             /* Compute time taken for decode() */
             timeTaken = mTimeEnd - mTimeStart;
 
-            ALOGV("timeTaken=%6lldus delay=%6lldus numBytes=%6d",
+            ALOGE("timeTaken=%6lldus delay=%6lldus numBytes=%6d",
                     (long long) (timeTaken / 1000LL), (long long) (timeDelay / 1000LL),
                    s_dec_op.u4_num_bytes_consumed);
             if (s_dec_op.u4_frame_decoded_flag && !mFlushNeeded) {
+                ALOGE("setting flush needed to true");
                 mFlushNeeded = true;
             }
 
             if ((inHeader != NULL) && (1 != s_dec_op.u4_frame_decoded_flag)) {
                 /* If the input did not contain picture data, then ignore
                  * the associated timestamp */
+                ALOGE("setting time stamp invalid to true %lld", (long long)(mTimeStamps[timeStampIx]));
                 mTimeStampsValid[timeStampIx] = false;
             }
 
@@ -632,16 +665,22 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
                 mChangingResolution = false;
                 resetDecoder();
                 resetPlugin();
+                ALOGE("mStride %d changed to new Stride %d", mStride, outputBufferWidth());
                 mStride = outputBufferWidth();
                 setParams(mStride);
+                ALOGE("resetting resoluation done continue ...");
+                    ALOGE("continue from %s at %d", __func__, __LINE__);
                 continue;
             }
 
             if (resChanged) {
+                ALOGE("resChanged...");
                 mChangingResolution = true;
                 if (mFlushNeeded) {
+                    ALOGE("set flush mode...");
                     setFlushMode();
                 }
+                    ALOGE("continue from %s at %d", __func__, __LINE__);
                 continue;
             }
 
@@ -651,16 +690,24 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
                 uint32_t width = s_dec_op.u4_pic_wd;
                 uint32_t height = s_dec_op.u4_pic_ht;
                 bool portWillReset = false;
+                ALOGE("mWidth %d, mHeight %d, outputW %d outputH %d new width %d new height %d",
+                        mWidth, mHeight, outputBufferWidth(), outputBufferHeight(), width, height);
                 handlePortSettingsChange(&portWillReset, width, height);
                 if (portWillReset) {
+                    ALOGE("handling port reset");
                     resetDecoder();
                     resetPlugin();
+                    ALOGE("mWidth %d, mHeight %d, outputW %d outputH %d new width %d new height %d",
+                        mWidth, mHeight, outputBufferWidth(), outputBufferHeight(), width, height);
+        ALOGE("return from %s at %d", __func__, __LINE__);
                     return;
                 }
             } else if (mUpdateColorAspects) {
                 notify(OMX_EventPortSettingsChanged, kOutputPortIndex,
                     kDescribeColorAspectsIndex, NULL);
                 mUpdateColorAspects = false;
+                ALOGE("handle update color aspects");
+        ALOGE("return from %s at %d", __func__, __LINE__);
                 return;
             }
 
@@ -668,14 +715,19 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
                 outHeader->nFilledLen = (outputBufferWidth() * outputBufferHeight() * 3) / 2;
 
                 outHeader->nTimeStamp = mTimeStamps[s_dec_op.u4_ts];
+                ALOGE("decoded fram index %lld, timestamp %lld", (long long)(s_dec_op.u4_ts),
+                        (long long)(outHeader->nTimeStamp));
                 mTimeStampsValid[s_dec_op.u4_ts] = false;
 
+                    ALOGE("mWidth %d, mHeight %d, outputW %d outputH %d",
+                        mWidth, mHeight, outputBufferWidth(), outputBufferHeight());
                 outInfo->mOwnedByUs = false;
                 outQueue.erase(outQueue.begin());
                 outInfo = NULL;
                 notifyFillBufferDone(outHeader);
                 outHeader = NULL;
             } else if (mIsInFlush) {
+                ALOGE("got inFlush");
                 /* If in flush mode and no output is returned by the codec,
                  * then come out of flush mode */
                 mIsInFlush = false;
@@ -683,6 +735,8 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
                 /* If EOS was recieved on input port and there is no output
                  * from the codec, then signal EOS on output port */
                 if (mReceivedEOS) {
+                    ALOGE("mReceivedEOS true from %s at %d", __func__, __LINE__);
+                    ALOGE("got receivedEOS");
                     outHeader->nFilledLen = 0;
                     outHeader->nFlags |= OMX_BUFFERFLAG_EOS;
 
@@ -712,10 +766,12 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
              * put in flush. This case is handled here  */
 
             if (mReceivedEOS && !mIsInFlush) {
+                ALOGE("mReceivedEOS true from %s at %d", __func__, __LINE__);
                 setFlushMode();
             }
         }
     }
+    ALOGE("return from %s at %d", __func__, __LINE__);
 }
 
 int SoftAVC::getColorAspectPreference() {
