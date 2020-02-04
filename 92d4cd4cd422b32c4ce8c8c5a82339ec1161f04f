@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ad650866_adf25f19",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-02-04T13:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f3854f1c_86d798b3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 12
+      },
+      "revId": "92d4cd4cd422b32c4ce8c8c5a82339ec1161f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8969bad7_76a210ec",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "92d4cd4cd422b32c4ce8c8c5a82339ec1161f04f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1fbfddeb_39f31919",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-02-04T13:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8969bad7_76a210ec",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 4
+      },
+      "revId": "92d4cd4cd422b32c4ce8c8c5a82339ec1161f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "6f9e24be_8df50bfb",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-02-04T13:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6cbd8b2_462807c3",
+      "range": {
+        "startLine": 424,
+        "startChar": 28,
+        "endLine": 424,
+        "endChar": 40
+      },
+      "revId": "92d4cd4cd422b32c4ce8c8c5a82339ec1161f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "51c160bd_e9227d49",
         "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "92d4cd4cd422b32c4ce8c8c5a82339ec1161f04f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d80b2ea_b7e27e1e",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-02-04T13:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51c160bd_e9227d49",
+      "range": {
+        "startLine": 425,
+        "startChar": 43,
+        "endLine": 425,
+        "endChar": 55
+      },
+      "revId": "92d4cd4cd422b32c4ce8c8c5a82339ec1161f04f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
