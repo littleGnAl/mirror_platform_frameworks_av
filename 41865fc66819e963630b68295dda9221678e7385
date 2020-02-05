@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ad30ec78_a894f2c1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-02-05T12:17:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d7f796f5_bfbb0198",
+      "revId": "41865fc66819e963630b68295dda9221678e7385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ddbef3f9_4304d572",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 4
@@ -30,6 +48,30 @@
       "writtenOn": "2020-02-04T18:36:21Z",
       "side": 1,
       "message": "reading this comment....  \n\nit sounds like those extractors would function correctly, but some things like \"sync_nearest\" have an easy answer out. what i\u0027m worried about here is that this \u0027skip them\u0027 is based on particulars of our current implementation of those extractors.\n\nunless the specs say that the seek() operations do not work for flac/wav/midi, I think we want to run those through this test.",
+      "range": {
+        "startLine": 383,
+        "startChar": 3,
+        "endLine": 388,
+        "endChar": 0
+      },
+      "revId": "41865fc66819e963630b68295dda9221678e7385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4e8e198_bc22de68",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-02-05T12:17:54Z",
+      "side": 1,
+      "message": "Flac, Midi and Wav extractors return raw output. Hence any point can be treated as sync point.\nThe purpose of this test it to validate the seek-ability of the extractors. Since for raw output all points are seekable, hence we are skipping the test.\nWe can consider adding a test to test the seek for these three extractors specifically.",
+      "parentUuid": "ddbef3f9_4304d572",
       "range": {
         "startLine": 383,
         "startChar": 3,
