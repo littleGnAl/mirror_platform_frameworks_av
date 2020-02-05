@@ -46,6 +46,30 @@
       "revId": "6032bc8b8e0a160f75b3aaa393e1616b36fb8d5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57241021_05283b88",
+        "filename": "media/tests/benchmark/src/native/encoder/Encoder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-05T00:28:55Z",
+      "side": 1,
+      "message": "i\u0027ll disagree about a constructor -- if it\u0027s initializing fields, that \"construction\".",
+      "parentUuid": "ceb45ac4_323b50ce",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 6
+      },
+      "revId": "6032bc8b8e0a160f75b3aaa393e1616b36fb8d5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
