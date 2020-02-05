@@ -105,6 +105,30 @@
       "revId": "41865fc66819e963630b68295dda9221678e7385",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "179c3a6a_63704b33",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-05T19:07:29Z",
+      "side": 1,
+      "message": "I still believe that we need to flac/wav/midi through this test.\n\nit does seem that getseekablepoints() will do the right thing because, for example, the flac extractor lists all frames as sync frames -- so this will work just exactly as we would want.(wav and midi appear to do that also).\n\nthere may be additional tests that we want to do for the extractors that return raw data, but i don\u0027t see that those particular extractors should be excluded here.\n\n(and per harish\u0027s comment -- the test there would seem to be that for one of these codecs that must support seeking to every frame, that the # seekpoints generated in getseekablepoints() needs to match the number of frames/buffers in the file.\n\nif those need to seek within a frame, instead of a frame boundary, those additional tests will have to do something differently.",
+      "parentUuid": "da6a1235_66dec2e5",
+      "range": {
+        "startLine": 383,
+        "startChar": 3,
+        "endLine": 388,
+        "endChar": 0
+      },
+      "revId": "41865fc66819e963630b68295dda9221678e7385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
