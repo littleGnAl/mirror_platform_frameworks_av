@@ -81,6 +81,30 @@
       "revId": "41865fc66819e963630b68295dda9221678e7385",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da6a1235_66dec2e5",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-05T18:23:51Z",
+      "side": 1,
+      "message": "Filed a bug to track this b/148948209.\nWe may need to look at all audio codecs and see how many of them need to support seek to any random point.",
+      "parentUuid": "a4e8e198_bc22de68",
+      "range": {
+        "startLine": 383,
+        "startChar": 3,
+        "endLine": 388,
+        "endChar": 0
+      },
+      "revId": "41865fc66819e963630b68295dda9221678e7385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
