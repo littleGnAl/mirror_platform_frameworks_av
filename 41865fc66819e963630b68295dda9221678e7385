@@ -129,6 +129,30 @@
       "revId": "41865fc66819e963630b68295dda9221678e7385",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e133bdff_a91cb092",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-05T19:17:29Z",
+      "side": 1,
+      "message": "Ray,\nSure. We will look at how much of the current seek test applies to these cases and if any changes are needed to ensure that are no failures and what additional tests are needed for these cases and upload follow up CLs as part of the new bug.\nThis helps unblock current CL and enables midi testing.",
+      "parentUuid": "179c3a6a_63704b33",
+      "range": {
+        "startLine": 383,
+        "startChar": 3,
+        "endLine": 388,
+        "endChar": 0
+      },
+      "revId": "41865fc66819e963630b68295dda9221678e7385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
