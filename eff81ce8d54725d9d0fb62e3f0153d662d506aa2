@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "10482d29_945c7113",
+        "filename": "media/tests/benchmark/src/native/common/BenchmarkCommon.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-02-05T17:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "071a801f_46229907",
+      "range": {
+        "startLine": 38,
+        "startChar": 53,
+        "endLine": 38,
+        "endChar": 57
+      },
+      "revId": "eff81ce8d54725d9d0fb62e3f0153d662d506aa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1aff2ede_2d5b8f87",
         "filename": "media/tests/benchmark/src/native/encoder/Encoder.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "eff81ce8d54725d9d0fb62e3f0153d662d506aa2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d1916af7_710f16c2",
+        "filename": "media/tests/benchmark/src/native/encoder/Encoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-02-05T17:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aff2ede_2d5b8f87",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 22
+      },
+      "revId": "eff81ce8d54725d9d0fb62e3f0153d662d506aa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "419f5bd7_91851197",
+        "filename": "media/tests/benchmark/src/native/encoder/Encoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-02-05T17:38:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94d44977_67b93357",
+      "range": {
+        "startLine": 228,
+        "startChar": 28,
+        "endLine": 228,
+        "endChar": 32
+      },
+      "revId": "eff81ce8d54725d9d0fb62e3f0153d662d506aa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88a14362_94dbee26",
         "filename": "media/tests/benchmark/src/native/encoder/Encoder.cpp",
         "patchSetId": 1
@@ -82,6 +154,30 @@
       "writtenOn": "2020-02-05T09:41:29Z",
       "side": 1,
       "message": "kDefaultAudioEncodeFrameSize. Can this be made the default value for maxFrameSize. Then we will not require this check.",
+      "range": {
+        "startLine": 233,
+        "startChar": 35,
+        "endLine": 233,
+        "endChar": 66
+      },
+      "revId": "eff81ce8d54725d9d0fb62e3f0153d662d506aa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "255e2e6a_b38e7cdb",
+        "filename": "media/tests/benchmark/src/native/encoder/Encoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-02-05T17:38:49Z",
+      "side": 1,
+      "message": "We\u0027re already setting the default value in line 233. The function AMediaFormat_getInt32(..) again sets the mParams.maxFrameSize to -1 again. Hence, this check is required.",
+      "parentUuid": "88a14362_94dbee26",
       "range": {
         "startLine": 233,
         "startChar": 35,
