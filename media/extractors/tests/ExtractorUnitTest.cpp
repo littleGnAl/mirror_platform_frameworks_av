@@ -44,6 +44,7 @@ using namespace android;
 
 constexpr int32_t kMaxCount = 10;
 constexpr int32_t kOpusSeekPreRollUs = 80000;  // 80 ms;
+constexpr int32_t kRandomSeekTolerance = 40000;  // 40 ms;
 
 static ExtractorUnitTestEnvironment *gEnv = nullptr;
 
@@ -166,6 +167,33 @@ int32_t ExtractorUnitTest::createExtractor() {
     }
     if (!mExtractor) return -1;
     return 0;
+}
+
+void randomSeekTest(MediaTrackHelper *track, int64_t clipDuration) {
+    int32_t status = 0;
+    int64_t seekToTimeStamp = 0;
+    int32_t seekCount = 0;
+    do {
+        seekToTimeStamp = rand() % clipDuration;
+        MediaTrackHelper::ReadOptions *options = new MediaTrackHelper::ReadOptions(
+                CMediaTrackReadOptions::SEEK_CLOSEST | CMediaTrackReadOptions::SEEK,
+                seekToTimeStamp);
+        ASSERT_NE(options, nullptr) << "Cannot create read option";
+
+        MediaBufferHelper *buffer = nullptr;
+        status = track->read(&buffer, options);
+        if (buffer) {
+            AMediaFormat *metaData = buffer->meta_data();
+            int64_t timeStamp;
+            AMediaFormat_getInt64(metaData, AMEDIAFORMAT_KEY_TIME_US, &timeStamp);
+            buffer->release();
+            EXPECT_LE(abs(timeStamp - seekToTimeStamp), kRandomSeekTolerance)
+                    << "Seek unsuccessful. Expected " << seekToTimeStamp << "received "
+                    << timeStamp;
+        }
+        delete options;
+        seekCount++;
+    } while (seekCount < kMaxCount);
 }
 
 void getSeekablePoints(vector<int64_t> &seekablePoints, MediaTrackHelper *track) {
@@ -380,9 +408,7 @@ TEST_P(ExtractorUnitTest, MultipleStartStopTest) {
 }
 
 TEST_P(ExtractorUnitTest, SeekTest) {
-    // Both Flac and Wav extractor can give samples from any pts and mark the given sample as
-    // sync frame. So, this seek test is not applicable to FLAC and WAV extractors
-    if (mDisableTest || mExtractorName == FLAC || mExtractorName == WAV) return;
+    if (mDisableTest) return;
 
     ALOGV("Validates %s Extractor behaviour for different seek modes", GetParam().first.c_str());
     string inputFileName = gEnv->getRes() + GetParam().second;
@@ -415,6 +441,24 @@ TEST_P(ExtractorUnitTest, SeekTest) {
         MediaBufferGroup *bufferGroup = new MediaBufferGroup();
         status = cTrack->start(track, bufferGroup->wrap());
         ASSERT_EQ(OK, (media_status_t)status) << "Failed to start the track";
+
+        // Flac and Wav extractor can give samples from any pts and mark the given sample as
+        // sync frame. Hence we test for random seek for these extractors
+        if (mExtractorName == FLAC || mExtractorName == WAV) {
+            AMediaFormat *trackMeta = AMediaFormat_new();
+            ASSERT_NE(trackMeta, nullptr) << "AMediaFormat_new returned null AMediaformat";
+
+            status = mExtractor->getTrackMetaData(trackMeta, idx, 1);
+            ASSERT_EQ(OK, (media_status_t)status) << "Failed to get trackMetaData";
+
+            int64_t clipDuration = 0;
+            AMediaFormat_getInt64(trackMeta, AMEDIAFORMAT_KEY_DURATION, &clipDuration);
+            ASSERT_GT(clipDuration, 0) << "Invalid clip duration ";
+            randomSeekTest(track, clipDuration);
+            AMediaFormat_delete(trackMeta);
+            continue;
+        }
+
         getSeekablePoints(seekablePoints, track);
         ASSERT_GT(seekablePoints.size(), 0)
                 << "Failed to get seekable points for " << GetParam().first << " extractor";
