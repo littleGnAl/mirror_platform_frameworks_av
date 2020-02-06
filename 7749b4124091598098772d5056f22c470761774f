@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af31864d_cc7ecc4c",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-06T23:27:31Z",
+      "side": 1,
+      "message": "we also need to check that these buffers are not nullptr when isHeaderValid, isCodecDelayValid and isSeekPreRollValid are true.\nSo for each if() ASSERT_EQ() else ASSERT_NE() is needed",
+      "range": {
+        "startLine": 165,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 64
+      },
+      "revId": "7749b4124091598098772d5056f22c470761774f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
