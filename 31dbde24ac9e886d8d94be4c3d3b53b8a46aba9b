@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "32687f35_62744e2d",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-06T18:04:22Z",
+      "side": 1,
+      "message": "do we set a seed for rand() to a fixed value?\nWe need to ensure that test always uses the same seek timestamps.",
+      "range": {
+        "startLine": 177,
+        "startChar": 26,
+        "endLine": 177,
+        "endChar": 32
+      },
+      "revId": "31dbde24ac9e886d8d94be4c3d3b53b8a46aba9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b53478b1_a692fa8e",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 447,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-06T18:04:22Z",
+      "side": 1,
+      "message": "once rebased on midi change, this will have midi too.\nAre there any other extractors where this is the desired behavior?",
+      "revId": "31dbde24ac9e886d8d94be4c3d3b53b8a46aba9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
