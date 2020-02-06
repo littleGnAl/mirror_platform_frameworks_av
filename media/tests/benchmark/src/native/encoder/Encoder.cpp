@@ -51,9 +51,9 @@ void Encoder::onInputAvailable(AMediaCodec *mediaCodec, int32_t bufIdx) {
         if (mInputBufferSize - mOffset < mParams.frameSize) {
             bytesToRead = mInputBufferSize - mOffset;
         }
-        //b/148655275 - Update Frame size, as Format value may not be valid
+        // b/148655275 - Update Frame size, as Format value may not be valid
         if (bufSize < bytesToRead) {
-            if(mNumInputFrame == 0) {
+            if (mNumInputFrame == 0) {
                 mParams.frameSize = bufSize;
                 bytesToRead = bufSize;
                 mParams.numFrames = (mInputBufferSize + mParams.frameSize - 1) / mParams.frameSize;
@@ -203,13 +203,13 @@ int32_t Encoder::encode(string &codecName, ifstream &eleStream, size_t eleSize, 
         AMediaFormat_setInt32(mFormat, AMEDIAFORMAT_KEY_WIDTH, mParams.width);
         AMediaFormat_setInt32(mFormat, AMEDIAFORMAT_KEY_HEIGHT, mParams.height);
         AMediaFormat_setInt32(mFormat, AMEDIAFORMAT_KEY_FRAME_RATE, mParams.frameRate);
+        AMediaFormat_setInt32(mFormat, AMEDIAFORMAT_KEY_I_FRAME_INTERVAL, mParams.iFrameInterval);
         AMediaFormat_setInt32(mFormat, AMEDIAFORMAT_KEY_BIT_RATE, mParams.bitrate);
-        AMediaFormat_setInt32(mFormat, AMEDIAFORMAT_KEY_I_FRAME_INTERVAL, 1);
-        if (mParams.profile && mParams.level) {
+        AMediaFormat_setInt32(mFormat, AMEDIAFORMAT_KEY_COLOR_FORMAT, mParams.colorFormat);
+        if (mParams.profile != -1 && mParams.level != -1) {
             AMediaFormat_setInt32(mFormat, AMEDIAFORMAT_KEY_PROFILE, mParams.profile);
             AMediaFormat_setInt32(mFormat, AMEDIAFORMAT_KEY_LEVEL, mParams.level);
         }
-        AMediaFormat_setInt32(mFormat, AMEDIAFORMAT_KEY_COLOR_FORMAT, mParams.colorFormat);
     } else {
         AMediaFormat_setInt32(mFormat, AMEDIAFORMAT_KEY_SAMPLE_RATE, mParams.sampleRate);
         AMediaFormat_setInt32(mFormat, AMEDIAFORMAT_KEY_CHANNEL_COUNT, mParams.numChannels);
