@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39bb7a58_9db5e611",
+        "filename": "media/libstagefright/webm/tests/WebmFrameThreadUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-07T04:11:21Z",
+      "side": 1,
+      "message": "max count of what?\nprobably needs a better name.",
+      "range": {
+        "startLine": 47,
+        "startChar": 25,
+        "endLine": 47,
+        "endChar": 34
+      },
+      "revId": "73012955a1a45a1d3b269afea7e0dff0a74d4996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4c2ce2d_154e29e7",
+        "filename": "media/libstagefright/webm/tests/WebmFrameThreadUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-07T04:11:21Z",
+      "side": 1,
+      "message": "by using strn*, we\u0027re going to declare that \"audio/opusmagnum\" is a match with our MIMETYPE_AUDIO_OPUS of \"audio/opus\".\n\nif we want to stay with the bounded strn* version, we need to be testing strlen()+1 so that we know the incoming string is terminated at the same point. (e.g. it\u0027s not longer...)",
+      "range": {
+        "startLine": 117,
+        "startChar": 5,
+        "endLine": 120,
+        "endChar": 5
+      },
+      "revId": "73012955a1a45a1d3b269afea7e0dff0a74d4996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39637d1a_fe0c8ae6",
+        "filename": "media/libstagefright/webm/tests/WebmFrameThreadUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 150,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-07T04:11:21Z",
+      "side": 1,
+      "message": "are these strings defined anywhere as part of the NDK?",
+      "range": {
+        "startLine": 150,
+        "startChar": 25,
+        "endLine": 150,
+        "endChar": 33
+      },
+      "revId": "73012955a1a45a1d3b269afea7e0dff0a74d4996",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
