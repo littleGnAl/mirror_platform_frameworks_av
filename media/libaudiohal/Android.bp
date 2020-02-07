@@ -4,6 +4,7 @@ cc_library_shared {
     srcs: [
         "DevicesFactoryHalInterface.cpp",
         "EffectsFactoryHalInterface.cpp",
+        "FactoryHalHidl.cpp",
     ],
 
     cflags: [
@@ -13,10 +14,9 @@ cc_library_shared {
     ],
 
     shared_libs: [
-        "libaudiohal@2.0",
-        "libaudiohal@4.0",
-        "libaudiohal@5.0",
-        "libaudiohal@6.0",
+        "libdl",
+        "libhidlbase",
+        "liblog",
         "libutils",
     ],
 

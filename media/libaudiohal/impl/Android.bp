@@ -16,8 +16,6 @@ cc_defaults {
         "StreamHalHidl.cpp",
     ],
 
-    export_include_dirs: ["include"],
-
     cflags: [
         "-Wall",
         "-Wextra",
