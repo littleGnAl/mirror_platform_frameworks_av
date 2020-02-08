@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3a493fe_c144102b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-02-08T00:03:43Z",
+      "side": 1,
+      "message": "for",
+      "range": {
+        "startLine": 13,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "020694ad3e99309e4d1d815352f69a4a2d58d5f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10b94042_e083bf4f",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2576,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-02-08T00:03:43Z",
+      "side": 1,
+      "message": "this is the same as lines 2583 - 2589 \u003d\u003e can be removed.",
+      "range": {
+        "startLine": 2571,
+        "startChar": 0,
+        "endLine": 2576,
+        "endChar": 13
+      },
+      "revId": "020694ad3e99309e4d1d815352f69a4a2d58d5f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
