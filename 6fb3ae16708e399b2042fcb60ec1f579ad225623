@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "258b5ec1_26773e81",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2020-02-10T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59cae6b6_472840c9",
+      "range": {
+        "startLine": 73,
+        "startChar": 15,
+        "endLine": 73,
+        "endChar": 25
+      },
+      "revId": "6fb3ae16708e399b2042fcb60ec1f579ad225623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf8c9b44_8b8c75a2",
         "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
         "patchSetId": 5
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "6b6a11aa_c57f858f",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2020-02-10T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23ddfa54_2ed1a709",
+      "range": {
+        "startLine": 111,
+        "startChar": 15,
+        "endLine": 111,
+        "endChar": 21
+      },
+      "revId": "6fb3ae16708e399b2042fcb60ec1f579ad225623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6eefd0e8_72631ba1",
         "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
         "patchSetId": 5
@@ -85,6 +133,24 @@
       "revId": "6fb3ae16708e399b2042fcb60ec1f579ad225623",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "869dd53d_aeca6a14",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2020-02-10T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6eefd0e8_72631ba1",
+      "revId": "6fb3ae16708e399b2042fcb60ec1f579ad225623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -111,6 +177,30 @@
     },
     {
       "key": {
+        "uuid": "d1d4f6b6_5c05387b",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2020-02-10T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94a278aa_133d9cb4",
+      "range": {
+        "startLine": 118,
+        "startChar": 14,
+        "endLine": 118,
+        "endChar": 52
+      },
+      "revId": "6fb3ae16708e399b2042fcb60ec1f579ad225623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "75f570ac_2959efe3",
         "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
         "patchSetId": 5
@@ -122,6 +212,30 @@
       "writtenOn": "2020-02-10T02:14:47Z",
       "side": 1,
       "message": "only seems to test what we parsed.\nand then test that the internals of the mapping work out.\nthat tests that we got an internally consistent \u0026 legal header.\n\nit doesn\u0027t seem to compare that this is the same as what we wrote out.",
+      "range": {
+        "startLine": 122,
+        "startChar": 15,
+        "endLine": 122,
+        "endChar": 30
+      },
+      "revId": "6fb3ae16708e399b2042fcb60ec1f579ad225623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2d233c9_164255f5",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2020-02-10T15:07:39Z",
+      "side": 1,
+      "message": "Channel mapping is not configurable.",
+      "parentUuid": "75f570ac_2959efe3",
       "range": {
         "startLine": 122,
         "startChar": 15,
@@ -154,6 +268,30 @@
       "revId": "6fb3ae16708e399b2042fcb60ec1f579ad225623",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bce43b4c_9ad05a94",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1550394
+      },
+      "writtenOn": "2020-02-10T15:07:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d889c3d_5ccb4993",
+      "range": {
+        "startLine": 209,
+        "startChar": 43,
+        "endLine": 213,
+        "endChar": 63
+      },
+      "revId": "6fb3ae16708e399b2042fcb60ec1f579ad225623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
