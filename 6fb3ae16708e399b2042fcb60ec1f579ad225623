@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59cae6b6_472840c9",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-10T02:14:47Z",
+      "side": 1,
+      "message": "to avoid confusion call this \"writtenHeader\"",
+      "range": {
+        "startLine": 73,
+        "startChar": 15,
+        "endLine": 73,
+        "endChar": 25
+      },
+      "revId": "6fb3ae16708e399b2042fcb60ec1f579ad225623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf8c9b44_8b8c75a2",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-10T02:14:47Z",
+      "side": 1,
+      "message": "i think we need to compare this against a specific bit pattern.\n\nas is, we know that we can read back what we wrote, but it doesn\u0027t mean that what\nwe put into the file complies with any standard -- and that other devices/implementations\ncan read this header data back.",
+      "range": {
+        "startLine": 91,
+        "startChar": 3,
+        "endLine": 91,
+        "endChar": 74
+      },
+      "revId": "6fb3ae16708e399b2042fcb60ec1f579ad225623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23ddfa54_2ed1a709",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-10T02:14:47Z",
+      "side": 1,
+      "message": "call this \"parsedHeader\"",
+      "range": {
+        "startLine": 111,
+        "startChar": 15,
+        "endLine": 111,
+        "endChar": 21
+      },
+      "revId": "6fb3ae16708e399b2042fcb60ec1f579ad225623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6eefd0e8_72631ba1",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-10T02:14:47Z",
+      "side": 1,
+      "message": "for clarity:\n\n   ASSERT_EQ(writtenHeader.channels, parsedHeader.channels);\n    etc.",
+      "revId": "6fb3ae16708e399b2042fcb60ec1f579ad225623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94a278aa_133d9cb4",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-10T02:14:47Z",
+      "side": 1,
+      "message": "this is checking two parsef fields, but they aren\u0027t compared to what we wrote?",
+      "range": {
+        "startLine": 118,
+        "startChar": 14,
+        "endLine": 118,
+        "endChar": 52
+      },
+      "revId": "6fb3ae16708e399b2042fcb60ec1f579ad225623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75f570ac_2959efe3",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-10T02:14:47Z",
+      "side": 1,
+      "message": "only seems to test what we parsed.\nand then test that the internals of the mapping work out.\nthat tests that we got an internally consistent \u0026 legal header.\n\nit doesn\u0027t seem to compare that this is the same as what we wrote out.",
+      "range": {
+        "startLine": 122,
+        "startChar": 15,
+        "endLine": 122,
+        "endChar": 30
+      },
+      "revId": "6fb3ae16708e399b2042fcb60ec1f579ad225623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d889c3d_5ccb4993",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-10T02:14:47Z",
+      "side": 1,
+      "message": "1 per line, like the list below.",
+      "range": {
+        "startLine": 209,
+        "startChar": 43,
+        "endLine": 213,
+        "endChar": 63
+      },
+      "revId": "6fb3ae16708e399b2042fcb60ec1f579ad225623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
