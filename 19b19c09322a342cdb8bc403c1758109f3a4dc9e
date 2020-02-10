@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "5e48e404_b1c7fa21",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3832,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-02-10T23:49:56Z",
+      "side": 1,
+      "message": "collectTimestamps_l()?\n\nthreadloop_* methods should only be called by the threadloop - the AudioFlinger worker thread - and have particular properties since they are called by a single worker thread. Hence we should use a different name.",
+      "range": {
+        "startLine": 3832,
+        "startChar": 35,
+        "endLine": 3832,
+        "endChar": 63
+      },
+      "revId": "19b19c09322a342cdb8bc403c1758109f3a4dc9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0b511551_af30dce8",
         "filename": "services/audioflinger/Threads.cpp",
         "patchSetId": 2
@@ -42,6 +65,53 @@
         "startChar": 16,
         "endLine": 3907,
         "endChar": 22
+      },
+      "revId": "19b19c09322a342cdb8bc403c1758109f3a4dc9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f1177f9_ba2d89e1",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3907,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-02-10T23:49:56Z",
+      "side": 1,
+      "message": "Used to be a lot of errors (based on older HALs).  Maybe this is fine to move to ALOGW. We keep track of errors in the timestamp verifier, perhaps we should also log as per line 3917.",
+      "parentUuid": "0b509a36_16918d7f",
+      "range": {
+        "startLine": 3907,
+        "startChar": 16,
+        "endLine": 3907,
+        "endChar": 22
+      },
+      "revId": "19b19c09322a342cdb8bc403c1758109f3a4dc9e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aed66e70_7254395a",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4023,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-02-10T23:49:56Z",
+      "side": 1,
+      "message": "sigh, we need to fix this to be an int64_t :-(.",
+      "range": {
+        "startLine": 4023,
+        "startChar": 24,
+        "endLine": 4023,
+        "endChar": 30
       },
       "revId": "19b19c09322a342cdb8bc403c1758109f3a4dc9e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
