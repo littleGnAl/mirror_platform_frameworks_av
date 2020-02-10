@@ -248,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "7654f3e7_a1f9b984",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-10T19:47:52Z",
+      "side": 1,
+      "message": "we should at least be checking parsed.channel_mapping \u003d\u003d written.channel_mapping",
+      "parentUuid": "b2d233c9_164255f5",
+      "range": {
+        "startLine": 122,
+        "startChar": 15,
+        "endLine": 122,
+        "endChar": 30
+      },
+      "revId": "6fb3ae16708e399b2042fcb60ec1f579ad225623",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4d889c3d_5ccb4993",
         "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
         "patchSetId": 5
