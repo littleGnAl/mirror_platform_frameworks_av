@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0974c7c5_865275b4",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-10T20:39:59Z",
+      "side": 1,
+      "message": "Remove this.\nThis unit test shouldn\u0027t depend on libstagefright_foundation.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 6
+      },
+      "revId": "aa29e1666d8b1de9488197c034eff3f8e2057840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d031f60b_a0318346",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Mpeg4H263EncoderTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-10T20:39:59Z",
+      "side": 1,
+      "message": "Remove. Seems unnecessary.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 48
+      },
+      "revId": "aa29e1666d8b1de9488197c034eff3f8e2057840",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
