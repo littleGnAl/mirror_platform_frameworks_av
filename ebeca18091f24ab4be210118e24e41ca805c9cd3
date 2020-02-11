@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a64f1f96_59f8b4fd",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Encoder.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-11T19:20:10Z",
+      "side": 1,
+      "message": "this is for audio only; maybe could be reflected in the name.",
+      "range": {
+        "startLine": 32,
+        "startChar": 61,
+        "endLine": 32,
+        "endChar": 65
+      },
+      "revId": "ebeca18091f24ab4be210118e24e41ca805c9cd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e10ebdc4_e80bb063",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Encoder.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-11T19:20:10Z",
+      "side": 1,
+      "message": "this is solely for audio;\nperhaps ENCODE_DEFAULT_MAX_INPUT_SIZE should say \u0027audio\u0027 somewhere in there.",
+      "range": {
+        "startLine": 139,
+        "startChar": 11,
+        "endLine": 141,
+        "endChar": 13
+      },
+      "revId": "ebeca18091f24ab4be210118e24e41ca805c9cd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e1a7bcb_ae8dc5da",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Encoder.java",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-11T19:20:10Z",
+      "side": 1,
+      "message": "looking at this, my first reaction is \"we\u0027re already overflowed the buffer by reading bytesRead bytes.\n\n\"bytes2read\u0027 or something like that would be a better name.\n\ncould combine this with the following conditional on line 294..297\n\nif (bufsize \u003c bytes2Read) {\n    if (frame !\u003d 0) { signal error; return; }\n    only read what fits in the buffer.\n }",
+      "range": {
+        "startLine": 289,
+        "startChar": 12,
+        "endLine": 289,
+        "endChar": 32
+      },
+      "revId": "ebeca18091f24ab4be210118e24e41ca805c9cd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3460da61_632d3812",
+        "filename": "media/tests/benchmark/src/native/common/BenchmarkCommon.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-11T19:20:10Z",
+      "side": 1,
+      "message": "need some comments tying this constant to the one defined in the java file.\ni\u0027m assuming they need to be kept in sync.",
+      "range": {
+        "startLine": 38,
+        "startChar": 49,
+        "endLine": 38,
+        "endChar": 55
+      },
+      "revId": "ebeca18091f24ab4be210118e24e41ca805c9cd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d334b67_8504fe7d",
+        "filename": "media/tests/benchmark/src/native/encoder/Encoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-11T19:20:10Z",
+      "side": 1,
+      "message": "perhaps combine these two\n\nif (butsize \u003c bytesread) {\n    if (inputframe!\u003d 0) { error; return}\n    change buffer size., etc.",
+      "range": {
+        "startLine": 54,
+        "startChar": 7,
+        "endLine": 66,
+        "endChar": 9
+      },
+      "revId": "ebeca18091f24ab4be210118e24e41ca805c9cd3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
