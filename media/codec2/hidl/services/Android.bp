@@ -22,6 +22,24 @@ cc_binary {
         "libstagefright_xmlparser",
         "libutils",
     ],
+    required: ["android.hardware.media.c2@1.0-default-seccomp_policy"],
+
+    // The content in manifest_media_c2_V1_0_default.xml can be included
+    // directly in the main device manifest.xml file or via vintf_fragments.
+    // (Remove the line below if the entry is already in the main manifest.)
+    vintf_fragments: ["manifest_media_c2_V1_0_default.xml"],
+}
+
+// seccomp policy file.
+//
+// This should be modified to suit the target device and architecture.
+//
+// Files in the "seccomp_policy" subdirectory are only provided as examples.
+// They may not work on some devices and/or architectures without modification.
+prebuilt_etc {
+    name: "android.hardware.media.c2@1.0-default-seccomp_policy",
+    vendor: true,
+    sub_dir: "seccomp_policy",
 
     arch: {
         arm: {
