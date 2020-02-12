@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b0310592_b07ad200",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-02-12T10:22:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3a493fe_c144102b",
+      "range": {
+        "startLine": 13,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 42
+      },
+      "revId": "020694ad3e99309e4d1d815352f69a4a2d58d5f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "10b94042_e083bf4f",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 8
@@ -69,6 +93,30 @@
       "revId": "020694ad3e99309e4d1d815352f69a4a2d58d5f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e0e73ef_cbb1e0fa",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2576,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-02-12T10:22:47Z",
+      "side": 1,
+      "message": "Of course, avoid code duplication, the APM is big enought !",
+      "parentUuid": "124a2281_99714ff1",
+      "range": {
+        "startLine": 2571,
+        "startChar": 0,
+        "endLine": 2576,
+        "endChar": 13
+      },
+      "revId": "020694ad3e99309e4d1d815352f69a4a2d58d5f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
