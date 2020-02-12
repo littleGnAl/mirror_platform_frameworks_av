@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "530df1ad_4e9d12f4",
+        "filename": "services/audiopolicy/engine/1.0/vts/ValidateEngineConfiguration.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-02-12T14:43:58Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "568217a2_1be18294",
+      "range": {
+        "startLine": 24,
+        "startChar": 4,
+        "endLine": 26,
+        "endChar": 55
+      },
+      "revId": "16eaa9b82c6f95cac2e1f2793588df2ee3ab7a5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "682fb10d_04a8edc5",
         "filename": "services/audiopolicy/engine/1.0/vts/ValidateEngineConfiguration.cpp",
         "patchSetId": 5
@@ -72,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "d3793855_14f396aa",
+        "filename": "services/audiopolicy/engine/1.0/vts/ValidateEngineConfiguration.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-02-12T14:43:58Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "a177c86c_bee3e71e",
+      "range": {
+        "startLine": 29,
+        "startChar": 16,
+        "endLine": 29,
+        "endChar": 58
+      },
+      "revId": "16eaa9b82c6f95cac2e1f2793588df2ee3ab7a5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5abccead_f7b59196",
         "filename": "services/audiopolicy/engineconfigurable/vts/ValidateEngineConfigurableConfiguration.cpp",
         "patchSetId": 5
@@ -92,6 +140,30 @@
       "revId": "16eaa9b82c6f95cac2e1f2793588df2ee3ab7a5d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28c3ce92_fcdd2383",
+        "filename": "services/audiopolicy/engineconfigurable/vts/ValidateEngineConfigurableConfiguration.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-02-12T14:43:58Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "5abccead_f7b59196",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 83
+      },
+      "revId": "16eaa9b82c6f95cac2e1f2793588df2ee3ab7a5d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
