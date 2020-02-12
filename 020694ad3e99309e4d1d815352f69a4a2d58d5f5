@@ -45,6 +45,30 @@
       "revId": "020694ad3e99309e4d1d815352f69a4a2d58d5f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "124a2281_99714ff1",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 2576,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-02-12T02:01:37Z",
+      "side": 1,
+      "message": "Francois,\n\nif you agree with this suggestion please update so that I can merge.\notherwise please advise.",
+      "parentUuid": "10b94042_e083bf4f",
+      "range": {
+        "startLine": 2571,
+        "startChar": 0,
+        "endLine": 2576,
+        "endChar": 13
+      },
+      "revId": "020694ad3e99309e4d1d815352f69a4a2d58d5f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
