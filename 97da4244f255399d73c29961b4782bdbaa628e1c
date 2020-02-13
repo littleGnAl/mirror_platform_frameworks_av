@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "18904813_d2c50ac0",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2664,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-02-13T16:56:07Z",
+      "side": 1,
+      "message": "It is better to skip duplicated outputs in the for loop below at line 2684",
+      "range": {
+        "startLine": 2664,
+        "startChar": 0,
+        "endLine": 2664,
+        "endChar": 106
+      },
+      "revId": "97da4244f255399d73c29961b4782bdbaa628e1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
