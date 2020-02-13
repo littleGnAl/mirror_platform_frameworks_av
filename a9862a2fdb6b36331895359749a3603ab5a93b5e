@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3b934b1_af3e9305",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4021,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-02-13T18:49:35Z",
+      "side": 1,
+      "message": "even if there is no kernel location update, perhaps we should output the last timestamp rather than give an error?  it really isn\u0027t an error for the timestamp not to change if the device is paused or drained.",
+      "range": {
+        "startLine": 4021,
+        "startChar": 14,
+        "endLine": 4021,
+        "endChar": 36
+      },
+      "revId": "a9862a2fdb6b36331895359749a3603ab5a93b5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "930a0a62_cdd37304",
+        "filename": "services/audioflinger/Threads.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-02-13T18:49:35Z",
+      "side": 1,
+      "message": "nit: i would prefer to put the initializer here as -1.  please comment this is for the timestamp computation.",
+      "range": {
+        "startLine": 1006,
+        "startChar": 54,
+        "endLine": 1006,
+        "endChar": 56
+      },
+      "revId": "a9862a2fdb6b36331895359749a3603ab5a93b5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
