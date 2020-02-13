@@ -30,4 +30,13 @@ cc_test {
         "-Wall",
         "-Werror",
     ],
+    data: [
+        ":media_codecs",
+    ],
+    test_suites: [
+        "general-tests",
+        "vts-core"
+    ],
+    auto_gen_config: true,
+    test_config: "vts_mediaCodecs_validate_test.xml",
 }
