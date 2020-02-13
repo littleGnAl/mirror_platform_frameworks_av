@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "063765c8_7cfb2d73",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-13T19:50:13Z",
+      "side": 1,
+      "message": "should we also verify the mappings against this table, since it appears to be what\nwe are supposed to have for channel mappings:\n\nconstexpr uint8_t kOpusChannelMap[kMaxChannels][kMaxChannels] \u003d {\n        {0},\n        {0, 1},\n        {0, 2, 1},\n        {0, 1, 2, 3},\n        {0, 4, 1, 2, 3},\n        {0, 4, 1, 2, 3, 5},\n        {0, 4, 1, 2, 3, 5, 6},\n        {0, 6, 1, 2, 3, 4, 5, 7},\n};\n\n[this from stagefright_foundation/OpusHeader.cpp]\n\nif i understand the comments over there, these are the required mappings for channels\u003d1..8",
+      "revId": "ed38a2b6704b43f825b90294e3b97070a0fbe73b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "556ae386_a214d41b",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-13T19:50:13Z",
+      "side": 1,
+      "message": "quite possibly verify the channel layout similarly to what I indicated for line 142 above.\nif those are the required mappings for channels 1..8, then we should get them right here.",
+      "range": {
+        "startLine": 217,
+        "startChar": 12,
+        "endLine": 217,
+        "endChar": 27
+      },
+      "revId": "ed38a2b6704b43f825b90294e3b97070a0fbe73b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
