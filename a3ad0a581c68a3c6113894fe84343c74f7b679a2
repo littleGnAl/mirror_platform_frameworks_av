@@ -16,6 +16,24 @@
       "revId": "a3ad0a581c68a3c6113894fe84343c74f7b679a2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8d58e7d_fe13a041",
+        "filename": "media/libmedia/xsd/vts/vts_mediaProfiles_validate_test.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1307893
+      },
+      "writtenOn": "2020-02-13T19:59:00Z",
+      "side": 1,
+      "message": "They can test pass without adb root.\nBut I think vts test should require it, thanks for catching it.",
+      "parentUuid": "dcb278bf_1657e63e",
+      "revId": "a3ad0a581c68a3c6113894fe84343c74f7b679a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
