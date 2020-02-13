@@ -2661,7 +2661,7 @@ audio_io_handle_t AudioPolicyManager::selectOutputForMusicEffects()
     // 4: the first output in the list
 
     DeviceVector devices = mEngine->getOutputDevicesForAttributes(
-                attributes_initializer(AUDIO_USAGE_MEDIA), nullptr, false /*fromCache*/);
+                attributes_initializer(AUDIO_USAGE_MEDIA), getDefaultOutputDevice(), false /*fromCache*/);
     SortedVector<audio_io_handle_t> outputs = getOutputsForDevices(devices, mOutputs);
 
     if (outputs.size() == 0) {
