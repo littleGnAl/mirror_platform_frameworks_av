@@ -2706,9 +2706,17 @@ audio_io_handle_t AudioPolicyManager::selectOutputForMusicEffects()
     }
 
     if (output != mMusicEffectOutput) {
-        mEffects.moveEffects(AUDIO_SESSION_OUTPUT_MIX, mMusicEffectOutput, output);
-        mpClientInterface->moveEffects(AUDIO_SESSION_OUTPUT_MIX, mMusicEffectOutput, output);
-        mMusicEffectOutput = output;
+        if (mMusicEffectOutput == AUDIO_IO_HANDLE_NONE) {
+            ALOGV("First time move effect to io %d",output);
+            mMusicEffectOutput = output;
+        } else if (mpClientInterface->moveEffects(
+                                      AUDIO_SESSION_OUTPUT_MIX,
+                                      mMusicEffectOutput, output) == NO_ERROR) {
+            mEffects.moveEffects(AUDIO_SESSION_OUTPUT_MIX, mMusicEffectOutput, output);
+            mMusicEffectOutput = output;
+        } else {
+            output = mMusicEffectOutput;
+        }
     }
 
     ALOGV("selectOutputForMusicEffects selected output %d", output);
