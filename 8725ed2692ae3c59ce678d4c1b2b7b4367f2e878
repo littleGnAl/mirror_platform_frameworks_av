@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd1288c8_042fdff3",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-14T23:55:36Z",
+      "side": 1,
+      "message": "ENCODE_DEFAULT_VIDEO_BITRATE",
+      "range": {
+        "startLine": 71,
+        "startChar": 29,
+        "endLine": 71,
+        "endChar": 52
+      },
+      "revId": "8725ed2692ae3c59ce678d4c1b2b7b4367f2e878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4f7987f_c8938e72",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-14T23:55:36Z",
+      "side": 1,
+      "message": "FULLHD",
+      "range": {
+        "startLine": 81,
+        "startChar": 39,
+        "endLine": 81,
+        "endChar": 41
+      },
+      "revId": "8725ed2692ae3c59ce678d4c1b2b7b4367f2e878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f875b3f_94e2fedd",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-14T23:55:36Z",
+      "side": 1,
+      "message": "crowd_1920x1080_25fps.yuv\n\nname other files similarly",
+      "range": {
+        "startLine": 81,
+        "startChar": 52,
+        "endLine": 81,
+        "endChar": 61
+      },
+      "revId": "8725ed2692ae3c59ce678d4c1b2b7b4367f2e878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90a29198_45560b6c",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-14T23:55:36Z",
+      "side": 1,
+      "message": "QCIF",
+      "range": {
+        "startLine": 82,
+        "startChar": 39,
+        "endLine": 82,
+        "endChar": 41
+      },
+      "revId": "8725ed2692ae3c59ce678d4c1b2b7b4367f2e878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0d8d4f9_ba1e1066",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-14T23:55:36Z",
+      "side": 1,
+      "message": "why is this being deleted?",
+      "range": {
+        "startLine": 164,
+        "startChar": 0,
+        "endLine": 166,
+        "endChar": 9
+      },
+      "revId": "8725ed2692ae3c59ce678d4c1b2b7b4367f2e878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ecf89a7_e3efc60e",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-14T23:55:36Z",
+      "side": 1,
+      "message": "Can this be changed to a function with filepaths or names passed as arguments and that function be called three times?",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 167,
+        "endChar": 0
+      },
+      "revId": "8725ed2692ae3c59ce678d4c1b2b7b4367f2e878",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
