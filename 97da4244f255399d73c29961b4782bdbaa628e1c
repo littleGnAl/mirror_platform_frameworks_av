@@ -22,6 +22,30 @@
       "revId": "97da4244f255399d73c29961b4782bdbaa628e1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63ae9056_ddae6254",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2664,
+      "author": {
+        "id": 1626367
+      },
+      "writtenOn": "2020-02-14T07:18:01Z",
+      "side": 1,
+      "message": "getOutputsForDevices function will return only dup output because only duplicated outputs supports both REMOTE_SUBMIX and Speaker(line 5055), we still get dup out at last(2703).\nwe can resolve this by : 1. remove REMOTE_SUBMIX before getOutputsForDevices\n2. instead of using getOutputsForDevices\n\nwhat\u0027s your opion?",
+      "parentUuid": "18904813_d2c50ac0",
+      "range": {
+        "startLine": 2664,
+        "startChar": 0,
+        "endLine": 2664,
+        "endChar": 106
+      },
+      "revId": "97da4244f255399d73c29961b4782bdbaa628e1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
