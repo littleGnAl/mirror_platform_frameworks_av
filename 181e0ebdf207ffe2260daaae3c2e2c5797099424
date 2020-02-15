@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1a51b7d2_c69a70ac",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1105338
+      },
+      "writtenOn": "2020-02-15T02:05:27Z",
+      "side": 1,
+      "message": "Is this the part that needs to be ordered after? I\u0027m trying to understand why this reordering could affect the app.",
+      "range": {
+        "startLine": 1434,
+        "startChar": 28,
+        "endLine": 1434,
+        "endChar": 70
+      },
+      "revId": "181e0ebdf207ffe2260daaae3c2e2c5797099424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
