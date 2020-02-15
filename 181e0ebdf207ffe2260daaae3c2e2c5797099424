@@ -22,6 +22,30 @@
       "revId": "181e0ebdf207ffe2260daaae3c2e2c5797099424",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0033797b_3c7c4ee7",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-02-15T05:28:36Z",
+      "side": 1,
+      "message": "This is independent of the config change.",
+      "parentUuid": "1a51b7d2_c69a70ac",
+      "range": {
+        "startLine": 1434,
+        "startChar": 28,
+        "endLine": 1434,
+        "endChar": 70
+      },
+      "revId": "181e0ebdf207ffe2260daaae3c2e2c5797099424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
