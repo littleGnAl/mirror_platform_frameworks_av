@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8c3ba559_3860292a",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4021,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2020-02-16T22:39:27Z",
+      "side": 1,
+      "message": "Agree.\n\nIs it also OK for collectTimestamps_l to not return threadloop_getHalTimestamp_l errors (and in this case for getTimestamp_l to return last timestamp), or is it important for the HAL errors to propagate to AudioTrack?",
+      "parentUuid": "e3b934b1_af3e9305",
+      "range": {
+        "startLine": 4021,
+        "startChar": 14,
+        "endLine": 4021,
+        "endChar": 36
+      },
+      "revId": "a9862a2fdb6b36331895359749a3603ab5a93b5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "930a0a62_cdd37304",
         "filename": "services/audioflinger/Threads.h",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "a9862a2fdb6b36331895359749a3603ab5a93b5e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28c9a0d9_48afa7fa",
+        "filename": "services/audioflinger/Threads.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2020-02-16T22:39:27Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "930a0a62_cdd37304",
+      "range": {
+        "startLine": 1006,
+        "startChar": 54,
+        "endLine": 1006,
+        "endChar": 56
+      },
+      "revId": "a9862a2fdb6b36331895359749a3603ab5a93b5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
