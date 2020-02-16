@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "86b57a9a_9c4d0b2c",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4021,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2020-02-16T23:46:25Z",
+      "side": 1,
+      "message": "Patchset 4 resolves the original issue raised, but does not propagate HAL timestamp errors to client.",
+      "parentUuid": "8c3ba559_3860292a",
+      "range": {
+        "startLine": 4021,
+        "startChar": 14,
+        "endLine": 4021,
+        "endChar": 36
+      },
+      "revId": "a9862a2fdb6b36331895359749a3603ab5a93b5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "930a0a62_cdd37304",
         "filename": "services/audioflinger/Threads.h",
         "patchSetId": 3
@@ -84,6 +108,30 @@
       "side": 1,
       "message": "Ack",
       "parentUuid": "930a0a62_cdd37304",
+      "range": {
+        "startLine": 1006,
+        "startChar": 54,
+        "endLine": 1006,
+        "endChar": 56
+      },
+      "revId": "a9862a2fdb6b36331895359749a3603ab5a93b5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "27d0a76b_212ea983",
+        "filename": "services/audioflinger/Threads.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2020-02-16T23:46:25Z",
+      "side": 1,
+      "message": "Patchset 4 resolves this issue.",
+      "parentUuid": "28c9a0d9_48afa7fa",
       "range": {
         "startLine": 1006,
         "startChar": 54,
