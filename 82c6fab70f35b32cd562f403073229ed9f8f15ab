@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "ff42df39_d9accd1b",
+        "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Mpeg4H263EncoderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1261213
+      },
+      "writtenOn": "2020-02-18T09:54:17Z",
+      "side": 1,
+      "message": "The variable is removed now.",
+      "parentUuid": "44da04dc_5efe289b",
+      "range": {
+        "startLine": 34,
+        "startChar": 38,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "82c6fab70f35b32cd562f403073229ed9f8f15ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "23d1b455_4bccad1b",
         "filename": "media/libstagefright/codecs/m4v_h263/enc/test/Mpeg4H263EncoderTest.cpp",
         "patchSetId": 3
