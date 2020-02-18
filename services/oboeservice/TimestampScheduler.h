@@ -53,6 +53,11 @@ public:
         mBurstPeriod = AAUDIO_NANOS_PER_SECOND * framesPerBurst / sampleRate;
     }
 
+    void setPeriodCountCapacity(int32_t framesPerBurst,
+                        int32_t capacityInFrames) {
+        mPeriodCountCapacity = capacityInFrames / framesPerBurst;
+    }
+
     int64_t getBurstPeriod() {
         return mBurstPeriod;
     }
@@ -60,6 +65,7 @@ public:
 private:
     // Start with an arbitrary default so we do not divide by zero.
     int64_t mBurstPeriod = AAUDIO_NANOS_PER_MILLISECOND;
+    int64_t mPeriodCountCapacity = 0;
     int64_t mStartTime = 0;
     int64_t mLastTime = 0;
 };

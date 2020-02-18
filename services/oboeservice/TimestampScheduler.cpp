@@ -28,13 +28,20 @@ void TimestampScheduler::start(int64_t startTime) {
 
 int64_t TimestampScheduler::nextAbsoluteTime() {
     int64_t periodsElapsed = (mLastTime - mStartTime) / mBurstPeriod;
+    int64_t maxAbsoluteTimePeriodsCount =
+        (mPeriodCountCapacity / 2 < 50) ? mPeriodCountCapacity / 2 : 50;
     // This is an arbitrary schedule that could probably be improved.
     // It starts out sending a timestamp on every period because we want to
     // get an accurate picture when the stream starts. Then it slows down
     // to the occasional timestamps needed to detect a slow drift.
+    // Allowable interval between two position queried
+    // shouldn't longer than buffer capacity,
+    // othwise mmap position returned from alsa would be unexpected value.
+    // An arbitrary value as half of capacity is defined here.
     int64_t minPeriodsToDelay = (periodsElapsed < 10) ? 1 :
-        (periodsElapsed < 100) ? 3 :
-        (periodsElapsed < 1000) ? 10 : 50;
+        (periodsElapsed < 100 && maxAbsoluteTimePeriodsCount > 3) ? 3 :
+        (periodsElapsed < 1000 && maxAbsoluteTimePeriodsCount > 10) ? 10 :
+        maxAbsoluteTimePeriodsCount;
     int64_t sleepTime = minPeriodsToDelay * mBurstPeriod;
     // Generate a random rectangular distribution one burst wide so that we get
     // an uncorrelated sampling of the MMAP pointer.
