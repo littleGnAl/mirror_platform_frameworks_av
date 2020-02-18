@@ -296,6 +296,7 @@ void AAudioServiceStreamBase::run() {
     ALOGD("%s() %s entering >>>>>>>>>>>>>> TIMESTAMPS", __func__, getTypeText());
     TimestampScheduler timestampScheduler;
     timestampScheduler.setBurstPeriod(mFramesPerBurst, getSampleRate());
+    timestampScheduler.setPeriodCountCapacity(mFramesPerBurst, getBufferCapacity());
     timestampScheduler.start(AudioClock::getNanoseconds());
     int64_t nextTime = timestampScheduler.nextAbsoluteTime();
     int32_t loopCount = 0;
