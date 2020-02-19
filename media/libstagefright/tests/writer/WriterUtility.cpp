@@ -24,9 +24,20 @@
 
 int32_t sendBuffersToWriter(ifstream &inputStream, vector<BufferInfo> &bufferInfo,
                             int32_t &inputFrameId, sp<MediaAdapter> &currentTrack, int32_t offset,
-                            int32_t range, bool isPaused) {
+                            int32_t range, bool isPaused, sp<WriterListener> listener) {
     while (1) {
         if (inputFrameId >= (int)bufferInfo.size() || inputFrameId >= (offset + range)) break;
+        if (listener != nullptr) {
+            unique_lock<mutex> lock(listener->mNotifyMutex);
+            listener->mEosNotifyCondition.wait_for(
+                    lock, std::chrono::microseconds(kWaitTimeUs),
+                    [listener] { return (listener->mSignalledEos == true); });
+            if (listener->mSignalledEos) {
+                ALOGV("EOS signalled to listener. No more buffers will be sent to the writer");
+                break;
+            }
+        }
+
         int32_t size = bufferInfo[inputFrameId].size;
         char *data = (char *)malloc(size);
         if (!data) {
