@@ -68,7 +68,6 @@ apex_defaults {
     ],
     prebuilts: [
         "com.android.media.swcodec-mediaswcodec.rc",
-        "com.android.media.swcodec-ld.config.txt",
         "mediaswcodec.policy",
         "mediaswcodec.xml",
     ],
@@ -86,13 +85,6 @@ prebuilt_etc {
     name: "com.android.media.swcodec-mediaswcodec.rc",
     src: "mediaswcodec.rc",
     filename: "init.rc",
-    installable: false,
-}
-
-prebuilt_etc {
-    name: "com.android.media.swcodec-ld.config.txt",
-    src: "ld.config.txt",
-    filename: "ld.config.txt",
     installable: false,
 }
 
