@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d2963a75_04e284b8",
+        "filename": "media/libstagefright/tests/extractorFactory/ExtractorFactoryTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-20T22:40:53Z",
+      "side": 1,
+      "message": "only one?",
+      "range": {
+        "startLine": 74,
+        "startChar": 21,
+        "endLine": 74,
+        "endChar": 65
+      },
+      "revId": "97eef73d6ff74a141e55d8665f429da68e98d112",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc47cf1a_17d1dc98",
+        "filename": "media/libstagefright/tests/extractorFactory/ExtractorFactoryTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-20T22:40:53Z",
+      "side": 1,
+      "message": "not closed",
+      "range": {
+        "startLine": 88,
+        "startChar": 10,
+        "endLine": 88,
+        "endChar": 19
+      },
+      "revId": "97eef73d6ff74a141e55d8665f429da68e98d112",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b48d17bb_ece619ef",
+        "filename": "media/libstagefright/tests/extractorFactory/ExtractorFactoryTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-20T22:40:53Z",
+      "side": 1,
+      "message": "file a bug listing mime types that don\u0027t have a MEDIA_MIMETYPE_* definition\nand add a TODO here",
+      "range": {
+        "startLine": 127,
+        "startChar": 51,
+        "endLine": 127,
+        "endChar": 62
+      },
+      "revId": "97eef73d6ff74a141e55d8665f429da68e98d112",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
