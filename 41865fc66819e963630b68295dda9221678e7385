@@ -177,6 +177,30 @@
       "revId": "41865fc66819e963630b68295dda9221678e7385",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6cf72031_3fb75f89",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-21T21:18:46Z",
+      "side": 1,
+      "message": "should include that CL number here.",
+      "parentUuid": "9caec38b_fef939c6",
+      "range": {
+        "startLine": 383,
+        "startChar": 3,
+        "endLine": 388,
+        "endChar": 0
+      },
+      "revId": "41865fc66819e963630b68295dda9221678e7385",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
