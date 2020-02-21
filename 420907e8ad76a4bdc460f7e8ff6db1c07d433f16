@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "251d28f0_683123ee",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-21T22:06:00Z",
+      "side": 1,
+      "message": "let\u0027s put a unit on the end of this, as was done for the kOpusSeekPreRollUs constant.",
+      "range": {
+        "startLine": 47,
+        "startChar": 37,
+        "endLine": 47,
+        "endChar": 39
+      },
+      "revId": "420907e8ad76a4bdc460f7e8ff6db1c07d433f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f460f1f2_379fe760",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-21T22:06:00Z",
+      "side": 1,
+      "message": "initialize this.",
+      "range": {
+        "startLine": 189,
+        "startChar": 20,
+        "endLine": 189,
+        "endChar": 29
+      },
+      "revId": "420907e8ad76a4bdc460f7e8ff6db1c07d433f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b362971_54989d1a",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-21T22:06:00Z",
+      "side": 1,
+      "message": "test the return code.  if we do not get a result, that\u0027s a fatal error.",
+      "range": {
+        "startLine": 190,
+        "startChar": 12,
+        "endLine": 190,
+        "endChar": 33
+      },
+      "revId": "420907e8ad76a4bdc460f7e8ff6db1c07d433f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e4b0a07_8cec8c4b",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-21T22:06:00Z",
+      "side": 1,
+      "message": "and then include the list of timestamps in our array here...\n\n[probably want to prep a string representation of the array before we enter the loop\nand use that string here rather than re-creating the string representation on each iteration]",
+      "range": {
+        "startLine": 194,
+        "startChar": 23,
+        "endLine": 194,
+        "endChar": 32
+      },
+      "revId": "420907e8ad76a4bdc460f7e8ff6db1c07d433f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
