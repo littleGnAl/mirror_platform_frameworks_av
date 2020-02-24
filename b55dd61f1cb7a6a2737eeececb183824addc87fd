@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c42b5ff0_79864f6b",
+        "filename": "media/libstagefright/tests/extractorFactory/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-24T22:50:40Z",
+      "side": 1,
+      "message": "let\u0027s think about this.\nnative code can be in either 32- or 64-bit mode, so we need to think about that.\nsome of this test exercises things over in the media.extractor service, so that\u0027s always\ngoing to be in \u0027first\u0027 architecture. But part of the code runs within the app, so we\nshould think about that.\n\ncreate a new bug where we can discuss this.",
+      "range": {
+        "startLine": 46,
+        "startChar": 4,
+        "endLine": 46,
+        "endChar": 30
+      },
+      "revId": "b55dd61f1cb7a6a2737eeececb183824addc87fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4eb8c3f_5313393e",
+        "filename": "media/libstagefright/tests/extractorFactory/ExtractorFactoryTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-24T22:50:40Z",
+      "side": 1,
+      "message": "should include the filename that we failed to open.",
+      "range": {
+        "startLine": 60,
+        "startChar": 25,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "b55dd61f1cb7a6a2737eeececb183824addc87fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "304a947a_5cfd2975",
+        "filename": "media/libstagefright/tests/extractorFactory/ExtractorFactoryTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-24T22:50:40Z",
+      "side": 1,
+      "message": "check return code;\nlooks like return code is used by caller in an assert(), so return -1 if this fails.",
+      "range": {
+        "startLine": 64,
+        "startChar": 4,
+        "endLine": 64,
+        "endChar": 22
+      },
+      "revId": "b55dd61f1cb7a6a2737eeececb183824addc87fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1021a7a_60231221",
+        "filename": "media/libstagefright/tests/extractorFactory/ExtractorFactoryTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-24T22:50:40Z",
+      "side": 1,
+      "message": "i\u0027m a fan of including the name of the file that we failed to open in these diagnostics.",
+      "range": {
+        "startLine": 89,
+        "startChar": 54,
+        "endLine": 89,
+        "endChar": 69
+      },
+      "revId": "b55dd61f1cb7a6a2737eeececb183824addc87fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2ee92a8_b6db8fba",
+        "filename": "media/libstagefright/tests/extractorFactory/ExtractorFactoryTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-24T22:50:40Z",
+      "side": 1,
+      "message": "assert_ge(fd, 0)   to make sure that we get a legitimate file descriptor back.\n\ni know \"it should not happen\" since the fopen() succeeded -- but let\u0027s check anyway.",
+      "range": {
+        "startLine": 91,
+        "startChar": 11,
+        "endLine": 91,
+        "endChar": 15
+      },
+      "revId": "b55dd61f1cb7a6a2737eeececb183824addc87fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74fe629d_7460330d",
+        "filename": "media/libstagefright/tests/extractorFactory/ExtractorFactoryTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-24T22:50:40Z",
+      "side": 1,
+      "message": "are we allowed to re-use the data source feeding into different extractors?\n\nfeels to me that we\u0027d want to reinvoke createDataSource() for each pass through\nthe loop at line 107",
+      "range": {
+        "startLine": 103,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 56
+      },
+      "revId": "b55dd61f1cb7a6a2737eeececb183824addc87fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
