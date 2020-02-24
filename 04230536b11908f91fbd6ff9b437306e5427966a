@@ -22,6 +22,30 @@
       "revId": "04230536b11908f91fbd6ff9b437306e5427966a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a3419f6_3dc3a8d5",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4020,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2020-02-24T04:04:00Z",
+      "side": 1,
+      "message": "Ack. Including \u003d\u003d 0 case as invalid as the time is invalid in this case, per AudioTimestamp.h documentation:\n\n    // mTimeNs is in nanoseconds for the default timebase, monotonic.\n    // If this value is -1, then both time and position are invalid.\n    // If this value is 0, then the time is not valid but the position is valid.",
+      "parentUuid": "d044ae36_b7d9f640",
+      "range": {
+        "startLine": 4020,
+        "startChar": 29,
+        "endLine": 4020,
+        "endChar": 30
+      },
+      "revId": "04230536b11908f91fbd6ff9b437306e5427966a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
