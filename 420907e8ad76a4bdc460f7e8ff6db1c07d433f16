@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "23f15245_6c4b1c21",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-02-24T10:56:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "251d28f0_683123ee",
+      "range": {
+        "startLine": 47,
+        "startChar": 37,
+        "endLine": 47,
+        "endChar": 39
+      },
+      "revId": "420907e8ad76a4bdc460f7e8ff6db1c07d433f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "f460f1f2_379fe760",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "420907e8ad76a4bdc460f7e8ff6db1c07d433f16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c389af89_76a4c308",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-02-24T10:56:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f460f1f2_379fe760",
+      "range": {
+        "startLine": 189,
+        "startChar": 20,
+        "endLine": 189,
+        "endChar": 29
+      },
+      "revId": "420907e8ad76a4bdc460f7e8ff6db1c07d433f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "cb55ce64_bf61c6a8",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-02-24T10:56:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b362971_54989d1a",
+      "range": {
+        "startLine": 190,
+        "startChar": 12,
+        "endLine": 190,
+        "endChar": 33
+      },
+      "revId": "420907e8ad76a4bdc460f7e8ff6db1c07d433f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8e4b0a07_8cec8c4b",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 2
@@ -82,6 +154,30 @@
       "writtenOn": "2020-02-21T22:06:00Z",
       "side": 1,
       "message": "and then include the list of timestamps in our array here...\n\n[probably want to prep a string representation of the array before we enter the loop\nand use that string here rather than re-creating the string representation on each iteration]",
+      "range": {
+        "startLine": 194,
+        "startChar": 23,
+        "endLine": 194,
+        "endChar": 32
+      },
+      "revId": "420907e8ad76a4bdc460f7e8ff6db1c07d433f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18ae1ca0_7ffd8235",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-02-24T10:56:05Z",
+      "side": 1,
+      "message": "Changed it to display the range of acceptable time stamps.\nseekToTimeStamp is calculated run time in the loop so the we will have to create the string representation of range for each loop. \nAlso since we can seek to any random point for these extractors, the array of possible seek timestamps could be entire file. So for these extractors, we don\u0027t create a list of seekTimeStamps. We just randomly seek to a point and check if the extractor is giving us the timestamp with a +- tolerance.",
+      "parentUuid": "8e4b0a07_8cec8c4b",
       "range": {
         "startLine": 194,
         "startChar": 23,
