@@ -187,6 +187,30 @@
       "revId": "420907e8ad76a4bdc460f7e8ff6db1c07d433f16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56ff5900_736468b0",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-24T22:52:43Z",
+      "side": 1,
+      "message": "knowing the time range gives us more information...\n\nthe reason i asked for the array to be included was so that we could see if the\nfailure was because of a particular pattern --  for example seeking backwards after having seeked to the last legal timestamp (which might have triggered an EOS).\n\nthe list of possible seek points is high -- but we only pick kMaxCount (10) seek points from that set. Building an array of 10 is manageable. if kMaxCount were in 100+ -- i\u0027d feel differently about this.",
+      "parentUuid": "18ae1ca0_7ffd8235",
+      "range": {
+        "startLine": 194,
+        "startChar": 23,
+        "endLine": 194,
+        "endChar": 32
+      },
+      "revId": "420907e8ad76a4bdc460f7e8ff6db1c07d433f16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

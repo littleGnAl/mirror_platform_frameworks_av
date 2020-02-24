@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f62cbf1e_8dc48522",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-24T22:52:43Z",
+      "side": 1,
+      "message": "should we be reading this from the file itself? It\u0027s a codec construct, not an\nextractor construct.... but it is a variable, right?",
+      "range": {
+        "startLine": 46,
+        "startChar": 39,
+        "endLine": 46,
+        "endChar": 44
+      },
+      "revId": "670278c3f6d2a7897f9bf4f4b0c58c521e0f21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "584ba71d_da518475",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-24T22:52:43Z",
+      "side": 1,
+      "message": "need some comment in the code for why we chose 40ms as the tolerance.",
+      "range": {
+        "startLine": 47,
+        "startChar": 43,
+        "endLine": 47,
+        "endChar": 48
+      },
+      "revId": "670278c3f6d2a7897f9bf4f4b0c58c521e0f21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a0a1f218_be03099d",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-24T22:52:43Z",
+      "side": 1,
+      "message": "rand 0..0x7fffffff and we\u0027re dealing with durations in microseconds.  so 2^11 seconds \u003d\u003d 2048 seconds. this means we can\u0027t test seeking to the end of a file that is \u003e 2048 seconds (~34 minutes).\n\nprobably better to:  seekTo \u003d ((double) rand() / RAND_MAX) * clipDuration;\nwhich spreads our 0..0x7fffffff range over the entire clip.",
+      "range": {
+        "startLine": 180,
+        "startChar": 27,
+        "endLine": 180,
+        "endChar": 47
+      },
+      "revId": "670278c3f6d2a7897f9bf4f4b0c58c521e0f21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf5ca7c4_5fdddb82",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-02-24T22:52:43Z",
+      "side": 1,
+      "message": "would this function correctly for one of the other extractors?  one that doesn\u0027t have\nas fine grained resolution as the flac/wav/midi extractors?  I expect that the others\nwould function, but perhaps need a different level of \"tolerance\" for how close the seek\nhas to match.",
+      "range": {
+        "startLine": 455,
+        "startChar": 11,
+        "endLine": 455,
+        "endChar": 87
+      },
+      "revId": "670278c3f6d2a7897f9bf4f4b0c58c521e0f21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
