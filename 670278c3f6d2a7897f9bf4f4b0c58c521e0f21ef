@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "8089fc8c_83dd1b8c",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-25T19:37:30Z",
+      "side": 1,
+      "message": "Manisha,\nYou can check if format has csd-2 and if yes, get it from there.\nIf not, you can call GetOpusHeaderBuffers() from libstagefright_foundation and get that value.\nRefer\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libstagefright/Utils.cpp;l\u003d1839?q\u003dGetOpusHeaderBuffers\u0026ss\u003dandroid%2Fplatform%2Fsuperproject",
+      "parentUuid": "f62cbf1e_8dc48522",
+      "range": {
+        "startLine": 46,
+        "startChar": 39,
+        "endLine": 46,
+        "endChar": 44
+      },
+      "revId": "670278c3f6d2a7897f9bf4f4b0c58c521e0f21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "584ba71d_da518475",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 3
@@ -130,6 +154,30 @@
       "writtenOn": "2020-02-24T22:52:43Z",
       "side": 1,
       "message": "would this function correctly for one of the other extractors?  one that doesn\u0027t have\nas fine grained resolution as the flac/wav/midi extractors?  I expect that the others\nwould function, but perhaps need a different level of \"tolerance\" for how close the seek\nhas to match.",
+      "range": {
+        "startLine": 455,
+        "startChar": 11,
+        "endLine": 455,
+        "endChar": 87
+      },
+      "revId": "670278c3f6d2a7897f9bf4f4b0c58c521e0f21ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "767ac1eb_0a620bc5",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-25T19:37:30Z",
+      "side": 1,
+      "message": "Manisha,\nI and Ray discussed this. \nPlease update the comment above to explain why these formats can\u0027t be tested using sync point based tests below and also explain why other formats can\u0027t be run through these random seek point tests.",
+      "parentUuid": "bf5ca7c4_5fdddb82",
       "range": {
         "startLine": 455,
         "startChar": 11,
