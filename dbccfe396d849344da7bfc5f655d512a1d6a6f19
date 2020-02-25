@@ -16,6 +16,24 @@
       "revId": "dbccfe396d849344da7bfc5f655d512a1d6a6f19",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf9133cb_762bbe0d",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 6509,
+      "author": {
+        "id": 1179935
+      },
+      "writtenOn": "2020-02-25T12:45:32Z",
+      "side": 1,
+      "message": "from MTK:    \n    MediaCodec reclaims resources in 3 stages: init/configure/start.\n    The suggested code only covers the init stage.\n    Also it seems like a good idea to reset it when omx component is allocated.",
+      "parentUuid": "b9106661_610ebe4a",
+      "revId": "dbccfe396d849344da7bfc5f655d512a1d6a6f19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
