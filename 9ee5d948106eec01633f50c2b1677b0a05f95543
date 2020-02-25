@@ -22,6 +22,30 @@
       "revId": "9ee5d948106eec01633f50c2b1677b0a05f95543",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "207b0e40_a1826cd1",
+        "filename": "media/libmediaplayerservice/MediaPlayerFactory.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 280,
+      "author": {
+        "id": 1179935
+      },
+      "writtenOn": "2020-02-25T13:04:05Z",
+      "side": 1,
+      "message": "The libraries to be dlopened here are actually placed under /system/lib, so I don\u0027t think it\u0027s violating the Treble design.",
+      "parentUuid": "7f522df9_bf0bb8f2",
+      "range": {
+        "startLine": 280,
+        "startChar": 0,
+        "endLine": 280,
+        "endChar": 48
+      },
+      "revId": "9ee5d948106eec01633f50c2b1677b0a05f95543",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
