@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d4f0d5c_ffe5b37e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-02-26T01:15:24Z",
+      "side": 1,
+      "message": "Could you also provide a \u0027Test: \u0027 line specifying how to test this change. Doesn\u0027t have to be an exact shell command, it\u0027s OK to have a human-only description.",
+      "range": {
+        "startLine": 7,
+        "startChar": 51,
+        "endLine": 7,
+        "endChar": 52
+      },
+      "revId": "a3e545cc9ce37dbfab53f3769bb0d7a6f290b6d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "370c9dbd_550d3410",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-02-26T01:15:24Z",
+      "side": 1,
+      "message": "Could you please add at the bottom:\n\nChange-Id: I8b69c11ea7a4f3573cf19ad85f85bddb44565659\n\nThis is needed for tracking of this CL.",
+      "revId": "a3e545cc9ce37dbfab53f3769bb0d7a6f290b6d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd8a959a_6d2aeafc",
+        "filename": "media/extractors/mp4/AC4Parser.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-02-26T01:15:24Z",
+      "side": 1,
+      "message": "\"must\", otherwise we wouldn\u0027t bail out. Or just indicate the problem: \"pres_bytes is smaller than presentation_bytes\"",
+      "range": {
+        "startLine": 604,
+        "startChar": 34,
+        "endLine": 604,
+        "endChar": 40
+      },
+      "revId": "a3e545cc9ce37dbfab53f3769bb0d7a6f290b6d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
