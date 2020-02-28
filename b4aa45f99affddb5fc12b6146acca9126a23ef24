@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3d38ae22_11356bd1",
+        "filename": "media/libeffects/lvm/lib/Bundle/src/LVM_Init.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-02-28T18:09:52Z",
+      "side": 1,
+      "message": "instead of 1 use EQNB_NumBands as first argument\ncalloc(pInstParams-\u003eEQNB_NumBands, sizeof(*(pInstance-\u003epEQNB_BandDefs)));\n\nmake similar changes in all places where malloc() was called with (number * sizeof()) as argument",
+      "range": {
+        "startLine": 249,
+        "startChar": 8,
+        "endLine": 249,
+        "endChar": 85
+      },
+      "revId": "b4aa45f99affddb5fc12b6146acca9126a23ef24",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
