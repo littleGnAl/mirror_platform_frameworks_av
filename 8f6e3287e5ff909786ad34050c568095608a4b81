@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "96a8d971_aebbd3ee",
+        "filename": "media/libstagefright/rtsp/ARTSPConnection.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2020-02-29T14:16:37Z",
+      "side": 1,
+      "message": "Thanks for the pointers in the commit description. I see from the RFC that realm is required for challenge-based authentication schemes, and digest authentication is one of those. However, I am wondering whether in practice this is near enough always correctly implemented. Is there any value in having a fallback if mRealm has not been initialized here? If not please feel free to submit as-is.",
+      "range": {
+        "startLine": 1005,
+        "startChar": 14,
+        "endLine": 1005,
+        "endChar": 20
+      },
+      "revId": "8f6e3287e5ff909786ad34050c568095608a4b81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
