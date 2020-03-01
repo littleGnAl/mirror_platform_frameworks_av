@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e3a42e76_d2551952",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2535,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2020-03-01T23:13:24Z",
+      "side": 1,
+      "message": "There could be metadatatracks too, would all of them have to wait ? or Are we worried about video only, so it has to be just mIsVideo instead of !mIsAudio?",
+      "range": {
+        "startLine": 2535,
+        "startChar": 9,
+        "endLine": 2535,
+        "endChar": 17
+      },
+      "revId": "4d309c48f4755fffcee8d44efcd4a1d5afa72c55",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
