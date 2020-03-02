@@ -69,7 +69,7 @@ struct MediaCodec : public AHandler {
         BUFFER_FLAG_MUXER_DATA    = 16,
     };
 
-    enum CVODegree {
+    enum {
         CVO_DEGREE_0   = 0,
         CVO_DEGREE_90  = 90,
         CVO_DEGREE_180 = 180,
