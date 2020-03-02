@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "23f0f3bb_1967e83e",
+        "filename": "media/libstagefright/foundation/OpusHeader.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1261213
+      },
+      "writtenOn": "2020-03-02T12:45:59Z",
+      "side": 1,
+      "message": "Can be replaced by header-\u003echannels. We already have a check that these two values are identical.",
+      "range": {
+        "startLine": 137,
+        "startChar": 37,
+        "endLine": 137,
+        "endChar": 78
+      },
+      "revId": "6081a3bd25299222818484a0cfacffa3b072f4af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
