@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e4eca1e_ab571ce6",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1881,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-03-04T01:13:43Z",
+      "side": 1,
+      "message": "we should take resampling into account here.\n\nAlso maybe tweak mFrameCountToBeReady so that isReady() waits fro more than one frame available to start mixing this track when recovering from underrun\n\nAlso maybe move this to obtainBuffer() because sampling this condition in releaseBuffer() (after consuming one buffer) does force a full buffer to be already available in anticipation of next mix round which may be to conservative.",
+      "range": {
+        "startLine": 1881,
+        "startChar": 17,
+        "endLine": 1881,
+        "endChar": 61
+      },
+      "revId": "22714169f215b5a97e2ae8771ada6d063c39cd60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
