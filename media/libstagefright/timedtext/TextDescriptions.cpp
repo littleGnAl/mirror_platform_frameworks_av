@@ -445,50 +445,62 @@ status_t TextDescriptions::extract3GPPGlobalDescriptions(
                     | *(tmpData + 10) << 8 | *(tmpData + 11);
                 parcel->writeInt32(rgba);
 
+                // tx3g box contains class FontTableBox() which extends ftab box
+                // This information is part of the 3gpp Timed Text Format
+                // Specification#: 26.245 / Section: 5.16(Sample Description Format)
+                // https://www.3gpp.org/ftp/Specs/archive/26_series/26.245/
+
                 tmpData += 12;
                 remaining -= 12;
 
-                if (remaining < 2) {
+                if (remaining < 8) {
                     return OK;
                 }
 
-                size_t dataPos = parcel->dataPosition();
+                uint32_t subChunkType = U32_AT(tmpData + 4);
 
-                parcel->writeInt32(KEY_STRUCT_FONT_LIST);
-                uint16_t count = U16_AT(tmpData);
-                parcel->writeInt32(count);
-
-                tmpData += 2;
-                remaining -= 2;
-
-                for (int i = 0; i < count; i++) {
-                    if (remaining < 3) {
-                        // roll back
-                        parcel->setDataPosition(dataPos);
+                if (subChunkType == FOURCC('f', 't', 'a', 'b'))
+                {
+                    if(remaining < 10) {
                         return OK;
                     }
-                    // font ID
-                    parcel->writeInt32(U16_AT(tmpData));
+                    size_t dataPos = parcel->dataPosition();
 
-                    // font name length
-                    parcel->writeInt32(*(tmpData + 2));
+                    parcel->writeInt32(KEY_STRUCT_FONT_LIST);
+                    uint16_t count = U16_AT(tmpData + 8);
+                    parcel->writeInt32(count);
 
-                    size_t len = *(tmpData + 2);
+                    tmpData += 10;
+                    remaining -= 10;
 
-                    tmpData += 3;
-                    remaining -= 3;
+                    for (int i = 0; i < count; i++) {
+                        if (remaining < 3) {
+                            // roll back
+                            parcel->setDataPosition(dataPos);
+                            return OK;
+                        }
+                        // font ID
+                        parcel->writeInt32(U16_AT(tmpData));
 
-                    if (remaining < len) {
-                        // roll back
-                        parcel->setDataPosition(dataPos);
-                        return OK;
+                        // font name length
+                        size_t len = *(tmpData + 2);
+
+                        parcel->writeInt32(len);
+
+                        tmpData += 3;
+                        remaining -= 3;
+
+                        if (remaining < len) {
+                            // roll back
+                            parcel->setDataPosition(dataPos);
+                            return OK;
+                        }
+
+                        parcel->write(tmpData, len);
+                        tmpData += len;
+                        remaining -= len;
                     }
-
-                    parcel->write(tmpData, len);
-                    tmpData += len;
-                    remaining -= len;
                 }
-
                 // there is a "DisparityBox" after this according to the spec, but we ignore it
                 break;
             }
