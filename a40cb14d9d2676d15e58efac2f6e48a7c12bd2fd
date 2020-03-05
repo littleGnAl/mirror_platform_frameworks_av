@@ -16,6 +16,24 @@
       "revId": "a40cb14d9d2676d15e58efac2f6e48a7c12bd2fd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d06c71d6_9dade0df",
+        "filename": "media/libaudiofoundation/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-05T01:25:54Z",
+      "side": 1,
+      "message": "Yup, cc_library ~ cc_library_static + cc_library_shared",
+      "parentUuid": "6dfac492_95233a1d",
+      "revId": "a40cb14d9d2676d15e58efac2f6e48a7c12bd2fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
