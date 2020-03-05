@@ -386,7 +386,7 @@ private:
 
             hardware::camera::common::V1_0::CameraDeviceStatus mStatus;
 
-            sp<ProviderInfo> mParentProvider;
+            wp<ProviderInfo> mParentProvider;
 
             bool hasFlashUnit() const { return mHasFlashUnit; }
             virtual status_t setTorchMode(bool enabled) = 0;
