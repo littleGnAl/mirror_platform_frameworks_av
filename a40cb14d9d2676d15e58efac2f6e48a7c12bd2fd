@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6dfac492_95233a1d",
+        "filename": "media/libaudiofoundation/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-03-05T01:06:56Z",
+      "side": 1,
+      "message": "I tried cc_library_static earlier, that breaks bunch of things.",
+      "revId": "a40cb14d9d2676d15e58efac2f6e48a7c12bd2fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
