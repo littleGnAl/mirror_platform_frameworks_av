@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0089121b_c1fb6be0",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-06T04:18:13Z",
+      "side": 1,
+      "message": "need to set the .mID field to kType2 on this struct.",
+      "range": {
+        "startLine": 585,
+        "startChar": 12,
+        "endLine": 585,
+        "endChar": 31
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65546a8b_661865e1",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-06T04:18:13Z",
+      "side": 1,
+      "message": "it seems that the only setting of mHdrStaticInfoLocal is in these next couple of get()\nroutines.  and the only consumer is this routine.\n\ni would much rather see:\n\na local-to-this-routine HdrStaticInfo structure;\nwe pass it as a parameter to this sequence of get() routines, who fill using that.",
+      "range": {
+        "startLine": 589,
+        "startChar": 8,
+        "endLine": 589,
+        "endChar": 18
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c6310d3_c7a764c1",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 607,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-06T04:18:13Z",
+      "side": 1,
+      "message": "need to compare the .mId fields for any differences.",
+      "range": {
+        "startLine": 607,
+        "startChar": 20,
+        "endLine": 607,
+        "endChar": 26
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf4d490e_2aa6b434",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 675,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-06T04:18:13Z",
+      "side": 1,
+      "message": "if we pass a pointer to where we want the data, then perhaps:\n\n1. does this need to be a member function?   does it need it for the HdrStaticInfo::Type2\ntype information?\n\n2. it can be file-static (private to this file).",
+      "range": {
+        "startLine": 675,
+        "startChar": 1,
+        "endLine": 675,
+        "endChar": 19
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1cfdd192_37613953",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 698,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-06T04:18:13Z",
+      "side": 1,
+      "message": "get a parameter pointing to where we want to fill in the info.\n\nprobably should verify that infoptr-\u003emId field is kType2.\nmaking sure that things are consistent.",
+      "range": {
+        "startLine": 698,
+        "startChar": 4,
+        "endLine": 698,
+        "endChar": 24
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8edc59e7_76b6ec8e",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-06T04:18:13Z",
+      "side": 1,
+      "message": "see comments in the other file; not sure that they need to be member functions.",
+      "range": {
+        "startLine": 144,
+        "startChar": 4,
+        "endLine": 147,
+        "endChar": 18
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d232438_0de6e58e",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-06T04:18:13Z",
+      "side": 1,
+      "message": "i don\u0027t think we need this as a field in the class; see the *.cpp file comments.",
+      "range": {
+        "startLine": 199,
+        "startChar": 18,
+        "endLine": 199,
+        "endChar": 37
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
