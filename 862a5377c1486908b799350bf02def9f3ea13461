@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99efabc2_42d9ebea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-03-06T21:32:53Z",
+      "side": 1,
+      "message": "You are saying that crash happens when a global effect is being moved. However, I don\u0027t see in the code any distinction between global and non-global effects. Could you please explain that?",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "862a5377c1486908b799350bf02def9f3ea13461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fe6827a_e6d72f87",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-03-06T21:32:53Z",
+      "side": 1,
+      "message": "typo: failed",
+      "range": {
+        "startLine": 9,
+        "startChar": 15,
+        "endLine": 9,
+        "endChar": 20
+      },
+      "revId": "862a5377c1486908b799350bf02def9f3ea13461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07a62955_33d2f9b8",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2712,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-03-06T21:32:53Z",
+      "side": 1,
+      "message": "Is it possible to find out that it\u0027s a global effect without calling \u0027mpClientInterface-\u003emoveEffects\u0027 first? If we could incorporate this check into the loop above to avoid selecting such output in the first place, and maybe selecting a different one, wouldn\u0027t it be more useful?",
+      "range": {
+        "startLine": 2712,
+        "startChar": 15,
+        "endLine": 2712,
+        "endChar": 56
+      },
+      "revId": "862a5377c1486908b799350bf02def9f3ea13461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dfeee62_4b19cc86",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2713,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-03-06T21:32:53Z",
+      "side": 1,
+      "message": "typo: global",
+      "range": {
+        "startLine": 2713,
+        "startChar": 19,
+        "endLine": 2713,
+        "endChar": 25
+      },
+      "revId": "862a5377c1486908b799350bf02def9f3ea13461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
