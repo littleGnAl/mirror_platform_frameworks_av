@@ -37,9 +37,8 @@ public:
     static std::vector<std::string> getDefaultSearchDirs() {
             return { "/odm/etc", "/vendor/etc", "/etc" };
     }
-    static std::vector<std::string> getDefaultXmlNames() {
-            return { "media_codecs.xml", "media_codecs_performance.xml" };
-    }
+    static std::vector<std::string> getDefaultXmlNames();
+
     static constexpr char const* defaultProfilingResultsXmlPath =
             "/data/misc/media/media_codecs_profiling_results.xml";
 
