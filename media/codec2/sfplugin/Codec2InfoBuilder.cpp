@@ -322,7 +322,7 @@ status_t Codec2InfoBuilder::buildMediaCodecList(MediaCodecListWriter* writer) {
     // parse APEX XML first, followed by vendor XML
     MediaCodecsXmlParser parser;
     parser.parseXmlFilesInSearchDirs(
-            parser.getDefaultXmlNames(),
+            { "media_codecs.xml", "media_codecs_performance.xml" },
             { "/apex/com.android.media.swcodec/etc" });
 
     // TODO: remove these c2-specific files once product moved to default file names

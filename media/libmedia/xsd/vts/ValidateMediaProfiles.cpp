@@ -25,12 +25,28 @@ TEST(CheckConfig, mediaProfilesValidation) {
                    "Verify that the media profiles file "
                    "is valid according to the schema");
 
+    // If "media.settings.xml" is set, it will be used as an absolute path.
     std::string mediaSettingsPath = android::base::GetProperty("media.settings.xml", "");
     if (mediaSettingsPath.empty()) {
-        mediaSettingsPath.assign("/vendor/etc/media_profiles_V1_0.xml");
-    }
+        // If "media.settings.xml" is not set, we will search through a list of
+        // preset directories.
+        std::vector<char const*> searchDirs = {
+                "/odm/etc",
+                "/vendor/etc/",
+                "/system/etc"
+            };
 
-    EXPECT_ONE_VALID_XML_MULTIPLE_LOCATIONS(android::base::Basename(mediaSettingsPath).c_str(),
-                                            {android::base::Dirname(mediaSettingsPath).c_str()},
-                                            "/data/local/tmp/media_profiles.xsd");
+        // The vendor may provide a vendor variant.
+        std::string variant = android::base::GetProperty(
+                "ro.media.xml_variant.profiles", "_V1_0");
+
+        std::string fileName = "media_profiles" + variant + ".xml";
+        EXPECT_ONE_VALID_XML_MULTIPLE_LOCATIONS(fileName.c_str(),
+                                                searchDirs,
+                                                "/data/local/tmp/media_profiles.xsd");
+    } else {
+        EXPECT_ONE_VALID_XML_MULTIPLE_LOCATIONS(android::base::Basename(mediaSettingsPath).c_str(),
+                                                {android::base::Dirname(mediaSettingsPath).c_str()},
+                                                "/data/local/tmp/media_profiles.xsd");
+    }
 }
