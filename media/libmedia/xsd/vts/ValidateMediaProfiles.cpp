@@ -14,15 +14,80 @@
  * limitations under the License.
  */
 
+<<<<<<< HEAD   (5c124b Merge "Add sub-elements for "Variant" type" into android10-t)
+=======
+#include <fstream>
+#include <string>
+
+#include <android-base/file.h>
+#include <android-base/properties.h>
+>>>>>>> CHANGE (7f5e10 Allow XML file paths to be customized with sysprop)
 #include "utility/ValidateXml.h"
+
+bool isFileReadable(std::string const& path) {
+  std::ifstream f(path);
+  return f.good();
+}
 
 TEST(CheckConfig, mediaProfilesValidation) {
     RecordProperty("description",
                    "Verify that the media profiles file "
                    "is valid according to the schema");
 
+<<<<<<< HEAD   (5c124b Merge "Add sub-elements for "Variant" type" into android10-t)
     const char* location = "/vendor/etc";
+=======
+    // Schema path.
+    constexpr char const* xsdPath = "/data/local/tmp/media_profiles.xsd";
 
+    // If "media.settings.xml" is set, it will be used as an absolute path.
+    std::string mediaSettingsPath = android::base::GetProperty("media.settings.xml", "");
+    if (mediaSettingsPath.empty()) {
+        // If "media.settings.xml" is not set, we will search through a list of
+        // file paths.
+>>>>>>> CHANGE (7f5e10 Allow XML file paths to be customized with sysprop)
+
+<<<<<<< HEAD   (5c124b Merge "Add sub-elements for "Variant" type" into android10-t)
     EXPECT_ONE_VALID_XML_MULTIPLE_LOCATIONS("media_profiles_V1_0.xml", {location},
                                             "/data/local/tmp/media_profiles.xsd");
+=======
+        constexpr char const* xmlSearchDirs[] = {
+                "/product/etc/",
+                "/odm/etc/",
+                "/vendor/etc/",
+            };
+
+        // The vendor may provide a vendor variant for the file name.
+        std::string variant = android::base::GetProperty(
+                "ro.media.xml_variant.profiles", "_V1_0");
+        std::string fileName = "media_profiles" + variant + ".xml";
+
+        // Fallback path does not depend on the property defined from the vendor
+        // partition.
+        constexpr char const* fallbackXmlPath =
+                "/system/etc/media_profiles_V1_0.xml";
+
+        std::vector<std::string> xmlPaths = {
+                xmlSearchDirs[0] + fileName,
+                xmlSearchDirs[1] + fileName,
+                xmlSearchDirs[2] + fileName,
+                fallbackXmlPath
+            };
+
+        auto findXmlPath =
+            std::find_if(xmlPaths.begin(), xmlPaths.end(), isFileReadable);
+        ASSERT_TRUE(findXmlPath != xmlPaths.end())
+                << "Cannot read from " << fileName
+                << " in any search directories ("
+                << xmlSearchDirs[0] << ", "
+                << xmlSearchDirs[1] << ", "
+                << xmlSearchDirs[2] << ") and from "
+                << fallbackXmlPath << ".";
+
+        char const* xmlPath = findXmlPath->c_str();
+        EXPECT_VALID_XML(xmlPath, xsdPath);
+    } else {
+        EXPECT_VALID_XML(mediaSettingsPath.c_str(), xsdPath);
+    }
+>>>>>>> CHANGE (7f5e10 Allow XML file paths to be customized with sysprop)
 }
