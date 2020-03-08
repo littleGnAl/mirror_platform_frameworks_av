@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "c1227b4d_070f273d",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:05:07Z",
+      "side": 1,
+      "message": "inserting these here changes the values for kParamIndexChromaOffset and kParamIndexGoPlayer.\nthat\u0027s a compatibility problem, since those values are compiled into different images\n(system, vendor, mainline modules) that update independently.\n\nthese need to be at the end of this list (after line 97).",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 34
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "12f2e754_40f9a9c2",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 2
@@ -18,6 +41,397 @@
         "startChar": 43,
         "endLine": 1575,
         "endChar": 50
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0ca44ad_d61ed481",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:05:07Z",
+      "side": 1,
+      "message": "then it should be assigning HDRStaticInfo::Type1 here instead of constant 0.",
+      "range": {
+        "startLine": 1283,
+        "startChar": 25,
+        "endLine": 1283,
+        "endChar": 30
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "171b92e2_b50cf6b6",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1286,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:05:07Z",
+      "side": 1,
+      "message": "HDRStaticInfo::Type 1",
+      "range": {
+        "startLine": 1286,
+        "startChar": 35,
+        "endLine": 1286,
+        "endChar": 38
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f130592_8540f6ac",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1299,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:05:07Z",
+      "side": 1,
+      "message": "this is a \"if (all good) {set} else {error}\" format\nand the \"all good\" is complex.\n\nfor complex tests like that, i tend to like:\n\nif (p1 is bad) error\nif (p2 is bad) error\nif (p3 is bad) error\ndo the setting\n\nit is stylistic, to some extent.",
+      "range": {
+        "startLine": 1299,
+        "startChar": 15,
+        "endLine": 1299,
+        "endChar": 39
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdb2b8d3_be8b4be6",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1300,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:05:07Z",
+      "side": 1,
+      "message": "feels like we should have a macro\n    IN_RANGE_INCLUSIVE(hdr.mastering.red.y, 0, 1)\n\nwhich would seem to be more readable.",
+      "range": {
+        "startLine": 1300,
+        "startChar": 27,
+        "endLine": 1300,
+        "endChar": 87
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e014bef7_db0744c3",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:05:07Z",
+      "side": 1,
+      "message": "is minLuminance really that limited?\n\nfeels like there should also be a check that maxLuminance \u003e\u003d minLuminance.",
+      "range": {
+        "startLine": 1308,
+        "startChar": 93,
+        "endLine": 1308,
+        "endChar": 99
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9bf6470_591aac95",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1311,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:05:07Z",
+      "side": 1,
+      "message": "I like the idea of meta \u003d {0};\n\ni know we\u0027re about to fill everything in .... or at least everything we\u0027ve remembered.\nwith the initializer in there, if we omitted something (or later add a field), we know\nthat we\u0027ll get a nice clean 0 value.",
+      "range": {
+        "startLine": 1311,
+        "startChar": 25,
+        "endLine": 1311,
+        "endChar": 39
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5845e720_03e68af5",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1338,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:05:07Z",
+      "side": 1,
+      "message": "don\u0027t do this arithmetic here;\nthere should be a defined HRDStaticInfo::SizeOfType1Record \nconstant or something.",
+      "range": {
+        "startLine": 1338,
+        "startChar": 61,
+        "endLine": 1338,
+        "endChar": 93
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4d1873f9_7c7b7cb6",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:05:07Z",
+      "side": 1,
+      "message": "now I\u0027m sure that these need to be defined constants instead of magic values.",
+      "range": {
+        "startLine": 1343,
+        "startChar": 42,
+        "endLine": 1343,
+        "endChar": 45
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d91d8893_db2fd9f7",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1385,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:05:07Z",
+      "side": 1,
+      "message": "really that limited?\n\nand i think we need to know that maxlumiance \u003e\u003d minluminance here too.",
+      "range": {
+        "startLine": 1385,
+        "startChar": 92,
+        "endLine": 1385,
+        "endChar": 99
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d054f0f_e347364d",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1407,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:05:07Z",
+      "side": 1,
+      "message": "and in this case, minLuminance is not limited.\nthat makes me more suspicious of the limited one i called out earlier.\n\nand need to know max\u003e\u003d min.\nmore completely, I think we need to know that max \u003e\u003d avg \u003e\u003d min",
+      "range": {
+        "startLine": 1407,
+        "startChar": 68,
+        "endLine": 1407,
+        "endChar": 85
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4466115_78c96726",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:05:07Z",
+      "side": 1,
+      "message": "check the math here.\n\nif red.x \u003e 0, you\u0027ll get rounding.\nif red.x \u003c 0, you\u0027ll get the wrong answer; your rounding by adding +0.5 will turn -1.4 into 0.",
+      "range": {
+        "startLine": 1438,
+        "startChar": 42,
+        "endLine": 1438,
+        "endChar": 72
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45c0db49_a08606d5",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:05:07Z",
+      "side": 1,
+      "message": "this should be defined back in the VideoAPI file, \nwe shouldn\u0027t be doing the arithmetic here.",
+      "range": {
+        "startLine": 1479,
+        "startChar": 52,
+        "endLine": 1479,
+        "endChar": 86
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a00458b_82830c6a",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:05:07Z",
+      "side": 1,
+      "message": "use a constant defined back in VideoAPI.h, don\u0027t do the math here.",
+      "range": {
+        "startLine": 1650,
+        "startChar": 38,
+        "endLine": 1650,
+        "endChar": 72
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9de2f272_1d0f8d54",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1651,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:05:07Z",
+      "side": 1,
+      "message": "HdrStaticInfo::kType1\nnot the magic value 0",
+      "range": {
+        "startLine": 1651,
+        "startChar": 43,
+        "endLine": 1651,
+        "endChar": 47
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63cd0ff5_063966e4",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1665,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:05:07Z",
+      "side": 1,
+      "message": "define a constant in VideoAPI.h; do not do the math here.",
+      "range": {
+        "startLine": 1665,
+        "startChar": 39,
+        "endLine": 1665,
+        "endChar": 72
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "07dde7f2_c5a94e90",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1666,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:05:07Z",
+      "side": 1,
+      "message": "not this magic value;\nHDRStaticInfo::kType2",
+      "range": {
+        "startLine": 1666,
+        "startChar": 44,
+        "endLine": 1666,
+        "endChar": 48
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "078e5fb3_534b3584",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1698,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:05:07Z",
+      "side": 1,
+      "message": "should we have an\nelse { ALOGW(\"invalid metadata\"); }\nhere?",
+      "range": {
+        "startLine": 1698,
+        "startChar": 11,
+        "endLine": 1698,
+        "endChar": 13
       },
       "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
