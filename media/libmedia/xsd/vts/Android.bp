@@ -17,7 +17,7 @@
 cc_test {
     name: "vts_mediaProfiles_validate_test",
     srcs: [
-        "ValidateMediaProfiles.cpp"
+        "ValidateMediaProfiles.cpp",
     ],
     static_libs: [
         "android.hardware.audio.common.test.utility",
@@ -31,4 +31,8 @@ cc_test {
         "-Wall",
         "-Werror",
     ],
+}
+
+vts_config {
+    name: "VtsValidateMediaProfiles",
 }

@@ -17,7 +17,7 @@
 cc_test {
     name: "vts_mediaCodecs_validate_test",
     srcs: [
-        "ValidateMediaCodecs.cpp"
+        "ValidateMediaCodecs.cpp",
     ],
     static_libs: [
         "android.hardware.audio.common.test.utility",
@@ -30,4 +30,8 @@ cc_test {
         "-Wall",
         "-Werror",
     ],
+}
+
+vts_config {
+    name: "VtsValidateMediaCodecs",
 }
