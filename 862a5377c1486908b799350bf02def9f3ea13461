@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ec4711ff_3bc47249",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1626367
+      },
+      "writtenOn": "2020-03-08T06:44:55Z",
+      "side": 1,
+      "message": "follow step:\n1. create global effect A with session 0, will be attch to default io 13 for example.\n2. start duplicating output such as 125.\n3. effect A would move to new io at audiopolicy::addOutput if we call selectOutputForMusicEffects. But global effect can\u0027t moves to duplicating thread, audioflinger part will faild. But we omit return value at selectOutputForMusicEffects, the mMusicEffectOutput will be update to 125.(currently, it mismatch with audioflinger part).\n4. if we want to send parameter to effect A, we\u0027d like to create it\u0027s handle at our application. Also create effect A with session 0. But in this time, getOutputForEffect at audioflinger will return 125 because of step 3.\n5. ok, we will get \n\"createEffect: effect A io 125 denied because session 0 effect exists on io 13\"",
+      "parentUuid": "99efabc2_42d9ebea",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "862a5377c1486908b799350bf02def9f3ea13461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fe6827a_e6d72f87",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
