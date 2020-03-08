@@ -2,6 +2,98 @@
   "comments": [
     {
       "key": {
+        "uuid": "a8279fc9_a2a3a3cc",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:04:55Z",
+      "side": 1,
+      "message": "sample?  or default?",
+      "range": {
+        "startLine": 199,
+        "startChar": 11,
+        "endLine": 199,
+        "endChar": 17
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a5bf6a6_55184f0a",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:04:55Z",
+      "side": 1,
+      "message": "can use the types HDRSTaticInfo::kType1 and kType2",
+      "range": {
+        "startLine": 237,
+        "startChar": 58,
+        "endLine": 237,
+        "endChar": 65
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8817c788_eabde093",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:04:55Z",
+      "side": 1,
+      "message": "this is consistently 6.5535\n\nit still seems strange, so my question in all the other places I called it out\nstill holds -- is the minLuminance really that limited?",
+      "range": {
+        "startLine": 248,
+        "startChar": 77,
+        "endLine": 248,
+        "endChar": 83
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "070c4790_c7562fab",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:04:55Z",
+      "side": 1,
+      "message": "i understand the purpose (so compiler considers them used).\n\nI\u0027ve seen lots of other code bases have a macro of rhe form:\nUNUSED(mayBlock);\n\nI don\u0027t know whether we have such a macro; if we do, we should use it.",
+      "range": {
+        "startLine": 365,
+        "startChar": 7,
+        "endLine": 365,
+        "endChar": 17
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0089121b_c1fb6be0",
         "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
         "patchSetId": 2
@@ -64,6 +156,75 @@
         "startChar": 20,
         "endLine": 607,
         "endChar": 26
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b8ee6ed_b35aa683",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:04:55Z",
+      "side": 1,
+      "message": "how do we know that mHdrStaticInfo  (the existing one, not  InfoLocal we just built)\nis a kType2?",
+      "range": {
+        "startLine": 608,
+        "startChar": 19,
+        "endLine": 608,
+        "endChar": 42
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30d061a1_e1a54d7c",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:04:55Z",
+      "side": 1,
+      "message": "the * 0.00002 here and the / 0.00002 that we do when we\u0027re parsing c2 parameters....\n\nwe should have a defined constant somewhere for this.\n\nMy undestanding is that the 0.00002 is done here to scale these to fit into a uint16;",
+      "range": {
+        "startLine": 619,
+        "startChar": 75,
+        "endLine": 619,
+        "endChar": 83
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "74bf4657_c0d1ce3f",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:04:55Z",
+      "side": 1,
+      "message": "i\u0027m assuming this is just a different scaling constant for luminance\ndue to whatever the full range is there and the 16 or 32 bits that we store in the sType2\n\nin any event, probably need a defined scaling constant like i suggested for 0.00002",
+      "range": {
+        "startLine": 652,
+        "startChar": 65,
+        "endLine": 652,
+        "endChar": 74
       },
       "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -156,6 +317,121 @@
         "startChar": 18,
         "endLine": 199,
         "endChar": 37
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45445857_ce08fbc5",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:04:55Z",
+      "side": 1,
+      "message": "sample?  or is this what we set as a default.",
+      "range": {
+        "startLine": 202,
+        "startChar": 15,
+        "endLine": 202,
+        "endChar": 21
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf9b2182_8c01db3c",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:04:55Z",
+      "side": 1,
+      "message": "kType1 i think",
+      "range": {
+        "startLine": 319,
+        "startChar": 27,
+        "endLine": 319,
+        "endChar": 30
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b14a959e_6828f5ff",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:04:55Z",
+      "side": 1,
+      "message": "maxFall\n\nor is maxCll \u003d\u003d maxFall?",
+      "range": {
+        "startLine": 325,
+        "startChar": 39,
+        "endLine": 325,
+        "endChar": 45
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3265b801_53faacd5",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1019,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:04:55Z",
+      "side": 1,
+      "message": "we clearly don\u0027t use any values passed in;\ni don\u0027t know whether the callers use what we put into either of these blocks.\n\nit feels like this should be a parameter-less function\nand that both of these should be local variables.",
+      "range": {
+        "startLine": 1017,
+        "startChar": 4,
+        "endLine": 1019,
+        "endChar": 0
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db965dc4_553d0189",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1079,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-08T02:04:55Z",
+      "side": 1,
+      "message": "same thoughts here.  is the caller only providing space that this routine uses?\n\nif so, then we should just allocate these as locals to this routine and make it have\nno parameters.",
+      "range": {
+        "startLine": 1077,
+        "startChar": 3,
+        "endLine": 1079,
+        "endChar": 0
       },
       "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
