@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d3bae223_77dcebfb",
+        "filename": "media/libstagefright/tests/writer/WriterListener.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-09T19:39:06Z",
+      "side": 1,
+      "message": "our test case will need to know which of these arrived.\ne.g. if set set a filesize limit and the listener then gets a\n\u0027duration reached\u0027 message -- that\u0027s an error.\n\ndo this needs to be expanded from \"we got a callback\" to \"we got a callback for code X\".",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 63
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1bc51a75_a92d6e9b",
+        "filename": "media/libstagefright/tests/writer/WriterListener.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-09T19:39:06Z",
+      "side": 1,
+      "message": "think about the naming of this variable.\n\nEos isn\u0027t quite appropriate; i like \"limit\" -- mSignaledLimit",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 25
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0772208c_e28f001a",
+        "filename": "media/libstagefright/tests/writer/WriterListener.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-09T19:39:06Z",
+      "side": 1,
+      "message": "don\u0027t like the Eos\nneeds to be more than bool, because it needs to convey which got signaled (size or duration)\nprobably also \u0027volatile\u0027.",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 23
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a729420_cd5592ea",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-09T19:39:06Z",
+      "side": 1,
+      "message": "we could encode the 70% value in the paramters, with 0 or -1 meaning \"don\u0027t set it\".\n\nso make_tuple(\"ogg\", 0, true)\nbecomes make_tuple (\"ogg\", 0, 0.70)\n\nthis also means that we can add a test that tests at 50% or 90% if we really wanted.\n\nif we make it a 4 parm -- we can encode type / index / sizepercentate / durationpercentage\nand that allows us to do things like:\n   tuple(\"ogg\", 0, 0.3, 0.7)  \nwhich should generate a size callback (not a duration callback) because of how we\u0027ve set the\ndifferent thresholds.",
+      "range": {
+        "startLine": 500,
+        "startChar": 4,
+        "endLine": 507,
+        "endChar": 0
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0aa2646d_2edac260",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-09T19:39:06Z",
+      "side": 1,
+      "message": "there\u0027s no clause that verifies that the duration didn\u0027t go over.\nwe\u0027re only checking size.",
+      "range": {
+        "startLine": 525,
+        "startChar": 8,
+        "endLine": 525,
+        "endChar": 22
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fbc48c26_87d4d704",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-09T19:39:06Z",
+      "side": 1,
+      "message": "this math appears in too many places.\n\nWhatever value we want should be calculated 1 time near the top of this routine and then\nthat variable should be used throughput.",
+      "range": {
+        "startLine": 529,
+        "startChar": 31,
+        "endLine": 529,
+        "endChar": 34
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e6625984_7ad22125",
+        "filename": "media/libstagefright/tests/writer/WriterUtility.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-09T19:39:06Z",
+      "side": 1,
+      "message": "I don\u0027t think we whould be doing any wait_for() here. I think this block should be\n\nif (listener !\u003d nullptr) {\n  if (listener-\u003emSignaled)\n    break;\n}\n\nand mSignaled needs to be .... volatile, I think ... so that the code here will look at\nwhatever is truly stored and won\u0027t cache it across iterations of the loop.\n\nremember that I also want to know why it signaled (size or duration) so that we can know that it is tossing the right information into the callback.",
+      "range": {
+        "startLine": 30,
+        "startChar": 12,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27dd1efd_80971286",
+        "filename": "media/libstagefright/tests/writer/WriterUtility.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-09T19:39:06Z",
+      "side": 1,
+      "message": "i prefer a different name for this.\n\ni want to avoid any confusion with the Eos that\u0027s internal to the codec signalling.",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 39
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5bbc62d4_847d4d3b",
+        "filename": "media/libstagefright/tests/writer/WriterUtility.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-09T19:39:06Z",
+      "side": 1,
+      "message": "1 millisecond.\n\nseeing how this is used, I think that it\u0027s probably a little quick.\n\nactually -- I don\u0027t like how we\u0027re checking for a notification callback.",
+      "range": {
+        "startLine": 37,
+        "startChar": 31,
+        "endLine": 37,
+        "endChar": 37
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
