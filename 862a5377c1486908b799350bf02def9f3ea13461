@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "894acc67_a8543250",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-03-09T15:12:28Z",
+      "side": 1,
+      "message": "There is no reason why a global effect would be attached to a duplicating output.\nWe need to exclude them from the for loop in selectOutputForMusicEffects()",
+      "parentUuid": "ec4711ff_3bc47249",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 33
+      },
+      "revId": "862a5377c1486908b799350bf02def9f3ea13461",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6fe6827a_e6d72f87",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
