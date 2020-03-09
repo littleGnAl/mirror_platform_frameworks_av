@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "948de213_023dff69",
+        "filename": "media/libstagefright/timedtext/TextDescriptions.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-03-09T23:46:23Z",
+      "side": 0,
+      "message": "need to see if there is any case where this data can be sent without sending \"ftab\".\ncurrent modifications expect \"ftab\" to be mandatory where as earlier one didn\u0027t need it.\nNeed to check if the earlier implementation also was valid in some cases.",
+      "revId": "a85202f4b641744113b3f79b45ea73dbe01d4392",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
