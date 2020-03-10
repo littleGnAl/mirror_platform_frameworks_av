@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "83f1b713_a34cc819",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 3319,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2020-03-10T22:33:04Z",
+      "side": 1,
+      "message": "For non-vendor listener and a non HAL3 camera, it seems to me it was skipped and now won\u0027t be skipped? Is that intended? If so, please document that in commit message,",
+      "range": {
+        "startLine": 3319,
+        "startChar": 16,
+        "endLine": 3319,
+        "endChar": 52
+      },
+      "revId": "21ff6063000a7e641a1d9f160d91789fe7af081b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
