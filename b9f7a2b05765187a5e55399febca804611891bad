@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e0495fbf_93ffc4ff",
+        "filename": "media/libstagefright/tests/writer/WriterListener.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-03-10T11:03:36Z",
+      "side": 1,
+      "message": "Added this error handling case in test",
+      "parentUuid": "d3bae223_77dcebfb",
+      "range": {
+        "startLine": 34,
+        "startChar": 12,
+        "endLine": 35,
+        "endChar": 63
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1bc51a75_a92d6e9b",
         "filename": "media/libstagefright/tests/writer/WriterListener.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "b9f7a2b05765187a5e55399febca804611891bad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "062b01ea_c06d724c",
+        "filename": "media/libstagefright/tests/writer/WriterListener.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-03-10T11:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1bc51a75_a92d6e9b",
+      "range": {
+        "startLine": 37,
+        "startChar": 12,
+        "endLine": 37,
+        "endChar": 25
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "f7e6e929_a2e8f6ae",
+        "filename": "media/libstagefright/tests/writer/WriterListener.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-03-10T11:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0772208c_e28f001a",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 23
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a729420_cd5592ea",
         "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "53cf0e32_156c2d71",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-03-10T11:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a729420_cd5592ea",
+      "range": {
+        "startLine": 500,
+        "startChar": 4,
+        "endLine": 507,
+        "endChar": 0
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0aa2646d_2edac260",
         "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2020-03-09T19:39:06Z",
       "side": 1,
       "message": "there\u0027s no clause that verifies that the duration didn\u0027t go over.\nwe\u0027re only checking size.",
+      "range": {
+        "startLine": 525,
+        "startChar": 8,
+        "endLine": 525,
+        "endChar": 22
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eed43d8d_2cd37495",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-03-10T11:03:36Z",
+      "side": 1,
+      "message": "without extractor it is not feasible to get the file duration of the muxed file\nand as a unit test, this test doesn\u0027t include other modules.",
+      "parentUuid": "0aa2646d_2edac260",
       "range": {
         "startLine": 525,
         "startChar": 8,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "cb9fec10_581f3189",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-03-10T11:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fbc48c26_87d4d704",
+      "range": {
+        "startLine": 529,
+        "startChar": 31,
+        "endLine": 529,
+        "endChar": 34
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e6625984_7ad22125",
         "filename": "media/libstagefright/tests/writer/WriterUtility.cpp",
         "patchSetId": 1
@@ -160,6 +304,30 @@
       "revId": "b9f7a2b05765187a5e55399febca804611891bad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "709b7083_5fe52282",
+        "filename": "media/libstagefright/tests/writer/WriterUtility.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-03-10T11:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6625984_7ad22125",
+      "range": {
+        "startLine": 30,
+        "startChar": 12,
+        "endLine": 30,
+        "endChar": 20
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "865eff69_c4141fce",
+        "filename": "media/libstagefright/tests/writer/WriterUtility.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-03-10T11:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27dd1efd_80971286",
+      "range": {
+        "startLine": 35,
+        "startChar": 26,
+        "endLine": 35,
+        "endChar": 39
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5bbc62d4_847d4d3b",
         "filename": "media/libstagefright/tests/writer/WriterUtility.h",
         "patchSetId": 1
@@ -206,6 +398,30 @@
       "revId": "b9f7a2b05765187a5e55399febca804611891bad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ef55fa4_171322b6",
+        "filename": "media/libstagefright/tests/writer/WriterUtility.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-03-10T11:03:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5bbc62d4_847d4d3b",
+      "range": {
+        "startLine": 37,
+        "startChar": 31,
+        "endLine": 37,
+        "endChar": 37
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
