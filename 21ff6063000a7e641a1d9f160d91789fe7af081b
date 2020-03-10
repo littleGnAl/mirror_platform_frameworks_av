@@ -22,6 +22,30 @@
       "revId": "21ff6063000a7e641a1d9f160d91789fe7af081b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d579020_24d7e870",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 3319,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2020-03-10T22:50:36Z",
+      "side": 1,
+      "message": "That is intended and used to happen till aosp/1152176 regressed this behavior. I\u0027ve updated the commit message to reflect this.",
+      "parentUuid": "83f1b713_a34cc819",
+      "range": {
+        "startLine": 3319,
+        "startChar": 16,
+        "endLine": 3319,
+        "endChar": 52
+      },
+      "revId": "21ff6063000a7e641a1d9f160d91789fe7af081b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
