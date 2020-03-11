@@ -16,6 +16,24 @@
       "revId": "a85202f4b641744113b3f79b45ea73dbe01d4392",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a4232ab_740b9620",
+        "filename": "media/libstagefright/timedtext/TextDescriptions.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-03-11T05:41:10Z",
+      "side": 0,
+      "message": "According to the given specs, if the sample description contains a font table which defines the complete set of fonts used, it is always of the type \u0027ftab\u0027. Earlier implementation try to describe the font without checking for \u0027ftab\u0027 box which is invalid in all the cases.",
+      "parentUuid": "948de213_023dff69",
+      "revId": "a85202f4b641744113b3f79b45ea73dbe01d4392",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
