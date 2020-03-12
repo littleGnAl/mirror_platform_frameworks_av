@@ -42,7 +42,7 @@ apex_defaults {
     // Use a custom AndroidManifest.xml used for API targeting.
     androidManifest: ":com.android.media-androidManifest",
 
-    legacy_android10_support: true,
+    min_sdk_version: "29",
 }
 
 apex {
@@ -79,7 +79,7 @@ apex_defaults {
     // Use a custom AndroidManifest.xml used for API targeting.
     androidManifest: ":com.android.media.swcodec-androidManifest",
 
-    legacy_android10_support: true,
+    min_sdk_version: "29",
 }
 
 prebuilt_etc {
