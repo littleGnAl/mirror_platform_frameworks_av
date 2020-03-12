@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5de49471_eadabdf0",
+        "filename": "media/libstagefright/timedtext/TextDescriptions.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 456,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-12T15:14:57Z",
+      "side": 1,
+      "message": "needs to be 8. i think.",
+      "range": {
+        "startLine": 456,
+        "startChar": 30,
+        "endLine": 456,
+        "endChar": 35
+      },
+      "revId": "a2600e1b9410cbcc8ae3eab139d60a8002927391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bea9b997_7f1c7dab",
+        "filename": "media/libstagefright/timedtext/TextDescriptions.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 459,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-12T15:14:57Z",
+      "side": 1,
+      "message": "i overlooked this in my first reading.....\n\noverrun -- we only verified that there were 4 bytes left in the big buffer and\nwe\u0027re reaching beyond that to parse subChunkType.\n\nif the subbox that we\u0027re looking at (and hoping is an ftab box) is indeed a subbox.\nthen there is a 4 byte length at tmpData+0\n\n-- we need to parse that length out; call it \u0027sublength\u0027\n-- we need to verify that \u0027sublength\u0027 is \u003c\u003d remaining\n-- this block of code in lines 461.511 should be using \u0027sublength\u0027 instead of \u0027remaining\u0027\n   to decide if the font table runs off the end of the supplied data.\n\n\ni\u0027d have to look at the standard... but if we can have nested boxes / sub boxes here within the  tx3g box, should the entire block from 456..512 look something like:\n\nwhile (remaining \u003e\u003d 8) {\n  chunkbeginning \u003d tmpdata\n  parse subchunsize, subchunktype\n  switch (subchunktype)\n    case \u0027ftab\u0027: ...\n    default: skip it\n  }\n  tmpData \u003d chunkbeginning + subchunksize;\n  remaining -\u003d subchunksize\n}\n\nand then some thought about how ftab code handles running out of data in its subchunk.\nright now, it resets the parcel dataposition and returns.\nin this new approach, it still has to reset the data position, but instead of returning\nit should break from the switch so that we go around again for any other subboxes that\nmight be present in the bigger tx3g box.\n\n(the comment on line 512 about a disparity box.... makes me think that this is probably the right direction to go; doesn\u0027t mean we have to parse the disparity box yet, but it puts us in a better position to do so sometime in the future.",
+      "range": {
+        "startLine": 459,
+        "startChar": 47,
+        "endLine": 459,
+        "endChar": 60
+      },
+      "revId": "a2600e1b9410cbcc8ae3eab139d60a8002927391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
