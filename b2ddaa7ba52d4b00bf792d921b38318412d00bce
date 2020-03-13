@@ -1,0 +1,92 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000001953899",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1211587?revision\u003d4",
+      "fixSuggestions": [
+        {
+          "fixId": "a47d146e_92ec7f86",
+          "description": "Change to \"media/libstagefright/rtsp/ARTPWriter.cpp\"",
+          "replacements": [
+            {
+              "path": "media/libstagefright/rtsp/ARTPWriter.cpp",
+              "range": {
+                "startLine": 1197,
+                "startChar": 15,
+                "endLine": 1197,
+                "endChar": 22
+              },
+              "replacement": "success"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "b7f4cae8_763e8f9f",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1197,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-03-13T02:23:56Z",
+      "side": 1,
+      "message": "Common typo found: \"succees\" -- should it be \"success\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 1197,
+        "startChar": 15,
+        "endLine": 1197,
+        "endChar": 22
+      },
+      "revId": "b2ddaa7ba52d4b00bf792d921b38318412d00bce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000001953899",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1211587?revision\u003d4",
+      "fixSuggestions": [
+        {
+          "fixId": "aa2d234b_3903b52a",
+          "description": "Change to \"media/libstagefright/rtsp/ARTPWriter.cpp\"",
+          "replacements": [
+            {
+              "path": "media/libstagefright/rtsp/ARTPWriter.cpp",
+              "range": {
+                "startLine": 1200,
+                "startChar": 15,
+                "endLine": 1200,
+                "endChar": 22
+              },
+              "replacement": "success"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "8930a28e_a52abee2",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1200,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-03-13T02:23:56Z",
+      "side": 1,
+      "message": "Common typo found: \"succees\" -- should it be \"success\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 1200,
+        "startChar": 15,
+        "endLine": 1200,
+        "endChar": 22
+      },
+      "revId": "b2ddaa7ba52d4b00bf792d921b38318412d00bce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
