@@ -188,6 +188,30 @@
       "revId": "15c496143ba59cf63b9fd5aa8f6c1525ce523dd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4f9f8a9_32cef070",
+        "filename": "media/libmedia/xsd/vts/ValidateMediaProfiles.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-13T20:42:57Z",
+      "side": 1,
+      "message": "This is checking the validity of XMLs for the current state, but we should test it for all states that a specific build can support. E.g. if \u0027ro.xml_variant.profiles\u0027 can take on 10 different values, then we can test all of them here. We shouldn\u0027t have to flash 10 different devices w/ different ro properties in order to test the configurations.",
+      "parentUuid": "93f1e61b_efc422e4",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 58
+      },
+      "revId": "15c496143ba59cf63b9fd5aa8f6c1525ce523dd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
