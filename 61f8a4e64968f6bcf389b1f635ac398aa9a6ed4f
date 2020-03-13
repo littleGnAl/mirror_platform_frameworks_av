@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb2e8330_020e16fc",
+        "filename": "media/libmedia/include/media/MediaProfiles.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2020-03-13T18:34:55Z",
+      "side": 0,
+      "message": "should we expose getXmlPath, in case downstream is using it?",
+      "range": {
+        "startLine": 96,
+        "startChar": 40,
+        "endLine": 96,
+        "endChar": 48
+      },
+      "revId": "61f8a4e64968f6bcf389b1f635ac398aa9a6ed4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
