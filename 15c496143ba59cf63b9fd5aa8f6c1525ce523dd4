@@ -212,6 +212,30 @@
       "revId": "15c496143ba59cf63b9fd5aa8f6c1525ce523dd4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3ef8754_486eebb5",
+        "filename": "media/libmedia/xsd/vts/ValidateMediaProfiles.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1105338
+      },
+      "writtenOn": "2020-03-14T01:10:57Z",
+      "side": 1,
+      "message": "ro.media.xml_variant.profiles can take on only one value. Does that address concern?",
+      "parentUuid": "a4f9f8a9_32cef070",
+      "range": {
+        "startLine": 39,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 58
+      },
+      "revId": "15c496143ba59cf63b9fd5aa8f6c1525ce523dd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
