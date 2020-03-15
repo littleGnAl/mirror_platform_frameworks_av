@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "88338a8e_880547bb",
+        "filename": "media/libstagefright/timedtext/TextDescriptions.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 460,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-15T19:34:51Z",
+      "side": 1,
+      "message": "i still think we need to parse subChunkSize and use it as we consume the ftab box.\nand we need to ensure that subChunkSize doesn\u0027t exceed remaining.",
+      "range": {
+        "startLine": 460,
+        "startChar": 25,
+        "endLine": 460,
+        "endChar": 37
+      },
+      "revId": "9264d602a4b9fef21864ed436242a51fca6f381b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "008c9dbf_e06f9d09",
+        "filename": "media/libstagefright/timedtext/TextDescriptions.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-15T19:34:51Z",
+      "side": 1,
+      "message": "the change to if .... is fine.\nespecially now that you explained that the ftab is the only box that is allowed here.",
+      "range": {
+        "startLine": 462,
+        "startChar": 15,
+        "endLine": 462,
+        "endChar": 19
+      },
+      "revId": "9264d602a4b9fef21864ed436242a51fca6f381b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7666bff6_ba0c5713",
+        "filename": "media/libstagefright/timedtext/TextDescriptions.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-15T19:34:51Z",
+      "side": 1,
+      "message": "i still think that the use of remaining inside of here is incorrect.\nit should be the \u0027subchunksize\u0027 that is right before the subchunkType that we parsed at line 460.\n\nthe situation is if the enclosing tx3g box is larger ... it includes some extra space at the end.  the ftab box would end before the enclosing tx3g box ends.",
+      "range": {
+        "startLine": 464,
+        "startChar": 23,
+        "endLine": 464,
+        "endChar": 32
+      },
+      "revId": "9264d602a4b9fef21864ed436242a51fca6f381b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8c4a26a0_f9eecb07",
+        "filename": "media/libstagefright/timedtext/TextDescriptions.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 480,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-15T19:34:51Z",
+      "side": 1,
+      "message": "you mentioned this -- we roll back and toss away any font table information that we\u0027ve parsed if the table isn\u0027t completely well formed.\n\nthis is good.",
+      "range": {
+        "startLine": 478,
+        "startChar": 28,
+        "endLine": 480,
+        "endChar": 38
+      },
+      "revId": "9264d602a4b9fef21864ed436242a51fca6f381b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
