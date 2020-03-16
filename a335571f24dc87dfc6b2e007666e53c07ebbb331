@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d8f77807_88f79e77",
+        "filename": "media/libstagefright/timedtext/TextDescriptions.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-16T17:26:49Z",
+      "side": 1,
+      "message": "rather than having pairs of subChunkSize-\u003d and remaining -\u003d\ni would have made a \u0027subchunkremaining\u0027\nand done all my decrementing with that\nand then at the end of the if()\ni would reflect that space of the ftab box into remaining with something\nlike:\nremaining -\u003d subchunksize\n\ntmpdata gets a little more complicated.... since we use it within the parsing of the\nftab box.  my comments through the rest of this show how it might be kept in sync.\n\nanother way is that we use a different pointer to walk through the ftab box and\nthen at the end of the ftab box, we use \u0027subchunksize\u0027 to make tmpdata leap over it.",
+      "range": {
+        "startLine": 468,
+        "startChar": 16,
+        "endLine": 468,
+        "endChar": 31
+      },
+      "revId": "a335571f24dc87dfc6b2e007666e53c07ebbb331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37196e83_88a1b559",
+        "filename": "media/libstagefright/timedtext/TextDescriptions.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-16T17:26:49Z",
+      "side": 1,
+      "message": "at this point, we should have consumed all of the ftab box, so\nsubchunkremaining would be \u003d\u003d 0\n\nalthough the spec doesn\u0027t say that there couldn\u0027t have been some padding in there (not sure why anyone would want it, but who knows...)\nso at this point, i\u0027d do:\n\ntmpdata +\u003d subchunkremaining;\n\nto consume any space left in the box.",
+      "range": {
+        "startLine": 513,
+        "startChar": 0,
+        "endLine": 513,
+        "endChar": 21
+      },
+      "revId": "a335571f24dc87dfc6b2e007666e53c07ebbb331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fc471bc_b19af0d3",
+        "filename": "media/libstagefright/timedtext/TextDescriptions.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-16T17:26:49Z",
+      "side": 1,
+      "message": "and if it wasn\u0027t an ftab box, we have to skip over whatever it was...\nand that means replace line 514 with\n} else {\n    remaining -\u003d subchunksize\n    tmpdata +\u003d subchunksize;\n}",
+      "range": {
+        "startLine": 514,
+        "startChar": 0,
+        "endLine": 514,
+        "endChar": 17
+      },
+      "revId": "a335571f24dc87dfc6b2e007666e53c07ebbb331",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
