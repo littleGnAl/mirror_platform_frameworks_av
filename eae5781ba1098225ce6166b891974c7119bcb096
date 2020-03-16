@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "25de3497_aca983a7",
+        "filename": "media/libstagefright/codecs/m4v_h263/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-16T22:56:38Z",
+      "side": 1,
+      "message": "no longer needed as of rvc-dev;\nthe library does its own safe defaulting, but does allow this override to happen.",
+      "range": {
+        "startLine": 32,
+        "startChar": 9,
+        "endLine": 32,
+        "endChar": 29
+      },
+      "revId": "eae5781ba1098225ce6166b891974c7119bcb096",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
