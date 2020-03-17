@@ -386,10 +386,11 @@ void ASessionDescription::SDPStringFactory(AString &sdp,
     sdp.append("\r\n");
 
     sdp.append("c= IN IP");
-    if(isIPv4)
-     sdp.append("4 ");
-    else
-     sdp.append("6 ");
+    if (isIPv4) {
+        sdp.append("4 ");
+    } else {
+        sdp.append("6 ");
+    }
     sdp.append(ip);
     sdp.append("\r\n");
 
@@ -405,7 +406,7 @@ void ASessionDescription::SDPStringFactory(AString &sdp,
     sdp.append(isAudio ? "8000" : "90000");
     sdp.append("\r\n");
 
-    if(fmtp != NULL) {
+    if (fmtp != NULL) {
         sdp.append("a=fmtp:");
         sdp.append(payloadType);
         sdp.append(" ");
@@ -413,7 +414,7 @@ void ASessionDescription::SDPStringFactory(AString &sdp,
         sdp.append("\r\n");
     }
 
-    if(width > 0 && height > 0) {
+    if (width > 0 && height > 0) {
         sdp.append("a=framesize:");
         sdp.append(payloadType);
         sdp.append(" ");
@@ -423,7 +424,7 @@ void ASessionDescription::SDPStringFactory(AString &sdp,
         sdp.append("\r\n");
     }
 
-    if(cvoExtMap > 0) {
+    if (cvoExtMap > 0) {
         sdp.append("a=extmap:");
         sdp.append(cvoExtMap);
         sdp.append(" ");

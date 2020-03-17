@@ -290,7 +290,7 @@ private:
     Mutex                       mLock;
     Mutex                       mNotifyLock;
 
-    int                         mOutputFormat;
+    output_format               mOutputFormat;
 };
 
 };  // namespace android
