@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "67980d0e_13dc3b64",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-03-17T00:57:38Z",
+      "side": 1,
+      "message": "graphicBlocks() returns const vector, so I think we shouldn\u0027t take it as a reference.",
+      "range": {
+        "startLine": 1763,
+        "startChar": 30,
+        "endLine": 1763,
+        "endChar": 32
+      },
+      "revId": "a46bc187277196bc1a4af19c1200e22ec23a9b31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b55e5bf_8b109c62",
         "filename": "media/codec2/sfplugin/CCodec.cpp",
         "patchSetId": 2
@@ -22,6 +45,30 @@
       "revId": "a46bc187277196bc1a4af19c1200e22ec23a9b31",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2041b3c0_49a230fe",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1764,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-03-17T00:57:38Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "4b55e5bf_8b109c62",
+      "range": {
+        "startLine": 1764,
+        "startChar": 43,
+        "endLine": 1764,
+        "endChar": 48
+      },
+      "revId": "a46bc187277196bc1a4af19c1200e22ec23a9b31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
