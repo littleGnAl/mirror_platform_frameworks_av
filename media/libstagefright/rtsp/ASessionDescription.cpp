@@ -27,6 +27,8 @@
 
 namespace android {
 
+constexpr unsigned kDefaultAs = 960; // kbps?
+
 ASessionDescription::ASessionDescription()
     : mIsValid(false) {
 }
@@ -395,7 +397,7 @@ void ASessionDescription::SDPStringFactory(AString &sdp,
     sdp.append("\r\n");
 
     sdp.append("b=AS:");
-    sdp.append(as > 0 ? as : 960);
+    sdp.append(as > 0 ? as : kDefaultAs);
     sdp.append("\r\n");
 
     sdp.append("a=rtpmap:");
@@ -414,7 +416,7 @@ void ASessionDescription::SDPStringFactory(AString &sdp,
         sdp.append("\r\n");
     }
 
-    if (width > 0 && height > 0) {
+    if (!isAudio && width > 0 && height > 0) {
         sdp.append("a=framesize:");
         sdp.append(payloadType);
         sdp.append(" ");
