@@ -46,6 +46,30 @@
       "revId": "71d6ac7de92795e16f4920e59ba7c42252653779",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc250cc9_af9b72bc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-17T03:30:21Z",
+      "side": 1,
+      "message": "let\u0027s document which CTS tests show that this is working.\n\ngeneral rule should be that what we document here for the testing is something that another android engineer can reproduce.  so a CTS test is good; a command line test is also good.  but a test that doesn\u0027t exist somewhere within the android tree isn\u0027t a great combination.  Fuzzing is a little different, but we still have the fuzzing sequence over in clusterfuzz/haiku and that will get re-run.  it\u0027d be perfect if we had a nice way to say \"clusterfuzz sequence #47752\" that would go exactly to the relevant test case.",
+      "parentUuid": "e9064542_dfb4b86a",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "71d6ac7de92795e16f4920e59ba7c42252653779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
