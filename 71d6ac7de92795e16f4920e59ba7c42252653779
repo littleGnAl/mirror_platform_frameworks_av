@@ -70,6 +70,30 @@
       "revId": "71d6ac7de92795e16f4920e59ba7c42252653779",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3d0eb89_460cbc55",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-03-17T04:20:47Z",
+      "side": 1,
+      "message": "Updated the test details.",
+      "parentUuid": "cc250cc9_af9b72bc",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "71d6ac7de92795e16f4920e59ba7c42252653779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
