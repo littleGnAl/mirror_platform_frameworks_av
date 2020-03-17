@@ -22,6 +22,30 @@
       "revId": "71d6ac7de92795e16f4920e59ba7c42252653779",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e9064542_dfb4b86a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-03-17T00:50:46Z",
+      "side": 1,
+      "message": "This test was done using a command line application that uses AMediaCodec api.\nI have also tested using CTS tests that are in rvc-dev.",
+      "parentUuid": "a2c34e95_ff0610cb",
+      "range": {
+        "startLine": 10,
+        "startChar": 6,
+        "endLine": 10,
+        "endChar": 66
+      },
+      "revId": "71d6ac7de92795e16f4920e59ba7c42252653779",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
