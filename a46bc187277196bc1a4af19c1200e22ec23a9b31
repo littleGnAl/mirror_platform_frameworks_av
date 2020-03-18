@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "78dbd41a_c7ca7c85",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1763,
+      "author": {
+        "id": 1096946
+      },
+      "writtenOn": "2020-03-18T17:20:51Z",
+      "side": 1,
+      "message": "shouldn\u0027t make a difference functionally, but i agree that dropping the `\u0026` is cleaner (and spelling out the type is likely more consistent anyway). Done.",
+      "parentUuid": "67980d0e_13dc3b64",
+      "range": {
+        "startLine": 1763,
+        "startChar": 30,
+        "endLine": 1763,
+        "endChar": 32
+      },
+      "revId": "a46bc187277196bc1a4af19c1200e22ec23a9b31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4b55e5bf_8b109c62",
         "filename": "media/codec2/sfplugin/CCodec.cpp",
         "patchSetId": 2
