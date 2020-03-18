@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4ef4fc7e_637a265e",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-18T15:50:33Z",
+      "side": 1,
+      "message": "the comment doesn\u0027t match up....\nline 58 says m/v/a\nline 60 says \u0027metadata/audio/video\u0027  -- which i would think means line 58 should be \"m/a/v\"",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 60,
+        "endChar": 53
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bba2e458_6a1d519c",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-18T15:50:33Z",
+      "side": 1,
+      "message": "that\u0027s a random value;  needs to be a defined constant somewhere, with some explanation.",
+      "range": {
+        "startLine": 70,
+        "startChar": 34,
+        "endLine": 70,
+        "endChar": 39
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0966afff_aa254894",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-18T15:50:33Z",
+      "side": 1,
+      "message": "guessing here...... is the 188 in line 70 the same as this kTSPacketSize?",
+      "range": {
+        "startLine": 77,
+        "startChar": 41,
+        "endLine": 77,
+        "endChar": 54
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "981fe073_0b8a8e46",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-18T15:50:33Z",
+      "side": 1,
+      "message": "this is unchanged?\n\nso static const seems appropriate so we don\u0027t constantly rebuild the array.",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "946c4c02_d6af0960",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-18T15:50:33Z",
+      "side": 1,
+      "message": "should it be an error if we didn\u0027t get a currentPacketMediaType out of this.\n.. so if i \u003d\u003d sizeof(mediaType) \n[i think it should be an error]\n\n\nalso  sizeof(mediaType) makes an assumption that the \u0027ATSParser::SourceType\u0027 will be 1 byte.\nwe should be using:   sizeof(mediaType)/sizeof(mediaType[0])\nand probably make a variable:   const int nMediaTypes \u003d sizeof() / sizeof(..[0]);\nand use \u0027nMediaTypes\u0027 here for this loop.",
+      "range": {
+        "startLine": 125,
+        "startChar": 8,
+        "endLine": 125,
+        "endChar": 9
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb158492_9298e375",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-18T15:50:33Z",
+      "side": 1,
+      "message": "should we flag an error if packetSource \u003d\u003d nullptr?\ni think so.",
+      "range": {
+        "startLine": 129,
+        "startChar": 17,
+        "endLine": 129,
+        "endChar": 41
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a79435a3_8ff15751",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-18T15:50:33Z",
+      "side": 1,
+      "message": "must be present. \n\n\u0027should\u0027 isn\u0027t a failure if it\u0027s missing.",
+      "range": {
+        "startLine": 188,
+        "startChar": 60,
+        "endLine": 188,
+        "endChar": 66
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e8f14b0_14f8f712",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-18T15:50:33Z",
+      "side": 1,
+      "message": "use defined constants instead of 0x01, 0x02 and 0x04 here.\nespecially given the inconsistencies i saw at line 58.",
+      "range": {
+        "startLine": 190,
+        "startChar": 44,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02cbf617_75451857",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-18T15:50:33Z",
+      "side": 1,
+      "message": "\u0027should\u0027 isn\u0027t an enforceable.\n\nexactly what are we asserting here?  that there are at least some non-sync packets?\n\nisn\u0027t numSyncOffsetPackets \u003d\u003d syncOffsetPoints.size()\nthey are modified at line 139 and 145 respectively, so I\u0027m not sure how they would get out of sync (pardon the pun).",
+      "range": {
+        "startLine": 195,
+        "startChar": 29,
+        "endLine": 195,
+        "endChar": 35
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6d2ca698_7ebcf324",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-18T15:50:33Z",
+      "side": 1,
+      "message": "I think line 188 already covers this.",
+      "range": {
+        "startLine": 198,
+        "startChar": 8,
+        "endLine": 198,
+        "endChar": 62
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94689760_478bc25e",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-18T15:50:33Z",
+      "side": 1,
+      "message": "i find this hard to read;\ni prefer:\n\nASSERT(totalDataSource \u003d\u003d mNumDataSource);\nif (numDataSource \u003d\u003d 3)\n    ASSERT(  numDataSource \u003d\u003d mNumDataSource);",
+      "range": {
+        "startLine": 205,
+        "startChar": 4,
+        "endLine": 207,
+        "endChar": 91
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
