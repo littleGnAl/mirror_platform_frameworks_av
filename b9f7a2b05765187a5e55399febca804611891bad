@@ -261,6 +261,30 @@
     },
     {
       "key": {
+        "uuid": "7b8d8b17_559d0cfe",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-03-18T18:20:34Z",
+      "side": 1,
+      "message": "Ray,\nWe feel bringing in another module in unit tests may need some detailed discussions.\n\nIf we were to bring in extractors into writers, what all tests need to be updated to use the extractors? For eg: basic writer tests (WriterTest) currently don\u0027t validate what is written by the writers. Should these be updated to ensure writers\u0027 output is valid?\nSimilarly do we include writer calls in extractors to validate that writers can consume data given out by extractors?\nDo we include decoders in extractors to ensure decoders can decode extractor\u0027s output?\nDo we include encoders in writer tests to ensure writers can write encoded output?\nAnd the list goes on.\n\nSo the idea so far has been, restrict unit tests to not include other modules as much as possible and expect that cross module tests will either be covered in CTS tests or we design a set of tests to cover cross module dependencies.\nWe feel this needs further discussion, looking at rest of the unit tests as well.\nPlease let us know your thoughts on this.",
+      "parentUuid": "d6c567af_5eacc9ba",
+      "range": {
+        "startLine": 525,
+        "startChar": 8,
+        "endLine": 525,
+        "endChar": 22
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbc48c26_87d4d704",
         "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
         "patchSetId": 1

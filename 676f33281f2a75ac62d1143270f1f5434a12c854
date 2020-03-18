@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "2944c877_6dd61598",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-03-18T18:20:34Z",
+      "side": 1,
+      "message": "Ray, \nAgreed. But unfortunately there is no way to know duration of the last frame.\nAnd since this is just to ensure that we don\u0027t use arbitrary duration which may be longer than file duration, this approximation is still fine.\n\nManisha,\nCan you please rename the variable to lastFrameTimeStampUs?",
+      "parentUuid": "30199048_ca96ba4f",
+      "range": {
+        "startLine": 514,
+        "startChar": 29,
+        "endLine": 514,
+        "endChar": 71
+      },
+      "revId": "676f33281f2a75ac62d1143270f1f5434a12c854",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6fd8a0dd_6424ab39",
         "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
         "patchSetId": 2
