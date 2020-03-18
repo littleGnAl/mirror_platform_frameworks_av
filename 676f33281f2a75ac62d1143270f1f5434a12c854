@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f892a706_dd62b997",
+        "filename": "media/libstagefright/tests/writer/WriterListener.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-18T15:54:55Z",
+      "side": 1,
+      "message": "looking at how we\u0027re looking at this variable over in the other file.\nit\u0027s making me think that perhaps we should have\n\nmSignaledSize\nmSignaledDuration\n\nas separate variables;  they could go back to boolean (still need to be volatile though).\n\nRight now... this is thinking out loud.  I\u0027ll probably have more comments about this in the other file.",
+      "range": {
+        "startLine": 36,
+        "startChar": 12,
+        "endLine": 36,
+        "endChar": 35
+      },
+      "revId": "676f33281f2a75ac62d1143270f1f5434a12c854",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30199048_ca96ba4f",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-18T15:54:55Z",
+      "side": 1,
+      "message": "this would be when the last frame starts. \nso it\u0027s a frame duration short of the actual file duration.\nit\u0027s close -- but still short.",
+      "range": {
+        "startLine": 514,
+        "startChar": 29,
+        "endLine": 514,
+        "endChar": 71
+      },
+      "revId": "676f33281f2a75ac62d1143270f1f5434a12c854",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fd8a0dd_6424ab39",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-18T15:54:55Z",
+      "side": 1,
+      "message": "still thinking about this.\n\nthe sort of thing I envision is:\nif (maxsize\u003e0) { test size; pretty much lines 551.556}\nif (maxduration\u003e0) { test duration; go ahead and use extractor to learn it }\n\nand something to make sure that we were appropriately signaled.\ni\u0027m not yet convinced that 545..549 is that test.\nthings to test relative to the signals, so far:\n\nif maxsize \u003c\u003d0   assert signaledSize \u003d\u003d false\nif maxDuration \u003c\u003d 0 assert signaledDuration \u003d\u003d false\nif (maxsize\u003e0 \u0026\u0026 maxduration \u003c\u003d 0)  assert signaledSize \u003d\u003d true\nif (maxduration\u003e0 \u0026\u0026 maxsize \u003c\u003d 0) assert signaledduration \u003d\u003d true\n\nthat leaves when BOTH are enabled...\nmaybe we just assert that at least 1 of them signaled.",
+      "range": {
+        "startLine": 545,
+        "startChar": 4,
+        "endLine": 550,
+        "endChar": 0
+      },
+      "revId": "676f33281f2a75ac62d1143270f1f5434a12c854",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a41a5a_82e088a1",
+        "filename": "media/libstagefright/tests/writer/WriterUtility.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-18T15:54:55Z",
+      "side": 1,
+      "message": "2 variables to test, if we break into mSignaledSize and mSignedledDuration.\njust noting that for the moment.",
+      "range": {
+        "startLine": 31,
+        "startChar": 25,
+        "endLine": 31,
+        "endChar": 41
+      },
+      "revId": "676f33281f2a75ac62d1143270f1f5434a12c854",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

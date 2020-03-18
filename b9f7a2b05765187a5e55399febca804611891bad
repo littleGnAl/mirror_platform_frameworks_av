@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "d6c567af_5eacc9ba",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-18T15:54:55Z",
+      "side": 1,
+      "message": "i think we\u0027ll have to relax that \"don\u0027t include other modules\" clause here.\n\nthe routine claims that it\u0027s testing duration -- but in fact it is not verifying\nthat the duration. We need to remedy that. If the only way to do that is to use the extractor module, then we\u0027ll have to bring that bit of cross-module dependency into this test.",
+      "parentUuid": "eed43d8d_2cd37495",
+      "range": {
+        "startLine": 525,
+        "startChar": 8,
+        "endLine": 525,
+        "endChar": 22
+      },
+      "revId": "b9f7a2b05765187a5e55399febca804611891bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fbc48c26_87d4d704",
         "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
         "patchSetId": 1
