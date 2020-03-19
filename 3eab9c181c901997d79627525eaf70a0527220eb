@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a04829c1_46ed5b5f",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-03-19T14:09:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ef4fc7e_637a265e",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 60,
+        "endChar": 53
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bba2e458_6a1d519c",
         "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7123b2e4_fa288e16",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-03-19T14:09:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bba2e458_6a1d519c",
+      "range": {
+        "startLine": 70,
+        "startChar": 34,
+        "endLine": 70,
+        "endChar": 39
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1782b51f_d2b49483",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-03-19T14:09:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0966afff_aa254894",
+      "range": {
+        "startLine": 77,
+        "startChar": 41,
+        "endLine": 77,
+        "endChar": 54
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "981fe073_0b8a8e46",
         "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "fec24e01_7d9dc028",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-03-19T14:09:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "981fe073_0b8a8e46",
+      "range": {
+        "startLine": 109,
+        "startChar": 4,
+        "endLine": 110,
+        "endChar": 40
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "946c4c02_d6af0960",
         "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2020-03-18T15:50:33Z",
       "side": 1,
       "message": "should it be an error if we didn\u0027t get a currentPacketMediaType out of this.\n.. so if i \u003d\u003d sizeof(mediaType) \n[i think it should be an error]\n\n\nalso  sizeof(mediaType) makes an assumption that the \u0027ATSParser::SourceType\u0027 will be 1 byte.\nwe should be using:   sizeof(mediaType)/sizeof(mediaType[0])\nand probably make a variable:   const int nMediaTypes \u003d sizeof() / sizeof(..[0]);\nand use \u0027nMediaTypes\u0027 here for this loop.",
+      "range": {
+        "startLine": 125,
+        "startChar": 8,
+        "endLine": 125,
+        "endChar": 9
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2a49615_1a14523a",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-03-19T14:09:04Z",
+      "side": 1,
+      "message": "In a TS stream, a packet can also be of type: PAT, TSDT, CAT etc.  The Mpeg2TS library supports has only 3 source types: Audio/Video/MetaData (frameworks/av/media/libstagefright/mpeg2ts/ATSParser.h, Line: 74). \nAdded a check for an invalid PID.",
+      "parentUuid": "946c4c02_d6af0960",
       "range": {
         "startLine": 125,
         "startChar": 8,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "7a3bc557_d92a7b88",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-03-19T14:09:04Z",
+      "side": 1,
+      "message": "Our test vector contains other types of packets as well i.e. PAT whose packetSource is not returned by the library. frameworks/av/media/libstagefright/mpeg2ts/ATSParser.cpp .. Line: 1823. Thus, assert on nullptr is not required here.",
+      "parentUuid": "bb158492_9298e375",
+      "range": {
+        "startLine": 129,
+        "startChar": 17,
+        "endLine": 129,
+        "endChar": 41
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a79435a3_8ff15751",
         "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
         "patchSetId": 1
@@ -160,6 +304,30 @@
       "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0da733d_83ad1c5a",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-03-19T14:09:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a79435a3_8ff15751",
+      "range": {
+        "startLine": 188,
+        "startChar": 60,
+        "endLine": 188,
+        "endChar": 66
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "ef144035_1d0a7233",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-03-19T14:09:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e8f14b0_14f8f712",
+      "range": {
+        "startLine": 190,
+        "startChar": 44,
+        "endLine": 193,
+        "endChar": 0
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02cbf617_75451857",
         "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
         "patchSetId": 1
@@ -197,6 +389,30 @@
       "writtenOn": "2020-03-18T15:50:33Z",
       "side": 1,
       "message": "\u0027should\u0027 isn\u0027t an enforceable.\n\nexactly what are we asserting here?  that there are at least some non-sync packets?\n\nisn\u0027t numSyncOffsetPackets \u003d\u003d syncOffsetPoints.size()\nthey are modified at line 139 and 145 respectively, so I\u0027m not sure how they would get out of sync (pardon the pun).",
+      "range": {
+        "startLine": 195,
+        "startChar": 29,
+        "endLine": 195,
+        "endChar": 35
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "946c37ab_7576ffda",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-03-19T14:09:04Z",
+      "side": 1,
+      "message": "Done. Removed numSyncOffsetPackets. syncOffsetPoints.size() is updated on Line: 159 in the new patch and mTotalPackets is updated on Line: 77. Thus, the ASSERT will keep a check on the total number of sync packets.",
+      "parentUuid": "02cbf617_75451857",
       "range": {
         "startLine": 195,
         "startChar": 29,
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "0eef0b27_8ae66dce",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-03-19T14:09:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6d2ca698_7ebcf324",
+      "range": {
+        "startLine": 198,
+        "startChar": 8,
+        "endLine": 198,
+        "endChar": 62
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "94689760_478bc25e",
         "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
         "patchSetId": 1
@@ -252,6 +492,30 @@
       "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "979b0161_cad0b83b",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-03-19T14:09:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94689760_478bc25e",
+      "range": {
+        "startLine": 205,
+        "startChar": 4,
+        "endLine": 207,
+        "endChar": 91
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
