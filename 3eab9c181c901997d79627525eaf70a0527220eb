@@ -284,6 +284,30 @@
     },
     {
       "key": {
+        "uuid": "e83d5eba_6f747a91",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-19T22:48:02Z",
+      "side": 1,
+      "message": "then we want the assert here.\n\nif that check were somewhere else within the test suite -- i could say ok.\nbut since the framework is supposed to be clearing it, and this is supposed to be testing that the framework behaves properly.... we need to have an assert here.",
+      "parentUuid": "7a3bc557_d92a7b88",
+      "range": {
+        "startLine": 129,
+        "startChar": 17,
+        "endLine": 129,
+        "endChar": 41
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a79435a3_8ff15751",
         "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
         "patchSetId": 1
@@ -413,6 +437,30 @@
       "side": 1,
       "message": "Done. Removed numSyncOffsetPackets. syncOffsetPoints.size() is updated on Line: 159 in the new patch and mTotalPackets is updated on Line: 77. Thus, the ASSERT will keep a check on the total number of sync packets.",
       "parentUuid": "02cbf617_75451857",
+      "range": {
+        "startLine": 195,
+        "startChar": 29,
+        "endLine": 195,
+        "endChar": 35
+      },
+      "revId": "3eab9c181c901997d79627525eaf70a0527220eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8952ea2_d11e0e42",
+        "filename": "media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-19T22:48:02Z",
+      "side": 1,
+      "message": "what I\u0027m not seeing right now is how we use syncOffsetPoints -- other than to get the size() for how many there were.\n\nunless there is a plan to look at the contents of the syncOffsetPoints vector, it seems an expensive way to keep a count.",
+      "parentUuid": "946c37ab_7576ffda",
       "range": {
         "startLine": 195,
         "startChar": 29,
