@@ -1,0 +1,52 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7bb1b3b8_a4311e05",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1197,
+      "author": {
+        "id": 1488927
+      },
+      "writtenOn": "2020-03-20T02:16:42Z",
+      "side": 1,
+      "message": "\u003e Common typo found: \"succees\" -- should it be \"success\"?\n\u003e Note: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.\n\nPlease fix.",
+      "parentUuid": "b7f4cae8_763e8f9f",
+      "range": {
+        "startLine": 1197,
+        "startChar": 15,
+        "endLine": 1197,
+        "endChar": 22
+      },
+      "revId": "b2ddaa7ba52d4b00bf792d921b38318412d00bce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4301ee63_eadd0f4d",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1200,
+      "author": {
+        "id": 1488927
+      },
+      "writtenOn": "2020-03-20T02:16:42Z",
+      "side": 1,
+      "message": "\u003e Common typo found: \"succees\" -- should it be \"success\"?\n\u003e Note: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.\n\nPlease fix.",
+      "parentUuid": "8930a28e_a52abee2",
+      "range": {
+        "startLine": 1200,
+        "startChar": 15,
+        "endLine": 1200,
+        "endChar": 22
+      },
+      "revId": "b2ddaa7ba52d4b00bf792d921b38318412d00bce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
