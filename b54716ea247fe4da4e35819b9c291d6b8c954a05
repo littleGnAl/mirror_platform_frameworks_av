@@ -22,6 +22,30 @@
       "revId": "b54716ea247fe4da4e35819b9c291d6b8c954a05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93f4b62c_92ff5aa9",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-03-21T17:36:06Z",
+      "side": 1,
+      "message": "free() with NULL is expected to not do anything. \nSo it is fine.",
+      "parentUuid": "a102324d_9458b63f",
+      "range": {
+        "startLine": 362,
+        "startChar": 7,
+        "endLine": 362,
+        "endChar": 34
+      },
+      "revId": "b54716ea247fe4da4e35819b9c291d6b8c954a05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
