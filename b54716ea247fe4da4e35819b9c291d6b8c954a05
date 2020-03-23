@@ -46,6 +46,76 @@
       "revId": "b54716ea247fe4da4e35819b9c291d6b8c954a05",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "893b70dd_9e965775",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 362,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-03-23T23:10:41Z",
+      "side": 1,
+      "message": "+1",
+      "parentUuid": "93f4b62c_92ff5aa9",
+      "range": {
+        "startLine": 362,
+        "startChar": 7,
+        "endLine": 362,
+        "endChar": 34
+      },
+      "revId": "b54716ea247fe4da4e35819b9c291d6b8c954a05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26ca22e0_b82e6bc0",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1909,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-03-23T23:10:41Z",
+      "side": 1,
+      "message": "nit nullptr is probably more idiomatic for C++.",
+      "range": {
+        "startLine": 1909,
+        "startChar": 28,
+        "endLine": 1909,
+        "endChar": 32
+      },
+      "revId": "b54716ea247fe4da4e35819b9c291d6b8c954a05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a69b4a4_3b1cb92c",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1910,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-03-23T23:10:41Z",
+      "side": 1,
+      "message": "could be ALOGW, just state that CmdData is null, thanks!",
+      "range": {
+        "startLine": 1910,
+        "startChar": 20,
+        "endLine": 1910,
+        "endChar": 21
+      },
+      "revId": "b54716ea247fe4da4e35819b9c291d6b8c954a05",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
