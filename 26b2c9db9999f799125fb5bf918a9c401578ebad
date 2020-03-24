@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "bb984fa6_ea60abce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-03-24T20:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "431839b0_871d2473",
+      "range": {
+        "startLine": 9,
+        "startChar": 38,
+        "endLine": 9,
+        "endChar": 44
+      },
+      "revId": "26b2c9db9999f799125fb5bf918a9c401578ebad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8015c757_e86edb11",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "26b2c9db9999f799125fb5bf918a9c401578ebad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "159bc1f7_9716cf38",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-03-24T20:26:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8015c757_e86edb11",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 19
+      },
+      "revId": "26b2c9db9999f799125fb5bf918a9c401578ebad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -82,6 +130,30 @@
       "writtenOn": "2020-03-24T19:57:41Z",
       "side": 1,
       "message": "This value shouldn\u0027t be changing during the lifetime of the patch. Can we calculate it once?",
+      "range": {
+        "startLine": 1880,
+        "startChar": 28,
+        "endLine": 1881,
+        "endChar": 46
+      },
+      "revId": "26b2c9db9999f799125fb5bf918a9c401578ebad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8d3c4fe_6f9c4924",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1881,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-03-24T20:26:03Z",
+      "side": 1,
+      "message": "theoretically the track sample rate can change on the fly, though the thread sample rate should not change.",
+      "parentUuid": "2ee1f5c6_d9e0da82",
       "range": {
         "startLine": 1880,
         "startChar": 28,
