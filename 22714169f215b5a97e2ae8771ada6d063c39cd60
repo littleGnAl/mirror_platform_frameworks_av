@@ -46,6 +46,30 @@
       "revId": "22714169f215b5a97e2ae8771ada6d063c39cd60",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a9abbb3_c03a2505",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1881,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-03-24T01:45:44Z",
+      "side": 1,
+      "message": "Disregard my comment:\n\"Also maybe move this to obtainBuffer() because sampling this condition in releaseBuffer() (after consuming one buffer) does force a full buffer to be already available in anticipation of next mix round which may be to conservative.\"\n\nI was considering releaseBuffer() was the server side method. But here it is the client side release called when the buffer has been written by the intercept buffer provider on the primary playback thread..",
+      "parentUuid": "859901db_6d08f8ca",
+      "range": {
+        "startLine": 1881,
+        "startChar": 17,
+        "endLine": 1881,
+        "endChar": 61
+      },
+      "revId": "22714169f215b5a97e2ae8771ada6d063c39cd60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
