@@ -10,6 +10,7 @@ package {
 cc_library_shared {
     name: "libmedia_codecserviceregistrant",
     vendor_available: true,
+    compile_multilib: "32",
     srcs: [
         "CodecServiceRegistrant.cpp",
     ],

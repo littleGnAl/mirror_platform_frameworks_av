@@ -20,6 +20,7 @@ cc_binary {
     vendor_available: true,
     min_sdk_version: "29",
 
+    compile_multilib: "32",
     srcs: [
         "main_swcodecservice.cpp",
     ],

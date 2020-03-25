@@ -97,6 +97,7 @@ filegroup {
 apex_defaults {
     name: "com.android.media.swcodec-defaults",
     updatable: true,
+    compile_multilib: "32",
     binaries: [
         "mediaswcodec",
     ],
