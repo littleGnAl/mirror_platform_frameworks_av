@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0b3a69c7_56a1bd34",
+        "filename": "services/oboeservice/TimestampScheduler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-03-25T17:57:23Z",
+      "side": 1,
+      "message": "nit: would it be better to save this as a member variable in the class rather than mPeriodCountCapacity to avoid recalculating?",
+      "range": {
+        "startLine": 31,
+        "startChar": 12,
+        "endLine": 31,
+        "endChar": 39
+      },
+      "revId": "12c46da34556efcff4f0f72590e642e7316f1f69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8399aa8_2fc28957",
+        "filename": "services/oboeservice/TimestampScheduler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-03-25T17:57:23Z",
+      "side": 1,
+      "message": "nit: could be const",
+      "range": {
+        "startLine": 41,
+        "startChar": 4,
+        "endLine": 41,
+        "endChar": 11
+      },
+      "revId": "12c46da34556efcff4f0f72590e642e7316f1f69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76ab3f15_7d1e2948",
+        "filename": "services/oboeservice/TimestampScheduler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-03-25T17:57:23Z",
+      "side": 1,
+      "message": "nit: alignment",
+      "range": {
+        "startLine": 57,
+        "startChar": 24,
+        "endLine": 57,
+        "endChar": 25
+      },
+      "revId": "12c46da34556efcff4f0f72590e642e7316f1f69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4695d60a_6e17be87",
+        "filename": "services/oboeservice/TimestampScheduler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-03-25T17:57:23Z",
+      "side": 1,
+      "message": "nit: please comment on what this represents?",
+      "range": {
+        "startLine": 68,
+        "startChar": 36,
+        "endLine": 68,
+        "endChar": 37
+      },
+      "revId": "12c46da34556efcff4f0f72590e642e7316f1f69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
