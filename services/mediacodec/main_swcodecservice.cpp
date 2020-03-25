@@ -26,10 +26,10 @@ using namespace android;
 // kSystemSeccompPolicyPath points to the policy for the swcodecs themselves and
 // is part of the updates. kVendorSeccompPolicyPath points to any additional
 // policies that the vendor may need for the device.
-static const char kSystemSeccompPolicyPath[] =
-        "/apex/com.android.media.swcodec/etc/seccomp_policy/mediaswcodec.policy";
-static const char kVendorSeccompPolicyPath[] =
-        "/vendor/etc/seccomp_policy/mediaswcodec.policy";
+//static const char kSystemSeccompPolicyPath[] =
+ //       "/apex/com.android.media.swcodec/etc/seccomp_policy/mediaswcodec.policy";
+//static const char kVendorSeccompPolicyPath[] =
+ //       "/vendor/etc/seccomp_policy/mediaswcodec.policy";
 
 extern "C" void RegisterCodecServices();
 
@@ -37,7 +37,7 @@ int main(int argc __unused, char** argv)
 {
     LOG(INFO) << "media swcodec service starting";
     signal(SIGPIPE, SIG_IGN);
-    SetUpMinijail(kSystemSeccompPolicyPath, kVendorSeccompPolicyPath);
+   // SetUpMinijail(kSystemSeccompPolicyPath, kVendorSeccompPolicyPath);
     strcpy(argv[0], "media.swcodec");
 
     ::android::hardware::configureRpcThreadpool(64, false);
