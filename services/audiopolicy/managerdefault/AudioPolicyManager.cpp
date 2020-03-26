@@ -525,6 +525,7 @@ uint32_t AudioPolicyManager::updateCallRouting(const DeviceVector &rxDevices, ui
 
     // release existing RX patch if any
     if (mCallRxPatch != 0) {
+        disconnectTelephonyRxAudioSource();
         releaseAudioPatchInternal(mCallRxPatch->getHandle());
         mCallRxPatch.clear();
     }
@@ -574,6 +575,7 @@ uint32_t AudioPolicyManager::updateCallRouting(const DeviceVector &rxDevices, ui
     // Otherwise, create two audio patches for TX and RX path.
     if (!createRxPatch) {
         muteWaitMs = setOutputDevices(mPrimaryOutput, rxDevices, true, delayMs);
+        connectTelephonyRxAudioSource();
     } else { // create RX path audio patch
         mCallRxPatch = createTelephonyPatch(true /*isRx*/, rxDevices.itemAt(0), delayMs);
 
@@ -624,7 +626,92 @@ sp<AudioPatch> AudioPolicyManager::createTelephonyPatch(
         ALOGW("%s() error %d creating %s audio patch", __func__, status, isRx ? "RX" : "TX");
         return nullptr;
     }
+    if (isRx) {
+        connectTelephonyRxAudioSource();
+    }
     return mAudioPatches.valueAt(index);
+}
+
+void AudioPolicyManager::connectTelephonyRxAudioSource()
+{
+    struct audio_port_config source = {};
+    auto srcDevice = mAvailableInputDevices.getDevice(
+                AUDIO_DEVICE_IN_TELEPHONY_RX, String8(), AUDIO_FORMAT_DEFAULT);
+    mCallRxSourceClientPort = PolicyAudioPort::getNextUniqueId();
+    const auto aa = mEngine->getAttributesForStreamType(AUDIO_STREAM_VOICE_CALL);
+    sp<SourceClientDescriptor> sourceDesc = new SourceClientDescriptor(
+                mCallRxSourceClientPort, 0/*uid*/, aa, source, srcDevice, AUDIO_STREAM_VOICE_CALL,
+                mEngine->getProductStrategyForAttributes(aa),
+                toVolumeSource(AUDIO_STREAM_VOICE_CALL));
+    status_t status = connectHwAudioSource(sourceDesc);
+    if (status != NO_ERROR) {
+        ALOGE("%s failed to add Rx Source Client", __func__);
+        mCallRxSourceClientPort = AUDIO_PORT_HANDLE_NONE;
+    }
+}
+
+void AudioPolicyManager::disconnectTelephonyRxAudioSource()
+{
+    if (mCallRxSourceClientPort == AUDIO_PORT_HANDLE_NONE) {
+        ALOGW("%s bailing out, no RxSourceClientPort found", __func__);
+        return;
+    }
+    sp<SourceClientDescriptor> sourceDesc = mAudioSources.valueFor(mCallRxSourceClientPort);
+    if (sourceDesc == nullptr) {
+        ALOGE("%s unknown source for port ID %d", __func__, mCallRxSourceClientPort);
+        return;
+    }
+    sp<SwAudioOutputDescriptor> swOutput = sourceDesc->swOutput().promote();
+    if (swOutput != 0) {
+        status_t status = stopSource(swOutput, sourceDesc);
+        if (status == NO_ERROR) {
+            swOutput->stop();
+        }
+    }
+    mAudioSources.removeItem(mCallRxSourceClientPort);
+    mCallRxSourceClientPort = AUDIO_PORT_HANDLE_NONE;
+}
+
+status_t AudioPolicyManager::connectHwAudioSource(const sp<SourceClientDescriptor>& sourceDesc)
+{
+    audio_io_handle_t output = AUDIO_IO_HANDLE_NONE;
+    audio_attributes_t attributes = sourceDesc->attributes();
+    audio_stream_type_t stream = sourceDesc->stream();
+    audio_attributes_t resultAttr;
+    audio_config_t config = AUDIO_CONFIG_INITIALIZER;
+    config.sample_rate = sourceDesc->config().sample_rate;
+    config.channel_mask = sourceDesc->config().channel_mask;
+    config.format = sourceDesc->config().format;
+    audio_output_flags_t flags = AUDIO_OUTPUT_FLAG_NONE;
+    audio_port_handle_t selectedDeviceId = AUDIO_PORT_HANDLE_NONE;
+    bool isRequestedDeviceForExclusiveUse = false;
+    std::vector<sp<SwAudioOutputDescriptor>> secondaryOutputs;
+    getOutputForAttrInt(&resultAttr, &output, AUDIO_SESSION_NONE, &attributes,
+                        &stream, sourceDesc->uid(), &config, &flags,
+                        &selectedDeviceId, &isRequestedDeviceForExclusiveUse,
+                        &secondaryOutputs);
+    if (output == AUDIO_IO_HANDLE_NONE) {
+        ALOGE("%s no output for attributes %s", __func__, toString(attributes).c_str());
+        return INVALID_OPERATION;
+    }
+    sp<SwAudioOutputDescriptor> swOutput = mOutputs.valueFor(output);
+    if (swOutput->isDuplicated()) {
+        ALOGE("%s output is duplicated", __func__);
+        return INVALID_OPERATION;
+    }
+    if (sourceDesc != nullptr) {
+        sourceDesc->setSwOutput(swOutput);
+    }
+    status_t status = swOutput->start();
+    if (status != NO_ERROR) {
+        ALOGE("%s failed to start output.", __func__);
+        sourceDesc->setSwOutput(nullptr);
+        return INVALID_OPERATION;
+    }
+    swOutput->addClient(sourceDesc);
+    swOutput->setClientActive(sourceDesc, true);
+    mAudioSources.add(sourceDesc->portId(), sourceDesc);
+    return NO_ERROR;
 }
 
 bool AudioPolicyManager::isDeviceOfModule(
@@ -706,6 +793,7 @@ void AudioPolicyManager::setPhoneState(audio_mode_t state)
         if (state == AUDIO_MODE_IN_CALL) {
             updateCallRouting(rxDevices, delayMs);
         } else if (oldState == AUDIO_MODE_IN_CALL) {
+            disconnectTelephonyRxAudioSource();
             if (mCallRxPatch != 0) {
                 releaseAudioPatchInternal(mCallRxPatch->getHandle());
                 mCallRxPatch.clear();
@@ -4014,7 +4102,11 @@ status_t AudioPolicyManager::connectAudioSource(const sp<SourceClientDescriptor>
         if (hwOutputDesc != 0) {
           //   create Hwoutput and add to mHwOutputs
         } else {
-            ALOGW("%s source has neither SW nor HW output", __FUNCTION__);
+            // In case of HWBridge, the activity of this source cannot be tracked
+            status = connectHwAudioSource(sourceDesc);
+            if (status != NO_ERROR) {
+                ALOGW("%s source has neither SW nor HW output", __FUNCTION__);
+            }
         }
     }
     return NO_ERROR;
