@@ -539,6 +539,11 @@ protected:
          */
         void checkAudioSourceForAttributes(const audio_attributes_t &attr);
 
+        bool isCallRxAudioSource(const sp<SourceClientDescriptor> &source) {
+            return mCallRxSourceClientPort != AUDIO_PORT_HANDLE_NONE
+                && source == mAudioSources.valueFor(mCallRxSourceClientPort);
+        }
+
         bool followsSameRouting(const audio_attributes_t &lAttr,
                                 const audio_attributes_t &rAttr) const;
 
@@ -755,6 +760,21 @@ protected:
 
         sp<AudioPatch> mCallTxPatch;
         sp<AudioPatch> mCallRxPatch;
+        audio_port_handle_t mCallRxSourceClientPort = AUDIO_PORT_HANDLE_NONE;
+        void connectTelephonyRxAudioSource();
+        void disconnectTelephonyRxAudioSource();
+
+        /**
+         * @brief connectHwAudioSource this function helps to keep track of a source connected
+         * to a given sink port through an Hw Audio Patch.
+         * It supposes that the given sink is reachable through a SW Output (aka mixPort) which
+         * must be the case to consider this sink device Port as reachable and hence available.
+         * Tracking the client on this mix allows to manage volume source activity and control
+         * the volume.
+         * @param sourceDesc client of the mixPort connected to the sink directly by AudioHAL
+         * @return OK if the client was successfully added to the mixPort, error code otherwise.
+         */
+        status_t connectHwAudioSource(const sp<SourceClientDescriptor>& sourceDesc);
 
         HwAudioOutputCollection mHwOutputs;
         SourceClientCollection mAudioSources;
