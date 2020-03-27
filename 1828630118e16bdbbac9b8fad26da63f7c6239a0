@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f6755a2c_ae261c29",
+        "filename": "media/libstagefright/timedtext/test/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-03-27T14:47:53Z",
+      "side": 1,
+      "message": "split this to multiple lines",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "1828630118e16bdbbac9b8fad26da63f7c6239a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2044a8ba_7c2d6306",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-03-27T14:47:53Z",
+      "side": 1,
+      "message": "why do we need these additional classes?\nCan\u0027t we use TimedTextUnitTest instead of SRTDescriptionTest and Text3GPPDescriptionTest directly?",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "1828630118e16bdbbac9b8fad26da63f7c6239a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c9ac8a0_145897b7",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-03-27T14:47:53Z",
+      "side": 1,
+      "message": "sizeof(data)",
+      "range": {
+        "startLine": 129,
+        "startChar": 26,
+        "endLine": 129,
+        "endChar": 35
+      },
+      "revId": "1828630118e16bdbbac9b8fad26da63f7c6239a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c02f4ee_69408aff",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-03-27T14:47:53Z",
+      "side": 1,
+      "message": "sizeof(data)",
+      "range": {
+        "startLine": 165,
+        "startChar": 26,
+        "endLine": 165,
+        "endChar": 35
+      },
+      "revId": "1828630118e16bdbbac9b8fad26da63f7c6239a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
