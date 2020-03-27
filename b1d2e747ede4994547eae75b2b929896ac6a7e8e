@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8aaf225f_c892ddae",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Encoder.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 179,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-03-27T17:12:14Z",
+      "side": 0,
+      "message": "it appears that the the codec gets stop() and release() in deInitEncoder()",
+      "range": {
+        "startLine": 178,
+        "startChar": 20,
+        "endLine": 179,
+        "endChar": 41
+      },
+      "revId": "b1d2e747ede4994547eae75b2b929896ac6a7e8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
