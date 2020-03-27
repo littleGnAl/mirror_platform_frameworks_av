@@ -1,0 +1,620 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002152114",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d31",
+      "fixSuggestions": [
+        {
+          "fixId": "6dcd8e5c_3b188840",
+          "description": "Change to \"services/audiopolicy/functionaltests/AudioVolumeGroupTest.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/AudioVolumeGroupTest.cpp",
+              "range": {
+                "startLine": 81,
+                "startChar": 28,
+                "endLine": 81,
+                "endChar": 34
+              },
+              "replacement": "Unknown"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "634a6a75_2794b86f",
+        "filename": "services/audiopolicy/functionaltests/AudioVolumeGroupTest.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-03-27T10:02:43Z",
+      "side": 1,
+      "message": "Common typo found: \"Unkown\" -- should it be \"Unknown\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 81,
+        "startChar": 28,
+        "endLine": 81,
+        "endChar": 34
+      },
+      "revId": "e96c84c314d024f531268aa9e8e5b6536d0edc0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002152114",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d31",
+      "fixSuggestions": [
+        {
+          "fixId": "65d9a138_549be03c",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+              "range": {
+                "startLine": 484,
+                "startChar": 30,
+                "endLine": 484,
+                "endChar": 41
+              },
+              "replacement": "explicitly"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "bbcb41db_efee2bc6",
+        "filename": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-03-27T10:02:43Z",
+      "side": 1,
+      "message": "Common typo found: \"explicitely\" -- should it be \"explicitly\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 484,
+        "startChar": 30,
+        "endLine": 484,
+        "endChar": 41
+      },
+      "revId": "e96c84c314d024f531268aa9e8e5b6536d0edc0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002152114",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d31",
+      "fixSuggestions": [
+        {
+          "fixId": "d5fabdd7_afcf552d",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+              "range": {
+                "startLine": 514,
+                "startChar": 69,
+                "endLine": 514,
+                "endChar": 75
+              },
+              "replacement": "default"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "6c2c885d_0469e67a",
+        "filename": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-03-27T10:02:43Z",
+      "side": 1,
+      "message": "Common typo found: \"defaut\" -- should it be \"default\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 514,
+        "startChar": 69,
+        "endLine": 514,
+        "endChar": 75
+      },
+      "revId": "e96c84c314d024f531268aa9e8e5b6536d0edc0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002152114",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d31",
+      "fixSuggestions": [
+        {
+          "fixId": "07e79e72_a95b558a",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+              "range": {
+                "startLine": 525,
+                "startChar": 86,
+                "endLine": 525,
+                "endChar": 92
+              },
+              "replacement": "default"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "38b1e343_8c7c426e",
+        "filename": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-03-27T10:02:43Z",
+      "side": 1,
+      "message": "Common typo found: \"defaut\" -- should it be \"default\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 525,
+        "startChar": 86,
+        "endLine": 525,
+        "endChar": 92
+      },
+      "revId": "e96c84c314d024f531268aa9e8e5b6536d0edc0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002152114",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d31",
+      "fixSuggestions": [
+        {
+          "fixId": "7a41f66f_329eead3",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+              "range": {
+                "startLine": 529,
+                "startChar": 76,
+                "endLine": 529,
+                "endChar": 82
+              },
+              "replacement": "default"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "7d4d66de_67ee91b9",
+        "filename": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-03-27T10:02:43Z",
+      "side": 1,
+      "message": "Common typo found: \"defaut\" -- should it be \"default\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 529,
+        "startChar": 76,
+        "endLine": 529,
+        "endChar": 82
+      },
+      "revId": "e96c84c314d024f531268aa9e8e5b6536d0edc0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002152114",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d31",
+      "fixSuggestions": [
+        {
+          "fixId": "bdeaa3bf_f0dad40c",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+              "range": {
+                "startLine": 530,
+                "startChar": 70,
+                "endLine": 530,
+                "endChar": 76
+              },
+              "replacement": "default"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "7c291607_a922bf2d",
+        "filename": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-03-27T10:02:43Z",
+      "side": 1,
+      "message": "Common typo found: \"defaut\" -- should it be \"default\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 530,
+        "startChar": 70,
+        "endLine": 530,
+        "endChar": 76
+      },
+      "revId": "e96c84c314d024f531268aa9e8e5b6536d0edc0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002152114",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d31",
+      "fixSuggestions": [
+        {
+          "fixId": "0e56f79c_e9a33168",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorTestParams.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+              "range": {
+                "startLine": 131,
+                "startChar": 71,
+                "endLine": 131,
+                "endChar": 78
+              },
+              "replacement": "explicit"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "0bd957a6_4c342d03",
+        "filename": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-03-27T10:02:43Z",
+      "side": 1,
+      "message": "Common typo found: \"explict\" -- should it be \"explicit\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 131,
+        "startChar": 71,
+        "endLine": 131,
+        "endChar": 78
+      },
+      "revId": "e96c84c314d024f531268aa9e8e5b6536d0edc0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002152114",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d31",
+      "fixSuggestions": [
+        {
+          "fixId": "1abb887b_73935e68",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorTestParams.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+              "range": {
+                "startLine": 139,
+                "startChar": 9,
+                "endLine": 139,
+                "endChar": 16
+              },
+              "replacement": "explicit"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "7409b1aa_c80ef616",
+        "filename": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-03-27T10:02:43Z",
+      "side": 1,
+      "message": "Common typo found: \"explict\" -- should it be \"explicit\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 139,
+        "startChar": 9,
+        "endLine": 139,
+        "endChar": 16
+      },
+      "revId": "e96c84c314d024f531268aa9e8e5b6536d0edc0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002152114",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d31",
+      "fixSuggestions": [
+        {
+          "fixId": "53da0ede_f1029aff",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorTestParams.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+              "range": {
+                "startLine": 147,
+                "startChar": 68,
+                "endLine": 147,
+                "endChar": 75
+              },
+              "replacement": "explicit"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "aac28cf5_089b4cd8",
+        "filename": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-03-27T10:02:43Z",
+      "side": 1,
+      "message": "Common typo found: \"explict\" -- should it be \"explicit\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 147,
+        "startChar": 68,
+        "endLine": 147,
+        "endChar": 75
+      },
+      "revId": "e96c84c314d024f531268aa9e8e5b6536d0edc0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002152114",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d31",
+      "fixSuggestions": [
+        {
+          "fixId": "60ca3aa9_26ce27a5",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorTestParams.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+              "range": {
+                "startLine": 155,
+                "startChar": 9,
+                "endLine": 155,
+                "endChar": 16
+              },
+              "replacement": "explicit"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "0ff55d47_7b49a305",
+        "filename": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-03-27T10:02:43Z",
+      "side": 1,
+      "message": "Common typo found: \"explict\" -- should it be \"explicit\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 155,
+        "startChar": 9,
+        "endLine": 155,
+        "endChar": 16
+      },
+      "revId": "e96c84c314d024f531268aa9e8e5b6536d0edc0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002152114",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d31",
+      "fixSuggestions": [
+        {
+          "fixId": "5d5883d5_66807ebb",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorTestParams.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+              "range": {
+                "startLine": 161,
+                "startChar": 9,
+                "endLine": 161,
+                "endChar": 16
+              },
+              "replacement": "explicit"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "92c24a4e_99ab56fe",
+        "filename": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-03-27T10:02:43Z",
+      "side": 1,
+      "message": "Common typo found: \"explict\" -- should it be \"explicit\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 161,
+        "startChar": 9,
+        "endLine": 161,
+        "endChar": 16
+      },
+      "revId": "e96c84c314d024f531268aa9e8e5b6536d0edc0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002152114",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d31",
+      "fixSuggestions": [
+        {
+          "fixId": "b2bd3dc8_637a844b",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorTestParams.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+              "range": {
+                "startLine": 161,
+                "startChar": 72,
+                "endLine": 161,
+                "endChar": 79
+              },
+              "replacement": "explicit"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "700d4f5c_6699b27e",
+        "filename": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-03-27T10:02:43Z",
+      "side": 1,
+      "message": "Common typo found: \"explict\" -- should it be \"explicit\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 161,
+        "startChar": 72,
+        "endLine": 161,
+        "endChar": 79
+      },
+      "revId": "e96c84c314d024f531268aa9e8e5b6536d0edc0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002152114",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d31",
+      "fixSuggestions": [
+        {
+          "fixId": "c3dd3999_2a765f52",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorTestParams.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+              "range": {
+                "startLine": 167,
+                "startChar": 75,
+                "endLine": 167,
+                "endChar": 82
+              },
+              "replacement": "explicit"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "7860993a_6f2a58c1",
+        "filename": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-03-27T10:02:43Z",
+      "side": 1,
+      "message": "Common typo found: \"explict\" -- should it be \"explicit\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 167,
+        "startChar": 75,
+        "endLine": 167,
+        "endChar": 82
+      },
+      "revId": "e96c84c314d024f531268aa9e8e5b6536d0edc0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002152114",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d31",
+      "fixSuggestions": [
+        {
+          "fixId": "bc429325_695a4685",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorTestParams.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+              "range": {
+                "startLine": 167,
+                "startChar": 9,
+                "endLine": 167,
+                "endChar": 16
+              },
+              "replacement": "explicit"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "4b201a08_2a25f505",
+        "filename": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-03-27T10:02:43Z",
+      "side": 1,
+      "message": "Common typo found: \"explict\" -- should it be \"explicit\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 167,
+        "startChar": 9,
+        "endLine": 167,
+        "endChar": 16
+      },
+      "revId": "e96c84c314d024f531268aa9e8e5b6536d0edc0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
