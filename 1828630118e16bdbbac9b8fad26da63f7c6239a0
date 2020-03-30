@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3b89dab3_32b3f7cd",
+        "filename": "media/libstagefright/timedtext/test/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-03-30T07:35:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6755a2c_ae261c29",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "1828630118e16bdbbac9b8fad26da63f7c6239a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2044a8ba_7c2d6306",
         "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "1828630118e16bdbbac9b8fad26da63f7c6239a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "878155c4_169ad0ba",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-03-30T07:35:16Z",
+      "side": 1,
+      "message": "We need these additional classes because test vectors are not common for all the tests. SRTDescriptionTest needs different test suite and Text3GPPDescriptionTest needs different test suite. Hence defining these two classes.",
+      "parentUuid": "2044a8ba_7c2d6306",
+      "range": {
+        "startLine": 117,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 2
+      },
+      "revId": "1828630118e16bdbbac9b8fad26da63f7c6239a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3f19772f_eedbfb4c",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-03-30T07:35:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c9ac8a0_145897b7",
+      "range": {
+        "startLine": 129,
+        "startChar": 26,
+        "endLine": 129,
+        "endChar": 35
+      },
+      "revId": "1828630118e16bdbbac9b8fad26da63f7c6239a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c02f4ee_69408aff",
         "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "1828630118e16bdbbac9b8fad26da63f7c6239a0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65f4a9aa_a1b46718",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-03-30T07:35:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c02f4ee_69408aff",
+      "range": {
+        "startLine": 165,
+        "startChar": 26,
+        "endLine": 165,
+        "endChar": 35
+      },
+      "revId": "1828630118e16bdbbac9b8fad26da63f7c6239a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
