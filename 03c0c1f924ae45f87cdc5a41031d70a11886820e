@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c12c450c_153b1610",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-03-31T18:33:09Z",
+      "side": 1,
+      "message": "reorder the list to include all audio files at the start, followed by video files",
+      "revId": "03c0c1f924ae45f87cdc5a41031d70a11886820e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bfab2e68_31c4d931",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-03-31T18:33:09Z",
+      "side": 1,
+      "message": "valid frame rate",
+      "range": {
+        "startLine": 67,
+        "startChar": 9,
+        "endLine": 67,
+        "endChar": 11
+      },
+      "revId": "03c0c1f924ae45f87cdc5a41031d70a11886820e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29f737ff_dad88d2c",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-03-31T18:33:09Z",
+      "side": 1,
+      "message": "set a valid frame rate\nI understand that webm extractor doesn\u0027t return frame rate now.\nLet the test fail for that case and we can file a bug to follow up on that",
+      "range": {
+        "startLine": 72,
+        "startChar": 29,
+        "endLine": 72,
+        "endChar": 31
+      },
+      "revId": "03c0c1f924ae45f87cdc5a41031d70a11886820e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "148e1e46_f286fca8",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-03-31T18:33:09Z",
+      "side": 1,
+      "message": "add\ncrowd_640x360p50f32_cnfwndw_l68r68t60b60.mp4\n\nThis file can be taken from android-cts-media-1.4\nTestVectorsIttiam\\hevc\\yuv420\\8bit\\confwindow\\crowd_640x360p50f32",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 99
+      },
+      "revId": "03c0c1f924ae45f87cdc5a41031d70a11886820e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3a713f4_93158d9e",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-03-31T18:33:09Z",
+      "side": 1,
+      "message": "set valid frame rate",
+      "range": {
+        "startLine": 76,
+        "startChar": 88,
+        "endLine": 76,
+        "endChar": 91
+      },
+      "revId": "03c0c1f924ae45f87cdc5a41031d70a11886820e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31c2cd82_170e08f0",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-03-31T18:33:09Z",
+      "side": 1,
+      "message": "set valid frame rate",
+      "range": {
+        "startLine": 77,
+        "startChar": 90,
+        "endLine": 77,
+        "endChar": 94
+      },
+      "revId": "03c0c1f924ae45f87cdc5a41031d70a11886820e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "420daeb0_16f7d47f",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-03-31T18:33:09Z",
+      "side": 1,
+      "message": "change the check to check if configParam.frameRate is not -1.\nThat way we can control which cases are expected to return framerate by changing the parameters appropriately",
+      "range": {
+        "startLine": 710,
+        "startChar": 0,
+        "endLine": 715,
+        "endChar": 9
+      },
+      "revId": "03c0c1f924ae45f87cdc5a41031d70a11886820e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eeabf589_a594ce91",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-03-31T18:33:09Z",
+      "side": 1,
+      "message": "this will pass if extractor doesn\u0027t return profile for cases where it is expected to return\n\nso instead, let us change the order of if conditions\n\nif (configParam.profile !\u003d 1) {\n    if (AMediaFormat_getInt32(...., \u0026profile) {\n        compare profile\n    } else {\n        ASSERT_*() \u003c\u003c \"profile not returned in extractor\";\n    }\n}",
+      "range": {
+        "startLine": 718,
+        "startChar": 0,
+        "endLine": 724,
+        "endChar": 0
+      },
+      "revId": "03c0c1f924ae45f87cdc5a41031d70a11886820e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
