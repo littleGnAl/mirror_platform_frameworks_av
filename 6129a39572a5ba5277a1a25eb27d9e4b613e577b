@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "6db7dcf1_7385f57e",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-04-01T12:58:27Z",
+      "side": 1,
+      "message": "https://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libstagefright/timedtext/TextDescriptions.h;l\u003d43\n\nThese keys are also in sync with TimedText.java. Therefore we may not able to change the visibility of this enum in TextDescriptions.cpp",
+      "parentUuid": "280f2f2d_bddfc1fa",
+      "range": {
+        "startLine": 37,
+        "startChar": 51,
+        "endLine": 37,
+        "endChar": 69
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "628d9a33_94cf85c1",
         "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4fff97a_e5a3b34a",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-04-01T12:58:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "628d9a33_94cf85c1",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 24
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5e6e4948_e447f36a",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-04-01T12:58:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8fc12c5_8d58bd18",
+      "range": {
+        "startLine": 138,
+        "startChar": 10,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "86020d36_5aaa341f",
         "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67df1c27_94b63e8f",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-04-01T12:58:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "86020d36_5aaa341f",
+      "range": {
+        "startLine": 151,
+        "startChar": 12,
+        "endLine": 151,
+        "endChar": 22
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +236,54 @@
     },
     {
       "key": {
+        "uuid": "58c50434_9d1a6b86",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-04-01T12:58:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "023c395f_a1672300",
+      "range": {
+        "startLine": 169,
+        "startChar": 22,
+        "endLine": 169,
+        "endChar": 27
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1614003e_65c2b266",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-04-01T12:58:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1ea0b708_8e096c58",
+      "range": {
+        "startLine": 169,
+        "startChar": 22,
+        "endLine": 169,
+        "endChar": 27
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7a33215c_939d49f9",
         "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
         "patchSetId": 3
@@ -160,6 +304,30 @@
       "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e06e4ad_6f9960e7",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-04-01T12:58:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a33215c_939d49f9",
+      "range": {
+        "startLine": 171,
+        "startChar": 33,
+        "endLine": 171,
+        "endChar": 39
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "8da5ebd1_20c606f2",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-04-01T12:58:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ccbaba2c_e5ba8696",
+      "range": {
+        "startLine": 174,
+        "startChar": 4,
+        "endLine": 174,
+        "endChar": 31
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "060d2757_997b961d",
         "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
         "patchSetId": 3
@@ -200,6 +392,24 @@
       "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3267d103_573b2703",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-04-01T12:58:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "060d2757_997b961d",
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -226,6 +436,30 @@
     },
     {
       "key": {
+        "uuid": "04e39b8f_aa85a257",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-04-01T12:58:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e0988d2f_4916e36e",
+      "range": {
+        "startLine": 222,
+        "startChar": 16,
+        "endLine": 223,
+        "endChar": 32
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "18fbece7_25d08e64",
         "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
         "patchSetId": 3
@@ -249,6 +483,30 @@
     },
     {
       "key": {
+        "uuid": "edafff4f_c59b7335",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-04-01T12:58:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18fbece7_25d08e64",
+      "range": {
+        "startLine": 224,
+        "startChar": 16,
+        "endLine": 224,
+        "endChar": 24
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4c4144a8_cc9909d7",
         "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
         "patchSetId": 3
@@ -263,6 +521,24 @@
       "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1e385fd_6f4d3c4f",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-04-01T12:58:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c4144a8_cc9909d7",
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -289,6 +565,30 @@
     },
     {
       "key": {
+        "uuid": "4daf8a6b_20497957",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-04-01T12:58:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "422d1d49_64938def",
+      "range": {
+        "startLine": 232,
+        "startChar": 20,
+        "endLine": 232,
+        "endChar": 47
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2eac439f_be5cb417",
         "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
         "patchSetId": 3
@@ -309,6 +609,30 @@
       "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42b769ec_f09df876",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-04-01T12:58:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2eac439f_be5cb417",
+      "range": {
+        "startLine": 327,
+        "startChar": 28,
+        "endLine": 327,
+        "endChar": 47
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
