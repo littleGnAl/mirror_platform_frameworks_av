@@ -3276,6 +3276,7 @@ void CameraService::updateStatus(StatusInternal status, const String8& cameraId,
         return;
     }
     bool isHidden = isPublicallyHiddenSecureCamera(cameraId);
+<<<<<<< HEAD   (da8f7e Merge "cameraserver: Fix logic to skip callbacks for non HAL)
     bool supportsHAL3 = false;
     // supportsCameraApi also holds mInterfaceMutex, we can't call it in the
     // HIDL onStatusChanged wrapper call (we'll hold mStatusListenerLock and
@@ -3288,9 +3289,15 @@ void CameraService::updateStatus(StatusInternal status, const String8& cameraId,
                 __FUNCTION__, cameraId.string());
         return;
     }
+=======
+>>>>>>> BRANCH (a66592 Merge cherrypicks of [10101230, 10101593, 10101594, 10101595)
     // Update the status for this camera state, then send the onStatusChangedCallbacks to each
     // of the listeners with both the mStatusStatus and mStatusListenerLock held
+<<<<<<< HEAD   (da8f7e Merge "cameraserver: Fix logic to skip callbacks for non HAL)
     state->updateStatus(status, cameraId, rejectSourceStates, [this, &isHidden, &supportsHAL3]
+=======
+    state->updateStatus(status, cameraId, rejectSourceStates, [this,&isHidden]
+>>>>>>> BRANCH (a66592 Merge cherrypicks of [10101230, 10101593, 10101594, 10101595)
             (const String8& cameraId, StatusInternal status) {
 
             if (status != StatusInternal::ENUMERATING) {
@@ -3312,6 +3319,7 @@ void CameraService::updateStatus(StatusInternal status, const String8& cameraId,
             Mutex::Autolock lock(mStatusListenerLock);
 
             for (auto& listener : mListenerList) {
+<<<<<<< HEAD   (da8f7e Merge "cameraserver: Fix logic to skip callbacks for non HAL)
                 bool isVendorListener = listener.first;
                 if (isVendorListener && !supportsHAL3) {
                     ALOGV("Skipping vendor listener camera discovery callback for  HAL1 camera %s",
@@ -3320,6 +3328,9 @@ void CameraService::updateStatus(StatusInternal status, const String8& cameraId,
                 }
 
                 if (!isVendorListener && isHidden) {
+=======
+                if (!listener.first &&  isHidden) {
+>>>>>>> BRANCH (a66592 Merge cherrypicks of [10101230, 10101593, 10101594, 10101595)
                     ALOGV("Skipping camera discovery callback for system-only camera %s",
                           cameraId.c_str());
                     continue;
