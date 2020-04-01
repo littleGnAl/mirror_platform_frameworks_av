@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0451c0af_f143a910",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-04-01T16:33:03Z",
+      "side": 1,
+      "message": "This changes behavior significantly. Previously, if there was a monitor which asked to wait, and its end time has passed, TimeCheck would signal a timeout. With this change, such a monitor will be skipped. I don\u0027t think this is the intended behavior.",
+      "range": {
+        "startLine": 11,
+        "startChar": 5,
+        "endLine": 11,
+        "endChar": 48
+      },
+      "revId": "1c316a5ebe60a1d2fa5d563461a44fd3e592aa14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1032a06_846edc6c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-04-01T16:33:03Z",
+      "side": 1,
+      "message": "This part of sentence can be removed.",
+      "range": {
+        "startLine": 12,
+        "startChar": 39,
+        "endLine": 13,
+        "endChar": 29
+      },
+      "revId": "1c316a5ebe60a1d2fa5d563461a44fd3e592aa14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
