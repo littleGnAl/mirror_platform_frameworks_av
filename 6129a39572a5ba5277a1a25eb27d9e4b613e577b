@@ -1,0 +1,314 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "280f2f2d_bddfc1fa",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T03:18:11Z",
+      "side": 1,
+      "message": "give a pathname to this file\nframeworks/av/media/libstagefright/timedtext/....\n\nwish we could figure a way to get the keys from that file, so we don\u0027t have to \ndo this;  perhaps we can change the visibility of this enum back in the other file.",
+      "range": {
+        "startLine": 37,
+        "startChar": 51,
+        "endLine": 37,
+        "endChar": 69
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "628d9a33_94cf85c1",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T03:18:11Z",
+      "side": 1,
+      "message": "should we also be initializing these....\n\nfondID \u003d -1, NameLength \u003d 0, font \u003d null;",
+      "range": {
+        "startLine": 83,
+        "startChar": 5,
+        "endLine": 85,
+        "endChar": 24
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8fc12c5_8d58bd18",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T03:18:11Z",
+      "side": 1,
+      "message": "ASSERT_GT is a stronger statement that we can make.\nI realize that it\u0027s an unsigned, but _GT just highlights this fact.",
+      "range": {
+        "startLine": 138,
+        "startChar": 10,
+        "endLine": 138,
+        "endChar": 13
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86020d36_5aaa341f",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T03:18:11Z",
+      "side": 1,
+      "message": "shouldn\u0027t we be able to assert something about the relation between the fileSize we get here\nand the mFileSize that we read earlier.",
+      "range": {
+        "startLine": 151,
+        "startChar": 12,
+        "endLine": 151,
+        "endChar": 22
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "023c395f_a1672300",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T03:18:11Z",
+      "side": 1,
+      "message": "set remaining to mFileSize here",
+      "range": {
+        "startLine": 169,
+        "startChar": 22,
+        "endLine": 169,
+        "endChar": 27
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ea0b708_8e096c58",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T03:18:11Z",
+      "side": 1,
+      "message": "set remaining to mFileSize here",
+      "range": {
+        "startLine": 169,
+        "startChar": 22,
+        "endLine": 169,
+        "endChar": 27
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7a33215c_939d49f9",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T03:18:11Z",
+      "side": 1,
+      "message": "Entries -- since it holds many of these fontrecords.",
+      "range": {
+        "startLine": 171,
+        "startChar": 33,
+        "endLine": 171,
+        "endChar": 39
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccbaba2c_e5ba8696",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T03:18:11Z",
+      "side": 1,
+      "message": "and then all our modifications are of the form:\n\ntmpData +\u003d N;\nremaining -\u003d N;\n\nit reads better.\n\nalso be good to have a comment about what was in those 16 bytes that we just ignored.\n\nand a blank line after the tmpdata+\u003d / remaining -\u003d   \nso that it\u0027s separated from the next section.\n\ni want:\nparse\nadjust\n\u003cblank\u003e\nparse\nadjust\n\u003cblank\u003e",
+      "range": {
+        "startLine": 174,
+        "startChar": 4,
+        "endLine": 174,
+        "endChar": 31
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "060d2757_997b961d",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T03:18:11Z",
+      "side": 1,
+      "message": "blank line",
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e0988d2f_4916e36e",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T03:18:11Z",
+      "side": 1,
+      "message": "we only parse the last 2 bytes of that 10 byte block?\nwhat was in the front 8 bytes; a comment would be good.",
+      "range": {
+        "startLine": 222,
+        "startChar": 16,
+        "endLine": 223,
+        "endChar": 32
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18fbece7_25d08e64",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T03:18:11Z",
+      "side": 1,
+      "message": "we need to validate remaining each time through this loop.\n\nright here, we need to be able to read 3 bytes, so remaining \u003e\u003d 3",
+      "range": {
+        "startLine": 224,
+        "startChar": 16,
+        "endLine": 224,
+        "endChar": 24
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c4144a8_cc9909d7",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T03:18:11Z",
+      "side": 1,
+      "message": "and now that we\u0027re here, we need to check that remaining \u003e tempFontNameLength",
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "422d1d49_64938def",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T03:18:11Z",
+      "side": 1,
+      "message": "is the encoded fontname zero terminated?\nor do we use the parsed tempFontNameLength to know how many bytes\nare contained, making the terminating \u0027\\0\u0027 a little redundant.\n\ni\u0027m just checking here.",
+      "range": {
+        "startLine": 232,
+        "startChar": 20,
+        "endLine": 232,
+        "endChar": 47
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2eac439f_be5cb417",
+        "filename": "media/libstagefright/timedtext/test/TimedTextUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 327,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T03:18:11Z",
+      "side": 1,
+      "message": "why not fontRecordEntry.size() -- the actual size of the array\n\nor perhaps better is tha there should be a check that\n fontRecordEntry.size \u003d\u003d fontInfo.entryCount",
+      "range": {
+        "startLine": 327,
+        "startChar": 28,
+        "endLine": 327,
+        "endChar": 47
+      },
+      "revId": "6129a39572a5ba5277a1a25eb27d9e4b613e577b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
