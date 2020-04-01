@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "1114754d_2483292a",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T02:32:43Z",
+      "side": 1,
+      "message": "can these be either both const char* or both string?\nor a little explanation of why they should be different types.",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 55,
+        "endChar": 21
+      },
+      "revId": "03c0c1f924ae45f87cdc5a41031d70a11886820e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c12c450c_153b1610",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 1
@@ -134,6 +157,52 @@
     },
     {
       "key": {
+        "uuid": "c9cfe271_e69e0e59",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T02:32:43Z",
+      "side": 1,
+      "message": "mime types aren\u0027t this long; this is a bit of overallocation.\n\ncan we perhaps use \u0027string\u0027 for the data type here, so that we can\ndo some simple  whateverconfigFormat.mime \u003d \"audio/whatever\";\n\nif we\u0027re going to stay with the fixed length buffer, then we probably should be checking at the pooint we fill that to ensure that we don\u0027t overflow the target array.\n\nbut i like the idea of using \u0027string\u0027 here --- so that we don\u0027t have to care about the length of things, let the language take care of it.",
+      "range": {
+        "startLine": 158,
+        "startChar": 7,
+        "endLine": 158,
+        "endChar": 23
+      },
+      "revId": "03c0c1f924ae45f87cdc5a41031d70a11886820e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "560a3fd2_20941673",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 232,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T02:32:43Z",
+      "side": 1,
+      "message": "unchecked length.\n\nknowing what we\u0027re copying in, it\u0027s unlikely to be a problem, but we should still be checking\nor using a construct that automatically handles the length for us (e.g. \u0027string\u0027).",
+      "range": {
+        "startLine": 232,
+        "startChar": 4,
+        "endLine": 232,
+        "endChar": 27
+      },
+      "revId": "03c0c1f924ae45f87cdc5a41031d70a11886820e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "420daeb0_16f7d47f",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 1
@@ -157,6 +226,53 @@
     },
     {
       "key": {
+        "uuid": "6876dbf5_47374b0e",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T02:32:43Z",
+      "side": 1,
+      "message": "agree with that....  this won\u0027t test a oem-supplied mpeg4 extractor that they have provided independently of what comes with base android.....\nin general, we want to avoid using an extractor name as a key...",
+      "parentUuid": "420daeb0_16f7d47f",
+      "range": {
+        "startLine": 710,
+        "startChar": 0,
+        "endLine": 715,
+        "endChar": 9
+      },
+      "revId": "03c0c1f924ae45f87cdc5a41031d70a11886820e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d34a5897_6b81f4e2",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 720,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T02:32:43Z",
+      "side": 1,
+      "message": "i expect that this \"-1\" matches some instances of \"-1\" in the table around lines 50.78.\n\nlet\u0027s use a defined constant in both that table and here so that it\u0027s clear that the\nvalues are expected to be linked that way.  It better highlights why we\u0027re expecting this particular value.\n\nprobably also print out the value we did receive --- \"wanted X, received Y\" sort of phrasing in the error message on line 721.",
+      "range": {
+        "startLine": 720,
+        "startChar": 34,
+        "endLine": 720,
+        "endChar": 39
+      },
+      "revId": "03c0c1f924ae45f87cdc5a41031d70a11886820e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "eeabf589_a594ce91",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 1
@@ -173,6 +289,29 @@
         "startChar": 0,
         "endLine": 724,
         "endChar": 0
+      },
+      "revId": "03c0c1f924ae45f87cdc5a41031d70a11886820e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63fe2f38_d14049d3",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 736,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-01T02:32:43Z",
+      "side": 1,
+      "message": "this sort of list, i like 1 entry per line.\neven if some autoformatting would stack them several per line like this.\n\nbut I think that for this sort of stuff, it\u0027s much easier to read if 1 per line.",
+      "range": {
+        "startLine": 730,
+        "startChar": 43,
+        "endLine": 736,
+        "endChar": 92
       },
       "revId": "03c0c1f924ae45f87cdc5a41031d70a11886820e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
