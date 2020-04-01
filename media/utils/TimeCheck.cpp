@@ -99,42 +99,41 @@ void TimeCheck::TimeCheckThread::stopMonitoring(nsecs_t endTimeNs) {
 
 bool TimeCheck::TimeCheckThread::threadLoop()
 {
-    status_t status = TIMED_OUT;
+    AutoMutex _l(mMutex);
+
+    if (exitPending()) {
+        return false;
+    }
+
+    nsecs_t endTimeNs = INT64_MAX;
     const char *tag;
-    {
-        AutoMutex _l(mMutex);
+    // KeyedVector mMonitorRequests is ordered so take first entry as next timeout
+    if (mMonitorRequests.size() != 0) {
+        endTimeNs = mMonitorRequests.keyAt(0);
+        tag = mMonitorRequests.valueAt(0);
+    }
 
-        if (exitPending()) {
-            return false;
-        }
+    const nsecs_t waitTimeNs = endTimeNs - systemTime();
+    if (waitTimeNs <= 0) {
+        return true;
+    }
 
-        nsecs_t endTimeNs = INT64_MAX;
-        // KeyedVector mMonitorRequests is ordered so take first entry as next timeout
-        if (mMonitorRequests.size() != 0) {
-            endTimeNs = mMonitorRequests.keyAt(0);
-            tag = mMonitorRequests.valueAt(0);
-        }
-
-        const nsecs_t waitTimeNs = endTimeNs - systemTime();
-        if (waitTimeNs > 0) {
-            status = mCond.waitRelative(mMutex, waitTimeNs);
-        }
-        if (status != NO_ERROR) {
-            // Generate audio HAL processes tombstones and allow time to complete
-            // before forcing restart
-            std::vector<pid_t> pids = getAudioHalPids();
-            if (pids.size() != 0) {
-                for (const auto& pid : pids) {
-                    ALOGI("requesting tombstone for pid: %d", pid);
-                    sigqueue(pid, DEBUGGER_SIGNAL, {.sival_int = 0});
-                }
-                sleep(1);
-            } else {
-                ALOGI("No HAL process pid available, skipping tombstones");
+    status_t status = mCond.waitRelative(mMutex, waitTimeNs);
+    if (status != NO_ERROR) {
+        // Generate audio HAL processes tombstones and allow time to complete
+        // before forcing restart
+        std::vector<pid_t> pids = getAudioHalPids();
+        if (pids.size() != 0) {
+            for (const auto& pid : pids) {
+                ALOGI("requesting tombstone for pid: %d", pid);
+                sigqueue(pid, DEBUGGER_SIGNAL, {.sival_int = 0});
             }
-            LOG_EVENT_STRING(LOGTAG_AUDIO_BINDER_TIMEOUT, tag);
-            LOG_ALWAYS_FATAL("TimeCheck timeout for %s", tag);
+            sleep(1);
+        } else {
+            ALOGI("No HAL process pid available, skipping tombstones");
         }
+        LOG_EVENT_STRING(LOGTAG_AUDIO_BINDER_TIMEOUT, tag);
+        LOG_ALWAYS_FATAL("TimeCheck timeout for %s with status %s", tag, strerror(-status));
     }
     return true;
 }
