@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a44bd0df_8dff1147",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-04-01T15:55:19Z",
+      "side": 1,
+      "message": "a time out is always a valid condition to generate a crash. \nCan you confirm that the problem here is that wait() can be interrupted by another signal in which case we should retry and not crash?\nIf this is true we should just test TIMED_OUT instead of any error before crashing",
+      "range": {
+        "startLine": 9,
+        "startChar": 64,
+        "endLine": 9,
+        "endChar": 73
+      },
+      "revId": "014427e8a41cc49d87689c69a53ff8f1621b9aa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20e4b728_0b496721",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-04-01T15:55:19Z",
+      "side": 1,
+      "message": "Please clarify this comment. the threading did not change. It is  just that the assertion is now protected by the mutex",
+      "range": {
+        "startLine": 12,
+        "startChar": 45,
+        "endLine": 13,
+        "endChar": 14
+      },
+      "revId": "014427e8a41cc49d87689c69a53ff8f1621b9aa1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
