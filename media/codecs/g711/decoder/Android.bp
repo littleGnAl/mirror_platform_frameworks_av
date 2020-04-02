@@ -17,6 +17,7 @@
 cc_library_static {
     name: "codecs_g711dec",
     vendor_available: true,
+    host_supported: true,
 
     srcs: [
         "g711DecAlaw.cpp",
@@ -33,5 +34,11 @@ cc_library_static {
             "unsigned-integer-overflow",
         ],
         cfi: true,
+    },
+
+    target: {
+        darwin: {
+            enabled: false,
+        },
     },
 }
