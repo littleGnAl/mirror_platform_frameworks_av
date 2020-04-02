@@ -17,7 +17,7 @@
 cc_library_static {
     name: "libstagefright_g711dec",
     vendor_available: true,
-
+    host_supported: true,
     srcs: ["g711Dec.cpp"],
 
     export_include_dirs: ["."],
@@ -30,5 +30,11 @@ cc_library_static {
             "unsigned-integer-overflow",
         ],
         cfi: true,
+    },
+
+    target: {
+        darwin: {
+            enabled: false,
+        },
     },
 }
