@@ -70,6 +70,7 @@ cc_library_shared {
     ],
 
     header_libs: [
+        "jni_headers",
         "libmediadrm_headers",
     ],
 

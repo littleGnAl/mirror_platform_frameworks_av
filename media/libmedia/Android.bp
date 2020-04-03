@@ -280,11 +280,13 @@ cc_library {
 
     header_libs: [
         "bionic_libc_platform_headers",
+        "jni_headers",
         "libstagefright_headers",
         "media_ndk_headers",
     ],
 
     export_header_lib_headers: [
+        "jni_headers",
         "libstagefright_headers",
         "media_ndk_headers",
     ],
