@@ -52,6 +52,218 @@
       "revId": "f4ce7d3ce49522a77d83c8e244764641abaa6cfa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ff50db9a_50657f94",
+        "filename": "media/libstagefright/foundation/tests/MetaDataBaseUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-03T03:09:39Z",
+      "side": 1,
+      "message": "a key we did not add...  it\u0027s a legal key, but it should not be in the metadata",
+      "range": {
+        "startLine": 137,
+        "startChar": 17,
+        "endLine": 137,
+        "endChar": 28
+      },
+      "revId": "f4ce7d3ce49522a77d83c8e244764641abaa6cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ccde00a9_5b41bf69",
+        "filename": "media/libstagefright/foundation/tests/MetaDataBaseUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-03T03:09:39Z",
+      "side": 1,
+      "message": "a simple comment at the start of this block saying that we\u0027re doing\nset/set/read  for this.",
+      "revId": "f4ce7d3ce49522a77d83c8e244764641abaa6cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bf2069e2_5da19cad",
+        "filename": "media/libstagefright/foundation/tests/MetaDataBaseUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-03T03:09:39Z",
+      "side": 1,
+      "message": "for the set/set/set/read  to make sure that we get back the 3rd value....\n\nlet\u0027s add a comment before the block saying that we\u0027re doing this set/set/set/read...",
+      "revId": "f4ce7d3ce49522a77d83c8e244764641abaa6cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56c777d3_a80c5b92",
+        "filename": "media/libstagefright/foundation/tests/MetaDataBaseUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-03T03:09:39Z",
+      "side": 1,
+      "message": "is there a reason we\u0027re doing both height and width in the set/set/set/read test?\ncould we just do it with height by itself?\n\nor is there an additional behavior that we\u0027re trying to check by doing both of the variables.",
+      "range": {
+        "startLine": 162,
+        "startChar": 42,
+        "endLine": 162,
+        "endChar": 53
+      },
+      "revId": "f4ce7d3ce49522a77d83c8e244764641abaa6cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a25ae778_9691cfa3",
+        "filename": "media/libstagefright/foundation/tests/MetaDataBaseUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-03T03:09:39Z",
+      "side": 1,
+      "message": "make these a defined constant -- kWidth2 and kHeight2.\n\nif for some strange reason, someone where to change kWidth from 1920 to 1280, we\nwould not be appropriately testing.",
+      "range": {
+        "startLine": 165,
+        "startChar": 43,
+        "endLine": 165,
+        "endChar": 47
+      },
+      "revId": "f4ce7d3ce49522a77d83c8e244764641abaa6cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0020bb77_185a3b29",
+        "filename": "media/libstagefright/foundation/tests/MetaDataBaseUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-03T03:09:39Z",
+      "side": 1,
+      "message": "symbolic constants here too, please.  probably kWidth3...\n\n(and perhaps we only need kWidth/2/3  and can lose the Height parameters per my comment above)",
+      "range": {
+        "startLine": 170,
+        "startChar": 42,
+        "endLine": 170,
+        "endChar": 47
+      },
+      "revId": "f4ce7d3ce49522a77d83c8e244764641abaa6cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fe444fd_d3aaeb9a",
+        "filename": "media/libstagefright/foundation/tests/MetaDataBaseUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-03T03:09:39Z",
+      "side": 1,
+      "message": "this would use the new kWidth3 or whatever we call it.",
+      "range": {
+        "startLine": 178,
+        "startChar": 21,
+        "endLine": 178,
+        "endChar": 26
+      },
+      "revId": "f4ce7d3ce49522a77d83c8e244764641abaa6cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4710b64_6f011d85",
+        "filename": "media/libstagefright/foundation/tests/MetaDataBaseUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-03T03:09:39Z",
+      "side": 1,
+      "message": "\"overwrite should be false since key was removed\"",
+      "range": {
+        "startLine": 210,
+        "startChar": 64,
+        "endLine": 211,
+        "endChar": 49
+      },
+      "revId": "f4ce7d3ce49522a77d83c8e244764641abaa6cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8449594c_7ae994d1",
+        "filename": "media/libstagefright/foundation/tests/MetaDataBaseUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-03T03:09:39Z",
+      "side": 1,
+      "message": "additional tests to make sure clear() worked correctly:\n\nstatus \u003d medaData-\u003esetInt32(kKeyWidth)\nstatus \u003d\u003d false, since it should not be in there because we cleared.\n[want to add this because so that we know both hasData and setXXX() are functioning properly]\n\n\nremove(kKeyMIMEType)  --- make sure that we get the right value for this after we\u0027ve cleared\nwhen we know that it had been in there before hand.\n\nprobably also should test findCString(kKeyMIMEType) to make sure that routine also behaves properly since we did clear() between setting it and trying to find it here.",
+      "revId": "f4ce7d3ce49522a77d83c8e244764641abaa6cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4974611_6313829e",
+        "filename": "media/libstagefright/foundation/tests/MetaDataBaseUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-03T03:09:39Z",
+      "side": 1,
+      "message": "ASSERT_GT() is a stronger statement.",
+      "range": {
+        "startLine": 250,
+        "startChar": 11,
+        "endLine": 250,
+        "endChar": 14
+      },
+      "revId": "f4ce7d3ce49522a77d83c8e244764641abaa6cfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
