@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b03ceae7_ab1da00c",
+        "filename": "media/libstagefright/xmlparser/test/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-06T17:58:19Z",
+      "side": 1,
+      "message": "I think this test doesn\u0027t require that flag -- because it\u0027s downloading things that are packaged with the test (e.g. from the same source tree).\n\nthis is different than some of the codec/extractor tests that pull down several MBytes of data from a google cloud folder.",
+      "range": {
+        "startLine": 32,
+        "startChar": 23,
+        "endLine": 32,
+        "endChar": 60
+      },
+      "revId": "14964a7aad55f34040820b63a17705d4c634db19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "282660c1_fc33eb44",
+        "filename": "media/libstagefright/xmlparser/test/XMLParserTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-06T17:58:19Z",
+      "side": 1,
+      "message": "I\u0027d suggest reading these in from a file.... but that file would likely be an xml file\nand that\u0027s what we\u0027re trying to test..... so that idea doesn\u0027t work so well.",
+      "range": {
+        "startLine": 85,
+        "startChar": 4,
+        "endLine": 87,
+        "endChar": 0
+      },
+      "revId": "14964a7aad55f34040820b63a17705d4c634db19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f87b446_ebd08e8e",
+        "filename": "media/libstagefright/xmlparser/test/media_codecs_unit_test.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-06T17:58:19Z",
+      "side": 1,
+      "message": "i\u0027m tempted to put the test data (this xml file is one of them) into\na subdirectory -- so they are in media/libstagefright/xmlparser/test/testdata",
+      "range": {
+        "startLine": 17,
+        "startChar": 1,
+        "endLine": 17,
+        "endChar": 10
+      },
+      "revId": "14964a7aad55f34040820b63a17705d4c634db19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14750589_fa526379",
+        "filename": "media/libstagefright/xmlparser/test/media_codecs_unit_test.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-06T17:58:19Z",
+      "side": 1,
+      "message": "is this an intentional typo?\n\nit\u0027s probably a good idea to put a comment line before each \u003cMediacodec\u003e entry that indicates what this particular one is testing.\n\nas is, I can\u0027t tell whether the in/min difference is on purpose or not.\n\nand we probably want a corresponding comment in XMLParserTest.cpp before the matching setCodecProperties()\n\nmy opinion is that tests are a place where you can\u0027t go wrong with more comments; every extra comment helps us to know what is a typo and what is on purpose and why things don\u0027t match up between the two sides.",
+      "range": {
+        "startLine": 57,
+        "startChar": 32,
+        "endLine": 57,
+        "endChar": 37
+      },
+      "revId": "14964a7aad55f34040820b63a17705d4c634db19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6078e20_91ea12d2",
+        "filename": "media/libstagefright/xmlparser/test/media_codecs_unit_test_caller.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-06T17:58:19Z",
+      "side": 1,
+      "message": "\"no newline at end of file\".\n\nlet\u0027s clean that up.\ni see it in athe other xml file also, so that means: check them all to be sure, fix the ones that don\u0027t have a newline at the end of the file.",
+      "revId": "14964a7aad55f34040820b63a17705d4c634db19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
