@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2b1d04c6_6f8a7810",
+        "filename": "media/codec2/components/g711/decoder/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-06T21:56:23Z",
+      "side": 1,
+      "message": "let\u0027s put the actual codec into\n\nframeworks/av/media/codecs/g711/\n\nI would like to make it truly separate from any plugin logic, not just by being in a separate library, but by being located outside of the codec2 or omx (libstagefright/codecs) directories.",
+      "range": {
+        "startLine": 1,
+        "startChar": 1,
+        "endLine": 1,
+        "endChar": 2
+      },
+      "revId": "5418a54331505466b526ceaac09fa56c23e34bc4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
