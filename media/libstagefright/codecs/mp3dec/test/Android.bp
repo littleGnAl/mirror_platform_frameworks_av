@@ -18,6 +18,7 @@ cc_test {
     name: "Mp3DecoderTest",
     gtest: true,
 
+    host_supported:true,
     srcs: [
         "mp3reader.cpp",
         "Mp3DecoderTest.cpp",
@@ -44,5 +45,11 @@ cc_test {
             "unsigned-integer-overflow",
             "signed-integer-overflow",
         ],
+    },
+
+    target: {
+        darwin: {
+            enabled: false,
+        },
     },
 }
