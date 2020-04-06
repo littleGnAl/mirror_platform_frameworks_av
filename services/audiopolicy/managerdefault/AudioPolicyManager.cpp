@@ -3701,6 +3701,16 @@ status_t AudioPolicyManager::releaseAudioPatchInternal(audio_patch_handle_t hand
                            true,
                            NULL);
         } else if (patch->sinks[0].type == AUDIO_PORT_TYPE_DEVICE) {
+            // SW Bridge
+            if (patch->num_sources > 1 && patch->sources[1].type == AUDIO_PORT_TYPE_MIX) {
+                sp<SwAudioOutputDescriptor> outputDesc = mOutputs.getOutputFromId(patch->sources[1].id);
+                if (outputDesc == NULL) {
+                    ALOGE("%s output not found for id %d", __func__, patch->sources[0].id);
+                    return BAD_VALUE;
+                }
+                // Reset handle so that setOutputDevice will force new AF patch to reach the sink
+                outputDesc->setPatchHandle(AUDIO_PATCH_HANDLE_NONE);
+            }
             status_t status =
                     mpClientInterface->releaseAudioPatch(patchDesc->getAfHandle(), delayMs);
             ALOGV("%s patch panel returned %d patchHandle %d",
