@@ -1177,6 +1177,19 @@ status_t CameraService::handleEvictionsLocked(const String8& cameraId, int clien
         // Find clients that would be evicted
         auto evicted = mActiveClientManager.wouldEvict(clientDescriptor);
 
+        ALOGE("%s: evicted empty: %d", __func__, evicted.empty());
+        for (auto& i : evicted) {
+            if ((clientDescriptor != i) && (i->getValue() == nullptr)) {
+                ALOGE("%s: Internal client list contains invalid client value for camera id: %s!",
+                        __func__, i->getKey().c_str());
+            } else if (i->getValue() == nullptr) {
+                ALOGE("%s: New client descriptor found!", __func__);
+            } else {
+                ALOGE("%s: Valid internal client: %p for camera id: %s", __func__,
+                        i->getValue().get(), i->getKey().c_str());
+            }
+        }
+
         // If the incoming client was 'evicted,' higher priority clients have the camera in the
         // background, so we cannot do evictions
         if (std::find(evicted.begin(), evicted.end(), clientDescriptor) != evicted.end()) {
