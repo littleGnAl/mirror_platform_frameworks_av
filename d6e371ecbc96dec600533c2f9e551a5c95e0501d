@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e0670c8a_314e889d",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3706,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-04-07T12:21:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2869d2f_d98531fc",
+      "range": {
+        "startLine": 3706,
+        "startChar": 0,
+        "endLine": 3706,
+        "endChar": 104
+      },
+      "revId": "d6e371ecbc96dec600533c2f9e551a5c95e0501d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ee1581d3_8c076e9c",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "side": 1,
       "message": "probably should call getNewOutputDevices()",
       "parentUuid": "ee1581d3_8c076e9c",
+      "range": {
+        "startLine": 3712,
+        "startChar": 0,
+        "endLine": 3712,
+        "endChar": 68
+      },
+      "revId": "d6e371ecbc96dec600533c2f9e551a5c95e0501d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "073279dc_6b082c64",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3712,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-04-07T12:21:51Z",
+      "side": 1,
+      "message": "The issue is that AF::PatchPanel is requested to connect SW Bridge. It will create 2 AF patches and call sendCreateAudioPatchConfigEvent on playback thread. It will overwrite mPatch member.\nWhen disconnecting the SW bridge, PatchPanel will call sendReleaseAudioPatchConfigEvent on PlaybackThread and set mPatch to empty structure.\nOutputDesc has currently on APM side the patch handle corresponding to setOutputDevice. \nIf we do not reset it, no way to force PlaybackThread mPatch member to a valid one.\n\nThis bug is new as before we use to manage device rather than patch on PlaybackThread. The new device was inferred from the patch and updated if required. releaseAudioPatch on PlaybackThread also was not used to clear mPatch member.\n\nI wish one day AF and APM could share the same patch list :-)",
+      "parentUuid": "f79e5015_3eaf2ffe",
       "range": {
         "startLine": 3712,
         "startChar": 0,
