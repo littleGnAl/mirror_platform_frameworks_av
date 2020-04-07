@@ -3543,13 +3543,18 @@ void Camera3Device::sendCaptureResult(CameraMetadata &pendingMetadata,
     }
 
     // Fix up some result metadata to account for HAL-level distortion correction
-    status_t res =
-            mDistortionMappers[mId.c_str()].correctCaptureResult(&captureResult.mMetadata);
-    if (res != OK) {
-        SET_ERR("Unable to correct capture result metadata for frame %d: %s (%d)",
-                frameNumber, strerror(res), res);
-        return;
+    //!++
+    status_t res = OK;
+    auto iter = mDistortionMappers.find(mId.c_str());
+    if (iter != mDistortionMappers.end()) {
+        res = iter->second.correctCaptureResult(&captureResult.mMetadata);
+        if (res != OK) {
+            SET_ERR("Unable to correct capture result metadata for frame %d: %s (%d)",
+                    frameNumber, strerror(res), res);
+            return;
+        }
     }
+    //!--
     for (auto& physicalMetadata : captureResult.mPhysicalMetadatas) {
         String8 cameraId8(physicalMetadata.mPhysicalCameraId);
         if (mDistortionMappers.find(cameraId8.c_str()) == mDistortionMappers.end()) {
