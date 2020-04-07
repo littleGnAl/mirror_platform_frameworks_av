@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bd6f6712_588952d1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2020-04-07T18:06:45Z",
+      "side": 1,
+      "message": "Can you do \"RESTRICT AUTOMERGE: Camera: Fix distortion mapper race condition\"\n\n(The RESTRICT AUTOMERGE is due to we need to fix this bug separately in R code base as the code has been moved in R)",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 3
+      },
+      "revId": "3c2e80bd0cd4d26e2319ba3ed20be740d81542ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "378e682f_0401bf70",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2020-04-07T18:06:45Z",
+      "side": 1,
+      "message": "Can you add one more line:\nBug: 153457587",
+      "revId": "3c2e80bd0cd4d26e2319ba3ed20be740d81542ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e4dd5c8_4787446f",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3546,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2020-04-07T18:06:45Z",
+      "side": 1,
+      "message": "Remove this line",
+      "range": {
+        "startLine": 3546,
+        "startChar": 4,
+        "endLine": 3546,
+        "endChar": 9
+      },
+      "revId": "3c2e80bd0cd4d26e2319ba3ed20be740d81542ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd286a74_ec81e0c7",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3557,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2020-04-07T18:06:45Z",
+      "side": 1,
+      "message": "and this line.",
+      "range": {
+        "startLine": 3557,
+        "startChar": 3,
+        "endLine": 3557,
+        "endChar": 9
+      },
+      "revId": "3c2e80bd0cd4d26e2319ba3ed20be740d81542ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
