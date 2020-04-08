@@ -19,13 +19,13 @@
         <option name="cleanup" value="true" />
         <option name="push" value="ID3Test->/data/local/tmp/ID3Test" />
         <option name="push-file"
-            key="https://storage.googleapis.com/android_media/frameworks/av/media/libstagefright/id3/test/ID3Test.zip?unzip=true"
-            value="/data/local/tmp/ID3TestRes/" />
+            key="https://storage.googleapis.com/android_media/frameworks/av/media/libstagefright/id3/test/ID3Test-1.1.zip?unzip=true"
+            value="/data/local/tmp/ID3Test/" />
     </target_preparer>
 
     <test class="com.android.tradefed.testtype.GTest" >
         <option name="native-test-device-path" value="/data/local/tmp" />
         <option name="module-name" value="ID3Test" />
-        <option name="native-test-flag" value="-P /data/local/tmp/ID3TestRes/" />
+        <option name="native-test-flag" value="-P /data/local/tmp/ID3Test/" />
     </test>
 </configuration>
