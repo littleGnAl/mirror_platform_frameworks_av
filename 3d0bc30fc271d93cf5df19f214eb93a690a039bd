@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "388b1791_7b1ee44e",
+        "filename": "media/codec2/components/g711/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-04-08T07:08:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b319d33_b5a400b0",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "3d0bc30fc271d93cf5df19f214eb93a690a039bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e4fe6116_f3e2a423",
         "filename": "media/codec2/components/g711/C2SoftG711Dec.cpp",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "3d0bc30fc271d93cf5df19f214eb93a690a039bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcaee7c1_a11d9683",
+        "filename": "media/codec2/components/g711/C2SoftG711Dec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-04-08T07:08:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e4fe6116_f3e2a423",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 20
+      },
+      "revId": "3d0bc30fc271d93cf5df19f214eb93a690a039bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "5018f1c1_8e21bca3",
+        "filename": "media/codecs/g711/decoder/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-04-08T07:08:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e7fe0c2_b0f44b6d",
+      "range": {
+        "startLine": 18,
+        "startChar": 11,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "3d0bc30fc271d93cf5df19f214eb93a690a039bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4169e060_af83fbe1",
         "filename": "media/codecs/g711/decoder/g711Dec.cpp",
         "patchSetId": 3
@@ -91,6 +163,30 @@
       "revId": "3d0bc30fc271d93cf5df19f214eb93a690a039bd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ac261234_dc888008",
+        "filename": "media/codecs/g711/decoder/g711Dec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-04-08T07:08:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4169e060_af83fbe1",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "3d0bc30fc271d93cf5df19f214eb93a690a039bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
