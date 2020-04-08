@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4b319d33_b5a400b0",
+        "filename": "media/codec2/components/g711/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-08T03:02:31Z",
+      "side": 1,
+      "message": "really, outside of the libstagefright category.\n\ncodecs_g711dec  is the one I think I like; check to see what I said in the other CLs that are part of this set.",
+      "range": {
+        "startLine": 10,
+        "startChar": 19,
+        "endLine": 10,
+        "endChar": 33
+      },
+      "revId": "3d0bc30fc271d93cf5df19f214eb93a690a039bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4fe6116_f3e2a423",
+        "filename": "media/codec2/components/g711/C2SoftG711Dec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-08T03:02:31Z",
+      "side": 1,
+      "message": "should use \u003c\u003e\n\nsince it\u0027s from a separate package and not this one.",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 20
+      },
+      "revId": "3d0bc30fc271d93cf5df19f214eb93a690a039bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8e7fe0c2_b0f44b6d",
+        "filename": "media/codecs/g711/decoder/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-08T03:02:31Z",
+      "side": 1,
+      "message": "let\u0027s not call it libstagefright,since it\u0027s not under libstagefright.\n\nI like codecs_g711dec\n\nI know that this touches perhaps all of these CLs.",
+      "range": {
+        "startLine": 18,
+        "startChar": 11,
+        "endLine": 18,
+        "endChar": 33
+      },
+      "revId": "3d0bc30fc271d93cf5df19f214eb93a690a039bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4169e060_af83fbe1",
+        "filename": "media/codecs/g711/decoder/g711Dec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-08T03:02:31Z",
+      "side": 1,
+      "message": "i like the idea of each of these routines in a separate file.\n\nbecause of how static libraries work, this means that only 1 of the routines will get pulled\ninto the various places where we use this -- so an alaw codec plugin would only have this routine included.\n\nit also makes the code coverage work more cleanly -- we don\u0027t have to explain why we don\u0027t\nhave coverage of only 1/2 of this file....",
+      "range": {
+        "startLine": 20,
+        "startChar": 1,
+        "endLine": 20,
+        "endChar": 26
+      },
+      "revId": "3d0bc30fc271d93cf5df19f214eb93a690a039bd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
