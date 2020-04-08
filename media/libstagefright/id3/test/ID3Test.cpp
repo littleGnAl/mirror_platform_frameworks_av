@@ -20,6 +20,7 @@
 
 #include <ctype.h>
 #include <string>
+#include <map>
 #include <sys/stat.h>
 #include <datasource/FileSource.h>
 
@@ -33,9 +34,26 @@ using namespace android;
 static ID3TestEnvironment *gEnv = nullptr;
 
 class ID3tagTest : public ::testing::TestWithParam<string> {};
-class ID3versionTest : public ::testing::TestWithParam<pair<string, int>> {};
+
+class ID3versionTest : public ::testing::TestWithParam<tuple<string, int, int>> {
+  public:
+    ID3versionTest() {
+        mVersionMap.insert(pair<uint8_t, pair<uint8_t, uint8_t>>(0, make_pair(0, 0)));
+        mVersionMap.insert(pair<uint8_t, pair<uint8_t, uint8_t>>(1, make_pair(1, 0)));
+        mVersionMap.insert(pair<uint8_t, pair<uint8_t, uint8_t>>(2, make_pair(1, 1)));
+        mVersionMap.insert(pair<uint8_t, pair<uint8_t, uint8_t>>(3, make_pair(2, 2)));
+        mVersionMap.insert(pair<uint8_t, pair<uint8_t, uint8_t>>(4, make_pair(2, 3)));
+        mVersionMap.insert(pair<uint8_t, pair<uint8_t, uint8_t>>(5, make_pair(2, 4)));
+    }
+
+    map</*versionValue*/ uint8_t, /*pair(majorVersion, minorVersion)*/ pair<uint8_t, uint8_t>>
+            mVersionMap;
+};
+
 class ID3textTagTest : public ::testing::TestWithParam<pair<string, int>> {};
+
 class ID3albumArtTest : public ::testing::TestWithParam<pair<string, bool>> {};
+
 class ID3multiAlbumArtTest : public ::testing::TestWithParam<pair<string, int>> {};
 
 TEST_P(ID3tagTest, TagTest) {
@@ -56,15 +74,25 @@ TEST_P(ID3tagTest, TagTest) {
 }
 
 TEST_P(ID3versionTest, VersionTest) {
-    int versionNumber = GetParam().second;
-    string path = gEnv->getRes() + GetParam().first;
+    tuple<string, int, int> params = GetParam();
+    int majorVersionNumber = get<1>(params);
+    int minorVersionNumber = get<2>(params);
+    string path = gEnv->getRes() + get<0>(params);
     sp<android::FileSource> file = new FileSource(path.c_str());
     ASSERT_EQ(file->initCheck(), (status_t)OK) << "File initialization failed! \n";
 
     ID3 tag(file.get());
     ASSERT_TRUE(tag.isValid()) << "No valid ID3 tag found for " << path.c_str() << "\n";
-    ASSERT_TRUE(tag.version() >= versionNumber)
-            << "Expected version: " << tag.version() << " Found version: " << versionNumber;
+
+    pair<uint8_t, uint8_t> version = mVersionMap[tag.version()];
+
+    uint8_t majorVersion = version.first;
+    uint8_t minorVersion = version.second;
+    ASSERT_EQ(majorVersion, majorVersionNumber) << "Expected major version: " << majorVersionNumber
+                                                << " Found major version: " << majorVersion;
+
+    ASSERT_EQ(minorVersion, minorVersionNumber) << "Expected minor version: " << minorVersionNumber
+                                                << " Found minor version: " << minorVersion;
 }
 
 TEST_P(ID3textTagTest, TextTagTest) {
@@ -77,17 +105,37 @@ TEST_P(ID3textTagTest, TextTagTest) {
     ASSERT_TRUE(tag.isValid()) << "No valid ID3 tag found for " << path.c_str() << "\n";
     int countTextFrames = 0;
     ID3::Iterator it(tag, nullptr);
-    while (!it.done()) {
-        String8 id;
-        it.getID(&id);
-        ASSERT_GT(id.length(), 0);
-        if (id[0] == 'T') {
+    // if the version is v1 or v1_1
+    if (tag.version() == 1 || tag.version() == 2) {
+        while (!it.done()) {
+            String8 id;
             String8 text;
-            countTextFrames++;
+            it.getID(&id);
+            ASSERT_GT(id.length(), 0);
+
             it.getString(&text);
-            ALOGV("Found text frame %s : %s \n", id.string(), text.string());
+            // if the tag has a value
+            if (strcmp(text.string(), "")) {
+                countTextFrames++;
+                ALOGV("ID: %s\n", id.c_str());
+                ALOGV("Text string: %s\n", text.string());
+            }
+            it.next();
         }
-        it.next();
+    } else {
+        while (!it.done()) {
+            String8 id;
+            it.getID(&id);
+            ASSERT_GT(id.length(), 0);
+
+            if (id[0] == 'T') {
+                String8 text;
+                countTextFrames++;
+                it.getString(&text);
+                ALOGV("Found text frame %s : %s \n", id.string(), text.string());
+            }
+            it.next();
+        }
     }
     ASSERT_EQ(countTextFrames, numTextFrames)
             << "Expected " << numTextFrames << " text frames, found " << countTextFrames;
@@ -153,56 +201,61 @@ TEST_P(ID3multiAlbumArtTest, MultiAlbumArtTest) {
 }
 
 INSTANTIATE_TEST_SUITE_P(id3TestAll, ID3tagTest,
-                         ::testing::Values("bbb_44100hz_2ch_128kbps_mp3_30sec.mp3",
-                                           "bbb_44100hz_2ch_128kbps_mp3_30sec_1_image.mp3",
-                                           "bbb_44100hz_2ch_128kbps_mp3_30sec_2_image.mp3",
-                                           "bbb_44100hz_2ch_128kbps_mp3_5mins.mp3",
-                                           "bbb_44100hz_2ch_128kbps_mp3_5mins_1_image.mp3",
-                                           "bbb_44100hz_2ch_128kbps_mp3_5mins_2_image.mp3",
-                                           "bbb_44100hz_2ch_128kbps_mp3_5mins_largeSize.mp3",
-                                           "bbb_44100hz_2ch_128kbps_mp3_30sec_moreTextFrames.mp3"));
+                         ::testing::Values("bbb_44100hz_2ch_128kbps_1sec_v23.mp3",
+                                           "bbb_44100hz_2ch_128kbps_1sec_1_image.mp3",
+                                           "bbb_44100hz_2ch_128kbps_1sec_2_image.mp3",
+                                           "bbb_44100hz_2ch_128kbps_2sec_v24.mp3",
+                                           "bbb_44100hz_2ch_128kbps_2sec_1_image.mp3",
+                                           "bbb_44100hz_2ch_128kbps_2sec_2_image.mp3",
+                                           "bbb_44100hz_2ch_128kbps_2sec_largeSize.mp3",
+                                           "bbb_44100hz_2ch_128kbps_1sec_v23_3tags.mp3",
+                                           "bbb_44100hz_2ch_128kbps_1sec_v1_5tags.mp3"));
 
 INSTANTIATE_TEST_SUITE_P(
         id3TestAll, ID3versionTest,
-        ::testing::Values(make_pair("bbb_44100hz_2ch_128kbps_mp3_30sec.mp3", 4),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_30sec_1_image.mp3", 4),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_30sec_2_image.mp3", 4),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_5mins.mp3", 4),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_5mins_1_image.mp3", 4),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_5mins_2_image.mp3", 4),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_5mins_largeSize.mp3", 4),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_30sec_moreTextFrames.mp3", 4)));
+        ::testing::Values(make_tuple("bbb_44100hz_2ch_128kbps_1sec_v23.mp3", 2, 3),
+                          make_tuple("bbb_44100hz_2ch_128kbps_1sec_1_image.mp3", 2, 3),
+                          make_tuple("bbb_44100hz_2ch_128kbps_1sec_2_image.mp3", 2, 3),
+                          make_tuple("bbb_44100hz_2ch_128kbps_2sec_v24.mp3", 2, 4),
+                          make_tuple("bbb_44100hz_2ch_128kbps_2sec_1_image.mp3", 2, 4),
+                          make_tuple("bbb_44100hz_2ch_128kbps_2sec_2_image.mp3", 2, 4),
+                          make_tuple("bbb_44100hz_2ch_128kbps_2sec_largeSize.mp3", 2, 4),
+                          make_tuple("bbb_44100hz_2ch_128kbps_1sec_v23_3tags.mp3", 2, 3),
+                          make_tuple("bbb_44100hz_2ch_128kbps_1sec_v1_5tags.mp3", 1, 1)));
 
 INSTANTIATE_TEST_SUITE_P(
         id3TestAll, ID3textTagTest,
-        ::testing::Values(make_pair("bbb_44100hz_2ch_128kbps_mp3_30sec.mp3", 1),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_30sec_1_image.mp3", 1),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_30sec_2_image.mp3", 1),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_5mins.mp3", 1),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_5mins_1_image.mp3", 1),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_5mins_2_image.mp3", 1),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_5mins_largeSize.mp3", 1),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_30sec_moreTextFrames.mp3", 5)));
+        ::testing::Values(make_pair("bbb_44100hz_2ch_128kbps_1sec_v23.mp3", 1),
+                          make_pair("bbb_44100hz_2ch_128kbps_1sec_1_image.mp3", 1),
+                          make_pair("bbb_44100hz_2ch_128kbps_1sec_2_image.mp3", 1),
+                          make_pair("bbb_44100hz_2ch_128kbps_2sec_v24.mp3", 1),
+                          make_pair("bbb_44100hz_2ch_128kbps_2sec_1_image.mp3", 1),
+                          make_pair("bbb_44100hz_2ch_128kbps_2sec_2_image.mp3", 1),
+                          make_pair("bbb_44100hz_2ch_128kbps_2sec_largeSize.mp3", 1),
+                          make_pair("bbb_44100hz_2ch_128kbps_1sec_v23_3tags.mp3", 3),
+                          make_pair("bbb_44100hz_2ch_128kbps_1sec_v1_5tags.mp3", 5),
+                          make_pair("bbb_44100hz_2ch_128kbps_1sec_v1_3tags.mp3", 3)));
 
 INSTANTIATE_TEST_SUITE_P(
         id3TestAll, ID3albumArtTest,
-        ::testing::Values(make_pair("bbb_44100hz_2ch_128kbps_mp3_30sec.mp3", false),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_30sec_1_image.mp3", true),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_30sec_2_image.mp3", true),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_5mins.mp3", false),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_5mins_1_image.mp3", true),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_5mins_2_image.mp3", true),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_5mins_largeSize.mp3", true)));
+        ::testing::Values(make_pair("bbb_44100hz_2ch_128kbps_1sec_v23.mp3", false),
+                          make_pair("bbb_44100hz_2ch_128kbps_1sec_1_image.mp3", true),
+                          make_pair("bbb_44100hz_2ch_128kbps_1sec_2_image.mp3", true),
+                          make_pair("bbb_44100hz_2ch_128kbps_2sec_v24.mp3", false),
+                          make_pair("bbb_44100hz_2ch_128kbps_2sec_1_image.mp3", true),
+                          make_pair("bbb_44100hz_2ch_128kbps_2sec_2_image.mp3", true),
+                          make_pair("bbb_44100hz_2ch_128kbps_2sec_largeSize.mp3", true),
+                          make_pair("bbb_44100hz_2ch_128kbps_1sec_v1_5tags.mp3", false)));
 
-INSTANTIATE_TEST_SUITE_P(
-        id3TestAll, ID3multiAlbumArtTest,
-        ::testing::Values(make_pair("bbb_44100hz_2ch_128kbps_mp3_30sec.mp3", 0),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_5mins.mp3", 0),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_30sec_1_image.mp3", 1),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_5mins_1_image.mp3", 1),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_30sec_2_image.mp3", 2),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_5mins_2_image.mp3", 2),
-                          make_pair("bbb_44100hz_2ch_128kbps_mp3_5mins_largeSize.mp3", 3)));
+INSTANTIATE_TEST_SUITE_P(id3TestAll, ID3multiAlbumArtTest,
+                         ::testing::Values(make_pair("bbb_44100hz_2ch_128kbps_1sec_v23.mp3", 0),
+                                           make_pair("bbb_44100hz_2ch_128kbps_2sec_v24.mp3", 0),
+                                           make_pair("bbb_44100hz_2ch_128kbps_1sec_1_image.mp3", 1),
+                                           make_pair("bbb_44100hz_2ch_128kbps_2sec_1_image.mp3", 1),
+                                           make_pair("bbb_44100hz_2ch_128kbps_1sec_2_image.mp3", 2),
+                                           make_pair("bbb_44100hz_2ch_128kbps_2sec_2_image.mp3", 2),
+                                           make_pair("bbb_44100hz_2ch_128kbps_2sec_largeSize.mp3",
+                                                     3)));
 
 int main(int argc, char **argv) {
     gEnv = new ID3TestEnvironment();
