@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ff3f508_720e6871",
+        "filename": "media/extractors/fuzzers/ExtractorBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-09T05:56:34Z",
+      "side": 1,
+      "message": "i think i\u0027d prefer \u0027ExtractorFuzzerBase\u0027 over ExtractorBase.\nMy first reaction when I read the description in the CL was that this was slipping in underneath all of our existing extractors...",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 18
+      },
+      "revId": "17a98a98b2acd7ac28c9276cfbc486949f849b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0470ee49_2fdf040f",
+        "filename": "media/extractors/fuzzers/include/ExtractorBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-09T05:56:34Z",
+      "side": 1,
+      "message": "this being the only one that the derived class *must* override;\nthe others can be left with the parent.\n\nin our first example (mp4) -- it appears that this is the only one we override; the rest\nuse the base class implementation.   Do we have in mind an example where we\u0027re going to ned to override?\n\nwhere i\u0027m heading is:\n(1) perhaps group these into override categories: must, probably, probably wont\n(2) along with some comments indicating such\n(3) for the ones that we don\u0027t see a near term override, consider them being non-virtual\n    until such time as we decide we were wrong; and we can convert them to virtual then\n    (since it\u0027s all compiled together and we don\u0027t have a binary compatibility issue).",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "17a98a98b2acd7ac28c9276cfbc486949f849b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
