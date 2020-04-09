@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "df3fadea_00df206a",
+        "filename": "media/libstagefright/codecs/mp3dec/test/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1653964
+      },
+      "writtenOn": "2020-04-09T05:02:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e680f93_a822f769",
+      "revId": "236b5c92229f28b06d53877e97724b00ddfa2ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "730b0c1d_59cc941c",
         "filename": "media/libstagefright/codecs/mp3dec/test/Android.bp",
         "patchSetId": 2
@@ -39,6 +57,30 @@
       "revId": "236b5c92229f28b06d53877e97724b00ddfa2ecf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0a05399e_0295859a",
+        "filename": "media/libstagefright/codecs/mp3dec/test/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1653964
+      },
+      "writtenOn": "2020-04-09T05:02:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "730b0c1d_59cc941c",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 6
+      },
+      "revId": "236b5c92229f28b06d53877e97724b00ddfa2ecf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
