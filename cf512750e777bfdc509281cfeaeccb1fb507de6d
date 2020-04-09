@@ -22,6 +22,30 @@
       "revId": "cf512750e777bfdc509281cfeaeccb1fb507de6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61bce767_4cd935e7",
+        "filename": "media/extractors/fuzzers/mp4_extractor_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1570907
+      },
+      "writtenOn": "2020-04-09T15:32:26Z",
+      "side": 1,
+      "message": "Done. Updated to \u0027ExtractorFuzzerBase\u0027",
+      "parentUuid": "c396d061_61e69f56",
+      "range": {
+        "startLine": 28,
+        "startChar": 28,
+        "endLine": 28,
+        "endChar": 41
+      },
+      "revId": "cf512750e777bfdc509281cfeaeccb1fb507de6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
