@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "382ef767_30ffdd8b",
+        "filename": "media/extractors/fuzzers/ExtractorBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1570907
+      },
+      "writtenOn": "2020-04-09T15:31:33Z",
+      "side": 1,
+      "message": "Done. Updated to \u0027ExtractorFuzzerBase\u0027",
+      "parentUuid": "9ff3f508_720e6871",
+      "range": {
+        "startLine": 25,
+        "startChar": 5,
+        "endLine": 25,
+        "endChar": 18
+      },
+      "revId": "17a98a98b2acd7ac28c9276cfbc486949f849b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0470ee49_2fdf040f",
         "filename": "media/extractors/fuzzers/include/ExtractorBase.h",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "17a98a98b2acd7ac28c9276cfbc486949f849b54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b70e20e8_1fc7aaeb",
+        "filename": "media/extractors/fuzzers/include/ExtractorBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1570907
+      },
+      "writtenOn": "2020-04-09T15:31:33Z",
+      "side": 1,
+      "message": "Done. Split into 2 sections - functions which are to be overridden and common non override-able functions. As of now only createExtractor() is override-able. Rest all are made non-virtual for now as we do not see a need for others to be override-able.",
+      "parentUuid": "0470ee49_2fdf040f",
+      "range": {
+        "startLine": 50,
+        "startChar": 2,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "17a98a98b2acd7ac28c9276cfbc486949f849b54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
