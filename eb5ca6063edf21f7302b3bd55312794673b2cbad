@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ea83dfdf_ef0276d3",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-10T21:49:43Z",
+      "side": 1,
+      "message": "should this be headerSize instead of sizeof(headerData)",
+      "range": {
+        "startLine": 117,
+        "startChar": 54,
+        "endLine": 117,
+        "endChar": 73
+      },
+      "revId": "eb5ca6063edf21f7302b3bd55312794673b2cbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "febb0686_3007ef0f",
+        "filename": "media/libstagefright/foundation/tests/OpusHeader/OpusHeaderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-10T21:49:43Z",
+      "side": 1,
+      "message": "this is a fixed size -- it\u0027s allocated so that we have the space for things like the\nchannel mapping table.\nbut not all opus headers use this full size.\n\nI think that when we\u0027re getting the reference filename from the parameters, we also need to parse a \u0027how big is the header in this file\u0027.\n\nif perhaps this is known because the reference file is exactly the size of the header that we\u0027re trying to check, then we could use the \u0027fileSize\u0027 that we determined via stat(); instead of an additional parameter;\n\nNote that whatever size we choose to compare -- we have to make sure that  we\ndon\u0027t overrun the buffer -- we have to ensure that filesize \u003e\u003d our memcmp() length.\nthis not currently done.",
+      "range": {
+        "startLine": 135,
+        "startChar": 65,
+        "endLine": 135,
+        "endChar": 85
+      },
+      "revId": "eb5ca6063edf21f7302b3bd55312794673b2cbad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
