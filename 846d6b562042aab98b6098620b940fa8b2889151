@@ -34,6 +34,24 @@
       "revId": "846d6b562042aab98b6098620b940fa8b2889151",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6726fc3_2898cf13",
+        "filename": "media/libstagefright/timedtext/TextDescriptions.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-04-12T02:12:30Z",
+      "side": 1,
+      "message": "Looks like the only reader is: https://source.corp.google.com/android/frameworks/base/media/java/android/media/TimedText.java;l\u003d606\nwhich reads the length, then the bytearray, then creates a String of the given length from the byte array.\nSeems a bit odd, but maybe it\u0027s safer that way, since the native code can just treat it like bytes, and if those bytes end up being an invalid string, it\u0027s just a Java exception instead of a native crash or OOB.",
+      "parentUuid": "72fb3d94_b832820e",
+      "revId": "846d6b562042aab98b6098620b940fa8b2889151",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
