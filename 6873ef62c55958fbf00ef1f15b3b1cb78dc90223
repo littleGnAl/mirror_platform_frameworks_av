@@ -1,0 +1,372 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d8ca311_42eace55",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-14T03:32:55Z",
+      "side": 1,
+      "message": "api for all of these is \u0027int\u0027.",
+      "range": {
+        "startLine": 116,
+        "startChar": 4,
+        "endLine": 119,
+        "endChar": 27
+      },
+      "revId": "6873ef62c55958fbf00ef1f15b3b1cb78dc90223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d8cfc93_2545fbac",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-14T03:32:55Z",
+      "side": 1,
+      "message": "this should be a larger type;  like perhaps size_t\n\nwe want to know the entire size of the file, we may not have any large files in our selection for this test, but we shouldn\u0027t be constricting the size of this type.",
+      "range": {
+        "startLine": 147,
+        "startChar": 3,
+        "endLine": 147,
+        "endChar": 12
+      },
+      "revId": "6873ef62c55958fbf00ef1f15b3b1cb78dc90223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43f07faf_abda2a76",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-14T03:32:55Z",
+      "side": 1,
+      "message": "check the return code to ensure that we got the entirety of the file.",
+      "range": {
+        "startLine": 152,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 56
+      },
+      "revId": "6873ef62c55958fbf00ef1f15b3b1cb78dc90223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e51d3cf4_870c9152",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-14T03:32:55Z",
+      "side": 1,
+      "message": "i like the idea of initializing these to -1\nso that if the ExtractDimensions... routine doesn\u0027t initialize them, we know that they will\nbe a mis-match with the width/height values from above.",
+      "range": {
+        "startLine": 156,
+        "startChar": 4,
+        "endLine": 157,
+        "endChar": 22
+      },
+      "revId": "6873ef62c55958fbf00ef1f15b3b1cb78dc90223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "deef6421_59420d15",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-14T03:32:55Z",
+      "side": 1,
+      "message": "let\u0027s put this cleanup at the tail end of the routine instead of here.",
+      "range": {
+        "startLine": 160,
+        "startChar": 3,
+        "endLine": 160,
+        "endChar": 23
+      },
+      "revId": "6873ef62c55958fbf00ef1f15b3b1cb78dc90223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "20f4cbf0_68e643d0",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-14T03:32:55Z",
+      "side": 1,
+      "message": "we haven\u0027t validated that chunkLength is \u003e 0 \n\nI don\u0027t know if we have a ceiling for it.",
+      "range": {
+        "startLine": 182,
+        "startChar": 42,
+        "endLine": 182,
+        "endChar": 55
+      },
+      "revId": "6873ef62c55958fbf00ef1f15b3b1cb78dc90223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cabfb099_27d8e6cb",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-14T03:32:55Z",
+      "side": 1,
+      "message": "verify that we read the entire chunkLength bytes.\n\nwhy do we need the cast for chunkLength?\ndoes it not take a size_t ?",
+      "range": {
+        "startLine": 188,
+        "startChar": 7,
+        "endLine": 188,
+        "endChar": 23
+      },
+      "revId": "6873ef62c55958fbf00ef1f15b3b1cb78dc90223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57a7c57d_afc6b963",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-14T03:32:55Z",
+      "side": 1,
+      "message": "do we have a test that throughs good/bad data at this (e.g. a 2 byte chunklength is supposed to return -EAGAIN.",
+      "range": {
+        "startLine": 189,
+        "startChar": 16,
+        "endLine": 189,
+        "endChar": 31
+      },
+      "revId": "6873ef62c55958fbf00ef1f15b3b1cb78dc90223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67d5189f_28355655",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-14T03:32:55Z",
+      "side": 1,
+      "message": "can we indicate as part of the test parms how many NAL\u0027s we expect to receive\nso that we can make this ASSERT_EQ(numNalUnits, NalsExpected)\n\nif we still want to have cases where we don\u0027t actually know how many NALs are in the file,\nwe could do:\n\nif (nalsExpected \u003c 0)   ASSERT_GT(numNalUnits, 0)\nelse ASSERT_EQ(numNalUnits, nalsExpected);",
+      "range": {
+        "startLine": 209,
+        "startChar": 13,
+        "endLine": 209,
+        "endChar": 29
+      },
+      "revId": "6873ef62c55958fbf00ef1f15b3b1cb78dc90223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dc1b7af0_a8603894",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-14T03:32:55Z",
+      "side": 1,
+      "message": "need to initialize these to an \"i have not parsed these\" value.  -1 is probably good\nand they can be larger types (e.g. int32_t) here since we aren\u0027t taking their addresses for anything and I don\u0027t know if any of the 0..255 values that can be held in a uint8 are\nillegal.",
+      "range": {
+        "startLine": 216,
+        "startChar": 4,
+        "endLine": 217,
+        "endChar": 18
+      },
+      "revId": "6873ef62c55958fbf00ef1f15b3b1cb78dc90223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ddfed05_5910e113",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-14T03:32:55Z",
+      "side": 1,
+      "message": "probably want \u0026\u0026 here.\n\nnote that the compare() returns \"\u003c0\" or \"\u003e0\" when they aren\u0027t the same. which is not the same as -1 or 1.  so doing a bitwise and doesn\u0027t work\n\nif the \"SPS\" returns -1 and the PPS compare returns 2 -- we get (-1)\u00262 which \u003d\u003d 0 so\nwe would not skip.\n\n[I think that an input of \"R\" would actually get this result for us....",
+      "range": {
+        "startLine": 225,
+        "startChar": 31,
+        "endLine": 225,
+        "endChar": 34
+      },
+      "revId": "6873ef62c55958fbf00ef1f15b3b1cb78dc90223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f57b4027_2e377208",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-14T03:32:55Z",
+      "side": 1,
+      "message": "we don\u0027t actually do anything with the PPS records when we detect them?",
+      "range": {
+        "startLine": 225,
+        "startChar": 46,
+        "endLine": 225,
+        "endChar": 53
+      },
+      "revId": "6873ef62c55958fbf00ef1f15b3b1cb78dc90223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "244880c6_06ad7d8e",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-14T03:32:55Z",
+      "side": 1,
+      "message": "validate chunkLength;  certainly needs to be \u003e 0\nnot sure about any upper bound.",
+      "range": {
+        "startLine": 226,
+        "startChar": 28,
+        "endLine": 226,
+        "endChar": 40
+      },
+      "revId": "6873ef62c55958fbf00ef1f15b3b1cb78dc90223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1b61ad1_8c6d78ad",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 242,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-14T03:32:55Z",
+      "side": 1,
+      "message": "haven\u0027t verified tht nalSize \u003e\u003d 4, so these can be OOB.\n\nwe should check that we see these exactly 1 time, right?\nor perhaps that they are always the same (except maybe for the first time that we see\nthem, which would be when they have a -1 value stored if we adopt the change i suggest above).",
+      "range": {
+        "startLine": 241,
+        "startChar": 15,
+        "endLine": 242,
+        "endChar": 36
+      },
+      "revId": "6873ef62c55958fbf00ef1f15b3b1cb78dc90223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8ef829d_366ec990",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-14T03:32:55Z",
+      "side": 1,
+      "message": "need to verify that the csvData we got back is at least 4 bytes long so that this and the following line don\u0027t generate an OOB reference.",
+      "range": {
+        "startLine": 270,
+        "startChar": 19,
+        "endLine": 270,
+        "endChar": 29
+      },
+      "revId": "6873ef62c55958fbf00ef1f15b3b1cb78dc90223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e934b44_82495ba2",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/AVCUtilsUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-14T03:32:55Z",
+      "side": 1,
+      "message": "verify that it\u0027s \u003e0",
+      "range": {
+        "startLine": 286,
+        "startChar": 29,
+        "endLine": 286,
+        "endChar": 41
+      },
+      "revId": "6873ef62c55958fbf00ef1f15b3b1cb78dc90223",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
