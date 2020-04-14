@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b10f4d0e_41a1f321",
+        "filename": "media/libstagefright/tests/writer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2020-04-14T22:14:57Z",
+      "side": 1,
+      "message": "old writerTestRes name was better than current Writer name?\nOtherwise, WriterTestResources is also fine, as it is more meaningful.",
+      "range": {
+        "startLine": 22,
+        "startChar": 146,
+        "endLine": 22,
+        "endChar": 152
+      },
+      "revId": "b3d79c20fdd134bf7e441af050051e5089ade600",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b9795a1_a4d92ec3",
+        "filename": "media/libstagefright/tests/writer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2020-04-14T22:14:57Z",
+      "side": 1,
+      "message": "if writerTestRes was renamed to Writer, should this also be renamed?",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 22
+      },
+      "revId": "b3d79c20fdd134bf7e441af050051e5089ade600",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
