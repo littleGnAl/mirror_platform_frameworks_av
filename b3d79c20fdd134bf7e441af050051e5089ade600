@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "5eb99a40_e1e621a4",
+        "filename": "media/libstagefright/tests/writer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-14T22:25:57Z",
+      "side": 1,
+      "message": "Sure.\nManisha, please update AndroidTest.xml to use WriterTestRes.zip.\nI will rename the file on cloud.\n\nKrishnan,\nOne downside with this is if somebody tries to run atest with older CLs after the file on cloud is renamed, it would fail.",
+      "parentUuid": "b10f4d0e_41a1f321",
+      "range": {
+        "startLine": 22,
+        "startChar": 146,
+        "endLine": 22,
+        "endChar": 152
+      },
+      "revId": "b3d79c20fdd134bf7e441af050051e5089ade600",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b9795a1_a4d92ec3",
         "filename": "media/libstagefright/tests/writer/README.md",
         "patchSetId": 1
