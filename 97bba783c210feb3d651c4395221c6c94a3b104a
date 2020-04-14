@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45f357d2_4ba309ae",
+        "filename": "media/libmedia/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 285,
+      "author": {
+        "id": 1071150
+      },
+      "writtenOn": "2020-04-14T13:56:18Z",
+      "side": 1,
+      "message": "These are out of alphabetical sort order because the bionic_libc_platform_headers are not present in internal master and this CL won\u0027t merge upstream otherwise.",
+      "range": {
+        "startLine": 282,
+        "startChar": 0,
+        "endLine": 285,
+        "endChar": 22
+      },
+      "revId": "97bba783c210feb3d651c4395221c6c94a3b104a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
