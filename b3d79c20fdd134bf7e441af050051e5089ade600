@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "fb1582fe_7f50a871",
+        "filename": "media/libstagefright/tests/writer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-14T23:07:20Z",
+      "side": 1,
+      "message": "Writer seems almost under-specified, but is ok given that we\u0027re pulling from a pathname that helps us differentiate there.\n\n\"Res\" -- I thought it was short for \"Results\" for a while. \n\nNote that the AndroidTest.xml file currently refers to \"Writer.zip\", so we\u0027ll need changes there if we\u0027re going to change things here.",
+      "parentUuid": "5eb99a40_e1e621a4",
+      "range": {
+        "startLine": 22,
+        "startChar": 146,
+        "endLine": 22,
+        "endChar": 152
+      },
+      "revId": "b3d79c20fdd134bf7e441af050051e5089ade600",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "4b9795a1_a4d92ec3",
         "filename": "media/libstagefright/tests/writer/README.md",
         "patchSetId": 1
@@ -60,6 +84,30 @@
       "writtenOn": "2020-04-14T22:14:57Z",
       "side": 1,
       "message": "if writerTestRes was renamed to Writer, should this also be renamed?",
+      "range": {
+        "startLine": 25,
+        "startChar": 9,
+        "endLine": 25,
+        "endChar": 22
+      },
+      "revId": "b3d79c20fdd134bf7e441af050051e5089ade600",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4f174488_af464276",
+        "filename": "media/libstagefright/tests/writer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-14T23:07:20Z",
+      "side": 1,
+      "message": "let\u0027s make them consistent, whatever we choose.\n\nif Writer.zip -- unpack to ./Writer/\nif we want writerTestRes/ as a directory, then the zip file should be writerTestRes.zip",
+      "parentUuid": "4b9795a1_a4d92ec3",
       "range": {
         "startLine": 25,
         "startChar": 9,
