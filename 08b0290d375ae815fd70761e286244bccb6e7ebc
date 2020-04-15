@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "063e6d12_acb80761",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1227b4d_070f273d",
+      "range": {
+        "startLine": 95,
+        "startChar": 0,
+        "endLine": 95,
+        "endChar": 34
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "12f2e754_40f9a9c2",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ce592ac_7206e8e3",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1575,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12f2e754_40f9a9c2",
+      "range": {
+        "startLine": 1575,
+        "startChar": 43,
+        "endLine": 1575,
+        "endChar": 50
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "14282d9e_4be9860d",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0ca44ad_d61ed481",
+      "range": {
+        "startLine": 1283,
+        "startChar": 25,
+        "endLine": 1283,
+        "endChar": 30
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "171b92e2_b50cf6b6",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 2
@@ -91,6 +163,30 @@
       "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "13109815_aeae1329",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1286,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "171b92e2_b50cf6b6",
+      "range": {
+        "startLine": 1286,
+        "startChar": 35,
+        "endLine": 1286,
+        "endChar": 38
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "20c4d23e_803f8000",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1299,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f130592_8540f6ac",
+      "range": {
+        "startLine": 1299,
+        "startChar": 15,
+        "endLine": 1299,
+        "endChar": 39
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fdb2b8d3_be8b4be6",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 2
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "75a32a08_df4e106d",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1300,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fdb2b8d3_be8b4be6",
+      "range": {
+        "startLine": 1300,
+        "startChar": 27,
+        "endLine": 1300,
+        "endChar": 87
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e014bef7_db0744c3",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 2
@@ -151,6 +295,30 @@
       "writtenOn": "2020-03-08T02:05:07Z",
       "side": 1,
       "message": "is minLuminance really that limited?\n\nfeels like there should also be a check that maxLuminance \u003e\u003d minLuminance.",
+      "range": {
+        "startLine": 1308,
+        "startChar": 93,
+        "endLine": 1308,
+        "endChar": 99
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0307d57c_ce91bd07",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "limitation on the minLuminance is under study.",
+      "parentUuid": "e014bef7_db0744c3",
       "range": {
         "startLine": 1308,
         "startChar": 93,
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "e236ff22_157bbb64",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1311,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9bf6470_591aac95",
+      "range": {
+        "startLine": 1311,
+        "startChar": 25,
+        "endLine": 1311,
+        "endChar": 39
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5845e720_03e68af5",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 2
@@ -206,6 +398,30 @@
       "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0e398b93_553a5055",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1338,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5845e720_03e68af5",
+      "range": {
+        "startLine": 1338,
+        "startChar": 61,
+        "endLine": 1338,
+        "endChar": 93
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -232,6 +448,30 @@
     },
     {
       "key": {
+        "uuid": "1f8970b7_1f734313",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1343,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4d1873f9_7c7b7cb6",
+      "range": {
+        "startLine": 1343,
+        "startChar": 42,
+        "endLine": 1343,
+        "endChar": 45
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d91d8893_db2fd9f7",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 2
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "3d9cb5e9_e67c48ec",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1385,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d91d8893_db2fd9f7",
+      "range": {
+        "startLine": 1385,
+        "startChar": 92,
+        "endLine": 1385,
+        "endChar": 99
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d054f0f_e347364d",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 2
@@ -266,6 +530,30 @@
       "writtenOn": "2020-03-08T02:05:07Z",
       "side": 1,
       "message": "and in this case, minLuminance is not limited.\nthat makes me more suspicious of the limited one i called out earlier.\n\nand need to know max\u003e\u003d min.\nmore completely, I think we need to know that max \u003e\u003d avg \u003e\u003d min",
+      "range": {
+        "startLine": 1407,
+        "startChar": 68,
+        "endLine": 1407,
+        "endChar": 85
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b98ebc62_638809e9",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1407,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "conditions for max \u003e\u003d avg \u003e\u003d min are added. limitation on minluminance is under study",
+      "parentUuid": "7d054f0f_e347364d",
       "range": {
         "startLine": 1407,
         "startChar": 68,
@@ -301,6 +589,30 @@
     },
     {
       "key": {
+        "uuid": "b9b61b0b_146d6ed8",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1438,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4466115_78c96726",
+      "range": {
+        "startLine": 1438,
+        "startChar": 42,
+        "endLine": 1438,
+        "endChar": 72
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45c0db49_a08606d5",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 2
@@ -321,6 +633,30 @@
       "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "10b702b3_4ad4770b",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "45c0db49_a08606d5",
+      "range": {
+        "startLine": 1479,
+        "startChar": 52,
+        "endLine": 1479,
+        "endChar": 86
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -347,6 +683,30 @@
     },
     {
       "key": {
+        "uuid": "c61ece36_fc4d69a2",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1650,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2a00458b_82830c6a",
+      "range": {
+        "startLine": 1650,
+        "startChar": 38,
+        "endLine": 1650,
+        "endChar": 72
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9de2f272_1d0f8d54",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 2
@@ -367,6 +727,30 @@
       "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9adc502e_840a4c7a",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1651,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9de2f272_1d0f8d54",
+      "range": {
+        "startLine": 1651,
+        "startChar": 43,
+        "endLine": 1651,
+        "endChar": 47
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -393,6 +777,30 @@
     },
     {
       "key": {
+        "uuid": "4acd75db_153bec4d",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1665,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63cd0ff5_063966e4",
+      "range": {
+        "startLine": 1665,
+        "startChar": 39,
+        "endLine": 1665,
+        "endChar": 72
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "07dde7f2_c5a94e90",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 2
@@ -416,6 +824,30 @@
     },
     {
       "key": {
+        "uuid": "9a87ec0f_da2256fd",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1666,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07dde7f2_c5a94e90",
+      "range": {
+        "startLine": 1666,
+        "startChar": 44,
+        "endLine": 1666,
+        "endChar": 48
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "078e5fb3_534b3584",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 2
@@ -436,6 +868,30 @@
       "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ddffce0_78d0823f",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1698,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-15T17:40:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "078e5fb3_534b3584",
+      "range": {
+        "startLine": 1698,
+        "startChar": 11,
+        "endLine": 1698,
+        "endChar": 13
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
