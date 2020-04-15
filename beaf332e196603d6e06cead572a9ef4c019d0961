@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0d75762e_63d43493",
+        "filename": "media/libstagefright/tests/writer/AndroidTest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2020-04-15T19:48:09Z",
+      "side": 1,
+      "message": "can we maintain consistency in names, as the source archive was WriterTestRes? WriterTestRes instead of writerTestRes.\nIn README.md file as well it was WriterTestRes.",
+      "range": {
+        "startLine": 23,
+        "startChar": 35,
+        "endLine": 23,
+        "endChar": 48
+      },
+      "revId": "beaf332e196603d6e06cead572a9ef4c019d0961",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d182b731_e8aa030f",
+        "filename": "media/libstagefright/tests/writer/AndroidTest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2020-04-15T19:48:09Z",
+      "side": 1,
+      "message": "same as the first comment.",
+      "range": {
+        "startLine": 28,
+        "startChar": 66,
+        "endLine": 28,
+        "endChar": 79
+      },
+      "revId": "beaf332e196603d6e06cead572a9ef4c019d0961",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
