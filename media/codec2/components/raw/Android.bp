@@ -6,4 +6,5 @@ cc_library_shared {
     ],
 
     srcs: ["C2SoftRawDec.cpp"],
+    min_sdk_version: "29",
 }

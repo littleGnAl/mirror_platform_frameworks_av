@@ -8,4 +8,5 @@ cc_library_shared {
     srcs: ["C2SoftVorbisDec.cpp"],
 
     shared_libs: ["libvorbisidec"],
+    min_sdk_version: "29",
 }

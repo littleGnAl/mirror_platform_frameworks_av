@@ -3,7 +3,7 @@ cc_library_shared {
     defaults: [
         "libcodec2_soft-defaults",
         "libcodec2_soft_sanitize_signed-defaults",
-   ],
+    ],
 
     static_libs: ["libavcdec"],
 
@@ -13,6 +13,7 @@ cc_library_shared {
         "external/libavc/decoder",
         "external/libavc/common",
     ],
+    min_sdk_version: "29",
 }
 
 cc_library_shared {
@@ -20,7 +21,7 @@ cc_library_shared {
     defaults: [
         "libcodec2_soft-defaults",
         "libcodec2_soft_sanitize_signed-defaults",
-   ],
+    ],
 
     static_libs: ["libavcenc"],
 
@@ -34,4 +35,5 @@ cc_library_shared {
     cflags: [
         "-Wno-unused-variable",
     ],
+    min_sdk_version: "29",
 }

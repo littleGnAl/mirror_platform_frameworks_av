@@ -19,6 +19,7 @@ cc_library_shared {
     shared_libs: [
         "libstagefright_amrnb_common",
     ],
+    min_sdk_version: "29",
 }
 
 cc_library_shared {
@@ -38,6 +39,7 @@ cc_library_shared {
     shared_libs: [
         "libstagefright_amrnb_common",
     ],
+    min_sdk_version: "29",
 }
 
 cc_library_shared {
@@ -56,6 +58,7 @@ cc_library_shared {
     shared_libs: [
         "libstagefright_amrnb_common",
     ],
+    min_sdk_version: "29",
 }
 
 cc_library_shared {
@@ -74,4 +77,5 @@ cc_library_shared {
     shared_libs: [
         "libstagefright_enc_common",
     ],
+    min_sdk_version: "29",
 }

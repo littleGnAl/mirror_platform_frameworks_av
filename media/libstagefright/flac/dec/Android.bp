@@ -6,7 +6,7 @@ cc_library {
         "FLACDecoder.cpp",
     ],
 
-    export_include_dirs: [ "." ],
+    export_include_dirs: ["."],
 
     cflags: ["-Werror"],
 
@@ -43,4 +43,5 @@ cc_library {
         "libmedia_headers",
         "libFLAC-headers",
     ],
+    min_sdk_version: "29",
 }

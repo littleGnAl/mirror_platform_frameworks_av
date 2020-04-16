@@ -41,9 +41,9 @@ cc_library_shared {
         "libnativewindow",
         "libvndksupport",
     ],
-    
+
     static_libs: [
-        "libgui_bufferqueue_static"
+        "libgui_bufferqueue_static",
     ],
 
     export_shared_lib_headers: [
@@ -67,4 +67,5 @@ cc_library_shared {
         ],
         cfi: true,
     },
+    min_sdk_version: "29",
 }

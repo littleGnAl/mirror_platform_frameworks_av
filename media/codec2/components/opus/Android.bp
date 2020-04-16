@@ -8,7 +8,9 @@ cc_library_shared {
     srcs: ["C2SoftOpusDec.cpp"],
 
     shared_libs: ["libopus"],
+    min_sdk_version: "29",
 }
+
 cc_library_shared {
     name: "libcodec2_soft_opusenc",
     defaults: [
@@ -19,4 +21,5 @@ cc_library_shared {
     srcs: ["C2SoftOpusEnc.cpp"],
 
     shared_libs: ["libopus"],
+    min_sdk_version: "29",
 }
