@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "eb353907_2889c5be",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-16T05:17:38Z",
+      "side": 1,
+      "message": "Also add a ALOGE() in PVSetPostProcType if mode is non-zero\nand force mode to zero when post processing modules aren\u0027t enabled.\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libstagefright/codecs/m4v_h263/dec/include/mp4dec_api.h;bpv\u003d1;bpt\u003d1;l\u003d47?q\u003dDEC_NOPOSTPROC\u0026ss\u003dandroid%2Fplatform%2Fsuperproject:frameworks%2Fav%2F\n\nRay,\nThe function doesn\u0027t return a value, so can\u0027t return an error. \nBut instead this will log an error and disable post processing when built with this flag",
+      "revId": "3957544647c125093384534cb779909b5727052c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
