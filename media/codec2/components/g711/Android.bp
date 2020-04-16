@@ -12,6 +12,7 @@ cc_library_shared {
     cflags: [
         "-DALAW",
     ],
+    min_sdk_version: "29",
 }
 
 cc_library_shared {
@@ -24,4 +25,5 @@ cc_library_shared {
     srcs: ["C2SoftG711Dec.cpp"],
 
     static_libs: ["codecs_g711dec"],
+    min_sdk_version: "29",
 }

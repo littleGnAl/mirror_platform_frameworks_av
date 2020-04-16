@@ -10,6 +10,7 @@ cc_library_headers {
     export_header_lib_headers: [
         "libaudiofoundation_headers",
     ],
+    min_sdk_version: "29",
 }
 
 cc_library_shared {
@@ -90,7 +91,10 @@ cc_library_shared {
     ],
     export_shared_lib_headers: ["libbinder"],
 
-    local_include_dirs: ["include/media", "aidl"],
+    local_include_dirs: [
+        "include/media",
+        "aidl",
+    ],
     header_libs: [
         "libaudioclient_headers",
         "libbase_headers",
@@ -108,7 +112,7 @@ cc_library_shared {
         "-Wno-error=deprecated-declarations",
     ],
     sanitize: {
-        misc_undefined : [
+        misc_undefined: [
             "unsigned-integer-overflow",
             "signed-integer-overflow",
         ],

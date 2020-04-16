@@ -42,7 +42,6 @@ cc_library {
     ],
 }
 
-
 // DO NOT DEPEND ON THIS DIRECTLY
 // use libcodec2-hidl-defaults instead
 cc_library {
@@ -100,6 +99,7 @@ cc_library {
         "libstagefright_bufferpool@2.0.1",
         "libui",
     ],
+    min_sdk_version: "29",
 }
 
 // public dependency for Codec 2.0 HAL service implementations

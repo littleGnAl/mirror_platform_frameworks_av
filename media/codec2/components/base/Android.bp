@@ -20,7 +20,7 @@ cc_library_shared {
 
     shared_libs: [
         "libcutils", // for properties
-        "liblog",    // for ALOG
+        "liblog", // for ALOG
         "libsfplugin_ccodec_utils", // for ImageCopy
         "libstagefright_foundation", // for Mutexed
     ],
@@ -34,11 +34,12 @@ cc_library_shared {
     },
 
     ldflags: ["-Wl,-Bsymbolic"],
+    min_sdk_version: "29",
 }
 
 filegroup {
     name: "codec2_soft_exports",
-    srcs: [ "exports.lds" ],
+    srcs: ["exports.lds"],
 }
 
 // public dependency for software codec implementation
@@ -131,4 +132,3 @@ cc_library_shared {
 
     ldflags: ["-Wl,-Bsymbolic"],
 }
-

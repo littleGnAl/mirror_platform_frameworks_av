@@ -12,6 +12,7 @@ cc_library_shared {
     shared_libs: [
         "libstagefright_flacdec",
     ],
+    min_sdk_version: "29",
 }
 
 cc_library_shared {
@@ -27,4 +28,5 @@ cc_library_shared {
         "libaudioutils",
         "libFLAC",
     ],
+    min_sdk_version: "29",
 }

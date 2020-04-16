@@ -51,5 +51,5 @@ cc_library_shared {
         "libcodec2_soft_flacenc",
         "libcodec2_soft_gsmdec",
     ],
+    min_sdk_version: "29",
 }
-

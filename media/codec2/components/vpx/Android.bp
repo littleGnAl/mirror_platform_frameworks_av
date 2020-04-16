@@ -12,6 +12,7 @@ cc_library_shared {
     cflags: [
         "-DVP9",
     ],
+    min_sdk_version: "29",
 }
 
 cc_library_shared {
@@ -24,6 +25,7 @@ cc_library_shared {
     srcs: ["C2SoftVpxDec.cpp"],
 
     shared_libs: ["libvpx"],
+    min_sdk_version: "29",
 }
 
 cc_library_shared {
@@ -41,6 +43,7 @@ cc_library_shared {
     shared_libs: ["libvpx"],
 
     cflags: ["-DVP9"],
+    min_sdk_version: "29",
 }
 
 cc_library_shared {
@@ -56,5 +59,5 @@ cc_library_shared {
     ],
 
     shared_libs: ["libvpx"],
+    min_sdk_version: "29",
 }
-

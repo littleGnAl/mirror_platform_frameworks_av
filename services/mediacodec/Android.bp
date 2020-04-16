@@ -39,6 +39,7 @@ cc_binary {
         "-Wall",
         "-Wno-error=deprecated-declarations",
     ],
+    min_sdk_version: "29",
 }
 
 prebuilt_etc {

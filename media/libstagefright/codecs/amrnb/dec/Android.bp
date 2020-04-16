@@ -68,6 +68,7 @@ cc_library_static {
             enabled: false,
         },
     },
+    min_sdk_version: "29",
 }
 
 //###############################################################################
@@ -111,7 +112,10 @@ cc_test {
 
     srcs: ["test/amrnbdec_test.cpp"],
 
-    cflags: ["-Wall", "-Werror"],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
 
     local_include_dirs: ["src"],
 

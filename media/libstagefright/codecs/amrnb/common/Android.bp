@@ -79,6 +79,7 @@ cc_library {
             enabled: false,
         },
     },
+    min_sdk_version: "29",
 
     //addressing b/25409744
     //sanitize: {

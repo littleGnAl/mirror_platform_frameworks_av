@@ -2,6 +2,7 @@ cc_library_headers {
     name: "libstagefright_headers",
     export_include_dirs: ["include"],
     vendor_available: true,
+    min_sdk_version: "29",
 }
 
 cc_library_static {
@@ -21,8 +22,9 @@ cc_library_static {
     },
     shared_libs: [
         "libstagefright_foundation",
-        "libutils"
+        "libutils",
     ],
+    min_sdk_version: "29",
 }
 
 cc_library_static {
@@ -41,7 +43,11 @@ cc_library_static {
         cfi: true,
     },
 
-    shared_libs: ["libmedia", "libmediandk"],
+    shared_libs: [
+        "libmedia",
+        "libmediandk",
+    ],
+    min_sdk_version: "29",
 }
 
 cc_library_shared {
@@ -120,6 +126,7 @@ cc_library_static {
             "signed-integer-overflow",
         ],
     },
+    min_sdk_version: "29",
 }
 
 cc_library {
@@ -218,7 +225,7 @@ cc_library {
         "libstagefright_id3",
     ],
 
-    header_libs:[
+    header_libs: [
         "libmediadrm_headers",
         "libnativeloader-headers",
         "libstagefright_xmlparser_headers",

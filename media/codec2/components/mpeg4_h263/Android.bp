@@ -13,6 +13,7 @@ cc_library_shared {
         "-DOSCL_IMPORT_REF=",
         "-DMPEG4",
     ],
+    min_sdk_version: "29",
 }
 
 cc_library_shared {
@@ -29,6 +30,7 @@ cc_library_shared {
     cflags: [
         "-DOSCL_IMPORT_REF=",
     ],
+    min_sdk_version: "29",
 }
 
 cc_library_shared {
@@ -38,7 +40,6 @@ cc_library_shared {
         "libcodec2_soft_sanitize_signed-defaults",
     ],
 
-
     srcs: ["C2SoftMpeg4Enc.cpp"],
 
     static_libs: ["libstagefright_m4vh263enc"],
@@ -47,6 +48,7 @@ cc_library_shared {
         "-DMPEG4",
         "-DOSCL_IMPORT_REF=",
     ],
+    min_sdk_version: "29",
 }
 
 cc_library_shared {
@@ -58,9 +60,10 @@ cc_library_shared {
 
     srcs: ["C2SoftMpeg4Enc.cpp"],
 
-    static_libs: [ "libstagefright_m4vh263enc" ],
+    static_libs: ["libstagefright_m4vh263enc"],
 
     cflags: [
         "-DOSCL_IMPORT_REF=",
     ],
+    min_sdk_version: "29",
 }

@@ -8,4 +8,5 @@ cc_library_shared {
     srcs: ["C2SoftMp3Dec.cpp"],
 
     static_libs: ["libstagefright_mp3dec"],
+    min_sdk_version: "29",
 }
