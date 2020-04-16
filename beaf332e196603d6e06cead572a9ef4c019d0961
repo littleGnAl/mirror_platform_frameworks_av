@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "b590ca1a_ab147b1e",
+        "filename": "media/libstagefright/tests/writer/AndroidTest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-04-16T04:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be800627_7c1503a3",
+      "range": {
+        "startLine": 23,
+        "startChar": 35,
+        "endLine": 23,
+        "endChar": 48
+      },
+      "revId": "beaf332e196603d6e06cead572a9ef4c019d0961",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d182b731_e8aa030f",
         "filename": "media/libstagefright/tests/writer/AndroidTest.xml",
         "patchSetId": 2
@@ -93,6 +117,30 @@
       "revId": "beaf332e196603d6e06cead572a9ef4c019d0961",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6194ab3_644077e0",
+        "filename": "media/libstagefright/tests/writer/AndroidTest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-04-16T04:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8ae0459_ce371905",
+      "range": {
+        "startLine": 28,
+        "startChar": 66,
+        "endLine": 28,
+        "endChar": 79
+      },
+      "revId": "beaf332e196603d6e06cead572a9ef4c019d0961",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
