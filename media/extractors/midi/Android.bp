@@ -18,7 +18,7 @@ cc_library {
     static_libs: [
         "libmedia_midiiowrapper",
         "libsonivox",
-        "libstagefright_foundation"
+        "libstagefright_foundation",
     ],
     name: "libmidiextractor",
     relative_install_path: "extractors",
@@ -39,5 +39,6 @@ cc_library {
             "signed-integer-overflow",
         ],
     },
+    min_sdk_version: "29",
 
 }

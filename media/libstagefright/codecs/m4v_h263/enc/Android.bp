@@ -4,7 +4,8 @@ cc_library_static {
 
     srcs: [
         "src/bitstream_io.cpp",
-        "src/combined_encode.cpp", "src/datapart_encode.cpp",
+        "src/combined_encode.cpp",
+        "src/datapart_encode.cpp",
         "src/dct.cpp",
         "src/findhalfpel.cpp",
         "src/fastcodemb.cpp",
@@ -41,6 +42,7 @@ cc_library_static {
         ],
         cfi: true,
     },
+    min_sdk_version: "29",
 }
 
 //###############################################################################

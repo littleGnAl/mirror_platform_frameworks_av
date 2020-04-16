@@ -8,4 +8,5 @@ cc_library_shared {
     srcs: ["C2SoftGsmDec.cpp"],
 
     static_libs: ["libgsm"],
+    min_sdk_version: "29",
 }

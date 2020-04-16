@@ -17,4 +17,5 @@ cc_library_shared {
     include_dirs: [
         "external/libgav1/libgav1/",
     ],
+    min_sdk_version: "29",
 }

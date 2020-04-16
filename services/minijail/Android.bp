@@ -19,6 +19,7 @@ cc_library_shared {
     defaults: ["libavservices_minijail_defaults"],
     vendor_available: true,
     export_include_dirs: ["."],
+    min_sdk_version: "29",
 }
 
 // By adding "vendor_available: true" to "libavservices_minijail", we don't

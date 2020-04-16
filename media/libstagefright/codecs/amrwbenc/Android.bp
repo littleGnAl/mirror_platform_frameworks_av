@@ -136,6 +136,7 @@ cc_library_static {
     sanitize: {
         cfi: true,
     },
+    min_sdk_version: "29",
 
 }
 
@@ -162,4 +163,3 @@ cc_library_shared {
         "libstagefright_enc_common",
     ],
 }
-

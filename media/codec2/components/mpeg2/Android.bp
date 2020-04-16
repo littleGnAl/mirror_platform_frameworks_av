@@ -13,4 +13,5 @@ cc_library_shared {
         "external/libmpeg2/decoder",
         "external/libmpeg2/common",
     ],
+    min_sdk_version: "29",
 }

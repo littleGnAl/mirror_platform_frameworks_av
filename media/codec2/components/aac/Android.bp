@@ -13,6 +13,7 @@ cc_library_shared {
     static_libs: [
         "libFraunhoferAAC",
     ],
+    min_sdk_version: "29",
 }
 
 cc_library_shared {
@@ -27,4 +28,5 @@ cc_library_shared {
     static_libs: [
         "libFraunhoferAAC",
     ],
+    min_sdk_version: "29",
 }

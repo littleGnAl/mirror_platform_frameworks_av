@@ -36,5 +36,6 @@ cc_library {
             "signed-integer-overflow",
         ],
     },
+    min_sdk_version: "29",
 
 }

@@ -80,6 +80,7 @@ cc_library_static {
     //},
 
     shared_libs: ["libstagefright_amrnb_common"],
+    min_sdk_version: "29",
 }
 
 //###############################################################################
@@ -114,7 +115,10 @@ cc_test {
 
     srcs: ["test/amrnb_enc_test.cpp"],
 
-    cflags: ["-Wall", "-Werror"],
+    cflags: [
+        "-Wall",
+        "-Werror",
+    ],
 
     local_include_dirs: ["src"],
 
