@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f2586d79_53c6402c",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4210,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-16T20:40:00Z",
+      "side": 1,
+      "message": "this change conflicts with change in internal branches.\nTo workaround the merge conflict, instead of adding an extra condition in the same if for\nAV1, let us add a separate else if block for VP9 on line 4215 \n\n    } else if (!strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_VP9)) {\n        if (!AMediaFormat_getBuffer(track-\u003emeta, AMEDIAFORMAT_KEY_CSD_0, \u0026data, \u0026size)) {\n            return ERROR_MALFORMED;\n        }",
+      "revId": "39c408f5e4668b5a1d9af642491050a3b8d1e566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
