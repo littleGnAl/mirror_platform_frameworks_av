@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ca836a9_82fdb0ab",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-17T05:37:53Z",
+      "side": 1,
+      "message": "shouldn\u0027t we also build the fuzzer -- so that we know this fixed the host side?\n\ni would think that this should be \"built for android. built for host\u0027",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 48
+      },
+      "revId": "860a03118b2b76c0dc97d66c01dd285d8fccc3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "486bbaad_1c292317",
+        "filename": "media/libstagefright/foundation/avc_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-17T05:37:53Z",
+      "side": 1,
+      "message": "since __unused vs __attribute__((unused))  is a compiler-related thing.\nand we\u0027re looking at multiple places in this file.\n\nI like the idea of at the top of the file:\n\n#define UNUSED __attribute__((unused))\n\nand then these become things like\n  unsigned vodei_object_layer_verid UNUSED;\n\nI\u0027m ok with different name than \"UNUSED\" -- UNUSED_VAR,  SET_BUT_NOT_READ.\n\nbut let\u0027s use that style.\n\n\nas I\u0027m reading the places where this is being done, I see that there are places\nwhere we assign the variable; i\u0027m guessing that the real issue is that we never\nread the result back out?",
+      "range": {
+        "startLine": 549,
+        "startChar": 38,
+        "endLine": 550,
+        "endChar": 65
+      },
+      "revId": "860a03118b2b76c0dc97d66c01dd285d8fccc3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1c083eec_27f50241",
+        "filename": "media/libstagefright/foundation/avc_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-17T05:37:53Z",
+      "side": 1,
+      "message": "i\u0027m guessing we\u0027re doing this because we want advance some pointer in the \u0027br\u0027 construct.\nso that we\u0027ve moved along to fields that we will actually use.\n\ncan we do:\n\n    (void) br.getBits(4);\n\nand get the desired semantics -- it invokes the function to advance the pointer\nand highlights that we\u0027re discarding the bits.\n\n[at this point, it\u0027s more discussion, since we already had this code in place.\n\nDid the compiler start complaining about the \"__unused\" construct? maybe because we\u0027re\ndoing host-side builds of some of these things so that we can fuzz them?",
+      "range": {
+        "startLine": 552,
+        "startChar": 7,
+        "endLine": 552,
+        "endChar": 49
+      },
+      "revId": "860a03118b2b76c0dc97d66c01dd285d8fccc3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
