@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "384d2584_5f6a17dc",
+        "filename": "media/libstagefright/foundation/avc_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-17T22:25:43Z",
+      "side": 1,
+      "message": "I\u0027ll be interested to learn if there are any places where the macro approach doesn\u0027t work.",
+      "parentUuid": "ef908117_91e87315",
+      "range": {
+        "startLine": 549,
+        "startChar": 38,
+        "endLine": 550,
+        "endChar": 65
+      },
+      "revId": "860a03118b2b76c0dc97d66c01dd285d8fccc3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c083eec_27f50241",
         "filename": "media/libstagefright/foundation/avc_utils.cpp",
         "patchSetId": 1
@@ -136,6 +160,53 @@
         "startChar": 7,
         "endLine": 552,
         "endChar": 49
+      },
+      "revId": "860a03118b2b76c0dc97d66c01dd285d8fccc3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86b56705_160d3131",
+        "filename": "media/libstagefright/foundation/avc_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-17T22:25:43Z",
+      "side": 1,
+      "message": "validating the values would certainly make those values \u0027used\u0027 and remove the need for\na compiler directive (whether it be __unused or __attribute((unused)).\n\nthat changes the question to -- should we be validating these values?\nI see that this is a bool function -- so we could certainly return false if these\nfields aren\u0027t holding legal values. that means the values will be used, so we wouldn\u0027t need\nany kind of unused attribute.\n\ni\u0027m seeing some other points, like line 557 just below, where we call skipBits() instead of getBits() -- that\u0027s even better than \"(void) br.getBits(2)\"\n\nso for this layer_verid and layer_priority -- which are set but never read, I think\nI\u0027d like to change them to:\n\n    br.skipBits(4); // layer_verid\nso that they are in the style of line 557.\n\nany places that we think we need to keep the unused attribute -- let\u0027s replace it with the macro approach i suggested in the prior revision.",
+      "parentUuid": "cac1dd20_62d4d278",
+      "range": {
+        "startLine": 552,
+        "startChar": 7,
+        "endLine": 552,
+        "endChar": 49
+      },
+      "revId": "860a03118b2b76c0dc97d66c01dd285d8fccc3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed7df20_6cc616d7",
+        "filename": "media/libstagefright/foundation/avc_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-17T22:25:43Z",
+      "side": 1,
+      "message": "since we\u0027re unpacking something that we already picked up, the getBits() vs skipBits() discussion earlier won\u0027t apply here.\n\nI think i\u0027d almost rather just turn this into a comment\n // we can get protection value from (header\u003e\u003e16)\u00261\n\njust avoid any code whatsoever at this point.",
+      "range": {
+        "startLine": 658,
+        "startChar": 16,
+        "endLine": 658,
+        "endChar": 38
       },
       "revId": "860a03118b2b76c0dc97d66c01dd285d8fccc3f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
