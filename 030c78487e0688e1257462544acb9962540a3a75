@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "b9555435_270ee6fe",
+        "filename": "media/libstagefright/tests/HEVC/HEVCUtilsUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-04-17T14:51:53Z",
+      "side": 1,
+      "message": "Done. status_t err is also used outside the loop. index can\u0027t be moved inside the loop as it\u0027s supposed to increase by 1 with each valid iteration.",
+      "parentUuid": "2f5a2fb4_6ae2335c",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 17
+      },
+      "revId": "030c78487e0688e1257462544acb9962540a3a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3d35bfd_b31c0644",
         "filename": "media/libstagefright/tests/HEVC/HEVCUtilsUnitTest.cpp",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "030c78487e0688e1257462544acb9962540a3a75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "315563a2_f124a35c",
+        "filename": "media/libstagefright/tests/HEVC/HEVCUtilsUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-04-17T14:51:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3d35bfd_b31c0644",
+      "range": {
+        "startLine": 89,
+        "startChar": 8,
+        "endLine": 89,
+        "endChar": 27
+      },
+      "revId": "030c78487e0688e1257462544acb9962540a3a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
