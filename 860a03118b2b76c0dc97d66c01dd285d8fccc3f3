@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "a2a66c88_f26cd0c6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-17T19:00:32Z",
+      "side": 1,
+      "message": "Ray,\nhost support for extractor fuzzer plugins needs few more CLs. These are the initial ones which are independent and easier for review. Once these are submitted, we will follow up with few more CLs to eventually enable host support for extractor fuzzer plugins.",
+      "parentUuid": "2ca836a9_82fdb0ab",
+      "range": {
+        "startLine": 12,
+        "startChar": 6,
+        "endLine": 12,
+        "endChar": 48
+      },
+      "revId": "860a03118b2b76c0dc97d66c01dd285d8fccc3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "486bbaad_1c292317",
         "filename": "media/libstagefright/foundation/avc_utils.cpp",
         "patchSetId": 1
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "ef908117_91e87315",
+        "filename": "media/libstagefright/foundation/avc_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-17T19:00:32Z",
+      "side": 1,
+      "message": "Ray,\nWe had started with this approach initially, but there are few places where this approach didn\u0027t work, hence for consistency we thought it is better to use __attribute__((unused)) everywhere.\n\nVasu,\nLet us use the macro approach wherever we can use. When not possible, let us use the attribute approach.",
+      "parentUuid": "486bbaad_1c292317",
+      "range": {
+        "startLine": 549,
+        "startChar": 38,
+        "endLine": 550,
+        "endChar": 65
+      },
+      "revId": "860a03118b2b76c0dc97d66c01dd285d8fccc3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c083eec_27f50241",
         "filename": "media/libstagefright/foundation/avc_utils.cpp",
         "patchSetId": 1
@@ -59,6 +107,30 @@
       "writtenOn": "2020-04-17T05:37:53Z",
       "side": 1,
       "message": "i\u0027m guessing we\u0027re doing this because we want advance some pointer in the \u0027br\u0027 construct.\nso that we\u0027ve moved along to fields that we will actually use.\n\ncan we do:\n\n    (void) br.getBits(4);\n\nand get the desired semantics -- it invokes the function to advance the pointer\nand highlights that we\u0027re discarding the bits.\n\n[at this point, it\u0027s more discussion, since we already had this code in place.\n\nDid the compiler start complaining about the \"__unused\" construct? maybe because we\u0027re\ndoing host-side builds of some of these things so that we can fuzz them?",
+      "range": {
+        "startLine": 552,
+        "startChar": 7,
+        "endLine": 552,
+        "endChar": 49
+      },
+      "revId": "860a03118b2b76c0dc97d66c01dd285d8fccc3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cac1dd20_62d4d278",
+        "filename": "media/libstagefright/foundation/avc_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-17T19:00:32Z",
+      "side": 1,
+      "message": "Ray,\nYes. The compiler for host support throws errors on __unused.\nOne way is to remove __unused in most places where we see an error in host and handle any other compiler warnings appropriately by adding required (void) where they are declared.\nNot sure if it is a good idea to remove the variable completely as having them helps in code readability and when needed easier debugging to validate these values.",
+      "parentUuid": "1c083eec_27f50241",
       "range": {
         "startLine": 552,
         "startChar": 7,
