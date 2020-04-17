@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "22a7d7c7_71b54a2b",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-17T22:06:46Z",
+      "side": 1,
+      "message": "Update AndroidTest.xml to point to https://storage.cloud.google.com/android_media/frameworks/av/media/libstagefright/id3/test/ID3Test-1.1.zip instead of ID3Test.zip.\nThis is necessary as earlier files have now been deleted in the new zip.",
+      "revId": "20d23cc62fd3f34d242f0b4cdc33346be1f9a9fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
