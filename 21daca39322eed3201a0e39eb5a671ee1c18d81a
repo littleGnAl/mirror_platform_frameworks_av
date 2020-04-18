@@ -1,0 +1,435 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e52ee23_47a48a5e",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "keep under 100 chars",
+      "range": {
+        "startLine": 240,
+        "startChar": 6,
+        "endLine": 240,
+        "endChar": 105
+      },
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e3a38435_1dd8411b",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "hdrStaticInfo instead",
+      "range": {
+        "startLine": 415,
+        "startChar": 57,
+        "endLine": 415,
+        "endChar": 59
+      },
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "148dd927_8043e000",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "Let us change these to ALOGV() as well as many files will not have these SEI messages and these logs may to be way too many in normal runs",
+      "range": {
+        "startLine": 434,
+        "startChar": 8,
+        "endLine": 434,
+        "endChar": 14
+      },
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1d0ae6c_6bc85b94",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "opening { in same line as if ()",
+      "range": {
+        "startLine": 438,
+        "startChar": 0,
+        "endLine": 439,
+        "endChar": 5
+      },
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a9c860e_51f6d22d",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 482,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "move to above line",
+      "range": {
+        "startLine": 482,
+        "startChar": 0,
+        "endLine": 482,
+        "endChar": 5
+      },
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2675b9cc_dae80fb2",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 517,
+        "startChar": 2,
+        "endLine": 517,
+        "endChar": 5
+      },
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e7d56857_57c6098a",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "same",
+      "range": {
+        "startLine": 551,
+        "startChar": 4,
+        "endLine": 551,
+        "endChar": 5
+      },
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e9aff82_237c3f8e",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 757,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "hdrStaticInfoLocal instead as this is a local variable now",
+      "range": {
+        "startLine": 757,
+        "startChar": 18,
+        "endLine": 757,
+        "endChar": 37
+      },
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b5e77d9_7eac9c86",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 781,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "to be renamed once the definition changes in other CL",
+      "range": {
+        "startLine": 781,
+        "startChar": 73,
+        "endLine": 781,
+        "endChar": 83
+      },
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7892ae8c_9dc11529",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 841,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "ALOGV",
+      "range": {
+        "startLine": 841,
+        "startChar": 8,
+        "endLine": 841,
+        "endChar": 13
+      },
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c4508e2_ca9cec19",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1239,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "line above",
+      "range": {
+        "startLine": 1239,
+        "startChar": 8,
+        "endLine": 1239,
+        "endChar": 9
+      },
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f924f6ac_d9be6813",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1268,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "unnecessary line change",
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c19f0cea_409eefa0",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "instead of initializing mHdrStaticInfo here, let us define defaultStaticInfo for default values and then use that.\nmHdrStaticInfo then can then defined like rest of the parameters.\n\nBased on what we want as default behaviour, we may even define defaultStaticInfo such that it doesn\u0027t get inserted when not specified in the params.",
+      "range": {
+        "startLine": 203,
+        "startChar": 12,
+        "endLine": 203,
+        "endChar": 27
+      },
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fdc86322_90019227",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "100 chars",
+      "range": {
+        "startLine": 491,
+        "startChar": 0,
+        "endLine": 491,
+        "endChar": 103
+      },
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4e7f40f_0a0917b1",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "limit to 100 chars",
+      "range": {
+        "startLine": 1171,
+        "startChar": 0,
+        "endLine": 1181,
+        "endChar": 106
+      },
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba582482_8869040b",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1231,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "change to ALOGV()",
+      "range": {
+        "startLine": 1231,
+        "startChar": 8,
+        "endLine": 1231,
+        "endChar": 15
+      },
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "020f2991_024821fa",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1505,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "will this ever be non-null?\nDoes this mean we will always insert these new SEI messages?\nWe need to ensure that by default the new SEI messages aren\u0027t inserted.",
+      "range": {
+        "startLine": 1505,
+        "startChar": 4,
+        "endLine": 1505,
+        "endChar": 24
+      },
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59ce3b55_6f2883f7",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1508,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "ALOGV",
+      "range": {
+        "startLine": 1508,
+        "startChar": 8,
+        "endLine": 1508,
+        "endChar": 13
+      },
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4897492_f2f3464f",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1846,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-18T03:24:18Z",
+      "side": 1,
+      "message": "hdrStaticInfo",
+      "range": {
+        "startLine": 1846,
+        "startChar": 54,
+        "endLine": 1846,
+        "endChar": 68
+      },
+      "revId": "21daca39322eed3201a0e39eb5a671ee1c18d81a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
