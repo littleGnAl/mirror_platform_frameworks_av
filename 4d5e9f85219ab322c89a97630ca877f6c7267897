@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7c089601_429992cc",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1277,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-18T02:43:21Z",
+      "side": 1,
+      "message": "we should initialize this.",
+      "range": {
+        "startLine": 1277,
+        "startChar": 30,
+        "endLine": 1277,
+        "endChar": 38
+      },
+      "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b9492d56_03e0ee72",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1338,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-18T02:43:21Z",
+      "side": 1,
+      "message": "probably \u003e\u003d  unless the standard says otherwise.\n\nstill looking for the max\u003e\u003davg\u003e\u003dmin relationship.",
+      "range": {
+        "startLine": 1338,
+        "startChar": 47,
+        "endLine": 1338,
+        "endChar": 54
+      },
+      "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39c779a9_f0a5c210",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1345,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-18T02:43:21Z",
+      "side": 1,
+      "message": "tabs should be spaces.",
+      "range": {
+        "startLine": 1345,
+        "startChar": 0,
+        "endLine": 1345,
+        "endChar": 4
+      },
+      "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c7d2de9a_bd8c2486",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1372,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-18T02:43:21Z",
+      "side": 1,
+      "message": "there\u0027s a CL in frameworks/native to use a better name than this, right?",
+      "range": {
+        "startLine": 1372,
+        "startChar": 52,
+        "endLine": 1372,
+        "endChar": 64
+      },
+      "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b050420_a619885e",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1378,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-18T02:43:21Z",
+      "side": 1,
+      "message": "per my comment below about whether maxLuminance is present...\nthis is a point where we sould say:\nhdr.maxLuminence \u003d 65535\nhdr.minLuminence \u003d 0\n\nwhich means that we have sane values in place even if the flags aren\u0027t present.\n(and i\u0027ll guess that those are the right default values we\u0027re supposed to use if\nthese values aren\u0027t present).\n\nsame logic for things like minLuminance, and any other of the values that are\nflagged with a \"whateverIsPresentFlag\" field in the valid-hdr-fields...",
+      "range": {
+        "startLine": 1378,
+        "startChar": 51,
+        "endLine": 1378,
+        "endChar": 65
+      },
+      "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1a606d09_bdb0423f",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1433,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-18T02:43:21Z",
+      "side": 1,
+      "message": "trailing spaces",
+      "range": {
+        "startLine": 1433,
+        "startChar": 16,
+        "endLine": 1433,
+        "endChar": 25
+      },
+      "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "badfcd3b_a0296628",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-18T02:43:21Z",
+      "side": 1,
+      "message": "i think this is appropriately \u003e\u003d -- which would say that there is only 1 valid luminance\nvalue.  Unless the spec doesn\u0027t allow that.\n\ni don\u0027t see any tests for max\u003e\u003d avg or avg \u003e\u003d min  here,",
+      "range": {
+        "startLine": 1443,
+        "startChar": 48,
+        "endLine": 1443,
+        "endChar": 51
+      },
+      "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f433be53_1a1fefb0",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1506,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-18T02:43:21Z",
+      "side": 1,
+      "message": "if we have a flag for maxLuminance being present....\n\nis the bounds test on line 1497 valid in cases where maxLuminancePresentFlag \u003d\u003d 0?\n\nsimilarly for the min test....\n\nif they aren\u0027t present -- does that mean we should behave as if min/max are 0/65535 respectively?  see my comments above about initializing to good default values\nso that we always have a legitimate value present...",
+      "range": {
+        "startLine": 1506,
+        "startChar": 25,
+        "endLine": 1506,
+        "endChar": 58
+      },
+      "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d13bd6d_a5f13536",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1596,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-18T02:43:21Z",
+      "side": 1,
+      "message": "update to match what we\u0027re changing over in frameworks/native/",
+      "range": {
+        "startLine": 1596,
+        "startChar": 52,
+        "endLine": 1596,
+        "endChar": 64
+      },
+      "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
