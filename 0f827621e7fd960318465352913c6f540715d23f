@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8afada62_52f6f99a",
+        "filename": "media/libmedia/xsd/vts/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1088076
+      },
+      "writtenOn": "2020-04-20T05:17:05Z",
+      "side": 1,
+      "message": "we might have to remove this if presubmit check fails on the general-tests.zip size.",
+      "revId": "0f827621e7fd960318465352913c6f540715d23f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
