@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cd446829_fd36a2f5",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-20T21:19:12Z",
+      "side": 1,
+      "message": "nit: remove majorVersion and minorVersion and directly use version.first and version.second",
+      "range": {
+        "startLine": 89,
+        "startChar": 12,
+        "endLine": 89,
+        "endChar": 25
+      },
+      "revId": "2638b0bcb1a15bb28e59e1f7861cbbd5f4b82e93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
