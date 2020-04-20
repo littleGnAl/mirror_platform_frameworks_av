@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b261c9ff_67a256bb",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-20T21:00:12Z",
+      "side": 1,
+      "message": "if we look at lines 1397 and 1406, we see that we won\u0027t get here unless values have\nbeen specified for both of those fields.\n\nmy question is:\nif the value we parse for maxLuminancePresentFlag yields 0, will there be a value\nparsed for maxLuminance on line 1406?   or will we skip all of this validation\nbecause we insist on seeing a value ccv.max-luminance on line 1406 even if there\nis the flag we parsed on line 1397 says it\u0027s not present?",
+      "range": {
+        "startLine": 1496,
+        "startChar": 1,
+        "endLine": 1499,
+        "endChar": 17
+      },
+      "revId": "98531c373b7325d43ed730738969396cc771b1a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7c426d03_664058c2",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-20T21:00:12Z",
+      "side": 1,
+      "message": "this list seems to have 1 more entry than is in the list at line 1378..1408\n(this one runs 1785..1816)...\nI don\u0027t know which one is the extra flag.",
+      "range": {
+        "startLine": 1785,
+        "startChar": 15,
+        "endLine": 1785,
+        "endChar": 35
+      },
+      "revId": "98531c373b7325d43ed730738969396cc771b1a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3d25b8e8_b78d8141",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-20T21:00:12Z",
+      "side": 1,
+      "message": "i guess this somewhat answers my question about whether we always have the max luminance\nfield present, even if the \"max-luminance-flag\" might indicate that we don\u0027t have anything\nvalid in there.",
+      "range": {
+        "startLine": 1814,
+        "startChar": 15,
+        "endLine": 1814,
+        "endChar": 86
+      },
+      "revId": "98531c373b7325d43ed730738969396cc771b1a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a12b3c6_f3ed3eb0",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1819,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-20T21:00:12Z",
+      "side": 1,
+      "message": "it\u0027s the type of metadata (type1, type2, typeUnknown).... that is invalid.\n\nbetter phrase is \"unknown metadata type\". or \"unhandled metadata type: %d\", meta-\u003emID",
+      "range": {
+        "startLine": 1819,
+        "startChar": 36,
+        "endLine": 1819,
+        "endChar": 46
+      },
+      "revId": "98531c373b7325d43ed730738969396cc771b1a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
