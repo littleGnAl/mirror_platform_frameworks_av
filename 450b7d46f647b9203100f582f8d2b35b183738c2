@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "29ae9dde_503ae9c6",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-20T21:43:57Z",
+      "side": 1,
+      "message": "separate issue -- can we figure out a way to tune this.\n\nIt\u0027s more important now that mainline means we\u0027re shipping the same binary to different devices (low/middle/high) with corrresponding differences in the number of cores.\n\none thought:\n-- read a property, which can be used to raise the number [we already drop it down from 4\nby saying \"min of actual cpus and MAX_NUM_CORES\". \n\nthis is for a separate discussion/bug. not part of this CL",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 41
+      },
+      "revId": "450b7d46f647b9203100f582f8d2b35b183738c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
