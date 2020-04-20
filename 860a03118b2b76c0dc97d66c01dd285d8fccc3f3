@@ -120,6 +120,30 @@
     },
     {
       "key": {
+        "uuid": "811b31ff_6c63ec7f",
+        "filename": "media/libstagefright/foundation/avc_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 550,
+      "author": {
+        "id": 1570907
+      },
+      "writtenOn": "2020-04-20T11:52:35Z",
+      "side": 1,
+      "message": "Updated to use skipBits. Hence these variables are no longer needed and are removed.",
+      "parentUuid": "384d2584_5f6a17dc",
+      "range": {
+        "startLine": 549,
+        "startChar": 38,
+        "endLine": 550,
+        "endChar": 65
+      },
+      "revId": "860a03118b2b76c0dc97d66c01dd285d8fccc3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c083eec_27f50241",
         "filename": "media/libstagefright/foundation/avc_utils.cpp",
         "patchSetId": 1
@@ -191,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "ffc3d139_2029d8fc",
+        "filename": "media/libstagefright/foundation/avc_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1570907
+      },
+      "writtenOn": "2020-04-20T11:52:35Z",
+      "side": 1,
+      "message": "Done. Updated to match style of line 557. \nbr.skipBits(4); //video_object_layer_verid\nbr.skipBits(3); //video_object_layer_priority\n\nHence the variables \u0027video_object_layer_verid\u0027 and \u0027video_object_layer_priority\u0027 are no longer needed and are removed.",
+      "parentUuid": "86b56705_160d3131",
+      "range": {
+        "startLine": 552,
+        "startChar": 7,
+        "endLine": 552,
+        "endChar": 49
+      },
+      "revId": "860a03118b2b76c0dc97d66c01dd285d8fccc3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ed7df20_6cc616d7",
         "filename": "media/libstagefright/foundation/avc_utils.cpp",
         "patchSetId": 1
@@ -211,6 +259,30 @@
       "revId": "860a03118b2b76c0dc97d66c01dd285d8fccc3f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "da84779c_ec8b156a",
+        "filename": "media/libstagefright/foundation/avc_utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1570907
+      },
+      "writtenOn": "2020-04-20T11:52:35Z",
+      "side": 1,
+      "message": "Done. Line updated to a comment.",
+      "parentUuid": "3ed7df20_6cc616d7",
+      "range": {
+        "startLine": 658,
+        "startChar": 16,
+        "endLine": 658,
+        "endChar": 38
+      },
+      "revId": "860a03118b2b76c0dc97d66c01dd285d8fccc3f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
