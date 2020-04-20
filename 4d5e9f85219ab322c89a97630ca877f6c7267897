@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "0bde594a_02957c48",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1338,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-20T20:03:08Z",
+      "side": 1,
+      "message": "AVC standard specifies max \u003e min.\navg is not part of mastering display colour volume (MDCV) SEI params.\navg is present in Content colour volume (CCV) SEI, which is added in Type2 of HDRStaticInfo.",
+      "parentUuid": "b9492d56_03e0ee72",
+      "range": {
+        "startLine": 1338,
+        "startChar": 47,
+        "endLine": 1338,
+        "endChar": 54
+      },
+      "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "39c779a9_f0a5c210",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 4
@@ -71,6 +95,30 @@
     },
     {
       "key": {
+        "uuid": "0623417e_434fdea6",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1345,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-20T20:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39c779a9_f0a5c210",
+      "range": {
+        "startLine": 1345,
+        "startChar": 0,
+        "endLine": 1345,
+        "endChar": 4
+      },
+      "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c7d2de9a_bd8c2486",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 4
@@ -91,6 +139,30 @@
       "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3b77de5_ad7f0201",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1372,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-20T20:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7d2de9a_bd8c2486",
+      "range": {
+        "startLine": 1372,
+        "startChar": 52,
+        "endLine": 1372,
+        "endChar": 64
+      },
+      "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -140,6 +212,30 @@
     },
     {
       "key": {
+        "uuid": "054c6c21_a93cb6dc",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1433,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-20T20:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a606d09_bdb0423f",
+      "range": {
+        "startLine": 1433,
+        "startChar": 16,
+        "endLine": 1433,
+        "endChar": 25
+      },
+      "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "badfcd3b_a0296628",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 4
@@ -160,6 +256,30 @@
       "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3035252f_bdbd69eb",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-20T20:03:08Z",
+      "side": 1,
+      "message": "AVC standard specifies max \u003e min.\navg is not part of mastering display colour volume (MDCV) SEI params.\navg is present in Content colour volume (CCV) SEI, which is added in Type2 of HDRStaticInfo.",
+      "parentUuid": "badfcd3b_a0296628",
+      "range": {
+        "startLine": 1443,
+        "startChar": 48,
+        "endLine": 1443,
+        "endChar": 51
+      },
+      "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -206,6 +326,30 @@
       "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c904450_9ae4a0c7",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1596,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-20T20:03:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d13bd6d_a5f13536",
+      "range": {
+        "startLine": 1596,
+        "startChar": 52,
+        "endLine": 1596,
+        "endChar": 64
+      },
+      "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
