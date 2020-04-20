@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "93af6ca3_f147b348",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-04-20T13:12:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a703952a_22b1a8b0",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 83,
+        "endChar": 82
+      },
+      "revId": "2dbd79006e5270ff4570e0288de723f38667a0be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbf015f2_2dfe854e",
         "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
         "patchSetId": 8
@@ -45,6 +69,30 @@
       "revId": "2dbd79006e5270ff4570e0288de723f38667a0be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88475746_b2b49518",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-04-20T13:12:00Z",
+      "side": 1,
+      "message": "This method is under @BeforeClass annotation, it is invoked once before running all tests.\n\nhttps://junit.org/junit4/javadoc/4.12/index.html?org/junit/BeforeClass.html",
+      "parentUuid": "dbf015f2_2dfe854e",
+      "range": {
+        "startLine": 153,
+        "startChar": 23,
+        "endLine": 153,
+        "endChar": 33
+      },
+      "revId": "2dbd79006e5270ff4570e0288de723f38667a0be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
