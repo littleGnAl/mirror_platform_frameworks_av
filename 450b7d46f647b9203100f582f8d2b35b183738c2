@@ -22,6 +22,30 @@
       "revId": "450b7d46f647b9203100f582f8d2b35b183738c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2585031b_f81053f5",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-20T21:49:09Z",
+      "side": 1,
+      "message": "Ray,\nthis is the max that the library supports.\nSo min(4, number of actual CPUs) is what the decoder uses.",
+      "parentUuid": "29ae9dde_503ae9c6",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 41
+      },
+      "revId": "450b7d46f647b9203100f582f8d2b35b183738c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
