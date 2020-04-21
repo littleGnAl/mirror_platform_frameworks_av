@@ -163,6 +163,30 @@
       "revId": "98531c373b7325d43ed730738969396cc771b1a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1687d0fe_326dc577",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1819,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-21T16:29:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3a12b3c6_f3ed3eb0",
+      "range": {
+        "startLine": 1819,
+        "startChar": 36,
+        "endLine": 1819,
+        "endChar": 46
+      },
+      "revId": "98531c373b7325d43ed730738969396cc771b1a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
