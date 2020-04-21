@@ -387,7 +387,7 @@ AString AStringPrintf(const char *format, ...) {
     va_start(ap, format);
 
     char *buffer;
-    vasprintf(&buffer, format, ap);
+    (void)vasprintf(&buffer, format, ap);
 
     va_end(ap);
 
