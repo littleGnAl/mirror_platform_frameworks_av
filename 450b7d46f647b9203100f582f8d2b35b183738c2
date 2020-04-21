@@ -70,6 +70,30 @@
       "revId": "450b7d46f647b9203100f582f8d2b35b183738c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a33fd0b_bc3297e3",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-21T04:02:30Z",
+      "side": 1,
+      "message": "Ray,\nAgreed. Have filed b/154561783 to track this for libhevc, libavc, libmpeg2 codecs.\nMarking this as resolved for now.",
+      "parentUuid": "85dadcf9_2e71898e",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 41
+      },
+      "revId": "450b7d46f647b9203100f582f8d2b35b183738c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
