@@ -16,6 +16,23 @@
       "revId": "07f6e0188c24bccbb71c3505b785a010739e8784",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e803185b_64a77930",
+        "filename": "media/extractors/midi/test/SonivoxTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-21T20:26:11Z",
+      "side": 1,
+      "message": "Refer to external/sonivox/arm-wt-22k/host_src/eas_main.c to see how to use the sonivox api without MidiIoWrapper class",
+      "revId": "07f6e0188c24bccbb71c3505b785a010739e8784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
