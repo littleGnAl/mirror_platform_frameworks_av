@@ -331,6 +331,30 @@
     },
     {
       "key": {
+        "uuid": "06c0274e_be26fe43",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-21T16:38:55Z",
+      "side": 1,
+      "message": "Verifying the valid range for the min/ max luminance as per H264 standard.  Will modify ASAP.",
+      "parentUuid": "0307d57c_ce91bd07",
+      "range": {
+        "startLine": 1308,
+        "startChar": 93,
+        "endLine": 1308,
+        "endChar": 99
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "b9bf6470_591aac95",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 2
@@ -554,6 +578,30 @@
       "side": 1,
       "message": "conditions for max \u003e\u003d avg \u003e\u003d min are added. limitation on minluminance is under study",
       "parentUuid": "7d054f0f_e347364d",
+      "range": {
+        "startLine": 1407,
+        "startChar": 68,
+        "endLine": 1407,
+        "endChar": 85
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "51d2f6d9_2790dd00",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1407,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-21T16:38:55Z",
+      "side": 1,
+      "message": "Verifying the valid range for the min/ max luminance as per H264 standard.  Will modify ASAP.",
+      "parentUuid": "b98ebc62_638809e9",
       "range": {
         "startLine": 1407,
         "startChar": 68,
