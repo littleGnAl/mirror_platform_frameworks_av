@@ -80,12 +80,16 @@ cc_fuzz {
 
     include_dirs: [
         "frameworks/av/media/extractors/mp4",
+        "frameworks/av/media/libmedia/include",
+        "frameworks/av/media/ndk/include",
+        "frameworks/av/media/libaudioclient/include",
     ],
 
     static_libs: [
         "liblog",
         "libstagefright_foundation",
-        "libmedia",
+        "libmediandk_format",
+        "libmedia_ndkformatpriv",
         "libextractorfuzzerbase",
         "libstagefright_id3",
         "libstagefright_esds",
@@ -94,11 +98,21 @@ cc_fuzz {
 
     shared_libs: [
         "libutils",
-        "libmediandk",
         "libbinder",
     ],
 
     dictionary: "mp4_extractor_fuzzer.dict",
+
+    host_supported: true,
+
+    target: {
+        linux_glibc: {
+            cflags: [
+                "-D__ANDROID_API__=29",
+                "-D__INTRODUCED_IN(api_level)=__attribute__((annotate(\"introduced_in=\" #api_level)))",
+            ],
+        },
+    },
 }
 
 cc_fuzz {
