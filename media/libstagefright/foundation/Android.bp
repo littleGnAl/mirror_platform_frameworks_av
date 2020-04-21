@@ -11,6 +11,7 @@ cc_defaults {
     vndk: {
         enabled: true,
     },
+    host_supported: true,
     double_loadable: true,
     include_dirs: [
         "frameworks/av/include",
@@ -82,6 +83,22 @@ cc_defaults {
             ],
             cflags: [
                 "-DNO_IMEMORY",
+            ],
+        },
+        darwin: {
+            enabled: false,
+        },
+        linux_glibc: {
+            /* Excluding the following source files as these use Android properties like
+             * property_get_bool("media.stagefright.log-uri", false)
+             * which are not available on host.
+             */
+            exclude_srcs: [
+                "ADebug.cpp",
+                "FoundationUtils.cpp",
+            ],
+            cflags: [
+                "-Wno-unused-result",
             ],
         },
     },
