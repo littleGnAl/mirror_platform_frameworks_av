@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5b143b7f_93ddd949",
+        "filename": "media/libstagefright/tests/HEVC/HEVCUtilsUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-21T04:37:59Z",
+      "side": 1,
+      "message": "the startcode can be anywhere in the buffer?\nor is it required to be anchored the beginning of the buffer:\nso that data[0..n-1] all \u003d\u003d0 and data[n] \u003d\u003d1  [and n has to be \u003e\u003d2]?\n\n\ni\u0027d have probably looked at offset+2, offset+1, then offset+0 just so that they were\nin order.",
+      "range": {
+        "startLine": 100,
+        "startChar": 16,
+        "endLine": 100,
+        "endChar": 92
+      },
+      "revId": "4af850e808de4afb87b3af4301ef9b9a5e9b7f22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d4bad2cf_72dbd272",
+        "filename": "media/libstagefright/tests/HEVC/HEVCUtilsUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-21T04:37:59Z",
+      "side": 1,
+      "message": "I think this is \"the test case\u0027s test data is corrupt\" as opposed to indication\nthat what we\u0027re testing is bad, correct?",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 18
+      },
+      "revId": "4af850e808de4afb87b3af4301ef9b9a5e9b7f22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2787291_42ff295e",
+        "filename": "media/libstagefright/tests/HEVC/HEVCUtilsUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-21T04:37:59Z",
+      "side": 1,
+      "message": "based on above, this means we\u0027re always providing nal\u0027s with length \u003e\u003d 1.\nwe won\u0027t ever try to test a zero-length NAL.\n\nI kind of think that we should be able to test a 0-length NAL. so that we know a malformed user input won\u0027t break these routines.",
+      "range": {
+        "startLine": 108,
+        "startChar": 30,
+        "endLine": 108,
+        "endChar": 49
+      },
+      "revId": "4af850e808de4afb87b3af4301ef9b9a5e9b7f22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88200dc5_ea78b72c",
+        "filename": "media/libstagefright/tests/HEVC/HEVCUtilsUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-21T04:37:59Z",
+      "side": 1,
+      "message": "seems a magic constant.",
+      "range": {
+        "startLine": 173,
+        "startChar": 26,
+        "endLine": 173,
+        "endChar": 29
+      },
+      "revId": "4af850e808de4afb87b3af4301ef9b9a5e9b7f22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73b41d7d_8cdb9647",
+        "filename": "media/libstagefright/tests/HEVC/HEVCUtilsUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-21T04:37:59Z",
+      "side": 1,
+      "message": "whatever constant we do for line 173, we should be doing\n framerate \u003d hvcc[NEWCONST-1] | hvcc[NEWCONST]\u003c\u003c8;\ninstead of 19 and 20.",
+      "range": {
+        "startLine": 175,
+        "startChar": 29,
+        "endLine": 175,
+        "endChar": 51
+      },
+      "revId": "4af850e808de4afb87b3af4301ef9b9a5e9b7f22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
