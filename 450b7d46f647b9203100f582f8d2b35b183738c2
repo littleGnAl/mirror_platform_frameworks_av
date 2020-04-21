@@ -46,6 +46,30 @@
       "revId": "450b7d46f647b9203100f582f8d2b35b183738c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85dadcf9_2e71898e",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-21T03:29:24Z",
+      "side": 1,
+      "message": "that\u0027s a good reason for it to be fixed.\n\nany way we can pull the \"4\" as a constant out of the codec library itself? \nsome define that we can use, or even a call in to the codec that says \"i won\u0027t go more than this\"... something like that so that we don\u0027t have the value 4 embedded here?",
+      "parentUuid": "2585031b_f81053f5",
+      "range": {
+        "startLine": 44,
+        "startChar": 7,
+        "endLine": 44,
+        "endChar": 41
+      },
+      "revId": "450b7d46f647b9203100f582f8d2b35b183738c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
