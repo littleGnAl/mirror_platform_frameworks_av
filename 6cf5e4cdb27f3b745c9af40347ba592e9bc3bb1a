@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "85ac85f8_83e44810",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-21T19:17:48Z",
+      "side": 1,
+      "message": "Bug: 153239177\n\n153170568 isn\u0027t for id3",
+      "revId": "6cf5e4cdb27f3b745c9af40347ba592e9bc3bb1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "11bfbba9_1d89d7c5",
+        "filename": "media/libstagefright/id3/test/AndroidTest.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-21T19:17:48Z",
+      "side": 1,
+      "message": "Let us retain ID3TestRes as ID3Test is used to push the test binaries",
+      "range": {
+        "startLine": 23,
+        "startChar": 35,
+        "endLine": 23,
+        "endChar": 42
+      },
+      "revId": "6cf5e4cdb27f3b745c9af40347ba592e9bc3bb1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c8433328_5eb4cdff",
+        "filename": "media/libstagefright/id3/test/AndroidTest.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-21T19:17:48Z",
+      "side": 1,
+      "message": "retain ID3TestRes",
+      "range": {
+        "startLine": 29,
+        "startChar": 66,
+        "endLine": 29,
+        "endChar": 73
+      },
+      "revId": "6cf5e4cdb27f3b745c9af40347ba592e9bc3bb1a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
