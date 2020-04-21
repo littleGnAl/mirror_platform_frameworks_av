@@ -33,16 +33,21 @@ cc_library {
         "include",
     ],
 
+    include_dirs: [
+        "frameworks/av/media/libmedia/include",
+        "frameworks/av/media/ndk/include",
+    ],
+
     static_libs: [
         "liblog",
         "libstagefright_foundation",
-        "libmedia",
+        "libmediandk_format",
+        "libmedia_ndkformatpriv",
     ],
 
     shared_libs: [
         "libutils",
         "libbinder",
-        "libmediandk",
     ],
 
     /* GETEXTRACTORDEF is not defined as extractor library is not linked in the
@@ -50,6 +55,20 @@ cc_library {
      * generated.
      */
     allow_undefined_symbols: true,
+
+    host_supported: true,
+
+    target: {
+        darwin: {
+            enabled: false,
+        },
+        linux_glibc: {
+            cflags: [
+                "-D__ANDROID_API__=29",
+                "-D__INTRODUCED_IN(api_level)=__attribute__((annotate(\"introduced_in=\" #api_level)))",
+            ],
+        },
+    },
 }
 
 cc_fuzz {
