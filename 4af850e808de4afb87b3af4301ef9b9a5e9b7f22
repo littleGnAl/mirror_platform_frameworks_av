@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4d58a1a4_05c6a3e3",
+        "filename": "media/libstagefright/tests/HEVC/HEVCUtilsUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-04-21T16:31:22Z",
+      "side": 1,
+      "message": "The offset can be anywhere in the buffer. Changed the order.",
+      "parentUuid": "5b143b7f_93ddd949",
+      "range": {
+        "startLine": 100,
+        "startChar": 16,
+        "endLine": 100,
+        "endChar": 92
+      },
+      "revId": "4af850e808de4afb87b3af4301ef9b9a5e9b7f22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d4bad2cf_72dbd272",
         "filename": "media/libstagefright/tests/HEVC/HEVCUtilsUnitTest.cpp",
         "patchSetId": 5
@@ -45,6 +69,30 @@
       "revId": "4af850e808de4afb87b3af4301ef9b9a5e9b7f22",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5562122e_d938121f",
+        "filename": "media/libstagefright/tests/HEVC/HEVCUtilsUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-04-21T16:31:22Z",
+      "side": 1,
+      "message": "Changed now so that the addNalUnit() function can take 0 length NAL Units.",
+      "parentUuid": "d4bad2cf_72dbd272",
+      "range": {
+        "startLine": 105,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 18
+      },
+      "revId": "4af850e808de4afb87b3af4301ef9b9a5e9b7f22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "72530582_2b661036",
+        "filename": "media/libstagefright/tests/HEVC/HEVCUtilsUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-04-21T16:31:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2787291_42ff295e",
+      "range": {
+        "startLine": 108,
+        "startChar": 30,
+        "endLine": 108,
+        "endChar": 49
+      },
+      "revId": "4af850e808de4afb87b3af4301ef9b9a5e9b7f22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88200dc5_ea78b72c",
         "filename": "media/libstagefright/tests/HEVC/HEVCUtilsUnitTest.cpp",
         "patchSetId": 5
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "acf32a01_3ff25353",
+        "filename": "media/libstagefright/tests/HEVC/HEVCUtilsUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-04-21T16:31:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88200dc5_ea78b72c",
+      "range": {
+        "startLine": 173,
+        "startChar": 26,
+        "endLine": 173,
+        "endChar": 29
+      },
+      "revId": "4af850e808de4afb87b3af4301ef9b9a5e9b7f22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "73b41d7d_8cdb9647",
         "filename": "media/libstagefright/tests/HEVC/HEVCUtilsUnitTest.cpp",
         "patchSetId": 5
@@ -114,6 +210,30 @@
       "revId": "4af850e808de4afb87b3af4301ef9b9a5e9b7f22",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c455e0b2_ccf7671c",
+        "filename": "media/libstagefright/tests/HEVC/HEVCUtilsUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-04-21T16:31:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73b41d7d_8cdb9647",
+      "range": {
+        "startLine": 175,
+        "startChar": 29,
+        "endLine": 175,
+        "endChar": 51
+      },
+      "revId": "4af850e808de4afb87b3af4301ef9b9a5e9b7f22",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
