@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "61356e5b_390963e9",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-21T17:11:21Z",
+      "side": 1,
+      "message": "Verifying the valid range for the min/ max luminance as per H264 standard.  Will modify ASAP.",
+      "parentUuid": "8817c788_eabde093",
+      "range": {
+        "startLine": 248,
+        "startChar": 77,
+        "endLine": 248,
+        "endChar": 83
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "070c4790_c7562fab",
         "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
         "patchSetId": 2
@@ -377,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "8e469298_ad1baf07",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-21T17:11:21Z",
+      "side": 1,
+      "message": "Verifying the valid ranges and normalization factors ( 0.00002 ) for all the parameters as per the H264 standard.  Will modify ASAP.",
+      "parentUuid": "30d061a1_e1a54d7c",
+      "range": {
+        "startLine": 619,
+        "startChar": 75,
+        "endLine": 619,
+        "endChar": 83
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "74bf4657_c0d1ce3f",
         "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
         "patchSetId": 2
@@ -388,6 +436,30 @@
       "writtenOn": "2020-03-08T02:04:55Z",
       "side": 1,
       "message": "i\u0027m assuming this is just a different scaling constant for luminance\ndue to whatever the full range is there and the 16 or 32 bits that we store in the sType2\n\nin any event, probably need a defined scaling constant like i suggested for 0.00002",
+      "range": {
+        "startLine": 652,
+        "startChar": 65,
+        "endLine": 652,
+        "endChar": 74
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31cf0935_342a4823",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-21T17:11:21Z",
+      "side": 1,
+      "message": "Verifying the valid ranges and normalization factors ( 0.00002 ) for all the parameters as per the H264 standard.  Will modify ASAP.",
+      "parentUuid": "74bf4657_c0d1ce3f",
       "range": {
         "startLine": 652,
         "startChar": 65,
