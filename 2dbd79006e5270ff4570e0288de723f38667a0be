@@ -93,6 +93,30 @@
       "revId": "2dbd79006e5270ff4570e0288de723f38667a0be",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0067d556_937d9944",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/androidTest/java/com/android/media/benchmark/tests/EncoderTest.java",
+        "patchSetId": 8
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-21T04:12:10Z",
+      "side": 1,
+      "message": "thanks.\n\nhow do they get cleaned up?\nis there a corresponding @AfterClass annotation that we can use to cause a routine to be called that removes the files?",
+      "parentUuid": "88475746_b2b49518",
+      "range": {
+        "startLine": 153,
+        "startChar": 23,
+        "endLine": 153,
+        "endChar": 33
+      },
+      "revId": "2dbd79006e5270ff4570e0288de723f38667a0be",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
