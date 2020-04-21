@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "689d3076_a96bb1ac",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-21T15:02:09Z",
+      "side": 1,
+      "message": "Will change the reading of ccv.maxLuminance based on if(1 \u003d\u003d hdr.ccv.maxLuminancePresentFlag), along with validation of range for the same.",
+      "parentUuid": "b261c9ff_67a256bb",
+      "range": {
+        "startLine": 1496,
+        "startChar": 1,
+        "endLine": 1499,
+        "endChar": 17
+      },
+      "revId": "98531c373b7325d43ed730738969396cc771b1a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7c426d03_664058c2",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 6
@@ -83,6 +107,30 @@
       "writtenOn": "2020-04-20T21:00:12Z",
       "side": 1,
       "message": "i guess this somewhat answers my question about whether we always have the max luminance\nfield present, even if the \"max-luminance-flag\" might indicate that we don\u0027t have anything\nvalid in there.",
+      "range": {
+        "startLine": 1814,
+        "startChar": 15,
+        "endLine": 1814,
+        "endChar": 86
+      },
+      "revId": "98531c373b7325d43ed730738969396cc771b1a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2bae92a_34ae816e",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-21T15:02:09Z",
+      "side": 1,
+      "message": "max, min and avg luxuriance values are always set ( even if not valid) irrespective of present flags for the same.\nAlso, the conditions in line 1406 can be modified to read \"\"ccv.max-luminance\" in the condition if(1 \u003d\u003d maxLuminancePresentFlag).",
+      "parentUuid": "3d25b8e8_b78d8141",
       "range": {
         "startLine": 1814,
         "startChar": 15,
