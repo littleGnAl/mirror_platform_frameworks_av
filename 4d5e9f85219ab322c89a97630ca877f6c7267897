@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7b3595b2_4bca5d3b",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1277,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-21T16:35:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c089601_429992cc",
+      "range": {
+        "startLine": 1277,
+        "startChar": 30,
+        "endLine": 1277,
+        "endChar": 38
+      },
+      "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9492d56_03e0ee72",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 4
@@ -177,6 +201,30 @@
       "writtenOn": "2020-04-18T02:43:21Z",
       "side": 1,
       "message": "per my comment below about whether maxLuminance is present...\nthis is a point where we sould say:\nhdr.maxLuminence \u003d 65535\nhdr.minLuminence \u003d 0\n\nwhich means that we have sane values in place even if the flags aren\u0027t present.\n(and i\u0027ll guess that those are the right default values we\u0027re supposed to use if\nthese values aren\u0027t present).\n\nsame logic for things like minLuminance, and any other of the values that are\nflagged with a \"whateverIsPresentFlag\" field in the valid-hdr-fields...",
+      "range": {
+        "startLine": 1378,
+        "startChar": 51,
+        "endLine": 1378,
+        "endChar": 65
+      },
+      "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa47164f_071aba66",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1378,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-21T16:35:26Z",
+      "side": 1,
+      "message": "Values for all parameters are set at the line 1788. (could be out of range).",
+      "parentUuid": "7b050420_a619885e",
       "range": {
         "startLine": 1378,
         "startChar": 51,
