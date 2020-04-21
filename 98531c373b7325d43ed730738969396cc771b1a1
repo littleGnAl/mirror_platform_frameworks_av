@@ -48,6 +48,30 @@
     },
     {
       "key": {
+        "uuid": "f5810f86_73e9da1a",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1785,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-21T14:07:25Z",
+      "side": 1,
+      "message": "\"hdr-type\" which is present at line 1281.",
+      "parentUuid": "7c426d03_664058c2",
+      "range": {
+        "startLine": 1785,
+        "startChar": 15,
+        "endLine": 1785,
+        "endChar": 35
+      },
+      "revId": "98531c373b7325d43ed730738969396cc771b1a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d25b8e8_b78d8141",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 6
