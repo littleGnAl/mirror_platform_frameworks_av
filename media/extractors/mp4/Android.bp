@@ -11,11 +11,11 @@ cc_defaults {
 
     include_dirs: [
         "frameworks/av/media/libstagefright/",
+        "frameworks/av/media/ndk/include",
     ],
 
     shared_libs: [
         "liblog",
-        "libmediandk"
     ],
 
     static_libs: [
@@ -23,6 +23,8 @@ cc_defaults {
         "libstagefright_foundation",
         "libstagefright_id3",
         "libutils",
+        "libmediandk_format",
+        "libmedia_ndkformatpriv",
     ],
 
     cflags: [
@@ -33,13 +35,6 @@ cc_defaults {
     version_script: "exports.lds",
     relative_install_path: "extractors",
     compile_multilib: "first",
-}
-
-cc_library {
-
-
-    name: "libmp4extractor",
-    defaults: ["libmp4extractor_defaults"],
 
     sanitize: {
         cfi: true,
@@ -49,6 +44,25 @@ cc_library {
         ],
     },
 
+    host_supported: true,
+
+    target: {
+        darwin: {
+            enabled: false,
+        },
+        linux_glibc: {
+            cflags: [
+                "-D__ANDROID_API__=29",
+                "-D__INTRODUCED_IN(api_level)=__attribute__((annotate(\"introduced_in=\" #api_level)))",
+                "-D__unused=__attribute__((__unused__))",
+            ],
+        },
+    },
+}
+
+cc_library {
+    name: "libmp4extractor",
+    defaults: ["libmp4extractor_defaults"],
 }
 
 cc_library_static {
