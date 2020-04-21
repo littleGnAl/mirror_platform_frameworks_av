@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b084b55b_cff96d28",
+        "filename": "media/extractors/midi/test/SonivoxTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-21T19:05:42Z",
+      "side": 1,
+      "message": "Most of the tests here test the functions external/sonivox.\nSo break this module such that this tests only external/sonivox and doesn\u0027t use anything else from frameworks/av or frameworks/base and move it to external/sonivox",
+      "revId": "07f6e0188c24bccbb71c3505b785a010739e8784",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
