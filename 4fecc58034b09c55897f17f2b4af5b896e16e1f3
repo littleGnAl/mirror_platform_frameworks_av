@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e6c99d10_03357529",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-22T16:29:42Z",
+      "side": 1,
+      "message": "this comment is not necessary as we don\u0027t validate the returned timestamp and not validating allows this to be tested for all types including those that can seek to random points",
+      "range": {
+        "startLine": 667,
+        "startChar": 0,
+        "endLine": 667,
+        "endChar": 46
+      },
+      "revId": "4fecc58034b09c55897f17f2b4af5b896e16e1f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df46bbbb_8b611bd3",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-22T16:29:42Z",
+      "side": 1,
+      "message": "the one outside the loop is testing nullptr, pass valid format here.",
+      "range": {
+        "startLine": 765,
+        "startChar": 0,
+        "endLine": 767,
+        "endChar": 71
+      },
+      "revId": "4fecc58034b09c55897f17f2b4af5b896e16e1f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
