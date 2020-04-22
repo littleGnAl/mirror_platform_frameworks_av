@@ -649,15 +649,14 @@ TEST_P(ListenerTest, SetMaxFileLimitsTest) {
     }
 }
 
-// TODO: (b/150923387)
-// Add WEBM input
 INSTANTIATE_TEST_SUITE_P(ListenerTestAll, ListenerTest,
                          ::testing::Values(make_tuple("aac", AAC_1, UNUSED_ID, 0.6, 0.7, 1),
                                            make_tuple("amrnb", AMR_NB_1, UNUSED_ID, 0.2, 0.6, 1),
                                            make_tuple("amrwb", AMR_WB_1, UNUSED_ID, 0.5, 0.5, 1),
                                            make_tuple("mpeg2Ts", AAC_1, UNUSED_ID, 0.2, 1, 1),
                                            make_tuple("mpeg4", AAC_1, UNUSED_ID, 0.4, 0.3, 0.25),
-                                           make_tuple("ogg", OPUS_1, UNUSED_ID, 0.7, 0.3, 1)));
+                                           make_tuple("ogg", OPUS_1, UNUSED_ID, 0.7, 0.3, 1),
+                                           make_tuple("webm", OPUS_1, UNUSED_ID, 0.4, 0.6, 1)));
 
 // TODO: (b/144476164)
 // Add AAC_ADTS, FLAC, AV1 input
