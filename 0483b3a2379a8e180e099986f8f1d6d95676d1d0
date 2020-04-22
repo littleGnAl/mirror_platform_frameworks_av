@@ -70,6 +70,30 @@
       "revId": "0483b3a2379a8e180e099986f8f1d6d95676d1d0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "93f28e19_2ac08899",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/java/com/android/media/benchmark/library/Extractor.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-04-22T06:56:59Z",
+      "side": 1,
+      "message": "Hi Ray,\n\nWe performed some profiling to measures the time taken with and without including the time taken to extract CSD bytes.\nHowever, we could not observe any significant measurable increase in the total time with/without CSD. CSD extraction time is hence not measured separately.\n\nAs for CSD bytes, we are taking them into account to make the benchmark stats(number of bytes extracted column in the stats sheet) consistent across NDK and SDK, since the CSD bytes are being counted in NDK.",
+      "parentUuid": "3af91139_c72f58c7",
+      "range": {
+        "startLine": 171,
+        "startChar": 17,
+        "endLine": 171,
+        "endChar": 47
+      },
+      "revId": "0483b3a2379a8e180e099986f8f1d6d95676d1d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
