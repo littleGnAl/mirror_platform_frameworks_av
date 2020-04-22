@@ -342,3 +342,37 @@ cc_library {
         cfi: true,
     },
 }
+
+cc_library_static {
+    name: "libmediandkformat_priv",
+
+    host_supported: true,
+
+    srcs: [
+        "NdkMediaFormatPriv.cpp",
+        "NdkMediaErrorPriv.cpp",
+    ],
+
+    include_dirs: [
+        "frameworks/base/core/jni",
+        "frameworks/av/media/ndk/include",
+        "frameworks/av/media/libstagefright/foundation/include",
+        "frameworks/av/media/libstagefright/include",
+    ],
+
+    cflags: [
+        "-DEXPORT=__attribute__((visibility(\"default\")))",
+        "-Werror",
+        "-Wall",
+    ],
+
+    export_include_dirs: ["include"],
+
+    target: {
+        darwin: {
+            enabled: false,
+        },
+    },
+
+    apex_available: ["com.android.media"],
+}
