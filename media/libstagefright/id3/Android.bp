@@ -3,9 +3,11 @@ cc_library_static {
 
     srcs: ["ID3.cpp"],
 
-    header_libs: [
-        "libmedia_headers",
-        "media_ndk_headers",
+    include_dirs: [
+        "frameworks/av/media/libmedia/include",
+        "frameworks/av/media/ndk/include",
+        "frameworks/av/media/libstagefright/foundation/include",
+        "frameworks/av/media/libstagefright/include",
     ],
 
     cflags: [
@@ -17,6 +19,12 @@ cc_library_static {
             "signed-integer-overflow",
         ],
         cfi: true,
+    },
+    host_supported: true,
+    target: {
+        darwin: {
+            enabled: false,
+        },
     },
 }
 
