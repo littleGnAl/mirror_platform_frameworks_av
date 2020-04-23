@@ -16,6 +16,24 @@
       "revId": "c431fc22a34611c511885f1d4ad92fb931b7405c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "31a02fea_37f14298",
+        "filename": "media/libstagefright/foundation/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-23T05:04:12Z",
+      "side": 1,
+      "message": "Removing disable darwin code ensures this merges without any conflicts with internal/master.",
+      "parentUuid": "20e702af_8105c2e3",
+      "revId": "c431fc22a34611c511885f1d4ad92fb931b7405c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
