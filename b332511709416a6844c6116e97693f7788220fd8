@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99e1d122_9593e74a",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-24T00:09:08Z",
+      "side": 1,
+      "message": "what\u0027s to keep an extractor from saying \"no seeking\" arbitrarily.\n\nshould we be looking at an addition parameter to this test that indicates whether it\u0027s ok\nfor the extractor to report it doesn\u0027t support seek operations?",
+      "range": {
+        "startLine": 683,
+        "startChar": 21,
+        "endLine": 683,
+        "endChar": 61
+      },
+      "revId": "b332511709416a6844c6116e97693f7788220fd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54d7bbf9_69e8b568",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 703,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-24T00:09:08Z",
+      "side": 1,
+      "message": "use proper defind constant.",
+      "range": {
+        "startLine": 703,
+        "startChar": 60,
+        "endLine": 703,
+        "endChar": 65
+      },
+      "revId": "b332511709416a6844c6116e97693f7788220fd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4635c77a_b1e1c92e",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-24T00:09:08Z",
+      "side": 1,
+      "message": "tracks will be numbered 0.. numTracks-1\n\nso numTracks as a track index should fail.\n\nnumTracks+1 should also fail, but I\u0027d like to see us test idx\u003dnumTracks",
+      "range": {
+        "startLine": 759,
+        "startChar": 29,
+        "endLine": 759,
+        "endChar": 45
+      },
+      "revId": "b332511709416a6844c6116e97693f7788220fd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58d044f4_e4910711",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-24T00:09:08Z",
+      "side": 1,
+      "message": "use the appropriate flag from MediaExtractor.h\n\nkIncludeExtensiveMetaData",
+      "range": {
+        "startLine": 767,
+        "startChar": 67,
+        "endLine": 767,
+        "endChar": 71
+      },
+      "revId": "b332511709416a6844c6116e97693f7788220fd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ca47c36_233795ca",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 772,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-24T00:09:08Z",
+      "side": 1,
+      "message": "this comment is wrong.",
+      "range": {
+        "startLine": 772,
+        "startChar": 49,
+        "endLine": 772,
+        "endChar": 60
+      },
+      "revId": "b332511709416a6844c6116e97693f7788220fd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e436806_e08ede01",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-24T00:09:08Z",
+      "side": 1,
+      "message": "let\u0027s use a different name here to avoid confusion with the one we use at line 764.\nyes, they are scoped differently and are indeed different variables, but naming them differently avoids a little confusion.\n\ncould change this name, could change the one on 764. i\u0027m open to either one.",
+      "range": {
+        "startLine": 773,
+        "startChar": 18,
+        "endLine": 773,
+        "endChar": 32
+      },
+      "revId": "b332511709416a6844c6116e97693f7788220fd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e5da33c8_82d365d1",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-24T00:09:08Z",
+      "side": 1,
+      "message": "same here.",
+      "range": {
+        "startLine": 774,
+        "startChar": 61,
+        "endLine": 774,
+        "endChar": 65
+      },
+      "revId": "b332511709416a6844c6116e97693f7788220fd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
