@@ -35,6 +35,7 @@ cc_library_shared {
         "android.hardware.graphics.bufferqueue@1.0",
         // Following libs are from libgui_bufferqueue_static
         "android.hardware.graphics.bufferqueue@2.0",
+        "android.hardware.graphics.bufferqueue@3.0",
         "android.hidl.token@1.0-utils",
         "libbase",
         "libEGL",
@@ -51,6 +52,7 @@ cc_library_shared {
         "libstagefright_foundation",
         "android.hardware.graphics.bufferqueue@1.0",
         "android.hardware.graphics.bufferqueue@2.0",
+        "android.hardware.graphics.bufferqueue@3.0",
     ],
 
     cflags: [
