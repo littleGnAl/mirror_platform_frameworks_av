@@ -55,7 +55,11 @@ Camera3OutputStream::Camera3OutputStream(int id,
     }
 
     bool needsReleaseNotify = setId > CAMERA3_STREAM_SET_ID_INVALID;
-    mBufferProducerListener = new BufferProducerListener(this, needsReleaseNotify);
+    if (needsReleaseNotify) {
+        mBufferProducerListener = new BufferProducerListener(this, needsReleaseNotify);
+    } else {
+        mBufferDetachedListener = new BufferDetachedListener(this);
+    }
 }
 
 Camera3OutputStream::Camera3OutputStream(int id,
@@ -381,9 +385,17 @@ status_t Camera3OutputStream::configureConsumerQueueLocked() {
 
     // Configure consumer-side ANativeWindow interface. The listener may be used
     // to notify buffer manager (if it is used) of the returned buffers.
-    res = mConsumer->connect(NATIVE_WINDOW_API_CAMERA,
+    if (mBufferReleasedListener != nullptr) {
+        res = mConsumer->connect(NATIVE_WINDOW_API_CAMERA,
             /*reportBufferRemoval*/true,
             /*listener*/mBufferProducerListener);
+
+    } else {
+        res = mConsumer->connect(NATIVE_WINDOW_API_CAMERA,
+            /*listener*/mBufferDetachedListener,
+            /*reportBufferRemoval*/true);
+    }
+
     if (res != OK) {
         ALOGE("%s: Unable to connect to native window for stream %d",
                 __FUNCTION__, mId);
@@ -835,6 +847,23 @@ void Camera3OutputStream::BufferProducerListener::onBuffersDiscarded(
         }
         ALOGV("Stream %d: %zu Buffers discarded.", stream->getId(), buffers.size());
     }
+}
+
+void Camera3OutputStream::BufferDetachedListener::onBufferDetached(int slot) {
+
+    sp<Camera3OutputStream> stream = mParent.promote();
+    if (stream == nullptr) {
+        ALOGV("%s: Parent camera3 output stream was destroyed", __FUNCTION__);
+        return;
+    }
+
+    if (stream->mConsumer != nullptr) {
+        stream->mConsumer->releaseSlot(slot);
+        stream->checkRemovedBuffersLocked(/*notifyBufferManager*/false);
+    }
+}
+
+void Camera3OutputStream::BufferDetachedListener::onBufferReleased() {
 }
 
 void Camera3OutputStream::onBuffersRemovedLocked(
