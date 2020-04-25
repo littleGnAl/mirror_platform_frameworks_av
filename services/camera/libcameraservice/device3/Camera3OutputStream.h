@@ -164,6 +164,21 @@ class Camera3OutputStream :
             bool mNeedsReleaseNotify;
     };
 
+    class BufferDetachedListener : public BnProducerListener {
+        public:
+          BufferDetachedListener(wp<Camera3OutputStream> parent) : mParent(parent) {}
+
+          /**
+          * Implementation of IProducerListener, used to notify this stream that the consumer
+          * has returned a buffer and it is ready to return to Camera3BufferManager for reuse.
+          */
+          virtual void onBufferDetached(int buffer);
+          virtual void onBufferReleased();
+
+        private:
+          wp<Camera3OutputStream> mParent;
+    };
+
     virtual status_t detachBuffer(sp<GraphicBuffer>* buffer, int* fenceFd);
 
     /**
@@ -271,6 +286,7 @@ class Camera3OutputStream :
      */
     sp<BufferProducerListener> mBufferProducerListener;
 
+    sp<BufferDetachedListener> mBufferDetachedListener;
     /**
      * Flag indicating if the buffer manager is used to allocate the stream buffers
      */
