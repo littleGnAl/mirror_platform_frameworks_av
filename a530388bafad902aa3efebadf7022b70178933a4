@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f5049a3c_429062f1",
+        "filename": "media/ndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-25T06:43:54Z",
+      "side": 1,
+      "message": "let\u0027s go with lidmediandk_format   -- lines up with how libmediandk_utils is named.",
+      "range": {
+        "startLine": 196,
+        "startChar": 11,
+        "endLine": 196,
+        "endChar": 29
+      },
+      "revId": "a530388bafad902aa3efebadf7022b70178933a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "083a9047_15896de3",
+        "filename": "media/ndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-25T06:43:54Z",
+      "side": 1,
+      "message": "I know we can do:\n\nheader_libs: [\n    \"libstagefright_foundation_headers\",\n]\n\nI think we can do the same for the jni -- \"libandroid_runtime\" appears to be the name.",
+      "range": {
+        "startLine": 204,
+        "startChar": 4,
+        "endLine": 208,
+        "endChar": 0
+      },
+      "revId": "a530388bafad902aa3efebadf7022b70178933a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a9221860_1c6c5aeb",
+        "filename": "media/ndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-25T06:43:54Z",
+      "side": 1,
+      "message": "if we\u0027re adding this for a test, I don\u0027t think we need this.\nthe test won\u0027t be part of that apex; and the apex routines will link against\nlibmediandk, not this smaller library.",
+      "range": {
+        "startLine": 231,
+        "startChar": 4,
+        "endLine": 231,
+        "endChar": 21
+      },
+      "revId": "a530388bafad902aa3efebadf7022b70178933a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
