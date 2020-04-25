@@ -837,6 +837,11 @@ void Camera3OutputStream::BufferProducerListener::onBuffersDiscarded(
     }
 }
 
+void Camera3OutputStream::BufferProducerListener::onBufferDetached(int slot) {
+    ALOGV("%s: slot = %d", __FUNCTION__, slot);
+    return;
+}
+
 void Camera3OutputStream::onBuffersRemovedLocked(
         const std::vector<sp<GraphicBuffer>>& removedBuffers) {
     sp<Camera3StreamBufferFreedListener> callback = mBufferFreedListener.promote();
