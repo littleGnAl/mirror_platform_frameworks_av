@@ -49,8 +49,28 @@ struct configFormat {
     int32_t channelCount;
 };
 
+enum standardComp {
+    OPUS_1,
+    AAC_1,
+    AAC_ADTS_1,
+    AMR_NB_1,
+    AMR_WB_1,
+    VORBIS_1,
+    FLAC_1,
+    VP9_1,
+    VP8_1,
+    AVC_1,
+    HEVC_1,
+    AV1_1,
+    H263_1,
+    MPEG4_1,
+    HEIC_1,
+    unknown_comp,
+};
+
 // LookUpTable of clips and metadata for component testing
 static const struct InputData {
+    standardComp compId;
     const char *mime;
     string inputFile;
     string info;
@@ -58,33 +78,36 @@ static const struct InputData {
     int32_t secondParam;
     bool isAudio;
 } kInputData[] = {
-        {MEDIA_MIMETYPE_AUDIO_OPUS, "bbb_opus_stereo_128kbps_48000hz.opus",
+        {OPUS_1, MEDIA_MIMETYPE_AUDIO_OPUS, "bbb_opus_stereo_128kbps_48000hz.opus",
          "bbb_opus_stereo_128kbps_48000hz.info", 48000, 2, true},
-        {MEDIA_MIMETYPE_AUDIO_AAC, "bbb_aac_stereo_128kbps_48000hz.aac",
+        {AAC_1, MEDIA_MIMETYPE_AUDIO_AAC, "bbb_aac_stereo_128kbps_48000hz.aac",
          "bbb_aac_stereo_128kbps_48000hz.info", 48000, 2, true},
-        {MEDIA_MIMETYPE_AUDIO_AAC_ADTS, "Mps_2_c2_fr1_Sc1_Dc2_0x03_raw.adts",
+        {AAC_ADTS_1, MEDIA_MIMETYPE_AUDIO_AAC_ADTS, "Mps_2_c2_fr1_Sc1_Dc2_0x03_raw.adts",
          "Mps_2_c2_fr1_Sc1_Dc2_0x03_raw.info", 48000, 2, true},
-        {MEDIA_MIMETYPE_AUDIO_AMR_NB, "sine_amrnb_1ch_12kbps_8000hz.amrnb",
+        {AMR_NB_1, MEDIA_MIMETYPE_AUDIO_AMR_NB, "sine_amrnb_1ch_12kbps_8000hz.amrnb",
          "sine_amrnb_1ch_12kbps_8000hz.info", 8000, 1, true},
-        {MEDIA_MIMETYPE_AUDIO_AMR_WB, "bbb_amrwb_1ch_14kbps_16000hz.amrwb",
+        {AMR_WB_1, MEDIA_MIMETYPE_AUDIO_AMR_WB, "bbb_amrwb_1ch_14kbps_16000hz.amrwb",
          "bbb_amrwb_1ch_14kbps_16000hz.info", 16000, 1, true},
-        {MEDIA_MIMETYPE_AUDIO_VORBIS, "bbb_vorbis_stereo_128kbps_48000hz.vorbis",
+        {VORBIS_1, MEDIA_MIMETYPE_AUDIO_VORBIS, "bbb_vorbis_stereo_128kbps_48000hz.vorbis",
          "bbb_vorbis_stereo_128kbps_48000hz.info", 48000, 2, true},
-        {MEDIA_MIMETYPE_AUDIO_FLAC, "bbb_flac_stereo_680kbps_48000hz.flac",
+        {FLAC_1, MEDIA_MIMETYPE_AUDIO_FLAC, "bbb_flac_stereo_680kbps_48000hz.flac",
          "bbb_flac_stereo_680kbps_48000hz.info", 48000, 2, true},
-        {MEDIA_MIMETYPE_VIDEO_VP9, "bbb_vp9_176x144_285kbps_60fps.vp9",
+        {VP9_1, MEDIA_MIMETYPE_VIDEO_VP9, "bbb_vp9_176x144_285kbps_60fps.vp9",
          "bbb_vp9_176x144_285kbps_60fps.info", 176, 144, false},
-        {MEDIA_MIMETYPE_VIDEO_VP8, "bbb_vp8_176x144_240kbps_60fps.vp8",
+        {VP8_1, MEDIA_MIMETYPE_VIDEO_VP8, "bbb_vp8_176x144_240kbps_60fps.vp8",
          "bbb_vp8_176x144_240kbps_60fps.info", 176, 144, false},
-        {MEDIA_MIMETYPE_VIDEO_AVC, "bbb_avc_176x144_300kbps_60fps.h264",
+        {AVC_1, MEDIA_MIMETYPE_VIDEO_AVC, "bbb_avc_176x144_300kbps_60fps.h264",
          "bbb_avc_176x144_300kbps_60fps.info", 176, 144, false},
-        {MEDIA_MIMETYPE_VIDEO_HEVC, "bbb_hevc_176x144_176kbps_60fps.hevc",
+        {HEVC_1, MEDIA_MIMETYPE_VIDEO_HEVC, "bbb_hevc_176x144_176kbps_60fps.hevc",
          "bbb_hevc_176x144_176kbps_60fps.info", 176, 144, false},
-        {MEDIA_MIMETYPE_VIDEO_AV1, "bbb_av1_176_144.av1", "bbb_av1_176_144.info", 176, 144, false},
-        {MEDIA_MIMETYPE_VIDEO_H263, "bbb_h263_352x288_300kbps_12fps.h263",
+        {AV1_1, MEDIA_MIMETYPE_VIDEO_AV1, "bbb_av1_176_144.av1", "bbb_av1_176_144.info", 176, 144,
+         false},
+        {H263_1, MEDIA_MIMETYPE_VIDEO_H263, "bbb_h263_352x288_300kbps_12fps.h263",
          "bbb_h263_352x288_300kbps_12fps.info", 352, 288, false},
-        {MEDIA_MIMETYPE_VIDEO_MPEG4, "bbb_mpeg4_352x288_512kbps_30fps.m4v",
+        {MPEG4_1, MEDIA_MIMETYPE_VIDEO_MPEG4, "bbb_mpeg4_352x288_512kbps_30fps.m4v",
          "bbb_mpeg4_352x288_512kbps_30fps.info", 352, 288, false},
+        {HEIC_1, MEDIA_MIMETYPE_IMAGE_ANDROID_HEIC, "bbb_hevc_176x144_176kbps_60fps.hevc",
+         "bbb_heic_176x144_176kbps_60fps.info", 176, 144, false},
 };
 
 class WriterTest {
@@ -159,7 +182,7 @@ class WriterTest {
 };
 
 class WriteFunctionalityTest : public WriterTest,
-                               public ::testing::TestWithParam<pair<string, int32_t>> {
+                               public ::testing::TestWithParam<pair<string, standardComp>> {
   public:
     virtual void SetUp() override { setupWriterType(GetParam().first); }
 };
@@ -255,8 +278,15 @@ int32_t WriterTest::addWriterSource(bool isAudio, configFormat params) {
 }
 
 void getFileDetails(string &inputFilePath, string &info, configFormat &params, bool &isAudio,
-                    int32_t streamIndex = 0) {
-    if (streamIndex >= sizeof(kInputData) / sizeof(kInputData[0])) {
+                    standardComp compId) {
+    int32_t inputDataSize = sizeof(kInputData) / sizeof(kInputData[0]);
+    int32_t streamIndex = 0;
+    for (; streamIndex < inputDataSize; streamIndex++) {
+        if (compId == kInputData[streamIndex].compId) {
+            break;
+        }
+    }
+    if (streamIndex >= inputDataSize) {
         return;
     }
     inputFilePath += kInputData[streamIndex].inputFile;
@@ -304,8 +334,8 @@ TEST_P(WriteFunctionalityTest, WriterTest) {
     string inputInfo = gEnv->getRes();
     configFormat param;
     bool isAudio;
-    int32_t inputFileIdx = GetParam().second;
-    getFileDetails(inputFile, inputInfo, param, isAudio, inputFileIdx);
+    standardComp compId = GetParam().second;
+    getFileDetails(inputFile, inputInfo, param, isAudio, compId);
     ASSERT_NE(inputFile.compare(gEnv->getRes()), 0) << "No input file specified";
 
     ASSERT_NO_FATAL_FAILURE(getInputBufferInfo(inputFile, inputInfo));
@@ -341,8 +371,8 @@ TEST_P(WriteFunctionalityTest, PauseWriterTest) {
     string inputInfo = gEnv->getRes();
     configFormat param;
     bool isAudio;
-    int32_t inputFileIdx = GetParam().second;
-    getFileDetails(inputFile, inputInfo, param, isAudio, inputFileIdx);
+    standardComp compId = GetParam().second;
+    getFileDetails(inputFile, inputInfo, param, isAudio, compId);
     ASSERT_NE(inputFile.compare(gEnv->getRes()), 0) << "No input file specified";
 
     ASSERT_NO_FATAL_FAILURE(getInputBufferInfo(inputFile, inputInfo));
@@ -400,8 +430,8 @@ TEST_P(WriteFunctionalityTest, MultiStartStopPauseTest) {
     string inputInfo = gEnv->getRes();
     configFormat param;
     bool isAudio;
-    int32_t inputFileIdx = GetParam().second;
-    getFileDetails(inputFile, inputInfo, param, isAudio, inputFileIdx);
+    standardComp compId = GetParam().second;
+    getFileDetails(inputFile, inputInfo, param, isAudio, compId);
     ASSERT_NE(inputFile.compare(gEnv->getRes()), 0) << "No input file specified";
 
     ASSERT_NO_FATAL_FAILURE(getInputBufferInfo(inputFile, inputInfo));
@@ -456,7 +486,7 @@ TEST_P(WriteFunctionalityTest, MultiStartStopPauseTest) {
 
 class ListenerTest : public WriterTest,
                      public ::testing::TestWithParam<
-                             tuple<string /* writerFormat*/, int32_t /* inputFileIdx*/,
+                             tuple<string /* writerFormat*/, standardComp /* ComponentId*/,
                                    float /* FileSizeLimit*/, float /* FileDurationLimit*/>> {
   public:
     virtual void SetUp() override {
@@ -469,7 +499,7 @@ TEST_P(ListenerTest, SetMaxFileLimitsTest) {
     if (mDisableTest) return;
     ALOGV("Validates writer when max file limits are set");
 
-    tuple<string, int32_t, float, float> params = GetParam();
+    tuple<string, standardComp, float, float> params = GetParam();
     string writerFormat = get<0>(params);
     string outputFile = OUTPUT_FILE_NAME;
     int32_t fd =
@@ -483,8 +513,8 @@ TEST_P(ListenerTest, SetMaxFileLimitsTest) {
     string inputInfo = gEnv->getRes();
     configFormat param;
     bool isAudio;
-    int32_t inputFileIdx = get<1>(params);
-    getFileDetails(inputFile, inputInfo, param, isAudio, inputFileIdx);
+    standardComp compId = get<1>(params);
+    getFileDetails(inputFile, inputInfo, param, isAudio, compId);
     ASSERT_NE(inputFile.compare(gEnv->getRes()), 0) << "No input file specified";
 
     ASSERT_NO_FATAL_FAILURE(getInputBufferInfo(inputFile, inputInfo));
@@ -551,23 +581,36 @@ TEST_P(ListenerTest, SetMaxFileLimitsTest) {
 
 // TODO: (b/150923387)
 // Add WEBM input
-INSTANTIATE_TEST_SUITE_P(
-        ListenerTestAll, ListenerTest,
-        ::testing::Values(make_tuple("ogg", 0, 0.7, 0.3), make_tuple("aac", 1, 0.6, 0.7),
-                          make_tuple("mpeg4", 1, 0.4, 0.3), make_tuple("amrnb", 3, 0.2, 0.6),
-                          make_tuple("amrwb", 4, 0.5, 0.5), make_tuple("mpeg2Ts", 1, 0.2, 1)));
+INSTANTIATE_TEST_SUITE_P(ListenerTestAll, ListenerTest,
+                         ::testing::Values(make_tuple("ogg", OPUS_1, 0.7, 0.3),
+                                           make_tuple("aac", AAC_1, 0.6, 0.7),
+                                           make_tuple("mpeg4", AAC_1, 0.4, 0.3),
+                                           make_tuple("amrnb", AMR_NB_1, 0.2, 0.6),
+                                           make_tuple("amrwb", AMR_WB_1, 0.5, 0.5),
+                                           make_tuple("mpeg2Ts", AAC_1, 0.2, 1)));
 
 // TODO: (b/144476164)
 // Add AAC_ADTS, FLAC, AV1 input
 INSTANTIATE_TEST_SUITE_P(WriterTestAll, WriteFunctionalityTest,
-                         ::testing::Values(make_pair("ogg", 0), make_pair("webm", 0),
-                                           make_pair("aac", 1), make_pair("mpeg4", 1),
-                                           make_pair("amrnb", 3), make_pair("amrwb", 4),
-                                           make_pair("webm", 5), make_pair("webm", 7),
-                                           make_pair("webm", 8), make_pair("mpeg4", 9),
-                                           make_pair("mpeg4", 10), make_pair("mpeg4", 12),
-                                           make_pair("mpeg4", 13), make_pair("mpeg2Ts", 1),
-                                           make_pair("mpeg2Ts", 9)));
+                         ::testing::Values(make_pair("ogg", OPUS_1),
+                                           make_pair("webm", OPUS_1),
+                                           make_pair("aac", AAC_1),
+                                           make_pair("mpeg4", AAC_1),
+                                           make_pair("amrnb", AMR_NB_1),
+                                           make_pair("amrwb", AMR_WB_1),
+                                           make_pair("webm", VORBIS_1),
+                                           make_pair("webm", VP9_1),
+                                           make_pair("webm", VP8_1),
+                                           make_pair("mpeg4", AVC_1),
+                                           make_pair("mpeg4", HEVC_1),
+                                           make_pair("mpeg4", H263_1),
+                                           make_pair("mpeg4", MPEG4_1),
+                                           make_pair("mpeg2Ts", AAC_1),
+                                           make_pair("mpeg2Ts", AVC_1),
+                                           make_pair("mpeg4", AAC_1),
+                                           make_pair("mpeg4", AMR_NB_1),
+                                           make_pair("mpeg4", AMR_WB_1),
+                                           make_pair("mpeg4", HEIC_1)));
 
 int main(int argc, char **argv) {
     gEnv = new WriterTestEnvironment();
