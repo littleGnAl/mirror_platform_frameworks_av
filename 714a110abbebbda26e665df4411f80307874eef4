@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "eb39966f_b209bae3",
+        "filename": "media/libmedia/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-27T18:35:43Z",
+      "side": 1,
+      "message": "I thnk i\u0027d like something that starts with \"libmedia_\" (note the underscore there)\nso probably libmedia_ndkformatpriv\n\nI parse the current name as libmediandk \u003csomething\u003e and I want to get away from that confusion with the libraries that are generated in frameworks/av/media/ndk/ that all have the \"libmediandk\" prefix.",
+      "range": {
+        "startLine": 347,
+        "startChar": 11,
+        "endLine": 347,
+        "endChar": 20
+      },
+      "revId": "714a110abbebbda26e665df4411f80307874eef4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cac80e22_be06e4cf",
         "filename": "media/libmedia/Android.bp",
         "patchSetId": 1
@@ -41,6 +64,52 @@
         "startChar": 0,
         "endLine": 360,
         "endChar": 53
+      },
+      "revId": "714a110abbebbda26e665df4411f80307874eef4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5cceae9_00fc08eb",
+        "filename": "media/libmedia/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-27T18:35:43Z",
+      "side": 1,
+      "message": "is there a file that all of the ndk things include where we can put a:\n\n#ifndef EXPORT\n#define EXPORT __attribute__((visibility(\"default\")))\n#endif\n\nso that we no longer need to include this in all of the places that include this.",
+      "range": {
+        "startLine": 364,
+        "startChar": 8,
+        "endLine": 364,
+        "endChar": 58
+      },
+      "revId": "714a110abbebbda26e665df4411f80307874eef4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5031bc63_7198a8bc",
+        "filename": "media/libmedia/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-27T18:35:43Z",
+      "side": 1,
+      "message": "since i believe this is for a test app, i don\u0027t know that it needs apex_available",
+      "range": {
+        "startLine": 377,
+        "startChar": 3,
+        "endLine": 377,
+        "endChar": 42
       },
       "revId": "714a110abbebbda26e665df4411f80307874eef4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
