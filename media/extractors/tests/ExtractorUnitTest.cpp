@@ -62,23 +62,23 @@ static const struct InputData {
         {MEDIA_MIMETYPE_AUDIO_AAC, "test_mono_44100Hz_aac.aac", 44100, 1, AACObjectLC, kUndefined},
         {MEDIA_MIMETYPE_AUDIO_AMR_NB, "bbb_mono_8kHz_amrnb.amr", 8000, 1, kUndefined, kUndefined},
         {MEDIA_MIMETYPE_AUDIO_AMR_WB, "bbb_mono_16kHz_amrwb.amr", 16000, 1, kUndefined, kUndefined},
+        {MEDIA_MIMETYPE_AUDIO_RAW, "bbb_stereo_48kHz_flac.flac", 48000, 2, kUndefined, kUndefined},
+        {MEDIA_MIMETYPE_AUDIO_RAW, "midi_a.mid", 22050, 2, kUndefined, kUndefined},
+        {MEDIA_MIMETYPE_AUDIO_MPEG, "bbb_stereo_48kHz_mp3.mp3", 48000, 2, kUndefined, kUndefined},
         {MEDIA_MIMETYPE_AUDIO_VORBIS, "bbb_stereo_48kHz_vorbis.ogg", 48000, 2, kUndefined,
          kUndefined},
-        {MEDIA_MIMETYPE_AUDIO_MSGSM, "test_mono_8kHz_gsm.wav", 8000, 1, kUndefined, kUndefined},
-        {MEDIA_MIMETYPE_AUDIO_RAW, "bbb_stereo_48kHz_flac.flac", 48000, 2, kUndefined, kUndefined},
         {MEDIA_MIMETYPE_AUDIO_OPUS, "test_stereo_48kHz_opus.opus", 48000, 2, kUndefined,
          kUndefined},
-        {MEDIA_MIMETYPE_AUDIO_MPEG, "bbb_stereo_48kHz_mp3.mp3", 48000, 2, kUndefined, kUndefined},
-        {MEDIA_MIMETYPE_AUDIO_RAW, "midi_a.mid", 22050, 2, kUndefined, kUndefined},
-        {MEDIA_MIMETYPE_VIDEO_MPEG2, "bbb_cif_768kbps_30fps_mpeg2.ts", 352, 288, MPEG2ProfileMain,
-         30},
+        {MEDIA_MIMETYPE_AUDIO_MSGSM, "test_mono_8kHz_gsm.wav", 8000, 1, kUndefined, kUndefined},
+
         {MEDIA_MIMETYPE_VIDEO_MPEG4, "bbb_cif_768kbps_30fps_mpeg4.mkv", 352, 288,
          MPEG4ProfileSimple, 30},
+        {MEDIA_MIMETYPE_VIDEO_MPEG2, "bbb_cif_768kbps_30fps_mpeg2.ts", 352, 288, MPEG2ProfileMain,
+         30},
         // Test (b/151677264) for MP4 extractor
-        {MEDIA_MIMETYPE_VIDEO_HEVC, "crowd_508x240_25fps_hevc.mp4", 508, 240, HEVCProfileMain,
-         25},
-        {MEDIA_MIMETYPE_VIDEO_VP9, "bbb_340x280_30fps_vp9.webm", 340, 280, VP9Profile0, 30},
+        {MEDIA_MIMETYPE_VIDEO_HEVC, "crowd_508x240_25fps_hevc.mp4", 508, 240, HEVCProfileMain, 25},
         {MEDIA_MIMETYPE_VIDEO_MPEG2, "swirl_144x136_mpeg2.mpg", 144, 136, MPEG2ProfileMain, 12},
+        {MEDIA_MIMETYPE_VIDEO_VP9, "bbb_340x280_30fps_vp9.webm", 340, 280, VP9Profile0, 30},
 };
 
 static ExtractorUnitTestEnvironment *gEnv = nullptr;
@@ -148,10 +148,16 @@ class ExtractorUnitTest {
     MediaExtractorPluginHelper *mExtractor;
 };
 
-class ExtractorFunctionalityTest : public ExtractorUnitTest,
-                                   public ::testing::TestWithParam<pair<string, string>> {
+class ExtractorFunctionalityTest
+    : public ExtractorUnitTest,
+      public ::testing::TestWithParam<
+              tuple<string /* container */, string /* InputFile */, bool /* seekSupported */>> {
   public:
-    virtual void SetUp() override { setupExtractor(GetParam().first); }
+    virtual void SetUp() override {
+        tuple<string, string, bool> params = GetParam();
+        string container = get<0>(params);
+        setupExtractor(container);
+    }
 };
 
 class ConfigParamTest : public ExtractorUnitTest,
@@ -315,14 +321,15 @@ void getSeekablePoints(vector<int64_t> &seekablePoints, MediaTrackHelper *track)
 TEST_P(ExtractorFunctionalityTest, CreateExtractorTest) {
     if (mDisableTest) return;
 
+    tuple<string, string, bool> params = GetParam();
     ALOGV("Checks if a valid extractor is created for a given input file");
-    string inputFileName = gEnv->getRes() + GetParam().second;
+    string inputFileName = gEnv->getRes() + get<1>(params);
 
+    string container = get<0>(params);
     ASSERT_EQ(setDataSource(inputFileName), 0)
-            << "SetDataSource failed for" << GetParam().first << "extractor";
+            << "SetDataSource failed for" << container << "extractor";
 
-    ASSERT_EQ(createExtractor(), 0)
-            << "Extractor creation failed for" << GetParam().first << "extractor";
+    ASSERT_EQ(createExtractor(), 0) << "Extractor creation failed for" << container << "extractor";
 
     // A valid extractor instace should return success for following calls
     ASSERT_GT(mExtractor->countTracks(), 0);
@@ -337,14 +344,16 @@ TEST_P(ExtractorFunctionalityTest, CreateExtractorTest) {
 TEST_P(ExtractorFunctionalityTest, ExtractorTest) {
     if (mDisableTest) return;
 
-    ALOGV("Validates %s Extractor for a given input file", GetParam().first.c_str());
-    string inputFileName = gEnv->getRes() + GetParam().second;
+    tuple<string, string, bool> params = GetParam();
+    string container = get<0>(params);
+    ALOGV("Validates %s Extractor for a given input file", container.c_str());
+    string inputFileName = gEnv->getRes() + get<1>(params);
 
     int32_t status = setDataSource(inputFileName);
-    ASSERT_EQ(status, 0) << "SetDataSource failed for" << GetParam().first << "extractor";
+    ASSERT_EQ(status, 0) << "SetDataSource failed for" << container << "extractor";
 
     status = createExtractor();
-    ASSERT_EQ(status, 0) << "Extractor creation failed for" << GetParam().first << "extractor";
+    ASSERT_EQ(status, 0) << "Extractor creation failed for" << container << "extractor";
 
     int32_t numTracks = mExtractor->countTracks();
     ASSERT_GT(numTracks, 0) << "Extractor didn't find any track for the given clip";
@@ -387,14 +396,16 @@ TEST_P(ExtractorFunctionalityTest, ExtractorTest) {
 TEST_P(ExtractorFunctionalityTest, MetaDataComparisonTest) {
     if (mDisableTest) return;
 
+    tuple<string, string, bool> params = GetParam();
     ALOGV("Validates Extractor's meta data for a given input file");
-    string inputFileName = gEnv->getRes() + GetParam().second;
+    string inputFileName = gEnv->getRes() + get<1>(params);
+    string container = get<0>(params);
 
     int32_t status = setDataSource(inputFileName);
-    ASSERT_EQ(status, 0) << "SetDataSource failed for" << GetParam().first << "extractor";
+    ASSERT_EQ(status, 0) << "SetDataSource failed for" << container << "extractor";
 
     status = createExtractor();
-    ASSERT_EQ(status, 0) << "Extractor creation failed for" << GetParam().first << "extractor";
+    ASSERT_EQ(status, 0) << "Extractor creation failed for" << container << "extractor";
 
     int32_t numTracks = mExtractor->countTracks();
     ASSERT_GT(numTracks, 0) << "Extractor didn't find any track for the given clip";
@@ -462,14 +473,16 @@ TEST_P(ExtractorFunctionalityTest, MetaDataComparisonTest) {
 TEST_P(ExtractorFunctionalityTest, MultipleStartStopTest) {
     if (mDisableTest) return;
 
-    ALOGV("Test %s extractor for multiple start and stop calls", GetParam().first.c_str());
-    string inputFileName = gEnv->getRes() + GetParam().second;
+    tuple<string, string, bool> params = GetParam();
+    string container = get<0>(params);
+    ALOGV("Test %s extractor for multiple start and stop calls", container.c_str());
+    string inputFileName = gEnv->getRes() + get<1>(params);
 
     int32_t status = setDataSource(inputFileName);
-    ASSERT_EQ(status, 0) << "SetDataSource failed for" << GetParam().first << "extractor";
+    ASSERT_EQ(status, 0) << "SetDataSource failed for" << container << "extractor";
 
     status = createExtractor();
-    ASSERT_EQ(status, 0) << "Extractor creation failed for" << GetParam().first << "extractor";
+    ASSERT_EQ(status, 0) << "Extractor creation failed for" << container << "extractor";
 
     int32_t numTracks = mExtractor->countTracks();
     ASSERT_GT(numTracks, 0) << "Extractor didn't find any track for the given clip";
@@ -504,22 +517,26 @@ TEST_P(ExtractorFunctionalityTest, MultipleStartStopTest) {
 TEST_P(ExtractorFunctionalityTest, SeekTest) {
     if (mDisableTest) return;
 
-    ALOGV("Validates %s Extractor behaviour for different seek modes", GetParam().first.c_str());
-    string inputFileName = gEnv->getRes() + GetParam().second;
+    tuple<string, string, bool> params = GetParam();
+    string container = get<0>(params);
+    ALOGV("Validates %s Extractor behaviour for different seek modes", container.c_str());
+    string inputFileName = gEnv->getRes() + get<1>(params);
 
     int32_t status = setDataSource(inputFileName);
-    ASSERT_EQ(status, 0) << "SetDataSource failed for" << GetParam().first << "extractor";
+    ASSERT_EQ(status, 0) << "SetDataSource failed for" << container << "extractor";
 
     status = createExtractor();
-    ASSERT_EQ(status, 0) << "Extractor creation failed for" << GetParam().first << "extractor";
+    ASSERT_EQ(status, 0) << "Extractor creation failed for" << container << "extractor";
 
     int32_t numTracks = mExtractor->countTracks();
     ASSERT_GT(numTracks, 0) << "Extractor didn't find any track for the given clip";
 
     uint32_t seekFlag = mExtractor->flags();
-    if (!(seekFlag & MediaExtractorPluginHelper::CAN_SEEK)) {
-        cout << "[   WARN   ] Test Skipped. " << GetParam().first
-             << " Extractor doesn't support seek\n";
+    bool seekSupported = get<2>(params);
+    bool seekable = seekFlag & MediaExtractorPluginHelper::CAN_SEEK;
+    ASSERT_EQ(seekSupported, seekable) << container << "Extractor is expected to support seek ";
+    if (!seekable) {
+        cout << "[   WARN   ] Test Skipped. " << container << " Extractor doesn't support seek\n";
         return;
     }
 
@@ -563,7 +580,7 @@ TEST_P(ExtractorFunctionalityTest, SeekTest) {
         // next/previous sync frames but not to samples between two sync frames.
         getSeekablePoints(seekablePoints, track);
         ASSERT_GT(seekablePoints.size(), 0)
-                << "Failed to get seekable points for " << GetParam().first << " extractor";
+                << "Failed to get seekable points for " << container << " extractor";
 
         AMediaFormat *trackFormat = AMediaFormat_new();
         ASSERT_NE(trackFormat, nullptr) << "AMediaFormat_new returned null format";
@@ -670,23 +687,26 @@ TEST_P(ExtractorFunctionalityTest, MonkeySeekTest) {
     // TODO(b/155630778): Enable test for wav extractors
     if (mExtractorName == WAV) return;
 
-    ALOGV("Validates %s Extractor behaviour for invalid seek points", GetParam().first.c_str());
-    string inputFileName = gEnv->getRes() + GetParam().second;
+    tuple<string, string, bool> params = GetParam();
+    string container = get<0>(params);
+    ALOGV("Validates %s Extractor behaviour for invalid seek points", container.c_str());
+    string inputFileName = gEnv->getRes() + get<1>(params);
 
     int32_t status = setDataSource(inputFileName);
-    ASSERT_EQ(status, 0) << "SetDataSource failed for" << GetParam().first << "extractor";
+    ASSERT_EQ(status, 0) << "SetDataSource failed for" << container << "extractor";
 
     status = createExtractor();
-    ASSERT_EQ(status, 0) << "Extractor creation failed for" << GetParam().first << "extractor";
+    ASSERT_EQ(status, 0) << "Extractor creation failed for" << container << "extractor";
 
     int32_t numTracks = mExtractor->countTracks();
     ASSERT_GT(numTracks, 0) << "Extractor didn't find any track for the given clip";
 
-    // TODO(b/156854380): add seekability validation
     uint32_t seekFlag = mExtractor->flags();
-    if (!(seekFlag & MediaExtractorPluginHelper::CAN_SEEK)) {
-        cout << "[   WARN   ] Test Skipped. " << GetParam().first
-             << " Extractor doesn't support seek\n";
+    bool seekSupported = get<2>(params);
+    bool seekable = seekFlag & MediaExtractorPluginHelper::CAN_SEEK;
+    ASSERT_EQ(seekSupported, seekable) << container << "Extractor is expected to support seek ";
+    if (!seekable) {
+        cout << "[   WARN   ] Test Skipped. " << container << " Extractor doesn't support seek\n";
         return;
     }
 
@@ -751,14 +771,16 @@ TEST_P(ExtractorFunctionalityTest, SanityTest) {
     // TODO(b/155626946): Enable test for MPEG2 TS/PS extractors
     if (mExtractorName == MPEG2TS || mExtractorName == MPEG2PS) return;
 
-    ALOGV("Validates %s Extractor behaviour for invalid tracks", GetParam().first.c_str());
-    string inputFileName = gEnv->getRes() + GetParam().second;
+    tuple<string, string, bool> params = GetParam();
+    string container = get<0>(params);
+    ALOGV("Validates %s Extractor behaviour for invalid tracks", container.c_str());
+    string inputFileName = gEnv->getRes() + get<1>(params);
 
     int32_t status = setDataSource(inputFileName);
-    ASSERT_EQ(status, 0) << "SetDataSource failed for" << GetParam().first << "extractor";
+    ASSERT_EQ(status, 0) << "SetDataSource failed for" << container << "extractor";
 
     status = createExtractor();
-    ASSERT_EQ(status, 0) << "Extractor creation failed for" << GetParam().first << "extractor";
+    ASSERT_EQ(status, 0) << "Extractor creation failed for" << container << "extractor";
 
     int32_t numTracks = mExtractor->countTracks();
     ASSERT_GT(numTracks, 0) << "Extractor didn't find any track for the given clip";
@@ -790,17 +812,18 @@ TEST_P(ExtractorFunctionalityTest, SanityTest) {
 TEST_P(ConfigParamTest, ConfigParamValidation) {
     if (mDisableTest) return;
 
-    ALOGV("Validates %s Extractor for input's file properties", GetParam().first.c_str());
+    string container = GetParam().first;
+    ALOGV("Validates %s Extractor for input's file properties", container.c_str());
     string inputFileName = gEnv->getRes();
     int32_t inputFileIdx = GetParam().second;
     configFormat configParam;
     getFileProperties(inputFileIdx, inputFileName, configParam);
 
     int32_t status = setDataSource(inputFileName);
-    ASSERT_EQ(status, 0) << "SetDataSource failed for " << GetParam().first << "extractor";
+    ASSERT_EQ(status, 0) << "SetDataSource failed for " << container << "extractor";
 
     status = createExtractor();
-    ASSERT_EQ(status, 0) << "Extractor creation failed for " << GetParam().first << "extractor";
+    ASSERT_EQ(status, 0) << "Extractor creation failed for " << container << "extractor";
 
     int32_t numTracks = mExtractor->countTracks();
     ASSERT_GT(numTracks, 0) << "Extractor didn't find any track for the given clip";
@@ -1027,35 +1050,38 @@ INSTANTIATE_TEST_SUITE_P(ConfigParamTestAll, ConfigParamTest,
                          ::testing::Values(make_pair("aac", 0),
                                            make_pair("amr", 1),
                                            make_pair("amr", 2),
-                                           make_pair("ogg", 3),
-                                           make_pair("wav", 4),
-                                           make_pair("flac", 5),
+                                           make_pair("flac", 3),
+                                           make_pair("midi", 4),
+                                           make_pair("mp3", 5),
                                            make_pair("ogg", 6),
-                                           make_pair("mp3", 7),
-                                           make_pair("midi", 8),
-                                           make_pair("mpeg2ts", 9),
-                                           make_pair("mkv", 10),
-                                           make_pair("mpeg4", 11),
-                                           make_pair("mkv", 12),
-                                           make_pair("mpeg2ps", 13)));
+                                           make_pair("ogg", 7),
+                                           make_pair("wav", 8),
 
+                                           make_pair("mkv", 9),
+                                           make_pair("mpeg2ts", 10),
+                                           make_pair("mpeg4", 11),
+                                           make_pair("mpeg2ps", 12),
+                                           make_pair("mkv", 13)));
+
+// Validate extractors for container format, input file and supports seek flag
 INSTANTIATE_TEST_SUITE_P(ExtractorUnitTestAll, ExtractorFunctionalityTest,
-                         ::testing::Values(make_pair("aac", "loudsoftaac.aac"),
-                                           make_pair("amr", "testamr.amr"),
-                                           make_pair("amr", "amrwb.wav"),
-                                           make_pair("ogg", "john_cage.ogg"),
-                                           make_pair("wav", "monotestgsm.wav"),
-                                           make_pair("mpeg2ts", "segment000001.ts"),
-                                           make_pair("flac", "sinesweepflac.flac"),
-                                           make_pair("ogg", "testopus.opus"),
-                                           make_pair("midi", "midi_a.mid"),
-                                           make_pair("mkv", "sinesweepvorbis.mkv"),
-                                           make_pair("mpeg4", "sinesweepoggmp4.mp4"),
-                                           make_pair("mp3", "sinesweepmp3lame.mp3"),
-                                           make_pair("mkv", "swirl_144x136_vp9.webm"),
-                                           make_pair("mkv", "swirl_144x136_vp8.webm"),
-                                           make_pair("mpeg2ps", "swirl_144x136_mpeg2.mpg"),
-                                           make_pair("mpeg4", "swirl_132x130_mpeg4.mp4")));
+                         ::testing::Values(make_tuple("aac", "loudsoftaac.aac", true),
+                                           make_tuple("amr", "testamr.amr", true),
+                                           make_tuple("amr", "amrwb.wav", true),
+                                           make_tuple("flac", "sinesweepflac.flac", true),
+                                           make_tuple("midi", "midi_a.mid", true),
+                                           make_tuple("mkv", "sinesweepvorbis.mkv", true),
+                                           make_tuple("mp3", "sinesweepmp3lame.mp3", true),
+                                           make_tuple("mpeg2ts", "segment000001.ts", false),
+                                           make_tuple("mpeg4", "sinesweepoggmp4.mp4", true),
+                                           make_tuple("ogg", "john_cage.ogg", true),
+                                           make_tuple("ogg", "testopus.opus", true),
+                                           make_tuple("wav", "monotestgsm.wav", true),
+
+                                           make_tuple("mkv", "swirl_144x136_vp9.webm", true),
+                                           make_tuple("mkv", "swirl_144x136_vp8.webm", true),
+                                           make_tuple("mpeg2ps", "swirl_144x136_mpeg2.mpg", false),
+                                           make_tuple("mpeg4", "swirl_132x130_mpeg4.mp4", true)));
 
 int main(int argc, char **argv) {
     gEnv = new ExtractorUnitTestEnvironment();
