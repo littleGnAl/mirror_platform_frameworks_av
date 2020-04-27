@@ -328,7 +328,7 @@ status_t Codec2InfoBuilder::buildMediaCodecList(MediaCodecListWriter* writer) {
 
     // TODO: remove these c2-specific files once product moved to default file names
     parser.parseXmlFilesInSearchDirs(
-            { "media_codecs_c2.xml", "media_codecs_performance_c2.xml" });
+            { android::base::GetProperty("media.codecs.c2.settings.xml", "media_codecs_c2.xml"), "media_codecs_performance_c2.xml" });
 
     // parse default XML files
     parser.parseXmlFilesInSearchDirs();
