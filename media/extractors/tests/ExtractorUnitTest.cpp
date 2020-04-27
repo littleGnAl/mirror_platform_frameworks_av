@@ -62,23 +62,23 @@ static const struct InputData {
         {MEDIA_MIMETYPE_AUDIO_AAC, "test_mono_44100Hz_aac.aac", 44100, 1, AACObjectLC, kUndefined},
         {MEDIA_MIMETYPE_AUDIO_AMR_NB, "bbb_mono_8kHz_amrnb.amr", 8000, 1, kUndefined, kUndefined},
         {MEDIA_MIMETYPE_AUDIO_AMR_WB, "bbb_mono_16kHz_amrwb.amr", 16000, 1, kUndefined, kUndefined},
+        {MEDIA_MIMETYPE_AUDIO_RAW, "bbb_stereo_48kHz_flac.flac", 48000, 2, kUndefined, kUndefined},
+        {MEDIA_MIMETYPE_AUDIO_RAW, "midi_a.mid", 22050, 2, kUndefined, kUndefined},
+        {MEDIA_MIMETYPE_AUDIO_MPEG, "bbb_stereo_48kHz_mp3.mp3", 48000, 2, kUndefined, kUndefined},
         {MEDIA_MIMETYPE_AUDIO_VORBIS, "bbb_stereo_48kHz_vorbis.ogg", 48000, 2, kUndefined,
          kUndefined},
-        {MEDIA_MIMETYPE_AUDIO_MSGSM, "test_mono_8kHz_gsm.wav", 8000, 1, kUndefined, kUndefined},
-        {MEDIA_MIMETYPE_AUDIO_RAW, "bbb_stereo_48kHz_flac.flac", 48000, 2, kUndefined, kUndefined},
         {MEDIA_MIMETYPE_AUDIO_OPUS, "test_stereo_48kHz_opus.opus", 48000, 2, kUndefined,
          kUndefined},
-        {MEDIA_MIMETYPE_AUDIO_MPEG, "bbb_stereo_48kHz_mp3.mp3", 48000, 2, kUndefined, kUndefined},
-        {MEDIA_MIMETYPE_AUDIO_RAW, "midi_a.mid", 22050, 2, kUndefined, kUndefined},
-        {MEDIA_MIMETYPE_VIDEO_MPEG2, "bbb_cif_768kbps_30fps_mpeg2.ts", 352, 288, MPEG2ProfileMain,
-         30},
+        {MEDIA_MIMETYPE_AUDIO_MSGSM, "test_mono_8kHz_gsm.wav", 8000, 1, kUndefined, kUndefined},
+
         {MEDIA_MIMETYPE_VIDEO_MPEG4, "bbb_cif_768kbps_30fps_mpeg4.mkv", 352, 288,
          MPEG4ProfileSimple, 30},
+        {MEDIA_MIMETYPE_VIDEO_MPEG2, "bbb_cif_768kbps_30fps_mpeg2.ts", 352, 288, MPEG2ProfileMain,
+         30},
         // Test (b/151677264) for MP4 extractor
-        {MEDIA_MIMETYPE_VIDEO_HEVC, "crowd_508x240_25fps_hevc.mp4", 508, 240, HEVCProfileMain,
-         25},
-        {MEDIA_MIMETYPE_VIDEO_VP9, "bbb_340x280_30fps_vp9.webm", 340, 280, VP9Profile0, 30},
+        {MEDIA_MIMETYPE_VIDEO_HEVC, "crowd_508x240_25fps_hevc.mp4", 508, 240, HEVCProfileMain, 25},
         {MEDIA_MIMETYPE_VIDEO_MPEG2, "swirl_144x136_mpeg2.mpg", 144, 136, MPEG2ProfileMain, 12},
+        {MEDIA_MIMETYPE_VIDEO_VP9, "bbb_340x280_30fps_vp9.webm", 340, 280, VP9Profile0, 30},
 };
 
 static ExtractorUnitTestEnvironment *gEnv = nullptr;
@@ -150,11 +150,11 @@ class ExtractorUnitTest {
 
 class ExtractorFunctionalityTest
     : public ExtractorUnitTest,
-      public ::testing::TestWithParam<
-              tuple<string /* container */, string /* InputFile */, int32_t /* numTracks */>> {
+      public ::testing::TestWithParam<tuple<string /* container */, string /* InputFile */,
+                                            int32_t /* numTracks */, bool /* seekSupported */>> {
   public:
     virtual void SetUp() override {
-        tuple<string, string, int32_t> params = GetParam();
+        tuple<string, string, int32_t, bool> params = GetParam();
         mContainer = get<0>(params);
         mNumTracks = get<2>(params);
         setupExtractor(mContainer);
@@ -531,7 +531,10 @@ TEST_P(ExtractorFunctionalityTest, SeekTest) {
             << "Extractor reported wrong number of track for the given clip";
 
     uint32_t seekFlag = mExtractor->flags();
-    if (!(seekFlag & MediaExtractorPluginHelper::CAN_SEEK)) {
+    bool seekSupported = get<3>(GetParam());
+    bool seekable = seekFlag & MediaExtractorPluginHelper::CAN_SEEK;
+    if (!seekable) {
+        ASSERT_FALSE(seekSupported) << mContainer << "Extractor is expected to support seek ";
         cout << "[   WARN   ] Test Skipped. " << mContainer << " Extractor doesn't support seek\n";
         return;
     }
@@ -696,9 +699,11 @@ TEST_P(ExtractorFunctionalityTest, MonkeySeekTest) {
     ASSERT_EQ(numTracks, mNumTracks)
             << "Extractor reported wrong number of track for the given clip";
 
-    // TODO(b/156854380): add seekability validation
     uint32_t seekFlag = mExtractor->flags();
-    if (!(seekFlag & MediaExtractorPluginHelper::CAN_SEEK)) {
+    bool seekSupported = get<3>(GetParam());
+    bool seekable = seekFlag & MediaExtractorPluginHelper::CAN_SEEK;
+    if (!seekable) {
+        ASSERT_FALSE(seekSupported) << mContainer << "Extractor is expected to support seek ";
         cout << "[   WARN   ] Test Skipped. " << mContainer << " Extractor doesn't support seek\n";
         return;
     }
@@ -805,17 +810,18 @@ TEST_P(ExtractorFunctionalityTest, SanityTest) {
 TEST_P(ConfigParamTest, ConfigParamValidation) {
     if (mDisableTest) return;
 
-    ALOGV("Validates %s Extractor for input's file properties", GetParam().first.c_str());
+    string container = GetParam().first;
+    ALOGV("Validates %s Extractor for input's file properties", container.c_str());
     string inputFileName = gEnv->getRes();
     int32_t inputFileIdx = GetParam().second;
     configFormat configParam;
     getFileProperties(inputFileIdx, inputFileName, configParam);
 
     int32_t status = setDataSource(inputFileName);
-    ASSERT_EQ(status, 0) << "SetDataSource failed for " << GetParam().first << "extractor";
+    ASSERT_EQ(status, 0) << "SetDataSource failed for " << container << "extractor";
 
     status = createExtractor();
-    ASSERT_EQ(status, 0) << "Extractor creation failed for " << GetParam().first << "extractor";
+    ASSERT_EQ(status, 0) << "Extractor creation failed for " << container << "extractor";
 
     int32_t numTracks = mExtractor->countTracks();
     ASSERT_GT(numTracks, 0) << "Extractor didn't find any track for the given clip";
@@ -1045,47 +1051,50 @@ INSTANTIATE_TEST_SUITE_P(ConfigParamTestAll, ConfigParamTest,
                          ::testing::Values(make_pair("aac", 0),
                                            make_pair("amr", 1),
                                            make_pair("amr", 2),
-                                           make_pair("ogg", 3),
-                                           make_pair("wav", 4),
-                                           make_pair("flac", 5),
+                                           make_pair("flac", 3),
+                                           make_pair("midi", 4),
+                                           make_pair("mp3", 5),
                                            make_pair("ogg", 6),
-                                           make_pair("mp3", 7),
-                                           make_pair("midi", 8),
-                                           make_pair("mpeg2ts", 9),
-                                           make_pair("mkv", 10),
-                                           make_pair("mpeg4", 11),
-                                           make_pair("mkv", 12),
-                                           make_pair("mpeg2ps", 13)));
+                                           make_pair("ogg", 7),
+                                           make_pair("wav", 8),
 
+                                           make_pair("mkv", 9),
+                                           make_pair("mpeg2ts", 10),
+                                           make_pair("mpeg4", 11),
+                                           make_pair("mpeg2ps", 12),
+                                           make_pair("mkv", 13)));
+
+// Validate extractors for container format, input file and supports seek flag
 INSTANTIATE_TEST_SUITE_P(ExtractorUnitTestAll, ExtractorFunctionalityTest,
-                         ::testing::Values(make_tuple("aac", "loudsoftaac.aac", 1),
-                                           make_tuple("amr", "testamr.amr", 1),
-                                           make_tuple("amr", "amrwb.wav", 1),
-                                           make_tuple("ogg", "john_cage.ogg", 1),
-                                           make_tuple("wav", "monotestgsm.wav", 1),
-                                           make_tuple("mpeg2ts", "segment000001.ts", 2),
-                                           make_tuple("mpeg2ts", "testac3ts.ts", 1),
-                                           make_tuple("mpeg2ts", "testac4ts.ts", 1),
-                                           make_tuple("mpeg2ts", "testeac3ts.ts", 1),
-                                           make_tuple("flac", "sinesweepflac.flac", 1),
-                                           make_tuple("ogg", "testopus.opus", 1),
-                                           make_tuple("ogg", "sinesweepoggalbumart.ogg", 1),
-                                           make_tuple("midi", "midi_a.mid", 1),
-                                           make_tuple("mkv", "sinesweepvorbis.mkv", 1),
-                                           make_tuple("mkv", "sinesweepmp3lame.mkv", 1),
-                                           make_tuple("mkv", "loudsoftaac.mkv", 1),
-                                           make_tuple("mpeg4", "sinesweepoggmp4.mp4", 1),
-                                           make_tuple("mp3", "sinesweepmp3lame.mp3", 1),
-                                           make_tuple("mp3", "id3test10.mp3", 1),
-                                           make_tuple("mkv", "swirl_144x136_vp9.webm", 1),
-                                           make_tuple("mkv", "swirl_144x136_vp8.webm", 1),
-                                           make_tuple("mkv", "swirl_144x136_avc.mkv", 1),
-                                           make_tuple("mkv", "withoutcues.mkv", 2),
-                                           make_tuple("mpeg2ps", "swirl_144x136_mpeg2.mpg", 1),
-                                           make_tuple("mpeg2ps", "programstream.mpeg", 2),
-                                           make_tuple("mpeg4", "testac3mp4.mp4", 1),
-                                           make_tuple("mpeg4", "testeac3mp4.mp4", 1),
-                                           make_tuple("mpeg4", "swirl_132x130_mpeg4.mp4", 1)));
+                         ::testing::Values(make_tuple("aac", "loudsoftaac.aac", 1, true),
+                                           make_tuple("amr", "testamr.amr", 1, true),
+                                           make_tuple("amr", "amrwb.wav", 1, true),
+                                           make_tuple("flac", "sinesweepflac.flac", 1, true),
+                                           make_tuple("midi", "midi_a.mid", 1, true),
+                                           make_tuple("mkv", "sinesweepvorbis.mkv", 1, true),
+                                           make_tuple("mkv", "sinesweepmp3lame.mkv", 1, true),
+                                           make_tuple("mkv", "loudsoftaac.mkv", 1, true),
+                                           make_tuple("mp3", "sinesweepmp3lame.mp3", 1, true),
+                                           make_tuple("mp3", "id3test10.mp3", 1, true),
+                                           make_tuple("mpeg2ts", "segment000001.ts", 2, false),
+                                           make_tuple("mpeg2ts", "testac3ts.ts", 1, false),
+                                           make_tuple("mpeg2ts", "testac4ts.ts", 1, false),
+                                           make_tuple("mpeg2ts", "testeac3ts.ts", 1, false),
+                                           make_tuple("mpeg4", "sinesweepoggmp4.mp4", 1, true),
+                                           make_tuple("mpeg4", "testac3mp4.mp4", 1, true),
+                                           make_tuple("mpeg4", "testeac3mp4.mp4", 1, true),
+                                           make_tuple("ogg", "john_cage.ogg", 1, true),
+                                           make_tuple("ogg", "testopus.opus", 1, true),
+                                           make_tuple("ogg", "sinesweepoggalbumart.ogg", 1, true),
+                                           make_tuple("wav", "monotestgsm.wav", 1, true),
+
+                                           make_tuple("mkv", "swirl_144x136_avc.mkv", 1, true),
+                                           make_tuple("mkv", "withoutcues.mkv", 2, true),
+                                           make_tuple("mkv", "swirl_144x136_vp9.webm", 1, true),
+                                           make_tuple("mkv", "swirl_144x136_vp8.webm", 1, true),
+                                           make_tuple("mpeg2ps", "swirl_144x136_mpeg2.mpg", 1, false),
+                                           make_tuple("mpeg2ps", "programstream.mpeg", 2, false),
+                                           make_tuple("mpeg4", "swirl_132x130_mpeg4.mp4", 1, true)));
 
 int main(int argc, char **argv) {
     gEnv = new ExtractorUnitTestEnvironment();
