@@ -68,6 +68,30 @@
       "revId": "a530388bafad902aa3efebadf7022b70178933a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5fd9b17e_ea08fe59",
+        "filename": "media/ndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-27T02:41:48Z",
+      "side": 1,
+      "message": "Ray,\nThe fuzzer plugin depends on libmp4extractor and to enable host support on the fuzzer plugin, we need to enable host support on libmp4extractor as well.\nIn order to do that libmp4extractor needs to depend on this new library instead of libmediandk.",
+      "parentUuid": "a9221860_1c6c5aeb",
+      "range": {
+        "startLine": 231,
+        "startChar": 4,
+        "endLine": 231,
+        "endChar": 21
+      },
+      "revId": "a530388bafad902aa3efebadf7022b70178933a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
