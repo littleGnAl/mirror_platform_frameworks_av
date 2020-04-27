@@ -85,6 +85,8 @@ static const struct InputData {
          "bbb_h263_352x288_300kbps_12fps.info", 352, 288, false},
         {MEDIA_MIMETYPE_VIDEO_MPEG4, "bbb_mpeg4_352x288_512kbps_30fps.m4v",
          "bbb_mpeg4_352x288_512kbps_30fps.info", 352, 288, false},
+        {MEDIA_MIMETYPE_IMAGE_ANDROID_HEIC, "bbb_hevc_176x144_176kbps_60fps.hevc",
+         "bbb_heic_176x144_176kbps_60fps.info", 176, 144, false},
 };
 
 class WriterTest {
@@ -567,7 +569,9 @@ INSTANTIATE_TEST_SUITE_P(WriterTestAll, WriteFunctionalityTest,
                                            make_pair("webm", 8), make_pair("mpeg4", 9),
                                            make_pair("mpeg4", 10), make_pair("mpeg4", 12),
                                            make_pair("mpeg4", 13), make_pair("mpeg2Ts", 1),
-                                           make_pair("mpeg2Ts", 9)));
+                                           make_pair("mpeg2Ts", 9), make_pair("mpeg4", 1),
+                                           make_pair("mpeg4", 3), make_pair("mpeg4", 4),
+                                           make_pair("mpeg4", 14)));
 
 int main(int argc, char **argv) {
     gEnv = new WriterTestEnvironment();
