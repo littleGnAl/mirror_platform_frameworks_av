@@ -124,11 +124,12 @@ MediaAnalyticsService::MediaAnalyticsService()
 
 MediaAnalyticsService::~MediaAnalyticsService() {
         ALOGD("MediaAnalyticsService destroyed");
-
-    while (mItems.size() > 0) {
+    size_t count = mItems.size();
+    while (count > 0) {
         MediaAnalyticsItem * oitem = *(mItems.begin());
         mItems.erase(mItems.begin());
         delete oitem;
+        count--;
         mItemsDiscarded++;
         mItemsDiscardedCount++;
     }
@@ -340,10 +341,12 @@ status_t MediaAnalyticsService::dump(int fd, const Vector<String16>& args)
 
     if (clear) {
         // remove everything from the finalized queue
-        while (mItems.size() > 0) {
+        size_t count = mItems.size();
+        while (count > 0) {
             MediaAnalyticsItem * oitem = *(mItems.begin());
             mItems.erase(mItems.begin());
             delete oitem;
+            count--;
             mItemsDiscarded++;
         }
 
@@ -457,7 +460,8 @@ bool MediaAnalyticsService::expirations_l(MediaAnalyticsItem *item)
     // keep removing old records the front until we're in-bounds (count)
     // since we invoke this with each insertion, it should be 0/1 iterations.
     if (mMaxRecords > 0) {
-        while (mItems.size() > (size_t) mMaxRecords) {
+        size_t count = mItems.size();
+        while (count > (size_t) mMaxRecords) {
             MediaAnalyticsItem * oitem = *(mItems.begin());
             if (oitem == item) {
                 break;
@@ -470,6 +474,7 @@ bool MediaAnalyticsService::expirations_l(MediaAnalyticsItem *item)
             handled++;
             mItems.erase(mItems.begin());
             delete oitem;
+            count--;
             mItemsDiscarded++;
             mItemsDiscardedCount++;
         }
@@ -479,7 +484,8 @@ bool MediaAnalyticsService::expirations_l(MediaAnalyticsItem *item)
     // limited to mMaxRecordsExpiredAtOnce items per invocation.
     if (mMaxRecordAgeNs > 0) {
         nsecs_t now = systemTime(SYSTEM_TIME_REALTIME);
-        while (mItems.size() > 0) {
+        size_t count = mItems.size();
+        while (count > 0) {
             MediaAnalyticsItem * oitem = *(mItems.begin());
             nsecs_t when = oitem->getTimestamp();
             if (oitem == item) {
@@ -499,6 +505,7 @@ bool MediaAnalyticsService::expirations_l(MediaAnalyticsItem *item)
             handled++;
             mItems.erase(mItems.begin());
             delete oitem;
+            count--;
             mItemsDiscarded++;
             mItemsDiscardedExpire++;
         }
