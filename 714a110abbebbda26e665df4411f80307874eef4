@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2d5d28c3_27f30894",
+        "filename": "media/libmedia/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1570907
+      },
+      "writtenOn": "2020-04-29T08:54:33Z",
+      "side": 1,
+      "message": "Done. Name updated to libmedia_ndkformatpriv",
+      "parentUuid": "eb39966f_b209bae3",
+      "range": {
+        "startLine": 347,
+        "startChar": 11,
+        "endLine": 347,
+        "endChar": 20
+      },
+      "revId": "714a110abbebbda26e665df4411f80307874eef4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "cac80e22_be06e4cf",
         "filename": "media/libmedia/Android.bp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "714a110abbebbda26e665df4411f80307874eef4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bffc8d6e_61bc7871",
+        "filename": "media/libmedia/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 357,
+      "author": {
+        "id": 1570907
+      },
+      "writtenOn": "2020-04-29T08:54:33Z",
+      "side": 1,
+      "message": "Done. JNI usage is deprecated via https://android-review.googlesource.com/c/platform/frameworks/av/+/1298438",
+      "parentUuid": "cac80e22_be06e4cf",
+      "range": {
+        "startLine": 357,
+        "startChar": 8,
+        "endLine": 357,
+        "endChar": 35
+      },
+      "revId": "714a110abbebbda26e665df4411f80307874eef4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "3a6f5cf6_8abc7a3f",
+        "filename": "media/libmedia/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1570907
+      },
+      "writtenOn": "2020-04-29T08:54:33Z",
+      "side": 1,
+      "message": "Done. header_libs is used instead of include_dirs",
+      "parentUuid": "a08272db_38643a31",
+      "range": {
+        "startLine": 358,
+        "startChar": 0,
+        "endLine": 360,
+        "endChar": 53
+      },
+      "revId": "714a110abbebbda26e665df4411f80307874eef4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c5cceae9_00fc08eb",
         "filename": "media/libmedia/Android.bp",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "1332eea7_fb260b38",
+        "filename": "media/libmedia/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1570907
+      },
+      "writtenOn": "2020-04-29T08:54:33Z",
+      "side": 1,
+      "message": "Hello Ray,\nThere is no common file which is included by all NDK sources where the #define can be added. \nSo what should be the approach ?",
+      "parentUuid": "c5cceae9_00fc08eb",
+      "range": {
+        "startLine": 364,
+        "startChar": 8,
+        "endLine": 364,
+        "endChar": 58
+      },
+      "revId": "714a110abbebbda26e665df4411f80307874eef4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5031bc63_7198a8bc",
         "filename": "media/libmedia/Android.bp",
         "patchSetId": 1
@@ -105,6 +201,30 @@
       "writtenOn": "2020-04-27T18:35:43Z",
       "side": 1,
       "message": "since i believe this is for a test app, i don\u0027t know that it needs apex_available",
+      "range": {
+        "startLine": 377,
+        "startChar": 3,
+        "endLine": 377,
+        "endChar": 42
+      },
+      "revId": "714a110abbebbda26e665df4411f80307874eef4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0797058d_ca385614",
+        "filename": "media/libmedia/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1570907
+      },
+      "writtenOn": "2020-04-29T08:54:33Z",
+      "side": 1,
+      "message": "From https://android-review.googlesource.com/c/platform/frameworks/av/+/1292598/1/media/ndk/Android.bp#231\nThe fuzzer plugin depends on libmp4extractor and to enable host support on the fuzzer plugin, we need to enable host support on libmp4extractor as well.\nIn order to do that libmp4extractor needs to depend on this new library and \u0027libmediandk_format\u0027 instead of libmediandk.",
+      "parentUuid": "5031bc63_7198a8bc",
       "range": {
         "startLine": 377,
         "startChar": 3,
