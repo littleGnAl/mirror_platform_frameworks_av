@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002728085",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1177024?revision\u003d6",
+      "fixSuggestions": [
+        {
+          "fixId": "511de425_4e64b988",
+          "description": "Change to \"media/codec2/components/avc/C2SoftAvcDec.cpp\"",
+          "replacements": [
+            {
+              "path": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+              "range": {
+                "startLine": 467,
+                "startChar": 11,
+                "endLine": 467,
+                "endChar": 20
+              },
+              "replacement": "conversion"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "b3940ace_987fdcdf",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-04-29T14:27:41Z",
+      "side": 1,
+      "message": "Common typo found: \"converion\" -- should it be \"conversion\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 467,
+        "startChar": 11,
+        "endLine": 467,
+        "endChar": 20
+      },
+      "revId": "a2d8c743299bdf9f02def9f2a18ea0f92101e545",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
