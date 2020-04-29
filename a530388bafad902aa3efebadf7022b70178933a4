@@ -140,6 +140,30 @@
       "revId": "a530388bafad902aa3efebadf7022b70178933a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "28cc4261_e503f170",
+        "filename": "media/ndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-04-29T20:05:59Z",
+      "side": 1,
+      "message": "Marking this as resolved as the CL has now been reviewed by Ray and has a +2.",
+      "parentUuid": "5fd9b17e_ea08fe59",
+      "range": {
+        "startLine": 231,
+        "startChar": 4,
+        "endLine": 231,
+        "endChar": 21
+      },
+      "revId": "a530388bafad902aa3efebadf7022b70178933a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
