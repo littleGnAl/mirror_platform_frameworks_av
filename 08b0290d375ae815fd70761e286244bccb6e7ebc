@@ -355,6 +355,30 @@
     },
     {
       "key": {
+        "uuid": "8c7c78d8_b8e22c83",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1308,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-29T18:10:28Z",
+      "side": 1,
+      "message": "Range of minLuminance is [1,50,000] with a normalization factor of 0.0001. which are defined as  kMinDispLuminanceLow\u003d 0.0001, kMinDispLuminanceHigh \u003d 5.0 (in units of cd / m^2). where as maxLuminance varies between kMaxDispLuminanceLow \u003d 5.0; kMaxDispLuminanceHigh \u003d 10000 (in units of cd / m^2).",
+      "parentUuid": "06c0274e_be26fe43",
+      "range": {
+        "startLine": 1308,
+        "startChar": 93,
+        "endLine": 1308,
+        "endChar": 99
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b9bf6470_591aac95",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 2
@@ -611,6 +635,30 @@
       "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d8a085e3_f84dcdc1",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1407,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-29T18:10:28Z",
+      "side": 1,
+      "message": "Range of minLuminance is [1,50,000] with a normalization factor of 0.0001. which are defined as  kMinDispLuminanceLow\u003d 0.0001, kMinDispLuminanceHigh \u003d 5.0 (in units of cd / m^2). where as maxLuminance varies between kMaxDispLuminanceLow \u003d 5.0; kMaxDispLuminanceHigh \u003d 10000 (in units of cd / m^2).",
+      "parentUuid": "51d2f6d9_2790dd00",
+      "range": {
+        "startLine": 1407,
+        "startChar": 68,
+        "endLine": 1407,
+        "endChar": 85
+      },
+      "revId": "08b0290d375ae815fd70761e286244bccb6e7ebc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
