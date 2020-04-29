@@ -143,6 +143,30 @@
     },
     {
       "key": {
+        "uuid": "0806d56d_668316a9",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 248,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-29T18:07:43Z",
+      "side": 1,
+      "message": "Range of minLuminance is [1,50,000] with a normalization factor of 0.0001. which are defined as  kMinDispLuminanceLow\u003d 0.0001, kMinDispLuminanceHigh \u003d 5.0 (in units of cd / m^2). where as maxLuminance varies between kMaxDispLuminanceLow \u003d 5.0; kMaxDispLuminanceHigh \u003d 10000 (in units of cd / m^2).",
+      "parentUuid": "61356e5b_390963e9",
+      "range": {
+        "startLine": 248,
+        "startChar": 77,
+        "endLine": 248,
+        "endChar": 83
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "070c4790_c7562fab",
         "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
         "patchSetId": 2
@@ -425,6 +449,30 @@
     },
     {
       "key": {
+        "uuid": "d478f83f_c92cdc09",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 619,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-29T18:07:43Z",
+      "side": 1,
+      "message": "Constants are defined in VideoAPI.h file. These values ( 0.00002,0.0001 ,... ) are normalization increments in some cases and fraction of units in some more cases.",
+      "parentUuid": "8e469298_ad1baf07",
+      "range": {
+        "startLine": 619,
+        "startChar": 75,
+        "endLine": 619,
+        "endChar": 83
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74bf4657_c0d1ce3f",
         "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
         "patchSetId": 2
@@ -469,6 +517,30 @@
       "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aede9f5f_78aec720",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-04-29T18:07:43Z",
+      "side": 1,
+      "message": "Constants are defined in VideoAPI.h file. These values ( 0.00002,0.0001 ,... ) are normalization increments in some cases and fraction of units in some more cases.",
+      "parentUuid": "31cf0935_342a4823",
+      "range": {
+        "startLine": 652,
+        "startChar": 65,
+        "endLine": 652,
+        "endChar": 74
+      },
+      "revId": "64fd3d8071e926865fbbe51956a22e7119b60424",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
