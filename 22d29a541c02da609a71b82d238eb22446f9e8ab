@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "49a6dad5_799c97e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-04-29T11:43:17Z",
+      "side": 1,
+      "message": "in this case, no setVolume to be done if not active.\nThe issue may happen when applyStreamVolumes called for some reasons like updateCallRouting, The cache of AudioOutputDescriptor (and not the one in the VolumeSource) will be updated",
+      "parentUuid": "fec35dec_25e7354c",
+      "range": {
+        "startLine": 13,
+        "startChar": 7,
+        "endLine": 13,
+        "endChar": 52
+      },
+      "revId": "22d29a541c02da609a71b82d238eb22446f9e8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7a9a4b49_28cb6185",
         "filename": "/COMMIT_MSG",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-04-28T16:58:10Z",
       "side": 1,
       "message": "I don\u0027t understand why this forks for SW volume but not for HWGain: the logic to skip the operation when the current volume is the same as requested volume is common between the two.\n\nAlso setVolumeIndexForAttributes() will cache the new index in the volume source, not in the output descriptor.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "22d29a541c02da609a71b82d238eb22446f9e8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f098e9dd_fe296fb0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-04-29T11:43:17Z",
+      "side": 1,
+      "message": "Now, I got your confusion.\nWhen I speak about cache, it is the cache of volume source(s) within the AudioOutputDescriptor. Not the one updated in setVolumeIndexForAttributes in VolumeSource directly.\n\nAudioOutputDescriptor::setVolume is called to cache the volume in the volume source on the output: setCurVolume -\u003e mVolumeActivities[vs].setVolume(volumeDb);\n\nWhat is not common in SwAudioOutputDescriptor::setVolume is \"devicePort-\u003ehasGainController(true) \u0026\u0026 isActive(vs)\"\n\nFor SW gain, no guard on activity.",
+      "parentUuid": "7a9a4b49_28cb6185",
       "range": {
         "startLine": 18,
         "startChar": 0,
