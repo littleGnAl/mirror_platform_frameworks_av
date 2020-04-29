@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "63e784dd_55f86f6e",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-29T22:33:38Z",
+      "side": 1,
+      "message": "more accurately -- \"found an ID3tag of 0 size\".",
+      "range": {
+        "startLine": 54,
+        "startChar": 38,
+        "endLine": 54,
+        "endChar": 57
+      },
+      "revId": "435f1de56622a045fcbf48f207a83c8dc1d1ce3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eafc6310_1cd5759b",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-29T22:33:38Z",
+      "side": 1,
+      "message": "what\u0027s the motivation for changing this.\n\nunsigned, i can see.\ngoing to 8 bits -- not sure.",
+      "range": {
+        "startLine": 62,
+        "startChar": 3,
+        "endLine": 62,
+        "endChar": 12
+      },
+      "revId": "435f1de56622a045fcbf48f207a83c8dc1d1ce3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be9746a3_17ac2c03",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-29T22:33:38Z",
+      "side": 1,
+      "message": "is it legal to have a 0-length id name?\nor is this just because we don\u0027t want a bad test on line \n\nso is it appropriate that this is an assert -- or should it be:\nif (id.length() \u003d\u003d 0) continue;\nto proceed to the next tag.",
+      "range": {
+        "startLine": 91,
+        "startChar": 13,
+        "endLine": 91,
+        "endChar": 38
+      },
+      "revId": "435f1de56622a045fcbf48f207a83c8dc1d1ce3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb803d2e_72086667",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-29T22:33:38Z",
+      "side": 1,
+      "message": "assert, or continue to the next element?",
+      "range": {
+        "startLine": 106,
+        "startChar": 12,
+        "endLine": 106,
+        "endChar": 38
+      },
+      "revId": "435f1de56622a045fcbf48f207a83c8dc1d1ce3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e00f8567_9f620bf1",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-29T22:33:38Z",
+      "side": 1,
+      "message": "is an empty tag legal?  I don\u0027t know.\n\nshould we be failing here? or is this just to make sure that we\u0027re not doing compares\nagainst null when we test on line 163?",
+      "range": {
+        "startLine": 161,
+        "startChar": 7,
+        "endLine": 161,
+        "endChar": 34
+      },
+      "revId": "435f1de56622a045fcbf48f207a83c8dc1d1ce3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0ab66259_392a44d3",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-04-29T22:33:38Z",
+      "side": 1,
+      "message": "let\u0027s space these out 1 per line.\n\ni know clang-fmt likes to bunch them up.",
+      "range": {
+        "startLine": 183,
+        "startChar": 44,
+        "endLine": 190,
+        "endChar": 0
+      },
+      "revId": "435f1de56622a045fcbf48f207a83c8dc1d1ce3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
