@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9adbfba3_0da34c6a",
+        "filename": "media/ndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1570907
+      },
+      "writtenOn": "2020-04-29T08:47:34Z",
+      "side": 1,
+      "message": "Done. Name updated to libmediandk_format",
+      "parentUuid": "f5049a3c_429062f1",
+      "range": {
+        "startLine": 196,
+        "startChar": 11,
+        "endLine": 196,
+        "endChar": 29
+      },
+      "revId": "a530388bafad902aa3efebadf7022b70178933a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "083a9047_15896de3",
         "filename": "media/ndk/Android.bp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "a530388bafad902aa3efebadf7022b70178933a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96904350_66fcbb83",
+        "filename": "media/ndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1570907
+      },
+      "writtenOn": "2020-04-29T08:47:34Z",
+      "side": 1,
+      "message": "Done. header_libs is now used instead of include_dirs and inclusion of JNI has been deprecated via https://android-review.googlesource.com/c/platform/frameworks/av/+/1298437",
+      "parentUuid": "083a9047_15896de3",
+      "range": {
+        "startLine": 204,
+        "startChar": 4,
+        "endLine": 208,
+        "endChar": 0
+      },
+      "revId": "a530388bafad902aa3efebadf7022b70178933a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
