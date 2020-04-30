@@ -734,6 +734,132 @@ TEST_P(ConfigParamTest, ConfigParamValidation) {
     AMediaFormat_delete(trackFormat);
 }
 
+class ExtractorComparison : public ExtractorUnitTest,
+                             public ::testing::TestWithParam<
+                                     pair<pair<string /* container1 */, string /* InputFile1 */>,
+                                          pair<string /* container2 */, string /* InputFile2 */>>> {
+  public:
+    ExtractorComparison() : mExtractedOutput1(nullptr), mExtractedOutput2(nullptr) {}
+
+    ~ExtractorComparison() {
+        if (mExtractedOutput1) {
+            free(mExtractedOutput1);
+        }
+        if (mExtractedOutput2) {
+            free(mExtractedOutput2);
+        }
+    }
+
+    virtual void SetUp() override {
+        pair<string, string> extractor1 = GetParam().first;
+        pair<string, string> extractor2 = GetParam().second;
+
+        // Allocate memory to hold extracted data for both extractors
+        struct stat buf;
+        int32_t status = stat((gEnv->getRes() + extractor1.second).c_str(), &buf);
+        ASSERT_EQ(status, OK) << "Unable to get file properties";
+
+        mExtractedOutput1 = (int8_t *)calloc(1, buf.st_size);
+        ASSERT_NE(mExtractedOutput1, nullptr)
+                << "Unable to allocate memory for writing extractor's output";
+
+        status = stat((gEnv->getRes() + extractor2.second).c_str(), &buf);
+        ASSERT_EQ(status, OK) << "Unable to get file properties";
+
+        mExtractedOutput2 = (int8_t *)calloc(1, buf.st_size);
+        ASSERT_NE(mExtractedOutput2, nullptr)
+                << "Unable to allocate memory for writing extractor's output";
+    }
+
+    int8_t *mExtractedOutput1;
+    int8_t *mExtractedOutput2;
+};
+
+// Compare output of two extractors for identical content
+TEST_P(ExtractorComparison, ExtractorComparisonTest) {
+    pair<string, string> extractor1 = GetParam().first;
+    pair<string, string> extractor2 = GetParam().second;
+    vector<pair<string, string>> extractors = {extractor1, extractor2};
+    size_t extractedOutputSize[] = {0, 0};
+    int32_t status = OK;
+
+    for (int32_t idx = 0; idx < extractors.size(); idx++) {
+        setupExtractor(extractors[idx].first);
+        if (mDisableTest) return;
+
+        ALOGV("Validates %s Extractor for a given input file", extractors[idx].first.c_str());
+        string inputFileName = gEnv->getRes() + extractors[idx].second;
+
+        status = setDataSource(inputFileName);
+        ASSERT_EQ(status, 0) << "SetDataSource failed for" << extractors[idx].first << "extractor";
+
+        status = createExtractor();
+        ASSERT_EQ(status, 0) << "Extractor creation failed for " << extractors[idx].first
+                             << " extractor";
+
+        int32_t numTracks = mExtractor->countTracks();
+        ASSERT_GT(numTracks, 0) << "Extractor didn't find any track for the given clip";
+
+        int32_t trackIdx = 0;
+        MediaTrackHelper *track = mExtractor->getTrack(trackIdx);
+        ASSERT_NE(track, nullptr) << "Failed to get track for index " << trackIdx;
+
+        CMediaTrack *cTrack = wrap(track);
+        ASSERT_NE(cTrack, nullptr) << "Failed to get track wrapper for index " << trackIdx;
+
+        MediaBufferGroup *bufferGroup = new MediaBufferGroup();
+        status = cTrack->start(track, bufferGroup->wrap());
+        ASSERT_EQ(OK, (media_status_t)status) << "Failed to start the track";
+
+        int8_t *output;
+        if (!idx) {
+            output = mExtractedOutput1;
+        } else {
+            output = mExtractedOutput2;
+        }
+
+        int32_t offset = 0;
+        while (status != AMEDIA_ERROR_END_OF_STREAM) {
+            MediaBufferHelper *buffer = nullptr;
+            status = track->read(&buffer);
+            ALOGV("track->read Status = %d buffer %p", status, buffer);
+            if (buffer) {
+                memcpy(output + offset, buffer->data(), buffer->range_length());
+                extractedOutputSize[idx] += buffer->range_length();
+                buffer->release();
+            }
+        }
+        status = cTrack->stop(track);
+        ASSERT_EQ(OK, status) << "Failed to stop the track";
+
+        fclose(mInputFp);
+        delete bufferGroup;
+        delete track;
+        mDataSource.clear();
+        delete mExtractor;
+        mInputFp = nullptr;
+        mExtractor = nullptr;
+    }
+    // Compare the extracted outputs of both extractor
+    ASSERT_EQ(extractedOutputSize[0], extractedOutputSize[1])
+            << "Extractor's output size doesn't match between " << extractor1.first << "and "
+            << extractor2.first << " extractors";
+    status = memcmp(mExtractedOutput1, mExtractedOutput2, extractedOutputSize[0]);
+    ASSERT_EQ(status, OK) << "Extracted content mismatch between " << extractor1.first << "and "
+                          << extractor2.first << " extractors";
+}
+
+INSTANTIATE_TEST_SUITE_P(
+        ExtractorComparisonAll, ExtractorComparison,
+        ::testing::Values(make_pair(make_pair("mpeg4", "swirl_144x136_vp9.mp4"),
+                                    make_pair("mkv", "swirl_144x136_vp9.webm")),
+                          make_pair(make_pair("mpeg4", "video_480x360_mp4_vp9_333kbps_25fps.mp4"),
+                                    make_pair("mkv", "video_480x360_mp4_vp9_333kbps_25fps.webm")),
+                          make_pair(make_pair("mpeg4", "video_1280x720_av1_hdr_static_3mbps.mp4"),
+                                    make_pair("mkv", "video_1280x720_av1_hdr_static_3mbps.webm")),
+                          make_pair(make_pair("aac", "loudsoftaac.aac"),
+                                    make_pair("mkv", "loudsoftaac.mkv"))));
+
 INSTANTIATE_TEST_SUITE_P(ConfigParamTestAll, ConfigParamTest,
                          ::testing::Values(make_pair("aac", 0),
                                            make_pair("amr", 1),
