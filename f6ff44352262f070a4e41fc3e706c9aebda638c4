@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a952d492_971dca40",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-01T18:50:09Z",
+      "side": 1,
+      "message": "the 2nd param looks to be an index into kInputData[]\n\ni\u0027d rather see it use something that is not order dependent.\nit appears that this table has exactly 1 entry for any given MIME type;\nperhaps have it lookup the mime type in the table.",
+      "range": {
+        "startLine": 574,
+        "startChar": 61,
+        "endLine": 574,
+        "endChar": 66
+      },
+      "revId": "f6ff44352262f070a4e41fc3e706c9aebda638c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
