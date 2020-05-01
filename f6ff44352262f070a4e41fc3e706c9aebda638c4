@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "40b11181_68cddee7",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-01T18:55:12Z",
+      "side": 1,
+      "message": "per my suggestion below... this would turn into\n. get the mime string from getParam().second\n-- use that to find the appropriate slot within the table, yielding an inputFileIdx\n-- then you can use the index going forward through the rest of the test.",
+      "range": {
+        "startLine": 309,
+        "startChar": 4,
+        "endLine": 310,
+        "endChar": 71
+      },
+      "revId": "f6ff44352262f070a4e41fc3e706c9aebda638c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a952d492_971dca40",
         "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
         "patchSetId": 1
