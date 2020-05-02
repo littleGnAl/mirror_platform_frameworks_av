@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0f0bd1b7_2e62c6ff",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-02T23:17:10Z",
+      "side": 1,
+      "message": "this change is no longer necessary as \nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1298395 was merged with just these changes.\nRebasing to aosp/master will remove this change here.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 21
+      },
+      "revId": "435f1de56622a045fcbf48f207a83c8dc1d1ce3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "63e784dd_55f86f6e",
         "filename": "media/libstagefright/id3/test/ID3Test.cpp",
         "patchSetId": 8
@@ -71,6 +94,30 @@
     },
     {
       "key": {
+        "uuid": "0dfedeac_502efa24",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-02T23:17:10Z",
+      "side": 1,
+      "message": "id.length() is length of the tag itself and it can\u0027t be zero.\nSo ASSERT_GT() is a valid check here.",
+      "parentUuid": "be9746a3_17ac2c03",
+      "range": {
+        "startLine": 91,
+        "startChar": 13,
+        "endLine": 91,
+        "endChar": 38
+      },
+      "revId": "435f1de56622a045fcbf48f207a83c8dc1d1ce3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "bb803d2e_72086667",
         "filename": "media/libstagefright/id3/test/ID3Test.cpp",
         "patchSetId": 8
@@ -82,6 +129,30 @@
       "writtenOn": "2020-04-29T22:33:38Z",
       "side": 1,
       "message": "assert, or continue to the next element?",
+      "range": {
+        "startLine": 106,
+        "startChar": 12,
+        "endLine": 106,
+        "endChar": 38
+      },
+      "revId": "435f1de56622a045fcbf48f207a83c8dc1d1ce3e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c18dc00a_c98019d1",
+        "filename": "media/libstagefright/id3/test/ID3Test.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-02T23:17:10Z",
+      "side": 1,
+      "message": "ASSERT_GT() is valid here as length of the tag can\u0027t be zero.",
+      "parentUuid": "bb803d2e_72086667",
       "range": {
         "startLine": 106,
         "startChar": 12,
