@@ -16,6 +16,24 @@
       "revId": "3a8a46c1440c03a4b64a5bda7e38dde9d751c504",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "58573bc9_117a9b78",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-02T01:45:12Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/frameworks/av/+/1298396 adds similar check for mpeg2",
+      "parentUuid": "294f03e3_182af7fe",
+      "revId": "3a8a46c1440c03a4b64a5bda7e38dde9d751c504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
