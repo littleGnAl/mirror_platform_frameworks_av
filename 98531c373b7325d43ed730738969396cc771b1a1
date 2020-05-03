@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "32c62c3e_88a99f45",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1499,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-05-03T19:37:35Z",
+      "side": 1,
+      "message": "all parameters are set in current implementation at Line 1822, where some of the fields and values could be invalid. Validation of parameters with conditional present like hdr.ccv.avgLuminance is taken care. Interpretation of parameters is based on validFields with bits representing presence of individual SEI messages.",
+      "parentUuid": "689d3076_a96bb1ac",
+      "range": {
+        "startLine": 1496,
+        "startChar": 1,
+        "endLine": 1499,
+        "endChar": 17
+      },
+      "revId": "98531c373b7325d43ed730738969396cc771b1a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7c426d03_664058c2",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 6
