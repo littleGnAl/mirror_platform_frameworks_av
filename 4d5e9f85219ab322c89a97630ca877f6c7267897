@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "573cadbb_eb3df05b",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1378,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-05-03T19:43:38Z",
+      "side": 1,
+      "message": "Conditions below are mandating presence of all members of hdr static info(in range / out of range). New patchset contains changes to take care of not validating the parameters whose presence is controlled by presetflag.",
+      "parentUuid": "fa47164f_071aba66",
+      "range": {
+        "startLine": 1378,
+        "startChar": 51,
+        "endLine": 1378,
+        "endChar": 65
+      },
+      "revId": "4d5e9f85219ab322c89a97630ca877f6c7267897",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1a606d09_bdb0423f",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 4
