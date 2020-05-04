@@ -45,6 +45,30 @@
       "revId": "f6ff44352262f070a4e41fc3e706c9aebda638c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7b9158e6_0d7e153d",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-04T15:13:36Z",
+      "side": 1,
+      "message": "Ray,\nThough the table has exactly one entry per given MIME type now, that is not the intent of the table.\nFor writers, we need multiple inputs like raw stream, a file to indicate size of each frame/header, width, height for video, sample rate, number of channels for audio etc for each input. Instead of giving all this information in each test case, these are added to a table and an index to the table is being used.\nI agree with the concern about this being order dependent.\nSo instead of passing MIME, is it okay if we add another entry to the table \"OPUS_1\", \"AAC_1\", \"H264_1\" and so on and pass those here? GetFileDetails will use these newly defined enums and search through the table and return relevant details.\nThis way whenever a new file is to be added to the table, an enum will be added and table will be updated with another entry.\nPlease let us know if this looks fine.",
+      "parentUuid": "a952d492_971dca40",
+      "range": {
+        "startLine": 574,
+        "startChar": 61,
+        "endLine": 574,
+        "endChar": 66
+      },
+      "revId": "f6ff44352262f070a4e41fc3e706c9aebda638c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
