@@ -93,6 +93,30 @@
       "revId": "f6ff44352262f070a4e41fc3e706c9aebda638c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7bf18c03_30ffa742",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-04T17:55:31Z",
+      "side": 1,
+      "message": "Ray,\nThanks.\n\nManisha,\nAdd a enum {OPUS_1, AAC_1 and so on} and make that the first entry in the table and pass those in the tests instead of index.\nIn getFileDetails, instead of using the index, loop through all the entries and return the one that matches this new enum",
+      "parentUuid": "742ee2d0_3830aee6",
+      "range": {
+        "startLine": 574,
+        "startChar": 61,
+        "endLine": 574,
+        "endChar": 66
+      },
+      "revId": "f6ff44352262f070a4e41fc3e706c9aebda638c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
