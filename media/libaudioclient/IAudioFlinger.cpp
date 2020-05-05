@@ -82,6 +82,7 @@ enum {
     CREATE_AUDIO_PATCH,
     RELEASE_AUDIO_PATCH,
     LIST_AUDIO_PATCHES,
+    GET_DOWNSTREAM_PATCHES,
     SET_AUDIO_PORT_CONFIG,
     GET_AUDIO_HW_SYNC_FOR_SESSION,
     SYSTEM_READY,
@@ -854,6 +855,37 @@ public:
         reply.read(patches, *num_patches * sizeof(struct audio_patch));
         return status;
     }
+    virtual status_t getDownstreamPatches(audio_io_handle_t output,
+                                      unsigned int *num_patches,
+                                      struct audio_patch *patches)
+    {
+        ALOGD("getDownstreamPatches()");
+        if (num_patches == NULL || (*num_patches != 0 && patches == NULL)) {
+            return BAD_VALUE;
+        }
+        Parcel data, reply;
+        data.writeInterfaceToken(IAudioFlinger::getInterfaceDescriptor());
+        data.writeInt32((int32_t) output);
+        unsigned int numPatchesReq = (patches == NULL) ? 0 : *num_patches;
+        data.writeInt32(numPatchesReq);
+        status_t status = remote()->transact(GET_DOWNSTREAM_PATCHES, data, &reply);
+        if (status == NO_ERROR) {
+            status = (status_t)reply.readInt32();
+            *num_patches = (unsigned int)reply.readInt32();
+            ALOGD("getDownstreamPatches() status:%d num_patches:%d", status, *num_patches);
+        }
+        if (status == NO_ERROR) {
+            if (numPatchesReq > *num_patches) {
+                numPatchesReq = *num_patches;
+            }
+            if (numPatchesReq > 0) {
+                ALOGD("getDownstreamPatches() numPatchesReq:%d", numPatchesReq);
+                reply.read(patches, numPatchesReq * sizeof(struct audio_patch));
+            }
+        }
+        ALOGD("getDownstreamPatches() return:%d", status);
+        return status;
+    }
     virtual status_t setAudioPortConfig(const struct audio_port_config *config)
     {
         if (config == NULL) {
@@ -1532,6 +1564,39 @@ status_t BnAudioFlinger::onTransact(
             reply->writeInt32(status);
             reply->writeInt32(numPatches);
             if (status == NO_ERROR) {
+                if (numPatchesReq > numPatches) {
+                    numPatchesReq = numPatches;
+                }
+                reply->write(patches, numPatchesReq * sizeof(struct audio_patch));
+            }
+            free(patches);
+            return NO_ERROR;
+        } break;
+        case GET_DOWNSTREAM_PATCHES: {
+            ALOGD("onTransact() GET_DOWNSTREAM_PATCHES");
+            CHECK_INTERFACE(IAudioFlinger, data, reply);
+            audio_io_handle_t output = (audio_io_handle_t) data.readInt32();
+            unsigned int numPatchesReq = data.readInt32();
+            if (numPatchesReq > MAX_ITEMS_PER_LIST) {
+                numPatchesReq = MAX_ITEMS_PER_LIST;
+            }
+            unsigned int numPatches = numPatchesReq;
+            struct audio_patch *patches =
+                    (struct audio_patch *)calloc(numPatchesReq,
+                                                 sizeof(struct audio_patch));
+            if (patches == NULL) {
+                reply->writeInt32(NO_MEMORY);
+                reply->writeInt32(0);
+                return NO_ERROR;
+            }
+            ALOGD("onTransact() before getDownstreamPatches");
+            status_t status = getDownstreamPatches(output, &numPatches, patches);
+            ALOGD("onTransact() after getDownstreamPatches numPatches %d", numPatches);
+            ALOGD("onTransact() after getDownstreamPatches patches[0].id %d", patches[0].id);
+            reply->writeInt32(status);
+            reply->writeInt32(numPatches);
+            if (status == NO_ERROR) {
+                ALOGD("onTransact() no error");
                 if (numPatchesReq > numPatches) {
                     numPatchesReq = numPatches;
                 }

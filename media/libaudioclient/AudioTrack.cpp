@@ -1320,13 +1320,54 @@ void AudioTrack::updateRoutedDeviceId_l()
     // if the track is inactive, do not update actual device as the output stream maybe routed
     // to a device not relevant to this client because of other active use cases.
     if (mState != STATE_ACTIVE) {
+        ALOGD("%s(): inactive", __func__);
         return;
     }
-    if (mOutput != AUDIO_IO_HANDLE_NONE) {
-        audio_port_handle_t deviceId = AudioSystem::getDeviceIdForIo(mOutput);
-        if (deviceId != AUDIO_PORT_HANDLE_NONE) {
-            mRoutedDeviceId = deviceId;
+    if (mOutput == AUDIO_IO_HANDLE_NONE) {
+        ALOGD("%s(): no io handle", __func__);
+        return;
+    }
+    audio_port_handle_t deviceId = AudioSystem::getDeviceIdForIo(mOutput);
+    if (deviceId == AUDIO_PORT_HANDLE_NONE) {
+        ALOGD("%s(): no port handle", __func__);
+        return;
+    }
+    const sp<IAudioFlinger>& audioFlinger = AudioSystem::get_audio_flinger();
+    if (audioFlinger == 0) {
+        ALOGE("%s(): Could not get audioflinger", __func__);
+        return;
+    }
+
+    // if output has downstream patches, use device id of the downstream patch sink instead as it
+    // is the final routed device.
+    unsigned int numPatches = 0;
+    struct audio_patch *nPatches = NULL;
+    status_t status = audioFlinger->getDownstreamPatches(mOutput, &numPatches, nPatches);
+    if (status != NO_ERROR) {
+        ALOGE("%s(): getDownstreamPatches error %d", __func__, status);
+        mRoutedDeviceId = deviceId;
+        return;
+    }
+    if (numPatches == 0) {
+        ALOGD("%s(): numPatches = 0", __func__);
+        mRoutedDeviceId = deviceId;
+        return;
+    }
+    nPatches = (struct audio_patch *)realloc(nPatches, numPatches * sizeof(struct audio_patch));
+    if (audioFlinger->getDownstreamPatches(mOutput, &numPatches, nPatches) == 0) {
+        for (int i = 0; i < numPatches; i++) {
+            ALOGD("%s() nPatches[%d].id:%d", __func__, i, nPatches[i].id);
+            for (int j = 0; j < nPatches[i].num_sinks; j++) {
+                ALOGD("%s() sink %d", __func__, j);
+                if (nPatches[i].sinks[j].type == AUDIO_PORT_TYPE_DEVICE) {
+                    ALOGD("%s() setting routed device as downstream device id:%d, not output device", __func__, nPatches[i].sinks[j].id);
+                    mRoutedDeviceId = nPatches[i].sinks[j].id;
+                }
+            }
         }
+    } else {
+        ALOGD("%s() setting routed device to output device id:%d", __func__, deviceId);
+        mRoutedDeviceId = deviceId;
     }
 }
 

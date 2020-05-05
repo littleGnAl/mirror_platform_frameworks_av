@@ -65,6 +65,10 @@ public:
     status_t listAudioPatches(unsigned int *num_patches,
                                       struct audio_patch *patches);
 
+    /* Get downstream patches for given output */
+    status_t getDownstreamPatches(audio_io_handle_t stream,
+            unsigned int *num_patches, struct audio_patch *patches);
+
     // Retrieves all currently estrablished software patches for a stream
     // opened on an intermediate module.
     status_t getDownstreamSoftwarePatches(audio_io_handle_t stream,

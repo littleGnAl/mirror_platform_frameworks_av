@@ -84,6 +84,14 @@ status_t AudioFlinger::listAudioPatches(unsigned int *num_patches,
     return mPatchPanel.listAudioPatches(num_patches, patches);
 }
 
+/* List connected audio ports and they attributes */
+status_t AudioFlinger::getDownstreamPatches(audio_io_handle_t output, unsigned int *num_patches,
+                                  struct audio_patch *patches)
+{
+    Mutex::Autolock _l(mLock);
+    return mPatchPanel.getDownstreamPatches(output, num_patches, patches);
+}
+
 status_t AudioFlinger::PatchPanel::SoftwarePatch::getLatencyMs_l(double *latencyMs) const
 {
     const auto& iter = mPatchPanel.mPatches.find(mPatchHandle);
@@ -752,6 +760,34 @@ status_t AudioFlinger::PatchPanel::listAudioPatches(unsigned int *num_patches __
                                   struct audio_patch *patches __unused)
 {
     ALOGV(__func__);
+    return NO_ERROR;
+}
+
+status_t AudioFlinger::PatchPanel::getDownstreamPatches(audio_io_handle_t output, unsigned int *num_patches,
+                                  struct audio_patch *patches)
+{
+    // FIXME: implement
+    ALOGD("%s()", __func__);
+    *num_patches = 0;
+    (void)patches;
+    std::vector<PatchPanel::SoftwarePatch> swPatches;
+    status_t status = getDownstreamSoftwarePatches(output, &swPatches);
+    if (status != NO_ERROR) {
+        ALOGD("%s() stream is not associated with any of inserted modules", __func__);
+        return status;
+    }
+    *num_patches = swPatches.size();
+    int count = 0;
+    ALOGD("%s() num_patches %d", __func__, *num_patches);
+    for (PatchPanel::SoftwarePatch swPatch : swPatches) {
+        ALOGD("%s() patchHandle() %d", __func__, swPatch.getPatchHandle());
+        audio_patch_handle_t patchHandle = swPatch.getPatchHandle();
+        auto patch_iter = mPatches.find(patchHandle);
+        if (patch_iter != mPatches.end()) {
+            patches[count] = patch_iter->second.mAudioPatch;
+            ALOGD("%s() patch_iter->second.mAudioPatch.id:%d patches[%d].id:%d", __func__, patch_iter->second.mAudioPatch.id, count, patches[count].id);
+        }
+    }
     return NO_ERROR;
 }
 

@@ -272,6 +272,11 @@ public:
     virtual status_t listAudioPatches(unsigned int *num_patches,
                                       struct audio_patch *patches);
 
+    /* Get downstream patches for given output */
+    virtual status_t getDownstreamPatches(audio_io_handle_t output,
+                                          unsigned int *num_patches,
+                                          struct audio_patch *patches);
+
     /* Set audio port configuration */
     virtual status_t setAudioPortConfig(const struct audio_port_config *config);
 
