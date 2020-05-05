@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "565ebd9f_94dfc087",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-05T18:46:49Z",
+      "side": 1,
+      "message": "i like this better.\n\nthings I would probably do if I\u0027m setting this up\n\ninputId {\n   // audio streams\n   \u003calphabetized list\n   // video streams\n   \u003calphabetized\u003e\n}",
+      "range": {
+        "startLine": 53,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 6
+      },
+      "revId": "20555790a050b0515ed81cc6d6f0b7d90918c29b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f70ab8c4_115cc83b",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-05T18:46:49Z",
+      "side": 1,
+      "message": "i\u0027d alphabetize this list.\nperhaps alphabetize within 2 groups:   audio and then video.\nimage (heic) could be a 3rd bucket.\n\nnow that the code doesn\u0027t care what order these are in, let\u0027s make it easy for people to find things here.",
+      "range": {
+        "startLine": 81,
+        "startChar": 7,
+        "endLine": 84,
+        "endChar": 8
+      },
+      "revId": "20555790a050b0515ed81cc6d6f0b7d90918c29b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3ea4597_f2ebec54",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 604,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-05T18:46:49Z",
+      "side": 1,
+      "message": "my understanding is that this will make a mpeg4 container that has 1 stream, which is our avc_1 clip from above.\n\nwhat tests do we have that tests something like \"create an mpeg4 with an avc video and aac audio\" and then verify the result.\n\nso I think we need a test suite that has things like make_tuple(\"mpeg4\", AVC_1, AAC_1)\n[and should also be able to say make_tuple(\"mpeg4\", AAC_1, AVC_1) -- we should be able to feed the streams to the writer either way...]",
+      "range": {
+        "startLine": 604,
+        "startChar": 42,
+        "endLine": 604,
+        "endChar": 69
+      },
+      "revId": "20555790a050b0515ed81cc6d6f0b7d90918c29b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
