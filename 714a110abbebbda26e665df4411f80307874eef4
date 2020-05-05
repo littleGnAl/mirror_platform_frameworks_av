@@ -258,6 +258,30 @@
       "revId": "714a110abbebbda26e665df4411f80307874eef4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb72fbd2_1aae3e5e",
+        "filename": "media/libmedia/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-05T19:26:59Z",
+      "side": 1,
+      "message": "Marking this as resolved as CL has Code-Review +2",
+      "parentUuid": "0797058d_ca385614",
+      "range": {
+        "startLine": 377,
+        "startChar": 3,
+        "endLine": 377,
+        "endChar": 42
+      },
+      "revId": "714a110abbebbda26e665df4411f80307874eef4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
