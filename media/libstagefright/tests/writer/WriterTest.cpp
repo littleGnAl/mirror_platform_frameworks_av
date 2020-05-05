@@ -525,6 +525,152 @@ TEST_P(WriteFunctionalityTest, MultiStartStopPauseTest) {
     close(fd);
 }
 
+TEST_P(WriteFunctionalityTest, InvalidInputTest) {
+    if (mDisableTest) return;
+    ALOGV("Validates writer's behavior for invalid inputs");
+
+    // Test writers for invalid FD value
+    int32_t fd = -1;
+    int32_t status = createWriter(fd);
+    if (status != OK) {
+        ALOGV("createWriter failed for invalid FD, this is expected behavior");
+        return;
+    }
+
+    // If writer was created for invalid fd, test it further.
+    string inputFile = gEnv->getRes();
+    string inputInfo = gEnv->getRes();
+    configFormat param;
+    bool isAudio;
+    string writerFormat = get<0>(GetParam());
+    inputId inpId = get<1>(GetParam());
+    ASSERT_NE(inpId, UNUSED_ID) << "Test expects first inputId to be a valid id";
+
+    getFileDetails(inputFile, inputInfo, param, isAudio, inpId);
+    ASSERT_NE(inputFile.compare(gEnv->getRes()), 0) << "No input file specified";
+
+    ASSERT_NO_FATAL_FAILURE(getInputBufferInfo(inputFile, inputInfo));
+    status = addWriterSource(isAudio, param);
+    if (status != OK) {
+        ALOGV("addWriterSource failed for invalid FD, this is expected behavior");
+        return;
+    }
+
+    // start the writer with valid argument but invalid FD
+    status = mWriter->start(mFileMeta.get());
+    if (status != OK) {
+        ALOGV("Writer start failed for invalid FD, this is expected behavior");
+        return;
+    }
+
+    status = sendBuffersToWriter(mInputStream[0], mBufferInfo[0], mInputFrameId[0],
+                                 mCurrentTrack[0], 0, mBufferInfo[0].size());
+    ASSERT_NE((status_t)OK, status) << "Writer didn't report error for invalid FD";
+
+    mCurrentTrack[0]->stop();
+    mWriter->stop();
+}
+
+TEST_P(WriteFunctionalityTest, MalFormedDataTest) {
+    if (mDisableTest) return;
+    // Enable test for Ogg writer
+    ASSERT_NE(mWriterName, OGG) << "TODO(b/160105646)";
+    ALOGV("Test writer for malformed inputs");
+
+    int32_t fd =
+            open(OUTPUT_FILE_NAME, O_CREAT | O_LARGEFILE | O_TRUNC | O_RDWR, S_IRUSR | S_IWUSR);
+    ASSERT_GE(fd, 0) << "Failed to open output file to dump writer's data";
+
+    string writerFormat = get<0>(GetParam());
+    int32_t status = createWriter(fd);
+    ASSERT_EQ(status, (status_t)OK)
+            << "Failed to create writer for " << writerFormat << " output format";
+
+    string inputFile = gEnv->getRes();
+    string inputInfo = gEnv->getRes();
+    configFormat param;
+    bool isAudio;
+    inputId inpId = get<1>(GetParam());
+    ASSERT_NE(inpId, UNUSED_ID) << "Test expects first inputId to be a valid id";
+
+    getFileDetails(inputFile, inputInfo, param, isAudio, inpId);
+    ASSERT_NE(inputFile.compare(gEnv->getRes()), 0) << "No input file specified";
+
+    ASSERT_NO_FATAL_FAILURE(getInputBufferInfo(inputFile, inputInfo));
+    // Remove CSD data from input
+    mNumCsds[0] = 0;
+    status = addWriterSource(isAudio, param);
+    if (status != OK) {
+        ALOGV("%s writer failed to addSource after removing CSD from input", writerFormat.c_str());
+        return;
+    }
+
+    status = mWriter->start(mFileMeta.get());
+    ASSERT_EQ((status_t)OK, status) << "Could not start the writer";
+
+    // Skip first few frames. These may contain sync frames also.
+    int32_t frameID = mInputFrameId[0] + mBufferInfo[0].size() / 4;
+    status = sendBuffersToWriter(mInputStream[0], mBufferInfo[0], frameID, mCurrentTrack[0], 0,
+                                 mBufferInfo[0].size());
+    ASSERT_EQ((status_t)OK, status) << writerFormat << " writer failed";
+
+    mCurrentTrack[0]->stop();
+    Vector<String16> args;
+    mWriter->dump(fd, args);
+    ASSERT_EQ((status_t)OK, status) << "Failed to dump statistics from writer";
+
+    status = mWriter->stop();
+    ASSERT_EQ((status_t)OK, status) << "Failed to stop the writer";
+    close(fd);
+}
+
+// This test is specific to MPEG4Writer to test more APIs
+TEST_P(WriteFunctionalityTest, Mpeg4WriterTest) {
+    if (mDisableTest) return;
+    if (mWriterName != standardWriters::MPEG4) return;
+    ALOGV("Test MPEG4 writer specific APIs");
+
+    int32_t fd =
+            open(OUTPUT_FILE_NAME, O_CREAT | O_LARGEFILE | O_TRUNC | O_RDWR, S_IRUSR | S_IWUSR);
+    ASSERT_GE(fd, 0) << "Failed to open output file to dump writer's data";
+
+    int32_t status = createWriter(fd);
+    ASSERT_EQ(status, (status_t)OK) << "Failed to create writer for mpeg4 output format";
+
+    string inputFile = gEnv->getRes();
+    string inputInfo = gEnv->getRes();
+    configFormat param;
+    bool isAudio;
+    inputId inpId = get<1>(GetParam());
+    ASSERT_NE(inpId, UNUSED_ID) << "Test expects first inputId to be a valid id";
+
+    getFileDetails(inputFile, inputInfo, param, isAudio, inpId);
+    ASSERT_NE(inputFile.compare(gEnv->getRes()), 0) << "No input file specified";
+
+    ASSERT_NO_FATAL_FAILURE(getInputBufferInfo(inputFile, inputInfo));
+    status = addWriterSource(isAudio, param);
+    ASSERT_EQ((status_t)OK, status) << "Failed to add source for mpeg4 Writer";
+
+    // signal meta data for the writer
+    sp<MPEG4Writer> mp4writer = static_cast<MPEG4Writer *>(mWriter.get());
+    mp4writer->setInterleaveDuration(kDefaultInterleaveDuration);
+    mp4writer->setGeoData(kDefaultLatitudex10000, kDefaultLongitudex10000);
+    mp4writer->setCaptureRate(kDefaultFPS);
+
+    status = mWriter->start(mFileMeta.get());
+    ASSERT_EQ((status_t)OK, status) << "Could not start the writer";
+
+    status = sendBuffersToWriter(mInputStream[0], mBufferInfo[0], mInputFrameId[0],
+                                 mCurrentTrack[0], 0, mBufferInfo[0].size());
+    ASSERT_EQ((status_t)OK, status) << "mpeg4 writer failed";
+
+    mCurrentTrack[0]->stop();
+    status = mWriter->stop();
+    ASSERT_EQ((status_t)OK, status) << "Failed to stop the writer";
+    mp4writer.clear();
+    close(fd);
+}
+
 class ListenerTest
     : public WriterTest,
       public ::testing::TestWithParam<tuple<
@@ -657,6 +803,7 @@ INSTANTIATE_TEST_SUITE_P(ListenerTestAll, ListenerTest,
                                            make_tuple("amrwb", AMR_WB_1, UNUSED_ID, 0.5, 0.5, 1),
                                            make_tuple("mpeg2Ts", AAC_1, UNUSED_ID, 0.2, 1, 1),
                                            make_tuple("mpeg4", AAC_1, UNUSED_ID, 0.4, 0.3, 0.25),
+                                           make_tuple("mpeg4", AAC_1, UNUSED_ID, 0.3, 1, 0.5),
                                            make_tuple("ogg", OPUS_1, UNUSED_ID, 0.7, 0.3, 1)));
 
 // TODO: (b/144476164)
