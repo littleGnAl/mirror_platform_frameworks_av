@@ -525,6 +525,52 @@ TEST_P(WriteFunctionalityTest, MultiStartStopPauseTest) {
     close(fd);
 }
 
+TEST_P(WriteFunctionalityTest, InvalidInputTest) {
+    if (mDisableTest) return;
+    ALOGV("Validates writer's behavior for invalid inputs");
+
+    // Test writers for invalid FD value
+    int32_t fd = -1;
+    int32_t status = createWriter(fd);
+    if (status != OK) {
+        ALOGV("createWriter failed for invalid FD, this is expected behavior");
+        return;
+    }
+
+    // If writer was created for invalid fd, test it further.
+    string inputFile = gEnv->getRes();
+    string inputInfo = gEnv->getRes();
+    configFormat param;
+    bool isAudio;
+    string writerFormat = get<0>(GetParam());
+    inputId inpId = get<1>(GetParam());
+    ASSERT_NE(inpId, UNUSED_ID) << "Test expects first inputId to be a valid id";
+
+    getFileDetails(inputFile, inputInfo, param, isAudio, inpId);
+    ASSERT_NE(inputFile.compare(gEnv->getRes()), 0) << "No input file specified";
+
+    ASSERT_NO_FATAL_FAILURE(getInputBufferInfo(inputFile, inputInfo));
+    status = addWriterSource(isAudio, param);
+    if (status != OK) {
+        ALOGV("addWriterSource failed for invalid FD, this is expected behavior");
+        return;
+    }
+
+    // start the writer with valid argument but invalid FD
+    status = mWriter->start(mFileMeta.get());
+    if (status != OK) {
+        ALOGV("Writer start failed for invalid FD, this is expected behavior");
+        return;
+    }
+
+    status = sendBuffersToWriter(mInputStream[0], mBufferInfo[0], mInputFrameId[0],
+                                 mCurrentTrack[0], 0, mBufferInfo[0].size());
+    ASSERT_NE((status_t)OK, status) << "Writer didn't report error for invalid FD";
+
+    mCurrentTrack[0]->stop();
+    mWriter->stop();
+}
+
 class ListenerTest
     : public WriterTest,
       public ::testing::TestWithParam<tuple<
