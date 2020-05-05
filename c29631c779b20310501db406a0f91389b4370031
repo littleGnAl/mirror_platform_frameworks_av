@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8865f473_67fc5fc5",
+        "filename": "services/mediaanalytics/MediaAnalyticsService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-05T23:22:41Z",
+      "side": 1,
+      "message": "agree that this is better than re-calculating size() all the time.\n\nwe have restructured most of this code, so there aren\u0027t as many places where this is relevant.\nI think there was 1 place left where .size() was used this way.",
+      "range": {
+        "startLine": 127,
+        "startChar": 4,
+        "endLine": 128,
+        "endChar": 28
+      },
+      "revId": "c29631c779b20310501db406a0f91389b4370031",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
