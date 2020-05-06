@@ -22,6 +22,30 @@
       "revId": "98fc9bccc5c8733fa97a3fcf3fb341be98325f99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "84b1f604_000e2fff",
+        "filename": "media/libstagefright/foundation/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1570907
+      },
+      "writtenOn": "2020-05-06T05:37:28Z",
+      "side": 1,
+      "message": "Excluding the following source files as these use Android properties like property_get_bool(\"media.stagefright.log-uri\", false) which are not available on host.\nAdded the same as a comment in Android.bp also for reference.",
+      "parentUuid": "2957e955_06340074",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 99,
+        "endChar": 10
+      },
+      "revId": "98fc9bccc5c8733fa97a3fcf3fb341be98325f99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
