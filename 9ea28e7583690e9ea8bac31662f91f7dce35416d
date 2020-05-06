@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e30a247_0f221909",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-05-06T17:01:16Z",
+      "side": 1,
+      "message": "we need to understand how this can happen: th way the cache works is that it should be updated whenever a device is added or removed or when the routing rules change (e.g forced usage).\nIt is normally safe to use the cache from methods not changing the routing rules",
+      "range": {
+        "startLine": 10,
+        "startChar": 31,
+        "endLine": 11,
+        "endChar": 67
+      },
+      "revId": "9ea28e7583690e9ea8bac31662f91f7dce35416d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a49c501_49b04a2f",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5005,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-05-06T17:01:16Z",
+      "side": 1,
+      "message": "we should maybe change the logic that decides to close an output so that an output used by a SW audio patch is not closed.",
+      "range": {
+        "startLine": 5005,
+        "startChar": 0,
+        "endLine": 5005,
+        "endChar": 80
+      },
+      "revId": "9ea28e7583690e9ea8bac31662f91f7dce35416d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
