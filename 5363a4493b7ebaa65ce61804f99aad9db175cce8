@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ef27c57b_840e8127",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 831,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-06T21:43:17Z",
+      "side": 1,
+      "message": "pretty sure this should be LE.\nimagine the extractor hands us the extracted track data as 1 massive blob.\noffset\u003d\u003d0 in that case and we can take as many as mExtractorOutputSize[] bytes.\n\nif we were working on the index into the buffer, than LT is appropriate.",
+      "range": {
+        "startLine": 831,
+        "startChar": 16,
+        "endLine": 831,
+        "endChar": 25
+      },
+      "revId": "5363a4493b7ebaa65ce61804f99aad9db175cce8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
