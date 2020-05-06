@@ -46,6 +46,30 @@
       "revId": "98fc9bccc5c8733fa97a3fcf3fb341be98325f99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6662e145_230a39e5",
+        "filename": "media/libstagefright/foundation/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-06T18:13:03Z",
+      "side": 1,
+      "message": "let\u0027s make property_get_bool() and friends available for host.\n\nthat will require a little work in system/core/libcutils/\nbut is a more correct place to be handling this.",
+      "parentUuid": "84b1f604_000e2fff",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 99,
+        "endChar": 10
+      },
+      "revId": "98fc9bccc5c8733fa97a3fcf3fb341be98325f99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
