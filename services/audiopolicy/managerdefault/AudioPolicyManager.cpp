@@ -244,7 +244,9 @@ status_t AudioPolicyManager::setDeviceConnectionStateInt(const sp<DeviceDescript
                     sp<SwAudioOutputDescriptor> desc = mOutputs.valueFor(output);
                     // close unused outputs after device disconnection or direct outputs that have
                     // been opened by checkOutputsForDevice() to query dynamic parameters
-                    if ((state == AUDIO_POLICY_DEVICE_STATE_UNAVAILABLE) ||
+                    // Do not close output on which AudioSource succeeded to be rerouted
+                    if (((state == AUDIO_POLICY_DEVICE_STATE_UNAVAILABLE) &&
+                         !hasSourceOnOutput(output)) ||
                             (((desc->mFlags & AUDIO_OUTPUT_FLAG_DIRECT) != 0) &&
                                 (desc->mDirectOpenCount == 0))) {
                         closeOutput(output);
@@ -3841,8 +3843,9 @@ status_t AudioPolicyManager::releaseAudioPatchInternal(audio_patch_handle_t hand
                 sp<SwAudioOutputDescriptor> outputDesc =
                         mOutputs.getOutputFromId(patch->sources[1].id);
                 if (outputDesc == NULL) {
-                    ALOGE("%s output not found for id %d", __func__, patch->sources[0].id);
-                    return BAD_VALUE;
+                    ALOGW("%s output not found for id %d", __func__, patch->sources[0].id);
+                    // releaseOutput has already called closeOuput in case of direct output
+                    return NO_ERROR;
                 }
                 if (patchDesc->getHandle() != outputDesc->getPatchHandle()) {
                     // force SwOutput patch removal as AF counter part patch has already gone.
@@ -4106,12 +4109,13 @@ status_t AudioPolicyManager::connectAudioSource(const sp<SourceClientDescriptor>
 
     // make sure we only have one patch per source.
     disconnectAudioSource(sourceDesc);
+    sourceDesc->setPatchHandle(AUDIO_PATCH_HANDLE_NONE);
 
     audio_attributes_t attributes = sourceDesc->attributes();
     sp<DeviceDescriptor> srcDevice = sourceDesc->srcDevice();
 
     DeviceVector sinkDevices =
-            mEngine->getOutputDevicesForAttributes(attributes, nullptr, true);
+            mEngine->getOutputDevicesForAttributes(attributes, nullptr, false /*fromCache*/);
     ALOG_ASSERT(!sinkDevices.isEmpty(), "connectAudioSource(): no device found for attributes");
     sp<DeviceDescriptor> sinkDevice = sinkDevices.itemAt(0);
     ALOG_ASSERT(mAvailableOutputDevices.contains(sinkDevice), "%s: Device %s not available",
@@ -4441,6 +4445,18 @@ sp<SourceClientDescriptor> AudioPolicyManager::getSourceForAttributesOnOutput(
         }
     }
     return source;
+}
+
+bool AudioPolicyManager::hasSourceOnOutput(audio_io_handle_t output)
+{
+    for (size_t i = 0; i < mAudioSources.size(); i++)  {
+        sp<SourceClientDescriptor> sourceDesc = mAudioSources.valueAt(i);
+        if (sourceDesc != 0 && sourceDesc->swOutput().promote() != 0 &&
+                sourceDesc->swOutput().promote()->mIoHandle == output) {
+            return true;
+        }
+    }
+    return false;
 }
 
 // ----------------------------------------------------------------------------
@@ -5240,6 +5256,17 @@ bool AudioPolicyManager::followsSameRouting(const audio_attributes_t &lAttr,
             mEngine->getProductStrategyForAttributes(rAttr);
 }
 
+void AudioPolicyManager::checkAudioSourceForAttributes(const audio_attributes_t &attr)
+{
+    for (size_t i = 0; i < mAudioSources.size(); i++)  {
+        sp<SourceClientDescriptor> sourceDesc = mAudioSources.valueAt(i);
+        if (followsSameRouting(attr, sourceDesc->attributes()) &&
+                sourceDesc->getPatchHandle() == AUDIO_PATCH_HANDLE_NONE) {
+            connectAudioSource(sourceDesc);
+        }
+    }
+}
+
 void AudioPolicyManager::checkOutputForAttributes(const audio_attributes_t &attr)
 {
     auto psId = mEngine->getProductStrategyForAttributes(attr);
@@ -5335,7 +5362,7 @@ void AudioPolicyManager::checkOutputForAttributes(const audio_attributes_t &attr
                                 newDevices.types());
             }
             sp<SourceClientDescriptor> source = getSourceForAttributesOnOutput(srcOut, attr);
-            if (source != 0){
+            if (source != 0) {
                 connectAudioSource(source);
             }
         }
@@ -5358,6 +5385,7 @@ void AudioPolicyManager::checkOutputForAllStrategies()
     for (const auto &strategy : mEngine->getOrderedProductStrategies()) {
         auto attributes = mEngine->getAllAttributesForProductStrategy(strategy).front();
         checkOutputForAttributes(attributes);
+        checkAudioSourceForAttributes(attributes);
     }
 }
 
