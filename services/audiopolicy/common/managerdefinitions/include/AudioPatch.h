@@ -61,6 +61,15 @@ public:
     status_t listAudioPatches(unsigned int *num_patches, struct audio_patch *patches) const;
 
     void dump(String8 *dst) const;
+
+    /**
+     * @brief findPatchInvolvingSourceMix searches the first patch handle involving a source mix
+     * port referred by its portId. Normally, mix port are involved only in one patch at a given
+     * time, except for output that might be reused and attached to a SW Bridge convention patch.
+     * @param portId of the mix port
+     * @return valid patch handle if found, AUDIO_PATCH_HANDLE_NONE otherwise
+     */
+    audio_patch_handle_t findPatchInvolvingSourceMix(audio_port_handle_t portId);
 };
 
 } // namespace android

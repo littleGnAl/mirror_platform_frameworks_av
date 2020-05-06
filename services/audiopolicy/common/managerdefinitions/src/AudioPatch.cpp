@@ -133,6 +133,20 @@ status_t AudioPatchCollection::listAudioPatches(unsigned int *num_patches,
     return NO_ERROR;
 }
 
+audio_patch_handle_t AudioPatchCollection::findPatchInvolvingSourceMix(audio_port_handle_t portId)
+{
+    for (ssize_t i = (ssize_t)size() - 1; i >= 0; i--)  {
+        sp<AudioPatch> patch = valueAt(i);
+        for (size_t j = 0; j < patch->mPatch.num_sources; ++j) {
+            if (patch->mPatch.sources[j].type == AUDIO_PORT_TYPE_MIX &&
+                    patch->mPatch.sources[j].id == portId) {
+                return keyAt(i);
+            }
+        }
+    }
+    return AUDIO_PATCH_HANDLE_NONE;
+}
+
 void AudioPatchCollection::dump(String8 *dst) const
 {
     dst->append("\nAudio Patches:\n");

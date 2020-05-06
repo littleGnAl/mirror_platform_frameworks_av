@@ -3981,7 +3981,7 @@ status_t AudioPolicyManager::connectAudioSource(const sp<SourceClientDescriptor>
     sp<DeviceDescriptor> srcDevice = sourceDesc->srcDevice();
 
     DeviceVector sinkDevices =
-            mEngine->getOutputDevicesForAttributes(attributes, nullptr, true);
+            mEngine->getOutputDevicesForAttributes(attributes, nullptr, false /*fromCache*/);
     ALOG_ASSERT(!sinkDevices.isEmpty(), "connectAudioSource(): no device found for attributes");
     sp<DeviceDescriptor> sinkDevice = sinkDevices.itemAt(0);
     ALOG_ASSERT(mAvailableOutputDevices.contains(sinkDevice), "%s: Device %s not available",
@@ -5001,6 +5001,15 @@ void AudioPolicyManager::closeOutput(audio_io_handle_t output)
                     patchDesc->getAfHandle(), 0);
         mAudioPatches.removeItemsAt(index);
         mpClientInterface->onAudioPatchListUpdate();
+    } else {
+        // This output may be involved in a SW Bridge, and owned by APM (not AF)
+        audio_patch_handle_t swBridgePatch =
+                mAudioPatches.findPatchInvolvingSourceMix(closingOutput->getId());
+        if (swBridgePatch != AUDIO_PATCH_HANDLE_NONE) {
+            sp<AudioPatch> patch = mAudioPatches.valueFor(swBridgePatch);
+            ALOGV("%s: SW Bridge Patch involving Source Mix Port found", __func__);
+            (void) releaseAudioPatchInternal(patch->getHandle());
+        }
     }
 
     if (closingOutputWasActive) {
