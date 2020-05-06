@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "e73f6738_bd8e08c4",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-05-06T08:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "356a689b_73db2662",
+      "range": {
+        "startLine": 759,
+        "startChar": 26,
+        "endLine": 759,
+        "endChar": 28
+      },
+      "revId": "de9c7671b52805f986fba678b2b35a21a3e7278d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14ca38d8_f45e1a50",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-05T21:26:44Z",
       "side": 1,
       "message": "so for an input file that is 1M, we\u0027re going to allocate 2M worth of buffer?\nI would expect the extractor output to be no larger than the input.\n\nif it was doing a decode, i could see it getting larger. but don\u0027t understand why it\nwould be larger in the extractor....",
+      "range": {
+        "startLine": 761,
+        "startChar": 50,
+        "endLine": 761,
+        "endChar": 66
+      },
+      "revId": "de9c7671b52805f986fba678b2b35a21a3e7278d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9f9b6141_5c502327",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 761,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-05-06T08:57:02Z",
+      "side": 1,
+      "message": "Few extractors like flac, midi and wav decodes the file.\nSo we have kept the buffer size as 2x.",
+      "parentUuid": "14ca38d8_f45e1a50",
       "range": {
         "startLine": 761,
         "startChar": 50,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "da822c4d_55402a2d",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-05-06T08:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c1a53f36_9e87fe4b",
+      "range": {
+        "startLine": 766,
+        "startChar": 25,
+        "endLine": 766,
+        "endChar": 30
+      },
+      "revId": "de9c7671b52805f986fba678b2b35a21a3e7278d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b5170efd_798dfbd3",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 5
@@ -91,6 +163,30 @@
       "revId": "de9c7671b52805f986fba678b2b35a21a3e7278d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9553d8f5_cbf51ce6",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-05-06T08:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b5170efd_798dfbd3",
+      "range": {
+        "startLine": 773,
+        "startChar": 22,
+        "endLine": 773,
+        "endChar": 32
+      },
+      "revId": "de9c7671b52805f986fba678b2b35a21a3e7278d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -117,6 +213,30 @@
     },
     {
       "key": {
+        "uuid": "ade8d39b_2d470ebf",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 787,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-05-06T08:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7ddd2de0_c520a11d",
+      "range": {
+        "startLine": 787,
+        "startChar": 24,
+        "endLine": 787,
+        "endChar": 33
+      },
+      "revId": "de9c7671b52805f986fba678b2b35a21a3e7278d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0833ddf1_e2d98249",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 5
@@ -137,6 +257,30 @@
       "revId": "de9c7671b52805f986fba678b2b35a21a3e7278d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca62d5aa_6bfa8752",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 825,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-05-06T08:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0833ddf1_e2d98249",
+      "range": {
+        "startLine": 825,
+        "startChar": 15,
+        "endLine": 825,
+        "endChar": 37
+      },
+      "revId": "de9c7671b52805f986fba678b2b35a21a3e7278d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -163,6 +307,30 @@
     },
     {
       "key": {
+        "uuid": "0755a181_ac61ba1b",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-05-06T08:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6cf100b_5fb178cc",
+      "range": {
+        "startLine": 853,
+        "startChar": 46,
+        "endLine": 853,
+        "endChar": 59
+      },
+      "revId": "de9c7671b52805f986fba678b2b35a21a3e7278d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59ec3d0b_176ea5c9",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 5
@@ -183,6 +351,30 @@
       "revId": "de9c7671b52805f986fba678b2b35a21a3e7278d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d82417a_ee12417b",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 862,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-05-06T08:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59ec3d0b_176ea5c9",
+      "range": {
+        "startLine": 862,
+        "startChar": 4,
+        "endLine": 862,
+        "endChar": 12
+      },
+      "revId": "de9c7671b52805f986fba678b2b35a21a3e7278d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -209,6 +401,30 @@
     },
     {
       "key": {
+        "uuid": "b8c7637a_ac155f4f",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 866,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-05-06T08:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2af91cf_185ab23e",
+      "range": {
+        "startLine": 864,
+        "startChar": 32,
+        "endLine": 866,
+        "endChar": 97
+      },
+      "revId": "de9c7671b52805f986fba678b2b35a21a3e7278d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5041145d_751fc078",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 5
@@ -229,6 +445,30 @@
       "revId": "de9c7671b52805f986fba678b2b35a21a3e7278d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32534493_9b19fbbe",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 871,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-05-06T08:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5041145d_751fc078",
+      "range": {
+        "startLine": 871,
+        "startChar": 3,
+        "endLine": 871,
+        "endChar": 5
+      },
+      "revId": "de9c7671b52805f986fba678b2b35a21a3e7278d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -255,6 +495,30 @@
     },
     {
       "key": {
+        "uuid": "c7bf73c5_b557793f",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 882,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-05-06T08:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6471321c_d7341199",
+      "range": {
+        "startLine": 882,
+        "startChar": 21,
+        "endLine": 882,
+        "endChar": 25
+      },
+      "revId": "de9c7671b52805f986fba678b2b35a21a3e7278d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0e8ca77a_183bf025",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 5
@@ -275,6 +539,30 @@
       "revId": "de9c7671b52805f986fba678b2b35a21a3e7278d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f59ab238_71162b93",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 889,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-05-06T08:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e8ca77a_183bf025",
+      "range": {
+        "startLine": 888,
+        "startChar": 27,
+        "endLine": 889,
+        "endChar": 80
+      },
+      "revId": "de9c7671b52805f986fba678b2b35a21a3e7278d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
