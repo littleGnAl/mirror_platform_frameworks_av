@@ -697,6 +697,7 @@ protected:
 
         sp<SourceClientDescriptor> getSourceForAttributesOnOutput(audio_io_handle_t output,
                                                                   const audio_attributes_t &attr);
+        bool hasSourceOnOutput(audio_io_handle_t output);
 
         void cleanUpForDevice(const sp<DeviceDescriptor>& deviceDesc);
 
