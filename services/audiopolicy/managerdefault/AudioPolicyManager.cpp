@@ -241,7 +241,9 @@ status_t AudioPolicyManager::setDeviceConnectionStateInt(const sp<DeviceDescript
                     sp<SwAudioOutputDescriptor> desc = mOutputs.valueFor(output);
                     // close unused outputs after device disconnection or direct outputs that have
                     // been opened by checkOutputsForDevice() to query dynamic parameters
-                    if ((state == AUDIO_POLICY_DEVICE_STATE_UNAVAILABLE) ||
+                    // Do not close output on which AudioSource succeeded to be rerouted
+                    if (((state == AUDIO_POLICY_DEVICE_STATE_UNAVAILABLE) &&
+                         !hasSourceOnOutput(output)) ||
                             (((desc->mFlags & AUDIO_OUTPUT_FLAG_DIRECT) != 0) &&
                                 (desc->mDirectOpenCount == 0))) {
                         closeOutput(output);
@@ -3981,7 +3983,7 @@ status_t AudioPolicyManager::connectAudioSource(const sp<SourceClientDescriptor>
     sp<DeviceDescriptor> srcDevice = sourceDesc->srcDevice();
 
     DeviceVector sinkDevices =
-            mEngine->getOutputDevicesForAttributes(attributes, nullptr, true);
+            mEngine->getOutputDevicesForAttributes(attributes, nullptr, false /*fromCache*/);
     ALOG_ASSERT(!sinkDevices.isEmpty(), "connectAudioSource(): no device found for attributes");
     sp<DeviceDescriptor> sinkDevice = sinkDevices.itemAt(0);
     ALOG_ASSERT(mAvailableOutputDevices.contains(sinkDevice), "%s: Device %s not available",
@@ -4304,6 +4306,18 @@ sp<SourceClientDescriptor> AudioPolicyManager::getSourceForAttributesOnOutput(
         }
     }
     return source;
+}
+
+bool AudioPolicyManager::hasSourceOnOutput(audio_io_handle_t output)
+{
+    for (size_t i = 0; i < mAudioSources.size(); i++)  {
+        sp<SourceClientDescriptor> sourceDesc = mAudioSources.valueAt(i);
+        if (sourceDesc != 0 && sourceDesc->swOutput().promote() != 0 &&
+                sourceDesc->swOutput().promote()->mIoHandle == output) {
+            return true;
+        }
+    }
+    return false;
 }
 
 // ----------------------------------------------------------------------------
