@@ -97,6 +97,30 @@
     },
     {
       "key": {
+        "uuid": "e6864d59_2b306297",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-05-07T17:04:09Z",
+      "side": 1,
+      "message": "OK, in the context of checkOutputForAttributes it is legit to not use the cache",
+      "parentUuid": "328ea0c0_2d3b7eb3",
+      "range": {
+        "startLine": 10,
+        "startChar": 31,
+        "endLine": 11,
+        "endChar": 67
+      },
+      "revId": "9ea28e7583690e9ea8bac31662f91f7dce35416d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a49c501_49b04a2f",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 1
