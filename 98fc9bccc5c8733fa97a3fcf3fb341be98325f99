@@ -118,6 +118,30 @@
       "revId": "98fc9bccc5c8733fa97a3fcf3fb341be98325f99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a4a404fd_27515839",
+        "filename": "media/libstagefright/foundation/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-07T05:19:15Z",
+      "side": 1,
+      "message": "Ray,\nSure. We will try and make the changes in system/core/libcutils such that property_get() functions return default values for host builds.",
+      "parentUuid": "1b02ed03_6daacf22",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 99,
+        "endChar": 10
+      },
+      "revId": "98fc9bccc5c8733fa97a3fcf3fb341be98325f99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
