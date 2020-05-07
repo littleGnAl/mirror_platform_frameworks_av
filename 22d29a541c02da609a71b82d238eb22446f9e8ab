@@ -93,6 +93,30 @@
       "revId": "22d29a541c02da609a71b82d238eb22446f9e8ab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23368821_5522acd5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-05-07T17:11:20Z",
+      "side": 1,
+      "message": "OK but this shows that the fact that we do not update the HwGain if the volume source is not active in SwAudioOutputDescriptor::setVolume() is fishy.",
+      "parentUuid": "f098e9dd_fe296fb0",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 65
+      },
+      "revId": "22d29a541c02da609a71b82d238eb22446f9e8ab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
