@@ -70,6 +70,30 @@
       "revId": "98fc9bccc5c8733fa97a3fcf3fb341be98325f99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2a0405be_74149e3a",
+        "filename": "media/libstagefright/foundation/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-07T00:29:14Z",
+      "side": 1,
+      "message": "Ray,\nproperty_get_bool() and others are in system/core/libcutils and they in turn need __system_property_get() which is in libc/bionic\n\nAlso for host builds, property_get() functions can\u0027t return anything meaningful as there are no properties set. So not sure if it makes sense to enable these functions for host builds.\n\nIf the goal is to ensure we don\u0027t exclude these two files here, we can check if moving all calls to property_get* functions under a macro like DISABLE_PROPERTY_GET and define that macro for host builds.\nWould that approach be fine?",
+      "parentUuid": "6662e145_230a39e5",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 99,
+        "endChar": 10
+      },
+      "revId": "98fc9bccc5c8733fa97a3fcf3fb341be98325f99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
