@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "84657568_69f289ac",
+        "filename": "media/libaudiofoundation/AudioPort.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1692997
+      },
+      "writtenOn": "2020-05-07T22:07:23Z",
+      "side": 1,
+      "message": "Do you think the fact that there is a nullptr inside mProfiles may be a symptom of an underlying bug somewhere else?",
+      "revId": "5ba5d08dc9d61d019f1c35c3799ed2e4ebe82e7e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
