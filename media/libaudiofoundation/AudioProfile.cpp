@@ -190,7 +190,7 @@ void AudioProfileVector::clearProfiles()
 sp<AudioProfile> AudioProfileVector::getFirstValidProfile() const
 {
     for (const auto &profile : *this) {
-        if (profile->isValid()) {
+        if (profile != nullptr && profile->isValid()) {
             return profile;
         }
     }
@@ -200,7 +200,7 @@ sp<AudioProfile> AudioProfileVector::getFirstValidProfile() const
 sp<AudioProfile> AudioProfileVector::getFirstValidProfileFor(audio_format_t format) const
 {
     for (const auto &profile : *this) {
-        if (profile->isValid() && profile->getFormat() == format) {
+        if (profile != nullptr && profile->isValid() && profile->getFormat() == format) {
             return profile;
         }
     }
@@ -211,7 +211,7 @@ FormatVector AudioProfileVector::getSupportedFormats() const
 {
     FormatVector supportedFormats;
     for (const auto &profile : *this) {
-        if (profile->hasValidFormat()) {
+        if (profile != nullptr && profile->hasValidFormat()) {
             supportedFormats.push_back(profile->getFormat());
         }
     }
@@ -221,7 +221,7 @@ FormatVector AudioProfileVector::getSupportedFormats() const
 bool AudioProfileVector::hasDynamicChannelsFor(audio_format_t format) const
 {
     for (const auto &profile : *this) {
-        if (profile->getFormat() == format && profile->isDynamicChannels()) {
+        if (profile != nullptr && profile->getFormat() == format && profile->isDynamicChannels()) {
             return true;
         }
     }
@@ -231,7 +231,7 @@ bool AudioProfileVector::hasDynamicChannelsFor(audio_format_t format) const
 bool AudioProfileVector::hasDynamicFormat() const
 {
     for (const auto &profile : *this) {
-        if (profile->isDynamicFormat()) {
+        if (profile != nullptr && profile->isDynamicFormat()) {
             return true;
         }
     }
@@ -241,7 +241,7 @@ bool AudioProfileVector::hasDynamicFormat() const
 bool AudioProfileVector::hasDynamicProfile() const
 {
     for (const auto &profile : *this) {
-        if (profile->isDynamic()) {
+        if (profile != nullptr && profile->isDynamic()) {
             return true;
         }
     }
@@ -251,7 +251,7 @@ bool AudioProfileVector::hasDynamicProfile() const
 bool AudioProfileVector::hasDynamicRateFor(audio_format_t format) const
 {
     for (const auto &profile : *this) {
-        if (profile->getFormat() == format && profile->isDynamicRate()) {
+        if (profile != nullptr && profile->getFormat() == format && profile->isDynamicRate()) {
             return true;
         }
     }

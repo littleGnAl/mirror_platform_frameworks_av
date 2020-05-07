@@ -45,7 +45,7 @@ void AudioPort::toAudioPort(struct audio_port *port) const {
     SampleRateSet flatenedRates;
     ChannelMaskSet flatenedChannels;
     for (const auto& profile : mProfiles) {
-        if (profile->isValid()) {
+        if (profile != nullptr && profile->isValid()) {
             audio_format_t formatToExport = profile->getFormat();
             const SampleRateSet &ratesToExport = profile->getSampleRates();
             const ChannelMaskSet &channelsToExport = profile->getChannels();
