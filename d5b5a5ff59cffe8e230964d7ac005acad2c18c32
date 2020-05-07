@@ -22,6 +22,30 @@
       "revId": "d5b5a5ff59cffe8e230964d7ac005acad2c18c32",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d928ec9e_4156b1fb",
+        "filename": "media/libstagefright/foundation/AString.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1570907
+      },
+      "writtenOn": "2020-05-07T15:57:07Z",
+      "side": 1,
+      "message": "Done. Updated to check the return value and return in case of error.",
+      "parentUuid": "977b6264_76d8d664",
+      "range": {
+        "startLine": 390,
+        "startChar": 4,
+        "endLine": 390,
+        "endChar": 39
+      },
+      "revId": "d5b5a5ff59cffe8e230964d7ac005acad2c18c32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
