@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "057c9111_6e343c9a",
+        "filename": "media/libstagefright/foundation/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-07T04:11:23Z",
+      "side": 1,
+      "message": "why do we need this?\n\nis this turning these warnings on? (aren\u0027t they in the default set enabled part of\nthe entire build?\n\nif it\u0027s not already on everywhere, let\u0027s add it for any build of this library, not just\nthe host build. and then fix any places that generate a warning because of it.",
+      "range": {
+        "startLine": 101,
+        "startChar": 16,
+        "endLine": 101,
+        "endChar": 37
+      },
+      "revId": "48dade640b3a80b90ed6d8e3616e5bea5287144e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

@@ -94,6 +94,30 @@
       "revId": "98fc9bccc5c8733fa97a3fcf3fb341be98325f99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b02ed03_6daacf22",
+        "filename": "media/libstagefright/foundation/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-07T04:11:23Z",
+      "side": 1,
+      "message": "all of the property_get_XXX() invocations in ADebug and FoundationUtils\nsupply default values. that\u0027s meaningful.\n\nchanging it over there is the right thing for the platform.",
+      "parentUuid": "2a0405be_74149e3a",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 99,
+        "endChar": 10
+      },
+      "revId": "98fc9bccc5c8733fa97a3fcf3fb341be98325f99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
