@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "977b6264_76d8d664",
+        "filename": "media/libstagefright/foundation/AString.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-07T12:59:49Z",
+      "side": 1,
+      "message": "we need to use the return value here to control whether we execute line 394 ..397;\nbuffer is invalid if the vasprintf wasn\u0027t successful.",
+      "range": {
+        "startLine": 390,
+        "startChar": 4,
+        "endLine": 390,
+        "endChar": 39
+      },
+      "revId": "d5b5a5ff59cffe8e230964d7ac005acad2c18c32",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
