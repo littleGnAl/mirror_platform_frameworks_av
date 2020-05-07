@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "328ea0c0_2d3b7eb3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-05-07T16:19:11Z",
+      "side": 1,
+      "message": "After a long day of fight, I came to the conclusion that only not from cache is viable. If we do not use from cache, and if the AudioSource could not be rerouted on another device while the given sink was disconnected, I will not be reconnected on newly available device.\n\nBTW: I added this case in my functional tests of disconnecting the source to identify all these potential fix.",
+      "parentUuid": "4605b659_1613e28f",
+      "range": {
+        "startLine": 10,
+        "startChar": 31,
+        "endLine": 11,
+        "endChar": 67
+      },
+      "revId": "9ea28e7583690e9ea8bac31662f91f7dce35416d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a49c501_49b04a2f",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 1
