@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000002856848",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1304017?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "5aeb5847_1f78fd59",
+          "description": "Change to \"services/audiopolicy/managerdefault/AudioPolicyManager.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+              "range": {
+                "startLine": 244,
+                "startChar": 36,
+                "endLine": 244,
+                "endChar": 41
+              },
+              "replacement": "output"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "68a8509b_0ed3294c",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-05-07T17:21:35Z",
+      "side": 1,
+      "message": "Common typo found: \"ouput\" -- should it be \"output\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 244,
+        "startChar": 36,
+        "endLine": 244,
+        "endChar": 41
+      },
+      "revId": "c205bbb1e2dc71de52162c99c203df23bce04fd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
