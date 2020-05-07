@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "4605b659_1613e28f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-05-07T11:19:50Z",
+      "side": 1,
+      "message": "Here is the sequence:\n1/ setDeviceConnectionStateInt UNAVAILABLE\n\t2/checkForDeviceAndOutputChanges\n\t\t3/checkOutputForAllStrategies\n\t\t\t4/checkOutputForAttributes  -\u003e Cannot update cache as need previous / new device for attributes\n\t\t\t\t5/connectAudioSource\n\t\t3-1/updateDevicesAndOutputs();\n\n\t2-1/updateDevicesAndOutputs();\n\n\nSo 2 solutions within :connectAudioSource Either do not use cache or bailing out instead of ALOG_ASSERT(!sinkDevices.isEmpty(), \"connectAudioSource(): no device found for attributes\");",
+      "parentUuid": "d712c055_646d6946",
+      "range": {
+        "startLine": 10,
+        "startChar": 31,
+        "endLine": 11,
+        "endChar": 67
+      },
+      "revId": "9ea28e7583690e9ea8bac31662f91f7dce35416d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a49c501_49b04a2f",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 1
