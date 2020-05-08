@@ -536,7 +536,8 @@ class ListenerTest
 };
 
 TEST_P(ListenerTest, SetMaxFileLimitsTest) {
-    if (mDisableTest) return;
+    // TODO(b/151892414): Enable test for other writers
+    if (mDisableTest || mWriterName != MPEG4) return;
     ALOGV("Validates writer when max file limits are set");
 
     string writerFormat = get<0>(GetParam());
