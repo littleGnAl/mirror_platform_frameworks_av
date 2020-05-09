@@ -39,6 +39,18 @@
 #include <sys/cdefs.h>
 #include <sys/types.h>
 
+#ifndef __ANDROID__
+// Values copied from 'android/versioning.h' and 'android/api-level.h' which are not available on
+// non Android systems
+#ifndef __ANDROID_API__
+#define __ANDROID_API__ 10000
+#endif
+
+#ifndef __INTRODUCED_IN
+#define __INTRODUCED_IN(api_level)
+#endif
+#endif
+
 #include "NdkMediaError.h"
 
 __BEGIN_DECLS
