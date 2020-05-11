@@ -3685,9 +3685,12 @@ status_t AudioPolicyManager::releaseAudioPatchInternal(audio_patch_handle_t hand
         sp<SwAudioOutputDescriptor> outputDesc = mOutputs.getOutputFromId(patch->sources[0].id);
         if (outputDesc == NULL) {
             ALOGV("%s output not found for id %d", __func__, patch->sources[0].id);
+            removeAudioPatch(patchDesc->getHandle());
             return BAD_VALUE;
         }
-
+        if (patchDesc->getHandle() != outputDesc->getPatchHandle()) {
+            removeAudioPatch(patchDesc->getHandle());
+        }
         setOutputDevices(outputDesc,
                          getNewOutputDevices(outputDesc, true /*fromCache*/),
                          true,
