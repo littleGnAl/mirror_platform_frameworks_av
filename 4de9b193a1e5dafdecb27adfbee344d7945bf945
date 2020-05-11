@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c1884570_299d13f5",
+        "filename": "media/ndk/include/media/NdkMediaFormat.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-11T05:09:42Z",
+      "side": 1,
+      "message": "let\u0027s use full path names from the android root.\nI think both come out of bionic as the true source.\n\nmaybe match up the files with the definitions...\nso a // from bionic/libc/android/versioning.h just before the introduced_in()\nand the api-level comment before the android_api (and perhaps that the 10000 is \u0027future\u0027)",
+      "range": {
+        "startLine": 43,
+        "startChar": 22,
+        "endLine": 43,
+        "endChar": 69
+      },
+      "revId": "4de9b193a1e5dafdecb27adfbee344d7945bf945",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
