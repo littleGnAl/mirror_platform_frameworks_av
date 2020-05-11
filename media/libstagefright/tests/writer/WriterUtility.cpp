@@ -18,7 +18,12 @@
 #define LOG_TAG "WriterUtility"
 #include <utils/Log.h>
 
+#include <inttypes.h>
+#include <stdio.h>
+#include <sys/stat.h>
+
 #include <media/stagefright/MediaBuffer.h>
+#include <media/stagefright/MediaDefs.h>
 
 #include "WriterUtility.h"
 
@@ -106,4 +111,134 @@ int32_t writeHeaderBuffers(ifstream &inputStream, vector<BufferInfo> &bufferInfo
         }
     }
     return 0;
+}
+
+AMediaExtractor *createExtractor(string inputFileName, int32_t *trackCount) {
+    ALOGV("Input file for extractor: %s", inputFileName.c_str());
+
+    FILE *inputFp = fopen(inputFileName.c_str(), "rb");
+    if (!inputFp) {
+        ALOGE("Unable to open %s file for reading", inputFileName.c_str());
+        return nullptr;
+    }
+
+    ALOGV("Reading file properties");
+    struct stat buf;
+    int32_t status = stat(inputFileName.c_str(), &buf);
+    if (status != 0) {
+        ALOGE("Failed to get properties of input file for extractor");
+        return nullptr;
+    }
+    size_t fileSize = buf.st_size;
+    ALOGV("Size of input file to extractor: %zu", fileSize);
+
+    int32_t fd = fileno(inputFp);
+    if (fd < 0) {
+        ALOGE("Failed to open writer's output file to validate");
+        return nullptr;
+    }
+
+    AMediaExtractor *extractor = AMediaExtractor_new();
+    if (!extractor) {
+        ALOGE("Failed to create extractor");
+        return nullptr;
+    }
+
+    status = AMediaExtractor_setDataSourceFd(extractor, fd, 0, fileSize);
+    if (status != AMEDIA_OK) {
+        ALOGE("Failed to set data source for file : %s", inputFileName.c_str());
+        return nullptr;
+    }
+
+    int32_t numTracks = AMediaExtractor_getTrackCount(extractor);
+    if (numTracks <= 0) {
+        ALOGE("No tracks reported by extractor");
+    }
+    *trackCount = numTracks;
+    ALOGV("Number of tracks reported by extractor : %d", numTracks);
+
+    fclose(inputFp);
+    return extractor;
+}
+
+int32_t extract(AMediaExtractor *extractor, configFormat &params, vector<BufferInfo> &bufferInfo,
+                int32_t idx, uint8_t *buffer, size_t bufSize, size_t *bytesExtracted) {
+
+    AMediaExtractor_selectTrack(extractor, idx);
+    AMediaFormat *format = AMediaExtractor_getTrackFormat(extractor, idx);
+    ALOGI("Track format = %s", AMediaFormat_toString(format));
+
+    const char *mime = nullptr;
+    AMediaFormat_getString(format, AMEDIAFORMAT_KEY_MIME, &mime);
+    if (!mime) {
+        ALOGE("Track mime is NULL");
+        return -1;
+    }
+    ALOGI("Track mime = %s", mime);
+    strncpy(params.mime, mime, kMimeSize);
+
+    if (!strncmp(mime, "audio/", 6)) {
+        if (!AMediaFormat_getInt32(format, AMEDIAFORMAT_KEY_CHANNEL_COUNT, &params.channelCount)) {
+            ALOGE("Extractor did not find channel count");
+            return -1;
+        }
+        if (!AMediaFormat_getInt32(format, AMEDIAFORMAT_KEY_SAMPLE_RATE, &params.sampleRate)) {
+            ALOGE("Extractor did not find sample rate");
+            return -1;
+        }
+    } else if (!strncmp(mime, "video/", 6) || !strncmp(mime, "image/", 6)) {
+        if (!AMediaFormat_getInt32(format, AMEDIAFORMAT_KEY_WIDTH, &params.width)) {
+            ALOGE("Extractor did not find width");
+            return -1;
+        }
+        if (!AMediaFormat_getInt32(format, AMEDIAFORMAT_KEY_HEIGHT, &params.height)) {
+            ALOGE("Extractor did not find height");
+            return -1;
+        }
+    } else {
+        ALOGE("Invalid mime: %s", mime);
+        return -1;
+    }
+
+    // Get CSD data
+    int index = 0;
+    void *csdBuf;
+    while (1) {
+        csdBuf = nullptr;
+        char csdName[16];
+        snprintf(csdName, 16, "csd-%d", index);
+        size_t csdSize = 0;
+        bool csdFound = AMediaFormat_getBuffer(format, csdName, &csdBuf, &csdSize);
+        if (!csdFound || !csdBuf || !csdSize) break;
+
+        bufferInfo.push_back({static_cast<int32_t>(csdSize), CODEC_CONFIG_FLAG, 0});
+        *bytesExtracted += csdSize;
+        memcpy(buffer, csdBuf, csdSize);
+        index++;
+    }
+
+    // Get frame data
+    uint8_t *sampleBuffer = (uint8_t *)malloc(bufSize);
+    if (!sampleBuffer) {
+        ALOGE("Failed to allocate the buffer of size %zu", bufSize);
+        return -1;
+    }
+    while (1) {
+        int bytesRead = AMediaExtractor_readSampleData(extractor, sampleBuffer, bufSize);
+        if (bytesRead <= 0) break;
+        memcpy(buffer, sampleBuffer, bytesRead);
+
+        int64_t pts = AMediaExtractor_getSampleTime(extractor);
+        uint32_t flag = AMediaExtractor_getSampleFlags(extractor);
+
+        if (mime == MEDIA_MIMETYPE_AUDIO_VORBIS) {
+            // Removing 4 bytes of AMEDIAFORMAT_KEY_VALID_SAMPLES from sample size
+            bytesRead = bytesRead - 4;
+        }
+        bufferInfo.push_back({bytesRead, flag, pts});
+        *bytesExtracted += bytesRead;
+        AMediaExtractor_advance(extractor);
+    }
+    free(sampleBuffer);
+    return OK;
 }
