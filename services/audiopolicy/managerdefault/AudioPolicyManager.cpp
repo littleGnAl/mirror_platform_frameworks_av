@@ -3685,9 +3685,9 @@ status_t AudioPolicyManager::releaseAudioPatchInternal(audio_patch_handle_t hand
         sp<SwAudioOutputDescriptor> outputDesc = mOutputs.getOutputFromId(patch->sources[0].id);
         if (outputDesc == NULL) {
             ALOGV("%s output not found for id %d", __func__, patch->sources[0].id);
+            removeAudioPatch(patchDesc->getHandle());
             return BAD_VALUE;
         }
-
         setOutputDevices(outputDesc,
                          getNewOutputDevices(outputDesc, true /*fromCache*/),
                          true,
@@ -3721,7 +3721,11 @@ status_t AudioPolicyManager::releaseAudioPatchInternal(audio_patch_handle_t hand
                     // releaseOutput has already called closeOuput in case of direct output
                     return NO_ERROR;
                 }
-                // Reset handle so that setOutputDevice will force new AF patch to reach the sink
+                if (patchDesc->getHandle() != outputDesc->getPatchHandle()) {
+                    // force SwOutput patch removal as AF counter part patch has already gone.
+                    ALOGV("%s reset patch handle on Output as different from SWBridge", __func__);
+                    removeAudioPatch(outputDesc->getPatchHandle());
+                }
                 outputDesc->setPatchHandle(AUDIO_PATCH_HANDLE_NONE);
                 setOutputDevices(outputDesc,
                                  getNewOutputDevices(outputDesc, true /*fromCache*/),
