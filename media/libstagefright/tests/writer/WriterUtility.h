@@ -25,6 +25,7 @@
 #include <media/stagefright/foundation/ADebug.h>
 #include <media/stagefright/foundation/AMessage.h>
 
+#include <media/NdkMediaExtractor.h>
 #include <media/stagefright/MediaAdapter.h>
 
 #include "WriterListener.h"
@@ -34,11 +35,20 @@
 constexpr uint32_t kMaxTrackCount = 2;
 constexpr uint32_t kMaxCSDStrlen = 16;
 constexpr uint32_t kMaxCount = 20;
+constexpr int32_t kMimeSize = 128;
 
 struct BufferInfo {
     int32_t size;
     uint32_t flags;
     int64_t timeUs;
+};
+
+struct configFormat {
+    char mime[kMimeSize];
+    int32_t width;
+    int32_t height;
+    int32_t sampleRate;
+    int32_t channelCount;
 };
 
 int32_t sendBuffersToWriter(ifstream &inputStream, vector<BufferInfo> &bufferInfo,
@@ -48,5 +58,10 @@ int32_t sendBuffersToWriter(ifstream &inputStream, vector<BufferInfo> &bufferInf
 
 int32_t writeHeaderBuffers(ifstream &inputStream, vector<BufferInfo> &bufferInfo,
                            int32_t &inputFrameId, sp<AMessage> &format, int32_t numCsds);
+
+AMediaExtractor *createExtractor(string inputFileName, int32_t *trackCount);
+
+int32_t extract(AMediaExtractor *extractor, configFormat &params, vector<BufferInfo> &bufferInfo,
+                int32_t idx, uint8_t *buffer, size_t fileSize, size_t *bytesExtracted);
 
 #endif  // WRITER_UTILITY_H_

@@ -29,13 +29,14 @@ cc_test {
         "liblog",
         "libutils",
         "libmedia",
+        "libmediandk",
+        "libstagefright",
+        "libstagefright_foundation",
     ],
 
     static_libs: [
         "libstagefright_webm",
         "libdatasource",
-        "libstagefright",
-        "libstagefright_foundation",
         "libstagefright_esds",
         "libogg",
     ],
