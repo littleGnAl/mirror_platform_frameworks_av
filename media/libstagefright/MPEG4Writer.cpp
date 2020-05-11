@@ -75,8 +75,6 @@ static const int64_t kMaxCttsOffsetTimeUs = 30 * 60 * 1000000LL;  // 30 minutes
 static const size_t kESDSScratchBufferSize = 10;  // kMaxAtomSize in Mpeg4Extractor 64MB
 
 static const char kMetaKey_Version[]    = "com.android.version";
-static const char kMetaKey_Manufacturer[]      = "com.android.manufacturer";
-static const char kMetaKey_Model[]      = "com.android.model";
 
 #ifdef SHOW_BUILD
 static const char kMetaKey_Build[]      = "com.android.build";
@@ -670,18 +668,6 @@ void MPEG4Writer::addDeviceMeta() {
         mMoovExtraSize += sizeof(kMetaKey_Version) + n + 32;
     }
 
-    if (property_get_bool("media.recorder.show_manufacturer_and_model", false)) {
-        if (property_get("ro.product.manufacturer", val, NULL)
-                && (n = strlen(val)) > 0) {
-            mMetaKeys->setString(kMetaKey_Manufacturer, val, n + 1);
-            mMoovExtraSize += sizeof(kMetaKey_Manufacturer) + n + 32;
-        }
-        if (property_get("ro.product.model", val, NULL)
-                && (n = strlen(val)) > 0) {
-            mMetaKeys->setString(kMetaKey_Model, val, n + 1);
-            mMoovExtraSize += sizeof(kMetaKey_Model) + n + 32;
-        }
-    }
 #ifdef SHOW_MODEL_BUILD
     if (property_get("ro.build.display.id", val, NULL)
             && (n = strlen(val)) > 0) {
