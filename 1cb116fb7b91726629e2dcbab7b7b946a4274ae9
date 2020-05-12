@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "507133a5_f9e82578",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-05-12T09:08:26Z",
+      "side": 1,
+      "message": "I couldn\u0027t find any way to make gtest accept variable argument.\nThe class definition forces tuple to contain \u003cstring, inputId, inputId, float\u003e value",
+      "parentUuid": "43814307_f25a93d6",
+      "range": {
+        "startLine": 666,
+        "startChar": 43,
+        "endLine": 666,
+        "endChar": 84
+      },
+      "revId": "1cb116fb7b91726629e2dcbab7b7b946a4274ae9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8ee78e34_9617f513",
         "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
         "patchSetId": 5
@@ -36,6 +60,30 @@
       "writtenOn": "2020-05-11T19:29:41Z",
       "side": 1,
       "message": "should be testing both orderings.\n\nmake_tuple(\"mpeg4\", AVC_1, AAC_1, 0.75)\nmake_tuple(\"mpeg4\", AAC_1, AVC_1, 0.75)\n\nmaybe not for all combinations, but for at least some of them. Definitely add some of these.\n\nI think we need a test case with 2 audio tracks.\n\nAt some point, being able to write a camcorder with alternate language (let\u0027s suppose that the translator were to get fast enough.  or more likely, someone has an editor that opens the\nvideo+audio, gets translation of the audio, and then wants to write video+audio+translatedAudio.\nthat points towards needing some 3-input tests.",
+      "range": {
+        "startLine": 674,
+        "startChar": 42,
+        "endLine": 674,
+        "endChar": 83
+      },
+      "revId": "1cb116fb7b91726629e2dcbab7b7b946a4274ae9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2fb2305c_56276a05",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-05-12T09:08:26Z",
+      "side": 1,
+      "message": "Added A+V A+A\nI wasn\u0027t able to get gtest to accept variable arguments.\nHence, I couldn\u0027t add 3 input test vectors. Do you want me to create a new class to accept 3 tracks as TEST parameter to write V+A+A?",
+      "parentUuid": "8ee78e34_9617f513",
       "range": {
         "startLine": 674,
         "startChar": 42,
