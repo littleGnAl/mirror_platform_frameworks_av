@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "988dd76b_8bf4c26f",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 668,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-12T14:46:31Z",
+      "side": 1,
+      "message": "while I want this case, since it is the flip of the \u003cavc,aac\u003e case on line 675,\nwe do need to keep the aac-only into mpeg4 container test case.\n\nso similarly to the other places where I suggested we sort the lists into audio and video sections.  let\u0027s do:\n\n-- sort this list by container type\n-- make sure that we\u0027ve got coverage of the combinations that can go into that container.\n\ni expect \u0027aac\u0027 and \u0027amrxx\u0027 containers are currently ok -- that they can only handle 1\ninput and it has to be the types that are expressed here.\n\nusing mkv/webm as an example -- we know it handles video of vp8, vp9, etc.\nwe know it is to handle audio of opus, vorbis, etc\nso we should have a list of (vp8,vp9,none) * (opus,vorbis,none) * either order\nor 3*3*2 \u003d\u003d 18 different combinations of things we try to write into webm containers.\nwe get a little of that back because we might only do (vp9,-) and drop (-,vp9)\n\nthe exact sets here -- get it from the current CDD sections 5.1.3 and 5.1.8 which talks about codec/mime types and the containers to be supported.  While I think this list is more aimed at decoding, we can use it to guide what we put here.\n\nso certainly for webm and mpeg4, we want some prose that says\n\"these lists assembled from 5.1.3 and 5.1.8 of the cdd\" and gives the complete lists \nof \"mpeg4 can contain aac,flac,mp4, h263, h264, hevc, etc\".\nand then we\u0027d have the complete set of combinations listed in the tuples.\nand for combinations that we do not yet support [say because we don\u0027t do a particular\nencoder], we comment those out.\n\nthis is getting better.",
+      "range": {
+        "startLine": 668,
+        "startChar": 43,
+        "endLine": 668,
+        "endChar": 83
+      },
+      "revId": "3a026fa674b8bdaff52ea4a48752b6f921a8c5f0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

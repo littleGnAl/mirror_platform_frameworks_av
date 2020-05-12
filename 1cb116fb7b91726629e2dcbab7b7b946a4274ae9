@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "68d5e5af_bc69316c",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-12T14:46:31Z",
+      "side": 1,
+      "message": "ok; the variable arg aspect was a bit of a wish",
+      "parentUuid": "507133a5_f9e82578",
+      "range": {
+        "startLine": 666,
+        "startChar": 43,
+        "endLine": 666,
+        "endChar": 84
+      },
+      "revId": "1cb116fb7b91726629e2dcbab7b7b946a4274ae9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8ee78e34_9617f513",
         "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
         "patchSetId": 5
