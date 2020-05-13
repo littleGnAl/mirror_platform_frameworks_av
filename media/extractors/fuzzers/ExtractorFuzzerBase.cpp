@@ -116,3 +116,77 @@ bool ExtractorFuzzerBase::getMetadata() {
 void ExtractorFuzzerBase::setDataSourceFlags(uint32_t flags) {
   mBufferSource->setFlags(flags);
 }
+
+bool ExtractorFuzzerBase::seekAndExtractTracks() {
+  MediaBufferGroup* bufferGroup = new MediaBufferGroup();
+  if (!bufferGroup) {
+    return false;
+  }
+  for (size_t trackIndex = 0; trackIndex < mExtractor->countTracks(); ++trackIndex) {
+    MediaTrackHelper* track = mExtractor->getTrack(trackIndex);
+    if (!track) {
+      continue;
+    }
+
+    AMediaFormat* trackMetaData = AMediaFormat_new();
+    int64_t trackDuration = 0;
+    uint32_t flags = MediaExtractorPluginHelper::kIncludeExtensiveMetaData;
+    mExtractor->getTrackMetaData(trackMetaData, trackIndex, flags);
+    AMediaFormat_getInt64(trackMetaData, AMEDIAFORMAT_KEY_DURATION, &trackDuration);
+
+    seekAndExtractTrack(track, bufferGroup, trackDuration);
+    AMediaFormat_delete(trackMetaData);
+    delete track;
+  }
+  delete bufferGroup;
+  return true;
+}
+
+void ExtractorFuzzerBase::seekAndExtractTrack(MediaTrackHelper* track,
+                                              MediaBufferGroup* bufferGroup,
+                                              int64_t trackDuration) {
+  CMediaTrack* cTrack = wrap(track);
+  if (!cTrack) {
+    return;
+  }
+
+  media_status_t status = cTrack->start(track, bufferGroup->wrap());
+  if (status != AMEDIA_OK) {
+    free(cTrack);
+    return;
+  }
+
+  int32_t seekCount = 0;
+  std::vector<int64_t> seekToTimeStamp;
+  while (seekCount <= kFuzzerMaxSeekPointsCount) {
+    /* This ensures kFuzzerMaxSeekPointsCount seek points are within the clipDuration and 1 seek
+     * point is outside of the clipDuration.
+     */
+    int64_t timeStamp = (seekCount * trackDuration) / (kFuzzerMaxSeekPointsCount - 1);
+    seekToTimeStamp.push_back(timeStamp);
+    seekCount++;
+  }
+
+  std::vector<uint32_t> seekOptions;
+  seekOptions.push_back(CMediaTrackReadOptions::SEEK | CMediaTrackReadOptions::SEEK_CLOSEST);
+  seekOptions.push_back(CMediaTrackReadOptions::SEEK | CMediaTrackReadOptions::SEEK_CLOSEST_SYNC);
+  seekOptions.push_back(CMediaTrackReadOptions::SEEK | CMediaTrackReadOptions::SEEK_PREVIOUS_SYNC);
+  seekOptions.push_back(CMediaTrackReadOptions::SEEK | CMediaTrackReadOptions::SEEK_NEXT_SYNC);
+  seekOptions.push_back(CMediaTrackReadOptions::SEEK | CMediaTrackReadOptions::SEEK_FRAME_INDEX);
+
+  for (uint32_t seekOption : seekOptions) {
+    for (int64_t seekPts : seekToTimeStamp) {
+      MediaTrackHelper::ReadOptions* options =
+          new MediaTrackHelper::ReadOptions(seekOption, seekPts);
+      MediaBufferHelper* buffer = nullptr;
+      status = track->read(&buffer, options);
+      if (buffer) {
+        buffer->release();
+      }
+      delete options;
+    }
+  }
+
+  cTrack->stop(track);
+  free(cTrack);
+}
