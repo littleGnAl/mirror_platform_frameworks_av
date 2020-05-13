@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "019f0cdd_e46ea4f8",
+        "filename": "media/extractors/fuzzers/ExtractorFuzzerBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-13T16:08:48Z",
+      "side": 1,
+      "message": "this seems strangee that in the single-track, we don\u0027t return a value.\nyet in the \u0027alltracks\u0027 version just above, we are returning a boolean.\n\ni think these should be consistent.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 6
+      },
+      "revId": "e73c103554e78d651830e26808b6f1d8ee7559ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
