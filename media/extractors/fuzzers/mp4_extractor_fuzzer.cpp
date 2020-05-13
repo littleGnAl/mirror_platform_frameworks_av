@@ -57,6 +57,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t* data, size_t size) {
       extractor->getMetadata();
       extractor->extractTracks();
       extractor->getTracksMetadata();
+      extractor->seekAndExtractTracks();
     }
   }
   delete extractor;
