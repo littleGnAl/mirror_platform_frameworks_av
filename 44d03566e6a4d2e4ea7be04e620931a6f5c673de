@@ -22,6 +22,30 @@
       "revId": "44d03566e6a4d2e4ea7be04e620931a6f5c673de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3ef6b7c_1c56f69c",
+        "filename": "media/extractors/fuzzers/mkv_extractor_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-05-14T05:02:22Z",
+      "side": 1,
+      "message": "All the routines that were returning values previously, are now updated to return void",
+      "parentUuid": "8b1210dc_f1c3c2b9",
+      "range": {
+        "startLine": 58,
+        "startChar": 5,
+        "endLine": 58,
+        "endChar": 40
+      },
+      "revId": "44d03566e6a4d2e4ea7be04e620931a6f5c673de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
