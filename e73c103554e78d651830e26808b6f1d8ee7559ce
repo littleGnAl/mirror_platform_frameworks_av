@@ -46,6 +46,30 @@
       "revId": "e73c103554e78d651830e26808b6f1d8ee7559ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b09fa8b_261fbad4",
+        "filename": "media/extractors/fuzzers/ExtractorFuzzerBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-05-14T05:00:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "858369d5_306839dd",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 6
+      },
+      "revId": "e73c103554e78d651830e26808b6f1d8ee7559ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
