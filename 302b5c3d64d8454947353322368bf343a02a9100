@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8037e2be_92dbb32b",
+        "filename": "media/libstagefright/tests/ESDS/AndroidTest.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-14T05:24:18Z",
+      "side": 1,
+      "message": "let\u0027s include a version number from day 1.\nsince this is new, it would be \"ESDSTestRes-1.0.zip",
+      "range": {
+        "startLine": 22,
+        "startChar": 101,
+        "endLine": 22,
+        "endChar": 108
+      },
+      "revId": "302b5c3d64d8454947353322368bf343a02a9100",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aec3189b_4ff5c032",
+        "filename": "media/libstagefright/tests/ESDS/ESDSTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-14T05:24:18Z",
+      "side": 1,
+      "message": "I think we should clear mESDSData and mESDSSize when we get here.\n\n-- otherwise line 108 will cause a leak when it updates mESDSData\n-- otherwise other routines might use a stale value of mESDSData/mESDSSize",
+      "revId": "302b5c3d64d8454947353322368bf343a02a9100",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f2ef684_205976e5",
+        "filename": "media/libstagefright/tests/ESDS/ESDSTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-14T05:24:18Z",
+      "side": 1,
+      "message": "this code doesn\u0027t guarantee this.\nsince we do not set the content of malloc(), it could have been randomly set with\ndata that happens to be valid ESDS data.\n\nTo fix this -- you need to set the content of the invalidData buffer.",
+      "range": {
+        "startLine": 125,
+        "startChar": 13,
+        "endLine": 126,
+        "endChar": 1
+      },
+      "revId": "302b5c3d64d8454947353322368bf343a02a9100",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4f8091a_6bcc0c16",
+        "filename": "media/libstagefright/tests/ESDS/ESDSTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-14T05:24:18Z",
+      "side": 1,
+      "message": "this is not guaranteed to return non-null.\n\nif you want to force a test with a nonzero pointer:\n\ninvalidData \u003d malloc(1);\nESDS esds_zero(invalidData, 0);\n\n\nthis does also raise the question -- should we be testing\nESDS esds_null( NULL, 0);\n??",
+      "range": {
+        "startLine": 129,
+        "startChar": 9,
+        "endLine": 129,
+        "endChar": 34
+      },
+      "revId": "302b5c3d64d8454947353322368bf343a02a9100",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
