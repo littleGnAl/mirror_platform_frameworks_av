@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "15bdf897_2a1dc1cf",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-05-16T00:33:15Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we remove this restriction instead?\n\nIf we want to really support HW patches, there is no need to keep the notion of reachable device only a stream can be opened for this device. We should better consider a device reachable if properly listed in a route entry in audio policy config file.",
+      "range": {
+        "startLine": 770,
+        "startChar": 11,
+        "endLine": 771,
+        "endChar": 94
+      },
+      "revId": "78d7740fe8f678c40aa19955f5ecdf6b55129e7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
