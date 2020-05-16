@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4f3c751c_d1234bde",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-16T18:01:06Z",
+      "side": 1,
+      "message": "this is a timestamp and will be different for every execution.\nI think we need to point this out so people have a little understanding about why\nthat number keeps changing and they can\u0027t set up a script that always pulls the same filename.",
+      "range": {
+        "startLine": 203,
+        "startChar": 147,
+        "endLine": 203,
+        "endChar": 160
+      },
+      "revId": "901daf88864dcc87ce2e70ad1f556f68efc2ce64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f82973d3_7014585a",
+        "filename": "media/tests/benchmark/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-16T18:01:06Z",
+      "side": 1,
+      "message": "I\u0027d like to see the test do some automatic posting of the results to a web server somewhere -- so that we can have it automatically feed into some of our data analysis and dashboard machinery with no extra user steps.\n\ni suppose this could be under the control of some runtime flag that we can specify or omit on the invocation of the programs. said flag could include destination information + any needed credentials.",
+      "range": {
+        "startLine": 206,
+        "startChar": 5,
+        "endLine": 206,
+        "endChar": 54
+      },
+      "revId": "901daf88864dcc87ce2e70ad1f556f68efc2ce64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
