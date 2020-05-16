@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7d43845f_2fc20dc3",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-05-16T00:28:45Z",
+      "side": 1,
+      "message": "i don;t understand why we need to keep those outputs opened after all devices they can be routed to have been removed.\nIf still needed, please add a comment and move this logic to checkOutputsForDevice() so that this output is not included in the output list returned.",
+      "range": {
+        "startLine": 246,
+        "startChar": 26,
+        "endLine": 246,
+        "endChar": 43
+      },
+      "revId": "cf5e5aabde186f283f7f5b936370fd664bce5e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f3a3a68d_0459a470",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 5212,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-05-16T00:28:45Z",
+      "side": 1,
+      "message": "do we still need this in  checkOutputForAttributes:\n\n           sp\u003cSourceClientDescriptor\u003e source \u003d getSourceForAttributesOnOutput(srcOut, attr);\n            if (source !\u003d 0){\n                connectAudioSource(source);\n            }",
+      "range": {
+        "startLine": 5212,
+        "startChar": 8,
+        "endLine": 5212,
+        "endChar": 37
+      },
+      "revId": "cf5e5aabde186f283f7f5b936370fd664bce5e82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
