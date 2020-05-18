@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2a192cac_48908f54",
+        "filename": "media/codecs/g711/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-18T22:37:04Z",
+      "side": 1,
+      "message": "i\u0027d be happier with a group alias here.... \"android-media-fuzzing-monitor@google.com\"\nor something like that which we can manage outside of changing all of these files.\nthis includes changing who gets it after these files have been locked down with dr no policies.\n\nthis one, i feel strongly about.",
+      "range": {
+        "startLine": 35,
+        "startChar": 13,
+        "endLine": 35,
+        "endChar": 37
+      },
+      "revId": "7e1b26ce4c21fa012af0f36230121b9dd65a0d14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f20f9b5_da548cfb",
+        "filename": "media/codecs/g711/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-18T22:37:04Z",
+      "side": 1,
+      "message": "this is a buganizer component.\n\nat first blush, it\u0027s confusing because all of these components that we\u0027re fuzzing have the same component id. a different keyword might have made that less so. \"bug_componentid\" as a possibility.\n\nthis one, may be too late -- although it looks like kalder@ is making changes around the fuzzing support in Android.bp, so maybe it\u0027s not quite as hard.",
+      "range": {
+        "startLine": 37,
+        "startChar": 8,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "7e1b26ce4c21fa012af0f36230121b9dd65a0d14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
