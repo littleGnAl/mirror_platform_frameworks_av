@@ -32,4 +32,10 @@ cc_fuzz {
             enabled: false,
         },
     },
+    fuzz_config: {
+        cc: [
+            "hmahendrakar@google.com",
+        ],
+        componentid: 155276,
+    },
 }
