@@ -141,6 +141,30 @@
       "revId": "7e1b26ce4c21fa012af0f36230121b9dd65a0d14",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d141f571_b2e5f2e4",
+        "filename": "media/codecs/g711/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-19T18:45:34Z",
+      "side": 1,
+      "message": "Ray, Kris,\nThis open comment prevented the autosubmit.\nPlease let us know if there is any change needed here from us in the CL.",
+      "parentUuid": "2f20f9b5_da548cfb",
+      "range": {
+        "startLine": 37,
+        "startChar": 8,
+        "endLine": 37,
+        "endChar": 19
+      },
+      "revId": "7e1b26ce4c21fa012af0f36230121b9dd65a0d14",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
