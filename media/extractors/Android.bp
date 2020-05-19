@@ -21,7 +21,6 @@ cc_defaults {
 
     shared_libs: [
         "liblog",
-        "libmediandk#29",
     ],
 
     // extractors are supposed to work on Q(29)
@@ -45,5 +44,19 @@ cc_defaults {
             "unsigned-integer-overflow",
             "signed-integer-overflow",
         ],
+    },
+    target: {
+        android: {
+            shared_libs: [
+                "libmediandk#29",
+            ],
+        },
+        host: {
+            static_libs: [
+                "libutils",
+                "libmediandk_format",
+                "libmedia_ndkformatpriv",
+            ],
+        },
     },
 }
