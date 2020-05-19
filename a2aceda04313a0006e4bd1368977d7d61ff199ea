@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9112a788_950311e2",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-19T17:18:56Z",
+      "side": 1,
+      "message": "let\u0027s handle this the same way as inputFileName ---\nextract the param with something like:   string container \u003d get\u003c0\u003e(params)\nand then use container throughout the rest of the routine.\n\nthis improves readability.\n\nLooks like this applies pretty much throughout the entire file.",
+      "range": {
+        "startLine": 328,
+        "startChar": 44,
+        "endLine": 328,
+        "endChar": 59
+      },
+      "revId": "a2aceda04313a0006e4bd1368977d7d61ff199ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb039f20_e86db1ff",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-19T17:18:56Z",
+      "side": 1,
+      "message": "please sort this table by container type.",
+      "range": {
+        "startLine": 1058,
+        "startChar": 36,
+        "endLine": 1058,
+        "endChar": 55
+      },
+      "revId": "a2aceda04313a0006e4bd1368977d7d61ff199ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "960d2e37_7db4fdaf",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1058,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-19T17:18:56Z",
+      "side": 1,
+      "message": "add a comment at the top of this table that describes what each of the fields means.\nthe first two are easily guessed. the third column is not.\nlet\u0027s make it such that they don\u0027t have to guess.",
+      "range": {
+        "startLine": 1058,
+        "startChar": 79,
+        "endLine": 1058,
+        "endChar": 86
+      },
+      "revId": "a2aceda04313a0006e4bd1368977d7d61ff199ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
