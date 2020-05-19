@@ -21,7 +21,12 @@ cc_defaults {
 
     shared_libs: [
         "liblog",
-        "libmediandk#29",
+    ],
+
+    static_libs: [
+        "libutils",
+        "libmediandk_format",
+        "libmedia_ndkformatpriv",
     ],
 
     // extractors are supposed to work on Q(29)
