@@ -93,6 +93,7 @@ int32_t AAudioMixer::mix(int streamIndex, FifoBuffer *fifo, bool allowUnderflow)
             }
             mixPart(destination, (float *)wrappingBuffer.data[partIndex],
                     framesToMixFromPart);
+            memset(wrappingBuffer.data[partIndex], 0, fifo->convertFramesToBytes(framesToMixFromPart));
 
             destination += framesToMixFromPart * mSamplesPerFrame;
             framesLeft -= framesToMixFromPart;

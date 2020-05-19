@@ -87,13 +87,13 @@ aaudio_result_t AudioStreamInternalPlay::requestFlush() {
 }
 
 void AudioStreamInternalPlay::advanceClientToMatchServerPosition() {
-    int64_t readCounter = mAudioEndpoint.getDataReadCounter();
+    int64_t readCounter = mAudioEndpoint.getDataReadCounter() + getFramesPerBurst();
     int64_t writeCounter = mAudioEndpoint.getDataWriteCounter();
 
     // Bump offset so caller does not see the retrograde motion in getFramesRead().
     int64_t offset = writeCounter - readCounter;
     mFramesOffsetFromService += offset;
-    ALOGV("%s() readN = %lld, writeN = %lld, offset = %lld", __func__,
+    ALOGI("%s() readN = %lld, writeN = %lld, offset = %lld", __func__,
           (long long)readCounter, (long long)writeCounter, (long long)mFramesOffsetFromService);
 
     // Force writeCounter to match readCounter.
