@@ -22,6 +22,30 @@
       "revId": "bc2a6252ade65dcfb967c416f8a757405fa75fd7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2d50ddc_b349cbca",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3691,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-05-19T15:15:15Z",
+      "side": 1,
+      "message": "In fact, the patches that are leaking are not SW or HW bridge, but the patch created when setting an output device on a SWOutput. I will send you the exact sequence. \nhowever, I want to find a way to reuse initial patch created when APM initializes",
+      "parentUuid": "1336cc0a_04e5da5d",
+      "range": {
+        "startLine": 3691,
+        "startChar": 12,
+        "endLine": 3691,
+        "endChar": 65
+      },
+      "revId": "bc2a6252ade65dcfb967c416f8a757405fa75fd7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
