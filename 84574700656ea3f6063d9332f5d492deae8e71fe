@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "9802a928_5ec03854",
+        "filename": "media/extractors/fuzzers/ExtractorFuzzerBase.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-05-19T08:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89ccf5bd_14ce34ec",
+      "range": {
+        "startLine": 121,
+        "startChar": 42,
+        "endLine": 121,
+        "endChar": 68
+      },
+      "revId": "84574700656ea3f6063d9332f5d492deae8e71fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "95959dc1_2daaad50",
         "filename": "media/extractors/fuzzers/ExtractorFuzzerBase.cpp",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "84574700656ea3f6063d9332f5d492deae8e71fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "49b15029_5bf6d339",
+        "filename": "media/extractors/fuzzers/ExtractorFuzzerBase.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-05-19T08:35:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95959dc1_2daaad50",
+      "range": {
+        "startLine": 177,
+        "startChar": 5,
+        "endLine": 177,
+        "endChar": 13
+      },
+      "revId": "84574700656ea3f6063d9332f5d492deae8e71fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
