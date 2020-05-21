@@ -65,8 +65,25 @@ cc_library_static {
 
     header_libs: [
         "libstagefright_foundation_headers",
+        "libaudioclient_headers",
     ],
-    shared_libs: ["libmediandk"],
+
+    shared_libs: [
+        "libbinder",
+    ],
+
+    static_libs: [
+        "libmediandk_format",
+        "libmedia_ndkformatpriv",
+    ],
+
+    host_supported: true,
+    target: {
+        darwin: {
+            enabled: false,
+        },
+    },
+
     export_include_dirs: ["include"],
 }
 
