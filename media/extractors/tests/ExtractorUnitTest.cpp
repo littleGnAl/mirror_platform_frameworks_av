@@ -724,7 +724,8 @@ TEST_P(ConfigParamTest, ConfigParamValidation) {
     // validate the profile for the input clip
     int32_t profile;
     if (configParam.profile != kUndefined) {
-        if (AMediaFormat_getInt32(trackFormat, AMEDIAFORMAT_KEY_PROFILE, &profile)) {
+        if (AMediaFormat_getInt32(trackFormat, AMEDIAFORMAT_KEY_AAC_PROFILE, &profile) ||
+            AMediaFormat_getInt32(trackFormat, AMEDIAFORMAT_KEY_PROFILE, &profile)) {
             ASSERT_EQ(configParam.profile, profile) << "profile not as expected";
         } else {
             ASSERT_TRUE(false) << "profile not returned in extractor";
