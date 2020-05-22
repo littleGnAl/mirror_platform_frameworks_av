@@ -1,0 +1,268 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9702899a_927d2ab1",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-22T23:38:03Z",
+      "side": 1,
+      "message": "Similar to the change done in encoder, this should change to a local defaultStaticInfo",
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "86c941f5_9aa161d1",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-22T23:38:03Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 291,
+        "startChar": 0,
+        "endLine": 291,
+        "endChar": 27
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1b3a982f_7764bde2",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1252,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-22T23:38:03Z",
+      "side": 1,
+      "message": "remove redundant braces",
+      "range": {
+        "startLine": 1252,
+        "startChar": 0,
+        "endLine": 1252,
+        "endChar": 9
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b0d960f3_ed588144",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1258,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-22T23:38:03Z",
+      "side": 1,
+      "message": "When clips don\u0027t have these SEI messages, would this return an error?\nWe need to ensure that the decoder doesn\u0027t return an error if these SEI messages aren\u0027t present.",
+      "range": {
+        "startLine": 1253,
+        "startChar": 0,
+        "endLine": 1258,
+        "endChar": 13
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2ec3c782_518fcb70",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-22T23:38:03Z",
+      "side": 1,
+      "message": "these aren\u0027t necessary",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 9
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e1c0148_6193d021",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-22T23:38:03Z",
+      "side": 1,
+      "message": "since validFields is zero, does it really matter what are other values?\ni.e. can we just initialize defaultStaticInfo() to zero as below?\nIf type is needed to be initialized, just set that alone to 1 after zero initialization?\n\nC2HdrStaticMetadataStruct defaultStaticInfo{};",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 14
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fa002f0e_b76a0d7f",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-22T23:38:03Z",
+      "side": 1,
+      "message": "Remove",
+      "range": {
+        "startLine": 290,
+        "startChar": 24,
+        "endLine": 290,
+        "endChar": 31
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96dee28d_112c88b1",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-22T23:38:03Z",
+      "side": 1,
+      "message": "if validFields is zero, return at this level?",
+      "range": {
+        "startLine": 1008,
+        "startChar": 0,
+        "endLine": 1008,
+        "endChar": 73
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "469725fe_fb54ab97",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-22T23:38:03Z",
+      "side": 1,
+      "message": "make return of setHdrStaticParams and all the functions called within as void as we aren\u0027t looking at return values.",
+      "range": {
+        "startLine": 1005,
+        "startChar": 0,
+        "endLine": 1023,
+        "endChar": 1
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fb99891c_e287e5dc",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1108,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-22T23:38:03Z",
+      "side": 1,
+      "message": "these typecast are redundant",
+      "range": {
+        "startLine": 1108,
+        "startChar": 50,
+        "endLine": 1108,
+        "endChar": 58
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60fe8b37_dc1c07ca",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1125,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-22T23:38:03Z",
+      "side": 1,
+      "message": "redundant empty lines",
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "230c2fd9_58fa4d53",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1536,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-22T23:38:03Z",
+      "side": 1,
+      "message": "i don\u0027t think we need to check mHdrStaticInfo here,\nIt will never be null as it gets initialized to defaultInfo \n\nRemove the checks and directly call setHdrStaticParams",
+      "range": {
+        "startLine": 1531,
+        "startChar": 0,
+        "endLine": 1536,
+        "endChar": 5
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
