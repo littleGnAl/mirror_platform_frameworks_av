@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "af3ef001_93e15770",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-22T17:26:55Z",
+      "side": 1,
+      "message": "Current check can wrongly signal pass, if codecs othre than aac set aac_profile but not profile\n\nlet us change this as \nif (get profile)\n{ \ncompare profile\n}\nelse if (aac \u0026\u0026 get aac-profile)\n{\ncompare aac-profile\n}\nelse\n{\nerror\n}",
+      "revId": "6081615250cd75df2d177c53c4ce2806bd7294bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
