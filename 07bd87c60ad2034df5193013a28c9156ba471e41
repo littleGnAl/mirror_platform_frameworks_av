@@ -201,6 +201,30 @@
     },
     {
       "key": {
+        "uuid": "ce9f9ed6_22892c38",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-05-25T21:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ec3c782_518fcb70",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 9
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4e1c0148_6193d021",
         "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
         "patchSetId": 8
@@ -224,6 +248,30 @@
     },
     {
       "key": {
+        "uuid": "ce73646a_b55015ef",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-05-25T21:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e1c0148_6193d021",
+      "range": {
+        "startLine": 204,
+        "startChar": 0,
+        "endLine": 233,
+        "endChar": 14
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d79de96f_acb838ef",
         "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
         "patchSetId": 8
@@ -244,6 +292,30 @@
       "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3b261435_6d8cfeeb",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-05-25T21:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d79de96f_acb838ef",
+      "range": {
+        "startLine": 240,
+        "startChar": 61,
+        "endLine": 240,
+        "endChar": 65
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -317,6 +389,30 @@
     },
     {
       "key": {
+        "uuid": "c0db5ba2_942e19d4",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-05-25T21:43:42Z",
+      "side": 1,
+      "message": "Logical mistake. Will make the change to (me.v.hdrType !\u003d HDRStaticInfo::kType1) \u0026\u0026(me.v.hdrType !\u003d HDRStaticInfo::kType2)",
+      "parentUuid": "ae14d2e3_f9a502fb",
+      "range": {
+        "startLine": 337,
+        "startChar": 26,
+        "endLine": 337,
+        "endChar": 52
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "3ed9772e_06859979",
         "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
         "patchSetId": 8
@@ -337,6 +433,30 @@
       "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e953e142_b5456f14",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-05-25T21:43:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ed9772e_06859979",
+      "range": {
+        "startLine": 339,
+        "startChar": 30,
+        "endLine": 339,
+        "endChar": 33
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
