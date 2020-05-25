@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "fe7443a6_e5857484",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-05-25T19:02:12Z",
+      "side": 1,
+      "message": "ambient-illuminance belongs to Ambient Viewing Environment SEI where as avg, min and max in line 1556-1558 belong to Content Colour volume SEI.",
+      "parentUuid": "512d9ad2_fd85b6ad",
+      "range": {
+        "startLine": 1532,
+        "startChar": 41,
+        "endLine": 1532,
+        "endChar": 52
+      },
+      "revId": "0a6118ddf783d16e1809cc4a96935fddf842fa4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "88fbbf6b_616ab399",
         "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
         "patchSetId": 11
@@ -45,6 +69,30 @@
       "revId": "0a6118ddf783d16e1809cc4a96935fddf842fa4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "23ba1df3_7ad78b63",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-05-25T19:02:12Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "88fbbf6b_616ab399",
+      "range": {
+        "startLine": 46,
+        "startChar": 41,
+        "endLine": 46,
+        "endChar": 80
+      },
+      "revId": "0a6118ddf783d16e1809cc4a96935fddf842fa4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
