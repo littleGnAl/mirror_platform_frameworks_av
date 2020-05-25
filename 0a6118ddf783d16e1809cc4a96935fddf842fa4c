@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "512d9ad2_fd85b6ad",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 1532,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-25T05:18:56Z",
+      "side": 1,
+      "message": "just to check for sure -- not luminance as we see on lines 1556-1558?",
+      "range": {
+        "startLine": 1532,
+        "startChar": 41,
+        "endLine": 1532,
+        "endChar": 52
+      },
+      "revId": "0a6118ddf783d16e1809cc4a96935fddf842fa4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "88fbbf6b_616ab399",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-25T05:18:56Z",
+      "side": 1,
+      "message": "this reads a lot better as:\n\n   (((min)\u003c\u003d (val))  \u0026\u0026 ((val) \u003c\u003d (max)))\n\n[although my parenthesis might be off]",
+      "range": {
+        "startLine": 46,
+        "startChar": 41,
+        "endLine": 46,
+        "endChar": 80
+      },
+      "revId": "0a6118ddf783d16e1809cc4a96935fddf842fa4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
