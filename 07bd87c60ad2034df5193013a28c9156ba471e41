@@ -224,6 +224,29 @@
     },
     {
       "key": {
+        "uuid": "d79de96f_acb838ef",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-25T02:18:49Z",
+      "side": 1,
+      "message": "should we be using HDRStaticInfo::kType[12] here?",
+      "range": {
+        "startLine": 240,
+        "startChar": 61,
+        "endLine": 240,
+        "endChar": 65
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fa002f0e_b76a0d7f",
         "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
         "patchSetId": 8
@@ -268,6 +291,52 @@
       "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ae14d2e3_f9a502fb",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-25T02:18:49Z",
+      "side": 1,
+      "message": "so.... \"unless I\u0027m setting it to type2, i\u0027m resetting it to this older version\".\nis this limiting us to only configuring type2 hdr static data?",
+      "range": {
+        "startLine": 337,
+        "startChar": 26,
+        "endLine": 337,
+        "endChar": 52
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3ed9772e_06859979",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-25T02:18:49Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be pulled from somewhere in oldMe.v.XXX?\n\nand if not then \"1\" is not the right setting here.  it should be HDRStaticInfo::kType[12]\ni\u0027m not sure which one...",
+      "range": {
+        "startLine": 339,
+        "startChar": 30,
+        "endLine": 339,
+        "endChar": 33
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
