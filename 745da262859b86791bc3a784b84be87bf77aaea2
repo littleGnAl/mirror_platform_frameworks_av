@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9790d13c_fce23d2d",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-26T18:32:40Z",
+      "side": 1,
+      "message": "remove braces\nthese are redundant",
+      "range": {
+        "startLine": 201,
+        "startChar": 1,
+        "endLine": 201,
+        "endChar": 9
+      },
+      "revId": "745da262859b86791bc3a784b84be87bf77aaea2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1431be8a_5b87104e",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-26T18:32:40Z",
+      "side": 1,
+      "message": "C2HdrStaticMetadataStruct defaultStaticInfo{};\n\nshould be enough, no need for a separate memset",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 204,
+        "endChar": 77
+      },
+      "revId": "745da262859b86791bc3a784b84be87bf77aaea2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
