@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c46e3d51_71fd0b62",
+        "filename": "media/extractors/fuzzers/amr_extractor_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-26T17:18:31Z",
+      "side": 1,
+      "message": "this block appears to be common across all of these;\n\nconvert it to a routine in ExtractorFuzzerBase and have\nall of these places invoke that.",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 3
+      },
+      "revId": "c1760d0538bc2fbc39fc98ba4c185053b79bb5b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
