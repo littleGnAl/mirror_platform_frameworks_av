@@ -282,6 +282,30 @@
       "revId": "4f60ec8985b05ee92eaaed282a03131b3b4c3e43",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7206c0c8_285b869e",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 774,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-26T17:32:30Z",
+      "side": 1,
+      "message": "remember that we\u0027re testing for the proper behavior, not the current behavior.\n\nthis is from mpeg4 extractor ::getTrackMetaData()  \n\nTrack *track \u003d mFirstTrack;\n    while (index \u003e 0) {\n        if (track \u003d\u003d NULL) {\n            return AMEDIA_ERROR_UNKNOWN;\n        }\n\n        track \u003d track-\u003enext;\n        --index;\n    }\n\n    if (track \u003d\u003d NULL) {\n        return AMEDIA_ERROR_UNKNOWN;\n    }\n\n\nso it certainly appears to return an error if the track is not valid.\n\n\nmy direction here ---\nwe should be asserting on the status\n(e.g. we expect it to be not-ok).\nany extractors that do not return an appropriate status will need to be fixed.",
+      "parentUuid": "ef289a78_e5ddfd5f",
+      "range": {
+        "startLine": 774,
+        "startChar": 11,
+        "endLine": 774,
+        "endChar": 81
+      },
+      "revId": "4f60ec8985b05ee92eaaed282a03131b3b4c3e43",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
