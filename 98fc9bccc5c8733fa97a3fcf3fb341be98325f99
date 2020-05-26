@@ -142,6 +142,30 @@
       "revId": "98fc9bccc5c8733fa97a3fcf3fb341be98325f99",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f3fbbe8_dd34949b",
+        "filename": "media/libstagefright/foundation/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-26T17:46:23Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/system/core/+/1306563 enables host support for property_* so no files are now excluded for host support.",
+      "parentUuid": "a4a404fd_27515839",
+      "range": {
+        "startLine": 91,
+        "startChar": 8,
+        "endLine": 99,
+        "endChar": 10
+      },
+      "revId": "98fc9bccc5c8733fa97a3fcf3fb341be98325f99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
