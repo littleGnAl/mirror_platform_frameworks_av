@@ -22,6 +22,30 @@
       "revId": "23d3998628fd74ab3f5054618e2ba763b944c91b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc7f4056_29b84419",
+        "filename": "media/libstagefright/codecs/amrnb/common/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-27T20:11:20Z",
+      "side": 1,
+      "message": "Ray,\nThis CL is cherry-picked from r-fs-release.\n\nRegarding the need to add apex_available, \nmost of the existing libraries are listed in apex whitelist at \nhttps://cs.android.com/android/platform/superproject/+/master:build/soong/apex/apex.go;l\u003d505?q\u003dapex%20whitelist \nand hence they don\u0027t need to be explicitly listed.\nAny new libraries that are created, have these lines added.",
+      "parentUuid": "a38a0d3c_02e42bf6",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 26
+      },
+      "revId": "23d3998628fd74ab3f5054618e2ba763b944c91b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
