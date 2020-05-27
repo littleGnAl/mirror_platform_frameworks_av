@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a38a0d3c_02e42bf6",
+        "filename": "media/libstagefright/codecs/amrnb/common/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-27T19:45:59Z",
+      "side": 1,
+      "message": "i saw a lot of these that said:\n\napex_available: [\n  \"//apex_available:platform\",\n  \"com.android.media.swcodec\"\n],\nmin_sdk_version: \"29\";\n\nand since this library does go into the swcodec apex, I would think we need this.",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 26
+      },
+      "revId": "23d3998628fd74ab3f5054618e2ba763b944c91b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
