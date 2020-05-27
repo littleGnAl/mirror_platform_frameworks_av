@@ -413,6 +413,30 @@
     },
     {
       "key": {
+        "uuid": "d5f3f8f3_190c189b",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2020-05-27T15:59:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0db5ba2_942e19d4",
+      "range": {
+        "startLine": 337,
+        "startChar": 26,
+        "endLine": 337,
+        "endChar": 52
+      },
+      "revId": "07bd87c60ad2034df5193013a28c9156ba471e41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3ed9772e_06859979",
         "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
         "patchSetId": 8
