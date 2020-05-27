@@ -22,6 +22,30 @@
       "revId": "c1760d0538bc2fbc39fc98ba4c185053b79bb5b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8619e1c2_895f9aa8",
+        "filename": "media/extractors/fuzzers/amr_extractor_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-05-27T14:59:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c46e3d51_71fd0b62",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 60,
+        "endChar": 3
+      },
+      "revId": "c1760d0538bc2fbc39fc98ba4c185053b79bb5b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
