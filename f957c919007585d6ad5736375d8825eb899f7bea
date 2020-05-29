@@ -22,6 +22,30 @@
       "revId": "f957c919007585d6ad5736375d8825eb899f7bea",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "137908cc_34a24f0f",
+        "filename": "media/extractors/fuzzers/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-05-29T18:28:53Z",
+      "side": 1,
+      "message": "Ray,\nThis change here is only for mp4_extractor_fuzzer and doesn\u0027t affect libmp4extractor.so itself.",
+      "parentUuid": "f097e7aa_1b7c3175",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 82,
+        "endChar": 33
+      },
+      "revId": "f957c919007585d6ad5736375d8825eb899f7bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
