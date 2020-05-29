@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f097e7aa_1b7c3175",
+        "filename": "media/extractors/fuzzers/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-05-29T04:43:25Z",
+      "side": 1,
+      "message": "you have another CL that adds this to the base extractor module.\nthat would mean we have 2 copies of this in there, instead of what must have been a shared library that got pulled in through some dependency.\n\nwant marco to look at this.\n\nprobably do this with the target: [ fuzzer: [ static_libs: [....]]] construct so that\nwe\u0027re only doing this for the fuzzers and not for everything.\n\nbut i want to have marco\u0027s thoughts here.",
+      "range": {
+        "startLine": 81,
+        "startChar": 8,
+        "endLine": 82,
+        "endChar": 33
+      },
+      "revId": "f957c919007585d6ad5736375d8825eb899f7bea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
