@@ -25,6 +25,8 @@
 #include "Decoder.h"
 
 static BenchmarkTestEnvironment *gEnv = nullptr;
+typedef tuple<string, string, bool> TestParams;
+static std::vector<TestParams> kCommandLineParams;
 
 class DecoderTest : public ::testing::TestWithParam<tuple<string, string, bool>> {};
 
@@ -174,11 +176,23 @@ INSTANTIATE_TEST_SUITE_P(VideoDecoderAsyncTest, DecoderTest,
                                  make_tuple("crowd_1920x1080_25fps_4000kbps_h265.mkv",
                                             "c2.android.hevc.decoder", true)));
 
+INSTANTIATE_TEST_SUITE_P(
+        CommandLineTest, DecoderTest,
+        ::testing::ValuesIn(kCommandLineParams));
+
 int main(int argc, char **argv) {
     gEnv = new BenchmarkTestEnvironment();
     ::testing::AddGlobalTestEnvironment(gEnv);
-    ::testing::InitGoogleTest(&argc, argv);
+    /* kCommandLineParams needs to be populated before calling InitGoogleTest as the tests that use that
+       vector are optional and are to be run only if command line arguments are passed.
+       Hence this requires us to parse command line arguments before calling InitGoogleTest */
     int status = gEnv->initFromOptions(argc, argv);
+    if (!gEnv->getInputFile().empty()) {
+        kCommandLineParams.push_back(make_tuple(gEnv->getInputFile(), gEnv->getCodecName(),
+                                                gEnv->isAsyncMode()));
+    }
+
+    ::testing::InitGoogleTest(&argc, argv);
     if (status == 0) {
         gEnv->setStatsFile("Decoder.csv");
         status = gEnv->writeStatsHeader();

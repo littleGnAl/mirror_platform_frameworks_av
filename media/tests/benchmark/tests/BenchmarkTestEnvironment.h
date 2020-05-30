@@ -27,7 +27,10 @@ class BenchmarkTestEnvironment : public ::testing::Environment {
   public:
     BenchmarkTestEnvironment()
         : res("/data/local/tmp/MediaBenchmark/res/"),
-          statsFile("/data/local/tmp/MediaBenchmark/res/stats.csv") {}
+          statsFile("/data/local/tmp/MediaBenchmark/res/stats.csv"),
+          mInputFile(""),
+          mCodecName(""),
+          mIsAsyncMode(false){}
 
     // Parses the command line argument
     int initFromOptions(int argc, char **argv);
@@ -42,17 +45,33 @@ class BenchmarkTestEnvironment : public ::testing::Environment {
 
     bool writeStatsHeader();
 
+    void setInputFile(const char *inputFile) { mInputFile = inputFile; }
+
+    const string getInputFile() const { return mInputFile; }
+
+    void setCodecName(const char *codecName) { mCodecName = codecName; }
+
+    const string getCodecName() const { return mCodecName; }
+
+    void setAsyncMode(int isAsyncMode) { mIsAsyncMode = isAsyncMode ? true : false; }
+
+    bool isAsyncMode() { return mIsAsyncMode; }
+
   private:
     string res;
     string statsFile;
+
+    string mInputFile;
+    string mCodecName;
+    bool mIsAsyncMode;
 };
 
 int BenchmarkTestEnvironment::initFromOptions(int argc, char **argv) {
-    static struct option options[] = {{"path", required_argument, 0, 'P'}, {0, 0, 0, 0}};
+    static struct option options[] = {{"path", required_argument, 0, 'P'}, {"input", required_argument, 0, 'I'}, {"codec", required_argument, 0, 'C'}, {"async", required_argument, 0, 'A'},  {0, 0, 0, 0}};
 
     while (true) {
         int index = 0;
-        int c = getopt_long(argc, argv, "P:", options, &index);
+        int c = getopt_long(argc, argv, ":P:I:C:A:", options, &index);
         if (c == -1) {
             break;
         }
@@ -62,20 +81,23 @@ int BenchmarkTestEnvironment::initFromOptions(int argc, char **argv) {
                 setRes(optarg);
                 break;
             }
+            case 'I': {
+                setInputFile(optarg);
+                break;
+            }
+            case 'C': {
+                setCodecName(optarg);
+                break;
+            }
+            case 'A': {
+                setAsyncMode(atoi(optarg));
+                break;
+            }
             default:
                 break;
         }
     }
 
-    if (optind < argc) {
-        fprintf(stderr,
-                "unrecognized option: %s\n\n"
-                "usage: %s <gtest options> <test options>\n\n"
-                "test options are:\n\n"
-                "-P, --path: Resource files directory location\n",
-                argv[optind ?: 1], argv[0]);
-        return 2;
-    }
     return 0;
 }
 
