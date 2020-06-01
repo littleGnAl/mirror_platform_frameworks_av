@@ -22,6 +22,30 @@
       "revId": "8f6e3287e5ff909786ad34050c568095608a4b81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e1eceb5_546f8f6c",
+        "filename": "media/libstagefright/rtsp/ARTSPConnection.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1005,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2020-06-01T14:57:34Z",
+      "side": 1,
+      "message": "Resolving based on discussion on https://issuetracker.google.com/155686497.",
+      "parentUuid": "96a8d971_aebbd3ee",
+      "range": {
+        "startLine": 1005,
+        "startChar": 14,
+        "endLine": 1005,
+        "endChar": 20
+      },
+      "revId": "8f6e3287e5ff909786ad34050c568095608a4b81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
