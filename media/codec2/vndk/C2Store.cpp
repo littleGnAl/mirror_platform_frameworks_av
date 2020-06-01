@@ -28,6 +28,7 @@
 #include <C2PlatformSupport.h>
 #include <util/C2InterfaceHelper.h>
 
+#include <ion/ion.h>
 #include <dlfcn.h>
 #include <unistd.h> // getpagesize
 
@@ -178,6 +179,9 @@ void UseComponentStoreForIonAllocator(
                 *align = usageInfo.minAlignment;
                 *heapMask = usageInfo.heapMask;
                 *flags = usageInfo.allocFlags;
+                if (usageInfo.usage & (C2MemoryUsage::CPU_READ | C2MemoryUsage::CPU_WRITE)) {
+                    *flags |=  ION_FLAG_CACHED; // cache CPU accessed buffers
+                }
             }
             return res;
         };
