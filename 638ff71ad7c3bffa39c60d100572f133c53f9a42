@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3b43acdd_8732b3d3",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-01T21:52:30Z",
+      "side": 1,
+      "message": "what is the purpose of this code here?\nFrom what I see, we need to pass a buffer that has SPS, PPS to MakeAVCCodecSpecificData() and that module will parse the data and create AVCCodecSpecific data appropriately.\nI don\u0027t see a need to parse and check SPS validity in the test.\n\nSo remove the above block completely.\nNo need for info file as well.\n\nEnsure the input avcc data contains the following\nSPS -\u003e PPS -\u003e user data \nSPS -\u003e user data -\u003e PPS\nSPS -\u003e PPS -\u003e SPS (repeated) -\u003e PPS (repeated)\nSPS -\u003e redundant bytes -\u003e PPS -\u003e redundant bytes\nSPS (3 bytes start code) -\u003e PPS (3 byte start code)\nFunction should be able to create AVCC data appropriately in all these cases\n\nIn valid input where AVCCData should fail (separate test for invalid tests or pass a parameter to indicate that these are invalid inputs)\nSPS \nPPS\nNo valid NAL (few random bytes)\nIncomplete SPS -\u003e PPS\nSPS -\u003e Incomplete PPS\n\nIn all these cases, there is no need for an info file and entire file should be fed to the module.",
+      "range": {
+        "startLine": 129,
+        "startChar": 1,
+        "endLine": 167,
+        "endChar": 5
+      },
+      "revId": "638ff71ad7c3bffa39c60d100572f133c53f9a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00e68652_61a2691f",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-01T21:52:30Z",
+      "side": 1,
+      "message": "move these up on lines below corresponding getInt/getString calls.\nSimilar to the checks below at metadata",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 53
+      },
+      "revId": "638ff71ad7c3bffa39c60d100572f133c53f9a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cea09211_77a3608d",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 217,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-01T21:52:30Z",
+      "side": 1,
+      "message": "set to 0 and assert_gt for this value after getBuffer",
+      "range": {
+        "startLine": 217,
+        "startChar": 0,
+        "endLine": 217,
+        "endChar": 31
+      },
+      "revId": "638ff71ad7c3bffa39c60d100572f133c53f9a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f003695_e9a3df83",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-01T21:52:30Z",
+      "side": 1,
+      "message": "move the validations above appropriately",
+      "range": {
+        "startLine": 260,
+        "startChar": 0,
+        "endLine": 265,
+        "endChar": 0
+      },
+      "revId": "638ff71ad7c3bffa39c60d100572f133c53f9a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dab37936_261102a2",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 436,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-01T21:52:30Z",
+      "side": 1,
+      "message": "file a bug and mention the id here",
+      "range": {
+        "startLine": 436,
+        "startChar": 0,
+        "endLine": 436,
+        "endChar": 49
+      },
+      "revId": "638ff71ad7c3bffa39c60d100572f133c53f9a42",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
