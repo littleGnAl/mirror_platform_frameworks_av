@@ -22,6 +22,29 @@
       "revId": "e5008319b5eecb147a5c99fa38ae31b16cec9bf2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4e9339cb_2ea768c4",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 6121,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-06-03T11:14:47Z",
+      "side": 1,
+      "message": "what if calling disconnect instead of stop so that we can start again automatically when the sink/source device(s) involved are re-connected rather than giving the responsability of the client to listen to audio port, and retry starting source?",
+      "range": {
+        "startLine": 6121,
+        "startChar": 12,
+        "endLine": 6121,
+        "endChar": 27
+      },
+      "revId": "e5008319b5eecb147a5c99fa38ae31b16cec9bf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
