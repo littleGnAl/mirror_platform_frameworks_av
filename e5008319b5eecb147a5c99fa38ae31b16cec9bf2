@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3e747fed_0896cc84",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 3992,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-06-03T11:10:09Z",
+      "side": 1,
+      "message": "whatever engine used, if the sink falling down is the default device, no check for availability is done. We will assert here. Better to return an error.",
+      "range": {
+        "startLine": 3991,
+        "startChar": 4,
+        "endLine": 3992,
+        "endChar": 62
+      },
+      "revId": "e5008319b5eecb147a5c99fa38ae31b16cec9bf2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
