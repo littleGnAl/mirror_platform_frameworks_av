@@ -22,6 +22,30 @@
       "revId": "835c90fe6b99c0b3c96432b15a0c0e9eabae9dbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b73a79d_b05c3616",
+        "filename": "media/extractors/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-04T18:05:33Z",
+      "side": 1,
+      "message": "Marco,\nCan you please review this change?\nWith this we will be able to build extractors with host support enabled.\nThis would enable unit tests and fuzzer plugins for extractors on host.",
+      "parentUuid": "dd067b71_9757c187",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "835c90fe6b99c0b3c96432b15a0c0e9eabae9dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
