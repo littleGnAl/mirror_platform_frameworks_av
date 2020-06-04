@@ -70,6 +70,30 @@
       "revId": "835c90fe6b99c0b3c96432b15a0c0e9eabae9dbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f5e5f90_427d3197",
+        "filename": "media/extractors/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-04T23:23:19Z",
+      "side": 1,
+      "message": "Marco,\nThanks. We will update the CL to enable this for host builds alone.",
+      "parentUuid": "cf673e96_0203e845",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "835c90fe6b99c0b3c96432b15a0c0e9eabae9dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
