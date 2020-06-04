@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d724d728_26e8ab63",
+        "filename": "media/codecs/g711/decoder/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-04T04:41:02Z",
+      "side": 1,
+      "message": "looking at this, i wonder whether the min_sdk should have been designed\nso that it was inside some apex:[] block\nthat would hold both the sdk and the apex availability.\n\nthat\u0027s based on my understanding that min_sdk was intended to be for apex-related work.\nIf I\u0027ve missed something about other intended uses for it, then perhaps a different conclusion is warranted.\n\n\nbased on this being the pattern that has been dumped all over the place -- it\u0027s ok.",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 26
+      },
+      "revId": "51dd2874a889cacfba7e5b10c01f0d6a12a8bee0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
