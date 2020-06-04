@@ -46,6 +46,30 @@
       "revId": "835c90fe6b99c0b3c96432b15a0c0e9eabae9dbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cf673e96_0203e845",
+        "filename": "media/extractors/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-06-04T18:29:31Z",
+      "side": 1,
+      "message": "This can\u0027t work for the general case. By doing this we\u0027d be making the various extractors include the AMediaFormat implementation, which in turn relies on private, unstable APIs, mainly AMessage. The extractors *must* use only stable public APIs.\n\nIt would be OK to do this for host build or tests, but not in general.",
+      "parentUuid": "2b73a79d_b05c3616",
+      "range": {
+        "startLine": 26,
+        "startChar": 3,
+        "endLine": 31,
+        "endChar": 0
+      },
+      "revId": "835c90fe6b99c0b3c96432b15a0c0e9eabae9dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
