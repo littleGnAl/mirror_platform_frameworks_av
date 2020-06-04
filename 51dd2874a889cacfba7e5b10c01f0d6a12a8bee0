@@ -22,6 +22,30 @@
       "revId": "51dd2874a889cacfba7e5b10c01f0d6a12a8bee0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19c4b092_314adf46",
+        "filename": "media/codecs/g711/decoder/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-06-04T04:53:15Z",
+      "side": 1,
+      "message": "\u003e looking at this, i wonder whether the min_sdk should have been designed\n\u003e so that it was inside some apex:[] block\n\nOriginally, min_sdk_version property was borrowed from java. And you\u0027re right about that it was mainly used for APEX-related. But we have a plan to use it so that the build system supports native modules can use newer API symbols while it needs to run on older platform. (https://clang.llvm.org/docs/AttributeReference.html#availability)",
+      "parentUuid": "d724d728_26e8ab63",
+      "range": {
+        "startLine": 39,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 26
+      },
+      "revId": "51dd2874a889cacfba7e5b10c01f0d6a12a8bee0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
