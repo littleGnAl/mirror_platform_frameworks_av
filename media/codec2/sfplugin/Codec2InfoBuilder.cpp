@@ -105,9 +105,11 @@ void addSupportedProfileLevels(
         for (const std::shared_ptr<C2ParamDescriptor> &desc : paramDescs) {
             switch ((uint32_t)desc->index()) {
             case C2StreamHdr10PlusInfo::output::PARAM_TYPE:
+            case C2StreamHdr10PlusInfo::input::PARAM_TYPE:
                 supportsHdr10Plus = true;
                 break;
             case C2StreamHdrStaticInfo::output::PARAM_TYPE:
+            case C2StreamHdrStaticInfo::input::PARAM_TYPE:
                 supportsHdr = true;
                 break;
             default:
