@@ -17,13 +17,8 @@
  *****************************************************************************
  * Originally developed and contributed by Ittiam Systems Pvt. Ltd, Bangalore
  */
-
-cc_library {
-    name: "libextractorfuzzerbase",
-
-    srcs: [
-        "ExtractorFuzzerBase.cpp",
-    ],
+cc_defaults {
+    name: "extractor-fuzzerbase-defaults",
 
     local_include_dirs: [
         "include",
@@ -43,15 +38,9 @@ cc_library {
     shared_libs: [
         "libutils",
         "libbinder",
+        "libbase",
+        "libcutils",
     ],
-
-    /* GETEXTRACTORDEF is not defined as extractor library is not linked in the
-     * base class. It will be included when the extractor fuzzer binary is
-     * generated.
-     */
-    allow_undefined_symbols: true,
-
-    host_supported: true,
 
     target: {
         darwin: {
@@ -60,8 +49,36 @@ cc_library {
     },
 }
 
+cc_library_static {
+    name: "libextractorfuzzerbase",
+    defaults: ["extractor-fuzzerbase-defaults"],
+    host_supported: true,
+
+    srcs: [
+        "ExtractorFuzzerBase.cpp",
+    ],
+}
+
+cc_defaults {
+    name: "extractor-fuzzer-defaults",
+    defaults: ["extractor-fuzzerbase-defaults"],
+
+    static_libs: [
+        "libextractorfuzzerbase",
+    ],
+
+    fuzz_config: {
+        cc: [
+            "android-media-fuzzing-reports@google.com",
+        ],
+        componentid: 155276,
+    },
+}
+
 cc_fuzz {
     name: "mp4_extractor_fuzzer",
+    defaults: ["extractor-fuzzer-defaults"],
+    host_supported: true,
 
     srcs: [
         "mp4_extractor_fuzzer.cpp",
@@ -76,35 +93,17 @@ cc_fuzz {
     ],
 
     static_libs: [
-        "liblog",
-        "libstagefright_foundation",
-        "libmediandk_format",
-        "libmedia_ndkformatpriv",
-        "libextractorfuzzerbase",
         "libstagefright_id3",
         "libstagefright_esds",
         "libmp4extractor",
     ],
 
-    shared_libs: [
-        "libutils",
-        "libbinder",
-    ],
-
     dictionary: "mp4_extractor_fuzzer.dict",
-
-    fuzz_config: {
-        cc: [
-            "android-media-fuzzing-reports@google.com",
-        ],
-        componentid: 155276,
-    },
-
-    host_supported: true,
 }
 
 cc_fuzz {
     name: "wav_extractor_fuzzer",
+    defaults: ["extractor-fuzzer-defaults"],
 
     srcs: [
         "wav_extractor_fuzzer.cpp",
@@ -115,32 +114,19 @@ cc_fuzz {
     ],
 
     static_libs: [
-        "liblog",
-        "libstagefright_foundation",
         "libmedia",
-        "libextractorfuzzerbase",
         "libfifo",
         "libwavextractor",
     ],
 
     shared_libs: [
-        "libutils",
-        "libmediandk",
-        "libbinder",
         "libbinder_ndk",
-        "libbase",
     ],
-
-    fuzz_config: {
-        cc: [
-            "android-media-fuzzing-reports@google.com",
-        ],
-        componentid: 155276,
-    },
 }
 
 cc_fuzz {
     name: "amr_extractor_fuzzer",
+    defaults: ["extractor-fuzzer-defaults"],
 
     srcs: [
         "amr_extractor_fuzzer.cpp",
@@ -151,31 +137,16 @@ cc_fuzz {
     ],
 
     static_libs: [
-        "liblog",
-        "libstagefright_foundation",
         "libmedia",
-        "libextractorfuzzerbase",
         "libamrextractor",
     ],
 
-    shared_libs: [
-        "libutils",
-        "libmediandk",
-        "libbinder",
-    ],
-
     dictionary: "amr_extractor_fuzzer.dict",
-
-    fuzz_config: {
-        cc: [
-            "android-media-fuzzing-reports@google.com",
-        ],
-        componentid: 155276,
-    },
 }
 
 cc_fuzz {
     name: "mkv_extractor_fuzzer",
+    defaults: ["extractor-fuzzer-defaults"],
 
     srcs: [
         "mkv_extractor_fuzzer.cpp",
@@ -186,10 +157,7 @@ cc_fuzz {
     ],
 
     static_libs: [
-        "liblog",
-        "libstagefright_foundation",
         "libmedia",
-        "libextractorfuzzerbase",
         "libwebm",
         "libstagefright_flacdec",
         "libstagefright_metadatautils",
@@ -197,24 +165,12 @@ cc_fuzz {
         "libFLAC",
     ],
 
-    shared_libs: [
-        "libutils",
-        "libmediandk",
-        "libbinder",
-    ],
-
     dictionary: "mkv_extractor_fuzzer.dict",
-
-    fuzz_config: {
-        cc: [
-            "android-media-fuzzing-reports@google.com",
-        ],
-        componentid: 155276,
-    },
 }
 
 cc_fuzz {
     name: "ogg_extractor_fuzzer",
+    defaults: ["extractor-fuzzer-defaults"],
 
     srcs: [
         "ogg_extractor_fuzzer.cpp",
@@ -225,33 +181,18 @@ cc_fuzz {
     ],
 
     static_libs: [
-        "liblog",
-        "libstagefright_foundation",
         "libmedia",
-        "libextractorfuzzerbase",
         "libstagefright_metadatautils",
         "libvorbisidec",
         "liboggextractor",
     ],
 
-    shared_libs: [
-        "libutils",
-        "libmediandk",
-        "libbinder",
-    ],
-
     dictionary: "ogg_extractor_fuzzer.dict",
-
-    fuzz_config: {
-        cc: [
-            "android-media-fuzzing-reports@google.com",
-        ],
-        componentid: 155276,
-    },
 }
 
 cc_fuzz {
     name: "mpeg2ps_extractor_fuzzer",
+    defaults: ["extractor-fuzzer-defaults"],
 
     srcs: [
         "mpeg2_extractor_fuzzer.cpp",
@@ -263,10 +204,8 @@ cc_fuzz {
     ],
 
     static_libs: [
-        "liblog",
         "libstagefright_foundation_without_imemory",
         "libmedia",
-        "libextractorfuzzerbase",
         "libstagefright_mpeg2support",
         "libstagefright_mpeg2extractor",
         "libstagefright_esds",
@@ -278,9 +217,6 @@ cc_fuzz {
     ],
 
     shared_libs: [
-        "libutils",
-        "libmediandk",
-        "libbinder",
         "android.hardware.cas@1.0",
         "android.hardware.cas.native@1.0",
         "android.hidl.token@1.0-utils",
@@ -291,17 +227,11 @@ cc_fuzz {
     ],
 
     dictionary: "mpeg2ps_extractor_fuzzer.dict",
-
-    fuzz_config: {
-        cc: [
-            "android-media-fuzzing-reports@google.com",
-        ],
-        componentid: 155276,
-    },
 }
 
 cc_fuzz {
     name: "mpeg2ts_extractor_fuzzer",
+    defaults: ["extractor-fuzzer-defaults"],
 
     srcs: [
         "mpeg2_extractor_fuzzer.cpp",
@@ -313,10 +243,8 @@ cc_fuzz {
     ],
 
     static_libs: [
-        "liblog",
         "libstagefright_foundation_without_imemory",
         "libmedia",
-        "libextractorfuzzerbase",
         "libstagefright_mpeg2support",
         "libstagefright_mpeg2extractor",
         "libstagefright_esds",
@@ -324,9 +252,6 @@ cc_fuzz {
     ],
 
     shared_libs: [
-        "libutils",
-        "libmediandk",
-        "libbinder",
         "android.hardware.cas@1.0",
         "android.hardware.cas.native@1.0",
         "android.hidl.token@1.0-utils",
@@ -337,17 +262,11 @@ cc_fuzz {
     ],
 
     dictionary: "mpeg2ts_extractor_fuzzer.dict",
-
-    fuzz_config: {
-        cc: [
-            "android-media-fuzzing-reports@google.com",
-        ],
-        componentid: 155276,
-    },
 }
 
 cc_fuzz {
     name: "mp3_extractor_fuzzer",
+    defaults: ["extractor-fuzzer-defaults"],
 
     srcs: [
         "mp3_extractor_fuzzer.cpp",
@@ -358,31 +277,16 @@ cc_fuzz {
     ],
 
     static_libs: [
-        "liblog",
-        "libstagefright_foundation",
         "libmedia",
-        "libextractorfuzzerbase",
         "libfifo",
         "libmp3extractor",
         "libstagefright_id3",
     ],
-
-    shared_libs: [
-        "libutils",
-        "libmediandk",
-        "libbinder",
-    ],
-
-    fuzz_config: {
-        cc: [
-            "android-media-fuzzing-reports@google.com",
-        ],
-        componentid: 155276,
-    },
 }
 
 cc_fuzz {
     name: "aac_extractor_fuzzer",
+    defaults: ["extractor-fuzzer-defaults"],
 
     srcs: [
         "aac_extractor_fuzzer.cpp",
@@ -393,30 +297,15 @@ cc_fuzz {
     ],
 
     static_libs: [
-        "liblog",
-        "libstagefright_foundation",
         "libmedia",
-        "libextractorfuzzerbase",
         "libaacextractor",
         "libstagefright_metadatautils",
     ],
-
-    shared_libs: [
-        "libutils",
-        "libmediandk",
-        "libbinder",
-    ],
-
-    fuzz_config: {
-        cc: [
-            "android-media-fuzzing-reports@google.com",
-        ],
-        componentid: 155276,
-    },
 }
 
 cc_fuzz {
     name: "flac_extractor_fuzzer",
+    defaults: ["extractor-fuzzer-defaults"],
 
     srcs: [
         "flac_extractor_fuzzer.cpp",
@@ -427,29 +316,15 @@ cc_fuzz {
     ],
 
     static_libs: [
-        "liblog",
-        "libstagefright_foundation",
         "libmedia",
-        "libextractorfuzzerbase",
         "libstagefright_metadatautils",
         "libFLAC",
         "libflacextractor",
     ],
 
     shared_libs: [
-        "libutils",
-        "libmediandk",
-        "libbinder",
         "libbinder_ndk",
-        "libbase",
     ],
 
     dictionary: "flac_extractor_fuzzer.dict",
-
-    fuzz_config: {
-        cc: [
-            "android-media-fuzzing-reports@google.com",
-        ],
-        componentid: 155276,
-    },
 }
