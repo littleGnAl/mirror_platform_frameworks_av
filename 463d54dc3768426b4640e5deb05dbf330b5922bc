@@ -1,0 +1,224 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003289507",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1324406?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "5bfe2f86_18d74cf7",
+          "description": "Change to \"media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp\"",
+          "replacements": [
+            {
+              "path": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
+              "range": {
+                "startLine": 335,
+                "startChar": 42,
+                "endLine": 335,
+                "endChar": 53
+              },
+              "replacement": "comparison"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "779d9e94_55b646a6",
+        "filename": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-05T15:12:20Z",
+      "side": 1,
+      "message": "Common typo found: \"comparision\" -- should it be \"comparison\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 335,
+        "startChar": 42,
+        "endLine": 335,
+        "endChar": 53
+      },
+      "revId": "463d54dc3768426b4640e5deb05dbf330b5922bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003289507",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1324406?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "a718429e_a223ac77",
+          "description": "Change to \"media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp\"",
+          "replacements": [
+            {
+              "path": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
+              "range": {
+                "startLine": 339,
+                "startChar": 41,
+                "endLine": 339,
+                "endChar": 52
+              },
+              "replacement": "comparison"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "128f8a11_b6a90aa9",
+        "filename": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-05T15:12:20Z",
+      "side": 1,
+      "message": "Common typo found: \"comparision\" -- should it be \"comparison\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 339,
+        "startChar": 41,
+        "endLine": 339,
+        "endChar": 52
+      },
+      "revId": "463d54dc3768426b4640e5deb05dbf330b5922bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003289507",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1324406?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "1baaf1dd_d77077ee",
+          "description": "Change to \"media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp\"",
+          "replacements": [
+            {
+              "path": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
+              "range": {
+                "startLine": 345,
+                "startChar": 41,
+                "endLine": 345,
+                "endChar": 52
+              },
+              "replacement": "comparison"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "2a3b08b3_8c5b207f",
+        "filename": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-05T15:12:20Z",
+      "side": 1,
+      "message": "Common typo found: \"comparision\" -- should it be \"comparison\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 345,
+        "startChar": 41,
+        "endLine": 345,
+        "endChar": 52
+      },
+      "revId": "463d54dc3768426b4640e5deb05dbf330b5922bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003289507",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1324406?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "e3ef2be8_1e5a5437",
+          "description": "Change to \"media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp\"",
+          "replacements": [
+            {
+              "path": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
+              "range": {
+                "startLine": 352,
+                "startChar": 41,
+                "endLine": 352,
+                "endChar": 52
+              },
+              "replacement": "comparison"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "caacfbee_f04e36a6",
+        "filename": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 352,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-05T15:12:20Z",
+      "side": 1,
+      "message": "Common typo found: \"comparision\" -- should it be \"comparison\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 352,
+        "startChar": 41,
+        "endLine": 352,
+        "endChar": 52
+      },
+      "revId": "463d54dc3768426b4640e5deb05dbf330b5922bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003289507",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1324406?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "52430bc5_b8f151f9",
+          "description": "Change to \"media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp\"",
+          "replacements": [
+            {
+              "path": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
+              "range": {
+                "startLine": 360,
+                "startChar": 41,
+                "endLine": 360,
+                "endChar": 52
+              },
+              "replacement": "comparison"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "2940afec_2f3ef109",
+        "filename": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 360,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-05T15:12:20Z",
+      "side": 1,
+      "message": "Common typo found: \"comparision\" -- should it be \"comparison\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 360,
+        "startChar": 41,
+        "endLine": 360,
+        "endChar": 52
+      },
+      "revId": "463d54dc3768426b4640e5deb05dbf330b5922bc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
