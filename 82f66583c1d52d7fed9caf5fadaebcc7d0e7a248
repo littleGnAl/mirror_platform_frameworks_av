@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003283927",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/953056?revision\u003d17",
+      "fixSuggestions": [
+        {
+          "fixId": "82f5cb80_322bb0cd",
+          "description": "Change to \"media/libstagefright/rtsp/ARTPWriter.cpp\"",
+          "replacements": [
+            {
+              "path": "media/libstagefright/rtsp/ARTPWriter.cpp",
+              "range": {
+                "startLine": 599,
+                "startChar": 40,
+                "endLine": 599,
+                "endChar": 50
+              },
+              "replacement": "accommodate"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "7aae919a_3268b497",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 599,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-05T05:46:04Z",
+      "side": 1,
+      "message": "Common typo found: \"accomodate\" -- should it be \"accommodate\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 599,
+        "startChar": 40,
+        "endLine": 599,
+        "endChar": 50
+      },
+      "revId": "82f66583c1d52d7fed9caf5fadaebcc7d0e7a248",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
