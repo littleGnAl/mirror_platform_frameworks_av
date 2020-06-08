@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "fb7df6c0_ad92b814",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-08T04:58:45Z",
+      "side": 1,
+      "message": "once buffer is passed, may be just compare?",
+      "range": {
+        "startLine": 320,
+        "startChar": 17,
+        "endLine": 320,
+        "endChar": 30
+      },
+      "revId": "6a429cd0e7836a30e756a5dd1a51d03408e07af9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f518d936_33c440ea",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-08T04:58:45Z",
+      "side": 1,
+      "message": "add comparison for data as well",
+      "revId": "6a429cd0e7836a30e756a5dd1a51d03408e07af9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f1897695_192cb20b",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 476,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-08T04:58:45Z",
+      "side": 1,
+      "message": "move this to line 469 so that extractedBuffer can also be compared",
+      "range": {
+        "startLine": 475,
+        "startChar": 12,
+        "endLine": 476,
+        "endChar": 96
+      },
+      "revId": "6a429cd0e7836a30e756a5dd1a51d03408e07af9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81ddd0ce_77f238bf",
+        "filename": "media/libstagefright/tests/writer/WriterUtility.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-08T04:58:45Z",
+      "side": 1,
+      "message": "let us move these two functions as member functions of writerTest\nthat will help us change all if() { ALOGE() return } to ASSERT_*() calls and reduce the amount of code.",
+      "revId": "6a429cd0e7836a30e756a5dd1a51d03408e07af9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a5362221_1ed14b62",
+        "filename": "media/libstagefright/tests/writer/WriterUtility.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-08T04:58:45Z",
+      "side": 1,
+      "message": "let us avoid excessive logging, even when using ALOGV",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 37
+      },
+      "revId": "6a429cd0e7836a30e756a5dd1a51d03408e07af9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "977676f2_2a85b4df",
+        "filename": "media/libstagefright/tests/writer/WriterUtility.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-08T04:58:45Z",
+      "side": 1,
+      "message": "should this return nullptr",
+      "revId": "6a429cd0e7836a30e756a5dd1a51d03408e07af9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
