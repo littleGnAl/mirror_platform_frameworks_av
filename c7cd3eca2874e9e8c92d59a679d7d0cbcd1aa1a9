@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9faef863_7b5c4b87",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-08T03:10:31Z",
+      "side": 1,
+      "message": "can we mark the tests so that we know the # of tracks we expect from each of the input files",
+      "range": {
+        "startLine": 683,
+        "startChar": 12,
+        "endLine": 683,
+        "endChar": 28
+      },
+      "revId": "c7cd3eca2874e9e8c92d59a679d7d0cbcd1aa1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bc031875_9dc772c4",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-08T03:10:31Z",
+      "side": 1,
+      "message": "how can we mark the inputs so that we know whether this is good/bad.\n\nas written, we won\u0027t notice when an extractor that used to support seeking (and should still support seeking) stops doing so.",
+      "range": {
+        "startLine": 686,
+        "startChar": 4,
+        "endLine": 691,
+        "endChar": 5
+      },
+      "revId": "c7cd3eca2874e9e8c92d59a679d7d0cbcd1aa1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "374d0859_9e8a3731",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-08T03:10:31Z",
+      "side": 1,
+      "message": "i\u0027d like to perhaps see a few more points. especially valid points.\n\nfor a 5 second video, i\u0027d like to see us test times like 0,1,2,3,4, and perhaps even 5 (which is the end of the track).\n\ni\u0027d like to see something other than a linear progression from start to end.\nso perhaps for that same 5 second duration video: 0,1,2,3,4,3,2,1,0  -- a ladder up and down.",
+      "range": {
+        "startLine": 716,
+        "startChar": 39,
+        "endLine": 716,
+        "endChar": 90
+      },
+      "revId": "c7cd3eca2874e9e8c92d59a679d7d0cbcd1aa1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
