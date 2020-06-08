@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "58cf51e7_d1db4509",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 683,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-06-08T11:53:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9faef863_7b5c4b87",
+      "range": {
+        "startLine": 683,
+        "startChar": 12,
+        "endLine": 683,
+        "endChar": 28
+      },
+      "revId": "c7cd3eca2874e9e8c92d59a679d7d0cbcd1aa1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc031875_9dc772c4",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 10
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "30153256_0f672062",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 691,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-06-08T11:53:01Z",
+      "side": 1,
+      "message": "The CL to validate whether we expect Extractor to support seek or not is uploaded as a follow up CL (it is dependent on this CL)",
+      "parentUuid": "bc031875_9dc772c4",
+      "range": {
+        "startLine": 686,
+        "startChar": 4,
+        "endLine": 691,
+        "endChar": 5
+      },
+      "revId": "c7cd3eca2874e9e8c92d59a679d7d0cbcd1aa1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "374d0859_9e8a3731",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 10
@@ -59,6 +107,30 @@
       "writtenOn": "2020-06-08T03:10:31Z",
       "side": 1,
       "message": "i\u0027d like to perhaps see a few more points. especially valid points.\n\nfor a 5 second video, i\u0027d like to see us test times like 0,1,2,3,4, and perhaps even 5 (which is the end of the track).\n\ni\u0027d like to see something other than a linear progression from start to end.\nso perhaps for that same 5 second duration video: 0,1,2,3,4,3,2,1,0  -- a ladder up and down.",
+      "range": {
+        "startLine": 716,
+        "startChar": 39,
+        "endLine": 716,
+        "endChar": 90
+      },
+      "revId": "c7cd3eca2874e9e8c92d59a679d7d0cbcd1aa1a9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "14b158e6_fcc93c7c",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 716,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-06-08T11:53:01Z",
+      "side": 1,
+      "message": "Ray, SeekTest tests extractor for random timestamp within the given range (0, clipDuration)\nThis random timestamp validation will validate for 0,1,2,3,4,3,2,1,0 progression as well.\nCurrent test is more like sanity testing. It validates extractors for invalid seek points. It is a negative test, so only one valid seek point was added here. I have added one more entry for the end of track. Should I add random seeking for this test also?",
+      "parentUuid": "374d0859_9e8a3731",
       "range": {
         "startLine": 716,
         "startChar": 39,
