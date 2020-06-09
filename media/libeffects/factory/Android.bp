@@ -39,7 +39,7 @@ cc_binary {
     vendor: true,
     srcs: ["test/DumpConfig.cpp"],
 
-    compile_multilib: "32",
+    compile_multilib: "first",
 
     cflags: [
         "-Wall",
