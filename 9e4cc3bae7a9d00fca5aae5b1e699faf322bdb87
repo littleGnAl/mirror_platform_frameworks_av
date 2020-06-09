@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "678b363c_f2f0ba37",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-09T04:40:31Z",
+      "side": 1,
+      "message": "do we care about an extractor that is not required/expected to be seekable but suddenly is?\nI\u0027m not sure.",
+      "range": {
+        "startLine": 705,
+        "startChar": 8,
+        "endLine": 705,
+        "endChar": 20
+      },
+      "revId": "9e4cc3bae7a9d00fca5aae5b1e699faf322bdb87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02cbc34d_07993a4f",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1065,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-09T04:40:31Z",
+      "side": 1,
+      "message": "this table and its\u0027 correlation to the position of the kInputData[] array makes\nme nervous every time I look at it.",
+      "range": {
+        "startLine": 1051,
+        "startChar": 41,
+        "endLine": 1065,
+        "endChar": 66
+      },
+      "revId": "9e4cc3bae7a9d00fca5aae5b1e699faf322bdb87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
