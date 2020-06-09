@@ -18,7 +18,7 @@ cc_test {
         "-Werror",
         "-Wall",
     ],
-    compile_multilib: "32",
+    compile_multilib: "prefer32",
 }
 
 cc_test {
@@ -39,5 +39,5 @@ cc_test {
         "-Werror",
         "-Wall",
     ],
-    compile_multilib: "32",
+    compile_multilib: "prefer32",
 }
