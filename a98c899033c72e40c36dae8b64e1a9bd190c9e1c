@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "ba433f83_bb14f28d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-06-09T03:55:59Z",
+      "side": 1,
+      "message": "Harish, this change is needed even after the change in extractor-defaults",
+      "parentUuid": "92cc6d2f_a93288dd",
+      "revId": "a98c899033c72e40c36dae8b64e1a9bd190c9e1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "e89f845b_0aff0d40",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -39,6 +57,30 @@
       "revId": "a98c899033c72e40c36dae8b64e1a9bd190c9e1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02b43334_3285bca1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-06-09T03:55:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e89f845b_0aff0d40",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 36
+      },
+      "revId": "a98c899033c72e40c36dae8b64e1a9bd190c9e1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
