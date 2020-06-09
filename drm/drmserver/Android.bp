@@ -40,7 +40,7 @@ cc_binary {
         "-Werror",
     ],
 
-    compile_multilib: "32",
+    compile_multilib: "first",
 
     init_rc: ["drmserver.rc"],
 }
