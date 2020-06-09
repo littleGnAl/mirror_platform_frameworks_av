@@ -31,5 +31,5 @@ cc_test {
         "-Wall",
     ],
 
-    compile_multilib: "32",
+    compile_multilib: "first",
 }
