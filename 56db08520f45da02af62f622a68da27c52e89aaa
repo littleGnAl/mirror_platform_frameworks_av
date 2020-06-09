@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003327049",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1324403?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "d8328ed0_b27a18b9",
+          "description": "Change to \"media/libstagefright/rtsp/ARTPWriter.h\"",
+          "replacements": [
+            {
+              "path": "media/libstagefright/rtsp/ARTPWriter.h",
+              "range": {
+                "startLine": 159,
+                "startChar": 47,
+                "endLine": 159,
+                "endChar": 53
+              },
+              "replacement": "Period"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "a6314cfe_3d6b7122",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-09T10:07:44Z",
+      "side": 1,
+      "message": "Common typo found: \"Peroid\" -- should it be \"Period\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 159,
+        "startChar": 47,
+        "endLine": 159,
+        "endChar": 53
+      },
+      "revId": "56db08520f45da02af62f622a68da27c52e89aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
