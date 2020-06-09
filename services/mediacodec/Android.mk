@@ -80,7 +80,11 @@ ifdef TARGET_2ND_ARCH
     LOCAL_SRC_FILES := seccomp_policy/mediacodec-$(TARGET_ARCH).policy
   endif
 else
+  ifeq ($(TARGET_ARCH), $(filter $(TARGET_ARCH), x86 x86_64))
+    LOCAL_SRC_FILES := seccomp_policy/mediacodec-x86.policy
+  else
     LOCAL_SRC_FILES := seccomp_policy/mediacodec-$(TARGET_ARCH).policy
+  endif
 endif
 include $(BUILD_PREBUILT)
 endif
