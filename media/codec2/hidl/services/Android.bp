@@ -32,6 +32,6 @@ cc_binary {
         },
     },
 
-    compile_multilib: "32",
+    compile_multilib: "first",
 }
 
