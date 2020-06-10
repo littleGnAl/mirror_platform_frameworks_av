@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8de65a01_0ff21f92",
+        "filename": "media/libwatchdog/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1574221
+      },
+      "writtenOn": "2020-06-10T19:27:10Z",
+      "side": 1,
+      "message": "Do we actually depend on anything that was introduced in 29 or is the convention to just set it to the latest version that existed at the time of introucing it?",
+      "range": {
+        "startLine": 36,
+        "startChar": 22,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "e9cc7268063cb46c244a9d36c369cc67277689c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
