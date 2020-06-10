@@ -58,3 +58,51 @@ cc_library {
     local_include_dirs: ["include"],
     export_include_dirs: ["include"],
 }
+
+cc_defaults {
+    name: "libmediautils_fuzz_defaults",
+    shared_libs: [
+        "libbinder",
+        "libcutils",
+        "libmediautils",
+        "libutils",
+        "liblog",
+    ],
+
+    logtags: ["EventLogTags.logtags"],
+
+    cflags: [
+        "-Wall",
+        "-Wextra",
+        "-Werror",
+    ],
+
+    header_libs: [
+        "bionic_libc_platform_headers",
+        "libmedia_headers",
+    ],
+    include_dirs: [
+        // For DEBUGGER_SIGNAL
+        "system/core/debuggerd/include",
+    ],
+    local_include_dirs: ["include"],
+    export_include_dirs: ["include"],
+}
+
+cc_fuzz {
+    name: "libmediautils_fuzz_battery_notifier",
+    defaults: ["libmediautils_fuzz_defaults"],
+    srcs: ["fuzz/BatteryNotifierFuzz.cpp"],
+}
+
+cc_fuzz {
+    name: "libmediautils_fuzz_service_utilities",
+    defaults: ["libmediautils_fuzz_defaults"],
+    srcs: ["fuzz/ServiceUtilitiesFuzz.cpp"],
+}
+
+cc_fuzz {
+    name: "libmediautils_fuzz_scheduling_policy_service",
+    defaults: ["libmediautils_fuzz_defaults"],
+    srcs: ["fuzz/SchedulingPolicyServiceFuzz.cpp"],
+}
