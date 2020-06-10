@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003367382",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1329371?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "160cf030_f0286175",
+          "description": "Change to \"media/utils/fuzz/TimeCheckFuzz.cpp\"",
+          "replacements": [
+            {
+              "path": "media/utils/fuzz/TimeCheckFuzz.cpp",
+              "range": {
+                "startLine": 32,
+                "startChar": 30,
+                "endLine": 32,
+                "endChar": 38
+              },
+              "replacement": "assigned"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "1d273ab0_8ac69397",
+        "filename": "media/utils/fuzz/TimeCheckFuzz.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-06-10T23:36:48Z",
+      "side": 1,
+      "message": "Common typo found: \"assinged\" -- should it be \"assigned\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 32,
+        "endChar": 38
+      },
+      "revId": "b0a770caa5ef72ed6d61d7bd6d4454138439478f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
