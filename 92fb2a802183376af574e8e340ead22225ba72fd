@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5cbe8374_18439f42",
+        "filename": "services/mediacodec/Android.mk",
+        "patchSetId": 5
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-10T20:11:46Z",
+      "side": 1,
+      "message": "it would be better to create the missing file than to do this to the makefile.\n\nit could be a symlink to the x86-32 file.",
+      "range": {
+        "startLine": 83,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 7
+      },
+      "revId": "92fb2a802183376af574e8e340ead22225ba72fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
