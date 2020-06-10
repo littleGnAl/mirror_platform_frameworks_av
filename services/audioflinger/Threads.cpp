@@ -3407,7 +3407,7 @@ bool AudioFlinger::PlaybackThread::threadLoop()
             // this to convert the sink timestamp to the track timestamp.
             bool kernelLocationUpdate = false;
             ExtendedTimestamp timestamp; // use private copy to fetch
-            if (mStandby) {
+            if (mStandby || mHwPaused) { // avoid jitter correction after pause
                 mTimestampVerifier.discontinuity();
             } else if (threadloop_getHalTimestamp_l(&timestamp) == OK) {
                 mTimestampVerifier.add(timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL],
