@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1daf1d57_6a860df7",
+        "filename": "media/codec2/hidl/services/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1081223
+      },
+      "writtenOn": "2020-06-10T16:10:58Z",
+      "side": 1,
+      "message": "Given you want to move to 64bit only these rules are never going to be installed, you should move them our on arch check",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 6
+      },
+      "revId": "53560eb05f9ca776c5433648340cd75762bcbed8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
