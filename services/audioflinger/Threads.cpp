@@ -7178,7 +7178,7 @@ reacquire_wakelock:
         // Update server timestamp with kernel stats
         if (mPipeSource.get() == nullptr /* don't obtain for FastCapture, could block */) {
             int64_t position, time;
-            if (mStandby) {
+            if (mStandby || mHwPaused) {
                 mTimestampVerifier.discontinuity();
             } else if (mSource->getCapturePosition(&position, &time) == NO_ERROR
                     && time > mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL]) {
