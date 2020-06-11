@@ -22,6 +22,30 @@
       "revId": "e9cc7268063cb46c244a9d36c369cc67277689c7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4411039_dadaca64",
+        "filename": "media/libwatchdog/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1415877
+      },
+      "writtenOn": "2020-06-11T05:17:04Z",
+      "side": 1,
+      "message": "You can think of min_sdk_version as a companion property for apex_available. min_sdk_version is supposed to be set to claim that it will work well with that API level as part of APEXes. In this case, libwatchdog is part of com.android.media APEX, which should run on 29. So, libwatchdog should set min_sdk_version \u003c\u003d 29. It\u0027s okay to set it like 14.",
+      "parentUuid": "8de65a01_0ff21f92",
+      "range": {
+        "startLine": 36,
+        "startChar": 22,
+        "endLine": 36,
+        "endChar": 24
+      },
+      "revId": "e9cc7268063cb46c244a9d36c369cc67277689c7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
