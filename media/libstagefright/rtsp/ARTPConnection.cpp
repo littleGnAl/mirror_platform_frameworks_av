@@ -878,6 +878,12 @@ status_t ARTPConnection::parseBYE(
 
     sp<ARTPSource> source = findSource(s, id);
 
+    // Report a final stastics to be used for rtp data usage.
+    int64_t nowUs = ALooper::GetNowUs();
+    int32_t timeDiff = (nowUs - mLastBitrateReportTimeUs) / 1000000ll;
+    int32_t bitrate = mCumulativeBytes * 8 / timeDiff;
+    source->notifyPktInfo(bitrate, nowUs);
+
     source->byeReceived();
 
     return OK;
