@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4e65d449_aba83eb5",
+        "filename": "media/extractors/fuzzers/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-11T04:49:08Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be adjacent to the target:{} clause that tells us about the fact that it\u0027s not \u0027host supported\u0027 on darwin?",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "0036f34427207155c21c73715463bd588f0b3d10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f8d574a9_1e697b94",
+        "filename": "media/extractors/fuzzers/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-11T04:49:08Z",
+      "side": 1,
+      "message": "(1) put this default up at the top of the file\nso that the organization of the file is:\n\nall defaults clauses\nall fuzzer clauses\n\n(2) neither of the other defaults include any source files -- they mention flags and libraries that come in, but none of them do any source files. I think i\u0027d like to move the source file declaration into the two cc_fuzz clauses that use this set of defaults.  yes, that means it is duplicated -- but that\u0027s all we\u0027re duplicating.",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 44
+      },
+      "revId": "0036f34427207155c21c73715463bd588f0b3d10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
