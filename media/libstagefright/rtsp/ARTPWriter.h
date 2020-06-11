@@ -53,6 +53,7 @@ struct ARTPWriter : public MediaWriter {
     void updateSocketDscp(int32_t dscp);
     void updateSocketNetwork(int64_t socketNetwork);
     uint32_t getSequenceNum();
+    size_t getAccumulativeBytes();
 
     virtual void onMessageReceived(const sp<AMessage> &msg);
     virtual void setTMMBNInfo(uint32_t opponentID, uint32_t bitrate);
