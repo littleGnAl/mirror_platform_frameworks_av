@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "ddc654ce_cf4a9d89",
+        "filename": "media/extractors/fuzzers/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-11T05:53:20Z",
+      "side": 1,
+      "message": "As of now, not all extractors support host_supported: true, so these need to be added in libextractorfuzzerbase (i.e. here) and individual cc_fuzz for extractor fuzzers where they can be enabled (for now only libmp4extractor) has it enabled.\n\nRegarding position of host_supported and target, \nthey don\u0027t have to be adjacent to each other. defaults will be expanded and none of the targets that use that defaults will be built for darwin.",
+      "parentUuid": "4e65d449_aba83eb5",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "0036f34427207155c21c73715463bd588f0b3d10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8d574a9_1e697b94",
         "filename": "media/extractors/fuzzers/Android.bp",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "0036f34427207155c21c73715463bd588f0b3d10",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea1882ac_14b87a31",
+        "filename": "media/extractors/fuzzers/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-11T05:53:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8d574a9_1e697b94",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 44
+      },
+      "revId": "0036f34427207155c21c73715463bd588f0b3d10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

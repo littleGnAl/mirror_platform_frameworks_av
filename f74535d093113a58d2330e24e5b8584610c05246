@@ -22,6 +22,30 @@
       "revId": "f74535d093113a58d2330e24e5b8584610c05246",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c19415d0_9c6a576e",
+        "filename": "media/extractors/fuzzers/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-11T05:53:20Z",
+      "side": 0,
+      "message": "This was added earlier as libextractorfuzzerbase was built as both static and shared.\nI have changed to build only static version of this as shared is not needed.\nAnd that allows us to remove the need for allow_undefined_symbols: true.",
+      "parentUuid": "29faab09_9f5841a8",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 52,
+        "endChar": 34
+      },
+      "revId": "f74535d093113a58d2330e24e5b8584610c05246",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
