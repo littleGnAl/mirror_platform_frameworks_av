@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6478e96c_b7c30e14",
+        "filename": "media/utils/fuzz/TimeCheckFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-06-11T00:41:32Z",
+      "side": 1,
+      "message": "Note that TimeCheck will crash this process if this instance isn\u0027t get destroyed within the `timeout`, see TimeCheck::TimeCheckThread::threadLoop. The thread is started from the constructor of TimeCheck. Not sure how long this fuzzing test runs, you might want to add some bias time to avoid having a crash.",
+      "range": {
+        "startLine": 18,
+        "startChar": 21,
+        "endLine": 18,
+        "endChar": 54
+      },
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6968e2b_8e0621dc",
+        "filename": "media/utils/fuzz/TimeCheckFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-06-11T00:41:32Z",
+      "side": 1,
+      "message": "fluctuation?",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 22
+      },
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a3afdc01_85eaa3ea",
+        "filename": "media/utils/fuzz/TimeCheckFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-06-11T00:41:32Z",
+      "side": 1,
+      "message": "Doesn\u0027t seem to be assigned.",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 32,
+        "endChar": 50
+      },
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
