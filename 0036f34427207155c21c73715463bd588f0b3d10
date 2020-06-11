@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "f9439a08_75a2635b",
+        "filename": "media/extractors/fuzzers/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-11T06:01:55Z",
+      "side": 1,
+      "message": "Just to add, once all the extractors get host support, we will move them to extractor-fuzzerbase-defaults.",
+      "parentUuid": "ddc654ce_cf4a9d89",
+      "range": {
+        "startLine": 55,
+        "startChar": 3,
+        "endLine": 55,
+        "endChar": 25
+      },
+      "revId": "0036f34427207155c21c73715463bd588f0b3d10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8d574a9_1e697b94",
         "filename": "media/extractors/fuzzers/Android.bp",
         "patchSetId": 4
