@@ -66,6 +66,7 @@ enum {
     ENABLE_AUDIO_DEVICE_CALLBACK,
     GET_ACTIVE_MICROPHONES,
     GET_PORT_ID,
+    GET_RTP_DATA_USAGE,
     SET_PREFERRED_MICROPHONE_DIRECTION,
     SET_PREFERRED_MICROPHONE_FIELD_DIMENSION,
     SET_PRIVACY_SENSITIVE,
@@ -476,6 +477,24 @@ public:
         *portId = (audio_port_handle_t)reply.readInt32();
         return NO_ERROR;
     }
+
+    status_t getRtpDataUsage(size_t *bytes)
+    {
+        ALOGV("getRtpDataUsage");
+        if (bytes == nullptr) {
+            return BAD_VALUE;
+        }
+        Parcel data, reply;
+        data.writeInterfaceToken(IMediaRecorder::getInterfaceDescriptor());
+        status_t status = remote()->transact(GET_RTP_DATA_USAGE, data, &reply);
+        if (status != OK
+                || (status = (status_t)reply.readInt32()) != NO_ERROR) {
+            *bytes = 0;
+            return status;
+        }
+        *bytes = (size_t)reply.readInt32();
+        return NO_ERROR;
+    }
 };
 
 IMPLEMENT_META_INTERFACE(MediaRecorder, "android.media.IMediaRecorder");
@@ -756,6 +775,17 @@ status_t BnMediaRecorder::onTransact(
             reply->writeInt32(status);
             if (status == NO_ERROR) {
                 reply->writeInt32(portId);
+            }
+            return NO_ERROR;
+        }
+        case GET_RTP_DATA_USAGE: {
+            ALOGV("GET_RTP_DATA_USAGE");
+            CHECK_INTERFACE(IMediaRecorder, data, reply);
+            size_t bytes;
+            status_t status = getRtpDataUsage(&bytes);
+            reply->writeInt32(status);
+            if (status == NO_ERROR) {
+                reply->writeInt32(bytes);
             }
             return NO_ERROR;
         }
