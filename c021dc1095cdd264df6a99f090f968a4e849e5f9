@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "f260c4f6_7588157e",
+        "filename": "media/utils/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-11T22:33:45Z",
+      "side": 1,
+      "message": "Sure, will do.",
+      "parentUuid": "48b6c4aa_96a0c31d",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "62af5443_0362570b",
         "filename": "media/utils/Android.bp",
         "patchSetId": 2
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-11T21:10:22Z",
       "side": 1,
       "message": "TimeCheckFuzz is missing.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 7
+      },
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0f7e017_eb05f9ba",
+        "filename": "media/utils/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-11T22:33:45Z",
+      "side": 1,
+      "message": "Whoops, I have this locally but somehow it didn\u0027t make it into my change. Good catch!",
+      "parentUuid": "62af5443_0362570b",
       "range": {
         "startLine": 104,
         "startChar": 0,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "99935f4b_8355e246",
+        "filename": "media/utils/fuzz/TimeCheckFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-11T22:33:45Z",
+      "side": 1,
+      "message": "Good call. This doesn\u0027t usually run for more than a few hundred ms, but I can add a min bound to timeout so we can keep it above a second or so.",
+      "parentUuid": "6478e96c_b7c30e14",
+      "range": {
+        "startLine": 18,
+        "startChar": 21,
+        "endLine": 18,
+        "endChar": 54
+      },
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f6968e2b_8e0621dc",
         "filename": "media/utils/fuzz/TimeCheckFuzz.cpp",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "2e2f6263_2080ee2e",
+        "filename": "media/utils/fuzz/TimeCheckFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-11T22:33:45Z",
+      "side": 1,
+      "message": "Whoops! Nice catch.",
+      "parentUuid": "f6968e2b_8e0621dc",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 22
+      },
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a3afdc01_85eaa3ea",
         "filename": "media/utils/fuzz/TimeCheckFuzz.cpp",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2020-06-11T00:41:32Z",
       "side": 1,
       "message": "Doesn\u0027t seem to be assigned.",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 32,
+        "endChar": 50
+      },
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d51a340b_8f49c669",
+        "filename": "media/utils/fuzz/TimeCheckFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-11T22:33:45Z",
+      "side": 1,
+      "message": "Ah, yes. That part of this comment was left over from when I previously believed there was a memory leak issue here (there doesn\u0027t seem to be).",
+      "parentUuid": "a3afdc01_85eaa3ea",
       "range": {
         "startLine": 32,
         "startChar": 30,
