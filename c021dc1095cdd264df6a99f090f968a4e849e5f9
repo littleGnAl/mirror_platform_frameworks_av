@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "48b6c4aa_96a0c31d",
+        "filename": "media/utils/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-11T02:07:03Z",
+      "side": 1,
+      "message": "could this entire block of new stuff (e.g. here to end of file) be placed in fuzz/Android.bp?\nas a fuzzer-specific file all by itself.\n\nalso, we\u0027ve used \"fuzzer\" instead of \"fuzz\" for holding our fuzzers. be nice to keep\nthat pattern.",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6478e96c_b7c30e14",
         "filename": "media/utils/fuzz/TimeCheckFuzz.cpp",
         "patchSetId": 2
