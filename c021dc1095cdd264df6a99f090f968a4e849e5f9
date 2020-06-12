@@ -2,6 +2,40 @@
   "comments": [
     {
       "key": {
+        "uuid": "c918c3d8_198656e7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2020-06-12T21:22:01Z",
+      "side": 1,
+      "message": "Line length",
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e2ddf6b_15175096",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2020-06-12T21:22:01Z",
+      "side": 1,
+      "message": "Add Test: line",
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "48b6c4aa_96a0c31d",
         "filename": "media/utils/Android.bp",
         "patchSetId": 2
@@ -96,6 +130,91 @@
     },
     {
       "key": {
+        "uuid": "6053bc86_4b659607",
+        "filename": "media/utils/fuzz/BatteryNotifierFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2020-06-12T21:22:01Z",
+      "side": 1,
+      "message": "blank line above this line",
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "204b7e40_c795ba62",
+        "filename": "media/utils/fuzz/BatteryNotifierFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2020-06-12T21:22:01Z",
+      "side": 1,
+      "message": "we normally indent by 4",
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d18279da_270c884a",
+        "filename": "media/utils/fuzz/SchedulingPolicyServiceFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2020-06-12T21:22:01Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d309f2ae_040c97a0",
+        "filename": "media/utils/fuzz/ServiceUtilitiesFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2020-06-12T21:22:01Z",
+      "side": 1,
+      "message": "header",
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b520108_357a8989",
+        "filename": "media/utils/fuzz/ServiceUtilitiesFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2020-06-12T21:22:01Z",
+      "side": 1,
+      "message": "ditto",
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6478e96c_b7c30e14",
         "filename": "media/utils/fuzz/TimeCheckFuzz.cpp",
         "patchSetId": 2
@@ -140,6 +259,30 @@
       "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "bb664056_78aa991b",
+        "filename": "media/utils/fuzz/TimeCheckFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2020-06-12T21:22:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99935f4b_8355e246",
+      "range": {
+        "startLine": 18,
+        "startChar": 21,
+        "endLine": 18,
+        "endChar": 54
+      },
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
