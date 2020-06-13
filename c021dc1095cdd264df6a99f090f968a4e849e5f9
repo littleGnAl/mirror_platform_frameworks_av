@@ -119,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "c5e2eca4_bfbcd15e",
+        "filename": "media/utils/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-13T00:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f260c4f6_7588157e",
+      "range": {
+        "startLine": 62,
+        "startChar": 1,
+        "endLine": 68,
+        "endChar": 4
+      },
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "62af5443_0362570b",
         "filename": "media/utils/Android.bp",
         "patchSetId": 2
@@ -166,6 +190,30 @@
     },
     {
       "key": {
+        "uuid": "7f502618_45d7129c",
+        "filename": "media/utils/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-13T00:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d0f7e017_eb05f9ba",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 7
+      },
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6053bc86_4b659607",
         "filename": "media/utils/fuzz/BatteryNotifierFuzz.cpp",
         "patchSetId": 2
@@ -180,6 +228,24 @@
       "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29e1bb62_d4319596",
+        "filename": "media/utils/fuzz/BatteryNotifierFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-13T00:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6053bc86_4b659607",
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -200,6 +266,24 @@
     },
     {
       "key": {
+        "uuid": "aebb0ab0_3ac99e4e",
+        "filename": "media/utils/fuzz/BatteryNotifierFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-13T00:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "204b7e40_c795ba62",
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d18279da_270c884a",
         "filename": "media/utils/fuzz/SchedulingPolicyServiceFuzz.cpp",
         "patchSetId": 2
@@ -214,6 +298,24 @@
       "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e66df601_c80897ba",
+        "filename": "media/utils/fuzz/SchedulingPolicyServiceFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-13T00:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d18279da_270c884a",
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -234,6 +336,24 @@
     },
     {
       "key": {
+        "uuid": "10e34359_7bbb0461",
+        "filename": "media/utils/fuzz/ServiceUtilitiesFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-13T00:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d309f2ae_040c97a0",
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2b520108_357a8989",
         "filename": "media/utils/fuzz/ServiceUtilitiesFuzz.cpp",
         "patchSetId": 2
@@ -248,6 +368,24 @@
       "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "53677599_9ba81a92",
+        "filename": "media/utils/fuzz/ServiceUtilitiesFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-13T00:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b520108_357a8989",
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -369,6 +507,30 @@
     },
     {
       "key": {
+        "uuid": "6928cd41_dcf4065d",
+        "filename": "media/utils/fuzz/TimeCheckFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-13T00:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2e2f6263_2080ee2e",
+      "range": {
+        "startLine": 22,
+        "startChar": 13,
+        "endLine": 22,
+        "endChar": 22
+      },
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a3afdc01_85eaa3ea",
         "filename": "media/utils/fuzz/TimeCheckFuzz.cpp",
         "patchSetId": 2
@@ -413,6 +575,30 @@
       "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fda61dbe_e8bb4d2b",
+        "filename": "media/utils/fuzz/TimeCheckFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-13T00:03:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d51a340b_8f49c669",
+      "range": {
+        "startLine": 32,
+        "startChar": 30,
+        "endLine": 32,
+        "endChar": 50
+      },
+      "revId": "c021dc1095cdd264df6a99f090f968a4e849e5f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
