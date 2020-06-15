@@ -94,6 +94,30 @@
       "revId": "cd58933b54bea100404c973b8c467287c3412bec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a386643_307fae3e",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-15T22:13:43Z",
+      "side": 1,
+      "message": "Looking at the code, decryption is used only when AES key is set in ATSParser (signalNewSampleAesKey) and this is not called in mediaextractor path. This is set in libstagefright_httplive, which includes libstagefright_mpeg2support as a static library.\nSo the change looks fine.",
+      "parentUuid": "c964bcf0_033d1626",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "cd58933b54bea100404c973b8c467287c3412bec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
