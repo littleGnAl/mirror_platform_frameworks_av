@@ -118,6 +118,30 @@
       "revId": "cd58933b54bea100404c973b8c467287c3412bec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ec9392df_c37ea6f4",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-15T23:16:22Z",
+      "side": 1,
+      "message": "Marking this comment as resolved as the CL has a code-review +2, so that this can be submitted.",
+      "parentUuid": "3a386643_307fae3e",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "cd58933b54bea100404c973b8c467287c3412bec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
