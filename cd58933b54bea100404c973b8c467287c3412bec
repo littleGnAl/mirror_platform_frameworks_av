@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "81863480_7513bb46",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-15T20:24:00Z",
+      "side": 1,
+      "message": "so in order to avoid linking in libcrypto when in an apex,\nit seems that a believed-encrypted mpeg2ts instance with encryption will be pointed\nat the dummy/stub decryptor.  and that would seem to say that we won\u0027t be able to handle encrypted mpeg2ts streams in build where these live in an apex.\n\nthat doesn\u0027t feel right.",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "cd58933b54bea100404c973b8c467287c3412bec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
