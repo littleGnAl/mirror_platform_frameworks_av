@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "9865813a_d8b3d3bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-15T18:14:39Z",
+      "side": 1,
+      "message": "Okay, I\u0027ve since pulled it down a bit, can break it into lines if needed.",
+      "parentUuid": "f993407d_93b90e7f",
+      "revId": "3871f798f8027772dbe959fecf5b7b6b34a12950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5ff4b61_dde71dce",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -36,6 +54,24 @@
     },
     {
       "key": {
+        "uuid": "aaf26b30_5df696f1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-15T18:14:39Z",
+      "side": 1,
+      "message": "Okay, thanks for the info, will update this.",
+      "parentUuid": "d5ff4b61_dde71dce",
+      "revId": "3871f798f8027772dbe959fecf5b7b6b34a12950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "572872c9_161056b4",
         "filename": "media/utils/fuzzers/Android.bp",
         "patchSetId": 4
@@ -47,6 +83,24 @@
       "writtenOn": "2020-06-15T17:32:05Z",
       "side": 1,
       "message": "Are these on by default now?",
+      "revId": "3871f798f8027772dbe959fecf5b7b6b34a12950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64c44cee_0ce210a6",
+        "filename": "media/utils/fuzzers/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-15T18:14:39Z",
+      "side": 1,
+      "message": "Apparently some of the flags are enabled by default: https://releases.llvm.org/9.0.0/tools/clang/docs/DiagnosticsReference.html#wc-2a-extensions\nI was hitting an error related to the use of a function template name with no prior declaration for interface_cast, and adding this flag resolved that error.",
+      "parentUuid": "572872c9_161056b4",
       "revId": "3871f798f8027772dbe959fecf5b7b6b34a12950",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
@@ -81,6 +135,24 @@
       "writtenOn": "2020-06-15T17:32:05Z",
       "side": 1,
       "message": "This is risky, because it assumes that this header is included after \u003clog.h\u003e\n\nAlso, there may be code that assumes that the next line after a LOG_ALWAYS_FATAL_IF\nwill not be executed if the condition is true.  With this redefinition,\nit becomes a nop which could do bad things to the next line.\n\nCan you please explain in the comment why you need to make it a nop?",
+      "revId": "3871f798f8027772dbe959fecf5b7b6b34a12950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "086bc00b_b433b16e",
+        "filename": "media/utils/fuzzers/TimeCheckFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-15T18:14:39Z",
+      "side": 1,
+      "message": "So the intent here was to prevent LOG_ALWAYS_FATAL_IF from emitting a SIGABRT if we time out, as it was preventing the fuzzer from continuing. It\u0027s possible I didn\u0027t quite do this correctly. I also just realized TimeCheck uses LOG_ALWAYS_FATAL and not LOG_ALWAYS_FATAL_IF. Definitely open to better ways of doing this if anything comes to mind. Mapping SIGABRT to the SIG_IGN handler didn\u0027t seem to block the death of the fuzzerin this scenario.",
+      "parentUuid": "f57b67cf_8d09f09e",
       "revId": "3871f798f8027772dbe959fecf5b7b6b34a12950",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
