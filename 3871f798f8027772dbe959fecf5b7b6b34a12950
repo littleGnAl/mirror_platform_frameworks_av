@@ -84,6 +84,24 @@
     },
     {
       "key": {
+        "uuid": "1225b312_59c90583",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-15T23:59:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9865813a_d8b3d3bf",
+      "revId": "3871f798f8027772dbe959fecf5b7b6b34a12950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5ff4b61_dde71dce",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
@@ -116,6 +134,24 @@
       "revId": "3871f798f8027772dbe959fecf5b7b6b34a12950",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e25a4937_54c7cd32",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-15T23:59:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aaf26b30_5df696f1",
+      "revId": "3871f798f8027772dbe959fecf5b7b6b34a12950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -154,6 +190,24 @@
     },
     {
       "key": {
+        "uuid": "1f88579a_bb25e95a",
+        "filename": "media/utils/fuzzers/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-15T23:59:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "64c44cee_0ce210a6",
+      "revId": "3871f798f8027772dbe959fecf5b7b6b34a12950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c27ef3bf_828d59da",
         "filename": "media/utils/fuzzers/BatteryNotifierFuzz.cpp",
         "patchSetId": 4
@@ -168,6 +222,24 @@
       "revId": "3871f798f8027772dbe959fecf5b7b6b34a12950",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7dc9f2fb_264caea7",
+        "filename": "media/utils/fuzzers/BatteryNotifierFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-15T23:59:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c27ef3bf_828d59da",
+      "revId": "3871f798f8027772dbe959fecf5b7b6b34a12950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -221,6 +293,24 @@
       "revId": "3871f798f8027772dbe959fecf5b7b6b34a12950",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43b7d437_a05315a2",
+        "filename": "media/utils/fuzzers/TimeCheckFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-15T23:59:09Z",
+      "side": 1,
+      "message": "I ended up taking a different approach here. it might be a good future work to fuzz the timeout functionality, but it\u0027s a fairly simple class, so hard to say if it\u0027s worth it. For now, I have just omitted that part of this fuzzer.",
+      "parentUuid": "70e9b674_15c56f7f",
+      "revId": "3871f798f8027772dbe959fecf5b7b6b34a12950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
