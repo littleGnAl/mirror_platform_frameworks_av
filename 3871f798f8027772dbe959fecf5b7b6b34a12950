@@ -37,6 +37,29 @@
     },
     {
       "key": {
+        "uuid": "93b7a68a_1ae91127",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-15T20:33:56Z",
+      "side": 1,
+      "message": "3% coverage is pretty low. I would like to see:\n-- better coverage numbers\n-- \"actual\" instead of \"estimated\".",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 77
+      },
+      "revId": "3871f798f8027772dbe959fecf5b7b6b34a12950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5ff4b61_dde71dce",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
