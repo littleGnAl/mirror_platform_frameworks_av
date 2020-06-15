@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "443ab45e_1b82cc56",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7181,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-06-15T16:30:34Z",
+      "side": 1,
+      "message": "can you please add the comment (per the commit message) as to why we are doing this for hw paused?  thanks!",
+      "range": {
+        "startLine": 7181,
+        "startChar": 28,
+        "endLine": 7181,
+        "endChar": 37
+      },
+      "revId": "b43b2e03839b078e95f6738268006f76c45b303f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
