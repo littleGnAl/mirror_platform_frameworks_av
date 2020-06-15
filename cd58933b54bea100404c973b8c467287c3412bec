@@ -46,6 +46,30 @@
       "revId": "cd58933b54bea100404c973b8c467287c3412bec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "db9bc6b8_9e3670ec",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1026966
+      },
+      "writtenOn": "2020-06-15T21:53:43Z",
+      "side": 1,
+      "message": "I cannot access my original CL, but IIRC. I checked the code history and the encrypted stream path was added for HLS use case, which is still in /system. I was told that there would be no mpeg2 ts extractor usage that uses encryption path.",
+      "parentUuid": "ee87b5c8_454ca362",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "cd58933b54bea100404c973b8c467287c3412bec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
