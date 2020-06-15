@@ -60,6 +60,30 @@
     },
     {
       "key": {
+        "uuid": "63ac5e44_6183181d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-15T20:38:10Z",
+      "side": 1,
+      "message": "So 3% is totally, wildly inaccurate, and not even remotely representative of the real number. Unfortunately we don\u0027t currently have a better way to get this coverage number until these fuzzers have been submitted to clusterfuzz. I suspect we will be fairly high coverage here just due to the number of functions and classes in the library being relatively low. I wish I could provide better metrics for you here, but I can\u0027t get that information yet, sorry.",
+      "parentUuid": "93b7a68a_1ae91127",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 77
+      },
+      "revId": "3871f798f8027772dbe959fecf5b7b6b34a12950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5ff4b61_dde71dce",
         "filename": "/COMMIT_MSG",
         "patchSetId": 4
