@@ -22,6 +22,30 @@
       "revId": "cd58933b54bea100404c973b8c467287c3412bec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ee87b5c8_454ca362",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-06-15T20:49:48Z",
+      "side": 1,
+      "message": "Good point. Dongwon, do you remember why you made this change the way you did?\nIt does seem possible for the mpeg-2 extractor to create an ATSParser for an encrypted stream, which in turn would create an ElementaryStreamQueue with the \"encrypted\" flag set, and it seems this would make that not work.\nOn the other hand, the change has been in internal R/master for a while, so either we have no tests for encrypted mpeg-2, or this doesn\u0027t work the way it would seem to at first glance.",
+      "parentUuid": "81863480_7513bb46",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "cd58933b54bea100404c973b8c467287c3412bec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
