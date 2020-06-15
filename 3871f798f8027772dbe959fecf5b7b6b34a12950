@@ -203,6 +203,24 @@
       "revId": "3871f798f8027772dbe959fecf5b7b6b34a12950",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "70e9b674_15c56f7f",
+        "filename": "media/utils/fuzzers/TimeCheckFuzz.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-15T21:24:27Z",
+      "side": 1,
+      "message": "After investigating this further, it looks like this is not a good strategy for resolving this issue. It seems like it\u0027s very challenging to avoid crashing the entire fuzzer when the library is calling abort. Will investigate further, if anything comes to mind, feel free to let me know.",
+      "parentUuid": "086bc00b_b433b16e",
+      "revId": "3871f798f8027772dbe959fecf5b7b6b34a12950",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
