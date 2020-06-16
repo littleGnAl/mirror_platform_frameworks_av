@@ -2075,7 +2075,11 @@ bool canOffloadStream(const sp<MetaData>& meta, bool hasVideo,
     }
     // Check if offload is possible for given format, stream type, sample rate,
     // bit rate, duration, video and streaming
+#ifndef DISABLE_AUDIO_SYSTEM_OFFLOAD
     return AudioSystem::isOffloadSupported(info);
+#else
+    return false;
+#endif
 }
 
 HLSTime::HLSTime(const sp<AMessage>& meta) :
