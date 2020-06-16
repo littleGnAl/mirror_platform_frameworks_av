@@ -142,6 +142,30 @@
       "revId": "cd58933b54bea100404c973b8c467287c3412bec",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c3e4073b_83b57135",
+        "filename": "media/libstagefright/mpeg2ts/ESQueue.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-16T00:04:53Z",
+      "side": 1,
+      "message": "i\u0027d rather see 2 versions of the library -- \"mpeg2support\" and \"mpeg2support_nocrypto\" \nthat are built with the appropriate differences than using the APEX flags to control this.\n\nthe current library is static -- and presumably the new one would also be -- so there will not be any on-device space impact here.",
+      "parentUuid": "3a386643_307fae3e",
+      "range": {
+        "startLine": 58,
+        "startChar": 7,
+        "endLine": 58,
+        "endChar": 23
+      },
+      "revId": "cd58933b54bea100404c973b8c467287c3412bec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
