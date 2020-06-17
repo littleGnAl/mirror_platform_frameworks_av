@@ -1219,6 +1219,7 @@ audio_io_handle_t AudioPolicyManager::getOutputForDevices(
         outputDesc->mDirectClientSession = session;
 
         addOutput(output, outputDesc);
+        setOutputDevices(outputDesc, DeviceVector(devices), true, 0, NULL);
         mPreviousOutputs = mOutputs;
         ALOGV("%s returns new direct output %d", __func__, output);
         mpClientInterface->onAudioPortListUpdate();
