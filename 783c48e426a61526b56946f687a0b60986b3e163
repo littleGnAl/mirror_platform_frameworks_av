@@ -22,6 +22,30 @@
       "revId": "783c48e426a61526b56946f687a0b60986b3e163",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7cfb1e3c_5ab846af",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2083,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-06-17T05:46:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09f60ec8_bb51c360",
+      "range": {
+        "startLine": 2078,
+        "startChar": 1,
+        "endLine": 2083,
+        "endChar": 1
+      },
+      "revId": "783c48e426a61526b56946f687a0b60986b3e163",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
