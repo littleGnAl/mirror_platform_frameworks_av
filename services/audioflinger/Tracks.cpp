@@ -583,8 +583,8 @@ AudioFlinger::PlaybackThread::Track::Track(
         thread->mFastTrackAvailMask &= ~(1 << i);
     }
 
-    mServerLatencySupported = thread->type() == ThreadBase::MIXER
-            || thread->type() == ThreadBase::DUPLICATING;
+    mServerLatencySupported = audio_is_linear_pcm(format) &&
+            ((flags & AUDIO_OUTPUT_FLAG_HW_AV_SYNC) == 0);
 #ifdef TEE_SINK
     mTee.setId(std::string("_") + std::to_string(mThreadIoHandle)
             + "_" + std::to_string(mId) + "_T");
