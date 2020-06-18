@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "2583f04d_a5a03f95",
+        "filename": "media/libstagefright/tests/writer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-06-18T09:05:48Z",
+      "side": 1,
+      "message": "Keeping these in shared libs is essential to run extractor in writer test. If we try to move them to static libs, setDataSource functionality of extractor throws run time exception and test aborts.",
+      "parentUuid": "489944ca_82752f60",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "bc336d2522681cf224719fda08b916055f978faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1e9fdecb_556bb394",
         "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "bc336d2522681cf224719fda08b916055f978faf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c77311b_ee2e6aa1",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-06-18T09:05:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e9fdecb_556bb394",
+      "range": {
+        "startLine": 370,
+        "startChar": 38,
+        "endLine": 370,
+        "endChar": 43
+      },
+      "revId": "bc336d2522681cf224719fda08b916055f978faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
