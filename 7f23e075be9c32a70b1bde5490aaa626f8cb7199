@@ -22,6 +22,30 @@
       "revId": "7f23e075be9c32a70b1bde5490aaa626f8cb7199",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "397c0682_5ad87720",
+        "filename": "media/extractors/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-18T23:03:27Z",
+      "side": 1,
+      "message": "Ray,\nThis change isn\u0027t enabling host support. This is adding midi extractor fuzzer for testing on android builds. Midi extractor now depends libwatchdog.\nlibwatchdog is present in aosp/master and present in internal/master, so this change will work as expected on these branches.\nBut because libwatchdog is missing in couple of internal branches, it results in treehugger builds failing for this CL. \nWe are not sure if there is anything that can be done to fix libwatchdog issue from aosp gerrit.",
+      "parentUuid": "7da6b0a6_834ee569",
+      "range": {
+        "startLine": 321,
+        "startChar": 7,
+        "endLine": 321,
+        "endChar": 22
+      },
+      "revId": "7f23e075be9c32a70b1bde5490aaa626f8cb7199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
