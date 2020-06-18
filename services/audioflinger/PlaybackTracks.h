@@ -185,6 +185,13 @@ public:
 
     audio_output_flags_t getOutputFlags() const { return mFlags; }
     float getSpeed() const { return mSpeed; }
+
+    static bool checkServerLatencySupported(
+            audio_format_t format, audio_output_flags_t flags) {
+        return audio_is_linear_pcm(format)
+                && (flags & AUDIO_OUTPUT_FLAG_HW_AV_SYNC) == 0;
+    }
+
 protected:
     // for numerous
     friend class PlaybackThread;
