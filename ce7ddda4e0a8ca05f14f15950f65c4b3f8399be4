@@ -46,6 +46,30 @@
       "revId": "ce7ddda4e0a8ca05f14f15950f65c4b3f8399be4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d35721ba_d385c042",
+        "filename": "media/libstagefright/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-06-18T05:24:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "db2c6c55_77d6a534",
+      "range": {
+        "startLine": 78,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 6
+      },
+      "revId": "ce7ddda4e0a8ca05f14f15950f65c4b3f8399be4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
