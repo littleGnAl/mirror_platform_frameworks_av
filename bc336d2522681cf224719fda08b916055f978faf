@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "489944ca_82752f60",
+        "filename": "media/libstagefright/tests/writer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-18T04:20:03Z",
+      "side": 1,
+      "message": "can we try to keep these two in static librariies?\nwill be useful when building with sanitizers enabled.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 36
+      },
+      "revId": "bc336d2522681cf224719fda08b916055f978faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1e9fdecb_556bb394",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 370,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-18T04:20:03Z",
+      "side": 1,
+      "message": "report\nhere and below",
+      "range": {
+        "startLine": 370,
+        "startChar": 38,
+        "endLine": 370,
+        "endChar": 43
+      },
+      "revId": "bc336d2522681cf224719fda08b916055f978faf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
