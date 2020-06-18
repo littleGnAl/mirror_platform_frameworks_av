@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7da6b0a6_834ee569",
+        "filename": "media/extractors/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 321,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-18T22:48:29Z",
+      "side": 1,
+      "message": "consider whether we add a stub watchdog implementation here that\ndoes nothing rather than make the actual one be host-ready.  I saw another CL where\nthat was going to be more than just the simple addition of host_supported and target: clauses\nto the Android.bp file for that.",
+      "range": {
+        "startLine": 321,
+        "startChar": 7,
+        "endLine": 321,
+        "endChar": 22
+      },
+      "revId": "7f23e075be9c32a70b1bde5490aaa626f8cb7199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
