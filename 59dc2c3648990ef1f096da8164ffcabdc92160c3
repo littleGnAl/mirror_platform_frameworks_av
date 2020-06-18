@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9c207820_36183ab1",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-18T22:08:57Z",
+      "side": 1,
+      "message": "there is a lint warning on this, \nlet us change to strlcpy",
+      "revId": "59dc2c3648990ef1f096da8164ffcabdc92160c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
