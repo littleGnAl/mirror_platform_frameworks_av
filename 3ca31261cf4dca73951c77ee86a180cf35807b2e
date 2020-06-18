@@ -22,6 +22,30 @@
       "revId": "3ca31261cf4dca73951c77ee86a180cf35807b2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4822771b_69ab7595",
+        "filename": "media/libwatchdog/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-18T22:31:16Z",
+      "side": 1,
+      "message": "This macro approach was taken as siginfo.h picked up in host builds doesn\u0027t define sigev_notify_thread_id, whereas the one in case of arm builds define these.\nIf changing source code is okay, then we can use _sigev_un._tid instead of sigev_notify_thread_id in Watchdog.cpp. That should work for all builds.",
+      "parentUuid": "3630af54_d3d82a3b",
+      "range": {
+        "startLine": 37,
+        "startChar": 16,
+        "endLine": 37,
+        "endChar": 58
+      },
+      "revId": "3ca31261cf4dca73951c77ee86a180cf35807b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
