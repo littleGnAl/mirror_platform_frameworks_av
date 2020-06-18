@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "42b0f103_52a1b2ab",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3321,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-06-18T20:54:07Z",
+      "side": 1,
+      "message": "That is correct, do not reset on pause.",
+      "parentUuid": "078d8732_5409b557",
+      "range": {
+        "startLine": 3321,
+        "startChar": 70,
+        "endLine": 3321,
+        "endChar": 74
+      },
+      "revId": "8769922d0f705054ae39b25fcdb5265cf898c95f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7df9237a_dc88851d",
         "filename": "services/audioflinger/Threads.cpp",
         "patchSetId": 2
@@ -48,6 +72,30 @@
     },
     {
       "key": {
+        "uuid": "f8ad0171_2fdd0c67",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3327,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-06-18T20:54:07Z",
+      "side": 1,
+      "message": "Please check on your side. It should be continuous only for PCM tracks for OFFLOAD/DIRECT and this is for legacy reasons.  However, note that PCM tracks are normally MIXED.",
+      "parentUuid": "7df9237a_dc88851d",
+      "range": {
+        "startLine": 3327,
+        "startChar": 67,
+        "endLine": 3327,
+        "endChar": 90
+      },
+      "revId": "8769922d0f705054ae39b25fcdb5265cf898c95f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1c366ba2_24ae0ed3",
         "filename": "services/audioflinger/Threads.cpp",
         "patchSetId": 2
@@ -59,6 +107,30 @@
       "writtenOn": "2020-06-16T22:50:29Z",
       "side": 1,
       "message": "For this to work with direct/offload threads into HALs which do not reset presentation position frame count to 0 on pause or standby, the timestamp verifier discontinuity mode needs to be set to DISCONTINUITY_MODE_CONTINUOUS rather than DISCONTINUITY_MODE_ZERO.",
+      "range": {
+        "startLine": 3410,
+        "startChar": 28,
+        "endLine": 3410,
+        "endChar": 37
+      },
+      "revId": "8769922d0f705054ae39b25fcdb5265cf898c95f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "846909eb_75bfb87b",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3410,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-06-18T20:54:07Z",
+      "side": 1,
+      "message": "I think the behavior is inconsistent for PCM DIRECT threads, where it can enter standby in pause thus resetting frame position to 0.  Direct PCM threads should not enter standby and there is a fix coming in R for that.",
+      "parentUuid": "1c366ba2_24ae0ed3",
       "range": {
         "startLine": 3410,
         "startChar": 28,
