@@ -79,4 +79,7 @@ getgid: 1
 getegid: 1
 getgroups: 1
 
+# sysinfo required by mesa
+sysinfo: 1
+
 @include /system/etc/seccomp_policy/code_coverage.arm64.policy
