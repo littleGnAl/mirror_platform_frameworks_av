@@ -590,6 +590,11 @@ protected:
                 ExtendedTimestamp       mTimestamp;
                 TimestampVerifier< // For timestamp statistics.
                         int64_t /* frame count */, int64_t /* time ns */> mTimestampVerifier;
+                // DIRECT and OFFLOAD threads should reset frame count to zero on stop/flush
+                // TODO: add confirmation checks:
+                // 1) DIRECT threads and linear PCM format really resets to 0?
+                // 2) Is frame count really valid if not linear pcm?
+                // 3) Are all 64 bits of position returned, not just lowest 32 bits?
                 // Timestamp corrected device should be a single device.
                 audio_devices_t         mTimestampCorrectedDevice = AUDIO_DEVICE_NONE;
 
