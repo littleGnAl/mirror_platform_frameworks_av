@@ -622,7 +622,7 @@ void AudioFlinger::ThreadBase::sendIoConfigEvent_l(audio_io_config_event event, 
     mIoJitterMs.reset();
     mLatencyMs.reset();
     mProcessTimeMs.reset();
-    mTimestampVerifier.discontinuity();
+    mTimestampVerifier.discontinuity(mTimestampVerifier.DISCONTINUITY_MODE_CONTINUOUS);
 
     sp<ConfigEvent> configEvent = (ConfigEvent *)new IoConfigEvent(event, pid, portId);
     sendConfigEvent_l(configEvent);
@@ -2719,7 +2719,7 @@ void AudioFlinger::PlaybackThread::resetDraining(uint32_t sequence)
         // the timestamp frame position to reset to 0 for direct and offload threads.
         // (Out of sequence requests are ignored, since the discontinuity would be handled
         // elsewhere, e.g. in flush).
-        mTimestampVerifier.discontinuity();
+        mTimestampVerifier.discontinuity(mTimestampVerifier.DISCONTINUITY_MODE_ZERO);
         mDrainSequence &= ~1;
         mWaitWorkCV.signal();
     }
@@ -3444,14 +3444,6 @@ bool AudioFlinger::PlaybackThread::threadLoop()
 
     checkSilentMode_l();
 
-    // DIRECT and OFFLOAD threads should reset frame count to zero on stop/flush
-    // TODO: add confirmation checks:
-    // 1) DIRECT threads and linear PCM format really resets to 0?
-    // 2) Is frame count really valid if not linear pcm?
-    // 3) Are all 64 bits of position returned, not just lowest 32 bits?
-    if (mType == OFFLOAD || mType == DIRECT) {
-        mTimestampVerifier.setDiscontinuityMode(mTimestampVerifier.DISCONTINUITY_MODE_ZERO);
-    }
     audio_patch_handle_t lastDownstreamPatchHandle = AUDIO_PATCH_HANDLE_NONE;
 
     // loopCount is used for statistics and diagnostics.
@@ -3533,9 +3525,15 @@ bool AudioFlinger::PlaybackThread::threadLoop()
             // this to convert the sink timestamp to the track timestamp.
             bool kernelLocationUpdate = false;
             ExtendedTimestamp timestamp; // use private copy to fetch
-            if (mStandby) {
-                mTimestampVerifier.discontinuity();
-            } else if (threadloop_getHalTimestamp_l(&timestamp) == OK) {
+            if (mStandby &&
+                    ((mType == DIRECT && !audio_is_linear_pcm(mFormat)) || mType == OFFLOAD)) {
+                mTimestampVerifier.discontinuity(mTimestampVerifier.DISCONTINUITY_MODE_ZERO);
+            } else if (mStandby || mHwPaused) {
+                mTimestampVerifier.discontinuity(mTimestampVerifier.DISCONTINUITY_MODE_CONTINUOUS);
+            }
+            // Always query HAL timestamp and update timestamp verifier. In standby or pause,
+            // HAL may be draining some small duration buffered data for fade out.
+            if (threadloop_getHalTimestamp_l(&timestamp) == OK) {
                 mTimestampVerifier.add(timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL],
                         timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL],
                         mSampleRate);
@@ -6178,7 +6176,8 @@ void AudioFlinger::DirectOutputThread::flushHw_l()
     mOutput->flush();
     mHwPaused = false;
     mFlushPending = false;
-    mTimestampVerifier.discontinuity(); // DIRECT and OFFLOADED flush resets frame count.
+    // DIRECT and OFFLOADED thread flush should reset frame count to zero.
+    mTimestampVerifier.discontinuity(mTimestampVerifier.DISCONTINUITY_MODE_ZERO);
     mTimestamp.clear();
 }
 
@@ -6514,13 +6513,14 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::OffloadThread::prepareTr
                     track->presentationComplete(framesWritten, audioHALFrames);
                     track->reset();
                     tracksToRemove->add(track);
-                    // DIRECT and OFFLOADED stop resets frame counts.
+                    // OFFLOADED stop resets frame counts.
                     if (!mUseAsyncWrite) {
                         // If we don't get explicit drain notification we must
                         // register discontinuity regardless of whether this is
                         // the previous (!last) or the upcoming (last) track
                         // to avoid skipping the discontinuity.
-                        mTimestampVerifier.discontinuity();
+                        mTimestampVerifier.discontinuity(
+                                mTimestampVerifier.DISCONTINUITY_MODE_ZERO);
                     }
                 }
             } else {
@@ -7378,7 +7378,8 @@ reacquire_wakelock:
         if (mPipeSource.get() == nullptr /* don't obtain for FastCapture, could block */) {
             int64_t position, time;
             if (mStandby) {
-                mTimestampVerifier.discontinuity();
+                // standby should not reset frame count (backed by capture position).
+                mTimestampVerifier.discontinuity(mTimestampVerifier.DISCONTINUITY_MODE_CONTINUOUS);
             } else if (mSource->getCapturePosition(&position, &time) == NO_ERROR
                     && time > mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL]) {
 
