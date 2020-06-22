@@ -34,6 +34,190 @@
       "revId": "4ac5fc5d42071f66da8672f054d453729240aefa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6313f400_52edbe27",
+        "filename": "media/utils/fuzzers/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-06-22T18:59:04Z",
+      "side": 1,
+      "message": "nit: put this in order (above line 6).",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 17
+      },
+      "revId": "4ac5fc5d42071f66da8672f054d453729240aefa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96e070a4_98420cf1",
+        "filename": "media/utils/fuzzers/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-06-22T18:59:04Z",
+      "side": 1,
+      "message": "is this needed?  I believe this is used to prettify the event logcat.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "4ac5fc5d42071f66da8672f054d453729240aefa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7eef927d_c1b1e5f1",
+        "filename": "media/utils/fuzzers/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-06-22T18:59:04Z",
+      "side": 1,
+      "message": "nit: put this in order (before line 37)?",
+      "range": {
+        "startLine": 42,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 1
+      },
+      "revId": "4ac5fc5d42071f66da8672f054d453729240aefa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96ddc528_58dc014f",
+        "filename": "media/utils/fuzzers/BatteryNotifierFuzz.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-06-22T18:59:04Z",
+      "side": 1,
+      "message": "fine, just noting that this part could be omitted in the future if you are running short of line length.",
+      "range": {
+        "startLine": 58,
+        "startChar": 90,
+        "endLine": 58,
+        "endChar": 98
+      },
+      "revId": "4ac5fc5d42071f66da8672f054d453729240aefa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdc90c80_40ff4c35",
+        "filename": "media/utils/fuzzers/ServiceUtilitiesFuzz.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-06-22T18:59:04Z",
+      "side": 1,
+      "message": "nit: for consistency, add android::?",
+      "range": {
+        "startLine": 57,
+        "startChar": 2,
+        "endLine": 57,
+        "endChar": 3
+      },
+      "revId": "4ac5fc5d42071f66da8672f054d453729240aefa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea5a3bdf_9892b654",
+        "filename": "media/utils/fuzzers/TimeCheckFuzz.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-06-22T18:59:04Z",
+      "side": 1,
+      "message": "nit: please use time units here and below.\n\nkMaxTimeoutMs\nkMinTimeoutMs\ntimeoutMs\n\netc.",
+      "range": {
+        "startLine": 26,
+        "startChar": 26,
+        "endLine": 26,
+        "endChar": 37
+      },
+      "revId": "4ac5fc5d42071f66da8672f054d453729240aefa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7fa29309_6f792f09",
+        "filename": "media/utils/fuzzers/TimeCheckFuzz.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-06-22T18:59:04Z",
+      "side": 1,
+      "message": "nit: preallocate plus direct index access pids[i] or for (auto\u0026 pid : pids) would be faster.",
+      "range": {
+        "startLine": 37,
+        "startChar": 27,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "4ac5fc5d42071f66da8672f054d453729240aefa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c8ba217_82e35c4b",
+        "filename": "media/utils/fuzzers/TimeCheckFuzz.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-06-22T18:59:04Z",
+      "side": 1,
+      "message": "is this in seconds?",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 28
+      },
+      "revId": "4ac5fc5d42071f66da8672f054d453729240aefa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
