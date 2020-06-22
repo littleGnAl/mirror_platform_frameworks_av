@@ -83,6 +83,30 @@
     },
     {
       "key": {
+        "uuid": "12c93931_622bf8d4",
+        "filename": "media/utils/fuzzers/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-22T21:01:23Z",
+      "side": 1,
+      "message": "Nope. This is also currently breaking the build. I\u0027m waiting on a rebuild without it locally to make sure all is well.",
+      "parentUuid": "96e070a4_98420cf1",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 38
+      },
+      "revId": "4ac5fc5d42071f66da8672f054d453729240aefa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7eef927d_c1b1e5f1",
         "filename": "media/utils/fuzzers/Android.bp",
         "patchSetId": 5
@@ -126,6 +150,30 @@
       "revId": "4ac5fc5d42071f66da8672f054d453729240aefa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a169b94_897c756d",
+        "filename": "media/utils/fuzzers/BatteryNotifierFuzz.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-22T21:01:23Z",
+      "side": 1,
+      "message": "Ooh, that\u0027s good to know! Thanks!",
+      "parentUuid": "96ddc528_58dc014f",
+      "range": {
+        "startLine": 58,
+        "startChar": 90,
+        "endLine": 58,
+        "endChar": 98
+      },
+      "revId": "4ac5fc5d42071f66da8672f054d453729240aefa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -198,6 +246,30 @@
     },
     {
       "key": {
+        "uuid": "4a09a9c3_ff788234",
+        "filename": "media/utils/fuzzers/TimeCheckFuzz.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-22T21:01:23Z",
+      "side": 1,
+      "message": "It doesn\u0027t seem like foreach loops are really good at modifying the state of the vector. Since we\u0027re assigning values here I\u0027ll go for the first suggestion.",
+      "parentUuid": "7fa29309_6f792f09",
+      "range": {
+        "startLine": 37,
+        "startChar": 27,
+        "endLine": 38,
+        "endChar": 44
+      },
+      "revId": "4ac5fc5d42071f66da8672f054d453729240aefa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5c8ba217_82e35c4b",
         "filename": "media/utils/fuzzers/TimeCheckFuzz.cpp",
         "patchSetId": 5
@@ -209,6 +281,30 @@
       "writtenOn": "2020-06-22T18:59:04Z",
       "side": 1,
       "message": "is this in seconds?",
+      "range": {
+        "startLine": 54,
+        "startChar": 8,
+        "endLine": 54,
+        "endChar": 28
+      },
+      "revId": "4ac5fc5d42071f66da8672f054d453729240aefa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "32523219_e52f5fdd",
+        "filename": "media/utils/fuzzers/TimeCheckFuzz.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-06-22T21:01:23Z",
+      "side": 1,
+      "message": "Oops, great catch!",
+      "parentUuid": "5c8ba217_82e35c4b",
       "range": {
         "startLine": 54,
         "startChar": 8,
