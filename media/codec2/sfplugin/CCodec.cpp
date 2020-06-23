@@ -44,6 +44,7 @@
 #include <media/stagefright/BufferProducerWrapper.h>
 #include <media/stagefright/MediaCodecConstants.h>
 #include <media/stagefright/PersistentSurface.h>
+#include <utils/NativeHandle.h>
 
 #include "C2OMXNode.h"
 #include "CCodecBufferChannel.h"
@@ -739,10 +740,30 @@ void CCodec::configure(const sp<AMessage> &msg) {
             mChannel->setMetaMode(CCodecBufferChannel::MODE_ANW);
         }
 
+        status_t err = OK;
         sp<RefBase> obj;
         sp<Surface> surface;
         if (msg->findObject("native-window", &obj)) {
             surface = static_cast<Surface *>(obj.get());
+            // setup tunneled playback
+            if (surface != nullptr) {
+                Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
+                const std::unique_ptr<Config> &config = *configLocked;
+                if ((config->mDomain & Config::IS_DECODER)
+                        && (config->mDomain & Config::IS_VIDEO)) {
+                    int32_t tunneled;
+                    if (msg->findInt32("feature-tunneled-playback", &tunneled) && tunneled != 0) {
+                        ALOGI("Configuring TUNNELED video playback.");
+
+                        err = configureTunneledVideoPlayback(comp, &config->mSidebandHandle, msg);
+                        if (err != OK) {
+                            ALOGE("configureTunneledVideoPlayback failed!");
+                            return err;
+                        }
+                        config->mTunneled = true;
+                    }
+                }
+            }
             setSurface(surface);
         }
 
@@ -900,7 +921,7 @@ void CCodec::configure(const sp<AMessage> &msg) {
             sdkParams = msg->dup();
             sdkParams->removeEntryAt(sdkParams->findEntryByName(PARAMETER_KEY_VIDEO_BITRATE));
         }
-        status_t err = config->getConfigUpdateFromSdkParams(
+        err = config->getConfigUpdateFromSdkParams(
                 comp, sdkParams, Config::IS_CONFIG, C2_DONT_BLOCK, &configUpdate);
         if (err != OK) {
             ALOGW("failed to convert configuration to c2 params");
@@ -1499,6 +1520,19 @@ void CCodec::release(bool sendCallback) {
 }
 
 status_t CCodec::setSurface(const sp<Surface> &surface) {
+    Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
+    const std::unique_ptr<Config> &config = *configLocked;
+    if (config->mTunneled && config->mSidebandHandle != nullptr) {
+        sp<ANativeWindow> nativeWindow = static_cast<ANativeWindow *>(surface.get());
+        status_t err = native_window_set_sideband_stream(
+                nativeWindow.get(),
+                const_cast<native_handle_t *>(config->mSidebandHandle->handle()));
+        if (err != OK) {
+            ALOGE("NativeWindow(%p) native_window_set_sideband_stream(%p) failed! (err %d).",
+                    nativeWindow.get(), config->mSidebandHandle->handle(), err);
+            return err;
+        }
+    }
     return mChannel->setSurface(surface);
 }
 
@@ -1891,6 +1925,51 @@ void CCodec::setDeadline(
     int32_t mult = std::max(1, property_get_int32("debug.stagefright.ccodec_timeout_mult", 1));
     Mutexed<NamedTimePoint>::Locked deadline(mDeadline);
     deadline->set(now + (timeout * mult), name);
+}
+
+status_t CCodec::configureTunneledVideoPlayback(
+        std::shared_ptr<Codec2Client::Component> comp,
+        sp<NativeHandle> *sidebandHandle,
+        const sp<AMessage> &msg) {
+    std::vector<std::unique_ptr<C2SettingResult>> failures;
+
+    std::unique_ptr<C2PortTunneledModeTuning::output> tunneledPlayback =
+        C2PortTunneledModeTuning::output::AllocUnique(
+            1,
+            C2PortTunneledModeTuning::Struct::SIDEBAND,
+            C2PortTunneledModeTuning::Struct::REALTIME,
+            0);
+
+    if (msg->findInt32(KEY_AUDIO_HARDWARE_SYNC, &tunneledPlayback->m.syncId[0])) {
+        tunneledPlayback->m.syncType = C2PortTunneledModeTuning::Struct::sync_type_t::AUDIO_HW_SYNC;
+    } else if (msg->findInt32(KEY_HARDWARE_AV_SYNC_ID, &tunneledPlayback->m.syncId[0])) {
+        tunneledPlayback->m.syncType = C2PortTunneledModeTuning::Struct::sync_type_t::HW_AV_SYNC;
+    } else {
+        tunneledPlayback->m.syncType = C2PortTunneledModeTuning::Struct::sync_type_t::REALTIME;
+        tunneledPlayback->setFlexCount(0);
+    }
+    c2_status_t c2err = comp->config({ tunneledPlayback.get() }, C2_MAY_BLOCK, &failures);
+    if (c2err != C2_OK) {
+        return UNKNOWN_ERROR;
+    }
+
+    std::vector<std::unique_ptr<C2Param>> params;
+    c2err = comp->query({}, {C2PortTunnelHandleTuning::output::PARAM_TYPE}, C2_DONT_BLOCK, &params);
+    if (c2err == C2_OK && params.size() == 1u) {
+        C2PortTunnelHandleTuning::output *videoTunnelSideband =
+            C2PortTunnelHandleTuning::output::From(params[0].get());
+        // Currently, Codec2 only supports non-fd case for sideband native_handle.
+        native_handle_t *handle = native_handle_create(0, videoTunnelSideband->flexCount());
+        *sidebandHandle = NativeHandle::create(handle, true /* ownsHandle */);
+        if (handle != nullptr && videoTunnelSideband->flexCount()) {
+            memcpy(handle->data, videoTunnelSideband->m.values,
+                    sizeof(int32_t) * videoTunnelSideband->flexCount());
+            return OK;
+        } else {
+            return NO_MEMORY;
+        }
+    }
+    return UNKNOWN_ERROR;
 }
 
 void CCodec::initiateReleaseIfStuck() {
@@ -2294,4 +2373,3 @@ std::shared_ptr<C2GraphicBlock> CCodec::FetchGraphicBlock(
 }
 
 }  // namespace android
-
