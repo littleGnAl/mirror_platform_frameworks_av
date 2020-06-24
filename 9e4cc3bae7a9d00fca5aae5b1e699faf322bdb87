@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "85d4e631_15421af4",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-24T03:59:48Z",
+      "side": 1,
+      "message": "Only mpeg2 extractor is currently not seekable.\nIf that changes, we will update the test.\nMarking this as resolved as CL has code-review +2",
+      "parentUuid": "678b363c_f2f0ba37",
+      "range": {
+        "startLine": 705,
+        "startChar": 8,
+        "endLine": 705,
+        "endChar": 20
+      },
+      "revId": "9e4cc3bae7a9d00fca5aae5b1e699faf322bdb87",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02cbc34d_07993a4f",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 10
