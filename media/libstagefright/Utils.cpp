@@ -1481,11 +1481,11 @@ status_t convertMetaDataToMessage(
 
 const uint8_t *findNextNalStartCode(const uint8_t *data, size_t length) {
     uint8_t *res = NULL;
-    if (length > 4) {
+    if (length > 3) {
         // minus 1 as to not match NAL start code at end
-        res = (uint8_t *)memmem(data, length - 1, "\x00\x00\x00\x01", 4);
+        res = (uint8_t *)memmem(data, length - 1, "\x00\x00\x01", 3);
     }
-    return res != NULL && res < data + length - 4 ? res : &data[length];
+    return res != NULL && res < data + length - 3 ? res : &data[length];
 }
 
 static size_t reassembleAVCC(const sp<ABuffer> &csd0, const sp<ABuffer> &csd1, char *avcc) {
@@ -1520,7 +1520,7 @@ static size_t reassembleAVCC(const sp<ABuffer> &csd0, const sp<ABuffer> &csd1, c
             avccidx += size;
             numparams++;
         }
-        i += 4;
+        i += 3;
         lastparamoffset = i;
     } while(i < csd0->size());
     ALOGV("csd0 contains %d params", numparams);
@@ -1543,7 +1543,7 @@ static size_t reassembleAVCC(const sp<ABuffer> &csd0, const sp<ABuffer> &csd1, c
             avccidx += size;
             numparams++;
         }
-        i += 4;
+        i += 3;
         lastparamoffset = i;
     } while(i < csd1->size());
     avcc[numpicparamsoffset] = numparams;

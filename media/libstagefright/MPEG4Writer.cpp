@@ -1524,6 +1524,8 @@ static void StripStartcode(MediaBuffer *buffer) {
     if (!memcmp(ptr, "\x00\x00\x00\x01", 4)) {
         buffer->set_range(
                 buffer->range_offset() + 4, buffer->range_length() - 4);
+    } else if (!memcmp(ptr, "\x00\x00\x01", 3)) {
+        buffer->set_range(buffer->range_offset() + 3, buffer->range_length() - 3);
     }
 }
 
@@ -1537,7 +1539,13 @@ void MPEG4Writer::addMultipleLengthPrefixedSamples_l(MediaBuffer *buffer) {
 
     while (getNextNALUnit(&data, &searchSize, &nextNalStart,
             &nextNalSize, true) == OK) {
-        size_t currentNalSize = nextNalStart - currentNalStart - 4 /* strip start-code */;
+        size_t currentNalSize = nextNalStart - currentNalStart;
+        // Strip start-code.
+        if (!memcmp(currentNalStart, "\x00\x00\x01", 3)) {
+            currentNalSize -= 3;
+        } else {
+            currentNalSize -= 4;
+        }
         MediaBuffer *nalBuf = new MediaBuffer((void *)currentNalStart, currentNalSize);
         addLengthPrefixedSample_l(nalBuf);
         nalBuf->release();
@@ -2974,12 +2982,17 @@ status_t MPEG4Writer::Track::parseAVCCodecSpecificData(
     bool gotSps = false;
     bool gotPps = false;
     const uint8_t *tmp = data;
-    const uint8_t *nextStartCode = data;
     size_t bytesLeft = size;
     size_t paramSetLen = 0;
     mCodecSpecificDataSize = 0;
-    while (bytesLeft > 4 && !memcmp("\x00\x00\x00\x01", tmp, 4)) {
-        getNalUnitType(*(tmp + 4), &type);
+    if (!memcmp("\x00\x00\x00\x01", tmp, 4)) {
+      tmp += 1;
+      bytesLeft -= 1;
+    }
+
+    const uint8_t *nextStartCode = data;
+    while (bytesLeft > 3 && !memcmp("\x00\x00\x01", tmp, 3)) {
+        getNalUnitType(*(tmp + 3), &type);
         if (type == kNalUnitTypeSeqParamSet) {
             if (gotPps) {
                 ALOGE("SPS must come before PPS");
@@ -2988,7 +3001,7 @@ status_t MPEG4Writer::Track::parseAVCCodecSpecificData(
             if (!gotSps) {
                 gotSps = true;
             }
-            nextStartCode = parseParamSet(tmp + 4, bytesLeft - 4, type, &paramSetLen);
+            nextStartCode = parseParamSet(tmp + 3, bytesLeft - 3, type, &paramSetLen);
         } else if (type == kNalUnitTypePicParamSet) {
             if (!gotSps) {
                 ALOGE("SPS must come before PPS");
@@ -2997,7 +3010,7 @@ status_t MPEG4Writer::Track::parseAVCCodecSpecificData(
             if (!gotPps) {
                 gotPps = true;
             }
-            nextStartCode = parseParamSet(tmp + 4, bytesLeft - 4, type, &paramSetLen);
+            nextStartCode = parseParamSet(tmp + 3, bytesLeft - 3, type, &paramSetLen);
         } else {
             ALOGE("Only SPS and PPS Nal units are expected");
             return ERROR_MALFORMED;
@@ -3071,7 +3084,7 @@ status_t MPEG4Writer::Track::makeAVCCodecSpecificData(
     }
 
     // Data is in the form of AVCCodecSpecificData
-    if (memcmp("\x00\x00\x00\x01", data, 4)) {
+    if (memcmp("\x00\x00\x00\x01", data, 4) && memcmp("\x00\x00\x01", data, 3)) {
         return copyAVCCodecSpecificData(data, size);
     }
 
@@ -3141,11 +3154,16 @@ status_t MPEG4Writer::Track::parseHEVCCodecSpecificData(
 
     ALOGV("parseHEVCCodecSpecificData");
     const uint8_t *tmp = data;
-    const uint8_t *nextStartCode = data;
     size_t bytesLeft = size;
-    while (bytesLeft > 4 && !memcmp("\x00\x00\x00\x01", tmp, 4)) {
-        nextStartCode = findNextNalStartCode(tmp + 4, bytesLeft - 4);
-        status_t err = paramSets.addNalUnit(tmp + 4, (nextStartCode - tmp) - 4);
+    if (!memcmp("\x00\x00\x00\x01", tmp, 4)) {
+      tmp += 1;
+      bytesLeft -= 1;
+    }
+
+    const uint8_t *nextStartCode = data;
+    while (bytesLeft > 3 && !memcmp("\x00\x00\x01", tmp, 3)) {
+        nextStartCode = findNextNalStartCode(tmp + 3, bytesLeft - 3);
+        status_t err = paramSets.addNalUnit(tmp + 3, (nextStartCode - tmp) - 3);
         if (err != OK) {
             return ERROR_MALFORMED;
         }
@@ -3198,7 +3216,7 @@ status_t MPEG4Writer::Track::makeHEVCCodecSpecificData(
     }
 
     // Data is in the form of HEVCCodecSpecificData
-    if (memcmp("\x00\x00\x00\x01", data, 4)) {
+    if (memcmp("\x00\x00\x00\x01", data, 4) && memcmp("\x00\x00\x01", data, 3)) {
         return copyHEVCCodecSpecificData(data, size);
     }
 
