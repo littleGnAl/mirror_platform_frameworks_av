@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "45fde7d4_c8b3d921",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 562,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-24T21:16:22Z",
+      "side": 1,
+      "message": "this may need to be revisited.\nstart() followed by stop() without any data, not sure if an error is indeed expected.\n\nbetter to remove this test here for now and create a separate test for NoDataTest where everything else is set up correctly, just that no data is fed to the writer.",
+      "range": {
+        "startLine": 561,
+        "startChar": 0,
+        "endLine": 562,
+        "endChar": 97
+      },
+      "revId": "b53b1fc611a6462736091111b598543b9447fb95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
