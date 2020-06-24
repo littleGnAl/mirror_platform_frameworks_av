@@ -96,6 +96,30 @@
     },
     {
       "key": {
+        "uuid": "8e123072_e8832189",
+        "filename": "media/libstagefright/tests/writer/README.md",
+        "patchSetId": 6
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-24T16:55:21Z",
+      "side": 1,
+      "message": "Ray,\nThe on-device directory needs to be updated only in CTS and not in unit tests.\nUnit tests delete the files at the end of the test unlike CTS.\n\nRuchika,\nPlease revert this.",
+      "parentUuid": "ccdb35ea_c01812ed",
+      "range": {
+        "startLine": 25,
+        "startChar": 45,
+        "endLine": 25,
+        "endChar": 59
+      },
+      "revId": "7fa186313914754bcb19805cee0b90a7414ca535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "93dff81d_04f329ec",
         "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
         "patchSetId": 6
@@ -328,6 +352,30 @@
       "revId": "7fa186313914754bcb19805cee0b90a7414ca535",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9cb4d537_09c9a006",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 454,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-24T16:55:21Z",
+      "side": 1,
+      "message": "Ruchika,\nIn CTS we needed to provide a tolerance of 1us even for other writers.\nSo instead of expecting tolerance to be zero, can you please update this like CTS does?",
+      "parentUuid": "45bef951_2f248f0c",
+      "range": {
+        "startLine": 454,
+        "startChar": 18,
+        "endLine": 454,
+        "endChar": 96
+      },
+      "revId": "7fa186313914754bcb19805cee0b90a7414ca535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }

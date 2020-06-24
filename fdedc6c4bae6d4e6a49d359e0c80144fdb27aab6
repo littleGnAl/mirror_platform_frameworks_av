@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9f85718_33b75f52",
+        "filename": "media/libstagefright/tests/writer/AndroidTest.xml",
+        "patchSetId": 7
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-06-24T16:55:21Z",
+      "side": 1,
+      "message": "destination needn\u0027t change in unit tests as the contents are deleted at the end of the test.\nPlease revert this here and below on line 28",
+      "range": {
+        "startLine": 23,
+        "startChar": 48,
+        "endLine": 23,
+        "endChar": 52
+      },
+      "revId": "fdedc6c4bae6d4e6a49d359e0c80144fdb27aab6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
