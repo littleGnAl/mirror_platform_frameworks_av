@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b46257f2_a46748a7",
+        "filename": "media/mediaserver/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-25T20:49:13Z",
+      "side": 1,
+      "message": "\"prefer 32\" as a comment makes it sound as if \"works either way, but we like it better in 32\".\n\nperhaps \"only verified in 32-bit mode\"; to set expectations properly, since this CL puts it out in the public.",
+      "range": {
+        "startLine": 36,
+        "startChar": 6,
+        "endLine": 36,
+        "endChar": 16
+      },
+      "revId": "91b84f15358d300cce6609849cce8c83d4cfcd12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f7b37d1_4fb31d3b",
+        "filename": "services/mediaresourcemanager/test/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-25T20:49:13Z",
+      "side": 1,
+      "message": "interesting that this is the *test* that is being forced into 32-bit mode,\nnot the resource manager itself.\n\nahh...\nlibresourcemanager is build as a shared library, \nand since 32-bit is what mediaserver wants,\nwe only have the 32-bit flavor on-device.\n\ni like the idea of:\n(1) drop this line\n(2) change ../Android.bp so that the \u0027cc_library_shared\" is \"cc_library\"\n(3) link libresourcemanagerservice on line 10 as a static library instead of shared library\n\nand that makes for fewer places where we need to mess around with multilib clauses.",
+      "range": {
+        "startLine": 21,
+        "startChar": 4,
+        "endLine": 21,
+        "endChar": 33
+      },
+      "revId": "91b84f15358d300cce6609849cce8c83d4cfcd12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "843787fb_ff031531",
+        "filename": "services/mediaresourcemanager/test/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-25T20:49:13Z",
+      "side": 1,
+      "message": "same here as above.  to get take multilib out of play here.",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 33
+      },
+      "revId": "91b84f15358d300cce6609849cce8c83d4cfcd12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
