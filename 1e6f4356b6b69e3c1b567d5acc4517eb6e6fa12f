@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "519f256a_415e4bce",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-25T03:59:30Z",
+      "side": 1,
+      "message": "alphabetized, which is good.\nbut this works so much better with 1 per line.\nthat way additions are a single line insertion\ninstead of shuffling the entire list.\n\nI know clang-fmt likes to bunch these up, but I don\u0027t like it.",
+      "range": {
+        "startLine": 139,
+        "startChar": 17,
+        "endLine": 142,
+        "endChar": 40
+      },
+      "revId": "1e6f4356b6b69e3c1b567d5acc4517eb6e6fa12f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7ffde904_43748bba",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 942,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-25T03:59:30Z",
+      "side": 1,
+      "message": "the !strcmp and !strncmp equate to \"is equal\".\nso we\u0027re saying\n\nif mime \u003d\u003d MEDIA_MIMETYPE_AUDIO_RAW \u0026\u0026 mime begins with audio/\nwhich expands to\nif mime \u003d\u003d \"audio/raw\" \u0026\u0026 mime begins with \"audio/\"\n\nwhich is redundant.\n\nI expect you only want mime \u003d\u003d MEDIA_MIMETYPE_AUDIO_RAW",
+      "range": {
+        "startLine": 942,
+        "startChar": 7,
+        "endLine": 942,
+        "endChar": 81
+      },
+      "revId": "1e6f4356b6b69e3c1b567d5acc4517eb6e6fa12f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6391260_646bce11",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-25T03:59:30Z",
+      "side": 1,
+      "message": "if i understand.\nwe extract from the first, then extract fro the second and then test to see that we got the same results; phrased another way -- \"making sure that the container doesn\u0027t change the content of the embedded stream.\n\nthe parametes make sense for the first couple entries here -- swirl and friends where we are doing mp4 vs webm\nand the loudsoftaac in aac and mkv -- that makes sense on line 1111\n\nbut lines 1113 through 1127 seem to be saying \"extract from foo, then extract from foo again\" and they should be the same.\n\nwhat are we learning from this.   we seem to be doing \"compare A \u003d\u003d A\"  which is not very exciting.  we don\u0027t learn whether we got the right bits out of the file, we just know that\nit behaved the same way both times.",
+      "range": {
+        "startLine": 1111,
+        "startChar": 26,
+        "endLine": 1127,
+        "endChar": 90
+      },
+      "revId": "1e6f4356b6b69e3c1b567d5acc4517eb6e6fa12f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
