@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "d7d326f9_2a3d83a3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-06-26T13:00:20Z",
+      "side": 1,
+      "message": "No, it doesn\u0027t require the mentioned optional arg since the test doesn\u0027t use any resource file.",
+      "parentUuid": "278ae3ee_403244e4",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "c6aa023637af14233261811fc46f20e05e9f114f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "61ce2845_2b7de609",
         "filename": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
         "patchSetId": 4
@@ -36,6 +60,30 @@
       "writtenOn": "2020-06-26T03:40:47Z",
       "side": 1,
       "message": "better names for these perhaps?\n\nbetter \u003d\u003d more descriptive.",
+      "range": {
+        "startLine": 32,
+        "startChar": 15,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "c6aa023637af14233261811fc46f20e05e9f114f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79bfccc1_169da309",
+        "filename": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-06-26T13:00:20Z",
+      "side": 1,
+      "message": "Updated",
+      "parentUuid": "61ce2845_2b7de609",
       "range": {
         "startLine": 32,
         "startChar": 15,
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "a8e6eebe_9e73d618",
+        "filename": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-06-26T13:00:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "22b27001_3e10bbac",
+      "range": {
+        "startLine": 376,
+        "startChar": 4,
+        "endLine": 379,
+        "endChar": 57
+      },
+      "revId": "c6aa023637af14233261811fc46f20e05e9f114f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b6150e21_a899e7e5",
         "filename": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
         "patchSetId": 4
@@ -91,6 +163,30 @@
       "revId": "c6aa023637af14233261811fc46f20e05e9f114f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b2ff6ba4_79a9b2dd",
+        "filename": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-06-26T13:00:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b6150e21_a899e7e5",
+      "range": {
+        "startLine": 382,
+        "startChar": 5,
+        "endLine": 382,
+        "endChar": 25
+      },
+      "revId": "c6aa023637af14233261811fc46f20e05e9f114f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
