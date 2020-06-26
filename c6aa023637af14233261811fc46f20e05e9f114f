@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "278ae3ee_403244e4",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-26T03:40:47Z",
+      "side": 1,
+      "message": "to clarify -- does this need the\n--enable-module-dynamic-download\u003dtrue\nflag that some of the other unit tests need?",
+      "range": {
+        "startLine": 9,
+        "startChar": 1,
+        "endLine": 9,
+        "endChar": 26
+      },
+      "revId": "c6aa023637af14233261811fc46f20e05e9f114f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "61ce2845_2b7de609",
+        "filename": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-26T03:40:47Z",
+      "side": 1,
+      "message": "better names for these perhaps?\n\nbetter \u003d\u003d more descriptive.",
+      "range": {
+        "startLine": 32,
+        "startChar": 15,
+        "endLine": 32,
+        "endChar": 30
+      },
+      "revId": "c6aa023637af14233261811fc46f20e05e9f114f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "22b27001_3e10bbac",
+        "filename": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-26T03:40:47Z",
+      "side": 1,
+      "message": "let\u0027s do an assert after each one -- so if it does fail, we know exactly which one\nwas not present.",
+      "range": {
+        "startLine": 376,
+        "startChar": 4,
+        "endLine": 379,
+        "endChar": 57
+      },
+      "revId": "c6aa023637af14233261811fc46f20e05e9f114f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6150e21_a899e7e5",
+        "filename": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-26T03:40:47Z",
+      "side": 1,
+      "message": "we\u0027ve ulled them individually from the copy.\nshould we also do the ColorUtils::getColorConfigFromFormat() on this copy\nto make sue that nothing went wrong there?\n\nI think i\u0027d like that.",
+      "range": {
+        "startLine": 382,
+        "startChar": 5,
+        "endLine": 382,
+        "endChar": 25
+      },
+      "revId": "c6aa023637af14233261811fc46f20e05e9f114f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
