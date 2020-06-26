@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "579e0629_d1fc735a",
+        "filename": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 387,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-26T14:39:13Z",
+      "side": 1,
+      "message": "[glad to see this new test as a result of the other comments]\n\nhere\u0027s a structural concern...\n\nwe don\u0027t know whether \u0027range\u0027 has the right value because\n(1) it was set properly in getColorConfigFromFormat() on line 386\n(2) it retained the value that was set on line 376.\n\nI think this means that we need to add:\n    range \u003d standard \u003d transfer \u003d -1;   [if that\u0027s the appropriate value]\nbefore line 386.\nand before 373.",
+      "range": {
+        "startLine": 387,
+        "startChar": 5,
+        "endLine": 387,
+        "endChar": 24
+      },
+      "revId": "55a626fe47ee6a6c0035dd04472af6987d7a8c1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ad29671_28253efc",
+        "filename": "media/libstagefright/foundation/tests/colorutils/ColorUtilsTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-06-26T14:39:13Z",
+      "side": 1,
+      "message": "do we know what\u0027s in here before calling getHDRStaticInfoFromFormat()?\n\nthe constructor in frameworks/native/headers/media_plugin/media/hardware/VideoAPI.h\nis non-existent; so we don\u0027t know what\u0027s in this structure.\n\nwe could:\n  returnedInfoHDR \u003d {0} \nor\n  memset(\u0026returnedInfoHDR, 0, sizeof (returnedInfoHDR));\n\nto know that it contains all zeros.",
+      "range": {
+        "startLine": 441,
+        "startChar": 60,
+        "endLine": 441,
+        "endChar": 77
+      },
+      "revId": "55a626fe47ee6a6c0035dd04472af6987d7a8c1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
