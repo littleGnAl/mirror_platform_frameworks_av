@@ -22,6 +22,30 @@
       "revId": "08f036752bcda1d55b91f7915c33f93c2661bc7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ae20ca2_48105846",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2020-06-29T11:51:30Z",
+      "side": 1,
+      "message": "Some more detail to this. Adding dumpToLog() before and after setForceUse in the test case reveals a bit clearer what\u0027s going on:\n\nbefore setForceUse:\n\nAudio Patches:\n   Patch 1: owner uid 1041, handle  3, af handle  1\n     [src  1] Mix ID 1 I/O handle 1\n     [sink 1] Device ID 2 AUDIO_DEVICE_OUT_SPEAKER\n   Patch 2: owner uid 1041, handle  8, af handle  2\n     [src  1] Mix ID 6 I/O handle 3\n     [sink 1] Device ID 7 AUDIO_DEVICE_OUT_BUS\n\nand after setForceUse:\n\nAudio Patches:\n   Patch 1: owner uid 1041, handle  3, af handle  1\n     [src  1] Mix ID 1 I/O handle 1\n     [sink 1] Device ID 2 AUDIO_DEVICE_OUT_SPEAKER\n   Patch 2: owner uid 1041, handle  8, af handle  4\n     [src  1] Mix ID 6 I/O handle 3\n     [sink 1] Device ID 7 AUDIO_DEVICE_OUT_BUS\n   Patch 3: owner uid 1041, handle 11, af handle  3\n     [src  1] Device ID 10 AUDIO_DEVICE_IN_BUS\n     [sink 1] Device ID 2 AUDIO_DEVICE_OUT_SPEAKER\n\n\nThe MIX -\u003e BUS patch af handle has been changed from 2 to 4. In the test client AudioPolicyManagerTestClient.h mActivePatches is inserted with new patch, but in real AudioFlinger::PatchPanel::createAudioPatch, it erases the existing patch handle before creating the new patch.",
+      "parentUuid": "028bde93_e341e024",
+      "range": {
+        "startLine": 748,
+        "startChar": 25,
+        "endLine": 748,
+        "endChar": 36
+      },
+      "revId": "08f036752bcda1d55b91f7915c33f93c2661bc7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
