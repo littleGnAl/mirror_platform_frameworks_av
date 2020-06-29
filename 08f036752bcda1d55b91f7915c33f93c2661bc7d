@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "028bde93_e341e024",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2020-06-29T04:26:05Z",
+      "side": 1,
+      "message": "The failed test case AudioPolicyManagerTestMsd#PatchCreationOnSetForceUse checks patch count changed before and after setForceUse.\n\nThe functional difference between this PS and without is:\n\nline 780 updateCallAndOutputRouting\n-\u003e\nline 3087 getNewOutputDevices -\u003e this PS now returns MSD device rather than AUDIO_DEVICE_NONE.\nline 3092 setOutputDevices -\u003e this PS causes the force argument (!newDevices.isEmpty()) to return 1, which allows 5625 installPatch to be called.",
+      "range": {
+        "startLine": 748,
+        "startChar": 25,
+        "endLine": 748,
+        "endChar": 36
+      },
+      "revId": "08f036752bcda1d55b91f7915c33f93c2661bc7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
