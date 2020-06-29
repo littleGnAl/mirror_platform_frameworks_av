@@ -46,6 +46,30 @@
       "revId": "08f036752bcda1d55b91f7915c33f93c2661bc7d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1d635b9c_6ea51a7a",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 748,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-06-29T22:00:47Z",
+      "side": 1,
+      "message": "Thank you! Indeed, the actual function in PatchPanel checks for an existing patch by handle.",
+      "parentUuid": "6ae20ca2_48105846",
+      "range": {
+        "startLine": 748,
+        "startChar": 25,
+        "endLine": 748,
+        "endChar": 36
+      },
+      "revId": "08f036752bcda1d55b91f7915c33f93c2661bc7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
