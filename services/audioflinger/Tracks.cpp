@@ -453,12 +453,14 @@ void AudioFlinger::PlaybackThread::OpPlayAudioMonitor::checkPlayAudioForUsage()
         mHasOpPlayAudio.store(false);
     } else {
         bool hasIt = true;
-        for (const String16& packageName : mPackages) {
-            const int32_t mode = mAppOpsManager.checkAudioOpNoThrow(AppOpsManager::OP_PLAY_AUDIO,
-                    mUsage, mUid, packageName);
-            if (mode != AppOpsManager::MODE_ALLOWED) {
-                hasIt = false;
-                break;
+        if (!isAudioServerOrSystemServerUid(mUid)) {
+            for (const String16& packageName : mPackages) {
+              const int32_t mode = mAppOpsManager.checkAudioOpNoThrow(AppOpsManager::OP_PLAY_AUDIO,
+                 mUsage, mUid, packageName);
+                if (mode != AppOpsManager::MODE_ALLOWED) {
+                     hasIt = false;
+                     break;
+                }
             }
         }
         ALOGD("OpPlayAudio: track:%d usage:%d %smuted", mId, mUsage, hasIt ? "not " : "");
