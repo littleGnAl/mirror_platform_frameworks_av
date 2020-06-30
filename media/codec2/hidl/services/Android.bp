@@ -23,15 +23,6 @@ cc_binary {
         "libutils",
     ],
 
-    arch: {
-        arm: {
-            required: ["codec2.vendor.base.policy"],
-        },
-        x86: {
-            required: ["codec2.vendor.base.policy"],
-        },
-    },
-
     compile_multilib: "32",
 }
 
