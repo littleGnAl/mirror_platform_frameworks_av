@@ -94,6 +94,30 @@
       "revId": "c7b5b2d1148c88fa85a91e268a396c333eabdf46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "37644270_557030ef",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1139,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-01T02:40:15Z",
+      "side": 1,
+      "message": "i understand that it would serialize things.\n\ni\u0027m worried about someone behind a firewall, who replicates the zip files and plays some DNS games so that they can access a relatively local copy without changing code. They never know when they have to update their cache of files.\n\nI\u0027m pretty sure I want us to start using version numbers on these zip files.",
+      "parentUuid": "cd83903f_97b43001",
+      "range": {
+        "startLine": 1136,
+        "startChar": 35,
+        "endLine": 1139,
+        "endChar": 64
+      },
+      "revId": "c7b5b2d1148c88fa85a91e268a396c333eabdf46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
