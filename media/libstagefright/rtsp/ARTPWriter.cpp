@@ -71,7 +71,7 @@ ARTPWriter::ARTPWriter(int fd)
       mFd(dup(fd)),
       mLooper(new ALooper),
       mReflector(new AHandlerReflector<ARTPWriter>(this)),
-      mTrafficRec(new TrafficRecorder<uint32_t, size_t>(128)) {
+      mTrafficRec(new TrafficRecorder<uint32_t, size_t>(128, 2000)) {
     CHECK_GE(fd, 0);
     mIsIPv6 = false;
 
@@ -122,7 +122,7 @@ ARTPWriter::ARTPWriter(int fd, String8& localIp, int localPort, String8& remoteI
       mFd(dup(fd)),
       mLooper(new ALooper),
       mReflector(new AHandlerReflector<ARTPWriter>(this)),
-      mTrafficRec(new TrafficRecorder<uint32_t, size_t>(128)) {
+      mTrafficRec(new TrafficRecorder<uint32_t, size_t>(128, 2000)) {
     CHECK_GE(fd, 0);
     mIsIPv6 = false;
 
