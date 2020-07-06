@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5f91f8b4_a33808e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1293738
+      },
+      "writtenOn": "2020-07-06T21:11:06Z",
+      "side": 1,
+      "message": "Thanks Ray, I implemented your suggestions. To be sure, I built \"aosp_cf_x86_64_phone-userdebug\":\n\n$ m -j32\n$ mmma frameworks/av\n\n..which is a regular 64+32bit build. When it completes, I see:\n\n$ readelf -a out/target/product/vsoc_x86_64/data/nativetest/ResourceManagerService_test/ResourceManagerService_test  | grep NEEDED\n 0x00000001 (NEEDED)                     Shared library: [libbinder.so]\n 0x00000001 (NEEDED)                     Shared library: [liblog.so]\n 0x00000001 (NEEDED)                     Shared library: [libmedia.so]\n 0x00000001 (NEEDED)                     Shared library: [libutils.so]\n 0x00000001 (NEEDED)                     Shared library: [libc++.so]\n 0x00000001 (NEEDED)                     Shared library: [libc.so]\n 0x00000001 (NEEDED)                     Shared library: [libm.so]\n 0x00000001 (NEEDED)                     Shared library: [libdl.so]\n\nWhich is what you wanted to see, I think. The ResourceManagerService_test is built for 32-bit and 64-bit successfully.",
+      "revId": "1ab0b88dd176855fde022b2e27d1a539434f599f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
