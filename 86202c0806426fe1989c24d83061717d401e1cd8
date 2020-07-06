@@ -1,0 +1,153 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a1674e2a_292d40d3",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-06T16:44:47Z",
+      "side": 1,
+      "message": "we\u0027re only going to look up the AAC encoder?\nnot the aac decoder?\n\nwe do the avc and vp8 as both encode/decode....\n\nI guess the next iteration of this question is -- how did we determine what went into\nthis list?",
+      "range": {
+        "startLine": 62,
+        "startChar": 26,
+        "endLine": 62,
+        "endChar": 44
+      },
+      "revId": "86202c0806426fe1989c24d83061717d401e1cd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "343b97ff_bcea7c33",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-06T16:44:47Z",
+      "side": 1,
+      "message": "think about how we attribute this back to CDD.\nand might want to build the list the same way as we do in some of the mediav2 cts tests.\n\nalso -- sort and 1 per line for the table formatting.",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 6
+      },
+      "revId": "86202c0806426fe1989c24d83061717d401e1cd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "924fa56d_eeabf03a",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-06T16:44:47Z",
+      "side": 1,
+      "message": "add some white space; goal to highlight\n\"building the stuff for media.codec\"\n(e.g. name the file(s) we\u0027re parsing, somewhat like we do for line 83.",
+      "revId": "86202c0806426fe1989c24d83061717d401e1cd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1eefaa33_4c7f6308",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-06T16:44:47Z",
+      "side": 1,
+      "message": "probably another blank line here.",
+      "revId": "86202c0806426fe1989c24d83061717d401e1cd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4de30340_d90f2be1",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-06T16:44:47Z",
+      "side": 1,
+      "message": "this isn\u0027t giving us actual kFlagxxx strings, is it?\n\nshould we be validating conditions:\n\nIsSoftwareOnly and IsHardwareAccelerated would seem to be mutually exclusive (can\u0027t both be on)\n\ni think that HW accelerated requires vendor.",
+      "range": {
+        "startLine": 111,
+        "startChar": 8,
+        "endLine": 111,
+        "endChar": 11
+      },
+      "revId": "86202c0806426fe1989c24d83061717d401e1cd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8878f818_b71c27c7",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-06T16:44:47Z",
+      "side": 1,
+      "message": "we should also be comparing what came back after parsing the parcel.\ne.g., the equvilent of:\n\nASSERT_EQ(parcelCodecInfo, info) \u003c\u003c \"extracted codecinfo does not match\";",
+      "range": {
+        "startLine": 196,
+        "startChar": 8,
+        "endLine": 196,
+        "endChar": 37
+      },
+      "revId": "86202c0806426fe1989c24d83061717d401e1cd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1b24bf1_3091de7e",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-06T16:44:47Z",
+      "side": 1,
+      "message": "are there any global values that we expect to be in here?\n\nhow might we figure out if a global setting is indeed global?",
+      "range": {
+        "startLine": 207,
+        "startChar": 4,
+        "endLine": 207,
+        "endChar": 18
+      },
+      "revId": "86202c0806426fe1989c24d83061717d401e1cd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
