@@ -22,6 +22,30 @@
       "revId": "edf51450dc3e8d797ce4f731ab73b2ae1963ca6b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "629bef9b_b09ef5fd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-07-07T08:47:11Z",
+      "side": 1,
+      "message": "this coverage number is for wav extractor, earlier patches for MP4 extractor",
+      "parentUuid": "3e14a375_427966d5",
+      "range": {
+        "startLine": 12,
+        "startChar": 7,
+        "endLine": 12,
+        "endChar": 12
+      },
+      "revId": "edf51450dc3e8d797ce4f731ab73b2ae1963ca6b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
