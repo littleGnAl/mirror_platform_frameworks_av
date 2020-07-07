@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5e49fcb4_6913c828",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-07T04:24:39Z",
+      "side": 1,
+      "message": "I just saw a different CL that said it took from 55% or so to 75% or so for coverage.  They can\u0027t both start at the same point.\nit would seem that one needs to be \"55 to 68\" and the other needs to be \"68 to 75\" or something like that; they can\u0027t both claim the same starting point.",
+      "range": {
+        "startLine": 12,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "b80e197cf15494e5d990747ce9d2712cdf2dc7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "41875765_9bbdeaac",
+        "filename": "media/extractors/tests/AndroidTest.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-07T04:24:39Z",
+      "side": 1,
+      "message": "i think the other one i reviewed today was going to 1.3 -- so this probably needs to\nmerge before that one.  [it probably won\u0027t merge until this one is merged because\nthe file version that it wants to change would be wrong].\n\ntoo bad I don\u0027t remember what that other CL is that i looked at earlier today.",
+      "range": {
+        "startLine": 22,
+        "startChar": 109,
+        "endLine": 22,
+        "endChar": 114
+      },
+      "revId": "b80e197cf15494e5d990747ce9d2712cdf2dc7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
