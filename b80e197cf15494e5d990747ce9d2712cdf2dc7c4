@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "054e01d0_de67985a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-07-07T08:45:59Z",
+      "side": 1,
+      "message": "This CL and the one below(ExtractorUnitTest: add more input vectors) this refers to MP4 extractor coverage, than another patch refers to WAV extractor coverage, no CLs claim the same starting point",
+      "parentUuid": "5e49fcb4_6913c828",
+      "range": {
+        "startLine": 12,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "b80e197cf15494e5d990747ce9d2712cdf2dc7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "41875765_9bbdeaac",
         "filename": "media/extractors/tests/AndroidTest.xml",
         "patchSetId": 3
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-07T04:24:39Z",
       "side": 1,
       "message": "i think the other one i reviewed today was going to 1.3 -- so this probably needs to\nmerge before that one.  [it probably won\u0027t merge until this one is merged because\nthe file version that it wants to change would be wrong].\n\ntoo bad I don\u0027t remember what that other CL is that i looked at earlier today.",
+      "range": {
+        "startLine": 22,
+        "startChar": 109,
+        "endLine": 22,
+        "endChar": 114
+      },
+      "revId": "b80e197cf15494e5d990747ce9d2712cdf2dc7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "555e0e4e_a87d9b08",
+        "filename": "media/extractors/tests/AndroidTest.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-07-07T08:45:59Z",
+      "side": 1,
+      "message": "zip 1.3 refers to this CL ExtractorUnitTest: Add wav test vectors",
+      "parentUuid": "41875765_9bbdeaac",
       "range": {
         "startLine": 22,
         "startChar": 109,
