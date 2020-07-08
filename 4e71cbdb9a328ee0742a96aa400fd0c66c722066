@@ -22,6 +22,30 @@
       "revId": "4e71cbdb9a328ee0742a96aa400fd0c66c722066",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c5dbcb5d_d69eb1ab",
+        "filename": "media/extractors/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-07-08T04:27:32Z",
+      "side": 1,
+      "message": "libmedia_helper is needed by android::AudioParameter::addInt called in frameworks/av/media/libstagefright/Utils.cpp:1905.\nThis is required for both Android and Host. However Android ARM compiler seems to be optimizing it out.\nHost toolchain does not have the same optimization and hence the library needs to be included.",
+      "parentUuid": "d9788627_b2b22110",
+      "range": {
+        "startLine": 84,
+        "startChar": 7,
+        "endLine": 84,
+        "endChar": 26
+      },
+      "revId": "4e71cbdb9a328ee0742a96aa400fd0c66c722066",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
