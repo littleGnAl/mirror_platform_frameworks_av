@@ -22,6 +22,30 @@
       "revId": "7606712e7731c1e8abed30da9e20f045bd0298b6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2c6e52b4_ee07fe4c",
+        "filename": "media/extractors/mpeg2/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-07-08T04:16:36Z",
+      "side": 1,
+      "message": "libvndksupport is needed by android_load_sphal_library called in system/libhidl/transport/ServiceManagement.cpp:402\nThis call is under __ANDROID__ hence needed only for android builds.",
+      "parentUuid": "5805a256_a6002f6e",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "7606712e7731c1e8abed30da9e20f045bd0298b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
