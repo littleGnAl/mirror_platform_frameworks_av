@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d9788627_b2b22110",
+        "filename": "media/extractors/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-08T02:20:42Z",
+      "side": 1,
+      "message": "what symbols are needed from here?  or more appropriately -- why don\u0027t we already have it included as part of the normal set of libraries pulled in here.\n\nif we ony need this for host support, then let\u0027s use phrasing like the following:\n\n  target: [\n      host: [\n         static_libs: [ \"libmedia_helper\" ]\n      ]\n   ]\n\n[i probably have my [] and {} mixed up and I\u0027m not sure I got the \u0027host\u0027 thing just right]\n\nthis would highlight that we are only adding this library for host support.",
+      "range": {
+        "startLine": 84,
+        "startChar": 7,
+        "endLine": 84,
+        "endChar": 26
+      },
+      "revId": "4e71cbdb9a328ee0742a96aa400fd0c66c722066",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
