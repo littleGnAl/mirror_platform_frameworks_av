@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "78d4802a_1c3a1855",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-08T14:52:50Z",
+      "side": 1,
+      "message": "Vasu,\nThis is now merged in internal master.\nCan you please add a Merged-In: Ib6... here?\nWe can check if treehugger builds this successfully with a Merged-In",
+      "revId": "7f23e075be9c32a70b1bde5490aaa626f8cb7199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "7da6b0a6_834ee569",
         "filename": "media/extractors/fuzzers/Android.bp",
         "patchSetId": 1
