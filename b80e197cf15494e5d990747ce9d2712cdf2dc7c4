@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "538a67c6_73ab1e9e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-08T23:56:48Z",
+      "side": 1,
+      "message": "Marking this as resolved as CL has a Code-Review +2",
+      "parentUuid": "054e01d0_de67985a",
+      "range": {
+        "startLine": 12,
+        "startChar": 12,
+        "endLine": 12,
+        "endChar": 26
+      },
+      "revId": "b80e197cf15494e5d990747ce9d2712cdf2dc7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "41875765_9bbdeaac",
         "filename": "media/extractors/tests/AndroidTest.xml",
         "patchSetId": 3
@@ -93,6 +117,30 @@
       "revId": "b80e197cf15494e5d990747ce9d2712cdf2dc7c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "730b3549_3a76f6a3",
+        "filename": "media/extractors/tests/AndroidTest.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-08T23:56:48Z",
+      "side": 1,
+      "message": "Marking this as resolved as CL has a Code-Review +2",
+      "parentUuid": "555e0e4e_a87d9b08",
+      "range": {
+        "startLine": 22,
+        "startChar": 109,
+        "endLine": 22,
+        "endChar": 114
+      },
+      "revId": "b80e197cf15494e5d990747ce9d2712cdf2dc7c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
