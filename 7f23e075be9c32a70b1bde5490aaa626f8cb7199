@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "bc89ad67_1eacc100",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-08T17:26:34Z",
+      "side": 1,
+      "message": "Build still fails on qt-qpr1-dev-plus-aosp and stage-aosp-master due to missing libwatchdog on those branches.\nTill that missing dependency is resolved in those branches, this can\u0027t be merged in aosp/master.",
+      "parentUuid": "78d4802a_1c3a1855",
+      "revId": "7f23e075be9c32a70b1bde5490aaa626f8cb7199",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7da6b0a6_834ee569",
         "filename": "media/extractors/fuzzers/Android.bp",
         "patchSetId": 1
