@@ -14,6 +14,7 @@
 
 cc_library {
     name: "libwatchdog",
+    host_supported: true,
     srcs: [
         "Watchdog.cpp",
     ],
