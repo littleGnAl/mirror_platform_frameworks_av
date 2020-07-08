@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5805a256_a6002f6e",
+        "filename": "media/extractors/mpeg2/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-08T02:37:23Z",
+      "side": 1,
+      "message": "curious about what we get out of this library as part of normal operations\nthat we don\u0027t need as part of host configurations.\n\nor is it the case that we don\u0027t need it at all, even on the android build?\n\nI just did an android build with this library removed completely from this Android.bp (in rvc-dev, not master but they are very close)...   and it built just fine. I haven\u0027t run it yet, so I may have still have something wonky that won\u0027t expose itself until runtime.\n\nbut given the evidence so far.... I think that the answer is to remove the library reference\ncompletely rather than move it to this android-target clause.",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 46
+      },
+      "revId": "7606712e7731c1e8abed30da9e20f045bd0298b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
