@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "2b16f564_bc003854",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2020-07-08T04:18:55Z",
+      "side": 1,
+      "message": "Abandon because of PassThruPatch?",
+      "revId": "18d31e7f95c03f3c7664ea8992e95478e7930ff8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "dbb6e2e5_c478f59a",
         "filename": "services/audioflinger/PatchPanel.cpp",
         "patchSetId": 2
