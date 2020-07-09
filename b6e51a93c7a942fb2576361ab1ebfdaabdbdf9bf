@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "5d1f3085_3afa115f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-07-09T16:15:51Z",
+      "side": 1,
+      "message": "Eric, here is a first draft for bug 160512001.\nIdea is to reconfigure dynamically the RecordThread.\nI am developping a functional test also in parallel. I need now to focus on audio samples to ensure\nno gap.\nI may need also to rework rules to allow this reconfiguration as today, silenced tracks have been reverted to prevent side effects.\nWaiting for your inputs/comments...\nThanks!",
+      "revId": "b6e51a93c7a942fb2576361ab1ebfdaabdbdf9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
