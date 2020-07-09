@@ -63,6 +63,30 @@
       "revId": "4134762bcb7b1efb19527ef1ea53b406867ac03c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba137b1e_f8694a1a",
+        "filename": "media/libwatchdog/Watchdog.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1574221
+      },
+      "writtenOn": "2020-07-09T17:57:09Z",
+      "side": 1,
+      "message": "Thanks! I\u0027m actually in favor of option (2) above (PS 1), since it at least keeps the code compliant. I\u0027d add a comment in the build file explaining this is a workaround to what seems to be a bug in the glibc headers.",
+      "parentUuid": "b8e19ce2_780de193",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 7
+      },
+      "revId": "4134762bcb7b1efb19527ef1ea53b406867ac03c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
