@@ -77,6 +77,12 @@ public:
     virtual status_t    start(AudioSystem::sync_event_t event, audio_session_t triggerSession);
     virtual void        stop();
 
+            /**
+             * @brief ioConfigChanged is called when the configuration of the owning RecordThread
+             * has been updated after e.g. a call to RecordThread::readInputParameters_l.
+             * @param thread on which this track is attached
+             */
+            void        ioConfigChanged(RecordThread *thread);
             void        destroy();
 
     virtual void        invalidate();

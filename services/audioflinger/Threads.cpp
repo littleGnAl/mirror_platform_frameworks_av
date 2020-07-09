@@ -8166,6 +8166,11 @@ bool AudioFlinger::RecordThread::checkForNewParameter_l(const String8& keyValueP
             }
             if (status == NO_ERROR) {
                 readInputParameters_l();
+                // mSampleRate, mFrameCount, mChannelMask, mChannelCount, mFrameSize, mFormat
+                // are set by RecordThread::readInputParameters_l() and may have been updated
+                for (const sp<RecordTrack> &recordTrack : mTracks) {
+                    recordTrack->ioConfigChanged(this);
+                }
                 sendIoConfigEvent_l(AUDIO_INPUT_CONFIG_CHANGED);
             }
         }
