@@ -1,0 +1,92 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003806128",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1358344?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "12325dc0_065ba625",
+          "description": "Change to \"services/audiopolicy/common/managerdefinitions/include/AudioInputDescriptor.h\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/common/managerdefinitions/include/AudioInputDescriptor.h",
+              "range": {
+                "startLine": 124,
+                "startChar": 31,
+                "endLine": 124,
+                "endChar": 37
+              },
+              "replacement": "among"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "9eb9200a_b0eeffc7",
+        "filename": "services/audiopolicy/common/managerdefinitions/include/AudioInputDescriptor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-09T16:16:14Z",
+      "side": 1,
+      "message": "Common typo found: \"amoung\" -- should it be \"among\"?\n\u0027amoung\u0027 is an archaic form of \u0027among\u0027.\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 124,
+        "startChar": 31,
+        "endLine": 124,
+        "endChar": 37
+      },
+      "revId": "b6e51a93c7a942fb2576361ab1ebfdaabdbdf9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003806128",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1358344?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "c82042ec_d2c1fb4d",
+          "description": "Change to \"services/audiopolicy/common/managerdefinitions/include/AudioInputDescriptor.h\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/common/managerdefinitions/include/AudioInputDescriptor.h",
+              "range": {
+                "startLine": 126,
+                "startChar": 91,
+                "endLine": 126,
+                "endChar": 98
+              },
+              "replacement": "latest"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "24c3ceb5_186df657",
+        "filename": "services/audiopolicy/common/managerdefinitions/include/AudioInputDescriptor.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-09T16:16:14Z",
+      "side": 1,
+      "message": "Common typo found: \"lastest\" -- should it be \"latest\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 126,
+        "startChar": 91,
+        "endLine": 126,
+        "endChar": 98
+      },
+      "revId": "b6e51a93c7a942fb2576361ab1ebfdaabdbdf9bf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
