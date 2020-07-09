@@ -135,6 +135,30 @@
       "revId": "4134762bcb7b1efb19527ef1ea53b406867ac03c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "94f5adc7_303ad729",
+        "filename": "media/libwatchdog/Watchdog.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-09T18:35:46Z",
+      "side": 1,
+      "message": "if we\u0027re going to do a macro in the Android.bp as a workaround for what appears to be\nan issue with sysroot headers -- make sure we have a bug against those headers so that we can\nmake this workaround be as short lived as possible.",
+      "parentUuid": "ffc7dfd9_9270730b",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 7
+      },
+      "revId": "4134762bcb7b1efb19527ef1ea53b406867ac03c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
