@@ -39,6 +39,30 @@
       "revId": "4134762bcb7b1efb19527ef1ea53b406867ac03c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b8e19ce2_780de193",
+        "filename": "media/libwatchdog/Watchdog.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1570907
+      },
+      "writtenOn": "2020-07-09T04:55:50Z",
+      "side": 1,
+      "message": "Include sequence for Android - \n\"bionic/libc/kernel/uapi/linux/signal.h\" -\u003e \"bionic/libc/kernel/uapi/asm-generic/siginfo.h\" -\u003e which has macro \u0027sigev_notify_thread_id\u0027 defined\n\n\nHowever, on host two versions of \u0027signal.h\u0027 are present.\nVersion 1: \"prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/include/signal.h\" -\u003e \"prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/include/x86_64-linux-gnu/bits/siginfo.h\" -\u003e which DOES NOT have macro \u0027sigev_notify_thread_id\u0027 defined\n\n\nVersion 2: \"prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/include/linux/signal.h\" -\u003e \"prebuilts/gcc/linux-x86/host/x86_64-linux-glibc2.17-4.8/sysroot/usr/include/asm-generic/siginfo.h\" -\u003e which has macro \u0027sigev_notify_thread_id\u0027 defined\n\n\nVersion 1 of signal.h gets picked up leading to macro \u0027sigev_notify_thread_id\u0027 not being present. \n \n\nIncluding \u0027linux/signal.h\u0027 instead of \u0027signal.h\u0027 results in redefintion errors in time.h due to it again being present in two places - \u0027sysroot/usr/include\u0027 and \u0027sysroot/usr/include/linux\u0027 (similar to signal.h)\n\n\nHence there are 3 options to fix the issue:-\n1. Resolve the signal.h issue in sysroot (or)\n2. Update the Android.bp to define the macro for host only [Patchset 1] (or)\n3. Update the code to use \u0027_sigev_un._tid\u0027 directly instead of macro \u0027sigev_notify_thread_id\u0027 [Patchset 2]",
+      "parentUuid": "696ab973_027d7876",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 7
+      },
+      "revId": "4134762bcb7b1efb19527ef1ea53b406867ac03c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
