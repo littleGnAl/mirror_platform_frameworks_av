@@ -354,6 +354,19 @@ void AudioInputDescriptor::setClientActive(const sp<RecordClientDescriptor>& cli
     updateClientRecordingConfiguration(event, client);
 }
 
+void AudioInputDescriptor::updateRecordThreadConfiguration(
+        const sp<RecordClientDescriptor>& client) {
+    if (isActive() == 0) {
+        return;
+    }
+    const auto cli = client != nullptr ? client : clientsList(true/*activeOnly*/).back();
+    AudioParameter param = {};
+    param.addInt(String8(AudioParameter::keySamplingRate), cli->config().sample_rate);
+    param.addInt(String8(AudioParameter::keyFormat), cli->config().format);
+    param.addInt(String8(AudioParameter::keyChannels), cli->config().channel_mask);
+    mClientInterface->setParameters(mIoHandle, param.toString());
+}
+
 void AudioInputDescriptor::updateClientRecordingConfiguration(
     int event, const sp<RecordClientDescriptor>& client)
 {
