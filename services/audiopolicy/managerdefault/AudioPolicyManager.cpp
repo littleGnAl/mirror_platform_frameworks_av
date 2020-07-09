@@ -2306,8 +2306,6 @@ status_t AudioPolicyManager::startInput(audio_port_handle_t portId)
 
     ALOGV("%s input:%d, session:%d)", __FUNCTION__, input, session);
 
-    Vector<sp<AudioInputDescriptor>> activeInputs = mInputs.getActiveInputs();
-
     status_t status = inputDesc->start();
     if (status != NO_ERROR) {
         return status;
@@ -2316,6 +2314,11 @@ status_t AudioPolicyManager::startInput(audio_port_handle_t portId)
     // increment activity count before calling getNewInputDevice() below as only active sessions
     // are considered for device selection
     inputDesc->setClientActive(client, true);
+    if (inputDesc->activeCount() > 1) {
+        // Input is shared, let's make a favor to latest client (e.g. Hotword vs ordinary app)
+        // TODO: improve the preference? evaluate the best config?
+        inputDesc->updateRecordThreadConfiguration(client);
+    }
 
     // indicate active capture to sound trigger service if starting capture from a mic on
     // primary HW module
@@ -2391,6 +2394,7 @@ status_t AudioPolicyManager::stopInput(audio_port_handle_t portId)
 
     inputDesc->stop();
     if (inputDesc->isActive()) {
+        inputDesc->updateRecordThreadConfiguration();
         setInputDevice(input, getNewInputDevice(inputDesc), false /* force */);
     } else {
         sp<AudioPolicyMix> policyMix = inputDesc->mPolicyMix.promote();
