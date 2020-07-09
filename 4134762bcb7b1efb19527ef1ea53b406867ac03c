@@ -87,6 +87,30 @@
       "revId": "4134762bcb7b1efb19527ef1ea53b406867ac03c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffc7dfd9_9270730b",
+        "filename": "media/libwatchdog/Watchdog.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-09T18:17:54Z",
+      "side": 1,
+      "message": "[i didn\u0027t like the option 2 (which is in patchset 1).\ni had suggested that we did use an #ifdef to change the block of code; i would go along with the #ifdef being to choose a different #include file...",
+      "parentUuid": "b8e19ce2_780de193",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 7
+      },
+      "revId": "4134762bcb7b1efb19527ef1ea53b406867ac03c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
