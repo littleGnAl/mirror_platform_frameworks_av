@@ -170,6 +170,8 @@ public:
     bool isSilenced() const { return mAppState == APP_STATE_IDLE; }
     void trackEffectEnabled(const sp<EffectDescriptor> &effect, bool enabled);
     EffectDescriptorCollection getEnabledEffects() const { return mEnabledEffects; }
+    bool isListening() const { return (source() == AUDIO_SOURCE_HOTWORD) ||
+                (source() == AUDIO_SOURCE_VOICE_RECOGNITION); }
 
 private:
     const audio_unique_id_t mRIId;

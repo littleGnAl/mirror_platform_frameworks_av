@@ -119,6 +119,21 @@ public:
     // active use case
     void checkSuspendEffects();
 
+    /**
+     * @brief updateRecordThreadConfiguration
+     * When an input is shared among several clients, (e.g. hotword and ordinary app), the ordinary
+     * app configuration may be taken in prior to prevent from signal deterioration.
+     * This APIs allows to force AudioFlinger applying the new configuration of either the latest
+     * active client the client or the given client.
+     * (which is also a format supported by the mix port).
+     *
+     * To prevent audio cut, the update is only allowed if other running clients are:
+     *      -listening clients (e.g. Hotword when no HwSoundTrigger HAL present)
+     *      -silenced clients.
+     *
+     * @param client if not null, updates AudioFlinger RecordThread with its configuration.
+     */
+    void updateRecordThreadConfiguration(const sp<RecordClientDescriptor>& client = nullptr);
  private:
 
     void updateClientRecordingConfiguration(int event, const sp<RecordClientDescriptor>& client);

@@ -354,6 +354,33 @@ void AudioInputDescriptor::setClientActive(const sp<RecordClientDescriptor>& cli
     updateClientRecordingConfiguration(event, client);
 }
 
+void AudioInputDescriptor::updateRecordThreadConfiguration(
+        const sp<RecordClientDescriptor>& client) {
+    if (!isActive()) {
+        return;
+    }
+    const auto cli = client != nullptr ? client : clientsList(true/*activeOnly*/).back();
+    // Policy to prevent from audio cut, only allow the reconfiguration if others clients
+    // are listening or silenced
+    if (activeCount() > 1) {
+        for (const auto& activeCli : clientsList(true/*activeOnly*/)) {
+            if (cli != activeCli && !activeCli->isListening() && !activeCli->isSilenced()) {
+                ALOGV("%s cannot update config for riid %d uid %d port %d session %d",
+                      __func__, cli->riid(), cli->uid(), cli->portId(), cli->session());
+                return;
+            }
+        }
+    }
+    AudioParameter param = {};
+    param.addInt(String8(AudioParameter::keySamplingRate), cli->config().sample_rate);
+    param.addInt(String8(AudioParameter::keyFormat), cli->config().format);
+    param.addInt(String8(AudioParameter::keyChannels), cli->config().channel_mask);
+    ALOGV("%s changing configuration for riid %d uid %d port %d session %d  source=%s config=%s",
+          __func__, cli->riid(), cli->uid(), cli->portId(), cli->session(),
+          toString(cli->source()).c_str(), param.toString().c_str());
+    mClientInterface->setParameters(mIoHandle, param.toString());
+}
+
 void AudioInputDescriptor::updateClientRecordingConfiguration(
     int event, const sp<RecordClientDescriptor>& client)
 {

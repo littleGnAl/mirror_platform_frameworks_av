@@ -2133,6 +2133,14 @@ AudioFlinger::RecordThread::RecordTrack::RecordTrack(
 #endif
 }
 
+void AudioFlinger::RecordThread::RecordTrack::ioConfigChanged(RecordThread *thread) {
+    if (!isDirect() && mRecordBufferConverter != nullptr) {
+        mRecordBufferConverter->updateParameters(
+                    thread->mChannelMask, thread->mFormat, thread->mSampleRate,
+                    mChannelMask, mFormat, mSampleRate);
+    }
+}
+
 AudioFlinger::RecordThread::RecordTrack::~RecordTrack()
 {
     ALOGV("%s()", __func__);
