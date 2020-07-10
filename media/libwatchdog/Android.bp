@@ -14,6 +14,7 @@
 
 cc_library {
     name: "libwatchdog",
+    host_supported: true,
     srcs: [
         "Watchdog.cpp",
     ],
@@ -30,6 +31,12 @@ cc_library {
         },
         darwin: {
             enabled: false,
+        },
+        // TODO(b/160890898) - Remove the following once b/160890898 is fixed
+        linux_glibc: {
+            cflags: [
+                "-Dsigev_notify_thread_id=_sigev_un._tid",
+            ],
         },
     },
     apex_available: ["com.android.media"],
