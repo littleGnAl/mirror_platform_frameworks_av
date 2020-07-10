@@ -234,6 +234,30 @@
       "revId": "62d8255550e44d271792dabb0dd9103ef027c78b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b6f27322_df0f1bda",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2319,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-07-10T07:44:52Z",
+      "side": 1,
+      "message": "BTW: \n[source: https://developer.android.com/guide/topics/media/sharing-audio-input]\nThe Assistant can receive audio (no matter whether it\u0027s in the foreground or background) unless another app using a privacy-sensitive audio source is already capturing",
+      "parentUuid": "0daf6ae1_84f67ae6",
+      "range": {
+        "startLine": 2318,
+        "startChar": 8,
+        "endLine": 2319,
+        "endChar": 66
+      },
+      "revId": "62d8255550e44d271792dabb0dd9103ef027c78b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
