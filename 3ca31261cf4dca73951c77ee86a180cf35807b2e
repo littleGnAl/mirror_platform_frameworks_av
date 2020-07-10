@@ -46,6 +46,30 @@
       "revId": "3ca31261cf4dca73951c77ee86a180cf35807b2e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6c5ae3c_ad04b1c0",
+        "filename": "media/libwatchdog/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-10T14:14:36Z",
+      "side": 1,
+      "message": "As discussed in other thread, added a comment with a todo.",
+      "parentUuid": "4822771b_69ab7595",
+      "range": {
+        "startLine": 37,
+        "startChar": 16,
+        "endLine": 37,
+        "endChar": 58
+      },
+      "revId": "3ca31261cf4dca73951c77ee86a180cf35807b2e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
