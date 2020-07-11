@@ -64,6 +64,7 @@ cc_library_shared {
         "libhardware",
         "libhidlbase",
         "libion",
+        "libdmabufheap",
         "libfmq",
         "liblog",
         "libnativewindow",
