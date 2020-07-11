@@ -19,6 +19,7 @@ cc_library_shared {
     min_sdk_version: "29",
 
     srcs: [
+        "C2AllocatorBuf.cpp",
         "C2AllocatorIon.cpp",
         "C2AllocatorGralloc.cpp",
         "C2Buffer.cpp",
@@ -64,6 +65,7 @@ cc_library_shared {
         "libhardware",
         "libhidlbase",
         "libion",
+        "libdmabufheap",
         "libfmq",
         "liblog",
         "libnativewindow",
