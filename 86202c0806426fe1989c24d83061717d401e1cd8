@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "42cc8faf_6278a96b",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-07-12T15:42:38Z",
+      "side": 1,
+      "message": "updated the required parameters, taking the common denominator requirements for devices from cdd",
+      "parentUuid": "a1674e2a_292d40d3",
+      "range": {
+        "startLine": 62,
+        "startChar": 26,
+        "endLine": 62,
+        "endChar": 44
+      },
+      "revId": "86202c0806426fe1989c24d83061717d401e1cd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "343b97ff_bcea7c33",
         "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
         "patchSetId": 1
@@ -36,6 +60,30 @@
       "writtenOn": "2020-07-06T16:44:47Z",
       "side": 1,
       "message": "think about how we attribute this back to CDD.\nand might want to build the list the same way as we do in some of the mediav2 cts tests.\n\nalso -- sort and 1 per line for the table formatting.",
+      "range": {
+        "startLine": 61,
+        "startChar": 8,
+        "endLine": 66,
+        "endChar": 6
+      },
+      "revId": "86202c0806426fe1989c24d83061717d401e1cd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2273d145_42158b6d",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-07-12T15:42:38Z",
+      "side": 1,
+      "message": "the APIs for determining whether the device is TV or if it has microphone are not readily available at this layer so we are currently taking the common subset of requirements",
+      "parentUuid": "343b97ff_bcea7c33",
       "range": {
         "startLine": 61,
         "startChar": 8,
@@ -65,6 +113,24 @@
     },
     {
       "key": {
+        "uuid": "9ae18bf2_605b2ae3",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-07-12T15:42:38Z",
+      "side": 1,
+      "message": "there are 4 default paths where it searches for the xml files",
+      "parentUuid": "924fa56d_eeabf03a",
+      "revId": "86202c0806426fe1989c24d83061717d401e1cd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "1eefaa33_4c7f6308",
         "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
         "patchSetId": 1
@@ -82,6 +148,24 @@
     },
     {
       "key": {
+        "uuid": "796baf75_cf6229c9",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-07-12T15:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1eefaa33_4c7f6308",
+      "revId": "86202c0806426fe1989c24d83061717d401e1cd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4de30340_d90f2be1",
         "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
         "patchSetId": 1
@@ -93,6 +177,30 @@
       "writtenOn": "2020-07-06T16:44:47Z",
       "side": 1,
       "message": "this isn\u0027t giving us actual kFlagxxx strings, is it?\n\nshould we be validating conditions:\n\nIsSoftwareOnly and IsHardwareAccelerated would seem to be mutually exclusive (can\u0027t both be on)\n\ni think that HW accelerated requires vendor.",
+      "range": {
+        "startLine": 111,
+        "startChar": 8,
+        "endLine": 111,
+        "endChar": 11
+      },
+      "revId": "86202c0806426fe1989c24d83061717d401e1cd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "efdf0516_fd9dbe3c",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-07-12T15:42:38Z",
+      "side": 1,
+      "message": "no, it\u0027s flags in int32, we break it to bits for readability. this check would reflect on the validity of the builder and not necessarily on the MediaCodecList struct so we skipped it",
+      "parentUuid": "4de30340_d90f2be1",
       "range": {
         "startLine": 111,
         "startChar": 8,
@@ -128,6 +236,30 @@
     },
     {
       "key": {
+        "uuid": "a414b492_79c9720d",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-07-12T15:42:38Z",
+      "side": 1,
+      "message": "added checks for equality of primitive members; some members don\u0027t allow direct comparison, moreover it would involve repeating lots of code so was skipped",
+      "parentUuid": "8878f818_b71c27c7",
+      "range": {
+        "startLine": 196,
+        "startChar": 8,
+        "endLine": 196,
+        "endChar": 37
+      },
+      "revId": "86202c0806426fe1989c24d83061717d401e1cd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c1b24bf1_3091de7e",
         "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
         "patchSetId": 1
@@ -139,6 +271,30 @@
       "writtenOn": "2020-07-06T16:44:47Z",
       "side": 1,
       "message": "are there any global values that we expect to be in here?\n\nhow might we figure out if a global setting is indeed global?",
+      "range": {
+        "startLine": 207,
+        "startChar": 4,
+        "endLine": 207,
+        "endChar": 18
+      },
+      "revId": "86202c0806426fe1989c24d83061717d401e1cd8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea21133a_0c4febdf",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-07-12T15:42:38Z",
+      "side": 1,
+      "message": "didn\u0027t find any members necessarily required for all devices.\nE.g. values for sargo_userdebug image:\nstring domain-telephony \u003d \"1\"\nstring max-video-encoder-input-buffers \u003d \"11\"\n\nOne device has only one working instance since it\u0027s static, accessible through IMediaCodecList",
+      "parentUuid": "c1b24bf1_3091de7e",
       "range": {
         "startLine": 207,
         "startChar": 4,
