@@ -22,7 +22,7 @@
 #include <map>
 #include <mutex>
 
-#include <C2AllocatorIon.h>
+#include <C2AllocatorBuf.h>
 #include <C2AllocatorGralloc.h>
 #include <C2BufferPriv.h>
 #include <C2BlockInternal.h>
@@ -31,7 +31,7 @@
 namespace {
 
 using android::C2AllocatorGralloc;
-using android::C2AllocatorIon;
+using android::C2AllocatorBuf;
 using android::hardware::media::bufferpool::BufferPoolData;
 using android::hardware::media::bufferpool::V2_0::ResultStatus;
 using android::hardware::media::bufferpool::V2_0::implementation::BufferPoolAllocation;
@@ -393,10 +393,10 @@ std::shared_ptr<_C2BlockPoolData> _C2BlockFactory::GetLinearBlockPoolData(
 std::shared_ptr<C2LinearBlock> _C2BlockFactory::CreateLinearBlock(
         const C2Handle *handle) {
     // TODO: get proper allocator? and mutex?
-    static std::unique_ptr<C2AllocatorIon> sAllocator = std::make_unique<C2AllocatorIon>(0);
+    static std::unique_ptr<C2AllocatorBuf> sAllocator = std::make_unique<C2AllocatorBuf>(0);
 
     std::shared_ptr<C2LinearAllocation> alloc;
-    if (C2AllocatorIon::isValid(handle)) {
+    if (C2AllocatorBuf::isValid(handle)) {
         c2_status_t err = sAllocator->priorLinearAllocation(handle, &alloc);
         if (err == C2_OK) {
             std::shared_ptr<C2LinearBlock> block = _C2BlockFactory::CreateLinearBlock(alloc);
@@ -409,10 +409,10 @@ std::shared_ptr<C2LinearBlock> _C2BlockFactory::CreateLinearBlock(
 std::shared_ptr<C2LinearBlock> _C2BlockFactory::CreateLinearBlock(
         const C2Handle *cHandle, const std::shared_ptr<BufferPoolData> &data) {
     // TODO: get proper allocator? and mutex?
-    static std::unique_ptr<C2AllocatorIon> sAllocator = std::make_unique<C2AllocatorIon>(0);
+    static std::unique_ptr<C2AllocatorBuf> sAllocator = std::make_unique<C2AllocatorBuf>(0);
 
     std::shared_ptr<C2LinearAllocation> alloc;
-    if (C2AllocatorIon::isValid(cHandle)) {
+    if (C2AllocatorBuf::isValid(cHandle)) {
         c2_status_t err = sAllocator->priorLinearAllocation(cHandle, &alloc);
         const std::shared_ptr<C2PooledBlockPoolData> poolData =
                 std::make_shared<C2PooledBlockPoolData>(data);

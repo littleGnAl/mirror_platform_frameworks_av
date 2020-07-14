@@ -19,7 +19,7 @@
 #include <utils/Log.h>
 
 #include <C2AllocatorGralloc.h>
-#include <C2AllocatorIon.h>
+#include <C2AllocatorBuf.h>
 #include <C2BufferPriv.h>
 #include <C2BqBufferPriv.h>
 #include <C2Component.h>
@@ -131,12 +131,12 @@ c2_status_t C2PlatformAllocatorStoreImpl::fetchAllocator(
 namespace {
 
 std::mutex gIonAllocatorMutex;
-std::weak_ptr<C2AllocatorIon> gIonAllocator;
+std::weak_ptr<C2AllocatorBuf> gIonAllocator;
 
 void UseComponentStoreForIonAllocator(
-        const std::shared_ptr<C2AllocatorIon> allocator,
+        const std::shared_ptr<C2AllocatorBuf> allocator,
         std::shared_ptr<C2ComponentStore> store) {
-    C2AllocatorIon::UsageMapperFn mapper;
+    C2AllocatorBuf::UsageMapperFn mapper;
     uint64_t minUsage = 0;
     uint64_t maxUsage = C2MemoryUsage(C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE).expected;
     size_t blockSize = getpagesize();
@@ -196,7 +196,7 @@ void C2PlatformAllocatorStoreImpl::setComponentStore(std::shared_ptr<C2Component
         std::lock_guard<std::mutex> lock(_mComponentStoreReadLock);
         _mComponentStore = store;
     }
-    std::shared_ptr<C2AllocatorIon> allocator;
+    std::shared_ptr<C2AllocatorBuf> allocator;
     {
         std::lock_guard<std::mutex> lock(gIonAllocatorMutex);
         allocator = gIonAllocator.lock();
@@ -208,14 +208,14 @@ void C2PlatformAllocatorStoreImpl::setComponentStore(std::shared_ptr<C2Component
 
 std::shared_ptr<C2Allocator> C2PlatformAllocatorStoreImpl::fetchIonAllocator() {
     std::lock_guard<std::mutex> lock(gIonAllocatorMutex);
-    std::shared_ptr<C2AllocatorIon> allocator = gIonAllocator.lock();
+    std::shared_ptr<C2AllocatorBuf> allocator = gIonAllocator.lock();
     if (allocator == nullptr) {
         std::shared_ptr<C2ComponentStore> componentStore;
         {
             std::lock_guard<std::mutex> lock(_mComponentStoreReadLock);
             componentStore = _mComponentStore;
         }
-        allocator = std::make_shared<C2AllocatorIon>(C2PlatformAllocatorStore::ION);
+        allocator = std::make_shared<C2AllocatorBuf>(C2PlatformAllocatorStore::ION);
         UseComponentStoreForIonAllocator(allocator, componentStore);
         gIonAllocator = allocator;
     }
