@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "eb2a010c_a3490141",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-07-15T23:01:50Z",
+      "side": 1,
+      "message": "Ah ok, no worries. The reason for my suggestion was to reduce the git diff mostly so that it would be easier to review on gerrit since the changes would appear as diff to the (renamed)C2AllocatorIon file instead of a new file altogether.",
+      "parentUuid": "662d124b_507db2c9",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "66d78303db97925fe88ce324583f4ab53c22a4b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6a03b543_747637e2",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
