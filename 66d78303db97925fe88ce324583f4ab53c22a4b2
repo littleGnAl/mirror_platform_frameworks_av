@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6d282d3c_cacc9614",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-07-15T04:53:45Z",
+      "side": 1,
+      "message": "Thank you for working on this John! I was wondering, wouldn\u0027t we be able to make the change smaller if you renamed C2AllocatorIon to C2AllocatorBuf and changed the relevant parts? Do we have to reason to keep C2AllocatorIon as is?",
+      "range": {
+        "startLine": 11,
+        "startChar": 12,
+        "endLine": 11,
+        "endChar": 27
+      },
+      "revId": "66d78303db97925fe88ce324583f4ab53c22a4b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6a03b543_747637e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-07-15T04:53:45Z",
+      "side": 1,
+      "message": "Thank you for working on this John",
+      "revId": "66d78303db97925fe88ce324583f4ab53c22a4b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
