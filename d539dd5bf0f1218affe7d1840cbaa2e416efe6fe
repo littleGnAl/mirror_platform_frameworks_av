@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b2149b19_9165cb31",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-07-16T04:47:14Z",
+      "side": 1,
+      "message": "I guess we should also do a map between \"system\" and ~0 to accommodate legacy ion devices similar to \nhttps://android.googlesource.com/platform/frameworks/av/+/master/media/codec2/vndk/C2AllocatorIon.cpp#556",
+      "range": {
+        "startLine": 275,
+        "startChar": 4,
+        "endLine": 275,
+        "endChar": 54
+      },
+      "revId": "d539dd5bf0f1218affe7d1840cbaa2e416efe6fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a8012bd_a1634298",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-07-16T04:47:14Z",
+      "side": 1,
+      "message": "Do we need ret?",
+      "range": {
+        "startLine": 289,
+        "startChar": 61,
+        "endLine": 289,
+        "endChar": 64
+      },
+      "revId": "d539dd5bf0f1218affe7d1840cbaa2e416efe6fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "971d2ad6_bd631511",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-07-16T04:47:14Z",
+      "side": 1,
+      "message": "I guess we can just use the default destructor in that case.",
+      "range": {
+        "startLine": 305,
+        "startChar": 16,
+        "endLine": 305,
+        "endChar": 24
+      },
+      "revId": "d539dd5bf0f1218affe7d1840cbaa2e416efe6fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
