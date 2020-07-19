@@ -27,3 +27,38 @@ cc_library_shared {
         "libhardware_headers",
     ],
 }
+// audio preprocessing unit test
+cc_test {
+    name: "preproctest",
+
+    vendor: true,
+
+    relative_install_path: "soundfx",
+
+    srcs: ["PreProcessing_test.cpp"],
+
+    include_dirs: [
+        "external/webrtc",
+        "external/webrtc/webrtc/modules/include",
+        "external/webrtc/webrtc/modules/audio_processing/include",
+    ],
+
+    shared_libs: [
+        "libaudiopreprocessing",
+        "libutils",
+        "liblog",
+        "libaudioutils",
+    ],
+
+    cflags: [
+        "-DWEBRTC_POSIX",
+        "-fvisibility=default",
+        "-Wall",
+        "-Werror",
+    ],
+
+    header_libs: [
+        "libaudioeffects",
+        "libhardware_headers",
+    ],
+}
