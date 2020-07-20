@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "efccdbfd_6f3a3dbb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-07-20T20:41:42Z",
+      "side": 1,
+      "message": "In addition to the comments below, this would need to be made backwards compatible, in the sense that a mainline module built from these sources can be installed on an older device. Since this change modifies the signature of the Sniff function, it is not backwards compatible.\n",
+      "revId": "2659d05bbeca68291d8a7ea6d882bc6624febf73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "917bd535_e7b0b118",
+        "filename": "media/extractors/aac/AACExtractor.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-07-20T20:41:42Z",
+      "side": 1,
+      "message": "This function is referenced on line 399 below, and should be of type \"SnifferFunc\", which is defined in MediaExtractorPluginApi.h\nYou\u0027ve added two extra parameters to it, but haven\u0027t updated the signature in the API definition.\nIn addition, the interface is supposed to be pure C, and you\u0027ve added two C++ classes as parameters, which won\u0027t work.",
+      "revId": "2659d05bbeca68291d8a7ea6d882bc6624febf73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0471c4d8_a213f56f",
+        "filename": "media/libstagefright/MediaExtractorFactory.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-07-20T20:41:42Z",
+      "side": 1,
+      "message": "Does this actually compile? The \"sniff\" function is of a type that does not have these last two parameters.",
+      "revId": "2659d05bbeca68291d8a7ea6d882bc6624febf73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
