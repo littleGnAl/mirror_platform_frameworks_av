@@ -1,0 +1,642 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "cf2ec69e_3dd3523c",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "remove\nNot needed",
+      "range": {
+        "startLine": 47,
+        "startChar": 0,
+        "endLine": 47,
+        "endChar": 19
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "864a3df0_11f85ba4",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "ARG_INPUT\nARG_OUTPUT",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72e015d0_0ad26cfb",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "ARG_FAR",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 14
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a22eeed3_42d436bd",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "ARG_FS\n\nbasically this should match the argument they refer to (with ARG_ prefix added)",
+      "range": {
+        "startLine": 52,
+        "startChar": 2,
+        "endLine": 52,
+        "endChar": 15
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c3f7fab_3f692ca3",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "camelCase",
+      "range": {
+        "startLine": 69,
+        "startChar": 20,
+        "endLine": 69,
+        "endChar": 33
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8211c39_0341a58a",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "not needed here",
+      "range": {
+        "startLine": 89,
+        "startChar": 40,
+        "endLine": 89,
+        "endChar": 80
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75527587_34a5624b",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "--input \u003cinput_file\u003e",
+      "range": {
+        "startLine": 91,
+        "startChar": 17,
+        "endLine": 91,
+        "endChar": 28
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "552c0557_77e7c1f5",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "path to input file",
+      "range": {
+        "startLine": 92,
+        "startChar": 23,
+        "endLine": 92,
+        "endChar": 89
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "60db5af5_e81f1b9e",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "--outout \u003coutput_file\u003e",
+      "range": {
+        "startLine": 93,
+        "startChar": 17,
+        "endLine": 93,
+        "endChar": 29
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8ba374ec_8ec775eb",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "path to output file",
+      "range": {
+        "startLine": 94,
+        "startChar": 23,
+        "endLine": 94,
+        "endChar": 44
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "75520d29_0a3b782c",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 95,
+        "startChar": 1,
+        "endLine": 96,
+        "endChar": 15
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d304c738_c7a8cf20",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "remove as --h isn\u0027t a longopt",
+      "range": {
+        "startLine": 97,
+        "startChar": 24,
+        "endLine": 97,
+        "endChar": 32
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "19905ee8_4c6d63fb",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "change to camelCase",
+      "range": {
+        "startLine": 144,
+        "startChar": 26,
+        "endLine": 144,
+        "endChar": 68
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "605441ee_a741a310",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 148,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "change to camelCase",
+      "range": {
+        "startLine": 148,
+        "startChar": 11,
+        "endLine": 148,
+        "endChar": 21
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f54628d_a68b411d",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "inputFile",
+      "range": {
+        "startLine": 165,
+        "startChar": 14,
+        "endLine": 165,
+        "endChar": 20
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05dae65c_1a6c1105",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "outputFile",
+      "range": {
+        "startLine": 166,
+        "startChar": 14,
+        "endLine": 166,
+        "endChar": 21
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01cca81b_c49ef3e6",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 196,
+        "endChar": 14
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "881cf16b_dd12f178",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "let us make output optional",
+      "range": {
+        "startLine": 238,
+        "startChar": 24,
+        "endLine": 238,
+        "endChar": 45
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "260b030d_282a834e",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "inputFp",
+      "range": {
+        "startLine": 244,
+        "startChar": 8,
+        "endLine": 244,
+        "endChar": 12
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45a83407_0bc5cb4d",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "farFp",
+      "range": {
+        "startLine": 250,
+        "startChar": 8,
+        "endLine": 250,
+        "endChar": 12
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca8bd216_f7b24653",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "use fstat to get file size of far and input and ensure the sizes match",
+      "range": {
+        "startLine": 262,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 5
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "38042f33_698a36a7",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "only if outfile is not nullptr, once output is optional",
+      "range": {
+        "startLine": 265,
+        "startChar": 21,
+        "endLine": 265,
+        "endChar": 28
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e79c7342_1bffbc07",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 265,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "outputFp",
+      "range": {
+        "startLine": 265,
+        "startChar": 8,
+        "endLine": 265,
+        "endChar": 12
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5884289d_a1de2cac",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "nullptr",
+      "range": {
+        "startLine": 277,
+        "startChar": 55,
+        "endLine": 277,
+        "endChar": 56
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e32b8354_1660d3db",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 344,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "move this read inside the loop.\nstore fread return in a variable and set that to frameCount element in audio_buffer_t structures\n\nthis way you can handle files which are not multiples of the interval that you pick",
+      "range": {
+        "startLine": 343,
+        "startChar": 9,
+        "endLine": 344,
+        "endChar": 28
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "df4df4c6_f0089d83",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 368,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "use a single variable \"status\" instead of err, errCode in this function",
+      "range": {
+        "startLine": 368,
+        "startChar": 12,
+        "endLine": 368,
+        "endChar": 19
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b679c500_c07f8212",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "check for fOut and write only if it isn\u0027t nullptr",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 391,
+        "endChar": 5
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5315373e_48a3b999",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 403,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-20T22:32:11Z",
+      "side": 1,
+      "message": "ffar isn\u0027t closed",
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
