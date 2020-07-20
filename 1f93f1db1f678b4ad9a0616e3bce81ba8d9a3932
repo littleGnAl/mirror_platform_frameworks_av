@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000003944244",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1366796?revision\u003d3",
+      "fixSuggestions": [
+        {
+          "fixId": "17d7c09f_a971e50e",
+          "description": "Change to \"media/libeffects/preprocessing/tests/PreProcessingTest.cpp\"",
+          "replacements": [
+            {
+              "path": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+              "range": {
+                "startLine": 253,
+                "startChar": 33,
+                "endLine": 253,
+                "endChar": 41
+              },
+              "replacement": "required"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "d1f4a077_f2a3182e",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-07-20T18:51:42Z",
+      "side": 1,
+      "message": "Common typo found: \"requried\" -- should it be \"required\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line.",
+      "range": {
+        "startLine": 253,
+        "startChar": 33,
+        "endLine": 253,
+        "endChar": 41
+      },
+      "revId": "1f93f1db1f678b4ad9a0616e3bce81ba8d9a3932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
