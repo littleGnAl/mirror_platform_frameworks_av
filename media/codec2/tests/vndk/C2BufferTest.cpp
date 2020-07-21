@@ -16,7 +16,7 @@
 
 #include <gtest/gtest.h>
 
-#include <C2AllocatorIon.h>
+#include <C2AllocatorBuf.h>
 #include <C2AllocatorGralloc.h>
 #include <C2Buffer.h>
 #include <C2BufferPriv.h>
@@ -233,7 +233,7 @@ class C2BufferTest : public ::testing::Test {
 public:
     C2BufferTest()
         : mBlockPoolId(C2BlockPool::PLATFORM_START),
-          mLinearAllocator(std::make_shared<C2AllocatorIon>('i')),
+          mLinearAllocator(std::make_shared<C2AllocatorBuf>('i')),
           mSize(0u),
           mAddr(nullptr),
           mGraphicAllocator(std::make_shared<C2AllocatorGralloc>('g')) {
