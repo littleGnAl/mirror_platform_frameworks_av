@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "3ad07835_ad7dca3c",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-07-21T19:50:53Z",
+      "side": 1,
+      "message": "Yea, this bit needs work. We\u0027re not actually using the heapMask here as we set it up earlier (I\u0027m assigning it to hack around unused warnings). I\u0027ll try to clean this up.",
+      "parentUuid": "b2149b19_9165cb31",
+      "range": {
+        "startLine": 275,
+        "startChar": 4,
+        "endLine": 275,
+        "endChar": 54
+      },
+      "revId": "d539dd5bf0f1218affe7d1840cbaa2e416efe6fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8a8012bd_a1634298",
         "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
         "patchSetId": 4
@@ -45,6 +69,30 @@
       "revId": "d539dd5bf0f1218affe7d1840cbaa2e416efe6fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97cafa32_b7ccc360",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-07-21T19:50:53Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "8a8012bd_a1634298",
+      "range": {
+        "startLine": 289,
+        "startChar": 61,
+        "endLine": 289,
+        "endChar": 64
+      },
+      "revId": "d539dd5bf0f1218affe7d1840cbaa2e416efe6fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
