@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "20ede448_e289da21",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-21T23:43:26Z",
+      "side": 1,
+      "message": "stfrecorder_audio.info",
+      "range": {
+        "startLine": 37,
+        "startChar": 47,
+        "endLine": 37,
+        "endChar": 60
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "be450839_87202247",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-21T23:43:26Z",
+      "side": 1,
+      "message": "stfrecorder_audio.raw",
+      "range": {
+        "startLine": 38,
+        "startChar": 47,
+        "endLine": 38,
+        "endChar": 69
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "877df05b_9dede284",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-21T23:43:26Z",
+      "side": 1,
+      "message": "remove print,\nadd a comment instead",
+      "range": {
+        "startLine": 118,
+        "startChar": 0,
+        "endLine": 118,
+        "endChar": 48
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "acbb1a8a_e98a0f3e",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-21T23:43:26Z",
+      "side": 1,
+      "message": "Move this to line 126?\nWhen kDebug is false, this doesn\u0027t really do anything meaningful as the file saved gets deleted  immediately after.",
+      "range": {
+        "startLine": 132,
+        "startChar": 1,
+        "endLine": 132,
+        "endChar": 18
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "975651d6_a9087115",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-21T23:43:26Z",
+      "side": 1,
+      "message": "TODO(b/161687761) instead for consistency",
+      "range": {
+        "startLine": 218,
+        "startChar": 7,
+        "endLine": 218,
+        "endChar": 24
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
