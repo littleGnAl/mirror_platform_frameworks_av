@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b4ce64a7_dce687e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-21T01:12:55Z",
+      "side": 1,
+      "message": "Failures are seen in git_master while compiling StereoWidening Modules.\n\na53_static/obj/frameworks/av/media/libeffects/lvm/lib/StereoWidening/src/LVCS_Process.o frameworks/av/media/libeffects/lvm/lib/StereoWidening/src/LVCS_Process.cpp\nframeworks/av/media/libeffects/lvm/lib/StereoWidening/src/LVCS_Process.cpp:251:38: error: no member named \u0027MemoryTable\u0027 in \u0027LVCS_Instance_t\u0027\n                          pInstance-\u003eMemoryTable. \\\n                          ~~~~~~~~~  ^\nframeworks/av/media/libeffects/lvm/lib/StereoWidening/src/LVCS_Process.cpp:252:34: error: use of undeclared identifier \u0027LVCS_MEMREGION_TEMPORARY_FAST\u0027\n                          Region[LVCS_MEMREGION_TEMPORARY_FAST].pBaseAddress +\n                                 ^\n2 errors generated.\nframeworks/av/media/libeffects/lvm/lib/StereoWidening/src/LVCS_Process.cpp:251:38: error: no member named \u0027MemoryTable\u0027 in \u0027LVCS_Instance_t\u0027\n                          pInstance-\u003eMemoryTable. \\\n                          ~~~~~~~~~  ^\nframeworks/av/media/libeffects/lvm/lib/StereoWidening/src/LVCS_Process.cpp:252:34: error: use of undeclared identifier \u0027LVCS_MEMREGION_TEMPORARY_FAST\u0027\n                          Region[LVCS_MEMREGION_TEMPORARY_FAST].pBaseAddress +\n                                 ^\n2 errors generated.\n\n  \nBut the line numbers seem wrong as the previous CL removed code under few #ifdefs.\n\nTriggering another build on tip of tree to see if the issue persists.",
+      "revId": "ce4b13f563b17d1cc7f430258398c33544e21499",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
