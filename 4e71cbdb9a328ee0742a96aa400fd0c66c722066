@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "e13c4753_4322c83b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-21T00:23:46Z",
+      "side": 1,
+      "message": "Kris,\nThis is ready to be merged.\nCan you please review and submit?",
+      "revId": "4e71cbdb9a328ee0742a96aa400fd0c66c722066",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d9788627_b2b22110",
         "filename": "media/extractors/fuzzers/Android.bp",
         "patchSetId": 1
