@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b245f1d_45d9b0a6",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-21T17:38:00Z",
+      "side": 1,
+      "message": "are these typecasts really necessary?",
+      "range": {
+        "startLine": 168,
+        "startChar": 37,
+        "endLine": 168,
+        "endChar": 42
+      },
+      "revId": "097523c704b36080a756575b23ca30447a6d70da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16157929_2f1aadd0",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-21T17:38:00Z",
+      "side": 1,
+      "message": "file",
+      "range": {
+        "startLine": 233,
+        "startChar": 32,
+        "endLine": 233,
+        "endChar": 37
+      },
+      "revId": "097523c704b36080a756575b23ca30447a6d70da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2d88013b_f1da1531",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-21T17:38:00Z",
+      "side": 1,
+      "message": "check return value and return if in error",
+      "range": {
+        "startLine": 294,
+        "startChar": 4,
+        "endLine": 294,
+        "endChar": 23
+      },
+      "revId": "097523c704b36080a756575b23ca30447a6d70da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "63da9ff0_a9f9e5b6",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 337,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-21T17:38:00Z",
+      "side": 1,
+      "message": "should this also be configurable?\nor all input effects only support single channel input?\n\nIf effects support more than 1 channel, then pass this as an argument and add a check for input file size to be multiple of channelCount * sizeof(short)",
+      "range": {
+        "startLine": 337,
+        "startChar": 0,
+        "endLine": 337,
+        "endChar": 25
+      },
+      "revId": "097523c704b36080a756575b23ca30447a6d70da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "57332e7a_efcb4d98",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-21T17:38:00Z",
+      "side": 1,
+      "message": "this would mean output size will be greater than input when the file size is not multiple of frameLength.\n\nLet us change the frameCount appropriately instead and ensure output file size matches input file size.\nAnd that can be done unconditionally after line 370 as frameCount \u003d samplesRead for all 4 structures. Remove 345-348 and move declaration 340-344 inside the loop",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 356,
+        "endChar": 5
+      },
+      "revId": "097523c704b36080a756575b23ca30447a6d70da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
