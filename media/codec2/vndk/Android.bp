@@ -20,7 +20,6 @@ cc_library_shared {
 
     srcs: [
         "C2AllocatorBuf.cpp",
-        "C2AllocatorIon.cpp",
         "C2AllocatorGralloc.cpp",
         "C2Buffer.cpp",
         "C2Config.cpp",
@@ -64,7 +63,6 @@ cc_library_shared {
         "libdl",
         "libhardware",
         "libhidlbase",
-        "libion",
         "libdmabufheap",
         "libfmq",
         "liblog",
