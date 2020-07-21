@@ -24,13 +24,10 @@
 #include <fstream>
 
 #include <codec2/hidl/client.h>
-#include <C2AllocatorIon.h>
 #include <C2Config.h>
 #include <C2Debug.h>
 #include <C2Buffer.h>
 #include <C2BufferPriv.h>
-
-using android::C2AllocatorIon;
 
 #include <VtsHalHidlTargetTestBase.h>
 #include "media_c2_audio_hidl_test_common.h"
