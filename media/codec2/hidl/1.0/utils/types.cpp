@@ -21,7 +21,6 @@
 #include <codec2/hidl/1.0/types.h>
 #include <media/stagefright/foundation/AUtils.h>
 
-#include <C2AllocatorIon.h>
 #include <C2AllocatorGralloc.h>
 #include <C2BlockInternal.h>
 #include <C2Buffer.h>
