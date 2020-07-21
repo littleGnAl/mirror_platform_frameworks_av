@@ -16,6 +16,23 @@
       "revId": "ce4b13f563b17d1cc7f430258398c33544e21499",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5558210b_a604e1ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-21T01:31:40Z",
+      "side": 1,
+      "message": "Reason for the failure is\nhttps://partner-android.googlesource.com/platform/frameworks/av/+/d1b4d4b24d9ede669ca00fb1428a8f3acff1e94c (libeffects: Fix to resolve glitch with disabling LVCS) is present in internal branches, but not part of aosp/master.\n\nBecause of this reason, this CL can\u0027t be merged till aosp/master and internal branches are in sync.\n",
+      "revId": "ce4b13f563b17d1cc7f430258398c33544e21499",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
