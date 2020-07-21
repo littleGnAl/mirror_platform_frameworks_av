@@ -43,6 +43,7 @@ cc_test {
         "libcodec2",
         "libcodec2_vndk",
         "libcutils",
+        "libdmabufheap",
         "liblog",
         "libutils",
     ],
