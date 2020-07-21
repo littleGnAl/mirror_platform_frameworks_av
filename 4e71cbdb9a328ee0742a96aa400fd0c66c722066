@@ -63,6 +63,30 @@
       "revId": "4e71cbdb9a328ee0742a96aa400fd0c66c722066",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c01c6131_7c2ee53f",
+        "filename": "media/extractors/fuzzers/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-21T00:16:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c5dbcb5d_d69eb1ab",
+      "range": {
+        "startLine": 84,
+        "startChar": 7,
+        "endLine": 84,
+        "endChar": 26
+      },
+      "revId": "4e71cbdb9a328ee0742a96aa400fd0c66c722066",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
