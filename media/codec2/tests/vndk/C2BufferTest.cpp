@@ -765,4 +765,22 @@ TEST_F(C2BufferTest, MultipleLinearMapTest) {
     }
 }
 
+TEST_F(C2BufferTest, InfoBufferTest) {
+    constexpr size_t kCapacity = 524288u;
+
+    // allocate a linear block
+    std::shared_ptr<C2BlockPool> linearPool(makeLinearBlockPool());
+    std::shared_ptr<C2LinearBlock> linearBlock;
+    ASSERT_EQ(C2_OK, linearPool->fetchLinearBlock(
+            kCapacity,
+            { C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE },
+            &linearBlock));
+
+    C2InfoBuffer info = C2InfoBuffer::CreateLinearBuffer(kParamIndexNumber1, linearBlock->share(0, kCapacity / 2, C2Fence()));
+    std::shared_ptr<C2InfoBuffer> spInfo(new C2InfoBuffer(info));
+    ASSERT_EQ(spInfo->index(), info.index());
+    ASSERT_EQ(spInfo->data().type(), info.data().type());
+    ASSERT_EQ(spInfo->data().linearBlocks()[0].getAllocatorId(), linearPool->getAllocatorId());
+}
+
 } // namespace android
