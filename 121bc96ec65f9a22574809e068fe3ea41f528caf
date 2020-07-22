@@ -71,6 +71,30 @@
     },
     {
       "key": {
+        "uuid": "31e01f43_fb307b58",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-22T18:16:07Z",
+      "side": 1,
+      "message": "as we discussed offline, for ease of testing, we can continue with the current approach of processing the valid bytes from input and ignore incomplete frames.",
+      "parentUuid": "c17ce04e_3137e76e",
+      "range": {
+        "startLine": 301,
+        "startChar": 1,
+        "endLine": 301,
+        "endChar": 45
+      },
+      "revId": "121bc96ec65f9a22574809e068fe3ea41f528caf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "76319d3c_91da6e12",
         "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
         "patchSetId": 6
