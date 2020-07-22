@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3ddb6ba3_7c0120ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-07-22T03:58:54Z",
+      "side": 1,
+      "message": "Still WIP, but would like some feedback on this.\n\nStill need to decide if we want to keep support for the ro.com.android.media.swcodec.ion.* properties, which if so I\u0027d like to push down from the C2Store.cpp into this C2AllocatorBuf.cpp logic.\n\n(Though removing it all seems way simpler :)\n\nApologies if I\u0027m way off on some of this, as I\u0027m an old C developer and reading C++ lambda/closure syntax is melting my brain a bit.",
+      "revId": "6223378ab3fe142b3605ef59ded00fc2ceef75ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
