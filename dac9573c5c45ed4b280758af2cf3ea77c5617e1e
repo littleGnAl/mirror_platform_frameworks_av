@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "9bd654bd_7717dd5f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-22T03:28:36Z",
+      "side": 1,
+      "message": "some restructuring. I hope comments are explanatory.",
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0c9e4c1e_16021e03",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-22T03:28:36Z",
+      "side": 1,
+      "message": "TEST_NAME perhaps.\nMy first glance at this was \"why are we talking about package manager names\".\n\nmaybe even just use the LOG_TAG that we defined above and not have any new macros at all.",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 20
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "20ede448_e289da21",
         "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
         "patchSetId": 2
@@ -48,6 +88,121 @@
     },
     {
       "key": {
+        "uuid": "e05591c8_9ba87738",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-22T03:28:36Z",
+      "side": 1,
+      "message": "I like it when these diagnostics also include what file they were trying to reference.\nso this should incorporate OUTPUT_FILE_NAME_AUDIO somewhere in the message.",
+      "range": {
+        "startLine": 64,
+        "startChar": 51,
+        "endLine": 64,
+        "endChar": 91
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01e35545_6feecb3f",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-22T03:28:36Z",
+      "side": 1,
+      "message": "wrong message.\nwe\u0027ve already opened it.\nwe can\u0027t figure out what file descriptor it is....\n[and remember to include the relevant filename in the diagnostic]",
+      "range": {
+        "startLine": 67,
+        "startChar": 29,
+        "endLine": 67,
+        "endChar": 68
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ebe84c9_d6ec4054",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-22T03:28:36Z",
+      "side": 1,
+      "message": "incorporate the filename in the diagnostic.",
+      "range": {
+        "startLine": 70,
+        "startChar": 38,
+        "endLine": 71,
+        "endChar": 5
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b4aa700_545c8c0c",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-22T03:28:36Z",
+      "side": 1,
+      "message": "include the filename in the diagnostic.",
+      "range": {
+        "startLine": 80,
+        "startChar": 59,
+        "endLine": 80,
+        "endChar": 69
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3d12e88_9962709c",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-22T03:28:36Z",
+      "side": 1,
+      "message": "for all of these here, say which source/format/encoder we\u0027re trying to set it to.\nsince it\u0027s parameterized, we expect there to be multiple calls with different values.\n\nthe motivation is to make it easier to know which flavor went bad rather than just that\nit was bad for some audio source. in my experience, this makes it much faster to diagnose.",
+      "range": {
+        "startLine": 99,
+        "startChar": 48,
+        "endLine": 99,
+        "endChar": 62
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "877df05b_9dede284",
         "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
         "patchSetId": 2
@@ -64,6 +219,29 @@
         "startChar": 0,
         "endLine": 118,
         "endChar": 48
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a670ee33_dd751e9e",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-22T03:28:36Z",
+      "side": 1,
+      "message": "this is a \"sleep for at least\". and we\u0027re subject to the scheduler\u0027s whims as to when we come out of this.\n\nconsider taking a timestamp before \u0026 after the sleep and saving that value as the actual time that we should see when we start comparing expected durations further down in this file.\n\nthe kClipDurationInSec value is fine as a target.",
+      "range": {
+        "startLine": 119,
+        "startChar": 51,
+        "endLine": 119,
+        "endChar": 72
       },
       "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
@@ -94,6 +272,144 @@
     },
     {
       "key": {
+        "uuid": "64799c80_ce3585f8",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-22T03:28:36Z",
+      "side": 1,
+      "message": "we can do better in this diagnostic -- we have a file name that we can include here.",
+      "range": {
+        "startLine": 140,
+        "startChar": 39,
+        "endLine": 140,
+        "endChar": 58
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "456b4bf0_055364b4",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-22T03:28:36Z",
+      "side": 1,
+      "message": "normally i\u0027d say to use stat() on the named file instead of opening it and using fstat.\nbut I see that we have to open the file anyway, so it\u0027s ok here.",
+      "range": {
+        "startLine": 143,
+        "startChar": 20,
+        "endLine": 143,
+        "endChar": 36
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c5f4d7b3_f48258bb",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-22T03:28:36Z",
+      "side": 1,
+      "message": "do we want an assertion here?\nmaybe ASSERT_GT(fileSize,0)\n\nyes an empty file will assert in 152..154 because we won\u0027t get any tracks. but we don\u0027t know whether it got no tracks because it was empty or it was malformed.",
+      "range": {
+        "startLine": 147,
+        "startChar": 26,
+        "endLine": 147,
+        "endChar": 59
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ca6d24e1_4a7d4d85",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-22T03:28:36Z",
+      "side": 1,
+      "message": "for this test, where we only record audio.  can we assert trackCount \u003d\u003d 1?\n\nor is this a framework routine for what we\u0027ll be doing once we figure out how to\ndo audio+video in this test.",
+      "range": {
+        "startLine": 153,
+        "startChar": 12,
+        "endLine": 153,
+        "endChar": 31
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bcc07d1_c5686bbe",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-22T03:28:36Z",
+      "side": 1,
+      "message": "I think we need a variable calculated above that reflects how the scheduler scheduled our thread. -- the bit about how the sleep around line 119 is only \nguaranteed to be \u003e\u003d kClipDuration\n\nmaking this duration information dynamic might even let us tighten up the tolerance.\nBut i\u0027m not sure about that.",
+      "range": {
+        "startLine": 170,
+        "startChar": 40,
+        "endLine": 170,
+        "endChar": 58
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef3e7f85_a1f7aa06",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-22T03:28:36Z",
+      "side": 1,
+      "message": "probably do the same thing about figuring the actual time we were paused based on how long the sleep() actually lasted.",
+      "range": {
+        "startLine": 172,
+        "startChar": 59,
+        "endLine": 172,
+        "endChar": 75
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "975651d6_a9087115",
         "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
         "patchSetId": 2
@@ -110,6 +426,75 @@
         "startChar": 7,
         "endLine": 218,
         "endChar": 24
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cbbefcd2_578ee0ba",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 267,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-22T03:28:36Z",
+      "side": 1,
+      "message": "can we parameterize the # of starts and the # of pauses so that we can\nmake this routine look the same as recordMedia().\n\nor more appropriately.... let\u0027s make recordMedia() take the parameters, since it is\nnot a TEST_X(...) routine.\nand then this routine calls recordMedia appropriately.\nand all the other places that call recordMedia() will need to grow a parameter list.",
+      "range": {
+        "startLine": 265,
+        "startChar": 3,
+        "endLine": 267,
+        "endChar": 5
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87149ac8_fc351dba",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-22T03:28:36Z",
+      "side": 1,
+      "message": "all the comments about calculating the duration (and pause time) dynamically apply even more here.\nthat also gets us out of playing with duration/2 math -- we could just do duration 2 times.\n\nlines 269..294 are where this would apply -- both duration and paused time.",
+      "range": {
+        "startLine": 269,
+        "startChar": 2,
+        "endLine": 271,
+        "endChar": 0
+      },
+      "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c1c9c5d3_b873c497",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-22T03:28:36Z",
+      "side": 1,
+      "message": "I don\u0027t understand what this is adding to the test.\nwe already paused the recorder on line 273.\ni wouldn\u0027t think we need to pause it a bunch more.\n\n[ i see now.... \"MultiStart\"....]\n\nnote that we have an undefined just how long that repeated pause calls will take,\nso this makes the dynamic time measurement important.",
+      "range": {
+        "startLine": 279,
+        "startChar": 4,
+        "endLine": 281,
+        "endChar": 5
       },
       "revId": "dac9573c5c45ed4b280758af2cf3ea77c5617e1e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
