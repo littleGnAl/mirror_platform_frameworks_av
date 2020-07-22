@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "87b8ff90_d44baac3",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-07-22T04:00:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3ad07835_ad7dca3c",
+      "range": {
+        "startLine": 275,
+        "startChar": 4,
+        "endLine": 275,
+        "endChar": 54
+      },
+      "revId": "d539dd5bf0f1218affe7d1840cbaa2e416efe6fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8a8012bd_a1634298",
         "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
         "patchSetId": 4
@@ -116,6 +140,30 @@
       "revId": "d539dd5bf0f1218affe7d1840cbaa2e416efe6fe",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "87e8c5cf_554eea32",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-07-22T04:00:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "971d2ad6_bd631511",
+      "range": {
+        "startLine": 305,
+        "startChar": 16,
+        "endLine": 305,
+        "endChar": 24
+      },
+      "revId": "d539dd5bf0f1218affe7d1840cbaa2e416efe6fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
