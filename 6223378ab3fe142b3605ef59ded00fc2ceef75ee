@@ -16,6 +16,23 @@
       "revId": "6223378ab3fe142b3605ef59ded00fc2ceef75ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a847e7b1_7d6d764c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2020-07-22T19:01:17Z",
+      "side": 1,
+      "message": "Quite hard to review without knowing the details of C2AllocatorIon which is being replaced.\nOne quick thing that would help reviewers if the files could be reformatted using clang-format tool and reposted.\nI\u0027ll go back and learn how C2AllocatorIon worked, before making comments here.",
+      "revId": "6223378ab3fe142b3605ef59ded00fc2ceef75ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
