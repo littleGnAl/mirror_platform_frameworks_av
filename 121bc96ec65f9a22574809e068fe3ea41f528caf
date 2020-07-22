@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "69aa0efd_99fb3585",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 207,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-22T18:05:36Z",
+      "side": 1,
+      "message": "can be in previous line",
+      "range": {
+        "startLine": 207,
+        "startChar": 0,
+        "endLine": 207,
+        "endChar": 24
+      },
+      "revId": "121bc96ec65f9a22574809e068fe3ea41f528caf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "025d4ee8_c71df082",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-22T18:05:36Z",
+      "side": 1,
+      "message": "previous line",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 25
+      },
+      "revId": "121bc96ec65f9a22574809e068fe3ea41f528caf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c17ce04e_3137e76e",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-22T18:05:36Z",
+      "side": 1,
+      "message": "move this to line 286 and add a check for input size being multiple of number of channels * sizeof(short)\n\nioChannelCount and ioFrameSize initialization also will need to move up",
+      "range": {
+        "startLine": 301,
+        "startChar": 1,
+        "endLine": 301,
+        "endChar": 45
+      },
+      "revId": "121bc96ec65f9a22574809e068fe3ea41f528caf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76319d3c_91da6e12",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-22T18:05:36Z",
+      "side": 1,
+      "message": "farOutBuffer isn\u0027t used anywhere",
+      "revId": "121bc96ec65f9a22574809e068fe3ea41f528caf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "368a3649_ed7174a2",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-22T18:05:36Z",
+      "side": 1,
+      "message": "farInBuffer in a different line so that it can be initialized to zero.\naudio_buffer_t farInBuffer{};",
+      "range": {
+        "startLine": 400,
+        "startChar": 46,
+        "endLine": 400,
+        "endChar": 57
+      },
+      "revId": "121bc96ec65f9a22574809e068fe3ea41f528caf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
