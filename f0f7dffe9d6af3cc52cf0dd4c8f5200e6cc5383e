@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "08081dbb_347b00a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1608690
+      },
+      "writtenOn": "2020-07-23T22:48:35Z",
+      "side": 1,
+      "message": "I think the owner who create this native_handle should close it too. Per my understanding, in the sideband case, this handle should be created by OMX when allocate buffer. If this is the case, OMX should close it too in free buffer.",
+      "revId": "f0f7dffe9d6af3cc52cf0dd4c8f5200e6cc5383e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
