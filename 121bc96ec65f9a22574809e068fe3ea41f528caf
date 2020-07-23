@@ -2,6 +2,46 @@
   "comments": [
     {
       "key": {
+        "uuid": "f71bbfe7_3af323ed",
+        "filename": "media/libeffects/preprocessing/tests/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-23T23:46:37Z",
+      "side": 1,
+      "message": "webrtc_legacy is now part of aosp source tree.\nSync to latest aosp/master and remove this include_dirs block",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 6
+      },
+      "revId": "121bc96ec65f9a22574809e068fe3ea41f528caf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3fc83be_567aafbf",
+        "filename": "media/libeffects/preprocessing/tests/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-23T23:46:37Z",
+      "side": 1,
+      "message": "Add the following which exports include dirs needed from webrtc\n\"libwebrtc_audio_preprocessing\",",
+      "revId": "121bc96ec65f9a22574809e068fe3ea41f528caf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "69aa0efd_99fb3585",
         "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
         "patchSetId": 6
