@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d6ac832_24aabce7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-07-24T19:02:44Z",
+      "side": 1,
+      "message": "Small update to reformat changes and my first pass at pushing the properties down into the AllocatorBuf code. \n\nThough after talking with Hridya last night, it seems I probably need to re-add the usage-mapper logic so vendors can provide their own usage -\u003e heap/flags combo (though this sounds suspiciously like what gralloc is supposed to do).",
+      "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
