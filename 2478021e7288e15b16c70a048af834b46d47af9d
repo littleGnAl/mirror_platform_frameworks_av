@@ -16,6 +16,92 @@
       "revId": "2478021e7288e15b16c70a048af834b46d47af9d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "36e40408_080791e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2020-07-24T16:39:46Z",
+      "side": 1,
+      "message": "In general, this looks pretty good. We should chat about this specifically later today or Monday, but I think this looks like a good choice and I don\u0027t have concerns about this being cross-process.\n\nIt looks like there\u0027s also a dump() flow in this library that may also be worth fuzzing once we get this one in.",
+      "revId": "2478021e7288e15b16c70a048af834b46d47af9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "108f931d_8b08e3ba",
+        "filename": "services/mediaanalytics/mediaanalyticsservice_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2020-07-24T16:39:46Z",
+      "side": 1,
+      "message": "nit: Remove this trailing whitespace.",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "2478021e7288e15b16c70a048af834b46d47af9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ad0135a9_278e2967",
+        "filename": "services/mediaanalytics/mediaanalyticsservice_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2020-07-24T16:39:46Z",
+      "side": 1,
+      "message": "We should talk about this. I think we may want to handle this differently. We can talk offline about it.",
+      "range": {
+        "startLine": 102,
+        "startChar": 7,
+        "endLine": 102,
+        "endChar": 15
+      },
+      "revId": "2478021e7288e15b16c70a048af834b46d47af9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4b3341c7_3c4c5edc",
+        "filename": "services/mediaanalytics/mediaanalyticsservice_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2020-07-24T16:39:46Z",
+      "side": 1,
+      "message": "Generally, I\u0027d only call the API a single time per loop through the fuzz target.\n\nThe exception to this would be if calls can modify state in some way that you want to test later. You would want to do it in that case, but only if you\u0027d re-set the state by the end of a successful loop. Retained state makes fuzzing tricky.",
+      "range": {
+        "startLine": 115,
+        "startChar": 2,
+        "endLine": 115,
+        "endChar": 62
+      },
+      "revId": "2478021e7288e15b16c70a048af834b46d47af9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
