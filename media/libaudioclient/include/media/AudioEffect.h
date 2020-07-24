@@ -369,10 +369,10 @@ public:
 
     AudioEffect(const effect_uuid_t *type,
                 const String16& opPackageName,
-                const effect_uuid_t *uuid = NULL,
+                const effect_uuid_t *uuid = nullptr,
                 int32_t priority = 0,
-                effect_callback_t cbf = NULL,
-                void* user = NULL,
+                effect_callback_t cbf = nullptr,
+                void* user = nullptr,
                 audio_session_t sessionId = AUDIO_SESSION_OUTPUT_MIX,
                 audio_io_handle_t io = AUDIO_IO_HANDLE_NONE,
                 const AudioDeviceTypeAddr& device = {}
@@ -383,37 +383,22 @@ public:
      */
     AudioEffect(const char *typeStr,
                     const String16& opPackageName,
-                    const char *uuidStr = NULL,
+                    const char *uuidStr = nullptr,
                     int32_t priority = 0,
-                    effect_callback_t cbf = NULL,
-                    void* user = NULL,
+                    effect_callback_t cbf = nullptr,
+                    void* user = nullptr,
                     audio_session_t sessionId = AUDIO_SESSION_OUTPUT_MIX,
                     audio_io_handle_t io = AUDIO_IO_HANDLE_NONE,
                     const AudioDeviceTypeAddr& device = {}
                     );
 
+    void onFirstRef() override;
+
     /* Terminates the AudioEffect and unregisters it from AudioFlinger.
      * The effect engine is also destroyed if this AudioEffect was the last controlling
      * the engine.
      */
-                        ~AudioEffect();
-
-    /* Initialize an uninitialized AudioEffect.
-    * Returned status (from utils/Errors.h) can be:
-    *  - NO_ERROR or ALREADY_EXISTS: successful initialization
-    *  - INVALID_OPERATION: AudioEffect is already initialized
-    *  - BAD_VALUE: invalid parameter
-    *  - NO_INIT: audio flinger or audio hardware not initialized
-    * */
-            status_t    set(const effect_uuid_t *type,
-                            const effect_uuid_t *uuid = NULL,
-                            int32_t priority = 0,
-                            effect_callback_t cbf = NULL,
-                            void* user = NULL,
-                            audio_session_t sessionId = AUDIO_SESSION_OUTPUT_MIX,
-                            audio_io_handle_t io = AUDIO_IO_HANDLE_NONE,
-                            const AudioDeviceTypeAddr& device = {}
-                            );
+    ~AudioEffect();
 
     /* Result of constructing the AudioEffect. This must be checked
      * before using any AudioEffect API.
@@ -424,7 +409,7 @@ public:
      *  - NO_INIT:     the effect creation failed.
      *
      */
-            status_t    initCheck() const;
+    status_t initCheck() const;
 
 
     /* Returns the unique effect Id for the controlled effect engine. This ID is unique
@@ -432,15 +417,15 @@ public:
      * the effect to an AudioTrack or MediaPlayer.
      *
      */
-            int32_t     id() const { return mId; }
+    int32_t id() const { return mId; }
 
     /* Returns a descriptor for the effect (see effect_descriptor_t in audio_effect.h).
      */
-            effect_descriptor_t descriptor() const;
+    effect_descriptor_t descriptor() const;
 
     /* Returns effect control priority of this AudioEffect object.
      */
-            int32_t     priority() const { return mPriority; }
+    int32_t priority() const { return mPriority; }
 
 
     /* Enables or disables the effect engine.
@@ -453,8 +438,8 @@ public:
      *  - INVALID_OPERATION: the application does not have control of the effect engine or the
      *  effect is already in the requested state.
      */
-    virtual status_t    setEnabled(bool enabled);
-            bool        getEnabled() const;
+    virtual status_t setEnabled(bool enabled);
+    bool getEnabled() const;
 
     /* Sets a parameter value.
      *
@@ -467,7 +452,7 @@ public:
      *  - BAD_VALUE: invalid parameter identifier or value.
      *  - DEAD_OBJECT: the effect engine has been deleted.
      */
-     virtual status_t   setParameter(effect_param_t *param);
+    virtual status_t setParameter(effect_param_t *param);
 
     /* Prepare a new parameter value that will be set by next call to
      * setParameterCommit(). This method can be used to set multiple parameters
@@ -484,21 +469,21 @@ public:
      *  - NO_MEMORY: no more space available in shared memory used for deferred parameter
      *  setting.
      */
-     virtual status_t   setParameterDeferred(effect_param_t *param);
+    virtual status_t setParameterDeferred(effect_param_t *param);
 
-     /* Commit all parameter values previously prepared by setParameterDeferred().
-      *
-      * Parameters:
-      *     none
-      *
-      * Returned status (from utils/Errors.h) can be:
-      *  - NO_ERROR: successful operation.
-      *  - INVALID_OPERATION: No new parameter values ready for commit.
-      *  - BAD_VALUE: invalid parameter identifier or value: there is no indication
-      *     as to which of the parameters caused this error.
-      *  - DEAD_OBJECT: the effect engine has been deleted.
-      */
-     virtual status_t   setParameterCommit();
+    /* Commit all parameter values previously prepared by setParameterDeferred().
+     *
+     * Parameters:
+     *     none
+     *
+     * Returned status (from utils/Errors.h) can be:
+     *  - NO_ERROR: successful operation.
+     *  - INVALID_OPERATION: No new parameter values ready for commit.
+     *  - BAD_VALUE: invalid parameter identifier or value: there is no indication
+     *     as to which of the parameters caused this error.
+     *  - DEAD_OBJECT: the effect engine has been deleted.
+     */
+    virtual status_t setParameterCommit();
 
     /* Gets a parameter value.
      *
@@ -512,61 +497,77 @@ public:
      *  - BAD_VALUE: invalid parameter identifier.
      *  - DEAD_OBJECT: the effect engine has been deleted.
      */
-     virtual status_t   getParameter(effect_param_t *param);
+    virtual status_t getParameter(effect_param_t *param);
 
      /* Sends a command and receives a response to/from effect engine.
       *     See audio_effect.h for details on effect command() function, valid command codes
       *     and formats.
       */
-     virtual status_t command(uint32_t cmdCode,
+    virtual status_t command(uint32_t cmdCode,
                               uint32_t cmdSize,
                               void *cmdData,
                               uint32_t *replySize,
                               void *replyData);
 
+    /*
+     * Utility functions.
+     */
 
-     /*
-      * Utility functions.
-      */
+    /* Converts the string passed as first argument to the effect_uuid_t
+     * pointed to by second argument
+     */
+    static status_t stringToGuid(const char *str, effect_uuid_t *guid);
+ 
+    /* Converts the effect_uuid_t pointed to by first argument to the
+     * string passed as second argument
+     */
+    static status_t guidToString(const effect_uuid_t *guid, char *str, size_t maxLen);
 
-     /* Converts the string passed as first argument to the effect_uuid_t
-      * pointed to by second argument
-      */
-     static status_t stringToGuid(const char *str, effect_uuid_t *guid);
-     /* Converts the effect_uuid_t pointed to by first argument to the
-      * string passed as second argument
-      */
-     static status_t guidToString(const effect_uuid_t *guid, char *str, size_t maxLen);
-
-     // kMaxPreProcessing is a reasonable value for the maximum number of preprocessing effects
-     // that can be applied simultaneously.
-     static const uint32_t kMaxPreProcessing = 10;
+    // kMaxPreProcessing is a reasonable value for the maximum number of preprocessing effects
+    // that can be applied simultaneously.
+    static const uint32_t kMaxPreProcessing = 10;
 
 protected:
-     bool                    mEnabled;           // enable state
-     audio_session_t         mSessionId;         // audio session ID
-     int32_t                 mPriority;          // priority for effect control
-     status_t                mStatus;            // effect status
-     effect_callback_t       mCbf;               // callback function for status, control and
-                                                 // parameter changes notifications
-     void*                   mUserData;          // client context for callback function
-     effect_descriptor_t     mDescriptor;        // effect descriptor
-     int32_t                 mId;                // system wide unique effect engine instance ID
-     Mutex                   mLock;              // Mutex for mEnabled access
-     Mutex                   mConstructLock;     // Mutex for integrality construction
+    bool                    mEnabled;           // enable state
+    audio_session_t         mSessionId;         // audio session ID
+    int32_t                 mPriority;          // priority for effect control
+    status_t                mStatus;            // effect status
+    effect_callback_t       mCbf;               // callback function for status, control and
+                                                // parameter changes notifications
+    void*                   mUserData;          // client context for callback function
+    effect_descriptor_t     mDescriptor;        // effect descriptor
+    int32_t                 mId;                // system wide unique effect engine instance ID
+    Mutex                   mLock;              // Mutex for mEnabled access
+    String16                mOpPackageName;     // The package name used for app op checks.
 
-     String16                mOpPackageName;     // The package name used for app op checks.
-
-     // IEffectClient
-     virtual void controlStatusChanged(bool controlGranted);
-     virtual void enableStatusChanged(bool enabled);
-     virtual void commandExecuted(uint32_t cmdCode,
-             uint32_t cmdSize,
-             void *pCmdData,
-             uint32_t replySize,
-             void *pReplyData);
+    // IEffectClient
+    virtual void controlStatusChanged(bool controlGranted);
+    virtual void enableStatusChanged(bool enabled);
+    virtual void commandExecuted(uint32_t cmdCode,
+            uint32_t cmdSize,
+            void *pCmdData,
+            uint32_t replySize,
+            void *pReplyData);
 
 private:
+
+    /* Initialize an uninitialized AudioEffect.
+    * Returned status (from utils/Errors.h) can be:
+    *  - NO_ERROR or ALREADY_EXISTS: successful initialization
+    *  - INVALID_OPERATION: AudioEffect is already initialized
+    *  - BAD_VALUE: invalid parameter
+    *  - NO_INIT: audio flinger or audio hardware not initialized
+    * */
+    status_t set(const effect_uuid_t *type,
+                    const effect_uuid_t *uuid = nullptr,
+                    int32_t priority = 0,
+                    effect_callback_t cbf = nullptr,
+                    void* user = nullptr,
+                    audio_session_t sessionId = AUDIO_SESSION_OUTPUT_MIX,
+                    audio_io_handle_t io = AUDIO_IO_HANDLE_NONE,
+                    const AudioDeviceTypeAddr& device = {}
+                    );
+
 
      // Implements the IEffectClient interface
     class EffectClient :
@@ -579,23 +580,13 @@ private:
         // IEffectClient
         virtual void controlStatusChanged(bool controlGranted) {
             sp<AudioEffect> effect = mEffect.promote();
-            if (effect != 0) {
-                {
-                    // Got the mConstructLock means the construction of AudioEffect
-                    // has finished, we should release the mConstructLock immediately.
-                    AutoMutex lock(effect->mConstructLock);
-                }
+            if (effect != nullptr) {
                 effect->controlStatusChanged(controlGranted);
             }
         }
         virtual void enableStatusChanged(bool enabled) {
             sp<AudioEffect> effect = mEffect.promote();
-            if (effect != 0) {
-                {
-                    // Got the mConstructLock means the construction of AudioEffect
-                    // has finished, we should release the mConstructLock immediately.
-                    AutoMutex lock(effect->mConstructLock);
-                }
+            if (effect != nullptr) {
                 effect->enableStatusChanged(enabled);
             }
         }
@@ -605,12 +596,7 @@ private:
                                      uint32_t replySize,
                                      void *pReplyData) {
             sp<AudioEffect> effect = mEffect.promote();
-            if (effect != 0) {
-                {
-                    // Got the mConstructLock means the construction of AudioEffect
-                    // has finished, we should release the mConstructLock immediately.
-                    AutoMutex lock(effect->mConstructLock);
-                }
+            if (effect != nullptr) {
                 effect->commandExecuted(
                     cmdCode, cmdSize, pCmdData, replySize, pReplyData);
             }
@@ -619,18 +605,36 @@ private:
         // IBinder::DeathRecipient
         virtual void binderDied(const wp<IBinder>& /*who*/) {
             sp<AudioEffect> effect = mEffect.promote();
-            if (effect != 0) {
-                {
-                    // Got the mConstructLock means the construction of AudioEffect
-                    // has finished, we should release the mConstructLock immediately.
-                    AutoMutex lock(effect->mConstructLock);
-                }
+            if (effect != nullptr) {
                 effect->binderDied();
             }
         }
 
     private:
         wp<AudioEffect> mEffect;
+    };
+
+    struct InitParams {
+        int32_t priority;
+        effect_callback_t cbf;
+        void *user;
+        audio_session_t sessionId;
+        audio_io_handle_t io;
+        const AudioDeviceTypeAddr& device
+        std::unique_ptr<effect_uuid_t> type;
+        std::unique_ptr<effect_uuid_t> uuid;
+
+        InitParams(const effect_uuid_t *_type, const effect_uuid_t *_uuid, int32_t _priority,
+                effect_callback_t _cbf, void *_user, audio_session_t _sessionId,
+                audio_io_handle_t _io, const AudioDeviceTypeAddr& _device) : priority(_priority), cbf(_cbf), user(_user),
+                    sessionId(_sessionId), io(_io), device(_device) {
+            if (_type != nullptr) {
+                type = std::make_unique<effect_uuid_t>(*_type)
+            }
+            if (_uuid != nullptr) {
+                uuid = std::make_unique<effect_uuid_t>(*_uuid)
+            }
+        }
     };
 
     void binderDied();
@@ -640,6 +644,7 @@ private:
     sp<IMemory>             mCblkMemory;        // shared memory for deferred parameter setting
     effect_param_cblk_t*    mCblk;              // control block for deferred parameter setting
     pid_t                   mClientPid;
+    std::unique_ptr<InitParams> mParams;
 };
 
 
