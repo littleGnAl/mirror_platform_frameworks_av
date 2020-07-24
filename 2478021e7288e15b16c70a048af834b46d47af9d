@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "99faeffe_934901b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1712067
+      },
+      "writtenOn": "2020-07-24T01:37:04Z",
+      "side": 1,
+      "message": "Hi Kris, this is the fuzzer for MediaAnalyticsService. It is not ready to be merged. \n\nOne problem is that I don\u0027t know a good way to put the fuzzer in a separate location, as I need to include MediaAnalyticsService.cpp and its dependencies directly.\n \nFor the problem of API uses caller uid to determine whether caller is trusted, I just realized I can mock the `IPCThreadState::self()-\u003egetCallingUid()` API, but the problem is that, if we call the API as a trusted user and provide a random input to cause a crash, can it ready be considered as a bug? I\u0027ve emailed the audio guys about this question, but the response may take some time.\n\nAlso, I tried to serialize the input into parcel and then deserialize it just as what binder does, but the deserialize method terminates the fuzzer without causing a crash. Do you have any idea about it?",
+      "revId": "2478021e7288e15b16c70a048af834b46d47af9d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
