@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8f9b8b98_9721f260",
+        "filename": "media/libaudioclient/AudioEffect.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1102879
+      },
+      "writtenOn": "2020-07-25T13:57:31Z",
+      "side": 0,
+      "message": "From my observation, the root cause is becase here `this`(that is Visualizer) is exposed to mIEffectClient which is a BBinder instance too, then mIeffectClient will be passed to audioserver process through the audioFlinger-\u003ecreateEffec() binder ipc.\n\nBefore `this` finishes its construction, audioserver could call back into the current process.\n\nBecause no one is holding a reference to `this` yet, the reference count (see RefBase.cpp) will be messes up when the current process responses to the binder call from audioserver, see EffectClient::controlStatusChanged and the other binder interfaces.\n\n\n\"// Other more specific restrictions for wp\u003c\u003e and sp\u003c\u003e:\n \n// Do not construct a strong pointer to \"this\" in an object\u0027s constructor.\n// The onFirstRef() callback would be made on an incompletely constructed\n// object.\n// Construction of a weak pointer to \"this\" in an object\u0027s constructor is also\n// discouraged. But the implementation was recently changed so that, in the\n// absence of extendObjectLifetime() calls, weak pointers no longer impact\n// object lifetime, and hence this no longer risks premature deallocation,\n// and hence usually works correctly.\n \n// Such strong or weak pointers can be safely created in the RefBase onFirstRef()\n// callback.\n\", quoted from RefBase.cpp",
+      "range": {
+        "startLine": 139,
+        "startChar": 2,
+        "endLine": 140,
+        "endChar": 57
+      },
+      "revId": "3fd4dee8960cd6bccbb21227d43dfef839d33875",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
