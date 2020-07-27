@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee8c4814_ee6d6fa1",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-27T16:41:34Z",
+      "side": 1,
+      "message": "this isn\u0027t a printf() format string; the %s probably doesn\u0027t help here.",
+      "range": {
+        "startLine": 66,
+        "startChar": 74,
+        "endLine": 66,
+        "endChar": 77
+      },
+      "revId": "52bbf89845001074a86c43869405fdf1bc8bfd00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1942f87a_25070a75",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-27T16:41:34Z",
+      "side": 1,
+      "message": "the change was consistent...\n\nlooks like all the changes to add the file name added a \"%s\" here.\nand I don\u0027t think any of them need it.",
+      "range": {
+        "startLine": 70,
+        "startChar": 85,
+        "endLine": 70,
+        "endChar": 89
+      },
+      "revId": "52bbf89845001074a86c43869405fdf1bc8bfd00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3756ae5d_981073f5",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-27T16:41:34Z",
+      "side": 1,
+      "message": "if we say \"mExpectedDurationInMs +\u003d .....\" it highlights that it\u0027s incremental.",
+      "range": {
+        "startLine": 159,
+        "startChar": 7,
+        "endLine": 159,
+        "endChar": 55
+      },
+      "revId": "52bbf89845001074a86c43869405fdf1bc8bfd00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2b4cd352_5114f871",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-27T16:41:34Z",
+      "side": 1,
+      "message": "the test, looking for \u003d\u003d1 , says that it will fail for 2 tracks. which we will report\nas \"no tracks\" here.\n\nhow about:  \"expected 1 track, saw\" \u003c\u003c trackCount",
+      "range": {
+        "startLine": 203,
+        "startChar": 32,
+        "endLine": 203,
+        "endChar": 45
+      },
+      "revId": "52bbf89845001074a86c43869405fdf1bc8bfd00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ffcfc5c1_058ae379",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-27T16:41:34Z",
+      "side": 1,
+      "message": "check this logic.\n\nif I read lines 130..160 correctly, mExpectedDurationInMs will be the playing time and will\nnot include the pause time.  i don\u0027t think that the pause time is being added into that total, so it doesn\u0027t make sense for us to subtract it out.",
+      "range": {
+        "startLine": 213,
+        "startChar": 35,
+        "endLine": 213,
+        "endChar": 86
+      },
+      "revId": "52bbf89845001074a86c43869405fdf1bc8bfd00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c4a5d152_d791eecd",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-27T16:41:34Z",
+      "side": 1,
+      "message": "always good to print expected and actual here.\nespecially as we figure out whether the pause timing stuff on lines 212/213 is correct.",
+      "range": {
+        "startLine": 218,
+        "startChar": 59,
+        "endLine": 218,
+        "endChar": 78
+      },
+      "revId": "52bbf89845001074a86c43869405fdf1bc8bfd00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
