@@ -238,7 +238,9 @@ private:
 
     void feedInputBufferIfAvailable();
     void feedInputBufferIfAvailableInternal();
-    status_t queueInputBufferInternal(sp<MediaCodecBuffer> buffer);
+    status_t queueInputBufferInternal(sp<MediaCodecBuffer> buffer,
+                                      std::shared_ptr<C2LinearBlock> encryptedBlock = nullptr,
+                                      size_t blockSize = 0);
     bool handleWork(
             std::unique_ptr<C2Work> work, const sp<AMessage> &outputFormat,
             const C2StreamInitDataInfo::output *initData);

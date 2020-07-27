@@ -151,6 +151,7 @@ enum C2ParamIndexKind : C2Param::type_index_t {
 
     /* protected content */
     kParamIndexSecureMode,
+    kParamIndexEncryptedInfoBuffer,
 
     // deprecated
     kParamIndexDelayRequest = kParamIndexDelay | C2Param::CoreIndex::IS_REQUEST_FLAG,
@@ -1147,6 +1148,9 @@ C2ENUM(C2Config::secure_mode_t, uint32_t,
 typedef C2GlobalParam<C2Tuning, C2SimpleValueStruct<C2Config::secure_mode_t>, kParamIndexSecureMode>
         C2SecureModeTuning;
 constexpr char C2_PARAMKEY_SECURE_MODE[] = "algo.secure-mode";
+
+typedef C2GlobalParam<C2Info, C2Int32Value, kParamIndexEncryptedInfoBuffer>
+        C2EncryptedInfoBuffer;
 
 /* ===================================== ENCODER COMPONENTS ===================================== */
 

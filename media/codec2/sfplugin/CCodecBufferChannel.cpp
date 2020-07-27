@@ -188,7 +188,10 @@ status_t CCodecBufferChannel::signalEndOfInputStream() {
     return mInputSurface->signalEndOfInputStream();
 }
 
-status_t CCodecBufferChannel::queueInputBufferInternal(sp<MediaCodecBuffer> buffer) {
+status_t CCodecBufferChannel::queueInputBufferInternal(
+        sp<MediaCodecBuffer> buffer,
+        std::shared_ptr<C2LinearBlock> encryptedBlock,
+        size_t blockSize) {
     int64_t timeUs;
     CHECK(buffer->meta()->findInt64("timeUs", &timeUs));
 
@@ -246,6 +249,11 @@ status_t CCodecBufferChannel::queueInputBufferInternal(sp<MediaCodecBuffer> buff
             }
         }
         work->input.buffers.push_back(c2buffer);
+        if (encryptedBlock) {
+            work->input.infoBuffers.emplace_back(C2InfoBuffer::CreateLinearBuffer(
+                    kParamIndexEncryptedInfoBuffer,
+                    encryptedBlock->share(0, blockSize, C2Fence())));
+        }
         queuedBuffers.push_back(c2buffer);
     } else if (eos) {
         flags |= C2FrameData::FLAG_END_OF_STREAM;
@@ -514,6 +522,38 @@ status_t CCodecBufferChannel::queueSecureInputBuffer(
     }
     sp<EncryptedLinearBlockBuffer> encryptedBuffer((EncryptedLinearBlockBuffer *)buffer.get());
 
+    std::shared_ptr<C2LinearBlock> block;
+    size_t allocSize = buffer->size();
+    size_t bufferSize = 0;
+    c2_status_t blockRes = C2_OK;
+    bool copied = false;
+    {
+        static const C2MemoryUsage kDefaultReadWriteUsage{
+            C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE};
+        constexpr int kAllocGranule0 = 1024*64;
+        constexpr int kAllocGranule1 = 1024*1024;
+        std::shared_ptr<C2BlockPool> pool = mBlockPools.lock()->inputPool;
+        if (allocSize <= kAllocGranule1) {
+            bufferSize = ((allocSize + kAllocGranule0 - 1) / kAllocGranule0)*kAllocGranule0;
+        } else {
+            bufferSize = ((allocSize  + kAllocGranule1 - 1) / kAllocGranule1)*kAllocGranule1;
+        }
+        blockRes = pool->fetchLinearBlock(
+                bufferSize, kDefaultReadWriteUsage, &block);
+    }
+
+    if (blockRes == C2_OK) {
+        C2WriteView view = block->map().get();
+        if (view.error() == C2_OK && view.size() == bufferSize) {
+            copied = true;
+            memcpy(view.data(), buffer->data(), allocSize);
+        }
+    }
+
+    if (copied == false) {
+        block.reset();
+    }
+
     ssize_t result = -1;
     ssize_t codecDataOffset = 0;
     if (numSubSamples == 1
@@ -605,7 +645,8 @@ status_t CCodecBufferChannel::queueSecureInputBuffer(
     }
 
     buffer->setRange(codecDataOffset, result - codecDataOffset);
-    return queueInputBufferInternal(buffer);
+
+    return queueInputBufferInternal(buffer, block, bufferSize);
 }
 
 void CCodecBufferChannel::feedInputBufferIfAvailable() {
