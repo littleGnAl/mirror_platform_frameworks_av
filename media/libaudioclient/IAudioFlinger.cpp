@@ -998,7 +998,7 @@ status_t BnAudioFlinger::onTransact(
             break;
     }
 
-    // Whitelist of relevant events to trigger log merging.
+    // Allowlist of relevant events to trigger log merging.
     // Log merging should activate during audio activity of any kind. This are considered the
     // most relevant events.
     // TODO should select more wisely the items from the list
