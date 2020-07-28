@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ccfb33e0_a0c82c15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-28T16:30:42Z",
+      "side": 1,
+      "message": "i think addressing these last two comments should be all we need.",
+      "revId": "0a12e153015928ab264a4d2c85cbb829f37131ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5038b4b6_3a668ec6",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-28T16:30:42Z",
+      "side": 1,
+      "message": "if my clip runs long -- let\u0027s say its 10 seconds instead of 4.\ndiff will be 4sec - 10sec \u003d\u003d -6 sec   (or -6 000 000 us)\nwhich will always be LE our tolerance.\n\ni think we neeed an abs() for diff, to make sure we have a positive number.",
+      "range": {
+        "startLine": 212,
+        "startChar": 8,
+        "endLine": 213,
+        "endChar": 44
+      },
+      "revId": "0a12e153015928ab264a4d2c85cbb829f37131ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8b356b9e_c80984a0",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-28T16:30:42Z",
+      "side": 1,
+      "message": "for even more completeness about diagnostics -- including actual/expected times here lets us\nknow whether the recording was short or long.",
+      "range": {
+        "startLine": 214,
+        "startChar": 36,
+        "endLine": 214,
+        "endChar": 60
+      },
+      "revId": "0a12e153015928ab264a4d2c85cbb829f37131ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
