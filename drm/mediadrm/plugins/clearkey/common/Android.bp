@@ -35,4 +35,24 @@ cc_library_static {
         integer_overflow: true,
     },
 }
+cc_library_static {
+    name: "libclearkeycommonfuzz",
+
+    srcs: [
+        "ClearKeyUUID.cpp",
+        "Utils.cpp",
+    ],
+
+    cflags: ["-Wall", "-Werror"],
+
+    include_dirs: ["frameworks/av/include"],
+
+    shared_libs: ["libutils"],
+
+    export_include_dirs: ["include"],
+
+    sanitize: {
+        integer_overflow: true,
+    },
+}
 
