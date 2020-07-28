@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "7f303ff7_ae988082",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-07-28T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5038b4b6_3a668ec6",
+      "range": {
+        "startLine": 212,
+        "startChar": 8,
+        "endLine": 213,
+        "endChar": 44
+      },
+      "revId": "0a12e153015928ab264a4d2c85cbb829f37131ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8b356b9e_c80984a0",
         "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
         "patchSetId": 4
@@ -62,6 +86,30 @@
       "revId": "0a12e153015928ab264a4d2c85cbb829f37131ef",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef8eaeaf_c68b0984",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/StagefrightRecorderTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2020-07-28T18:40:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b356b9e_c80984a0",
+      "range": {
+        "startLine": 214,
+        "startChar": 36,
+        "endLine": 214,
+        "endChar": 60
+      },
+      "revId": "0a12e153015928ab264a4d2c85cbb829f37131ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
