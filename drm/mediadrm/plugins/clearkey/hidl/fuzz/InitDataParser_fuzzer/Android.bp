@@ -1,0 +1,23 @@
+cc_fuzz {
+    name: "InitDataParser_fuzzer",
+    srcs: [
+        "InitDataParser_fuzzer.cpp",
+    ],
+    static_libs: [
+        "clearkey_service_defaults_fuzz",
+        "libclearkeycommonfuzz",
+    ],
+    shared_libs: [
+        "android.hardware.drm@1.2",
+        "libutils",
+    ],
+    cflags: [
+        "-fprofile-arcs",
+        "-ftest-coverage",
+    ],
+    ldflags: [
+        "-fprofile-arcs",
+        "-ftest-coverage",
+    ],
+}
+
