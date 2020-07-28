@@ -33,6 +33,24 @@
       "revId": "ce4b13f563b17d1cc7f430258398c33544e21499",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4ee77ed_06e33640",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-28T21:09:15Z",
+      "side": 1,
+      "message": "Saketh,\nThe above CL is now merged as part of https://android-review.googlesource.com/c/platform/frameworks/av/+/1373136.\nCan you please rebase this and make required changes?",
+      "parentUuid": "5558210b_a604e1ee",
+      "revId": "ce4b13f563b17d1cc7f430258398c33544e21499",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
