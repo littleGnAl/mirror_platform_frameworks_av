@@ -218,6 +218,7 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexDrcBoostFactor, // drc, float (0-1)
     kParamIndexDrcAttenuationFactor, // drc, float (0-1)
     kParamIndexDrcEffectType, // drc, enum
+    kParamIndexPcmBigEndian,
 
     /* ============================== platform-defined parameters ============================== */
 
@@ -1850,6 +1851,9 @@ typedef C2StreamParam<C2Info, C2SimpleValueStruct<C2Config::pcm_encoding_t>, kPa
         C2StreamPcmEncodingInfo;
 constexpr char C2_PARAMKEY_PCM_ENCODING[] = "raw.pcm-encoding";
 constexpr char C2_PARAMKEY_CODED_PCM_ENCODING[] = "coded.pcm-encoding";
+
+typedef C2StreamParam<C2Info, C2Uint32Value, kParamIndexPcmBigEndian> C2StreamPcmBigEndian;
+constexpr char C2_PARAMKEY_PCM_BIG_ENDIAN[] = "raw.pcm-big-endian";
 
 /**
  * AAC SBR Mode. Used during encoding.
