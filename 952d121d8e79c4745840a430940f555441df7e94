@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0c499daf_83708157",
+        "filename": "media/codec2/components/aom/C2SoftAomDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 507,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-28T19:42:25Z",
+      "side": 1,
+      "message": "nit: dstY, dstU and dstV for consistency with other arguments\n\nand please split this line into two to keep number of chars in a line to under 100.",
+      "range": {
+        "startLine": 507,
+        "startChar": 8,
+        "endLine": 507,
+        "endChar": 54
+      },
+      "revId": "952d121d8e79c4745840a430940f555441df7e94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "414caa50_23d16a03",
+        "filename": "media/codec2/components/aom/C2SoftAomDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-28T19:42:25Z",
+      "side": 1,
+      "message": "Please remove this line and similar commented lines below",
+      "revId": "952d121d8e79c4745840a430940f555441df7e94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0042afb_e4de58d7",
+        "filename": "media/codec2/components/aom/C2SoftAomDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 699,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-28T19:42:25Z",
+      "side": 1,
+      "message": "nit: dstY, dstU and dstV for consistency",
+      "range": {
+        "startLine": 697,
+        "startChar": 1,
+        "endLine": 699,
+        "endChar": 81
+      },
+      "revId": "952d121d8e79c4745840a430940f555441df7e94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bfe3e3e_a5107c53",
+        "filename": "media/codec2/components/aom/C2SoftAomDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-28T19:42:25Z",
+      "side": 1,
+      "message": "looks like this also needs to be updated to pass dstY, dstU and dstV",
+      "range": {
+        "startLine": 718,
+        "startChar": 12,
+        "endLine": 718,
+        "endChar": 47
+      },
+      "revId": "952d121d8e79c4745840a430940f555441df7e94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
