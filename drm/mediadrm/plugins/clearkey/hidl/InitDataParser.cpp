@@ -85,6 +85,10 @@ Status InitDataParser::parse(const std::vector<uint8_t>& initData,
 
 Status InitDataParser::parsePssh(const std::vector<uint8_t>& initData,
         std::vector<const uint8_t*>* keyIds) {
+    if (initData.size() == 0) {
+        return Status::ERROR_DRM_CANNOT_HANDLE;
+    }
+
     size_t readPosition = 0;
 
     // Validate size field
