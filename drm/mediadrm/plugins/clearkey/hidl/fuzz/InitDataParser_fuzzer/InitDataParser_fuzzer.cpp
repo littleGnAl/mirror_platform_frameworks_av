@@ -16,7 +16,7 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
   else {
     initDataSize = fuzzed_data.ConsumeIntegral<uint16_t>();
     initDataSize = std::max(initDataSize, (uint16_t)1);
-    // Vector size of 0 will cause a crash.  This is a known bug.
+    // Vector size of 0 will cause a crash.
  }
 
   // insert size field into initData as uint8_t's
