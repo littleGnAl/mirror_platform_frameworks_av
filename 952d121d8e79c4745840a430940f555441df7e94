@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "c4473dfa_c8e7a1b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-29T19:16:24Z",
+      "side": 1,
+      "message": "Ray,\nYes. Similar changes are applicable to mpeg4_h263 and vpx plugins.\n\nReason we don\u0027t see these failures on pixel devices is, gralloc is able to allocate requested height without any additional alignment requirements.\n\nAs the test picks the first codec that supports the given format, I tested this on pixel 3 by ordering c2.android decoders to be preferred over hardware decoders and confirmed that all the tests pass on pixel 3 with s/w codecs as well.",
+      "parentUuid": "1c9ef744_ea6bf8d3",
+      "revId": "952d121d8e79c4745840a430940f555441df7e94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "0c499daf_83708157",
         "filename": "media/codec2/components/aom/C2SoftAomDec.cpp",
         "patchSetId": 1
