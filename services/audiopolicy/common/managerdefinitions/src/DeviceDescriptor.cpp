@@ -382,7 +382,7 @@ void DeviceVector::dump(String8 *dst, const String8 &tag, int spaces, bool verbo
     }
 }
 
-std::string DeviceVector::toString() const
+std::string DeviceVector::toString(bool isSensitive) const
 {
     if (isEmpty()) {
         return {"AUDIO_DEVICE_NONE"};
@@ -392,7 +392,7 @@ std::string DeviceVector::toString() const
         if (device != *begin()) {
            result += ";";
         }
-        result += device->toString();
+        result += device->toString(isSensitive);
     }
     return result + "}";
 }

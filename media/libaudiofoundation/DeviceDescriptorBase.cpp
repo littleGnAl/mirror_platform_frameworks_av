@@ -105,10 +105,21 @@ void DeviceDescriptorBase::dump(std::string *dst, int spaces, int index,
     AudioPort::dump(dst, spaces, verbose);
 }
 
-std::string DeviceDescriptorBase::toString() const
+std::string DeviceDescriptorBase::toString(bool isSensitive) const
 {
     std::stringstream sstream;
-    sstream << "type:0x" << std::hex << type() << ",@:" << mDeviceTypeAddr.mAddress;
+    sstream << "type:0x" << std::hex << type();
+    // IP and MAC address are sensitive information. Only return device type for devices
+    // having IP or MAC address as address.
+    if (!isSensitive && (getAudioDeviceOutAllA2dpSet().count(type()) != 0
+            || audio_is_a2dp_in_device(type())
+            || getAudioDeviceOutAllScoSet().count(type()) != 0
+            || audio_is_bluetooth_in_sco_device(type())
+            || type() == AUDIO_DEVICE_IN_IP || type() == AUDIO_DEVICE_OUT_IP
+            || audio_is_hearing_aid_out_device(type()))) {
+        return sstream.str();
+    }
+    sstream << ",@:" << mDeviceTypeAddr.mAddress;
     return sstream.str();
 }
 

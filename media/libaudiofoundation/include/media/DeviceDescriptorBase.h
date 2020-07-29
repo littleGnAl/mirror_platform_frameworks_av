@@ -58,7 +58,14 @@ public:
     void dump(std::string *dst, int spaces, int index,
               const char* extraInfo = nullptr, bool verbose = true) const;
     void log() const;
-    std::string toString() const;
+
+    /**
+     * Return a string to describe the DeviceDescriptor.
+     *
+     * @param isSensitive sensitive information will be added when it is true.
+     * @return a string that can be used to describe the DeviceDescriptor.
+     */
+    std::string toString(bool isSensitive = false) const;
 
     bool equals(const sp<DeviceDescriptorBase>& other) const;
 

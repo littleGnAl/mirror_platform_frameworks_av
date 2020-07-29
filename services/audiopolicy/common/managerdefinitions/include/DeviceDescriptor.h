@@ -244,7 +244,9 @@ public:
         return String8("");
     }
 
-    std::string toString() const;
+    // Return a string to describe the DeviceVector. The sensitive information will only be
+    // added to the string if isSensitive is true.
+    std::string toString(bool isSensitive = false) const;
 
     void dump(String8 *dst, const String8 &tag, int spaces = 0, bool verbose = true) const;
 
