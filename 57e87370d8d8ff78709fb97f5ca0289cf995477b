@@ -1,0 +1,188 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a53d4cae_f8c94215",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 557,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:24:52Z",
+      "side": 1,
+      "message": "as i understand it, we\u0027re invoking this routine with various combinations of bad parameters\nand good parameters.  -- the audio source, the file descriptor may be bad, etc.\n\nas structured.. if we return here at line 556, we don\u0027t know if that addWriterSource() failed because we handed it an invalid source param, or if addWriterSource is just broken and always returns a failure indication.\n\nI think that here and the early return at line 563 both need to know whether the input is\nexpected to fail in that way.\nso we have to pass in two extra booleans that flag \"should I be returning at line 555\" and \"should I be returning at line 563\".",
+      "range": {
+        "startLine": 554,
+        "startChar": 4,
+        "endLine": 557,
+        "endChar": 5
+      },
+      "revId": "57e87370d8d8ff78709fb97f5ca0289cf995477b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02460533_1af6d71a",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:24:52Z",
+      "side": 1,
+      "message": "i like all of these get\u003c\u003e invocations up at the top of the routine.\n\nit\u0027s one of the places where I disobey my usual \"limit the scope of a variable to what is needed\" guidelines.",
+      "range": {
+        "startLine": 593,
+        "startChar": 17,
+        "endLine": 593,
+        "endChar": 39
+      },
+      "revId": "57e87370d8d8ff78709fb97f5ca0289cf995477b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a2850ce6_292ebcbd",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:24:52Z",
+      "side": 1,
+      "message": "this routine may need the same \"which exit path do I expect to take\" modifications that i suggested for the routine just above this one.",
+      "range": {
+        "startLine": 603,
+        "startChar": 4,
+        "endLine": 606,
+        "endChar": 5
+      },
+      "revId": "57e87370d8d8ff78709fb97f5ca0289cf995477b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "494c3d3b_6237365b",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 620,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:24:52Z",
+      "side": 1,
+      "message": "we haven\u0027t touched status since line 615; so we\u0027re missing out on knowing if\n(1) the stop() succeeded\n(2) the dump() succeeded.",
+      "range": {
+        "startLine": 620,
+        "startChar": 15,
+        "endLine": 620,
+        "endChar": 35
+      },
+      "revId": "57e87370d8d8ff78709fb97f5ca0289cf995477b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aa6c3cb3_1d78591d",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 644,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:24:52Z",
+      "side": 1,
+      "message": "to the top.",
+      "range": {
+        "startLine": 644,
+        "startChar": 19,
+        "endLine": 644,
+        "endChar": 30
+      },
+      "revId": "57e87370d8d8ff78709fb97f5ca0289cf995477b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2abbbf8c_342c7707",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 658,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:24:52Z",
+      "side": 1,
+      "message": "i think these all return status_t;\nwe should check the return code.",
+      "range": {
+        "startLine": 656,
+        "startChar": 4,
+        "endLine": 658,
+        "endChar": 10
+      },
+      "revId": "57e87370d8d8ff78709fb97f5ca0289cf995477b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0b6c01f5_cd1263c5",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 667,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:24:52Z",
+      "side": 1,
+      "message": "return code? a status_t perhaps? should be checking it if so.",
+      "range": {
+        "startLine": 667,
+        "startChar": 3,
+        "endLine": 667,
+        "endChar": 11
+      },
+      "revId": "57e87370d8d8ff78709fb97f5ca0289cf995477b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c747312_54130273",
+        "filename": "media/libstagefright/tests/writer/WriterUtility.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:24:52Z",
+      "side": 1,
+      "message": "so units are \"milli-degrees\"  or actually 1/10 of milli-degrees.\n\ncurious why degrees * 10k; is that a specification thing?",
+      "range": {
+        "startLine": 38,
+        "startChar": 34,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "57e87370d8d8ff78709fb97f5ca0289cf995477b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
