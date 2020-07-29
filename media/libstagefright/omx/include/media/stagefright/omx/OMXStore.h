@@ -27,9 +27,9 @@
 
 namespace android {
 
-struct OMXMaster : public OMXPluginBase {
-    OMXMaster();
-    virtual ~OMXMaster();
+struct OMXStore : public OMXPluginBase {
+    OMXStore();
+    virtual ~OMXStore();
 
     virtual OMX_ERRORTYPE makeComponentInstance(
             const char *name,
@@ -66,8 +66,8 @@ private:
     void addPlugin(OMXPluginBase *plugin);
     void clearPlugins();
 
-    OMXMaster(const OMXMaster &);
-    OMXMaster &operator=(const OMXMaster &);
+    OMXStore(const OMXStore &);
+    OMXStore &operator=(const OMXStore &);
 };
 
 }  // namespace android
