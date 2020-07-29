@@ -1,0 +1,349 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "d06d5626_49e9336f",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:03:08Z",
+      "side": 1,
+      "message": "we\u0027re undergoing a \u0027fix it\u0027 weak to clean up language that promotes undesired stereotypes.\nso things like master/slave are being replaced\nsanity is another of those. \nhttps://source.android.com/setup/contribute/respectful-code (I think you can see it outside) describes that policy.\n\nsuggestions to replace sanity are:  validate, verify, quick check, initial check, basic check...\n\nI\u0027ll let you pick which rephrasing you want to use.  and it would be good to hear back about whether you can actually see that web page.",
+      "range": {
+        "startLine": 52,
+        "startChar": 22,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cdd20f44_30faf127",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:03:08Z",
+      "side": 1,
+      "message": "i like the pattern of doing all the get\u003c#\u003e(params) stuff at the top of the routine\nso that I can see just what is being grabbed, the names they go into help with ensuring I know what they are being used for.  I believe it makes helps for future maintenance.\n\nso i\u0027d suggest lines 108..109 go to after line 89.",
+      "range": {
+        "startLine": 108,
+        "startChar": 7,
+        "endLine": 109,
+        "endChar": 38
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e8ecd3b6_ad7a9ceb",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:03:08Z",
+      "side": 1,
+      "message": "why GetParam().first  instead of where we see on line 151 as an example\n  tuple\u003c....\u003e param \u003d GetParam();\n\nand then some get\u003c#\u003e(params) invocations.\n\nI like it for the consistency",
+      "range": {
+        "startLine": 186,
+        "startChar": 31,
+        "endLine": 186,
+        "endChar": 66
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7111981b_3f0ab9e9",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:03:08Z",
+      "side": 1,
+      "message": "should also ASSERT_EQ(csdMetaDataBaseSize, csdAMediaFormatSize) -- since line 258 seems to\nassume that they will be the same.",
+      "range": {
+        "startLine": 256,
+        "startChar": 13,
+        "endLine": 256,
+        "endChar": 34
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "64dbb11a_bc4fe34c",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:03:08Z",
+      "side": 1,
+      "message": "are those two really bit-for-bit compatible this way?",
+      "range": {
+        "startLine": 258,
+        "startChar": 27,
+        "endLine": 258,
+        "endChar": 94
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "476d0ce4_8612c15e",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:03:08Z",
+      "side": 1,
+      "message": "should we be comparing ththe results (e.g. the *csdData and *metaData) in some manner.\nnot sure that memcmp() is the right comparison, since one is void* and the other is MetaDataBase*.",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 1
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5321bbe2_05cb37f7",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:03:08Z",
+      "side": 1,
+      "message": "who\u0027s making sure this is within the bounds of kSamplingFreq[]\ne.g. 0\u003c\u003dmAacSamplingFreqIndex \u003c sizeof(kSampingFreq)/sizeof(kSampleFreq[0])",
+      "range": {
+        "startLine": 290,
+        "startChar": 28,
+        "endLine": 290,
+        "endChar": 50
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "650833e5_f7213fa5",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:03:08Z",
+      "side": 1,
+      "message": "set this to null or \"\".   probably \"\" because of how we\u0027re using it in line 300.",
+      "range": {
+        "startLine": 297,
+        "startChar": 15,
+        "endLine": 297,
+        "endChar": 25
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed1ba4fc_a2c85011",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:03:08Z",
+      "side": 1,
+      "message": "should this perhaps be the actual frequency, rather than an index into that table?\nsince the channel config in the next parameter is set up that way...\nit\u0027s good to keep the \"levels of indirection\" the same across the parameters.",
+      "range": {
+        "startLine": 305,
+        "startChar": 62,
+        "endLine": 305,
+        "endChar": 84
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb265bc5_6a923c00",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:03:08Z",
+      "side": 1,
+      "message": "perhaps a null string (\"\") would be better?\n\nalthough maybe ASSERT_STREQ() is taking care to check for null pointers first, so it\nwould be safe.   I know that \"\" just takes null off the table as a possible value.",
+      "range": {
+        "startLine": 319,
+        "startChar": 13,
+        "endLine": 319,
+        "endChar": 23
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f2404890_a62805e3",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:03:08Z",
+      "side": 1,
+      "message": "if we can memcmp(), then we should assert csdMedaDataBaseSize \u003d\u003d csdAMediaFormatSize.",
+      "range": {
+        "startLine": 347,
+        "startChar": 65,
+        "endLine": 347,
+        "endChar": 84
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3eb46d3f_12787fb0",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:03:08Z",
+      "side": 1,
+      "message": "help me understand why they can be compared with memcmp() instead of needing to look\nat particular fields.",
+      "range": {
+        "startLine": 347,
+        "startChar": 10,
+        "endLine": 347,
+        "endChar": 19
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9b77056e_c986a0e5",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:03:08Z",
+      "side": 1,
+      "message": "lets make sure to initialize this, and all of these.  I think \"\" instead of NULL\nbut that\u0027s so that the ASSERT_STREQ() won\u0027t get into any null-pointer-dereference problems.",
+      "range": {
+        "startLine": 371,
+        "startChar": 16,
+        "endLine": 371,
+        "endChar": 25
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f9f9b3cc_c1bebf2b",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:03:08Z",
+      "side": 1,
+      "message": "let\u0027s look at a name like \"AacKnownInvalidTest\" or something like that.\nI want to highlight that we\u0027re testing known-bad content.",
+      "range": {
+        "startLine": 379,
+        "startChar": 24,
+        "endLine": 379,
+        "endChar": 38
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c3b57fb5_930433f6",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-29T03:03:08Z",
+      "side": 1,
+      "message": "reading https://en.wikipedia.org/wiki/Vorbis_comment\nit says that vorbis tags are case insensitive.\n\nshould this tag.compare() be case insensitive?",
+      "range": {
+        "startLine": 416,
+        "startChar": 25,
+        "endLine": 416,
+        "endChar": 44
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
