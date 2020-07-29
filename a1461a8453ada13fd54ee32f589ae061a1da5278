@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6b0133d3_ba38da97",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2020-07-29T17:06:05Z",
+      "side": 1,
+      "message": "All changes looks good, thank you, except for the Doxygen files.\nThese are from upstream, so any changes will be lost\nat the next \"doxygen -u\".  So I suggesting reverting the\nDoxygen files so this CL can merge, and we also offer the fix to upstream.\nI\u0027m doing that part now, and will report back.",
+      "revId": "a1461a8453ada13fd54ee32f589ae061a1da5278",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
