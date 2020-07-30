@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3410ae44_e01f3a43",
+        "filename": "media/libaudiofoundation/DeviceDescriptorBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-07-30T21:24:02Z",
+      "side": 1,
+      "message": "Would be better to replace the address by \"SUPPRESSED\" instead of removing it altogether to be consistent with what we did for metrics.\n\nAlso instead of relying on the device type which we would have to maintain over time, I may be better to parse the format of the address and match MAC address and IP address format.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 88
+      },
+      "revId": "4428cba45e3749b26ceb436865e26f1821e1dfba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
