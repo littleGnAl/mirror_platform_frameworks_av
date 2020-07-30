@@ -161,7 +161,7 @@ int main(int /* argc */, char** /* argv */) {
         // Vendor's TODO: Replace this with
         // store = new utils::ComponentStore(
         //         /* implementation of C2ComponentStore */);
-        ALOGD("Instantiating Codec2's dummy IComponentStore service...");
+        ALOGD("Instantiating Codec2's fake IComponentStore service...");
         store = new utils::ComponentStore(
                 std::make_shared<StoreImpl>());
 
