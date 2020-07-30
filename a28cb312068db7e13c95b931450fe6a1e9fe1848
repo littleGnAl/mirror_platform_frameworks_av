@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7e9b7220_7148c633",
+        "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/InitDataParser_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1722344
+      },
+      "writtenOn": "2020-07-30T22:20:53Z",
+      "side": 1,
+      "message": "Updates after running cpplint:\n\nComments now start with uppercase.\nCopyright message at top of file.\nAdded spaces and adjusted whitespace.",
+      "parentUuid": "501773ed_f94a720e",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "a28cb312068db7e13c95b931450fe6a1e9fe1848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8d619624_bd57ffec",
         "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/InitDataParser_fuzzer.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "a28cb312068db7e13c95b931450fe6a1e9fe1848",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "02106cfe_9b722729",
+        "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/InitDataParser_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1722344
+      },
+      "writtenOn": "2020-07-30T22:20:53Z",
+      "side": 1,
+      "message": "I agree.\ninitDataSize \u003d fuzzed_data.ConsumeIntegralInRange\u003cuint16_t\u003e(1, UINT16_MAX);\n\nAlso, I can now remove #include \u003calgorithm\u003e",
+      "parentUuid": "8d619624_bd57ffec",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 55
+      },
+      "revId": "a28cb312068db7e13c95b931450fe6a1e9fe1848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "630f89ef_9fb633f2",
+        "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/InitDataParser_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1722344
+      },
+      "writtenOn": "2020-07-30T22:20:53Z",
+      "side": 1,
+      "message": "Fixed within the new method pushUint32_t()",
+      "parentUuid": "e738b2af_89cd7675",
+      "range": {
+        "startLine": 27,
+        "startChar": 15,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "a28cb312068db7e13c95b931450fe6a1e9fe1848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "48d29347_7379a08f",
         "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/InitDataParser_fuzzer.cpp",
         "patchSetId": 1
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "7b08f9b8_a80d9641",
+        "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/InitDataParser_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1722344
+      },
+      "writtenOn": "2020-07-30T22:20:53Z",
+      "side": 1,
+      "message": "New method added:\nvoid pushUint32_t(std::vector\u003cuint8_t\u003e \u0026vect, uint32_t num)\n\nBoth loops are now replaced with calls to pushUint32_t()",
+      "parentUuid": "48d29347_7379a08f",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 5
+      },
+      "revId": "a28cb312068db7e13c95b931450fe6a1e9fe1848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "b89c8828_85ba2039",
         "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/InitDataParser_fuzzer.cpp",
         "patchSetId": 1
@@ -114,6 +210,30 @@
       "revId": "a28cb312068db7e13c95b931450fe6a1e9fe1848",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a99b872_05805c41",
+        "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/InitDataParser_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1722344
+      },
+      "writtenOn": "2020-07-30T22:20:53Z",
+      "side": 1,
+      "message": "Updated the strings to be in an array, and a string is selected from the array using ConsumeIntegral() % 7.",
+      "parentUuid": "b89c8828_85ba2039",
+      "range": {
+        "startLine": 77,
+        "startChar": 17,
+        "endLine": 77,
+        "endChar": 28
+      },
+      "revId": "a28cb312068db7e13c95b931450fe6a1e9fe1848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
