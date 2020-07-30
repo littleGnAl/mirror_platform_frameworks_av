@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "4a64dece_c27df922",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-30T17:30:37Z",
+      "side": 1,
+      "message": "Thanks.\nOne last minor change in C2SoftVpxDec.cpp.\nRest looks good to me.",
+      "revId": "dad263ce68711b8edcf2332b1056957c619edf2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bb76eedc_9182bfb5",
+        "filename": "media/codec2/components/vpx/C2SoftVpxDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-07-30T17:30:37Z",
+      "side": 1,
+      "message": "nit: dstY, dstU, dstV and split this line to two",
+      "range": {
+        "startLine": 633,
+        "startChar": 0,
+        "endLine": 633,
+        "endChar": 116
+      },
+      "revId": "dad263ce68711b8edcf2332b1056957c619edf2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
