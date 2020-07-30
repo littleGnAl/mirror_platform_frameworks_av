@@ -577,8 +577,8 @@ void idctrow(
         x8 -= x3;
         x3 = x0 + x2;
         x0 -= x2;
-        x2 = (181 * (x4 + x5) + 128) >> 8;
-        x4 = (181 * (x4 - x5) + 128) >> 8;
+        x2 = ((int64)181 * (x4 + x5) + 128) >> 8;
+        x4 = ((int64)181 * (x4 - x5) + 128) >> 8;
 
         /* fourth stage */
         pred_word = *((uint32*)(pred += 12)); /* read 4 bytes from pred */
@@ -889,8 +889,8 @@ void idctcol(
     x8 -= x3;
     x3 = x0 + x2;
     x0 -= x2;
-    x2 = (181 * (x4 + x5) + 128) >> 8;
-    x4 = (181 * (x4 - x5) + 128) >> 8;
+    x2 = ((int64)181 * (x4 + x5) + 128) >> 8;
+    x4 = ((int64)181 * (x4 - x5) + 128) >> 8;
 
     /* fourth stage */
     blk[0]    = (x7 + x1) >> 8;

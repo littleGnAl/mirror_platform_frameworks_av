@@ -120,8 +120,8 @@ void idctrow2(int16 *blk, uint8 *pred, uint8 *dst, int width)
         x4 = (W1 * x4 + 4) >> 3;
 
         /* third stage */
-        x2 = (181 * (x4 + x5) + 128) >> 8;
-        x1 = (181 * (x4 - x5) + 128) >> 8;
+        x2 = ((int64)181 * (x4 + x5) + 128) >> 8;
+        x1 = ((int64)181 * (x4 - x5) + 128) >> 8;
 
         /* fourth stage */
         pred_word = *((uint32*)(pred += 12)); /* read 4 bytes from pred */
@@ -219,8 +219,8 @@ void idctrow3(int16 *blk, uint8 *pred, uint8 *dst, int width)
         x7 = (W7 * x1 + 4) >> 3;
         x1 = (W1 * x1 + 4) >> 3;
         x3 = x7;
-        x5 = (181 * (x1 - x7) + 128) >> 8;
-        x7 = (181 * (x1 + x7) + 128) >> 8;
+        x5 = ((int64)181 * (x1 - x7) + 128) >> 8;
+        x7 = ((int64)181 * (x1 + x7) + 128) >> 8;
 
         pred_word = *((uint32*)(pred += 12)); /* read 4 bytes from pred */
         res = (x0 + x1) >> 14;
@@ -334,8 +334,8 @@ void idctrow4(int16 *blk, uint8 *pred, uint8 *dst, int width)
         x5 = x8;
         x8 = x7 - x3;
         x3 += x7;
-        x7 = (181 * (x5 + x8) + 128) >> 8;
-        x5 = (181 * (x5 - x8) + 128) >> 8;
+        x7 = ((int64)181 * (x5 + x8) + 128) >> 8;
+        x5 = ((int64)181 * (x5 - x8) + 128) >> 8;
 
         pred_word = *((uint32*)(pred += 12)); /* read 4 bytes from pred */
         res = (x0 + x1) >> 14;
@@ -395,8 +395,8 @@ void idctcol4(int16 *blk)
     x5 = x8;
     x8 = x7 - x3;
     x3 += x7;
-    x7 = (181 * (x5 + x8) + 128) >> 8;
-    x5 = (181 * (x5 - x8) + 128) >> 8;
+    x7 = ((int64)181 * (x5 + x8) + 128) >> 8;
+    x5 = ((int64)181 * (x5 - x8) + 128) >> 8;
 
 
     blk[0] = (x0 + x1) >> 8;
@@ -466,8 +466,8 @@ void idctrow2_intra(int16 *blk, PIXEL *comp, int width)
         x4 = (W1 * x4 + 4) >> 3;
 
         /* third stage */
-        x2 = (181 * (x4 + x5) + 128) >> 8;
-        x1 = (181 * (x4 - x5) + 128) >> 8;
+        x2 = ((int64)181 * (x4 + x5) + 128) >> 8;
+        x1 = ((int64)181 * (x4 - x5) + 128) >> 8;
 
         /* fourth stage */
         word = ((x0 + x4) >> 14);
@@ -535,8 +535,8 @@ void idctrow3_intra(int16 *blk, PIXEL *comp, int width)
         x7 = (W7 * x1 + 4) >> 3;
         x1 = (W1 * x1 + 4) >> 3;
         x3 = x7;
-        x5 = (181 * (x1 - x7) + 128) >> 8;
-        x7 = (181 * (x1 + x7) + 128) >> 8;
+        x5 = ((int64)181 * (x1 - x7) + 128) >> 8;
+        x7 = ((int64)181 * (x1 + x7) + 128) >> 8;
 
         word = ((x0 + x1) >> 14);
         CLIP_RESULT(word)
@@ -614,8 +614,8 @@ void idctrow4_intra(int16 *blk, PIXEL *comp, int width)
         x5 = x8;
         x8 = x7 - x3;
         x3 += x7;
-        x7 = (181 * (x5 + x8) + 128) >> 8;
-        x5 = (181 * (x5 - x8) + 128) >> 8;
+        x7 = ((int64)181 * (x5 + x8) + 128) >> 8;
+        x5 = ((int64)181 * (x5 - x8) + 128) >> 8;
 
         word = ((x0 + x1) >> 14);
         CLIP_RESULT(word)
