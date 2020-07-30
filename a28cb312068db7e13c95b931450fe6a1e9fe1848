@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "501773ed_f94a720e",
+        "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/InitDataParser_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-07-30T05:16:11Z",
+      "side": 1,
+      "message": "nit: uppercase (here and elsewhere). Also consider running cpplint.",
+      "range": {
+        "startLine": 10,
+        "startChar": 5,
+        "endLine": 10,
+        "endChar": 6
+      },
+      "revId": "a28cb312068db7e13c95b931450fe6a1e9fe1848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8d619624_bd57ffec",
+        "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/InitDataParser_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-07-30T05:16:11Z",
+      "side": 1,
+      "message": "Would ConsumeIntegralInRange(1, max) work here?",
+      "range": {
+        "startLine": 17,
+        "startChar": 4,
+        "endLine": 18,
+        "endChar": 55
+      },
+      "revId": "a28cb312068db7e13c95b931450fe6a1e9fe1848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e738b2af_89cd7675",
+        "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/InitDataParser_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-07-30T05:16:11Z",
+      "side": 1,
+      "message": "nit: add space",
+      "range": {
+        "startLine": 27,
+        "startChar": 15,
+        "endLine": 27,
+        "endChar": 17
+      },
+      "revId": "a28cb312068db7e13c95b931450fe6a1e9fe1848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "48d29347_7379a08f",
+        "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/InitDataParser_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-07-30T05:16:11Z",
+      "side": 1,
+      "message": "consider extract this loop and the similar loop above and make a method out of it.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 5
+      },
+      "revId": "a28cb312068db7e13c95b931450fe6a1e9fe1848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b89c8828_85ba2039",
+        "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/InitDataParser_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-07-30T05:16:11Z",
+      "side": 1,
+      "message": "Consider making these strings constant defined above.",
+      "range": {
+        "startLine": 77,
+        "startChar": 17,
+        "endLine": 77,
+        "endChar": 28
+      },
+      "revId": "a28cb312068db7e13c95b931450fe6a1e9fe1848",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
