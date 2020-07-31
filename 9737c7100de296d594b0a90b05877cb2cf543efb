@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bedd7d2_db091116",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-31T21:00:15Z",
+      "side": 1,
+      "message": "this looks ok for returning a degraded configuration; I haven\u0027t looked at the higher levels that call this -- what failures might we see at the next level out.\n\nwe\u0027d want some runtime test to convince ourselves (and others) it\u0027s correct before we merge this.\n\na key thing to pair up with this is a CTS test that validates the mediaprofile configuration;",
+      "revId": "9737c7100de296d594b0a90b05877cb2cf543efb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
