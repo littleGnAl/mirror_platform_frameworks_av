@@ -63,6 +63,30 @@
       "revId": "c291148e69771f4c481c56ff511529fe9d1a4e37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78837a54_ebda2d9f",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2541,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2020-07-31T18:40:45Z",
+      "side": 1,
+      "message": "The same applies to the other two \u0027base\u0027 below, thanks!",
+      "parentUuid": "5680c7d2_e879b0e4",
+      "range": {
+        "startLine": 2541,
+        "startChar": 9,
+        "endLine": 2541,
+        "endChar": 13
+      },
+      "revId": "c291148e69771f4c481c56ff511529fe9d1a4e37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
