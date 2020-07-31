@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "d297af23_b4cfe25d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2020-07-31T00:54:10Z",
+      "side": 1,
+      "message": "Moving to internal to address merge conflict.",
+      "revId": "9561fef717b2f54ed8cf844d80ba57e6eaf50922",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "58eb8f93_0a8ada00",
         "filename": "media/libaudiofoundation/include/media/DeviceDescriptorBase.h",
         "patchSetId": 2
@@ -25,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "e411c9a8_965dd26b",
+        "filename": "media/libaudiofoundation/include/media/DeviceDescriptorBase.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2020-07-31T00:54:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58eb8f93_0a8ada00",
+      "range": {
+        "startLine": 68,
+        "startChar": 30,
+        "endLine": 68,
+        "endChar": 41
+      },
+      "revId": "9561fef717b2f54ed8cf844d80ba57e6eaf50922",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d3d1c863_965ff023",
         "filename": "services/audiopolicy/common/managerdefinitions/include/DeviceDescriptor.h",
         "patchSetId": 2
@@ -45,6 +86,30 @@
       "revId": "9561fef717b2f54ed8cf844d80ba57e6eaf50922",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e27dd67_6cd56dc2",
+        "filename": "services/audiopolicy/common/managerdefinitions/include/DeviceDescriptor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2020-07-31T00:54:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3d1c863_965ff023",
+      "range": {
+        "startLine": 249,
+        "startChar": 30,
+        "endLine": 249,
+        "endChar": 41
+      },
+      "revId": "9561fef717b2f54ed8cf844d80ba57e6eaf50922",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
