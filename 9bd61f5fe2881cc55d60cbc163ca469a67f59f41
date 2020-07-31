@@ -16,6 +16,23 @@
       "revId": "9bd61f5fe2881cc55d60cbc163ca469a67f59f41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2d336f8f_6619dd60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-07-31T21:26:06Z",
+      "side": 1,
+      "message": "Mingming thanks for this patch! I was looking lately into the bug you have filed. Thanks a lot for the provided repro applications! I agree with your analysis that the destroyed mutex issue happens due to passing of \u0027this\u0027 pointer to a weak pointer inside EffectClient from AudioEffect\u0027s constructor code. Your patch seems to solve this problem.\n\nUnfortunately the patch will not merge as is due to some unpublished changes in AudioEffect. And I\u0027m actually implementing an approach that doesn\u0027t require introducing an intermediate struct. What I want to do is to only leave the AudioEffect constructor that doesn\u0027t call \u0027set\u0027 and make the code that creates an instance of AudioEffect call \u0027set\u0027 afterwards. That should make AudioEffect code a bit simpler.",
+      "revId": "9bd61f5fe2881cc55d60cbc163ca469a67f59f41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
