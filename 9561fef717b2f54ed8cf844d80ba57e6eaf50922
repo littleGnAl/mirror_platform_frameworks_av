@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "58eb8f93_0a8ada00",
+        "filename": "media/libaudiofoundation/include/media/DeviceDescriptorBase.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-07-31T00:34:39Z",
+      "side": 1,
+      "message": "maybe rename the argument includeSensitiveInfo to make its meaning more clear.",
+      "range": {
+        "startLine": 68,
+        "startChar": 30,
+        "endLine": 68,
+        "endChar": 41
+      },
+      "revId": "9561fef717b2f54ed8cf844d80ba57e6eaf50922",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d3d1c863_965ff023",
+        "filename": "services/audiopolicy/common/managerdefinitions/include/DeviceDescriptor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-07-31T00:34:39Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 249,
+        "startChar": 30,
+        "endLine": 249,
+        "endChar": 41
+      },
+      "revId": "9561fef717b2f54ed8cf844d80ba57e6eaf50922",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
