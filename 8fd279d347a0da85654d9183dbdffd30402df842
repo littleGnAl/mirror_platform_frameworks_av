@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "7fcadb11_3cca1457",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-07-31T13:26:07Z",
+      "side": 1,
+      "message": "Ray, I think Validate looks good. Yes, I was able to see the web page, will follow similar naming guidelines in future tests.",
+      "parentUuid": "d06d5626_49e9336f",
+      "range": {
+        "startLine": 52,
+        "startChar": 22,
+        "endLine": 52,
+        "endChar": 28
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cdd20f44_30faf127",
         "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
         "patchSetId": 2
@@ -45,6 +69,30 @@
       "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ced1a73_0fbb80b6",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-07-31T13:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdd20f44_30faf127",
+      "range": {
+        "startLine": 108,
+        "startChar": 7,
+        "endLine": 109,
+        "endChar": 38
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "1522a6d4_096a3651",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-07-31T13:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8ecd3b6_ad7a9ceb",
+      "range": {
+        "startLine": 186,
+        "startChar": 31,
+        "endLine": 186,
+        "endChar": 66
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7111981b_3f0ab9e9",
         "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
         "patchSetId": 2
@@ -94,6 +166,30 @@
     },
     {
       "key": {
+        "uuid": "ba5d5d29_41ccd8f3",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-07-31T13:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7111981b_3f0ab9e9",
+      "range": {
+        "startLine": 256,
+        "startChar": 13,
+        "endLine": 256,
+        "endChar": 34
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "64dbb11a_bc4fe34c",
         "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
         "patchSetId": 2
@@ -105,6 +201,30 @@
       "writtenOn": "2020-07-29T03:03:08Z",
       "side": 1,
       "message": "are those two really bit-for-bit compatible this way?",
+      "range": {
+        "startLine": 258,
+        "startChar": 27,
+        "endLine": 258,
+        "endChar": 94
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce1b109d_b813744a",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-07-31T13:26:07Z",
+      "side": 1,
+      "message": "Yes, because they contain same CSD data which is part of the bitstream.",
+      "parentUuid": "64dbb11a_bc4fe34c",
       "range": {
         "startLine": 258,
         "startChar": 27,
@@ -140,6 +260,30 @@
     },
     {
       "key": {
+        "uuid": "bcfd19c0_228f672b",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-07-31T13:26:07Z",
+      "side": 1,
+      "message": "Ray, we are comparing the CSD parameters like width, height, mimetype in the AvcCSDValidationTest on Line: 205. For example, we compare the width of AMediaFormat and MetaDataBase with the test parameter on Line: 215 and Line: 236 respectively.",
+      "parentUuid": "476d0ce4_8612c15e",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 1
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "5321bbe2_05cb37f7",
         "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
         "patchSetId": 2
@@ -160,6 +304,30 @@
       "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2f4aa652_92b70e7c",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-07-31T13:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5321bbe2_05cb37f7",
+      "range": {
+        "startLine": 290,
+        "startChar": 28,
+        "endLine": 290,
+        "endChar": 50
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -186,6 +354,30 @@
     },
     {
       "key": {
+        "uuid": "967cd8a4_2db69019",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-07-31T13:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "650833e5_f7213fa5",
+      "range": {
+        "startLine": 297,
+        "startChar": 15,
+        "endLine": 297,
+        "endChar": 25
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ed1ba4fc_a2c85011",
         "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
         "patchSetId": 2
@@ -197,6 +389,30 @@
       "writtenOn": "2020-07-29T03:03:08Z",
       "side": 1,
       "message": "should this perhaps be the actual frequency, rather than an index into that table?\nsince the channel config in the next parameter is set up that way...\nit\u0027s good to keep the \"levels of indirection\" the same across the parameters.",
+      "range": {
+        "startLine": 305,
+        "startChar": 62,
+        "endLine": 305,
+        "endChar": 84
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "685e5ce2_c2441b51",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-07-31T13:26:07Z",
+      "side": 1,
+      "message": "This function takes the samplingFreqIndex as an argument.\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libstagefright/MetaDataUtils.cpp;bpv\u003d1;bpt\u003d1;l\u003d200?gsn\u003dMakeAACCodecSpecificData\u0026gs\u003dkythe%3A%2F%2Fandroid.googlesource.com%2Fplatform%2Fsuperproject%3Flang%3Dc%252B%252B%3Fpath%3Dframeworks%2Fav%2Fmedia%2Flibstagefright%2FMetaDataUtils.cpp%23qvSncmH16_8O525UVnjhF02yQxXeYmmzVr8xKNrjQao\u0026gs\u003dkythe%3A%2F%2Fandroid.googlesource.com%2Fplatform%2Fsuperproject%3Flang%3Dc%252B%252B%3Fpath%3Dframeworks%2Fav%2Fmedia%2Flibstagefright%2Finclude%2Fmedia%2Fstagefright%2FMetaDataUtils.h%23xk-IpPyRlyOemT3k6SAtYFvOD1NhVf1d4OuuZw5h-6c",
+      "parentUuid": "ed1ba4fc_a2c85011",
       "range": {
         "startLine": 305,
         "startChar": 62,
@@ -229,6 +445,30 @@
       "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f686dda9_03108336",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-07-31T13:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb265bc5_6a923c00",
+      "range": {
+        "startLine": 319,
+        "startChar": 13,
+        "endLine": 319,
+        "endChar": 23
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -278,6 +518,54 @@
     },
     {
       "key": {
+        "uuid": "db3ae295_a7381eb2",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-07-31T13:26:07Z",
+      "side": 1,
+      "message": "Ray, we are comparing the data stored in the format(AMediaFormat and MetaDataBase) which is a part of the bitstream, thus they will be same for valid test vectors.",
+      "parentUuid": "3eb46d3f_12787fb0",
+      "range": {
+        "startLine": 347,
+        "startChar": 10,
+        "endLine": 347,
+        "endChar": 19
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "16c133fb_273df920",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-07-31T13:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2404890_a62805e3",
+      "range": {
+        "startLine": 347,
+        "startChar": 65,
+        "endLine": 347,
+        "endChar": 84
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9b77056e_c986a0e5",
         "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
         "patchSetId": 2
@@ -298,6 +586,30 @@
       "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0828fa78_5f56f42c",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-07-31T13:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b77056e_c986a0e5",
+      "range": {
+        "startLine": 371,
+        "startChar": 16,
+        "endLine": 371,
+        "endChar": 25
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -324,6 +636,30 @@
     },
     {
       "key": {
+        "uuid": "be225a8d_a47a0b2a",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 379,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-07-31T13:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f9f9b3cc_c1bebf2b",
+      "range": {
+        "startLine": 379,
+        "startChar": 24,
+        "endLine": 379,
+        "endChar": 38
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c3b57fb5_930433f6",
         "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
         "patchSetId": 2
@@ -344,6 +680,30 @@
       "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f4aa169_8bbc6ba9",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2020-07-31T13:26:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3b57fb5_930433f6",
+      "range": {
+        "startLine": 416,
+        "startChar": 25,
+        "endLine": 416,
+        "endChar": 44
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
