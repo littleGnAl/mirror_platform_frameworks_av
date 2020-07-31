@@ -16,6 +16,24 @@
       "revId": "fdcf210244bc6498d580b2372066594f9d070a8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "85255023_ee2b0b4b",
+        "filename": "media/codec2/hidl/services/vendor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1730162
+      },
+      "writtenOn": "2020-07-31T02:24:01Z",
+      "side": 1,
+      "message": "For vendor.cpp, I found it already removed internally. So I removed that part from this change, and it would be fixed after RVC drop. \n\nHowever, for DrcPresModeWrap.cpp, there is also conflict with internal change.",
+      "parentUuid": "d6b72e97_6cd4bfb3",
+      "revId": "fdcf210244bc6498d580b2372066594f9d070a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
