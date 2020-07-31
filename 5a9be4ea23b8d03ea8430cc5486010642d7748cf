@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ea6a8d50_9df6d532",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1437942
+      },
+      "writtenOn": "2020-07-31T06:45:44Z",
+      "side": 1,
+      "message": "We have a problem：When A2DP device changing  from primary audio module to a2dp audio module，then the  music play from speake on primary audio module。\nyou can recurrent this ：\n\n 1.primary audio module support A2dp SBC encode ，a2dp audio module support A2dp AAC（or other encode） encode。\n 2.play music on bluetooth headset。\n 3. switch A2dp encode from SBC to AAC。 you will look the  sound from speak，next，the sound from headset。\n@https://partnerissuetracker.corp.google.com/u/1/issues/153895044",
+      "revId": "5a9be4ea23b8d03ea8430cc5486010642d7748cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "324b9b89_23b4773b",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 2
@@ -13,6 +30,30 @@
       "writtenOn": "2020-07-23T20:48:54Z",
       "side": 1,
       "message": "Please explain why you need to do this?",
+      "range": {
+        "startLine": 470,
+        "startChar": 7,
+        "endLine": 471,
+        "endChar": 84
+      },
+      "revId": "5a9be4ea23b8d03ea8430cc5486010642d7748cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7e85e56a_2cae98ab",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1437942
+      },
+      "writtenOn": "2020-07-31T06:45:44Z",
+      "side": 1,
+      "message": "We have a problem：When A2DP device changing  from primary audio module to a2dp audio module，then the  music play from speake on primary audio module。\nyou can recurrent this ：\n 1.primary audio module support A2dp SBC encode ，a2dp audio module support A2dp AAC（or other encode） encode。\n 2.play music on bluetooth headset。\n 3. switch A2dp encode from SBC to AAC。 you will look the  sound from speak，next，the sound from headset。\n\n@https://partnerissuetracker.corp.google.com/u/1/issues/153895044",
+      "parentUuid": "324b9b89_23b4773b",
       "range": {
         "startLine": 470,
         "startChar": 7,
