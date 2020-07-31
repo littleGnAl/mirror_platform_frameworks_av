@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "854757cc_e542e31c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-31T21:47:44Z",
+      "side": 1,
+      "message": "couple tweaks, then ready.",
+      "revId": "af33db3868b51c85ba7387293ae7fdd1cc0317a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "91c96506_46cd5c68",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-31T21:47:44Z",
+      "side": 1,
+      "message": "(1) a comment indicating where we get this -- e.g. likely the AAC spec\n(2) i prefer to set kMax things using a construct like:\n\n    kMaxSamplingFreqIndex \u003d sizeof(kSamplingFreq) / sizeof(kSamplingFreq[0]);\n\nwhich can then never be out of sync with the actual data.",
+      "range": {
+        "startLine": 35,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 78
+      },
+      "revId": "af33db3868b51c85ba7387293ae7fdd1cc0317a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "624c61aa_342f871a",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-31T21:47:44Z",
+      "side": 1,
+      "message": "based on this, I gather we don\u0027t have a negative test case ...\ne.g. we don\u0027t try with an out-of-range mAacSampleFreqIndex",
+      "range": {
+        "startLine": 288,
+        "startChar": 3,
+        "endLine": 291,
+        "endChar": 0
+      },
+      "revId": "af33db3868b51c85ba7387293ae7fdd1cc0317a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d010c379_33aa4f2c",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-31T21:47:44Z",
+      "side": 1,
+      "message": "these could happen at line 287 or so -- before we use it to invoke MakeAACCodecSpecificData()",
+      "range": {
+        "startLine": 295,
+        "startChar": 2,
+        "endLine": 296,
+        "endChar": 8
+      },
+      "revId": "af33db3868b51c85ba7387293ae7fdd1cc0317a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af11d52b_ece7c364",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-31T21:47:44Z",
+      "side": 1,
+      "message": "these are redundant; since we never touch mAacSampleFreqIndex within the routine.",
+      "range": {
+        "startLine": 319,
+        "startChar": 4,
+        "endLine": 320,
+        "endChar": 60
+      },
+      "revId": "af33db3868b51c85ba7387293ae7fdd1cc0317a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

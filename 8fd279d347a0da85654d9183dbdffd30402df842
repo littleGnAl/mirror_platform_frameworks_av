@@ -237,6 +237,30 @@
     },
     {
       "key": {
+        "uuid": "f1b79944_09d9d40e",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 258,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-31T21:47:44Z",
+      "side": 1,
+      "message": "ok. they\u0027re both void* here.\n\none of these memcmp() -- it was a void* and a MedaData*  or something like that and I was concerned that the MetaData* one had been parsed out -- so it held the same info but in a different representation/layout. and that wouldn\u0027t compare well using memcmp().",
+      "parentUuid": "ce1b109d_b813744a",
+      "range": {
+        "startLine": 258,
+        "startChar": 27,
+        "endLine": 258,
+        "endChar": 94
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "476d0ce4_8612c15e",
         "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
         "patchSetId": 2
@@ -281,6 +305,30 @@
       "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "56b2d37c_e3b4af75",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-31T21:47:44Z",
+      "side": 1,
+      "message": "ok. no change needed here.",
+      "parentUuid": "bcfd19c0_228f672b",
+      "range": {
+        "startLine": 277,
+        "startChar": 0,
+        "endLine": 277,
+        "endChar": 1
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -413,6 +461,30 @@
       "side": 1,
       "message": "This function takes the samplingFreqIndex as an argument.\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libstagefright/MetaDataUtils.cpp;bpv\u003d1;bpt\u003d1;l\u003d200?gsn\u003dMakeAACCodecSpecificData\u0026gs\u003dkythe%3A%2F%2Fandroid.googlesource.com%2Fplatform%2Fsuperproject%3Flang%3Dc%252B%252B%3Fpath%3Dframeworks%2Fav%2Fmedia%2Flibstagefright%2FMetaDataUtils.cpp%23qvSncmH16_8O525UVnjhF02yQxXeYmmzVr8xKNrjQao\u0026gs\u003dkythe%3A%2F%2Fandroid.googlesource.com%2Fplatform%2Fsuperproject%3Flang%3Dc%252B%252B%3Fpath%3Dframeworks%2Fav%2Fmedia%2Flibstagefright%2Finclude%2Fmedia%2Fstagefright%2FMetaDataUtils.h%23xk-IpPyRlyOemT3k6SAtYFvOD1NhVf1d4OuuZw5h-6c",
       "parentUuid": "ed1ba4fc_a2c85011",
+      "range": {
+        "startLine": 305,
+        "startChar": 62,
+        "endLine": 305,
+        "endChar": 84
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6ac413e4_38167c60",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-31T21:47:44Z",
+      "side": 1,
+      "message": "the thing that had me somewhat confused is how this is then range checked against\nkMaxSamplingFreqIndex which is a local construct.\n\nnow that I see the local is meant to mimic the table buried within the called routine, it makes more sense.  see my comments about adding comments for the local table.",
+      "parentUuid": "685e5ce2_c2441b51",
       "range": {
         "startLine": 305,
         "startChar": 62,
@@ -559,6 +631,30 @@
         "startChar": 65,
         "endLine": 347,
         "endChar": 84
+      },
+      "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4571b0d4_87166078",
+        "filename": "media/libstagefright/tests/metadatautils/MetaDataUtilsTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 347,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-07-31T21:47:44Z",
+      "side": 1,
+      "message": "i was convinced that these were different types -- that one was void* and the other\nwas MetaData*.... which is what had me worried about memcmp().\n\nI don\u0027t know why I was convinced of that; just that I was.  I now see they are both void* here.",
+      "parentUuid": "db3ae295_a7381eb2",
+      "range": {
+        "startLine": 347,
+        "startChar": 10,
+        "endLine": 347,
+        "endChar": 19
       },
       "revId": "8fd279d347a0da85654d9183dbdffd30402df842",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
