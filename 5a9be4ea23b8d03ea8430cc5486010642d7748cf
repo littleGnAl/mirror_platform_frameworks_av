@@ -63,6 +63,30 @@
       "revId": "5a9be4ea23b8d03ea8430cc5486010642d7748cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d2cdf2d5_974d6355",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-07-31T15:26:51Z",
+      "side": 1,
+      "message": "I am not talking about the change in general.\nI am talking about just his line:\n mEngine-\u003egetOutputDevicesForAttributes(attributes_initializer(AUDIO_USAGE_MEDIA),\n                                              nullptr, true /*fromCache*/).types());\n\nThis just queries which device should be used for a given set of attributes. You are not using the output.\nWhy call this method. Are there side effects I din\u0027t know about?",
+      "parentUuid": "7e85e56a_2cae98ab",
+      "range": {
+        "startLine": 470,
+        "startChar": 7,
+        "endLine": 471,
+        "endChar": 84
+      },
+      "revId": "5a9be4ea23b8d03ea8430cc5486010642d7748cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
