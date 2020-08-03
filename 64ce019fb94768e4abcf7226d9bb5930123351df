@@ -66,6 +66,30 @@
     },
     {
       "key": {
+        "uuid": "6919b77d_df3ee18e",
+        "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-08-03T05:07:14Z",
+      "side": 1,
+      "message": "Marking this as resolved as this CL has code-review +2.",
+      "parentUuid": "85f70482_f705b619",
+      "range": {
+        "startLine": 46,
+        "startChar": 3,
+        "endLine": 48,
+        "endChar": 49
+      },
+      "revId": "64ce019fb94768e4abcf7226d9bb5930123351df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2edef307_4fa9dc78",
         "filename": "media/libstagefright/tests/writer/WriterTest.cpp",
         "patchSetId": 8
