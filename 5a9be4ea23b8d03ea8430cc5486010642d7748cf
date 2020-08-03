@@ -87,6 +87,30 @@
       "revId": "5a9be4ea23b8d03ea8430cc5486010642d7748cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6fb5c556_cb2ed97d",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1437942
+      },
+      "writtenOn": "2020-08-03T03:22:25Z",
+      "side": 1,
+      "message": "Right，I reference the setPhoneState logic，after music mute,we should un unmute the new output \nof the attribute AUDIO_USAGE_MEDIA",
+      "parentUuid": "d2cdf2d5_974d6355",
+      "range": {
+        "startLine": 470,
+        "startChar": 7,
+        "endLine": 471,
+        "endChar": 84
+      },
+      "revId": "5a9be4ea23b8d03ea8430cc5486010642d7748cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
