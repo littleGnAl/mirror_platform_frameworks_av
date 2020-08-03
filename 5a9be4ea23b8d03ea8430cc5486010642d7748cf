@@ -111,6 +111,30 @@
       "revId": "5a9be4ea23b8d03ea8430cc5486010642d7748cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6bbcd522_5bd80fdd",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-08-03T14:59:09Z",
+      "side": 1,
+      "message": "Sorry, I still don\u0027t understand your answer. \nWhat is the relationship between calling mEngine-\u003egetOutputDevicesForAttributes() and unmuting the output for AUDIO_USAGE_MEDIA ?",
+      "parentUuid": "6fb5c556_cb2ed97d",
+      "range": {
+        "startLine": 470,
+        "startChar": 7,
+        "endLine": 471,
+        "endChar": 84
+      },
+      "revId": "5a9be4ea23b8d03ea8430cc5486010642d7748cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
