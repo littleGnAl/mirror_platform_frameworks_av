@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "47256d28_077dd146",
+        "filename": "camera/ndk/include/camera/NdkCameraMetadataTags.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 5698,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2020-08-03T23:52:03Z",
+      "side": 1,
+      "message": "we fixed this paragraph in internal master a bit before the fixit, so may be simplest to just drop this file to avoid merge conflicts.",
+      "revId": "a445e3a37972404b51ef7f4fb12e00493069a732",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "cedd6707_aa5b2fe8",
         "filename": "services/audioflinger/AudioFlinger.cpp",
         "patchSetId": 1
