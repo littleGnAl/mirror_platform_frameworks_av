@@ -34,6 +34,24 @@
       "revId": "fdcf210244bc6498d580b2372066594f9d070a8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4e1930e_de9e756a",
+        "filename": "media/codec2/hidl/services/vendor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1004395
+      },
+      "writtenOn": "2020-08-03T18:42:42Z",
+      "side": 1,
+      "message": "Ack.  You might need to use a do not merge, or merged-in option.\nI\u0027m not an expert in those, but you could check here:\nhttps://g3doc.corp.google.com/company/teams/android-build-team/automerger.md?cl\u003dhead\n\nAnother option is to not fix in AOSP, and only fix in internal master.",
+      "parentUuid": "85255023_ee2b0b4b",
+      "revId": "fdcf210244bc6498d580b2372066594f9d070a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
