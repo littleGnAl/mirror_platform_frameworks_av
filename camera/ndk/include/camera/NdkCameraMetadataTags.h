@@ -5695,7 +5695,7 @@ typedef enum acamera_metadata_tag {
      *
      * <p>The accuracy of the frame timestamp synchronization determines the physical cameras'
      * ability to start exposure at the same time. If the sensorSyncType is CALIBRATED,
-     * the physical camera sensors usually run in master-slave mode so that their shutter
+pr     * the physical camera sensors usually run in master-slave mode so that their shutter
      * time is synchronized. For APPROXIMATE sensorSyncType, the camera sensors usually run in
      * master-master mode, and there could be offset between their start of exposure.</p>
      * <p>In both cases, all images generated for a particular capture request still carry the same
