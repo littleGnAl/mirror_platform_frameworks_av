@@ -52,6 +52,24 @@
       "revId": "fdcf210244bc6498d580b2372066594f9d070a8b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a4159d9d_a69c0d1b",
+        "filename": "media/codec2/hidl/services/vendor.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1730162
+      },
+      "writtenOn": "2020-08-04T16:57:54Z",
+      "side": 1,
+      "message": "Sure. I think it\u0027s better to fix the internal branch. Thanks for you suggestion. I will abandon this change.",
+      "parentUuid": "e4e1930e_de9e756a",
+      "revId": "fdcf210244bc6498d580b2372066594f9d070a8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
