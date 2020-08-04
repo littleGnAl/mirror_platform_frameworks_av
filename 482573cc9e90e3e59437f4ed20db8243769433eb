@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6201a64c_5e0aa033",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-08-04T22:55:08Z",
+      "side": 1,
+      "message": "Saketh,\nCan you please test reverb using clarity app with and without SUPPORT_MC defined?\nOnce that is tested, upload a CL to remove SUPPORT_MC macro and then rebase this.",
+      "parentUuid": "58524931_5c8555b8",
+      "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6b41e7b4_dd4f4aff",
         "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Init.cpp",
         "patchSetId": 8
