@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9be4c496_e85a980e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-08-04T14:35:54Z",
+      "side": 1,
+      "message": "Good work. Please add the initial exec/sec and the coverage you obtained in your testing as part of your CL comment.",
+      "revId": "1f50031c15e066abcc93c3d6378811a2c8d17242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0a970064_627673ea",
+        "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/InitDataParser_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-08-04T14:35:54Z",
+      "side": 1,
+      "message": "nit: define 7 as a constant, for example numberofmimetypes",
+      "range": {
+        "startLine": 87,
+        "startChar": 45,
+        "endLine": 87,
+        "endChar": 46
+      },
+      "revId": "1f50031c15e066abcc93c3d6378811a2c8d17242",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
