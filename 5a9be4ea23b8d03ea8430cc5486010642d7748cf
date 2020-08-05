@@ -159,6 +159,30 @@
       "revId": "5a9be4ea23b8d03ea8430cc5486010642d7748cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "232adfb5_b4dd134b",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-08-05T16:17:02Z",
+      "side": 1,
+      "message": "Sorry, My bad. due to the indentation I did not see it was used as an argument to setStrategyMute().\n\nPlease fix the indentation.",
+      "parentUuid": "6e11e1f8_ebe36aa4",
+      "range": {
+        "startLine": 470,
+        "startChar": 7,
+        "endLine": 471,
+        "endChar": 84
+      },
+      "revId": "5a9be4ea23b8d03ea8430cc5486010642d7748cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
