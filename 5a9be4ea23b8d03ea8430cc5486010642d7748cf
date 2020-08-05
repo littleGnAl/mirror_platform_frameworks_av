@@ -135,6 +135,30 @@
       "revId": "5a9be4ea23b8d03ea8430cc5486010642d7748cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6e11e1f8_ebe36aa4",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1437942
+      },
+      "writtenOn": "2020-08-05T08:15:30Z",
+      "side": 1,
+      "message": "mEngine-\u003egetOutputDevicesForAttributes() will return the outputdevices for AUDIO_USAGE_MEDIA。\nit is a parameter of setmute.I hope just unmute these output. if not call mEngine-\u003egetOutputDevicesForAttributes() , it will unmute all musicStrategy.",
+      "parentUuid": "6bbcd522_5bd80fdd",
+      "range": {
+        "startLine": 470,
+        "startChar": 7,
+        "endLine": 471,
+        "endChar": 84
+      },
+      "revId": "5a9be4ea23b8d03ea8430cc5486010642d7748cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
