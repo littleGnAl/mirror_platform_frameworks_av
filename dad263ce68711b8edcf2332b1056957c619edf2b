@@ -56,6 +56,30 @@
       "revId": "dad263ce68711b8edcf2332b1056957c619edf2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79660197_53fa95c3",
+        "filename": "media/codec2/components/vpx/C2SoftVpxDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-08-05T14:53:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb76eedc_9182bfb5",
+      "range": {
+        "startLine": 633,
+        "startChar": 0,
+        "endLine": 633,
+        "endChar": 116
+      },
+      "revId": "dad263ce68711b8edcf2332b1056957c619edf2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
