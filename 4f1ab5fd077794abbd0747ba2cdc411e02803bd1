@@ -1,0 +1,389 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ee4f58fb_21454de3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-05T17:24:37Z",
+      "side": 1,
+      "message": "Saketh, this is a good first pass for a test app.  We will also need to have unit tests (gtest framework).  Thanks!\n",
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3b13dd13_172d3a1b",
+        "filename": "media/libeffects/preprocessing/tests/Android.bp",
+        "patchSetId": 8
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-05T17:24:37Z",
+      "side": 1,
+      "message": "nit: alphabetical?",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 40
+      },
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4c967458_4ef37a10",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-05T17:24:37Z",
+      "side": 1,
+      "message": "nit PreProcId",
+      "range": {
+        "startLine": 40,
+        "startChar": 5,
+        "endLine": 40,
+        "endChar": 14
+      },
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ea051d44_3298ff8c",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-05T17:24:37Z",
+      "side": 1,
+      "message": "nit PreProcArg?",
+      "range": {
+        "startLine": 47,
+        "startChar": 5,
+        "endLine": 47,
+        "endChar": 18
+      },
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26a12e54_da1edf89",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-05T17:24:37Z",
+      "side": 1,
+      "message": "move up to top of the file after the includes?",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 52
+      },
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "34d96617_0af54de5",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-05T17:24:37Z",
+      "side": 1,
+      "message": "nit \n    AUDIO_CHANNEL_IN_VOICE_CALL_MONO,\n};",
+      "range": {
+        "startLine": 101,
+        "startChar": 36,
+        "endLine": 101,
+        "endChar": 38
+      },
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54f5ae95_7507906b",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-05T17:24:37Z",
+      "side": 1,
+      "message": "std::size(kPreProcConfigChMask);",
+      "range": {
+        "startLine": 104,
+        "startChar": 11,
+        "endLine": 104,
+        "endChar": 31
+      },
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "00396969_d121b42d",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-05T17:24:37Z",
+      "side": 1,
+      "message": "EXIT_FAILURE",
+      "range": {
+        "startLine": 193,
+        "startChar": 11,
+        "endLine": 193,
+        "endChar": 14
+      },
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8a8f6027_9260e158",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-05T17:24:37Z",
+      "side": 1,
+      "message": "const",
+      "range": {
+        "startLine": 219,
+        "startChar": 4,
+        "endLine": 219,
+        "endChar": 7
+      },
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "42a6f66c_a574450e",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 271,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-05T17:24:37Z",
+      "side": 1,
+      "message": "should we omit this?  -Wswitch-enum will detect unhandled cases.\nhttps://clang.llvm.org/docs/DiagnosticsReference.html#wswitch-enum",
+      "range": {
+        "startLine": 270,
+        "startChar": 0,
+        "endLine": 271,
+        "endChar": 14
+      },
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eaa30418_e86f5b27",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-05T17:24:37Z",
+      "side": 1,
+      "message": "please use unique_ptr\nhttps://stackoverflow.com/questions/42349388/unique-ptr-auto-destruction-magic",
+      "range": {
+        "startLine": 281,
+        "startChar": 0,
+        "endLine": 281,
+        "endChar": 41
+      },
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d0a853dd_2de6e41a",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-05T17:24:37Z",
+      "side": 1,
+      "message": "any of these const?",
+      "range": {
+        "startLine": 384,
+        "startChar": 2,
+        "endLine": 384,
+        "endChar": 5
+      },
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d876fede_3b46b85a",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-05T17:24:37Z",
+      "side": 1,
+      "message": "true",
+      "range": {
+        "startLine": 389,
+        "startChar": 9,
+        "endLine": 389,
+        "endChar": 10
+      },
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3353202e_3500f136",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-05T17:24:37Z",
+      "side": 1,
+      "message": "not sure if we need to config this all the time.",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 415,
+        "endChar": 31
+      },
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5caf073c_30e16572",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-05T17:24:37Z",
+      "side": 1,
+      "message": "for C++17, you can use an init statement within the if\n\nif (int status \u003d ... ;\n     status !\u003d 0) {\n    ALOG(.... status);\n}\n\nhttps://en.cppreference.com/w/cpp/language/if",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 23
+      },
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fd50b009_3e3b8db6",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-05T17:24:37Z",
+      "side": 1,
+      "message": "note my comment about using unique_ptr.  this would properly release all the files.",
+      "range": {
+        "startLine": 421,
+        "startChar": 0,
+        "endLine": 421,
+        "endChar": 22
+      },
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eb7a9848_d646f1bf",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 468,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-05T17:24:37Z",
+      "side": 1,
+      "message": "EXIT_SUCCESS",
+      "range": {
+        "startLine": 468,
+        "startChar": 9,
+        "endLine": 468,
+        "endChar": 10
+      },
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
