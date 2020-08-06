@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "bb8d4006_c0efdc57",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-06T21:25:37Z",
+      "side": 1,
+      "message": "this one first, then a bunch of things like aosp/1393418 which will reference this new file.\ni\u0027ll be deliberate with the first couple cl\u0027s that reference this file to verify syntax, etc.\n\n",
+      "revId": "9cfe23aa64fdaa1e941101166f7a5975244ceb47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
