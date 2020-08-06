@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "777191ac_ddca2505",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 950,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-06T23:09:44Z",
+      "side": 1,
+      "message": "should midi and wav test cases also be added to the new test in aosp/1374596\n-- that\u0027s one specially for flac. maybe it should be more generalized.",
+      "range": {
+        "startLine": 950,
+        "startChar": 7,
+        "endLine": 950,
+        "endChar": 65
+      },
+      "revId": "5bf067c71db216f2930dd0050f70d2da3b16bc95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96a0038c_dc491c64",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 955,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-06T23:09:44Z",
+      "side": 1,
+      "message": "let\u0027s put some units on this -- microseconds appears to be right based on line 979.",
+      "range": {
+        "startLine": 955,
+        "startChar": 16,
+        "endLine": 955,
+        "endChar": 28
+      },
+      "revId": "5bf067c71db216f2930dd0050f70d2da3b16bc95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
