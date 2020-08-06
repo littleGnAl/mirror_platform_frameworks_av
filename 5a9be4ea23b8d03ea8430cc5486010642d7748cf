@@ -2,6 +2,52 @@
   "comments": [
     {
       "key": {
+        "uuid": "38c5b72d_017a08bd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-08-06T02:18:45Z",
+      "side": 1,
+      "message": "speaker",
+      "range": {
+        "startLine": 7,
+        "startChar": 20,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "5a9be4ea23b8d03ea8430cc5486010642d7748cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "65bfcdae_5c144e9b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-08-06T02:18:45Z",
+      "side": 1,
+      "message": "audio policy where music switches to speaker when A2DP output mode switches from software encoder to offloaded encoder.",
+      "range": {
+        "startLine": 9,
+        "startChar": 23,
+        "endLine": 9,
+        "endChar": 108
+      },
+      "revId": "5a9be4ea23b8d03ea8430cc5486010642d7748cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "ea6a8d50_9df6d532",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
