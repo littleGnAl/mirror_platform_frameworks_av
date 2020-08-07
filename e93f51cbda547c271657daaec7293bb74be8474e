@@ -33,6 +33,46 @@
       "revId": "e93f51cbda547c271657daaec7293bb74be8474e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a321a91a_f5ee1b2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-07T17:36:25Z",
+      "side": 1,
+      "message": "(I was working OWNERS for the codec libraries that are in external/* and having them all\nread extra informatio from an owners file here in frameworks/av/  which would make it simpler\nto manage the owners across all of the codecs).",
+      "revId": "e93f51cbda547c271657daaec7293bb74be8474e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ea0fb54c_df88c7a1",
+        "filename": "media/libstagefright/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-07T17:36:25Z",
+      "side": 1,
+      "message": "OWNERS keeps going up the tree until it hits the root of the project (/frameworks/av in this case).\nso stuff in media/libstagefright will get names from this new file\nas well as media/OWNERS  which is the big long list you were trying to avoid.\n\nso this won\u0027t quite do what I think you intended (make for a shorter list of people that get added en-masse by some aosp contributors).",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "e93f51cbda547c271657daaec7293bb74be8474e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
