@@ -1307,6 +1307,7 @@ MtpResponseCode MtpServer::doDeleteObject() {
     bool success = deletePath((const char *)filePath);
 
     mDatabase->endDeleteObject(handle, success);
+
     return success ? result : MTP_RESPONSE_PARTIAL_DELETION;
 }
 
