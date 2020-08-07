@@ -53,6 +53,23 @@
     },
     {
       "key": {
+        "uuid": "a9b6f33e_fd8ebc0c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-07T17:41:08Z",
+      "side": 1,
+      "message": "set noparent as a line in OWNERS stops the crawl upwards to read additional OWNERS files.\n\nLet\u0027s be careful, or at least very deliberate, about how far we shrink the lists;  if we did this CL + set noparent, it would mean that lajos would be a required reviewer on every CL under media/libstagefright. That would be a burden on lajos and slowdown our own ability for development.",
+      "revId": "e93f51cbda547c271657daaec7293bb74be8474e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ea0fb54c_df88c7a1",
         "filename": "media/libstagefright/OWNERS",
         "patchSetId": 1
