@@ -22,6 +22,30 @@
       "revId": "70e5b05cf8a06b6c3b6ef5b42739ba5ef6b3e200",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "47604349_b558509b",
+        "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/InitDataParser_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1722344
+      },
+      "writtenOn": "2020-08-07T21:24:03Z",
+      "side": 1,
+      "message": "This array is now a vector so that I can use the vector.size() function.\nThe \"const int numberOfMimeTypes \u003d 7\" is now removed.\nThe switch is now \"... % mimeTypeStrings.size()\"",
+      "parentUuid": "47a6694c_80f7b8ed",
+      "range": {
+        "startLine": 85,
+        "startChar": 32,
+        "endLine": 85,
+        "endChar": 33
+      },
+      "revId": "70e5b05cf8a06b6c3b6ef5b42739ba5ef6b3e200",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
