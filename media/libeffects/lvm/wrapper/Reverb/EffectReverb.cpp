@@ -344,10 +344,17 @@ int process( effect_buffer_t   *pIn,
     LVREV_ReturnStatus_en   LvmStatus = LVREV_SUCCESS;              /* Function call status */
 
     // Check that the input is either mono or stereo
+#ifdef SUPPORT_MC
+    if (channels < 1 || channels > LVM_MAX_CHANNELS) {
+        ALOGE("\tLVREV_ERROR : process invalid PCM format");
+        return -EINVAL;
+    }
+#else
     if (!(channels == 1 || channels == FCC_2) ) {
         ALOGE("\tLVREV_ERROR : process invalid PCM format");
         return -EINVAL;
     }
+#endif
 
     size_t inSize = frameCount * sizeof(process_buffer_t) * channels;
     size_t outSize = frameCount * sizeof(process_buffer_t) * FCC_2;
@@ -383,8 +390,15 @@ int process( effect_buffer_t   *pIn,
         } else {
         // insert reverb input is always stereo
         for (int i = 0; i < frameCount; i++) {
+#ifdef SUPPORT_MC
+            pContext->InFrames[FCC_2 * i] =
+                        (process_buffer_t)pIn[channels * i] * REVERB_SEND_LEVEL;
+            pContext->InFrames[FCC_2 * i + 1] =
+                        (process_buffer_t)pIn[channels * i + 1] * REVERB_SEND_LEVEL;
+#else
             pContext->InFrames[2 * i] = (process_buffer_t)pIn[2 * i] * REVERB_SEND_LEVEL;
             pContext->InFrames[2 * i + 1] = (process_buffer_t)pIn[2 * i + 1] * REVERB_SEND_LEVEL;
+#endif
         }
     }
 
@@ -412,10 +426,18 @@ int process( effect_buffer_t   *pIn,
     if (pContext->auxiliary) {
         // nothing to do here
     } else {
+#ifdef SUPPORT_MC
+        for (int i = 0; i < frameCount; i++) {
+            // Mix with dry input
+            pContext->OutFrames[FCC_2 * i] += pIn[channels * i];
+            pContext->OutFrames[FCC_2 * i + 1] += pIn[channels * i + 1];
+        }
+#else
         for (int i = 0; i < frameCount * FCC_2; i++) { // always stereo here
             // Mix with dry input
             pContext->OutFrames[i] += pIn[i];
         }
+#endif
         // apply volume with ramp if needed
         if ((pContext->leftVolume != pContext->prevLeftVolume ||
                 pContext->rightVolume != pContext->prevRightVolume) &&
@@ -450,6 +472,35 @@ int process( effect_buffer_t   *pIn,
         }
     }
 
+#ifdef SUPPORT_MC
+    if (channels > 2) {
+        //Accumulate if required
+        if (pContext->config.outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE) {
+            for (int i = 0; i < frameCount; i++) {
+                pOut[channels * i] += pContext->OutFrames[FCC_2 * i];
+                pOut[channels * i + 1] += pContext->OutFrames[FCC_2 * i + 1];
+            }
+        } else {
+            for (int i = 0; i < frameCount; i++) {
+                pOut[channels * i] = pContext->OutFrames[FCC_2 * i];
+                pOut[channels * i + 1] = pContext->OutFrames[FCC_2 * i + 1];
+            }
+        }
+        for (int i = 0; i < frameCount; i++) {
+            for (int j = FCC_2; j < channels; j++) {
+                pOut[channels * i + j] = pIn[channels * i + j];
+	    }
+        }
+    } else {
+        if (pContext->config.outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE) {
+            for (int i = 0; i < frameCount * FCC_2; i++) { // always stereo here
+                pOut[i] += pContext->OutFrames[i];
+            }
+        }else{
+            memcpy(pOut, pContext->OutFrames, frameCount * sizeof(*pOut) * FCC_2);
+        }
+    }
+#else
 
     // Accumulate if required
     if (pContext->config.outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE){
@@ -462,6 +513,7 @@ int process( effect_buffer_t   *pIn,
         memcpy(pOut, pContext->OutFrames, frameCount * sizeof(*pOut) * FCC_2);
     }
 
+#endif
     return 0;
 }    /* end process */
 
@@ -525,9 +577,18 @@ int Reverb_setConfig(ReverbContext *pContext, effect_config_t *pConfig){
 
     CHECK_ARG(pConfig->inputCfg.samplingRate == pConfig->outputCfg.samplingRate);
     CHECK_ARG(pConfig->inputCfg.format == pConfig->outputCfg.format);
+#ifdef SUPPORT_MC
+    int inputChannels = audio_channel_count_from_out_mask(pConfig->inputCfg.channels);
+    CHECK_ARG((pContext->auxiliary && pConfig->inputCfg.channels == AUDIO_CHANNEL_OUT_MONO) ||
+              ((!pContext->auxiliary) &&
+              (inputChannels <= LVM_MAX_CHANNELS)));
+    int outputChannels = audio_channel_count_from_out_mask(pConfig->outputCfg.channels);
+    CHECK_ARG(outputChannels >= FCC_2 && outputChannels <= LVM_MAX_CHANNELS);
+#else
     CHECK_ARG((pContext->auxiliary && pConfig->inputCfg.channels == AUDIO_CHANNEL_OUT_MONO) ||
               ((!pContext->auxiliary) && pConfig->inputCfg.channels == AUDIO_CHANNEL_OUT_STEREO));
     CHECK_ARG(pConfig->outputCfg.channels == AUDIO_CHANNEL_OUT_STEREO);
+#endif
     CHECK_ARG(pConfig->outputCfg.accessMode == EFFECT_BUFFER_ACCESS_WRITE
               || pConfig->outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE);
     CHECK_ARG(pConfig->inputCfg.format == EFFECT_BUFFER_FORMAT);
