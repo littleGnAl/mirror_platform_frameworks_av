@@ -701,6 +701,30 @@
     },
     {
       "key": {
+        "uuid": "56e64c48_7ca2fdee",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-10T22:04:03Z",
+      "side": 1,
+      "message": "Prefer not to use a macro  ALOGE_AND_RETURN_IF()...\n\nHowever, I have a suggestion on making the C++17 if style easier to read by putting the initializer and conditon on lines by themselves.\n\n  if (initializer;\n      condition) {\n  }",
+      "parentUuid": "e4e44696_8afbaa31",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 23
+      },
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd50b009_3e3b8db6",
         "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
         "patchSetId": 8
