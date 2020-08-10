@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "edd22123_1e49b6af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-10T21:59:14Z",
+      "side": 1,
+      "message": "can you please help fix a few more nits, thanks!",
+      "revId": "784c49529214efaeb6d04fd55331be4e3764c8b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f908ae56_6d73eba8",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-10T21:59:14Z",
+      "side": 1,
+      "message": "nit: a comma after the MONO would allow adding new entries without disturbing this line.",
+      "range": {
+        "startLine": 102,
+        "startChar": 35,
+        "endLine": 102,
+        "endChar": 36
+      },
+      "revId": "784c49529214efaeb6d04fd55331be4e3764c8b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "98dc96ff_1700cd10",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-10T21:59:14Z",
+      "side": 1,
+      "message": "nit: put this on a separate line.",
+      "range": {
+        "startLine": 157,
+        "startChar": 67,
+        "endLine": 157,
+        "endChar": 79
+      },
+      "revId": "784c49529214efaeb6d04fd55331be4e3764c8b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a87d6e6_8f2105f8",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-10T21:59:14Z",
+      "side": 1,
+      "message": "nit separate line. here and on line 352, 360, 401, 408, 415, 434.",
+      "range": {
+        "startLine": 322,
+        "startChar": 76,
+        "endLine": 322,
+        "endChar": 87
+      },
+      "revId": "784c49529214efaeb6d04fd55331be4e3764c8b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
