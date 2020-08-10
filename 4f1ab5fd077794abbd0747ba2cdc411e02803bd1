@@ -677,6 +677,30 @@
     },
     {
       "key": {
+        "uuid": "e4e44696_8afbaa31",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-08-10T21:53:42Z",
+      "side": 1,
+      "message": "Andy, IMHO, in terms of code readability, calling the function inside if() doesn\u0027t appear cleaner/easier to read.\nIndentation can\u0027t be well maintained.\nIn the older structure, it is easier to move if(status) {ALOGE();return -1} to a macro and make it easier to read. \nPlease let us know if you would still prefer c++17 style.\nThanks.",
+      "parentUuid": "9bce71ed_2d884305",
+      "range": {
+        "startLine": 416,
+        "startChar": 0,
+        "endLine": 419,
+        "endChar": 23
+      },
+      "revId": "4f1ab5fd077794abbd0747ba2cdc411e02803bd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "fd50b009_3e3b8db6",
         "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
         "patchSetId": 8
