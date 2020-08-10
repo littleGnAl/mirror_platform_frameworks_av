@@ -46,6 +46,30 @@
       "revId": "ded51064cc987a2770a5e065080a3ad3d172ad79",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "931e33ad_68525fa5",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 471,
+      "author": {
+        "id": 1437942
+      },
+      "writtenOn": "2020-08-10T01:25:57Z",
+      "side": 1,
+      "message": "indentation fixed by file style",
+      "parentUuid": "a8133a5c_229a2a6c",
+      "range": {
+        "startLine": 470,
+        "startChar": 7,
+        "endLine": 471,
+        "endChar": 82
+      },
+      "revId": "ded51064cc987a2770a5e065080a3ad3d172ad79",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
