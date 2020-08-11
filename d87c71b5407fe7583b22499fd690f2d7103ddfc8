@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "260e8612_29975d8c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-11T21:56:09Z",
+      "side": 1,
+      "message": "still have inconsistent/confusing indentation.  can you please take a look?  thanks!",
+      "revId": "d87c71b5407fe7583b22499fd690f2d7103ddfc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bc5c9b35_b38aecf8",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 348,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-11T21:56:09Z",
+      "side": 1,
+      "message": "nit indent by 8.",
+      "range": {
+        "startLine": 347,
+        "startChar": 0,
+        "endLine": 348,
+        "endChar": 35
+      },
+      "revId": "d87c71b5407fe7583b22499fd690f2d7103ddfc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6422bc56_9573a661",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-11T21:56:09Z",
+      "side": 1,
+      "message": "nit indent by 8 or align.",
+      "range": {
+        "startLine": 354,
+        "startChar": 0,
+        "endLine": 355,
+        "endChar": 62
+      },
+      "revId": "d87c71b5407fe7583b22499fd690f2d7103ddfc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e1cba16b_5198207a",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-11T21:56:09Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 405,
+        "startChar": 0,
+        "endLine": 406,
+        "endChar": 41
+      },
+      "revId": "d87c71b5407fe7583b22499fd690f2d7103ddfc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "284b9dd5_7147bcb3",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-11T21:56:09Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 413,
+        "startChar": 0,
+        "endLine": 414,
+        "endChar": 72
+      },
+      "revId": "d87c71b5407fe7583b22499fd690f2d7103ddfc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
