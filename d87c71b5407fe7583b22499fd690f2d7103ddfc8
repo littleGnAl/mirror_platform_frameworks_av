@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "5394e521_136ec8d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-08-11T22:51:44Z",
+      "side": 1,
+      "message": "Saketh,\nPlease run clang-format -i for the source and bpfmt -w for Android.bp.\n",
+      "revId": "d87c71b5407fe7583b22499fd690f2d7103ddfc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bc5c9b35_b38aecf8",
         "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
         "patchSetId": 10
