@@ -383,15 +383,10 @@ int process( effect_buffer_t   *pIn,
         } else {
         // insert reverb input is always stereo
         for (int i = 0; i < frameCount; i++) {
-#ifdef SUPPORT_MC
             pContext->InFrames[2 * i] =
                         (process_buffer_t)pIn[channels * i] * REVERB_SEND_LEVEL;
             pContext->InFrames[2 * i + 1] =
                         (process_buffer_t)pIn[channels * i + 1] * REVERB_SEND_LEVEL;
-#else
-            pContext->InFrames[2 * i] = (process_buffer_t)pIn[2 * i] * REVERB_SEND_LEVEL;
-            pContext->InFrames[2 * i + 1] = (process_buffer_t)pIn[2 * i + 1] * REVERB_SEND_LEVEL;
-#endif
         }
     }
 
@@ -457,7 +452,6 @@ int process( effect_buffer_t   *pIn,
         }
     }
 
-#ifdef SUPPORT_MC
     if (channels > 2) {
         //Accumulate if required
         if (pContext->config.outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE){
@@ -480,20 +474,6 @@ int process( effect_buffer_t   *pIn,
             memcpy(pOut, pContext->OutFrames, frameCount * sizeof(*pOut) * FCC_2);
         }
     }
-#else
-
-    // Accumulate if required
-    if (pContext->config.outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE){
-        //ALOGV("\tBuffer access is ACCUMULATE");
-        for (int i = 0; i < frameCount * FCC_2; i++) { // always stereo here
-            pOut[i] += pContext->OutFrames[i];
-        }
-    }else{
-        //ALOGV("\tBuffer access is WRITE");
-        memcpy(pOut, pContext->OutFrames, frameCount * sizeof(*pOut) * FCC_2);
-    }
-
-#endif
     return 0;
 }    /* end process */
 
@@ -557,16 +537,10 @@ int Reverb_setConfig(ReverbContext *pContext, effect_config_t *pConfig){
 
     CHECK_ARG(pConfig->inputCfg.samplingRate == pConfig->outputCfg.samplingRate);
     CHECK_ARG(pConfig->inputCfg.format == pConfig->outputCfg.format);
-#ifdef SUPPORT_MC
     CHECK_ARG((pContext->auxiliary && pConfig->inputCfg.channels == AUDIO_CHANNEL_OUT_MONO) ||
               ((!pContext->auxiliary) &&
 	       (audio_channel_count_from_out_mask(pConfig->inputCfg.channels) <= LVM_MAX_CHANNELS)));
     CHECK_ARG(audio_channel_count_from_out_mask(pConfig->outputCfg.channels) <= LVM_MAX_CHANNELS);
-#else
-    CHECK_ARG((pContext->auxiliary && pConfig->inputCfg.channels == AUDIO_CHANNEL_OUT_MONO) ||
-              ((!pContext->auxiliary) && pConfig->inputCfg.channels == AUDIO_CHANNEL_OUT_STEREO));
-    CHECK_ARG(pConfig->outputCfg.channels == AUDIO_CHANNEL_OUT_STEREO);
-#endif
     CHECK_ARG(pConfig->outputCfg.accessMode == EFFECT_BUFFER_ACCESS_WRITE
               || pConfig->outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE);
     CHECK_ARG(pConfig->inputCfg.format == EFFECT_BUFFER_FORMAT);
