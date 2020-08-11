@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b90bb38b_3600368b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-11T22:40:02Z",
+      "side": 1,
+      "message": "This may be okay, we need to understand how this impacts backward compatibility requirements for this code. E.g. this must result in C2AllocationIon equivalent handles (using /dev/ion) when running on Android P-R.",
+      "revId": "ac8ed345d328dc7e0f28950f16ce8590f86ac0b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
