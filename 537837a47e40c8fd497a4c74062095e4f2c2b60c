@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "bfd3bcbb_f559f655",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-11T22:38:19Z",
+      "side": 1,
+      "message": "Thanks for creating these. I am still trying to digest how this fits in with our allocation strategy.",
+      "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c8d0b80b_bc73a9a1",
         "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
         "patchSetId": 8
@@ -79,6 +96,30 @@
       "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ee97ec7_48c3b791",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-11T22:38:19Z",
+      "side": 1,
+      "message": "I would prefer C2Allocations to be called allocations. These actually go against our C2 naming guide as all of these should be really called C2BufAllocation, etc. In that sense these could be C2DmaBufAllocation.",
+      "parentUuid": "8128cd40_c878bbcd",
+      "range": {
+        "startLine": 98,
+        "startChar": 6,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -174,6 +215,30 @@
     },
     {
       "key": {
+        "uuid": "43426551_a953b66c",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-11T22:38:19Z",
+      "side": 1,
+      "message": "We use this pattern in all of our allocators, as there could be a specialization of C2AllocatorBuf where the constructor does not result in mInit set to C2_OK, but still use this method.",
+      "parentUuid": "43b71360_4699a82c",
+      "range": {
+        "startLine": 338,
+        "startChar": 6,
+        "endLine": 338,
+        "endChar": 20
+      },
+      "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0b5ca85_3a3baf6d",
         "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
         "patchSetId": 8
@@ -194,6 +259,30 @@
       "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30860123_7ec45050",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-11T22:38:19Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e0b5ca85_3a3baf6d",
+      "range": {
+        "startLine": 356,
+        "startChar": 2,
+        "endLine": 356,
+        "endChar": 23
+      },
+      "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
