@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f469cca3_a7c5ba96",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-08-12T13:20:53Z",
+      "side": 1,
+      "message": "Used the following command for formatting\n\nclang-format -i -style\u003d\"{BasedOnStyle: Google, ColumnLimit: 98}\" -sort-includes\u003d0 PreProcessingTest.cpp\n\ngit show | grep -P \u0027^\\+.*\u0027 | grep -P \u0027([ \\t]$|.{100,}|(if|for|while|switch)\\(|\\t|^[^@].*,[^ ])|\\( \\S| \\)|\\)\\{\u0027  \nwas throwing up styling errors for any value of ColumnWidth more than 98. So currently kept it to 98\n\nThanks!\n",
+      "revId": "4ece3e0c29efe44491d88e9b90c4b57ed8feae8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
