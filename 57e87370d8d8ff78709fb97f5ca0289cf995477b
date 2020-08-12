@@ -399,6 +399,30 @@
       "revId": "57e87370d8d8ff78709fb97f5ca0289cf995477b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ed1b75d4_23b840d7",
+        "filename": "media/libstagefright/tests/writer/WriterUtility.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-08-12T07:24:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f272d39b_23a3cc51",
+      "range": {
+        "startLine": 38,
+        "startChar": 34,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "57e87370d8d8ff78709fb97f5ca0289cf995477b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
