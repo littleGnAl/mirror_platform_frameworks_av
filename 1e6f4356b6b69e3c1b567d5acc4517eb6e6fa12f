@@ -140,6 +140,30 @@
       "revId": "1e6f4356b6b69e3c1b567d5acc4517eb6e6fa12f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "76af9fe7_dde20d4b",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1127,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-08-12T21:18:55Z",
+      "side": 1,
+      "message": "Marking this as resolved as CL has code-review +2.",
+      "parentUuid": "4271dc9a_22ac7554",
+      "range": {
+        "startLine": 1111,
+        "startChar": 26,
+        "endLine": 1127,
+        "endChar": 90
+      },
+      "revId": "1e6f4356b6b69e3c1b567d5acc4517eb6e6fa12f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
