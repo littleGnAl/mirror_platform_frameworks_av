@@ -1,0 +1,58 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004376744",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1389062?revision\u003d9",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "37501aeb_c06a4085",
+        "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/protos/DeviceFiles.proto",
+        "patchSetId": 9
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-12T22:52:28Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 5,
+        "startChar": 67,
+        "endLine": 5,
+        "endChar": 73
+      },
+      "revId": "6699aa74fc4148fecd06e3a2f176365d4df15c9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004376740",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1389062?revision\u003d9",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c3ef6a3e_fac44da8",
+        "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/protos/DeviceFiles.proto",
+        "patchSetId": 9
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-12T22:52:28Z",
+      "side": 1,
+      "message": "Unrecognized license :\ndistributed under the Widevine Master License Agreement.\n",
+      "range": {
+        "startLine": 5,
+        "startChar": 59,
+        "endLine": 6,
+        "endChar": 21
+      },
+      "revId": "6699aa74fc4148fecd06e3a2f176365d4df15c9f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
