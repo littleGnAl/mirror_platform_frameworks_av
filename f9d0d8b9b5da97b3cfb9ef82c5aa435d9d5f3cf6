@@ -16,6 +16,24 @@
       "revId": "f9d0d8b9b5da97b3cfb9ef82c5aa435d9d5f3cf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9b305139_ab3a2e2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-08-12T21:02:58Z",
+      "side": 1,
+      "message": "Ray,\nThese are no longer needed now. \n\nVasu,\nPlease abandon all the related patches that are pending for this in aosp/master.",
+      "parentUuid": "dedf20b3_82652392",
+      "revId": "f9d0d8b9b5da97b3cfb9ef82c5aa435d9d5f3cf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
