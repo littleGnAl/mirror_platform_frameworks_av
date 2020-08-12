@@ -16,6 +16,52 @@
       "revId": "ecbc6ea6a3bed314eb6bcfafd5aa5abb6497d501",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a578f825_dfe02d41",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/src/block_idct.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-12T19:02:26Z",
+      "side": 1,
+      "message": "this still allows x4+x5 to be in 32-bits and overflow.\nhow about:\n\nx2 \u003d (181 * ((int64)x4 + x5) + 128) \u003e\u003e 8;\n\nso that the x4+x5 is protected.\n\nthis phrasing generates a better instruction sequence too.",
+      "range": {
+        "startLine": 892,
+        "startChar": 10,
+        "endLine": 893,
+        "endChar": 40
+      },
+      "revId": "ecbc6ea6a3bed314eb6bcfafd5aa5abb6497d501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ef430eb1_a59fe672",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/src/idct_vca.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-12T19:02:26Z",
+      "side": 1,
+      "message": "same comment as in the other file.",
+      "range": {
+        "startLine": 399,
+        "startChar": 7,
+        "endLine": 399,
+        "endChar": 24
+      },
+      "revId": "ecbc6ea6a3bed314eb6bcfafd5aa5abb6497d501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
