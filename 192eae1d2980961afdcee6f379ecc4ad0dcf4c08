@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ce490da8_0aac0aa5",
+        "filename": "drm/mediadrm/plugins/clearkey/Android.bp",
+        "patchSetId": 10
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1005920
+      },
+      "writtenOn": "2020-08-12T23:44:12Z",
+      "side": 1,
+      "message": "Can you move this down to the hidl/fuzz subdirectory?",
+      "revId": "192eae1d2980961afdcee6f379ecc4ad0dcf4c08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c8c81727_14743075",
         "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/protos/DeviceFiles.proto",
         "patchSetId": 10
