@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c8c81727_14743075",
+        "filename": "drm/mediadrm/plugins/clearkey/hidl/fuzz/InitDataParser_fuzzer/protos/DeviceFiles.proto",
+        "patchSetId": 10
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1005920
+      },
+      "writtenOn": "2020-08-12T23:30:54Z",
+      "side": 1,
+      "message": "Sorry but it\u0027s not okay to duplicate the proto files, it makes maintenance error prone and more difficult.",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 79
+      },
+      "revId": "192eae1d2980961afdcee6f379ecc4ad0dcf4c08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
