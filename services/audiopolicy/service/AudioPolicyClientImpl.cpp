@@ -128,14 +128,14 @@ status_t AudioPolicyService::AudioPolicyClient::setVolumeSourceVolume(
     return mAudioPolicyService->setVolumeSourceVolume(volumeSource, volume, output, delay_ms);
 }
 
-status_t AudioPolicyService::AudioPolicyClient::invalidateStream(audio_stream_type_t stream)
+status_t AudioPolicyService::AudioPolicyClient::invalidateStrategy(product_strategy_t strategy)
 {
     sp<IAudioFlinger> af = AudioSystem::get_audio_flinger();
     if (af == 0) {
         return PERMISSION_DENIED;
     }
 
-    return af->invalidateStream(stream);
+    return af->invalidateStrategy(strategy);
 }
 
 void AudioPolicyService::AudioPolicyClient::setParameters(audio_io_handle_t io_handle,

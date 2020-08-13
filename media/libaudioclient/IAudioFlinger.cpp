@@ -61,7 +61,7 @@ enum {
     RESTORE_OUTPUT,
     OPEN_INPUT,
     CLOSE_INPUT,
-    INVALIDATE_STREAM,
+    INVALIDATE_STRATEGY,
     SET_VOICE_VOLUME,
     GET_RENDER_POSITION,
     GET_INPUT_FRAMES_LOST,
@@ -507,12 +507,12 @@ public:
         return reply.readInt32();
     }
 
-    virtual status_t invalidateStream(audio_stream_type_t stream)
+    virtual status_t invalidateStrategy(product_strategy_t strategy)
     {
         Parcel data, reply;
         data.writeInterfaceToken(IAudioFlinger::getInterfaceDescriptor());
-        data.writeInt32((int32_t) stream);
-        remote()->transact(INVALIDATE_STREAM, data, &reply);
+        data.writeInt32(static_cast<int32_t>(strategy));
+        remote()->transact(INVALIDATE_STRATEGY, data, &reply);
         return reply.readInt32();
     }
 
@@ -942,7 +942,7 @@ status_t BnAudioFlinger::onTransact(
         case RESTORE_OUTPUT:
         case OPEN_INPUT:
         case CLOSE_INPUT:
-        case INVALIDATE_STREAM:
+        case INVALIDATE_STRATEGY:
         case SET_VOICE_VOLUME:
         case MOVE_EFFECTS:
         case SET_EFFECT_SUSPENDED:
@@ -1289,10 +1289,10 @@ status_t BnAudioFlinger::onTransact(
             reply->writeInt32(closeInput((audio_io_handle_t) data.readInt32()));
             return NO_ERROR;
         } break;
-        case INVALIDATE_STREAM: {
+        case INVALIDATE_STRATEGY: {
             CHECK_INTERFACE(IAudioFlinger, data, reply);
-            audio_stream_type_t stream = (audio_stream_type_t) data.readInt32();
-            reply->writeInt32(invalidateStream(stream));
+            product_strategy_t strategy = static_cast<product_strategy_t>(data.readInt32());
+            reply->writeInt32(invalidateStrategy(strategy));
             return NO_ERROR;
         } break;
         case SET_VOICE_VOLUME: {

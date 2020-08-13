@@ -169,7 +169,7 @@ void ProductStrategy::dump(String8 *dst, int spaces) const
 }
 
 product_strategy_t ProductStrategyMap::getProductStrategyForAttributes(
-        const audio_attributes_t &attr) const
+        const audio_attributes_t &attr, bool fallbackOnDefault) const
 {
     for (const auto &iter : *this) {
         if (iter.second->matches(attr)) {
@@ -178,7 +178,7 @@ product_strategy_t ProductStrategyMap::getProductStrategyForAttributes(
     }
     ALOGV("%s: No matching product strategy for attributes %s, return default", __FUNCTION__,
           toString(attr).c_str());
-    return getDefault();
+    return fallbackOnDefault? getDefault() : PRODUCT_STRATEGY_NONE;
 }
 
 audio_attributes_t ProductStrategyMap::getAttributesForStreamType(audio_stream_type_t stream) const

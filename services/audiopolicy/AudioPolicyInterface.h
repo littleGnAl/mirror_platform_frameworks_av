@@ -351,8 +351,13 @@ public:
     virtual status_t setVolumeSourceVolume(
             VolumeSource volumeSource, float volume, audio_io_handle_t output, int delayMs = 0) = 0;
 
-    // invalidate a stream type, causing a reroute to an unspecified new output
-    virtual status_t invalidateStream(audio_stream_type_t stream) = 0;
+    /**
+     * @brief invalidateStrategy: it invalidates all the track on the given output following
+     * the strategy, causing a reroute to an unspecified new output
+     * @param strategy
+     * @return
+     */
+    virtual status_t invalidateStrategy(product_strategy_t strategy) = 0;
 
     // function enabling to send proprietary informations directly from audio policy manager to audio hardware interface.
     virtual void setParameters(audio_io_handle_t ioHandle, const String8& keyValuePairs, int delayMs = 0) = 0;
