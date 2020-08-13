@@ -1450,7 +1450,7 @@ void AudioFlinger::ThreadBase::onEffectEnable(const sp<EffectModule>& effect) {
     if (!effect->isOffloadable()) {
         if (mType == ThreadBase::OFFLOAD) {
             PlaybackThread *t = (PlaybackThread *)this;
-            t->invalidateTracks(AUDIO_STREAM_MUSIC);
+            t->invalidateTracks(AudioFlinger::toStrategy(attributes_initializer(AUDIO_USAGE_MEDIA)));
         }
         if (effect->sessionId() == AUDIO_SESSION_OUTPUT_MIX) {
             mAudioFlinger->onNonOffloadableGlobalEffectEnable();
@@ -2268,14 +2268,13 @@ sp<AudioFlinger::PlaybackThread::Track> AudioFlinger::PlaybackThread::createTrac
         // all tracks in same audio session must share the same routing strategy otherwise
         // conflicts will happen when tracks are moved from one output to another by audio policy
         // manager
-        uint32_t strategy = AudioSystem::getStrategyForStream(streamType);
+        product_strategy_t strategy = AudioFlinger::toStrategy(attr);
         for (size_t i = 0; i < mTracks.size(); ++i) {
             sp<Track> t = mTracks[i];
             if (t != 0 && t->isExternalTrack()) {
-                uint32_t actual = AudioSystem::getStrategyForStream(t->streamType());
-                if (sessionId == t->sessionId() && strategy != actual) {
+                if (sessionId == t->sessionId() && strategy != t->strategy()) {
                     ALOGE("createTrack_l() mismatched strategy; expected %u but found %u",
-                            strategy, actual);
+                            strategy, t->strategy());
                     lStatus = BAD_VALUE;
                     goto Exit;
                 }
@@ -2299,7 +2298,7 @@ sp<AudioFlinger::PlaybackThread::Track> AudioFlinger::PlaybackThread::createTrac
         if (chain != 0) {
             ALOGV("createTrack_l() setting main buffer %p", chain->inBuffer());
             track->setMainBuffer(chain->inBuffer());
-            chain->setStrategy(AudioSystem::getStrategyForStream(track->streamType()));
+            chain->setStrategy(track->strategy());
             chain->incTrackCnt();
         }
 
@@ -2854,7 +2853,7 @@ uint32_t AudioFlinger::PlaybackThread::getStrategyForSession_l(audio_session_t s
     for (size_t i = 0; i < mTracks.size(); i++) {
         sp<Track> track = mTracks[i];
         if (sessionId == track->sessionId() && !track->isInvalid()) {
-            return AudioSystem::getStrategyForStream(track->streamType());
+            return track->strategy();
         }
     }
     return AudioSystem::getStrategyForStream(AUDIO_STREAM_MUSIC);
@@ -3090,15 +3089,16 @@ void AudioFlinger::PlaybackThread::cacheParameters_l()
     }
 }
 
-bool AudioFlinger::PlaybackThread::invalidateTracks_l(audio_stream_type_t streamType)
+bool AudioFlinger::PlaybackThread::invalidateTracks_l(product_strategy_t strategy)
 {
-    ALOGV("MixerThread::invalidateTracks() mixer %p, streamType %d, mTracks.size %zu",
-            this,  streamType, mTracks.size());
+    ALOGV("MixerThread::invalidateTracks() mixer %p, strategy %d, mTracks.size %zu",
+            this,  strategy, mTracks.size());
     bool trackMatch = false;
     size_t size = mTracks.size();
     for (size_t i = 0; i < size; i++) {
         sp<Track> t = mTracks[i];
-        if (t->streamType() == streamType && t->isExternalTrack()) {
+        if ((strategy == PRODUCT_STRATEGY_NONE || t->strategy() == strategy)
+                && t->isExternalTrack()) {
             t->invalidate();
             trackMatch = true;
         }
@@ -3106,10 +3106,10 @@ bool AudioFlinger::PlaybackThread::invalidateTracks_l(audio_stream_type_t stream
     return trackMatch;
 }
 
-void AudioFlinger::PlaybackThread::invalidateTracks(audio_stream_type_t streamType)
+void AudioFlinger::PlaybackThread::invalidateTracks(product_strategy_t strategy)
 {
     Mutex::Autolock _l(mLock);
-    invalidateTracks_l(streamType);
+    invalidateTracks_l(strategy);
 }
 
 status_t AudioFlinger::PlaybackThread::addEffectChain_l(const sp<EffectChain>& chain)
@@ -4541,9 +4541,7 @@ void AudioFlinger::PlaybackThread::onAddNewTrack_l()
 
 void AudioFlinger::PlaybackThread::onAsyncError()
 {
-    for (int i = AUDIO_STREAM_SYSTEM; i < (int)AUDIO_STREAM_CNT; i++) {
-        invalidateTracks((audio_stream_type_t)i);
-    }
+    invalidateTracks(PRODUCT_STRATEGY_NONE);
 }
 
 void AudioFlinger::MixerThread::threadLoop_mix()
@@ -6451,10 +6449,10 @@ void AudioFlinger::OffloadThread::flushHw_l()
     }
 }
 
-void AudioFlinger::OffloadThread::invalidateTracks(audio_stream_type_t streamType)
+void AudioFlinger::OffloadThread::invalidateTracks(product_strategy_t strategy)
 {
     Mutex::Autolock _l(mLock);
-    if (PlaybackThread::invalidateTracks_l(streamType)) {
+    if (PlaybackThread::invalidateTracks_l(strategy)) {
         mFlushPending = true;
     }
 }
@@ -8612,7 +8610,7 @@ status_t AudioFlinger::MmapThread::start(const AudioClient& client,
         config.sample_rate = mSampleRate;
         config.channel_mask = mChannelMask;
         config.format = mFormat;
-        audio_stream_type_t stream = streamType();
+        audio_stream_type_t stream = AUDIO_STREAM_DEFAULT;
         audio_output_flags_t flags =
                 (audio_output_flags_t)(AUDIO_OUTPUT_FLAG_MMAP_NOIRQ | AUDIO_OUTPUT_FLAG_DIRECT);
         audio_port_handle_t deviceId = mDeviceId;
@@ -8697,7 +8695,7 @@ status_t AudioFlinger::MmapThread::start(const AudioClient& client,
     mActiveTracks.add(track);
     sp<EffectChain> chain = getEffectChain_l(mSessionId);
     if (chain != 0) {
-        chain->setStrategy(AudioSystem::getStrategyForStream(streamType()));
+        chain->setStrategy(strategy());
         chain->incTrackCnt();
         chain->incActiveTrackCnt();
     }
@@ -9198,7 +9196,7 @@ AudioFlinger::MmapPlaybackThread::MmapPlaybackThread(
         const sp<AudioFlinger>& audioFlinger, audio_io_handle_t id,
         AudioHwDevice *hwDev,  AudioStreamOut *output, bool systemReady)
     : MmapThread(audioFlinger, id, hwDev, output->stream, systemReady),
-      mStreamType(AUDIO_STREAM_MUSIC),
+      mStrategy(AudioFlinger::toStrategy(attributes_initializer(AUDIO_USAGE_MEDIA))),
       mOutput(output)
 {
     snprintf(mThreadName, kThreadNameLength, "AudioMmapOut_%X", id);
@@ -9224,7 +9222,8 @@ void AudioFlinger::MmapPlaybackThread::configure(const audio_attributes_t *attr,
                                                 audio_port_handle_t portId)
 {
     MmapThread::configure(attr, streamType, sessionId, callback, deviceId, portId);
-    mStreamType = streamType;
+    mStrategy = *attr != AUDIO_ATTRIBUTES_INITIALIZER ?
+                AudioFlinger::toStrategy(*attr) : AudioFlinger::toStrategy(streamType);
     mVolumeSource = *attr != AUDIO_ATTRIBUTES_INITIALIZER ?
             AudioFlinger::toVolumeSource(*attr) : AudioFlinger::toVolumeSource(streamType);
 }
@@ -9286,10 +9285,10 @@ float AudioFlinger::MmapPlaybackThread::getVolumeSourceVolume(VolumeSource volum
     return volumeSource == mVolumeSource ? mVolumeSourceVolume : 0.0f;
 }
 
-void AudioFlinger::MmapPlaybackThread::invalidateTracks(audio_stream_type_t streamType)
+void AudioFlinger::MmapPlaybackThread::invalidateTracks(product_strategy_t strategy)
 {
     Mutex::Autolock _l(mLock);
-    if (streamType == mStreamType) {
+    if (strategy == PRODUCT_STRATEGY_NONE || strategy == mStrategy) {
         for (const sp<MmapTrack> &track : mActiveTracks) {
             track->invalidate();
         }
@@ -9399,9 +9398,9 @@ void AudioFlinger::MmapPlaybackThread::dumpInternals_l(int fd, const Vector<Stri
 {
     MmapThread::dumpInternals_l(fd, args);
 
-    dprintf(fd, "  Stream type: %d Volume Source: %d Volume Source volume: %f HAL volume: %f "
+    dprintf(fd, "  Strategy: %d Volume Source: %d Volume Source volume: %f HAL volume: %f "
                 "Volume Source mute %d\n",
-            mStreamType, mVolumeSource, mVolumeSourceVolume, mHalVolFloat, mVolumeSourceMute);
+            mStrategy, mVolumeSource, mVolumeSourceVolume, mHalVolFloat, mVolumeSourceMute);
     dprintf(fd, "  Master volume: %f Master mute %d\n", mMasterVolume, mMasterMute);
 }
 

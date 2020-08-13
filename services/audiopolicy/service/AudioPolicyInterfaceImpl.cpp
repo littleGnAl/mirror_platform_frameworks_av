@@ -1303,7 +1303,7 @@ status_t AudioPolicyService::getProductStrategyFromAudioAttributes(
     if (mAudioPolicyManager == NULL) {
         return NO_INIT;
     }
-    Mutex::Autolock _l(mLock);
+    // DO NOT LOCK, may be called from AudioFlinger with lock held, reaching deadlock
     return mAudioPolicyManager->getProductStrategyFromAudioAttributes(aa, productStrategy);
 }
 

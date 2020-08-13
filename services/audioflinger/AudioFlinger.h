@@ -202,7 +202,7 @@ public:
 
     virtual status_t closeInput(audio_io_handle_t input);
 
-    virtual status_t invalidateStream(audio_stream_type_t stream);
+    status_t invalidateStrategy(product_strategy_t strategy) override;
 
     virtual status_t setVoiceVolume(float volume);
 
@@ -943,6 +943,8 @@ public:
     static VolumeSource toVolumeSource(audio_stream_type_t streamType,
                                        bool fallbackOnDefault = true);
     static VolumeSource toVolumeSource(const audio_attributes_t& attributes);
+    static product_strategy_t toStrategy(audio_stream_type_t streamType);
+    static product_strategy_t toStrategy(const audio_attributes_t& attributes);
 
 private:
     std::atomic<bool> mIsLowRamDevice;

@@ -524,7 +524,8 @@ AudioFlinger::PlaybackThread::Track::Track(
     mFillingUpStatus(FS_INVALID),
     // mRetryCount initialized later when needed
     mSharedBuffer(sharedBuffer),
-    mStreamType(streamType),
+    mStrategy((attr != AUDIO_ATTRIBUTES_INITIALIZER ?
+            AudioFlinger::toStrategy(attr) : AudioFlinger::toStrategy(streamType))),
     mVolumeSource((attr != AUDIO_ATTRIBUTES_INITIALIZER ?
             AudioFlinger::toVolumeSource(attr) : AudioFlinger::toVolumeSource(streamType))),
     mMainBuffer(thread->sinkBuffer()),
@@ -751,7 +752,7 @@ void AudioFlinger::PlaybackThread::Track::appendDump(String8& result, bool activ
             mChannelMask,
             sampleRate(),
 
-            mStreamType,
+            mStrategy,
             mVolumeSource,
             mAttr.usage,
             mAttr.content_type,

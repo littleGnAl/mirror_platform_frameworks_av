@@ -93,9 +93,7 @@ public:
 
     virtual uint32_t    sampleRate() const;
 
-            audio_stream_type_t streamType() const {
-                return mStreamType;
-            }
+            product_strategy_t strategy() const { return mStrategy; }
             VolumeSource getVolumeSource() const { return mVolumeSource; }
 
             bool        isOffloaded() const
@@ -236,7 +234,7 @@ protected:
     sp<IMemory>         mSharedBuffer;
 
     bool                mResetDone;
-    const audio_stream_type_t mStreamType;
+    const product_strategy_t mStrategy;
     const VolumeSource  mVolumeSource;
     effect_buffer_t     *mMainBuffer;
 
