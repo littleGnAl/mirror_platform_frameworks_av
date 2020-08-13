@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004397451",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1398469?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "1250833b_76ee4fa1",
+          "description": "Change to \"services/audiopolicy/engine/interface/EngineInterface.h\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/engine/interface/EngineInterface.h",
+              "range": {
+                "startLine": 112,
+                "startChar": 15,
+                "endLine": 112,
+                "endChar": 26
+              },
+              "replacement": "explicitly"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "d1e1b6ce_9a75920f",
+        "filename": "services/audiopolicy/engine/interface/EngineInterface.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-13T16:34:54Z",
+      "side": 1,
+      "message": "Common typo found: \"explicitely\" -- should it be \"explicitly\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 112,
+        "startChar": 15,
+        "endLine": 112,
+        "endChar": 26
+      },
+      "revId": "6a9febbc80f60ae6a25f79cefa855a936aa36170",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
