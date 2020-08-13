@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "93874a17_2af4fc3d",
+        "filename": "drm/mediadrm/plugins/clearkey/hidl/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-08-13T23:03:07Z",
+      "side": 1,
+      "message": "This seems to be the problem:  \"clearkey_service_defaults_fuzz\" depends on undefined module \"libclearkeycommonfuzz\"",
+      "range": {
+        "startLine": 113,
+        "startChar": 9,
+        "endLine": 113,
+        "endChar": 30
+      },
+      "revId": "cd3442e938f47b43588f050c415b0380c81e1d10",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
