@@ -53,7 +53,7 @@ public:
                                                audio_policy_dev_state_t /*state*/) override;
 
     product_strategy_t getProductStrategyForAttributes(
-            const audio_attributes_t &attr) const override;
+            const audio_attributes_t &attr, bool fallbackOnDefault = true) const override;
 
     audio_stream_type_t getStreamTypeForAttributes(const audio_attributes_t &attr) const override;
 
