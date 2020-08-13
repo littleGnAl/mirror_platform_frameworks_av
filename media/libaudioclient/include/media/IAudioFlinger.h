@@ -423,7 +423,7 @@ public:
                                audio_input_flags_t flags) = 0;
     virtual status_t closeInput(audio_io_handle_t input) = 0;
 
-    virtual status_t invalidateStream(audio_stream_type_t stream) = 0;
+    virtual status_t invalidateStrategy(product_strategy_t strategy) = 0;
 
     virtual status_t setVoiceVolume(float volume) = 0;
 

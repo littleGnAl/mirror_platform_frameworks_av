@@ -126,7 +126,8 @@ public:
      * @param attr
      * @return applicable product strategy for the given attribute, default if none applicable.
      */
-    product_strategy_t getProductStrategyForAttributes(const audio_attributes_t &attr) const;
+    product_strategy_t getProductStrategyForAttributes(
+            const audio_attributes_t &attr, bool fallbackOnDefault = true) const;
 
     product_strategy_t getProductStrategyForStream(audio_stream_type_t stream) const;
 

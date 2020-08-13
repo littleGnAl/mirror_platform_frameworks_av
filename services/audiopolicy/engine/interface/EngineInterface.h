@@ -108,11 +108,12 @@ public:
      * Get the strategy selected for a given audio attributes.
      *
      * @param[in] audio attributes to get the selected @product_strategy_t followed by.
-     *
+     * @param fallbackOnDefault if true, will return the fallback strategy if the attributes
+     * are not explicitly assigned to a given strategy.
      * @return @product_strategy_t to be followed.
      */
     virtual product_strategy_t getProductStrategyForAttributes(
-            const audio_attributes_t &attr) const = 0;
+            const audio_attributes_t &attr, bool fallbackOnDefault = true) const = 0;
 
     /**
      * @brief getOutputDevicesForAttributes retrieves the devices to be used for given

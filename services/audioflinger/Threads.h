@@ -890,8 +890,14 @@ public:
                 virtual bool     isValidSyncEvent(const sp<SyncEvent>& event) const;
 
                 // called with AudioFlinger lock held
-                        bool     invalidateTracks_l(audio_stream_type_t streamType);
-                virtual void     invalidateTracks(audio_stream_type_t streamType);
+                        bool     invalidateTracks_l(product_strategy_t strategy);
+                /**
+                 * @brief invalidateTracks invalidates all track following given routing strategy.
+                 * By convention, giving PRODUCT_STRATEGY_NONE strategy will invalidate all tracks,
+                 * whatever the routing strategy it follows.
+                 * @param strategy to be considered
+                 */
+                virtual void     invalidateTracks(product_strategy_t strategy);
 
     virtual     size_t      frameCount() const { return mNormalFrameCount; }
 
@@ -1385,7 +1391,7 @@ protected:
 
     virtual     bool        waitingAsyncCallback();
     virtual     bool        waitingAsyncCallback_l();
-    virtual     void        invalidateTracks(audio_stream_type_t streamType);
+                void        invalidateTracks(product_strategy_t strategy) override;
 
     virtual     bool        keepWakeLock() const { return (mKeepWakeLock || (mDrainSequence & 1)); }
 
@@ -1811,9 +1817,14 @@ class MmapThread : public ThreadBase
                 void        checkInvalidTracks_l();
 
     virtual     VolumeSource getVolumeSource() const { return VOLUME_SOURCE_NONE; }
-    virtual     audio_stream_type_t streamType() { return AUDIO_STREAM_DEFAULT; }
-
-    virtual     void        invalidateTracks(audio_stream_type_t streamType __unused) {}
+    virtual     product_strategy_t strategy() const { return PRODUCT_STRATEGY_NONE; }
+    /**
+     * @brief invalidateTracks invalidates all track following given routing strategy.
+     * By convention, giving PRODUCT_STRATEGY_NONE strategy will invalidate all tracks,
+     * whatever the routing strategy it follows.
+     * @param strategy to be considered
+     */
+    virtual     void        invalidateTracks(product_strategy_t /*strategy*/) {}
 
                 // Sets the UID records silence
     virtual     void        setRecordSilenced(uid_t uid __unused, bool silenced __unused) {}
@@ -1869,9 +1880,9 @@ public:
 
                 void        setMasterMute_l(bool muted) { mMasterMute = muted; }
 
-    virtual     void        invalidateTracks(audio_stream_type_t streamType);
+                void        invalidateTracks(product_strategy_t strategy) override;
 
-    virtual     audio_stream_type_t streamType() { return mStreamType; }
+    virtual     product_strategy_t strategy() const override { return mStrategy; }
                 VolumeSource getVolumeSource() const override { return mVolumeSource; }
 
     virtual     void        checkSilentMode_l();
@@ -1886,8 +1897,8 @@ public:
 protected:
                 void        dumpInternals_l(int fd, const Vector<String16>& args) override;
 
-                audio_stream_type_t         mStreamType; /**< Deprecated, use VolumeSource. */
                 VolumeSource                mVolumeSource = VOLUME_SOURCE_NONE;
+                product_strategy_t          mStrategy = PRODUCT_STRATEGY_NONE;
                 float                       mVolumeSourceVolume = 1.0f;
                 bool                        mVolumeSourceMute = false;
                 float                       mMasterVolume;

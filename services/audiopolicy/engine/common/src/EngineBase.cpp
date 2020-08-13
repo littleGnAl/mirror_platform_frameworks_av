@@ -74,9 +74,10 @@ status_t EngineBase::setDeviceConnectionState(const sp<DeviceDescriptor> devDesc
     return NO_ERROR;
 }
 
-product_strategy_t EngineBase::getProductStrategyForAttributes(const audio_attributes_t &attr) const
+product_strategy_t EngineBase::getProductStrategyForAttributes(
+        const audio_attributes_t &attr, bool fallbackOnDefault) const
 {
-    return mProductStrategies.getProductStrategyForAttributes(attr);
+    return mProductStrategies.getProductStrategyForAttributes(attr, fallbackOnDefault);
 }
 
 audio_stream_type_t EngineBase::getStreamTypeForAttributes(const audio_attributes_t &attr) const
