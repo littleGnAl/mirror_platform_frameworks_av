@@ -53,7 +53,7 @@ public:
                              float /*volume*/,
                              audio_io_handle_t /*output*/,
                              int /*delayMs*/) override { return NO_INIT; }
-    status_t invalidateStream(audio_stream_type_t /*stream*/) override { return NO_INIT; }
+    status_t invalidateStrategy(product_strategy_t /*strategy*/) override { return NO_INIT; }
     void setParameters(audio_io_handle_t /*ioHandle*/,
                        const String8& /*keyValuePairs*/,
                        int /*delayMs*/) override { }

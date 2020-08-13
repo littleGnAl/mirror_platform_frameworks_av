@@ -2905,17 +2905,17 @@ void AudioFlinger::closeThreadInternal_l(const sp<RecordThread>& thread)
     closeInputFinish(thread);
 }
 
-status_t AudioFlinger::invalidateStream(audio_stream_type_t stream)
+status_t AudioFlinger::invalidateStrategy(product_strategy_t strategy)
 {
     Mutex::Autolock _l(mLock);
-    ALOGV("invalidateStream() stream %d", stream);
+    ALOGV("%s() strategy %d", __func__, strategy);
 
     for (size_t i = 0; i < mPlaybackThreads.size(); i++) {
         PlaybackThread *thread = mPlaybackThreads.valueAt(i).get();
-        thread->invalidateTracks(stream);
+        thread->invalidateTracks(strategy);
     }
     for (size_t i = 0; i < mMmapThreads.size(); i++) {
-        mMmapThreads[i]->invalidateTracks(stream);
+        mMmapThreads[i]->invalidateTracks(strategy);
     }
     return NO_ERROR;
 }
@@ -3819,7 +3819,7 @@ void AudioFlinger::onNonOffloadableGlobalEffectEnable()
     for (size_t i = 0; i < mPlaybackThreads.size(); i++) {
         sp<PlaybackThread> t = mPlaybackThreads.valueAt(i);
         if (t->mType == ThreadBase::OFFLOAD) {
-            t->invalidateTracks(AUDIO_STREAM_MUSIC);
+            t->invalidateTracks(toStrategy(attributes_initializer(AUDIO_USAGE_MEDIA)));
         }
     }
 
@@ -3905,4 +3905,20 @@ VolumeSource AudioFlinger::toVolumeSource(
     return static_cast<VolumeSource>(volumeGroup);
 }
 
+/*static*/
+product_strategy_t AudioFlinger::toStrategy(audio_stream_type_t streamType)
+{
+    return toStrategy(AudioSystem::streamTypeToAttributes(streamType));
+}
+
+/*static*/
+product_strategy_t AudioFlinger::toStrategy(const audio_attributes_t& attributes)
+{
+    product_strategy_t psId;
+    if (AudioSystem::getProductStrategyFromAudioAttributes(attributes, psId) != NO_ERROR) {
+        ALOGE("%s: no volume group for attributes %s", __func__, toString(attributes).c_str());
+        return PRODUCT_STRATEGY_NONE;
+    }
+    return psId;
+}
 } // namespace android
