@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2c604723_856a2ac1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-08-13T16:08:32Z",
+      "side": 1,
+      "message": "This is the invalidateStream/track part based on Strategy.\nIt is completely possible if preferred to use invalidateAttributes and introduce an API between AF and APM to check if attributes use same routing.\nI decided to go for first solution for performance (only compare id, straightforward).",
+      "revId": "8428b1f07b3dd8bff1b751a8f9f27b334f44ff97",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
