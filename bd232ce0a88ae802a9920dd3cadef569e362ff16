@@ -22,6 +22,30 @@
       "revId": "bd232ce0a88ae802a9920dd3cadef569e362ff16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "178775d5_46f47fe3",
+        "filename": "media/libmedia/IMediaPlayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 964,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2020-08-14T10:55:08Z",
+      "side": 1,
+      "message": "\u003e Ignorable supernit but in case it\u0027s useful: In C++, this is equivalent to {} (but it\u0027s invalid in C).\n\nAh, thanks! Done.\n\n\u003e For my education, why is this going to AOSP?\n\nI understand from https://g3doc.corp.google.com/company/teams/android-build-team/playbook/branch_strategy.md?cl\u003dhead \"As much development as possible happens on AOSP master, in public\". Please let me know if that doesn\u0027t apply here. I think it gets auto-merged into internal master anyway.",
+      "parentUuid": "97492e20_5d7fb288",
+      "range": {
+        "startLine": 964,
+        "startChar": 32,
+        "endLine": 964,
+        "endChar": 34
+      },
+      "revId": "bd232ce0a88ae802a9920dd3cadef569e362ff16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
