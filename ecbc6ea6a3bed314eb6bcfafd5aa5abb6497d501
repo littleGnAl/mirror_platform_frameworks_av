@@ -36,6 +36,23 @@
     },
     {
       "key": {
+        "uuid": "79b61475_836107b5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-08-14T17:34:59Z",
+      "side": 1,
+      "message": "Ray,\nInstead of typecasting would it be better to add an attribute to disable integer overflow sanitizer checks in these functions like it was done in the following?\nhttps://cs.android.com/android/_/android/platform/frameworks/av/+/b4ca5ee2d890e68eb7eaa5fab1875bfac5d680a5\n\nthis way it would be consistent and won\u0027t impact performance.",
+      "revId": "ecbc6ea6a3bed314eb6bcfafd5aa5abb6497d501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a578f825_dfe02d41",
         "filename": "media/libstagefright/codecs/m4v_h263/dec/src/block_idct.cpp",
         "patchSetId": 1
