@@ -16,6 +16,52 @@
       "revId": "9c1a4f3d930e5196cc959546bd39c38e071da76d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1f9dbf46_3fb3acc1",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-14T01:22:37Z",
+      "side": 1,
+      "message": "i understand the first couple cases -- same stream out of different container types\nsuch as mp4 vs webm.\n\nremind me what we\u0027re confirming by extracting the same file 2 times?",
+      "range": {
+        "startLine": 1138,
+        "startChar": 26,
+        "endLine": 1141,
+        "endChar": 64
+      },
+      "revId": "9c1a4f3d930e5196cc959546bd39c38e071da76d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ced03dfd_6b9a696b",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-14T01:22:37Z",
+      "side": 1,
+      "message": "we know opus containers include ogg, mp4, mkv\nso shouldn\u0027t we be comparing combinations of those.\ne.g. that a testopus.ogg and a testopus.mp4 match\nand testopus.ogg and testopus.mkv match?\n\nI now think that we need to flesh this out.  The tables at \nhttps://source.android.com/compatibility/10/android-10-cdd#5_1_3_audio_codecs_details\nand\nhttps://source.android.com/compatibility/10/android-10-cdd#5_1_8_video_codecs_list\ntells us which mimes come in which containers.\n\nsorry, this slipped by me before.",
+      "range": {
+        "startLine": 1145,
+        "startChar": 36,
+        "endLine": 1145,
+        "endChar": 51
+      },
+      "revId": "9c1a4f3d930e5196cc959546bd39c38e071da76d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
