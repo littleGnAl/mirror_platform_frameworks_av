@@ -125,6 +125,30 @@
       "revId": "e93f51cbda547c271657daaec7293bb74be8474e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1af36d6b_a41fa299",
+        "filename": "media/libstagefright/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-14T22:29:58Z",
+      "side": 1,
+      "message": "Agreed.\n\nYou can add \u0027set noparent\u0027 to accomplish that.\n\nAlso this make me a single point of delay for owner approving any changes (both internal and external). How about adding a few more stagefright people:\n\nessick@, marcone@, chz@, pawin@, taklee@, wonsik@",
+      "parentUuid": "ea0fb54c_df88c7a1",
+      "range": {
+        "startLine": 1,
+        "startChar": 13,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "e93f51cbda547c271657daaec7293bb74be8474e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
