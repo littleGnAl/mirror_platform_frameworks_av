@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "554ccf9e_739aa98c",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1141,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-08-14T14:35:38Z",
+      "side": 1,
+      "message": "Ray,\nThis part of the test will validate Extractor\u0027s output consistency across multiple runs.\nFor eg: writers use threads to mux data asynchronously. Hence, we raised a bug to validate  writer\u0027s output consistency across multiple runs. Since we were writing this test for Writer, we added it for Extractors as well.",
+      "parentUuid": "1f9dbf46_3fb3acc1",
+      "range": {
+        "startLine": 1138,
+        "startChar": 26,
+        "endLine": 1141,
+        "endChar": 64
+      },
+      "revId": "9c1a4f3d930e5196cc959546bd39c38e071da76d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ced03dfd_6b9a696b",
         "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
         "patchSetId": 6
@@ -62,6 +86,30 @@
       "revId": "9c1a4f3d930e5196cc959546bd39c38e071da76d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "91d916e7_742415d4",
+        "filename": "media/extractors/tests/ExtractorUnitTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1145,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-08-14T14:35:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ced03dfd_6b9a696b",
+      "range": {
+        "startLine": 1145,
+        "startChar": 36,
+        "endLine": 1145,
+        "endChar": 51
+      },
+      "revId": "9c1a4f3d930e5196cc959546bd39c38e071da76d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
