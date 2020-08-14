@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ab02b856_a15fbd5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-14T00:58:02Z",
+      "side": 1,
+      "message": "wondering about any needed parallel changes in the actual codec library.\notherwise, seems fine.",
+      "revId": "7b8409ef36f0b7c8f33d6c0bf85b93f2a3e5e4d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c88e3bf6_9a7868be",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-14T00:58:02Z",
+      "side": 1,
+      "message": "is there a corresponding constant in the actual codec library in external/libavc/\nthat should take the same value?",
+      "range": {
+        "startLine": 41,
+        "startChar": 31,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "7b8409ef36f0b7c8f33d6c0bf85b93f2a3e5e4d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
