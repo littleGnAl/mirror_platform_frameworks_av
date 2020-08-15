@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "515df2f3_cab09547",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 488,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-08-15T16:37:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d3d34163_447c9331",
+      "range": {
+        "startLine": 478,
+        "startChar": 0,
+        "endLine": 488,
+        "endChar": 9
+      },
+      "revId": "fe156903bb0975f7ab993fc4f8429caa66e6240d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e12a3714_d9a9d0bb",
         "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
         "patchSetId": 3
@@ -45,6 +69,30 @@
       "revId": "fe156903bb0975f7ab993fc4f8429caa66e6240d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "817272e4_a4cdf17a",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-08-15T16:37:17Z",
+      "side": 1,
+      "message": "Reverb output is expected to be stereo.\n\nLine 584: CHECK_ARG(pConfig-\u003eoutputCfg.channels \u003d\u003d AUDIO_CHANNEL_OUT_STEREO);",
+      "parentUuid": "e12a3714_d9a9d0bb",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 12
+      },
+      "revId": "fe156903bb0975f7ab993fc4f8429caa66e6240d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
