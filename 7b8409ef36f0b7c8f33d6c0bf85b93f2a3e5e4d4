@@ -122,6 +122,30 @@
       "revId": "7b8409ef36f0b7c8f33d6c0bf85b93f2a3e5e4d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29861fb6_f0895a43",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-15T17:19:44Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "50134e92_f7b34aa3",
+      "range": {
+        "startLine": 41,
+        "startChar": 31,
+        "endLine": 41,
+        "endChar": 40
+      },
+      "revId": "7b8409ef36f0b7c8f33d6c0bf85b93f2a3e5e4d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
