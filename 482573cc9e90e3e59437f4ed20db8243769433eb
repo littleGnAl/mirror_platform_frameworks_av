@@ -37,6 +37,24 @@
     },
     {
       "key": {
+        "uuid": "19e24737_d9ef71b8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-08-15T12:12:47Z",
+      "side": 1,
+      "message": "Added changes related to multichannel support for Reverb and tested the same using clarity and solotester apps.\n\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1396509/3\n\nRemoved SUPPORT_MC macro in music bundle and reverb libraries source code and tested the same using Clarity and solotester apps.\n\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1396510",
+      "parentUuid": "6201a64c_5e0aa033",
+      "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "6b41e7b4_dd4f4aff",
         "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Init.cpp",
         "patchSetId": 8
