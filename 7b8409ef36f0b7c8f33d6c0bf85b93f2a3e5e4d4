@@ -54,6 +54,23 @@
     },
     {
       "key": {
+        "uuid": "0eb0b177_0623e12b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-08-15T19:06:44Z",
+      "side": 1,
+      "message": "Ray, Wonsik,\nThese two CLs in c2softavc-pause topic are ready to be submitted.\nCan you please submit?\nThanks.",
+      "revId": "7b8409ef36f0b7c8f33d6c0bf85b93f2a3e5e4d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c88e3bf6_9a7868be",
         "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
         "patchSetId": 1
