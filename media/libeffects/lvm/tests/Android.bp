@@ -44,6 +44,40 @@ cc_test {
 }
 
 cc_test {
+    name: "revtest",
+    host_supported: false,
+    proprietary: true,
+
+    include_dirs: [
+        "frameworks/av/media/libeffects/lvm/lib/Reverb/src",
+        "frameworks/av/media/libeffects/lvm/lib/Common/src",
+        "frameworks/av/media/libeffects/lvm/lib/Reverb/lib",
+        "frameworks/av/media/libeffects/lvm/lib/Common/lib",
+        "frameworks/av/media/libeffects/lvm/wrapper/Reverb"
+    ],
+
+    header_libs: [
+        "libaudioeffects",
+    ],
+
+    shared_libs: [
+        "libaudioutils",
+        "liblog",
+        "libreverbwrapper",
+    ],
+
+    srcs: [
+        "revtest.cpp",
+    ],
+
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wextra",
+    ],
+}
+
+cc_test {
     name: "snr",
     host_supported: false,
 
