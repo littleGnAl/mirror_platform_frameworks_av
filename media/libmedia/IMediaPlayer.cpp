@@ -82,10 +82,20 @@ enum {
 };
 
 // ModDrm helpers
-static void readVector(const Parcel& reply, Vector<uint8_t>& vector) {
-    uint32_t size = reply.readUint32();
-    vector.insertAt((size_t)0, size);
-    reply.read(vector.editArray(), size);
+static status_t readVector(const Parcel& reply, Vector<uint8_t>& vector) {
+    uint32_t size = 0;
+    status_t result = reply.readUint32(&size);
+    if (result == NO_ERROR) {
+        // consistency -- indicated size should not exceed data in parcel
+        if (size > reply.dataAvail()) {
+            result = BAD_VALUE;
+        }
+    }
+    if (result == NO_ERROR) {
+        vector.insertAt((size_t)0, size);
+        result = reply.read(vector.editArray(), size);
+    }
+    return result;
 }
 
 static void writeVector(Parcel& data, Vector<uint8_t> const& vector) {
@@ -959,11 +969,15 @@ status_t BnMediaPlayer::onTransact(
             CHECK_INTERFACE(IMediaPlayer, data, reply);
 
             uint8_t uuid[16] = {};
-            data.read(uuid, sizeof(uuid));
             Vector<uint8_t> drmSessionId;
-            readVector(data, drmSessionId);
 
-            uint32_t result = prepareDrm(uuid, drmSessionId);
+            uint32_t result = data.read(uuid, sizeof(uuid));
+            if (result == NO_ERROR) {
+                result = readVector(data, drmSessionId);
+            }
+            if (result == NO_ERROR) {
+                result = prepareDrm(uuid, drmSessionId);
+            }
             reply->writeInt32(result);
             return OK;
         }
