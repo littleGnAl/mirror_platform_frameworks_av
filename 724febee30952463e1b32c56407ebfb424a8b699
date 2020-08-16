@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "6b88cbb3_eb92e268",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-08-16T12:18:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f367c4fc_59362c2b",
+      "revId": "724febee30952463e1b32c56407ebfb424a8b699",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "fe39d413_f8a16b07",
         "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
         "patchSetId": 5
