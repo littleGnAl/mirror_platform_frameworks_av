@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e21e379a_64d420f7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-17T23:39:50Z",
+      "side": 1,
+      "message": "Marked fixups. Nothing to do as this is merged internally.",
+      "revId": "8eba7e80bf68a7da560c79afcb6970134df5e803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "db5c75ce_d70565ba",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-17T23:39:50Z",
+      "side": 1,
+      "message": "spacing: use space after comma (,)",
+      "range": {
+        "startLine": 296,
+        "startChar": 49,
+        "endLine": 296,
+        "endChar": 56
+      },
+      "revId": "8eba7e80bf68a7da560c79afcb6970134df5e803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bea27fce_ed6ddd3c",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-17T23:39:50Z",
+      "side": 1,
+      "message": "spacing: use 8 spaces for continuation",
+      "range": {
+        "startLine": 298,
+        "startChar": 0,
+        "endLine": 298,
+        "endChar": 4
+      },
+      "revId": "8eba7e80bf68a7da560c79afcb6970134df5e803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "7b4462da_b03b040c",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-17T23:39:50Z",
+      "side": 1,
+      "message": "this could be out of bounds. while (true) should be at least while(buffer-\u003erange_length() \u003e 0).\n\n(to be fixed in a fixup CL)",
+      "range": {
+        "startLine": 301,
+        "startChar": 23,
+        "endLine": 301,
+        "endChar": 29
+      },
+      "revId": "8eba7e80bf68a7da560c79afcb6970134df5e803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "81d414f8_42baccb7",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 317,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-17T23:39:50Z",
+      "side": 1,
+      "message": "this could underflow as both are uint-s. (to be fixed in fixup CL).",
+      "range": {
+        "startLine": 317,
+        "startChar": 24,
+        "endLine": 317,
+        "endChar": 44
+      },
+      "revId": "8eba7e80bf68a7da560c79afcb6970134df5e803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0f16b43f_02e8eff0",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-17T23:39:50Z",
+      "side": 1,
+      "message": "style: always use { } for if statements.",
+      "range": {
+        "startLine": 325,
+        "startChar": 12,
+        "endLine": 325,
+        "endChar": 27
+      },
+      "revId": "8eba7e80bf68a7da560c79afcb6970134df5e803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "a16a4e0e_8f5c460d",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-17T23:39:50Z",
+      "side": 1,
+      "message": "style: always use { } for if statements.",
+      "range": {
+        "startLine": 453,
+        "startChar": 0,
+        "endLine": 453,
+        "endChar": 45
+      },
+      "revId": "8eba7e80bf68a7da560c79afcb6970134df5e803",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
