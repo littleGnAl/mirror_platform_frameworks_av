@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9d847fb3_825d3f4e",
+        "filename": "media/libeffects/lvm/lib/Common/lib/BIQUAD.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-17T18:00:09Z",
+      "side": 0,
+      "message": "a bit odd here.",
+      "range": {
+        "startLine": 36,
+        "startChar": 22,
+        "endLine": 36,
+        "endChar": 23
+      },
+      "revId": "bf2339813e71253619bc8496c737ad4ae0803549",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79b8e6fc_e7ac1b14",
+        "filename": "media/libeffects/lvm/lib/Common/src/LVC_MixSoft_1St_2i_D16C31_SAT.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-17T18:00:09Z",
+      "side": 0,
+      "message": "why are some of these _MC_ and _Mc_.\nNo need to fix here, maybe another CL.",
+      "range": {
+        "startLine": 45,
+        "startChar": 21,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "bf2339813e71253619bc8496c737ad4ae0803549",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "18532801_f5cd4d8c",
+        "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_Private.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-17T18:00:09Z",
+      "side": 0,
+      "message": "another interesting case.",
+      "range": {
+        "startLine": 58,
+        "startChar": 41,
+        "endLine": 58,
+        "endChar": 43
+      },
+      "revId": "bf2339813e71253619bc8496c737ad4ae0803549",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

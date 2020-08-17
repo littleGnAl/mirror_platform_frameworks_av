@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e016c6f8_9db929a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-17T18:00:09Z",
+      "side": 1,
+      "message": "As part of another CL, can we please add a unit gtest to ensure no regressions from this state?  For float, you can use PointWise.\n\nhttps://stackoverflow.com/questions/50579012/gmock-testing-two-float-vectors\n\nI recall we had a separate test app that runs single channel vs multiple channel tests.  For some modes that is possible. Others maybe we save reference data from a short run.\n\n",
+      "revId": "2a57a04ba440e765ced0107acf17fa4450721bee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
