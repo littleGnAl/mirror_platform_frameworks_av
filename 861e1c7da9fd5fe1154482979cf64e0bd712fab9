@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "35810e70_7f1f40f2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-17T18:31:33Z",
+      "side": 1,
+      "message": "Thanks for the CL, it appears this file has moved to system/media/audio_utils for R.  I will forward cherry pick this to master to soak, and we can submit this in AOSP when it moves to R.",
+      "revId": "861e1c7da9fd5fe1154482979cf64e0bd712fab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
