@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9ead72a2_95bf05d3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-17T23:42:11Z",
+      "side": 1,
+      "message": "Marked fixups. Nothing to do as this is merged internally.",
+      "revId": "1e5f29c0e4135152cd49f435db1c703cc0c074ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "44360d90_e92ea760",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-17T23:42:11Z",
+      "side": 1,
+      "message": "spacing: use space around binary operators.\nstyle: always use { } for non-empty while loops.",
+      "range": {
+        "startLine": 319,
+        "startChar": 31,
+        "endLine": 319,
+        "endChar": 32
+      },
+      "revId": "1e5f29c0e4135152cd49f435db1c703cc0c074ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
