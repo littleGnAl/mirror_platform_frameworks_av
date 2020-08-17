@@ -71,6 +71,24 @@
     },
     {
       "key": {
+        "uuid": "eb2f7c6d_0f044583",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-17T21:08:06Z",
+      "side": 1,
+      "message": "for a routine that we know is playing games and intentionally wrapping,\nsure. I\u0027m ok with a decoration in the code.\nI\u0027d prefer the annotation in the  code instead of in the blocklist -- because then it\u0027s obvious when looking at the code that we\u0027re ignoring overflow here.",
+      "parentUuid": "917c0298_825ac9e6",
+      "revId": "ecbc6ea6a3bed314eb6bcfafd5aa5abb6497d501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "a578f825_dfe02d41",
         "filename": "media/libstagefright/codecs/m4v_h263/dec/src/block_idct.cpp",
         "patchSetId": 1
