@@ -16,6 +16,98 @@
       "revId": "f0f7dffe9d6af3cc52cf0dd4c8f5200e6cc5383e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "cb38fabc_bb2a94ae",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 573,
+      "author": {
+        "id": 1105338
+      },
+      "writtenOn": "2020-08-17T22:54:59Z",
+      "side": 1,
+      "message": "nullptr is preferred over NULL.",
+      "range": {
+        "startLine": 573,
+        "startChar": 22,
+        "endLine": 573,
+        "endChar": 26
+      },
+      "revId": "f0f7dffe9d6af3cc52cf0dd4c8f5200e6cc5383e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ec11df3_316fb25a",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1105338
+      },
+      "writtenOn": "2020-08-17T22:54:59Z",
+      "side": 1,
+      "message": "We should also put the cleanup code here just in case. (For this one, we don\u0027t need to set mSidebandHandle to nullptr afterwards.)",
+      "range": {
+        "startLine": 605,
+        "startChar": 18,
+        "endLine": 606,
+        "endChar": 1
+      },
+      "revId": "f0f7dffe9d6af3cc52cf0dd4c8f5200e6cc5383e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "05c22deb_5a072338",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3155,
+      "author": {
+        "id": 1105338
+      },
+      "writtenOn": "2020-08-17T22:54:59Z",
+      "side": 1,
+      "message": "We should set mSidebandHandle to nullptr here because if configureVideoTunnelMode() below fails to set mSidebandHandle to a new value and this function is called again, we wouldn\u0027t want this cleanup code to be triggered again.",
+      "range": {
+        "startLine": 3153,
+        "startChar": 0,
+        "endLine": 3155,
+        "endChar": 0
+      },
+      "revId": "f0f7dffe9d6af3cc52cf0dd4c8f5200e6cc5383e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "070ef103_1f03c2d7",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 6593,
+      "author": {
+        "id": 1105338
+      },
+      "writtenOn": "2020-08-17T22:54:59Z",
+      "side": 1,
+      "message": "Same comment as above.",
+      "range": {
+        "startLine": 6592,
+        "startChar": 0,
+        "endLine": 6593,
+        "endChar": 54
+      },
+      "revId": "f0f7dffe9d6af3cc52cf0dd4c8f5200e6cc5383e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
