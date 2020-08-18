@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "a23b4a92_dd73e359",
+        "filename": "media/libeffects/lvm/tests/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-08-18T13:03:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "afc47fa9_7943b1e5",
+      "range": {
+        "startLine": 47,
+        "startChar": 11,
+        "endLine": 47,
+        "endChar": 18
+      },
+      "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "45dc7ff2_69f83020",
         "filename": "media/libeffects/lvm/tests/Android.bp",
         "patchSetId": 5
@@ -79,6 +103,30 @@
       "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c2d1cfe5_affb4335",
+        "filename": "media/libeffects/lvm/tests/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-08-18T13:03:54Z",
+      "side": 1,
+      "message": "Done\n\nRemoved all the paths that are not needed actually",
+      "parentUuid": "45dc7ff2_69f83020",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 60
+      },
+      "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -105,6 +153,30 @@
     },
     {
       "key": {
+        "uuid": "2445eebf_4c68ef25",
+        "filename": "media/libeffects/lvm/tests/build_and_run_all_unit_tests_rev.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-08-18T13:03:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d696e82_2697ed5d",
+      "range": {
+        "startLine": 3,
+        "startChar": 1,
+        "endLine": 3,
+        "endChar": 30
+      },
+      "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "a48e5491_0061bb22",
         "filename": "media/libeffects/lvm/tests/revtest.cpp",
         "patchSetId": 5
@@ -125,6 +197,30 @@
       "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "721801d6_bafac4b0",
+        "filename": "media/libeffects/lvm/tests/revtest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-08-18T13:03:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a48e5491_0061bb22",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -151,6 +247,30 @@
     },
     {
       "key": {
+        "uuid": "3d32b1f1_840f7ab0",
+        "filename": "media/libeffects/lvm/tests/revtest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-08-18T13:03:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73ede417_df9dc285",
+      "range": {
+        "startLine": 229,
+        "startChar": 14,
+        "endLine": 229,
+        "endChar": 17
+      },
+      "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "4a041158_8c8c39d1",
         "filename": "media/libeffects/lvm/tests/revtest.cpp",
         "patchSetId": 5
@@ -171,6 +291,30 @@
       "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7637e588_5059bd2e",
+        "filename": "media/libeffects/lvm/tests/revtest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-08-18T13:03:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a041158_8c8c39d1",
+      "range": {
+        "startLine": 292,
+        "startChar": 4,
+        "endLine": 292,
+        "endChar": 9
+      },
+      "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -197,6 +341,30 @@
     },
     {
       "key": {
+        "uuid": "2bb3f691_8fd53f4c",
+        "filename": "media/libeffects/lvm/tests/revtest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-08-18T13:03:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26a593ac_2d44da8c",
+      "range": {
+        "startLine": 396,
+        "startChar": 2,
+        "endLine": 396,
+        "endChar": 34
+      },
+      "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "2634ec53_3b634c4d",
         "filename": "media/libeffects/lvm/tests/revtest.cpp",
         "patchSetId": 5
@@ -217,6 +385,30 @@
       "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0bf9861a_54526c5a",
+        "filename": "media/libeffects/lvm/tests/revtest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-08-18T13:03:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2634ec53_3b634c4d",
+      "range": {
+        "startLine": 397,
+        "startChar": 9,
+        "endLine": 397,
+        "endChar": 10
+      },
+      "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
