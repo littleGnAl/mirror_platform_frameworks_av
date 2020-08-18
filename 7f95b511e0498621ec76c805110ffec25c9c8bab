@@ -16,6 +16,207 @@
       "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8fd6cfcb_21156f42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-18T03:18:33Z",
+      "side": 1,
+      "message": "thanks for the CL, some minor nits.\nalso, we should also consider a unit test with gtest.",
+      "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "afc47fa9_7943b1e5",
+        "filename": "media/libeffects/lvm/tests/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-18T03:18:33Z",
+      "side": 1,
+      "message": "nit: would prefer something like reverb_test to be more clear.",
+      "range": {
+        "startLine": 47,
+        "startChar": 11,
+        "endLine": 47,
+        "endChar": 18
+      },
+      "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "45dc7ff2_69f83020",
+        "filename": "media/libeffects/lvm/tests/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-18T03:18:33Z",
+      "side": 1,
+      "message": "nit: can this be made alphabetical or is the order important (if so, please comment that order is important)?",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 60
+      },
+      "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "7d696e82_2697ed5d",
+        "filename": "media/libeffects/lvm/tests/build_and_run_all_unit_tests_rev.sh",
+        "patchSetId": 5
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-18T03:18:33Z",
+      "side": 1,
+      "message": "nit: should be reverb test.\n\nAlso the name of this script should be build_and_run_all_unit_tests_reverb.sh  (please spell out reverb).",
+      "range": {
+        "startLine": 3,
+        "startChar": 1,
+        "endLine": 3,
+        "endChar": 30
+      },
+      "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a48e5491_0061bb22",
+        "filename": "media/libeffects/lvm/tests/revtest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-18T03:18:33Z",
+      "side": 1,
+      "message": "using process_buffer_t \u003d float;",
+      "range": {
+        "startLine": 37,
+        "startChar": 0,
+        "endLine": 37,
+        "endChar": 31
+      },
+      "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "73ede417_df9dc285",
+        "filename": "media/libeffects/lvm/tests/revtest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-18T03:18:33Z",
+      "side": 1,
+      "message": "nit: EXIT_SUCCESS",
+      "range": {
+        "startLine": 229,
+        "startChar": 14,
+        "endLine": 229,
+        "endChar": 17
+      },
+      "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a041158_8c8c39d1",
+        "filename": "media/libeffects/lvm/tests/revtest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 292,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-18T03:18:33Z",
+      "side": 1,
+      "message": "nit: some of these are ALOGE and some of these are printfs (see line 285).",
+      "range": {
+        "startLine": 292,
+        "startChar": 4,
+        "endLine": 292,
+        "endChar": 9
+      },
+      "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "26a593ac_2d44da8c",
+        "filename": "media/libeffects/lvm/tests/revtest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-18T03:18:33Z",
+      "side": 1,
+      "message": "nit: old comment.",
+      "range": {
+        "startLine": 396,
+        "startChar": 2,
+        "endLine": 396,
+        "endChar": 34
+      },
+      "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "2634ec53_3b634c4d",
+        "filename": "media/libeffects/lvm/tests/revtest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-18T03:18:33Z",
+      "side": 1,
+      "message": "nit: EXIT_SUCCESS",
+      "range": {
+        "startLine": 397,
+        "startChar": 9,
+        "endLine": 397,
+        "endChar": 10
+      },
+      "revId": "7f95b511e0498621ec76c805110ffec25c9c8bab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
