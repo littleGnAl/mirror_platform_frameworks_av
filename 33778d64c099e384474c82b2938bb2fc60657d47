@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3bda51e0_2321458d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T05:33:05Z",
+      "side": 1,
+      "message": "Marked fixups. Nothing to do as this is merged internally.",
+      "revId": "33778d64c099e384474c82b2938bb2fc60657d47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9d1f4bd0_d530471b",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1707,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T05:33:05Z",
+      "side": 1,
+      "message": "style: always use { } for if conditions",
+      "range": {
+        "startLine": 1707,
+        "startChar": 8,
+        "endLine": 1707,
+        "endChar": 15
+      },
+      "revId": "33778d64c099e384474c82b2938bb2fc60657d47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
