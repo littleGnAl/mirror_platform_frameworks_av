@@ -16,6 +16,92 @@
       "revId": "46675ba2c309315ff70cdfd8e0794de530c67fb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "790890c3_97c85a84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T23:21:51Z",
+      "side": 1,
+      "message": "Added Marco. Overall, this looks promising. A few notes.",
+      "revId": "46675ba2c309315ff70cdfd8e0794de530c67fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "08d87ad9_51080e6c",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T23:21:51Z",
+      "side": 1,
+      "message": "I recommend that this also comes from the fuzzer in the range of 0-32 (most useful number is around 3-6), so that it does not always result in 32 values before data/format is fed to the muxers.",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 19
+      },
+      "revId": "46675ba2c309315ff70cdfd8e0794de530c67fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba0ea42a_6b4516be",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T23:21:51Z",
+      "side": 1,
+      "message": "not sure how fuzzer works, so not sure if this is already handled. Ideally we want to queue multiple units (case 5) to the muxer before stopping, and no calls after stop should be meaningful.",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 75,
+        "endChar": 23
+      },
+      "revId": "46675ba2c309315ff70cdfd8e0794de530c67fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "08382da8_472eef86",
+        "filename": "media/libstagefright/tests/fuzzers/StagefrightMediaScannerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T23:21:51Z",
+      "side": 1,
+      "message": "this method normally assumed an open file, so not sure what we get out by never providing it an open file. E.g. android system services could fail (vs. scanner itself) if passing a random fd to the scanner as they could modify the state of the files opened by system services.",
+      "range": {
+        "startLine": 56,
+        "startChar": 17,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "46675ba2c309315ff70cdfd8e0794de530c67fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
