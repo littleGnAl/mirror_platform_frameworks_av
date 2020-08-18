@@ -172,6 +172,30 @@
     },
     {
       "key": {
+        "uuid": "8af2264b_e32c48eb",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/src/block_idct.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-08-18T15:34:04Z",
+      "side": 1,
+      "message": "With attribute added to ignore signed integer overflows in the whole function, this is taken care of.",
+      "parentUuid": "54e06079_7fa8e4df",
+      "range": {
+        "startLine": 892,
+        "startChar": 10,
+        "endLine": 893,
+        "endChar": 40
+      },
+      "revId": "ecbc6ea6a3bed314eb6bcfafd5aa5abb6497d501",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "67377b84_037de7f1",
         "filename": "media/libstagefright/codecs/m4v_h263/dec/src/idct_vca.cpp",
         "patchSetId": 1
