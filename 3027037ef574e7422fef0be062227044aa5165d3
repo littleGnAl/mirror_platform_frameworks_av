@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7eca6b9c_dab747de",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T04:25:34Z",
+      "side": 1,
+      "message": "Marked fixups. Nothing to do as this is merged internally.",
+      "revId": "3027037ef574e7422fef0be062227044aa5165d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "eb67fbda_6e293b13",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T04:25:34Z",
+      "side": 1,
+      "message": "this should not be here.",
+      "range": {
+        "startLine": 17,
+        "startChar": 3,
+        "endLine": 17,
+        "endChar": 9
+      },
+      "revId": "3027037ef574e7422fef0be062227044aa5165d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "945627c8_13c13acc",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 359,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T04:25:34Z",
+      "side": 1,
+      "message": "spacing: 8 space continuation ident.",
+      "range": {
+        "startLine": 359,
+        "startChar": 0,
+        "endLine": 359,
+        "endChar": 4
+      },
+      "revId": "3027037ef574e7422fef0be062227044aa5165d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "786d8d74_584231b8",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T04:25:34Z",
+      "side": 1,
+      "message": "this can read out of bounds.",
+      "range": {
+        "startLine": 363,
+        "startChar": 28,
+        "endLine": 363,
+        "endChar": 35
+      },
+      "revId": "3027037ef574e7422fef0be062227044aa5165d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb90084d_aa682cfc",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T04:25:34Z",
+      "side": 1,
+      "message": "why is this not using the KMP algorithm as for AVC?",
+      "range": {
+        "startLine": 381,
+        "startChar": 12,
+        "endLine": 381,
+        "endChar": 51
+      },
+      "revId": "3027037ef574e7422fef0be062227044aa5165d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5d834b2_12d0845a",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 389,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T04:25:34Z",
+      "side": 1,
+      "message": "style: always use { } for if condition.",
+      "range": {
+        "startLine": 389,
+        "startChar": 12,
+        "endLine": 389,
+        "endChar": 27
+      },
+      "revId": "3027037ef574e7422fef0be062227044aa5165d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18c6a037_c1d29b94",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 523,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T04:25:34Z",
+      "side": 1,
+      "message": "style: always use { } for if condition",
+      "range": {
+        "startLine": 523,
+        "startChar": 16,
+        "endLine": 523,
+        "endChar": 37
+      },
+      "revId": "3027037ef574e7422fef0be062227044aa5165d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5d8a7cb7_f6699f8d",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 895,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T04:25:34Z",
+      "side": 1,
+      "message": "style: always use { } for if condition",
+      "range": {
+        "startLine": 895,
+        "startChar": 8,
+        "endLine": 895,
+        "endChar": 14
+      },
+      "revId": "3027037ef574e7422fef0be062227044aa5165d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8d1d96e8_904d1de5",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 945,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T04:25:34Z",
+      "side": 1,
+      "message": "style: alway suse { } for if statements",
+      "range": {
+        "startLine": 945,
+        "startChar": 12,
+        "endLine": 945,
+        "endChar": 16
+      },
+      "revId": "3027037ef574e7422fef0be062227044aa5165d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
