@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "810e6db8_a792f120",
+        "filename": "media/libmediaplayerservice/nuplayer/RTPSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2020-08-18T10:26:52Z",
+      "side": 1,
+      "message": "(After writing the below reply, )\nAs I have written in the below this is a clock rate value.\nUnlike video, this can be arguable. We admit.\nAudio would uses 16000Hz for high definition in recently but a value 8000 also can be a candidate.\nWe can modify this value to follow some value from the app side if you want.\n\nThank you.",
+      "parentUuid": "74cefeee_d2b6aa41",
+      "range": {
+        "startLine": 135,
+        "startChar": 31,
+        "endLine": 135,
+        "endChar": 36
+      },
+      "revId": "43cdb7cf078733ece36361f5c1204bd9e422d64f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "6ec8d0ad_8510d435",
         "filename": "media/libmediaplayerservice/nuplayer/RTPSource.cpp",
         "patchSetId": 2
@@ -53,6 +77,30 @@
       "writtenOn": "2020-08-18T07:36:34Z",
       "side": 1,
       "message": "(including this)",
+      "range": {
+        "startLine": 138,
+        "startChar": 31,
+        "endLine": 138,
+        "endChar": 36
+      },
+      "revId": "43cdb7cf078733ece36361f5c1204bd9e422d64f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b4e42ebc_f5e685d4",
+        "filename": "media/libmediaplayerservice/nuplayer/RTPSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2020-08-18T10:26:52Z",
+      "side": 1,
+      "message": "Dear Lajos Molnar\n\nActually the time scale (clock rate) for video can be various as per encoding format.\nBut till now our RTP only supports H.26x encoders and those have all same 90000 clock rate.\nA brief information is in https://en.wikipedia.org/wiki/RTP_payload_formats .\nAnd as I know the 90000 value is very common and would be same for all MPEG derived format.\nI think we can modify this after supporting various kinds of encoding formats.\n\nThank you.",
+      "parentUuid": "6ec8d0ad_8510d435",
       "range": {
         "startLine": 138,
         "startChar": 31,
