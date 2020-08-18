@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1d8f1836_8d5ddfc5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T06:24:52Z",
+      "side": 1,
+      "message": "Marked fixups. Nothing to do as this is merged internally.",
+      "revId": "0be068774ca970d3c474dc08c4dc52996828d67b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "024987cb_75006ad0",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T06:24:52Z",
+      "side": 1,
+      "message": "using in a header is dangerous as it may interfere with declaration in the source files.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "0be068774ca970d3c474dc08c4dc52996828d67b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
