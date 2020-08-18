@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "e1b25683_c1acbe3c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T04:34:34Z",
+      "side": 1,
+      "message": "Marked fixups. Nothing to do as it is merged internally.",
+      "revId": "884d94f44702e0104e5532937ea83a4f0218985f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f9ae014b_1a16af97",
+        "filename": "media/libmediaplayerservice/nuplayer/RTPSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T04:34:34Z",
+      "side": 1,
+      "message": "is there a reason why not clamp to [40; 3000] here? (instead of using 300 if outside of range)",
+      "range": {
+        "startLine": 114,
+        "startChar": 8,
+        "endLine": 114,
+        "endChar": 27
+      },
+      "revId": "884d94f44702e0104e5532937ea83a4f0218985f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "21f21436_09221d8e",
+        "filename": "media/libmediaplayerservice/nuplayer/RTPSource.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T04:34:34Z",
+      "side": 1,
+      "message": "typo: milliseconds",
+      "range": {
+        "startLine": 125,
+        "startChar": 37,
+        "endLine": 125,
+        "endChar": 47
+      },
+      "revId": "884d94f44702e0104e5532937ea83a4f0218985f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6ea7867b_d283e79f",
+        "filename": "media/libstagefright/rtsp/ARTPConnection.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T04:34:34Z",
+      "side": 1,
+      "message": "style: add time scale to variable name: jbTimeMs",
+      "range": {
+        "startLine": 49,
+        "startChar": 34,
+        "endLine": 49,
+        "endChar": 40
+      },
+      "revId": "884d94f44702e0104e5532937ea83a4f0218985f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "b7d887c1_c12c2995",
+        "filename": "media/libstagefright/rtsp/ARTPConnection.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T04:34:34Z",
+      "side": 1,
+      "message": "style: add time scale to variable name mJbTimeMs.",
+      "range": {
+        "startLine": 93,
+        "startChar": 13,
+        "endLine": 93,
+        "endChar": 20
+      },
+      "revId": "884d94f44702e0104e5532937ea83a4f0218985f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
