@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b554b487_351b7fb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:48:54Z",
+      "side": 1,
+      "message": "Marked fixups. Nothing to do as this is merged internally.",
+      "revId": "a9de9903f71e1b0b587ae644988f3e8ab74f01c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "5e12725e_42c0d755",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1525,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:48:54Z",
+      "side": 1,
+      "message": "spacing: use space after if",
+      "range": {
+        "startLine": 1525,
+        "startChar": 4,
+        "endLine": 1525,
+        "endChar": 6
+      },
+      "revId": "a9de9903f71e1b0b587ae644988f3e8ab74f01c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0086646a_b0cd1f96",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1526,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:48:54Z",
+      "side": 1,
+      "message": "%u-s",
+      "range": {
+        "startLine": 1526,
+        "startChar": 41,
+        "endLine": 1526,
+        "endChar": 51
+      },
+      "revId": "a9de9903f71e1b0b587ae644988f3e8ab74f01c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
