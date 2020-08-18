@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "38cb249a_68859add",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T04:39:12Z",
+      "side": 1,
+      "message": "Marked fixups. Nothing to do as it is merged internally.",
+      "revId": "c70d550d5f2a4211e5c05a141b3fbd7d680facbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "66e896b3_77ad6a26",
+        "filename": "media/libmediaplayerservice/StagefrightRecorder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T04:39:12Z",
+      "side": 1,
+      "message": "spacing: extra space",
+      "range": {
+        "startLine": 564,
+        "startChar": 50,
+        "endLine": 564,
+        "endChar": 51
+      },
+      "revId": "c70d550d5f2a4211e5c05a141b3fbd7d680facbe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
