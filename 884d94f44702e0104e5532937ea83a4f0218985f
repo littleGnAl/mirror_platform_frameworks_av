@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "d4c0ec3c_017328f0",
+        "filename": "media/libmediaplayerservice/nuplayer/RTPSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1488927
+      },
+      "writtenOn": "2020-08-18T06:32:47Z",
+      "side": 1,
+      "message": "Thanks for review.\n\nI was thinking about just to take default value if it is likely weird value.\nBecause in real time scenario, Jitter-buffer time should be less than 0.5 sec most of cases.\n\nBut after your suggestion, i realized it\u0027s better to clamp to [40, 3000] if Jitter-buffer has out of range values.\n\nIt\u0027s fine to take clamped value.. please go ahead.",
+      "parentUuid": "f9ae014b_1a16af97",
+      "range": {
+        "startLine": 114,
+        "startChar": 8,
+        "endLine": 114,
+        "endChar": 27
+      },
+      "revId": "884d94f44702e0104e5532937ea83a4f0218985f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "21f21436_09221d8e",
         "filename": "media/libmediaplayerservice/nuplayer/RTPSource.h",
         "patchSetId": 2
