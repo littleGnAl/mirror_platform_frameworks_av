@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1113937d_b8121cf1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:41:09Z",
+      "side": 1,
+      "message": "Marked fixups. Nothing to do as this is merged internally.",
+      "revId": "3a80f4250f298052225060be4a35afc36c286c84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "21b81fdf_84056401",
+        "filename": "media/libstagefright/rtsp/TrafficRecorder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:41:09Z",
+      "side": 1,
+      "message": "we normally use size_t for these.",
+      "range": {
+        "startLine": 30,
+        "startChar": 4,
+        "endLine": 30,
+        "endChar": 7
+      },
+      "revId": "3a80f4250f298052225060be4a35afc36c286c84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6968abc2_a6061d45",
+        "filename": "media/libstagefright/rtsp/TrafficRecorder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:41:09Z",
+      "side": 1,
+      "message": "not needed in constructor",
+      "range": {
+        "startLine": 71,
+        "startChar": 4,
+        "endLine": 74,
+        "endChar": 26
+      },
+      "revId": "3a80f4250f298052225060be4a35afc36c286c84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ec7102f6_e41e87c3",
+        "filename": "media/libstagefright/rtsp/TrafficRecorder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:41:09Z",
+      "side": 1,
+      "message": "this only works for int32_t Time. Recommend using \u003candroid-base/logging.h\u003e and LOG(VERBOSE) instead.",
+      "range": {
+        "startLine": 106,
+        "startChar": 28,
+        "endLine": 106,
+        "endChar": 30
+      },
+      "revId": "3a80f4250f298052225060be4a35afc36c286c84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "317e262d_a63d8837",
+        "filename": "media/libstagefright/rtsp/TrafficRecorder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:41:09Z",
+      "side": 1,
+      "message": "similarly here.",
+      "range": {
+        "startLine": 129,
+        "startChar": 25,
+        "endLine": 129,
+        "endChar": 29
+      },
+      "revId": "3a80f4250f298052225060be4a35afc36c286c84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d9fb04cd_cd91a543",
+        "filename": "media/libstagefright/rtsp/TrafficRecorder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:41:09Z",
+      "side": 1,
+      "message": "this seems to be dimensionless, why is is ms?",
+      "range": {
+        "startLine": 145,
+        "startChar": 14,
+        "endLine": 145,
+        "endChar": 32
+      },
+      "revId": "3a80f4250f298052225060be4a35afc36c286c84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
