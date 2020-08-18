@@ -111,6 +111,30 @@
     },
     {
       "key": {
+        "uuid": "7e75015f_660f2338",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2020-08-18T08:49:59Z",
+      "side": 1,
+      "message": "Dear Lajos Molnar\n\nHi.\nThis migration(this patch) from AVC to HEVC was written while I was writing KMP patch for AVC. So it seems missed for HEVC. We will fix this as you said in next CL.\n\nRegards,\nSungyeon Kim",
+      "parentUuid": "cb90084d_aa682cfc",
+      "range": {
+        "startLine": 381,
+        "startChar": 12,
+        "endLine": 381,
+        "endChar": 51
+      },
+      "revId": "3027037ef574e7422fef0be062227044aa5165d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "d5d834b2_12d0845a",
         "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
         "patchSetId": 3
