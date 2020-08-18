@@ -1,0 +1,504 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "27ec1852_37b18173",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "Marked fixups. Nothing to do as it is merged internally.",
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8767f8be_bfad6dfa",
+        "filename": "media/libstagefright/HevcUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 381,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "ALOGV",
+      "range": {
+        "startLine": 381,
+        "startChar": 4,
+        "endLine": 381,
+        "endChar": 9
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "948ad1f6_b3414b36",
+        "filename": "media/libstagefright/include/HevcUtils.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "spacing: prefer to break after initial parenthesis \u0027(\u0027",
+      "range": {
+        "startLine": 93,
+        "startChar": 28,
+        "endLine": 93,
+        "endChar": 33
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "0b81d0dd_58b3a16f",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "this may remain uninitialized",
+      "range": {
+        "startLine": 69,
+        "startChar": 13,
+        "endLine": 69,
+        "endChar": 28
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cd507861_5288257b",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "style: always use { } for if statements.",
+      "range": {
+        "startLine": 76,
+        "startChar": 7,
+        "endLine": 79,
+        "endChar": 18
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d501a2d4_9ddde1f0",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "style: always use { } for if statements",
+      "range": {
+        "startLine": 88,
+        "startChar": 12,
+        "endLine": 88,
+        "endChar": 17
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "f4d26040_5d94bfa4",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "spacing: use space around binary operators",
+      "range": {
+        "startLine": 112,
+        "startChar": 47,
+        "endLine": 112,
+        "endChar": 61
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "42e4e0b9_49a66377",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "style: always use { } for if statements.",
+      "range": {
+        "startLine": 157,
+        "startChar": 8,
+        "endLine": 157,
+        "endChar": 13
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "16a57014_57f96147",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "this may read OOB.",
+      "range": {
+        "startLine": 240,
+        "startChar": 24,
+        "endLine": 240,
+        "endChar": 28
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c29bdb6_797dfbf7",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 256,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "this may read OOB",
+      "range": {
+        "startLine": 256,
+        "startChar": 24,
+        "endLine": 256,
+        "endChar": 31
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "96d3c2e6_00d49533",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 270,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "this may read OOB",
+      "range": {
+        "startLine": 270,
+        "startChar": 24,
+        "endLine": 270,
+        "endChar": 33
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71c71e78_e8fd2a6c",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "this can be called with an empty buffer from",
+      "range": {
+        "startLine": 277,
+        "startChar": 21,
+        "endLine": 277,
+        "endChar": 37
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f78b849c_4a4d04ac",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 420,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "%u-s",
+      "range": {
+        "startLine": 420,
+        "startChar": 61,
+        "endLine": 420,
+        "endChar": 83
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "07d7b0e6_6e903c30",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "style: always use { } for if statements.",
+      "range": {
+        "startLine": 425,
+        "startChar": 20,
+        "endLine": 425,
+        "endChar": 26
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8cd7c177_e170672d",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "style: always use { } for if statements.",
+      "range": {
+        "startLine": 429,
+        "startChar": 16,
+        "endLine": 429,
+        "endChar": 25
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "59cbafe2_e9e94579",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 451,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "(uint32_t)",
+      "range": {
+        "startLine": 451,
+        "startChar": 28,
+        "endLine": 451,
+        "endChar": 34
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3eea680e_de3304d0",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "recommend msecsSinceLastIFrame",
+      "range": {
+        "startLine": 625,
+        "startChar": 17,
+        "endLine": 625,
+        "endChar": 36
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "05fae868_aae00c8a",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 628,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "typo: millis (or ms)",
+      "range": {
+        "startLine": 628,
+        "startChar": 37,
+        "endLine": 628,
+        "endChar": 42
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "c49d521c_0030f347",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "%u",
+      "range": {
+        "startLine": 637,
+        "startChar": 32,
+        "endLine": 637,
+        "endChar": 34
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "65afdb07_dec742d4",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "using type statement in dangerous in a header file as it impacts all sources that include this.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 29
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f95ef9d2_7840e5d0",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "style: time scale needs to be incorporated into variable name, e.g. mLastIFrameProvidedAtMs",
+      "range": {
+        "startLine": 51,
+        "startChar": 13,
+        "endLine": 51,
+        "endChar": 34
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8e2ee3ea_9adc0237",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-08-18T08:08:07Z",
+      "side": 1,
+      "message": "typo: connected",
+      "range": {
+        "startLine": 68,
+        "startChar": 60,
+        "endLine": 68,
+        "endChar": 70
+      },
+      "revId": "48849b1ae51babc4f73ab8358c11bee4277030ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
