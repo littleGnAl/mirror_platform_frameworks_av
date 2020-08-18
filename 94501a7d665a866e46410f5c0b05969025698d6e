@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "7db3c2a0_9e3b6876",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 334,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2020-08-18T09:42:17Z",
+      "side": 1,
+      "message": "Dear Lajos Molnar\n\nHi.\nWe don\u0027t need to worry about that.\nLet\u0027s pretend some N/W provides 10Mbps bandwidth for video streaming data.\nA packet can be large to 1500 bytes but only uses 1116 bytes as payload.\nBecause the rest space is for various kinds of headers.\n(please refer kMaxPacketSize and related values of ARTPWriter.cpp)\nSo, \n\n(10/8 * M * bytes/sec) / 1116 ≒ 1120 ea/sec         *10Mbps \u003d 10/8 Mbytes/sec\n\nis the expected number of packets per sec.\nTo rollover uint32_t, it takes the below time.\n\n2^32 / 1120 ≒ 3834792 sec ≒ 1065 hours ≒ 44 days\n\nThe sequence number(packet number) can start from a random position but it is limited to uint16_t range. We can ignore it.\nAnd also, many service carriers even don\u0027t give over 1Mbps for video IMS bearer.\nI can assure it is safe for rollover.\n\nRegards,\nSungyeon Kim",
+      "parentUuid": "f28b7ddb_825758d3",
+      "range": {
+        "startLine": 334,
+        "startChar": 28,
+        "endLine": 334,
+        "endChar": 34
+      },
+      "revId": "94501a7d665a866e46410f5c0b05969025698d6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7183fb6e_42540054",
         "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
         "patchSetId": 2
