@@ -131,6 +131,30 @@
       "revId": "3a80f4250f298052225060be4a35afc36c286c84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e015c65d_b2fa5085",
+        "filename": "media/libstagefright/rtsp/TrafficRecorder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2020-08-18T11:03:58Z",
+      "side": 1,
+      "message": "Dear Lajos Molnar\n\nYou are right.\nI insisted to write this module to be dimensionless but revealed my unconscious usage case 😂\nBut I think we have more chance to modify this.\nI believe you already heard from Jongmin Son that we have 1~2 more features would like to submit in next time.\nThe feature is related with this module so I\u0027ll check your comments and apply.\n\nWe thank you very much for your detailed review and efforts in night.\nAnd sorry about the annoying misses not to fit your code conventions.\nI don\u0027t know if your robots would fix the conventional misses automatically or not, anyway we will check and fix about all of your comments after opening your internally merged codes to us. We accepts all the rest of your non-replied comments. It is not an ignorace.\n\nOnce more thank you for reviewing.\n\nBest regards,\nSungyeon Kim",
+      "parentUuid": "d9fb04cd_cd91a543",
+      "range": {
+        "startLine": 145,
+        "startChar": 14,
+        "endLine": 145,
+        "endChar": 32
+      },
+      "revId": "3a80f4250f298052225060be4a35afc36c286c84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
