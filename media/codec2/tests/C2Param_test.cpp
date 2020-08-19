@@ -2328,6 +2328,17 @@ TEST_F(C2ParamTest, FlexParamOpsTest) {
         static_assert(std::is_same<decltype(blobValue->m.value), uint8_t[]>::value, "should be uint8_t[]");
         EXPECT_EQ(0, memcmp(blobValue->m.value, "ABCD\0", 6));
         EXPECT_EQ(6u, blobValue->flexCount());
+        blobValue->setFlexCount(7u);
+        EXPECT_EQ(6u, blobValue->flexCount());
+        blobValue->setFlexCount(2u);
+        EXPECT_EQ(2u, blobValue->flexCount()); // BLOB
+        blobValue->setFlexCount(0u);
+        EXPECT_EQ(0u, blobValue->flexCount());
+        EXPECT_TRUE(blobValue->isValid());
+        blobValue->invalidate();
+        EXPECT_FALSE(blobValue->isValid());
+        EXPECT_EQ(0u, blobValue->size());
+
         std::vector<C2FieldDescriptor> fields = blobValue->FieldList();
         EXPECT_EQ(1u, fields.size());
         EXPECT_EQ(FD::BLOB, fields.cbegin()->type());
