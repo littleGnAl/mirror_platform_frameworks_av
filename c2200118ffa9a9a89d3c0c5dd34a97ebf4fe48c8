@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6304735d_ff46a1d8",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3734,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-08-19T23:35:36Z",
+      "side": 1,
+      "message": "but the output desc patch does not correspond to the patch we are removing here.\nthis output is used as secondary source for this software patch. The patch handle associated to the output correspond to the connection of that output mix to the sink device.\nThe fact that we tear down the software patch does not mean we want to tear down the connection of this output to teh sink device. there maybe other audio tracks active on that same output.\nWe must be missing some ref counting on the output audio patch which can be needed either because the output is routed by setOutputDevices or used by a SW patch.",
+      "range": {
+        "startLine": 3734,
+        "startChar": 17,
+        "endLine": 3734,
+        "endChar": 77
+      },
+      "revId": "c2200118ffa9a9a89d3c0c5dd34a97ebf4fe48c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
