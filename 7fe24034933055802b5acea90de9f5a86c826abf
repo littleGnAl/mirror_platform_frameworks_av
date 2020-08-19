@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "0f07b825_fa6190dc",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-08-19T23:53:15Z",
+      "side": 1,
+      "message": "this doesn\u0027t seem specific to audio sources.\nIf for some reason checkForDeviceAndOutputChanges() or checkOutputForAllStrategies reroutes an output that was routed ot a removed device, then it can also happen to a regular output.\nmay be the \"outputs\" list should be updated instead or the check changed to a verification that the output is still routed to an unavailable device before closing it",
+      "range": {
+        "startLine": 247,
+        "startChar": 0,
+        "endLine": 247,
+        "endChar": 55
+      },
+      "revId": "7fe24034933055802b5acea90de9f5a86c826abf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
