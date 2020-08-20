@@ -29,6 +29,21 @@ cc_test {
 }
 
 cc_test {
+    name: "MediaCodecConstants_test",
+
+    srcs: [ "MediaCodecConstants_test.cpp" ],
+
+    include_dirs: [
+        "frameworks/av/media/libstagefright/include",
+    ],
+
+    cflags: [
+        "-Werror",
+        "-Wall",
+    ],
+}
+
+cc_test {
     name: "BatteryChecker_test",
     srcs: ["BatteryChecker_test.cpp"],
     test_suites: ["device-tests"],
