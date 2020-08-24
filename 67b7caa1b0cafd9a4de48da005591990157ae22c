@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "bd3b0bc1_cea08e15",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2020-08-24T04:21:10Z",
+      "side": 1,
+      "message": "The original issue is mitigated by Dolby as we are no longer using NON_BLOCKING flag for offloaded outputs.",
+      "revId": "67b7caa1b0cafd9a4de48da005591990157ae22c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "d5ccea1a_9d893290",
         "filename": "services/audioflinger/Threads.cpp",
         "patchSetId": 1
