@@ -163,8 +163,10 @@ TEST(StreamTypeVolumeTest, VolumeSetByStreamTypeOrAttributes)
         int index = 5;
         audio_devices_t device = AUDIO_DEVICE_OUT_SPEAKER;
 
-        product_strategy_t strategyId =
-                (product_strategy_t)AudioSystem::getStrategyForStream(stream);
+        audio_attributes_t attributes = AudioSystem::streamTypeToAttributes(stream);
+        product_strategy_t strategyId;
+        ret = AudioSystem::getProductStrategyFromAudioAttributes(attributes, strategyId);
+        ASSERT_EQ(ret, NO_ERROR) << "Failed to retrieve strategies for stream";
         if (strategyId == PRODUCT_STRATEGY_NONE) {
             // Use stream volume base API
             ret = AudioSystem::setStreamVolumeIndex(stream, index, device);
@@ -183,7 +185,7 @@ TEST(StreamTypeVolumeTest, VolumeSetByStreamTypeOrAttributes)
         } else {
             AudioProductStrategy *strategy = nullptr;
             AudioProductStrategyVector strategies;
-            status_t ret = AudioSystem::listAudioProductStrategies(strategies);
+            ret = AudioSystem::listAudioProductStrategies(strategies);
             ASSERT_EQ(ret, NO_ERROR) << "Failed to retrieve strategies";
             for (AudioProductStrategy &ps : strategies) {
                 if (ps.getId() == strategyId) {

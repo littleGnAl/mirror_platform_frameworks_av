@@ -1933,7 +1933,7 @@ AudioFlinger::EffectChain::EffectChain(ThreadBase *thread,
       mNewLeftVolume(UINT_MAX), mNewRightVolume(UINT_MAX),
       mEffectCallback(new EffectCallback(this, thread, thread->mAudioFlinger.get()))
 {
-    mStrategy = AudioSystem::getStrategyForStream(AUDIO_STREAM_MUSIC);
+    mStrategy = AudioFlinger::toStrategy(attributes_initializer(AUDIO_USAGE_MEDIA));
     if (thread == nullptr) {
         return;
     }
