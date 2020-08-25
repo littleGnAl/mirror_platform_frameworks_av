@@ -1028,13 +1028,6 @@ status_t AudioSystem::getMinVolumeIndexForAttributes(const audio_attributes_t &a
     return aps->getMinVolumeIndexForAttributes(attr, index);
 }
 
-uint32_t AudioSystem::getStrategyForStream(audio_stream_type_t stream)
-{
-    const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
-    if (aps == 0) return PRODUCT_STRATEGY_NONE;
-    return aps->getStrategyForStream(stream);
-}
-
 audio_devices_t AudioSystem::getDevicesForStream(audio_stream_type_t stream)
 {
     const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
