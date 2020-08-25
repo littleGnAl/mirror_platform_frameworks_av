@@ -165,29 +165,40 @@ public:
     //
     // volume control functions
     //
+    /**
+     * @brief initVolumeForAttributes initialises volume conversion parameters for given attributes
+     * by specifying volume index range.
+     * @param attr
+     * @param indexMin
+     * @param indexMax
+     */
+    virtual void initVolumeForAttributes(
+            const audio_attributes_t &attr, int indexMin, int indexMax) = 0;
 
-    // initialises stream volume conversion parameters by specifying volume index range.
-    virtual void initStreamVolume(audio_stream_type_t stream,
-                                      int indexMin,
-                                      int indexMax) = 0;
-
-    // sets the new stream volume at a level corresponding to the supplied index for the
-    // supplied device. By convention, specifying AUDIO_DEVICE_OUT_DEFAULT_FOR_VOLUME means
-    // setting volume for all devices
-    virtual status_t setStreamVolumeIndex(audio_stream_type_t stream,
-                                          int index,
-                                          audio_devices_t device) = 0;
-
-    // retrieve current volume index for the specified stream and the
-    // specified device. By convention, specifying AUDIO_DEVICE_OUT_DEFAULT_FOR_VOLUME means
-    // querying the volume of the active device.
-    virtual status_t getStreamVolumeIndex(audio_stream_type_t stream,
-                                          int *index,
-                                          audio_devices_t device) = 0;
-
+    /**
+     * @brief setVolumeIndexForAttributes sets the new attributes volume at a level corresponding to
+     * the supplied index for the supplied device.
+     * By convention, specifying AUDIO_DEVICE_OUT_DEFAULT_FOR_VOLUME means setting volume for all
+     * devices.
+     * @param attr
+     * @param index
+     * @param device
+     * @return
+     */
     virtual status_t setVolumeIndexForAttributes(const audio_attributes_t &attr,
                                                  int index,
                                                  audio_devices_t device) = 0;
+
+    /**
+     * @brief getVolumeIndexForAttributes retrieves current volume index for the specified
+     * attributes and the specified device.
+     * By convention, specifying AUDIO_DEVICE_OUT_DEFAULT_FOR_VOLUME means querying the volume of
+     * the active device.
+     * @param attr
+     * @param index
+     * @param device
+     * @return
+     */
     virtual status_t getVolumeIndexForAttributes(const audio_attributes_t &attr,
                                                  int &index,
                                                  audio_devices_t device) = 0;
