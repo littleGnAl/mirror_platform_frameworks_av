@@ -737,9 +737,8 @@ void AudioPolicyService::releaseInput(audio_port_handle_t portId)
     }
 }
 
-status_t AudioPolicyService::initStreamVolume(audio_stream_type_t stream,
-                                            int indexMin,
-                                            int indexMax)
+status_t AudioPolicyService::initVolumeForAttributes(
+        const audio_attributes_t &attributes, int indexMin, int indexMax)
 {
     if (mAudioPolicyManager == NULL) {
         return NO_INIT;
@@ -747,50 +746,10 @@ status_t AudioPolicyService::initStreamVolume(audio_stream_type_t stream,
     if (!settingsAllowed()) {
         return PERMISSION_DENIED;
     }
-    if (uint32_t(stream) >= AUDIO_STREAM_PUBLIC_CNT) {
-        return BAD_VALUE;
-    }
     Mutex::Autolock _l(mLock);
     AutoCallerClear acc;
-    mAudioPolicyManager->initStreamVolume(stream, indexMin, indexMax);
+    mAudioPolicyManager->initVolumeForAttributes(attributes, indexMin, indexMax);
     return NO_ERROR;
-}
-
-status_t AudioPolicyService::setStreamVolumeIndex(audio_stream_type_t stream,
-                                                  int index,
-                                                  audio_devices_t device)
-{
-    if (mAudioPolicyManager == NULL) {
-        return NO_INIT;
-    }
-    if (!settingsAllowed()) {
-        return PERMISSION_DENIED;
-    }
-    if (uint32_t(stream) >= AUDIO_STREAM_PUBLIC_CNT) {
-        return BAD_VALUE;
-    }
-    Mutex::Autolock _l(mLock);
-    AutoCallerClear acc;
-    return mAudioPolicyManager->setStreamVolumeIndex(stream,
-                                                    index,
-                                                    device);
-}
-
-status_t AudioPolicyService::getStreamVolumeIndex(audio_stream_type_t stream,
-                                                  int *index,
-                                                  audio_devices_t device)
-{
-    if (mAudioPolicyManager == NULL) {
-        return NO_INIT;
-    }
-    if (uint32_t(stream) >= AUDIO_STREAM_PUBLIC_CNT) {
-        return BAD_VALUE;
-    }
-    Mutex::Autolock _l(mLock);
-    AutoCallerClear acc;
-    return mAudioPolicyManager->getStreamVolumeIndex(stream,
-                                                    index,
-                                                    device);
 }
 
 status_t AudioPolicyService::setVolumeIndexForAttributes(const audio_attributes_t &attributes,
