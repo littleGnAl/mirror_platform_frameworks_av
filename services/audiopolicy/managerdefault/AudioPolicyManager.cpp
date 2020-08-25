@@ -2550,50 +2550,16 @@ void AudioPolicyManager::checkCloseInputs() {
     }
 }
 
-void AudioPolicyManager::initStreamVolume(audio_stream_type_t stream, int indexMin, int indexMax)
+void AudioPolicyManager::initVolumeForAttributes(
+        const audio_attributes_t &attributes, int indexMin, int indexMax)
 {
-    ALOGV("initStreamVolume() stream %d, min %d, max %d", stream , indexMin, indexMax);
+    ALOGV("%s() %s, min %d, max %d", __func__, toString(attributes).c_str(), indexMin, indexMax);
     if (indexMin < 0 || indexMax < 0) {
-        ALOGE("%s for stream %d: invalid min %d or max %d", __func__, stream , indexMin, indexMax);
+        ALOGE("%s for %s: invalid min %d or max %d", __func__,
+              toString(attributes).c_str() , indexMin, indexMax);
         return;
     }
-    getVolumeCurves(stream).initVolume(indexMin, indexMax);
-
-    // initialize other private stream volumes which follow this one
-    for (int curStream = 0; curStream < AUDIO_STREAM_FOR_POLICY_CNT; curStream++) {
-        if (!streamsMatchForvolume(stream, (audio_stream_type_t)curStream)) {
-            continue;
-        }
-        getVolumeCurves((audio_stream_type_t)curStream).initVolume(indexMin, indexMax);
-    }
-}
-
-status_t AudioPolicyManager::setStreamVolumeIndex(audio_stream_type_t stream,
-                                                  int index,
-                                                  audio_devices_t device)
-{
-    auto attributes = mEngine->getAttributesForStreamType(stream);
-    if (attributes == AUDIO_ATTRIBUTES_INITIALIZER) {
-        ALOGW("%s: no group for stream %s, bailing out", __func__, toString(stream).c_str());
-        return NO_ERROR;
-    }
-    ALOGV("%s: stream %s attributes=%s", __func__,
-          toString(stream).c_str(), toString(attributes).c_str());
-    return setVolumeIndexForAttributes(attributes, index, device);
-}
-
-status_t AudioPolicyManager::getStreamVolumeIndex(audio_stream_type_t stream,
-                                                  int *index,
-                                                  audio_devices_t device)
-{
-    // if device is AUDIO_DEVICE_OUT_DEFAULT_FOR_VOLUME, return volume for device selected for this
-    // stream by the engine.
-    DeviceTypeSet deviceTypes = {device};
-    if (device == AUDIO_DEVICE_OUT_DEFAULT_FOR_VOLUME) {
-        deviceTypes = mEngine->getOutputDevicesForStream(
-                stream, true /*fromCache*/).types();
-    }
-    return getVolumeIndex(getVolumeCurves(stream), *index, deviceTypes);
+    getVolumeCurves(attributes).initVolume(indexMin, indexMax);
 }
 
 status_t AudioPolicyManager::setVolumeIndexForAttributes(const audio_attributes_t &attributes,
@@ -5783,11 +5749,6 @@ sp<DeviceDescriptor> AudioPolicyManager::getNewInputDevice(
     return device;
 }
 
-bool AudioPolicyManager::streamsMatchForvolume(audio_stream_type_t stream1,
-                                               audio_stream_type_t stream2) {
-    return (stream1 == stream2);
-}
-
 audio_devices_t AudioPolicyManager::getDevicesForStream(audio_stream_type_t stream) {
     // By checking the range of stream before calling getStrategy, we avoid
     // getOutputDevicesForStream's behavior for invalid streams.
@@ -5798,21 +5759,15 @@ audio_devices_t AudioPolicyManager::getDevicesForStream(audio_stream_type_t stre
     }
     DeviceVector activeDevices;
     DeviceVector devices;
-    for (int i = AUDIO_STREAM_MIN; i < AUDIO_STREAM_PUBLIC_CNT; ++i) {
-        const audio_stream_type_t curStream{static_cast<audio_stream_type_t>(i)};
-        if (!streamsMatchForvolume(stream, curStream)) {
-            continue;
-        }
-        DeviceVector curDevices = mEngine->getOutputDevicesForStream(curStream, false/*fromCache*/);
-        devices.merge(curDevices);
-        for (audio_io_handle_t output : getOutputsForDevices(curDevices, mOutputs)) {
-            sp<AudioOutputDescriptor> outputDesc = mOutputs.valueFor(output);
-            if (outputDesc->isActive(toVolumeSource(curStream))) {
-                activeDevices.merge(outputDesc->devices());
-            }
+    auto attr = mEngine->getAttributesForStreamType(stream);
+    auto curDevices = mEngine->getOutputDevicesForAttributes(attr, nullptr, false/*fromCache*/);
+    devices.merge(curDevices);
+    for (audio_io_handle_t output : getOutputsForDevices(curDevices, mOutputs)) {
+        sp<AudioOutputDescriptor> outputDesc = mOutputs.valueFor(output);
+        if (outputDesc->isActive(toVolumeSource(attr))) {
+            activeDevices.merge(outputDesc->devices());
         }
     }
-
     // Favor devices selected on active streams if any to report correct device in case of
     // explicit device selection
     if (!activeDevices.isEmpty()) {
