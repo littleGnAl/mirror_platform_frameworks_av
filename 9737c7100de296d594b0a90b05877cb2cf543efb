@@ -16,6 +16,29 @@
       "revId": "9737c7100de296d594b0a90b05877cb2cf543efb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e5f5dfca_6067a547",
+        "filename": "media/libmedia/MediaProfiles.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-25T23:05:17Z",
+      "side": 1,
+      "message": "can we have these Log.e() a diagnostic with what is missing. I gather this is a sign of\na poorly configured system (e.g. not the app\u0027s fault), so I\u0027d like to have the complain about\nthis -- especially since it might help identify that things are missing before a device ships.\n\n\nI\u0027m ok with return null and the change that says \"only add() if it\u0027s non-null\".",
+      "range": {
+        "startLine": 243,
+        "startChar": 5,
+        "endLine": 243,
+        "endChar": 35
+      },
+      "revId": "9737c7100de296d594b0a90b05877cb2cf543efb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
