@@ -92,16 +92,9 @@ public:
     virtual status_t startInput(audio_port_handle_t portId) = 0;
     virtual status_t stopInput(audio_port_handle_t portId) = 0;
     virtual void releaseInput(audio_port_handle_t portId) = 0;
-    virtual status_t initStreamVolume(audio_stream_type_t stream,
-                                      int indexMin,
-                                      int indexMax) = 0;
-    virtual status_t setStreamVolumeIndex(audio_stream_type_t stream,
-                                          int index,
-                                          audio_devices_t device) = 0;
-    virtual status_t getStreamVolumeIndex(audio_stream_type_t stream,
-                                          int *index,
-                                          audio_devices_t device) = 0;
 
+    virtual status_t initVolumeForAttributes(
+            const audio_attributes_t &attr, int indexMin, int indexMax) = 0;
     virtual status_t setVolumeIndexForAttributes(const audio_attributes_t &attr,
                                                  int index,
                                                  audio_devices_t device) = 0;
