@@ -179,11 +179,6 @@ public:
         status_t getVolumeIndex(const IVolumeCurves &curves, int &index,
                                 const DeviceTypeSet& deviceTypes) const;
 
-        // return the strategy corresponding to a given stream type
-        virtual uint32_t getStrategyForStream(audio_stream_type_t stream)
-        {
-            return streamToStrategy(stream);
-        }
         product_strategy_t streamToStrategy(audio_stream_type_t stream) const
         {
             auto attributes = mEngine->getAttributesForStreamType(stream);
