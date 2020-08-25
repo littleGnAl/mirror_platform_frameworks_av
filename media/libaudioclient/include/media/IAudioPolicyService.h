@@ -114,7 +114,6 @@ public:
 
     virtual status_t getMinVolumeIndexForAttributes(const audio_attributes_t &attr, int &index) = 0;
 
-    virtual uint32_t getStrategyForStream(audio_stream_type_t stream) = 0;
     virtual audio_devices_t getDevicesForStream(audio_stream_type_t stream) = 0;
     virtual status_t getDevicesForAttributes(const AudioAttributes &aa,
             AudioDeviceTypeAddrVector *devices) const = 0;
