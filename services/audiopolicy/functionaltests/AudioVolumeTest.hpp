@@ -40,9 +40,6 @@ public:
     android::status_t setVolumeForAttributes(int volumeIndex,
                                              const audio_attributes_t &attr,
                                              android::volume_group_t expectedGroupId);
-    android::status_t setStreamVolume(int volumeIndex,
-                                      audio_stream_type_t stream,
-                                      android::volume_group_t expectedGroupId);
 private:
     class AudioVolumeGroupNotifier: public android::AudioSystem::AudioVolumeGroupCallback
     {
