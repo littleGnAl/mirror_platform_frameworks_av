@@ -286,7 +286,6 @@ public:
 
     static status_t getMinVolumeIndexForAttributes(const audio_attributes_t &attr, int &index);
 
-    static uint32_t getStrategyForStream(audio_stream_type_t stream);
     static audio_devices_t getDevicesForStream(audio_stream_type_t stream);
     static status_t getDevicesForAttributes(const AudioAttributes &aa,
                                             AudioDeviceTypeAddrVector *devices);

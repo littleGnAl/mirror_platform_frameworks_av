@@ -58,7 +58,6 @@ enum {
     GET_VOLUME_ATTRIBUTES,
     GET_MIN_VOLUME_FOR_ATTRIBUTES,
     GET_MAX_VOLUME_FOR_ATTRIBUTES,
-    GET_STRATEGY_FOR_STREAM,
     GET_OUTPUT_FOR_EFFECT,
     REGISTER_EFFECT,
     UNREGISTER_EFFECT,
@@ -505,14 +504,6 @@ public:
         }
         index = reply.readInt32();
         return NO_ERROR;
-    }
-    virtual uint32_t getStrategyForStream(audio_stream_type_t stream)
-    {
-        Parcel data, reply;
-        data.writeInterfaceToken(IAudioPolicyService::getInterfaceDescriptor());
-        data.writeInt32(static_cast <uint32_t>(stream));
-        remote()->transact(GET_STRATEGY_FOR_STREAM, data, &reply);
-        return reply.readUint32();
     }
 
     virtual audio_devices_t getDevicesForStream(audio_stream_type_t stream)
@@ -1922,14 +1913,6 @@ status_t BnAudioPolicyService::onTransact(
             status_t status = getStreamVolumeIndex(stream, &index, device);
             reply->writeInt32(index);
             reply->writeInt32(static_cast <uint32_t>(status));
-            return NO_ERROR;
-        } break;
-
-        case GET_STRATEGY_FOR_STREAM: {
-            CHECK_INTERFACE(IAudioPolicyService, data, reply);
-            audio_stream_type_t stream =
-                    static_cast <audio_stream_type_t>(data.readInt32());
-            reply->writeUint32(getStrategyForStream(stream));
             return NO_ERROR;
         } break;
 
