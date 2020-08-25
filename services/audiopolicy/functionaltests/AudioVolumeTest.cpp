@@ -60,25 +60,6 @@ status_t AudioVolumeTest::setVolumeForAttributes(int volumeIndex,
     return NO_ERROR;
 }
 
-status_t AudioVolumeTest::setStreamVolume(int volumeIndex,
-                                                   audio_stream_type_t stream,
-                                                   volume_group_t expectedGroupId)
-{
-    std::unique_lock<std::mutex> lock(mMutex);
-    status_t status =
-            AudioSystem::setStreamVolumeIndex(stream, volumeIndex, AUDIO_DEVICE_OUT_SPEAKER);
-    if (status != OK) {
-        ALOGE("AudioSystem::setVolumeIndexForAttributes failed: %d", status);
-        std::cerr << "AudioSystem::getVolumeIndexForAttributes failed: " << std::endl;
-        return status;
-    }
-    // @todo check of group changed...
-    mCondVar.wait_for(
-                lock, std::chrono::milliseconds(10000),
-                [this, &expectedGroupId](){ return mLastUpdatedGroup == expectedGroupId; });
-    return NO_ERROR;
-}
-
 void AudioVolumeTest::AudioVolumeGroupNotifier::onAudioVolumeGroupChanged(volume_group_t group,
                                                                           int flags)
 {
