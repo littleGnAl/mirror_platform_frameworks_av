@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "995ada13_a85cc555",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-25T23:22:26Z",
+      "side": 1,
+      "message": "seems like some of the tests come down to Log.v/ALOG() operations instead of\nassertions that cause the test to announce failure.   Unless I\u0027m missing where they\nare triggering appropriate crash failures.",
+      "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "8c827a66_37c27063",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-25T23:22:26Z",
+      "side": 1,
+      "message": "we\u0027re doing this in a different way now, right?\nthis CL dates back to june, before I think we switched that over.\n\n\nand the point of this is \"do we have all the codecs (encode and decode) that are required on this device per the CDD\", right?",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 6
+      },
+      "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "391bfd58_628d316c",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-25T23:22:26Z",
+      "side": 1,
+      "message": "seems to me that this should be ASSERT_GE(index,0)  \n\nwe just parsed it out of the xml files -- it\u0027s supposed to exist, right?",
+      "range": {
+        "startLine": 101,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "01a619f6_10cb5020",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-25T23:22:26Z",
+      "side": 1,
+      "message": "assert failure.\nwe had it in the one record, but it\u0027s not in the other record. that would seem to be\na (fatal) mismatch.",
+      "range": {
+        "startLine": 170,
+        "startChar": 31,
+        "endLine": 171,
+        "endChar": 39
+      },
+      "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8f677806_cd7993b3",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-25T23:22:26Z",
+      "side": 1,
+      "message": "should there be an ASSERT() in here that fails when these don\u0027t match...?",
+      "range": {
+        "startLine": 184,
+        "startChar": 31,
+        "endLine": 186,
+        "endChar": 66
+      },
+      "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
