@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "eb0eb314_2a9d20e5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-25T16:46:08Z",
+      "side": 1,
+      "message": "SoloTester and Clarity",
+      "range": {
+        "startLine": 11,
+        "startChar": 19,
+        "endLine": 11,
+        "endChar": 30
+      },
+      "revId": "bf2339813e71253619bc8496c737ad4ae0803549",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "f8cca5c7_ef4798f9",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 7
@@ -16,6 +39,184 @@
       "revId": "bf2339813e71253619bc8496c737ad4ae0803549",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "de44255d_4166a98f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-25T16:46:08Z",
+      "side": 1,
+      "message": "Saketh, thanks for the code.\n\n1) Can we have a bit-identical check here with multichannel versus stereo, similar to lvmtest.\n2) We need to check 1 channel capability (and not auxilliary).  The code here assumes multichannel \u003e\u003d 2, but what happens with 1 channel?\n\nThanks!\n\n\n\n",
+      "revId": "bf2339813e71253619bc8496c737ad4ae0803549",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "e9fa46d7_d1a56683",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 346,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-25T16:46:08Z",
+      "side": 1,
+      "message": "nit: stale comment\n\nbut you could state that reverb only affects the stereo channels in a multichannel source.",
+      "range": {
+        "startLine": 346,
+        "startChar": 0,
+        "endLine": 346,
+        "endChar": 52
+      },
+      "revId": "bf2339813e71253619bc8496c737ad4ae0803549",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97b42155_5b27baa8",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 349,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-25T16:46:08Z",
+      "side": 1,
+      "message": "nit: channels %d\", channels);",
+      "range": {
+        "startLine": 349,
+        "startChar": 51,
+        "endLine": 349,
+        "endChar": 60
+      },
+      "revId": "bf2339813e71253619bc8496c737ad4ae0803549",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "54cae50b_fcd1b6e2",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-25T16:46:08Z",
+      "side": 1,
+      "message": "nit: fix indent.",
+      "range": {
+        "startLine": 390,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 8
+      },
+      "revId": "bf2339813e71253619bc8496c737ad4ae0803549",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5ac6ea46_f289dd6b",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-25T16:46:08Z",
+      "side": 1,
+      "message": "what happens if channels \u003d\u003d 1, and it isn\u0027t aux?  we should duplicate in that case.",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 43
+      },
+      "revId": "bf2339813e71253619bc8496c737ad4ae0803549",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e31b0c5a_000f9817",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 432,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-25T16:46:08Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 432,
+        "startChar": 0,
+        "endLine": 432,
+        "endChar": 64
+      },
+      "revId": "bf2339813e71253619bc8496c737ad4ae0803549",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04931161_6d4e3ebf",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 496,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-25T16:46:08Z",
+      "side": 1,
+      "message": "not true anymore.",
+      "range": {
+        "startLine": 496,
+        "startChar": 58,
+        "endLine": 496,
+        "endChar": 80
+      },
+      "revId": "bf2339813e71253619bc8496c737ad4ae0803549",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9d7d1ce1_fc4f455a",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 499,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-08-25T16:46:08Z",
+      "side": 1,
+      "message": "nit } else {",
+      "range": {
+        "startLine": 499,
+        "startChar": 0,
+        "endLine": 499,
+        "endChar": 14
+      },
+      "revId": "bf2339813e71253619bc8496c737ad4ae0803549",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
