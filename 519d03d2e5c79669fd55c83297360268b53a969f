@@ -1,0 +1,139 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004601372",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1222425?revision\u003d29",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c11d67b9_20d1875f",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 4854,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-25T15:53:39Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 4854,
+        "startChar": 29,
+        "endLine": 4854,
+        "endChar": 35
+      },
+      "revId": "519d03d2e5c79669fd55c83297360268b53a969f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004601372",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1222425?revision\u003d29",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "dc0dcc25_c653fb64",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 5011,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-25T15:53:39Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 5011,
+        "startChar": 22,
+        "endLine": 5011,
+        "endChar": 28
+      },
+      "revId": "519d03d2e5c79669fd55c83297360268b53a969f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004601372",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1222425?revision\u003d29",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "9bbc4855_e29bb4b5",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 5560,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-25T15:53:39Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 5560,
+        "startChar": 9,
+        "endLine": 5560,
+        "endChar": 15
+      },
+      "revId": "519d03d2e5c79669fd55c83297360268b53a969f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004601372",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1222425?revision\u003d29",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "86a8e9a8_299d02fd",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 9304,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-25T15:53:39Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 9304,
+        "startChar": 9,
+        "endLine": 9304,
+        "endChar": 15
+      },
+      "revId": "519d03d2e5c79669fd55c83297360268b53a969f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000004601372",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1222425?revision\u003d29",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c145e593_b6c02d06",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 29
+      },
+      "lineNbr": 9307,
+      "author": {
+        "id": 1550585
+      },
+      "writtenOn": "2020-08-25T15:53:39Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027primary/secondary\u0027 or \u0027manager/worker\u0027; see https://source.android.com/setup/contribute/respectful-code for more details.",
+      "range": {
+        "startLine": 9307,
+        "startChar": 18,
+        "endLine": 9307,
+        "endChar": 24
+      },
+      "revId": "519d03d2e5c79669fd55c83297360268b53a969f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
