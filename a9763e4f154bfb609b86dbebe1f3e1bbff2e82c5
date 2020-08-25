@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3dcbb67a_e46c5919",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3100,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-08-25T15:35:13Z",
+      "side": 1,
+      "message": "need at least a comment for the convention that PRODUCT_STRATEGY_NONE invalidates all tracks.\nFallback on MUSIC strategy shall be ensured by toStrategy also.",
+      "range": {
+        "startLine": 3100,
+        "startChar": 13,
+        "endLine": 3100,
+        "endChar": 46
+      },
+      "revId": "a9763e4f154bfb609b86dbebe1f3e1bbff2e82c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6d42150_81f783b2",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 9291,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-08-25T15:35:13Z",
+      "side": 1,
+      "message": "Add at least a doxygen comment for the convention that PRODUCT_STRATEGY_NONE invalidates all tracks",
+      "range": {
+        "startLine": 9291,
+        "startChar": 8,
+        "endLine": 9291,
+        "endChar": 42
+      },
+      "revId": "a9763e4f154bfb609b86dbebe1f3e1bbff2e82c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
