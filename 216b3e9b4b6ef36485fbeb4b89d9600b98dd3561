@@ -22,6 +22,30 @@
       "revId": "216b3e9b4b6ef36485fbeb4b89d9600b98dd3561",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "011df00b_df05ccf1",
+        "filename": "drm/libmediadrm/include/mediadrm/DrmSessionManager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1381973
+      },
+      "writtenOn": "2020-08-25T02:25:52Z",
+      "side": 1,
+      "message": "SGTM, thanks for the explanation!",
+      "parentUuid": "174107ba_d424a01d",
+      "range": {
+        "startLine": 59,
+        "startChar": 7,
+        "endLine": 59,
+        "endChar": 20
+      },
+      "revId": "216b3e9b4b6ef36485fbeb4b89d9600b98dd3561",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
