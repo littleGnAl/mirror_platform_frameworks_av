@@ -121,25 +121,25 @@ TEST_P(AttributeVolumeTest, UnkownAudioAttributes)
                                                 << group.getName() << " has same volume index.";
             }
         }
-        for (const auto &stream : group.getStreamTypes()) {
-            ASSERT_NE(stream, AUDIO_STREAM_DEFAULT);
-            if (uint32_t(stream) >= AUDIO_STREAM_PUBLIC_CNT) {
-                std::cerr << "Group " << group.getName() << " has non-public stream, "
-                             "AudioSystem will prevent us to set the volume" << std::endl;
-                continue;
-            }
-            int index;
-            ret = AudioSystem::getStreamVolumeIndex(stream, &index, mDevice);
-            ASSERT_EQ(ret, NO_ERROR) << "getVolumeIndexForStream failed with error: " << ret;
+//        for (const auto &stream : group.getStreamTypes()) {
+//            ASSERT_NE(stream, AUDIO_STREAM_DEFAULT);
+//            if (uint32_t(stream) >= AUDIO_STREAM_PUBLIC_CNT) {
+//                std::cerr << "Group " << group.getName() << " has non-public stream, "
+//                             "AudioSystem will prevent us to set the volume" << std::endl;
+//                continue;
+//            }
+//            int index;
+//            ret = AudioSystem::getStreamVolumeIndex(stream, &index, mDevice);
+//            ASSERT_EQ(ret, NO_ERROR) << "getVolumeIndexForStream failed with error: " << ret;
 
-            if (group.getName() == expectedGroup) {
-                EXPECT_EQ(indexForAttr, index) <<  "Excpected Group "
-                                                << group.getName() << " has not same volume index.";
-            } else {
-                EXPECT_NE(indexForAttr, index) <<  "Group Id=" << group.getId() << " Name="
-                                                << group.getName() << " has same volume index.";
-            }
-        }
+//            if (group.getName() == expectedGroup) {
+//                EXPECT_EQ(indexForAttr, index) <<  "Excpected Group "
+//                                                << group.getName() << " has not same volume index.";
+//            } else {
+//                EXPECT_NE(indexForAttr, index) <<  "Group Id=" << group.getId() << " Name="
+//                                                << group.getName() << " has same volume index.";
+//            }
+//        }
     }
 }
 
@@ -163,61 +163,47 @@ TEST(StreamTypeVolumeTest, VolumeSetByStreamTypeOrAttributes)
         int index = 5;
         audio_devices_t device = AUDIO_DEVICE_OUT_SPEAKER;
 
-        product_strategy_t strategyId =
-                (product_strategy_t)AudioSystem::getStrategyForStream(stream);
-        if (strategyId == PRODUCT_STRATEGY_NONE) {
-            // Use stream volume base API
-            ret = AudioSystem::setStreamVolumeIndex(stream, index, device);
-            EXPECT_EQ(ret, NO_ERROR) << "setStreamVolumeIndex failed for "
-                                     <<  Helper::dumpProductStrategy(strategyId, true);
+        audio_attributes_t attributes = AudioSystem::streamTypeToAttributes(stream);
+        product_strategy_t strategyId;
+        ret = AudioSystem::getProductStrategyFromAudioAttributes(attributes, strategyId);
+        ASSERT_EQ(ret, NO_ERROR) << "Failed to retrieve strategies for stream";
 
-            int indexRead = 0;
-            ret = AudioSystem::getStreamVolumeIndex(stream, &indexRead, device);
-            EXPECT_EQ(ret, NO_ERROR) << "getStreamVolumeIndex failed for "
-                                     <<  Helper::dumpProductStrategy(strategyId, true);
-
-            EXPECT_EQ(index, indexRead) << "getVolumeIndexForAttributes wrong value for "
-                                        <<  Helper::dumpProductStrategy(strategyId, true)
-                                        << " expected " << index << ", got " << indexRead;
-
-        } else {
-            AudioProductStrategy *strategy = nullptr;
-            AudioProductStrategyVector strategies;
-            status_t ret = AudioSystem::listAudioProductStrategies(strategies);
-            ASSERT_EQ(ret, NO_ERROR) << "Failed to retrieve strategies";
-            for (AudioProductStrategy &ps : strategies) {
-                if (ps.getId() == strategyId) {
-                    strategy = &ps;
-                    break;
-                }
+        AudioProductStrategy *strategy = nullptr;
+        AudioProductStrategyVector strategies;
+        ret = AudioSystem::listAudioProductStrategies(strategies);
+        ASSERT_EQ(ret, NO_ERROR) << "Failed to retrieve strategies";
+        for (AudioProductStrategy &ps : strategies) {
+            if (ps.getId() == strategyId) {
+                strategy = &ps;
+                break;
             }
-            ASSERT_NE(strategy, nullptr) << "Invalid strategy for id " << strategyId;
-            auto attribute = strategy->getAudioAttributes().front().getAttributes();
-            int indexMin = 0;
-            ret = AudioSystem::getMinVolumeIndexForAttributes(attribute, indexMin);
-            EXPECT_EQ(ret, NO_ERROR) << "getVolumeIndexMinForAttributes failed for "
-                                     <<  Helper::dumpProductStrategy(strategyId, true);
-            int indexMax = 0;
-            ret = AudioSystem::getMaxVolumeIndexForAttributes(attribute, indexMax);
-            EXPECT_EQ(ret, NO_ERROR) << "getVolumeIndexMaxForAttributes failed for "
-                                     <<  Helper::dumpProductStrategy(strategyId, true);
-
-            int index = resetVolumeIndex(indexMin, indexMax);
-            audio_devices_t device = AUDIO_DEVICE_OUT_SPEAKER;
-            ret = AudioSystem::setVolumeIndexForAttributes(attribute, index, device);
-            EXPECT_EQ(ret, NO_ERROR) << "setVolumeIndexForAttributes failed for "
-                                     <<  Helper::dumpProductStrategy(strategyId, true);
-
-            int indexRead = 0;
-            ret = AudioSystem::getVolumeIndexForAttributes(attribute, indexRead, device);
-            EXPECT_EQ(ret, NO_ERROR) << "getVolumeIndexForAttributes failed for "
-                                     <<  Helper::dumpProductStrategy(strategyId, true);
-
-            EXPECT_EQ(index, indexRead) << "getVolumeIndexForAttributes wrong value for "
-                                        <<  Helper::dumpProductStrategy(strategyId, true)
-                                        << " expected " << index << ", got " << indexRead;
-
         }
+        ASSERT_NE(strategy, nullptr) << "Invalid strategy for id " << strategyId;
+        auto attribute = strategy->getAudioAttributes().front().getAttributes();
+        int indexMin = 0;
+        ret = AudioSystem::getMinVolumeIndexForAttributes(attribute, indexMin);
+        EXPECT_EQ(ret, NO_ERROR) << "getVolumeIndexMinForAttributes failed for "
+                                 <<  Helper::dumpProductStrategy(strategyId, true);
+        int indexMax = 0;
+        ret = AudioSystem::getMaxVolumeIndexForAttributes(attribute, indexMax);
+        EXPECT_EQ(ret, NO_ERROR) << "getVolumeIndexMaxForAttributes failed for "
+                                 <<  Helper::dumpProductStrategy(strategyId, true);
+
+        index = resetVolumeIndex(indexMin, indexMax);
+        device = AUDIO_DEVICE_OUT_SPEAKER;
+        ret = AudioSystem::setVolumeIndexForAttributes(attribute, index, device);
+        EXPECT_EQ(ret, NO_ERROR) << "setVolumeIndexForAttributes failed for "
+                                 <<  Helper::dumpProductStrategy(strategyId, true);
+
+        int indexRead = 0;
+        ret = AudioSystem::getVolumeIndexForAttributes(attribute, indexRead, device);
+        EXPECT_EQ(ret, NO_ERROR) << "getVolumeIndexForAttributes failed for "
+                                 <<  Helper::dumpProductStrategy(strategyId, true);
+
+        EXPECT_EQ(index, indexRead) << "getVolumeIndexForAttributes wrong value for "
+                                    <<  Helper::dumpProductStrategy(strategyId, true)
+                                     << " expected " << index << ", got " << indexRead;
+
     }
 }
 
@@ -236,23 +222,7 @@ public:
         ASSERT_EQ(ret, NO_ERROR) << "AudioSystem::listAudioProductStrategies failed with error: "
                                  << ret;
         int index = 1;
-        // Initialize all stream volume to 1
-        for (audio_stream_type_t stream = AUDIO_STREAM_MIN; stream < AUDIO_STREAM_PUBLIC_CNT;
-             stream = (audio_stream_type_t) (stream + 1)) {
 
-            ret = AudioSystem::setStreamVolumeIndex(stream, index, mDevice);
-            EXPECT_EQ(ret, NO_ERROR) << "setStreamVolumeIndex failed for "
-                                     <<  toString(stream);
-
-            int indexRead = 0;
-            ret = AudioSystem::getStreamVolumeIndex(stream, &indexRead, mDevice);
-            EXPECT_EQ(ret, NO_ERROR) << "getStreamVolumeIndex failed for "
-                                     <<  toString(stream);
-
-            EXPECT_EQ(index, indexRead) << "getStreamVolumeIndex wrong value for "
-                                        <<  toString(stream)
-                                         << " expected " << index << ", got " << indexRead;
-        }
         for (const auto &group : mVolumeGroups) {
             for (const auto &attributes : group.getAudioAttributes()) {
                 ret = AudioSystem::setVolumeIndexForAttributes(attributes, index, mDevice);
@@ -357,29 +327,29 @@ TEST_P(AudioProductStrategiesPlaybackVolumeTest, PlaybackVolumeSetByAttributes)
                 << " Gains shall match (same volume group) expected "
                 << index << ", got " << indexRead;
     }
-    // Now get volume by stream type
-    for (audio_stream_type_t stream = AUDIO_STREAM_MIN; stream < AUDIO_STREAM_PUBLIC_CNT;
-         stream = (audio_stream_type_t) (stream + 1)) {
+//    // Now get volume by stream type
+//    for (audio_stream_type_t stream = AUDIO_STREAM_MIN; stream < AUDIO_STREAM_PUBLIC_CNT;
+//         stream = (audio_stream_type_t) (stream + 1)) {
 
-        indexRead = 0;
-        ret = AudioSystem::getStreamVolumeIndex(stream, &indexRead, device);
-        EXPECT_EQ(ret, NO_ERROR) << "getStreamVolumeIndex failed for "
-                                 <<  toString(stream);
+//        indexRead = 0;
+//        ret = AudioSystem::getStreamVolumeIndex(stream, &indexRead, device);
+//        EXPECT_EQ(ret, NO_ERROR) << "getStreamVolumeIndex failed for "
+//                                 <<  toString(stream);
 
-        if (shallVolumeIndexMatch[stream]) {
-            EXPECT_EQ(index, indexRead)
-                    << "GroupDefinedByAttributes: getStreamVolumeIndex shall work for "
-                    <<  Helper::dumpProductStrategy(strategy.getId(), true)
-                     << " and stream " <<  toString(stream)
-                     << ", expected " << index << ", got " << indexRead;
-        } else {
-            EXPECT_NE(index, indexRead)
-                    << "GroupDefinedByAttributes: getStreamVolumeIndex shall not work for "
-                    <<  Helper::dumpProductStrategy(strategy.getId(), true)
-                     << " and stream " <<  toString(stream)
-                     << ", expected " << index << ", got " << indexRead;
-        }
-    }
+//        if (shallVolumeIndexMatch[stream]) {
+//            EXPECT_EQ(index, indexRead)
+//                    << "GroupDefinedByAttributes: getStreamVolumeIndex shall work for "
+//                    <<  Helper::dumpProductStrategy(strategy.getId(), true)
+//                     << " and stream " <<  toString(stream)
+//                     << ", expected " << index << ", got " << indexRead;
+//        } else {
+//            EXPECT_NE(index, indexRead)
+//                    << "GroupDefinedByAttributes: getStreamVolumeIndex shall not work for "
+//                    <<  Helper::dumpProductStrategy(strategy.getId(), true)
+//                     << " and stream " <<  toString(stream)
+//                     << ", expected " << index << ", got " << indexRead;
+//        }
+//    }
     // No playback running, set volume by attributes
     for (const auto &volumeAttribute : volumeAttributes) {
         incrementVolumeIndex(index, indexMin, indexMax);
@@ -395,27 +365,27 @@ TEST_P(AudioProductStrategiesPlaybackVolumeTest, PlaybackVolumeSetByAttributes)
                                     <<  Helper::dumpProductStrategy(strategy.getId(), true)
                                      << " expected " << index << ", got " << indexRead;
 
-        // Now get volume by stream type
-        for (audio_stream_type_t stream = AUDIO_STREAM_MIN; stream < AUDIO_STREAM_PUBLIC_CNT;
-             stream = (audio_stream_type_t) (stream + 1)) {
+//        // Now get volume by stream type
+//        for (audio_stream_type_t stream = AUDIO_STREAM_MIN; stream < AUDIO_STREAM_PUBLIC_CNT;
+//             stream = (audio_stream_type_t) (stream + 1)) {
 
-            indexRead = 0;
-            ret = AudioSystem::getStreamVolumeIndex(stream, &indexRead, device);
-            EXPECT_EQ(ret, NO_ERROR) << "getStreamVolumeIndex failed for "
-                                     <<  toString(stream);
+//            indexRead = 0;
+//            ret = AudioSystem::getStreamVolumeIndex(stream, &indexRead, device);
+//            EXPECT_EQ(ret, NO_ERROR) << "getStreamVolumeIndex failed for "
+//                                     <<  toString(stream);
 
-            if (shallVolumeIndexMatch[stream]) {
-                EXPECT_EQ(index, indexRead) << "getStreamVolumeIndex shall work for "
-                                            <<  Helper::dumpProductStrategy(strategy.getId(), true)
-                                            << " and stream " <<  toString(stream)
-                                            << ", expected " << index << ", got " << indexRead;
-            } else {
-                EXPECT_NE(index, indexRead) << "getStreamVolumeIndex shall not work for "
-                                            <<  Helper::dumpProductStrategy(strategy.getId(), true)
-                                            << " and stream " <<  toString(stream)
-                                            << ", expected " << index << ", got " << indexRead;
-            }
-        }
+//            if (shallVolumeIndexMatch[stream]) {
+//                EXPECT_EQ(index, indexRead) << "getStreamVolumeIndex shall work for "
+//                                            <<  Helper::dumpProductStrategy(strategy.getId(), true)
+//                                            << " and stream " <<  toString(stream)
+//                                            << ", expected " << index << ", got " << indexRead;
+//            } else {
+//                EXPECT_NE(index, indexRead) << "getStreamVolumeIndex shall not work for "
+//                                            <<  Helper::dumpProductStrategy(strategy.getId(), true)
+//                                            << " and stream " <<  toString(stream)
+//                                            << ", expected " << index << ", got " << indexRead;
+//            }
+//        }
     }
 
     /// IMPORTANT NOTE:
@@ -458,65 +428,65 @@ TEST_P(AudioProductStrategiesPlaybackVolumeTest, PlaybackVolumeSetByAttributes)
     // Case 2: legacy API shall not work for any stream except the one associated to this
     // strategy
 
-    for (audio_stream_type_t stream = AUDIO_STREAM_MIN; stream < AUDIO_STREAM_PUBLIC_CNT;
-         stream = (audio_stream_type_t) (stream + 1)) {
+//    for (audio_stream_type_t stream = AUDIO_STREAM_MIN; stream < AUDIO_STREAM_PUBLIC_CNT;
+//         stream = (audio_stream_type_t) (stream + 1)) {
 
-        indexRead = 0;
-        ret = AudioSystem::getStreamVolumeIndex(stream, &indexRead, device);
-        EXPECT_EQ(ret, NO_ERROR) << "getStreamVolumeIndex failed for "
-                                 <<  toString(stream);
+//        indexRead = 0;
+//        ret = AudioSystem::getStreamVolumeIndex(stream, &indexRead, device);
+//        EXPECT_EQ(ret, NO_ERROR) << "getStreamVolumeIndex failed for "
+//                                 <<  toString(stream);
 
-        if (shallVolumeIndexMatch[stream]) {
-            EXPECT_EQ(index, indexRead) << "getStreamVolumeIndex shall work for "
-                                        <<  Helper::dumpProductStrategy(strategy.getId(), true)
-                                        << " and stream" <<  toString(stream)
-                                        << ", expected " << index << ", got " << indexRead;
-        } else {
-            EXPECT_NE(index, indexRead) << "getStreamVolumeIndex shall not work for "
-                                        <<  Helper::dumpProductStrategy(strategy.getId(), true)
-                                        << " and stream" <<  toString(stream)
-                                        << ", expected " << index << ", got " << indexRead;
-        }
-    }
+//        if (shallVolumeIndexMatch[stream]) {
+//            EXPECT_EQ(index, indexRead) << "getStreamVolumeIndex shall work for "
+//                                        <<  Helper::dumpProductStrategy(strategy.getId(), true)
+//                                        << " and stream" <<  toString(stream)
+//                                        << ", expected " << index << ", got " << indexRead;
+//        } else {
+//            EXPECT_NE(index, indexRead) << "getStreamVolumeIndex shall not work for "
+//                                        <<  Helper::dumpProductStrategy(strategy.getId(), true)
+//                                        << " and stream" <<  toString(stream)
+//                                        << ", expected " << index << ", got " << indexRead;
+//        }
+//    }
 
-    // Set volume by stream type loop
-    for (const auto &stream : volumeStreams) {
-        // Set by stream type
-        incrementVolumeIndex(index, indexMin, indexMax);
-        ret = AudioSystem::setStreamVolumeIndex(stream, index, device);
-        EXPECT_EQ(ret, NO_ERROR) << "setStreamVolumeIndex failed for "
-                                 <<  Helper::dumpProductStrategy(strategy.getId(), true)
-                                 << " with stream " << toString(stream);
+//    // Set volume by stream type loop
+//    for (const auto &stream : volumeStreams) {
+//        // Set by stream type
+//        incrementVolumeIndex(index, indexMin, indexMax);
+//        ret = AudioSystem::setStreamVolumeIndex(stream, index, device);
+//        EXPECT_EQ(ret, NO_ERROR) << "setStreamVolumeIndex failed for "
+//                                 <<  Helper::dumpProductStrategy(strategy.getId(), true)
+//                                 << " with stream " << toString(stream);
 
-        // As the product strategy belongs to a group, all the streams following this product
-        // strategy will follow the same volume curves
-        // Read by stream type
-        for (const auto &groupStream : volumeStreams) {
-            indexRead = 0;
-            ret = AudioSystem::getStreamVolumeIndex(groupStream, &indexRead, device);
-            EXPECT_EQ(ret, NO_ERROR) << "getStreamVolumeIndex failed for "
-                                     <<  Helper::dumpProductStrategy(strategy.getId(), true)
-                                     << " with stream " << toString(groupStream);
-            EXPECT_EQ(index, indexRead) << "getStreamVolumeIndex wrong value for "
-                                        <<  Helper::dumpProductStrategy(strategy.getId(), true)
-                                        << " and stream " << toString(groupStream)
-                                        << " expected " << index << ", got " << indexRead;
-        }
+//        // As the product strategy belongs to a group, all the streams following this product
+//        // strategy will follow the same volume curves
+//        // Read by stream type
+//        for (const auto &groupStream : volumeStreams) {
+//            indexRead = 0;
+//            ret = AudioSystem::getStreamVolumeIndex(groupStream, &indexRead, device);
+//            EXPECT_EQ(ret, NO_ERROR) << "getStreamVolumeIndex failed for "
+//                                     <<  Helper::dumpProductStrategy(strategy.getId(), true)
+//                                     << " with stream " << toString(groupStream);
+//            EXPECT_EQ(index, indexRead) << "getStreamVolumeIndex wrong value for "
+//                                        <<  Helper::dumpProductStrategy(strategy.getId(), true)
+//                                        << " and stream " << toString(groupStream)
+//                                        << " expected " << index << ", got " << indexRead;
+//        }
 
-        // get volume by attribute
-        for (const auto &volumeAttribute : volumeAttributes) {
-            indexRead = 0;
-            ret = AudioSystem::getVolumeIndexForAttributes(volumeAttribute, indexRead, device);
-            EXPECT_EQ(ret, NO_ERROR) << "getVolumeIndexForAttributes failed for "
-                                     <<  Helper::dumpProductStrategy(strategy.getId(), true);
+//        // get volume by attribute
+//        for (const auto &volumeAttribute : volumeAttributes) {
+//            indexRead = 0;
+//            ret = AudioSystem::getVolumeIndexForAttributes(volumeAttribute, indexRead, device);
+//            EXPECT_EQ(ret, NO_ERROR) << "getVolumeIndexForAttributes failed for "
+//                                     <<  Helper::dumpProductStrategy(strategy.getId(), true);
 
-            EXPECT_EQ(index, indexRead)
-                    << "getVolumeIndexForAttributes wrong value for "
-                    <<  Helper::dumpProductStrategy(strategy.getId(), true)
-                    << " while setting by stream " << toString(stream)
-                    << " expected " << index << ", got " << indexRead;
-        }
-    }
+//            EXPECT_EQ(index, indexRead)
+//                    << "getVolumeIndexForAttributes wrong value for "
+//                    <<  Helper::dumpProductStrategy(strategy.getId(), true)
+//                    << " while setting by stream " << toString(stream)
+//                    << " expected " << index << ", got " << indexRead;
+//        }
+//    }
 
     // Set volume by attribute loop
     for (const auto &volumeAttribute : volumeAttributes) {
@@ -535,29 +505,29 @@ TEST_P(AudioProductStrategiesPlaybackVolumeTest, PlaybackVolumeSetByAttributes)
                                     <<  Helper::dumpProductStrategy(strategy.getId(), true)
                                     << " expected " << index << ", got " << indexRead;
 
-        // Now get volume by stream type
-        for (audio_stream_type_t stream = AUDIO_STREAM_MIN; stream < AUDIO_STREAM_PUBLIC_CNT;
-             stream = (audio_stream_type_t) (stream + 1)) {
+//        // Now get volume by stream type
+//        for (audio_stream_type_t stream = AUDIO_STREAM_MIN; stream < AUDIO_STREAM_PUBLIC_CNT;
+//             stream = (audio_stream_type_t) (stream + 1)) {
 
-            indexRead = 0;
-            ret = AudioSystem::getStreamVolumeIndex(stream, &indexRead, device);
-            EXPECT_EQ(ret, NO_ERROR) << "getStreamVolumeIndex failed for "
-                                     <<  toString(stream);
+//            indexRead = 0;
+//            ret = AudioSystem::getStreamVolumeIndex(stream, &indexRead, device);
+//            EXPECT_EQ(ret, NO_ERROR) << "getStreamVolumeIndex failed for "
+//                                     <<  toString(stream);
 
-            if (shallVolumeIndexMatch[stream]) {
-                EXPECT_EQ(index, indexRead)
-                        << "getStreamVolumeIndex shall work for "
-                        <<  Helper::dumpProductStrategy(strategy.getId(), true)
-                        << " and stream " <<  toString(stream)
-                        << ", expected " << index << ", got " << indexRead;
-            } else {
-                EXPECT_NE(index, indexRead)
-                        << "getStreamVolumeIndex shall not work for "
-                        <<  Helper::dumpProductStrategy(strategy.getId(), true)
-                        << " and stream " <<  toString(stream)
-                        << ", expected " << index << ", got " << indexRead;
-            }
-        }
+//            if (shallVolumeIndexMatch[stream]) {
+//                EXPECT_EQ(index, indexRead)
+//                        << "getStreamVolumeIndex shall work for "
+//                        <<  Helper::dumpProductStrategy(strategy.getId(), true)
+//                        << " and stream " <<  toString(stream)
+//                        << ", expected " << index << ", got " << indexRead;
+//            } else {
+//                EXPECT_NE(index, indexRead)
+//                        << "getStreamVolumeIndex shall not work for "
+//                        <<  Helper::dumpProductStrategy(strategy.getId(), true)
+//                        << " and stream " <<  toString(stream)
+//                        << ", expected " << index << ", got " << indexRead;
+//            }
+//        }
     }
     audioTrack->stop();
 }
@@ -633,16 +603,16 @@ TEST(AudioVolumeGroupCbTest, SetVolumePerAttributesAndStream)
                 EXPECT_EQ(ret, NO_ERROR) << "setVolume failed with error: " << ret;
                 incrementVolumeIndex(volumeIndex, indexMin, indexMax);
             }
-            for (const auto &stream : group.getStreamTypes()) {
-                ASSERT_NE(stream, AUDIO_STREAM_DEFAULT)
-                        << "AUDIO_STREAM_DEFAULT does not make sense for using legacy volume API";
-                incrementVolumeIndex(volumeIndex, indexMin, indexMax);
-                ret = volumeTest.setStreamVolume(volumeIndex, stream, group.getId());
-                EXPECT_EQ(ret, NO_ERROR) << "setStreamVolumeIndex failed for group "
-                                         << group.getName()
-                                         << " and stream " << toString(stream)
-                                         << " with error: " << ret;
-            }
+//            for (const auto &stream : group.getStreamTypes()) {
+//                ASSERT_NE(stream, AUDIO_STREAM_DEFAULT)
+//                        << "AUDIO_STREAM_DEFAULT does not make sense for using legacy volume API";
+//                incrementVolumeIndex(volumeIndex, indexMin, indexMax);
+//                ret = volumeTest.setStreamVolume(volumeIndex, stream, group.getId());
+//                EXPECT_EQ(ret, NO_ERROR) << "setStreamVolumeIndex failed for group "
+//                                         << group.getName()
+//                                         << " and stream " << toString(stream)
+//                                         << " with error: " << ret;
+//            }
         }
     }
     ASSERT_EQ(volumeTest.unregisterAudioSystemCb(), NO_ERROR)
