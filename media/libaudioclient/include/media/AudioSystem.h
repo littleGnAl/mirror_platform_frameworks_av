@@ -278,7 +278,6 @@ public:
 
     static status_t getMinVolumeIndexForAttributes(const audio_attributes_t &attr, int &index);
 
-    static uint32_t getStrategyForStream(audio_stream_type_t stream);
     static audio_devices_t getDevicesForStream(audio_stream_type_t stream);
 
     static audio_io_handle_t getOutputForEffect(const effect_descriptor_t *desc);

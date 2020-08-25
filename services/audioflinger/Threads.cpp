@@ -2848,7 +2848,7 @@ uint32_t AudioFlinger::PlaybackThread::getStrategyForSession_l(audio_session_t s
     // session AUDIO_SESSION_OUTPUT_MIX is placed in same strategy as MUSIC stream so that
     // it is moved to correct output by audio policy manager when A2DP is connected or disconnected
     if (sessionId == AUDIO_SESSION_OUTPUT_MIX) {
-        return AudioSystem::getStrategyForStream(AUDIO_STREAM_MUSIC);
+        return AudioFlinger::toStrategy(attributes_initializer(AUDIO_USAGE_MEDIA));
     }
     for (size_t i = 0; i < mTracks.size(); i++) {
         sp<Track> track = mTracks[i];
@@ -2856,7 +2856,7 @@ uint32_t AudioFlinger::PlaybackThread::getStrategyForSession_l(audio_session_t s
             return track->strategy();
         }
     }
-    return AudioSystem::getStrategyForStream(AUDIO_STREAM_MUSIC);
+    return AudioFlinger::toStrategy(attributes_initializer(AUDIO_USAGE_MEDIA));
 }
 
 
