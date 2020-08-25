@@ -961,31 +961,12 @@ void AudioSystem::releaseInput(audio_port_handle_t portId)
     aps->releaseInput(portId);
 }
 
-status_t AudioSystem::initStreamVolume(audio_stream_type_t stream,
-                                    int indexMin,
-                                    int indexMax)
+status_t AudioSystem::initVolumeForAttributes(
+        const audio_attributes_t &attr, int indexMin, int indexMax)
 {
     const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
     if (aps == 0) return PERMISSION_DENIED;
-    return aps->initStreamVolume(stream, indexMin, indexMax);
-}
-
-status_t AudioSystem::setStreamVolumeIndex(audio_stream_type_t stream,
-                                           int index,
-                                           audio_devices_t device)
-{
-    const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
-    if (aps == 0) return PERMISSION_DENIED;
-    return aps->setStreamVolumeIndex(stream, index, device);
-}
-
-status_t AudioSystem::getStreamVolumeIndex(audio_stream_type_t stream,
-                                           int *index,
-                                           audio_devices_t device)
-{
-    const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
-    if (aps == 0) return PERMISSION_DENIED;
-    return aps->getStreamVolumeIndex(stream, index, device);
+    return aps->initVolumeForAttributes(attr, indexMin, indexMax);
 }
 
 status_t AudioSystem::setVolumeIndexForAttributes(const audio_attributes_t &attr,

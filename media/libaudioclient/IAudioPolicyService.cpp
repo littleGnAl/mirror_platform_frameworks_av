@@ -51,9 +51,7 @@ enum {
     START_INPUT,
     STOP_INPUT,
     RELEASE_INPUT,
-    INIT_STREAM_VOLUME,
-    SET_STREAM_VOLUME,
-    GET_STREAM_VOLUME,
+    INIT_ATTRIBUTES_VOLUME,
     SET_VOLUME_ATTRIBUTES,
     GET_VOLUME_ATTRIBUTES,
     GET_MIN_VOLUME_FOR_ATTRIBUTES,
@@ -399,44 +397,18 @@ public:
         remote()->transact(RELEASE_INPUT, data, &reply);
     }
 
-    virtual status_t initStreamVolume(audio_stream_type_t stream,
-                                    int indexMin,
-                                    int indexMax)
+    virtual status_t initVolumeForAttributes(
+            const audio_attributes_t &attr, int indexMin, int indexMax)
     {
         Parcel data, reply;
         data.writeInterfaceToken(IAudioPolicyService::getInterfaceDescriptor());
-        data.writeInt32(static_cast <uint32_t>(stream));
+        data.write(&attr, sizeof(audio_attributes_t));
         data.writeInt32(indexMin);
         data.writeInt32(indexMax);
-        remote()->transact(INIT_STREAM_VOLUME, data, &reply);
-        return static_cast <status_t> (reply.readInt32());
-    }
-
-    virtual status_t setStreamVolumeIndex(audio_stream_type_t stream,
-                                          int index,
-                                          audio_devices_t device)
-    {
-        Parcel data, reply;
-        data.writeInterfaceToken(IAudioPolicyService::getInterfaceDescriptor());
-        data.writeInt32(static_cast <uint32_t>(stream));
-        data.writeInt32(index);
-        data.writeInt32(static_cast <uint32_t>(device));
-        remote()->transact(SET_STREAM_VOLUME, data, &reply);
-        return static_cast <status_t> (reply.readInt32());
-    }
-
-    virtual status_t getStreamVolumeIndex(audio_stream_type_t stream,
-                                          int *index,
-                                          audio_devices_t device)
-    {
-        Parcel data, reply;
-        data.writeInterfaceToken(IAudioPolicyService::getInterfaceDescriptor());
-        data.writeInt32(static_cast <uint32_t>(stream));
-        data.writeInt32(static_cast <uint32_t>(device));
-
-        remote()->transact(GET_STREAM_VOLUME, data, &reply);
-        int lIndex = reply.readInt32();
-        if (index) *index = lIndex;
+        status_t status = remote()->transact(INIT_ATTRIBUTES_VOLUME, data, &reply);
+        if (status != NO_ERROR) {
+            return status;
+        }
         return static_cast <status_t> (reply.readInt32());
     }
 
@@ -1604,8 +1576,8 @@ status_t BnAudioPolicyService::onTransact(
         case SET_PHONE_STATE:
 //FIXME: Allow SET_FORCE_USE calls from system apps until a better use case routing API is available
 //      case SET_FORCE_USE:
-        case INIT_STREAM_VOLUME:
-        case SET_STREAM_VOLUME:
+        case INIT_ATTRIBUTES_VOLUME:
+        case SET_VOLUME_ATTRIBUTES:
         case REGISTER_POLICY_MIXES:
         case SET_MASTER_MONO:
         case GET_SURROUND_FORMATS:
@@ -1860,37 +1832,17 @@ status_t BnAudioPolicyService::onTransact(
             return NO_ERROR;
         } break;
 
-        case INIT_STREAM_VOLUME: {
+        case INIT_ATTRIBUTES_VOLUME: {
             CHECK_INTERFACE(IAudioPolicyService, data, reply);
-            audio_stream_type_t stream =
-                    static_cast <audio_stream_type_t>(data.readInt32());
+            audio_attributes_t attributes = {};
+            status_t status = data.read(&attributes, sizeof(audio_attributes_t));
+            if (status != NO_ERROR) {
+                return status;
+            }
             int indexMin = data.readInt32();
             int indexMax = data.readInt32();
-            reply->writeInt32(static_cast <uint32_t>(initStreamVolume(stream, indexMin,indexMax)));
-            return NO_ERROR;
-        } break;
-
-        case SET_STREAM_VOLUME: {
-            CHECK_INTERFACE(IAudioPolicyService, data, reply);
-            audio_stream_type_t stream =
-                    static_cast <audio_stream_type_t>(data.readInt32());
-            int index = data.readInt32();
-            audio_devices_t device = static_cast <audio_devices_t>(data.readInt32());
-            reply->writeInt32(static_cast <uint32_t>(setStreamVolumeIndex(stream,
-                                                                          index,
-                                                                          device)));
-            return NO_ERROR;
-        } break;
-
-        case GET_STREAM_VOLUME: {
-            CHECK_INTERFACE(IAudioPolicyService, data, reply);
-            audio_stream_type_t stream =
-                    static_cast <audio_stream_type_t>(data.readInt32());
-            audio_devices_t device = static_cast <audio_devices_t>(data.readInt32());
-            int index = 0;
-            status_t status = getStreamVolumeIndex(stream, &index, device);
-            reply->writeInt32(index);
-            reply->writeInt32(static_cast <uint32_t>(status));
+            reply->writeInt32(static_cast <uint32_t>(
+                                  initVolumeForAttributes(attributes, indexMin,indexMax)));
             return NO_ERROR;
         } break;
 
