@@ -145,22 +145,17 @@ public:
         virtual void releaseInput(audio_port_handle_t portId);
         virtual void checkCloseInputs();
         /**
-         * @brief initStreamVolume: even if the engine volume files provides min and max, keep this
-         * api for compatibility reason.
+         * @brief initVolumeForAttributes: even if the engine volume files provides min and max,
+         * keep this api for compatibility reason.
          * AudioServer will get the min and max and may overwrite them if:
          *      -using property (highest priority)
          *      -not defined (-1 by convention), case when still using apm volume tables XML files
-         * @param stream to be considered
+         * @param attr attributes to be considered
          * @param indexMin to set
          * @param indexMax to set
          */
-        virtual void initStreamVolume(audio_stream_type_t stream, int indexMin, int indexMax);
-        virtual status_t setStreamVolumeIndex(audio_stream_type_t stream,
-                                              int index,
-                                              audio_devices_t device);
-        virtual status_t getStreamVolumeIndex(audio_stream_type_t stream,
-                                              int *index,
-                                              audio_devices_t device);
+        virtual void initVolumeForAttributes(
+                const audio_attributes_t &attr, int indexMin, int indexMax);
 
         virtual status_t setVolumeIndexForAttributes(const audio_attributes_t &attr,
                                                      int index,
@@ -814,9 +809,6 @@ protected:
         void cleanUpForDevice(const sp<DeviceDescriptor>& deviceDesc);
 
         void clearAudioSources(uid_t uid);
-
-        static bool streamsMatchForvolume(audio_stream_type_t stream1,
-                                          audio_stream_type_t stream2);
 
         void closeActiveClients(const sp<AudioInputDescriptor>& input);
         void closeClient(audio_port_handle_t portId);
