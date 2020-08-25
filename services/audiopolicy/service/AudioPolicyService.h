@@ -129,7 +129,6 @@ public:
     virtual status_t getMaxVolumeIndexForAttributes(const audio_attributes_t &attr,
                                                     int &index);
 
-    virtual uint32_t getStrategyForStream(audio_stream_type_t stream);
     virtual audio_devices_t getDevicesForStream(audio_stream_type_t stream);
     virtual status_t getDevicesForAttributes(const AudioAttributes &aa,
                                              AudioDeviceTypeAddrVector *devices) const;

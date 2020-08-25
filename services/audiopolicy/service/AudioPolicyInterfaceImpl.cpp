@@ -840,19 +840,6 @@ status_t AudioPolicyService::getMaxVolumeIndexForAttributes(const audio_attribut
     return mAudioPolicyManager->getMaxVolumeIndexForAttributes(attributes, index);
 }
 
-uint32_t AudioPolicyService::getStrategyForStream(audio_stream_type_t stream)
-{
-    if (uint32_t(stream) >= AUDIO_STREAM_PUBLIC_CNT) {
-        return PRODUCT_STRATEGY_NONE;
-    }
-    if (mAudioPolicyManager == NULL) {
-        return PRODUCT_STRATEGY_NONE;
-    }
-    // DO NOT LOCK, may be called from AudioFlinger with lock held, reaching deadlock
-    AutoCallerClear acc;
-    return mAudioPolicyManager->getStrategyForStream(stream);
-}
-
 //audio policy: use audio_device_t appropriately
 
 audio_devices_t AudioPolicyService::getDevicesForStream(audio_stream_type_t stream)
