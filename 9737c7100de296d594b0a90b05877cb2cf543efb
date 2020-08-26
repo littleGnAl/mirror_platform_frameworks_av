@@ -39,6 +39,30 @@
       "revId": "9737c7100de296d594b0a90b05877cb2cf543efb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "def17cf6_fa6108bb",
+        "filename": "media/libmedia/MediaProfiles.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1271767
+      },
+      "writtenOn": "2020-08-26T00:55:39Z",
+      "side": 1,
+      "message": "Changed to complain with ALOGE.",
+      "parentUuid": "e5f5dfca_6067a547",
+      "range": {
+        "startLine": 243,
+        "startChar": 5,
+        "endLine": 243,
+        "endChar": 35
+      },
+      "revId": "9737c7100de296d594b0a90b05877cb2cf543efb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
