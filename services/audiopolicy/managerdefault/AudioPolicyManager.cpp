@@ -42,6 +42,7 @@
 #include <set>
 #include <unordered_set>
 #include <vector>
+#include <cutils/bitops.h>
 #include <cutils/properties.h>
 #include <utils/Log.h>
 #include <media/AudioParameter.h>
@@ -459,7 +460,16 @@ status_t AudioPolicyManager::handleDeviceConfigChange(audio_devices_t device,
             }
         }
     }
-
+    auto musicStrategy = streamToStrategy(AUDIO_STREAM_MUSIC);
+    for (size_t i = 0; i < mOutputs.size(); i++) {
+       sp<SwAudioOutputDescriptor> desc = mOutputs.valueAt(i);
+       // mute media strategies and delay device switch by the largest
+       // This avoid sending the music tail into the earpiece or headset.
+       setStrategyMute(musicStrategy, true, desc);
+       setStrategyMute(musicStrategy, false, desc, MUTE_TIME_MS,
+          mEngine->getOutputDevicesForAttributes(attributes_initializer(AUDIO_USAGE_MEDIA),
+                                              nullptr, true /*fromCache*/).types());
+    }
     // Toggle the device state: UNAVAILABLE -> AVAILABLE
     // This will force reading again the device configuration
     status = setDeviceConnectionState(device,
@@ -1711,7 +1721,8 @@ status_t AudioPolicyManager::startSource(const sp<SwAudioOutputDescriptor>& outp
         checkAndSetVolume(curves, client->volumeSource(),
                           curves.getVolumeIndex(outputDesc->devices().types()),
                           outputDesc,
-                          outputDesc->devices().types());
+                          outputDesc->devices().types(), 0 /*delay*/,
+                          outputDesc->useHwGain() /*force*/);
 
         // update the outputs if starting an output with a stream that can affect notification
         // routing
@@ -5266,6 +5277,12 @@ DeviceVector AudioPolicyManager::getNewOutputDevices(const sp<SwAudioOutputDescr
         }
     }
 
+    // Do not retrieve engine device for outputs through MSD
+    // TODO: support explicit routing requests by resetting MSD patch to engine device.
+    if (outputDesc->devices() == getMsdAudioOutDevices()) {
+        return outputDesc->devices();
+    }
+
     // Honor explicit routing requests only if no client using default routing is active on this
     // input: a specific app can not force routing for other apps by setting a preferred device.
     bool active; // unused
@@ -5824,7 +5841,8 @@ float AudioPolicyManager::computeVolume(IVolumeCurves &curves,
     if (!Intersection(deviceTypes,
             {AUDIO_DEVICE_OUT_BLUETOOTH_A2DP, AUDIO_DEVICE_OUT_BLUETOOTH_A2DP_HEADPHONES,
              AUDIO_DEVICE_OUT_WIRED_HEADSET, AUDIO_DEVICE_OUT_WIRED_HEADPHONE,
-             AUDIO_DEVICE_OUT_USB_HEADSET, AUDIO_DEVICE_OUT_HEARING_AID}).empty() &&
+             AUDIO_DEVICE_OUT_USB_HEADSET, AUDIO_DEVICE_OUT_HEARING_AID,
+             AUDIO_DEVICE_OUT_BLE_HEADSET}).empty() &&
             ((volumeSource == alarmVolumeSrc ||
               volumeSource == ringVolumeSrc) ||
              (volumeSource == toVolumeSource(AUDIO_STREAM_NOTIFICATION)) ||

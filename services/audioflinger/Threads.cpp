@@ -28,6 +28,7 @@
 #include <linux/futex.h>
 #include <sys/stat.h>
 #include <sys/syscall.h>
+#include <cutils/bitops.h>
 #include <cutils/properties.h>
 #include <media/AudioContainers.h>
 #include <media/AudioDeviceTypeAddr.h>
@@ -7128,7 +7129,7 @@ reacquire_wakelock:
 
             const ssize_t availableToRead = mPipeSource->availableToRead();
             if (availableToRead >= 0) {
-                // PipeSource is the master clock.  It is up to the AudioRecord client to keep up.
+                // PipeSource is the primary clock.  It is up to the AudioRecord client to keep up.
                 LOG_ALWAYS_FATAL_IF((size_t)availableToRead > mPipeFramesP2,
                         "more frames to read than fifo size, %zd > %zu",
                         availableToRead, mPipeFramesP2);

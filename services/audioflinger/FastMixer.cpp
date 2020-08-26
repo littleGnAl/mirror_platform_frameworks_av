@@ -27,7 +27,6 @@
 
 #include "Configuration.h"
 #include <time.h>
-#include <utils/Debug.h>
 #include <utils/Log.h>
 #include <utils/Trace.h>
 #include <system/audio.h>
@@ -40,6 +39,7 @@
 #include <audio_utils/channels.h>
 #include <audio_utils/format.h>
 #include <audio_utils/mono_blend.h>
+#include <cutils/bitops.h>
 #include <media/AudioMixer.h>
 #include "FastMixer.h"
 #include "TypedLogger.h"

@@ -36,6 +36,10 @@
 #include <inttypes.h>
 #include <netinet/in.h>
 
+#ifdef ENABLE_CRYPTO
+#include "HlsSampleDecryptor.h"
+#endif
+
 namespace android {
 
 ElementaryStreamQueue::ElementaryStreamQueue(Mode mode, uint32_t flags)
@@ -50,7 +54,13 @@ ElementaryStreamQueue::ElementaryStreamQueue(Mode mode, uint32_t flags)
 
     // Create the decryptor anyway since we don't know the use-case unless key is provided
     // Won't decrypt if key info not available (e.g., scanner/extractor just parsing ts files)
-    mSampleDecryptor = isSampleEncrypted() ? new HlsSampleDecryptor : NULL;
+    mSampleDecryptor = isSampleEncrypted() ?
+#ifdef ENABLE_CRYPTO
+        new HlsSampleDecryptor
+#else
+        new SampleDecryptor
+#endif
+        : NULL;
 }
 
 sp<MetaData> ElementaryStreamQueue::getFormat() {
