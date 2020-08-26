@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "091af48a_25c45b48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-08-26T18:04:08Z",
+      "side": 1,
+      "message": "Hi Andy,\n\nThanks for the review comments!\n\n1. The build_and_run_all_unit_tests_reverb.sh script uploaded in the reverb testbench\n   performs bit identical tests for multichannel\n\n\n2. Regarding the comments on insert mode (non auxiliary mode) and channels being 1:\nWe have got this issue to your notice a couple of months back and the following is the response we got\n\"As I understand it, auxiliary mode (which is preset reverb) is always mono input, and insert mode is always stereo input. The output channels is always stereo. The code is badly indented, but seems ok.\"\n\nSo in the current set of changes we assumed that for insert mode (non auxiliary mode) channels is always \u003e\u003d2. Please let us know if insert mode should accommodate single channel processing as well.\n\nWe will update the patch accordingly.\n\nThanks!",
+      "revId": "9ac9fc6a402211d9547e14b9f253cdd71dda93ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
