@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "0b552478_770dd810",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1271767
+      },
+      "writtenOn": "2020-08-27T22:44:25Z",
+      "side": 1,
+      "message": "b/166673022 is the internal bug. CTS coverage should already be sufficient (people really shouldn\u0027t be providing wrong media_profile.xml), in the future, maybe we want to add something for such situations.",
+      "parentUuid": "0d3b3893_58b26ae9",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "a19f0f9da85977aa04fe534a98f8134cf3a41ab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "c551df38_540719dd",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -59,6 +83,42 @@
     },
     {
       "key": {
+        "uuid": "86ac3b6b_44e378b2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271767
+      },
+      "writtenOn": "2020-08-27T22:44:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c551df38_540719dd",
+      "revId": "a19f0f9da85977aa04fe534a98f8134cf3a41ab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1662b1dd_1d3d44bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271767
+      },
+      "writtenOn": "2020-08-27T22:44:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5e8209c_0307cccb",
+      "revId": "a19f0f9da85977aa04fe534a98f8134cf3a41ab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3d57b00b_f1662f0f",
         "filename": "media/libmedia/MediaProfiles.cpp",
         "patchSetId": 3
@@ -73,6 +133,24 @@
       "revId": "a19f0f9da85977aa04fe534a98f8134cf3a41ab9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5c933d3f_940c065b",
+        "filename": "media/libmedia/MediaProfiles.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1271767
+      },
+      "writtenOn": "2020-08-27T22:44:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3d57b00b_f1662f0f",
+      "revId": "a19f0f9da85977aa04fe534a98f8134cf3a41ab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }

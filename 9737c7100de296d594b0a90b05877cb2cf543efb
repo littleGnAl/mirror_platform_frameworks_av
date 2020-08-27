@@ -19,6 +19,24 @@
     },
     {
       "key": {
+        "uuid": "f6475fd6_5f1e2b73",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1271767
+      },
+      "writtenOn": "2020-08-27T22:44:25Z",
+      "side": 1,
+      "message": "In term of tests, https://cs.android.com/android/platform/superproject/+/master:cts/tests/media/src/android/mediav2/cts/ should already cover the correct mediaprofile case. I don\u0027t think it would be necessary to cover mal-configuration handling in CTS at this moment.\n\nThere\u0027re also some positive community feedback in CL comments as well. Similar patch can also be found in community-supported AOSP images.",
+      "parentUuid": "9bedd7d2_db091116",
+      "revId": "9737c7100de296d594b0a90b05877cb2cf543efb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e5f5dfca_6067a547",
         "filename": "media/libmedia/MediaProfiles.cpp",
         "patchSetId": 2
