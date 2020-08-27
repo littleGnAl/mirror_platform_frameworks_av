@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c551df38_540719dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-08-27T00:52:40Z",
+      "side": 1,
+      "message": "looks OK to me, except for the long line",
+      "revId": "a19f0f9da85977aa04fe534a98f8134cf3a41ab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "3d57b00b_f1662f0f",
+        "filename": "media/libmedia/MediaProfiles.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 517,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-08-27T00:52:40Z",
+      "side": 1,
+      "message": "this line is too long",
+      "revId": "a19f0f9da85977aa04fe534a98f8134cf3a41ab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
