@@ -2,6 +2,29 @@
   "comments": [
     {
       "key": {
+        "uuid": "0d3b3893_58b26ae9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-27T01:01:13Z",
+      "side": 1,
+      "message": "so here\u0027s the last set of changes before I say merge:\n\n(1) create an internal bug\n(1a) code here is more resilient\n(2a) determine whether we already have (or should add)\n     CTS coverage for such situations.\n(2) include it here with a \"Bug: xxxx\" line",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 14
+      },
+      "revId": "a19f0f9da85977aa04fe534a98f8134cf3a41ab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "c551df38_540719dd",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 3
@@ -13,6 +36,23 @@
       "writtenOn": "2020-08-27T00:52:40Z",
       "side": 1,
       "message": "looks OK to me, except for the long line",
+      "revId": "a19f0f9da85977aa04fe534a98f8134cf3a41ab9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d5e8209c_0307cccb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-08-27T01:01:13Z",
+      "side": 1,
+      "message": "my final tweaks are all releted to the commit message.",
       "revId": "a19f0f9da85977aa04fe534a98f8134cf3a41ab9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
