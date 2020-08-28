@@ -16,6 +16,8 @@
 
 #pragma once
 
+#include <EngineConfig.h>
+
 #include <system/audio.h>
 
 namespace android {
@@ -144,15 +146,15 @@ const engineConfig::ProductStrategies gOrderedSystemStrategies = {
      {
          {"", AUDIO_STREAM_REROUTING, "AUDIO_STREAM_REROUTING",
           {{AUDIO_CONTENT_TYPE_UNKNOWN, AUDIO_USAGE_VIRTUAL_SOURCE, AUDIO_SOURCE_DEFAULT,
-            AUDIO_FLAG_NONE, ""}}
+            AUDIO_FLAG_NONE, AUDIO_TAG_INTERNAL}}
          }
      },
     },
     {"patch",
      {
          {"", AUDIO_STREAM_PATCH, "AUDIO_STREAM_PATCH",
-          {{AUDIO_CONTENT_TYPE_UNKNOWN, AUDIO_USAGE_UNKNOWN, AUDIO_SOURCE_DEFAULT,
-            AUDIO_FLAG_NONE, ""}}
+          {{AUDIO_CONTENT_TYPE_UNKNOWN, AUDIO_USAGE_UNKNOWN, AUDIO_SOURCE_DEFAULT, 0,
+            AUDIO_FLAG_NONE, AUDIO_TAG_INTERNAL}}
          }
      },
     }
