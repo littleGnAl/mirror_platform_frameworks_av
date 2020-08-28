@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "bd72ccb6_2b202a53",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-08-28T18:09:51Z",
+      "side": 1,
+      "message": "we are taking the common denominator requirements for different devices types from cdd. Since package manager api is not available at native layer, we are not able to determine the device type.",
+      "parentUuid": "8c827a66_37c27063",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 6
+      },
+      "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "391bfd58_628d316c",
         "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
         "patchSetId": 3
@@ -53,6 +77,30 @@
       "writtenOn": "2020-08-25T23:22:26Z",
       "side": 1,
       "message": "seems to me that this should be ASSERT_GE(index,0)  \n\nwe just parsed it out of the xml files -- it\u0027s supposed to exist, right?",
+      "range": {
+        "startLine": 101,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ba6f86fa_b9f6f7b8",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-08-28T18:09:51Z",
+      "side": 1,
+      "message": "the codec builder doesn\u0027t add every codec, isn\u0027t required either.\nEg.\nOMX.qcom.video.decoder.vp9.secure not found in CodecList\nc2.android.mpeg2.decoder not found in CodecList\n\nmpeg2 isn\u0027t required on phones",
+      "parentUuid": "391bfd58_628d316c",
       "range": {
         "startLine": 101,
         "startChar": 8,
@@ -88,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "9d3351b0_716b056c",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-08-28T18:09:51Z",
+      "side": 1,
+      "message": "we found non-essential keys missing:\nmeasured-frame-rate-176x144-range\nmeasured-frame-rate-1920x1080-range\nframe-rate-range\nbitrate-range\nblock-size\nalignment\ncomplexity-default\nfeature-adaptive-playback\n\nsome keys might be calculated by builder, wouldn\u0027t be present in xml\nsome might be essential keys calculated by builder though.",
+      "parentUuid": "01a619f6_10cb5020",
+      "range": {
+        "startLine": 170,
+        "startChar": 31,
+        "endLine": 171,
+        "endChar": 39
+      },
+      "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "8f677806_cd7993b3",
         "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
         "patchSetId": 3
@@ -99,6 +171,30 @@
       "writtenOn": "2020-08-25T23:22:26Z",
       "side": 1,
       "message": "should there be an ASSERT() in here that fails when these don\u0027t match...?",
+      "range": {
+        "startLine": 184,
+        "startChar": 31,
+        "endLine": 186,
+        "endChar": 66
+      },
+      "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a1f1f356_3bdd86e5",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-08-28T18:09:51Z",
+      "side": 1,
+      "message": "value mismatch is only for non-essential keys like:\nbitrate-range\nsize-range\nmeasured-frame-rate-1280x720-range\nperformance-point-3840x2160-range",
+      "parentUuid": "8f677806_cd7993b3",
       "range": {
         "startLine": 184,
         "startChar": 31,
