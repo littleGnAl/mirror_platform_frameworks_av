@@ -2,6 +2,74 @@
   "comments": [
     {
       "key": {
+        "uuid": "824b01cf_68eeea08",
+        "filename": "services/audiopolicy/config/le_audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1687135
+      },
+      "writtenOn": "2020-08-31T15:08:33Z",
+      "side": 1,
+      "message": "2.1 ?",
+      "revId": "51cd003d1e42eae8548537a3b1962edb5244a515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52d5a289_f579617c",
+        "filename": "services/audiopolicy/config/le_audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1687135
+      },
+      "writtenOn": "2020-08-31T15:08:33Z",
+      "side": 1,
+      "message": "what about other bit depths here ?",
+      "revId": "51cd003d1e42eae8548537a3b1962edb5244a515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1786e9d7_e7180053",
+        "filename": "services/audiopolicy/config/le_audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1687135
+      },
+      "writtenOn": "2020-08-31T15:08:33Z",
+      "side": 1,
+      "message": "If I understand this should be in sync with possible codecs sample rates ? This is fine with LC3 current possible settings recommended by BT SIG.",
+      "revId": "51cd003d1e42eae8548537a3b1962edb5244a515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0c50618e_890553ca",
+        "filename": "services/audiopolicy/config/le_audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1687135
+      },
+      "writtenOn": "2020-08-31T15:08:33Z",
+      "side": 1,
+      "message": "what about mono ?",
+      "revId": "51cd003d1e42eae8548537a3b1962edb5244a515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0f9b4932_18ae92b5",
         "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
         "patchSetId": 1
@@ -25,6 +93,30 @@
     },
     {
       "key": {
+        "uuid": "c55a5971_8389a9de",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1687135
+      },
+      "writtenOn": "2020-08-31T15:08:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0f9b4932_18ae92b5",
+      "range": {
+        "startLine": 242,
+        "startChar": 12,
+        "endLine": 246,
+        "endChar": 42
+      },
+      "revId": "51cd003d1e42eae8548537a3b1962edb5244a515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e1967a11_ff14965b",
         "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
         "patchSetId": 1
@@ -45,6 +137,30 @@
       "revId": "51cd003d1e42eae8548537a3b1962edb5244a515",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "771e0d28_d2c5f73f",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1687135
+      },
+      "writtenOn": "2020-08-31T15:08:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e1967a11_ff14965b",
+      "range": {
+        "startLine": 547,
+        "startChar": 19,
+        "endLine": 547,
+        "endChar": 48
+      },
+      "revId": "51cd003d1e42eae8548537a3b1962edb5244a515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
