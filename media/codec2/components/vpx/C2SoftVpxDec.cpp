@@ -559,7 +559,7 @@ void C2SoftVpxDec::process(
         return;
     }
 
-    size_t inOffset = 0u;
+    // size_t inOffset = 0u;
     size_t inSize = 0u;
     C2ReadView rView = mDummyReadView;
     if (!work->input.buffers.empty()) {
@@ -595,9 +595,10 @@ void C2SoftVpxDec::process(
     }
 
     if (inSize) {
-        uint8_t *bitstream = const_cast<uint8_t *>(rView.data() + inOffset);
-        vpx_codec_err_t err = vpx_codec_decode(
-                mCodecCtx, bitstream, inSize, &work->input.ordinal.frameIndex, 0);
+        // uint8_t *bitstream = const_cast<uint8_t *>(rView.data() + inOffset);
+        // vpx_codec_err_t err = vpx_codec_decode(
+                // mCodecCtx, bitstream, inSize, &work->input.ordinal.frameIndex, 0);
+        vpx_codec_err_t err = VPX_CODEC_OK;
         if (err != VPX_CODEC_OK) {
             ALOGE("on2 decoder failed to decode frame. err: %d", err);
             mSignalledError = true;
@@ -629,6 +630,8 @@ void C2SoftVpxDec::process(
         fillEmptyWork(work);
     }
 }
+
+/*
 
 static void copyOutputBufferToYuvPlanarFrame(
         uint8_t *dstY, uint8_t *dstU, uint8_t *dstV,
@@ -749,20 +752,21 @@ static void convertYUV420Planar16ToYUV420Planar(
     }
     return;
 }
+*/
 status_t C2SoftVpxDec::outputBuffer(
         const std::shared_ptr<C2BlockPool> &pool,
         const std::unique_ptr<C2Work> &work)
 {
     if (!(work && pool)) return BAD_VALUE;
 
-    vpx_codec_iter_t iter = nullptr;
-    vpx_image_t *img = vpx_codec_get_frame(mCodecCtx, &iter);
+    // vpx_codec_iter_t iter = nullptr;
+    // vpx_image_t *img = vpx_codec_get_frame(mCodecCtx, &iter);
 
-    if (!img) return NOT_ENOUGH_DATA;
+    //if (!img) return NOT_ENOUGH_DATA;
 
-    if (img->d_w != mWidth || img->d_h != mHeight) {
-        mWidth = img->d_w;
-        mHeight = img->d_h;
+    if (1920 != mWidth || 1080 != mHeight) {
+        mWidth = 1920; // img->d_w;
+        mHeight = 1080; // img->d_h;
 
         C2StreamPictureSizeInfo::output size(0u, mWidth, mHeight);
         std::vector<std::unique_ptr<C2SettingResult>> failures;
@@ -779,26 +783,26 @@ status_t C2SoftVpxDec::outputBuffer(
         }
 
     }
-    if(img->fmt != VPX_IMG_FMT_I420 && img->fmt != VPX_IMG_FMT_I42016) {
-        ALOGE("img->fmt %d not supported", img->fmt);
-        mSignalledError = true;
-        work->workletsProcessed = 1u;
-        work->result = C2_CORRUPTED;
-        return false;
-    }
+    // if(img->fmt != VPX_IMG_FMT_I420 && img->fmt != VPX_IMG_FMT_I42016) {
+        // ALOGE("img->fmt %d not supported", img->fmt);
+        // mSignalledError = true;
+        // work->workletsProcessed = 1u;
+        // work->result = C2_CORRUPTED;
+        // return false;
+    // }
 
     std::shared_ptr<C2GraphicBlock> block;
     uint32_t format = HAL_PIXEL_FORMAT_YV12;
-    if (img->fmt == VPX_IMG_FMT_I42016) {
-        IntfImpl::Lock lock = mIntf->lock();
-        std::shared_ptr<C2StreamColorAspectsTuning::output> defaultColorAspects = mIntf->getDefaultColorAspects_l();
+    // if (img->fmt == VPX_IMG_FMT_I42016) {
+        // IntfImpl::Lock lock = mIntf->lock();
+        // std::shared_ptr<C2StreamColorAspectsTuning::output> defaultColorAspects = mIntf->getDefaultColorAspects_l();
 
-        if (defaultColorAspects->primaries == C2Color::PRIMARIES_BT2020 &&
-            defaultColorAspects->matrix == C2Color::MATRIX_BT2020 &&
-            defaultColorAspects->transfer == C2Color::TRANSFER_ST2084) {
-            format = HAL_PIXEL_FORMAT_RGBA_1010102;
-        }
-    }
+        // if (defaultColorAspects->primaries == C2Color::PRIMARIES_BT2020 &&
+            // defaultColorAspects->matrix == C2Color::MATRIX_BT2020 &&
+            // defaultColorAspects->transfer == C2Color::TRANSFER_ST2084) {
+            // format = HAL_PIXEL_FORMAT_RGBA_1010102;
+        // }
+    // }
     C2MemoryUsage usage = { C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE };
     c2_status_t err = pool->fetchGraphicBlock(align(mWidth, 16), mHeight, format, usage, &block);
     if (err != C2_OK) {
@@ -813,7 +817,7 @@ status_t C2SoftVpxDec::outputBuffer(
         work->result = C2_CORRUPTED;
         return UNKNOWN_ERROR;
     }
-
+/*
     ALOGV("provided (%dx%d) required (%dx%d), out frameindex %lld",
            block->width(), block->height(), mWidth, mHeight,
            ((c2_cntr64_t *)img->user_priv)->peekll());
@@ -878,7 +882,11 @@ status_t C2SoftVpxDec::outputBuffer(
                 dstYStride, dstUVStride,
                 mWidth, mHeight);
     }
-    finishWork(((c2_cntr64_t *)img->user_priv)->peekull(), work, std::move(block));
+*/
+    // finishWork(((c2_cntr64_t *)img->user_priv)->peekull(), work, std::move(block));
+    uint64_t value = work->input.ordinal.frameIndex.peekull();
+    finishWork(value, work, std::move(block));
+
     return OK;
 }
 
@@ -895,8 +903,9 @@ c2_status_t C2SoftVpxDec::drainInternal(
         return C2_OMITTED;
     }
 
-    while (outputBuffer(pool, work) == OK) {
-    }
+    (void) pool;
+    // while (outputBuffer(pool, work) == OK) {
+    // }
 
     if (drainMode == DRAIN_COMPONENT_WITH_EOS &&
             work && work->workletsProcessed == 0u) {

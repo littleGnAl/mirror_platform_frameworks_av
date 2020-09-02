@@ -47,7 +47,7 @@ SoftVPX::SoftVPX(
             name, componentRole, codingType,
             codingType == OMX_VIDEO_CodingVP8 ? NULL : kVP9ProfileLevels,
             codingType == OMX_VIDEO_CodingVP8 ?  0 : NELEM(kVP9ProfileLevels),
-            320 /* width */, 240 /* height */, callbacks, appData, component),
+            1920 /* width */, 1080 /* height */, callbacks, appData, component),
       mMode(codingType == OMX_VIDEO_CodingVP8 ? MODE_VP8 : MODE_VP9),
       mEOSStatus(INPUT_DATA_AVAILABLE),
       mCtx(NULL),
@@ -141,29 +141,31 @@ bool SoftVPX::outputBuffers(bool flushDecoder, bool display, bool eos, bool *por
             return false;
         }
         // Drop all the decoded frames in decoder.
-        while ((mImg = vpx_codec_get_frame((vpx_codec_ctx_t *)mCtx, &iter))) {
-        }
+        // while ((mImg = vpx_codec_get_frame((vpx_codec_ctx_t *)mCtx, &iter))) {
+        // }
         return true;
     }
 
-    while (!outQueue.empty()) {
-        if (mImg == NULL) {
-            mImg = vpx_codec_get_frame((vpx_codec_ctx_t *)mCtx, &iter);
-            if (mImg == NULL) {
-                break;
-            }
-        }
-        uint32_t width = mImg->d_w;
-        uint32_t height = mImg->d_h;
+    // No while loop required. Always return single output
+    while (!outQueue.empty() && !eos)
+    {
+        // if (mImg == NULL) {
+            // mImg = vpx_codec_get_frame((vpx_codec_ctx_t *)mCtx, &iter);
+            // if (mImg == NULL) {
+                // break;
+            // }
+        // }
+        uint32_t width = 1920;//mImg->d_w;
+        uint32_t height = 1080;//mImg->d_h;
         outInfo = *outQueue.begin();
         outHeader = outInfo->mHeader;
-        CHECK(mImg->fmt == VPX_IMG_FMT_I420 || mImg->fmt == VPX_IMG_FMT_I42016);
+        // CHECK(mImg->fmt == VPX_IMG_FMT_I420 || mImg->fmt == VPX_IMG_FMT_I42016);
         OMX_COLOR_FORMATTYPE outputColorFormat = OMX_COLOR_FormatYUV420Planar;
         int32_t bpp = 1;
-        if (mImg->fmt == VPX_IMG_FMT_I42016) {
-            outputColorFormat = OMX_COLOR_FormatYUV420Planar16;
-            bpp = 2;
-        }
+        // if (mImg->fmt == VPX_IMG_FMT_I42016) {
+            // outputColorFormat = OMX_COLOR_FormatYUV420Planar16;
+            // bpp = 2;
+        // }
         handlePortSettingsChange(portWillReset, width, height, outputColorFormat);
         if (*portWillReset) {
             return true;
@@ -172,24 +174,25 @@ bool SoftVPX::outputBuffers(bool flushDecoder, bool display, bool eos, bool *por
         outHeader->nOffset = 0;
         outHeader->nFlags = 0;
         outHeader->nFilledLen = (outputBufferWidth() * outputBufferHeight() * bpp * 3) / 2;
-        PrivInfo *privInfo = (PrivInfo *)mImg->user_priv;
-        outHeader->nTimeStamp = privInfo->mTimeStamp;
-        if (privInfo->mHdr10PlusInfo != nullptr) {
-            queueOutputFrameConfig(privInfo->mHdr10PlusInfo);
-        }
+        // PrivInfo *privInfo = (PrivInfo *)mImg->user_priv;
+        // Fixed timestamp
+        outHeader->nTimeStamp = mPrivInfo[mTimeStampIdx].mTimeStamp ;//privInfo->mTimeStamp;
+        // if (privInfo->mHdr10PlusInfo != nullptr) {
+            // queueOutputFrameConfig(privInfo->mHdr10PlusInfo);
+        // }
 
-        if (outputBufferSafe(outHeader)) {
-            uint8_t *dst = outHeader->pBuffer;
-            const uint8_t *srcY = (const uint8_t *)mImg->planes[VPX_PLANE_Y];
-            const uint8_t *srcU = (const uint8_t *)mImg->planes[VPX_PLANE_U];
-            const uint8_t *srcV = (const uint8_t *)mImg->planes[VPX_PLANE_V];
-            size_t srcYStride = mImg->stride[VPX_PLANE_Y];
-            size_t srcUStride = mImg->stride[VPX_PLANE_U];
-            size_t srcVStride = mImg->stride[VPX_PLANE_V];
-            copyYV12FrameToOutputBuffer(dst, srcY, srcU, srcV, srcYStride, srcUStride, srcVStride);
-        } else {
-            outHeader->nFilledLen = 0;
-        }
+        // if (outputBufferSafe(outHeader)) {
+            // uint8_t *dst = outHeader->pBuffer;
+            // const uint8_t *srcY = (const uint8_t *)mImg->planes[VPX_PLANE_Y];
+            // const uint8_t *srcU = (const uint8_t *)mImg->planes[VPX_PLANE_U];
+            // const uint8_t *srcV = (const uint8_t *)mImg->planes[VPX_PLANE_V];
+            // size_t srcYStride = mImg->stride[VPX_PLANE_Y];
+            // size_t srcUStride = mImg->stride[VPX_PLANE_U];
+            // size_t srcVStride = mImg->stride[VPX_PLANE_V];
+            // copyYV12FrameToOutputBuffer(dst, srcY, srcU, srcV, srcYStride, srcUStride, srcVStride);
+        // } else {
+            // outHeader->nFilledLen = 0;
+        // }
 
         mImg = NULL;
         outInfo->mOwnedByUs = false;
@@ -299,9 +302,11 @@ void SoftVPX::onQueueFilled(OMX_U32 /* portIndex */) {
         }
 
         if (inHeader->nFilledLen > 0) {
-            vpx_codec_err_t err = vpx_codec_decode(
-                    (vpx_codec_ctx_t *)mCtx, inHeader->pBuffer + inHeader->nOffset,
-                    inHeader->nFilledLen, &mPrivInfo[mTimeStampIdx], 0);
+            // Don't Decode the frame
+            //vpx_codec_err_t err = vpx_codec_decode(
+            //        (vpx_codec_ctx_t *)mCtx, inHeader->pBuffer + inHeader->nOffset,
+            //        inHeader->nFilledLen, &mPrivInfo[mTimeStampIdx], 0);
+            vpx_codec_err_t err = VPX_CODEC_OK;
             if (err == VPX_CODEC_OK) {
                 inInfo->mOwnedByUs = false;
                 inQueue.erase(inQueue.begin());
@@ -315,7 +320,7 @@ void SoftVPX::onQueueFilled(OMX_U32 /* portIndex */) {
             }
         }
 
-        mTimeStampIdx = (mTimeStampIdx + 1) % kNumBuffers;
+
 
         if (!outputBuffers(
                  EOSseen /* flushDecoder */, true /* display */, EOSseen, &portWillReset)) {
@@ -323,6 +328,7 @@ void SoftVPX::onQueueFilled(OMX_U32 /* portIndex */) {
             notify(OMX_EventError, OMX_ErrorUndefined, 0, NULL);
             return;
         }
+        mTimeStampIdx = (mTimeStampIdx + 1) % kNumBuffers;
         if (portWillReset) {
             return;
         }
