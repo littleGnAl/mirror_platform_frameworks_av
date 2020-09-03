@@ -288,6 +288,30 @@
     },
     {
       "key": {
+        "uuid": "c3c5826b_3b2de683",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-03T05:29:32Z",
+      "side": 1,
+      "message": "Ok. I\u0027ve taken a pass at addressing these two issues, which depend on the two fixes here:\n  https://android-review.googlesource.com/c/platform/system/memory/libdmabufheap/+/1418856\n\nStill have to handle the config mapper bits, but this should pipe things through properly.",
+      "parentUuid": "6214a9bc_9ebb5d32",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 0
+      },
+      "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "43b71360_4699a82c",
         "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
         "patchSetId": 8
