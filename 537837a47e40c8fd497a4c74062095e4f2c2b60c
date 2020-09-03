@@ -123,6 +123,30 @@
     },
     {
       "key": {
+        "uuid": "9cae8113_a7f45606",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-03T02:36:23Z",
+      "side": 1,
+      "message": "Working on a big rename on this here.",
+      "parentUuid": "5ee97ec7_48c3b791",
+      "range": {
+        "startLine": 98,
+        "startChar": 6,
+        "endLine": 98,
+        "endChar": 21
+      },
+      "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "46b77171_67aa61ff",
         "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
         "patchSetId": 8
@@ -143,6 +167,30 @@
       "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "afd7a260_2b474fbe",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-03T02:36:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "46b77171_67aa61ff",
+      "range": {
+        "startLine": 157,
+        "startChar": 55,
+        "endLine": 157,
+        "endChar": 58
+      },
+      "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -169,6 +217,30 @@
     },
     {
       "key": {
+        "uuid": "902a6c55_c1ba6f57",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-03T02:36:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f5daa978_f062c20a",
+      "range": {
+        "startLine": 235,
+        "startChar": 12,
+        "endLine": 235,
+        "endChar": 18
+      },
+      "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "722300ed_55797a80",
         "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
         "patchSetId": 8
@@ -180,6 +252,30 @@
       "writtenOn": "2020-07-29T21:48:19Z",
       "side": 1,
       "message": "Couple questions:\nWe don\u0027t use \"align\" value, so we do not support alignment?\nAFAIK heapmast might be used to select a non-system heap. Do we ignore that and use \"system\" anyway?",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 0
+      },
+      "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6214a9bc_9ebb5d32",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-03T02:36:23Z",
+      "side": 1,
+      "message": "So for alignment: Alignment doesn\u0027t do anything in ION w/ 4.12+ kernels. Though for earlier kernels we may need a workaround for libdmabufheaps to be able to support it as a argument. I\u0027ll sync w/ Hridya on that.\n\nOn heapmask: Again a good point. This is something I think we should tweak on the libdmabufheaps side, since we utilize the query w/ 4.12+ kernels to generate the mask, but could pass the mask itself in. I\u0027ll take a pass at it.",
+      "parentUuid": "722300ed_55797a80",
       "range": {
         "startLine": 299,
         "startChar": 0,
@@ -236,6 +332,30 @@
       "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "803f8a32_f246b078",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-03T02:36:23Z",
+      "side": 1,
+      "message": "I\u0027m happy to drop this, but from Lajos\u0027 feedback, I\u0027m leaving it in for now.",
+      "parentUuid": "43b71360_4699a82c",
+      "range": {
+        "startLine": 338,
+        "startChar": 6,
+        "endLine": 338,
+        "endChar": 20
+      },
+      "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     },
     {
       "key": {
