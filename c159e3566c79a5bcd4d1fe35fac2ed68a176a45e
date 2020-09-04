@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "67fca42a_dec6e783",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-04T19:47:06Z",
+      "side": 1,
+      "message": "So, after yesterday\u0027s call, I figured I\u0027d take an initial pass on the approach we discussed. This keeps the C2AllocatorIon.cpp code in place for legacy ION use cases, and adds the C2DmaBufAllocator.cpp as a separate linear allocator. The linear allocator choice is then conditionality on the existence of /dev/ion (could be switched to /dev/dma_heap/system - but seemed simplest should vendors someday not use system?).\n\nHridya still had some objections with this approach, and still preferred dropping the C2AllocatorIon code, since this does have some duplication and the libdmabufheap is intended to handle the backwards compatibility.\n\nHowever, I wanted to share this pass, as it is a fair bit simpler then trying to handle the legacy vndk usage-mapper (which bakes in ion-parameters in the interface) with the libdmabufheap heap_name -\u003e ion-parameter mapping, and has less chance of impacting legacy devices (since we\u0027re leaving it as is).\n\nBoot tested this on HiKey960 in both cases with /dev/ion in use and and with /dev/dma-heap/*\n\nStill TODO:\n  * I need to continue to look at how to add the interface to the vndk to allow HALs to specify the new usage\u003d\u003e(heap_name,flags) mappings.\n  * Need to see what should be added to the tests",
+      "revId": "c159e3566c79a5bcd4d1fe35fac2ed68a176a45e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
