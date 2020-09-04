@@ -47,6 +47,17 @@ public:
          */
         ION = PLATFORM_START,
 
+        /*
+         * ID of the DMA-Buf Heap (ion replacement) backed platform allocator.
+         *
+         * C2Handle consists of:
+         *   fd  shared dmabuf buffer handle
+         *   int size (lo 32 bits)
+         *   int size (hi 32 bits)
+         *   int magic '\xc2io\x00'
+         */
+        DMABUFHEAP = ION,
+
         /**
          * ID of the gralloc backed platform allocator.
          *
@@ -64,6 +75,7 @@ public:
          * to create a C2Handle from a handle - for C2Allocator::priorAllocation.
          */
         BUFFERQUEUE,
+
 
         /**
          * ID of the gralloc backed platform allocator for linear blob buffer.
