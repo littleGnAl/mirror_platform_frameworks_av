@@ -65,6 +65,17 @@ public:
          */
         BUFFERQUEUE,
 
+        /*
+         * ID of the DMA-Buf Heap (ion replacement) backed platform allocator.
+         *
+         * C2Handle consists of:
+         *   fd  shared dmabuf buffer handle
+         *   int size (lo 32 bits)
+         *   int size (hi 32 bits)
+         *   int magic '\xc2io\x00'
+         */
+        DMABUFHEAP,
+
         /**
          * ID of indicating the end of platform allocator definition.
          *
