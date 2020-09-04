@@ -120,6 +120,19 @@ private:
                 })
                 .withSetter(SetIonUsage)
                 .build());
+
+            addParameter(
+                DefineParam(mDmaBufUsageInfo, "dmabuf-usage")
+                .withDefault(new C2StoreDmaBufUsageInfo())
+                .withFields({
+                    C2F(mDmaBufUsageInfo, usage).flags({C2MemoryUsage::CPU_READ | C2MemoryUsage::CPU_WRITE}),
+                    C2F(mDmaBufUsageInfo, capacity).inRange(0, UINT32_MAX, 1024),
+                    // TODO: FIX THIS!
+                    //C2F(mDmaBufUsageInfo, heapName).any(),
+                    C2F(mDmaBufUsageInfo, allocFlags).flags({}),
+                })
+                .withSetter(SetDmaBufUsage)
+                .build());
         }
 
         virtual ~Interface() = default;
@@ -133,7 +146,16 @@ private:
             return C2R::Ok();
         }
 
+        static C2R SetDmaBufUsage(bool /* mayBlock */, C2P<C2StoreDmaBufUsageInfo> &me) {
+            // Vendor's TODO: put appropriate mapping logic
+            me.set().heapName = (char*)"system";
+            me.set().allocFlags = 0;
+            return C2R::Ok();
+        }
+
+
         std::shared_ptr<C2StoreIonUsageInfo> mIonUsageInfo;
+        std::shared_ptr<C2StoreDmaBufUsageInfo> mDmaBufUsageInfo;
     };
     std::shared_ptr<C2ReflectorHelper> mReflectorHelper;
     Interface mInterface;
