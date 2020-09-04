@@ -218,6 +218,58 @@ void UseComponentStoreForIonAllocator(
     allocator->setUsageMapper(mapper, minUsage, maxUsage, blockSize);
 }
 
+void UseComponentStoreForDmaBufAllocator(const std::shared_ptr<C2DmaBufAllocator> allocator,
+                                         std::shared_ptr<C2ComponentStore> store) {
+    C2DmaBufAllocator::UsageMapperFn mapper;
+    uint64_t minUsage = 0;
+    uint64_t maxUsage = C2MemoryUsage(C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE).expected;
+    size_t blockSize = getpagesize();
+
+    // query min and max usage as well as block size via supported values
+    C2StoreDmaBufUsageInfo usageInfo;
+    std::vector<C2FieldSupportedValuesQuery> query = {
+            C2FieldSupportedValuesQuery::Possible(C2ParamField::Make(usageInfo, usageInfo.usage)),
+            C2FieldSupportedValuesQuery::Possible(
+                    C2ParamField::Make(usageInfo, usageInfo.capacity)),
+    };
+    c2_status_t res = store->querySupportedValues_sm(query);
+    if (res == C2_OK) {
+        if (query[0].status == C2_OK) {
+            const C2FieldSupportedValues& fsv = query[0].values;
+            if (fsv.type == C2FieldSupportedValues::FLAGS && !fsv.values.empty()) {
+                minUsage = fsv.values[0].u64;
+                maxUsage = 0;
+                for (C2Value::Primitive v : fsv.values) {
+                    maxUsage |= v.u64;
+                }
+            }
+        }
+        if (query[1].status == C2_OK) {
+            const C2FieldSupportedValues& fsv = query[1].values;
+            if (fsv.type == C2FieldSupportedValues::RANGE && fsv.range.step.u32 > 0) {
+                blockSize = fsv.range.step.u32;
+            }
+        }
+
+        mapper = [store](C2MemoryUsage usage, size_t capacity, C2String* heapName,
+                         unsigned* flags) -> c2_status_t {
+            if (capacity > UINT32_MAX) {
+                return C2_BAD_VALUE;
+            }
+            C2StoreDmaBufUsageInfo usageInfo = {usage.expected, capacity};
+            std::vector<std::unique_ptr<C2SettingResult>> failures;  // TODO: remove
+            c2_status_t res = store->config_sm({&usageInfo}, &failures);
+            if (res == C2_OK) {
+                *heapName = C2String(usageInfo.heapName);
+                *flags = usageInfo.allocFlags;
+            }
+            return res;
+        };
+    }
+
+    allocator->setUsageMapper(mapper, minUsage, maxUsage, blockSize);
+}
+
 }
 
 void C2PlatformAllocatorStoreImpl::setComponentStore(std::shared_ptr<C2ComponentStore> store) {
@@ -264,8 +316,7 @@ std::shared_ptr<C2Allocator> C2PlatformAllocatorStoreImpl::fetchDmaBufAllocator(
             componentStore = _mComponentStore;
         }
         allocator = std::make_shared<C2DmaBufAllocator>(C2PlatformAllocatorStore::DMABUFHEAP);
-        //TODO: Sort out the dmabuf heap side of this
-        //UseComponentStoreForIonAllocator(allocator, componentStore);
+        UseComponentStoreForDmaBufAllocator(allocator, componentStore);
         gDmaBufAllocator = allocator;
     }
     return allocator;
@@ -683,6 +734,7 @@ private:
 
     struct Interface : public C2InterfaceHelper {
         std::shared_ptr<C2StoreIonUsageInfo> mIonUsageInfo;
+        std::shared_ptr<C2StoreDmaBufUsageInfo> mDmaBufUsageInfo;
 
         Interface(std::shared_ptr<C2ReflectorHelper> reflector)
             : C2InterfaceHelper(reflector) {
@@ -718,7 +770,13 @@ private:
                     me.set().minAlignment = 0;
 #endif
                     return C2R::Ok();
-                }
+                };
+
+                static C2R setDmaBufUsage(bool /* mayBlock */, C2P<C2StoreDmaBufUsageInfo> &me) {
+                    strncpy(me.set().heapName, "system", C2MaxDmaBufHeapNameLen);
+                    me.set().allocFlags = 0;
+                    return C2R::Ok();
+                };
             };
 
             addParameter(
@@ -732,6 +790,18 @@ private:
                     C2F(mIonUsageInfo, minAlignment).equalTo(0)
                 })
                 .withSetter(Setter::setIonUsage)
+                .build());
+
+            addParameter(
+                DefineParam(mDmaBufUsageInfo, "dmabuf-usage")
+                .withDefault(new C2StoreDmaBufUsageInfo())
+                .withFields({
+                    C2F(mDmaBufUsageInfo, usage).flags({C2MemoryUsage::CPU_READ | C2MemoryUsage::CPU_WRITE}),
+                    C2F(mDmaBufUsageInfo, capacity).inRange(0, UINT32_MAX, 1024),
+                    C2F(mDmaBufUsageInfo, heapName).any(),
+                    C2F(mDmaBufUsageInfo, allocFlags).flags({}),
+                })
+                .withSetter(Setter::setDmaBufUsage)
                 .build());
         }
     };
