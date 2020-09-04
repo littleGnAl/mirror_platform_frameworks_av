@@ -107,6 +107,21 @@ private:
   std::unordered_map<MapperKey, MapperKeyValuePointer, MapperKeyHash> mUsageMapperCache;
 
 };
+
+static inline bool using_ion(void) {
+    static int cached_result = -1;
+
+    if (cached_result == -1) {
+       struct stat buffer;
+       cached_result = (stat("/dev/ion", &buffer) == 0);
+       if (cached_result)
+          ALOGD("Using ION\n");
+       else
+          ALOGD("Using DMABUF Heaps\n");
+    }
+    return (cached_result == 1);
+}
+
 } // namespace android
 
 #endif // STAGEFRIGHT_CODEC2_ALLOCATOR_BUF_H_

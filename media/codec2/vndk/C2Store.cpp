@@ -21,6 +21,7 @@
 #include <C2AllocatorBlob.h>
 #include <C2AllocatorGralloc.h>
 #include <C2AllocatorIon.h>
+#include <C2DmaBufAllocator.h>
 #include <C2BufferPriv.h>
 #include <C2BqBufferPriv.h>
 #include <C2Component.h>
@@ -82,6 +83,7 @@ private:
 
     /// returns a shared-singleton ion allocator
     std::shared_ptr<C2Allocator> fetchIonAllocator();
+    std::shared_ptr<C2Allocator> fetchDmaBufAllocator();
 
     /// returns a shared-singleton gralloc allocator
     std::shared_ptr<C2Allocator> fetchGrallocAllocator();
@@ -107,8 +109,11 @@ c2_status_t C2PlatformAllocatorStoreImpl::fetchAllocator(
     }
     switch (id) {
     // TODO: should we implement a generic registry for all, and use that?
-    case C2PlatformAllocatorStore::ION:
-        *allocator = fetchIonAllocator();
+    case C2PlatformAllocatorStore::ION: /* also ::DMABUFHEAP */
+	if (using_ion())
+	        *allocator = fetchIonAllocator();
+	else
+	        *allocator = fetchDmaBufAllocator();
         break;
 
     case C2PlatformAllocatorStore::GRALLOC:
@@ -142,7 +147,9 @@ c2_status_t C2PlatformAllocatorStoreImpl::fetchAllocator(
 namespace {
 
 std::mutex gIonAllocatorMutex;
+std::mutex gDmaBufAllocatorMutex;
 std::weak_ptr<C2AllocatorIon> gIonAllocator;
+std::weak_ptr<C2DmaBufAllocator> gDmaBufAllocator;
 
 void UseComponentStoreForIonAllocator(
         const std::shared_ptr<C2AllocatorIon> allocator,
@@ -229,6 +236,23 @@ std::shared_ptr<C2Allocator> C2PlatformAllocatorStoreImpl::fetchIonAllocator() {
         allocator = std::make_shared<C2AllocatorIon>(C2PlatformAllocatorStore::ION);
         UseComponentStoreForIonAllocator(allocator, componentStore);
         gIonAllocator = allocator;
+    }
+    return allocator;
+}
+
+std::shared_ptr<C2Allocator> C2PlatformAllocatorStoreImpl::fetchDmaBufAllocator() {
+    std::lock_guard<std::mutex> lock(gDmaBufAllocatorMutex);
+    std::shared_ptr<C2DmaBufAllocator> allocator = gDmaBufAllocator.lock();
+    if (allocator == nullptr) {
+        std::shared_ptr<C2ComponentStore> componentStore;
+        {
+            std::lock_guard<std::mutex> lock(_mComponentStoreReadLock);
+            componentStore = _mComponentStore;
+        }
+        allocator = std::make_shared<C2DmaBufAllocator>(C2PlatformAllocatorStore::DMABUFHEAP);
+        //TODO: Sort out the dmabuf heap side of this
+        //UseComponentStoreForIonAllocator(allocator, componentStore);
+        gDmaBufAllocator = allocator;
     }
     return allocator;
 }
@@ -348,6 +372,7 @@ public:
         }
         switch(allocatorId) {
             case C2PlatformAllocatorStore::ION:
+         /* case C2PlatformAllocatorStore::DMABUFHEAP: (dup of ION)*/
                 res = allocatorStore->fetchAllocator(
                         C2PlatformAllocatorStore::ION, &allocator);
                 if (res == C2_OK) {
