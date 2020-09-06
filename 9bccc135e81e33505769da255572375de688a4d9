@@ -16,6 +16,69 @@
       "revId": "9bccc135e81e33505769da255572375de688a4d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "39e3624e_c50531d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-09-06T19:11:08Z",
+      "side": 1,
+      "message": "needs a little work before integration.",
+      "revId": "9bccc135e81e33505769da255572375de688a4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "ffeccb72_52080562",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3056,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-09-06T19:11:08Z",
+      "side": 1,
+      "message": "it\u0027s not ok.\nthis should return INVALID_OPERATION. much lie the setupG711Codec() routine just above.",
+      "range": {
+        "startLine": 3056,
+        "startChar": 7,
+        "endLine": 3056,
+        "endChar": 18
+      },
+      "revId": "9bccc135e81e33505769da255572375de688a4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4209c97c_3f6f3bd8",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3062,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-09-06T19:11:08Z",
+      "side": 1,
+      "message": "if err !\u003d OK here, we should not proceed trying to set the parameter;\nwe should return with that error code.",
+      "range": {
+        "startLine": 3061,
+        "startChar": 9,
+        "endLine": 3062,
+        "endChar": 22
+      },
+      "revId": "9bccc135e81e33505769da255572375de688a4d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
