@@ -16,6 +16,23 @@
       "revId": "1548b06fae65308cb9786b1b177758b4b3f6d4f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "9885c37d_f910a8ce",
+        "filename": "media/libstagefright/codecs/opus/dec/SoftOpus.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-09-07T19:06:28Z",
+      "side": 1,
+      "message": "in case of opus decoder, output returned is always 48kHz.\nSo I am not sure whether 48kHz should be returned always (like before) or the value that is sent in internalSetParameter below for sampling rate.",
+      "revId": "1548b06fae65308cb9786b1b177758b4b3f6d4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
