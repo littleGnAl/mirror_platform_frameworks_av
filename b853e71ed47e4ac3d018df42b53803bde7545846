@@ -16,6 +16,24 @@
       "revId": "b853e71ed47e4ac3d018df42b53803bde7545846",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "2242117a_299869e9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-09-08T20:47:00Z",
+      "side": 1,
+      "message": "Hey Marco, good questions, and I can address them both here briefly. Feel free to let me know if you need more info on anything. And apologies if I am overexplaining something you already know and misunderstood your question!\n\n1) RE: LLVMFuzzerTestOneInput(): This is a libfuzzer specific entrypoint. When you include it and build a libfuzzer target (via cc_fuzz in this case), it will automatically handle spinning up tests that generate random data against a seed and provide it as a buffer to the data argument (with it\u0027s length in the size argument). Additionally, a bulk of this code uses the FuzzedDataProvider class provided by libfuzzer, which allows you to use these bytes to generate types/buffers/etc... as opposed to having to manually pull out data types from an array of uint8_t.\n\n2) RE: \"What is the purpose of fuzzing these classes?\". There are definitely cases to be made about some functionality not needing to be fuzzed. However, I tend to lean towards the opinion that defense in depth fuzzing is worthwhile in case a library client forgets to apply a check/validation before calling into the function. \n\nIn scenarios such as \"No one would ever call SkipCutBuffer by writing data to it without ever reading from it.\" I\u0027d definitely like to know if either I should rearchitect that piece of the fuzzer to ensure that doesn\u0027t happen, or if we should just remove that portion of the fuzzer altogether if it\u0027s only used in very specific ways. It\u0027s also worth considering if the information should be considered an issue with SkipCutBuffer that needs bug tracking or a comment in the library/documentation, even if it\u0027s low priority.",
+      "parentUuid": "c6441e09_c1905930",
+      "revId": "b853e71ed47e4ac3d018df42b53803bde7545846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
