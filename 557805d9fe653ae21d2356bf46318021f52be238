@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ecb36015_35352104",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-09-08T20:20:28Z",
+      "side": 1,
+      "message": "remove this, and state that the mono input is duplicated.",
+      "range": {
+        "startLine": 394,
+        "startChar": 0,
+        "endLine": 394,
+        "endChar": 47
+      },
+      "revId": "557805d9fe653ae21d2356bf46318021f52be238",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "04d1a678_88013a4a",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 453,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-09-08T20:20:28Z",
+      "side": 1,
+      "message": "currently we don\u0027t support a mono output HAL, but eventually we plan this.  So the output should be one channel in this case.",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 453,
+        "endChar": 13
+      },
+      "revId": "557805d9fe653ae21d2356bf46318021f52be238",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
