@@ -1834,9 +1834,13 @@ void NuPlayer::restartAudio(
         mDeferredActions.push_back(
                 new FlushDecoderAction(FLUSH_CMD_NONE /* audio */,
                                        FLUSH_CMD_FLUSH /* video */));
+        MediaPlayerSeekMode seekMode = MediaPlayerSeekMode::SEEK_PREVIOUS_SYNC;
+        if (!needsToCreateAudioDecoder && (mPaused && mOffloadAudio)) {
+            seekMode = MediaPlayerSeekMode::SEEK_CLOSEST;
+        }
         mDeferredActions.push_back(
                 new SeekAction(currentPositionUs,
-                MediaPlayerSeekMode::SEEK_PREVIOUS_SYNC /* mode */));
+                seekMode /* mode */));
         // After a flush without shutdown, decoder is paused.
         // Don't resume it until source seek is done, otherwise it could
         // start pulling stale data too soon.
