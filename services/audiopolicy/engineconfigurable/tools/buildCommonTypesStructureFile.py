@@ -49,16 +49,16 @@ def parseArgs():
     return argparser.parse_args()
 
 
-def findBitPos(decimal):
-    pos = 0
-    i = 1
-    while i != decimal:
-        i = i << 1
-        pos = pos + 1
-        if pos == 32:
-            return -1
-    return pos
+def findBitPos(decimal, last, pos):
+    i = last
+    pos = pos + 1
+    if decimal == 0x40000000:
+        pos = 31
 
+    if pos == 32:
+        return -1
+
+    return pos
 
 def generateXmlStructureFile(componentTypeDict, structureTypesFile, outputFile):
 
@@ -73,11 +73,15 @@ def generateXmlStructureFile(componentTypeDict, structureTypesFile, outputFile):
                 bitparameters_node = component_type.find("BitParameterBlock")
                 if bitparameters_node is not None:
                     ordered_values = OrderedDict(sorted(values_dict.items(), key=lambda x: x[1]))
+                    pos = -1
+                    last = 0
                     for key, value in ordered_values.items():
                         value_node = ET.SubElement(bitparameters_node, "BitParameter")
                         value_node.set('Name', key)
                         value_node.set('Size', "1")
-                        value_node.set('Pos', str(findBitPos(value)))
+                        pos = findBitPos(value, last, pos)
+                        last = value
+                        value_node.set('Pos', str(pos))
 
                 enum_parameter_node = component_type.find("EnumParameter")
                 if enum_parameter_node is not None:
