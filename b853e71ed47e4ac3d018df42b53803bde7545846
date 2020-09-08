@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "c6441e09_c1905930",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-09-08T20:24:33Z",
+      "side": 1,
+      "message": "Looks OK overall, though I\u0027m wondering what the purpose is of fuzzing these classes, since none of these are directly called/accessible by apps, and are only used by the media framework which may perform input validation and/or ensure the class is called in the correct way.\n\nFor example, it\u0027s not hard to break SkipCutBuffer by only ever writing data to it without ever reading from it (and it seems theoretically possible, if unlikely, for the fuzzer to do that), however the media framework will not call it that way.\n\nWhere does the data passed to LLVMFuzzerTestOneInput() come from?\n",
+      "revId": "b853e71ed47e4ac3d018df42b53803bde7545846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
