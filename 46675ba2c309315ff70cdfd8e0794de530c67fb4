@@ -59,6 +59,30 @@
     },
     {
       "key": {
+        "uuid": "a4a2f091_4e3003e0",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-09-08T19:43:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "08d87ad9_51080e6c",
+      "range": {
+        "startLine": 30,
+        "startChar": 9,
+        "endLine": 30,
+        "endChar": 19
+      },
+      "revId": "46675ba2c309315ff70cdfd8e0794de530c67fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ba0ea42a_6b4516be",
         "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
         "patchSetId": 1
@@ -82,6 +106,30 @@
     },
     {
       "key": {
+        "uuid": "5483e0b5_ee0cd17d",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMuxerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-09-08T19:43:36Z",
+      "side": 1,
+      "message": "I think I understood this right, so now I just keep doing stuff until the test case is over, and then end by calling stop, since nothing after calling stop is meaningful.",
+      "parentUuid": "ba0ea42a_6b4516be",
+      "range": {
+        "startLine": 75,
+        "startChar": 8,
+        "endLine": 75,
+        "endChar": 23
+      },
+      "revId": "46675ba2c309315ff70cdfd8e0794de530c67fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "08382da8_472eef86",
         "filename": "media/libstagefright/tests/fuzzers/StagefrightMediaScannerFuzzer.cpp",
         "patchSetId": 1
@@ -102,6 +150,30 @@
       "revId": "46675ba2c309315ff70cdfd8e0794de530c67fb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b1976daf_b75c16da",
+        "filename": "media/libstagefright/tests/fuzzers/StagefrightMediaScannerFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-09-08T19:43:36Z",
+      "side": 1,
+      "message": "I think you have the right call here. I switched it to using a shm region that we write random bytes to and pass the fd for. It slows it down a bit, but still getting like 500 exec/s, and this testing is more correct/likely to find issues 😊",
+      "parentUuid": "08382da8_472eef86",
+      "range": {
+        "startLine": 56,
+        "startChar": 17,
+        "endLine": 56,
+        "endChar": 32
+      },
+      "revId": "46675ba2c309315ff70cdfd8e0794de530c67fb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
