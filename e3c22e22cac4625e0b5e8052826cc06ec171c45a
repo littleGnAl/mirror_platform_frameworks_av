@@ -22,6 +22,30 @@
       "revId": "e3c22e22cac4625e0b5e8052826cc06ec171c45a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9387536b_bff973e8",
+        "filename": "services/audiopolicy/engineconfigurable/tools/buildCommonTypesStructureFile.py",
+        "patchSetId": 3
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1608690
+      },
+      "writtenOn": "2020-09-09T16:07:35Z",
+      "side": 1,
+      "message": "Yes, I found this too. But because many lines in this file didn\u0027t follow this line length rule, I didn\u0027t fix it too.",
+      "parentUuid": "55a9ac8b_a957bf8f",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 65,
+        "endChar": 101
+      },
+      "revId": "e3c22e22cac4625e0b5e8052826cc06ec171c45a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
