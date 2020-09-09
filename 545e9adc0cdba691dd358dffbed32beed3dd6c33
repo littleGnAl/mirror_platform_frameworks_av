@@ -73,6 +73,30 @@
     },
     {
       "key": {
+        "uuid": "6d7b6875_02bc4199",
+        "filename": "services/audiopolicy/engineconfigurable/tools/buildCommonTypesStructureFile.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1608690
+      },
+      "writtenOn": "2020-09-09T05:37:06Z",
+      "side": 1,
+      "message": "Got it, done in the new patch.",
+      "parentUuid": "0696c0a4_7bd50483",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "545e9adc0cdba691dd358dffbed32beed3dd6c33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3202f195_01f9c35f",
         "filename": "services/audiopolicy/engineconfigurable/tools/buildCommonTypesStructureFile.py",
         "patchSetId": 1
