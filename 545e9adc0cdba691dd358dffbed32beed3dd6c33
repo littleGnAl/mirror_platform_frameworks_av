@@ -49,6 +49,30 @@
     },
     {
       "key": {
+        "uuid": "0696c0a4_7bd50483",
+        "filename": "services/audiopolicy/engineconfigurable/tools/buildCommonTypesStructureFile.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-09-09T01:48:25Z",
+      "side": 1,
+      "message": "I am OK with skipping incompatible (not power of two after masking bit 31) values for now.\nWe do not support BLE devices yet and b/168065706 tracks the true fix.\n\nAs a simple non optimized fix you can go over all bits, make a note of the first 1 encountered but continue until bit 31: if you encounter another 1 then return -1:",
+      "parentUuid": "13b501d1_9a3ce677",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "545e9adc0cdba691dd358dffbed32beed3dd6c33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3202f195_01f9c35f",
         "filename": "services/audiopolicy/engineconfigurable/tools/buildCommonTypesStructureFile.py",
         "patchSetId": 1
