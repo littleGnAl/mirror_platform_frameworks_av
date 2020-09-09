@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "13b501d1_9a3ce677",
+        "filename": "services/audiopolicy/engineconfigurable/tools/buildCommonTypesStructureFile.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1608690
+      },
+      "writtenOn": "2020-09-09T01:12:27Z",
+      "side": 1,
+      "message": "I do agree with you, this code doesn\u0027t work in that case. audio-base.h has to guarantee no such hole. Do you have any better idea to address it? I don\u0027t want to add hardcode 0x20000001 here.\n\nIn aosp/1399204, AUDIO_DEVICE_OUT_BLE_SPEAKER is set 0x20000001u. If we skip the value (more than one bit set), it will not be in the generate file.",
+      "parentUuid": "16715db5_b58bbf5d",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "545e9adc0cdba691dd358dffbed32beed3dd6c33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "3202f195_01f9c35f",
         "filename": "services/audiopolicy/engineconfigurable/tools/buildCommonTypesStructureFile.py",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "545e9adc0cdba691dd358dffbed32beed3dd6c33",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "78e2db21_1c87b8fa",
+        "filename": "services/audiopolicy/engineconfigurable/tools/buildCommonTypesStructureFile.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1608690
+      },
+      "writtenOn": "2020-09-09T01:12:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3202f195_01f9c35f",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 58
+      },
+      "revId": "545e9adc0cdba691dd358dffbed32beed3dd6c33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
