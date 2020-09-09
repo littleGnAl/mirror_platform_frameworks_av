@@ -22,6 +22,30 @@
       "revId": "5ae4902636a9bb7fe25b79f01bf0b239d0736ace",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d02399af_10026523",
+        "filename": "media/codec2/vndk/include/C2PlatformSupport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-09T22:20:10Z",
+      "side": 1,
+      "message": "Possibly? It seems like it would work (and the handles are identical), but I didn\u0027t know if there was other potential uses for uniquely identifying it.  \n\nMany thanks for taking a look here!",
+      "parentUuid": "f687d279_dbbba07f",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "5ae4902636a9bb7fe25b79f01bf0b239d0736ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
