@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "16715db5_b58bbf5d",
+        "filename": "services/audiopolicy/engineconfigurable/tools/buildCommonTypesStructureFile.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-09-09T00:05:59Z",
+      "side": 1,
+      "message": "i don\u0027t understand how this works when the list of \"values\" in the input file contain holes (for instance jumps from 0x1 to 0x8).\n\nGiven this is just a fix for the build we should just skip and invalid value (more than one bit set).",
+      "range": {
+        "startLine": 55,
+        "startChar": 0,
+        "endLine": 55,
+        "endChar": 29
+      },
+      "revId": "545e9adc0cdba691dd358dffbed32beed3dd6c33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3202f195_01f9c35f",
+        "filename": "services/audiopolicy/engineconfigurable/tools/buildCommonTypesStructureFile.py",
+        "patchSetId": 1
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-09-09T00:05:59Z",
+      "side": 1,
+      "message": "can you add a TODO comment referencing b/168065706 indicating that this is just to fix the build and that the problem of devices with multiple bits set must be addressed more generally in the configurable audio policy and parameter framework",
+      "range": {
+        "startLine": 82,
+        "startChar": 0,
+        "endLine": 82,
+        "endChar": 58
+      },
+      "revId": "545e9adc0cdba691dd358dffbed32beed3dd6c33",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
