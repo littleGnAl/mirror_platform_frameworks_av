@@ -118,6 +118,30 @@
       "revId": "5ae4902636a9bb7fe25b79f01bf0b239d0736ace",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "262444df_a96119ce",
+        "filename": "media/codec2/vndk/include/C2PlatformSupport.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-10T01:05:23Z",
+      "side": 1,
+      "message": "I\u0027ve maybe interpreted your feedback a bit literally, so if you\u0027d rather the DMABUFHEAP enum be dropped all together (just using the ION value), I can change to that as well.",
+      "parentUuid": "a9edc484_ac589930",
+      "range": {
+        "startLine": 77,
+        "startChar": 8,
+        "endLine": 77,
+        "endChar": 19
+      },
+      "revId": "5ae4902636a9bb7fe25b79f01bf0b239d0736ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
