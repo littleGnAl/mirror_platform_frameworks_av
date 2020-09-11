@@ -36,6 +36,7 @@
 #include <map>
 #include <memory>
 #include <mutex>
+#include <sys/stat.h>   // stat
 
 #ifdef __ANDROID_APEX__
 #include <android-base/properties.h>
@@ -322,9 +323,30 @@ int GetCodec2PoolMask() {
             1 << C2PlatformAllocatorStore::BUFFERQUEUE);
 }
 
+
+static bool using_ion(void) {
+    static int cached_result = -1;
+
+    if (cached_result == -1) {
+       struct stat buffer;
+       cached_result = (stat("/dev/ion", &buffer) == 0);
+       if (cached_result)
+          ALOGD("Using ION\n");
+       else
+          ALOGD("Using BLOB\n");
+    }
+    return (cached_result == 1);
+}
+
 C2PlatformAllocatorStore::id_t GetPreferredLinearAllocatorId(int poolMask) {
-    return ((poolMask >> C2PlatformAllocatorStore::BLOB) & 1) ? C2PlatformAllocatorStore::BLOB
-                                                              : C2PlatformAllocatorStore::ION;
+    if ((poolMask >> C2PlatformAllocatorStore::BLOB) & 1)
+      return C2PlatformAllocatorStore::BLOB;
+
+    /* If no /dev/ion device, fall back to BLOB */
+    if (!using_ion())
+      return C2PlatformAllocatorStore::BLOB;
+
+    return C2PlatformAllocatorStore::ION;
 }
 
 namespace {
