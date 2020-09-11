@@ -221,6 +221,7 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexDrcEffectType, // drc, enum
     kParamIndexDrcOutputLoudness, // drc, float (dBFS)
     kParamIndexDrcAlbumMode, // drc, enum
+    kParamIndexAudioEncoderFrameSize,
 
     /* ============================== platform-defined parameters ============================== */
 
@@ -1969,9 +1970,16 @@ constexpr char C2_PARAMKEY_DRC_ALBUM_MODE[] = "coding.drc.album-mode";
 /**
  * DRC output loudness in dBFS. Retrieved during decoding
  */
- typedef C2StreamParam<C2Info, C2FloatValue, kParamIndexDrcOutputLoudness>
+typedef C2StreamParam<C2Info, C2FloatValue, kParamIndexDrcOutputLoudness>
         C2StreamDrcOutputLoudnessTuning;
- constexpr char C2_PARAMKEY_DRC_OUTPUT_LOUDNESS[] = "output.drc.output-loudness";
+constexpr char C2_PARAMKEY_DRC_OUTPUT_LOUDNESS[] = "output.drc.output-loudness";
+
+/**
+ * Audio encoder input frame size in samples. 0 means the encoder accepts input buffers of any size.
+ */
+typedef C2StreamParam<C2Info, C2Uint32Value, kParamIndexAudioEncoderFrameSize>
+        C2StreamAudioEncoderFrameSizeInfo;
+constexpr char C2_PARAMKEY_AUDIO_ENCODER_FRAME_SIZE[] = "raw.audio-encoder-frame-size";
 
 /* --------------------------------------- AAC components --------------------------------------- */
 
