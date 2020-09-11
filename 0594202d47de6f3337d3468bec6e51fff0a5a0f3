@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3dd5dfad_9f5d94f2",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1971,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-09-11T21:55:39Z",
+      "side": 1,
+      "message": "should this be in samples? E.g. size would be channels * samples * bytes-per-sample?",
+      "range": {
+        "startLine": 1971,
+        "startChar": 37,
+        "endLine": 1971,
+        "endChar": 42
+      },
+      "revId": "0594202d47de6f3337d3468bec6e51fff0a5a0f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
