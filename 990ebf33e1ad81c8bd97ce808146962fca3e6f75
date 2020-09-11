@@ -22,6 +22,30 @@
       "revId": "990ebf33e1ad81c8bd97ce808146962fca3e6f75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "daf83841_8cde96fe",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2015,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-11T05:38:42Z",
+      "side": 1,
+      "message": "Ok, I\u0027ve updated this some in a later version follow Hridya\u0027s suggestions. I\u0027ve not looked into the flex struct yet (and I\u0027m not sure I\u0027ve groked the implications of the inheritance point you make), so I\u0027ll see about trying that approach out tomorrow.",
+      "parentUuid": "1e4be78c_7a2dbed1",
+      "range": {
+        "startLine": 2015,
+        "startChar": 4,
+        "endLine": 2015,
+        "endChar": 24
+      },
+      "revId": "990ebf33e1ad81c8bd97ce808146962fca3e6f75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
