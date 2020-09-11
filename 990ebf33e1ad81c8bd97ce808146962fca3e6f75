@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1e4be78c_7a2dbed1",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2015,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-09-11T05:25:30Z",
+      "side": 1,
+      "message": "C2 structs support strings using char[] and this has to be the final member of the struct.\n\nFor that you need to move this after allocFlags, and use\n\nint32_t allocFlags;\nchar heapName[];\n\nDEFINE_AND_DESCRIBE_FLEX_C2STRUCT(StoreDmaBufUsage, heapName)\n\nMaking this a flex struct will make C2StoreDmaBufUsageInfo have an m member field of type C2StoreDmaBufUsageStruct instead of inheriting directly from C2StoreDmaBufUsageStruct, which was unfortunately required from C++ standard as the size of a flexible struct is not defined during its definition, unlike a non-flexible struct.",
+      "range": {
+        "startLine": 2015,
+        "startChar": 4,
+        "endLine": 2015,
+        "endChar": 24
+      },
+      "revId": "990ebf33e1ad81c8bd97ce808146962fca3e6f75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
