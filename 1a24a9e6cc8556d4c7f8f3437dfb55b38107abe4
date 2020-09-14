@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "2ddb2b8e_2de54e39",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-09-14T00:02:57Z",
+      "side": 1,
+      "message": "let\u0027s put the clip that triggers this into a CTS test and that should finish it off.",
+      "range": {
+        "startLine": 13,
+        "startChar": 1,
+        "endLine": 13,
+        "endChar": 16
+      },
+      "revId": "1a24a9e6cc8556d4c7f8f3437dfb55b38107abe4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "55e4edcf_a26eb192",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-09-14T00:02:57Z",
+      "side": 1,
+      "message": "looks good except that we haven\u0027t added a test into cts.",
+      "revId": "1a24a9e6cc8556d4c7f8f3437dfb55b38107abe4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
