@@ -42,6 +42,30 @@
     },
     {
       "key": {
+        "uuid": "e37c44a0_dcf6d507",
+        "filename": "media/libstagefright/codecs/opus/dec/SoftOpus.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-09-15T03:41:30Z",
+      "side": 1,
+      "message": "let\u0027s ignore this for now.",
+      "parentUuid": "df0fb91d_700beb26",
+      "range": {
+        "startLine": 204,
+        "startChar": 12,
+        "endLine": 205,
+        "endChar": 64
+      },
+      "revId": "1548b06fae65308cb9786b1b177758b4b3f6d4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9885c37d_f910a8ce",
         "filename": "media/libstagefright/codecs/opus/dec/SoftOpus.cpp",
         "patchSetId": 3
@@ -71,6 +95,24 @@
       "side": 1,
       "message": "i think i agree with this interpretation.",
       "parentUuid": "9885c37d_f910a8ce",
+      "revId": "1548b06fae65308cb9786b1b177758b4b3f6d4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f0193db8_648ae0ae",
+        "filename": "media/libstagefright/codecs/opus/dec/SoftOpus.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-09-15T03:41:30Z",
+      "side": 1,
+      "message": "in testing, with this and change on line 209 removed -- the CTS test passes.\n\nreworking without the bits of this that change the output channel.",
+      "parentUuid": "dee42c84_a33b562a",
       "revId": "1548b06fae65308cb9786b1b177758b4b3f6d4f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
