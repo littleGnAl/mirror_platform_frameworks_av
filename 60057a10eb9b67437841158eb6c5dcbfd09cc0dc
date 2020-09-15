@@ -16,6 +16,23 @@
       "revId": "60057a10eb9b67437841158eb6c5dcbfd09cc0dc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "6cfc702d_dd3a5bc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-09-15T15:08:09Z",
+      "side": 1,
+      "message": "the treehugger failures to this point were all \u0027advisory\u0027 instead of blocking.\nall appear to be timeouts -- and i don\u0027t see a link to the actual logs that would let me look in any more detail.",
+      "revId": "60057a10eb9b67437841158eb6c5dcbfd09cc0dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
