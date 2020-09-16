@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "6c4348dd_f9e66260",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 8151,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2020-09-16T18:14:46Z",
+      "side": 1,
+      "message": "This calls mCodec-\u003esetParameters in OMX_EventPortSettingsChanged state *as long as* \"hdr10-plus-info\" is found on the msg. This means if the msg has other parameters on it, they will now all be set during OMX_EventPortSettingsChanged. \n\nI think it\u0027s the best to restrict this to the \"hdr10-plus-info\" to minimize the risk, namely: if \"hdr10-plus-info\" is found, use setHdr10PlusInfo() to handle the hdr10+ metadata only, then remove \"hdr10-plus-info\" from the key, and still defer the rest of the message.",
+      "range": {
+        "startLine": 8146,
+        "startChar": 0,
+        "endLine": 8151,
+        "endChar": 0
+      },
+      "revId": "759bef36399d54b5ea28fca35c23645e7a5aa657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
