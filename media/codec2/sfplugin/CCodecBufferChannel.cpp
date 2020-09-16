@@ -635,7 +635,8 @@ void CCodecBufferChannel::feedInputBufferIfAvailableInternal() {
         size_t index;
         {
             Mutexed<Input>::Locked input(mInput);
-            if (input->buffers->numClientBuffers() >= input->numSlots) {
+            if ((input->buffers->numClientBuffers() >= input->numSlots) ||
+                (mPipelineWatcher.lock()->pipelineFull()))  {
                 return;
             }
             if (!input->buffers->requestNewBuffer(&index, &inBuffer)) {
