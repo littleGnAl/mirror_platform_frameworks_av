@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b9dd3d3e_810f46c4",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3140,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2020-09-16T23:34:10Z",
+      "side": 1,
+      "message": "Does this need to check mReplyId !\u003d null first? (since postPendingReply will CHECK on it)",
+      "range": {
+        "startLine": 3140,
+        "startChar": 16,
+        "endLine": 3140,
+        "endChar": 35
+      },
+      "revId": "b34b86006d2f79471f8ab87230402f86f387af90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ce2f5cb2_f42d1816",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3161,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2020-09-16T23:34:10Z",
+      "side": 1,
+      "message": "If these two happened, mReplyId could still be not posted?",
+      "range": {
+        "startLine": 3143,
+        "startChar": 1,
+        "endLine": 3161,
+        "endChar": 13
+      },
+      "revId": "b34b86006d2f79471f8ab87230402f86f387af90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30811758_95d1454a",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3185,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2020-09-16T23:34:10Z",
+      "side": 1,
+      "message": "can you add some comment why we need to post error on this?",
+      "range": {
+        "startLine": 3183,
+        "startChar": 12,
+        "endLine": 3185,
+        "endChar": 13
+      },
+      "revId": "b34b86006d2f79471f8ab87230402f86f387af90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5741d489_cbff1fb4",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4284,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2020-09-16T23:34:10Z",
+      "side": 1,
+      "message": "Maybe these should be named \"postPendingReplyAndDeferredMessages\"?\nSince these also re-dispatch the unhandled msgs.",
+      "range": {
+        "startLine": 4275,
+        "startChar": 0,
+        "endLine": 4284,
+        "endChar": 1
+      },
+      "revId": "b34b86006d2f79471f8ab87230402f86f387af90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
