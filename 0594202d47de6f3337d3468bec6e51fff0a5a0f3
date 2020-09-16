@@ -22,6 +22,47 @@
       "revId": "0594202d47de6f3337d3468bec6e51fff0a5a0f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "759b53d0_4f946319",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1971,
+      "author": {
+        "id": 1708977
+      },
+      "writtenOn": "2020-09-16T00:19:37Z",
+      "side": 1,
+      "message": "Would setting this C2Param always result in input being equal to encoder frame size specified or a multiple of this?",
+      "revId": "0594202d47de6f3337d3468bec6e51fff0a5a0f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3cbb105f_9edad4b6",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1971,
+      "author": {
+        "id": 1708977
+      },
+      "writtenOn": "2020-09-16T00:19:37Z",
+      "side": 1,
+      "message": "I think bytes should be fine for specifying encoder frame size",
+      "parentUuid": "3dd5dfad_9f5d94f2",
+      "range": {
+        "startLine": 1971,
+        "startChar": 37,
+        "endLine": 1971,
+        "endChar": 42
+      },
+      "revId": "0594202d47de6f3337d3468bec6e51fff0a5a0f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
