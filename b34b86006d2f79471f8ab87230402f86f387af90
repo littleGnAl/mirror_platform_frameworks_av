@@ -25,6 +25,30 @@
     },
     {
       "key": {
+        "uuid": "4feff2ff_4e3b2ec6",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3140,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-09-17T20:55:05Z",
+      "side": 1,
+      "message": "mReply is always set when transitioning to these states. Added comment.",
+      "parentUuid": "b9dd3d3e_810f46c4",
+      "range": {
+        "startLine": 3140,
+        "startChar": 16,
+        "endLine": 3140,
+        "endChar": 35
+      },
+      "revId": "b34b86006d2f79471f8ab87230402f86f387af90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "ce2f5cb2_f42d1816",
         "filename": "media/libstagefright/MediaCodec.cpp",
         "patchSetId": 1
@@ -45,6 +69,30 @@
       "revId": "b34b86006d2f79471f8ab87230402f86f387af90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9a31f201_1b3215e4",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3161,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-09-17T20:55:05Z",
+      "side": 1,
+      "message": "These are set with handling kWhatError where mReplyID should have been cleared. Added comment.",
+      "parentUuid": "ce2f5cb2_f42d1816",
+      "range": {
+        "startLine": 3143,
+        "startChar": 1,
+        "endLine": 3161,
+        "endChar": 13
+      },
+      "revId": "b34b86006d2f79471f8ab87230402f86f387af90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -71,6 +119,30 @@
     },
     {
       "key": {
+        "uuid": "874d8112_965b268e",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3185,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-09-17T20:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30811758_95d1454a",
+      "range": {
+        "startLine": 3183,
+        "startChar": 12,
+        "endLine": 3185,
+        "endChar": 13
+      },
+      "revId": "b34b86006d2f79471f8ab87230402f86f387af90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "5741d489_cbff1fb4",
         "filename": "media/libstagefright/MediaCodec.cpp",
         "patchSetId": 1
@@ -91,6 +163,30 @@
       "revId": "b34b86006d2f79471f8ab87230402f86f387af90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "ead4cf86_7dc04434",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4284,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-09-17T20:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5741d489_cbff1fb4",
+      "range": {
+        "startLine": 4275,
+        "startChar": 0,
+        "endLine": 4284,
+        "endChar": 1
+      },
+      "revId": "b34b86006d2f79471f8ab87230402f86f387af90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
