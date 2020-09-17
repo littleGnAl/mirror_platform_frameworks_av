@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "46329502_a1dfc1a5",
+        "filename": "media/codec2/vndk/C2Buffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-17T07:43:03Z",
+      "side": 1,
+      "message": "Honestly, I don\u0027t quite get why the code here isn\u0027t using C2PlatformAllocatorStoreImpl::fetchAllocator()",
+      "revId": "1105b0ff4705374c54e46cc3dfa2e8c36ea297ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "8aebc6c1_283fbd42",
+        "filename": "media/codec2/vndk/C2Buffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 434,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-17T07:43:03Z",
+      "side": 1,
+      "message": "It seems like the C2Allocator class needs a virtual isValid() function to shortcut all this?\nThen it would simply be: isValidHandle \u003d sAllocator-\u003eisValid(handle);",
+      "revId": "1105b0ff4705374c54e46cc3dfa2e8c36ea297ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
