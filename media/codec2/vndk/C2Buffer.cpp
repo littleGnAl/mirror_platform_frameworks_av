@@ -25,16 +25,18 @@
 #include <C2AllocatorBlob.h>
 #include <C2AllocatorGralloc.h>
 #include <C2AllocatorIon.h>
+#include <C2DmaBufAllocator.h>
 #include <C2BufferPriv.h>
 #include <C2BlockInternal.h>
 #include <C2PlatformSupport.h>
 #include <bufferpool/ClientManager.h>
-
+#include <sys/stat.h>   // stat
 namespace {
 
 using android::C2AllocatorBlob;
 using android::C2AllocatorGralloc;
 using android::C2AllocatorIon;
+using android::C2DmaBufAllocator;
 using android::hardware::media::bufferpool::BufferPoolData;
 using android::hardware::media::bufferpool::V2_0::ResultStatus;
 using android::hardware::media::bufferpool::V2_0::implementation::BufferPoolAllocation;
@@ -393,6 +395,22 @@ std::shared_ptr<_C2BlockPoolData> _C2BlockFactory::GetLinearBlockPoolData(
     return nullptr;
 }
 
+/* HACK This is duplicative and should be consolidated somewhere */
+static bool using_ion(void) {
+    static int cached_result = -1;
+
+    if (cached_result == -1) {
+       struct stat buffer;
+       cached_result = (stat("/dev/ion", &buffer) == 0);
+       if (cached_result)
+          ALOGD("Using ION\n");
+       else
+          ALOGD("Using DMABUF Heaps\n");
+    }
+    return (cached_result == 1);
+}
+
+
 std::shared_ptr<C2LinearBlock> _C2BlockFactory::CreateLinearBlock(
         const C2Handle *handle) {
     // TODO: get proper allocator? and mutex?
@@ -401,8 +419,10 @@ std::shared_ptr<C2LinearBlock> _C2BlockFactory::CreateLinearBlock(
         if (android::GetPreferredLinearAllocatorId(android::GetCodec2PoolMask()) ==
                 android::C2PlatformAllocatorStore::BLOB) {
             allocator = std::make_unique<C2AllocatorBlob>(android::C2PlatformAllocatorStore::BLOB);
-        } else {
+        } else if (using_ion()){
             allocator = std::make_unique<C2AllocatorIon>(android::C2PlatformAllocatorStore::ION);
+        } else {
+            allocator = std::make_unique<C2DmaBufAllocator>(android::C2PlatformAllocatorStore::DMABUFHEAP);
         }
         return allocator;
     }();
@@ -413,8 +433,10 @@ std::shared_ptr<C2LinearBlock> _C2BlockFactory::CreateLinearBlock(
     bool isValidHandle = false;
     if (sAllocator->getId() == android::C2PlatformAllocatorStore::BLOB) {
         isValidHandle = C2AllocatorBlob::isValid(handle);
-    } else {
+    } else if (sAllocator->getId() == android::C2PlatformAllocatorStore::ION) {
         isValidHandle = C2AllocatorIon::isValid(handle);
+    } else {
+        isValidHandle = C2DmaBufAllocator::isValid(handle);
     }
 
     std::shared_ptr<C2LinearAllocation> alloc;
@@ -436,8 +458,10 @@ std::shared_ptr<C2LinearBlock> _C2BlockFactory::CreateLinearBlock(
         if (android::GetPreferredLinearAllocatorId(android::GetCodec2PoolMask()) ==
                 android::C2PlatformAllocatorStore::BLOB) {
             allocator = std::make_unique<C2AllocatorBlob>(android::C2PlatformAllocatorStore::BLOB);
-        } else {
+        } else if (using_ion()){
             allocator = std::make_unique<C2AllocatorIon>(android::C2PlatformAllocatorStore::ION);
+        } else {
+            allocator = std::make_unique<C2DmaBufAllocator>(android::C2PlatformAllocatorStore::DMABUFHEAP);
         }
         return allocator;
     }();
@@ -448,8 +472,10 @@ std::shared_ptr<C2LinearBlock> _C2BlockFactory::CreateLinearBlock(
     bool isValidHandle = false;
     if (sAllocator->getId() == android::C2PlatformAllocatorStore::BLOB) {
         isValidHandle = C2AllocatorBlob::isValid(cHandle);
-    } else {
+    } else if (sAllocator->getId() == android::C2PlatformAllocatorStore::ION) {
         isValidHandle = C2AllocatorIon::isValid(cHandle);
+    } else {
+        isValidHandle = C2DmaBufAllocator::isValid(cHandle);
     }
 
     std::shared_ptr<C2LinearAllocation> alloc;
