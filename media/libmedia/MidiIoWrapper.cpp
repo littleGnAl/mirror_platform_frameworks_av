@@ -21,6 +21,7 @@
 #include <fcntl.h>
 #include <sys/stat.h>
 #include <unistd.h>
+#include <algorithm>
 
 #include <media/MidiIoWrapper.h>
 #include <media/MediaExtractorPluginApi.h>
@@ -33,6 +34,8 @@ static int size(void *handle) {
 }
 
 namespace android {
+int MidiIoWrapper::mCacheBufferSize = 0;
+Mutex MidiIoWrapper::mCacheLock;
 
 MidiIoWrapper::MidiIoWrapper(const char *path) {
     ALOGV("MidiIoWrapper(%s)", path);
@@ -40,6 +43,8 @@ MidiIoWrapper::MidiIoWrapper(const char *path) {
     mBase = 0;
     mLength = lseek(mFd, 0, SEEK_END);
     mDataSource = nullptr;
+    mCacheBuffer = NULL;
+    mCacheBufRangeLength = 0;
 }
 
 MidiIoWrapper::MidiIoWrapper(int fd, off64_t offset, int64_t size) {
@@ -48,6 +53,8 @@ MidiIoWrapper::MidiIoWrapper(int fd, off64_t offset, int64_t size) {
     mBase = offset;
     mLength = size;
     mDataSource = nullptr;
+    mCacheBuffer = NULL;
+    mCacheBufRangeLength = 0;
 }
 
 class MidiIoWrapper::DataSourceUnwrapper {
@@ -97,6 +104,8 @@ MidiIoWrapper::MidiIoWrapper(CDataSource *csource) {
     } else {
         mLength = 0;
     }
+    mCacheBuffer = NULL;
+    mCacheBufRangeLength = 0;
 }
 
 MidiIoWrapper::~MidiIoWrapper() {
@@ -105,11 +114,63 @@ MidiIoWrapper::~MidiIoWrapper() {
         close(mFd);
     }
     delete mDataSource;
+
+    if (NULL != mCacheBuffer) {
+        delete [] mCacheBuffer;
+        mCacheBuffer = NULL;
+        {
+            Mutex::Autolock _l(mCacheLock);
+            mCacheBufferSize -= mLength;
+        }
+    }
 }
 
 int MidiIoWrapper::readAt(void *buffer, int offset, int size) {
     ALOGV("readAt(%p, %d, %d)", buffer, offset, size);
+    if (mCacheBuffer == NULL) {
+        Mutex::Autolock _l(mCacheLock);
+       if (mCacheBufferSize + mLength <= kTotalCacheSize) {
+            mCacheBuffer = new (std::nothrow) unsigned char[mLength];
+            if (NULL != mCacheBuffer) {
+                mCacheBufferSize += mLength;
+                ALOGV("mCacheBufferSize : %d", mCacheBufferSize);
+            } else {
+                ALOGE("failed to allocate memory for mCacheBuffer");
+            }
+        } else {
+            ALOGV("not allocate memory for mCacheBuffer");
+        }
+    }
 
+    if (mCacheBuffer != NULL) {
+        if (mCacheBufRangeLength > 0 && mCacheBufRangeLength >= (offset + size)) {
+            /* Use buffered data */
+            memcpy(buffer, (void*)(mCacheBuffer + offset), size);
+            return size;
+        } else {
+            /* Buffer new data */
+            int64_t ToPutInCacheSizes = (offset + size) - mCacheBufRangeLength;
+            int64_t availableReadLength = mLength - mCacheBufRangeLength;
+            int64_t readSize = std::min(availableReadLength, std::max((int64_t)kSingleCacheSize, ToPutInCacheSizes));
+            int numBytesRead = unbufferedReadAt(mCacheBuffer + mCacheBufRangeLength, mCacheBufRangeLength, readSize);
+            if(numBytesRead > 0) {
+                mCacheBufRangeLength += numBytesRead;
+                if (offset + size > mLength) {
+                    size = mLength - offset;
+                }
+                memcpy(buffer, (void*)(mCacheBuffer + offset), size);
+                return size;
+            } else {
+                return numBytesRead;
+            }
+        }
+    } else {
+        return unbufferedReadAt(buffer, offset, size);
+    }
+}
+
+int MidiIoWrapper::unbufferedReadAt(void *buffer, int offset, int size) {
+    ALOGV("unbufferedReadAt(%p, %d, %d)", buffer, offset, size);
     if (mDataSource != NULL) {
         return mDataSource->readAt(offset, buffer, size);
     }
