@@ -26,6 +26,7 @@
 #include <binder/ProcessState.h>
 #include <binder/IServiceManager.h>
 #include <hidl/HidlTransportSupport.h>
+#include <mediautils/LimitProcessMemory.h>
 #include <utils/Log.h>
 
 // from LOCAL_C_INCLUDES
@@ -35,8 +36,6 @@
 #include "AAudioService.h"
 #include "utility/AAudioUtilities.h"
 #include "MediaLogService.h"
-#include "MediaUtils.h"
-#include "SoundTriggerHwService.h"
 
 using namespace android;
 
@@ -50,7 +49,12 @@ int main(int argc __unused, char **argv)
 
     signal(SIGPIPE, SIG_IGN);
 
+#if 1
+    // FIXME See bug 165702394 and bug 168511485
+    const bool doLog = false;
+#else
     bool doLog = (bool) property_get_bool("ro.test_harness", 0);
+#endif
 
     pid_t childPid;
     // FIXME The advantage of making the process containing media.log service the parent process of
@@ -148,7 +152,6 @@ int main(int argc __unused, char **argv)
             AAudioService::instantiate();
         }
 
-        SoundTriggerHwService::instantiate();
         ProcessState::self()->startThreadPool();
         IPCThreadState::self()->joinThreadPool();
     }
