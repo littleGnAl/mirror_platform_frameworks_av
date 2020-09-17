@@ -33,6 +33,8 @@ static int size(void *handle) {
 }
 
 namespace android {
+int MidiIoWrapper::mCachUseSize = 0;
+Mutex MidiIoWrapper::mCacheLock;
 
 MidiIoWrapper::MidiIoWrapper(const char *path) {
     ALOGV("MidiIoWrapper(%s)", path);
@@ -40,6 +42,8 @@ MidiIoWrapper::MidiIoWrapper(const char *path) {
     mBase = 0;
     mLength = lseek(mFd, 0, SEEK_END);
     mDataSource = nullptr;
+    mCacheBuffer = NULL;
+    mBufferSize = 0;
 }
 
 MidiIoWrapper::MidiIoWrapper(int fd, off64_t offset, int64_t size) {
@@ -48,6 +52,8 @@ MidiIoWrapper::MidiIoWrapper(int fd, off64_t offset, int64_t size) {
     mBase = offset;
     mLength = size;
     mDataSource = nullptr;
+    mCacheBuffer = NULL;
+    mBufferSize = 0;
 }
 
 class MidiIoWrapper::DataSourceUnwrapper {
@@ -97,6 +103,8 @@ MidiIoWrapper::MidiIoWrapper(CDataSource *csource) {
     } else {
         mLength = 0;
     }
+    mCacheBuffer = NULL;
+    mBufferSize = 0;
 }
 
 MidiIoWrapper::~MidiIoWrapper() {
@@ -105,11 +113,69 @@ MidiIoWrapper::~MidiIoWrapper() {
         close(mFd);
     }
     delete mDataSource;
+
+    if (NULL != mCacheBuffer) {
+        delete [] mCacheBuffer;
+        mCacheBuffer = NULL;
+        {
+            Mutex::Autolock _l(mCacheLock);
+            mCachUseSize -= mLength;
+        }
+    }
 }
 
 int MidiIoWrapper::readAt(void *buffer, int offset, int size) {
     ALOGV("readAt(%p, %d, %d)", buffer, offset, size);
+    int sizes = 0;
+    int64_t read_sizes = kSingleCacheSize;
+    int64_t available_read = 0;
+    int midiSize = mLength;
 
+    if (mCacheBuffer == NULL) {
+        Mutex::Autolock _l(mCacheLock);
+        if (mCachUseSize + midiSize <= kTotalCacheSize) {
+            mCacheBuffer = new unsigned char[midiSize];
+            if (NULL != mCacheBuffer) {
+                mCachUseSize += midiSize;
+                ALOGV("mCachUseSize : %d", mCachUseSize);
+            }
+        } else {
+            ALOGV("Cache is not enough");
+        }
+    }
+
+    if (mCacheBuffer != NULL && mBufferSize > 0 && mBufferSize >= (offset + size)) {
+        /* Use buffered data */
+        memcpy(buffer, (void*)(mCacheBuffer + offset), size);
+        return size;
+    } else if (mCacheBuffer != NULL && mBufferSize <= midiSize) {
+        /* Buffer new data */
+        available_read = midiSize - mBufferSize;
+        read_sizes = (read_sizes < available_read) ? read_sizes : available_read;
+        sizes = readAt_l(mCacheBuffer + mBufferSize, mBufferSize, read_sizes);
+        if(sizes > 0) {
+            mBufferSize += sizes;
+            if(offset < mBufferSize) {
+                if (mBufferSize > offset + size) {
+                    memcpy(buffer, (void*)(mCacheBuffer + offset), size);
+                    return size;
+                } else {
+                    memcpy(buffer, (void*)(mCacheBuffer + offset), mBufferSize-offset);
+                    return mBufferSize-offset;
+                }
+            } else {
+                return 0;
+            }
+        } else {
+            return sizes;
+        }
+    } else {
+        return readAt_l(buffer, offset, size);
+    }
+}
+
+int MidiIoWrapper::readAt_l(void *buffer, int offset, int size) {
+    ALOGV("readAt(%p, %d, %d)", buffer, offset, size);
     if (mDataSource != NULL) {
         return mDataSource->readAt(offset, buffer, size);
     }
