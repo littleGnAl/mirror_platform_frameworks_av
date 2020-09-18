@@ -113,6 +113,30 @@
     },
     {
       "key": {
+        "uuid": "10c36303_9725e391",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Init.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-09-18T05:43:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b41e7b4_dd4f4aff",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 187,
+        "endChar": 5
+      },
+      "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "441f8628_9daf43bc",
         "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Init.cpp",
         "patchSetId": 8
@@ -133,6 +157,30 @@
       "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd318375_5acf9145",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Init.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-09-18T05:43:41Z",
+      "side": 1,
+      "message": "free is applied on pInstance. *phInstance holds the value of address free-d in the previous step. phInstance still holds a valid address at this point in control flow.\n\nAck",
+      "parentUuid": "441f8628_9daf43bc",
+      "range": {
+        "startLine": 201,
+        "startChar": 0,
+        "endLine": 201,
+        "endChar": 27
+      },
+      "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -159,6 +207,30 @@
     },
     {
       "key": {
+        "uuid": "7b39bbf0_024db16b",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Init.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-09-18T05:43:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0acdb986_3c0241a7",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 11
+      },
+      "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eeb1de67_442f1eea",
         "filename": "media/libeffects/lvm/lib/Bundle/src/LVM_Private.h",
         "patchSetId": 8
@@ -179,6 +251,30 @@
       "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6b514633_1060931b",
+        "filename": "media/libeffects/lvm/lib/Bundle/src/LVM_Private.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-09-18T05:43:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eeb1de67_442f1eea",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 223,
+        "endChar": 17
+      },
+      "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -205,6 +301,30 @@
     },
     {
       "key": {
+        "uuid": "86405035_bec46194",
+        "filename": "media/libeffects/lvm/lib/Eq/lib/LVEQNB.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-09-18T05:43:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44507f78_020ea9d5",
+      "range": {
+        "startLine": 257,
+        "startChar": 71,
+        "endLine": 257,
+        "endChar": 72
+      },
+      "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7d73d16b_913fced5",
         "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Init.cpp",
         "patchSetId": 8
@@ -225,6 +345,30 @@
       "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "765298f9_c11e53cc",
+        "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Init.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-09-18T05:43:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7d73d16b_913fced5",
+      "range": {
+        "startLine": 35,
+        "startChar": 59,
+        "endLine": 35,
+        "endChar": 60
+      },
+      "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -251,6 +395,30 @@
     },
     {
       "key": {
+        "uuid": "b96845d1_03e35c85",
+        "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Init.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 190,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-09-18T05:43:41Z",
+      "side": 1,
+      "message": "free is applied on pInstance. *phInstance holds the value of address free-d in the previous step. phInstance still holds a valid address at this point in control flow.\n\nAck",
+      "parentUuid": "b5ef2887_6c1d46ae",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 190,
+        "endChar": 27
+      },
+      "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "14dafbb6_e3983b2e",
         "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Init.cpp",
         "patchSetId": 8
@@ -271,6 +439,30 @@
       "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c9babed4_03ff9e77",
+        "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Init.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-09-18T05:43:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14dafbb6_e3983b2e",
+      "range": {
+        "startLine": 191,
+        "startChar": 0,
+        "endLine": 191,
+        "endChar": 11
+      },
+      "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -297,6 +489,30 @@
     },
     {
       "key": {
+        "uuid": "d985be72_57450249",
+        "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Private.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-09-18T05:43:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "365108e5_234fa93f",
+      "range": {
+        "startLine": 67,
+        "startChar": 45,
+        "endLine": 67,
+        "endChar": 46
+      },
+      "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7b31c9ba_9b88040a",
         "filename": "media/libeffects/lvm/lib/SpectrumAnalyzer/src/LVPSA_Init.cpp",
         "patchSetId": 8
@@ -317,6 +533,30 @@
       "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "853fc580_f039f6bf",
+        "filename": "media/libeffects/lvm/lib/SpectrumAnalyzer/src/LVPSA_Init.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-09-18T05:43:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b31c9ba_9b88040a",
+      "range": {
+        "startLine": 195,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 5
+      },
+      "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -343,6 +583,30 @@
     },
     {
       "key": {
+        "uuid": "f479c459_9e813137",
+        "filename": "media/libeffects/lvm/lib/SpectrumAnalyzer/src/LVPSA_Init.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-09-18T05:43:41Z",
+      "side": 1,
+      "message": "free is applied on pInstance. *phInstance holds the value of address free-d in the previous step. phInstance still holds a valid address at this point in control flow.\n\nAck",
+      "parentUuid": "475a13d8_9f85f705",
+      "range": {
+        "startLine": 244,
+        "startChar": 0,
+        "endLine": 244,
+        "endChar": 27
+      },
+      "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "68291202_fbf58b83",
         "filename": "media/libeffects/lvm/lib/SpectrumAnalyzer/src/LVPSA_Init.cpp",
         "patchSetId": 8
@@ -363,6 +627,30 @@
       "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "108f8034_953394ed",
+        "filename": "media/libeffects/lvm/lib/SpectrumAnalyzer/src/LVPSA_Init.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 245,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-09-18T05:43:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68291202_fbf58b83",
+      "range": {
+        "startLine": 245,
+        "startChar": 4,
+        "endLine": 245,
+        "endChar": 10
+      },
+      "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -389,6 +677,30 @@
     },
     {
       "key": {
+        "uuid": "ea55125f_75c3372b",
+        "filename": "media/libeffects/lvm/lib/SpectrumAnalyzer/src/LVPSA_Private.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-09-18T05:43:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c534b428_307a310d",
+      "range": {
+        "startLine": 75,
+        "startChar": 40,
+        "endLine": 75,
+        "endChar": 42
+      },
+      "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "33413d5f_e754f456",
         "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_Init.cpp",
         "patchSetId": 8
@@ -409,6 +721,30 @@
       "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f5758a48_9b6e91fc",
+        "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_Init.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 144,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-09-18T05:43:41Z",
+      "side": 1,
+      "message": "free is applied on pInstance. *phInstance holds the value of address free-d in the previous step. phInstance still holds a valid address at this point in control flow.\n\nAck",
+      "parentUuid": "33413d5f_e754f456",
+      "range": {
+        "startLine": 144,
+        "startChar": 0,
+        "endLine": 144,
+        "endChar": 27
+      },
+      "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
