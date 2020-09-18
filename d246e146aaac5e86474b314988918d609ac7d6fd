@@ -1,0 +1,308 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "21019705_5ce04334",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-09-18T17:04:49Z",
+      "side": 1,
+      "message": "this line should go before the \"Change-Id\" line below",
+      "revId": "d246e146aaac5e86474b314988918d609ac7d6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a6518338_df8c956c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-09-18T17:04:49Z",
+      "side": 1,
+      "message": "This should be the first line of the commit message",
+      "revId": "d246e146aaac5e86474b314988918d609ac7d6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d7f1b866_871c1dba",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-09-18T17:04:49Z",
+      "side": 1,
+      "message": "Keep line length less than 70 characters.\nAlso, this is not a 64KB cache. It\u0027s a 1.5MB cache, it\u0027s just filling it 64KB at a time.",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 0
+      },
+      "revId": "d246e146aaac5e86474b314988918d609ac7d6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "79f9fe35_29491d73",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-09-18T17:04:49Z",
+      "side": 1,
+      "message": "just use mLength below instead of adding an extra local variable",
+      "revId": "d246e146aaac5e86474b314988918d609ac7d6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "27dc6c45_9d090e68",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-09-18T17:04:49Z",
+      "side": 1,
+      "message": "use \"readSize\" and \"availableRead\" naming style",
+      "range": {
+        "startLine": 130,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 0
+      },
+      "revId": "d246e146aaac5e86474b314988918d609ac7d6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "aff1038d_e3a88741",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-09-18T17:04:49Z",
+      "side": 1,
+      "message": "needs to use \"new (nothrow)\", otherwise this won\u0027t work as expected.",
+      "range": {
+        "startLine": 137,
+        "startChar": 0,
+        "endLine": 138,
+        "endChar": 37
+      },
+      "revId": "d246e146aaac5e86474b314988918d609ac7d6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cb26721a_8bd7baac",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-09-18T17:04:49Z",
+      "side": 1,
+      "message": "Isn\u0027t this always true?",
+      "range": {
+        "startLine": 151,
+        "startChar": 39,
+        "endLine": 151,
+        "endChar": 62
+      },
+      "revId": "d246e146aaac5e86474b314988918d609ac7d6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9c237e83_fcd8f8de",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-09-18T17:04:49Z",
+      "side": 1,
+      "message": "Declare this variable here instead of at the top of the function. This isn\u0027t C.\nDon\u0027t use a plural name for a single value.\n\nAlso, this will do the wrong thing when the \"size\" parameter is greater than 64KB (it will return only 64KB of data on line 163 below), so I think it should be something like:\n\nreadSize \u003d min(availableRead, max(kSingleCacheSize, size));",
+      "range": {
+        "startLine": 154,
+        "startChar": 8,
+        "endLine": 154,
+        "endChar": 18
+      },
+      "revId": "d246e146aaac5e86474b314988918d609ac7d6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "52cb06fa_432df905",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-09-18T17:04:49Z",
+      "side": 1,
+      "message": "Declare this variable here instead of at the top of the function.\nAlso, \"sizes\" is not a very descriptive name, and it\u0027s a plural when it\u0027s just used for a single value. I suggest using something like \"numRead\" or \"numBytesRead\"",
+      "range": {
+        "startLine": 155,
+        "startChar": 8,
+        "endLine": 155,
+        "endChar": 13
+      },
+      "revId": "d246e146aaac5e86474b314988918d609ac7d6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "0d32c61f_9d9f1375",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-09-18T17:04:49Z",
+      "side": 1,
+      "message": "This can be simplified by first checking that the requested size does not go over the length of the file, similar to lines 187-189 below.",
+      "range": {
+        "startLine": 159,
+        "startChar": 1,
+        "endLine": 165,
+        "endChar": 17
+      },
+      "revId": "d246e146aaac5e86474b314988918d609ac7d6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "f6e8878f_61bc20ff",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-09-18T17:04:49Z",
+      "side": 1,
+      "message": "there might be previously-read data in the cache that could be returned here",
+      "range": {
+        "startLine": 170,
+        "startChar": 0,
+        "endLine": 170,
+        "endChar": 25
+      },
+      "revId": "d246e146aaac5e86474b314988918d609ac7d6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "97ce2bdf_8e223abd",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-09-18T17:04:49Z",
+      "side": 1,
+      "message": "the \"_l\" function name postfix is generally used for functions that must be called with a lock held, which is not the case here. Rename this to unbufferedReadAt() or something.",
+      "range": {
+        "startLine": 177,
+        "startChar": 19,
+        "endLine": 177,
+        "endChar": 27
+      },
+      "revId": "d246e146aaac5e86474b314988918d609ac7d6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "874acfc7_fe15f2ad",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-09-18T17:04:49Z",
+      "side": 1,
+      "message": "change to match function name",
+      "range": {
+        "startLine": 178,
+        "startChar": 11,
+        "endLine": 178,
+        "endChar": 17
+      },
+      "revId": "d246e146aaac5e86474b314988918d609ac7d6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3cb0d55_c3ce3dc6",
+        "filename": "media/libmedia/include/media/MidiIoWrapper.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-09-18T17:04:49Z",
+      "side": 1,
+      "message": "Typo: should be mCacheUseSize.",
+      "range": {
+        "startLine": 55,
+        "startChar": 15,
+        "endLine": 55,
+        "endChar": 27
+      },
+      "revId": "d246e146aaac5e86474b314988918d609ac7d6fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
