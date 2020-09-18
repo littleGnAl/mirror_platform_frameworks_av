@@ -1,7 +1,11 @@
 {
   "name": "com.android.media.swcodec",
+<<<<<<< HEAD   (85cb71 Merge "CCodec: fix underflow issue on handleImageData")
   "version": 300000000,
   "requireNativeLibs": [
     ":sphal"
   ]
+=======
+  "version": 300900700
+>>>>>>> BRANCH (3992b1 Make change and version bump to r_aml_300900700 for mainline)
 }
