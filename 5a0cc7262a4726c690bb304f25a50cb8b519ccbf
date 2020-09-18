@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "100cdd00_6efbcac5",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1838,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-09-18T19:17:42Z",
+      "side": 1,
+      "message": "Up to you whether you want to fix this.",
+      "parentUuid": "9097ef9e_0d99c082",
+      "range": {
+        "startLine": 1838,
+        "startChar": 42,
+        "endLine": 1838,
+        "endChar": 43
+      },
+      "revId": "5a0cc7262a4726c690bb304f25a50cb8b519ccbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d9ee48f_531cb368",
         "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
         "patchSetId": 1
@@ -76,6 +100,30 @@
       "writtenOn": "2020-09-10T03:11:29Z",
       "side": 1,
       "message": "Why not always use SEEK_CLOSEST if it is more accurate instead of making it conditional in the if?  Are we concerned about speed of the seek?  Can you please check that alternative?  Thanks.\n\nSee the original change here.\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/903573",
+      "range": {
+        "startLine": 1839,
+        "startChar": 44,
+        "endLine": 1839,
+        "endChar": 56
+      },
+      "revId": "5a0cc7262a4726c690bb304f25a50cb8b519ccbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c73c23c5_f05df5c1",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1839,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-09-18T19:17:42Z",
+      "side": 1,
+      "message": "Based on the discussion on keeping regression possibility to a minimum, this can be ignored.",
+      "parentUuid": "0d9ee48f_531cb368",
       "range": {
         "startLine": 1839,
         "startChar": 44,
