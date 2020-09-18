@@ -768,6 +768,30 @@
       "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5e6b4493_9991e437",
+        "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_Private.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-09-18T06:01:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "138b1248_0bbed4aa",
+      "range": {
+        "startLine": 135,
+        "startChar": 35,
+        "endLine": 135,
+        "endChar": 36
+      },
+      "revId": "482573cc9e90e3e59437f4ed20db8243769433eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
