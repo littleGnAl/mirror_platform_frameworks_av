@@ -44,7 +44,7 @@ public:
 
     virtual ~C2AllocatorBlob() override;
 
-    static bool isValid(const C2Handle* const o);
+    virtual bool isValid(const C2Handle* const o) override;
 
 private:
     std::shared_ptr<const Traits> mTraits;

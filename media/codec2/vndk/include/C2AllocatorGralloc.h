@@ -84,7 +84,7 @@ public:
 
     virtual ~C2AllocatorGralloc() override;
 
-    static bool isValid(const C2Handle* const o);
+    virtual bool isValid(const C2Handle* const o) override;
 
 private:
     class Impl;
