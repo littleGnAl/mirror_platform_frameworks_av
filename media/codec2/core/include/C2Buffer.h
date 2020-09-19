@@ -734,6 +734,12 @@ public:
     }
 
     virtual ~C2Allocator() = default;
+
+    /**
+     * Returns a true if the handle is valid for this allocator.
+     */
+    virtual bool isValid(const C2Handle *const o) = 0;
+
 protected:
     C2Allocator() = default;
 };
