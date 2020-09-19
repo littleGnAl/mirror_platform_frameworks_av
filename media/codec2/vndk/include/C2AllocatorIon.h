@@ -57,7 +57,7 @@ public:
 
     virtual ~C2AllocatorIon() override;
 
-    static bool isValid(const C2Handle* const o);
+    virtual bool isValid(const C2Handle* const o) override;
 
     /**
      * Updates the usage mapper for subsequent new allocations, as well as the supported

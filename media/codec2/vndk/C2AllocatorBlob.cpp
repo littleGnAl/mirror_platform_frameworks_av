@@ -177,10 +177,15 @@ std::shared_ptr<const C2Allocator::Traits> C2AllocatorBlob::getTraits() const {
 // static
 bool C2AllocatorBlob::isValid(const C2Handle* const o) {
     size_t capacity;
+
+    if (!mC2AllocatorGralloc) {
+        return C2_CORRUPTED;
+    }
+
     // Distinguish C2Handle purely allocated by C2AllocatorGralloc, or one allocated through
     // C2AllocatorBlob, by checking the handle's height is 1, and its format is
     // PixelFormat::BLOB by GetCapacityFromHandle().
-    return C2AllocatorGralloc::isValid(o) && GetCapacityFromHandle(o, &capacity) == C2_OK;
+    return mC2AllocatorGralloc->isValid(o) && GetCapacityFromHandle(o, &capacity) == C2_OK;
 }
 
 }  // namespace android

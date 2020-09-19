@@ -612,6 +612,11 @@ public:
     virtual id_t getId() const = 0;
 
     /**
+     * Returns a true if the handle is valid for this allocator.
+     */
+    virtual bool isValid(const C2Handle *const o) = 0;
+
+    /**
      * Returns the allocator traits.
      *
      * This method MUST be "non-blocking" and return within 1ms.
