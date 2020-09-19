@@ -16,6 +16,23 @@
       "revId": "6d7fe7fd6bd18c7f9506713af297e42c9753d35d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "37fb0275_fb88b27e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-09-19T02:00:21Z",
+      "side": 1,
+      "message": "Andy,\nI have tested this on blueline running hwasan build using Clarity app with Monkey testing enabled for more than an hour.",
+      "revId": "6d7fe7fd6bd18c7f9506713af297e42c9753d35d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
