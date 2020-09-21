@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "02984787_bde31832",
+        "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-09-21T20:18:31Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "b63e18d2daa4a076eab8e76fc02665fd088cd50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "219a173d_82a4e629",
+        "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-09-21T20:18:31Z",
+      "side": 1,
+      "message": "2020",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "b63e18d2daa4a076eab8e76fc02665fd088cd50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "eef08e7f_514b1d5c",
+        "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-09-21T20:18:31Z",
+      "side": 1,
+      "message": "formatting needed",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 56
+      },
+      "revId": "b63e18d2daa4a076eab8e76fc02665fd088cd50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "35c72e5a_68d82e97",
+        "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-09-21T20:18:31Z",
+      "side": 1,
+      "message": "Should we move this to the patch where it gets used instead?",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 1
+      },
+      "revId": "b63e18d2daa4a076eab8e76fc02665fd088cd50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
