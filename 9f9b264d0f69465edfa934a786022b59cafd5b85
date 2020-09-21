@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9b6b0137_a344d8c6",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2994,
+      "author": {
+        "id": 1598676
+      },
+      "writtenOn": "2020-09-21T17:49:58Z",
+      "side": 1,
+      "message": "Hiroh, do we need to support 3 and 4 byte start codes here and below?",
+      "revId": "9f9b264d0f69465edfa934a786022b59cafd5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
