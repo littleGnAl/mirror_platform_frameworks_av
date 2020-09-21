@@ -428,7 +428,10 @@ private:
 
     std::shared_ptr<BufferChannelBase> mBufferChannel;
 
-    MediaCodec(const sp<ALooper> &looper, pid_t pid, uid_t uid);
+    MediaCodec(
+            const sp<ALooper> &looper, pid_t pid, uid_t uid,
+            std::function<sp<CodecBase>(const AString &, const char *)> getCodecBase = nullptr,
+            std::function<sp<MediaCodecInfo>(const AString &, status_t *)> getCodecInfo = nullptr);
 
     static sp<CodecBase> GetCodecBase(const AString &name, const char *owner = nullptr);
 
@@ -568,6 +571,10 @@ private:
     };
 
     Histogram mLatencyHist;
+
+    std::function<sp<CodecBase>(const AString &, const char *)> mGetCodecBase;
+    std::function<sp<MediaCodecInfo>(const AString &, status_t *)> mGetCodecInfo;
+    friend class StagefrightTestHelper;
 
     DISALLOW_EVIL_CONSTRUCTORS(MediaCodec);
 };
