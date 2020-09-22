@@ -16,6 +16,24 @@
       "revId": "eb9186b9c15d4097808bbb2aa6e663e8cdbbcce8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "72a59def_dae58db8",
+        "filename": "media/codec2/vndk/C2Buffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-22T03:09:07Z",
+      "side": 1,
+      "message": "So, after spending most of the day trying to chase this down, I\u0027ve been completely unable to reproduce it. I suspect that in my late night efforts on friday I was flashing a previous version of the patch. \n\nSo I\u0027d still appreciate close review by someone who understands the code (and maybe has a deeper understanding of the subtleties of replacing the lambda logic), and I\u0027ll keep an eye out for any re-occurrence of the issue.",
+      "parentUuid": "6ac5563f_6d6190cf",
+      "revId": "eb9186b9c15d4097808bbb2aa6e663e8cdbbcce8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
