@@ -14,23 +14,16 @@
  * limitations under the License.
  */
 
+#include <getopt.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <sys/stat.h>
+#include <vector>
+
 #include <audio_effects/effect_aec.h>
 #include <audio_effects/effect_agc.h>
 #include <audio_effects/effect_ns.h>
-#include <audio_processing.h>
-#include <getopt.h>
-#include <hardware/audio_effect.h>
-#include <module_common_types.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <utils/Log.h>
-#include <utils/Timers.h>
-
-#include <audio_utils/channels.h>
-#include <audio_utils/primitives.h>
 #include <log/log.h>
-#include <system/audio.h>
 
 // This is the only symbol that needs to be imported
 extern audio_effect_library_t AUDIO_EFFECT_LIBRARY_INFO_SYM;
