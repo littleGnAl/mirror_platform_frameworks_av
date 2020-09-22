@@ -76,6 +76,30 @@
     },
     {
       "key": {
+        "uuid": "f3869012_5042ec0e",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-22T03:32:11Z",
+      "side": 1,
+      "message": "Yes, it does. Though I\u0027m trying to sure I match the C2HandleIon code, as I\u0027m wanting the handles to be interchangeable, and it seems to be unused there as well.",
+      "parentUuid": "c8d0b80b_bc73a9a1",
+      "range": {
+        "startLine": 74,
+        "startChar": 2,
+        "endLine": 74,
+        "endChar": 28
+      },
+      "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "8128cd40_c878bbcd",
         "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
         "patchSetId": 8
@@ -312,6 +336,30 @@
     },
     {
       "key": {
+        "uuid": "a8b091e8_a1d69e47",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-22T03:32:11Z",
+      "side": 1,
+      "message": "With the new approach here, we don\u0027t need to worry about the alignment (since we\u0027re not handling the legacy ion path, just the dmabuf heap path, where alignment is unsupported).\n\nHowever, the fixes to address that issue in libdmabufheaps has been merged.",
+      "parentUuid": "c3c5826b_3b2de683",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 304,
+        "endChar": 0
+      },
+      "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "43b71360_4699a82c",
         "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
         "patchSetId": 8
@@ -383,6 +431,30 @@
     },
     {
       "key": {
+        "uuid": "e80ed1cf_e0ed2485",
+        "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-22T03:32:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "803f8a32_f246b078",
+      "range": {
+        "startLine": 338,
+        "startChar": 6,
+        "endLine": 338,
+        "endChar": 20
+      },
+      "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "e0b5ca85_3a3baf6d",
         "filename": "media/codec2/vndk/C2AllocatorBuf.cpp",
         "patchSetId": 8
@@ -450,6 +522,30 @@
       "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "348e1cee_784504c1",
+        "filename": "media/codec2/vndk/include/C2AllocatorBuf.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-22T03:32:11Z",
+      "side": 1,
+      "message": "I agree, but I\u0027m also going to keep this for now, to match the existing code.",
+      "parentUuid": "7ce2ebb4_a948f161",
+      "range": {
+        "startLine": 79,
+        "startChar": 14,
+        "endLine": 79,
+        "endChar": 19
+      },
+      "revId": "537837a47e40c8fd497a4c74062095e4f2c2b60c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
