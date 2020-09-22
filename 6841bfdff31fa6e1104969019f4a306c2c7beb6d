@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "f71218d6_912c78d8",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 661,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2020-09-22T16:28:33Z",
+      "side": 1,
+      "message": "This prototype is a bit weird, if the function returns a status, usually the return value is the status, and other returns are returned by *.\nCan this be [](const AString \u0026name, sp\u003cMediaCodecInfo\u003e*) -\u003e status_t?",
+      "range": {
+        "startLine": 661,
+        "startChar": 48,
+        "endLine": 661,
+        "endChar": 61
+      },
+      "revId": "6841bfdff31fa6e1104969019f4a306c2c7beb6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c074c712_d665b0f3",
+        "filename": "media/libstagefright/tests/mediacodec/MediaCodecTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2020-09-22T16:28:33Z",
+      "side": 1,
+      "message": "It would be good to have some comments about how the test works, how it\u0027s setup and what it\u0027s verifying.",
+      "range": {
+        "startLine": 155,
+        "startChar": 0,
+        "endLine": 156,
+        "endChar": 1
+      },
+      "revId": "6841bfdff31fa6e1104969019f4a306c2c7beb6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
