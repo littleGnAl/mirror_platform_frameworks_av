@@ -14,23 +14,16 @@
  * limitations under the License.
  */
 
+#include <getopt.h>
+#include <stddef.h>
+#include <stdint.h>
+#include <sys/stat.h>
+#include <vector>
+
 #include <audio_effects/effect_aec.h>
 #include <audio_effects/effect_agc.h>
 #include <audio_effects/effect_ns.h>
-#include <audio_processing.h>
-#include <getopt.h>
-#include <hardware/audio_effect.h>
-#include <module_common_types.h>
-#include <stdlib.h>
-#include <string.h>
-#include <sys/stat.h>
-#include <utils/Log.h>
-#include <utils/Timers.h>
-
-#include <audio_utils/channels.h>
-#include <audio_utils/primitives.h>
 #include <log/log.h>
-#include <system/audio.h>
 
 // This is the only symbol that needs to be imported
 extern audio_effect_library_t AUDIO_EFFECT_LIBRARY_INFO_SYM;
@@ -58,6 +51,9 @@ enum PreProcParams {
   ARG_AGC_COMP_LVL,
   ARG_AEC_DELAY,
   ARG_NS_LVL,
+#ifndef WEBRTC_LEGACY
+  ARG_AEC_MOBILE,
+#endif
 };
 
 struct preProcConfigParams_t {
@@ -134,6 +130,10 @@ void printUsage() {
   printf("\n           AGC Comp Level in dB, default value 9dB");
   printf("\n     --aec_delay <delay>");
   printf("\n           AEC delay value in ms, default value 0ms");
+#ifndef WEBRTC_LEGACY
+  printf("\n     --aec_mobile");
+  printf("\n           Enable mobile mode of echo canceller, default disabled");
+#endif
   printf("\n");
 }
 
@@ -184,6 +184,9 @@ int main(int argc, const char *argv[]) {
   const char *outputFile = nullptr;
   const char *farFile = nullptr;
   int effectEn[PREPROC_NUM_EFFECTS] = {0};
+#ifndef WEBRTC_LEGACY
+  int aecMobileMode = 0;
+#endif
 
   const option long_opts[] = {
       {"help", no_argument, nullptr, ARG_HELP},
@@ -199,6 +202,9 @@ int main(int argc, const char *argv[]) {
       {"aec", no_argument, &effectEn[PREPROC_AEC], 1},
       {"agc", no_argument, &effectEn[PREPROC_AGC], 1},
       {"ns", no_argument, &effectEn[PREPROC_NS], 1},
+#ifndef WEBRTC_LEGACY
+      {"aec_mobile", no_argument, &aecMobileMode, 1},
+#endif
       {nullptr, 0, nullptr, 0},
   };
   struct preProcConfigParams_t preProcCfgParams {};
@@ -350,6 +356,16 @@ int main(int argc, const char *argv[]) {
       return EXIT_FAILURE;
     }
   }
+#ifndef WEBRTC_LEGACY
+  if (effectEn[PREPROC_AEC]) {
+    if (int status = preProcSetConfigParam(AEC_PARAM_MOBILE_MODE, (uint32_t)aecMobileMode,
+                                           effectHandle[PREPROC_AEC]);
+        status != 0) {
+      ALOGE("Invalid AEC mobile mode value %d\n", status);
+      return EXIT_FAILURE;
+    }
+  }
+#endif
 
   // Process Call
   const int frameLength = (int)(preProcCfgParams.samplingFreq * kTenMilliSecVal);
