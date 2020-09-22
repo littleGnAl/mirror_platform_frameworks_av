@@ -45,6 +45,29 @@
       "revId": "6841bfdff31fa6e1104969019f4a306c2c7beb6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5f637360_083552b1",
+        "filename": "media/libstagefright/tests/mediacodec/StagefrightTestHelper.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2020-09-22T16:37:08Z",
+      "side": 1,
+      "message": "Does this have to be named \"Stagefright\"? It seems not associated with stagefright.\nSince this is inside Mediacodec folder, why not just \"MediaCodecTestHelper\"?",
+      "range": {
+        "startLine": 32,
+        "startChar": 6,
+        "endLine": 32,
+        "endChar": 27
+      },
+      "revId": "6841bfdff31fa6e1104969019f4a306c2c7beb6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
