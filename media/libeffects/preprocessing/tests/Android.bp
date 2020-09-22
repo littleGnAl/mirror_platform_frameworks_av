@@ -1,6 +1,6 @@
 // audio preprocessing unit test
 cc_test {
-    name: "AudioPreProcessingTest",
+    name: "AudioPreProcessingLegacyTest",
 
     vendor: true,
 
@@ -9,7 +9,7 @@ cc_test {
     srcs: ["PreProcessingTest.cpp"],
 
     shared_libs: [
-        "libaudiopreprocessing",
+        "libaudiopreprocessing_legacy",
         "libaudioutils",
         "liblog",
         "libutils",
@@ -24,6 +24,28 @@ cc_test {
     ],
 
     header_libs: [
+        "libaudioeffects",
+        "libhardware_headers",
+    ],
+}
+
+cc_test {
+    name: "AudioPreProcessingTest",
+
+    vendor: true,
+
+    relative_install_path: "soundfx",
+
+    srcs: ["PreProcessingTest.cpp"],
+
+    shared_libs: [
+        "libaudiopreprocessing",
+        "libaudioutils",
+        "liblog",
+        "libutils",
+    ],
+    header_libs: [
+        "libabsl_headers",
         "libaudioeffects",
         "libhardware_headers",
     ],
