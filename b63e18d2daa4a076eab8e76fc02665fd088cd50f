@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "ff93f114_6fc5a487",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 17
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-22T03:06:35Z",
+      "side": 1,
+      "message": "Thanks for the review, will have an updated version soon!",
+      "revId": "b63e18d2daa4a076eab8e76fc02665fd088cd50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "02984787_bde31832",
         "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
         "patchSetId": 17
@@ -22,6 +39,30 @@
       "revId": "b63e18d2daa4a076eab8e76fc02665fd088cd50f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "59be437c_42c803b7",
+        "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-22T03:06:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "02984787_bde31832",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "b63e18d2daa4a076eab8e76fc02665fd088cd50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -48,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "1f103993_278192b9",
+        "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-22T03:06:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "219a173d_82a4e629",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "b63e18d2daa4a076eab8e76fc02665fd088cd50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "eef08e7f_514b1d5c",
         "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
         "patchSetId": 17
@@ -71,6 +136,30 @@
     },
     {
       "key": {
+        "uuid": "7ea4edc8_ec2ab069",
+        "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-22T03:06:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "eef08e7f_514b1d5c",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 56
+      },
+      "revId": "b63e18d2daa4a076eab8e76fc02665fd088cd50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "35c72e5a_68d82e97",
         "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
         "patchSetId": 17
@@ -91,6 +180,30 @@
       "revId": "b63e18d2daa4a076eab8e76fc02665fd088cd50f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "39353e73_81df9280",
+        "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
+        "patchSetId": 17
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-22T03:06:35Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "35c72e5a_68d82e97",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 116,
+        "endChar": 1
+      },
+      "revId": "b63e18d2daa4a076eab8e76fc02665fd088cd50f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
