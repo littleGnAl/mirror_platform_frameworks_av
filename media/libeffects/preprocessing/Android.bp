@@ -1,6 +1,6 @@
 // audio preprocessing wrapper
 cc_library_shared {
-    name: "libaudiopreprocessing",
+    name: "libaudiopreprocessing_legacy",
 
     vendor: true,
 
@@ -17,12 +17,45 @@ cc_library_shared {
 
     cflags: [
         "-DWEBRTC_POSIX",
+        "-DWEBRTC_LEGACY",
         "-fvisibility=hidden",
         "-Wall",
         "-Werror",
     ],
 
     header_libs: [
+        "libaudioeffects",
+        "libhardware_headers",
+    ],
+}
+
+cc_library_shared {
+    name: "libaudiopreprocessing",
+
+    vendor: true,
+
+    relative_install_path: "soundfx",
+
+    srcs: ["PreProcessing.cpp"],
+
+    local_include_dirs: [
+        ".",
+    ],
+    cflags: [
+        "-Wno-unused-parameter",
+    ],
+
+    shared_libs: [
+        "libutils",
+        "liblog",
+    ],
+
+    static_libs: [
+        "webrtc_audio_processing",
+    ],
+
+    header_libs: [
+        "libwebrtc_absl_headers",
         "libaudioeffects",
         "libhardware_headers",
     ],
