@@ -1,6 +1,6 @@
 // audio preprocessing unit test
 cc_test {
-    name: "AudioPreProcessingTest",
+    name: "AudioPreProcessingLegacyTest",
 
     vendor: true,
 
@@ -9,7 +9,7 @@ cc_test {
     srcs: ["PreProcessingTest.cpp"],
 
     shared_libs: [
-        "libaudiopreprocessing",
+        "libaudiopreprocessing_legacy",
         "libaudioutils",
         "liblog",
         "libutils",
@@ -24,6 +24,56 @@ cc_test {
     ],
 
     header_libs: [
+        "libaudioeffects",
+        "libhardware_headers",
+    ],
+}
+
+cc_test {
+    name: "AudioPreProcessingTest",
+
+    vendor: true,
+
+    relative_install_path: "soundfx",
+
+    srcs: ["PreProcessingTest.cpp"],
+
+    cflags: [
+        "-Werror",
+        "-Wall",
+        "-fvisibility=hidden",
+        "-Wno-unused-parameter",
+        "-Wno-missing-field-initializers",
+        "-DUSE_UDEV",
+        "-DUSE_AURA=1",
+        "-DUSE_GLIB=1",
+        "-DUSE_NSS_CERTS=1",
+        "-DUSE_X11=1",
+        "-D_FILE_OFFSET_BITS=64",
+        "-D_LARGEFILE_SOURCE",
+        "-D_LARGEFILE64_SOURCE",
+        "-D_GNU_SOURCE",
+        "-DWEBRTC_ENABLE_PROTOBUF=0",
+        "-DWEBRTC_INCLUDE_INTERNAL_AUDIO_DEVICE",
+        "-DRTC_ENABLE_VP9",
+        "-DHAVE_SCTP",
+        "-DWEBRTC_LIBRARY_IMPL",
+        "-DWEBRTC_NON_STATIC_TRACE_EVENT_HANDLERS=1",
+        "-DWEBRTC_POSIX",
+        "-DWEBRTC_LINUX",
+    ],
+
+    shared_libs: [
+        "libaudiopreprocessing",
+        "libaudioutils",
+        "liblog",
+        "libutils",
+    ],
+    static_libs: [
+        "webrtc_audio_processing",
+    ],
+    header_libs: [
+        "libabsl_headers",
         "libaudioeffects",
         "libhardware_headers",
     ],
