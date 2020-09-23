@@ -2,6 +2,115 @@
   "comments": [
     {
       "key": {
+        "uuid": "03f16669_e95cd070",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1768393
+      },
+      "writtenOn": "2020-09-23T07:00:24Z",
+      "side": 1,
+      "message": "0x000001 to make 3 bytes? Actually other instances also seem off. This should be 0x00000001 when talking about 4 bytes and 0x000001 when talking about 3.",
+      "range": {
+        "startLine": 7,
+        "startChar": 23,
+        "endLine": 7,
+        "endChar": 29
+      },
+      "revId": "9f9b264d0f69465edfa934a786022b59cafd5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c97f49b_cd6add43",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1768393
+      },
+      "writtenOn": "2020-09-23T07:00:24Z",
+      "side": 1,
+      "message": "s/Havc/AVC?",
+      "range": {
+        "startLine": 7,
+        "startChar": 55,
+        "endLine": 7,
+        "endChar": 59
+      },
+      "revId": "9f9b264d0f69465edfa934a786022b59cafd5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e2c04f87_6fb66afc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1768393
+      },
+      "writtenOn": "2020-09-23T07:00:24Z",
+      "side": 1,
+      "message": "s/begging/beginning",
+      "range": {
+        "startLine": 7,
+        "startChar": 44,
+        "endLine": 7,
+        "endChar": 51
+      },
+      "revId": "9f9b264d0f69465edfa934a786022b59cafd5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "15dd86ea_1b19a5d2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1768393
+      },
+      "writtenOn": "2020-09-23T07:00:24Z",
+      "side": 1,
+      "message": "HEVC should be in capitals.",
+      "range": {
+        "startLine": 7,
+        "startChar": 64,
+        "endLine": 7,
+        "endChar": 68
+      },
+      "revId": "9f9b264d0f69465edfa934a786022b59cafd5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "de806fed_8ac03c63",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2988,
+      "author": {
+        "id": 1768393
+      },
+      "writtenOn": "2020-09-23T07:00:24Z",
+      "side": 1,
+      "message": "Shouldn\u0027t we check that bytesLeft \u003e 4 here as well?",
+      "revId": "9f9b264d0f69465edfa934a786022b59cafd5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "9b6b0137_a344d8c6",
         "filename": "media/libstagefright/MPEG4Writer.cpp",
         "patchSetId": 1
@@ -13,6 +122,41 @@
       "writtenOn": "2020-09-21T17:49:58Z",
       "side": 1,
       "message": "Hiroh, do we need to support 3 and 4 byte start codes here and below?",
+      "revId": "9f9b264d0f69465edfa934a786022b59cafd5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1ba4270e_74ed90d0",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2994,
+      "author": {
+        "id": 1768393
+      },
+      "writtenOn": "2020-09-23T07:00:24Z",
+      "side": 1,
+      "message": "We probably should. IIUC spec-wise 4 byte start codes are mandatory only in some special circumstances, but are valid everywhere. So maybe lines 2988..2991 should be moved somewhere inside the loop to make sure we skip the 4th byte on every iteration if needed?",
+      "parentUuid": "9b6b0137_a344d8c6",
+      "revId": "9f9b264d0f69465edfa934a786022b59cafd5b85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5598142d_c2aab587",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3158,
+      "author": {
+        "id": 1768393
+      },
+      "writtenOn": "2020-09-23T07:00:24Z",
+      "side": 1,
+      "message": "Similarly we should probably do that check on every iteration.",
       "revId": "9f9b264d0f69465edfa934a786022b59cafd5b85",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
