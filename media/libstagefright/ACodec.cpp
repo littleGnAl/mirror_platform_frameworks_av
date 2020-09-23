@@ -555,6 +555,7 @@ ACodec::ACodec()
       mShutdownInProgress(false),
       mExplicitShutdown(false),
       mIsLegacyVP9Decoder(false),
+      mIsLowLatency(false),
       mEncoderDelay(0),
       mEncoderPadding(0),
       mRotationDegrees(0),
@@ -2409,6 +2410,7 @@ status_t ACodec::setLowLatency(int32_t lowLatency) {
     if (err != OK) {
         ALOGE("decoder can not set low-latency to %d (err %d)", lowLatency, err);
     }
+    mIsLowLatency = (lowLatency && err == OK);
     return err;
 }
 
@@ -5823,6 +5825,11 @@ bool ACodec::BaseState::onMessageReceived(const sp<AMessage> &msg) {
             break;
         }
 
+        case kWhatSubmitExtraOutputMetadataBuffer: {
+            // Ignore if not in executing state
+            break;
+        }
+
         default:
             return false;
     }
@@ -6179,7 +6186,12 @@ void ACodec::BaseState::onInputBufferFilled(const sp<AMessage> &msg) {
                             (outputMode == FREE_BUFFERS ? "FREE" :
                              outputMode == KEEP_BUFFERS ? "KEEP" : "RESUBMIT"));
                     if (outputMode == RESUBMIT_BUFFERS) {
-                        mCodec->submitOutputMetadataBuffer();
+                        status_t err = mCodec->submitOutputMetadataBuffer();
+                        if (mCodec->mIsLowLatency
+                                && err == OK
+                                && mCodec->mMetadataBuffersToSubmit > 0) {
+                            (new AMessage(kWhatSubmitExtraOutputMetadataBuffer, mCodec))->post();
+                        }
                     }
                 }
                 info->checkReadFence("onInputBufferFilled");
@@ -7325,6 +7337,9 @@ void ACodec::ExecutingState::submitOutputMetaBuffers() {
                 break;
         }
     }
+    if (mCodec->mIsLowLatency) {
+        (new AMessage(kWhatSubmitExtraOutputMetadataBuffer, mCodec))->post();
+    }
 
     // *** NOTE: THE FOLLOWING WORKAROUND WILL BE REMOVED ***
     mCodec->signalSubmitOutputMetadataBufferIfEOS_workaround();
@@ -7498,6 +7513,21 @@ bool ACodec::ExecutingState::onMessageReceived(const sp<AMessage> &msg) {
         case ACodec::kWhatSignalEndOfInputStream:
         {
             mCodec->onSignalEndOfInputStream();
+            handled = true;
+            break;
+        }
+
+        case kWhatSubmitExtraOutputMetadataBuffer: {
+            if (mCodec->mIsLowLatency) {
+                // Decoders often need more than one output buffer to be
+                // submitted before processing a single input buffer.
+                // In case of low latency codecs, we don't want to wait for
+                // more input to be queued to get those output buffers submitted.
+                if (mCodec->submitOutputMetadataBuffer() == OK
+                        && mCodec->mMetadataBuffersToSubmit > 0) {
+                    (new AMessage(kWhatSubmitExtraOutputMetadataBuffer, mCodec))->post();
+                }
+            }
             handled = true;
             break;
         }
