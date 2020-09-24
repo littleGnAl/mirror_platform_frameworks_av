@@ -1448,13 +1448,14 @@ status_t AudioPolicyService::listAudioProductStrategies(AudioProductStrategyVect
 }
 
 status_t AudioPolicyService::getProductStrategyFromAudioAttributes(
-        const AudioAttributes &aa, product_strategy_t &productStrategy)
+        const AudioAttributes &aa, product_strategy_t &productStrategy, bool fallbackOnDefault)
 {
     if (mAudioPolicyManager == NULL) {
         return NO_INIT;
     }
     Mutex::Autolock _l(mLock);
-    return mAudioPolicyManager->getProductStrategyFromAudioAttributes(aa, productStrategy);
+    return mAudioPolicyManager->getProductStrategyFromAudioAttributes(
+                aa, productStrategy, fallbackOnDefault);
 }
 
 status_t AudioPolicyService::listAudioVolumeGroups(AudioVolumeGroupVector &groups)
@@ -1466,14 +1467,15 @@ status_t AudioPolicyService::listAudioVolumeGroups(AudioVolumeGroupVector &group
     return mAudioPolicyManager->listAudioVolumeGroups(groups);
 }
 
-status_t AudioPolicyService::getVolumeGroupFromAudioAttributes(const AudioAttributes &aa,
-                                                               volume_group_t &volumeGroup)
+status_t AudioPolicyService::getVolumeGroupFromAudioAttributes(
+        const AudioAttributes &aa, volume_group_t &volumeGroup, bool fallbackOnDefault)
 {
     if (mAudioPolicyManager == NULL) {
         return NO_INIT;
     }
     Mutex::Autolock _l(mLock);
-    return mAudioPolicyManager->getVolumeGroupFromAudioAttributes(aa, volumeGroup);
+    return mAudioPolicyManager->getVolumeGroupFromAudioAttributes(
+                aa, volumeGroup, fallbackOnDefault);
 }
 
 status_t AudioPolicyService::setRttEnabled(bool enabled)
