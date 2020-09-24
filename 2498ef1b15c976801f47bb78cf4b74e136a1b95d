@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "4fa474b7_fa425470",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-09-24T21:11:23Z",
+      "side": 1,
+      "message": "I agree that there is some duplication, but this will provide a path for deprecating ion support.\n\nIs there are difference in how buffers are mmapped/unmapped in ion vs dmabuf?",
+      "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "bf07dedb_00833af9",
         "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
         "patchSetId": 18
