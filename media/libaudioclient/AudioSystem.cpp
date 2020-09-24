@@ -167,41 +167,49 @@ status_t AudioSystem::getMasterMute(bool* mute)
     return NO_ERROR;
 }
 
-status_t AudioSystem::setStreamVolume(audio_stream_type_t stream, float value,
+status_t AudioSystem::setPortsVolume(const std::vector<audio_port_handle_t> &ports, float value,
         audio_io_handle_t output)
 {
-    if (uint32_t(stream) >= AUDIO_STREAM_CNT) return BAD_VALUE;
+    for (const auto& port : ports) {
+        if (port == AUDIO_PORT_HANDLE_NONE) {
+            return BAD_VALUE;
+        }
+    }
     const sp<IAudioFlinger>& af = AudioSystem::get_audio_flinger();
     if (af == 0) return PERMISSION_DENIED;
-    af->setStreamVolume(stream, value, output);
+    af->setPortsVolume(ports, value, output);
     return NO_ERROR;
 }
 
-status_t AudioSystem::setStreamMute(audio_stream_type_t stream, bool mute)
+status_t AudioSystem::setPortsMute(const std::vector<audio_port_handle_t> &ports, bool mute)
 {
-    if (uint32_t(stream) >= AUDIO_STREAM_CNT) return BAD_VALUE;
+    for (const auto& port : ports) {
+        if (port == AUDIO_PORT_HANDLE_NONE) {
+            return BAD_VALUE;
+        }
+    }
     const sp<IAudioFlinger>& af = AudioSystem::get_audio_flinger();
     if (af == 0) return PERMISSION_DENIED;
-    af->setStreamMute(stream, mute);
+    af->setPortsMute(ports, mute);
     return NO_ERROR;
 }
 
-status_t AudioSystem::getStreamVolume(audio_stream_type_t stream, float* volume,
+status_t AudioSystem::getPortVolume(audio_port_handle_t port, float* volume,
         audio_io_handle_t output)
 {
-    if (uint32_t(stream) >= AUDIO_STREAM_CNT) return BAD_VALUE;
+    if (port == AUDIO_PORT_HANDLE_NONE) return BAD_VALUE;
     const sp<IAudioFlinger>& af = AudioSystem::get_audio_flinger();
     if (af == 0) return PERMISSION_DENIED;
-    *volume = af->streamVolume(stream, output);
+    *volume = af->getPortVolume(port, output);
     return NO_ERROR;
 }
 
-status_t AudioSystem::getStreamMute(audio_stream_type_t stream, bool* mute)
+status_t AudioSystem::getPortMute(audio_port_handle_t port, bool* mute)
 {
-    if (uint32_t(stream) >= AUDIO_STREAM_CNT) return BAD_VALUE;
+    if (port == AUDIO_PORT_HANDLE_NONE) return BAD_VALUE;
     const sp<IAudioFlinger>& af = AudioSystem::get_audio_flinger();
     if (af == 0) return PERMISSION_DENIED;
-    *mute = af->streamMute(stream);
+    *mute = af->getPortMute(port);
     return NO_ERROR;
 }
 
