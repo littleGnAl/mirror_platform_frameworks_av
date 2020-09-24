@@ -329,11 +329,14 @@ public:
             return mEngine->listAudioProductStrategies(strategies);
         }
 
-        virtual status_t getProductStrategyFromAudioAttributes(const AudioAttributes &aa,
-                                                               product_strategy_t &productStrategy)
+        virtual status_t getProductStrategyFromAudioAttributes(
+                const AudioAttributes &aa, product_strategy_t &productStrategy,
+                bool fallbackOnDefault)
         {
-            productStrategy = mEngine->getProductStrategyForAttributes(aa.getAttributes());
-            return productStrategy != PRODUCT_STRATEGY_NONE ? NO_ERROR : BAD_VALUE;
+            productStrategy = mEngine->getProductStrategyForAttributes(
+                    aa.getAttributes(), fallbackOnDefault);
+            return (fallbackOnDefault && productStrategy == PRODUCT_STRATEGY_NONE) ?
+                    BAD_VALUE : NO_ERROR;
         }
 
         virtual status_t listAudioVolumeGroups(AudioVolumeGroupVector &groups)
@@ -341,11 +344,12 @@ public:
             return mEngine->listAudioVolumeGroups(groups);
         }
 
-        virtual status_t getVolumeGroupFromAudioAttributes(const AudioAttributes &aa,
-                                                           volume_group_t &volumeGroup)
+        virtual status_t getVolumeGroupFromAudioAttributes(
+                const AudioAttributes &aa, volume_group_t &volumeGroup, bool fallbackOnDefault)
         {
-            volumeGroup = mEngine->getVolumeGroupForAttributes(aa.getAttributes());
-            return volumeGroup != VOLUME_GROUP_NONE ? NO_ERROR : BAD_VALUE;
+            volumeGroup = mEngine->getVolumeGroupForAttributes(
+                        aa.getAttributes(), fallbackOnDefault);
+            return (fallbackOnDefault && volumeGroup == VOLUME_GROUP_NONE) ? BAD_VALUE : NO_ERROR;
         }
 
         bool isCallScreenModeSupported() override;
@@ -729,9 +733,22 @@ protected:
                     String8(devices.itemAt(0)->address().c_str()) : String8("");
         }
 
-        uint32_t updateCallRouting(const DeviceVector &rxDevices, uint32_t delayMs = 0);
+        status_t updateCallRouting(
+                bool fromCache, uint32_t delayMs = 0, uint32_t *waitMs = nullptr);
+        status_t updateCallRoutingInternal(
+                const DeviceVector &rxDevices, uint32_t delayMs, uint32_t *waitMs);
         sp<AudioPatch> createTelephonyPatch(bool isRx, const sp<DeviceDescriptor> &device,
                                             uint32_t delayMs);
+        /**
+         * @brief selectBestRxSinkDevicesForCall: if the primary module host both Telephony Rx/Tx
+         * devices, and it declares also supporting a HW bridge between the Telephony Rx and the
+         * given sink device for Voice Call audio attributes, select this device in prio.
+         * Otherwise, getNewOutputDevices() is called on the primary output to select sink device.
+         * @param fromCache true to prevent engine reconsidering all product strategies and retrieve
+         * from engine cache.
+         * @return vector of devices, empty if none is found.
+         */
+        DeviceVector selectBestRxSinkDevicesForCall(bool fromCache);
         bool isDeviceOfModule(const sp<DeviceDescriptor>& devDesc, const char *moduleId) const;
 
         status_t startSource(const sp<SwAudioOutputDescriptor>& outputDesc,
