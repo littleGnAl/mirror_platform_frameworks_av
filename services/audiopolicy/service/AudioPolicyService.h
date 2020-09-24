@@ -290,13 +290,14 @@ public:
     virtual bool     isHapticPlaybackSupported();
 
     virtual status_t listAudioProductStrategies(AudioProductStrategyVector &strategies);
-    virtual status_t getProductStrategyFromAudioAttributes(const AudioAttributes &aa,
-                                                           product_strategy_t &productStrategy);
+    virtual status_t getProductStrategyFromAudioAttributes(
+            const AudioAttributes &aa, product_strategy_t &productStrategy,
+            bool fallbackOnDefault);
 
     virtual status_t listAudioVolumeGroups(AudioVolumeGroupVector &groups);
 
-    virtual status_t getVolumeGroupFromAudioAttributes(const AudioAttributes &aa,
-                                                       volume_group_t &volumeGroup);
+    virtual status_t getVolumeGroupFromAudioAttributes(
+            const AudioAttributes &aa, volume_group_t &volumeGroup, bool fallbackOnDefault);
 
     status_t registerSoundTriggerCaptureStateListener(
         const sp<media::ICaptureStateListener>& listener,
