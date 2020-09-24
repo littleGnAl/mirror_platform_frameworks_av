@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "59f58a59_5838f9b0",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-09-24T21:14:52Z",
+      "side": 1,
+      "message": "this probably needs to move to the end to keep binary compatibility. Also we may never be able to answer isValid, but only couldBeValid... (or isInvalid).",
+      "range": {
+        "startLine": 617,
+        "startChar": 17,
+        "endLine": 617,
+        "endChar": 24
+      },
+      "revId": "6670a323b91df3188096a8a75ed8017bd007b2fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
