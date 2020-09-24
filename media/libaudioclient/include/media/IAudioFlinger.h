@@ -385,16 +385,15 @@ public:
     virtual     status_t    setMasterBalance(float balance) = 0;
     virtual     status_t    getMasterBalance(float *balance) const = 0;
 
-    /* set/get stream type state. This will probably be used by
+    /* set/get port(s) volume and mute attribute. This will probably be used by
      * the preference panel, mostly.
      */
-    virtual     status_t    setStreamVolume(audio_stream_type_t stream, float value,
+    virtual status_t setPortsVolume(const std::vector<audio_port_handle_t> &ports,
+                                    float volume,
                                     audio_io_handle_t output) = 0;
-    virtual     status_t    setStreamMute(audio_stream_type_t stream, bool muted) = 0;
-
-    virtual     float       streamVolume(audio_stream_type_t stream,
-                                    audio_io_handle_t output) const = 0;
-    virtual     bool        streamMute(audio_stream_type_t stream) const = 0;
+    virtual status_t setPortsMute(const std::vector<audio_port_handle_t> &ports, bool muted) = 0;
+    virtual float getPortVolume(audio_port_handle_t port, audio_io_handle_t output) const = 0;
+    virtual bool getPortMute(audio_port_handle_t port) const = 0;
 
     // set audio mode
     virtual     status_t    setMode(audio_mode_t mode) = 0;
