@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "979c6aa3_688bc0a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-09-24T20:58:44Z",
+      "side": 1,
+      "message": "This generally looks good other than the indentation that needs to be doubled.",
+      "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "bf07dedb_00833af9",
+        "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-09-24T20:58:44Z",
+      "side": 1,
+      "message": "does this create a conflict with C2AllocatorIon\u0027s version of this struct?",
+      "range": {
+        "startLine": 52,
+        "startChar": 7,
+        "endLine": 52,
+        "endChar": 18
+      },
+      "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1651ba90_48802f5c",
+        "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-09-24T20:58:44Z",
+      "side": 1,
+      "message": "continuation indent is 4 after { or \u003d, and 8 otherwise...",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "748eaabb_2a5f9d74",
+        "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-09-24T20:58:44Z",
+      "side": 1,
+      "message": "technically, this should be something else, like \u0027\\xc2dma\u0027, but I will rework this later anyways.",
+      "range": {
+        "startLine": 80,
+        "startChar": 14,
+        "endLine": 80,
+        "endChar": 25
+      },
+      "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
