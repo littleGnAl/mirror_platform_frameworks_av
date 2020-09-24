@@ -25,6 +25,10 @@ cc_library {
         "libutils",
     ],
 
+    runtime_libs: [
+        "libc2plugin_store",
+    ],
+
     export_include_dirs: [
         "include",
     ],
