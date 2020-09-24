@@ -39,6 +39,30 @@
       "revId": "c7905d1d5657098eac9c4c7989ae6db83d8183c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9392329b_a1fe6e93",
+        "filename": "media/codec2/vndk/C2Buffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-24T21:32:16Z",
+      "side": 1,
+      "message": "Sorry! Didn\u0027t know. Though I think I was following the usage here:\nhttps://android.googlesource.com/platform/frameworks/av/+/master/media/codec2/vndk/C2AllocatorBlob.cpp#100\n\n\nI\u0027ll fix it up though.",
+      "parentUuid": "a8e165ff_dac0eaab",
+      "range": {
+        "startLine": 400,
+        "startChar": 4,
+        "endLine": 400,
+        "endChar": 8
+      },
+      "revId": "c7905d1d5657098eac9c4c7989ae6db83d8183c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
