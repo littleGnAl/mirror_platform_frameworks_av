@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005126283",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1434677?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "e80f5713_bdf3e7f6",
+          "description": "Change to \"media/libstagefright/ACodec.cpp\"",
+          "replacements": [
+            {
+              "path": "media/libstagefright/ACodec.cpp",
+              "range": {
+                "startLine": 7429,
+                "startChar": 26,
+                "endLine": 7429,
+                "endChar": 33
+              },
+              "replacement": "because"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "f4a2e9e0_17e47705",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 7429,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-24T00:30:51Z",
+      "side": 1,
+      "message": "Common typo found: \"becasue\" -- should it be \"because\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 7429,
+        "startChar": 26,
+        "endLine": 7429,
+        "endChar": 33
+      },
+      "revId": "9b0ee0d989eff31d1cff41c1b075049bf1571063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
