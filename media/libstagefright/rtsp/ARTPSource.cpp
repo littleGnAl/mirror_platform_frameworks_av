@@ -381,20 +381,37 @@ void ARTPSource::addTMMBR(const sp<ABuffer> &buffer, int32_t targetBitrate) {
     data[15] = mID & 0xff;
 
     int32_t exp, mantissa;
+    int32_t leftEnd, rightEnd;
 
-    // Round off to the nearest 2^4th
-    ALOGI("UE -> Op Req Rx bitrate : %d ", targetBitrate & 0xfffffff0);
-    for (exp=4 ; exp < 32 ; exp++)
-        if (((targetBitrate >> exp) & 0x01) != 0)
+    // Find the first bit '1' from left & right side of the value.
+    leftEnd = rightEnd = 0;
+    for (exp = 31 ; exp >= 0 ; exp--) {
+        if (targetBitrate & (0x01 << exp)) {
+            leftEnd = exp;
             break;
-    mantissa = targetBitrate >> exp;
+        }
+    }
+    for (exp = 0 ; exp <= 31 ; exp++) {
+        if (targetBitrate & (0x01 << exp)) {
+            rightEnd = exp;
+            break;
+        }
+    }
 
-    data[16] = ((exp << 2) & 0xfc) | ((mantissa & 0x18000) >> 15);
-    data[17] =                        (mantissa & 0x07f80) >> 7;
-    data[18] =                        (mantissa & 0x0007f) << 1;
+    // Mantissa have only 17bit space by RTCP specification.
+    if ((leftEnd - rightEnd) > 16) {
+        rightEnd = leftEnd - 16;
+    }
+    mantissa = targetBitrate >> rightEnd;
+
+    data[16] = ((rightEnd << 2) & 0xfc) | ((mantissa & 0x18000) >> 15);
+    data[17] =                             (mantissa & 0x07f80) >> 7;
+    data[18] =                             (mantissa & 0x0007f) << 1;
     data[19] = 40;              // 40 bytes overhead;
 
     buffer->setRange(buffer->offset(), buffer->size() + (data[3] + 1) * sizeof(int32_t));
+
+    ALOGI("UE -> Op Req Rx bitrate : %d ", mantissa << rightEnd);
 }
 
 int ARTPSource::addNACK(const sp<ABuffer> &buffer) {
