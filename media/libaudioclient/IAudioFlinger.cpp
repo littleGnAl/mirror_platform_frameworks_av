@@ -42,8 +42,8 @@ enum {
     SET_MASTER_MUTE,
     MASTER_VOLUME,
     MASTER_MUTE,
-    SET_STREAM_VOLUME,
-    SET_STREAM_MUTE,
+    SET_PORTS_VOLUME,
+    SET_PORTS_MUTE,
     SET_MODE,
     SET_MIC_MUTE,
     GET_MIC_MUTE,
@@ -273,25 +273,31 @@ public:
         return NO_ERROR;
     }
 
-    virtual status_t setStreamVolume(audio_stream_type_t stream, float value,
-            audio_io_handle_t output)
+    virtual status_t setPortsVolume(
+            const std::vector<audio_port_handle_t> &ports, float volume, audio_io_handle_t output)
     {
         Parcel data, reply;
         data.writeInterfaceToken(IAudioFlinger::getInterfaceDescriptor());
-        data.writeInt32((int32_t) stream);
-        data.writeFloat(value);
-        data.writeInt32((int32_t) output);
-        remote()->transact(SET_STREAM_VOLUME, data, &reply);
+        data.writeUint32(static_cast<uint32_t>(ports.size()));
+        for (const auto& port : ports) {
+            data.writeInt32(static_cast<uint32_t>(port));
+        }
+        data.writeFloat(volume);
+        data.writeInt32(static_cast<int32_t>(output));
+        remote()->transact(SET_PORTS_VOLUME, data, &reply);
         return reply.readInt32();
     }
 
-    virtual status_t setStreamMute(audio_stream_type_t stream, bool muted)
+    virtual status_t setPortsMute(const std::vector<audio_port_handle_t> &ports, bool muted)
     {
         Parcel data, reply;
         data.writeInterfaceToken(IAudioFlinger::getInterfaceDescriptor());
-        data.writeInt32((int32_t) stream);
+        data.writeUint32(static_cast<uint32_t>(ports.size()));
+        for (const auto& port : ports) {
+            data.writeInt32(static_cast<uint32_t>(port));
+        }
         data.writeInt32(muted);
-        remote()->transact(SET_STREAM_MUTE, data, &reply);
+        remote()->transact(SET_PORTS_MUTE, data, &reply);
         return reply.readInt32();
     }
 
@@ -915,8 +921,8 @@ status_t BnAudioFlinger::onTransact(
 {
     // make sure transactions reserved to AudioPolicyManager do not come from other processes
     switch (code) {
-        case SET_STREAM_VOLUME:
-        case SET_STREAM_MUTE:
+        case SET_PORTS_VOLUME:
+        case SET_PORTS_MUTE:
         case OPEN_OUTPUT:
         case OPEN_DUPLICATE_OUTPUT:
         case CLOSE_OUTPUT:
@@ -1112,18 +1118,34 @@ status_t BnAudioFlinger::onTransact(
             }
             return NO_ERROR;
         } break;
-        case SET_STREAM_VOLUME: {
+        case SET_PORTS_VOLUME: {
             CHECK_INTERFACE(IAudioFlinger, data, reply);
-            int stream = data.readInt32();
+            int32_t numPortsReq = data.readInt32();
+            if (numPortsReq > MAX_ITEMS_PER_LIST) {
+                numPortsReq = MAX_ITEMS_PER_LIST;
+            }
+            std::vector<audio_port_handle_t> ports;
+            for (int32_t i = 0; i < numPortsReq; i++) {
+                audio_port_handle_t port = static_cast<audio_port_handle_t>(data.readInt32());
+                ports.push_back(port);
+            }
             float volume = data.readFloat();
-            audio_io_handle_t output = (audio_io_handle_t) data.readInt32();
-            reply->writeInt32( setStreamVolume((audio_stream_type_t) stream, volume, output) );
+            audio_io_handle_t output = static_cast<audio_io_handle_t>(data.readInt32());
+            reply->writeInt32(setPortsVolume(ports, volume, output));
             return NO_ERROR;
         } break;
-        case SET_STREAM_MUTE: {
+        case SET_PORTS_MUTE: {
             CHECK_INTERFACE(IAudioFlinger, data, reply);
-            int stream = data.readInt32();
-            reply->writeInt32( setStreamMute((audio_stream_type_t) stream, data.readInt32()) );
+            int32_t numPortsReq = data.readInt32();
+            if (numPortsReq > MAX_ITEMS_PER_LIST) {
+                numPortsReq = MAX_ITEMS_PER_LIST;
+            }
+            std::vector<audio_port_handle_t> ports;
+            for (int32_t i = 0; i < numPortsReq; i++) {
+                audio_port_handle_t port = static_cast<audio_port_handle_t>(data.readInt32());
+                ports.push_back(port);
+            }
+            reply->writeInt32(setPortsMute(ports, data.readInt32()));
             return NO_ERROR;
         } break;
         case SET_MODE: {
