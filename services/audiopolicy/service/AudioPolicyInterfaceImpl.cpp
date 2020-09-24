@@ -888,7 +888,7 @@ audio_io_handle_t AudioPolicyService::getOutputForEffect(const effect_descriptor
 
 status_t AudioPolicyService::registerEffect(const effect_descriptor_t *desc,
                                 audio_io_handle_t io,
-                                uint32_t strategy,
+                                const audio_attributes_t &attributes,
                                 audio_session_t session,
                                 int id)
 {
@@ -897,7 +897,7 @@ status_t AudioPolicyService::registerEffect(const effect_descriptor_t *desc,
     }
     Mutex::Autolock _l(mLock);
     AutoCallerClear acc;
-    return mAudioPolicyManager->registerEffect(desc, io, strategy, session, id);
+    return mAudioPolicyManager->registerEffect(desc, io, attributes, session, id);
 }
 
 status_t AudioPolicyService::unregisterEffect(int id)
@@ -1443,7 +1443,7 @@ status_t AudioPolicyService::listAudioProductStrategies(AudioProductStrategyVect
     if (mAudioPolicyManager == NULL) {
         return NO_INIT;
     }
-    Mutex::Autolock _l(mLock);
+    // DO NOT LOCK, may be called from AudioFlinger with lock held, reaching deadlock
     return mAudioPolicyManager->listAudioProductStrategies(strategies);
 }
 
@@ -1453,7 +1453,7 @@ status_t AudioPolicyService::getProductStrategyFromAudioAttributes(
     if (mAudioPolicyManager == NULL) {
         return NO_INIT;
     }
-    Mutex::Autolock _l(mLock);
+    // DO NOT LOCK, may be called from AudioFlinger with lock held, reaching deadlock
     return mAudioPolicyManager->getProductStrategyFromAudioAttributes(
                 aa, productStrategy, fallbackOnDefault);
 }

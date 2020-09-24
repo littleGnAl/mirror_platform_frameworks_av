@@ -1070,13 +1070,13 @@ audio_io_handle_t AudioSystem::getOutputForEffect(const effect_descriptor_t *des
 
 status_t AudioSystem::registerEffect(const effect_descriptor_t *desc,
                                 audio_io_handle_t io,
-                                uint32_t strategy,
+                                const audio_attributes_t &attribute,
                                 audio_session_t session,
                                 int id)
 {
     const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
     if (aps == 0) return PERMISSION_DENIED;
-    return aps->registerEffect(desc, io, strategy, session, id);
+    return aps->registerEffect(desc, io, attribute, session, id);
 }
 
 status_t AudioSystem::unregisterEffect(int id)
@@ -1580,6 +1580,18 @@ status_t AudioSystem::getProductStrategyFromAudioAttributes(
     const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
     if (aps == 0) return PERMISSION_DENIED;
     return aps->getProductStrategyFromAudioAttributes(aa, productStrategy, fallbackOnDefault);
+}
+
+bool AudioSystem::followsSameRouting(
+        const audio_attributes_t &lAttr, const audio_attributes_t &rAttr)
+{
+    product_strategy_t lStrategy;
+    product_strategy_t rStrategy;
+    if ((getProductStrategyFromAudioAttributes(AudioAttributes(lAttr), lStrategy) != NO_ERROR) ||
+        (getProductStrategyFromAudioAttributes(AudioAttributes(rAttr), rStrategy) != NO_ERROR)) {
+        return false;
+    }
+    return lStrategy == rStrategy;
 }
 
 status_t AudioSystem::listAudioVolumeGroups(AudioVolumeGroupVector &groups)

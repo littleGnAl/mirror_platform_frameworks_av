@@ -2924,17 +2924,17 @@ void AudioFlinger::closeThreadInternal_l(const sp<RecordThread>& thread)
     closeInputFinish(thread);
 }
 
-status_t AudioFlinger::invalidateStream(audio_stream_type_t stream)
+status_t AudioFlinger::invalidatePorts(const std::vector<audio_port_handle_t> &ports)
 {
     Mutex::Autolock _l(mLock);
-    ALOGV("invalidateStream() stream %d", stream);
+    ALOGV("%s() ports %s", __func__, dumpPorts(ports).c_str());
 
     for (size_t i = 0; i < mPlaybackThreads.size(); i++) {
         PlaybackThread *thread = mPlaybackThreads.valueAt(i).get();
-        thread->invalidateTracks(stream);
+        thread->invalidateTracks(ports);
     }
     for (size_t i = 0; i < mMmapThreads.size(); i++) {
-        mMmapThreads[i]->invalidateTracks(stream);
+        mMmapThreads[i]->invalidateTracks(ports);
     }
     return NO_ERROR;
 }
@@ -3753,7 +3753,7 @@ status_t AudioFlinger::moveEffectChain_l(audio_session_t sessionId,
     // transfer all effects one by one so that new effect chain is created on new thread with
     // correct buffer sizes and audio parameters and effect engines reconfigured accordingly
     sp<EffectChain> dstChain;
-    uint32_t strategy = 0; // prevent compiler warning
+    audio_attributes_t attributes = {}; // prevent compiler warning
     sp<EffectModule> effect = chain->getEffectFromId_l(0);
     Vector< sp<EffectModule> > removed;
     status_t status = NO_ERROR;
@@ -3778,7 +3778,7 @@ status_t AudioFlinger::moveEffectChain_l(audio_session_t sessionId,
                 status = NO_INIT;
                 break;
             }
-            strategy = dstChain->strategy();
+            attributes = dstChain->attributes();
         }
         effect = chain->getEffectFromId_l(0);
     }
@@ -3868,7 +3868,8 @@ void AudioFlinger::onNonOffloadableGlobalEffectEnable()
     for (size_t i = 0; i < mPlaybackThreads.size(); i++) {
         sp<PlaybackThread> t = mPlaybackThreads.valueAt(i);
         if (t->mType == ThreadBase::OFFLOAD) {
-            t->invalidateTracks(AUDIO_STREAM_MUSIC);
+            PlaybackThread *pt = static_cast<PlaybackThread *>(t.get());
+            pt->invalidateMediaTracks();
         }
     }
 
