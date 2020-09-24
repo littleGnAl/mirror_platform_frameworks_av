@@ -1332,72 +1332,51 @@ bool AudioFlinger::masterMute_l() const
     return mMasterMute;
 }
 
-status_t AudioFlinger::checkStreamType(audio_stream_type_t stream) const
-{
-    if (uint32_t(stream) >= AUDIO_STREAM_CNT) {
-        ALOGW("checkStreamType() invalid stream %d", stream);
-        return BAD_VALUE;
-    }
-    const uid_t callerUid = IPCThreadState::self()->getCallingUid();
-    if (uint32_t(stream) >= AUDIO_STREAM_PUBLIC_CNT && !isAudioServerUid(callerUid)) {
-        ALOGW("checkStreamType() uid %d cannot use internal stream type %d", callerUid, stream);
-        return PERMISSION_DENIED;
-    }
-
-    return NO_ERROR;
-}
-
-status_t AudioFlinger::setStreamVolume(audio_stream_type_t stream, float value,
-        audio_io_handle_t output)
+status_t AudioFlinger::setPortsVolume(
+        const std::vector<audio_port_handle_t> &ports, float value, audio_io_handle_t output)
 {
     // check calling permissions
     if (!settingsAllowed()) {
         return PERMISSION_DENIED;
     }
-
-    status_t status = checkStreamType(stream);
-    if (status != NO_ERROR) {
-        return status;
+    for (const auto& port : ports) {
+        if (port == AUDIO_PORT_HANDLE_NONE) {
+            return BAD_VALUE;
+        }
     }
     if (output == AUDIO_IO_HANDLE_NONE) {
         return BAD_VALUE;
     }
-    LOG_ALWAYS_FATAL_IF(stream == AUDIO_STREAM_PATCH && value != 1.0f,
-                        "AUDIO_STREAM_PATCH must have full scale volume");
-
     AutoMutex lock(mLock);
-    VolumeInterface *volumeInterface = getVolumeInterface_l(output);
-    if (volumeInterface == NULL) {
-        return BAD_VALUE;
+    for (const auto& port : ports) {
+        VolumePortInterface *volumePortInterface = getVolumePortInterface_l(output, port);
+        if (volumePortInterface == nullptr) {
+            return BAD_VALUE;
+        }
+        volumePortInterface->setPortVolume(value);
     }
-    volumeInterface->setStreamVolume(stream, value);
-
     return NO_ERROR;
 }
 
-status_t AudioFlinger::setStreamMute(audio_stream_type_t stream, bool muted)
+status_t AudioFlinger::setPortsMute(
+        const std::vector<audio_port_handle_t> &ports, bool muted)
 {
     // check calling permissions
     if (!settingsAllowed()) {
         return PERMISSION_DENIED;
     }
-
-    status_t status = checkStreamType(stream);
-    if (status != NO_ERROR) {
-        return status;
+    for (const auto& port : ports) {
+        if (port == AUDIO_PORT_HANDLE_NONE) {
+            return BAD_VALUE;
+        }
     }
-    ALOG_ASSERT(stream != AUDIO_STREAM_PATCH, "attempt to mute AUDIO_STREAM_PATCH");
-
-    if (uint32_t(stream) == AUDIO_STREAM_ENFORCED_AUDIBLE) {
-        ALOGE("setStreamMute() invalid stream %d", stream);
-        return BAD_VALUE;
-    }
-
     AutoMutex lock(mLock);
-    mStreamTypes[stream].mute = muted;
-    Vector<VolumeInterface *> volumeInterfaces = getAllVolumeInterfaces_l();
-    for (size_t i = 0; i < volumeInterfaces.size(); i++) {
-        volumeInterfaces[i]->setStreamMute(stream, muted);
+    for (const auto& port : ports) {
+        VolumePortInterface *volumePortInterface = getVolumePortInterface_l(port);
+        if (volumePortInterface == nullptr) {
+            continue;
+        }
+        volumePortInterface->setPortMute(muted);
     }
 
     return NO_ERROR;
@@ -3188,20 +3167,45 @@ AudioFlinger::MmapThread *AudioFlinger::checkMmapThread_l(audio_io_handle_t io) 
 
 
 // checkPlaybackThread_l() must be called with AudioFlinger::mLock held
-AudioFlinger::VolumeInterface *AudioFlinger::getVolumeInterface_l(audio_io_handle_t output) const
+AudioFlinger::VolumePortInterface *AudioFlinger::getVolumePortInterface_l(
+        audio_io_handle_t output, audio_port_handle_t port) const
 {
-    VolumeInterface *volumeInterface = mPlaybackThreads.valueFor(output).get();
-    if (volumeInterface == nullptr) {
-        MmapThread *mmapThread = mMmapThreads.valueFor(output).get();
-        if (mmapThread != nullptr) {
-            if (mmapThread->isOutput()) {
-                MmapPlaybackThread *mmapPlaybackThread =
-                        static_cast<MmapPlaybackThread *>(mmapThread);
-                volumeInterface = mmapPlaybackThread;
+    PlaybackThread *thread = checkPlaybackThread_l(output);
+    if (thread != nullptr) {
+        return thread->getVolumePortInterface(port);
+    }
+    MmapThread *mmapThread = mMmapThreads.valueFor(output).get();
+    if (mmapThread != nullptr) {
+        if (mmapThread->isOutput()) {
+            MmapPlaybackThread *mmapPlaybackThread =
+                    static_cast<MmapPlaybackThread *>(mmapThread);
+            return static_cast<VolumePortInterface *>(mmapPlaybackThread);
+        }
+    }
+    return nullptr;
+}
+
+// checkPlaybackThread_l() must be called with AudioFlinger::mLock held
+AudioFlinger::VolumePortInterface *AudioFlinger::getVolumePortInterface_l(
+        audio_port_handle_t port) const
+{
+    for (size_t i = 0; i < mPlaybackThreads.size(); i++) {
+        PlaybackThread *thread = mPlaybackThreads.valueAt(i).get();
+        VolumePortInterface *volumePortInterface = thread->getVolumePortInterface(port);
+        if (volumePortInterface != nullptr) {
+            return volumePortInterface;
+        }
+    }
+    for (size_t i = 0; i < mMmapThreads.size(); i++) {
+        if (mMmapThreads.valueAt(i)->isOutput()) {
+            MmapPlaybackThread *mmapPlaybackThread =
+                    static_cast<MmapPlaybackThread *>(mMmapThreads.valueAt(i).get());
+            if (mmapPlaybackThread->portId() == port) {
+                return mmapPlaybackThread;
             }
         }
     }
-    return volumeInterface;
+    return nullptr;
 }
 
 Vector <AudioFlinger::VolumeInterface *> AudioFlinger::getAllVolumeInterfaces_l() const
