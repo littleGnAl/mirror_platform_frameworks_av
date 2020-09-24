@@ -1270,8 +1270,8 @@ public:
         return NO_ERROR;
     }
 
-    virtual status_t getProductStrategyFromAudioAttributes(const AudioAttributes &aa,
-                                                           product_strategy_t &productStrategy)
+    virtual status_t getProductStrategyFromAudioAttributes(
+            const AudioAttributes &aa, product_strategy_t &productStrategy, bool fallbackOnDefault)
     {
         Parcel data, reply;
         data.writeInterfaceToken(IAudioPolicyService::getInterfaceDescriptor());
@@ -1279,6 +1279,7 @@ public:
         if (status != NO_ERROR) {
             return status;
         }
+        data.writeBool(fallbackOnDefault);
         status = remote()->transact(GET_STRATEGY_FOR_ATTRIBUTES, data, &reply);
         if (status != NO_ERROR) {
             return status;
@@ -1318,8 +1319,8 @@ public:
         return NO_ERROR;
     }
 
-    virtual status_t getVolumeGroupFromAudioAttributes(const AudioAttributes &aa,
-                                                       volume_group_t &volumeGroup)
+    virtual status_t getVolumeGroupFromAudioAttributes(
+            const AudioAttributes &aa, volume_group_t &volumeGroup, bool fallbackOnDefault)
     {
         Parcel data, reply;
         data.writeInterfaceToken(IAudioPolicyService::getInterfaceDescriptor());
@@ -1327,6 +1328,7 @@ public:
         if (status != NO_ERROR) {
             return status;
         }
+        data.writeBool(fallbackOnDefault);
         status = remote()->transact(GET_VOLUME_GROUP_FOR_ATTRIBUTES, data, &reply);
         if (status != NO_ERROR) {
             return status;
@@ -2608,12 +2610,13 @@ status_t BnAudioPolicyService::onTransact(
             if (status != NO_ERROR) {
                 return status;
             }
+            bool fallbackOnDefault = data.readBool();
             product_strategy_t strategy;
-            status = getProductStrategyFromAudioAttributes(attributes, strategy);
-            reply->writeInt32(status);
+            status = getProductStrategyFromAudioAttributes(attributes, strategy, fallbackOnDefault);
             if (status != NO_ERROR) {
                 return NO_ERROR;
             }
+            reply->writeInt32(status);
             reply->writeUint32(static_cast<int>(strategy));
             return NO_ERROR;
         }
@@ -2653,9 +2656,9 @@ status_t BnAudioPolicyService::onTransact(
             if (status != NO_ERROR) {
                 return status;
             }
-
+            bool fallbackOnDefault = data.readBool();
             volume_group_t group;
-            status = getVolumeGroupFromAudioAttributes(attributes, group);
+            status = getVolumeGroupFromAudioAttributes(attributes, group, fallbackOnDefault);
             if (status != NO_ERROR) {
                 return NO_ERROR;
             }
