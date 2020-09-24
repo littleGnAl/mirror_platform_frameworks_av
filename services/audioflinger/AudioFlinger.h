@@ -48,6 +48,7 @@
 #include <media/AudioTrack.h>
 #include <media/MmapStreamInterface.h>
 #include <media/MmapStreamCallback.h>
+#include <media/TypeConverter.h>
 
 #include <utils/Errors.h>
 #include <utils/threads.h>
@@ -157,9 +158,11 @@ public:
                 status_t    setMasterBalance(float balance) override;
                 status_t    getMasterBalance(float *balance) const override;
 
-    virtual     status_t    setStreamVolume(audio_stream_type_t stream, float value,
-                                            audio_io_handle_t output);
-    virtual     status_t    setStreamMute(audio_stream_type_t stream, bool muted);
+                status_t setPortsVolume(const std::vector<audio_port_handle_t> &ports,
+                                        float volume,
+                                        audio_io_handle_t output) override;
+                status_t setPortsMute(const std::vector<audio_port_handle_t> &ports,
+                                      bool muted) override;
 
     virtual     status_t    setMode(audio_mode_t mode);
 
@@ -564,17 +567,6 @@ private:
     struct TeePatch;
     using TeePatches = std::vector<TeePatch>;
 
-
-    struct  stream_type_t {
-        stream_type_t()
-            :   volume(1.0f),
-                mute(false)
-        {
-        }
-        float       volume;
-        bool        mute;
-    };
-
     // Abstraction for the Audio Source for the RecordThread (HAL or PassthruPatchRecord).
     struct Source
     {
@@ -703,7 +695,9 @@ using effect_buffer_t = int16_t;
               MixerThread *checkMixerThread_l(audio_io_handle_t output) const;
               RecordThread *checkRecordThread_l(audio_io_handle_t input) const;
               MmapThread *checkMmapThread_l(audio_io_handle_t io) const;
-              VolumeInterface *getVolumeInterface_l(audio_io_handle_t output) const;
+              VolumePortInterface *getVolumePortInterface_l(
+                      audio_io_handle_t output, audio_port_handle_t port) const;
+              VolumePortInterface *getVolumePortInterface_l(audio_port_handle_t port) const;
               Vector <VolumeInterface *> getAllVolumeInterfaces_l() const;
 
               sp<ThreadBase> openInput_l(audio_module_handle_t module,
@@ -725,9 +719,6 @@ using effect_buffer_t = int16_t;
               void closeOutputFinish(const sp<PlaybackThread>& thread);
               void closeInputFinish(const sp<RecordThread>& thread);
 
-              // no range check, AudioFlinger::mLock held
-              bool streamMute_l(audio_stream_type_t stream) const
-                                { return mStreamTypes[stream].mute; }
               void ioConfigChanged(audio_io_config_event event,
                                    const sp<AudioIoDescriptor>& ioDesc,
                                    pid_t pid = 0);
@@ -881,7 +872,6 @@ using effect_buffer_t = int16_t;
 
 
                 DefaultKeyedVector< audio_io_handle_t, sp<PlaybackThread> >  mPlaybackThreads;
-                stream_type_t                       mStreamTypes[AUDIO_STREAM_CNT];
 
                 // member variables below are protected by mLock
                 float                               mMasterVolume;
@@ -932,8 +922,6 @@ private:
     void        closeThreadInternal_l(const sp<RecordThread>& thread);
     void        setAudioHwSyncForSession_l(PlaybackThread *thread, audio_session_t sessionId);
 
-    status_t    checkStreamType(audio_stream_type_t stream) const;
-
     void        filterReservedParameters(String8& keyValuePairs, uid_t callingUid);
     void        logFilteredParameters(size_t originalKVPSize, const String8& originalKVPs,
                                       size_t rejectedKVPSize, const String8& rejectedKVPs,
@@ -945,6 +933,10 @@ public:
     bool    isLowRamDevice() const { return mIsLowRamDevice; }
     size_t getClientSharedHeapSize() const;
 
+    static std::string dumpPorts(const std::vector<audio_port_handle_t> &ports) {
+        return std::accumulate(std::begin(ports), std::end(ports), std::string{},
+                        [] (std::string& ls, int rs) {return ls +=  std::to_string(rs) + " "; });
+    }
 private:
     std::atomic<bool> mIsLowRamDevice;
     bool    mIsDeviceTypeKnown;
