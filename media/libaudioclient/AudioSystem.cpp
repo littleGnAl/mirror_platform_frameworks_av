@@ -1567,12 +1567,12 @@ audio_stream_type_t AudioSystem::attributesToStreamType(const audio_attributes_t
     return AUDIO_STREAM_MUSIC;
 }
 
-status_t AudioSystem::getProductStrategyFromAudioAttributes(const AudioAttributes &aa,
-                                                            product_strategy_t &productStrategy)
+status_t AudioSystem::getProductStrategyFromAudioAttributes(
+        const AudioAttributes &aa, product_strategy_t &productStrategy, bool fallbackOnDefault)
 {
     const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
     if (aps == 0) return PERMISSION_DENIED;
-    return aps->getProductStrategyFromAudioAttributes(aa,productStrategy);
+    return aps->getProductStrategyFromAudioAttributes(aa, productStrategy, fallbackOnDefault);
 }
 
 status_t AudioSystem::listAudioVolumeGroups(AudioVolumeGroupVector &groups)
@@ -1582,12 +1582,12 @@ status_t AudioSystem::listAudioVolumeGroups(AudioVolumeGroupVector &groups)
     return aps->listAudioVolumeGroups(groups);
 }
 
-status_t AudioSystem::getVolumeGroupFromAudioAttributes(const AudioAttributes &aa,
-                                                        volume_group_t &volumeGroup)
+status_t AudioSystem::getVolumeGroupFromAudioAttributes(
+        const AudioAttributes &aa, volume_group_t &volumeGroup, bool fallbackOnDefault)
 {
     const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
     if (aps == 0) return PERMISSION_DENIED;
-    return aps->getVolumeGroupFromAudioAttributes(aa, volumeGroup);
+    return aps->getVolumeGroupFromAudioAttributes(aa, volumeGroup, fallbackOnDefault);
 }
 
 status_t AudioSystem::setRttEnabled(bool enabled)
