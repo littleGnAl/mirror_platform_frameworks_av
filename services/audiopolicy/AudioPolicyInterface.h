@@ -395,7 +395,10 @@ public:
 
     // set a stream volume for a particular output. For the same user setting, a given stream type can have different volumes
     // for each output (destination device) it is attached to.
-    virtual status_t setStreamVolume(audio_stream_type_t stream, float volume, audio_io_handle_t output, int delayMs = 0) = 0;
+    virtual status_t setPortsVolume(const std::vector<audio_port_handle_t> &ports,
+                                    float volume,
+                                    audio_io_handle_t output,
+                                    int delayMs = 0) = 0;
 
     // invalidate a stream type, causing a reroute to an unspecified new output
     virtual status_t invalidateStream(audio_stream_type_t stream) = 0;
