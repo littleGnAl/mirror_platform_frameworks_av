@@ -315,6 +315,10 @@ aaudio_result_t AudioStream::safeRelease() {
 
 void AudioStream::setState(aaudio_stream_state_t state) {
     ALOGD("%s(s#%d) from %d to %d", __func__, getId(), mState, state);
+    if (mState == state) {
+        return;
+    }
+
     // Track transition to DISCONNECTED state.
     if (state == AAUDIO_STREAM_STATE_DISCONNECTED && mState != state) {
         android::mediametrics::LogItem(mMetricsId)
