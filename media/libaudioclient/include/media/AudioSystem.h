@@ -295,7 +295,7 @@ public:
     static audio_io_handle_t getOutputForEffect(const effect_descriptor_t *desc);
     static status_t registerEffect(const effect_descriptor_t *desc,
                                     audio_io_handle_t io,
-                                    uint32_t strategy,
+                                    const audio_attributes_t &attributes,
                                     audio_session_t session,
                                     int id);
     static status_t unregisterEffect(int id);
@@ -406,6 +406,8 @@ public:
     static status_t getProductStrategyFromAudioAttributes(
             const AudioAttributes &aa, product_strategy_t &productStrategy,
             bool fallbackOnDefault = true);
+    static bool followsSameRouting(
+            const audio_attributes_t &lAttr, const audio_attributes_t &rAttr);
 
     static audio_attributes_t streamTypeToAttributes(audio_stream_type_t stream);
     static audio_stream_type_t attributesToStreamType(const audio_attributes_t &attr);

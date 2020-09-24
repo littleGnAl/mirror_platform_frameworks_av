@@ -204,7 +204,7 @@ public:
     virtual audio_io_handle_t getOutputForEffect(const effect_descriptor_t *desc) = 0;
     virtual status_t registerEffect(const effect_descriptor_t *desc,
                                     audio_io_handle_t io,
-                                    uint32_t strategy,
+                                    const audio_attributes_t &attributes,
                                     int session,
                                     int id) = 0;
     virtual status_t unregisterEffect(int id) = 0;
@@ -369,8 +369,13 @@ public:
                                     audio_io_handle_t output,
                                     int delayMs = 0) = 0;
 
-    // invalidate a stream type, causing a reroute to an unspecified new output
-    virtual status_t invalidateStream(audio_stream_type_t stream) = 0;
+    /**
+     * @brief invalidatePorts: it invalidates all the track matching the given ports,
+     * causing a reroute to an unspecified new output
+     * @param ports to be invalidated
+     * @return
+     */
+    virtual status_t invalidatePorts(const std::vector<audio_port_handle_t> &ports) = 0;
 
     // function enabling to send proprietary informations directly from audio policy manager to audio hardware interface.
     virtual void setParameters(audio_io_handle_t ioHandle, const String8& keyValuePairs, int delayMs = 0) = 0;
