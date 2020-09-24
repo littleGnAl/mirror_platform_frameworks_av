@@ -6424,8 +6424,13 @@ status_t AudioPolicyManager::checkAndSetVolume(IVolumeCurves &curves,
                     isSingleDeviceType(deviceTypes, audio_is_bluetooth_out_sco_device))) {
         volumeDb = 0.0f;
     }
-    outputDesc->setVolume(
-            volumeDb, volumeSource, curves.getStreamTypes(), deviceTypes, delayMs, force);
+    // Force VOICE_CALL to track BLUETOOTH_SCO stream volume when bluetooth audio is enabled
+    if (isBtScoVolSrc) {
+        outputDesc->setVolume(volumeDb, callVolSrc, deviceTypes, delayMs, force);
+    }
+    LOG_ALWAYS_FATAL_IF(hasStream(curves.getStreamTypes(), AUDIO_STREAM_PATCH) && volumeDb != 0.0f,
+                        "AUDIO_STREAM_PATCH must have full scale volume");
+    outputDesc->setVolume(volumeDb, volumeSource, deviceTypes, delayMs, force);
 
     if (isVoiceVolSrc || isBtScoVolSrc) {
         float voiceVolume;
