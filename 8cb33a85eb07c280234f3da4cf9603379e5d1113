@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "39e7feff_440bd580",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 421,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2020-09-24T17:47:20Z",
+      "side": 1,
+      "message": "Should this be moved to ACodec or BaseState ? \nThe code in ACodec::BaseState::onInputBufferFilled is doing mCodec-\u003emExecutingState-\u003e to get to this.\n\nIt seems it does\u0027t belong in Executing, if it could be called in base state.",
+      "range": {
+        "startLine": 421,
+        "startChar": 9,
+        "endLine": 421,
+        "endChar": 50
+      },
+      "revId": "8cb33a85eb07c280234f3da4cf9603379e5d1113",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
