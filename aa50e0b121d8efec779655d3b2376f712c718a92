@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "b6d426c4_8901783b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-09-24T21:09:51Z",
+      "side": 1,
+      "message": "typo?",
+      "range": {
+        "startLine": 7,
+        "startChar": 50,
+        "endLine": 7,
+        "endChar": 55
+      },
+      "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "20571268_614a55a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-09-24T21:09:51Z",
+      "side": 1,
+      "message": "thanks",
+      "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "18ddded6_91b246ca",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-09-24T21:09:51Z",
+      "side": 1,
+      "message": "use spaces instead of tabs, use { } always and continuing indent after { is 4 spaces.",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 1
+      },
+      "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1122aeab_71aa9986",
+        "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-09-24T21:09:51Z",
+      "side": 1,
+      "message": "this could move into the .cpp.\n\nAlso, static inline with a static member variable may never be inlined. Not sure though.",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 35
+      },
+      "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "3a9c50f5_02729d74",
+        "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-09-24T21:09:51Z",
+      "side": 1,
+      "message": "will this abort on devices without /dev/ion if sepolicy is not allowing /dev/ion?",
+      "range": {
+        "startLine": 116,
+        "startChar": 24,
+        "endLine": 116,
+        "endChar": 28
+      },
+      "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "919d2377_d79086e7",
+        "filename": "media/codec2/vndk/include/C2PlatformSupport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-09-24T21:09:51Z",
+      "side": 1,
+      "message": "I see. So dmabufheap in all practicality is ion, so perhaps reusing magic \\xc2io\\x00 works.",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
