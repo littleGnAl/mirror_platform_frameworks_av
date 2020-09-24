@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "a474a153_80c4ce56",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-24T22:35:02Z",
+      "side": 1,
+      "message": "Thanks Lajos! I appreciate the review and feedback!\n\nI\u0027ve moved isValid to the end of the declaration in my tree, but will wait for more feedback before reworking it further.",
+      "revId": "6670a323b91df3188096a8a75ed8017bd007b2fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "59f58a59_5838f9b0",
         "filename": "media/codec2/core/include/C2Buffer.h",
         "patchSetId": 2
@@ -13,6 +30,30 @@
       "writtenOn": "2020-09-24T21:14:52Z",
       "side": 1,
       "message": "this probably needs to move to the end to keep binary compatibility. Also we may never be able to answer isValid, but only couldBeValid... (or isInvalid).",
+      "range": {
+        "startLine": 617,
+        "startChar": 17,
+        "endLine": 617,
+        "endChar": 24
+      },
+      "revId": "6670a323b91df3188096a8a75ed8017bd007b2fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a921f4da_5faf8ae2",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-24T22:35:02Z",
+      "side": 1,
+      "message": "So if isValid() isn\u0027t quite right, do you have a preference on what you\u0027d like to see for the the method name instead?\n\nI\u0027m mostly just trying to expose the subclasses isValid method so the logic in C2Buffer.cpp can be simplified (instead of adding more conditionals from the getId()):\n  https://android-review.googlesource.com/c/platform/frameworks/av/+/1432312/2/media/codec2/vndk/C2Buffer.cpp#413\n\nBut if pushing that up to the parent class isn\u0027t right, adding an extra conditional in the C2Buffer.cpp is an alternative.",
+      "parentUuid": "59f58a59_5838f9b0",
       "range": {
         "startLine": 617,
         "startChar": 17,
