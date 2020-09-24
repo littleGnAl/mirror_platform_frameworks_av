@@ -57,7 +57,7 @@ private:
 };
 
 // playback track
-class Track : public TrackBase, public VolumeProvider {
+class Track : public TrackBase, public VolumeProvider, public VolumePortInterface {
 public:
                         Track(  PlaybackThread *thread,
                                 const sp<Client>& client,
@@ -189,6 +189,18 @@ public:
                    mAudioTrackServerProxy->getUnderrunFrames());
        }
     }
+    // VolumePortInterface implementation
+    void setPortVolume(float value) override {
+        mVolume = value;
+        signal();
+    }
+    void setPortMute(bool muted) override {
+        mMuted = muted;
+        signal();
+    }
+    float getPortVolume() const override { return mVolume; }
+    bool isPortMuted() const override { return mMuted; }
+
 protected:
     // for numerous
     friend class PlaybackThread;
@@ -318,6 +330,9 @@ private:
     // If the last track change was notified to the client with readAndClearHasChanged
     std::atomic_flag     mChangeNotified = ATOMIC_FLAG_INIT;
     TeePatches  mTeePatches;
+
+    float mVolume = 1.0f;
+    bool mMuted = false;
 };  // end of Track
 
 

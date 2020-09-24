@@ -124,12 +124,11 @@ status_t AudioPolicyService::AudioPolicyClient::closeInput(audio_io_handle_t inp
     return af->closeInput(input);
 }
 
-status_t AudioPolicyService::AudioPolicyClient::setStreamVolume(audio_stream_type_t stream,
-                     float volume, audio_io_handle_t output,
-                     int delay_ms)
+status_t AudioPolicyService::AudioPolicyClient::setPortsVolume(
+        const std::vector<audio_port_handle_t> &ports, float volume, audio_io_handle_t output,
+        int delayMs)
 {
-    return mAudioPolicyService->setStreamVolume(stream, volume, output,
-                                               delay_ms);
+    return mAudioPolicyService->setPortsVolume(ports, volume, output, delayMs);
 }
 
 status_t AudioPolicyService::AudioPolicyClient::invalidateStream(audio_stream_type_t stream)
