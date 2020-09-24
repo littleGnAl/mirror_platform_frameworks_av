@@ -722,14 +722,21 @@ private:
 class VolumeInterface {
  public:
 
-    virtual ~VolumeInterface() {}
+    virtual ~VolumeInterface() = default;
 
     virtual void        setMasterVolume(float value) = 0;
     virtual void        setMasterMute(bool muted) = 0;
-    virtual void        setStreamVolume(audio_stream_type_t stream, float value) = 0;
-    virtual void        setStreamMute(audio_stream_type_t stream, bool muted) = 0;
-    virtual float       streamVolume(audio_stream_type_t stream) const = 0;
+};
 
+class VolumePortInterface {
+ public:
+
+    virtual ~VolumePortInterface() = default;
+
+    virtual void        setPortVolume(float value) = 0;
+    virtual void        setPortMute(bool muted) = 0;
+    virtual float       getPortVolume() const = 0;
+    virtual bool        isPortMuted() const = 0;
 };
 
 // --- PlaybackThread ---
@@ -839,9 +846,8 @@ public:
     virtual     void        setMasterVolume(float value);
     virtual     void        setMasterBalance(float balance);
     virtual     void        setMasterMute(bool muted);
-    virtual     void        setStreamVolume(audio_stream_type_t stream, float value);
-    virtual     void        setStreamMute(audio_stream_type_t stream, bool muted);
-    virtual     float       streamVolume(audio_stream_type_t stream) const;
+
+                VolumePortInterface *getVolumePortInterface(audio_port_handle_t port) const;
 
                 void        setVolumeForOutput_l(float left, float right) const override;
 
@@ -1133,7 +1139,6 @@ private:
 
     Tracks<Track>                   mTracks;
 
-    stream_type_t                   mStreamTypes[AUDIO_STREAM_CNT];
     AudioStreamOut                  *mOutput;
 
     float                           mMasterVolume;
@@ -1802,6 +1807,8 @@ class MmapThread : public ThreadBase
     status_t stop(audio_port_handle_t handle);
     status_t standby();
 
+    audio_port_handle_t portId() const { return mPortId; }
+
     // RefBase
     virtual     void        onFirstRef();
 
@@ -1876,7 +1883,7 @@ class MmapThread : public ThreadBase
      static     constexpr int32_t       kMaxNoCallbackWarnings = 5;
 };
 
-class MmapPlaybackThread : public MmapThread, public VolumeInterface
+class MmapPlaybackThread : public MmapThread, public VolumeInterface, public VolumePortInterface
 {
 
 public:
@@ -1896,9 +1903,12 @@ public:
                 // VolumeInterface
     virtual     void        setMasterVolume(float value);
     virtual     void        setMasterMute(bool muted);
-    virtual     void        setStreamVolume(audio_stream_type_t stream, float value);
-    virtual     void        setStreamMute(audio_stream_type_t stream, bool muted);
-    virtual     float       streamVolume(audio_stream_type_t stream) const;
+
+                // VolumePortInterface
+                void        setPortVolume(float value) override;
+                void        setPortMute(bool muted) override;
+                bool        isPortMuted() const override;
+                float       getPortVolume() const override;
 
                 void        setMasterMute_l(bool muted) { mMasterMute = muted; }
 
@@ -1917,9 +1927,9 @@ protected:
 
                 audio_stream_type_t         mStreamType;
                 float                       mMasterVolume;
-                float                       mStreamVolume;
+                float                       mPortVolume = 1.0f;
                 bool                        mMasterMute;
-                bool                        mStreamMute;
+                bool                        mPortMute = false;
                 AudioStreamOut*             mOutput;
 };
 

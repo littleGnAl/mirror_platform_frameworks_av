@@ -74,12 +74,11 @@ public:
     static status_t setMasterMute(bool mute);
     static status_t getMasterMute(bool* mute);
 
-    // set stream volume on specified output
-    static status_t setStreamVolume(audio_stream_type_t stream, float value,
-                                    audio_io_handle_t output);
-
-    // mute/unmute stream
-    static status_t setStreamMute(audio_stream_type_t stream, bool mute);
+    // set volume on specified output for the given port(s)
+    static status_t setPortsVolume(
+            const std::vector<audio_port_handle_t> &ports, float value, audio_io_handle_t output);
+    // mute/unmute port(s)
+    static status_t setPortsMute(const std::vector<audio_port_handle_t> &ports, bool mute);
 
     // set audio mode in audio hardware
     static status_t setMode(audio_mode_t mode);
