@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "9bba82b2_6f165a8d",
+        "filename": "media/libeffects/preprocessing/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-09-25T22:35:58Z",
+      "side": 1,
+      "message": "looks redundant as these shouldn\u0027t be needed when compiling PreProcessing.cpp",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 67,
+        "endChar": 6
+      },
+      "revId": "b6dc002d5f78a43b2471fde53b8a62427c82b1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "e4bdcb06_54f66899",
+        "filename": "media/libeffects/preprocessing/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-09-25T22:35:58Z",
+      "side": 1,
+      "message": "seems redundant",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 6
+      },
+      "revId": "b6dc002d5f78a43b2471fde53b8a62427c82b1ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
