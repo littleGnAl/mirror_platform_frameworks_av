@@ -63,6 +63,30 @@
       "revId": "c7905d1d5657098eac9c4c7989ae6db83d8183c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "43de3f0b_f218ee86",
+        "filename": "media/codec2/vndk/C2Buffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2020-09-25T11:47:51Z",
+      "side": 1,
+      "message": "John, I am unsure what you want to achieve.\nIf just removing lambda is the issue, we can just use shared_ptr there and remove lambda.\nIf you are concerning something else, could you elaborate little bit?",
+      "parentUuid": "9392329b_a1fe6e93",
+      "range": {
+        "startLine": 400,
+        "startChar": 4,
+        "endLine": 400,
+        "endChar": 8
+      },
+      "revId": "c7905d1d5657098eac9c4c7989ae6db83d8183c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
