@@ -132,7 +132,8 @@ public:
     sp<HwModule> getModuleFromName(const char *name) const;
 
     sp<HwModule> getModuleForDeviceType(audio_devices_t device,
-                                        audio_format_t encodedFormat) const;
+                                        audio_format_t encodedFormat,
+                                        std::string *tagName = nullptr) const;
 
     sp<HwModule> getModuleForDevice(const sp<DeviceDescriptor> &device,
                                     audio_format_t encodedFormat) const;

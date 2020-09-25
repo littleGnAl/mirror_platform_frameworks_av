@@ -111,6 +111,14 @@ public:
                (!areOutputDevices || devicesSupportEncodedFormats(deviceTypes));
     }
 
+    std::string getTag(const DeviceTypeSet& deviceTypes) const
+    {
+        if (supportsDeviceTypes(deviceTypes)) {
+            return mSupportedDevices.getDevicesFromTypes(deviceTypes).itemAt(0)->getTagName();
+        }
+        return {};
+    }
+
     /**
      * @brief supportsDevice
      * @param device to be checked against
@@ -150,6 +158,12 @@ public:
     }
     void removeSupportedDevice(const sp<DeviceDescriptor> &device)
     {
+        ssize_t ret = mSupportedDevices.indexOf(device);
+        if (ret >= 0 && !mSupportedDevices.itemAt(ret)->isDynamic()) {
+            // devices equality checks only type, address, name and format
+            // Prevents from removing non dynamically added devices
+            return;
+        }
         mSupportedDevices.remove(device);
     }
     void setSupportedDevices(const DeviceVector &devices)
