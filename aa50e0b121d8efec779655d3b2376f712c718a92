@@ -65,6 +65,30 @@
     },
     {
       "key": {
+        "uuid": "1fe9ae7f_2637c675",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-25T05:21:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "18ddded6_91b246ca",
+      "range": {
+        "startLine": 114,
+        "startChar": 0,
+        "endLine": 114,
+        "endChar": 1
+      },
+      "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "1122aeab_71aa9986",
         "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
         "patchSetId": 9
@@ -109,6 +133,30 @@
       "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "a8c3d159_14e0f34e",
+        "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-25T05:21:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e910373b_75a3689f",
+      "range": {
+        "startLine": 111,
+        "startChar": 0,
+        "endLine": 111,
+        "endChar": 35
+      },
+      "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
