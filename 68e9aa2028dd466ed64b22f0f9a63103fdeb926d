@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "ed3011ef_ca0b89d3",
+        "filename": "services/audioflinger/PlaybackTracks.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-09-25T15:12:05Z",
+      "side": 1,
+      "message": "required?",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 17
+      },
+      "revId": "68e9aa2028dd466ed64b22f0f9a63103fdeb926d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "150d10ae_91f142ef",
+        "filename": "services/audioflinger/PlaybackTracks.h",
+        "patchSetId": 31
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-09-25T15:12:05Z",
+      "side": 1,
+      "message": "Shall I take thread mLock (AF mLock held already)",
+      "range": {
+        "startLine": 184,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 56
+      },
+      "revId": "68e9aa2028dd466ed64b22f0f9a63103fdeb926d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "776bf657_fd57e42a",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 31
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-09-25T15:12:05Z",
+      "side": 1,
+      "message": "remove suffix",
+      "range": {
+        "startLine": 2449,
+        "startChar": 61,
+        "endLine": 2449,
+        "endChar": 63
+      },
+      "revId": "68e9aa2028dd466ed64b22f0f9a63103fdeb926d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
