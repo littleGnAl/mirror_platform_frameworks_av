@@ -165,6 +165,30 @@
     },
     {
       "key": {
+        "uuid": "b9594e9b_0a1e40e8",
+        "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-25T05:20:48Z",
+      "side": 1,
+      "message": "Reworked with Hridya\u0027s suggested .clang-format file, but limited it to just the new code so I don\u0027t refactor existing code. Happy to use a different rule set if one can be pointed out.",
+      "parentUuid": "0a227a3e_90763019",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "748eaabb_2a5f9d74",
         "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
         "patchSetId": 18
