@@ -42,6 +42,15 @@ public:
 
     virtual const std::string getTagName() const = 0;
 
+    bool operator==(const PolicyAudioPort &right) const
+    {
+        return getTagName() == right.getTagName();
+    }
+    bool operator!=(const PolicyAudioPort &right) const
+    {
+        return !operator==(right);
+    }
+
     virtual sp<AudioPort> asAudioPort() const = 0;
 
     virtual void setFlags(uint32_t flags)

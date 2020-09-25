@@ -111,6 +111,14 @@ public:
                (!areOutputDevices || devicesSupportEncodedFormats(deviceTypes));
     }
 
+    std::string getTag(const DeviceTypeSet& deviceTypes) const
+    {
+        if (supportsDeviceTypes(deviceTypes)) {
+            return mSupportedDevices.getDevicesFromTypes(deviceTypes).itemAt(0)->getTagName();
+        }
+        return {};
+    }
+
     /**
      * @brief supportsDevice
      * @param device to be checked against
