@@ -271,8 +271,9 @@ sp <HwModule> HwModuleCollection::getModuleFromName(const char *name) const
     return nullptr;
 }
 
-sp <HwModule> HwModuleCollection::getModuleForDeviceType(audio_devices_t type,
-                                                         audio_format_t encodedFormat) const
+sp<HwModule> HwModuleCollection::getModuleForDeviceType(audio_devices_t type,
+                                                        audio_format_t encodedFormat,
+                                                        std::string *tagName) const
 {
     for (const auto& module : *this) {
         const auto& profiles = audio_is_output_device(type) ?
@@ -284,9 +285,15 @@ sp <HwModule> HwModuleCollection::getModuleForDeviceType(audio_devices_t type,
                     sp <DeviceDescriptor> deviceDesc =
                             declaredDevices.getDevice(type, String8(), encodedFormat);
                     if (deviceDesc) {
+                        if (tagName != nullptr) {
+                            *tagName = deviceDesc->getTagName();
+                        }
                         return module;
                     }
                 } else {
+                    if (tagName != nullptr) {
+                        *tagName = profile->getTag({type});
+                    }
                     return module;
                 }
             }
@@ -325,8 +332,23 @@ sp<DeviceDescriptor> HwModuleCollection::getDeviceDescriptor(const audio_devices
     }
 
     for (const auto& hwModule : *this) {
+        if (!allowToCreate) {
+            auto dynamicDevices = hwModule->getDynamicDevices();
+            auto dynamicDevice = dynamicDevices.getDevice(deviceType, devAddress, encodedFormat);
+            if (dynamicDevice) {
+                return dynamicDevice;
+            }
+        }
         DeviceVector moduleDevices = hwModule->getAllDevices();
         auto moduleDevice = moduleDevices.getDevice(deviceType, devAddress, encodedFormat);
+
+        // Prevent overwritting moduleDevice address if connected device does not have
+        // and since getDevice with empty address ignore match on address. Use dynamic device.
+        if (moduleDevice && allowToCreate &&
+                (!moduleDevice->address().empty() &&
+                 (moduleDevice->address().compare(devAddress.c_str()) != 0))) {
+            break;
+        }
         if (moduleDevice) {
             if (encodedFormat != AUDIO_FORMAT_DEFAULT) {
                 moduleDevice->setEncodedFormat(encodedFormat);
@@ -334,6 +356,7 @@ sp<DeviceDescriptor> HwModuleCollection::getDeviceDescriptor(const audio_devices
             if (allowToCreate) {
                 moduleDevice->attach(hwModule);
                 moduleDevice->setAddress(devAddress.string());
+                // Name may be overwritten, not a big deal.
                 moduleDevice->setName(name);
             }
             return moduleDevice;
@@ -352,18 +375,19 @@ sp<DeviceDescriptor> HwModuleCollection::createDevice(const audio_devices_t type
                                                       const char *name,
                                                       const audio_format_t encodedFormat) const
 {
-    sp<HwModule> hwModule = getModuleForDeviceType(type, encodedFormat);
+    std::string tagName = {};
+    sp<HwModule> hwModule = getModuleForDeviceType(type, encodedFormat, &tagName);
     if (hwModule == 0) {
         ALOGE("%s: could not find HW module for device %04x address %s", __FUNCTION__, type,
               address);
         return nullptr;
     }
 
-    sp<DeviceDescriptor> device = new DeviceDescriptor(type, name, address);
+    sp<DeviceDescriptor> device = new DeviceDescriptor(type, tagName, address);
     device->setName(name);
     device->setEncodedFormat(encodedFormat);
-
-  // Add the device to the list of dynamic devices
+    device->setDynamic();
+    // Add the device to the list of dynamic devices
     hwModule->addDynamicDevice(device);
     // Reciprocally attach the device to the module
     device->attach(hwModule);
@@ -375,7 +399,7 @@ sp<DeviceDescriptor> HwModuleCollection::createDevice(const audio_devices_t type
     for (const auto &profile : profiles) {
         // Add the device as supported to all profile supporting "weakly" or not the device
         // according to its type
-        if (profile->supportsDevice(device, false /*matchAdress*/)) {
+        if (profile->supportsDevice(device, false /*matchAddress*/)) {
 
             // @todo quid of audio profile? import the profile from device of the same type?
             const auto &isoTypeDeviceForProfile =
@@ -406,10 +430,9 @@ void HwModuleCollection::cleanUpForDevice(const sp<DeviceDescriptor> &device)
 
         device->detach();
         // Only remove from dynamic list, not from declared list!!!
-        if (!hwModule->getDynamicDevices().contains(device)) {
+        if (!hwModule->removeDynamicDevice(device)) {
             return;
         }
-        hwModule->removeDynamicDevice(device);
         ALOGV("%s: removed dynamic device %s from module %s", __FUNCTION__,
               device->toString().c_str(), hwModule->getName());
 
