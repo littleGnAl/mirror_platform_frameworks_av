@@ -87,6 +87,30 @@
       "revId": "c7905d1d5657098eac9c4c7989ae6db83d8183c6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "62f922ad_7d3a4e83",
+        "filename": "media/codec2/vndk/C2Buffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-26T05:42:10Z",
+      "side": 1,
+      "message": "Mostly I\u0027m just trying to make the code a bit easier to extend. Currently it switches between the ION and BLOB allocators, but in this series I\u0027m adding a DMABUFHEAP allocator. There already is similar logic in fetchAllocator() to multiplex these options, so I figured that should be re-used rather then adding complexity to the allocator selection code here.\n\nAs for the lambda, I\u0027m not sure I see the benefit in using the lambda (I learned c++ long long ago, so while I roughly understand it, I don\u0027t have the best handle on why it would be useful here), so my patch removes it, but I\u0027d love to understand the rational for why it was used here over open coding the logic.",
+      "parentUuid": "43de3f0b_f218ee86",
+      "range": {
+        "startLine": 400,
+        "startChar": 4,
+        "endLine": 400,
+        "endChar": 8
+      },
+      "revId": "c7905d1d5657098eac9c4c7989ae6db83d8183c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
