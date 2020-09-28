@@ -628,7 +628,6 @@ AudioFlinger::PlaybackThread::Track::Track(
     mFillingUpStatus(FS_INVALID),
     // mRetryCount initialized later when needed
     mSharedBuffer(sharedBuffer),
-    mStreamType(streamType),
     mMainBuffer(thread->sinkBuffer()),
     mAuxBuffer(NULL),
     mAuxEffectId(0), mHasVolumeController(false),
@@ -760,7 +759,7 @@ void AudioFlinger::PlaybackThread::Track::appendDumpHeader(String8& result)
 {
     result.appendFormat("Type     Id Active Client Session Port Id S  Flags "
                         "  Format Chn mask  SRate "
-                        "ST Usg CT "
+                        "Usg CT "
                         " G db  L dB  R dB  VS dB "
                         "  Server FrmCnt  FrmRdy F Underruns  Flushed"
                         "%s\n",
@@ -846,7 +845,7 @@ void AudioFlinger::PlaybackThread::Track::appendDump(String8& result, bool activ
 
     result.appendFormat("%7s %6u %7u %7u %2s 0x%03X "
                         "%08X %08X %6u "
-                        "%2u %3x %2x "
+                        "%3x %2x "
                         "%5.2g %5.2g %5.2g %5.2g%c "
                         "%08X %6zu%c %6zu %c %9u%c %7u",
             active ? "yes" : "no",
@@ -860,7 +859,6 @@ void AudioFlinger::PlaybackThread::Track::appendDump(String8& result, bool activ
             mChannelMask,
             sampleRate(),
 
-            mStreamType,
             mAttr.usage,
             mAttr.content_type,
 
