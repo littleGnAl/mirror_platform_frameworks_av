@@ -3752,7 +3752,7 @@ status_t AudioFlinger::moveEffectChain_l(audio_session_t sessionId,
     // transfer all effects one by one so that new effect chain is created on new thread with
     // correct buffer sizes and audio parameters and effect engines reconfigured accordingly
     sp<EffectChain> dstChain;
-    uint32_t strategy = 0; // prevent compiler warning
+    audio_attributes_t attributes = {}; // prevent compiler warning
     sp<EffectModule> effect = chain->getEffectFromId_l(0);
     Vector< sp<EffectModule> > removed;
     status_t status = NO_ERROR;
@@ -3777,7 +3777,7 @@ status_t AudioFlinger::moveEffectChain_l(audio_session_t sessionId,
                 status = NO_INIT;
                 break;
             }
-            strategy = dstChain->strategy();
+            attributes = dstChain->attributes();
         }
         effect = chain->getEffectFromId_l(0);
     }
