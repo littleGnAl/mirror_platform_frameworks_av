@@ -403,6 +403,8 @@ public:
     static status_t getProductStrategyFromAudioAttributes(
             const AudioAttributes &aa, product_strategy_t &productStrategy,
             bool fallbackOnDefault = true);
+    static bool followsSameRouting(
+            const audio_attributes_t &lAttr, const audio_attributes_t &rAttr);
 
     static audio_attributes_t streamTypeToAttributes(audio_stream_type_t stream);
     static audio_stream_type_t attributesToStreamType(const audio_attributes_t &attr);
