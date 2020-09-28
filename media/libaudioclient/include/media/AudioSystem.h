@@ -627,6 +627,8 @@ private:
     static audio_channel_mask_t gPrevInChannelMask;
 
     static sp<IAudioPolicyService> gAudioPolicyService;
+
+    static AudioProductStrategyVector gAudioProductStrategies;
 };
 
 };  // namespace android
