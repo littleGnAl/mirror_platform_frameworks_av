@@ -1402,7 +1402,7 @@ sp<AudioFlinger::EffectHandle> AudioFlinger::ThreadBase::createEffect_l(
             ALOGV("createEffect_l() new effect chain for session %d", sessionId);
             chain = new EffectChain(this, sessionId);
             addEffectChain_l(chain);
-            chain->setStrategy(getStrategyForSession_l(sessionId));
+            chain->setAttributes(getAttributesForSession_l(sessionId));
             chainCreated = true;
         } else {
             effect = chain->getEffectFromDesc_l(desc);
@@ -1542,7 +1542,7 @@ status_t AudioFlinger::ThreadBase::addEffect_l(const sp<EffectModule>& effect)
         ALOGV("addEffect_l() new effect chain for session %d", sessionId);
         chain = new EffectChain(this, sessionId);
         addEffectChain_l(chain);
-        chain->setStrategy(getStrategyForSession_l(sessionId));
+        chain->setAttributes(getAttributesForSession_l(sessionId));
         chainCreated = true;
     }
     ALOGV("addEffect_l() %p chain %p effect %p", this, chain.get(), effect.get());
@@ -2362,7 +2362,7 @@ sp<AudioFlinger::PlaybackThread::Track> AudioFlinger::PlaybackThread::createTrac
         if (chain != 0) {
             ALOGV("createTrack_l() setting main buffer %p", chain->inBuffer());
             track->setMainBuffer(chain->inBuffer());
-            chain->setStrategy(AudioSystem::getStrategyForStream(track->streamType()));
+            chain->setAttributes(track->attributes());
             chain->incTrackCnt();
         }
 
@@ -2958,20 +2958,20 @@ status_t AudioFlinger::PlaybackThread::getRenderPosition(uint32_t *halFrames, ui
     }
 }
 
-uint32_t AudioFlinger::PlaybackThread::getStrategyForSession_l(audio_session_t sessionId)
+audio_attributes_t AudioFlinger::PlaybackThread::getAttributesForSession_l(audio_session_t sessionId)
 {
     // session AUDIO_SESSION_OUTPUT_MIX is placed in same strategy as MUSIC stream so that
     // it is moved to correct output by audio policy manager when A2DP is connected or disconnected
     if (sessionId == AUDIO_SESSION_OUTPUT_MIX) {
-        return AudioSystem::getStrategyForStream(AUDIO_STREAM_MUSIC);
+        return attributes_initializer(AUDIO_USAGE_MEDIA);
     }
     for (size_t i = 0; i < mTracks.size(); i++) {
         sp<Track> track = mTracks[i];
         if (sessionId == track->sessionId() && !track->isInvalid()) {
-            return AudioSystem::getStrategyForStream(track->streamType());
+            return track->mAttr;
         }
     }
-    return AudioSystem::getStrategyForStream(AUDIO_STREAM_MUSIC);
+    return attributes_initializer(AUDIO_USAGE_MEDIA);
 }
 
 
@@ -8927,7 +8927,7 @@ status_t AudioFlinger::MmapThread::start(const AudioClient& client,
     mActiveTracks.add(track);
     sp<EffectChain> chain = getEffectChain_l(mSessionId);
     if (chain != 0) {
-        chain->setStrategy(AudioSystem::getStrategyForStream(streamType()));
+        chain->setAttributes(mAttr);
         chain->incTrackCnt();
         chain->incActiveTrackCnt();
     }
