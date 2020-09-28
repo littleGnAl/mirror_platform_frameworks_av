@@ -2899,17 +2899,17 @@ void AudioFlinger::closeThreadInternal_l(const sp<RecordThread>& thread)
     closeInputFinish(thread);
 }
 
-status_t AudioFlinger::invalidateStream(audio_stream_type_t stream)
+status_t AudioFlinger::invalidatePorts(const std::vector<audio_port_handle_t> &ports)
 {
     Mutex::Autolock _l(mLock);
-    ALOGV("invalidateStream() stream %d", stream);
+    ALOGV("%s() ports %s", __func__, dumpPorts(ports).c_str());
 
     for (size_t i = 0; i < mPlaybackThreads.size(); i++) {
         PlaybackThread *thread = mPlaybackThreads.valueAt(i).get();
-        thread->invalidateTracks(stream);
+        thread->invalidateTracks(ports);
     }
     for (size_t i = 0; i < mMmapThreads.size(); i++) {
-        mMmapThreads[i]->invalidateTracks(stream);
+        mMmapThreads[i]->invalidateTracks(ports);
     }
     return NO_ERROR;
 }
@@ -3844,7 +3844,8 @@ void AudioFlinger::onNonOffloadableGlobalEffectEnable()
     for (size_t i = 0; i < mPlaybackThreads.size(); i++) {
         sp<PlaybackThread> t = mPlaybackThreads.valueAt(i);
         if (t->mType == ThreadBase::OFFLOAD) {
-            t->invalidateTracks(AUDIO_STREAM_MUSIC);
+            PlaybackThread *pt = static_cast<PlaybackThread *>(t.get());
+            pt->invalidateMediaTracks();
         }
     }
 
