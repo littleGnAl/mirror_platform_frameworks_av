@@ -95,9 +95,6 @@ public:
 
     virtual uint32_t    sampleRate() const;
 
-            audio_stream_type_t streamType() const {
-                return mStreamType;
-            }
             bool        isOffloaded() const
                                 { return (mFlags & AUDIO_OUTPUT_FLAG_COMPRESS_OFFLOAD) != 0; }
             bool        isDirect() const override
@@ -264,7 +261,6 @@ protected:
     sp<IMemory>         mSharedBuffer;
 
     bool                mResetDone;
-    const audio_stream_type_t mStreamType;
     effect_buffer_t     *mMainBuffer;
 
     int32_t             *mAuxBuffer;
