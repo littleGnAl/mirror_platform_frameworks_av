@@ -536,7 +536,7 @@ public:
 
     virtual status_t registerEffect(const effect_descriptor_t *desc,
                                         audio_io_handle_t io,
-                                        uint32_t strategy,
+                                        const audio_attributes_t &attributes,
                                         audio_session_t session,
                                         int id)
     {
@@ -544,7 +544,7 @@ public:
         data.writeInterfaceToken(IAudioPolicyService::getInterfaceDescriptor());
         data.write(desc, sizeof(effect_descriptor_t));
         data.writeInt32(io);
-        data.writeInt32(strategy);
+        data.write(&attributes, sizeof(audio_attributes_t));
         data.writeInt32(session);
         data.writeInt32(id);
         remote()->transact(REGISTER_EFFECT, data, &reply);
@@ -2058,12 +2058,16 @@ status_t BnAudioPolicyService::onTransact(
                 return status;
             }
             audio_io_handle_t io = data.readInt32();
-            uint32_t strategy = data.readInt32();
+            audio_attributes_t attributes = {};
+            status_t status = data.read(&attributes, sizeof(audio_attributes_t));
+            if (status != NO_ERROR) {
+                return status;
+            }
             audio_session_t session = (audio_session_t) data.readInt32();
             int id = data.readInt32();
             status = AudioSanitizer::sanitizeEffectDescriptor(&desc, "73126106");
             if (status == NO_ERROR) {
-                status = registerEffect(&desc, io, strategy, session, id);
+                status = registerEffect(&desc, io, attributes, session, id);
             }
             reply->writeInt32(static_cast <int32_t>(status));
             return NO_ERROR;
