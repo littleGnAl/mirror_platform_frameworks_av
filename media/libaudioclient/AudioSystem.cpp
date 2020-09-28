@@ -1614,6 +1614,18 @@ status_t AudioSystem::getProductStrategyFromAudioAttributes(
     return productStrategy != PRODUCT_STRATEGY_NONE ? NO_ERROR : BAD_VALUE;
 }
 
+bool AudioSystem::followsSameRouting(
+        const audio_attributes_t &lAttr, const audio_attributes_t &rAttr)
+{
+    product_strategy_t lStrategy;
+    product_strategy_t rStrategy;
+    if ((getProductStrategyFromAudioAttributes(AudioAttributes(lAttr), lStrategy) != NO_ERROR) ||
+        (getProductStrategyFromAudioAttributes(AudioAttributes(rAttr), rStrategy) != NO_ERROR)) {
+        return false;
+    }
+    return lStrategy == rStrategy;
+}
+
 status_t AudioSystem::listAudioVolumeGroups(AudioVolumeGroupVector &groups)
 {
     const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
