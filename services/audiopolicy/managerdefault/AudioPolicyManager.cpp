@@ -357,7 +357,11 @@ status_t AudioPolicyManager::setDeviceConnectionStateInt(const sp<DeviceDescript
             DeviceVector newDevices = getNewOutputDevices(mPrimaryOutput, false /*fromCache*/);
             updateCallRouting(newDevices);
         }
-
+        // Reconnect Audio Source
+        for (const auto &strategy : mEngine->getOrderedProductStrategies()) {
+            auto attributes = mEngine->getAllAttributesForProductStrategy(strategy).front();
+            checkAudioSourceForAttributes(attributes);
+        }
         if (state == AUDIO_POLICY_DEVICE_STATE_UNAVAILABLE) {
             cleanUpForDevice(device);
         }
@@ -4114,9 +4118,10 @@ status_t AudioPolicyManager::connectAudioSource(const sp<SourceClientDescriptor>
             mEngine->getOutputDevicesForAttributes(attributes, nullptr, true);
     ALOG_ASSERT(!sinkDevices.isEmpty(), "connectAudioSource(): no device found for attributes");
     sp<DeviceDescriptor> sinkDevice = sinkDevices.itemAt(0);
-    ALOG_ASSERT(mAvailableOutputDevices.contains(sinkDevice), "%s: Device %s not available",
-                __FUNCTION__, sinkDevice->toString().c_str());
-
+    if (!mAvailableOutputDevices.contains(sinkDevice)) {
+        ALOGE("%s Device %s not available", __func__, sinkDevice->toString().c_str());
+        return INVALID_OPERATION;
+    }
     PatchBuilder patchBuilder;
     patchBuilder.addSink(sinkDevice).addSource(srcDevice);
     audio_patch_handle_t handle = AUDIO_PATCH_HANDLE_NONE;
@@ -4126,7 +4131,7 @@ status_t AudioPolicyManager::connectAudioSource(const sp<SourceClientDescriptor>
         ALOGW("%s patch panel could not connect device patch, error %d", __func__, status);
         return INVALID_OPERATION;
     }
-    sourceDesc->setPatchHandle(handle);
+    sourceDesc->connect(handle, sinkDevice);
     // SW Bridge? (@todo: HW bridge, keep track of HwOutput for device selection "reconsideration")
     sp<SwAudioOutputDescriptor> swOutput = sourceDesc->swOutput().promote();
     if (swOutput != 0) {
@@ -4409,6 +4414,10 @@ bool AudioPolicyManager::isCallScreenModeSupported()
 status_t AudioPolicyManager::disconnectAudioSource(const sp<SourceClientDescriptor>& sourceDesc)
 {
     ALOGV("%s port Id %d", __FUNCTION__, sourceDesc->portId());
+    if (!sourceDesc->isConnected()) {
+        ALOGV("%s port Id %d already disconnected", __FUNCTION__, sourceDesc->portId());
+        return NO_ERROR;
+    }
     sp<SwAudioOutputDescriptor> swOutput = sourceDesc->swOutput().promote();
     if (swOutput != 0) {
         status_t status = stopSource(swOutput, sourceDesc);
@@ -4424,7 +4433,9 @@ status_t AudioPolicyManager::disconnectAudioSource(const sp<SourceClientDescript
             ALOGW("%s source has neither SW nor HW output", __FUNCTION__);
         }
     }
-    return releaseAudioPatchInternal(sourceDesc->getPatchHandle());
+    status_t status = releaseAudioPatchInternal(sourceDesc->getPatchHandle());
+    sourceDesc->disconnect();
+    return status;
 }
 
 sp<SourceClientDescriptor> AudioPolicyManager::getSourceForAttributesOnOutput(
@@ -6323,9 +6334,10 @@ void AudioPolicyManager::cleanUpForDevice(const sp<DeviceDescriptor>& deviceDesc
 {
     for (ssize_t i = (ssize_t)mAudioSources.size() - 1; i >= 0; i--)  {
         sp<SourceClientDescriptor> sourceDesc = mAudioSources.valueAt(i);
-        if (sourceDesc->srcDevice()->equals(deviceDesc)) {
-            ALOGV("%s releasing audio source %d", __FUNCTION__, sourceDesc->portId());
-            stopAudioSource(sourceDesc->portId());
+        if (sourceDesc->isConnected() && (sourceDesc->srcDevice()->equals(deviceDesc) ||
+                                          sourceDesc->sinkDevice()->equals(deviceDesc))
+                && !isCallRxAudioSource(sourceDesc)) {
+            disconnectAudioSource(sourceDesc);
         }
     }
 
@@ -6341,8 +6353,11 @@ void AudioPolicyManager::cleanUpForDevice(const sp<DeviceDescriptor>& deviceDesc
         }
         for (size_t j = 0; j < patchDesc->mPatch.num_sinks && !release; j++)  {
             const struct audio_port_config *sink = &patchDesc->mPatch.sinks[j];
+            String8 address = String8(deviceDesc->address().c_str());
             if (sink->type == AUDIO_PORT_TYPE_DEVICE &&
-                    sink->ext.device.type == deviceDesc->type()) {
+                    sink->ext.device.type == deviceDesc->type() &&
+                    (address.isEmpty() || strncmp(sink->ext.device.address, address.string(),
+                                                  AUDIO_DEVICE_MAX_ADDRESS_LEN) == 0)) {
                 release = true;
             }
         }
