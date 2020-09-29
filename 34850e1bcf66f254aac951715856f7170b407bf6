@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "a680be7a_f1087509",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-09-29T01:44:08Z",
+      "side": 1,
+      "message": "I thought we wanted to use IComponent::configureVideoTunnel() instead of going through Codec 2.0 for tunneled playback.",
+      "revId": "34850e1bcf66f254aac951715856f7170b407bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
