@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "3541b766_3f775f47",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 8256,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2020-09-29T16:16:56Z",
+      "side": 1,
+      "message": "This line should be outside this if-block. The entry should be removed if it\u0027s null or 0-sized. We don\u0027t want to delay-handle that.",
+      "range": {
+        "startLine": 8256,
+        "startChar": 16,
+        "endLine": 8256,
+        "endChar": 82
+      },
+      "revId": "d459682145c4ce85df28b5e93301896cfd2f5ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "5a4ca4dc_0d3f2b79",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 8259,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2020-09-29T16:16:56Z",
+      "side": 1,
+      "message": "Can you add a check here, and only defer it if the message is no empty?\n\nIf (msg-\u003e countEntries() \u003e 0) {\n    mCodec-\u003edeferMessage(msg);\n}",
+      "range": {
+        "startLine": 8259,
+        "startChar": 12,
+        "endLine": 8259,
+        "endChar": 38
+      },
+      "revId": "d459682145c4ce85df28b5e93301896cfd2f5ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
