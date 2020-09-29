@@ -1,0 +1,1376 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241811",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [
+        {
+          "fixId": "93b1da2d_f4d33d32",
+          "description": "Change to \"services/audiopolicy/functionaltests/AudioVolumeGroupTest.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/AudioVolumeGroupTest.cpp",
+              "range": {
+                "startLine": 81,
+                "startChar": 28,
+                "endLine": 81,
+                "endChar": 34
+              },
+              "replacement": "Unknown"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "f7306f40_713a328a",
+        "filename": "services/audiopolicy/functionaltests/AudioVolumeGroupTest.cpp",
+        "patchSetId": 52
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Common typo found: \"Unkown\" -- should it be \"Unknown\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 81,
+        "startChar": 28,
+        "endLine": 81,
+        "endChar": 34
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241811",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [
+        {
+          "fixId": "d2c15750_41ddc5d9",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+              "range": {
+                "startLine": 484,
+                "startChar": 30,
+                "endLine": 484,
+                "endChar": 41
+              },
+              "replacement": "explicitly"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "b4e88f91_5d809aa5",
+        "filename": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+        "patchSetId": 52
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Common typo found: \"explicitely\" -- should it be \"explicitly\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 484,
+        "startChar": 30,
+        "endLine": 484,
+        "endChar": 41
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241811",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [
+        {
+          "fixId": "22d9d1d0_a7d08bc1",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+              "range": {
+                "startLine": 514,
+                "startChar": 69,
+                "endLine": 514,
+                "endChar": 75
+              },
+              "replacement": "default"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "f280b063_a3149ee9",
+        "filename": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+        "patchSetId": 52
+      },
+      "lineNbr": 514,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Common typo found: \"defaut\" -- should it be \"default\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 514,
+        "startChar": 69,
+        "endLine": 514,
+        "endChar": 75
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241811",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [
+        {
+          "fixId": "3dcb6666_dc77ccc2",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+              "range": {
+                "startLine": 525,
+                "startChar": 86,
+                "endLine": 525,
+                "endChar": 92
+              },
+              "replacement": "default"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "a1e1872a_7f52cde1",
+        "filename": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+        "patchSetId": 52
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Common typo found: \"defaut\" -- should it be \"default\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 525,
+        "startChar": 86,
+        "endLine": 525,
+        "endChar": 92
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241811",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [
+        {
+          "fixId": "1587bdf3_f594ba54",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+              "range": {
+                "startLine": 529,
+                "startChar": 76,
+                "endLine": 529,
+                "endChar": 82
+              },
+              "replacement": "default"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "c9e08859_5a7b3925",
+        "filename": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+        "patchSetId": 52
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Common typo found: \"defaut\" -- should it be \"default\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 529,
+        "startChar": 76,
+        "endLine": 529,
+        "endChar": 82
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241811",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [
+        {
+          "fixId": "6090822e_5895ace7",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+              "range": {
+                "startLine": 530,
+                "startChar": 70,
+                "endLine": 530,
+                "endChar": 76
+              },
+              "replacement": "default"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "6cc7ff6a_ca7d205d",
+        "filename": "services/audiopolicy/functionaltests/EmulatorDefaultEffectTest.cpp",
+        "patchSetId": 52
+      },
+      "lineNbr": 530,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Common typo found: \"defaut\" -- should it be \"default\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 530,
+        "startChar": 70,
+        "endLine": 530,
+        "endChar": 76
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241811",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [
+        {
+          "fixId": "29137445_27964dc1",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorTestParams.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+              "range": {
+                "startLine": 131,
+                "startChar": 66,
+                "endLine": 131,
+                "endChar": 73
+              },
+              "replacement": "explicit"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "063e630f_15115045",
+        "filename": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+        "patchSetId": 52
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Common typo found: \"explict\" -- should it be \"explicit\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 131,
+        "startChar": 66,
+        "endLine": 131,
+        "endChar": 73
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241811",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [
+        {
+          "fixId": "b80352ea_8aecb1d3",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorTestParams.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+              "range": {
+                "startLine": 139,
+                "startChar": 9,
+                "endLine": 139,
+                "endChar": 16
+              },
+              "replacement": "explicit"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "49e1c10c_e9b77687",
+        "filename": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+        "patchSetId": 52
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Common typo found: \"explict\" -- should it be \"explicit\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 139,
+        "startChar": 9,
+        "endLine": 139,
+        "endChar": 16
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241811",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [
+        {
+          "fixId": "e10db110_96b70e10",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorTestParams.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+              "range": {
+                "startLine": 147,
+                "startChar": 69,
+                "endLine": 147,
+                "endChar": 76
+              },
+              "replacement": "explicit"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "8f612099_061e55e9",
+        "filename": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+        "patchSetId": 52
+      },
+      "lineNbr": 147,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Common typo found: \"explict\" -- should it be \"explicit\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 147,
+        "startChar": 69,
+        "endLine": 147,
+        "endChar": 76
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241811",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [
+        {
+          "fixId": "e176e47c_f7bd4798",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorTestParams.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+              "range": {
+                "startLine": 155,
+                "startChar": 9,
+                "endLine": 155,
+                "endChar": 16
+              },
+              "replacement": "explicit"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "a582a85f_b98872c4",
+        "filename": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+        "patchSetId": 52
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Common typo found: \"explict\" -- should it be \"explicit\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 155,
+        "startChar": 9,
+        "endLine": 155,
+        "endChar": 16
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241811",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [
+        {
+          "fixId": "e5488c86_780d8ff4",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorTestParams.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+              "range": {
+                "startLine": 161,
+                "startChar": 9,
+                "endLine": 161,
+                "endChar": 16
+              },
+              "replacement": "explicit"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "8fa0da91_bb1c7ba1",
+        "filename": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+        "patchSetId": 52
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Common typo found: \"explict\" -- should it be \"explicit\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 161,
+        "startChar": 9,
+        "endLine": 161,
+        "endChar": 16
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241811",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [
+        {
+          "fixId": "0a142734_b814b64c",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorTestParams.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+              "range": {
+                "startLine": 161,
+                "startChar": 73,
+                "endLine": 161,
+                "endChar": 80
+              },
+              "replacement": "explicit"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "4aa62263_14e5c6f7",
+        "filename": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+        "patchSetId": 52
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Common typo found: \"explict\" -- should it be \"explicit\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 161,
+        "startChar": 73,
+        "endLine": 161,
+        "endChar": 80
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241811",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [
+        {
+          "fixId": "e917eace_7628bd89",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorTestParams.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+              "range": {
+                "startLine": 167,
+                "startChar": 9,
+                "endLine": 167,
+                "endChar": 16
+              },
+              "replacement": "explicit"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "a7418c5b_3f47e384",
+        "filename": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+        "patchSetId": 52
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Common typo found: \"explict\" -- should it be \"explicit\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 167,
+        "startChar": 9,
+        "endLine": 167,
+        "endChar": 16
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241811",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [
+        {
+          "fixId": "003a7c5f_2a87dec8",
+          "description": "Change to \"services/audiopolicy/functionaltests/EmulatorTestParams.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+              "range": {
+                "startLine": 167,
+                "startChar": 79,
+                "endLine": 167,
+                "endChar": 86
+              },
+              "replacement": "explicit"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "599b9dc4_bb5cb77d",
+        "filename": "services/audiopolicy/functionaltests/EmulatorTestParams.cpp",
+        "patchSetId": 52
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Common typo found: \"explict\" -- should it be \"explicit\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 167,
+        "startChar": 79,
+        "endLine": 167,
+        "endChar": 86
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "4340652c_7ad91d2b",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "8964f033_c62bacbf",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "ac9672c1_b82d263c",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "79ff6089_a344e1ce",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "112d4bfb_a90ba57b",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "610a7c55_86ef86d1",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "1fecff2b_b4beb9ee",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 20,
+        "startChar": 0,
+        "endLine": 20,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "668b650e_892b9962",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d2264396_ae6e9a51",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 22,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "f9936294_fa2356c8",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 23,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 23,
+        "startChar": 0,
+        "endLine": 23,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d991de0b_c37dd321",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d6d90fb0_6d2a48a3",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 76,
+        "startChar": 0,
+        "endLine": 76,
+        "endChar": 7
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "7a7b640e_9b410f3e",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "5a5e023b_8bc7d856",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "04b4ff82_6f0609ef",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d38c4ac7_bb285204",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 112,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 112,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "c17f7ead_962fe4ed",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 121,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "22cba4c8_258eafac",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 125,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 16
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "14f944f4_4488e806",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "697631d0_bcc6633b",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 163,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "2bf912b0_ae3727f6",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "6ed08a4b_90462f19",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 203,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 203,
+        "startChar": 0,
+        "endLine": 203,
+        "endChar": 4
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "7ea16bb8_06d714d0",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 213,
+        "startChar": 0,
+        "endLine": 213,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "f6e2d970_2ffe396c",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 219,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 219,
+        "startChar": 0,
+        "endLine": 219,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "2ea66afe_747ee89b",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 220,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 220,
+        "startChar": 0,
+        "endLine": 220,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "143f756a_b9487667",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 221,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 221,
+        "startChar": 0,
+        "endLine": 221,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "485ed14a_5a6aa7ac",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 8
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005241814",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1180628?revision\u003d52",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "633c2cd7_7d4da8ca",
+        "filename": "services/audiopolicy/functionaltests/config/primary_audio_policy_configuration.xml",
+        "patchSetId": 52
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-09-29T14:25:43Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 229,
+        "startChar": 0,
+        "endLine": 229,
+        "endChar": 4
+      },
+      "revId": "7e42293b56fe0875e20f18fad62916dfe0157b47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
