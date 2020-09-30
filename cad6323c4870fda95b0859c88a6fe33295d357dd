@@ -16,6 +16,29 @@
       "revId": "cad6323c4870fda95b0859c88a6fe33295d357dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "1146aba4_a2491399",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/HwModule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-09-30T06:59:24Z",
+      "side": 1,
+      "message": "fix",
+      "range": {
+        "startLine": 335,
+        "startChar": 8,
+        "endLine": 335,
+        "endChar": 79
+      },
+      "revId": "cad6323c4870fda95b0859c88a6fe33295d357dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
