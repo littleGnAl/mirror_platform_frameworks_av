@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "34561c3a_aded5711",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-30T18:25:33Z",
+      "side": 1,
+      "message": "I\u0027ll be submitted a reworked version here shortly.",
+      "revId": "ac2cbd0e813f8f7312a52b0ba1b906139a6cd27b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "74074b05_bc1e77d4",
         "filename": "media/codec2/vndk/C2Buffer.cpp",
         "patchSetId": 3
@@ -30,6 +47,30 @@
       "writtenOn": "2020-09-30T01:16:54Z",
       "side": 1,
       "message": "After change, we fetch sAllocator every time we call CreateLinearBlock(), right?",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 402,
+        "endChar": 0
+      },
+      "revId": "ac2cbd0e813f8f7312a52b0ba1b906139a6cd27b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "4a1af917_52c1210f",
+        "filename": "media/codec2/vndk/C2Buffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-09-30T18:25:33Z",
+      "side": 1,
+      "message": "Good point! And this was actually key for me, so thank you for your comment! \n\nWith my unfamiliarity with the details of c++ lambdas I missed the detail that sAllocator is static, so now I see the lambda initializer is only run once. With that detail I think I understand the rational for the lambda usage. Apologies for me ignorance there.",
+      "parentUuid": "74074b05_bc1e77d4",
       "range": {
         "startLine": 399,
         "startChar": 0,
