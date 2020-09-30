@@ -1,0 +1,124 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "43686c6e_cd880e0a",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-09-30T16:57:43Z",
+      "side": 1,
+      "message": "both AecCreate and AecInit are dummy for new\nis this expected?\nIt may be better to set default in AecInit() like you had done in NsInit()",
+      "range": {
+        "startLine": 556,
+        "startChar": 0,
+        "endLine": 581,
+        "endChar": 1
+      },
+      "revId": "ca4dffdd57c0e08735f2e5c836fc7f99c5d50a2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "dd4898ad_f4aa1679",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 597,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-09-30T16:57:43Z",
+      "side": 1,
+      "message": "both are same here\nif this is correct, then remove the macro\nif not, fix appropriately",
+      "revId": "ca4dffdd57c0e08735f2e5c836fc7f99c5d50a2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6f9bb685_3369f8f7",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-09-30T16:57:43Z",
+      "side": 1,
+      "message": "both are same here\nif this is correct, then remove the macro\nif not, fix appropriately",
+      "revId": "ca4dffdd57c0e08735f2e5c836fc7f99c5d50a2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "71a7ddc6_4902f7ef",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 688,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-09-30T16:57:43Z",
+      "side": 1,
+      "message": "isn\u0027t there an equivalent in new aec?",
+      "range": {
+        "startLine": 688,
+        "startChar": 9,
+        "endLine": 688,
+        "endChar": 25
+      },
+      "revId": "ca4dffdd57c0e08735f2e5c836fc7f99c5d50a2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "cc14f71a_64381a15",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 810,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-09-30T16:57:43Z",
+      "side": 1,
+      "message": "NS_PARAM_TYPE is not applicable in new NS?",
+      "revId": "ca4dffdd57c0e08735f2e5c836fc7f99c5d50a2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "af868ce9_499e3820",
+        "filename": "media/libeffects/preprocessing/tests/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-09-30T16:57:43Z",
+      "side": 1,
+      "message": "check if this is necessary here",
+      "range": {
+        "startLine": 48,
+        "startChar": 1,
+        "endLine": 48,
+        "endChar": 26
+      },
+      "revId": "ca4dffdd57c0e08735f2e5c836fc7f99c5d50a2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
