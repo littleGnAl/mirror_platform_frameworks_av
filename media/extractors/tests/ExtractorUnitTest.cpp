@@ -63,6 +63,7 @@ enum inputID {
     VORBIS_1,
     // video streams
     HEVC_1,
+    HEVC_2,
     MPEG2_PS_1,
     MPEG2_TS_1,
     MPEG4_1,
@@ -101,6 +102,7 @@ static const struct InputData {
         // Test (b/151677264) for MP4 extractor
         {HEVC_1, MEDIA_MIMETYPE_VIDEO_HEVC, "crowd_508x240_25fps_hevc.mp4", 508, 240,
          HEVCProfileMain, 25},
+        {HEVC_2, MEDIA_MIMETYPE_IMAGE_ANDROID_HEIC, "test3.heic", 820, 460, kUndefined, kUndefined},
         {MPEG2_PS_1, MEDIA_MIMETYPE_VIDEO_MPEG2, "swirl_144x136_mpeg2.mpg", 144, 136,
          MPEG2ProfileMain, 12},
         {MPEG2_TS_1, MEDIA_MIMETYPE_VIDEO_MPEG2, "bbb_cif_768kbps_30fps_mpeg2.ts", 352, 288,
@@ -136,10 +138,23 @@ class ExtractorUnitTest {
         mDisableTest = false;
 
         static const std::map<std::string, standardExtractors> mapExtractor = {
-                {"aac", AAC},     {"amr", AMR},         {"mp3", MP3},         {"ogg", OGG},
-                {"wav", WAV},     {"mkv", MKV},         {"flac", FLAC},       {"midi", MIDI},
-                {"mpeg4", MPEG4}, {"mpeg2ts", MPEG2TS}, {"mpeg2ps", MPEG2PS}, {"mp4", MPEG4},
-                {"webm", MKV},    {"ts", MPEG2TS},      {"mpeg", MPEG2PS}};
+                {"aac", AAC},
+                {"amr", AMR},
+                {"flac", FLAC},
+                {"mid", MIDI},
+                {"midi", MIDI},
+                {"mkv", MKV},
+                {"mp3", MP3},
+                {"mp4", MPEG4},
+                {"mpeg2ps", MPEG2PS},
+                {"mpeg2ts", MPEG2TS},
+                {"mpeg4", MPEG4},
+                {"mpg", MPEG2PS},
+                {"ogg", OGG},
+                {"opus", OGG},
+                {"ts", MPEG2TS},
+                {"wav", WAV},
+                {"webm", MKV}};
         // Find the component type
         if (mapExtractor.find(writerFormat) != mapExtractor.end()) {
             mExtractorName = mapExtractor.at(writerFormat);
@@ -608,6 +623,19 @@ TEST_P(ExtractorFunctionalityTest, SeekTest) {
             AMediaFormat_delete(trackMeta);
             continue;
         }
+
+        AMediaFormat *trackFormat = AMediaFormat_new();
+        ASSERT_NE(trackFormat, nullptr) << "AMediaFormat_new returned null format";
+        status = track->getFormat(trackFormat);
+        ASSERT_EQ(OK, (media_status_t)status) << "Failed to get track meta data";
+
+        const char *mime;
+        ASSERT_TRUE(AMediaFormat_getString(trackFormat, AMEDIAFORMAT_KEY_MIME, &mime))
+                << "Failed to get mime";
+
+        // Image formats are not expected to be seekable
+        if (!strncmp(mime, "image/", 6)) continue;
+
         // Request seekable points for remaining extractors which will be used to validate the seek
         // accuracy for the extractors. Depending on SEEK Mode, we expect the extractors to return
         // the expected sync frame. We don't prefer random seek test for these extractors because
@@ -617,15 +645,8 @@ TEST_P(ExtractorFunctionalityTest, SeekTest) {
         ASSERT_GT(seekablePoints.size(), 0)
                 << "Failed to get seekable points for " << mContainer << " extractor";
 
-        AMediaFormat *trackFormat = AMediaFormat_new();
-        ASSERT_NE(trackFormat, nullptr) << "AMediaFormat_new returned null format";
-        status = track->getFormat(trackFormat);
-        ASSERT_EQ(OK, (media_status_t)status) << "Failed to get track meta data";
-
         bool isOpus = false;
         int64_t opusSeekPreRollUs = 0;
-        const char *mime;
-        AMediaFormat_getString(trackFormat, AMEDIAFORMAT_KEY_MIME, &mime);
         if (!strcmp(mime, "audio/opus")) {
             isOpus = true;
             void *seekPreRollBuf = nullptr;
@@ -762,9 +783,14 @@ TEST_P(ExtractorFunctionalityTest, MonkeySeekTest) {
                 trackMeta, idx, MediaExtractorPluginHelper::kIncludeExtensiveMetaData);
         ASSERT_EQ(OK, (media_status_t)status) << "Failed to get trackMetaData";
 
+        const char *mime;
+        ASSERT_TRUE(AMediaFormat_getString(trackMeta, AMEDIAFORMAT_KEY_MIME, &mime))
+                << "Failed to get mime";
+
         int64_t clipDuration = 0;
         AMediaFormat_getInt64(trackMeta, AMEDIAFORMAT_KEY_DURATION, &clipDuration);
-        ASSERT_GT(clipDuration, 0) << "Invalid clip duration ";
+        // Image formats are not expected to have duration information
+        ASSERT_TRUE(clipDuration > 0 || !strncmp(mime, "image/", 6)) << "Invalid clip duration ";
         AMediaFormat_delete(trackMeta);
 
         int64_t seekToTimeStampUs[] = {-clipDuration, clipDuration / 2, clipDuration,
@@ -927,35 +953,54 @@ class ExtractorComparison
         }
     }
 
-    virtual void SetUp() override {
-        string input0 = GetParam().first;
-        string input1 = GetParam().second;
-
-        // Allocate memory to hold extracted data for both extractors
-        struct stat buf;
-        int32_t status = stat((gEnv->getRes() + input0).c_str(), &buf);
-        ASSERT_EQ(status, 0) << "Unable to get file properties";
-
-        // allocating the buffer size as 2x since some
-        // extractors like flac, midi and wav decodes the file.
-        mExtractorOutput[0] = (int8_t *)calloc(1, buf.st_size * 2);
-        ASSERT_NE(mExtractorOutput[0], nullptr)
-                << "Unable to allocate memory for writing extractor's output";
-        mExtractorOuputSize[0] = buf.st_size * 2;
-
-        status = stat((gEnv->getRes() + input1).c_str(), &buf);
-        ASSERT_EQ(status, 0) << "Unable to get file properties";
-
-        // allocate buffer for extractor output, 2x input file size.
-        mExtractorOutput[1] = (int8_t *)calloc(1, buf.st_size * 2);
-        ASSERT_NE(mExtractorOutput[1], nullptr)
-                << "Unable to allocate memory for writing extractor's output";
-        mExtractorOuputSize[1] = buf.st_size * 2;
-    }
-
     int8_t *mExtractorOutput[2]{};
     size_t mExtractorOuputSize[2]{};
 };
+
+size_t allocateOutputBuffers(string inputFileName, AMediaFormat *extractorFormat) {
+    size_t bufferSize = 0u;
+    // allocating the buffer size as sampleRate * channelCount * clipDuration since
+    // some extractors like flac, midi and wav decodes the file. These extractors
+    // advertise the mime type as raw.
+    const char *mime;
+    AMediaFormat_getString(extractorFormat, AMEDIAFORMAT_KEY_MIME, &mime);
+    if (!strcmp(mime, MEDIA_MIMETYPE_AUDIO_RAW)) {
+        int64_t clipDurationUs = -1;
+        int32_t channelCount = -1;
+        int32_t sampleRate = -1;
+        int32_t bitsPerSampple = -1;
+        if (!AMediaFormat_getInt32(extractorFormat, AMEDIAFORMAT_KEY_CHANNEL_COUNT,
+                                   &channelCount) || channelCount <= 0) {
+            ALOGE("Invalid channelCount for input file : %s", inputFileName.c_str());
+            return 0;
+        }
+        if (!AMediaFormat_getInt32(extractorFormat, AMEDIAFORMAT_KEY_SAMPLE_RATE, &sampleRate) ||
+            sampleRate <= 0) {
+            ALOGE("Invalid sampleRate for input file : %s", inputFileName.c_str());
+            return 0;
+        }
+        if (!AMediaFormat_getInt64(extractorFormat, AMEDIAFORMAT_KEY_DURATION, &clipDurationUs) ||
+            clipDurationUs <= 0) {
+            ALOGE("Invalid clip duration for input file : %s", inputFileName.c_str());
+            return 0;
+        }
+        if (!AMediaFormat_getInt32(extractorFormat, AMEDIAFORMAT_KEY_PCM_ENCODING,
+                                   &bitsPerSampple) || bitsPerSampple <= 0) {
+            ALOGE("Invalid bits per sample for input file : %s", inputFileName.c_str());
+            return 0;
+        }
+        bufferSize = bitsPerSampple * channelCount * sampleRate * (clipDurationUs / 1000000 + 1);
+    } else {
+        struct stat buf;
+        int32_t status = stat(inputFileName.c_str(), &buf);
+        if (status != 0) {
+            ALOGE("Unable to get file properties for: %s", inputFileName.c_str());
+            return 0;
+        }
+        bufferSize = buf.st_size;
+    }
+    return bufferSize;
+}
 
 // Compare output of two extractors for identical content
 TEST_P(ExtractorComparison, ExtractorComparisonTest) {
@@ -997,6 +1042,13 @@ TEST_P(ExtractorComparison, ExtractorComparisonTest) {
 
         CMediaTrack *cTrack = wrap(track);
         ASSERT_NE(cTrack, nullptr) << "Failed to get track wrapper for index " << trackIdx;
+
+        mExtractorOuputSize[idx] = allocateOutputBuffers(inputFileName, extractorFormat[idx]);
+        ASSERT_GT(mExtractorOuputSize[idx], 0u) << " Invalid size for output buffers";
+
+        mExtractorOutput[idx] = (int8_t *)calloc(1, mExtractorOuputSize[idx]);
+        ASSERT_NE(mExtractorOutput[idx], nullptr)
+                << "Unable to allocate memory for writing extractor's output";
 
         MediaBufferGroup *bufferGroup = new MediaBufferGroup();
         status = cTrack->start(track, bufferGroup->wrap());
@@ -1074,14 +1126,44 @@ TEST_P(ExtractorComparison, ExtractorComparisonTest) {
                          << inputFileNames[1] << " extractors";
 }
 
-INSTANTIATE_TEST_SUITE_P(ExtractorComparisonAll, ExtractorComparison,
-                         ::testing::Values(make_pair("swirl_144x136_vp9.mp4",
-                                                     "swirl_144x136_vp9.webm"),
-                                           make_pair("video_480x360_mp4_vp9_333kbps_25fps.mp4",
-                                                     "video_480x360_webm_vp9_333kbps_25fps.webm"),
-                                           make_pair("video_1280x720_av1_hdr_static_3mbps.mp4",
-                                                     "video_1280x720_av1_hdr_static_3mbps.webm"),
-                                           make_pair("loudsoftaac.aac", "loudsoftaac.mkv")));
+INSTANTIATE_TEST_SUITE_P(
+        ExtractorComparisonAll, ExtractorComparison,
+        ::testing::Values(make_pair("swirl_144x136_vp9.mp4", "swirl_144x136_vp9.webm"),
+                          make_pair("video_480x360_mp4_vp9_333kbps_25fps.mp4",
+                                    "video_480x360_webm_vp9_333kbps_25fps.webm"),
+                          make_pair("video_1280x720_av1_hdr_static_3mbps.mp4",
+                                    "video_1280x720_av1_hdr_static_3mbps.webm"),
+                          make_pair("swirl_132x130_mpeg4.3gp", "swirl_132x130_mpeg4.mkv"),
+                          make_pair("swirl_144x136_avc.mkv", "swirl_144x136_avc.mp4"),
+                          make_pair("swirl_132x130_mpeg4.mp4", "swirl_132x130_mpeg4.mkv"),
+                          make_pair("crowd_508x240_25fps_hevc.mp4","crowd_508x240_25fps_hevc.mkv"),
+                          make_pair("bbb_cif_768kbps_30fps_mpeg2.mp4",
+                                    "bbb_cif_768kbps_30fps_mpeg2.ts"),
+
+                          make_pair("loudsoftaac.aac", "loudsoftaac.mkv"),
+                          make_pair("sinesweepflacmkv.mkv", "sinesweepflacmp4.mp4"),
+                          make_pair("sinesweepmp3lame.mp3", "sinesweepmp3lame.mkv"),
+                          make_pair("sinesweepoggmp4.mp4", "sinesweepogg.ogg"),
+                          make_pair("sinesweepvorbis.mp4", "sinesweepvorbis.ogg"),
+                          make_pair("sinesweepvorbis.mkv", "sinesweepvorbis.ogg"),
+                          make_pair("testopus.mkv", "testopus.mp4"),
+                          make_pair("testopus.mp4", "testopus.opus"),
+
+                          make_pair("loudsoftaac.aac", "loudsoftaac.aac"),
+                          make_pair("testamr.amr", "testamr.amr"),
+                          make_pair("sinesweepflac.flac", "sinesweepflac.flac"),
+                          make_pair("midi_a.mid", "midi_a.mid"),
+                          make_pair("sinesweepvorbis.mkv", "sinesweepvorbis.mkv"),
+                          make_pair("sinesweepmp3lame.mp3", "sinesweepmp3lame.mp3"),
+                          make_pair("sinesweepoggmp4.mp4", "sinesweepoggmp4.mp4"),
+                          make_pair("testopus.opus", "testopus.opus"),
+                          make_pair("john_cage.ogg", "john_cage.ogg"),
+                          make_pair("monotestgsm.wav", "monotestgsm.wav"),
+
+                          make_pair("swirl_144x136_mpeg2.mpg", "swirl_144x136_mpeg2.mpg"),
+                          make_pair("swirl_132x130_mpeg4.mp4", "swirl_132x130_mpeg4.mp4"),
+                          make_pair("swirl_144x136_vp9.webm", "swirl_144x136_vp9.webm"),
+                          make_pair("swirl_144x136_vp8.webm", "swirl_144x136_vp8.webm")));
 
 INSTANTIATE_TEST_SUITE_P(ConfigParamTestAll, ConfigParamTest,
                          ::testing::Values(make_pair("aac", AAC_1),
@@ -1095,12 +1177,13 @@ INSTANTIATE_TEST_SUITE_P(ConfigParamTestAll, ConfigParamTest,
                                            make_pair("ogg", VORBIS_1),
 
                                            make_pair("mpeg4", HEVC_1),
+                                           make_pair("mpeg4", HEVC_2),
                                            make_pair("mpeg2ps", MPEG2_PS_1),
                                            make_pair("mpeg2ts", MPEG2_TS_1),
                                            make_pair("mkv", MPEG4_1),
                                            make_pair("mkv", VP9_1)));
 
-// Validate extractors for container format, input file and supports seek flag
+// Validate extractors for container format, input file, no. of tracks and supports seek flag
 INSTANTIATE_TEST_SUITE_P(
         ExtractorUnitTestAll, ExtractorFunctionalityTest,
         ::testing::Values(
@@ -1118,13 +1201,25 @@ INSTANTIATE_TEST_SUITE_P(
                 make_tuple("mpeg2ts", "testac3ts.ts", 1, false),
                 make_tuple("mpeg2ts", "testac4ts.ts", 1, false),
                 make_tuple("mpeg2ts", "testeac3ts.ts", 1, false),
+                make_tuple("mpeg4", "audio_aac_mono_70kbs_44100hz.mp4", 2, true),
+                make_tuple("mpeg4", "multi0_ac4.mp4", 1, true),
+                make_tuple("mpeg4", "noise_6ch_44khz_aot5_dr_sbr_sig2_mp4.m4a", 1, true),
+                make_tuple("mpeg4", "sinesweepalac.mov", 1, true),
+                make_tuple("mpeg4", "sinesweepflacmp4.mp4", 1, true),
+                make_tuple("mpeg4", "sinesweepm4a.m4a", 1, true),
                 make_tuple("mpeg4", "sinesweepoggmp4.mp4", 1, true),
+                make_tuple("mpeg4", "sinesweepopusmp4.mp4", 1, true),
                 make_tuple("mpeg4", "testac3mp4.mp4", 1, true),
                 make_tuple("mpeg4", "testeac3mp4.mp4", 1, true),
                 make_tuple("ogg", "john_cage.ogg", 1, true),
                 make_tuple("ogg", "testopus.opus", 1, true),
                 make_tuple("ogg", "sinesweepoggalbumart.ogg", 1, true),
+                make_tuple("wav", "loudsoftwav.wav", 1, true),
                 make_tuple("wav", "monotestgsm.wav", 1, true),
+                make_tuple("wav", "noise_5ch_44khz_aot2_wave.wav", 1, true),
+                make_tuple("wav", "sine1khzm40db_alaw.wav", 1, true),
+                make_tuple("wav", "sine1khzm40db_f32le.wav", 1, true),
+                make_tuple("wav", "sine1khzm40db_mulaw.wav", 1, true),
 
                 make_tuple("mkv", "swirl_144x136_avc.mkv", 1, true),
                 make_tuple("mkv", "withoutcues.mkv", 2, true),
@@ -1132,7 +1227,27 @@ INSTANTIATE_TEST_SUITE_P(
                 make_tuple("mkv", "swirl_144x136_vp8.webm", 1, true),
                 make_tuple("mpeg2ps", "swirl_144x136_mpeg2.mpg", 1, false),
                 make_tuple("mpeg2ps", "programstream.mpeg", 2, false),
-                make_tuple("mpeg4", "swirl_132x130_mpeg4.mp4", 1, true)));
+                make_tuple("mpeg4", "color_176x144_bt601_525_lr_sdr_h264.mp4", 1, true),
+                make_tuple("mpeg4", "heifwriter_input.heic", 4, false),
+                make_tuple("mpeg4", "psshtest.mp4", 1, true),
+                make_tuple("mpeg4", "swirl_132x130_mpeg4.mp4", 1, true),
+                make_tuple("mpeg4", "testvideo.3gp", 4, true),
+                make_tuple("mpeg4", "testvideo_with_2_timedtext_tracks.3gp", 4, true),
+                make_tuple("mpeg4",
+                           "video_176x144_3gp_h263_300kbps_25fps_aac_stereo_128kbps_11025hz_"
+                           "metadata_gyro_compliant.3gp",
+                           3, true),
+                make_tuple(
+                        "mpeg4",
+                        "video_1920x1080_mp4_mpeg2_12000kbps_30fps_aac_stereo_128kbps_48000hz.mp4",
+                        2, true),
+                make_tuple("mpeg4",
+                           "video_480x360_mp4_hevc_650kbps_30fps_aac_stereo_128kbps_48000hz.mp4", 2,
+                           true),
+                make_tuple(
+                        "mpeg4",
+                        "video_480x360_mp4_h264_1350kbps_30fps_aac_stereo_128kbps_44100hz_dash.mp4",
+                        2, true)));
 
 int main(int argc, char **argv) {
     gEnv = new ExtractorUnitTestEnvironment();

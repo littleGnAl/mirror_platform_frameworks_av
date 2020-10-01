@@ -31,10 +31,14 @@
 namespace android {
 
 namespace {
-
+constexpr size_t kMinInputBufferSize = 2 * 1024 * 1024;
 constexpr char COMPONENT_NAME[] = "c2.android.avc.decoder";
 constexpr uint32_t kDefaultOutputDelay = 8;
-constexpr uint32_t kMaxOutputDelay = 16;
+/* avc specification allows for a maximum delay of 16 frames.
+   As soft avc decoder supports interlaced, this delay would be 32 fields.
+   And avc decoder implementation has an additional delay of 2 decode calls.
+   So total maximum output delay is 34 */
+constexpr uint32_t kMaxOutputDelay = 34;
 constexpr uint32_t kMinInputBytes = 4;
 }  // namespace
 
@@ -115,7 +119,7 @@ public:
 
         addParameter(
                 DefineParam(mMaxInputSize, C2_PARAMKEY_INPUT_MAX_BUFFER_SIZE)
-                .withDefault(new C2StreamMaxBufferSizeInfo::input(0u, 320 * 240 * 3 / 4))
+                .withDefault(new C2StreamMaxBufferSizeInfo::input(0u, kMinInputBufferSize))
                 .withFields({
                     C2F(mMaxInputSize, value).any(),
                 })
@@ -228,7 +232,8 @@ public:
                                   const C2P<C2StreamMaxPictureSizeTuning::output> &maxSize) {
         (void)mayBlock;
         // assume compression ratio of 2
-        me.set().value = (((maxSize.v.width + 15) / 16) * ((maxSize.v.height + 15) / 16) * 192);
+        me.set().value = c2_max((((maxSize.v.width + 15) / 16)
+                * ((maxSize.v.height + 15) / 16) * 192), kMinInputBufferSize);
         return C2R::Ok();
     }
 

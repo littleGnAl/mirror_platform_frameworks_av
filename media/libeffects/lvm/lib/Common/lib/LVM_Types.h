@@ -54,26 +54,6 @@
 
 #define LVM_NR_MEMORY_REGIONS                   4   /* Number of memory regions */
 
-/* Memory partition type */
-#define LVM_MEM_PARTITION0      0                   /* 1st memory partition */
-#define LVM_MEM_PARTITION1      1                   /* 2nd memory partition */
-#define LVM_MEM_PARTITION2      2                   /* 3rd memory partition */
-#define LVM_MEM_PARTITION3      3                   /* 4th memory partition */
-
-/* Use type */
-#define LVM_MEM_PERSISTENT      0                   /* Persistent memory type */
-#define LVM_MEM_SCRATCH         4                   /* Scratch  memory type */
-
-/* Access type */
-#define LVM_MEM_INTERNAL        0                   /* Internal (fast) access memory */
-#define LVM_MEM_EXTERNAL        8                   /* External (slow) access memory */
-
-/* Platform specific */
-#define LVM_PERSISTENT          (LVM_MEM_PARTITION0+LVM_MEM_PERSISTENT+LVM_MEM_INTERNAL)
-#define LVM_PERSISTENT_DATA     (LVM_MEM_PARTITION1+LVM_MEM_PERSISTENT+LVM_MEM_INTERNAL)
-#define LVM_PERSISTENT_COEF     (LVM_MEM_PARTITION2+LVM_MEM_PERSISTENT+LVM_MEM_INTERNAL)
-#define LVM_SCRATCH             (LVM_MEM_PARTITION3+LVM_MEM_SCRATCH+LVM_MEM_INTERNAL)
-
 /****************************************************************************************/
 /*                                                                                      */
 /*  Basic types                                                                         */
@@ -102,11 +82,7 @@ typedef     float               LVM_FLOAT;          /* single precision floating
 typedef     float               effect_buffer_t;
 
 
-#ifdef SUPPORT_MC
 #define LVM_MAX_CHANNELS 8 // FCC_8
-#else
-#define LVM_MAX_CHANNELS 2 // FCC_2
-#endif
 
 /****************************************************************************************/
 /*                                                                                      */
@@ -128,9 +104,7 @@ typedef enum
     LVM_STEREO          = 0,
     LVM_MONOINSTEREO    = 1,
     LVM_MONO            = 2,
-#ifdef SUPPORT_MC
     LVM_MULTICHANNEL    = 3,
-#endif
     LVM_SOURCE_DUMMY    = LVM_MAXENUM
 } LVM_Format_en;
 

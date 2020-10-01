@@ -54,8 +54,7 @@
 #define LVCS_COMPGAINFRAME          64          /* Compressor gain update interval */
 
 /* Memory */
-#define LVCS_SCRATCHBUFFERS              6      /* Number of buffers required for inplace processing */
-#ifdef SUPPORT_MC
+#define LVCS_SCRATCHBUFFERS              8      /* Number of buffers required for inplace processing */
 /*
  * The Concert Surround module applies processing only on the first two
  * channels of a multichannel input. The data of first two channels is copied
@@ -63,7 +62,6 @@
  * are used for this purpose
  */
 #define LVCS_MC_SCRATCHBUFFERS           2
-#endif
 
 /* General */
 #define LVCS_INVALID                0xFFFF      /* Invalid init parameter */
@@ -106,7 +104,6 @@ typedef struct
 typedef struct
 {
     /* Public parameters */
-    LVCS_MemTab_t           MemoryTable;        /* Instance memory allocation table */
     LVCS_Params_t           Params;             /* Instance parameters */
     LVCS_Capabilities_t     Capabilities;       /* Initialisation capabilities */
 
@@ -129,6 +126,9 @@ typedef struct
     LVM_INT16               bTimerDone;                         /* Timer completion flag */
     LVM_Timer_Params_t      TimerParams;                        /* Timer parameters */
     LVM_Timer_Instance_t    TimerInstance;                      /* Timer instance */
+    void                    *pCoeff;           /* pointer to buffer for equaliser filter coeffs */
+    void                    *pData;            /* pointer to buffer for equaliser filter states */
+    void                    *pScratch;         /* Pointer to bundle scratch buffer */
 
 } LVCS_Instance_t;
 

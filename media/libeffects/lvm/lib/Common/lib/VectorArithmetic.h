@@ -31,16 +31,15 @@ void LoadConst_Float(          const LVM_FLOAT val,
 void Copy_Float(                 const LVM_FLOAT *src,
                                  LVM_FLOAT *dst,
                                  LVM_INT16 n );
-#ifdef SUPPORT_MC
 void Copy_Float_Mc_Stereo(       const LVM_FLOAT *src,
                                  LVM_FLOAT *dst,
                                  LVM_INT16 NrFrames,
                                  LVM_INT32 NrChannels);
 void Copy_Float_Stereo_Mc(       const LVM_FLOAT *src,
+                                 LVM_FLOAT *StereoOut,
                                  LVM_FLOAT *dst,
                                  LVM_INT16 NrFrames,
                                  LVM_INT32 NrChannels);
-#endif
 
 /*********************************************************************************
  * note: In Mult3s_16x16() saturation of result is not taken care when           *
@@ -109,12 +108,10 @@ void MonoTo2I_Float( const LVM_FLOAT     *src,
 void From2iToMono_Float(         const LVM_FLOAT  *src,
                                  LVM_FLOAT  *dst,
                                  LVM_INT16 n);
-#ifdef SUPPORT_MC
 void FromMcToMono_Float(const LVM_FLOAT *src,
                         LVM_FLOAT *dst,
                         LVM_INT16 NrFrames,
                         LVM_INT16 NrChannels);
-#endif
 void MSTo2i_Sat_Float(        const LVM_FLOAT *srcM,
                               const LVM_FLOAT *srcS,
                               LVM_FLOAT *dst,

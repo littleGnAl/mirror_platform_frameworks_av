@@ -113,40 +113,15 @@
 /*                                                                                  */
 /************************************************************************************/
 
-/* Memory region definition */
-typedef struct
-{
-    LVM_UINT32              Size;               /* Region size in bytes */
-    LVM_UINT16              Alignment;          /* Byte alignment */
-    LVM_MemoryTypes_en      Type;               /* Region type */
-    void                    *pBaseAddress;      /* Pointer to the region base address */
-} LVM_IntMemoryRegion_t;
-
-/* Memory table containing the region definitions */
-typedef struct
-{
-    LVM_IntMemoryRegion_t   Region[LVM_NR_MEMORY_REGIONS];  /* One definition for each region */
-} LVM_IntMemTab_t;
-
 /* Buffer Management */
 typedef struct
 {
     LVM_FLOAT               *pScratch;          /* Bundle scratch buffer */
 
     LVM_INT16               BufferState;        /* Buffer status */
-#ifdef SUPPORT_MC
     LVM_FLOAT               InDelayBuffer[3 * LVM_MAX_CHANNELS * MIN_INTERNAL_BLOCKSIZE];
-#else
-    LVM_FLOAT               InDelayBuffer[6 * MIN_INTERNAL_BLOCKSIZE]; /* Input buffer delay line, \
-                                                                           left and right */
-#endif
     LVM_INT16               InDelaySamples;     /* Number of samples in the input delay buffer */
-#ifdef SUPPORT_MC
     LVM_FLOAT               OutDelayBuffer[LVM_MAX_CHANNELS * MIN_INTERNAL_BLOCKSIZE];
-#else
-    LVM_FLOAT               OutDelayBuffer[2 * MIN_INTERNAL_BLOCKSIZE]; /* Output buffer delay \
-                                                                                      line */
-#endif
     LVM_INT16               OutDelaySamples;    /* Number of samples in the output delay buffer, \
                                                                              left and right */
     LVM_INT16               SamplesToOutput;    /* Samples to write to the output */
@@ -167,7 +142,6 @@ typedef struct
 typedef struct
 {
     /* Public parameters */
-    LVM_MemTab_t            MemoryTable;        /* Instance memory allocation table */
     LVM_ControlParams_t     Params;             /* Control parameters */
     LVM_InstParams_t        InstParams;         /* Instance parameters */
 
@@ -236,10 +210,9 @@ typedef struct
 
     LVM_INT16              NoSmoothVolume;      /* Enable or disable smooth volume changes*/
 
-#ifdef SUPPORT_MC
     LVM_INT16              NrChannels;
     LVM_INT32              ChMask;
-#endif
+    void                   *pScratch;           /* Pointer to bundle scratch buffer*/
 
 } LVM_Instance_t;
 

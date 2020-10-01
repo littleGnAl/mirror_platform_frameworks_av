@@ -4,9 +4,10 @@ cc_library_shared {
     vndk: {
         enabled: true,
     },
+    double_loadable: true,
 
     srcs: [
-        "OMXMaster.cpp",
+        "OMXStore.cpp",
         "OMXNodeInstance.cpp",
         "OMXUtils.cpp",
         "OmxGraphicBufferSource.cpp",

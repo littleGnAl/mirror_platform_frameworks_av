@@ -37,6 +37,15 @@
 #define TRACK_BUFFER_TIMING     0
 
 namespace android {
+namespace hardware {
+namespace media {
+namespace omx {
+namespace V1_0 {
+struct IGraphicBufferSource;
+}  // namespace V1_0
+}  // namespace omx
+}  // namespace media
+}  // namespace hardware
 
 struct ABuffer;
 class ACodecBufferChannel;
@@ -138,6 +147,7 @@ private:
         kWhatReleaseCodecInstance    = 'relC',
         kWhatForceStateTransition    = 'fstt',
         kWhatCheckIfStuck            = 'Cstk',
+        kWhatSubmitExtraOutputMetadataBuffer = 'sbxo',
     };
 
     enum {
@@ -149,6 +159,7 @@ private:
         kFlagIsSecure                                 = 1,
         kFlagPushBlankBuffersToNativeWindowOnShutdown = 2,
         kFlagIsGrallocUsageProtected                  = 4,
+        kFlagPreregisterMetadataBuffers               = 8,
     };
 
     enum {
@@ -262,6 +273,7 @@ private:
     bool mShutdownInProgress;
     bool mExplicitShutdown;
     bool mIsLegacyVP9Decoder;
+    bool mIsLowLatency;
 
     // If "mKeepComponentAllocated" we only transition back to Loaded state
     // and do not release the component instance.
@@ -279,7 +291,7 @@ private:
     size_t mNumUndequeuedBuffers;
     sp<DataConverter> mConverter[2];
 
-    sp<IGraphicBufferSource> mGraphicBufferSource;
+    sp<hardware::media::omx::V1_0::IGraphicBufferSource> mGraphicBufferSource;
     int64_t mRepeatFrameDelayUs;
     int64_t mMaxPtsGapUs;
     float mMaxFps;
@@ -466,6 +478,8 @@ private:
         int32_t targetRefLevel;
         int32_t encodedTargetLevel;
         int32_t effectType;
+        int32_t albumMode;
+        int32_t outputLoudness;
     } drcParams_t;
 
     status_t setupAACCodec(
@@ -487,6 +501,7 @@ private:
     status_t setupAMRCodec(bool encoder, bool isWAMR, int32_t bitRate);
     status_t setupG711Codec(bool encoder, int32_t sampleRate, int32_t numChannels);
 
+    status_t setupOpusCodec(bool encoder, int32_t sampleRate, int32_t numChannels);
     status_t setupFlacCodec(
             bool encoder, int32_t numChannels, int32_t sampleRate, int32_t compressionLevel,
             AudioEncoding encoding);
@@ -496,6 +511,7 @@ private:
             AudioEncoding encoding = kAudioEncodingPcm16bit);
 
     status_t setPriority(int32_t priority);
+    status_t setLowLatency(int32_t lowLatency);
     status_t setLatency(uint32_t latency);
     status_t getLatency(uint32_t *latency);
     status_t setAudioPresentation(int32_t presentationId, int32_t programId);

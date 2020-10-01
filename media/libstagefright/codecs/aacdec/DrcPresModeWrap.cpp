@@ -47,10 +47,9 @@ CDrcPresModeWrapper::CDrcPresModeWrapper()
     mEncoderTarget = -1;
 
     /* Values from last time. */
-    /* Initialized to the same values as the desired values */
-    mLastTarget = -1;
-    mLastAttFactor = 0;
-    mLastBoostFactor = 0;
+    mLastTarget = -2;
+    mLastAttFactor = -1;
+    mLastBoostFactor = -1;
     mLastHeavy = 0;
 }
 
@@ -163,7 +162,7 @@ CDrcPresModeWrapper::update()
 
     if (mDataUpdate) {
         // sanity check
-        if (mDesTarget < MAX_TARGET_LEVEL){
+        if ((mDesTarget < MAX_TARGET_LEVEL) && (mDesTarget != -1)){
             mDesTarget = MAX_TARGET_LEVEL;  // limit target level to -10 dB or below
             newTarget = MAX_TARGET_LEVEL;
         }
@@ -218,7 +217,7 @@ CDrcPresModeWrapper::update()
         }
         else { // handle other used encoder target levels
 
-            // Sanity check: DRC presentation mode is only specified for max. 5.1 channels
+            // Validation check: DRC presentation mode is only specified for max. 5.1 channels
             if (mStreamNrAACChan > 6) {
                 drcPresMode = 0;
             }
@@ -309,7 +308,7 @@ CDrcPresModeWrapper::update()
             } // switch()
         } // if (mEncoderTarget  == GPM_ENCODER_TARGET_LEVEL)
 
-        // sanity again
+        // validation check again
         if (newHeavy == 1) {
             newBoostFactor=127; // not really needed as the same would be done by the decoder anyway
             newAttFactor = 127;

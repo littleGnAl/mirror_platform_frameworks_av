@@ -24,6 +24,8 @@
 #include <inttypes.h>
 #include <utils/Trace.h>
 
+#include <android/hardware/media/omx/1.0/IGraphicBufferSource.h>
+
 #include <gui/Surface.h>
 
 #include <media/stagefright/ACodec.h>
@@ -45,6 +47,7 @@
 #include <media/hardware/HardwareAPI.h>
 #include <media/MediaBufferHolder.h>
 #include <media/OMXBuffer.h>
+#include <media/omx/1.0/Conversion.h>
 #include <media/omx/1.0/WOmxNode.h>
 
 #include <hidlmemory/mapping.h>
@@ -63,7 +66,9 @@
 
 namespace android {
 
-using binder::Status;
+typedef hardware::media::omx::V1_0::IGraphicBufferSource HGraphicBufferSource;
+
+using hardware::media::omx::V1_0::Status;
 
 enum {
     kMaxIndicesToCheck = 32, // used when enumerating supported formats and profiles
@@ -98,16 +103,11 @@ static inline status_t statusFromOMXError(int32_t omxError) {
     }
 }
 
-static inline status_t statusFromBinderStatus(const Status &status) {
+static inline status_t statusFromBinderStatus(hardware::Return<Status> &&status) {
     if (status.isOk()) {
-        return OK;
-    }
-    status_t err;
-    if ((err = status.serviceSpecificErrorCode()) != OK) {
-        return err;
-    }
-    if ((err = status.transactionError()) != OK) {
-        return err;
+        return static_cast<status_t>(status.withDefault(Status::UNKNOWN_ERROR));
+    } else if (status.isDeadObject()) {
+        return DEAD_OBJECT;
     }
     // Other exception
     return UNKNOWN_ERROR;
@@ -279,6 +279,13 @@ protected:
 
     void postFillThisBuffer(BufferInfo *info);
 
+    void maybePostExtraOutputMetadataBufferRequest() {
+        if (!mPendingExtraOutputMetadataBufferRequest) {
+            (new AMessage(kWhatSubmitExtraOutputMetadataBuffer, mCodec))->post();
+            mPendingExtraOutputMetadataBufferRequest = true;
+        }
+    }
+
 private:
     // Handles an OMX message. Returns true iff message was handled.
     bool onOMXMessage(const sp<AMessage> &msg);
@@ -301,6 +308,8 @@ private:
     virtual bool onOMXFrameRendered(int64_t mediaTimeUs, nsecs_t systemNano);
 
     void getMoreInputDataIfPossible();
+
+    bool mPendingExtraOutputMetadataBufferRequest;
 
     DISALLOW_EVIL_CONSTRUCTORS(BaseState);
 };
@@ -555,6 +564,7 @@ ACodec::ACodec()
       mShutdownInProgress(false),
       mExplicitShutdown(false),
       mIsLegacyVP9Decoder(false),
+      mIsLowLatency(false),
       mEncoderDelay(0),
       mEncoderPadding(0),
       mRotationDegrees(0),
@@ -887,7 +897,7 @@ status_t ACodec::allocateBuffersOnPort(OMX_U32 portIndex) {
 
             sp<DataConverter> converter = mConverter[portIndex];
             if (converter != NULL) {
-                // here we assume sane conversions of max 4:1, so result fits in int32
+                // here we assume conversions of max 4:1, so result fits in int32
                 if (portIndex == kPortIndexInput) {
                     conversionBufferSize = converter->sourceSize(bufSize);
                 } else {
@@ -1310,7 +1320,7 @@ status_t ACodec::allocateOutputMetadataBuffers() {
     OMX_U32 bufferCount, bufferSize, minUndequeuedBuffers;
     status_t err = configureOutputBuffersFromNativeWindow(
             &bufferCount, &bufferSize, &minUndequeuedBuffers,
-            false /* preregister */);
+            mFlags & kFlagPreregisterMetadataBuffers /* preregister */);
     if (err != OK)
         return err;
     mNumUndequeuedBuffers = minUndequeuedBuffers;
@@ -1780,6 +1790,14 @@ status_t ACodec::configureCodec(
         }
     }
 
+    int32_t lowLatency = 0;
+    if (msg->findInt32("low-latency", &lowLatency)) {
+        err = setLowLatency(lowLatency);
+        if (err != OK) {
+            return err;
+        }
+    }
+
     int32_t prependSPSPPS = 0;
     if (encoder && mIsVideo
             && msg->findInt32("prepend-sps-pps-to-idr-frames", &prependSPSPPS)
@@ -1887,6 +1905,19 @@ status_t ACodec::configureCodec(
             ALOGI("falling back to non-native_handles");
             setPortMode(kPortIndexInput, IOMX::kPortModePresetByteBuffer);
             err = OK; // ignore error for now
+        }
+
+        OMX_INDEXTYPE index;
+        if (mOMXNode->getExtensionIndex(
+                "OMX.google.android.index.preregisterMetadataBuffers", &index) == OK) {
+            OMX_CONFIG_BOOLEANTYPE param;
+            InitOMXParams(&param);
+            param.bEnabled = OMX_FALSE;
+            if (mOMXNode->getParameter(index, &param, sizeof(param)) == OK) {
+                if (param.bEnabled == OMX_TRUE) {
+                    mFlags |= kFlagPreregisterMetadataBuffers;
+                }
+            }
         }
     }
     if (haveNativeWindow) {
@@ -2032,16 +2063,33 @@ status_t ACodec::configureCodec(
     if (mIsVideo || mIsImage) {
         // determine need for software renderer
         bool usingSwRenderer = false;
-        if (haveNativeWindow && mComponentName.startsWith("OMX.google.")) {
-            usingSwRenderer = true;
-            haveNativeWindow = false;
-            (void)setPortMode(kPortIndexOutput, IOMX::kPortModePresetByteBuffer);
-        } else if (haveNativeWindow && !storingMetadataInDecodedBuffers()) {
-            err = setPortMode(kPortIndexOutput, IOMX::kPortModePresetANWBuffer);
-            if (err != OK) {
-                return err;
+        if (haveNativeWindow) {
+            bool requiresSwRenderer = false;
+            OMX_PARAM_U32TYPE param;
+            InitOMXParams(&param);
+            param.nPortIndex = kPortIndexOutput;
+
+            status_t err = mOMXNode->getParameter(
+                    (OMX_INDEXTYPE)OMX_IndexParamVideoAndroidRequiresSwRenderer,
+                    &param, sizeof(param));
+
+            if (err == OK && param.nU32 == 1) {
+                requiresSwRenderer = true;
             }
+
+            if (mComponentName.startsWith("OMX.google.") || requiresSwRenderer) {
+                usingSwRenderer = true;
+                haveNativeWindow = false;
+                (void)setPortMode(kPortIndexOutput, IOMX::kPortModePresetByteBuffer);
+            } else if (!storingMetadataInDecodedBuffers()) {
+                err = setPortMode(kPortIndexOutput, IOMX::kPortModePresetANWBuffer);
+                if (err != OK) {
+                    return err;
+                }
+            }
+
         }
+
 
         if (encoder) {
             err = setupVideoEncoder(mime, msg, outputFormat, inputFormat);
@@ -2160,11 +2208,19 @@ status_t ACodec::configureCodec(
             }
             if (!msg->findInt32("aac-target-ref-level", &drc.targetRefLevel)) {
                 // value is unknown
-                drc.targetRefLevel = -1;
+                drc.targetRefLevel = -2;
             }
             if (!msg->findInt32("aac-drc-effect-type", &drc.effectType)) {
                 // value is unknown
                 drc.effectType = -2; // valid values are -1 and over
+            }
+            if (!msg->findInt32("aac-drc-album-mode", &drc.albumMode)) {
+                // value is unknown
+                drc.albumMode = -1; // valid values are 0 and 1
+            }
+            if (!msg->findInt32("aac-drc-output-loudness", &drc.outputLoudness)) {
+                // value is unknown
+                drc.outputLoudness = -1;
             }
 
             err = setupAACCodec(
@@ -2190,6 +2246,12 @@ status_t ACodec::configureCodec(
                 sampleRate = 8000;
             }
             err = setupG711Codec(encoder, sampleRate, numChannels);
+        }
+    } else if (!strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_OPUS)) {
+        int32_t numChannels = 1, sampleRate = 48000;
+        if (msg->findInt32("channel-count", &numChannels) &&
+            msg->findInt32("sample-rate", &sampleRate)) {
+            err = setupOpusCodec(encoder, sampleRate, numChannels);
         }
     } else if (!strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_FLAC)) {
         // numChannels needs to be set to properly communicate PCM values.
@@ -2348,6 +2410,25 @@ status_t ACodec::configureCodec(
     return err;
 }
 
+status_t ACodec::setLowLatency(int32_t lowLatency) {
+    if (mIsEncoder) {
+        ALOGE("encoder does not support low-latency");
+        return BAD_VALUE;
+    }
+
+    OMX_CONFIG_BOOLEANTYPE config;
+    InitOMXParams(&config);
+    config.bEnabled = (OMX_BOOL)(lowLatency != 0);
+    status_t err = mOMXNode->setConfig(
+            (OMX_INDEXTYPE)OMX_IndexConfigLowLatency,
+            &config, sizeof(config));
+    if (err != OK) {
+        ALOGE("decoder can not set low-latency to %d (err %d)", lowLatency, err);
+    }
+    mIsLowLatency = (lowLatency && err == OK);
+    return err;
+}
+
 status_t ACodec::setLatency(uint32_t latency) {
     OMX_PARAM_U32TYPE config;
     InitOMXParams(&config);
@@ -2410,7 +2491,7 @@ status_t ACodec::setOperatingRate(float rateFloat, bool isVideo) {
         }
         rate = (OMX_U32)(rateFloat * 65536.0f + 0.5f);
     } else {
-        if (rateFloat > static_cast<float>(UINT_MAX)) {
+        if (rateFloat > (float)UINT_MAX) {
             return BAD_VALUE;
         }
         rate = (OMX_U32)(rateFloat);
@@ -2538,15 +2619,15 @@ status_t ACodec::configureTemporalLayers(
     unsigned int numLayers = 0;
     unsigned int numBLayers = 0;
     int tags;
-    char dummy;
+    char tmp;
     OMX_VIDEO_ANDROID_TEMPORALLAYERINGPATTERNTYPE pattern =
         OMX_VIDEO_AndroidTemporalLayeringPatternNone;
-    if (sscanf(tsSchema.c_str(), "webrtc.vp8.%u-layer%c", &numLayers, &dummy) == 1
+    if (sscanf(tsSchema.c_str(), "webrtc.vp8.%u-layer%c", &numLayers, &tmp) == 1
             && numLayers > 0) {
         pattern = OMX_VIDEO_AndroidTemporalLayeringPatternWebRTC;
     } else if ((tags = sscanf(tsSchema.c_str(), "android.generic.%u%c%u%c",
-                    &numLayers, &dummy, &numBLayers, &dummy))
-            && (tags == 1 || (tags == 3 && dummy == '+'))
+                    &numLayers, &tmp, &numBLayers, &tmp))
+            && (tags == 1 || (tags == 3 && tmp == '+'))
             && numLayers > 0 && numLayers < UINT32_MAX - numBLayers) {
         numLayers += numBLayers;
         pattern = OMX_VIDEO_AndroidTemporalLayeringPatternAndroid;
@@ -2837,6 +2918,8 @@ status_t ACodec::setupAACCodec(
     presentation.nEncodedTargetLevel = drc.encodedTargetLevel;
     presentation.nPCMLimiterEnable = pcmLimiterEnable;
     presentation.nDrcEffectType = drc.effectType;
+    presentation.nDrcAlbumMode = drc.albumMode;
+    presentation.nDrcOutputLoudness = drc.outputLoudness;
 
     status_t res = mOMXNode->setParameter(
             OMX_IndexParamAudioAac, &profile, sizeof(profile));
@@ -3042,6 +3125,26 @@ status_t ACodec::setupG711Codec(bool encoder, int32_t sampleRate, int32_t numCha
 
     return setupRawAudioFormat(
             kPortIndexInput, sampleRate, numChannels);
+}
+
+status_t ACodec::setupOpusCodec(bool encoder, int32_t sampleRate, int32_t numChannels) {
+    if (encoder) {
+        return INVALID_OPERATION;
+    }
+    OMX_AUDIO_PARAM_ANDROID_OPUSTYPE def;
+    InitOMXParams(&def);
+    def.nPortIndex = kPortIndexInput;
+    status_t err = mOMXNode->getParameter(
+            (OMX_INDEXTYPE)OMX_IndexParamAudioAndroidOpus, &def, sizeof(def));
+    if (err != OK) {
+        ALOGE("setupOpusCodec(): Error %d getting OMX_IndexParamAudioAndroidOpus parameter", err);
+        return err;
+    }
+    def.nSampleRate = sampleRate;
+    def.nChannels = numChannels;
+    err = mOMXNode->setParameter(
+           (OMX_INDEXTYPE)OMX_IndexParamAudioAndroidOpus, &def, sizeof(def));
+    return err;
 }
 
 status_t ACodec::setupFlacCodec(
@@ -4691,15 +4794,15 @@ status_t ACodec::setupVPXEncoderParameters(const sp<AMessage> &msg, sp<AMessage>
         unsigned int numLayers = 0;
         unsigned int numBLayers = 0;
         int tags;
-        char dummy;
-        if (sscanf(tsSchema.c_str(), "webrtc.vp8.%u-layer%c", &numLayers, &dummy) == 1
+        char tmp;
+        if (sscanf(tsSchema.c_str(), "webrtc.vp8.%u-layer%c", &numLayers, &tmp) == 1
                 && numLayers > 0) {
             pattern = OMX_VIDEO_VPXTemporalLayerPatternWebRTC;
             tsType = OMX_VIDEO_AndroidTemporalLayeringPatternWebRTC;
             tsLayers = numLayers;
         } else if ((tags = sscanf(tsSchema.c_str(), "android.generic.%u%c%u%c",
-                        &numLayers, &dummy, &numBLayers, &dummy))
-                && (tags == 1 || (tags == 3 && dummy == '+'))
+                        &numLayers, &tmp, &numBLayers, &tmp))
+                && (tags == 1 || (tags == 3 && tmp == '+'))
                 && numLayers > 0 && numLayers < UINT32_MAX - numBLayers) {
             pattern = OMX_VIDEO_VPXTemporalLayerPatternWebRTC;
             // VPX does not have a concept of B-frames, so just count all layers
@@ -5656,7 +5759,8 @@ status_t ACodec::requestIDRFrame() {
 
 ACodec::BaseState::BaseState(ACodec *codec, const sp<AState> &parentState)
     : AState(parentState),
-      mCodec(codec) {
+      mCodec(codec),
+      mPendingExtraOutputMetadataBufferRequest(false) {
 }
 
 ACodec::BaseState::PortMode ACodec::BaseState::getPortMode(
@@ -5754,6 +5858,21 @@ bool ACodec::BaseState::onMessageReceived(const sp<AMessage> &msg) {
 
         case kWhatCheckIfStuck: {
             ALOGV("No-op by default");
+            break;
+        }
+
+        case kWhatSubmitExtraOutputMetadataBuffer: {
+            mPendingExtraOutputMetadataBufferRequest = false;
+            if (getPortMode(kPortIndexOutput) == RESUBMIT_BUFFERS && mCodec->mIsLowLatency) {
+                // Decoders often need more than one output buffer to be
+                // submitted before processing a single input buffer.
+                // For low latency codecs, we don't want to wait for more input
+                // to be queued to get those output buffers submitted.
+                if (mCodec->submitOutputMetadataBuffer() == OK
+                        && mCodec->mMetadataBuffersToSubmit > 0) {
+                    maybePostExtraOutputMetadataBufferRequest();
+                }
+            }
             break;
         }
 
@@ -6113,7 +6232,12 @@ void ACodec::BaseState::onInputBufferFilled(const sp<AMessage> &msg) {
                             (outputMode == FREE_BUFFERS ? "FREE" :
                              outputMode == KEEP_BUFFERS ? "KEEP" : "RESUBMIT"));
                     if (outputMode == RESUBMIT_BUFFERS) {
-                        mCodec->submitOutputMetadataBuffer();
+                        status_t err = mCodec->submitOutputMetadataBuffer();
+                        if (mCodec->mIsLowLatency
+                                && err == OK
+                                && mCodec->mMetadataBuffersToSubmit > 0) {
+                            maybePostExtraOutputMetadataBufferRequest();
+                        }
                     }
                 }
                 info->checkReadFence("onInputBufferFilled");
@@ -6881,8 +7005,11 @@ status_t ACodec::LoadedState::setupInputSurface() {
         return err;
     }
 
+    using hardware::media::omx::V1_0::utils::TWOmxNode;
     err = statusFromBinderStatus(
-            mCodec->mGraphicBufferSource->configure(mCodec->mOMXNode, dataSpace));
+            mCodec->mGraphicBufferSource->configure(
+                    new TWOmxNode(mCodec->mOMXNode),
+                    static_cast<hardware::graphics::common::V1_0::Dataspace>(dataSpace)));
     if (err != OK) {
         ALOGE("[%s] Unable to configure for node (err %d)",
               mCodec->mComponentName.c_str(), err);
@@ -6968,8 +7095,9 @@ status_t ACodec::LoadedState::setupInputSurface() {
         }
 
         err = statusFromBinderStatus(
-                mCodec->mGraphicBufferSource->setColorAspects(ColorUtils::packToU32(
-                        *(ColorAspects *)colorAspectsBuffer->base())));
+                mCodec->mGraphicBufferSource->setColorAspects(
+                        hardware::media::omx::V1_0::utils::toHardwareColorAspects(
+                                *(ColorAspects *)colorAspectsBuffer->base())));
 
         if (err != OK) {
             ALOGE("[%s] Unable to configure color aspects (err %d)",
@@ -6985,8 +7113,10 @@ void ACodec::LoadedState::onCreateInputSurface(
     ALOGV("onCreateInputSurface");
 
     sp<IGraphicBufferProducer> bufferProducer;
+    sp<HGraphicBufferSource> bufferSource;
     status_t err = mCodec->mOMX->createInputSurface(
-            &bufferProducer, &mCodec->mGraphicBufferSource);
+            &bufferProducer, &bufferSource);
+    mCodec->mGraphicBufferSource = bufferSource;
 
     if (err == OK) {
         err = setupInputSurface();
@@ -7019,8 +7149,12 @@ void ACodec::LoadedState::onSetInputSurface(const sp<AMessage> &msg) {
     }
 
     sp<PersistentSurface> surface = static_cast<PersistentSurface *>(obj.get());
-    mCodec->mGraphicBufferSource = surface->getBufferSource();
-    status_t err = setupInputSurface();
+    sp<HGraphicBufferSource> hgbs = HGraphicBufferSource::castFrom(surface->getHidlTarget());
+    status_t err = BAD_VALUE;
+    if (hgbs) {
+        mCodec->mGraphicBufferSource = hgbs;
+        err = setupInputSurface();
+    }
 
     if (err == OK) {
         mCodec->mCallback->onInputSurfaceAccepted(
@@ -7248,6 +7382,9 @@ void ACodec::ExecutingState::submitOutputMetaBuffers() {
             if (mCodec->submitOutputMetadataBuffer() != OK)
                 break;
         }
+    }
+    if (mCodec->mIsLowLatency) {
+        maybePostExtraOutputMetadataBufferRequest();
     }
 
     // *** NOTE: THE FOLLOWING WORKAROUND WILL BE REMOVED ***
@@ -7539,8 +7676,14 @@ status_t ACodec::setParameters(const sp<AMessage> &params) {
         }
 
         int64_t stopTimeOffsetUs;
-        err = statusFromBinderStatus(
-                mGraphicBufferSource->getStopTimeOffsetUs(&stopTimeOffsetUs));
+        hardware::Return<void> trans = mGraphicBufferSource->getStopTimeOffsetUs(
+                [&err, &stopTimeOffsetUs](auto status, auto result) {
+                    err = static_cast<status_t>(status);
+                    stopTimeOffsetUs = result;
+                });
+        if (!trans.isOk()) {
+            err = trans.isDeadObject() ? DEAD_OBJECT : UNKNOWN_ERROR;
+        }
 
         if (err != OK) {
             ALOGE("Failed to get stop time offset (err %d)", err);
@@ -7549,8 +7692,8 @@ status_t ACodec::setParameters(const sp<AMessage> &params) {
         mInputFormat->setInt64("android._stop-time-offset-us", stopTimeOffsetUs);
     }
 
-    int32_t dummy;
-    if (params->findInt32("request-sync", &dummy)) {
+    int32_t tmp;
+    if (params->findInt32("request-sync", &tmp)) {
         status_t err = requestIDRFrame();
 
         if (err != OK) {
@@ -7580,6 +7723,14 @@ status_t ACodec::setParameters(const sp<AMessage> &params) {
             ALOGI("[%s] failed setIntraRefreshPeriod. Failure is fine since this key is optional",
                     mComponentName.c_str());
             err = OK;
+        }
+    }
+
+    int32_t lowLatency = 0;
+    if (params->findInt32("low-latency", &lowLatency)) {
+        status_t err = setLowLatency(lowLatency);
+        if (err != OK) {
+            return err;
         }
     }
 

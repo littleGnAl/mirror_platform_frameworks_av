@@ -105,7 +105,7 @@ int32_t AAudioServiceStreamShared::calculateBufferCapacity(int32_t requestedCapa
     }
     int32_t capacityInFrames = numBursts * framesPerBurst;
 
-    // Final sanity check.
+    // Final range check.
     if (capacityInFrames > MAX_FRAMES_PER_BUFFER) {
         ALOGE("calculateBufferCapacity() calc capacity %d > max %d",
               capacityInFrames, MAX_FRAMES_PER_BUFFER);
@@ -203,9 +203,8 @@ error:
     return result;
 }
 
-
-aaudio_result_t AAudioServiceStreamShared::close()  {
-    aaudio_result_t result = AAudioServiceStreamBase::close();
+aaudio_result_t AAudioServiceStreamShared::close_l()  {
+    aaudio_result_t result = AAudioServiceStreamBase::close_l();
 
     {
         std::lock_guard<std::mutex> lock(mAudioDataQueueLock);
