@@ -1,0 +1,48 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005294658",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1443655?revision\u003d3",
+      "fixSuggestions": [
+        {
+          "fixId": "4a58e57f_4268695c",
+          "description": "Change to \"media/libeffects/lvm/wrapper/Bundle/EffectBundle.cpp\"",
+          "replacements": [
+            {
+              "path": "media/libeffects/lvm/wrapper/Bundle/EffectBundle.cpp",
+              "range": {
+                "startLine": 3441,
+                "startChar": 38,
+                "endLine": 3441,
+                "endChar": 46
+              },
+              "replacement": " doesn\u0027t "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "37b737b2_e357d70a",
+        "filename": "media/libeffects/lvm/wrapper/Bundle/EffectBundle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3441,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-01T17:52:17Z",
+      "side": 1,
+      "message": "Common typo found: \" doesnt \" -- should it be \" doesn\u0027t \"?\nCheck whether the apostrophe needs to be escaped.\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 3441,
+        "startChar": 38,
+        "endLine": 3441,
+        "endChar": 46
+      },
+      "revId": "aeeb2a8d748d829d0a462b108b54205979b230a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
