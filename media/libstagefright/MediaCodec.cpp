@@ -206,6 +206,7 @@ struct MediaCodec::ResourceManagerServiceProxy : public RefBase {
     void removeResource(const MediaResourceParcel &resource);
     void removeClient();
     void markClientForPendingRemoval();
+    void reclaimResourcesFromClientsPendingRemoval();
     bool reclaimResource(const std::vector<MediaResourceParcel> &resources);
 
 private:
@@ -293,6 +294,14 @@ void MediaCodec::ResourceManagerServiceProxy::markClientForPendingRemoval() {
         return;
     }
     mService->markClientForPendingRemoval(mPid, getId(mClient));
+}
+
+void MediaCodec::ResourceManagerServiceProxy::reclaimResourcesFromClientsPendingRemoval() {
+    Mutex::Autolock _l(mLock);
+    if (mService == nullptr) {
+        return;
+    }
+    mService->reclaimResourcesFromClientsPendingRemoval(mPid);
 }
 
 bool MediaCodec::ResourceManagerServiceProxy::reclaimResource(
@@ -1189,6 +1198,9 @@ status_t MediaCodec::init(const AString &name) {
     if (mIsVideo) {
         mBatteryChecker = new BatteryChecker(new AMessage(kWhatCheckBatteryStats, this));
     }
+
+    // Kill clients pending removal.
+    mResourceManagerProxy->reclaimResourcesFromClientsPendingRemoval();
 
     status_t err;
     std::vector<MediaResourceParcel> resources;

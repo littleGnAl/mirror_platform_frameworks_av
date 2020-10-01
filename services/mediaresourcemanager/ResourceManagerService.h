@@ -127,10 +127,17 @@ public:
 
     Status markClientForPendingRemoval(int32_t pid, int64_t clientId) override;
 
+    Status reclaimResourcesFromClientsPendingRemoval(int32_t pid) override;
+
     Status removeResource(int pid, int64_t clientId, bool checkValid);
 
 private:
     friend class ResourceManagerServiceTest;
+
+    // Reclaims resources from |clients|.
+    Status reclaimInternal(
+            const Vector<std::shared_ptr<IResourceManagerClient>> &clients,
+            bool *_aidl_return = nullptr);
 
     // Gets the list of all the clients who own the specified resource type.
     // Returns false if any client belongs to a process with higher priority than the
