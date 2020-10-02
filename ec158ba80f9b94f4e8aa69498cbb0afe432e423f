@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "7ab5187a_55ac10ec",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2020-10-02T00:43:47Z",
+      "side": 1,
+      "message": "Can we just do this in ResourceManagerServiceProxy::init? Seems no need for a separate call.",
+      "range": {
+        "startLine": 304,
+        "startChar": 3,
+        "endLine": 304,
+        "endChar": 62
+      },
+      "revId": "ec158ba80f9b94f4e8aa69498cbb0afe432e423f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "29388c48_9ed4dcde",
+        "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2020-10-02T00:43:47Z",
+      "side": 1,
+      "message": "Can you make sure that *_aidl_return is always set to something when this function returns?\n\nThis method now depends on *_aidl_return being set by caller on some path, while setting it itself on other paths. This is difficult to maintain later.",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 28
+      },
+      "revId": "ec158ba80f9b94f4e8aa69498cbb0afe432e423f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
