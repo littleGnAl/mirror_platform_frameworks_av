@@ -122,6 +122,24 @@
       "revId": "728c6dc535ec19c4a491e10295e3308aa59bb3cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "fcaa0bc9_24ab74d5",
+        "filename": "media/libeffects/lvm/.clang-format",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-10-02T16:12:07Z",
+      "side": 1,
+      "message": "Good idea. I think it\u0027s OK to leave a local clang-format consisting of two sections: one copied from the system-wide format (ideally with no modifications), and below it--project-specific directives with justifications. This way it will be easier to converge to the system format eventually.",
+      "parentUuid": "d5a47e37_5d7b86da",
+      "revId": "728c6dc535ec19c4a491e10295e3308aa59bb3cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
