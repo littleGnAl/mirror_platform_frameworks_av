@@ -104,6 +104,24 @@
       "revId": "728c6dc535ec19c4a491e10295e3308aa59bb3cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5a47e37_5d7b86da",
+        "filename": "media/libeffects/lvm/.clang-format",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-10-02T06:58:39Z",
+      "side": 1,
+      "message": "If we are trying to ultimately converge on a standard format, perhaps we should do (2) pointer alignment and skip (1) sort includes in this CL, with our own private .clang-format?   That should be a simple automated change.  I\u0027d prefer to stick to automated changes in this CL.\n\nLater, if we choose to do so, we can fix the includes and unify to the system-clang-format, preferably on a different CL given that might take some manual code changes.  But the second step will be a much smaller change and easier to review in isolation.",
+      "parentUuid": "9eaa1938_c2542510",
+      "revId": "728c6dc535ec19c4a491e10295e3308aa59bb3cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
