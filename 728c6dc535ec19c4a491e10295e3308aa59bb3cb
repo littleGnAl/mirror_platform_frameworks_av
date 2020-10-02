@@ -86,6 +86,24 @@
       "revId": "728c6dc535ec19c4a491e10295e3308aa59bb3cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "9eaa1938_c2542510",
+        "filename": "media/libeffects/lvm/.clang-format",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-10-02T05:15:59Z",
+      "side": 1,
+      "message": "Mikhail,\nI looked at the two formats in build/soong.\nTwo major differences are\n1. SortIncludes - lvm currently requires this to be false (sorting the includes currently results in some build errors)\n2. DerivePointerAlignment/PointerAlignment: Currently most of the code in lvm is using right aligntment (eg: int *a). Both the styles in the folder set DerivePointerAlignment to false and set PointerAlignment to left (int* a).\n\nMaking changes to enable SortIncludes: true may be time consuming for lvm and not sure if it is worth the effort.\nSecond one is more of a style preference and not really a blocker, though Google default style derives pointer alignment based on what is used the most in that file.\n\nAnd regarding the option to create system-clang-format-3 in build/soong, IMHO that kind of defeats the purpose of converging to a common style as each project may keep adding their own variant in that folder. And also because that is in a different repository, it won\u0027t be as easy as making changes to the one in lvm folder.\n\nPlease let me know what should we do on this?",
+      "parentUuid": "67ce9c2d_2ee134b9",
+      "revId": "728c6dc535ec19c4a491e10295e3308aa59bb3cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
