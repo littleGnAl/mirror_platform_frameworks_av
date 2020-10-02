@@ -93,6 +93,30 @@
       "revId": "ec158ba80f9b94f4e8aa69498cbb0afe432e423f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "4420dd61_31c1aab8",
+        "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 585,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2020-10-02T23:23:54Z",
+      "side": 1,
+      "message": "Nice, thanks!",
+      "parentUuid": "d93ff60b_ee777276",
+      "range": {
+        "startLine": 585,
+        "startChar": 0,
+        "endLine": 585,
+        "endChar": 28
+      },
+      "revId": "ec158ba80f9b94f4e8aa69498cbb0afe432e423f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
