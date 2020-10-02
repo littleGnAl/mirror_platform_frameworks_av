@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "90242fcc_d3acbc5e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-10-02T00:47:40Z",
+      "side": 1,
+      "message": "Thanks Harish, this looks good to me, and makes the Audio Effects code more readable. Adding Mikhail, Eric, and Ricardo to see if they have comments or preferences on the .clang-format.  We might add this to an effects presubmit hook later.",
+      "revId": "728c6dc535ec19c4a491e10295e3308aa59bb3cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "9a9b5a6b_cadf0159",
         "filename": "media/libeffects/lvm/.clang-format",
         "patchSetId": 4
@@ -30,6 +47,24 @@
       "writtenOn": "2020-10-01T18:18:07Z",
       "side": 1,
       "message": "Andy, I have reduced the .clang-format as you had suggested.\nSortIncludes is set to false as there are dependencies and\nDerivePointerAlignment is left as Google default to match what was present in the code earlier.",
+      "revId": "728c6dc535ec19c4a491e10295e3308aa59bb3cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "b3f037f0_9fd9d766",
+        "filename": "media/libeffects/lvm/.clang-format",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-10-02T00:47:40Z",
+      "side": 1,
+      "message": "Great, thanks!",
+      "parentUuid": "9a9b5a6b_cadf0159",
       "revId": "728c6dc535ec19c4a491e10295e3308aa59bb3cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
