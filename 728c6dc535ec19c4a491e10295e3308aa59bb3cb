@@ -68,6 +68,24 @@
       "revId": "728c6dc535ec19c4a491e10295e3308aa59bb3cb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "67ce9c2d_2ee134b9",
+        "filename": "media/libeffects/lvm/.clang-format",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2020-10-02T00:59:15Z",
+      "side": 1,
+      "message": "I think the recommended practice in Android is to make .clang-format a symlink to build/soong/scripts/system-clang-format (https://android.googlesource.com/platform/build/soong/+/refs/heads/master/scripts/system-clang-format) for converging to the same format. It is mostly the same as this one, however it\u0027s lacking `BinPack*` and `SortIncludes` directives. If these are critical, we can probably add `system-clang-format-3` (there is already format-2) for code like this. Or perhaps bite the bullet and reformat this code.",
+      "parentUuid": "b3f037f0_9fd9d766",
+      "revId": "728c6dc535ec19c4a491e10295e3308aa59bb3cb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
