@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "8a640fea_86e1c1ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1688066
+      },
+      "writtenOn": "2020-10-05T18:29:13Z",
+      "side": 1,
+      "message": "I checked out the build errors, and it appeared there was a linker issue that I wasn\u0027t running into before. It should be fixed now, not sure what caused it to pop up.\n\nOn a side note, I let this run over the weekend, and ran into a signed int overflow in MediaClock.cpp:updateAnchor() that doesn\u0027t seem to have any security impact. However, I\u0027m not sure how to handle it because it\u0027s called via other functionality this fuzzer may eventually run into (i.e. MediaSync). Specifically, on L113, if oldNowMediaUs is less than, but close to MAX_INT, it can overflow when adding  kAnchorFluctuationAllowedUs to it.\n\nIf we submit the fuzzer as is, it will quickly run into this issue and file a bug so I\u0027m not sure if it\u0027s easier for someone to add in a check/guard for it or if you want me to try to work the fuzzer around it. This might be difficult since I\u0027m not sure there\u0027s a good way to track all the values internally stored in MediaClock that I\u0027m adding to my inputs. (I guess alternatively I can remove fuzzing that function altogether, but that\u0027s not ideal)",
+      "revId": "ae47117be8944ec3198926699ffe9d2aa0b84f69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    }
+  ]
+}
