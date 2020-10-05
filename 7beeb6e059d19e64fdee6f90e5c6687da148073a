@@ -2,6 +2,23 @@
   "comments": [
     {
       "key": {
+        "uuid": "9e3f4100_1acf9ebc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-05T16:58:11Z",
+      "side": 1,
+      "message": "Thanks. ",
+      "revId": "7beeb6e059d19e64fdee6f90e5c6687da148073a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ecbc1cf_6a932afa",
         "filename": "media/codec2/tests/C2Param_test.cpp",
         "patchSetId": 2
@@ -22,6 +39,30 @@
       "revId": "7beeb6e059d19e64fdee6f90e5c6687da148073a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "1f72084a_63bb7aa2",
+        "filename": "media/codec2/tests/C2Param_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-05T16:58:11Z",
+      "side": 1,
+      "message": "This structure tests that C2_PACK is equivalent to aligned(4) (previously it tested that it was packed). In essence each struct also has an equivalent without C2 macros and this is it.",
+      "parentUuid": "7ecbc1cf_6a932afa",
+      "range": {
+        "startLine": 129,
+        "startChar": 2,
+        "endLine": 129,
+        "endChar": 30
+      },
+      "revId": "7beeb6e059d19e64fdee6f90e5c6687da148073a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
@@ -56,6 +97,24 @@
       "revId": "7beeb6e059d19e64fdee6f90e5c6687da148073a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "90b1a0d3_ad85589e",
+        "filename": "media/codec2/tests/C2Param_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 479,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-05T16:58:11Z",
+      "side": 1,
+      "message": "this is the implementation with no C2 macros.",
+      "parentUuid": "41c26b24_8163ad3c",
+      "revId": "7beeb6e059d19e64fdee6f90e5c6687da148073a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
