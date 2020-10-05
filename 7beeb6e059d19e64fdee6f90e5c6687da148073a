@@ -19,6 +19,23 @@
     },
     {
       "key": {
+        "uuid": "f8d5ab90_f2489312",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-05T17:12:41Z",
+      "side": 1,
+      "message": "checked the line size conventions for this file.",
+      "revId": "7beeb6e059d19e64fdee6f90e5c6687da148073a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
+    },
+    {
+      "key": {
         "uuid": "7ecbc1cf_6a932afa",
         "filename": "media/codec2/tests/C2Param_test.cpp",
         "patchSetId": 2
@@ -80,6 +97,24 @@
       "revId": "7beeb6e059d19e64fdee6f90e5c6687da148073a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "daddbc21_239140c3",
+        "filename": "media/codec2/tests/C2Param_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-05T17:12:41Z",
+      "side": 1,
+      "message": "In this file we are specifically not maintaining a max line limit. We could reformat this file in a separate formatting change.",
+      "parentUuid": "5804ead5_39113a74",
+      "revId": "7beeb6e059d19e64fdee6f90e5c6687da148073a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     },
     {
       "key": {
