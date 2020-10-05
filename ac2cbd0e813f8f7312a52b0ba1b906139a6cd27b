@@ -80,6 +80,30 @@
       "revId": "ac2cbd0e813f8f7312a52b0ba1b906139a6cd27b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "c6f79237_e3a51e40",
+        "filename": "media/codec2/vndk/C2Buffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 402,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-05T21:34:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a1af917_52c1210f",
+      "range": {
+        "startLine": 399,
+        "startChar": 0,
+        "endLine": 402,
+        "endChar": 0
+      },
+      "revId": "ac2cbd0e813f8f7312a52b0ba1b906139a6cd27b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
