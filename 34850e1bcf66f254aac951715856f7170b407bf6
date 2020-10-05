@@ -34,6 +34,69 @@
       "revId": "34850e1bcf66f254aac951715856f7170b407bf6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": false
+    },
+    {
+      "key": {
+        "uuid": "d41c44be_d0ae140e",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2243,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-10-05T19:53:18Z",
+      "side": 1,
+      "message": "nit: line break",
+      "range": {
+        "startLine": 2243,
+        "startChar": 34,
+        "endLine": 2243,
+        "endChar": 35
+      },
+      "revId": "34850e1bcf66f254aac951715856f7170b407bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "d5215aa5_e7b551bb",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2257,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-10-05T19:53:18Z",
+      "side": 1,
+      "message": "If this is meant to be bundled with onWorkDone, are we making components to delay onWorkDone until the frame is rendered?\n\nOr we could make this as a pair of {ordinal, timestamp} to allow attaching this to future work.",
+      "revId": "34850e1bcf66f254aac951715856f7170b407bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "30218354_9a8aea0d",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2259,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-10-05T19:53:18Z",
+      "side": 1,
+      "message": "StreamParam?",
+      "range": {
+        "startLine": 2259,
+        "startChar": 8,
+        "endLine": 2259,
+        "endChar": 19
+      },
+      "revId": "34850e1bcf66f254aac951715856f7170b407bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
     }
   ]
 }
