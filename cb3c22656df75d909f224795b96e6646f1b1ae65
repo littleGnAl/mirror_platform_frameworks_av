@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "1853ebc7_9e5d9c8f",
+        "filename": "media/codec2/vndk/C2AllocatorBlob.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-05T21:28:40Z",
+      "side": 1,
+      "message": "this evaluates to true but I don\u0027t think we can say it is valid.\n\nNot sure how to handle this. Perhaps, since the prior implementation in C2Buffer.cpp relied on static methods. Can we do the same here?",
+      "range": {
+        "startLine": 182,
+        "startChar": 15,
+        "endLine": 182,
+        "endChar": 27
+      },
+      "revId": "cb3c22656df75d909f224795b96e6646f1b1ae65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}
