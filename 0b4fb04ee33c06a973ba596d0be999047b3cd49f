@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "key": {
+        "uuid": "98f7c2dc_a4917eef",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1843,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2020-10-06T08:42:38Z",
+      "side": 1,
+      "message": "Nit: please put this all on one line now that it fits in 100 chars.",
+      "range": {
+        "startLine": 1841,
+        "startChar": 0,
+        "endLine": 1843,
+        "endChar": 38
+      },
+      "revId": "0b4fb04ee33c06a973ba596d0be999047b3cd49f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    }
+  ]
+}

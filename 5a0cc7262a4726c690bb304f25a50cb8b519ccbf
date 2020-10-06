@@ -89,6 +89,30 @@
     },
     {
       "key": {
+        "uuid": "4d4fa29d_4e03b02d",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1838,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2020-10-06T08:42:38Z",
+      "side": 1,
+      "message": "+1 to removing the extra parentheses, as they don\u0027t do anything useful and are potentially confusing.",
+      "parentUuid": "100cdd00_6efbcac5",
+      "range": {
+        "startLine": 1838,
+        "startChar": 42,
+        "endLine": 1838,
+        "endChar": 43
+      },
+      "revId": "5a0cc7262a4726c690bb304f25a50cb8b519ccbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": true
+    },
+    {
+      "key": {
         "uuid": "0d9ee48f_531cb368",
         "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
         "patchSetId": 1
@@ -133,6 +157,30 @@
       "revId": "5a0cc7262a4726c690bb304f25a50cb8b519ccbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
       "unresolved": true
+    },
+    {
+      "key": {
+        "uuid": "6c7ef5dd_f46b80cd",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1839,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2020-10-06T08:42:38Z",
+      "side": 1,
+      "message": "Resolving as we are trying to minimize the risk of regressions (see b/165880527#comment19).",
+      "parentUuid": "c73c23c5_f05df5c1",
+      "range": {
+        "startLine": 1839,
+        "startChar": 44,
+        "endLine": 1839,
+        "endChar": 56
+      },
+      "revId": "5a0cc7262a4726c690bb304f25a50cb8b519ccbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
+      "unresolved": false
     }
   ]
 }
