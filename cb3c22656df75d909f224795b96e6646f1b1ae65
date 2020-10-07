@@ -63,6 +63,30 @@
       },
       "revId": "cb3c22656df75d909f224795b96e6646f1b1ae65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02a13cc1_73cd8a8e",
+        "filename": "media/codec2/vndk/C2AllocatorBlob.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-07T02:17:02Z",
+      "side": 1,
+      "message": "Ah, I can\u0027t just switch back to the static method since isValid is now a virtual override. I could add a static C2AllocatorGralloc::doIsValid() which its isValid() call could also use, but that feels a little messy.\n\nFor now I\u0027ll properly return false if there is no mC2AllocatorGralloc set.",
+      "parentUuid": "f6d0db29_bc91a842",
+      "range": {
+        "startLine": 182,
+        "startChar": 15,
+        "endLine": 182,
+        "endChar": 27
+      },
+      "revId": "cb3c22656df75d909f224795b96e6646f1b1ae65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
