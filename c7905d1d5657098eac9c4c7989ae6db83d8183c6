@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "aa79da66_bfa8ced3",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Sungtak \u0026 Johny, what do you think about this change?",
       "revId": "c7905d1d5657098eac9c4c7989ae6db83d8183c6",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a8e165ff_dac0eaab",
         "filename": "media/codec2/vndk/C2Buffer.cpp",
@@ -37,10 +38,10 @@
         "endChar": 8
       },
       "revId": "c7905d1d5657098eac9c4c7989ae6db83d8183c6",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9392329b_a1fe6e93",
         "filename": "media/codec2/vndk/C2Buffer.cpp",
@@ -61,10 +62,10 @@
         "endChar": 8
       },
       "revId": "c7905d1d5657098eac9c4c7989ae6db83d8183c6",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "43de3f0b_f218ee86",
         "filename": "media/codec2/vndk/C2Buffer.cpp",
@@ -85,10 +86,10 @@
         "endChar": 8
       },
       "revId": "c7905d1d5657098eac9c4c7989ae6db83d8183c6",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "62f922ad_7d3a4e83",
         "filename": "media/codec2/vndk/C2Buffer.cpp",
@@ -109,8 +110,31 @@
         "endChar": 8
       },
       "revId": "c7905d1d5657098eac9c4c7989ae6db83d8183c6",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab06db49_47970ab7",
+        "filename": "media/codec2/vndk/C2Buffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 400,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-07T02:44:00Z",
+      "side": 1,
+      "message": "Switched back to the lambda, marking this as resolved.",
+      "parentUuid": "62f922ad_7d3a4e83",
+      "range": {
+        "startLine": 400,
+        "startChar": 4,
+        "endLine": 400,
+        "endChar": 8
+      },
+      "revId": "c7905d1d5657098eac9c4c7989ae6db83d8183c6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
