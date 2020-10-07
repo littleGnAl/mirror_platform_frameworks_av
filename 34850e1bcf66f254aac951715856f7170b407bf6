@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "a680be7a_f1087509",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "I thought we wanted to use IComponent::configureVideoTunnel() instead of going through Codec 2.0 for tunneled playback.",
       "revId": "34850e1bcf66f254aac951715856f7170b407bf6",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "f07b1767_15edcb38",
         "filename": "/PATCHSET_LEVEL",
@@ -32,10 +33,27 @@
       "message": "Yes that\u0027s true for c2 HAL. This defines the interface on Codec 2.0 API itself.",
       "parentUuid": "a680be7a_f1087509",
       "revId": "34850e1bcf66f254aac951715856f7170b407bf6",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c27bd00d_85177491",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-07T17:04:16Z",
+      "side": 1,
+      "message": "Thanks for the review.",
+      "revId": "34850e1bcf66f254aac951715856f7170b407bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "d41c44be_d0ae140e",
         "filename": "media/codec2/core/include/C2Config.h",
@@ -55,10 +73,34 @@
         "endChar": 35
       },
       "revId": "34850e1bcf66f254aac951715856f7170b407bf6",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6f5349c_144c8f6d",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2243,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-07T17:04:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d41c44be_d0ae140e",
+      "range": {
+        "startLine": 2243,
+        "startChar": 34,
+        "endLine": 2243,
+        "endChar": 35
+      },
+      "revId": "34850e1bcf66f254aac951715856f7170b407bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "d5215aa5_e7b551bb",
         "filename": "media/codec2/core/include/C2Config.h",
@@ -72,10 +114,28 @@
       "side": 1,
       "message": "If this is meant to be bundled with onWorkDone, are we making components to delay onWorkDone until the frame is rendered?\n\nOr we could make this as a pair of {ordinal, timestamp} to allow attaching this to future work.",
       "revId": "34850e1bcf66f254aac951715856f7170b407bf6",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c36b300a_a8ceeec2",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2257,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-07T17:04:16Z",
+      "side": 1,
+      "message": "This is meant to be with onWorkDone and yes we are asking components to delay onWorkDone until the frame is rendered. In fact, the original proposal from one of the vendors was to make this a pair and work as you describe, but in that case there is no correspondence of the rendering information to the input frame, which goes against the philosophy of Codec 2.0. Also, if tunneled decoder was set up as \"chaining into a renderer component\", the rendering complete would also arrive at onWorkDone.",
+      "parentUuid": "d5215aa5_e7b551bb",
+      "revId": "34850e1bcf66f254aac951715856f7170b407bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "30218354_9a8aea0d",
         "filename": "media/codec2/core/include/C2Config.h",
@@ -95,8 +155,31 @@
         "endChar": 19
       },
       "revId": "34850e1bcf66f254aac951715856f7170b407bf6",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c8a14c7_eb1768bd",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2259,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-07T17:04:16Z",
+      "side": 1,
+      "message": "I also thought of this, but ideally the entire frame (all related sub-streams) is rendered at the same time. Not sure what would it mean to render each sub-stream at different time.",
+      "parentUuid": "30218354_9a8aea0d",
+      "range": {
+        "startLine": 2259,
+        "startChar": 8,
+        "endLine": 2259,
+        "endChar": 19
+      },
+      "revId": "34850e1bcf66f254aac951715856f7170b407bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
