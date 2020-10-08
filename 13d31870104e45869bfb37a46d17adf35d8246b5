@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "22080e09_1382980a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-08T00:28:45Z",
+      "side": 1,
+      "message": "Thanks that actually jogged my memory. Let me propose how to implement what you want here.\n\nBasically isValid was meant to be static, and isValid from an allocator instance should do something else.",
+      "revId": "13d31870104e45869bfb37a46d17adf35d8246b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b5d755_9ff60182",
+        "filename": "media/codec2/vndk/platform/C2BqBuffer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-08T00:28:45Z",
+      "side": 1,
+      "message": "I think now I understand this line. Let me propose a way to do this.",
+      "range": {
+        "startLine": 222,
+        "startChar": 0,
+        "endLine": 222,
+        "endChar": 45
+      },
+      "revId": "13d31870104e45869bfb37a46d17adf35d8246b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
