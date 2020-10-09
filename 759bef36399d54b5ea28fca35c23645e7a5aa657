@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "6c4348dd_f9e66260",
         "filename": "media/libstagefright/ACodec.cpp",
@@ -20,8 +21,31 @@
         "endChar": 0
       },
       "revId": "759bef36399d54b5ea28fca35c23645e7a5aa657",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7244b7_7e95cc2a",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 8151,
+      "author": {
+        "id": 1608690
+      },
+      "writtenOn": "2020-10-09T16:51:01Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c4348dd_f9e66260",
+      "range": {
+        "startLine": 8146,
+        "startChar": 0,
+        "endLine": 8151,
+        "endChar": 0
+      },
+      "revId": "759bef36399d54b5ea28fca35c23645e7a5aa657",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
