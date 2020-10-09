@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa60ec04_ab696c9b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-10-09T18:54:03Z",
+      "side": 1,
+      "message": "On the principle, I think we should try to not add a new method connectHwAudioSource() but try to also handle the case of HW to HW connection in connectAudioSource + createAudioPatchInternal.\nMaybe systematically adding a SW output in case of dev to dev connection via HW bridge ",
+      "revId": "b77f882b4d63d7020c7bc0c44a0bf612a28f4d52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d5e2f69_a90016c0",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-10-09T18:54:03Z",
+      "side": 1,
+      "message": "shouldn\u0027t we do this systematically given the RX audio source is also connected at line 597 and  mCallRxPatch stays null in this case?",
+      "range": {
+        "startLine": 547,
+        "startChar": 8,
+        "endLine": 547,
+        "endChar": 40
+      },
+      "revId": "b77f882b4d63d7020c7bc0c44a0bf612a28f4d52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
