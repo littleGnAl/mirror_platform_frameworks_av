@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "7e1e17bc_a9b38319",
         "filename": "/PATCHSET_LEVEL",
@@ -14,8 +15,24 @@
       "side": 1,
       "message": "Hi Ray, would you please review this OWNERS CL? Thank you so much for your help!",
       "revId": "960ca04eeaabe661a51bc9677f099af85c2c0944",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1276f94d_0f505e49",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-09T22:14:38Z",
+      "side": 1,
+      "message": "failure elsewhere; since this only affects OWNERS files, i don\u0027t see that it could cause any issues.\n\nre-hugging to see if whatever else was broken has since been fixed.",
+      "revId": "960ca04eeaabe661a51bc9677f099af85c2c0944",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
