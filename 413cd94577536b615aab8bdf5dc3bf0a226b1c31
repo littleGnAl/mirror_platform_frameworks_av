@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "dc13d741_fd2a0ab9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 21
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-09T21:14:24Z",
+      "side": 1,
+      "message": "Thanks for the suggestions! I\u0027ve made the changes in my rebased tree, which I\u0027ll submit here in a bit.",
+      "revId": "413cd94577536b615aab8bdf5dc3bf0a226b1c31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "6cdd2b90_442db97c",
         "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
         "patchSetId": 21
@@ -14,6 +31,30 @@
       "writtenOn": "2020-10-09T14:54:11Z",
       "side": 1,
       "message": "IsValid - sorry, this was wrongly capitalized in the existing classes.",
+      "range": {
+        "startLine": 57,
+        "startChar": 16,
+        "endLine": 57,
+        "endChar": 23
+      },
+      "revId": "413cd94577536b615aab8bdf5dc3bf0a226b1c31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2991a3e6_2cad8114",
+        "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-09T21:14:24Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "6cdd2b90_442db97c",
       "range": {
         "startLine": 57,
         "startChar": 16,
@@ -43,6 +84,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "82a5ff5c_acbe797e",
+        "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 395,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-09T21:14:24Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "f1f065a8_226dd73c",
+      "revId": "413cd94577536b615aab8bdf5dc3bf0a226b1c31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "b66e90f3_c5e0cf73",
         "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
         "patchSetId": 21
@@ -54,6 +113,30 @@
       "writtenOn": "2020-10-09T14:54:11Z",
       "side": 1,
       "message": "this is now checkHandle const.",
+      "range": {
+        "startLine": 45,
+        "startChar": 17,
+        "endLine": 45,
+        "endChar": 24
+      },
+      "revId": "413cd94577536b615aab8bdf5dc3bf0a226b1c31",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21d2b02a_43d22068",
+        "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-09T21:14:24Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "b66e90f3_c5e0cf73",
       "range": {
         "startLine": 45,
         "startChar": 17,
