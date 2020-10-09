@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94d55a54_65de2069",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-09T14:48:39Z",
+      "side": 1,
+      "message": "I changed the name so that we can keep a deprecated static isValid-s as there may be some vendor code that depends on them.",
+      "revId": "653ddd1c17b48e0d8686488f9ae53d8d57e176ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
