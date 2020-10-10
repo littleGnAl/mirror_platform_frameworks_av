@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4cdd211b_96cbd2d6",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-10T06:21:31Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "6cc73779_627924a4",
+      "range": {
+        "startLine": 252,
+        "startChar": 4,
+        "endLine": 252,
+        "endChar": 31
+      },
+      "revId": "b62e914ce9741cf8142fe8170bb8cda550d5e000",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4dcb47e8_966ef33c",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-09T15:10:01Z",
       "side": 1,
       "message": "See https://android.googlesource.com/platform/frameworks/av/+/master/media/codec2/core/include/C2Config.h#2195\n\nfor a flex struct example. heapName will need to be the last field",
+      "range": {
+        "startLine": 2039,
+        "startChar": 8,
+        "endLine": 2039,
+        "endChar": 30
+      },
+      "revId": "b62e914ce9741cf8142fe8170bb8cda550d5e000",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66893497_dd3f608a",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 2039,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-10T06:21:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4dcb47e8_966ef33c",
       "range": {
         "startLine": 2039,
         "startChar": 8,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7063dfa_0f7de8b7",
+        "filename": "media/codec2/hidl/services/vendor.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-10T06:21:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab8e66cc_8e114b4f",
+      "range": {
+        "startLine": 152,
+        "startChar": 12,
+        "endLine": 152,
+        "endChar": 19
+      },
+      "revId": "b62e914ce9741cf8142fe8170bb8cda550d5e000",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9fcfb39_a1ba419d",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-10-09T15:10:01Z",
       "side": 1,
       "message": "this now needs to be\n\nstd::unique_ptr\u003c..Info\u003e usageInfo \u003d C2StoreDmaBufUsageInfo::AllocUnique(MAX_DEVICE_SIZE /* 64 */, usage.expected, capacity);\n\nthen usageInfo.get() below",
+      "range": {
+        "startLine": 259,
+        "startChar": 12,
+        "endLine": 259,
+        "endChar": 34
+      },
+      "revId": "b62e914ce9741cf8142fe8170bb8cda550d5e000",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6c70b891_7a24dcbe",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-10T06:21:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9fcfb39_a1ba419d",
       "range": {
         "startLine": 259,
         "startChar": 12,
