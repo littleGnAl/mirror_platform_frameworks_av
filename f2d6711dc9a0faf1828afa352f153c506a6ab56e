@@ -16,6 +16,47 @@
       "message": "Retrying. Failure is due to SELinux denial but this change should not change device access.",
       "revId": "f2d6711dc9a0faf1828afa352f153c506a6ab56e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a8ecc00_db5bf6e6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-10-12T19:47:02Z",
+      "side": 1,
+      "message": "Thank Lajos, you are right, the test seems to be failing on top of tree as well(https://android-build.googleplex.com/builds/tests/view?invocationId\u003dI03500006202959037\u0026testResultId\u003dTR44113992192244509). I think it may be the issue being tracked here: b/170591462.",
+      "parentUuid": "ecb4692b_101f6e23",
+      "revId": "f2d6711dc9a0faf1828afa352f153c506a6ab56e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d6d0ac98_5197131f",
+        "filename": "media/codec2/vndk/C2Buffer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 401,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2020-10-12T19:47:02Z",
+      "side": 1,
+      "message": "very minor nit: maybe move this to a new line to not exceed line char limit of 100.",
+      "range": {
+        "startLine": 401,
+        "startChar": 59,
+        "endLine": 401,
+        "endChar": 66
+      },
+      "revId": "f2d6711dc9a0faf1828afa352f153c506a6ab56e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
