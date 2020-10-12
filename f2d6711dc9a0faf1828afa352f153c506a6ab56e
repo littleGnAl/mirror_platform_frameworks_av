@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecb4692b_101f6e23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-12T18:47:16Z",
+      "side": 1,
+      "message": "Retrying. Failure is due to SELinux denial but this change should not change device access.",
+      "revId": "f2d6711dc9a0faf1828afa352f153c506a6ab56e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
