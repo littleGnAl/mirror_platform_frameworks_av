@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "616c7aa6_4825b6af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-12T22:00:50Z",
+      "side": 1,
+      "message": "Yea, I\u0027ll rebase and resubmit it later today (addressing your other bit of feedback here). Thanks so much again for all your help, reviews and suggestions!",
+      "parentUuid": "23af7c48_97a3782d",
+      "revId": "8dbaaeb8df66c12fc6dd44c9e947178cce4b7e8b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "bd7d2547_a2c1eed6",
         "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
         "patchSetId": 22
