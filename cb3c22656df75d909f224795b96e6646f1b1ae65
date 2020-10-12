@@ -87,6 +87,30 @@
       },
       "revId": "cb3c22656df75d909f224795b96e6646f1b1ae65",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aa78f05_1d71c8a2",
+        "filename": "media/codec2/vndk/C2AllocatorBlob.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-12T21:22:42Z",
+      "side": 1,
+      "message": "This no longer applies after Lajos reworked this patch.",
+      "parentUuid": "02a13cc1_73cd8a8e",
+      "range": {
+        "startLine": 182,
+        "startChar": 15,
+        "endLine": 182,
+        "endChar": 27
+      },
+      "revId": "cb3c22656df75d909f224795b96e6646f1b1ae65",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

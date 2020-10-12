@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "a474a153_80c4ce56",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Thanks Lajos! I appreciate the review and feedback!\n\nI\u0027ve moved isValid to the end of the declaration in my tree, but will wait for more feedback before reworking it further.",
       "revId": "6670a323b91df3188096a8a75ed8017bd007b2fd",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "59f58a59_5838f9b0",
         "filename": "media/codec2/core/include/C2Buffer.h",
@@ -37,10 +38,10 @@
         "endChar": 24
       },
       "revId": "6670a323b91df3188096a8a75ed8017bd007b2fd",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a921f4da_5faf8ae2",
         "filename": "media/codec2/core/include/C2Buffer.h",
@@ -61,8 +62,31 @@
         "endChar": 24
       },
       "revId": "6670a323b91df3188096a8a75ed8017bd007b2fd",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76b09225_86ef14d8",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 617,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-12T21:22:42Z",
+      "side": 1,
+      "message": "Lajos reworked this patch to address this issue.",
+      "parentUuid": "a921f4da_5faf8ae2",
+      "range": {
+        "startLine": 617,
+        "startChar": 17,
+        "endLine": 617,
+        "endChar": 24
+      },
+      "revId": "6670a323b91df3188096a8a75ed8017bd007b2fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
