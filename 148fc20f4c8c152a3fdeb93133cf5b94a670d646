@@ -16,6 +16,24 @@
       "message": "I\u0027m wondering if the other \"kWhatXXXCompleted\" are also subject to similar complete-after-error situation? (For example kWhatStartCompleted above.)",
       "revId": "148fc20f4c8c152a3fdeb93133cf5b94a670d646",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9663183_8b500cd7",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2735,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-10-12T23:37:12Z",
+      "side": 1,
+      "message": "In other cases we do the state transition at kWhatError; only stop keeps the state at STOPPING and send the reply anyway.",
+      "parentUuid": "4911da67_b2587e6e",
+      "revId": "148fc20f4c8c152a3fdeb93133cf5b94a670d646",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
