@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f379fd3_54f24a4a",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 3074,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-10-13T17:31:57Z",
+      "side": 1,
+      "message": "It maybe overkill to call audio policy manager twice for each track.\nGiven this method is used to move tracks using non offloadable effects out of an \noffload thread, just checking directly in the track attributes that the usage is AUDIO_USAGE_MEDIA should be enough",
+      "range": {
+        "startLine": 3074,
+        "startChar": 0,
+        "endLine": 3074,
+        "endChar": 84
+      },
+      "revId": "7c766cfe758cbd1833d7a8760e95859b5798a967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69dcf696_d017d139",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 3230,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-10-13T17:31:57Z",
+      "side": 1,
+      "message": "maybe do a test on t-\u003eisExternalTrack() and ports.empty() before calling std::find()\nAlso I don\u0027t understand why an empty port list triggers invalidation of all tracks?",
+      "range": {
+        "startLine": 3230,
+        "startChar": 0,
+        "endLine": 3230,
+        "endChar": 42
+      },
+      "revId": "7c766cfe758cbd1833d7a8760e95859b5798a967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa9d3262_9c715351",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-10-13T17:31:57Z",
+      "side": 1,
+      "message": "outputs",
+      "range": {
+        "startLine": 443,
+        "startChar": 27,
+        "endLine": 443,
+        "endChar": 33
+      },
+      "revId": "7c766cfe758cbd1833d7a8760e95859b5798a967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "111ffd7f_a461af59",
+        "filename": "services/audiopolicy/service/AudioPolicyClientImpl.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-10-13T17:31:57Z",
+      "side": 1,
+      "message": "line length",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 110
+      },
+      "revId": "7c766cfe758cbd1833d7a8760e95859b5798a967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48ff5029_440c8d41",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-10-13T17:31:57Z",
+      "side": 1,
+      "message": "we have to lock here for the case when this is not called from audioflinger.\nSee proposed simplification on audioflinger side where just the usage is compared on track attributes.",
+      "range": {
+        "startLine": 1446,
+        "startChar": 0,
+        "endLine": 1446,
+        "endChar": 85
+      },
+      "revId": "7c766cfe758cbd1833d7a8760e95859b5798a967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f5a95492_94fa14cd",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 1456,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-10-13T17:31:57Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 1456,
+        "startChar": 0,
+        "endLine": 1456,
+        "endChar": 85
+      },
+      "revId": "7c766cfe758cbd1833d7a8760e95859b5798a967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
