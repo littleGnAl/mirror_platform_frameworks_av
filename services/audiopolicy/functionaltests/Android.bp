@@ -1,0 +1,70 @@
+cc_defaults {
+    name: "AudioPolicyTests_defaults",
+    srcs: [
+        "AudioPolicyTest.cpp",
+        "AudioTrackTest.cpp",
+        "AudioRecordTest.cpp",
+        "Helper.cpp",
+        "AudioVolumeTest.cpp",
+        "RemoteSubmixTest.cpp",
+        "LegacyRemoteSubmixTest.cpp",
+        "AudioProductStrategyTest.cpp",
+        "AudioVolumeGroupTest.cpp",
+        "InvalidateTracksTest.cpp",
+    ],
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wno-unused-function"
+    ],
+    gtest: true,
+    static_libs: [
+        "libsndfile",
+        "android.hardware.audio.common.test.utility",
+    ],
+    shared_libs: [
+        "libxml2",
+        "libaudiofoundation",
+        "libaudioclient",
+        "libaudiopolicy",
+        "libutils",
+        "libmedia_helper",
+        "libaudioutils",
+        "liblog",
+        "libmediametrics",
+    ],
+    header_libs: [
+        "libaudiopolicycommon",
+        "libmedia_headers",
+        "libmediametrics_headers",
+    ],
+    test_suites: [
+        "general-tests",
+        "vts",
+    ],
+}
+
+cc_test {
+    name: "AudioPolicyTests",
+    defaults: ["AudioPolicyTests_defaults"],
+    test_suites: ["device-tests"],
+    srcs: [
+        "TargetTestParams.cpp",
+        "OutputDeviceSelectionTest.cpp",
+    ],
+}
+
+cc_test {
+    name: "AudioPolicyEmulatorTests",
+    defaults: ["AudioPolicyTests_defaults"],
+    test_suites: ["emulator-tests"],
+    srcs: [
+        "EmulatorTestParams.cpp",
+        "EmulatorExplicitRoutingTests.cpp",
+        "EmulatorConcurrencyRoutingTests.cpp",
+        "EmulatorAudioPatchTest.cpp",
+        "EmulatorAudioSourceTest.cpp",
+        "EmulatorVoiceCallTest.cpp",
+        "EmulatorDefaultEffectTest.cpp",
+    ],
+}
