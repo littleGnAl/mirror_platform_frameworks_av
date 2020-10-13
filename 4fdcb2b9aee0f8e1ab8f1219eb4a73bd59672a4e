@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4066419d_e8ad24c6",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-10-13T01:12:11Z",
+      "side": 1,
+      "message": "fix indent",
+      "revId": "4fdcb2b9aee0f8e1ab8f1219eb4a73bd59672a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1909d4b_db57a51c",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-10-13T01:12:11Z",
+      "side": 1,
+      "message": "This should be \"toPutInCacheSize\" according to naming convention, but more importantly this seems like the wrong name: suppose this is the first read of a 1MB file: offset is 0, size is 1, and mCacheBufRangeLength is 0.\nThis would make toPutInCacheSize equal to 1, however it\u0027s actually going to put 64KB (kSingleCacheSize) in the cache.\nNot sure what a better name would be though. \"numAdditionalBytesToCache\" or similar, perhaps?",
+      "range": {
+        "startLine": 152,
+        "startChar": 20,
+        "endLine": 152,
+        "endChar": 37
+      },
+      "revId": "4fdcb2b9aee0f8e1ab8f1219eb4a73bd59672a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cfe76edf_a3bb4a7f",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-10-13T01:12:11Z",
+      "side": 1,
+      "message": "limit line length to 100 characters",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 117
+      },
+      "revId": "4fdcb2b9aee0f8e1ab8f1219eb4a73bd59672a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4671c59a_c57a69bd",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-10-13T01:12:11Z",
+      "side": 1,
+      "message": "it seems to me that this check should be at the very beginning of the function",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 46
+      },
+      "revId": "4fdcb2b9aee0f8e1ab8f1219eb4a73bd59672a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9a5332b_bbd1c676",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-10-13T01:12:11Z",
+      "side": 1,
+      "message": "this doesn\u0027t take into account that the read might have returned fewer bytes than requested.\nFor example, if I requested 1KB to be read, but the read only returned 100 bytes, this memcpy is going to copy 900 uninitialized bytes, which is a potential security issue.",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 69
+      },
+      "revId": "4fdcb2b9aee0f8e1ab8f1219eb4a73bd59672a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6856f420_be1b8653",
+        "filename": "media/libmedia/include/media/MidiIoWrapper.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-10-13T01:12:11Z",
+      "side": 1,
+      "message": "rename this to sCacheBufferSize to indicate it is a static member.",
+      "range": {
+        "startLine": 55,
+        "startChar": 15,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "4fdcb2b9aee0f8e1ab8f1219eb4a73bd59672a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
