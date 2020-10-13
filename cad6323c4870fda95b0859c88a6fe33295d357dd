@@ -63,6 +63,30 @@
       },
       "revId": "cad6323c4870fda95b0859c88a6fe33295d357dd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d76b17e7_8b22edca",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/HwModule.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 335,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-13T17:11:27Z",
+      "side": 1,
+      "message": "HoChi, \nreally sorry, the \u003d\u003d operator was not working. And I did not removed a local change on my environment, comparing the strings directly in Audio Route.\nPS7 uses now equals API working on sp\u003cPolicyAudioPort\u003e.for both sink and source.",
+      "parentUuid": "431b4fa9_f6d120af",
+      "range": {
+        "startLine": 335,
+        "startChar": 8,
+        "endLine": 335,
+        "endChar": 79
+      },
+      "revId": "cad6323c4870fda95b0859c88a6fe33295d357dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
