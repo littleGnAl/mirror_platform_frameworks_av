@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 #define LOG_TAG "BufferPoolManager"
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 
 #include <bufferpool/ClientManager.h>
 #include <hidl/HidlTransportSupport.h>
@@ -167,6 +167,7 @@ ClientManager::Impl::Impl()
 
 ResultStatus ClientManager::Impl::registerSender(
         const sp<IAccessor> &accessor, ConnectionId *pConnectionId) {
+    ALOGD("Inside registerSender with accessor and connectionID");
     cleanUp();
     int64_t timeoutUs = getTimestampNow() + kRegisterTimeoutUs;
     do {
@@ -228,6 +229,7 @@ ResultStatus ClientManager::Impl::registerSender(
         const sp<IClientManager> &receiver,
         ConnectionId senderId,
         ConnectionId *receiverId) {
+    ALOGD("Inside register with receiver, senderID and receiverID");
     sp<IAccessor> accessor;
     bool local = false;
     {
@@ -270,6 +272,7 @@ ResultStatus ClientManager::Impl::registerSender(
 ResultStatus ClientManager::Impl::create(
         const std::shared_ptr<BufferPoolAllocator> &allocator,
         ConnectionId *pConnectionId) {
+    ALOGD("Inside create");
     const sp<Accessor> accessor = new Accessor(allocator);
     if (!accessor || !accessor->isValid()) {
         return ResultStatus::CRITICAL_ERROR;
@@ -301,6 +304,7 @@ ResultStatus ClientManager::Impl::create(
 }
 
 ResultStatus ClientManager::Impl::close(ConnectionId connectionId) {
+    ALOGD("Inside close");
     std::unique_lock<std::mutex> lock1(mCache.mMutex);
     std::unique_lock<std::mutex> lock2(mActive.mMutex);
     auto it = mActive.mClients.find(connectionId);
@@ -327,6 +331,7 @@ ResultStatus ClientManager::Impl::close(ConnectionId connectionId) {
 }
 
 ResultStatus ClientManager::Impl::flush(ConnectionId connectionId) {
+    ALOGD("Inside flush");
     std::shared_ptr<BufferPoolClient> client;
     {
         std::lock_guard<std::mutex> lock(mActive.mMutex);
@@ -342,6 +347,7 @@ ResultStatus ClientManager::Impl::flush(ConnectionId connectionId) {
 ResultStatus ClientManager::Impl::allocate(
         ConnectionId connectionId, const std::vector<uint8_t> &params,
         native_handle_t **handle, std::shared_ptr<BufferPoolData> *buffer) {
+    ALOGD("Inside allocate");
     std::shared_ptr<BufferPoolClient> client;
     {
         std::lock_guard<std::mutex> lock(mActive.mMutex);
@@ -372,6 +378,7 @@ ResultStatus ClientManager::Impl::receive(
         ConnectionId connectionId, TransactionId transactionId,
         BufferId bufferId, int64_t timestampUs,
         native_handle_t **handle, std::shared_ptr<BufferPoolData> *buffer) {
+    ALOGD("Inside receive");
     std::shared_ptr<BufferPoolClient> client;
     {
         std::lock_guard<std::mutex> lock(mActive.mMutex);
@@ -402,6 +409,7 @@ ResultStatus ClientManager::Impl::receive(
 ResultStatus ClientManager::Impl::postSend(
         ConnectionId receiverId, const std::shared_ptr<BufferPoolData> &buffer,
         TransactionId *transactionId, int64_t *timestampUs) {
+    ALOGD("Inside postSend");
     ConnectionId connectionId = buffer->mConnectionId;
     std::shared_ptr<BufferPoolClient> client;
     {
@@ -417,6 +425,7 @@ ResultStatus ClientManager::Impl::postSend(
 
 ResultStatus ClientManager::Impl::getAccessor(
         ConnectionId connectionId, sp<IAccessor> *accessor) {
+    ALOGD("Inside getAccessor");
     std::shared_ptr<BufferPoolClient> client;
     {
         std::lock_guard<std::mutex> lock(mActive.mMutex);
@@ -430,6 +439,7 @@ ResultStatus ClientManager::Impl::getAccessor(
 }
 
 void ClientManager::Impl::cleanUp(bool clearCache) {
+    ALOGD("Inside cleanUp");
     int64_t now = getTimestampNow();
     int64_t lastTransactionUs;
     std::lock_guard<std::mutex> lock1(mCache.mMutex);

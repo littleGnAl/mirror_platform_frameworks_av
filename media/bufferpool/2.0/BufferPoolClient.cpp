@@ -15,7 +15,7 @@
  */
 
 #define LOG_TAG "BufferPoolClient"
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 
 #include <thread>
 #include <utils/Log.h>
@@ -490,16 +490,19 @@ ResultStatus BufferPoolClient::Impl::receive(
 
 
 void BufferPoolClient::Impl::postBufferRelease(BufferId bufferId) {
+    ALOGD("In postBufferRelease");
     std::lock_guard<std::mutex> lock(mReleasing.mLock);
     mReleasing.mReleasingIds.push_back(bufferId);
     mReleasing.mStatusChannel->postBufferRelease(
             mConnectionId, mReleasing.mReleasingIds, mReleasing.mReleasedIds);
+    ALOGD("Returning from postBufferRelease");
 }
 
 // TODO: revise ad-hoc posting data structure
 bool BufferPoolClient::Impl::postSend(
         BufferId bufferId, ConnectionId receiver,
         TransactionId *transactionId, int64_t *timestampUs) {
+    ALOGD("Inside postSend function");
     {
         // TODO: don't need to call syncReleased every time
         std::lock_guard<std::mutex> lock(mCache.mLock);
@@ -523,6 +526,7 @@ bool BufferPoolClient::Impl::postSend(
     if (needsSync && mRemoteConnection) {
         trySyncFromRemote();
     }
+    ALOGD("Returning from postSend function");
     return ret;
 }
 

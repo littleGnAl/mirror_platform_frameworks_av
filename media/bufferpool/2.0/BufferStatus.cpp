@@ -15,7 +15,7 @@
  */
 
 #define LOG_TAG "BufferPoolStatus"
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 
 #include <thread>
 #include <time.h>
@@ -130,6 +130,7 @@ bool BufferStatusChannel::needsSync() {
 void BufferStatusChannel::postBufferRelease(
         ConnectionId connectionId,
         std::list<BufferId> &pending, std::list<BufferId> &posted) {
+    ALOGD("In postBufferRelease");
     if (mValid && pending.size() > 0) {
         size_t avail = mBufferStatusQueue->availableToWrite();
         avail = std::min(avail, pending.size());
@@ -150,6 +151,7 @@ void BufferStatusChannel::postBufferRelease(
             posted.push_back(id);
         }
     }
+    ALOGD("Returning from postBufferRelease");
 }
 
 void BufferStatusChannel::postBufferInvalidateAck(
