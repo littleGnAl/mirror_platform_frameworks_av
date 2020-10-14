@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3440fa4e_8e4cf224",
+        "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-14T17:48:12Z",
+      "side": 1,
+      "message": "it seems that the 1st byte is some control information; that\u0027s fine.\nfollowed by the rest of the data to be run through the encoder.\n\nit seems we should consume that first byte here, not pass it along to the codec below -- \ni think we\u0027re missing a data++;size--; after we consume \u0027startByte\u0027.",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "536cd4d21ec370da9b97f710876f35cc18f3c1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6865f75c_d7f31d09",
+        "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-14T17:48:12Z",
+      "side": 1,
+      "message": "with a fixed size buffer on the stack like this..\nand if minSize doesn\u0027t fill it...\n\nwe don\u0027t know if the codec has OOB references beyond he end of the input (but still within the stack allocated space).\n\nif we\u0027re not worried about that, then this is fine.\n\nif we are worried about that, it seems that we would need to make a more exact-sized buffer (e.g. perhaps a malloc() call) which would let us detect reading past the end of the buffer (assuming asan/hwasan is being used as part of the fuzzing process)",
+      "range": {
+        "startLine": 76,
+        "startChar": 11,
+        "endLine": 76,
+        "endChar": 37
+      },
+      "revId": "536cd4d21ec370da9b97f710876f35cc18f3c1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3d76502_0b14b908",
+        "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-14T17:48:12Z",
+      "side": 1,
+      "message": "minSize is used with varying units.\n\nhere as the memcpy(), it is bytes\nin line 76, it is an element count -- of 2-byte entities.\n\nso the most it will ever fill of inputBuf[] is 50%.\n\nperhaps the calculation of minsize should be:   min(size,  sizeof(inputBuf));\n(which means flipping lines 75/76)",
+      "range": {
+        "startLine": 78,
+        "startChar": 27,
+        "endLine": 78,
+        "endChar": 35
+      },
+      "revId": "536cd4d21ec370da9b97f710876f35cc18f3c1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
