@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9dae47d8_23b065a9",
+        "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-14T20:29:20Z",
+      "side": 1,
+      "message": "that limits our ability to know whether a particular initial sequence (say what would map to very loud noise...) will cause an encoding problem.",
+      "parentUuid": "8a3a1e52_414302a5",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "536cd4d21ec370da9b97f710876f35cc18f3c1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6865f75c_d7f31d09",
         "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
         "patchSetId": 2
@@ -90,6 +114,53 @@
         "startChar": 11,
         "endLine": 76,
         "endChar": 37
+      },
+      "revId": "536cd4d21ec370da9b97f710876f35cc18f3c1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb9fabac_8cac1997",
+        "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-14T20:29:20Z",
+      "side": 1,
+      "message": "so put another way, it always consumes exactly L_FRAME entties, which should be\nthe full contents of inputBuff[]\n[assuming we haven\u0027t mis-configured the size of inputBuf[]\nwhich should have L_FRAME entries.\nand since they are 16-bit entries, it should have L_FRAME*2 bytes.\nand the encoder should always be consuming exactly that many.\n\nI think we have kInputBufferSize mis-defined....  it would seem the array should have\nL_FRAME entries in it, but we defined kInputBufferSize to twice that.",
+      "parentUuid": "cde26694_7c3accc6",
+      "range": {
+        "startLine": 76,
+        "startChar": 11,
+        "endLine": 76,
+        "endChar": 37
+      },
+      "revId": "536cd4d21ec370da9b97f710876f35cc18f3c1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d57af186_d1729dd8",
+        "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-14T20:29:20Z",
+      "side": 1,
+      "message": "a little uncomfortable with this being defined NOT in terms of L_FRAME;\n\nif L_FRAME were to get larger (unlikely, but).... then we\u0027d overrun this because\nkOutputBufferSize would not scale.   L_FRAME*2 would be sufficient if the codec turned out to just pass everything through unchanged.\nI could see something like (L_FRAME+ X) * 2     -- for some X which probably doesn\u0027t need to be very large.",
+      "range": {
+        "startLine": 77,
+        "startChar": 22,
+        "endLine": 77,
+        "endChar": 39
       },
       "revId": "536cd4d21ec370da9b97f710876f35cc18f3c1af",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
