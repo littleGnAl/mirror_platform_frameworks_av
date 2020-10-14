@@ -531,6 +531,16 @@ protected:
          */
         void updateCallAndOutputRouting(bool forceVolumeReeval = true, uint32_t delayMs = 0);
 
+        bool isCallRxAudioSource(const sp<SourceClientDescriptor> &source) {
+            return mCallRxSourceClientPort != AUDIO_PORT_HANDLE_NONE
+                && source == mAudioSources.valueFor(mCallRxSourceClientPort);
+        }
+        audio_port_handle_t mCallRxSourceClientPort = AUDIO_PORT_HANDLE_NONE;
+
+        void connectTelephonyRxAudioSource();
+
+        void disconnectTelephonyRxAudioSource();
+
         /**
          * @brief checkOutputForAttributes checks and if necessary changes outputs used for the
          * given audio attributes.
@@ -766,7 +776,6 @@ protected:
         SoundTriggerSessionCollection mSoundTriggerSessions;
 
         sp<AudioPatch> mCallTxPatch;
-        sp<AudioPatch> mCallRxPatch;
 
         HwAudioOutputCollection mHwOutputs;
         SourceClientCollection mAudioSources;
