@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d889eefb_a7bad338",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 27
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-14T16:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91a10ed1_773912e1",
+      "revId": "b77f882b4d63d7020c7bc0c44a0bf612a28f4d52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d5e2f69_a90016c0",
@@ -73,6 +91,30 @@
       "side": 1,
       "message": "that s right. It will be closer to connectAudioSource behavior",
       "parentUuid": "9d5e2f69_a90016c0",
+      "range": {
+        "startLine": 547,
+        "startChar": 8,
+        "endLine": 547,
+        "endChar": 40
+      },
+      "revId": "b77f882b4d63d7020c7bc0c44a0bf612a28f4d52",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b92f3914_621d542b",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-14T16:42:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "39b8b19a_7a496546",
       "range": {
         "startLine": 547,
         "startChar": 8,
