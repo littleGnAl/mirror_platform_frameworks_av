@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff420f0e_43e36613",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1327938
+      },
+      "writtenOn": "2020-10-14T01:29:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4066419d_e8ad24c6",
+      "revId": "4fdcb2b9aee0f8e1ab8f1219eb4a73bd59672a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e1909d4b_db57a51c",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-13T01:12:11Z",
       "side": 1,
       "message": "This should be \"toPutInCacheSize\" according to naming convention, but more importantly this seems like the wrong name: suppose this is the first read of a 1MB file: offset is 0, size is 1, and mCacheBufRangeLength is 0.\nThis would make toPutInCacheSize equal to 1, however it\u0027s actually going to put 64KB (kSingleCacheSize) in the cache.\nNot sure what a better name would be though. \"numAdditionalBytesToCache\" or similar, perhaps?",
+      "range": {
+        "startLine": 152,
+        "startChar": 20,
+        "endLine": 152,
+        "endChar": 37
+      },
+      "revId": "4fdcb2b9aee0f8e1ab8f1219eb4a73bd59672a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bac899a_06e87db8",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1327938
+      },
+      "writtenOn": "2020-10-14T01:29:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e1909d4b_db57a51c",
       "range": {
         "startLine": 152,
         "startChar": 20,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "604d5aba_c3ca2a87",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1327938
+      },
+      "writtenOn": "2020-10-14T01:29:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cfe76edf_a3bb4a7f",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 155,
+        "endChar": 117
+      },
+      "revId": "4fdcb2b9aee0f8e1ab8f1219eb4a73bd59672a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4671c59a_c57a69bd",
@@ -77,6 +143,30 @@
       "writtenOn": "2020-10-13T01:12:11Z",
       "side": 1,
       "message": "it seems to me that this check should be at the very beginning of the function",
+      "range": {
+        "startLine": 158,
+        "startChar": 1,
+        "endLine": 158,
+        "endChar": 46
+      },
+      "revId": "4fdcb2b9aee0f8e1ab8f1219eb4a73bd59672a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "77c204a4_5c24f9b9",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1327938
+      },
+      "writtenOn": "2020-10-14T01:29:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4671c59a_c57a69bd",
       "range": {
         "startLine": 158,
         "startChar": 1,
@@ -110,6 +200,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "16e48105_2ea871dc",
+        "filename": "media/libmedia/MidiIoWrapper.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1327938
+      },
+      "writtenOn": "2020-10-14T01:29:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9a5332b_bbd1c676",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 69
+      },
+      "revId": "4fdcb2b9aee0f8e1ab8f1219eb4a73bd59672a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6856f420_be1b8653",
@@ -123,6 +237,30 @@
       "writtenOn": "2020-10-13T01:12:11Z",
       "side": 1,
       "message": "rename this to sCacheBufferSize to indicate it is a static member.",
+      "range": {
+        "startLine": 55,
+        "startChar": 15,
+        "endLine": 55,
+        "endChar": 31
+      },
+      "revId": "4fdcb2b9aee0f8e1ab8f1219eb4a73bd59672a4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "227d4795_8d66a9da",
+        "filename": "media/libmedia/include/media/MidiIoWrapper.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1327938
+      },
+      "writtenOn": "2020-10-14T01:29:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6856f420_be1b8653",
       "range": {
         "startLine": 55,
         "startChar": 15,
