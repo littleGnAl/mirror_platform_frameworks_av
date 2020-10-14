@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8a3a1e52_414302a5",
+        "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-10-14T18:05:31Z",
+      "side": 1,
+      "message": "It is not really necessary to consume the first byte.\nIdea of using a byte from the data that is passed here is to be able to set different mode and output formats.\nAlso for encoder input is raw data, so any bytes are fine.",
+      "parentUuid": "3440fa4e_8e4cf224",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "536cd4d21ec370da9b97f710876f35cc18f3c1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6865f75c_d7f31d09",
         "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
         "patchSetId": 2
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cde26694_7c3accc6",
+        "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-10-14T18:05:31Z",
+      "side": 1,
+      "message": "AMREncode always encodes a frame worth of data, It doesn\u0027t take a size argument to signal how many of the input bytes need to be encoded.",
+      "parentUuid": "6865f75c_d7f31d09",
+      "range": {
+        "startLine": 76,
+        "startChar": 11,
+        "endLine": 76,
+        "endChar": 37
+      },
+      "revId": "536cd4d21ec370da9b97f710876f35cc18f3c1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f3d76502_0b14b908",
         "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2020-10-14T17:48:12Z",
       "side": 1,
       "message": "minSize is used with varying units.\n\nhere as the memcpy(), it is bytes\nin line 76, it is an element count -- of 2-byte entities.\n\nso the most it will ever fill of inputBuf[] is 50%.\n\nperhaps the calculation of minsize should be:   min(size,  sizeof(inputBuf));\n(which means flipping lines 75/76)",
+      "range": {
+        "startLine": 78,
+        "startChar": 27,
+        "endLine": 78,
+        "endChar": 35
+      },
+      "revId": "536cd4d21ec370da9b97f710876f35cc18f3c1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70e7ddc3_e11241a3",
+        "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-10-14T18:05:31Z",
+      "side": 1,
+      "message": "Ray,\nGood catch.\n\nAyushi,\nWe will need to also check whether kInputBufferSize should be L_FRAME or L_FRAME * sizeof(Word16)\n\nCurrently inputBuf is L_FRAME * 2 * sizeof(Word16) bytes",
+      "parentUuid": "f3d76502_0b14b908",
       "range": {
         "startLine": 78,
         "startChar": 27,
