@@ -4766,6 +4766,10 @@ void AudioPolicyManager::addOutput(audio_io_handle_t output,
 
 void AudioPolicyManager::removeOutput(audio_io_handle_t output)
 {
+    if (mPrimaryOutput != 0 && mPrimaryOutput == mOutputs.valueFor(output)) {
+        ALOGV("%s: removing primary output", __func__);
+        mPrimaryOutput = 0;
+    }
     mOutputs.removeItem(output);
     selectOutputForMusicEffects();
 }
@@ -4923,6 +4927,10 @@ status_t AudioPolicyManager::checkOutputsForDevice(const sp<DeviceDescriptor>& d
                             nextAudioPortGeneration();
                             output = AUDIO_IO_HANDLE_NONE;
                         }
+                    }
+                    if (mPrimaryOutput == 0 && profile->getFlags() & AUDIO_OUTPUT_FLAG_PRIMARY) {
+                        ALOGV("%s(): re-assigning mPrimaryOutput", __func__);
+                        mPrimaryOutput = desc;
                     }
                 }
             } else {
