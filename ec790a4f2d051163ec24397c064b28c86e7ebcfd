@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4fe5e34e_8f3c0697",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4971,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-14T17:20:32Z",
+      "side": 1,
+      "message": "Playing with all sink devices, if disconnecting the one attached to primary output, the drama happens...",
+      "revId": "ec790a4f2d051163ec24397c064b28c86e7ebcfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
