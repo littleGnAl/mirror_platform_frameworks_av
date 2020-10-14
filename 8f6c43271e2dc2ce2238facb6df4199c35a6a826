@@ -54,6 +54,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "676f7098_9273be7f",
+        "filename": "media/libstagefright/tests/fuzzers/FuzzerMediaUtility.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1353865
+      },
+      "writtenOn": "2020-10-14T01:55:07Z",
+      "side": 1,
+      "message": "Maybe best to import or use a list from the fuzzed code instead of having a hard coded list here.",
+      "parentUuid": "492903a6_4f61d532",
+      "revId": "8f6c43271e2dc2ce2238facb6df4199c35a6a826",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0e62190f_2a58acd7",
         "filename": "media/libstagefright/tests/fuzzers/MediaMimeTypes.h",
         "patchSetId": 2
