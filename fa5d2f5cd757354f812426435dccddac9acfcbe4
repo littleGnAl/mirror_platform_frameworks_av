@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "860530a6_a12fc63d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-14T17:26:14Z",
+      "side": 1,
+      "message": "Eric, your proposal of factorization (removing the proposed connectHwAudioSource) works fine, assuming today we attach a SwOutput as a WA for HW bridge, it prevents from adding a lot of code, volume management works fine (tested manually today but i will automatize volume testing also)",
+      "revId": "fa5d2f5cd757354f812426435dccddac9acfcbe4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7fb42bf_025e9f3b",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-14T17:26:14Z",
+      "side": 1,
+      "message": "@Eric: using the startAudioSource API prevents from boiler but has one difference to notice:\n-Using AUDIO_STREAM_VOICE_CALL instead of AUDIO_STREAM_PATCH for the downlink patch.\n(test updated accordingly)",
+      "range": {
+        "startLine": 664,
+        "startChar": 22,
+        "endLine": 664,
+        "endChar": 38
+      },
+      "revId": "fa5d2f5cd757354f812426435dccddac9acfcbe4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
