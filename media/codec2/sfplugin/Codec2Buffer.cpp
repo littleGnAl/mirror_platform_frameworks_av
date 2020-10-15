@@ -102,6 +102,35 @@ bool LocalLinearBuffer::copy(const std::shared_ptr<C2Buffer> &buffer) {
     return copyLinear(buffer);
 }
 
+// LocalLinearMetadataBuffer
+
+bool LocalLinearMetadataBuffer::canCopy(const std::shared_ptr<C2Buffer> &buffer) const {
+    return canCopyLinear(buffer);
+}
+
+bool LocalLinearMetadataBuffer::copy(const std::shared_ptr<C2Buffer> &buffer) {
+    // We assume that all canCopyLinear() checks passed.
+    if (!buffer || buffer->data().linearBlocks().size() == 0u
+            || buffer->data().linearBlocks()[0].size() == 0u
+            || !buffer->data().linearBlocks()[0].handle()) {
+        setRange(0, 0);
+        return true;
+    }
+
+    size_t range = buffer->data().linearBlocks()[0].size();
+    // assume capacity check is done in canCopyLinear()
+    memset(base(), 0x0, range);
+
+    auto handle = (native_handle_t *)buffer->data().linearBlocks()[0].handle();
+    size_t handleSize = sizeof(native_handle_t) + (handle->numFds + handle->numInts) * sizeof(int);
+    memcpy(base(), handle, handleSize);
+
+    // TODO(PC): [Security concern] embed size in payload. Keep the handle-size in buffer's range
+    // indicate size filled in the backing buffer rather than the metadata size
+    setRange(0, range);
+    return true;
+}
+
 // DummyContainerBuffer
 
 static uint8_t sDummyByte[1] = { 0 };
