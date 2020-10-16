@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b6f26285_10eb07d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-10-16T15:43:27Z",
+      "side": 1,
+      "message": "Note that \"device boots\" is not really a sufficient test for this (CtsMediaTestCases:MediaScannerTest#testEncodingDetection would be), but you said you added logs to  verify that ICU is properly initialized by mediaserver so we\u0027ll go with that.\n",
+      "revId": "eb33d944605247b32015140e7a650d41c8cd0003",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
