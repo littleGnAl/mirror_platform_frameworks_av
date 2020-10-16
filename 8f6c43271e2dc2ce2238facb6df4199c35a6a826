@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "924ad092_b792ba0e",
+        "filename": "media/libstagefright/tests/fuzzers/FuzzerMediaUtility.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-10-16T17:43:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c22b98bf_5b609c67",
+      "revId": "8f6c43271e2dc2ce2238facb6df4199c35a6a826",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "492903a6_4f61d532",
@@ -70,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b80946ac_5ecc8109",
+        "filename": "media/libstagefright/tests/fuzzers/FuzzerMediaUtility.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-10-16T17:43:33Z",
+      "side": 1,
+      "message": "Originally I pulled these from WriterTest. If that code changes, this code won\u0027t break. The names, order, value, etc is all arbitrary. I\u0027m simply using this for choosing/passing around what type of writer to spin up. Now, it won\u0027t track new writers, which maybe isn\u0027t ideal, but new writers would require some other changes anyways.",
+      "parentUuid": "676f7098_9273be7f",
+      "revId": "8f6c43271e2dc2ce2238facb6df4199c35a6a826",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e62190f_2a58acd7",
@@ -83,6 +119,24 @@
       "writtenOn": "2020-10-08T01:03:42Z",
       "side": 1,
       "message": "may be hard to keep in sync with later changes",
+      "revId": "8f6c43271e2dc2ce2238facb6df4199c35a6a826",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fbd8f66_a205c1cd",
+        "filename": "media/libstagefright/tests/fuzzers/MediaMimeTypes.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-10-16T17:43:33Z",
+      "side": 1,
+      "message": "I am not sure what a better approach would be here, they\u0027re defined as constants in a header and imported, but we need them in a vector to grab a random one.",
+      "parentUuid": "0e62190f_2a58acd7",
       "revId": "8f6c43271e2dc2ce2238facb6df4199c35a6a826",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
