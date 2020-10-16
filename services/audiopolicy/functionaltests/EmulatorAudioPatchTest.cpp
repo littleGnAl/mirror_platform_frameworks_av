@@ -207,11 +207,11 @@ TEST_P(FullDuplexAudioPatchTest, UsingCreateAudioPatch)
         EXPECT_NE(uplinkPatchHandle, AUDIO_PATCH_HANDLE_NONE);
 
         EXPECT_TRUE(checkEstablishedPatch(downlinkPatchHandle, downlinkSourcePort,
-                                                  downlinkSinkPort, useSwBridging,
-                                                  AUDIO_STREAM_PATCH));
+                                          downlinkSinkPort, useSwBridging,
+                                          AUDIO_STREAM_PATCH));
         EXPECT_TRUE(checkEstablishedPatch(uplinkPatchHandle, uplinkSourcePort,
-                                                  uplinkSinkPort, useSwBridging,
-                                                  AUDIO_STREAM_PATCH));
+                                          uplinkSinkPort, useSwBridging,
+                                          AUDIO_STREAM_PATCH));
     };
     auto disconnectUplinkSinkDevice = [&]() {
         disconnectPort(uplinkSinkPort);
@@ -361,7 +361,7 @@ TEST_P(AudioModeBridgingTest, UsingAudioMode)
 
     auto checkEstablishedDownlinkPatch = [&]() {
         checkEstablishedPatch(
-                    downlinkSourcePort, downlinkSinkPort, useSwBridging, AUDIO_STREAM_PATCH);
+                    downlinkSourcePort, downlinkSinkPort, useSwBridging, AUDIO_STREAM_VOICE_CALL);
     };
     auto checkEstablishedPatches = [&]() {
         checkEstablishedDownlinkPatch();
