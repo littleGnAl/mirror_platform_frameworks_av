@@ -1,0 +1,82 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005580861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1363817?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b9674e60_63679980",
+        "filename": "media/libstagefright/tests/fuzzers/WriterFuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-16T17:40:30Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 64,
+        "startChar": 78,
+        "endLine": 64,
+        "endChar": 79
+      },
+      "revId": "d3d6e2aeac10c132b421bddc4b77c85a469168f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005580861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1363817?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "5e27749d_6f5621b3",
+        "filename": "media/libstagefright/tests/fuzzers/WriterFuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-16T17:40:30Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027valid\u0027, \u0027validity check\u0027 or \u0027initial check\u0027; see https://source.android.com/setup/contribute/respectful-code for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 99,
+        "startChar": 63,
+        "endLine": 99,
+        "endChar": 69
+      },
+      "revId": "d3d6e2aeac10c132b421bddc4b77c85a469168f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005580861",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1363817?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "1949e75e_25349474",
+        "filename": "media/libstagefright/tests/fuzzers/WriterFuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-16T17:40:30Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027valid\u0027, \u0027validity check\u0027 or \u0027initial check\u0027; see https://source.android.com/setup/contribute/respectful-code for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 227,
+        "startChar": 18,
+        "endLine": 227,
+        "endChar": 24
+      },
+      "revId": "d3d6e2aeac10c132b421bddc4b77c85a469168f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
