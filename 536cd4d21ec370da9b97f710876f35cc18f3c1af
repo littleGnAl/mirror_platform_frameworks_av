@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95ee1cf0_cf572231",
+        "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1653964
+      },
+      "writtenOn": "2020-10-16T16:57:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9dae47d8_23b065a9",
+      "range": {
+        "startLine": 66,
+        "startChar": 2,
+        "endLine": 68,
+        "endChar": 42
+      },
+      "revId": "536cd4d21ec370da9b97f710876f35cc18f3c1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6865f75c_d7f31d09",
@@ -145,6 +169,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "226da8d8_0d777c33",
+        "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1653964
+      },
+      "writtenOn": "2020-10-16T16:57:47Z",
+      "side": 1,
+      "message": "Number of elements in the array \u0027inputBuf\u0027 has been set to \u0027kNumInputSamples\u0027 which denotes the number of samples rather than number of bytes.",
+      "parentUuid": "fb9fabac_8cac1997",
+      "range": {
+        "startLine": 76,
+        "startChar": 11,
+        "endLine": 76,
+        "endChar": 37
+      },
+      "revId": "536cd4d21ec370da9b97f710876f35cc18f3c1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d57af186_d1729dd8",
         "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
         "patchSetId": 2
@@ -156,6 +204,30 @@
       "writtenOn": "2020-10-14T20:29:20Z",
       "side": 1,
       "message": "a little uncomfortable with this being defined NOT in terms of L_FRAME;\n\nif L_FRAME were to get larger (unlikely, but).... then we\u0027d overrun this because\nkOutputBufferSize would not scale.   L_FRAME*2 would be sufficient if the codec turned out to just pass everything through unchanged.\nI could see something like (L_FRAME+ X) * 2     -- for some X which probably doesn\u0027t need to be very large.",
+      "range": {
+        "startLine": 77,
+        "startChar": 22,
+        "endLine": 77,
+        "endChar": 39
+      },
+      "revId": "536cd4d21ec370da9b97f710876f35cc18f3c1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b4f1025_157bd602",
+        "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1653964
+      },
+      "writtenOn": "2020-10-16T16:57:47Z",
+      "side": 1,
+      "message": "\u0027kOutputBufferSize\u0027 is now defined as twice the size of \u0027inputBuf\u0027, which itself is twice that of L_FRAME.",
+      "parentUuid": "d57af186_d1729dd8",
       "range": {
         "startLine": 77,
         "startChar": 22,
@@ -203,6 +275,30 @@
       "side": 1,
       "message": "Ray,\nGood catch.\n\nAyushi,\nWe will need to also check whether kInputBufferSize should be L_FRAME or L_FRAME * sizeof(Word16)\n\nCurrently inputBuf is L_FRAME * 2 * sizeof(Word16) bytes",
       "parentUuid": "f3d76502_0b14b908",
+      "range": {
+        "startLine": 78,
+        "startChar": 27,
+        "endLine": 78,
+        "endChar": 35
+      },
+      "revId": "536cd4d21ec370da9b97f710876f35cc18f3c1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e8fa3f93_8db96393",
+        "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1653964
+      },
+      "writtenOn": "2020-10-16T16:57:47Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70e7ddc3_e11241a3",
       "range": {
         "startLine": 78,
         "startChar": 27,
