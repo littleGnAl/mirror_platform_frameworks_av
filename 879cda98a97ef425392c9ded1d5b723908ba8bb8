@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "578d6bf3_c5e266a3",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-10-16T16:33:00Z",
+      "side": 1,
+      "message": "Should this be in the previous line, like K\u0026R style for all newly added functions?",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 1
+      },
+      "revId": "879cda98a97ef425392c9ded1d5b723908ba8bb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
