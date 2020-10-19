@@ -54,7 +54,7 @@ void ClientDescriptor::dump(String8 *dst, int spaces, int index) const
 void TrackClientDescriptor::dump(String8 *dst, int spaces, int index) const
 {
     ClientDescriptor::dump(dst, spaces, index);
-    dst->appendFormat("%*s- Stream: %d flags: %08x\n", spaces, "", mStream, mFlags);
+    dst->appendFormat("%*s- flags: %08x\n", spaces, "", mFlags);
     dst->appendFormat("%*s- Refcount: %d\n", spaces, "", mActivityCount);
     dst->appendFormat("%*s- DAP Primary Mix: %p\n", spaces, "", mPrimaryMix.promote().get());
     dst->appendFormat("%*s- DAP Secondary Outputs:\n", spaces, "");
@@ -62,14 +62,6 @@ void TrackClientDescriptor::dump(String8 *dst, int spaces, int index) const
         dst->appendFormat("%*s  - %d\n", spaces, "",
                 desc.promote() == nullptr ? 0 : desc.promote()->mIoHandle);
     }
-}
-
-std::string TrackClientDescriptor::toShortString() const
-{
-    std::stringstream ss;
-
-    ss << ClientDescriptor::toShortString() << " Stream: " << mStream;
-    return ss.str();
 }
 
 void RecordClientDescriptor::trackEffectEnabled(const sp<EffectDescriptor> &effect, bool enabled)
@@ -90,11 +82,11 @@ void RecordClientDescriptor::dump(String8 *dst, int spaces, int index) const
 
 SourceClientDescriptor::SourceClientDescriptor(audio_port_handle_t portId, uid_t uid,
          audio_attributes_t attributes, const struct audio_port_config &config,
-         const sp<DeviceDescriptor>& srcDevice, audio_stream_type_t stream,
+         const sp<DeviceDescriptor>& srcDevice,
          product_strategy_t strategy, VolumeSource volumeSource) :
     TrackClientDescriptor::TrackClientDescriptor(portId, uid, AUDIO_SESSION_NONE, attributes,
         {config.sample_rate, config.channel_mask, config.format}, AUDIO_PORT_HANDLE_NONE,
-        stream, strategy, volumeSource, AUDIO_OUTPUT_FLAG_NONE, false,
+        strategy, volumeSource, AUDIO_OUTPUT_FLAG_NONE, false,
         {} /* Sources do not support secondary outputs*/, nullptr), mSrcDevice(srcDevice)
 {
 }

@@ -175,7 +175,6 @@ void AudioPolicyManagerTest::getOutputForAttr(
     audio_io_handle_t localOutput;
     if (!output) output = &localOutput;
     *output = AUDIO_IO_HANDLE_NONE;
-    audio_stream_type_t stream = AUDIO_STREAM_DEFAULT;
     audio_config_t config = AUDIO_CONFIG_INITIALIZER;
     config.sample_rate = sampleRate;
     config.channel_mask = channelMask;
@@ -185,7 +184,7 @@ void AudioPolicyManagerTest::getOutputForAttr(
     *portId = AUDIO_PORT_HANDLE_NONE;
     AudioPolicyInterface::output_type_t outputType;
     ASSERT_EQ(OK, mManager->getOutputForAttr(
-                    &attr, output, AUDIO_SESSION_NONE, &stream, 0 /*uid*/, &config, &flags,
+                    &attr, output, AUDIO_SESSION_NONE, 0 /*uid*/, &config, &flags,
                     selectedDeviceId, portId, {}, &outputType));
     ASSERT_NE(AUDIO_PORT_HANDLE_NONE, *portId);
     ASSERT_NE(AUDIO_IO_HANDLE_NONE, *output);
