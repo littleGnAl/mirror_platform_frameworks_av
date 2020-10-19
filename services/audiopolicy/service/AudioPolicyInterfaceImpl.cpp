@@ -225,7 +225,6 @@ audio_io_handle_t AudioPolicyService::getOutput(audio_stream_type_t stream)
 status_t AudioPolicyService::getOutputForAttr(audio_attributes_t *attr,
                                               audio_io_handle_t *output,
                                               audio_session_t session,
-                                              audio_stream_type_t *stream,
                                               pid_t pid,
                                               uid_t uid,
                                               const audio_config_t *config,
@@ -262,11 +261,12 @@ status_t AudioPolicyService::getOutputForAttr(audio_attributes_t *attr,
     }
     AutoCallerClear acc;
     AudioPolicyInterface::output_type_t outputType;
+    audio_stream_type_t stream;
     result = mAudioPolicyManager->getOutputForAttr(attr, output, session, stream, uid,
-                                                 config,
-                                                 &flags, selectedDeviceId, portId,
-                                                 secondaryOutputs,
-                                                 &outputType);
+                                                   config,
+                                                   &flags, selectedDeviceId, portId,
+                                                   secondaryOutputs,
+                                                   &outputType);
 
     // FIXME: Introduce a way to check for the the telephony device before opening the output
     if (result == NO_ERROR) {
@@ -296,8 +296,8 @@ status_t AudioPolicyService::getOutputForAttr(audio_attributes_t *attr,
     }
 
     if (result == NO_ERROR) {
-        sp <AudioPlaybackClient> client =
-            new AudioPlaybackClient(*attr, *output, uid, pid, session, *portId, *selectedDeviceId, *stream);
+        sp<AudioPlaybackClient> client = new AudioPlaybackClient(
+                    *attr, *output, uid, pid, session, *portId, *selectedDeviceId, stream);
         mAudioPlaybackClients.add(*portId, client);
     }
     return result;
