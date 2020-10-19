@@ -329,7 +329,6 @@ status_t AudioFlinger::openMmapStream(MmapStreamInterface::stream_direction_t di
     if (actualSessionId == AUDIO_SESSION_ALLOCATE) {
         actualSessionId = (audio_session_t) newAudioUniqueId(AUDIO_UNIQUE_ID_USE_SESSION);
     }
-    audio_stream_type_t streamType = AUDIO_STREAM_DEFAULT;
     audio_io_handle_t io = AUDIO_IO_HANDLE_NONE;
     audio_port_handle_t portId = AUDIO_PORT_HANDLE_NONE;
     audio_attributes_t localAttr = *attr;
@@ -341,8 +340,7 @@ status_t AudioFlinger::openMmapStream(MmapStreamInterface::stream_direction_t di
         std::vector<audio_io_handle_t> secondaryOutputs;
 
         ret = AudioSystem::getOutputForAttr(&localAttr, &io,
-                                            actualSessionId,
-                                            &streamType, client.clientPid, client.clientUid,
+                                            actualSessionId, client.clientPid, client.clientUid,
                                             &fullConfig,
                                             (audio_output_flags_t)(AUDIO_OUTPUT_FLAG_MMAP_NOIRQ |
                                                     AUDIO_OUTPUT_FLAG_DIRECT),
@@ -368,7 +366,7 @@ status_t AudioFlinger::openMmapStream(MmapStreamInterface::stream_direction_t di
     sp<MmapThread> thread = mMmapThreads.valueFor(io);
     if (thread != 0) {
         interface = new MmapThreadHandle(thread);
-        thread->configure(&localAttr, streamType, actualSessionId, callback, *deviceId, portId);
+        thread->configure(&localAttr, actualSessionId, callback, *deviceId, portId);
         *handle = portId;
         *sessionId = actualSessionId;
         config->sample_rate = thread->sampleRate();
@@ -747,7 +745,6 @@ sp<IAudioTrack> AudioFlinger::createTrack(const CreateTrackInput& input,
     sp<TrackHandle> trackHandle;
     sp<Client> client;
     status_t lStatus;
-    audio_stream_type_t streamType;
     audio_port_handle_t portId = AUDIO_PORT_HANDLE_NONE;
     std::vector<audio_io_handle_t> secondaryOutputs;
 
@@ -785,7 +782,7 @@ sp<IAudioTrack> AudioFlinger::createTrack(const CreateTrackInput& input,
     output.sessionId = sessionId;
     output.outputId = AUDIO_IO_HANDLE_NONE;
     output.selectedDeviceId = input.selectedDeviceId;
-    lStatus = AudioSystem::getOutputForAttr(&localAttr, &output.outputId, sessionId, &streamType,
+    lStatus = AudioSystem::getOutputForAttr(&localAttr, &output.outputId, sessionId,
                                             clientPid, clientUid, &input.config, input.flags,
                                             &output.selectedDeviceId, &portId, &secondaryOutputs);
 
@@ -793,14 +790,6 @@ sp<IAudioTrack> AudioFlinger::createTrack(const CreateTrackInput& input,
         ALOGE("createTrack() getOutputForAttr() return error %d or invalid output handle", lStatus);
         goto Exit;
     }
-    // client AudioTrack::set already implements AUDIO_STREAM_DEFAULT => AUDIO_STREAM_MUSIC,
-    // but if someone uses binder directly they could bypass that and cause us to crash
-    if (uint32_t(streamType) >= AUDIO_STREAM_CNT) {
-        ALOGE("createTrack() invalid stream type %d", streamType);
-        lStatus = BAD_VALUE;
-        goto Exit;
-    }
-
     // further channel mask checks are performed by createTrack_l() depending on the thread type
     if (!audio_is_output_channel(input.config.channel_mask)) {
         ALOGE("createTrack() invalid channel mask %#x", input.config.channel_mask);
@@ -846,7 +835,7 @@ sp<IAudioTrack> AudioFlinger::createTrack(const CreateTrackInput& input,
         output.notificationFrameCount = input.notificationFrameCount;
         output.flags = input.flags;
 
-        track = thread->createTrack_l(client, streamType, localAttr, &output.sampleRate,
+        track = thread->createTrack_l(client, localAttr, &output.sampleRate,
                                       input.config.format, input.config.channel_mask,
                                       &output.frameCount, &output.notificationFrameCount,
                                       input.notificationsPerBuffer, input.speed,
@@ -925,7 +914,7 @@ sp<IAudioTrack> AudioFlinger::createTrack(const CreateTrackInput& input,
                 const audio_output_flags_t outputFlags =
                         (audio_output_flags_t)(output.flags & ~AUDIO_OUTPUT_FLAG_FAST);
                 sp patchTrack = new PlaybackThread::PatchTrack(secondaryThread,
-                                                               streamType,
+                                                               localAttr,
                                                                output.sampleRate,
                                                                input.config.channel_mask,
                                                                input.config.format,
