@@ -115,7 +115,7 @@ public:
         status_t getOutputForAttr(const audio_attributes_t *attr,
                                   audio_io_handle_t *output,
                                   audio_session_t session,
-                                  audio_stream_type_t *stream,
+                                  audio_stream_type_t &stream,
                                   uid_t uid,
                                   const audio_config_t *config,
                                   audio_output_flags_t *flags,
@@ -899,6 +899,13 @@ protected:
         status_t setMsdPatches(const DeviceVector *outputDevices = nullptr);
         void releaseMsdPatches(const DeviceVector& devices);
 private:
+        bool isEnforcedAudible(const audio_attributes_t &attributes) const {
+            return (attributes.flags & AUDIO_FLAG_AUDIBILITY_ENFORCED) ==
+                    AUDIO_FLAG_AUDIBILITY_ENFORCED;
+        }
+        bool isBeacon(const audio_attributes_t &attributes) const {
+            return (attributes.flags & AUDIO_FLAG_BEACON) == AUDIO_FLAG_BEACON;
+        }
         void onNewAudioModulesAvailableInt(DeviceVector *newDevices);
 
         void onAudioDevicePortGainsChanged(
@@ -920,21 +927,19 @@ private:
         void broadcastDeviceConnectionState(const sp<DeviceDescriptor> &device,
                                             audio_policy_dev_state_t state);
 
-        // updates device caching and output for streams that can influence the
+        // updates device caching and output for attributes that can influence the
         //    routing of notifications
-        void handleNotificationRoutingForStream(audio_stream_type_t stream);
+        void handleNotificationRoutingForAttributes(const audio_attributes_t &attr);
         uint32_t curAudioPortGeneration() const { return mAudioPortGeneration; }
         // internal method, get audio_attributes_t from either a source audio_attributes_t
         // or audio_stream_type_t, respectively.
         status_t getAudioAttributes(audio_attributes_t *dstAttr,
-                const audio_attributes_t *srcAttr,
-                audio_stream_type_t srcStream);
+                const audio_attributes_t *srcAttr);
         // internal method, called by getOutputForAttr() and connectAudioSource.
         status_t getOutputForAttrInt(audio_attributes_t *resultAttr,
                 audio_io_handle_t *output,
                 audio_session_t session,
                 const audio_attributes_t *attr,
-                audio_stream_type_t *stream,
                 uid_t uid,
                 const audio_config_t *config,
                 audio_output_flags_t *flags,
@@ -946,7 +951,7 @@ private:
         audio_io_handle_t getOutputForDevices(
                 const DeviceVector &devices,
                 audio_session_t session,
-                audio_stream_type_t stream,
+                const audio_attributes_t &attr,
                 const audio_config_t *config,
                 audio_output_flags_t *flags,
                 bool forceMutingHaptic = false);
@@ -955,7 +960,7 @@ private:
         // attributes, flags, config and devices.
         // If NAME_NOT_FOUND is returned, an attempt can be made to open a mixed output.
         status_t openDirectOutput(
-                audio_stream_type_t stream,
+                const audio_attributes_t &attributes,
                 audio_session_t session,
                 const audio_config_t *config,
                 audio_output_flags_t flags,
