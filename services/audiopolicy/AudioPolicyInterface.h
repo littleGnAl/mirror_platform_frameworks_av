@@ -129,7 +129,7 @@ public:
     virtual status_t getOutputForAttr(const audio_attributes_t *attr,
                                         audio_io_handle_t *output,
                                         audio_session_t session,
-                                        audio_stream_type_t *stream,
+                                        audio_stream_type_t &stream,
                                         uid_t uid,
                                         const audio_config_t *config,
                                         audio_output_flags_t *flags,
