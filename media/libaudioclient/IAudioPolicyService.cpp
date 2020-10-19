@@ -220,7 +220,6 @@ public:
     status_t getOutputForAttr(audio_attributes_t *attr,
                               audio_io_handle_t *output,
                               audio_session_t session,
-                              audio_stream_type_t *stream,
                               pid_t pid,
                               uid_t uid,
                               const audio_config_t *config,
@@ -253,12 +252,6 @@ public:
             }
             data.write(attr, sizeof(audio_attributes_t));
             data.writeInt32(session);
-            if (stream == NULL) {
-                data.writeInt32(0);
-            } else {
-                data.writeInt32(1);
-                data.writeInt32(*stream);
-            }
             data.writeInt32(pid);
             data.writeInt32(uid);
             data.write(config, sizeof(audio_config_t));
@@ -278,10 +271,6 @@ public:
                 return status;
             }
             *output = (audio_io_handle_t)reply.readInt32();
-            audio_stream_type_t lStream = (audio_stream_type_t)reply.readInt32();
-            if (stream != NULL) {
-                *stream = lStream;
-            }
             *selectedDeviceId = (audio_port_handle_t)reply.readInt32();
             *portId = (audio_port_handle_t)reply.readInt32();
             secondaryOutputs->resize(reply.readInt32());
@@ -1748,11 +1737,6 @@ status_t BnAudioPolicyService::onTransact(
             }
             sanetizeAudioAttributes(&attr);
             audio_session_t session = (audio_session_t)data.readInt32();
-            audio_stream_type_t stream = AUDIO_STREAM_DEFAULT;
-            bool hasStream = data.readInt32() != 0;
-            if (hasStream) {
-                stream = (audio_stream_type_t)data.readInt32();
-            }
             pid_t pid = (pid_t)data.readInt32();
             uid_t uid = (uid_t)data.readInt32();
             audio_config_t config;
@@ -1765,7 +1749,7 @@ status_t BnAudioPolicyService::onTransact(
             audio_io_handle_t output = 0;
             std::vector<audio_io_handle_t> secondaryOutputs;
             status = getOutputForAttr(&attr,
-                    &output, session, &stream, pid, uid,
+                    &output, session, pid, uid,
                     &config,
                     flags, &selectedDeviceId, &portId, &secondaryOutputs);
             reply->writeInt32(status);
@@ -1774,7 +1758,6 @@ status_t BnAudioPolicyService::onTransact(
                 return status;
             }
             reply->writeInt32(output);
-            reply->writeInt32(stream);
             reply->writeInt32(selectedDeviceId);
             reply->writeInt32(portId);
             reply->writeInt32(secondaryOutputs.size());
