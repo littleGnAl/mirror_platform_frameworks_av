@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b14d4dba_3e786084",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 3074,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-19T14:35:26Z",
+      "side": 1,
+      "message": "Yes and no. If for example USAGE_GAME is also associated to music volume group (formerly STREAM_MUSIC), the check on USAGE_MEDIA will not be enough. AudioFlinger does not have the knowledge of this.\nIf enough, definitely agree to simplify",
+      "parentUuid": "7f379fd3_54f24a4a",
+      "range": {
+        "startLine": 3074,
+        "startChar": 0,
+        "endLine": 3074,
+        "endChar": 84
+      },
+      "revId": "7c766cfe758cbd1833d7a8760e95859b5798a967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "69dcf696_d017d139",
         "filename": "services/audioflinger/Threads.cpp",
         "patchSetId": 16
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-13T17:31:57Z",
       "side": 1,
       "message": "maybe do a test on t-\u003eisExternalTrack() and ports.empty() before calling std::find()\nAlso I don\u0027t understand why an empty port list triggers invalidation of all tracks?",
+      "range": {
+        "startLine": 3230,
+        "startChar": 0,
+        "endLine": 3230,
+        "endChar": 42
+      },
+      "revId": "7c766cfe758cbd1833d7a8760e95859b5798a967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a179e67f_d0f69e92",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 3230,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-19T14:35:26Z",
+      "side": 1,
+      "message": "good catch. \nConcerning empty list, initially i wanted to use this convention to invalidate all ports. Then I decided to keep the ports list to invalidate explicit. I have forgotten to revert...",
+      "parentUuid": "69dcf696_d017d139",
       "range": {
         "startLine": 3230,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e6383fc_54034f52",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-19T14:35:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa9d3262_9c715351",
+      "range": {
+        "startLine": 443,
+        "startChar": 27,
+        "endLine": 443,
+        "endChar": 33
+      },
+      "revId": "7c766cfe758cbd1833d7a8760e95859b5798a967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "111ffd7f_a461af59",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-10-13T17:31:57Z",
       "side": 1,
       "message": "line length",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 110
+      },
+      "revId": "7c766cfe758cbd1833d7a8760e95859b5798a967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b893e029_030d0b0c",
+        "filename": "services/audiopolicy/service/AudioPolicyClientImpl.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-19T14:35:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "111ffd7f_a461af59",
       "range": {
         "startLine": 135,
         "startChar": 0,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63d0eb9d_4e89cd1d",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-19T14:35:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48ff5029_440c8d41",
+      "range": {
+        "startLine": 1446,
+        "startChar": 0,
+        "endLine": 1446,
+        "endChar": 85
+      },
+      "revId": "7c766cfe758cbd1833d7a8760e95859b5798a967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5a95492_94fa14cd",
@@ -129,6 +249,30 @@
       "writtenOn": "2020-10-13T17:31:57Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 1456,
+        "startChar": 0,
+        "endLine": 1456,
+        "endChar": 85
+      },
+      "revId": "7c766cfe758cbd1833d7a8760e95859b5798a967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "953506fe_0bb23f2a",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 1456,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-19T14:35:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f5a95492_94fa14cd",
       "range": {
         "startLine": 1456,
         "startChar": 0,
