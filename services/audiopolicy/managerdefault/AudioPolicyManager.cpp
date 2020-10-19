@@ -897,8 +897,7 @@ audio_io_handle_t AudioPolicyManager::getOutput(audio_stream_type_t stream)
 }
 
 status_t AudioPolicyManager::getAudioAttributes(audio_attributes_t *dstAttr,
-                                                const audio_attributes_t *srcAttr,
-                                                audio_stream_type_t srcStream)
+                                                const audio_attributes_t *srcAttr)
 {
     if (srcAttr != NULL) {
         if (!isValidAttributes(srcAttr)) {
@@ -910,11 +909,8 @@ status_t AudioPolicyManager::getAudioAttributes(audio_attributes_t *dstAttr,
         }
         *dstAttr = *srcAttr;
     } else {
-        if (srcStream < AUDIO_STREAM_MIN || srcStream >= AUDIO_STREAM_PUBLIC_CNT) {
-            ALOGE("%s:  invalid stream type", __func__);
-            return BAD_VALUE;
-        }
-        *dstAttr = mEngine->getAttributesForStreamType(srcStream);
+        // Give music attributes as default or report error?
+        *dstAttr = attributes_initializer(AUDIO_USAGE_MEDIA);
     }
 
     // Only honor audibility enforced when required. The client will be
@@ -932,7 +928,6 @@ status_t AudioPolicyManager::getOutputForAttrInt(
         audio_io_handle_t *output,
         audio_session_t session,
         const audio_attributes_t *attr,
-        audio_stream_type_t *stream,
         uid_t uid,
         const audio_config_t *config,
         audio_output_flags_t *flags,
@@ -948,17 +943,17 @@ status_t AudioPolicyManager::getOutputForAttrInt(
         mAvailableOutputDevices.getDeviceFromId(requestedPortId);
 
     *outputType = API_OUTPUT_INVALID;
-    status_t status = getAudioAttributes(resultAttr, attr, *stream);
+    status_t status = getAudioAttributes(resultAttr, attr);
     if (status != NO_ERROR) {
         return status;
     }
     if (auto it = mAllowedCapturePolicies.find(uid); it != end(mAllowedCapturePolicies)) {
         resultAttr->flags = static_cast<audio_flags_mask_t>(resultAttr->flags | it->second);
     }
-    *stream = mEngine->getStreamTypeForAttributes(*resultAttr);
+    audio_stream_type_t stream = mEngine->getStreamTypeForAttributes(*resultAttr);
 
     ALOGV("%s() attributes=%s stream=%s session %d selectedDeviceId %d", __func__,
-          toString(*resultAttr).c_str(), toString(*stream).c_str(), session, requestedPortId);
+          toString(*resultAttr).c_str(), toString(stream).c_str(), session, requestedPortId);
 
     // The primary output is the explicit routing (eg. setPreferredDevice) if specified,
     //       otherwise, fallback to the dynamic policies, if none match, query the engine.
@@ -989,7 +984,7 @@ status_t AudioPolicyManager::getOutputForAttrInt(
                 && (policyDesc == nullptr || (policyDesc->mFlags & AUDIO_OUTPUT_FLAG_DIRECT))) {
             audio_io_handle_t newOutput;
             status = openDirectOutput(
-                    *stream, session, config,
+                    *resultAttr, session, config,
                     (audio_output_flags_t)(*flags | AUDIO_OUTPUT_FLAG_DIRECT),
                     DeviceVector(deviceDesc), &newOutput);
             if (status != NO_ERROR) {
@@ -1032,7 +1027,7 @@ status_t AudioPolicyManager::getOutputForAttrInt(
     // to getOutputForDevice.
     // TODO: Remove check of AUDIO_STREAM_MUSIC once migration is completed on the app side.
     if (outputDevices.onlyContainsDevicesWithType(AUDIO_DEVICE_OUT_TELEPHONY_TX) &&
-        (*stream == AUDIO_STREAM_MUSIC  || resultAttr->usage == AUDIO_USAGE_VOICE_COMMUNICATION) &&
+        (stream == AUDIO_STREAM_MUSIC  || resultAttr->usage == AUDIO_USAGE_VOICE_COMMUNICATION) &&
         audio_is_linear_pcm(config->format) &&
         isCallAudioAccessible()) {
         if (requestedPortId != AUDIO_PORT_HANDLE_NONE) {
@@ -1043,11 +1038,11 @@ status_t AudioPolicyManager::getOutputForAttrInt(
 
     ALOGV("%s() device %s, sampling rate %d, format %#x, channel mask %#x, flags %#x stream %s",
           __func__, outputDevices.toString().c_str(), config->sample_rate, config->format,
-          config->channel_mask, *flags, toString(*stream).c_str());
+          config->channel_mask, *flags, toString(stream).c_str());
 
     *output = AUDIO_IO_HANDLE_NONE;
     if (!msdDevices.isEmpty()) {
-        *output = getOutputForDevices(msdDevices, session, *stream, config, flags);
+        *output = getOutputForDevices(msdDevices, session, *resultAttr, config, flags);
         sp<DeviceDescriptor> device = outputDevices.isEmpty() ? nullptr : outputDevices.itemAt(0);
         if (*output != AUDIO_IO_HANDLE_NONE && setMsdPatch(device) == NO_ERROR) {
             ALOGV("%s() Using MSD devices %s instead of devices %s",
@@ -1058,7 +1053,7 @@ status_t AudioPolicyManager::getOutputForAttrInt(
         }
     }
     if (*output == AUDIO_IO_HANDLE_NONE) {
-        *output = getOutputForDevices(outputDevices, session, *stream, config,
+        *output = getOutputForDevices(outputDevices, session, *resultAttr, config,
                 flags, resultAttr->flags & AUDIO_FLAG_MUTE_HAPTIC);
     }
     if (*output == AUDIO_IO_HANDLE_NONE) {
@@ -1081,7 +1076,7 @@ status_t AudioPolicyManager::getOutputForAttrInt(
 status_t AudioPolicyManager::getOutputForAttr(const audio_attributes_t *attr,
                                               audio_io_handle_t *output,
                                               audio_session_t session,
-                                              audio_stream_type_t *stream,
+                                              audio_stream_type_t &stream,
                                               uid_t uid,
                                               const audio_config_t *config,
                                               audio_output_flags_t *flags,
@@ -1106,7 +1101,7 @@ status_t AudioPolicyManager::getOutputForAttr(const audio_attributes_t *attr,
       requestedDevice != nullptr ? requestedPortId : AUDIO_PORT_HANDLE_NONE;
     *selectedDeviceId = sanitizedRequestedPortId;
 
-    status_t status = getOutputForAttrInt(&resultAttr, output, session, attr, stream, uid,
+    status_t status = getOutputForAttrInt(&resultAttr, output, session, attr, uid,
             config, flags, selectedDeviceId, &isRequestedDeviceForExclusiveUse,
             secondaryOutputs != nullptr ? &secondaryMixes : nullptr, outputType);
     if (status != NO_ERROR) {
@@ -1133,21 +1128,21 @@ status_t AudioPolicyManager::getOutputForAttr(const audio_attributes_t *attr,
     sp<SwAudioOutputDescriptor> outputDesc = mOutputs.valueFor(*output);
     sp<TrackClientDescriptor> clientDesc =
         new TrackClientDescriptor(*portId, uid, session, resultAttr, clientConfig,
-                                  sanitizedRequestedPortId, *stream,
+                                  sanitizedRequestedPortId,
                                   mEngine->getProductStrategyForAttributes(resultAttr),
                                   toVolumeSource(resultAttr),
                                   *flags, isRequestedDeviceForExclusiveUse,
                                   std::move(weakSecondaryOutputDescs),
                                   outputDesc->mPolicyMix);
     outputDesc->addClient(clientDesc);
-
+    stream = mEngine->getStreamTypeForAttributes(resultAttr);
     ALOGV("%s() returns output %d requestedPortId %d selectedDeviceId %d for port ID %d", __func__,
           *output, requestedPortId, *selectedDeviceId, *portId);
 
     return NO_ERROR;
 }
 
-status_t AudioPolicyManager::openDirectOutput(audio_stream_type_t stream,
+status_t AudioPolicyManager::openDirectOutput(const audio_attributes_t &attributes,
                                               audio_session_t session,
                                               const audio_config_t *config,
                                               audio_output_flags_t flags,
@@ -1226,7 +1221,7 @@ status_t AudioPolicyManager::openDirectOutput(audio_stream_type_t stream,
             }
         }
     }
-
+    audio_stream_type_t stream = mEngine->getStreamTypeForAttributes(attributes);
     status_t status = outputDesc->open(config, devices, stream, flags, output);
 
     // only accept an output with the requested parameters
@@ -1262,13 +1257,13 @@ status_t AudioPolicyManager::openDirectOutput(audio_stream_type_t stream,
 audio_io_handle_t AudioPolicyManager::getOutputForDevices(
         const DeviceVector &devices,
         audio_session_t session,
-        audio_stream_type_t stream,
+        const audio_attributes_t &attr,
         const audio_config_t *config,
         audio_output_flags_t *flags,
         bool forceMutingHaptic)
 {
     audio_io_handle_t output = AUDIO_IO_HANDLE_NONE;
-
+    audio_stream_type_t stream = mEngine->getStreamTypeForAttributes(attr);
     // Discard haptic channel mask when forcing muting haptic channels.
     audio_channel_mask_t channelMask = forceMutingHaptic
             ? static_cast<audio_channel_mask_t>(config->channel_mask & ~AUDIO_CHANNEL_HAPTIC_ALL)
@@ -1305,7 +1300,7 @@ audio_io_handle_t AudioPolicyManager::getOutputForDevices(
 
     audio_config_t directConfig = *config;
     directConfig.channel_mask = channelMask;
-    status_t status = openDirectOutput(stream, session, &directConfig, *flags, devices, &output);
+    status_t status = openDirectOutput(attr, session, &directConfig, *flags, devices, &output);
     if (status != NAME_NOT_FOUND) {
         return output;
     }
@@ -1330,9 +1325,9 @@ audio_io_handle_t AudioPolicyManager::getOutputForDevices(
         *flags = (audio_output_flags_t)(*flags & ~AUDIO_OUTPUT_FLAG_DIRECT);
         output = selectOutput(outputs, *flags, config->format, channelMask, config->sample_rate);
     }
-    ALOGW_IF((output == 0), "getOutputForDevices() could not find output for stream %d, "
+    ALOGW_IF((output == 0), "getOutputForDevices() could not find output for attr %s, "
             "sampling rate %d, format %#x, channels %#x, flags %#x",
-            stream, config->sample_rate, config->format, channelMask, *flags);
+            toString(attr).c_str(), config->sample_rate, config->format, channelMask, *flags);
 
     return output;
 }
@@ -1639,8 +1634,8 @@ status_t AudioPolicyManager::startOutput(audio_port_handle_t portId)
     }
     sp<TrackClientDescriptor> client = outputDesc->getClient(portId);
 
-    ALOGV("startOutput() output %d, stream %d, session %d",
-          outputDesc->mIoHandle, client->stream(), client->session());
+    ALOGV("startOutput() output %d, attributes %s, session %d",
+          outputDesc->mIoHandle, toString(client->attributes()).c_str(), client->session());
 
     status_t status = outputDesc->start();
     if (status != NO_ERROR) {
@@ -1669,11 +1664,10 @@ status_t AudioPolicyManager::startSource(const sp<SwAudioOutputDescriptor>& outp
     uint32_t beaconMuteLatency = 0;
 
     *delayMs = 0;
-    audio_stream_type_t stream = client->stream();
     auto clientVolSrc = client->volumeSource();
     auto clientStrategy = client->strategy();
     auto clientAttr = client->attributes();
-    if (stream == AUDIO_STREAM_TTS) {
+    if (isBeacon(clientAttr)) {
         ALOGV("\t found BEACON stream");
         if (!mTtsOutputAvailable && mOutputs.isAnyOutputActive(
                                     toVolumeSource(AUDIO_STREAM_TTS) /*sourceToIgnore*/)) {
@@ -1799,7 +1793,7 @@ status_t AudioPolicyManager::startSource(const sp<SwAudioOutputDescriptor>& outp
 
         // update the outputs if starting an output with a stream that can affect notification
         // routing
-        handleNotificationRoutingForStream(stream);
+        handleNotificationRoutingForAttributes(clientAttr);
 
         // force reevaluating accessibility routing when ringtone or alarm starts
         if (followsSameRouting(clientAttr, attributes_initializer(AUDIO_USAGE_ALARM))) {
@@ -1819,7 +1813,7 @@ status_t AudioPolicyManager::startSource(const sp<SwAudioOutputDescriptor>& outp
         // We do not introduce additional delay here.
     }
 
-    if (stream == AUDIO_STREAM_ENFORCED_AUDIBLE &&
+    if (isEnforcedAudible(clientAttr) &&
             mEngine->getForceUse(
                     AUDIO_POLICY_FORCE_FOR_SYSTEM) == AUDIO_POLICY_FORCE_SYSTEM_ENFORCED) {
         setStrategyMute(streamToStrategy(AUDIO_STREAM_ALARM), true, outputDesc);
@@ -1850,8 +1844,8 @@ status_t AudioPolicyManager::stopOutput(audio_port_handle_t portId)
     }
     sp<TrackClientDescriptor> client = outputDesc->getClient(portId);
 
-    ALOGV("stopOutput() output %d, stream %d, session %d",
-          outputDesc->mIoHandle, client->stream(), client->session());
+    ALOGV("stopOutput() output %d, attr %s, session %d",
+          outputDesc->mIoHandle, toString(client->attributes()).c_str(), client->session());
 
     status_t status = stopSource(outputDesc, client);
 
@@ -1865,10 +1859,10 @@ status_t AudioPolicyManager::stopSource(const sp<SwAudioOutputDescriptor>& outpu
                                         const sp<TrackClientDescriptor>& client)
 {
     // always handle stream stop, check which stream type is stopping
-    audio_stream_type_t stream = client->stream();
+    auto clientAttr = client->attributes();
     auto clientVolSrc = client->volumeSource();
 
-    handleEventForBeacon(stream == AUDIO_STREAM_TTS ? STOPPING_BEACON : STOPPING_OUTPUT);
+    handleEventForBeacon(isBeacon(clientAttr) ? STOPPING_BEACON : STOPPING_OUTPUT);
 
     if (outputDesc->getActivityCount(clientVolSrc) > 0) {
         if (outputDesc->getActivityCount(clientVolSrc) == 1) {
@@ -1926,11 +1920,11 @@ status_t AudioPolicyManager::stopSource(const sp<SwAudioOutputDescriptor>& outpu
                 }
             }
             // update the outputs if stopping one with a stream that can affect notification routing
-            handleNotificationRoutingForStream(stream);
+            handleNotificationRoutingForAttributes(clientAttr);
         }
 
-        if (stream == AUDIO_STREAM_ENFORCED_AUDIBLE &&
-                mEngine->getForceUse(AUDIO_POLICY_FORCE_FOR_SYSTEM) == AUDIO_POLICY_FORCE_SYSTEM_ENFORCED) {
+        if (isEnforcedAudible(clientAttr) && mEngine->getForceUse(AUDIO_POLICY_FORCE_FOR_SYSTEM) ==
+                AUDIO_POLICY_FORCE_SYSTEM_ENFORCED) {
             setStrategyMute(streamToStrategy(AUDIO_STREAM_ALARM), false, outputDesc);
         }
 
@@ -3687,7 +3681,6 @@ status_t AudioPolicyManager::createAudioPatchInternal(const struct audio_patch *
                 if (sourceDesc != nullptr) {
                     // take care of dynamic routing for SwOutput selection,
                     audio_attributes_t attributes = sourceDesc->attributes();
-                    audio_stream_type_t stream = sourceDesc->stream();
                     audio_attributes_t resultAttr;
                     audio_config_t config = AUDIO_CONFIG_INITIALIZER;
                     config.sample_rate = sourceDesc->config().sample_rate;
@@ -3698,7 +3691,7 @@ status_t AudioPolicyManager::createAudioPatchInternal(const struct audio_patch *
                     bool isRequestedDeviceForExclusiveUse = false;
                     output_type_t outputType;
                     getOutputForAttrInt(&resultAttr, &output, AUDIO_SESSION_NONE, &attributes,
-                                        &stream, sourceDesc->uid(), &config, &flags,
+                                        sourceDesc->uid(), &config, &flags,
                                         &selectedDeviceId, &isRequestedDeviceForExclusiveUse,
                                         nullptr, &outputType);
                     if (output == AUDIO_IO_HANDLE_NONE) {
@@ -3749,7 +3742,8 @@ status_t AudioPolicyManager::createAudioPatchInternal(const struct audio_patch *
                         outputDesc->toAudioPortConfig(&srcMixPortConfig, &patch->sources[0]);
                         // for volume control, we may need a valid stream
                         srcMixPortConfig.ext.mix.usecase.stream = sourceDesc != nullptr ?
-                                    sourceDesc->stream() : AUDIO_STREAM_PATCH;
+                                    mEngine->getStreamTypeForAttributes(sourceDesc->attributes()) :
+                                    AUDIO_STREAM_PATCH;
                         patchBuilder.addSource(srcMixPortConfig);
                     }
                 }
@@ -4084,7 +4078,6 @@ status_t AudioPolicyManager::startAudioSource(const struct audio_port_config *so
 
     sp<SourceClientDescriptor> sourceDesc =
         new SourceClientDescriptor(*portId, uid, *attributes, *source, srcDevice,
-                                   mEngine->getStreamTypeForAttributes(*attributes),
                                    mEngine->getProductStrategyForAttributes(*attributes),
                                    toVolumeSource(*attributes));
 
@@ -5634,14 +5627,10 @@ status_t AudioPolicyManager::getDevicesForAttributes(
     return NO_ERROR;
 }
 
-void AudioPolicyManager::handleNotificationRoutingForStream(audio_stream_type_t stream) {
-    switch(stream) {
-    case AUDIO_STREAM_MUSIC:
+void AudioPolicyManager::handleNotificationRoutingForAttributes(const audio_attributes_t &attr) {
+    if (followsSameRouting(attr, attributes_initializer(AUDIO_USAGE_MEDIA))) {
         checkOutputForAttributes(attributes_initializer(AUDIO_USAGE_NOTIFICATION));
         updateDevicesAndOutputs();
-        break;
-    default:
-        break;
     }
 }
 
