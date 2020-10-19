@@ -473,7 +473,7 @@ status_t AudioFlinger::TrackHandle::onTransact(
 // static
 sp<AudioFlinger::PlaybackThread::OpPlayAudioMonitor>
 AudioFlinger::PlaybackThread::OpPlayAudioMonitor::createIfNeeded(
-            uid_t uid, const audio_attributes_t& attr, int id, audio_stream_type_t streamType,
+            uid_t uid, const audio_attributes_t& attr, int id,
             const std::string& opPackageName)
 {
     Vector <String16> packages;
@@ -488,7 +488,7 @@ AudioFlinger::PlaybackThread::OpPlayAudioMonitor::createIfNeeded(
         }
     }
     // stream type has been filtered by audio policy to indicate whether it can be muted
-    if (streamType == AUDIO_STREAM_ENFORCED_AUDIBLE) {
+    if ((attr.flags & AUDIO_FLAG_AUDIBILITY_ENFORCED) == AUDIO_FLAG_AUDIBILITY_ENFORCED) {
         ALOGD("OpPlayAudio: not muting track:%d usage:%d ENFORCED_AUDIBLE", id, attr.usage);
         return nullptr;
     }
@@ -596,7 +596,6 @@ void AudioFlinger::PlaybackThread::OpPlayAudioMonitor::getPackagesForUid(
 AudioFlinger::PlaybackThread::Track::Track(
             PlaybackThread *thread,
             const sp<Client>& client,
-            audio_stream_type_t streamType,
             const audio_attributes_t& attr,
             uint32_t sampleRate,
             audio_format_t format,
@@ -635,7 +634,7 @@ AudioFlinger::PlaybackThread::Track::Track(
     mFrameMap(16 /* sink-frame-to-track-frame map memory */),
     mVolumeHandler(new media::VolumeHandler(sampleRate)),
     mOpPlayAudioMonitor(OpPlayAudioMonitor::createIfNeeded(
-            uid, attr, id(), streamType, opPackageName)),
+            uid, attr, id(), opPackageName)),
     // mSinkTimestamp
     mFrameCountToBeReady(frameCountToBeReady),
     mFastIndex(-1),
@@ -704,7 +703,7 @@ AudioFlinger::PlaybackThread::Track::Track(
 
     // Once this item is logged by the server, the client can add properties.
     const char * const traits = sharedBuffer == 0 ? "" : "static";
-    mTrackMetrics.logConstructor(creatorPid, uid, traits, streamType);
+    mTrackMetrics.logConstructor(creatorPid, uid, traits);
 }
 
 AudioFlinger::PlaybackThread::Track::~Track()
@@ -1796,8 +1795,8 @@ AudioFlinger::PlaybackThread::OutputTrack::OutputTrack(
             audio_channel_mask_t channelMask,
             size_t frameCount,
             uid_t uid)
-    :   Track(playbackThread, NULL, AUDIO_STREAM_PATCH,
-              audio_attributes_t{} /* currently unused for output track */,
+    :   Track(playbackThread, NULL,
+              AudioSystem::streamTypeToAttributes(AUDIO_STREAM_PATCH),
               sampleRate, format, channelMask, frameCount,
               nullptr /* buffer */, (size_t)0 /* bufferSize */, nullptr /* sharedBuffer */,
               AUDIO_SESSION_NONE, getpid(), uid, AUDIO_OUTPUT_FLAG_NONE,
@@ -2016,7 +2015,7 @@ void AudioFlinger::PlaybackThread::OutputTrack::restartIfDisabled()
 #define LOG_TAG "AF::PatchTrack"
 
 AudioFlinger::PlaybackThread::PatchTrack::PatchTrack(PlaybackThread *playbackThread,
-                                                     audio_stream_type_t streamType,
+                                                     const audio_attributes_t &attributes,
                                                      uint32_t sampleRate,
                                                      audio_channel_mask_t channelMask,
                                                      audio_format_t format,
@@ -2026,8 +2025,8 @@ AudioFlinger::PlaybackThread::PatchTrack::PatchTrack(PlaybackThread *playbackThr
                                                      audio_output_flags_t flags,
                                                      const Timeout& timeout,
                                                      size_t frameCountToBeReady)
-    :   Track(playbackThread, NULL, streamType,
-              audio_attributes_t{} /* currently unused for patch track */,
+    :   Track(playbackThread, NULL,
+              attributes,
               sampleRate, format, channelMask, frameCount,
               buffer, bufferSize, nullptr /* sharedBuffer */,
               AUDIO_SESSION_NONE, getpid(), AID_AUDIOSERVER, flags, TYPE_PATCH,
