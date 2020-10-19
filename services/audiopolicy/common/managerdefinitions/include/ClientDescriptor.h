@@ -87,7 +87,7 @@ class TrackClientDescriptor: public ClientDescriptor
 public:
     TrackClientDescriptor(audio_port_handle_t portId, uid_t uid, audio_session_t sessionId,
                           audio_attributes_t attributes, audio_config_base_t config,
-                          audio_port_handle_t preferredDeviceId, audio_stream_type_t stream,
+                          audio_port_handle_t preferredDeviceId,
                           product_strategy_t strategy, VolumeSource volumeSource,
                           audio_output_flags_t flags,
                           bool isPreferredDeviceForExclusiveUse,
@@ -95,16 +95,14 @@ public:
                           wp<AudioPolicyMix> primaryMix) :
         ClientDescriptor(portId, uid, sessionId, attributes, config, preferredDeviceId,
                          isPreferredDeviceForExclusiveUse),
-        mStream(stream), mStrategy(strategy), mVolumeSource(volumeSource), mFlags(flags),
+        mStrategy(strategy), mVolumeSource(volumeSource), mFlags(flags),
         mSecondaryOutputs(std::move(secondaryOutputs)), mPrimaryMix(primaryMix) {}
     ~TrackClientDescriptor() override = default;
 
     using ClientDescriptor::dump;
     void dump(String8 *dst, int spaces, int index) const override;
-    std::string toShortString() const override;
 
     audio_output_flags_t flags() const { return mFlags; }
-    audio_stream_type_t stream() const { return mStream; }
     product_strategy_t strategy() const { return mStrategy; }
     const std::vector<wp<SwAudioOutputDescriptor>>& getSecondaryOutputs() const {
         return mSecondaryOutputs;
@@ -136,7 +134,6 @@ public:
     uint32_t getActivityCount() const { return mActivityCount; }
 
 private:
-    const audio_stream_type_t mStream;
     const product_strategy_t mStrategy;
     const VolumeSource mVolumeSource;
     const audio_output_flags_t mFlags;
@@ -190,7 +187,7 @@ public:
     SourceClientDescriptor(audio_port_handle_t portId, uid_t uid, audio_attributes_t attributes,
                            const struct audio_port_config &config,
                            const sp<DeviceDescriptor>& srcDevice,
-                           audio_stream_type_t stream, product_strategy_t strategy,
+                           product_strategy_t strategy,
                            VolumeSource volumeSource);
 
     ~SourceClientDescriptor() override = default;
