@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcc11a41_8274959c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 16
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-19T21:54:25Z",
+      "side": 1,
+      "message": "It seems that I never \"sent\" my comments on PS14, so I am repeating them. My apologies...",
+      "revId": "ffbcdcd262ba427a746d4e731aa76592ec2709ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93129820_8bc34fb3",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 2045,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-19T21:54:25Z",
+      "side": 1,
+      "message": "can we remove this?",
+      "range": {
+        "startLine": 2045,
+        "startChar": 0,
+        "endLine": 2045,
+        "endChar": 34
+      },
+      "revId": "ffbcdcd262ba427a746d4e731aa76592ec2709ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21d126da_3de2bffd",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 2054,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-19T21:54:25Z",
+      "side": 1,
+      "message": "I still think that this may write past the end of the structure. I was trying to figure out if we zero-initialize structures by default, but my current understanding is that I removed that to avoid double writing the initialized fields.\n\nbasically, flexCount could be 0, in which case we cannot write the end-of-string marker (\u0027\\0\u0027) that this initialization is doing.",
+      "range": {
+        "startLine": 2054,
+        "startChar": 61,
+        "endLine": 2054,
+        "endChar": 73
+      },
+      "revId": "ffbcdcd262ba427a746d4e731aa76592ec2709ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f1464e5_c1b5ffc8",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-19T21:54:25Z",
+      "side": 1,
+      "message": "can we define this in this file/method, and use either kCamelCase notation, or ALL_CAPS?",
+      "range": {
+        "startLine": 263,
+        "startChar": 60,
+        "endLine": 263,
+        "endChar": 82
+      },
+      "revId": "ffbcdcd262ba427a746d4e731aa76592ec2709ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
