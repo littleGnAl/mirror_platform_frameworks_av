@@ -1,6 +1,98 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4464087_8a2f30bb",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1031,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-19T16:05:15Z",
+      "side": 1,
+      "message": "@Eric: is it enough to filter on USAGE MUSIC? Or is it intended also to play all attributes associated to stream music?\ncf:\n\u003cAttributesGroup streamType\u003d\"AUDIO_STREAM_MUSIC\" volumeGroup\u003d\"music\"\u003e\n    \u003cAttributes\u003e \u003cUsage value\u003d\"AUDIO_USAGE_MEDIA\"/\u003e \u003c/Attributes\u003e\n    \u003cAttributes\u003e \u003cUsage value\u003d\"AUDIO_USAGE_GAME\"/\u003e \u003c/Attributes\u003e\n    \u003cAttributes\u003e \u003cUsage value\u003d\"AUDIO_USAGE_ASSISTANT\"/\u003e \u003c/Attributes\u003e\n    \u003cAttributes\u003e \u003cUsage value\u003d\"AUDIO_USAGE_ASSISTANCE_NAVIGATION_GUIDANCE\"/\u003e\n\u003c/Attributes\u003e",
+      "range": {
+        "startLine": 1031,
+        "startChar": 9,
+        "endLine": 1031,
+        "endChar": 37
+      },
+      "revId": "b064957c8565171f3b8f23c06877f3d2020e648f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0f04291_a3d96ac2",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1283,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-19T16:05:15Z",
+      "side": 1,
+      "message": "same as before: enough to filter on usage music, or we do expect GAME (associated to legacy stream music) to use deep buffer.\nIf enough, can even prevent from convert to stream type...",
+      "range": {
+        "startLine": 1283,
+        "startChar": 8,
+        "endLine": 1283,
+        "endChar": 36
+      },
+      "revId": "b064957c8565171f3b8f23c06877f3d2020e648f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b50b5fe_68d06d5c",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3740,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-19T16:05:15Z",
+      "side": 1,
+      "message": "@Eric: shall we prevent AF to instantiate the SwOutput, and do it always at policy side to ensure we can control the volume (as the stream is now a \"dont mind\" at AF side)?",
+      "range": {
+        "startLine": 3740,
+        "startChar": 20,
+        "endLine": 3740,
+        "endChar": 48
+      },
+      "revId": "b064957c8565171f3b8f23c06877f3d2020e648f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbca5a5c_86428554",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3746,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-19T16:05:15Z",
+      "side": 1,
+      "message": "may become useless?",
+      "range": {
+        "startLine": 3744,
+        "startChar": 24,
+        "endLine": 3746,
+        "endChar": 55
+      },
+      "revId": "b064957c8565171f3b8f23c06877f3d2020e648f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e17effc2_771312a4",
