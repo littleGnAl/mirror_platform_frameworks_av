@@ -884,7 +884,6 @@ audio_io_handle_t AudioSystem::getOutput(audio_stream_type_t stream)
 status_t AudioSystem::getOutputForAttr(audio_attributes_t *attr,
                                         audio_io_handle_t *output,
                                         audio_session_t session,
-                                        audio_stream_type_t *stream,
                                         pid_t pid,
                                         uid_t uid,
                                         const audio_config_t *config,
@@ -895,7 +894,7 @@ status_t AudioSystem::getOutputForAttr(audio_attributes_t *attr,
 {
     const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
     if (aps == 0) return NO_INIT;
-    return aps->getOutputForAttr(attr, output, session, stream, pid, uid,
+    return aps->getOutputForAttr(attr, output, session, pid, uid,
                                  config,
                                  flags, selectedDeviceId, portId, secondaryOutputs);
 }
