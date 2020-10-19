@@ -854,7 +854,6 @@ public:
 
                 sp<Track>   createTrack_l(
                                 const sp<AudioFlinger::Client>& client,
-                                audio_stream_type_t streamType,
                                 const audio_attributes_t& attr,
                                 uint32_t *sampleRate,
                                 audio_format_t format,
@@ -1788,7 +1787,6 @@ class MmapThread : public ThreadBase
     virtual     ~MmapThread();
 
     virtual     void        configure(const audio_attributes_t *attr,
-                                      audio_stream_type_t streamType,
                                       audio_session_t sessionId,
                                       const sp<MmapStreamCallback>& callback,
                                       audio_port_handle_t deviceId,
@@ -1893,7 +1891,6 @@ public:
     virtual     ~MmapPlaybackThread() {}
 
     virtual     void        configure(const audio_attributes_t *attr,
-                                      audio_stream_type_t streamType,
                                       audio_session_t sessionId,
                                       const sp<MmapStreamCallback>& callback,
                                       audio_port_handle_t deviceId,

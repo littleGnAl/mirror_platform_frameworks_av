@@ -25,8 +25,7 @@ public:
     ~OpPlayAudioMonitor() override;
     bool hasOpPlayAudio() const;
 
-    static sp<OpPlayAudioMonitor> createIfNeeded(
-            uid_t uid, const audio_attributes_t& attr, int id, audio_stream_type_t streamType);
+    static sp<OpPlayAudioMonitor> createIfNeeded(uid_t uid, const audio_attributes_t& attr, int id);
 
 private:
     OpPlayAudioMonitor(uid_t uid, audio_usage_t usage, int id);
@@ -60,7 +59,6 @@ class Track : public TrackBase, public VolumeProvider, public VolumePortInterfac
 public:
                         Track(  PlaybackThread *thread,
                                 const sp<Client>& client,
-                                audio_stream_type_t streamType,
                                 const audio_attributes_t& attr,
                                 uint32_t sampleRate,
                                 audio_format_t format,
@@ -400,7 +398,7 @@ class PatchTrack : public Track, public PatchTrackBase {
 public:
 
                         PatchTrack(PlaybackThread *playbackThread,
-                                   audio_stream_type_t streamType,
+                                   const audio_attributes_t &attributes,
                                    uint32_t sampleRate,
                                    audio_channel_mask_t channelMask,
                                    audio_format_t format,
