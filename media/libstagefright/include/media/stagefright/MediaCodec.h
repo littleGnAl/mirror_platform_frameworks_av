@@ -577,6 +577,9 @@ private:
     };
 
     Histogram mLatencyHist;
+    int32_t mInputSaveWidth;
+    int32_t mInputSaveHeight;
+    bool mTunneled;
 
     std::function<sp<CodecBase>(const AString &, const char *)> mGetCodecBase;
     std::function<status_t(const AString &, sp<MediaCodecInfo> *)> mGetCodecInfo;
