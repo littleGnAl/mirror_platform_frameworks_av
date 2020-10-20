@@ -505,6 +505,9 @@ private:
     };
 
     Histogram mLatencyHist;
+    int32_t mInputSaveWidth;
+    int32_t mInputSaveHeight;
+    bool mTunneled;
 
     DISALLOW_EVIL_CONSTRUCTORS(MediaCodec);
 };
