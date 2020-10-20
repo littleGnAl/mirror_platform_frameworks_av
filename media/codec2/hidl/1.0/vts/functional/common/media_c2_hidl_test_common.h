@@ -108,10 +108,80 @@ struct CodecListener : public android::Codec2Client::Listener {
 // Return all test parameters, a list of tuple of <instance, component>.
 const std::vector<std::tuple<std::string, std::string>>& getTestParameters();
 
+<<<<<<< HEAD   (39f57f Merge "Merge "extractors: allow OEM to control output type f)
 // Return all test parameters, a list of tuple of <instance, component> with matching domain and
 // kind.
 const std::vector<std::tuple<std::string, std::string>>& getTestParameters(
         C2Component::domain_t domain, C2Component::kind_t kind);
+=======
+   public:
+    virtual void registerTestServices() override {
+        registerTestService<IComponentStore>();
+    }
+
+    ComponentTestEnvironment() : res("/data/local/tmp/media/") {}
+
+    void setComponent(const char* _component) { component = _component; }
+
+    void setInstance(const char* _instance) { instance = _instance; }
+
+    void setRes(const char* _res) { res = _res; }
+
+    const hidl_string getInstance() const { return instance; }
+
+    const hidl_string getComponent() const { return component; }
+
+    const hidl_string getRes() const { return res; }
+
+    int initFromOptions(int argc, char** argv) {
+        static struct option options[] = {
+            {"instance", required_argument, 0, 'I'},
+            {"component", required_argument, 0, 'C'},
+            {"res", required_argument, 0, 'P'},
+            {0, 0, 0, 0}};
+
+        while (true) {
+            int index = 0;
+            int c = getopt_long(argc, argv, "I:C:P:", options, &index);
+            if (c == -1) {
+                break;
+            }
+
+            switch (c) {
+                case 'I':
+                    setInstance(optarg);
+                    break;
+                case 'C':
+                    setComponent(optarg);
+                    break;
+                case 'P':
+                    setRes(optarg);
+                    break;
+                case '?':
+                    break;
+            }
+        }
+
+        if (optind < argc) {
+            fprintf(stderr,
+                    "unrecognized option: %s\n\n"
+                    "usage: %s <gtest options> <test options>\n\n"
+                    "test options are:\n\n"
+                    "-I, --instance: software for C2 components, else default\n"
+                    "-C, --component: C2 component to test\n"
+                    "-P, --res: Resource files directory location\n",
+                    argv[optind ?: 1], argv[0]);
+            return 2;
+        }
+        return 0;
+    }
+
+   private:
+    hidl_string instance;
+    hidl_string component;
+    hidl_string res;
+};
+>>>>>>> BRANCH (e788c2 Merge "Codec2 VTS: Move device resource files to data/local/)
 
 /*
  * common functions declarations
