@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbe33f4c_be1a1670",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 2045,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-20T00:16:02Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "bd1f5390_b8c7352b",
+      "range": {
+        "startLine": 2045,
+        "startChar": 0,
+        "endLine": 2045,
+        "endChar": 34
+      },
+      "revId": "ff34f863ff63bb40d257affdf0193f40dadc6581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bde26b30_f7a1e68e",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-10-19T21:54:25Z",
       "side": 1,
       "message": "this cannot be initialized here (e.g. flexCount could be 0).\n\nAlso we need to 0-initialize the all the paddings (which here is only the full heapName).\n\nhow about memset(\u0026heapName, 0, flexCount)?",
+      "range": {
+        "startLine": 2054,
+        "startChar": 61,
+        "endLine": 2054,
+        "endChar": 69
+      },
+      "revId": "ff34f863ff63bb40d257affdf0193f40dadc6581",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d6f8896_2b7487b9",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 14
+      },
+      "lineNbr": 2054,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-20T00:16:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bde26b30_f7a1e68e",
       "range": {
         "startLine": 2054,
         "startChar": 61,
