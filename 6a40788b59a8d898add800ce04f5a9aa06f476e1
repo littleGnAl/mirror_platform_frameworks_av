@@ -33,6 +33,24 @@
       "message": "Okay, so this fails because libcodec2 is used in our APEX and libdmabuf is not a known dependency for this APEX.",
       "revId": "6a40788b59a8d898add800ce04f5a9aa06f476e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0921d4d6_91339efc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-20T23:33:34Z",
+      "side": 1,
+      "message": "It seems that libdmabuf will need to be loaded dynamically... let me see how this can be addressed.",
+      "parentUuid": "8892e75e_c0c05acb",
+      "revId": "6a40788b59a8d898add800ce04f5a9aa06f476e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
