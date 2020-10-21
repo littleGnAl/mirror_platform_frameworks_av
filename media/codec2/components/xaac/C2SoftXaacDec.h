@@ -84,12 +84,13 @@ private:
     uint64_t mCurFrameIndex;
     uint64_t mCurTimestamp;
     bool mIsCodecInitialized;
+    bool mIsDRCInitialized;
     bool mIsCodecConfigFlushRequired;
     int8_t* mDrcInBuf;
     int8_t* mDrcOutBuf;
     int32_t mMpegDDRCPresent;
     int32_t mDRCFlag;
-
+    int32_t moutputLoudness;
     Vector<void*> mMemoryVec;
     Vector<void*> mDrcMemoryVec;
 
