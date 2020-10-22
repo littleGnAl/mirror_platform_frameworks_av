@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fb41ca4_1fb5fb4e",
+        "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-22T22:38:49Z",
+      "side": 1,
+      "message": "4 space indentation, to match everything else.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 18
+      },
+      "revId": "d33d7dc64899d6542471e979cb1610d5bd1b32ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a838e67e_5ace7bea",
+        "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-22T22:38:49Z",
+      "side": 1,
+      "message": "if the new fails.... won\u0027t it through an exception?",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "d33d7dc64899d6542471e979cb1610d5bd1b32ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "259bfbc4_fb4ae148",
+        "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-22T22:38:49Z",
+      "side": 1,
+      "message": "I think we want to test when size\u003d\u003d0;\nto see that the underlying codec behaves properly.",
+      "range": {
+        "startLine": 110,
+        "startChar": 9,
+        "endLine": 110,
+        "endChar": 17
+      },
+      "revId": "d33d7dc64899d6542471e979cb1610d5bd1b32ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9640d46b_c2862431",
+        "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-22T22:38:49Z",
+      "side": 1,
+      "message": "so we won\u0027t try testing encodeFrames() with a 0 size packet?\ni think that we do want to test that.\nso this should probably be size\u003c1",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 17
+      },
+      "revId": "d33d7dc64899d6542471e979cb1610d5bd1b32ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
