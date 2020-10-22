@@ -2206,7 +2206,8 @@ status_t CameraProviderManager::ProviderInfo::DeviceInfo1::cacheCameraInfo(
             mInfo.facing = hardware::CAMERA_FACING_BACK;
             break;
         case device::V1_0::CameraFacing::EXTERNAL:
-            // Map external to front for legacy API
+            mInfo.facing = hardware::CAMERA_FACING_BACK;
+            break;
         case device::V1_0::CameraFacing::FRONT:
             mInfo.facing = hardware::CAMERA_FACING_FRONT;
             break;
@@ -2405,7 +2406,9 @@ status_t CameraProviderManager::ProviderInfo::DeviceInfo3::getCameraInfo(
                 info->facing = hardware::CAMERA_FACING_BACK;
                 break;
             case ANDROID_LENS_FACING_EXTERNAL:
-                // Map external to front for legacy API
+                // Map to back for now, let HAL decide in the future.
+                info->facing = hardware::CAMERA_FACING_BACK;
+                break;
             case ANDROID_LENS_FACING_FRONT:
                 info->facing = hardware::CAMERA_FACING_FRONT;
                 break;
