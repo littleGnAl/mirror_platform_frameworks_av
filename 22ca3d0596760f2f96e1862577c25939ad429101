@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec1d6fed_f95de6ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-22T18:46:51Z",
+      "side": 1,
+      "message": "indentation and then we should be ok.",
+      "revId": "22ca3d0596760f2f96e1862577c25939ad429101",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4462a0ab_279f9477",
+        "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-22T18:46:51Z",
+      "side": 1,
+      "message": "4 space indentation please.",
+      "range": {
+        "startLine": 39,
+        "startChar": 1,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "22ca3d0596760f2f96e1862577c25939ad429101",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
