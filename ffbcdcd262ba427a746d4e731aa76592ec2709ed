@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "581833f0_9a10ffef",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 2045,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-10-23T22:31:07Z",
+      "side": 1,
+      "message": "Thanks. That max is implementation defined and does not belong in this header.",
+      "parentUuid": "ec0274d1_099c592a",
+      "range": {
+        "startLine": 2045,
+        "startChar": 0,
+        "endLine": 2045,
+        "endChar": 34
+      },
+      "revId": "ffbcdcd262ba427a746d4e731aa76592ec2709ed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21d126da_3de2bffd",
