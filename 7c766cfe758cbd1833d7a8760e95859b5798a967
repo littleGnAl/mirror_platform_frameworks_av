@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f5d4e3a_0288fbd7",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 3074,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-23T15:04:07Z",
+      "side": 1,
+      "message": "Agreed either to loop on USAGE associated to GAME or to continue using followsSameRouting as far as the lock is removed and clear explanation about why no need to take it as accessing to \"static\" data parsed at policy startup.\nAlso, for the sake of efficiency, I suggested to retrieve only once the strategy list at AF side. Then, it can use this cache and static rules on strategy to retrieve routing/volume per attributes infos.",
+      "parentUuid": "b14d4dba_3e786084",
+      "range": {
+        "startLine": 3074,
+        "startChar": 0,
+        "endLine": 3074,
+        "endChar": 84
+      },
+      "revId": "7c766cfe758cbd1833d7a8760e95859b5798a967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "69dcf696_d017d139",
@@ -236,6 +260,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f34ccdc6_890e42dc",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-23T15:04:07Z",
+      "side": 1,
+      "message": "agreed not to lock as accessing to \"static\" data parsed at APM startup.",
+      "parentUuid": "63d0eb9d_4e89cd1d",
+      "range": {
+        "startLine": 1446,
+        "startChar": 0,
+        "endLine": 1446,
+        "endChar": 85
+      },
+      "revId": "7c766cfe758cbd1833d7a8760e95859b5798a967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f5a95492_94fa14cd",
@@ -273,6 +321,30 @@
       "side": 1,
       "message": "Done",
       "parentUuid": "f5a95492_94fa14cd",
+      "range": {
+        "startLine": 1456,
+        "startChar": 0,
+        "endLine": 1456,
+        "endChar": 85
+      },
+      "revId": "7c766cfe758cbd1833d7a8760e95859b5798a967",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40a5f3b4_c9d3ef92",
+        "filename": "services/audiopolicy/service/AudioPolicyInterfaceImpl.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 1456,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-23T15:04:07Z",
+      "side": 1,
+      "message": "ditto previous",
+      "parentUuid": "953506fe_0bb23f2a",
       "range": {
         "startLine": 1456,
         "startChar": 0,
