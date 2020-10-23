@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef1a43bf_10174f61",
+        "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-10-23T07:29:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fb41ca4_1fb5fb4e",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 18
+      },
+      "revId": "d33d7dc64899d6542471e979cb1610d5bd1b32ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a838e67e_5ace7bea",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-10-22T22:38:49Z",
       "side": 1,
       "message": "if the new fails.... won\u0027t it through an exception?",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "d33d7dc64899d6542471e979cb1610d5bd1b32ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f96e5a7a_1ebed417",
+        "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-10-23T07:29:24Z",
+      "side": 1,
+      "message": "Hi Ray, C++ Exceptions are disabled by default in ndk-build. So, it won\u0027t throw any exception.\nReference: https://developer.android.com/ndk/guides/cpp-support#xp",
+      "parentUuid": "a838e67e_5ace7bea",
       "range": {
         "startLine": 55,
         "startChar": 1,
@@ -72,6 +120,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "625d1a59_25272cd2",
+        "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-10-23T07:29:24Z",
+      "side": 1,
+      "message": "AMR-WB Encoder needs a fixed size frame data for encoding, so passing a frame of size 0 won\u0027t be applicable.",
+      "parentUuid": "259bfbc4_fb4ae148",
+      "range": {
+        "startLine": 110,
+        "startChar": 9,
+        "endLine": 110,
+        "endChar": 17
+      },
+      "revId": "d33d7dc64899d6542471e979cb1610d5bd1b32ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9640d46b_c2862431",
         "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
         "patchSetId": 2
@@ -83,6 +155,30 @@
       "writtenOn": "2020-10-22T22:38:49Z",
       "side": 1,
       "message": "so we won\u0027t try testing encodeFrames() with a 0 size packet?\ni think that we do want to test that.\nso this should probably be size\u003c1",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 17
+      },
+      "revId": "d33d7dc64899d6542471e979cb1610d5bd1b32ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05677c4f_466b071a",
+        "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-10-23T07:29:24Z",
+      "side": 1,
+      "message": "Size 0 packet won\u0027t be applicable for AMR-WB encoder. So, we will need to have at least 2 bytes - one for deciding the configuration and one for encoding.",
+      "parentUuid": "9640d46b_c2862431",
       "range": {
         "startLine": 129,
         "startChar": 5,
