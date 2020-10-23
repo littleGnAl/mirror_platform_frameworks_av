@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d083629_2e730d7c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-10-23T18:47:24Z",
+      "side": 1,
+      "message": "just minor comment fixes",
+      "revId": "53688dde5f780a17aedb776f34cb2158e294c985",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6792b684_6a056259",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/DeviceDescriptor.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-10-23T18:47:24Z",
+      "side": 1,
+      "message": "The device address may have been overwritten on device connection",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 64
+      },
+      "revId": "53688dde5f780a17aedb776f34cb2158e294c985",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2723aca5_772e07c4",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/DeviceDescriptor.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-10-23T18:47:24Z",
+      "side": 1,
+      "message": "a name",
+      "range": {
+        "startLine": 81,
+        "startChar": 33,
+        "endLine": 81,
+        "endChar": 37
+      },
+      "revId": "53688dde5f780a17aedb776f34cb2158e294c985",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "062e848e_3a39d999",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/HwModule.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-10-23T18:47:24Z",
+      "side": 1,
+      "message": "something is missing here? \"...does not have the same address\"?",
+      "range": {
+        "startLine": 345,
+        "startChar": 82,
+        "endLine": 345,
+        "endChar": 86
+      },
+      "revId": "53688dde5f780a17aedb776f34cb2158e294c985",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
