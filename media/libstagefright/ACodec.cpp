@@ -8300,6 +8300,14 @@ bool ACodec::OutputPortSettingsChangedState::onMessageReceived(
             break;
         }
 
+        case kWhatSetSurface:
+        {
+            ALOGV("[%s] Deferring setSurface", mCodec->mComponentName.c_str());
+            mCodec->deferMessage(msg);
+            handled = true;
+            break;
+        }
+
         case kWhatForceStateTransition:
         {
             int32_t generation = 0;
