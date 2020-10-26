@@ -34,6 +34,23 @@
       "parentUuid": "61ff04a0_10943dd8",
       "revId": "d77befba846e74864fac3acc9e51ff4af91dc986",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "973118a5_34d55fab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-10-26T18:34:14Z",
+      "side": 1,
+      "message": "Those CL are OK for the framework changes to build.\n\nWe need other CLs in hardware/interfaces for the audio HAL enums",
+      "revId": "d77befba846e74864fac3acc9e51ff4af91dc986",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
