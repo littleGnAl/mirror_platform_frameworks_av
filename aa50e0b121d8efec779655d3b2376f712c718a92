@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "b6d426c4_8901783b",
         "filename": "/COMMIT_MSG",
@@ -20,10 +21,10 @@
         "endChar": 55
       },
       "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "20571268_614a55a4",
         "filename": "/PATCHSET_LEVEL",
@@ -37,10 +38,10 @@
       "side": 1,
       "message": "thanks",
       "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "18ddded6_91b246ca",
         "filename": "media/codec2/vndk/C2Store.cpp",
@@ -60,10 +61,10 @@
         "endChar": 1
       },
       "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "1fe9ae7f_2637c675",
         "filename": "media/codec2/vndk/C2Store.cpp",
@@ -84,10 +85,10 @@
         "endChar": 1
       },
       "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1122aeab_71aa9986",
         "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
@@ -107,10 +108,10 @@
         "endChar": 35
       },
       "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e910373b_75a3689f",
         "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
@@ -131,10 +132,10 @@
         "endChar": 35
       },
       "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "a8c3d159_14e0f34e",
         "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
@@ -155,10 +156,10 @@
         "endChar": 35
       },
       "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "3a9c50f5_02729d74",
         "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
@@ -178,10 +179,10 @@
         "endChar": 28
       },
       "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "7d3664b2_d2041bd1",
         "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
@@ -202,10 +203,34 @@
         "endChar": 28
       },
       "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3522418_a6b9a090",
+        "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-26T18:11:59Z",
+      "side": 1,
+      "message": "Lajos: I\u0027m going to assume my answer addressed your concern here? Please let me know if not.\n\nOtherwise marking as resolved.",
+      "parentUuid": "7d3664b2_d2041bd1",
+      "range": {
+        "startLine": 116,
+        "startChar": 24,
+        "endLine": 116,
+        "endChar": 28
+      },
+      "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "919d2377_d79086e7",
         "filename": "media/codec2/vndk/include/C2PlatformSupport.h",
@@ -225,10 +250,10 @@
         "endChar": 18
       },
       "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "7abae6e9_be4ac6c7",
         "filename": "media/codec2/vndk/include/C2PlatformSupport.h",
@@ -249,8 +274,31 @@
         "endChar": 18
       },
       "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "95185a9b_cfad45bf",
+        "filename": "media/codec2/vndk/include/C2PlatformSupport.h",
+        "patchSetId": 9
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-26T18:11:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7abae6e9_be4ac6c7",
+      "range": {
+        "startLine": 59,
+        "startChar": 8,
+        "endLine": 59,
+        "endChar": 18
+      },
+      "revId": "aa50e0b121d8efec779655d3b2376f712c718a92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
