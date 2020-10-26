@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "732967ba_fcf69ffb",
+        "filename": "media/libmedia/IMediaPlayer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2020-10-26T12:36:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "125e0042_bc25ff83",
+      "range": {
+        "startLine": 88,
+        "startChar": 7,
+        "endLine": 88,
+        "endChar": 13
+      },
+      "revId": "52e307094bfa293c37501d7e56d2d5041da90626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a18c02c_bff7cf56",
@@ -179,6 +203,30 @@
       "writtenOn": "2020-08-14T19:22:15Z",
       "side": 1,
       "message": "presumably this could run into issues too -- e.g. not enough data in the parcel.\n\nI don\u0027t know enough about what we\u0027re supposed to return here (e.g. what goes into\n\u0027result\u0027 before we send it back to know what value we want to send back if things\nwere bad for some reason.\n\nmaybe prepareDrm returns an appropriate failure if the uuid is all zeroes or if the\ndrmSessionId is short/empty.  I don\u0027t know enough to say for sure.",
+      "range": {
+        "startLine": 967,
+        "startChar": 12,
+        "endLine": 967,
+        "endChar": 22
+      },
+      "revId": "52e307094bfa293c37501d7e56d2d5041da90626",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41053932_ae752ca3",
+        "filename": "media/libmedia/IMediaPlayer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 967,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2020-10-26T12:36:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "90fed59f_407c11b3",
       "range": {
         "startLine": 967,
         "startChar": 12,

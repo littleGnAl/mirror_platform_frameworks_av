@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "478ab4b1_72593de2",
         "filename": "/PATCHSET_LEVEL",
@@ -14,8 +15,24 @@
       "side": 1,
       "message": "this is ok, it resolves the stated problem.\nag/12388536 is one that looks at more complete \"if any part of it is missing\" parsing.\nyour choice, andrew.",
       "revId": "35c7db940ff8fc251862f4a3fd8b37590d9b2a9a",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44bacbd1_584befb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060104
+      },
+      "writtenOn": "2020-10-26T12:36:26Z",
+      "side": 1,
+      "message": "Resolving remaining comments as they are addressed by ag/12388536.",
+      "revId": "35c7db940ff8fc251862f4a3fd8b37590d9b2a9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
