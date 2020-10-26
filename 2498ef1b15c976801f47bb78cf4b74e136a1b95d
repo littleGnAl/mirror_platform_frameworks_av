@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "979c6aa3_688bc0a6",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "This generally looks good other than the indentation that needs to be doubled.",
       "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "4fa474b7_fa425470",
         "filename": "/PATCHSET_LEVEL",
@@ -31,10 +32,10 @@
       "side": 1,
       "message": "I agree that there is some duplication, but this will provide a path for deprecating ion support.\n\nIs there are difference in how buffers are mmapped/unmapped in ion vs dmabuf?",
       "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "75e28981_4f1ca35d",
         "filename": "/PATCHSET_LEVEL",
@@ -49,10 +50,10 @@
       "message": "No, both ION and DMABUF Heaps export dma_buf handles, so how they are used by userland should be the same.",
       "parentUuid": "4fa474b7_fa425470",
       "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "9eeb4095_87e5e1b3",
         "filename": "/PATCHSET_LEVEL",
@@ -66,10 +67,10 @@
       "side": 1,
       "message": "Lajos, thanks again for the review!",
       "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "bf07dedb_00833af9",
         "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
@@ -89,10 +90,10 @@
         "endChar": 18
       },
       "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "56fc0683_e0cf0066",
         "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
@@ -113,10 +114,34 @@
         "endChar": 18
       },
       "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de1b3c49_139f05bb",
+        "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-26T18:12:52Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "56fc0683_e0cf0066",
+      "range": {
+        "startLine": 52,
+        "startChar": 7,
+        "endLine": 52,
+        "endChar": 18
+      },
+      "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "1651ba90_48802f5c",
         "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
@@ -136,10 +161,10 @@
         "endChar": 2
       },
       "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0a227a3e_90763019",
         "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
@@ -160,10 +185,10 @@
         "endChar": 2
       },
       "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "b9594e9b_0a1e40e8",
         "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
@@ -184,10 +209,34 @@
         "endChar": 2
       },
       "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad4a1b42_48e1f799",
+        "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-26T18:12:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b9594e9b_0a1e40e8",
+      "range": {
+        "startLine": 53,
+        "startChar": 0,
+        "endLine": 53,
+        "endChar": 2
+      },
+      "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "748eaabb_2a5f9d74",
         "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
@@ -207,10 +256,10 @@
         "endChar": 25
       },
       "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "8d66131b_ffc13ec6",
         "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
@@ -231,8 +280,31 @@
         "endChar": 25
       },
       "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c696774_074d758e",
+        "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2020-10-26T18:12:52Z",
+      "side": 1,
+      "message": "Lajos: I\u0027m going to assume my answer addressed your concern here? Please let me know if not.\n\nOtherwise marking as resolved.",
+      "parentUuid": "8d66131b_ffc13ec6",
+      "range": {
+        "startLine": 80,
+        "startChar": 14,
+        "endLine": 80,
+        "endChar": 25
+      },
+      "revId": "2498ef1b15c976801f47bb78cf4b74e136a1b95d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
