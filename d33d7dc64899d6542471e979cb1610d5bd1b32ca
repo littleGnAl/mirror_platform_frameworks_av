@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "14f121e4_bae72bec",
+        "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-26T03:51:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f96e5a7a_1ebed417",
+      "range": {
+        "startLine": 55,
+        "startChar": 1,
+        "endLine": 56,
+        "endChar": 22
+      },
+      "revId": "d33d7dc64899d6542471e979cb1610d5bd1b32ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "259bfbc4_fb4ae148",
@@ -144,6 +168,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4d5891a_2a6087cc",
+        "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-26T03:51:31Z",
+      "side": 1,
+      "message": "by that logic, a size of 1 would also not be applicable.\nand this code will do that (we\u0027ll calculate minSize \u003d 1 in line 111 and then\nwe\u0027ll pass that as an input length in line 119.\n\nare the proper semantics for a short frame (whether it\u0027s 0 or 1 or \u0027framesize-1\u0027:\n-- declare an error\n-- fill with something (like 0\u0027s)\n-- save the supplied input until a subsequent buffer fills it?\n\ni do see that a \u0027while (size\u003e\u003d0)\u0027 here means that we\u0027d always finish with a 0-sized buffer\nand that\u0027s probably not what we want.\nso we might want a do { .....} while (size\u003e0)\nso that it would allow a 0 size first input.\n\n\nBut first -- before we say size\u003d\u003d0 is no good because it does complete frames, we have\nto answer the question about size\u003d\u003d1 to decide how we should be handling anything\nwhere size !\u003d (frame*N)",
+      "parentUuid": "625d1a59_25272cd2",
+      "range": {
+        "startLine": 110,
+        "startChar": 9,
+        "endLine": 110,
+        "endChar": 17
+      },
+      "revId": "d33d7dc64899d6542471e979cb1610d5bd1b32ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9640d46b_c2862431",
         "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
         "patchSetId": 2
@@ -179,6 +227,30 @@
       "side": 1,
       "message": "Size 0 packet won\u0027t be applicable for AMR-WB encoder. So, we will need to have at least 2 bytes - one for deciding the configuration and one for encoding.",
       "parentUuid": "9640d46b_c2862431",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 17
+      },
+      "revId": "d33d7dc64899d6542471e979cb1610d5bd1b32ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bc31b97_3940951a",
+        "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-26T03:51:31Z",
+      "side": 1,
+      "message": "this\u0027ll resolve once we decide the question for the encodeFrames() routine\nwith any size that is not a multiple of the frame size...",
+      "parentUuid": "05677c4f_466b071a",
       "range": {
         "startLine": 129,
         "startChar": 5,
