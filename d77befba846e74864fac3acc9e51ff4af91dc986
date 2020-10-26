@@ -16,6 +16,24 @@
       "message": "I don\u0027t remember if the CLs adding BLE audio devices have been merged to system/media and hardware/interfaces?",
       "revId": "d77befba846e74864fac3acc9e51ff4af91dc986",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "618a8e3a_08d8aacc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087037
+      },
+      "writtenOn": "2020-10-26T18:12:26Z",
+      "side": 1,
+      "message": "You mean https://android-review.googlesource.com/c/platform/system/media/+/1399204/ and https://android-review.googlesource.com/c/platform/frameworks/av/+/1398473 ?",
+      "parentUuid": "61ff04a0_10943dd8",
+      "revId": "d77befba846e74864fac3acc9e51ff4af91dc986",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
