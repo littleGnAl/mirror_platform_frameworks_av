@@ -51,6 +51,24 @@
       "message": "Those CL are OK for the framework changes to build.\n\nWe need other CLs in hardware/interfaces for the audio HAL enums",
       "revId": "d77befba846e74864fac3acc9e51ff4af91dc986",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1be69c29_800601dd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1087037
+      },
+      "writtenOn": "2020-10-26T21:06:14Z",
+      "side": 1,
+      "message": "In hardware/interfaces we have just this one: https://android-review.googlesource.com/c/platform/hardware/interfaces/+/1404810",
+      "parentUuid": "973118a5_34d55fab",
+      "revId": "d77befba846e74864fac3acc9e51ff4af91dc986",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
