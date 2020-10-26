@@ -191,6 +191,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd393df0_0038ded2",
+        "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-10-26T03:40:24Z",
+      "side": 1,
+      "message": "Marking this as resolved as CL has Code-Review +2",
+      "parentUuid": "226da8d8_0d777c33",
+      "range": {
+        "startLine": 76,
+        "startChar": 11,
+        "endLine": 76,
+        "endChar": 37
+      },
+      "revId": "536cd4d21ec370da9b97f710876f35cc18f3c1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d57af186_d1729dd8",
@@ -228,6 +252,30 @@
       "side": 1,
       "message": "\u0027kOutputBufferSize\u0027 is now defined as twice the size of \u0027inputBuf\u0027, which itself is twice that of L_FRAME.",
       "parentUuid": "d57af186_d1729dd8",
+      "range": {
+        "startLine": 77,
+        "startChar": 22,
+        "endLine": 77,
+        "endChar": 39
+      },
+      "revId": "536cd4d21ec370da9b97f710876f35cc18f3c1af",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae42fa4b_84e4bd6c",
+        "filename": "media/libstagefright/codecs/amrnb/enc/fuzzer/amrnb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-10-26T03:40:24Z",
+      "side": 1,
+      "message": "Marking this as resolved as CL has Code-Review +2",
+      "parentUuid": "9b4f1025_157bd602",
       "range": {
         "startLine": 77,
         "startChar": 22,
