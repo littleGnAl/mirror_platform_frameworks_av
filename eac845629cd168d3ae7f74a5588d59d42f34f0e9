@@ -1,0 +1,95 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b8ecf9da_447bc02c",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5815,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-10-27T16:45:39Z",
+      "side": 1,
+      "message": "I don\u0027t think we need |defer| variable here:\n\n  if (msg-\u003esenderAwaitsResponse(\u0026replyID)) {\n      ...\n  }",
+      "revId": "eac845629cd168d3ae7f74a5588d59d42f34f0e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a86c883_0df1027e",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5822,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-10-27T16:45:39Z",
+      "side": 1,
+      "message": "We need error handling in case deferred operation didn\u0027t succeed, e.g.:\n\n  } else if (err !\u003d OK) {\n      mCodec-\u003esignalError(OMX_ErrorUndefined, err);\n  }",
+      "revId": "eac845629cd168d3ae7f74a5588d59d42f34f0e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fdf0c5d_83043590",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 8325,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-10-27T16:45:39Z",
+      "side": 1,
+      "message": "please remove this line (context above)",
+      "revId": "eac845629cd168d3ae7f74a5588d59d42f34f0e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adb679a8_4cce3fd6",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 8328,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-10-27T16:45:39Z",
+      "side": 1,
+      "message": "Please put this line at the end",
+      "revId": "eac845629cd168d3ae7f74a5588d59d42f34f0e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "387ae974_2251939e",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 8333,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-10-27T16:45:39Z",
+      "side": 1,
+      "message": "We can put OK here and remove |err| variable.",
+      "range": {
+        "startLine": 8333,
+        "startChar": 38,
+        "endLine": 8333,
+        "endChar": 41
+      },
+      "revId": "eac845629cd168d3ae7f74a5588d59d42f34f0e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
