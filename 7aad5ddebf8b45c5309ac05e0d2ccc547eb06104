@@ -63,6 +63,30 @@
       },
       "revId": "7aad5ddebf8b45c5309ac05e0d2ccc547eb06104",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67a29ea8_d8428137",
+        "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-10-27T18:47:26Z",
+      "side": 1,
+      "message": "Ray,\nThere is no need to use a separate dynamic buffer here.\n\"data\" passed to LLVMTestOneInput is allocated for \"size\" bytes and\ndata is incremented as and when bytes are used from that and any OOB read will be flagged in the last call.",
+      "parentUuid": "5807f3fe_9544028f",
+      "range": {
+        "startLine": 116,
+        "startChar": 8,
+        "endLine": 116,
+        "endChar": 46
+      },
+      "revId": "7aad5ddebf8b45c5309ac05e0d2ccc547eb06104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
