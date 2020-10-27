@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "233af555_ac79f51d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-27T17:43:41Z",
+      "side": 1,
+      "message": "the length stuff is all good now; thanks for reworking that.\n\nthe input buffer -- i\u0027d like to make that dynamically sized so that we can detect\nif the codec overruns the supplied input.\n\nfor me, that would be the last needed change.",
+      "revId": "7aad5ddebf8b45c5309ac05e0d2ccc547eb06104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6addebf_3d755bf4",
+        "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-27T17:43:41Z",
+      "side": 1,
+      "message": "what i liked about using inputBuf[] here is that\n\n-- we controlled the size of inputBuff\n-- it meant we knew if the underlying codec overran the buffer.\n\nwhich is probably really relevant when we\u0027re doing shorter than expected buffers\n(e.g. the 0, 1 and other sizes).\n\n\nit looks like \"uint8_t inputBuf[minSize] \u003d {}\" (with minSize being a variable, not a constant) is part of the standard as of C99/C11  and also C++11\nso we should be good to go with that construct.\n\n\nI really like the idea of using the dynamic buffer, which should detect any OOB references.\nIf we can do that, then I think this is good to merge.",
+      "range": {
+        "startLine": 116,
+        "startChar": 8,
+        "endLine": 116,
+        "endChar": 46
+      },
+      "revId": "7aad5ddebf8b45c5309ac05e0d2ccc547eb06104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
