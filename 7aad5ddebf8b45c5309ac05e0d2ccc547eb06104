@@ -39,6 +39,30 @@
       },
       "revId": "7aad5ddebf8b45c5309ac05e0d2ccc547eb06104",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5807f3fe_9544028f",
+        "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-27T18:23:50Z",
+      "side": 1,
+      "message": "size\u003d\u003d0 might be a problem for the array;\nmy recent reading of the standard is that while we can have variable length arrays,\nthey have to be non-zero size.\n\nso the array might have to be   inputBuf[ minSize?minSize:1 ]\nso that we have at least 1 byte in there.\n\notherwise, i still like the idea of a dynamic (and restricted) size buffer.",
+      "parentUuid": "e6addebf_3d755bf4",
+      "range": {
+        "startLine": 116,
+        "startChar": 8,
+        "endLine": 116,
+        "endChar": 46
+      },
+      "revId": "7aad5ddebf8b45c5309ac05e0d2ccc547eb06104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
