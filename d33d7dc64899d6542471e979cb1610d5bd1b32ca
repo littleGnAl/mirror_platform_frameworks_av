@@ -190,6 +190,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f558621_2b21674b",
+        "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-10-27T14:10:57Z",
+      "side": 1,
+      "message": "Hi Ray, Sorry, AMR-NB encoder was the one that required a complete frame as input.\nWe have updated the fuzzer plugin so that a frame of size 0 could also go as input to the encoder.",
+      "parentUuid": "b4d5891a_2a6087cc",
+      "range": {
+        "startLine": 110,
+        "startChar": 9,
+        "endLine": 110,
+        "endChar": 17
+      },
+      "revId": "d33d7dc64899d6542471e979cb1610d5bd1b32ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9640d46b_c2862431",
@@ -251,6 +275,30 @@
       "side": 1,
       "message": "this\u0027ll resolve once we decide the question for the encodeFrames() routine\nwith any size that is not a multiple of the frame size...",
       "parentUuid": "05677c4f_466b071a",
+      "range": {
+        "startLine": 129,
+        "startChar": 5,
+        "endLine": 129,
+        "endChar": 17
+      },
+      "revId": "d33d7dc64899d6542471e979cb1610d5bd1b32ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60805294_ff82e35b",
+        "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-10-27T14:10:57Z",
+      "side": 1,
+      "message": "Hi Ray, We have updated the fuzzer plugin to accept a size 0 packet. Thus, updated this check to size \u003c 1.",
+      "parentUuid": "8bc31b97_3940951a",
       "range": {
         "startLine": 129,
         "startChar": 5,
