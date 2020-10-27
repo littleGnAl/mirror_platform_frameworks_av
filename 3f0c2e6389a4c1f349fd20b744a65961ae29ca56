@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "995ada13_a85cc555",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,27 @@
       "side": 1,
       "message": "seems like some of the tests come down to Log.v/ALOG() operations instead of\nassertions that cause the test to announce failure.   Unless I\u0027m missing where they\nare triggering appropriate crash failures.",
       "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5909fa48_3cdfdf6c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-10-27T09:42:02Z",
+      "side": 1,
+      "message": "Marking open comments as resolved since CR +2 is added on patch. ",
+      "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "8c827a66_37c27063",
         "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
@@ -37,10 +55,10 @@
         "endChar": 6
       },
       "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "bd72ccb6_2b202a53",
         "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
@@ -61,10 +79,34 @@
         "endChar": 6
       },
       "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d57213f9_53d95bff",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-10-27T09:42:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd72ccb6_2b202a53",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 6
+      },
+      "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "391bfd58_628d316c",
         "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
@@ -84,10 +126,10 @@
         "endChar": 0
       },
       "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "ba6f86fa_b9f6f7b8",
         "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
@@ -108,10 +150,34 @@
         "endChar": 0
       },
       "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "376d1bb7_1d84acd0",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-10-27T09:42:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ba6f86fa_b9f6f7b8",
+      "range": {
+        "startLine": 101,
+        "startChar": 8,
+        "endLine": 105,
+        "endChar": 0
+      },
+      "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "01a619f6_10cb5020",
         "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
@@ -131,10 +197,10 @@
         "endChar": 39
       },
       "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9d3351b0_716b056c",
         "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
@@ -155,10 +221,34 @@
         "endChar": 39
       },
       "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "538f940c_13a3665c",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-10-27T09:42:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d3351b0_716b056c",
+      "range": {
+        "startLine": 170,
+        "startChar": 31,
+        "endLine": 171,
+        "endChar": 39
+      },
+      "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "8f677806_cd7993b3",
         "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
@@ -178,10 +268,10 @@
         "endChar": 66
       },
       "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "a1f1f356_3bdd86e5",
         "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
@@ -202,8 +292,31 @@
         "endChar": 66
       },
       "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2fbc863_6479f83b",
+        "filename": "media/libmedia/tests/codeclist/CodecListTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 186,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2020-10-27T09:42:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1f1f356_3bdd86e5",
+      "range": {
+        "startLine": 184,
+        "startChar": 31,
+        "endLine": 186,
+        "endChar": 66
+      },
+      "revId": "3f0c2e6389a4c1f349fd20b744a65961ae29ca56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
