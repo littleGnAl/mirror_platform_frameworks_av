@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "063784bc_ef9052f4",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-10-27T17:36:34Z",
+      "side": 1,
+      "message": "EFFECT_CMD_ENABLE also needs to be set before the process call",
+      "range": {
+        "startLine": 138,
+        "startChar": 23,
+        "endLine": 138,
+        "endChar": 32
+      },
+      "revId": "459450ec001e2df846dc56ebdece7ae156b2b04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
