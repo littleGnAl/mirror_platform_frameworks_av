@@ -202,8 +202,8 @@ private:
         uint32_t duration;
         int32_t compositionOffset;
         uint8_t iv[16];
-        Vector<size_t> clearsizes;
-        Vector<size_t> encryptedsizes;
+        Vector<int32_t> clearsizes;
+        Vector<int32_t> encryptedsizes;
     };
     Vector<Sample> mCurrentSamples;
     std::map<off64_t, uint32_t> mDrmOffsets;
