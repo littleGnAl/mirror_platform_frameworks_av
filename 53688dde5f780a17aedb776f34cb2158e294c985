@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "4be9e87b_8273c135",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-28T13:16:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8561a66_ff2ff577",
+      "range": {
+        "startLine": 21,
+        "startChar": 3,
+        "endLine": 21,
+        "endChar": 4
+      },
+      "revId": "53688dde5f780a17aedb776f34cb2158e294c985",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "3d083629_2e730d7c",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 10
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4931fa6a_e17251d8",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/DeviceDescriptor.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-28T13:16:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6792b684_6a056259",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 64
+      },
+      "revId": "53688dde5f780a17aedb776f34cb2158e294c985",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2723aca5_772e07c4",
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "68aec8fc_dbdff565",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/DeviceDescriptor.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-28T13:16:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2723aca5_772e07c4",
+      "range": {
+        "startLine": 81,
+        "startChar": 33,
+        "endLine": 81,
+        "endChar": 37
+      },
+      "revId": "53688dde5f780a17aedb776f34cb2158e294c985",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "062e848e_3a39d999",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-10-23T18:47:24Z",
       "side": 1,
       "message": "something is missing here? \"...does not have the same address\"?",
+      "range": {
+        "startLine": 345,
+        "startChar": 82,
+        "endLine": 345,
+        "endChar": 86
+      },
+      "revId": "53688dde5f780a17aedb776f34cb2158e294c985",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a1612b7_d13a8a2a",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/HwModule.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 345,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-10-28T13:16:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "062e848e_3a39d999",
       "range": {
         "startLine": 345,
         "startChar": 82,
