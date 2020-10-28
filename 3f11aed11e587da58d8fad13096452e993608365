@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005788314",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1478696?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "9d0cd909_ba1ca900",
+        "filename": "services/camera/libcameraservice/tests/fuzzer/DepthProcessorFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-28T15:42:32Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 35,
+        "startChar": 19,
+        "endLine": 35,
+        "endChar": 20
+      },
+      "revId": "3f11aed11e587da58d8fad13096452e993608365",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005788314",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1478696?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "36bacb06_6eff3443",
+        "filename": "services/camera/libcameraservice/tests/fuzzer/DepthProcessorFuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-28T15:42:32Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 36,
+        "startChar": 32,
+        "endLine": 36,
+        "endChar": 33
+      },
+      "revId": "3f11aed11e587da58d8fad13096452e993608365",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
