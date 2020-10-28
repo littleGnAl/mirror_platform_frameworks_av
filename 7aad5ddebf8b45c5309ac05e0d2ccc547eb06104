@@ -87,6 +87,30 @@
       },
       "revId": "7aad5ddebf8b45c5309ac05e0d2ccc547eb06104",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "52a27623_85ad058d",
+        "filename": "media/libstagefright/codecs/amrwbenc/fuzzer/amrwb_enc_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-28T19:30:07Z",
+      "side": 1,
+      "message": "that\u0027ll work for me.",
+      "parentUuid": "67a29ea8_d8428137",
+      "range": {
+        "startLine": 116,
+        "startChar": 8,
+        "endLine": 116,
+        "endChar": 46
+      },
+      "revId": "7aad5ddebf8b45c5309ac05e0d2ccc547eb06104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
