@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005783987",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1478396?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "2ce73228_fdb7dc3d",
+        "filename": "media/bufferpool/2.0/AccessorImpl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-28T11:09:48Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 733,
+        "startChar": 72,
+        "endLine": 733,
+        "endChar": 73
+      },
+      "revId": "0b448973d85cef085bef67e2fe796e7ea7440c83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000005783987",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1478396?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "556f19b4_f0e777f0",
+        "filename": "media/bufferpool/2.0/AccessorImpl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-10-28T11:09:48Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 749,
+        "startChar": 30,
+        "endLine": 749,
+        "endChar": 31
+      },
+      "revId": "0b448973d85cef085bef67e2fe796e7ea7440c83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
