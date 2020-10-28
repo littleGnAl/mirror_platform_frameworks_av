@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "23855a2a_13a267ac",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-10-28T21:29:08Z",
+      "side": 1,
+      "message": "Kris, \nFailing test (non-blocking fail) isn\u0027t related to this CL. It is failing due to a recent change in CTS and was failing before this CL as well.\nSo this is now ready to be submitted.\nCan you please submit?\nThanks.",
+      "revId": "7aad5ddebf8b45c5309ac05e0d2ccc547eb06104",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e6addebf_3d755bf4",
