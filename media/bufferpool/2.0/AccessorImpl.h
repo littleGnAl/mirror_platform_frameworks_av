@@ -193,6 +193,16 @@ private:
                 : mSizeCached(0), mBuffersCached(0), mSizeInUse(0), mBuffersInUse(0),
                   mTotalAllocations(0), mTotalRecycles(0), mTotalTransfers(0), mTotalFetches(0) {}
 
+            int getNotInUsePercentage() const {
+                ALOG_ASSERT(mBuffersCached >= mBuffersInUse);
+                return mBuffersCached == 0 ? 0 : ((mBuffersCached - mBuffersInUse)*100)/mBuffersCached;
+            }
+
+            int getNotInUseCount() const {
+                ALOG_ASSERT(mBuffersCached >= mBuffersInUse);
+                return mBuffersCached - mBuffersInUse;
+            }
+
             /// A new buffer is allocated on an allocation request.
             void onBufferAllocated(size_t allocSize) {
                 mSizeCached += allocSize;
