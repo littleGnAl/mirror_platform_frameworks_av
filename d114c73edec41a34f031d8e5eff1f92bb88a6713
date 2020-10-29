@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c0206f2b_7ecae5b7",
+        "filename": "media/libstagefright/codecs/m4v_h263/fuzzer/mpeg4_h263_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-29T16:51:27Z",
+      "side": 1,
+      "message": "if we\u0027re doing the specific resolutions for h263,\ndon\u0027t the pairings have to stay together.\n\ne.g. we have a 128x96, 176x144, 352x288...\n\nbut as written we\u0027ll test things like 352x96 because the height and width are chosen from independent variables and we don\u0027t treat the resolution as a bound pair.\n\n[i thought i had noted this last night, but i obviously didn\u0027t....]",
+      "range": {
+        "startLine": 95,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 61
+      },
+      "revId": "d114c73edec41a34f031d8e5eff1f92bb88a6713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
