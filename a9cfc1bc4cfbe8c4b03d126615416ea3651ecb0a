@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b336cd3a_6b72c8ff",
+        "filename": "media/libstagefright/codecs/m4v_h263/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-10-29T12:49:32Z",
+      "side": 1,
+      "message": "Hi Ray, We have added a new CL to restructure the two decoder fuzzers - https://android-review.googlesource.com/c/platform/frameworks/av/+/1479638",
+      "parentUuid": "21f0137c_1d78a78d",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 13
+      },
+      "revId": "a9cfc1bc4cfbe8c4b03d126615416ea3651ecb0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e98f69e6_e38b29d6",
@@ -70,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc7dca2f_c09644e7",
+        "filename": "media/libstagefright/codecs/m4v_h263/fuzzer/mpeg4_h263_enc_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-10-29T12:49:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c855bdb3_8def325f",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 6
+      },
+      "revId": "a9cfc1bc4cfbe8c4b03d126615416ea3651ecb0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c8e5206e_fff832c2",
@@ -93,6 +141,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2176a9c_ec8c9828",
+        "filename": "media/libstagefright/codecs/m4v_h263/fuzzer/mpeg4_h263_enc_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-10-29T12:49:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8e5206e_fff832c2",
+      "range": {
+        "startLine": 154,
+        "startChar": 12,
+        "endLine": 154,
+        "endChar": 16
+      },
+      "revId": "a9cfc1bc4cfbe8c4b03d126615416ea3651ecb0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7299087_4692b24c",
@@ -106,6 +178,30 @@
       "writtenOn": "2020-10-29T04:17:51Z",
       "side": 1,
       "message": "we should only pad/fill the bytes beyond what we\u0027re filling from the data source;\n\nmemcpy(inputBuffer, data, bytesConsumed);\nif (bytesConsumed \u003c sizeof(inputBuffer))\n    memset(inputBuffer+bytesConsumed, data[0], sizeof(inputBuffer)-bytesConsumed);",
+      "range": {
+        "startLine": 155,
+        "startChar": 48,
+        "endLine": 155,
+        "endChar": 59
+      },
+      "revId": "a9cfc1bc4cfbe8c4b03d126615416ea3651ecb0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9cc88b8_2b17d681",
+        "filename": "media/libstagefright/codecs/m4v_h263/fuzzer/mpeg4_h263_enc_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-10-29T12:49:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f7299087_4692b24c",
       "range": {
         "startLine": 155,
         "startChar": 48,
