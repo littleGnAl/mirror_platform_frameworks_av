@@ -497,6 +497,9 @@ void C2SoftXaacDec::process(const std::unique_ptr<C2Work>& work,
         IA_ENHAACPLUS_DEC_DRC_EFFECT_TYPE, &ui_drc_val);
 
     int32_t ia_drc_albumMode = mIntf->getDrcAlbumMode();
+    int32_t ia_drc_attenuationFactor = mIntf->getDrcAttenuationFactor();
+    int32_t ia_drc_boostFactor = mIntf->getDrcBoostFactor();
+
     while (size > 0u) {
         if ((kOutputDrainBufferSize * sizeof(int16_t) -
              mOutputDrainBufferWritePos) <
@@ -707,6 +710,22 @@ void C2SoftXaacDec::process(const std::unique_ptr<C2Work>& work,
         prevalbummode = ia_drc_albumMode;
     }
 
+    if (ia_drc_attenuationFactor != prevattenuation || prevattenuation == DEFAULT_PREV_STATE) {
+        C2StreamDrcAttenuationFactorTuning::input currentAttenuationFactor(0u,
+            (C2FloatValue) (ia_drc_attenuationFactor/127.));
+        work->worklets.front()->output.configUpdate.push_back(
+            C2Param::Copy(currentAttenuationFactor));
+        prevattenuation = ia_drc_attenuationFactor;
+    }
+
+    if (ia_drc_boostFactor != prevboost || prevboost == DEFAULT_PREV_STATE) {
+        C2StreamDrcBoostFactorTuning::input currentBoostFactor(0u,
+            (C2FloatValue) (ia_drc_boostFactor/127.));
+        work->worklets.front()->output.configUpdate.push_back(
+            C2Param::Copy(currentBoostFactor));
+        prevboost = ia_drc_boostFactor;
+    }
+
     if (mOutputDrainBufferWritePos) {
         finishWork(work, pool);
     } else {
@@ -806,6 +825,8 @@ IA_ERRORCODE C2SoftXaacDec::initXAACDecoder() {
     preveffecttype = DEFAULT_PREV_STATE;
     prevloudness = DEFAULT_PREV_STATE;
     prevalbummode = DEFAULT_PREV_STATE;
+    prevboost = DEFAULT_PREV_STATE;
+    prevattenuation = DEFAULT_PREV_STATE;
 
     /* Process struct initing end */
 
@@ -973,9 +994,9 @@ status_t C2SoftXaacDec::initXAACDrc() {
 
     RETURN_IF_FATAL(err_code, "IA_ENHAACPLUS_DEC_DRC_TARGET_LOUDNESS");
 
-    int32_t attenuationFactor = mIntf->getDrcAttenuationFactor();
-    ALOGV("AAC decoder using desired DRC attenuation factor of %d", attenuationFactor);
-    ui_drc_val = (unsigned int)attenuationFactor;
+    int32_t ia_drc_attenuationFactor = mIntf->getDrcAttenuationFactor();
+    ALOGV("AAC decoder using desired DRC attenuation factor of %d", ia_drc_attenuationFactor);
+    ui_drc_val = (unsigned int)ia_drc_attenuationFactor;
     err_code = ixheaacd_dec_api(mXheaacCodecHandle,
                                 IA_API_CMD_SET_CONFIG_PARAM,
                                 IA_ENHAACPLUS_DEC_CONFIG_PARAM_DRC_CUT,
@@ -983,9 +1004,9 @@ status_t C2SoftXaacDec::initXAACDrc() {
     RETURN_IF_FATAL(err_code,  "IA_ENHAACPLUS_DEC_CONFIG_PARAM_DRC_CUT");
 
     //  DRC_PRES_MODE_WRAP_DESIRED_BOOST_FACTOR
-    int32_t boostFactor = mIntf->getDrcBoostFactor();
-    ALOGV("AAC decoder using desired DRC boost factor of %d", boostFactor);
-    ui_drc_val = (unsigned int)boostFactor;
+    int32_t ia_drc_boostFactor = mIntf->getDrcBoostFactor();
+    ALOGV("AAC decoder using desired DRC boost factor of %d", ia_drc_boostFactor);
+    ui_drc_val = (unsigned int)ia_drc_boostFactor;
     err_code = ixheaacd_dec_api(mXheaacCodecHandle,
                                 IA_API_CMD_SET_CONFIG_PARAM,
                                 IA_ENHAACPLUS_DEC_CONFIG_PARAM_DRC_BOOST,
@@ -1233,6 +1254,18 @@ int C2SoftXaacDec::configMPEGDDrc() {
     err_code = ia_drc_dec_api(mMpegDDrcHandle, IA_API_CMD_SET_CONFIG_PARAM,
                               IA_DRC_DEC_CONFIG_DRC_ALBUM_MODE, &ia_drc_albumMode);
     RETURN_IF_FATAL(err_code, "IA_DRC_DEC_CONFIG_ALBUM_MODE");
+
+    int32_t ia_drc_boostFactor = mIntf->getDrcBoostFactor();
+
+    err_code = ia_drc_dec_api(mMpegDDrcHandle, IA_API_CMD_SET_CONFIG_PARAM,
+                              IA_DRC_DEC_CONFIG_DRC_BOOST, &ia_drc_boostFactor);
+    RETURN_IF_FATAL(err_code, "IA_DRC_DEC_CONFIG_DRC_BOOST");
+
+    int32_t ia_drc_attenuationFactor = mIntf->getDrcAttenuationFactor();
+
+    err_code = ia_drc_dec_api(mMpegDDrcHandle, IA_API_CMD_SET_CONFIG_PARAM,
+                              IA_DRC_DEC_CONFIG_DRC_COMPRESS, &ia_drc_attenuationFactor);
+    RETURN_IF_FATAL(err_code, "IA_DRC_DEC_CONFIG_DRC_COMPRESS");
 
     /* Get memory info tables size */
     err_code = ia_drc_dec_api(mMpegDDrcHandle, IA_API_CMD_GET_MEMTABS_SIZE, 0,
