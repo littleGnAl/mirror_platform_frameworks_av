@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21f0137c_1d78a78d",
+        "filename": "media/libstagefright/codecs/m4v_h263/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-29T04:17:51Z",
+      "side": 1,
+      "message": "can we prep an additional CL\nthat restructures the two decode fuzzers in this directory the same\nway -- with a cc_defaults and two simpler cc_fuzz clauses.",
+      "range": {
+        "startLine": 74,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 13
+      },
+      "revId": "a9cfc1bc4cfbe8c4b03d126615416ea3651ecb0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e98f69e6_e38b29d6",
+        "filename": "media/libstagefright/codecs/m4v_h263/fuzzer/mpeg4_h263_enc_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-29T04:17:51Z",
+      "side": 1,
+      "message": "from a fuzzer standpoint, is it going to fill data[IDX_ENABLE_RVLC]\nwith all 0..255 values that it\u0027ll hold?\n\nthat would seem to be 128x as many test setups as we need to cover all the paths this\nenabled.  How does the fuzzer know that only values 0 and 1 are worth testing?\n\n[that pattern follows for a number of other field settings here...",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 80
+      },
+      "revId": "a9cfc1bc4cfbe8c4b03d126615416ea3651ecb0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c855bdb3_8def325f",
+        "filename": "media/libstagefright/codecs/m4v_h263/fuzzer/mpeg4_h263_enc_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-29T04:17:51Z",
+      "side": 1,
+      "message": "both sides are the same source code; this doesn\u0027t make sense as an #if clause.",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 117,
+        "endChar": 6
+      },
+      "revId": "a9cfc1bc4cfbe8c4b03d126615416ea3651ecb0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8e5206e_fff832c2",
+        "filename": "media/libstagefright/codecs/m4v_h263/fuzzer/mpeg4_h263_enc_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-29T04:17:51Z",
+      "side": 1,
+      "message": "this comparison should be done with bytesConsumed instead of size.",
+      "range": {
+        "startLine": 154,
+        "startChar": 12,
+        "endLine": 154,
+        "endChar": 16
+      },
+      "revId": "a9cfc1bc4cfbe8c4b03d126615416ea3651ecb0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7299087_4692b24c",
+        "filename": "media/libstagefright/codecs/m4v_h263/fuzzer/mpeg4_h263_enc_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-29T04:17:51Z",
+      "side": 1,
+      "message": "we should only pad/fill the bytes beyond what we\u0027re filling from the data source;\n\nmemcpy(inputBuffer, data, bytesConsumed);\nif (bytesConsumed \u003c sizeof(inputBuffer))\n    memset(inputBuffer+bytesConsumed, data[0], sizeof(inputBuffer)-bytesConsumed);",
+      "range": {
+        "startLine": 155,
+        "startChar": 48,
+        "endLine": 155,
+        "endChar": 59
+      },
+      "revId": "a9cfc1bc4cfbe8c4b03d126615416ea3651ecb0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
