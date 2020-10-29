@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a34a5870_54ceb7d7",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3951,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-29T18:00:04Z",
+      "side": 1,
+      "message": "width/height",
+      "range": {
+        "startLine": 3951,
+        "startChar": 59,
+        "endLine": 3951,
+        "endChar": 66
+      },
+      "revId": "a2a04f8876351e586f82bdafbe6b4e9c83899ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb85a4f2_002b8c54",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodec.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-29T18:00:04Z",
+      "side": 1,
+      "message": "why not place these next to the existing fields mVideoWidth and mVideoHeight\n\nalso.... if these are exclusively for tunneled information\nmTunneledWidth / mTunneledHeight\nseem more appropriate names.\n\n[if exclusively for tunneled stuff, e.g. when mCrypto has a value,\nthen they would be better placed next to the mCrypto declaration\n[and that makes the mTunneledXXX name seem even more appropriate.",
+      "range": {
+        "startLine": 580,
+        "startChar": 4,
+        "endLine": 581,
+        "endChar": 29
+      },
+      "revId": "a2a04f8876351e586f82bdafbe6b4e9c83899ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
