@@ -22,6 +22,30 @@
       },
       "revId": "d114c73edec41a34f031d8e5eff1f92bb88a6713",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06a15e33_3e82b539",
+        "filename": "media/libstagefright/codecs/m4v_h263/fuzzer/mpeg4_h263_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-10-29T17:06:13Z",
+      "side": 1,
+      "message": "Ray,\nSince h.263 base profile supports a limited set of resolutions, we wanted to reduce the number of width/height values that get picked up. \nI feel it is okay to allow 352x96 tests, as the goal is to reduce the number of width/height combinations that are tried rather than to limit it absolutely to only the supported ones.\nIf you prefer to tie width and height together, we can update this.",
+      "parentUuid": "c0206f2b_7ecae5b7",
+      "range": {
+        "startLine": 95,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 61
+      },
+      "revId": "d114c73edec41a34f031d8e5eff1f92bb88a6713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }

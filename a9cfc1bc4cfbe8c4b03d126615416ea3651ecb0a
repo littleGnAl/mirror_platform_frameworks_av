@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9c2375a0_42c3f430",
+        "filename": "media/libstagefright/codecs/m4v_h263/fuzzer/mpeg4_h263_enc_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-10-29T17:06:13Z",
+      "side": 1,
+      "message": "Ray,\nFuzzer starts with a seed corpus and keeps mutating this to improve coverage (libfuzzer is coverage guided). Any mutation that improves the coverage, will be retained and further mutated, anything that doesn\u0027t is discarded.\nwe are using the bytes in data, to verify various combinations of configuration parameters. \nOnce this runs for sometime, we will look at resulting coverage and then refine these if required.",
+      "parentUuid": "e98f69e6_e38b29d6",
+      "range": {
+        "startLine": 104,
+        "startChar": 4,
+        "endLine": 104,
+        "endChar": 80
+      },
+      "revId": "a9cfc1bc4cfbe8c4b03d126615416ea3651ecb0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c855bdb3_8def325f",
         "filename": "media/libstagefright/codecs/m4v_h263/fuzzer/mpeg4_h263_enc_fuzzer.cpp",
         "patchSetId": 1
