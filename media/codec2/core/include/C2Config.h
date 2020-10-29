@@ -1510,6 +1510,11 @@ typedef C2StreamParam<C2Info, C2ColorAspectsStruct, kParamIndexColorAspects>
 constexpr char C2_PARAMKEY_COLOR_ASPECTS[] = "raw.color";
 constexpr char C2_PARAMKEY_VUI_COLOR_ASPECTS[] = "coded.vui.color";
 
+typedef C2StreamParam<C2Tuning, C2ColorAspectsStruct,
+                kParamIndexColorAspects | C2Param::CoreIndex::IS_REQUEST_FLAG>
+        C2StreamRequestedColorAspectsTuning;
+constexpr char C2_PARAMKEY_OUTPUT_COLOR_ASPECTS_REQUEST[] = "output.color";
+
 /**
  * Default color aspects to use. These come from the container or client and shall be handled
  * according to the coding standard.
