@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5e7a5d39_38a189dd",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3950,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-10-29T18:05:36Z",
+      "side": 1,
+      "message": "should also check width \u003e 0 and height \u003e 0\nbefore we accept the new numbers.",
+      "range": {
+        "startLine": 3950,
+        "startChar": 74,
+        "endLine": 3950,
+        "endChar": 75
+      },
+      "revId": "a2a04f8876351e586f82bdafbe6b4e9c83899ac9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a34a5870_54ceb7d7",
         "filename": "media/libstagefright/MediaCodec.cpp",
         "patchSetId": 1
