@@ -473,6 +473,8 @@ void C2SoftXaacDec::process(const std::unique_ptr<C2Work>& work,
     ixheaacd_dec_api(mXheaacCodecHandle, IA_API_CMD_SET_CONFIG_PARAM,
                                 IA_ENHAACPLUS_DEC_DRC_EFFECT_TYPE, &ui_drc_val);
 
+    int32_t attenuationFactor = mIntf->getDrcAttenuationFactor();
+    int32_t boostFactor = mIntf->getDrcBoostFactor();
     while (size > 0u) {
         if ((kOutputDrainBufferSize * sizeof(int16_t) -
              mOutputDrainBufferWritePos) <
@@ -670,6 +672,17 @@ void C2SoftXaacDec::process(const std::unique_ptr<C2Work>& work,
             (C2Config::drc_effect_type_t) effectType);
    work->worklets.front()->output.configUpdate.push_back(
              C2Param::Copy(currentEffectype));
+
+
+   C2StreamDrcAttenuationFactorTuning::input currentAttenuationFactor(0u,
+                    (C2FloatValue) (attenuationFactor/127.));
+   work->worklets.front()->output.configUpdate.push_back(
+                    C2Param::Copy(currentAttenuationFactor));
+
+   C2StreamDrcBoostFactorTuning::input currentBoostFactor(0u,
+                    (C2FloatValue) (boostFactor/127.));
+   work->worklets.front()->output.configUpdate.push_back(
+                    C2Param::Copy(currentBoostFactor));
 
 }
 
@@ -1181,6 +1194,19 @@ int C2SoftXaacDec::configMPEGDDrc() {
     err_code = ixheaacd_dec_api(mXheaacCodecHandle, IA_API_CMD_GET_CONFIG_PARAM,
                                 IA_ENHAACPLUS_DEC_CONFIG_PARAM_SBR_MODE, &i_sbr_mode);
     RETURN_IF_FATAL(err_code, "IA_ENHAACPLUS_DEC_CONFIG_PARAM_SBR_MODE");
+
+    int32_t boostFactor = mIntf->getDrcBoostFactor();
+
+    err_code = ia_drc_dec_api(mMpegDDrcHandle, IA_API_CMD_SET_CONFIG_PARAM,
+                              IA_DRC_DEC_CONFIG_DRC_BOOST, &boostFactor);
+    RETURN_IF_FATAL(err_code, "IA_DRC_DEC_CONFIG_DRC_BOOST");
+
+    int32_t attenuationFactor = mIntf->getDrcAttenuationFactor();
+
+    err_code = ia_drc_dec_api(mMpegDDrcHandle, IA_API_CMD_SET_CONFIG_PARAM,
+                              IA_DRC_DEC_CONFIG_DRC_COMPRESS, &attenuationFactor);
+    RETURN_IF_FATAL(err_code, "IA_DRC_DEC_CONFIG_DRC_COMPRESS");
+
 
     /* Get memory info tables size */
     err_code = ia_drc_dec_api(mMpegDDrcHandle, IA_API_CMD_GET_MEMTABS_SIZE, 0,
