@@ -63,6 +63,7 @@ struct C2Config {
     enum level_t : uint32_t;                ///< coding level
     enum ordinal_key_t : uint32_t;          ///< work ordering keys
     enum pcm_encoding_t : uint32_t;         ///< PCM encoding
+    enum picture_dynamic_range_t : uint32_t;  ///< video/image dynamic range
     enum picture_type_t : uint32_t;         ///< picture types
     enum platform_feature_t : uint64_t;     ///< platform features
     enum platform_level_t : uint32_t;       ///< platform level
@@ -185,6 +186,7 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexPictureTypeMask,
     kParamIndexPictureType,
     kParamIndexHdr10PlusMetadata,
+    kParamIndexPictureDynamicRange,
 
     /* ------------------------------------ video components ------------------------------------ */
 
@@ -1572,6 +1574,26 @@ typedef C2StreamParam<C2Info, C2BlobValue, kParamIndexHdr10PlusMetadata>
         C2StreamHdr10PlusInfo;
 constexpr char C2_PARAMKEY_INPUT_HDR10_PLUS_INFO[] = "input.hdr10-plus-info";
 constexpr char C2_PARAMKEY_OUTPUT_HDR10_PLUS_INFO[] = "output.hdr10-plus-info";
+
+/**
+ * Output picture dynamic range tuning.
+ *
+ * Video/image components can optionally support converting picture dynamic range
+ * into specific one.
+ */
+
+/// Dynamic ranges
+C2ENUM(C2Config::picture_dynamic_range_t, uint32_t,
+    PICTURE_DYNAMIC_RANGE_KEEP,      ///< Keep input dynamic range
+    PICTURE_DYNAMIC_RANGE_STANDARD,  ///< Standard dynamic range
+    PICTURE_DYNAMIC_RANGE_HIGH,      ///< High dynamic range
+)
+
+typedef C2StreamParam<C2Tuning, C2SimpleValueStruct<C2Config::picture_dynamic_range_t>,
+                kParamIndexPictureDynamicRange>
+        C2StreamPictureDynamicRangeTuning;
+constexpr char C2_PARAMKEY_OUTPUT_PICTURE_DYNAMIC_RANGE_TUNING[] = "output.picture-dynamic-range";
+
 
 /* ------------------------------------ block-based coding ----------------------------------- */
 
