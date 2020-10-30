@@ -18,7 +18,10 @@
 #define LOG_TAG "Codec2-ComponentStore"
 #include <android-base/logging.h>
 
+#include <dlfcn.h>
+
 #include <codec2/hidl/1.0/ComponentStore.h>
+#include <codec2/hidl/1.0/FilterPlugin.h>
 #include <codec2/hidl/1.0/InputSurface.h>
 #include <codec2/hidl/1.0/types.h>
 
@@ -26,6 +29,7 @@
 #include <media/stagefright/bqhelper/GraphicBufferSource.h>
 #include <utils/Errors.h>
 
+#include <C2Config.h>
 #include <C2PlatformSupport.h>
 #include <util/C2InterfaceHelper.h>
 
@@ -34,6 +38,8 @@
 #include <iomanip>
 #include <ostream>
 #include <sstream>
+
+#include "FilterPluginImpl.h"
 
 namespace android {
 namespace hardware {
@@ -47,6 +53,8 @@ using ::android::GraphicBufferSource;
 using namespace ::android::hardware::media::bufferpool::V2_0::implementation;
 
 namespace /* unnamed */ {
+
+constexpr const char kPluginPath[] = "libc2filterplugin.so";
 
 struct StoreIntf : public ConfigurableC2Intf {
     StoreIntf(const std::shared_ptr<C2ComponentStore>& store)
@@ -99,6 +107,88 @@ struct StoreIntf : public ConfigurableC2Intf {
 protected:
     std::shared_ptr<C2ComponentStore> mStore;
 };
+
+class FilterPlugin : public FilterWrapper::Plugin {
+public:
+    explicit FilterPlugin(const char *pluginPath)
+        : mInit(NO_INIT),
+          mHandle(nullptr),
+          mDestroyPlugin(nullptr),
+          mPlugin(nullptr) {
+        mHandle = dlopen(pluginPath, RTLD_NOW | RTLD_NODELETE);
+        if (!mHandle) {
+            LOG(DEBUG) << "FilterPlugin: no plugin detected";
+            return;
+        }
+        GetFilterPluginVersionFunc getVersion =
+            (GetFilterPluginVersionFunc)dlsym(mHandle, "GetFilterPluginVersion");
+        if (!getVersion) {
+            LOG(WARNING) << "FilterPlugin: GetFilterPluginVersion undefined";
+            return;
+        }
+        int32_t version = getVersion();
+        if (version != FilterPlugin_V1::VERSION) {
+            LOG(WARNING) << "FilterPlugin: unrecognized version (" << version << ")";
+            return;
+        }
+        CreateFilterPluginFunc createPlugin =
+            (CreateFilterPluginFunc)dlsym(mHandle, "CreateFilterPlugin");
+        if (!createPlugin) {
+            LOG(WARNING) << "FilterPlugin: CreateFilterPlugin undefined";
+            return;
+        }
+        mDestroyPlugin =
+            (DestroyFilterPluginFunc)dlsym(mHandle, "DestroyFilterPlugin");
+        if (!mDestroyPlugin) {
+            LOG(WARNING) << "FilterPlugin: DestroyFilterPlugin undefined";
+            return;
+        }
+        FilterPlugin_V1 *plugin = (FilterPlugin_V1 *)createPlugin();
+        if (!plugin) {
+            LOG(WARNING) << "FilterPlugin: CreateFilterPlugin returned nullptr";
+            return;
+        }
+        mStore = plugin->getComponentStore();
+        if (!mStore) {
+            LOG(WARNING) << "FilterPlugin: FilterPlugin_V1::getComponentStore returned nullptr";
+            return;
+        }
+        mInit = OK;
+    }
+
+    ~FilterPlugin() {
+        if (mHandle) {
+            if (mDestroyPlugin && mPlugin) {
+                mDestroyPlugin(mPlugin);
+                mPlugin = nullptr;
+            }
+            dlclose(mHandle);
+            mHandle = nullptr;
+            mDestroyPlugin = nullptr;
+        }
+    }
+
+    status_t status() const override { return mInit; }
+
+    std::shared_ptr<C2ComponentStore> getStore() override { return mStore; }
+
+private:
+    status_t mInit;
+    void *mHandle;
+    DestroyFilterPluginFunc mDestroyPlugin;
+    FilterPlugin_V1 *mPlugin;
+    std::shared_ptr<C2ComponentStore> mStore;
+};
+
+FilterWrapper &GetFilterWrapper() {
+    constexpr static std::initializer_list<uint32_t> kFilterParams = {
+        C2StreamRequestedColorAspectsTuning::output::PARAM_TYPE,
+    };
+    static FilterWrapper wrapper(
+            std::make_unique<FilterPlugin>(kPluginPath),
+            kFilterParams);
+    return wrapper;
+}
 
 } // unnamed namespace
 
@@ -189,6 +279,7 @@ Return<void> ComponentStore::createComponent(
             mStore->createComponent(name, &c2component));
 
     if (status == Status::OK) {
+        c2component = GetFilterWrapper().maybeWrapComponent(c2component);
         onInterfaceLoaded(c2component->intf());
         component = new Component(c2component, listener, this, pool);
         if (!component) {
@@ -214,8 +305,10 @@ Return<void> ComponentStore::createInterface(
         createInterface_cb _hidl_cb) {
     std::shared_ptr<C2ComponentInterface> c2interface;
     c2_status_t res = mStore->createInterface(name, &c2interface);
+
     sp<IComponentInterface> interface;
     if (res == C2_OK) {
+        c2interface = GetFilterWrapper().maybeWrapInterface(c2interface);
         onInterfaceLoaded(c2interface);
         interface = new ComponentInterface(c2interface, mParameterCache);
     }
@@ -457,7 +550,6 @@ Return<void> ComponentStore::debug(
     }
     return Void();
 }
-
 
 }  // namespace utils
 }  // namespace V1_0
