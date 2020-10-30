@@ -182,6 +182,36 @@ void sendPartialCaptureResult(CaptureOutputStates& states,
         return;
     }
 
+    // Update partial result by removing keys remapped by DistortionCorrection, ZoomRatio,
+    // and RotationAndCrop mappers.
+    std::set<uint32_t> keysToRemove;
+
+    auto iter = states.distortionMappers.find(states.cameraId.c_str());
+    if (iter != states.distortionMappers.end()) {
+        const auto& remappedKeys = iter->second.getRemappedKeys();
+        for (uint32_t key : remappedKeys) {
+            keysToRemove.insert(key);
+        }
+    }
+
+    const auto& remappedKeys = states.zoomRatioMappers[states.cameraId.c_str()].getRemappedKeys();
+    for (uint32_t key : remappedKeys) {
+        keysToRemove.insert(key);
+    }
+
+    auto mapper = states.rotateAndCropMappers.find(states.cameraId.c_str());
+    if (mapper != states.rotateAndCropMappers.end()) {
+        const auto& remappedKeys = iter->second.getRemappedKeys();
+        for (uint32_t key : remappedKeys) {
+            keysToRemove.insert(key);
+        }
+    }
+
+    for (uint32_t key : keysToRemove) {
+        captureResult.mMetadata.erase(key);
+    }
+
+    // Send partial result
     insertResultLocked(states, &captureResult, frameNumber);
 }
 
