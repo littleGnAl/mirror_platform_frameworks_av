@@ -1,0 +1,58 @@
+cc_library_headers {
+    name: "libcodec2_hidl_plugin_headers",
+    vendor_available: true,
+    export_include_dirs: [
+        "include",
+    ],
+}
+
+cc_library {
+    name: "libcodec2_hidl_plugin_stub",
+    apex_available: [
+        "com.android.media.swcodec",
+    ],
+
+    srcs: [
+        "FilterWrapperStub.cpp",
+    ],
+
+    shared_libs: [
+        "libbase",
+        "libcodec2",
+        "libcodec2_vndk",
+        "liblog",
+        "libutils",
+    ],
+
+    export_include_dirs: [
+        "include",
+        "internal",
+    ],
+}
+
+cc_library {
+    name: "libcodec2_hidl_plugin",
+    product_specific: true,
+    vendor_available: true,
+
+    srcs: [
+        "FilterWrapper.cpp",
+    ],
+
+    header_libs: [
+        "libcodec2_internal", // private
+    ],
+
+    shared_libs: [
+        "libbase",
+        "libcodec2",
+        "libcodec2_vndk",
+        "liblog",
+        "libutils",
+    ],
+
+    export_include_dirs: [
+        "include",
+        "internal",
+    ],
+}
