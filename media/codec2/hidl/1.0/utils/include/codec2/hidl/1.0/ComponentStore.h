@@ -148,6 +148,11 @@ protected:
 
 };
 
+/**
+ * Returns a C2ComponentStore instance that contains filter plugin components.
+ */
+std::shared_ptr<C2ComponentStore> GetFilterPluginComponentStore();
+
 }  // namespace utils
 }  // namespace V1_0
 }  // namespace c2

@@ -18,6 +18,8 @@
 #define LOG_TAG "Codec2-ComponentStore"
 #include <android-base/logging.h>
 
+#include <dlfcn.h>
+
 #include <codec2/hidl/1.0/ComponentStore.h>
 #include <codec2/hidl/1.0/InputSurface.h>
 #include <codec2/hidl/1.0/types.h>
@@ -26,6 +28,7 @@
 #include <media/stagefright/bqhelper/GraphicBufferSource.h>
 #include <utils/Errors.h>
 
+#include <C2Config.h>
 #include <C2PlatformSupport.h>
 #include <util/C2InterfaceHelper.h>
 
@@ -34,6 +37,12 @@
 #include <iomanip>
 #include <ostream>
 #include <sstream>
+
+#ifndef __ANDROID_APEX__
+#include <codec2/hidl/plugin/FilterPlugin.h>
+#include <DefaultFilterPlugin.h>
+#include <FilterWrapper.h>
+#endif
 
 namespace android {
 namespace hardware {
@@ -99,6 +108,19 @@ struct StoreIntf : public ConfigurableC2Intf {
 protected:
     std::shared_ptr<C2ComponentStore> mStore;
 };
+
+#ifndef __ANDROID_APEX__
+FilterWrapper &GetFilterWrapper() {
+    constexpr const char kPluginPath[] = "libc2filterplugin.so";
+    constexpr static std::initializer_list<uint32_t> kFilterParams = {
+        C2StreamRequestedColorAspectsTuning::output::PARAM_TYPE,
+    };
+    static FilterWrapper wrapper(
+            std::make_unique<DefaultFilterPlugin>(kPluginPath),
+            kFilterParams);
+    return wrapper;
+}
+#endif
 
 } // unnamed namespace
 
@@ -189,6 +211,9 @@ Return<void> ComponentStore::createComponent(
             mStore->createComponent(name, &c2component));
 
     if (status == Status::OK) {
+#ifndef __ANDROID_APEX__
+        c2component = GetFilterWrapper().maybeWrapComponent(c2component);
+#endif
         onInterfaceLoaded(c2component->intf());
         component = new Component(c2component, listener, this, pool);
         if (!component) {
@@ -214,8 +239,12 @@ Return<void> ComponentStore::createInterface(
         createInterface_cb _hidl_cb) {
     std::shared_ptr<C2ComponentInterface> c2interface;
     c2_status_t res = mStore->createInterface(name, &c2interface);
+
     sp<IComponentInterface> interface;
     if (res == C2_OK) {
+#ifndef __ANDROID_APEX__
+        c2interface = GetFilterWrapper().maybeWrapInterface(c2interface);
+#endif
         onInterfaceLoaded(c2interface);
         interface = new ComponentInterface(c2interface, mParameterCache);
     }
@@ -457,7 +486,6 @@ Return<void> ComponentStore::debug(
     }
     return Void();
 }
-
 
 }  // namespace utils
 }  // namespace V1_0
