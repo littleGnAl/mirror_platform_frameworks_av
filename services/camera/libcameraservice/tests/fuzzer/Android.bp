@@ -23,3 +23,13 @@ cc_fuzz {
     corpus: ["corpus/*.jpg"],
 }
 
+cc_fuzz {
+    name: "libcameraservice_distortion_mapper_fuzzer",
+    srcs: [
+        "DistortionMapperFuzzer.cpp",
+    ],
+    shared_libs: [
+        "libcameraservice",
+        "libcamera_client",
+    ],
+}
