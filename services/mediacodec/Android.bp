@@ -121,6 +121,7 @@ cc_binary {
 prebuilt_etc {
     name: "mediacodec.policy",
     sub_dir: "seccomp_policy",
+    vendor: true,
     arch: {
         arm: {
             src: "seccomp_policy/mediacodec-arm.policy",
@@ -136,7 +137,7 @@ prebuilt_etc {
         },
     },
     required: [
-        "crash_dump.policy",
-        "code_coverage.policy",
+        "crash_dump.policy_vendor",
+        "code_coverage.policy_vendor",
     ],
 }

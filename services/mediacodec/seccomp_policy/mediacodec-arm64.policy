@@ -58,6 +58,6 @@ ugetrlimit: 1
 getdents64: 1
 getrandom: 1
 
-@include /system/etc/seccomp_policy/crash_dump.arm.policy
+@include /vendor/etc/seccomp_policy/crash_dump.arm.policy
 
-@include /system/etc/seccomp_policy/code_coverage.arm.policy
+@include /vendor/etc/seccomp_policy/code_coverage.arm.policy
