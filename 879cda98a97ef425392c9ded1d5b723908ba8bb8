@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fc36a082_0150a5b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-11-02T16:18:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "51749ef5_b40be216",
+      "revId": "879cda98a97ef425392c9ded1d5b723908ba8bb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8c0448e_ec23b27b",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-10-28T23:05:31Z",
       "side": 1,
       "message": "\"libwebrtc_absl_headers\"",
+      "range": {
+        "startLine": 58,
+        "startChar": 8,
+        "endLine": 58,
+        "endChar": 26
+      },
+      "revId": "879cda98a97ef425392c9ded1d5b723908ba8bb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2469ef71_3969f9b2",
+        "filename": "media/libeffects/preprocessing/Android.bp",
+        "patchSetId": 10
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-11-02T16:18:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8c0448e_ec23b27b",
       "range": {
         "startLine": 58,
         "startChar": 8,
