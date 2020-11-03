@@ -1558,7 +1558,7 @@ public:
         size_t              mRsmpInUnrel;   // unreleased frames remaining from
                                             // most recent getNextBuffer
                                             // for debug only
-        int32_t             mRsmpInFront;   // next available frame
+        int64_t             mRsmpInFront;   // next available frame
                                             // rolling counter that is never cleared
     };
 
@@ -1707,11 +1707,11 @@ private:
             // resampler converts input at HAL Hz to output at AudioRecord client Hz
             void                               *mRsmpInBuffer;  // size = mRsmpInFramesOA
             size_t                              mRsmpInFrames;  // size of resampler input in frames
-            size_t                              mRsmpInFramesP2;// size rounded up to a power-of-2
+            int64_t                             mRsmpInFramesP2;// size rounded up to a power-of-2
             size_t                              mRsmpInFramesOA;// mRsmpInFramesP2 + over-allocation
 
             // rolling index that is never cleared
-            int32_t                             mRsmpInRear;    // last filled frame + 1
+            int64_t                             mRsmpInRear;    // last filled frame + 1
 
             // For dumpsys
             const sp<MemoryDealer>              mReadOnlyHeap;

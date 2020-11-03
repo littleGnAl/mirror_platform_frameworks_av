@@ -7293,13 +7293,13 @@ reacquire_wakelock:
         // If destination is non-contiguous, first read past the nominal end of buffer, then
         // copy to the right place.  Permitted because mRsmpInBuffer was over-allocated.
 
-        int32_t rear = mRsmpInRear & (mRsmpInFramesP2 - 1);
+        int64_t rear = mRsmpInRear & (mRsmpInFramesP2 - 1);
         ssize_t framesRead;
         const int64_t lastIoBeginNs = systemTime(); // start IO timing
 
         // If an NBAIO source is present, use it to read the normal capture's data
         if (mPipeSource != 0) {
-            size_t framesToRead = min(mRsmpInFramesOA - rear, mRsmpInFramesP2 / 2);
+            int64_t framesToRead = min(mRsmpInFramesOA - rear, mRsmpInFramesP2 / 2);
 
             // The audio fifo read() returns OVERRUN on overflow, and advances the read pointer
             // to the full buffer point (clearing the overflow condition).  Upon OVERRUN error,
@@ -7311,14 +7311,14 @@ reacquire_wakelock:
                 if (framesRead != OVERRUN) break;
             }
 
-            const ssize_t availableToRead = mPipeSource->availableToRead();
+            const int64_t availableToRead = mPipeSource->availableToRead();
             if (availableToRead >= 0) {
                 // PipeSource is the primary clock.  It is up to the AudioRecord client to keep up.
                 LOG_ALWAYS_FATAL_IF((size_t)availableToRead > mPipeFramesP2,
-                        "more frames to read than fifo size, %zd > %zu",
+                        "more frames to read than fifo size, %lld > %zu",
                         availableToRead, mPipeFramesP2);
-                const size_t pipeFramesFree = mPipeFramesP2 - availableToRead;
-                const size_t sleepFrames = min(pipeFramesFree, mRsmpInFramesP2) / 2;
+                const int64_t pipeFramesFree = mPipeFramesP2 - availableToRead;
+                const int64_t sleepFrames = min(pipeFramesFree, mRsmpInFramesP2) / 2;
                 ALOGVV("mPipeFramesP2:%zu mRsmpInFramesP2:%zu sleepFrames:%zu availableToRead:%zd",
                         mPipeFramesP2, mRsmpInFramesP2, sleepFrames, availableToRead);
                 sleepUs = (sleepFrames * 1000000LL) / mSampleRate;
@@ -8176,8 +8176,8 @@ void AudioFlinger::RecordThread::ResamplerBufferProvider::sync(
 {
     sp<ThreadBase> threadBase = mRecordTrack->mThread.promote();
     RecordThread *recordThread = (RecordThread *) threadBase.get();
-    const int32_t rear = recordThread->mRsmpInRear;
-    const int32_t front = mRsmpInFront;
+    const int64_t rear = recordThread->mRsmpInRear;
+    const int64_t front = mRsmpInFront;
     const ssize_t filled = audio_utils::safe_sub_overflow(rear, front);
 
     size_t framesIn;
@@ -8193,7 +8193,7 @@ void AudioFlinger::RecordThread::ResamplerBufferProvider::sync(
         // client is not keeping up with server, but give it latest data
         framesIn = recordThread->mRsmpInFrames;
         mRsmpInFront = /* front = */ audio_utils::safe_sub_overflow(
-                rear, static_cast<int32_t>(framesIn));
+                rear, static_cast<int64_t>(framesIn));
         overrun = true;
     }
     if (framesAvailable != NULL) {
@@ -8250,7 +8250,7 @@ status_t AudioFlinger::RecordThread::ResamplerBufferProvider::getNextBuffer(
 void AudioFlinger::RecordThread::ResamplerBufferProvider::releaseBuffer(
         AudioBufferProvider::Buffer* buffer)
 {
-    int32_t stepCount = static_cast<int32_t>(buffer->frameCount);
+    int64_t stepCount = static_cast<int64_t>(buffer->frameCount);
     if (stepCount == 0) {
         return;
     }
