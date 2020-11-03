@@ -16,6 +16,92 @@
       "message": "Verified GTSMediaTests 7.0r5 passed",
       "revId": "ae1446999470b7f7658bd7ec6dc025d2ee738453",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b541c27a_469471e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-11-03T18:35:53Z",
+      "side": 1,
+      "message": "does ",
+      "revId": "ae1446999470b7f7658bd7ec6dc025d2ee738453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "379acf41_420d258c",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-11-03T18:35:53Z",
+      "side": 1,
+      "message": "this is populated with a encryptedsizes.add(uint32_t)\n\nso i would argue for uint32_t here instead of int32_t\n\n[the clearsizes count is loaded with add(uint16_t) -- so int32_t does have enough bits,\nbut i\u0027d argue for the same types for both -- so uint32_t for both of these.",
+      "range": {
+        "startLine": 206,
+        "startChar": 15,
+        "endLine": 206,
+        "endChar": 22
+      },
+      "revId": "ae1446999470b7f7658bd7ec6dc025d2ee738453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "191b219d_b4c89ae8",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6507,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-11-03T18:35:53Z",
+      "side": 1,
+      "message": "if we\u0027re cleaning up the declaration of clearsizes,\nlet\u0027s change \u00274\u0027 to sizeof(int32_t).\n\nactually uint32_t based on my comments above.\n\neven better would be to do the vector equivalent of   sizeof(clearsizes[0])\nwhich automatically gets the right element size for us.",
+      "range": {
+        "startLine": 6507,
+        "startChar": 67,
+        "endLine": 6507,
+        "endChar": 71
+      },
+      "revId": "ae1446999470b7f7658bd7ec6dc025d2ee738453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2f86c256_e706c1ab",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6509,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-11-03T18:35:53Z",
+      "side": 1,
+      "message": "same here -- change the 4 to sizeof(uint32_t)",
+      "range": {
+        "startLine": 6509,
+        "startChar": 75,
+        "endLine": 6509,
+        "endChar": 77
+      },
+      "revId": "ae1446999470b7f7658bd7ec6dc025d2ee738453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
