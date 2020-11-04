@@ -1,0 +1,222 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a99ec3a_d226acf0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-04T18:59:35Z",
+      "side": 1,
+      "message": "minor nits, please review to see which ones are worthwhile to resolve.",
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "616959cd_52710f61",
+        "filename": "media/libeffects/lvm/benchmarks/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-04T18:59:35Z",
+      "side": 1,
+      "message": "nit: inconsistent spacing?",
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f0639c3_f1e48987",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-04T18:59:35Z",
+      "side": 1,
+      "message": "can this be constexpr?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 5
+      },
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "845580f4_ec183b46",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-04T18:59:35Z",
+      "side": 1,
+      "message": "needed?",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "139575d1_0f70b6b9",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-04T18:59:35Z",
+      "side": 1,
+      "message": "size_t?",
+      "range": {
+        "startLine": 49,
+        "startChar": 10,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe9bed2a_05f077b9",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-04T18:59:35Z",
+      "side": 1,
+      "message": "can you please also test mono output?",
+      "range": {
+        "startLine": 51,
+        "startChar": 17,
+        "endLine": 51,
+        "endChar": 39
+      },
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b2a03ab_3a9844fd",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-04T18:59:35Z",
+      "side": 1,
+      "message": "for (auto \u0026in : input) {\n    in \u003d dis(gen);\n}",
+      "range": {
+        "startLine": 100,
+        "startChar": 9,
+        "endLine": 100,
+        "endChar": 58
+      },
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4aba77cd_e8f27871",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-04T18:59:35Z",
+      "side": 1,
+      "message": "{}; zero initialize so any bugs are repeatable.",
+      "range": {
+        "startLine": 111,
+        "startChar": 26,
+        "endLine": 111,
+        "endChar": 27
+      },
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5a50c28_ac54c908",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-04T18:59:35Z",
+      "side": 1,
+      "message": "could use designated initializer in clang.\n\naudio_buffer_t inbuffer \u003d { .frameCount \u003d kFrameCount, .f32 \u003d input.data() };",
+      "range": {
+        "startLine": 141,
+        "startChar": 23,
+        "endLine": 141,
+        "endChar": 32
+      },
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f171d5d3_9165ef44",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-04T18:59:35Z",
+      "side": 1,
+      "message": "nit: still might prefer braces here { }.",
+      "range": {
+        "startLine": 161,
+        "startChar": 41,
+        "endLine": 161,
+        "endChar": 43
+      },
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
