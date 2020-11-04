@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b83201ad_0acf5534",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-04T22:25:47Z",
+      "side": 1,
+      "message": "Andy,\nI have made the suggested changes.\nAs discussed, we will leave LVM_BALANCE as is, even though default values don\u0027t seem to have any effect when it is enabled.\n",
+      "revId": "c873b296bd658e10cd746afca45a3a2e5e872ce8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
