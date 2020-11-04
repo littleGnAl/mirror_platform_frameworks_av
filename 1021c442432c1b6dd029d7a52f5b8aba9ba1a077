@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4aaed742_4b6bcaf8",
+        "filename": "media/libeffects/lvm/benchmarks/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-04T22:15:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "616959cd_52710f61",
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7f0639c3_f1e48987",
@@ -48,6 +66,30 @@
       "writtenOn": "2020-11-04T18:59:35Z",
       "side": 1,
       "message": "can this be constexpr?",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 5
+      },
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd0f3b34_3d8a6129",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-04T22:15:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7f0639c3_f1e48987",
       "range": {
         "startLine": 28,
         "startChar": 0,
@@ -81,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3c04e65_05f6afe5",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-04T22:15:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "845580f4_ec183b46",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 6
+      },
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "139575d1_0f70b6b9",
@@ -94,6 +160,30 @@
       "writtenOn": "2020-11-04T18:59:35Z",
       "side": 1,
       "message": "size_t?",
+      "range": {
+        "startLine": 49,
+        "startChar": 10,
+        "endLine": 49,
+        "endChar": 13
+      },
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2297328e_a223f54e",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-04T22:15:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "139575d1_0f70b6b9",
       "range": {
         "startLine": 49,
         "startChar": 10,
@@ -127,6 +217,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9db42da_23cad63b",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-04T22:15:15Z",
+      "side": 1,
+      "message": "Added a todo as lvm effects currently produce stereo output even for mono input.",
+      "parentUuid": "fe9bed2a_05f077b9",
+      "range": {
+        "startLine": 51,
+        "startChar": 17,
+        "endLine": 51,
+        "endChar": 39
+      },
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3b2a03ab_3a9844fd",
@@ -140,6 +254,30 @@
       "writtenOn": "2020-11-04T18:59:35Z",
       "side": 1,
       "message": "for (auto \u0026in : input) {\n    in \u003d dis(gen);\n}",
+      "range": {
+        "startLine": 100,
+        "startChar": 9,
+        "endLine": 100,
+        "endChar": 58
+      },
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65e4126c_2d18588f",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-04T22:15:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b2a03ab_3a9844fd",
       "range": {
         "startLine": 100,
         "startChar": 9,
@@ -173,6 +311,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2eff23c_97d4f02f",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-04T22:15:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4aba77cd_e8f27871",
+      "range": {
+        "startLine": 111,
+        "startChar": 26,
+        "endLine": 111,
+        "endChar": 27
+      },
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5a50c28_ac54c908",
@@ -196,6 +358,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "698c6178_a57f3371",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-04T22:15:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5a50c28_ac54c908",
+      "range": {
+        "startLine": 141,
+        "startChar": 23,
+        "endLine": 141,
+        "endChar": 32
+      },
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f171d5d3_9165ef44",
@@ -209,6 +395,30 @@
       "writtenOn": "2020-11-04T18:59:35Z",
       "side": 1,
       "message": "nit: still might prefer braces here { }.",
+      "range": {
+        "startLine": 161,
+        "startChar": 41,
+        "endLine": 161,
+        "endChar": 43
+      },
+      "revId": "1021c442432c1b6dd029d7a52f5b8aba9ba1a077",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e742b708_797d378d",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-04T22:15:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f171d5d3_9165ef44",
       "range": {
         "startLine": 161,
         "startChar": 41,
