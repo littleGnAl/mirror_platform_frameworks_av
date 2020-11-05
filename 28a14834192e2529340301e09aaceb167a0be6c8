@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9cc0ab17_cc57018a",
+        "filename": "services/medialog/fuzzer/media_log_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-05T04:15:32Z",
+      "side": 1,
+      "message": "nit: needed?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 32,
+        "endChar": 32
+      },
+      "revId": "28a14834192e2529340301e09aaceb167a0be6c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4c1664d_2a30c554",
+        "filename": "services/medialog/fuzzer/media_log_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-05T04:15:32Z",
+      "side": 1,
+      "message": "nit: not needed. throws an exception, does not return null (need nothrow_t).",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 20
+      },
+      "revId": "28a14834192e2529340301e09aaceb167a0be6c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bf24718_4b13a482",
+        "filename": "services/medialog/fuzzer/media_log_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-05T04:15:32Z",
+      "side": 1,
+      "message": "nit: prefer ConsumeIntegralInRange\u003csize_t\u003e(0, std::size(kWriterNames));",
+      "range": {
+        "startLine": 56,
+        "startChar": 46,
+        "endLine": 56,
+        "endChar": 60
+      },
+      "revId": "28a14834192e2529340301e09aaceb167a0be6c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e1e99b8_c4bb6c1b",
+        "filename": "services/medialog/fuzzer/media_log_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-05T04:15:32Z",
+      "side": 1,
+      "message": "nit: please use \u0027args\u0027 as the variable name.",
+      "range": {
+        "startLine": 60,
+        "startChar": 21,
+        "endLine": 60,
+        "endChar": 26
+      },
+      "revId": "28a14834192e2529340301e09aaceb167a0be6c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10529f15_f1d74339",
+        "filename": "services/medialog/fuzzer/media_log_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-05T04:15:32Z",
+      "side": 1,
+      "message": "nit: just add() the string?",
+      "range": {
+        "startLine": 63,
+        "startChar": 14,
+        "endLine": 63,
+        "endChar": 22
+      },
+      "revId": "28a14834192e2529340301e09aaceb167a0be6c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be6e9a24_a86e1cf8",
+        "filename": "services/medialog/fuzzer/media_log_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-05T04:15:32Z",
+      "side": 1,
+      "message": "important - aren\u0027t you going to fill the logBuffer with random data?",
+      "range": {
+        "startLine": 68,
+        "startChar": 29,
+        "endLine": 68,
+        "endChar": 38
+      },
+      "revId": "28a14834192e2529340301e09aaceb167a0be6c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3e1d48a4_730a644d",
+        "filename": "services/medialog/fuzzer/media_log_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-05T04:15:32Z",
+      "side": 1,
+      "message": "nit: why not stack allocate this?\n\nMediaLogFuzzer mediaLogFuzzer;",
+      "range": {
+        "startLine": 79,
+        "startChar": 3,
+        "endLine": 79,
+        "endChar": 34
+      },
+      "revId": "28a14834192e2529340301e09aaceb167a0be6c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
