@@ -63,6 +63,30 @@
       },
       "revId": "d114c73edec41a34f031d8e5eff1f92bb88a6713",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5bf09a72_f2496b07",
+        "filename": "media/libstagefright/codecs/m4v_h263/fuzzer/mpeg4_h263_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-11-05T03:34:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "06a15e33_3e82b539",
+      "range": {
+        "startLine": 95,
+        "startChar": 3,
+        "endLine": 96,
+        "endChar": 61
+      },
+      "revId": "d114c73edec41a34f031d8e5eff1f92bb88a6713",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
