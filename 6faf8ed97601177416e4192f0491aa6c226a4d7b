@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d73aab12_a2f654e3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2020-11-05T16:37:18Z",
+      "side": 1,
+      "message": "nit: Since this is in frameworks/av, it would be nice to add \u0027libcameraservice:\u0027 before this so that the commit message mentions its changing camera code.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 26
+      },
+      "revId": "6faf8ed97601177416e4192f0491aa6c226a4d7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b2a567b9_afe175e8",
