@@ -16,6 +16,69 @@
       "message": "Andy could you PTAL?",
       "revId": "d1c25c2624edfaa55588977eb95867e413bf216d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50f3b690_d62c48fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-05T03:12:03Z",
+      "side": 1,
+      "message": "Thanks Dean for this fix.",
+      "revId": "d1c25c2624edfaa55588977eb95867e413bf216d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fc95347_23794ce5",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7322,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-05T03:12:03Z",
+      "side": 1,
+      "message": "Some of these debug statements will need to change, too.  Can you please check with ALOGVV debugging enabled?",
+      "range": {
+        "startLine": 7322,
+        "startChar": 39,
+        "endLine": 7322,
+        "endChar": 41
+      },
+      "revId": "d1c25c2624edfaa55588977eb95867e413bf216d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "88a8f75c_18d6b535",
+        "filename": "services/audioflinger/Threads.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1558,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-05T03:12:03Z",
+      "side": 1,
+      "message": "Would it make more sense to convert these size_t to int64_t for consistency?  Alternatively, we could convert the int64_t to size_t if we know the processors will be 64b anyhow.",
+      "range": {
+        "startLine": 1558,
+        "startChar": 8,
+        "endLine": 1558,
+        "endChar": 14
+      },
+      "revId": "d1c25c2624edfaa55588977eb95867e413bf216d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
