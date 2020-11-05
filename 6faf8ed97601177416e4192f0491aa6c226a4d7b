@@ -16,6 +16,24 @@
       "message": "any test that TH won\u0027t run?",
       "revId": "6faf8ed97601177416e4192f0491aa6c226a4d7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d145385a_2667348a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2020-11-05T16:35:49Z",
+      "side": 1,
+      "message": "atest cts/tests/camera would be good to run. I don\u0027t think TH runs them.",
+      "parentUuid": "b2a567b9_afe175e8",
+      "revId": "6faf8ed97601177416e4192f0491aa6c226a4d7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
