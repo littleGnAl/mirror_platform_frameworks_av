@@ -7293,7 +7293,7 @@ reacquire_wakelock:
         // If destination is non-contiguous, first read past the nominal end of buffer, then
         // copy to the right place.  Permitted because mRsmpInBuffer was over-allocated.
 
-        int32_t rear = mRsmpInRear & (mRsmpInFramesP2 - 1);
+        int32_t rear = static_cast<int32_t>(mRsmpInRear & (mRsmpInFramesP2 - 1));
         ssize_t framesRead;
         const int64_t lastIoBeginNs = systemTime(); // start IO timing
 
@@ -7429,7 +7429,7 @@ reacquire_wakelock:
                         (framesRead - part1) * mFrameSize);
             }
         }
-        rear = mRsmpInRear += framesRead;
+        mRsmpInRear += framesRead;
 
         size = activeTracks.size();
 
@@ -8176,8 +8176,8 @@ void AudioFlinger::RecordThread::ResamplerBufferProvider::sync(
 {
     sp<ThreadBase> threadBase = mRecordTrack->mThread.promote();
     RecordThread *recordThread = (RecordThread *) threadBase.get();
-    const int32_t rear = recordThread->mRsmpInRear;
-    const int32_t front = mRsmpInFront;
+    const int64_t rear = recordThread->mRsmpInRear;
+    const int64_t front = mRsmpInFront;
     const ssize_t filled = audio_utils::safe_sub_overflow(rear, front);
 
     size_t framesIn;
@@ -8193,7 +8193,7 @@ void AudioFlinger::RecordThread::ResamplerBufferProvider::sync(
         // client is not keeping up with server, but give it latest data
         framesIn = recordThread->mRsmpInFrames;
         mRsmpInFront = /* front = */ audio_utils::safe_sub_overflow(
-                rear, static_cast<int32_t>(framesIn));
+                rear, static_cast<int64_t>(framesIn));
         overrun = true;
     }
     if (framesAvailable != NULL) {
@@ -8215,8 +8215,8 @@ status_t AudioFlinger::RecordThread::ResamplerBufferProvider::getNextBuffer(
         return NOT_ENOUGH_DATA;
     }
     RecordThread *recordThread = (RecordThread *) threadBase.get();
-    int32_t rear = recordThread->mRsmpInRear;
-    int32_t front = mRsmpInFront;
+    int64_t rear = recordThread->mRsmpInRear;
+    int64_t front = mRsmpInFront;
     ssize_t filled = audio_utils::safe_sub_overflow(rear, front);
     // FIXME should not be P2 (don't want to increase latency)
     // FIXME if client not keeping up, discard
@@ -8256,7 +8256,7 @@ void AudioFlinger::RecordThread::ResamplerBufferProvider::releaseBuffer(
     }
     ALOG_ASSERT(stepCount <= mRsmpInUnrel);
     mRsmpInUnrel -= stepCount;
-    mRsmpInFront = audio_utils::safe_add_overflow(mRsmpInFront, stepCount);
+    mRsmpInFront = audio_utils::safe_add_overflow(mRsmpInFront, static_cast<int64_t>(stepCount));
     buffer->raw = NULL;
     buffer->frameCount = 0;
 }

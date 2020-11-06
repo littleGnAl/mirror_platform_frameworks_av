@@ -1558,7 +1558,7 @@ public:
         size_t              mRsmpInUnrel;   // unreleased frames remaining from
                                             // most recent getNextBuffer
                                             // for debug only
-        int32_t             mRsmpInFront;   // next available frame
+        int64_t             mRsmpInFront;   // next available frame
                                             // rolling counter that is never cleared
     };
 
@@ -1711,7 +1711,7 @@ private:
             size_t                              mRsmpInFramesOA;// mRsmpInFramesP2 + over-allocation
 
             // rolling index that is never cleared
-            int32_t                             mRsmpInRear;    // last filled frame + 1
+            int64_t                             mRsmpInRear;    // last filled frame + 1
 
             // For dumpsys
             const sp<MemoryDealer>              mReadOnlyHeap;
