@@ -39,6 +39,30 @@
       },
       "revId": "58ecd9834c9c67eb88d80ee0a870c83f6878ee1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2aacb5b3_2b55d7bb",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 7432,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2020-11-06T10:08:36Z",
+      "side": 1,
+      "message": "Hi Andy, thanks for this. Your solution works well.",
+      "parentUuid": "a0492370_054d7336",
+      "range": {
+        "startLine": 7432,
+        "startChar": 8,
+        "endLine": 7432,
+        "endChar": 34
+      },
+      "revId": "58ecd9834c9c67eb88d80ee0a870c83f6878ee1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
