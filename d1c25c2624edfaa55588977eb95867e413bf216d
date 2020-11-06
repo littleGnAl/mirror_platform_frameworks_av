@@ -82,6 +82,53 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d575ee1_638e48e2",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7322,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2020-11-06T02:41:17Z",
+      "side": 1,
+      "message": "Reverted changes to these variable types so log statement changes no longer required.",
+      "parentUuid": "97485ff0_fae19d49",
+      "range": {
+        "startLine": 7322,
+        "startChar": 39,
+        "endLine": 7322,
+        "endChar": 41
+      },
+      "revId": "d1c25c2624edfaa55588977eb95867e413bf216d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2fdcf88b_84a56722",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 7432,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2020-11-06T02:41:17Z",
+      "side": 1,
+      "message": "removing the \"rear\" assignment helped to simplify this patchset. This assignment to \"rear\" is not needed since https://android.googlesource.com/platform/frameworks/av/+/73c02e4277b399c2ec1555d32b6ad5df23bb83dc%5E%21/#F1 removed the subsequent usages.",
+      "range": {
+        "startLine": 7432,
+        "startChar": 8,
+        "endLine": 7432,
+        "endChar": 15
+      },
+      "revId": "d1c25c2624edfaa55588977eb95867e413bf216d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61222b66_85e49de3",
@@ -119,6 +166,30 @@
       "side": 1,
       "message": "Interesting - this seems like a clang bug.  It should pick up the narrowing, as -Wconversion includes -Wshorten-64-to-32.\n\nhttps://clang.llvm.org/docs/DiagnosticsReference.html#wconversion",
       "parentUuid": "61222b66_85e49de3",
+      "range": {
+        "startLine": 8218,
+        "startChar": 4,
+        "endLine": 8218,
+        "endChar": 45
+      },
+      "revId": "d1c25c2624edfaa55588977eb95867e413bf216d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e1ddb6e_ecf9beed",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 8218,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2020-11-06T02:41:17Z",
+      "side": 1,
+      "message": "I further tested trivial changes in AOSP vs. external clang projects, and yes, the AOSP clang is not picking up such issues. I suspect a configuration rather than toolchain problem, but it\u0027s not clear what that would be. If you also think toolchain problem, I will file a bug.",
+      "parentUuid": "bf85990b_a905fa14",
       "range": {
         "startLine": 8218,
         "startChar": 4,
@@ -171,6 +242,53 @@
         "startChar": 8,
         "endLine": 1558,
         "endChar": 14
+      },
+      "revId": "d1c25c2624edfaa55588977eb95867e413bf216d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74a12fa8_80a52465",
+        "filename": "services/audioflinger/Threads.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1558,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2020-11-06T02:41:17Z",
+      "side": 1,
+      "message": "PS2 does not require changes to these variable data types. The data type change is restricted to what is logically necessary (the rolling counters).",
+      "parentUuid": "839356b5_219a7dbd",
+      "range": {
+        "startLine": 1558,
+        "startChar": 8,
+        "endLine": 1558,
+        "endChar": 14
+      },
+      "revId": "d1c25c2624edfaa55588977eb95867e413bf216d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "158c5cfe_23b71f43",
+        "filename": "services/audioflinger/Threads.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1710,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2020-11-06T02:41:17Z",
+      "side": 1,
+      "message": "reverted as change to this data type not needed.",
+      "range": {
+        "startLine": 1710,
+        "startChar": 12,
+        "endLine": 1710,
+        "endChar": 19
       },
       "revId": "d1c25c2624edfaa55588977eb95867e413bf216d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
