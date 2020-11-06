@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a575e11_cb4e62ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-06T02:58:47Z",
+      "side": 1,
+      "message": "Dean, I suspect that there is a single line change that would fix this issue - please see my comment.  The rear and front pointers are modulo safe and do not drift farther than the buffer size.  Sorry, I didn\u0027t see this before.",
+      "revId": "58ecd9834c9c67eb88d80ee0a870c83f6878ee1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a0492370_054d7336",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 7432,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-06T02:58:47Z",
+      "side": 1,
+      "message": "would a single line change:\n\nmRsmpInRear \u003d audio_utils::safe_add_overflow(mRsmpInRear, framesRead);\n\nwork for this case?",
+      "range": {
+        "startLine": 7432,
+        "startChar": 8,
+        "endLine": 7432,
+        "endChar": 34
+      },
+      "revId": "58ecd9834c9c67eb88d80ee0a870c83f6878ee1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
