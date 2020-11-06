@@ -73,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aca576f3_5de0835c",
+        "filename": "services/medialog/fuzzer/media_log_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-06T07:30:54Z",
+      "side": 1,
+      "message": "I think you mean no exceptions will be _caught_. \n\nThe process will be aborted with something like this in the logcat.\n\nsignal 6 (SIGABRT), code -1 (SI_QUEUE), fault addr --------\nAbort message: \u0027terminating with uncaught exception of type std::bad_alloc: std::bad_alloc\u0027\n\nSo this code isn\u0027t needed.",
+      "parentUuid": "4d368ad7_678a7219",
+      "range": {
+        "startLine": 44,
+        "startChar": 1,
+        "endLine": 44,
+        "endChar": 20
+      },
+      "revId": "28a14834192e2529340301e09aaceb167a0be6c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3bf24718_4b13a482",
         "filename": "services/medialog/fuzzer/media_log_fuzzer.cpp",
         "patchSetId": 1
