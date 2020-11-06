@@ -104,6 +104,30 @@
       },
       "revId": "879cda98a97ef425392c9ded1d5b723908ba8bb8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "490d8e21_1901330c",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-06T05:03:36Z",
+      "side": 1,
+      "message": "We will use clang-format on the whole file later.\nFor now this is fine.",
+      "parentUuid": "578d6bf3_c5e266a3",
+      "range": {
+        "startLine": 320,
+        "startChar": 0,
+        "endLine": 320,
+        "endChar": 1
+      },
+      "revId": "879cda98a97ef425392c9ded1d5b723908ba8bb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
