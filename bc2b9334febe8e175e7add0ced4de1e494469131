@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f01a3a65_fa3e8b91",
+        "filename": "media/libeffects/preprocessing/Android.bp",
+        "patchSetId": 11
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-11-06T04:57:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82dd7be0_9d96b6bc",
+      "revId": "bc2b9334febe8e175e7add0ced4de1e494469131",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c5a25251_641888a4",
@@ -48,6 +66,30 @@
       "writtenOn": "2020-11-05T03:05:03Z",
       "side": 1,
       "message": "-Wall -Werror, -Wextra, etc?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 32
+      },
+      "revId": "bc2b9334febe8e175e7add0ced4de1e494469131",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ebbe115_8bd9efc6",
+        "filename": "media/libeffects/preprocessing/Android.bp",
+        "patchSetId": 11
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-11-06T04:57:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c5a25251_641888a4",
       "range": {
         "startLine": 45,
         "startChar": 0,
@@ -81,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e8d8059_e7fae58a",
+        "filename": "media/libeffects/preprocessing/Android.bp",
+        "patchSetId": 11
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-11-06T04:57:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7bd28109_0d4c5b83",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 17
+      },
+      "revId": "bc2b9334febe8e175e7add0ced4de1e494469131",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "edfb9273_25ae1c5c",
@@ -104,6 +170,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ca6f098_759ae250",
+        "filename": "media/libeffects/preprocessing/Android.bp",
+        "patchSetId": 11
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-11-06T04:57:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edfb9273_25ae1c5c",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 33
+      },
+      "revId": "bc2b9334febe8e175e7add0ced4de1e494469131",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50f1ff10_790c012b",
@@ -117,6 +207,30 @@
       "writtenOn": "2020-11-05T03:05:03Z",
       "side": 1,
       "message": "maybe add -Wextra, in a later CL is OK too.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 6
+      },
+      "revId": "bc2b9334febe8e175e7add0ced4de1e494469131",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5f1f8601_57b96584",
+        "filename": "media/libeffects/preprocessing/tests/Android.bp",
+        "patchSetId": 11
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-11-06T04:57:27Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50f1ff10_790c012b",
       "range": {
         "startLine": 25,
         "startChar": 0,
