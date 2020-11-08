@@ -34,7 +34,7 @@ class SkipCutBuffer;
 
 constexpr size_t kLinearBufferSize = 1048576;
 // This can fit 4K RGBA frame, and most likely client won't need more than this.
-constexpr size_t kMaxLinearBufferSize = 4096 * 2304 * 4;
+constexpr size_t kMaxLinearBufferSize = 7680 * 4320 * 2;
 
 /**
  * Base class for representation of buffers at one port.
