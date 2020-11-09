@@ -16,6 +16,24 @@
       "message": "I\u0027m not sure what the corpus files are meant to be for, here? DepthPhotoProcessor only saves images (generates EXIF), and doesn\u0027t parse files.",
       "revId": "119c68ab47d93c2eb6f45ba96891139430b1af91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3978129_1c73433d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398097
+      },
+      "writtenOn": "2020-11-09T03:28:24Z",
+      "side": 1,
+      "message": "Ah. So it does not care what the data is, it simply saves it and generates related EXIF data? What does it base the EXIF data on? It does not need to look into the passed image data to do it?\n\nLooking through processDepthPhotoFrame() it eventually passes the image data to \nexif_data_load_data(). It\u0027s docs say:\n\n  Load the #ExifData structure from the raw JPEG or EXIF data in the given memory buffer.\n\nMight passing it fuzzed jpeg images with fuzzed EXIF data might be useful?",
+      "parentUuid": "dfabc5a6_c94a0ee2",
+      "revId": "119c68ab47d93c2eb6f45ba96891139430b1af91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
