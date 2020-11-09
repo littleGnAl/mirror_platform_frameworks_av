@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ca2ba9bc_5888e767",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398097
+      },
+      "writtenOn": "2020-11-09T03:45:42Z",
+      "side": 1,
+      "message": "Yes, the parameters can also be fuzzed. This fuzzer is more a \u0027hello world\u0027 one, that is largely a simplified version of the unit test. I\u0027m not too familiar with the APIs or how to approach fuzzing more.\n\nAre you interested in building upon this fuzzer and providing more coverage in a future commit?\n\nThe FuzzedDataProvider has some useful APIs that can carve out the random data into various \u0027shapes\u0027. For example, ConsumeIntegralInRange(min, max) will get a random value within the range [min, max]:\n\nhttps://android.googlesource.com/toolchain/llvm-project/+/refs/heads/upstream-master/compiler-rt/include/fuzzer/FuzzedDataProvider.h#200",
+      "parentUuid": "cfe6a72c_83b0cf6d",
+      "revId": "1bb82d4796497351cd89e202f5f4d5d1795595b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4be08fe1_3c244d9f",
@@ -49,6 +67,24 @@
       "writtenOn": "2020-11-09T00:13:15Z",
       "side": 1,
       "message": "The 2nd arg counts how many coordinate _pairs_ are in the input.  So if you pass in 5, it assumes 10 numbers in input.  So this seems like it\u0027d overflow right now?",
+      "revId": "1bb82d4796497351cd89e202f5f4d5d1795595b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad2c929c_9c6db17c",
+        "filename": "services/camera/libcameraservice/fuzzer/DistortionMapperFuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1398097
+      },
+      "writtenOn": "2020-11-09T03:45:42Z",
+      "side": 1,
+      "message": "I\u0027ve updated the second argument to be 1/2 that of the first. Will that be sufficient to avoid overflow?",
+      "parentUuid": "4be08fe1_3c244d9f",
       "revId": "1bb82d4796497351cd89e202f5f4d5d1795595b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
