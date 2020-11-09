@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfabc5a6_c94a0ee2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2020-11-09T00:14:43Z",
+      "side": 1,
+      "message": "I\u0027m not sure what the corpus files are meant to be for, here? DepthPhotoProcessor only saves images (generates EXIF), and doesn\u0027t parse files.",
+      "revId": "119c68ab47d93c2eb6f45ba96891139430b1af91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
