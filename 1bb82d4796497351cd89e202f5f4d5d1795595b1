@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5a50274_9f93f818",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2020-11-09T00:13:15Z",
+      "side": 1,
+      "message": "Thanks for the contribution!\n\nReading this, it looks like this fuzzes over the rectangles",
+      "revId": "1bb82d4796497351cd89e202f5f4d5d1795595b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4be08fe1_3c244d9f",
+        "filename": "services/camera/libcameraservice/fuzzer/DistortionMapperFuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2020-11-09T00:13:15Z",
+      "side": 1,
+      "message": "The 2nd arg counts how many coordinate _pairs_ are in the input.  So if you pass in 5, it assumes 10 numbers in input.  So this seems like it\u0027d overflow right now?",
+      "revId": "1bb82d4796497351cd89e202f5f4d5d1795595b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
