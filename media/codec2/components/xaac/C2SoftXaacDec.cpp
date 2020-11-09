@@ -38,6 +38,7 @@
 #define DRC_DEFAULT_MOBILE_ENC_LEVEL (0.25) /* encoder target level; -1 => the value is unknown, otherwise dB step value (e.g. 64 for -16 dB) */
 #define MAX_CHANNEL_COUNT            8  /* maximum number of audio channels that can be decoded */
 #define DRC_DEFAULT_MOBILE_OUTPUT_LOUDNESS 0.25 /* decoder output loudness; -1 => the value is unknown, otherwise dB step value (e.g. 64 for -16 dB) */
+#define DRC_DEFAULT_MOBILE_DRC_ALBUM  0
 // names of properties that can be used to override the default DRC settings
 #define PROP_DRC_OVERRIDE_REF_LEVEL  "aac_drc_reference_level"
 #define PROP_DRC_OVERRIDE_CUT        "aac_drc_cut"
@@ -206,6 +207,17 @@ public:
                 .withFields({C2F(mDrcOutputLoudness, value).inRange(-1,231)})
                 .withSetter(Setter<decltype(*mDrcOutputLoudness)>::StrictValueWithNoDeps)
                 .build());
+
+	addParameter(
+                DefineParam(mDrcAlbumMode, C2_PARAMKEY_DRC_ALBUM_MODE)
+                .withDefault(new C2StreamDrcAlbumModeTuning::input(0u, C2Config::DRC_ALBUM_MODE_OFF))
+                .withFields({
+                    C2F(mDrcAlbumMode, value).oneOf({
+                            C2Config::DRC_ALBUM_MODE_OFF,
+                            C2Config::DRC_ALBUM_MODE_ON})
+                })
+                .withSetter(Setter<decltype(*mDrcAlbumMode)>::StrictValueWithNoDeps)
+                .build());
     }
 
     bool isAdts() const { return mAacFormat->value == C2Config::AAC_PACKAGING_ADTS; }
@@ -222,6 +234,7 @@ public:
     int32_t getDrcAttenuationFactor() const { return mDrcAttenuationFactor->value * 127. + 0.5; }
     int32_t getDrcEffectType() const { return mDrcEffectType->value; }
     int32_t getDrcOutputLoudness() const { return (mDrcOutputLoudness->value <= 0 ? -mDrcOutputLoudness->value * 4. + 0.5 : -1); }
+    int32_t getDrcAlbumMode() const { return mDrcAlbumMode->value; }
 
 private:
     std::shared_ptr<C2StreamSampleRateInfo::output> mSampleRate;
@@ -237,6 +250,7 @@ private:
     std::shared_ptr<C2StreamDrcAttenuationFactorTuning::input> mDrcAttenuationFactor;
     std::shared_ptr<C2StreamDrcEffectTypeTuning::input> mDrcEffectType;
     std::shared_ptr<C2StreamDrcOutputLoudnessTuning::output> mDrcOutputLoudness;
+    std::shared_ptr<C2StreamDrcAlbumModeTuning::input> mDrcAlbumMode;
     // TODO Add : C2StreamAacSbrModeTuning
 };
 
@@ -475,6 +489,7 @@ void C2SoftXaacDec::process(const std::unique_ptr<C2Work>& work,
 
     int32_t attenuationFactor = mIntf->getDrcAttenuationFactor();
     int32_t boostFactor = mIntf->getDrcBoostFactor();
+    int32_t albumMode = mIntf->getDrcAlbumMode();
     while (size > 0u) {
         if ((kOutputDrainBufferSize * sizeof(int16_t) -
              mOutputDrainBufferWritePos) <
@@ -683,6 +698,11 @@ void C2SoftXaacDec::process(const std::unique_ptr<C2Work>& work,
                     (C2FloatValue) (boostFactor/127.));
    work->worklets.front()->output.configUpdate.push_back(
                     C2Param::Copy(currentBoostFactor));
+
+   C2StreamDrcAlbumModeTuning::input currentAlbumMode(0u,
+                    (C2Config::drc_album_mode_t) albumMode);
+   work->worklets.front()->output.configUpdate.push_back(
+                    C2Param::Copy(currentAlbumMode));
 
 }
 
@@ -1206,6 +1226,11 @@ int C2SoftXaacDec::configMPEGDDrc() {
     err_code = ia_drc_dec_api(mMpegDDrcHandle, IA_API_CMD_SET_CONFIG_PARAM,
                               IA_DRC_DEC_CONFIG_DRC_COMPRESS, &attenuationFactor);
     RETURN_IF_FATAL(err_code, "IA_DRC_DEC_CONFIG_DRC_COMPRESS");
+
+    int32_t albumMode = mIntf->getDrcAlbumMode();
+    err_code = ia_drc_dec_api(mMpegDDrcHandle, IA_API_CMD_SET_CONFIG_PARAM,
+                              IA_DRC_DEC_CONFIG_DRC_ALBUM_MODE, &albumMode);
+    RETURN_IF_FATAL(err_code, "IA_DRC_DEC_CONFIG_ALBUM_MODE");
 
 
     /* Get memory info tables size */
