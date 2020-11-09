@@ -93,6 +93,7 @@ private:
     float prevtargetref;
     int32_t preveffecttype;
     float prevloudness;
+    int32_t prevalbummode;
 
     Vector<void*> mMemoryVec;
     Vector<void*> mDrcMemoryVec;
