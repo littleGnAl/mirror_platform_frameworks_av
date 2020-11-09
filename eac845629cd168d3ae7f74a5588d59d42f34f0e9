@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "399e958a_67093124",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5815,
+      "author": {
+        "id": 1352498
+      },
+      "writtenOn": "2020-11-09T01:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b8ecf9da_447bc02c",
+      "revId": "eac845629cd168d3ae7f74a5588d59d42f34f0e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a86c883_0df1027e",
@@ -31,6 +49,24 @@
       "writtenOn": "2020-10-27T16:45:39Z",
       "side": 1,
       "message": "We need error handling in case deferred operation didn\u0027t succeed, e.g.:\n\n  } else if (err !\u003d OK) {\n      mCodec-\u003esignalError(OMX_ErrorUndefined, err);\n  }",
+      "revId": "eac845629cd168d3ae7f74a5588d59d42f34f0e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2750a50_a6f84f9a",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5822,
+      "author": {
+        "id": 1352498
+      },
+      "writtenOn": "2020-11-09T01:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a86c883_0df1027e",
       "revId": "eac845629cd168d3ae7f74a5588d59d42f34f0e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab7c43d4_6e00901f",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 8325,
+      "author": {
+        "id": 1352498
+      },
+      "writtenOn": "2020-11-09T01:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8fdf0c5d_83043590",
+      "revId": "eac845629cd168d3ae7f74a5588d59d42f34f0e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "adb679a8_4cce3fd6",
@@ -69,6 +123,42 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbfea872_393006b8",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 8328,
+      "author": {
+        "id": 1352498
+      },
+      "writtenOn": "2020-11-09T01:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adb679a8_4cce3fd6",
+      "revId": "eac845629cd168d3ae7f74a5588d59d42f34f0e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a70931cd_ee07eed5",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 8328,
+      "author": {
+        "id": 1352498
+      },
+      "writtenOn": "2020-11-09T01:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "adb679a8_4cce3fd6",
+      "revId": "eac845629cd168d3ae7f74a5588d59d42f34f0e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "387ae974_2251939e",
@@ -82,6 +172,30 @@
       "writtenOn": "2020-10-27T16:45:39Z",
       "side": 1,
       "message": "We can put OK here and remove |err| variable.",
+      "range": {
+        "startLine": 8333,
+        "startChar": 38,
+        "endLine": 8333,
+        "endChar": 41
+      },
+      "revId": "eac845629cd168d3ae7f74a5588d59d42f34f0e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d4fb87c_76987b10",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 8333,
+      "author": {
+        "id": 1352498
+      },
+      "writtenOn": "2020-11-09T01:42:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "387ae974_2251939e",
       "range": {
         "startLine": 8333,
         "startChar": 38,
