@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd7f7d87_fb5c5537",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1137703
+      },
+      "writtenOn": "2020-11-10T01:05:07Z",
+      "side": 1,
+      "message": "Failures all look unrelated to this CL (one due to omg/24857, two due to build errors in UsfTransportClient, referenced by vendor/google/sensors/usf/...).",
+      "revId": "ae2e7374343634808ff71a40a594fcd1817f6913",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
