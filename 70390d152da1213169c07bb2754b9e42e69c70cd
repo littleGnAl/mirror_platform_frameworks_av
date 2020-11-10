@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2cd0a1e5_06bf9cea",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1511,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-11-10T17:09:36Z",
+      "side": 1,
+      "message": "I was hoping to signal this with this struct (or a similar one), basically asking for a different output color aspect than the input aspect. This requires codec to split this for the output to allow separating requested aspect from actual.",
+      "range": {
+        "startLine": 1511,
+        "startChar": 8,
+        "endLine": 1511,
+        "endChar": 32
+      },
+      "revId": "70390d152da1213169c07bb2754b9e42e69c70cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
