@@ -16,6 +16,24 @@
       "message": "I wonder if this is the same behavior as ACodec.",
       "revId": "5c48fe798bc773401b9670f5ae138ff0bd33cabc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3f7a0413_1ff7c654",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2020-11-10T19:26:52Z",
+      "side": 1,
+      "message": "From https://b.corp.google.com/issues/172173515#comment1 ACodec has same behavior.\n\nhttps://source.corp.google.com/aosp-android11/frameworks/av/media/libstagefright/ACodec.cpp;rcl\u003d0cc3c2179c39e8627287308a30eaf7c3f191ca61;l\u003d6564 signals error.",
+      "parentUuid": "0c53516a_9444f032",
+      "revId": "5c48fe798bc773401b9670f5ae138ff0bd33cabc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
