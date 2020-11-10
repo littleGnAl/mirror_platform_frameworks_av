@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d684b88d_2040866d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-11-10T20:01:19Z",
+      "side": 1,
+      "message": "a verification question...\n\ndoes making those two vectors hold uint32 give us a problem with files \u003e 4GB?\nI haven\u0027t chased all the places that the vector gets consumed to know the answer...\n\nif that isn\u0027t an issue, then I\u0027m ok with the patch.",
+      "revId": "0821009becf624ffe9617ae1632895f264f2ced1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb4b8b97_0dc752ef",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5541,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-11-10T20:01:19Z",
+      "side": 1,
+      "message": "the patch makes the element size consistent across 32/64 bit boundaries; which is good.\n\ni\u0027m wondering if it should be consistently 64 bits instead of consistently 32 bits.\nsmpl-\u003esize is a size_t, which means it can be a 64 bit entity (in 64-bit mode)\nif smpl-\u003esize can ever go beyond 4GB, we would have a problem.",
+      "range": {
+        "startLine": 5541,
+        "startChar": 11,
+        "endLine": 5541,
+        "endChar": 49
+      },
+      "revId": "0821009becf624ffe9617ae1632895f264f2ced1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
