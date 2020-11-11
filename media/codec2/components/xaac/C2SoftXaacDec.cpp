@@ -257,6 +257,7 @@ c2_status_t C2SoftXaacDec::onInit() {
     mCurFrameIndex = 0;
     mCurTimestamp = 0;
     mIsCodecInitialized = false;
+    mIsDRCInitialized = false;
     mIsCodecConfigFlushRequired = false;
     mSignalledOutputEos = false;
     mSignalledError = false;
@@ -444,6 +445,25 @@ void C2SoftXaacDec::process(const std::unique_ptr<C2Work>& work,
     mCurTimestamp = work->input.ordinal.timestamp.peeku();
     mOutputDrainBufferWritePos = 0;
     char* tempOutputDrainBuffer = mOutputDrainBuffer;
+
+    int targetRefLevel = mIntf->getDrcTargetRefLevel();
+    float targetref_runtime;
+
+    if (targetRefLevel != -1) {
+
+      ixheaacd_dec_api(mXheaacCodecHandle, IA_API_CMD_SET_CONFIG_PARAM,
+                       IA_ENHAACPLUS_DEC_CONFIG_PARAM_DRC_TARGET_LEVEL,
+                       &targetRefLevel);
+
+      ixheaacd_dec_api(mXheaacCodecHandle, IA_API_CMD_SET_CONFIG_PARAM,
+                       IA_ENHAACPLUS_DEC_DRC_TARGET_LOUDNESS, &targetRefLevel);
+    }
+
+    int32_t effectType = mIntf->getDrcEffectType();
+    uint32_t ui_drc_val = (unsigned int)effectType;
+    ixheaacd_dec_api(mXheaacCodecHandle, IA_API_CMD_SET_CONFIG_PARAM,
+                     IA_ENHAACPLUS_DEC_DRC_EFFECT_TYPE, &ui_drc_val);
+
     while (size > 0u) {
         if ((kOutputDrainBufferSize * sizeof(int16_t) -
              mOutputDrainBufferWritePos) <
@@ -547,6 +567,17 @@ void C2SoftXaacDec::process(const std::unique_ptr<C2Work>& work,
             }
         }
 
+        if(!mIsDRCInitialized){
+           IA_ERRORCODE  err_c = configMPEGDDrc();
+           if(err_c) {
+               ALOGE("MPEG-D CONFIGURATION FAILED");
+               mSignalledError = true;
+               work->result = C2_CORRUPTED;
+               return;
+           }
+           mIsDRCInitialized = true;
+        }
+
         signed int bytesConsumed = 0;
         IA_ERRORCODE errorCode = IA_NO_ERROR;
         if (mIsCodecInitialized) {
@@ -594,6 +625,19 @@ void C2SoftXaacDec::process(const std::unique_ptr<C2Work>& work,
         tempOutputDrainBuffer += mNumOutBytes;
         mOutputDrainBufferWritePos += mNumOutBytes;
     }
+
+    targetref_runtime =
+        (targetRefLevel == -1) ? targetRefLevel * -0.25 : targetRefLevel;
+
+    C2StreamDrcTargetReferenceLevelTuning::input currentTargetRefLevel(
+        0u, (float)(targetref_runtime));
+    work->worklets.front()->output.configUpdate.push_back(
+        C2Param::Copy(currentTargetRefLevel));
+
+    C2StreamDrcEffectTypeTuning::input currentEffectype(
+        0u, (C2Config::drc_effect_type_t)effectType);
+    work->worklets.front()->output.configUpdate.push_back(
+        C2Param::Copy(currentEffectype));
 
     if (mOutputDrainBufferWritePos) {
         finishWork(work, pool);
@@ -988,8 +1032,6 @@ IA_ERRORCODE C2SoftXaacDec::configXAACDecoder(uint8_t* inBuffer, uint32_t inBuff
                mSampFreq, mNumChannels, mPcmWdSz, mChannelMask, mOutputFrameLength);
         mIsCodecInitialized = true;
 
-        err_code = configMPEGDDrc();
-        RETURN_IF_FATAL(err_code, "configMPEGDDrc");
     }
 
     return IA_NO_ERROR;
