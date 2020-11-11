@@ -16,6 +16,24 @@
       "message": "So format change will be processed when format change happens regardless of what the change is? \n(I assume it happens only when there was some difference between old format and new format now.)",
       "revId": "a08cd2b279d9a97c5a2e7b29ef5b055ed02a251c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26825f3c_17e1c97c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-11-11T23:00:32Z",
+      "side": 1,
+      "message": "MediaCodec detects format change by reference change; CCodecConfig dup\u0027s the reference if there\u0027s a change. So this CL removes the redundant logic in CCodecBuffers.",
+      "parentUuid": "6720bd97_26ede495",
+      "revId": "a08cd2b279d9a97c5a2e7b29ef5b055ed02a251c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
