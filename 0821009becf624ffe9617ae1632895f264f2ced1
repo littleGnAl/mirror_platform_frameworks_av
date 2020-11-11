@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5b1c6b5_674c3820",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-11-11T06:22:05Z",
+      "side": 1,
+      "message": "The sizes are for each individual sample in the file, so 32-bits is more than enough.",
+      "parentUuid": "d684b88d_2040866d",
+      "revId": "0821009becf624ffe9617ae1632895f264f2ced1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb4b8b97_0dc752ef",
