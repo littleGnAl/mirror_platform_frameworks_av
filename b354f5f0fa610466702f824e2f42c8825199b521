@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d68a43e5_d6acea63",
+        "filename": "media/libaudioprocessing/tests/fuzzer/libaudioprocessing_fuzz_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1137703
+      },
+      "writtenOn": "2020-11-11T19:29:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "378e4756_3539df13",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 38
+      },
+      "revId": "b354f5f0fa610466702f824e2f42c8825199b521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29254232_93ddf0f8",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-11T17:22:42Z",
       "side": 1,
       "message": "omit virtual and use override (as per line 38).",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 9
+      },
+      "revId": "b354f5f0fa610466702f824e2f42c8825199b521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc864508_a7b920d4",
+        "filename": "media/libaudioprocessing/tests/fuzzer/libaudioprocessing_fuzz_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1137703
+      },
+      "writtenOn": "2020-11-11T19:29:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29254232_93ddf0f8",
       "range": {
         "startLine": 51,
         "startChar": 2,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a854b16_ebf091e2",
+        "filename": "media/libaudioprocessing/tests/fuzzer/libaudioprocessing_record_buffer_converter_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1137703
+      },
+      "writtenOn": "2020-11-11T19:29:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0f4e59a2_58a445f7",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 5
+      },
+      "revId": "b354f5f0fa610466702f824e2f42c8825199b521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01355e01_5425b6eb",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-11-11T17:22:42Z",
       "side": 1,
       "message": "constexpr?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 5
+      },
+      "revId": "b354f5f0fa610466702f824e2f42c8825199b521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1de81ac7_69525441",
+        "filename": "media/libaudioprocessing/tests/fuzzer/libaudioprocessing_record_buffer_converter_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1137703
+      },
+      "writtenOn": "2020-11-11T19:29:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01355e01_5425b6eb",
       "range": {
         "startLine": 31,
         "startChar": 0,
@@ -156,6 +252,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "df75829e_0750bbe3",
+        "filename": "media/libaudioprocessing/tests/fuzzer/libaudioprocessing_record_buffer_converter_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1137703
+      },
+      "writtenOn": "2020-11-11T19:29:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d1d45fa_e0f5de7e",
+      "range": {
+        "startLine": 113,
+        "startChar": 33,
+        "endLine": 113,
+        "endChar": 39
+      },
+      "revId": "b354f5f0fa610466702f824e2f42c8825199b521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "068c19c0_d5e1eb90",
+        "filename": "media/libaudioprocessing/tests/fuzzer/libaudioprocessing_record_buffer_converter_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1137703
+      },
+      "writtenOn": "2020-11-11T19:29:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a62d836c_7f4fb90e",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 5
+      },
+      "revId": "b354f5f0fa610466702f824e2f42c8825199b521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46e2f80b_7de8ec35",
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a6ee550_b50ea6b0",
+        "filename": "media/libaudioprocessing/tests/fuzzer/libaudioprocessing_record_buffer_converter_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1137703
+      },
+      "writtenOn": "2020-11-11T19:29:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "46e2f80b_7de8ec35",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 22
+      },
+      "revId": "b354f5f0fa610466702f824e2f42c8825199b521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "37d8de5b_de776d48",
@@ -192,6 +360,30 @@
       "writtenOn": "2020-11-11T17:22:42Z",
       "side": 1,
       "message": "are these intentional aborts (OK) or unintentional crashes?",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 36
+      },
+      "revId": "b354f5f0fa610466702f824e2f42c8825199b521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fe6b20d_019df957",
+        "filename": "media/libaudioprocessing/tests/fuzzer/libaudioprocessing_record_buffer_converter_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1137703
+      },
+      "writtenOn": "2020-11-11T19:29:51Z",
+      "side": 1,
+      "message": "They\u0027re intentional aborts.  These come from LOG_ALWAYS_FATAL lines such as: http://cs/android/frameworks/av/media/libaudioprocessing/AudioResampler.cpp?l\u003d274\u0026rcl\u003d3577bcf216883dbeed03493bf1a5bf1bc77d254a\n\nUpdated the comment.",
+      "parentUuid": "37d8de5b_de776d48",
       "range": {
         "startLine": 128,
         "startChar": 0,
