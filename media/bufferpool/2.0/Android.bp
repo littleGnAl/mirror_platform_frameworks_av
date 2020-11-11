@@ -43,6 +43,7 @@ cc_library {
     name: "libstagefright_bufferpool@2.0",
     defaults: ["libstagefright_bufferpool@2.0-default"],
     vendor_available: true,
+    product_available: true,
     // TODO: b/147147992
     double_loadable: true,
     vndk: {

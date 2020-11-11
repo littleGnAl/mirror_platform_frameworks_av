@@ -2,12 +2,14 @@ cc_library_headers {
     name: "libstagefright_foundation_headers",
     export_include_dirs: ["include"],
     vendor_available: true,
+    product_available: true,
     host_supported: true,
     min_sdk_version: "29",
 }
 
 cc_defaults {
     name: "libstagefright_foundation_defaults",
+    product_available: true,
     vendor_available: true,
     vndk: {
         enabled: true,
@@ -79,6 +81,14 @@ cc_defaults {
 
     target: {
         vendor: {
+            exclude_shared_libs: [
+                "libbinder",
+            ],
+            cflags: [
+                "-DNO_IMEMORY",
+            ],
+        },
+	product: {
             exclude_shared_libs: [
                 "libbinder",
             ],

@@ -74,6 +74,7 @@ aidl_interface {
 cc_library_shared {
     name: "libmedia_omx",
     vendor_available: true,
+    product_available: true,
     vndk: {
         enabled: true,
     },

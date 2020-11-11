@@ -1,6 +1,7 @@
 cc_library_shared {
     name: "libstagefright_omx",
     vendor_available: true,
+    product_available: true,
     vndk: {
         enabled: true,
     },
@@ -196,6 +197,7 @@ cc_defaults {
 cc_library_shared {
     name: "libstagefright_omx_utils",
     vendor_available: true,
+    product_available: true,
     vndk: {
         enabled: true,
     },
