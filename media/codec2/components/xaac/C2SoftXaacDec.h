@@ -89,6 +89,13 @@ private:
     int8_t* mDrcOutBuf;
     int32_t mMpegDDRCPresent;
     int32_t mDRCFlag;
+    bool mIsDRCInitialized;
+    float prevtargetref;
+    int32_t preveffecttype;
+    float prevloudness;
+    int32_t prevalbummode;
+    float prevboost;
+    float prevattenuation;
 
     Vector<void*> mMemoryVec;
     Vector<void*> mDrcMemoryVec;

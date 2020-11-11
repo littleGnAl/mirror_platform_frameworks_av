@@ -30,13 +30,18 @@
 
 #include "C2SoftXaacDec.h"
 
+#define DEFAULT_PREV_STATE 0xFF
+
 #define DRC_DEFAULT_MOBILE_REF_LEVEL -16.0   /* 64*-0.25dB = -16 dB below full scale for mobile conf */
 #define DRC_DEFAULT_MOBILE_DRC_CUT   1.0  /* maximum compression of dynamic range for mobile conf */
 #define DRC_DEFAULT_MOBILE_DRC_BOOST 1.0 /* maximum compression of dynamic range for mobile conf */
 #define DRC_DEFAULT_MOBILE_DRC_HEAVY C2Config::DRC_COMPRESSION_HEAVY   /* switch for heavy compression for mobile conf */
 #define DRC_DEFAULT_MOBILE_DRC_EFFECT 3  /* MPEG-D DRC effect type; 3 => Limited playback range */
 #define DRC_DEFAULT_MOBILE_ENC_LEVEL (0.25) /* encoder target level; -1 => the value is unknown, otherwise dB step value (e.g. 64 for -16 dB) */
+/* decoder output loudness; -1 => the value is unknown,otherwise dB step value*/
+#define DRC_DEFAULT_MOBILE_OUTPUT_LOUDNESS 0.25
 #define MAX_CHANNEL_COUNT            8  /* maximum number of audio channels that can be decoded */
+#define DRC_DEFAULT_MOBILE_DRC_ALBUM  0
 // names of properties that can be used to override the default DRC settings
 #define PROP_DRC_OVERRIDE_REF_LEVEL  "aac_drc_reference_level"
 #define PROP_DRC_OVERRIDE_CUT        "aac_drc_cut"
@@ -98,6 +103,13 @@ public:
                 .withDefault(new C2StreamChannelCountInfo::output(0u, 1))
                 .withFields({C2F(mChannelCount, value).inRange(1, 8)})
                 .withSetter(Setter<decltype(*mChannelCount)>::StrictValueWithNoDeps)
+                .build());
+
+        addParameter(
+                DefineParam(mMaxChannelCount, C2_PARAMKEY_MAX_CHANNEL_COUNT)
+                .withDefault(new C2StreamMaxChannelCountInfo::input(0u, MAX_CHANNEL_COUNT))
+                .withFields({C2F(mMaxChannelCount, value).inRange(1, MAX_CHANNEL_COUNT)})
+                .withSetter(Setter<decltype(*mMaxChannelCount)>::StrictValueWithNoDeps)
                 .build());
 
         addParameter(
@@ -198,6 +210,27 @@ public:
                 })
                 .withSetter(Setter<decltype(*mDrcEffectType)>::StrictValueWithNoDeps)
                 .build());
+
+
+        addParameter(
+                DefineParam(mDrcOutputLoudness, C2_PARAMKEY_DRC_OUTPUT_LOUDNESS)
+                .withDefault(new C2StreamDrcOutputLoudnessTuning::output(0u,
+                    DRC_DEFAULT_MOBILE_OUTPUT_LOUDNESS))
+                .withFields({C2F(mDrcOutputLoudness, value).inRange(-1,231)})
+                .withSetter(Setter<decltype(*mDrcOutputLoudness)>::StrictValueWithNoDeps)
+                .build());
+
+        addParameter(
+                DefineParam(mDrcAlbumMode, C2_PARAMKEY_DRC_ALBUM_MODE)
+                .withDefault(new C2StreamDrcAlbumModeTuning::input(0u,
+                    C2Config::DRC_ALBUM_MODE_OFF))
+                .withFields({
+                    C2F(mDrcAlbumMode, value).oneOf({
+                            C2Config::DRC_ALBUM_MODE_OFF,
+                            C2Config::DRC_ALBUM_MODE_ON})
+                })
+                .withSetter(Setter<decltype(*mDrcAlbumMode)>::StrictValueWithNoDeps)
+                .build());
     }
 
     bool isAdts() const { return mAacFormat->value == C2Config::AAC_PACKAGING_ADTS; }
@@ -210,9 +243,13 @@ public:
     int32_t getDrcCompressMode() const { return mDrcCompressMode->value == C2Config::DRC_COMPRESSION_HEAVY ? 1 : 0; }
     int32_t getDrcTargetRefLevel() const { return (mDrcTargetRefLevel->value <= 0 ? -mDrcTargetRefLevel->value * 4. + 0.5 : -1); }
     int32_t getDrcEncTargetLevel() const { return (mDrcEncTargetLevel->value <= 0 ? -mDrcEncTargetLevel->value * 4. + 0.5 : -1); }
-    int32_t getDrcBoostFactor() const { return mDrcBoostFactor->value * 127. + 0.5; }
-    int32_t getDrcAttenuationFactor() const { return mDrcAttenuationFactor->value * 127. + 0.5; }
+    float getDrcBoostFactor() const { return mDrcBoostFactor->value; }
+    float getDrcAttenuationFactor() const { return mDrcAttenuationFactor->value; }
     int32_t getDrcEffectType() const { return mDrcEffectType->value; }
+    int32_t getDrcOutputLoudness() const { return (mDrcOutputLoudness->value <= 0 ?
+                                              -mDrcOutputLoudness->value * 4. + 0.5 : -1); }
+    int32_t getDrcAlbumMode() const { return mDrcAlbumMode->value; }
+    u_int32_t getMaxChannelCount() const { return mMaxChannelCount->value; }
 
 private:
     std::shared_ptr<C2StreamSampleRateInfo::output> mSampleRate;
@@ -227,6 +264,9 @@ private:
     std::shared_ptr<C2StreamDrcBoostFactorTuning::input> mDrcBoostFactor;
     std::shared_ptr<C2StreamDrcAttenuationFactorTuning::input> mDrcAttenuationFactor;
     std::shared_ptr<C2StreamDrcEffectTypeTuning::input> mDrcEffectType;
+    std::shared_ptr<C2StreamDrcOutputLoudnessTuning::output> mDrcOutputLoudness;
+    std::shared_ptr<C2StreamMaxChannelCountInfo::input> mMaxChannelCount;
+    std::shared_ptr<C2StreamDrcAlbumModeTuning::input> mDrcAlbumMode;
     // TODO Add : C2StreamAacSbrModeTuning
 };
 
@@ -257,6 +297,7 @@ c2_status_t C2SoftXaacDec::onInit() {
     mCurFrameIndex = 0;
     mCurTimestamp = 0;
     mIsCodecInitialized = false;
+    mIsDRCInitialized = false;
     mIsCodecConfigFlushRequired = false;
     mSignalledOutputEos = false;
     mSignalledError = false;
@@ -373,13 +414,14 @@ void C2SoftXaacDec::finishWork(const std::unique_ptr<C2Work>& work,
         work->worklets.front()->output.buffers.clear();
         work->worklets.front()->output.buffers.push_back(buffer);
         work->worklets.front()->output.ordinal = work->input.ordinal;
-        work->workletsProcessed = 1u;
     };
 
     mOutputDrainBufferWritePos = 0;
 
     if (work && work->input.ordinal.frameIndex == c2_cntr64_t(mCurFrameIndex)) {
         fillWork(work);
+        work->worklets.front()->output.ordinal.timestamp = mCurTimestamp;
+        work->workletsProcessed = 1u;
     } else {
         finish(mCurFrameIndex, fillWork);
     }
@@ -417,13 +459,8 @@ void C2SoftXaacDec::process(const std::unique_ptr<C2Work>& work,
     bool eos = (work->input.flags & C2FrameData::FLAG_END_OF_STREAM) != 0;
     bool codecConfig =
         (work->input.flags & C2FrameData::FLAG_CODEC_CONFIG) != 0;
-    if (codecConfig) {
-        if (size == 0u) {
-            ALOGE("empty codec config");
-            mSignalledError = true;
-            work->result = C2_CORRUPTED;
-            return;
-        }
+    if (codecConfig && size > 0) {
+
         // const_cast because of libAACdec method signature.
         inBuffer = const_cast<uint8_t*>(view.data() + offset);
         inBufferLength = size;
@@ -443,9 +480,36 @@ void C2SoftXaacDec::process(const std::unique_ptr<C2Work>& work,
     }
 
     mCurFrameIndex = work->input.ordinal.frameIndex.peeku();
-    mCurTimestamp = work->input.ordinal.timestamp.peeku();
+
+    if(!eos)
+        mCurTimestamp = work->input.ordinal.timestamp.peeku();
+
     mOutputDrainBufferWritePos = 0;
     char* tempOutputDrainBuffer = mOutputDrainBuffer;
+    WORD32 ia_drc_loudness_measure = -1;
+
+    float ia_drc_targetRefLevel = mIntf->getDrcTargetRefLevel();
+    int32_t tmp_reflevel = (int32_t)ia_drc_targetRefLevel;
+    float ia_drc_loudness_runtime;
+
+    ixheaacd_dec_api(mXheaacCodecHandle, IA_API_CMD_SET_CONFIG_PARAM,
+        IA_ENHAACPLUS_DEC_CONFIG_PARAM_DRC_TARGET_LEVEL,&tmp_reflevel);
+
+    if (ia_drc_targetRefLevel != -1) {
+        ixheaacd_dec_api(mXheaacCodecHandle, IA_API_CMD_SET_CONFIG_PARAM,
+            IA_ENHAACPLUS_DEC_DRC_TARGET_LOUDNESS, &tmp_reflevel);
+    }
+
+    int32_t ia_drc_effectType = mIntf->getDrcEffectType();
+    uint32_t ui_drc_val = (unsigned int)ia_drc_effectType;
+
+    ixheaacd_dec_api(mXheaacCodecHandle, IA_API_CMD_SET_CONFIG_PARAM,
+        IA_ENHAACPLUS_DEC_DRC_EFFECT_TYPE, &ui_drc_val);
+
+    int32_t ia_drc_albumMode = mIntf->getDrcAlbumMode();
+    float ia_drc_attenuationFactor = mIntf->getDrcAttenuationFactor();
+    float ia_drc_boostFactor = mIntf->getDrcBoostFactor();
+
     while (size > 0u) {
         if ((kOutputDrainBufferSize * sizeof(int16_t) -
              mOutputDrainBufferWritePos) <
@@ -549,6 +613,17 @@ void C2SoftXaacDec::process(const std::unique_ptr<C2Work>& work,
             }
         }
 
+        if (!mIsDRCInitialized) {
+            IA_ERRORCODE  err_c = configMPEGDDrc();
+            if (err_c) {
+                ALOGE("MPEG-D CONFIGURATION FAILED");
+                mSignalledError = true;
+                work->result = C2_CORRUPTED;
+                return;
+            }
+            mIsDRCInitialized = true;
+        }
+
         signed int bytesConsumed = 0;
         IA_ERRORCODE errorCode = IA_NO_ERROR;
         if (mIsCodecInitialized) {
@@ -597,7 +672,95 @@ void C2SoftXaacDec::process(const std::unique_ptr<C2Work>& work,
         mOutputDrainBufferWritePos += mNumOutBytes;
     }
 
-    if (mOutputDrainBufferWritePos) {
+
+    if (ia_drc_targetRefLevel != prevtargetref) {
+        C2StreamDrcTargetReferenceLevelTuning::input currentTargetRefLevel(0u,
+            (float)(-0.25*ia_drc_targetRefLevel));
+        work->worklets.front()->output.configUpdate.push_back(
+            C2Param::Copy(currentTargetRefLevel));
+        prevtargetref = ia_drc_targetRefLevel;
+    }
+
+    if (ia_drc_effectType != preveffecttype) {
+        C2StreamDrcEffectTypeTuning::input currentEffectype(0u,
+            (C2Config::drc_effect_type_t)ia_drc_effectType);
+        work->worklets.front()->output.configUpdate.push_back(
+            C2Param::Copy(currentEffectype));
+        preveffecttype = ia_drc_effectType;
+    }
+
+    if (mMpegDDRCPresent ) {
+        ia_drc_dec_api(mMpegDDrcHandle, IA_API_CMD_GET_CONFIG_PARAM,
+            IA_DRC_DEC_CONFIG_DRC_TARGET_LOUDNESS, &ia_drc_loudness_measure);
+
+        if (ia_drc_targetRefLevel < 0 ) {
+            ia_drc_loudness_runtime = ia_drc_loudness_measure;
+        } else {
+            ia_drc_loudness_runtime = ia_drc_targetRefLevel;
+        }
+    } else {
+        ixheaacd_dec_api(mXheaacCodecHandle,
+            IA_API_CMD_GET_LOUDNESS_VAL, 0, &ia_drc_loudness_measure);
+        ia_drc_loudness_runtime = ia_drc_loudness_measure;
+    }
+
+    if (ia_drc_loudness_runtime != prevloudness) {
+        C2StreamDrcOutputLoudnessTuning::output
+            drcOutLoudness(0u, (float) (-0.25 * ia_drc_loudness_runtime));
+        work->worklets.front()->output.configUpdate.push_back(
+            C2Param::Copy(drcOutLoudness));
+        prevloudness = ia_drc_loudness_runtime;
+    }
+
+    if (ia_drc_albumMode != prevalbummode) {
+        C2StreamDrcAlbumModeTuning::input currentAlbumMode(0u,
+            (C2Config::drc_album_mode_t) ia_drc_albumMode);
+        work->worklets.front()->output.configUpdate.push_back(
+            C2Param::Copy(currentAlbumMode));
+        prevalbummode = ia_drc_albumMode;
+    }
+
+    if (ia_drc_attenuationFactor != prevattenuation) {
+        C2StreamDrcAttenuationFactorTuning::input currentAttenuationFactor(0u,
+            (C2FloatValue) (ia_drc_attenuationFactor));
+        work->worklets.front()->output.configUpdate.push_back(
+            C2Param::Copy(currentAttenuationFactor));
+        prevattenuation = ia_drc_attenuationFactor;
+    }
+
+    if (ia_drc_boostFactor != prevboost) {
+        C2StreamDrcBoostFactorTuning::input currentBoostFactor(0u,
+            (C2FloatValue) (ia_drc_boostFactor));
+        work->worklets.front()->output.configUpdate.push_back(
+            C2Param::Copy(currentBoostFactor));
+        prevboost = ia_drc_boostFactor;
+    }
+
+    if (eos && mIsCodecInitialized) {
+        uint32_t ui_ip_bytes = 0, ui_op_bytes = 0;
+
+        ixheaacd_dec_api(mXheaacCodecHandle,
+            IA_API_CMD_SET_INPUT_BYTES, 0, &ui_ip_bytes);
+
+        ixheaacd_dec_api(mXheaacCodecHandle, IA_API_CMD_EXECUTE,
+            IA_CMD_TYPE_DO_EXECUTE, nullptr);
+
+        ixheaacd_dec_api(mXheaacCodecHandle,
+            IA_API_CMD_GET_OUTPUT_BYTES, 0, &ui_op_bytes);
+
+        if (ui_op_bytes > 0) {
+            mCurTimestamp += (ui_op_bytes * 1000000 /
+                ( sizeof(int16_t) * mNumChannels * mSampFreq));
+            memcpy(tempOutputDrainBuffer, mOutputBuffer, ui_op_bytes);
+            tempOutputDrainBuffer += ui_op_bytes;
+            mOutputDrainBufferWritePos += ui_op_bytes;
+        }
+        if (mOutputDrainBufferWritePos)
+            finishWork(work, pool);
+        else
+            fillEmptyWork(work);
+
+    } else if (mOutputDrainBufferWritePos) {
         finishWork(work, pool);
     } else {
         fillEmptyWork(work);
@@ -692,6 +855,13 @@ IA_ERRORCODE C2SoftXaacDec::initXAACDecoder() {
     mInputBufferSize = 0;
     mInputBuffer = nullptr;
     mOutputBuffer = nullptr;
+    prevtargetref = DEFAULT_PREV_STATE;
+    preveffecttype = DEFAULT_PREV_STATE;
+    prevloudness = DEFAULT_PREV_STATE;
+    prevalbummode = DEFAULT_PREV_STATE;
+    prevboost = DEFAULT_PREV_STATE;
+    prevattenuation = DEFAULT_PREV_STATE;
+
     /* Process struct initing end */
 
     /* ******************************************************************/
@@ -750,6 +920,15 @@ IA_ERRORCODE C2SoftXaacDec::initXAACDecoder() {
                                 &ui_mp4_flag);
     RETURN_IF_FATAL(err_code,  "IA_ENHAACPLUS_DEC_CONFIG_PARAM_ISMP4");
 
+    u_int32_t ui_drc_maxcc = mIntf->getMaxChannelCount();
+    if (ui_drc_maxcc == 2) {
+        bool ui_downmix_flag = 1;
+        err_code = ixheaacd_dec_api(mXheaacCodecHandle,
+                                IA_API_CMD_SET_CONFIG_PARAM,
+                                IA_ENHAACPLUS_DEC_CONFIG_PARAM_DOWNMIX_STEREO,
+                                &ui_downmix_flag);
+        RETURN_IF_FATAL(err_code,"IA_ENHAACPLUS_DEC_CONFIG_PARAM_DOWNMIX_STEREO");
+    }
     /* ******************************************************************/
     /* Initialize Memory info tables                                    */
     /* ******************************************************************/
@@ -842,9 +1021,9 @@ status_t C2SoftXaacDec::initXAACDrc() {
     IA_ERRORCODE err_code = IA_NO_ERROR;
     unsigned int ui_drc_val;
     //  DRC_PRES_MODE_WRAP_DESIRED_TARGET
-    int32_t targetRefLevel = mIntf->getDrcTargetRefLevel();
-    ALOGV("AAC decoder using desired DRC target reference level of %d", targetRefLevel);
-    ui_drc_val = (unsigned int)targetRefLevel;
+    int32_t ia_drc_targetRefLevel = mIntf->getDrcTargetRefLevel();
+    ALOGV("AAC decoder using desired DRC target reference level of %d", ia_drc_targetRefLevel);
+    ui_drc_val = (unsigned int)ia_drc_targetRefLevel;
     err_code = ixheaacd_dec_api(mXheaacCodecHandle,
                                 IA_API_CMD_SET_CONFIG_PARAM,
                                 IA_ENHAACPLUS_DEC_CONFIG_PARAM_DRC_TARGET_LEVEL,
@@ -858,23 +1037,21 @@ status_t C2SoftXaacDec::initXAACDrc() {
 
     RETURN_IF_FATAL(err_code, "IA_ENHAACPLUS_DEC_DRC_TARGET_LOUDNESS");
 
-    int32_t attenuationFactor = mIntf->getDrcAttenuationFactor();
-    ALOGV("AAC decoder using desired DRC attenuation factor of %d", attenuationFactor);
-    ui_drc_val = (unsigned int)attenuationFactor;
+    float ia_drc_attenuationFactor = mIntf->getDrcAttenuationFactor();
+    ALOGV("AAC decoder using desired DRC attenuation factor of %f", ia_drc_attenuationFactor);
     err_code = ixheaacd_dec_api(mXheaacCodecHandle,
                                 IA_API_CMD_SET_CONFIG_PARAM,
                                 IA_ENHAACPLUS_DEC_CONFIG_PARAM_DRC_CUT,
-                                &ui_drc_val);
+                                &ia_drc_attenuationFactor);
     RETURN_IF_FATAL(err_code,  "IA_ENHAACPLUS_DEC_CONFIG_PARAM_DRC_CUT");
 
     //  DRC_PRES_MODE_WRAP_DESIRED_BOOST_FACTOR
-    int32_t boostFactor = mIntf->getDrcBoostFactor();
-    ALOGV("AAC decoder using desired DRC boost factor of %d", boostFactor);
-    ui_drc_val = (unsigned int)boostFactor;
+    float ia_drc_boostFactor = mIntf->getDrcBoostFactor();
+    ALOGV("AAC decoder using desired DRC boost factor of %f", ia_drc_boostFactor);
     err_code = ixheaacd_dec_api(mXheaacCodecHandle,
                                 IA_API_CMD_SET_CONFIG_PARAM,
                                 IA_ENHAACPLUS_DEC_CONFIG_PARAM_DRC_BOOST,
-                                &ui_drc_val);
+                                &ia_drc_boostFactor);
     RETURN_IF_FATAL(err_code,  "IA_ENHAACPLUS_DEC_CONFIG_PARAM_DRC_BOOST");
 
     //  DRC_PRES_MODE_WRAP_DESIRED_HEAVY
@@ -889,9 +1066,9 @@ status_t C2SoftXaacDec::initXAACDrc() {
     RETURN_IF_FATAL(err_code,  "IA_ENHAACPLUS_DEC_CONFIG_PARAM_DRC_HEAVY_COMP");
 
     // AAC_UNIDRC_SET_EFFECT
-    int32_t effectType = mIntf->getDrcEffectType();
-    ALOGV("AAC decoder using MPEG-D DRC effect type %d", effectType);
-    ui_drc_val = (unsigned int)effectType;
+    int32_t ia_drc_effectType = mIntf->getDrcEffectType();
+    ALOGV("AAC decoder using MPEG-D DRC effect type %d", ia_drc_effectType);
+    ui_drc_val = (unsigned int)ia_drc_effectType;
     err_code = ixheaacd_dec_api(mXheaacCodecHandle, IA_API_CMD_SET_CONFIG_PARAM,
                                 IA_ENHAACPLUS_DEC_DRC_EFFECT_TYPE, &ui_drc_val);
 
@@ -990,8 +1167,6 @@ IA_ERRORCODE C2SoftXaacDec::configXAACDecoder(uint8_t* inBuffer, uint32_t inBuff
                mSampFreq, mNumChannels, mPcmWdSz, mChannelMask, mOutputFrameLength);
         mIsCodecInitialized = true;
 
-        err_code = configMPEGDDrc();
-        RETURN_IF_FATAL(err_code, "configMPEGDDrc");
     }
 
     return IA_NO_ERROR;
@@ -1104,6 +1279,10 @@ int C2SoftXaacDec::configMPEGDDrc() {
                                 IA_ENHAACPLUS_DEC_CONFIG_PARAM_DRC_LOUD_NORM, &i_loud_norm);
     RETURN_IF_FATAL(err_code, "IA_ENHAACPLUS_DEC_CONFIG_PARAM_DRC_LOUD_NORM");
 
+    int32_t ia_drc_targetRefLevel_runtime = mIntf->getDrcTargetRefLevel();
+
+    if (ia_drc_targetRefLevel_runtime == -1) i_loud_norm = 0;
+
     err_code = ia_drc_dec_api(mMpegDDrcHandle, IA_API_CMD_SET_CONFIG_PARAM,
                               IA_DRC_DEC_CONFIG_DRC_LOUD_NORM, &i_loud_norm);
     RETURN_IF_FATAL(err_code, "IA_DRC_DEC_CONFIG_DRC_LOUD_NORM");
@@ -1111,6 +1290,23 @@ int C2SoftXaacDec::configMPEGDDrc() {
     err_code = ixheaacd_dec_api(mXheaacCodecHandle, IA_API_CMD_GET_CONFIG_PARAM,
                                 IA_ENHAACPLUS_DEC_CONFIG_PARAM_SBR_MODE, &i_sbr_mode);
     RETURN_IF_FATAL(err_code, "IA_ENHAACPLUS_DEC_CONFIG_PARAM_SBR_MODE");
+
+    int32_t ia_drc_albumMode = mIntf->getDrcAlbumMode();
+    err_code = ia_drc_dec_api(mMpegDDrcHandle, IA_API_CMD_SET_CONFIG_PARAM,
+                              IA_DRC_DEC_CONFIG_DRC_ALBUM_MODE, &ia_drc_albumMode);
+    RETURN_IF_FATAL(err_code, "IA_DRC_DEC_CONFIG_ALBUM_MODE");
+
+    float ia_drc_boostFactor = mIntf->getDrcBoostFactor();
+
+    err_code = ia_drc_dec_api(mMpegDDrcHandle, IA_API_CMD_SET_CONFIG_PARAM,
+                              IA_DRC_DEC_CONFIG_DRC_BOOST, &ia_drc_boostFactor);
+    RETURN_IF_FATAL(err_code, "IA_DRC_DEC_CONFIG_DRC_BOOST");
+
+    float ia_drc_attenuationFactor = mIntf->getDrcAttenuationFactor();
+
+    err_code = ia_drc_dec_api(mMpegDDrcHandle, IA_API_CMD_SET_CONFIG_PARAM,
+                              IA_DRC_DEC_CONFIG_DRC_COMPRESS, &ia_drc_attenuationFactor);
+    RETURN_IF_FATAL(err_code, "IA_DRC_DEC_CONFIG_DRC_COMPRESS");
 
     /* Get memory info tables size */
     err_code = ia_drc_dec_api(mMpegDDrcHandle, IA_API_CMD_GET_MEMTABS_SIZE, 0,
