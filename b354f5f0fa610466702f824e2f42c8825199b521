@@ -1,0 +1,205 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2378e5ec_14ecc664",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-11T17:22:42Z",
+      "side": 1,
+      "message": "some minor nits, i think some of them were inherited from the original code.  please fix the ones that seem reasonable to correct at this time.  thanks!",
+      "revId": "b354f5f0fa610466702f824e2f42c8825199b521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "378e4756_3539df13",
+        "filename": "media/libaudioprocessing/tests/fuzzer/libaudioprocessing_fuzz_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-11T17:22:42Z",
+      "side": 1,
+      "message": "nit: order these alphabetically?",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 38
+      },
+      "revId": "b354f5f0fa610466702f824e2f42c8825199b521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29254232_93ddf0f8",
+        "filename": "media/libaudioprocessing/tests/fuzzer/libaudioprocessing_fuzz_utils.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-11T17:22:42Z",
+      "side": 1,
+      "message": "omit virtual and use override (as per line 38).",
+      "range": {
+        "startLine": 51,
+        "startChar": 2,
+        "endLine": 51,
+        "endChar": 9
+      },
+      "revId": "b354f5f0fa610466702f824e2f42c8825199b521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f4e59a2_58a445f7",
+        "filename": "media/libaudioprocessing/tests/fuzzer/libaudioprocessing_record_buffer_converter_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-11T17:22:42Z",
+      "side": 1,
+      "message": "constexpr?",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 5
+      },
+      "revId": "b354f5f0fa610466702f824e2f42c8825199b521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01355e01_5425b6eb",
+        "filename": "media/libaudioprocessing/tests/fuzzer/libaudioprocessing_record_buffer_converter_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-11T17:22:42Z",
+      "side": 1,
+      "message": "constexpr?",
+      "range": {
+        "startLine": 31,
+        "startChar": 0,
+        "endLine": 31,
+        "endChar": 5
+      },
+      "revId": "b354f5f0fa610466702f824e2f42c8825199b521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d1d45fa_e0f5de7e",
+        "filename": "media/libaudioprocessing/tests/fuzzer/libaudioprocessing_record_buffer_converter_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-11T17:22:42Z",
+      "side": 1,
+      "message": "std::size",
+      "range": {
+        "startLine": 113,
+        "startChar": 33,
+        "endLine": 113,
+        "endChar": 39
+      },
+      "revId": "b354f5f0fa610466702f824e2f42c8825199b521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a62d836c_7f4fb90e",
+        "filename": "media/libaudioprocessing/tests/fuzzer/libaudioprocessing_record_buffer_converter_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-11T17:22:42Z",
+      "side": 1,
+      "message": "constexpr",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 5
+      },
+      "revId": "b354f5f0fa610466702f824e2f42c8825199b521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46e2f80b_7de8ec35",
+        "filename": "media/libaudioprocessing/tests/fuzzer/libaudioprocessing_record_buffer_converter_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-11T17:22:42Z",
+      "side": 1,
+      "message": "any of these const?  here and below?",
+      "range": {
+        "startLine": 119,
+        "startChar": 2,
+        "endLine": 119,
+        "endChar": 22
+      },
+      "revId": "b354f5f0fa610466702f824e2f42c8825199b521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37d8de5b_de776d48",
+        "filename": "media/libaudioprocessing/tests/fuzzer/libaudioprocessing_record_buffer_converter_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-11T17:22:42Z",
+      "side": 1,
+      "message": "are these intentional aborts (OK) or unintentional crashes?",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 36
+      },
+      "revId": "b354f5f0fa610466702f824e2f42c8825199b521",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
