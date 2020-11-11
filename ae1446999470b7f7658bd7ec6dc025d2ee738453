@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "85cdb8aa_48ac4f5c",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-11-11T18:27:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "379acf41_420d258c",
+      "range": {
+        "startLine": 206,
+        "startChar": 15,
+        "endLine": 206,
+        "endChar": 22
+      },
+      "revId": "ae1446999470b7f7658bd7ec6dc025d2ee738453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "191b219d_b4c89ae8",
@@ -81,6 +105,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbc375b8_6f4ad058",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6507,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-11-11T18:27:54Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "191b219d_b4c89ae8",
+      "range": {
+        "startLine": 6507,
+        "startChar": 67,
+        "endLine": 6507,
+        "endChar": 71
+      },
+      "revId": "ae1446999470b7f7658bd7ec6dc025d2ee738453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f86c256_e706c1ab",
@@ -94,6 +142,30 @@
       "writtenOn": "2020-11-03T18:35:53Z",
       "side": 1,
       "message": "same here -- change the 4 to sizeof(uint32_t)",
+      "range": {
+        "startLine": 6509,
+        "startChar": 75,
+        "endLine": 6509,
+        "endChar": 77
+      },
+      "revId": "ae1446999470b7f7658bd7ec6dc025d2ee738453",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7a33a55_5b14140d",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6509,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-11-11T18:27:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2f86c256_e706c1ab",
       "range": {
         "startLine": 6509,
         "startChar": 75,
