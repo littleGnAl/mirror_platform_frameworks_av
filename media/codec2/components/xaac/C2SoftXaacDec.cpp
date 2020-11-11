@@ -257,6 +257,7 @@ c2_status_t C2SoftXaacDec::onInit() {
     mCurFrameIndex = 0;
     mCurTimestamp = 0;
     mIsCodecInitialized = false;
+    mIsDRCInitialized = false;
     mIsCodecConfigFlushRequired = false;
     mSignalledOutputEos = false;
     mSignalledError = false;
@@ -545,6 +546,17 @@ void C2SoftXaacDec::process(const std::unique_ptr<C2Work>& work,
                     return;
                 }
             }
+        }
+
+        if(!mIsDRCInitialized){
+           IA_ERRORCODE  err_c = configMPEGDDrc();
+           if(err_c) {
+               ALOGE("MPEG-D CONFIGURATION FAILED");
+               mSignalledError = true;
+               work->result = C2_CORRUPTED;
+               return;
+           }
+           mIsDRCInitialized = true;
         }
 
         signed int bytesConsumed = 0;
@@ -988,8 +1000,6 @@ IA_ERRORCODE C2SoftXaacDec::configXAACDecoder(uint8_t* inBuffer, uint32_t inBuff
                mSampFreq, mNumChannels, mPcmWdSz, mChannelMask, mOutputFrameLength);
         mIsCodecInitialized = true;
 
-        err_code = configMPEGDDrc();
-        RETURN_IF_FATAL(err_code, "configMPEGDDrc");
     }
 
     return IA_NO_ERROR;
