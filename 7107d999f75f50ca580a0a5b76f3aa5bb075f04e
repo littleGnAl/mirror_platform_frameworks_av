@@ -94,6 +94,30 @@
       },
       "revId": "7107d999f75f50ca580a0a5b76f3aa5bb075f04e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "480774e8_037cd9ea",
+        "filename": "services/camera/libcameraservice/fuzzer/DepthProcessorFuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2020-11-12T21:09:12Z",
+      "side": 1,
+      "message": "I think this should be sufficient.",
+      "parentUuid": "11bdd7c7_e6dfe0ac",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 36
+      },
+      "revId": "7107d999f75f50ca580a0a5b76f3aa5bb075f04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
