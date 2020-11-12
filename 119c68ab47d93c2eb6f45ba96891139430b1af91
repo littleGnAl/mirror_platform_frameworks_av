@@ -51,6 +51,23 @@
       "message": "I think Emilian needs to chime in on this one, since he knows how the depth photo processing actually works.",
       "revId": "119c68ab47d93c2eb6f45ba96891139430b1af91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d023eff_c74c27b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2020-11-12T20:19:49Z",
+      "side": 1,
+      "message": "Also, https://googleplex-android-review.git.corp.google.com/c/platform/external/libexif/+/12980682 may have an impact on the usefulness of this one.  (Granted, the fuzzer may be a good test to make sure nothing breaks with that removal)",
+      "revId": "119c68ab47d93c2eb6f45ba96891139430b1af91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
