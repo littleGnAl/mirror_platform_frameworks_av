@@ -46,6 +46,30 @@
       },
       "revId": "7107d999f75f50ca580a0a5b76f3aa5bb075f04e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d44e9c85_8e07804e",
+        "filename": "services/camera/libcameraservice/fuzzer/DepthProcessorFuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2020-11-12T20:45:26Z",
+      "side": 1,
+      "message": "Yes, it will likely return before processing the main jpeg. You can check the associated test cases which generate some random depth data:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/camera/libcameraservice/tests/DepthProcessorTest.cpp;l\u003d180",
+      "parentUuid": "6db0eb08_14628c60",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 36
+      },
+      "revId": "7107d999f75f50ca580a0a5b76f3aa5bb075f04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
