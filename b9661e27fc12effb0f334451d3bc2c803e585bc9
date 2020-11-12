@@ -33,6 +33,24 @@
       "message": "Looks like you lost the /2 in the last patch set?",
       "revId": "b9661e27fc12effb0f334451d3bc2c803e585bc9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdb5701c_72f0e363",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1398097
+      },
+      "writtenOn": "2020-11-12T21:10:33Z",
+      "side": 1,
+      "message": "Oh, you are right. Added it back, along with a comment.",
+      "parentUuid": "dea3fe9a_ea4d84f0",
+      "revId": "b9661e27fc12effb0f334451d3bc2c803e585bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
