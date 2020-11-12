@@ -22,6 +22,30 @@
       },
       "revId": "7107d999f75f50ca580a0a5b76f3aa5bb075f04e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6db0eb08_14628c60",
+        "filename": "services/camera/libcameraservice/fuzzer/DepthProcessorFuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1398097
+      },
+      "writtenOn": "2020-11-12T20:40:27Z",
+      "side": 1,
+      "message": "Does that mean that passing in a normal jpeg file will miss the depth data, and thus processDepthPhotoFrame may throw out the data early on? Or will passing a normal jpeg file still work?\n\nIf other data is needed, is there an example file with contains both types of information which could be used as an example for the corpus?",
+      "parentUuid": "b34c672a_71e47212",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 36
+      },
+      "revId": "7107d999f75f50ca580a0a5b76f3aa5bb075f04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
