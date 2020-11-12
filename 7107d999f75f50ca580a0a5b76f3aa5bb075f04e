@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b34c672a_71e47212",
+        "filename": "services/camera/libcameraservice/fuzzer/DepthProcessorFuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2020-11-12T20:35:19Z",
+      "side": 1,
+      "message": "We also rely on depth map data for the processing to work. The main goal is to bundle both jpeg frames and depth data coming from the camera sensor in to as single jpeg file that adheres to the dynamic depth spec.",
+      "range": {
+        "startLine": 32,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 36
+      },
+      "revId": "7107d999f75f50ca580a0a5b76f3aa5bb075f04e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

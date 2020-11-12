@@ -68,6 +68,42 @@
       "message": "Also, https://googleplex-android-review.git.corp.google.com/c/platform/external/libexif/+/12980682 may have an impact on the usefulness of this one.  (Granted, the fuzzer may be a good test to make sure nothing breaks with that removal)",
       "revId": "119c68ab47d93c2eb6f45ba96891139430b1af91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04f6ae4f_2e1ef2c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2020-11-12T20:35:19Z",
+      "side": 1,
+      "message": "I don\u0027t think ag/12980682 could have impact. The makernote shouldn\u0027t be relevant here, still fuzzing the input jpeg and exif could be beneficial.",
+      "parentUuid": "1d023eff_c74c27b3",
+      "revId": "119c68ab47d93c2eb6f45ba96891139430b1af91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17737bd5_18f0e1a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2020-11-12T20:35:19Z",
+      "side": 1,
+      "message": "I am sorry for the late code review, I added some inline comments. \n\nbrarcher@, The code will extract the exif orientation from the input jpeg image, so passing fuzzed exif could be useful.",
+      "parentUuid": "c3978129_1c73433d",
+      "revId": "119c68ab47d93c2eb6f45ba96891139430b1af91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
