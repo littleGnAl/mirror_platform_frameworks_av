@@ -87,6 +87,24 @@
       "parentUuid": "4be08fe1_3c244d9f",
       "revId": "1bb82d4796497351cd89e202f5f4d5d1795595b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1e61a0a_5ead37b3",
+        "filename": "services/camera/libcameraservice/fuzzer/DistortionMapperFuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1398097
+      },
+      "writtenOn": "2020-11-12T21:10:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad2c929c_9c6db17c",
+      "revId": "1bb82d4796497351cd89e202f5f4d5d1795595b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
