@@ -31,12 +31,15 @@ cc_test {
         "libstagefright",
         "libstagefright_webm",
         "libstagefright_foundation",
+        "libmediavendorext_default",
+
     ],
 
     shared_libs: [
         "libbinder",
         "liblog",
         "libutils",
+        "libstagefright_omx",
     ],
 
     cflags: [

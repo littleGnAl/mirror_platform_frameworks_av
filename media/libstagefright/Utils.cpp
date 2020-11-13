@@ -46,6 +46,9 @@
 #include <media/stagefright/Utils.h>
 #include <media/AudioParameter.h>
 #include <system/audio.h>
+#if (!defined STAGEFRIGHT_PLAYER2) && (!defined MPEG2EXTRACTOR)
+#include <MediaVendorExt.h>
+#endif
 
 namespace android {
 
@@ -1473,6 +1476,9 @@ status_t convertMetaDataToMessage(
         ALOGV("DV: calling parseDolbyVisionProfileLevelFromDvcc with data size %zu", size);
         parseDolbyVisionProfileLevelFromDvcc(ptr, size, msg);
     }
+#if (!defined STAGEFRIGHT_PLAYER2) && (!defined MPEG2EXTRACTOR)
+    MediaVendorExt::imp()->convertMetaDataToMessage(new MetaData(*meta), msg);
+#endif
 
     *format = msg;
 
@@ -1986,6 +1992,9 @@ void convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
         }
     }
     // XXX TODO add whatever other keys there are
+#if (!defined STAGEFRIGHT_PLAYER2) && (!defined MPEG2EXTRACTOR)
+    MediaVendorExt::imp()->convertMessageToMetaData(msg, meta);
+#endif
 
 #if 0
     ALOGI("converted %s to:", msg->debugString(0).c_str());

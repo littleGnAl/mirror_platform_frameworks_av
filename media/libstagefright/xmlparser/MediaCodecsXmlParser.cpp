@@ -138,15 +138,18 @@ MediaCodecsXmlParser::StringSet parseCommaSeparatedStringSet(const char *s) {
 std::vector<std::string> MediaCodecsXmlParser::getDefaultXmlNames() {
     static constexpr char const* prefixes[] = {
             "media_codecs",
+            "media_codecs_ext.xml",
             "media_codecs_performance"
         };
     static std::vector<std::string> variants = {
             android::base::GetProperty("ro.media.xml_variant.codecs", ""),
+            android::base::GetProperty("ro.media.xml_variant.codecs_ext", ""),
             android::base::GetProperty("ro.media.xml_variant.codecs_performance", "")
         };
     static std::vector<std::string> names = {
             prefixes[0] + variants[0] + ".xml",
-            prefixes[1] + variants[1] + ".xml"
+            prefixes[1] + variants[1] + ".xml",
+            prefixes[2] + variants[2] + ".xml",
         };
     return names;
 }
@@ -425,6 +428,9 @@ status_t MediaCodecsXmlParser::Impl::parseXmlFilesInSearchDirs(
     for (const std::string fileName : fileNames) {
         status_t err = NO_INIT;
         std::string path;
+        std::string xmlstr = "/vendor/etc/media_codecs_ext.xml";
+
+        parseXmlPath(xmlstr);
         if (findFileInDirs(searchDirs, fileName, &path)) {
             err = parseXmlPath(path);
         } else {
@@ -1457,6 +1463,130 @@ status_t MediaCodecsXmlParser::getParsingStatus() const {
     return mImpl->getParsingStatus();
 }
 
+const char *MEDIA_MIMETYPE_VIDEO_MJPEG = "video/x-motion-jpeg";
+const char *MEDIA_MIMETYPE_VIDEO_MSMPEG4 = "video/x-msmpeg";
+const char *MEDIA_MIMETYPE_VIDEO_SORENSON_SPARK = "video/x-sorenson-spark";
+const char *MEDIA_MIMETYPE_VIDEO_WMV = "video/x-ms-wmv";
+const char *MEDIA_MIMETYPE_VIDEO_VC1 = "video/vc1";
+const char *MEDIA_MIMETYPE_VIDEO_WVC1 = "video/wvc1";
+const char *MEDIA_MIMETYPE_VIDEO_VPX = "video/x-vnd.on2.vp8";
+const char *MEDIA_MIMETYPE_VIDEO_RM10 = "video/rm10";
+const char *MEDIA_MIMETYPE_VIDEO_RM20 = "video/rm20";
+const char *MEDIA_MIMETYPE_VIDEO_RM30 = "video/rm30";
+const char *MEDIA_MIMETYPE_VIDEO_RM40 = "video/rm40";
+const char *MEDIA_MIMETYPE_VIDEO_VP6 = "video/x-vnd.on2.vp6";
+const char *MEDIA_MIMETYPE_VIDEO_VP6F = "video/x-vnd.on2.vp6f";
+const char *MEDIA_MIMETYPE_VIDEO_VP6A = "video/x-vnd.on2.vp6a";
+const char *MEDIA_MIMETYPE_VIDEO_WMV1 = "video/wmv1";
+const char *MEDIA_MIMETYPE_VIDEO_WMV2 = "video/wmv2";
+const char *MEDIA_MIMETYPE_VIDEO_WMV3 = "video/wmv3";
+const char *MEDIA_MIMETYPE_VIDEO_MSWMV3 = "video/x-ms-wmv";
+const char *MEDIA_MIMETYPE_VIDEO_AVS = "video/avs";
+const char *MEDIA_MIMETYPE_VIDEO_AVS2 = "video/avs2";
+const char *MEDIA_MIMETYPE_AUDIO_DTS = "audio/dtshd";
+const char *MEDIA_MIMETYPE_AUDIO_MP1 = "audio/mp1";
+const char *MEDIA_MIMETYPE_AUDIO_MP2 = "audio/mp2";
+const char *MEDIA_MIMETYPE_AUDIO_ADPCM_IMA = "audio/adpcm-ima";
+const char *MEDIA_MIMETYPE_AUDIO_ADPCM_MS = "audio/adpcm-ms";
+const char *MEDIA_MIMETYPE_AUDIO_ALAC = "audio/alac";
+const char *MEDIA_MIMETYPE_AUDIO_AAC_ADIF = "audio/aac-adif";
+const char *MEDIA_MIMETYPE_AUDIO_AAC_LATM = "audio/aac-latm";
+const char *MEDIA_MIMETYPE_AUDIO_ADTS_PROFILE = "audio/adts";
+const char *MEDIA_MIMETYPE_AUDIO_WMA = "audio/wma";
+const char *MEDIA_MIMETYPE_AUDIO_WMAPRO = "audio/wmapro";
+const char *MEDIA_MIMETYPE_AUDIO_DTSHD  = "audio/dtshd";
+const char *MEDIA_MIMETYPE_AUDIO_TRUEHD = "audio/truehd";
+const char *MEDIA_MIMETYPE_AUDIO_AC3 = "audio/ac3";
+const char *MEDIA_MIMETYPE_AUDIO_EC3 = "audio/eac3";
+const char *MEDIA_MIMETYPE_AUDIO_FFMPEG = "audio/ffmpeg";
+
+const char*  AGetComponentRole(bool isEncoder, const char *mime) {
+    ALOGI("AmAVUtils::getComponentRole isEncoder :%d mime:%s \n",isEncoder,mime);
+    const char *role = GetComponentRole(isEncoder, mime);
+    if (role != NULL) {
+        return role;
+    }
+
+    struct MimeToRole {
+        const char *mime;
+        const char *decoderRole;
+        const char *encoderRole;
+    };
+
+    static const MimeToRole kMimeToRole[] = {
+         {MEDIA_MIMETYPE_AUDIO_DTSHD,
+         "audio_decoder.dtshd",  "audio_encoder.dtshd" },
+         { MEDIA_MIMETYPE_AUDIO_AAC_ADIF,
+         "audio_decoder.adif", "audio_encoder.adif" },
+         { MEDIA_MIMETYPE_AUDIO_AAC_LATM,
+         "audio_decoder.latm", "audio_encoder.latm" },
+         { MEDIA_MIMETYPE_AUDIO_ADTS_PROFILE,
+         "audio_decoder.adts", "audio_encoder.adts" },
+         { MEDIA_MIMETYPE_VIDEO_MJPEG,
+         "video_decoder.mjpeg", "video_encoder.mjpeg" },
+         { MEDIA_MIMETYPE_VIDEO_WMV3,
+         "video_decoder.wmv", "video_encoder.wmv" },
+         { MEDIA_MIMETYPE_VIDEO_MSWMV3,
+         "video_decoder.wmv3", "video_encoder.wmv3" },
+         { MEDIA_MIMETYPE_AUDIO_WMA,
+         "audio_decoder.wma", "audio_encoder.wma" },
+         { MEDIA_MIMETYPE_AUDIO_WMAPRO,
+         "audio_decoder.wmapro", "audio_encoder.wmapro" },
+         { MEDIA_MIMETYPE_AUDIO_TRUEHD,
+         "audio_decoder.truehd", "audio_encoder.truehd" },
+         { MEDIA_MIMETYPE_VIDEO_VC1,
+         "video_decoder.vc1", "video_encoder.vc1" },
+         { MEDIA_MIMETYPE_VIDEO_WVC1,
+         "video_decoder.wvc1", "video_encoder.wvc1" },
+         { MEDIA_MIMETYPE_VIDEO_VP6,
+         "video_decoder.amvp6", "video_encoder.amvp6" },
+         { MEDIA_MIMETYPE_VIDEO_VP6A,
+         "video_decoder.amvp6a", "video_encoder.amvp6a" },
+         { MEDIA_MIMETYPE_VIDEO_VP6F,
+         "video_decoder.amvp6f", "video_encoder.amvp6f" },
+         { MEDIA_MIMETYPE_VIDEO_RM10,
+         "video_decoder.rm10", "video_encoder.rm10"},
+         { MEDIA_MIMETYPE_VIDEO_RM20,
+         "video_decoder.rm20", "video_encoder.rm20"},
+         { MEDIA_MIMETYPE_VIDEO_RM30,
+         "video_decoder.rm30", "video_encoder.rm30"},
+         { MEDIA_MIMETYPE_VIDEO_RM40,
+         "video_decoder.rm40", "video_encoder.rm40"},
+         { MEDIA_MIMETYPE_VIDEO_WMV2,
+         "video_decoder.wmv2", "video_encoder.wmv2"},
+         { MEDIA_MIMETYPE_VIDEO_WMV1,
+         "video_decoder.wmv1", "video_encoder.wmv1"},
+         { MEDIA_MIMETYPE_AUDIO_FFMPEG,
+         "audio_decoder.ffmpeg", "audio_encoder.ffmpeg" },
+         { MEDIA_MIMETYPE_AUDIO_ADTS_PROFILE,
+         "audio_decoder.adts", "audio_encoder.adts" },
+         { MEDIA_MIMETYPE_VIDEO_AVS,
+         "video_decoder.avs", "video_encoder.avs"},
+         { MEDIA_MIMETYPE_VIDEO_AVS2,
+         "video_decoder.avs2", "video_encoder.avs2"},
+    };
+
+    static const size_t kNumMimeToRole =
+        sizeof(kMimeToRole) / sizeof(kMimeToRole[0]);
+    ALOGI("AmAVUtils::getComponentRole isEncoder :%d kNumMimeToRole:%d \n",isEncoder,kNumMimeToRole);
+
+    size_t i;
+    for (i = 0; i < kNumMimeToRole; ++i) {
+        if (!strcasecmp(mime, kMimeToRole[i].mime)) {
+            ALOGI("AmAVUtils::getComponentRole break\n");
+            break;
+        }
+    }
+    if (i == kNumMimeToRole) {
+        ALOGE("AmAVUtils::have no Component role isEncoder :%d mime:%s",isEncoder,mime);
+        return NULL;
+    }
+    ALOGI("AmAVUtils::getComponentRole isEncoder :%d Role:%s \n",isEncoder,isEncoder ? kMimeToRole[i].encoderRole: kMimeToRole[i].decoderRole);
+    return isEncoder ? kMimeToRole[i].encoderRole
+            : kMimeToRole[i].decoderRole;
+
+}
+
 void MediaCodecsXmlParser::Impl::generateRoleMap() const {
     for (const auto& codec : mData.mCodecMap) {
         const auto &codecName = codec.first;
@@ -1469,7 +1599,8 @@ void MediaCodecsXmlParser::Impl::generateRoleMap() const {
         const auto& typeMap = codec.second.typeMap;
         for (const auto& type : typeMap) {
             const auto& typeName = type.first;
-            const char* roleName = GetComponentRole(isEncoder, typeName.data());
+            const char* roleName = AGetComponentRole(isEncoder, typeName.data());
+            ALOGI(" generateRoleMap,[ roleName =%s] ", roleName);
             if (roleName == nullptr) {
                 ALOGE("Cannot find the role for %s of type %s",
                         isEncoder ? "an encoder" : "a decoder",

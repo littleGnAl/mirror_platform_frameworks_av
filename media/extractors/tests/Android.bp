@@ -49,6 +49,7 @@ cc_test {
         "libvorbisidec",
         "libwebm",
         "libFLAC",
+        "libmediavendorext_default",
     ],
 
     shared_libs: [
@@ -67,6 +68,7 @@ cc_test {
         "libhidlmemory",
         "libhidlbase",
         "libbase",
+        "libstagefright_omx",
     ],
 
     include_dirs: [

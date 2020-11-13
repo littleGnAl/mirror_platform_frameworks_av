@@ -164,6 +164,7 @@ cc_library_static {
         "-Werror",
         "-Wno-error=deprecated-declarations",
         "-Wall",
+        "-DMPEG2EXTRACTOR",
     ],
 
     sanitize: {
@@ -332,6 +333,8 @@ cc_library {
         "libogg",
         "libwebm",
         "libstagefright_id3",
+        "libmediavendorext_default",
+
     ],
 
     header_libs:[
@@ -339,6 +342,11 @@ cc_library {
         "libnativeloader-headers",
         "libstagefright_xmlparser_headers",
         "media_ndk_headers",
+        "libmediavendorext_default_headers",
+    ],
+
+    include_dirs: [
+        "hardware/amlogic/media/ammediaext",
     ],
 
     export_shared_lib_headers: [

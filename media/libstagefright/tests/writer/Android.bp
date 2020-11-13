@@ -31,6 +31,7 @@ cc_test {
         "libmedia",
         "libmediandk",
         "libstagefright",
+        "libstagefright_omx",
     ],
 
     static_libs: [
@@ -39,6 +40,7 @@ cc_test {
         "libdatasource",
         "libstagefright_esds",
         "libogg",
+        "libmediavendorext_default",
     ],
 
     include_dirs: [

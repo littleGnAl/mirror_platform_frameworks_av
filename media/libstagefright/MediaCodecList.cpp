@@ -351,7 +351,6 @@ void MediaCodecList::findMatchingCodecs(
     if (list == nullptr) {
         return;
     }
-
     size_t index = 0;
     for (;;) {
         ssize_t matchIndex =
@@ -366,7 +365,6 @@ void MediaCodecList::findMatchingCodecs(
         const sp<MediaCodecInfo> info = list->getCodecInfo(matchIndex);
         CHECK(info != nullptr);
         AString componentName = info->getCodecName();
-
         if ((flags & kHardwareCodecsOnly) && isSoftwareCodec(componentName)) {
             ALOGV("skipping SW codec '%s'", componentName.c_str());
         } else {
