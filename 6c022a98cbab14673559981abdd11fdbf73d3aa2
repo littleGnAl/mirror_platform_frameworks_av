@@ -22,6 +22,30 @@
       },
       "revId": "6c022a98cbab14673559981abdd11fdbf73d3aa2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa318511_87d1ecd1",
+        "filename": "services/camera/libcameraservice/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1141048
+      },
+      "writtenOn": "2020-11-13T16:47:27Z",
+      "side": 1,
+      "message": "I believe this should be \"Framework and API\" \u003e 41727.",
+      "parentUuid": "f1aa3f4c_25637c10",
+      "range": {
+        "startLine": 18,
+        "startChar": 21,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "6c022a98cbab14673559981abdd11fdbf73d3aa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
