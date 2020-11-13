@@ -50,6 +50,7 @@ cc_defaults {
         "frameworks/av/media/libstagefright",
         "frameworks/native/include/media/openmax",
         "frameworks/native/include/android",
+        "frameworks/av/media/libdatasource/include"
     ],
 
     arch: {

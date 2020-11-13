@@ -43,7 +43,7 @@ cc_binary {
     ],
 
     static_libs: [
-        "libregistermsext",
+        "//vendor/amlogic/common:libregistermsext_aml"
     ],
 
     include_dirs: [
