@@ -43,11 +43,14 @@ cc_test {
         "libdl_android",
         "libdatasource",
         "libmediametrics",
+        "libstagefright_omx",
+
     ],
 
     static_libs: [
         "libstagefright",
         "libstagefright_foundation",
+        "//vendor/amlogic/common:libmediavendor_default",
     ],
 
     include_dirs: [
