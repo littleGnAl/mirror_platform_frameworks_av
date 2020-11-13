@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f1aa3f4c_25637c10",
+        "filename": "services/camera/libcameraservice/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1398097
+      },
+      "writtenOn": "2020-11-13T04:11:08Z",
+      "side": 1,
+      "message": "Neglected to add this before.\n\nCan you suggest what component ID to set this to? If any bugs are found this is the component they will be logged to.",
+      "range": {
+        "startLine": 18,
+        "startChar": 21,
+        "endLine": 18,
+        "endChar": 27
+      },
+      "revId": "6c022a98cbab14673559981abdd11fdbf73d3aa2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
