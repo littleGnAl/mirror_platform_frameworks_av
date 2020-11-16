@@ -117,7 +117,11 @@ class Codec2VideoDecHidlTestBase : public ::testing::Test {
         if (mCompName == unknown_comp) mDisableTest = true;
 
         C2SecureModeTuning secureModeTuning{};
+<<<<<<< HEAD   (8cce70 Merge "Merge "force g711 test to match 1-channel sample data)
         mComponent->query({&secureModeTuning}, {}, C2_MAY_BLOCK, nullptr);
+=======
+        mComponent->query({ &secureModeTuning }, {}, C2_MAY_BLOCK, nullptr);
+>>>>>>> BRANCH (f0463a Merge "Skip secure decoders in C2 VTS" into android10-tests-)
         if (secureModeTuning.value == C2Config::SM_READ_PROTECTED) {
             mDisableTest = true;
         }
