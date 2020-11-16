@@ -45,6 +45,30 @@
       },
       "revId": "72779337799908b3778c2ba70e810949793b4255",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37b1021e_257982e5",
+        "filename": "services/audiopolicy/engineconfigurable/sepolicy/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1054468
+      },
+      "writtenOn": "2020-11-16T15:11:27Z",
+      "side": 1,
+      "message": "Is that necessary? I thought a local OWNERS always took precedent. In any case, I\u0027d at least like to have this in place to prevent mistakes.",
+      "parentUuid": "6c7384ed_1f777fac",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "72779337799908b3778c2ba70e810949793b4255",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
