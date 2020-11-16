@@ -69,6 +69,30 @@
       },
       "revId": "72779337799908b3778c2ba70e810949793b4255",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12895a88_e65d1779",
+        "filename": "services/audiopolicy/engineconfigurable/sepolicy/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1060831
+      },
+      "writtenOn": "2020-11-16T15:17:44Z",
+      "side": 1,
+      "message": "The local OWNERS adds new owners, but doesn\u0027t remove the ones from the parent directory without noparent.\nAt least I\u0027m reasonably sure that\u0027s how it works, but the documentation I can find is terrible and I\u0027m not completely certain.\nBut yes, this is a good start.",
+      "parentUuid": "37b1021e_257982e5",
+      "range": {
+        "startLine": 1,
+        "startChar": 0,
+        "endLine": 1,
+        "endChar": 40
+      },
+      "revId": "72779337799908b3778c2ba70e810949793b4255",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
