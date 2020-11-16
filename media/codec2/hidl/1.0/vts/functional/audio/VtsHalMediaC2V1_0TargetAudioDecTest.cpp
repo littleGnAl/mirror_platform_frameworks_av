@@ -58,8 +58,13 @@ class Codec2AudioDecHidlTestBase : public ::testing::Test {
         mDisableTest = false;
         ALOGV("Codec2AudioDecHidlTest SetUp");
         mClient = android::Codec2Client::CreateFromService(
+<<<<<<< HEAD   (61980d Merge "[automerger skipped] Merge "Skip secure decoders in C)
                 mInstanceName.c_str(),
                 !bool(android::Codec2Client::CreateFromService("default", true)));
+=======
+            gEnv->getInstance().c_str(),
+            !bool(android::Codec2Client::CreateFromService("default", true)));
+>>>>>>> BRANCH (f29f5b Merge changes Iba03d8b8,Ic2bc89bb into android10-tests-dev)
         ASSERT_NE(mClient, nullptr);
         mListener.reset(new CodecListener([this](std::list<std::unique_ptr<C2Work>>& workItems) {
             handleWorkDone(workItems);
