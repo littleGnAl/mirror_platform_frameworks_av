@@ -44,6 +44,7 @@ TEST(CheckConfig, mediaProfilesValidation) {
                 "/product/etc/",
                 "/odm/etc/",
                 "/vendor/etc/",
+<<<<<<< HEAD   (a8cc07 Merge "[automerger skipped] Merge "Add sub-elements for "Var)
             };
 
         // The vendor may provide a vendor variant for the file name.
@@ -72,6 +73,29 @@ TEST(CheckConfig, mediaProfilesValidation) {
                 << xmlSearchDirs[1] << ", "
                 << xmlSearchDirs[2] << ") and from "
                 << fallbackXmlPath << ".";
+=======
+                "/system/etc/", // Fallback directory
+            };
+
+        const std::string fileName = "media_profiles_V1_0.xml";
+
+        std::vector<std::string> xmlPaths = {
+                xmlSearchDirs[0] + fileName,
+                xmlSearchDirs[1] + fileName,
+                xmlSearchDirs[2] + fileName,
+                xmlSearchDirs[3] + fileName,
+            };
+
+        auto findXmlPath =
+            std::find_if(xmlPaths.begin(), xmlPaths.end(), isFileReadable);
+        ASSERT_TRUE(findXmlPath != xmlPaths.end())
+                << "Cannot read from " << fileName
+                << " in any search directories ("
+                << xmlSearchDirs[0] << ", "
+                << xmlSearchDirs[1] << ", "
+                << xmlSearchDirs[2] << ", "
+                << xmlSearchDirs[3] << ").";
+>>>>>>> BRANCH (1b2ea7 Merge "RESTRICT AUTOMERGE ValidateMediaProfiles searches mul)
 
         char const* xmlPath = findXmlPath->c_str();
         EXPECT_VALID_XML(xmlPath, xsdPath);
