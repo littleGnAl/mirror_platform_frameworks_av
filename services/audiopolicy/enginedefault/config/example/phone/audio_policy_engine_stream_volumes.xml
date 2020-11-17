@@ -51,6 +51,7 @@ volume index from 0 to 100.
 
     <volumeGroup>
         <name>system</name>
+        <alias>ring</alias>
         <indexMin>0</indexMin>
         <indexMax>7</indexMax>
         <volume deviceCategory="DEVICE_CATEGORY_HEADSET">
@@ -107,6 +108,7 @@ volume index from 0 to 100.
 
     <volumeGroup>
         <name>notification</name>
+        <alias>ring</alias>
         <indexMin>0</indexMin>
         <indexMax>7</indexMax>
         <volume deviceCategory="DEVICE_CATEGORY_HEADSET" ref="DEFAULT_DEVICE_CATEGORY_HEADSET_VOLUME_CURVE"/>
@@ -144,6 +146,7 @@ volume index from 0 to 100.
 
     <volumeGroup>
         <name>enforced_audible</name>
+        <alias>ring</alias>
         <indexMin>0</indexMin>
         <indexMax>7</indexMax>
         <volume deviceCategory="DEVICE_CATEGORY_HEADSET">
@@ -165,6 +168,7 @@ volume index from 0 to 100.
 
     <volumeGroup>
         <name>dtmf</name>
+        <alias>ring</alias>
         <indexMin>0</indexMin>
         <indexMax>15</indexMax>
         <volume deviceCategory="DEVICE_CATEGORY_HEADSET">
@@ -186,6 +190,7 @@ volume index from 0 to 100.
 
     <volumeGroup>
         <name>tts</name>
+        <alias>music</alias>
         <indexMin>0</indexMin>
         <indexMax>15</indexMax>
         <volume deviceCategory="DEVICE_CATEGORY_HEADSET" ref="SILENT_VOLUME_CURVE"/>
@@ -197,6 +202,7 @@ volume index from 0 to 100.
 
     <volumeGroup>
         <name>accessibility</name>
+        <alias>music</alias>
         <indexMin>1</indexMin>
         <indexMax>15</indexMax>
         <volume deviceCategory="DEVICE_CATEGORY_HEADSET" ref="DEFAULT_NON_MUTABLE_VOLUME_CURVE"/>
@@ -208,6 +214,7 @@ volume index from 0 to 100.
 
     <volumeGroup>
         <name>assistant</name>
+        <alias>music</alias>
         <indexMin>0</indexMin>
         <indexMax>15</indexMax>
         <volume deviceCategory="DEVICE_CATEGORY_HEADSET" ref="DEFAULT_MEDIA_VOLUME_CURVE"/>
