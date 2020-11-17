@@ -44,6 +44,7 @@ struct AttributesGroup {
     std::string name;
     audio_stream_type_t stream;
     std::string volumeGroup;
+    std::string aliasVolumeGroup;   // for default engine hard coded configuration
     AttributesVector attributesVect;
 };
 
@@ -63,6 +64,7 @@ using VolumeCurves = std::vector<VolumeCurve>;
 
 struct VolumeGroup {
     std::string name;
+    std::string aliasName;
     int indexMin;
     int indexMax;
     VolumeCurves volumeCurves;

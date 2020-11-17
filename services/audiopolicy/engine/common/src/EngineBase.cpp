@@ -119,8 +119,8 @@ engineConfig::ParsingResult EngineBase::loadAudioPolicyEngineConfig()
                             "group name %s defined twice, review the configuration",
                             volumeConfig.name.c_str());
 
-        sp<VolumeGroup> volumeGroup = new VolumeGroup(volumeConfig.name, volumeConfig.indexMin,
-                                                      volumeConfig.indexMax);
+        sp<VolumeGroup> volumeGroup = new VolumeGroup(volumeConfig.name, volumeConfig.aliasName,
+                                                      volumeConfig.indexMin, volumeConfig.indexMax);
         volumeGroups[volumeGroup->getId()] = volumeGroup;
 
         for (auto &configCurve : volumeConfig.volumeCurves) {
@@ -207,9 +207,11 @@ engineConfig::ParsingResult EngineBase::loadAudioPolicyEngineConfig()
                 } else {
                     volumeConfig = defaultVolumeConfig;
                 }
-                ALOGW("%s: No configuration of %s found, using default volume configuration"
-                        , __FUNCTION__, group.volumeGroup.c_str());
+                ALOGW("%s: No configuration of group %s for strategy %s found, "
+                      "using default volume configuration" , __func__,
+                      group.volumeGroup.c_str(), strategyConfig.name.c_str());
                 volumeConfig.name = group.volumeGroup;
+                volumeConfig.aliasName = group.aliasVolumeGroup;
                 volumeGroup = loadVolumeConfig(mVolumeGroups, volumeConfig);
             } else {
                 volumeGroup = iter->second;
@@ -222,6 +224,16 @@ engineConfig::ParsingResult EngineBase::loadAudioPolicyEngineConfig()
                 volumeGroup->addSupportedStream(group.stream);
             }
             addSupportedAttributesToGroup(group, volumeGroup, strategy);
+
+            if ((volumeGroup->getAliasId() == VOLUME_GROUP_NONE)) {
+                const auto &iterAlias = std::find_if(begin(mVolumeGroups), end(mVolumeGroups),
+                                                 [&volumeGroup](const auto &vg) {
+                    return volumeGroup->getAliasName() == vg.second->getName(); });
+                LOG_ALWAYS_FATAL_IF(iterAlias == end(mVolumeGroups),
+                                    "%s: no alias %s found for strategy %s", __func__,
+                                    group.aliasVolumeGroup.c_str(), strategyConfig.name.c_str());
+                volumeGroup->setAlias(iterAlias->second);
+            }
         }
         product_strategy_t strategyId = strategy->getId();
         mProductStrategies[strategyId] = strategy;
@@ -288,7 +300,8 @@ VolumeCurves *EngineBase::getVolumeCurvesForAttributes(const audio_attributes_t 
 {
     volume_group_t volGr = mProductStrategies.getVolumeGroupForAttributes(attr);
     const auto &iter = mVolumeGroups.find(volGr);
-    LOG_ALWAYS_FATAL_IF(iter == std::end(mVolumeGroups), "No volume groups for %s", toString(attr).c_str());
+    LOG_ALWAYS_FATAL_IF(iter == std::end(mVolumeGroups),
+                        "No volume groups for %s", toString(attr).c_str());
     return mVolumeGroups.at(volGr)->getVolumeCurves();
 }
 
@@ -345,7 +358,7 @@ volume_group_t EngineBase::getVolumeGroupForStreamType(
 status_t EngineBase::listAudioVolumeGroups(AudioVolumeGroupVector &groups) const
 {
     for (const auto &iter : mVolumeGroups) {
-        groups.push_back({iter.second->getName(), iter.second->getId(),
+        groups.push_back({iter.second->getName(), iter.second->getId(), iter.second->getAliasId(),
                           iter.second->getSupportedAttributes(), iter.second->getStreamTypes()});
     }
     return NO_ERROR;
