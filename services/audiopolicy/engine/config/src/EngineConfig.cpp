@@ -60,6 +60,7 @@ struct AttributesGroupTraits : public BaseSerializerTraits<AttributesGroup, Attr
         static constexpr const char *name = "name";
         static constexpr const char *streamType = "streamType";
         static constexpr const char *volumeGroup = "volumeGroup";
+        static constexpr const char *aliasVolumeGroup = "aliasVolumeGroup";
     };
     static android::status_t deserialize(_xmlDoc *doc, const _xmlNode *root, Collection &ps);
 };
@@ -310,6 +311,12 @@ status_t AttributesGroupTraits::deserialize(_xmlDoc *doc, const _xmlNode *child,
     }
     ALOGV("%s: %s = %s", __FUNCTION__, Attributes::volumeGroup, volumeGroup.c_str());
 
+    std::string aliasVolumeGroup = getXmlAttribute(child, Attributes::aliasVolumeGroup);
+    if (aliasVolumeGroup.empty()) {
+        ALOGD("%s: No attribute %s found", __FUNCTION__, Attributes::aliasVolumeGroup);
+    }
+    ALOGV("%s: %s = %s", __FUNCTION__, Attributes::aliasVolumeGroup, aliasVolumeGroup.c_str());
+
     audio_stream_type_t streamType = AUDIO_STREAM_DEFAULT;
     std::string streamTypeXml = getXmlAttribute(child, Attributes::streamType);
     if (streamTypeXml.empty()) {
@@ -324,7 +331,7 @@ status_t AttributesGroupTraits::deserialize(_xmlDoc *doc, const _xmlNode *child,
     AttributesVector attributesVect;
     deserializeAttributesCollection(doc, child, attributesVect);
 
-    attributesGroup.push_back({name, streamType, volumeGroup, attributesVect});
+    attributesGroup.push_back({name, streamType, volumeGroup, aliasVolumeGroup, attributesVect});
     return NO_ERROR;
 }
 
@@ -508,7 +515,8 @@ status_t VolumeGroupTraits::deserialize(_xmlDoc *doc, const _xmlNode *root, Coll
         attrmNames += android::toString(attr) + "\n";
     }
     ALOGV("%s: group=%s indexMin=%d, indexMax=%d streams=%s attributes=%s",
-          __func__, name.c_str(), indexMin, indexMax, streamNames.c_str(), attrmNames.c_str( ));
+          __func__, name.c_str(), indexMin, indexMax, streamNames.c_str(),
+          attrmNames.c_str( ));
 
     VolumeCurves groupVolumeCurves;
     size_t skipped = 0;
