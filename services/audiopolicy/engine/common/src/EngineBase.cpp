@@ -213,6 +213,16 @@ engineConfig::ParsingResult EngineBase::loadAudioPolicyEngineConfig()
                 volumeGroup->addSupportedStream(group.stream);
             }
             addSupportedAttributesToGroup(group, volumeGroup, strategy);
+            if (!group.aliasVolumeGroup.empty()) {
+                const auto &iterAlias = std::find_if(begin(mVolumeGroups), end(mVolumeGroups),
+                                             [&group](const auto &volumeGroup) {
+                    return group.aliasVolumeGroup == volumeGroup.second->getName(); });
+                if (iterAlias == end(mVolumeGroups)) {
+                    ALOGE("%s: no alias matching with %s", __func__, group.aliasVolumeGroup.c_str());
+                } else {
+                    volumeGroup->setAliasId(iter->second->getId());
+                }
+            }
         }
         product_strategy_t strategyId = strategy->getId();
         mProductStrategies[strategyId] = strategy;
@@ -336,7 +346,7 @@ volume_group_t EngineBase::getVolumeGroupForStreamType(
 status_t EngineBase::listAudioVolumeGroups(AudioVolumeGroupVector &groups) const
 {
     for (const auto &iter : mVolumeGroups) {
-        groups.push_back({iter.second->getName(), iter.second->getId(),
+        groups.push_back({iter.second->getName(), iter.second->getId(), iter.second->getAliasId(),
                           iter.second->getSupportedAttributes(), iter.second->getStreamTypes()});
     }
     return NO_ERROR;
