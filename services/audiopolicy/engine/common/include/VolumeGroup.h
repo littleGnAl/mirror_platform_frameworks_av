@@ -30,8 +30,9 @@ namespace android {
 class VolumeGroup : public virtual RefBase, private HandleGenerator<uint32_t>
 {
 public:
-    VolumeGroup(const std::string &name, int indexMin, int indexMax);
+    VolumeGroup(const std::string &name, const std::string &alias, int indexMin, int indexMax);
     std::string getName() const { return mName; }
+    std::string getAliasName() const { return mAliasName; }
     volume_group_t getId() const { return mId; }
 
     void add(const sp<VolumeCurve> &curve);
@@ -44,11 +45,19 @@ public:
     void addSupportedStream(audio_stream_type_t stream);
     StreamTypeVector getStreamTypes() const { return mGroupVolumeCurves.getStreamTypes(); }
 
+    void setAlias(const sp<VolumeGroup> &aliasGroup) {
+        mAliasName = aliasGroup->getAliasName();
+        mAliasId = aliasGroup->getId();
+    }
+    volume_group_t getAliasId() const { return mAliasId; }
+
     void dump(String8 *dst, int spaces = 0) const;
 
 private:
     const std::string mName;
+    std::string mAliasName;
     const volume_group_t mId;
+    volume_group_t mAliasId = VOLUME_GROUP_NONE;
     VolumeCurves mGroupVolumeCurves;
 };
 

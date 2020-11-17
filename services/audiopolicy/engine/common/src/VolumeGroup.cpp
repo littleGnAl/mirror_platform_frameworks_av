@@ -31,15 +31,17 @@ namespace android {
 //
 // VolumeGroup implementation
 //
-VolumeGroup::VolumeGroup(const std::string &name, int indexMin, int indexMax) :
-    mName(name), mId(static_cast<volume_group_t>(HandleGenerator<uint32_t>::getNextHandle())),
+VolumeGroup::VolumeGroup(const std::string &name, const std::string &alias, int indexMin, int indexMax) :
+    mName(name), mAliasName(alias.empty() ? mName : alias),
+    mId(static_cast<volume_group_t>(HandleGenerator<uint32_t>::getNextHandle())),
+    mAliasId(alias.empty() ? mId : VOLUME_GROUP_NONE),
     mGroupVolumeCurves(VolumeCurves(indexMin, indexMax))
 {
 }
 
 void VolumeGroup::dump(String8 *dst, int spaces) const
 {
-    dst->appendFormat("\n%*s-%s (id: %d)\n", spaces, "", mName.c_str(), mId);
+    dst->appendFormat("\n%*s-%s (id: %d) (alias: %d)\n", spaces, "", mName.c_str(), mId, mAliasId);
     mGroupVolumeCurves.dump(dst, spaces + 2, true);
     mGroupVolumeCurves.dump(dst, spaces + 2, false);
     dst->appendFormat("\n");
