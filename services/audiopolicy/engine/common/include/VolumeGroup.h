@@ -44,11 +44,15 @@ public:
     void addSupportedStream(audio_stream_type_t stream);
     StreamTypeVector getStreamTypes() const { return mGroupVolumeCurves.getStreamTypes(); }
 
+    void setAliasId(volume_group_t aliasId) { mAliasId = aliasId; }
+    volume_group_t getAliasId() const { return mAliasId; }
+
     void dump(String8 *dst, int spaces = 0) const;
 
 private:
     const std::string mName;
     const volume_group_t mId;
+    volume_group_t mAliasId = VOLUME_GROUP_NONE;
     VolumeCurves mGroupVolumeCurves;
 };
 
