@@ -44,6 +44,7 @@ struct AttributesGroup {
     std::string name;
     audio_stream_type_t stream;
     std::string volumeGroup;
+    std::string aliasVolumeGroup;
     AttributesVector attributesVect;
 };
 
