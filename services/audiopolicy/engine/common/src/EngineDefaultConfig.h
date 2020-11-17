@@ -25,11 +25,11 @@ namespace android {
 const engineConfig::ProductStrategies gOrderedStrategies = {
     {"STRATEGY_PHONE",
      {
-         {"phone", AUDIO_STREAM_VOICE_CALL, "AUDIO_STREAM_VOICE_CALL",
+         {"phone", AUDIO_STREAM_VOICE_CALL, "AUDIO_STREAM_VOICE_CALL", "",
           {{AUDIO_CONTENT_TYPE_UNKNOWN, AUDIO_USAGE_VOICE_COMMUNICATION, AUDIO_SOURCE_DEFAULT,
             AUDIO_FLAG_NONE, ""}},
          },
-         {"sco", AUDIO_STREAM_BLUETOOTH_SCO, "AUDIO_STREAM_BLUETOOTH_SCO",
+         {"sco", AUDIO_STREAM_BLUETOOTH_SCO, "AUDIO_STREAM_BLUETOOTH_SCO", "",
           {{AUDIO_CONTENT_TYPE_UNKNOWN, AUDIO_USAGE_UNKNOWN, AUDIO_SOURCE_DEFAULT, AUDIO_FLAG_SCO,
             ""}},
          }
@@ -37,11 +37,11 @@ const engineConfig::ProductStrategies gOrderedStrategies = {
     },
     {"STRATEGY_SONIFICATION",
      {
-         {"ring", AUDIO_STREAM_RING, "AUDIO_STREAM_RING",
+         {"ring", AUDIO_STREAM_RING, "AUDIO_STREAM_RING", "",
           {{AUDIO_CONTENT_TYPE_UNKNOWN, AUDIO_USAGE_NOTIFICATION_TELEPHONY_RINGTONE,
             AUDIO_SOURCE_DEFAULT, AUDIO_FLAG_NONE, ""}}
          },
-         {"alarm", AUDIO_STREAM_ALARM, "AUDIO_STREAM_ALARM",
+         {"alarm", AUDIO_STREAM_ALARM, "AUDIO_STREAM_ALARM", "",
           {{AUDIO_CONTENT_TYPE_UNKNOWN, AUDIO_USAGE_ALARM, AUDIO_SOURCE_DEFAULT,
             AUDIO_FLAG_NONE, ""}},
          }
@@ -49,7 +49,7 @@ const engineConfig::ProductStrategies gOrderedStrategies = {
     },
     {"STRATEGY_ENFORCED_AUDIBLE",
      {
-         {"", AUDIO_STREAM_ENFORCED_AUDIBLE, "AUDIO_STREAM_ENFORCED_AUDIBLE",
+         {"system_enforced", AUDIO_STREAM_ENFORCED_AUDIBLE, "AUDIO_STREAM_ENFORCED_AUDIBLE", "AUDIO_STREAM_RING",
           {{AUDIO_CONTENT_TYPE_UNKNOWN, AUDIO_USAGE_UNKNOWN, AUDIO_SOURCE_DEFAULT,
             AUDIO_FLAG_AUDIBILITY_ENFORCED, ""}}
          }
@@ -57,7 +57,7 @@ const engineConfig::ProductStrategies gOrderedStrategies = {
     },
     {"STRATEGY_ACCESSIBILITY",
      {
-         {"", AUDIO_STREAM_ACCESSIBILITY, "AUDIO_STREAM_ACCESSIBILITY",
+         {"accessibility", AUDIO_STREAM_ACCESSIBILITY, "AUDIO_STREAM_ACCESSIBILITY", "AUDIO_STREAM_MUSIC",
           {{AUDIO_CONTENT_TYPE_UNKNOWN, AUDIO_USAGE_ASSISTANCE_ACCESSIBILITY,
             AUDIO_SOURCE_DEFAULT, AUDIO_FLAG_NONE, ""}}
          }
@@ -65,7 +65,7 @@ const engineConfig::ProductStrategies gOrderedStrategies = {
     },
     {"STRATEGY_SONIFICATION_RESPECTFUL",
      {
-         {"", AUDIO_STREAM_NOTIFICATION, "AUDIO_STREAM_NOTIFICATION",
+         {"notification", AUDIO_STREAM_NOTIFICATION, "AUDIO_STREAM_NOTIFICATION", "AUDIO_STREAM_RING",
           {
               {AUDIO_CONTENT_TYPE_UNKNOWN, AUDIO_USAGE_NOTIFICATION, AUDIO_SOURCE_DEFAULT,
                AUDIO_FLAG_NONE, ""},
@@ -83,11 +83,11 @@ const engineConfig::ProductStrategies gOrderedStrategies = {
     },
     {"STRATEGY_MEDIA",
      {
-         {"assistant", AUDIO_STREAM_ASSISTANT, "AUDIO_STREAM_ASSISTANT",
+         {"assistant", AUDIO_STREAM_ASSISTANT, "AUDIO_STREAM_ASSISTANT", "AUDIO_STREAM_MUSIC",
           {{AUDIO_CONTENT_TYPE_SPEECH, AUDIO_USAGE_ASSISTANT,
             AUDIO_SOURCE_DEFAULT, AUDIO_FLAG_NONE, ""}}
          },
-         {"music", AUDIO_STREAM_MUSIC, "AUDIO_STREAM_MUSIC",
+         {"music", AUDIO_STREAM_MUSIC, "AUDIO_STREAM_MUSIC", "",
           {
               {AUDIO_CONTENT_TYPE_UNKNOWN, AUDIO_USAGE_MEDIA, AUDIO_SOURCE_DEFAULT,
                AUDIO_FLAG_NONE, ""},
@@ -101,7 +101,7 @@ const engineConfig::ProductStrategies gOrderedStrategies = {
                AUDIO_FLAG_NONE, ""}
           },
          },
-         {"system", AUDIO_STREAM_SYSTEM, "AUDIO_STREAM_SYSTEM",
+         {"system", AUDIO_STREAM_SYSTEM, "AUDIO_STREAM_SYSTEM", "AUDIO_STREAM_RING",
           {{AUDIO_CONTENT_TYPE_UNKNOWN, AUDIO_USAGE_ASSISTANCE_SONIFICATION,
             AUDIO_SOURCE_DEFAULT, AUDIO_FLAG_NONE, ""}}
          }
@@ -109,7 +109,7 @@ const engineConfig::ProductStrategies gOrderedStrategies = {
     },
     {"STRATEGY_DTMF",
      {
-         {"", AUDIO_STREAM_DTMF, "AUDIO_STREAM_DTMF",
+         {"dtmf", AUDIO_STREAM_DTMF, "AUDIO_STREAM_DTMF", "AUDIO_STREAM_RING",
           {
               {AUDIO_CONTENT_TYPE_UNKNOWN, AUDIO_USAGE_VOICE_COMMUNICATION_SIGNALLING,
                AUDIO_SOURCE_DEFAULT, AUDIO_FLAG_NONE, ""}
@@ -119,7 +119,7 @@ const engineConfig::ProductStrategies gOrderedStrategies = {
     },
     {"STRATEGY_CALL_ASSISTANT",
      {
-         {"", AUDIO_STREAM_CALL_ASSISTANT, "AUDIO_STREAM_CALL_ASSISTANT",
+         {"call_assistant", AUDIO_STREAM_CALL_ASSISTANT, "AUDIO_STREAM_CALL_ASSISTANT", "",
           {{AUDIO_CONTENT_TYPE_UNKNOWN, AUDIO_USAGE_CALL_ASSISTANT, AUDIO_SOURCE_DEFAULT,
             AUDIO_FLAG_NONE, ""}}
          }
@@ -127,7 +127,7 @@ const engineConfig::ProductStrategies gOrderedStrategies = {
     },
     {"STRATEGY_TRANSMITTED_THROUGH_SPEAKER",
      {
-         {"", AUDIO_STREAM_TTS, "AUDIO_STREAM_TTS",
+         {"tts", AUDIO_STREAM_TTS, "AUDIO_STREAM_TTS", "AUDIO_STREAM_MUSIC",
           {{AUDIO_CONTENT_TYPE_UNKNOWN, AUDIO_USAGE_UNKNOWN, AUDIO_SOURCE_DEFAULT,
             AUDIO_FLAG_BEACON, ""}}
          }
@@ -142,7 +142,7 @@ const engineConfig::ProductStrategies gOrderedStrategies = {
 const engineConfig::ProductStrategies gOrderedSystemStrategies = {
     {"rerouting",
      {
-         {"", AUDIO_STREAM_REROUTING, "AUDIO_STREAM_REROUTING",
+         {"", AUDIO_STREAM_REROUTING, "AUDIO_STREAM_REROUTING", "",
           {{AUDIO_CONTENT_TYPE_UNKNOWN, AUDIO_USAGE_VIRTUAL_SOURCE, AUDIO_SOURCE_DEFAULT,
             AUDIO_FLAG_NONE, "internal=rerouting"}}
          }
@@ -150,7 +150,7 @@ const engineConfig::ProductStrategies gOrderedSystemStrategies = {
     },
     {"patch",
      {
-         {"", AUDIO_STREAM_PATCH, "AUDIO_STREAM_PATCH",
+         {"", AUDIO_STREAM_PATCH, "AUDIO_STREAM_PATCH", "",
           {{AUDIO_CONTENT_TYPE_UNKNOWN, AUDIO_USAGE_UNKNOWN, AUDIO_SOURCE_DEFAULT, 0,
             AUDIO_FLAG_NONE, "internal=patch"}}
          }
