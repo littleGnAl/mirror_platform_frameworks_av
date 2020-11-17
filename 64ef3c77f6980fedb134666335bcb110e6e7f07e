@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae4ff7c6_d0378fab",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 715,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-17T14:10:17Z",
+      "side": 1,
+      "message": "why do we need to test this here despite having dereferenced sourceDesc already before",
+      "range": {
+        "startLine": 715,
+        "startChar": 0,
+        "endLine": 715,
+        "endChar": 32
+      },
+      "revId": "64ef3c77f6980fedb134666335bcb110e6e7f07e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
