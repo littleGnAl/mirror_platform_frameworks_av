@@ -1,0 +1,320 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "850caef6_de9cf5ac",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-17T19:40:26Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 18,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 68
+      },
+      "revId": "46a94da6e63cc046805d52efe1b8608057c33f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e884a30_76b3ba46",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-17T19:40:26Z",
+      "side": 1,
+      "message": "remove as this is needed only for post-processing effects",
+      "range": {
+        "startLine": 78,
+        "startChar": 17,
+        "endLine": 78,
+        "endChar": 39
+      },
+      "revId": "46a94da6e63cc046805d52efe1b8608057c33f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c61546b_5b38f0c6",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-17T19:40:26Z",
+      "side": 1,
+      "message": "repeat aec uuid and use that for aecm. Add a comment \n// aecm uuid (same as aec)",
+      "revId": "46a94da6e63cc046805d52efe1b8608057c33f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca484c40_bb9016e5",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-17T19:40:26Z",
+      "side": 1,
+      "message": "do we really need a structure?\n\ncleaner would be to define constexpr for all these individually and use them",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 2
+      },
+      "revId": "46a94da6e63cc046805d52efe1b8608057c33f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2325d1fa_c1bb08f1",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 133,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-17T19:40:26Z",
+      "side": 1,
+      "message": "not needed once aecm has a uuid entry in the table",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 133,
+        "endChar": 29
+      },
+      "revId": "46a94da6e63cc046805d52efe1b8608057c33f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec4f8f4b_2e3f8883",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 199,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-17T19:40:26Z",
+      "side": 1,
+      "message": "we wouldn\u0027t need to benchmark more than one effect anytime.\nSo we don\u0027t need to maintain an array.\n\nPreProcId effectType \u003d (PreProcId)state.range(1); \n\nand use effectType everywhere",
+      "range": {
+        "startLine": 179,
+        "startChar": 0,
+        "endLine": 199,
+        "endChar": 3
+      },
+      "revId": "46a94da6e63cc046805d52efe1b8608057c33f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "129b0c2b_eb623601",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 206,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-17T19:40:26Z",
+      "side": 1,
+      "message": "use kSampleRate instead",
+      "range": {
+        "startLine": 206,
+        "startChar": 6,
+        "endLine": 206,
+        "endChar": 36
+      },
+      "revId": "46a94da6e63cc046805d52efe1b8608057c33f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28b9b5e0_5a1e3f6b",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-17T19:40:26Z",
+      "side": 1,
+      "message": "use chMask instead",
+      "range": {
+        "startLine": 208,
+        "startChar": 6,
+        "endLine": 208,
+        "endChar": 29
+      },
+      "revId": "46a94da6e63cc046805d52efe1b8608057c33f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f5c62eb_0b23a5c6",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-17T19:40:26Z",
+      "side": 1,
+      "message": "this check is redundant.\nCMD_ENABLE can be called unconditionally",
+      "range": {
+        "startLine": 218,
+        "startChar": 2,
+        "endLine": 218,
+        "endChar": 38
+      },
+      "revId": "46a94da6e63cc046805d52efe1b8608057c33f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a1f13b0_4bbe2ee8",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-17T19:40:26Z",
+      "side": 1,
+      "message": "is this necessary?\nWhat are the default values for these in the wrapper.\nEven without configuring these values, I expect effects to do some processing based on the default values.\nIf that is not the case, we need to update the preprocessing wrapper to ensure that it picks some default values whenever an effect is enabled.",
+      "range": {
+        "startLine": 230,
+        "startChar": 0,
+        "endLine": 288,
+        "endChar": 6
+      },
+      "revId": "46a94da6e63cc046805d52efe1b8608057c33f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd377c3c_95b27006",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 294,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-17T19:40:26Z",
+      "side": 1,
+      "message": "remove and use gen for farIn as well",
+      "range": {
+        "startLine": 294,
+        "startChar": 0,
+        "endLine": 294,
+        "endChar": 32
+      },
+      "revId": "46a94da6e63cc046805d52efe1b8608057c33f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a4b882e_b99e042d",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 323,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-17T19:40:26Z",
+      "side": 1,
+      "message": "redundant as the effect will be enabled for sure",
+      "range": {
+        "startLine": 322,
+        "startChar": 0,
+        "endLine": 323,
+        "endChar": 40
+      },
+      "revId": "46a94da6e63cc046805d52efe1b8608057c33f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1279e8ff_2f8812f3",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-17T19:40:26Z",
+      "side": 1,
+      "message": "should be able to use the default values without having to configure everytime.\n\nif required let us update the wrapper",
+      "range": {
+        "startLine": 324,
+        "startChar": 0,
+        "endLine": 336,
+        "endChar": 7
+      },
+      "revId": "46a94da6e63cc046805d52efe1b8608057c33f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "77f469c2_9ca51c71",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 373,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-17T19:40:26Z",
+      "side": 1,
+      "message": "once aecm has its own uuid, this is not needed",
+      "range": {
+        "startLine": 373,
+        "startChar": 24,
+        "endLine": 373,
+        "endChar": 50
+      },
+      "revId": "46a94da6e63cc046805d52efe1b8608057c33f4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
