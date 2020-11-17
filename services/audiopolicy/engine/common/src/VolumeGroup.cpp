@@ -39,7 +39,7 @@ VolumeGroup::VolumeGroup(const std::string &name, int indexMin, int indexMax) :
 
 void VolumeGroup::dump(String8 *dst, int spaces) const
 {
-    dst->appendFormat("\n%*s-%s (id: %d)\n", spaces, "", mName.c_str(), mId);
+    dst->appendFormat("\n%*s-%s (id: %d) (alias: %d)\n", spaces, "", mName.c_str(), mId, mAliasId);
     mGroupVolumeCurves.dump(dst, spaces + 2, true);
     mGroupVolumeCurves.dump(dst, spaces + 2, false);
     dst->appendFormat("\n");
