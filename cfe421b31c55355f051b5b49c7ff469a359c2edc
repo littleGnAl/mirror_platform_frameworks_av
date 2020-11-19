@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f3db9d3e_0c35c1e9",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-19T21:04:50Z",
+      "side": 1,
+      "message": "AEC number remains the same for different channel masks\n\nThis needs to be investigated",
+      "range": {
+        "startLine": 50,
+        "startChar": 28,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "cfe421b31c55355f051b5b49c7ff469a359c2edc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1c201b1_51da184d",
         "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
         "patchSetId": 6
