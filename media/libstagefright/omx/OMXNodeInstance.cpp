@@ -140,14 +140,27 @@ struct BufferMeta {
             return;
         }
 
+        // add NULL check to avoid memcpy on freed buffer
+        if (header == NULL) {
+            return;
+        }
+
         // check component returns proper range
         sp<ABuffer> codec = getBuffer(header, true /* limit */);
+
+        if (getPointer() == NULL || codec->data() == NULL) {
+            return;
+        }
 
         memcpy(getPointer() + header->nOffset, codec->data(), codec->size());
     }
 
     void CopyToOMX(const OMX_BUFFERHEADERTYPE *header) {
         if (!mCopyToOmx) {
+            return;
+        }
+
+        if (header == NULL || getPointer() == NULL) {
             return;
         }
 
