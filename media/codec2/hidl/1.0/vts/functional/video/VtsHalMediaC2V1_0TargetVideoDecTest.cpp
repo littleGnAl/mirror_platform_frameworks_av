@@ -123,6 +123,7 @@ class Codec2VideoDecHidlTestBase : public ::testing::Test {
         }
 
         if (mDisableTest) std::cout << "[   WARN   ] Test Disabled \n";
+        getInputMaxBufSize();
     }
 
     virtual void TearDown() override {
@@ -296,6 +297,7 @@ class Codec2VideoDecHidlTestBase : public ::testing::Test {
     int32_t mWorkResult;
     int32_t mReorderDepth;
     uint32_t mFramesReceived;
+    int32_t mInputMaxBufSize;
     C2BlockPool::local_id_t mBlockPoolId;
     std::shared_ptr<C2BlockPool> mLinearPool;
     std::shared_ptr<C2Allocator> mLinearAllocator;
@@ -311,6 +313,23 @@ class Codec2VideoDecHidlTestBase : public ::testing::Test {
   protected:
     static void description(const std::string& description) {
         RecordProperty("description", description);
+    }
+
+    void getInputMaxBufSize() {
+        int32_t bitStreamInfo[1] = {0};
+        std::vector<std::unique_ptr<C2Param>> inParams;
+        c2_status_t status = mComponent->query({}, {C2StreamMaxBufferSizeInfo::input::PARAM_TYPE},
+                                               C2_DONT_BLOCK, &inParams);
+        if (status != C2_OK && inParams.size() == 0) {
+            mInputMaxBufSize = 0;
+        } else {
+            size_t offset = sizeof(C2Param);
+            for (size_t i = 0; i < inParams.size(); ++i) {
+                C2Param* param = inParams[i].get();
+                bitStreamInfo[i] = *(int32_t*)((uint8_t*)param + offset);
+            }
+        }
+        mInputMaxBufSize = bitStreamInfo[0];
     }
 };
 
@@ -435,7 +454,7 @@ void decodeNFrames(const std::shared_ptr<android::Codec2Client::Component>& comp
                    std::list<std::unique_ptr<C2Work>>& workQueue,
                    std::list<uint64_t>& flushedIndices, std::shared_ptr<C2BlockPool>& linearPool,
                    std::ifstream& eleStream, android::Vector<FrameInfo>* Info, int offset,
-                   int range, bool signalEOS = true) {
+                   int range, int minSize, bool signalEOS = true) {
     typedef std::unique_lock<std::mutex> ULock;
     int frameID = offset;
     int maxRetry = 0;
@@ -478,7 +497,8 @@ void decodeNFrames(const std::shared_ptr<android::Codec2Client::Component>& comp
         ASSERT_EQ(eleStream.gcount(), size);
 
         work->input.buffers.clear();
-        auto alignedSize = ALIGN(size, PAGE_SIZE);
+        auto capacity = (size < minSize)? minSize:size;
+        auto alignedSize = ALIGN(capacity, PAGE_SIZE);
         if (size) {
             std::shared_ptr<C2LinearBlock> block;
             ASSERT_EQ(C2_OK, linearPool->fetchLinearBlock(
@@ -647,7 +667,7 @@ TEST_P(Codec2VideoDecDecodeTest, DecodeTest) {
 
     ASSERT_NO_FATAL_FAILURE(decodeNFrames(mComponent, mQueueLock, mQueueCondition, mWorkQueue,
                                           mFlushedIndices, mLinearPool, eleStream, &Info, 0,
-                                          (int)Info.size(), signalEOS));
+                                          (int)Info.size(), mInputMaxBufSize, signalEOS));
 
     // If EOS is not sent, sending empty input with EOS flag
     size_t infoSize = Info.size();
@@ -744,7 +764,7 @@ TEST_P(Codec2VideoDecHidlTest, AdaptiveDecodeTest) {
         ASSERT_EQ(eleStream.is_open(), true);
         ASSERT_NO_FATAL_FAILURE(decodeNFrames(mComponent, mQueueLock, mQueueCondition, mWorkQueue,
                                               mFlushedIndices, mLinearPool, eleStream, &Info,
-                                              offset, (int)(Info.size() - offset), false));
+                                              offset, (int)(Info.size() - offset), mInputMaxBufSize, false));
 
         eleStream.close();
         offset = (int)Info.size();
@@ -825,7 +845,7 @@ TEST_P(Codec2VideoDecHidlTest, ThumbnailTest) {
         ASSERT_EQ(eleStream.is_open(), true);
         ASSERT_NO_FATAL_FAILURE(decodeNFrames(mComponent, mQueueLock, mQueueCondition, mWorkQueue,
                                               mFlushedIndices, mLinearPool, eleStream, &Info, 0,
-                                              j + 1));
+                                              j + 1, mInputMaxBufSize));
         waitOnInputConsumption(mQueueLock, mQueueCondition, mWorkQueue);
         eleStream.close();
         EXPECT_GE(mFramesReceived, 1U);
@@ -914,7 +934,7 @@ TEST_P(Codec2VideoDecHidlTest, FlushTest) {
     uint32_t numFramesFlushed = FLUSH_INTERVAL;
     ASSERT_NO_FATAL_FAILURE(decodeNFrames(mComponent, mQueueLock, mQueueCondition, mWorkQueue,
                                           mFlushedIndices, mLinearPool, eleStream, &Info, 0,
-                                          numFramesFlushed, false));
+                                          numFramesFlushed, mInputMaxBufSize, false));
     // flush
     err = mComponent->flush(C2Component::FLUSH_COMPONENT, &flushedWork);
     ASSERT_EQ(err, C2_OK);
@@ -940,7 +960,7 @@ TEST_P(Codec2VideoDecHidlTest, FlushTest) {
     if (keyFrame) {
         ASSERT_NO_FATAL_FAILURE(decodeNFrames(mComponent, mQueueLock, mQueueCondition, mWorkQueue,
                                               mFlushedIndices, mLinearPool, eleStream, &Info, index,
-                                              (int)Info.size() - index));
+                                              (int)Info.size() - index, mInputMaxBufSize));
     }
     eleStream.close();
     err = mComponent->flush(C2Component::FLUSH_COMPONENT, &flushedWork);
@@ -1000,7 +1020,7 @@ TEST_P(Codec2VideoDecHidlTest, DecodeTestEmptyBuffersInserted) {
     ASSERT_EQ(eleStream.is_open(), true);
     ASSERT_NO_FATAL_FAILURE(decodeNFrames(mComponent, mQueueLock, mQueueCondition, mWorkQueue,
                                           mFlushedIndices, mLinearPool, eleStream, &Info, 0,
-                                          (int)Info.size()));
+                                          (int)Info.size(), mInputMaxBufSize));
 
     // blocking call to ensures application to Wait till all the inputs are
     // consumed
@@ -1058,7 +1078,7 @@ TEST_P(Codec2VideoDecCsdInputTests, CSDFlushTest) {
     int framesToDecode = numCsds;
     ASSERT_NO_FATAL_FAILURE(decodeNFrames(mComponent, mQueueLock, mQueueCondition, mWorkQueue,
                                           mFlushedIndices, mLinearPool, eleStream, &Info, 0,
-                                          framesToDecode, false));
+                                          framesToDecode, mInputMaxBufSize, false));
     c2_status_t err = C2_OK;
     std::list<std::unique_ptr<C2Work>> flushedWork;
     if (numCsds && flushCsd) {
@@ -1094,7 +1114,7 @@ TEST_P(Codec2VideoDecCsdInputTests, CSDFlushTest) {
             if (framesToDecode < FLUSH_INTERVAL) signalEOS = true;
             ASSERT_NO_FATAL_FAILURE(decodeNFrames(
                     mComponent, mQueueLock, mQueueCondition, mWorkQueue, mFlushedIndices,
-                    mLinearPool, eleStream, &Info, offset, framesToDecode, signalEOS));
+                    mLinearPool, eleStream, &Info, offset, framesToDecode, mInputMaxBufSize, signalEOS));
             offset += framesToDecode;
         }
         err = mComponent->flush(C2Component::FLUSH_COMPONENT, &flushedWork);
