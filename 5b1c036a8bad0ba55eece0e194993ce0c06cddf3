@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3b6676a_4a890192",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-11-20T04:55:36Z",
+      "side": 1,
+      "message": "it wasn\u0027t a static allocation; the buffer was dynamically sized \u0026 allocated.\n\nWhat changed is that it moved from a *stack* allocation to a *heap* allocation because the heap is so much larger.",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 50
+      },
+      "revId": "5b1c036a8bad0ba55eece0e194993ce0c06cddf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11f7b11a_f132bdd6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-11-20T04:55:36Z",
+      "side": 1,
+      "message": "code itself is ok;  commit message is incorrect.",
+      "revId": "5b1c036a8bad0ba55eece0e194993ce0c06cddf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
