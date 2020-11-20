@@ -139,6 +139,13 @@ void ARTPConnection::MakePortPair(
                  (const struct sockaddr *)&addr, sizeof(addr)) == 0) {
             *rtpPort = port;
             return;
+        } else {
+            // we should recreate a RTP socket to avoid bind other port in same RTP socket
+            close(*rtpSocket);
+
+            *rtpSocket = socket(AF_INET, SOCK_DGRAM, 0);
+            CHECK_GE(*rtpSocket, 0);
+            bumpSocketBufferSize(*rtpSocket);
         }
     }
 
