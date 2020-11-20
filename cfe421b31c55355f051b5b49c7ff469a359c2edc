@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3f8eea03_6a5266e2",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-11-20T16:40:33Z",
+      "side": 1,
+      "message": "This is currently under investigation.",
+      "parentUuid": "f3db9d3e_0c35c1e9",
+      "range": {
+        "startLine": 50,
+        "startChar": 28,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "cfe421b31c55355f051b5b49c7ff469a359c2edc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1c201b1_51da184d",
         "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
         "patchSetId": 6
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-19T20:50:38Z",
       "side": 1,
       "message": "make this first argument",
+      "range": {
+        "startLine": 139,
+        "startChar": 26,
+        "endLine": 139,
+        "endChar": 54
+      },
+      "revId": "cfe421b31c55355f051b5b49c7ff469a359c2edc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43373657_43822a71",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-11-20T16:40:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b1c201b1_51da184d",
       "range": {
         "startLine": 139,
         "startChar": 26,
@@ -60,6 +108,30 @@
       "writtenOn": "2020-11-19T20:50:38Z",
       "side": 1,
       "message": "This currently assumes AEC is default and AECM needs to be explicitly enabled.\nIf the wrapper changes to make AECM default, this will not work.\nSo let us call this function for both AEC and AECM.\n\n#ifndef WEBRTC_LEGACY\n    if (PREPROC_AEC \u003d\u003d effectType || PREPROC_AECM \u003d\u003d effectType) {\n#else\n    if (PREPROC_AEC \u003d\u003d effectType) {\n#endif\n        uint32_t aecMobileMode; \n        aecMobileMode \u003d (PREPROC_AECM \u003d\u003d effectType) ? 1: 0;\n\n        if (int status \u003d preProcSetConfigParam(AEC_PARAM_MOBILE_MODE,\n                                           aecMobileMode, effectHandle);\n            status !\u003d 0) {\n            ALOGE(\"Invalid AEC mobile mode value %d\\n\", status);\n            return;\n        }\n     }",
+      "range": {
+        "startLine": 187,
+        "startChar": 0,
+        "endLine": 194,
+        "endChar": 3
+      },
+      "revId": "cfe421b31c55355f051b5b49c7ff469a359c2edc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f835e547_e902f3c0",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 194,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-11-20T16:40:33Z",
+      "side": 1,
+      "message": "We can only configure AEC_PARAM_MOBILE_MODE under \"#ifndef WEBRTC_LEGACY\" macro. Some changes from the above suggestion is done due to this reason.",
+      "parentUuid": "c5d17ec8_482d03f0",
       "range": {
         "startLine": 187,
         "startChar": 0,
