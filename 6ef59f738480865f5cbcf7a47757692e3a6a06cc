@@ -16,6 +16,24 @@
       "message": "can we query if the component recognizes kParamIndexEncryptedInfoBuffer before copying?",
       "revId": "6ef59f738480865f5cbcf7a47757692e3a6a06cc",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d4aa11e_a1b7216e",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 525,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2020-11-21T08:34:56Z",
+      "side": 1,
+      "message": "I added tuning for EncryptedInfoBuffer passing.",
+      "parentUuid": "f930f410_183151c2",
+      "revId": "6ef59f738480865f5cbcf7a47757692e3a6a06cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
