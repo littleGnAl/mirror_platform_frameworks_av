@@ -92,6 +92,7 @@ private:
     bool mIsDRCInitialized;
     float prevtargetref;
     int32_t preveffecttype;
+    float prevloudness;
 
     Vector<void*> mMemoryVec;
     Vector<void*> mDrcMemoryVec;
