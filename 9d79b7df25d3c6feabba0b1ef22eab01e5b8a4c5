@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb618514_768e63cc",
+        "filename": "media/libstagefright/codecs/m4v_h263/fuzzer/mpeg4_h263_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-11-22T21:12:59Z",
+      "side": 1,
+      "message": "When we changed this line here...",
+      "revId": "9d79b7df25d3c6feabba0b1ef22eab01e5b8a4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98d1f3aa_4696be5c",
+        "filename": "media/libstagefright/codecs/m4v_h263/fuzzer/mpeg4_h263_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-11-22T21:12:59Z",
+      "side": 1,
+      "message": "...it changed the meaning of sizeof() here...",
+      "revId": "9d79b7df25d3c6feabba0b1ef22eab01e5b8a4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "936e42c1_a7e93a20",
+        "filename": "media/libstagefright/codecs/m4v_h263/fuzzer/mpeg4_h263_enc_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2020-11-22T21:12:59Z",
+      "side": 1,
+      "message": "...and here.\n\nNow sizeof(inputBuffer) is just the size of a pointer (generally 8 bytes or 4 bytes, depending on the platform) and no longer has a relation to the size of the array itself in memory.\n\nI\u0027ve put up a follow-up fix: https://android-review.googlesource.com/c/platform/frameworks/av/+/1505331",
+      "revId": "9d79b7df25d3c6feabba0b1ef22eab01e5b8a4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
