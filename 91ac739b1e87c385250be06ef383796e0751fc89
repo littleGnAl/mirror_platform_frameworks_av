@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cb50e2f_ef7bacf4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-23T22:31:42Z",
+      "side": 1,
+      "message": "some minor nits.",
+      "revId": "91ac739b1e87c385250be06ef383796e0751fc89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9073f2da_095ef7c4",
+        "filename": "services/mediametrics/fuzzer/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-23T22:31:42Z",
+      "side": 1,
+      "message": "swap this with line 29 to be alphabetical.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 26
+      },
+      "revId": "91ac739b1e87c385250be06ef383796e0751fc89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2a1e8cd_c2c992de",
+        "filename": "services/mediametrics/fuzzer/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-23T22:31:42Z",
+      "side": 1,
+      "message": "swap this with line 48 to be alphabetical.",
+      "range": {
+        "startLine": 49,
+        "startChar": 0,
+        "endLine": 49,
+        "endChar": 46
+      },
+      "revId": "91ac739b1e87c385250be06ef383796e0751fc89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c6edd41_f489b84f",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-23T22:31:42Z",
+      "side": 1,
+      "message": "nit: not needed",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 43
+      },
+      "revId": "91ac739b1e87c385250be06ef383796e0751fc89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "037f2d59_0895eb43",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-23T22:31:42Z",
+      "side": 1,
+      "message": "not needed, new will throw an exception on failure.",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 5
+      },
+      "revId": "91ac739b1e87c385250be06ef383796e0751fc89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d69269b_2791b48e",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-23T22:31:42Z",
+      "side": 1,
+      "message": "is this const?  here and below.",
+      "range": {
+        "startLine": 100,
+        "startChar": 8,
+        "endLine": 100,
+        "endChar": 15
+      },
+      "revId": "91ac739b1e87c385250be06ef383796e0751fc89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b376e75b_7ccaf3f6",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-23T22:31:42Z",
+      "side": 1,
+      "message": "suggest moving these into the case statement.\n\ncast 2: {\n    int32_t i32;\n    ...\n} break;",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 38
+      },
+      "revId": "91ac739b1e87c385250be06ef383796e0751fc89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa300703_0778a0be",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 168,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-23T22:31:42Z",
+      "side": 1,
+      "message": "nit, move this closer to use (line 174).",
+      "range": {
+        "startLine": 167,
+        "startChar": 0,
+        "endLine": 168,
+        "endChar": 22
+      },
+      "revId": "91ac739b1e87c385250be06ef383796e0751fc89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b37390e_6fbb46b8",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-23T22:31:42Z",
+      "side": 1,
+      "message": "these typically return error codes.  where appropriate please (void) them to indicate you are ignoring the error codes.\n\n(void)item.writeToParcel(\u0026p);",
+      "range": {
+        "startLine": 170,
+        "startChar": 2,
+        "endLine": 170,
+        "endChar": 4
+      },
+      "revId": "91ac739b1e87c385250be06ef383796e0751fc89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "effd4c0d_1bd754ef",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-23T22:31:42Z",
+      "side": 1,
+      "message": "no need.",
+      "range": {
+        "startLine": 181,
+        "startChar": 0,
+        "endLine": 181,
+        "endChar": 30
+      },
+      "revId": "91ac739b1e87c385250be06ef383796e0751fc89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "37efbee3_8b76cd8c",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-23T22:31:42Z",
+      "side": 1,
+      "message": "nit no need.",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 30
+      },
+      "revId": "91ac739b1e87c385250be06ef383796e0751fc89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "442c2f3b_8d5de59b",
+        "filename": "services/mediametrics/fuzzer/mediametrics_service_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 358,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-23T22:31:42Z",
+      "side": 1,
+      "message": "nit: use stack based allocation.  no delete is needed on line 360.\n\nMediaMetricsServiceFuzzer mediaMetricsServiceFuzzer;",
+      "range": {
+        "startLine": 355,
+        "startChar": 0,
+        "endLine": 358,
+        "endChar": 5
+      },
+      "revId": "91ac739b1e87c385250be06ef383796e0751fc89",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
