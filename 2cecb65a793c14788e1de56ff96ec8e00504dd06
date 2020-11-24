@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "acffcab1_c7b9bf4b",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1155,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2020-11-24T01:03:09Z",
+      "side": 1,
+      "message": "Defining configuration is separated to another CL.",
+      "parentUuid": "3fe42b60_0a2dfa94",
+      "revId": "2cecb65a793c14788e1de56ff96ec8e00504dd06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "733cccbe_d1433af5",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 2
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-23T21:02:48Z",
       "side": 1,
       "message": "Maybe it could make sense as a port or stream param?",
+      "range": {
+        "startLine": 1163,
+        "startChar": 8,
+        "endLine": 1163,
+        "endChar": 21
+      },
+      "revId": "2cecb65a793c14788e1de56ff96ec8e00504dd06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74f78cfe_71733c96",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1163,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2020-11-24T01:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "733cccbe_d1433af5",
       "range": {
         "startLine": 1163,
         "startChar": 8,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdac9623_c28d350f",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 531,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2020-11-24T01:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cdf9e968_db9db75a",
+      "range": {
+        "startLine": 531,
+        "startChar": 8,
+        "endLine": 531,
+        "endChar": 36
+      },
+      "revId": "2cecb65a793c14788e1de56ff96ec8e00504dd06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "656257eb_949112b0",
@@ -87,6 +153,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0434e97_4437f01a",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 554,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2020-11-24T01:03:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "656257eb_949112b0",
+      "range": {
+        "startLine": 554,
+        "startChar": 8,
+        "endLine": 554,
+        "endChar": 23
+      },
+      "revId": "2cecb65a793c14788e1de56ff96ec8e00504dd06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e8395d6_e2a230ec",
@@ -100,6 +190,24 @@
       "writtenOn": "2020-11-23T21:02:48Z",
       "side": 1,
       "message": "nit: (infoBufferTuning !\u003d C2Config::EIB_DISABLED) or (infoBufferTuning \u003d\u003d C2Config::EIB_ENABLED)\n\nOn a separate note, can this value flip mid-stream?",
+      "revId": "2cecb65a793c14788e1de56ff96ec8e00504dd06",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27994864_386abeec",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2020-11-24T01:03:09Z",
+      "side": 1,
+      "message": "It will not be changed during mid-stream as far as I understand.",
+      "parentUuid": "1e8395d6_e2a230ec",
       "revId": "2cecb65a793c14788e1de56ff96ec8e00504dd06",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
