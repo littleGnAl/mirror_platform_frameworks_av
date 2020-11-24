@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "305bfaee_48813994",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-24T00:26:19Z",
+      "side": 1,
+      "message": "consider a logical grouping, alphabetical?",
+      "range": {
+        "startLine": 61,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 36
+      },
+      "revId": "df782f38380e1adff007b9f9187668c61a187864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59472ea0_838fa23c",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-24T00:26:19Z",
+      "side": 1,
+      "message": "do you want to check the return code?  here and below?",
+      "range": {
+        "startLine": 125,
+        "startChar": 3,
+        "endLine": 125,
+        "endChar": 4
+      },
+      "revId": "df782f38380e1adff007b9f9187668c61a187864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27760aff_64fe6d34",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-24T00:26:19Z",
+      "side": 1,
+      "message": "ok, but uniform_int_distribution\u003c\u003e might be more useful for integers.",
+      "range": {
+        "startLine": 198,
+        "startChar": 7,
+        "endLine": 198,
+        "endChar": 32
+      },
+      "revId": "df782f38380e1adff007b9f9187668c61a187864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e9bd4b2_deb1a4e3",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-24T00:26:19Z",
+      "side": 1,
+      "message": "this looks like index :-).  maybe \u0026i?",
+      "range": {
+        "startLine": 200,
+        "startChar": 13,
+        "endLine": 200,
+        "endChar": 16
+      },
+      "revId": "df782f38380e1adff007b9f9187668c61a187864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "851eab0b_6e3e7ac6",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 201,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-24T00:26:19Z",
+      "side": 1,
+      "message": "static_cast\u003cshort\u003e(dis(gen) * std::numeric_limits\u003cshort\u003e::max());\n\nmaybe make this a separate function so it can be easily reused?",
+      "range": {
+        "startLine": 201,
+        "startChar": 10,
+        "endLine": 201,
+        "endChar": 19
+      },
+      "revId": "df782f38380e1adff007b9f9187668c61a187864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6beb335e_fd1eb91d",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 210,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-24T00:26:19Z",
+      "side": 1,
+      "message": "can this be moved out of the for loop?",
+      "range": {
+        "startLine": 210,
+        "startChar": 0,
+        "endLine": 210,
+        "endChar": 55
+      },
+      "revId": "df782f38380e1adff007b9f9187668c61a187864",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
