@@ -124,8 +124,7 @@ void NuPlayer::RTPSource::prepareAsync() {
         // index(i) should be started from 1. 0 is reserved for [root]
         mRTPConn->addStream(sockRtp, sockRtcp, desc, i + 1, notify, false);
         mRTPConn->setSelfID(info->mSelfID);
-        mRTPConn->setJbTime(
-                (info->mJbTimeMs <= 3000 && info->mJbTimeMs >= 40) ? info->mJbTimeMs : 300);
+        mRTPConn->setJbTimeMs(info->mJbTimeMs);
 
         info->mRTPSocket = sockRtp;
         info->mRTCPSocket = sockRtcp;
@@ -680,7 +679,7 @@ status_t NuPlayer::RTPSource::setParameter(const String8 &key, const String8 &va
         newTrackInfo.mIsAudio = isAudioKey;
         mTracks.push(newTrackInfo);
         info = &mTracks.editTop();
-        info->mJbTimeMs = 300;
+        info->mJbTimeMs = kJitterBufferTimeMs;
     }
 
     if (key == "rtp-param-mime-type") {
@@ -724,7 +723,8 @@ status_t NuPlayer::RTPSource::setParameter(const String8 &key, const String8 &va
         int64_t networkHandle = atoll(value);
         setSocketNetwork(networkHandle);
     } else if (key == "rtp-param-jitter-buffer-time") {
-        info->mJbTimeMs = atoi(value);
+        // clamping min at 40, max at 3000
+        info->mJbTimeMs = std::min(std::max(40, atoi(value)), 3000);
     }
 
     return OK;
