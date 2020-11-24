@@ -68,8 +68,10 @@ private:
     bool recycleUnit(uint32_t start, uint32_t end, uint32_t connected,
             size_t avail, float goodRatio);
     int32_t deleteUnitUnderSeq(Queue *q, uint32_t seq);
-    void printNowTimeUs(int64_t start, int64_t now, int64_t play);
-    void printRTPTime(int64_t rtp, int64_t play, int64_t exp, bool isExp);
+    inline int64_t MsToRtp(int64_t ms, int64_t clockRate);
+    inline int64_t RtpToMs(int64_t rtp, int64_t clockRate);
+    inline void printNowTimeMs(int64_t start, int64_t now, int64_t play);
+    inline void printRTPTime(int64_t rtp, int64_t play, int64_t exp, bool isExp);
 
     DISALLOW_EVIL_CONSTRUCTORS(AAVCAssembler);
 };

@@ -34,6 +34,8 @@
 
 namespace android {
 
+const double JITTER_MULTIPLE = 1.5f;
+
 // static
 AAVCAssembler::AAVCAssembler(const sp<AMessage> &notify)
     : mNotifyMsg(notify),
@@ -123,22 +125,36 @@ ARTPAssembler::AssemblyStatus AAVCAssembler::addNALUnit(
 
     int64_t rtpTime = findRTPTime(firstRTPTime, buffer);
 
-    int64_t startTime = source->mFirstSysTime / 1000;
-    int64_t nowTime = ALooper::GetNowUs() / 1000;
-    int64_t playedTime = nowTime - startTime;
+    const int64_t startTimeMs = source->mFirstSysTime / 1000;
+    const int64_t nowTimeMs = ALooper::GetNowUs() / 1000;
+    const int64_t staticJbTimeMs = source->getStaticJitterTimeMs();
+    const int64_t dynamicJbTimeMs = source->getDynamicJitterTimeMs();
+    const int64_t clockRate = source->mClockRate;
 
-    int64_t playedTimeRtp = source->mFirstRtpTime + playedTime * (int64_t)source->mClockRate / 1000;
-    const int64_t jitterTime = source->mJbTimeMs * (int64_t)source->mClockRate / 1000;
+    int64_t playedTimeMs = nowTimeMs - startTimeMs;
+    int64_t playedTimeRtp = source->mFirstRtpTime + MsToRtp(playedTimeMs, clockRate);
 
-    int64_t expiredTimeInJb = rtpTime + jitterTime;
-    bool isExpired = expiredTimeInJb <= (playedTimeRtp);
-    bool isTooLate200 = expiredTimeInJb < (playedTimeRtp - jitterTime);
-    bool isTooLate300 = expiredTimeInJb < (playedTimeRtp - (jitterTime * 3 / 2));
+    const int64_t baseJbTimeRtp = MsToRtp(staticJbTimeMs, clockRate);
+    const int64_t dynamicJbTimeRtp =                        // Max 150
+            std::min(MsToRtp(dynamicJbTimeMs, clockRate), MsToRtp(150, clockRate));
+    const int64_t jitterTimeRtp = baseJbTimeRtp + dynamicJbTimeRtp;
+
+    int64_t expiredTimeRtp = rtpTime + jitterTimeRtp;       // When does this buffer expire ? (T)
+    int64_t diffTimeRtp = playedTimeRtp - expiredTimeRtp;
+    bool isExpired = (diffTimeRtp >= 0);                    // It's expired if T is passed away
+    bool isFirstLineBroken = (diffTimeRtp > jitterTimeRtp); // (T + jitter) is a standard tolerance
+
+    int64_t finalMargin = dynamicJbTimeRtp * JITTER_MULTIPLE;
+    bool isSecondLineBroken = (diffTimeRtp > jitterTimeRtp + finalMargin); // The Maginot line
+
+    // Static jitter time rebalancing as like dynamic jitter.   50 <= jitter time <= 150;
+    int32_t tempStaticTimeMs = (staticJbTimeMs * 15 + RtpToMs(diffTimeRtp, clockRate)) / 16;
+    source->setStaticJitterTimeMs(std::min(std::max(tempStaticTimeMs, 50), 150));
 
     if (mShowQueue && mShowQueueCnt < 20) {
         showCurrentQueue(queue);
-        printNowTimeUs(startTime, nowTime, playedTime);
-        printRTPTime(rtpTime, playedTimeRtp, expiredTimeInJb, isExpired);
+        printNowTimeMs(startTimeMs, nowTimeMs, playedTimeMs);
+        printRTPTime(rtpTime, playedTimeRtp, expiredTimeRtp, isExpired);
         mShowQueueCnt++;
     }
 
@@ -149,17 +165,23 @@ ARTPAssembler::AssemblyStatus AAVCAssembler::addNALUnit(
         return NOT_ENOUGH_DATA;
     }
 
-    if (isTooLate200) {
-        ALOGW("=== WARNING === buffer arrived 200ms late. === WARNING === ");
-    }
+    if (isFirstLineBroken) {
+        if (isSecondLineBroken) {
+            ALOGW("buffer too late ... \t Diff in Jb=%lld \t "
+                    "Seq# %d \t ExpSeq# %d \t"
+                    "JitterMs %lld + (%lld * %.3f)",
+                    (long long)(diffTimeRtp),
+                    buffer->int32Data(), mNextExpectedSeqNo,
+                    (long long)staticJbTimeMs, (long long)dynamicJbTimeMs, JITTER_MULTIPLE + 1);
+            printNowTimeMs(startTimeMs, nowTimeMs, playedTimeMs);
+            printRTPTime(rtpTime, playedTimeRtp, expiredTimeRtp, isExpired);
 
-    if (isTooLate300) {
-        ALOGW("buffer arrived after 300ms ... \t Diff in Jb=%lld \t Seq# %d",
-                (long long)(playedTimeRtp - expiredTimeInJb), buffer->int32Data());
-        printNowTimeUs(startTime, nowTime, playedTime);
-        printRTPTime(rtpTime, playedTimeRtp, expiredTimeInJb, isExpired);
-
-        mNextExpectedSeqNo = pickProperSeq(queue, firstRTPTime, playedTimeRtp, jitterTime);
+            mNextExpectedSeqNo = pickProperSeq(queue, firstRTPTime, playedTimeRtp, jitterTimeRtp);
+        }  else {
+            ALOGW("=== WARNING === buffer arrived after %lld + %lld = %lld ms === WARNING === ",
+                    (long long)staticJbTimeMs, (long long)dynamicJbTimeMs,
+                    (long long)RtpToMs(jitterTimeRtp, clockRate));
+        }
     }
 
     if (mNextExpectedSeqNoValid) {
@@ -170,6 +192,7 @@ ARTPAssembler::AssemblyStatus AAVCAssembler::addNALUnit(
             source->noticeAbandonBuffer(cntRemove);
             ALOGW("delete %d of %d buffers", cntRemove, size);
         }
+
         if (queue->empty()) {
             return NOT_ENOUGH_DATA;
         }
@@ -620,7 +643,15 @@ int32_t AAVCAssembler::deleteUnitUnderSeq(Queue *queue, uint32_t seq) {
     return initSize - queue->size();
 }
 
-inline void AAVCAssembler::printNowTimeUs(int64_t start, int64_t now, int64_t play) {
+inline int64_t AAVCAssembler::MsToRtp(int64_t ms, int64_t clockRate) {
+    return ms * clockRate / 1000;
+}
+
+inline int64_t AAVCAssembler::RtpToMs(int64_t rtp, int64_t clockRate) {
+    return rtp * 1000 / clockRate;
+}
+
+inline void AAVCAssembler::printNowTimeMs(int64_t start, int64_t now, int64_t play) {
     ALOGD("start=%lld, now=%lld, played=%lld",
             (long long)start, (long long)now, (long long)play);
 }
