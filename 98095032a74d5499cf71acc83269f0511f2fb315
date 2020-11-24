@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80843449_723ad2d2",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-24T20:58:05Z",
+      "side": 1,
+      "message": "remove redundant empty line",
+      "revId": "98095032a74d5499cf71acc83269f0511f2fb315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7ebdede_4ae1334b",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-24T20:58:05Z",
+      "side": 1,
+      "message": "update only if the values have changed from previous values.\nSo store them and make these calls if they have changed",
+      "range": {
+        "startLine": 629,
+        "startChar": 0,
+        "endLine": 638,
+        "endChar": 41
+      },
+      "revId": "98095032a74d5499cf71acc83269f0511f2fb315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
