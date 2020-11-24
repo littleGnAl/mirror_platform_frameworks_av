@@ -48,7 +48,7 @@ ARTPSource::ARTPSource(
       mFirstRtpTime(0),
       mFirstSysTime(0),
       mClockRate(0),
-      mJbTimeMs(300), // default jitter buffer time is 300ms.
+      mJbTimeMs(kJitterBufferTimeMs),
       mFirstSsrc(0),
       mHighestNackNumber(0),
       mID(id),
@@ -102,10 +102,21 @@ ARTPSource::ARTPSource(
     if (mAssembler != NULL && !mAssembler->initCheck()) {
         mAssembler.clear();
     }
+
+    mClockRate = mIssueFIRRequests ? 90000 : 8000;
+    mJitterCalc = new JitterCalc(mClockRate);
 }
 
 static uint32_t AbsDiff(uint32_t seq1, uint32_t seq2) {
     return seq1 > seq2 ? seq1 - seq2 : seq2 - seq1;
+}
+
+void ARTPSource::putJitterData(uint32_t timeStamp, int64_t arrivalTime) {
+    mJitterCalc->putData(timeStamp, arrivalTime);
+}
+
+uint32_t ARTPSource::getJitterMs() {
+    return mJitterCalc->getJitterMs();
 }
 
 void ARTPSource::processRTPPacket(const sp<ABuffer> &buffer) {
@@ -139,9 +150,8 @@ bool ARTPSource::queuePacket(const sp<ABuffer> &buffer) {
         mBaseSeqNumber = seqNum;
         mFirstRtpTime = firstRtpTime;
         mFirstSsrc = ssrc;
-        ALOGD("first-rtp arrived: first-rtp-time=%d, sys-time=%lld, seq-num=%u, ssrc=%d",
+        ALOGD("first-rtp arrived: first-rtp-time=%u, sys-time=%lld, seq-num=%u, ssrc=%d",
                 mFirstRtpTime, (long long)mFirstSysTime, mHighestSeqNumber, mFirstSsrc);
-        mClockRate = 90000;
         mQueue.push_back(buffer);
         return true;
     }
@@ -508,7 +518,7 @@ void ARTPSource::setSelfID(const uint32_t selfID) {
     kSourceID = selfID;
 }
 
-void ARTPSource::setJbTime(const uint32_t jbTimeMs) {
+void ARTPSource::setJbTimeMs(const uint32_t jbTimeMs) {
     mJbTimeMs = jbTimeMs;
 }
 
