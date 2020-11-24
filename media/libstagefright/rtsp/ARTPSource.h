@@ -27,7 +27,11 @@
 
 #include <map>
 
+#include "JitterCalculator.h"
+
 namespace android {
+
+const uint32_t kStaticJitterTimeMs = 50;   // 50ms
 
 struct ABuffer;
 struct AMessage;
@@ -51,6 +55,8 @@ struct ARTPSource : public RefBase {
         RTP_AUTODOWN = 400,
     };
 
+    void putJitterData(uint32_t timeStamp, int64_t arrivalTime);
+    uint32_t getDynamicJitterTimeMs();
     void processRTPPacket(const sp<ABuffer> &buffer);
     void timeUpdate(uint32_t rtpTime, uint64_t ntpTime);
     void byeReceived();
@@ -64,7 +70,7 @@ struct ARTPSource : public RefBase {
     void setSeqNumToNACK(uint16_t seqNum, uint16_t mask, uint16_t nowJitterHeadSeqNum);
     uint32_t getSelfID();
     void setSelfID(const uint32_t selfID);
-    void setJbTime(const uint32_t jbTimeMs);
+    void setStaticJitterTimeMs(const uint32_t jbTimeMs);
     void setPeriodicFIR(bool enable);
     bool isNeedToEarlyNotify();
     void notifyPktInfo(int32_t bitrate, bool isRegular);
@@ -78,7 +84,8 @@ struct ARTPSource : public RefBase {
     int64_t mFirstSysTime;
     int32_t mClockRate;
 
-    uint32_t mJbTimeMs;
+    uint32_t mStaticJbTimeMs;
+
     int32_t mFirstSsrc;
     int32_t mHighestNackNumber;
 
@@ -95,6 +102,7 @@ private:
 
     List<sp<ABuffer> > mQueue;
     sp<ARTPAssembler> mAssembler;
+    sp<JitterCalc> mJitterCalc;
 
     typedef struct infoNACK {
         uint16_t seqNum;
