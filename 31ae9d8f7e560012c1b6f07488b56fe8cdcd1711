@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "534c5d6d_bf6b894b",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 714,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-24T21:02:33Z",
+      "side": 1,
+      "message": "each should be conditionally updated",
+      "range": {
+        "startLine": 705,
+        "startChar": 0,
+        "endLine": 714,
+        "endChar": 55
+      },
+      "revId": "31ae9d8f7e560012c1b6f07488b56fe8cdcd1711",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
