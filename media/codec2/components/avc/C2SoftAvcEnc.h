@@ -188,6 +188,7 @@ private:
     // configurations used by component in process
     // (TODO: keep this in intf but make them internal only)
     std::shared_ptr<C2StreamPictureSizeInfo::input> mSize;
+    std::shared_ptr<C2StreamFrameMetadataTuning::input> mFrameMetadata;
     std::shared_ptr<C2StreamIntraRefreshTuning::output> mIntraRefresh;
     std::shared_ptr<C2StreamFrameRateInfo::output> mFrameRate;
     std::shared_ptr<C2StreamBitrateInfo::output> mBitrate;
