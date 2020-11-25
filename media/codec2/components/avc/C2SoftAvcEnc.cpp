@@ -198,6 +198,13 @@ public:
                 .withFields({C2F(mSyncFramePeriod, value).any()})
                 .withSetter(Setter<decltype(*mSyncFramePeriod)>::StrictValueWithNoDeps)
                 .build());
+
+        addParameter(
+                DefineParam(mFrameMetadata, C2_PARAMKEY_FRAME_METADATA)
+                .withDefault(new C2StreamFrameMetadataTuning::input(0u, C2_FALSE))
+                .withFields({C2F(mFrameMetadata, value).oneOf({ C2_FALSE, C2_TRUE }) })
+                .withSetter(Setter<decltype(*mFrameMetadata)>::NonStrictValueWithNoDeps)
+                .build());
     }
 
     static C2R InputDelaySetter(
@@ -388,6 +395,7 @@ public:
 
     // unsafe getters
     std::shared_ptr<C2StreamPictureSizeInfo::input> getSize_l() const { return mSize; }
+    std::shared_ptr<C2StreamFrameMetadataTuning::input> getMetadata_l() const { return mFrameMetadata; }
     std::shared_ptr<C2StreamIntraRefreshTuning::output> getIntraRefresh_l() const { return mIntraRefresh; }
     std::shared_ptr<C2StreamFrameRateInfo::output> getFrameRate_l() const { return mFrameRate; }
     std::shared_ptr<C2StreamBitrateInfo::output> getBitrate_l() const { return mBitrate; }
@@ -397,6 +405,7 @@ public:
 private:
     std::shared_ptr<C2StreamUsageTuning::input> mUsage;
     std::shared_ptr<C2StreamPictureSizeInfo::input> mSize;
+    std::shared_ptr<C2StreamFrameMetadataTuning::input> mFrameMetadata;
     std::shared_ptr<C2StreamFrameRateInfo::output> mFrameRate;
     std::shared_ptr<C2StreamRequestSyncFrameTuning::output> mRequestSync;
     std::shared_ptr<C2StreamIntraRefreshTuning::output> mIntraRefresh;
@@ -919,6 +928,7 @@ c2_status_t C2SoftAvcEnc::initEncoder() {
     {
         IntfImpl::Lock lock = mIntf->lock();
         mSize = mIntf->getSize_l();
+        mFrameMetadata = mIntf->getMetadata_l();
         mBitrate = mIntf->getBitrate_l();
         mFrameRate = mIntf->getFrameRate_l();
         mIntraRefresh = mIntf->getIntraRefresh_l();
@@ -952,6 +962,8 @@ c2_status_t C2SoftAvcEnc::initEncoder() {
 
     // Assume worst case output buffer size to be equal to number of bytes in input
     mOutBufferSize = std::max(width * height * 3 / 2, kMinOutBufferSize);
+
+    mReconEnable = mFrameMetadata->value;
 
     // TODO
     mIvVideoColorFormat = IV_YUV_420P;
