@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ee0beb6d_a357a069",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-25T05:32:36Z",
+      "side": 1,
+      "message": "Andy,\nSince AEC in updated webrtc isn\u0027t suited for mobile devices, should we just default to AECM instead?\n\nso AEC in webrtc_legacy will now map to AECM in updated webrtc.\n\nIf this is acceptable,\nThen we will upload a CL to make mobilemode default in preprocessing wrapper and\nthen we can simplify the benchmark and keep only one AEC (instead of AEC and AECM and associated call to configure mobile mode)",
+      "parentUuid": "b1c039fa_780a4e7f",
+      "range": {
+        "startLine": 50,
+        "startChar": 28,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "cfe421b31c55355f051b5b49c7ff469a359c2edc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1c201b1_51da184d",
         "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
         "patchSetId": 6
