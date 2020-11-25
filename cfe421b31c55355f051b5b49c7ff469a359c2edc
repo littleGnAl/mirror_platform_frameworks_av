@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b1c039fa_780a4e7f",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-11-25T05:11:42Z",
+      "side": 1,
+      "message": "We have verified with different inputs (sine tone, speech file input etc), the AEC effect gets applied to all the channels. Yet we are getting similar numbers for all the channel masks.",
+      "parentUuid": "3f8eea03_6a5266e2",
+      "range": {
+        "startLine": 50,
+        "startChar": 28,
+        "endLine": 50,
+        "endChar": 35
+      },
+      "revId": "cfe421b31c55355f051b5b49c7ff469a359c2edc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b1c201b1_51da184d",
         "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
         "patchSetId": 6
