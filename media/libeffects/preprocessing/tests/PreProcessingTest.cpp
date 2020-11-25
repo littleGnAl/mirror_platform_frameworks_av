@@ -159,10 +159,6 @@ void printUsage() {
 #endif
   printf("\n     --aec_delay <delay>");
   printf("\n           AEC delay value in ms, default value 0ms");
-#ifndef WEBRTC_LEGACY
-  printf("\n     --aec_mobile");
-  printf("\n           Enable mobile mode of echo canceller, default disabled");
-#endif
   printf("\n");
 }
 
@@ -213,9 +209,6 @@ int main(int argc, const char *argv[]) {
   const char *outputFile = nullptr;
   const char *farFile = nullptr;
   int effectEn[PREPROC_NUM_EFFECTS] = {0};
-#ifndef WEBRTC_LEGACY
-  int aecMobileMode = 0;
-#endif
 
   const option long_opts[] = {
       {"help", no_argument, nullptr, ARG_HELP},
@@ -239,9 +232,6 @@ int main(int argc, const char *argv[]) {
       {"agc2", no_argument, &effectEn[PREPROC_AGC2], 1},
 #endif
       {"ns", no_argument, &effectEn[PREPROC_NS], 1},
-#ifndef WEBRTC_LEGACY
-      {"aec_mobile", no_argument, &aecMobileMode, 1},
-#endif
       {nullptr, 0, nullptr, 0},
   };
   struct preProcConfigParams_t preProcCfgParams {};
@@ -432,16 +422,6 @@ int main(int argc, const char *argv[]) {
       return EXIT_FAILURE;
     }
   }
-#ifndef WEBRTC_LEGACY
-  if (effectEn[PREPROC_AEC]) {
-    if (int status = preProcSetConfigParam(AEC_PARAM_MOBILE_MODE, (uint32_t)aecMobileMode,
-                                           effectHandle[PREPROC_AEC]);
-        status != 0) {
-      ALOGE("Invalid AEC mobile mode value %d\n", status);
-      return EXIT_FAILURE;
-    }
-  }
-#endif
 
   // Process Call
   const int frameLength = (int)(preProcCfgParams.samplingFreq * kTenMilliSecVal);
