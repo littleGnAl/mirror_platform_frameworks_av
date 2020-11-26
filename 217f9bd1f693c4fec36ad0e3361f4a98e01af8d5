@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8723148e_119112c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-26T00:37:42Z",
+      "side": 1,
+      "message": "yes, treehugger is encountering some issues today.",
+      "revId": "217f9bd1f693c4fec36ad0e3361f4a98e01af8d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "035bd5ea_c6ce5aa8",
@@ -54,6 +71,24 @@
       "writtenOn": "2020-11-26T00:11:33Z",
       "side": 1,
       "message": "Andy,\nOne difference seen when numbers are compared with legacy.\nAGC in updated webrtc is much more complex than the one in webrtc_legacy.\n\nwebrtc_legacy had turned off experimental AGC for arm devices and in webrtc \nthat experimental agc flag is removed and it is enabled by default.\n\nNow agc and aec are similar in complexity.\n\nThis is just a FYI.",
+      "revId": "217f9bd1f693c4fec36ad0e3361f4a98e01af8d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b98c0f77_911e69d0",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-11-26T00:37:42Z",
+      "side": 1,
+      "message": "Good to know.  Can you please put these issues in a doc somewhere for later reference?  Thanks!",
+      "parentUuid": "6e503ec7_33173f31",
       "revId": "217f9bd1f693c4fec36ad0e3361f4a98e01af8d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
