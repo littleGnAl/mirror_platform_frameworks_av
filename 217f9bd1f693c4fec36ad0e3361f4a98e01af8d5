@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8575f1d0_4d1b32d5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-26T00:11:33Z",
+      "side": 1,
+      "message": "Treehugger failure seems unrelated.\nWill try again once libwebrtc_audio_preprocessing is removed for new benchmark.",
+      "revId": "217f9bd1f693c4fec36ad0e3361f4a98e01af8d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "035bd5ea_c6ce5aa8",
+        "filename": "media/libeffects/preprocessing/benchmarks/Android.bp",
+        "patchSetId": 10
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-26T00:11:33Z",
+      "side": 1,
+      "message": "This is from webrtc_legacy, not needed here and shouldn\u0027t be used.\nSeems like a copy paste error from legacy version",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 40
+      },
+      "revId": "217f9bd1f693c4fec36ad0e3361f4a98e01af8d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e503ec7_33173f31",
+        "filename": "media/libeffects/preprocessing/benchmarks/preprocessing_benchmark.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-11-26T00:11:33Z",
+      "side": 1,
+      "message": "Andy,\nOne difference seen when numbers are compared with legacy.\nAGC in updated webrtc is much more complex than the one in webrtc_legacy.\n\nwebrtc_legacy had turned off experimental AGC for arm devices and in webrtc \nthat experimental agc flag is removed and it is enabled by default.\n\nNow agc and aec are similar in complexity.\n\nThis is just a FYI.",
+      "revId": "217f9bd1f693c4fec36ad0e3361f4a98e01af8d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
