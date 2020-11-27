@@ -25,6 +25,7 @@
 #include <SimpleC2Component.h>
 
 #include "ih264_typedefs.h"
+#include "ih264d.h"
 #include "iv.h"
 #include "ivd.h"
 
@@ -40,7 +41,9 @@ namespace android {
 #define ivdext_ctl_get_vui_params_ip_t  ih264d_ctl_get_vui_params_ip_t
 #define ivdext_ctl_get_vui_params_op_t  ih264d_ctl_get_vui_params_op_t
 #define ALIGN32(x)                      ((((x) + 31) >> 5) << 5)
+#define ALIGN8(x)                       ((((x) + 7) >> 3) << 3)
 #define MAX_NUM_CORES                   4
+#define BLK_8X8_INFO_SHIFT              6
 #define IVDEXT_CMD_CTL_SET_NUM_CORES    \
         (IVD_CONTROL_API_COMMAND_TYPE_T)IH264D_CMD_CTL_SET_NUM_CORES
 #define MIN(a, b)                       (((a) < (b)) ? (a) : (b))
@@ -130,7 +133,11 @@ private:
                        uint32_t tsMarker);
     bool getVuiParams();
     c2_status_t ensureDecoderState(const std::shared_ptr<C2BlockPool> &pool);
-    void finishWork(uint64_t index, const std::unique_ptr<C2Work> &work);
+    void fillInfoBuffer(const std::unique_ptr<C2Work> &work,
+                        ih264d_video_decode_op_t *ps_decode_op);
+    void finishWork(uint64_t index,
+                    const std::unique_ptr<C2Work> &work,
+                    ih264d_video_decode_op_t *ps_decode_op);
     status_t setFlushMode();
     c2_status_t drainInternal(
             uint32_t drainMode,
@@ -141,6 +148,8 @@ private:
     status_t deleteDecoder();
 
     std::shared_ptr<IntfImpl> mIntf;
+    std::shared_ptr<C2StreamBlockQpValueTuning::input> mQpMetadataEnable;
+    std::shared_ptr<C2StreamBlockTypeValueTuning::input> mMbTypeMetadataEnable;
 
     // TODO:This is not the right place for this enum. These should
     // be part of c2-vndk so that they can be accessed by all video plugins
@@ -153,6 +162,9 @@ private:
 
     iv_obj_t *mDecHandle;
     std::shared_ptr<C2GraphicBlock> mOutBlock;
+    std::shared_ptr<C2LinearBlock> mQpBlock;
+    std::shared_ptr<C2LinearBlock> mMbTypeBlock;
+    std::shared_ptr<C2BlockPool> mLinearBlockPool;
     uint8_t *mOutBufferFlush;
 
     size_t mNumCores;
@@ -164,6 +176,9 @@ private:
     bool mSignalledOutputEos;
     bool mSignalledError;
     bool mHeaderDecoded;
+    bool mFrameMetaDataEnable;
+    bool mBlockQpInfoEnable;
+    bool mBlockTypeInfoEnable;
     std::atomic_uint64_t mOutIndex;
     // Color aspects. These are ISO values and are meant to detect changes in aspects to avoid
     // converting them to C2 values for each frame
