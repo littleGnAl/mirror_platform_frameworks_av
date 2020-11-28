@@ -190,7 +190,7 @@ cc_defaults {
         cfi: true,
     },
 
-    compile_multilib: "32",
+    compile_multilib: "prefer32",
 }
 
 cc_library_shared {
