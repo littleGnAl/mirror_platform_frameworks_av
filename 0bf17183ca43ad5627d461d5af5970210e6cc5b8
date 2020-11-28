@@ -16,6 +16,29 @@
       "message": "Ray, Wonsik,\nNot sure who the current owner for mediaresourcemanager is.\nCan you please review/add owner for this?\nThanks.",
       "revId": "0bf17183ca43ad5627d461d5af5970210e6cc5b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "98389daf_97b21581",
+        "filename": "services/mediaresourcemanager/fuzzer/mediaresourcemanager_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-11-28T23:36:11Z",
+      "side": 1,
+      "message": "i see no fork() nor pthread_create() calls in here.\nwhich means that we\u0027re essentially a single client, with a single priority.\n\nhow do we fuzz the part of the resource manager service that deals with preempting resources\nor denying them because some other (higher priority) entity already has them?",
+      "range": {
+        "startLine": 60,
+        "startChar": 5,
+        "endLine": 60,
+        "endChar": 24
+      },
+      "revId": "0bf17183ca43ad5627d461d5af5970210e6cc5b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
