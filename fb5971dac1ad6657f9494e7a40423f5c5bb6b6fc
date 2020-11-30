@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a45e21f8_032d65ea",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T14:12:27Z",
+      "side": 1,
+      "message": "add tests",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "fb5971dac1ad6657f9494e7a40423f5c5bb6b6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45c3af03_695bcda8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 22
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T14:12:27Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 11,
+        "startChar": 3,
+        "endLine": 11,
+        "endChar": 4
+      },
+      "revId": "fb5971dac1ad6657f9494e7a40423f5c5bb6b6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26ce515e_b232bf7f",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T14:12:27Z",
+      "side": 1,
+      "message": "I would expect gAudioProductStrategies to initialized by listAudioProductStrategies so that everyone calling listAudioProductStrategies directly or indirectly would benefit from the cache.",
+      "range": {
+        "startLine": 1586,
+        "startChar": 50,
+        "endLine": 1586,
+        "endChar": 73
+      },
+      "revId": "fb5971dac1ad6657f9494e7a40423f5c5bb6b6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df7652f1_0e36ccea",
+        "filename": "media/libaudioclient/IAudioFlinger.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T14:12:27Z",
+      "side": 1,
+      "message": "add a limit on the number of ports (MAX_ITEMS_PER_LIST)",
+      "range": {
+        "startLine": 1314,
+        "startChar": 0,
+        "endLine": 1314,
+        "endChar": 48
+      },
+      "revId": "fb5971dac1ad6657f9494e7a40423f5c5bb6b6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c87a11a4_6d1e3a21",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 3228,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T14:12:27Z",
+      "side": 1,
+      "message": "given port IDs are unique we should remove the port from ports after each match",
+      "range": {
+        "startLine": 3228,
+        "startChar": 0,
+        "endLine": 3228,
+        "endChar": 79
+      },
+      "revId": "fb5971dac1ad6657f9494e7a40423f5c5bb6b6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "494a3449_a8a15dd0",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 4696,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T14:12:27Z",
+      "side": 1,
+      "message": "why not call directly t-\u003einvalidate(); on each track?\n\nAlso I don;t remember why we started from AUDIO_STREAM_SYSTEM instead of AUDIO_STREAM_VOICE_CALL?\nI believe all tracks should be invalidated on async error.",
+      "range": {
+        "startLine": 4696,
+        "startChar": 0,
+        "endLine": 4696,
+        "endChar": 52
+      },
+      "revId": "fb5971dac1ad6657f9494e7a40423f5c5bb6b6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5ceb4d0_7a31847e",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 9549,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T14:12:27Z",
+      "side": 1,
+      "message": "I need to double check how track invalidation works for MMAP threads on APM side.\nEach track on an MMAP playback thread is supposed to share the same stream type (to be confirmed) but they all have their own port ID so we may want to honor the actual port ID list as on any other thread.",
+      "range": {
+        "startLine": 9549,
+        "startChar": 0,
+        "endLine": 9549,
+        "endChar": 72
+      },
+      "revId": "fb5971dac1ad6657f9494e7a40423f5c5bb6b6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
