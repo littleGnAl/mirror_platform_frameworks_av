@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b32704ae_836ea8cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-11-30T22:54:28Z",
+      "side": 1,
+      "message": "I think the better path is to just remove this service from the 64-bit builds;\nso that\u0027s a matter of changing one of the device config files that lists what services\nare included...\n\nand as a result, we wouldn\u0027t need this change.\n\nAs it stands now -- a 64-only build that tries to bring this in will fail. and i thnk that\u0027s just fine bceause it will force us to chase down the places that we include this service so that they only do include this service when we have a device that supports 32-bit mode",
+      "revId": "94cd25fcf44b8f493a4bdf58d13b409fc960cb9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2bdceb3_3404d7ab",
+        "filename": "media/libstagefright/omx/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-11-30T22:54:28Z",
+      "side": 1,
+      "message": "the omx code is a hard 32-bit requirement.\nOMX has to be excluded from the 64-bit only builds.",
+      "range": {
+        "startLine": 193,
+        "startChar": 22,
+        "endLine": 193,
+        "endChar": 33
+      },
+      "revId": "94cd25fcf44b8f493a4bdf58d13b409fc960cb9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46f1a962_a621e081",
+        "filename": "services/mediacodec/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-11-30T22:54:28Z",
+      "side": 1,
+      "message": "hard requirement for 32-bit for this, which houses the OMX codecs.\n\nsoftware codec2-based codecs are in a different service;\nhardware codec2-based codecs are also in a different service.\n\nproper solution here is to not build this component in a 64-bit only device.",
+      "range": {
+        "startLine": 105,
+        "startChar": 19,
+        "endLine": 105,
+        "endChar": 32
+      },
+      "revId": "94cd25fcf44b8f493a4bdf58d13b409fc960cb9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a036d8f_8b6e56b6",
+        "filename": "services/mediacodec/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-11-30T22:54:28Z",
+      "side": 1,
+      "message": "not sure that we need this here.\ndoesn\u0027t the right file get pulled in based on whether the media.codec service above is built?",
+      "range": {
+        "startLine": 142,
+        "startChar": 23,
+        "endLine": 142,
+        "endChar": 31
+      },
+      "revId": "94cd25fcf44b8f493a4bdf58d13b409fc960cb9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
