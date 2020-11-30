@@ -618,25 +618,26 @@ void CCodecBufferChannel::feedInputBufferIfAvailable() {
 }
 
 void CCodecBufferChannel::feedInputBufferIfAvailableInternal() {
-    if (mInputMetEos || mPipelineWatcher.lock()->pipelineFull()) {
+    if (mInputMetEos) {
         return;
     }
     {
         Mutexed<Output>::Locked output(mOutput);
         if (!output->buffers ||
                 output->buffers->hasPending() ||
-                output->buffers->numClientBuffers() >= output->numSlots) {
+                output->buffers->numActiveSlots() >= output->numSlots) {
             return;
         }
     }
-    size_t numInputSlots = mInput.lock()->numSlots;
-    for (size_t i = 0; i < numInputSlots; ++i) {
+    size_t numActiveSlots = 0;
+    while (!mPipelineWatcher.lock()->pipelineFull()) {
         sp<MediaCodecBuffer> inBuffer;
         size_t index;
         {
             Mutexed<Input>::Locked input(mInput);
-            if (input->buffers->numClientBuffers() >= input->numSlots) {
-                return;
+            numActiveSlots = input->buffers->numActiveSlots();
+            if (numActiveSlots >= input->numSlots) {
+                break;
             }
             if (!input->buffers->requestNewBuffer(&index, &inBuffer)) {
                 ALOGV("[%s] no new buffer available", mName);
@@ -646,6 +647,7 @@ void CCodecBufferChannel::feedInputBufferIfAvailableInternal() {
         ALOGV("[%s] new input index = %zu [%p]", mName, index, inBuffer.get());
         mCallback->onInputBufferAvailable(index, inBuffer);
     }
+    ALOGV("[%s] # active slots after feedInputBufferIfAvailable = %zu", mName, numActiveSlots);
 }
 
 status_t CCodecBufferChannel::renderOutputBuffer(
@@ -814,6 +816,9 @@ status_t CCodecBufferChannel::renderOutputBuffer(
     status_t result = mComponent->queueToOutputSurface(block, qbi, &qbo);
     if (result != OK) {
         ALOGI("[%s] queueBuffer failed: %d", mName, result);
+        if (result == NO_INIT) {
+            mCCodecCallback->onError(UNKNOWN_ERROR, ACTION_CODE_FATAL);
+        }
         return result;
     }
     ALOGV("[%s] queue buffer successful", mName);
@@ -1061,9 +1066,6 @@ status_t CCodecBufferChannel::start(
             Mutexed<OutputSurface>::Locked output(mOutputSurface);
             output->maxDequeueBuffers = numOutputSlots +
                     reorderDepth.value + kRenderingDepth;
-            if (!secure) {
-                output->maxDequeueBuffers += numInputSlots;
-            }
             outputSurface = output->surface ?
                     output->surface->getIGraphicBufferProducer() : nullptr;
             if (outputSurface) {
@@ -1524,6 +1526,7 @@ bool CCodecBufferChannel::handleWork(
     }
 
     std::optional<uint32_t> newInputDelay, newPipelineDelay;
+    bool needMaxDequeueBufferCountUpdate = false;
     while (!worklet->output.configUpdate.empty()) {
         std::unique_ptr<C2Param> param;
         worklet->output.configUpdate.back().swap(param);
@@ -1532,24 +1535,10 @@ bool CCodecBufferChannel::handleWork(
             case C2PortReorderBufferDepthTuning::CORE_INDEX: {
                 C2PortReorderBufferDepthTuning::output reorderDepth;
                 if (reorderDepth.updateFrom(*param)) {
-                    bool secure = mComponent->getName().find(".secure") !=
-                                  std::string::npos;
-                    mOutput.lock()->buffers->setReorderDepth(
-                            reorderDepth.value);
                     ALOGV("[%s] onWorkDone: updated reorder depth to %u",
                           mName, reorderDepth.value);
-                    size_t numOutputSlots = mOutput.lock()->numSlots;
-                    size_t numInputSlots = mInput.lock()->numSlots;
-                    Mutexed<OutputSurface>::Locked output(mOutputSurface);
-                    output->maxDequeueBuffers = numOutputSlots +
-                            reorderDepth.value + kRenderingDepth;
-                    if (!secure) {
-                        output->maxDequeueBuffers += numInputSlots;
-                    }
-                    if (output->surface) {
-                        output->surface->setMaxDequeuedBufferCount(
-                                output->maxDequeueBuffers);
-                    }
+                    mOutput.lock()->buffers->setReorderDepth(reorderDepth.value);
+                    needMaxDequeueBufferCountUpdate = true;
                 } else {
                     ALOGD("[%s] onWorkDone: failed to read reorder depth",
                           mName);
@@ -1593,14 +1582,11 @@ bool CCodecBufferChannel::handleWork(
                     if (outputDelay.updateFrom(*param)) {
                         ALOGV("[%s] onWorkDone: updating output delay %u",
                               mName, outputDelay.value);
-                        bool secure = mComponent->getName().find(".secure") !=
-                                      std::string::npos;
-                        (void)mPipelineWatcher.lock()->outputDelay(
-                                outputDelay.value);
+                        (void)mPipelineWatcher.lock()->outputDelay(outputDelay.value);
+                        needMaxDequeueBufferCountUpdate = true;
 
                         bool outputBuffersChanged = false;
                         size_t numOutputSlots = 0;
-                        size_t numInputSlots = mInput.lock()->numSlots;
                         {
                             Mutexed<Output>::Locked output(mOutput);
                             if (!output->buffers) {
@@ -1625,16 +1611,6 @@ bool CCodecBufferChannel::handleWork(
 
                         if (outputBuffersChanged) {
                             mCCodecCallback->onOutputBuffersChanged();
-                        }
-
-                        uint32_t depth = mOutput.lock()->buffers->getReorderDepth();
-                        Mutexed<OutputSurface>::Locked output(mOutputSurface);
-                        output->maxDequeueBuffers = numOutputSlots + depth + kRenderingDepth;
-                        if (!secure) {
-                            output->maxDequeueBuffers += numInputSlots;
-                        }
-                        if (output->surface) {
-                            output->surface->setMaxDequeuedBufferCount(output->maxDequeueBuffers);
                         }
                     }
                 }
@@ -1662,6 +1638,20 @@ bool CCodecBufferChannel::handleWork(
                   mName, input->numExtraSlots);
         } else {
             input->numSlots = newNumSlots;
+        }
+    }
+    if (needMaxDequeueBufferCountUpdate) {
+        size_t numOutputSlots = 0;
+        uint32_t reorderDepth = 0;
+        {
+            Mutexed<Output>::Locked output(mOutput);
+            numOutputSlots = output->numSlots;
+            reorderDepth = output->buffers->getReorderDepth();
+        }
+        Mutexed<OutputSurface>::Locked output(mOutputSurface);
+        output->maxDequeueBuffers = numOutputSlots + reorderDepth + kRenderingDepth;
+        if (output->surface) {
+            output->surface->setMaxDequeuedBufferCount(output->maxDequeueBuffers);
         }
     }
 
