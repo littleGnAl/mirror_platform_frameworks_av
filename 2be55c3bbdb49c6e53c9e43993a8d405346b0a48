@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df874d09_ebfab1a4",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 46
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T11:02:58Z",
+      "side": 1,
+      "message": "those methods appear to be unused: we should remove them",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 1
+      },
+      "revId": "2be55c3bbdb49c6e53c9e43993a8d405346b0a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f043364_dd645c3a",
+        "filename": "media/libaudioclient/IAudioFlinger.cpp",
+        "patchSetId": 46
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T11:02:58Z",
+      "side": 1,
+      "message": "maybe check a limit o nthe number of ports to avoid attacks with stack overflow:\nuse MAX_ITEMS_PER_LIST",
+      "range": {
+        "startLine": 1144,
+        "startChar": 0,
+        "endLine": 1144,
+        "endChar": 48
+      },
+      "revId": "2be55c3bbdb49c6e53c9e43993a8d405346b0a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b00b066_e23bf101",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 46
+      },
+      "lineNbr": 2448,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T11:02:58Z",
+      "side": 1,
+      "message": "remove ?",
+      "range": {
+        "startLine": 2448,
+        "startChar": 14,
+        "endLine": 2448,
+        "endChar": 32
+      },
+      "revId": "2be55c3bbdb49c6e53c9e43993a8d405346b0a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "422b61d3_2fea5719",
+        "filename": "services/audiopolicy/common/managerdefinitions/include/AudioOutputDescriptor.h",
+        "patchSetId": 46
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T11:02:58Z",
+      "side": 1,
+      "message": "rename to getPortsForVolumeSource for readability",
+      "range": {
+        "startLine": 411,
+        "startChar": 37,
+        "endLine": 411,
+        "endChar": 45
+      },
+      "revId": "2be55c3bbdb49c6e53c9e43993a8d405346b0a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
