@@ -33,6 +33,24 @@
       "message": "this is a cherry pick to where we believe the GSI images are built.\n\ndo we need an rvc-gsi-dev cherry pick also?",
       "revId": "d0a4b3b2b063cccca92c6c4f5559ba58d784ff82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2519ebdd_9963bc84",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061057
+      },
+      "writtenOn": "2020-11-30T02:19:25Z",
+      "side": 1,
+      "message": "No, this is good. It will be auto merged to rvc-gsi-dev.",
+      "parentUuid": "e1072da3_a1fa3f43",
+      "revId": "d0a4b3b2b063cccca92c6c4f5559ba58d784ff82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
