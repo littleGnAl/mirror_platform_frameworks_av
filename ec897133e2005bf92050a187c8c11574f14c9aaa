@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee6fd4fc_fdac56f6",
+        "filename": "services/audioflinger/PatchPanel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T14:56:09Z",
+      "side": 0,
+      "message": "the patch track must have audio attributes for the volume control to work.\nWe must find another way to communicate the use case when building a patch.",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 67
+      },
+      "revId": "ec897133e2005bf92050a187c8c11574f14c9aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0acf82dd_6d3dc6d9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T14:56:09Z",
+      "side": 1,
+      "message": "Add Test: ...",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 0
+      },
+      "revId": "a1fe55123d549d85c4bf4b03d06ac3a1fbda6f0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ca4d182_d6e013ed",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1591,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T14:56:09Z",
+      "side": 1,
+      "message": "are we sure the volume is 1.0 in the absence of attributes?",
+      "range": {
+        "startLine": 1591,
+        "startChar": 0,
+        "endLine": 1591,
+        "endChar": 75
+      },
+      "revId": "a1fe55123d549d85c4bf4b03d06ac3a1fbda6f0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c85bd7e_104dafcf",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T14:56:09Z",
+      "side": 1,
+      "message": "it must be an error",
+      "range": {
+        "startLine": 913,
+        "startChar": 5,
+        "endLine": 916,
+        "endChar": 0
+      },
+      "revId": "a1fe55123d549d85c4bf4b03d06ac3a1fbda6f0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9e5d1fb_86ed8fd8",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1031,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T14:56:09Z",
+      "side": 1,
+      "message": "we cn base this on usage MEDIA",
+      "range": {
+        "startLine": 1031,
+        "startChar": 9,
+        "endLine": 1031,
+        "endChar": 38
+      },
+      "revId": "a1fe55123d549d85c4bf4b03d06ac3a1fbda6f0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68fa652b_e09d4d19",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 3744,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T14:56:09Z",
+      "side": 1,
+      "message": "maybe replace this by usage?\nbut in this case we must also update the audio HAL AudioPort struct",
+      "range": {
+        "startLine": 3744,
+        "startChar": 57,
+        "endLine": 3744,
+        "endChar": 63
+      },
+      "revId": "a1fe55123d549d85c4bf4b03d06ac3a1fbda6f0a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
