@@ -39,6 +39,29 @@
       },
       "revId": "0bf17183ca43ad5627d461d5af5970210e6cc5b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c81108e_404948cb",
+        "filename": "services/mediaresourcemanager/fuzzer/mediaresourcemanager_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1100093
+      },
+      "writtenOn": "2020-11-30T19:44:20Z",
+      "side": 1,
+      "message": "Nit: aren\u0027t we consuming \u003e 1 bytes always so shouldn\u0027t we bail out if we have \u003c N (where N is sizeof(bool)+sizeof(bool).. etc)",
+      "range": {
+        "startLine": 250,
+        "startChar": 14,
+        "endLine": 250,
+        "endChar": 16
+      },
+      "revId": "0bf17183ca43ad5627d461d5af5970210e6cc5b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
