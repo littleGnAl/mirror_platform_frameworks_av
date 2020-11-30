@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d05d517f_1713f4dd",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 2514,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T15:07:00Z",
+      "side": 0,
+      "message": "should we get rid of streamsMatchForvolume() and reimplement getDevicesForStream() on top of getDevicesForAttributes()",
+      "range": {
+        "startLine": 2514,
+        "startChar": 13,
+        "endLine": 2514,
+        "endChar": 34
+      },
+      "revId": "3e545b908320ad626c1d6eae8779c6ae6fa1d69b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
