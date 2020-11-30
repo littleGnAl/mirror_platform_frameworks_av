@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "124c62ce_1bef7f34",
+        "filename": "services/audiopolicy/engine/common/src/EngineBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T15:14:31Z",
+      "side": 1,
+      "message": "is it possible that the alias volume group is not yet in mVolumeGroups at this point?",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 50
+      },
+      "revId": "4e4c46d86e2f03d443ecb84364c3a2c5993ddfd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aef0f04_fd362403",
+        "filename": "services/audiopolicy/engine/common/src/EngineDefaultConfig.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T15:14:31Z",
+      "side": 1,
+      "message": "line length here and below",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 113
+      },
+      "revId": "4e4c46d86e2f03d443ecb84364c3a2c5993ddfd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe701337_09118e3b",
+        "filename": "services/audiopolicy/engine/config/src/EngineConfig.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T15:14:31Z",
+      "side": 1,
+      "message": "ALOGV",
+      "range": {
+        "startLine": 316,
+        "startChar": 0,
+        "endLine": 316,
+        "endChar": 87
+      },
+      "revId": "4e4c46d86e2f03d443ecb84364c3a2c5993ddfd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
