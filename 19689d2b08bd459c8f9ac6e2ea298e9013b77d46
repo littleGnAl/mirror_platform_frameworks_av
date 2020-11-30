@@ -45,6 +45,30 @@
       },
       "revId": "19689d2b08bd459c8f9ac6e2ea298e9013b77d46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8655ef98_ef801f8a",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 2826,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T13:47:36Z",
+      "side": 1,
+      "message": "the change happened here but there is no explanation?\nhttps://partner-android-review.googlesource.com/c/platform/frameworks/av/+/1193297/28..29/services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+      "parentUuid": "b93e76f9_cbaad159",
+      "range": {
+        "startLine": 2826,
+        "startChar": 70,
+        "endLine": 2826,
+        "endChar": 87
+      },
+      "revId": "19689d2b08bd459c8f9ac6e2ea298e9013b77d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
