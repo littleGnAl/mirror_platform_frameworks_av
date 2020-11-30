@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dc74ebc_c557f2d0",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 1073,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T13:39:50Z",
+      "side": 1,
+      "message": "attributes",
+      "range": {
+        "startLine": 1073,
+        "startChar": 58,
+        "endLine": 1073,
+        "endChar": 67
+      },
+      "revId": "19689d2b08bd459c8f9ac6e2ea298e9013b77d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b93e76f9_cbaad159",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 2826,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-11-30T13:39:50Z",
+      "side": 1,
+      "message": "I don;t remember why we were also considering PRODUCT_STRATEGY_NONE for music effects in your original change.\nWe could also consider AUDIO_ATTRIBUTES_INITIALIZER here to keep the same behavior?",
+      "range": {
+        "startLine": 2826,
+        "startChar": 70,
+        "endLine": 2826,
+        "endChar": 87
+      },
+      "revId": "19689d2b08bd459c8f9ac6e2ea298e9013b77d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
