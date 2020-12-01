@@ -46,6 +46,30 @@
       },
       "revId": "a218207c96a7ad2b836c6d4588725b4585000b15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a71eb40d_3ef1cee6",
+        "filename": "media/codec2/vndk/C2AllocatorBlob.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-12-01T20:50:08Z",
+      "side": 1,
+      "message": "size is always \u003c\u003d capacity() due to the first check.",
+      "parentUuid": "6e86513b_f99083d7",
+      "range": {
+        "startLine": 96,
+        "startChar": 61,
+        "endLine": 96,
+        "endChar": 78
+      },
+      "revId": "a218207c96a7ad2b836c6d4588725b4585000b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
