@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00846878_a8d998c3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-12-01T00:30:02Z",
+      "side": 1,
+      "message": "Let\u0027s discuss this a bit.",
+      "revId": "718aa04811219c353f130dc6995128a9d4ab2e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cc23978_81ad0ec8",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-12-01T00:30:02Z",
+      "side": 1,
+      "message": "Originally I thought that this could be signaled by the component saying that they support \"kParamIndexEncryptedInfoBuffer\". To be fair, we could add a \"requested info param indices\" setting where they can explicitly opt in.",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 34
+      },
+      "revId": "718aa04811219c353f130dc6995128a9d4ab2e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a08253ae_43833254",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-12-01T00:30:02Z",
+      "side": 1,
+      "message": "This would be similar to this - as in that it is a global parameter that can request info params of any scope. Question: should this be restricted to info buffers and what if the client cannot supply the requested info?",
+      "range": {
+        "startLine": 889,
+        "startChar": 0,
+        "endLine": 893,
+        "endChar": 1
+      },
+      "revId": "718aa04811219c353f130dc6995128a9d4ab2e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
