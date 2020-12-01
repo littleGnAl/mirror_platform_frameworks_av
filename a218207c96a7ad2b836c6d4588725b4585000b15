@@ -22,6 +22,30 @@
       },
       "revId": "a218207c96a7ad2b836c6d4588725b4585000b15",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "477057c3_5e9f52d4",
+        "filename": "media/codec2/vndk/C2AllocatorBlob.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-12-01T20:17:55Z",
+      "side": 1,
+      "message": "it\u0027s guaranteed that capacity() \u003e\u003d size at this point, otherwise \"size \u003e capacity()\" clause would evaluate true and early-terminate the if statement.",
+      "parentUuid": "6e86513b_f99083d7",
+      "range": {
+        "startLine": 96,
+        "startChar": 61,
+        "endLine": 96,
+        "endChar": 78
+      },
+      "revId": "a218207c96a7ad2b836c6d4588725b4585000b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
