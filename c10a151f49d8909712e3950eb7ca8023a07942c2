@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e97a6817_10655da9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-01T05:32:28Z",
+      "side": 1,
+      "message": "applied the fixes (line length and spacing) that wonsik had applied over in the partner repo.\n\nthis means that we\u0027ll want to take a later patchset than what is going through treehugger right now.",
+      "revId": "c10a151f49d8909712e3950eb7ca8023a07942c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0466f7ce_e015741e",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5327,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-01T05:32:28Z",
+      "side": 1,
+      "message": "indent another 4 spaces.",
+      "range": {
+        "startLine": 5327,
+        "startChar": 27,
+        "endLine": 5327,
+        "endChar": 37
+      },
+      "revId": "c10a151f49d8909712e3950eb7ca8023a07942c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1660ea0a_6bbeafdc",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5341,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-01T05:32:28Z",
+      "side": 1,
+      "message": "we seem to have lost the formatting nits that Wonsik applied in the CL that is in the partner repo.\nthese 3 long lines...",
+      "range": {
+        "startLine": 5337,
+        "startChar": 28,
+        "endLine": 5341,
+        "endChar": 32
+      },
+      "revId": "c10a151f49d8909712e3950eb7ca8023a07942c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "06f8d761_81644eb3",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5344,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-01T05:32:28Z",
+      "side": 1,
+      "message": "and this one.\nfold all 4 of them.",
+      "range": {
+        "startLine": 5344,
+        "startChar": 28,
+        "endLine": 5344,
+        "endChar": 34
+      },
+      "revId": "c10a151f49d8909712e3950eb7ca8023a07942c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67182647_f894c78d",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 7804,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-01T05:32:28Z",
+      "side": 1,
+      "message": "spacing",
+      "range": {
+        "startLine": 7804,
+        "startChar": 21,
+        "endLine": 7804,
+        "endChar": 28
+      },
+      "revId": "c10a151f49d8909712e3950eb7ca8023a07942c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

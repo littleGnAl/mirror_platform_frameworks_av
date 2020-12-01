@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da682bf6_45985f24",
+        "filename": "media/libstagefright/codecs/aacdec/SoftAAC2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 89,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-01T05:32:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "332655d1_031a03c4",
+      "range": {
+        "startLine": 89,
+        "startChar": 3,
+        "endLine": 89,
+        "endChar": 52
+      },
+      "revId": "1a9c04333650a9ba4e336c48758f095ba093523f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "927d1da3_762ce856",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4a447770_7ad1074b",
+        "filename": "media/libstagefright/codecs/aacdec/SoftAAC2.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-01T05:32:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "927d1da3_762ce856",
+      "range": {
+        "startLine": 544,
+        "startChar": 53,
+        "endLine": 544,
+        "endChar": 56
+      },
+      "revId": "1a9c04333650a9ba4e336c48758f095ba093523f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9a22f0e3_0b5b80f7",
@@ -77,6 +125,30 @@
       "writtenOn": "2020-11-28T22:16:29Z",
       "side": 1,
       "message": "there is no use of mMaxChannelCount in the patch",
+      "range": {
+        "startLine": 97,
+        "startChar": 12,
+        "endLine": 97,
+        "endChar": 28
+      },
+      "revId": "1a9c04333650a9ba4e336c48758f095ba093523f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db13fb4b_d5083748",
+        "filename": "media/libstagefright/codecs/aacdec/SoftAAC2.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 97,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-01T05:32:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a22f0e3_0b5b80f7",
       "range": {
         "startLine": 97,
         "startChar": 12,
