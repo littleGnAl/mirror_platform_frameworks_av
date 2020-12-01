@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e86513b_f99083d7",
+        "filename": "media/codec2/vndk/C2AllocatorBlob.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2020-12-01T11:25:28Z",
+      "side": 1,
+      "message": "if both are unsigned, underflow may possibly happen?",
+      "range": {
+        "startLine": 96,
+        "startChar": 61,
+        "endLine": 96,
+        "endChar": 78
+      },
+      "revId": "a218207c96a7ad2b836c6d4588725b4585000b15",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
