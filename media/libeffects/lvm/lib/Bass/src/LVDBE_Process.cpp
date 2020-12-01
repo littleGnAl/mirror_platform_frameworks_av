@@ -20,6 +20,9 @@
 /*    Includes                                                                          */
 /*                                                                                      */
 /****************************************************************************************/
+#ifdef BIQUAD_OPT
+#include <audio_utils/BiquadFilter.h>
+#endif
 
 #include <string.h>  // memset
 #include "LVDBE.h"
@@ -125,10 +128,15 @@ LVDBE_ReturnStatus_en LVDBE_Process(
          * Apply the high pass filter if selected
          */
         if (pInstance->Params.HPFSelect == LVDBE_HPF_ON) {
+#ifndef BIQUAD_OPT
             BQ_MC_D32F32C30_TRC_WRA_01(&pInstance->pCoef->HPFInstance, /* Filter instance      */
                                        pScratch,                       /* Source               */
                                        pScratch,                       /* Destination          */
                                        (LVM_INT16)NrFrames, (LVM_INT16)NrChannels);
+#else
+            pInstance->pBqInstance->process((LVM_FLOAT *)pScratch,
+                (const LVM_FLOAT *)pScratch, (size_t)NrFrames);
+#endif
         }
 
         /*
