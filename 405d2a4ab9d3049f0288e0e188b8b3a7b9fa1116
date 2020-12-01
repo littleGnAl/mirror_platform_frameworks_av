@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0d6cd7c_b36e467e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-12-01T19:39:16Z",
+      "side": 1,
+      "message": "It seems that setting the flag is no-op for C2SoftAvcEnc. Is it the intended behavior?",
+      "revId": "405d2a4ab9d3049f0288e0e188b8b3a7b9fa1116",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
