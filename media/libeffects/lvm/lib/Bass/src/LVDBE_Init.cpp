@@ -186,6 +186,12 @@ void LVDBE_DeInit(LVDBE_Handle_t* phInstance) {
         free(pInstance->pCoef);
         pInstance->pCoef = LVM_NULL;
     }
+#ifdef BIQUAD_OPT
+    if (pInstance->pBqInstance != LVM_NULL) {
+        delete pInstance->pBqInstance;
+        pInstance->pBqInstance = LVM_NULL;
+    }
+#endif
     free(pInstance);
     *phInstance = LVM_NULL;
 }

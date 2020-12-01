@@ -33,6 +33,9 @@
 /*                                                                                      */
 /****************************************************************************************/
 
+#ifdef BIQUAD_OPT
+#include <audio_utils/BiquadFilter.h>
+#endif
 #include "LVDBE.h" /* Calling or Application layer definitions */
 #include "BIQUAD.h"
 #include "LVC_Mixer.h"
@@ -86,6 +89,9 @@ typedef struct {
     LVDBE_Data_FLOAT_t* pData; /* Instance data */
     LVDBE_Coef_FLOAT_t* pCoef; /* Instance coefficients */
     void* pScratch;            /* scratch pointer */
+#ifdef BIQUAD_OPT
+    android::audio_utils::BiquadFilter<LVM_FLOAT>* pBqInstance; /* Biquad filter instance */
+#endif
 } LVDBE_Instance_t;
 
 /****************************************************************************************/
