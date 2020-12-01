@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d5de9771_3f8e7fe1",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2020-12-01T11:05:17Z",
+      "side": 1,
+      "message": "Could I have some references to similar settings on how it can be configured to be used from CCodec side?\n(FYI, Current CCodec behavior with this CL is aosp/1456944)",
+      "parentUuid": "8cc23978_81ad0ec8",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 34
+      },
+      "revId": "718aa04811219c353f130dc6995128a9d4ab2e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a08253ae_43833254",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-01T00:30:02Z",
       "side": 1,
       "message": "This would be similar to this - as in that it is a global parameter that can request info params of any scope. Question: should this be restricted to info buffers and what if the client cannot supply the requested info?",
+      "range": {
+        "startLine": 889,
+        "startChar": 0,
+        "endLine": 893,
+        "endChar": 1
+      },
+      "revId": "718aa04811219c353f130dc6995128a9d4ab2e46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "45f36135_50725197",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2020-12-01T11:05:17Z",
+      "side": 1,
+      "message": "If we can overload many functionalities to info buffer that would be also good.\nIf the requested info setting/configuration is not provided, info buffer will not copied nor passed to HALs.",
+      "parentUuid": "a08253ae_43833254",
       "range": {
         "startLine": 889,
         "startChar": 0,
