@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07969502_99ce4124",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 33
+      },
+      "lineNbr": 666,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-12-01T17:04:18Z",
+      "side": 1,
+      "message": "ALOGE_IF(status !\u003d NO_ERROR, ...)",
+      "range": {
+        "startLine": 666,
+        "startChar": 8,
+        "endLine": 666,
+        "endChar": 13
+      },
+      "revId": "9218140d13f71fed6e655e79ea37d54c5459052d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
