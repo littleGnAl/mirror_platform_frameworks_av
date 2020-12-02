@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9efd49de_0a01f3a9",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-02T12:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f897fec_19586245",
+      "revId": "e2760f998bb4bfd2b268868c0dea52d1b6dd985f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "70fd90c4_a383e011",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-12-02T11:17:08Z",
       "side": 1,
       "message": "Remove this line.",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 55
+      },
+      "revId": "e2760f998bb4bfd2b268868c0dea52d1b6dd985f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cb0b2f3_a1fa1173",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-02T12:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "70fd90c4_a383e011",
       "range": {
         "startLine": 302,
         "startChar": 0,
@@ -64,6 +106,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0da59a86_b66bd346",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-02T12:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2dfd00f_07f83e67",
+      "range": {
+        "startLine": 305,
+        "startChar": 13,
+        "endLine": 305,
+        "endChar": 41
+      },
+      "revId": "e2760f998bb4bfd2b268868c0dea52d1b6dd985f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "908d2511_c952a793",
@@ -77,6 +143,30 @@
       "writtenOn": "2020-12-02T11:30:57Z",
       "side": 1,
       "message": "Move to the top if the order does not matter!",
+      "range": {
+        "startLine": 40,
+        "startChar": 0,
+        "endLine": 42,
+        "endChar": 6
+      },
+      "revId": "e2760f998bb4bfd2b268868c0dea52d1b6dd985f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65b51ff4_dc9e44ba",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-02T12:22:55Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "908d2511_c952a793",
       "range": {
         "startLine": 40,
         "startChar": 0,
