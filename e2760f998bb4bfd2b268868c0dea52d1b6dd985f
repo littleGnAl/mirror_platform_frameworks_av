@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f897fec_19586245",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-12-02T11:17:08Z",
+      "side": 1,
+      "message": "Remove this line.",
+      "revId": "e2760f998bb4bfd2b268868c0dea52d1b6dd985f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70fd90c4_a383e011",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-12-02T11:17:08Z",
+      "side": 1,
+      "message": "Remove this line.",
+      "range": {
+        "startLine": 302,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 55
+      },
+      "revId": "e2760f998bb4bfd2b268868c0dea52d1b6dd985f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2dfd00f_07f83e67",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 305,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-12-02T11:17:08Z",
+      "side": 1,
+      "message": "Use pParams-\u003eNrChannels instead.",
+      "range": {
+        "startLine": 305,
+        "startChar": 13,
+        "endLine": 305,
+        "endChar": 41
+      },
+      "revId": "e2760f998bb4bfd2b268868c0dea52d1b6dd985f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
