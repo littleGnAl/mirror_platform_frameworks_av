@@ -13,6 +13,16 @@ cc_library_shared {
         "external/libavc/decoder",
         "external/libavc/common",
     ],
+
+    sanitize: {
+        cfi: true,
+        diag: {
+            cfi: true,
+        },
+        config: {
+          cfi_assembly_support: true,
+        },
+    },
 }
 
 cc_library_shared {
@@ -34,4 +44,14 @@ cc_library_shared {
     cflags: [
         "-Wno-unused-variable",
     ],
+
+    sanitize: {
+        cfi: true,
+        diag: {
+            cfi: true,
+        },
+        config: {
+          cfi_assembly_support: true,
+        },
+    },
 }
