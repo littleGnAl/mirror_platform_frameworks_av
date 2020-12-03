@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7db12652_3c9e383e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-12-03T16:06:17Z",
+      "side": 1,
+      "message": "Thanks.\nEffectChain::setDevices_l() must always be called with ThreadBase lock held.\n",
+      "revId": "56aa82b2b865d81b9bd7ae532d21224637edef59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
