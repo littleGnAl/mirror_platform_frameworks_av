@@ -276,6 +276,7 @@ public:
                             int32_t planeSize = 0;
                             for (uint32_t i = 0; i < layout.numPlanes; ++i) {
                                 const C2PlaneInfo &plane = layout.planes[i];
+                                int64_t planeStride = std::abs(plane.rowInc / plane.colInc);
                                 ssize_t minOffset = plane.minOffset(mWidth, mHeight);
                                 ssize_t maxOffset = plane.maxOffset(mWidth, mHeight);
                                 if (minPtr > mView.data()[i] + minOffset) {
@@ -284,9 +285,8 @@ public:
                                 if (maxPtr < mView.data()[i] + maxOffset) {
                                     maxPtr = mView.data()[i] + maxOffset;
                                 }
-                                planeSize += std::abs(plane.rowInc) * align(mHeight, 64)
-                                        / plane.rowSampling / plane.colSampling
-                                        * divUp(mAllocatedDepth, 8u);
+                                planeSize += planeStride * divUp(mAllocatedDepth, 8u)
+                                        * align(mHeight, 64) / plane.rowSampling;
                             }
 
                             if ((maxPtr - minPtr + 1) <= planeSize) {
