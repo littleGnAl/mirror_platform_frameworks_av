@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fba1d346_2240028a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-12-03T23:19:11Z",
+      "side": 1,
+      "message": "Bug: 120944950",
+      "revId": "1cfe93966606c46cdcabbdc7d4a2601e585469ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3be4d473_9876efbd",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-12-03T23:19:11Z",
+      "side": 1,
+      "message": "initialize coefs directly and remove coefTemp\n\nstd::array\u003cLVM_FLOAT, android::audio_utils::kBiquadNumCoefs\u003e coefs \u003d {LVDBE_HPF_Table[Offset].A0, LVDBE_HPF_Table[Offset].A1,\n            LVDBE_HPF_Table[Offset].A2, -(LVDBE_HPF_Table[Offset].B1),\n            -(LVDBE_HPF_Table[Offset].B2)};",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 5
+      },
+      "revId": "1cfe93966606c46cdcabbdc7d4a2601e585469ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad86b1f_5adf0206",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-12-03T23:19:11Z",
+      "side": 1,
+      "message": "run clang-format (or git-clang-format)",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 5
+      },
+      "revId": "1cfe93966606c46cdcabbdc7d4a2601e585469ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c23daca4_23a6ace9",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Private.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-12-03T23:19:11Z",
+      "side": 1,
+      "message": "move this to line 93 and let clang-format handle the formatting",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 22
+      },
+      "revId": "1cfe93966606c46cdcabbdc7d4a2601e585469ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
