@@ -19,3 +19,17 @@ cc_test {
         "libhardware_headers",
     ],
 }
+
+cc_test {
+    name: "correlation",
+    host_supported: false,
+    srcs: ["correlation.cpp"],
+    local_include_dirs: [
+        ".",
+    ],
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wextra",
+    ],
+}
