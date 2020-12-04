@@ -16,6 +16,23 @@
       "message": "I would prefer not to merge this. This test is specifically testing that an appropriately sized (based on C2 model) input buffer works for decoders.",
       "revId": "adeb93644181f283a367e23cfea4998efba3a008",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f61d4440_9d3b8998",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-12-04T22:23:53Z",
+      "side": 1,
+      "message": "A reasonable fix for this would be a introduce the concept of \"requested padding\" to components. However, this will need a change from the components - e.g. they would need to both request their input buffer paddings and honor any output buffer padding requests.",
+      "revId": "adeb93644181f283a367e23cfea4998efba3a008",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
