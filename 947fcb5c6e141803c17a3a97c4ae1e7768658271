@@ -45,6 +45,30 @@
       },
       "revId": "947fcb5c6e141803c17a3a97c4ae1e7768658271",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b313d5a_7cf8d90d",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-12-04T23:41:52Z",
+      "side": 1,
+      "message": "This tries to calculate how many bytes a plane would occupy.\n\nrowInc / colInc gives us (roughly) # of pixels per row including padding due to stride. We multiply that by allocDepth / 8 so we know how many bytes those pixels occupy. Now we just multiply that by # of rows.",
+      "parentUuid": "4519eb54_dba2028c",
+      "range": {
+        "startLine": 288,
+        "startChar": 32,
+        "endLine": 289,
+        "endChar": 81
+      },
+      "revId": "947fcb5c6e141803c17a3a97c4ae1e7768658271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
