@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b7dd6226_4b48b288",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-12-04T23:34:05Z",
+      "side": 1,
+      "message": "this is not guaranteed to be an integer, e.g. colInc could be 3 and rowInc could be 4k, but for 420 it\u0027s likely okay",
+      "range": {
+        "startLine": 279,
+        "startChar": 40,
+        "endLine": 279,
+        "endChar": 51
+      },
+      "revId": "947fcb5c6e141803c17a3a97c4ae1e7768658271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4519eb54_dba2028c",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2020-12-04T23:34:05Z",
+      "side": 1,
+      "message": "I don\u0027t think I understand this. it seems to effectively replace colSampling with colInc.",
+      "range": {
+        "startLine": 288,
+        "startChar": 32,
+        "endLine": 289,
+        "endChar": 81
+      },
+      "revId": "947fcb5c6e141803c17a3a97c4ae1e7768658271",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
