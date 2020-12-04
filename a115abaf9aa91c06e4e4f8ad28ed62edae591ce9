@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67f45838_4e6d5a3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-12-04T22:31:41Z",
+      "side": 1,
+      "message": "(+lerobert who added this originally)\n\nlgtm, but not +2\u0027ing yet since the comment is still incorrect, see below.\n",
+      "revId": "a115abaf9aa91c06e4e4f8ad28ed62edae591ce9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "635cfbe2_6f72fbaa",
+        "filename": "services/mediametrics/AudioPowerUsage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2020-12-04T22:31:41Z",
+      "side": 1,
+      "message": "This is actually called AudioPowerUsageDataReported in the proto, not AudioUsageDataReported.\n\nAlso, instead of redefining these values here with a note saying they must match the proto, why not instead use the values from the generated atoms.pb.h directly, e.g. AudioPowerUsageDataReported::UNKNOWN_TYPE, etc?",
+      "range": {
+        "startLine": 50,
+        "startChar": 26,
+        "endLine": 50,
+        "endChar": 48
+      },
+      "revId": "a115abaf9aa91c06e4e4f8ad28ed62edae591ce9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
