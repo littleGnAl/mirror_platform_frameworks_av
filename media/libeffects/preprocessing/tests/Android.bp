@@ -19,3 +19,18 @@ cc_test {
         "libhardware_headers",
     ],
 }
+
+cc_test {
+    name: "correlationTest",
+    host_supported: false,
+    srcs: ["PreProcessingCorr.cpp"],
+    local_include_dirs: [
+        ".",
+    ],
+    cflags: [
+        "-DENABLE_CROSS_CORR",
+        "-Wall",
+        "-Werror",
+        "-Wextra",
+    ],
+}
