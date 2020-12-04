@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006563237",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1518418?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "70421c3f_e7053b56",
+        "filename": "media/codec2/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 767,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-04T21:20:54Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 767,
+        "startChar": 0,
+        "endLine": 767,
+        "endChar": 109
+      },
+      "revId": "adeb93644181f283a367e23cfea4998efba3a008",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006563237",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1518418?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b5a9cdb6_462ed46e",
+        "filename": "media/codec2/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-04T21:20:54Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 1117,
+        "startChar": 0,
+        "endLine": 1117,
+        "endChar": 105
+      },
+      "revId": "adeb93644181f283a367e23cfea4998efba3a008",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
