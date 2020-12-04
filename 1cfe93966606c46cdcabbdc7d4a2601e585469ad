@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a442e29c_ffccd1dd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-04T09:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fba1d346_2240028a",
+      "revId": "1cfe93966606c46cdcabbdc7d4a2601e585469ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "494a04b8_851ee978",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 4
@@ -58,6 +76,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a69fd3a_08b8e7e1",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-04T09:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3be4d473_9876efbd",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 127,
+        "endChar": 5
+      },
+      "revId": "1cfe93966606c46cdcabbdc7d4a2601e585469ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ad86b1f_5adf0206",
@@ -81,6 +123,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ae4be27_2958c67c",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-04T09:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ad86b1f_5adf0206",
+      "range": {
+        "startLine": 128,
+        "startChar": 0,
+        "endLine": 129,
+        "endChar": 5
+      },
+      "revId": "1cfe93966606c46cdcabbdc7d4a2601e585469ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c23daca4_23a6ace9",
@@ -94,6 +160,30 @@
       "writtenOn": "2020-12-03T23:19:11Z",
       "side": 1,
       "message": "move this to line 93 and let clang-format handle the formatting",
+      "range": {
+        "startLine": 94,
+        "startChar": 8,
+        "endLine": 94,
+        "endChar": 22
+      },
+      "revId": "1cfe93966606c46cdcabbdc7d4a2601e585469ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50cada94_63dad292",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Private.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-04T09:26:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c23daca4_23a6ace9",
       "range": {
         "startLine": 94,
         "startChar": 8,
