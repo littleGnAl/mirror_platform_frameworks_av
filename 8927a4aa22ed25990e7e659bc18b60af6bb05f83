@@ -16,6 +16,29 @@
       "message": "Hello Max, \nThis is ready to be submitted.\nCan you please review and submit?\nThanks.",
       "revId": "8927a4aa22ed25990e7e659bc18b60af6bb05f83",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ee917c1_ff4bddd5",
+        "filename": "media/codec2/sfplugin/utils/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1100093
+      },
+      "writtenOn": "2020-12-05T01:50:52Z",
+      "side": 1,
+      "message": "Isn\u0027t his used in apex.go?  Now the .so will go away.",
+      "range": {
+        "startLine": 2,
+        "startChar": 11,
+        "endLine": 2,
+        "endChar": 35
+      },
+      "revId": "8927a4aa22ed25990e7e659bc18b60af6bb05f83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
