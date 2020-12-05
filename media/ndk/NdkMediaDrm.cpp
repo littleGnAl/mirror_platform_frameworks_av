@@ -98,7 +98,7 @@ void DrmListener::notify(DrmPlugin::EventType eventType, int extra, const Parcel
 
     AMediaDrmSessionId sessionId = {NULL, 0};
     int32_t sessionIdSize = obj->readInt32();
-    if (sessionIdSize <= 0) {
+    if (sessionIdSize < 0) {
         ALOGE("Invalid session id size");
         return;
     }
@@ -113,6 +113,10 @@ void DrmListener::notify(DrmPlugin::EventType eventType, int extra, const Parcel
     }
 
     if (DrmPlugin::kDrmPluginEventExpirationUpdate == eventType) {
+        if (mExpirationUpdateListener == NULL) {
+            ALOGW("ExpirationUpdateListener not set");
+            return;
+        }
         int64_t expiryTimeInMS = obj->readInt64();
         if (expiryTimeInMS >= 0) {
             (*mExpirationUpdateListener)(mObj, &sessionId, expiryTimeInMS);
@@ -121,6 +125,10 @@ void DrmListener::notify(DrmPlugin::EventType eventType, int extra, const Parcel
         }
         return;
     } else if (DrmPlugin::kDrmPluginEventKeysChange == eventType) {
+        if (mKeysChangeListener == NULL) {
+            ALOGW("KeysChangeListener not set");
+            return;
+        }
         int32_t numKeys = 0;
         err = obj->readInt32(&numKeys);
         if (err != OK) {
@@ -180,9 +188,14 @@ void DrmListener::notify(DrmPlugin::EventType eventType, int extra, const Parcel
             return;
     }
 
+    if (mEventListener == NULL) {
+        ALOGW("EventListener not set");
+        return;
+    }
+
     int32_t dataSize = obj->readInt32();
     uint8_t *data = NULL;
-    if (dataSize > 0) {
+    if (dataSize >= 0) {
         data = new uint8_t[dataSize];
         err = obj->read(data, dataSize);
         if (err == OK) {
