@@ -22,6 +22,30 @@
       },
       "revId": "a7f34dc54d8a3b5cbda582396d72d8f68ba49d5b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd219e45_61263d79",
+        "filename": "media/codec2/components/aac/C2SoftAacDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1064,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-07T19:41:38Z",
+      "side": 1,
+      "message": "It appears that these functions are loaded with dlsym and the attribute only applies to functions. https://source.corp.google.com/android/frameworks/av/media/codec2/vndk/C2Store.cpp;l\u003d859?q\u003dframeworks%2Fav%2Fmedia%2Fcodec2%2Fvndk%2FC2Store\nI\u0027m not sure what the base class would be in this case.\n\nIt would seem that we would have to insist on annotating vendor supplied components as well. I can annotate the vendor components in another CL.",
+      "parentUuid": "87f647dc_5e5f7608",
+      "range": {
+        "startLine": 1064,
+        "startChar": 12,
+        "endLine": 1064,
+        "endChar": 41
+      },
+      "revId": "a7f34dc54d8a3b5cbda582396d72d8f68ba49d5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
