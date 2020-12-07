@@ -39,6 +39,30 @@
       },
       "revId": "fa5d2f5cd757354f812426435dccddac9acfcbe4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e0eebca_87c063bb",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-12-07T14:12:44Z",
+      "side": 1,
+      "message": "Note: IAudioGain callback will be very usefull to implement a test, if the emulator audio hal reports it whatever the origin of audio gain change (setAudioPortConfig or internal)",
+      "parentUuid": "a7fb42bf_025e9f3b",
+      "range": {
+        "startLine": 664,
+        "startChar": 22,
+        "endLine": 664,
+        "endChar": 38
+      },
+      "revId": "fa5d2f5cd757354f812426435dccddac9acfcbe4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
