@@ -63,6 +63,30 @@
       },
       "revId": "a115abaf9aa91c06e4e4f8ad28ed62edae591ce9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2f0615c_cc5dba47",
+        "filename": "services/mediametrics/AudioPowerUsage.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1791520
+      },
+      "writtenOn": "2020-12-07T04:00:25Z",
+      "side": 1,
+      "message": "Just have a quick try to include the header file atoms.pb.h, looks like it only for host build and cannot include by libmediametricsservice, is there another one for device build?\n\nout/soong/.intermediates/frameworks/proto_logging/stats/libstats_proto_host/linux_glibc_x86_64_shared/gen/proto/frameworks/proto_logging/stats/atoms.pb.h",
+      "parentUuid": "5504a651_2c41ed98",
+      "range": {
+        "startLine": 50,
+        "startChar": 26,
+        "endLine": 50,
+        "endChar": 48
+      },
+      "revId": "a115abaf9aa91c06e4e4f8ad28ed62edae591ce9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
