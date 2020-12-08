@@ -44,8 +44,6 @@ enum {
     MASTER_MUTE,
     SET_STREAM_VOLUME,
     SET_STREAM_MUTE,
-    STREAM_VOLUME,
-    STREAM_MUTE,
     SET_MODE,
     SET_MIC_MUTE,
     GET_MIC_MUTE,
@@ -294,25 +292,6 @@ public:
         data.writeInt32((int32_t) stream);
         data.writeInt32(muted);
         remote()->transact(SET_STREAM_MUTE, data, &reply);
-        return reply.readInt32();
-    }
-
-    virtual float streamVolume(audio_stream_type_t stream, audio_io_handle_t output) const
-    {
-        Parcel data, reply;
-        data.writeInterfaceToken(IAudioFlinger::getInterfaceDescriptor());
-        data.writeInt32((int32_t) stream);
-        data.writeInt32((int32_t) output);
-        remote()->transact(STREAM_VOLUME, data, &reply);
-        return reply.readFloat();
-    }
-
-    virtual bool streamMute(audio_stream_type_t stream) const
-    {
-        Parcel data, reply;
-        data.writeInterfaceToken(IAudioFlinger::getInterfaceDescriptor());
-        data.writeInt32((int32_t) stream);
-        remote()->transact(STREAM_MUTE, data, &reply);
         return reply.readInt32();
     }
 
@@ -1145,19 +1124,6 @@ status_t BnAudioFlinger::onTransact(
             CHECK_INTERFACE(IAudioFlinger, data, reply);
             int stream = data.readInt32();
             reply->writeInt32( setStreamMute((audio_stream_type_t) stream, data.readInt32()) );
-            return NO_ERROR;
-        } break;
-        case STREAM_VOLUME: {
-            CHECK_INTERFACE(IAudioFlinger, data, reply);
-            int stream = data.readInt32();
-            int output = data.readInt32();
-            reply->writeFloat( streamVolume((audio_stream_type_t) stream, output) );
-            return NO_ERROR;
-        } break;
-        case STREAM_MUTE: {
-            CHECK_INTERFACE(IAudioFlinger, data, reply);
-            int stream = data.readInt32();
-            reply->writeInt32( streamMute((audio_stream_type_t) stream) );
             return NO_ERROR;
         } break;
         case SET_MODE: {
