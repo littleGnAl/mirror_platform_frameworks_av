@@ -84,6 +84,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d42d9cb_56dc11c3",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-08T10:12:00Z",
+      "side": 1,
+      "message": "Please let us know if this understanding is not correct. We will make the changes accordingly.",
+      "parentUuid": "5b16837d_f16832b2",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 74
+      },
+      "revId": "7e888c92a6ffdd6891ca6c78966d442bc96ff879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44ffb9b9_280adb31",
         "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
         "patchSetId": 5
@@ -474,6 +498,30 @@
       "side": 1,
       "message": "HPFInstance and HPFTaps are #ifdefed accordingly",
       "parentUuid": "d9523b48_075ba8bb",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 58
+      },
+      "revId": "7e888c92a6ffdd6891ca6c78966d442bc96ff879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bb9f9d6_6433e611",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Private.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-08T10:12:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a1240cf_a400e5bf",
       "range": {
         "startLine": 89,
         "startChar": 0,
