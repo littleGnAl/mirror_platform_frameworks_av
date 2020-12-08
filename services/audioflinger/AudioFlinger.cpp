@@ -1400,37 +1400,6 @@ status_t AudioFlinger::setStreamMute(audio_stream_type_t stream, bool muted)
     return NO_ERROR;
 }
 
-float AudioFlinger::streamVolume(audio_stream_type_t stream, audio_io_handle_t output) const
-{
-    status_t status = checkStreamType(stream);
-    if (status != NO_ERROR) {
-        return 0.0f;
-    }
-    if (output == AUDIO_IO_HANDLE_NONE) {
-        return 0.0f;
-    }
-
-    AutoMutex lock(mLock);
-    VolumeInterface *volumeInterface = getVolumeInterface_l(output);
-    if (volumeInterface == NULL) {
-        return 0.0f;
-    }
-
-    return volumeInterface->streamVolume(stream);
-}
-
-bool AudioFlinger::streamMute(audio_stream_type_t stream) const
-{
-    status_t status = checkStreamType(stream);
-    if (status != NO_ERROR) {
-        return true;
-    }
-
-    AutoMutex lock(mLock);
-    return streamMute_l(stream);
-}
-
-
 void AudioFlinger::broacastParametersToRecordThreads_l(const String8& keyValuePairs)
 {
     for (size_t i = 0; i < mRecordThreads.size(); i++) {
