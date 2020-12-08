@@ -22,6 +22,30 @@
       },
       "revId": "3e545b908320ad626c1d6eae8779c6ae6fa1d69b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a33f1e55_a98dac70",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 21
+      },
+      "lineNbr": 2514,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-12-08T11:27:36Z",
+      "side": 0,
+      "message": "agree with this proposal",
+      "parentUuid": "d05d517f_1713f4dd",
+      "range": {
+        "startLine": 2514,
+        "startChar": 13,
+        "endLine": 2514,
+        "endChar": 34
+      },
+      "revId": "3e545b908320ad626c1d6eae8779c6ae6fa1d69b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
