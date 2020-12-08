@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3559dc1_94e5d2ba",
+        "filename": "media/codec2/components/base/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-08T18:02:28Z",
+      "side": 1,
+      "message": "is there a conflict with this inside the diag vs the unprotected one on line 102?\n\ne.g. a fatal vs diagnostic-producing outcome when we violate cfi rules?\n\nalso -- seems to me that perhaps line 94 in the sanitize-signed clause above shouldn\u0027t be there?  e.g. all of the cfi phrasing should be within this cc_defaults clause.",
+      "range": {
+        "startLine": 106,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 10
+      },
+      "revId": "9c27ab9030c75d3acda10a24e0eed3250e7fa3e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
