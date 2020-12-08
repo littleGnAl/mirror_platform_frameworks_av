@@ -55,6 +55,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "11f3c54f_96ddcbe5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-12-08T00:12:17Z",
+      "side": 1,
+      "message": "Should be fixed",
+      "parentUuid": "6e2f39a7_999ab91b",
+      "revId": "baf8386c701cac9df379a8cd28a689d2dc42ad9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7c01a4ea_89c06613",
         "filename": "media/libstagefright/tests/fuzzers/FrameDecoderFuzzer.cpp",
         "patchSetId": 5
@@ -66,6 +84,30 @@
       "writtenOn": "2020-12-01T19:00:54Z",
       "side": 1,
       "message": "nit: 4 space continuation indent after \u003d",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 9
+      },
+      "revId": "baf8386c701cac9df379a8cd28a689d2dc42ad9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb7296c1_02632253",
+        "filename": "media/libstagefright/tests/fuzzers/FrameDecoderFuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-12-08T00:12:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c01a4ea_89c06613",
       "range": {
         "startLine": 38,
         "startChar": 4,
@@ -101,6 +143,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "17b75043_3d5edff9",
+        "filename": "media/libstagefright/tests/fuzzers/FrameDecoderFuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-12-08T00:12:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5531248_aad0ea79",
+      "range": {
+        "startLine": 41,
+        "startChar": 16,
+        "endLine": 41,
+        "endChar": 18
+      },
+      "revId": "baf8386c701cac9df379a8cd28a689d2dc42ad9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7844d22e_3349c80c",
         "filename": "media/libstagefright/tests/fuzzers/FrameDecoderFuzzer.cpp",
         "patchSetId": 5
@@ -112,6 +178,30 @@
       "writtenOn": "2020-12-01T19:00:54Z",
       "side": 1,
       "message": "nit: space before (",
+      "range": {
+        "startLine": 43,
+        "startChar": 6,
+        "endLine": 43,
+        "endChar": 7
+      },
+      "revId": "baf8386c701cac9df379a8cd28a689d2dc42ad9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63510d00_8d34befa",
+        "filename": "media/libstagefright/tests/fuzzers/FrameDecoderFuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-12-08T00:12:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7844d22e_3349c80c",
       "range": {
         "startLine": 43,
         "startChar": 6,
@@ -145,6 +235,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c67419a0_d2db04cf",
+        "filename": "media/libstagefright/tests/fuzzers/FrameDecoderFuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-12-08T00:12:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c78d860_20290eca",
+      "range": {
+        "startLine": 84,
+        "startChar": 6,
+        "endLine": 84,
+        "endChar": 21
+      },
+      "revId": "baf8386c701cac9df379a8cd28a689d2dc42ad9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "77c2348e_a4495c32",
@@ -158,6 +272,30 @@
       "writtenOn": "2020-12-01T19:00:54Z",
       "side": 1,
       "message": "nit: * by variable",
+      "range": {
+        "startLine": 30,
+        "startChar": 48,
+        "endLine": 30,
+        "endChar": 49
+      },
+      "revId": "baf8386c701cac9df379a8cd28a689d2dc42ad9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "43acaa80_4b9d20f3",
+        "filename": "media/libstagefright/tests/fuzzers/FrameDecoderHelpers.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-12-08T00:12:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "77c2348e_a4495c32",
       "range": {
         "startLine": 30,
         "startChar": 48,
@@ -191,6 +329,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d25a95d_86ff6190",
+        "filename": "media/libstagefright/tests/fuzzers/FrameDecoderHelpers.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-12-08T00:12:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "820ffd28_1daa6fb1",
+      "range": {
+        "startLine": 37,
+        "startChar": 6,
+        "endLine": 37,
+        "endChar": 7
+      },
+      "revId": "baf8386c701cac9df379a8cd28a689d2dc42ad9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "641a27bf_7b1dcb06",
@@ -204,6 +366,30 @@
       "writtenOn": "2020-12-01T19:00:54Z",
       "side": 1,
       "message": "nit: 4 space continuation indent after \u003d (here and 3 more below)",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 9
+      },
+      "revId": "baf8386c701cac9df379a8cd28a689d2dc42ad9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d97063d_1c90d105",
+        "filename": "media/libstagefright/tests/fuzzers/FrameDecoderHelpers.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-12-08T00:12:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "641a27bf_7b1dcb06",
       "range": {
         "startLine": 54,
         "startChar": 4,
@@ -237,6 +423,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b5c15e7_c332842b",
+        "filename": "media/libstagefright/tests/fuzzers/FuzzerMediaUtility.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-12-08T00:12:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ab7349d4_9feffdd3",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 1
+      },
+      "revId": "baf8386c701cac9df379a8cd28a689d2dc42ad9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "90c8dcc8_32abd1a3",
@@ -250,6 +460,30 @@
       "writtenOn": "2020-12-01T19:00:54Z",
       "side": 1,
       "message": "use 4 space indent.",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 236,
+        "endChar": 1
+      },
+      "revId": "baf8386c701cac9df379a8cd28a689d2dc42ad9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a729adee_96eb1b99",
+        "filename": "media/libstagefright/tests/fuzzers/WriterFuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1695385
+      },
+      "writtenOn": "2020-12-08T00:12:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90c8dcc8_32abd1a3",
       "range": {
         "startLine": 162,
         "startChar": 0,
