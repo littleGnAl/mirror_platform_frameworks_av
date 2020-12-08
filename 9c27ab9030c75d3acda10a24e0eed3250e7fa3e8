@@ -22,6 +22,30 @@
       },
       "revId": "9c27ab9030c75d3acda10a24e0eed3250e7fa3e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d5c515e_7ef3dc68",
+        "filename": "media/codec2/components/base/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1580780
+      },
+      "writtenOn": "2020-12-08T19:50:03Z",
+      "side": 1,
+      "message": "There shouldn\u0027t be a conflict with enabling cfi in diag mode and unprotected. The diag mode should just be able to translate some of the information from the fatal reports and make it easier to debug.\n\nDone. I\u0027ve removed cfi in the sanitize_signed default.",
+      "parentUuid": "a3559dc1_94e5d2ba",
+      "range": {
+        "startLine": 106,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 10
+      },
+      "revId": "9c27ab9030c75d3acda10a24e0eed3250e7fa3e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
