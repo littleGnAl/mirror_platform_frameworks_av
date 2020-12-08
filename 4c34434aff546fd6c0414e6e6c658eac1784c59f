@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e67f3a9_00a3aaaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-12-08T08:53:04Z",
+      "side": 1,
+      "message": "We had to revert this CL internally because it broke a GTS test on legacy remote submix.\n\nAdding Jean-Michel to give more details.\n",
+      "revId": "4c34434aff546fd6c0414e6e6c658eac1784c59f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
