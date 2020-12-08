@@ -1342,8 +1342,6 @@ void CCodec::start() {
         mCallback->onError(err2, ACTION_CODE_FATAL);
         return;
     }
-    // We're not starting after flush.
-    (void)mSentConfigAfterResume.test_and_set();
     err2 = mChannel->start(inputFormat, outputFormat, buffersBoundToCodec);
     if (err2 != OK) {
         mCallback->onError(err2, ACTION_CODE_FATAL);
@@ -1591,7 +1589,6 @@ void CCodec::signalResume() {
         return;
     }
 
-    mSentConfigAfterResume.clear();
     {
         Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
         const std::unique_ptr<Config> &config = *configLocked;
@@ -1808,7 +1805,7 @@ void CCodec::onMessageReceived(const sp<AMessage> &msg) {
             // handle configuration changes in work done
             Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
             const std::unique_ptr<Config> &config = *configLocked;
-            bool changed = !mSentConfigAfterResume.test_and_set();
+            bool changed = false;
             Config::Watcher<C2StreamInitDataInfo::output> initData =
                 config->watch<C2StreamInitDataInfo::output>();
             if (!work->worklets.empty()
