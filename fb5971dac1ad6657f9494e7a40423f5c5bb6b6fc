@@ -70,6 +70,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5439b4ca_e46ddf37",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-12-08T10:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26ce515e_b232bf7f",
+      "range": {
+        "startLine": 1586,
+        "startChar": 50,
+        "endLine": 1586,
+        "endChar": 73
+      },
+      "revId": "fb5971dac1ad6657f9494e7a40423f5c5bb6b6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "df7652f1_0e36ccea",
@@ -83,6 +107,30 @@
       "writtenOn": "2020-11-30T14:12:27Z",
       "side": 1,
       "message": "add a limit on the number of ports (MAX_ITEMS_PER_LIST)",
+      "range": {
+        "startLine": 1314,
+        "startChar": 0,
+        "endLine": 1314,
+        "endChar": 48
+      },
+      "revId": "fb5971dac1ad6657f9494e7a40423f5c5bb6b6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5320624_64903deb",
+        "filename": "media/libaudioclient/IAudioFlinger.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 1314,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-12-08T10:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "df7652f1_0e36ccea",
       "range": {
         "startLine": 1314,
         "startChar": 0,
@@ -116,6 +164,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "35f0ecd7_8fd0858c",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 3228,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-12-08T10:03:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c87a11a4_6d1e3a21",
+      "range": {
+        "startLine": 3228,
+        "startChar": 0,
+        "endLine": 3228,
+        "endChar": 79
+      },
+      "revId": "fb5971dac1ad6657f9494e7a40423f5c5bb6b6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "494a3449_a8a15dd0",
@@ -129,6 +201,30 @@
       "writtenOn": "2020-11-30T14:12:27Z",
       "side": 1,
       "message": "why not call directly t-\u003einvalidate(); on each track?\n\nAlso I don;t remember why we started from AUDIO_STREAM_SYSTEM instead of AUDIO_STREAM_VOICE_CALL?\nI believe all tracks should be invalidated on async error.",
+      "range": {
+        "startLine": 4696,
+        "startChar": 0,
+        "endLine": 4696,
+        "endChar": 52
+      },
+      "revId": "fb5971dac1ad6657f9494e7a40423f5c5bb6b6fc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "13431ef0_59c04cb4",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 4696,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-12-08T10:03:52Z",
+      "side": 1,
+      "message": "I even did not noticed the stream started @SYSTEM. \nShall we bypass the check performed in invalidateTracks (isExternalTrack)?",
+      "parentUuid": "494a3449_a8a15dd0",
       "range": {
         "startLine": 4696,
         "startChar": 0,
