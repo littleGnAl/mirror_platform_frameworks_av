@@ -22,6 +22,30 @@
       },
       "revId": "c3b6579662b46df763ea3750bc17b05c46931849",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aa5f576_43602356",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Init.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-08T16:35:48Z",
+      "side": 1,
+      "message": "LVDBE_SetFilter() is called twice. Once in line 108 in this code, and again in LVDBE_Control.cpp in line 303. \nIn Patchset 7, this is added as the nullptr check before setCoefficients() call is removed in LVDBE_Control.cpp.",
+      "parentUuid": "5597dc2e_beab51fa",
+      "range": {
+        "startLine": 97,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 0
+      },
+      "revId": "c3b6579662b46df763ea3750bc17b05c46931849",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
