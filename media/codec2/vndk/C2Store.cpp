@@ -42,6 +42,11 @@
 #include <android-base/properties.h>
 #endif
 
+#ifdef C2_USE_STATIC_LINKING
+extern "C" ::C2ComponentFactory* CreateCodec2Factory();
+extern "C" void DestroyCodec2Factory(::C2ComponentFactory* factory);
+#endif //#ifdef C2_USE_STATIC_LINKING
+
 namespace android {
 
 /**
@@ -852,6 +857,7 @@ c2_status_t C2PlatformComponentStore::ComponentModule::init(
         std::string libPath) {
     ALOGV("in %s", __func__);
     ALOGV("loading dll");
+#ifndef C2_USE_STATIC_LINKING
     mLibHandle = dlopen(libPath.c_str(), RTLD_NOW|RTLD_NODELETE);
     LOG_ALWAYS_FATAL_IF(mLibHandle == nullptr,
             "could not dlopen %s: %s", libPath.c_str(), dlerror());
@@ -865,6 +871,10 @@ c2_status_t C2PlatformComponentStore::ComponentModule::init(
         (C2ComponentFactory::DestroyCodec2FactoryFunc)dlsym(mLibHandle, "DestroyCodec2Factory");
     LOG_ALWAYS_FATAL_IF(destroyFactory == nullptr,
             "destroyFactory is null in %s", libPath.c_str());
+#else
+    createFactory = CreateCodec2Factory;
+    destroyFactory = DestroyCodec2Factory;
+#endif //#ifndef C2_USE_STATIC_LINKING
 
     mComponentFactory = createFactory();
     if (mComponentFactory == nullptr) {
@@ -1029,6 +1039,7 @@ C2PlatformComponentStore::C2PlatformComponentStore()
       mReflector(std::make_shared<C2ReflectorHelper>()),
       mInterface(mReflector) {
 
+#ifndef C2_USE_STATIC_LINKING
     auto emplace = [this](const char *libPath) {
         mComponents.emplace(libPath, libPath);
     };
@@ -1065,6 +1076,8 @@ C2PlatformComponentStore::C2PlatformComponentStore()
     emplace("libcodec2_soft_vp8enc.so");
     emplace("libcodec2_soft_vp9dec.so");
     emplace("libcodec2_soft_vp9enc.so");
+#endif  //#ifndef C2_USE_STATIC_LINKING
+
 }
 
 c2_status_t C2PlatformComponentStore::copyBuffer(
@@ -1125,6 +1138,14 @@ c2_status_t C2PlatformComponentStore::findComponent(
     if (pos != mComponentNameToPath.end()) {
         return mComponents.at(pos->second).fetchModule(module);
     }
+#ifdef C2_USE_STATIC_LINKING
+    {
+        std::shared_ptr<ComponentModule> localModule = std::make_shared<ComponentModule>();
+        c2_status_t res = localModule->init(name);
+        *module = localModule;
+        return res;
+    }
+#endif //#ifdef C2_USE_STATIC_LINKING
     return C2_NOT_FOUND;
 }
 

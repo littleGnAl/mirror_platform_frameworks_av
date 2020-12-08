@@ -11,14 +11,8 @@ cc_library_headers {
     min_sdk_version: "29",
 }
 
-// !!!DO NOT DEPEND ON THIS SHARED LIBRARY DIRECTLY!!!
-// use libcodec2-impl-defaults instead
-cc_library {
-    name: "libcodec2_vndk",
-    vendor_available: true,
-    min_sdk_version: "29",
-    // TODO: b/147147883
-    double_loadable: true,
+cc_defaults {
+    name: "libcodec2_vndk_defaults",
 
     srcs: [
         "C2AllocatorBlob.cpp",
@@ -79,6 +73,23 @@ cc_library {
         "-Werror",
         "-Wall",
     ],
+}
+
+// !!!DO NOT DEPEND ON THIS SHARED LIBRARY DIRECTLY!!!
+// use libcodec2-impl-defaults instead
+cc_library {
+    name: "libcodec2_vndk",
+    defaults: ["libcodec2_vndk_defaults",],
+    vendor_available: true,
+    min_sdk_version: "29",
+    // TODO: b/147147883
+    double_loadable: true,
+}
+
+cc_library_static {
+    name: "libcodec2_vndk_static",
+    defaults: ["libcodec2_vndk_defaults",],
+    cflags: [ "-DC2_USE_STATIC_LINKING",],
 }
 
 // public dependency for implementing Codec 2 components
