@@ -393,16 +393,12 @@ public:
     virtual     status_t    setMasterBalance(float balance) = 0;
     virtual     status_t    getMasterBalance(float *balance) const = 0;
 
-    /* set/get stream type state. This will probably be used by
+    /* set stream type state. This will probably be used by
      * the preference panel, mostly.
      */
     virtual     status_t    setStreamVolume(audio_stream_type_t stream, float value,
                                     audio_io_handle_t output) = 0;
     virtual     status_t    setStreamMute(audio_stream_type_t stream, bool muted) = 0;
-
-    virtual     float       streamVolume(audio_stream_type_t stream,
-                                    audio_io_handle_t output) const = 0;
-    virtual     bool        streamMute(audio_stream_type_t stream) const = 0;
 
     // set audio mode
     virtual     status_t    setMode(audio_mode_t mode) = 0;
