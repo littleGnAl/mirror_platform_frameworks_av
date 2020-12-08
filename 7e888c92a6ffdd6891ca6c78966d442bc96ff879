@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5b16837d_f16832b2",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-08T07:50:09Z",
+      "side": 1,
+      "message": "Offset is calculated on the fly using pParams-\u003eSampleRate and pParams-\u003eCentreFrequency in line 106. So, constexpr may not be useful here.",
+      "parentUuid": "528c9242_d520a9d1",
+      "range": {
+        "startLine": 121,
+        "startChar": 0,
+        "endLine": 123,
+        "endChar": 74
+      },
+      "revId": "7e888c92a6ffdd6891ca6c78966d442bc96ff879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "44ffb9b9_280adb31",
         "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
         "patchSetId": 5
@@ -71,6 +95,30 @@
       "writtenOn": "2020-12-07T23:31:20Z",
       "side": 1,
       "message": "no need to do the if, make this a member variable by value?",
+      "range": {
+        "startLine": 123,
+        "startChar": 0,
+        "endLine": 125,
+        "endChar": 30
+      },
+      "revId": "7e888c92a6ffdd6891ca6c78966d442bc96ff879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c1f9c925_9eb6d950",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 125,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-08T07:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "44ffb9b9_280adb31",
       "range": {
         "startLine": 123,
         "startChar": 0,
@@ -128,6 +176,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19932a1b_5b002301",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 297,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-08T07:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9be68efe_044a6bc8",
+      "range": {
+        "startLine": 296,
+        "startChar": 0,
+        "endLine": 297,
+        "endChar": 32
+      },
+      "revId": "7e888c92a6ffdd6891ca6c78966d442bc96ff879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a7b07a1_23e6ee8f",
@@ -141,6 +213,30 @@
       "writtenOn": "2020-12-08T02:41:38Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 301,
+        "endChar": 9
+      },
+      "revId": "7e888c92a6ffdd6891ca6c78966d442bc96ff879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a6c38a83_9d472806",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 301,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-08T07:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a7b07a1_23e6ee8f",
       "range": {
         "startLine": 299,
         "startChar": 0,
@@ -198,6 +294,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3ebf999_476e5814",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Init.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-08T07:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "87a9d381_cae472c5",
+      "range": {
+        "startLine": 190,
+        "startChar": 0,
+        "endLine": 192,
+        "endChar": 42
+      },
+      "revId": "7e888c92a6ffdd6891ca6c78966d442bc96ff879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "705c77d5_11785106",
@@ -245,6 +365,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7aa814a_764728f7",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Private.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-08T07:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ec24da40_b1014484",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 14
+      },
+      "revId": "7e888c92a6ffdd6891ca6c78966d442bc96ff879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54852776_eb7c1a37",
@@ -258,6 +402,30 @@
       "writtenOn": "2020-12-07T23:31:20Z",
       "side": 1,
       "message": "how much of this do we still need, can this be #ifdefed out?",
+      "range": {
+        "startLine": 89,
+        "startChar": 0,
+        "endLine": 90,
+        "endChar": 58
+      },
+      "revId": "7e888c92a6ffdd6891ca6c78966d442bc96ff879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc52bf9f_84c86302",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Private.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-08T07:50:09Z",
+      "side": 1,
+      "message": "pData is used for AGC,  Bypass filter, Bypass mixer instances; HPF taps, BPF taps. \npCoef is used of HPF and BPF instances.\n\nBuild errors from these places are observed when #ifdefed out",
+      "parentUuid": "54852776_eb7c1a37",
       "range": {
         "startLine": 89,
         "startChar": 0,
@@ -315,6 +483,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8646c45e_e95062b4",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Private.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-08T07:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d57d1f8_a9aa7c84",
+      "range": {
+        "startLine": 93,
+        "startChar": 3,
+        "endLine": 93,
+        "endChar": 92
+      },
+      "revId": "7e888c92a6ffdd6891ca6c78966d442bc96ff879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c0da3210_63c6b9ac",
@@ -328,6 +520,30 @@
       "writtenOn": "2020-12-07T23:31:20Z",
       "side": 1,
       "message": "nit, would prefer #ifdef rather than the negative form.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 18
+      },
+      "revId": "7e888c92a6ffdd6891ca6c78966d442bc96ff879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "73c1e05a_f7daa200",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Process.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-08T07:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c0da3210_63c6b9ac",
       "range": {
         "startLine": 131,
         "startChar": 0,
@@ -384,6 +600,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cfd45fec_c6b49175",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Process.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-08T07:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76910940_33ca67e5",
+      "range": {
+        "startLine": 137,
+        "startChar": 44,
+        "endLine": 137,
+        "endChar": 56
+      },
+      "revId": "7e888c92a6ffdd6891ca6c78966d442bc96ff879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69dd686c_a90a9c63",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Process.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-08T07:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "621c6186_4c74dc36",
+      "range": {
+        "startLine": 137,
+        "startChar": 65,
+        "endLine": 137,
+        "endChar": 84
+      },
+      "revId": "7e888c92a6ffdd6891ca6c78966d442bc96ff879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d4a98761_ffb46bc9",
@@ -397,6 +661,30 @@
       "writtenOn": "2020-12-07T23:31:20Z",
       "side": 1,
       "message": "i\u0027m ok with omitting this as size_t \u003e UINT16.",
+      "range": {
+        "startLine": 138,
+        "startChar": 44,
+        "endLine": 138,
+        "endChar": 52
+      },
+      "revId": "7e888c92a6ffdd6891ca6c78966d442bc96ff879",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b9a3de9_11c9dba2",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Process.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-08T07:50:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4a98761_ffb46bc9",
       "range": {
         "startLine": 138,
         "startChar": 44,
