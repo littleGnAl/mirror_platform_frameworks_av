@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eecf8424_73dbce1c",
+        "filename": "services/audiopolicy/engine/common/src/EngineBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 216,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-12-08T11:43:14Z",
+      "side": 1,
+      "message": "mVolumeGroups must be built before strategies. The only dynamic addition of volume groups is for strategy refering to an unknown group. We added this case to ensure no failure and using system or default (aka music). I would not expect the alias to be one of non explicitely provided group.",
+      "parentUuid": "124c62ce_1bef7f34",
+      "range": {
+        "startLine": 216,
+        "startChar": 0,
+        "endLine": 216,
+        "endChar": 50
+      },
+      "revId": "4e4c46d86e2f03d443ecb84364c3a2c5993ddfd1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6aef0f04_fd362403",
         "filename": "services/audiopolicy/engine/common/src/EngineDefaultConfig.h",
         "patchSetId": 1
