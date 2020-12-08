@@ -16,6 +16,24 @@
       "message": "We had to revert this CL internally because it broke a GTS test on legacy remote submix.\n\nAdding Jean-Michel to give more details.\n",
       "revId": "4c34434aff546fd6c0414e6e6c658eac1784c59f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6303240e_8964124a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 12
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-12-08T09:00:23Z",
+      "side": 1,
+      "message": "waiting for these details to reproduce in functional test (and fix)",
+      "parentUuid": "7e67f3a9_00a3aaaa",
+      "revId": "4c34434aff546fd6c0414e6e6c658eac1784c59f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
