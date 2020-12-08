@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b0c5ff8_c4b132d3",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 46
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-12-08T08:23:31Z",
+      "side": 1,
+      "message": "Done in a separated CL, even AudioFlinger getter are unused.",
+      "parentUuid": "df874d09_ebfab1a4",
+      "range": {
+        "startLine": 197,
+        "startChar": 0,
+        "endLine": 214,
+        "endChar": 1
+      },
+      "revId": "2be55c3bbdb49c6e53c9e43993a8d405346b0a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f043364_dd645c3a",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-30T11:02:58Z",
       "side": 1,
       "message": "maybe check a limit o nthe number of ports to avoid attacks with stack overflow:\nuse MAX_ITEMS_PER_LIST",
+      "range": {
+        "startLine": 1144,
+        "startChar": 0,
+        "endLine": 1144,
+        "endChar": 48
+      },
+      "revId": "2be55c3bbdb49c6e53c9e43993a8d405346b0a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d85337d_14d95ad1",
+        "filename": "media/libaudioclient/IAudioFlinger.cpp",
+        "patchSetId": 46
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-12-08T08:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f043364_dd645c3a",
       "range": {
         "startLine": 1144,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "26a86563_e62879b5",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 46
+      },
+      "lineNbr": 2448,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-12-08T08:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b00b066_e23bf101",
+      "range": {
+        "startLine": 2448,
+        "startChar": 14,
+        "endLine": 2448,
+        "endChar": 32
+      },
+      "revId": "2be55c3bbdb49c6e53c9e43993a8d405346b0a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "422b61d3_2fea5719",
@@ -83,6 +155,30 @@
       "writtenOn": "2020-11-30T11:02:58Z",
       "side": 1,
       "message": "rename to getPortsForVolumeSource for readability",
+      "range": {
+        "startLine": 411,
+        "startChar": 37,
+        "endLine": 411,
+        "endChar": 45
+      },
+      "revId": "2be55c3bbdb49c6e53c9e43993a8d405346b0a48",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac109e8a_63be996c",
+        "filename": "services/audiopolicy/common/managerdefinitions/include/AudioOutputDescriptor.h",
+        "patchSetId": 46
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-12-08T08:23:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "422b61d3_2fea5719",
       "range": {
         "startLine": 411,
         "startChar": 37,
