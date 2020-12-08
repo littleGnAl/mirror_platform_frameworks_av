@@ -69,6 +69,30 @@
       },
       "revId": "19689d2b08bd459c8f9ac6e2ea298e9013b77d46",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c667cd8_10e29646",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 2826,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-12-08T09:01:12Z",
+      "side": 1,
+      "message": "Checking for strategy \u003d\u003d NONE was to handle registration of effect if EffectCallback::strategy returns NONE, which can happen if EffectChain is null. \nTo avoid regression, we shall keep the behavior by also comparing attributes to AUDIO_ATTRIBUTES_INITIALIZER",
+      "parentUuid": "8655ef98_ef801f8a",
+      "range": {
+        "startLine": 2826,
+        "startChar": 70,
+        "endLine": 2826,
+        "endChar": 87
+      },
+      "revId": "19689d2b08bd459c8f9ac6e2ea298e9013b77d46",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
