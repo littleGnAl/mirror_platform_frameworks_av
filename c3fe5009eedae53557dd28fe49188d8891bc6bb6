@@ -50,6 +50,24 @@
       "message": "As discussed we will hold off on landing this change until we are satisfied with final testing of the new code vs legacy code.",
       "revId": "c3fe5009eedae53557dd28fe49188d8891bc6bb6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a1ba4ed_c510ef48",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-12-09T18:09:23Z",
+      "side": 1,
+      "message": "Yes. confirmed the sizes and as well as objdump -d for affected modules.",
+      "parentUuid": "55c71992_eb062ea5",
+      "revId": "c3fe5009eedae53557dd28fe49188d8891bc6bb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
