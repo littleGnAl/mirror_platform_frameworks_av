@@ -32,7 +32,7 @@ Watchdog::Watchdog(::std::chrono::steady_clock::duration timeout) {
     struct sigevent sev;
     sev.sigev_notify = SIGEV_THREAD_ID;
     sev.sigev_notify_thread_id = base::GetThreadId();
-    sev.sigev_signo = SIGABRT;
+    sev.sigev_signo = SIGKILL;
     sev.sigev_value.sival_ptr = &mTimerId;
     int err = timer_create(CLOCK_MONOTONIC, &sev, &mTimerId);
     if (err != 0) {
