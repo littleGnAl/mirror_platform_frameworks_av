@@ -6763,6 +6763,7 @@ bool ACodec::UninitializedState::onMessageReceived(const sp<AMessage> &msg) {
 
         case ACodec::kWhatAllocateComponent:
         {
+            mCodec->mFatalError = false;
             onAllocateComponent(msg);
             handled = true;
             break;
