@@ -16,6 +16,23 @@
       "message": "Andy,\nOnce this is submitted, I will upload a CL to remove external/webrtc_legacy from the manifest.",
       "revId": "c3fe5009eedae53557dd28fe49188d8891bc6bb6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "55c71992_eb062ea5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-12-09T16:52:02Z",
+      "side": 1,
+      "message": "Looks good, did you check that the benchmark and PreProcessingTest executables are the same size?",
+      "revId": "c3fe5009eedae53557dd28fe49188d8891bc6bb6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
