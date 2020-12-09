@@ -22,6 +22,30 @@
       },
       "revId": "ec897133e2005bf92050a187c8c11574f14c9aaa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8bc163a_674edc35",
+        "filename": "services/audioflinger/PatchPanel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2020-12-09T17:00:19Z",
+      "side": 0,
+      "message": "mmmh, but as now volume is controlled by port, is it sure we need attributes/stream/use case?",
+      "parentUuid": "ee6fd4fc_fdac56f6",
+      "range": {
+        "startLine": 489,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 67
+      },
+      "revId": "ec897133e2005bf92050a187c8c11574f14c9aaa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
