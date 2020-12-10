@@ -22,6 +22,30 @@
       },
       "revId": "70390d152da1213169c07bb2754b9e42e69c70cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a44c8aa4_0117252f",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1511,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-12-10T20:32:58Z",
+      "side": 1,
+      "message": "PTAL --- changed to requested color aspect",
+      "parentUuid": "2cd0a1e5_06bf9cea",
+      "range": {
+        "startLine": 1511,
+        "startChar": 8,
+        "endLine": 1511,
+        "endChar": 32
+      },
+      "revId": "70390d152da1213169c07bb2754b9e42e69c70cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
