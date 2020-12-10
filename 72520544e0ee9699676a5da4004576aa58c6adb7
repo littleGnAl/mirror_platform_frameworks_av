@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec8eb836_2f80cdf7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355232
+      },
+      "writtenOn": "2020-12-10T05:26:09Z",
+      "side": 1,
+      "message": "We are just using safe check for devices having performance issues to avoid NE  where CPU Loading high may lead to delay in binder/looper transaction.\nIssue is reported only once.\n",
+      "revId": "72520544e0ee9699676a5da4004576aa58c6adb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

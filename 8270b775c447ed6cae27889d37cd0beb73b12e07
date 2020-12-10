@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2298b97c_a26a8a5f",
+        "filename": "media/libstagefright/omx/OMXNodeInstance.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1355232
+      },
+      "writtenOn": "2020-12-10T05:26:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee251548_f5037d57",
+      "range": {
+        "startLine": 143,
+        "startChar": 8,
+        "endLine": 146,
+        "endChar": 9
+      },
+      "revId": "8270b775c447ed6cae27889d37cd0beb73b12e07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "55f4dbcd_8d2ef5d2",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-11-20T18:55:48Z",
       "side": 1,
       "message": "this is the only call i could find to CopyFromOMX()\nnote that buffer here is header in the routine.\nwe just dereferenced buffer in line 2194 in order to get buffer_meta.\n\nso I don\u0027t see that header within CopyFromOMX() will ever be null [we\u0027ll have faulted before then].",
+      "range": {
+        "startLine": 2201,
+        "startChar": 8,
+        "endLine": 2201,
+        "endChar": 41
+      },
+      "revId": "8270b775c447ed6cae27889d37cd0beb73b12e07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80bc1ced_807d3ad1",
+        "filename": "media/libstagefright/omx/OMXNodeInstance.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2201,
+      "author": {
+        "id": 1355232
+      },
+      "writtenOn": "2020-12-10T05:26:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "55f4dbcd_8d2ef5d2",
       "range": {
         "startLine": 2201,
         "startChar": 8,
