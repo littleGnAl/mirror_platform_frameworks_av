@@ -209,6 +209,30 @@
       },
       "revId": "51cd003d1e42eae8548537a3b1962edb5244a515",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c441d044_c6e0158b",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 547,
+      "author": {
+        "id": 1687135
+      },
+      "writtenOn": "2020-12-10T11:49:57Z",
+      "side": 1,
+      "message": "Ok. I see that https://android-review.googlesource.com/c/platform/frameworks/av/+/1473282/2/services/audiopolicy/enginedefault/src/Engine.cpp is merged now - so this is redundant now.\n\nbtw. what about policy configuration (xmls) ? Should this patch be updated to change only xmls ?",
+      "parentUuid": "96281dfa_995fa0bf",
+      "range": {
+        "startLine": 547,
+        "startChar": 19,
+        "endLine": 547,
+        "endChar": 48
+      },
+      "revId": "51cd003d1e42eae8548537a3b1962edb5244a515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
