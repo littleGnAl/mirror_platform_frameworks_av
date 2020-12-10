@@ -199,6 +199,10 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexLayerIndex,
     kParamIndexLayerCount,
     kParamIndexIntraRefresh,
+    kParamIndexMetaDataBlockSize,
+    kParamIndexFrameReconData,
+    kParamIndexBlockQpValue,
+    kParamIndexBlockTypeValue,
 
     /* ------------------------------------ image components ------------------------------------ */
 
@@ -1799,6 +1803,52 @@ struct C2IntraRefreshStruct {
 typedef C2StreamParam<C2Tuning, C2IntraRefreshStruct, kParamIndexIntraRefresh>
         C2StreamIntraRefreshTuning;
 constexpr char C2_PARAMKEY_INTRA_REFRESH[] = "coding.intra-refresh";
+
+/**
+ * Block-size of the metadata map for QP, block type values.
+ * Used to communicate the size at which the metadata informations are passed from plugin
+ * to the client e.g. value of 8 signals 8x8 block.
+ */
+typedef C2StreamParam<C2Tuning, C2Uint32Value, kParamIndexMetaDataBlockSize>
+        C2StreamMetaDataBlockSizeTuning;
+constexpr char C2_PARAMKEY_METADATA_BLOCK_SIZE[] = "coding.metadata-block-size";
+
+/**
+ * Enable/disable Recon.
+ *
+ * If true, the component will generate recon data per frame and send it to the client in
+ * C2InfoBuffers.
+ * This config should be passed directly to the component at the time of creation.
+ */
+typedef C2StreamParam<C2Tuning, C2EasyBoolValue, kParamIndexFrameReconData>
+        C2StreamFrameReconDataTuning;
+constexpr char C2_PARAMKEY_FRAME_RECON_DATA[] = "coding.frame-recon-data";
+
+/**
+ * Enable/disable QP values per block.
+ *
+ * If true, the component will populate QP value per block and send it to the client in
+ * C2InfoBuffers.
+ * This config should be passed directly to the component at the time of creation.
+ */
+typedef C2StreamParam<C2Tuning, C2EasyBoolValue, kParamIndexBlockQpValue>
+        C2StreamBlockQpValueTuning;
+constexpr char C2_PARAMKEY_BLOCK_QP_VALUE[] = "coding.block-qp-value";
+
+/**
+ * Enable/disable block type value per block.
+ *
+ * If true, the component will populate block type per block and send it to the
+ * client in C2InfoBuffers.
+ * The block type values are defined as:
+ *     0: INTER
+ *     1: INTRA
+ *     2: SKIP
+ * This config should be passed directly to the component at the time of creation.
+ */
+typedef C2StreamParam<C2Tuning, C2EasyBoolValue, kParamIndexBlockTypeValue>
+        C2StreamBlockTypeValueTuning;
+constexpr char C2_PARAMKEY_BLOCK_TYPE_VALUE[] = "coding.block-type-value";
 
 /* ====================================== IMAGE COMPONENTS ====================================== */
 
