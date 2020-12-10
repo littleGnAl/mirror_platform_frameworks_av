@@ -24,8 +24,7 @@
 #include <SimpleC2Component.h>
 
 #include "ih264_typedefs.h"
-#include "iv2.h"
-#include "ive2.h"
+#include "ih264e.h"
 
 namespace android {
 
@@ -99,6 +98,8 @@ namespace android {
 #define DEFAULT_INTRA4x4            0
 #define STRLENGTH                   500
 #define DEFAULT_CONSTRAINED_INTRA   0
+#define DEFAULT_FRAME_INFO_ENABLE   0
+#define LOG_INFO_SIZE               6
 
 #define MIN(a, b) ((a) < (b))? (a) : (b)
 #define MAX(a, b) ((a) > (b))? (a) : (b)
@@ -176,6 +177,7 @@ private:
     bool     mPSNREnable;
     bool     mEntropyMode;
     bool     mConstrainedIntraFlag;
+    bool     mFrameMbInfoEnable;
     IVE_SPEED_CONFIG     mEncSpeed;
 
     iv_obj_t *mCodecCtx;         // Codec context
@@ -184,10 +186,14 @@ private:
     size_t mNumCores;            // Number of cores used by the codec
 
     std::shared_ptr<C2LinearBlock> mOutBlock;
+    std::shared_ptr<C2LinearBlock> mReconBlock;
+    std::shared_ptr<C2LinearBlock> mQpBlock;
+    std::shared_ptr<C2LinearBlock> mMbTypeBlock;
 
     // configurations used by component in process
     // (TODO: keep this in intf but make them internal only)
     std::shared_ptr<C2StreamPictureSizeInfo::input> mSize;
+    std::shared_ptr<C2StreamFrameMetadataTuning::input> mFrameMetadata;
     std::shared_ptr<C2StreamIntraRefreshTuning::output> mIntraRefresh;
     std::shared_ptr<C2StreamFrameRateInfo::output> mFrameRate;
     std::shared_ptr<C2StreamBitrateInfo::output> mBitrate;
@@ -233,6 +239,20 @@ private:
             uint8_t *base,
             uint32_t capacity,
             uint64_t workIndex);
+    c2_status_t allocateInfoBuffers(
+            const std::shared_ptr<C2BlockPool> &pool,
+            std::unique_ptr<C2WriteView> &qpView,
+            std::unique_ptr<C2WriteView> &mbTypeView,
+            std::unique_ptr<C2WriteView> &reconView);
+    void setFrameInfoArgs(
+            ih264e_video_encode_ip_t *ps_encode_ip,
+            iv_raw_buf_t *ps_raw_buf,
+            uint8_t *pu1_qp_buf,
+            uint8_t *pu1_mb_type_buf,
+            uint8_t *pu1_recon_buf,
+            IV_COLOR_FORMAT_T e_color_fmt);
+    void fillInfoBuffer(const std::unique_ptr<C2Work> &work,
+                        ive_video_encode_op_t *ps_encode_op);
     void finishWork(uint64_t workIndex,
             const std::unique_ptr<C2Work> &work,
             ive_video_encode_op_t *ps_encode_op);
