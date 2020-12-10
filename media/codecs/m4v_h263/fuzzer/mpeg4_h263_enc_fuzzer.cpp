@@ -16,6 +16,9 @@
 #include <algorithm>
 #include "mp4enc_api.h"
 
+#define ALIGN(_sz, _align) ((_sz + (_align - 1)) & ~(_align - 1))
+
+constexpr size_t kMBSize = 16;
 constexpr int8_t kIDRFrameRefreshIntervalInSec = 1;
 constexpr MP4RateControlType krcType[] = {CONSTANT_Q, CBR_1, VBR_1, CBR_2, VBR_2, CBR_LOWDELAY};
 #ifdef MPEG4
@@ -135,7 +138,9 @@ void Codec::deInitEncoder() {
 }
 
 void Codec::encodeFrames(const uint8_t *data, size_t size) {
-    size_t inputBufferSize = (mFrameWidth * mFrameHeight * 3) / 2;
+    size_t alignedWidth = ALIGN(mFrameWidth, kMBSize);
+    size_t alignedHeight = ALIGN(mFrameHeight, kMBSize);
+    size_t inputBufferSize = (alignedWidth * alignedHeight * 3) / 2;
     size_t outputBufferSize = inputBufferSize * 2;
     uint8_t *outputBuffer = new uint8_t[outputBufferSize];
     uint8_t *inputBuffer = new uint8_t[inputBufferSize];
