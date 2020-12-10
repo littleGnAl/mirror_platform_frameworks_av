@@ -199,6 +199,7 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexLayerIndex,
     kParamIndexLayerCount,
     kParamIndexIntraRefresh,
+    kParamIndexFrameMetadata,
 
     /* ------------------------------------ image components ------------------------------------ */
 
@@ -1799,6 +1800,17 @@ struct C2IntraRefreshStruct {
 typedef C2StreamParam<C2Tuning, C2IntraRefreshStruct, kParamIndexIntraRefresh>
         C2StreamIntraRefreshTuning;
 constexpr char C2_PARAMKEY_INTRA_REFRESH[] = "coding.intra-refresh";
+
+/**
+ * Enable/disable frame metadata.
+ *
+ * If true, the component will populate the meta data like QP value, MB type i.e.
+ * INTRA/INTER at 8x8 level and send it to the client in C2InfoBuffers.
+ * This config should be passed directly to the component at the time of creation.
+ */
+typedef C2StreamParam<C2Tuning, C2EasyBoolValue, kParamIndexFrameMetadata>
+        C2StreamFrameMetadataTuning;
+constexpr char C2_PARAMKEY_FRAME_METADATA[] = "coding.frame-metadata";
 
 /* ====================================== IMAGE COMPONENTS ====================================== */
 
