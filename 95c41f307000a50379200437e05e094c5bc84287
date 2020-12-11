@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b9f6269_f774cf1a",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1807,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-12-11T19:59:29Z",
+      "side": 1,
+      "message": "Indices for these info buffers should be defined, e.g. kParamIndexMacroblockQpValue. Ideally we would want ways to request these information separately rather than requesting for all or nothing.",
+      "range": {
+        "startLine": 1807,
+        "startChar": 59,
+        "endLine": 1807,
+        "endChar": 76
+      },
+      "revId": "95c41f307000a50379200437e05e094c5bc84287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbb834a7_10cd6b5d",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1808,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-12-11T19:59:29Z",
+      "side": 1,
+      "message": "This would be codec-dependent. Maybe we should define a param to query the macroblock size.",
+      "range": {
+        "startLine": 1808,
+        "startChar": 18,
+        "endLine": 1808,
+        "endChar": 21
+      },
+      "revId": "95c41f307000a50379200437e05e094c5bc84287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
