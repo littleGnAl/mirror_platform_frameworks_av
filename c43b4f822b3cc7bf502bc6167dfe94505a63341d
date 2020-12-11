@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e3baa6e_f60c4644",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2020-12-11T20:29:12Z",
+      "side": 1,
+      "message": "Thanks for doing this. I am very interested in the results of this fuzz test.\n",
+      "revId": "c43b4f822b3cc7bf502bc6167dfe94505a63341d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96c59654_210faf5b",
+        "filename": "services/oboeservice/fuzzer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2020-12-11T20:29:12Z",
+      "side": 1,
+      "message": "Where?\nDoes the sync perform the \"push\"?",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 18
+      },
+      "revId": "c43b4f822b3cc7bf502bc6167dfe94505a63341d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd5101e_3718bde3",
+        "filename": "services/oboeservice/fuzzer/oboeservice_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2020-12-11T20:29:12Z",
+      "side": 1,
+      "message": "Will this generate an error and cause the test to fail. It probably should.  Maybe count the number of times the service dies and assert(deathCount\u003d\u003d0) at the end.",
+      "range": {
+        "startLine": 126,
+        "startChar": 21,
+        "endLine": 126,
+        "endChar": 31
+      },
+      "revId": "c43b4f822b3cc7bf502bc6167dfe94505a63341d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "963fe6f4_e1d77fa3",
+        "filename": "services/oboeservice/fuzzer/oboeservice_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2020-12-11T20:29:12Z",
+      "side": 1,
+      "message": "This will return ERROR_UNIMPLEMENTED for INPUT streams.",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 15
+      },
+      "revId": "c43b4f822b3cc7bf502bc6167dfe94505a63341d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f3210053_9a152f92",
+        "filename": "services/oboeservice/fuzzer/oboeservice_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 284,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2020-12-11T20:29:12Z",
+      "side": 1,
+      "message": "Does this fuzz test also test a few illegal values like -5 or 998877?",
+      "range": {
+        "startLine": 284,
+        "startChar": 31,
+        "endLine": 284,
+        "endChar": 43
+      },
+      "revId": "c43b4f822b3cc7bf502bc6167dfe94505a63341d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7874fd6_22d86d64",
+        "filename": "services/oboeservice/fuzzer/oboeservice_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2020-12-11T20:29:12Z",
+      "side": 1,
+      "message": "Note: you may encounter race conditions if you reopen a stream quickly after closing.",
+      "range": {
+        "startLine": 325,
+        "startChar": 13,
+        "endLine": 325,
+        "endChar": 24
+      },
+      "revId": "c43b4f822b3cc7bf502bc6167dfe94505a63341d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
