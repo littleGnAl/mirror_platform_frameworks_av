@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82e0ec30_30588921",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 577,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-12-11T08:22:42Z",
+      "side": 1,
+      "message": "this change cannot not be accepted as is: commented out code must be either removed or left in.\nAlso this changes the capture policy for HOTWORD source and should be carefully reviewed.\nIf you want to exclude BLE for HOTWORD, just remove it from availableDevices at line 570",
+      "range": {
+        "startLine": 577,
+        "startChar": 0,
+        "endLine": 577,
+        "endChar": 30
+      },
+      "revId": "7a57a219e4fc8a1cb25b951080cba5fdfa6e8b9b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
