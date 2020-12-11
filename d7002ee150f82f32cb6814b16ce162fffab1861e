@@ -1,0 +1,116 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006713843",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1524980?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "45af905a_60be23dc",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-11T13:15:35Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 398,
+        "startChar": 0,
+        "endLine": 398,
+        "endChar": 104
+      },
+      "revId": "d7002ee150f82f32cb6814b16ce162fffab1861e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006713842",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1524980?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "b3ff414e_5630ed8c",
+          "description": "Change to \"media/codec2/components/avc/C2SoftAvcEnc.cpp\"",
+          "replacements": [
+            {
+              "path": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+              "range": {
+                "startLine": 1411,
+                "startChar": 46,
+                "endLine": 1411,
+                "endChar": 55
+              },
+              "replacement": "associated"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "888a0721_60e78979",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1411,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-11T13:15:35Z",
+      "side": 1,
+      "message": "Common typo found: \"assocated\" -- should it be \"associated\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 1411,
+        "startChar": 46,
+        "endLine": 1411,
+        "endChar": 55
+      },
+      "revId": "d7002ee150f82f32cb6814b16ce162fffab1861e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006713842",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1524980?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "e3f76710_c0a7a39c",
+          "description": "Change to \"media/codec2/components/avc/C2SoftAvcEnc.cpp\"",
+          "replacements": [
+            {
+              "path": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+              "range": {
+                "startLine": 1528,
+                "startChar": 51,
+                "endLine": 1528,
+                "endChar": 60
+              },
+              "replacement": "structure"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "b7771baa_75fa2f7f",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1528,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-11T13:15:35Z",
+      "side": 1,
+      "message": "Common typo found: \"sturcture\" -- should it be \"structure\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027NO_TYPO_CHECK\u003d\u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 1528,
+        "startChar": 51,
+        "endLine": 1528,
+        "endChar": 60
+      },
+      "revId": "d7002ee150f82f32cb6814b16ce162fffab1861e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
