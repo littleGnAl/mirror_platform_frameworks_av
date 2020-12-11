@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a71b11f_f27ed75e",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-11T03:57:18Z",
+      "side": 1,
+      "message": "this appears to be an ordered list.\nwhich would seem to mean that the new entry has highest priority.\nis that the proper precedence?\n\nsimilar question for all the places we\u0027ve added this to a list.",
+      "range": {
+        "startLine": 552,
+        "startChar": 18,
+        "endLine": 555,
+        "endChar": 50
+      },
+      "revId": "4c6413f6e12852134b92f53d73f11f5997a2d081",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81a05a82_66a2b540",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 574,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-11T03:57:18Z",
+      "side": 1,
+      "message": "bad indentation; replace the tabs with spaces.",
+      "range": {
+        "startLine": 574,
+        "startChar": 0,
+        "endLine": 574,
+        "endChar": 3
+      },
+      "revId": "4c6413f6e12852134b92f53d73f11f5997a2d081",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
