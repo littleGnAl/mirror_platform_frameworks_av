@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006710626",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1524979?revision\u003d5",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "995d930d_3201b1cd",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-11T09:34:10Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 570,
+        "startChar": 78,
+        "endLine": 570,
+        "endChar": 79
+      },
+      "revId": "cd4b0e67d8385020f4684e4b42c08a6dbc685acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006710626",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1524979?revision\u003d5",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "174259b5_d77fe639",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-11T09:34:10Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 571,
+        "startChar": 0,
+        "endLine": 571,
+        "endChar": 104
+      },
+      "revId": "cd4b0e67d8385020f4684e4b42c08a6dbc685acb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
