@@ -16,6 +16,46 @@
       "message": "Hi Andreas, could you PTAL the change which was contributed by you? Thanks.",
       "revId": "c51332cbcff13e0137867e707feaa8d75b827328",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa7c146d_2df6b518",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-11T18:25:32Z",
+      "side": 1,
+      "message": "the close/recreate looks ok.\nloop iteration limit is bad -- not introduced by this patch, but let\u0027s fix it here.",
+      "revId": "c51332cbcff13e0137867e707feaa8d75b827328",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "405d35d8_f1354368",
+        "filename": "media/libstagefright/rtsp/ARTPConnection.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-11T18:25:32Z",
+      "side": 1,
+      "message": "\u003c 65535 instead of \u003c 65536\nbecause if we let the 1st one through with 65535 (as the current condition does),\nthen the 2nd port attempted is 65536 -- which will map to port 0 because ports \u003d\u003d shorts/16bits and that is going to fail.",
+      "range": {
+        "startLine": 124,
+        "startChar": 37,
+        "endLine": 124,
+        "endChar": 45
+      },
+      "revId": "c51332cbcff13e0137867e707feaa8d75b827328",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
