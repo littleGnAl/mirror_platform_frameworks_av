@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e938d23d_a1ceb0f5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-13T23:30:31Z",
+      "side": 1,
+      "message": "Separate timestamps in AdaptiveDecodeTest\n\nthat seems more informative about what we\u0027re doing in this CL.",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "4ec0d4ff5055fcf09012fe9ba1756ca7bb4158e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d90eb8d3_af86731d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-13T23:30:31Z",
+      "side": 1,
+      "message": "if you agree about changing the \u00271\u0027 to something approximating a frame interval/duration, then this would change too.",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "4ec0d4ff5055fcf09012fe9ba1756ca7bb4158e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa12b7cc_d7c7f89a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-13T23:30:31Z",
+      "side": 1,
+      "message": "i\u0027d like a longer time than \u00271\u0027 between them -- approximate a (typical) frame duration.\nand some nits about the commit message.\n\notherwise, it looks good.",
+      "revId": "4ec0d4ff5055fcf09012fe9ba1756ca7bb4158e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae1a31be_28414e64",
+        "filename": "media/codec2/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-13T23:30:31Z",
+      "side": 1,
+      "message": "gets rid of the \"two frames with the same timestamp\" problem.\n\ni\u0027m wondering if perhaps a typical frame duration (e.g. 33ms for a 30fps video) would\nbe better than the minimal \u00271\u0027 here.\n\ni\u0027m not trying to come up with a seamless frame rate here, i am trying to make sure\nthat we don\u0027t make the times so close together that the codec feels it can\u0027t decode \nquickly enough.",
+      "range": {
+        "startLine": 737,
+        "startChar": 39,
+        "endLine": 737,
+        "endChar": 43
+      },
+      "revId": "4ec0d4ff5055fcf09012fe9ba1756ca7bb4158e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
