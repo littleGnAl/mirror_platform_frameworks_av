@@ -154,6 +154,29 @@
       },
       "revId": "3b1f75fe34dc7c07e71f1223625ca4e71f3392e3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50651396_3989e818",
+        "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_Private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-12-14T17:25:01Z",
+      "side": 1,
+      "message": "entire definition to be under #infdef BIQUAD_OPT?",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 14
+      },
+      "revId": "3b1f75fe34dc7c07e71f1223625ca4e71f3392e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
