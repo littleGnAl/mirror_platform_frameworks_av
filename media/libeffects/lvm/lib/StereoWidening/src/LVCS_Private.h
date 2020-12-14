@@ -33,6 +33,9 @@
 /*                                                                                  */
 /************************************************************************************/
 
+#ifdef BIQUAD_OPT
+#include <audio_utils/BiquadFilter.h>
+#endif
 #include "LVCS.h"                 /* Calling or Application layer definitions */
 #include "LVCS_StereoEnhancer.h"  /* Stereo enhancer module definitions */
 #include "LVCS_ReverbGenerator.h" /* Reverberation module definitions */
@@ -123,23 +126,37 @@ typedef struct {
     void* pCoeff;                         /* pointer to buffer for equaliser filter coeffs */
     void* pData;                          /* pointer to buffer for equaliser filter states */
     void* pScratch;                       /* Pointer to bundle scratch buffer */
+#ifdef BIQUAD_OPT
+    std::unique_ptr<android::audio_utils::BiquadFilter<LVM_FLOAT>>
+            pBqInstanceEqu; /* Biquad filter instance */
+    std::unique_ptr<android::audio_utils::BiquadFilter<LVM_FLOAT>>
+            pBqInstanceRev; /* Biquad filter instance */
+    std::unique_ptr<android::audio_utils::BiquadFilter<LVM_FLOAT>>
+            pBqInstanceSEMid; /* Biquad filter instance */
+    std::unique_ptr<android::audio_utils::BiquadFilter<LVM_FLOAT>>
+            pBqInstanceSESide; /* Biquad filter instance */
+#endif
 
 } LVCS_Instance_t;
 
 /* Coefficient Structure */
 typedef struct {
+#ifndef BIQUAD_OPT
     Biquad_FLOAT_Instance_t EqualiserBiquadInstance;
     Biquad_FLOAT_Instance_t ReverbBiquadInstance;
     Biquad_FLOAT_Instance_t SEBiquadInstanceMid;
     Biquad_FLOAT_Instance_t SEBiquadInstanceSide;
+#endif
 } LVCS_Coefficient_t;
 
 /* Data Structure */
 typedef struct {
+#ifndef BIQUAD_OPT
     Biquad_2I_Order2_FLOAT_Taps_t EqualiserBiquadTaps;
     Biquad_2I_Order2_FLOAT_Taps_t ReverbBiquadTaps;
     Biquad_1I_Order1_FLOAT_Taps_t SEBiquadTapsMid;
     Biquad_1I_Order2_FLOAT_Taps_t SEBiquadTapsSide;
+#endif
 } LVCS_Data_t;
 
 void LVCS_TimerCallBack(void* hInstance, void* pCallBackParams, LVM_INT32 CallbackParam);

@@ -52,11 +52,15 @@
 LVCS_ReturnStatus_en LVCS_SEnhancerInit(LVCS_Handle_t hInstance, LVCS_Params_t* pParams) {
     LVM_UINT16 Offset;
     LVCS_Instance_t* pInstance = (LVCS_Instance_t*)hInstance;
+#ifndef BIQUAD_OPT
     LVCS_StereoEnhancer_t* pConfig = (LVCS_StereoEnhancer_t*)&pInstance->StereoEnhancer;
+#endif
     LVCS_Data_t* pData;
     LVCS_Coefficient_t* pCoefficient;
+#ifndef BIQUAD_OPT
     FO_FLOAT_Coefs_t CoeffsMid;
     BQ_FLOAT_Coefs_t CoeffsSide;
+#endif
     const BiquadA012B12CoefsSP_t* pSESideCoefs;
 
     pData = (LVCS_Data_t*)pInstance->pData;
@@ -73,6 +77,14 @@ LVCS_ReturnStatus_en LVCS_SEnhancerInit(LVCS_Handle_t hInstance, LVCS_Params_t* 
         /* Mid filter */
         Offset = (LVM_UINT16)pParams->SampleRate;
 
+#ifdef BIQUAD_OPT
+        std::array<LVM_FLOAT, android::audio_utils::kBiquadNumCoefs> coefs = {
+                LVCS_SEMidCoefTable[Offset].A0, LVCS_SEMidCoefTable[Offset].A1, 0.0,
+                -(LVCS_SEMidCoefTable[Offset].B1), 0.0};
+        pInstance->pBqInstanceSEMid.reset(
+                new android::audio_utils::BiquadFilter<LVM_FLOAT>(pParams->NrChannels, coefs));
+        pInstance->pBqInstanceSEMid->clear();
+#else
         /* Convert incoming coefficients to the required format/ordering */
         CoeffsMid.A0 = (LVM_FLOAT)LVCS_SEMidCoefTable[Offset].A0;
         CoeffsMid.A1 = (LVM_FLOAT)LVCS_SEMidCoefTable[Offset].A1;
@@ -91,11 +103,19 @@ LVCS_ReturnStatus_en LVCS_SEnhancerInit(LVCS_Handle_t hInstance, LVCS_Params_t* 
         if (LVCS_SEMidCoefTable[Offset].Scale == 15) {
             pConfig->pBiquadCallBack_Mid = FO_1I_D16F16C15_TRC_WRA_01;
         }
+#endif
 
         Offset = (LVM_UINT16)(pParams->SampleRate);
         pSESideCoefs = (BiquadA012B12CoefsSP_t*)&LVCS_SESideCoefTable[0];
 
         /* Side filter */
+#ifdef BIQUAD_OPT
+        coefs = {pSESideCoefs[Offset].A0, pSESideCoefs[Offset].A1, pSESideCoefs[Offset].A2,
+                 -(pSESideCoefs[Offset].B1), -(pSESideCoefs[Offset].B2)};
+        pInstance->pBqInstanceSESide.reset(
+                new android::audio_utils::BiquadFilter<LVM_FLOAT>(pParams->NrChannels, coefs));
+        pInstance->pBqInstanceSESide->clear();
+#else
         /* Convert incoming coefficients to the required format/ordering */
         CoeffsSide.A0 = (LVM_FLOAT)pSESideCoefs[Offset].A0;
         CoeffsSide.A1 = (LVM_FLOAT)pSESideCoefs[Offset].A1;
@@ -123,6 +143,7 @@ LVCS_ReturnStatus_en LVCS_SEnhancerInit(LVCS_Handle_t hInstance, LVCS_Params_t* 
                 pConfig->pBiquadCallBack_Side = BQ_1I_D16F16C15_TRC_WRA_01;
                 break;
         }
+#endif
     }
 
     return (LVCS_SUCCESS);
@@ -186,9 +207,13 @@ LVCS_ReturnStatus_en LVCS_StereoEnhancer(LVCS_Handle_t hInstance, const LVM_FLOA
          * Apply filter to the middle signal
          */
         if (pInstance->OutputDevice == LVCS_HEADPHONE) {
+#ifdef BIQUAD_OPT
+            pInstance->pBqInstanceSEMid->process(pScratch, pScratch, NumSamples);
+#else
             (pConfig->pBiquadCallBack_Mid)(
                     (Biquad_FLOAT_Instance_t*)&pCoefficient->SEBiquadInstanceMid,
                     (LVM_FLOAT*)pScratch, (LVM_FLOAT*)pScratch, (LVM_INT16)NumSamples);
+#endif
         } else {
             Mult3s_Float(pScratch,                    /* Source */
                          (LVM_FLOAT)pConfig->MidGain, /* Gain */
@@ -201,10 +226,14 @@ LVCS_ReturnStatus_en LVCS_StereoEnhancer(LVCS_Handle_t hInstance, const LVM_FLOA
          * and in all modes for mobile speakers
          */
         if (pInstance->Params.SourceFormat == LVCS_STEREO) {
+#ifdef BIQUAD_OPT
+            pInstance->pBqInstanceSESide->process(pScratch, pScratch, NumSamples);
+#else
             (pConfig->pBiquadCallBack_Side)(
                     (Biquad_FLOAT_Instance_t*)&pCoefficient->SEBiquadInstanceSide,
                     (LVM_FLOAT*)(pScratch + NumSamples), (LVM_FLOAT*)(pScratch + NumSamples),
                     (LVM_INT16)NumSamples);
+#endif
         }
 
         /*

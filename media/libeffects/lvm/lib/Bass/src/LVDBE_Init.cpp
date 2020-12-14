@@ -98,8 +98,10 @@ LVDBE_ReturnStatus_en LVDBE_Init(LVDBE_Handle_t* phInstance, LVDBE_Capabilities_
     /*
      * Create biquad instance
      */
-    pInstance->pBqInstance.reset(
+    pInstance->pBqInstanceHPF.reset(
             new android::audio_utils::BiquadFilter<LVM_FLOAT>(LVM_MAX_CHANNELS));
+    pInstance->pBqInstanceBPF.reset(
+            new android::audio_utils::BiquadFilter<LVM_FLOAT>(1));
 #endif
 
     /*
