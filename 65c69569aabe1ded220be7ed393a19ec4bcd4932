@@ -33,6 +33,23 @@
       "message": "Reading from my own notes when I found this, this fix is not likely all that is needed, since AImageReader_newWithUsage() deletes an AImageReader instance without closing it, in the case of a failed initialization: https://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/ndk/NdkImageReader.cpp;l\u003d741?q\u003dAImageReader_newWithUsage.  That would trigger this LOG_FATAL, which I don\u0027t believe is intended.",
       "revId": "65c69569aabe1ded220be7ed393a19ec4bcd4932",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9057ed60_06b077ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2020-12-14T21:07:46Z",
+      "side": 1,
+      "message": "Thank you for the fix!",
+      "revId": "65c69569aabe1ded220be7ed393a19ec4bcd4932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
