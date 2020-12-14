@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f5ff40a8_3ad77508",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1355299
+      },
+      "writtenOn": "2020-12-14T06:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e938d23d_a1ceb0f5",
+      "range": {
+        "startLine": 7,
+        "startChar": 1,
+        "endLine": 7,
+        "endChar": 24
+      },
+      "revId": "4ec0d4ff5055fcf09012fe9ba1756ca7bb4158e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d90eb8d3_af86731d",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-13T23:30:31Z",
       "side": 1,
       "message": "if you agree about changing the \u00271\u0027 to something approximating a frame interval/duration, then this would change too.",
+      "range": {
+        "startLine": 9,
+        "startChar": 2,
+        "endLine": 9,
+        "endChar": 6
+      },
+      "revId": "4ec0d4ff5055fcf09012fe9ba1756ca7bb4158e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4092f3f_d6363184",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1355299
+      },
+      "writtenOn": "2020-12-14T06:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d90eb8d3_af86731d",
       "range": {
         "startLine": 9,
         "startChar": 2,
@@ -77,6 +125,30 @@
       "writtenOn": "2020-12-13T23:30:31Z",
       "side": 1,
       "message": "gets rid of the \"two frames with the same timestamp\" problem.\n\ni\u0027m wondering if perhaps a typical frame duration (e.g. 33ms for a 30fps video) would\nbe better than the minimal \u00271\u0027 here.\n\ni\u0027m not trying to come up with a seamless frame rate here, i am trying to make sure\nthat we don\u0027t make the times so close together that the codec feels it can\u0027t decode \nquickly enough.",
+      "range": {
+        "startLine": 737,
+        "startChar": 39,
+        "endLine": 737,
+        "endChar": 43
+      },
+      "revId": "4ec0d4ff5055fcf09012fe9ba1756ca7bb4158e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "16dfc43a_90a7ebd9",
+        "filename": "media/codec2/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 737,
+      "author": {
+        "id": 1355299
+      },
+      "writtenOn": "2020-12-14T06:30:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae1a31be_28414e64",
       "range": {
         "startLine": 737,
         "startChar": 39,
