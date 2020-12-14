@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b525b29_aa261b64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1064128
+      },
+      "writtenOn": "2020-12-14T20:53:19Z",
+      "side": 1,
+      "message": "Note that LOG_FATAL_IF() is a no-op for release builds, so unless you\u0027re actively opting into debug builds, this line does nothing.  Did you originally want LOG_ALWAYS_FATAL_IF() ?",
+      "revId": "65c69569aabe1ded220be7ed393a19ec4bcd4932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
