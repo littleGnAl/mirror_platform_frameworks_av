@@ -89,17 +89,20 @@ LVDBE_ReturnStatus_en LVDBE_Init(LVDBE_Handle_t* phInstance, LVDBE_Capabilities_
     if (pInstance->pData == NULL) {
         return LVDBE_NULLADDRESS;
     }
+#ifndef BIQUAD_OPT
     pInstance->pCoef = (LVDBE_Coef_FLOAT_t*)calloc(1, sizeof(*(pInstance->pCoef)));
     if (pInstance->pCoef == NULL) {
         return LVDBE_NULLADDRESS;
     }
+#endif
 
 #ifdef BIQUAD_OPT
     /*
      * Create biquad instance
      */
-    pInstance->pBqInstance.reset(
+    pInstance->pBqInstanceHPF.reset(
             new android::audio_utils::BiquadFilter<LVM_FLOAT>(LVM_MAX_CHANNELS));
+    pInstance->pBqInstanceBPF.reset(new android::audio_utils::BiquadFilter<LVM_FLOAT>(1));
 #endif
 
     /*
@@ -190,10 +193,12 @@ void LVDBE_DeInit(LVDBE_Handle_t* phInstance) {
         free(pInstance->pData);
         pInstance->pData = LVM_NULL;
     }
+#ifndef BIQUAD_OPT
     if (pInstance->pCoef != LVM_NULL) {
         free(pInstance->pCoef);
         pInstance->pCoef = LVM_NULL;
     }
+#endif
     free(pInstance);
     *phInstance = LVM_NULL;
 }
