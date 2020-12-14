@@ -274,7 +274,7 @@ AImageReader::AImageReader(int32_t width,
 
 AImageReader::~AImageReader() {
     Mutex::Autolock _l(mLock);
-    LOG_FATAL_IF("AImageReader not closed before destruction", mIsClosed != true);
+    LOG_FATAL_IF(mIsClosed != true, "AImageReader not closed before destruction");
 }
 
 media_status_t
