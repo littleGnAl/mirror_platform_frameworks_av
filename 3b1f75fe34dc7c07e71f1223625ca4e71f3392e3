@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3c61f31_e2f5a2c6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-12-14T17:19:40Z",
+      "side": 1,
+      "message": "Is clang-format applied on the changes?",
+      "revId": "3b1f75fe34dc7c07e71f1223625ca4e71f3392e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c7c1590_9a5248f3",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-12-14T17:19:40Z",
+      "side": 1,
+      "message": "Keep these two lines same as previous to reduce the number of changes.",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 76
+      },
+      "revId": "3b1f75fe34dc7c07e71f1223625ca4e71f3392e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05d72bc2_e5b2b8df",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-12-14T17:19:40Z",
+      "side": 1,
+      "message": "add \"for HPF\".",
+      "range": {
+        "startLine": 98,
+        "startChar": 31,
+        "endLine": 98,
+        "endChar": 53
+      },
+      "revId": "3b1f75fe34dc7c07e71f1223625ca4e71f3392e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dab623cb_a223a5d4",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-12-14T17:19:40Z",
+      "side": 1,
+      "message": "add \"for BPF\".",
+      "range": {
+        "startLine": 100,
+        "startChar": 31,
+        "endLine": 100,
+        "endChar": 52
+      },
+      "revId": "3b1f75fe34dc7c07e71f1223625ca4e71f3392e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2872af65_35eafa36",
+        "filename": "media/libeffects/lvm/lib/Bundle/src/LVM_Private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-12-14T17:19:40Z",
+      "side": 1,
+      "message": "Keep the entire structure definition under BIQUAD_OPT and all the code blocks where it is used.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 18
+      },
+      "revId": "3b1f75fe34dc7c07e71f1223625ca4e71f3392e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d4443f44_75ef6522",
+        "filename": "media/libeffects/lvm/lib/Bundle/src/LVM_Private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-12-14T17:19:40Z",
+      "side": 1,
+      "message": "Same comment as above.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 18
+      },
+      "revId": "3b1f75fe34dc7c07e71f1223625ca4e71f3392e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6dbfb504_302f5841",
+        "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_Private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-12-14T17:19:40Z",
+      "side": 1,
+      "message": "Add the context of the block for each instance to the comment.",
+      "range": {
+        "startLine": 131,
+        "startChar": 31,
+        "endLine": 131,
+        "endChar": 53
+      },
+      "revId": "3b1f75fe34dc7c07e71f1223625ca4e71f3392e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
