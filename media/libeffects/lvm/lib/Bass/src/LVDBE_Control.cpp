@@ -114,7 +114,7 @@ void LVDBE_SetFilters(LVDBE_Instance_t* pInstance, LVDBE_Params_t* pParams) {
     std::array<LVM_FLOAT, android::audio_utils::kBiquadNumCoefs> coefs = {
             LVDBE_HPF_Table[Offset].A0, LVDBE_HPF_Table[Offset].A1, LVDBE_HPF_Table[Offset].A2,
             -(LVDBE_HPF_Table[Offset].B1), -(LVDBE_HPF_Table[Offset].B2)};
-    pInstance->pBqInstance
+    pInstance->pHPFBiquad
             ->setCoefficients<std::array<LVM_FLOAT, android::audio_utils::kBiquadNumCoefs>>(coefs);
 #else
     LoadConst_Float(0,                                      /* Clear the history, value 0 */
@@ -128,12 +128,19 @@ void LVDBE_SetFilters(LVDBE_Instance_t* pInstance, LVDBE_Params_t* pParams) {
     /*
      * Setup the band pass filter
      */
+#ifdef BIQUAD_OPT
+    coefs = {LVDBE_BPF_Table[Offset].A0, 0.0, -(LVDBE_BPF_Table[Offset].A0),
+             -(LVDBE_BPF_Table[Offset].B1), -(LVDBE_BPF_Table[Offset].B2)};
+    pInstance->pBPFBiquad
+            ->setCoefficients<std::array<LVM_FLOAT, android::audio_utils::kBiquadNumCoefs>>(coefs);
+#else
     LoadConst_Float(0,                                      /* Clear the history, value 0 */
                     (LVM_FLOAT*)&pInstance->pData->BPFTaps, /* Destination */
                     sizeof(pInstance->pData->BPFTaps) / sizeof(LVM_FLOAT)); /* Number of words */
     BP_1I_D32F32Cll_TRC_WRA_02_Init(&pInstance->pCoef->BPFInstance, /* Initialise the filter */
                                     &pInstance->pData->BPFTaps,
                                     (BP_FLOAT_Coefs_t*)&LVDBE_BPF_Table[Offset]);
+#endif
 }
 
 /************************************************************************************/
@@ -290,9 +297,8 @@ LVDBE_ReturnStatus_en LVDBE_Control(LVDBE_Handle_t hInstance, LVDBE_Params_t* pP
     /*
      * Create biquad instance
      */
-    pInstance->pBqInstance.reset(
+    pInstance->pHPFBiquad.reset(
             new android::audio_utils::BiquadFilter<LVM_FLOAT>(pParams->NrChannels));
-    pInstance->pBqInstance->clear();
 #endif
 
     /*
