@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "05113485_28ec077a",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1807,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-12-15T15:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4b9f6269_f774cf1a",
+      "range": {
+        "startLine": 1807,
+        "startChar": 59,
+        "endLine": 1807,
+        "endChar": 76
+      },
+      "revId": "95c41f307000a50379200437e05e094c5bc84287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cbb834a7_10cd6b5d",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-11T19:59:29Z",
       "side": 1,
       "message": "This would be codec-dependent. Maybe we should define a param to query the macroblock size.",
+      "range": {
+        "startLine": 1808,
+        "startChar": 18,
+        "endLine": 1808,
+        "endChar": 21
+      },
+      "revId": "95c41f307000a50379200437e05e094c5bc84287",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bd31c57_32b4644a",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1808,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-12-15T15:20:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cbb834a7_10cd6b5d",
       "range": {
         "startLine": 1808,
         "startChar": 18,
