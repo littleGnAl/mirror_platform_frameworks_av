@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb987e03_b0dbe076",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-15T07:15:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c7c1590_9a5248f3",
+      "range": {
+        "startLine": 73,
+        "startChar": 0,
+        "endLine": 74,
+        "endChar": 76
+      },
+      "revId": "3b1f75fe34dc7c07e71f1223625ca4e71f3392e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05d72bc2_e5b2b8df",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-14T17:19:40Z",
       "side": 1,
       "message": "add \"for HPF\".",
+      "range": {
+        "startLine": 98,
+        "startChar": 31,
+        "endLine": 98,
+        "endChar": 53
+      },
+      "revId": "3b1f75fe34dc7c07e71f1223625ca4e71f3392e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9901d38c_6d00ce90",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-15T07:15:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05d72bc2_e5b2b8df",
       "range": {
         "startLine": 98,
         "startChar": 31,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "431e521c_1ac8f3fa",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-15T07:15:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dab623cb_a223a5d4",
+      "range": {
+        "startLine": 100,
+        "startChar": 31,
+        "endLine": 100,
+        "endChar": 52
+      },
+      "revId": "3b1f75fe34dc7c07e71f1223625ca4e71f3392e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2872af65_35eafa36",
@@ -100,6 +172,30 @@
       "writtenOn": "2020-12-14T17:19:40Z",
       "side": 1,
       "message": "Keep the entire structure definition under BIQUAD_OPT and all the code blocks where it is used.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 18
+      },
+      "revId": "3b1f75fe34dc7c07e71f1223625ca4e71f3392e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3242841_78e05dea",
+        "filename": "media/libeffects/lvm/lib/Bundle/src/LVM_Private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-15T07:15:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2872af65_35eafa36",
       "range": {
         "startLine": 135,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "28ff9ee8_cf1eef0e",
+        "filename": "media/libeffects/lvm/lib/Bundle/src/LVM_Private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-15T07:15:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d4443f44_75ef6522",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 18
+      },
+      "revId": "3b1f75fe34dc7c07e71f1223625ca4e71f3392e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6dbfb504_302f5841",
@@ -156,6 +276,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa0f1137_d5766326",
+        "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_Private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-15T07:15:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6dbfb504_302f5841",
+      "range": {
+        "startLine": 131,
+        "startChar": 31,
+        "endLine": 131,
+        "endChar": 53
+      },
+      "revId": "3b1f75fe34dc7c07e71f1223625ca4e71f3392e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50651396_3989e818",
@@ -169,6 +313,30 @@
       "writtenOn": "2020-12-14T17:25:01Z",
       "side": 1,
       "message": "entire definition to be under #infdef BIQUAD_OPT?",
+      "range": {
+        "startLine": 143,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 14
+      },
+      "revId": "3b1f75fe34dc7c07e71f1223625ca4e71f3392e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dbcf405b_76486efd",
+        "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_Private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-15T07:15:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "50651396_3989e818",
       "range": {
         "startLine": 143,
         "startChar": 0,
