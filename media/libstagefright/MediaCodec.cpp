@@ -283,7 +283,7 @@ void MediaCodec::ResourceManagerServiceProxy::removeResource(
 }
 
 void MediaCodec::ResourceManagerServiceProxy::removeClient() {
-    Mutex::Autolock _l(mLock);
+    //Mutex::Autolock _l(mLock);
     if (mService == nullptr) {
         return;
     }
@@ -3091,7 +3091,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
             // first, and consider it done. The reply token will be replaced
             // after this, and we'll no longer be able to reply.
             if (mState == FLUSHING || mState == STOPPING
-                    || mState == CONFIGURING || mState == STARTING) {
+                    || mState == CONFIGURING || mState == STARTING || mState == RELEASING) {
                 // mReply is always set if in these states.
                 postPendingRepliesAndDeferredMessages(
                         std::string("kWhatRelease:") + stateString(mState));
