@@ -68,6 +68,24 @@
       "parentUuid": "2900c95d_69c4007a",
       "revId": "65c69569aabe1ded220be7ed393a19ec4bcd4932",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "89a7a97a_9c5ea141",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2020-12-15T00:06:09Z",
+      "side": 1,
+      "message": "Thanks for going through that scenario. At the top of my head I think we might want to add an mInit boolean and check that before the LOG_FATAL_IF. The LOG_FATAL_IF was added as a part of the fix for b/137694217, to make the client process crash if we hit a certain deadlock path. I think its nice to have this fix (and submit a change that would also prevent the LOG_FATAL from trigerring on AImageReader_newWithUsage failing). I\u0027ll try to get a CL for the mInit check tonight and we can hopefully submit that along with this CL.",
+      "parentUuid": "9e272ee1_d7e6b520",
+      "revId": "65c69569aabe1ded220be7ed393a19ec4bcd4932",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
