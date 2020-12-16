@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79d8daba_98cfdf83",
+        "filename": "media/codec2/vndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-12-16T21:18:46Z",
+      "side": 1,
+      "message": "Yes. This is intentional. \nIt will be linked with a codec static library per fuzzer binary.\n\nplease refer:\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1519481/1/media/codec2/fuzzer/Android.bp",
+      "parentUuid": "8c462312_7d223e73",
+      "revId": "cf4da99eeb30daee27ff92ec131a1ea65b42b4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23d1131a_d6e9aae2",
         "filename": "media/codec2/vndk/C2Store.cpp",
         "patchSetId": 1
@@ -31,6 +49,24 @@
       "writtenOn": "2020-12-16T21:11:50Z",
       "side": 1,
       "message": "I don\u0027t see these functions defined. Is this supposed to be defined in the tests?",
+      "revId": "cf4da99eeb30daee27ff92ec131a1ea65b42b4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c5f2334_ea2b5b03",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-12-16T21:18:46Z",
+      "side": 1,
+      "message": "When this library is used in teh fuzzer plugin, another static library that contains these functions is expected to be included.\n\nplease refer:\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1519481/1/media/codec2/fuzzer/Android.bp",
+      "parentUuid": "23d1131a_d6e9aae2",
       "revId": "cf4da99eeb30daee27ff92ec131a1ea65b42b4c5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
