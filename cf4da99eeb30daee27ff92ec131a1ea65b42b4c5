@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c462312_7d223e73",
+        "filename": "media/codec2/vndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 90,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-12-16T21:11:50Z",
+      "side": 1,
+      "message": "This target does not seem to link against codec libs statically. Is this intentional?",
+      "revId": "cf4da99eeb30daee27ff92ec131a1ea65b42b4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23d1131a_d6e9aae2",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-12-16T21:11:50Z",
+      "side": 1,
+      "message": "I don\u0027t see these functions defined. Is this supposed to be defined in the tests?",
+      "revId": "cf4da99eeb30daee27ff92ec131a1ea65b42b4c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
