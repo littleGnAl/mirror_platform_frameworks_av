@@ -509,15 +509,32 @@ void SimpleSoftOMXComponent::onChangeState(OMX_STATETYPE state) {
 
     switch (mState) {
         case OMX_StateLoaded:
-            CHECK_EQ((int)state, (int)OMX_StateIdle);
+        {
+            if (state != OMX_StateIdle) {
+                ALOGE("State %d is not valid while changing to %d", state, mState);
+                notify(OMX_EventError, OMX_ErrorUndefined, 0, NULL);
+                return;
+            }
             break;
+        }
+
         case OMX_StateIdle:
-            CHECK(state == OMX_StateLoaded || state == OMX_StateExecuting);
+        {
+            if (!(state == OMX_StateLoaded || state == OMX_StateExecuting)) {
+                ALOGE("State %d is not valid while changing to %d", state, mState);
+                notify(OMX_EventError, OMX_ErrorUndefined, 0, NULL);
+                return;
+            }
             break;
+        }
+
         case OMX_StateExecuting:
         {
-            CHECK_EQ((int)state, (int)OMX_StateIdle);
-
+            if (state != OMX_StateIdle) {
+                ALOGE("State %d is not valid while changing to %d", state, mState);
+                notify(OMX_EventError, OMX_ErrorUndefined, 0, NULL);
+                return;
+            }
             for (size_t i = 0; i < mPorts.size(); ++i) {
                 onPortFlush(i, false /* sendFlushComplete */);
             }
