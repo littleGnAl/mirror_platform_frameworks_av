@@ -16,6 +16,23 @@
       "message": "you\u0027ll need wonsik or lajos as owners for this.",
       "revId": "483e33eac26d9d75f86c5156259b1a6dd133ff8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dba40fa9_97ec8780",
+        "filename": "media/codec2/components/base/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 93,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2020-12-17T17:45:36Z",
+      "side": 1,
+      "message": "Is this intentional that this line is not removed?",
+      "revId": "483e33eac26d9d75f86c5156259b1a6dd133ff8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
