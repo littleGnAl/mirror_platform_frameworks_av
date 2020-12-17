@@ -291,7 +291,7 @@ std::optional<bool> MediaPackageManager::doIsAllowed(uid_t uid) {
     }
 
     std::vector<std::string> packageNames;
-    auto status = mPackageManager->getNamesForUids({(int32_t)uid}, &packageNames);
+    auto status = mPackageManager->getPackagesForUid((int32_t)uid, &packageNames);
     if (!status.isOk()) {
         ALOGW("%s: Playback capture is denied for uid %u as the package names could not be "
               "retrieved from the package manager: %s", __func__, uid, status.toString8().c_str());
