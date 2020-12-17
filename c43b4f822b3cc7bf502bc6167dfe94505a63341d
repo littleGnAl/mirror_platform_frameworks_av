@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a4af502d_31abc4e9",
+        "filename": "services/oboeservice/fuzzer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2020-12-17T01:45:37Z",
+      "side": 1,
+      "message": "Thanks! If the user is expected to do that then the information should be in the README.\n\nIs \"Create a directory\" a command or just an explanation of what is about to happen? It is not clear.\n\nMaybe say \"The following commands will create a directory called CORPUS_DIR and ...\"",
+      "parentUuid": "09e7f0eb_dac23f1d",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 18
+      },
+      "revId": "c43b4f822b3cc7bf502bc6167dfe94505a63341d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fbd5101e_3718bde3",
         "filename": "services/oboeservice/fuzzer/oboeservice_fuzzer.cpp",
         "patchSetId": 1
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "Currently return values from API calls are not respected in the fuzzer to ensure that it runs for all inputs.",
       "parentUuid": "963fe6f4_e1d77fa3",
+      "range": {
+        "startLine": 209,
+        "startChar": 0,
+        "endLine": 209,
+        "endChar": 15
+      },
+      "revId": "c43b4f822b3cc7bf502bc6167dfe94505a63341d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54a16ad4_86e6cace",
+        "filename": "services/oboeservice/fuzzer/oboeservice_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 209,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2020-12-17T01:45:37Z",
+      "side": 1,
+      "message": "OK, as long as it does not cause the test to fail for an intended behavior.",
+      "parentUuid": "1e41c25d_c2610e20",
       "range": {
         "startLine": 209,
         "startChar": 0,
@@ -243,6 +291,30 @@
       "side": 1,
       "message": "If there is a race condition, we expect fuzzer binary to flag that as as issue. Can you please let us know if this call sequence is not correct? In that case we will update the fuzzer plugin accordingly.",
       "parentUuid": "f7874fd6_22d86d64",
+      "range": {
+        "startLine": 325,
+        "startChar": 13,
+        "endLine": 325,
+        "endChar": 24
+      },
+      "revId": "c43b4f822b3cc7bf502bc6167dfe94505a63341d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "305fa777_4d3469e7",
+        "filename": "services/oboeservice/fuzzer/oboeservice_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 325,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2020-12-17T01:45:37Z",
+      "side": 1,
+      "message": "Good. The race is a bug. I am just saying that we have had ongoing problems with race conditions when we close and open streams very quickly. So don\u0027t be surprised if you see a problem. Please report if you do.",
+      "parentUuid": "5ccf4316_80cb622e",
       "range": {
         "startLine": 325,
         "startChar": 13,
