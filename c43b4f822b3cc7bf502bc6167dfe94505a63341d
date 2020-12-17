@@ -91,6 +91,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ead066dc_f28e3a4c",
+        "filename": "services/oboeservice/fuzzer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-12-17T19:39:51Z",
+      "side": 1,
+      "message": "Phil,\nSorry for the confusion on this.\nThis directory can be anywhere on the device and not necessarily inside /data/fuzz/arm64/oboservice_fuzzer as mentioned above.\n\nThe CORPUS_DIR is generally needed in case of decoder fuzzers to assist libfuzzer in covering larger part of the code in fewer iterations. To do this one can create a directory and copy some valid media files in that directory and pass that as an argument.\n\nOnce there is a directory that has few files, this directory needs to be pushed to device and that path wherever it is pushed is to passed to *_fuzzer binary.\n\nIf a directory is not provided or there is no file in the directory, fuzzer will generate something from scratch and iterate to improve the coverage.\n\nHowever, in oboeservice_fuzzer case, I am not sure if there is a real need for corpus as this fuzzer binary doesn\u0027t really work on an input data file like a decoder fuzzer binary. In this case input data is used to just generate parameters listed above and that doesn\u0027t require seed corpus to be effective.\n\nMufaddal,\nLet us remove CORPUS_DIR from the documentation as we can\u0027t really have an input that acts as a seed.",
+      "parentUuid": "a4af502d_31abc4e9",
+      "range": {
+        "startLine": 57,
+        "startChar": 9,
+        "endLine": 57,
+        "endChar": 18
+      },
+      "revId": "c43b4f822b3cc7bf502bc6167dfe94505a63341d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fbd5101e_3718bde3",
         "filename": "services/oboeservice/fuzzer/oboeservice_fuzzer.cpp",
         "patchSetId": 1
