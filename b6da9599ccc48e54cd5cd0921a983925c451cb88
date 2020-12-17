@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "876ee9ec_c93b1b1c",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_ClearAudioBuffers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-12-17T11:13:53Z",
+      "side": 1,
+      "message": "i is preferred over ii.",
+      "range": {
+        "startLine": 68,
+        "startChar": 17,
+        "endLine": 68,
+        "endChar": 19
+      },
+      "revId": "b6da9599ccc48e54cd5cd0921a983925c451cb88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8d38783_e49ccc7d",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_ClearAudioBuffers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-12-17T11:13:53Z",
+      "side": 1,
+      "message": "Ditto.",
+      "range": {
+        "startLine": 86,
+        "startChar": 17,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "b6da9599ccc48e54cd5cd0921a983925c451cb88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
