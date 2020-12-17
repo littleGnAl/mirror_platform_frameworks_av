@@ -66,6 +66,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3e3351d8_81b953a0",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Process.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-12-17T23:16:16Z",
+      "side": 1,
+      "message": "Let us move these function implementations under #infdef BIQUAD_OPT\n(lib/Common/src/BQ_2I_D32F32C30_TRC_WRA_01.cpp and frameworks/av/media/libeffects/lvm/lib/Common/lib/BIQUAD.h for this function)\n\nthis way once biquad is integrated in all the functions, we can upload one cleanup CL to remove old code.",
+      "range": {
+        "startLine": 134,
+        "startChar": 12,
+        "endLine": 134,
+        "endChar": 38
+      },
+      "revId": "f2bf10c055d78bcf36aafc01bae9d08ab13d2165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "27f41e89_48e46652",
         "filename": "media/libeffects/lvm/lib/Bundle/src/LVM_Control.cpp",
         "patchSetId": 3
