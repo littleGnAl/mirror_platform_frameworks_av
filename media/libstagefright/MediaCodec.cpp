@@ -4083,7 +4083,11 @@ status_t MediaCodec::onReleaseOutputBuffer(const sp<AMessage> &msg) {
                 }
             }
         }
-        mBufferChannel->renderOutputBuffer(buffer, renderTimeNs);
+        status_t err = mBufferChannel->renderOutputBuffer(buffer, renderTimeNs);
+
+        if (err == NO_INIT) {
+            return err;
+        }
     } else {
         mBufferChannel->discardBuffer(buffer);
     }
