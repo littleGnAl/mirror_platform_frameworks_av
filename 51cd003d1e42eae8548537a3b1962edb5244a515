@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f021dc70_d80aca6d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-12-18T15:48:27Z",
+      "side": 1,
+      "message": "I think we should separate the policy config file changes in another CL so that we can merge the framework CLs already merged internally\n(remove the Engine.cpp change from this CL",
+      "revId": "51cd003d1e42eae8548537a3b1962edb5244a515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "824b01cf_68eeea08",
@@ -20,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ca5c123_0a7791e7",
+        "filename": "services/audiopolicy/config/le_audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-12-18T15:48:27Z",
+      "side": 1,
+      "message": "2.0 is OK for audio HAL\n\nI think you refer to bluetooth.audio HAL which is now 2.1",
+      "parentUuid": "824b01cf_68eeea08",
+      "revId": "51cd003d1e42eae8548537a3b1962edb5244a515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "52d5a289_f579617c",
         "filename": "services/audiopolicy/config/le_audio_policy_configuration.xml",
         "patchSetId": 1
@@ -31,6 +66,24 @@
       "writtenOn": "2020-08-31T15:08:33Z",
       "side": 1,
       "message": "what about other bit depths here ?",
+      "revId": "51cd003d1e42eae8548537a3b1962edb5244a515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8ae3897_bd900a19",
+        "filename": "services/audiopolicy/config/le_audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2020-12-18T15:48:27Z",
+      "side": 1,
+      "message": "you can either list them explicitly or leave the format empty and the framework will query supported formats when the BLE device is connected.\nSame thing for sampling rates and channel masks",
+      "parentUuid": "52d5a289_f579617c",
       "revId": "51cd003d1e42eae8548537a3b1962edb5244a515",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
