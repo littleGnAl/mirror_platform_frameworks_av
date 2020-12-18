@@ -2,6 +2,10 @@
 
 ## Table of contents
    [libwriterfuzzerbase](#WriterFuzzerBase)
+   [Amr Writer](#amrWriterFuzzer)
+   [MPEG4 Writer](#mpeg4WriterFuzzer)
+   [OGG Writer](#oggWriterFuzzer)
+   [WEBM Writer](#webmWriterFuzzer)
 
 # <a name="WriterFuzzerBase"></a> Fuzzer for libwriterfuzzerbase
 All the writers have a common API - creating a writer, adding a source for
@@ -39,6 +43,123 @@ If no frame marker is found then the entire input data is treated as single fram
 
 This ensures that the plugin tolerates any kind of input (huge,
 malformed, etc) and thereby increasing the chance of identifying vulnerabilities.
+
+# <a name="amrWriterFuzzer"></a> Fuzzer for Amr Writer
+
+## Plugin Design Considerations
+The fuzzer plugin for AMR writer uses the `WriterFuzzerBase` class and
+implements only the `createWriter` to create the AMR writer class.
+
+##### Other considerations
+ * Two fuzzer binaries - amrnb_writer_fuzzer and amrwb_writer_fuzzer are generated based on the presence of a flag - 'AMRNB'
+
+## Build
+
+This describes steps to build amrnb_writer_fuzzer and amrwb_writer_fuzzer binary.
+
+### Android
+
+#### Steps to build
+Build the fuzzer
+```
+  $ mm -j$(nproc) amrnb_writer_fuzzer
+  $ mm -j$(nproc) amrwb_writer_fuzzer
+```
+
+#### Steps to run
+Create a directory CORPUS_DIR and copy some AMRNB and AMRWB files to that folder
+Push this directory to device.
+
+To run on device
+```
+  $ adb sync data
+  $ adb shell /data/fuzz/arm64/amrnb_writer_fuzzer/amrnb_writer_fuzzer CORPUS_DIR
+  $ adb shell /data/fuzz/arm64/amrwb_writer_fuzzer/amrwb_writer_fuzzer CORPUS_DIR
+```
+
+# <a name="mpeg4WriterFuzzer"></a> Fuzzer for MPEG4 Writer
+
+## Plugin Design Considerations
+The fuzzer plugin for MPEG4 writer uses the `WriterFuzzerBase` class and
+implements only the `createWriter` to create the MPEG4 writer class.
+
+## Build
+
+This describes steps to build mpeg4_writer_fuzzer binary.
+
+### Android
+
+#### Steps to build
+Build the fuzzer
+```
+  $ mm -j$(nproc) mpeg4_writer_fuzzer
+```
+
+#### Steps to run
+Create a directory CORPUS_DIR and copy some MPEG4 files to that folder
+Push this directory to device.
+
+To run on device
+```
+  $ adb sync data
+  $ adb shell /data/fuzz/arm64/mpeg4_writer_fuzzer/mpeg4_writer_fuzzer CORPUS_DIR
+```
+
+# <a name="oggWriterFuzzer"></a> Fuzzer for OGG Writer
+
+## Plugin Design Considerations
+The fuzzer plugin for OGG writer uses the `WriterFuzzerBase` class and
+implements only the `createWriter` to create the OGG writer class.
+
+## Build
+
+This describes steps to build ogg_writer_fuzzer binary.
+
+### Android
+
+#### Steps to build
+Build the fuzzer
+```
+  $ mm -j$(nproc) ogg_writer_fuzzer
+```
+
+#### Steps to run
+Create a directory CORPUS_DIR and copy some OGG files to that folder
+Push this directory to device.
+
+To run on device
+```
+  $ adb sync data
+  $ adb shell /data/fuzz/arm64/ogg_writer_fuzzer/ogg_writer_fuzzer CORPUS_DIR
+```
+
+# <a name="webmWriterFuzzer"></a> Fuzzer for WEBM Writer
+
+## Plugin Design Considerations
+The fuzzer plugin for WEBM writer uses the `WriterFuzzerBase` class and
+implements only the `createWriter` to create the WEBM writer class.
+
+## Build
+
+This describes steps to build webm_writer_fuzzer binary.
+
+### Android
+
+#### Steps to build
+Build the fuzzer
+```
+  $ mm -j$(nproc) webm_writer_fuzzer
+```
+
+#### Steps to run
+Create a directory CORPUS_DIR and copy some webm files to that folder
+Push this directory to device.
+
+To run on device
+```
+  $ adb sync data
+  $ adb shell /data/fuzz/arm64/webm_writer_fuzzer/webm_writer_fuzzer CORPUS_DIR
+```
 
 
 ## References:
