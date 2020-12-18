@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eede5891_43d36ab3",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Control.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-18T15:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c1ee0ea_9b73f42f",
+      "range": {
+        "startLine": 302,
+        "startChar": 4,
+        "endLine": 302,
+        "endChar": 39
+      },
+      "revId": "f2bf10c055d78bcf36aafc01bae9d08ab13d2165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9487a881_9a4872ae",
@@ -54,6 +78,30 @@
       "writtenOn": "2020-12-17T20:13:59Z",
       "side": 1,
       "message": "nit:  #ifdef #else #endif",
+      "range": {
+        "startLine": 92,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 6
+      },
+      "revId": "f2bf10c055d78bcf36aafc01bae9d08ab13d2165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5305f21b_0c8c7e6d",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Init.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-18T15:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9487a881_9a4872ae",
       "range": {
         "startLine": 92,
         "startChar": 0,
@@ -110,6 +158,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2a1969f_b91891ca",
+        "filename": "media/libeffects/lvm/lib/Bundle/src/LVM_Control.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-18T15:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "27f41e89_48e46652",
+      "range": {
+        "startLine": 288,
+        "startChar": 11,
+        "endLine": 288,
+        "endChar": 44
+      },
+      "revId": "f2bf10c055d78bcf36aafc01bae9d08ab13d2165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb5ceee4_746d1d19",
@@ -123,6 +195,30 @@
       "writtenOn": "2020-12-17T20:13:59Z",
       "side": 1,
       "message": "does this belong in this block?  I\u0027m wondering if there should be a \"TE\" prefix to correspond to lines 194.",
+      "range": {
+        "startLine": 221,
+        "startChar": 2,
+        "endLine": 222,
+        "endChar": 25
+      },
+      "revId": "f2bf10c055d78bcf36aafc01bae9d08ab13d2165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f41dd5d_4402de10",
+        "filename": "media/libeffects/lvm/lib/Bundle/src/LVM_Private.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-18T15:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb5ceee4_746d1d19",
       "range": {
         "startLine": 221,
         "startChar": 2,
@@ -156,6 +252,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3d2a880_6ab26efd",
+        "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_Private.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-18T15:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "89339c16_bce9b678",
+      "range": {
+        "startLine": 131,
+        "startChar": 23,
+        "endLine": 131,
+        "endChar": 26
+      },
+      "revId": "f2bf10c055d78bcf36aafc01bae9d08ab13d2165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cee30904_85afb4a2",
@@ -179,6 +299,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecd974f8_dd34607b",
+        "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_StereoEnhancer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-18T15:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cee30904_85afb4a2",
+      "range": {
+        "startLine": 86,
+        "startChar": 7,
+        "endLine": 86,
+        "endChar": 45
+      },
+      "revId": "f2bf10c055d78bcf36aafc01bae9d08ab13d2165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a9dd246_e2acff93",
@@ -192,6 +336,30 @@
       "writtenOn": "2020-12-17T20:13:59Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 117,
+        "startChar": 7,
+        "endLine": 117,
+        "endChar": 46
+      },
+      "revId": "f2bf10c055d78bcf36aafc01bae9d08ab13d2165",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ac81f547_682baf30",
+        "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_StereoEnhancer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-18T15:53:22Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a9dd246_e2acff93",
       "range": {
         "startLine": 117,
         "startChar": 7,
