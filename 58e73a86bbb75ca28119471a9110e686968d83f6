@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f99f33aa_93573bca",
+        "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Control.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-12-18T14:11:44Z",
+      "side": 1,
+      "message": "Naming convention to be in line with the comments given in the other patch.",
+      "range": {
+        "startLine": 354,
+        "startChar": 23,
+        "endLine": 354,
+        "endChar": 34
+      },
+      "revId": "58e73a86bbb75ca28119471a9110e686968d83f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee374f92_cb734a3c",
+        "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Process.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-12-18T14:11:44Z",
+      "side": 1,
+      "message": "Use Copy_Float. For syntax refer to the usage at line 94.",
+      "range": {
+        "startLine": 120,
+        "startChar": 28,
+        "endLine": 120,
+        "endChar": 34
+      },
+      "revId": "58e73a86bbb75ca28119471a9110e686968d83f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
