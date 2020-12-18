@@ -104,19 +104,31 @@ LVEQNB_ReturnStatus_en LVEQNB_Process(
                  * Check if band is non-zero dB gain
                  */
                 if (pInstance->pBandDefinitions[i].Gain != 0) {
+#ifndef BIQUAD_OPT
                     /*
                      * Get the address of the biquad instance
                      */
                     Biquad_FLOAT_Instance_t* pBiquad = &pInstance->pEQNB_FilterState_Float[i];
+#endif
 
                     /*
                      * Select single or double precision as required
                      */
                     switch (pInstance->pBiquadType[i]) {
                         case LVEQNB_SinglePrecision_Float: {
+#ifdef BIQUAD_OPT
+                            memcpy((LVM_FLOAT*)pOutData, (LVM_FLOAT*)pScratch,
+                                   NrSamples * sizeof(LVM_FLOAT));
+                            pInstance->pBqInstance[i].process(pScratch, pScratch, NrFrames);
+                            for (int j = 0; j < (int)NrSamples; j++) {
+                                pScratch[j] *= pInstance->pGain[i];
+                                pScratch[j] += pOutData[j];
+                            }
+#else
                             PK_Mc_D32F32C14G11_TRC_WRA_01(pBiquad, pScratch, pScratch,
                                                           (LVM_INT16)NrFrames,
                                                           (LVM_INT16)NrChannels);
+#endif
                             break;
                         }
                         default:

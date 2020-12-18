@@ -179,6 +179,9 @@ void LVEQNB_SetCoefficients(LVEQNB_Instance_t* pInstance) {
     LVM_UINT16 i;                    /* Filter band index */
     LVEQNB_BiquadType_en BiquadType; /* Filter biquad type */
 
+#ifdef BIQUAD_OPT
+    pInstance->pGain.resize(pInstance->Params.NBands);
+#endif
     /*
      * Set the coefficients for each band by the init function
      */
@@ -198,8 +201,19 @@ void LVEQNB_SetCoefficients(LVEQNB_Instance_t* pInstance) {
                 /*
                  * Set the coefficients
                  */
+#ifdef BIQUAD_OPT
+                pInstance->pGain[i] = Coefficients.G;
+                std::array<LVM_FLOAT, android::audio_utils::kBiquadNumCoefs> coefs = {
+                        Coefficients.A0, 0.0, -(Coefficients.A0), -(Coefficients.B1),
+                        -(Coefficients.B2)};
+                pInstance->pBqInstance[i]
+                        .setCoefficients<
+                                std::array<LVM_FLOAT, android::audio_utils::kBiquadNumCoefs>>(
+                                coefs);
+#else
                 PK_2I_D32F32CssGss_TRC_WRA_01_Init(&pInstance->pEQNB_FilterState_Float[i],
                                                    &pInstance->pEQNB_Taps_Float[i], &Coefficients);
+#endif
                 break;
             }
             default:
@@ -220,6 +234,11 @@ void LVEQNB_SetCoefficients(LVEQNB_Instance_t* pInstance) {
 /*                                                                                  */
 /************************************************************************************/
 void LVEQNB_ClearFilterHistory(LVEQNB_Instance_t* pInstance) {
+#ifdef BIQUAD_OPT
+    for (int i = 0; i < (int)pInstance->pBqInstance.size(); i++) {
+        pInstance->pBqInstance[i].clear();
+    }
+#else
     LVM_FLOAT* pTapAddress;
     LVM_INT16 NumTaps;
 
@@ -233,6 +252,7 @@ void LVEQNB_ClearFilterHistory(LVEQNB_Instance_t* pInstance) {
                         pTapAddress, /* Destination */
                         NumTaps);    /* Number of words */
     }
+#endif
 }
 /****************************************************************************************/
 /*                                                                                      */
@@ -327,6 +347,16 @@ LVEQNB_ReturnStatus_en LVEQNB_Control(LVEQNB_Handle_t hInstance, LVEQNB_Params_t
          * Reset the filters except if the algo is switched off
          */
         if (pParams->OperatingMode != LVEQNB_BYPASS) {
+#ifdef BIQUAD_OPT
+            /*
+             * Create biquad instance
+             */
+            pInstance->pBqInstance.resize(
+                    pParams->NBands,
+                    android::audio_utils::BiquadFilter<LVM_FLOAT>(pParams->NrChannels));
+            LVEQNB_ClearFilterHistory(pInstance);
+#endif
+
             /*
              * Reset the filters as all parameters could have changed
              */

@@ -24,6 +24,9 @@
 /*                                                                                      */
 /****************************************************************************************/
 
+#ifdef BIQUAD_OPT
+#include <audio_utils/BiquadFilter.h>
+#endif
 #include "LVEQNB.h" /* Calling or Application layer definitions */
 #include "BIQUAD.h"
 #include "LVC_Mixer.h"
@@ -69,8 +72,14 @@ typedef struct {
     /* Aligned memory pointers */
     LVM_FLOAT* pFastTemporary; /* Fast temporary data base address */
 
+#ifdef BIQUAD_OPT
+    std::vector<android::audio_utils::BiquadFilter<LVM_FLOAT>>
+            pBqInstance;          /* Biquad filter instance */
+    std::vector<LVM_FLOAT> pGain; /* Gain values for all bands*/
+#else
     Biquad_2I_Order2_FLOAT_Taps_t* pEQNB_Taps_Float;  /* Equaliser Taps */
     Biquad_FLOAT_Instance_t* pEQNB_FilterState_Float; /* State for each filter band */
+#endif
 
     /* Filter definitions and call back */
     LVM_UINT16 NBands;                  /* Number of bands */
