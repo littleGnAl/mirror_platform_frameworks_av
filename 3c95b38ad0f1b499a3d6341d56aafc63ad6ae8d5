@@ -84,6 +84,41 @@
       "message": "Rivukanta,\nI see some errors with this CL when running build_and_run_all_unit_tests.sh\nPlease use the CL at\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1532576\n\n",
       "revId": "3c95b38ad0f1b499a3d6341d56aafc63ad6ae8d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75ff780b_1841b443",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-12-19T00:31:26Z",
+      "side": 1,
+      "message": "Keeping the comment open to prevent submitting this.",
+      "parentUuid": "9c342a33_53b9e359",
+      "revId": "3c95b38ad0f1b499a3d6341d56aafc63ad6ae8d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b364555a_41249132",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-12-19T00:31:26Z",
+      "side": 1,
+      "message": "Andy,\nApologies for missing this earlier.\n\nWe will investigate the failures.\nPlease do not submit this till the failures are resolved.\nThanks.",
+      "revId": "3c95b38ad0f1b499a3d6341d56aafc63ad6ae8d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
