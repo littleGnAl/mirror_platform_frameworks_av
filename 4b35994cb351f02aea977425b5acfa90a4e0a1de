@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bd9840a_a055ce9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136369
+      },
+      "writtenOn": "2020-12-20T08:40:22Z",
+      "side": 1,
+      "message": "Cl is fine for me. I will let someone from the audio team +2.",
+      "revId": "4b35994cb351f02aea977425b5acfa90a4e0a1de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "768763bd_75539134",
+        "filename": "media/utils/ServiceUtilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 298,
+      "author": {
+        "id": 1136369
+      },
+      "writtenOn": "2020-12-20T08:40:22Z",
+      "side": 1,
+      "message": "reserve? otherwise fold in constructor.",
+      "range": {
+        "startLine": 298,
+        "startChar": 17,
+        "endLine": 298,
+        "endChar": 23
+      },
+      "revId": "4b35994cb351f02aea977425b5acfa90a4e0a1de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
