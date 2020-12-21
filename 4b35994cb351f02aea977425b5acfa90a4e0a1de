@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "94c87002_455a7376",
+        "filename": "media/utils/ServiceUtilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-12-21T17:15:04Z",
+      "side": 1,
+      "message": "you could make a temporary:\nPermissionController{}.getPackagesForUid(uid, str16PackageNames);",
+      "range": {
+        "startLine": 296,
+        "startChar": 3,
+        "endLine": 296,
+        "endChar": 67
+      },
+      "revId": "4b35994cb351f02aea977425b5acfa90a4e0a1de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "768763bd_75539134",
         "filename": "media/utils/ServiceUtilities.cpp",
         "patchSetId": 1
@@ -36,6 +59,52 @@
         "startChar": 17,
         "endLine": 298,
         "endChar": 23
+      },
+      "revId": "4b35994cb351f02aea977425b5acfa90a4e0a1de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9898279e_73472e03",
+        "filename": "media/utils/ServiceUtilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-12-21T17:15:04Z",
+      "side": 1,
+      "message": "A range based for would be more readable, as you are not implementing the concurrent transform (and there is no need to).  If you skip the sizing, you could do the following:\n\n  for (const auto\u0026 str16PackageName : str16PackageNames) {\n      packageNames.emplace_back(String8(str16PackageName).c_str());\n  }\n\nOr use index access if you pre-size the vector.  I think most often there will be zero or one package name per uid, so not worth any optimization here.",
+      "range": {
+        "startLine": 299,
+        "startChar": 0,
+        "endLine": 302,
+        "endChar": 22
+      },
+      "revId": "4b35994cb351f02aea977425b5acfa90a4e0a1de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "172fe8e1_51bc09d9",
+        "filename": "media/utils/ServiceUtilities.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 303,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-12-21T17:15:04Z",
+      "side": 1,
+      "message": "Note: native services will not have a package name.",
+      "range": {
+        "startLine": 303,
+        "startChar": 3,
+        "endLine": 303,
+        "endChar": 31
       },
       "revId": "4b35994cb351f02aea977425b5acfa90a4e0a1de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
