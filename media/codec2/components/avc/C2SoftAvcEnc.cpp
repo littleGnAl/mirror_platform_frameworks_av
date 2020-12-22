@@ -198,6 +198,34 @@ public:
                 .withFields({C2F(mSyncFramePeriod, value).any()})
                 .withSetter(Setter<decltype(*mSyncFramePeriod)>::StrictValueWithNoDeps)
                 .build());
+
+        addParameter(
+                DefineParam(mFrameReconEnable, C2_PARAMKEY_FRAME_RECON_DATA)
+                .withDefault(new C2StreamFrameReconDataTuning::input(0u, C2_FALSE))
+                .withFields({C2F(mFrameReconEnable, value).oneOf({ C2_FALSE, C2_TRUE }) })
+                .withSetter(Setter<decltype(*mFrameReconEnable)>::NonStrictValueWithNoDeps)
+                .build());
+
+        addParameter(
+                DefineParam(mQpMetadataEnable, C2_PARAMKEY_BLOCK_QP_VALUE)
+                .withDefault(new C2StreamBlockQpValueTuning::input(0u, C2_FALSE))
+                .withFields({C2F(mQpMetadataEnable, value).oneOf({ C2_FALSE, C2_TRUE }) })
+                .withSetter(Setter<decltype(*mQpMetadataEnable)>::NonStrictValueWithNoDeps)
+                .build());
+
+        addParameter(
+                DefineParam(mMbTypeMetadataEnable, C2_PARAMKEY_BLOCK_TYPE_VALUE)
+                .withDefault(new C2StreamBlockTypeValueTuning::input(0u, C2_FALSE))
+                .withFields({C2F(mMbTypeMetadataEnable, value).oneOf({ C2_FALSE, C2_TRUE }) })
+                .withSetter(Setter<decltype(*mMbTypeMetadataEnable)>::NonStrictValueWithNoDeps)
+                .build());
+
+        addParameter(
+                DefineParam(mMetadataBlockSize, C2_PARAMKEY_METADATA_BLOCK_SIZE)
+                .withDefault(new C2StreamMetaDataBlockSizeTuning::output(0u, 8))
+                .withFields({C2F(mMetadataBlockSize, value).equalTo(8)})
+                .withSetter(Setter<decltype(*mMetadataBlockSize)>::StrictValueWithNoDeps)
+                .build());
     }
 
     static C2R InputDelaySetter(
@@ -388,6 +416,18 @@ public:
 
     // unsafe getters
     std::shared_ptr<C2StreamPictureSizeInfo::input> getSize_l() const { return mSize; }
+    std::shared_ptr<C2StreamFrameReconDataTuning::input> getReconEnable_l() const {
+        return mFrameReconEnable;
+    }
+    std::shared_ptr<C2StreamBlockQpValueTuning::input> getMbQpEnable_l() const {
+        return mQpMetadataEnable;
+    }
+    std::shared_ptr<C2StreamBlockTypeValueTuning::input> getMbTypeEnable_l() const {
+        return mMbTypeMetadataEnable;
+    }
+    std::shared_ptr<C2StreamMetaDataBlockSizeTuning::output> getMetadataBlockSize_l() const {
+        return mMetadataBlockSize;
+    }
     std::shared_ptr<C2StreamIntraRefreshTuning::output> getIntraRefresh_l() const { return mIntraRefresh; }
     std::shared_ptr<C2StreamFrameRateInfo::output> getFrameRate_l() const { return mFrameRate; }
     std::shared_ptr<C2StreamBitrateInfo::output> getBitrate_l() const { return mBitrate; }
@@ -397,6 +437,10 @@ public:
 private:
     std::shared_ptr<C2StreamUsageTuning::input> mUsage;
     std::shared_ptr<C2StreamPictureSizeInfo::input> mSize;
+    std::shared_ptr<C2StreamFrameReconDataTuning::input> mFrameReconEnable;
+    std::shared_ptr<C2StreamBlockQpValueTuning::input> mQpMetadataEnable;
+    std::shared_ptr<C2StreamBlockTypeValueTuning::input> mMbTypeMetadataEnable;
+    std::shared_ptr<C2StreamMetaDataBlockSizeTuning::output> mMetadataBlockSize;
     std::shared_ptr<C2StreamFrameRateInfo::output> mFrameRate;
     std::shared_ptr<C2StreamRequestSyncFrameTuning::output> mRequestSync;
     std::shared_ptr<C2StreamIntraRefreshTuning::output> mIntraRefresh;
@@ -440,6 +484,9 @@ C2SoftAvcEnc::C2SoftAvcEnc(
       mSignalledError(false),
       mCodecCtx(nullptr),
       mOutBlock(nullptr),
+      mReconBlock(nullptr),
+      mQpBlock(nullptr),
+      mMbTypeBlock(nullptr),
       mOutBufferSize(kMinOutBufferSize) {
 
     // If dump is enabled, then open create an empty file
@@ -468,6 +515,11 @@ void C2SoftAvcEnc::onReset() {
     if (mOutBlock) {
         mOutBlock.reset();
     }
+    if (mFrameMetaDataEnable) {
+        mReconBlock.reset();
+        mQpBlock.reset();
+        mMbTypeBlock.reset();
+    }
     initEncParams();
 }
 
@@ -475,6 +527,11 @@ void C2SoftAvcEnc::onRelease() {
     releaseEncoder();
     if (mOutBlock) {
         mOutBlock.reset();
+    }
+    if (mFrameMetaDataEnable) {
+        mReconBlock.reset();
+        mQpBlock.reset();
+        mMbTypeBlock.reset();
     }
 }
 
@@ -505,6 +562,7 @@ void  C2SoftAvcEnc::initEncParams() {
     mReconEnable = DEFAULT_RECON_ENABLE;
     mEntropyMode = DEFAULT_ENTROPY_MODE;
     mBframes = DEFAULT_B_FRAMES;
+    mFrameMetaDataEnable = DEFAULT_FRAME_INFO_ENABLE;
 
     gettimeofday(&mTimeStart, nullptr);
     gettimeofday(&mTimeEnd, nullptr);
@@ -926,6 +984,9 @@ c2_status_t C2SoftAvcEnc::initEncoder() {
         mIInterval = mIntf->getSyncFramePeriod_l();
         mIDRInterval = mIntf->getSyncFramePeriod_l();
         gop = mIntf->getGop_l();
+        mFrameReconEnable = mIntf->getReconEnable_l();
+        mQpMetadataEnable = mIntf->getMbQpEnable_l();
+        mMbTypeMetadataEnable = mIntf->getMbTypeEnable_l();
     }
     if (gop && gop->flexCount() > 0) {
         uint32_t syncInterval = 1;
@@ -947,6 +1008,11 @@ c2_status_t C2SoftAvcEnc::initEncoder() {
     }
     uint32_t width = mSize->width;
     uint32_t height = mSize->height;
+
+    mReconEnable = mFrameReconEnable->value;
+    mBlockQpInfoEnable = mQpMetadataEnable->value;
+    mBlockTypeInfoEnable = mMbTypeMetadataEnable->value;
+    mFrameMetaDataEnable = mReconEnable || mBlockQpInfoEnable || mBlockTypeInfoEnable;
 
     mStride = width;
 
@@ -1028,6 +1094,7 @@ c2_status_t C2SoftAvcEnc::initEncoder() {
         ps_fill_mem_rec_ip->u4_max_reorder_cnt = DEFAULT_MAX_REORDER_FRM;
         ps_fill_mem_rec_ip->u4_max_srch_rng_x = DEFAULT_MAX_SRCH_RANGE_X;
         ps_fill_mem_rec_ip->u4_max_srch_rng_y = DEFAULT_MAX_SRCH_RANGE_Y;
+        s_ih264e_mem_rec_ip.u4_enable_frame_info = mBlockQpInfoEnable || mBlockTypeInfoEnable;
 
         status = ive_api_function(nullptr, &s_ih264e_mem_rec_ip, &s_ih264e_mem_rec_op);
 
@@ -1102,6 +1169,17 @@ c2_status_t C2SoftAvcEnc::initEncoder() {
         ps_init_ip->u4_slice_param = mSliceParam;
         ps_init_ip->e_arch = mArch;
         ps_init_ip->e_soc = DEFAULT_SOC;
+
+        // library ties recon and metadata together.
+        // Hence enable recon for library if QP or MB Type metadata flag is enabled.
+        // As we will not be allocating recon buffer in plugin if recon flag is not enabled,
+        // final output won't have recon buffers.
+        if (mBlockQpInfoEnable || mBlockTypeInfoEnable) {
+            s_enc_ip.u4_enable_frame_info = 1;
+            ps_init_ip->u4_enable_recon = 1;
+        } else {
+            s_enc_ip.u4_enable_frame_info = 0;
+        }
 
         status = ive_api_function(mCodecCtx, &s_enc_ip, &s_enc_op);
 
@@ -1220,8 +1298,8 @@ c2_status_t C2SoftAvcEnc::setEncodeArgs(
     ps_encode_ip->s_out_buf.pv_buf = base;
     ps_encode_ip->s_out_buf.u4_bytes = 0;
     ps_encode_ip->s_out_buf.u4_bufsize = capacity;
-    ps_encode_ip->u4_size = sizeof(ive_video_encode_ip_t);
-    ps_encode_op->u4_size = sizeof(ive_video_encode_op_t);
+    ps_encode_ip->u4_size = sizeof(ih264e_video_encode_ip_t);
+    ps_encode_op->u4_size = sizeof(ih264e_video_encode_op_t);
 
     ps_encode_ip->e_cmd = IVE_CMD_VIDEO_ENCODE;
     ps_encode_ip->pv_bufs = nullptr;
@@ -1378,8 +1456,39 @@ c2_status_t C2SoftAvcEnc::setEncodeArgs(
     return C2_OK;
 }
 
+void C2SoftAvcEnc::fillInfoBuffer(const std::unique_ptr<C2Work> &work,
+                                  ih264e_video_encode_op_t *ps_encode_op) {
+    // if we have a valid recon buffer do the associated tasks
+    uint32_t infoIndex = (uint32_t)work->input.ordinal.frameIndex.peeku();
+
+    if (mBlockQpInfoEnable && ps_encode_op->pu1_8x8_blk_qp_map) {
+        int32_t infoSize = ps_encode_op->u4_8x8_blk_qp_map_size;
+        C2InfoBuffer qpBuffer = C2InfoBuffer::CreateLinearBuffer(
+                infoIndex, mQpBlock->share(0, infoSize, C2Fence()));
+        work->worklets.front()->output.infoBuffers.push_back(qpBuffer);
+        mQpBlock = nullptr;
+    }
+    if (mBlockTypeInfoEnable && ps_encode_op->pu1_8x8_blk_type_map) {
+        int32_t infoSize = ps_encode_op->u4_8x8_blk_type_map_size;
+        C2InfoBuffer mbTypeBuffer = C2InfoBuffer::CreateLinearBuffer(
+                infoIndex, mMbTypeBlock->share(0, infoSize, C2Fence()));
+        work->worklets.front()->output.infoBuffers.push_back(mbTypeBuffer);
+        mMbTypeBlock = nullptr;
+    }
+
+    iv_raw_buf_t s_recon_buf = ps_encode_op->s_ive_op.s_recon_buf;
+    if (mReconEnable && s_recon_buf.apv_bufs[0]) {
+        C2InfoBuffer reconBuffer = C2InfoBuffer::CreateLinearBuffer(
+                infoIndex, mReconBlock->share(0, mOutBufferSize, C2Fence()));
+        work->worklets.front()->output.infoBuffers.push_back(reconBuffer);
+        mReconBlock = nullptr;
+    }
+}
+
+
 void C2SoftAvcEnc::finishWork(uint64_t workIndex, const std::unique_ptr<C2Work> &work,
-                              ive_video_encode_op_t *ps_encode_op) {
+                              ih264e_video_encode_op_t *ps_vid_encode_op) {
+    ive_video_encode_op_t *ps_encode_op = &ps_vid_encode_op->s_ive_op;
     std::shared_ptr<C2Buffer> buffer =
             createLinearBuffer(mOutBlock, 0, ps_encode_op->s_out_buf.u4_bytes);
     if (IV_IDR_FRAME == ps_encode_op->u4_encoded_frame_type) {
@@ -1388,6 +1497,10 @@ void C2SoftAvcEnc::finishWork(uint64_t workIndex, const std::unique_ptr<C2Work> 
                 0u /* stream id */, C2Config::SYNC_FRAME));
     }
     mOutBlock = nullptr;
+
+    if (mFrameMetaDataEnable) {
+        fillInfoBuffer(work, ps_vid_encode_op);
+    }
 
     auto fillWork = [buffer](const std::unique_ptr<C2Work> &work) {
         work->worklets.front()->output.flags = (C2FrameData::flags_t)0;
@@ -1404,6 +1517,137 @@ void C2SoftAvcEnc::finishWork(uint64_t workIndex, const std::unique_ptr<C2Work> 
     } else {
         finish(workIndex, fillWork);
     }
+}
+
+c2_status_t C2SoftAvcEnc::allocateInfoBuffers(
+        const std::shared_ptr<C2BlockPool> &pool,
+        std::unique_ptr<C2WriteView> &qpView,
+        std::unique_ptr<C2WriteView> &mbTypeView,
+        std::unique_ptr<C2WriteView> &reconView) {
+    C2MemoryUsage usage = {C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE};
+    c2_status_t err = C2_OK;
+
+    int32_t infoSize = (ALIGN16(mSize->width) * ALIGN16(mSize->height)) >> BLK_8X8_INFO_SHIFT;
+    if (mBlockQpInfoEnable) {
+        if (!mQpBlock) {
+            err = pool->fetchLinearBlock(infoSize, usage, &mQpBlock);
+            if (err != C2_OK) {
+                ALOGE("fetch linear block err = %d", err);
+                return err;
+            }
+        }
+
+        qpView.reset(new C2WriteView(mQpBlock->map().get()));
+        if (qpView->error()) {
+            ALOGE("qpWrite view map failed %d", err);
+            return C2_CORRUPTED;
+        }
+    }
+
+    if (mBlockTypeInfoEnable) {
+        if (!mMbTypeBlock) {
+            err = pool->fetchLinearBlock(infoSize, usage, &mMbTypeBlock);
+            if (err != C2_OK) {
+                ALOGE("fetch linear block err = %d", err);
+                return err;
+            }
+        }
+
+        mbTypeView.reset(new C2WriteView(mMbTypeBlock->map().get()));
+        if (mbTypeView->error()) {
+            ALOGE("mbWrite view map err = %d", err);
+            return C2_CORRUPTED;
+        }
+    }
+
+    if (mReconEnable) {
+        if (!mReconBlock) {
+            err = pool->fetchLinearBlock(mOutBufferSize, usage, &mReconBlock);
+            if (err != C2_OK) {
+                ALOGE("fetch linear block err = %d", err);
+                return err;
+            }
+        }
+
+        reconView.reset(new C2WriteView(mReconBlock->map().get()));
+        if (reconView->error()) {
+            ALOGE("reconWrite view map failed %d", err);
+            return C2_CORRUPTED;
+        }
+    }
+    return err;
+}
+
+void C2SoftAvcEnc::setFrameInfoArgs(
+            ih264e_video_encode_ip_t *ps_encode_ip,
+            iv_raw_buf_t *ps_raw_buf,
+            std::unique_ptr<C2WriteView> &qpView,
+            std::unique_ptr<C2WriteView> &mbTypeView,
+            std::unique_ptr<C2WriteView> &reconView,
+            IV_COLOR_FORMAT_T e_color_fmt) {
+    int32_t infoSize = (ALIGN16(mSize->width) * ALIGN16(mSize->height)) >> BLK_8X8_INFO_SHIFT;
+    ps_encode_ip->u4_8x8_blk_qp_map_size = infoSize;
+    ps_encode_ip->u4_8x8_blk_type_map_size = infoSize;
+    if (mBlockQpInfoEnable) {
+        ps_encode_ip->pu1_8x8_blk_qp_map = qpView->data();
+    }
+    if (mBlockTypeInfoEnable) {
+        ps_encode_ip->pu1_8x8_blk_type_map = mbTypeView->data();
+    }
+
+    // Initialize pointers and dimensions to recon structure
+    if (mReconEnable) {
+        uint8_t *pu1_recon_buf = reconView->data();
+        int32_t lumaSize = mSize->width * mSize->height;
+        int32_t chromaSize = lumaSize >> 2;
+
+        ps_raw_buf->apv_bufs[0] = pu1_recon_buf;
+        pu1_recon_buf += lumaSize;
+
+        ps_raw_buf->apv_bufs[1] = pu1_recon_buf;
+        pu1_recon_buf += chromaSize;
+
+        ps_raw_buf->apv_bufs[2] = NULL;
+        if (IV_YUV_420P == e_color_fmt) {
+            ps_raw_buf->apv_bufs[2] = pu1_recon_buf;
+        }
+
+        ps_raw_buf->e_color_fmt = e_color_fmt;
+        ps_raw_buf->au4_wd[0] = mSize->width;
+        ps_raw_buf->au4_ht[0] = mSize->height;
+        ps_raw_buf->au4_strd[0] = mSize->width;
+
+        /* Initialize for 420SP */
+        {
+            ps_raw_buf->au4_wd[1] = mSize->width;
+            ps_raw_buf->au4_wd[2] = 0;
+
+            ps_raw_buf->au4_ht[1] = mSize->height >> 1;
+            ps_raw_buf->au4_ht[2] = 0;
+
+            ps_raw_buf->au4_strd[1] = mSize->width;
+            ps_raw_buf->au4_strd[2] = 0;
+        }
+
+        if (IV_YUV_420P == e_color_fmt) {
+            ps_raw_buf->au4_wd[1] = mSize->width >> 1;
+            ps_raw_buf->au4_wd[2] = mSize->width >> 1;
+
+            ps_raw_buf->au4_ht[1] = mSize->height >> 1;
+            ps_raw_buf->au4_ht[2] = mSize->height >> 1;
+
+            ps_raw_buf->au4_strd[1] = mSize->width >> 1;
+            ps_raw_buf->au4_strd[2] = mSize->width >> 1;
+        }
+        /* If stride is not initialized, then use width as stride */
+        if (0 == ps_raw_buf->au4_strd[0]) {
+            ps_raw_buf->au4_strd[0] = ps_raw_buf->au4_wd[0];
+            ps_raw_buf->au4_strd[1] = ps_raw_buf->au4_wd[1];
+            ps_raw_buf->au4_strd[2] = ps_raw_buf->au4_wd[2];
+        }
+        ps_raw_buf->u4_size = sizeof(iv_raw_buf_t);
+    }
+    return;
 }
 
 void C2SoftAvcEnc::process(
@@ -1578,6 +1822,23 @@ void C2SoftAvcEnc::process(
             return;
         }
 
+        std::unique_ptr<C2WriteView> qpView = nullptr;
+        std::unique_ptr<C2WriteView> mbTypeView = nullptr;
+        std::unique_ptr<C2WriteView> reconView = nullptr;
+        if (mFrameMetaDataEnable) {
+            c2_status_t err = allocateInfoBuffers(pool, qpView, mbTypeView, reconView);
+            if (err != C2_OK) {
+                work->result = err;
+                work->workletsProcessed = 1u;
+                return;
+            }
+
+            iv_raw_buf_t *ps_recon_buf = &ps_encode_ip->s_recon_buf;
+            memset(ps_recon_buf, 0, sizeof(*ps_recon_buf));
+            setFrameInfoArgs(&s_video_encode_ip, ps_recon_buf, qpView, mbTypeView,
+                             reconView, DEFAULT_RECON_COLOR_FORMAT);
+        }
+
         // DUMP_TO_FILE(
         //         mInFile, s_encode_ip.s_inp_buf.apv_bufs[0],
         //         (mHeight * mStride * 3 / 2));
@@ -1593,6 +1854,11 @@ void C2SoftAvcEnc::process(
                 // TODO: use IVE_CMD_CTL_GETBUFINFO for proper max input size?
                 mOutBufferSize *= 2;
                 mOutBlock.reset();
+                if (mFrameMetaDataEnable) {
+                    mQpBlock.reset();
+                    mReconBlock.reset();
+                    mMbTypeBlock.reset();
+                }
                 continue;
             }
             ALOGE("Encode Frame failed = 0x%x\n",
@@ -1638,7 +1904,7 @@ void C2SoftAvcEnc::process(
         }
         uint64_t workId = ((uint64_t)ps_encode_op->u4_timestamp_high << 32) |
                       ps_encode_op->u4_timestamp_low;
-        finishWork(workId, work, ps_encode_op);
+        finishWork(workId, work, &s_video_encode_op);
     }
     if (mSawInputEOS) {
         drainInternal(DRAIN_COMPONENT_WITH_EOS, pool, work);
@@ -1690,6 +1956,24 @@ c2_status_t C2SoftAvcEnc::drainInternal(
             work->workletsProcessed = 1u;
             return C2_CORRUPTED;
         }
+        std::unique_ptr<C2WriteView> qpView = nullptr;
+        std::unique_ptr<C2WriteView> mbTypeView = nullptr;
+        std::unique_ptr<C2WriteView> reconView = nullptr;
+        memset(&s_video_encode_ip, 0, sizeof(s_video_encode_ip));
+        memset(&s_video_encode_op, 0, sizeof(s_video_encode_op));
+        if (mFrameMetaDataEnable) {
+            c2_status_t err = allocateInfoBuffers(pool, qpView, mbTypeView, reconView);
+            if (err != C2_OK) {
+                work->result = err;
+                work->workletsProcessed = 1u;
+                return err;
+            }
+
+            iv_raw_buf_t *ps_recon_buf = &ps_encode_ip->s_recon_buf;
+            memset(ps_recon_buf, 0, sizeof(*ps_recon_buf));
+            setFrameInfoArgs(&s_video_encode_ip, ps_recon_buf, qpView, mbTypeView,
+                             reconView, DEFAULT_RECON_COLOR_FORMAT);
+        }
         (void)ive_api_function(mCodecCtx, &s_video_encode_ip, &s_video_encode_op);
 
         void *freed = ps_encode_op->s_inp_buf.apv_bufs[0];
@@ -1707,7 +1991,7 @@ c2_status_t C2SoftAvcEnc::drainInternal(
         if (ps_encode_op->output_present) {
             uint64_t workId = ((uint64_t)ps_encode_op->u4_timestamp_high << 32) |
                           ps_encode_op->u4_timestamp_low;
-            finishWork(workId, work, ps_encode_op);
+            finishWork(workId, work, &s_video_encode_op);
         } else {
             if (work->workletsProcessed != 1u) {
                 work->worklets.front()->output.flags = work->input.flags;
@@ -1715,7 +1999,13 @@ c2_status_t C2SoftAvcEnc::drainInternal(
                 work->worklets.front()->output.buffers.clear();
                 work->workletsProcessed = 1u;
             }
-            break;
+            if (mFrameMetaDataEnable) {
+                fillInfoBuffer(work, &s_video_encode_op);
+            }
+
+            if (!mFrameMetaDataEnable || ps_encode_op->u4_is_last) {
+                break;
+            }
         }
     }
 
