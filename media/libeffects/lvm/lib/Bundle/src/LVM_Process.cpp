@@ -25,6 +25,8 @@
 #include "LVM_Private.h"
 #include "VectorArithmetic.h"
 #include "LVM_Coeffs.h"
+#include <math.h>
+#include <log/log.h>
 
 /****************************************************************************************/
 /*                                                                                      */
@@ -197,6 +199,8 @@ LVM_ReturnStatus_en LVM_Process(LVM_Handle_t hInstance, const LVM_FLOAT* pInData
                                                 pProcessed, pProcessed, (LVM_INT16)NrFrames,
                                                 (LVM_INT16)NrChannels);
 #endif
+                dumpData(FILEPATH(pTEBiquad.raw), pProcessed, NrChannels * NrFrames * sizeof(LVM_FLOAT));
+
             }
             /*
              * Volume balance
