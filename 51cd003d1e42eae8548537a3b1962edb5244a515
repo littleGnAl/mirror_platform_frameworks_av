@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "295e96fd_a0353f4c",
+        "filename": "services/audiopolicy/config/le_audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1687135
+      },
+      "writtenOn": "2020-12-22T09:30:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0ca5c123_0a7791e7",
+      "revId": "51cd003d1e42eae8548537a3b1962edb5244a515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "52d5a289_f579617c",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "you can either list them explicitly or leave the format empty and the framework will query supported formats when the BLE device is connected.\nSame thing for sampling rates and channel masks",
       "parentUuid": "52d5a289_f579617c",
+      "revId": "51cd003d1e42eae8548537a3b1962edb5244a515",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "30bd71e6_08c50e2e",
+        "filename": "services/audiopolicy/config/le_audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1687135
+      },
+      "writtenOn": "2020-12-22T09:30:03Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "a8ae3897_bd900a19",
       "revId": "51cd003d1e42eae8548537a3b1962edb5244a515",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
