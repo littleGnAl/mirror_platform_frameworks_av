@@ -45,6 +45,29 @@
       },
       "revId": "58e73a86bbb75ca28119471a9110e686968d83f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68e96e64_d27987e3",
+        "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Process.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-12-22T01:49:46Z",
+      "side": 1,
+      "message": "can we try to accomodate pGain[] and the addition of pOutData[] by modifying coefficients?\n\n{1.0f + Coefficients.A0 * Coefficients.G, 0.0, -(Coefficients.A0 * Coefficients.G), -(Coefficients.B1 * Coefficients.G), -(Coefficients.B2 * Coefficients.G)};",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 29
+      },
+      "revId": "58e73a86bbb75ca28119471a9110e686968d83f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
