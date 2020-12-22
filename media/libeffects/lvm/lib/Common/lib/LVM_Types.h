@@ -172,4 +172,11 @@ typedef LVM_INT32 (*LVM_Callback)(
 /*                                                                                      */
 /****************************************************************************************/
 
+#ifdef BIQUAD_OPT
+#define FILEPATH(name) (const char*)"/data/local/tmp/opt/" #name
+#else
+#define FILEPATH(name) (const char*)"/data/local/tmp/unopt/" #name
+#endif
+void dumpData(const char* name, void* buf, size_t numBytes);
+void printAvgAmpliture(const char* name, LVM_FLOAT* buf, size_t numSamples);
 #endif /* LVM_TYPES_H */

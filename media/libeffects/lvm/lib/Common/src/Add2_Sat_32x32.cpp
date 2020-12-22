@@ -20,7 +20,8 @@
 ***********************************************************************************/
 #include "ScalarArithmetic.h"
 #include "VectorArithmetic.h"
-
+#include <log/log.h>
+#include <math.h>
 void Add2_Sat_Float(const LVM_FLOAT* src, LVM_FLOAT* dst, LVM_INT16 n) {
     LVM_FLOAT Temp;
     LVM_INT16 ii;
@@ -29,4 +30,22 @@ void Add2_Sat_Float(const LVM_FLOAT* src, LVM_FLOAT* dst, LVM_INT16 n) {
         *dst++ = LVM_Clamp(Temp);
     }
     return;
+}
+
+void dumpData(const char* name, void* buf, size_t numBytes) {
+    if (FILE* fp = fopen(name, "ab")) {
+        ALOGD("Writing to to %s", name);
+        fwrite(buf, sizeof(uint8_t), numBytes, fp);
+        fclose(fp);
+    } else {
+        ALOGE("Unable to write output to %s", name);
+    }
+}
+
+void printAvgAmpliture(const char* name, LVM_FLOAT* buf, size_t numSamples) {
+    float sum = 0.0;
+    for (size_t i = 0; i < numSamples; i++) {
+        sum += fabs(buf[i]);
+    }
+    ALOGD("average amplitude of %s : %f/%zu -> %f", name, sum, numSamples, sum / numSamples);
 }
