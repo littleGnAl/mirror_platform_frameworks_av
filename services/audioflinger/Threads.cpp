@@ -108,6 +108,7 @@
 
 // TODO: Move these macro/inlines to a header file.
 #define max(a, b) ((a) > (b) ? (a) : (b))
+#define PROP_VOLUME_PASSTHROUGH "sys.audio.passthrough"
 template <typename T>
 static inline T min(const T& a, const T& b)
 {
@@ -1948,6 +1949,20 @@ void AudioFlinger::PlaybackThread::preExit()
     //       converted to use audio HAL extensions required to support tunneling
     status_t result = mOutput->stream->setParameters(String8("exiting=1"));
     ALOGE_IF(result != OK, "Error when setting parameters on exit: %d", result);
+
+    ALOGD("preExit  HAL format: 0x%x.", mHALFormat);
+    // NTS feature:2.0ch no passthrough, 5.1ch passthrough.
+    switch (mHALFormat) {
+        case AUDIO_FORMAT_E_AC3:
+        case AUDIO_FORMAT_AC3:
+        case AUDIO_FORMAT_DTS:
+        case AUDIO_FORMAT_DTS_HD:
+            ALOGD("disable volume passthrough.");
+            property_set(PROP_VOLUME_PASSTHROUGH, "false");
+            break;
+        default:
+            break;
+     }
 }
 
 void AudioFlinger::PlaybackThread::dumpTracks_l(int fd, const Vector<String16>& args __unused)
@@ -2078,6 +2093,8 @@ sp<AudioFlinger::PlaybackThread::Track> AudioFlinger::PlaybackThread::createTrac
     audio_output_flags_t outputFlags = mOutput->flags;
     audio_output_flags_t requestedFlags = *flags;
     uint32_t sampleRate;
+
+    ALOGD("PlaybackThread createTrack_l format %8x", format);
 
     if (sharedBuffer != 0 && checkIMemory(sharedBuffer) != NO_ERROR) {
         lStatus = BAD_VALUE;
@@ -2743,6 +2760,21 @@ void AudioFlinger::PlaybackThread::readOutputParameters_l()
 
     // Get actual HAL format.
     status_t result = mOutput->stream->getFormat(&mHALFormat);
+
+    ALOGD("PlaybackThread readOutputParameters_l HAL format: 0x%x.", mHALFormat);
+    // NTS feature:2.0ch no passthrough, 5.1ch passthrough.
+    switch (mHALFormat) {
+        case AUDIO_FORMAT_E_AC3:
+        case AUDIO_FORMAT_AC3:
+        case AUDIO_FORMAT_DTS:
+        case AUDIO_FORMAT_DTS_HD:
+            ALOGD("enable volume passthrough.");
+            property_set(PROP_VOLUME_PASSTHROUGH, "true");
+            break;
+        default:
+            break;
+     }
+
     LOG_ALWAYS_FATAL_IF(result != OK, "Error when retrieving output stream format: %d", result);
     // Get format from the shim, which will be different than the HAL format
     // if playing compressed audio over HDMI passthrough.
