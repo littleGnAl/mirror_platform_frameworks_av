@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "08081dbb_347b00a6",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "I think the owner who create this native_handle should close it too. Per my understanding, in the sideband case, this handle should be created by OMX when allocate buffer. If this is the case, OMX should close it too in free buffer.",
       "revId": "f0f7dffe9d6af3cc52cf0dd4c8f5200e6cc5383e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "cb38fabc_bb2a94ae",
         "filename": "media/libstagefright/ACodec.cpp",
@@ -37,10 +38,10 @@
         "endChar": 26
       },
       "revId": "f0f7dffe9d6af3cc52cf0dd4c8f5200e6cc5383e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1ec11df3_316fb25a",
         "filename": "media/libstagefright/ACodec.cpp",
@@ -60,10 +61,33 @@
         "endChar": 1
       },
       "revId": "f0f7dffe9d6af3cc52cf0dd4c8f5200e6cc5383e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3bc7242_13c75bd8",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3152,
+      "author": {
+        "id": 1608690
+      },
+      "writtenOn": "2020-12-22T01:52:29Z",
+      "side": 1,
+      "message": "Please fix coding style here. There should be one space after \"if\", and please put \"{\" to end of the \"if\" line, like,\n\nif (mSidebandHandle !\u003d nullptr) {\n    native_handle_close(mSidebandHandle);\n    native_handle_delete(mSidebandHandle);\n    mSidebandHandle \u003d nullptr;\n}",
+      "range": {
+        "startLine": 3151,
+        "startChar": 4,
+        "endLine": 3152,
+        "endChar": 5
+      },
+      "revId": "f0f7dffe9d6af3cc52cf0dd4c8f5200e6cc5383e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "05c22deb_5a072338",
         "filename": "media/libstagefright/ACodec.cpp",
@@ -83,10 +107,10 @@
         "endChar": 0
       },
       "revId": "f0f7dffe9d6af3cc52cf0dd4c8f5200e6cc5383e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "070ef103_1f03c2d7",
         "filename": "media/libstagefright/ACodec.cpp",
@@ -106,8 +130,31 @@
         "endChar": 54
       },
       "revId": "f0f7dffe9d6af3cc52cf0dd4c8f5200e6cc5383e",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8275e373_4b3656ec",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 6593,
+      "author": {
+        "id": 1608690
+      },
+      "writtenOn": "2020-12-22T01:52:29Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "070ef103_1f03c2d7",
+      "range": {
+        "startLine": 6592,
+        "startChar": 0,
+        "endLine": 6593,
+        "endChar": 54
+      },
+      "revId": "f0f7dffe9d6af3cc52cf0dd4c8f5200e6cc5383e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
