@@ -20,6 +20,7 @@
 /* Includes                                                                             */
 /*                                                                                      */
 /****************************************************************************************/
+#include "LVM_Types.h"
 #include "LVREV_Private.h"
 #include "VectorArithmetic.h"
 
@@ -209,7 +210,7 @@ void ReverbBlock(LVM_FLOAT* pInput, LVM_FLOAT* pOutput, LVREV_Instance_st* pPriv
 #else
     FO_1I_D32F32C31_TRC_WRA_01(&pPrivate->pFastCoef->HPCoefs, pTemp, pTemp, (LVM_INT16)NumSamples);
 #endif
-
+    dumpData(FILEPATH(pRevHPFBiquad.raw), pTemp, NumSamples * sizeof(LVM_FLOAT));
     /*
      *  Low pass filter
      */
@@ -218,6 +219,7 @@ void ReverbBlock(LVM_FLOAT* pInput, LVM_FLOAT* pOutput, LVREV_Instance_st* pPriv
 #else
     FO_1I_D32F32C31_TRC_WRA_01(&pPrivate->pFastCoef->LPCoefs, pTemp, pTemp, (LVM_INT16)NumSamples);
 #endif
+    dumpData(FILEPATH(pRevLPFBiquad.raw), pTemp, NumSamples * sizeof(LVM_FLOAT));
 
     /*
      *  Process all delay lines
@@ -268,6 +270,7 @@ void ReverbBlock(LVM_FLOAT* pInput, LVM_FLOAT* pOutput, LVREV_Instance_st* pPriv
         FO_1I_D32F32C31_TRC_WRA_01(&pPrivate->pFastCoef->RevLPCoefs[j], pDelayLine, pDelayLine,
                                    (LVM_INT16)NumSamples);
 #endif
+        dumpData(FILEPATH(revLPFBiquad.raw), pDelayLine, NumSamples * sizeof(LVM_FLOAT));
     }
 
     /*
