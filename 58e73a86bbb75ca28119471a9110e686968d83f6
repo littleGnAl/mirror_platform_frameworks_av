@@ -68,6 +68,30 @@
       },
       "revId": "58e73a86bbb75ca28119471a9110e686968d83f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73ba150a_1734661f",
+        "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Process.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-12-22T04:13:32Z",
+      "side": 1,
+      "message": "We examined the possibility during the time changes are done; the filter delays, y(n-1) and y(n-2) stored inside the function, PK_Mc_D32F32C14G11_TRC_WRA_01 - do not include Input addition part. Gain can be accommodated. We will do that.",
+      "parentUuid": "68e96e64_d27987e3",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 29
+      },
+      "revId": "58e73a86bbb75ca28119471a9110e686968d83f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
