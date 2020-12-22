@@ -260,7 +260,7 @@ LVCS_ReturnStatus_en LVCS_ReverbGenerator(LVCS_Handle_t hInstance, const LVM_FLO
                                    (LVM_FLOAT*)pScratch, (LVM_FLOAT*)pScratch,
                                    (LVM_INT16)NumSamples);
 #endif
-
+        dumpData(FILEPATH(pRevBiquad.raw), pScratch, NumSamples * FCC_2 * sizeof(LVM_FLOAT));
         Mult3s_Float((LVM_FLOAT*)pScratch, pConfig->ReverbLevel, (LVM_FLOAT*)pScratch,
                      (LVM_INT16)(2 * NumSamples));
 
