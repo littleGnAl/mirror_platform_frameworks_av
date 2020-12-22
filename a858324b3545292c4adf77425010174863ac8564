@@ -39,6 +39,30 @@
       },
       "revId": "a858324b3545292c4adf77425010174863ac8564",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1f2b4f1_9f894a2f",
+        "filename": "drm/libmediadrm/fuzzer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-12-22T04:56:52Z",
+      "side": 1,
+      "message": "Hi Jeff, This is just the markdown syntax for rendering the content as a web page.\nThe README looks like this in the web page - https://android.googlesource.com/platform/frameworks/av/+/a858324b3545292c4adf77425010174863ac8564/drm/libmediadrm/fuzzer/README.md \n\nPlease let us know, if any change is needed.",
+      "parentUuid": "e039d0db_ddd9c114",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 209
+      },
+      "revId": "a858324b3545292c4adf77425010174863ac8564",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
