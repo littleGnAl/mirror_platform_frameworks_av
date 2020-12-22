@@ -128,6 +128,8 @@ LVEQNB_ReturnStatus_en LVEQNB_Process(
                                                           (LVM_INT16)NrFrames,
                                                           (LVM_INT16)NrChannels);
 #endif
+                            dumpData(FILEPATH(eqBiquad.raw), pScratch,
+                                     NrSamples * sizeof(LVM_FLOAT));
                             break;
                         }
                         default:

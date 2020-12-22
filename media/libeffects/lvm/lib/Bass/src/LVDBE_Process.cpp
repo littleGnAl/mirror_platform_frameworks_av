@@ -136,6 +136,7 @@ LVDBE_ReturnStatus_en LVDBE_Process(
                                        pScratch,                       /* Destination          */
                                        (LVM_INT16)NrFrames, (LVM_INT16)NrChannels);
 #endif
+            dumpData(FILEPATH(pHPFBiquad.raw), pScratch, NrSamples * sizeof(LVM_FLOAT));
         }
 
         /*
@@ -157,6 +158,7 @@ LVDBE_ReturnStatus_en LVDBE_Process(
                                    pMono,                          /* Destination           */
                                    (LVM_INT16)NrFrames);
 #endif
+        dumpData(FILEPATH(pBPFBiquad.raw), pScratch, NrFrames * sizeof(LVM_FLOAT));
 
         /*
          * Apply the AGC and mix

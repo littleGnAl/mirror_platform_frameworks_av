@@ -163,6 +163,7 @@ LVCS_ReturnStatus_en LVCS_Equaliser(LVCS_Handle_t hInstance, LVM_FLOAT* pInputOu
                 (Biquad_FLOAT_Instance_t*)&pCoefficients->EqualiserBiquadInstance,
                 (LVM_FLOAT*)pInputOutput, (LVM_FLOAT*)pInputOutput, (LVM_INT16)NumSamples);
 #endif
+        dumpData(FILEPATH(pEqBiquad.raw), pInputOutput, NumSamples * FCC_2 * sizeof(LVM_FLOAT));
     }
 
     return (LVCS_SUCCESS);

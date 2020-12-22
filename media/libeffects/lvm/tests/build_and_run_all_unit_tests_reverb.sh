@@ -10,7 +10,7 @@ fi
 
 # ensure we have mm
 . $ANDROID_BUILD_TOP/build/envsetup.sh
-
+set -e
 mm -j
 
 echo "waiting for device"
@@ -24,7 +24,8 @@ echo "========================================"
 echo "testing reverb"
 adb shell mkdir -p $testdir
 adb push $ANDROID_BUILD_TOP/frameworks/av/media/libeffects/res/raw/sinesweepraw.raw $testdir
-
+adb push $OUT/testcases/snr/arm64/snr $testdir
+adb push $OUT/testcases/reverb_test_legacy/arm/reverb_test_legacy $testdir
 E_VAL=1
 cmds="adb push $OUT/testcases/reverb_test/arm/reverb_test $testdir"
 
@@ -50,6 +51,9 @@ flags_arr=(
 # pair.
 error_count=0
 testcase_count=0
+adb shell mkdir -p /data/local/tmp/opt
+adb shell mkdir -p /data/local/tmp/unopt
+
 for cmd in "${cmds[@]}"
 do
     $cmd
@@ -61,11 +65,26 @@ do
             do
                 for chMask in {0..38}
                 do
+                    adb shell rm -f /data/local/tmp/opt/*.raw /data/local/tmp/unopt/*.raw
                     adb shell $testdir/reverb_test \
                         --input $testdir/sinesweepraw.raw \
                         --output $testdir/sinesweep_$((chMask))_$((fs)).raw \
                         --chMask $chMask $flags --fs $fs --preset $preset_val
 
+                    shell_ret=$?
+                    if [ $shell_ret -ne 0 ]; then
+                        echo "error: $shell_ret"
+                        ((++error_count))
+                    fi
+
+                    adb shell $testdir/reverb_test_legacy \
+                        --input $testdir/sinesweepraw.raw \
+                        --output $testdir/sinesweep_legacy_$((chMask))_$((fs)).raw \
+                        --chMask $chMask $flags --fs $fs --preset $preset_val
+
+                    adb shell $testdir/snr $testdir/sinesweep_legacy_$((chMask))_$((fs)).raw \
+                        $testdir/sinesweep_$((chMask))_$((fs)).raw -thr:144.0
+                    # snr returns EXIT_FAILURE on mismatch.
                     shell_ret=$?
                     if [ $shell_ret -ne 0 ]; then
                         echo "error: $shell_ret"

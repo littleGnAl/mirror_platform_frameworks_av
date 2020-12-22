@@ -11,6 +11,7 @@ fi
 # ensure we have mm
 . $ANDROID_BUILD_TOP/build/envsetup.sh
 
+set -e
 mm -j
 
 echo "waiting for device"
@@ -25,7 +26,7 @@ echo "testing lvm"
 adb shell mkdir -p $testdir
 adb push $ANDROID_BUILD_TOP/frameworks/av/media/libeffects/res/raw/sinesweepraw.raw $testdir
 adb push $OUT/testcases/snr/arm64/snr $testdir
-
+adb push $OUT/testcases/lvmtest_legacy/arm64/lvmtest_legacy $testdir
 E_VAL=1
 if [ -z "$1" ]
 then
@@ -84,6 +85,9 @@ fs_arr=(
 # run multichannel effects at different configs, saving only the stereo channel
 # pair.
 error_count=0
+adb shell mkdir -p /data/local/tmp/opt
+adb shell mkdir -p /data/local/tmp/unopt
+
 for cmd in "${cmds[@]}"
 do
     $cmd
@@ -93,6 +97,7 @@ do
         do
             for chMask in {0..38}
             do
+                adb shell rm -f /data/local/tmp/opt/*.raw /data/local/tmp/unopt/*.raw
                 adb shell $testdir/lvmtest -i:$testdir/sinesweepraw.raw \
                     -o:$testdir/sinesweep_$((chMask))_$((fs)).raw -chMask:$chMask -fs:$fs $flags
 
@@ -102,6 +107,19 @@ do
                     ((++error_count))
                 fi
 
+                adb shell $testdir/lvmtest_legacy -i:$testdir/sinesweepraw.raw \
+                    -o:$testdir/sinesweep_legacy_$((chMask))_$((fs)).raw -chMask:$chMask -fs:$fs $flags
+
+
+                adb shell $testdir/snr $testdir/sinesweep_legacy_$((chMask))_$((fs)).raw \
+                    $testdir/sinesweep_$((chMask))_$((fs)).raw -thr:144.0
+
+                # snr returns EXIT_FAILURE on mismatch.
+                shell_ret=$?
+                if [ $shell_ret -ne 0 ]; then
+                    echo "error: $shell_ret"
+                    ((++error_count))
+                fi
 
                 # two channel files should be identical to higher channel
                 # computation (first 2 channels).
