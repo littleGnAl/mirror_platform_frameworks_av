@@ -543,6 +543,59 @@ int lvmMainProcess(EffectContext* pContext, LVM_ControlParams_t* pParams,
     return 0;
 }
 
+#include <assert.h>
+#include <inttypes.h>
+#include <math.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <vector>
+
+constexpr double kSNRThresholdthr = 144.0f;
+template <typename T = float, typename A = float>
+void compareSnr(const char* ref_file, const char* inp_file) {
+    constexpr size_t framesize = 256;
+    std::vector<T> in(framesize);
+    std::vector<T> ref(framesize);
+    A signal{};
+    A noise{};
+
+    FILE* fref = fopen(ref_file, "rb");
+    FILE* finp = fopen(inp_file, "rb");
+    if (finp == nullptr || fref == nullptr) {
+        return;
+    }
+
+    for (;;) {
+        size_t read_samples_in = fread(&in[0], sizeof(T), framesize, finp);
+        const size_t read_samples_ref = fread(&ref[0], sizeof(T), framesize, fref);
+        if (read_samples_in != read_samples_ref) {
+            printf("file sizes do not match (last %zu %zu)", read_samples_in, read_samples_ref);
+            exit(-1);
+        }
+        if (read_samples_in == 0) {
+          break;
+        }
+        for (size_t i = 0; i < read_samples_in; ++i) {
+            const A value(ref[i]);
+            const A diff(A(in[i]) - value);
+            signal += value * value;
+            noise += diff * diff;
+        }
+    }
+
+    if (signal > 0.f && noise > 0.f) {
+        float snr = 10.f * log(signal / noise);
+        // compare the measured snr value with threshold
+        if (snr < kSNRThresholdthr) {
+            printf("%s %s %.6f less than threshold %.6f\n", ref_file, inp_file, snr, kSNRThresholdthr);
+            exit(-1);
+        } else {
+            printf("%.6f\n", snr);
+        }
+    }
+}
+
 int main(int argc, const char* argv[]) {
     if (argc == 1) {
         printUsage();
@@ -669,5 +722,21 @@ int main(int argc, const char* argv[]) {
     if (errCode) {
         return -1;
     }
+
+    compareSnr("/data/local/tmp/unopt/pHPFBiquad.raw","/data/local/tmp/opt/pHPFBiquad.raw");
+    compareSnr("/data/local/tmp/unopt/pBPFBiquad.raw","/data/local/tmp/opt/pBPFBiquad.raw");
+    compareSnr("/data/local/tmp/unopt/pTEBiquad.raw","/data/local/tmp/opt/pTEBiquad.raw");
+    compareSnr("/data/local/tmp/unopt/pRevHPFBiquad.raw","/data/local/tmp/opt/pRevHPFBiquad.raw");
+    compareSnr("/data/local/tmp/unopt/pRevLPFBiquad.raw","/data/local/tmp/opt/pRevLPFBiquad.raw");
+    compareSnr("/data/local/tmp/unopt/revLPFBiquad.raw","/data/local/tmp/opt/revLPFBiquad.raw");
+    compareSnr("/data/local/tmp/unopt/pEqBiquad.raw","/data/local/tmp/opt/pEqBiquad.raw");
+    compareSnr("/data/local/tmp/unopt/pRevBiquad.raw","/data/local/tmp/opt/pRevBiquad.raw");
+    compareSnr("/data/local/tmp/unopt/pSEMidBiquad.raw","/data/local/tmp/opt/pSEMidBiquad.raw");
+    compareSnr("/data/local/tmp/unopt/pSESideBiquad.raw","/data/local/tmp/opt/pSESideBiquad.raw");
+    compareSnr("/data/local/tmp/unopt/eqBiquad.raw","/data/local/tmp/opt/eqBiquad.raw");
+    compareSnr("/data/local/tmp/unopt/specBiquadDoublePrec.raw","/data/local/tmp/opt/specBiquadDoublePrec.raw");
+    compareSnr("/data/local/tmp/unopt/specBiquadSinglePrec.raw","/data/local/tmp/opt/specBiquadSinglePrec.raw");
+
+
     return 0;
 }

@@ -219,6 +219,7 @@ LVCS_ReturnStatus_en LVCS_StereoEnhancer(LVCS_Handle_t hInstance, const LVM_FLOA
                     (Biquad_FLOAT_Instance_t*)&pCoefficient->SEBiquadInstanceMid,
                     (LVM_FLOAT*)pScratch, (LVM_FLOAT*)pScratch, (LVM_INT16)NumSamples);
 #endif
+            dumpData(FILEPATH(pSEMidBiquad.raw), pScratch, NumSamples * sizeof(LVM_FLOAT));
         } else {
             Mult3s_Float(pScratch,                    /* Source */
                          (LVM_FLOAT)pConfig->MidGain, /* Gain */
@@ -240,6 +241,7 @@ LVCS_ReturnStatus_en LVCS_StereoEnhancer(LVCS_Handle_t hInstance, const LVM_FLOA
                     (LVM_FLOAT*)(pScratch + NumSamples), (LVM_FLOAT*)(pScratch + NumSamples),
                     (LVM_INT16)NumSamples);
 #endif
+            dumpData(FILEPATH(pSESideBiquad.raw), pScratch + NumSamples, NumSamples * sizeof(LVM_FLOAT));
         }
 
         /*

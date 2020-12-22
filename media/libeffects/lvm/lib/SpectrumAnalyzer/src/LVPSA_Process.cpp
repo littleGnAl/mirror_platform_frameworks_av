@@ -103,6 +103,7 @@ LVPSA_RETURN LVPSA_Process(pLVPSA_Handle_t hInstance, LVM_FLOAT* pLVPSA_InputSam
                 BP_1I_D16F16C14_TRC_WRA_01(&pLVPSA_Inst->pBP_Instances[ii], pScratch,
                                            pScratch + InputBlockSize, (LVM_INT16)InputBlockSize);
 #endif
+                dumpData(FILEPATH(specBiquadSinglePrec.raw), pScratch + InputBlockSize, InputBlockSize * sizeof(LVM_FLOAT));
                 break;
 
             case LVPSA_DoublePrecisionFilter:
@@ -113,6 +114,7 @@ LVPSA_RETURN LVPSA_Process(pLVPSA_Handle_t hInstance, LVM_FLOAT* pLVPSA_InputSam
                 BP_1I_D16F32C30_TRC_WRA_01(&pLVPSA_Inst->pBP_Instances[ii], pScratch,
                                            pScratch + InputBlockSize, (LVM_INT16)InputBlockSize);
 #endif
+                dumpData(FILEPATH(specBiquadDoublePrec.raw), pScratch + InputBlockSize, InputBlockSize * sizeof(LVM_FLOAT));
                 break;
             default:
                 break;
