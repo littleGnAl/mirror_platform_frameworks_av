@@ -72,6 +72,20 @@ do
                         ((++error_count))
                     fi
 
+                    adb shell LD_LIBRARY_PATH=/system/vendor/lib/soundfx $testdir/reverb_test_ref \
+                        --input $testdir/sinesweepraw.raw \
+                        --output $testdir/sinesweepref_$((chMask))_$((fs)).raw \
+                        --chMask $chMask $flags --fs $fs --preset $preset_val
+
+                    adb shell cmp $testdir/sinesweepref_$((chMask))_$((fs)).raw \
+                        $testdir/sinesweep_$((chMask))_$((fs)).raw
+                    # cmp returns EXIT_FAILURE on mismatch.
+                    shell_ret=$?
+                    if [ $shell_ret -ne 0 ]; then
+                        echo "error: $shell_ret"
+                        ((++error_count))
+                    fi
+
                     if [[ "$chMask" -gt 0 ]] && [[ $flags != *"--fch 2"* ]]
                     then
                         # single channel files should be identical to higher channel
