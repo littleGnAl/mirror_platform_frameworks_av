@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006919783",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1535503?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "179c8eb0_55be2d37",
+        "filename": "drm/libmediadrm/DrmSessionManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 188,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-23T01:08:57Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027complex\u0027, \u0027unexpected\u0027, or \u0027placeholder\u0027; see https://developers.google.com/style/inclusive-documentation#ableist-language for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 188,
+        "startChar": 42,
+        "endLine": 188,
+        "endChar": 47
+      },
+      "revId": "550086bfaf4b8c8675bbf61fce09c297b139d8aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
