@@ -79,11 +79,13 @@ interface IResourceManagerService {
      * calling process according to the requested resources.
      *
      * @param callingPid pid of the calling process.
+     * @param callingClientId clientId of the caller.
      * @param resources an array of resources to be reclaimed.
      *
      * @return true if the reclaim was successful and false otherwise.
      */
-    boolean reclaimResource(int callingPid, in MediaResourceParcel[] resources);
+    boolean reclaimResource(
+            int callingPid, long callingClientId, in MediaResourceParcel[] resources);
 
     /**
      * Override the pid of original calling process with the pid of the process
@@ -107,6 +109,7 @@ interface IResourceManagerService {
      * Reclaim resources from clients pending removal, if any.
      *
      * @param pid pid from which resources will be reclaimed.
+     * @param callingClientId clientId of the caller.
      */
-    void reclaimResourcesFromClientsPendingRemoval(int pid);
+    void reclaimResourcesFromClientsPendingRemoval(int pid, long callingClientId);
 }

@@ -184,7 +184,8 @@ bool DrmSessionManager::reclaimSession(int callingPid) {
     // we rely on IResourceManagerClient to removeSession in reclaimResource
     Vector<uint8_t> dummy;
     bool success;
-    ScopedAStatus status = service->reclaimResource(callingPid, toResourceVec(dummy, INT64_MAX), &success);
+    ScopedAStatus status = service->reclaimResource(
+            callingPid, -1, toResourceVec(dummy, INT64_MAX), &success);
     return status.isOk() && success;
 }
 
