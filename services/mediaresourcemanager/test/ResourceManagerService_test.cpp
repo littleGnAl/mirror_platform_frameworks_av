@@ -450,17 +450,22 @@ protected:
             addResource();
             mService->mSupportsMultipleSecureCodecs = false;
             mService->mSupportsSecureWithNonSecureCodec = true;
+            std::shared_ptr<IResourceManagerClient> reclaimClient(
+                    ::ndk::SharedRefBase::make<TestClient>(kLowPriorityPid, mService));
 
             // priority too low to reclaim resource
-            CHECK_STATUS_FALSE(mService->reclaimResource(kLowPriorityPid, resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kLowPriorityPid, getId(reclaimClient), resources, &result));
 
             // override Low Priority Pid with High Priority Pid
             mService->overridePid(kLowPriorityPid, kHighPriorityPid);
-            CHECK_STATUS_TRUE(mService->reclaimResource(kLowPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kLowPriorityPid, getId(reclaimClient), resources, &result));
 
             // restore Low Priority Pid
             mService->overridePid(kLowPriorityPid, -1);
-            CHECK_STATUS_FALSE(mService->reclaimResource(kLowPriorityPid, resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kLowPriorityPid, getId(reclaimClient), resources, &result));
         }
     }
 
@@ -477,14 +482,24 @@ protected:
             // Remove low priority clients
             mService->removeClient(kTestPid1, getId(mTestClient1));
 
+            std::shared_ptr<IResourceManagerClient> reclaimClient(
+                    ::ndk::SharedRefBase::make<TestClient>(kTestPid2, mService));
+
             // no lower priority client
-            CHECK_STATUS_FALSE(mService->reclaimResource(kTestPid2, resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kTestPid2, getId(reclaimClient), resources, &result));
             verifyClients(false /* c1 */, false /* c2 */, false /* c3 */);
 
             mService->markClientForPendingRemoval(kTestPid2, getId(mTestClient2));
 
+            // do not reclaim from itself
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kTestPid2, getId(mTestClient2), resources, &result));
+            verifyClients(false /* c1 */, false /* c2 */, false /* c3 */);
+
             // client marked for pending removal from the same process got reclaimed
-            CHECK_STATUS_TRUE(mService->reclaimResource(kTestPid2, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kTestPid2, getId(reclaimClient), resources, &result));
             verifyClients(false /* c1 */, true /* c2 */, false /* c3 */);
 
             // clean up client 3 which still left
@@ -500,13 +515,18 @@ protected:
 
             mService->markClientForPendingRemoval(kTestPid2, getId(mTestClient2));
 
+            std::shared_ptr<IResourceManagerClient> reclaimClient(
+                    ::ndk::SharedRefBase::make<TestClient>(kTestPid2, mService));
+
             // client marked for pending removal from the same process got reclaimed
             // first, even though there are lower priority process
-            CHECK_STATUS_TRUE(mService->reclaimResource(kTestPid2, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kTestPid2, getId(reclaimClient), resources, &result));
             verifyClients(false /* c1 */, true /* c2 */, false /* c3 */);
 
             // lower priority client got reclaimed
-            CHECK_STATUS_TRUE(mService->reclaimResource(kTestPid2, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kTestPid2, getId(reclaimClient), resources, &result));
             verifyClients(true /* c1 */, false /* c2 */, false /* c3 */);
 
             // clean up client 3 which still left
@@ -519,18 +539,34 @@ protected:
 
             mService->markClientForPendingRemoval(kTestPid2, getId(mTestClient2));
 
+            std::shared_ptr<IResourceManagerClient> reclaimClient(
+                    ::ndk::SharedRefBase::make<TestClient>(kTestPid2, mService));
+
+            // do not reclaim from itself
+            EXPECT_TRUE(mService->reclaimResourcesFromClientsPendingRemoval(
+                    kTestPid2, getId(mTestClient2)).isOk());
+            verifyClients(false /* c1 */, false /* c2 */, false /* c3 */);
+
             // client marked for pending removal got reclaimed
-            EXPECT_TRUE(mService->reclaimResourcesFromClientsPendingRemoval(kTestPid2).isOk());
+            EXPECT_TRUE(mService->reclaimResourcesFromClientsPendingRemoval(
+                    kTestPid2, getId(reclaimClient)).isOk());
             verifyClients(false /* c1 */, true /* c2 */, false /* c3 */);
 
             // No more clients marked for removal
-            EXPECT_TRUE(mService->reclaimResourcesFromClientsPendingRemoval(kTestPid2).isOk());
+            EXPECT_TRUE(mService->reclaimResourcesFromClientsPendingRemoval(
+                    kTestPid2, getId(reclaimClient)).isOk());
             verifyClients(false /* c1 */, false /* c2 */, false /* c3 */);
 
             mService->markClientForPendingRemoval(kTestPid2, getId(mTestClient3));
 
+            // do not reclaim from itself
+            EXPECT_TRUE(mService->reclaimResourcesFromClientsPendingRemoval(
+                    kTestPid2, getId(mTestClient3)).isOk());
+            verifyClients(false /* c1 */, false /* c2 */, false /* c3 */);
+
             // client marked for pending removal got reclaimed
-            EXPECT_TRUE(mService->reclaimResourcesFromClientsPendingRemoval(kTestPid2).isOk());
+            EXPECT_TRUE(mService->reclaimResourcesFromClientsPendingRemoval(
+                    kTestPid2, getId(reclaimClient)).isOk());
             verifyClients(false /* c1 */, false /* c2 */, true /* c3 */);
 
             // clean up client 1 which still left
@@ -577,6 +613,13 @@ protected:
         resources.push_back(MediaResource(MediaResource::Type::kSecureCodec, 1));
         resources.push_back(MediaResource(MediaResource::Type::kGraphicMemory, 150));
 
+        std::shared_ptr<IResourceManagerClient> lowClient(
+                ::ndk::SharedRefBase::make<TestClient>(kLowPriorityPid, mService));
+        std::shared_ptr<IResourceManagerClient> midClient(
+                ::ndk::SharedRefBase::make<TestClient>(kMidPriorityPid, mService));
+        std::shared_ptr<IResourceManagerClient> highClient(
+                ::ndk::SharedRefBase::make<TestClient>(kHighPriorityPid, mService));
+
         // ### secure codec can't coexist and secure codec can coexist with non-secure codec ###
         {
             addResource();
@@ -584,19 +627,24 @@ protected:
             mService->mSupportsSecureWithNonSecureCodec = true;
 
             // priority too low
-            CHECK_STATUS_FALSE(mService->reclaimResource(kLowPriorityPid, resources, &result));
-            CHECK_STATUS_FALSE(mService->reclaimResource(kMidPriorityPid, resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kLowPriorityPid, getId(lowClient), resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kMidPriorityPid, getId(midClient), resources, &result));
 
             // reclaim all secure codecs
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             verifyClients(true /* c1 */, false /* c2 */, true /* c3 */);
 
             // call again should reclaim one largest graphic memory from lowest process
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             verifyClients(false /* c1 */, true /* c2 */, false /* c3 */);
 
             // nothing left
-            CHECK_STATUS_FALSE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
         }
 
         // ### secure codecs can't coexist and secure codec can't coexist with non-secure codec ###
@@ -606,15 +654,19 @@ protected:
             mService->mSupportsSecureWithNonSecureCodec = false;
 
             // priority too low
-            CHECK_STATUS_FALSE(mService->reclaimResource(kLowPriorityPid, resources, &result));
-            CHECK_STATUS_FALSE(mService->reclaimResource(kMidPriorityPid, resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kLowPriorityPid, getId(lowClient), resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kMidPriorityPid, getId(midClient), resources, &result));
 
             // reclaim all secure and non-secure codecs
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             verifyClients(true /* c1 */, true /* c2 */, true /* c3 */);
 
             // nothing left
-            CHECK_STATUS_FALSE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
         }
 
 
@@ -625,23 +677,29 @@ protected:
             mService->mSupportsSecureWithNonSecureCodec = false;
 
             // priority too low
-            CHECK_STATUS_FALSE(mService->reclaimResource(kLowPriorityPid, resources, &result));
-            CHECK_STATUS_FALSE(mService->reclaimResource(kMidPriorityPid, resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kLowPriorityPid, getId(lowClient), resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kMidPriorityPid, getId(midClient), resources, &result));
 
             // reclaim all non-secure codecs
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             verifyClients(false /* c1 */, true /* c2 */, false /* c3 */);
 
             // call again should reclaim one largest graphic memory from lowest process
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             verifyClients(true /* c1 */, false /* c2 */, false /* c3 */);
 
             // call again should reclaim another largest graphic memory from lowest process
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             verifyClients(false /* c1 */, false /* c2 */, true /* c3 */);
 
             // nothing left
-            CHECK_STATUS_FALSE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
         }
 
         // ### secure codecs can coexist and secure codec can coexist with non-secure codec ###
@@ -651,22 +709,27 @@ protected:
             mService->mSupportsSecureWithNonSecureCodec = true;
 
             // priority too low
-            CHECK_STATUS_FALSE(mService->reclaimResource(kLowPriorityPid, resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kLowPriorityPid, getId(lowClient), resources, &result));
 
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             // one largest graphic memory from lowest process got reclaimed
             verifyClients(true /* c1 */, false /* c2 */, false /* c3 */);
 
             // call again should reclaim another graphic memory from lowest process
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             verifyClients(false /* c1 */, true /* c2 */, false /* c3 */);
 
             // call again should reclaim another graphic memory from lowest process
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             verifyClients(false /* c1 */, false /* c2 */, true /* c3 */);
 
             // nothing left
-            CHECK_STATUS_FALSE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
         }
 
         // ### secure codecs can coexist and secure codec can coexist with non-secure codec ###
@@ -678,16 +741,19 @@ protected:
             std::vector<MediaResourceParcel> resources;
             resources.push_back(MediaResource(MediaResource::Type::kSecureCodec, 1));
 
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             // secure codec from lowest process got reclaimed
             verifyClients(true /* c1 */, false /* c2 */, false /* c3 */);
 
             // call again should reclaim another secure codec from lowest process
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             verifyClients(false /* c1 */, false /* c2 */, true /* c3 */);
 
             // no more secure codec, non-secure codec will be reclaimed.
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             verifyClients(false /* c1 */, true /* c2 */, false /* c3 */);
         }
     }
@@ -698,25 +764,37 @@ protected:
         resources.push_back(MediaResource(MediaResource::Type::kNonSecureCodec, 1));
         resources.push_back(MediaResource(MediaResource::Type::kGraphicMemory, 150));
 
+        std::shared_ptr<IResourceManagerClient> lowClient(
+                ::ndk::SharedRefBase::make<TestClient>(kLowPriorityPid, mService));
+        std::shared_ptr<IResourceManagerClient> midClient(
+                ::ndk::SharedRefBase::make<TestClient>(kMidPriorityPid, mService));
+        std::shared_ptr<IResourceManagerClient> highClient(
+                ::ndk::SharedRefBase::make<TestClient>(kHighPriorityPid, mService));
+
         // ### secure codec can't coexist with non-secure codec ###
         {
             addResource();
             mService->mSupportsSecureWithNonSecureCodec = false;
 
             // priority too low
-            CHECK_STATUS_FALSE(mService->reclaimResource(kLowPriorityPid, resources, &result));
-            CHECK_STATUS_FALSE(mService->reclaimResource(kMidPriorityPid, resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kLowPriorityPid, getId(lowClient), resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kMidPriorityPid, getId(midClient), resources, &result));
 
             // reclaim all secure codecs
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             verifyClients(true /* c1 */, false /* c2 */, true /* c3 */);
 
             // call again should reclaim one graphic memory from lowest process
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             verifyClients(false /* c1 */, true /* c2 */, false /* c3 */);
 
             // nothing left
-            CHECK_STATUS_FALSE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
         }
 
 
@@ -726,22 +804,27 @@ protected:
             mService->mSupportsSecureWithNonSecureCodec = true;
 
             // priority too low
-            CHECK_STATUS_FALSE(mService->reclaimResource(kLowPriorityPid, resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kLowPriorityPid, getId(lowClient), resources, &result));
 
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             // one largest graphic memory from lowest process got reclaimed
             verifyClients(true /* c1 */, false /* c2 */, false /* c3 */);
 
             // call again should reclaim another graphic memory from lowest process
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             verifyClients(false /* c1 */, true /* c2 */, false /* c3 */);
 
             // call again should reclaim another graphic memory from lowest process
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             verifyClients(false /* c1 */, false /* c2 */, true /* c3 */);
 
             // nothing left
-            CHECK_STATUS_FALSE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_FALSE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
         }
 
         // ### secure codec can coexist with non-secure codec ###
@@ -752,12 +835,14 @@ protected:
             std::vector<MediaResourceParcel> resources;
             resources.push_back(MediaResource(MediaResource::Type::kNonSecureCodec, 1));
 
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             // one non secure codec from lowest process got reclaimed
             verifyClients(false /* c1 */, true /* c2 */, false /* c3 */);
 
             // no more non-secure codec, secure codec from lowest priority process will be reclaimed
-            CHECK_STATUS_TRUE(mService->reclaimResource(kHighPriorityPid, resources, &result));
+            CHECK_STATUS_TRUE(mService->reclaimResource(
+                    kHighPriorityPid, getId(highClient), resources, &result));
             verifyClients(true /* c1 */, false /* c2 */, false /* c3 */);
 
             // clean up client 3 which still left
@@ -768,12 +853,20 @@ protected:
     void testGetLowestPriorityBiggestClient() {
         MediaResource::Type type = MediaResource::Type::kGraphicMemory;
         std::shared_ptr<IResourceManagerClient> client;
-        EXPECT_FALSE(mService->getLowestPriorityBiggestClient_l(kHighPriorityPid, type, &client));
+        std::shared_ptr<IResourceManagerClient> lowClient(
+                ::ndk::SharedRefBase::make<TestClient>(kLowPriorityPid, mService));
+        std::shared_ptr<IResourceManagerClient> highClient(
+                ::ndk::SharedRefBase::make<TestClient>(kHighPriorityPid, mService));
+
+        EXPECT_FALSE(mService->getLowestPriorityBiggestClient_l(
+                kHighPriorityPid, getId(highClient), type, &client));
 
         addResource();
 
-        EXPECT_FALSE(mService->getLowestPriorityBiggestClient_l(kLowPriorityPid, type, &client));
-        EXPECT_TRUE(mService->getLowestPriorityBiggestClient_l(kHighPriorityPid, type, &client));
+        EXPECT_FALSE(mService->getLowestPriorityBiggestClient_l(
+                kLowPriorityPid, getId(lowClient), type, &client));
+        EXPECT_TRUE(mService->getLowestPriorityBiggestClient_l(
+                kHighPriorityPid, getId(highClient), type, &client));
 
         // kTestPid1 is the lowest priority process with MediaResource::Type::kGraphicMemory.
         // mTestClient1 has the largest MediaResource::Type::kGraphicMemory within kTestPid1.

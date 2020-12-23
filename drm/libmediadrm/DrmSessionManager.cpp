@@ -182,9 +182,10 @@ bool DrmSessionManager::reclaimSession(int callingPid) {
 
     // cannot update mSessionMap because we do not know which sessionId is reclaimed;
     // we rely on IResourceManagerClient to removeSession in reclaimResource
-    Vector<uint8_t> dummy;
+    Vector<uint8_t> placeholder;
     bool success;
-    ScopedAStatus status = service->reclaimResource(callingPid, toResourceVec(dummy, INT64_MAX), &success);
+    ScopedAStatus status = service->reclaimResource(
+            callingPid, -1, toResourceVec(placeholder, INT64_MAX), &success);
     return status.isOk() && success;
 }
 

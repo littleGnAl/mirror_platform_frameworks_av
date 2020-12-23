@@ -480,19 +480,21 @@ Status ResourceManagerService::removeResource(int pid, int64_t clientId, bool ch
 }
 
 void ResourceManagerService::getClientForResource_l(
-        int callingPid, const MediaResourceParcel *res,
+        int callingPid, int64_t callingClientId, const MediaResourceParcel *res,
         Vector<std::shared_ptr<IResourceManagerClient>> *clients) {
     if (res == NULL) {
         return;
     }
     std::shared_ptr<IResourceManagerClient> client;
-    if (getLowestPriorityBiggestClient_l(callingPid, res->type, &client)) {
+    if (getLowestPriorityBiggestClient_l(
+                callingPid, callingClientId, res->type, &client)) {
         clients->push_back(client);
     }
 }
 
 Status ResourceManagerService::reclaimResource(
         int32_t callingPid,
+        int64_t callingClientId,
         const std::vector<MediaResourceParcel>& resources,
         bool* _aidl_return) {
     String8 log = String8::format("reclaimResource(callingPid %d, resources %s)",
@@ -545,7 +547,7 @@ Status ResourceManagerService::reclaimResource(
             }
         }
         if (drmSession != NULL) {
-            getClientForResource_l(callingPid, drmSession, &clients);
+            getClientForResource_l(callingPid, callingClientId, drmSession, &clients);
             if (clients.size() == 0) {
                 return Status::ok();
             }
@@ -553,24 +555,24 @@ Status ResourceManagerService::reclaimResource(
 
         if (clients.size() == 0) {
             // if no secure/non-secure codec conflict, run second pass to handle other resources.
-            getClientForResource_l(callingPid, graphicMemory, &clients);
+            getClientForResource_l(callingPid, callingClientId, graphicMemory, &clients);
         }
 
         if (clients.size() == 0) {
             // if we are here, run the third pass to free one codec with the same type.
-            getClientForResource_l(callingPid, secureCodec, &clients);
-            getClientForResource_l(callingPid, nonSecureCodec, &clients);
+            getClientForResource_l(callingPid, callingClientId, secureCodec, &clients);
+            getClientForResource_l(callingPid, callingClientId, nonSecureCodec, &clients);
         }
 
         if (clients.size() == 0) {
             // if we are here, run the fourth pass to free one codec with the different type.
             if (secureCodec != NULL) {
                 MediaResource temp(MediaResource::Type::kNonSecureCodec, 1);
-                getClientForResource_l(callingPid, &temp, &clients);
+                getClientForResource_l(callingPid, callingClientId, &temp, &clients);
             }
             if (nonSecureCodec != NULL) {
                 MediaResource temp(MediaResource::Type::kSecureCodec, 1);
-                getClientForResource_l(callingPid, &temp, &clients);
+                getClientForResource_l(callingPid, callingClientId, &temp, &clients);
             }
         }
     }
@@ -686,7 +688,8 @@ Status ResourceManagerService::markClientForPendingRemoval(int32_t pid, int64_t 
     return Status::ok();
 }
 
-Status ResourceManagerService::reclaimResourcesFromClientsPendingRemoval(int32_t pid) {
+Status ResourceManagerService::reclaimResourcesFromClientsPendingRemoval(
+        int32_t pid, int64_t callingClientId) {
     String8 log = String8::format("reclaimResourcesFromClientsPendingRemoval(pid %d)", pid);
     mServiceLog->add(log);
 
@@ -703,7 +706,8 @@ Status ResourceManagerService::reclaimResourcesFromClientsPendingRemoval(int32_t
                                          MediaResource::Type::kGraphicMemory,
                                          MediaResource::Type::kDrmSession}) {
             std::shared_ptr<IResourceManagerClient> client;
-            if (getBiggestClient_l(pid, type, &client, true /* pendingRemovalOnly */)) {
+            if (getBiggestClient_l(pid, type, &client,
+                    std::bind(&PendingRemovalOnly, callingClientId, std::placeholders::_1))) {
                 clients.add(client);
                 break;
             }
@@ -756,7 +760,7 @@ bool ResourceManagerService::getAllClients_l(
 }
 
 bool ResourceManagerService::getLowestPriorityBiggestClient_l(
-        int callingPid, MediaResource::Type type,
+        int callingPid, int64_t callingClientId, MediaResource::Type type,
         std::shared_ptr<IResourceManagerClient> *client) {
     int lowestPriorityPid;
     int lowestPriority;
@@ -764,7 +768,8 @@ bool ResourceManagerService::getLowestPriorityBiggestClient_l(
 
     // Before looking into other processes, check if we have clients marked for
     // pending removal in the same process.
-    if (getBiggestClient_l(callingPid, type, client, true /* pendingRemovalOnly */)) {
+    if (getBiggestClient_l(callingPid, type, client,
+                std::bind(&PendingRemovalOnly, callingClientId, std::placeholders::_1))) {
         return true;
     }
     if (!getPriority_l(callingPid, &callingPriority)) {
@@ -836,10 +841,10 @@ bool ResourceManagerService::isCallingPriorityHigher_l(int callingPid, int pid) 
 
 bool ResourceManagerService::getBiggestClient_l(
         int pid, MediaResource::Type type, std::shared_ptr<IResourceManagerClient> *client,
-        bool pendingRemovalOnly) {
+        std::function<bool(const ResourceInfo &)> predicate) {
     ssize_t index = mMap.indexOfKey(pid);
     if (index < 0) {
-        ALOGE_IF(!pendingRemovalOnly,
+        ALOGE_IF(!predicate,
                  "getBiggestClient_l: can't find resource info for pid %d", pid);
         return false;
     }
@@ -849,7 +854,7 @@ bool ResourceManagerService::getBiggestClient_l(
     const ResourceInfos &infos = mMap.valueAt(index);
     for (size_t i = 0; i < infos.size(); ++i) {
         const ResourceList &resources = infos[i].resources;
-        if (pendingRemovalOnly && !infos[i].pendingRemoval) {
+        if (predicate && !predicate(infos[i])) {
             continue;
         }
         for (auto it = resources.begin(); it != resources.end(); it++) {
@@ -864,7 +869,7 @@ bool ResourceManagerService::getBiggestClient_l(
     }
 
     if (clientTemp == NULL) {
-        ALOGE_IF(!pendingRemovalOnly,
+        ALOGE_IF(!predicate,
                  "getBiggestClient_l: can't find resource type %s for pid %d",
                  asString(type), pid);
         return false;
@@ -872,6 +877,12 @@ bool ResourceManagerService::getBiggestClient_l(
 
     *client = clientTemp;
     return true;
+}
+
+//static
+bool ResourceManagerService::PendingRemovalOnly(
+        int64_t callingClientId, const ResourceInfo &info) {
+    return info.clientId != callingClientId && info.pendingRemoval;
 }
 
 } // namespace android

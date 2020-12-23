@@ -118,6 +118,7 @@ public:
     // Returns true if any resource has been reclaimed, otherwise returns false.
     Status reclaimResource(
             int32_t callingPid,
+            int64_t callingClientId,
             const std::vector<MediaResourceParcel>& resources,
             bool* _aidl_return) override;
 
@@ -127,7 +128,8 @@ public:
 
     Status markClientForPendingRemoval(int32_t pid, int64_t clientId) override;
 
-    Status reclaimResourcesFromClientsPendingRemoval(int32_t pid) override;
+    Status reclaimResourcesFromClientsPendingRemoval(
+            int32_t pid, int64_t callingClientId) override;
 
     Status removeResource(int pid, int64_t clientId, bool checkValid);
 
@@ -148,8 +150,8 @@ private:
     // Gets the client who owns specified resource type from lowest possible priority process.
     // Returns false if the calling process priority is not higher than the lowest process
     // priority. The client will remain unchanged if returns false.
-    bool getLowestPriorityBiggestClient_l(int callingPid, MediaResource::Type type,
-            std::shared_ptr<IResourceManagerClient> *client);
+    bool getLowestPriorityBiggestClient_l(int callingPid, int64_t callingClientId,
+            MediaResource::Type type, std::shared_ptr<IResourceManagerClient> *client);
 
     // Gets lowest priority process that has the specified resource type.
     // Returns false if failed. The output parameters will remain unchanged if failed.
@@ -159,13 +161,14 @@ private:
     // Returns false if failed. The client will remain unchanged if failed.
     bool getBiggestClient_l(int pid, MediaResource::Type type,
             std::shared_ptr<IResourceManagerClient> *client,
-            bool pendingRemovalOnly = false);
+            std::function<bool(const ResourceInfo &)> predicate = nullptr);
 
     bool isCallingPriorityHigher_l(int callingPid, int pid);
 
     // A helper function basically calls getLowestPriorityBiggestClient_l and add
     // the result client to the given Vector.
-    void getClientForResource_l(int callingPid, const MediaResourceParcel *res,
+    void getClientForResource_l(int callingPid, int64_t callingClientId,
+            const MediaResourceParcel *res,
             Vector<std::shared_ptr<IResourceManagerClient>> *clients);
 
     void onFirstAdded(const MediaResourceParcel& res, const ResourceInfo& clientInfo);
@@ -176,6 +179,8 @@ private:
 
     // Get priority from process's pid
     bool getPriority_l(int pid, int* priority);
+
+    static bool PendingRemovalOnly(int64_t callingClientId, const ResourceInfo &info);
 
     mutable Mutex mLock;
     sp<ProcessInfoInterface> mProcessInfo;
