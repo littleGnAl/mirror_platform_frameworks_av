@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b433100_23b0319a",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_ApplyNewSettings.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-23T17:47:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "815ff1a6_9e497288",
+      "range": {
+        "startLine": 78,
+        "startChar": 0,
+        "endLine": 78,
+        "endChar": 42
+      },
+      "revId": "b6da9599ccc48e54cd5cd0921a983925c451cb88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "876ee9ec_c93b1b1c",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-12-17T11:13:53Z",
       "side": 1,
       "message": "i is preferred over ii.",
+      "range": {
+        "startLine": 68,
+        "startChar": 17,
+        "endLine": 68,
+        "endChar": 19
+      },
+      "revId": "b6da9599ccc48e54cd5cd0921a983925c451cb88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bf7f4f3_76eb4bca",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_ClearAudioBuffers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-23T17:47:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "876ee9ec_c93b1b1c",
       "range": {
         "startLine": 68,
         "startChar": 17,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d36b380_1fe488f3",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_ClearAudioBuffers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-23T17:47:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8d38783_e49ccc7d",
+      "range": {
+        "startLine": 86,
+        "startChar": 17,
+        "endLine": 86,
+        "endChar": 19
+      },
+      "revId": "b6da9599ccc48e54cd5cd0921a983925c451cb88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cab7ab6d_6b6b3e75",
@@ -83,6 +155,24 @@
       "writtenOn": "2020-12-18T17:04:06Z",
       "side": 1,
       "message": "all these names as per new convention",
+      "revId": "b6da9599ccc48e54cd5cd0921a983925c451cb88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9264c2fb_e13ae190",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_Private.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 143,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-23T17:47:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cab7ab6d_6b6b3e75",
       "revId": "b6da9599ccc48e54cd5cd0921a983925c451cb88",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
