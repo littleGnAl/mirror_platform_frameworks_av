@@ -171,6 +171,10 @@ public:
             C2MemoryUsage usage,
             std::shared_ptr<C2GraphicBlock>* block) {
         c2_status_t status;
+        if (getLocalId() != BASIC_GRAPHIC) {
+            ALOGV("Disable CPU read when not in byte buffer mode");
+            usage.expected &= ~C2MemoryUsage::CPU_READ;
+        }
         do {
             status = mBase->fetchGraphicBlock(width, height, format, usage,
                                               block);

@@ -59,7 +59,8 @@ C2MemoryUsage C2AndroidMemoryUsage::FromGrallocUsage(uint64_t usage) {
 
 uint64_t C2AndroidMemoryUsage::asGrallocUsage() const {
     // gralloc does not support WRITE_PROTECTED
-    return (((expected & C2MemoryUsage::CPU_READ) ? GRALLOC_USAGE_SW_READ_OFTEN : 0) |
+    return (((expected & C2MemoryUsage::CPU_READ) ? GRALLOC_USAGE_SW_READ_OFTEN
+                                                  : GRALLOC_USAGE_SW_READ_RARELY) |
             ((expected & C2MemoryUsage::CPU_WRITE) ? GRALLOC_USAGE_SW_WRITE_OFTEN : 0) |
             ((expected & C2MemoryUsage::READ_PROTECTED) ? GRALLOC_USAGE_PROTECTED : 0) |
             (expected & PASSTHROUGH_USAGE_MASK));
