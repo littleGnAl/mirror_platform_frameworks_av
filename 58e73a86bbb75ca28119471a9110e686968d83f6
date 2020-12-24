@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1e98ff53_6ecb15b0",
+        "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Control.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-12-24T02:43:53Z",
+      "side": 1,
+      "message": "Please take care of the number of channels parameter passed when pParams-\u003eNrChannels is 1.",
+      "range": {
+        "startLine": 356,
+        "startChar": 66,
+        "endLine": 356,
+        "endChar": 85
+      },
+      "revId": "58e73a86bbb75ca28119471a9110e686968d83f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ee374f92_cb734a3c",
         "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Process.cpp",
         "patchSetId": 1
