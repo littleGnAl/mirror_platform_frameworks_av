@@ -1070,9 +1070,11 @@ c2_status_t C2SoftHevcEnc::drainInternal(
 
     while (true) {
         ihevce_out_buf_t s_encode_op{};
+        ihevce_recon_buf_t s_recon_buf{};
         memset(&s_encode_op, 0, sizeof(s_encode_op));
+        memset(&s_recon_buf, 0, sizeof(s_recon_buf));
 
-        ihevce_encode(mCodecCtx, nullptr, &s_encode_op);
+        ihevce_encode(mCodecCtx, nullptr, &s_encode_op, &s_recon_buf);
         if (s_encode_op.i4_bytes_generated) {
             finishWork(s_encode_op.u8_pts, work, pool, &s_encode_op);
         } else {
@@ -1172,6 +1174,7 @@ void C2SoftHevcEnc::process(const std::unique_ptr<C2Work>& work,
 
     ihevce_inp_buf_t s_encode_ip{};
     ihevce_out_buf_t s_encode_op{};
+    ihevce_recon_buf_t s_recon_buf{};
     uint64_t workIndex = work->input.ordinal.frameIndex.peekull();
 
     status = setEncodeArgs(&s_encode_ip, view.get(), workIndex);
@@ -1206,11 +1209,13 @@ void C2SoftHevcEnc::process(const std::unique_ptr<C2Work>& work,
     nsecs_t timeDelay = 0;
     nsecs_t timeTaken = 0;
     memset(&s_encode_op, 0, sizeof(s_encode_op));
+    memset(&s_recon_buf, 0, sizeof(s_recon_buf));
+
     mTimeStart = systemTime();
     timeDelay = mTimeStart - mTimeEnd;
 
     if (inputBuffer) {
-        err = ihevce_encode(mCodecCtx, &s_encode_ip, &s_encode_op);
+        err = ihevce_encode(mCodecCtx, &s_encode_ip, &s_encode_op, &s_recon_buf);
         if (IHEVCE_EOK != err) {
             ALOGE("Encode Frame failed : 0x%x", err);
             mSignalledError = true;
