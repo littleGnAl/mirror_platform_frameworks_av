@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f9f317c1_17b1698f",
+        "filename": "media/libstagefright/writer_fuzzers/include/WriterFuzzerBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-28T18:55:59Z",
+      "side": 1,
+      "message": "if all of these use the same file name, then we have a problem if we try to run multiple instances of the fuzzer at the same time (say an ogg fuzzer and an mpeg4 fuzzer).\n\nthis would be a good use of the mktemp() functionality.\n\nReading further -- i see that this is used in a memfd_create() call, so the name collision is\nnot a problem in this use case.",
+      "range": {
+        "startLine": 160,
+        "startChar": 29,
+        "endLine": 160,
+        "endChar": 42
+      },
+      "revId": "fd48dd3a53b11eb741132e5d26e8c13a9a682e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
