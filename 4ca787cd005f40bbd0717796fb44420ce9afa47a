@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0fc0f68_2cfc9988",
+        "filename": "media/libstagefright/writer_fuzzers/ogg_writer_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-28T18:55:43Z",
+      "side": 1,
+      "message": "this is confusing naming, given that the underlying class we\u0027re testing is OggWriter.\nI\u0027d rather see these named differently to avoid that confusion.\n\nOGGWriterFuzzer is way to change these names.",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "4ca787cd005f40bbd0717796fb44420ce9afa47a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
