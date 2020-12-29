@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7f014d4_56b66be3",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 212,
+      "author": {
+        "id": 1734121
+      },
+      "writtenOn": "2020-12-29T21:16:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2ab65bd_ca129657",
+      "range": {
+        "startLine": 212,
+        "startChar": 0,
+        "endLine": 212,
+        "endChar": 1
+      },
+      "revId": "9eff4cf7764dcc08e591d98ec55d98c0d16ba2fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "73229080_705bdbff",
@@ -37,6 +61,30 @@
       "writtenOn": "2020-11-24T21:01:50Z",
       "side": 1,
       "message": "conditional update",
+      "range": {
+        "startLine": 690,
+        "startChar": 0,
+        "endLine": 693,
+        "endChar": 53
+      },
+      "revId": "9eff4cf7764dcc08e591d98ec55d98c0d16ba2fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3cc80b0_8a9af98b",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1734121
+      },
+      "writtenOn": "2020-12-29T21:16:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "73229080_705bdbff",
       "range": {
         "startLine": 690,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6c029aa_a6bb1ae4",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 695,
+      "author": {
+        "id": 1734121
+      },
+      "writtenOn": "2020-12-29T21:16:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8904092_130e84fd",
+      "range": {
+        "startLine": 695,
+        "startChar": 0,
+        "endLine": 695,
+        "endChar": 3
+      },
+      "revId": "9eff4cf7764dcc08e591d98ec55d98c0d16ba2fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6e91d1f_f434b810",
@@ -83,6 +155,24 @@
       "writtenOn": "2020-11-24T21:01:50Z",
       "side": 1,
       "message": "redundant change",
+      "revId": "9eff4cf7764dcc08e591d98ec55d98c0d16ba2fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "899b0ad0_7bb184bd",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 701,
+      "author": {
+        "id": 1734121
+      },
+      "writtenOn": "2020-12-29T21:16:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6e91d1f_f434b810",
       "revId": "9eff4cf7764dcc08e591d98ec55d98c0d16ba2fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
