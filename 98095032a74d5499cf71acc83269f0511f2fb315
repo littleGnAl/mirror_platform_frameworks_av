@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f0581e0_2d301f04",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1734121
+      },
+      "writtenOn": "2020-12-29T20:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "80843449_723ad2d2",
+      "revId": "98095032a74d5499cf71acc83269f0511f2fb315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7ebdede_4ae1334b",
@@ -31,6 +49,30 @@
       "writtenOn": "2020-11-24T20:58:05Z",
       "side": 1,
       "message": "update only if the values have changed from previous values.\nSo store them and make these calls if they have changed",
+      "range": {
+        "startLine": 629,
+        "startChar": 0,
+        "endLine": 638,
+        "endChar": 41
+      },
+      "revId": "98095032a74d5499cf71acc83269f0511f2fb315",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "339a101e_080375aa",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 638,
+      "author": {
+        "id": 1734121
+      },
+      "writtenOn": "2020-12-29T20:57:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c7ebdede_4ae1334b",
       "range": {
         "startLine": 629,
         "startChar": 0,
