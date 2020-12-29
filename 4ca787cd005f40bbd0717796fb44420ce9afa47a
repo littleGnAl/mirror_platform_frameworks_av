@@ -22,6 +22,30 @@
       },
       "revId": "4ca787cd005f40bbd0717796fb44420ce9afa47a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "292a2631_192e46d3",
+        "filename": "media/libstagefright/writer_fuzzers/ogg_writer_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2020-12-29T06:24:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f0fc0f68_2cfc9988",
+      "range": {
+        "startLine": 27,
+        "startChar": 6,
+        "endLine": 27,
+        "endChar": 15
+      },
+      "revId": "4ca787cd005f40bbd0717796fb44420ce9afa47a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
