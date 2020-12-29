@@ -1,0 +1,186 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006982935",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1537232?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "1b648c66_6ef604f2",
+        "filename": "services/audiopolicy/fuzzer/resources/test_audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-29T13:13:21Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 60,
+        "endChar": 101
+      },
+      "revId": "c0f8cf9362656297aafdde95e562791a49bbc69c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006982935",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1537232?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "125a9d16_a6a9be2d",
+        "filename": "services/audiopolicy/fuzzer/resources/test_audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-29T13:13:21Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 94,
+        "startChar": 0,
+        "endLine": 94,
+        "endChar": 106
+      },
+      "revId": "c0f8cf9362656297aafdde95e562791a49bbc69c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006982935",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1537232?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "cf71a220_d56ef7fa",
+        "filename": "services/audiopolicy/fuzzer/resources/test_audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-29T13:13:21Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 98,
+        "endChar": 106
+      },
+      "revId": "c0f8cf9362656297aafdde95e562791a49bbc69c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006982935",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1537232?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b49f8ba0_9a0c80bb",
+        "filename": "services/audiopolicy/fuzzer/resources/test_tv_apm_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-29T13:13:21Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 107
+      },
+      "revId": "c0f8cf9362656297aafdde95e562791a49bbc69c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006982935",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1537232?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "86aaa7e1_89a4153f",
+        "filename": "services/audiopolicy/fuzzer/resources/test_tv_apm_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-29T13:13:21Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 109
+      },
+      "revId": "c0f8cf9362656297aafdde95e562791a49bbc69c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006982935",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1537232?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "a2bc90ea_04cf8c5b",
+        "filename": "services/audiopolicy/fuzzer/resources/test_tv_apm_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-29T13:13:21Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 50,
+        "startChar": 0,
+        "endLine": 50,
+        "endChar": 104
+      },
+      "revId": "c0f8cf9362656297aafdde95e562791a49bbc69c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006982935",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1537232?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "aa352ee2_f9979592",
+        "filename": "services/audiopolicy/fuzzer/resources/test_tv_apm_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-29T13:13:21Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 109
+      },
+      "revId": "c0f8cf9362656297aafdde95e562791a49bbc69c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
