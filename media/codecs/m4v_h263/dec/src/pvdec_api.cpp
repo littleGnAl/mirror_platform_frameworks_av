@@ -230,7 +230,7 @@ OSCL_EXPORT_REF Bool PVInitVideoDecoder(VideoDecControls *decCtrl, uint8 *volbuf
                     {
                         /* Set up VOL header bitstream for frame-based decoding.  08/30/2000 */
                         BitstreamReset(stream, decCtrl->volbuf[idx], decCtrl->volbuf_size[idx]);
-
+ALOGD("%s %d",__FUNCTION__, __LINE__);
                         switch (DecodeVOLHeader(video, idx))
                         {
                             case PV_SUCCESS :
@@ -1682,6 +1682,3 @@ Bool PVGetVolInfo(VideoDecControls *decCtrl, VolInfo *pVolInfo)
 
     return PV_TRUE;
 }
-
-
-

@@ -94,7 +94,7 @@ PV_STATUS DecodeVOLHeader(VideoDecData *video, int layer)
     currVol = video->vol[layer];
     stream  = currVol->bitstream;
     currVol->moduloTimeBase = 0;
-
+ALOGD("%s %d",__FUNCTION__, __LINE__);
     /* Determine which start code for the decoder to begin with */
     status = BitstreamShowBits32HC(stream, &startCode);
 
@@ -104,6 +104,8 @@ PV_STATUS DecodeVOLHeader(VideoDecData *video, int layer)
         /* visual_object_sequence_start_code            */
         (void) BitstreamReadBits32HC(stream);
         tmpvar = (uint32) BitstreamReadBits16(stream,  8); /* profile */
+        ALOGD("DEBUG tmpvar %d", tmpvar);
+ALOGD("%s %d",__FUNCTION__, __LINE__);
 #ifndef PV_TOLERATE_VOL_ERRORS
         if (layer)                                                      /*    */
         {
@@ -120,6 +122,7 @@ PV_STATUS DecodeVOLHeader(VideoDecData *video, int layer)
                     // Do Nothing, the cases listed above are supported values
                     break;
                 default:
+                  ALOGD("DEBUG unsupported tmpvar %d", tmpvar);
                     // Unsupport profile level
                     return PV_FAIL;
               }
@@ -155,6 +158,7 @@ PV_STATUS DecodeVOLHeader(VideoDecData *video, int layer)
                     // Do Nothing, the cases listed above are supported values
                     break;
                 default:
+                    ALOGD("DEBUG unsupported tmpvar %d", tmpvar);
                     // Unsupport profile level
                     return PV_FAIL;
             }
@@ -165,7 +169,7 @@ PV_STATUS DecodeVOLHeader(VideoDecData *video, int layer)
 
         // save the profile and level for the query
         currVol->profile_level_id = (uint)tmpvar; //  6/10/04
-
+ALOGD("%s %d",__FUNCTION__, __LINE__);
 
 
         status = BitstreamShowBits32HC(stream, &tmpvar);
@@ -194,7 +198,7 @@ PV_STATUS DecodeVOLHeader(VideoDecData *video, int layer)
         {
             BitstreamReadBits32HC(stream);
         }
-
+ALOGD("%s %d",__FUNCTION__, __LINE__);
         /*  is_visual_object_identifier            */
         tmpvar = (uint32) BitstreamRead1Bits(stream);
         if (tmpvar)
@@ -204,6 +208,7 @@ PV_STATUS DecodeVOLHeader(VideoDecData *video, int layer)
             /* visual_object_priority                         */
             tmpvar = (uint32) BitstreamReadBits16(stream, 3);
         }
+ALOGD("%s %d",__FUNCTION__, __LINE__);
         /* visual_object_type                                 */
         BitstreamShowBits32(stream, 4, &tmpvar);
         if (tmpvar == 1)
@@ -242,7 +247,7 @@ PV_STATUS DecodeVOLHeader(VideoDecData *video, int layer)
             while (tmpvar != VOL_START_CODE);
             goto decode_vol;
         }
-
+ALOGD("%s %d",__FUNCTION__, __LINE__);
         /* next_start_code() */
         status = PV_BitstreamByteAlign(stream);                            /*  10/12/01 */
         status = BitstreamShowBits32HC(stream, &tmpvar);
@@ -262,7 +267,7 @@ PV_STATUS DecodeVOLHeader(VideoDecData *video, int layer)
                                                                      to start decoding with a
                                                                      video_object_start_code */
     }
-
+ALOGD("%s %d",__FUNCTION__, __LINE__);
     if (tmpvar == VO_START_CODE)
     {
         /*****
@@ -302,7 +307,7 @@ PV_STATUS DecodeVOLHeader(VideoDecData *video, int layer)
         {
             PV_BitstreamFlushBits(stream, 8);
         }
-
+ALOGD("%s %d",__FUNCTION__, __LINE__);
 decode_vol:
         PV_BitstreamFlushBits(stream, VOL_START_CODE_LENGTH - 8);
         video->shortVideoHeader = 0;
@@ -315,7 +320,8 @@ decode_vol:
 
         /* object type */
         tmpvar = (uint32) BitstreamReadBits16(stream, 8);                /*  */
-
+ALOGD("%s %d",__FUNCTION__, __LINE__);
+ALOGD("%s %d tmpvar %d",__FUNCTION__, __LINE__, tmpvar);
 #ifdef PV_TOLERATE_VOL_ERRORS
         if (tmpvar == 0)
         {
@@ -337,7 +343,8 @@ decode_vol:
             profile |= 0x0100;
         }
 #endif
-
+ALOGD("%s %d",__FUNCTION__, __LINE__);
+ALOGD("%s %d tmpvar %d",__FUNCTION__, __LINE__, tmpvar);
         if (layer)
         {
             if (tmpvar != 0x02) return PV_FAIL;
@@ -358,7 +365,7 @@ decode_vol:
             tmpvar = (uint32) BitstreamReadBits16(stream, 3);
 
         }
-
+ALOGD("%s %d",__FUNCTION__, __LINE__);
         /* aspect ratio info */
         tmpvar = (uint32) BitstreamReadBits16(stream, 4);
         if (tmpvar == 0) return PV_FAIL;
@@ -370,7 +377,7 @@ decode_vol:
             tmpvar = (uint32) BitstreamReadBits16(stream, 8);
         }
 
-
+ALOGD("%s %d",__FUNCTION__, __LINE__);
         /* control parameters present? */
         tmpvar = (uint32) BitstreamRead1Bits(stream);
 
@@ -1702,4 +1709,3 @@ uint32 CalcVopDisplayTime(Vol *currVol, Vop *currVop, int shortVideoHeader)
 
     return(display_time);
 }
-

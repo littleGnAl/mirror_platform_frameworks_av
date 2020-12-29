@@ -257,6 +257,33 @@ class C2SoftHevcEnc::IntfImpl : public SimpleInterface<void>::BaseParams {
                              C2F(mPictureQuantization, m.values[0].min).any(),
                              C2F(mPictureQuantization, m.values[0].max).any()})
                 .withSetter(PictureQuantizationSetter)
+
+        addParameter(
+                DefineParam(mFrameReconEnable, C2_PARAMKEY_FRAME_RECON_DATA)
+                .withDefault(new C2StreamFrameReconDataTuning::input(0u, C2_FALSE))
+                .withFields({C2F(mFrameReconEnable, value).oneOf({ C2_FALSE, C2_TRUE }) })
+                .withSetter(Setter<decltype(*mFrameReconEnable)>::NonStrictValueWithNoDeps)
+                .build());
+
+        addParameter(
+                DefineParam(mQpMetadataEnable, C2_PARAMKEY_BLOCK_QP_VALUE)
+                .withDefault(new C2StreamBlockQpValueTuning::input(0u, C2_FALSE))
+                .withFields({C2F(mQpMetadataEnable, value).oneOf({ C2_FALSE, C2_TRUE }) })
+                .withSetter(Setter<decltype(*mQpMetadataEnable)>::NonStrictValueWithNoDeps)
+                .build());
+
+        addParameter(
+                DefineParam(mMbTypeMetadataEnable, C2_PARAMKEY_BLOCK_TYPE_VALUE)
+                .withDefault(new C2StreamBlockTypeValueTuning::input(0u, C2_FALSE))
+                .withFields({C2F(mMbTypeMetadataEnable, value).oneOf({ C2_FALSE, C2_TRUE }) })
+                .withSetter(Setter<decltype(*mMbTypeMetadataEnable)>::NonStrictValueWithNoDeps)
+                .build());
+
+        addParameter(
+                DefineParam(mMetadataBlockSize, C2_PARAMKEY_METADATA_BLOCK_SIZE)
+                .withDefault(new C2StreamMetaDataBlockSizeTuning::output(0u, 8))
+                .withFields({C2F(mMetadataBlockSize, value).equalTo(8)})
+                .withSetter(Setter<decltype(*mMetadataBlockSize)>::StrictValueWithNoDeps)
                 .build());
     }
 
@@ -431,6 +458,18 @@ class C2SoftHevcEnc::IntfImpl : public SimpleInterface<void>::BaseParams {
     std::shared_ptr<C2StreamPictureSizeInfo::input> getSize_l() const {
         return mSize;
     }
+    std::shared_ptr<C2StreamFrameReconDataTuning::input> getReconEnable_l() const {
+        return mFrameReconEnable;
+    }
+    std::shared_ptr<C2StreamBlockQpValueTuning::input> getMbQpEnable_l() const {
+        return mQpMetadataEnable;
+    }
+    std::shared_ptr<C2StreamBlockTypeValueTuning::input> getMbTypeEnable_l() const {
+        return mMbTypeMetadataEnable;
+    }
+    std::shared_ptr<C2StreamMetaDataBlockSizeTuning::output> getMetadataBlockSize_l() const {
+        return mMetadataBlockSize;
+    }
     std::shared_ptr<C2StreamFrameRateInfo::output> getFrameRate_l() const {
         return mFrameRate;
     }
@@ -544,6 +583,10 @@ class C2SoftHevcEnc::IntfImpl : public SimpleInterface<void>::BaseParams {
    private:
     std::shared_ptr<C2StreamUsageTuning::input> mUsage;
     std::shared_ptr<C2StreamPictureSizeInfo::input> mSize;
+    std::shared_ptr<C2StreamFrameReconDataTuning::input> mFrameReconEnable;
+    std::shared_ptr<C2StreamBlockQpValueTuning::input> mQpMetadataEnable;
+    std::shared_ptr<C2StreamBlockTypeValueTuning::input> mMbTypeMetadataEnable;
+    std::shared_ptr<C2StreamMetaDataBlockSizeTuning::output> mMetadataBlockSize;
     std::shared_ptr<C2StreamFrameRateInfo::output> mFrameRate;
     std::shared_ptr<C2StreamRequestSyncFrameTuning::output> mRequestSync;
     std::shared_ptr<C2StreamBitrateInfo::output> mBitrate;
@@ -785,6 +828,16 @@ c2_status_t C2SoftHevcEnc::initEncParams() {
         mEncParams.s_tgt_lyr_prms.as_tgt_params[0].i4_quality_preset = IHEVCE_QUALITY_P5;
     }
 
+    mEncParams.i4_save_recon = mReconEnable ? 1: 0;
+    // library ties recon and metadata together.
+    // Hence enable recon for library if QP or MB Type metadata flag is enabled.
+    // As we will not be allocating recon buffer in plugin if recon flag is not enabled,
+    // final output won't have recon buffers.
+    if (mBlockQpInfoEnable || mBlockTypeInfoEnable) {
+        mEncParams.i4_frame_info_enable = 1;
+        mEncParams.i4_save_recon = 1;
+    }
+
     return C2_OK;
 }
 
@@ -824,9 +877,20 @@ c2_status_t C2SoftHevcEnc::initEncoder() {
         mQuality = mIntf->getQuality_l();
         mGop = mIntf->getGop_l();
         mRequestSync = mIntf->getRequestSync_l();
+<<<<<<< HEAD
         mColorAspects = mIntf->getCodedColorAspects_l();
         mQpBounds = mIntf->getPictureQuantization_l();;
+=======
+        mFrameReconEnable = mIntf->getReconEnable_l();
+        mQpMetadataEnable = mIntf->getMbQpEnable_l();
+        mMbTypeMetadataEnable = mIntf->getMbTypeEnable_l();
+>>>>>>> 80d3ce2305... C2SoftHevcEnc: add support to pass output's metadata to work
     }
+
+    mReconEnable = mFrameReconEnable->value;
+    mBlockQpInfoEnable = mQpMetadataEnable->value;
+    mBlockTypeInfoEnable = mMbTypeMetadataEnable->value;
+    mFrameMetaDataEnable = mReconEnable || mBlockQpInfoEnable || mBlockTypeInfoEnable;
 
     c2_status_t status = initEncParams();
 
@@ -998,10 +1062,88 @@ c2_status_t C2SoftHevcEnc::setEncodeArgs(ihevce_inp_buf_t* ps_encode_ip,
     return C2_OK;
 }
 
+c2_status_t C2SoftHevcEnc::fillInfoBuffer(const std::unique_ptr<C2Work>& work,
+                                   const std::shared_ptr<C2BlockPool>& pool,
+                                   ihevce_recon_buf_t* ps_recon_buf) {
+    // if we have a valid recon buffer do the associated tasks
+    uint32_t infoIndex = work->input.ordinal.frameIndex.peeku() & 0xFFFFFFFF;
+    C2MemoryUsage usage = {C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE};
+    std::shared_ptr<C2LinearBlock> block;
+    c2_status_t status = C2_OK;
+    int32_t infoSize = 0;
+    std::unique_ptr<C2WriteView> qpView = nullptr;
+    std::unique_ptr<C2WriteView> blkTypeView = nullptr;
+    std::unique_ptr<C2WriteView> reconView = nullptr;
+
+    if (mBlockQpInfoEnable && ps_recon_buf->pv_8x8_blk_qp_map) {
+        infoSize = ps_recon_buf->i4_8x8_blk_qp_map_size;
+        status = pool->fetchLinearBlock(infoSize, usage, &block);
+        if (status != C2_OK) {
+            ALOGE("fetch linear block err = %d", status);
+            return status;
+        }
+        qpView.reset(new C2WriteView(block->map().get()));
+        if (qpView->error()) {
+            ALOGE("qpWrite view map failed");
+            return C2_CORRUPTED;
+        }
+
+        memcpy(qpView->data(), ps_recon_buf->pv_8x8_blk_type_map, infoSize);
+        C2InfoBuffer qpBuffer = C2InfoBuffer::CreateLinearBuffer(
+                infoIndex, block->share(0, infoSize, C2Fence()));
+        work->worklets.front()->output.infoBuffers.push_back(qpBuffer);
+        block = nullptr;
+    }
+    if (mBlockTypeInfoEnable && ps_recon_buf->pv_8x8_blk_type_map) {
+        infoSize = ps_recon_buf->i4_8x8_blk_type_map_size;
+        status = pool->fetchLinearBlock(infoSize, usage, &block);
+        if (status != C2_OK) {
+            ALOGE("fetch linear block err = %d", status);
+            return status;
+        }
+        blkTypeView.reset(new C2WriteView(block->map().get()));
+        if (blkTypeView->error()) {
+            ALOGE("blkTypeWrite view map failed");
+            return C2_CORRUPTED;
+        }
+
+        memcpy(blkTypeView->data(), ps_recon_buf->pv_8x8_blk_type_map, infoSize);
+        C2InfoBuffer mbTypeBuffer = C2InfoBuffer::CreateLinearBuffer(
+                infoIndex, block->share(0, infoSize, C2Fence()));
+        work->worklets.front()->output.infoBuffers.push_back(mbTypeBuffer);
+        block = nullptr;
+    }
+
+    if (mReconEnable && ps_recon_buf->apv_recon_planes[0]) {
+        int32_t lumaSize = ps_recon_buf->ai4_recon_pixels[0];
+        int32_t chromaSize = ps_recon_buf->ai4_recon_pixels[1];
+        infoSize = lumaSize + chromaSize;
+        status = pool->fetchLinearBlock(infoSize, usage, &block);
+        if (status != C2_OK) {
+            ALOGE("fetch linear block err = %d", status);
+            return status;
+        }
+        reconView.reset(new C2WriteView(block->map().get()));
+        if (reconView->error()) {
+            ALOGE("reconWrite view map failed");
+            return C2_CORRUPTED;
+        }
+
+        memcpy(reconView->data(), ps_recon_buf->apv_recon_planes[0], lumaSize);
+        memcpy(reconView->data() + lumaSize, ps_recon_buf->apv_recon_planes[1], chromaSize);
+        C2InfoBuffer reconBuffer = C2InfoBuffer::CreateLinearBuffer(
+                infoIndex, block->share(0, infoSize, C2Fence()));
+        work->worklets.front()->output.infoBuffers.push_back(reconBuffer);
+        block = nullptr;
+    }
+    return C2_OK;
+}
+
 void C2SoftHevcEnc::finishWork(uint64_t index,
                                const std::unique_ptr<C2Work>& work,
                                const std::shared_ptr<C2BlockPool>& pool,
-                               ihevce_out_buf_t* ps_encode_op) {
+                               ihevce_out_buf_t* ps_encode_op,
+                               ihevce_recon_buf_t* ps_recon_buf) {
     std::shared_ptr<C2LinearBlock> block;
     C2MemoryUsage usage = {C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE};
     c2_status_t status =
@@ -1029,6 +1171,17 @@ void C2SoftHevcEnc::finishWork(uint64_t index,
 
     DUMP_TO_FILE(mOutFile, ps_encode_op->pu1_output_buf,
                  ps_encode_op->i4_bytes_generated);
+
+    if (mFrameMetaDataEnable) {
+        status = fillInfoBuffer(work, pool, ps_recon_buf);
+        if (C2_OK != status) {
+            ALOGE("fillInfoBuffer failed with status 0x%x", status);
+            mSignalledError = true;
+            work->result = status;
+            work->workletsProcessed = 1u;
+            return;
+        }
+    }
 
     if (ps_encode_op->i4_is_key_frame) {
         ALOGV("IDR frame produced");
@@ -1076,10 +1229,15 @@ c2_status_t C2SoftHevcEnc::drainInternal(
 
         ihevce_encode(mCodecCtx, nullptr, &s_encode_op, &s_recon_buf);
         if (s_encode_op.i4_bytes_generated) {
-            finishWork(s_encode_op.u8_pts, work, pool, &s_encode_op);
+            finishWork(s_encode_op.u8_pts, work, pool, &s_encode_op, &s_recon_buf);
         } else {
             if (work->workletsProcessed != 1u) fillEmptyWork(work);
-            break;
+            if (mFrameMetaDataEnable) {
+                fillInfoBuffer(work, pool, &s_recon_buf);
+            }
+            if (!mFrameMetaDataEnable || s_recon_buf.i4_end_flag) {
+                break;
+            }
         }
     }
     return C2_OK;
@@ -1235,7 +1393,7 @@ void C2SoftHevcEnc::process(const std::unique_ptr<C2Work>& work,
           timeDelay, s_encode_op.i4_bytes_generated);
 
     if (s_encode_op.i4_bytes_generated) {
-        finishWork(s_encode_op.u8_pts, work, pool, &s_encode_op);
+        finishWork(s_encode_op.u8_pts, work, pool, &s_encode_op, &s_recon_buf);
     }
 
     if (eos) {

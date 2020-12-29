@@ -74,12 +74,19 @@ struct C2SoftHevcEnc : public SimpleC2Component {
     bool mSpsPpsHeaderReceived;
     bool mSignalledEos;
     bool mSignalledError;
+    bool mReconEnable;
+    bool mFrameMetaDataEnable;
+    bool mBlockQpInfoEnable;
+    bool mBlockTypeInfoEnable;
     void* mCodecCtx;
     MemoryBlockPool mConversionBuffers;
     std::map<void*, MemoryBlock> mConversionBuffersInUse;
     // configurations used by component in process
     // (TODO: keep this in intf but make them internal only)
     std::shared_ptr<C2StreamPictureSizeInfo::input> mSize;
+    std::shared_ptr<C2StreamFrameReconDataTuning::input> mFrameReconEnable;
+    std::shared_ptr<C2StreamBlockQpValueTuning::input> mQpMetadataEnable;
+    std::shared_ptr<C2StreamBlockTypeValueTuning::input> mMbTypeMetadataEnable;
     std::shared_ptr<C2StreamFrameRateInfo::output> mFrameRate;
     std::shared_ptr<C2StreamBitrateInfo::output> mBitrate;
     std::shared_ptr<C2StreamBitrateModeTuning::output> mBitrateMode;
@@ -106,10 +113,14 @@ struct C2SoftHevcEnc : public SimpleC2Component {
                               uint64_t workIndex);
     void finishWork(uint64_t index, const std::unique_ptr<C2Work>& work,
                     const std::shared_ptr<C2BlockPool>& pool,
-                    ihevce_out_buf_t* ps_encode_op);
+                    ihevce_out_buf_t* ps_encode_op,
+                    ihevce_recon_buf_t* ps_recon_buf);
     c2_status_t drainInternal(uint32_t drainMode,
                               const std::shared_ptr<C2BlockPool>& pool,
                               const std::unique_ptr<C2Work>& work);
+    c2_status_t fillInfoBuffer(const std::unique_ptr<C2Work>& work,
+                               const std::shared_ptr<C2BlockPool>& pool,
+                               ihevce_recon_buf_t* ps_recon_buf);
     C2_DO_NOT_COPY(C2SoftHevcEnc);
 };
 #ifdef FILE_DUMP_ENABLE

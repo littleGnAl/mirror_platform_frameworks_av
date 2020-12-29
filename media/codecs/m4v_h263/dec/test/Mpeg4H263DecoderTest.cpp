@@ -47,7 +47,6 @@ struct FrameInfo {
 };
 
 struct tagvideoDecControls;
-
 static Mpeg4H263DecoderTestEnvironment *gEnv = nullptr;
 
 class Mpeg4H263DecoderTest : public ::testing::TestWithParam<tuple<string, string, bool>> {
@@ -399,19 +398,7 @@ TEST_P(Mpeg4H263DecoderTest, FlushTest) {
 
 INSTANTIATE_TEST_SUITE_P(
         Mpeg4H263DecoderTestAll, Mpeg4H263DecoderTest,
-        ::testing::Values(make_tuple("swirl_128x96_h263.h263", "swirl_128x96_h263.info", false),
-                          make_tuple("swirl_176x144_h263.h263", "swirl_176x144_h263.info", false),
-                          make_tuple("swirl_352x288_h263.h263", "swirl_352x288_h263.info", false),
-                          make_tuple("bbb_352x288_h263.h263", "bbb_352x288_h263.info", false),
-                          make_tuple("bbb_352x288_mpeg4.m4v", "bbb_352x288_mpeg4.info", true),
-                          make_tuple("qtype0_mpeg4.m4v", "qtype0_mpeg4.info", true),
-                          make_tuple("qtype1_mpeg4.m4v", "qtype1_mpeg4.info", true),
-                          make_tuple("qtype1_qmatrix_mpeg4.m4v", "qtype1_qmatrix_mpeg4.info", true),
-                          make_tuple("swirl_128x128_mpeg4.m4v", "swirl_128x128_mpeg4.info", true),
-                          make_tuple("swirl_130x132_mpeg4.m4v", "swirl_130x132_mpeg4.info", true),
-                          make_tuple("swirl_132x130_mpeg4.m4v", "swirl_132x130_mpeg4.info", true),
-                          make_tuple("swirl_136x144_mpeg4.m4v", "swirl_136x144_mpeg4.info", true),
-                          make_tuple("swirl_144x136_mpeg4.m4v", "swirl_144x136_mpeg4.info", true)));
+        ::testing::Values(make_tuple("06.m4v", "06.info", false)));
 
 int main(int argc, char **argv) {
     gEnv = new Mpeg4H263DecoderTestEnvironment();
