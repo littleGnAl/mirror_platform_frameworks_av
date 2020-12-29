@@ -1,0 +1,82 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006986980",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1505835?revision\u003d12",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "5f8a7f90_74133d9d",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-29T20:57:48Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 151
+      },
+      "revId": "2509483188747d3fcd83c65846871a1502232e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006986980",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1505835?revision\u003d12",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "98f0f88d_97ce3b2e",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 208,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-29T20:57:48Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 208,
+        "startChar": 0,
+        "endLine": 208,
+        "endChar": 113
+      },
+      "revId": "2509483188747d3fcd83c65846871a1502232e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000006986980",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1505835?revision\u003d12",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "cd48fb96_4e074a79",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2020-12-29T20:57:48Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 227,
+        "startChar": 0,
+        "endLine": 227,
+        "endChar": 130
+      },
+      "revId": "2509483188747d3fcd83c65846871a1502232e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
