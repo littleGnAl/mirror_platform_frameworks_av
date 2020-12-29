@@ -37,7 +37,9 @@ namespace android {
 #define ivdext_ctl_get_vui_params_ip_t  ihevcd_cxa_ctl_get_vui_params_ip_t
 #define ivdext_ctl_get_vui_params_op_t  ihevcd_cxa_ctl_get_vui_params_op_t
 #define ALIGN32(x)                      ((((x) + 31) >> 5) << 5)
+#define ALIGN8(x)                       ((((x) + 7) >> 3) << 3)
 #define MAX_NUM_CORES                   4
+#define BLK_8X8_INFO_SHIFT              6
 #define IVDEXT_CMD_CTL_SET_NUM_CORES    \
         (IVD_CONTROL_API_COMMAND_TYPE_T)IHEVCD_CXA_CMD_CTL_SET_NUM_CORES
 #define MIN(a, b)                       (((a) < (b)) ? (a) : (b))
@@ -88,7 +90,11 @@ struct C2SoftHevcDec : public SimpleC2Component {
             const ColorAspects &otherAspects, const ColorAspects &preferredAspects);
     status_t handleColorAspectsChange();
     c2_status_t ensureDecoderState(const std::shared_ptr<C2BlockPool> &pool);
-    void finishWork(uint64_t index, const std::unique_ptr<C2Work> &work);
+    void fillInfoBuffer(const std::unique_ptr<C2Work> &work,
+                        ihevcd_cxa_video_decode_op_t *ps_decode_op);
+    void finishWork(uint64_t index,
+                    const std::unique_ptr<C2Work> &work,
+                    ihevcd_cxa_video_decode_op_t *ps_decode_op);
     status_t setFlushMode();
     c2_status_t drainInternal(
             uint32_t drainMode,
@@ -108,8 +114,13 @@ struct C2SoftHevcDec : public SimpleC2Component {
     };
 
     std::shared_ptr<IntfImpl> mIntf;
+    std::shared_ptr<C2StreamBlockQpValueTuning::input> mQpMetadataEnable;
+    std::shared_ptr<C2StreamBlockTypeValueTuning::input> mCuTypeMetadataEnable;
     iv_obj_t *mDecHandle;
     std::shared_ptr<C2GraphicBlock> mOutBlock;
+    std::shared_ptr<C2LinearBlock> mQpBlock;
+    std::shared_ptr<C2LinearBlock> mCuTypeBlock;
+    std::shared_ptr<C2BlockPool> mLinearBlockPool;
     uint8_t *mOutBufferFlush;
 
     size_t mNumCores;
@@ -121,6 +132,9 @@ struct C2SoftHevcDec : public SimpleC2Component {
     bool mSignalledOutputEos;
     bool mSignalledError;
     bool mHeaderDecoded;
+    bool mFrameMetaDataEnable;
+    bool mBlockQpInfoEnable;
+    bool mBlockTypeInfoEnable;
     std::atomic_uint64_t mOutIndex;
 
     // Color aspects. These are ISO values and are meant to detect changes in aspects to avoid
