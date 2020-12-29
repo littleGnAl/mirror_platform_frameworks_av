@@ -185,6 +185,20 @@ public:
                 .withSetter(ColorAspectsSetter, mDefaultColorAspects, mCodedColorAspects)
                 .build());
 
+        addParameter(
+                DefineParam(mQpMetadataEnable, C2_PARAMKEY_BLOCK_QP_VALUE)
+                .withDefault(new C2StreamBlockQpValueTuning::input(0u, C2_FALSE))
+                .withFields({C2F(mQpMetadataEnable, value).oneOf({ C2_FALSE, C2_TRUE }) })
+                .withSetter(Setter<decltype(*mQpMetadataEnable)>::NonStrictValueWithNoDeps)
+                .build());
+
+        addParameter(
+                DefineParam(mCuTypeMetadataEnable, C2_PARAMKEY_BLOCK_TYPE_VALUE)
+                .withDefault(new C2StreamBlockTypeValueTuning::input(0u, C2_FALSE))
+                .withFields({C2F(mCuTypeMetadataEnable, value).oneOf({ C2_FALSE, C2_TRUE }) })
+                .withSetter(Setter<decltype(*mCuTypeMetadataEnable)>::NonStrictValueWithNoDeps)
+                .build());
+
         // TODO: support more formats?
         addParameter(
                 DefineParam(mPixelFormat, C2_PARAMKEY_PIXEL_FORMAT)
@@ -285,6 +299,13 @@ public:
         return mColorAspects;
     }
 
+    std::shared_ptr<C2StreamBlockQpValueTuning::input> getCuQpEnable_l() const {
+        return mQpMetadataEnable;
+    }
+    std::shared_ptr<C2StreamBlockTypeValueTuning::input> getCuTypeEnable_l() const {
+        return mCuTypeMetadataEnable;
+    }
+
 private:
     std::shared_ptr<C2StreamProfileLevelInfo::input> mProfileLevel;
     std::shared_ptr<C2StreamPictureSizeInfo::output> mSize;
@@ -295,6 +316,8 @@ private:
     std::shared_ptr<C2StreamColorAspectsTuning::output> mDefaultColorAspects;
     std::shared_ptr<C2StreamColorAspectsInfo::output> mColorAspects;
     std::shared_ptr<C2StreamPixelFormatInfo::output> mPixelFormat;
+    std::shared_ptr<C2StreamBlockQpValueTuning::input> mQpMetadataEnable;
+    std::shared_ptr<C2StreamBlockTypeValueTuning::input> mCuTypeMetadataEnable;
 };
 
 static size_t getCpuCoreCount() {
@@ -327,12 +350,16 @@ C2SoftHevcDec::C2SoftHevcDec(
     : SimpleC2Component(std::make_shared<SimpleInterface<IntfImpl>>(name, id, intfImpl)),
         mIntf(intfImpl),
         mDecHandle(nullptr),
+        mQpBlock(nullptr),
+        mCuTypeBlock(nullptr),
+        mLinearBlockPool(nullptr),
         mOutBufferFlush(nullptr),
         mIvColorformat(IV_YUV_420P),
         mOutputDelay(kDefaultOutputDelay),
         mWidth(320),
         mHeight(240),
         mHeaderDecoded(false),
+        mFrameMetaDataEnable(false),
         mOutIndex(0u) {
 }
 
@@ -341,7 +368,16 @@ C2SoftHevcDec::~C2SoftHevcDec() {
 }
 
 c2_status_t C2SoftHevcDec::onInit() {
-    status_t err = initDecoder();
+    C2BlockPool::local_id_t poolId = C2BlockPool::BASIC_LINEAR;
+    c2_status_t err = GetCodec2BlockPool(poolId, shared_from_this(), &mLinearBlockPool);
+    if (err != C2_OK) return err;
+
+    {
+        IntfImpl::Lock lock = mIntf->lock();
+        mQpMetadataEnable = mIntf->getCuQpEnable_l();
+        mCuTypeMetadataEnable = mIntf->getCuTypeEnable_l();
+    }
+    err = (c2_status_t)initDecoder();
     return err == OK ? C2_OK : C2_CORRUPTED;
 }
 
@@ -364,6 +400,10 @@ void C2SoftHevcDec::onRelease() {
     if (mOutBlock) {
         mOutBlock.reset();
     }
+    if (mFrameMetaDataEnable) {
+        mQpBlock.reset();
+        mCuTypeBlock.reset();
+    }
 }
 
 c2_status_t C2SoftHevcDec::onFlush_sm() {
@@ -377,6 +417,25 @@ c2_status_t C2SoftHevcDec::onFlush_sm() {
         ALOGE("could not allocate tmp output buffer (for flush) of size %u ", bufferSize);
         return C2_NO_MEMORY;
     }
+    uint8_t *qpBuffer = nullptr;
+    uint8_t *cuTypeBuffer = nullptr;
+    uint32_t infoBufferSize = 0;
+
+    infoBufferSize = ALIGN8(mWidth) * ALIGN8(mHeight) >> BLK_8X8_INFO_SHIFT;
+    if (mBlockQpInfoEnable) {
+        qpBuffer = (uint8_t *)ivd_aligned_malloc(nullptr, 128, infoBufferSize);
+        if (!qpBuffer) {
+            ALOGE("could not allocate tmp output buffer (for flush) of size %u ", infoBufferSize);
+            return C2_NO_MEMORY;
+        }
+    }
+    if (mBlockTypeInfoEnable) {
+        cuTypeBuffer = (uint8_t *)ivd_aligned_malloc(nullptr, 128, infoBufferSize);
+        if (!cuTypeBuffer) {
+            ALOGE("could not allocate tmp output buffer (for flush) of size %u ", infoBufferSize);
+            return C2_NO_MEMORY;
+        }
+    }
 
     while (true) {
         ihevcd_cxa_video_decode_ip_t s_hevcd_decode_ip = {};
@@ -385,6 +444,10 @@ c2_status_t C2SoftHevcDec::onFlush_sm() {
         ivd_video_decode_op_t *ps_decode_op = &s_hevcd_decode_op.s_ivd_video_decode_op_t;
 
         setDecodeArgs(ps_decode_ip, ps_decode_op, nullptr, nullptr, 0, 0, 0);
+        s_hevcd_decode_ip.pu1_8x8_blk_qp_map = qpBuffer;
+        s_hevcd_decode_ip.pu1_8x8_blk_type_map = cuTypeBuffer;
+        s_hevcd_decode_ip.u4_8x8_blk_qp_map_size = infoBufferSize;
+        s_hevcd_decode_ip.u4_8x8_blk_type_map_size = infoBufferSize;
         (void) ivdec_api_function(mDecHandle, ps_decode_ip, ps_decode_op);
         if (0 == ps_decode_op->u4_output_present) {
             resetPlugin();
@@ -395,6 +458,14 @@ c2_status_t C2SoftHevcDec::onFlush_sm() {
     if (mOutBufferFlush) {
         ivd_aligned_free(nullptr, mOutBufferFlush);
         mOutBufferFlush = nullptr;
+    }
+    if (qpBuffer) {
+        ivd_aligned_free(nullptr, qpBuffer);
+        qpBuffer = nullptr;
+    }
+    if (cuTypeBuffer) {
+        ivd_aligned_free(nullptr, cuTypeBuffer);
+        cuTypeBuffer = nullptr;
     }
 
     return C2_OK;
@@ -463,6 +534,7 @@ status_t C2SoftHevcDec::setParams(size_t stride, IVD_VIDEO_DECODE_MODE_T dec_mod
     ps_set_dyn_params_ip->e_frm_out_mode = IVD_DISPLAY_FRAME_OUT;
     ps_set_dyn_params_ip->e_vid_dec_mode = dec_mode;
     ps_set_dyn_params_op->u4_size = sizeof(ihevcd_cxa_ctl_set_config_op_t);
+    s_hevcd_set_dyn_params_ip.u4_enable_frame_info = mFrameMetaDataEnable ? 1 : 0;
     IV_API_CALL_STATUS_T status = ivdec_api_function(mDecHandle,
                                                      ps_set_dyn_params_ip,
                                                      ps_set_dyn_params_op);
@@ -503,6 +575,9 @@ status_t C2SoftHevcDec::initDecoder() {
     if (OK != createDecoder()) return UNKNOWN_ERROR;
     mNumCores = MIN(getCpuCoreCount(), MAX_NUM_CORES);
     mStride = ALIGN32(mWidth);
+    mBlockQpInfoEnable = mQpMetadataEnable->value;
+    mBlockTypeInfoEnable = mCuTypeMetadataEnable->value;
+    mFrameMetaDataEnable = mBlockQpInfoEnable || mBlockTypeInfoEnable;
     mSignalledError = false;
     resetPlugin();
     (void) setNumCores();
@@ -699,7 +774,27 @@ void fillEmptyWork(const std::unique_ptr<C2Work> &work) {
     work->workletsProcessed = 1u;
 }
 
-void C2SoftHevcDec::finishWork(uint64_t index, const std::unique_ptr<C2Work> &work) {
+void C2SoftHevcDec::fillInfoBuffer(const std::unique_ptr<C2Work> &work,
+                                   ihevcd_cxa_video_decode_op_t *ps_decode_op) {
+    uint32_t infoIndex = work->input.ordinal.frameIndex.peeku() & 0xFFFFFFFF;
+    if (mBlockQpInfoEnable && ps_decode_op->pu1_8x8_blk_qp_map) {
+        int32_t infoSize = ps_decode_op->u4_8x8_blk_qp_map_size;
+        C2InfoBuffer qpBuffer = C2InfoBuffer::CreateLinearBuffer(
+                infoIndex, mQpBlock->share(0, infoSize, C2Fence()));
+        work->worklets.front()->output.infoBuffers.push_back(qpBuffer);
+        mQpBlock = nullptr;
+    }
+    if (mBlockTypeInfoEnable && ps_decode_op->pu1_8x8_blk_type_map) {
+        int32_t infoSize = ps_decode_op->u4_8x8_blk_type_map_size;
+        C2InfoBuffer cuTypeBuffer = C2InfoBuffer::CreateLinearBuffer(
+                infoIndex, mCuTypeBlock->share(0, infoSize, C2Fence()));
+        work->worklets.front()->output.infoBuffers.push_back(cuTypeBuffer);
+        mCuTypeBlock = nullptr;
+    }
+}
+
+void C2SoftHevcDec::finishWork(uint64_t index, const std::unique_ptr<C2Work> &work,
+                               ihevcd_cxa_video_decode_op_t *ps_decode_op) {
     std::shared_ptr<C2Buffer> buffer = createGraphicBuffer(std::move(mOutBlock),
                                                            C2Rect(mWidth, mHeight));
     mOutBlock = nullptr;
@@ -735,6 +830,10 @@ void C2SoftHevcDec::finishWork(uint64_t index, const std::unique_ptr<C2Work> &wo
         const std::shared_ptr<C2Buffer> mBuffer;
     };
 
+    if (mFrameMetaDataEnable) {
+        fillInfoBuffer(work, ps_decode_op);
+    }
+
     auto fillWork = [buffer](const std::unique_ptr<C2Work> &work) {
         work->worklets.front()->output.flags = (C2FrameData::flags_t)0;
         work->worklets.front()->output.buffers.clear();
@@ -763,6 +862,7 @@ void C2SoftHevcDec::finishWork(uint64_t index, const std::unique_ptr<C2Work> &wo
 }
 
 c2_status_t C2SoftHevcDec::ensureDecoderState(const std::shared_ptr<C2BlockPool> &pool) {
+    uint32_t infoSize = (ALIGN8(mWidth) * ALIGN8(mHeight)) >> BLK_8X8_INFO_SHIFT;
     if (!mDecHandle) {
         ALOGE("not supposed to be here, invalid decoder context");
         return C2_CORRUPTED;
@@ -770,6 +870,12 @@ c2_status_t C2SoftHevcDec::ensureDecoderState(const std::shared_ptr<C2BlockPool>
     if (mOutBlock &&
             (mOutBlock->width() != ALIGN32(mWidth) || mOutBlock->height() != mHeight)) {
         mOutBlock.reset();
+    }
+    if (mQpBlock && (mQpBlock->size() != infoSize)) {
+        mQpBlock.reset();
+    }
+    if (mCuTypeBlock && (mCuTypeBlock->size() != infoSize)) {
+        mCuTypeBlock.reset();
     }
     if (!mOutBlock) {
         uint32_t format = HAL_PIXEL_FORMAT_YV12;
@@ -782,6 +888,27 @@ c2_status_t C2SoftHevcDec::ensureDecoderState(const std::shared_ptr<C2BlockPool>
         }
         ALOGV("provided (%dx%d) required (%dx%d)",
               mOutBlock->width(), mOutBlock->height(), ALIGN32(mWidth), mHeight);
+    }
+
+    C2MemoryUsage usage = {C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE};
+    c2_status_t err = C2_OK;
+    if (mBlockQpInfoEnable && !mQpBlock) {
+        do {
+            err = mLinearBlockPool->fetchLinearBlock(infoSize, usage, &mQpBlock);
+        } while (err == C2_BLOCKING);
+        if (err != C2_OK) {
+            ALOGE("fetchLinearBlock for QP map failed with status %d", err);
+            return err;
+        }
+    }
+    if (mBlockTypeInfoEnable && !mCuTypeBlock) {
+        do {
+            err = mLinearBlockPool->fetchLinearBlock(infoSize, usage, &mCuTypeBlock);
+        } while (err == C2_BLOCKING);
+        if (err != C2_OK) {
+            ALOGE("fetchLinearBlock for CuType map failed with status %d", err);
+            return err;
+        }
     }
 
     return C2_OK;
@@ -835,6 +962,8 @@ void C2SoftHevcDec::process(
             return;
         }
         C2GraphicView wView = mOutBlock->map().get();
+        std::unique_ptr<C2WriteView> qpView = nullptr;
+        std::unique_ptr<C2WriteView> cuTypeView = nullptr;
         if (wView.error()) {
             ALOGE("graphic view map failed %d", wView.error());
             work->result = wView.error();
@@ -850,6 +979,27 @@ void C2SoftHevcDec::process(
             work->workletsProcessed = 1u;
             work->result = C2_CORRUPTED;
             return;
+        }
+
+        if (mBlockQpInfoEnable) {
+            qpView.reset(new C2WriteView(mQpBlock->map().get()));
+            if (qpView->error()) {
+                ALOGE("qpView map failed %d", qpView->error());
+                work->result = qpView->error();
+                return;
+                s_hevcd_decode_ip.pu1_8x8_blk_qp_map = qpView->base();
+                s_hevcd_decode_ip.u4_8x8_blk_qp_map_size = qpView->size();
+            }
+        }
+        if (mBlockTypeInfoEnable) {
+            cuTypeView.reset(new C2WriteView(mCuTypeBlock->map().get()));
+            if (cuTypeView->error()) {
+                ALOGE("cuTypeView map failed %d", cuTypeView->error());
+                work->result = cuTypeView->error();
+                return;
+            }
+            s_hevcd_decode_ip.pu1_8x8_blk_type_map = cuTypeView->base();
+            s_hevcd_decode_ip.u4_8x8_blk_type_map_size = cuTypeView->size();
         }
 
         if (false == mHeaderDecoded) {
@@ -945,7 +1095,7 @@ void C2SoftHevcDec::process(
         (void) getVuiParams();
         hasPicture |= (1 == ps_decode_op->u4_frame_decoded_flag);
         if (ps_decode_op->u4_output_present) {
-            finishWork(ps_decode_op->u4_ts, work);
+            finishWork(ps_decode_op->u4_ts, work, &s_hevcd_decode_op);
         }
         if (0 == ps_decode_op->u4_num_bytes_consumed) {
             ALOGD("Bytes consumed is zero. Ignoring remaining bytes");
@@ -989,6 +1139,8 @@ c2_status_t C2SoftHevcDec::drainInternal(
             return C2_CORRUPTED;
         }
         C2GraphicView wView = mOutBlock->map().get();
+        std::unique_ptr<C2WriteView> qpView = nullptr;
+        std::unique_ptr<C2WriteView> cuTypeView = nullptr;
         if (wView.error()) {
             ALOGE("graphic view map failed %d", wView.error());
             return C2_CORRUPTED;
@@ -1002,9 +1154,29 @@ c2_status_t C2SoftHevcDec::drainInternal(
             work->workletsProcessed = 1u;
             return C2_CORRUPTED;
         }
+
+        if (mBlockQpInfoEnable) {
+            qpView.reset(new C2WriteView(mQpBlock->map().get()));
+            if (qpView->error()) {
+                ALOGE("qpView map failed %d", qpView->error());
+                return C2_CORRUPTED;
+            }
+            s_hevcd_decode_ip.pu1_8x8_blk_qp_map = qpView->base();
+            s_hevcd_decode_ip.u4_8x8_blk_qp_map_size = qpView->size();
+        }
+        if (mBlockTypeInfoEnable) {
+            cuTypeView.reset(new C2WriteView(mCuTypeBlock->map().get()));
+            if (cuTypeView->error()) {
+                ALOGE("cuTypeView map failed %d", cuTypeView->error());
+                return C2_CORRUPTED;
+            }
+            s_hevcd_decode_ip.pu1_8x8_blk_type_map = cuTypeView->base();
+            s_hevcd_decode_ip.u4_8x8_blk_type_map_size = cuTypeView->size();
+        }
+
         (void) ivdec_api_function(mDecHandle, ps_decode_ip, ps_decode_op);
         if (ps_decode_op->u4_output_present) {
-            finishWork(ps_decode_op->u4_ts, work);
+            finishWork(ps_decode_op->u4_ts, work, &s_hevcd_decode_op);
         } else {
             fillEmptyWork(work);
             break;
