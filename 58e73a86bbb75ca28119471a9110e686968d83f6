@@ -115,6 +115,30 @@
       },
       "revId": "58e73a86bbb75ca28119471a9110e686968d83f6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e66a97d_d0420ac7",
+        "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Process.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 126,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2020-12-29T11:36:31Z",
+      "side": 1,
+      "message": "PK_Mc_D32F32C14G11_TRC_WRA_01 - implementation uses y(n-1) and y(n-2) with out gain applied. Accommodating Coefficients.G in A0, A1, A2, B1, B2 makes gain factor come into picture for y(n-1) and y(n-2). Hence for this instance, Coefficients.G cannot be accommodated in the way discussed above.",
+      "parentUuid": "73ba150a_1734661f",
+      "range": {
+        "startLine": 120,
+        "startChar": 0,
+        "endLine": 126,
+        "endChar": 29
+      },
+      "revId": "58e73a86bbb75ca28119471a9110e686968d83f6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
