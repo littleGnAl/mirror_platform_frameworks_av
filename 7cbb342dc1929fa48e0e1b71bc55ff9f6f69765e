@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eaac6edd_be635845",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1734121
+      },
+      "writtenOn": "2020-12-29T21:05:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "74a03e83_e95482b4",
+      "range": {
+        "startLine": 654,
+        "startChar": 0,
+        "endLine": 654,
+        "endChar": 5
+      },
+      "revId": "7cbb342dc1929fa48e0e1b71bc55ff9f6f69765e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "26ecc74b_1dadcfa2",
@@ -41,6 +65,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "03e82882_d192b5a1",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 655,
+      "author": {
+        "id": 1734121
+      },
+      "writtenOn": "2020-12-29T21:05:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26ecc74b_1dadcfa2",
+      "revId": "7cbb342dc1929fa48e0e1b71bc55ff9f6f69765e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e8b66e8f_793bf372",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-11-24T21:00:07Z",
       "side": 1,
       "message": "should be updated only if loudness_runtime has changed from previous value",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 673,
+        "endChar": 51
+      },
+      "revId": "7cbb342dc1929fa48e0e1b71bc55ff9f6f69765e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dfd63552_020307e2",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 673,
+      "author": {
+        "id": 1734121
+      },
+      "writtenOn": "2020-12-29T21:05:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8b66e8f_793bf372",
       "range": {
         "startLine": 669,
         "startChar": 0,
