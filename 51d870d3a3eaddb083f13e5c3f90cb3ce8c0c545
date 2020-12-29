@@ -33,6 +33,23 @@
       "message": "we also need to update the omx plugin.",
       "revId": "51d870d3a3eaddb083f13e5c3f90cb3ce8c0c545",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d889c46a_45b9e61e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2020-12-29T23:38:38Z",
+      "side": 1,
+      "message": "and I didn\u0027t see the external/libavc changes to support this.\ni saw the decoder interface changes, but didn\u0027t see the encoder side.",
+      "revId": "51d870d3a3eaddb083f13e5c3f90cb3ce8c0c545",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
