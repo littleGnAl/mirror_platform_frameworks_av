@@ -45,6 +45,30 @@
       },
       "revId": "20c2d6b7964c914f50aac4b310b6d074f8efbb4e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "694e9dbc_7a740ccd",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_ApplyNewSettings.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-12-29T23:00:32Z",
+      "side": 1,
+      "message": "constexpr isn\u0027t possible as the initialization is using a variable Coeffs.\n\nRivukanta,\nPlease make these static const",
+      "parentUuid": "ee0e81d6_a757d038",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 8
+      },
+      "revId": "20c2d6b7964c914f50aac4b310b6d074f8efbb4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
