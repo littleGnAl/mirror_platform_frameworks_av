@@ -3,6 +3,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "803d7d64_be121c56",
+        "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Control.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-12-29T23:12:38Z",
+      "side": 1,
+      "message": "not needed anymore  - already placed in system/audio.h.",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 6
+      },
+      "revId": "d71d259338c9393f86dfaeb5945ff1fc493ba3a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e57510cc_be7bcd68",
+        "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Control.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 244,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-12-29T23:12:38Z",
+      "side": 1,
+      "message": "nit: size_t here.  drop the (int) cast.",
+      "range": {
+        "startLine": 244,
+        "startChar": 9,
+        "endLine": 244,
+        "endChar": 12
+      },
+      "revId": "d71d259338c9393f86dfaeb5945ff1fc493ba3a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd67f1a5_cfc675ad",
+        "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Init.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-12-29T23:12:38Z",
+      "side": 1,
+      "message": "nit: extra parens.",
+      "range": {
+        "startLine": 66,
+        "startChar": 25,
+        "endLine": 66,
+        "endChar": 26
+      },
+      "revId": "d71d259338c9393f86dfaeb5945ff1fc493ba3a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee173d51_00db0e43",
+        "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Private.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-12-29T23:12:38Z",
+      "side": 1,
+      "message": "nit: instances",
+      "range": {
+        "startLine": 77,
+        "startChar": 50,
+        "endLine": 77,
+        "endChar": 58
+      },
+      "revId": "d71d259338c9393f86dfaeb5945ff1fc493ba3a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "24e1c0c7_31fa183a",
         "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Process.cpp",
         "patchSetId": 2
@@ -14,6 +106,29 @@
       "writtenOn": "2020-12-29T22:38:26Z",
       "side": 1,
       "message": "move this to line 123",
+      "revId": "d71d259338c9393f86dfaeb5945ff1fc493ba3a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70db4ed7_4aa317ca",
+        "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Process.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-12-29T23:12:38Z",
+      "side": 1,
+      "message": "Maybe this is more understandable.\n\n  LVM_FLOAT* pTemp \u003d pScratch + NrSamples;\n  pInstance-\u003eeqBiquad[i].process(pTemp, pScratch, NrFrames);\n  const auto gain \u003d pInstance-\u003egain[i];\n  for (unsigned j \u003d 0; j \u003c NrSamples; ++j) {\n      pScratch[i] +\u003d pTemp[i] * gain;\n  }",
+      "range": {
+        "startLine": 123,
+        "startChar": 1,
+        "endLine": 131,
+        "endChar": 0
+      },
       "revId": "d71d259338c9393f86dfaeb5945ff1fc493ba3a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
