@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1745f7c7_2a2dbe29",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-12-30T16:59:20Z",
+      "side": 1,
+      "message": "Some ideas for a follow-up CL.  Harish does this test okay?",
+      "revId": "0458764737723765a9e0969a5f933d002447aea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d26f1ece_642b0a12",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_ClearAudioBuffers.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-12-30T16:59:20Z",
+      "side": 1,
+      "message": "Perhaps in a follow up CL, but this clear code is activated several times.\n\nIt would be possible to do:\n\n  if () {\n  } else if () {\n  } else if () {\n  }\n\nor better yet\n\n  for (unsigned i \u003d 0; i \u003c pLVREV_Private-\u003eInstanceParams.NumDelays; ++i) {\n      pLVREV_Private-\u003erevLPFBiquad[i]-\u003eclear();\n  }",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 85
+      },
+      "revId": "0458764737723765a9e0969a5f933d002447aea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ff1b1e1_8736d090",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_ClearAudioBuffers.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-12-30T16:59:20Z",
+      "side": 1,
+      "message": "could be put in a constexpr array.",
+      "range": {
+        "startLine": 78,
+        "startChar": 56,
+        "endLine": 78,
+        "endChar": 74
+      },
+      "revId": "0458764737723765a9e0969a5f933d002447aea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d1d1f01_3431cb72",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_ClearAudioBuffers.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-12-30T16:59:20Z",
+      "side": 1,
+      "message": "odd to see \u003e\u003d",
+      "range": {
+        "startLine": 84,
+        "startChar": 61,
+        "endLine": 84,
+        "endChar": 62
+      },
+      "revId": "0458764737723765a9e0969a5f933d002447aea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac833e20_77941e29",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_GetInstanceHandle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-12-30T16:59:20Z",
+      "side": 1,
+      "message": "this is OK, but could be rewritten.",
+      "range": {
+        "startLine": 142,
+        "startChar": 0,
+        "endLine": 142,
+        "endChar": 59
+      },
+      "revId": "0458764737723765a9e0969a5f933d002447aea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5de0433d_062f2a4e",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_GetMemoryTable.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-12-30T16:59:20Z",
+      "side": 1,
+      "message": "here too, same style of code.",
+      "range": {
+        "startLine": 145,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 63
+      },
+      "revId": "0458764737723765a9e0969a5f933d002447aea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04a5c711_4c94f1b2",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_Private.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-12-30T16:59:20Z",
+      "side": 1,
+      "message": "should be a constexpr?",
+      "range": {
+        "startLine": 153,
+        "startChar": 33,
+        "endLine": 153,
+        "endChar": 34
+      },
+      "revId": "0458764737723765a9e0969a5f933d002447aea7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
