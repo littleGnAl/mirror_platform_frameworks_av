@@ -59,9 +59,12 @@ cc_test {
     shared_libs: [
         "libaudioutils",
         "liblog",
-        "libreverbwrapper",
     ],
 
+    static_libs: [
+        "libreverbwrapper",
+        "libreverb",
+    ],
     srcs: [
         "reverb_test.cpp",
     ],
