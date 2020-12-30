@@ -50,6 +50,24 @@
       "message": "and I didn\u0027t see the external/libavc changes to support this.\ni saw the decoder interface changes, but didn\u0027t see the encoder side.",
       "revId": "51d870d3a3eaddb083f13e5c3f90cb3ce8c0c545",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3c29b6a_b46fdbf2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2020-12-30T02:55:17Z",
+      "side": 1,
+      "message": "Ray, the testbench and library are already using ih264e structures. So only plugin needed this change",
+      "parentUuid": "d889c46a_45b9e61e",
+      "revId": "51d870d3a3eaddb083f13e5c3f90cb3ce8c0c545",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
