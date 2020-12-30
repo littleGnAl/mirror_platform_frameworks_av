@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d97183b_c34e43ad",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_ApplyNewSettings.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-30T13:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8b4883de_cba35a84",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 6
+      },
+      "revId": "20c2d6b7964c914f50aac4b310b6d074f8efbb4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee0e81d6_a757d038",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "in that case, just make const.  no need to make static.",
       "parentUuid": "694e9dbc_7a740ccd",
+      "range": {
+        "startLine": 80,
+        "startChar": 5,
+        "endLine": 80,
+        "endChar": 8
+      },
+      "revId": "20c2d6b7964c914f50aac4b310b6d074f8efbb4e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9a16b52_8cd4ed31",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_ApplyNewSettings.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-30T13:11:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4358ab61_1ced7619",
       "range": {
         "startLine": 80,
         "startChar": 5,
