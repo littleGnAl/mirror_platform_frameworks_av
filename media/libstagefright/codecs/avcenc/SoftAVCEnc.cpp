@@ -30,8 +30,6 @@
 #include <OMX_VideoExt.h>
 
 #include "ih264_typedefs.h"
-#include "iv2.h"
-#include "ive2.h"
 #include "ih264e.h"
 #include "SoftAVCEnc.h"
 
@@ -702,29 +700,31 @@ OMX_ERRORTYPE SoftAVC::initEncoder() {
 
     /* Getting MemRecords Attributes */
     {
-        iv_fill_mem_rec_ip_t s_fill_mem_rec_ip;
-        iv_fill_mem_rec_op_t s_fill_mem_rec_op;
+        ih264e_fill_mem_rec_ip_t s_ih264e_mem_rec_ip = {};
+        ih264e_fill_mem_rec_op_t s_ih264e_mem_rec_op = {};
+        iv_fill_mem_rec_ip_t *ps_fill_mem_rec_ip = &s_ih264e_mem_rec_ip.s_ive_ip;
+        iv_fill_mem_rec_op_t *ps_fill_mem_rec_op = &s_ih264e_mem_rec_op.s_ive_op;
 
-        s_fill_mem_rec_ip.u4_size = sizeof(iv_fill_mem_rec_ip_t);
-        s_fill_mem_rec_op.u4_size = sizeof(iv_fill_mem_rec_op_t);
+        ps_fill_mem_rec_ip->u4_size = sizeof(ih264e_fill_mem_rec_ip_t);
+        ps_fill_mem_rec_op->u4_size = sizeof(ih264e_fill_mem_rec_op_t);
 
-        s_fill_mem_rec_ip.e_cmd = IV_CMD_FILL_NUM_MEM_REC;
-        s_fill_mem_rec_ip.ps_mem_rec = mMemRecords;
-        s_fill_mem_rec_ip.u4_num_mem_rec = mNumMemRecords;
-        s_fill_mem_rec_ip.u4_max_wd = mWidth;
-        s_fill_mem_rec_ip.u4_max_ht = mHeight;
-        s_fill_mem_rec_ip.u4_max_level = mAVCEncLevel;
-        s_fill_mem_rec_ip.e_color_format = DEFAULT_INP_COLOR_FORMAT;
-        s_fill_mem_rec_ip.u4_max_ref_cnt = DEFAULT_MAX_REF_FRM;
-        s_fill_mem_rec_ip.u4_max_reorder_cnt = DEFAULT_MAX_REORDER_FRM;
-        s_fill_mem_rec_ip.u4_max_srch_rng_x = DEFAULT_MAX_SRCH_RANGE_X;
-        s_fill_mem_rec_ip.u4_max_srch_rng_y = DEFAULT_MAX_SRCH_RANGE_Y;
+        ps_fill_mem_rec_ip->e_cmd = IV_CMD_FILL_NUM_MEM_REC;
+        ps_fill_mem_rec_ip->ps_mem_rec = mMemRecords;
+        ps_fill_mem_rec_ip->u4_num_mem_rec = mNumMemRecords;
+        ps_fill_mem_rec_ip->u4_max_wd = mWidth;
+        ps_fill_mem_rec_ip->u4_max_ht = mHeight;
+        ps_fill_mem_rec_ip->u4_max_level = mAVCEncLevel;
+        ps_fill_mem_rec_ip->e_color_format = DEFAULT_INP_COLOR_FORMAT;
+        ps_fill_mem_rec_ip->u4_max_ref_cnt = DEFAULT_MAX_REF_FRM;
+        ps_fill_mem_rec_ip->u4_max_reorder_cnt = DEFAULT_MAX_REORDER_FRM;
+        ps_fill_mem_rec_ip->u4_max_srch_rng_x = DEFAULT_MAX_SRCH_RANGE_X;
+        ps_fill_mem_rec_ip->u4_max_srch_rng_y = DEFAULT_MAX_SRCH_RANGE_Y;
 
-        status = ive_api_function(0, &s_fill_mem_rec_ip, &s_fill_mem_rec_op);
+        status = ive_api_function(0, ps_fill_mem_rec_ip, ps_fill_mem_rec_op);
 
         if (status != IV_SUCCESS) {
             ALOGE("Fill memory records failed = 0x%x\n",
-                    s_fill_mem_rec_op.u4_error_code);
+                    ps_fill_mem_rec_op->u4_error_code);
             mSignalledError = true;
             notify(OMX_EventError, OMX_ErrorUndefined, 0, 0);
             return OMX_ErrorUndefined;
@@ -757,49 +757,52 @@ OMX_ERRORTYPE SoftAVC::initEncoder() {
 
     /* Codec Instance Creation */
     {
-        ive_init_ip_t s_init_ip;
-        ive_init_op_t s_init_op;
+        ih264e_init_ip_t s_enc_ip = {};
+        ih264e_init_op_t s_enc_op = {};
+
+        ive_init_ip_t *ps_init_ip = &s_enc_ip.s_ive_ip;
+        ive_init_op_t *ps_init_op = &s_enc_op.s_ive_op;
 
         mCodecCtx = (iv_obj_t *)mMemRecords[0].pv_base;
         mCodecCtx->u4_size = sizeof(iv_obj_t);
         mCodecCtx->pv_fxns = (void *)ive_api_function;
 
-        s_init_ip.u4_size = sizeof(ive_init_ip_t);
-        s_init_op.u4_size = sizeof(ive_init_op_t);
+        ps_init_ip->u4_size = sizeof(ih264e_init_ip_t);
+        ps_init_op->u4_size = sizeof(ih264e_init_op_t);
 
-        s_init_ip.e_cmd = IV_CMD_INIT;
-        s_init_ip.u4_num_mem_rec = mNumMemRecords;
-        s_init_ip.ps_mem_rec = mMemRecords;
-        s_init_ip.u4_max_wd = mWidth;
-        s_init_ip.u4_max_ht = mHeight;
-        s_init_ip.u4_max_ref_cnt = DEFAULT_MAX_REF_FRM;
-        s_init_ip.u4_max_reorder_cnt = DEFAULT_MAX_REORDER_FRM;
-        s_init_ip.u4_max_level = mAVCEncLevel;
-        s_init_ip.e_inp_color_fmt = mIvVideoColorFormat;
+        ps_init_ip->e_cmd = IV_CMD_INIT;
+        ps_init_ip->u4_num_mem_rec = mNumMemRecords;
+        ps_init_ip->ps_mem_rec = mMemRecords;
+        ps_init_ip->u4_max_wd = mWidth;
+        ps_init_ip->u4_max_ht = mHeight;
+        ps_init_ip->u4_max_ref_cnt = DEFAULT_MAX_REF_FRM;
+        ps_init_ip->u4_max_reorder_cnt = DEFAULT_MAX_REORDER_FRM;
+        ps_init_ip->u4_max_level = mAVCEncLevel;
+        ps_init_ip->e_inp_color_fmt = mIvVideoColorFormat;
 
         if (mReconEnable || mPSNREnable) {
-            s_init_ip.u4_enable_recon = 1;
+            ps_init_ip->u4_enable_recon = 1;
         } else {
-            s_init_ip.u4_enable_recon = 0;
+            ps_init_ip->u4_enable_recon = 0;
         }
-        s_init_ip.e_recon_color_fmt = DEFAULT_RECON_COLOR_FORMAT;
-        s_init_ip.e_rc_mode = DEFAULT_RC_MODE;
-        s_init_ip.u4_max_framerate = DEFAULT_MAX_FRAMERATE;
-        s_init_ip.u4_max_bitrate = DEFAULT_MAX_BITRATE;
-        s_init_ip.u4_num_bframes = mBframes;
-        s_init_ip.e_content_type = IV_PROGRESSIVE;
-        s_init_ip.u4_max_srch_rng_x = DEFAULT_MAX_SRCH_RANGE_X;
-        s_init_ip.u4_max_srch_rng_y = DEFAULT_MAX_SRCH_RANGE_Y;
-        s_init_ip.e_slice_mode = mSliceMode;
-        s_init_ip.u4_slice_param = mSliceParam;
-        s_init_ip.e_arch = mArch;
-        s_init_ip.e_soc = DEFAULT_SOC;
+        ps_init_ip->e_recon_color_fmt = DEFAULT_RECON_COLOR_FORMAT;
+        ps_init_ip->e_rc_mode = DEFAULT_RC_MODE;
+        ps_init_ip->u4_max_framerate = DEFAULT_MAX_FRAMERATE;
+        ps_init_ip->u4_max_bitrate = DEFAULT_MAX_BITRATE;
+        ps_init_ip->u4_num_bframes = mBframes;
+        ps_init_ip->e_content_type = IV_PROGRESSIVE;
+        ps_init_ip->u4_max_srch_rng_x = DEFAULT_MAX_SRCH_RANGE_X;
+        ps_init_ip->u4_max_srch_rng_y = DEFAULT_MAX_SRCH_RANGE_Y;
+        ps_init_ip->e_slice_mode = mSliceMode;
+        ps_init_ip->u4_slice_param = mSliceParam;
+        ps_init_ip->e_arch = mArch;
+        ps_init_ip->e_soc = DEFAULT_SOC;
 
-        status = ive_api_function(mCodecCtx, &s_init_ip, &s_init_op);
+        status = ive_api_function(mCodecCtx, &s_enc_ip, &s_enc_op);
 
         if (status != IV_SUCCESS) {
             ALOGE("Init memory records failed = 0x%x\n",
-                    s_init_op.u4_error_code);
+                    ps_init_op->u4_error_code);
             mSignalledError = true;
             notify(OMX_EventError, OMX_ErrorUndefined, 0 /* arg2 */, NULL /* data */);
             return OMX_ErrorUndefined;
@@ -1295,8 +1298,11 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
     while (!mSawOutputEOS && !outQueue.empty()) {
 
         OMX_ERRORTYPE error;
-        ive_video_encode_ip_t s_encode_ip;
-        ive_video_encode_op_t s_encode_op;
+        ih264e_video_encode_ip_t s_video_encode_ip = {};
+        ih264e_video_encode_op_t s_video_encode_op = {};
+        ive_video_encode_ip_t *ps_encode_ip = &s_video_encode_ip.s_ive_ip;
+        ive_video_encode_op_t *ps_encode_op = &s_video_encode_op.s_ive_op;
+
         BufferInfo *outputBufferInfo = *outQueue.begin();
         OMX_BUFFERHEADERTYPE *outputBufferHeader = outputBufferInfo->mHeader;
 
@@ -1326,26 +1332,26 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
         uint8_t *outPtr = (uint8_t *)outputBufferHeader->pBuffer;
 
         if (!mSpsPpsHeaderReceived) {
-            error = setEncodeArgs(&s_encode_ip, &s_encode_op, NULL, outputBufferHeader);
+            error = setEncodeArgs(ps_encode_ip, ps_encode_op, NULL, outputBufferHeader);
             if (error != OMX_ErrorNone) {
                 mSignalledError = true;
                 notify(OMX_EventError, OMX_ErrorUndefined, 0, 0);
                 return;
             }
-            status = ive_api_function(mCodecCtx, &s_encode_ip, &s_encode_op);
+            status = ive_api_function(mCodecCtx, ps_encode_ip, ps_encode_op);
 
             if (IV_SUCCESS != status) {
                 ALOGE("Encode Frame failed = 0x%x\n",
-                        s_encode_op.u4_error_code);
+                        ps_encode_op->u4_error_code);
             } else {
                 ALOGV("Bytes Generated in header %d\n",
-                        s_encode_op.s_out_buf.u4_bytes);
+                        ps_encode_op->s_out_buf.u4_bytes);
             }
 
             mSpsPpsHeaderReceived = true;
 
             outputBufferHeader->nFlags = OMX_BUFFERFLAG_CODECCONFIG;
-            outputBufferHeader->nFilledLen = s_encode_op.s_out_buf.u4_bytes;
+            outputBufferHeader->nFilledLen = ps_encode_op->s_out_buf.u4_bytes;
             if (inputBufferHeader != NULL) {
                 outputBufferHeader->nTimeStamp = inputBufferHeader->nTimeStamp;
             }
@@ -1393,7 +1399,7 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
             }
         }
         error = setEncodeArgs(
-                &s_encode_ip, &s_encode_op, inputBufferHeader, outputBufferHeader);
+                ps_encode_ip, ps_encode_op, inputBufferHeader, outputBufferHeader);
 
         if (error != OMX_ErrorNone) {
             mSignalledError = true;
@@ -1402,18 +1408,18 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
         }
 
         DUMP_TO_FILE(
-                mInFile, s_encode_ip.s_inp_buf.apv_bufs[0],
+                mInFile, ps_encode_ip->s_inp_buf.apv_bufs[0],
                 (mHeight * mStride * 3 / 2));
 
         GETTIME(&mTimeStart, NULL);
         /* Compute time elapsed between end of previous decode()
          * to start of current decode() */
         TIME_DIFF(mTimeEnd, mTimeStart, timeDelay);
-        status = ive_api_function(mCodecCtx, &s_encode_ip, &s_encode_op);
+        status = ive_api_function(mCodecCtx, ps_encode_ip, ps_encode_op);
 
         if (IV_SUCCESS != status) {
             ALOGE("Encode Frame failed = 0x%x\n",
-                    s_encode_op.u4_error_code);
+                    ps_encode_op->u4_error_code);
             mSignalledError = true;
             notify(OMX_EventError, OMX_ErrorUndefined, 0, 0);
             return;
@@ -1424,13 +1430,13 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
         TIME_DIFF(mTimeStart, mTimeEnd, timeTaken);
 
         ALOGV("timeTaken=%6d delay=%6d numBytes=%6d", timeTaken, timeDelay,
-                s_encode_op.s_out_buf.u4_bytes);
+                ps_encode_op->s_out_buf.u4_bytes);
 
         /* In encoder frees up an input buffer, mark it as free */
-        if (s_encode_op.s_inp_buf.apv_bufs[0] != NULL) {
+        if (ps_encode_op->s_inp_buf.apv_bufs[0] != NULL) {
             if (mInputDataIsMeta) {
                 for (size_t i = 0; i < MAX_CONVERSION_BUFFERS; i++) {
-                    if (mConversionBuffers[i] == s_encode_op.s_inp_buf.apv_bufs[0]) {
+                    if (mConversionBuffers[i] == ps_encode_op->s_inp_buf.apv_bufs[0]) {
                         mConversionBuffersFree[i] = 1;
                         break;
                     }
@@ -1444,7 +1450,7 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
                         bufHdr = mInputBufferInfo[i]->mHeader;
                         buf = bufHdr->pBuffer + bufHdr->nOffset;
                     }
-                    if (s_encode_op.s_inp_buf.apv_bufs[0] == buf) {
+                    if (ps_encode_op->s_inp_buf.apv_bufs[0] == buf) {
                         mInputBufferInfo[i]->mOwnedByUs = false;
                         notifyEmptyBufferDone(bufHdr);
                         mInputBufferInfo[i] = NULL;
@@ -1454,9 +1460,9 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
             }
         }
 
-        outputBufferHeader->nFilledLen = s_encode_op.s_out_buf.u4_bytes;
+        outputBufferHeader->nFilledLen = ps_encode_op->s_out_buf.u4_bytes;
 
-        if (IV_IDR_FRAME == s_encode_op.u4_encoded_frame_type) {
+        if (IV_IDR_FRAME == ps_encode_op->u4_encoded_frame_type) {
             outputBufferHeader->nFlags |= OMX_BUFFERFLAG_SYNCFRAME;
         }
 
@@ -1472,17 +1478,17 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
             }
         }
 
-        if (s_encode_op.u4_is_last) {
+        if (ps_encode_op->u4_is_last) {
             outputBufferHeader->nFlags |= OMX_BUFFERFLAG_EOS;
             mSawOutputEOS = true;
         } else {
             outputBufferHeader->nFlags &= ~OMX_BUFFERFLAG_EOS;
         }
 
-        if (outputBufferHeader->nFilledLen || s_encode_op.u4_is_last) {
-            outputBufferHeader->nTimeStamp = s_encode_op.u4_timestamp_high;
+        if (outputBufferHeader->nFilledLen || ps_encode_op->u4_is_last) {
+            outputBufferHeader->nTimeStamp = ps_encode_op->u4_timestamp_high;
             outputBufferHeader->nTimeStamp <<= 32;
-            outputBufferHeader->nTimeStamp |= s_encode_op.u4_timestamp_low;
+            outputBufferHeader->nTimeStamp |= ps_encode_op->u4_timestamp_low;
             outputBufferInfo->mOwnedByUs = false;
             outQueue.erase(outQueue.begin());
             DUMP_TO_FILE(mOutFile, outputBufferHeader->pBuffer,
@@ -1490,7 +1496,7 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
             notifyFillBufferDone(outputBufferHeader);
         }
 
-        if (s_encode_op.u4_is_last == 1) {
+        if (ps_encode_op->u4_is_last == 1) {
             return;
         }
     }
