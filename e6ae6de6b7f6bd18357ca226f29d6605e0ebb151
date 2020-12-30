@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99122515_ac7b7fc8",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2020-12-30T21:40:17Z",
+      "side": 1,
+      "message": "initialize all these structures to zero\nih264e_fill_mem_rec_ip_t s_ih264e_mem_rec_ip \u003d {};\nih264e_fill_mem_rec_op_t s_ih264e_mem_rec_op \u003d {};\n\nthat way any extension to these structures will be initiaized to zero.",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 704,
+        "endChar": 53
+      },
+      "revId": "e6ae6de6b7f6bd18357ca226f29d6605e0ebb151",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
