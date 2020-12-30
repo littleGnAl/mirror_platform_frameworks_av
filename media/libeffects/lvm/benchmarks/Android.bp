@@ -14,3 +14,19 @@ cc_benchmark {
         "libhardware_headers",
     ],
 }
+cc_benchmark {
+    name: "reverb_benchmark",
+    vendor: true,
+    srcs: ["reverb_benchmark.cpp"],
+    static_libs: [
+        "libreverb",
+    ],
+    shared_libs: [
+        "libaudioutils",
+        "liblog",
+        "libbundlewrapper",
+    ],
+    header_libs: [
+        "libhardware_headers",
+    ],
+}
