@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c209073_3400605a",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Init.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-30T10:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f766acf_15219e90",
+      "range": {
+        "startLine": 98,
+        "startChar": 82,
+        "endLine": 98,
+        "endChar": 83
+      },
+      "revId": "b4a94262ed47600eb1d19a881c0df4823ccc40dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c1192307_31b5019f",
@@ -172,6 +196,30 @@
       "writtenOn": "2020-12-21T18:24:40Z",
       "side": 1,
       "message": "FCC_1",
+      "range": {
+        "startLine": 84,
+        "startChar": 88,
+        "endLine": 84,
+        "endChar": 89
+      },
+      "revId": "b4a94262ed47600eb1d19a881c0df4823ccc40dd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bf1f8d1_c4020f25",
+        "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_StereoEnhancer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2020-12-30T10:58:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb7a6d22_6985bdde",
       "range": {
         "startLine": 84,
         "startChar": 88,
