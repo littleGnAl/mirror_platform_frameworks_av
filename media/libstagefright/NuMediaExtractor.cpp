@@ -24,6 +24,7 @@
 
 #include <datasource/DataSourceFactory.h>
 #include <datasource/FileSource.h>
+#include <datasource/PlayerServiceFileSource.h>
 #include <media/DataSource.h>
 #include <media/stagefright/MediaSource.h>
 #include <media/stagefright/foundation/ABuffer.h>
@@ -122,7 +123,7 @@ status_t NuMediaExtractor::setDataSource(int fd, off64_t offset, off64_t size) {
         return -EINVAL;
     }
 
-    sp<FileSource> fileSource = new FileSource(dup(fd), offset, size);
+    sp<PlayerServiceFileSource> fileSource = new PlayerServiceFileSource(dup(fd), offset, size);
 
     status_t err = fileSource->initCheck();
     if (err != OK) {

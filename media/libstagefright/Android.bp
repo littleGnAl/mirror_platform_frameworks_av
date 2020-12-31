@@ -296,6 +296,7 @@ cc_library {
         "libdatasource",
         "libdl",
         "libdl_android",
+        "libdrmframework",
         "libgui",
         "liblog",
         "libmedia",
@@ -332,6 +333,7 @@ cc_library {
         "libogg",
         "libwebm",
         "libstagefright_id3",
+        "libplayerservice_datasource",
     ],
 
     header_libs:[
