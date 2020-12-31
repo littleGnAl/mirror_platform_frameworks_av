@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b70c2d9f_4476f326",
+        "filename": "media/libeffects/lvm/benchmarks/reverb_benchmark.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-12-31T01:34:00Z",
+      "side": 1,
+      "message": "nit: i\u0027ve seen some suggest using auto if there is a cast on the right hand side.",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 20
+      },
+      "revId": "587e070b6059be786850df676aaa8b4e02a78722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24cb7e26_d2366b32",
+        "filename": "media/libeffects/lvm/benchmarks/reverb_benchmark.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2020-12-31T01:34:00Z",
+      "side": 1,
+      "message": "nit: move this outside of loop?",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 62
+      },
+      "revId": "587e070b6059be786850df676aaa8b4e02a78722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
