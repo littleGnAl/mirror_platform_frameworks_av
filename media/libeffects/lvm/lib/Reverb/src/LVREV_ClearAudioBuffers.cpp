@@ -43,6 +43,8 @@
 /****************************************************************************************/
 LVREV_ReturnStatus_en LVREV_ClearAudioBuffers(LVREV_Handle_t hInstance) {
     LVREV_Instance_st* pLVREV_Private = (LVREV_Instance_st*)hInstance;
+    constexpr LVM_INT16 MaxT_Delay[] = {LVREV_MAX_T0_DELAY, LVREV_MAX_T1_DELAY, LVREV_MAX_T2_DELAY,
+                                        LVREV_MAX_T3_DELAY};
 
     /*
      * Check for error conditions
@@ -75,13 +77,11 @@ LVREV_ReturnStatus_en LVREV_ClearAudioBuffers(LVREV_Handle_t hInstance) {
         LoadConst_Float(0, (LVM_FLOAT*)&pLVREV_Private->pFastData->RevLPTaps[0], 2);
 #endif
 
-        LoadConst_Float(0, pLVREV_Private->pDelay_T[3], LVREV_MAX_T3_DELAY);
-        LoadConst_Float(0, pLVREV_Private->pDelay_T[2], LVREV_MAX_T2_DELAY);
-        LoadConst_Float(0, pLVREV_Private->pDelay_T[1], LVREV_MAX_T1_DELAY);
-        LoadConst_Float(0, pLVREV_Private->pDelay_T[0], LVREV_MAX_T0_DELAY);
-    }
-
-    if ((LVM_UINT16)pLVREV_Private->InstanceParams.NumDelays >= LVREV_DELAYLINES_2) {
+        LoadConst_Float(0, pLVREV_Private->pDelay_T[3], MaxT_Delay[3]);
+        LoadConst_Float(0, pLVREV_Private->pDelay_T[2], MaxT_Delay[2]);
+        LoadConst_Float(0, pLVREV_Private->pDelay_T[1], MaxT_Delay[1]);
+        LoadConst_Float(0, pLVREV_Private->pDelay_T[0], MaxT_Delay[0]);
+    } else if ((LVM_UINT16)pLVREV_Private->InstanceParams.NumDelays == LVREV_DELAYLINES_2) {
 #ifdef BIQUAD_OPT
         for (int i = 0; i < LVREV_DELAYLINES_2; i++) {
             pLVREV_Private->revLPFBiquad[i]->clear();
@@ -91,17 +91,15 @@ LVREV_ReturnStatus_en LVREV_ClearAudioBuffers(LVREV_Handle_t hInstance) {
         LoadConst_Float(0, (LVM_FLOAT*)&pLVREV_Private->pFastData->RevLPTaps[0], 2);
 #endif
 
-        LoadConst_Float(0, pLVREV_Private->pDelay_T[1], LVREV_MAX_T1_DELAY);
-        LoadConst_Float(0, pLVREV_Private->pDelay_T[0], LVREV_MAX_T0_DELAY);
-    }
-
-    if ((LVM_UINT16)pLVREV_Private->InstanceParams.NumDelays >= LVREV_DELAYLINES_1) {
+        LoadConst_Float(0, pLVREV_Private->pDelay_T[1], MaxT_Delay[1]);
+        LoadConst_Float(0, pLVREV_Private->pDelay_T[0], MaxT_Delay[0]);
+    } else if ((LVM_UINT16)pLVREV_Private->InstanceParams.NumDelays == LVREV_DELAYLINES_1) {
 #ifdef BIQUAD_OPT
         pLVREV_Private->revLPFBiquad[0]->clear();
 #else
         LoadConst_Float(0, (LVM_FLOAT*)&pLVREV_Private->pFastData->RevLPTaps[0], 2);
 #endif
-        LoadConst_Float(0, pLVREV_Private->pDelay_T[0], LVREV_MAX_T0_DELAY);
+        LoadConst_Float(0, pLVREV_Private->pDelay_T[0], MaxT_Delay[0]);
     }
     return LVREV_SUCCESS;
 }
