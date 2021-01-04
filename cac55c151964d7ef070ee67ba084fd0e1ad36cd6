@@ -1,0 +1,82 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007026447",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1534915?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b2da8441_fb7b0945",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/example/android/samplevideoencoder/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-04T15:31:51Z",
+      "side": 1,
+      "message": "Prefer to use activity.getSystemService(CameraManager.class) instead to avoid the cast.",
+      "range": {
+        "startLine": 304,
+        "startChar": 32,
+        "endLine": 304,
+        "endChar": 74
+      },
+      "revId": "cac55c151964d7ef070ee67ba084fd0e1ad36cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007026447",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1534915?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "68f98952_3ad6d1bf",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-04T15:31:51Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 128
+      },
+      "revId": "cac55c151964d7ef070ee67ba084fd0e1ad36cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007026447",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1534915?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "253e73fb_b4ab0b0b",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/res/drawable-v24/ic_launcher_foreground.xml",
+        "patchSetId": 2
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-04T15:31:51Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 623
+      },
+      "revId": "cac55c151964d7ef070ee67ba084fd0e1ad36cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
