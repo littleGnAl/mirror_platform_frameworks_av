@@ -1,0 +1,118 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2518c6b4_9e2f112e",
+        "filename": "media/tests/SampleVideoEncoder/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-04T22:48:52Z",
+      "side": 1,
+      "message": "on my aosp/master build\nthe path is \n/storage/emulated/0/Android/data/com.example.android.samplevideoencoder/files/\n\nif this is different in different android versions, let us add all paths based on android versions here.",
+      "range": {
+        "startLine": 26,
+        "startChar": 13,
+        "endLine": 26,
+        "endChar": 31
+      },
+      "revId": "cac55c151964d7ef070ee67ba084fd0e1ad36cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e2a00ad_9bc380bb",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/example/android/samplevideoencoder/AutoFitTextureView.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-04T22:48:52Z",
+      "side": 1,
+      "message": "Folder path should be \ncom/android/media/samplevideoencoder instead of\n\ncom/example/android/samplevideoencoder",
+      "revId": "cac55c151964d7ef070ee67ba084fd0e1ad36cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff61b5f7_2735cc4c",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/example/android/samplevideoencoder/AutoFitTextureView.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-04T22:48:52Z",
+      "side": 1,
+      "message": "com.android.media.samplevideoencoder",
+      "range": {
+        "startLine": 16,
+        "startChar": 8,
+        "endLine": 16,
+        "endChar": 46
+      },
+      "revId": "cac55c151964d7ef070ee67ba084fd0e1ad36cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7cf92aad_9fb220d5",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/example/android/samplevideoencoder/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 500,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-04T22:48:52Z",
+      "side": 1,
+      "message": "Add\n\nmMediaRecorder.setVideoEncodingProfileLevel(MediaCodecInfo.CodecProfileLevel.HEVCProfileMain, MediaCodecInfo.CodecProfileLevel.HEVCMainTierLevel4);",
+      "revId": "cac55c151964d7ef070ee67ba084fd0e1ad36cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57bac143_72e6efe0",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/example/android/samplevideoencoder/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 502,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-04T22:48:52Z",
+      "side": 1,
+      "message": "Add\n\nmMediaRecorder.setVideoEncodingProfileLevel(MediaCodecInfo.CodecProfileLevel.AVCProfileMain, MediaCodecInfo.CodecProfileLevel.AVCLevel4);",
+      "revId": "cac55c151964d7ef070ee67ba084fd0e1ad36cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a71f655_5a40d047",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/example/android/samplevideoencoder/MediaCodecSurfaceEncoder.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-04T22:48:52Z",
+      "side": 1,
+      "message": "Need to also set profile and level\n\n        if (mMime.equals(MediaFormat.MIMETYPE_VIDEO_HEVC)) {\n            encoderFormat.setInteger(MediaFormat.KEY_PROFILE, MediaCodecInfo.CodecProfileLevel.HEVCProfileMain);\n            encoderFormat.setInteger(MediaFormat.KEY_LEVEL, MediaCodecInfo.CodecProfileLevel.HEVCMainTierLevel4);\n        } else {\n            encoderFormat.setInteger(MediaFormat.KEY_PROFILE, MediaCodecInfo.CodecProfileLevel.AVCProfileMain);\n            encoderFormat.setInteger(MediaFormat.KEY_LEVEL, MediaCodecInfo.CodecProfileLevel.AVCLevel4);\n        }",
+      "revId": "cac55c151964d7ef070ee67ba084fd0e1ad36cd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
