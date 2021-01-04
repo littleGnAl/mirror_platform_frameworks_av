@@ -159,9 +159,7 @@ LVREV_ReturnStatus_en LVREV_GetInstanceHandle(LVREV_Handle_t* phInstance,
         LoadConst_Float(0, pLVREV_Private->pDelay_T[2], LVREV_MAX_T2_DELAY);
         LoadConst_Float(0, pLVREV_Private->pDelay_T[1], LVREV_MAX_T1_DELAY);
         LoadConst_Float(0, pLVREV_Private->pDelay_T[0], LVREV_MAX_T0_DELAY);
-    }
-
-    if (pInstanceParams->NumDelays == LVREV_DELAYLINES_2) {
+    } else if (pInstanceParams->NumDelays == LVREV_DELAYLINES_2) {
         pLVREV_Private->pDelay_T[1] =
                 (LVM_FLOAT*)InstAlloc_AddMember(&FastData, LVREV_MAX_T1_DELAY * sizeof(LVM_FLOAT));
         pLVREV_Private->pDelay_T[0] =
@@ -175,9 +173,7 @@ LVREV_ReturnStatus_en LVREV_GetInstanceHandle(LVREV_Handle_t* phInstance,
 
         LoadConst_Float(0, pLVREV_Private->pDelay_T[1], (LVM_INT16)LVREV_MAX_T1_DELAY);
         LoadConst_Float(0, pLVREV_Private->pDelay_T[0], (LVM_INT16)LVREV_MAX_T0_DELAY);
-    }
-
-    if (pInstanceParams->NumDelays == LVREV_DELAYLINES_1) {
+    } else if (pInstanceParams->NumDelays == LVREV_DELAYLINES_1) {
         pLVREV_Private->pDelay_T[0] =
                 (LVM_FLOAT*)InstAlloc_AddMember(&FastData, LVREV_MAX_T0_DELAY * sizeof(LVM_FLOAT));
 
