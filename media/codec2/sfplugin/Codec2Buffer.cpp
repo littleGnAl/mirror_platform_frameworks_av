@@ -288,7 +288,7 @@ public:
                                     maxPtr = mView.data()[i] + maxOffset;
                                 }
                                 planeSize += planeStride * divUp(mAllocatedDepth, 8u)
-                                        * align(mHeight, 64) / plane.rowSampling;
+                                        * align(mHeight, 64) / plane.rowSampling / plane.colSampling;
                             }
 
                             if (minPtr == mView.data()[0] && (maxPtr - minPtr + 1) <= planeSize) {
