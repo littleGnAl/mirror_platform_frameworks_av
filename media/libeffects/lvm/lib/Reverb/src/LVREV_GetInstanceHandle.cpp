@@ -55,6 +55,10 @@ LVREV_ReturnStatus_en LVREV_GetInstanceHandle(LVREV_Handle_t* phInstance,
     LVREV_Instance_st* pLVREV_Private;
     LVM_INT16 i;
     LVM_UINT16 MaxBlockSize;
+    constexpr LVM_INT16 MaxT_Delay[] = {LVREV_MAX_T0_DELAY, LVREV_MAX_T1_DELAY, LVREV_MAX_T2_DELAY,
+                                        LVREV_MAX_T3_DELAY};
+    constexpr LVM_INT16 MaxAP_Delay[] = {LVREV_MAX_AP0_DELAY, LVREV_MAX_AP1_DELAY,
+                                         LVREV_MAX_AP2_DELAY, LVREV_MAX_AP3_DELAY};
 
     /*
      * Check for error conditions
@@ -120,11 +124,11 @@ LVREV_ReturnStatus_en LVREV_GetInstanceHandle(LVREV_Handle_t* phInstance,
     pLVREV_Private->MemoryTable = *pMemoryTable;
 
     if (pInstanceParams->NumDelays == LVREV_DELAYLINES_4) {
-        MaxBlockSize = LVREV_MAX_AP3_DELAY;
+        MaxBlockSize = MaxAP_Delay[3];
     } else if (pInstanceParams->NumDelays == LVREV_DELAYLINES_2) {
-        MaxBlockSize = LVREV_MAX_AP1_DELAY;
+        MaxBlockSize = MaxAP_Delay[1];
     } else {
-        MaxBlockSize = LVREV_MAX_AP0_DELAY;
+        MaxBlockSize = MaxAP_Delay[0];
     }
 
     if (MaxBlockSize > pInstanceParams->MaxBlockSize) {
@@ -139,61 +143,18 @@ LVREV_ReturnStatus_en LVREV_GetInstanceHandle(LVREV_Handle_t* phInstance,
     pLVREV_Private->pFastData =
             (LVREV_FastData_st*)InstAlloc_AddMember(&FastData, sizeof(LVREV_FastData_st));
 #endif
-    if (pInstanceParams->NumDelays == LVREV_DELAYLINES_4) {
-        pLVREV_Private->pDelay_T[3] =
-                (LVM_FLOAT*)InstAlloc_AddMember(&FastData, LVREV_MAX_T3_DELAY * sizeof(LVM_FLOAT));
-        pLVREV_Private->pDelay_T[2] =
-                (LVM_FLOAT*)InstAlloc_AddMember(&FastData, LVREV_MAX_T2_DELAY * sizeof(LVM_FLOAT));
-        pLVREV_Private->pDelay_T[1] =
-                (LVM_FLOAT*)InstAlloc_AddMember(&FastData, LVREV_MAX_T1_DELAY * sizeof(LVM_FLOAT));
-        pLVREV_Private->pDelay_T[0] =
-                (LVM_FLOAT*)InstAlloc_AddMember(&FastData, LVREV_MAX_T0_DELAY * sizeof(LVM_FLOAT));
-
-        for (i = 0; i < 4; i++) {
-            /* Scratch for each delay line output */
-            pLVREV_Private->pScratchDelayLine[i] =
-                    (LVM_FLOAT*)InstAlloc_AddMember(&Temporary, sizeof(LVM_FLOAT) * MaxBlockSize);
-        }
-
-        LoadConst_Float(0, pLVREV_Private->pDelay_T[3], LVREV_MAX_T3_DELAY);
-        LoadConst_Float(0, pLVREV_Private->pDelay_T[2], LVREV_MAX_T2_DELAY);
-        LoadConst_Float(0, pLVREV_Private->pDelay_T[1], LVREV_MAX_T1_DELAY);
-        LoadConst_Float(0, pLVREV_Private->pDelay_T[0], LVREV_MAX_T0_DELAY);
-    }
-
-    if (pInstanceParams->NumDelays == LVREV_DELAYLINES_2) {
-        pLVREV_Private->pDelay_T[1] =
-                (LVM_FLOAT*)InstAlloc_AddMember(&FastData, LVREV_MAX_T1_DELAY * sizeof(LVM_FLOAT));
-        pLVREV_Private->pDelay_T[0] =
-                (LVM_FLOAT*)InstAlloc_AddMember(&FastData, LVREV_MAX_T0_DELAY * sizeof(LVM_FLOAT));
-
-        for (i = 0; i < 2; i++) {
-            /* Scratch for each delay line output */
-            pLVREV_Private->pScratchDelayLine[i] =
-                    (LVM_FLOAT*)InstAlloc_AddMember(&Temporary, sizeof(LVM_FLOAT) * MaxBlockSize);
-        }
-
-        LoadConst_Float(0, pLVREV_Private->pDelay_T[1], (LVM_INT16)LVREV_MAX_T1_DELAY);
-        LoadConst_Float(0, pLVREV_Private->pDelay_T[0], (LVM_INT16)LVREV_MAX_T0_DELAY);
-    }
-
-    if (pInstanceParams->NumDelays == LVREV_DELAYLINES_1) {
-        pLVREV_Private->pDelay_T[0] =
-                (LVM_FLOAT*)InstAlloc_AddMember(&FastData, LVREV_MAX_T0_DELAY * sizeof(LVM_FLOAT));
-
-        for (i = 0; i < 1; i++) {
-            /* Scratch for each delay line output */
-            pLVREV_Private->pScratchDelayLine[i] =
-                    (LVM_FLOAT*)InstAlloc_AddMember(&Temporary, sizeof(LVM_FLOAT) * MaxBlockSize);
-        }
-
-        LoadConst_Float(0, pLVREV_Private->pDelay_T[0], (LVM_INT16)LVREV_MAX_T0_DELAY);
+    for (size_t i = 0; i < pInstanceParams->NumDelays; i++) {
+        pLVREV_Private->pDelay_T[i] =
+                (LVM_FLOAT*)InstAlloc_AddMember(&FastData, MaxT_Delay[i] * sizeof(LVM_FLOAT));
+        /* Scratch for each delay line output */
+        pLVREV_Private->pScratchDelayLine[i] =
+                (LVM_FLOAT*)InstAlloc_AddMember(&Temporary, sizeof(LVM_FLOAT) * MaxBlockSize);
+        LoadConst_Float(0, pLVREV_Private->pDelay_T[i], MaxT_Delay[i]);
     }
     /* All-pass delay buffer addresses and sizes */
-    pLVREV_Private->T[0] = LVREV_MAX_T0_DELAY;
-    pLVREV_Private->T[1] = LVREV_MAX_T1_DELAY;
-    pLVREV_Private->T[2] = LVREV_MAX_T2_DELAY;
-    pLVREV_Private->T[3] = LVREV_MAX_T3_DELAY;
+    for (size_t i = 0; i < LVREV_DELAYLINES_4; i++) {
+        pLVREV_Private->T[i] = MaxT_Delay[i];
+    }
     pLVREV_Private->AB_Selection = 1; /* Select smoothing A to B */
 
 #ifndef BIQUAD_OPT
@@ -303,14 +264,10 @@ LVREV_ReturnStatus_en LVREV_GetInstanceHandle(LVREV_Handle_t* phInstance,
         pLVREV_Private->FeedbackMixer[i].Target = 0;
     }
     /* Delay tap index */
-    pLVREV_Private->A_DelaySize[0] = LVREV_MAX_AP0_DELAY;
-    pLVREV_Private->B_DelaySize[0] = LVREV_MAX_AP0_DELAY;
-    pLVREV_Private->A_DelaySize[1] = LVREV_MAX_AP1_DELAY;
-    pLVREV_Private->B_DelaySize[1] = LVREV_MAX_AP1_DELAY;
-    pLVREV_Private->A_DelaySize[2] = LVREV_MAX_AP2_DELAY;
-    pLVREV_Private->B_DelaySize[2] = LVREV_MAX_AP2_DELAY;
-    pLVREV_Private->A_DelaySize[3] = LVREV_MAX_AP3_DELAY;
-    pLVREV_Private->B_DelaySize[3] = LVREV_MAX_AP3_DELAY;
+    for (size_t i = 0; i < LVREV_DELAYLINES_4; i++) {
+        pLVREV_Private->A_DelaySize[i] = MaxAP_Delay[i];
+        pLVREV_Private->B_DelaySize[i] = MaxAP_Delay[i];
+    }
 
 #ifdef BIQUAD_OPT
     pLVREV_Private->pRevHPFBiquad.reset(
