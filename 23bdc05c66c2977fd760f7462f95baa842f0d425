@@ -16,6 +16,23 @@
       "message": "On the flip-side, we would be losing our ability to know what had happened.\nI don\u0027t know that optimizing for maximum monkey test score is the right trade-off here.",
       "revId": "23bdc05c66c2977fd760f7462f95baa842f0d425",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebc0447b_9ceabab2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1355299
+      },
+      "writtenOn": "2021-01-04T02:09:27Z",
+      "side": 1,
+      "message": "Dear Google\n\nCould you please share your purpose to use SIGABRT? Could we change it to SIGKILL? Looking forward to your reply.\n",
+      "revId": "23bdc05c66c2977fd760f7462f95baa842f0d425",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
