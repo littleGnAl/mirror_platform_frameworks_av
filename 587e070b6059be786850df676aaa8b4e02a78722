@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d950f0ec_1a546cdf",
+        "filename": "media/libeffects/lvm/benchmarks/Android.bp",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-04T07:56:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bd4e9a7_fc330cb5",
+      "revId": "587e070b6059be786850df676aaa8b4e02a78722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b70c2d9f_4476f326",
@@ -41,6 +59,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "500e1501_9fb8fc38",
+        "filename": "media/libeffects/lvm/benchmarks/reverb_benchmark.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-04T07:56:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b70c2d9f_4476f326",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 60,
+        "endChar": 20
+      },
+      "revId": "587e070b6059be786850df676aaa8b4e02a78722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24cb7e26_d2366b32",
@@ -54,6 +96,30 @@
       "writtenOn": "2020-12-31T01:34:00Z",
       "side": 1,
       "message": "nit: move this outside of loop?",
+      "range": {
+        "startLine": 151,
+        "startChar": 1,
+        "endLine": 151,
+        "endChar": 62
+      },
+      "revId": "587e070b6059be786850df676aaa8b4e02a78722",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "826528b2_b78c4743",
+        "filename": "media/libeffects/lvm/benchmarks/reverb_benchmark.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-04T07:56:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24cb7e26_d2366b32",
       "range": {
         "startLine": 151,
         "startChar": 1,
