@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be102434_f3ef587a",
+        "filename": "media/tests/encode/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-04T02:31:34Z",
+      "side": 1,
+      "message": "SampleVideoEncoder\n\nalso change the folder name accordingly",
+      "range": {
+        "startLine": 16,
+        "startChar": 30,
+        "endLine": 16,
+        "endChar": 36
+      },
+      "revId": "6f99f172ad9fd99d8aa427368140b79bf19525ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1eb556c6_7c39f21b",
+        "filename": "media/tests/encode/app/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-04T02:31:34Z",
+      "side": 1,
+      "message": "SampleVideoEncoder",
+      "range": {
+        "startLine": 18,
+        "startChar": 11,
+        "endLine": 18,
+        "endChar": 21
+      },
+      "revId": "6f99f172ad9fd99d8aa427368140b79bf19525ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4e92884_bd803cf5",
+        "filename": "media/tests/encode/app/build.gradle",
+        "patchSetId": 1
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-04T02:31:34Z",
+      "side": 1,
+      "message": "com.android.media.samplevideoencoder",
+      "range": {
+        "startLine": 24,
+        "startChar": 23,
+        "endLine": 24,
+        "endChar": 53
+      },
+      "revId": "6f99f172ad9fd99d8aa427368140b79bf19525ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a0334d0_01392d30",
+        "filename": "media/tests/encode/app/src/main/java/com/example/android/encoderapp/MainActivity.java",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-04T02:31:34Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 75,
+        "startChar": 73,
+        "endLine": 75,
+        "endChar": 74
+      },
+      "revId": "6f99f172ad9fd99d8aa427368140b79bf19525ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b1b3cb2_e2d1beaf",
+        "filename": "media/tests/encode/settings.gradle",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-04T02:31:34Z",
+      "side": 1,
+      "message": "SampleVideoEncoder",
+      "range": {
+        "startLine": 2,
+        "startChar": 20,
+        "endLine": 2,
+        "endChar": 30
+      },
+      "revId": "6f99f172ad9fd99d8aa427368140b79bf19525ea",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
