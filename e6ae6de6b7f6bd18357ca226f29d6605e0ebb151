@@ -22,6 +22,30 @@
       },
       "revId": "e6ae6de6b7f6bd18357ca226f29d6605e0ebb151",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c27dc29_09ade89c",
+        "filename": "media/libstagefright/codecs/avcenc/SoftAVCEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 704,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-01-04T05:28:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99122515_ac7b7fc8",
+      "range": {
+        "startLine": 703,
+        "startChar": 0,
+        "endLine": 704,
+        "endChar": 53
+      },
+      "revId": "e6ae6de6b7f6bd18357ca226f29d6605e0ebb151",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
