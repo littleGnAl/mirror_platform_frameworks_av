@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fd49c4d_72769c06",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 515,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-01-04T10:35:51Z",
+      "side": 1,
+      "message": "AUDIO_SOURCE_HOTWORD is listed twice in the switch statement.\nI think you want to remove it from line 500.",
+      "range": {
+        "startLine": 515,
+        "startChar": 0,
+        "endLine": 515,
+        "endChar": 30
+      },
+      "revId": "f56d878ecc8483feea5c6d32ae401de5adce0f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e770b63_9979fd5c",
+        "filename": "services/audiopolicy/enginedefault/src/Engine.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 529,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-01-04T10:35:51Z",
+      "side": 1,
+      "message": "remove blank line",
+      "range": {
+        "startLine": 529,
+        "startChar": 0,
+        "endLine": 529,
+        "endChar": 0
+      },
+      "revId": "f56d878ecc8483feea5c6d32ae401de5adce0f09",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
