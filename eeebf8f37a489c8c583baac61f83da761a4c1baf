@@ -1,0 +1,78 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48963052_9b49b8fb",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_ClearAudioBuffers.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-04T18:33:37Z",
+      "side": 1,
+      "message": "remove all this and use for loop for pLVREV_Private-\u003eInstanceParams.NumDelays iterations",
+      "range": {
+        "startLine": 68,
+        "startChar": 1,
+        "endLine": 103,
+        "endChar": 5
+      },
+      "revId": "eeebf8f37a489c8c583baac61f83da761a4c1baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b62df012_fa9f8b99",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_GetInstanceHandle.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-04T18:33:37Z",
+      "side": 1,
+      "message": "use loop and remove if else blocks",
+      "revId": "eeebf8f37a489c8c583baac61f83da761a4c1baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa1d2e36_b06fe380",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_GetMemoryTable.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-04T18:33:37Z",
+      "side": 1,
+      "message": "loop instead of if else",
+      "revId": "eeebf8f37a489c8c583baac61f83da761a4c1baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2f0adb9_cdda10ff",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_GetMemoryTable.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-04T18:33:37Z",
+      "side": 1,
+      "message": "remove if else and use loop",
+      "revId": "eeebf8f37a489c8c583baac61f83da761a4c1baf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
