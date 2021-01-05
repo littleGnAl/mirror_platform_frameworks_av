@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "59948b0d_f09a7b77",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-05T19:39:37Z",
+      "side": 1,
+      "message": "Ray,\nih264d_ctl_set_config_ip_t is defined as\n\ntypedef struct {\n    ivd_ctl_set_config_ip_t             s_ivd_ctl_set_config_ip_t;\n    int32_t                             element1;\n    int32_t                             element2;\n[...]\n}ih264d_ctl_set_config_ip_t;\n\n\nfirst entry in such extended structures is always the corresponding base structures that are common to all codecs (in this case s_ivd_ctl_set_config_ip_t).\n\nFirst entry in common structures is u4_size.\nThis size is to be initialized to size of the structure being passed to the codec (i.e  ih264d_ctl_set_config_ip_t).",
+      "parentUuid": "d69a44b3_337b07fd",
+      "range": {
+        "startLine": 470,
+        "startChar": 36,
+        "endLine": 470,
+        "endChar": 71
+      },
+      "revId": "ef803de9ef8b908d67d7d86eb2e49b399d077570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2d7aa160_8f6ffd2a",
         "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
         "patchSetId": 5
