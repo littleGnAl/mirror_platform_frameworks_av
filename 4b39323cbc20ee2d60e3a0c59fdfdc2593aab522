@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f54a6e1_cb6262c6",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 22
+      },
+      "lineNbr": 671,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-05T05:18:11Z",
+      "side": 1,
+      "message": "needs to be aligned to ia_drc",
+      "range": {
+        "startLine": 667,
+        "startChar": 0,
+        "endLine": 671,
+        "endChar": 12
+      },
+      "revId": "4b39323cbc20ee2d60e3a0c59fdfdc2593aab522",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
