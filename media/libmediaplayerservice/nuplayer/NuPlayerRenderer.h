@@ -91,6 +91,7 @@ struct NuPlayer::Renderer : public AHandler {
             uint32_t flags,
             bool isStreaming,
             const sp<AMessage> &notify);
+    void setOnChangeAudioFormat(bool reset){ mEnterOnChangeAudioFormat = reset;}
 
     enum {
         kWhatEOS                      = 'eos ',
@@ -190,6 +191,7 @@ private:
 
     // modified on only renderer's thread.
     bool mPaused;
+    bool mEnterOnChangeAudioFormat;
     int64_t mPauseDrainAudioAllowedUs; // time when we can drain/deliver audio in pause mode.
 
     bool mVideoSampleReceived;

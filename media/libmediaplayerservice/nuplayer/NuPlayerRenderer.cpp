@@ -564,7 +564,8 @@ void NuPlayer::Renderer::onMessageReceived(const sp<AMessage> &msg) {
             CHECK(msg->findMessage("meta", &meta));
 
             if (queueGeneration != getQueueGeneration(true /* audio */)
-                    || mAudioQueue.empty()) {
+                    || mAudioQueue.empty()
+                    || !mEnterOnChangeAudioFormat) {
                 onChangeAudioFormat(meta, notify);
                 break;
             }
@@ -2124,6 +2125,7 @@ void NuPlayer::Renderer::onCloseAudioSink() {
 
 void NuPlayer::Renderer::onChangeAudioFormat(
         const sp<AMessage> &meta, const sp<AMessage> &notify) {
+    mEnterOnChangeAudioFormat = true;
     sp<AMessage> format;
     CHECK(meta->findMessage("format", &format));
 
