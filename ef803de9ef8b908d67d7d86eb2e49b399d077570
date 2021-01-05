@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d69a44b3_337b07fd",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-05T19:29:51Z",
+      "side": 1,
+      "message": "seems like there\u0027s still some type mismatches going on here.\n\nline 466 says that this we\u0027re pointing to is a \"s_ivd_ctl_set_config_ip_t\"\nbut we\u0027re setting sizeof here as a ih264d...\n\nas discussed in calls some of this is working because the ih264d_ctl_set_config_ip_t\nis a structure that contains exactly 1 element:  an ivd_ctl_set_config_ip_t.\n\n\nlet\u0027s see what happens if we put a couple dummy fields at the front of the\nih264d_ structure; see what breaks.  that will shake out where we are being lax in typing.",
+      "range": {
+        "startLine": 470,
+        "startChar": 36,
+        "endLine": 470,
+        "endChar": 71
+      },
+      "revId": "ef803de9ef8b908d67d7d86eb2e49b399d077570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2d7aa160_8f6ffd2a",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-05T19:29:51Z",
+      "side": 1,
+      "message": "similarly here.",
+      "range": {
+        "startLine": 477,
+        "startChar": 0,
+        "endLine": 477,
+        "endChar": 71
+      },
+      "revId": "ef803de9ef8b908d67d7d86eb2e49b399d077570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
