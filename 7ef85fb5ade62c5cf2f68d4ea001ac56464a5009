@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c603c1ff_4aafde02",
+        "filename": "media/libeffects/lvm/lib/Common/lib/BIQUAD.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-05T17:31:52Z",
+      "side": 1,
+      "message": "any of these can be disabled?",
+      "revId": "7ef85fb5ade62c5cf2f68d4ea001ac56464a5009",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f031925_b50ebbfb",
+        "filename": "media/libeffects/lvm/lib/Common/lib/BIQUAD.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-05T17:31:52Z",
+      "side": 1,
+      "message": "can these be migrated to use biquad filter?",
+      "revId": "7ef85fb5ade62c5cf2f68d4ea001ac56464a5009",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f920728e_69019569",
+        "filename": "media/libeffects/lvm/lib/Common/src/FO_2I_D16F32C15_LShx_TRC_WRA_01.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-05T17:31:52Z",
+      "side": 1,
+      "message": "redundant",
+      "revId": "7ef85fb5ade62c5cf2f68d4ea001ac56464a5009",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
