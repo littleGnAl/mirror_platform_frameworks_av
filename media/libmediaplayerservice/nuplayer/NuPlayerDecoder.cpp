@@ -149,6 +149,14 @@ void NuPlayer::Decoder::onMessageReceived(const sp<AMessage> &msg) {
                     mIsAudio ? "audio" : "video", cbID, mPaused);
 
             if (mPaused) {
+                if(MediaCodec::CB_OUTPUT_FORMAT_CHANGED == cbID){
+                    sp<AMessage> format;
+                    CHECK(msg->findMessage("format", &format));
+                    ALOGV("[%s] onMessage: %s MediaCodec::CB_OUTPUT_FORMAT_CHANGED,mPause=true",
+                          mComponentName.c_str(), msg->debugString().c_str());
+                    mRenderer->setOnChangeAudioFormat(false);
+                    handleOutputFormatChange(format);
+                }
                 break;
             }
 
@@ -184,7 +192,9 @@ void NuPlayer::Decoder::onMessageReceived(const sp<AMessage> &msg) {
                 {
                     sp<AMessage> format;
                     CHECK(msg->findMessage("format", &format));
-
+                    ALOGV("[%s] onMessage: %s MediaCodec::CB_OUTPUT_FORMAT_CHANGED,mPause=false",
+                          mComponentName.c_str(), msg->debugString().c_str());
+                    mRenderer->setOnChangeAudioFormat(false);
                     handleOutputFormatChange(format);
                     break;
                 }
