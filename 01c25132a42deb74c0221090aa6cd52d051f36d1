@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7a3fb08e_7fece19d",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_GetInstanceHandle.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-05T16:27:26Z",
+      "side": 1,
+      "message": "in that case let us add a loop for 4 iterations here\n\nsame applies to remaining comments too.",
+      "parentUuid": "07a2f6d3_1dad0e1a",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 158,
+        "endChar": 41
+      },
+      "revId": "01c25132a42deb74c0221090aa6cd52d051f36d1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c620455d_b1594e88",
         "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_GetInstanceHandle.cpp",
         "patchSetId": 4
