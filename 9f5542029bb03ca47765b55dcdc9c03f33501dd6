@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5ae2a339_a1bd5494",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 726,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-05T05:20:57Z",
+      "side": 1,
+      "message": "redundant",
+      "range": {
+        "startLine": 726,
+        "startChar": 29,
+        "endLine": 726,
+        "endChar": 30
+      },
+      "revId": "9f5542029bb03ca47765b55dcdc9c03f33501dd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a82d7b6_42775e06",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 728,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-05T05:20:57Z",
+      "side": 1,
+      "message": "needs one more space at start",
+      "range": {
+        "startLine": 713,
+        "startChar": 0,
+        "endLine": 728,
+        "endChar": 0
+      },
+      "revId": "9f5542029bb03ca47765b55dcdc9c03f33501dd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
