@@ -16,6 +16,41 @@
       "message": "If I understand correctly, this essentially inverts the close/open flag?",
       "revId": "41a0a6b998ab585219c39a12ad3f053364209ebd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b5c3d45_9781a369",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2021-01-06T19:26:15Z",
+      "side": 1,
+      "message": "I guess the main logic is to all for proper destruction of a init failed reader?",
+      "parentUuid": "8eb048e0_d65fbe92",
+      "revId": "41a0a6b998ab585219c39a12ad3f053364209ebd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb5de340_782856d7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060513
+      },
+      "writtenOn": "2021-01-06T19:26:15Z",
+      "side": 1,
+      "message": "That\u0027s a cool bug ID...",
+      "revId": "41a0a6b998ab585219c39a12ad3f053364209ebd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
