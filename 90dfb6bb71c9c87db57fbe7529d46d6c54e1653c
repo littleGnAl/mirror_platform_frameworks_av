@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5e3fde29_2b5852fe",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/MediaCodecSurfaceEncoder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 243,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2021-01-06T13:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95674e25_2436cdcf",
+      "range": {
+        "startLine": 241,
+        "startChar": 12,
+        "endLine": 243,
+        "endChar": 40
+      },
+      "revId": "90dfb6bb71c9c87db57fbe7529d46d6c54e1653c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f2fd8dd5_05f5180d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-05T18:07:16Z",
       "side": 1,
       "message": "This log is not required for each output frame.\nFew other log statements may be pushed behind if (DEBUG).",
+      "range": {
+        "startLine": 331,
+        "startChar": 12,
+        "endLine": 331,
+        "endChar": 80
+      },
+      "revId": "90dfb6bb71c9c87db57fbe7529d46d6c54e1653c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ec05a5e_ed4db174",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/MediaCodecSurfaceEncoder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2021-01-06T13:21:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f2fd8dd5_05f5180d",
       "range": {
         "startLine": 331,
         "startChar": 12,
