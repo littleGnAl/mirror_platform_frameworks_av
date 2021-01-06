@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b861b48_b86c21e5",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_ClearAudioBuffers.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-06T09:39:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4e271103_37f3f227",
+      "range": {
+        "startLine": 46,
+        "startChar": 24,
+        "endLine": 46,
+        "endChar": 34
+      },
+      "revId": "1cbe0a60f9567ff7346fbccad9ce39fd57abacf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6412dd7_42d5ac8b",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-06T07:53:53Z",
       "side": 1,
       "message": "nit, please make this\n\nLREV_MAX_T_DELAY\n\nas it more accurately represents the contents.",
+      "range": {
+        "startLine": 58,
+        "startChar": 24,
+        "endLine": 58,
+        "endChar": 34
+      },
+      "revId": "1cbe0a60f9567ff7346fbccad9ce39fd57abacf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9bbf17f1_1d1c1d5c",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_GetInstanceHandle.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-06T09:39:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6412dd7_42d5ac8b",
       "range": {
         "startLine": 58,
         "startChar": 24,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a3e8b4b7_6a3ccef7",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_GetInstanceHandle.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-06T09:39:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97a5a02c_1f66b4f6",
+      "range": {
+        "startLine": 60,
+        "startChar": 24,
+        "endLine": 60,
+        "endChar": 35
+      },
+      "revId": "1cbe0a60f9567ff7346fbccad9ce39fd57abacf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "101fcc03_337e8bfd",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-01-06T07:53:53Z",
       "side": 1,
       "message": "nit: LREV_MAX_T_DELAY\n\nCan this be defined in the header as a static inline constexpr?  just checking.",
+      "range": {
+        "startLine": 67,
+        "startChar": 24,
+        "endLine": 67,
+        "endChar": 34
+      },
+      "revId": "1cbe0a60f9567ff7346fbccad9ce39fd57abacf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d396d2a_45219cd6",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_GetMemoryTable.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-06T09:39:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "101fcc03_337e8bfd",
       "range": {
         "startLine": 67,
         "startChar": 24,
