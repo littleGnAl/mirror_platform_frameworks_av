@@ -16,6 +16,23 @@
       "message": "Wonsik,\nCan you please take another look at the newly defined parameters?\nThanks.",
       "revId": "a3b37cbd5850a2f3edefea5ae0e5fe2e953c469e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba5f9f86_89960585",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-06T21:33:02Z",
+      "side": 1,
+      "message": "Wonsik,\nCan you please take another loop at this?\nThis CL is a base CL for both hevc and avc CLs and if this can be merged, those CLs can be made independent of each other.\nThanks.",
+      "revId": "a3b37cbd5850a2f3edefea5ae0e5fe2e953c469e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
