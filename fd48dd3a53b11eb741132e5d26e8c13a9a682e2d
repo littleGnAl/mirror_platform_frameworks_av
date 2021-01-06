@@ -22,6 +22,30 @@
       },
       "revId": "fd48dd3a53b11eb741132e5d26e8c13a9a682e2d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3387fb58_2de6a425",
+        "filename": "media/libstagefright/writer_fuzzers/include/WriterFuzzerBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-06T21:36:05Z",
+      "side": 1,
+      "message": "Marking this as resolved as there is no action item.",
+      "parentUuid": "f9f317c1_17b1698f",
+      "range": {
+        "startLine": 160,
+        "startChar": 29,
+        "endLine": 160,
+        "endChar": 42
+      },
+      "revId": "fd48dd3a53b11eb741132e5d26e8c13a9a682e2d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
