@@ -22,6 +22,30 @@
       },
       "revId": "ef1f67f8d96ddf580e455185b1aaa12785a7d576",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55c8f25f_4d952d78",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_Private.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-06T21:07:42Z",
+      "side": 1,
+      "message": "I think it is better to move these definitions to LVREV_Tables.cpp and declarations to LVREV_Tables.h.",
+      "parentUuid": "fa173a2e_b8252194",
+      "range": {
+        "startLine": 104,
+        "startChar": 7,
+        "endLine": 104,
+        "endChar": 13
+      },
+      "revId": "ef1f67f8d96ddf580e455185b1aaa12785a7d576",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
