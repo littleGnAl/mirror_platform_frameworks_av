@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d28122ab_badc0576",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-01-07T01:22:14Z",
+      "side": 1,
+      "message": "Thanks for this.",
+      "revId": "26a3075a05c5db0d16381283c5b47cf270201b51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14d28fe2_ab42f7e4",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-01-07T01:22:14Z",
+      "side": 1,
+      "message": "can we add a comment on why this seemingly arbitrary limit?, or perhaps a TODO with a bug ID to remove this arbitrary limit?",
+      "range": {
+        "startLine": 251,
+        "startChar": 12,
+        "endLine": 251,
+        "endChar": 42
+      },
+      "revId": "26a3075a05c5db0d16381283c5b47cf270201b51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
