@@ -16,6 +16,98 @@
       "message": "Ray,\nThese CLs are now rebased and validated on aosp/master.\nCan you please take another look?\nThanks.",
       "revId": "8d71482e5413df5710dde8bec16ebfcdfd9c532e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5be1f56d_41b5df76",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-07T16:35:50Z",
+      "side": 1,
+      "message": "is \"hdr params are unchanged\" more appropriate?",
+      "range": {
+        "startLine": 308,
+        "startChar": 40,
+        "endLine": 308,
+        "endChar": 60
+      },
+      "revId": "8d71482e5413df5710dde8bec16ebfcdfd9c532e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "132decfc_22a7b488",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-07T16:35:50Z",
+      "side": 1,
+      "message": "do we expect this to fail ever/very occasionnaly/often?\n\ni would think we\u0027d want to hear about it when it does -- so maybe ALOGW()",
+      "range": {
+        "startLine": 985,
+        "startChar": 7,
+        "endLine": 985,
+        "endChar": 15
+      },
+      "revId": "8d71482e5413df5710dde8bec16ebfcdfd9c532e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5363c8b_41ba9c96",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-07T16:35:50Z",
+      "side": 1,
+      "message": "either the ALOGV() around the call to this function, or this ALOGV()\none of them should be ALOGW()\n\nwe don\u0027t expect this to fail very often, do we?  in normal operation, i expect that\nwe\u0027ll succeed in setting the mdcv parameters and not say anything.",
+      "range": {
+        "startLine": 1055,
+        "startChar": 6,
+        "endLine": 1055,
+        "endChar": 17
+      },
+      "revId": "8d71482e5413df5710dde8bec16ebfcdfd9c532e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5a1cf78e_32b97109",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-07T16:35:50Z",
+      "side": 1,
+      "message": "same as with the MDCV parameters -- silent on success, but probably always a\nwarning when it goes bad.",
+      "range": {
+        "startLine": 1223,
+        "startChar": 7,
+        "endLine": 1223,
+        "endChar": 13
+      },
+      "revId": "8d71482e5413df5710dde8bec16ebfcdfd9c532e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
