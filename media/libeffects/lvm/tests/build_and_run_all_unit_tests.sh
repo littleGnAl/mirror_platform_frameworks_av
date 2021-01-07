@@ -102,6 +102,50 @@ do
                     ((++error_count))
                 fi
 
+                adb shell cp $testdir/dumpIn.wav $testdir/dumpIn_with_biquad.wav
+                adb shell cp $testdir/dumpOut.wav $testdir/dumpOut_with_biquad.wav
+                adb shell rm $testdir/dumpIn.wav $testdir/dumpOut.wav
+
+                adb shell $testdir/lvmtest_ref -i:$testdir/sinesweepraw.raw \
+                    -o:$testdir/sinesweepref_$((chMask))_$((fs)).raw -chMask:$chMask -fs:$fs $flags
+
+                adb shell cp $testdir/dumpIn.wav $testdir/dumpIn_without_biquad.wav
+                adb shell cp $testdir/dumpOut.wav $testdir/dumpOut_without_biquad.wav
+                adb shell rm $testdir/dumpIn.wav $testdir/dumpOut.wav
+
+                adb shell $testdir/snr $testdir/dumpIn_with_biquad.wav \
+                    $testdir/dumpIn_without_biquad.wav -thr:90.308998
+
+                shell_ret=$?
+                if [ $shell_ret -ne 0 ]; then
+                    echo "error: $shell_ret"
+                    ((++error_count))
+                fi
+
+                adb shell $testdir/snr $testdir/dumpOut_with_biquad.wav \
+                    $testdir/dumpOut_without_biquad.wav -thr:90.308998
+
+                shell_ret=$?
+                if [ $shell_ret -ne 0 ]; then
+                    echo "error: $shell_ret"
+                    ((++error_count))
+                fi
+
+#                if [[ $flags != *"-bE"* ]]; then
+                if [[ $flags != *"-bE"* ]] && [[ $flags != *"-eqE"* ]]; then
+                        adb shell cmp $testdir/sinesweepref_$((chMask))_$((fs)).raw \
+                            $testdir/sinesweep_$((chMask))_$((fs)).raw
+                else
+                        adb shell $testdir/snr $testdir/sinesweepref_$((chMask))_$((fs)).raw \
+                            $testdir/sinesweep_$((chMask))_$((fs)).raw -thr:90.308998
+                fi
+
+                # cmp returns EXIT_FAILURE on mismatch.
+                shell_ret=$?
+                if [ $shell_ret -ne 0 ]; then
+                    echo "error: $shell_ret"
+                    ((++error_count))
+                fi
 
                 # two channel files should be identical to higher channel
                 # computation (first 2 channels).

@@ -20,6 +20,12 @@
 #include "LVM_Macros.h"
 #include "VectorArithmetic.h"
 
+#define DEBUG_DUMPS
+#ifdef DEBUG_DUMPS
+#include <stdio.h>
+#include <log/log.h>
+#endif
+
 #define LVM_MININT_32 0x80000000
 
 static LVM_INT32 mult32x32in32_shiftr(LVM_INT32 a, LVM_INT32 b, LVM_INT32 c) {
@@ -93,6 +99,21 @@ LVPSA_RETURN LVPSA_Process(pLVPSA_Handle_t hInstance, LVM_FLOAT* pLVPSA_InputSam
     Copy_Float(pLVPSA_InputSamples, pScratch, (LVM_INT16)InputBlockSize);
     Shift_Sat_Float(-1, pScratch, pScratch, (LVM_INT16)InputBlockSize);
 
+#ifdef DEBUG_DUMPS
+    FILE* fDebugDumpIn = NULL;
+    fDebugDumpIn = fopen("/data/local/tmp/lvmTest/dumpIn.wav", "ab");
+    LVM_INT16 pTemp[256] = {0};
+    for (int x = 0; x < InputBlockSize; x++) {
+        pTemp[x] = pScratch[x] * 32768;
+    }
+    if (fDebugDumpIn) {
+        fwrite(pTemp, sizeof(pTemp[0]), InputBlockSize, fDebugDumpIn);
+        fclose(fDebugDumpIn);
+        fDebugDumpIn = NULL;
+    } else
+        ALOGE("DEBUG_DUMPS >> %s %d : fopen failed", __func__, __LINE__);
+#endif
+
     for (ii = 0; ii < pLVPSA_Inst->nRelevantFilters; ii++) {
         switch (pLVPSA_Inst->pBPFiltersPrecision[ii]) {
             case LVPSA_SimplePrecisionFilter:
@@ -121,6 +142,20 @@ LVPSA_RETURN LVPSA_Process(pLVPSA_Handle_t hInstance, LVM_FLOAT* pLVPSA_InputSam
         LVPSA_QPD_Process_Float(pLVPSA_Inst, pScratch + InputBlockSize, (LVM_INT16)InputBlockSize,
                                 ii);
     }
+
+#ifdef DEBUG_DUMPS
+    FILE* fDebugDumpOut = NULL;
+    fDebugDumpOut = fopen("/data/local/tmp/lvmTest/dumpOut.wav", "ab");
+    for (int x = 0; x < InputBlockSize; x++) {
+        pTemp[x] = *(pScratch + InputBlockSize + x) * 32768;
+    }
+    if (fDebugDumpOut) {
+        fwrite(pTemp, sizeof(pTemp[0]), InputBlockSize, fDebugDumpOut);
+        fclose(fDebugDumpOut);
+        fDebugDumpOut = NULL;
+    } else
+        ALOGE("DEBUG_DUMPS >> %s %d : fopen failed", __func__, __LINE__);
+#endif
 
     /******************************************************************************
        UPDATE SpectralDataBufferAudioTime
