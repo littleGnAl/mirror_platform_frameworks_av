@@ -19,8 +19,6 @@
 #include <utils/Log.h>
 
 #include "ih264_typedefs.h"
-#include "iv.h"
-#include "ivd.h"
 #include "ih264d.h"
 #include "SoftAVCDec.h"
 
@@ -143,25 +141,27 @@ void SoftAVC::logVersion() {
 }
 
 status_t SoftAVC::setParams(size_t stride) {
-    ivd_ctl_set_config_ip_t s_ctl_ip;
-    ivd_ctl_set_config_op_t s_ctl_op;
-    IV_API_CALL_STATUS_T status;
-    s_ctl_ip.u4_disp_wd = (UWORD32)stride;
-    s_ctl_ip.e_frm_skip_mode = IVD_SKIP_NONE;
+    ih264d_ctl_set_config_ip_t s_h264d_ctl_ip = {};
+    ih264d_ctl_set_config_op_t s_h264d_ctl_op = {};
+    ivd_ctl_set_config_ip_t *ps_ctl_ip = &s_h264d_ctl_ip.s_ivd_ctl_set_config_ip_t;
+    ivd_ctl_set_config_op_t *ps_ctl_op = &s_h264d_ctl_op.s_ivd_ctl_set_config_op_t;
+    ps_ctl_ip->u4_disp_wd = (UWORD32)stride;
+    ps_ctl_ip->e_frm_skip_mode = IVD_SKIP_NONE;
 
-    s_ctl_ip.e_frm_out_mode = IVD_DISPLAY_FRAME_OUT;
-    s_ctl_ip.e_vid_dec_mode = IVD_DECODE_FRAME;
-    s_ctl_ip.e_cmd = IVD_CMD_VIDEO_CTL;
-    s_ctl_ip.e_sub_cmd = IVD_CMD_CTL_SETPARAMS;
-    s_ctl_ip.u4_size = sizeof(ivd_ctl_set_config_ip_t);
-    s_ctl_op.u4_size = sizeof(ivd_ctl_set_config_op_t);
+    ps_ctl_ip->e_frm_out_mode = IVD_DISPLAY_FRAME_OUT;
+    ps_ctl_ip->e_vid_dec_mode = IVD_DECODE_FRAME;
+    ps_ctl_ip->e_cmd = IVD_CMD_VIDEO_CTL;
+    ps_ctl_ip->e_sub_cmd = IVD_CMD_CTL_SETPARAMS;
+    ps_ctl_ip->u4_size = sizeof(ih264d_ctl_set_config_ip_t);
+    ps_ctl_op->u4_size = sizeof(ih264d_ctl_set_config_op_t);
 
     ALOGV("Set the run-time (dynamic) parameters stride = %zu", stride);
-    status = ivdec_api_function(mCodecCtx, (void *)&s_ctl_ip, (void *)&s_ctl_op);
+    IV_API_CALL_STATUS_T status =
+        ivdec_api_function(mCodecCtx, (void *)&s_h264d_ctl_ip, (void *)&s_h264d_ctl_op);
 
     if (status != IV_SUCCESS) {
         ALOGE("Error in setting the run-time parameters: 0x%x",
-                s_ctl_op.u4_error_code);
+                ps_ctl_op->u4_error_code);
 
         return UNKNOWN_ERROR;
     }
@@ -389,8 +389,8 @@ bool SoftAVC::setDecodeArgs(
     size_t sizeY = outputBufferWidth() * outputBufferHeight();
     size_t sizeUV;
 
-    ps_dec_ip->u4_size = sizeof(ivd_video_decode_ip_t);
-    ps_dec_op->u4_size = sizeof(ivd_video_decode_op_t);
+    ps_dec_ip->u4_size = sizeof(ih264d_video_decode_ip_t);
+    ps_dec_op->u4_size = sizeof(ih264d_video_decode_op_t);
 
     ps_dec_ip->e_cmd = IVD_CMD_VIDEO_DECODE;
 
@@ -447,14 +447,17 @@ void SoftAVC::onPortFlushCompleted(OMX_U32 portIndex) {
         }
 
         while (true) {
-            ivd_video_decode_ip_t s_dec_ip;
-            ivd_video_decode_op_t s_dec_op;
+            ih264d_video_decode_ip_t s_h264d_dec_ip = {};
+            ih264d_video_decode_op_t s_h264d_dec_op = {};
+            ivd_video_decode_ip_t *ps_dec_ip = &s_h264d_dec_ip.s_ivd_video_decode_ip_t;
+            ivd_video_decode_op_t *ps_dec_op = &s_h264d_dec_op.s_ivd_video_decode_op_t;
             IV_API_CALL_STATUS_T status;
 
-            setDecodeArgs(&s_dec_ip, &s_dec_op, NULL, NULL, 0);
+            setDecodeArgs(ps_dec_ip, ps_dec_op, NULL, NULL, 0);
 
-            status = ivdec_api_function(mCodecCtx, (void *)&s_dec_ip, (void *)&s_dec_op);
-            if (0 == s_dec_op.u4_output_present) {
+            status = ivdec_api_function(mCodecCtx, (void *)&s_h264d_dec_ip,
+                (void *)&s_h264d_dec_op);
+            if (0 == ps_dec_op->u4_output_present) {
                 resetPlugin();
                 break;
             }
@@ -558,18 +561,21 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
         }
 
         {
-            ivd_video_decode_ip_t s_dec_ip;
-            ivd_video_decode_op_t s_dec_op;
+            ih264d_video_decode_ip_t s_h264d_dec_ip = {};
+            ih264d_video_decode_op_t s_h264d_dec_op = {};
+            ivd_video_decode_ip_t *ps_dec_ip = &s_h264d_dec_ip.s_ivd_video_decode_ip_t;
+            ivd_video_decode_op_t *ps_dec_op = &s_h264d_dec_op.s_ivd_video_decode_op_t;
             nsecs_t timeDelay, timeTaken;
 
-            if (!setDecodeArgs(&s_dec_ip, &s_dec_op, inHeader, outHeader, timeStampIx)) {
+            if (!setDecodeArgs(ps_dec_ip, ps_dec_op, inHeader, outHeader, timeStampIx)) {
                 ALOGE("Decoder arg setup failed");
                 notify(OMX_EventError, OMX_ErrorUndefined, 0, NULL);
                 mSignalledError = true;
                 return;
             }
             // If input dump is enabled, then write to file
-            DUMP_TO_FILE(mInFile, s_dec_ip.pv_stream_buffer, s_dec_ip.u4_num_Bytes, mInputOffset);
+            DUMP_TO_FILE(mInFile, ps_dec_ip->pv_stream_buffer,
+                         ps_dec_ip->u4_num_Bytes, mInputOffset);
 
             mTimeStart = systemTime();
             /* Compute time elapsed between end of previous decode()
@@ -577,10 +583,12 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
             timeDelay = mTimeStart - mTimeEnd;
 
             IV_API_CALL_STATUS_T status;
-            status = ivdec_api_function(mCodecCtx, (void *)&s_dec_ip, (void *)&s_dec_op);
+            status = ivdec_api_function(mCodecCtx, (void *)&s_h264d_dec_ip,
+                (void *)&s_h264d_dec_op);
 
             bool unsupportedResolution =
-                (IVD_STREAM_WIDTH_HEIGHT_NOT_SUPPORTED == (s_dec_op.u4_error_code & IVD_ERROR_MASK));
+                (IVD_STREAM_WIDTH_HEIGHT_NOT_SUPPORTED ==
+                    (ps_dec_op->u4_error_code & IVD_ERROR_MASK));
 
             /* Check for unsupported dimensions */
             if (unsupportedResolution) {
@@ -590,7 +598,8 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
                 return;
             }
 
-            bool allocationFailed = (IVD_MEM_ALLOC_FAILED == (s_dec_op.u4_error_code & IVD_ERROR_MASK));
+            bool allocationFailed =
+                (IVD_MEM_ALLOC_FAILED == (ps_dec_op->u4_error_code & IVD_ERROR_MASK));
             if (allocationFailed) {
                 ALOGE("Allocation failure in decoder");
                 notify(OMX_EventError, OMX_ErrorUnsupportedSetting, 0, NULL);
@@ -598,14 +607,14 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
                 return;
             }
 
-            if (IS_IVD_FATAL_ERROR(s_dec_op.u4_error_code)) {
-                ALOGE("Fatal Error : 0x%x", s_dec_op.u4_error_code);
+            if (IS_IVD_FATAL_ERROR(ps_dec_op->u4_error_code)) {
+                ALOGE("Fatal Error : 0x%x", ps_dec_op->u4_error_code);
                 notify(OMX_EventError, OMX_ErrorUnsupportedSetting, 0, NULL);
                 mSignalledError = true;
                 return;
             }
 
-            bool resChanged = (IVD_RES_CHANGED == (s_dec_op.u4_error_code & IVD_ERROR_MASK));
+            bool resChanged = (IVD_RES_CHANGED == (ps_dec_op->u4_error_code & IVD_ERROR_MASK));
 
             getVUIParams();
 
@@ -615,12 +624,12 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
 
             ALOGV("timeTaken=%6lldus delay=%6lldus numBytes=%6d",
                     (long long) (timeTaken / 1000LL), (long long) (timeDelay / 1000LL),
-                   s_dec_op.u4_num_bytes_consumed);
-            if (s_dec_op.u4_frame_decoded_flag && !mFlushNeeded) {
+                   ps_dec_op->u4_num_bytes_consumed);
+            if (ps_dec_op->u4_frame_decoded_flag && !mFlushNeeded) {
                 mFlushNeeded = true;
             }
 
-            if ((inHeader != NULL) && (1 != s_dec_op.u4_frame_decoded_flag)) {
+            if ((inHeader != NULL) && (1 != ps_dec_op->u4_frame_decoded_flag)) {
                 /* If the input did not contain picture data, then ignore
                  * the associated timestamp */
                 mTimeStampsValid[timeStampIx] = false;
@@ -628,7 +637,7 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
 
             // If the decoder is in the changing resolution mode and there is no output present,
             // that means the switching is done and it's ready to reset the decoder and the plugin.
-            if (mChangingResolution && !s_dec_op.u4_output_present) {
+            if (mChangingResolution && !ps_dec_op->u4_output_present) {
                 mChangingResolution = false;
                 resetDecoder();
                 resetPlugin();
@@ -647,9 +656,9 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
 
             // Combine the resolution change and coloraspects change in one PortSettingChange event
             // if necessary.
-            if ((0 < s_dec_op.u4_pic_wd) && (0 < s_dec_op.u4_pic_ht)) {
-                uint32_t width = s_dec_op.u4_pic_wd;
-                uint32_t height = s_dec_op.u4_pic_ht;
+            if ((0 < ps_dec_op->u4_pic_wd) && (0 < ps_dec_op->u4_pic_ht)) {
+                uint32_t width = ps_dec_op->u4_pic_wd;
+                uint32_t height = ps_dec_op->u4_pic_ht;
                 bool portWillReset = false;
                 handlePortSettingsChange(&portWillReset, width, height);
                 if (portWillReset) {
@@ -664,11 +673,11 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
                 return;
             }
 
-            if (s_dec_op.u4_output_present) {
+            if (ps_dec_op->u4_output_present) {
                 outHeader->nFilledLen = (outputBufferWidth() * outputBufferHeight() * 3) / 2;
 
-                outHeader->nTimeStamp = mTimeStamps[s_dec_op.u4_ts];
-                mTimeStampsValid[s_dec_op.u4_ts] = false;
+                outHeader->nTimeStamp = mTimeStamps[ps_dec_op->u4_ts];
+                mTimeStampsValid[ps_dec_op->u4_ts] = false;
 
                 outInfo->mOwnedByUs = false;
                 outQueue.erase(outQueue.begin());
@@ -694,7 +703,7 @@ void SoftAVC::onQueueFilled(OMX_U32 portIndex) {
                     resetPlugin();
                 }
             }
-            mInputOffset += s_dec_op.u4_num_bytes_consumed;
+            mInputOffset += ps_dec_op->u4_num_bytes_consumed;
         }
         // If more than 4 bytes are remaining in input, then do not release it
         if (inHeader != NULL && ((inHeader->nFilledLen - mInputOffset) <= 4)) {
