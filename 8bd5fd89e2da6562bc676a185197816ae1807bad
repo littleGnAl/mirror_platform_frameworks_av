@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d78df66_ebe82e54",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1734121
+      },
+      "writtenOn": "2021-01-07T01:51:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ccf06527_e5e86588",
+      "range": {
+        "startLine": 184,
+        "startChar": 16,
+        "endLine": 184,
+        "endChar": 107
+      },
+      "revId": "8bd5fd89e2da6562bc676a185197816ae1807bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "924dfb49_1a6684d8",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d8f117a_f945795f",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1734121
+      },
+      "writtenOn": "2021-01-07T01:51:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "924dfb49_1a6684d8",
+      "range": {
+        "startLine": 713,
+        "startChar": 7,
+        "endLine": 713,
+        "endChar": 93
+      },
+      "revId": "8bd5fd89e2da6562bc676a185197816ae1807bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae2bf61b_47aad450",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-05T23:29:07Z",
       "side": 1,
       "message": "same idea as above.\n\n[and i think this pattern is duplicated in some of the other pending CLs for the libxaac plugin]",
+      "range": {
+        "startLine": 721,
+        "startChar": 7,
+        "endLine": 721,
+        "endChar": 75
+      },
+      "revId": "8bd5fd89e2da6562bc676a185197816ae1807bad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0898621c_82543801",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 24
+      },
+      "lineNbr": 721,
+      "author": {
+        "id": 1734121
+      },
+      "writtenOn": "2021-01-07T01:51:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "ae2bf61b_47aad450",
       "range": {
         "startLine": 721,
         "startChar": 7,
