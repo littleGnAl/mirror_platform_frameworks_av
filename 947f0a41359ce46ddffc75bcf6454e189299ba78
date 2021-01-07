@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa8ef8a1_dcb175a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-07T17:22:45Z",
+      "side": 1,
+      "message": "we already allow stat64, fstat and a few other variants.\nappears that the sanitizer is going directly to the system call instead of through the \nbionic stubs (which would have mapped to one of the existing entries)",
+      "revId": "947f0a41359ce46ddffc75bcf6454e189299ba78",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
