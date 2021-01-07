@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f14e7943_cf9e775d",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1107,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-07T01:40:02Z",
+      "side": 1,
+      "message": "This fails to compile in s-fs-release.\nChange to %\" PRId64 \",\n\nand add \n#include \u003cinttypes.h\u003e",
+      "range": {
+        "startLine": 1107,
+        "startChar": 61,
+        "endLine": 1107,
+        "endChar": 65
+      },
+      "revId": "663250fdd790f325e541f05d7a87f513889ac2f2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
