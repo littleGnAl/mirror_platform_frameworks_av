@@ -26,6 +26,7 @@
 
 #include <android-base/logging.h>
 #include <android-base/properties.h>
+#include <utils/Log.h>
 #include <utils/misc.h>
 
 // from LOCAL_C_INCLUDES
@@ -41,10 +42,16 @@ static const char kVendorSeccompPolicyPath[] =
 
 int main(int argc __unused, char** argv)
 {
+
+#if __has_feature(hwaddress_sanitizer)
+    ALOGW("hwasan enabled, disable media.extractor memory limits");
+#else
+    ALOGW("enable media.extractor memory limits");
     limitProcessMemory(
         "ro.media.maxmem", /* property that defines limit */
         SIZE_MAX, /* upper limit in bytes */
         20 /* upper limit as percentage of physical RAM */);
+#endif
 
     signal(SIGPIPE, SIG_IGN);
 
