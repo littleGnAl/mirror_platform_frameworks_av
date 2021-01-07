@@ -16,6 +16,75 @@
       "message": "Ray,\nThese CLs are now rebased and validated on aosp/master.\nCan you please take another look?\nThanks.",
       "revId": "6c9f4fc396ccab66c2af194ec618b1343fc7847f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8fcd843_2d3df759",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-07T16:26:56Z",
+      "side": 1,
+      "message": "why wouldn\u0027t we expect a type2 to show up here at some point?\n\nseems to me that if we really want type1 only, then this should be checking that\n(appropriatelycast)data -\u003e mID \u003d\u003d kType1.",
+      "range": {
+        "startLine": 1032,
+        "startChar": 45,
+        "endLine": 1032,
+        "endChar": 69
+      },
+      "revId": "6c9f4fc396ccab66c2af194ec618b1343fc7847f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d7df5e3_a9681205",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1784,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-07T16:26:56Z",
+      "side": 1,
+      "message": "shouldn\u0027t this be something we learn from the info itself.\ne.g. that 1st byte that says type1 or type2?\n\nor at least we should be verifying that the type byte in there says type\u003d\u003d1?\n\nsimilar thoughts as to line 1032 above.",
+      "range": {
+        "startLine": 1784,
+        "startChar": 64,
+        "endLine": 1784,
+        "endChar": 90
+      },
+      "revId": "6c9f4fc396ccab66c2af194ec618b1343fc7847f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdcebc9a_0e0a0204",
+        "filename": "media/libstagefright/webm/WebmElement.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-07T16:26:56Z",
+      "side": 1,
+      "message": "i don\u0027t like this block.\n\ni think a structure like:\n\nif (meta-\u003efindData() \u0026\u0026 type \u003d\u003d \u0027hdrS\u0027) {\n    info \u003d ()data;\n    if (info-\u003emID \u003d\u003d kType1 \u0026\u0026 size \u003d\u003d SIZE_HDRSTATICINFO_TYPE1) {\n        ...\n    }\n\nand potentially that last if should be\n   if (into-\u003emID \u003d\u003d kType1 \u0026\u0026 size \u003e\u003d SIZE_HDRSTATICINFO_TYPE1) {\nsince i don\u0027t think we care if there are extra bytes in there, we just need to know\nthat there are enough for all the type1 fields.",
+      "range": {
+        "startLine": 415,
+        "startChar": 12,
+        "endLine": 418,
+        "endChar": 53
+      },
+      "revId": "6c9f4fc396ccab66c2af194ec618b1343fc7847f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
