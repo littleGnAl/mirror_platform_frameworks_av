@@ -14,7 +14,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-
+#include <algorithm>
 #include "BIQUAD.h"
 #include "DC_2I_D16_TRC_WRA_01_Private.h"
 #include "LVM_Macros.h"
@@ -47,13 +47,9 @@ void DC_Mc_D16_TRC_WRA_01(Biquad_FLOAT_Instance_t* pInstance, LVM_FLOAT* pDataIn
     for (j = NrFrames - 1; j >= 0; j--) {
         /* Subtract DC and saturate */
         for (i = NrChannels - 1; i >= 0; i--) {
-            Diff = *(pDataIn++) - (ChDC[i]);
-            if (Diff > 1.0f) {
-                Diff = 1.0f;
-            } else if (Diff < -1.0f) {
-                Diff = -1.0f;
-            }
-            *(pDataOut++) = (LVM_FLOAT)Diff;
+            Diff = *pDataIn++ - ChDC[i];
+            Diff = std::clamp(Diff, -1.0f, 1.0f);
+            *(pDataOut++) = Diff;
             if (Diff < 0) {
                 ChDC[i] -= DC_FLOAT_STEP;
             } else {
