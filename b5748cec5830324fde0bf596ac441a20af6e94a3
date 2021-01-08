@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d626b107_59306f30",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1734121
+      },
+      "writtenOn": "2021-01-08T03:40:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d7ddf16_f94778dd",
+      "range": {
+        "startLine": 674,
+        "startChar": 39,
+        "endLine": 674,
+        "endChar": 42
+      },
+      "revId": "b5748cec5830324fde0bf596ac441a20af6e94a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb44c927_b380be71",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-07T18:52:47Z",
       "side": 1,
       "message": "space before and after",
+      "range": {
+        "startLine": 680,
+        "startChar": 45,
+        "endLine": 680,
+        "endChar": 46
+      },
+      "revId": "b5748cec5830324fde0bf596ac441a20af6e94a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "801a164f_daf3f881",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 680,
+      "author": {
+        "id": 1734121
+      },
+      "writtenOn": "2021-01-08T03:40:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb44c927_b380be71",
       "range": {
         "startLine": 680,
         "startChar": 45,
