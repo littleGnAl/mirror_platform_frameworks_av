@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8fc6043c_a667c914",
+        "filename": "media/libeffects/lvm/lib/Common/src/Abs_32.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-08T05:53:59Z",
+      "side": 1,
+      "message": "why aren\u0027t we using fabs(input)?\n\nhttps://www.godbolt.org/z/778jve",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 17
+      },
+      "revId": "62e9bc30ac98f30282b636685245f7b89968fc3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
