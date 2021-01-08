@@ -48,12 +48,8 @@ void DC_Mc_D16_TRC_WRA_01(Biquad_FLOAT_Instance_t* pInstance, LVM_FLOAT* pDataIn
         /* Subtract DC and saturate */
         for (i = NrChannels - 1; i >= 0; i--) {
             Diff = *(pDataIn++) - (ChDC[i]);
-            if (Diff > 1.0f) {
-                Diff = 1.0f;
-            } else if (Diff < -1.0f) {
-                Diff = -1.0f;
-            }
-            *(pDataOut++) = (LVM_FLOAT)Diff;
+            Diff = std::clamp(Diff, -1.0f, 1.0f);
+            *(pDataOut++) = Diff;
             if (Diff < 0) {
                 ChDC[i] -= DC_FLOAT_STEP;
             } else {

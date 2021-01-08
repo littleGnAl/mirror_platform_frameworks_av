@@ -33,26 +33,10 @@ void MSTo2i_Sat_Float(const LVM_FLOAT* srcM, const LVM_FLOAT* srcS, LVM_FLOAT* d
         srcS++;
 
         temp = mVal + sVal;
-
-        if (temp > 1.0f) {
-            *dst = 1.0f;
-        } else if (temp < -1.0f) {
-            *dst = -1.0f;
-        } else {
-            *dst = (LVM_FLOAT)temp;
-        }
-        dst++;
+        *dst++ = std::clamp(temp, -1.0f, 1.0f);
 
         temp = mVal - sVal;
-
-        if (temp > 1.0f) {
-            *dst = 1.0f;
-        } else if (temp < -1.0f) {
-            *dst = -1.0f;
-        } else {
-            *dst = (LVM_FLOAT)temp;
-        }
-        dst++;
+        *dst++ = std::clamp(temp, -1.0f, 1.0f);
     }
 
     return;
