@@ -24,26 +24,12 @@
 
 void Mac3s_Sat_Float(const LVM_FLOAT* src, const LVM_FLOAT val, LVM_FLOAT* dst, LVM_INT16 n) {
     LVM_INT16 ii;
-    LVM_FLOAT srcval;
-    LVM_FLOAT Temp, dInVal;
 
     for (ii = n; ii != 0; ii--) {
-        srcval = *src;
-        src++;
+        LVM_FLOAT Temp = *src++ * val;
+        Temp += *dst;
 
-        Temp = srcval * val;
-
-        dInVal = (LVM_FLOAT)*dst;
-        Temp = Temp + dInVal;
-
-        if (Temp > 1.000000f) {
-            *dst = 1.000000f;
-        } else if (Temp < -1.000000f) {
-            *dst = -1.000000f;
-        } else {
-            *dst = Temp;
-        }
-        dst++;
+        *dst++ = std::clamp(Temp, -1.0f, 1.0f);
     }
 
     return;

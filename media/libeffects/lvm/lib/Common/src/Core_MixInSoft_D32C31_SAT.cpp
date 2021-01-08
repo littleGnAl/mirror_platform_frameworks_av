@@ -52,12 +52,7 @@ void Core_MixInSoft_D32C31_SAT(Mix_1St_Cll_FLOAT_t* pInstance, const LVM_FLOAT* 
             Temp2 = *dst;
 
             Temp3 = Temp1 * (pInstance->Current);
-            Temp1 = Temp2 + Temp3;
-
-            if (Temp1 > 1.0f)
-                Temp1 = 1.0f;
-            else if (Temp1 < -1.0f)
-                Temp1 = -1.0f;
+            Temp1 = std::clamp(Temp2 + Temp3, -1.0f, 1.0f);
 
             *dst++ = Temp1;
         }
@@ -72,12 +67,8 @@ void Core_MixInSoft_D32C31_SAT(Mix_1St_Cll_FLOAT_t* pInstance, const LVM_FLOAT* 
             Temp2 = *dst;
 
             Temp3 = Temp1 * (pInstance->Current);
-            Temp1 = Temp2 + Temp3;
+            Temp1 = std::clamp(Temp2 + Temp3, -1.0f, 1.0f);
 
-            if (Temp1 > 1.0f)
-                Temp1 = 1.0f;
-            else if (Temp1 < -1.0f)
-                Temp1 = -1.0f;
             *dst++ = Temp1;
         }
     }

@@ -126,7 +126,7 @@ void AGC_MIX_VOL_Mc1Mon_D32_WRA(AGC_MIX_VOL_2St1Mon_FLOAT_t* pInstance, const LV
              */
             SampleVal = SampleVal * Vol_Mult;
 
-            *pDst++ = SampleVal; /* Save the results */
+            *pDst++ = std::clamp(SampleVal, -1.0f, 1.0f); /* Save the results */
 
             /*
              * Update the AGC gain

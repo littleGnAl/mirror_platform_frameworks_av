@@ -47,12 +47,7 @@ void LVC_Core_MixInSoft_D16C31_SAT(LVMixer3_FLOAT_st* ptrInstance, const LVM_FLO
 
             for (ii = OutLoop; ii != 0; ii--) {
                 Temp = ((LVM_FLOAT)*dst) + (((LVM_FLOAT) * (src++) * Current));
-                if (Temp > 1.0f)
-                    *dst++ = 1.0f;
-                else if (Temp < -1.0f)
-                    *dst++ = -1.0f;
-                else
-                    *dst++ = (LVM_FLOAT)Temp;
+                *dst++ = std::clamp(Temp, -1.0f, 1.0f);
             }
         }
 
@@ -63,12 +58,7 @@ void LVC_Core_MixInSoft_D16C31_SAT(LVMixer3_FLOAT_st* ptrInstance, const LVM_FLO
 
             for (jj = 4; jj != 0; jj--) {
                 Temp = ((LVM_FLOAT)*dst) + (((LVM_FLOAT) * (src++) * Current));
-                if (Temp > 1.0f)
-                    *dst++ = 1.0f;
-                else if (Temp < -1.0f)
-                    *dst++ = -1.0f;
-                else
-                    *dst++ = (LVM_FLOAT)Temp;
+                *dst++ = std::clamp(Temp, -1.0f, 1.0f);
             }
         }
     } else {
@@ -78,12 +68,7 @@ void LVC_Core_MixInSoft_D16C31_SAT(LVMixer3_FLOAT_st* ptrInstance, const LVM_FLO
 
             for (ii = OutLoop; ii != 0; ii--) {
                 Temp = ((LVM_FLOAT)*dst) + (((LVM_FLOAT) * (src++) * Current));
-                if (Temp > 1.0f)
-                    *dst++ = 1.0f;
-                else if (Temp < -1.0f)
-                    *dst++ = -1.0f;
-                else
-                    *dst++ = (LVM_FLOAT)Temp;
+                *dst++ = std::clamp(Temp, -1.0f, 1.0f);
             }
         }
 
@@ -93,12 +78,7 @@ void LVC_Core_MixInSoft_D16C31_SAT(LVMixer3_FLOAT_st* ptrInstance, const LVM_FLO
 
             for (jj = 4; jj != 0; jj--) {
                 Temp = ((LVM_FLOAT)*dst) + (((LVM_FLOAT) * (src++) * Current));
-                if (Temp > 1.0f)
-                    *dst++ = 1.0f;
-                else if (Temp < -1.0f)
-                    *dst++ = -1.0f;
-                else
-                    *dst++ = (LVM_FLOAT)Temp;
+                *dst++ = std::clamp(Temp, -1.0f, 1.0f);
             }
         }
     }
@@ -149,12 +129,7 @@ void LVC_Core_MixInSoft_Mc_D16C31_SAT(LVMixer3_FLOAT_st* ptrInstance, const LVM_
 
             for (ii = OutLoop * NrChannels; ii != 0; ii--) {
                 Temp = (*dst) + (*(src++) * Current);
-                if (Temp > 1.0f)
-                    *dst++ = 1.0f;
-                else if (Temp < -1.0f)
-                    *dst++ = -1.0f;
-                else
-                    *dst++ = Temp;
+                *dst++ = std::clamp(Temp, -1.0f, 1.0f);
             }
         }
 
@@ -165,20 +140,10 @@ void LVC_Core_MixInSoft_Mc_D16C31_SAT(LVMixer3_FLOAT_st* ptrInstance, const LVM_
 
             for (jj = NrChannels; jj != 0; jj--) {
                 Temp = (*dst) + (*(src++) * Current);
-                if (Temp > 1.0f)
-                    *dst++ = 1.0f;
-                else if (Temp < -1.0f)
-                    *dst++ = -1.0f;
-                else
-                    *dst++ = Temp;
+                *dst++ = std::clamp(Temp, -1.0f, 1.0f);
 
                 Temp = (*dst) + (*(src++) * Current);
-                if (Temp > 1.0f)
-                    *dst++ = 1.0f;
-                else if (Temp < -1.0f)
-                    *dst++ = -1.0f;
-                else
-                    *dst++ = Temp;
+                *dst++ = std::clamp(Temp, -1.0f, 1.0f);
             }
         }
     } else {
@@ -188,12 +153,7 @@ void LVC_Core_MixInSoft_Mc_D16C31_SAT(LVMixer3_FLOAT_st* ptrInstance, const LVM_
 
             for (ii = OutLoop * NrChannels; ii != 0; ii--) {
                 Temp = (*dst) + (*(src++) * Current);
-                if (Temp > 1.0f)
-                    *dst++ = 1.0f;
-                else if (Temp < -1.0f)
-                    *dst++ = -1.0f;
-                else
-                    *dst++ = Temp;
+                *dst++ = std::clamp(Temp, -1.0f, 1.0f);
             }
         }
 
@@ -203,20 +163,10 @@ void LVC_Core_MixInSoft_Mc_D16C31_SAT(LVMixer3_FLOAT_st* ptrInstance, const LVM_
 
             for (jj = NrChannels; jj != 0; jj--) {
                 Temp = (*dst) + (*(src++) * Current);
-                if (Temp > 1.0f)
-                    *dst++ = 1.0f;
-                else if (Temp < -1.0f)
-                    *dst++ = -1.0f;
-                else
-                    *dst++ = Temp;
+                *dst++ = std::clamp(Temp, -1.0f, 1.0f);
 
                 Temp = (*dst) + (*(src++) * Current);
-                if (Temp > 1.0f)
-                    *dst++ = 1.0f;
-                else if (Temp < -1.0f)
-                    *dst++ = -1.0f;
-                else
-                    *dst++ = Temp;
+                *dst++ = std::clamp(Temp, -1.0f, 1.0f);
             }
         }
     }
