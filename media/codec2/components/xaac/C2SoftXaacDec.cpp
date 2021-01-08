@@ -106,6 +106,13 @@ public:
                 .build());
 
         addParameter(
+                DefineParam(mMaxChannelCount, C2_PARAMKEY_MAX_CHANNEL_COUNT)
+                .withDefault(new C2StreamMaxChannelCountInfo::input(0u, MAX_CHANNEL_COUNT))
+                .withFields({C2F(mMaxChannelCount, value).inRange(1, MAX_CHANNEL_COUNT)})
+                .withSetter(Setter<decltype(*mMaxChannelCount)>::StrictValueWithNoDeps)
+                .build());
+
+        addParameter(
                 DefineParam(mBitrate, C2_PARAMKEY_BITRATE)
                 .withDefault(new C2StreamBitrateInfo::input(0u, 64000))
                 .withFields({C2F(mBitrate, value).inRange(8000, 960000)})
@@ -242,6 +249,7 @@ public:
     int32_t getDrcOutputLoudness() const { return (mDrcOutputLoudness->value <= 0 ?
                                               -mDrcOutputLoudness->value * 4. + 0.5 : -1); }
     int32_t getDrcAlbumMode() const { return mDrcAlbumMode->value; }
+    u_int32_t getMaxChannelCount() const { return mMaxChannelCount->value; }
 
 private:
     std::shared_ptr<C2StreamSampleRateInfo::output> mSampleRate;
@@ -257,6 +265,7 @@ private:
     std::shared_ptr<C2StreamDrcAttenuationFactorTuning::input> mDrcAttenuationFactor;
     std::shared_ptr<C2StreamDrcEffectTypeTuning::input> mDrcEffectType;
     std::shared_ptr<C2StreamDrcOutputLoudnessTuning::output> mDrcOutputLoudness;
+    std::shared_ptr<C2StreamMaxChannelCountInfo::input> mMaxChannelCount;
     std::shared_ptr<C2StreamDrcAlbumModeTuning::input> mDrcAlbumMode;
     // TODO Add : C2StreamAacSbrModeTuning
 };
@@ -886,6 +895,15 @@ IA_ERRORCODE C2SoftXaacDec::initXAACDecoder() {
                                 &ui_mp4_flag);
     RETURN_IF_FATAL(err_code,  "IA_ENHAACPLUS_DEC_CONFIG_PARAM_ISMP4");
 
+    u_int32_t ui_drc_maxcc = mIntf->getMaxChannelCount();
+    if (ui_drc_maxcc == 2) {
+        bool ui_downmix_flag = 1;
+        err_code = ixheaacd_dec_api(mXheaacCodecHandle,
+                                IA_API_CMD_SET_CONFIG_PARAM,
+                                IA_ENHAACPLUS_DEC_CONFIG_PARAM_DOWNMIX_STEREO,
+                                &ui_downmix_flag);
+        RETURN_IF_FATAL(err_code,"IA_ENHAACPLUS_DEC_CONFIG_PARAM_DOWNMIX_STEREO");
+    }
     /* ******************************************************************/
     /* Initialize Memory info tables                                    */
     /* ******************************************************************/
