@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7352169e_e5ff8c46",
+        "filename": "media/codec2/vndk/C2DmaBufAllocator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2021-01-08T05:12:15Z",
+      "side": 1,
+      "message": "yes! thanks for pointing that out!",
+      "parentUuid": "205e5d24_9081510b",
+      "range": {
+        "startLine": 318,
+        "startChar": 12,
+        "endLine": 318,
+        "endChar": 58
+      },
+      "revId": "6259c42a0fa253ce5f9b487d27c6b06c80955aab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b5c3102a_6ad131ac",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-08T05:08:27Z",
       "side": 1,
       "message": "Hi John,\n\nWe will be adding compliance tests to ensure that /dev/dma_heap/system-uncached will exist and can be allocated from. I guess we can skip this check in that case?",
+      "range": {
+        "startLine": 92,
+        "startChar": 35,
+        "endLine": 92,
+        "endChar": 64
+      },
+      "revId": "6259c42a0fa253ce5f9b487d27c6b06c80955aab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea336157_17c83c58",
+        "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2021-01-08T05:12:15Z",
+      "side": 1,
+      "message": "I think its important to check, as we don\u0027t want to crash and fail on upstream kernels if possible.",
+      "parentUuid": "b5c3102a_6ad131ac",
       "range": {
         "startLine": 92,
         "startChar": 35,
