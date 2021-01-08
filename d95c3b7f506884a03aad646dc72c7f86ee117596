@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "632dfa84_55e67e43",
+        "filename": "services/mediaextractor/main_extractorservice.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2021-01-08T00:29:34Z",
+      "side": 1,
+      "message": "This file doesn\u0027t have LOG_TAG. Can you add them:\n\n//#define LOG_NDEBUG 0\n#define LOG_TAG \"MediaExtractorService\"",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 22
+      },
+      "revId": "d95c3b7f506884a03aad646dc72c7f86ee117596",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
