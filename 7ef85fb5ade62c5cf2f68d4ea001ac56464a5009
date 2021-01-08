@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "31433528_02489024",
+        "filename": "media/libeffects/lvm/lib/Common/lib/BIQUAD.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-08T17:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c603c1ff_4aafde02",
+      "revId": "7ef85fb5ade62c5cf2f68d4ea001ac56464a5009",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1f031925_b50ebbfb",
@@ -31,6 +49,24 @@
       "writtenOn": "2021-01-05T17:31:52Z",
       "side": 1,
       "message": "can these be migrated to use biquad filter?",
+      "revId": "7ef85fb5ade62c5cf2f68d4ea001ac56464a5009",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4f6a224_2ac9333b",
+        "filename": "media/libeffects/lvm/lib/Common/lib/BIQUAD.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 181,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-08T17:26:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1f031925_b50ebbfb",
       "revId": "7ef85fb5ade62c5cf2f68d4ea001ac56464a5009",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
