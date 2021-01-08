@@ -16,6 +16,23 @@
       "message": "Hi, google friends, I just uploaded a patch to fix an issue about ring buffer copy. Would you please have a check. Thanks for your time.\nIt\u0027s same change as https://android-review.googlesource.com/c/platform/frameworks/av/+/1285355.\nChange \"1285355\" is merge conflict.",
       "revId": "60a7e1d4e854b6037b5f35868cf2f155f40eac8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db4e761b_525bc54b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1105578
+      },
+      "writtenOn": "2021-01-08T00:58:47Z",
+      "side": 1,
+      "message": "Hi google friends, \n    Please help to review this patch. SkipCutBuffer can\u0027t work properly in this special case.",
+      "revId": "60a7e1d4e854b6037b5f35868cf2f155f40eac8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
