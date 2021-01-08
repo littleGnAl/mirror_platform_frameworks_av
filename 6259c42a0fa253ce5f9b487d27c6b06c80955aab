@@ -93,6 +93,30 @@
       },
       "revId": "6259c42a0fa253ce5f9b487d27c6b06c80955aab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "951f079c_5a27539c",
+        "filename": "media/codec2/vndk/include/C2DmaBufAllocator.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2021-01-08T21:49:58Z",
+      "side": 1,
+      "message": "SGTM!",
+      "parentUuid": "ea336157_17c83c58",
+      "range": {
+        "startLine": 92,
+        "startChar": 35,
+        "endLine": 92,
+        "endChar": 64
+      },
+      "revId": "6259c42a0fa253ce5f9b487d27c6b06c80955aab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
