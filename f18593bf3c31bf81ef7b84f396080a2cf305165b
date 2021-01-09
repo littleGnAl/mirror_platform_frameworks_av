@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "133e53ae_a192566c",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Process.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 170,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-09T00:10:25Z",
+      "side": 0,
+      "message": "Note: This is moved inside AGC_MIX_VOL_Mc1Mon_D32_WRA when writing to output.",
+      "revId": "f18593bf3c31bf81ef7b84f396080a2cf305165b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94891312_519ba95f",
+        "filename": "media/libeffects/lvm/lib/Common/src/AGC_MIX_VOL_2St1Mon_D32_WRA.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-09T00:10:25Z",
+      "side": 0,
+      "message": "Output was clamped to (-1.0, 1.0) outside this function. Clamp is now done here.",
+      "revId": "f18593bf3c31bf81ef7b84f396080a2cf305165b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
