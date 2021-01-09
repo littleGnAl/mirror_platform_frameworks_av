@@ -107,6 +107,12 @@ static bool using_ion(void) {
     if (cached_result == -1) {
         struct stat buffer;
         cached_result = (stat("/dev/ion", &buffer) == 0);
+
+        if (property_get_int32("debug.c2.use_dmabufheaps",0)) {
+            cached_result = 0;
+            ALOGD("debug.c2.use_dmabufheaps set, forcing DMABUF Heaps");
+        }
+
         if (cached_result)
             ALOGD("Using ION\n");
         else
