@@ -34,6 +34,10 @@ static inline LVM_FLOAT Abs_Float(LVM_FLOAT input) {
     return fabs(input);
 }
 
+static inline LVM_FLOAT LVM_Clamp(LVM_FLOAT val, LVM_FLOAT min, LVM_FLOAT max) {
+    return fmin(fmax(val, min), max);
+}
+
 /****************************************************************************************
  *  Name        : dB_to_Lin32()
  *  Input       : Signed 16-bit integer
