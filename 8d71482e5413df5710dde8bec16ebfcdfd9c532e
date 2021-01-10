@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8a00e9f_4aea3d38",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 308,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2021-01-10T17:41:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5be1f56d_41b5df76",
+      "range": {
+        "startLine": 308,
+        "startChar": 40,
+        "endLine": 308,
+        "endChar": 60
+      },
+      "revId": "8d71482e5413df5710dde8bec16ebfcdfd9c532e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "132decfc_22a7b488",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-07T16:35:50Z",
       "side": 1,
       "message": "do we expect this to fail ever/very occasionnaly/often?\n\ni would think we\u0027d want to hear about it when it does -- so maybe ALOGW()",
+      "range": {
+        "startLine": 985,
+        "startChar": 7,
+        "endLine": 985,
+        "endChar": 15
+      },
+      "revId": "8d71482e5413df5710dde8bec16ebfcdfd9c532e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b07ccb2_30fd0435",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 985,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2021-01-10T17:41:52Z",
+      "side": 1,
+      "message": "This will not fail often.",
+      "parentUuid": "132decfc_22a7b488",
       "range": {
         "startLine": 985,
         "startChar": 7,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e910535d_a7fa643d",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 1055,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2021-01-10T17:41:52Z",
+      "side": 1,
+      "message": "This will not fail often",
+      "parentUuid": "a5363c8b_41ba9c96",
+      "range": {
+        "startLine": 1055,
+        "startChar": 6,
+        "endLine": 1055,
+        "endChar": 17
+      },
+      "revId": "8d71482e5413df5710dde8bec16ebfcdfd9c532e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5a1cf78e_32b97109",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-01-07T16:35:50Z",
       "side": 1,
       "message": "same as with the MDCV parameters -- silent on success, but probably always a\nwarning when it goes bad.",
+      "range": {
+        "startLine": 1223,
+        "startChar": 7,
+        "endLine": 1223,
+        "endChar": 13
+      },
+      "revId": "8d71482e5413df5710dde8bec16ebfcdfd9c532e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ada387c8_863b8125",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 1223,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2021-01-10T17:41:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5a1cf78e_32b97109",
       "range": {
         "startLine": 1223,
         "startChar": 7,
