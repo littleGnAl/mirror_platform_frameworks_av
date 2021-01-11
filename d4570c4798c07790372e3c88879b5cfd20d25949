@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5efc1512_140ae7ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-11T20:50:52Z",
+      "side": 1,
+      "message": "Andy,\nI have verified this improves performance. I will continue to look at impact of std::clamp() which is separated into a different CL.",
+      "revId": "d4570c4798c07790372e3c88879b5cfd20d25949",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
