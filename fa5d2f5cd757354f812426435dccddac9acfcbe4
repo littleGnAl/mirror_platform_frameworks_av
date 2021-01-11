@@ -63,6 +63,30 @@
       },
       "revId": "fa5d2f5cd757354f812426435dccddac9acfcbe4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1422aed4_411260af",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-01-11T16:26:41Z",
+      "side": 1,
+      "message": "Isn\u0027t it possible to use AUDIO_STREAM_PATCH? By using AUDIO_STREAM_VOICE_CALL we will cause a double attenuation to be applied in case of SW patch bridging from Telephony RX in device to the output device because the primary HAL may already apply the voice RX volume received by setVoiceVolume()",
+      "parentUuid": "4e0eebca_87c063bb",
+      "range": {
+        "startLine": 664,
+        "startChar": 22,
+        "endLine": 664,
+        "endChar": 38
+      },
+      "revId": "fa5d2f5cd757354f812426435dccddac9acfcbe4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
