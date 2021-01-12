@@ -256,6 +256,7 @@ status_t AudioTrackTest::createTrack()
     if (status != OK) {
         ALOGE("AudioTrack::set failed: %d", status);
         std::cerr << "AudioTrack::set failed: " << std::endl;
+        mAudioTrack.clear();
         return status;
     }
     // Did we get a valid track?
@@ -263,6 +264,7 @@ status_t AudioTrackTest::createTrack()
     if (status != OK) {
         ALOGE("AudioTrack::iniCheck failed: %d", status);
         std::cerr << "AudioTrack::iniCheck failed: " << std::endl;
+        mAudioTrack.clear();
         return status;
     }
     mRoutedPortId = mAudioTrack->getRoutedDeviceId();

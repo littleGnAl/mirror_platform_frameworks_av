@@ -7,6 +7,7 @@ cc_defaults {
         "Helper.cpp",
         "AudioVolumeTest.cpp",
         "RemoteSubmixTest.cpp",
+        "LegacyRemoteSubmixTest.cpp",
         "AudioProductStrategyTest.cpp",
         "AudioVolumeGroupTest.cpp",
     ],

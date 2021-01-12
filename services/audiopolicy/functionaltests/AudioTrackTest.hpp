@@ -47,6 +47,11 @@ public:
     AudioTrackTest(const audio_attributes_t &attributes) :
         mAudioAttributes(attributes) {}
 
+    AudioTrackTest(
+            const audio_attributes_t &attributes, audio_port_handle_t explicitRoutingPortId) :
+        mExplicitRoutingPortId(explicitRoutingPortId),
+        mAudioAttributes(attributes) {}
+
     /**
      * @brief playSine
      * @param routedPortId output param, effectively routed port for the AudioTrack
