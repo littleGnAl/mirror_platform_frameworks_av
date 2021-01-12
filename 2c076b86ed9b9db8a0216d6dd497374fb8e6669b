@@ -46,6 +46,30 @@
       },
       "revId": "2c076b86ed9b9db8a0216d6dd497374fb8e6669b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f02d82f5_51599b0b",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Process.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-12T03:45:55Z",
+      "side": 0,
+      "message": "Marking this as resolved as CL has Code-Review +2.",
+      "parentUuid": "99f00505_c3f5c1c7",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 13
+      },
+      "revId": "2c076b86ed9b9db8a0216d6dd497374fb8e6669b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
