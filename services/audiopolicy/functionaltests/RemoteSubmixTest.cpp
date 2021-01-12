@@ -353,6 +353,10 @@ public:
         ret = mAudioTrack->playSine(playbackRoutedPortId);
         ASSERT_EQ(ret, OK) << "failed to start the extraction";
 
+        EXPECT_TRUE(mAudioTrack->waitForDeviceCb(mInjectionPort.id)) << "Device callback timeout";
+        // Check routed port
+        playbackRoutedPortId = mAudioTrack->getRoutedDeviceId();
+
         ASSERT_EQ(mInjectionPort.id, playbackRoutedPortId)
                 << "Injection NOT routed on expected port: expecting " << mInjectionPort.id
                 << ", got port:" << playbackRoutedPortId;

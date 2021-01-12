@@ -147,6 +147,9 @@ status_t AudioRecordTest::createAudioRecord(const audio_config_t &audioConfig)
     size_t frames;
 
     mAudioConfig = audioConfig;
+    mAudioConfig.sample_rate = 16000;
+    mAudioConfig.format = AUDIO_FORMAT_PCM_16_BIT;
+    mAudioConfig.channel_mask = AUDIO_CHANNEL_IN_STEREO;
     status = AudioRecord::getMinFrameCount(&frames,
                                            mAudioConfig.sample_rate,
                                            mAudioConfig.format,
