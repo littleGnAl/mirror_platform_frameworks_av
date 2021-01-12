@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c53e0523_ba1c9cd2",
+        "filename": "services/mediaresourcemanager/fuzzer/mediaresourcemanager_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 228,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-12T00:39:31Z",
+      "side": 1,
+      "message": "i still don\u0027t like this construct here. I thought i\u0027d commented on it with yesterday\u0027s comment about the [i] and [j] loop control stuff...  but it seems that I did not do that.\n\nthe dislike is probably because \"kMinThreads\" and kMaxThreads aren\u0027t really properly described.\nas expressed here, kMinThreads is really \"kMinThreadPairs\", yet kMaxThreads is really in units of threads. and criss-crossing units is not good.\n\nif they are indeed *threads* then we should use min\u003d\u003d2, max\u003d\u003d6\nand after we extract the right value, we should have a \"numThreads -\u003d (numThreads\u00261)\" to\nmake it an even number.\n\nor we could call the two constants kMinThreadPairs and kMaxThreadPairs ; get rid of the /2\non line 226 since that is mismatched units. and then the line 228 is converting from thread pairs to threads.",
+      "range": {
+        "startLine": 225,
+        "startChar": 1,
+        "endLine": 228,
+        "endChar": 32
+      },
+      "revId": "a113a8237aca02cb914b0f121e6a07c3d6352bb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
