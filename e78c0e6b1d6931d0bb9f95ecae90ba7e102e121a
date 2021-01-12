@@ -1,6 +1,24 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9af67e9_abf3c36c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-01-12T20:22:30Z",
+      "side": 1,
+      "message": "Considering the last meaningful change in this CL was 4 years ago (March 2017), I will mark this change as abandoned. If this is still needed, we can create a fresh one and start the discussion over with the current code owners.",
+      "revId": "e78c0e6b1d6931d0bb9f95ecae90ba7e102e121a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
       "key": {
         "uuid": "24883e13_b9e264fb",
         "filename": "media/libmediaplayerservice/nuplayer/GenericSource.cpp",
@@ -20,8 +38,7 @@
         "endChar": 31
       },
       "revId": "e78c0e6b1d6931d0bb9f95ecae90ba7e102e121a",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
