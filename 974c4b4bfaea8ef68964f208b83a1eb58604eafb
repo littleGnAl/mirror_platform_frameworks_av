@@ -63,6 +63,30 @@
       },
       "revId": "974c4b4bfaea8ef68964f208b83a1eb58604eafb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a18fed34_5cf9cc8a",
+        "filename": "media/libeffects/lvm/lib/Common/lib/ScalarArithmetic.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-12T16:37:07Z",
+      "side": 1,
+      "message": "sounds good, so there is some type generics then.\nhttps://en.cppreference.com/w/c/numeric/tgmath",
+      "parentUuid": "568dd162_7ab2c39c",
+      "range": {
+        "startLine": 38,
+        "startChar": 11,
+        "endLine": 38,
+        "endChar": 15
+      },
+      "revId": "974c4b4bfaea8ef68964f208b83a1eb58604eafb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
