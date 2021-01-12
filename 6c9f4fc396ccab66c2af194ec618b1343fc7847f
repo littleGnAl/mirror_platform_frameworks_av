@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2701471e_4778bfcc",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1032,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2021-01-12T19:41:35Z",
+      "side": 1,
+      "message": "type1 HDR info will be processed for both mID types 1 and 2.",
+      "parentUuid": "a8fcd843_2d3df759",
+      "range": {
+        "startLine": 1032,
+        "startChar": 45,
+        "endLine": 1032,
+        "endChar": 69
+      },
+      "revId": "6c9f4fc396ccab66c2af194ec618b1343fc7847f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d7df5e3_a9681205",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "edca428d_15185397",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 1784,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2021-01-12T19:41:35Z",
+      "side": 1,
+      "message": "validation of mID type 1 or 2 is added.",
+      "parentUuid": "0d7df5e3_a9681205",
+      "range": {
+        "startLine": 1784,
+        "startChar": 64,
+        "endLine": 1784,
+        "endChar": 90
+      },
+      "revId": "6c9f4fc396ccab66c2af194ec618b1343fc7847f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cdcebc9a_0e0a0204",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-01-07T16:26:56Z",
       "side": 1,
       "message": "i don\u0027t like this block.\n\ni think a structure like:\n\nif (meta-\u003efindData() \u0026\u0026 type \u003d\u003d \u0027hdrS\u0027) {\n    info \u003d ()data;\n    if (info-\u003emID \u003d\u003d kType1 \u0026\u0026 size \u003d\u003d SIZE_HDRSTATICINFO_TYPE1) {\n        ...\n    }\n\nand potentially that last if should be\n   if (into-\u003emID \u003d\u003d kType1 \u0026\u0026 size \u003e\u003d SIZE_HDRSTATICINFO_TYPE1) {\nsince i don\u0027t think we care if there are extra bytes in there, we just need to know\nthat there are enough for all the type1 fields.",
+      "range": {
+        "startLine": 415,
+        "startChar": 12,
+        "endLine": 418,
+        "endChar": 53
+      },
+      "revId": "6c9f4fc396ccab66c2af194ec618b1343fc7847f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97c16a05_64661965",
+        "filename": "media/libstagefright/webm/WebmElement.cpp",
+        "patchSetId": 17
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2021-01-12T19:41:35Z",
+      "side": 1,
+      "message": "Conditions modified to process type1 fields. This will be true with mID as type2 also.",
+      "parentUuid": "cdcebc9a_0e0a0204",
       "range": {
         "startLine": 415,
         "startChar": 12,
