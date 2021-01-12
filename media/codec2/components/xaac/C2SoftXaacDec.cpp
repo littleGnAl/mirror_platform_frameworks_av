@@ -456,13 +456,8 @@ void C2SoftXaacDec::process(const std::unique_ptr<C2Work>& work,
     bool eos = (work->input.flags & C2FrameData::FLAG_END_OF_STREAM) != 0;
     bool codecConfig =
         (work->input.flags & C2FrameData::FLAG_CODEC_CONFIG) != 0;
-    if (codecConfig) {
-        if (size == 0u) {
-            ALOGE("empty codec config");
-            mSignalledError = true;
-            work->result = C2_CORRUPTED;
-            return;
-        }
+    if (codecConfig && size > 0) {
+
         // const_cast because of libAACdec method signature.
         inBuffer = const_cast<uint8_t*>(view.data() + offset);
         inBufferLength = size;
