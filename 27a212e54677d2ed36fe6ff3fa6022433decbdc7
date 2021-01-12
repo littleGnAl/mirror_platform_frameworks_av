@@ -1,0 +1,320 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ddb8f92_86d3940f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-12T01:25:41Z",
+      "side": 1,
+      "message": "Thanks for the fuzzer CL!",
+      "revId": "27a212e54677d2ed36fe6ff3fa6022433decbdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "841a6735_62e35cec",
+        "filename": "media/libaudioclient/fuzzer/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-12T01:25:41Z",
+      "side": 1,
+      "message": "nit: prefer alphabetical here and below.",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 25
+      },
+      "revId": "27a212e54677d2ed36fe6ff3fa6022433decbdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57881bf1_5a24254c",
+        "filename": "media/libaudioclient/fuzzer/README.md",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-12T01:25:41Z",
+      "side": 1,
+      "message": "not sure whether service side code path analysis is done here.  the client side branching is minimal.",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 70
+      },
+      "revId": "27a212e54677d2ed36fe6ff3fa6022433decbdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9991edb_799dd69c",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-12T01:25:41Z",
+      "side": 1,
+      "message": "are these constexpr, perhaps choose std::array\u003c\u003e instead?",
+      "range": {
+        "startLine": 42,
+        "startChar": 35,
+        "endLine": 42,
+        "endChar": 45
+      },
+      "revId": "27a212e54677d2ed36fe6ff3fa6022433decbdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da9c90f3_7b589bba",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-12T01:25:41Z",
+      "side": 1,
+      "message": "is this in any particular order?   How do we know these are the complete list?  static assert that the size is related to AUDIO_UNIQUE_ID_USE_MAX here and below?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "27a212e54677d2ed36fe6ff3fa6022433decbdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2c69160_fbbcf0e1",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 249,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-12T01:25:41Z",
+      "side": 1,
+      "message": "nit: no need as there is no other constructor that would prevent the default.",
+      "range": {
+        "startLine": 249,
+        "startChar": 0,
+        "endLine": 249,
+        "endChar": 30
+      },
+      "revId": "27a212e54677d2ed36fe6ff3fa6022433decbdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79bf96ec_0b2aabe5",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 250,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-12T01:25:41Z",
+      "side": 1,
+      "message": "nit: no need here and on line 257.",
+      "range": {
+        "startLine": 250,
+        "startChar": 0,
+        "endLine": 250,
+        "endChar": 31
+      },
+      "revId": "27a212e54677d2ed36fe6ff3fa6022433decbdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1631e6e_f4f70497",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-12T01:25:41Z",
+      "side": 1,
+      "message": "Please put a comment at the start of this file:\n\n1) We are fuzzing the input to AudioFlinger binder calls.\n2) We are detecting whether AudioFlinger crashes due to the fuzzer by the Binder DeathRecipient, where we abort if AudioFlinger dies.",
+      "range": {
+        "startLine": 251,
+        "startChar": 43,
+        "endLine": 251,
+        "endChar": 51
+      },
+      "revId": "27a212e54677d2ed36fe6ff3fa6022433decbdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "575497b0_02c0fbfb",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-12T01:25:41Z",
+      "side": 1,
+      "message": "not needed, the constructor sets to nullptr.",
+      "range": {
+        "startLine": 295,
+        "startChar": 28,
+        "endLine": 295,
+        "endChar": 38
+      },
+      "revId": "27a212e54677d2ed36fe6ff3fa6022433decbdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a04fd660_03ac2983",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 466,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-12T01:25:41Z",
+      "side": 1,
+      "message": "nit: omit virtual, use override.",
+      "range": {
+        "startLine": 466,
+        "startChar": 4,
+        "endLine": 466,
+        "endChar": 11
+      },
+      "revId": "27a212e54677d2ed36fe6ff3fa6022433decbdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1798cc34_4eaf0689",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 474,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-12T01:25:41Z",
+      "side": 1,
+      "message": "there are many effects, wondering if this is better used with a randomly chosen effect as on line 509.",
+      "range": {
+        "startLine": 474,
+        "startChar": 8,
+        "endLine": 474,
+        "endChar": 100
+      },
+      "revId": "27a212e54677d2ed36fe6ff3fa6022433decbdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39634f73_da4d2d6c",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 491,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-12T01:25:41Z",
+      "side": 1,
+      "message": "Please don\u0027t use a reference here.  it isn\u0027t thread safe - just because you have this const doesn\u0027t mean another thread isn\u0027t modifying it.  line 628, 670, 715 are correct.",
+      "range": {
+        "startLine": 491,
+        "startChar": 28,
+        "endLine": 491,
+        "endChar": 29
+      },
+      "revId": "27a212e54677d2ed36fe6ff3fa6022433decbdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8c0d368_bda08963",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-12T01:25:41Z",
+      "side": 1,
+      "message": "this isn\u0027t a randomly chosen effect, it is always the last effect.",
+      "range": {
+        "startLine": 507,
+        "startChar": 0,
+        "endLine": 511,
+        "endChar": 5
+      },
+      "revId": "27a212e54677d2ed36fe6ff3fa6022433decbdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caf52a5c_430edeaa",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-12T01:25:41Z",
+      "side": 1,
+      "message": "nit: put this in the constructor so there are fewer leaks?",
+      "range": {
+        "startLine": 762,
+        "startChar": 0,
+        "endLine": 762,
+        "endChar": 46
+      },
+      "revId": "27a212e54677d2ed36fe6ff3fa6022433decbdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
