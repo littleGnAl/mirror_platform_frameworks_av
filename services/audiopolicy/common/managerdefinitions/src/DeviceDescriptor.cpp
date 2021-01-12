@@ -49,11 +49,13 @@ DeviceDescriptor::DeviceDescriptor(audio_devices_t type,
 {
 }
 
+// Let DeviceDescriptorBase initialising the adress since it handles specific cases like
+// legacy remote submix, "0" is added as the adress.
 DeviceDescriptor::DeviceDescriptor(const AudioDeviceTypeAddr &deviceTypeAddr,
                                    const std::string &tagName,
                                    const FormatVector &encodedFormats) :
         DeviceDescriptorBase(deviceTypeAddr), mTagName(tagName), mEncodedFormats(encodedFormats),
-        mDeclaredAddress(deviceTypeAddr.getAddress())
+        mDeclaredAddress(DeviceDescriptorBase::address())
 {
     mCurrentEncodedFormat = AUDIO_FORMAT_DEFAULT;
     /* If framework runs against a pre 5.0 Audio HAL, encoded formats are absent from the config.
