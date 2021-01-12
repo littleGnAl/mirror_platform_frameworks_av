@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "54bdc223_0e5aaaf9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-12T01:19:37Z",
+      "side": 1,
+      "message": "Verified that fmin, fmax perform better and benchmarks show an improvement over the previous version.\nNumbers are updated in the doc mentioned in the bug.",
+      "revId": "a3bb28e6428e4af79cd32960defcb7383a7feb84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
