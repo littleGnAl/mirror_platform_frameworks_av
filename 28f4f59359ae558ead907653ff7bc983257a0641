@@ -50,6 +50,46 @@
       "message": "ping for owner approval , thanks.",
       "revId": "28f4f59359ae558ead907653ff7bc983257a0641",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e569ec0b_351658e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-13T17:59:37Z",
+      "side": 1,
+      "message": "noticed something in the diagnostic...",
+      "revId": "28f4f59359ae558ead907653ff7bc983257a0641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b2a4693_055e16f8",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-13T17:59:37Z",
+      "side": 1,
+      "message": "let\u0027s rephrase this.\nit works in a 32+64 system *if compiled as a 32-bit object*",
+      "range": {
+        "startLine": 596,
+        "startChar": 35,
+        "endLine": 596,
+        "endChar": 68
+      },
+      "revId": "28f4f59359ae558ead907653ff7bc983257a0641",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
