@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fd842279_d73f87e7",
+        "filename": "media/libeffects/preprocessing/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-13T19:11:34Z",
+      "side": 1,
+      "message": "can this be true?\nIt is good to have this utility for host too.",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 26
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e11c886_8ed2df05",
+        "filename": "media/libeffects/preprocessing/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-13T19:11:34Z",
+      "side": 1,
+      "message": "not required",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 6
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "985f0db1_0e100204",
         "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
         "patchSetId": 2
@@ -65,6 +111,115 @@
         "startChar": 4,
         "endLine": 82,
         "endChar": 17
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d495ef07_39f5d0eb",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-13T19:11:34Z",
+      "side": 1,
+      "message": "one for each fopen failure and print the filename",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 5
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "557c8545_ce604207",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-13T19:11:34Z",
+      "side": 1,
+      "message": "EXIT_FAILURE?",
+      "range": {
+        "startLine": 98,
+        "startChar": 15,
+        "endLine": 98,
+        "endChar": 17
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b17db2f6_59ecd15d",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-13T19:11:34Z",
+      "side": 1,
+      "message": "instead of malloc use new and delete",
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee0ed216_4d4ae869",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-13T19:11:34Z",
+      "side": 1,
+      "message": "not required as checked after fopen",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 18
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54ff0f23_2cf6d447",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-13T19:11:34Z",
+      "side": 1,
+      "message": "not required",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 18
       },
       "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
