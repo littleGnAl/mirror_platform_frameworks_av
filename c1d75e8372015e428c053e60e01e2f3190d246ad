@@ -160,6 +160,30 @@
       },
       "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "95b6a631_9ad1ede5",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2021-01-13T16:07:35Z",
+      "side": 1,
+      "message": "One way to avoid 0 check is to initialize the variable that stores correlation values with a very small value like 1e-10 and then accumulate.\n\ncorrResult \u003d 1e-10;\n\nfor()\n{\n  corrResult +\u003d (a * b);\n}",
+      "parentUuid": "5081ffc9_5d6ba03a",
+      "range": {
+        "startLine": 139,
+        "startChar": 34,
+        "endLine": 139,
+        "endChar": 46
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
