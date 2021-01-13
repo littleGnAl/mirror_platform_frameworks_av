@@ -18,6 +18,7 @@
 #define LOG_TAG "Codec2Buffer"
 #include <utils/Log.h>
 
+#include <android-base/properties.h>
 #include <android/hardware/cas/native/1.0/types.h>
 #include <android/hardware/drm/1.0/types.h>
 #include <hidlmemory/FrameworkUtils.h>
@@ -580,7 +581,15 @@ GraphicMetadataBuffer::GraphicMetadataBuffer(
 }
 
 std::shared_ptr<C2Buffer> GraphicMetadataBuffer::asC2Buffer() {
-#ifndef __LP64__
+#ifdef __LP64__
+    const std::string abi32list =
+        ::android::base::GetProperty("ro.product.cpu.abilist32", "");
+    if (!abi32list.empty()) {
+        ALOGE("GraphicMetadataBuffer does not work on 32+64-bit arch");
+        return nullptr;
+    }
+#endif
+
     VideoNativeMetadata *meta = (VideoNativeMetadata *)base();
     ANativeWindowBuffer *buffer = (ANativeWindowBuffer *)meta->pBuffer;
     if (buffer == nullptr) {
@@ -613,10 +622,6 @@ std::shared_ptr<C2Buffer> GraphicMetadataBuffer::asC2Buffer() {
     }
     return C2Buffer::CreateGraphicBuffer(
             block->share(C2Rect(buffer->width, buffer->height), C2Fence()));
-#else
-    ALOGE("GraphicMetadataBuffer does not work on 64-bit arch");
-    return nullptr;
-#endif
 }
 
 // ConstGraphicBlockBuffer
