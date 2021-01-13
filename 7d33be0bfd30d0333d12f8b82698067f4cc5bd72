@@ -136,6 +136,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4d18311f_a5604f1d",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-13T21:39:24Z",
+      "side": 1,
+      "message": "Correct, although the XSD file is only used at build time, there is a C++ library with enum values being generated.\n\nAgree that some values could be missing. The framework values (from system/audio.h) are a superset over the values used by HAL. The values used by the framework only can be found by searching for `AUDIO_NO_SYSTEM_DECLARATIONS` in system/audio-hal-enums.h file. There are only few of them, I\u0027m OK if they are added manually.",
+      "parentUuid": "8f2be94a_2371209c",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 35
+      },
+      "revId": "7d33be0bfd30d0333d12f8b82698067f4cc5bd72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "321194cb_9f7b36ce",
         "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
         "patchSetId": 3
