@@ -20,6 +20,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "9199a653_8628d054",
+        "filename": "media/libaudioclient/fuzzer/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-13T17:46:40Z",
+      "side": 1,
+      "message": "Please remove. The license header must not be modified.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 77
+      },
+      "revId": "7d33be0bfd30d0333d12f8b82698067f4cc5bd72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5578d920_8f63dc3c",
+        "filename": "media/libaudioclient/fuzzer/README.md",
+        "patchSetId": 3
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-13T17:46:40Z",
+      "side": 1,
+      "message": "This will be very hard to maintain. Please refer to https://partner-android-review.googlesource.com/c/platform/frameworks/av/+/1835082 for a better form on representing this information.",
+      "range": {
+        "startLine": 36,
+        "startChar": 15,
+        "endLine": 36,
+        "endChar": 2192
+      },
+      "revId": "7d33be0bfd30d0333d12f8b82698067f4cc5bd72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "666ea93e_0647d23b",
         "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
         "patchSetId": 3
@@ -36,6 +82,29 @@
         "startChar": 0,
         "endLine": 50,
         "endChar": 5
+      },
+      "revId": "7d33be0bfd30d0333d12f8b82698067f4cc5bd72",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "333d10c7_c0630374",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 71,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-13T17:46:40Z",
+      "side": 1,
+      "message": "Please avoid having these hand written lists of valid values where possible. Please refer to another Ittiam contribution https://partner-android-review.googlesource.com/c/platform/frameworks/av/+/1835082 (also by Ittiam) on how this can be done with help of android.hardware.audio.common@7.0-enums module.",
+      "range": {
+        "startLine": 71,
+        "startChar": 0,
+        "endLine": 71,
+        "endChar": 35
       },
       "revId": "7d33be0bfd30d0333d12f8b82698067f4cc5bd72",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
