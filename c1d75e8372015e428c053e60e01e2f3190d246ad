@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "985f0db1_0e100204",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2021-01-13T16:04:20Z",
+      "side": 1,
+      "message": "[enableCrossCorr], \u003c\u003e used for mandatory arguments in general.",
+      "range": {
+        "startLine": 70,
+        "startChar": 56,
+        "endLine": 70,
+        "endChar": 73
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a1a3b34b_52b1e642",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2021-01-13T16:04:20Z",
+      "side": 1,
+      "message": "EXIT_FAILURE\n\nHere and below.",
+      "range": {
+        "startLine": 79,
+        "startChar": 15,
+        "endLine": 79,
+        "endChar": 17
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1aa07e6e_1ea6fad3",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2021-01-13T16:04:20Z",
+      "side": 1,
+      "message": "std::unique_ptr\u003cFILE, decltype(\u0026fclose)\u003e fInput1(fopen(argv[1], \"rb\"), \u0026fclose);\n\nSame comment for fInput2 as well.",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38bf3622_15022e5a",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2021-01-13T16:04:20Z",
+      "side": 1,
+      "message": "*inBuffer1",
+      "range": {
+        "startLine": 116,
+        "startChar": 78,
+        "endLine": 116,
+        "endChar": 85
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edb42797_b6ef5627",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2021-01-13T16:04:20Z",
+      "side": 1,
+      "message": "*inBuffer2",
+      "range": {
+        "startLine": 118,
+        "startChar": 78,
+        "endLine": 118,
+        "endChar": 85
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "551ab243_375bc76f",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2021-01-13T16:04:20Z",
+      "side": 1,
+      "message": "iBuffer1",
+      "range": {
+        "startLine": 130,
+        "startChar": 82,
+        "endLine": 130,
+        "endChar": 89
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5081ffc9_5d6ba03a",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2021-01-13T16:04:20Z",
+      "side": 1,
+      "message": "Have a check on maxAutoCorr1 !\u003d 0 before performing division to avoid division by zero exception. maxAtuoCorr1 can be 0 if the input is silence.",
+      "range": {
+        "startLine": 139,
+        "startChar": 34,
+        "endLine": 139,
+        "endChar": 46
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
