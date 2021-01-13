@@ -95,6 +95,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "87aba0d8_53267c50",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingCorr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2021-01-13T13:52:03Z",
+      "side": 1,
+      "message": "Description about the 4th function argument missing.",
+      "revId": "6c100f44a91bd3143936730be66ca7fedd56c0e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "11148b7b_b09b7a59",
         "filename": "media/libeffects/preprocessing/tests/PreProcessingCorr.cpp",
         "patchSetId": 1
@@ -226,6 +243,29 @@
         "startChar": 0,
         "endLine": 71,
         "endChar": 82
+      },
+      "revId": "6c100f44a91bd3143936730be66ca7fedd56c0e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3643f6e0_7fe930c9",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingCorr.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2021-01-13T13:52:03Z",
+      "side": 1,
+      "message": "Harish,\n\nIs this okay or should we use getopt_long implementation?",
+      "range": {
+        "startLine": 81,
+        "startChar": 4,
+        "endLine": 81,
+        "endChar": 38
       },
       "revId": "6c100f44a91bd3143936730be66ca7fedd56c0e8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
