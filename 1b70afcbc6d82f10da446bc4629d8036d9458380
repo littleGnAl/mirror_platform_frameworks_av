@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "aa46c7f1_2c1da249",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-13T03:17:38Z",
+      "side": 1,
+      "message": "a slight restructure for speed, given that this will be a reasonably high frequency path.\notherwise, this works for me.",
+      "revId": "1b70afcbc6d82f10da446bc4629d8036d9458380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4293082_322b4242",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 590,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-13T03:17:38Z",
+      "side": 1,
+      "message": "i like the idea.\n\nknowing that this is something that probably is a frequent callpath. it would be great if you could restructure this so that we don\u0027t call GetProperty and abi2list.empty() for each frame through here.\n\nmaybe something like:\n\n    static int only64 \u003d (-1);\n    if (only64 \u003c 0) {\n        const.... abi32list \u003d getProperty();\n        only64 \u003d ab32list.empty()\n    }\n    if (only64 \u003c\u003d 0) {\n        ALOG(\"not in mixed 32/64 world\");\n        return nullptr;\n    }",
+      "range": {
+        "startLine": 585,
+        "startChar": 3,
+        "endLine": 590,
+        "endChar": 5
+      },
+      "revId": "1b70afcbc6d82f10da446bc4629d8036d9458380",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
