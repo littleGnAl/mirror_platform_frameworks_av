@@ -206,6 +206,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "543c0d57_357bcd4a",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-13T16:40:06Z",
+      "side": 1,
+      "message": "This is fine as is.  In the future, it would be nice to detect when we add more enums that the sizes of the fuzzing arrays are maintained to be the same.  That\u0027s why I was suggesting a static_assert\u003c\u003e on the size of this array vs AUDIO_ENUM_*_MAX.  \n\nBut on hindsight that isn\u0027t the best solution.\n\nIn the future, perhaps we should always have an AUDIO_ENUM_*_MIN and AUDIO_ENUM_*_MAX so that fuzzers can systematically know the minimum and maximum values for fuzzing.",
+      "parentUuid": "76cd4cb9_2852502e",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 29
+      },
+      "revId": "27a212e54677d2ed36fe6ff3fa6022433decbdc7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a2c69160_fbbcf0e1",
