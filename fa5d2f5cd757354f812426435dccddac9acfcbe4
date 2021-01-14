@@ -87,6 +87,30 @@
       },
       "revId": "fa5d2f5cd757354f812426435dccddac9acfcbe4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fcf14660_e083f9a2",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 28
+      },
+      "lineNbr": 664,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-01-14T15:37:46Z",
+      "side": 1,
+      "message": "Sorry for late answer, yes, we do have a risk. I remember when working for previous compagny (Intel), we used to enforce within AudioHAL itself that no double attenuation was applied during voice call/voip call. But if we change, we may also not be able to add effect if we do want effect on the given stream to be applied automatically. If we face such case, I propose to do a fixup patch later?",
+      "parentUuid": "1422aed4_411260af",
+      "range": {
+        "startLine": 664,
+        "startChar": 22,
+        "endLine": 664,
+        "endChar": 38
+      },
+      "revId": "fa5d2f5cd757354f812426435dccddac9acfcbe4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
