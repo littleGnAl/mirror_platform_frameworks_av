@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "29887c56_3a433b56",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1087037
+      },
+      "writtenOn": "2021-01-14T20:12:26Z",
+      "side": 1,
+      "message": "Grzegorz, I think Eric wants you to add a line like this:\n\n\"Initial implementation only supports output devices\"\n\nPlease also add bug number and sponsor tag",
+      "parentUuid": "2ce2ba39_c196ea16",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "aeaff1fd1f6a749807fa6498be1610a758927cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e14f09c1_cd1c1e40",
