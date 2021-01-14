@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b7dc8ab1_d583a635",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5931,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-01-14T18:40:52Z",
+      "side": 1,
+      "message": "by doing this you will prevent remaining data in kernel buffer from draining and cause a glitch.\nWe must wait for presentationComplete() when the track is on stopped state.",
+      "range": {
+        "startLine": 5931,
+        "startChar": 67,
+        "endLine": 5931,
+        "endChar": 76
+      },
+      "revId": "86109de6cd965d46b928ad3d7bd3797b65dbb63e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
