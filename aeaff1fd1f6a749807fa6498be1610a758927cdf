@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ce2ba39_c196ea16",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1687135
+      },
+      "writtenOn": "2021-01-14T20:03:55Z",
+      "side": 1,
+      "message": "Could you describe in greater detail what implementation ?",
+      "parentUuid": "22aa12fb_69696ff3",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "aeaff1fd1f6a749807fa6498be1610a758927cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e14f09c1_cd1c1e40",
@@ -37,6 +61,24 @@
       "writtenOn": "2020-12-22T14:03:14Z",
       "side": 1,
       "message": "Should we wait for BLE to be added to BT audio HAL before merging? Otherwise, the policy manager on devices including this default file will believe BLE audi ois supported.\nAlthough I don\u0027t think it is an issue if the BT stack never indicates a BLE device connection to audio framework.\n",
+      "revId": "aeaff1fd1f6a749807fa6498be1610a758927cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a138982_cef3c4ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687135
+      },
+      "writtenOn": "2021-01-14T20:03:55Z",
+      "side": 1,
+      "message": "It\u0027s a good idea to wait for HAL - agree.",
+      "parentUuid": "e14f09c1_cd1c1e40",
       "revId": "aeaff1fd1f6a749807fa6498be1610a758927cdf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
