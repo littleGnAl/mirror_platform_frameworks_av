@@ -16,6 +16,24 @@
       "message": "Hridya: Any details on the treehugger failure that can be shared? Actual failure, or just bad timing?",
       "revId": "9eda9bf8124bc254d51afb95c7eaa61cceeb5d81",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "50807840_11998250",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2021-01-14T05:15:23Z",
+      "side": 1,
+      "message": "Hi John,\n\nThe failure was due to an sepolicy denial for mediacodec. I have added a fix in another change in the topic.",
+      "parentUuid": "2de3af0e_8ef649ec",
+      "revId": "9eda9bf8124bc254d51afb95c7eaa61cceeb5d81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
