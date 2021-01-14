@@ -16,6 +16,29 @@
       "message": "Thanks Ray!",
       "revId": "a222c0b28d5694e69cfd51b4758b30248799e39e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23fcfa10_966f625e",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-01-14T00:02:29Z",
+      "side": 1,
+      "message": "can we maybe just do:\n\n  static bool s64BitOnly \u003d []() {\n    const std::string abi32list \u003d\n        ::android::base::GetProperty(\"ro.product.cpu.abilist32\", \"\");\n    return abi32list.empty();\n  }();",
+      "range": {
+        "startLine": 586,
+        "startChar": 4,
+        "endLine": 586,
+        "endChar": 27
+      },
+      "revId": "a222c0b28d5694e69cfd51b4758b30248799e39e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
