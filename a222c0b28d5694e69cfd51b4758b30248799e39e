@@ -39,6 +39,30 @@
       },
       "revId": "a222c0b28d5694e69cfd51b4758b30248799e39e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f22ed48b_43353b96",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1046320
+      },
+      "writtenOn": "2021-01-14T01:07:22Z",
+      "side": 1,
+      "message": "the once_flag seems to be some commonly used idiom in frameworks/ to guard against\nrace condition.",
+      "parentUuid": "23fcfa10_966f625e",
+      "range": {
+        "startLine": 586,
+        "startChar": 4,
+        "endLine": 586,
+        "endChar": 27
+      },
+      "revId": "a222c0b28d5694e69cfd51b4758b30248799e39e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
