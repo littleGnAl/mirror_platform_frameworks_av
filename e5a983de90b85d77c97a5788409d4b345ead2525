@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c50d795_18c04027",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-15T17:41:26Z",
+      "side": 1,
+      "message": "Need to update this comment, at least change singular \"patch\" to plural.",
+      "range": {
+        "startLine": 1186,
+        "startChar": 0,
+        "endLine": 1187,
+        "endChar": 74
+      },
+      "revId": "e5a983de90b85d77c97a5788409d4b345ead2525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0b7896f_ec59e3de",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-15T17:41:26Z",
+      "side": 1,
+      "message": "Michael, let\u0027s rearrange this logic a bit so it could be understood more easily. I\u0027d start with giving our vectors more clear names:\n\npatchBuilders -\u003e patchesToCreate\nmsdPatches -\u003e patchesToRemove\n\nInitially both contain extra values that we need to filter out. We need to remove from both vectors those patches that exist in their intersection (it\u0027s the patches that we want to retain). Here is the logic:\n\n  for (auto it \u003d patchesToCreate.begin(); it !\u003d patchesToCreate.end(); ) {\n    bool retainedPatch \u003d false;\n    for (auto i \u003d 0u; i \u003c patchesToRemove.size(); ++i) {\n      \u003cpseudocode\u003e if (audio_patches_are_equal(patchesToRemove[i]-\u003emPatch, it-\u003epatch()) {\n        patchesToRemove.removeItemAt(i);\n        retainedPatch \u003d true;\n        break;\n      }\n    }\n    if (retainedPatch) it \u003d patchesToCreate.erase(it); else ++it;\n  }\n  if (patchesToCreate.size() \u003d\u003d 0 \u0026\u0026 patchesToRemove.size() \u003d\u003d 0) return NO_ERROR;\n   \n  // Now go over patchesToRemove and release them.\n  // And then install the patches from patchesToCreate.\n\nThis approach looks more straightforward to me. WDYT?",
+      "range": {
+        "startLine": 1442,
+        "startChar": 4,
+        "endLine": 1479,
+        "endChar": 5
+      },
+      "revId": "e5a983de90b85d77c97a5788409d4b345ead2525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "751fe645_4acf7082",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5313,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-15T17:41:26Z",
+      "side": 1,
+      "message": "patches",
+      "range": {
+        "startLine": 5313,
+        "startChar": 53,
+        "endLine": 5313,
+        "endChar": 58
+      },
+      "revId": "e5a983de90b85d77c97a5788409d4b345ead2525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
