@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f3fd7279_b562ebbf",
+        "filename": "media/libeffects/preprocessing/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 25,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-15T07:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd842279_d73f87e7",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 25,
+        "endChar": 26
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5e11c886_8ed2df05",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-13T19:11:34Z",
       "side": 1,
       "message": "not required",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 6
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2bdd1704_676cb0a3",
+        "filename": "media/libeffects/preprocessing/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-15T07:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5e11c886_8ed2df05",
       "range": {
         "startLine": 27,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "59a0c52f_f5c5cf85",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-15T07:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "985f0db1_0e100204",
+      "range": {
+        "startLine": 70,
+        "startChar": 56,
+        "endLine": 70,
+        "endChar": 73
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a1a3b34b_52b1e642",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-01-13T16:04:20Z",
       "side": 1,
       "message": "EXIT_FAILURE\n\nHere and below.",
+      "range": {
+        "startLine": 79,
+        "startChar": 15,
+        "endLine": 79,
+        "endChar": 17
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b1e9605_f62268ef",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-15T07:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a1a3b34b_52b1e642",
       "range": {
         "startLine": 79,
         "startChar": 15,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9282206f_4a3469b6",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 82,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-15T07:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1aa07e6e_1ea6fad3",
+      "range": {
+        "startLine": 82,
+        "startChar": 4,
+        "endLine": 82,
+        "endChar": 17
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d495ef07_39f5d0eb",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-01-13T19:11:34Z",
       "side": 1,
       "message": "one for each fopen failure and print the filename",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 87,
+        "endChar": 5
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f894cbcf_29e1903d",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-15T07:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d495ef07_39f5d0eb",
       "range": {
         "startLine": 84,
         "startChar": 0,
@@ -162,6 +306,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c4e7f79_84ed0242",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-15T07:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "557c8545_ce604207",
+      "range": {
+        "startLine": 98,
+        "startChar": 15,
+        "endLine": 98,
+        "endChar": 17
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b17db2f6_59ecd15d",
@@ -179,6 +347,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ae563db_edecc22b",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 101,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-15T07:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b17db2f6_59ecd15d",
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ee0ed216_4d4ae869",
@@ -192,6 +378,30 @@
       "writtenOn": "2021-01-13T19:11:34Z",
       "side": 1,
       "message": "not required as checked after fopen",
+      "range": {
+        "startLine": 104,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 18
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3085e94_c14e5326",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-15T07:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee0ed216_4d4ae869",
       "range": {
         "startLine": 104,
         "startChar": 0,
@@ -225,6 +435,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d175f3f0_686cad5e",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-15T07:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54ff0f23_2cf6d447",
+      "range": {
+        "startLine": 109,
+        "startChar": 0,
+        "endLine": 109,
+        "endChar": 18
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38bf3622_15022e5a",
@@ -238,6 +472,30 @@
       "writtenOn": "2021-01-13T16:04:20Z",
       "side": 1,
       "message": "*inBuffer1",
+      "range": {
+        "startLine": 116,
+        "startChar": 78,
+        "endLine": 116,
+        "endChar": 85
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "612746bd_6e4c5726",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 116,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-15T07:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38bf3622_15022e5a",
       "range": {
         "startLine": 116,
         "startChar": 78,
@@ -271,6 +529,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bac28dae_ad59c229",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 118,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-15T07:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "edb42797_b6ef5627",
+      "range": {
+        "startLine": 118,
+        "startChar": 78,
+        "endLine": 118,
+        "endChar": 85
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "551ab243_375bc76f",
@@ -284,6 +566,30 @@
       "writtenOn": "2021-01-13T16:04:20Z",
       "side": 1,
       "message": "iBuffer1",
+      "range": {
+        "startLine": 130,
+        "startChar": 82,
+        "endLine": 130,
+        "endChar": 89
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc806b53_e6651db3",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-15T07:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "551ab243_375bc76f",
       "range": {
         "startLine": 130,
         "startChar": 82,
@@ -331,6 +637,30 @@
       "side": 1,
       "message": "One way to avoid 0 check is to initialize the variable that stores correlation values with a very small value like 1e-10 and then accumulate.\n\ncorrResult \u003d 1e-10;\n\nfor()\n{\n  corrResult +\u003d (a * b);\n}",
       "parentUuid": "5081ffc9_5d6ba03a",
+      "range": {
+        "startLine": 139,
+        "startChar": 34,
+        "endLine": 139,
+        "endChar": 46
+      },
+      "revId": "c1d75e8372015e428c053e60e01e2f3190d246ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a34f4c4_7c0b5d30",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 139,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-15T07:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95b6a631_9ad1ede5",
       "range": {
         "startLine": 139,
         "startChar": 34,
