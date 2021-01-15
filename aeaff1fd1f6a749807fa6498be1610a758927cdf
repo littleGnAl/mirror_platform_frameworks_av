@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "64d0d6a3_789eaba1",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-01-15T16:58:26Z",
+      "side": 1,
+      "message": "this is what I meant so that the reader knows why only output devices are listed in the config files",
+      "parentUuid": "29887c56_3a433b56",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 55
+      },
+      "revId": "aeaff1fd1f6a749807fa6498be1610a758927cdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "e14f09c1_cd1c1e40",
