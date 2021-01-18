@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b71d3230_329be25b",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 1035,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2021-01-18T18:22:09Z",
+      "side": 1,
+      "message": "changes to setHDRStaticInfoIntoFormat() to support type2 will be submitted soon",
+      "parentUuid": "c6423e48_28e7ff6a",
+      "range": {
+        "startLine": 1034,
+        "startChar": 12,
+        "endLine": 1035,
+        "endChar": 59
+      },
+      "revId": "21a133f15e73acf9c4edaae69cf2d9b9a0123142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "6747b261_bd65b2f4",
         "filename": "media/libstagefright/webm/WebmElement.cpp",
         "patchSetId": 27
@@ -37,6 +61,30 @@
       "writtenOn": "2021-01-13T18:25:14Z",
       "side": 1,
       "message": "if ( (type\u003d\u003d1 \u0026\u0026 size \u003d\u003d size1) || (type\u003d\u003d2 \u0026\u0026 size\u003d\u003dsize2))",
+      "range": {
+        "startLine": 417,
+        "startChar": 15,
+        "endLine": 418,
+        "endChar": 56
+      },
+      "revId": "21a133f15e73acf9c4edaae69cf2d9b9a0123142",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e725d16e_974bc1ab",
+        "filename": "media/libstagefright/webm/WebmElement.cpp",
+        "patchSetId": 27
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2021-01-18T18:22:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6747b261_bd65b2f4",
       "range": {
         "startLine": 417,
         "startChar": 15,
