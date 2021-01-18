@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e1dbc141_6a4dfbe3",
+        "filename": "services/audiopolicy/common/managerdefinitions/include/HwModule.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-01-18T17:29:28Z",
+      "side": 1,
+      "message": "the default in this context should be AUDIO_FORMAT_DEFAULT",
+      "range": {
+        "startLine": 57,
+        "startChar": 55,
+        "endLine": 57,
+        "endChar": 71
+      },
+      "revId": "554f934ad6f19df0c7bcaeb1149ca4bf8c17317b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
