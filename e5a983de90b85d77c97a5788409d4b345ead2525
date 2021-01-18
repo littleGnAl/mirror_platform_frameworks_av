@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "aeff4d4d_ac5fd8d5",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1187,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2021-01-18T00:11:04Z",
+      "side": 1,
+      "message": "Yes, I\u0027ll update this.",
+      "parentUuid": "9c50d795_18c04027",
+      "range": {
+        "startLine": 1186,
+        "startChar": 0,
+        "endLine": 1187,
+        "endChar": 74
+      },
+      "revId": "e5a983de90b85d77c97a5788409d4b345ead2525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b0b7896f_ec59e3de",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 1
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3a4e700f_17d8be05",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1479,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2021-01-18T00:11:04Z",
+      "side": 1,
+      "message": "Indeed, your approach seems easier to understand. I\u0027ll update the logic.",
+      "parentUuid": "b0b7896f_ec59e3de",
+      "range": {
+        "startLine": 1442,
+        "startChar": 4,
+        "endLine": 1479,
+        "endChar": 5
+      },
+      "revId": "e5a983de90b85d77c97a5788409d4b345ead2525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "751fe645_4acf7082",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 1
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-15T17:41:26Z",
       "side": 1,
       "message": "patches",
+      "range": {
+        "startLine": 5313,
+        "startChar": 53,
+        "endLine": 5313,
+        "endChar": 58
+      },
+      "revId": "e5a983de90b85d77c97a5788409d4b345ead2525",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "706d4c10_c042322d",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5313,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2021-01-18T00:11:04Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "751fe645_4acf7082",
       "range": {
         "startLine": 5313,
         "startChar": 53,
