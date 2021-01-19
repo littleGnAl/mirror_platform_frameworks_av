@@ -473,7 +473,7 @@ int MtpDataPacket::writeData(IMtpHandle *h, void* data, uint32_t length) {
 int MtpDataPacket::read(struct usb_request *request) {
     // first read the header
     request->buffer = mBuffer;
-    request->buffer_length = mBufferSize;
+    request->buffer_length = (mBufferSize > MTP_BUFFER_SIZE) ? MTP_BUFFER_SIZE : mBufferSize;
     int length = transfer(request);
     if (length >= MTP_CONTAINER_HEADER_SIZE) {
         // look at the length field to see if the data spans multiple packets
@@ -481,7 +481,8 @@ int MtpDataPacket::read(struct usb_request *request) {
         allocate(totalLength);
         while (totalLength > static_cast<uint32_t>(length)) {
             request->buffer = mBuffer + length;
-            request->buffer_length = totalLength - length;
+            int remaining = totalLength - length;
+            request->buffer_length = (remaining > MTP_BUFFER_SIZE) ? MTP_BUFFER_SIZE : remaining;
             int ret = transfer(request);
             if (ret >= 0)
                 length += ret;
