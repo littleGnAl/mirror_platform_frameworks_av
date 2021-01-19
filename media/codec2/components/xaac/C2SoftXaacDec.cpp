@@ -415,10 +415,11 @@ void C2SoftXaacDec::finishWork(const std::unique_ptr<C2Work>& work,
         work->worklets.front()->output.buffers.clear();
         work->worklets.front()->output.buffers.push_back(buffer);
         work->worklets.front()->output.ordinal = work->input.ordinal;
-        work->workletsProcessed = 1u;
     };
     if (work && work->input.ordinal.frameIndex == c2_cntr64_t(mCurFrameIndex)) {
         fillWork(work);
+        work->worklets.front()->output.ordinal.timestamp = mCurTimestamp;
+        work->workletsProcessed = 1u;
     } else {
         finish(mCurFrameIndex, fillWork);
     }
@@ -477,7 +478,10 @@ void C2SoftXaacDec::process(const std::unique_ptr<C2Work>& work,
     }
 
     mCurFrameIndex = work->input.ordinal.frameIndex.peeku();
-    mCurTimestamp = work->input.ordinal.timestamp.peeku();
+
+    if(!eos)
+        mCurTimestamp = work->input.ordinal.timestamp.peeku();
+
     mOutputDrainBufferWritePos = 0;
     char* tempOutputDrainBuffer = mOutputDrainBuffer;
     WORD32 ia_drc_loudness_measure = -1;
@@ -730,7 +734,31 @@ void C2SoftXaacDec::process(const std::unique_ptr<C2Work>& work,
         prevboost = ia_drc_boostFactor;
     }
 
-    if (mOutputDrainBufferWritePos) {
+    if(eos && mIsCodecInitialized) {
+        uint32_t ui_ip_bytes = 0, ui_op_bytes = 0;
+
+        ixheaacd_dec_api(mXheaacCodecHandle,
+            IA_API_CMD_SET_INPUT_BYTES, 0, &ui_ip_bytes);
+
+        ixheaacd_dec_api(mXheaacCodecHandle, IA_API_CMD_EXECUTE,
+            IA_CMD_TYPE_DO_EXECUTE, nullptr);
+
+        ixheaacd_dec_api(mXheaacCodecHandle,
+            IA_API_CMD_GET_OUTPUT_BYTES, 0, &ui_op_bytes);
+
+	if(ui_op_bytes > 0)
+           mCurTimestamp++;
+
+	memcpy(tempOutputDrainBuffer, mOutputBuffer, ui_op_bytes);
+        tempOutputDrainBuffer += ui_op_bytes;
+        mOutputDrainBufferWritePos += ui_op_bytes;
+
+        if (mOutputDrainBufferWritePos)
+            finishWork(work, pool);
+        else
+            fillEmptyWork(work);
+
+    } else if (mOutputDrainBufferWritePos) {
         finishWork(work, pool);
     } else {
         fillEmptyWork(work);
