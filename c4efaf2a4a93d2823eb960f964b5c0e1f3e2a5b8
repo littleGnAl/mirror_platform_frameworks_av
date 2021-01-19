@@ -16,6 +16,69 @@
       "message": "Hi Mikhail,\n\nThis patch set addresses your comments. Please let me know if this looks OK to you.\n\nThanks, Michael",
       "revId": "c4efaf2a4a93d2823eb960f964b5c0e1f3e2a5b8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70e0e3e4_63d6f309",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-19T19:10:02Z",
+      "side": 1,
+      "message": "Looks good to me except for a couple of comments.\n\nMichael, could you please resolve the merge conflict? Is it trivial?",
+      "revId": "c4efaf2a4a93d2823eb960f964b5c0e1f3e2a5b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e78a190d_1c76dcf1",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1445,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-19T19:10:02Z",
+      "side": 1,
+      "message": "nit: I think, using \u0027push_back\u0027 is more stylistically correct here. \u0027emplace_back\u0027 is used when the intention is to forward arguments directly to the element\u0027s constructor (see https://en.cppreference.com/w/cpp/container/vector/emplace_back). In this case there is already a PatchBuilder object returned by \u0027buildMsdPatch\u0027, so we are just pushing it to the vector.",
+      "range": {
+        "startLine": 1445,
+        "startChar": 24,
+        "endLine": 1445,
+        "endChar": 36
+      },
+      "revId": "c4efaf2a4a93d2823eb960f964b5c0e1f3e2a5b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3c015ea_5b31ae1b",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1454,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-19T19:10:02Z",
+      "side": 1,
+      "message": "\u0027removeAt\u0027 is a shorthand for removing just one element.",
+      "range": {
+        "startLine": 1454,
+        "startChar": 32,
+        "endLine": 1454,
+        "endChar": 45
+      },
+      "revId": "c4efaf2a4a93d2823eb960f964b5c0e1f3e2a5b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
