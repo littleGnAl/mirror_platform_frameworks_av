@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d62ef98_f1c9cf68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2021-01-19T23:18:20Z",
+      "side": 1,
+      "message": "Hi Mikhail,\n\nI\u0027ve rebased this change, it was a trivial conflict fortunately. I\u0027ve also addressed your comments below.\n\nThanks, Michael",
+      "parentUuid": "70e0e3e4_63d6f309",
+      "revId": "c4efaf2a4a93d2823eb960f964b5c0e1f3e2a5b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e78a190d_1c76dcf1",
@@ -58,6 +76,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e364b7dd_cd93ce3d",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1445,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2021-01-19T23:18:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e78a190d_1c76dcf1",
+      "range": {
+        "startLine": 1445,
+        "startChar": 24,
+        "endLine": 1445,
+        "endChar": 36
+      },
+      "revId": "c4efaf2a4a93d2823eb960f964b5c0e1f3e2a5b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3c015ea_5b31ae1b",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-01-19T19:10:02Z",
       "side": 1,
       "message": "\u0027removeAt\u0027 is a shorthand for removing just one element.",
+      "range": {
+        "startLine": 1454,
+        "startChar": 32,
+        "endLine": 1454,
+        "endChar": 45
+      },
+      "revId": "c4efaf2a4a93d2823eb960f964b5c0e1f3e2a5b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c980177d_a46e87db",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1454,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2021-01-19T23:18:20Z",
+      "side": 1,
+      "message": "Unfortunately AudioPatchCollection doesn\u0027t expose this method which is only available in the private member variable mVector of type SortedVector.",
+      "parentUuid": "a3c015ea_5b31ae1b",
       "range": {
         "startLine": 1454,
         "startChar": 32,
