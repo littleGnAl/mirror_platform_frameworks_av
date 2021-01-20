@@ -5825,8 +5825,13 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::DirectOutputThread::prep
         sp<Track> l = mActiveTracks.getLatest();
         bool last = l.get() == track;
 
-        if (track->isPausing()) {
-            track->setPaused();
+        if (track->isPausePending()) {
+            track->pauseAck();
+            // It is possible a track might have been flushed or stopped.
+            // Other operations such as flush pending might occur on the next prepare.
+            if (track->isPausing()) {
+                track->setPaused();
+            }
             if (mHwSupportsPause && last && !mHwPaused) {
                 doHwPause = true;
                 mHwPaused = true;
@@ -6368,8 +6373,13 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::OffloadThread::prepareTr
             continue;
         }
 
-        if (track->isPausing()) {
-            track->setPaused();
+        if (track->isPausePending()) {
+            track->pauseAck();
+            // It is possible a track might have been flushed or stopped.
+            // Other operations such as flush pending might occur on the next prepare.
+            if (track->isPausing()) {
+                track->setPaused();
+            }
             if (last) {
                 if (mHwSupportsPause && !mHwPaused) {
                     doHwPause = true;
