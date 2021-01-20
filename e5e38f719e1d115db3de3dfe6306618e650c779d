@@ -16,6 +16,23 @@
       "message": "LGTM, I\u0027ve added Eric for the final approval.",
       "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "044badb3_61cbad5b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-20T02:19:41Z",
+      "side": 1,
+      "message": "The failures indicate that there will be conflicts downstream would we have this fix merged. So after Eric\u0027s approval, I will first submit it downstream after resolving conflicts, then will apply this patch in AOSP. Michael, there is nothing for you to worry about.",
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
