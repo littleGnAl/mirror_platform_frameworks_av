@@ -64,8 +64,12 @@ LVEQNB_ReturnStatus_en LVEQNB_Process(
     LVEQNB_Instance_t* pInstance = (LVEQNB_Instance_t*)hInstance;
 
     // Mono passed in as stereo
+#ifdef TRUE_MONO
+    const LVM_INT32 NrChannels = pInstance->Params.NrChannels;
+#else
     const LVM_INT32 NrChannels =
             pInstance->Params.NrChannels == 1 ? 2 : pInstance->Params.NrChannels;
+#endif
     const LVM_INT32 NrSamples = NrChannels * NrFrames;
 
     /* Check for NULL pointers */

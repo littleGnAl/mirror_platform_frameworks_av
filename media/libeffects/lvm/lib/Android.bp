@@ -130,6 +130,7 @@ cc_library_static {
     ],
     cppflags: [
         "-DBIQUAD_OPT",
+        "-DTRUE_MONO",
         "-fvisibility=hidden",
         "-Wall",
         "-Werror",

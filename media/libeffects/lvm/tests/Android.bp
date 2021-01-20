@@ -36,7 +36,7 @@ cc_test {
 
     cflags: [
         "-DSUPPORT_MC",
-
+        "-DTRUE_MONO",
         "-Wall",
         "-Werror",
         "-Wextra",
