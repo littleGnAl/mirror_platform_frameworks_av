@@ -56,6 +56,7 @@ import java.io.IOException;
 import android.util.Log;
 import android.util.Size;
 import android.widget.RadioGroup;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.lang.ref.WeakReference;
@@ -89,6 +90,7 @@ public class MainActivity extends AppCompatActivity
     private boolean mIsRecording;
 
     private AutoFitTextureView mTextureView;
+    private TextView mTextView;
     private CameraDevice mCameraDevice;
     private CameraCaptureSession mPreviewSession;
     private CaptureRequest.Builder mPreviewBuilder;
@@ -100,6 +102,8 @@ public class MainActivity extends AppCompatActivity
     private HandlerThread mBackgroundThread;
 
     private Button mStartButton;
+
+    private int[] mFrameTypeNumArray;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -129,6 +133,8 @@ public class MainActivity extends AppCompatActivity
         final CheckBox checkBox_mr = findViewById(R.id.checkBox_media_recorder);
         final CheckBox checkBox_mc = findViewById(R.id.checkBox_media_codec);
         mTextureView = findViewById(R.id.texture);
+        mTextView = findViewById(R.id.textViewResults);
+
         checkBox_mr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -162,6 +168,7 @@ public class MainActivity extends AppCompatActivity
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.start_button) {
+            mTextView.setText(null);
             if (mIsMediaRecorder) {
                 if (mIsRecording) {
                     stopRecordingVideo();
@@ -198,6 +205,7 @@ public class MainActivity extends AppCompatActivity
                             mainActivity.mOutputVideoPath);
             try {
                 encodingStatus = codecSurfaceEncoder.startEncodingSurface();
+                mainActivity.mFrameTypeNumArray = codecSurfaceEncoder.getFrameTypes();
             } catch (IOException | InterruptedException e) {
                 e.printStackTrace();
             }
@@ -211,6 +219,13 @@ public class MainActivity extends AppCompatActivity
             if (encodingStatus == 0) {
                 Toast.makeText(mainActivity.getApplicationContext(), "Encoding Completed",
                         Toast.LENGTH_SHORT).show();
+                mainActivity.mTextView.append("\n Encoded stream contains: ");
+                mainActivity.mTextView
+                        .append("\n Number of I-Frames: " + mainActivity.mFrameTypeNumArray[0]);
+                mainActivity.mTextView
+                        .append("\n Number of P-Frames: " + mainActivity.mFrameTypeNumArray[1]);
+                mainActivity.mTextView
+                        .append("\n Number of B-Frames: " + mainActivity.mFrameTypeNumArray[2]);
             } else {
                 Toast.makeText(mainActivity.getApplicationContext(),
                         "Error occurred while " + "encoding", Toast.LENGTH_SHORT).show();
