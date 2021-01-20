@@ -110,6 +110,7 @@ LVM_ReturnStatus_en LVM_Process(LVM_Handle_t hInstance, const LVM_FLOAT* pInData
         }
     }
 
+#ifndef TRUE_MONO
     /*
      * Convert from Mono if necessary
      */
@@ -122,6 +123,7 @@ LVM_ReturnStatus_en LVM_Process(LVM_Handle_t hInstance, const LVM_FLOAT* pInData
         NrChannels = 2;
         ChMask = AUDIO_CHANNEL_OUT_STEREO;
     }
+#endif
 
     /*
      * Process the data with managed buffers
