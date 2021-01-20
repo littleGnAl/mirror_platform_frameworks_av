@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "529a0970_0b3bf857",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1734121
+      },
+      "writtenOn": "2021-01-20T03:14:29Z",
+      "side": 1,
+      "message": "Need some suggestion regarding this .For case of EOS frame alone , with zero input bytes and there are some samples to be extracted from peak limiter , the new set of data cant go with the previous timestamp (input timestamp, to which we equate to would have already stopped by then), [pts not strictly increasing error] , currently I\u0027m increasing only by 1 unit , is there some calculations to be applied ?",
+      "range": {
+        "startLine": 750,
+        "startChar": 12,
+        "endLine": 750,
+        "endChar": 25
+      },
+      "revId": "2a4007991b199cc9521399229d70ecf540d49f6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
