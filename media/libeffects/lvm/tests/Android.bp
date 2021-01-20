@@ -36,7 +36,6 @@ cc_test {
 
     cflags: [
         "-DSUPPORT_MC",
-
         "-Wall",
         "-Werror",
         "-Wextra",

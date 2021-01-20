@@ -82,8 +82,7 @@ LVDBE_ReturnStatus_en LVDBE_Process(
 
     /*Extract number of Channels info*/
     // Mono passed in as stereo
-    const LVM_INT32 NrChannels =
-            pInstance->Params.NrChannels == 1 ? 2 : pInstance->Params.NrChannels;
+    const LVM_INT32 NrChannels = pInstance->Params.NrChannels;
     const LVM_INT32 NrSamples = NrChannels * NrFrames;
 
     /* Space to store DBE path computation */
