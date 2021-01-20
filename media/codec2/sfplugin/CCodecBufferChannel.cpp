@@ -1372,8 +1372,10 @@ void CCodecBufferChannel::release() {
 
 void CCodecBufferChannel::flush(const std::list<std::unique_ptr<C2Work>> &flushedWork) {
     ALOGV("[%s] flush", mName);
+    std::vector<uint64_t> indices;
     std::list<std::unique_ptr<C2Work>> configs;
     for (const std::unique_ptr<C2Work> &work : flushedWork) {
+        indices.push_back(work->input.ordinal.frameIndex.peeku());
         if (!(work->input.flags & C2FrameData::FLAG_CODEC_CONFIG)) {
             continue;
         }
@@ -1386,6 +1388,7 @@ void CCodecBufferChannel::flush(const std::list<std::unique_ptr<C2Work>> &flushe
         std::unique_ptr<C2Work> copy(new C2Work);
         copy->input.flags = C2FrameData::flags_t(work->input.flags | C2FrameData::FLAG_DROP_FRAME);
         copy->input.ordinal = work->input.ordinal;
+        copy->input.ordinal.frameIndex = mFrameIndex++;
         copy->input.buffers.insert(
                 copy->input.buffers.begin(),
                 work->input.buffers.begin(),
@@ -1414,7 +1417,12 @@ void CCodecBufferChannel::flush(const std::list<std::unique_ptr<C2Work>> &flushe
             output->buffers->flushStash();
         }
     }
-    mPipelineWatcher.lock()->flush();
+    {
+        Mutexed<PipelineWatcher>::Locked watcher(mPipelineWatcher);
+        for (uint64_t index : indices) {
+            watcher->onWorkDone(index);
+        }
+    }
 }
 
 void CCodecBufferChannel::onWorkDone(
