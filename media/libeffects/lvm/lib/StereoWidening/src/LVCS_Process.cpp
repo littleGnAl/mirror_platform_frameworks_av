@@ -75,16 +75,6 @@ LVCS_ReturnStatus_en LVCS_Process_CS(LVCS_Handle_t hInstance, const LVM_FLOAT* p
     LVM_INT32 channels = pInstance->Params.NrChannels;
 #define NrFrames NumSamples  // alias for clarity
 
-    /*In case of mono processing, stereo input is created from mono
-     *and stored in pInData before applying any of the effects.
-     *However we do not update the value pInstance->Params.NrChannels
-     *at this point.
-     *So to treat the pInData as stereo we are setting channels to 2
-     */
-    if (channels == 1) {
-        channels = 2;
-    }
-
     pScratch = (LVM_FLOAT*)pInstance->pScratch;
 
     /*
@@ -173,9 +163,6 @@ LVCS_ReturnStatus_en LVCS_Process(LVCS_Handle_t hInstance, const LVM_FLOAT* pInD
     /*Extract number of Channels info*/
     LVM_INT32 channels = pInstance->Params.NrChannels;
 #define NrFrames NumSamples  // alias for clarity
-    if (channels == 1) {
-        channels = 2;
-    }
     /*
      * Check the number of samples is not too large
      */
@@ -188,6 +175,12 @@ LVCS_ReturnStatus_en LVCS_Process(LVCS_Handle_t hInstance, const LVM_FLOAT* pInD
      */
     if (pInstance->Params.OperatingMode != LVCS_OFF) {
         LVM_FLOAT* pStereoOut;
+        if (pInstance->Params.SourceFormat == LVCS_MONOINSTEREO) {
+            Copy_Float(pInData,                /* Source */
+                       pOutData,               /* Destination */
+                       (LVM_INT16)NumSamples); /* Number of input samples */
+            pInData = pOutData;
+        }
         /*
          * LVCS_Process_CS uses output buffer to store intermediate outputs of StereoEnhancer,
          * Equalizer, ReverbGenerator and BypassMixer.
