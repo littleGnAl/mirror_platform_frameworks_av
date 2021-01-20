@@ -31,10 +31,14 @@ import android.view.Surface;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Arrays;
+
+import static com.android.media.samplevideoencoder.MainActivity.FRAME_TYPE_B;
+import static com.android.media.samplevideoencoder.MainActivity.FRAME_TYPE_I;
+import static com.android.media.samplevideoencoder.MainActivity.FRAME_TYPE_P;
 
 public class MediaCodecSurfaceEncoder {
     private static final String TAG = MediaCodecSurfaceEncoder.class.getSimpleName();
-
     private static final boolean DEBUG = false;
     private static final int VIDEO_BITRATE = 8000000  /*8 Mbps*/;
     private static final int VIDEO_FRAMERATE = 30;
@@ -44,6 +48,8 @@ public class MediaCodecSurfaceEncoder {
     private final String mMime;
     private final String mOutputPath;
     private int mTrackID = -1;
+    private int mFrameNum = 0;
+    private int[] mFrameTypeNumArray = {0, 0, 0};
 
     private Surface mSurface;
     private MediaExtractor mExtractor;
@@ -128,8 +134,10 @@ public class MediaCodecSurfaceEncoder {
             mEncoder.reset();
             mSurface.release();
             mSurface = null;
+            Log.i(TAG, "Number of I-frames = " + mFrameTypeNumArray[FRAME_TYPE_I]);
+            Log.i(TAG, "Number of P-frames = " + mFrameTypeNumArray[FRAME_TYPE_P]);
+            Log.i(TAG, "Number of B-frames = " + mFrameTypeNumArray[FRAME_TYPE_B]);
         }
-
         mEncoder.release();
         mDecoder.release();
         mExtractor.release();
@@ -193,6 +201,8 @@ public class MediaCodecSurfaceEncoder {
         mSawEncOutputEOS = false;
         mDecOutputCount = 0;
         mEncOutputCount = 0;
+        mFrameNum = 0;
+        Arrays.fill(mFrameTypeNumArray, 0);
     }
 
     private void configureCodec(MediaFormat decFormat, MediaFormat encFormat) {
@@ -336,6 +346,18 @@ public class MediaCodecSurfaceEncoder {
         }
         if (info.size > 0) {
             ByteBuffer buf = mEncoder.getOutputBuffer(bufferIndex);
+            // Parse the buffer to get the frame type
+            if (DEBUG) Log.d(TAG, "[ Frame : " + (mFrameNum++) + " ]");
+            int frameTypeResult;
+            if (mMime == MediaFormat.MIMETYPE_VIDEO_AVC) {
+                frameTypeResult = NalUnitUtil.getStandardizedFrameTypesFromAVC(buf);
+            } else {
+                frameTypeResult = NalUnitUtil.getStandardizedFrameTypesFromHEVC(buf);
+            }
+            if (frameTypeResult != -1) {
+                mFrameTypeNumArray[frameTypeResult]++;
+            }
+
             if (mMuxer != null) {
                 if (mTrackID == -1) {
                     mTrackID = mMuxer.addTrack(mEncoder.getOutputFormat());
@@ -352,5 +374,9 @@ public class MediaCodecSurfaceEncoder {
 
     private boolean hasSeenError() {
         return mAsyncHandleDecoder.hasSeenError() || mAsyncHandleEncoder.hasSeenError();
+    }
+
+    public int[] getFrameTypes() {
+        return mFrameTypeNumArray;
     }
 }
