@@ -1,0 +1,228 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36c66cec_061ffec3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-20T22:03:56Z",
+      "side": 1,
+      "message": "Looks much better now, thanks for addressing my previous comments! Still some minor comments I would like to have addressed. ",
+      "revId": "8d41a0fb8887e0cd441c1be3bd02d937a9276bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d77b163a_1eb4a4f9",
+        "filename": "media/libaudioclient/fuzzer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-20T22:03:56Z",
+      "side": 1,
+      "message": "I don\u0027t think this library is actually needed.",
+      "range": {
+        "startLine": 48,
+        "startChar": 8,
+        "endLine": 48,
+        "endChar": 22
+      },
+      "revId": "8d41a0fb8887e0cd441c1be3bd02d937a9276bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6334e5e6_07633c83",
+        "filename": "media/libaudioclient/fuzzer/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-20T22:03:56Z",
+      "side": 1,
+      "message": "Missing space",
+      "range": {
+        "startLine": 32,
+        "startChar": 85,
+        "endLine": 32,
+        "endChar": 87
+      },
+      "revId": "8d41a0fb8887e0cd441c1be3bd02d937a9276bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe21159_fbd31aa0",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-20T22:03:56Z",
+      "side": 1,
+      "message": "Since this function is the same as the one used for `kInputFlags` modulo the string parameter used by `find`, I suggest extracting it as a named function.",
+      "range": {
+        "startLine": 185,
+        "startChar": 62,
+        "endLine": 196,
+        "endChar": 1
+      },
+      "revId": "8d41a0fb8887e0cd441c1be3bd02d937a9276bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8299d55d_e00906a7",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 391,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-20T22:03:56Z",
+      "side": 1,
+      "message": "I would prefer the clause for the variable initialization directly.",
+      "range": {
+        "startLine": 388,
+        "startChar": 4,
+        "endLine": 391,
+        "endChar": 0
+      },
+      "revId": "8d41a0fb8887e0cd441c1be3bd02d937a9276bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3bbcf63d_c0223d71",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-20T22:03:56Z",
+      "side": 1,
+      "message": "Could you please explain what\u0027s the point in having this loop?",
+      "range": {
+        "startLine": 491,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 5
+      },
+      "revId": "8d41a0fb8887e0cd441c1be3bd02d937a9276bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0408b028_8eafb818",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 652,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-20T22:03:56Z",
+      "side": 1,
+      "message": "What is the reason for mixing initialization of the offload info fields with regular ones?",
+      "range": {
+        "startLine": 645,
+        "startChar": 4,
+        "endLine": 652,
+        "endChar": 77
+      },
+      "revId": "8d41a0fb8887e0cd441c1be3bd02d937a9276bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "773f3cab_251ba9ef",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 693,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-20T22:03:56Z",
+      "side": 1,
+      "message": "Same here.",
+      "range": {
+        "startLine": 685,
+        "startChar": 0,
+        "endLine": 693,
+        "endChar": 77
+      },
+      "revId": "8d41a0fb8887e0cd441c1be3bd02d937a9276bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f58f7d8c_342360c6",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 729,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-20T22:03:56Z",
+      "side": 1,
+      "message": "Here I would also prefer not to mix initialization of sinks and sources.",
+      "range": {
+        "startLine": 722,
+        "startChar": 0,
+        "endLine": 729,
+        "endChar": 72
+      },
+      "revId": "8d41a0fb8887e0cd441c1be3bd02d937a9276bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebba3832_86a14bfd",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 746,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-20T22:03:56Z",
+      "side": 1,
+      "message": "We should check the return code, I guess.",
+      "range": {
+        "startLine": 746,
+        "startChar": 4,
+        "endLine": 746,
+        "endChar": 42
+      },
+      "revId": "8d41a0fb8887e0cd441c1be3bd02d937a9276bfb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
