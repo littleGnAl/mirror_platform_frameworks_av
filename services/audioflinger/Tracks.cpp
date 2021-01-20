@@ -1082,6 +1082,9 @@ void AudioFlinger::PlaybackThread::Track::pause()
             mState = PAUSING;
             ALOGV("%s(%d): ACTIVE/RESUMING => PAUSING on thread %d",
                     __func__, mId, (int)mThreadIoHandle);
+            if (isDirect()) {
+                mPauseHwPending = true;
+            }
             playbackThread->broadcast_l();
             break;
 
@@ -1167,6 +1170,11 @@ void AudioFlinger::PlaybackThread::Track::flushAck()
     mServerProxy->flushBufferIfNeeded();
 
     mFlushHwPending = false;
+}
+
+void AudioFlinger::PlaybackThread::Track::pauseAck()
+{
+    mPauseHwPending = false;
 }
 
 void AudioFlinger::PlaybackThread::Track::reset()

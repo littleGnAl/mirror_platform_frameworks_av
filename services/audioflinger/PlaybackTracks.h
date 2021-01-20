@@ -211,6 +211,8 @@ protected:
     void flushAck();
     bool isResumePending();
     void resumeAck();
+    bool isPausePending() const { return mPauseHwPending; }
+    void pauseAck();
     void updateTrackFrameInfo(int64_t trackFramesReleased, int64_t sinkFramesWritten,
             uint32_t halSampleRate, const ExtendedTimestamp &timeStamp);
 
@@ -304,6 +306,7 @@ private:
     sp<AudioTrackServerProxy>  mAudioTrackServerProxy;
     bool                mResumeToStopping; // track was paused in stopping state.
     bool                mFlushHwPending; // track requests for thread flush
+    bool                mPauseHwPending = false; // track requests for thread pause
     audio_output_flags_t mFlags;
     // If the last track change was notified to the client with readAndClearHasChanged
     std::atomic_flag     mChangeNotified = ATOMIC_FLAG_INIT;
