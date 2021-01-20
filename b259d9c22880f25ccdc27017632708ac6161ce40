@@ -1,0 +1,257 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5f6873d_e1bd9f51",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-20T22:24:22Z",
+      "side": 1,
+      "message": "nit: no need",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 22,
+        "endChar": 0
+      },
+      "revId": "b259d9c22880f25ccdc27017632708ac6161ce40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0725c648_33bcafcb",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-20T22:24:22Z",
+      "side": 1,
+      "message": "please use doxygen style comment here.",
+      "range": {
+        "startLine": 28,
+        "startChar": 0,
+        "endLine": 45,
+        "endChar": 90
+      },
+      "revId": "b259d9c22880f25ccdc27017632708ac6161ce40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "469b9887_d25d7ee4",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-20T22:24:22Z",
+      "side": 1,
+      "message": "nit const",
+      "range": {
+        "startLine": 47,
+        "startChar": 23,
+        "endLine": 47,
+        "endChar": 31
+      },
+      "revId": "b259d9c22880f25ccdc27017632708ac6161ce40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a40437e6_86ce4f6a",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-20T22:24:22Z",
+      "side": 1,
+      "message": "could return as std::pair\u003cint, float\u003e  then you can use structured binding\n\nauto [idx, corr] \u003d correlation(...);",
+      "range": {
+        "startLine": 47,
+        "startChar": 60,
+        "endLine": 47,
+        "endChar": 81
+      },
+      "revId": "b259d9c22880f25ccdc27017632708ac6161ce40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "462e6a19_5ea7cb9a",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-20T22:24:22Z",
+      "side": 1,
+      "message": "can this be set to 0?",
+      "range": {
+        "startLine": 49,
+        "startChar": 20,
+        "endLine": 49,
+        "endChar": 58
+      },
+      "revId": "b259d9c22880f25ccdc27017632708ac6161ce40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51c50d6c_9b3fcda1",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-20T22:24:22Z",
+      "side": 1,
+      "message": "declare on line 54.",
+      "range": {
+        "startLine": 51,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 55
+      },
+      "revId": "b259d9c22880f25ccdc27017632708ac6161ce40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b2c7df3_6dd8a3dd",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-20T22:24:22Z",
+      "side": 1,
+      "message": "why?",
+      "range": {
+        "startLine": 54,
+        "startChar": 18,
+        "endLine": 54,
+        "endChar": 53
+      },
+      "revId": "b259d9c22880f25ccdc27017632708ac6161ce40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e889fa06_e544f70c",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-20T22:24:22Z",
+      "side": 1,
+      "message": "remove these two divides.  You can rescale this on line 64.",
+      "range": {
+        "startLine": 57,
+        "startChar": 38,
+        "endLine": 57,
+        "endChar": 55
+      },
+      "revId": "b259d9c22880f25ccdc27017632708ac6161ce40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b8a42ec_0caedd65",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-20T22:24:22Z",
+      "side": 1,
+      "message": "is this normalized by length?",
+      "range": {
+        "startLine": 64,
+        "startChar": 18,
+        "endLine": 64,
+        "endChar": 30
+      },
+      "revId": "b259d9c22880f25ccdc27017632708ac6161ce40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b839f17b_d4777ab0",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-20T22:24:22Z",
+      "side": 1,
+      "message": "is this to detect pitch period?",
+      "range": {
+        "startLine": 117,
+        "startChar": 6,
+        "endLine": 117,
+        "endChar": 43
+      },
+      "revId": "b259d9c22880f25ccdc27017632708ac6161ce40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcc67be5_4b459005",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-20T22:24:22Z",
+      "side": 1,
+      "message": "what is this for?",
+      "range": {
+        "startLine": 130,
+        "startChar": 6,
+        "endLine": 130,
+        "endChar": 47
+      },
+      "revId": "b259d9c22880f25ccdc27017632708ac6161ce40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
