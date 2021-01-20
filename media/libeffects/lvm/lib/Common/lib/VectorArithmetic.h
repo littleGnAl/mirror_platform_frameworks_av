@@ -34,12 +34,13 @@ void Copy_Float_Stereo_Mc(const LVM_FLOAT* src, LVM_FLOAT* StereoOut, LVM_FLOAT*
 
 void Mult3s_Float(const LVM_FLOAT* src, const LVM_FLOAT val, LVM_FLOAT* dst, LVM_INT16 n);
 
-void DelayMix_Float(const LVM_FLOAT* src, /* Source 1, to be delayed */
-                    LVM_FLOAT* delay,     /* Delay buffer */
-                    LVM_INT16 size,       /* Delay size */
-                    LVM_FLOAT* dst,       /* Source/destination */
-                    LVM_INT16* pOffset,   /* Delay offset */
-                    LVM_INT16 n);         /* Number of stereo samples */
+void DelayMix_Float(const LVM_FLOAT* src,  /* Source 1, to be delayed */
+                    LVM_FLOAT* delay,      /* Delay buffer */
+                    LVM_INT16 size,        /* Delay size */
+                    LVM_FLOAT* dst,        /* Source/destination */
+                    LVM_INT16* pOffset,    /* Delay offset */
+                    LVM_INT16 n,           /* Number of stereo samples */
+                    LVM_INT32 NrChannels); /* Number of channels */
 void Add2_Sat_Float(const LVM_FLOAT* src, LVM_FLOAT* dst, LVM_INT16 n);
 void Mac3s_Sat_Float(const LVM_FLOAT* src, const LVM_FLOAT val, LVM_FLOAT* dst, LVM_INT16 n);
 

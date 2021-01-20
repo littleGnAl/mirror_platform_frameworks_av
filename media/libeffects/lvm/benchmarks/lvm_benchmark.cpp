@@ -53,8 +53,6 @@ constexpr audio_channel_mask_t kChMasks[] = {
 
 constexpr size_t kNumChMasks = std::size(kChMasks);
 constexpr int kSampleRate = 44100;
-// TODO(b/131240940) Remove once effects are updated to produce mono output
-constexpr size_t kMinOutputChannelCount = 2;
 
 /*******************************************************************
  * A test result running on Pixel 3 for comparison.
@@ -203,7 +201,7 @@ static void BM_LVM(benchmark::State& state) {
 
     // Run the test
     for (auto _ : state) {
-        std::vector<float> output(kFrameCount * std::max(channelCount, kMinOutputChannelCount));
+        std::vector<float> output(kFrameCount * channelCount);
 
         benchmark::DoNotOptimize(input.data());
         benchmark::DoNotOptimize(output.data());
@@ -224,8 +222,7 @@ static void BM_LVM(benchmark::State& state) {
 }
 
 static void LVMArgs(benchmark::internal::Benchmark* b) {
-    // TODO(b/131240940) Test single channel once effects are updated to process mono data
-    for (int i = 2; i <= kNumChMasks; i++) {
+    for (int i = 1; i <= kNumChMasks; i++) {
         for (int j = 0; j < kNumEffectUuids; ++j) {
             b->Args({i, j});
         }
