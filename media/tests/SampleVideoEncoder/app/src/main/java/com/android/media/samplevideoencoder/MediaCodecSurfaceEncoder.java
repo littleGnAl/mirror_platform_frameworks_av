@@ -31,6 +31,7 @@ import android.view.Surface;
 import java.io.IOException;
 import java.nio.ByteBuffer;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MediaCodecSurfaceEncoder {
     private static final String TAG = MediaCodecSurfaceEncoder.class.getSimpleName();
@@ -44,6 +45,9 @@ public class MediaCodecSurfaceEncoder {
     private final String mMime;
     private final String mOutputPath;
     private int mTrackID = -1;
+    private int mFrameNum = 0;
+    // Number of I-frames, P-frames, B-frames at index 0, 1, and 2 resp.
+    private int[] mFrameTypeNumArray = {0, 0, 0};
 
     private Surface mSurface;
     private MediaExtractor mExtractor;
@@ -128,8 +132,10 @@ public class MediaCodecSurfaceEncoder {
             mEncoder.reset();
             mSurface.release();
             mSurface = null;
+            Log.i(TAG, "Number of I-frames = " + mFrameTypeNumArray[0]);
+            Log.i(TAG, "Number of P-frames = " + mFrameTypeNumArray[1]);
+            Log.i(TAG, "Number of B-frames = " + mFrameTypeNumArray[2]);
         }
-
         mEncoder.release();
         mDecoder.release();
         mExtractor.release();
@@ -193,6 +199,8 @@ public class MediaCodecSurfaceEncoder {
         mSawEncOutputEOS = false;
         mDecOutputCount = 0;
         mEncOutputCount = 0;
+        mFrameNum = 0;
+        Arrays.fill(mFrameTypeNumArray, 0);
     }
 
     private void configureCodec(MediaFormat decFormat, MediaFormat encFormat) {
@@ -336,6 +344,14 @@ public class MediaCodecSurfaceEncoder {
         }
         if (info.size > 0) {
             ByteBuffer buf = mEncoder.getOutputBuffer(bufferIndex);
+            // Parse the buffer to get the frame type
+            if (DEBUG) Log.d(TAG, "[ Frame : " + (mFrameNum++) + " ]");
+            if (mMime == MediaFormat.MIMETYPE_VIDEO_AVC) {
+                findAVCFrameType(buf);
+            } else {
+                findHEVCFrameType(buf);
+            }
+
             if (mMuxer != null) {
                 if (mTrackID == -1) {
                     mTrackID = mMuxer.addTrack(mEncoder.getOutputFormat());
@@ -350,7 +366,139 @@ public class MediaCodecSurfaceEncoder {
         mEncoder.releaseOutputBuffer(bufferIndex, false);
     }
 
+    private void findHEVCFrameType(ByteBuffer buf) {
+        int limit = buf.limit();
+        byte[] dataArray = new byte[buf.remaining()];
+        buf.get(dataArray);
+
+        for (int pos = 0; pos + 3 < limit; ) {
+            int startOffset = NalUnitUtil.findNalUnit(dataArray, pos, limit);
+            if (startOffset != 0) {
+                int nalUnitType = NalUnitUtil.getH265NalUnitType(dataArray, (pos + startOffset));
+                if (DEBUG) {
+                    Log.d(TAG, "NalUnitOffset = " + (pos + startOffset));
+                    Log.d(TAG, "NalUnitType = " + nalUnitType);
+                }
+                // Skip parsing VPS, SPS, and PPS data
+                if (nalUnitType != 32 && nalUnitType != 33 && nalUnitType != 34) {
+                    parseHEVCNALUnitData(dataArray, (pos + startOffset),
+                            (limit - pos - startOffset), nalUnitType);
+                }
+                pos += 3;
+            } else {
+                pos++;
+            }
+        }
+    }
+
+    private void parseHEVCNALUnitData(byte[] dataArray, int offset, int limit, int nalUnitType) {
+        // nal_unit_type values from H.265/HEVC Table 7-1.
+        final int BLA_W_LP = 16;
+        final int RSV_IRAP_VCL23 = 23;
+
+        ParsableBitArray bitArray = new ParsableBitArray(dataArray);
+        bitArray.reset(dataArray, offset, limit);
+
+        bitArray.skipBit(); // forbidden zero bit
+        bitArray.readBits(6); // nal_unit_header
+        bitArray.readBits(6); // nuh_layer_id
+        bitArray.readBits(3); // nuh_temporal_id_plus1
+
+        // Parsing slice_segment_header values from H.265/HEVC Table 7.3.6.1
+        boolean first_slice_segment = bitArray.readBit();  // first_slice_segment_in_pic_flag
+        if (nalUnitType >= BLA_W_LP && nalUnitType <= RSV_IRAP_VCL23) {
+            bitArray.readBit();  // no_output_of_prior_pics_flag
+        }
+        bitArray.readUEV(); // slice_pic_parameter_set_id
+
+        if (first_slice_segment) {
+            // Assume num_extra_slice_header_bits element of PPS data to be 0
+            int sliceType = bitArray.readUEV();
+            if (DEBUG) Log.d(TAG, "slice_type = " + sliceType);
+            switch (sliceType) {
+                case 0:
+                    mFrameTypeNumArray[2]++;
+                    if (DEBUG) Log.d(TAG, "pict_type = B");
+                    break;
+                case 1:
+                    mFrameTypeNumArray[1]++;
+                    if (DEBUG) Log.d(TAG, "pict_type = P");
+                    break;
+                case 2:
+                    mFrameTypeNumArray[0]++;
+                    if (DEBUG) Log.d(TAG, "pict_type = I");
+                    break;
+                default:
+                    Log.d(TAG, "Unrecognized pict_type");
+            }
+        }
+    }
+
+    private void findAVCFrameType(ByteBuffer buf) {
+        int limit = buf.limit();
+        byte[] dataArray = new byte[buf.remaining()];
+        buf.get(dataArray);
+
+        for (int pos = 0; pos + 3 < limit; ) {
+            int startOffset = NalUnitUtil.findNalUnit(dataArray, pos, limit);
+            if (startOffset != 0) {
+                int nalUnitType = NalUnitUtil.getH264NalUnitType(dataArray, (pos + startOffset));
+                if (DEBUG) {
+                    Log.d(TAG, "NalUnitOffset = " + (pos + startOffset));
+                    Log.d(TAG, "NalUnitType = " + nalUnitType);
+                }
+                // Skip parsing SPS and PPS data
+                if (nalUnitType != 7 && nalUnitType != 8) {
+                    parseAVCNALUnitData(dataArray, (pos + startOffset),
+                            (limit - pos - startOffset));
+                }
+                pos += 3;
+            } else {
+                pos++;
+            }
+        }
+    }
+
+    private void parseAVCNALUnitData(byte[] dataArray, int offset, int limit) {
+        ParsableBitArray bitArray = new ParsableBitArray(dataArray);
+        bitArray.reset(dataArray, offset, limit);
+
+        bitArray.skipBit(); // forbidden_zero_bit
+        int nalRefIdc = bitArray.readBits(2);
+        bitArray.skipBits(5); // nal_unit_type
+
+        bitArray.readUEV(); // first_mb_in_slice
+        if (!bitArray.canReadUEV()) {
+            return;
+        }
+        int sliceType = bitArray.readUEV();
+        if (DEBUG) {
+            Log.d(TAG, "nal_ref_idc = " + nalRefIdc);
+            Log.d(TAG, "slice_type = " + sliceType);
+        }
+        switch (sliceType) {
+            case 0:
+                mFrameTypeNumArray[1]++;
+                if (DEBUG) Log.d(TAG, "pict_type = P");
+                break;
+            case 1:
+                mFrameTypeNumArray[2]++;
+                if (DEBUG) Log.d(TAG, "pict_type = B");
+                break;
+            case 2:
+                mFrameTypeNumArray[0]++;
+                if (DEBUG) Log.d(TAG, "pict_type = I");
+                break;
+            default:
+                Log.d(TAG, "Unrecognized pict_type");
+        }
+    }
+
     private boolean hasSeenError() {
         return mAsyncHandleDecoder.hasSeenError() || mAsyncHandleEncoder.hasSeenError();
+    }
+
+    public int[] getFrameTypes() {
+        return mFrameTypeNumArray;
     }
 }
