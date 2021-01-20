@@ -58,6 +58,7 @@ LVCS_ReturnStatus_en LVCS_EqualiserInit(LVCS_Handle_t hInstance, LVCS_Params_t* 
     LVM_UINT16 Offset;
     LVCS_Instance_t* pInstance = (LVCS_Instance_t*)hInstance;
     const BiquadA012B12CoefsSP_t* pEqualiserCoefTable;
+    LVM_INT32 NumChannels = pParams->NrChannels;
 
     /*
      * If the sample rate changes re-initialise the filters
@@ -74,7 +75,13 @@ LVCS_ReturnStatus_en LVCS_EqualiserInit(LVCS_Handle_t hInstance, LVCS_Params_t* 
                 pEqualiserCoefTable[Offset].A0, pEqualiserCoefTable[Offset].A1,
                 pEqualiserCoefTable[Offset].A2, -(pEqualiserCoefTable[Offset].B1),
                 -(pEqualiserCoefTable[Offset].B2)};
-        pInstance->pEqBiquad.reset(new android::audio_utils::BiquadFilter<LVM_FLOAT>(FCC_2, coefs));
+        if (NumChannels == 1) {
+            pInstance->pEqBiquad.reset(
+                    new android::audio_utils::BiquadFilter<LVM_FLOAT>(FCC_1, coefs));
+        } else {
+            pInstance->pEqBiquad.reset(
+                    new android::audio_utils::BiquadFilter<LVM_FLOAT>(FCC_2, coefs));
+        }
     }
 
     return (LVCS_SUCCESS);

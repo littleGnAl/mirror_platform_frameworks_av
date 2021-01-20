@@ -200,6 +200,7 @@ LVCS_ReturnStatus_en LVCS_BypassMixer(LVCS_Handle_t hInstance, const LVM_FLOAT* 
                                       LVM_UINT16 NumSamples) {
     LVCS_Instance_t* pInstance = (LVCS_Instance_t*)hInstance;
     LVCS_BypassMix_t* pConfig = (LVCS_BypassMix_t*)&pInstance->BypassMix;
+    LVM_INT32 NumChannels = pInstance->Params.NrChannels;
 
     /*
      * Check if the bypass mixer is enabled
@@ -208,13 +209,24 @@ LVCS_ReturnStatus_en LVCS_BypassMixer(LVCS_Handle_t hInstance, const LVM_FLOAT* 
         /*
          * Apply the bypass mix
          */
-        LVC_MixSoft_2St_D16C31_SAT(&pConfig->Mixer_Instance, pProcessed, (LVM_FLOAT*)pUnprocessed,
-                                   pOutData, (LVM_INT16)(2 * NumSamples));
+        if (NumChannels == 1) {
+            LVC_MixSoft_2St_D16C31_SAT(&pConfig->Mixer_Instance, pProcessed,
+                                       (LVM_FLOAT*)pUnprocessed, pOutData, (LVM_INT16)NumSamples);
+        } else {
+            LVC_MixSoft_2St_D16C31_SAT(&pConfig->Mixer_Instance, pProcessed,
+                                       (LVM_FLOAT*)pUnprocessed, pOutData,
+                                       (LVM_INT16)(2 * NumSamples));
+        }
         /*
          * Apply output gain correction shift
          */
-        Shift_Sat_Float((LVM_INT16)pConfig->Output_Shift, (LVM_FLOAT*)pOutData,
-                        (LVM_FLOAT*)pOutData, (LVM_INT16)(2 * NumSamples)); /* Left and right*/
+        if (NumChannels == 1) {
+            Shift_Sat_Float((LVM_INT16)pConfig->Output_Shift, (LVM_FLOAT*)pOutData,
+                            (LVM_FLOAT*)pOutData, (LVM_INT16)NumSamples);
+        } else {
+            Shift_Sat_Float((LVM_INT16)pConfig->Output_Shift, (LVM_FLOAT*)pOutData,
+                            (LVM_FLOAT*)pOutData, (LVM_INT16)(2 * NumSamples)); /* Left and right*/
+        }
     }
 
     return (LVCS_SUCCESS);
