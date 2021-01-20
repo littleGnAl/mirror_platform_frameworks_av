@@ -33,6 +33,52 @@
       "message": "The failures indicate that there will be conflicts downstream would we have this fix merged. So after Eric\u0027s approval, I will first submit it downstream after resolving conflicts, then will apply this patch in AOSP. Michael, there is nothing for you to worry about.",
       "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b2901eb6_5b6395e8",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1203,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-01-20T08:21:13Z",
+      "side": 1,
+      "message": "I don\u0027t think we should only consider the first device address as we did before with a single MSD patch.\nWe should consider each device type/address in devices vector individually for a match",
+      "range": {
+        "startLine": 1203,
+        "startChar": 31,
+        "endLine": 1203,
+        "endChar": 38
+      },
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f1b9268_2c01c48f",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1498,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-01-20T08:21:13Z",
+      "side": 1,
+      "message": "ALOGD",
+      "range": {
+        "startLine": 1498,
+        "startChar": 12,
+        "endLine": 1498,
+        "endChar": 17
+      },
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
