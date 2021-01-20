@@ -89,7 +89,7 @@ class C2DmaBufAllocator : public C2Allocator {
 
         if (cached_result == -1) {
             struct stat buffer;
-            cached_result = (stat("/dev/dma_heap/system-uncached", &buffer) == 0);
+            cached_result = (stat("/dev/dma_heap/aosp,system-uncached", &buffer) == 0);
         }
         return (cached_result == 1);
     };

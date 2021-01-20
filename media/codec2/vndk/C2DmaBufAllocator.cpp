@@ -317,7 +317,7 @@ c2_status_t C2DmaBufAllocator::mapUsage(C2MemoryUsage usage, size_t capacity, C2
         } else {
             if (C2DmaBufAllocator::system_uncached_supported() &&
                 !(usage.expected & (C2MemoryUsage::CPU_READ | C2MemoryUsage::CPU_WRITE)))
-                *heap_name = "system-uncached";
+                *heap_name = "aosp,system-uncached";
             else
                 *heap_name = "system";
             *flags = 0;

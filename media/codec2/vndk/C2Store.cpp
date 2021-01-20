@@ -825,7 +825,7 @@ private:
                     long long usage = (long long)me.get().m.usage;
                     if (C2DmaBufAllocator::system_uncached_supported() &&
                         !(usage & (C2MemoryUsage::CPU_READ | C2MemoryUsage::CPU_WRITE))) {
-                        strncpy(me.set().m.heapName, "system-uncached", me.v.flexCount());
+                        strncpy(me.set().m.heapName, "aosp,system-uncached", me.v.flexCount());
                     } else {
                         strncpy(me.set().m.heapName, "system", me.v.flexCount());
                     }
