@@ -93,6 +93,10 @@ do
         do
             for chMask in {0..38}
             do
+                if [[ $flags == *"-vcBal:"* ]] && [[ $chMask -eq 0 ]]; then
+                    continue
+                fi
+
                 adb shell $testdir/lvmtest -i:$testdir/sinesweepraw.raw \
                     -o:$testdir/sinesweep_$((chMask))_$((fs)).raw -chMask:$chMask -fs:$fs $flags
 

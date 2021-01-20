@@ -113,14 +113,12 @@ LVM_ReturnStatus_en LVM_Process(LVM_Handle_t hInstance, const LVM_FLOAT* pInData
     /*
      * Convert from Mono if necessary
      */
-    if (pInstance->Params.SourceFormat == LVM_MONO) {
-        MonoTo2I_Float(pInData,                /* Source */
-                       pOutData,               /* Destination */
-                       (LVM_INT16)NumSamples); /* Number of input samples */
+    if (pInstance->CS_Active == LVM_TRUE && pInstance->Params.SourceFormat == LVM_MONO) {
+        Copy_Float(pInData,                /* Source */
+                   pOutData,               /* Destination */
+                   (LVM_INT16)NumSamples); /* Number of input samples */
         pInput = pOutData;
         pToProcess = pOutData;
-        NrChannels = 2;
-        ChMask = AUDIO_CHANNEL_OUT_STEREO;
     }
 
     /*
