@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 #define LOG_TAG "PipelineWatcher"
 
 #include <numeric>
@@ -95,6 +95,7 @@ void PipelineWatcher::onWorkDone(uint64_t frameIndex) {
 }
 
 void PipelineWatcher::flush() {
+    ALOGV("flush");
     mFramesInPipeline.clear();
 }
 
