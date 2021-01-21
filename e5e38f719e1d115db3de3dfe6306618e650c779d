@@ -35,6 +35,46 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8a561bb7_ff2b02e7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-21T18:12:05Z",
+      "side": 1,
+      "message": "looks fine excepting some nits. would prefer clarification on the creation and restoration of MSD patches.  it isn\u0027t perfect, though i\u0027m not seeing a great solution to this off-hand.",
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "79dc487f_30aaf6b3",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-21T18:12:05Z",
+      "side": 1,
+      "message": "by specifying the outputDevices, seems we are using devices created by line 1012 vs line 1453 (AUDIO_USAGE_MEDIA).",
+      "range": {
+        "startLine": 1040,
+        "startChar": 62,
+        "endLine": 1040,
+        "endChar": 75
+      },
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b2901eb6_5b6395e8",
@@ -84,6 +124,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e055c594_f16eef14",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1203,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-21T18:12:05Z",
+      "side": 1,
+      "message": "+1, no need to specify the address, it is in the device itself.",
+      "parentUuid": "0de40d33_e8bdb828",
+      "range": {
+        "startLine": 1203,
+        "startChar": 31,
+        "endLine": 1203,
+        "endChar": 38
+      },
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23b9fd76_450333c7",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-21T18:12:05Z",
+      "side": 1,
+      "message": "// Retain only the MSD patches associated with outputDevices request.\n// Tear down the others, and create new ones as needed.",
+      "range": {
+        "startLine": 1462,
+        "startChar": 0,
+        "endLine": 1464,
+        "endChar": 59
+      },
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9f1b9268_2c01c48f",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 3
@@ -100,6 +187,98 @@
         "startChar": 12,
         "endLine": 1498,
         "endChar": 17
+      },
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c425b36c_46e499f6",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1509,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-21T18:12:05Z",
+      "side": 1,
+      "message": "do we need this?  This is a property of the device in the devices vector (and the devices vector ought to be filtered before coming here).  If you want the first device, then make sure devices has only the first element.",
+      "range": {
+        "startLine": 1509,
+        "startChar": 70,
+        "endLine": 1509,
+        "endChar": 94
+      },
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef2a1334_8cf12b9a",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1516,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-21T18:12:05Z",
+      "side": 1,
+      "message": "does devices.getDevice(sink-\u003eext.device.type, sink-\u003eext.device.address, AUDIO_FORMAT_DEFAULT) !\u003d nullptr work here?\n\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/audiopolicy/common/managerdefinitions/include/DeviceDescriptor.h;drc\u003d4e82621821c5adf1dbd3ef1911fc6a2a0becfbc8;l\u003d126",
+      "range": {
+        "startLine": 1516,
+        "startChar": 20,
+        "endLine": 1516,
+        "endChar": 76
+      },
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e974a33_51fe8b61",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5348,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-21T18:12:05Z",
+      "side": 1,
+      "message": "this may not restore the same patches that were removed on line 1203.  Seems like we could cache how we built them (i.e. how we created the outputDevices).  here and on line 5415.  See comment above on the differences (e.g. one uses AUDIO_USAGE_MEDIA).   This is a bit difficult because the devices available might have changed...  Maybe Eric has a suggestion here.",
+      "range": {
+        "startLine": 5348,
+        "startChar": 25,
+        "endLine": 5348,
+        "endChar": 28
+      },
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00d0f9a9_460d6b54",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5415,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-21T18:12:05Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 5415,
+        "startChar": 8,
+        "endLine": 5415,
+        "endChar": 21
       },
       "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
