@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32b70568_e7856b8e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-21T14:45:41Z",
+      "side": 1,
+      "message": "\n\u003d\u003d This is a valid complaint, but we force all uninitialized memory to\n\u003d\u003d zero, so it seems harmless to make this explicit in the code.\n\ni thought that was only an internal experiment to help us detect things.\nwe also had an experiment that loaded a known non-zero pattern to help trigger failures\nfor uninitialized memory.",
+      "revId": "08464604642675b3dcbc7cfc7a7f793f115ec548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
