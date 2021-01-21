@@ -81,6 +81,30 @@
       },
       "revId": "08464604642675b3dcbc7cfc7a7f793f115ec548",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "155e197c_a77e28ef",
+        "filename": "media/codecs/amrnb/enc/src/cor_h_x2.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-21T18:27:16Z",
+      "side": 1,
+      "message": "stay with the zero initialization.",
+      "parentUuid": "085455a8_97dba00a",
+      "range": {
+        "startLine": 263,
+        "startChar": 12,
+        "endLine": 263,
+        "endChar": 23
+      },
+      "revId": "08464604642675b3dcbc7cfc7a7f793f115ec548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
