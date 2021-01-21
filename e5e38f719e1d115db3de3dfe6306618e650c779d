@@ -77,6 +77,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "eb0fe824_7afbeee4",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1040,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2021-01-21T22:00:11Z",
+      "side": 1,
+      "message": "Yes, we give preference to patching to the requested device.",
+      "parentUuid": "79dc487f_30aaf6b3",
+      "range": {
+        "startLine": 1040,
+        "startChar": 62,
+        "endLine": 1040,
+        "endChar": 75
+      },
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b2901eb6_5b6395e8",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 3
@@ -148,6 +172,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "05ce375a_74095829",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1203,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2021-01-21T22:00:11Z",
+      "side": 1,
+      "message": "That makes sense. No need for the address parameter. I can rely solely on the DeviceVector argument for matching device type/address pairs individually.",
+      "parentUuid": "e055c594_f16eef14",
+      "range": {
+        "startLine": 1203,
+        "startChar": 31,
+        "endLine": 1203,
+        "endChar": 38
+      },
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "23b9fd76_450333c7",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 3
@@ -159,6 +207,30 @@
       "writtenOn": "2021-01-21T18:12:05Z",
       "side": 1,
       "message": "// Retain only the MSD patches associated with outputDevices request.\n// Tear down the others, and create new ones as needed.",
+      "range": {
+        "startLine": 1462,
+        "startChar": 0,
+        "endLine": 1464,
+        "endChar": 59
+      },
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04f90434_06851c81",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1464,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2021-01-21T22:00:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23b9fd76_450333c7",
       "range": {
         "startLine": 1462,
         "startChar": 0,
@@ -182,6 +254,30 @@
       "writtenOn": "2021-01-20T08:21:13Z",
       "side": 1,
       "message": "ALOGD",
+      "range": {
+        "startLine": 1498,
+        "startChar": 12,
+        "endLine": 1498,
+        "endChar": 17
+      },
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dae6c6b2_003d28c4",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1498,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2021-01-21T22:00:11Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9f1b9268_2c01c48f",
       "range": {
         "startLine": 1498,
         "startChar": 12,
@@ -217,6 +313,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "00a03afd_90b127e6",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1509,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2021-01-21T22:00:11Z",
+      "side": 1,
+      "message": "We don\u0027t need the address parameter, I will remove it from the signature of this method.",
+      "parentUuid": "c425b36c_46e499f6",
+      "range": {
+        "startLine": 1509,
+        "startChar": 70,
+        "endLine": 1509,
+        "endChar": 94
+      },
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef2a1334_8cf12b9a",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 3
@@ -240,6 +360,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "39870f14_c45693cd",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1516,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2021-01-21T22:00:11Z",
+      "side": 1,
+      "message": "Yes, I think that would work here. I\u0027ll use that approach.",
+      "parentUuid": "ef2a1334_8cf12b9a",
+      "range": {
+        "startLine": 1516,
+        "startChar": 20,
+        "endLine": 1516,
+        "endChar": 76
+      },
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e974a33_51fe8b61",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 3
@@ -251,6 +395,30 @@
       "writtenOn": "2021-01-21T18:12:05Z",
       "side": 1,
       "message": "this may not restore the same patches that were removed on line 1203.  Seems like we could cache how we built them (i.e. how we created the outputDevices).  here and on line 5415.  See comment above on the differences (e.g. one uses AUDIO_USAGE_MEDIA).   This is a bit difficult because the devices available might have changed...  Maybe Eric has a suggestion here.",
+      "range": {
+        "startLine": 5348,
+        "startChar": 25,
+        "endLine": 5348,
+        "endChar": 28
+      },
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d7ce631_96770860",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5348,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2021-01-21T22:00:11Z",
+      "side": 1,
+      "message": "Happy to hear your suggestions on this one.",
+      "parentUuid": "4e974a33_51fe8b61",
       "range": {
         "startLine": 5348,
         "startChar": 25,
