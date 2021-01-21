@@ -460,8 +460,6 @@ c2_status_t C2AllocationGralloc::map(
         }
 
         case static_cast<uint32_t>(PixelFormat4::RGBA_8888):
-            // TODO: alpha channel
-            // fall-through
         case static_cast<uint32_t>(PixelFormat4::RGBX_8888): {
             void *pointer = nullptr;
             // TODO: fence
@@ -469,6 +467,77 @@ c2_status_t C2AllocationGralloc::map(
                     const_cast<native_handle_t*>(mBuffer), grallocUsage, rect, &pointer);
             if (err) {
                 ALOGE("failed transaction: lock(RGBA_8888)");
+                return C2_CORRUPTED;
+            }
+            addr[C2PlanarLayout::PLANE_R] = (uint8_t *)pointer;
+            addr[C2PlanarLayout::PLANE_G] = (uint8_t *)pointer + 1;
+            addr[C2PlanarLayout::PLANE_B] = (uint8_t *)pointer + 2;
+            addr[C2PlanarLayout::PLANE_A] = (uint8_t *)pointer + 3;
+            layout->type = C2PlanarLayout::TYPE_RGBA;
+            layout->numPlanes = 4;
+            layout->rootPlanes = 1;
+            layout->planes[C2PlanarLayout::PLANE_R] = {
+                C2PlaneInfo::CHANNEL_R,         // channel
+                4,                              // colInc
+                static_cast<int32_t>(4 * mStride), // rowInc
+                1,                              // mColSampling
+                1,                              // mRowSampling
+                8,                              // allocatedDepth
+                8,                              // bitDepth
+                0,                              // rightShift
+                C2PlaneInfo::NATIVE,            // endianness
+                C2PlanarLayout::PLANE_R,        // rootIx
+                0,                              // offset
+            };
+            layout->planes[C2PlanarLayout::PLANE_G] = {
+                C2PlaneInfo::CHANNEL_G,         // channel
+                4,                              // colInc
+                static_cast<int32_t>(4 * mStride), // rowInc
+                1,                              // mColSampling
+                1,                              // mRowSampling
+                8,                              // allocatedDepth
+                8,                              // bitDepth
+                0,                              // rightShift
+                C2PlaneInfo::NATIVE,            // endianness
+                C2PlanarLayout::PLANE_G,        // rootIx
+                1,                              // offset
+            };
+            layout->planes[C2PlanarLayout::PLANE_B] = {
+                C2PlaneInfo::CHANNEL_B,         // channel
+                4,                              // colInc
+                static_cast<int32_t>(4 * mStride), // rowInc
+                1,                              // mColSampling
+                1,                              // mRowSampling
+                8,                              // allocatedDepth
+                8,                              // bitDepth
+                0,                              // rightShift
+                C2PlaneInfo::NATIVE,            // endianness
+                C2PlanarLayout::PLANE_B,        // rootIx
+                2,                              // offset
+            };
+            layout->planes[C2PlanarLayout::PLANE_A] = {
+                C2PlaneInfo::CHANNEL_A,         // channel
+                4,                              // colInc
+                static_cast<int32_t>(4 * mStride), // rowInc
+                1,                              // mColSampling
+                1,                              // mRowSampling
+                8,                              // allocatedDepth
+                8,                              // bitDepth
+                0,                              // rightShift
+                C2PlaneInfo::NATIVE,            // endianness
+                C2PlanarLayout::PLANE_A,        // rootIx
+                3,                              // offset
+            };
+            break;
+        }
+
+        case static_cast<uint32_t>(PixelFormat4::RGB_888): {
+            void *pointer = nullptr;
+            // TODO: fence
+            status_t err = GraphicBufferMapper::get().lock(
+                    const_cast<native_handle_t*>(mBuffer), grallocUsage, rect, &pointer);
+            if (err) {
+                ALOGE("failed transaction: lock(RGB_888)");
                 return C2_CORRUPTED;
             }
             addr[C2PlanarLayout::PLANE_R] = (uint8_t *)pointer;
@@ -498,9 +567,9 @@ c2_status_t C2AllocationGralloc::map(
                 1,                              // mRowSampling
                 8,                              // allocatedDepth
                 8,                              // bitDepth
-                0,                              // rightShift
+                5,                              // rightShift
                 C2PlaneInfo::NATIVE,            // endianness
-                C2PlanarLayout::PLANE_R,        // rootIx
+                C2PlanarLayout::PLANE_G,        // rootIx
                 1,                              // offset
             };
             layout->planes[C2PlanarLayout::PLANE_B] = {
@@ -511,9 +580,66 @@ c2_status_t C2AllocationGralloc::map(
                 1,                              // mRowSampling
                 8,                              // allocatedDepth
                 8,                              // bitDepth
+                11,                             // rightShift
+                C2PlaneInfo::NATIVE,            // endianness
+                C2PlanarLayout::PLANE_B,        // rootIx
+                2,                              // offset
+            };
+            break;
+        }
+
+        case static_cast<uint32_t>(PixelFormat4::RGB_565): {
+            void *pointer = nullptr;
+            // TODO: fence
+            status_t err = GraphicBufferMapper::get().lock(
+                    const_cast<native_handle_t*>(mBuffer), grallocUsage, rect, &pointer);
+            if (err) {
+                ALOGE("failed transaction: lock(RGB_565)");
+                return C2_CORRUPTED;
+            }
+            addr[C2PlanarLayout::PLANE_R] = (uint8_t *)pointer;
+            addr[C2PlanarLayout::PLANE_G] = (uint8_t *)pointer + 1;
+            addr[C2PlanarLayout::PLANE_B] = (uint8_t *)pointer + 2;
+            layout->type = C2PlanarLayout::TYPE_RGB;
+            layout->numPlanes = 3;
+            layout->rootPlanes = 1;
+            layout->planes[C2PlanarLayout::PLANE_R] = {
+                C2PlaneInfo::CHANNEL_R,         // channel
+                4,                              // colInc
+                static_cast<int32_t>(4 * mStride), // rowInc
+                1,                              // mColSampling
+                1,                              // mRowSampling
+                16,                             // allocatedDepth
+                5,                              // bitDepth
                 0,                              // rightShift
                 C2PlaneInfo::NATIVE,            // endianness
                 C2PlanarLayout::PLANE_R,        // rootIx
+                0,                              // offset
+            };
+            layout->planes[C2PlanarLayout::PLANE_G] = {
+                C2PlaneInfo::CHANNEL_G,         // channel
+                4,                              // colInc
+                static_cast<int32_t>(4 * mStride), // rowInc
+                1,                              // mColSampling
+                1,                              // mRowSampling
+                16,                             // allocatedDepth
+                6,                              // bitDepth
+                5,                              // rightShift
+                C2PlaneInfo::NATIVE,            // endianness
+                C2PlanarLayout::PLANE_G,        // rootIx
+                1,                              // offset
+            };
+            layout->planes[C2PlanarLayout::PLANE_B] = {
+                C2PlaneInfo::CHANNEL_B,         // channel
+                4,                              // colInc
+                static_cast<int32_t>(4 * mStride), // rowInc
+                1,                              // mColSampling
+                1,                              // mRowSampling
+                16,                             // allocatedDepth
+                5,                              // bitDepth
+                11,                             // rightShift
+                C2PlaneInfo::NATIVE,            // endianness
+                C2PlanarLayout::PLANE_B,        // rootIx
                 2,                              // offset
             };
             break;
