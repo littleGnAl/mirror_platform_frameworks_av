@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "01406c80_ac7e6c0b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1837035
+      },
+      "writtenOn": "2021-01-21T14:06:46Z",
+      "side": 1,
+      "message": "In tunneled mode, the work done is not controllable because of av sync. So, we should avoid \"queue\" timeout in tunneled mode.",
+      "revId": "c18ac3f55ba8a04f54bb040c0497e13f02dca9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f3cb3e9_00f784a4",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1996,
+      "author": {
+        "id": 1837035
+      },
+      "writtenOn": "2021-01-21T14:06:46Z",
+      "side": 1,
+      "message": "{\n    Mutexed\u003cstd::unique_ptr\u003cConfig\u003e\u003e::Locked configLocked(mConfig);\n    const std::unique_ptr\u003cConfig\u003e \u0026config \u003d *configLocked;\n    if (config-\u003emTunneled \u003d\u003d false \u0026\u0026 name.empty()) {\n        constexpr std::chrono::steady_clock::duration kWorkDurationThreshold \u003d 3s;\n        std::chrono::steady_clock::duration elapsed \u003d mChannel-\u003eelapsed();\n        if (elapsed \u003e\u003d kWorkDurationThreshold) {\n            name \u003d \"queue\";\n        }\n        if (elapsed \u003e 0s) {\n            pendingDeadline \u003d true;\n        }\n    }\n}",
+      "range": {
+        "startLine": 1987,
+        "startChar": 0,
+        "endLine": 1996,
+        "endChar": 5
+      },
+      "revId": "c18ac3f55ba8a04f54bb040c0497e13f02dca9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
