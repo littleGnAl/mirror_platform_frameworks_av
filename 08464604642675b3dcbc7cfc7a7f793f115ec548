@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8f6d012_d342d292",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-21T17:03:53Z",
+      "side": 1,
+      "message": "(i was wrong -- the zero-init for stack variables work did roll out to production.)",
+      "parentUuid": "32b70568_e7856b8e",
+      "revId": "08464604642675b3dcbc7cfc7a7f793f115ec548",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2b127247_b899ae0f",
