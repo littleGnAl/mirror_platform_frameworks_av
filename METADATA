@@ -1,3 +1,4 @@
 third_party {
-  license_type: NOTICE
+  # would be NOTICE save for drm/mediadrm/plugins/clearkey/hidl/
+  license_type: BY_EXCEPTION_ONLY
 }
