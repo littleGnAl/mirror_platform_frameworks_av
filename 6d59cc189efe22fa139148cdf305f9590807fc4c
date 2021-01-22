@@ -22,6 +22,52 @@
       },
       "revId": "6d59cc189efe22fa139148cdf305f9590807fc4c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "610c3915_a6668eb7",
+        "filename": "services/camera/libcameraservice/libcameraservice_fuzzer/camera_service_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2021-01-22T00:57:31Z",
+      "side": 1,
+      "message": "nit:indentation",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 8
+      },
+      "revId": "6d59cc189efe22fa139148cdf305f9590807fc4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3284cea7_bc50ad9f",
+        "filename": "services/camera/libcameraservice/libcameraservice_fuzzer/camera_service_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2021-01-22T00:57:31Z",
+      "side": 1,
+      "message": "nit: indentation should be 8 spaces, according to the rest of the style in cameraservice code.",
+      "range": {
+        "startLine": 306,
+        "startChar": 8,
+        "endLine": 306,
+        "endChar": 41
+      },
+      "revId": "6d59cc189efe22fa139148cdf305f9590807fc4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
