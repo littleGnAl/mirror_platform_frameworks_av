@@ -1,0 +1,182 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9942a2d2_faa13863",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-01-22T10:02:05Z",
+      "side": 1,
+      "message": "Got to review this CL while I reviewed the other one paired with this.  Thanks.",
+      "revId": "fc9b39c2bb24cd5f6edd4742b969a6c1c47cac4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "80912657_1d833b9a",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-01-22T10:02:05Z",
+      "side": 1,
+      "message": "is it not enough to pass just the reference?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 17
+      },
+      "revId": "fc9b39c2bb24cd5f6edd4742b969a6c1c47cac4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54e3bcbb_4232b11a",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-01-22T10:02:05Z",
+      "side": 1,
+      "message": "result of this could be more than int32_t can hold?",
+      "range": {
+        "startLine": 109,
+        "startChar": 43,
+        "endLine": 109,
+        "endChar": 65
+      },
+      "revId": "fc9b39c2bb24cd5f6edd4742b969a6c1c47cac4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31d596ce_8b0a9e3e",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-01-22T10:02:05Z",
+      "side": 1,
+      "message": "as the data type of channelcount is int32_t, should this be int32_t? and the same doubt for sampleRate, height, width.",
+      "range": {
+        "startLine": 122,
+        "startChar": 61,
+        "endLine": 122,
+        "endChar": 64
+      },
+      "revId": "fc9b39c2bb24cd5f6edd4742b969a6c1c47cac4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f052e17_917d3d91",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 196,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-01-22T10:02:05Z",
+      "side": 1,
+      "message": "this function sends all frames of one particular track. that\u0027s one way of sending.  Don\u0027t we need to test sending data interleaved as well?",
+      "range": {
+        "startLine": 196,
+        "startChar": 23,
+        "endLine": 196,
+        "endChar": 42
+      },
+      "revId": "fc9b39c2bb24cd5f6edd4742b969a6c1c47cac4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f94efee_ecb365ca",
+        "filename": "media/libstagefright/writer_fuzzers/include/WriterFuzzerBase.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-01-22T10:02:05Z",
+      "side": 1,
+      "message": "only for audio and video ? what about metadata/subtitle track?",
+      "range": {
+        "startLine": 37,
+        "startChar": 18,
+        "endLine": 37,
+        "endChar": 32
+      },
+      "revId": "fc9b39c2bb24cd5f6edd4742b969a6c1c47cac4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3287253f_75e84467",
+        "filename": "media/libstagefright/writer_fuzzers/include/WriterFuzzerBase.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-01-22T10:02:05Z",
+      "side": 1,
+      "message": "is uint32_t more appropriate?",
+      "range": {
+        "startLine": 45,
+        "startChar": 0,
+        "endLine": 48,
+        "endChar": 25
+      },
+      "revId": "fc9b39c2bb24cd5f6edd4742b969a6c1c47cac4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "371831d5_ec837c54",
+        "filename": "media/libstagefright/writer_fuzzers/include/WriterFuzzerBase.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-01-22T10:02:05Z",
+      "side": 1,
+      "message": "is it a good idea to use a named enum, like SampleFlag::SYNC_FLAG, instead of polluting the higher level namespace?",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 2
+      },
+      "revId": "fc9b39c2bb24cd5f6edd4742b969a6c1c47cac4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
