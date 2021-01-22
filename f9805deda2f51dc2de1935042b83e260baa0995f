@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d4edefc_7bb46912",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-01-22T23:52:43Z",
+      "side": 1,
+      "message": "Nice! I am still struggling with \"frame composer\", but could not find a better name... \"reframer\", \"input framer\", all sound equally strange.",
+      "revId": "f9805deda2f51dc2de1935042b83e260baa0995f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f44c082a_b5c0860c",
+        "filename": "media/codec2/sfplugin/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-01-22T23:52:43Z",
+      "side": 1,
+      "message": "this reminds me of surfaceflinger...",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 22
+      },
+      "revId": "f9805deda2f51dc2de1935042b83e260baa0995f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fce91b28_9d7c3110",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-01-22T23:52:43Z",
+      "side": 1,
+      "message": "composeFrames? or useFrameComposer?",
+      "range": {
+        "startLine": 223,
+        "startChar": 9,
+        "endLine": 223,
+        "endChar": 22
+      },
+      "revId": "f9805deda2f51dc2de1935042b83e260baa0995f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96c1e4b2_aab944ff",
+        "filename": "media/codec2/sfplugin/FrameComposer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-01-22T23:52:43Z",
+      "side": 1,
+      "message": "what is the use-case of updating sample rate/channels mid stream?",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 59
+      },
+      "revId": "f9805deda2f51dc2de1935042b83e260baa0995f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cedf4db0_f0e409f3",
+        "filename": "media/codec2/sfplugin/FrameComposer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-01-22T23:52:43Z",
+      "side": 1,
+      "message": "this comes from MediaCodec, but may be in the middle of a new codec frame. How do we handle slight drifts and large jumps in this value as we are reframing the input?",
+      "range": {
+        "startLine": 145,
+        "startChar": 36,
+        "endLine": 145,
+        "endChar": 42
+      },
+      "revId": "f9805deda2f51dc2de1935042b83e260baa0995f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51e28bd7_a84080d8",
+        "filename": "media/codec2/sfplugin/tests/FrameComposer_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-01-22T23:52:43Z",
+      "side": 1,
+      "message": "this test case may need its own test case :)\n\nwould it be possible to specify some of these expected values from/in the test call?",
+      "range": {
+        "startLine": 135,
+        "startChar": 16,
+        "endLine": 135,
+        "endChar": 45
+      },
+      "revId": "f9805deda2f51dc2de1935042b83e260baa0995f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "54415d58_5193fa31",
+        "filename": "media/codec2/sfplugin/tests/FrameComposer_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-01-22T23:52:43Z",
+      "side": 1,
+      "message": "can we describe in words the expectations for these various frame sizes for each of these test cases?",
+      "range": {
+        "startLine": 149,
+        "startChar": 26,
+        "endLine": 149,
+        "endChar": 44
+      },
+      "revId": "f9805deda2f51dc2de1935042b83e260baa0995f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
