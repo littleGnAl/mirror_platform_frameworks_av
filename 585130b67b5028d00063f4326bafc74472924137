@@ -16,6 +16,115 @@
       "message": "gokrishnan@ -- do you have any comments?",
       "revId": "585130b67b5028d00063f4326bafc74472924137",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d55abdf_74e1c462",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-01-22T13:11:05Z",
+      "side": 1,
+      "message": "have shared my thoughts.. hope it is useful.",
+      "revId": "585130b67b5028d00063f4326bafc74472924137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "46ff66b3_262edfa2",
+        "filename": "media/libstagefright/writer_fuzzers/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-01-22T13:11:05Z",
+      "side": 1,
+      "message": "These fuzzers have the same steps.  Wouldn\u0027t it be precise to write like the following?\n\n* \u003d mpeg4 or amrnb or amrwb or ogg or webm\n$mm -j$(nproc) *_writer_fuzzer\nadb sync data\nadb shell /data/fuzz/arm64/*_writer_fuzzer/*_writer_fuzzer CORPUS_DIR\n\nthis also makes it easier while adding new fuzzers, and/or while changing build and execution steps.",
+      "range": {
+        "startLine": 93,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 3
+      },
+      "revId": "585130b67b5028d00063f4326bafc74472924137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb6fbb9d_53777d8b",
+        "filename": "media/libstagefright/writer_fuzzers/amr_writer_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-01-22T13:11:05Z",
+      "side": 1,
+      "message": "what\u0027s the advantage of this over AmrWriterFuzzer writterFuzzer;",
+      "range": {
+        "startLine": 47,
+        "startChar": 4,
+        "endLine": 47,
+        "endChar": 53
+      },
+      "revId": "585130b67b5028d00063f4326bafc74472924137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3f70ea5a_e13c6820",
+        "filename": "media/libstagefright/writer_fuzzers/amr_writer_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-01-22T13:11:05Z",
+      "side": 1,
+      "message": "a big chunk of things happen in this function.  is it possible to break it down into smaller parts with more meaningful names? something like this..  kind of one function does one particular thing, and not many.\n\nAmrWriterFuzzer writerFuzzer;\nwriterFuzzer.createOutFileAndWriter(); //mFd and mWriter are initialized\nwriterFuzzer.processData(data, size);",
+      "range": {
+        "startLine": 48,
+        "startChar": 17,
+        "endLine": 48,
+        "endChar": 28
+      },
+      "revId": "585130b67b5028d00063f4326bafc74472924137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57a3a069_f453a9c7",
+        "filename": "media/libstagefright/writer_fuzzers/amr_writer_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-01-22T13:11:05Z",
+      "side": 1,
+      "message": "I\u0027m not familiar with how fuzzers work.  There\u0027s no error logs anywhere in the code of this class and its base class. Also, no error values are returned.  Is this okay? how do we know that something failed and why?",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 12
+      },
+      "revId": "585130b67b5028d00063f4326bafc74472924137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
