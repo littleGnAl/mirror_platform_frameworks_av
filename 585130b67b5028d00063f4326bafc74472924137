@@ -106,6 +106,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f161ed31_02ed1bdf",
+        "filename": "media/libstagefright/writer_fuzzers/amr_writer_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-22T20:22:16Z",
+      "side": 1,
+      "message": "idea here was to minimize the code for each writer fuzzer plugin.\nSo everything common has been moved to the base class and a single call is done here.",
+      "parentUuid": "3f70ea5a_e13c6820",
+      "range": {
+        "startLine": 48,
+        "startChar": 17,
+        "endLine": 48,
+        "endChar": 28
+      },
+      "revId": "585130b67b5028d00063f4326bafc74472924137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57a3a069_f453a9c7",
         "filename": "media/libstagefright/writer_fuzzers/amr_writer_fuzzer.cpp",
         "patchSetId": 2
@@ -117,6 +141,30 @@
       "writtenOn": "2021-01-22T13:11:05Z",
       "side": 1,
       "message": "I\u0027m not familiar with how fuzzers work.  There\u0027s no error logs anywhere in the code of this class and its base class. Also, no error values are returned.  Is this okay? how do we know that something failed and why?",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 12
+      },
+      "revId": "585130b67b5028d00063f4326bafc74472924137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f97e9c9_3f6fc119",
+        "filename": "media/libstagefright/writer_fuzzers/amr_writer_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-22T20:22:16Z",
+      "side": 1,
+      "message": "in case of any errors (address sanitizer, integer sanitizer, segfaults etc), fuzzer binary aborts and stacktrace is logged in clusterfuzz.\n\nhence logs or a non-zero return code are not useful.",
+      "parentUuid": "57a3a069_f453a9c7",
       "range": {
         "startLine": 49,
         "startChar": 11,
