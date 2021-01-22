@@ -431,6 +431,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1d30a04f_eda0f467",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5348,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-22T17:23:13Z",
+      "side": 1,
+      "message": "Ha - that\u0027s why I gave it a +1 :-).  I am ok with it as is - my rationale is that this CL doesn\u0027t cause a regression from prior behavior and an improvement could be done with a subsequent CL.  But perhaps we should put in TODO comments as to the behavior to fix.\n\nI think in this spot, resetting the MSD patches with no active AudioTrack is benign - any delta changes required would be applied when the new AudioTrack is created.  However, if there is an active AudioTrack, this can cause unnecessary routing changes and glitching to the MSD playback experience.\n\nA brute force solution would be to convert setMsdPatches to take an attr and device. Those parameters would be cached for restoration.  Compare the following calls line 1012 vs line 1453\n\n outputDevices \u003d mEngine-\u003egetOutputDevicesForAttributes(*resultAttr, requestedDevice, false);\n\n outputDevices \u003d mEngine-\u003egetOutputDevicesForAttributes(\n                    attributes_initializer(AUDIO_USAGE_MEDIA), nullptr, false /*fromCache*/);\n\nSo previously used attr and device would be sufficient to restore the original desired behavior.  It is not as elegant as I would have liked, and to be honest, I don\u0027t have that much experience with MSD and AudioPolicy - maybe there is something better.",
+      "parentUuid": "1d7ce631_96770860",
+      "range": {
+        "startLine": 5348,
+        "startChar": 25,
+        "endLine": 5348,
+        "endChar": 28
+      },
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00d0f9a9_460d6b54",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 3
@@ -442,6 +466,30 @@
       "writtenOn": "2021-01-21T18:12:05Z",
       "side": 1,
       "message": "ditto",
+      "range": {
+        "startLine": 5415,
+        "startChar": 8,
+        "endLine": 5415,
+        "endChar": 21
+      },
+      "revId": "e5e38f719e1d115db3de3dfe6306618e650c779d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84d67cf6_a314c5e6",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 5415,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-22T17:23:13Z",
+      "side": 1,
+      "message": "Here, a device configuration change might reroute an active AudioTrack.  If that causes invalidation, it is likely that the AudioTrack with special routing requests will get rerouted correctly when the AudioTrack is recreated by the line in 1012.  In any case, I think it is better to do it correctly here as the setMsdPatches() code properly suppresses unnecessary patch changes and would avoid glitchy rerouting.",
+      "parentUuid": "00d0f9a9_460d6b54",
       "range": {
         "startLine": 5415,
         "startChar": 8,
