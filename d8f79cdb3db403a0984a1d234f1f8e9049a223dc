@@ -1,0 +1,159 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d5898ac_389311a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-23T05:45:34Z",
+      "side": 1,
+      "message": "minor nits, thanks!",
+      "revId": "d8f79cdb3db403a0984a1d234f1f8e9049a223dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90b273f8_e85d26f9",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-23T05:45:34Z",
+      "side": 1,
+      "message": "no need to change, but this is automatically promoted.",
+      "range": {
+        "startLine": 48,
+        "startChar": 19,
+        "endLine": 48,
+        "endChar": 27
+      },
+      "revId": "d8f79cdb3db403a0984a1d234f1f8e9049a223dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05181ce9_286c0bdc",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-23T05:45:34Z",
+      "side": 1,
+      "message": "if you hit kNumPeaks, is it time to break?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "d8f79cdb3db403a0984a1d234f1f8e9049a223dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be2eaeb8_e232ff9f",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-23T05:45:34Z",
+      "side": 1,
+      "message": "bool\n\nalternatively you could do the following:\n\n\nconst size_t periods \u003d pairAutoCorr1.first.size() - 1;\nsize_t matches;\nfor (matches \u003d 0; matches \u003c periods; ++matches) {\n    if () break;\n}\n\nif (matches \u003d\u003d periods) {\n...\n}",
+      "range": {
+        "startLine": 121,
+        "startChar": 4,
+        "endLine": 121,
+        "endChar": 7
+      },
+      "revId": "d8f79cdb3db403a0984a1d234f1f8e9049a223dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ea3ea62_31e6cf02",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-23T05:45:34Z",
+      "side": 1,
+      "message": "matched?",
+      "range": {
+        "startLine": 131,
+        "startChar": 42,
+        "endLine": 131,
+        "endChar": 50
+      },
+      "revId": "d8f79cdb3db403a0984a1d234f1f8e9049a223dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5c5a6f8_03eb092b",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-23T05:45:34Z",
+      "side": 1,
+      "message": "matched",
+      "range": {
+        "startLine": 153,
+        "startChar": 46,
+        "endLine": 153,
+        "endChar": 54
+      },
+      "revId": "d8f79cdb3db403a0984a1d234f1f8e9049a223dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cc6b315_b50e83c0",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-23T05:45:34Z",
+      "side": 1,
+      "message": "no need for this, it prints out as inf.",
+      "range": {
+        "startLine": 158,
+        "startChar": 16,
+        "endLine": 158,
+        "endChar": 84
+      },
+      "revId": "d8f79cdb3db403a0984a1d234f1f8e9049a223dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
