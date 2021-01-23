@@ -5338,6 +5338,23 @@ void AudioPolicyManager::closeInput(audio_io_handle_t input)
         mpClientInterface->onAudioPatchListUpdate();
     }
 
+    if (inputDesc->isActive()) {
+        sp<AudioPolicyMix> policyMix = inputDesc->mPolicyMix.promote();
+        if (audio_is_remote_submix_device(inputDesc->getDeviceType())) {
+            String8 address = String8("");
+            if (policyMix == nullptr) {
+                address = String8("0");
+            } else if (policyMix->mMixType == MIX_TYPE_PLAYERS) {
+                address = policyMix->mDeviceAddress;
+            }
+            if (address != "") {
+                setDeviceConnectionStateInt(AUDIO_DEVICE_OUT_REMOTE_SUBMIX,
+                                         AUDIO_POLICY_DEVICE_STATE_UNAVAILABLE,
+                                         address, "remote-submix", AUDIO_FORMAT_DEFAULT);
+            }
+        }
+    }
+
     inputDesc->close();
     mInputs.removeItem(input);
 
