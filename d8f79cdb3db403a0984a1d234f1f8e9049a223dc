@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8e596d2_614be32e",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-25T15:08:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90b273f8_e85d26f9",
+      "range": {
+        "startLine": 48,
+        "startChar": 19,
+        "endLine": 48,
+        "endChar": 27
+      },
+      "revId": "d8f79cdb3db403a0984a1d234f1f8e9049a223dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "05181ce9_286c0bdc",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-23T05:45:34Z",
       "side": 1,
       "message": "if you hit kNumPeaks, is it time to break?",
+      "range": {
+        "startLine": 57,
+        "startChar": 0,
+        "endLine": 57,
+        "endChar": 36
+      },
+      "revId": "d8f79cdb3db403a0984a1d234f1f8e9049a223dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf592d62_307c2f9d",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 57,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-25T15:08:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "05181ce9_286c0bdc",
       "range": {
         "startLine": 57,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "46937a5d_cee0cbb2",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-25T15:08:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "be2eaeb8_e232ff9f",
+      "range": {
+        "startLine": 121,
+        "startChar": 4,
+        "endLine": 121,
+        "endChar": 7
+      },
+      "revId": "d8f79cdb3db403a0984a1d234f1f8e9049a223dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4ea3ea62_31e6cf02",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-01-23T05:45:34Z",
       "side": 1,
       "message": "matched?",
+      "range": {
+        "startLine": 131,
+        "startChar": 42,
+        "endLine": 131,
+        "endChar": 50
+      },
+      "revId": "d8f79cdb3db403a0984a1d234f1f8e9049a223dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1531083_11ee9a2c",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-25T15:08:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ea3ea62_31e6cf02",
       "range": {
         "startLine": 131,
         "startChar": 42,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0c8c96c_204c53d6",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-25T15:08:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5c5a6f8_03eb092b",
+      "range": {
+        "startLine": 153,
+        "startChar": 46,
+        "endLine": 153,
+        "endChar": 54
+      },
+      "revId": "d8f79cdb3db403a0984a1d234f1f8e9049a223dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1cc6b315_b50e83c0",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-01-23T05:45:34Z",
       "side": 1,
       "message": "no need for this, it prints out as inf.",
+      "range": {
+        "startLine": 158,
+        "startChar": 16,
+        "endLine": 158,
+        "endChar": 84
+      },
+      "revId": "d8f79cdb3db403a0984a1d234f1f8e9049a223dc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f8b7094_c4d85bbd",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-01-25T15:08:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1cc6b315_b50e83c0",
       "range": {
         "startLine": 158,
         "startChar": 16,
