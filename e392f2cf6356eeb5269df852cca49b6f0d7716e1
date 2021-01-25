@@ -22,6 +22,30 @@
       },
       "revId": "e392f2cf6356eeb5269df852cca49b6f0d7716e1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57168a26_08f487c0",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-25T03:22:36Z",
+      "side": 0,
+      "message": "As of now, first parameter in the printed results (BM_LVM/x/y) represents number of channels.\nIf we keep both, it would be a little non-intuitive to say that parameter is.\nPlease let me know if you still prefer to keep the old channel masks in addition to the current  ones.",
+      "parentUuid": "c720dc3b_7c915eae",
+      "range": {
+        "startLine": 44,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 61
+      },
+      "revId": "e392f2cf6356eeb5269df852cca49b6f0d7716e1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
