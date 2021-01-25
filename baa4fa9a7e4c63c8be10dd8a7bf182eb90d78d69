@@ -33,6 +33,23 @@
       "message": "Sounds good, thanks!",
       "revId": "baa4fa9a7e4c63c8be10dd8a7bf182eb90d78d69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "267afe82_81c90030",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-25T16:43:59Z",
+      "side": 1,
+      "message": "there is an automerger conflict, so we will need to manually cherry pick this to our internal branch.",
+      "revId": "baa4fa9a7e4c63c8be10dd8a7bf182eb90d78d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
