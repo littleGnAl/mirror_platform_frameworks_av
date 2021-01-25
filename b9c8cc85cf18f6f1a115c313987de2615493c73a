@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4e6c4db_27460390",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-25T01:37:24Z",
+      "side": 1,
+      "message": "nit: up to",
+      "range": {
+        "startLine": 7,
+        "startChar": 38,
+        "endLine": 7,
+        "endChar": 42
+      },
+      "revId": "b9c8cc85cf18f6f1a115c313987de2615493c73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1b2cbc6_8e0e4c72",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-25T01:37:24Z",
+      "side": 1,
+      "message": "ditto",
+      "range": {
+        "startLine": 10,
+        "startChar": 0,
+        "endLine": 10,
+        "endChar": 4
+      },
+      "revId": "b9c8cc85cf18f6f1a115c313987de2615493c73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "24bd2af9_5bf50c9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-25T01:37:24Z",
+      "side": 1,
+      "message": "Looks fine, would like to see if we want to do 2 passes, one for positional, one for index masks, in case the handling is different.  I can see it would be redundant at this time.",
+      "revId": "b9c8cc85cf18f6f1a115c313987de2615493c73a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
