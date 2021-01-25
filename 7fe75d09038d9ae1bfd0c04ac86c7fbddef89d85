@@ -36,6 +36,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fba84d0_d1d82637",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-25T15:24:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f6b0f713_fcdf5e50",
+      "revId": "7fe75d09038d9ae1bfd0c04ac86c7fbddef89d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e604d18e_5990a78c",
@@ -308,6 +326,30 @@
       "side": 1,
       "message": "With the introduction of length normalization of computed correlation values, the pitch information extraction logic is slightly altered. We are computing  pitch from the difference of the indices at which consecutive correlation peaks occur.\n\nPlease let us know your inputs.",
       "parentUuid": "87f37bb1_6eebbcd2",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 100,
+        "endChar": 28
+      },
+      "revId": "7fe75d09038d9ae1bfd0c04ac86c7fbddef89d85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "23d7bc57_1ad467a7",
+        "filename": "media/libeffects/preprocessing/tests/correlation.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 100,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-25T15:24:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "666e748f_9d7f06bf",
       "range": {
         "startLine": 98,
         "startChar": 0,
