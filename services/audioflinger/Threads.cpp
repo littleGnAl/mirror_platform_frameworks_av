@@ -1489,7 +1489,7 @@ void AudioFlinger::ThreadBase::onEffectEnable(const sp<EffectModule>& effect) {
     if (!effect->isOffloadable()) {
         if (mType == ThreadBase::OFFLOAD) {
             PlaybackThread *t = (PlaybackThread *)this;
-            t->invalidateTracks(AUDIO_STREAM_MUSIC);
+            t->invalidateMediaTracks();
         }
         if (effect->sessionId() == AUDIO_SESSION_OUTPUT_MIX) {
             mAudioFlinger->onNonOffloadableGlobalEffectEnable();
@@ -3074,6 +3074,23 @@ void AudioFlinger::PlaybackThread::checkSilentMode_l()
     }
 }
 
+void AudioFlinger::PlaybackThread::invalidateMediaTracks()
+{
+    const audio_attributes_t mediaAttributes = attributes_initializer(AUDIO_USAGE_MEDIA);
+    std::vector<audio_port_handle_t> portToInvalidate;
+    for (size_t i = 0; i < mTracks.size(); i++) {
+        PlaybackThread::Track* track =
+                static_cast<PlaybackThread::Track *>(mTracks[i].get());
+        // Invalidate all tracks following AUDIO_USAGE_MEDIA routing
+        if (AudioSystem::followsSameRouting(mediaAttributes, track->attributes())) {
+            portToInvalidate.push_back(track->portId());
+        }
+    }
+    if (!portToInvalidate.empty()) {
+        invalidateTracks(portToInvalidate);
+    }
+}
+
 // shared by MIXER and DIRECT, overridden by DUPLICATING
 ssize_t AudioFlinger::PlaybackThread::threadLoop_write()
 {
@@ -3211,26 +3228,30 @@ void AudioFlinger::PlaybackThread::cacheParameters_l()
     }
 }
 
-bool AudioFlinger::PlaybackThread::invalidateTracks_l(audio_stream_type_t streamType)
+bool AudioFlinger::PlaybackThread::invalidateTracks_l(std::vector<audio_port_handle_t> &ports)
 {
-    ALOGV("MixerThread::invalidateTracks() mixer %p, streamType %d, mTracks.size %zu",
-            this,  streamType, mTracks.size());
+    ALOGV("MixerThread::invalidateTracks() mixer %p, ports %s, mTracks.size %zu",
+            this,  dumpPorts(ports).c_str(), mTracks.size());
     bool trackMatch = false;
-    size_t size = mTracks.size();
-    for (size_t i = 0; i < size; i++) {
-        sp<Track> t = mTracks[i];
-        if (t->streamType() == streamType && t->isExternalTrack()) {
-            t->invalidate();
+    for (const sp<PlaybackThread::Track> &track : mTracks) {
+        auto port = std::find(
+                    std::begin(ports), std::end(ports), track->portId());
+        if (track->isExternalTrack() && port != std::end(ports)) {
+            ports.erase(port);
+            track->invalidate();
             trackMatch = true;
+            if (ports.empty()) {
+                break;
+            }
         }
     }
     return trackMatch;
 }
 
-void AudioFlinger::PlaybackThread::invalidateTracks(audio_stream_type_t streamType)
+void AudioFlinger::PlaybackThread::invalidateTracks(std::vector<audio_port_handle_t> &ports)
 {
     Mutex::Autolock _l(mLock);
-    invalidateTracks_l(streamType);
+    invalidateTracks_l(ports);
 }
 
 status_t AudioFlinger::PlaybackThread::addEffectChain_l(const sp<EffectChain>& chain)
@@ -4685,8 +4706,12 @@ void AudioFlinger::PlaybackThread::onAddNewTrack_l()
 
 void AudioFlinger::PlaybackThread::onAsyncError()
 {
-    for (int i = AUDIO_STREAM_SYSTEM; i < (int)AUDIO_STREAM_CNT; i++) {
-        invalidateTracks((audio_stream_type_t)i);
+    Mutex::Autolock _l(mLock);
+    // @todo: ensure voice call tracks shall also be invalidated
+    for (const sp<PlaybackThread::Track> &track : mTracks) {
+        if (track->isExternalTrack()) {
+            track->invalidate();
+        }
     }
 }
 
@@ -6609,10 +6634,10 @@ void AudioFlinger::OffloadThread::flushHw_l()
     }
 }
 
-void AudioFlinger::OffloadThread::invalidateTracks(audio_stream_type_t streamType)
+void AudioFlinger::OffloadThread::invalidateTracks(std::vector<audio_port_handle_t> &ports)
 {
     Mutex::Autolock _l(mLock);
-    if (PlaybackThread::invalidateTracks_l(streamType)) {
+    if (PlaybackThread::invalidateTracks_l(ports)) {
         mFlushPending = true;
     }
 }
@@ -9542,15 +9567,20 @@ bool AudioFlinger::MmapPlaybackThread::isPortMuted() const
     return mPortMute;
 }
 
-void AudioFlinger::MmapPlaybackThread::invalidateTracks(audio_stream_type_t streamType)
+void AudioFlinger::MmapPlaybackThread::invalidateTracks(std::vector<audio_port_handle_t> &ports)
 {
     Mutex::Autolock _l(mLock);
-    if (streamType == mStreamType) {
-        for (const sp<MmapTrack> &track : mActiveTracks) {
+    for (const sp<MmapTrack> &track : mActiveTracks) {
+        auto portToInvalidate = std::find(std::begin(ports), std::end(ports), track->portId());
+        if (portToInvalidate != std::end(ports)) {
             track->invalidate();
+            ports.erase(portToInvalidate);
+            if (ports.empty()) {
+                break;
+            }
         }
-        broadcast_l();
     }
+    broadcast_l();
 }
 
 void AudioFlinger::MmapPlaybackThread::processVolume_l()

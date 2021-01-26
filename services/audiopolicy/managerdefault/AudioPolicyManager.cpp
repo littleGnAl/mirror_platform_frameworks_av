@@ -714,7 +714,7 @@ void AudioPolicyManager::setPhoneState(audio_mode_t state)
     if (isStateInCall(oldState)) {
         ALOGV("setPhoneState() in call state management: new state is %d", state);
         // force reevaluating accessibility routing when call stops
-        mpClientInterface->invalidateStream(AUDIO_STREAM_ACCESSIBILITY);
+        invalidateAttributes(attributes_initializer(AUDIO_USAGE_ASSISTANCE_ACCESSIBILITY));
     }
 
     /**
@@ -787,7 +787,7 @@ void AudioPolicyManager::setPhoneState(audio_mode_t state)
     if (isStateInCall(state)) {
         ALOGV("setPhoneState() in call state management: new state is %d", state);
         // force reevaluating accessibility routing when call starts
-        mpClientInterface->invalidateStream(AUDIO_STREAM_ACCESSIBILITY);
+        invalidateAttributes(attributes_initializer(AUDIO_USAGE_ASSISTANCE_ACCESSIBILITY));
     }
 
     // Flag that ringtone volume must be limited to music volume until we exit MODE_RINGTONE
@@ -820,8 +820,9 @@ void AudioPolicyManager::setForceUse(audio_policy_force_use_t usage,
 
     // force client reconnection to reevaluate flag AUDIO_FLAG_AUDIBILITY_ENFORCED
     if (usage == AUDIO_POLICY_FORCE_FOR_SYSTEM) {
-        mpClientInterface->invalidateStream(AUDIO_STREAM_SYSTEM);
-        mpClientInterface->invalidateStream(AUDIO_STREAM_ENFORCED_AUDIBLE);
+        invalidateAttributes(attributes_initializer(AUDIO_USAGE_ASSISTANCE_SONIFICATION));
+        invalidateAttributes(attributes_initializer_flags(
+                                 static_cast<audio_flags_mask_t>(AUDIO_FLAG_AUDIBILITY_ENFORCED)));
     }
 
     //FIXME: workaround for truncated touch sounds
@@ -1854,7 +1855,7 @@ status_t AudioPolicyManager::startSource(const sp<SwAudioOutputDescriptor>& outp
 
         // force reevaluating accessibility routing when ringtone or alarm starts
         if (followsSameRouting(clientAttr, attributes_initializer(AUDIO_USAGE_ALARM))) {
-            mpClientInterface->invalidateStream(AUDIO_STREAM_ACCESSIBILITY);
+            invalidateAttributes(attributes_initializer(AUDIO_USAGE_ASSISTANCE_ACCESSIBILITY));
         }
 
         if (waitMs > muteWaitMs) {
@@ -4169,9 +4170,7 @@ void AudioPolicyManager::checkStrategyRoute(product_strategy_t ps, audio_io_hand
         // invalidate all tracks in this strategy to force re connection.
         // Otherwise select new device on the output mix.
         if (outputs.indexOf(mOutputs.keyAt(j)) < 0) {
-            for (auto stream : mEngine->getStreamTypesForProductStrategy(ps)) {
-                mpClientInterface->invalidateStream(stream);
-            }
+            invalidateStrategy(ps);
         } else {
             setOutputDevices(
                         outputDesc, getNewOutputDevices(outputDesc, false /*fromCache*/), false);
@@ -5592,9 +5591,7 @@ void AudioPolicyManager::checkOutputForAttributes(const audio_attributes_t &attr
         }
         // Move tracks associated to this stream (and linked) from previous output to new output
         if (invalidate) {
-            for (auto stream :  mEngine->getStreamTypesForProductStrategy(psId)) {
-                mpClientInterface->invalidateStream(stream);
-            }
+            invalidateStrategy(psId);
         }
     }
 }
@@ -5609,7 +5606,7 @@ void AudioPolicyManager::checkOutputForAllStrategies()
 }
 
 void AudioPolicyManager::checkSecondaryOutputs() {
-    std::set<audio_stream_type_t> streamsToInvalidate;
+    std::set<product_strategy_t> strategiesToInvalidate;
     for (size_t i = 0; i < mOutputs.size(); i++) {
         const sp<SwAudioOutputDescriptor>& outputDescriptor = mOutputs[i];
         for (const sp<TrackClientDescriptor>& client : outputDescriptor->getClientIterable()) {
@@ -5630,13 +5627,13 @@ void AudioPolicyManager::checkSecondaryOutputs() {
                 !std::equal(client->getSecondaryOutputs().begin(),
                             client->getSecondaryOutputs().end(),
                             secondaryDescs.begin(), secondaryDescs.end())) {
-                streamsToInvalidate.insert(client->stream());
+                strategiesToInvalidate.insert(client->strategy());
             }
         }
     }
-    for (audio_stream_type_t stream : streamsToInvalidate) {
-        ALOGD("%s Invalidate stream %d due to secondary output change", __func__, stream);
-        mpClientInterface->invalidateStream(stream);
+    for (const auto &psId : strategiesToInvalidate) {
+        ALOGD("%s Invalidate Strategy %d due to secondary output change", __func__, psId);
+        invalidateStrategy(psId);
     }
 }
 

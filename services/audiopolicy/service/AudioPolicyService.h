@@ -727,8 +727,9 @@ private:
         status_t setPortsVolume(const std::vector<audio_port_handle_t> &ports,
                                 float volume, audio_io_handle_t output, int delayMs = 0) override;
 
-        // invalidate a stream type, causing a reroute to an unspecified new output
-        virtual status_t invalidateStream(audio_stream_type_t stream);
+
+        // invalidate a strategy, causing a reroute to an unspecified new output
+        status_t invalidatePorts(const std::vector<audio_port_handle_t> &ports) override;
 
         // function enabling to send proprietary informations directly from audio policy manager to audio hardware interface.
         virtual void setParameters(audio_io_handle_t ioHandle, const String8& keyValuePairs, int delayMs = 0);
