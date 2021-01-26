@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b2eb516a_fbac1349",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-01-26T06:08:26Z",
+      "side": 1,
+      "message": "Thanks for your reply Harish.",
+      "revId": "585130b67b5028d00063f4326bafc74472924137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "46ff66b3_262edfa2",
@@ -128,6 +145,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ecc6d9d_d3d03e1b",
+        "filename": "media/libstagefright/writer_fuzzers/amr_writer_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-01-26T06:08:26Z",
+      "side": 1,
+      "message": "okay.  May be renaming processData to initFileWriterAndProcessData sounds good? Existing name is also okay, coz it serves just as an entry point.",
+      "parentUuid": "f161ed31_02ed1bdf",
+      "range": {
+        "startLine": 48,
+        "startChar": 17,
+        "endLine": 48,
+        "endChar": 28
+      },
+      "revId": "585130b67b5028d00063f4326bafc74472924137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57a3a069_f453a9c7",
@@ -165,6 +206,30 @@
       "side": 1,
       "message": "in case of any errors (address sanitizer, integer sanitizer, segfaults etc), fuzzer binary aborts and stacktrace is logged in clusterfuzz.\n\nhence logs or a non-zero return code are not useful.",
       "parentUuid": "57a3a069_f453a9c7",
+      "range": {
+        "startLine": 49,
+        "startChar": 11,
+        "endLine": 49,
+        "endChar": 12
+      },
+      "revId": "585130b67b5028d00063f4326bafc74472924137",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67e3a9c7_02052962",
+        "filename": "media/libstagefright/writer_fuzzers/amr_writer_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-01-26T06:08:26Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1f97e9c9_3f6fc119",
       "range": {
         "startLine": 49,
         "startChar": 11,
