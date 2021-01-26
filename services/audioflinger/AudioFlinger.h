@@ -205,7 +205,7 @@ public:
 
     virtual status_t closeInput(audio_io_handle_t input);
 
-    virtual status_t invalidateStream(audio_stream_type_t stream);
+            status_t invalidatePorts(const std::vector<audio_port_handle_t> &ports) override;
 
     virtual status_t setVoiceVolume(float volume);
 
