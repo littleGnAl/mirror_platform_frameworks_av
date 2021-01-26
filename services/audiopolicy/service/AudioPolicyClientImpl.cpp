@@ -131,14 +131,16 @@ status_t AudioPolicyService::AudioPolicyClient::setPortsVolume(
     return mAudioPolicyService->setPortsVolume(ports, volume, output, delayMs);
 }
 
-status_t AudioPolicyService::AudioPolicyClient::invalidateStream(audio_stream_type_t stream)
+
+status_t AudioPolicyService::AudioPolicyClient::invalidatePorts(
+        const std::vector<audio_port_handle_t> &ports)
 {
     sp<IAudioFlinger> af = AudioSystem::get_audio_flinger();
     if (af == 0) {
         return PERMISSION_DENIED;
     }
 
-    return af->invalidateStream(stream);
+    return af->invalidatePorts(ports);
 }
 
 void AudioPolicyService::AudioPolicyClient::setParameters(audio_io_handle_t io_handle,
