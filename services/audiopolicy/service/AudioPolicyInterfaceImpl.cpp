@@ -1456,7 +1456,8 @@ status_t AudioPolicyService::listAudioProductStrategies(AudioProductStrategyVect
     if (mAudioPolicyManager == NULL) {
         return NO_INIT;
     }
-    Mutex::Autolock _l(mLock);
+    // No need to lock as accessing here to the list of strategies, which is parsed at policy
+    // initialization and can be considered as a static const list.
     return mAudioPolicyManager->listAudioProductStrategies(strategies);
 }
 
@@ -1466,7 +1467,8 @@ status_t AudioPolicyService::getProductStrategyFromAudioAttributes(
     if (mAudioPolicyManager == NULL) {
         return NO_INIT;
     }
-    Mutex::Autolock _l(mLock);
+    // No need to lock as accessing here to the list of strategies, which is parsed at policy
+    // initialization and can be considered as a static const list.
     return mAudioPolicyManager->getProductStrategyFromAudioAttributes(
                 aa, productStrategy, fallbackOnDefault);
 }
