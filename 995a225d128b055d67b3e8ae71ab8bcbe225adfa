@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83f085c8_a4101f3d",
+        "filename": "media/codec2/components/mpeg2/C2SoftMpeg2Dec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-26T19:23:21Z",
+      "side": 1,
+      "message": "here we have 16..1920 in steps of 4 (e.g. aligned to multiples of 4)\nbut on line 95, we seen 2..1920 in steps of 2.\n\nshouldn\u0027t the min and the step be aligned?",
+      "range": {
+        "startLine": 68,
+        "startChar": 46,
+        "endLine": 68,
+        "endChar": 49
+      },
+      "revId": "995a225d128b055d67b3e8ae71ab8bcbe225adfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e330756_1148d17b",
+        "filename": "media/codec2/components/mpeg2/C2SoftMpeg2Dec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-26T19:23:21Z",
+      "side": 1,
+      "message": "this means the codec will accept 1920x1920 videos.\nin addition to the intended 1920x1088  and 1088x1920\n\nsuch a 1920x1920 image would be twice as large -- so would require twice the computational\npower to decode.  is this ok?",
+      "range": {
+        "startLine": 69,
+        "startChar": 51,
+        "endLine": 69,
+        "endChar": 64
+      },
+      "revId": "995a225d128b055d67b3e8ae71ab8bcbe225adfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f81de786_bbdfd3c9",
+        "filename": "media/codec2/components/mpeg4_h263/C2SoftMpeg4Dec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-26T19:23:21Z",
+      "side": 1,
+      "message": "this changes the default max size for the mpeg4 case to a much smaller value.\nthat means if the configuration mediaformat does not specify the keys for max_picture_size, we\u0027re going to get a smaller limit,\npossibly surprising apps that try to go up to the previous default value.",
+      "range": {
+        "startLine": 130,
+        "startChar": 70,
+        "endLine": 130,
+        "endChar": 83
+      },
+      "revId": "995a225d128b055d67b3e8ae71ab8bcbe225adfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
