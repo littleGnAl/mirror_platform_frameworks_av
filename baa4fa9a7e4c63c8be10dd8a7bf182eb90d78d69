@@ -68,6 +68,29 @@
       "parentUuid": "267afe82_81c90030",
       "revId": "baa4fa9a7e4c63c8be10dd8a7bf182eb90d78d69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8488ddaa_04dac5c8",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-26T01:17:22Z",
+      "side": 1,
+      "message": "It seems that the outcome here may vary in the case of multiple MSD patches. I\u0027m getting a failure of these two tests while trying to apply this patch downstream:\n\nMsdAudioPatchCount/AudioPolicyManagerTestMsd#GetOutputForAttrEncodedRoutesToMsd/dual\nMsdAudioPatchCount/AudioPolicyManagerTestMsd#GetOutputForAttrEncodedPlusPcmRoutesToMsd/dual\n\nSometimes it\u0027s only GetOutputForAttrEncodedPlusPcmRoutesToMsd/dual. The failure is when the test compares the actual output handle against the expected one:\n\n    getOutputForAttr(\u0026selectedDeviceId,\n            AUDIO_FORMAT_AC3, AUDIO_CHANNEL_OUT_5POINT1, 48000, AUDIO_OUTPUT_FLAG_DIRECT);    \n    ASSERT_EQ(selectedDeviceId, mDefaultOutputDevice-\u003egetId());\n\nI think the problem is due to the fact that the returned value here isn\u0027t always the default output device as \u0027getFirstDeviceId\u0027 literally returns the first device from the list. Looks like \u0027msdDevices\u0027 need to be reorganized to make sure that \u0027default output device\u0027 comes first in this list.",
+      "range": {
+        "startLine": 1056,
+        "startChar": 0,
+        "endLine": 1056,
+        "endChar": 56
+      },
+      "revId": "baa4fa9a7e4c63c8be10dd8a7bf182eb90d78d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
