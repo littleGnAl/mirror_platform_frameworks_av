@@ -392,8 +392,13 @@ public:
                                     audio_io_handle_t output,
                                     int delayMs = 0) = 0;
 
-    // invalidate a stream type, causing a reroute to an unspecified new output
-    virtual status_t invalidateStream(audio_stream_type_t stream) = 0;
+    /**
+     * @brief invalidatePorts: it invalidates all the track matching the given ports,
+     * causing a reroute to an unspecified new output
+     * @param ports to be invalidated
+     * @return
+     */
+    virtual status_t invalidatePorts(const std::vector<audio_port_handle_t> &ports) = 0;
 
     // function enabling to send proprietary informations directly from audio policy manager to audio hardware interface.
     virtual void setParameters(audio_io_handle_t ioHandle, const String8& keyValuePairs, int delayMs = 0) = 0;
