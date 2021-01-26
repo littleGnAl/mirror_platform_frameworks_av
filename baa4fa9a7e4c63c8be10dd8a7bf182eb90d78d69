@@ -91,6 +91,30 @@
       },
       "revId": "baa4fa9a7e4c63c8be10dd8a7bf182eb90d78d69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a750f8e_021b92eb",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2021-01-26T23:00:55Z",
+      "side": 1,
+      "message": "Hi Mikhail,\n\nI checked \u0027msdDevices\u0027 and it contains only the OUT_BUS device. This would compare successfully with the check:\n\n    ASSERT_EQ(selectedDeviceId, mMsdOutputDevice-\u003egetId());\n\nI don\u0027t think I have visibility of the downstream code but since the test is now comparing:\n\n    ASSERT_EQ(selectedDeviceId, mDefaultOutputDevice-\u003egetId());\n\ndoes that mean we are now reporting the actual sink for MSD playback threads? If that is the case, then I would expect that the line below wouldn\u0027t be present in the downstream code anymore:\n\n    outputDevices \u003d msdDevices;\n\nWould you be able to check for me whether that is indeed the case?\n\nAssuming the line above isn\u0027t present, that means \u0027outputDevices\u0027 has more than one device as expected for dual patches. Then your argument regarding the ordering of devices in \u0027outputDevices\u0027 applies. Would the code below solve this issue for downstream by reporting the best matching device?\n\n    std::vector\u003caudio_devices_t\u003e deviceTypes;\n    if (requestedDevice !\u003d nullptr) {\n        deviceTypes.push_back(requestedDevice-\u003etype());\n    }\n    deviceTypes.push_back(getConfig().getDefaultOutputDevice()-\u003etype());\n    DeviceVector devices \u003d outputDevices.getFirstDevicesFromTypes(deviceTypes);\n    if (devices.empty()) {\n        devices \u003d outputDevices;\n    }\n    *selectedDeviceId \u003d getFirstDeviceId(devices);\n\nThanks, Michael",
+      "parentUuid": "8488ddaa_04dac5c8",
+      "range": {
+        "startLine": 1056,
+        "startChar": 0,
+        "endLine": 1056,
+        "endChar": 56
+      },
+      "revId": "baa4fa9a7e4c63c8be10dd8a7bf182eb90d78d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
