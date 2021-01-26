@@ -57,7 +57,7 @@ public:
 private:
     std::string mName;
     std::vector<AudioAttributes> mAudioAttributes;
-    product_strategy_t mId;
+    product_strategy_t mId = PRODUCT_STRATEGY_NONE;
 };
 
 using AudioProductStrategyVector = std::vector<AudioProductStrategy>;
