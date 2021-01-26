@@ -65,7 +65,7 @@ public:
                 .withDefault(new C2StreamPictureSizeInfo::output(0u, 320, 240))
                 .withFields({
                     C2F(mSize, width).inRange(16, 1920, 4),
-                    C2F(mSize, height).inRange(16, 1088, 4),
+                    C2F(mSize, height).inRange(16, 1920, 4),
                 })
                 .withSetter(SizeSetter)
                 .build());
@@ -92,7 +92,7 @@ public:
                 .withDefault(new C2StreamMaxPictureSizeTuning::output(0u, 320, 240))
                 .withFields({
                     C2F(mSize, width).inRange(2, 1920, 2),
-                    C2F(mSize, height).inRange(2, 1088, 2),
+                    C2F(mSize, height).inRange(2, 1920, 2),
                 })
                 .withSetter(MaxPictureSizeSetter, mSize)
                 .build());

@@ -77,10 +77,10 @@ public:
                 .withFields({
 #ifdef MPEG4
                     C2F(mSize, width).inRange(2, 1920, 2),
-                    C2F(mSize, height).inRange(2, 1088, 2),
+                    C2F(mSize, height).inRange(2, 1920, 2),
 #else
                     C2F(mSize, width).inRange(2, 352, 2),
-                    C2F(mSize, height).inRange(2, 288, 2),
+                    C2F(mSize, height).inRange(2, 352, 2),
 #endif
                 })
                 .withSetter(SizeSetter)
@@ -138,10 +138,10 @@ public:
                 .withFields({
 #ifdef MPEG4
                     C2F(mSize, width).inRange(2, 1920, 2),
-                    C2F(mSize, height).inRange(2, 1088, 2),
+                    C2F(mSize, height).inRange(2, 1920, 2),
 #else
                     C2F(mSize, width).inRange(2, 352, 2),
-                    C2F(mSize, height).inRange(2, 288, 2),
+                    C2F(mSize, height).inRange(2, 352, 2),
 #endif
                 })
                 .withSetter(MaxPictureSizeSetter, mSize)
