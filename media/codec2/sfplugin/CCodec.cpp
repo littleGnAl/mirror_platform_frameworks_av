@@ -1951,7 +1951,7 @@ PersistentSurface *CCodec::CreateInputSurface() {
     std::shared_ptr<Codec2Client::InputSurface> inputSurface =
             Codec2Client::CreateInputSurface();
     if (!inputSurface) {
-        if (property_get_int32("debug.stagefright.c2inputsurface", 0) == -1) {
+        if (property_get_int32("debug.stagefright.c2inputsurface", 0) == 0) {
             sp<IGraphicBufferProducer> gbp;
             sp<OmxGraphicBufferSource> gbs = new OmxGraphicBufferSource();
             status_t err = gbs->initCheck();
