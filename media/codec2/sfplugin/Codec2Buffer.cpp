@@ -581,23 +581,6 @@ GraphicMetadataBuffer::GraphicMetadataBuffer(
 }
 
 std::shared_ptr<C2Buffer> GraphicMetadataBuffer::asC2Buffer() {
-#ifdef __LP64__
-    static std::once_flag s_checkOnce;
-    static bool s_64bitonly {false};
-    std::call_once(s_checkOnce, [&](){
-        const std::string abi32list =
-        ::android::base::GetProperty("ro.product.cpu.abilist32", "");
-        if (abi32list.empty()) {
-            s_64bitonly = true;
-        }
-    });
-
-    if (!s_64bitonly) {
-        ALOGE("GraphicMetadataBuffer does not work in 32+64 system if compiled as 64-bit object");
-        return nullptr;
-    }
-#endif
-
     VideoNativeMetadata *meta = (VideoNativeMetadata *)base();
     ANativeWindowBuffer *buffer = (ANativeWindowBuffer *)meta->pBuffer;
     if (buffer == nullptr) {
