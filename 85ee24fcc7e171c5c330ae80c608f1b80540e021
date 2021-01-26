@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80167fc8_7041c380",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 28
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-01-26T14:41:55Z",
+      "side": 1,
+      "message": "@Eric: test added to cover case of invalidation within\n-setPhoneState\n-startAudioSource\n-setForceUse",
+      "revId": "85ee24fcc7e171c5c330ae80c608f1b80540e021",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
