@@ -616,6 +616,7 @@ private:
     static audio_io_handle_t getOutput(audio_stream_type_t stream);
     static const sp<AudioFlingerClient> getAudioFlingerClient();
     static sp<AudioIoDescriptor> getIoDescriptor(audio_io_handle_t ioHandle);
+    static product_strategy_t getDefaultAudioProductStrategy();
 
     // Invokes all registered error callbacks with the given error code.
     static void reportError(status_t err);
@@ -640,6 +641,9 @@ private:
     static audio_channel_mask_t gPrevInChannelMask;
 
     static sp<IAudioPolicyService> gAudioPolicyService;
+
+    static AudioProductStrategyVector gAudioProductStrategies;
+    static AudioProductStrategy gDefaultAudioProductStrategy;
 };
 
 };  // namespace android
