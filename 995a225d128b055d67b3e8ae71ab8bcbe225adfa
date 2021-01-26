@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d660a0bd_a938c16e",
+        "filename": "media/codec2/components/mpeg2/C2SoftMpeg2Dec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-26T20:04:47Z",
+      "side": 1,
+      "message": "Changed mpeg2 alignment to 2 to be consistent with rest of the decoders.",
+      "parentUuid": "83f085c8_a4101f3d",
+      "range": {
+        "startLine": 68,
+        "startChar": 46,
+        "endLine": 68,
+        "endChar": 49
+      },
+      "revId": "995a225d128b055d67b3e8ae71ab8bcbe225adfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4e330756_1148d17b",
         "filename": "media/codec2/components/mpeg2/C2SoftMpeg2Dec.cpp",
         "patchSetId": 2
@@ -49,6 +73,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5165b452_2e627a07",
+        "filename": "media/codec2/components/mpeg2/C2SoftMpeg2Dec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-26T20:04:47Z",
+      "side": 1,
+      "message": "this doesn\u0027t guarantee that 1920x1920 will play realtime on all platforms. This just guarantees that decoder will be able to decode this resolution. \nAll the soft decoders have similar max dimensions (where width and height are allowed to reach their max supported values)",
+      "parentUuid": "4e330756_1148d17b",
+      "range": {
+        "startLine": 69,
+        "startChar": 51,
+        "endLine": 69,
+        "endChar": 64
+      },
+      "revId": "995a225d128b055d67b3e8ae71ab8bcbe225adfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f81de786_bbdfd3c9",
         "filename": "media/codec2/components/mpeg4_h263/C2SoftMpeg4Dec.cpp",
         "patchSetId": 2
@@ -60,6 +108,30 @@
       "writtenOn": "2021-01-26T19:23:21Z",
       "side": 1,
       "message": "this changes the default max size for the mpeg4 case to a much smaller value.\nthat means if the configuration mediaformat does not specify the keys for max_picture_size, we\u0027re going to get a smaller limit,\npossibly surprising apps that try to go up to the previous default value.",
+      "range": {
+        "startLine": 130,
+        "startChar": 70,
+        "endLine": 130,
+        "endChar": 83
+      },
+      "revId": "995a225d128b055d67b3e8ae71ab8bcbe225adfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b0a25706_1f590cb1",
+        "filename": "media/codec2/components/mpeg4_h263/C2SoftMpeg4Dec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-26T20:04:47Z",
+      "side": 1,
+      "message": "this makes it consistent with rest of the decoders which also have a lower default value.\nDefault doesn\u0027t need to be different for mpeg4 or h263 decoder. Same default is fine.",
+      "parentUuid": "f81de786_bbdfd3c9",
       "range": {
         "startLine": 130,
         "startChar": 70,
