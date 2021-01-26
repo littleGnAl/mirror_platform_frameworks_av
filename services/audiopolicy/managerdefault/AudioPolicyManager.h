@@ -448,6 +448,41 @@ protected:
             ALOG_ASSERT(curves != nullptr, "No curves for stream %s", toString(stream).c_str());
             return *curves;
         }
+        void invalidateAttributes(const audio_attributes_t &attr)
+        {
+            /**
+             * What to do if falling back on default strategy (aka music, so no specific routing for
+             * accessibility: 2 solution: do not allow fallback and no-op, or force reevaluate
+             * default strategy routing
+             */
+            const auto &psId = mEngine->getProductStrategyForAttributes(attr, false);
+            if (psId != PRODUCT_STRATEGY_NONE) {
+                invalidateStrategy(psId);
+            }
+        }
+        void invalidateStrategy(product_strategy_t strategy)
+        {
+            auto portsToInvalidate = getPortsForStrategy(strategy);
+            if (portsToInvalidate.empty()) {
+                return;
+            }
+            mpClientInterface->invalidatePorts(portsToInvalidate);
+        }
+
+        std::vector<audio_port_handle_t> getPortsForStrategy(product_strategy_t strategy)
+        {
+            std::vector<audio_port_handle_t> portsForStrategy;
+            // Loop on all outputs
+            for (size_t i = 0; i < mOutputs.size(); i++) {
+                sp<SwAudioOutputDescriptor> desc = mOutputs.valueAt(i);
+                for (const auto& client : desc->getClientIterable()) {
+                    if (client->strategy() == strategy) {
+                        portsForStrategy.push_back(client->portId());
+                    }
+                }
+            }
+            return portsForStrategy;
+        }
 
         void addOutput(audio_io_handle_t output, const sp<SwAudioOutputDescriptor>& outputDesc);
         void removeOutput(audio_io_handle_t output);

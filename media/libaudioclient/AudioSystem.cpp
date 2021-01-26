@@ -45,6 +45,8 @@ sp<AudioSystem::AudioFlingerClient> AudioSystem::gAudioFlingerClient;
 std::set<audio_error_callback> AudioSystem::gAudioErrorCallbacks;
 dynamic_policy_callback AudioSystem::gDynPolicyCallback = NULL;
 record_config_callback AudioSystem::gRecordConfigCallback = NULL;
+AudioProductStrategyVector AudioSystem::gAudioProductStrategies{};
+AudioProductStrategy AudioSystem::gDefaultAudioProductStrategy{};
 
 // Required to be held while calling into gSoundTriggerCaptureStateListener.
 class CaptureStateListenerImpl;
@@ -1511,9 +1513,16 @@ status_t AudioSystem::getHwOffloadEncodingFormatsSupportedForA2DP(
 
 status_t AudioSystem::listAudioProductStrategies(AudioProductStrategyVector &strategies)
 {
-    const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
-    if (aps == 0) return PERMISSION_DENIED;
-    return aps->listAudioProductStrategies(strategies);
+    if (gAudioProductStrategies.empty()) {
+        const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
+        if (aps == 0) return PERMISSION_DENIED;
+        status_t ret = aps->listAudioProductStrategies(gAudioProductStrategies);
+        if (ret != NO_ERROR) {
+            return ret;
+        }
+    }
+    strategies = gAudioProductStrategies;
+    return NO_ERROR;
 }
 
 audio_attributes_t AudioSystem::streamTypeToAttributes(audio_stream_type_t stream)
@@ -1564,12 +1573,53 @@ audio_stream_type_t AudioSystem::attributesToStreamType(const audio_attributes_t
     return AUDIO_STREAM_MUSIC;
 }
 
+product_strategy_t AudioSystem::getDefaultAudioProductStrategy()
+{
+    if (gDefaultAudioProductStrategy.getId() != PRODUCT_STRATEGY_NONE) {
+        return gDefaultAudioProductStrategy.getId();
+    }
+    AudioProductStrategyVector strategies;
+    listAudioProductStrategies(strategies);
+    for (const auto &strategy : strategies) {
+        const auto &aaVector = strategy.getAudioAttributes();
+        const auto &aaIt = std::find_if(begin(aaVector), end(aaVector), [](const auto &supportedAa) {
+            return supportedAa.getAttributes() == AUDIO_ATTRIBUTES_INITIALIZER;;
+        });
+        if (aaIt != end(aaVector)) {
+            ALOGV("%s default strategy %s found", __func__, strategy.getName().c_str());
+            gDefaultAudioProductStrategy = strategy;
+            return strategy.getId();
+        }
+    }
+    return PRODUCT_STRATEGY_NONE;
+}
+
 status_t AudioSystem::getProductStrategyFromAudioAttributes(
         const AudioAttributes &aa, product_strategy_t &productStrategy, bool fallbackOnDefault)
 {
-    const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
-    if (aps == 0) return PERMISSION_DENIED;
-    return aps->getProductStrategyFromAudioAttributes(aa, productStrategy, fallbackOnDefault);
+    AudioProductStrategyVector strategies;
+    listAudioProductStrategies(strategies);
+    auto findStrategy = [&](const auto &attr) {
+        for (const auto &strategy : strategies) {
+            const auto &aaVector = strategy.getAudioAttributes();
+            const auto &aaFound = std::find_if(begin(aaVector), end(aaVector),
+                                                [&attr](const auto &supportedAa) {
+                return AudioProductStrategy::attributesMatches(supportedAa.getAttributes(), attr);
+            });
+            if (aaFound != end(aaVector)) {
+                return strategy.getId();
+            }
+        }
+        return PRODUCT_STRATEGY_NONE;
+    };
+    productStrategy = findStrategy(aa.getAttributes());
+    if (productStrategy != PRODUCT_STRATEGY_NONE || !fallbackOnDefault) {
+        return NO_ERROR;
+    }
+    ALOGW("%s no strategy found for attributes %s, looking for default", __func__,
+        toString(aa.getAttributes()).c_str());
+    productStrategy = getDefaultAudioProductStrategy();
+    return productStrategy != PRODUCT_STRATEGY_NONE ? NO_ERROR : BAD_VALUE;
 }
 
 status_t AudioSystem::listAudioVolumeGroups(AudioVolumeGroupVector &groups)
