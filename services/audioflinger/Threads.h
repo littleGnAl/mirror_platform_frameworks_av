@@ -918,8 +918,15 @@ public:
                 virtual bool     isValidSyncEvent(const sp<SyncEvent>& event) const;
 
                 // called with AudioFlinger lock held
-                        bool     invalidateTracks_l(audio_stream_type_t streamType);
-                virtual void     invalidateTracks(audio_stream_type_t streamType);
+                        bool     invalidateTracks_l(std::vector<audio_port_handle_t> &ports);
+
+                void invalidateMediaTracks();
+
+                /**
+                 * @brief invalidateTracks invalidates all tracks identified by their port ids.
+                 * @param ports to be considered
+                 */
+                virtual void     invalidateTracks(std::vector<audio_port_handle_t> &ports);
 
     virtual     size_t      frameCount() const { return mNormalFrameCount; }
 
@@ -1423,7 +1430,7 @@ protected:
 
     virtual     bool        waitingAsyncCallback();
     virtual     bool        waitingAsyncCallback_l();
-    virtual     void        invalidateTracks(audio_stream_type_t streamType);
+                void        invalidateTracks(std::vector<audio_port_handle_t> &ports) override;
 
     virtual     bool        keepWakeLock() const { return (mKeepWakeLock || (mDrainSequence & 1)); }
 
@@ -1854,7 +1861,11 @@ class MmapThread : public ThreadBase
 
     virtual     audio_stream_type_t streamType() { return AUDIO_STREAM_DEFAULT; }
 
-    virtual     void        invalidateTracks(audio_stream_type_t streamType __unused) {}
+    /**
+     * @brief invalidateTracks invalidates all tracks identified by their port ids.
+     * @param ports to be considered
+     */
+    virtual     void        invalidateTracks(std::vector<audio_port_handle_t> &/*ports*/) {}
 
                 // Sets the UID records silence
     virtual     void        setRecordSilenced(audio_port_handle_t portId __unused,
@@ -1913,7 +1924,7 @@ public:
 
                 void        setMasterMute_l(bool muted) { mMasterMute = muted; }
 
-    virtual     void        invalidateTracks(audio_stream_type_t streamType);
+                void        invalidateTracks(std::vector<audio_port_handle_t> &ports) override;
 
     virtual     audio_stream_type_t streamType() { return mStreamType; }
     virtual     void        checkSilentMode_l();
