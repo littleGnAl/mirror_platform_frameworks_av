@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cde1bfc3_35d3b8ba",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2021-01-26T05:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d988cc7c_ac1b7591",
+      "revId": "4f2d57e329730c48976f22feafd2d3cc238ac8f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a7e52eef_36156777",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-01-21T19:12:35Z",
       "side": 1,
       "message": "nit: a space after comma",
+      "range": {
+        "startLine": 111,
+        "startChar": 57,
+        "endLine": 111,
+        "endChar": 58
+      },
+      "revId": "4f2d57e329730c48976f22feafd2d3cc238ac8f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7719dc8d_f3e8de37",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2021-01-26T05:15:53Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a7e52eef_36156777",
       "range": {
         "startLine": 111,
         "startChar": 57,
