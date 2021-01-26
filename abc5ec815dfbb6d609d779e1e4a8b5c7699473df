@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007607831",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1535002?revision\u003d4",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "3192f5e5_21de5c1c",
+        "filename": "services/audiopolicy/config/bluetooth_audio_policy_configuration.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-26T14:07:56Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 109
+      },
+      "revId": "abc5ec815dfbb6d609d779e1e4a8b5c7699473df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007607831",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1535002?revision\u003d4",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "3866d37c_b6dd3675",
+        "filename": "services/audiopolicy/config/le_audio_policy_configuration.xml",
+        "patchSetId": 4
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-26T14:07:56Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 6,
+        "endChar": 109
+      },
+      "revId": "abc5ec815dfbb6d609d779e1e4a8b5c7699473df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
