@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6983b71_b8bd3882",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1954,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-01-27T00:06:07Z",
+      "side": 1,
+      "message": "hmm.\non pixel, i see from getprop:\n[debug.stagefright.c2inputsurface]: [-1]\n\nso perhaps the solution is that we should be setting this property as part of the device configurations?\n\notherwise, I fear that this will change the flow (and therefore) break the pixel builds...",
+      "range": {
+        "startLine": 1954,
+        "startChar": 38,
+        "endLine": 1954,
+        "endChar": 75
+      },
+      "revId": "9c85403c0d30b58398ba0788cddb53d9cbf6ea83",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
