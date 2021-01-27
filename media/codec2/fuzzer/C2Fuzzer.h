@@ -43,7 +43,7 @@ constexpr uint32_t kHeightOfVideo = 2160;
 constexpr uint32_t kSamplingRateOfAudio = 48000;
 constexpr uint32_t kChannelsOfAudio = 8;
 
-typedef std::tuple<uint8_t*, size_t, uint32_t> FrameData;
+typedef std::tuple<uint8_t*, int32_t, uint32_t> FrameData;
 
 class Codec2Fuzzer {
  public:
@@ -59,8 +59,9 @@ class Codec2Fuzzer {
  private:
   class BufferSource {
    public:
-    BufferSource(const uint8_t* data, size_t size)
-        : mData(data), mSize(size), mReadIndex(size - kMarkerSize) {}
+    BufferSource(const uint8_t* data, int32_t size) : mData(data), mSize(size) {
+      mReadIndex = (size <= kMarkerSize) ? 0 : (size - kMarkerSize);
+    }
     ~BufferSource() {
       mData = nullptr;
       mSize = 0;
@@ -72,25 +73,35 @@ class Codec2Fuzzer {
     FrameData getFrame();
 
    private:
-    bool isMarker() { return (memcmp(&mData[mReadIndex], kMarker, kMarkerSize) == 0); }
+    bool isMarker() {
+      if ((mReadIndex >= 0) && (mReadIndex + kMarkerSize < mSize)) {
+        return (memcmp(&mData[mReadIndex], kMarker, kMarkerSize) == 0);
+      } else {
+        return false;
+      }
+    }
 
-    bool isCSDMarker(size_t position) {
-      return (memcmp(&mData[position], kCsdMarkerSuffix, kMarkerSuffixSize) == 0);
+    bool isCSDMarker(int32_t position) {
+      if ((position >= 0) && (position + kMarkerSize < mSize)) {
+        return (memcmp(&mData[position], kCsdMarkerSuffix, kMarkerSuffixSize) == 0);
+      } else {
+        return false;
+      }
     }
 
     bool searchForMarker();
 
     const uint8_t* mData = nullptr;
-    size_t mSize = 0;
-    size_t mReadIndex = 0;
+    int32_t mSize = 0;
+    int32_t mReadIndex = 0;
     std::vector<FrameData> mFrameList;
     static constexpr uint8_t kMarker[] = "_MARK";
     static constexpr uint8_t kCsdMarkerSuffix[] = "_H_";
     static constexpr uint8_t kFrameMarkerSuffix[] = "_F_";
     // All markers should be 5 bytes long ( sizeof '_MARK' which is 5)
-    static constexpr size_t kMarkerSize = (sizeof(kMarker) - 1);
+    static constexpr int32_t kMarkerSize = (sizeof(kMarker) - 1);
     // All marker types should be 3 bytes long ('_H_', '_F_')
-    static constexpr size_t kMarkerSuffixSize = 3;
+    static constexpr int32_t kMarkerSuffixSize = 3;
   };
 
   BufferSource* mBufferSource;

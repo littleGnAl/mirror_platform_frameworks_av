@@ -72,7 +72,7 @@ bool Codec2Fuzzer::BufferSource::searchForMarker() {
       return true;
     }
     --mReadIndex;
-    if (mReadIndex > mSize) {
+    if (mReadIndex < 0) {
       break;
     }
   }
@@ -81,15 +81,15 @@ bool Codec2Fuzzer::BufferSource::searchForMarker() {
 
 void Codec2Fuzzer::BufferSource::parse() {
   bool isFrameAvailable = true;
-  size_t bytesRemaining = mSize;
+  int32_t bytesRemaining = static_cast<int32_t>(mSize);
   while (isFrameAvailable) {
     isFrameAvailable = searchForMarker();
     if (isFrameAvailable) {
-      size_t location = mReadIndex + kMarkerSize;
+      int32_t location = mReadIndex + kMarkerSize;
       bool isCSD = isCSDMarker(location);
       location += kMarkerSuffixSize;
       uint8_t* framePtr = const_cast<uint8_t*>(&mData[location]);
-      size_t frameSize = bytesRemaining - location;
+      int32_t frameSize = bytesRemaining - location;
       uint32_t flags = 0;
       if (mFrameList.empty()) {
         flags |= C2FrameData::FLAG_END_OF_STREAM;
@@ -108,8 +108,8 @@ void Codec2Fuzzer::BufferSource::parse() {
      */
     mFrameList.emplace_back(
         std::make_tuple(const_cast<uint8_t*>(mData), 0, C2FrameData::FLAG_END_OF_STREAM));
-    mFrameList.emplace_back(
-        std::make_tuple(const_cast<uint8_t*>(mData), mSize, C2FrameData::FLAG_CODEC_CONFIG));
+    mFrameList.emplace_back(std::make_tuple(
+        const_cast<uint8_t*>(mData), static_cast<int32_t>(mSize), C2FrameData::FLAG_CODEC_CONFIG));
   }
 }
 
@@ -148,9 +148,8 @@ bool Codec2Fuzzer::initDecoder() {
   std::vector<std::tuple<C2String, C2ComponentFactory::CreateCodec2FactoryFunc,
         C2ComponentFactory::DestroyCodec2FactoryFunc>> codec2FactoryFunc;
 
-  codec2FactoryFunc.emplace_back(std::make_tuple(C2COMPONENTNAME,
-                                                &CreateCodec2Factory,
-                                                &DestroyCodec2Factory));
+  codec2FactoryFunc.emplace_back(
+      std::make_tuple(C2COMPONENTNAME, &CreateCodec2Factory, &DestroyCodec2Factory));
 
   std::shared_ptr<C2ComponentStore> componentStore = GetTestComponentStore(codec2FactoryFunc);
   if (!componentStore) {
@@ -240,7 +239,7 @@ void Codec2Fuzzer::deInitDecoder() {
 }
 
 void Codec2Fuzzer::decodeFrames(const uint8_t* data, size_t size) {
-  mBufferSource = new BufferSource(data, size);
+  mBufferSource = new BufferSource(data, static_cast<int32_t>(size));
   if (!mBufferSource) {
     return;
   }
@@ -252,7 +251,7 @@ void Codec2Fuzzer::decodeFrames(const uint8_t* data, size_t size) {
     size_t frameSize = 0;
     FrameData frameData = mBufferSource->getFrame();
     frame = std::get<0>(frameData);
-    frameSize = std::get<1>(frameData);
+    frameSize = static_cast<size_t>(std::get<1>(frameData));
 
     std::unique_ptr<C2Work> work;
     {
