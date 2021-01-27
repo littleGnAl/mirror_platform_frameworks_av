@@ -16,6 +16,40 @@
       "message": "Thanks for the review! Updated the patch to address the feedback. Let me know if there is anything else.",
       "revId": "a925d1491f9814a89981a81f2c3ce0eb660551c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ae1188d_c93db622",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2021-01-27T00:31:32Z",
+      "side": 1,
+      "message": "Going to respin this one more time to address the case where the override is set but the dmabuf heaps are not supported.",
+      "revId": "a925d1491f9814a89981a81f2c3ce0eb660551c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbfab3bd_b40de80f",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1010110
+      },
+      "writtenOn": "2021-01-27T00:31:32Z",
+      "side": 1,
+      "message": "I\u0027m going to rework this to do better checking that the override will succeed, so we don\u0027t lean on the implicit fallback in libdmabufheap which might have unexpected results.",
+      "revId": "a925d1491f9814a89981a81f2c3ce0eb660551c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
