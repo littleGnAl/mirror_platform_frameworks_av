@@ -115,6 +115,30 @@
       },
       "revId": "baa4fa9a7e4c63c8be10dd8a7bf182eb90d78d69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd660888_2a599d2b",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-27T01:09:13Z",
+      "side": 1,
+      "message": "Good catch about the missing line! In fact, that line was removed in the patch that enables reporting of the actual sink device. You can see that this line was already absent on the Partner Gerrit source where you had initially uploaded your CL (PG is the downstream code, actually).\n\nSo, I\u0027ve upstreamed to AOSP Eric\u0027s patch for reporting the actual sink device, prepending your CL with it, resolved merge conflicts (now the CL is the same as it was on the PG modulo comments addressed on AOSP). And now I\u0027m having the same audiopolicy_tests failures as I had previously downstream.\n\nThus, now we are on the same page in AOSP. Michael, please find the best way to address the test failure since unfortunately I don\u0027t have time at the moment. Thanks for your patience!",
+      "parentUuid": "9a750f8e_021b92eb",
+      "range": {
+        "startLine": 1056,
+        "startChar": 0,
+        "endLine": 1056,
+        "endChar": 56
+      },
+      "revId": "baa4fa9a7e4c63c8be10dd8a7bf182eb90d78d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
