@@ -139,6 +139,30 @@
       },
       "revId": "baa4fa9a7e4c63c8be10dd8a7bf182eb90d78d69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f389d2d_619f1d6f",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-27T19:30:50Z",
+      "side": 1,
+      "message": "Thanks for working on this, Michael! Indeed the PS7 passes APM unit tests both in AOSP and downstream. However, I have a concern about the proposed approach. The issue is that by operating on device types only we can end up selecting a wrong device in the case when there are multiple devices with the same type but a different address. This isn\u0027t a problem in the unit test because there the device types are distinct, but this issue can arise in automotive case which typically uses multiple BUS devices with different addresses.\n\nI think what we need to do is--instead of using \u0027getFirstDeviceId\u0027 just implement a loop over \u0027outputDevices\u0027 to pick preferrably the same device (same id) as \u0027getDefaultOutputDevice\u0027, or resort to choosing the first device.",
+      "parentUuid": "dd660888_2a599d2b",
+      "range": {
+        "startLine": 1056,
+        "startChar": 0,
+        "endLine": 1056,
+        "endChar": 56
+      },
+      "revId": "baa4fa9a7e4c63c8be10dd8a7bf182eb90d78d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
