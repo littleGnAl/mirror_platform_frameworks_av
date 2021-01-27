@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c1bafbfd_36d0461f",
+        "filename": "camera/ndk/include/camera/NdkCameraMetadata.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2021-01-27T01:26:21Z",
+      "side": 0,
+      "message": "these are guarding an #include, so probably should be kept?  Though I don\u0027t recall _why_ that include needs guarding (jni.h not available on earlier API levels, maybe?)",
+      "revId": "38b2948cbc9922915c838cbe5222d071949f49d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
