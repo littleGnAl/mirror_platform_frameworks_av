@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4cc2622_0c5b465d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-01-27T17:17:49Z",
+      "side": 1,
+      "message": "you\u0027ll see all these changes again in internal, since i\u0027ll have to deal with the merge conflicts... hopefully later today :-)",
+      "revId": "7803bcb5514ae953687b51a97b6b7795679e0ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f44a57b5_1a1b268a",
@@ -20,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "193d6939_e82c6b67",
+        "filename": "camera/ndk/include/camera/NdkCameraCaptureSession.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-01-27T17:17:49Z",
+      "side": 1,
+      "message": "actually, it was always the intention that all the types should be visible all the time, to help those developers who\u0027re trying to use dlsym() for \"reflection\" (or at least prevent them from copy \u0026 pasting all the types into their code).\n\nbut, yeah, in practice things varied wildly. that\u0027s actually one of the benefits here --- if we just get everyone over to __INTRODUCED_IN() it\u0027s the minimum work for OS developers and makes life easier for app developers too.\n\n(the main thing missing will be that we need to write a new documentation generation tool to automatically add \"Available since API level 24\" or whatever to each of the doc comments. that too is _supposed_ to be the standard, but -- although one year i did do a pass to fix everything -- adherence varies wildly and reviewers don\u0027t think to check/ask for it. but that\u0027s a problem for another year...)",
+      "parentUuid": "f44a57b5_1a1b268a",
+      "revId": "7803bcb5514ae953687b51a97b6b7795679e0ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d925ef01_0ed1ea1d",
         "filename": "camera/ndk/include/camera/NdkCameraError.h",
         "patchSetId": 1
@@ -31,6 +66,24 @@
       "writtenOn": "2021-01-27T01:26:21Z",
       "side": 1,
       "message": "this isn\u0027t an opaque struct typedef, so should it still be guarded? Again, I don\u0027t see how someone could shoot themselves in the foot with this being visible on all API levels, but want to confirm.",
+      "revId": "7803bcb5514ae953687b51a97b6b7795679e0ec6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65a456a9_a1750052",
+        "filename": "camera/ndk/include/camera/NdkCameraError.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-01-27T17:17:49Z",
+      "side": 1,
+      "message": "(same answer)",
+      "parentUuid": "d925ef01_0ed1ea1d",
       "revId": "7803bcb5514ae953687b51a97b6b7795679e0ec6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
