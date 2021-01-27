@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbf80614_89d88afc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2021-01-27T06:25:43Z",
+      "side": 1,
+      "message": "Hi Mikhail,\n\nI\u0027ve implemented resolving of multiple output devices based on requested device first then default device next for determining the selected device ID. In the case of a single output device or when none of the above devices are present, we reduce down to the prior behavior of selecting the first output device. audiopolicymanager_tests are passing for me with this behavior.\n\nRegards, Michael",
+      "revId": "8678df42bbb5a3f3fd2e0409f7fa98ad64522628",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
