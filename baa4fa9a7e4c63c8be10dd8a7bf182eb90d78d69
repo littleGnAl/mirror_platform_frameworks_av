@@ -163,6 +163,30 @@
       },
       "revId": "baa4fa9a7e4c63c8be10dd8a7bf182eb90d78d69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "187e96ff_744ad62f",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1281351
+      },
+      "writtenOn": "2021-01-27T22:26:15Z",
+      "side": 1,
+      "message": "Hi Mikhail,\n\nThanks for pointing out the limitations. I\u0027ve implemented your suggestion in PS8 for your review.\n\nThanks, Michael",
+      "parentUuid": "0f389d2d_619f1d6f",
+      "range": {
+        "startLine": 1056,
+        "startChar": 0,
+        "endLine": 1056,
+        "endChar": 56
+      },
+      "revId": "baa4fa9a7e4c63c8be10dd8a7bf182eb90d78d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
