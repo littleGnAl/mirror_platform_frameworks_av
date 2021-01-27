@@ -34,6 +34,24 @@
       "parentUuid": "c1bafbfd_36d0461f",
       "revId": "38b2948cbc9922915c838cbe5222d071949f49d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5d24b163_e00e975a",
+        "filename": "camera/ndk/include/camera/NdkCameraMetadata.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2021-01-27T18:15:57Z",
+      "side": 0,
+      "message": "It\u0027s also possible jni.h isn\u0027t even a visible header to the VNDK, in which case we need this guard for building. But that\u0027ll be obvious soon enough.",
+      "parentUuid": "cde1efa5_9db44770",
+      "revId": "38b2948cbc9922915c838cbe5222d071949f49d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
