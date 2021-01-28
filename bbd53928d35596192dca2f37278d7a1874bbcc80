@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "547bdb5f_a0e95693",
+        "filename": "media/libeffects/lvm/lib/Bass/src/LVDBE_Process.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-28T16:37:26Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 83,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 31
+      },
+      "revId": "bbd53928d35596192dca2f37278d7a1874bbcc80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "737326a4_ef9b4624",
+        "filename": "media/libeffects/lvm/lib/Bundle/src/LVM_Process.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-28T16:37:26Z",
+      "side": 1,
+      "message": "is this really necessary?",
+      "range": {
+        "startLine": 113,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 5
+      },
+      "revId": "bbd53928d35596192dca2f37278d7a1874bbcc80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d90954d0_ecbb8860",
+        "filename": "media/libeffects/lvm/lib/Common/src/Copy_16.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-28T16:37:26Z",
+      "side": 1,
+      "message": "check is redundant",
+      "range": {
+        "startLine": 76,
+        "startChar": 11,
+        "endLine": 76,
+        "endChar": 32
+      },
+      "revId": "bbd53928d35596192dca2f37278d7a1874bbcc80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ad52751_dcd62157",
+        "filename": "media/libeffects/lvm/lib/Eq/src/LVEQNB_Process.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-28T16:37:26Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 31
+      },
+      "revId": "bbd53928d35596192dca2f37278d7a1874bbcc80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "469e6327_54ef32bd",
+        "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_Process.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-01-28T16:37:26Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 77,
+        "startChar": 0,
+        "endLine": 83,
+        "endChar": 7
+      },
+      "revId": "bbd53928d35596192dca2f37278d7a1874bbcc80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
