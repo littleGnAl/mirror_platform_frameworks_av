@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4399fcf2_9cd26d49",
+        "filename": "services/camera/libcameraservice/libcameraservice_fuzzer/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2021-01-28T10:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee63e899_72bce9f4",
+      "range": {
+        "startLine": 3,
+        "startChar": 17,
+        "endLine": 3,
+        "endChar": 21
+      },
+      "revId": "6d59cc189efe22fa139148cdf305f9590807fc4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "610c3915_a6668eb7",
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ce4fd930_048e56f1",
+        "filename": "services/camera/libcameraservice/libcameraservice_fuzzer/camera_service_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2021-01-28T10:44:30Z",
+      "side": 1,
+      "message": "Line 107 is the continuation of line 106, hence clang has indented it.\nShould the indentation be removed ?",
+      "parentUuid": "610c3915_a6668eb7",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 8
+      },
+      "revId": "6d59cc189efe22fa139148cdf305f9590807fc4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3284cea7_bc50ad9f",
         "filename": "services/camera/libcameraservice/libcameraservice_fuzzer/camera_service_fuzzer.cpp",
         "patchSetId": 2
@@ -77,6 +125,30 @@
       "writtenOn": "2021-01-22T00:57:31Z",
       "side": 1,
       "message": "nit: indentation should be 8 spaces, according to the rest of the style in cameraservice code.",
+      "range": {
+        "startLine": 306,
+        "startChar": 8,
+        "endLine": 306,
+        "endChar": 41
+      },
+      "revId": "6d59cc189efe22fa139148cdf305f9590807fc4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3687457_d0127a8c",
+        "filename": "services/camera/libcameraservice/libcameraservice_fuzzer/camera_service_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2021-01-28T10:44:30Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3284cea7_bc50ad9f",
       "range": {
         "startLine": 306,
         "startChar": 8,
