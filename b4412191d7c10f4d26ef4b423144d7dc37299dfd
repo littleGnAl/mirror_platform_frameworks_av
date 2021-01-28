@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0da2d902_20dafa2c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-28T01:24:10Z",
+      "side": 1,
+      "message": "LGTM. Any other from the reviewers wants to take a look?",
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c726d320_7a2b6525",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-28T01:24:10Z",
+      "side": 1,
+      "message": "nit: The \"? true : false\" part is redundant, can be removed.",
+      "range": {
+        "startLine": 377,
+        "startChar": 47,
+        "endLine": 377,
+        "endChar": 62
+      },
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
