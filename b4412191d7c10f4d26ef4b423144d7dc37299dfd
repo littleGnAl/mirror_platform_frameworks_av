@@ -18,6 +18,184 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92b1839c_f0ce6491",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-28T01:46:27Z",
+      "side": 1,
+      "message": "minor nits",
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "009a1ab1_b03fce7c",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-28T01:46:27Z",
+      "side": 1,
+      "message": "const ref",
+      "range": {
+        "startLine": 171,
+        "startChar": 49,
+        "endLine": 171,
+        "endChar": 55
+      },
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4797de21_6e97f7c3",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-28T01:46:27Z",
+      "side": 1,
+      "message": "perhaps getFlags should be used for all the vector initialization to be consistent.",
+      "range": {
+        "startLine": 171,
+        "startChar": 15,
+        "endLine": 171,
+        "endChar": 23
+      },
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "341e8c3c_e9c0e454",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-28T01:46:27Z",
+      "side": 1,
+      "message": "maybe const ref too",
+      "range": {
+        "startLine": 171,
+        "startChar": 68,
+        "endLine": 171,
+        "endChar": 72
+      },
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e595064_6ef38175",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-28T01:46:27Z",
+      "side": 1,
+      "message": "reference?",
+      "range": {
+        "startLine": 172,
+        "startChar": 15,
+        "endLine": 172,
+        "endChar": 19
+      },
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b320b854_48edfb54",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-28T01:46:27Z",
+      "side": 1,
+      "message": "can this type be passed in, then it will work for the other vectors above.\nline 86\nline 98\nline 110\nline 122\nline 134\nline 146\nline 158",
+      "range": {
+        "startLine": 172,
+        "startChar": 48,
+        "endLine": 172,
+        "endChar": 68
+      },
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94047a8d_1faf0dcc",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-28T01:46:27Z",
+      "side": 1,
+      "message": "why does this need to be passed in?  \n\nstatic const std::vector\u003caudio_input_flags_t\u003e kInputFlags \u003d getFlags(\"_INPUT_\", audio_input_flag_from_string);",
+      "range": {
+        "startLine": 184,
+        "startChar": 4,
+        "endLine": 184,
+        "endChar": 48
+      },
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d143f91b_c50dc8f9",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-28T01:46:27Z",
+      "side": 1,
+      "message": "!\u003d 0;  is probably more idiomatic.",
+      "range": {
+        "startLine": 281,
+        "startChar": 48,
+        "endLine": 281,
+        "endChar": 64
+      },
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c726d320_7a2b6525",
@@ -36,6 +214,29 @@
         "startChar": 47,
         "endLine": 377,
         "endChar": 62
+      },
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5a8e5ed_918a53f6",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-28T01:46:27Z",
+      "side": 1,
+      "message": "!\u003d 0;",
+      "range": {
+        "startLine": 377,
+        "startChar": 48,
+        "endLine": 377,
+        "endChar": 49
       },
       "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
