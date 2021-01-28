@@ -187,6 +187,30 @@
       },
       "revId": "baa4fa9a7e4c63c8be10dd8a7bf182eb90d78d69",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a791c56_4c41a6e5",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-01-28T01:41:54Z",
+      "side": 1,
+      "message": "Thanks, I think now everything is OK. I will proceed merging downstream first because there are still some trivial conflicts downstream that nevertheless can\u0027t be resolved by the automerger.",
+      "parentUuid": "187e96ff_744ad62f",
+      "range": {
+        "startLine": 1056,
+        "startChar": 0,
+        "endLine": 1056,
+        "endChar": 56
+      },
+      "revId": "baa4fa9a7e4c63c8be10dd8a7bf182eb90d78d69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
