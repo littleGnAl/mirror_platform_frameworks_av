@@ -16,6 +16,24 @@
       "message": "frameworks/av/media/libstagefright/foundation/MediaDefs.cpp lists many more mimes ? don\u0027t need all of that?",
       "revId": "fc9b39c2bb24cd5f6edd4742b969a6c1c47cac4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "826b76b7_60ee1731",
+        "filename": "media/libstagefright/writer_fuzzers/README.md",
+        "patchSetId": 2
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2021-01-28T04:37:05Z",
+      "side": 0,
+      "message": "We shall be adding support for more mime types in the subsequent writer fuzzer base class update",
+      "parentUuid": "922d770b_24a364ee",
+      "revId": "fc9b39c2bb24cd5f6edd4742b969a6c1c47cac4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
