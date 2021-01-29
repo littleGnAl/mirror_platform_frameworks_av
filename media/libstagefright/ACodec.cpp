@@ -3427,6 +3427,7 @@ static const struct VideoCodingMapEntry {
     { MEDIA_MIMETYPE_VIDEO_DOLBY_VISION, OMX_VIDEO_CodingDolbyVision },
     { MEDIA_MIMETYPE_IMAGE_ANDROID_HEIC, OMX_VIDEO_CodingImageHEIC },
     { MEDIA_MIMETYPE_VIDEO_AV1, OMX_VIDEO_CodingAV1 },
+    { MEDIA_MIMETYPE_VIDEO_RAW, OMX_VIDEO_CodingUnused },
 };
 
 static status_t GetVideoCodingTypeFromMime(
@@ -5137,7 +5138,7 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
             switch ((int)videoDef->eCompressionFormat) {
                 case OMX_VIDEO_CodingUnused:
                 {
-                    CHECK(mIsEncoder ^ (portIndex == kPortIndexOutput));
+                    CHECK((mIsEncoder ^ (portIndex == kPortIndexOutput)) || mTunneled);
                     notify->setString("mime", MEDIA_MIMETYPE_VIDEO_RAW);
 
                     notify->setInt32("stride", videoDef->nStride);
