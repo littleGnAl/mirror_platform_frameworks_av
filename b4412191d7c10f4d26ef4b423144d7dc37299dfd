@@ -104,6 +104,78 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b810e8e1_5d5dd49a",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2021-01-29T09:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "009a1ab1_b03fce7c",
+      "range": {
+        "startLine": 171,
+        "startChar": 49,
+        "endLine": 171,
+        "endChar": 55
+      },
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2272b097_ff4b2396",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2021-01-29T09:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "341e8c3c_e9c0e454",
+      "range": {
+        "startLine": 171,
+        "startChar": 68,
+        "endLine": 171,
+        "endChar": 72
+      },
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f5a5507_1e7e757b",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2021-01-29T09:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4797de21_6e97f7c3",
+      "range": {
+        "startLine": 171,
+        "startChar": 15,
+        "endLine": 171,
+        "endChar": 23
+      },
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e595064_6ef38175",
@@ -150,6 +222,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcd5f047_90a5f27d",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2021-01-29T09:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6e595064_6ef38175",
+      "range": {
+        "startLine": 172,
+        "startChar": 15,
+        "endLine": 172,
+        "endChar": 19
+      },
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0730eb0a_d0b18cf7",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 172,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2021-01-29T09:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b320b854_48edfb54",
+      "range": {
+        "startLine": 172,
+        "startChar": 48,
+        "endLine": 172,
+        "endChar": 68
+      },
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94047a8d_1faf0dcc",
@@ -173,6 +293,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3b64bd0_7f9b6803",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2021-01-29T09:53:48Z",
+      "side": 1,
+      "message": "tempVector is removed and we have defined macros INSTANTIATE_VECTOR and INSTANTIATE_VECTOR_FROM_STRING for vector initialization",
+      "parentUuid": "94047a8d_1faf0dcc",
+      "range": {
+        "startLine": 184,
+        "startChar": 4,
+        "endLine": 184,
+        "endChar": 48
+      },
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d143f91b_c50dc8f9",
@@ -186,6 +330,30 @@
       "writtenOn": "2021-01-28T01:46:27Z",
       "side": 1,
       "message": "!\u003d 0;  is probably more idiomatic.",
+      "range": {
+        "startLine": 281,
+        "startChar": 48,
+        "endLine": 281,
+        "endChar": 64
+      },
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b0424319_64c335fd",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 281,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2021-01-29T09:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d143f91b_c50dc8f9",
       "range": {
         "startLine": 281,
         "startChar": 48,
@@ -232,6 +400,54 @@
       "writtenOn": "2021-01-28T01:46:27Z",
       "side": 1,
       "message": "!\u003d 0;",
+      "range": {
+        "startLine": 377,
+        "startChar": 48,
+        "endLine": 377,
+        "endChar": 49
+      },
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "068d574c_0785cf2f",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2021-01-29T09:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c726d320_7a2b6525",
+      "range": {
+        "startLine": 377,
+        "startChar": 47,
+        "endLine": 377,
+        "endChar": 62
+      },
+      "revId": "b4412191d7c10f4d26ef4b423144d7dc37299dfd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a08cf377_6395f153",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 377,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2021-01-29T09:53:48Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5a8e5ed_918a53f6",
       "range": {
         "startLine": 377,
         "startChar": 48,
