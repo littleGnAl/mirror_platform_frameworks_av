@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8f4d5a5f_618b98ac",
+        "filename": "media/codec2/sfplugin/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-01-29T19:52:56Z",
+      "side": 1,
+      "message": "How about FrameReassembler? Or more verbosely FixedLengthAudioFrameProcessor?",
+      "parentUuid": "f44c082a_b5c0860c",
+      "range": {
+        "startLine": 14,
+        "startChar": 9,
+        "endLine": 14,
+        "endChar": 22
+      },
+      "revId": "f9805deda2f51dc2de1935042b83e260baa0995f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "fce91b28_9d7c3110",
         "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2021-01-22T23:52:43Z",
       "side": 1,
       "message": "composeFrames? or useFrameComposer?",
+      "range": {
+        "startLine": 223,
+        "startChar": 9,
+        "endLine": 223,
+        "endChar": 22
+      },
+      "revId": "f9805deda2f51dc2de1935042b83e260baa0995f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b13e7cf6_d504fccd",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 223,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-01-29T19:52:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fce91b28_9d7c3110",
       "range": {
         "startLine": 223,
         "startChar": 9,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "276d3071_8545f29f",
+        "filename": "media/codec2/sfplugin/FrameComposer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-01-29T19:52:56Z",
+      "side": 1,
+      "message": "No current use case. Removed.",
+      "parentUuid": "96c1e4b2_aab944ff",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 59
+      },
+      "revId": "f9805deda2f51dc2de1935042b83e260baa0995f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cedf4db0_f0e409f3",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-01-22T23:52:43Z",
       "side": 1,
       "message": "this comes from MediaCodec, but may be in the middle of a new codec frame. How do we handle slight drifts and large jumps in this value as we are reframing the input?",
+      "range": {
+        "startLine": 145,
+        "startChar": 36,
+        "endLine": 145,
+        "endChar": 42
+      },
+      "revId": "f9805deda2f51dc2de1935042b83e260baa0995f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "df7559f5_e24be40d",
+        "filename": "media/codec2/sfplugin/FrameComposer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-01-29T19:52:56Z",
+      "side": 1,
+      "message": "Drift within |kToleranceUs| will be ignored --- i.e. just append to the current frame. For large jumps we finish current frame and start a new frame at the jumped timestamp.\n\nTimestamp going back in time is tricky, as we saw some apps doing the kind of behavior below:\n- read 10000 samples from mic at timestamp T\n- codec buffer size only fits 8000 samples\n- queue 8000 samples with timestamp T, and then queue the remaining 2000 samples with the same timestamp T.\n\nThus we just append these data to the current frame and hope for the best.",
+      "parentUuid": "cedf4db0_f0e409f3",
       "range": {
         "startLine": 145,
         "startChar": 36,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "575d45a6_3c1f9c03",
+        "filename": "media/codec2/sfplugin/tests/FrameComposer_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-01-29T19:52:56Z",
+      "side": 1,
+      "message": "Added expected final size as a parameter.",
+      "parentUuid": "51e28bd7_a84080d8",
+      "range": {
+        "startLine": 135,
+        "startChar": 16,
+        "endLine": 135,
+        "endChar": 45
+      },
+      "revId": "f9805deda2f51dc2de1935042b83e260baa0995f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "54415d58_5193fa31",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-01-22T23:52:43Z",
       "side": 1,
       "message": "can we describe in words the expectations for these various frame sizes for each of these test cases?",
+      "range": {
+        "startLine": 149,
+        "startChar": 26,
+        "endLine": 149,
+        "endChar": 44
+      },
+      "revId": "f9805deda2f51dc2de1935042b83e260baa0995f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2a14674_96c46979",
+        "filename": "media/codec2/sfplugin/tests/FrameComposer_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-01-29T19:52:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54415d58_5193fa31",
       "range": {
         "startLine": 149,
         "startChar": 26,
