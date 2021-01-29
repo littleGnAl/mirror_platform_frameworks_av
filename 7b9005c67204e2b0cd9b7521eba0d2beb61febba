@@ -112,6 +112,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "375b24d8_7d0059ee",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1978,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-01-29T23:10:45Z",
+      "side": 1,
+      "message": "multiple frame support is not signaled via this API today. We do that using CodecCapabilies. FEATURE_MultipleFrames",
+      "parentUuid": "9ac1a1fe_34955241",
+      "range": {
+        "startLine": 1978,
+        "startChar": 0,
+        "endLine": 1978,
+        "endChar": 100
+      },
+      "revId": "7b9005c67204e2b0cd9b7521eba0d2beb61febba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c37ee46_e2916ee3",

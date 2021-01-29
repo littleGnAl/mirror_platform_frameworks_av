@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e30f79f2_ca0e5c1f",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 1981,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-01-29T23:10:45Z",
+      "side": 1,
+      "message": "I am reluctant to codify this in this header considering that we want to support multiple frame audio encoding in the very near future.\n\nHow about. \u0027Audio encoders can expose this parameter to signal the desired audio frame size that corresponds to a single coded access unit. Default value is 0, meaning that the encoder accepts input buffers of any size.\u0027",
+      "range": {
+        "startLine": 1980,
+        "startChar": 72,
+        "endLine": 1981,
+        "endChar": 79
+      },
+      "revId": "776bd9dcabff8c2a7765e55e09d209887365c7b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
