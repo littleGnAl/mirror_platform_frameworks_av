@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "879012fb_6e7ea6e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-01-29T23:06:06Z",
+      "side": 1,
+      "message": "Thanks.",
+      "revId": "bc10ef6c9a636d8b4c785365b34c69b2ea48456f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e1482f92_c298b8ab",
+        "filename": "media/codec2/sfplugin/tests/FrameReassembler_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-01-29T23:06:06Z",
+      "side": 1,
+      "message": "nit: this should be equivalent to abs((a-b).peekl())",
+      "range": {
+        "startLine": 35,
+        "startChar": 11,
+        "endLine": 35,
+        "endChar": 42
+      },
+      "revId": "bc10ef6c9a636d8b4c785365b34c69b2ea48456f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "28da0801_89125263",
+        "filename": "media/codec2/sfplugin/tests/FrameReassembler_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 264,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-01-29T23:06:06Z",
+      "side": 1,
+      "message": "Thanks for the update. I find parametric tests still difficult to read (for myself)/validate. This would have been clearer to me using:\n\ntestPushSameSize(\n   1024 /* frame size in samples */,\n   48000 /* sample rate */,\n   1 /* channels */,\n   PCM_16,\n   100000 /* input frame size */,\n   1 /* count */,\n   100353 /* expected output size \u003d 98 * 1024 byte frames */)",
+      "range": {
+        "startLine": 252,
+        "startChar": 4,
+        "endLine": 264,
+        "endChar": 5
+      },
+      "revId": "bc10ef6c9a636d8b4c785365b34c69b2ea48456f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
