@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "339fea26_a84a2025",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-29T17:47:44Z",
+      "side": 1,
+      "message": "thanks for the changes - a few more comments.",
+      "revId": "273761569e0a3dfb5c055ce751ff4df0c5b35535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cbab4b2_5fb4c8c5",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-29T17:47:44Z",
+      "side": 1,
+      "message": "remove this, see the comment below.",
+      "range": {
+        "startLine": 85,
+        "startChar": 0,
+        "endLine": 86,
+        "endChar": 76
+      },
+      "revId": "273761569e0a3dfb5c055ce751ff4df0c5b35535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dfcca295_87d3a8e7",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-29T17:47:44Z",
+      "side": 1,
+      "message": "nit: this method is almost the same as the method above.  I\u0027d prefer to keep findString as an optional argument at the end of the method.\n\n  std::vector\u003cT\u003e getFlags(const xsdc_enum_range\u003cX\u003e \u0026range, const FUNC \u0026func,\n      const std::string\u0026 findString \u003d {}) { ...\n\nThe code below is fine, we can use the fact that std::string{\"anything\"}.find(\"\") \u003d\u003d 0. this reduces the duplicated code.",
+      "range": {
+        "startLine": 99,
+        "startChar": 57,
+        "endLine": 99,
+        "endChar": 87
+      },
+      "revId": "273761569e0a3dfb5c055ce751ff4df0c5b35535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "234a405b_f7b022c7",
+        "filename": "media/libaudioclient/fuzzer/audioflinger_fuzzer.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 113,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-01-29T17:47:44Z",
+      "side": 1,
+      "message": "nit: if the savings for the macro is not a lot of lines, it would probably be more clear to show the variable definition explicitly.",
+      "range": {
+        "startLine": 112,
+        "startChar": 0,
+        "endLine": 113,
+        "endChar": 67
+      },
+      "revId": "273761569e0a3dfb5c055ce751ff4df0c5b35535",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
