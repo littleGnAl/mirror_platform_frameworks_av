@@ -71,6 +71,11 @@ public:
         jobs->cond.broadcast();
     }
 
+    void setDataspace(android_dataspace dataspace) {
+        Mutexed<Jobs>::Locked jobs(mJobs);
+        jobs->configUpdate.emplace_back(new C2StreamDataSpaceInfo::input(0u, dataspace));
+    }
+
 protected:
     bool threadLoop() override {
         constexpr nsecs_t kIntervalNs = nsecs_t(10) * 1000 * 1000;  // 10ms
@@ -102,6 +107,9 @@ protected:
                     uniqueFds.push_back(std::move(queue.workList.front().fd1));
                     queue.workList.pop_front();
                 }
+                for (const std::unique_ptr<C2Param> &param : jobs->configUpdate) {
+                    items.front()->input.configUpdate.emplace_back(C2Param::Copy(*param));
+                }
 
                 jobs.unlock();
                 for (int fenceFd : fenceFds) {
@@ -119,6 +127,7 @@ protected:
                 queued = true;
             }
             if (queued) {
+                jobs->configUpdate.clear();
                 return true;
             }
             if (i == 0) {
@@ -161,6 +170,7 @@ private:
         std::map<std::weak_ptr<Codec2Client::Component>,
                  Queue,
                  std::owner_less<std::weak_ptr<Codec2Client::Component>>> queues;
+        std::vector<std::unique_ptr<C2Param>> configUpdate;
         Condition cond;
     };
     Mutexed<Jobs> mJobs;
@@ -451,8 +461,8 @@ status_t C2OMXNode::dispatchMessage(const omx_message& msg) {
     android_dataspace dataSpace = (android_dataspace)msg.u.event_data.data1;
     uint32_t pixelFormat = msg.u.event_data.data3;
 
-    // TODO: set dataspace on component to see if it impacts color aspects
     ALOGD("dataspace changed to %#x pixel format: %#x", dataSpace, pixelFormat);
+    mQueueThread->setDataspace(dataSpace);
     return OK;
 }
 
