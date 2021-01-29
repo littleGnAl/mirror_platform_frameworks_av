@@ -1356,6 +1356,21 @@ sp<AMessage> CCodecConfig::getFormatForDomain(
             msg->removeEntryAt(msg->findEntryByName("color-matrix"));
         }
 
+        if (mInputSurface) {
+            android_dataspace dataspace = mInputSurface->getDataspace();
+            ColorUtils::convertDataSpaceToV0(dataspace);
+            int32_t standard;
+            ColorUtils::getColorConfigFromDataSpace(dataspace, &range, &standard, &transfer);
+            if (range != 0) {
+                msg->setInt32(KEY_COLOR_RANGE, range);
+            }
+            if (standard != 0) {
+                msg->setInt32(KEY_COLOR_STANDARD, standard);
+            }
+            if (transfer != 0) {
+                msg->setInt32(KEY_COLOR_TRANSFER, transfer);
+            }
+        }
 
         // calculate dataspace for raw graphic buffers if not specified by component, or if
         // using surface with unspecified aspects (as those must be defaulted which may change

@@ -211,8 +211,6 @@ public:
                 (OMX_INDEXTYPE)OMX_IndexParamConsumerUsageBits,
                 &usage, sizeof(usage));
 
-        // NOTE: we do not use/pass through color aspects from GraphicBufferSource as we
-        // communicate that directly to the component.
         mSource->configure(
                 mOmxNode, static_cast<hardware::graphics::common::V1_0::Dataspace>(mDataSpace));
         return OK;
@@ -409,6 +407,10 @@ public:
 
     void onInputBufferDone(c2_cntr64_t index) override {
         mNode->onInputBufferDone(index);
+    }
+
+    android_dataspace getDataspace() override {
+        return mNode->getDataspace();
     }
 
 private:
