@@ -49,7 +49,7 @@ cc_test {
     proprietary: true,
 
     include_dirs: [
-        "frameworks/av/media/libeffects/lvm/wrapper/Reverb"
+        "frameworks/av/media/libeffects/lvm/wrapper/Reverb",
     ],
 
     header_libs: [
@@ -59,9 +59,12 @@ cc_test {
     shared_libs: [
         "libaudioutils",
         "liblog",
-        "libreverbwrapper",
     ],
 
+    static_libs: [
+        "libreverb",
+        "libreverbwrapper",
+    ],
     srcs: [
         "reverb_test.cpp",
     ],

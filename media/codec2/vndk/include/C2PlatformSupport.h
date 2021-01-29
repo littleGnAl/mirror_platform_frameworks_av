@@ -47,6 +47,17 @@ public:
          */
         ION = PLATFORM_START,
 
+        /*
+         * ID of the DMA-Buf Heap (ion replacement) backed platform allocator.
+         *
+         * C2Handle consists of:
+         *   fd  shared dmabuf buffer handle
+         *   int size (lo 32 bits)
+         *   int size (hi 32 bits)
+         *   int magic '\xc2io\x00'
+         */
+        DMABUFHEAP = ION,
+
         /**
          * ID of the gralloc backed platform allocator.
          *
@@ -131,6 +142,15 @@ c2_status_t CreateCodec2BlockPool(
  * \retval nullptr if the platform component store could not be obtained
  */
 std::shared_ptr<C2ComponentStore> GetCodec2PlatformComponentStore();
+
+/**
+ * Returns the platform component store.
+ * NOTE: For testing only
+ * \retval nullptr if the platform component store could not be obtained
+ */
+std::shared_ptr<C2ComponentStore> GetTestComponentStore(
+        std::vector<std::tuple<C2String, C2ComponentFactory::CreateCodec2FactoryFunc,
+        C2ComponentFactory::DestroyCodec2FactoryFunc>>);
 
 /**
  * Sets the preferred component store in this process for the sole purpose of accessing its

@@ -27,14 +27,6 @@
 #include <media/stagefright/foundation/ADebug.h>
 #include <media/stagefright/ProcessInfoInterface.h>
 
-namespace aidl {
-namespace android {
-namespace media {
-bool operator== (const MediaResourceParcel& lhs, const MediaResourceParcel& rhs) {
-    return lhs.type == rhs.type && lhs.subType == rhs.subType &&
-            lhs.id == rhs.id && lhs.value == rhs.value;
-}}}}
-
 namespace android {
 
 using Status = ::ndk::ScopedAStatus;
@@ -519,6 +511,30 @@ protected:
 
             // clean up client 3 which still left
             mService->removeClient(kTestPid2, getId(mTestClient3));
+        }
+
+        {
+            addResource();
+            mService->mSupportsSecureWithNonSecureCodec = true;
+
+            mService->markClientForPendingRemoval(kTestPid2, getId(mTestClient2));
+
+            // client marked for pending removal got reclaimed
+            EXPECT_TRUE(mService->reclaimResourcesFromClientsPendingRemoval(kTestPid2).isOk());
+            verifyClients(false /* c1 */, true /* c2 */, false /* c3 */);
+
+            // No more clients marked for removal
+            EXPECT_TRUE(mService->reclaimResourcesFromClientsPendingRemoval(kTestPid2).isOk());
+            verifyClients(false /* c1 */, false /* c2 */, false /* c3 */);
+
+            mService->markClientForPendingRemoval(kTestPid2, getId(mTestClient3));
+
+            // client marked for pending removal got reclaimed
+            EXPECT_TRUE(mService->reclaimResourcesFromClientsPendingRemoval(kTestPid2).isOk());
+            verifyClients(false /* c1 */, false /* c2 */, true /* c3 */);
+
+            // clean up client 1 which still left
+            mService->removeClient(kTestPid1, getId(mTestClient1));
         }
     }
 

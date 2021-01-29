@@ -366,6 +366,7 @@ private:
     AString mOwnerName;
     sp<MediaCodecInfo> mCodecInfo;
     sp<AReplyToken> mReplyID;
+    std::string mLastReplyOrigin;
     std::vector<sp<AMessage>> mDeferredMessages;
     uint32_t mFlags;
     status_t mStickyError;
@@ -417,6 +418,10 @@ private:
 
     sp<ICrypto> mCrypto;
 
+    int32_t mTunneledInputWidth;
+    int32_t mTunneledInputHeight;
+    bool mTunneled;
+
     sp<IDescrambler> mDescrambler;
 
     List<sp<ABuffer> > mCSD;
@@ -450,6 +455,7 @@ private:
     size_t updateBuffers(int32_t portIndex, const sp<AMessage> &msg);
     status_t onQueueInputBuffer(const sp<AMessage> &msg);
     status_t onReleaseOutputBuffer(const sp<AMessage> &msg);
+    BufferInfo *peekNextPortBuffer(int32_t portIndex);
     ssize_t dequeuePortBuffer(int32_t portIndex);
 
     status_t getBufferAndFormat(
@@ -481,6 +487,7 @@ private:
     status_t onSetParameters(const sp<AMessage> &params);
 
     status_t amendOutputFormatWithCodecSpecificData(const sp<MediaCodecBuffer> &buffer);
+    void handleOutputFormatChangeIfNeeded(const sp<MediaCodecBuffer> &buffer);
     bool isExecuting() const;
 
     uint64_t getGraphicBufferSize();
@@ -489,8 +496,8 @@ private:
     bool hasPendingBuffer(int portIndex);
     bool hasPendingBuffer();
 
-    void postPendingRepliesAndDeferredMessages(status_t err = OK);
-    void postPendingRepliesAndDeferredMessages(const sp<AMessage> &response);
+    void postPendingRepliesAndDeferredMessages(std::string origin, status_t err = OK);
+    void postPendingRepliesAndDeferredMessages(std::string origin, const sp<AMessage> &response);
 
     /* called to get the last codec error when the sticky flag is set.
      * if no such codec error is found, returns UNKNOWN_ERROR.

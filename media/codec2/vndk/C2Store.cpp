@@ -21,6 +21,7 @@
 #include <C2AllocatorBlob.h>
 #include <C2AllocatorGralloc.h>
 #include <C2AllocatorIon.h>
+#include <C2DmaBufAllocator.h>
 #include <C2BufferPriv.h>
 #include <C2BqBufferPriv.h>
 #include <C2Component.h>
@@ -82,6 +83,7 @@ private:
 
     /// returns a shared-singleton ion allocator
     std::shared_ptr<C2Allocator> fetchIonAllocator();
+    std::shared_ptr<C2Allocator> fetchDmaBufAllocator();
 
     /// returns a shared-singleton gralloc allocator
     std::shared_ptr<C2Allocator> fetchGrallocAllocator();
@@ -99,6 +101,34 @@ private:
 C2PlatformAllocatorStoreImpl::C2PlatformAllocatorStoreImpl() {
 }
 
+static bool using_ion(void) {
+    static int cached_result = []()->int {
+        struct stat buffer;
+        int ret = (stat("/dev/ion", &buffer) == 0);
+
+        if (property_get_int32("debug.c2.use_dmabufheaps", 0)) {
+            /*
+             * Double check that the system heap is present so we
+             * can gracefully fail back to ION if we cannot satisfy
+             * the override
+             */
+            ret = (stat("/dev/dma_heap/system", &buffer) != 0);
+            if (ret)
+                ALOGE("debug.c2.use_dmabufheaps set, but no system heap. Ignoring override!");
+            else
+                ALOGD("debug.c2.use_dmabufheaps set, forcing DMABUF Heaps");
+        }
+
+        if (ret)
+            ALOGD("Using ION\n");
+        else
+            ALOGD("Using DMABUF Heaps\n");
+        return ret;
+    }();
+
+    return (cached_result == 1);
+}
+
 c2_status_t C2PlatformAllocatorStoreImpl::fetchAllocator(
         id_t id, std::shared_ptr<C2Allocator> *const allocator) {
     allocator->reset();
@@ -107,8 +137,11 @@ c2_status_t C2PlatformAllocatorStoreImpl::fetchAllocator(
     }
     switch (id) {
     // TODO: should we implement a generic registry for all, and use that?
-    case C2PlatformAllocatorStore::ION:
-        *allocator = fetchIonAllocator();
+    case C2PlatformAllocatorStore::ION: /* also ::DMABUFHEAP */
+        if (using_ion())
+            *allocator = fetchIonAllocator();
+        else
+            *allocator = fetchDmaBufAllocator();
         break;
 
     case C2PlatformAllocatorStore::GRALLOC:
@@ -142,7 +175,9 @@ c2_status_t C2PlatformAllocatorStoreImpl::fetchAllocator(
 namespace {
 
 std::mutex gIonAllocatorMutex;
+std::mutex gDmaBufAllocatorMutex;
 std::weak_ptr<C2AllocatorIon> gIonAllocator;
+std::weak_ptr<C2DmaBufAllocator> gDmaBufAllocator;
 
 void UseComponentStoreForIonAllocator(
         const std::shared_ptr<C2AllocatorIon> allocator,
@@ -197,6 +232,65 @@ void UseComponentStoreForIonAllocator(
     allocator->setUsageMapper(mapper, minUsage, maxUsage, blockSize);
 }
 
+void UseComponentStoreForDmaBufAllocator(const std::shared_ptr<C2DmaBufAllocator> allocator,
+                                         std::shared_ptr<C2ComponentStore> store) {
+    C2DmaBufAllocator::UsageMapperFn mapper;
+    const size_t maxHeapNameLen = 128;
+    uint64_t minUsage = 0;
+    uint64_t maxUsage = C2MemoryUsage(C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE).expected;
+    size_t blockSize = getpagesize();
+
+    // query min and max usage as well as block size via supported values
+    std::unique_ptr<C2StoreDmaBufUsageInfo> usageInfo;
+    usageInfo = C2StoreDmaBufUsageInfo::AllocUnique(maxHeapNameLen);
+
+    std::vector<C2FieldSupportedValuesQuery> query = {
+            C2FieldSupportedValuesQuery::Possible(C2ParamField::Make(*usageInfo, usageInfo->m.usage)),
+            C2FieldSupportedValuesQuery::Possible(
+                    C2ParamField::Make(*usageInfo, usageInfo->m.capacity)),
+    };
+    c2_status_t res = store->querySupportedValues_sm(query);
+    if (res == C2_OK) {
+        if (query[0].status == C2_OK) {
+            const C2FieldSupportedValues& fsv = query[0].values;
+            if (fsv.type == C2FieldSupportedValues::FLAGS && !fsv.values.empty()) {
+                minUsage = fsv.values[0].u64;
+                maxUsage = 0;
+                for (C2Value::Primitive v : fsv.values) {
+                    maxUsage |= v.u64;
+                }
+            }
+        }
+        if (query[1].status == C2_OK) {
+            const C2FieldSupportedValues& fsv = query[1].values;
+            if (fsv.type == C2FieldSupportedValues::RANGE && fsv.range.step.u32 > 0) {
+                blockSize = fsv.range.step.u32;
+            }
+        }
+
+        mapper = [store](C2MemoryUsage usage, size_t capacity, C2String* heapName,
+                         unsigned* flags) -> c2_status_t {
+            if (capacity > UINT32_MAX) {
+                return C2_BAD_VALUE;
+            }
+
+            std::unique_ptr<C2StoreDmaBufUsageInfo> usageInfo;
+            usageInfo = C2StoreDmaBufUsageInfo::AllocUnique(maxHeapNameLen, usage.expected, capacity);
+            std::vector<std::unique_ptr<C2SettingResult>> failures;  // TODO: remove
+
+            c2_status_t res = store->config_sm({&*usageInfo}, &failures);
+            if (res == C2_OK) {
+                *heapName = C2String(usageInfo->m.heapName);
+                *flags = usageInfo->m.allocFlags;
+            }
+
+            return res;
+        };
+    }
+
+    allocator->setUsageMapper(mapper, minUsage, maxUsage, blockSize);
+}
+
 }
 
 void C2PlatformAllocatorStoreImpl::setComponentStore(std::shared_ptr<C2ComponentStore> store) {
@@ -229,6 +323,22 @@ std::shared_ptr<C2Allocator> C2PlatformAllocatorStoreImpl::fetchIonAllocator() {
         allocator = std::make_shared<C2AllocatorIon>(C2PlatformAllocatorStore::ION);
         UseComponentStoreForIonAllocator(allocator, componentStore);
         gIonAllocator = allocator;
+    }
+    return allocator;
+}
+
+std::shared_ptr<C2Allocator> C2PlatformAllocatorStoreImpl::fetchDmaBufAllocator() {
+    std::lock_guard<std::mutex> lock(gDmaBufAllocatorMutex);
+    std::shared_ptr<C2DmaBufAllocator> allocator = gDmaBufAllocator.lock();
+    if (allocator == nullptr) {
+        std::shared_ptr<C2ComponentStore> componentStore;
+        {
+            std::lock_guard<std::mutex> lock(_mComponentStoreReadLock);
+            componentStore = _mComponentStore;
+        }
+        allocator = std::make_shared<C2DmaBufAllocator>(C2PlatformAllocatorStore::DMABUFHEAP);
+        UseComponentStoreForDmaBufAllocator(allocator, componentStore);
+        gDmaBufAllocator = allocator;
     }
     return allocator;
 }
@@ -347,7 +457,7 @@ public:
             allocatorId = GetPreferredLinearAllocatorId(GetCodec2PoolMask());
         }
         switch(allocatorId) {
-            case C2PlatformAllocatorStore::ION:
+            case C2PlatformAllocatorStore::ION: /* also ::DMABUFHEAP */
                 res = allocatorStore->fetchAllocator(
                         C2PlatformAllocatorStore::ION, &allocator);
                 if (res == C2_OK) {
@@ -526,6 +636,12 @@ public:
             std::vector<std::unique_ptr<C2SettingResult>> *const failures) override;
     C2PlatformComponentStore();
 
+    // For testing only
+    C2PlatformComponentStore(
+            std::vector<std::tuple<C2String,
+                                   C2ComponentFactory::CreateCodec2FactoryFunc,
+                                   C2ComponentFactory::DestroyCodec2FactoryFunc>>);
+
     virtual ~C2PlatformComponentStore() override = default;
 
 private:
@@ -562,6 +678,24 @@ private:
               mLibHandle(nullptr),
               createFactory(nullptr),
               destroyFactory(nullptr),
+              mComponentFactory(nullptr) {
+        }
+
+        /**
+         * Creates an uninitialized component module.
+         * NOTE: For testing only
+         *
+         * \param name[in]  component name.
+         *
+         * \note Only used by ComponentLoader.
+         */
+        ComponentModule(
+                C2ComponentFactory::CreateCodec2FactoryFunc createFactory,
+                C2ComponentFactory::DestroyCodec2FactoryFunc destroyFactory)
+            : mInit(C2_NO_INIT),
+              mLibHandle(nullptr),
+              createFactory(createFactory),
+              destroyFactory(destroyFactory),
               mComponentFactory(nullptr) {
         }
 
@@ -621,7 +755,13 @@ private:
             std::lock_guard<std::mutex> lock(mMutex);
             std::shared_ptr<ComponentModule> localModule = mModule.lock();
             if (localModule == nullptr) {
-                localModule = std::make_shared<ComponentModule>();
+                if(mCreateFactory) {
+                    // For testing only
+                    localModule = std::make_shared<ComponentModule>(mCreateFactory,
+                                                                    mDestroyFactory);
+                } else {
+                    localModule = std::make_shared<ComponentModule>();
+                }
                 res = localModule->init(mLibPath);
                 if (res == C2_OK) {
                     mModule = localModule;
@@ -637,14 +777,27 @@ private:
         ComponentLoader(std::string libPath)
             : mLibPath(libPath) {}
 
+        // For testing only
+        ComponentLoader(std::tuple<C2String,
+                          C2ComponentFactory::CreateCodec2FactoryFunc,
+                          C2ComponentFactory::DestroyCodec2FactoryFunc> func)
+            : mLibPath(std::get<0>(func)),
+              mCreateFactory(std::get<1>(func)),
+              mDestroyFactory(std::get<2>(func)) {}
+
     private:
         std::mutex mMutex; ///< mutex guarding the module
         std::weak_ptr<ComponentModule> mModule; ///< weak reference to the loaded module
         std::string mLibPath; ///< library path
+
+        // For testing only
+        C2ComponentFactory::CreateCodec2FactoryFunc mCreateFactory = nullptr;
+        C2ComponentFactory::DestroyCodec2FactoryFunc mDestroyFactory = nullptr;
     };
 
     struct Interface : public C2InterfaceHelper {
         std::shared_ptr<C2StoreIonUsageInfo> mIonUsageInfo;
+        std::shared_ptr<C2StoreDmaBufUsageInfo> mDmaBufUsageInfo;
 
         Interface(std::shared_ptr<C2ReflectorHelper> reflector)
             : C2InterfaceHelper(reflector) {
@@ -680,7 +833,19 @@ private:
                     me.set().minAlignment = 0;
 #endif
                     return C2R::Ok();
-                }
+                };
+
+                static C2R setDmaBufUsage(bool /* mayBlock */, C2P<C2StoreDmaBufUsageInfo> &me) {
+                    long long usage = (long long)me.get().m.usage;
+                    if (C2DmaBufAllocator::system_uncached_supported() &&
+                        !(usage & (C2MemoryUsage::CPU_READ | C2MemoryUsage::CPU_WRITE))) {
+                        strncpy(me.set().m.heapName, "system-uncached", me.v.flexCount());
+                    } else {
+                        strncpy(me.set().m.heapName, "system", me.v.flexCount());
+                    }
+                    me.set().m.allocFlags = 0;
+                    return C2R::Ok();
+                };
             };
 
             addParameter(
@@ -694,6 +859,18 @@ private:
                     C2F(mIonUsageInfo, minAlignment).equalTo(0)
                 })
                 .withSetter(Setter::setIonUsage)
+                .build());
+
+            addParameter(
+                DefineParam(mDmaBufUsageInfo, "dmabuf-usage")
+                .withDefault(C2StoreDmaBufUsageInfo::AllocShared(0))
+                .withFields({
+                    C2F(mDmaBufUsageInfo, m.usage).flags({C2MemoryUsage::CPU_READ | C2MemoryUsage::CPU_WRITE}),
+                    C2F(mDmaBufUsageInfo, m.capacity).inRange(0, UINT32_MAX, 1024),
+                    C2F(mDmaBufUsageInfo, m.allocFlags).flags({}),
+                    C2F(mDmaBufUsageInfo, m.heapName).any(),
+                })
+                .withSetter(Setter::setDmaBufUsage)
                 .build());
         }
     };
@@ -731,25 +908,33 @@ private:
 
     std::shared_ptr<C2ReflectorHelper> mReflector;
     Interface mInterface;
+
+    // For testing only
+    std::vector<std::tuple<C2String,
+                          C2ComponentFactory::CreateCodec2FactoryFunc,
+                          C2ComponentFactory::DestroyCodec2FactoryFunc>> mCodec2FactoryFuncs;
 };
 
 c2_status_t C2PlatformComponentStore::ComponentModule::init(
         std::string libPath) {
     ALOGV("in %s", __func__);
     ALOGV("loading dll");
-    mLibHandle = dlopen(libPath.c_str(), RTLD_NOW|RTLD_NODELETE);
-    LOG_ALWAYS_FATAL_IF(mLibHandle == nullptr,
-            "could not dlopen %s: %s", libPath.c_str(), dlerror());
 
-    createFactory =
-        (C2ComponentFactory::CreateCodec2FactoryFunc)dlsym(mLibHandle, "CreateCodec2Factory");
-    LOG_ALWAYS_FATAL_IF(createFactory == nullptr,
-            "createFactory is null in %s", libPath.c_str());
+    if(!createFactory) {
+        mLibHandle = dlopen(libPath.c_str(), RTLD_NOW|RTLD_NODELETE);
+        LOG_ALWAYS_FATAL_IF(mLibHandle == nullptr,
+                "could not dlopen %s: %s", libPath.c_str(), dlerror());
 
-    destroyFactory =
-        (C2ComponentFactory::DestroyCodec2FactoryFunc)dlsym(mLibHandle, "DestroyCodec2Factory");
-    LOG_ALWAYS_FATAL_IF(destroyFactory == nullptr,
-            "destroyFactory is null in %s", libPath.c_str());
+        createFactory =
+            (C2ComponentFactory::CreateCodec2FactoryFunc)dlsym(mLibHandle, "CreateCodec2Factory");
+        LOG_ALWAYS_FATAL_IF(createFactory == nullptr,
+                "createFactory is null in %s", libPath.c_str());
+
+        destroyFactory =
+            (C2ComponentFactory::DestroyCodec2FactoryFunc)dlsym(mLibHandle, "DestroyCodec2Factory");
+        LOG_ALWAYS_FATAL_IF(destroyFactory == nullptr,
+                "destroyFactory is null in %s", libPath.c_str());
+    }
 
     mComponentFactory = createFactory();
     if (mComponentFactory == nullptr) {
@@ -950,6 +1135,22 @@ C2PlatformComponentStore::C2PlatformComponentStore()
     emplace("libcodec2_soft_vp8enc.so");
     emplace("libcodec2_soft_vp9dec.so");
     emplace("libcodec2_soft_vp9enc.so");
+
+}
+
+// For testing only
+C2PlatformComponentStore::C2PlatformComponentStore(
+    std::vector<std::tuple<C2String,
+                C2ComponentFactory::CreateCodec2FactoryFunc,
+                C2ComponentFactory::DestroyCodec2FactoryFunc>> funcs)
+    : mVisited(false),
+      mReflector(std::make_shared<C2ReflectorHelper>()),
+      mInterface(mReflector),
+      mCodec2FactoryFuncs(funcs) {
+
+    for(auto const& func: mCodec2FactoryFuncs) {
+        mComponents.emplace(std::get<0>(func), func);
+    }
 }
 
 c2_status_t C2PlatformComponentStore::copyBuffer(
@@ -1069,4 +1270,11 @@ std::shared_ptr<C2ComponentStore> GetCodec2PlatformComponentStore() {
     return store;
 }
 
+// For testing only
+std::shared_ptr<C2ComponentStore> GetTestComponentStore(
+        std::vector<std::tuple<C2String,
+        C2ComponentFactory::CreateCodec2FactoryFunc,
+        C2ComponentFactory::DestroyCodec2FactoryFunc>> funcs) {
+    return std::shared_ptr<C2ComponentStore>(new C2PlatformComponentStore(funcs));
+}
 } // namespace android

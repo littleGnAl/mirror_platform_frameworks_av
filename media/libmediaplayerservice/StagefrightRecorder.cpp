@@ -125,6 +125,7 @@ StagefrightRecorder::StagefrightRecorder(const String16 &opPackageName)
 
     ALOGV("Constructor");
 
+    mMetricsItem = NULL;
     mAnalyticsDirty = false;
     reset();
 }
@@ -199,10 +200,12 @@ void StagefrightRecorder::updateMetrics() {
 void StagefrightRecorder::flushAndResetMetrics(bool reinitialize) {
     ALOGV("flushAndResetMetrics");
     // flush anything we have, maybe setup a new record
-    if (mAnalyticsDirty && mMetricsItem != NULL) {
-        updateMetrics();
-        if (mMetricsItem->count() > 0) {
-            mMetricsItem->selfrecord();
+    if (mMetricsItem != NULL) {
+        if (mAnalyticsDirty) {
+            updateMetrics();
+            if (mMetricsItem->count() > 0) {
+                mMetricsItem->selfrecord();
+            }
         }
         delete mMetricsItem;
         mMetricsItem = NULL;
@@ -1113,7 +1116,7 @@ sp<MediaCodecSource> StagefrightRecorder::createAudioSource() {
     if (mPrivacySensitive == PRIVACY_SENSITIVE_DEFAULT) {
         if (attr.source == AUDIO_SOURCE_VOICE_COMMUNICATION
                 || attr.source == AUDIO_SOURCE_CAMCORDER) {
-            attr.flags |= AUDIO_FLAG_CAPTURE_PRIVATE;
+            attr.flags = static_cast<audio_flags_mask_t>(attr.flags | AUDIO_FLAG_CAPTURE_PRIVATE);
             mPrivacySensitive = PRIVACY_SENSITIVE_ENABLED;
         } else {
             mPrivacySensitive = PRIVACY_SENSITIVE_DISABLED;
@@ -1129,7 +1132,7 @@ sp<MediaCodecSource> StagefrightRecorder::createAudioSource() {
             return NULL;
         }
         if (mPrivacySensitive == PRIVACY_SENSITIVE_ENABLED) {
-            attr.flags |= AUDIO_FLAG_CAPTURE_PRIVATE;
+            attr.flags = static_cast<audio_flags_mask_t>(attr.flags | AUDIO_FLAG_CAPTURE_PRIVATE);
         }
     }
 

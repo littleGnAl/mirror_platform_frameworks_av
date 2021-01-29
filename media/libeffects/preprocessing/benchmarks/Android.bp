@@ -1,0 +1,24 @@
+cc_benchmark {
+    name: "preprocessing_benchmark",
+    vendor: true,
+    relative_install_path: "soundfx",
+    srcs: ["preprocessing_benchmark.cpp"],
+    shared_libs: [
+        "libaudiopreprocessing",
+        "libaudioutils",
+        "liblog",
+        "libutils",
+    ],
+    cflags: [
+        "-DWEBRTC_POSIX",
+        "-fvisibility=default",
+        "-Wall",
+        "-Werror",
+        "-Wextra",
+    ],
+    header_libs: [
+        "libaudioeffects",
+        "libhardware_headers",
+        "libwebrtc_absl_headers",
+    ],
+}

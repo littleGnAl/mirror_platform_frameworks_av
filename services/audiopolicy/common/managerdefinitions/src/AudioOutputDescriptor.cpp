@@ -245,7 +245,7 @@ void AudioOutputDescriptor::dump(String8 *dst) const
     dst->appendFormat(" Sampling rate: %d\n", mSamplingRate);
     dst->appendFormat(" Format: %08x\n", mFormat);
     dst->appendFormat(" Channels: %08x\n", mChannelMask);
-    dst->appendFormat(" Devices: %s\n", devices().toString().c_str());
+    dst->appendFormat(" Devices: %s\n", devices().toString(true /*includeSensitiveInfo*/).c_str());
     dst->appendFormat(" Global active count: %u\n", mGlobalActiveCount);
     for (const auto &iter : mRoutingActivities) {
         dst->appendFormat(" Product Strategy id: %d", iter.first);
@@ -505,6 +505,9 @@ status_t SwAudioOutputDescriptor::open(const audio_config_t *config,
         lConfig.offload_info.duration_us = -1;
         lConfig.offload_info.has_video = true; // conservative
         lConfig.offload_info.is_streaming = true; // likely
+        lConfig.offload_info.encapsulation_mode = lConfig.offload_info.encapsulation_mode;
+        lConfig.offload_info.content_id = lConfig.offload_info.content_id;
+        lConfig.offload_info.sync_id = lConfig.offload_info.sync_id;
     }
 
     mFlags = (audio_output_flags_t)(mFlags | flags);
@@ -762,11 +765,6 @@ bool SwAudioOutputCollection::isA2dpOffloadedOnPrimary() const
         }
     }
     return false;
-}
-
-bool SwAudioOutputCollection::isA2dpSupported() const
-{
-    return (isA2dpOffloadedOnPrimary() || (getA2dpOutput() != 0));
 }
 
 sp<SwAudioOutputDescriptor> SwAudioOutputCollection::getPrimaryOutput() const

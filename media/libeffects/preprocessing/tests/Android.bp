@@ -13,18 +13,20 @@ cc_test {
         "libaudioutils",
         "liblog",
         "libutils",
-        "libwebrtc_audio_preprocessing",
     ],
-
-    cflags: [
-        "-DWEBRTC_POSIX",
-        "-fvisibility=default",
-        "-Wall",
-        "-Werror",
-    ],
-
     header_libs: [
         "libaudioeffects",
         "libhardware_headers",
+    ],
+}
+
+cc_test {
+    name: "correlation",
+    host_supported: true,
+    srcs: ["correlation.cpp"],
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wextra",
     ],
 }

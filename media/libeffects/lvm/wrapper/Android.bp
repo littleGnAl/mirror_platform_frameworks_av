@@ -1,5 +1,5 @@
 // music bundle wrapper
-cc_library_shared {
+cc_library {
     name: "libbundlewrapper",
 
     arch: {
@@ -38,7 +38,7 @@ cc_library_shared {
 }
 
 // reverb wrapper
-cc_library_shared {
+cc_library {
     name: "libreverbwrapper",
 
     arch: {

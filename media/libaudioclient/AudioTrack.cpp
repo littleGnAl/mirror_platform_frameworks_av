@@ -210,7 +210,11 @@ status_t AudioTrack::getMetrics(mediametrics::Item * &item)
     return NO_ERROR;
 }
 
-AudioTrack::AudioTrack()
+AudioTrack::AudioTrack() : AudioTrack("" /*opPackageName*/)
+{
+}
+
+AudioTrack::AudioTrack(const std::string& opPackageName)
     : mStatus(NO_INIT),
       mState(STATE_STOPPED),
       mPreviousPriority(ANDROID_PRIORITY_NORMAL),
@@ -218,11 +222,12 @@ AudioTrack::AudioTrack()
       mPausedPosition(0),
       mSelectedDeviceId(AUDIO_PORT_HANDLE_NONE),
       mRoutedDeviceId(AUDIO_PORT_HANDLE_NONE),
+      mOpPackageName(opPackageName),
       mAudioTrackCallback(new AudioTrackCallback())
 {
     mAttributes.content_type = AUDIO_CONTENT_TYPE_UNKNOWN;
     mAttributes.usage = AUDIO_USAGE_UNKNOWN;
-    mAttributes.flags = 0x0;
+    mAttributes.flags = AUDIO_FLAG_NONE;
     strcpy(mAttributes.tags, "");
 }
 
@@ -244,12 +249,14 @@ AudioTrack::AudioTrack(
         const audio_attributes_t* pAttributes,
         bool doNotReconnect,
         float maxRequiredSpeed,
-        audio_port_handle_t selectedDeviceId)
+        audio_port_handle_t selectedDeviceId,
+        const std::string& opPackageName)
     : mStatus(NO_INIT),
       mState(STATE_STOPPED),
       mPreviousPriority(ANDROID_PRIORITY_NORMAL),
       mPreviousSchedulingGroup(SP_DEFAULT),
       mPausedPosition(0),
+      mOpPackageName(opPackageName),
       mAudioTrackCallback(new AudioTrackCallback())
 {
     mAttributes = AUDIO_ATTRIBUTES_INITIALIZER;
@@ -277,13 +284,15 @@ AudioTrack::AudioTrack(
         pid_t pid,
         const audio_attributes_t* pAttributes,
         bool doNotReconnect,
-        float maxRequiredSpeed)
+        float maxRequiredSpeed,
+        const std::string& opPackageName)
     : mStatus(NO_INIT),
       mState(STATE_STOPPED),
       mPreviousPriority(ANDROID_PRIORITY_NORMAL),
       mPreviousSchedulingGroup(SP_DEFAULT),
       mPausedPosition(0),
       mSelectedDeviceId(AUDIO_PORT_HANDLE_NONE),
+      mOpPackageName(opPackageName),
       mAudioTrackCallback(new AudioTrackCallback())
 {
     mAttributes = AUDIO_ATTRIBUTES_INITIALIZER;
@@ -458,7 +467,7 @@ status_t AudioTrack::set(
     if (format == AUDIO_FORMAT_DEFAULT) {
         format = AUDIO_FORMAT_PCM_16_BIT;
     } else if (format == AUDIO_FORMAT_IEC61937) { // HDMI pass-through?
-        mAttributes.flags |= AUDIO_OUTPUT_FLAG_IEC958_NONAUDIO;
+        flags = static_cast<audio_output_flags_t>(flags | AUDIO_OUTPUT_FLAG_IEC958_NONAUDIO);
     }
 
     // validate parameters
@@ -633,6 +642,36 @@ status_t AudioTrack::set(
 exit:
     mStatus = status;
     return status;
+}
+
+
+status_t AudioTrack::set(
+        audio_stream_type_t streamType,
+        uint32_t sampleRate,
+        audio_format_t format,
+        uint32_t channelMask,
+        size_t frameCount,
+        audio_output_flags_t flags,
+        callback_t cbf,
+        void* user,
+        int32_t notificationFrames,
+        const sp<IMemory>& sharedBuffer,
+        bool threadCanCallJava,
+        audio_session_t sessionId,
+        transfer_type transferType,
+        const audio_offload_info_t *offloadInfo,
+        uid_t uid,
+        pid_t pid,
+        const audio_attributes_t* pAttributes,
+        bool doNotReconnect,
+        float maxRequiredSpeed,
+        audio_port_handle_t selectedDeviceId)
+{
+    return set(streamType, sampleRate, format,
+            static_cast<audio_channel_mask_t>(channelMask),
+            frameCount, flags, cbf, user, notificationFrames, sharedBuffer,
+            threadCanCallJava, sessionId, transferType, offloadInfo, uid, pid,
+            pAttributes, doNotReconnect, maxRequiredSpeed, selectedDeviceId);
 }
 
 // -------------------------------------------------------------------------
@@ -1036,6 +1075,40 @@ uint32_t AudioTrack::getOriginalSampleRate() const
     return mOriginalSampleRate;
 }
 
+status_t AudioTrack::setDualMonoMode(audio_dual_mono_mode_t mode)
+{
+    AutoMutex lock(mLock);
+    return setDualMonoMode_l(mode);
+}
+
+status_t AudioTrack::setDualMonoMode_l(audio_dual_mono_mode_t mode)
+{
+    return mAudioTrack->setDualMonoMode(mode);
+}
+
+status_t AudioTrack::getDualMonoMode(audio_dual_mono_mode_t* mode) const
+{
+    AutoMutex lock(mLock);
+    return mAudioTrack->getDualMonoMode(mode);
+}
+
+status_t AudioTrack::setAudioDescriptionMixLevel(float leveldB)
+{
+    AutoMutex lock(mLock);
+    return setAudioDescriptionMixLevel_l(leveldB);
+}
+
+status_t AudioTrack::setAudioDescriptionMixLevel_l(float leveldB)
+{
+    return mAudioTrack->setAudioDescriptionMixLevel(leveldB);
+}
+
+status_t AudioTrack::getAudioDescriptionMixLevel(float* leveldB) const
+{
+    AutoMutex lock(mLock);
+    return mAudioTrack->getAudioDescriptionMixLevel(leveldB);
+}
+
 status_t AudioTrack::setPlaybackRate(const AudioPlaybackRate &playbackRate)
 {
     AutoMutex lock(mLock);
@@ -1043,7 +1116,11 @@ status_t AudioTrack::setPlaybackRate(const AudioPlaybackRate &playbackRate)
         return NO_ERROR;
     }
     if (isOffloadedOrDirect_l()) {
-        return INVALID_OPERATION;
+        status_t status = mAudioTrack->setPlaybackRateParameters(playbackRate);
+        if (status == NO_ERROR) {
+            mPlaybackRate = playbackRate;
+        }
+        return status;
     }
     if (mFlags & AUDIO_OUTPUT_FLAG_FAST) {
         return INVALID_OPERATION;
@@ -1108,9 +1185,16 @@ status_t AudioTrack::setPlaybackRate(const AudioPlaybackRate &playbackRate)
     return NO_ERROR;
 }
 
-const AudioPlaybackRate& AudioTrack::getPlaybackRate() const
+const AudioPlaybackRate& AudioTrack::getPlaybackRate()
 {
     AutoMutex lock(mLock);
+    if (isOffloadedOrDirect_l()) {
+        audio_playback_rate_t playbackRateTemp;
+        const status_t status = mAudioTrack->getPlaybackRateParameters(&playbackRateTemp);
+        if (status == NO_ERROR) { // update local version if changed.
+            mPlaybackRate = playbackRateTemp;
+        }
+    }
     return mPlaybackRate;
 }
 
@@ -1555,6 +1639,7 @@ status_t AudioTrack::createTrack_l()
     input.selectedDeviceId = mSelectedDeviceId;
     input.sessionId = mSessionId;
     input.audioTrackCallback = mAudioTrackCallback;
+    input.opPackageName = mOpPackageName;
 
     IAudioFlinger::CreateTrackOutput output;
 
@@ -1704,6 +1789,13 @@ status_t AudioTrack::createTrack_l()
     playbackRateTemp.mPitch = effectivePitch;
     mProxy->setPlaybackRate(playbackRateTemp);
     mProxy->setMinimum(mNotificationFramesAct);
+
+    if (mDualMonoMode != AUDIO_DUAL_MONO_MODE_OFF) {
+        setDualMonoMode_l(mDualMonoMode);
+    }
+    if (mAudioDescriptionMixLeveldB != -std::numeric_limits<float>::infinity()) {
+        setAudioDescriptionMixLevel_l(mAudioDescriptionMixLeveldB);
+    }
 
     mDeathNotifier = new DeathNotifier(this);
     IInterface::asBinder(mAudioTrack)->linkToDeath(mDeathNotifier, this);

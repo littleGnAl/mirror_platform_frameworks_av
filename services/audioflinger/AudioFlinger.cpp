@@ -852,7 +852,8 @@ sp<IAudioTrack> AudioFlinger::createTrack(const CreateTrackInput& input,
                                       input.notificationsPerBuffer, input.speed,
                                       input.sharedBuffer, sessionId, &output.flags,
                                       callingPid, input.clientInfo.clientTid, clientUid,
-                                      &lStatus, portId, input.audioTrackCallback);
+                                      &lStatus, portId, input.audioTrackCallback,
+                                      input.opPackageName);
         LOG_ALWAYS_FATAL_IF((lStatus == NO_ERROR) && (track == 0));
         // we don't abort yet if lStatus != NO_ERROR; there is still work to be done regardless
 
@@ -1458,6 +1459,20 @@ void AudioFlinger::forwardParametersToDownstreamPatches_l(
         if (downStream != NULL && (useThread == nullptr || useThread(downStream))) {
             downStream->setParameters(keyValuePairs);
         }
+    }
+}
+
+// Update downstream patches for all playback threads attached to an MSD module
+void AudioFlinger::updateDownStreamPatches_l(const struct audio_patch *patch,
+                                             const std::set<audio_io_handle_t> streams)
+{
+    for (const audio_io_handle_t stream : streams) {
+        PlaybackThread *playbackThread = checkPlaybackThread_l(stream);
+        if (playbackThread == nullptr || !playbackThread->isMsdDevice()) {
+            continue;
+        }
+        playbackThread->setDownStreamPatch(patch);
+        playbackThread->sendIoConfigEvent(AUDIO_OUTPUT_CONFIG_CHANGED);
     }
 }
 
@@ -2068,8 +2083,8 @@ sp<media::IAudioRecord> AudioFlinger::createRecord(const CreateRecordInput& inpu
         Mutex::Autolock _l(mLock);
         RecordThread *thread = checkRecordThread_l(output.inputId);
         if (thread == NULL) {
-            ALOGE("createRecord() checkRecordThread_l failed, input handle %d", output.inputId);
-            lStatus = BAD_VALUE;
+            ALOGW("createRecord() checkRecordThread_l failed, input handle %d", output.inputId);
+            lStatus = FAILED_TRANSACTION;
             goto Exit;
         }
 
@@ -2533,7 +2548,11 @@ sp<AudioFlinger::ThreadBase> AudioFlinger::openOutput_l(audio_module_handle_t mo
                       *output, thread.get());
             }
             mPlaybackThreads.add(*output, thread);
-            mPatchPanel.notifyStreamOpened(outHwDev, *output);
+            struct audio_patch patch;
+            mPatchPanel.notifyStreamOpened(outHwDev, *output, &patch);
+            if (thread->isMsdDevice()) {
+                thread->setDownStreamPatch(&patch);
+            }
             return thread;
         }
     }
@@ -3141,7 +3160,8 @@ std::vector<sp<AudioFlinger::EffectModule>> AudioFlinger::purgeStaleEffects_l() 
 // dumpToThreadLog_l() must be called with AudioFlinger::mLock held
 void AudioFlinger::dumpToThreadLog_l(const sp<ThreadBase> &thread)
 {
-    audio_utils::FdToString fdToString;
+    constexpr int THREAD_DUMP_TIMEOUT_MS = 2;
+    audio_utils::FdToString fdToString("- ", THREAD_DUMP_TIMEOUT_MS);
     const int fd = fdToString.fd();
     if (fd >= 0) {
         thread->dump(fd, {} /* args */);

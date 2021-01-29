@@ -158,13 +158,32 @@ class StreamOutHalInterface : public virtual StreamHalInterface {
     virtual status_t getPresentationPosition(uint64_t *frames, struct timespec *timestamp) = 0;
 
     struct SourceMetadata {
-        std::vector<playback_track_metadata_t> tracks;
+        std::vector<playback_track_metadata_v7_t> tracks;
     };
+
     /**
      * Called when the metadata of the stream's source has been changed.
      * @param sourceMetadata Description of the audio that is played by the clients.
      */
     virtual status_t updateSourceMetadata(const SourceMetadata& sourceMetadata) = 0;
+
+    // Returns the Dual Mono mode presentation setting.
+    virtual status_t getDualMonoMode(audio_dual_mono_mode_t* mode) = 0;
+
+    // Sets the Dual Mono mode presentation on the output device.
+    virtual status_t setDualMonoMode(audio_dual_mono_mode_t mode) = 0;
+
+    // Returns the Audio Description Mix level in dB.
+    virtual status_t getAudioDescriptionMixLevel(float* leveldB) = 0;
+
+    // Sets the Audio Description Mix level in dB.
+    virtual status_t setAudioDescriptionMixLevel(float leveldB) = 0;
+
+    // Retrieves current playback rate parameters.
+    virtual status_t getPlaybackRateParameters(audio_playback_rate_t* playbackRate) = 0;
+
+    // Sets the playback rate parameters that control playback behavior.
+    virtual status_t setPlaybackRateParameters(const audio_playback_rate_t& playbackRate) = 0;
 
     virtual status_t setEventCallback(const sp<StreamOutHalInterfaceEventCallback>& callback) = 0;
 
@@ -197,7 +216,7 @@ class StreamInHalInterface : public virtual StreamHalInterface {
     virtual status_t setPreferredMicrophoneFieldDimension(float zoom) = 0;
 
     struct SinkMetadata {
-        std::vector<record_track_metadata_t> tracks;
+        std::vector<record_track_metadata_v7_t> tracks;
     };
     /**
      * Called when the metadata of the stream's sink has been changed.

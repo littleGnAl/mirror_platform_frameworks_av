@@ -279,7 +279,8 @@ status_t AudioRecord::set(
         mAttributes.source = inputSource;
         if (inputSource == AUDIO_SOURCE_VOICE_COMMUNICATION
                 || inputSource == AUDIO_SOURCE_CAMCORDER) {
-            mAttributes.flags |= AUDIO_FLAG_CAPTURE_PRIVATE;
+            mAttributes.flags = static_cast<audio_flags_mask_t>(
+                    mAttributes.flags | AUDIO_FLAG_CAPTURE_PRIVATE);
         }
     } else {
         // stream type shouldn't be looked at, this track has audio attributes
@@ -742,6 +743,8 @@ status_t AudioRecord::createRecord_l(const Modulo<uint32_t> &epoch, const String
     void *iMemPointer;
     audio_track_cblk_t* cblk;
     status_t status;
+    static const int32_t kMaxCreateAttempts = 3;
+    int32_t remainingAttempts = kMaxCreateAttempts;
 
     if (audioFlinger == 0) {
         ALOGE("%s(%d): Could not get audioflinger", __func__, mPortId);
@@ -803,15 +806,24 @@ status_t AudioRecord::createRecord_l(const Modulo<uint32_t> &epoch, const String
     input.sessionId = mSessionId;
     originalSessionId = mSessionId;
 
-    record = audioFlinger->createRecord(input,
-                                                              output,
-                                                              &status);
+    do {
+        record = audioFlinger->createRecord(input, output, &status);
+        if (status == NO_ERROR) {
+            break;
+        }
+        if (status != FAILED_TRANSACTION || --remainingAttempts <= 0) {
+            ALOGE("%s(%d): AudioFlinger could not create record track, status: %d",
+                  __func__, mPortId, status);
+            goto exit;
+        }
+        // FAILED_TRANSACTION happens under very specific conditions causing a state mismatch
+        // between audio policy manager and audio flinger during the input stream open sequence
+        // and can be recovered by retrying.
+        // Leave time for race condition to clear before retrying and randomize delay
+        // to reduce the probability of concurrent retries in locked steps.
+        usleep((20 + rand() % 30) * 10000);
+    } while (1);
 
-    if (status != NO_ERROR) {
-        ALOGE("%s(%d): AudioFlinger could not create record track, status: %d",
-              __func__, mPortId, status);
-        goto exit;
-    }
     ALOG_ASSERT(record != 0);
 
     // AudioFlinger now owns the reference to the I/O handle,

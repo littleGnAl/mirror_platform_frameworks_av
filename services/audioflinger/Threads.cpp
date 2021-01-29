@@ -1864,7 +1864,8 @@ AudioFlinger::PlaybackThread::PlaybackThread(const sp<AudioFlinger>& audioFlinge
         // index 0 is reserved for normal mixer's submix
         mFastTrackAvailMask(((1 << FastMixerState::sMaxFastTracks) - 1) & ~1),
         mHwSupportsPause(false), mHwPaused(false), mFlushPending(false),
-        mLeftVolFloat(-1.0), mRightVolFloat(-1.0)
+        mLeftVolFloat(-1.0), mRightVolFloat(-1.0),
+        mDownStreamPatch{}
 {
     snprintf(mThreadName, kThreadNameLength, "AudioOut_%X", id);
     mNBLogWriter = audioFlinger->newWriter_l(kLogSize, mThreadName);
@@ -1902,9 +1903,8 @@ AudioFlinger::PlaybackThread::PlaybackThread(const sp<AudioFlinger>& audioFlinge
                                        : AUDIO_DEVICE_NONE));
     }
 
-    // ++ operator does not compile
-    for (audio_stream_type_t stream = AUDIO_STREAM_MIN; stream < AUDIO_STREAM_FOR_POLICY_CNT;
-            stream = (audio_stream_type_t) (stream + 1)) {
+    for (int i = AUDIO_STREAM_MIN; i < AUDIO_STREAM_FOR_POLICY_CNT; ++i) {
+        const audio_stream_type_t stream{static_cast<audio_stream_type_t>(i)};
         mStreamTypes[stream].volume = 0.0f;
         mStreamTypes[stream].mute = mAudioFlinger->streamMute_l(stream);
     }
@@ -2068,7 +2068,8 @@ sp<AudioFlinger::PlaybackThread::Track> AudioFlinger::PlaybackThread::createTrac
         uid_t uid,
         status_t *status,
         audio_port_handle_t portId,
-        const sp<media::IAudioTrackCallback>& callback)
+        const sp<media::IAudioTrackCallback>& callback,
+        const std::string& opPackageName)
 {
     size_t frameCount = *pFrameCount;
     size_t notificationFrameCount = *pNotificationFrameCount;
@@ -2349,7 +2350,8 @@ sp<AudioFlinger::PlaybackThread::Track> AudioFlinger::PlaybackThread::createTrac
         track = new Track(this, client, streamType, attr, sampleRate, format,
                           channelMask, frameCount,
                           nullptr /* buffer */, (size_t)0 /* bufferSize */, sharedBuffer,
-                          sessionId, creatorPid, uid, *flags, TrackBase::TYPE_DEFAULT, portId);
+                          sessionId, creatorPid, uid, *flags, TrackBase::TYPE_DEFAULT, portId,
+                          SIZE_MAX /*frameCountToBeReady*/, opPackageName);
 
         lStatus = track != 0 ? track->initCheck() : (status_t) NO_MEMORY;
         if (lStatus != NO_ERROR) {
@@ -2361,7 +2363,7 @@ sp<AudioFlinger::PlaybackThread::Track> AudioFlinger::PlaybackThread::createTrac
         {
             Mutex::Autolock _atCbL(mAudioTrackCbLock);
             if (callback.get() != nullptr) {
-                mAudioTrackCallbacks.emplace(callback);
+                mAudioTrackCallbacks.emplace(track, callback);
             }
         }
 
@@ -2589,6 +2591,10 @@ void AudioFlinger::PlaybackThread::removeTrack_l(const sp<Track>& track)
     mLocalLog.log("removeTrack_l (%p) %s", track.get(), result.string());
 
     mTracks.remove(track);
+    {
+        Mutex::Autolock _atCbL(mAudioTrackCbLock);
+        mAudioTrackCallbacks.erase(track);
+    }
     if (track->isFastTrack()) {
         int index = track->mFastIndex;
         ALOG_ASSERT(0 < index && index < (int)FastMixerState::sMaxFastTracks);
@@ -2627,12 +2633,16 @@ void AudioFlinger::PlaybackThread::ioConfigChanged(audio_io_config_event event, 
     ALOGV("PlaybackThread::ioConfigChanged, thread %p, event %d", this, event);
 
     desc->mIoHandle = mId;
+    struct audio_patch patch = mPatch;
+    if (isMsdDevice()) {
+        patch = mDownStreamPatch;
+    }
 
     switch (event) {
     case AUDIO_OUTPUT_OPENED:
     case AUDIO_OUTPUT_REGISTERED:
     case AUDIO_OUTPUT_CONFIG_CHANGED:
-        desc->mPatch = mPatch;
+        desc->mPatch = patch;
         desc->mChannelMask = mChannelMask;
         desc->mSamplingRate = mSampleRate;
         desc->mFormat = mFormat;
@@ -2642,7 +2652,7 @@ void AudioFlinger::PlaybackThread::ioConfigChanged(audio_io_config_event event, 
         desc->mLatency = latency_l();
         break;
     case AUDIO_CLIENT_STARTED:
-        desc->mPatch = mPatch;
+        desc->mPatch = patch;
         desc->mPortId = portId;
         break;
     case AUDIO_OUTPUT_CLOSED:
@@ -2684,8 +2694,8 @@ void AudioFlinger::PlaybackThread::onCodecFormatChanged(
                     audio_utils::metadata::byteStringFromData(metadata);
             std::vector metadataVec(metaDataStr.begin(), metaDataStr.end());
             Mutex::Autolock _l(mAudioTrackCbLock);
-            for (const auto& callback : mAudioTrackCallbacks) {
-                callback->onCodecFormatChanged(metadataVec);
+            for (const auto& callbackPair : mAudioTrackCallbacks) {
+                callbackPair.second->onCodecFormatChanged(metadataVec);
             }
     }).detach();
 }
@@ -2863,8 +2873,8 @@ void AudioFlinger::PlaybackThread::readOutputParameters_l()
         (void)posix_memalign(&mEffectBuffer, 32, mEffectBufferSize);
     }
 
-    mHapticChannelMask = mChannelMask & AUDIO_CHANNEL_HAPTIC_ALL;
-    mChannelMask &= ~mHapticChannelMask;
+    mHapticChannelMask = static_cast<audio_channel_mask_t>(mChannelMask & AUDIO_CHANNEL_HAPTIC_ALL);
+    mChannelMask = static_cast<audio_channel_mask_t>(mChannelMask & ~mHapticChannelMask);
     mHapticChannelCount = audio_channel_count_from_out_mask(mHapticChannelMask);
     mChannelCount -= mHapticChannelCount;
 
@@ -4200,7 +4210,7 @@ status_t AudioFlinger::PlaybackThread::createAudioPatch_l(const struct audio_pat
                             "Enumerated device type(%#x) must not be used "
                             "as it does not support audio patches",
                             patch->sinks[i].ext.device.type);
-        type |= patch->sinks[i].ext.device.type;
+        type = static_cast<audio_devices_t>(type | patch->sinks[i].ext.device.type);
         deviceTypeAddrs.push_back(AudioDeviceTypeAddr(patch->sinks[i].ext.device.type,
                 patch->sinks[i].ext.device.address));
     }
@@ -4450,8 +4460,9 @@ AudioFlinger::MixerThread::MixerThread(const sp<AudioFlinger>& audioFlinger, Aud
         // wrap the source side of the MonoPipe to make it an AudioBufferProvider
         fastTrack->mBufferProvider = new SourceAudioBufferProvider(new MonoPipeReader(monoPipe));
         fastTrack->mVolumeProvider = NULL;
-        fastTrack->mChannelMask = mChannelMask | mHapticChannelMask; // mPipeSink channel mask for
-                                                                     // audio to FastMixer
+        fastTrack->mChannelMask = static_cast<audio_channel_mask_t>(
+                mChannelMask | mHapticChannelMask); // mPipeSink channel mask for
+                                                    // audio to FastMixer
         fastTrack->mFormat = mFormat; // mPipeSink format for audio to FastMixer
         fastTrack->mHapticPlaybackEnabled = mHapticChannelMask != AUDIO_CHANNEL_NONE;
         fastTrack->mHapticIntensity = AudioMixer::HAPTIC_SCALE_NONE;
@@ -4465,7 +4476,8 @@ AudioFlinger::MixerThread::MixerThread(const sp<AudioFlinger>& audioFlinger, Aud
         // specify sink channel mask when haptic channel mask present as it can not
         // be calculated directly from channel count
         state->mSinkChannelMask = mHapticChannelMask == AUDIO_CHANNEL_NONE
-                ? AUDIO_CHANNEL_NONE : mChannelMask | mHapticChannelMask;
+                ? AUDIO_CHANNEL_NONE
+                : static_cast<audio_channel_mask_t>(mChannelMask | mHapticChannelMask);
         state->mCommand = FastMixerState::COLD_IDLE;
         // already done in constructor initialization list
         //mFastMixerFutex = 0;
@@ -7429,7 +7441,7 @@ reacquire_wakelock:
                         (framesRead - part1) * mFrameSize);
             }
         }
-        rear = mRsmpInRear += framesRead;
+        mRsmpInRear = audio_utils::safe_add_overflow(mRsmpInRear, (int32_t)framesRead);
 
         size = activeTracks.size();
 
@@ -7870,7 +7882,8 @@ status_t AudioFlinger::RecordThread::start(RecordThread::RecordTrack* recordTrac
         AutoMutex lock(mLock);
         if (recordTrack->isInvalid()) {
             recordTrack->clearSyncStartEvent();
-            return INVALID_OPERATION;
+            ALOGW("%s track %d: invalidated before startInput", __func__, recordTrack->portId());
+            return DEAD_OBJECT;
         }
         if (mActiveTracks.indexOf(recordTrack) >= 0) {
             if (recordTrack->mState == TrackBase::PAUSING) {
@@ -7900,7 +7913,8 @@ status_t AudioFlinger::RecordThread::start(RecordThread::RecordTrack* recordTrac
                     recordTrack->mState = TrackBase::STARTING_2;
                     // STARTING_2 forces destroy to call stopInput.
                 }
-                return INVALID_OPERATION;
+                ALOGW("%s track %d: invalidated after startInput", __func__, recordTrack->portId());
+                return DEAD_OBJECT;
             }
             if (recordTrack->mState != TrackBase::STARTING_1) {
                 ALOGW("%s(%d): unsynchronized mState:%d change",
@@ -8047,10 +8061,15 @@ void AudioFlinger::RecordThread::updateMetadata_l()
     StreamInHalInterface::SinkMetadata metadata;
     for (const sp<RecordTrack> &track : mActiveTracks) {
         // No track is invalid as this is called after prepareTrack_l in the same critical section
-        metadata.tracks.push_back({
+        record_track_metadata_v7_t trackMetadata;
+        trackMetadata.base = {
                 .source = track->attributes().source,
                 .gain = 1, // capture tracks do not have volumes
-        });
+        };
+        trackMetadata.channel_mask = track->channelMask(),
+        strncpy(trackMetadata.tags, track->attributes().tags, AUDIO_ATTRIBUTES_TAGS_MAX_SIZE);
+
+        metadata.tracks.push_back(trackMetadata);
     }
     mInput->stream->updateSinkMetadata(metadata);
 }
@@ -8555,7 +8574,7 @@ status_t AudioFlinger::RecordThread::createAudioPatch_l(const struct audio_patch
 
     // store new device and send to effects
     mInDeviceTypeAddr.mType = patch->sources[0].ext.device.type;
-    mInDeviceTypeAddr.mAddress = patch->sources[0].ext.device.address;
+    mInDeviceTypeAddr.setAddress(patch->sources[0].ext.device.address);
     audio_port_handle_t deviceId = patch->sources[0].id;
     for (size_t i = 0; i < mEffectChains.size(); i++) {
         mEffectChains[i]->setInputDevice_l(inDeviceTypeAddr());
@@ -8634,6 +8653,7 @@ status_t AudioFlinger::RecordThread::releaseAudioPatch_l(const audio_patch_handl
 
 void AudioFlinger::RecordThread::updateOutDevices(const DeviceDescriptorBaseVector& outDevices)
 {
+    Mutex::Autolock _l(mLock);
     mOutDevices = outDevices;
     mOutDeviceTypeAddrs = deviceTypeAddrsFromDescriptors(mOutDevices);
     for (size_t i = 0; i < mEffectChains.size(); i++) {
@@ -9185,7 +9205,7 @@ status_t AudioFlinger::MmapThread::createAudioPatch_l(const struct audio_patch *
                                 "Enumerated device type(%#x) must not be used "
                                 "as it does not support audio patches",
                                 patch->sinks[i].ext.device.type);
-            type |= patch->sinks[i].ext.device.type;
+            type = static_cast<audio_devices_t>(type | patch->sinks[i].ext.device.type);
             sinkDeviceTypeAddrs.push_back(AudioDeviceTypeAddr(patch->sinks[i].ext.device.type,
                     patch->sinks[i].ext.device.address));
         }
@@ -9196,7 +9216,7 @@ status_t AudioFlinger::MmapThread::createAudioPatch_l(const struct audio_patch *
         deviceId = patch->sources[0].id;
         numDevices = mPatch.num_sources;
         sourceDeviceTypeAddr.mType = patch->sources[0].ext.device.type;
-        sourceDeviceTypeAddr.mAddress = patch->sources[0].ext.device.address;
+        sourceDeviceTypeAddr.setAddress(patch->sources[0].ext.device.address);
     }
 
     for (size_t i = 0; i < mEffectChains.size(); i++) {
@@ -9611,11 +9631,15 @@ void AudioFlinger::MmapPlaybackThread::updateMetadata_l()
     StreamOutHalInterface::SourceMetadata metadata;
     for (const sp<MmapTrack> &track : mActiveTracks) {
         // No track is invalid as this is called after prepareTrack_l in the same critical section
-        metadata.tracks.push_back({
+        playback_track_metadata_v7_t trackMetadata;
+        trackMetadata.base = {
                 .usage = track->attributes().usage,
                 .content_type = track->attributes().content_type,
                 .gain = mHalVolFloat, // TODO: propagate from aaudio pre-mix volume
-        });
+        };
+        trackMetadata.channel_mask = track->channelMask(),
+        strncpy(trackMetadata.tags, track->attributes().tags, AUDIO_ATTRIBUTES_TAGS_MAX_SIZE);
+        metadata.tracks.push_back(trackMetadata);
     }
     mOutput->stream->updateSourceMetadata(metadata);
 }
@@ -9722,10 +9746,14 @@ void AudioFlinger::MmapCaptureThread::updateMetadata_l()
     StreamInHalInterface::SinkMetadata metadata;
     for (const sp<MmapTrack> &track : mActiveTracks) {
         // No track is invalid as this is called after prepareTrack_l in the same critical section
-        metadata.tracks.push_back({
+        record_track_metadata_v7_t trackMetadata;
+        trackMetadata.base = {
                 .source = track->attributes().source,
                 .gain = 1, // capture tracks do not have volumes
-        });
+        };
+        trackMetadata.channel_mask = track->channelMask(),
+        strncpy(trackMetadata.tags, track->attributes().tags, AUDIO_ATTRIBUTES_TAGS_MAX_SIZE);
+        metadata.tracks.push_back(trackMetadata);
     }
     mInput->stream->updateSinkMetadata(metadata);
 }
