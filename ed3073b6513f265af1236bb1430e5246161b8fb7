@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007730035",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1564685?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "6558a470_5509998a",
+        "filename": "METADATA",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-01-29T09:30:03Z",
+      "side": 1,
+      "message": "Unrecognized finding :\npatent\n",
+      "range": {
+        "startLine": 11,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "ed3073b6513f265af1236bb1430e5246161b8fb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
