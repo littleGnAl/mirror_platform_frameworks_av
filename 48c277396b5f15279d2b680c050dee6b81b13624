@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa2be6cf_f93612e9",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1148,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-01-30T01:02:49Z",
+      "side": 1,
+      "message": "\u003e Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.\n\nPlease fix.",
+      "parentUuid": "aa058add_fe1fb7b4",
+      "range": {
+        "startLine": 1148,
+        "startChar": 0,
+        "endLine": 1148,
+        "endChar": 102
+      },
+      "revId": "48c277396b5f15279d2b680c050dee6b81b13624",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
