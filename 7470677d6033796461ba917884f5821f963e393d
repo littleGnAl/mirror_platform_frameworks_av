@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3b22c6f5_d0aa57c3",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 1510,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-01-30T05:49:31Z",
+      "side": 1,
+      "message": "You don\u0027t need to create a separate tuning as this is part of the C2 spec. C2 implementations must automatically map config_vb on C2StreamColorAspectsInfo to the one with the IS_REQUEST_FLAG present (as done in C2InterfaceHelper \nhttps://android.googlesource.com/platform/frameworks/av/+/master/media/codec2/vndk/util/C2InterfaceHelper.cpp#633)",
+      "range": {
+        "startLine": 1510,
+        "startChar": 46,
+        "endLine": 1510,
+        "endChar": 55
+      },
+      "revId": "7470677d6033796461ba917884f5821f963e393d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
