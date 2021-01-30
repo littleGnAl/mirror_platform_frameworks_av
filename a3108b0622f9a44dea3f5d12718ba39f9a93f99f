@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "34421301_e1155ce8",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 965,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-01-30T02:45:03Z",
+      "side": 1,
+      "message": "don\u0027t know why this compiles... this should be secureMode.value. Perhaps C++ casts the int const into C2SecureModeTuning?",
+      "range": {
+        "startLine": 965,
+        "startChar": 41,
+        "endLine": 965,
+        "endChar": 42
+      },
+      "revId": "a3108b0622f9a44dea3f5d12718ba39f9a93f99f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
