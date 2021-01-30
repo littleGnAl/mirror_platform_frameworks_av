@@ -144,6 +144,14 @@ std::vector<std::string> MediaCodecsXmlParser::getDefaultXmlNames() {
             android::base::GetProperty("ro.media.xml_variant.codecs", ""),
             android::base::GetProperty("ro.media.xml_variant.codecs_performance", "")
         };
+
+    if (!variants[0].empty()) {
+        variants[0] = variants[0] + "_vendor";
+    }
+    if (!variants[1].empty()) {
+        variants[1] = variants[1] + "_vendor";
+    }
+
     static std::vector<std::string> names = {
             prefixes[0] + variants[0] + ".xml",
             prefixes[1] + variants[1] + ".xml"
