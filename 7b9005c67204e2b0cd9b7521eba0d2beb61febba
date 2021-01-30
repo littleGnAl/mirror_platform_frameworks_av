@@ -136,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd255bb9_3d4e1bc9",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1978,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-01-30T00:53:44Z",
+      "side": 1,
+      "message": "Right, we might need to define that somewhere in Codec 2.0 so we can decouple this behavior from Android.",
+      "parentUuid": "375b24d8_7d0059ee",
+      "range": {
+        "startLine": 1978,
+        "startChar": 0,
+        "endLine": 1978,
+        "endChar": 100
+      },
+      "revId": "7b9005c67204e2b0cd9b7521eba0d2beb61febba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c37ee46_e2916ee3",
