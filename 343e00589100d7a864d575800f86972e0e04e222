@@ -16,6 +16,24 @@
       "message": "It\u0027s already merged in master. do we need to merge it aosp-master separately?",
       "revId": "343e00589100d7a864d575800f86972e0e04e222",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb5072cc_6632f645",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060234
+      },
+      "writtenOn": "2021-02-01T02:12:52Z",
+      "side": 1,
+      "message": "From the ARCVM team\u0027s perspective, being present in master is sufficient.",
+      "parentUuid": "27794efc_9c517988",
+      "revId": "343e00589100d7a864d575800f86972e0e04e222",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
