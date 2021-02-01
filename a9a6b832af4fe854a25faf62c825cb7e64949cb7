@@ -47,6 +47,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ce2bd06_b340d003",
+        "filename": "METADATA",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-02-01T23:45:25Z",
+      "side": 1,
+      "message": "These files include \"may only be used and distributed under the Widevine Master License Agreement\" in their copyright headers.\n\nThe pcounsel lawyers who get asked to approve an exception care about the license and not the name of the plugin.",
+      "parentUuid": "6d3f28e6_a4246f71",
+      "range": {
+        "startLine": 5,
+        "startChar": 29,
+        "endLine": 5,
+        "endChar": 37
+      },
+      "revId": "a9a6b832af4fe854a25faf62c825cb7e64949cb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9acc6a24_0e376404",
+        "filename": "METADATA",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-02-01T23:45:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72f4fdd2_396a4131",
+      "range": {
+        "startLine": 5,
+        "startChar": 4,
+        "endLine": 5,
+        "endChar": 28
+      },
+      "revId": "a9a6b832af4fe854a25faf62c825cb7e64949cb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a35dc9c_4aaf7c72",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-01T21:16:07Z",
       "side": 1,
       "message": "disclaimers",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "a9a6b832af4fe854a25faf62c825cb7e64949cb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba3073d5_c8a56ddc",
+        "filename": "METADATA",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1359095
+      },
+      "writtenOn": "2021-02-01T23:45:25Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a35dc9c_4aaf7c72",
       "range": {
         "startLine": 11,
         "startChar": 15,
