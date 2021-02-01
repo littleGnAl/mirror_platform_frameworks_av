@@ -22,6 +22,30 @@
       },
       "revId": "75bdde5a4f6b4bb4f5a8ac764ba3b14b92f152a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f4f9777_9edc6a35",
+        "filename": "media/libaudiohal/impl/StreamHalHidl.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-02-01T18:08:47Z",
+      "side": 1,
+      "message": "OK, let\u0027s use \u0027NAME_NOT_FOUND\u0027. I think, \u0027NO_INIT\u0027 is more appropriate for the cases when the order of operations is incorrect.",
+      "parentUuid": "f690734a_912d9f84",
+      "range": {
+        "startLine": 276,
+        "startChar": 11,
+        "endLine": 276,
+        "endChar": 20
+      },
+      "revId": "75bdde5a4f6b4bb4f5a8ac764ba3b14b92f152a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
