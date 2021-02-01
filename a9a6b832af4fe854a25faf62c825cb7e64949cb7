@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d3f28e6_a4246f71",
+        "filename": "METADATA",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1005920
+      },
+      "writtenOn": "2021-02-01T21:16:07Z",
+      "side": 1,
+      "message": "Capitalization is \"Widevine\", however the files referenced are clearkey plugins not Widevine so this should say \"clearkey\". Widevine is not included in AOSP.",
+      "range": {
+        "startLine": 5,
+        "startChar": 29,
+        "endLine": 5,
+        "endChar": 37
+      },
+      "revId": "a9a6b832af4fe854a25faf62c825cb7e64949cb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72f4fdd2_396a4131",
+        "filename": "METADATA",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1005920
+      },
+      "writtenOn": "2021-02-01T21:16:07Z",
+      "side": 1,
+      "message": "Check wording",
+      "range": {
+        "startLine": 5,
+        "startChar": 4,
+        "endLine": 5,
+        "endChar": 28
+      },
+      "revId": "a9a6b832af4fe854a25faf62c825cb7e64949cb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a35dc9c_4aaf7c72",
+        "filename": "METADATA",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1005920
+      },
+      "writtenOn": "2021-02-01T21:16:07Z",
+      "side": 1,
+      "message": "disclaimers",
+      "range": {
+        "startLine": 11,
+        "startChar": 15,
+        "endLine": 11,
+        "endChar": 25
+      },
+      "revId": "a9a6b832af4fe854a25faf62c825cb7e64949cb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
