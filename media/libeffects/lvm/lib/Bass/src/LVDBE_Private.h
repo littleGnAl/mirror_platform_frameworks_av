@@ -33,6 +33,7 @@
 /*                                                                                      */
 /****************************************************************************************/
 
+#include <audio_utils/BiquadFilter.h>
 #include "LVDBE.h" /* Calling or Application layer definitions */
 #include "BIQUAD.h"
 #include "LVC_Mixer.h"
@@ -63,19 +64,12 @@ typedef struct {
     AGC_MIX_VOL_2St1Mon_FLOAT_t AGCInstance; /* AGC instance parameters */
 
     /* Process variables */
-    Biquad_2I_Order2_FLOAT_Taps_t HPFTaps; /* High pass filter taps */
-    Biquad_1I_Order2_FLOAT_Taps_t BPFTaps; /* Band pass filter taps */
     LVMixer3_1St_FLOAT_st BypassVolume;    /* Bypass volume scaler */
     LVMixer3_2St_FLOAT_st BypassMixer;     /* Bypass Mixer for Click Removal */
 
 } LVDBE_Data_FLOAT_t;
 
-/* Coefs structure */
-typedef struct {
-    /* Process variables */
-    Biquad_FLOAT_Instance_t HPFInstance; /* High pass filter instance */
-    Biquad_FLOAT_Instance_t BPFInstance; /* Band pass filter instance */
-} LVDBE_Coef_FLOAT_t;
+
 /* Instance structure */
 typedef struct {
     /* Public parameters */
@@ -84,8 +78,11 @@ typedef struct {
 
     /* Data and coefficient pointers */
     LVDBE_Data_FLOAT_t* pData; /* Instance data */
-    LVDBE_Coef_FLOAT_t* pCoef; /* Instance coefficients */
     void* pScratch;            /* scratch pointer */
+    std::unique_ptr<android::audio_utils::BiquadFilter<LVM_FLOAT>>
+            pHPFBiquad; /* Biquad filter instance for HPF */
+    std::unique_ptr<android::audio_utils::BiquadFilter<LVM_FLOAT>>
+            pBPFBiquad; /* Biquad filter instance for BPF */
 } LVDBE_Instance_t;
 
 /****************************************************************************************/

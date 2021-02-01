@@ -23,7 +23,7 @@ testdir="/data/local/tmp/lvmTest"
 echo "========================================"
 echo "testing lvm"
 adb shell mkdir -p $testdir
-adb push $ANDROID_BUILD_TOP/cts/tests/tests/media/res/raw/sinesweepraw.raw $testdir
+adb push $ANDROID_BUILD_TOP/frameworks/av/media/libeffects/res/raw/sinesweepraw.raw $testdir
 adb push $OUT/testcases/snr/arm64/snr $testdir
 
 E_VAL=1
@@ -91,7 +91,7 @@ do
     do
         for fs in ${fs_arr[*]}
         do
-            for chMask in {0..22}
+            for chMask in {0..38}
             do
                 adb shell $testdir/lvmtest -i:$testdir/sinesweepraw.raw \
                     -o:$testdir/sinesweep_$((chMask))_$((fs)).raw -chMask:$chMask -fs:$fs $flags

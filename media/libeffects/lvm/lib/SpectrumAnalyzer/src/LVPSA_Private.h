@@ -18,6 +18,7 @@
 #ifndef _LVPSA_PRIVATE_H_
 #define _LVPSA_PRIVATE_H_
 
+#include <audio_utils/BiquadFilter.h>
 #include "LVPSA.h"
 #include "BIQUAD.h"
 #include "LVPSA_QPD.h"
@@ -82,9 +83,8 @@ typedef struct {
 
     LVPSA_BPFilterPrecision_en* pBPFiltersPrecision; /* Points a nBands elements array that contains
                                                         the filter precision for each band */
-    Biquad_FLOAT_Instance_t* pBP_Instances;
-    /* Points a nBands elements array that contains the band pass filter taps for each band */
-    Biquad_1I_Order2_FLOAT_Taps_t* pBP_Taps;
+    std::vector<android::audio_utils::BiquadFilter<LVM_FLOAT>>
+            specBiquad; /* Biquad filter instances */
     /* Points a nBands elements array that contains the QPD filter instance for each band */
     QPD_FLOAT_State_t* pQPD_States;
     /* Points a nBands elements array that contains the QPD filter taps for each band */

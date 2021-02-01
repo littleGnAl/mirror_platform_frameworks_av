@@ -33,6 +33,7 @@
 /*                                                                                  */
 /************************************************************************************/
 
+#include <audio_utils/BiquadFilter.h>
 #include "LVCS.h"                 /* Calling or Application layer definitions */
 #include "LVCS_StereoEnhancer.h"  /* Stereo enhancer module definitions */
 #include "LVCS_ReverbGenerator.h" /* Reverberation module definitions */
@@ -110,7 +111,6 @@ typedef struct {
     /* Sub-block configurations */
     LVCS_StereoEnhancer_t StereoEnhancer; /* Stereo enhancer configuration */
     LVCS_ReverbGenerator_t Reverberation; /* Reverberation configuration */
-    LVCS_Equaliser_t Equaliser;           /* Equaliser configuration */
     LVCS_BypassMix_t BypassMix;           /* Bypass mixer configuration */
 
     /* Bypass variable */
@@ -120,27 +120,18 @@ typedef struct {
     LVM_INT16 bTimerDone;                 /* Timer completion flag */
     LVM_Timer_Params_t TimerParams;       /* Timer parameters */
     LVM_Timer_Instance_t TimerInstance;   /* Timer instance */
-    void* pCoeff;                         /* pointer to buffer for equaliser filter coeffs */
-    void* pData;                          /* pointer to buffer for equaliser filter states */
+    std::unique_ptr<android::audio_utils::BiquadFilter<LVM_FLOAT>>
+            pEqBiquad; /* Biquad filter instance for Equaliser */
+    std::unique_ptr<android::audio_utils::BiquadFilter<LVM_FLOAT>>
+            pRevBiquad; /* Biquad filter instance for Reverberation */
+    std::unique_ptr<android::audio_utils::BiquadFilter<LVM_FLOAT>>
+            pSEMidBiquad; /* Biquad filter instance for Stereo enhancement mid */
+    std::unique_ptr<android::audio_utils::BiquadFilter<LVM_FLOAT>>
+            pSESideBiquad; /* Biquad filter instance for Stereo enhancement side */
     void* pScratch;                       /* Pointer to bundle scratch buffer */
 
 } LVCS_Instance_t;
 
-/* Coefficient Structure */
-typedef struct {
-    Biquad_FLOAT_Instance_t EqualiserBiquadInstance;
-    Biquad_FLOAT_Instance_t ReverbBiquadInstance;
-    Biquad_FLOAT_Instance_t SEBiquadInstanceMid;
-    Biquad_FLOAT_Instance_t SEBiquadInstanceSide;
-} LVCS_Coefficient_t;
-
-/* Data Structure */
-typedef struct {
-    Biquad_2I_Order2_FLOAT_Taps_t EqualiserBiquadTaps;
-    Biquad_2I_Order2_FLOAT_Taps_t ReverbBiquadTaps;
-    Biquad_1I_Order1_FLOAT_Taps_t SEBiquadTapsMid;
-    Biquad_1I_Order2_FLOAT_Taps_t SEBiquadTapsSide;
-} LVCS_Data_t;
 
 void LVCS_TimerCallBack(void* hInstance, void* pCallBackParams, LVM_INT32 CallbackParam);
 

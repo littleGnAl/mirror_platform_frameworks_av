@@ -49,11 +49,13 @@ DeviceDescriptor::DeviceDescriptor(audio_devices_t type,
 {
 }
 
+// Let DeviceDescriptorBase initialize the address since it handles specific cases like
+// legacy remote submix where "0" is added as default address.
 DeviceDescriptor::DeviceDescriptor(const AudioDeviceTypeAddr &deviceTypeAddr,
                                    const std::string &tagName,
                                    const FormatVector &encodedFormats) :
         DeviceDescriptorBase(deviceTypeAddr), mTagName(tagName), mEncodedFormats(encodedFormats),
-        mDeclaredAddress(deviceTypeAddr.getAddress())
+        mDeclaredAddress(DeviceDescriptorBase::address())
 {
     mCurrentEncodedFormat = AUDIO_FORMAT_DEFAULT;
     /* If framework runs against a pre 5.0 Audio HAL, encoded formats are absent from the config.
@@ -391,6 +393,24 @@ sp<DeviceDescriptor> DeviceVector::getDeviceForOpening() const
     }
     // Return null pointer if the devices are not all input/output device.
     return nullptr;
+}
+
+sp<DeviceDescriptor> DeviceVector::getDeviceFromDeviceTypeAddr(
+            const AudioDeviceTypeAddr& deviceTypeAddr) const {
+    return getDevice(deviceTypeAddr.mType, String8(deviceTypeAddr.getAddress()),
+            AUDIO_FORMAT_DEFAULT);
+}
+
+DeviceVector DeviceVector::getDevicesFromDeviceTypeAddrVec(
+        const AudioDeviceTypeAddrVector& deviceTypeAddrVector) const {
+    DeviceVector devices;
+    for (const auto& deviceTypeAddr : deviceTypeAddrVector) {
+        sp<DeviceDescriptor> device = getDeviceFromDeviceTypeAddr(deviceTypeAddr);
+        if (device != nullptr) {
+            devices.add(device);
+        }
+    }
+    return devices;
 }
 
 void DeviceVector::replaceDevicesByType(

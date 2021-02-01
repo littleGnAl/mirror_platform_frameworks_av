@@ -156,6 +156,24 @@ class StreamOutHalLocal : public StreamOutHalInterface, public StreamHalLocal {
     // Called when the metadata of the stream's source has been changed.
     status_t updateSourceMetadata(const SourceMetadata& sourceMetadata) override;
 
+    // Returns the Dual Mono mode presentation setting.
+    status_t getDualMonoMode(audio_dual_mono_mode_t* mode) override;
+
+    // Sets the Dual Mono mode presentation on the output device.
+    status_t setDualMonoMode(audio_dual_mono_mode_t mode) override;
+
+    // Returns the Audio Description Mix level in dB.
+    status_t getAudioDescriptionMixLevel(float* leveldB) override;
+
+    // Sets the Audio Description Mix level in dB.
+    status_t setAudioDescriptionMixLevel(float leveldB) override;
+
+    // Retrieves current playback rate parameters.
+    status_t getPlaybackRateParameters(audio_playback_rate_t* playbackRate) override;
+
+    // Sets the playback rate parameters that control playback behavior.
+    status_t setPlaybackRateParameters(const audio_playback_rate_t& playbackRate) override;
+
     status_t setEventCallback(const sp<StreamOutHalInterfaceEventCallback>& callback) override;
 
   private:
@@ -173,6 +191,9 @@ class StreamOutHalLocal : public StreamOutHalInterface, public StreamHalLocal {
     static int asyncCallback(stream_callback_event_t event, void *param, void *cookie);
 
     static int asyncEventCallback(stream_event_callback_type_t event, void *param, void *cookie);
+
+    void doUpdateSourceMetadataV7(const SourceMetadata& sourceMetadata);
+    void doUpdateSourceMetadata(const SourceMetadata& sourceMetadata);
 };
 
 class StreamInHalLocal : public StreamInHalInterface, public StreamHalLocal {
@@ -227,6 +248,9 @@ class StreamInHalLocal : public StreamInHalInterface, public StreamHalLocal {
     StreamInHalLocal(audio_stream_in_t *stream, sp<DeviceHalLocal> device);
 
     virtual ~StreamInHalLocal();
+
+    void doUpdateSinkMetadata(const SinkMetadata& sinkMetadata);
+    void doUpdateSinkMetadataV7(const SinkMetadata& sinkMetadata);
 };
 
 } // namespace CPP_VERSION

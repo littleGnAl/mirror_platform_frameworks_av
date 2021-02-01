@@ -23,6 +23,8 @@
 /*  Includes                                                                            */
 /*                                                                                      */
 /****************************************************************************************/
+
+#include <audio_utils/BiquadFilter.h>
 #include "LVREV.h"
 #include "LVREV_Tables.h"
 #include "BIQUAD.h"
@@ -101,21 +103,7 @@
 /*                                                                                      */
 /****************************************************************************************/
 
-/* Fast data structure */
-typedef struct {
-    Biquad_1I_Order1_FLOAT_Taps_t HPTaps;       /* High pass filter taps */
-    Biquad_1I_Order1_FLOAT_Taps_t LPTaps;       /* Low pass filter taps */
-    Biquad_1I_Order1_FLOAT_Taps_t RevLPTaps[4]; /* Reverb low pass filters taps */
 
-} LVREV_FastData_st;
-
-/* Fast coefficient structure */
-typedef struct {
-    Biquad_FLOAT_Instance_t HPCoefs;       /* High pass filter coefficients */
-    Biquad_FLOAT_Instance_t LPCoefs;       /* Low pass filter coefficients */
-    Biquad_FLOAT_Instance_t RevLPCoefs[4]; /* Reverb low pass filters coefficients */
-
-} LVREV_FastCoef_st;
 typedef struct {
     /* General */
     LVREV_InstanceParams_st InstanceParams; /* Initialisation time instance parameters */
@@ -134,30 +122,34 @@ typedef struct {
                                                processing */
 
     /* Aligned memory pointers */
-    LVREV_FastData_st* pFastData;    /* Fast data memory base address */
-    LVREV_FastCoef_st* pFastCoef;    /* Fast coefficient memory base address */
-    LVM_FLOAT* pScratchDelayLine[4]; /* Delay line scratch memory */
+    std::unique_ptr<android::audio_utils::BiquadFilter<LVM_FLOAT>>
+            pRevHPFBiquad; /* Biquad filter instance for HPF */
+    std::unique_ptr<android::audio_utils::BiquadFilter<LVM_FLOAT>>
+            pRevLPFBiquad; /* Biquad filter instance for LPF */
+    std::array<std::unique_ptr<android::audio_utils::BiquadFilter<LVM_FLOAT>>, LVREV_DELAYLINES_4>
+            revLPFBiquad; /* Biquad filter instance for Reverb LPF */
+    LVM_FLOAT* pScratchDelayLine[LVREV_DELAYLINES_4]; /* Delay line scratch memory */
     LVM_FLOAT* pScratch;             /* Multi ussge scratch */
     LVM_FLOAT* pInputSave;           /* Reverb block input save for dry/wet
                                         mixing*/
 
     /* Feedback matrix */
-    Mix_1St_Cll_FLOAT_t FeedbackMixer[4]; /* Mixer for Pop and Click Suppression \
+    Mix_1St_Cll_FLOAT_t FeedbackMixer[LVREV_DELAYLINES_4]; /* Mixer for Pop and Click Suppression \
                                              caused by feedback Gain */
 
     /* All-Pass Filter */
-    LVM_INT32 T[4];                             /* Maximum delay size of buffer */
-    LVM_FLOAT* pDelay_T[4];                     /* Pointer to delay buffers */
-    LVM_INT32 Delay_AP[4];                      /* Offset to AP delay buffer start */
+    LVM_INT32 T[LVREV_DELAYLINES_4];                          /* Maximum delay size of buffer */
+    LVM_FLOAT* pDelay_T[LVREV_DELAYLINES_4];                  /* Pointer to delay buffers */
+    LVM_INT32 Delay_AP[LVREV_DELAYLINES_4];                   /* Offset to AP delay buffer start */
     LVM_INT16 AB_Selection;                     /* Smooth from tap A to B when 1 \
                                                    otherwise B to A */
-    LVM_INT32 A_DelaySize[4];                   /* A delay length in samples */
-    LVM_INT32 B_DelaySize[4];                   /* B delay length in samples */
-    LVM_FLOAT* pOffsetA[4];                     /* Offset for the A delay tap */
-    LVM_FLOAT* pOffsetB[4];                     /* Offset for the B delay tap */
-    Mix_2St_Cll_FLOAT_t Mixer_APTaps[4];        /* Smoothed AP delay mixer */
-    Mix_1St_Cll_FLOAT_t Mixer_SGFeedback[4];    /* Smoothed SAfeedback gain */
-    Mix_1St_Cll_FLOAT_t Mixer_SGFeedforward[4]; /* Smoothed AP feedforward gain */
+    LVM_INT32 A_DelaySize[LVREV_DELAYLINES_4];                /* A delay length in samples */
+    LVM_INT32 B_DelaySize[LVREV_DELAYLINES_4];                /* B delay length in samples */
+    LVM_FLOAT* pOffsetA[LVREV_DELAYLINES_4];                  /* Offset for the A delay tap */
+    LVM_FLOAT* pOffsetB[LVREV_DELAYLINES_4];                  /* Offset for the B delay tap */
+    Mix_2St_Cll_FLOAT_t Mixer_APTaps[LVREV_DELAYLINES_4];     /* Smoothed AP delay mixer */
+    Mix_1St_Cll_FLOAT_t Mixer_SGFeedback[LVREV_DELAYLINES_4]; /* Smoothed SAfeedback gain */
+    Mix_1St_Cll_FLOAT_t Mixer_SGFeedforward[LVREV_DELAYLINES_4]; /* Smoothed AP feedforward gain */
 
     /* Output gain */
     Mix_2St_Cll_FLOAT_t BypassMixer; /* Dry/wet mixer */

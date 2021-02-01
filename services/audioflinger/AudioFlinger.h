@@ -320,6 +320,9 @@ public:
     status_t removeEffectFromHal(audio_port_handle_t deviceId,
             audio_module_handle_t hwModuleId, sp<EffectHalInterface> effect);
 
+    void updateDownStreamPatches_l(const struct audio_patch *patch,
+                                   const std::set<audio_io_handle_t> streams);
+
 private:
     // FIXME The 400 is temporarily too high until a leak of writers in media.log is fixed.
     static const size_t kLogMemorySize = 400 * 1024;
@@ -642,6 +645,13 @@ using effect_buffer_t = int16_t;
         virtual sp<media::VolumeShaper::State> getVolumeShaperState(int id) override;
         virtual status_t    getTimestamp(AudioTimestamp& timestamp);
         virtual void        signal(); // signal playback thread for a change in control block
+                status_t    getDualMonoMode(audio_dual_mono_mode_t* mode) override;
+                status_t    setDualMonoMode(audio_dual_mono_mode_t mode) override;
+                status_t    getAudioDescriptionMixLevel(float* leveldB) override;
+                status_t    setAudioDescriptionMixLevel(float leveldB) override;
+                status_t    getPlaybackRateParameters(audio_playback_rate_t* playbackRate) override;
+                status_t    setPlaybackRateParameters(
+                        const audio_playback_rate_t& playbackRate) override;
 
         virtual status_t onTransact(
             uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags);

@@ -79,8 +79,8 @@ static inline bool isAudioServerOrMediaServerUid(uid_t uid) {
 }
 
 bool recordingAllowed(const String16& opPackageName, pid_t pid, uid_t uid);
-bool startRecording(const String16& opPackageName, pid_t pid, uid_t uid);
-void finishRecording(const String16& opPackageName, uid_t uid);
+bool startRecording(const String16& opPackageName, pid_t pid, uid_t uid, bool isHotwordSource);
+void finishRecording(const String16& opPackageName, uid_t uid, bool isHotwordSource);
 bool captureAudioOutputAllowed(pid_t pid, uid_t uid);
 bool captureMediaOutputAllowed(pid_t pid, uid_t uid);
 bool captureVoiceCommunicationOutputAllowed(pid_t pid, uid_t uid);
@@ -110,7 +110,7 @@ public:
 private:
     static constexpr const char* nativePackageManagerName = "package_native";
     std::optional<bool> doIsAllowed(uid_t uid);
-    sp<content::pm::IPackageManagerNative> retreivePackageManager();
+    sp<content::pm::IPackageManagerNative> retrievePackageManager();
     sp<content::pm::IPackageManagerNative> mPackageManager; // To check apps manifest
     uint_t mPackageManagerErrors = 0;
     struct Package {

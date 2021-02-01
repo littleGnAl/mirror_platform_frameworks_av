@@ -123,14 +123,6 @@ void LVCS_DeInit(LVCS_Handle_t* phInstance) {
     if (pInstance == LVM_NULL) {
         return;
     }
-    if (pInstance->pCoeff != LVM_NULL) {
-        free(pInstance->pCoeff);
-        pInstance->pCoeff = LVM_NULL;
-    }
-    if (pInstance->pData != LVM_NULL) {
-        free(pInstance->pData);
-        pInstance->pData = LVM_NULL;
-    }
     free(pInstance);
     *phInstance = LVM_NULL;
     return;

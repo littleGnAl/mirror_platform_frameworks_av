@@ -20,6 +20,8 @@
 /*  Includes                                                                            */
 /*                                                                                      */
 /****************************************************************************************/
+
+#include <system/audio.h>
 #include "LVREV_Private.h"
 #include "Filter.h"
 
@@ -71,10 +73,10 @@ LVREV_ReturnStatus_en LVREV_ApplyNewSettings(LVREV_Instance_st* pPrivate) {
 
         Omega = LVM_GetOmega(pPrivate->NewParams.HPF, pPrivate->NewParams.SampleRate);
         LVM_FO_HPF(Omega, &Coeffs);
-        FO_1I_D32F32Cll_TRC_WRA_01_Init(&pPrivate->pFastCoef->HPCoefs, &pPrivate->pFastData->HPTaps,
-                                        &Coeffs);
-        LoadConst_Float(0, (LVM_FLOAT*)&pPrivate->pFastData->HPTaps,
-                        sizeof(Biquad_1I_Order1_FLOAT_Taps_t) / sizeof(LVM_FLOAT));
+        const std::array<LVM_FLOAT, android::audio_utils::kBiquadNumCoefs> coefs = {
+                Coeffs.A0, Coeffs.A1, 0.0, -(Coeffs.B1), 0.0};
+        pPrivate->pRevHPFBiquad.reset(
+                new android::audio_utils::BiquadFilter<LVM_FLOAT>(FCC_1, coefs));
     }
 
     /*
@@ -99,10 +101,10 @@ LVREV_ReturnStatus_en LVREV_ApplyNewSettings(LVREV_Instance_st* pPrivate) {
                 LVM_FO_LPF(Omega, &Coeffs);
             }
         }
-        FO_1I_D32F32Cll_TRC_WRA_01_Init(&pPrivate->pFastCoef->LPCoefs, &pPrivate->pFastData->LPTaps,
-                                        &Coeffs);
-        LoadConst_Float(0, (LVM_FLOAT*)&pPrivate->pFastData->LPTaps,
-                        sizeof(Biquad_1I_Order1_FLOAT_Taps_t) / sizeof(LVM_FLOAT));
+        const std::array<LVM_FLOAT, android::audio_utils::kBiquadNumCoefs> coefs = {
+                Coeffs.A0, Coeffs.A1, 0.0, -(Coeffs.B1), 0.0};
+        pPrivate->pRevLPFBiquad.reset(
+                new android::audio_utils::BiquadFilter<LVM_FLOAT>(FCC_1, coefs));
     }
 
     /*
@@ -130,10 +132,6 @@ LVREV_ReturnStatus_en LVREV_ApplyNewSettings(LVREV_Instance_st* pPrivate) {
         LVM_INT16 i;
         LVM_FLOAT ScaleTable[] = {LVREV_T_3_Power_minus0_on_4, LVREV_T_3_Power_minus1_on_4,
                                   LVREV_T_3_Power_minus2_on_4, LVREV_T_3_Power_minus3_on_4};
-        LVM_INT16 MaxT_Delay[] = {LVREV_MAX_T0_DELAY, LVREV_MAX_T1_DELAY, LVREV_MAX_T2_DELAY,
-                                  LVREV_MAX_T3_DELAY};
-        LVM_INT16 MaxAP_Delay[] = {LVREV_MAX_AP0_DELAY, LVREV_MAX_AP1_DELAY, LVREV_MAX_AP2_DELAY,
-                                   LVREV_MAX_AP3_DELAY};
 
         /*
          * For each delay line
@@ -153,7 +151,7 @@ LVREV_ReturnStatus_en LVREV_ApplyNewSettings(LVREV_Instance_st* pPrivate) {
              * Set the fixed delay
              */
 
-            Temp = (MaxT_Delay[i] - MaxAP_Delay[i]) * Fs / 192000;
+            Temp = (LVREV_MAX_T_DELAY[i] - LVREV_MAX_AP_DELAY[i]) * Fs / 192000;
             pPrivate->Delay_AP[i] = pPrivate->T[i] - Temp;
 
             /*
@@ -231,8 +229,10 @@ LVREV_ReturnStatus_en LVREV_ApplyNewSettings(LVREV_Instance_st* pPrivate) {
                 Coeffs.A1 = 0;
                 Coeffs.B1 = 0;
             }
-            FO_1I_D32F32Cll_TRC_WRA_01_Init(&pPrivate->pFastCoef->RevLPCoefs[i],
-                                            &pPrivate->pFastData->RevLPTaps[i], &Coeffs);
+            const std::array<LVM_FLOAT, android::audio_utils::kBiquadNumCoefs> coefs = {
+                    Coeffs.A0, Coeffs.A1, 0.0, -(Coeffs.B1), 0.0};
+            pPrivate->revLPFBiquad[i].reset(
+                    new android::audio_utils::BiquadFilter<LVM_FLOAT>(FCC_1, coefs));
         }
     }
 

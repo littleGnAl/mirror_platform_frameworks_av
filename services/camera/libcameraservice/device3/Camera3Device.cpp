@@ -2312,6 +2312,15 @@ sp<Camera3Device::CaptureRequest> Camera3Device::createCaptureRequest(
         newRequest->mRotateAndCropAuto = false;
     }
 
+    auto zoomRatioEntry =
+            newRequest->mSettingsList.begin()->metadata.find(ANDROID_CONTROL_ZOOM_RATIO);
+    if (zoomRatioEntry.count > 0 &&
+            zoomRatioEntry.data.f[0] == 1.0f) {
+        newRequest->mZoomRatioIs1x = true;
+    } else {
+        newRequest->mZoomRatioIs1x = false;
+    }
+
     return newRequest;
 }
 
@@ -4432,13 +4441,17 @@ status_t Camera3Device::RequestThread::prepareHalRequests() {
                                 parent->mDistortionMappers.end()) {
                             continue;
                         }
-                        res = parent->mDistortionMappers[it->cameraId].correctCaptureRequest(
-                            &(it->metadata));
-                        if (res != OK) {
-                            SET_ERR("RequestThread: Unable to correct capture requests "
-                                    "for lens distortion for request %d: %s (%d)",
-                                    halRequest->frame_number, strerror(-res), res);
-                            return INVALID_OPERATION;
+
+                        if (!captureRequest->mDistortionCorrectionUpdated) {
+                            res = parent->mDistortionMappers[it->cameraId].correctCaptureRequest(
+                                    &(it->metadata));
+                            if (res != OK) {
+                                SET_ERR("RequestThread: Unable to correct capture requests "
+                                        "for lens distortion for request %d: %s (%d)",
+                                        halRequest->frame_number, strerror(-res), res);
+                                return INVALID_OPERATION;
+                            }
+                            captureRequest->mDistortionCorrectionUpdated = true;
                         }
                     }
 
@@ -4449,21 +4462,24 @@ status_t Camera3Device::RequestThread::prepareHalRequests() {
                             continue;
                         }
 
-                        camera_metadata_entry_t e = it->metadata.find(ANDROID_CONTROL_ZOOM_RATIO);
-                        if (e.count > 0 && e.data.f[0] != 1.0f) {
+                        if (!captureRequest->mZoomRatioIs1x) {
                             cameraIdsWithZoom.insert(it->cameraId);
                         }
 
-                        res = parent->mZoomRatioMappers[it->cameraId].updateCaptureRequest(
-                            &(it->metadata));
-                        if (res != OK) {
-                            SET_ERR("RequestThread: Unable to correct capture requests "
-                                    "for zoom ratio for request %d: %s (%d)",
-                                    halRequest->frame_number, strerror(-res), res);
-                            return INVALID_OPERATION;
+                        if (!captureRequest->mZoomRatioUpdated) {
+                            res = parent->mZoomRatioMappers[it->cameraId].updateCaptureRequest(
+                                    &(it->metadata));
+                            if (res != OK) {
+                                SET_ERR("RequestThread: Unable to correct capture requests "
+                                        "for zoom ratio for request %d: %s (%d)",
+                                        halRequest->frame_number, strerror(-res), res);
+                                return INVALID_OPERATION;
+                            }
+                            captureRequest->mZoomRatioUpdated = true;
                         }
                     }
-                    if (captureRequest->mRotateAndCropAuto) {
+                    if (captureRequest->mRotateAndCropAuto &&
+                            !captureRequest->mRotationAndCropUpdated) {
                         for (it = captureRequest->mSettingsList.begin();
                                 it != captureRequest->mSettingsList.end(); it++) {
                             auto mapper = parent->mRotateAndCropMappers.find(it->cameraId);
@@ -4477,6 +4493,7 @@ status_t Camera3Device::RequestThread::prepareHalRequests() {
                                 }
                             }
                         }
+                        captureRequest->mRotationAndCropUpdated = true;
                     }
                 }
             }
@@ -4658,15 +4675,21 @@ status_t Camera3Device::RequestThread::prepareHalRequests() {
         }
         bool isStillCapture = false;
         bool isZslCapture = false;
+        const camera_metadata_t* settings = halRequest->settings;
+        bool shouldUnlockSettings = false;
+        if (settings == nullptr) {
+            shouldUnlockSettings = true;
+            settings = captureRequest->mSettingsList.begin()->metadata.getAndLock();
+        }
         if (!mNextRequests[0].captureRequest->mSettingsList.begin()->metadata.isEmpty()) {
             camera_metadata_ro_entry_t e = camera_metadata_ro_entry_t();
-            find_camera_metadata_ro_entry(halRequest->settings, ANDROID_CONTROL_CAPTURE_INTENT, &e);
+            find_camera_metadata_ro_entry(settings, ANDROID_CONTROL_CAPTURE_INTENT, &e);
             if ((e.count > 0) && (e.data.u8[0] == ANDROID_CONTROL_CAPTURE_INTENT_STILL_CAPTURE)) {
                 isStillCapture = true;
                 ATRACE_ASYNC_BEGIN("still capture", mNextRequests[i].halRequest.frame_number);
             }
 
-            find_camera_metadata_ro_entry(halRequest->settings, ANDROID_CONTROL_ENABLE_ZSL, &e);
+            find_camera_metadata_ro_entry(settings, ANDROID_CONTROL_ENABLE_ZSL, &e);
             if ((e.count > 0) && (e.data.u8[0] == ANDROID_CONTROL_ENABLE_ZSL_TRUE)) {
                 isZslCapture = true;
             }
@@ -4675,7 +4698,7 @@ status_t Camera3Device::RequestThread::prepareHalRequests() {
                 totalNumBuffers, captureRequest->mResultExtras,
                 /*hasInput*/halRequest->input_buffer != NULL,
                 hasCallback,
-                calculateMaxExpectedDuration(halRequest->settings),
+                calculateMaxExpectedDuration(settings),
                 requestedPhysicalCameras, isStillCapture, isZslCapture,
                 captureRequest->mRotateAndCropAuto, mPrevCameraIdsWithZoom,
                 (mUseHalBufManager) ? uniqueSurfaceIdMap :
@@ -4685,6 +4708,11 @@ status_t Camera3Device::RequestThread::prepareHalRequests() {
                 __FUNCTION__,
                 captureRequest->mResultExtras.requestId, captureRequest->mResultExtras.frameNumber,
                 captureRequest->mResultExtras.burstId);
+
+        if (shouldUnlockSettings) {
+            captureRequest->mSettingsList.begin()->metadata.unlock(settings);
+        }
+
         if (res != OK) {
             SET_ERR("RequestThread: Unable to register new in-flight request:"
                     " %s (%d)", strerror(-res), res);

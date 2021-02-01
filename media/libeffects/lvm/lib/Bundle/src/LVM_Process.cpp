@@ -190,9 +190,7 @@ LVM_ReturnStatus_en LVM_Process(LVM_Handle_t hInstance, const LVM_FLOAT* pInData
                 /*
                  * Apply the filter
                  */
-                FO_Mc_D16F32C15_LShx_TRC_WRA_01(&pInstance->pTE_State->TrebleBoost_State,
-                                                pProcessed, pProcessed, (LVM_INT16)NrFrames,
-                                                (LVM_INT16)NrChannels);
+                pInstance->pTEBiquad->process(pProcessed, pProcessed, NrFrames);
             }
             /*
              * Volume balance

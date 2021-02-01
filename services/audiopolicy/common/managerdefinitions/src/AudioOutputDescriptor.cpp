@@ -505,6 +505,9 @@ status_t SwAudioOutputDescriptor::open(const audio_config_t *config,
         lConfig.offload_info.duration_us = -1;
         lConfig.offload_info.has_video = true; // conservative
         lConfig.offload_info.is_streaming = true; // likely
+        lConfig.offload_info.encapsulation_mode = lConfig.offload_info.encapsulation_mode;
+        lConfig.offload_info.content_id = lConfig.offload_info.content_id;
+        lConfig.offload_info.sync_id = lConfig.offload_info.sync_id;
     }
 
     mFlags = (audio_output_flags_t)(mFlags | flags);
@@ -762,11 +765,6 @@ bool SwAudioOutputCollection::isA2dpOffloadedOnPrimary() const
         }
     }
     return false;
-}
-
-bool SwAudioOutputCollection::isA2dpSupported() const
-{
-    return (isA2dpOffloadedOnPrimary() || (getA2dpOutput() != 0));
 }
 
 sp<SwAudioOutputDescriptor> SwAudioOutputCollection::getPrimaryOutput() const

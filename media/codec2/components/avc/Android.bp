@@ -1,9 +1,10 @@
-cc_library_shared {
+cc_library {
     name: "libcodec2_soft_avcdec",
     defaults: [
         "libcodec2_soft-defaults",
         "libcodec2_soft_sanitize_signed-defaults",
-   ],
+        "libcodec2_soft_sanitize_cfi-defaults",
+    ],
 
     static_libs: ["libavcdec"],
 
@@ -15,12 +16,13 @@ cc_library_shared {
     ],
 }
 
-cc_library_shared {
+cc_library {
     name: "libcodec2_soft_avcenc",
     defaults: [
         "libcodec2_soft-defaults",
         "libcodec2_soft_sanitize_signed-defaults",
-   ],
+        "libcodec2_soft_sanitize_cfi-defaults",
+    ],
 
     static_libs: ["libavcenc"],
 

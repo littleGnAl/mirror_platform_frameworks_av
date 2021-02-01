@@ -20,6 +20,7 @@
 #include <unistd.h>
 
 #include <gtest/gtest.h>
+#include <gmock/gmock.h>
 
 #define LOG_TAG "APM_Test"
 #include <Serializer.h>
@@ -36,6 +37,7 @@
 #include "AudioPolicyTestManager.h"
 
 using namespace android;
+using testing::UnorderedElementsAre;
 
 TEST(AudioPolicyManagerTestInit, EngineFailure) {
     AudioPolicyTestClient client;
@@ -317,14 +319,43 @@ TEST_F(AudioPolicyManagerTest, CreateAudioPatchFromMix) {
 
 // TODO: Add patch creation tests that involve already existing patch
 
-class AudioPolicyManagerTestMsd : public AudioPolicyManagerTest {
+enum
+{
+    MSD_AUDIO_PATCH_COUNT_NUM_AUDIO_PATCHES_INDEX = 0,
+    MSD_AUDIO_PATCH_COUNT_NAME_INDEX = 1
+};
+using MsdAudioPatchCountSpecification = std::tuple<size_t, std::string>;
+
+class AudioPolicyManagerTestMsd : public AudioPolicyManagerTest,
+        public ::testing::WithParamInterface<MsdAudioPatchCountSpecification> {
+  public:
+    AudioPolicyManagerTestMsd();
   protected:
     void SetUpManagerConfig() override;
     void TearDown() override;
 
     sp<DeviceDescriptor> mMsdOutputDevice;
     sp<DeviceDescriptor> mMsdInputDevice;
+    sp<DeviceDescriptor> mDefaultOutputDevice;
+
+    const size_t mExpectedAudioPatchCount;
+    sp<DeviceDescriptor> mSpdifDevice;
 };
+
+AudioPolicyManagerTestMsd::AudioPolicyManagerTestMsd()
+    : mExpectedAudioPatchCount(std::get<MSD_AUDIO_PATCH_COUNT_NUM_AUDIO_PATCHES_INDEX>(
+            GetParam())) {}
+
+INSTANTIATE_TEST_CASE_P(
+        MsdAudioPatchCount,
+        AudioPolicyManagerTestMsd,
+        ::testing::Values(
+                MsdAudioPatchCountSpecification(1u, "single"),
+                MsdAudioPatchCountSpecification(2u, "dual")
+        ),
+        [](const ::testing::TestParamInfo<MsdAudioPatchCountSpecification> &info) {
+                return std::get<MSD_AUDIO_PATCH_COUNT_NAME_INDEX>(info.param); }
+);
 
 void AudioPolicyManagerTestMsd::SetUpManagerConfig() {
     // TODO: Consider using Serializer to load part of the config from a string.
@@ -344,6 +375,19 @@ void AudioPolicyManagerTestMsd::SetUpManagerConfig() {
     mMsdInputDevice->addAudioProfile(pcmInputProfile);
     config.addDevice(mMsdOutputDevice);
     config.addDevice(mMsdInputDevice);
+
+    if (mExpectedAudioPatchCount == 2) {
+        // Add SPDIF device with PCM output profile as a second device for dual MSD audio patching.
+        mSpdifDevice = new DeviceDescriptor(AUDIO_DEVICE_OUT_SPDIF);
+        mSpdifDevice->addAudioProfile(pcmOutputProfile);
+        config.addDevice(mSpdifDevice);
+
+        sp<OutputProfile> spdifOutputProfile = new OutputProfile("spdif output");
+        spdifOutputProfile->addAudioProfile(pcmOutputProfile);
+        spdifOutputProfile->addSupportedDevice(mSpdifDevice);
+        config.getHwModules().getModuleFromName(AUDIO_HARDWARE_MODULE_ID_PRIMARY)->
+                addOutputProfile(spdifOutputProfile);
+    }
 
     sp<HwModule> msdModule = new HwModule(AUDIO_HARDWARE_MODULE_ID_MSD, 2 /*halVersionMajor*/);
     HwModuleCollection modules = config.getHwModules();
@@ -378,62 +422,90 @@ void AudioPolicyManagerTestMsd::SetUpManagerConfig() {
     primaryEncodedOutputProfile->addSupportedDevice(config.getDefaultOutputDevice());
     config.getHwModules().getModuleFromName(AUDIO_HARDWARE_MODULE_ID_PRIMARY)->
             addOutputProfile(primaryEncodedOutputProfile);
+
+    mDefaultOutputDevice = config.getDefaultOutputDevice();
+    if (mExpectedAudioPatchCount == 2) {
+        mSpdifDevice->addAudioProfile(dtsOutputProfile);
+        primaryEncodedOutputProfile->addSupportedDevice(mSpdifDevice);
+    }
 }
 
 void AudioPolicyManagerTestMsd::TearDown() {
     mMsdOutputDevice.clear();
     mMsdInputDevice.clear();
+    mDefaultOutputDevice.clear();
+    mSpdifDevice.clear();
     AudioPolicyManagerTest::TearDown();
 }
 
-TEST_F(AudioPolicyManagerTestMsd, InitSuccess) {
+TEST_P(AudioPolicyManagerTestMsd, InitSuccess) {
     ASSERT_TRUE(mMsdOutputDevice);
     ASSERT_TRUE(mMsdInputDevice);
+    ASSERT_TRUE(mDefaultOutputDevice);
 }
 
-TEST_F(AudioPolicyManagerTestMsd, Dump) {
+TEST_P(AudioPolicyManagerTestMsd, Dump) {
     dumpToLog();
 }
 
-TEST_F(AudioPolicyManagerTestMsd, PatchCreationOnSetForceUse) {
+TEST_P(AudioPolicyManagerTestMsd, PatchCreationOnSetForceUse) {
     const PatchCountCheck patchCount = snapshotPatchCount();
     mManager->setForceUse(AUDIO_POLICY_FORCE_FOR_ENCODED_SURROUND,
             AUDIO_POLICY_FORCE_ENCODED_SURROUND_ALWAYS);
-    ASSERT_EQ(1, patchCount.deltaFromSnapshot());
+    ASSERT_EQ(mExpectedAudioPatchCount, patchCount.deltaFromSnapshot());
 }
 
-TEST_F(AudioPolicyManagerTestMsd, GetOutputForAttrEncodedRoutesToMsd) {
+TEST_P(AudioPolicyManagerTestMsd, PatchCreationSetReleaseMsdPatches) {
+    const PatchCountCheck patchCount = snapshotPatchCount();
+    DeviceVector devices = mManager->getAvailableOutputDevices();
+    // Remove MSD output device to avoid patching to itself
+    devices.remove(mMsdOutputDevice);
+    ASSERT_EQ(mExpectedAudioPatchCount, devices.size());
+    mManager->setMsdPatches(&devices);
+    ASSERT_EQ(mExpectedAudioPatchCount, patchCount.deltaFromSnapshot());
+    // Dual patch: exercise creating one new audio patch and reusing another existing audio patch.
+    DeviceVector singleDevice(devices[0]);
+    mManager->releaseMsdPatches(singleDevice);
+    ASSERT_EQ(mExpectedAudioPatchCount - 1, patchCount.deltaFromSnapshot());
+    mManager->setMsdPatches(&devices);
+    ASSERT_EQ(mExpectedAudioPatchCount, patchCount.deltaFromSnapshot());
+    mManager->releaseMsdPatches(devices);
+    ASSERT_EQ(0, patchCount.deltaFromSnapshot());
+}
+
+TEST_P(AudioPolicyManagerTestMsd, GetOutputForAttrEncodedRoutesToMsd) {
     const PatchCountCheck patchCount = snapshotPatchCount();
     audio_port_handle_t selectedDeviceId = AUDIO_PORT_HANDLE_NONE;
     getOutputForAttr(&selectedDeviceId,
             AUDIO_FORMAT_AC3, AUDIO_CHANNEL_OUT_5POINT1, 48000, AUDIO_OUTPUT_FLAG_DIRECT);
-    ASSERT_EQ(selectedDeviceId, mMsdOutputDevice->getId());
-    ASSERT_EQ(1, patchCount.deltaFromSnapshot());
+    ASSERT_EQ(selectedDeviceId, mDefaultOutputDevice->getId());
+    ASSERT_EQ(mExpectedAudioPatchCount, patchCount.deltaFromSnapshot());
 }
 
-TEST_F(AudioPolicyManagerTestMsd, GetOutputForAttrPcmRoutesToMsd) {
+TEST_P(AudioPolicyManagerTestMsd, GetOutputForAttrPcmRoutesToMsd) {
     const PatchCountCheck patchCount = snapshotPatchCount();
     audio_port_handle_t selectedDeviceId = AUDIO_PORT_HANDLE_NONE;
     getOutputForAttr(&selectedDeviceId,
             AUDIO_FORMAT_PCM_16_BIT, AUDIO_CHANNEL_OUT_STEREO, 48000);
-    ASSERT_EQ(selectedDeviceId, mMsdOutputDevice->getId());
-    ASSERT_EQ(1, patchCount.deltaFromSnapshot());
+    ASSERT_EQ(selectedDeviceId, mDefaultOutputDevice->getId());
+    ASSERT_EQ(mExpectedAudioPatchCount, patchCount.deltaFromSnapshot());
 }
 
-TEST_F(AudioPolicyManagerTestMsd, GetOutputForAttrEncodedPlusPcmRoutesToMsd) {
+TEST_P(AudioPolicyManagerTestMsd, GetOutputForAttrEncodedPlusPcmRoutesToMsd) {
     const PatchCountCheck patchCount = snapshotPatchCount();
     audio_port_handle_t selectedDeviceId = AUDIO_PORT_HANDLE_NONE;
     getOutputForAttr(&selectedDeviceId,
             AUDIO_FORMAT_AC3, AUDIO_CHANNEL_OUT_5POINT1, 48000, AUDIO_OUTPUT_FLAG_DIRECT);
-    ASSERT_EQ(selectedDeviceId, mMsdOutputDevice->getId());
-    ASSERT_EQ(1, patchCount.deltaFromSnapshot());
+    ASSERT_EQ(selectedDeviceId, mDefaultOutputDevice->getId());
+    ASSERT_EQ(mExpectedAudioPatchCount, patchCount.deltaFromSnapshot());
+    selectedDeviceId = AUDIO_PORT_HANDLE_NONE;
     getOutputForAttr(&selectedDeviceId,
             AUDIO_FORMAT_PCM_16_BIT, AUDIO_CHANNEL_OUT_STEREO, 48000);
-    ASSERT_EQ(selectedDeviceId, mMsdOutputDevice->getId());
-    ASSERT_EQ(1, patchCount.deltaFromSnapshot());
+    ASSERT_EQ(selectedDeviceId, mDefaultOutputDevice->getId());
+    ASSERT_EQ(mExpectedAudioPatchCount, patchCount.deltaFromSnapshot());
 }
 
-TEST_F(AudioPolicyManagerTestMsd, GetOutputForAttrUnsupportedFormatBypassesMsd) {
+TEST_P(AudioPolicyManagerTestMsd, GetOutputForAttrUnsupportedFormatBypassesMsd) {
     const PatchCountCheck patchCount = snapshotPatchCount();
     audio_port_handle_t selectedDeviceId = AUDIO_PORT_HANDLE_NONE;
     getOutputForAttr(&selectedDeviceId,
@@ -442,7 +514,7 @@ TEST_F(AudioPolicyManagerTestMsd, GetOutputForAttrUnsupportedFormatBypassesMsd) 
     ASSERT_EQ(0, patchCount.deltaFromSnapshot());
 }
 
-TEST_F(AudioPolicyManagerTestMsd, GetOutputForAttrFormatSwitching) {
+TEST_P(AudioPolicyManagerTestMsd, GetOutputForAttrFormatSwitching) {
     // Switch between formats that are supported and not supported by MSD.
     {
         const PatchCountCheck patchCount = snapshotPatchCount();
@@ -451,10 +523,10 @@ TEST_F(AudioPolicyManagerTestMsd, GetOutputForAttrFormatSwitching) {
         getOutputForAttr(&selectedDeviceId,
                 AUDIO_FORMAT_AC3, AUDIO_CHANNEL_OUT_5POINT1, 48000, AUDIO_OUTPUT_FLAG_DIRECT,
                 nullptr /*output*/, &portId);
-        ASSERT_EQ(selectedDeviceId, mMsdOutputDevice->getId());
-        ASSERT_EQ(1, patchCount.deltaFromSnapshot());
+        ASSERT_EQ(selectedDeviceId, mDefaultOutputDevice->getId());
+        ASSERT_EQ(mExpectedAudioPatchCount, patchCount.deltaFromSnapshot());
         mManager->releaseOutput(portId);
-        ASSERT_EQ(1, patchCount.deltaFromSnapshot());
+        ASSERT_EQ(mExpectedAudioPatchCount, patchCount.deltaFromSnapshot());
     }
     {
         const PatchCountCheck patchCount = snapshotPatchCount();
@@ -464,7 +536,7 @@ TEST_F(AudioPolicyManagerTestMsd, GetOutputForAttrFormatSwitching) {
                 AUDIO_FORMAT_DTS, AUDIO_CHANNEL_OUT_5POINT1, 48000, AUDIO_OUTPUT_FLAG_DIRECT,
                 nullptr /*output*/, &portId);
         ASSERT_NE(selectedDeviceId, mMsdOutputDevice->getId());
-        ASSERT_EQ(-1, patchCount.deltaFromSnapshot());
+        ASSERT_EQ(-static_cast<int>(mExpectedAudioPatchCount), patchCount.deltaFromSnapshot());
         mManager->releaseOutput(portId);
         ASSERT_EQ(0, patchCount.deltaFromSnapshot());
     }
@@ -473,7 +545,7 @@ TEST_F(AudioPolicyManagerTestMsd, GetOutputForAttrFormatSwitching) {
         audio_port_handle_t selectedDeviceId = AUDIO_PORT_HANDLE_NONE;
         getOutputForAttr(&selectedDeviceId,
                 AUDIO_FORMAT_AC3, AUDIO_CHANNEL_OUT_5POINT1, 48000, AUDIO_OUTPUT_FLAG_DIRECT);
-        ASSERT_EQ(selectedDeviceId, mMsdOutputDevice->getId());
+        ASSERT_EQ(selectedDeviceId, mDefaultOutputDevice->getId());
         ASSERT_EQ(0, patchCount.deltaFromSnapshot());
     }
 }
@@ -1193,3 +1265,109 @@ TEST_F(AudioPolicyManagerDynamicHwModulesTest, ClientIsUpdated) {
     EXPECT_GT(mClient->getAudioPortListUpdateCount(), prevAudioPortListUpdateCount);
     EXPECT_GT(mManager->getAudioPortGeneration(), prevAudioPortGeneration);
 }
+
+using DevicesRoleForCapturePresetParam = std::tuple<audio_source_t, device_role_t>;
+
+class AudioPolicyManagerDevicesRoleForCapturePresetTest
+        : public AudioPolicyManagerTestWithConfigurationFile,
+          public testing::WithParamInterface<DevicesRoleForCapturePresetParam> {
+protected:
+    // The `inputDevice` and `inputDevice2` indicate the audio devices type to be used for setting
+    // device role. They must be declared in the test_audio_policy_configuration.xml
+    AudioDeviceTypeAddr inputDevice = AudioDeviceTypeAddr(AUDIO_DEVICE_IN_BUILTIN_MIC, "");
+    AudioDeviceTypeAddr inputDevice2 = AudioDeviceTypeAddr(AUDIO_DEVICE_IN_HDMI, "");
+};
+
+TEST_P(AudioPolicyManagerDevicesRoleForCapturePresetTest, DevicesRoleForCapturePreset) {
+    const audio_source_t audioSource = std::get<0>(GetParam());
+    const device_role_t role = std::get<1>(GetParam());
+
+    // Test invalid device when setting
+    const AudioDeviceTypeAddr outputDevice(AUDIO_DEVICE_OUT_SPEAKER, "");
+    const AudioDeviceTypeAddrVector outputDevices = {outputDevice};
+    ASSERT_EQ(BAD_VALUE,
+              mManager->setDevicesRoleForCapturePreset(audioSource, role, outputDevices));
+    ASSERT_EQ(BAD_VALUE,
+              mManager->addDevicesRoleForCapturePreset(audioSource, role, outputDevices));
+    AudioDeviceTypeAddrVector devices;
+    ASSERT_EQ(NAME_NOT_FOUND,
+              mManager->getDevicesForRoleAndCapturePreset(audioSource, role, devices));
+    ASSERT_TRUE(devices.empty());
+    ASSERT_EQ(BAD_VALUE,
+              mManager->removeDevicesRoleForCapturePreset(audioSource, role, outputDevices));
+
+    // Without setting, call get/remove/clear must fail
+    ASSERT_EQ(NAME_NOT_FOUND,
+              mManager->getDevicesForRoleAndCapturePreset(audioSource, role, devices));
+    ASSERT_EQ(NAME_NOT_FOUND,
+              mManager->removeDevicesRoleForCapturePreset(audioSource, role, devices));
+    ASSERT_EQ(NAME_NOT_FOUND,
+              mManager->clearDevicesRoleForCapturePreset(audioSource, role));
+
+    // Test set/get devices role
+    const AudioDeviceTypeAddrVector inputDevices = {inputDevice};
+    ASSERT_EQ(NO_ERROR,
+              mManager->setDevicesRoleForCapturePreset(audioSource, role, inputDevices));
+    ASSERT_EQ(NO_ERROR, mManager->getDevicesForRoleAndCapturePreset(audioSource, role, devices));
+    EXPECT_THAT(devices, UnorderedElementsAre(inputDevice));
+
+    // Test setting will change the previously set devices
+    const AudioDeviceTypeAddrVector inputDevices2 = {inputDevice2};
+    ASSERT_EQ(NO_ERROR,
+              mManager->setDevicesRoleForCapturePreset(audioSource, role, inputDevices2));
+    devices.clear();
+    ASSERT_EQ(NO_ERROR, mManager->getDevicesForRoleAndCapturePreset(audioSource, role, devices));
+    EXPECT_THAT(devices, UnorderedElementsAre(inputDevice2));
+
+    // Test add devices
+    ASSERT_EQ(NO_ERROR,
+              mManager->addDevicesRoleForCapturePreset(audioSource, role, inputDevices));
+    devices.clear();
+    ASSERT_EQ(NO_ERROR, mManager->getDevicesForRoleAndCapturePreset(audioSource, role, devices));
+    EXPECT_THAT(devices, UnorderedElementsAre(inputDevice, inputDevice2));
+
+    // Test remove devices
+    ASSERT_EQ(NO_ERROR,
+              mManager->removeDevicesRoleForCapturePreset(audioSource, role, inputDevices));
+    devices.clear();
+    ASSERT_EQ(NO_ERROR, mManager->getDevicesForRoleAndCapturePreset(audioSource, role, devices));
+    EXPECT_THAT(devices, UnorderedElementsAre(inputDevice2));
+
+    // Test remove devices that are not set as the device role
+    ASSERT_EQ(BAD_VALUE,
+              mManager->removeDevicesRoleForCapturePreset(audioSource, role, inputDevices));
+
+    // Test clear devices
+    ASSERT_EQ(NO_ERROR,
+              mManager->clearDevicesRoleForCapturePreset(audioSource, role));
+    devices.clear();
+    ASSERT_EQ(NAME_NOT_FOUND,
+              mManager->getDevicesForRoleAndCapturePreset(audioSource, role, devices));
+}
+
+INSTANTIATE_TEST_CASE_P(
+        DevicesRoleForCapturePresetOperation,
+        AudioPolicyManagerDevicesRoleForCapturePresetTest,
+        testing::Values(
+                DevicesRoleForCapturePresetParam({AUDIO_SOURCE_MIC, DEVICE_ROLE_PREFERRED}),
+                DevicesRoleForCapturePresetParam({AUDIO_SOURCE_VOICE_UPLINK,
+                                                  DEVICE_ROLE_PREFERRED}),
+                DevicesRoleForCapturePresetParam({AUDIO_SOURCE_VOICE_DOWNLINK,
+                                                  DEVICE_ROLE_PREFERRED}),
+                DevicesRoleForCapturePresetParam({AUDIO_SOURCE_VOICE_CALL, DEVICE_ROLE_PREFERRED}),
+                DevicesRoleForCapturePresetParam({AUDIO_SOURCE_CAMCORDER, DEVICE_ROLE_PREFERRED}),
+                DevicesRoleForCapturePresetParam({AUDIO_SOURCE_VOICE_RECOGNITION,
+                                                  DEVICE_ROLE_PREFERRED}),
+                DevicesRoleForCapturePresetParam({AUDIO_SOURCE_VOICE_COMMUNICATION,
+                                                  DEVICE_ROLE_PREFERRED}),
+                DevicesRoleForCapturePresetParam({AUDIO_SOURCE_REMOTE_SUBMIX,
+                                                  DEVICE_ROLE_PREFERRED}),
+                DevicesRoleForCapturePresetParam({AUDIO_SOURCE_UNPROCESSED, DEVICE_ROLE_PREFERRED}),
+                DevicesRoleForCapturePresetParam({AUDIO_SOURCE_VOICE_PERFORMANCE,
+                                                  DEVICE_ROLE_PREFERRED}),
+                DevicesRoleForCapturePresetParam({AUDIO_SOURCE_ECHO_REFERENCE,
+                                                  DEVICE_ROLE_PREFERRED}),
+                DevicesRoleForCapturePresetParam({AUDIO_SOURCE_FM_TUNER, DEVICE_ROLE_PREFERRED}),
+                DevicesRoleForCapturePresetParam({AUDIO_SOURCE_HOTWORD, DEVICE_ROLE_PREFERRED})
+                )
+        );

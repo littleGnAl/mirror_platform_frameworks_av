@@ -204,11 +204,12 @@ void ReverbBlock(LVM_FLOAT* pInput, LVM_FLOAT* pOutput, LVREV_Instance_st* pPriv
     /*
      *  High pass filter
      */
-    FO_1I_D32F32C31_TRC_WRA_01(&pPrivate->pFastCoef->HPCoefs, pTemp, pTemp, (LVM_INT16)NumSamples);
+    pPrivate->pRevHPFBiquad->process(pTemp, pTemp, NumSamples);
+
     /*
      *  Low pass filter
      */
-    FO_1I_D32F32C31_TRC_WRA_01(&pPrivate->pFastCoef->LPCoefs, pTemp, pTemp, (LVM_INT16)NumSamples);
+    pPrivate->pRevLPFBiquad->process(pTemp, pTemp, NumSamples);
 
     /*
      *  Process all delay lines
@@ -253,8 +254,7 @@ void ReverbBlock(LVM_FLOAT* pInput, LVM_FLOAT* pOutput, LVREV_Instance_st* pPriv
         /*
          *  Low pass filter
          */
-        FO_1I_D32F32C31_TRC_WRA_01(&pPrivate->pFastCoef->RevLPCoefs[j], pDelayLine, pDelayLine,
-                                   (LVM_INT16)NumSamples);
+        pPrivate->revLPFBiquad[j]->process(pDelayLine, pDelayLine, NumSamples);
     }
 
     /*

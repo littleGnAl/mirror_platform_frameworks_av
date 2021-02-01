@@ -1,37 +1,5 @@
 // audio preprocessing unit test
 cc_test {
-    name: "AudioPreProcessingLegacyTest",
-
-    vendor: true,
-
-    relative_install_path: "soundfx",
-
-    srcs: ["PreProcessingTest.cpp"],
-
-    shared_libs: [
-        "libaudiopreprocessing_legacy",
-        "libaudioutils",
-        "liblog",
-        "libutils",
-        "libwebrtc_audio_preprocessing",
-    ],
-
-    cflags: [
-        "-DWEBRTC_POSIX",
-        "-DWEBRTC_LEGACY",
-        "-fvisibility=default",
-        "-Wall",
-        "-Werror",
-        "-Wextra",
-    ],
-
-    header_libs: [
-        "libaudioeffects",
-        "libhardware_headers",
-    ],
-}
-
-cc_test {
     name: "AudioPreProcessingTest",
 
     vendor: true,
@@ -49,5 +17,16 @@ cc_test {
     header_libs: [
         "libaudioeffects",
         "libhardware_headers",
+    ],
+}
+
+cc_test {
+    name: "correlation",
+    host_supported: true,
+    srcs: ["correlation.cpp"],
+    cflags: [
+        "-Wall",
+        "-Werror",
+        "-Wextra",
     ],
 }

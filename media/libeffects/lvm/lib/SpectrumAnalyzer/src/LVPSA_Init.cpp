@@ -108,19 +108,9 @@ LVPSA_RETURN LVPSA_Init(pLVPSA_Handle_t* phInstance, LVPSA_InitParams_t* pInitPa
     if (pLVPSA_Inst->pBPFiltersPrecision == LVM_NULL) {
         return LVPSA_ERROR_NULLADDRESS;
     }
-    pLVPSA_Inst->pBP_Instances = (Biquad_FLOAT_Instance_t*)calloc(
-            pInitParams->nBands, sizeof(*(pLVPSA_Inst->pBP_Instances)));
-    if (pLVPSA_Inst->pBP_Instances == LVM_NULL) {
-        return LVPSA_ERROR_NULLADDRESS;
-    }
     pLVPSA_Inst->pQPD_States =
             (QPD_FLOAT_State_t*)calloc(pInitParams->nBands, sizeof(*(pLVPSA_Inst->pQPD_States)));
     if (pLVPSA_Inst->pQPD_States == LVM_NULL) {
-        return LVPSA_ERROR_NULLADDRESS;
-    }
-    pLVPSA_Inst->pBP_Taps = (Biquad_1I_Order2_FLOAT_Taps_t*)calloc(
-            pInitParams->nBands, sizeof(*(pLVPSA_Inst->pBP_Taps)));
-    if (pLVPSA_Inst->pBP_Taps == LVM_NULL) {
         return LVPSA_ERROR_NULLADDRESS;
     }
     pLVPSA_Inst->pQPD_Taps =
@@ -193,17 +183,9 @@ void LVPSA_DeInit(pLVPSA_Handle_t* phInstance) {
         free(pLVPSA_Inst->pBPFiltersPrecision);
         pLVPSA_Inst->pBPFiltersPrecision = LVM_NULL;
     }
-    if (pLVPSA_Inst->pBP_Instances != LVM_NULL) {
-        free(pLVPSA_Inst->pBP_Instances);
-        pLVPSA_Inst->pBP_Instances = LVM_NULL;
-    }
     if (pLVPSA_Inst->pQPD_States != LVM_NULL) {
         free(pLVPSA_Inst->pQPD_States);
         pLVPSA_Inst->pQPD_States = LVM_NULL;
-    }
-    if (pLVPSA_Inst->pBP_Taps != LVM_NULL) {
-        free(pLVPSA_Inst->pBP_Taps);
-        pLVPSA_Inst->pBP_Taps = LVM_NULL;
     }
     if (pLVPSA_Inst->pQPD_Taps != LVM_NULL) {
         free(pLVPSA_Inst->pQPD_Taps);

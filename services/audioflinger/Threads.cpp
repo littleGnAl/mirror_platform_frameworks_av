@@ -1864,7 +1864,8 @@ AudioFlinger::PlaybackThread::PlaybackThread(const sp<AudioFlinger>& audioFlinge
         // index 0 is reserved for normal mixer's submix
         mFastTrackAvailMask(((1 << FastMixerState::sMaxFastTracks) - 1) & ~1),
         mHwSupportsPause(false), mHwPaused(false), mFlushPending(false),
-        mLeftVolFloat(-1.0), mRightVolFloat(-1.0)
+        mLeftVolFloat(-1.0), mRightVolFloat(-1.0),
+        mDownStreamPatch{}
 {
     snprintf(mThreadName, kThreadNameLength, "AudioOut_%X", id);
     mNBLogWriter = audioFlinger->newWriter_l(kLogSize, mThreadName);
@@ -2067,7 +2068,8 @@ sp<AudioFlinger::PlaybackThread::Track> AudioFlinger::PlaybackThread::createTrac
         uid_t uid,
         status_t *status,
         audio_port_handle_t portId,
-        const sp<media::IAudioTrackCallback>& callback)
+        const sp<media::IAudioTrackCallback>& callback,
+        const std::string& opPackageName)
 {
     size_t frameCount = *pFrameCount;
     size_t notificationFrameCount = *pNotificationFrameCount;
@@ -2348,7 +2350,8 @@ sp<AudioFlinger::PlaybackThread::Track> AudioFlinger::PlaybackThread::createTrac
         track = new Track(this, client, streamType, attr, sampleRate, format,
                           channelMask, frameCount,
                           nullptr /* buffer */, (size_t)0 /* bufferSize */, sharedBuffer,
-                          sessionId, creatorPid, uid, *flags, TrackBase::TYPE_DEFAULT, portId);
+                          sessionId, creatorPid, uid, *flags, TrackBase::TYPE_DEFAULT, portId,
+                          SIZE_MAX /*frameCountToBeReady*/, opPackageName);
 
         lStatus = track != 0 ? track->initCheck() : (status_t) NO_MEMORY;
         if (lStatus != NO_ERROR) {
@@ -2360,7 +2363,7 @@ sp<AudioFlinger::PlaybackThread::Track> AudioFlinger::PlaybackThread::createTrac
         {
             Mutex::Autolock _atCbL(mAudioTrackCbLock);
             if (callback.get() != nullptr) {
-                mAudioTrackCallbacks.emplace(callback);
+                mAudioTrackCallbacks.emplace(track, callback);
             }
         }
 
@@ -2588,6 +2591,10 @@ void AudioFlinger::PlaybackThread::removeTrack_l(const sp<Track>& track)
     mLocalLog.log("removeTrack_l (%p) %s", track.get(), result.string());
 
     mTracks.remove(track);
+    {
+        Mutex::Autolock _atCbL(mAudioTrackCbLock);
+        mAudioTrackCallbacks.erase(track);
+    }
     if (track->isFastTrack()) {
         int index = track->mFastIndex;
         ALOG_ASSERT(0 < index && index < (int)FastMixerState::sMaxFastTracks);
@@ -2626,12 +2633,16 @@ void AudioFlinger::PlaybackThread::ioConfigChanged(audio_io_config_event event, 
     ALOGV("PlaybackThread::ioConfigChanged, thread %p, event %d", this, event);
 
     desc->mIoHandle = mId;
+    struct audio_patch patch = mPatch;
+    if (isMsdDevice()) {
+        patch = mDownStreamPatch;
+    }
 
     switch (event) {
     case AUDIO_OUTPUT_OPENED:
     case AUDIO_OUTPUT_REGISTERED:
     case AUDIO_OUTPUT_CONFIG_CHANGED:
-        desc->mPatch = mPatch;
+        desc->mPatch = patch;
         desc->mChannelMask = mChannelMask;
         desc->mSamplingRate = mSampleRate;
         desc->mFormat = mFormat;
@@ -2641,7 +2652,7 @@ void AudioFlinger::PlaybackThread::ioConfigChanged(audio_io_config_event event, 
         desc->mLatency = latency_l();
         break;
     case AUDIO_CLIENT_STARTED:
-        desc->mPatch = mPatch;
+        desc->mPatch = patch;
         desc->mPortId = portId;
         break;
     case AUDIO_OUTPUT_CLOSED:
@@ -2683,8 +2694,8 @@ void AudioFlinger::PlaybackThread::onCodecFormatChanged(
                     audio_utils::metadata::byteStringFromData(metadata);
             std::vector metadataVec(metaDataStr.begin(), metaDataStr.end());
             Mutex::Autolock _l(mAudioTrackCbLock);
-            for (const auto& callback : mAudioTrackCallbacks) {
-                callback->onCodecFormatChanged(metadataVec);
+            for (const auto& callbackPair : mAudioTrackCallbacks) {
+                callbackPair.second->onCodecFormatChanged(metadataVec);
             }
     }).detach();
 }
@@ -7871,7 +7882,8 @@ status_t AudioFlinger::RecordThread::start(RecordThread::RecordTrack* recordTrac
         AutoMutex lock(mLock);
         if (recordTrack->isInvalid()) {
             recordTrack->clearSyncStartEvent();
-            return INVALID_OPERATION;
+            ALOGW("%s track %d: invalidated before startInput", __func__, recordTrack->portId());
+            return DEAD_OBJECT;
         }
         if (mActiveTracks.indexOf(recordTrack) >= 0) {
             if (recordTrack->mState == TrackBase::PAUSING) {
@@ -7901,7 +7913,8 @@ status_t AudioFlinger::RecordThread::start(RecordThread::RecordTrack* recordTrac
                     recordTrack->mState = TrackBase::STARTING_2;
                     // STARTING_2 forces destroy to call stopInput.
                 }
-                return INVALID_OPERATION;
+                ALOGW("%s track %d: invalidated after startInput", __func__, recordTrack->portId());
+                return DEAD_OBJECT;
             }
             if (recordTrack->mState != TrackBase::STARTING_1) {
                 ALOGW("%s(%d): unsynchronized mState:%d change",
@@ -8048,10 +8061,15 @@ void AudioFlinger::RecordThread::updateMetadata_l()
     StreamInHalInterface::SinkMetadata metadata;
     for (const sp<RecordTrack> &track : mActiveTracks) {
         // No track is invalid as this is called after prepareTrack_l in the same critical section
-        metadata.tracks.push_back({
+        record_track_metadata_v7_t trackMetadata;
+        trackMetadata.base = {
                 .source = track->attributes().source,
                 .gain = 1, // capture tracks do not have volumes
-        });
+        };
+        trackMetadata.channel_mask = track->channelMask(),
+        strncpy(trackMetadata.tags, track->attributes().tags, AUDIO_ATTRIBUTES_TAGS_MAX_SIZE);
+
+        metadata.tracks.push_back(trackMetadata);
     }
     mInput->stream->updateSinkMetadata(metadata);
 }
@@ -8556,7 +8574,7 @@ status_t AudioFlinger::RecordThread::createAudioPatch_l(const struct audio_patch
 
     // store new device and send to effects
     mInDeviceTypeAddr.mType = patch->sources[0].ext.device.type;
-    mInDeviceTypeAddr.mAddress = patch->sources[0].ext.device.address;
+    mInDeviceTypeAddr.setAddress(patch->sources[0].ext.device.address);
     audio_port_handle_t deviceId = patch->sources[0].id;
     for (size_t i = 0; i < mEffectChains.size(); i++) {
         mEffectChains[i]->setInputDevice_l(inDeviceTypeAddr());
@@ -9198,7 +9216,7 @@ status_t AudioFlinger::MmapThread::createAudioPatch_l(const struct audio_patch *
         deviceId = patch->sources[0].id;
         numDevices = mPatch.num_sources;
         sourceDeviceTypeAddr.mType = patch->sources[0].ext.device.type;
-        sourceDeviceTypeAddr.mAddress = patch->sources[0].ext.device.address;
+        sourceDeviceTypeAddr.setAddress(patch->sources[0].ext.device.address);
     }
 
     for (size_t i = 0; i < mEffectChains.size(); i++) {
@@ -9613,11 +9631,15 @@ void AudioFlinger::MmapPlaybackThread::updateMetadata_l()
     StreamOutHalInterface::SourceMetadata metadata;
     for (const sp<MmapTrack> &track : mActiveTracks) {
         // No track is invalid as this is called after prepareTrack_l in the same critical section
-        metadata.tracks.push_back({
+        playback_track_metadata_v7_t trackMetadata;
+        trackMetadata.base = {
                 .usage = track->attributes().usage,
                 .content_type = track->attributes().content_type,
                 .gain = mHalVolFloat, // TODO: propagate from aaudio pre-mix volume
-        });
+        };
+        trackMetadata.channel_mask = track->channelMask(),
+        strncpy(trackMetadata.tags, track->attributes().tags, AUDIO_ATTRIBUTES_TAGS_MAX_SIZE);
+        metadata.tracks.push_back(trackMetadata);
     }
     mOutput->stream->updateSourceMetadata(metadata);
 }
@@ -9724,10 +9746,14 @@ void AudioFlinger::MmapCaptureThread::updateMetadata_l()
     StreamInHalInterface::SinkMetadata metadata;
     for (const sp<MmapTrack> &track : mActiveTracks) {
         // No track is invalid as this is called after prepareTrack_l in the same critical section
-        metadata.tracks.push_back({
+        record_track_metadata_v7_t trackMetadata;
+        trackMetadata.base = {
                 .source = track->attributes().source,
                 .gain = 1, // capture tracks do not have volumes
-        });
+        };
+        trackMetadata.channel_mask = track->channelMask(),
+        strncpy(trackMetadata.tags, track->attributes().tags, AUDIO_ATTRIBUTES_TAGS_MAX_SIZE);
+        metadata.tracks.push_back(trackMetadata);
     }
     mInput->stream->updateSinkMetadata(metadata);
 }
