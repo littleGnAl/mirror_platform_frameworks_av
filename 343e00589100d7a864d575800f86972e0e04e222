@@ -34,6 +34,24 @@
       "parentUuid": "27794efc_9c517988",
       "revId": "343e00589100d7a864d575800f86972e0e04e222",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c226a4c8_d3efb668",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061057
+      },
+      "writtenOn": "2021-02-01T02:25:27Z",
+      "side": 1,
+      "message": "We\u0027d better merge it in aosp-master to avoid conflicts with future changes from aosp.",
+      "parentUuid": "fb5072cc_6632f645",
+      "revId": "343e00589100d7a864d575800f86972e0e04e222",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
