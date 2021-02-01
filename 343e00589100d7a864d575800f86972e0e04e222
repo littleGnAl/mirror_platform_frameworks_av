@@ -52,6 +52,24 @@
       "parentUuid": "fb5072cc_6632f645",
       "revId": "343e00589100d7a864d575800f86972e0e04e222",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3886a60_51d8b65a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-02-01T08:03:56Z",
+      "side": 1,
+      "message": "we can utilize \u0027merged-in:\u0027 to avoid conflict.\nI saw the CL is merged into aosp-gsi10. (That was a partner request I guess)\n\nWhat will be the candidate branch to merge additionally? (android-gsi11, and aosp-master?)\nIf you need my +2, please feel free to ask.",
+      "parentUuid": "c226a4c8_d3efb668",
+      "revId": "343e00589100d7a864d575800f86972e0e04e222",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
