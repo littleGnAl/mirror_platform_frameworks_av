@@ -16,6 +16,23 @@
       "message": "Thanks!",
       "revId": "4347b7c7c71eecdfc1b33e445d6d479739689570",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd7d5b65_dd42bf1c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-02T18:05:16Z",
+      "side": 1,
+      "message": "Andy, Mikhail,\ninternal branches have diverged from aosp/master and this CL too needs an update to work with internal/master. We have made the required changes and uploaded a CL on partner-gerrit at\nhttps://partner-android-review.googlesource.com/c/platform/frameworks/av/+/1854389.\nCan you please take a look at that CL?\nThanks.",
+      "revId": "4347b7c7c71eecdfc1b33e445d6d479739689570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
