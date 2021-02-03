@@ -22,6 +22,30 @@
       },
       "revId": "2a4007991b199cc9521399229d70ecf540d49f6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e04ff58_603d4005",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 750,
+      "author": {
+        "id": 1734121
+      },
+      "writtenOn": "2021-02-03T04:45:42Z",
+      "side": 1,
+      "message": "Resolved internally.",
+      "parentUuid": "529a0970_0b3bf857",
+      "range": {
+        "startLine": 750,
+        "startChar": 12,
+        "endLine": 750,
+        "endChar": 25
+      },
+      "revId": "2a4007991b199cc9521399229d70ecf540d49f6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
