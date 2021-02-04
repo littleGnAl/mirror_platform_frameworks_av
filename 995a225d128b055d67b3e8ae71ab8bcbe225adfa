@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c8f4ec9_6d29158d",
+        "filename": "media/codec2/components/mpeg2/C2SoftMpeg2Dec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-04T00:40:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d660a0bd_a938c16e",
+      "range": {
+        "startLine": 68,
+        "startChar": 46,
+        "endLine": 68,
+        "endChar": 49
+      },
+      "revId": "995a225d128b055d67b3e8ae71ab8bcbe225adfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4e330756_1148d17b",
@@ -95,6 +119,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "84a68904_d607a752",
+        "filename": "media/codec2/components/mpeg2/C2SoftMpeg2Dec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-04T00:40:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5165b452_2e627a07",
+      "range": {
+        "startLine": 69,
+        "startChar": 51,
+        "endLine": 69,
+        "endChar": 64
+      },
+      "revId": "995a225d128b055d67b3e8ae71ab8bcbe225adfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f81de786_bbdfd3c9",
@@ -132,6 +180,30 @@
       "side": 1,
       "message": "this makes it consistent with rest of the decoders which also have a lower default value.\nDefault doesn\u0027t need to be different for mpeg4 or h263 decoder. Same default is fine.",
       "parentUuid": "f81de786_bbdfd3c9",
+      "range": {
+        "startLine": 130,
+        "startChar": 70,
+        "endLine": 130,
+        "endChar": 83
+      },
+      "revId": "995a225d128b055d67b3e8ae71ab8bcbe225adfa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bbe0cb37_f5130152",
+        "filename": "media/codec2/components/mpeg4_h263/C2SoftMpeg4Dec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-04T00:40:22Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b0a25706_1f590cb1",
       "range": {
         "startLine": 130,
         "startChar": 70,
