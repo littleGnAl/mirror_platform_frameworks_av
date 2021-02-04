@@ -16,6 +16,75 @@
       "message": "Eric, here is a fix proposal for a voice call routing issue we met. \nIn our engine configuration file, voice call is \"after\" music, meaning, it has a lower priority as music. \nWhen calling getNewOutputDevices for retrieving downlink sink device through the primary output, if any higher prio strategy active is found, the device for this strategy is returned.\nBasically, we could fix by changing the priority, but there are no challenge in this.\n\nHere is a CL to improve sink device selection. \nThe disruption is not so revolutionary, I could even do the same as uplink and consider using an AudioSource. \n\nI would need to get you opinion on this proposal, if it is going in the right direction, if we need to be more disruptive...\n\nThanks!\n",
       "revId": "5819770f99c1a50c6d5218a2a28997b1ff99c597",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c8202a9_cc15b44e",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-04T16:52:02Z",
+      "side": 1,
+      "message": "isStateInCall is not the same thing as \u003d\u003d AUDIO_MODE_IN_CALL. It also include IN_COMMUNICATION.\n\nWe still need an else {} to restore routing when returning to NORMAL mode from IN_COMMUNICATION",
+      "range": {
+        "startLine": 762,
+        "startChar": 19,
+        "endLine": 762,
+        "endChar": 50
+      },
+      "revId": "5819770f99c1a50c6d5218a2a28997b1ff99c597",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ab079b2_1a15dd37",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3254,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-04T16:52:02Z",
+      "side": 1,
+      "message": "waitMs !\u003d 0 does not mean we actually waited for delayMs when executing updateCallRouting() it can be 0 if delayMs \u003e muteWaitMs in checkDeviceMuteStrategies",
+      "range": {
+        "startLine": 3254,
+        "startChar": 31,
+        "endLine": 3254,
+        "endChar": 37
+      },
+      "revId": "5819770f99c1a50c6d5218a2a28997b1ff99c597",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e39290f_44397e6b",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-04T16:52:02Z",
+      "side": 1,
+      "message": "selectBestRxSinkDevicesForCall",
+      "range": {
+        "startLine": 745,
+        "startChar": 21,
+        "endLine": 745,
+        "endChar": 48
+      },
+      "revId": "5819770f99c1a50c6d5218a2a28997b1ff99c597",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
