@@ -417,13 +417,17 @@ protected:
         {
             return static_cast<VolumeSource>(volumeGroup);
         }
-        VolumeSource toVolumeSource(const audio_attributes_t &attributes) const
+        VolumeSource toVolumeSource(
+            const audio_attributes_t &attributes, bool fallbackOnDefault = true) const
         {
-            return toVolumeSource(mEngine->getVolumeGroupForAttributes(attributes));
+            return toVolumeSource(mEngine->getVolumeGroupForAttributes(
+                attributes, fallbackOnDefault));
         }
-        VolumeSource toVolumeSource(audio_stream_type_t stream) const
+        VolumeSource toVolumeSource(
+            audio_stream_type_t stream, bool fallbackOnDefault = true) const
         {
-            return toVolumeSource(mEngine->getVolumeGroupForStreamType(stream));
+            return toVolumeSource(mEngine->getVolumeGroupForStreamType(
+                stream, fallbackOnDefault));
         }
         IVolumeCurves &getVolumeCurves(VolumeSource volumeSource)
         {
