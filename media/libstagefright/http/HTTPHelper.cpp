@@ -24,7 +24,7 @@
 #include "android_util_Binder.h"
 #include <media/IMediaHTTPService.h>
 #include <media/stagefright/foundation/ADebug.h>
-#include <nativehelper/ScopedLocalRef.h>
+#include <nativehelper/scoped_local_ref.h>
 #include "jni.h"
 
 namespace android {
