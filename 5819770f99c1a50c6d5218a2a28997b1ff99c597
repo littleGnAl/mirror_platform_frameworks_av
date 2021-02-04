@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41a575b5_e1033cdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-02-04T16:13:22Z",
+      "side": 1,
+      "message": "Eric, here is a fix proposal for a voice call routing issue we met. \nIn our engine configuration file, voice call is \"after\" music, meaning, it has a lower priority as music. \nWhen calling getNewOutputDevices for retrieving downlink sink device through the primary output, if any higher prio strategy active is found, the device for this strategy is returned.\nBasically, we could fix by changing the priority, but there are no challenge in this.\n\nHere is a CL to improve sink device selection. \nThe disruption is not so revolutionary, I could even do the same as uplink and consider using an AudioSource. \n\nI would need to get you opinion on this proposal, if it is going in the right direction, if we need to be more disruptive...\n\nThanks!\n",
+      "revId": "5819770f99c1a50c6d5218a2a28997b1ff99c597",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
