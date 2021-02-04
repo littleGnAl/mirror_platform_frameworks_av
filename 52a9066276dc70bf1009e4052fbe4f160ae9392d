@@ -16,6 +16,24 @@
       "message": "Hi, Bo Hu\n\nIt seems that it\u0027s this change that causes the beagle-x15[1] build failed to boot to home screen\nwith MediaCodec related crash like here[2], could you please help to check it?\n\nBTW, it does not cause problem with the android-mainline branch kernel, but failed to boot with the 4.14-stable, 4.19-stable and android12-5.4 branches.\n\n[1]: https://android.googlesource.com/device/ti/beagle-x15\n[2]: https://pastebin.ubuntu.com/p/CxJnNcB9FQ/\n\nThanks,\nYongqin Liu",
       "revId": "52a9066276dc70bf1009e4052fbe4f160ae9392d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3acb9d74_09d23fb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1046320
+      },
+      "writtenOn": "2021-02-04T16:25:31Z",
+      "side": 1,
+      "message": "can you file a bug so I can look into it ?",
+      "parentUuid": "656c5c3e_e1ecd798",
+      "revId": "52a9066276dc70bf1009e4052fbe4f160ae9392d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
