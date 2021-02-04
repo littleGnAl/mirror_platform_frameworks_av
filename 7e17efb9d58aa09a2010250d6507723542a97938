@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007906223",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1564685?revision\u003d5",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "18cdf032_0bff4d20",
+        "filename": "METADATA",
+        "patchSetId": 5
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-04T20:00:46Z",
+      "side": 1,
+      "message": "Unrecognized finding :\nLICENSING...Agreement\n",
+      "range": {
+        "startLine": 1,
+        "startChar": 32,
+        "endLine": 5,
+        "endChar": 63
+      },
+      "revId": "7e17efb9d58aa09a2010250d6507723542a97938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000007906223",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1564685?revision\u003d5",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d7ff4622_9c6dd7cd",
+        "filename": "METADATA",
+        "patchSetId": 5
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-04T20:00:46Z",
+      "side": 1,
+      "message": "Unrecognized finding :\npatent\n",
+      "range": {
+        "startLine": 11,
+        "startChar": 9,
+        "endLine": 11,
+        "endChar": 15
+      },
+      "revId": "7e17efb9d58aa09a2010250d6507723542a97938",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
