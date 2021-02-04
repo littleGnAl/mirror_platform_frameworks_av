@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e914263a_e1619932",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 762,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-02-04T16:56:18Z",
+      "side": 1,
+      "message": "mmh,good catch, you have the point...",
+      "parentUuid": "1c8202a9_cc15b44e",
+      "range": {
+        "startLine": 762,
+        "startChar": 19,
+        "endLine": 762,
+        "endChar": 50
+      },
+      "revId": "5819770f99c1a50c6d5218a2a28997b1ff99c597",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9ab079b2_1a15dd37",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 2
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "90bb75bf_a053c821",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3254,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-02-04T16:56:18Z",
+      "side": 1,
+      "message": "ok, i was also feeling this did not catch all the cases",
+      "parentUuid": "9ab079b2_1a15dd37",
+      "range": {
+        "startLine": 3254,
+        "startChar": 31,
+        "endLine": 3254,
+        "endChar": 37
+      },
+      "revId": "5819770f99c1a50c6d5218a2a28997b1ff99c597",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e39290f_44397e6b",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
         "patchSetId": 2
@@ -77,6 +125,30 @@
       "writtenOn": "2021-02-04T16:52:02Z",
       "side": 1,
       "message": "selectBestRxSinkDevicesForCall",
+      "range": {
+        "startLine": 745,
+        "startChar": 21,
+        "endLine": 745,
+        "endChar": 48
+      },
+      "revId": "5819770f99c1a50c6d5218a2a28997b1ff99c597",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee0b50e6_4475daed",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 745,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-02-04T16:56:18Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8e39290f_44397e6b",
       "range": {
         "startLine": 745,
         "startChar": 21,
