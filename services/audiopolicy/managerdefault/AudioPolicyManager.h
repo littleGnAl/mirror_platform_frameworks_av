@@ -413,13 +413,17 @@ protected:
         {
             return static_cast<VolumeSource>(volumeGroup);
         }
-        VolumeSource toVolumeSource(const audio_attributes_t &attributes) const
+        VolumeSource toVolumeSource(
+            const audio_attributes_t &attributes, bool fallbackOnDefault = true) const
         {
-            return toVolumeSource(mEngine->getVolumeGroupForAttributes(attributes));
+            return toVolumeSource(mEngine->getVolumeGroupForAttributes(
+                attributes, fallbackOnDefault));
         }
-        VolumeSource toVolumeSource(audio_stream_type_t stream) const
+        VolumeSource toVolumeSource(
+            audio_stream_type_t stream, bool fallbackOnDefault = true) const
         {
-            return toVolumeSource(mEngine->getVolumeGroupForStreamType(stream));
+            return toVolumeSource(mEngine->getVolumeGroupForStreamType(
+                stream, fallbackOnDefault));
         }
         IVolumeCurves &getVolumeCurves(VolumeSource volumeSource)
         {
@@ -729,9 +733,20 @@ protected:
                     String8(devices.itemAt(0)->address().c_str()) : String8("");
         }
 
-        uint32_t updateCallRouting(const DeviceVector &rxDevices, uint32_t delayMs = 0);
+        uint32_t updateCallRouting(bool fromCache, uint32_t delayMs = 0);
+        uint32_t updateCallRoutingInternal(const DeviceVector &rxDevices, uint32_t delayMs);
         sp<AudioPatch> createTelephonyPatch(bool isRx, const sp<DeviceDescriptor> &device,
                                             uint32_t delayMs);
+        /**
+         * @brief selectCallBestRxSinkDevices: if the primary module host both Telephony Rx/Tx
+         * devices, and it declares also supporting a HW bridge between the Telephony Rx and the
+         * given sink device for Voice Call audio attributes, select this device in prio.
+         * Otherwise, getNewOutputDevices() is called on the primary output to select sink device.
+         * @param fromCache true to prevent engine reconsidering all product strategies and retrieve
+         * from engine cache.
+         * @return vector of devices, empty if none is found.
+         */
+        DeviceVector selectCallBestRxSinkDevices(bool fromCache);
         bool isDeviceOfModule(const sp<DeviceDescriptor>& devDesc, const char *moduleId) const;
 
         status_t startSource(const sp<SwAudioOutputDescriptor>& outputDesc,

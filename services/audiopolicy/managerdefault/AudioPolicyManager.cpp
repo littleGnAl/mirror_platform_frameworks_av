@@ -262,11 +262,7 @@ status_t AudioPolicyManager::setDeviceConnectionStateInt(const sp<DeviceDescript
         } else {
             checkCloseOutputs();
         }
-
-        if (mEngine->getPhoneState() == AUDIO_MODE_IN_CALL && hasPrimaryOutput()) {
-            DeviceVector newDevices = getNewOutputDevices(mPrimaryOutput, false /*fromCache*/);
-            updateCallRouting(newDevices);
-        }
+        updateCallRouting(false /*fromCache*/);
         const DeviceVector msdOutDevices = getMsdAudioOutDevices();
         for (size_t i = 0; i < mOutputs.size(); i++) {
             sp<SwAudioOutputDescriptor> desc = mOutputs.valueAt(i);
@@ -354,10 +350,7 @@ status_t AudioPolicyManager::setDeviceConnectionStateInt(const sp<DeviceDescript
         // getDeviceForStrategy() cache
         updateDevicesAndOutputs();
 
-        if (mEngine->getPhoneState() == AUDIO_MODE_IN_CALL && hasPrimaryOutput()) {
-            DeviceVector newDevices = getNewOutputDevices(mPrimaryOutput, false /*fromCache*/);
-            updateCallRouting(newDevices);
-        }
+        updateCallRouting(false /*fromCache*/);
         // Reconnect Audio Source
         for (const auto &strategy : mEngine->getOrderedProductStrategies()) {
             auto attributes = mEngine->getAllAttributesForProductStrategy(strategy).front();
@@ -522,7 +515,46 @@ status_t AudioPolicyManager::getHwOffloadEncodingFormatsSupportedForA2DP(
     return status;
 }
 
-uint32_t AudioPolicyManager::updateCallRouting(const DeviceVector &rxDevices, uint32_t delayMs)
+DeviceVector AudioPolicyManager::selectCallBestRxSinkDevices(bool fromCache)
+{
+    DeviceVector rxSinkdevices{};
+    rxSinkdevices = mEngine->getOutputDevicesForAttributes(
+                attributes_initializer(AUDIO_USAGE_VOICE_COMMUNICATION), nullptr, fromCache);
+    if (!rxSinkdevices.isEmpty() && mAvailableOutputDevices.contains(rxSinkdevices.itemAt(0))) {
+        auto rxSinkDevice = rxSinkdevices.itemAt(0);
+        auto telephonyRxModule = mHwModules.getModuleForDeviceType(
+                    AUDIO_DEVICE_IN_TELEPHONY_RX, AUDIO_FORMAT_DEFAULT);
+        auto telephonyTxModule = mHwModules.getModuleForDeviceType(
+                    AUDIO_DEVICE_OUT_TELEPHONY_TX, AUDIO_FORMAT_DEFAULT);
+        // retrieve Rx Source device descriptor
+        sp<DeviceDescriptor> rxSourceDevice = mAvailableInputDevices.getDevice(
+                    AUDIO_DEVICE_IN_TELEPHONY_RX, String8(), AUDIO_FORMAT_DEFAULT);
+
+        // RX and TX Telephony device are declared by Primary Audio HAL
+        if (isPrimaryModule(telephonyRxModule) && isPrimaryModule(telephonyTxModule) &&
+                (telephonyRxModule->getHalVersionMajor() >= 3) &&
+                rxSourceDevice->hasSameHwModuleAs(rxSinkDevice) &&
+                rxSourceDevice->getModule()->supportsPatch(rxSourceDevice, rxSinkDevice)) {
+            ALOGW("%s() device %s using HW Bridge", __func__, rxSinkDevice->toString().c_str());
+            return DeviceVector(rxSinkDevice);
+        }
+    }
+    // Note that despite the fact that getNewOutputDevices() is called on the primary output,
+    // the device returned is not necessarily reachable via this output
+    return getNewOutputDevices(mPrimaryOutput, fromCache);
+}
+
+uint32_t AudioPolicyManager::updateCallRouting(bool fromCache, uint32_t delayMs)
+{
+    if (mEngine->getPhoneState() == AUDIO_MODE_IN_CALL && hasPrimaryOutput()) {
+        DeviceVector rxDevices = selectCallBestRxSinkDevices(fromCache);
+        return updateCallRoutingInternal(rxDevices, delayMs);
+    }
+    return 0;
+}
+
+uint32_t AudioPolicyManager::updateCallRoutingInternal(
+        const DeviceVector &rxDevices, uint32_t delayMs)
 {
     bool createTxPatch = false;
     bool createRxPatch = false;
@@ -532,13 +564,13 @@ uint32_t AudioPolicyManager::updateCallRouting(const DeviceVector &rxDevices, ui
             mPrimaryOutput->devices().onlyContainsDevicesWithType(AUDIO_DEVICE_OUT_STUB)) {
         return muteWaitMs;
     }
-    ALOG_ASSERT(!rxDevices.isEmpty(), "updateCallRouting() no selected output device");
+    ALOG_ASSERT(!rxDevices.isEmpty(), "%s() no selected output device", __func__);
 
     audio_attributes_t attr = { .source = AUDIO_SOURCE_VOICE_COMMUNICATION };
     auto txSourceDevice = mEngine->getInputDeviceForAttributes(attr);
-    ALOG_ASSERT(txSourceDevice != 0, "updateCallRouting() input selected device not available");
+    ALOG_ASSERT(txSourceDevice != 0, "%s() input selected device not available", __func__);
 
-    ALOGV("updateCallRouting device rxDevice %s txDevice %s",
+    ALOGV("%s device rxDevice %s txDevice %s", __func__,
           rxDevices.itemAt(0)->toString().c_str(), txSourceDevice->toString().c_str());
 
     disconnectTelephonyRxAudioSource();
@@ -567,7 +599,7 @@ uint32_t AudioPolicyManager::updateCallRouting(const DeviceVector &rxDevices, ui
             (telephonyRxModule->getHalVersionMajor() >= 3)) {
         if (rxSourceDevice == 0 || txSinkDevice == 0) {
             // RX / TX Telephony device(s) is(are) not currently available
-            ALOGE("updateCallRouting() no telephony Tx and/or RX device");
+            ALOGE("%s() no telephony Tx and/or RX device", __func__);
             return muteWaitMs;
         }
         // createAudioPatchInternal now supports both HW / SW bridging
@@ -725,27 +757,23 @@ void AudioPolicyManager::setPhoneState(audio_mode_t state)
     }
 
     if (hasPrimaryOutput()) {
-        // Note that despite the fact that getNewOutputDevices() is called on the primary output,
-        // the device returned is not necessarily reachable via this output
-        DeviceVector rxDevices = getNewOutputDevices(mPrimaryOutput, false /*fromCache*/);
-        // force routing command to audio hardware when ending call
-        // even if no device change is needed
-        if (isStateInCall(oldState) && rxDevices.isEmpty()) {
-            rxDevices = mPrimaryOutput->devices();
-        }
-
         if (state == AUDIO_MODE_IN_CALL) {
-            updateCallRouting(rxDevices, delayMs);
+            updateCallRouting(false /*fromCache*/, delayMs);
         } else if (oldState == AUDIO_MODE_IN_CALL) {
+            // force routing command to audio hardware when ending call
+            // even if no device change is needed
+            DeviceVector rxDevices = getNewOutputDevices(mPrimaryOutput, false /*fromCache*/);
+            if (rxDevices.isEmpty()) {
+                rxDevices = mPrimaryOutput->devices();
+            }
             disconnectTelephonyRxAudioSource();
             if (mCallTxPatch != 0) {
                 releaseAudioPatchInternal(mCallTxPatch->getHandle());
                 mCallTxPatch.clear();
             }
             setOutputDevices(mPrimaryOutput, rxDevices, force, 0);
-        } else {
-            setOutputDevices(mPrimaryOutput, rxDevices, force, 0);
         }
+        // Same state is not handled, already bailed out
     }
 
     // reevaluate routing on all outputs in case tracks have been started during the call
@@ -1700,7 +1728,7 @@ status_t AudioPolicyManager::startSource(const sp<SwAudioOutputDescriptor>& outp
     if (stream == AUDIO_STREAM_TTS) {
         ALOGV("\t found BEACON stream");
         if (!mTtsOutputAvailable && mOutputs.isAnyOutputActive(
-                                    toVolumeSource(AUDIO_STREAM_TTS) /*sourceToIgnore*/)) {
+                                    toVolumeSource(AUDIO_STREAM_TTS, false) /*sourceToIgnore*/)) {
             return INVALID_OPERATION;
         } else {
             beaconMuteLatency = handleEventForBeacon(STARTING_BEACON);
@@ -2684,7 +2712,7 @@ status_t AudioPolicyManager::setVolumeIndexForAttributes(const audio_attributes_
         // handled by system UI
         status_t volStatus = checkAndSetVolume(
                     curves, vs, index, desc, curDevices,
-                    ((vs == toVolumeSource(AUDIO_STREAM_SYSTEM))?
+                    ((vs == toVolumeSource(AUDIO_STREAM_SYSTEM, false))?
                          TOUCH_SOUND_FIXED_DELAY_MS : 0));
         if (volStatus != NO_ERROR) {
             status = volStatus;
@@ -2886,12 +2914,14 @@ status_t AudioPolicyManager::moveEffectsToIo(const std::vector<int>& ids, audio_
 
 bool AudioPolicyManager::isStreamActive(audio_stream_type_t stream, uint32_t inPastMs) const
 {
-    return mOutputs.isActive(toVolumeSource(stream), inPastMs);
+    auto vs = toVolumeSource(stream, false);
+    return vs != VOLUME_SOURCE_NONE ? mOutputs.isActive(vs, inPastMs) : false;
 }
 
 bool AudioPolicyManager::isStreamActiveRemotely(audio_stream_type_t stream, uint32_t inPastMs) const
 {
-    return mOutputs.isActiveRemotely(toVolumeSource(stream), inPastMs);
+    auto vs = toVolumeSource(stream, false);
+    return vs != VOLUME_SOURCE_NONE ? mOutputs.isActiveRemotely(vs, inPastMs) : false;
 }
 
 bool AudioPolicyManager::isSourceActive(audio_source_t source) const
@@ -3221,13 +3251,9 @@ status_t AudioPolicyManager::setDevicesRoleForStrategy(product_strategy_t strate
 
 void AudioPolicyManager::updateCallAndOutputRouting(bool forceVolumeReeval, uint32_t delayMs)
 {
-    uint32_t waitMs = 0;
-    if (mEngine->getPhoneState() == AUDIO_MODE_IN_CALL && hasPrimaryOutput()) {
-        DeviceVector newDevices = getNewOutputDevices(mPrimaryOutput, true /*fromCache*/);
-        waitMs = updateCallRouting(newDevices, delayMs);
-        // Only apply special touch sound delay once
-        delayMs = 0;
-    }
+    uint32_t waitMs = updateCallRouting(true /*fromCache*/, delayMs);
+    // Only apply special touch sound delay once
+    delayMs = (delayMs != 0 && waitMs != 0) ? 0 : delayMs;
     for (size_t i = 0; i < mOutputs.size(); i++) {
         sp<SwAudioOutputDescriptor> outputDesc = mOutputs.valueAt(i);
         DeviceVector newDevices = getNewOutputDevices(outputDesc, true /*fromCache*/);
@@ -5885,7 +5911,11 @@ uint32_t AudioPolicyManager::setBeaconMute(bool mute) {
         // mute/unmute AUDIO_STREAM_TTS on all outputs
         ALOGV("\t muting %d", mute);
         uint32_t maxLatency = 0;
-        auto ttsVolumeSource = toVolumeSource(AUDIO_STREAM_TTS);
+        auto ttsVolumeSource = toVolumeSource(AUDIO_STREAM_TTS, false);
+        if (ttsVolumeSource == VOLUME_SOURCE_NONE) {
+            ALOGV("\t no tts volume source available");
+            return 0;
+        }
         for (size_t i = 0; i < mOutputs.size(); i++) {
             sp<SwAudioOutputDescriptor> desc = mOutputs.valueAt(i);
             setVolumeSourceMute(ttsVolumeSource, mute/*on*/, desc, 0 /*delay*/, DeviceTypeSet());
@@ -6217,11 +6247,11 @@ float AudioPolicyManager::computeVolume(IVolumeCurves &curves,
     // louder than the accessibility prompt, the prompt cannot be heard, thus masking the touch
     // exploration of the dialer UI. In this situation, bring the accessibility volume closer to
     // the ringtone volume
-    const auto callVolumeSrc = toVolumeSource(AUDIO_STREAM_VOICE_CALL);
-    const auto ringVolumeSrc = toVolumeSource(AUDIO_STREAM_RING);
-    const auto musicVolumeSrc = toVolumeSource(AUDIO_STREAM_MUSIC);
-    const auto alarmVolumeSrc = toVolumeSource(AUDIO_STREAM_ALARM);
-    const auto a11yVolumeSrc = toVolumeSource(AUDIO_STREAM_ACCESSIBILITY);
+    const auto callVolumeSrc = toVolumeSource(AUDIO_STREAM_VOICE_CALL, false);
+    const auto ringVolumeSrc = toVolumeSource(AUDIO_STREAM_RING, false);
+    const auto musicVolumeSrc = toVolumeSource(AUDIO_STREAM_MUSIC, false);
+    const auto alarmVolumeSrc = toVolumeSource(AUDIO_STREAM_ALARM, false);
+    const auto a11yVolumeSrc = toVolumeSource(AUDIO_STREAM_ACCESSIBILITY, false);
 
     if (volumeSource == a11yVolumeSrc
             && (AUDIO_MODE_RINGTONE == mEngine->getPhoneState()) &&
@@ -6234,12 +6264,12 @@ float AudioPolicyManager::computeVolume(IVolumeCurves &curves,
     // in-call: always cap volume by voice volume + some low headroom
     if ((volumeSource != callVolumeSrc && (isInCall() ||
                                            mOutputs.isActiveLocally(callVolumeSrc))) &&
-            (volumeSource == toVolumeSource(AUDIO_STREAM_SYSTEM) ||
+            (volumeSource == toVolumeSource(AUDIO_STREAM_SYSTEM, false) ||
              volumeSource == ringVolumeSrc || volumeSource == musicVolumeSrc ||
              volumeSource == alarmVolumeSrc ||
-             volumeSource == toVolumeSource(AUDIO_STREAM_NOTIFICATION) ||
-             volumeSource == toVolumeSource(AUDIO_STREAM_ENFORCED_AUDIBLE) ||
-             volumeSource == toVolumeSource(AUDIO_STREAM_DTMF) ||
+             volumeSource == toVolumeSource(AUDIO_STREAM_NOTIFICATION, false) ||
+             volumeSource == toVolumeSource(AUDIO_STREAM_ENFORCED_AUDIBLE, false) ||
+             volumeSource == toVolumeSource(AUDIO_STREAM_DTMF, false) ||
              volumeSource == a11yVolumeSrc)) {
         auto &voiceCurves = getVolumeCurves(callVolumeSrc);
         int voiceVolumeIndex = voiceCurves.getVolumeIndex(deviceTypes);
@@ -6277,9 +6307,9 @@ float AudioPolicyManager::computeVolume(IVolumeCurves &curves,
              AUDIO_DEVICE_OUT_BLE_HEADSET}).empty() &&
             ((volumeSource == alarmVolumeSrc ||
               volumeSource == ringVolumeSrc) ||
-             (volumeSource == toVolumeSource(AUDIO_STREAM_NOTIFICATION)) ||
-             (volumeSource == toVolumeSource(AUDIO_STREAM_SYSTEM)) ||
-             ((volumeSource == toVolumeSource(AUDIO_STREAM_ENFORCED_AUDIBLE)) &&
+             (volumeSource == toVolumeSource(AUDIO_STREAM_NOTIFICATION, false)) ||
+             (volumeSource == toVolumeSource(AUDIO_STREAM_SYSTEM, false)) ||
+             ((volumeSource == toVolumeSource(AUDIO_STREAM_ENFORCED_AUDIBLE, false)) &&
               (mEngine->getForceUse(AUDIO_POLICY_FORCE_FOR_SYSTEM) == AUDIO_POLICY_FORCE_NONE))) &&
             curves.canBeMuted()) {
 
@@ -6460,7 +6490,7 @@ void AudioPolicyManager::setVolumeSourceMute(VolumeSource volumeSource,
     if (on) {
         if (!outputDesc->isMuted(volumeSource)) {
             if (curves.canBeMuted() &&
-                    (volumeSource != toVolumeSource(AUDIO_STREAM_ENFORCED_AUDIBLE) ||
+                    (volumeSource != toVolumeSource(AUDIO_STREAM_ENFORCED_AUDIBLE, false) ||
                      (mEngine->getForceUse(AUDIO_POLICY_FORCE_FOR_SYSTEM) ==
                       AUDIO_POLICY_FORCE_NONE))) {
                 checkAndSetVolume(curves, volumeSource, 0, outputDesc, deviceTypes, delayMs);
