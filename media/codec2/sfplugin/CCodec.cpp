@@ -1920,14 +1920,18 @@ void CCodec::initiateReleaseIfStuck() {
             pendingDeadline = true;
         }
     }
-    if (name.empty()) {
-        constexpr std::chrono::steady_clock::duration kWorkDurationThreshold = 3s;
-        std::chrono::steady_clock::duration elapsed = mChannel->elapsed();
-        if (elapsed >= kWorkDurationThreshold) {
-            name = "queue";
-        }
-        if (elapsed > 0s) {
-            pendingDeadline = true;
+    {
+        Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
+        const std::unique_ptr<Config> &config = *configLocked;
+        if (config->mTunneled == false && name.empty()) {
+            constexpr std::chrono::steady_clock::duration kWorkDurationThreshold = 3s;
+            std::chrono::steady_clock::duration elapsed = mChannel->elapsed();
+            if (elapsed >= kWorkDurationThreshold) {
+                name = "queue";
+            }
+            if (elapsed > 0s) {
+                pendingDeadline = true;
+            }
         }
     }
     if (name.empty()) {
