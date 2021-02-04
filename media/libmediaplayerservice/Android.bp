@@ -1,4 +1,4 @@
-cc_library_shared {
+cc_library {
 
     srcs: [
         "ActivityManager.cpp",
@@ -76,4 +76,3 @@ cc_library_shared {
     },
 
 }
-
