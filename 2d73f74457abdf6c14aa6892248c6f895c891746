@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb73d2e5_03354fe1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-02-04T16:15:51Z",
+      "side": 1,
+      "message": "I did not fix the issue of audio_devices_t mapped on mask for criterion.\nThis CL is to fix the android mode criterion that using auto provisioning from header file (splitted on pre-S).\n",
+      "revId": "2d73f74457abdf6c14aa6892248c6f895c891746",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
