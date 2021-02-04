@@ -56,6 +56,30 @@
       },
       "revId": "c18ac3f55ba8a04f54bb040c0497e13f02dca9c8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "af0ca731_f3c28c73",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1996,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-04T00:31:11Z",
+      "side": 1,
+      "message": "we will consider this for now. There is an issue with how far one can queue up work as well, but agreed that since audio track can be paused, work done is not guaranteed for tunneled mode.",
+      "parentUuid": "8f3cb3e9_00f784a4",
+      "range": {
+        "startLine": 1987,
+        "startChar": 0,
+        "endLine": 1996,
+        "endChar": 5
+      },
+      "revId": "c18ac3f55ba8a04f54bb040c0497e13f02dca9c8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
