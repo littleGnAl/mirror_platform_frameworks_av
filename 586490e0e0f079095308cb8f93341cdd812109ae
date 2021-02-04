@@ -22,6 +22,30 @@
       },
       "revId": "586490e0e0f079095308cb8f93341cdd812109ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ffca1d72_318b11b0",
+        "filename": "media/libstagefright/foundation/ColorUtils.cpp",
+        "patchSetId": 32
+      },
+      "lineNbr": 717,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2021-02-04T19:19:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b97ab1f_96c72622",
+      "range": {
+        "startLine": 711,
+        "startChar": 0,
+        "endLine": 717,
+        "endChar": 2
+      },
+      "revId": "586490e0e0f079095308cb8f93341cdd812109ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
