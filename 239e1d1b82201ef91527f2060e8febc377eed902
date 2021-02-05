@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d3e6b480_661c0270",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-02-05T16:31:05Z",
+      "side": 1,
+      "message": "To be honest, I kept this from updateCallRoutin implementation... But I do not see any reason to keep it.",
+      "parentUuid": "a7d12598_40b21364",
+      "range": {
+        "startLine": 534,
+        "startChar": 47,
+        "endLine": 534,
+        "endChar": 85
+      },
+      "revId": "239e1d1b82201ef91527f2060e8febc377eed902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa861289_5b0e10cb",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 3
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-05T14:23:38Z",
       "side": 1,
       "message": "That\u0027s surprising: the device returned should be in the supported device list for the output profile of the primary output?",
+      "range": {
+        "startLine": 543,
+        "startChar": 29,
+        "endLine": 543,
+        "endChar": 71
+      },
+      "revId": "239e1d1b82201ef91527f2060e8febc377eed902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0b6e631_3135a6b0",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-02-05T16:31:05Z",
+      "side": 1,
+      "message": "I blindly copy/paste the comment originally present in setPhoneState. But definitely, it must be supported I feel (outdated comment?)",
+      "parentUuid": "aa861289_5b0e10cb",
       "range": {
         "startLine": 543,
         "startChar": 29,
