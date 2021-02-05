@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55faf53f_5056bcf7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-05T14:35:56Z",
+      "side": 1,
+      "message": "Do not fallback on",
+      "range": {
+        "startLine": 7,
+        "startChar": 21,
+        "endLine": 7,
+        "endChar": 43
+      },
+      "revId": "5220fd8668172447b7542598f153a279de798a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab82c8bb_503d6908",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-05T14:35:56Z",
+      "side": 1,
+      "message": "the double negation is hard to follow.\nDo you mean that nothing prevents from defining a strategy with no attached stream type?",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 41
+      },
+      "revId": "5220fd8668172447b7542598f153a279de798a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08cbba24_93738713",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-05T14:35:56Z",
+      "side": 1,
+      "message": "to prevent fallback",
+      "range": {
+        "startLine": 11,
+        "startChar": 10,
+        "endLine": 11,
+        "endChar": 31
+      },
+      "revId": "5220fd8668172447b7542598f153a279de798a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9aca1e58_a233e1ee",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-05T14:35:56Z",
+      "side": 1,
+      "message": "there is a missing update of the EngineInterface for methods getVolumeGroupForAttributes() and getVolumeGroupForStreamType()",
+      "range": {
+        "startLine": 419,
+        "startChar": 43,
+        "endLine": 419,
+        "endChar": 70
+      },
+      "revId": "5220fd8668172447b7542598f153a279de798a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
