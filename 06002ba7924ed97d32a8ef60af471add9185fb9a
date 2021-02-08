@@ -51,6 +51,24 @@
       "parentUuid": "94c77355_7e742806",
       "revId": "06002ba7924ed97d32a8ef60af471add9185fb9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26d661bf_2d3c7799",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-02-08T22:26:36Z",
+      "side": 1,
+      "message": "This should use \u0027defaults\u0027 libbinder_ndk_host_user to avoid needing this workaround configuration in mulitple places",
+      "parentUuid": "87d5a0b6_6d6935db",
+      "revId": "06002ba7924ed97d32a8ef60af471add9185fb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
