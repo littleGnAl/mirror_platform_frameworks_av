@@ -16,6 +16,23 @@
       "message": "(this needs to go in after the sc-dev change, but i\u0027m just lining up my last few CLs all at once...)",
       "revId": "06002ba7924ed97d32a8ef60af471add9185fb9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94c77355_7e742806",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-02-08T21:59:47Z",
+      "side": 1,
+      "message": "+smoreland:\n```\nIn file included from frameworks/av/media/extractors/flac/FLACExtractor.cpp:28:\nframeworks/native/libs/binder/ndk/include_ndk/android/binder_ibinder.h:40:2: error: Android builds must be compiled against a specific API. If this is an  android platform host build, you must use libbinder_ndk_host_user.\n#error Android builds must be compiled against a specific API. If this is an \\\n ^\n```\n\nthis is similar to what happened when i removed the -D__ANDROID_API__\u003d1000 from your Android.bp file.\n\nhmm... looks like FLACExtractor.cpp is being built for the host too.\n\nshould we remove that #error? we have no reason to believe it will ever fire legitimately, right? it will always be because you\u0027re on the host, and adding -D__ANDROID_API__\u003d1000 sounds worse than keeping this check?",
+      "revId": "06002ba7924ed97d32a8ef60af471add9185fb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
