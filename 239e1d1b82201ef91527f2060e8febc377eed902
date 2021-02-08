@@ -50,6 +50,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "43f50b8b_cf83261a",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-08T14:04:18Z",
+      "side": 1,
+      "message": "in updateCallRouting() it may be some remains of previous versions (before refactoring of createAudioPatchInternal()) where we had some limitations on the possibilities to create just HW patches?\n\nbut in the context of selectBestRxSinkDevicesForCall() I don\u0027t see a reason why we would keep this condition? \n\nI think the only strong condition s here are :\ntelephonyRxModule-\u003egetHalVersionMajor() \u003e\u003d 3 \u0026\u0026 telephonyRxModule-\u003esupportsPatch(rxSourceDevice, rxSinkDevice)\n\ntelephonyRxModule-\u003esupportsPatch(rxSourceDevice, rxSinkDevice) implies rxSourceDevice-\u003ehasSameHwModuleAs(rxSinkDevice)\n\ncondition isPrimaryModule(telephonyRxModule) can be left in because somehow by definition call related APIs are exposed by the primary module which implies that telephony devices are managed by the primary module.",
+      "parentUuid": "d3e6b480_661c0270",
+      "range": {
+        "startLine": 534,
+        "startChar": 47,
+        "endLine": 534,
+        "endChar": 85
+      },
+      "revId": "239e1d1b82201ef91527f2060e8febc377eed902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8f59ed3_affa2f4f",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-08T14:04:18Z",
+      "side": 1,
+      "message": "this must be telephonyRxModule",
+      "range": {
+        "startLine": 537,
+        "startChar": 15,
+        "endLine": 537,
+        "endChar": 45
+      },
+      "revId": "239e1d1b82201ef91527f2060e8febc377eed902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aa861289_5b0e10cb",
         "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
         "patchSetId": 3
@@ -85,6 +132,30 @@
       "side": 1,
       "message": "I blindly copy/paste the comment originally present in setPhoneState. But definitely, it must be supported I feel (outdated comment?)",
       "parentUuid": "aa861289_5b0e10cb",
+      "range": {
+        "startLine": 543,
+        "startChar": 29,
+        "endLine": 543,
+        "endChar": 71
+      },
+      "revId": "239e1d1b82201ef91527f2060e8febc377eed902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a2320b3_6c119d9a",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-08T14:04:18Z",
+      "side": 1,
+      "message": "Actually I checked the implementation of getNewOutputDevices() and nothing checks that the selected devices is supported by the output profile.\nunsupported devices are later filtered out by setOutputDevices().",
+      "parentUuid": "f0b6e631_3135a6b0",
       "range": {
         "startLine": 543,
         "startChar": 29,
