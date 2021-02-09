@@ -116,7 +116,14 @@ class DeviceHalHidl : public DeviceHalInterface, public ConversionHelperHidl
     status_t addDeviceEffect(audio_port_handle_t device, sp<EffectHalInterface> effect) override;
     status_t removeDeviceEffect(audio_port_handle_t device, sp<EffectHalInterface> effect) override;
 
+    status_t registerAudioGainCallback(
+            const sp<DeviceHalInterfaceAudioGainCallback> &callback) override;
+    status_t unregisterAudioGainCallback(
+            const sp<DeviceHalInterfaceAudioGainCallback> &callback) override;
+
     virtual status_t dump(int fd);
+
+    wp<DeviceHalInterfaceAudioGainCallback> mDeviceHalInterfaceAudioGainCallback;
 
   private:
     friend class DevicesFactoryHalHidl;
@@ -128,6 +135,10 @@ class DeviceHalHidl : public DeviceHalInterface, public ConversionHelperHidl
 
     // The destructor automatically closes the device.
     virtual ~DeviceHalHidl();
+
+#if MAJOR_VERSION >= 7
+    sp<android::hardware::audio::audiogain::CPP_VERSION::IAudioGainCallback> mAudioGainCallback;
+#endif
 };
 
 } // namespace CPP_VERSION
