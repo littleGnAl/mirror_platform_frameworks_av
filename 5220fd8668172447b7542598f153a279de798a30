@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fff59e8_5a856d40",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-09T10:11:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "de27e455_3427606f",
+      "range": {
+        "startLine": 10,
+        "startChar": 12,
+        "endLine": 10,
+        "endChar": 41
+      },
+      "revId": "5220fd8668172447b7542598f153a279de798a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "08cbba24_93738713",
@@ -179,6 +203,30 @@
       "side": 1,
       "message": "oops, CL inverted",
       "parentUuid": "9aca1e58_a233e1ee",
+      "range": {
+        "startLine": 419,
+        "startChar": 43,
+        "endLine": 419,
+        "endChar": 70
+      },
+      "revId": "5220fd8668172447b7542598f153a279de798a30",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9483d18f_0b230c03",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 419,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-09T10:11:31Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "25bb9ce1_172f0c7e",
       "range": {
         "startLine": 419,
         "startChar": 43,
