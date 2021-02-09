@@ -229,5 +229,15 @@ void DeviceHalLocal::closeInputStream(struct audio_stream_in *stream_in) {
     mDev->close_input_stream(mDev, stream_in);
 }
 
+status_t DeviceHalLocal::registerAudioGainCallback(
+        const sp<DeviceHalInterfaceAudioGainCallback> &callback __unused) {
+    return INVALID_OPERATION;
+}
+status_t DeviceHalLocal::unregisterAudioGainCallback(
+        const sp<DeviceHalInterfaceAudioGainCallback> &callback __unused) {
+    return INVALID_OPERATION;
+}
+
+
 } // namespace CPP_VERSION
 } // namespace android
