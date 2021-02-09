@@ -122,6 +122,24 @@
       "parentUuid": "3eaf2878_24a6b09b",
       "revId": "06002ba7924ed97d32a8ef60af471add9185fb9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e8456ca_a6e7ebc4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-02-09T01:15:49Z",
+      "side": 1,
+      "message": "\u003e I thought __INTRODUCED_IN() is only fixed and working in S, right?\n\ncorrect. strictly, \"if you\u0027re building with a new enough NDK...\" but...\n\u003e We can\u0027t remove __ANDROID_API__ in RVC-dev.\n\n...is definitely correct.\n\n\u003e Is there any problem if you just ignore it and upload with \"--no-verify\" to AOSP?\n\ni don\u0027t know. i\u0027m not really sure why i got the warning :-)",
+      "parentUuid": "5ed000f3_cff21b64",
+      "revId": "06002ba7924ed97d32a8ef60af471add9185fb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
