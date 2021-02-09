@@ -104,6 +104,24 @@
       "message": "hmm, the presubmit hook wants me to change the Android.bp files on rvc-dev instead:\n```\n    \u003d\u003d\u003d\u003d\u003d Mainline files \u003d\u003d\u003d\u003d\u003d\n    \n    media/extractors/flac/Android.bp\n    media/extractors/wav/Android.bp\n    \n    \u003d\u003d\u003d\u003d\u003d Non-Mainline files \u003d\u003d\u003d\u003d\u003d\n    \n    media/ndk/include/media/NdkMediaFormat.h\n    \n    \n    You are uploading repo  frameworks/av to branch unknown. \n    The source of truth for frameworks/av is branch rvc-dev. \n    \n    Please upload this change to branch rvc-dev unless one or more of\n    the following apply:\n    - this is a security bug prohibited from disclosure before the next dessert release.\n      (moderate security bugs fall into this category).\n    - this is new functionality prohibitied from disclosure before the next dessert release.\n    \n    If you are sure you want to proceed uploading to branch unknown,\n    re-run your repo upload command with the \u0027--no-verify\u0027 option\n```\nis that really right? rvc-dev? and if it is, how do i then fix AOSP master? submit those changes to rvc-dev first and then choose the \"--no-verify\" option here in AOSP master?",
       "revId": "06002ba7924ed97d32a8ef60af471add9185fb9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ed000f3_cff21b64",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2021-02-09T01:09:07Z",
+      "side": 1,
+      "message": "I thought __INTRODUCED_IN() is only fixed and working in S, right? We can\u0027t remove __ANDROID_API__ in RVC-dev.\n\nIs there any problem if you just ignore it and upload with \"--no-verify\" to AOSP?",
+      "parentUuid": "3eaf2878_24a6b09b",
+      "revId": "06002ba7924ed97d32a8ef60af471add9185fb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
