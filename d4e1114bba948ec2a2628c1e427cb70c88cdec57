@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8f710b6_67aa945b",
+        "filename": "media/libeffects/lvm/lib/Bundle/src/LVM_Process.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2021-02-09T16:35:30Z",
+      "side": 1,
+      "message": "Doing this here converts mono to two channel when LVCS is enabled along with other effects. Check the possibility of moving this inside CS module.",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 5
+      },
+      "revId": "d4e1114bba948ec2a2628c1e427cb70c88cdec57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
