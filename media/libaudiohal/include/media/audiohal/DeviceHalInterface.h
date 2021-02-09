@@ -28,6 +28,7 @@ namespace android {
 
 class StreamInHalInterface;
 class StreamOutHalInterface;
+class DeviceHalInterfaceAudioGainCallback;
 
 class DeviceHalInterface : public RefBase
 {
@@ -119,12 +120,26 @@ class DeviceHalInterface : public RefBase
 
     virtual status_t dump(int fd) = 0;
 
+    virtual status_t registerAudioGainCallback(
+            const sp<DeviceHalInterfaceAudioGainCallback> &callback) = 0;
+    virtual status_t unregisterAudioGainCallback(
+            const sp<DeviceHalInterfaceAudioGainCallback> &callback) = 0;
+
   protected:
     // Subclasses can not be constructed directly by clients.
     DeviceHalInterface() {}
 
     // The destructor automatically closes the device.
     virtual ~DeviceHalInterface() {}
+};
+
+class DeviceHalInterfaceAudioGainCallback : public virtual RefBase {
+public:
+    virtual void onChanged(uint32_t reasons, const std::vector<audio_port_config>& gains) = 0;
+
+protected:
+    DeviceHalInterfaceAudioGainCallback() {}
+    virtual ~DeviceHalInterfaceAudioGainCallback() {}
 };
 
 } // namespace android

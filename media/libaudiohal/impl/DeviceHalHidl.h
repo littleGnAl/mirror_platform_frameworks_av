@@ -30,6 +30,10 @@ using ::android::hardware::Return;
 namespace android {
 namespace CPP_VERSION {
 
+#if MAJOR_VERSION >= 7
+namespace audiogainhal = ::android::hardware::audio::audiogain::CPP_VERSION;
+#endif
+
 class DeviceHalHidl : public DeviceHalInterface, public ConversionHelperHidl
 {
   public:
@@ -116,7 +120,14 @@ class DeviceHalHidl : public DeviceHalInterface, public ConversionHelperHidl
     status_t addDeviceEffect(audio_port_handle_t device, sp<EffectHalInterface> effect) override;
     status_t removeDeviceEffect(audio_port_handle_t device, sp<EffectHalInterface> effect) override;
 
+    status_t registerAudioGainCallback(
+            const sp<DeviceHalInterfaceAudioGainCallback> &callback) override;
+    status_t unregisterAudioGainCallback(
+            const sp<DeviceHalInterfaceAudioGainCallback> &callback) override;
+
     virtual status_t dump(int fd);
+
+    wp<DeviceHalInterfaceAudioGainCallback> mDeviceHalInterfaceAudioGainCallback = nullptr;
 
   private:
     friend class DevicesFactoryHalHidl;
@@ -128,6 +139,10 @@ class DeviceHalHidl : public DeviceHalInterface, public ConversionHelperHidl
 
     // The destructor automatically closes the device.
     virtual ~DeviceHalHidl();
+
+#if MAJOR_VERSION >= 7
+    sp<audiogainhal::IAudioGainCallback> mAudioGainCallback = nullptr;
+#endif
 };
 
 } // namespace CPP_VERSION
