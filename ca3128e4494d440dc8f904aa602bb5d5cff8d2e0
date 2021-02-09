@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "93c98a56_71b40db6",
+        "filename": "services/audiopolicy/engine/config/include/EngineConfig.h",
+        "patchSetId": 27
+      },
+      "lineNbr": 32,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-09T09:34:29Z",
+      "side": 1,
+      "message": "maybe use a more specific name : AUDIO_TAG_APM_RESERVED_INTERNAL \"reserved_internal_strategy\"",
+      "range": {
+        "startLine": 32,
+        "startChar": 28,
+        "endLine": 32,
+        "endChar": 36
+      },
+      "revId": "ca3128e4494d440dc8f904aa602bb5d5cff8d2e0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
