@@ -140,6 +140,24 @@
       "parentUuid": "5ed000f3_cff21b64",
       "revId": "06002ba7924ed97d32a8ef60af471add9185fb9a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "58d9146c_182d9aa4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-09T01:52:10Z",
+      "side": 1,
+      "message": "those are some hooks that tried to remind people to file in the right branches so that things would go to mainline; added back in the Q days (and updated for R).\n\nthey burn me every so often; I need to look at re-casting them. I want the reminder that the file(s) being changes are part of mainline, but perhaps it doesn\u0027t need to be so pedantic about letting the CL through.",
+      "parentUuid": "2e8456ca_a6e7ebc4",
+      "revId": "06002ba7924ed97d32a8ef60af471add9185fb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
