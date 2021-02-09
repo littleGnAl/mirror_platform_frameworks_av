@@ -55,6 +55,14 @@ DeviceHalHidl::DeviceHalHidl(const sp<IDevice>& device)
 
 DeviceHalHidl::~DeviceHalHidl() {
     if (mDevice != 0) {
+#if MAJOR_VERSION >= 7
+        {
+            std::lock_guard<std::mutex> lock(mAudioGainCallbackLock);
+            if (mAudioGainCallback != nullptr) {
+                mAudioGainCallback.clear();
+            }
+        }
+#endif
 #if MAJOR_VERSION <= 5
         mDevice.clear();
         hardware::IPCThreadState::self()->flushCommands();
@@ -428,6 +436,126 @@ status_t DeviceHalHidl::removeDeviceEffect(
 #else
 status_t DeviceHalHidl::removeDeviceEffect(
         audio_port_handle_t device __unused, sp<EffectHalInterface> effect __unused) {
+    return INVALID_OPERATION;
+}
+#endif
+
+#if MAJOR_VERSION >= 7
+class AudioGainCallbackCallback : public IAudioGainCallback {
+public:
+    AudioGainCallbackCallback(const wp<DeviceHalHidl>& device) : mDevice(device) {}
+
+    ~AudioGainCallbackCallback() {
+        std::lock_guard<std::mutex> lock(mHalInterfaceAudioGainCallbackLock);
+        if (mDeviceHalInterfaceAudioGainCallback.unsafe_get() != nullptr) {
+            sp<DeviceHalHidl> device = mDevice.promote();
+            if (device != nullptr && device->mPrimaryDevice != nullptr) {
+                device->mPrimaryDevice->unregisterAudioGainCallback(this);
+            }
+            mDeviceHalInterfaceAudioGainCallback.clear();
+        }
+    }
+
+    Return<void> onChanged(
+            android::hardware::hidl_bitfield<ReasonMask> reasonsMask,
+            const ::android::hardware::hidl_vec<AudioGainConfigExt>& gains) override {
+        sp<DeviceHalHidl> device = mDevice.promote();
+        if (device != nullptr) {
+            std::vector<audio_port_config> halPortConfigs{};
+            for (const auto &hidlAgcExt : gains) {
+                struct audio_gain_config halGain;
+                status_t ret = HidlUtils::audioGainConfigToHal(hidlAgcExt.gain, &halGain);
+                if (ret == NO_ERROR) {
+                    halPortConfigs.push_back({ .id = hidlAgcExt.id, .gain = halGain });
+                }
+            }
+            std::lock_guard<std::mutex> lock(mHalInterfaceAudioGainCallbackLock);
+            sp<DeviceHalInterfaceAudioGainCallback> callback =
+                    mDeviceHalInterfaceAudioGainCallback.promote();
+            if (callback != nullptr) {
+                callback->onChanged(static_cast<audio_gain_mask_t>(reasonsMask), halPortConfigs);
+            }
+        }
+        return android::hardware::Void();
+    }
+
+    status_t registerCallback(const sp<DeviceHalInterfaceAudioGainCallback> &callback) {
+        std::lock_guard<std::mutex> lock(mHalInterfaceAudioGainCallbackLock);
+        if (callback == nullptr || mDeviceHalInterfaceAudioGainCallback != nullptr) {
+            return BAD_VALUE;
+        }
+        sp<DeviceHalHidl> device = mDevice.promote();
+        if (device == nullptr || device->mPrimaryDevice == nullptr) {
+            return NO_INIT;
+        }
+        return device->processReturn("registerAudioGainCallback",
+                                     device->mPrimaryDevice->registerAudioGainCallback(this));
+    }
+
+    status_t unregisterCallback(const sp<DeviceHalInterfaceAudioGainCallback> &callback) {
+        std::lock_guard<std::mutex> lock(mHalInterfaceAudioGainCallbackLock);
+        if (callback != mDeviceHalInterfaceAudioGainCallback) {
+            return ALREADY_EXISTS;
+        }
+        status_t ret = NO_ERROR;
+        if (mDeviceHalInterfaceAudioGainCallback.unsafe_get() != nullptr) {
+            sp<DeviceHalHidl> device = mDevice.promote();
+            if (device == nullptr || device->mPrimaryDevice == nullptr) {
+                return NO_INIT;
+            }
+            ret = device->processReturn("unregisterAudioGainCallback",
+                                        device->mPrimaryDevice->unregisterAudioGainCallback(this));
+            mDeviceHalInterfaceAudioGainCallback.clear();
+        }
+        return ret;
+    }
+
+private:
+    wp<DeviceHalHidl> mDevice;
+    std::mutex mHalInterfaceAudioGainCallbackLock;
+
+    // GUARDED_BY(mHalInterfaceAudioGainCallbackLock)
+    wp<DeviceHalInterfaceAudioGainCallback> mDeviceHalInterfaceAudioGainCallback = nullptr;
+};
+
+status_t DeviceHalHidl::registerAudioGainCallback(
+        const sp<DeviceHalInterfaceAudioGainCallback> &callback) {
+    if (mDevice == nullptr) return NO_INIT;
+    if (callback == nullptr) {
+        return BAD_VALUE;
+    }
+    std::lock_guard<std::mutex> lock(mAudioGainCallbackLock);
+    if (mAudioGainCallback != nullptr) {
+        return BAD_VALUE;
+    }
+    mAudioGainCallback = new AudioGainCallbackCallback(this);
+    status_t ret = mAudioGainCallback->registerCallback(callback);
+    if (ret != NO_ERROR) {
+        mAudioGainCallback.clear();
+    }
+    return ret;
+}
+
+status_t DeviceHalHidl::unregisterAudioGainCallback(
+        const sp<DeviceHalInterfaceAudioGainCallback> &callback) {
+    if (mDevice == nullptr) return NO_INIT;
+    std::lock_guard<std::mutex> lock(mAudioGainCallbackLock);
+    if (mAudioGainCallback == nullptr) {
+        return BAD_VALUE;
+    }
+    status_t ret = mAudioGainCallback->unregisterCallback(callback);
+    if (ret != ALREADY_EXISTS) {
+        mAudioGainCallback.clear();
+    }
+    return ret;
+}
+#else
+status_t DeviceHalHidl::registerAudioGainCallback(
+        const sp<DeviceHalInterfaceAudioGainCallback> &callback __unused) {
+    return INVALID_OPERATION;
+}
+status_t DeviceHalHidl::unregisterAudioGainCallback(
+        const sp<DeviceHalInterfaceAudioGainCallback> &callback __unused) {
     return INVALID_OPERATION;
 }
 #endif
