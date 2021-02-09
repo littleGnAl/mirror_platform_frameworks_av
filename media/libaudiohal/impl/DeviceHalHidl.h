@@ -23,12 +23,17 @@
 
 #include "ConversionHelperHidl.h"
 
+#if MAJOR_VERSION >= 7
+using ::android::hardware::audio::CPP_VERSION::IAudioGainCallback;
+#endif
 using ::android::hardware::audio::CPP_VERSION::IDevice;
 using ::android::hardware::audio::CPP_VERSION::IPrimaryDevice;
 using ::android::hardware::Return;
 
 namespace android {
 namespace CPP_VERSION {
+
+class AudioGainCallbackCallback;
 
 class DeviceHalHidl : public DeviceHalInterface, public ConversionHelperHidl
 {
@@ -116,10 +121,17 @@ class DeviceHalHidl : public DeviceHalInterface, public ConversionHelperHidl
     status_t addDeviceEffect(audio_port_handle_t device, sp<EffectHalInterface> effect) override;
     status_t removeDeviceEffect(audio_port_handle_t device, sp<EffectHalInterface> effect) override;
 
+    status_t registerAudioGainCallback(
+            const sp<DeviceHalInterfaceAudioGainCallback> &callback) override;
+    status_t unregisterAudioGainCallback(
+            const sp<DeviceHalInterfaceAudioGainCallback> &callback) override;
+
     virtual status_t dump(int fd);
 
   private:
     friend class DevicesFactoryHalHidl;
+    friend class AudioGainCallbackCallback;
+
     sp<IDevice> mDevice;
     sp<IPrimaryDevice> mPrimaryDevice;  // Null if it's not a primary device.
 
@@ -128,6 +140,11 @@ class DeviceHalHidl : public DeviceHalInterface, public ConversionHelperHidl
 
     // The destructor automatically closes the device.
     virtual ~DeviceHalHidl();
+
+#if MAJOR_VERSION >= 7
+    std::mutex mAudioGainCallbackLock;
+    sp<AudioGainCallbackCallback> mAudioGainCallback; // GUARDED_BY(mAudioGainCallback)
+#endif
 };
 
 } // namespace CPP_VERSION
