@@ -55,6 +55,14 @@ DeviceHalHidl::DeviceHalHidl(const sp<IDevice>& device)
 
 DeviceHalHidl::~DeviceHalHidl() {
     if (mDevice != 0) {
+#if MAJOR_VERSION >= 7
+        if (mDeviceHalInterfaceAudioGainCallback.unsafe_get() != nullptr) {
+            processReturn("unregisterAudioGainCallback",
+                    mDevice->unregisterAudioGainCallback(mAudioGainCallback));
+            mAudioGainCallback.clear();
+            mDeviceHalInterfaceAudioGainCallback.clear();
+        }
+#endif
 #if MAJOR_VERSION <= 5
         mDevice.clear();
         hardware::IPCThreadState::self()->flushCommands();
@@ -428,6 +436,79 @@ status_t DeviceHalHidl::removeDeviceEffect(
 #else
 status_t DeviceHalHidl::removeDeviceEffect(
         audio_port_handle_t device __unused, sp<EffectHalInterface> effect __unused) {
+    return INVALID_OPERATION;
+}
+#endif
+
+#if MAJOR_VERSION >= 7
+namespace {
+
+struct AudioGainCallbackCallback : public audiogainhal::IAudioGainCallback {
+    AudioGainCallbackCallback(const wp<DeviceHalHidl>& device) : mDevice(device) {}
+
+    Return<void> onChanged(
+            android::hardware::hidl_bitfield<audiogainhal::ReasonMask> reasonsMask,
+            const ::android::hardware::hidl_vec<audiogainhal::AudioGainConfigExt>& gains) override {
+        sp<DeviceHalHidl> device = mDevice.promote();
+        if (device != nullptr) {
+            std::vector<audio_port_config> halPortConfig{};
+
+            for (const auto &hidlAgcExt : gains) {
+                struct audio_gain_config halGain;
+                status_t ret = HidlUtils::audioGainConfigToHal(hidlAgcExt.gain, &halGain);
+                if (ret == NO_ERROR) {
+                    halPortConfig.push_back({ .id = hidlAgcExt.id, .gain = halGain });
+                }
+            }
+            sp<DeviceHalInterfaceAudioGainCallback> callback =
+                    device->mDeviceHalInterfaceAudioGainCallback.promote();
+            if (callback != nullptr) {
+                callback->onChanged(static_cast<uint32_t>(reasonsMask), halPortConfig);
+            }
+        }
+        return android::hardware::Void();
+    }
+
+  private:
+    wp<DeviceHalHidl> mDevice;
+};
+
+}  // namespace
+
+status_t DeviceHalHidl::registerAudioGainCallback(
+        const sp<DeviceHalInterfaceAudioGainCallback> &callback) {
+    if (mDevice == nullptr) return NO_INIT;
+    if (callback.get() == nullptr) {
+        return BAD_VALUE;
+    }
+    mDeviceHalInterfaceAudioGainCallback = callback;
+    mAudioGainCallback = new AudioGainCallbackCallback(this);
+    return processReturn("registerAudioGainCallback", mDevice->registerAudioGainCallback(
+            mAudioGainCallback));
+}
+
+status_t DeviceHalHidl::unregisterAudioGainCallback(
+        const sp<DeviceHalInterfaceAudioGainCallback> &callback) {
+    if (mDevice == nullptr) return NO_INIT;
+    if (callback != mDeviceHalInterfaceAudioGainCallback) {
+        return BAD_VALUE;
+    }
+    mDeviceHalInterfaceAudioGainCallback.clear();
+    if (mAudioGainCallback == nullptr) {
+        return BAD_VALUE;
+    }
+    status_t ret= processReturn("unregisterAudioGainCallback", mDevice->unregisterAudioGainCallback(
+            mAudioGainCallback));
+    mAudioGainCallback.clear();
+    return ret;
+}
+#else
+status_t DeviceHalHidl::registerAudioGainCallback(
+        const sp<DeviceHalInterfaceAudioGainCallback> &callback __unused) {
+    return INVALID_OPERATION;
+}
+status_t DeviceHalHidl::unregisterAudioGainCallback(
+        const sp<DeviceHalInterfaceAudioGainCallback> &callback __unused) {
     return INVALID_OPERATION;
 }
 #endif
