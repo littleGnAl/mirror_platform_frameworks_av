@@ -16,6 +16,23 @@
       "message": "Rivukanta,\nPlease test lvm_benchmark with SANITIZE_TARGET\u003daddress.\nFollowing code needs to be updated for single channel case\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libeffects/lvm/lib/Common/src/LVC_MixSoft_1St_2i_D16C31_SAT.cpp;l\u003d60?q\u003dLVC_MixSoft_1St_2i_D16C31_SAT.cpp\u0026ss\u003dandroid%2Fplatform%2Fsuperproject\n\nThere may be more issues like this one.",
       "revId": "1be88dea1ae93755bf66572bf2b598aa7198ad94",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebd1ba49_b8963e44",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-10T22:14:49Z",
+      "side": 1,
+      "message": "Use the following two CLs to test lvm_benchmark on host\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1583603\nhttps://android-review.googlesource.com/c/platform/system/media/+/1583464\n\nWith these two CLs, you can test/debug lvm_benchmark on host with address sanitizer.",
+      "revId": "1be88dea1ae93755bf66572bf2b598aa7198ad94",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
