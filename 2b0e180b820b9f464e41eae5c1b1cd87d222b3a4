@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5048ffe_02b54a68",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1121894
+      },
+      "writtenOn": "2021-02-10T21:14:23Z",
+      "side": 1,
+      "message": "+enh@, +ccross@\n\nI am not quite sure I understand why the build fail with the -Werror since I am not changing any source. So it seems like the warning already exists but doesn\u0027t fail when gtest:true ?\n\nColin, do you know if gtest:true suppress so warnings ?",
+      "revId": "2b0e180b820b9f464e41eae5c1b1cd87d222b3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
