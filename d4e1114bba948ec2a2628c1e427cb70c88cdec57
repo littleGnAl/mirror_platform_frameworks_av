@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e06a58d6_d85b2577",
+        "filename": "media/libeffects/lvm/lib/Bundle/src/LVM_Process.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-02-10T17:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a8f710b6_67aa945b",
+      "range": {
+        "startLine": 116,
+        "startChar": 0,
+        "endLine": 122,
+        "endChar": 5
+      },
+      "revId": "d4e1114bba948ec2a2628c1e427cb70c88cdec57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1146018f_314609b5",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-09T16:45:08Z",
       "side": 1,
       "message": "similar change is needed in lvm_benchmark.cpp as well.\n\nAllocate one channel and remove TODO(b/131240940)\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libeffects/lvm/benchmarks/lvm_benchmark.cpp;l\u003d56?q\u003dlvm_benchmark.cpp\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libeffects/lvm/benchmarks/lvm_benchmark.cpp;l\u003d227?q\u003dlvm_benchmark.cpp",
+      "range": {
+        "startLine": 537,
+        "startChar": 46,
+        "endLine": 537,
+        "endChar": 58
+      },
+      "revId": "d4e1114bba948ec2a2628c1e427cb70c88cdec57",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fccb500c_788d508b",
+        "filename": "media/libeffects/lvm/tests/lvmtest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-02-10T17:13:39Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1146018f_314609b5",
       "range": {
         "startLine": 537,
         "startChar": 46,
