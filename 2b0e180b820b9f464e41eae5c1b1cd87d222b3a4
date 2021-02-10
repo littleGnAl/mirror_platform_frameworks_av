@@ -34,6 +34,23 @@
       "parentUuid": "a5048ffe_02b54a68",
       "revId": "2b0e180b820b9f464e41eae5c1b1cd87d222b3a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98e81d6b_1a473771",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-10T23:15:14Z",
+      "side": 1,
+      "message": "I discussed with Harish, and we\u0027ll fix the reported errors shortly so the makefile can work.  Thanks!\n\nframeworks/av/media/libeffects/preprocessing/tests/correlation.cpp:114:5: error: ignoring return value of function declared with \u0027warn_unused_result\u0027 attribute [-Werror,-Wunused-result]\n    fread(inBuffer1.get(), sizeof(int16_t), numFrames, fInput1.get());\n    ^~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\nframeworks/av/media/libeffects/preprocessing/tests/correlation.cpp:115:5: error: ignoring return value of function declared with \u0027warn_unused_result\u0027 attribute [-Werror,-Wunused-result]\n    fread(inBuffer2.get(), sizeof(int16_t), numFrames, fInput2.get());\n    ^~~~~ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~",
+      "revId": "2b0e180b820b9f464e41eae5c1b1cd87d222b3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
