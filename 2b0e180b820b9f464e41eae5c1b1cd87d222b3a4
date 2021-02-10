@@ -16,6 +16,24 @@
       "message": "+enh@, +ccross@\n\nI am not quite sure I understand why the build fail with the -Werror since I am not changing any source. So it seems like the warning already exists but doesn\u0027t fail when gtest:true ?\n\nColin, do you know if gtest:true suppress so warnings ?",
       "revId": "2b0e180b820b9f464e41eae5c1b1cd87d222b3a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55a7edaa_b3eba073",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-02-10T21:19:30Z",
+      "side": 1,
+      "message": "interestingly in the command line, the -Wunused-result that\u0027s causing the trouble seems like it\u0027s coming from this .bp file: `-Wall -Werror -Wextra -Wunused-result -std\u003dgnu++17`\n\ni can\u0027t explain that, but maybe ccross can...",
+      "parentUuid": "a5048ffe_02b54a68",
+      "revId": "2b0e180b820b9f464e41eae5c1b1cd87d222b3a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
