@@ -536,6 +536,66 @@ c2_status_t C2AllocationGralloc::map(
             break;
         }
 
+        case static_cast<uint32_t>(PixelFormat4::YCBCR_P010): {
+            void *pointer = nullptr;
+            ALOGD("mFormat : %u mStride : %u and mHeight : %u", mFormat, mStride, mHeight);
+            ALOGD("YCBCR_P010 format");
+            status_t err = GraphicBufferMapper::get().lock(
+                    const_cast<native_handle_t *>(mBuffer), grallocUsage, rect, &pointer);
+            if (err) {
+                ALOGE("failed transaction: lockYCbCr");
+                return C2_CORRUPTED;
+            }
+
+            addr[C2PlanarLayout::PLANE_Y] = (uint8_t *)pointer;
+            addr[C2PlanarLayout::PLANE_U] = (uint8_t *)pointer + (mStride * 2 * mHeight);
+            addr[C2PlanarLayout::PLANE_V] = (uint8_t *)pointer + (mStride * 2 * mHeight) + 2;
+            layout->type = C2PlanarLayout::TYPE_YUV;
+            layout->numPlanes = 3;
+            // TODO: confirm the values for planes
+            layout->rootPlanes = 1;
+            layout->planes[C2PlanarLayout::PLANE_Y] = {
+                C2PlaneInfo::CHANNEL_Y,         // channel
+                2,                              // colInc (should it be 2 for 10 bit data?)
+                static_cast<int32_t>(2 * mStride), // rowInc
+                1,                              // mColSampling
+                1,                              // mRowSampling
+                16,                             // allocatedDepth
+                10,                             // bitDepth
+                10,                             // rightShift
+                C2PlaneInfo::NATIVE,            // endianness
+                C2PlanarLayout::PLANE_Y,        // rootIx
+                0,                              // offset
+            };
+            layout->planes[C2PlanarLayout::PLANE_U] = {
+                C2PlaneInfo::CHANNEL_CB,          // channel
+                2,                                // colInc
+                static_cast<int32_t>(mStride),    // rowInc
+                2,                                // mColSampling
+                2,                                // mRowSampling
+                16,                               // allocatedDepth
+                10,                               // bitDepth
+                10,                               // rightShift
+                C2PlaneInfo::NATIVE,              // endianness
+                C2PlanarLayout::PLANE_U,          // rootIx
+                mStride * 2 * mHeight,            // offset
+            };
+            layout->planes[C2PlanarLayout::PLANE_V] = {
+                C2PlaneInfo::CHANNEL_CR,          // channel
+                2,                                // colInc
+                static_cast<int32_t>(mStride),    // rowInc
+                2,                                // mColSampling
+                2,                                // mRowSampling
+                16,                               // allocatedDepth
+                10,                               // bitDepth
+                10,                               // rightShift
+                C2PlaneInfo::NATIVE,              // endianness
+                C2PlanarLayout::PLANE_V,          // rootIx
+                (mStride * 2 * mHeight) + 2,      // offset
+            };
+            break;
+        }
+
         case static_cast<uint32_t>(PixelFormat4::YCBCR_420_888):
             // fall-through
         case static_cast<uint32_t>(PixelFormat4::YV12):

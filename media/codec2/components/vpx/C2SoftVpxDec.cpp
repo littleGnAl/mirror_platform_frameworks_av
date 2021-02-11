@@ -19,6 +19,8 @@
 #include <log/log.h>
 
 #include <algorithm>
+// TODO: resolve the need to include this file explicitly
+#include <system/graphics.h>
 
 #include <media/stagefright/foundation/AUtils.h>
 #include <media/stagefright/foundation/MediaDefs.h>
@@ -553,7 +555,6 @@ void C2SoftVpxDec::process(
     work->workletsProcessed = 0u;
     work->worklets.front()->output.configUpdate.clear();
     work->worklets.front()->output.flags = work->input.flags;
-
     if (mSignalledError || mSignalledOutputEos) {
         work->result = C2_BAD_VALUE;
         return;
@@ -720,6 +721,34 @@ static void convertYUV420Planar16ToY410(uint32_t *dst,
     return;
 }
 
+// static void copyOutputBufferToP010Frame(
+//         uint8_t *dstY, uint8_t *dstU, uint8_t *dstV,
+//         const uint16_t *srcY, const uint16_t *srcU, const uint16_t *srcV,
+//         size_t srcYStride, size_t srcUStride, size_t srcVStride,
+//         size_t dstYStride, size_t dstUVStride,
+//         size_t width, size_t height) {
+
+//     ALOGD("In %s %d", __func__, __LINE__);
+//     (void) dstU;
+//     (void) dstV;
+//     (void) srcU;
+//     (void) srcV;
+//     (void) srcUStride;
+//     (void) srcVStride;
+//     (void) dstUVStride;
+//     /* verify*/
+//     for (size_t y = 0; y < height; ++y) {
+//         for (size_t x = 0; x < width; ++x) {
+//             dstY[x] = (uint8_t)(srcY[x]);
+//         }
+
+//         srcY += srcYStride;
+//         dstY += dstYStride;
+//     }
+//     /* TODO: Chroma part*/
+//     return;
+// }
+
 static void convertYUV420Planar16ToYUV420Planar(
         uint8_t *dstY, uint8_t *dstU, uint8_t *dstV,
         const uint16_t *srcY, const uint16_t *srcU, const uint16_t *srcV,
@@ -753,6 +782,7 @@ status_t C2SoftVpxDec::outputBuffer(
         const std::shared_ptr<C2BlockPool> &pool,
         const std::unique_ptr<C2Work> &work)
 {
+    ALOGD("in output buffer()");
     if (!(work && pool)) return BAD_VALUE;
 
     vpx_codec_iter_t iter = nullptr;
@@ -788,7 +818,9 @@ status_t C2SoftVpxDec::outputBuffer(
     }
 
     std::shared_ptr<C2GraphicBlock> block;
-    uint32_t format = HAL_PIXEL_FORMAT_YV12;
+    // uint32_t format = HAL_PIXEL_FORMAT_YV12;
+    ALOGD("Setting P010");
+    uint32_t format = 0x11F;
     if (img->fmt == VPX_IMG_FMT_I42016) {
         IntfImpl::Lock lock = mIntf->lock();
         std::shared_ptr<C2StreamColorAspectsTuning::output> defaultColorAspects = mIntf->getDefaultColorAspects_l();
@@ -830,6 +862,7 @@ status_t C2SoftVpxDec::outputBuffer(
     size_t dstUVStride = layout.planes[C2PlanarLayout::PLANE_U].rowInc;
 
     if (img->fmt == VPX_IMG_FMT_I42016) {
+        ALOGD("Image format is 142016");
         const uint16_t *srcY = (const uint16_t *)img->planes[VPX_PLANE_Y];
         const uint16_t *srcU = (const uint16_t *)img->planes[VPX_PLANE_U];
         const uint16_t *srcV = (const uint16_t *)img->planes[VPX_PLANE_V];
@@ -859,6 +892,12 @@ status_t C2SoftVpxDec::outputBuffer(
                 queue->cond.signal();
                 queue.waitForCondition(queue->cond);
             }
+        } else if (format == 0x11F) {
+            ALOGD("format is HAL_PIXEL_FORMAT_YCBCR_P010");
+            memcpy(dstY, srcY, mWidth * mHeight);
+            // copyOutputBufferToP010Frame(dstY, dstU, dstV, srcY, srcU, srcV,
+            //                             srcYStride, srcUStride, srcVStride,
+            //                             dstYStride, dstUVStride, mWidth, mHeight);
         } else {
             convertYUV420Planar16ToYUV420Planar(dstY, dstU, dstV,
                                                 srcY, srcU, srcV,
