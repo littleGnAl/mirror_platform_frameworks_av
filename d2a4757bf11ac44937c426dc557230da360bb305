@@ -16,6 +16,24 @@
       "message": "Add an assert that marks 0 B frames as a failure.\n\nassertNotEquals(\"Encoder mime: \" + mMime + \" isSoftware: \" + mIsSoftwareEncoder + \" failed to generate B Frames\", frameNumArray[2], 0);",
       "revId": "d2a4757bf11ac44937c426dc557230da360bb305",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b1c2fb4_d143e10a",
+        "filename": "media/tests/SampleVideoEncoder/app/src/androidTest/java/com/android/media/samplevideoencoder/tests/SampleVideoEncoderTest.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2021-02-11T03:50:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "54659c68_0d4c5f8c",
+      "revId": "d2a4757bf11ac44937c426dc557230da360bb305",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
