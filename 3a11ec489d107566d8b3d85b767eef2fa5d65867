@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9aafb2e_92f7a251",
+        "filename": "media/codec2/components/aac/C2SoftAacDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-11T23:44:07Z",
+      "side": 1,
+      "message": "Will this filter out S only or releases S and later?\n\nPerhaps add verbiage saying\n\n\"we used to report DRC compression mode in the output format in Q and R, but stopped doing that in S\"",
+      "range": {
+        "startLine": 880,
+        "startChar": 0,
+        "endLine": 880,
+        "endChar": 68
+      },
+      "revId": "3a11ec489d107566d8b3d85b767eef2fa5d65867",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
