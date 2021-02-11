@@ -22,6 +22,30 @@
       },
       "revId": "565d46c1029fed1ab6a30458bad029ac7c1c5736",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bc318b3_3d4e8849",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-11T03:53:57Z",
+      "side": 1,
+      "message": "Yes. This is large set of libraries.\nlibmediaplayerservice depends on these libraries.",
+      "parentUuid": "f01d1263_8d358028",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 38,
+        "endChar": 18
+      },
+      "revId": "565d46c1029fed1ab6a30458bad029ac7c1c5736",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
