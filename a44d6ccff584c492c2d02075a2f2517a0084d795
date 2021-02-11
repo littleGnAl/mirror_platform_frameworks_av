@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "172e3bf7_87913193",
+        "filename": "media/libaudiohal/impl/DeviceHalHidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-11T20:14:41Z",
+      "side": 1,
+      "message": "check promote result",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 75
+      },
+      "revId": "a44d6ccff584c492c2d02075a2f2517a0084d795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01cb749a_8a4ea46a",
+        "filename": "media/libaudiohal/impl/DeviceHalHidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-11T20:14:41Z",
+      "side": 1,
+      "message": "audio_gain_mask_t",
+      "range": {
+        "startLine": 464,
+        "startChar": 44,
+        "endLine": 464,
+        "endChar": 52
+      },
+      "revId": "a44d6ccff584c492c2d02075a2f2517a0084d795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "699c6ea9_992835f1",
+        "filename": "media/libaudiohal/impl/DeviceHalHidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 478,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-11T20:14:41Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 478,
+        "startChar": 17,
+        "endLine": 478,
+        "endChar": 22
+      },
+      "revId": "a44d6ccff584c492c2d02075a2f2517a0084d795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "27a79b38_661ddd8e",
+        "filename": "media/libaudiohal/include/media/audiohal/DeviceHalInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-11T20:14:41Z",
+      "side": 1,
+      "message": "audio_gain_mask_t",
+      "range": {
+        "startLine": 138,
+        "startChar": 27,
+        "endLine": 138,
+        "endChar": 35
+      },
+      "revId": "a44d6ccff584c492c2d02075a2f2517a0084d795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
