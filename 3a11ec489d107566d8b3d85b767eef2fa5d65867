@@ -46,6 +46,30 @@
       },
       "revId": "3a11ec489d107566d8b3d85b767eef2fa5d65867",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d919bcd6_2809b406",
+        "filename": "media/codec2/components/aac/C2SoftAacDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 880,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-02-12T20:39:45Z",
+      "side": 1,
+      "message": "Added a comment and fixed using android_get_device_api_level()",
+      "parentUuid": "48ad5980_09d9a8cb",
+      "range": {
+        "startLine": 880,
+        "startChar": 0,
+        "endLine": 880,
+        "endChar": 68
+      },
+      "revId": "3a11ec489d107566d8b3d85b767eef2fa5d65867",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
