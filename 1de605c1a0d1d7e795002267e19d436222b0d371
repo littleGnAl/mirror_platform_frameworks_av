@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "709bdbef_9c850ec1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-12T05:29:38Z",
+      "side": 1,
+      "message": "I verified this again on aosp/master.\nCan you please share adb logcat when this fails?\nThanks.",
+      "parentUuid": "c5207f28_3610fc3d",
+      "revId": "1de605c1a0d1d7e795002267e19d436222b0d371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a39b5ca6_b351b00c",
         "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/AndroidTest.xml",
         "patchSetId": 5
@@ -31,6 +49,30 @@
       "writtenOn": "2021-02-12T04:48:58Z",
       "side": 1,
       "message": "do we really need this?\nit means this will not run on a production/user build.",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 49
+      },
+      "revId": "1de605c1a0d1d7e795002267e19d436222b0d371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7aeeae5f_62f34531",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/AndroidTest.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-12T05:29:38Z",
+      "side": 1,
+      "message": "StagefrightRecorderTest runs only under \"adb root\". \nWithout this atest StagefrightRecorderTest will fail as it doesn\u0027t get required permissions to record.\nNot sure if there is a way to get the command line applications to request required permissions.\nTill then test can run only under \"adb root\".",
+      "parentUuid": "a39b5ca6_b351b00c",
       "range": {
         "startLine": 19,
         "startChar": 6,
