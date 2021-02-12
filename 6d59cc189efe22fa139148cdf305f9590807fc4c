@@ -130,6 +130,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "00a603d7_1dbd5137",
+        "filename": "services/camera/libcameraservice/libcameraservice_fuzzer/camera_service_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2021-02-12T17:34:36Z",
+      "side": 1,
+      "message": "LGTM",
+      "parentUuid": "ce4fd930_048e56f1",
+      "range": {
+        "startLine": 107,
+        "startChar": 4,
+        "endLine": 107,
+        "endChar": 8
+      },
+      "revId": "6d59cc189efe22fa139148cdf305f9590807fc4c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3284cea7_bc50ad9f",
