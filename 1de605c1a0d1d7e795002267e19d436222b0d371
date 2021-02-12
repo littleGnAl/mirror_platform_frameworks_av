@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5207f28_3610fc3d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-12T04:48:58Z",
+      "side": 1,
+      "message": "i tried this earlier today... didn\u0027t run for me.\nalthough I did have a lot of other stuff going on within my tree, so it could have been me.",
+      "revId": "1de605c1a0d1d7e795002267e19d436222b0d371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a39b5ca6_b351b00c",
+        "filename": "media/libmediaplayerservice/tests/stagefrightRecorder/AndroidTest.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-12T04:48:58Z",
+      "side": 1,
+      "message": "do we really need this?\nit means this will not run on a production/user build.",
+      "range": {
+        "startLine": 19,
+        "startChar": 6,
+        "endLine": 19,
+        "endChar": 49
+      },
+      "revId": "1de605c1a0d1d7e795002267e19d436222b0d371",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
