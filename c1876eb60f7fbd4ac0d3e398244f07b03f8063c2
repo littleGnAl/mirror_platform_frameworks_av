@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "32a8e8af_876054bf",
+        "filename": "media/codec2/sfplugin/tests/CCodecBuffers_test.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 137,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-02-12T08:07:33Z",
+      "side": 1,
+      "message": "Added TODO",
+      "parentUuid": "87e55fcf_27551bf7",
+      "range": {
+        "startLine": 136,
+        "startChar": 24,
+        "endLine": 137,
+        "endChar": 73
+      },
+      "revId": "c1876eb60f7fbd4ac0d3e398244f07b03f8063c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6f91855b_eac386e5",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-12T00:26:50Z",
       "side": 1,
       "message": "is this for vendor-specific formats to be supported in ByteBuffer mode?",
+      "range": {
+        "startLine": 742,
+        "startChar": 12,
+        "endLine": 742,
+        "endChar": 55
+      },
+      "revId": "c1876eb60f7fbd4ac0d3e398244f07b03f8063c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c4393fb8_0822e2df",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-02-12T08:07:33Z",
+      "side": 1,
+      "message": "Yes, added a comment.",
+      "parentUuid": "6f91855b_eac386e5",
       "range": {
         "startLine": 742,
         "startChar": 12,
