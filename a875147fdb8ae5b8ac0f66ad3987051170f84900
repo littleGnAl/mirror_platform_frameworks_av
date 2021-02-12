@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c56beed_b050e211",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-02-12T19:32:17Z",
+      "side": 1,
+      "message": "is it safe to hold sp inside listener? Maybe change to wp?",
+      "revId": "a875147fdb8ae5b8ac0f66ad3987051170f84900",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
