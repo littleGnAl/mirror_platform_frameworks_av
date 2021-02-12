@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c0a1717_27422902",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 937,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-12T00:44:41Z",
+      "side": 1,
+      "message": "do we need to select a compatible flex format here? E.g. if app asks for COLOR_FormatYUV420Planar, we would want to only use a flex format that is planar, and if there is none, do a copy into YUV420Planar.",
+      "range": {
+        "startLine": 937,
+        "startChar": 0,
+        "endLine": 937,
+        "endChar": 86
+      },
+      "revId": "37b556cfa03d4a3b72e24030e6bf514d38faaa7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cdd53baf_5a27179d",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2061,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-12T00:44:41Z",
+      "side": 1,
+      "message": "is this an unrelated fix?",
+      "range": {
+        "startLine": 2061,
+        "startChar": 60,
+        "endLine": 2061,
+        "endChar": 65
+      },
+      "revId": "37b556cfa03d4a3b72e24030e6bf514d38faaa7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c66b4b9e_aca0ea85",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 445,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-12T00:44:41Z",
+      "side": 1,
+      "message": "are these meaningful? It seems some are still passthrough...",
+      "range": {
+        "startLine": 445,
+        "startChar": 24,
+        "endLine": 445,
+        "endChar": 29
+      },
+      "revId": "37b556cfa03d4a3b72e24030e6bf514d38faaa7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e2d2e75_06760122",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-12T00:44:41Z",
+      "side": 1,
+      "message": "Same here",
+      "range": {
+        "startLine": 470,
+        "startChar": 24,
+        "endLine": 470,
+        "endChar": 29
+      },
+      "revId": "37b556cfa03d4a3b72e24030e6bf514d38faaa7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e76c599b_7016ba3d",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-12T00:44:41Z",
+      "side": 1,
+      "message": "what happens if colInc or rowInc are negative? We cannot wrap those to MediaImage AFAIK. Is this for copied, basically saying that for wrapping we have verified these to be exactly what is wrapped?\n\nDo we verify rowInc \u003e 0 for wrapping?\n\nPerhaps some comments are warranted on why is happening here especially since this is for Image type unknown.",
+      "range": {
+        "startLine": 490,
+        "startChar": 52,
+        "endLine": 490,
+        "endChar": 74
+      },
+      "revId": "37b556cfa03d4a3b72e24030e6bf514d38faaa7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
