@@ -16,6 +16,190 @@
       "message": "Ray,\nLatest patchset contains the changes suggested in setHDRStaticInfoIntoFormat and getHDRStaticInfoIntoFormat.\n\nCan you please take another look?\nThanks. ",
       "revId": "80fd9ae5963ec5ea66633227b332065c76407286",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5331212c_fe291014",
+        "filename": "media/libstagefright/foundation/ColorUtils.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 826,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-13T01:14:24Z",
+      "side": 1,
+      "message": "feels like this should be\n} else if (info.mID \u003d\u003d HDRStaticInfo::kType1) {\n\nand then a final bit down below (see next comment)",
+      "range": {
+        "startLine": 826,
+        "startChar": 2,
+        "endLine": 826,
+        "endChar": 12
+      },
+      "revId": "80fd9ae5963ec5ea66633227b332065c76407286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "74146ad4_313cdca3",
+        "filename": "media/libstagefright/foundation/ColorUtils.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 875,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-13T01:14:24Z",
+      "side": 1,
+      "message": "seems like this should be:\n} else {\n   ALOGI(\"ignoring unsupported hdr-static-info format %d\", info.mID);\n}",
+      "range": {
+        "startLine": 875,
+        "startChar": 2,
+        "endLine": 875,
+        "endChar": 5
+      },
+      "revId": "80fd9ae5963ec5ea66633227b332065c76407286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bdf0d922_68901ae0",
+        "filename": "media/libstagefright/foundation/ColorUtils.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 884,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-13T01:14:24Z",
+      "side": 1,
+      "message": "i would rather see this use the versions defined in foundation/ByteUtils.h -- both the one\nwe\u0027re adding and the one that is already in place.\n\n\nwe can (separately is fine) improve the speed by moving the implementation from the ByteUtils.cpp into an appropriately inlined version in ByteUtils.h",
+      "range": {
+        "startLine": 878,
+        "startChar": 0,
+        "endLine": 884,
+        "endChar": 1
+      },
+      "revId": "80fd9ae5963ec5ea66633227b332065c76407286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17c26959_97c2cc40",
+        "filename": "media/libstagefright/foundation/ColorUtils.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 898,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-13T01:14:24Z",
+      "side": 1,
+      "message": "drop this; see how i\u0027ve folded it into the chained if/elseif/else sequence.\n\nNote that as currently coded, this would try to unpack a \"type 2 record that is only type1 size\".",
+      "range": {
+        "startLine": 893,
+        "startChar": 4,
+        "endLine": 898,
+        "endChar": 5
+      },
+      "revId": "80fd9ae5963ec5ea66633227b332065c76407286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1f123918_d8821d5c",
+        "filename": "media/libstagefright/foundation/ColorUtils.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 905,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-13T01:14:24Z",
+      "side": 1,
+      "message": "drop this in favor of how i\u0027ve restructured the if/elseif/else",
+      "range": {
+        "startLine": 901,
+        "startChar": 4,
+        "endLine": 905,
+        "endChar": 0
+      },
+      "revId": "80fd9ae5963ec5ea66633227b332065c76407286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb3475f1_3ad47a80",
+        "filename": "media/libstagefright/foundation/ColorUtils.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 906,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-13T01:14:24Z",
+      "side": 1,
+      "message": "if (*data \u003d\u003d type2 \u0026\u0026 buf-\u003esize \u003d\u003d kHdr...type2_size) {",
+      "range": {
+        "startLine": 906,
+        "startChar": 7,
+        "endLine": 906,
+        "endChar": 41
+      },
+      "revId": "80fd9ae5963ec5ea66633227b332065c76407286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc83b8eb_e915637b",
+        "filename": "media/libstagefright/foundation/ColorUtils.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 969,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-13T01:14:24Z",
+      "side": 1,
+      "message": "} else if (*data \u003d\u003d type1 \u0026\u0026 buf-\u003esize \u003d\u003d kHdr...type1_size) {",
+      "range": {
+        "startLine": 969,
+        "startChar": 3,
+        "endLine": 969,
+        "endChar": 12
+      },
+      "revId": "80fd9ae5963ec5ea66633227b332065c76407286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d912f4d0_e8fb8978",
+        "filename": "media/libstagefright/foundation/ColorUtils.cpp",
+        "patchSetId": 38
+      },
+      "lineNbr": 995,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-13T01:14:24Z",
+      "side": 1,
+      "message": "} else {\n   ALOGW (\"unsupported static metadatatype %d and size %d\", *data, buf-\u003esize);\n}",
+      "range": {
+        "startLine": 995,
+        "startChar": 2,
+        "endLine": 995,
+        "endChar": 5
+      },
+      "revId": "80fd9ae5963ec5ea66633227b332065c76407286",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
