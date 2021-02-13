@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008153859",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/952481?revision\u003d19",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "be995b28_6a6281e6",
+        "filename": "media/libmediaplayerservice/nuplayer/RTPSource.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-13T17:58:45Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027complex\u0027, \u0027unexpected\u0027, or \u0027placeholder\u0027; see https://developers.google.com/style/inclusive-documentation#ableist-language for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 165,
+        "startChar": 17,
+        "endLine": 165,
+        "endChar": 22
+      },
+      "revId": "dcd1f5f9273e5d95d2c5fd71e150dc46ff242dd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008153859",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/952481?revision\u003d19",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "8da98275_eba5ee71",
+        "filename": "media/libmediaplayerservice/nuplayer/RTPSource.cpp",
+        "patchSetId": 19
+      },
+      "lineNbr": 166,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-13T17:58:45Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027complex\u0027, \u0027unexpected\u0027, or \u0027placeholder\u0027; see https://developers.google.com/style/inclusive-documentation#ableist-language for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 166,
+        "startChar": 31,
+        "endLine": 166,
+        "endChar": 36
+      },
+      "revId": "dcd1f5f9273e5d95d2c5fd71e150dc46ff242dd4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
