@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008155218",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/952492?revision\u003d18",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "1a5f8692_f1260a63",
+        "filename": "media/libstagefright/rtsp/ARTPSource.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-13T21:22:26Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 266,
+        "startChar": 0,
+        "endLine": 266,
+        "endChar": 118
+      },
+      "revId": "266719d5b97c19cda84445166e73f9a58686da41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008155217",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/952492?revision\u003d18",
+      "fixSuggestions": [
+        {
+          "fixId": "5b2b7c73_65969266",
+          "description": "Change to \"media/libstagefright/rtsp/ARTPSource.cpp\"",
+          "replacements": [
+            {
+              "path": "media/libstagefright/rtsp/ARTPSource.cpp",
+              "range": {
+                "startLine": 324,
+                "startChar": 40,
+                "endLine": 324,
+                "endChar": 50
+              },
+              "replacement": "accommodate"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "758c2737_64e85c0d",
+        "filename": "media/libstagefright/rtsp/ARTPSource.cpp",
+        "patchSetId": 18
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-13T21:22:26Z",
+      "side": 1,
+      "message": "Common typo found: \"accomodate\" -- should it be \"accommodate\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 324,
+        "startChar": 40,
+        "endLine": 324,
+        "endChar": 50
+      },
+      "revId": "266719d5b97c19cda84445166e73f9a58686da41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
