@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e80634f3_c00677b8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 26
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-15T15:24:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c07ef4c_ea15fb17",
+      "range": {
+        "startLine": 9,
+        "startChar": 55,
+        "endLine": 9,
+        "endChar": 64
+      },
+      "revId": "823bac136c5d1d47bece26459e1e614ef3285c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f44255f_f5933506",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-09T09:56:03Z",
       "side": 1,
       "message": "add tests performed",
+      "range": {
+        "startLine": 16,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 5
+      },
+      "revId": "823bac136c5d1d47bece26459e1e614ef3285c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "189154c4_2e614fe0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 26
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-15T15:24:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f44255f_f5933506",
       "range": {
         "startLine": 16,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f37d53f3_7f376ff5",
+        "filename": "services/audiopolicy/engine/interface/EngineInterface.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 276,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-15T15:24:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "18218754_23e55cf6",
+      "range": {
+        "startLine": 275,
+        "startChar": 86,
+        "endLine": 276,
+        "endChar": 9
+      },
+      "revId": "823bac136c5d1d47bece26459e1e614ef3285c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "958c71e7_0e059517",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-02-09T09:56:03Z",
       "side": 1,
       "message": "more clear if written as:\n\nreturn (fallbackOnDefault \u0026\u0026 productStrategy \u003d\u003d PRODUCT_STRATEGY_NONE) ? BAD_VALUE :                      \n NO_ERROR;",
+      "range": {
+        "startLine": 338,
+        "startChar": 19,
+        "endLine": 339,
+        "endChar": 44
+      },
+      "revId": "823bac136c5d1d47bece26459e1e614ef3285c8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2ef3680_d825116f",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 26
+      },
+      "lineNbr": 339,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-15T15:24:56Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "958c71e7_0e059517",
       "range": {
         "startLine": 338,
         "startChar": 19,
