@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008166225",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1324398?revision\u003d9",
+      "fixSuggestions": [
+        {
+          "fixId": "e440eb6f_92a34c59",
+          "description": "Change to \"media/libstagefright/rtsp/ARTPSource.cpp\"",
+          "replacements": [
+            {
+              "path": "media/libstagefright/rtsp/ARTPSource.cpp",
+              "range": {
+                "startLine": 384,
+                "startChar": 40,
+                "endLine": 384,
+                "endChar": 50
+              },
+              "replacement": "accommodate"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "d66ed056_fc1f727f",
+        "filename": "media/libstagefright/rtsp/ARTPSource.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 384,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-15T01:34:44Z",
+      "side": 1,
+      "message": "Common typo found: \"accomodate\" -- should it be \"accommodate\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 384,
+        "startChar": 40,
+        "endLine": 384,
+        "endChar": 50
+      },
+      "revId": "4fa52ccc484222cadb8c21503f8935a3262d1139",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
