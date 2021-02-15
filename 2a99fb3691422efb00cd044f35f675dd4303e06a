@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008166248",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1324401?revision\u003d7",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "aed053ad_739cbf5c",
+        "filename": "media/libstagefright/HevcUtils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 380,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-15T01:34:46Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 380,
+        "startChar": 0,
+        "endLine": 380,
+        "endChar": 105
+      },
+      "revId": "2a99fb3691422efb00cd044f35f675dd4303e06a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
