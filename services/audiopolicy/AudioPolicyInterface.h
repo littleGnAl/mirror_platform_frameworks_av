@@ -82,6 +82,14 @@ public:
     //
     // configuration functions
     //
+    /**
+     * @brief onAudioDevicePortGainsChanged informs that audio device gains have
+     * been changed and gives the reason(s) why. (AF to APM)
+     * @param reasons one or more reasons
+     * @param gains affected by the change
+     */
+    virtual void onAudioDevicePortGainsChanged(
+            int reasons, const std::vector<audio_port_config>& gains) = 0;
 
     // Informs APM that new HAL modules are available. This typically happens
     // due to registration of an audio HAL service.
@@ -442,6 +450,15 @@ public:
     virtual void onAudioPatchListUpdate() = 0;
 
     virtual void onAudioVolumeGroupChanged(volume_group_t group, int flags) = 0;
+
+    /**
+     * @brief onAudioDevicePortGainsChanged informs that audio device gains have
+     * been changed and gives the reason(s) why. (APM to listeners)
+     * @param reasons one or more reasons
+     * @param gains affected by the change
+     */
+    virtual void onAudioDevicePortGainsChanged(
+            int reasons, const std::vector<audio_port_config>& gains) = 0;
 
     virtual audio_unique_id_t newAudioUniqueId(audio_unique_id_use_t use) = 0;
 
