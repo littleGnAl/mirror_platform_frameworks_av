@@ -657,6 +657,72 @@ static void copyOutputBufferToYuvPlanarFrame(
 
 }
 
+static void convertYUV420Planar16ToP010(
+        uint16_t *dstY, uint16_t *dstUV,
+        const uint16_t *srcY, const uint16_t *srcU, const uint16_t *srcV,
+        size_t srcYStride, size_t srcUStride, size_t srcVStride,
+        size_t dstYStride, size_t dstUVStride,
+        uint32_t width, uint32_t height) {
+
+    // Converting two lines at a time, slightly faster
+    for (size_t y = 0; y < height; y += 2) {
+        uint32_t *dstYTop = (uint32_t *) dstY;
+        uint32_t *dstYBot = (uint32_t *) (dstY + dstYStride);
+        uint16_t *ySrcTop = (uint16_t *) srcY;
+        uint16_t *ySrcBot = (uint16_t *) (srcY + srcYStride);
+
+        uint32_t y01, y23, y45, y67;
+        size_t x = 0;
+        for (; x < width - 3; x += 4) {
+            y01 = *((uint32_t*)ySrcTop); ySrcTop += 2;
+            y23 = *((uint32_t*)ySrcTop); ySrcTop += 2;
+            y45 = *((uint32_t*)ySrcBot); ySrcBot += 2;
+            y67 = *((uint32_t*)ySrcBot); ySrcBot += 2;
+
+            *dstYTop++ = ((y01 & 0x3FF) << 6) | ((y01 >> 16) & 0x3FF) << 22;
+            *dstYTop++ = ((y23 & 0x3FF) << 6) | ((y23 >> 16) & 0x3FF) << 22;
+            *dstYBot++ = ((y45 & 0x3FF) << 6) | ((y45 >> 16) & 0x3FF) << 22;
+            *dstYBot++ = ((y67 & 0x3FF) << 6) | ((y67 >> 16) & 0x3FF) << 22;
+        }
+
+        // There should be at most 2 more pixels to process. Note that we don't
+        // need to consider odd case as the buffer is always aligned to even.
+        if (x < width) {
+            y01 = *((uint32_t*)ySrcTop);
+            y45 = *((uint32_t*)ySrcBot);
+            *dstYTop++ = ((y01 & 0x3FF) << 6) | ((y01 >> 16) & 0x3FF) << 22;
+            *dstYBot++ = ((y45 & 0x3FF) << 6) | ((y45 >> 16) & 0x3FF) << 22;
+        }
+
+        srcY += srcYStride * 2;
+        dstY += dstYStride * 2;
+    }
+
+    for (size_t y = 0; y < height >> 1; y++) {
+        uint16_t *uSrc = (uint16_t *) srcU;
+        uint16_t *vSrc = (uint16_t *) srcV;
+        uint32_t *dst = (uint32_t *) dstUV;
+        uint32_t u01, v01;
+        size_t x = 0;
+        for (; x < width - 3; x += 4) {
+            u01 = *((uint32_t*)uSrc); uSrc += 2;
+            v01 = *((uint32_t*)vSrc); vSrc += 2;
+
+            *dst++ = ((u01 & 0x3FF) << 6) | ((v01 & 0x3FF) << 22);
+            *dst++ = (((u01 >> 16) & 0x3FF) << 6) | (((v01 >> 16) & 0x3FF) << 22);
+        }
+        if (x < width) {
+            u01 = *uSrc;
+            v01 = *vSrc;
+            *dst++ = ((u01 & 0x3FF) << 6) | ((v01 & 0x3FF) << 22);
+        }
+
+        srcU += srcUStride;
+        srcV += srcVStride;
+        dstUV += dstUVStride;
+    }
+}
+
 static void convertYUV420Planar16ToY410(uint32_t *dst,
         const uint16_t *srcY, const uint16_t *srcU, const uint16_t *srcV,
         size_t srcYStride, size_t srcUStride, size_t srcVStride,
@@ -859,6 +925,11 @@ status_t C2SoftVpxDec::outputBuffer(
                 queue->cond.signal();
                 queue.waitForCondition(queue->cond);
             }
+        } else if (format == HAL_PIXEL_FORMAT_YCBCR_P010) {
+            convertYUV420Planar16ToP010((uint16_t *)dstY, (uint16_t *)dstU, srcY, srcU, srcV,
+                                        srcYStride / 2, srcUStride / 2, srcVStride / 2,
+                                        dstYStride / sizeof(uint16_t), dstUVStride / sizeof(uint16_t),
+                                        mWidth, mHeight);
         } else {
             convertYUV420Planar16ToYUV420Planar(dstY, dstU, dstV,
                                                 srcY, srcU, srcV,
