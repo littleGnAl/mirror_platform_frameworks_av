@@ -43,12 +43,29 @@ public:
     AudioHwDevice(audio_module_handle_t handle,
                   const char *moduleName,
                   sp<DeviceHalInterface> hwDevice,
+                  const sp<DeviceHalInterfaceAudioGainCallback> &callback,
                   Flags flags)
         : mHandle(handle)
         , mModuleName(strdup(moduleName))
         , mHwDevice(hwDevice)
-        , mFlags(flags) { }
-    virtual ~AudioHwDevice() { free((void *)mModuleName); }
+        , mCallback(callback)
+        , mFlags(flags)
+    {
+        status_t ret = mHwDevice->registerAudioGainCallback(callback);
+        if (ret != NO_ERROR) {
+            ALOGE("AudioHwDevice() failed to register AGC (ret=%d) on module %s", ret, moduleName);
+        }
+    }
+    virtual ~AudioHwDevice() {
+        sp<DeviceHalInterfaceAudioGainCallback> callback = mCallback.promote();
+        if (callback != nullptr) {
+            status_t ret = mHwDevice->unregisterAudioGainCallback(callback);
+            if (ret != NO_ERROR) {
+                ALOGE("%s failed to unregister AGC (ret=%d) from module %s", __func__, ret, mModuleName);
+            }
+        }
+        free((void *)mModuleName);
+    }
 
     bool canSetMasterVolume() const {
         return (0 != (mFlags & AHWD_CAN_SET_MASTER_VOLUME));
@@ -87,6 +104,7 @@ private:
     const audio_module_handle_t mHandle;
     const char * const          mModuleName;
     sp<DeviceHalInterface>      mHwDevice;
+    wp<DeviceHalInterfaceAudioGainCallback> mCallback = nullptr;
     const Flags                 mFlags;
 };
 

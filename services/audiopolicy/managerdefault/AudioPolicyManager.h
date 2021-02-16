@@ -908,6 +908,9 @@ private:
         }
         void onNewAudioModulesAvailableInt(DeviceVector *newDevices);
 
+        void onAudioDevicePortGainsChanged(
+                int reasons, const std::vector<audio_port_config>& gains);
+
         // Add or remove AC3 DTS encodings based on user preferences.
         void modifySurroundFormats(const sp<DeviceDescriptor>& devDesc, FormatVector *formatsPtr);
         void modifySurroundChannelMasks(ChannelMaskSet *channelMasksPtr);

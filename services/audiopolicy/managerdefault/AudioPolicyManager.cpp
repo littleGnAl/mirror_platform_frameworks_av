@@ -4744,6 +4744,12 @@ status_t AudioPolicyManager::initCheck()
 }
 
 // ---
+void AudioPolicyManager::onAudioDevicePortGainsChanged(
+        int reasons, const std::vector<audio_port_config>& gains)
+{
+    // take a chance to do something...
+    mpClientInterface->onAudioDevicePortGainsChanged(reasons, gains);
+}
 
 void AudioPolicyManager::onNewAudioModulesAvailable()
 {
