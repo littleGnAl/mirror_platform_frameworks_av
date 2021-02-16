@@ -237,6 +237,14 @@ void AudioPolicyService::AudioPolicyClient::onAudioVolumeGroupChanged(volume_gro
     mAudioPolicyService->onAudioVolumeGroupChanged(group, flags);
 }
 
+
+void AudioPolicyService::AudioPolicyClient::onAudioDevicePortGainsChanged(
+        int reasons, const std::vector<audio_port_config>& gains)
+{
+    mAudioPolicyService->notifyOnAudioDevicePortGainsChanged(reasons, gains);
+}
+
+
 audio_unique_id_t AudioPolicyService::AudioPolicyClient::newAudioUniqueId(audio_unique_id_use_t use)
 {
     return AudioSystem::newAudioUniqueId(use);
