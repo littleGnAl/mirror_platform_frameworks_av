@@ -217,6 +217,8 @@ public:
     //
     // IAudioPolicyService interface (see AudioPolicyInterface for method descriptions)
     //
+    static void onAudioDevicePortGainsChanged(
+            int reasons, const std::vector<audio_port_config>& gains);
     static void onNewAudioModulesAvailable();
     static status_t setDeviceConnectionState(audio_devices_t device, audio_policy_dev_state_t state,
                                              const char *device_address, const char *device_name,
@@ -474,9 +476,9 @@ public:
         AudioVolumeGroupCallback() {}
         virtual ~AudioVolumeGroupCallback() {}
 
+        virtual void onAudioDevicePortGainsChanged(
+                int reasons, const std::vector<audio_port_config>& gains) = 0;
         virtual void onAudioVolumeGroupChanged(volume_group_t group, int flags) = 0;
-        virtual void onServiceDied() = 0;
-
     };
 
     static status_t addAudioVolumeGroupCallback(const sp<AudioVolumeGroupCallback>& callback);
@@ -589,6 +591,8 @@ private:
         virtual void onAudioPortListUpdate();
         virtual void onAudioPatchListUpdate();
         virtual void onAudioVolumeGroupChanged(volume_group_t group, int flags);
+                void onAudioDevicePortGainsChanged(
+                int reasons, const std::vector<audio_port_config>& gains) override;
         virtual void onDynamicPolicyMixStateUpdate(String8 regId, int32_t state);
         virtual void onRecordingConfigurationUpdate(int event,
                                                     const record_client_info_t *clientInfo,
