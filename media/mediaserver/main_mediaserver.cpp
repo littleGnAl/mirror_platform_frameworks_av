@@ -36,8 +36,8 @@ int main(int argc __unused, char **argv __unused)
 {
     signal(SIGPIPE, SIG_IGN);
 
-    sp<ProcessState> proc(ProcessState::self());
-    sp<IServiceManager> sm(defaultServiceManager());
+    sp<ProcessState> proc(ProcessState::self()); //初始化ProcessState, 申请1M内存大小与binder驱动交互，默认最多可创建15个线程
+    sp<IServiceManager> sm(defaultServiceManager()); //获取serviceManager
     ALOGI("ServiceManager: %p", sm.get());
     AIcu_initializeIcuOrDie();
     MediaPlayerService::instantiate();
