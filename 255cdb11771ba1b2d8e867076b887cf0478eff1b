@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008215353",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1590912?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "4682f539_37c9f38a",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3937,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-17T09:27:41Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 3937,
+        "startChar": 0,
+        "endLine": 3937,
+        "endChar": 101
+      },
+      "revId": "255cdb11771ba1b2d8e867076b887cf0478eff1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008215353",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1590912?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "cfde2e0a_3d9eeda9",
+        "filename": "services/audioflinger/AudioHwDevice.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-17T09:27:41Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 64,
+        "startChar": 0,
+        "endLine": 64,
+        "endChar": 105
+      },
+      "revId": "255cdb11771ba1b2d8e867076b887cf0478eff1b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
