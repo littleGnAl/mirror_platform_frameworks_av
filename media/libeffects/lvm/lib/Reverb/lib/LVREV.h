@@ -188,6 +188,22 @@ LVREV_ReturnStatus_en LVREV_GetMemoryTable(LVREV_Handle_t hInstance,
 LVREV_ReturnStatus_en LVREV_GetInstanceHandle(LVREV_Handle_t* phInstance,
                                               LVREV_MemoryTable_st* pMemoryTable,
                                               LVREV_InstanceParams_st* pInstanceParams);
+/****************************************************************************************/
+/*                                                                                      */
+/* FUNCTION:                LVREV_FreeInstance                                          */
+/*                                                                                      */
+/* DESCRIPTION:                                                                         */
+/*  This function is used to free the internal allocations of the module.               */
+/*                                                                                      */
+/* PARAMETERS:                                                                          */
+/*  hInstance               Instance handle                                             */
+/*                                                                                      */
+/* RETURNS:                                                                             */
+/*  LVREV_SUCCESS          free instance succeeded                                      */
+/*  LVREV_NULLADDRESS      Instance is NULL                                             */
+/*                                                                                      */
+/****************************************************************************************/
+LVREV_ReturnStatus_en LVREV_FreeInstance(LVREV_Handle_t hInstance);
 
 /****************************************************************************************/
 /*                                                                                      */
