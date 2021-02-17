@@ -16,6 +16,69 @@
       "message": "Hello.\nCould you please have a look on my CL?\nThanks.",
       "revId": "c3906b6aba74395bf5ca01c520d9853f416383d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "00c88201_bbcac591",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-02-17T17:26:12Z",
+      "side": 1,
+      "message": "Hayden wrote this camera checking code. I would suggest him as the best reviewer for it.",
+      "revId": "c3906b6aba74395bf5ca01c520d9853f416383d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f6a46b0_497500d0",
+        "filename": "media/libmediaplayerservice/MediaRecorderClient.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-02-17T17:26:12Z",
+      "side": 1,
+      "message": "I would prefer using canonical CameraUtils::isCameraServiceDisabled code for checking this condition.",
+      "range": {
+        "startLine": 424,
+        "startChar": 33,
+        "endLine": 425,
+        "endChar": 51
+      },
+      "revId": "c3906b6aba74395bf5ca01c520d9853f416383d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "202f16b6_f829fe15",
+        "filename": "media/libmediaplayerservice/MediaRecorderClient.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 431,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-02-17T17:26:12Z",
+      "side": 1,
+      "message": "Can we get rid of this flag and associated check? Having 3 boolean flags for managing presence of camera seems a bit excessive.",
+      "range": {
+        "startLine": 431,
+        "startChar": 8,
+        "endLine": 431,
+        "endChar": 55
+      },
+      "revId": "c3906b6aba74395bf5ca01c520d9853f416383d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
