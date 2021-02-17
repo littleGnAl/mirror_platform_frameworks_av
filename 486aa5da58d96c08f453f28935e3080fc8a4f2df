@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69cc6e51_0f97f73e",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 343,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-17T20:29:49Z",
+      "side": 1,
+      "message": "nit: note we do have right() and bottom()",
+      "range": {
+        "startLine": 343,
+        "startChar": 37,
+        "endLine": 343,
+        "endChar": 57
+      },
+      "revId": "486aa5da58d96c08f453f28935e3080fc8a4f2df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
