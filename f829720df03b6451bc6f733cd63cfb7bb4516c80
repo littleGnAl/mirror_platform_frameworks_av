@@ -68,6 +68,30 @@
       },
       "revId": "f829720df03b6451bc6f733cd63cfb7bb4516c80",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69d6453d_9078beb8",
+        "filename": "services/audioflinger/AudioHwDevice.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-02-17T16:17:16Z",
+      "side": 1,
+      "message": "yes, it is option, will change the log by warn or debug, and change by no agc avail on module.",
+      "parentUuid": "c3265a31_ff104596",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 99
+      },
+      "revId": "f829720df03b6451bc6f733cd63cfb7bb4516c80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
