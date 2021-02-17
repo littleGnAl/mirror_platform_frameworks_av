@@ -16,6 +16,24 @@
       "message": "Francois,\n\nCan you rebase the audio gain callback topic on top os master so that we can review and merge it independently of the volume refactoring CLs?\n",
       "revId": "933c6b5bcb707635e739d9c72770cb9c2896eba8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f377f637_2cc470f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-02-17T14:50:45Z",
+      "side": 1,
+      "message": "Sure.\nThere is still an open: AudioHAL -\u003e AudioFlinger, then AudioFlinger -\u003e APM.\nTo notify clients, I give a chance to APM to handle the event before broadcasting or I can dispatch to APM and listener directly when AudioFlinger notifies.\n\nI would simplify the design.\n\nAnother point, currently limited to portId / index but the information reported to JAVA layer could be extended.",
+      "parentUuid": "90958c26_30b9c463",
+      "revId": "933c6b5bcb707635e739d9c72770cb9c2896eba8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
