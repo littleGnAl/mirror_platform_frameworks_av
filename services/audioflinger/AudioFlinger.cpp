@@ -214,6 +214,9 @@ AudioFlinger::AudioFlinger()
     mDevicesFactoryHal->getHalPids(&halPids);
     TimeCheck::setAudioHalPids(halPids);
 
+    mDeviceHalInterfaceAudioGainCallbackClient =
+            new DeviceHalInterfaceAudioGainCallbackClient(this);
+
     // Notify that we have started (also called when audioserver service restarts)
     mediametrics::LogItem(mMetricsId)
         .set(AMEDIAMETRICS_PROP_EVENT, AMEDIAMETRICS_PROP_EVENT_VALUE_CTOR)
@@ -2174,7 +2177,8 @@ audio_module_handle_t AudioFlinger::loadHwModule_l(const char *name)
     }
 
     audio_module_handle_t handle = (audio_module_handle_t) nextUniqueId(AUDIO_UNIQUE_ID_USE_MODULE);
-    AudioHwDevice *audioDevice = new AudioHwDevice(handle, name, dev, flags);
+    AudioHwDevice *audioDevice = new AudioHwDevice(
+                handle, name, dev, mDeviceHalInterfaceAudioGainCallbackClient, flags);
     if (strcmp(name, AUDIO_HARDWARE_MODULE_ID_PRIMARY) == 0) {
         mPrimaryHardwareDev = audioDevice;
         mHardwareStatus = AUDIO_HW_SET_MODE;
@@ -3919,6 +3923,20 @@ status_t AudioFlinger::onTransact(
         uint32_t code, const Parcel& data, Parcel* reply, uint32_t flags)
 {
     return BnAudioFlinger::onTransact(code, data, reply, flags);
+}
+
+
+// ----------------------------------------------------------------------------
+
+void AudioFlinger::DeviceHalInterfaceAudioGainCallbackClient::onChanged(
+        uint32_t reasons, const std::vector<audio_port_config>& gains) {
+    Mutex::Autolock _l(mAudioFlinger->mLock);
+    AutoMutex lock(mAudioFlinger->mHardwareLock);
+
+    std::thread notifier([reasons, gains]() {
+        AudioSystem::onAudioDevicePortGainsChanged(reasons, gains);
+    });
+    notifier.detach();
 }
 
 } // namespace android

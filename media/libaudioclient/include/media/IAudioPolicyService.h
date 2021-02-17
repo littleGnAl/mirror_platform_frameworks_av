@@ -47,6 +47,8 @@ public:
     //
     // IAudioPolicyService interface (see AudioPolicyInterface for method descriptions)
     //
+    virtual void onAudioDevicePortGainsChanged(
+            int reasons, const std::vector<audio_port_config>& gains) = 0;
     virtual void onNewAudioModulesAvailable() = 0;
     virtual status_t setDeviceConnectionState(audio_devices_t device,
                                               audio_policy_dev_state_t state,

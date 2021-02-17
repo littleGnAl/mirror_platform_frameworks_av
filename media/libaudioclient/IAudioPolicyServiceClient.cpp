@@ -33,6 +33,7 @@ enum {
     MIX_STATE_UPDATE,
     RECORDING_CONFIGURATION_UPDATE,
     VOLUME_GROUP_CHANGED,
+    DEVICE_PORT_GAINS_CHANGED,
 };
 
 // ----------------------------------------------------------------------
@@ -47,6 +48,41 @@ inline void writeAudioConfigBaseToParcel(Parcel& data, const audio_config_base_t
     data.writeUint32(config->sample_rate);
     data.writeInt32((int32_t) config->channel_mask);
     data.writeInt32((int32_t) config->format);
+}
+
+inline void writeAudioDevicePortConfigsToParcel(
+        Parcel &data, const std::vector<audio_port_config>& portConfigs) {
+    data.writeUint32((uint32_t) portConfigs.size());
+    for (const auto& portConfig : portConfigs) {
+        data.writeInt32((int32_t) portConfig.id);
+        data.writeInt32((int32_t) portConfig.role);
+        data.writeInt32((int32_t) portConfig.type);
+        data.writeUint32(portConfig.config_mask);
+        data.writeUint32(portConfig.sample_rate);
+        data.writeInt32((int32_t) portConfig.channel_mask);
+        data.writeInt32(portConfig.gain.index);
+        data.writeInt32((int32_t) portConfig.gain.mode);
+        data.writeInt32((int32_t) portConfig.gain.channel_mask);
+    }
+}
+
+inline void readAudioDevicePortConfigsFromParcel(
+        const Parcel& data, std::vector<audio_port_config>& portConfigs) {
+    int32_t numPortConfigs = data.readInt32();
+    for (int32_t i = 0; i < numPortConfigs; i++) {
+        audio_port_config portConfig;
+        portConfig.id = static_cast<audio_port_handle_t>(data.readInt32());
+        portConfig.role = static_cast<audio_port_role_t>(data.readInt32());
+        portConfig.type = static_cast<audio_port_type_t>(data.readInt32());
+        portConfig.config_mask = data.readUint32();
+        portConfig.sample_rate = data.readUint32();
+        portConfig.channel_mask = static_cast<audio_channel_mask_t>(data.readInt32());
+        portConfig.gain.index = data.readInt32();
+        portConfig.gain.mode = static_cast<audio_gain_mode_t>(data.readInt32());
+        portConfig.gain.channel_mask = static_cast<audio_channel_mask_t>(data.readInt32());
+
+        portConfigs.push_back(portConfig);
+    }
 }
 
 inline void readRecordClientInfoFromParcel(const Parcel& data, record_client_info_t *clientInfo) {
@@ -120,6 +156,16 @@ public:
         remote()->transact(VOLUME_GROUP_CHANGED, data, &reply, IBinder::FLAG_ONEWAY);
     }
 
+    void onAudioDevicePortGainsChanged(
+            int reasons, const std::vector<audio_port_config>& gains)
+    {
+        Parcel data, reply;
+        data.writeInterfaceToken(IAudioPolicyServiceClient::getInterfaceDescriptor());
+        data.writeInt32(reasons);
+        writeAudioDevicePortConfigsToParcel(data, gains);
+        remote()->transact(DEVICE_PORT_GAINS_CHANGED, data, &reply, IBinder::FLAG_ONEWAY);
+    }
+
     void onDynamicPolicyMixStateUpdate(String8 regId, int32_t state)
     {
         Parcel data, reply;
@@ -174,6 +220,14 @@ status_t BnAudioPolicyServiceClient::onTransact(
             volume_group_t group = static_cast<volume_group_t>(data.readUint32());
             int flags = data.readInt32();
             onAudioVolumeGroupChanged(group, flags);
+            return NO_ERROR;
+        } break;
+    case DEVICE_PORT_GAINS_CHANGED: {
+            CHECK_INTERFACE(IAudioPolicyServiceClient, data, reply);
+            int32_t reasons = data.readInt32();
+            std::vector<audio_port_config> portGains;
+            readAudioDevicePortConfigsFromParcel(data, portGains);
+            onAudioDevicePortGainsChanged(reasons, portGains);
             return NO_ERROR;
         } break;
     case MIX_STATE_UPDATE: {
