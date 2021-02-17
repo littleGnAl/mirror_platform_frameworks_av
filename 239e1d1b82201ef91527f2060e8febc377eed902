@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0d5db4d_51904a75",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 534,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-02-17T09:38:31Z",
+      "side": 1,
+      "message": "exact, hasSameHwModuleAs is a ditto of supportsPatch",
+      "parentUuid": "43f50b8b_cf83261a",
+      "range": {
+        "startLine": 534,
+        "startChar": 47,
+        "endLine": 534,
+        "endChar": 85
+      },
+      "revId": "239e1d1b82201ef91527f2060e8febc377eed902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f8f59ed3_affa2f4f",
@@ -85,6 +109,30 @@
       "writtenOn": "2021-02-08T14:04:18Z",
       "side": 1,
       "message": "this must be telephonyRxModule",
+      "range": {
+        "startLine": 537,
+        "startChar": 15,
+        "endLine": 537,
+        "endChar": 45
+      },
+      "revId": "239e1d1b82201ef91527f2060e8febc377eed902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "63b1f19e_1e563153",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 537,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-02-17T09:38:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f8f59ed3_affa2f4f",
       "range": {
         "startLine": 537,
         "startChar": 15,
@@ -156,6 +204,30 @@
       "side": 1,
       "message": "Actually I checked the implementation of getNewOutputDevices() and nothing checks that the selected devices is supported by the output profile.\nunsupported devices are later filtered out by setOutputDevices().",
       "parentUuid": "f0b6e631_3135a6b0",
+      "range": {
+        "startLine": 543,
+        "startChar": 29,
+        "endLine": 543,
+        "endChar": 71
+      },
+      "revId": "239e1d1b82201ef91527f2060e8febc377eed902",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdbed58d_62d7eecd",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 543,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-02-17T09:38:31Z",
+      "side": 1,
+      "message": "restoring \u0026 improving comment (shall we do the enforcement job to within getNewOutputDevices?)",
+      "parentUuid": "3a2320b3_6c119d9a",
       "range": {
         "startLine": 543,
         "startChar": 29,
