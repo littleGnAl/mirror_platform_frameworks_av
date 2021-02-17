@@ -1875,9 +1875,6 @@ void AudioSystem::AudioPolicyServiceClient::binderDied(const wp<IBinder>& who __
         for (size_t i = 0; i < mAudioPortCallbacks.size(); i++) {
             mAudioPortCallbacks[i]->onServiceDied();
         }
-        for (size_t i = 0; i < mAudioVolumeGroupCallback.size(); i++) {
-            mAudioVolumeGroupCallback[i]->onServiceDied();
-        }
     }
     {
         Mutex::Autolock _l(gLockAPS);
