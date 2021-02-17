@@ -16,6 +16,46 @@
       "message": "Lajos - can you or someone from your team review this CL? ",
       "revId": "6d8a0fb48240a561d81491300231e57427228fca",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8d73d333_f31f9b2b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-17T21:15:38Z",
+      "side": 1,
+      "message": "Thanks.",
+      "revId": "6d8a0fb48240a561d81491300231e57427228fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f240d44_0325d717",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6767,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-17T21:15:38Z",
+      "side": 1,
+      "message": "this should go inside of onAllocateComponent() as onSetup() also hits this issue.",
+      "range": {
+        "startLine": 6767,
+        "startChar": 0,
+        "endLine": 6767,
+        "endChar": 37
+      },
+      "revId": "6d8a0fb48240a561d81491300231e57427228fca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
