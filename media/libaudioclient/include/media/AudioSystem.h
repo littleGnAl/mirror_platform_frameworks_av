@@ -487,8 +487,6 @@ public:
         virtual ~AudioVolumeGroupCallback() {}
 
         virtual void onAudioVolumeGroupChanged(volume_group_t group, int flags) = 0;
-        virtual void onServiceDied() = 0;
-
     };
 
     static status_t addAudioVolumeGroupCallback(const sp<AudioVolumeGroupCallback>& callback);
