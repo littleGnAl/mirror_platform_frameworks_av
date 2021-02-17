@@ -73,6 +73,8 @@ public:
     void onAudioPortListUpdate() override { }
     void onAudioPatchListUpdate() override { }
     void onAudioVolumeGroupChanged(volume_group_t /*group*/, int /*flags*/) override { }
+    virtual void onAudioDevicePortGainsChanged(
+            int /*reasons*/, const std::vector<audio_port_config>& /*gains*/) override {}
     audio_unique_id_t newAudioUniqueId(audio_unique_id_use_t /*use*/) override { return 0; }
     void onDynamicPolicyMixStateUpdate(String8 /*regId*/, int32_t /*state*/) override { }
     void onRecordingConfigurationUpdate(int event __unused,

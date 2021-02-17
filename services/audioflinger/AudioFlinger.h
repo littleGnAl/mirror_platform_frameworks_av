@@ -949,7 +949,24 @@ public:
     bool    isLowRamDevice() const { return mIsLowRamDevice; }
     size_t getClientSharedHeapSize() const;
 
+    // --- Client ---
+    class DeviceHalInterfaceAudioGainCallbackClient :
+            public DeviceHalInterfaceAudioGainCallback {
+    public:
+        DeviceHalInterfaceAudioGainCallbackClient(const sp<AudioFlinger>& audioFlinger)
+            : mAudioFlinger(audioFlinger) {}
+        virtual ~DeviceHalInterfaceAudioGainCallbackClient() = default;
+        // from DeviceHalInterfaceAudioGainCallback
+        void onChanged(uint32_t reasons, const std::vector<audio_port_config>& gains) override;
+        sp<AudioFlinger>    audioFlinger() const { return mAudioFlinger; }
+
+    private:
+        const sp<AudioFlinger> mAudioFlinger;
+    };
+
 private:
+    sp<DeviceHalInterfaceAudioGainCallbackClient> mDeviceHalInterfaceAudioGainCallbackClient;
+
     std::atomic<bool> mIsLowRamDevice;
     bool    mIsDeviceTypeKnown;
     int64_t mTotalMemory;

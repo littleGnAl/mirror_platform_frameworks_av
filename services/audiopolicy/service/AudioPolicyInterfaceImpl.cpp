@@ -74,6 +74,15 @@ void AudioPolicyService::doOnNewAudioModulesAvailable()
     mAudioPolicyManager->onNewAudioModulesAvailable();
 }
 
+void AudioPolicyService::doOnAudioDevicePortGainsChanged(
+        int reasons, const std::vector<audio_port_config>& gains)
+{
+    if (mAudioPolicyManager == NULL) return;
+    Mutex::Autolock _l(mLock);
+    AutoCallerClear acc;
+    mAudioPolicyManager->onAudioDevicePortGainsChanged(reasons, gains);
+}
+
 status_t AudioPolicyService::setDeviceConnectionState(audio_devices_t device,
                                                   audio_policy_dev_state_t state,
                                                   const char *device_address,

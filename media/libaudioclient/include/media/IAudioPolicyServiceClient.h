@@ -50,6 +50,8 @@ public:
 
     // Notifies a change of volume group
     virtual void onAudioVolumeGroupChanged(volume_group_t group, int flags) = 0;
+    virtual void onAudioDevicePortGainsChanged(
+            int reasons, const std::vector<audio_port_config>& gains) = 0;
     // Notifies a change of audio port configuration.
     virtual void onAudioPortListUpdate() = 0;
     // Notifies a change of audio patch configuration.

@@ -809,6 +809,14 @@ void AudioSystem::onNewAudioModulesAvailable()
     aps->onNewAudioModulesAvailable();
 }
 
+void AudioSystem::onAudioDevicePortGainsChanged(
+        int reasons, const std::vector<audio_port_config>& gains)
+{
+    const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
+    if (aps == 0) return;
+    aps->onAudioDevicePortGainsChanged(reasons, gains);
+}
+
 status_t AudioSystem::setDeviceConnectionState(audio_devices_t device,
                                                audio_policy_dev_state_t state,
                                                const char *device_address,
@@ -1830,6 +1838,16 @@ void AudioSystem::AudioPolicyServiceClient::onAudioVolumeGroupChanged(volume_gro
         mAudioVolumeGroupCallback[i]->onAudioVolumeGroupChanged(group, flags);
     }
 }
+
+void AudioSystem::AudioPolicyServiceClient::onAudioDevicePortGainsChanged(
+        int reasons, const std::vector<audio_port_config>& gains)
+{
+    Mutex::Autolock _l(mLock);
+    for (size_t i = 0; i < mAudioVolumeGroupCallback.size(); i++) {
+        mAudioVolumeGroupCallback[i]->onAudioDevicePortGainsChanged(reasons, gains);
+    }
+}
+
 // ----------------------------------------------------------------------------
 
 void AudioSystem::AudioPolicyServiceClient::onDynamicPolicyMixStateUpdate(
