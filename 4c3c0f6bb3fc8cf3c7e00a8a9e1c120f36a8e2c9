@@ -1,0 +1,264 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008225648",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1500913?revision\u003d19",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "7003f9e6_259fbbe0",
+        "filename": "services/audiopolicy/engineconfigurable/config/example/phone/audio_policy_engine_product_strategies.xml",
+        "patchSetId": 19
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-17T18:18:20Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 123
+      },
+      "revId": "4c3c0f6bb3fc8cf3c7e00a8a9e1c120f36a8e2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008225648",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1500913?revision\u003d19",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "cb1d1fb0_e6d61b68",
+        "filename": "services/audiopolicy/engineconfigurable/config/example/phone/audio_policy_engine_product_strategies.xml",
+        "patchSetId": 19
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-17T18:18:20Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 118
+      },
+      "revId": "4c3c0f6bb3fc8cf3c7e00a8a9e1c120f36a8e2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008225648",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1500913?revision\u003d19",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "bab5e388_af29285c",
+        "filename": "services/audiopolicy/engineconfigurable/config/example/phone/audio_policy_engine_product_strategies.xml",
+        "patchSetId": 19
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-17T18:18:20Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 115
+      },
+      "revId": "4c3c0f6bb3fc8cf3c7e00a8a9e1c120f36a8e2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008225648",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1500913?revision\u003d19",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "f14cfbba_502bec0e",
+        "filename": "services/audiopolicy/engineconfigurable/config/example/phone/audio_policy_engine_product_strategies.xml",
+        "patchSetId": 19
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-17T18:18:20Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 110
+      },
+      "revId": "4c3c0f6bb3fc8cf3c7e00a8a9e1c120f36a8e2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008225648",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1500913?revision\u003d19",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "8b3accb1_87bbce58",
+        "filename": "services/audiopolicy/engineconfigurable/config/example/phone/audio_policy_engine_product_strategies.xml",
+        "patchSetId": 19
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-17T18:18:20Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 103
+      },
+      "revId": "4c3c0f6bb3fc8cf3c7e00a8a9e1c120f36a8e2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008225648",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1500913?revision\u003d19",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "526596bf_4f040942",
+        "filename": "services/audiopolicy/enginedefault/config/example/phone/audio_policy_engine_product_strategies.xml",
+        "patchSetId": 19
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-17T18:18:20Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 123
+      },
+      "revId": "4c3c0f6bb3fc8cf3c7e00a8a9e1c120f36a8e2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008225648",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1500913?revision\u003d19",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "8d3a5753_9a7feada",
+        "filename": "services/audiopolicy/enginedefault/config/example/phone/audio_policy_engine_product_strategies.xml",
+        "patchSetId": 19
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-17T18:18:20Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 52,
+        "startChar": 0,
+        "endLine": 52,
+        "endChar": 118
+      },
+      "revId": "4c3c0f6bb3fc8cf3c7e00a8a9e1c120f36a8e2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008225648",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1500913?revision\u003d19",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "6303151f_8b57fc57",
+        "filename": "services/audiopolicy/enginedefault/config/example/phone/audio_policy_engine_product_strategies.xml",
+        "patchSetId": 19
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-17T18:18:20Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 115
+      },
+      "revId": "4c3c0f6bb3fc8cf3c7e00a8a9e1c120f36a8e2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008225648",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1500913?revision\u003d19",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b8de348e_30ed30f1",
+        "filename": "services/audiopolicy/enginedefault/config/example/phone/audio_policy_engine_product_strategies.xml",
+        "patchSetId": 19
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-17T18:18:20Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 68,
+        "startChar": 0,
+        "endLine": 68,
+        "endChar": 110
+      },
+      "revId": "4c3c0f6bb3fc8cf3c7e00a8a9e1c120f36a8e2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008225648",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1500913?revision\u003d19",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "491042bc_3f68c7cd",
+        "filename": "services/audiopolicy/enginedefault/config/example/phone/audio_policy_engine_product_strategies.xml",
+        "patchSetId": 19
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-02-17T18:18:20Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 81,
+        "startChar": 0,
+        "endLine": 81,
+        "endChar": 103
+      },
+      "revId": "4c3c0f6bb3fc8cf3c7e00a8a9e1c120f36a8e2c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
