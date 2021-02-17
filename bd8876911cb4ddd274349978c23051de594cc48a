@@ -16,6 +16,23 @@
       "message": "This seems to be the first change now where treehugger tries to cherry pick to internal master and fails.",
       "revId": "bd8876911cb4ddd274349978c23051de594cc48a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "47920c62_0e2a0448",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-17T21:33:35Z",
+      "side": 1,
+      "message": "Lint errors are fixed up in the follow-up CL: https://android-review.googlesource.com/c/platform/frameworks/av/+/1587739/6",
+      "revId": "bd8876911cb4ddd274349978c23051de594cc48a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
