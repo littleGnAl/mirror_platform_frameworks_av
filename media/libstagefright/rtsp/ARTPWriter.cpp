@@ -135,7 +135,7 @@ ARTPWriter::ARTPWriter(int fd, String8& localIp, int localPort, String8& remoteI
     mSPSBuf = NULL;
     mPPSBuf = NULL;
 
-    initScalars();
+    initState();
     mSeqNo = seqNo;     // Must use explicit # of seq for RTP continuity
 
 #if LOG_TO_FILES
@@ -187,7 +187,7 @@ ARTPWriter::~ARTPWriter() {
     mFd = -1;
 }
 
-void ARTPWriter::initScalars() {
+void ARTPWriter::initState() {
     if (mSourceID == 0)
         mSourceID = rand();
     mPayloadType = 0;
@@ -227,7 +227,7 @@ status_t ARTPWriter::start(MetaData * params) {
     }
 
     mFlags &= ~kFlagEOS;
-    initScalars();
+    initState();
 
     const char *mime;
     CHECK(mSource->getFormat()->findCString(kKeyMIMEType, &mime));
