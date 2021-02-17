@@ -61,7 +61,8 @@ public:
     //
     // BnAudioPolicyService (see AudioPolicyInterface for method descriptions)
     //
-
+    void onAudioDevicePortGainsChanged(
+            int reasons, const std::vector<audio_port_config>& gains) override;
     void onNewAudioModulesAvailable() override;
     virtual status_t setDeviceConnectionState(audio_devices_t device,
                                               audio_policy_dev_state_t state,
@@ -346,6 +347,12 @@ public:
 
             void onAudioVolumeGroupChanged(volume_group_t group, int flags);
             void doOnAudioVolumeGroupChanged(volume_group_t group, int flags);
+            void doOnAudioDevicePortGainsChanged(
+                    int reasons, const std::vector<audio_port_config>& gains);
+            void notifyOnAudioDevicePortGainsChanged(
+                    int reasons, const std::vector<audio_port_config>& gains);
+            void doNotifyOnAudioDevicePortGainsChanged(
+                    int reasons, const std::vector<audio_port_config>& gains);
             void setEffectSuspended(int effectId,
                                     audio_session_t sessionId,
                                     bool suspended);
@@ -493,6 +500,8 @@ private:
             UPDATE_AUDIOPORT_LIST,
             UPDATE_AUDIOPATCH_LIST,
             CHANGED_AUDIOVOLUMEGROUP,
+            NOTIFY_AUDIO_DEVICE_PORT_GAINS_CHANGED,
+            AUDIO_DEVICE_PORT_GAINS_UPDATE,
             SET_AUDIOPORT_CONFIG,
             DYN_POLICY_MIX_STATE_UPDATE,
             RECORDING_CONFIGURATION_UPDATE,
@@ -527,6 +536,8 @@ private:
                     void        updateAudioPortListCommand();
                     void        updateAudioPatchListCommand();
                     void        changeAudioVolumeGroupCommand(volume_group_t group, int flags);
+                    void        notifyAudioDevicePortGainsChangedCommand(
+                            int reasons, const std::vector<audio_port_config>& gain);
                     status_t    setAudioPortConfigCommand(const struct audio_port_config *config,
                                                           int delayMs);
                     void        dynamicPolicyMixStateUpdateCommand(const String8& regId,
@@ -544,6 +555,8 @@ private:
                                                           audio_session_t sessionId,
                                                           bool suspended);
                     void        audioModulesUpdateCommand();
+                    void        audioDevicePortGainsUpdateCommand(
+                            int reasons, const std::vector<audio_port_config>& gains);
                     void        insertCommand_l(AudioCommand *command, int delayMs = 0);
     private:
         class AudioCommandData;
@@ -616,6 +629,12 @@ private:
         public:
             volume_group_t mGroup;
             int mFlags;
+        };
+
+        class AudioDevicePortGainsData : public AudioCommandData {
+        public:
+            uint32_t mReasons;
+            std::vector<audio_port_config> mPortGains;
         };
 
         class SetAudioPortConfigData : public AudioCommandData {
@@ -761,6 +780,8 @@ private:
                                                     audio_source_t source);
 
         virtual void onAudioVolumeGroupChanged(volume_group_t group, int flags);
+                void onAudioDevicePortGainsChanged(
+                        int reasons, const std::vector<audio_port_config>& gains) override;
 
         virtual audio_unique_id_t newAudioUniqueId(audio_unique_id_use_t use);
 
@@ -783,6 +804,8 @@ private:
                             void      onDynamicPolicyMixStateUpdate(const String8& regId,
                                                                     int32_t state);
                             void      onAudioVolumeGroupChanged(volume_group_t group, int flags);
+                            void      onAudioDevicePortGainsChanged(
+                                    int reasons, const std::vector<audio_port_config>& gains);
                             void      onRecordingConfigurationUpdate(
                                                     int event,
                                                     const record_client_info_t *clientInfo,

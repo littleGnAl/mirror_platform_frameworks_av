@@ -117,6 +117,7 @@ enum {
     GET_DEVICES_FOR_ROLE_AND_PRODUCT_STRATEGY,
     GET_DEVICES_FOR_ATTRIBUTES,
     AUDIO_MODULES_UPDATED,  // oneway
+    AUDIO_DEVICE_PORT_GAINS_UPDATED, // oneway
     SET_CURRENT_IME_UID,
     REGISTER_SOUNDTRIGGER_CAPTURE_STATE_LISTENER,
     SET_DEVICES_ROLE_FOR_CAPTURE_PRESET,
@@ -1546,6 +1547,27 @@ public:
         remote()->transact(AUDIO_MODULES_UPDATED, data, &reply, IBinder::FLAG_ONEWAY);
     }
 
+    virtual void onAudioDevicePortGainsChanged(
+            int reasons, const std::vector<audio_port_config>& gains)
+    {
+        Parcel data, reply;
+        data.writeInterfaceToken(IAudioPolicyService::getInterfaceDescriptor());
+        data.writeInt32(reasons);
+        data.writeUint32((uint32_t) gains.size());
+        for (const auto& portConfig : gains) {
+            data.writeInt32((int32_t) portConfig.id);
+            data.writeInt32((int32_t) portConfig.role);
+            data.writeInt32((int32_t) portConfig.type);
+            data.writeUint32(portConfig.config_mask);
+            data.writeUint32(portConfig.sample_rate);
+            data.writeInt32((int32_t) portConfig.channel_mask);
+            data.writeInt32(portConfig.gain.index);
+            data.writeInt32((int32_t) portConfig.gain.mode);
+            data.writeInt32((int32_t) portConfig.gain.channel_mask);
+        }
+        remote()->transact(AUDIO_DEVICE_PORT_GAINS_UPDATED, data, &reply, IBinder::FLAG_ONEWAY);
+    }
+
     status_t registerSoundTriggerCaptureStateListener(
             const sp<media::ICaptureStateListener>& listener,
             bool* result) override {
@@ -2791,6 +2813,30 @@ status_t BnAudioPolicyService::onTransact(
         case AUDIO_MODULES_UPDATED: {
             CHECK_INTERFACE(IAudioPolicyService, data, reply);
             onNewAudioModulesAvailable();
+            return NO_ERROR;
+        } break;
+
+
+        case AUDIO_DEVICE_PORT_GAINS_UPDATED: {
+            CHECK_INTERFACE(IAudioPolicyService, data, reply);
+            int32_t reasons = data.readInt32();
+            std::vector<audio_port_config> portGains;
+            int32_t numPortConfigs = data.readInt32();
+            for (int32_t i = 0; i < numPortConfigs; i++) {
+                audio_port_config portConfig;
+                portConfig.id = static_cast<audio_port_handle_t>(data.readInt32());
+                portConfig.role = static_cast<audio_port_role_t>(data.readInt32());
+                portConfig.type = static_cast<audio_port_type_t>(data.readInt32());
+                portConfig.config_mask = data.readUint32();
+                portConfig.sample_rate = data.readUint32();
+                portConfig.channel_mask = static_cast<audio_channel_mask_t>(data.readInt32());
+                portConfig.gain.index = data.readInt32();
+                portConfig.gain.mode = static_cast<audio_gain_mode_t>(data.readInt32());
+                portConfig.gain.channel_mask = static_cast<audio_channel_mask_t>(data.readInt32());
+
+                portGains.push_back(portConfig);
+            }
+            onAudioDevicePortGainsChanged(reasons, portGains);
             return NO_ERROR;
         } break;
 
