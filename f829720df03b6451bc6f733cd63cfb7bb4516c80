@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4d8d7fb_ef34df82",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-17T15:05:41Z",
+      "side": 1,
+      "message": "do not pass a sp to this in the constructor.\nbetter pass a raw pointer and store a reference in DeviceHalInterfaceAudioGainCallbackClient",
+      "range": {
+        "startLine": 218,
+        "startChar": 0,
+        "endLine": 218,
+        "endChar": 64
+      },
+      "revId": "f829720df03b6451bc6f733cd63cfb7bb4516c80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aac7767_b496a04c",
+        "filename": "services/audioflinger/AudioFlinger.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 953,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-17T15:05:41Z",
+      "side": 1,
+      "message": "prefer using a reference on AudioFlinger instead of a strong pointer to avoid circular sp references given the lifecycle of AudioFlinger is anyway including the life of this object",
+      "range": {
+        "startLine": 953,
+        "startChar": 7,
+        "endLine": 953,
+        "endChar": 44
+      },
+      "revId": "f829720df03b6451bc6f733cd63cfb7bb4516c80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c3265a31_ff104596",
+        "filename": "services/audioflinger/AudioHwDevice.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-17T15:05:41Z",
+      "side": 1,
+      "message": "isn\u0027t support for the AudiGainCallback optional in the HAL?",
+      "range": {
+        "startLine": 56,
+        "startChar": 0,
+        "endLine": 56,
+        "endChar": 99
+      },
+      "revId": "f829720df03b6451bc6f733cd63cfb7bb4516c80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
