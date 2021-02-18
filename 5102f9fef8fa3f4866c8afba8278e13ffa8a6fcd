@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "268d2229_6209f2ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-02-18T03:18:22Z",
+      "side": 1,
+      "message": "Hi Mikhail,\n\nThis change is to support HDMI source to MSD sink software (inter-module) patching. This routing can be initiated by a TvInputService application requesting HDMI TV input hardware overrideAudioSink to BUS.\n\nKind regards,",
+      "revId": "5102f9fef8fa3f4866c8afba8278e13ffa8a6fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
