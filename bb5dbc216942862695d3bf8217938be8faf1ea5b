@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6200ef5f_777549ef",
+        "filename": "media/libmediaplayerservice/MediaRecorderClient.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-18T17:27:24Z",
+      "side": 1,
+      "message": "As CameraUtils is not in AOSP yet, perhaps make this a \n\nstatic const bool cameraServiceDisabled \u003d property_get_bool(\"config.disable_cameraservice\", false);\n\nthat would initialize this once.  I don\u0027t think this property will be changing dynamically (and setting it to true I don\u0027t think will enable the service automatically).\n\nhttps://cs.android.com/android/platform/superproject/+/master:system/core/libcutils/include/cutils/properties.h;l\u003d65",
+      "range": {
+        "startLine": 424,
+        "startChar": 3,
+        "endLine": 426,
+        "endChar": 14
+      },
+      "revId": "bb5dbc216942862695d3bf8217938be8faf1ea5b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

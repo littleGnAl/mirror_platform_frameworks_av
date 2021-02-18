@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ff1113a_b2f3d9a7",
+        "filename": "media/libmediaplayerservice/MediaRecorderClient.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-18T17:27:24Z",
+      "side": 0,
+      "message": "even if the property is true, i am not sure whether it is sufficient to remove this.",
+      "range": {
+        "startLine": 428,
+        "startChar": 0,
+        "endLine": 429,
+        "endChar": 86
+      },
+      "revId": "fb5ef561e37afc7321884ecba1e32d87de5d33b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
