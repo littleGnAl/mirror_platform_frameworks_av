@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73b88f22_895efbae",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_GetInstanceHandle.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-18T19:08:54Z",
+      "side": 1,
+      "message": "nit: extra (), but do we care about an error code here when freeing a null address?",
+      "range": {
+        "startLine": 289,
+        "startChar": 15,
+        "endLine": 289,
+        "endChar": 16
+      },
+      "revId": "7d78120c602502b6cc4c1b75782897c29be41d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "761196bd_15c94fac",
+        "filename": "media/libeffects/lvm/lib/SpectrumAnalyzer/src/LVPSA_Init.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-18T19:08:54Z",
+      "side": 1,
+      "message": "nit remove ()",
+      "range": {
+        "startLine": 191,
+        "startChar": 11,
+        "endLine": 191,
+        "endChar": 12
+      },
+      "revId": "7d78120c602502b6cc4c1b75782897c29be41d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
