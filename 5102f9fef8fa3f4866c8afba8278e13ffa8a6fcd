@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa76766f_938cc60f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-02-18T21:37:51Z",
+      "side": 1,
+      "message": "Hi Mikhail, thank you for your review. I will address your feedback.",
+      "revId": "5102f9fef8fa3f4866c8afba8278e13ffa8a6fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "65d91558_05fcfdad",
@@ -41,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adf7e5fa_61848308",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-02-18T21:37:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "65d91558_05fcfdad",
+      "range": {
+        "startLine": 1347,
+        "startChar": 60,
+        "endLine": 1347,
+        "endChar": 69
+      },
+      "revId": "5102f9fef8fa3f4866c8afba8278e13ffa8a6fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d89b2557_0307329d",
@@ -54,6 +95,30 @@
       "writtenOn": "2021-02-18T18:16:10Z",
       "side": 1,
       "message": "To avoid checks on this parameter all over the place, I would suggest splitting this method into two: one selects modules / devices / profiles and the other finds the best match from them. It should make easier reasoning about validity of each separately.",
+      "range": {
+        "startLine": 1361,
+        "startChar": 50,
+        "endLine": 1361,
+        "endChar": 61
+      },
+      "revId": "5102f9fef8fa3f4866c8afba8278e13ffa8a6fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fb6c5e0_b090439e",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1361,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-02-18T21:37:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d89b2557_0307329d",
       "range": {
         "startLine": 1361,
         "startChar": 50,
@@ -89,6 +154,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0a11292b_312015ab",
+        "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-02-18T21:37:51Z",
+      "side": 1,
+      "message": "Panel TV devices with HDMI input can receive compressed audio over this link requiring decoding (and optionally other output device rendering) before routing to output devices like internal speaker. On Panel TV devices with MSD, this processing is expected to be done by MSD.",
+      "parentUuid": "02afd533_6ebd7bbe",
+      "range": {
+        "startLine": 589,
+        "startChar": 4,
+        "endLine": 589,
+        "endChar": 88
+      },
+      "revId": "5102f9fef8fa3f4866c8afba8278e13ffa8a6fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25cd171a_10629f9b",
         "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
         "patchSetId": 1
@@ -100,6 +189,30 @@
       "writtenOn": "2021-02-18T18:16:10Z",
       "side": 1,
       "message": "In ASSERT_EQ the expected value needs to be the first argument.",
+      "range": {
+        "startLine": 593,
+        "startChar": 14,
+        "endLine": 593,
+        "endChar": 42
+      },
+      "revId": "5102f9fef8fa3f4866c8afba8278e13ffa8a6fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5400aaa_4aab99e2",
+        "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-02-18T21:37:51Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "25cd171a_10629f9b",
       "range": {
         "startLine": 593,
         "startChar": 14,
