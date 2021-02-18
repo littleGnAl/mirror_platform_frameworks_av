@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a9ab21b_db2def19",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T22:23:43Z",
+      "side": 1,
+      "message": "Verified code optimization.",
+      "revId": "eee3b8eca521cc9daed521f65a58075935e583bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d32f48af_f119b921",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 752,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T22:23:43Z",
+      "side": 1,
+      "message": "verified that this logic is equivalent to the originally proposed one using a local unit test.",
+      "range": {
+        "startLine": 751,
+        "startChar": 4,
+        "endLine": 752,
+        "endChar": 41
+      },
+      "revId": "eee3b8eca521cc9daed521f65a58075935e583bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
