@@ -9,9 +9,32 @@ package {
     default_applicable_licenses: ["frameworks_av_license"],
 }
 
+// Build the unit tests for effects
+cc_test {
+    name: "EffectReverbTest",
+    vendor: true,
+    gtest: true,
+    host_supported: true,
+    srcs: ["EffectReverbTest.cpp"],
+    include_dirs: [
+        "frameworks/av/media/libeffects/lvm/wrapper/Reverb",
+    ],
+    static_libs: [
+        "libaudioutils",
+        "libreverb",
+        "libreverbwrapper",
+    ],
+    shared_libs: [
+        "liblog",
+    ],
+    header_libs: [
+        "libaudioeffects",
+        "libhardware_headers",
+    ],
+}
+
 cc_test {
     name: "lvmtest",
-    host_supported: false,
     proprietary: true,
 
     include_dirs: [
@@ -54,7 +77,6 @@ cc_test {
 
 cc_test {
     name: "reverb_test",
-    host_supported: true,
     proprietary: true,
     gtest: false,
 
@@ -88,7 +110,7 @@ cc_test {
 
 cc_test {
     name: "snr",
-    host_supported: false,
+    host_supported: true,
 
     srcs: ["snr.cpp"],
 
