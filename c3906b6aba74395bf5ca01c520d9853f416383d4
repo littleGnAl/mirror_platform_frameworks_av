@@ -75,6 +75,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "490421f0_ae3bf653",
+        "filename": "media/libmediaplayerservice/MediaRecorderClient.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1259532
+      },
+      "writtenOn": "2021-02-18T15:55:29Z",
+      "side": 1,
+      "message": "Changed to canonical version. Thanks.",
+      "parentUuid": "4f6a46b0_497500d0",
+      "range": {
+        "startLine": 424,
+        "startChar": 33,
+        "endLine": 425,
+        "endChar": 51
+      },
+      "revId": "c3906b6aba74395bf5ca01c520d9853f416383d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56702684_9a60a634",
