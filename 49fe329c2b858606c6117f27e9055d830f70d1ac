@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b335fc98_e4314af9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T06:35:11Z",
+      "side": 1,
+      "message": "At least IMediaRecorder should use uint64_t to be compatible between different process sizes.\n\ngetAccumulatedBytes can stay in size_t if overflow is not a concern for 32-bit processes (which is what it is running currently).",
+      "revId": "49fe329c2b858606c6117f27e9055d830f70d1ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e398131_2afabd7d",
