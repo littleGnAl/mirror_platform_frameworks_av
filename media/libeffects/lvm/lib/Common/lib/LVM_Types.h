@@ -121,6 +121,13 @@ typedef enum {
     LVM_FS_DUMMY = LVM_MAXENUM
 } LVM_Fs_en;
 
+const std::map<int, LVM_Fs_en> kLVMFsMap = {
+        {8000, LVM_FS_8000},    {11025, LVM_FS_11025}, {12000, LVM_FS_12000},
+        {16000, LVM_FS_16000},  {22050, LVM_FS_22050}, {24000, LVM_FS_24000},
+        {32000, LVM_FS_32000},  {44100, LVM_FS_44100}, {48000, LVM_FS_48000},
+        {88200, LVM_FS_88200},  {96000, LVM_FS_96000}, {176400, LVM_FS_176400},
+        {192000, LVM_FS_192000}};
+
 /* Memory Types */
 typedef enum {
     LVM_PERSISTENT_SLOW_DATA = LVM_MEMREGION_PERSISTENT_SLOW_DATA,
