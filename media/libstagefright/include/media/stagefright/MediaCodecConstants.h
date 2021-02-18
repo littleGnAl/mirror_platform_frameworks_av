@@ -620,6 +620,8 @@ constexpr int32_t COLOR_FormatYUV422SemiPlanar        = 24;
 constexpr int32_t COLOR_FormatYUV444Flexible          = 0x7F444888;
 constexpr int32_t COLOR_FormatYUV444Interleaved       = 29;
 constexpr int32_t COLOR_FormatYUVP010                 = 54;
+constexpr int32_t COLOR_FormatYUVP010Flexible         = 0x7F420AAA;
+constexpr int32_t COLOR_FormatYUV420PackedPlanar      = 20;
 constexpr int32_t COLOR_QCOM_FormatYUV420SemiPlanar   = 0x7fa30c00;
 constexpr int32_t COLOR_TI_FormatYUV420PackedSemiPlanar = 0x7f000100;
 
