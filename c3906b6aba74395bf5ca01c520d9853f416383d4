@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6aee0d41_c5e440ff",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-18T04:23:24Z",
+      "side": 1,
+      "message": "a minor nit, i\u0027m fine with this CL after Hayden and Mikhail review it.",
+      "revId": "c3906b6aba74395bf5ca01c520d9853f416383d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4f6a46b0_497500d0",
@@ -53,6 +70,29 @@
         "startChar": 33,
         "endLine": 425,
         "endChar": 51
+      },
+      "revId": "c3906b6aba74395bf5ca01c520d9853f416383d4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56702684_9a60a634",
+        "filename": "media/libmediaplayerservice/MediaRecorderClient.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 426,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-18T04:23:24Z",
+      "side": 1,
+      "message": "nit: missing spaces on both sides of the expression.\n\nif () {",
+      "range": {
+        "startLine": 426,
+        "startChar": 5,
+        "endLine": 426,
+        "endChar": 7
       },
       "revId": "c3906b6aba74395bf5ca01c520d9853f416383d4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
