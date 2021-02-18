@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c1b2ca5_babf3c1b",
+        "filename": "media/libstagefright/rtsp/ARTPSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T06:43:13Z",
+      "side": 1,
+      "message": "correction: it is 31 - __builtin_clz",
+      "parentUuid": "bf0a1674_144e4a17",
+      "range": {
+        "startLine": 388,
+        "startChar": 4,
+        "endLine": 393,
+        "endChar": 5
+      },
+      "revId": "245b17ff1ed40025a84e7a0e9c1c6d0c6417588c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "999dc20c_1384c6c2",
         "filename": "media/libstagefright/rtsp/ARTPSource.cpp",
         "patchSetId": 2
