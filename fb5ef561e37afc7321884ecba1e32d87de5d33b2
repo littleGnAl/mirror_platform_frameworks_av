@@ -22,6 +22,30 @@
       },
       "revId": "fb5ef561e37afc7321884ecba1e32d87de5d33b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e10e58f2_d96d122d",
+        "filename": "media/libmediaplayerservice/MediaRecorderClient.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-02-18T18:01:28Z",
+      "side": 0,
+      "message": "I hope Hayden can help resolving this as he has more exposure dealing with devices w/o camera.",
+      "parentUuid": "6ff1113a_b2f3d9a7",
+      "range": {
+        "startLine": 428,
+        "startChar": 0,
+        "endLine": 429,
+        "endChar": 86
+      },
+      "revId": "fb5ef561e37afc7321884ecba1e32d87de5d33b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
