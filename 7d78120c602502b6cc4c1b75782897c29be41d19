@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5807ecbd_91d5a915",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_GetInstanceHandle.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 289,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-18T19:14:49Z",
+      "side": 1,
+      "message": "Just keeping it consistent with rest of the functions.",
+      "parentUuid": "73b88f22_895efbae",
+      "range": {
+        "startLine": 289,
+        "startChar": 15,
+        "endLine": 289,
+        "endChar": 16
+      },
+      "revId": "7d78120c602502b6cc4c1b75782897c29be41d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "761196bd_15c94fac",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-18T19:08:54Z",
       "side": 1,
       "message": "nit remove ()",
+      "range": {
+        "startLine": 191,
+        "startChar": 11,
+        "endLine": 191,
+        "endChar": 12
+      },
+      "revId": "7d78120c602502b6cc4c1b75782897c29be41d19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2dc0c2e_e9fd808e",
+        "filename": "media/libeffects/lvm/lib/SpectrumAnalyzer/src/LVPSA_Init.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 191,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-18T19:14:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "761196bd_15c94fac",
       "range": {
         "startLine": 191,
         "startChar": 11,
