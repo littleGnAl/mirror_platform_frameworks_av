@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b31e235_1663307c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T05:40:30Z",
+      "side": 1,
+      "message": "Added comments from Ray:\n\nthe size_t for the counts worries me -- seems like we can trivially push\nmore than 4GB through such a session and size_t on 32 bit systems will overflow.",
+      "revId": "49fe329c2b858606c6117f27e9055d830f70d1ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e398131_2afabd7d",
+        "filename": "media/libmedia/IMediaRecorder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 481,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T05:40:30Z",
+      "side": 1,
+      "message": "comments from essick@google.com:\n\nseems we should be adding this with uint64_t\n-- to fix the size\n-- and because 32 bits is likely to overflow for long running sessions.",
+      "range": {
+        "startLine": 481,
+        "startChar": 29,
+        "endLine": 481,
+        "endChar": 35
+      },
+      "revId": "49fe329c2b858606c6117f27e9055d830f70d1ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6133c7fb_78ce72a8",
+        "filename": "media/libmedia/IMediaRecorder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 495,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T05:40:30Z",
+      "side": 1,
+      "message": "comments from essick@google.com: \n\ni think we want to do 64 bits here instead of 32.",
+      "range": {
+        "startLine": 495,
+        "startChar": 31,
+        "endLine": 495,
+        "endChar": 40
+      },
+      "revId": "49fe329c2b858606c6117f27e9055d830f70d1ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "817efe1e_8f215b67",
+        "filename": "media/libmedia/include/media/IMediaRecorder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T05:40:30Z",
+      "side": 1,
+      "message": "comment from essick@google.com:\n\nuint64_t is probably more appropriate;\nespecially for 32-bit systems.",
+      "range": {
+        "startLine": 81,
+        "startChar": 37,
+        "endLine": 81,
+        "endChar": 43
+      },
+      "revId": "49fe329c2b858606c6117f27e9055d830f70d1ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "28dc1b6e_e0511c0f",
+        "filename": "media/libstagefright/rtsp/TrafficRecorder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 42,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T05:40:30Z",
+      "side": 1,
+      "message": "comments from essick@google.com:\n\ni think this is the lowest level declaration where we get the totals that I think\nshould be uint64 instead of size_t",
+      "range": {
+        "startLine": 42,
+        "startChar": 4,
+        "endLine": 42,
+        "endChar": 9
+      },
+      "revId": "49fe329c2b858606c6117f27e9055d830f70d1ac",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
