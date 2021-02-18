@@ -82,6 +82,9 @@ cc_library {
         "libstagefright_bufferpool@2.0.1",
         "libui",
         "libutils",
+        "android.hardware.graphics.allocator@4.0",
+        "android.hardware.graphics.mapper@4.0",
+        "libgralloctypes",
     ],
 
     cflags: [
