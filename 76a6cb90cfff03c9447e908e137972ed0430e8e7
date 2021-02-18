@@ -16,6 +16,46 @@
       "message": "Addressed Ray\u0027s comments. Please confirm this works.",
       "revId": "76a6cb90cfff03c9447e908e137972ed0430e8e7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "646f5842_4b05815d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T22:21:28Z",
+      "side": 1,
+      "message": "verified logic change.",
+      "revId": "76a6cb90cfff03c9447e908e137972ed0430e8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e427c7de_7fa3aed9",
+        "filename": "media/libstagefright/rtsp/TrafficRecorder.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T22:21:28Z",
+      "side": 1,
+      "message": "validated that this logic is equivalent to the old logic via a local unit test.",
+      "range": {
+        "startLine": 70,
+        "startChar": 4,
+        "endLine": 73,
+        "endChar": 0
+      },
+      "revId": "76a6cb90cfff03c9447e908e137972ed0430e8e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
