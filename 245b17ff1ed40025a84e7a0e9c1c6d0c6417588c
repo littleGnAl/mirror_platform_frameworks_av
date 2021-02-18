@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf0a1674_144e4a17",
+        "filename": "media/libstagefright/rtsp/ARTPSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T06:03:18Z",
+      "side": 1,
+      "message": "this is 32 - __builtin_clz(targetBitrate)\n\nnote: targetBitrate \u003e 0 here.",
+      "range": {
+        "startLine": 388,
+        "startChar": 4,
+        "endLine": 393,
+        "endChar": 5
+      },
+      "revId": "245b17ff1ed40025a84e7a0e9c1c6d0c6417588c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "999dc20c_1384c6c2",
+        "filename": "media/libstagefright/rtsp/ARTPSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 399,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T06:03:18Z",
+      "side": 1,
+      "message": "this is ffs(targetBitrate) - 1 from \u003cstrings.h\u003e",
+      "range": {
+        "startLine": 394,
+        "startChar": 1,
+        "endLine": 399,
+        "endChar": 5
+      },
+      "revId": "245b17ff1ed40025a84e7a0e9c1c6d0c6417588c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6c069d1_e05ac5d3",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T06:03:18Z",
+      "side": 1,
+      "message": "this is duplicate logic, perhaps it could be a method?",
+      "range": {
+        "startLine": 745,
+        "startChar": 0,
+        "endLine": 771,
+        "endChar": 53
+      },
+      "revId": "245b17ff1ed40025a84e7a0e9c1c6d0c6417588c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
