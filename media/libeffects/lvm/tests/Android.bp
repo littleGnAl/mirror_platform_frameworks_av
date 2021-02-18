@@ -10,6 +10,25 @@ package {
 }
 
 cc_test {
+    name: "EffectBundleTest",
+    vendor: true,
+    gtest: true,
+    host_supported: true,
+    srcs: ["EffectBundleTest.cpp"],
+    static_libs: [
+        "libaudioutils",
+        "libbundlewrapper",
+        "libmusicbundle",
+    ],
+    shared_libs: [
+        "liblog",
+    ],
+    header_libs: [
+        "libhardware_headers",
+    ],
+}
+
+cc_test {
     name: "lvmtest",
     host_supported: false,
     proprietary: true,
