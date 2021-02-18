@@ -1,0 +1,251 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc7c3e24_08f42780",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-18T19:27:50Z",
+      "side": 1,
+      "message": "this is great!  some minor nits.",
+      "revId": "af987338dc93cd074cf0d7be310ee16ccad82d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b9f6944_6ba715c2",
+        "filename": "media/libeffects/lvm/benchmarks/lvm_benchmark.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-18T19:27:50Z",
+      "side": 1,
+      "message": "OK, or FCC_1 if it is already defined here.  No worries if it is not.",
+      "range": {
+        "startLine": 229,
+        "startChar": 17,
+        "endLine": 229,
+        "endChar": 18
+      },
+      "revId": "af987338dc93cd074cf0d7be310ee16ccad82d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb1e8a93_0d322a16",
+        "filename": "media/libeffects/lvm/lib/Common/src/Copy_16.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-18T19:27:50Z",
+      "side": 1,
+      "message": "should this be const?",
+      "range": {
+        "startLine": 54,
+        "startChar": 47,
+        "endLine": 54,
+        "endChar": 48
+      },
+      "revId": "af987338dc93cd074cf0d7be310ee16ccad82d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec80a73f_54584d3e",
+        "filename": "media/libeffects/lvm/lib/Common/src/Copy_16.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-18T19:27:50Z",
+      "side": 1,
+      "message": "FCC_2",
+      "range": {
+        "startLine": 69,
+        "startChar": 22,
+        "endLine": 69,
+        "endChar": 23
+      },
+      "revId": "af987338dc93cd074cf0d7be310ee16ccad82d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8b4df02_ef34b356",
+        "filename": "media/libeffects/lvm/lib/Common/src/Copy_16.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-18T19:27:50Z",
+      "side": 1,
+      "message": "we lose constness here.",
+      "range": {
+        "startLine": 77,
+        "startChar": 19,
+        "endLine": 77,
+        "endChar": 20
+      },
+      "revId": "af987338dc93cd074cf0d7be310ee16ccad82d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "feecadec_8233fcda",
+        "filename": "media/libeffects/lvm/lib/Common/src/DelayMix_16x16.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-18T19:27:50Z",
+      "side": 1,
+      "message": "not needed.  and on line 52 and 61.",
+      "range": {
+        "startLine": 38,
+        "startChar": 19,
+        "endLine": 38,
+        "endChar": 30
+      },
+      "revId": "af987338dc93cd074cf0d7be310ee16ccad82d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c219c5f6_8ae5f4d4",
+        "filename": "media/libeffects/lvm/lib/Common/src/DelayMix_16x16.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 43,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-18T19:27:50Z",
+      "side": 1,
+      "message": "maybe make a comment that this is still figured by stereo?  or increment by 1?",
+      "range": {
+        "startLine": 43,
+        "startChar": 12,
+        "endLine": 43,
+        "endChar": 24
+      },
+      "revId": "af987338dc93cd074cf0d7be310ee16ccad82d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d4bc0c_86862b14",
+        "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_BypassMix.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 204,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-18T19:27:50Z",
+      "side": 1,
+      "message": "FCC_2",
+      "range": {
+        "startLine": 204,
+        "startChar": 67,
+        "endLine": 204,
+        "endChar": 68
+      },
+      "revId": "af987338dc93cd074cf0d7be310ee16ccad82d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86c2d8c0_47c134c9",
+        "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_Process.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-18T19:27:50Z",
+      "side": 1,
+      "message": "FCC_2 here and on line 170, 171, 270",
+      "range": {
+        "startLine": 98,
+        "startChar": 70,
+        "endLine": 98,
+        "endChar": 71
+      },
+      "revId": "af987338dc93cd074cf0d7be310ee16ccad82d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cecf85bd_64de0f4c",
+        "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_ReverbGenerator.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-18T19:27:50Z",
+      "side": 1,
+      "message": "FCC_2 here",
+      "range": {
+        "startLine": 159,
+        "startChar": 67,
+        "endLine": 159,
+        "endChar": 68
+      },
+      "revId": "af987338dc93cd074cf0d7be310ee16ccad82d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b88c7eb6_17ba31f9",
+        "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_StereoEnhancer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-18T19:27:50Z",
+      "side": 1,
+      "message": "FCC 2 here",
+      "range": {
+        "startLine": 132,
+        "startChar": 70,
+        "endLine": 132,
+        "endChar": 71
+      },
+      "revId": "af987338dc93cd074cf0d7be310ee16ccad82d8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
