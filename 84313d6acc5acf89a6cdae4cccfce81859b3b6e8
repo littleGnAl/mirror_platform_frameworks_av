@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d3d8813_66bed653",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T07:05:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "669af890_34f8d4d7",
+      "range": {
+        "startLine": 74,
+        "startChar": 61,
+        "endLine": 74,
+        "endChar": 65
+      },
+      "revId": "84313d6acc5acf89a6cdae4cccfce81859b3b6e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f08a6c68_89a1f954",
@@ -78,6 +102,30 @@
       "side": 1,
       "message": "this is 32 - builtin_clz(size - 1) when size_t is 32-bit.",
       "parentUuid": "f08a6c68_89a1f954",
+      "range": {
+        "startLine": 60,
+        "startChar": 25,
+        "endLine": 60,
+        "endChar": 27
+      },
+      "revId": "84313d6acc5acf89a6cdae4cccfce81859b3b6e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f8aae18_c1b7f20f",
+        "filename": "media/libstagefright/rtsp/TrafficRecorder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T07:05:35Z",
+      "side": 1,
+      "message": "Added limits on size.",
+      "parentUuid": "11b60865_82eec32a",
       "range": {
         "startLine": 60,
         "startChar": 25,
