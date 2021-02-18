@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dca0477_e03c2208",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 56,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T07:09:42Z",
+      "side": 1,
+      "message": "this type tracks the Bytes type in TrafficRecorder.",
+      "range": {
+        "startLine": 56,
+        "startChar": 4,
+        "endLine": 56,
+        "endChar": 10
+      },
+      "revId": "43c272597808013d1562dd6a5a04c61986f28f04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be023dbf_2b42b9e9",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T07:09:42Z",
+      "side": 1,
+      "message": "should this be uint64_t to allow \u003e4GB accumulation?",
+      "range": {
+        "startLine": 122,
+        "startChar": 33,
+        "endLine": 122,
+        "endChar": 39
+      },
+      "revId": "43c272597808013d1562dd6a5a04c61986f28f04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
