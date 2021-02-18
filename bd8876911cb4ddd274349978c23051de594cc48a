@@ -33,6 +33,23 @@
       "message": "Lint errors are fixed up in the follow-up CL: https://android-review.googlesource.com/c/platform/frameworks/av/+/1587739/6",
       "revId": "bd8876911cb4ddd274349978c23051de594cc48a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8da9fce0_83b94353",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T00:33:16Z",
+      "side": 1,
+      "message": "TH is still trying to cherry pick this change to git_master even though it is marked as merged.",
+      "revId": "bd8876911cb4ddd274349978c23051de594cc48a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
