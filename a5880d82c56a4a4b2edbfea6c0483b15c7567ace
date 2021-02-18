@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "53a64ddb_064002aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T05:28:33Z",
+      "side": 1,
+      "message": "Added comments from Ray. Will fix this one.",
+      "revId": "a5880d82c56a4a4b2edbfea6c0483b15c7567ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b951a267_301ce1e6",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T05:28:33Z",
+      "side": 1,
+      "message": "comment from essick@google.com:\n\ntypo conneceted -\u003e connected",
+      "range": {
+        "startLine": 68,
+        "startChar": 60,
+        "endLine": 68,
+        "endChar": 70
+      },
+      "revId": "a5880d82c56a4a4b2edbfea6c0483b15c7567ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0589987e_27454124",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T05:28:33Z",
+      "side": 1,
+      "message": "comment from essick@google.com:\n\nanother typo. from an earlier CL, but still a typo.\n\nsince it\u0027s a function prototype, it doesn\u0027t affect correctness",
+      "range": {
+        "startLine": 69,
+        "startChar": 60,
+        "endLine": 69,
+        "endChar": 70
+      },
+      "revId": "a5880d82c56a4a4b2edbfea6c0483b15c7567ace",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
