@@ -1,5 +1,22 @@
 // Build the unit tests for effects
-
+cc_test {
+    name: "EffectBundleTest",
+    vendor: true,
+    gtest: true,
+    host_supported: true,
+    srcs: ["EffectBundleTest.cpp"],
+    static_libs: [
+        "libbundlewrapper",
+        "libmusicbundle",
+    ],
+    shared_libs: [
+        "libaudioutils",
+        "liblog",
+    ],
+    header_libs: [
+        "libhardware_headers",
+    ],
+}
 cc_test {
     name: "lvmtest",
     host_supported: false,
