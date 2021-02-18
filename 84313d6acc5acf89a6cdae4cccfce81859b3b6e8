@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a95c452e_4d6c00a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T05:34:20Z",
+      "side": 1,
+      "message": "Added comments from Ray, including this:\n\ndon\u0027t like the size_t on something that I think will have problems on 32-bit boxes very soon.\n\nI think for this specific class, since all use is hardcoded to 128, size_t is fine, but recommend updating the loop to handle proper size_t width.",
+      "revId": "84313d6acc5acf89a6cdae4cccfce81859b3b6e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "669af890_34f8d4d7",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T05:34:20Z",
+      "side": 1,
+      "message": "Comment from essick@google.com:\n\nmagic value.",
+      "range": {
+        "startLine": 74,
+        "startChar": 61,
+        "endLine": 74,
+        "endChar": 65
+      },
+      "revId": "84313d6acc5acf89a6cdae4cccfce81859b3b6e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f08a6c68_89a1f954",
+        "filename": "media/libstagefright/rtsp/TrafficRecorder.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T05:34:20Z",
+      "side": 1,
+      "message": "Comment for essick@google.com:\n\nin 64-bit world, size_t will be 64 bits.\nso we can in theory drop out of this loop with exp\u003d\u003d32 but not yet have captured\nthe entirety of size.\n\nnote that a size that gets out near 32 bits aka 4GB is likely to cause a problem \non lines 69/70 where we allocate data structures based on that size -- so a value of\nsize that blows our 32 bits here, even if we captured it properly, is probably going\nto through an exception on those lines.",
+      "range": {
+        "startLine": 60,
+        "startChar": 25,
+        "endLine": 60,
+        "endChar": 27
+      },
+      "revId": "84313d6acc5acf89a6cdae4cccfce81859b3b6e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
