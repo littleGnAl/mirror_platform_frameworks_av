@@ -16,6 +16,98 @@
       "message": "Hi Mikhail,\n\nThis change is to support HDMI source to MSD sink software (inter-module) patching. This routing can be initiated by a TvInputService application requesting HDMI TV input hardware overrideAudioSink to BUS.\n\nKind regards,",
       "revId": "5102f9fef8fa3f4866c8afba8278e13ffa8a6fcd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65d91558_05fcfdad",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1347,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-02-18T18:16:10Z",
+      "side": 1,
+      "message": "I would suggest naming this parameter \u0027msdIsSource\u0027, here and in buildMsdPatch.",
+      "range": {
+        "startLine": 1347,
+        "startChar": 60,
+        "endLine": 1347,
+        "endChar": 69
+      },
+      "revId": "5102f9fef8fa3f4866c8afba8278e13ffa8a6fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d89b2557_0307329d",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1361,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-02-18T18:16:10Z",
+      "side": 1,
+      "message": "To avoid checks on this parameter all over the place, I would suggest splitting this method into two: one selects modules / devices / profiles and the other finds the best match from them. It should make easier reasoning about validity of each separately.",
+      "range": {
+        "startLine": 1361,
+        "startChar": 50,
+        "endLine": 1361,
+        "endChar": 61
+      },
+      "revId": "5102f9fef8fa3f4866c8afba8278e13ffa8a6fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02afd533_6ebd7bbe",
+        "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-02-18T18:16:10Z",
+      "side": 1,
+      "message": "In real world, what is the condition for establishing the patch from HDMI input to MSD?",
+      "range": {
+        "startLine": 589,
+        "startChar": 4,
+        "endLine": 589,
+        "endChar": 88
+      },
+      "revId": "5102f9fef8fa3f4866c8afba8278e13ffa8a6fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "25cd171a_10629f9b",
+        "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 593,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-02-18T18:16:10Z",
+      "side": 1,
+      "message": "In ASSERT_EQ the expected value needs to be the first argument.",
+      "range": {
+        "startLine": 593,
+        "startChar": 14,
+        "endLine": 593,
+        "endChar": 42
+      },
+      "revId": "5102f9fef8fa3f4866c8afba8278e13ffa8a6fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
