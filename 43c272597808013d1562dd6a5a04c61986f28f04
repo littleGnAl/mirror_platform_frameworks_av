@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bd0bdb31_19c1eab7",
+        "filename": "media/libstagefright/rtsp/ARTPConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-18T08:55:05Z",
+      "side": 1,
+      "message": "this is now a bool, so perhaps true /* isRegular */?",
+      "range": {
+        "startLine": 885,
+        "startChar": 35,
+        "endLine": 885,
+        "endChar": 40
+      },
+      "revId": "43c272597808013d1562dd6a5a04c61986f28f04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dca0477_e03c2208",
         "filename": "media/libstagefright/rtsp/ARTPWriter.h",
         "patchSetId": 3
