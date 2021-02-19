@@ -3,6 +3,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "d30e6240_ff42e152",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-02-19T07:30:42Z",
+      "side": 1,
+      "message": "Sending usage with a new version HAL of IComponent::setOutputSurface could be a solution?  ",
+      "revId": "f7d6d9e059307fb94958b67841e9ce77a1c23d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7b1170bb_17589102",
         "filename": "media/codec2/hidl/client/client.cpp",
         "patchSetId": 1
