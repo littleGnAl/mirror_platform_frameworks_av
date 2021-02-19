@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "1d52851a_b7bfd018",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-19T17:13:25Z",
+      "side": 1,
+      "message": "Yes, in fact I added that todo. The idea is that in HAL 1.2 the vendor side could set the consumer usage at the time the surface switch happens. There is still an inherent race if the component is allocating  in the background...",
+      "parentUuid": "d30e6240_ff42e152",
+      "revId": "f7d6d9e059307fb94958b67841e9ce77a1c23d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "7b1170bb_17589102",
         "filename": "media/codec2/hidl/client/client.cpp",
         "patchSetId": 1
