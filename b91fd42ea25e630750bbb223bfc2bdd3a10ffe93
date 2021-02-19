@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91014952_7c46e1ba",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-19T22:13:13Z",
+      "side": 1,
+      "message": "it is okay to pass this, but note that this goes against the zero configuration requirement for decoders. In other words, decoders cannot rely on the presence of this configuration and must successfully decode content.",
+      "range": {
+        "startLine": 363,
+        "startChar": 18,
+        "endLine": 363,
+        "endChar": 64
+      },
+      "revId": "b91fd42ea25e630750bbb223bfc2bdd3a10ffe93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
