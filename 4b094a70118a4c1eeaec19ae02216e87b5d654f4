@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42e13652_3528ccc1",
+        "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_Control.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 183,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-19T17:46:11Z",
+      "side": 1,
+      "message": "I don\u0027t think this parenthesis does what you are expecting it to do.  you need another around the ternary conditional operator. \n\nhttps://en.cppreference.com/w/cpp/language/operator_precedence\n\nMaybe better to remove a few unnecessary ones.\n\n                    (LVM_INT16)(((pInstance-\u003eParams.NrChannels \u003d\u003d FCC_1\n                                         ? pInstance-\u003eReverberation.DelaySize \u003c\u003c 3\n                                         : pInstance-\u003eReverberation.DelaySize \u003c\u003c 2) /\n                                                   pInstance-\u003eTimerParams.SamplingRate) +\n                                1);",
+      "range": {
+        "startLine": 183,
+        "startChar": 33,
+        "endLine": 183,
+        "endChar": 34
+      },
+      "revId": "4b094a70118a4c1eeaec19ae02216e87b5d654f4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
