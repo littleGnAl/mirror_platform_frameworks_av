@@ -49,6 +49,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c05a5f6f_718adc3d",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1382,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-19T03:49:13Z",
+      "side": 1,
+      "message": "i\u0027d go with uint64_t for this.",
+      "range": {
+        "startLine": 1382,
+        "startChar": 1,
+        "endLine": 1382,
+        "endChar": 6
+      },
+      "revId": "43c272597808013d1562dd6a5a04c61986f28f04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9dca0477_e03c2208",
         "filename": "media/libstagefright/rtsp/ARTPWriter.h",
         "patchSetId": 3
@@ -83,6 +106,30 @@
       "writtenOn": "2021-02-18T07:09:42Z",
       "side": 1,
       "message": "should this be uint64_t to allow \u003e4GB accumulation?",
+      "range": {
+        "startLine": 122,
+        "startChar": 33,
+        "endLine": 122,
+        "endChar": 39
+      },
+      "revId": "43c272597808013d1562dd6a5a04c61986f28f04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14d824eb_811b38b7",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-19T03:49:13Z",
+      "side": 1,
+      "message": "i think it would be the safe thing to do.\nwe changed many (all?) of the other places where we were using size_t to count these things so that they were uint64_t.\n\ni could be convinced if you could show me that these are \"segments\" of an overall session\nand that each of these segments is guaranteed to be small enough such that it can\u0027t go past 4G.\n(e.g. we\u0027re dealing with little 30 second chunks, each of which can only be ... maybe a handful of MB, but the sum of them -- when the call is hours long -- easily blows past 4GB. \n\nbut if it\u0027s my choice -- just go to 64bits now and that makes the size consistent for the entire end/end stats keeping.",
+      "parentUuid": "be023dbf_2b42b9e9",
       "range": {
         "startLine": 122,
         "startChar": 33,
