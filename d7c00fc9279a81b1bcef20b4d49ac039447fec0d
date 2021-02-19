@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "517c7280_40f20385",
+        "filename": "media/libstagefright/rtsp/ARTPConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-19T05:58:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12c3e08b_b2dc4769",
+      "range": {
+        "startLine": 477,
+        "startChar": 24,
+        "endLine": 477,
+        "endChar": 29
+      },
+      "revId": "d7c00fc9279a81b1bcef20b4d49ac039447fec0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4c5f4737_9cc707e2",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-19T05:38:15Z",
       "side": 1,
       "message": "This part also can be modified based on Lajos\u0027 suggestion for sending TMMBR(on the upper side)\nRemoving CHECK_EQ() part and correcting some conventions as the below.\n\n            if (buffer-\u003esize() \u003e 0) {\n                ALOGV(\"Sending RR...\");\n                ssize_t n \u003d send(s, buffer);\n\n                    if (n !\u003d (ssize_t)buffer-\u003esize()) {\n                    ALOGW(\"failed to send RTCP receiver report (%s).\",\n                            n \u003e\u003d 0 ? \"connection gone\" : strerror(errno));\n\n                    it \u003d mStreams.erase(it);\n                    continue;\n                }\n\n                mLastReceiverReportTimeUs \u003d nowUs;\n            }",
+      "range": {
+        "startLine": 523,
+        "startChar": 12,
+        "endLine": 539,
+        "endChar": 13
+      },
+      "revId": "d7c00fc9279a81b1bcef20b4d49ac039447fec0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "660480f8_297302f2",
+        "filename": "media/libstagefright/rtsp/ARTPConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-19T05:58:03Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4c5f4737_9cc707e2",
       "range": {
         "startLine": 523,
         "startChar": 12,
