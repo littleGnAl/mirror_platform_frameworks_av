@@ -202,6 +202,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66f1e27c_daf409fd",
+        "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-02-19T04:28:50Z",
+      "side": 1,
+      "message": "The use case I\u0027m testing is a TvInputService application with Session acquiring HDMI tv input hardware like:\n\nmHardware \u003d mTvInputManager.acquireTvInputHardware(mHdmiHwId, mTvInputInfo, mHardwareCallback);\n\nand invoking\n\nmHardware.overrideAudioSinkWithDevice(device,\n                            0 /* default sampling rate */, AudioFormat.CHANNEL_OUT_DEFAULT,\n                            AudioFormat.ENCODING_DEFAULT);\n\nwhere device.getType() \u003d\u003d AudioDeviceInfo.TYPE_BUS. The device is found from set of available output devices from AudioManager.getDevices().\n\n\nThe overrideAudioSink function is found in frameworks/base/services/core/java/com/android/server/tv/TvInputHardwareManager.java . This will update the audio config, and eventually call:\n\n                mAudioManager.createAudioPatch(\n                        audioPatchArray,\n                        new AudioPortConfig[] { sourceConfig },\n                        sinkConfigs.toArray(new AudioPortConfig[sinkConfigs.size()]));\n\nNormally, without overrideAudioSink, the TvInputHardwareManager will return the default sink from audio policy. For an MSD enabled device, this would be the final destination (e.g. internal speaker).\n\nFor this change, the expectation is that a TvInputService app will be knowledgable enough to request / override routing to the OUT_BUS device, rather than leaving it to the system to route to the default output sink. One advantage of this approach is for source :\u003d HDMI input to sink :\u003d HDMI output scenarios. The app can choose to pass through in this case (overrideAudioSink HDMI output), but when internal speaker is active, route to BUS instead to get device processing.\n\nThe alternative to this approach is for the createAudioPatchInternal to implement this MSD insert logic without the app\u0027s knowledge, but comes with a few problems, such as needing to manage two patches (source -\u003e MSD and MSD -\u003e sink), and that this insert is not controllable / transparent to the application.\n\nThe downside of the overrideAudioSink approach is, if MSD processing is requested, the TvInputService app is not able to control the final destination audio sink (it will be the default MSD -\u003e downstream sink chosen by engine).",
+      "parentUuid": "bcee536c_49096216",
+      "range": {
+        "startLine": 589,
+        "startChar": 4,
+        "endLine": 589,
+        "endChar": 88
+      },
+      "revId": "5102f9fef8fa3f4866c8afba8278e13ffa8a6fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25cd171a_10629f9b",
         "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
         "patchSetId": 1
