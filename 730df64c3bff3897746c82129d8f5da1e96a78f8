@@ -16,6 +16,23 @@
       "message": "Lajos / Ray, could we trouble you an owners review here, it\u0027s a clean cherry-pick from internal. Thanks",
       "revId": "730df64c3bff3897746c82129d8f5da1e96a78f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49293622_f24065a1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-19T21:40:59Z",
+      "side": 1,
+      "message": "I\u0027ve noticed some:\n02-19 12:01:57.291   935   935 I zygote64: Thread[1,tid\u003d935,Native,Thread*\u003d0x73701b9be0,peer\u003d0x132c0b58,\"main\"] recursive attempt to load library \"libmedia_jni.so\"\n02-19 12:01:57.291   935   935 I zygote64: Thread[1,tid\u003d935,Native,Thread*\u003d0x73701b9be0,peer\u003d0x132c0b58,\"main\"] recursive attempt to load library \"libmedia_jni.so\"\n\nsince this went into internal branches; not sure if it was already there or if it started with this change.\n",
+      "revId": "730df64c3bff3897746c82129d8f5da1e96a78f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
