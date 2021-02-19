@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e04014c_84236924",
+        "filename": "media/libeffects/lvm/lib/Common/lib/LVM_Types.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 124,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-19T22:55:07Z",
+      "side": 1,
+      "message": "This needs to be inline const to avoid multiple copies of the map.\n\nDue to problems with order of construction of globals, might consider embedding this in an inline method:\n\ninline LVM_Fs_en lvmFsForSampleRate(int sampleRate) {\n    static .....;\n}\n\nwhich has Meyers singleton initialization.",
+      "range": {
+        "startLine": 124,
+        "startChar": 0,
+        "endLine": 124,
+        "endChar": 6
+      },
+      "revId": "e16749428181670693d79ba9fef2b2c46306b164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
