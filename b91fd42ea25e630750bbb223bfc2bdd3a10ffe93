@@ -22,6 +22,30 @@
       },
       "revId": "b91fd42ea25e630750bbb223bfc2bdd3a10ffe93",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef3e3e3b_6faae5fd",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 363,
+      "author": {
+        "id": 1855645
+      },
+      "writtenOn": "2021-02-19T22:18:13Z",
+      "side": 1,
+      "message": "WMA needs bytes/second metadata info passed from parser to decoder for configuration as per WMA spec",
+      "parentUuid": "91014952_7c46e1ba",
+      "range": {
+        "startLine": 363,
+        "startChar": 18,
+        "endLine": 363,
+        "endChar": 64
+      },
+      "revId": "b91fd42ea25e630750bbb223bfc2bdd3a10ffe93",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
