@@ -164,6 +164,30 @@
       },
       "revId": "245b17ff1ed40025a84e7a0e9c1c6d0c6417588c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e8c8ce8_7dbfab47",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1489396
+      },
+      "writtenOn": "2021-02-19T08:13:21Z",
+      "side": 1,
+      "message": "Thanks for clearing loops.\nYes. In now there is no common thing to structure RTP/RTCP packets.\nIt can be next code clear parts.",
+      "parentUuid": "40261a6d_f55bed02",
+      "range": {
+        "startLine": 745,
+        "startChar": 0,
+        "endLine": 771,
+        "endChar": 53
+      },
+      "revId": "245b17ff1ed40025a84e7a0e9c1c6d0c6417588c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
