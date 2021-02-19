@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7b1170bb_17589102",
+        "filename": "media/codec2/hidl/client/client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-19T06:12:06Z",
+      "side": 1,
+      "message": "nit: delete",
+      "range": {
+        "startLine": 47,
+        "startChar": 48,
+        "endLine": 47,
+        "endChar": 54
+      },
+      "revId": "f7d6d9e059307fb94958b67841e9ce77a1c23d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7aebaa57_6fecb18a",
+        "filename": "media/codec2/hidl/client/client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-19T06:12:06Z",
+      "side": 1,
+      "message": "nit: buffers",
+      "range": {
+        "startLine": 86,
+        "startChar": 28,
+        "endLine": 86,
+        "endChar": 29
+      },
+      "revId": "f7d6d9e059307fb94958b67841e9ce77a1c23d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81b773f8_28e37c07",
+        "filename": "media/codec2/hidl/client/client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-19T06:12:06Z",
+      "side": 1,
+      "message": "Vinay/Wonsik: should we default this to CPU_READ if we are not setting surface?",
+      "range": {
+        "startLine": 1466,
+        "startChar": 12,
+        "endLine": 1466,
+        "endChar": 19
+      },
+      "revId": "f7d6d9e059307fb94958b67841e9ce77a1c23d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
