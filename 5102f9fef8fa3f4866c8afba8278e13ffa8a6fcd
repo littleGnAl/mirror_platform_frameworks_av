@@ -178,6 +178,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "bcee536c_49096216",
+        "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-02-19T00:12:06Z",
+      "side": 1,
+      "message": "Apologies for an unclear question. I understand the high level use case, I\u0027m wondering where in the APM code we install the patch from HDMI input to MSD. Is it the new code in createAudioPatchInternal which says \"if first sink is to MSD, establish single MSD patch\"? I\u0027m curious what are the events at the framework / app level that will cause taking that route. Is it the responsibility of some app?",
+      "parentUuid": "0a11292b_312015ab",
+      "range": {
+        "startLine": 589,
+        "startChar": 4,
+        "endLine": 589,
+        "endChar": 88
+      },
+      "revId": "5102f9fef8fa3f4866c8afba8278e13ffa8a6fcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "25cd171a_10629f9b",
         "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
         "patchSetId": 1
