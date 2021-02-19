@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6255ac71_9a60e49a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-19T14:52:18Z",
+      "side": 1,
+      "message": "please use audio_gain_mask_t instead of int for \"reasons\" everywhere.",
+      "revId": "669801b702a57a3bda7e67afc128e24a27fc7b60",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
