@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ecef4459_bf7f7cd1",
+        "filename": "media/libstagefright/rtsp/ARTPConnection.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 885,
+      "author": {
+        "id": 1488927
+      },
+      "writtenOn": "2021-02-19T04:43:59Z",
+      "side": 1,
+      "message": "Yes. It needs to be \u0027true\u0027",
+      "parentUuid": "bd0bdb31_19c1eab7",
+      "range": {
+        "startLine": 885,
+        "startChar": 35,
+        "endLine": 885,
+        "endChar": 40
+      },
+      "revId": "43c272597808013d1562dd6a5a04c61986f28f04",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c05a5f6f_718adc3d",
