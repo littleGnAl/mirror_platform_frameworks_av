@@ -16,6 +16,29 @@
       "message": "Kishore,\nThere is a recent change in CCodecConfig.cpp in internal branches that is resulting in merge conflict.\nI will cherry-pick that change to aosp/master.\nAfter that, please rebase this change to latest master.",
       "revId": "565e9b2908f10d6f5b801ff0716adbad7d36d67b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c3aac17_edce87a0",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 39
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2021-02-20T00:28:04Z",
+      "side": 1,
+      "message": "why is this always type1 size?",
+      "range": {
+        "startLine": 1789,
+        "startChar": 68,
+        "endLine": 1789,
+        "endChar": 93
+      },
+      "revId": "565e9b2908f10d6f5b801ff0716adbad7d36d67b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
