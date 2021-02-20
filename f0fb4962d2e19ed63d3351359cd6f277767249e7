@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "39de050e_f768135c",
+        "filename": "media/libeffects/lvm/lib/Common/lib/LVM_Types.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 132,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-20T07:02:54Z",
+      "side": 1,
+      "message": "nit, no need to change, but this looks the value twice.\n\n  if (const auto it \u003d map.find();\n       it !\u003d map.end()) {\n      return it-\u003esecond;\n  }",
+      "range": {
+        "startLine": 132,
+        "startChar": 0,
+        "endLine": 132,
+        "endChar": 40
+      },
+      "revId": "f0fb4962d2e19ed63d3351359cd6f277767249e7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
