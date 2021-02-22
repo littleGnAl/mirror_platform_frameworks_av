@@ -22,6 +22,30 @@
       },
       "revId": "4301cca77aca2c23bc0aea2d3beccec0b2984212",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71d4067f_ae20e708",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 40
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2021-02-22T17:25:31Z",
+      "side": 1,
+      "message": "Yeah, just about to reply.\nThe code elsewhere requires that size must be kHdrstaticinfo_type1_size for type1, and must be kHdrstaticinfo_type2_size for type2. It can\u0027t be one size for both type1\u00262.\n\nCould you please fix as Ray suggested?",
+      "parentUuid": "5bf69339_4920f7ab",
+      "range": {
+        "startLine": 1789,
+        "startChar": 68,
+        "endLine": 1789,
+        "endChar": 82
+      },
+      "revId": "4301cca77aca2c23bc0aea2d3beccec0b2984212",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
