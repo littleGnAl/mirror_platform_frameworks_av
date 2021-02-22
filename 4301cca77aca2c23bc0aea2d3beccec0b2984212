@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5bf69339_4920f7ab",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 40
+      },
+      "lineNbr": 1789,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-22T17:22:02Z",
+      "side": 1,
+      "message": "this won\u0027t work either.\nas written, this will return the size of the union (which means it\u0027s always the larger)\n\nI think this needs to be rewritten as something like:\n\nif (info.mId \u003d\u003d type1) \n    meta-\u003esetData(kKeyHdrStaticInfo, \u0027hdrS\u0027, \u0026info, kHdrstaticinfo_type1_size);\nelse if (info.mId \u003d\u003d type2)\n    meta-\u003esetData(kKeyHdrstaticInfo, \u0027hdrS\u0027, \u0026info, kHdrstaticinfo_type2_size);",
+      "range": {
+        "startLine": 1789,
+        "startChar": 68,
+        "endLine": 1789,
+        "endChar": 82
+      },
+      "revId": "4301cca77aca2c23bc0aea2d3beccec0b2984212",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
