@@ -1181,7 +1181,8 @@ status_t CCodecBufferChannel::start(
                 output->buffers.reset(new RawGraphicOutputBuffers(mName));
             }
         } else {
-            output->buffers.reset(new LinearOutputBuffers(mName));
+            output->buffers.reset((secure)? new SecureLinearOutputBuffers(mName):
+                                            new LinearOutputBuffers(mName));
         }
         output->buffers->setFormat(outputFormat);
 

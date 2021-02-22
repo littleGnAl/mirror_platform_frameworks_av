@@ -1321,4 +1321,124 @@ std::function<sp<Codec2Buffer>()> RawGraphicOutputBuffers::getAlloc() {
     };
 }
 
+// SecureOutputBuffersArray
+
+status_t SecureOutputBuffersArray::registerBuffer(
+        const std::shared_ptr<C2Buffer> &buffer,
+        size_t *index,
+        sp<MediaCodecBuffer> *clientBuffer) {
+    sp<Codec2Buffer> c2Buffer;
+    status_t err = mImpl.grabBuffer(
+            index,
+            &c2Buffer,
+            [buffer](const sp<Codec2Buffer> &clientBuffer) {
+                return clientBuffer->canCopy(buffer);
+            });
+    if (err == WOULD_BLOCK) {
+        ALOGV("[%s] buffers temporarily not available", mName);
+        return err;
+    } else if (err != OK) {
+        ALOGD("[%s] grabBuffer failed: %d", mName, err);
+        return err;
+    }
+    c2Buffer->setFormat(mFormat);
+    if (!c2Buffer->copy(buffer)) {
+        ALOGD("[%s] copy buffer failed", mName);
+        return WOULD_BLOCK;
+    }
+    submit(c2Buffer);
+    handleImageData(c2Buffer);
+    *clientBuffer = c2Buffer;
+    ALOGV("[%s] grabbed buffer %zu", mName, *index);
+    return OK;
+}
+
+status_t SecureOutputBuffersArray::registerCsd(
+        const C2StreamInitDataInfo::output *csd,
+        size_t *index,
+        sp<MediaCodecBuffer> *clientBuffer) {
+    sp<Codec2Buffer> c2Buffer;
+    status_t err = mImpl.grabBuffer(
+            index,
+            &c2Buffer,
+            [csd](const sp<Codec2Buffer> &clientBuffer) {
+                return clientBuffer->base() != nullptr
+                        && clientBuffer->capacity() >= csd->flexCount();
+            });
+    if (err != OK) {
+        return err;
+    }
+    memcpy(c2Buffer->base(), csd->m.value, csd->flexCount());
+    c2Buffer->setRange(0, csd->flexCount());
+    c2Buffer->setFormat(mFormat);
+    *clientBuffer = c2Buffer;
+    return OK;
+}
+
+void SecureOutputBuffersArray::realloc(const std::shared_ptr<C2Buffer> &c2buffer) {
+    switch (c2buffer->data().type()) {
+        case C2BufferData::LINEAR: {
+            uint32_t size = kLinearBufferSize;
+            const std::vector<C2ConstLinearBlock> &linear_blocks = c2buffer->data().linearBlocks();
+            const uint32_t block_size = linear_blocks.front().size();
+            if (block_size < kMaxLinearBufferSize / 2) {
+                size = block_size * 2;
+            } else {
+                size = kMaxLinearBufferSize;
+            }
+            mAlloc = [format = mFormat, size] {
+                return new LocalSecureLinearBuffer(format, new ABuffer(size));
+            };
+            ALOGD("[%s] reallocating with linear buffer of size %u", mName, size);
+            break;
+        }
+        default:
+            ALOGD("Unsupported type: %d", (int)c2buffer->data().type());
+            return;
+    }
+    mImpl.realloc(mAlloc);
+}
+
+// SecureLinearOutputBuffers
+
+std::unique_ptr<OutputBuffersArray> SecureLinearOutputBuffers::toArrayMode(size_t size) {
+    std::unique_ptr<SecureOutputBuffersArray> array(new SecureOutputBuffersArray(mComponentName.c_str()));
+    array->transferFrom(this);
+    std::function<sp<Codec2Buffer>()> alloc = getAlloc();
+    array->initialize(mImpl, size, alloc);
+    return array;
+}
+
+sp<Codec2Buffer> SecureLinearOutputBuffers::wrap(const std::shared_ptr<C2Buffer> &buffer) {
+    if (buffer == nullptr) {
+        ALOGV("[%s] using a dummy buffer", mName);
+        return new LocalSecureLinearBuffer(mFormat, new ABuffer(0));
+    }
+    if (buffer->data().type() != C2BufferData::LINEAR) {
+        ALOGV("[%s] non-linear buffer %d", mName, buffer->data().type());
+        // We expect linear output buffers from the component.
+        return nullptr;
+    }
+    if (buffer->data().linearBlocks().size() != 1u) {
+        ALOGV("[%s] no linear buffers", mName);
+        // We expect one and only one linear block from the component.
+        return nullptr;
+    }
+
+    sp<Codec2Buffer> clientBuffer = ConstSecureLinearBlockBuffer::Allocate(mFormat, buffer);
+    if (clientBuffer == nullptr) {
+        ALOGD("[%s] ConstLinearBlockBuffer::Allocate failed", mName);
+        return nullptr;
+    }
+    submit(clientBuffer);
+    return clientBuffer;
+}
+
+std::function<sp<Codec2Buffer>()> SecureLinearOutputBuffers::getAlloc() {
+    return [format = mFormat]{
+        // TODO: proper max output size
+        return new LocalSecureLinearBuffer(format, new ABuffer(kLinearBufferSize));
+    };
+}
+
 }  // namespace android

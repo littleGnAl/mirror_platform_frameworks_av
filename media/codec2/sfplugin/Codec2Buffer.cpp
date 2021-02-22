@@ -831,4 +831,58 @@ native_handle_t *EncryptedLinearBlockBuffer::handle() const {
     return const_cast<native_handle_t *>(mBlock->handle());
 }
 
+// LocalSecureLinearBuffer
+
+bool LocalSecureLinearBuffer::canCopy(const std::shared_ptr<C2Buffer> &buffer) const {
+    return canCopyLinear(buffer);
+}
+
+bool LocalSecureLinearBuffer::copy(const std::shared_ptr<C2Buffer> &buffer) {
+    // We assume that all canCopyLinear() checks passed.
+    if (!buffer || buffer->data().linearBlocks().size() == 0u
+            || buffer->data().linearBlocks()[0].size() == 0u) {
+        setRange(0, 0);
+        return true;
+    }
+
+    C2ConstLinearBlock linearBlock = buffer->data().linearBlocks().front();
+    native_handle_t *handle = (native_handle_t *)linearBlock.handle();
+    int32_t size = linearBlock.size();
+
+    this->meta()->setPointer("handle", handle);
+    this->meta()->setInt32("rangeOffset", 0);
+    this->meta()->setInt32("rangeLength", size);
+
+    setRange(0, size);
+    mBufferRef = buffer;
+
+    return true;
+}
+
+// static
+sp<Codec2Buffer> ConstSecureLinearBlockBuffer::Allocate(
+    const sp<AMessage> &format, const std::shared_ptr<C2Buffer> &buffer) {
+    if (!buffer
+            || buffer->data().type() != C2BufferData::LINEAR
+            || buffer->data().linearBlocks().size() != 1u) {
+        return nullptr;
+    }
+    return new ConstSecureLinearBlockBuffer(format, buffer);
+}
+
+ConstSecureLinearBlockBuffer::ConstSecureLinearBlockBuffer(
+    const sp<AMessage> &format,
+    const std::shared_ptr<C2Buffer> &buffer)
+: Codec2Buffer(format, new ABuffer(0)),
+  mBufferRef(buffer) {
+}
+
+std::shared_ptr<C2Buffer> ConstSecureLinearBlockBuffer::asC2Buffer() {
+    return mBufferRef;
+}
+
+void ConstSecureLinearBlockBuffer::clearC2BufferRefs() {
+    mBufferRef.reset();
+}
+
 }  // namespace android
