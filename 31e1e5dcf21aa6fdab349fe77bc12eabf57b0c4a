@@ -22,6 +22,30 @@
       },
       "revId": "31e1e5dcf21aa6fdab349fe77bc12eabf57b0c4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e9f853d_511cda1c",
+        "filename": "camera/CameraUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1121338
+      },
+      "writtenOn": "2021-02-22T23:59:15Z",
+      "side": 1,
+      "message": "I\u0027ve got an internal CL to fix that, I\u0027ll cp that to aosp after this and some more testing.",
+      "parentUuid": "665d457e_64179150",
+      "range": {
+        "startLine": 129,
+        "startChar": 43,
+        "endLine": 129,
+        "endChar": 54
+      },
+      "revId": "31e1e5dcf21aa6fdab349fe77bc12eabf57b0c4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
