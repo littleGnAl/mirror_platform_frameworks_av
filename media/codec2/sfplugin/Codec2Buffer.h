@@ -391,6 +391,54 @@ private:
     int32_t mHeapSeqNum;
 };
 
+/**
+ * MediaCodecBuffer implementation on top of local secure linear buffer. This cannot
+ * cross process boundary so asC2Buffer() returns only nullptr.
+ */
+class LocalSecureLinearBuffer : public Codec2Buffer {
+public:
+    using Codec2Buffer::Codec2Buffer;
+
+    ~LocalSecureLinearBuffer() override = default;
+
+    std::shared_ptr<C2Buffer> asC2Buffer() override { return nullptr; }
+    bool canCopy(const std::shared_ptr<C2Buffer> &buffer) const override;
+    bool copy(const std::shared_ptr<C2Buffer> &buffer) override;
+
+private:
+    std::shared_ptr<C2Buffer> mBufferRef;
+};
+
+/**
+ * MediaCodecBuffer implementation wraps around C2ConstSecureLinearBlock.
+ */
+class ConstSecureLinearBlockBuffer : public Codec2Buffer {
+public:
+    /**
+     * Allocate a new ConstSecureLinearBlockBuffer wrapping around C2Buffer object.
+     *
+     * \param   format  mandatory buffer format for MediaCodecBuffer
+     * \param   buffer  linear C2Buffer object to wrap around.
+     * \return          ConstSecureLinearBlockBuffer object with readable mapping.
+     *                  nullptr if unsuccessful.
+     */
+    static sp<Codec2Buffer> Allocate(
+            const sp<AMessage> &format, const std::shared_ptr<C2Buffer> &buffer);
+
+    virtual ~ConstSecureLinearBlockBuffer() = default;
+
+    std::shared_ptr<C2Buffer> asC2Buffer() override;
+    void clearC2BufferRefs() override;
+
+private:
+    ConstSecureLinearBlockBuffer(
+            const sp<AMessage> &format,
+            const std::shared_ptr<C2Buffer> &buffer);
+    ConstSecureLinearBlockBuffer() = delete;
+
+    std::shared_ptr<C2Buffer> mBufferRef;
+};
+
 }  // namespace android
 
 #endif  // CODEC2_BUFFER_H_

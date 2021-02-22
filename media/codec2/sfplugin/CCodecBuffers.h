@@ -1005,12 +1005,12 @@ public:
     status_t registerBuffer(
             const std::shared_ptr<C2Buffer> &buffer,
             size_t *index,
-            sp<MediaCodecBuffer> *clientBuffer) final;
+            sp<MediaCodecBuffer> *clientBuffer) override;
 
     status_t registerCsd(
             const C2StreamInitDataInfo::output *csd,
             size_t *index,
-            sp<MediaCodecBuffer> *clientBuffer) final;
+            sp<MediaCodecBuffer> *clientBuffer) override;
 
     bool releaseBuffer(
             const sp<MediaCodecBuffer> &buffer, std::shared_ptr<C2Buffer> *c2buffer) override;
@@ -1027,7 +1027,7 @@ public:
      *
      * \param c2buffer[in] the reference buffer
      */
-    void realloc(const std::shared_ptr<C2Buffer> &c2buffer);
+    virtual void realloc(const std::shared_ptr<C2Buffer> &c2buffer);
 
     /**
      * Grow the array to the new size. It is a programming error to supply
@@ -1043,7 +1043,7 @@ public:
      */
     void transferFrom(OutputBuffers* source);
 
-private:
+protected:
     BuffersArrayImpl mImpl;
     std::function<sp<Codec2Buffer>()> mAlloc;
 };
@@ -1095,7 +1095,7 @@ public:
      */
     virtual std::function<sp<Codec2Buffer>()> getAlloc() = 0;
 
-private:
+protected:
     FlexBuffersImpl mImpl;
 };
 
@@ -1133,6 +1133,38 @@ public:
 
 private:
     std::shared_ptr<LocalBufferPool> mLocalBufferPool;
+};
+
+class SecureOutputBuffersArray : public OutputBuffersArray {
+public:
+    SecureOutputBuffersArray(const char *componentName, const char *name = "Output-Secure[N]")
+        : OutputBuffersArray(componentName, name) { }
+    ~SecureOutputBuffersArray() override = default;
+
+    status_t registerBuffer(
+            const std::shared_ptr<C2Buffer> &buffer,
+            size_t *index,
+            sp<MediaCodecBuffer> *clientBuffer) final;
+
+    status_t registerCsd(
+            const C2StreamInitDataInfo::output *csd,
+            size_t *index,
+            sp<MediaCodecBuffer> *clientBuffer) final;
+
+    void realloc(const std::shared_ptr<C2Buffer> &c2buffer);
+};
+
+class SecureLinearOutputBuffers : public LinearOutputBuffers {
+public:
+    SecureLinearOutputBuffers(const char *componentName, const char *name = "1D-Output-Secure")
+        : LinearOutputBuffers(componentName, name) { }
+    ~SecureLinearOutputBuffers() override = default;
+
+    std::unique_ptr<OutputBuffersArray> toArrayMode(size_t size) override;
+
+    sp<Codec2Buffer> wrap(const std::shared_ptr<C2Buffer> &buffer) override;
+
+    std::function<sp<Codec2Buffer>()> getAlloc() override;
 };
 
 }  // namespace android
