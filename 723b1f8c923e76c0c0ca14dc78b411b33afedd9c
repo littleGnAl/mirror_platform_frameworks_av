@@ -16,6 +16,23 @@
       "message": "Looping in Jayant who has more knowledge on the camera service side of things.",
       "revId": "723b1f8c923e76c0c0ca14dc78b411b33afedd9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44b2a248_d933d2cb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1463284
+      },
+      "writtenOn": "2021-02-22T22:25:32Z",
+      "side": 1,
+      "message": "There\u0027s a CL now open to add CameraUtils::isCameraServiceDisabled to AOSP. Once that\u0027s in, we can cherry-pick the existing fix for this issue to AOSP.",
+      "revId": "723b1f8c923e76c0c0ca14dc78b411b33afedd9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
