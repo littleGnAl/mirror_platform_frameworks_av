@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "665d457e_64179150",
+        "filename": "camera/CameraUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 129,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2021-02-22T21:19:22Z",
+      "side": 1,
+      "message": "strncasecmp is locale-sensitive (because lowercasing depends on locale).  But since this is already the impl and we have it merged in a bunch of places, ah well.",
+      "range": {
+        "startLine": 129,
+        "startChar": 43,
+        "endLine": 129,
+        "endChar": 54
+      },
+      "revId": "31e1e5dcf21aa6fdab349fe77bc12eabf57b0c4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
