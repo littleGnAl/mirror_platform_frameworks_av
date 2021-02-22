@@ -33,6 +33,24 @@
       "message": "There\u0027s a CL now open to add CameraUtils::isCameraServiceDisabled to AOSP. Once that\u0027s in, we can cherry-pick the existing fix for this issue to AOSP.",
       "revId": "723b1f8c923e76c0c0ca14dc78b411b33afedd9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1debeddf_e5816e8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1463284
+      },
+      "writtenOn": "2021-02-22T22:26:47Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/frameworks/av/+/1599775",
+      "parentUuid": "44b2a248_d933d2cb",
+      "revId": "723b1f8c923e76c0c0ca14dc78b411b33afedd9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
