@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6ae34389_434bb9c8",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-23T06:31:52Z",
+      "side": 1,
+      "message": "Just wanted to confirm, should this be moved to a EffectBundleHelper.h and EffectBundleHelper.cpp?",
+      "parentUuid": "cc3e73a2_f4c1c180",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 26
+      },
+      "revId": "ef07c408773dfb450df99a2b5a02602388518a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d347b9db_92a61869",
         "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
         "patchSetId": 6
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-23T03:25:18Z",
       "side": 1,
       "message": "perhaps describe what this is testing?  A single iteration of process.",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 175,
+        "endChar": 6
+      },
+      "revId": "ef07c408773dfb450df99a2b5a02602388518a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bcf5a39a_9fe56dc8",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-23T06:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d347b9db_92a61869",
       "range": {
         "startLine": 174,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b5906ee_574b3279",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 218,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-23T06:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14d0f1e8_1fb74df9",
+      "range": {
+        "startLine": 217,
+        "startChar": 3,
+        "endLine": 218,
+        "endChar": 9
+      },
+      "revId": "ef07c408773dfb450df99a2b5a02602388518a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a32ac1bf_55def37d",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-02-23T03:25:18Z",
       "side": 1,
       "message": "const?",
+      "range": {
+        "startLine": 224,
+        "startChar": 17,
+        "endLine": 224,
+        "endChar": 27
+      },
+      "revId": "ef07c408773dfb450df99a2b5a02602388518a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "966e7698_8f3223b2",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-23T06:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a32ac1bf_55def37d",
       "range": {
         "startLine": 224,
         "startChar": 17,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a01ecf5_7e836faa",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 229,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-23T06:31:52Z",
+      "side": 1,
+      "message": "changed to use double",
+      "parentUuid": "3b662f13_3f675e94",
+      "range": {
+        "startLine": 229,
+        "startChar": 14,
+        "endLine": 229,
+        "endChar": 19
+      },
+      "revId": "ef07c408773dfb450df99a2b5a02602388518a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6d118cc_58e5384e",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-02-23T03:25:18Z",
       "side": 1,
       "message": "nit: newline below.",
+      "range": {
+        "startLine": 241,
+        "startChar": 0,
+        "endLine": 241,
+        "endChar": 1
+      },
+      "revId": "ef07c408773dfb450df99a2b5a02602388518a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1cb0ff15_842f8c70",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 241,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-23T06:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6d118cc_58e5384e",
       "range": {
         "startLine": 241,
         "startChar": 0,
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ef86b74_aca6f45b",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 288,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-23T06:31:52Z",
+      "side": 1,
+      "message": "my bad, initially started with an approach to call this after calling adjust_channels to repeat first channel data to stereo and then fill the rest using this method.\ndecided against adjust_channel approach, but forgot to update the fill to handle all.",
+      "parentUuid": "886a2a7b_7da544b0",
+      "range": {
+        "startLine": 288,
+        "startChar": 3,
+        "endLine": 288,
+        "endChar": 31
+      },
+      "revId": "ef07c408773dfb450df99a2b5a02602388518a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a78009b0_ee5a13b9",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-02-23T03:25:18Z",
       "side": 1,
       "message": "call this out as BassBoost? otherwise someone might accidentally rearrange the array causing failure.",
+      "range": {
+        "startLine": 306,
+        "startChar": 20,
+        "endLine": 306,
+        "endChar": 40
+      },
+      "revId": "ef07c408773dfb450df99a2b5a02602388518a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08348432_bd741b83",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 306,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-23T06:31:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a78009b0_ee5a13b9",
       "range": {
         "startLine": 306,
         "startChar": 20,
@@ -227,6 +419,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a3bad6ca_b8199a16",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-23T06:31:52Z",
+      "side": 1,
+      "message": "as this is effect dependent would it be better to test such criteria separately after a detailed discussion?\nfor each of the effects, we can test (when applicable) if the output is to be identical across channels, must not be silence, silence produces silence etc.\nAlso each effect needs to be appropriately tested to verify that the effect is actually applied correctly (did bassBoost really boost appropriately and so on).",
+      "parentUuid": "863e5a39_7ed2d5c8",
+      "range": {
+        "startLine": 313,
+        "startChar": 78,
+        "endLine": 313,
+        "endChar": 79
+      },
+      "revId": "ef07c408773dfb450df99a2b5a02602388518a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4fc83742_1b09b35f",
         "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
         "patchSetId": 6
@@ -238,6 +454,30 @@
       "writtenOn": "2021-02-23T03:25:18Z",
       "side": 1,
       "message": "can this be const?",
+      "range": {
+        "startLine": 324,
+        "startChar": 18,
+        "endLine": 324,
+        "endChar": 19
+      },
+      "revId": "ef07c408773dfb450df99a2b5a02602388518a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b3f1157_9d75146d",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-23T06:31:52Z",
+      "side": 1,
+      "message": "InitGoogleTest doesn\u0027t take const argv.\nSo retaining this as is.",
+      "parentUuid": "4fc83742_1b09b35f",
       "range": {
         "startLine": 324,
         "startChar": 18,
