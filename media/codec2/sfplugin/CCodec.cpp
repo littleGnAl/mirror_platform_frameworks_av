@@ -36,8 +36,6 @@
 #include <gui/Surface.h>
 #include <gui/bufferqueue/1.0/H2BGraphicBufferProducer.h>
 #include <media/omx/1.0/WOmxNode.h>
-#include <media/openmax/OMX_Core.h>
-#include <media/openmax/OMX_IndexExt.h>
 #include <media/stagefright/omx/1.0/WGraphicBufferSource.h>
 #include <media/stagefright/omx/OmxGraphicBufferSource.h>
 #include <media/stagefright/CCodec.h>
@@ -205,10 +203,7 @@ public:
         mNode->setFrameSize(mWidth, mHeight);
 
         // Usage is queried during configure(), so setting it beforehand.
-        OMX_U32 usage = mConfig.mUsage & 0xFFFFFFFF;
-        (void)mNode->setParameter(
-                (OMX_INDEXTYPE)OMX_IndexParamConsumerUsageBits,
-                &usage, sizeof(usage));
+        (void)mNode->setConsumerUsage(mConfig.mUsage);
 
         // NOTE: we do not use/pass through color aspects from GraphicBufferSource as we
         // communicate that directly to the component.
@@ -252,15 +247,7 @@ public:
         // more memory. This is a temporary workaround to reduce memory for
         // larger-than-4K scenario.
         if (mWidth * mHeight > 4096 * 2340) {
-            constexpr OMX_U32 kPortIndexInput = 0;
-
-            OMX_PARAM_PORTDEFINITIONTYPE param;
-            param.nPortIndex = kPortIndexInput;
-            status_t err = mNode->getParameter(OMX_IndexParamPortDefinition,
-                                               &param, sizeof(param));
-            if (err == OK) {
-                numSlots = param.nBufferCountActual;
-            }
+            (void)mNode->getInputBufferCount(&numSlots);
         }
 
         for (size_t i = 0; i < numSlots; ++i) {
@@ -297,17 +284,12 @@ public:
         // pts gap
         if (config.mMinAdjustedFps > 0 || config.mFixedAdjustedFps > 0) {
             if (mNode != nullptr) {
-                OMX_PARAM_U32TYPE ptrGapParam = {};
-                ptrGapParam.nSize = sizeof(OMX_PARAM_U32TYPE);
                 float gap = (config.mMinAdjustedFps > 0)
                         ? c2_min(INT32_MAX + 0., 1e6 / config.mMinAdjustedFps + 0.5)
                         : c2_max(0. - INT32_MAX, -1e6 / config.mFixedAdjustedFps - 0.5);
                 // float -> uint32_t is undefined if the value is negative.
                 // First convert to int32_t to ensure the expected behavior.
-                ptrGapParam.nU32 = int32_t(gap);
-                (void)mNode->setParameter(
-                        (OMX_INDEXTYPE)OMX_IndexParamMaxFrameDurationForBitrateControl,
-                        &ptrGapParam, sizeof(ptrGapParam));
+                (void)mNode->setMaxEncodedFrameDuration(int32_t(gap));
             }
         }
 

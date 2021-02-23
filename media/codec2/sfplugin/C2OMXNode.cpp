@@ -233,6 +233,20 @@ status_t C2OMXNode::getParameter(OMX_INDEXTYPE index, void *params, size_t size)
     return err;
 }
 
+status_t C2OMXNode::getInputBufferCount(size_t *count) {
+    constexpr OMX_U32 kPortIndexInput = 0;
+
+    OMX_PARAM_PORTDEFINITIONTYPE param;
+
+    param.nPortIndex = kPortIndexInput;
+    status_t err = getParameter(OMX_IndexParamPortDefinition,
+                                       &param, sizeof(param));
+    if (err == OK) {
+        *count = param.nBufferCountActual;
+    }
+    return err;
+}
+
 status_t C2OMXNode::setParameter(OMX_INDEXTYPE index, const void *params, size_t size) {
     if (params == NULL) {
         return BAD_VALUE;
@@ -255,6 +269,23 @@ status_t C2OMXNode::setParameter(OMX_INDEXTYPE index, const void *params, size_t
             return OK;
     }
     return ERROR_UNSUPPORTED;
+}
+
+status_t C2OMXNode::setConsumerUsage(uint32_t usage_) {
+    OMX_U32 usage = usage_;
+    return setParameter(
+            (OMX_INDEXTYPE)OMX_IndexParamConsumerUsageBits,
+            &usage, sizeof(usage));
+}
+
+status_t C2OMXNode::setMaxEncodedFrameDuration(uint32_t maxPtsGapUs) {
+    OMX_PARAM_U32TYPE param;
+    InitOMXParams(&param);
+    param.nSize = sizeof(OMX_PARAM_U32TYPE);
+    param.nU32 = maxPtsGapUs;
+    return setParameter(
+            (OMX_INDEXTYPE)OMX_IndexParamMaxFrameDurationForBitrateControl,
+            &param, sizeof(param));
 }
 
 status_t C2OMXNode::getConfig(OMX_INDEXTYPE index, void *config, size_t size) {

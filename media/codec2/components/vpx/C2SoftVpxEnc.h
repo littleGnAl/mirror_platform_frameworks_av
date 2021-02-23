@@ -32,8 +32,7 @@
 
 namespace android {
 
-// TODO: These defs taken from deprecated OMX_VideoExt.h. Move these definitions
-// to a new header file and include it.
+// TODO: Move these definitions to a new header file and include it.
 
 /** Maximum number of temporal layers */
 #define MAXTEMPORALLAYERS 3

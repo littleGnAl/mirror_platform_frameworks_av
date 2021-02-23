@@ -814,7 +814,7 @@ void C2SoftAacDec::process(
             if (!mStreamInfo->sampleRate || !mStreamInfo->numChannels) {
                 // if ((mInputBufferCount > 2) && (mOutputBufferCount <= 1)) {
                     ALOGD("Invalid AAC stream");
-                    // TODO: notify(OMX_EventError, OMX_ErrorUndefined, decoderErr, NULL);
+                    // TODO: notify decoderErr
                     // mSignalledError = true;
                 // }
             } else if ((mStreamInfo->sampleRate != prevSampleRate) ||

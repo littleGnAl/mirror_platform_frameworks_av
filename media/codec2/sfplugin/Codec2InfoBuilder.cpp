@@ -26,14 +26,6 @@
 #include <C2PlatformSupport.h>
 #include <Codec2Mapper.h>
 
-#include <OMX_Audio.h>
-#include <OMX_AudioExt.h>
-#include <OMX_IndexExt.h>
-#include <OMX_Types.h>
-#include <OMX_Video.h>
-#include <OMX_VideoExt.h>
-#include <OMX_AsString.h>
-
 #include <android/hardware/media/omx/1.0/IOmx.h>
 #include <android/hardware/media/omx/1.0/IOmxObserver.h>
 #include <android/hardware/media/omx/1.0/IOmxNode.h>

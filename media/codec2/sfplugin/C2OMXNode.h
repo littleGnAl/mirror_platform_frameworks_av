@@ -93,6 +93,29 @@ struct C2OMXNode : public BnOMXNode {
      */
     void onInputBufferDone(c2_cntr64_t index);
 
+    /**
+     * Set the consumer usage.
+     *
+     * \param usage lower 32-bits of the gralloc usage
+     */
+    // GraphicBuffer.h defines usage simply as uint64_t, but OMX only supports 32-bit usage
+    status_t setConsumerUsage(uint32_t usage);
+
+    /**
+     * Set the maximum encoded frame duration.
+     *
+     * \param maximum gap between frames used for bitrate control in usecs.
+     */
+    status_t setMaxEncodedFrameDuration(uint32_t maxPtsGapUs);
+
+    /**
+     * Retrieve the number of input buffer slots.
+     *
+     * \param count pointer to where to retrieve the input buffer count. The contents are
+     *              not updated on error.
+     */
+    status_t getInputBufferCount(size_t *count /* nonnull */);
+
 private:
     std::weak_ptr<Codec2Client::Component> mComp;
     sp<IOMXBufferSource> mBufferSource;

@@ -37,7 +37,6 @@
 #include <cutils/properties.h>
 #include <gui/Surface.h>
 #include <hidlmemory/FrameworkUtils.h>
-#include <media/openmax/OMX_Core.h>
 #include <media/stagefright/foundation/ABuffer.h>
 #include <media/stagefright/foundation/ALookup.h>
 #include <media/stagefright/foundation/AMessage.h>
