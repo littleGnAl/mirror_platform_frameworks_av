@@ -16,6 +16,98 @@
       "message": "Eric, PTAL. There is a comment explaining how the HDMI input patch is going to be established from the framework side: https://android-review.googlesource.com/c/platform/frameworks/av/+/1593613/1..2/services/audiopolicy/tests/audiopolicymanager_tests.cpp#b589",
       "revId": "c84e8f97c1fcf6c34b1166db7cd9c4bcb980987b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d608ce5_bf4d5639",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-23T09:38:51Z",
+      "side": 1,
+      "message": "msdCompressedFormatsOrder",
+      "range": {
+        "startLine": 68,
+        "startChar": 41,
+        "endLine": 68,
+        "endChar": 63
+      },
+      "revId": "c84e8f97c1fcf6c34b1166db7cd9c4bcb980987b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "deb8139d_697a52bf",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-23T09:38:51Z",
+      "side": 1,
+      "message": "msdSurroundChannelMasksOrder",
+      "range": {
+        "startLine": 72,
+        "startChar": 47,
+        "endLine": 72,
+        "endChar": 72
+      },
+      "revId": "c84e8f97c1fcf6c34b1166db7cd9c4bcb980987b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "43229077_f070feb8",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-23T09:38:51Z",
+      "side": 1,
+      "message": "we don\u0027t handle an empty patch builder at the call site for buildMsdPatch.\nIf this is a config or programming error, we should assert here.\n\nOIf it is expected not to have an MSD module at this point then the caller should skip a PatchBuilder with an empty patch",
+      "range": {
+        "startLine": 1431,
+        "startChar": 15,
+        "endLine": 1431,
+        "endChar": 27
+      },
+      "revId": "c84e8f97c1fcf6c34b1166db7cd9c4bcb980987b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d38cb0d1_75cd529e",
+        "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-23T09:38:51Z",
+      "side": 1,
+      "message": "it he offload behavior intentional here?",
+      "range": {
+        "startLine": 416,
+        "startChar": 39,
+        "endLine": 416,
+        "endChar": 73
+      },
+      "revId": "c84e8f97c1fcf6c34b1166db7cd9c4bcb980987b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
