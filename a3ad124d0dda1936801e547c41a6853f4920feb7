@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ab48bf3_05b0c74e",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 31,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-23T03:25:18Z",
+      "side": 1,
+      "message": "please explain the logic behind this?",
+      "range": {
+        "startLine": 31,
+        "startChar": 41,
+        "endLine": 31,
+        "endChar": 42
+      },
+      "revId": "a3ad124d0dda1936801e547c41a6853f4920feb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e496fc4_ed7dbda9",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-23T03:25:18Z",
+      "side": 1,
+      "message": "nit const",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 98,
+        "endChar": 18
+      },
+      "revId": "a3ad124d0dda1936801e547c41a6853f4920feb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07db0640_2a1ba5b3",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-23T03:25:18Z",
+      "side": 1,
+      "message": "any of these const?",
+      "range": {
+        "startLine": 101,
+        "startChar": 0,
+        "endLine": 106,
+        "endChar": 22
+      },
+      "revId": "a3ad124d0dda1936801e547c41a6853f4920feb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd5ee09f_3b5d9795",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-23T03:25:18Z",
+      "side": 1,
+      "message": "{} (zero initialize?)",
+      "range": {
+        "startLine": 107,
+        "startChar": 33,
+        "endLine": 107,
+        "endChar": 34
+      },
+      "revId": "a3ad124d0dda1936801e547c41a6853f4920feb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
