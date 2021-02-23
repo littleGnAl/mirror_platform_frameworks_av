@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a856203c_d6c9544f",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 98,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-23T08:00:35Z",
+      "side": 1,
+      "message": "ok,leave as is.",
+      "parentUuid": "995b20b7_3b588563",
+      "range": {
+        "startLine": 98,
+        "startChar": 16,
+        "endLine": 98,
+        "endChar": 18
+      },
+      "revId": "a3ad124d0dda1936801e547c41a6853f4920feb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07db0640_2a1ba5b3",

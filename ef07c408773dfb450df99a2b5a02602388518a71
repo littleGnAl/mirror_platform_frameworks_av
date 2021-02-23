@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9382a191_abb18849",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-23T08:00:35Z",
+      "side": 1,
+      "message": "Maybe we can move this later when reused.",
+      "parentUuid": "6ae34389_434bb9c8",
+      "range": {
+        "startLine": 84,
+        "startChar": 0,
+        "endLine": 84,
+        "endChar": 26
+      },
+      "revId": "ef07c408773dfb450df99a2b5a02602388518a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d347b9db_92a61869",
@@ -441,6 +465,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "30388388_89eaa680",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-23T08:00:35Z",
+      "side": 1,
+      "message": "okay, let\u0027s submit as is.",
+      "parentUuid": "a3bad6ca_b8199a16",
+      "range": {
+        "startLine": 313,
+        "startChar": 78,
+        "endLine": 313,
+        "endChar": 79
+      },
+      "revId": "ef07c408773dfb450df99a2b5a02602388518a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4fc83742_1b09b35f",
@@ -478,6 +526,30 @@
       "side": 1,
       "message": "InitGoogleTest doesn\u0027t take const argv.\nSo retaining this as is.",
       "parentUuid": "4fc83742_1b09b35f",
+      "range": {
+        "startLine": 324,
+        "startChar": 18,
+        "endLine": 324,
+        "endChar": 19
+      },
+      "revId": "ef07c408773dfb450df99a2b5a02602388518a71",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "981beb9a_77cd3dcd",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 324,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-02-23T08:00:35Z",
+      "side": 1,
+      "message": "sounds reasonable.",
+      "parentUuid": "9b3f1157_9d75146d",
       "range": {
         "startLine": 324,
         "startChar": 18,
