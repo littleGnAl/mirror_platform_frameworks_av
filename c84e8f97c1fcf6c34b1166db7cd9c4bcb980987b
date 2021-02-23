@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e25987d_804bee2e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-02-23T00:38:21Z",
+      "side": 1,
+      "message": "Eric, PTAL. There is a comment explaining how the HDMI input patch is going to be established from the framework side: https://android-review.googlesource.com/c/platform/frameworks/av/+/1593613/1..2/services/audiopolicy/tests/audiopolicymanager_tests.cpp#b589",
+      "revId": "c84e8f97c1fcf6c34b1166db7cd9c4bcb980987b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
