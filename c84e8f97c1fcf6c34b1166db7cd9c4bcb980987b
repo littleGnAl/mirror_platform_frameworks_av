@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd9cf3f7_5fb18457",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-02-23T23:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d608ce5_bf4d5639",
+      "range": {
+        "startLine": 68,
+        "startChar": 41,
+        "endLine": 68,
+        "endChar": 63
+      },
+      "revId": "c84e8f97c1fcf6c34b1166db7cd9c4bcb980987b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "deb8139d_697a52bf",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-02-23T09:38:51Z",
       "side": 1,
       "message": "msdSurroundChannelMasksOrder",
+      "range": {
+        "startLine": 72,
+        "startChar": 47,
+        "endLine": 72,
+        "endChar": 72
+      },
+      "revId": "c84e8f97c1fcf6c34b1166db7cd9c4bcb980987b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f17228e_75eb27cd",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 72,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-02-23T23:09:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "deb8139d_697a52bf",
       "range": {
         "startLine": 72,
         "startChar": 47,
@@ -89,6 +137,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1016e813_10e9b645",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-02-23T23:09:08Z",
+      "side": 1,
+      "message": "The other code paths to buildMsdPatch are each checking for MSD module (or MSD device) presence, so asserting in buildMsdPatch is appropriate. I have made this change.",
+      "parentUuid": "43229077_f070feb8",
+      "range": {
+        "startLine": 1431,
+        "startChar": 15,
+        "endLine": 1431,
+        "endChar": 27
+      },
+      "revId": "c84e8f97c1fcf6c34b1166db7cd9c4bcb980987b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d38cb0d1_75cd529e",
         "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
         "patchSetId": 2
@@ -100,6 +172,30 @@
       "writtenOn": "2021-02-23T09:38:51Z",
       "side": 1,
       "message": "it he offload behavior intentional here?",
+      "range": {
+        "startLine": 416,
+        "startChar": 39,
+        "endLine": 416,
+        "endChar": 73
+      },
+      "revId": "c84e8f97c1fcf6c34b1166db7cd9c4bcb980987b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c64dd451_22307aa1",
+        "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-02-23T23:09:08Z",
+      "side": 1,
+      "message": "Offload was to indicate on-device decoding, and for consistency with the other AC3 profile tested. However, OFFLOAD is not required for APM test integrity, so I have removed it.",
+      "parentUuid": "d38cb0d1_75cd529e",
       "range": {
         "startLine": 416,
         "startChar": 39,
