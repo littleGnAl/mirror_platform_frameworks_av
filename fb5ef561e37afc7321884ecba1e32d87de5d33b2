@@ -46,6 +46,30 @@
       },
       "revId": "fb5ef561e37afc7321884ecba1e32d87de5d33b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2bddc8e_6aa20d56",
+        "filename": "media/libmediaplayerservice/MediaRecorderClient.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 429,
+      "author": {
+        "id": 1463284
+      },
+      "writtenOn": "2021-02-23T22:01:57Z",
+      "side": 0,
+      "message": "I just merged aosp/1600991 which cherry-picked the changes we already had for this to AOSP. Artem, could you pull the latest and see if it works for you. If so we can abandon this CL.",
+      "parentUuid": "e10e58f2_d96d122d",
+      "range": {
+        "startLine": 428,
+        "startChar": 0,
+        "endLine": 429,
+        "endChar": 86
+      },
+      "revId": "fb5ef561e37afc7321884ecba1e32d87de5d33b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
