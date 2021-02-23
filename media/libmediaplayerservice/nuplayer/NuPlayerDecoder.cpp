@@ -746,9 +746,15 @@ bool NuPlayer::Decoder::handleAnOutputBuffer(
 
     mOutputBuffers.editItemAt(index) = buffer;
 
+    int64_t frameIndex;
+    bool frameIndexFound = buffer->meta()->findInt64("frameIndex", &frameIndex);
+
     buffer->setRange(offset, size);
     buffer->meta()->clear();
     buffer->meta()->setInt64("timeUs", timeUs);
+    if (frameIndexFound) {
+        buffer->meta()->setInt64("frameIndex", frameIndex);
+    }
 
     bool eos = flags & MediaCodec::BUFFER_FLAG_EOS;
     // we do not expect CODECCONFIG or SYNCFRAME for decoder
@@ -1050,12 +1056,30 @@ bool NuPlayer::Decoder::onInputBufferFetched(const sp<AMessage> &msg) {
         uint32_t flags = 0;
         CHECK(buffer->meta()->findInt64("timeUs", &timeUs));
 
-        int32_t eos, csd;
+        int32_t eos, csd, cvo;
         // we do not expect SYNCFRAME for decoder
         if (buffer->meta()->findInt32("eos", &eos) && eos) {
             flags |= MediaCodec::BUFFER_FLAG_EOS;
         } else if (buffer->meta()->findInt32("csd", &csd) && csd) {
             flags |= MediaCodec::BUFFER_FLAG_CODECCONFIG;
+        }
+
+        if (buffer->meta()->findInt32("cvo", (int32_t*)&cvo)) {
+            ALOGV("[%s] cvo(%d) found at %lld us", mComponentName.c_str(), cvo, (long long)timeUs);
+            switch (cvo) {
+                case 0:
+                    codecBuffer->meta()->setInt32("cvo", MediaCodec::CVO_DEGREE_0);
+                    break;
+                case 1:
+                    codecBuffer->meta()->setInt32("cvo", MediaCodec::CVO_DEGREE_90);
+                    break;
+                case 2:
+                    codecBuffer->meta()->setInt32("cvo", MediaCodec::CVO_DEGREE_180);
+                    break;
+                case 3:
+                    codecBuffer->meta()->setInt32("cvo", MediaCodec::CVO_DEGREE_270);
+                    break;
+            }
         }
 
         // Modular DRM
