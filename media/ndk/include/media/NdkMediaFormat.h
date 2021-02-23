@@ -40,18 +40,8 @@
 #include <sys/cdefs.h>
 #include <sys/types.h>
 
-#ifndef __ANDROID__
-// Value copied from 'bionic/libc/include/android/api-level.h' which is not available on
-// non Android systems. It is set to 10000 which is same as __ANDROID_API_FUTURE__ value.
-#ifndef __ANDROID_API__
-#define __ANDROID_API__ 10000
-#endif
-
-// Value copied from 'bionic/libc/include/android/versioning.h' which is not available on
-// non Android systems
-#ifndef __INTRODUCED_IN
-#define __INTRODUCED_IN(api_level)
-#endif
+#if !defined(__INTRODUCED_IN)
+#define __INTRODUCED_IN(__api_level) /* nothing */
 #endif
 
 #include "NdkMediaError.h"
@@ -60,8 +50,6 @@ __BEGIN_DECLS
 
 struct AMediaFormat;
 typedef struct AMediaFormat AMediaFormat;
-
-#if __ANDROID_API__ >= 21
 
 /**
  * Available since API level 21.
@@ -205,9 +193,7 @@ extern const char* AMEDIAFORMAT_KEY_TIME_US __INTRODUCED_IN(28);
 extern const char* AMEDIAFORMAT_KEY_TRACK_ID __INTRODUCED_IN(28);
 extern const char* AMEDIAFORMAT_KEY_TRACK_INDEX __INTRODUCED_IN(28);
 extern const char* AMEDIAFORMAT_KEY_WIDTH __INTRODUCED_IN(21);
-#endif /* __ANDROID_API__ >= 21 */
 
-#if __ANDROID_API__ >= 28
 /**
  * Available since API level 28.
  */
@@ -231,9 +217,7 @@ void AMediaFormat_setSize(AMediaFormat*, const char* name, size_t value) __INTRO
  */
 void AMediaFormat_setRect(AMediaFormat*, const char* name,
         int32_t left, int32_t top, int32_t right, int32_t bottom) __INTRODUCED_IN(28);
-#endif /* __ANDROID_API__ >= 28 */
 
-#if __ANDROID_API__ >= 29
 /**
  * Remove all key/value pairs from the given AMediaFormat.
  *
@@ -307,9 +291,6 @@ extern const char* AMEDIAFORMAT_KEY_TITLE __INTRODUCED_IN(29);
 extern const char* AMEDIAFORMAT_KEY_VALID_SAMPLES __INTRODUCED_IN(29);
 extern const char* AMEDIAFORMAT_KEY_YEAR __INTRODUCED_IN(29);
 
-#endif /* __ANDROID_API__ >= 29 */
-
-#if __ANDROID_API__ >= 30
 /**
  * An optional key describing the low latency decoding mode. This is an optional parameter
  * that applies only to decoders. If enabled, the decoder doesn't hold input and output
@@ -320,7 +301,6 @@ extern const char* AMEDIAFORMAT_KEY_YEAR __INTRODUCED_IN(29);
  * Available since API level 30.
  */
 extern const char* AMEDIAFORMAT_KEY_LOW_LATENCY __INTRODUCED_IN(30);
-#endif /* __ANDROID_API__ >= 30 */
 
 __END_DECLS
 
