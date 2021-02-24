@@ -1,4 +1,23 @@
-cc_library_shared {
+package {
+    default_applicable_licenses: [
+        "frameworks_av_media_libmediaplayerservice_license",
+    ],
+}
+
+// Added automatically by a large-scale-change
+// See: http://go/android-license-faq
+license {
+    name: "frameworks_av_media_libmediaplayerservice_license",
+    visibility: [":__subpackages__"],
+    license_kinds: [
+        "SPDX-license-identifier-Apache-2.0",
+    ],
+    license_text: [
+        "NOTICE",
+    ],
+}
+
+cc_library {
 
     srcs: [
         "ActivityManager.cpp",
@@ -16,6 +35,7 @@ cc_library_shared {
         "android.hardware.media.c2@1.0",
         "android.hardware.media.omx@1.0",
         "libbase",
+        "libandroid_net",
         "libaudioclient",
         "libbinder",
         "libcamera_client",
@@ -76,4 +96,3 @@ cc_library_shared {
     },
 
 }
-
