@@ -16,6 +16,24 @@
       "message": "is it safe to hold sp inside listener? Maybe change to wp?",
       "revId": "a875147fdb8ae5b8ac0f66ad3987051170f84900",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4caccb3e_7ed04fe1",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 336,
+      "author": {
+        "id": 1501832
+      },
+      "writtenOn": "2021-02-24T08:47:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c56beed_b050e211",
+      "revId": "a875147fdb8ae5b8ac0f66ad3987051170f84900",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
