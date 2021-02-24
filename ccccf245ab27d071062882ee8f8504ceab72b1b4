@@ -152,6 +152,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c74716d7_c3c10a76",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-24T22:49:23Z",
+      "side": 1,
+      "message": "discard the above comment, we need to update libreverb to produce mono output for mono input.",
+      "parentUuid": "fbd2561e_69920127",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 5
+      },
+      "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ea8b93c2_6e05a56e",
         "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
         "patchSetId": 1
