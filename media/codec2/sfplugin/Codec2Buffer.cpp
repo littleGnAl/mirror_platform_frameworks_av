@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 #define LOG_TAG "Codec2Buffer"
 #include <utils/Log.h>
 
@@ -452,7 +452,8 @@ public:
                 mediaImage->mType = MediaImage2::MEDIA_IMAGE_TYPE_UNKNOWN;
                 if (layout.numPlanes == 1) {
                     const C2PlaneInfo &plane = layout.planes[0];
-                    if (plane.colInc < 0 || plane.rowInc < 0) {
+                    if (plane.colInc <= 0 || plane.rowInc <= 0
+                            || plane.colSampling <= 0 || plane.rowSampling <= 0) {
                         // Copy-only if we have negative colInc/rowInc
                         tryWrapping = false;
                     }
