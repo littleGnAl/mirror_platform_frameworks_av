@@ -16,6 +16,184 @@
       "message": "There are some comparison failures which are to be worked on. I will work on the TODO: added in the code. Correct comparison logic for AUX modes are to be checked.",
       "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aab8c932_eecf3f98",
+        "filename": "media/libeffects/lvm/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-24T19:09:55Z",
+      "side": 1,
+      "message": "move to static_libs",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 24
+      },
+      "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e885df7_07050349",
+        "filename": "media/libeffects/lvm/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-24T19:09:55Z",
+      "side": 1,
+      "message": "remove\n\nnot related to this CL",
+      "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c982c3dc_0cf35bd0",
+        "filename": "media/libeffects/lvm/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-24T19:09:55Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 25
+      },
+      "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91384952_a6f86a56",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-24T19:09:55Z",
+      "side": 1,
+      "message": "void",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 111,
+        "endChar": 7
+      },
+      "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fbd2561e_69920127",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-24T19:09:55Z",
+      "side": 1,
+      "message": "needs some comments about in which modes mono is not supported",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 5
+      },
+      "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea8b93c2_6e05a56e",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-24T19:09:55Z",
+      "side": 1,
+      "message": "void",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 3
+      },
+      "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a3d87a9_2d62043c",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-24T19:09:55Z",
+      "side": 1,
+      "message": "ASSERT_EQ",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 5
+      },
+      "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84d651ba_df9c635a",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-24T19:09:55Z",
+      "side": 1,
+      "message": "remove return\nonce ASSERT_EQ is called, return value is not needed",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 17
+      },
+      "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
