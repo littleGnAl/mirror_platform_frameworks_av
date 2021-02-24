@@ -159,6 +159,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9e120fd_83a8a23d",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1431,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-24T08:17:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1016e813_10e9b645",
+      "range": {
+        "startLine": 1431,
+        "startChar": 15,
+        "endLine": 1431,
+        "endChar": 27
+      },
+      "revId": "c84e8f97c1fcf6c34b1166db7cd9c4bcb980987b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d38cb0d1_75cd529e",
@@ -196,6 +220,30 @@
       "side": 1,
       "message": "Offload was to indicate on-device decoding, and for consistency with the other AC3 profile tested. However, OFFLOAD is not required for APM test integrity, so I have removed it.",
       "parentUuid": "d38cb0d1_75cd529e",
+      "range": {
+        "startLine": 416,
+        "startChar": 39,
+        "endLine": 416,
+        "endChar": 73
+      },
+      "revId": "c84e8f97c1fcf6c34b1166db7cd9c4bcb980987b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8471b6bb_5ccfeeda",
+        "filename": "services/audiopolicy/tests/audiopolicymanager_tests.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-24T08:17:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c64dd451_22307aa1",
       "range": {
         "startLine": 416,
         "startChar": 39,
