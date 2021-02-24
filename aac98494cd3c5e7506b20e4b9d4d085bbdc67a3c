@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f43de5a1_dc4a05f3",
+        "filename": "media/libaudiohal/impl/DeviceHalHidl.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-24T09:54:29Z",
+      "side": 1,
+      "message": "halPortConfigs",
+      "range": {
+        "startLine": 457,
+        "startChar": 43,
+        "endLine": 457,
+        "endChar": 56
+      },
+      "revId": "aac98494cd3c5e7506b20e4b9d4d085bbdc67a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30adc79b_02c31107",
+        "filename": "media/libaudiohal/impl/DeviceHalHidl.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-24T09:54:29Z",
+      "side": 1,
+      "message": "we should initialize callback from device-\u003emDeviceHalInterfaceAudioGainCallback.promote(); under lock but then release the lock before line 469 to avoid calling the callback under lock",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 467,
+        "endChar": 62
+      },
+      "revId": "aac98494cd3c5e7506b20e4b9d4d085bbdc67a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4cc514c5_5c691f82",
+        "filename": "media/libaudiohal/impl/DeviceHalHidl.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-24T09:54:29Z",
+      "side": 1,
+      "message": "the AudioGainCallbackCallback should receive and manage the DeviceHalInterfaceAudioGainCallback and its lock.\n\nWe should also make sure here that register is rejected if mAudioGainCallback already exists so that only one callback can be registered",
+      "range": {
+        "startLine": 490,
+        "startChar": 0,
+        "endLine": 490,
+        "endChar": 61
+      },
+      "revId": "aac98494cd3c5e7506b20e4b9d4d085bbdc67a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f76c6fa0_1a3d8e18",
+        "filename": "media/libaudiohal/impl/DeviceHalHidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-24T09:54:29Z",
+      "side": 1,
+      "message": "mAudioGainCallbackLock",
+      "range": {
+        "startLine": 131,
+        "startChar": 18,
+        "endLine": 131,
+        "endChar": 23
+      },
+      "revId": "aac98494cd3c5e7506b20e4b9d4d085bbdc67a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9b4d3d74_400ec989",
+        "filename": "media/libaudiohal/impl/DeviceHalHidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-02-24T09:54:29Z",
+      "side": 1,
+      "message": "the lock and mDeviceHalInterfaceAudioGainCallback should be stored and managed by the AudioGainCallbackCallback class.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 24
+      },
+      "revId": "aac98494cd3c5e7506b20e4b9d4d085bbdc67a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
