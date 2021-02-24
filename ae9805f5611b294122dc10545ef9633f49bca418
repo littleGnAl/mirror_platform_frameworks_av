@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b549402a_ab4d0aab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-24T18:30:45Z",
+      "side": 1,
+      "message": "Apologize for the long delay in reviewing it. Can you verify if this can be vastly simplified based on the approach outlined?",
+      "revId": "ae9805f5611b294122dc10545ef9633f49bca418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c401ebe6_9d15f84f",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3271,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-24T18:30:45Z",
+      "side": 1,
+      "message": "From what I can tell the fundamental issue is that we pass the sidebandHandle to the native window - but it does not take ownership of this, so we need to close it ourselves. Would this CL be simpler if we closed and deleted the sideband handle directly after passing it to the native window?\n\ne.g. err \u003d native_window_set_sideband_stream(..., sidebandHandle);\nnative_handle_close(sidebandHandle);\nnative_handle_delete(sidebandHandle);\n\nnative_window should have its own copy of the sideband handle at that point, so we could close/delete our copy.",
+      "range": {
+        "startLine": 3271,
+        "startChar": 10,
+        "endLine": 3271,
+        "endChar": 43
+      },
+      "revId": "ae9805f5611b294122dc10545ef9633f49bca418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
