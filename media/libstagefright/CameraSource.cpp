@@ -1397,7 +1397,11 @@ void CameraSource::processBufferQueueFrame(BufferItem& buffer) {
     // Find a available memory slot to store the buffer as VideoNativeMetadata.
     sp<IMemory> data = *mMemoryBases.begin();
     mMemoryBases.erase(mMemoryBases.begin());
+    int32_t oldDataSpace = mBufferDataSpace;
     mBufferDataSpace = buffer.mDataSpace;
+    if (oldDataSpace != mBufferDataSpace) {
+        ALOGI("COLOR ASPECT DEBUG: dataspace from BufferQueue: %08x", mBufferDataSpace);
+    }
 
     ssize_t offset;
     size_t size;

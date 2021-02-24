@@ -124,6 +124,18 @@ protected:
                     queue.workList.pop_front();
                 }
                 for (const std::unique_ptr<C2Param> &param : jobs->configUpdate) {
+                    if (param->coreIndex() == C2StreamDataSpaceInfo::input::CORE_INDEX) {
+                        ALOGI("COLOR ASPECT DEBUG: dataspace to C2Component: %08x",
+                                ((C2StreamDataSpaceInfo::input *)param.get())->value);
+                    }
+                    if (param->coreIndex() == C2StreamColorAspectsTuning::input::CORE_INDEX) {
+                        ALOGI("COLOR ASPECT DEBUG: color aspects to C2Component: "
+                                "primaries %d matrix %d range %d transfer %d",
+                                ((C2StreamColorAspectsTuning::input *)param.get())->primaries,
+                                ((C2StreamColorAspectsTuning::input *)param.get())->matrix,
+                                ((C2StreamColorAspectsTuning::input *)param.get())->range,
+                                ((C2StreamColorAspectsTuning::input *)param.get())->transfer);
+                    }
                     items.front()->input.configUpdate.emplace_back(C2Param::Copy(*param));
                 }
 
@@ -477,6 +489,7 @@ status_t C2OMXNode::dispatchMessage(const omx_message& msg) {
     android_dataspace dataSpace = (android_dataspace)msg.u.event_data.data1;
     uint32_t pixelFormat = msg.u.event_data.data3;
 
+    ALOGI("COLOR ASPECT DEBUG: dataspace from GraphicBufferSource: %08x", dataSpace);
     ALOGD("dataspace changed to %#x pixel format: %#x", dataSpace, pixelFormat);
     mQueueThread->setDataspace(dataSpace);
     return OK;

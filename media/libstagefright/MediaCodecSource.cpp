@@ -786,6 +786,10 @@ status_t MediaCodecSource::feedEncoderInputBuffers() {
                     msg->setInt32(KEY_COLOR_TRANSFER, transfer);
                     msg->setInt32(KEY_COLOR_RANGE, range);
                     msg->setInt32("android._dataspace", dataspace);
+                    ALOGI("COLOR ASPECT DEBUG: dataspace to MediaCodec: %08x", dataspace);
+                    ALOGI("COLOR ASPECT DEBUG: color aspects to MediaCodec: "
+                            "standard = %d transfer = %d range = %d",
+                            standard, transfer, range);
                     mEncoder->setParameters(msg);
                 }
 

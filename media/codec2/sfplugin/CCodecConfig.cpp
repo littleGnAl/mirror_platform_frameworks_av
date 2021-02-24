@@ -1146,6 +1146,7 @@ bool CCodecConfig::updateFormats(Domain domain) {
     std::string config = reflected.debugString();
     std::set<std::string> configLines;
     std::string diff;
+    std::string colorDiff;
     for (size_t start = 0; start != std::string::npos; ) {
         size_t end = config.find('\n', start);
         size_t count = (end == std::string::npos)
@@ -1154,12 +1155,20 @@ bool CCodecConfig::updateFormats(Domain domain) {
         std::string line = config.substr(start, count);
         configLines.insert(line);
         if (mLastConfig.count(line) == 0) {
+            if (line.find(C2_PARAMKEY_DATA_SPACE) != std::string::npos
+                    || line.find(C2_PARAMKEY_COLOR_ASPECTS) != std::string::npos) {
+                colorDiff.append(line);
+            }
             diff.append(line);
         }
         start = (end == std::string::npos) ? std::string::npos : end + 1;
     }
     if (!diff.empty()) {
         ALOGD("c2 config diff is %s", diff.c_str());
+    }
+    if (!colorDiff.empty()) {
+        ALOGI("COLOR ASPECT DEBUG: dataspace/color aspects update from component: %s",
+                colorDiff.c_str());
     }
     mLastConfig.swap(configLines);
 
