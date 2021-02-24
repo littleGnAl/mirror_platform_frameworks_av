@@ -829,12 +829,14 @@ void CCodec::configure(const sp<AMessage> &msg) {
                 return BAD_VALUE;
             }
         }
+        int32_t width = 0;
+        int32_t height = 0;
         if (config->mDomain & (Config::IS_IMAGE | Config::IS_VIDEO)) {
-            if (!msg->findInt32(KEY_WIDTH, &i32)) {
+            if (!msg->findInt32(KEY_WIDTH, &width)) {
                 ALOGD("width is missing, which is required for image/video components.");
                 return BAD_VALUE;
             }
-            if (!msg->findInt32(KEY_HEIGHT, &i32)) {
+            if (!msg->findInt32(KEY_HEIGHT, &height)) {
                 ALOGD("height is missing, which is required for image/video components.");
                 return BAD_VALUE;
             }
@@ -1138,6 +1140,7 @@ void CCodec::configure(const sp<AMessage> &msg) {
             return BAD_VALUE;
         }
 
+        int32_t componentColorFormat = 0;
         if ((config->mDomain & (Config::IS_VIDEO | Config::IS_IMAGE))) {
             // propagate HDR static info to output format for both encoders and decoders
             // if component supports this info, we will update from component, but only the raw port,
@@ -1155,8 +1158,8 @@ void CCodec::configure(const sp<AMessage> &msg) {
             }
             if (config->mDomain & Config::IS_ENCODER) {
                 config->mInputFormat->setInt32(KEY_COLOR_FORMAT, format);
-                if (msg->findInt32("android._color-format", &format)) {
-                    config->mInputFormat->setInt32("android._color-format", format);
+                if (msg->findInt32("android._color-format", &componentColorFormat)) {
+                    config->mInputFormat->setInt32("android._color-format", componentColorFormat);
                 }
             } else {
                 config->mOutputFormat->setInt32(KEY_COLOR_FORMAT, format);
@@ -1212,6 +1215,35 @@ void CCodec::configure(const sp<AMessage> &msg) {
                 colorTransferRequest = 0;
             }
             config->mInputFormat->setInt32("color-transfer-request", colorTransferRequest);
+        }
+
+        if (componentColorFormat != 0) {
+            // Need to get stride/vstride
+            uint32_t pixelFormat = PIXEL_FORMAT_UNKNOWN;
+            if (C2Mapper::mapPixelFormatFrameworkToCodec(componentColorFormat, &pixelFormat)) {
+                std::shared_ptr<C2GraphicBlock> block = FetchGraphicBlock(
+                        width, height, pixelFormat,
+                        usage.value | C2MemoryUsage::CPU_READ | C2MemoryUsage::CPU_WRITE,
+                        {comp->getName()});
+                sp<GraphicBlockBuffer> buffer = GraphicBlockBuffer::Allocate(
+                        config->mInputFormat,
+                        block,
+                        [](size_t size) -> sp<ABuffer> { return new ABuffer(size); });
+                if (buffer) {
+                    sp<ABuffer> imageData = buffer->getImageData();
+                    MediaImage2 *img = (MediaImage2*)imageData->data();
+                    if (img && img->mNumPlanes > 0 && img->mType != img->MEDIA_IMAGE_TYPE_UNKNOWN) {
+                        int32_t stride = img->mPlane[0].mRowInc;
+                        config->mInputFormat->setInt32(KEY_STRIDE, stride);
+                        if (img->mNumPlanes > 1 && stride > 0) {
+                            int64_t offsetDelta =
+                                (int64_t)img->mPlane[1].mOffset - (int64_t)img->mPlane[0].mOffset;
+                            int32_t vstride = int32_t(offsetDelta / stride);
+                            config->mInputFormat->setInt32(KEY_SLICE_HEIGHT, vstride);
+                        }
+                    }
+                }
+            }
         }
 
         ALOGD("setup formats input: %s and output: %s",
