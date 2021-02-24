@@ -33,6 +33,24 @@
       "message": "Inconsistencies are there with the usage of mLoopCount.",
       "revId": "8da697ef1c3664c65e2ef8b4a29e210795efc070",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ec41365e_59e77574",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 9
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-24T01:03:28Z",
+      "side": 1,
+      "message": "Saketh,\nThanks for catching this.\nI have updated the CL to take care of this inconsistency.",
+      "parentUuid": "88f36e9a_9bc38f04",
+      "revId": "8da697ef1c3664c65e2ef8b4a29e210795efc070",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
