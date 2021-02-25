@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4709d79b_0bfed99a",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 470,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-25T04:42:30Z",
+      "side": 1,
+      "message": "i think i understand now.",
+      "parentUuid": "59948b0d_f09a7b77",
+      "range": {
+        "startLine": 470,
+        "startChar": 36,
+        "endLine": 470,
+        "endChar": 71
+      },
+      "revId": "ef803de9ef8b908d67d7d86eb2e49b399d077570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2d7aa160_8f6ffd2a",
