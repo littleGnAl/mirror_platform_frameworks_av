@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cf298b72_6c2977be",
+        "filename": "media/libeffects/lvm/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-02-25T12:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aab8c932_eecf3f98",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 27,
+        "endChar": 24
+      },
+      "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9e885df7_07050349",
@@ -58,6 +82,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff3b4b34_3a61488c",
+        "filename": "media/libeffects/lvm/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-02-25T12:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e885df7_07050349",
+      "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c982c3dc_0cf35bd0",
@@ -71,6 +113,30 @@
       "writtenOn": "2021-02-24T19:09:55Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 115,
+        "startChar": 0,
+        "endLine": 115,
+        "endChar": 25
+      },
+      "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e0ecc2d4_13b0103b",
+        "filename": "media/libeffects/lvm/tests/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 115,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-02-25T12:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c982c3dc_0cf35bd0",
       "range": {
         "startLine": 115,
         "startChar": 0,
@@ -104,6 +170,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddd0fd34_aad0ac01",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 111,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-02-25T12:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91384952_a6f86a56",
+      "range": {
+        "startLine": 111,
+        "startChar": 4,
+        "endLine": 111,
+        "endChar": 7
+      },
+      "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "78ec39c5_d9aeeb70",
@@ -117,6 +207,30 @@
       "writtenOn": "2021-02-24T22:28:02Z",
       "side": 1,
       "message": "let us update libreverb modules to produce mono output for mono input and then update this to avoid these conditions.",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 140,
+        "endChar": 5
+      },
+      "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c76d899c_74cd1852",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-02-25T12:23:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "78ec39c5_d9aeeb70",
       "range": {
         "startLine": 138,
         "startChar": 0,
@@ -174,6 +288,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "acde78ce_9e7a7bde",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-02-25T12:23:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c74716d7_c3c10a76",
+      "range": {
+        "startLine": 138,
+        "startChar": 0,
+        "endLine": 145,
+        "endChar": 5
+      },
+      "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ea8b93c2_6e05a56e",
@@ -187,6 +325,30 @@
       "writtenOn": "2021-02-24T19:09:55Z",
       "side": 1,
       "message": "void",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 3
+      },
+      "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "042e6440_3b87bdba",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-02-25T12:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ea8b93c2_6e05a56e",
       "range": {
         "startLine": 161,
         "startChar": 0,
@@ -220,6 +382,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad0751f4_3191af8d",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-02-25T12:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0a3d87a9_2d62043c",
+      "range": {
+        "startLine": 174,
+        "startChar": 0,
+        "endLine": 177,
+        "endChar": 5
+      },
+      "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "84d651ba_df9c635a",
@@ -233,6 +419,30 @@
       "writtenOn": "2021-02-24T19:09:55Z",
       "side": 1,
       "message": "remove return\nonce ASSERT_EQ is called, return value is not needed",
+      "range": {
+        "startLine": 177,
+        "startChar": 0,
+        "endLine": 178,
+        "endChar": 17
+      },
+      "revId": "ccccf245ab27d071062882ee8f8504ceab72b1b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "401c0ad8_d4dbd395",
+        "filename": "media/libeffects/lvm/tests/EffectReverbTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-02-25T12:23:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "84d651ba_df9c635a",
       "range": {
         "startLine": 177,
         "startChar": 0,
