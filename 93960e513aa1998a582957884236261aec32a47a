@@ -16,6 +16,23 @@
       "message": "needs wonsik\u0027s signoff.\nbut I\u0027m good with this.",
       "revId": "93960e513aa1998a582957884236261aec32a47a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ac1aee3_26c9c2fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-25T05:24:41Z",
+      "side": 1,
+      "message": "Wonsik,\nCan you please provide owner approval on this?\nThis doesn\u0027t change interface or any functionality.\nIt just refactors the structures to make it easier to extend the interface structures.\nThanks.",
+      "revId": "93960e513aa1998a582957884236261aec32a47a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
