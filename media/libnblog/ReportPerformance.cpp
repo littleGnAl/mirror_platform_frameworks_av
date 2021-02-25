@@ -92,8 +92,12 @@ void dumpJson(int fd, const std::map<int, PerformanceData>& threadDataMap)
         (*dataJson)["threadNum"] = item.first;
         root.append(*dataJson);
     }
-    Json::StyledWriter writer;
-    std::string rootStr = writer.write(root);
+    Json::StreamWriterBuilder factory;
+    std::unique_ptr<Json::StreamWriter> const writer(factory.newStreamWriter());
+    std::ostringstream ss;
+    writer->write(root, &ss);
+    ss << std::endl;
+    std::string rootStr = ss.str();
     write(fd, rootStr.c_str(), rootStr.size());
 }
 
