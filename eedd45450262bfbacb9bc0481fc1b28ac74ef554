@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e3d117ff_9a3a3a9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-25T21:32:22Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "eedd45450262bfbacb9bc0481fc1b28ac74ef554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4b10f25_9c9e1738",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1224,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-25T21:32:22Z",
+      "side": 1,
+      "message": "This is a bit hacky. Perhaps add some comments on why we need to do this today, and what would be a better way in the future.\n\nI think gralloc4 may already support getting this info without allocating a buffer. If so we could move this complexity into the C2Allocator somehow.",
+      "range": {
+        "startLine": 1224,
+        "startChar": 16,
+        "endLine": 1224,
+        "endChar": 74
+      },
+      "revId": "eedd45450262bfbacb9bc0481fc1b28ac74ef554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "861133e8_0288e8c2",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1226,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-25T21:32:22Z",
+      "side": 1,
+      "message": "could this ever fail?, e.g. if usage.value has HW_TEXTURE, gralloc may not support CPU access.",
+      "range": {
+        "startLine": 1226,
+        "startChar": 24,
+        "endLine": 1226,
+        "endChar": 88
+      },
+      "revId": "eedd45450262bfbacb9bc0481fc1b28ac74ef554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5966c0fc_4fb2a2c3",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1241,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-02-25T21:32:22Z",
+      "side": 1,
+      "message": "do we need to verify that this divides cleanly by stride? (e.g. offsetDelta % stride \u003d\u003d 0)",
+      "range": {
+        "startLine": 1241,
+        "startChar": 54,
+        "endLine": 1241,
+        "endChar": 65
+      },
+      "revId": "eedd45450262bfbacb9bc0481fc1b28ac74ef554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
