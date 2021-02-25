@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f30df82b_0c99ffcc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-25T04:23:25Z",
+      "side": 1,
+      "message": "this appears to be a sample app, not a test. that\u0027s what the comments say, and it doesn\u0027t appear to emit any pass/fail criteria (at least now that I see).\n\nthat means that frameworks/av/media/tests/ is not the correct home for it.\n\nframeworks/av/media/samples   or frameworks/av/media/examples/ seems a more appropriate name.\n\ndevelopers/samples/android/media seems even better.",
+      "revId": "90b26f07f8759812fb65c2677f02ea4fcf3853e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
