@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3b0fea2_8a60786b",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2021-02-25T17:58:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e5e86982_39934b9d",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 35
+      },
+      "revId": "da16a94a736137a3f6356ada9523ca9e6edb740f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "219bd9be_40ba0aba",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4de12dd_9554b846",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2021-02-25T17:58:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "219bd9be_40ba0aba",
+      "range": {
+        "startLine": 442,
+        "startChar": 0,
+        "endLine": 443,
+        "endChar": 53
+      },
+      "revId": "da16a94a736137a3f6356ada9523ca9e6edb740f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d94eb508_632f9ab4",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-02-25T17:51:57Z",
       "side": 1,
       "message": "init to zero here?\n\nseems worth walking through the entire file to make sure that we\u0027re \ninitializing these structures.",
+      "range": {
+        "startLine": 581,
+        "startChar": 34,
+        "endLine": 581,
+        "endChar": 55
+      },
+      "revId": "da16a94a736137a3f6356ada9523ca9e6edb740f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1a8fc9c_d16938d4",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 581,
+      "author": {
+        "id": 1561924
+      },
+      "writtenOn": "2021-02-25T17:58:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d94eb508_632f9ab4",
       "range": {
         "startLine": 581,
         "startChar": 34,
