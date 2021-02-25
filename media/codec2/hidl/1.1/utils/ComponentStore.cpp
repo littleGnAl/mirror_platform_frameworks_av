@@ -23,6 +23,7 @@
 #include <codec2/hidl/1.1/types.h>
 
 #include <android-base/file.h>
+#include <android-base/properties.h>
 #include <media/stagefright/bqhelper/GraphicBufferSource.h>
 #include <utils/Errors.h>
 
@@ -188,8 +189,14 @@ std::shared_ptr<ParameterCache> ComponentStore::getParameterCache() const {
 // static
 std::shared_ptr<FilterWrapper> ComponentStore::GetFilterWrapper() {
     constexpr const char kPluginPath[] = "libc2filterplugin.so";
+    constexpr const char kSamplePluginPath[] = "sample-codec2-hidl-plugin.so";
     static std::shared_ptr<FilterWrapper> wrapper = FilterWrapper::Create(
             std::make_unique<DefaultFilterPlugin>(kPluginPath));
+    if (base::GetBoolProperty("debug.codec2.force-sample-plugin", false)) {
+        static std::shared_ptr<FilterWrapper> sampleWrapper = FilterWrapper::Create(
+                std::make_unique<DefaultFilterPlugin>(kSamplePluginPath));
+        return sampleWrapper;
+    }
     return wrapper;
 }
 #endif
