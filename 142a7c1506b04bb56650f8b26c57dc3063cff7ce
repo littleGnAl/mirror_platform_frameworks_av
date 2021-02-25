@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13a3b991_3dde7371",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-25T06:00:20Z",
+      "side": 1,
+      "message": "I think OMX plugins need not change.\nThe way these are written, they only initialize the base structures and signal the size as that of base structures. Library should only read the values from the base structures.\nLet us keep the changes in OMX plugins on hold for now. I will review the api change CL again and see if these changes in OMX plugins (where there are no plans to support exporting qp map etc) are really necessary.",
+      "revId": "142a7c1506b04bb56650f8b26c57dc3063cff7ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
