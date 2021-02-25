@@ -33,6 +33,24 @@
       "message": "i now see more verbage in here about \u0027test\u0027.\nbut if we\u0027re going to use it that way, i really would want it to be recast as\nsomething that we can use as a unit test.\n\nwhat can be done to make this so we can invoke it as \"atest com.android.media.samplevideoencoder...\"\nand we can get pass/fail information automatically.",
       "revId": "90b26f07f8759812fb65c2677f02ea4fcf3853e9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9dbb0b47_b7dedbc7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-25T20:56:49Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/frameworks/av/+/1575044/3 enables to run this as atest.",
+      "parentUuid": "188beffc_36ed3352",
+      "revId": "90b26f07f8759812fb65c2677f02ea4fcf3853e9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
