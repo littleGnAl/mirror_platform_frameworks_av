@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "026fb233_19f8278b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-25T05:42:45Z",
+      "side": 1,
+      "message": "let us zero initialize all the api structures.\n",
+      "revId": "09452b6d6068b8bafa6fa335341cbbb375288deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12d720f4_871c72e3",
+        "filename": "media/libstagefright/codecs/avcdec/SoftAVCDec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 262,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-25T05:42:45Z",
+      "side": 1,
+      "message": "need zero initialization",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 262,
+        "endChar": 39
+      },
+      "revId": "09452b6d6068b8bafa6fa335341cbbb375288deb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
