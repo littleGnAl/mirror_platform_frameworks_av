@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e5e86982_39934b9d",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 416,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-25T05:40:43Z",
+      "side": 1,
+      "message": "these need to be zero initialized too",
+      "range": {
+        "startLine": 415,
+        "startChar": 0,
+        "endLine": 416,
+        "endChar": 35
+      },
+      "revId": "da16a94a736137a3f6356ada9523ca9e6edb740f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "219bd9be_40ba0aba",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-25T05:40:43Z",
+      "side": 1,
+      "message": "let us just reinitialize all api structures to zero",
+      "range": {
+        "startLine": 442,
+        "startChar": 0,
+        "endLine": 443,
+        "endChar": 53
+      },
+      "revId": "da16a94a736137a3f6356ada9523ca9e6edb740f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
