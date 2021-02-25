@@ -16,6 +16,115 @@
       "message": "reading this one as an add-on to the \u0027sampleVideoEncoder\u0027 CL i just looked at,\ni\u0027m back to thinking this is more \u0027sample\u0027 than \u0027test\u0027.",
       "revId": "1427167f9636124c9339ed7c3c14b9ef8dfe34ce",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b60e9f42_b26db8a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-25T04:41:13Z",
+      "side": 1,
+      "message": "this needs some restructuring.",
+      "revId": "1427167f9636124c9339ed7c3c14b9ef8dfe34ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6f75fa9_15de7a74",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-25T04:41:13Z",
+      "side": 1,
+      "message": "we should have symbolics instead of the magic 0/1/2 constants for the frame types\nhere and in the next few lines.",
+      "range": {
+        "startLine": 224,
+        "startChar": 91,
+        "endLine": 224,
+        "endChar": 94
+      },
+      "revId": "1427167f9636124c9339ed7c3c14b9ef8dfe34ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d5df2c91_943dc5f4",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/MediaCodecSurfaceEncoder.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-25T04:41:13Z",
+      "side": 1,
+      "message": "why different value assignments than the AVC I/P/B hierarchy?\n\nI see why from how you\u0027re extracting then in the NalUtil file.\nout at this level -- we should not be dealing with AVC-specific or HEVC-specific numbers. we should be dealing with a codec-agnostic I_FRAME, P_FRAME, and B_FRAME\nand those extraction routines should be translating the codec-specific stuff to\nour agnostic values.",
+      "range": {
+        "startLine": 42,
+        "startChar": 44,
+        "endLine": 44,
+        "endChar": 46
+      },
+      "revId": "1427167f9636124c9339ed7c3c14b9ef8dfe34ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19241794_2a406049",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/MediaCodecSurfaceEncoder.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-25T04:41:13Z",
+      "side": 1,
+      "message": "we can if/elseif/else  to call the correct return, but\nthere shouldn\u0027t need to be a switch() at all;\n\nthose routines should always return avalue from {UNKNOWN, I, P, B} [and those\ncould be values 0,1,2,3].\nthat means saving is *always* going to be a simple:\nmFrameTypeNumArray[result]++;  where result is the value returned by any of our NAL \u0027findFrameTypeAVC()\u0027 like functions.",
+      "range": {
+        "startLine": 354,
+        "startChar": 11,
+        "endLine": 354,
+        "endChar": 58
+      },
+      "revId": "1427167f9636124c9339ed7c3c14b9ef8dfe34ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c4fc9ce_0f726d09",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/NalUnitUtil.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-02-25T04:41:13Z",
+      "side": 1,
+      "message": "if avc and hevc have dfferent internal numerc assignments for the I/P/B frame types, then I think that we want to hide that information inside of this\nroutine.\n\nthis routine [and findHEVCFrameType()]  should both return a standardized\ncodec-independent I/P/B mapping...\n\nanother way to phrase it -- i want these to behave more as if they\nwere named getStandardizedFrameTypesFromAVC() and getStandardizedFrameTypesFromHEVC()",
+      "range": {
+        "startLine": 95,
+        "startChar": 22,
+        "endLine": 95,
+        "endChar": 38
+      },
+      "revId": "1427167f9636124c9339ed7c3c14b9ef8dfe34ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
