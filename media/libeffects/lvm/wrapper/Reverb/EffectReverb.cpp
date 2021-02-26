@@ -253,10 +253,10 @@ extern "C" int EffectCreate(const effect_uuid_t* uuid, int32_t /* sessionId __un
 
     int channels = audio_channel_count_from_out_mask(pContext->config.inputCfg.channels);
 
-    channels = (pContext->auxiliary == true) ? channels : FCC_2;
-    // Allocate memory for reverb process (*2 is for STEREO)
+    channels = (channels < FCC_2) ? FCC_1 : FCC_2;
+    // Allocate memory for reverb process
     pContext->bufferSizeIn = LVREV_MAX_FRAME_SIZE * sizeof(process_buffer_t) * channels;
-    pContext->bufferSizeOut = LVREV_MAX_FRAME_SIZE * sizeof(process_buffer_t) * FCC_2;
+    pContext->bufferSizeOut = LVREV_MAX_FRAME_SIZE * sizeof(process_buffer_t) * channels;
     pContext->InFrames = (process_buffer_t*)calloc(pContext->bufferSizeIn, 1 /* size */);
     pContext->OutFrames = (process_buffer_t*)calloc(pContext->bufferSizeOut, 1 /* size */);
 
@@ -341,7 +341,7 @@ int process(effect_buffer_t* pIn, effect_buffer_t* pOut, int frameCount, ReverbC
     }
 
     size_t inSize = frameCount * sizeof(process_buffer_t) * channels;
-    size_t outSize = frameCount * sizeof(process_buffer_t) * FCC_2;
+    size_t outSize = frameCount * sizeof(process_buffer_t) * channels;
     if (pContext->InFrames == NULL || pContext->bufferSizeIn < inSize) {
         free(pContext->InFrames);
         pContext->bufferSizeIn = inSize;
@@ -352,6 +352,9 @@ int process(effect_buffer_t* pIn, effect_buffer_t* pOut, int frameCount, ReverbC
         pContext->bufferSizeOut = outSize;
         pContext->OutFrames = (process_buffer_t*)calloc(1, pContext->bufferSizeOut);
     }
+
+    memset(pContext->OutFrames, 0.f,
+           (pContext->bufferSizeOut < outSize ? outSize : pContext->bufferSizeOut));
 
     // Check for NULL pointers
     if ((pContext->InFrames == NULL) || (pContext->OutFrames == NULL)) {
@@ -368,7 +371,6 @@ int process(effect_buffer_t* pIn, effect_buffer_t* pOut, int frameCount, ReverbC
                       "pIn and InFrames must be same type");
         memcpy(pContext->InFrames, pIn, frameCount * channels * sizeof(*pIn));
     } else {
-        // mono input is duplicated
         if (channels >= FCC_2) {
             for (int i = 0; i < frameCount; i++) {
                 pContext->InFrames[FCC_2 * i] =
@@ -378,15 +380,13 @@ int process(effect_buffer_t* pIn, effect_buffer_t* pOut, int frameCount, ReverbC
             }
         } else {
             for (int i = 0; i < frameCount; i++) {
-                pContext->InFrames[FCC_2 * i] = pContext->InFrames[FCC_2 * i + 1] =
-                        (process_buffer_t)pIn[i] * REVERB_SEND_LEVEL;
+                pContext->InFrames[i] = (process_buffer_t)pIn[i] * REVERB_SEND_LEVEL;
             }
         }
     }
 
     if (pContext->preset && pContext->curPreset == REVERB_PRESET_NONE) {
-        memset(pContext->OutFrames, 0,
-               frameCount * sizeof(*pContext->OutFrames) * FCC_2);  // always stereo here
+        memset(pContext->OutFrames, 0, frameCount * sizeof(*pContext->OutFrames) * channels);
     } else {
         if (pContext->bEnabled == LVM_FALSE && pContext->SamplesToExitCount > 0) {
             memset(pContext->InFrames, 0, frameCount * sizeof(*pContext->OutFrames) * channels);
@@ -416,8 +416,7 @@ int process(effect_buffer_t* pIn, effect_buffer_t* pOut, int frameCount, ReverbC
         } else {
             for (int i = 0; i < frameCount; i++) {
                 // Mix with dry input
-                pContext->OutFrames[FCC_2 * i] += pIn[i];
-                pContext->OutFrames[FCC_2 * i + 1] += pIn[i];
+                pContext->OutFrames[i] += pIn[i];
             }
         }
         // apply volume with ramp if needed
@@ -431,21 +430,34 @@ int process(effect_buffer_t* pIn, effect_buffer_t* pOut, int frameCount, ReverbC
             float vr = (float)pContext->prevRightVolume / 4096;
             float incr = (((float)pContext->rightVolume / 4096) - vr) / frameCount;
 
-            for (int i = 0; i < frameCount; i++) {
-                pContext->OutFrames[FCC_2 * i] *= vl;
-                pContext->OutFrames[FCC_2 * i + 1] *= vr;
+            if (channels == FCC_1) {
+                for (int i = 0; i < frameCount; i++) {
+                    pContext->OutFrames[i] *= vl;
+                    vl += incl;
+                }
+            } else {
+                for (int i = 0; i < frameCount; i++) {
+                    pContext->OutFrames[FCC_2 * i] *= vl;
+                    pContext->OutFrames[FCC_2 * i + 1] *= vr;
 
-                vl += incl;
-                vr += incr;
+                    vl += incl;
+                    vr += incr;
+                }
             }
             pContext->prevLeftVolume = pContext->leftVolume;
             pContext->prevRightVolume = pContext->rightVolume;
         } else if (pContext->volumeMode != REVERB_VOLUME_OFF) {
             if (pContext->leftVolume != REVERB_UNIT_VOLUME ||
                 pContext->rightVolume != REVERB_UNIT_VOLUME) {
-                for (int i = 0; i < frameCount; i++) {
-                    pContext->OutFrames[FCC_2 * i] *= ((float)pContext->leftVolume / 4096);
-                    pContext->OutFrames[FCC_2 * i + 1] *= ((float)pContext->rightVolume / 4096);
+                if (channels == FCC_1) {
+                    for (int i = 0; i < frameCount; i++) {
+                        pContext->OutFrames[i] *= ((float)pContext->leftVolume / 4096);
+                    }
+                } else {
+                    for (int i = 0; i < frameCount; i++) {
+                        pContext->OutFrames[FCC_2 * i] *= ((float)pContext->leftVolume / 4096);
+                        pContext->OutFrames[FCC_2 * i + 1] *= ((float)pContext->rightVolume / 4096);
+                    }
                 }
             }
             pContext->prevLeftVolume = pContext->leftVolume;
@@ -454,7 +466,7 @@ int process(effect_buffer_t* pIn, effect_buffer_t* pOut, int frameCount, ReverbC
         }
     }
 
-    if (channels > 2) {
+    if (channels > FCC_2) {
         // Accumulate if required
         if (pContext->config.outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE) {
             for (int i = 0; i < frameCount; i++) {
@@ -472,13 +484,21 @@ int process(effect_buffer_t* pIn, effect_buffer_t* pOut, int frameCount, ReverbC
                 pOut[channels * i + j] = pIn[channels * i + j];
             }
         }
-    } else {
+    } else if (channels == FCC_2) {
         if (pContext->config.outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE) {
             for (int i = 0; i < frameCount * FCC_2; i++) {
                 pOut[i] += pContext->OutFrames[i];
             }
         } else {
             memcpy(pOut, pContext->OutFrames, frameCount * sizeof(*pOut) * FCC_2);
+        }
+    } else {
+        if (pContext->config.outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE) {
+            for (int i = 0; i < frameCount; i++) {
+                pOut[i] += pContext->OutFrames[i];
+            }
+        } else {
+            memcpy(pOut, pContext->OutFrames, frameCount * sizeof(*pOut));
         }
     }
     return 0;
@@ -549,12 +569,23 @@ int Reverb_setConfig(ReverbContext* pContext, effect_config_t* pConfig) {
     CHECK_ARG((pContext->auxiliary && pConfig->inputCfg.channels == AUDIO_CHANNEL_OUT_MONO) ||
               ((!pContext->auxiliary) && (inputChannels <= LVM_MAX_CHANNELS)));
     int outputChannels = audio_channel_count_from_out_mask(pConfig->outputCfg.channels);
-    CHECK_ARG(outputChannels >= FCC_2 && outputChannels <= LVM_MAX_CHANNELS);
+    CHECK_ARG(outputChannels <= LVM_MAX_CHANNELS);
     CHECK_ARG(pConfig->outputCfg.accessMode == EFFECT_BUFFER_ACCESS_WRITE ||
               pConfig->outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE);
     CHECK_ARG(pConfig->inputCfg.format == EFFECT_BUFFER_FORMAT);
     // ALOGV("\tReverb_setConfig calling memcpy");
     pContext->config = *pConfig;
+
+    LVREV_ControlParams_st ActiveParams;
+    LVREV_ReturnStatus_en LvmStatus = LVREV_SUCCESS;
+
+    // ALOGV("\tReverb_setConfig change sampling rate to %d", SampleRate);
+
+    /* Get the current settings */
+    LvmStatus = LVREV_GetControlParameters(pContext->hInstance, &ActiveParams);
+
+    LVM_ERROR_CHECK(LvmStatus, "LVREV_GetControlParameters", "Reverb_setConfig")
+    if (LvmStatus != LVREV_SUCCESS) return -EINVAL;
 
     SampleRate = lvmFsForSampleRate(pConfig->inputCfg.samplingRate);
     if (SampleRate == LVM_FS_INVALID) {
@@ -562,28 +593,16 @@ int Reverb_setConfig(ReverbContext* pContext, effect_config_t* pConfig) {
         return -EINVAL;
     }
 
-    if (pContext->SampleRate != SampleRate) {
-        LVREV_ControlParams_st ActiveParams;
-        LVREV_ReturnStatus_en LvmStatus = LVREV_SUCCESS;
+    LVM_Format_en SourceFormat = LVM_STEREO;
+    if (inputChannels == FCC_1 && outputChannels == FCC_1) SourceFormat = LVM_MONO;
 
-        // ALOGV("\tReverb_setConfig change sampling rate to %d", SampleRate);
-
-        /* Get the current settings */
-        LvmStatus = LVREV_GetControlParameters(pContext->hInstance, &ActiveParams);
-
-        LVM_ERROR_CHECK(LvmStatus, "LVREV_GetControlParameters", "Reverb_setConfig")
-        if (LvmStatus != LVREV_SUCCESS) return -EINVAL;
-
+    if (pContext->SampleRate != SampleRate || SourceFormat != ActiveParams.SourceFormat) {
         ActiveParams.SampleRate = SampleRate;
+        ActiveParams.SourceFormat = SourceFormat;
 
         LvmStatus = LVREV_SetControlParameters(pContext->hInstance, &ActiveParams);
-
         LVM_ERROR_CHECK(LvmStatus, "LVREV_SetControlParameters", "Reverb_setConfig")
         if (LvmStatus != LVREV_SUCCESS) return -EINVAL;
-        // ALOGV("\tReverb_setConfig Successfully called LVREV_SetControlParameters\n");
-        pContext->SampleRate = SampleRate;
-    } else {
-        // ALOGV("\tReverb_setConfig keep sampling rate at %d", SampleRate);
     }
 
     // ALOGV("\tReverb_setConfig End");
@@ -630,11 +649,7 @@ int Reverb_init(ReverbContext* pContext) {
     }
 
     pContext->config.inputCfg.accessMode = EFFECT_BUFFER_ACCESS_READ;
-    if (pContext->auxiliary) {
-        pContext->config.inputCfg.channels = AUDIO_CHANNEL_OUT_MONO;
-    } else {
-        pContext->config.inputCfg.channels = AUDIO_CHANNEL_OUT_STEREO;
-    }
+    pContext->config.inputCfg.channels = AUDIO_CHANNEL_OUT_MONO;
     pContext->config.inputCfg.format = EFFECT_BUFFER_FORMAT;
     pContext->config.inputCfg.samplingRate = 44100;
     pContext->config.inputCfg.bufferProvider.getBuffer = NULL;
@@ -642,7 +657,7 @@ int Reverb_init(ReverbContext* pContext) {
     pContext->config.inputCfg.bufferProvider.cookie = NULL;
     pContext->config.inputCfg.mask = EFFECT_CONFIG_ALL;
     pContext->config.outputCfg.accessMode = EFFECT_BUFFER_ACCESS_ACCUMULATE;
-    pContext->config.outputCfg.channels = AUDIO_CHANNEL_OUT_STEREO;
+    pContext->config.outputCfg.channels = AUDIO_CHANNEL_OUT_MONO;
     pContext->config.outputCfg.format = EFFECT_BUFFER_FORMAT;
     pContext->config.outputCfg.samplingRate = 44100;
     pContext->config.outputCfg.bufferProvider.getBuffer = NULL;
@@ -736,9 +751,6 @@ int Reverb_init(ReverbContext* pContext) {
         params.SourceFormat = LVM_STEREO;
     }
 
-    if ((pContext->auxiliary == false) && (params.SourceFormat == LVM_MONO)) {
-        params.SourceFormat = LVM_STEREO;
-    }
     /* Reverb parameters */
     params.Level = 0;
     params.LPF = 23999;
