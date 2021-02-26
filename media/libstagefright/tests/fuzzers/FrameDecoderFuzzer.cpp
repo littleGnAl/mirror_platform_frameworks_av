@@ -45,13 +45,14 @@ extern "C" int LLVMFuzzerTestOneInput(const uint8_t *data, size_t size) {
         decoder = new ImageDecoder(componentName, trackMeta, source);
     }
 
+    status_t initResult = decoder->init(/*frameTimeUs*/ fdp.ConsumeIntegral<int64_t>(),
+                  /*option*/ fdp.ConsumeIntegral<int>(),
+                  /*colorFormat*/ fdp.ConsumeIntegral<int>());
+    if (initResult != OK) {
+        return 0;
+    }
     while (fdp.remaining_bytes()) {
-        switch (fdp.ConsumeIntegralInRange<uint8_t>(0, 3)) {
-            case 0:
-                decoder->init(/*frameTimeUs*/ fdp.ConsumeIntegral<int64_t>(),
-                              /*option*/ fdp.ConsumeIntegral<int>(),
-                              /*colorFormat*/ fdp.ConsumeIntegral<int>());
-                break;
+        switch (fdp.ConsumeIntegralInRange<uint8_t>(1, 3)) {
             case 1:
                 decoder->extractFrame();
                 break;
