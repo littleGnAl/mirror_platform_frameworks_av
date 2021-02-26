@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4a929bc_b8c85932",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/MainActivity.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2021-02-26T12:04:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6f75fa9_15de7a74",
+      "range": {
+        "startLine": 224,
+        "startChar": 91,
+        "endLine": 224,
+        "endChar": 94
+      },
+      "revId": "1427167f9636124c9339ed7c3c14b9ef8dfe34ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d5df2c91_943dc5f4",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-02-25T04:41:13Z",
       "side": 1,
       "message": "why different value assignments than the AVC I/P/B hierarchy?\n\nI see why from how you\u0027re extracting then in the NalUtil file.\nout at this level -- we should not be dealing with AVC-specific or HEVC-specific numbers. we should be dealing with a codec-agnostic I_FRAME, P_FRAME, and B_FRAME\nand those extraction routines should be translating the codec-specific stuff to\nour agnostic values.",
+      "range": {
+        "startLine": 42,
+        "startChar": 44,
+        "endLine": 44,
+        "endChar": 46
+      },
+      "revId": "1427167f9636124c9339ed7c3c14b9ef8dfe34ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9165e977_7686e809",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/MediaCodecSurfaceEncoder.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2021-02-26T12:04:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d5df2c91_943dc5f4",
       "range": {
         "startLine": 42,
         "startChar": 44,
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "91a6b703_b2e5d1f2",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/MediaCodecSurfaceEncoder.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2021-02-26T12:04:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "19241794_2a406049",
+      "range": {
+        "startLine": 354,
+        "startChar": 11,
+        "endLine": 354,
+        "endChar": 58
+      },
+      "revId": "1427167f9636124c9339ed7c3c14b9ef8dfe34ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6c4fc9ce_0f726d09",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-02-25T04:41:13Z",
       "side": 1,
       "message": "if avc and hevc have dfferent internal numerc assignments for the I/P/B frame types, then I think that we want to hide that information inside of this\nroutine.\n\nthis routine [and findHEVCFrameType()]  should both return a standardized\ncodec-independent I/P/B mapping...\n\nanother way to phrase it -- i want these to behave more as if they\nwere named getStandardizedFrameTypesFromAVC() and getStandardizedFrameTypesFromHEVC()",
+      "range": {
+        "startLine": 95,
+        "startChar": 22,
+        "endLine": 95,
+        "endChar": 38
+      },
+      "revId": "1427167f9636124c9339ed7c3c14b9ef8dfe34ce",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a065ea20_180ae950",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/NalUnitUtil.java",
+        "patchSetId": 2
+      },
+      "lineNbr": 95,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2021-02-26T12:04:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6c4fc9ce_0f726d09",
       "range": {
         "startLine": 95,
         "startChar": 22,
