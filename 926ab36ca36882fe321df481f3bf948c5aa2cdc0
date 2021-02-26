@@ -16,6 +16,98 @@
       "message": "Test failures are happening with all other chMask values except 0. Currently looking into this issue.",
       "revId": "926ab36ca36882fe321df481f3bf948c5aa2cdc0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b28f56ef_f9a704b9",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_Process.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-26T18:44:38Z",
+      "side": 1,
+      "message": "single cal with appropriate numsamples",
+      "range": {
+        "startLine": 98,
+        "startChar": 0,
+        "endLine": 103,
+        "endChar": 13
+      },
+      "revId": "926ab36ca36882fe321df481f3bf948c5aa2cdc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dc8382d_00ea50ae",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 371,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-26T18:44:38Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 371,
+        "startChar": 0,
+        "endLine": 371,
+        "endChar": 35
+      },
+      "revId": "926ab36ca36882fe321df481f3bf948c5aa2cdc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a3c7e7c0_161e91b4",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 442,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-26T18:44:38Z",
+      "side": 1,
+      "message": "move the if () outside the loop",
+      "range": {
+        "startLine": 431,
+        "startChar": 0,
+        "endLine": 442,
+        "endChar": 13
+      },
+      "revId": "926ab36ca36882fe321df481f3bf948c5aa2cdc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0241bb0_7d90f02b",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-26T18:44:38Z",
+      "side": 1,
+      "message": "if() outside the loop",
+      "range": {
+        "startLine": 448,
+        "startChar": 0,
+        "endLine": 455,
+        "endChar": 17
+      },
+      "revId": "926ab36ca36882fe321df481f3bf948c5aa2cdc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
