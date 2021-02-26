@@ -96,7 +96,7 @@ LVREV_ReturnStatus_en LVREV_Process(LVREV_Handle_t hInstance, const LVM_FLOAT* p
              * Copy the data to the output buffer, convert to stereo is required
              */
             if (pLVREV_Private->CurrentParams.SourceFormat == LVM_MONO) {
-                MonoTo2I_Float(pInput, pOutput, NumSamples);
+                Copy_Float(pInput, pOutput, (LVM_INT16)NumSamples);  // 32 bit data
             } else {
                 Copy_Float(pInput, pOutput,
                            (LVM_INT16)(NumSamples << 1));  // 32 bit data, stereo
@@ -127,7 +127,7 @@ LVREV_ReturnStatus_en LVREV_Process(LVREV_Handle_t hInstance, const LVM_FLOAT* p
 
         ReverbBlock(pInput, pOutput, pLVREV_Private, (LVM_UINT16)SamplesToProcess);
         pInput = (LVM_FLOAT*)(pInput + (SamplesToProcess * format));
-        pOutput = (LVM_FLOAT*)(pOutput + (SamplesToProcess * 2));  // Always stereo output
+        pOutput = (LVM_FLOAT*)(pOutput + (SamplesToProcess * format));
     }
 
     return LVREV_SUCCESS;
@@ -384,13 +384,18 @@ void ReverbBlock(LVM_FLOAT* pInput, LVM_FLOAT* pOutput, LVREV_Instance_st* pPriv
      */
 
     size = (LVM_INT16)(NumSamples << 1);
-    MixSoft_2St_D32C31_SAT(&pPrivate->BypassMixer, pTemp, pTemp, pOutput, size);
+    MixSoft_2St_D32C31_SAT(&pPrivate->BypassMixer, pTemp, pTemp, pScratch, size);
 
     /* Apply Gain*/
 
-    Shift_Sat_Float(LVREV_OUTPUTGAIN_SHIFT, pOutput, pOutput, size);
+    Shift_Sat_Float(LVREV_OUTPUTGAIN_SHIFT, pScratch, pScratch, size);
 
-    MixSoft_1St_D32C31_WRA(&pPrivate->GainMixer, pOutput, pOutput, size);
+    MixSoft_1St_D32C31_WRA(&pPrivate->GainMixer, pScratch, pScratch, size);
+
+    /* Get mono output if needed */
+    if (pPrivate->CurrentParams.SourceFormat == LVM_MONO) {
+        From2iToMono_Float(pScratch, pOutput, (LVM_INT16)NumSamples);
+    }
 
     return;
 }
