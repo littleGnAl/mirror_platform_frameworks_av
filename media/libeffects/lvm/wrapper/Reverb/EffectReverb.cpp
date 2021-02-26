@@ -33,6 +33,7 @@ typedef float LVM_FLOAT;
 #include "EffectReverb.h"
 // from Reverb/lib
 #include "LVREV.h"
+#include "VectorArithmetic.h"
 
 // effect_handle_t interface implementation for reverb
 extern "C" const struct effect_interface_s gReverbInterface;
@@ -332,6 +333,7 @@ extern "C" int EffectGetDescriptor(const effect_uuid_t* uuid, effect_descriptor_
 //----------------------------------------------------------------------------
 int process(effect_buffer_t* pIn, effect_buffer_t* pOut, int frameCount, ReverbContext* pContext) {
     int channels = audio_channel_count_from_out_mask(pContext->config.inputCfg.channels);
+    int outChannels = audio_channel_count_from_out_mask(pContext->config.outputCfg.channels);
     LVREV_ReturnStatus_en LvmStatus = LVREV_SUCCESS; /* Function call status */
 
     // Reverb only effects the stereo channels in multichannel source.
@@ -481,6 +483,11 @@ int process(effect_buffer_t* pIn, effect_buffer_t* pOut, int frameCount, ReverbC
             memcpy(pOut, pContext->OutFrames, frameCount * sizeof(*pOut) * FCC_2);
         }
     }
+
+    if (outChannels == FCC_1) {
+        From2iToMono_Float((const process_buffer_t*)pOut, pOut, frameCount);
+    }
+
     return 0;
 } /* end process */
 
@@ -549,7 +556,7 @@ int Reverb_setConfig(ReverbContext* pContext, effect_config_t* pConfig) {
     CHECK_ARG((pContext->auxiliary && pConfig->inputCfg.channels == AUDIO_CHANNEL_OUT_MONO) ||
               ((!pContext->auxiliary) && (inputChannels <= LVM_MAX_CHANNELS)));
     int outputChannels = audio_channel_count_from_out_mask(pConfig->outputCfg.channels);
-    CHECK_ARG(outputChannels >= FCC_2 && outputChannels <= LVM_MAX_CHANNELS);
+    CHECK_ARG(outputChannels <= LVM_MAX_CHANNELS);
     CHECK_ARG(pConfig->outputCfg.accessMode == EFFECT_BUFFER_ACCESS_WRITE ||
               pConfig->outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE);
     CHECK_ARG(pConfig->inputCfg.format == EFFECT_BUFFER_FORMAT);
