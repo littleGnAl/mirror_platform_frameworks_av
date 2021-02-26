@@ -93,6 +93,30 @@
       },
       "revId": "ef803de9ef8b908d67d7d86eb2e49b399d077570",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b62355b8_16d94705",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-02-26T00:53:39Z",
+      "side": 1,
+      "message": "Marking this as resolved as Patchset 7 had Code-Review +2.",
+      "parentUuid": "2d7aa160_8f6ffd2a",
+      "range": {
+        "startLine": 477,
+        "startChar": 0,
+        "endLine": 477,
+        "endChar": 71
+      },
+      "revId": "ef803de9ef8b908d67d7d86eb2e49b399d077570",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
