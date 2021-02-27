@@ -43,6 +43,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "044569dd_9a69795f",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_Process.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1402585
+      },
+      "writtenOn": "2021-02-27T15:06:59Z",
+      "side": 1,
+      "message": "Looks like we are not handling non LVM_MONO cases. Please add an else and copy pScratch to pOutput.\n\nalternatively you can point pScratch to pOutput for cases where SourceFormat !\u003d LVM_MONO.\n\nThis could be the probable reason for all test cases other chMask 0 failure issue that you are currently facing.",
+      "revId": "926ab36ca36882fe321df481f3bf948c5aa2cdc0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0dc8382d_00ea50ae",
         "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
         "patchSetId": 1
