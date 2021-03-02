@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa315009_44cb6bb0",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 621,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-02T19:25:10Z",
+      "side": 1,
+      "message": "combine this with the SetControlParameters call in line 599.\nSourceFormat \u003d LVM_STEREO;\nif (inputChannels \u003d\u003d FCC_1 \u0026\u0026 outputChannels \u003d\u003d FCC_1) \n    SourceFormat \u003d LVM_MONO;\n\nif (pContext-\u003eSampleRate !\u003d SampleRate || SourceFormat !\u003d ActiveParams.SourceFormat) {\n   ActiveParams.SourceFormat \u003d SourceFormat;\n   ActiveParams.SampleRate \u003d SampleRate;\n   LVREV_SetControlParameters(....);\n}",
+      "range": {
+        "startLine": 609,
+        "startChar": 0,
+        "endLine": 621,
+        "endChar": 5
+      },
+      "revId": "441716a821d56d86a2b13a2b78433676e30d5add",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
