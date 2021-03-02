@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008555839",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1606898?revision\u003d6",
+      "fixSuggestions": [
+        {
+          "fixId": "422db841_f0622647",
+          "description": "Change to \"media/codec2/sfplugin/CCodec.cpp\"",
+          "replacements": [
+            {
+              "path": "media/codec2/sfplugin/CCodec.cpp",
+              "range": {
+                "startLine": 1243,
+                "startChar": 63,
+                "endLine": 1243,
+                "endChar": 71
+              },
+              "replacement": "supported"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "99608dc5_be4fd084",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-02T02:41:22Z",
+      "side": 1,
+      "message": "Common typo found: \"suported\" -- should it be \"supported\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 1243,
+        "startChar": 63,
+        "endLine": 1243,
+        "endChar": 71
+      },
+      "revId": "df3a3e3de5e116628b6e6a24925aec9f124a4bc9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
