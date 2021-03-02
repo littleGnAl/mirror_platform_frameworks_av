@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008565825",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1606898?revision\u003d9",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "4346cdf5_ac974d89",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-02T09:22:08Z",
+      "side": 1,
+      "message": "Verbose debugging should only be enabled in local builds; see https://source.android.com/setup/contribute/code-style#log-sparingly for more details.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "bde1e28bf3c0752587373caf888016b09e309d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
