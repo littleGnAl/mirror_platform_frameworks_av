@@ -16,6 +16,24 @@
       "message": "if the scope of the CL can be changed to \"Build both shared and static libraries for libaudiopreprocessing\" then a change can be done in AudioPreProcessingTest to pick the static libraries.",
       "revId": "6e755a2bb46c5f2f93131e4be893a4b4308a13c4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97661ede_7bac9b9c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-02T18:23:36Z",
+      "side": 1,
+      "message": "Keeping the comment open",
+      "parentUuid": "3c1d02a1_cb92dc8b",
+      "revId": "6e755a2bb46c5f2f93131e4be893a4b4308a13c4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
