@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac2f7077_ffe47534",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1247,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-03-02T00:14:51Z",
+      "side": 1,
+      "message": "No need to check whether this is valid?",
+      "range": {
+        "startLine": 1247,
+        "startChar": 32,
+        "endLine": 1247,
+        "endChar": 41
+      },
+      "revId": "bea5ce3583463c8c4cec532073e640aa6a71c390",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
