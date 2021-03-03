@@ -1736,11 +1736,10 @@ status_t AudioPolicyManager::startSource(const sp<SwAudioOutputDescriptor>& outp
         // some playback other than beacon starts
         beaconMuteLatency = handleEventForBeacon(STARTING_OUTPUT);
     }
-
+    bool isOutputRouted = outputDesc->getPatchHandle() != AUDIO_PATCH_HANDLE_NONE;
     // force device change if the output is inactive and no audio patch is already present.
     // check active before incrementing usage count
-    bool force = !outputDesc->isActive() &&
-            (outputDesc->getPatchHandle() == AUDIO_PATCH_HANDLE_NONE);
+    bool force = !outputDesc->isActive() && !isOutputRouted;
 
     DeviceVector devices;
     sp<AudioPolicyMix> policyMix = outputDesc->mPolicyMix.promote();
@@ -1787,8 +1786,8 @@ status_t AudioPolicyManager::startSource(const sp<SwAudioOutputDescriptor>& outp
     if (followsSameRouting(clientAttr, attributes_initializer(AUDIO_USAGE_MEDIA))) {
         selectOutputForMusicEffects();
     }
-
-    if (outputDesc->getActivityCount(clientVolSrc) == 1 || !devices.isEmpty()) {
+    // Note: an output may be "fakely" active if hosting an HwBridge AudioSource for volume control.
+    if (outputDesc->getActivityCount(clientVolSrc) == 1 || !devices.isEmpty() || !isOutputRouted) {
         // starting an output being rerouted?
         if (devices.isEmpty()) {
             devices = getNewOutputDevices(outputDesc, false /*fromCache*/);
