@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d50ea79_4e7a2e07",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 489,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-03T18:34:17Z",
+      "side": 1,
+      "message": "this assumes that output is allocated for two channels.\nWe would need to avoid writing stereo to pOut and instead average from intermediate buffers.",
+      "range": {
+        "startLine": 487,
+        "startChar": 0,
+        "endLine": 489,
+        "endChar": 5
+      },
+      "revId": "6fd6393d6ceb981b0768df424790b866d26aa807",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
