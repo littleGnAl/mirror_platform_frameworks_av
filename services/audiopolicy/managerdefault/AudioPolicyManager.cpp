@@ -1802,8 +1802,8 @@ status_t AudioPolicyManager::startSource(const sp<SwAudioOutputDescriptor>& outp
     if (followsSameRouting(clientAttr, attributes_initializer(AUDIO_USAGE_MEDIA))) {
         selectOutputForMusicEffects();
     }
-
-    if (outputDesc->getActivityCount(clientVolSrc) == 1 || !devices.isEmpty()) {
+    // Note: an output may be "fakely" active if hosting an HwBridge AudioSource for volume control.
+    if (outputDesc->getActivityCount(clientVolSrc) == 1 || !devices.isEmpty() || !isOutputRouted) {
         // starting an output being rerouted?
         if (devices.isEmpty()) {
             devices = getNewOutputDevices(outputDesc, false /*fromCache*/);
