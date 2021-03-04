@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008641896",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1614942?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "cb950c4e_7dfad056",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1405,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-04T01:23:38Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 1405,
+        "startChar": 0,
+        "endLine": 1405,
+        "endChar": 106
+      },
+      "revId": "6496198bac21c7a48beff17fde9f032db2bc3599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008641896",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1614942?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "af17f226_a385667e",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1414,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-04T01:23:38Z",
+      "side": 1,
+      "message": "Prefer to use inclusive terms like \u0027complex\u0027, \u0027unexpected\u0027, or \u0027placeholder\u0027; see https://developers.google.com/style/inclusive-documentation#ableist-language for more details. In the case of a false positive add BYPASS_INCLUSIVE_LANGUAGE_REASON\u003dmy_reason_here to your commit message to disable this check.",
+      "range": {
+        "startLine": 1414,
+        "startChar": 28,
+        "endLine": 1414,
+        "endChar": 33
+      },
+      "revId": "6496198bac21c7a48beff17fde9f032db2bc3599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
