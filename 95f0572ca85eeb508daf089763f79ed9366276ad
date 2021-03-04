@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c3f4ff6_30acaa45",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 4221,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-04T23:33:04Z",
+      "side": 1,
+      "message": "why is this needed instead of mMeta? the answer to this question could be perhaps added to the commit message.",
+      "range": {
+        "startLine": 4221,
+        "startChar": 4,
+        "endLine": 4221,
+        "endChar": 45
+      },
+      "revId": "95f0572ca85eeb508daf089763f79ed9366276ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
