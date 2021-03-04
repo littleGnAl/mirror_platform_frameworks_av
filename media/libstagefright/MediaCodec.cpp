@@ -317,17 +317,31 @@ MediaCodec::BufferInfo::BufferInfo() : mOwnedByClient(false) {}
 
 class MediaCodec::ReleaseSurface {
 public:
-    ReleaseSurface() {
+    explicit ReleaseSurface(uint64_t usage) {
         BufferQueue::createBufferQueue(&mProducer, &mConsumer);
         mSurface = new Surface(mProducer, false /* controlledByApp */);
         struct ConsumerListener : public BnConsumerListener {
-            void onFrameAvailable(const BufferItem&) override {}
+            ConsumerListener(const sp<IGraphicBufferConsumer> &consumer) {
+                mConsumer = consumer;
+            }
+            void onFrameAvailable(const BufferItem&) override {
+                BufferItem buffer;
+                // consume buffer
+                sp<IGraphicBufferConsumer> consumer = mConsumer.promote();
+                if (consumer != nullptr && consumer->acquireBuffer(&buffer, 0) == NO_ERROR) {
+                    consumer->releaseBuffer(buffer.mSlot, buffer.mFrameNumber,
+                                            EGL_NO_DISPLAY, EGL_NO_SYNC_KHR, buffer.mFence);
+                }
+            }
+
+            wp<IGraphicBufferConsumer> mConsumer;
             void onBuffersReleased() override {}
             void onSidebandStreamChanged() override {}
         };
-        sp<ConsumerListener> listener{new ConsumerListener};
+        sp<ConsumerListener> listener{new ConsumerListener(mConsumer)};
         mConsumer->consumerConnect(listener, false);
         mConsumer->setConsumerName(String8{"MediaCodec.release"});
+        mConsumer->setConsumerUsageBits(usage);
     }
 
     const sp<Surface> &getSurface() {
@@ -1310,6 +1324,8 @@ status_t MediaCodec::configure(
     // save msg for reset
     mConfigureMsg = msg;
 
+    sp<AMessage> callback = mCallback;
+
     status_t err;
     std::vector<MediaResourceParcel> resources;
     resources.push_back(MediaResource::CodecResource(mFlags & kFlagIsSecure, mIsVideo));
@@ -1334,7 +1350,18 @@ status_t MediaCodec::configure(
             // the configure failure is due to wrong state.
 
             ALOGE("configure failed with err 0x%08x, resetting...", err);
-            reset();
+            status_t err2 = reset();
+            if (err2 != OK) {
+                ALOGE("retrying configure: failed to reset codec (%08x)", err2);
+                break;
+            }
+            if (callback != nullptr) {
+                err2 = setCallback(callback);
+                if (err2 != OK) {
+                    ALOGE("retrying configure: failed to set callback (%08x)", err2);
+                    break;
+                }
+            }
         }
         if (!isResourceError(err)) {
             break;
@@ -1443,6 +1470,8 @@ uint64_t MediaCodec::getGraphicBufferSize() {
 status_t MediaCodec::start() {
     sp<AMessage> msg = new AMessage(kWhatStart, this);
 
+    sp<AMessage> callback;
+
     status_t err;
     std::vector<MediaResourceParcel> resources;
     resources.push_back(MediaResource::CodecResource(mFlags & kFlagIsSecure, mIsVideo));
@@ -1467,6 +1496,20 @@ status_t MediaCodec::start() {
                 ALOGE("retrying start: failed to configure codec");
                 break;
             }
+            if (callback != nullptr) {
+                err = setCallback(callback);
+                if (err != OK) {
+                    ALOGE("retrying start: failed to set callback");
+                    break;
+                }
+                ALOGD("succeed to set callback for reclaim");
+            }
+        }
+
+        // Keep callback message after the first iteration if necessary.
+        if (i == 0 && mCallback != nullptr && mFlags & kFlagIsAsync) {
+            callback = mCallback;
+            ALOGD("keep callback message for reclaim");
         }
 
         sp<AMessage> response;
@@ -3086,15 +3129,20 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                 break;
             }
 
-            // If we're flushing, stopping, configuring or starting  but
+            // If we're flushing, configuring or starting  but
             // received a release request, post the reply for the pending call
             // first, and consider it done. The reply token will be replaced
             // after this, and we'll no longer be able to reply.
-            if (mState == FLUSHING || mState == STOPPING
-                    || mState == CONFIGURING || mState == STARTING) {
+            if (mState == FLUSHING || mState == CONFIGURING || mState == STARTING) {
                 // mReply is always set if in these states.
                 postPendingRepliesAndDeferredMessages(
                         std::string("kWhatRelease:") + stateString(mState));
+            }
+            // If we're stopping but received a release request, post the reply
+            // for the pending call if necessary. Note that the reply may have been
+            // already posted due to an error.
+            if (mState == STOPPING && mReplyID) {
+                postPendingRepliesAndDeferredMessages("kWhatRelease:STOPPING");
             }
 
             if (mFlags & kFlagSawMediaServerDie) {
@@ -3122,7 +3170,11 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
             if (asyncNotify != nullptr) {
                 if (mSurface != NULL) {
                     if (!mReleaseSurface) {
-                        mReleaseSurface.reset(new ReleaseSurface);
+                        uint64_t usage = 0;
+                        if (mSurface->getConsumerUsage(&usage) != OK) {
+                            usage = 0;
+                        }
+                        mReleaseSurface.reset(new ReleaseSurface(usage));
                     }
                     if (mSurface != mReleaseSurface->getSurface()) {
                         status_t err = connectToSurface(mReleaseSurface->getSurface());

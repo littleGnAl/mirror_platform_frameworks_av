@@ -166,8 +166,8 @@ int Effect_setEnabled(EffectContext* pContext, bool enabled);
 
 /* Effect Library Interface Implementation */
 
-extern "C" int EffectCreate(const effect_uuid_t* uuid, int32_t sessionId, int32_t ioId __unused,
-                            effect_handle_t* pHandle) {
+extern "C" int EffectCreate(const effect_uuid_t* uuid, int32_t sessionId,
+                            int32_t /* ioId __unused */, effect_handle_t* pHandle) {
     int ret = 0;
     int sessionNo = -1;
     int i;
@@ -957,51 +957,12 @@ int Effect_setConfig(EffectContext* pContext, effect_config_t* pConfig) {
     pContext->config = *pConfig;
     const LVM_INT16 NrChannels = audio_channel_count_from_out_mask(pConfig->inputCfg.channels);
 
-    switch (pConfig->inputCfg.samplingRate) {
-        case 8000:
-            SampleRate = LVM_FS_8000;
-            pContext->pBundledContext->SamplesPerSecond = 8000 * NrChannels;
-            break;
-        case 16000:
-            SampleRate = LVM_FS_16000;
-            pContext->pBundledContext->SamplesPerSecond = 16000 * NrChannels;
-            break;
-        case 22050:
-            SampleRate = LVM_FS_22050;
-            pContext->pBundledContext->SamplesPerSecond = 22050 * NrChannels;
-            break;
-        case 32000:
-            SampleRate = LVM_FS_32000;
-            pContext->pBundledContext->SamplesPerSecond = 32000 * NrChannels;
-            break;
-        case 44100:
-            SampleRate = LVM_FS_44100;
-            pContext->pBundledContext->SamplesPerSecond = 44100 * NrChannels;
-            break;
-        case 48000:
-            SampleRate = LVM_FS_48000;
-            pContext->pBundledContext->SamplesPerSecond = 48000 * NrChannels;
-            break;
-        case 88200:
-            SampleRate = LVM_FS_88200;
-            pContext->pBundledContext->SamplesPerSecond = 88200 * NrChannels;
-            break;
-        case 96000:
-            SampleRate = LVM_FS_96000;
-            pContext->pBundledContext->SamplesPerSecond = 96000 * NrChannels;
-            break;
-        case 176400:
-            SampleRate = LVM_FS_176400;
-            pContext->pBundledContext->SamplesPerSecond = 176400 * NrChannels;
-            break;
-        case 192000:
-            SampleRate = LVM_FS_192000;
-            pContext->pBundledContext->SamplesPerSecond = 192000 * NrChannels;
-            break;
-        default:
-            ALOGV("\tEffect_setConfig invalid sampling rate %d", pConfig->inputCfg.samplingRate);
-            return -EINVAL;
+    SampleRate = lvmFsForSampleRate(pConfig->inputCfg.samplingRate);
+    if (SampleRate == LVM_FS_INVALID) {
+        ALOGV("Effect_setConfig invalid sampling rate %d", pConfig->inputCfg.samplingRate);
+        return -EINVAL;
     }
+    pContext->pBundledContext->SamplesPerSecond = pConfig->inputCfg.samplingRate * NrChannels;
 
     if (pContext->pBundledContext->SampleRate != SampleRate ||
         pContext->pBundledContext->ChMask != pConfig->inputCfg.channels) {
@@ -1020,6 +981,16 @@ int Effect_setConfig(EffectContext* pContext, effect_config_t* pConfig) {
 
         ActiveParams.NrChannels = NrChannels;
         ActiveParams.ChMask = pConfig->inputCfg.channels;
+
+        if (NrChannels == 1) {
+            ActiveParams.SourceFormat = LVM_MONO;
+        } else if (NrChannels == 2) {
+            ActiveParams.SourceFormat = LVM_STEREO;
+        } else if (NrChannels > 2 && NrChannels <= LVM_MAX_CHANNELS) {
+            ActiveParams.SourceFormat = LVM_MULTICHANNEL;
+        } else {
+            return -EINVAL;
+        }
 
         LvmStatus = LVM_SetControlParameters(pContext->pBundledContext->hInstance, &ActiveParams);
 
@@ -1344,7 +1315,8 @@ int VirtualizerForceVirtualizationMode(EffectContext* pContext, audio_devices_t 
 //
 //----------------------------------------------------------------------------
 void VirtualizerGetSpeakerAngles(audio_channel_mask_t channelMask,
-                                 audio_devices_t deviceType __unused, int32_t* pSpeakerAngles) {
+                                 audio_devices_t /* deviceType __unused */,
+                                 int32_t* pSpeakerAngles) {
     // the channel count is guaranteed to be 1 or 2
     // the device is guaranteed to be of type headphone
     // this virtualizer is always using 2 virtual speakers at -90 and 90deg of azimuth, 0deg of
@@ -1485,8 +1457,8 @@ int32_t EqualizerGetCentreFrequency(EffectContext* pContext, int32_t band) {
 //  pLow:       lower band range
 //  pLow:       upper band range
 //----------------------------------------------------------------------------
-int32_t EqualizerGetBandFreqRange(EffectContext* pContext __unused, int32_t band, uint32_t* pLow,
-                                  uint32_t* pHi) {
+int32_t EqualizerGetBandFreqRange(EffectContext* /* pContext __unused */, int32_t band,
+                                  uint32_t* pLow, uint32_t* pHi) {
     *pLow = bandFreqRange[band][0];
     *pHi = bandFreqRange[band][1];
     return 0;
@@ -1509,7 +1481,7 @@ int32_t EqualizerGetBandFreqRange(EffectContext* pContext __unused, int32_t band
 //  pLow:       lower band range
 //  pLow:       upper band range
 //----------------------------------------------------------------------------
-int32_t EqualizerGetBand(EffectContext* pContext __unused, uint32_t targetFreq) {
+int32_t EqualizerGetBand(EffectContext* /* pContext __unused */, uint32_t targetFreq) {
     int band = 0;
 
     if (targetFreq < bandFreqRange[0][0]) {
