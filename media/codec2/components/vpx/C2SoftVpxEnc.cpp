@@ -23,6 +23,7 @@
 
 #include <Codec2BufferUtils.h>
 #include <C2Debug.h>
+#include <Codec2Mapper.h>
 #include "C2SoftVpxEnc.h"
 
 #ifndef INT32_MAX
