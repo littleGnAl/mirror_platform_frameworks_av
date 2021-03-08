@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a66769f_9288a9bf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-03-08T19:05:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "59fb0825_919b5ae8",
+      "revId": "da2c4dca418fa039d553366b3628977bbb4b4a12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3e0ac349_ab079bce",
@@ -31,6 +49,30 @@
       "writtenOn": "2021-03-08T16:52:39Z",
       "side": 1,
       "message": "LVREV_MAX_T_DELAY[i], sizeof(LVM_FLOAT)\n\nand similarly below",
+      "range": {
+        "startLine": 99,
+        "startChar": 35,
+        "endLine": 99,
+        "endChar": 78
+      },
+      "revId": "da2c4dca418fa039d553366b3628977bbb4b4a12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a539944_a9358e9b",
+        "filename": "media/libeffects/lvm/lib/Reverb/src/LVREV_GetInstanceHandle.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-03-08T19:05:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e0ac349_ab079bce",
       "range": {
         "startLine": 99,
         "startChar": 35,
