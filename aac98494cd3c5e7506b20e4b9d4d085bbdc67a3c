@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a8e4fb8c_6d684719",
+        "filename": "media/libaudiohal/impl/DeviceHalHidl.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-03-09T16:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f43de5a1_dc4a05f3",
+      "range": {
+        "startLine": 457,
+        "startChar": 43,
+        "endLine": 457,
+        "endChar": 56
+      },
+      "revId": "aac98494cd3c5e7506b20e4b9d4d085bbdc67a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "30adc79b_02c31107",
@@ -106,6 +130,54 @@
       "writtenOn": "2021-02-24T09:54:29Z",
       "side": 1,
       "message": "the lock and mDeviceHalInterfaceAudioGainCallback should be stored and managed by the AudioGainCallbackCallback class.",
+      "range": {
+        "startLine": 131,
+        "startChar": 0,
+        "endLine": 131,
+        "endChar": 24
+      },
+      "revId": "aac98494cd3c5e7506b20e4b9d4d085bbdc67a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0486c34b_1e533fc1",
+        "filename": "media/libaudiohal/impl/DeviceHalHidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-03-09T16:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f76c6fa0_1a3d8e18",
+      "range": {
+        "startLine": 131,
+        "startChar": 18,
+        "endLine": 131,
+        "endChar": 23
+      },
+      "revId": "aac98494cd3c5e7506b20e4b9d4d085bbdc67a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e29df2a9_c799bcc8",
+        "filename": "media/libaudiohal/impl/DeviceHalHidl.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 131,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-03-09T16:42:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9b4d3d74_400ec989",
       "range": {
         "startLine": 131,
         "startChar": 0,
