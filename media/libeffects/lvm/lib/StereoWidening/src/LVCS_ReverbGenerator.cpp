@@ -119,8 +119,8 @@ LVCS_ReturnStatus_en LVCS_ReverbGeneratorInit(LVCS_Handle_t hInstance, LVCS_Para
 #ifdef BIQUAD_OPT
         std::array<LVM_FLOAT, android::audio_utils::kBiquadNumCoefs> coefs = {
                 pReverbCoefTable[Offset].A0, pReverbCoefTable[Offset].A1,
-                pReverbCoefTable[Offset].A2, -(pReverbCoefTable[Offset].B1),
-                -(pReverbCoefTable[Offset].B2)};
+                pReverbCoefTable[Offset].A2, pReverbCoefTable[Offset].B1,
+                pReverbCoefTable[Offset].B2};
         pInstance->pRevBiquad.reset(
                 new android::audio_utils::BiquadFilter<LVM_FLOAT>(FCC_2, coefs));
 #else
