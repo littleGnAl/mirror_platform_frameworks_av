@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42c7ef87_694f4226",
+        "filename": "media/libeffects/lvm/lib/Reverb/lib/LVREV.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-09T05:49:13Z",
+      "side": 0,
+      "message": "LVM_Types.h also has LVM_MemoryRegion_st, LVM_MemoryTypes_en and LVM_MemoryTable_st.\n\nRemove those also in this CL.",
+      "range": {
+        "startLine": 84,
+        "startChar": 2,
+        "endLine": 84,
+        "endChar": 22
+      },
+      "revId": "85ed8fd8d8aba408e2ee149a4a457772e82b479f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
