@@ -52,14 +52,33 @@ LVEQNB_ReturnStatus_en LVEQNB_Init(LVEQNB_Handle_t* phInstance,
                                    LVEQNB_Capabilities_t* pCapabilities, void* pScratch) {
     LVEQNB_Instance_t* pInstance;
 
-    *phInstance = new LVEQNB_Instance_t{};
+    *phInstance = calloc(1, sizeof(*pInstance));
+    if (phInstance == LVM_NULL) {
+        return LVEQNB_NULLADDRESS;
+    }
     pInstance = (LVEQNB_Instance_t*)*phInstance;
 
     pInstance->Capabilities = *pCapabilities;
     pInstance->pScratch = pScratch;
 
     /* Equaliser Biquad Instance */
+#ifdef BIQUAD_OPT
     LVM_UINT32 MemSize = pCapabilities->MaxBands * sizeof(*(pInstance->pBandDefinitions));
+#else
+    LVM_UINT32 MemSize = pCapabilities->MaxBands * sizeof(*(pInstance->pEQNB_FilterState_Float));
+    pInstance->pEQNB_FilterState_Float = (Biquad_FLOAT_Instance_t*)calloc(1, MemSize);
+    if (pInstance->pEQNB_FilterState_Float == LVM_NULL) {
+        return LVEQNB_NULLADDRESS;
+    }
+
+    MemSize = (pCapabilities->MaxBands * sizeof(*(pInstance->pEQNB_Taps_Float)));
+    pInstance->pEQNB_Taps_Float = (Biquad_2I_Order2_FLOAT_Taps_t*)calloc(1, MemSize);
+    if (pInstance->pEQNB_Taps_Float == LVM_NULL) {
+        return LVEQNB_NULLADDRESS;
+    }
+
+    MemSize = (pCapabilities->MaxBands * sizeof(*(pInstance->pBandDefinitions)));
+#endif
     pInstance->pBandDefinitions = (LVEQNB_BandDef_t*)calloc(1, MemSize);
     if (pInstance->pBandDefinitions == LVM_NULL) {
         return LVEQNB_NULLADDRESS;
@@ -90,6 +109,11 @@ LVEQNB_ReturnStatus_en LVEQNB_Init(LVEQNB_Handle_t* phInstance,
      */
     LVEQNB_SetFilters(pInstance, /* Set the filter types */
                       &pInstance->Params);
+#ifndef BIQUAD_OPT
+    LVEQNB_SetCoefficients(pInstance); /* Set the filter coefficients */
+
+    LVEQNB_ClearFilterHistory(pInstance); /* Clear the filter history */
+#endif
 
     /*
      * Initialise the bypass variables
@@ -135,6 +159,17 @@ void LVEQNB_DeInit(LVEQNB_Handle_t* phInstance) {
     }
     pInstance = (LVEQNB_Instance_t*)*phInstance;
 
+#ifndef BIQUAD_OPT
+    /* Equaliser Biquad Instance */
+    if (pInstance->pEQNB_FilterState_Float != LVM_NULL) {
+        free(pInstance->pEQNB_FilterState_Float);
+        pInstance->pEQNB_FilterState_Float = LVM_NULL;
+    }
+    if (pInstance->pEQNB_Taps_Float != LVM_NULL) {
+        free(pInstance->pEQNB_Taps_Float);
+        pInstance->pEQNB_Taps_Float = LVM_NULL;
+    }
+#endif
     if (pInstance->pBandDefinitions != LVM_NULL) {
         free(pInstance->pBandDefinitions);
         pInstance->pBandDefinitions = LVM_NULL;
@@ -143,6 +178,6 @@ void LVEQNB_DeInit(LVEQNB_Handle_t* phInstance) {
         free(pInstance->pBiquadType);
         pInstance->pBiquadType = LVM_NULL;
     }
-    delete pInstance;
+    free(pInstance);
     *phInstance = LVM_NULL;
 }

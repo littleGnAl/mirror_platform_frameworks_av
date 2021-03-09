@@ -33,7 +33,6 @@ typedef float LVM_FLOAT;
 #include "EffectReverb.h"
 // from Reverb/lib
 #include "LVREV.h"
-#include "VectorArithmetic.h"
 
 // effect_handle_t interface implementation for reverb
 extern "C" const struct effect_interface_s gReverbInterface;
@@ -333,7 +332,6 @@ extern "C" int EffectGetDescriptor(const effect_uuid_t* uuid, effect_descriptor_
 //----------------------------------------------------------------------------
 int process(effect_buffer_t* pIn, effect_buffer_t* pOut, int frameCount, ReverbContext* pContext) {
     int channels = audio_channel_count_from_out_mask(pContext->config.inputCfg.channels);
-    int outChannels = audio_channel_count_from_out_mask(pContext->config.outputCfg.channels);
     LVREV_ReturnStatus_en LvmStatus = LVREV_SUCCESS; /* Function call status */
 
     // Reverb only effects the stereo channels in multichannel source.
@@ -456,49 +454,33 @@ int process(effect_buffer_t* pIn, effect_buffer_t* pOut, int frameCount, ReverbC
         }
     }
 
-    if (outChannels > 2) {
+    if (channels > 2) {
         // Accumulate if required
         if (pContext->config.outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE) {
             for (int i = 0; i < frameCount; i++) {
-                pOut[outChannels * i] += pContext->OutFrames[FCC_2 * i];
-                pOut[outChannels * i + 1] += pContext->OutFrames[FCC_2 * i + 1];
+                pOut[channels * i] += pContext->OutFrames[FCC_2 * i];
+                pOut[channels * i + 1] += pContext->OutFrames[FCC_2 * i + 1];
             }
         } else {
             for (int i = 0; i < frameCount; i++) {
-                pOut[outChannels * i] = pContext->OutFrames[FCC_2 * i];
-                pOut[outChannels * i + 1] = pContext->OutFrames[FCC_2 * i + 1];
+                pOut[channels * i] = pContext->OutFrames[FCC_2 * i];
+                pOut[channels * i + 1] = pContext->OutFrames[FCC_2 * i + 1];
             }
         }
-        if (!pContext->auxiliary) {
-            for (int i = 0; i < frameCount; i++) {
-                // channels and outChannels are expected to be same.
-                for (int j = FCC_2; j < outChannels; j++) {
-                    pOut[outChannels * i + j] = pIn[outChannels * i + j];
-                }
+        for (int i = 0; i < frameCount; i++) {
+            for (int j = FCC_2; j < channels; j++) {
+                pOut[channels * i + j] = pIn[channels * i + j];
             }
         }
     } else {
         if (pContext->config.outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE) {
-            if (outChannels == FCC_1) {
-                for (int i = 0; i < frameCount; i++) {
-                    pOut[i] +=
-                            ((pContext->OutFrames[i * FCC_2] + pContext->OutFrames[i * FCC_2 + 1]) *
-                             0.5f);
-                }
-            } else {
-                for (int i = 0; i < frameCount * FCC_2; i++) {
-                    pOut[i] += pContext->OutFrames[i];
-                }
+            for (int i = 0; i < frameCount * FCC_2; i++) {
+                pOut[i] += pContext->OutFrames[i];
             }
         } else {
-            if (outChannels == FCC_1) {
-                From2iToMono_Float((const process_buffer_t*)pContext->OutFrames, pOut, frameCount);
-            } else {
-                memcpy(pOut, pContext->OutFrames, frameCount * sizeof(*pOut) * FCC_2);
-            }
+            memcpy(pOut, pContext->OutFrames, frameCount * sizeof(*pOut) * FCC_2);
         }
     }
-
     return 0;
 } /* end process */
 
@@ -535,9 +517,6 @@ void Reverb_free(ReverbContext* pContext) {
             }
         }
     }
-
-    LvmStatus = LVREV_FreeInstance(pContext->hInstance);
-    LVM_ERROR_CHECK(LvmStatus, "LVREV_FreeInstance", "Reverb_free")
 } /* end Reverb_free */
 
 //----------------------------------------------------------------------------
@@ -567,7 +546,7 @@ int Reverb_setConfig(ReverbContext* pContext, effect_config_t* pConfig) {
     CHECK_ARG((pContext->auxiliary && pConfig->inputCfg.channels == AUDIO_CHANNEL_OUT_MONO) ||
               ((!pContext->auxiliary) && (inputChannels <= LVM_MAX_CHANNELS)));
     int outputChannels = audio_channel_count_from_out_mask(pConfig->outputCfg.channels);
-    CHECK_ARG(outputChannels <= LVM_MAX_CHANNELS);
+    CHECK_ARG(outputChannels >= FCC_2 && outputChannels <= LVM_MAX_CHANNELS);
     CHECK_ARG(pConfig->outputCfg.accessMode == EFFECT_BUFFER_ACCESS_WRITE ||
               pConfig->outputCfg.accessMode == EFFECT_BUFFER_ACCESS_ACCUMULATE);
     CHECK_ARG(pConfig->inputCfg.format == EFFECT_BUFFER_FORMAT);

@@ -114,7 +114,7 @@ LVREV_ReturnStatus_en LVREV_GetInstanceHandle(LVREV_Handle_t* phInstance,
      * Set the instance handle if not already initialised
      */
     if (*phInstance == LVM_NULL) {
-        *phInstance = new LVREV_Instance_st{};
+        *phInstance = InstAlloc_AddMember(&SlowData, sizeof(LVREV_Instance_st));
     }
     pLVREV_Private = (LVREV_Instance_st*)*phInstance;
     pLVREV_Private->MemoryTable = *pMemoryTable;
@@ -134,6 +134,11 @@ LVREV_ReturnStatus_en LVREV_GetInstanceHandle(LVREV_Handle_t* phInstance,
     /*
      * Set the data, coefficient and temporary memory pointers
      */
+#ifndef BIQUAD_OPT
+    /* Fast data memory base address */
+    pLVREV_Private->pFastData =
+            (LVREV_FastData_st*)InstAlloc_AddMember(&FastData, sizeof(LVREV_FastData_st));
+#endif
     for (size_t i = 0; i < pInstanceParams->NumDelays; i++) {
         pLVREV_Private->pDelay_T[i] = (LVM_FLOAT*)InstAlloc_AddMember(
                 &FastData, LVREV_MAX_T_DELAY[i] * sizeof(LVM_FLOAT));
@@ -148,6 +153,11 @@ LVREV_ReturnStatus_en LVREV_GetInstanceHandle(LVREV_Handle_t* phInstance,
     }
     pLVREV_Private->AB_Selection = 1; /* Select smoothing A to B */
 
+#ifndef BIQUAD_OPT
+    /* Fast coefficient memory base address */
+    pLVREV_Private->pFastCoef =
+            (LVREV_FastCoef_st*)InstAlloc_AddMember(&FastCoef, sizeof(LVREV_FastCoef_st));
+#endif
     /* General purpose scratch */
     pLVREV_Private->pScratch =
             (LVM_FLOAT*)InstAlloc_AddMember(&Temporary, sizeof(LVM_FLOAT) * MaxBlockSize);
@@ -255,6 +265,7 @@ LVREV_ReturnStatus_en LVREV_GetInstanceHandle(LVREV_Handle_t* phInstance,
         pLVREV_Private->B_DelaySize[i] = LVREV_MAX_AP_DELAY[i];
     }
 
+#ifdef BIQUAD_OPT
     pLVREV_Private->pRevHPFBiquad.reset(
             new android::audio_utils::BiquadFilter<LVM_FLOAT>(LVM_MAX_CHANNELS));
     pLVREV_Private->pRevLPFBiquad.reset(
@@ -263,33 +274,11 @@ LVREV_ReturnStatus_en LVREV_GetInstanceHandle(LVREV_Handle_t* phInstance,
         pLVREV_Private->revLPFBiquad[i].reset(
                 new android::audio_utils::BiquadFilter<LVM_FLOAT>(LVM_MAX_CHANNELS));
     }
+#endif
 
     LVREV_ClearAudioBuffers(*phInstance);
 
     return LVREV_SUCCESS;
 }
 
-/****************************************************************************************/
-/*                                                                                      */
-/* FUNCTION:                LVREV_FreeInstance                                          */
-/*                                                                                      */
-/* DESCRIPTION:                                                                         */
-/*  This function is used to free the internal allocations of the module.               */
-/*                                                                                      */
-/* PARAMETERS:                                                                          */
-/*  hInstance               Instance handle                                             */
-/*                                                                                      */
-/* RETURNS:                                                                             */
-/*  LVREV_SUCCESS          free instance succeeded                                      */
-/*  LVREV_NULLADDRESS      Instance is NULL                                             */
-/*                                                                                      */
-/****************************************************************************************/
-LVREV_ReturnStatus_en LVREV_FreeInstance(LVREV_Handle_t hInstance) {
-    if (hInstance == LVM_NULL) {
-        return LVREV_NULLADDRESS;
-    }
-
-    delete (LVREV_Instance_st*)hInstance;
-    return LVREV_SUCCESS;
-}
 /* End of file */

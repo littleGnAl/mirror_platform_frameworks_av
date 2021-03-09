@@ -75,6 +75,16 @@ LVCS_ReturnStatus_en LVCS_Process_CS(LVCS_Handle_t hInstance, const LVM_FLOAT* p
     LVM_INT32 channels = pInstance->Params.NrChannels;
 #define NrFrames NumSamples  // alias for clarity
 
+    /*In case of mono processing, stereo input is created from mono
+     *and stored in pInData before applying any of the effects.
+     *However we do not update the value pInstance->Params.NrChannels
+     *at this point.
+     *So to treat the pInData as stereo we are setting channels to 2
+     */
+    if (channels == 1) {
+        channels = 2;
+    }
+
     pScratch = (LVM_FLOAT*)pInstance->pScratch;
 
     /*
@@ -87,16 +97,11 @@ LVCS_ReturnStatus_en LVCS_Process_CS(LVCS_Handle_t hInstance, const LVM_FLOAT* p
      */
     pInput = pScratch + (2 * NrFrames);
     pStIn = pScratch + ((LVCS_SCRATCHBUFFERS - 2) * NrFrames);
-    if (channels == FCC_1) {
-        Copy_Float((LVM_FLOAT*)pInData, (LVM_FLOAT*)pInput, (LVM_INT16)NrFrames);
-        Copy_Float((LVM_FLOAT*)pInput, (LVM_FLOAT*)pStIn, (LVM_INT16)NrFrames);
-    } else {
-        /* The first two channel data is extracted from the input data and
-         * copied into pInput buffer
-         */
-        Copy_Float_Mc_Stereo((LVM_FLOAT*)pInData, (LVM_FLOAT*)pInput, NrFrames, channels);
-        Copy_Float((LVM_FLOAT*)pInput, (LVM_FLOAT*)pStIn, (LVM_INT16)(FCC_2 * NrFrames));
-    }
+    /* The first two channel data is extracted from the input data and
+     * copied into pInput buffer
+     */
+    Copy_Float_Mc_Stereo((LVM_FLOAT*)pInData, (LVM_FLOAT*)pInput, NrFrames, channels);
+    Copy_Float((LVM_FLOAT*)pInput, (LVM_FLOAT*)pStIn, (LVM_INT16)(2 * NrFrames));
     /*
      * Call the stereo enhancer
      */
@@ -167,10 +172,10 @@ LVCS_ReturnStatus_en LVCS_Process(LVCS_Handle_t hInstance, const LVM_FLOAT* pInD
     LVCS_ReturnStatus_en err;
     /*Extract number of Channels info*/
     LVM_INT32 channels = pInstance->Params.NrChannels;
-    LVM_UINT16 destNumSamples = (channels == FCC_1) ? NumSamples : FCC_2 * NumSamples;
-    LVM_INT32 compGainInterval =
-            (channels == FCC_1) ? LVCS_COMPGAINFRAME : FCC_2 * LVCS_COMPGAINFRAME;
 #define NrFrames NumSamples  // alias for clarity
+    if (channels == 1) {
+        channels = 2;
+    }
     /*
      * Check the number of samples is not too large
      */
@@ -222,7 +227,7 @@ LVCS_ReturnStatus_en LVCS_Process(LVCS_Handle_t hInstance, const LVM_FLOAT* pInD
 
             if (NumSamples < LVCS_COMPGAINFRAME) {
                 NonLinComp_Float(Gain, /* Compressor gain setting */
-                                 pStereoOut, pStereoOut, (LVM_INT32)destNumSamples);
+                                 pStereoOut, pStereoOut, (LVM_INT32)(2 * NrFrames));
             } else {
                 LVM_FLOAT GainStep;
                 LVM_FLOAT FinalGain;
@@ -261,15 +266,12 @@ LVCS_ReturnStatus_en LVCS_Process(LVCS_Handle_t hInstance, const LVM_FLOAT* pInD
 
                     if (SampleToProcess > LVCS_COMPGAINFRAME) {
                         NonLinComp_Float(Gain, /* Compressor gain setting */
-                                         pOutPtr, pOutPtr, compGainInterval);
-                        pOutPtr += compGainInterval;
+                                         pOutPtr, pOutPtr, (LVM_INT32)(2 * LVCS_COMPGAINFRAME));
+                        pOutPtr += (2 * LVCS_COMPGAINFRAME);
                         SampleToProcess = (LVM_INT16)(SampleToProcess - LVCS_COMPGAINFRAME);
                     } else {
                         NonLinComp_Float(Gain, /* Compressor gain setting */
-                                         pOutPtr, pOutPtr,
-                                         (channels == FCC_1)
-                                                 ? (LVM_INT32)(SampleToProcess)
-                                                 : (LVM_INT32)(FCC_2 * SampleToProcess));
+                                         pOutPtr, pOutPtr, (LVM_INT32)(2 * SampleToProcess));
                         SampleToProcess = 0;
                     }
                 }
@@ -295,7 +297,7 @@ LVCS_ReturnStatus_en LVCS_Process(LVCS_Handle_t hInstance, const LVM_FLOAT* pInD
                 LVM_Timer(&pInstance->TimerInstance, (LVM_INT16)NumSamples);
             }
         }
-        Copy_Float_Stereo_Mc(pInData, (const LVM_FLOAT*)pStereoOut, pOutData, NrFrames, channels);
+        Copy_Float_Stereo_Mc(pInData, pStereoOut, pOutData, NrFrames, channels);
     } else {
         if (pInData != pOutData) {
             /*
