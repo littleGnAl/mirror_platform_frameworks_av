@@ -51,6 +51,24 @@
       "parentUuid": "8ea54b7a_b9de97fa",
       "revId": "230397eff58f231cfcfa07b4409f222288212a7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "749c8791_2a8ff705",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1377660
+      },
+      "writtenOn": "2021-03-09T11:01:11Z",
+      "side": 1,
+      "message": "Thanks Mikhail \u0026 Eric.\n\nWell, I\u0027d like share my story here:\nLast week, I found a potential issue(issue-A) while reading the AudioEffect code. \n And then, while fixing issue-A, I found this issue(issue-B). \nBut, after my two days\u0027 debug, test, etc, I was uploading my patch, to my surprise, I simply found that, (issue-A) had already been fixed by Mikhail by this cl: https://android-review.googlesource.com/q/topic:cp-fix-b-162323621\n\nIt was really making me frustrated! ^_^!",
+      "parentUuid": "286012ae_299f6a9c",
+      "revId": "230397eff58f231cfcfa07b4409f222288212a7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
