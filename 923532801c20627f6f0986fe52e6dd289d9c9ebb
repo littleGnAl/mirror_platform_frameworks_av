@@ -16,6 +16,24 @@
       "message": "while this may make the apex file smaller, don\u0027t we need an uncompressed copy that is the backing storage for the loopback mount when we mount the apex on a running system?\n\nthis would seem to be a net loss -- because we\u0027d have both a compressed and uncompressed copy of the file around in a running system.   or can the loopback filesystems deal with a compressed file underneath?",
       "revId": "923532801c20627f6f0986fe52e6dd289d9c9ebb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be1d5abe_8b5eb510",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2021-03-10T17:07:12Z",
+      "side": 1,
+      "message": "We only going to compress pre-installed copy of udpatable apexes. While until the first push it\u0027s a net loss, once an update is delivered it\u0027s a net gain: without compression you have 2x (copy on system, copy on data), while with compression you\u0027ll get 1.5x (0.5x for compressed system copy, uncompressed updated version on data)",
+      "parentUuid": "ff485e0d_d2c82f92",
+      "revId": "923532801c20627f6f0986fe52e6dd289d9c9ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
