@@ -95,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "55975075_311aaaac",
+        "filename": "media/libaudiohal/impl/DeviceHalHidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-03-10T14:59:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "82b5a3dd_4a023873",
+      "range": {
+        "startLine": 463,
+        "startChar": 0,
+        "endLine": 463,
+        "endChar": 75
+      },
+      "revId": "a44d6ccff584c492c2d02075a2f2517a0084d795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "01cb749a_8a4ea46a",
@@ -108,6 +132,30 @@
       "writtenOn": "2021-02-11T20:14:41Z",
       "side": 1,
       "message": "audio_gain_mask_t",
+      "range": {
+        "startLine": 464,
+        "startChar": 44,
+        "endLine": 464,
+        "endChar": 52
+      },
+      "revId": "a44d6ccff584c492c2d02075a2f2517a0084d795",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "271c7aab_e2b6957f",
+        "filename": "media/libaudiohal/impl/DeviceHalHidl.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 464,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-03-10T14:59:19Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "01cb749a_8a4ea46a",
       "range": {
         "startLine": 464,
         "startChar": 44,
