@@ -34,6 +34,24 @@
       "parentUuid": "ff485e0d_d2c82f92",
       "revId": "923532801c20627f6f0986fe52e6dd289d9c9ebb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff207b9a_e5ca28c0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-03-10T17:42:15Z",
+      "side": 1,
+      "message": "that makes sense.\n\nwhy does it need to bubble up to my apex definition? that probably breaks down to things like: why would i not allow compression of the apex? seems like it could be entirely under the covers of the build system.",
+      "parentUuid": "be1d5abe_8b5eb510",
+      "revId": "923532801c20627f6f0986fe52e6dd289d9c9ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
