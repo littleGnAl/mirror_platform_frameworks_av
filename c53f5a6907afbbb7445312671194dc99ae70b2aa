@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ecf089d_f55aea2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-03-10T16:33:42Z",
+      "side": 1,
+      "message": "@Eric: this CL fixes a side effect of using SwOutputDescriptor to track activities of stream/volume group on AudioSource when using HwBridge.\nSwOutput is involved in a HwBridge patch, but no patch handle.",
+      "revId": "c53f5a6907afbbb7445312671194dc99ae70b2aa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
