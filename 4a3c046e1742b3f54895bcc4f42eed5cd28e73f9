@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bed83c8_856a955d",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-10T01:01:18Z",
+      "side": 1,
+      "message": "is this member field (sp\u003c\u003e) protected by a mutex here and at handleImageData()?",
+      "range": {
+        "startLine": 282,
+        "startChar": 8,
+        "endLine": 282,
+        "endChar": 22
+      },
+      "revId": "4a3c046e1742b3f54895bcc4f42eed5cd28e73f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
