@@ -71,6 +71,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3bcd0c7a_20a4e24d",
+        "filename": "media/libaudiohal/impl/DeviceHalHidl.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-03-10T14:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30adc79b_02c31107",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 467,
+        "endChar": 62
+      },
+      "revId": "aac98494cd3c5e7506b20e4b9d4d085bbdc67a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9176072_7c6cb662",
+        "filename": "media/libaudiohal/impl/DeviceHalHidl.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 467,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-03-10T14:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "30adc79b_02c31107",
+      "range": {
+        "startLine": 467,
+        "startChar": 0,
+        "endLine": 467,
+        "endChar": 62
+      },
+      "revId": "aac98494cd3c5e7506b20e4b9d4d085bbdc67a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4cc514c5_5c691f82",
@@ -84,6 +132,30 @@
       "writtenOn": "2021-02-24T09:54:29Z",
       "side": 1,
       "message": "the AudioGainCallbackCallback should receive and manage the DeviceHalInterfaceAudioGainCallback and its lock.\n\nWe should also make sure here that register is rejected if mAudioGainCallback already exists so that only one callback can be registered",
+      "range": {
+        "startLine": 490,
+        "startChar": 0,
+        "endLine": 490,
+        "endChar": 61
+      },
+      "revId": "aac98494cd3c5e7506b20e4b9d4d085bbdc67a3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b339166_e7ad4d7a",
+        "filename": "media/libaudiohal/impl/DeviceHalHidl.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-03-10T14:58:00Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4cc514c5_5c691f82",
       "range": {
         "startLine": 490,
         "startChar": 0,
