@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c69fb178_a7072348",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 3965,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-03-10T14:59:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c33f2908_bc221dc1",
+      "range": {
+        "startLine": 3964,
+        "startChar": 0,
+        "endLine": 3965,
+        "endChar": 48
+      },
+      "revId": "cfbb325f132913121549a0177f30e71006d1a6e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "92654bbe_7bd1b9bf",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-02-24T10:00:16Z",
       "side": 1,
       "message": "we should maybe do this only on the IPrimaryDevice?\nAlso ALOGW is too much as it is expected that the HSAL does nto implement this optional callback by default. We should use ALOGV here",
+      "range": {
+        "startLine": 54,
+        "startChar": 0,
+        "endLine": 54,
+        "endChar": 70
+      },
+      "revId": "cfbb325f132913121549a0177f30e71006d1a6e3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "855e17e5_c75e23a0",
+        "filename": "services/audioflinger/AudioHwDevice.h",
+        "patchSetId": 8
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-03-10T14:59:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "92654bbe_7bd1b9bf",
       "range": {
         "startLine": 54,
         "startChar": 0,
