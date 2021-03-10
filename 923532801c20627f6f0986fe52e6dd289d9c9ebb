@@ -52,6 +52,24 @@
       "parentUuid": "be1d5abe_8b5eb510",
       "revId": "923532801c20627f6f0986fe52e6dd289d9c9ebb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fb356bb_fc78308f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2021-03-10T17:59:11Z",
+      "side": 1,
+      "message": "Not all apexes can\u0027t be compressed, and build system is probably not the right place to handle that. Here are few examples of apexes that can\u0027t be compressed:\n\n* apexes required to be mounted before /data is mounted (bootstrap apexes).\n* apexes that are used for dynamic library optimization. For such apexes we always need to mount two versions: one on /system and one on /data.\n* test apexes.\n\nWhile we can make this an opt-out feature, so far we decided to start with opt-in approach as it allows us to control exactly what apexes can be compressed.",
+      "parentUuid": "ff207b9a_e5ca28c0",
+      "revId": "923532801c20627f6f0986fe52e6dd289d9c9ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
