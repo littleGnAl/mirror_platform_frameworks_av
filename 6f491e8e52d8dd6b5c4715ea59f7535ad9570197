@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ed5d281_5761efa2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-11T17:40:10Z",
+      "side": 1,
+      "message": "use same bug id as the one we used for postproc effects",
+      "revId": "6f491e8e52d8dd6b5c4715ea59f7535ad9570197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d141ea96_f2e49f5d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-11T17:40:10Z",
+      "side": 1,
+      "message": "I will see if it is possible to refactor EffectTestHelper to be generic and reuse between pre and post processing tests.",
+      "revId": "6f491e8e52d8dd6b5c4715ea59f7535ad9570197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d10d2ebf_e0a2bde2",
+        "filename": "media/libeffects/preprocessing/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-11T17:40:10Z",
+      "side": 1,
+      "message": "EffectPreprocessingTest",
+      "range": {
+        "startLine": 14,
+        "startChar": 11,
+        "endLine": 14,
+        "endChar": 34
+      },
+      "revId": "6f491e8e52d8dd6b5c4715ea59f7535ad9570197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07f24c69_4b5e8a88",
+        "filename": "media/libeffects/preprocessing/tests/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-11T17:40:10Z",
+      "side": 1,
+      "message": "EffectPreprocessingTest",
+      "range": {
+        "startLine": 19,
+        "startChar": 9,
+        "endLine": 19,
+        "endChar": 27
+      },
+      "revId": "6f491e8e52d8dd6b5c4715ea59f7535ad9570197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
