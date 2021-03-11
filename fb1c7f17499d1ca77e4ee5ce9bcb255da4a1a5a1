@@ -16,6 +16,115 @@
       "message": "Ray,\nCan you please take another look at this?\nThanks.",
       "revId": "fb1c7f17499d1ca77e4ee5ce9bcb255da4a1a5a1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "075cc564_e35e81ad",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-03-11T23:51:25Z",
+      "side": 1,
+      "message": "i think these are the only things i want to improve/change.  should be ok after they are addressed.",
+      "revId": "fb1c7f17499d1ca77e4ee5ce9bcb255da4a1a5a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b22814db_2845d4c4",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-03-11T23:51:25Z",
+      "side": 1,
+      "message": "augment the comment to indicate that these values are internal to this program and are not meant to correspond to the values that appear in the avc or hevc [or other] media streams.",
+      "range": {
+        "startLine": 85,
+        "startChar": 14,
+        "endLine": 85,
+        "endChar": 24
+      },
+      "revId": "fb1c7f17499d1ca77e4ee5ce9bcb255da4a1a5a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "11d8a6f4_6c89f9c2",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/MediaCodecSurfaceEncoder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-03-11T23:51:25Z",
+      "side": 1,
+      "message": "i\u0027d have chosen a name like mFrameTypeOccurrences[]",
+      "range": {
+        "startLine": 52,
+        "startChar": 18,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "fb1c7f17499d1ca77e4ee5ce9bcb255da4a1a5a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53d820af_0f1bcff2",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/MediaCodecSurfaceEncoder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-03-11T23:51:25Z",
+      "side": 1,
+      "message": "init this to -1\nof make that happen within the else clause that I suggest in my line 354 comment.",
+      "range": {
+        "startLine": 351,
+        "startChar": 28,
+        "endLine": 351,
+        "endChar": 32
+      },
+      "revId": "fb1c7f17499d1ca77e4ee5ce9bcb255da4a1a5a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e542d985_29b6f0d1",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/MediaCodecSurfaceEncoder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-03-11T23:51:25Z",
+      "side": 1,
+      "message": "} else if (mMime \u003d\u003d MediaFormat.MIMETYPE_VIDEO_HEVC) {\n\nand then a final else that emits an appropriate \"not supported\"\ndialog.",
+      "range": {
+        "startLine": 354,
+        "startChar": 13,
+        "endLine": 354,
+        "endChar": 20
+      },
+      "revId": "fb1c7f17499d1ca77e4ee5ce9bcb255da4a1a5a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
