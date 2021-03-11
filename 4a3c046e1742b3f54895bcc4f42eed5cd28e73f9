@@ -22,6 +22,30 @@
       },
       "revId": "4a3c046e1742b3f54895bcc4f42eed5cd28e73f9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3367a2d_3f61a4f7",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-03-11T16:59:00Z",
+      "side": 1,
+      "message": "CCodecBuffers objects are mutex-protected by its sole user CCodecBufferChannel. We don\u0027t need to add additional locks inside.",
+      "parentUuid": "9bed83c8_856a955d",
+      "range": {
+        "startLine": 282,
+        "startChar": 8,
+        "endLine": 282,
+        "endChar": 22
+      },
+      "revId": "4a3c046e1742b3f54895bcc4f42eed5cd28e73f9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
