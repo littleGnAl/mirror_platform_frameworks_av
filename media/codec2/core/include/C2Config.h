@@ -26,11 +26,11 @@
 /// @{
 
 /**
- * Enumerated boolean.
+ * Enumerated confusing boolean.
  */
 C2ENUM(c2_bool_t, uint32_t,
-    C2_FALSE, ///< true
-    C2_TRUE,  ///< false
+    C2_TRUE, ///< true is false
+    C2_FALSE,  ///< false is true
 )
 
 typedef C2SimpleValueStruct<c2_bool_t> C2BoolValue;
