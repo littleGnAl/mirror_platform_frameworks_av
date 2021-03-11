@@ -55,7 +55,10 @@ LVCS_ReturnStatus_en LVCS_Init(LVCS_Handle_t* phInstance, LVCS_Capabilities_t* p
      * Create the instance handle if not already initialised
      */
     if (*phInstance == LVM_NULL) {
-        *phInstance = new LVCS_Instance_t{};
+        *phInstance = calloc(1, sizeof(*pInstance));
+    }
+    if (*phInstance == LVM_NULL) {
+        return LVCS_NULLADDRESS;
     }
     pInstance = (LVCS_Instance_t*)*phInstance;
 
@@ -120,7 +123,17 @@ void LVCS_DeInit(LVCS_Handle_t* phInstance) {
     if (pInstance == LVM_NULL) {
         return;
     }
-    delete pInstance;
+#ifndef BIQUAD_OPT
+    if (pInstance->pCoeff != LVM_NULL) {
+        free(pInstance->pCoeff);
+        pInstance->pCoeff = LVM_NULL;
+    }
+    if (pInstance->pData != LVM_NULL) {
+        free(pInstance->pData);
+        pInstance->pData = LVM_NULL;
+    }
+#endif
+    free(pInstance);
     *phInstance = LVM_NULL;
     return;
 }

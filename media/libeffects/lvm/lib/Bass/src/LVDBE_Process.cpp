@@ -20,7 +20,9 @@
 /*    Includes                                                                          */
 /*                                                                                      */
 /****************************************************************************************/
+#ifdef BIQUAD_OPT
 #include <audio_utils/BiquadFilter.h>
+#endif
 
 #include <string.h>  // memset
 #include "LVDBE.h"
@@ -79,7 +81,11 @@ LVDBE_ReturnStatus_en LVDBE_Process(
         const LVM_UINT16 NrFrames)  // updated to use samples = frames * channels.
 {
     LVDBE_Instance_t* pInstance = (LVDBE_Instance_t*)hInstance;
-    const LVM_INT32 NrChannels = pInstance->Params.NrChannels;
+
+    /*Extract number of Channels info*/
+    // Mono passed in as stereo
+    const LVM_INT32 NrChannels =
+            pInstance->Params.NrChannels == 1 ? 2 : pInstance->Params.NrChannels;
     const LVM_INT32 NrSamples = NrChannels * NrFrames;
 
     /* Space to store DBE path computation */
@@ -122,7 +128,14 @@ LVDBE_ReturnStatus_en LVDBE_Process(
          * Apply the high pass filter if selected
          */
         if (pInstance->Params.HPFSelect == LVDBE_HPF_ON) {
+#ifdef BIQUAD_OPT
             pInstance->pHPFBiquad->process(pScratch, pScratch, NrFrames);
+#else
+            BQ_MC_D32F32C30_TRC_WRA_01(&pInstance->pCoef->HPFInstance, /* Filter instance      */
+                                       pScratch,                       /* Source               */
+                                       pScratch,                       /* Destination          */
+                                       (LVM_INT16)NrFrames, (LVM_INT16)NrChannels);
+#endif
         }
 
         /*
@@ -136,7 +149,14 @@ LVDBE_ReturnStatus_en LVDBE_Process(
         /*
          * Apply the band pass filter
          */
+#ifdef BIQUAD_OPT
         pInstance->pBPFBiquad->process(pMono, pMono, NrFrames);
+#else
+        BP_1I_D32F32C30_TRC_WRA_02(&pInstance->pCoef->BPFInstance, /* Filter instance       */
+                                   pMono,                          /* Source                */
+                                   pMono,                          /* Destination           */
+                                   (LVM_INT16)NrFrames);
+#endif
 
         /*
          * Apply the AGC and mix
