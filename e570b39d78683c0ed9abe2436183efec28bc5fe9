@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2fded7d2_82e48597",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-03-12T12:37:40Z",
+      "side": 1,
+      "message": "In device, 64-bit executable is failing to run the tests.\nTo test in host, it should be applied on top of https://android-review.googlesource.com/c/platform/frameworks/av/+/1629479 CL.",
+      "revId": "e570b39d78683c0ed9abe2436183efec28bc5fe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
