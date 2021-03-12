@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e89a069b_547dc8ad",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-12T18:12:38Z",
+      "side": 1,
+      "message": "Preprocessing: Use free() for session-\u003eoutBuf",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "bccd1abda16b04119b5bab5740b8740e928705e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c5c6c3c_960794cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-12T18:12:38Z",
+      "side": 1,
+      "message": "Bug: 182575590",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "bccd1abda16b04119b5bab5740b8740e928705e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6edae90b_01c773b6",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-12T18:12:38Z",
+      "side": 1,
+      "message": "no need to check for NULL\n\nfree(session-\u003eoutBuf);\nsession-\u003eoutBuf \u003d NULL;",
+      "range": {
+        "startLine": 913,
+        "startChar": 8,
+        "endLine": 916,
+        "endChar": 9
+      },
+      "revId": "bccd1abda16b04119b5bab5740b8740e928705e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
