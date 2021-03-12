@@ -1962,12 +1962,20 @@ status_t AudioPolicyManager::stopSource(const sp<SwAudioOutputDescriptor>& outpu
         if (outputDesc->getActivityCount(clientVolSrc) == 0 || forceDeviceUpdate) {
             outputDesc->setStopTime(client, systemTime());
             DeviceVector newDevices = getNewOutputDevices(outputDesc, false /*fromCache*/);
+
+            // If the routing does not change, if an output is routed on a device using HwGain
+            // (aka setAudioPortConfig) and there are still active clients following different
+            // volume group(s), force reapply volume
+            bool requiresVolumeCheck = outputDesc->getActivityCount(clientVolSrc) == 0 &&
+                    outputDesc->useHwGain() && outputDesc->isAnyActive(VOLUME_SOURCE_NONE);
+
             // delay the device switch by twice the latency because stopOutput() is executed when
             // the track stop() command is received and at that time the audio track buffer can
             // still contain data that needs to be drained. The latency only covers the audio HAL
             // and kernel buffers. Also the latency does not always include additional delay in the
             // audio path (audio DSP, CODEC ...)
-            setOutputDevices(outputDesc, newDevices, false, outputDesc->latency()*2);
+            setOutputDevices(outputDesc, newDevices, false, outputDesc->latency()*2,
+                             nullptr, false /*requiresMuteCheck*/, requiresVolumeCheck);
 
             // force restoring the device selection on other active outputs if it differs from the
             // one being selected for this output
@@ -6021,7 +6029,7 @@ uint32_t AudioPolicyManager::setOutputDevices(const sp<SwAudioOutputDescriptor>&
                                               bool force,
                                               int delayMs,
                                               audio_patch_handle_t *patchHandle,
-                                              bool requiresMuteCheck)
+                                              bool requiresMuteCheck, bool requiresVolumeCheck)
 {
     ALOGV("%s device %s delayMs %d", __func__, devices.toString().c_str(), delayMs);
     uint32_t muteWaitMs;
@@ -6073,6 +6081,10 @@ uint32_t AudioPolicyManager::setOutputDevices(const sp<SwAudioOutputDescriptor>&
             !force && outputDesc->getPatchHandle() != 0) {
         ALOGV("%s setting same device %s or null device, force=%d, patch handle=%d", __func__,
               filteredDevices.toString().c_str(), force, outputDesc->getPatchHandle());
+        if (requiresVolumeCheck && !filteredDevices.isEmpty()) {
+            ALOGV("%s setting same device on routed output, force apply volumes", __func__);
+            applyStreamVolumes(outputDesc, filteredDevices.types(), delayMs, true /*force*/);
+        }
         return muteWaitMs;
     }
 
