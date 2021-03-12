@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cf3945d8_14c2ee3e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-12T00:06:17Z",
+      "side": 1,
+      "message": "nit: this got lost:\n\nIn addition to the plumbing, MPEG4Writer reads format() again when\nwriting color information, since it could have been updated from\nBufferQueue at that time.",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 11
+      },
+      "revId": "e23d220ab279948ec1b22f777bb94ce7e3d77318",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
