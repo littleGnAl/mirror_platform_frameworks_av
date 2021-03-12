@@ -13,6 +13,7 @@ package {
 cc_test {
     name: "AudioPreProcessingTest",
     vendor: true,
+    host_supported: true,
     srcs: ["PreProcessingTest.cpp"],
     shared_libs: [
         "libaudioutils",
