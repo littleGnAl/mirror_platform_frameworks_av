@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ab4ee2cb_bc676eab",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-12T19:22:39Z",
+      "side": 1,
+      "message": "revBuf also is no longer required.\n\nThese were needed when resampler was used in PreProcessing.cpp with earlier webrtc modules. Now these are redundant.\n\nAndy,\nIs it okay, if we take up this, changing outBuf to a std::vector and couple of other cleanups w.r.t. resampling in a separate CL?\n\nThat way we can bring up unit tests first and then work on the cleanup required.",
+      "parentUuid": "16a0c9f5_66f2b4bc",
+      "range": {
+        "startLine": 911,
+        "startChar": 0,
+        "endLine": 912,
+        "endChar": 30
+      },
+      "revId": "5e5573fae27a0f5bd7c098b1437d9fddf335d186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "267ad3e4_1a254554",
         "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
         "patchSetId": 2
