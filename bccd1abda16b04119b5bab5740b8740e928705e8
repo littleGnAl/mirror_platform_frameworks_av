@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1a9b6943_2ff407e6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-03-12T18:22:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e89a069b_547dc8ad",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 50
+      },
+      "revId": "bccd1abda16b04119b5bab5740b8740e928705e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7c5c6c3c_960794cf",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ddd35228_10152f13",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-03-12T18:22:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7c5c6c3c_960794cf",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 4
+      },
+      "revId": "bccd1abda16b04119b5bab5740b8740e928705e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6edae90b_01c773b6",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-03-12T18:12:38Z",
       "side": 1,
       "message": "no need to check for NULL\n\nfree(session-\u003eoutBuf);\nsession-\u003eoutBuf \u003d NULL;",
+      "range": {
+        "startLine": 913,
+        "startChar": 8,
+        "endLine": 916,
+        "endChar": 9
+      },
+      "revId": "bccd1abda16b04119b5bab5740b8740e928705e8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ce77def9_8c68e711",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 916,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-03-12T18:22:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6edae90b_01c773b6",
       "range": {
         "startLine": 913,
         "startChar": 8,
