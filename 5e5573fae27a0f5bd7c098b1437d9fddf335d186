@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c183cd3f_8af6ceb6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-03-12T19:07:33Z",
+      "side": 1,
+      "message": "can land now if you wish, some considerations.",
+      "revId": "5e5573fae27a0f5bd7c098b1437d9fddf335d186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16a0c9f5_66f2b4bc",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-03-12T19:07:33Z",
+      "side": 1,
+      "message": "is this used?",
+      "range": {
+        "startLine": 911,
+        "startChar": 0,
+        "endLine": 912,
+        "endChar": 30
+      },
+      "revId": "5e5573fae27a0f5bd7c098b1437d9fddf335d186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "267ad3e4_1a254554",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 914,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-03-12T19:07:33Z",
+      "side": 1,
+      "message": "should this be made a std::vector?",
+      "range": {
+        "startLine": 913,
+        "startChar": 0,
+        "endLine": 914,
+        "endChar": 31
+      },
+      "revId": "5e5573fae27a0f5bd7c098b1437d9fddf335d186",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
