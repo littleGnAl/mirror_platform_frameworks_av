@@ -61,6 +61,11 @@ struct SharedBuffer;
 
 using hardware::cas::native::V1_0::IDescrambler;
 
+struct CodecParameterDescriptor {
+    std::string name;
+    AMessage::Type type;
+};
+
 struct CodecBase : public AHandler, /* static */ ColorUtils {
     /**
      * This interface defines events firing from CodecBase back to MediaCodec.
@@ -232,6 +237,20 @@ struct CodecBase : public AHandler, /* static */ ColorUtils {
     virtual void signalRequestIDRFrame() = 0;
     virtual void signalSetParameters(const sp<AMessage> &msg) = 0;
     virtual void signalEndOfInputStream() = 0;
+
+    virtual status_t querySupportedParameters(std::vector<std::string> *) {
+        return ERROR_UNSUPPORTED;
+    }
+    virtual status_t describeParameter(
+            const std::string &, CodecParameterDescriptor *) {
+        return ERROR_UNSUPPORTED;
+    }
+    virtual status_t subscribeToParameters(const std::vector<std::string> &) {
+        return ERROR_UNSUPPORTED;
+    }
+    virtual status_t unsubscribeFromParameters(const std::vector<std::string> &) {
+        return ERROR_UNSUPPORTED;
+    }
 
     typedef CodecBase *(*CreateCodecFunc)(void);
     typedef PersistentSurface *(*CreateInputSurfaceFunc)(void);
