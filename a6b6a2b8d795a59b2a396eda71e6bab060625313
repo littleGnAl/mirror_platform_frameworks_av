@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ce737b41_738887a8",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1988,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-12T00:15:30Z",
+      "side": 1,
+      "message": "prior these values came from dataspace, and were converted to newColorAspects. Do you want to convert back again from newColorAspects (the comment suggests so).",
+      "range": {
+        "startLine": 1988,
+        "startChar": 44,
+        "endLine": 1988,
+        "endChar": 56
+      },
+      "revId": "a6b6a2b8d795a59b2a396eda71e6bab060625313",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
