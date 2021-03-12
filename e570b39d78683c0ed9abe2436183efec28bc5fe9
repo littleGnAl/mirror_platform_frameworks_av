@@ -16,6 +16,23 @@
       "message": "In device, 64-bit executable is failing to run the tests.\nTo test in host, it should be applied on top of https://android-review.googlesource.com/c/platform/frameworks/av/+/1629479 CL.",
       "revId": "e570b39d78683c0ed9abe2436183efec28bc5fe9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cf3dd54_57847fac",
+        "filename": "media/libeffects/preprocessing/tests/PreProcessingTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-12T16:36:24Z",
+      "side": 1,
+      "message": "for (int i \u003d 1; i \u003c argc; i++) {\n    printf(\"%s \", argv[i]);\n}",
+      "revId": "e570b39d78683c0ed9abe2436183efec28bc5fe9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
