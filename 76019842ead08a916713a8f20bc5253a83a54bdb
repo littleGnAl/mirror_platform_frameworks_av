@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008935601",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1633346?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "68b9e29f_4268423b",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1966,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-12T13:39:19Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 1966,
+        "startChar": 94,
+        "endLine": 1966,
+        "endChar": 95
+      },
+      "revId": "76019842ead08a916713a8f20bc5253a83a54bdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000008935600",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1633346?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "d154f79b_0b1f728b",
+          "description": "Change to \"services/audiopolicy/managerdefault/AudioPolicyManager.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+              "range": {
+                "startLine": 6085,
+                "startChar": 52,
+                "endLine": 6085,
+                "endChar": 57
+              },
+              "replacement": "output"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "dc3e4235_3e7043b1",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6085,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-03-12T13:39:19Z",
+      "side": 1,
+      "message": "Common typo found: \"ouput\" -- should it be \"output\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 6085,
+        "startChar": 52,
+        "endLine": 6085,
+        "endChar": 57
+      },
+      "revId": "76019842ead08a916713a8f20bc5253a83a54bdb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
