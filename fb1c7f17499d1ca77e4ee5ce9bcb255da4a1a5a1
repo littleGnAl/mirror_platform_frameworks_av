@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "103abd5e_c3922082",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/MainActivity.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2021-03-12T09:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b22814db_2845d4c4",
+      "range": {
+        "startLine": 85,
+        "startChar": 14,
+        "endLine": 85,
+        "endChar": 24
+      },
+      "revId": "fb1c7f17499d1ca77e4ee5ce9bcb255da4a1a5a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "11d8a6f4_6c89f9c2",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-03-11T23:51:25Z",
       "side": 1,
       "message": "i\u0027d have chosen a name like mFrameTypeOccurrences[]",
+      "range": {
+        "startLine": 52,
+        "startChar": 18,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "fb1c7f17499d1ca77e4ee5ce9bcb255da4a1a5a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "49d60ae5_10b7b3d6",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/MediaCodecSurfaceEncoder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2021-03-12T09:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "11d8a6f4_6c89f9c2",
       "range": {
         "startLine": 52,
         "startChar": 18,
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b515d01_ea42f33b",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/MediaCodecSurfaceEncoder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 351,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2021-03-12T09:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "53d820af_0f1bcff2",
+      "range": {
+        "startLine": 351,
+        "startChar": 28,
+        "endLine": 351,
+        "endChar": 32
+      },
+      "revId": "fb1c7f17499d1ca77e4ee5ce9bcb255da4a1a5a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e542d985_29b6f0d1",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-03-11T23:51:25Z",
       "side": 1,
       "message": "} else if (mMime \u003d\u003d MediaFormat.MIMETYPE_VIDEO_HEVC) {\n\nand then a final else that emits an appropriate \"not supported\"\ndialog.",
+      "range": {
+        "startLine": 354,
+        "startChar": 13,
+        "endLine": 354,
+        "endChar": 20
+      },
+      "revId": "fb1c7f17499d1ca77e4ee5ce9bcb255da4a1a5a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a7e07910_0e6d1b18",
+        "filename": "media/tests/SampleVideoEncoder/app/src/main/java/com/android/media/samplevideoencoder/MediaCodecSurfaceEncoder.java",
+        "patchSetId": 3
+      },
+      "lineNbr": 354,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2021-03-12T09:12:50Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e542d985_29b6f0d1",
       "range": {
         "startLine": 354,
         "startChar": 13,
