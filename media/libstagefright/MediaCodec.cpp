@@ -1981,6 +1981,14 @@ status_t MediaCodec::requestIDRFrame() {
     return OK;
 }
 
+status_t MediaCodec::querySupportedVendorParameters(std::vector<std::string> *names) {
+    return mCodec->querySupportedParameters(names);
+}
+
+status_t MediaCodec::describeParameter(const std::string &name, CodecParameterDescriptor *desc) {
+    return mCodec->describeParameter(name, desc);
+}
+
 void MediaCodec::requestActivityNotification(const sp<AMessage> &notify) {
     sp<AMessage> msg = new AMessage(kWhatRequestActivityNotification, this);
     msg->setMessage("notify", notify);

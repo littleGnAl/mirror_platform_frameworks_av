@@ -35,6 +35,7 @@
 namespace android {
 
 struct AMessage;
+struct CodecParameterDescriptor;
 struct StandardParams;
 
 /**
@@ -136,8 +137,8 @@ struct CCodecConfig {
     /// For now support a validation function.
     std::map<C2Param::Index, LocalParamValidator> mLocalParams;
 
-    /// Vendor field name -> index map.
-    std::map<std::string, C2Param::Index> mVendorParamIndices;
+    /// Vendor field name -> desc map.
+    std::map<std::string, std::shared_ptr<C2ParamDescriptor>> mVendorParams;
 
     std::set<std::string> mLastConfig;
 
@@ -320,6 +321,10 @@ struct CCodecConfig {
         }
         return Watcher<T>(index, this);
     }
+
+    status_t querySupportedParameters(std::vector<std::string> *names);
+
+    status_t describe(const std::string &name, CodecParameterDescriptor *desc);
 
 private:
 

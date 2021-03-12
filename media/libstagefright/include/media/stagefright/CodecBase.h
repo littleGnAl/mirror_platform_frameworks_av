@@ -39,6 +39,7 @@ class C2Buffer;
 namespace android {
 class BufferChannelBase;
 struct BufferProducerWrapper;
+struct CodecParameterDescriptor;
 class MediaCodecBuffer;
 struct PersistentSurface;
 struct RenderedFrameInfo;
@@ -233,6 +234,14 @@ struct CodecBase : public AHandler, /* static */ ColorUtils {
     virtual void signalSetParameters(const sp<AMessage> &msg) = 0;
     virtual void signalEndOfInputStream() = 0;
 
+    virtual status_t querySupportedParameters(std::vector<std::string> *) {
+        return ERROR_UNSUPPORTED;
+    }
+    virtual status_t describeParameter(
+            const std::string &, CodecParameterDescriptor *) {
+        return ERROR_UNSUPPORTED;
+    }
+
     typedef CodecBase *(*CreateCodecFunc)(void);
     typedef PersistentSurface *(*CreateInputSurfaceFunc)(void);
 
@@ -383,6 +392,11 @@ public:
 
 protected:
     std::unique_ptr<CodecBase::BufferCallback> mCallback;
+};
+
+struct CodecParameterDescriptor {
+    std::string name;
+    AMessage::Type type;
 };
 
 }  // namespace android
