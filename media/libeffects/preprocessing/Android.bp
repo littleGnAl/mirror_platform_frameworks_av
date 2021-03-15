@@ -18,10 +18,11 @@ license {
     ],
 }
 
-cc_library_shared {
+cc_library {
     name: "libaudiopreprocessing",
     vendor: true,
     relative_install_path: "soundfx",
+    host_supported: true,
     srcs: ["PreProcessing.cpp"],
     local_include_dirs: [
         ".",

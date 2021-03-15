@@ -27,6 +27,7 @@
 #include <C2Debug.h>
 
 #include <codec2/hidl/client.h>
+#include <media/stagefright/foundation/ColorUtils.h>
 #include <utils/RefBase.h>
 
 #include "InputSurfaceWrapper.h"
@@ -35,6 +36,7 @@
 namespace android {
 
 struct AMessage;
+class NativeHandle;
 struct StandardParams;
 
 /**
@@ -123,6 +125,7 @@ struct CCodecConfig {
 
     std::shared_ptr<InputSurfaceWrapper> mInputSurface;
     std::unique_ptr<InputSurfaceWrapper::Config> mISConfig;
+    ColorAspects mClientColorAspects;
 
     /// the current configuration. Updated after configure() and based on configUpdate in
     /// onWorkDone
@@ -140,6 +143,10 @@ struct CCodecConfig {
     std::map<std::string, C2Param::Index> mVendorParamIndices;
 
     std::set<std::string> mLastConfig;
+
+    /// Tunneled codecs
+    bool mTunneled;
+    sp<NativeHandle> mSidebandHandle;
 
     CCodecConfig();
 
