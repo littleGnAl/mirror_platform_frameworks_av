@@ -79,6 +79,29 @@
       },
       "revId": "6f491e8e52d8dd6b5c4715ea59f7535ad9570197",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42681b20_edf9425f",
+        "filename": "media/libeffects/preprocessing/tests/EffectTestHelper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-15T05:08:31Z",
+      "side": 1,
+      "message": "delay is always zero?\nand also can this be moved out of this loop and then out of process()?",
+      "range": {
+        "startLine": 84,
+        "startChar": 8,
+        "endLine": 84,
+        "endChar": 99
+      },
+      "revId": "6f491e8e52d8dd6b5c4715ea59f7535ad9570197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
