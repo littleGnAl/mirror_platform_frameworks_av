@@ -102,6 +102,30 @@
       },
       "revId": "6f491e8e52d8dd6b5c4715ea59f7535ad9570197",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14f1c62c_d4a4e360",
+        "filename": "media/libeffects/preprocessing/tests/EffectTestHelper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-03-15T05:36:35Z",
+      "side": 1,
+      "message": "The delay value can be [0, 500].\n\nInternally for AEC effect, before process call, a flag(was_stream_delay_set) is to be set for Delay. In the library, it gets reset always after process call gets completed.",
+      "parentUuid": "42681b20_edf9425f",
+      "range": {
+        "startLine": 84,
+        "startChar": 8,
+        "endLine": 84,
+        "endChar": 99
+      },
+      "revId": "6f491e8e52d8dd6b5c4715ea59f7535ad9570197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
