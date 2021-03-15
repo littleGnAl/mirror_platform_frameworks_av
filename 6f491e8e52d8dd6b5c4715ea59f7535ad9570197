@@ -192,6 +192,30 @@
       },
       "revId": "6f491e8e52d8dd6b5c4715ea59f7535ad9570197",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c3d0f62_b8425aaa",
+        "filename": "media/libeffects/preprocessing/tests/EffectTestHelper.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-15T16:39:39Z",
+      "side": 1,
+      "message": "In a separate CL, can we update process() in Preprocessing.cpp to call this setParam for AEC before calling webrtc\u0027s aec process function?\nThis way setParam() isn\u0027t needed when calling PreProcessing.cpp\u0027s process() call.",
+      "parentUuid": "14f1c62c_d4a4e360",
+      "range": {
+        "startLine": 84,
+        "startChar": 8,
+        "endLine": 84,
+        "endChar": 99
+      },
+      "revId": "6f491e8e52d8dd6b5c4715ea59f7535ad9570197",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
