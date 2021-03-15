@@ -691,8 +691,23 @@ void StagefrightMetadataRetriever::parseMetaData() {
                 mMetaData.add(
                         METADATA_KEY_MIMETYPE, String8("audio/x-matroska"));
             }
+        } else if(meta->findCString(kKeyMIMEType, &fileMIME) &&
+                !strcasecmp(fileMIME, "audio/mpeg")) {
+                sp<MetaData> trackMeta = mExtractor->getTrackMetaData(0);
+            const char *trackMIME;
+            if (trackMeta != nullptr) {
+                CHECK(trackMeta->findCString(kKeyMIMEType, &trackMIME));
+            }
+            if (!strcasecmp(trackMIME, "audio/mpeg-L2")) {
+                // The matroska file only contains a single audio track,
+                // rewrite its mime type.
+                mMetaData.replaceValueFor(
+                        METADATA_KEY_MIMETYPE, String8("audio/mpeg-L2"));
+            }
+
         }
     }
+
 }
 
 void StagefrightMetadataRetriever::clearMetadata() {
