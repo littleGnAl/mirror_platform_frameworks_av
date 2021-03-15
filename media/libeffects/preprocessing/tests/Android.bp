@@ -12,24 +12,23 @@ package {
 
 cc_test {
     name: "AudioPreProcessingTest",
-
     vendor: true,
-
-    relative_install_path: "soundfx",
-
+    host_supported: true,
+    gtest: false,
     srcs: ["PreProcessingTest.cpp"],
-
     shared_libs: [
-        "libaudiopreprocessing",
         "libaudioutils",
         "liblog",
         "libutils",
+    ],
+    static_libs: [
+        "libaudiopreprocessing",
+        "webrtc_audio_processing",
     ],
     header_libs: [
         "libaudioeffects",
         "libhardware_headers",
     ],
-    gtest: false,
 }
 
 cc_test {
