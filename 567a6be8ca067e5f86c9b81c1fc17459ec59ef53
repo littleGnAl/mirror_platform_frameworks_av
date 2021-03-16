@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d86e0b89_ebbd6c1c",
+        "filename": "media/libeffects/preprocessing/tests/EffectPreprocessingTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-03-16T17:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "43aed3bd_1af873b6",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 29
+      },
+      "revId": "567a6be8ca067e5f86c9b81c1fc17459ec59ef53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb933689_d418c019",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-03-16T16:19:31Z",
       "side": 1,
       "message": "remove this.",
+      "range": {
+        "startLine": 330,
+        "startChar": 27,
+        "endLine": 330,
+        "endChar": 30
+      },
+      "revId": "567a6be8ca067e5f86c9b81c1fc17459ec59ef53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7987250d_96ec650d",
+        "filename": "media/libeffects/preprocessing/tests/EffectPreprocessingTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 330,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-03-16T17:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "eb933689_d418c019",
       "range": {
         "startLine": 330,
         "startChar": 27,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad88b981_eeab4879",
+        "filename": "media/libeffects/preprocessing/tests/EffectTestHelper.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-03-16T17:10:51Z",
+      "side": 1,
+      "message": "Removed namespace android as it wasn\u0027t really required.",
+      "parentUuid": "032ed7d9_ae10462e",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 0
+      },
+      "revId": "567a6be8ca067e5f86c9b81c1fc17459ec59ef53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99e9c6d9_2dea6f1b",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-03-16T16:19:31Z",
       "side": 1,
       "message": "does this do what you expect?  i think you want a malloc here and a free on line 73.",
+      "range": {
+        "startLine": 65,
+        "startChar": 23,
+        "endLine": 65,
+        "endChar": 41
+      },
+      "revId": "567a6be8ca067e5f86c9b81c1fc17459ec59ef53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ab97afc_16fdc866",
+        "filename": "media/libeffects/preprocessing/tests/EffectTestHelper.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-03-16T17:10:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99e9c6d9_2dea6f1b",
       "range": {
         "startLine": 65,
         "startChar": 23,
@@ -170,6 +266,30 @@
       "writtenOn": "2021-03-16T16:19:31Z",
       "side": 1,
       "message": "see my comment about namespace",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 19
+      },
+      "revId": "567a6be8ca067e5f86c9b81c1fc17459ec59ef53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "76f80deb_027895d0",
+        "filename": "media/libeffects/preprocessing/tests/EffectTestHelper.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-03-16T17:10:51Z",
+      "side": 1,
+      "message": "Removed namespace android as it wasn\u0027t really required.",
+      "parentUuid": "85a66b5b_71252234",
       "range": {
         "startLine": 33,
         "startChar": 0,
