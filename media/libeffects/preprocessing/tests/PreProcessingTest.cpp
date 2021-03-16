@@ -519,6 +519,7 @@ int main(int argc, const char* argv[]) {
         }
         frameCounter += frameLength;
     }
+    printf("frameCounter: [%d]\n", frameCounter);
     // Release all the effect handles created
     for (int i = 0; i < PREPROC_NUM_EFFECTS; i++) {
         if (int status = AUDIO_EFFECT_LIBRARY_INFO_SYM.release_effect(effectHandle[i]);
