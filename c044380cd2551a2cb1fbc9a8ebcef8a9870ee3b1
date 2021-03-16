@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d61971c_6031a35c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-16T17:24:03Z",
+      "side": 1,
+      "message": "Can you tell us more about raw decoder? Is it passthrough? Does/Can it do color conversion?",
+      "revId": "c044380cd2551a2cb1fbc9a8ebcef8a9870ee3b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50f8e03b_b6f730b6",
@@ -31,6 +48,29 @@
       "writtenOn": "2021-03-16T17:22:37Z",
       "side": 1,
       "message": "We might want to modify the CHECK clause instead.",
+      "revId": "c044380cd2551a2cb1fbc9a8ebcef8a9870ee3b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d375b009_63325c73",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5145,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-16T17:24:03Z",
+      "side": 1,
+      "message": "should the above lines just protect this check for this raw decoder and still propagate the format parameters, especially image-data.",
+      "range": {
+        "startLine": 5145,
+        "startChar": 20,
+        "endLine": 5145,
+        "endChar": 72
+      },
       "revId": "c044380cd2551a2cb1fbc9a8ebcef8a9870ee3b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
