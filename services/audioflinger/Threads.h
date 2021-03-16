@@ -1023,6 +1023,8 @@ protected:
 
     int64_t                         mBytesWritten;
     int64_t                         mFramesWritten; // not reset on standby
+    int64_t                         mLastFramesWritten = -1; // track changes in timestamp
+                                                             // server frames written.
     int64_t                         mSuspendedFrames; // not reset on standby
 
     // mHapticChannelMask and mHapticChannelCount will only be valid when the thread support
@@ -1080,6 +1082,8 @@ private:
     void        readOutputParameters_l();
     void        updateMetadata_l() final;
     virtual void sendMetadataToBackend_l(const StreamOutHalInterface::SourceMetadata& metadata);
+
+    void        collectTimestamps_l();
 
     // The Tracks class manages tracks added and removed from the Thread.
     template <typename T>
