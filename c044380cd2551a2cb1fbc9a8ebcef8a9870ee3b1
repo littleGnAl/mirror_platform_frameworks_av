@@ -35,6 +35,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d46c61a0_c963e3b0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-16T17:29:29Z",
+      "side": 1,
+      "message": "Does it take flexible YUV? (then we will need image-data). Is there a chance that input and output is different?\n\nAlso if this is raw video decoder, it can be outputted into a SurfaceTexture - and developers will expect to work. So perhaps this will need to be limited to tunneled decoder to be able to solve the problem of these frames only being displayable via display pipeline.",
+      "parentUuid": "7d61971c_6031a35c",
+      "revId": "c044380cd2551a2cb1fbc9a8ebcef8a9870ee3b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50f8e03b_b6f730b6",
