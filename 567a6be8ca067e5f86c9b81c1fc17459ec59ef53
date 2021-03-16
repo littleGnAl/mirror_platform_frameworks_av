@@ -135,6 +135,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "dc9fd1b2_c8452471",
+        "filename": "media/libeffects/preprocessing/tests/EffectTestHelper.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 78,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-16T16:37:31Z",
+      "side": 1,
+      "message": "Making these const will require casts because audio_buffer_t doesn\u0027t list them as const.\nIs it okay to leave these as they are?",
+      "parentUuid": "5eb99ed6_00aeaeb9",
+      "range": {
+        "startLine": 78,
+        "startChar": 30,
+        "endLine": 78,
+        "endChar": 32
+      },
+      "revId": "567a6be8ca067e5f86c9b81c1fc17459ec59ef53",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "85a66b5b_71252234",
         "filename": "media/libeffects/preprocessing/tests/EffectTestHelper.h",
         "patchSetId": 5
