@@ -16,6 +16,23 @@
       "message": "I would like to see the solution expanded to cover Codec2 as well. Wonsik, would you be able to provide some guidance?",
       "revId": "c044380cd2551a2cb1fbc9a8ebcef8a9870ee3b1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50f8e03b_b6f730b6",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5145,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-03-16T17:22:37Z",
+      "side": 1,
+      "message": "We might want to modify the CHECK clause instead.",
+      "revId": "c044380cd2551a2cb1fbc9a8ebcef8a9870ee3b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
