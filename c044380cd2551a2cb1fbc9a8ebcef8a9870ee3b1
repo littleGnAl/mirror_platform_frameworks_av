@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "41bfd6bb_6d0cb69c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1134898
+      },
+      "writtenOn": "2021-03-17T02:11:33Z",
+      "side": 1,
+      "message": "Currently the raw decoder only supports tunneled mode and it does not take flexible YUV. I think I\u0027ll try to limited it to tunneled decoder and propagate the format parameters.",
+      "parentUuid": "d46c61a0_c963e3b0",
+      "revId": "c044380cd2551a2cb1fbc9a8ebcef8a9870ee3b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "50f8e03b_b6f730b6",
@@ -83,6 +101,30 @@
       "writtenOn": "2021-03-16T17:24:03Z",
       "side": 1,
       "message": "should the above lines just protect this check for this raw decoder and still propagate the format parameters, especially image-data.",
+      "range": {
+        "startLine": 5145,
+        "startChar": 20,
+        "endLine": 5145,
+        "endChar": 72
+      },
+      "revId": "c044380cd2551a2cb1fbc9a8ebcef8a9870ee3b1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9eadfc4_940aeb3a",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5145,
+      "author": {
+        "id": 1134898
+      },
+      "writtenOn": "2021-03-17T02:11:33Z",
+      "side": 1,
+      "message": "OK!",
+      "parentUuid": "d375b009_63325c73",
       "range": {
         "startLine": 5145,
         "startChar": 20,
