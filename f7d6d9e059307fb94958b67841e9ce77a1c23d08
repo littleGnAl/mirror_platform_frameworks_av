@@ -105,6 +105,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "99e85cd3_b7940f7c",
+        "filename": "media/codec2/hidl/client/client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1463,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-17T07:32:24Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "7ffa5540_8674aa6b",
+      "range": {
+        "startLine": 1463,
+        "startChar": 7,
+        "endLine": 1463,
+        "endChar": 24
+      },
+      "revId": "f7d6d9e059307fb94958b67841e9ce77a1c23d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "81b773f8_28e37c07",
@@ -142,6 +166,30 @@
       "side": 1,
       "message": "From MediaCodec\u0027s point of view, null surface means byte buffer mode... so yes, we\u0027d want CPU_READ.",
       "parentUuid": "81b773f8_28e37c07",
+      "range": {
+        "startLine": 1466,
+        "startChar": 12,
+        "endLine": 1466,
+        "endChar": 19
+      },
+      "revId": "f7d6d9e059307fb94958b67841e9ce77a1c23d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "311422dd_67e5d9c7",
+        "filename": "media/codec2/hidl/client/client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-17T07:32:24Z",
+      "side": 1,
+      "message": "I am no longer convinced that this is the case at the CCodec level. Today we do not allow setting surface to null once configured for surface mode, but exoPlayer team asked us to be able to do setSurface to null when the surface is hidden. In this case the buffers would simply not be rendered. This could be signaled using setSurface(null) while keeping buffer allocator as \"BQBBP\". This could also be signaled by setting buffer allocator to a new \"GRALLOC\" allocator. I don\u0027t think we are calling setSurface(null) in bytebuffer mode.",
+      "parentUuid": "dc44fa36_9575cc90",
       "range": {
         "startLine": 1466,
         "startChar": 12,
