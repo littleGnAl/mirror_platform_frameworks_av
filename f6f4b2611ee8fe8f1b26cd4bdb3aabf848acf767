@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "437f64be_89ac78e5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-17T04:54:49Z",
+      "side": 1,
+      "message": "Andy,\nWe looked at the supported sampling frequencies further and it seems like certain modules in webrtc only support 8k, 16k, 32k and 48k sampling rates.\nWe will run some more tests and see which of the effects support other sampling rates that are multiples of 100. Once we confirm the supported frequencies, we can discuss and decide if we need to bring back resampler to support other frequencies.\nTill then, I will keep this as WIP.",
+      "revId": "f6f4b2611ee8fe8f1b26cd4bdb3aabf848acf767",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
