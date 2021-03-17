@@ -16,6 +16,29 @@
       "message": "Andy,\nSaketh and Rivukanta reviewed the webrtc modules and confirmed that webrtc resamples the data internally when required.\nSo Preprocessing.cpp doesn\u0027t need resampler.\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1642544 adds other frequencies that were not tested earlier.\n\nNow this CL is ready for review.",
       "revId": "65267aa8fb82fa88ee778fc2bcf61e56f3d75eb4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c2ea7bc_4629ff75",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1072,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-03-17T23:08:31Z",
+      "side": 1,
+      "message": "nit: sampling",
+      "range": {
+        "startLine": 1072,
+        "startChar": 68,
+        "endLine": 1072,
+        "endChar": 76
+      },
+      "revId": "65267aa8fb82fa88ee778fc2bcf61e56f3d75eb4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
