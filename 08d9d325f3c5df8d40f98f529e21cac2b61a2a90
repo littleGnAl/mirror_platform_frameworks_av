@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d1d31e1_8520f091",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 110,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-03-17T03:24:26Z",
+      "side": 0,
+      "message": "comment should be clarified. frameCount represents the size of the buffers used for processing, and must represent 10ms.",
+      "range": {
+        "startLine": 110,
+        "startChar": 3,
+        "endLine": 110,
+        "endChar": 89
+      },
+      "revId": "08d9d325f3c5df8d40f98f529e21cac2b61a2a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

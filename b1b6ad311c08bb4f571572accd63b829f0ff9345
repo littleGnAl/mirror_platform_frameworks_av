@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c5e52dd_89f25cc8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-03-17T03:24:26Z",
+      "side": 1,
+      "message": "minor nits.",
+      "revId": "b1b6ad311c08bb4f571572accd63b829f0ff9345",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "772fed55_25dc4ebc",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-03-17T03:24:26Z",
+      "side": 1,
+      "message": "do we warn if this is fractional?",
+      "range": {
+        "startLine": 854,
+        "startChar": 52,
+        "endLine": 854,
+        "endChar": 54
+      },
+      "revId": "b1b6ad311c08bb4f571572accd63b829f0ff9345",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
