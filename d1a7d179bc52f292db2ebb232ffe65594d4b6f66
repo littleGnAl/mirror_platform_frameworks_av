@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "598b2dce_449749f8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-17T18:44:50Z",
+      "side": 1,
+      "message": "libaudiopreprocessing: Test few more sampling rates\n\nAdded 11025, 12000, 22050, 44100 Hz sampling rates in test\nscript and EffectPreprocessingTest",
+      "range": {
+        "startLine": 7,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 81
+      },
+      "revId": "d1a7d179bc52f292db2ebb232ffe65594d4b6f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e61ea142_2006afcd",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-17T18:44:50Z",
+      "side": 1,
+      "message": "Test: atest EffectPreprocessingTest",
+      "revId": "d1a7d179bc52f292db2ebb232ffe65594d4b6f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "457948c6_a5c03a12",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-17T18:44:50Z",
+      "side": 1,
+      "message": "Add these frequencies in EffectPreprocessingTest as well",
+      "revId": "d1a7d179bc52f292db2ebb232ffe65594d4b6f66",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
