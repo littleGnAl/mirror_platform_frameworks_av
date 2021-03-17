@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4255cafd_a689cdcc",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 293,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-17T08:10:27Z",
+      "side": 1,
+      "message": "wow, this is some C++ magic!",
+      "range": {
+        "startLine": 293,
+        "startChar": 25,
+        "endLine": 293,
+        "endChar": 40
+      },
+      "revId": "0fab7fc57d3c068954bf7f37ded0d2149376393a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "233a57ae_3c48cd2f",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1226,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-17T08:10:27Z",
+      "side": 1,
+      "message": "I am worried that some of the type information is lost for the maintainer of this code. This requires looking up multiple levels: ReflectedParamUdater::Dict \u003d\u003e map\u003cstring, ReflectedParamUpdater::Value\u003e",
+      "range": {
+        "startLine": 1226,
+        "startChar": 27,
+        "endLine": 1226,
+        "endChar": 32
+      },
+      "revId": "0fab7fc57d3c068954bf7f37ded0d2149376393a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aeecaa29_de6b352a",
+        "filename": "media/codec2/sfplugin/CCodecConfig.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-17T08:10:27Z",
+      "side": 1,
+      "message": "please describe these methods and their parameters",
+      "range": {
+        "startLine": 325,
+        "startChar": 4,
+        "endLine": 328,
+        "endChar": 0
+      },
+      "revId": "0fab7fc57d3c068954bf7f37ded0d2149376393a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83abc934_13f5e116",
+        "filename": "media/codec2/sfplugin/ReflectedParamUpdater.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-17T08:10:27Z",
+      "side": 1,
+      "message": "or FFFF if not found?",
+      "range": {
+        "startLine": 182,
+        "startChar": 27,
+        "endLine": 182,
+        "endChar": 32
+      },
+      "revId": "0fab7fc57d3c068954bf7f37ded0d2149376393a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7069228e_c8e75268",
+        "filename": "media/libstagefright/include/media/stagefright/CodecBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-17T08:10:27Z",
+      "side": 1,
+      "message": "description please?",
+      "range": {
+        "startLine": 237,
+        "startChar": 4,
+        "endLine": 240,
+        "endChar": 38
+      },
+      "revId": "0fab7fc57d3c068954bf7f37ded0d2149376393a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a6e01b1_d5dfe251",
+        "filename": "media/libstagefright/include/media/stagefright/CodecBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-17T08:10:27Z",
+      "side": 1,
+      "message": "seems this could be at the top of this header instead of predeclaration.\n\nAlso add description please.",
+      "range": {
+        "startLine": 397,
+        "startChar": 7,
+        "endLine": 397,
+        "endChar": 31
+      },
+      "revId": "0fab7fc57d3c068954bf7f37ded0d2149376393a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
