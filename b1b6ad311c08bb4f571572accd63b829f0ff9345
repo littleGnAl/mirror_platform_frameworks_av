@@ -39,6 +39,30 @@
       },
       "revId": "b1b6ad311c08bb4f571572accd63b829f0ff9345",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2be9d15c_881f9a10",
+        "filename": "media/libeffects/preprocessing/PreProcessing.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 854,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-17T04:29:20Z",
+      "side": 1,
+      "message": "added a check in Session_SetConfig",
+      "parentUuid": "772fed55_25dc4ebc",
+      "range": {
+        "startLine": 854,
+        "startChar": 52,
+        "endLine": 854,
+        "endChar": 54
+      },
+      "revId": "b1b6ad311c08bb4f571572accd63b829f0ff9345",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
