@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b78d616a_5494fd6c",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-03-18T18:25:37Z",
+      "side": 1,
+      "message": "Clarification a MODE_ZERO for offload/direct.",
+      "parentUuid": "d6886bf1_6760139a",
+      "range": {
+        "startLine": 625,
+        "startChar": 0,
+        "endLine": 625,
+        "endChar": 87
+      },
+      "revId": "a240007c59dfd9ffd1288b3cc9f48ea8084ae273",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0ebe554c_6f6c2583",
         "filename": "services/audioflinger/Threads.cpp",
         "patchSetId": 12
