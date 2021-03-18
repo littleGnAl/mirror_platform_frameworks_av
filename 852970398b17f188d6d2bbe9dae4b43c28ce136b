@@ -33,6 +33,24 @@
       "message": "The timestamps are wrong after pause/resume (the frames don\u0027t increment). We probably need to include https://android-review.googlesource.com/c/platform/frameworks/av/+/1597875 within this change so we don\u0027t regress.",
       "revId": "852970398b17f188d6d2bbe9dae4b43c28ce136b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbde11a6_44ef1933",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-03-18T12:09:56Z",
+      "side": 1,
+      "message": "Squashing https://android-review.googlesource.com/c/platform/frameworks/av/+/1597875 into PS11 fixes this issue. The squash is in PS12.",
+      "parentUuid": "771f066a_997705cb",
+      "revId": "852970398b17f188d6d2bbe9dae4b43c28ce136b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
