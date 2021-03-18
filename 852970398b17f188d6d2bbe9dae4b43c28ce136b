@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85bcfac6_afbb0c9a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 11
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-03-18T10:10:38Z",
+      "side": 1,
+      "message": "Hi Andy and Mikhail,\n\nI have tested this change using a modified ExoPlayer with 10 ms AudioTrack.getTimestamp() poll duration, playing eac3 track into MSD, logging the frame/time pairs, calculating the Jitter standard deviation as per TimestampVerifier::computeJitterMs(), and, over a 10 second playback over 5 runs each, resulted in:\n\nraw timestamp jitter stddev: approx 5 ms for all 5 test runs\ncorrected timestamp jitter stdev: approx 2 ms for all 5 test runs\n\nThe above was to verify the effect of returning the corrected timestamps results in lower jitter stddev as expected (and in-line with lower jitter stats as reported by AudioFlinger dumpsys).\n\n",
+      "revId": "852970398b17f188d6d2bbe9dae4b43c28ce136b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
