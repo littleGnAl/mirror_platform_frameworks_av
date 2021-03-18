@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6886bf1_6760139a",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-03-18T17:17:50Z",
+      "side": 1,
+      "message": "i\u0027m presuming a MODE_ZERO occurs afterwards if a device switch actually occurs.",
+      "range": {
+        "startLine": 625,
+        "startChar": 0,
+        "endLine": 625,
+        "endChar": 87
+      },
+      "revId": "a240007c59dfd9ffd1288b3cc9f48ea8084ae273",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ebe554c_6f6c2583",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 6180,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-03-18T17:17:50Z",
+      "side": 1,
+      "message": "As I understand it, DIRECT and linear PCM should still be continuous.\nMikhail landed a CL for clarification go/aog/1623059.  Typically flush will be handled for offload cases only.",
+      "range": {
+        "startLine": 6180,
+        "startChar": 56,
+        "endLine": 6180,
+        "endChar": 79
+      },
+      "revId": "a240007c59dfd9ffd1288b3cc9f48ea8084ae273",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b1ac954_4252aa97",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 7382,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-03-18T17:17:50Z",
+      "side": 1,
+      "message": "this is only for linear PCM.",
+      "range": {
+        "startLine": 7382,
+        "startChar": 68,
+        "endLine": 7382,
+        "endChar": 97
+      },
+      "revId": "a240007c59dfd9ffd1288b3cc9f48ea8084ae273",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
