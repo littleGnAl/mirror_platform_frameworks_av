@@ -30,10 +30,15 @@
 #include <C2ErrnoUtils.h>
 #include <C2HandleIonInternal.h>
 
+#include <android-base/properties.h>
+
 namespace android {
 
 namespace {
     constexpr size_t USAGE_LRU_CACHE_SIZE = 1024;
+
+    // max padding after ion/dmabuf allocations in bytes
+    constexpr uint32_t MAX_PADDING = 0x8000; // 32KB
 }
 
 /* size_t <=> int(lo), int(hi) conversions */
@@ -376,14 +381,20 @@ C2AllocationIon::Impl *C2AllocationIon::Impl::Alloc(int ionFd, size_t size, size
         unsigned heapMask, unsigned flags, C2Allocator::id_t id) {
     int bufferFd = -1;
     ion_user_handle_t buffer = -1;
-    size_t alignedSize = align == 0 ? size : (size + align - 1) & ~(align - 1);
+    static size_t sPadding =
+        base::GetUintProperty("ro.com.android.media.c2.dmabuf.padding", (uint32_t)0, MAX_PADDING);
+    size_t allocSize = size + c2_min(sPadding, SIZE_MAX - size);
+    if (align) {
+        allocSize += c2_min(align - 1, SIZE_MAX - allocSize);
+        allocSize &= ~(align - 1);
+    }
     int ret;
 
     if (ion_is_legacy(ionFd)) {
-        ret = ion_alloc(ionFd, alignedSize, align, heapMask, flags, &buffer);
+        ret = ion_alloc(ionFd, allocSize, align, heapMask, flags, &buffer);
         ALOGV("ion_alloc(ionFd = %d, size = %zu, align = %zu, prot = %d, flags = %d) "
               "returned (%d) ; buffer = %d",
-              ionFd, alignedSize, align, heapMask, flags, ret, buffer);
+              ionFd, allocSize, align, heapMask, flags, ret, buffer);
         if (ret == 0) {
             // get buffer fd for native handle constructor
             ret = ion_share(ionFd, buffer, &bufferFd);
@@ -392,15 +403,15 @@ C2AllocationIon::Impl *C2AllocationIon::Impl::Alloc(int ionFd, size_t size, size
                 buffer = -1;
             }
         }
-        return new Impl(ionFd, alignedSize, bufferFd, buffer, id, ret);
+        return new Impl(ionFd, size, bufferFd, buffer, id, ret);
 
     } else {
-        ret = ion_alloc_fd(ionFd, alignedSize, align, heapMask, flags, &bufferFd);
+        ret = ion_alloc_fd(ionFd, allocSize, align, heapMask, flags, &bufferFd);
         ALOGV("ion_alloc_fd(ionFd = %d, size = %zu, align = %zu, prot = %d, flags = %d) "
               "returned (%d) ; bufferFd = %d",
-              ionFd, alignedSize, align, heapMask, flags, ret, bufferFd);
+              ionFd, allocSize, align, heapMask, flags, ret, bufferFd);
 
-        return new ImplV2(ionFd, alignedSize, bufferFd, id, ret);
+        return new ImplV2(ionFd, size, bufferFd, id, ret);
     }
 }
 
