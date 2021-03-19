@@ -113,6 +113,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a14502e_ef73565b",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-03-19T05:22:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6199766a_095081e3",
+      "range": {
+        "startLine": 625,
+        "startChar": 0,
+        "endLine": 625,
+        "endChar": 87
+      },
+      "revId": "a240007c59dfd9ffd1288b3cc9f48ea8084ae273",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ebe554c_6f6c2583",
@@ -150,6 +174,30 @@
       "side": 1,
       "message": "Are you able to share the CL clarification (via email?).\n\nIn any case, I can change this to be consistent with the other thread type / format check in collectTimestamps_l() and move that into a helper.",
       "parentUuid": "0ebe554c_6f6c2583",
+      "range": {
+        "startLine": 6180,
+        "startChar": 56,
+        "endLine": 6180,
+        "endChar": 79
+      },
+      "revId": "a240007c59dfd9ffd1288b3cc9f48ea8084ae273",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c45f053_4867df02",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 6180,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-03-19T05:22:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c79a63f6_ce630c2a",
       "range": {
         "startLine": 6180,
         "startChar": 56,
