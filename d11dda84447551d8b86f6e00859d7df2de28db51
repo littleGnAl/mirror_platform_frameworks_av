@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eedf41df_7ecf6ce4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2021-03-19T22:24:11Z",
+      "side": 1,
+      "message": "Failing builds due to infra error: b/183233642\n\nThe same builds succeeded in earlier presubmit run: https://android-build.googleplex.com/builds/treetop/android-review/1640559?revision\u003d5\u0026ref\u003dPLUGIN\u0026attemptKey\u003dshowall.",
+      "revId": "d11dda84447551d8b86f6e00859d7df2de28db51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
