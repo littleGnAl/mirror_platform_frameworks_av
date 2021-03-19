@@ -137,6 +137,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b626e7a_ad27234d",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-03-19T11:23:23Z",
+      "side": 1,
+      "message": "Settings ZERO mode in PS13 causes regressions on pause/seek. Changed back to CONTINUOUS in PS14.",
+      "parentUuid": "3a14502e_ef73565b",
+      "range": {
+        "startLine": 625,
+        "startChar": 0,
+        "endLine": 625,
+        "endChar": 87
+      },
+      "revId": "a240007c59dfd9ffd1288b3cc9f48ea8084ae273",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ebe554c_6f6c2583",
@@ -221,6 +245,30 @@
       "writtenOn": "2021-03-18T17:17:50Z",
       "side": 1,
       "message": "this is only for linear PCM.",
+      "range": {
+        "startLine": 7382,
+        "startChar": 68,
+        "endLine": 7382,
+        "endChar": 97
+      },
+      "revId": "a240007c59dfd9ffd1288b3cc9f48ea8084ae273",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00ee8f30_b9613430",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 7382,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-03-19T11:23:23Z",
+      "side": 1,
+      "message": "continuous for linear PCM, zero otherwise, in PS14.",
+      "parentUuid": "0b1ac954_4252aa97",
       "range": {
         "startLine": 7382,
         "startChar": 68,
