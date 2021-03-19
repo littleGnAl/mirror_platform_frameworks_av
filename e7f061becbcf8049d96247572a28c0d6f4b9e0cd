@@ -16,6 +16,29 @@
       "message": "Hi Lajos,\n\nWouldn\u0027t you need the same change in C2DmabufAllocator.cpp? Thanks!",
       "revId": "e7f061becbcf8049d96247572a28c0d6f4b9e0cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f202331_1d2b0529",
+        "filename": "media/codec2/vndk/C2AllocatorIon.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1120612
+      },
+      "writtenOn": "2021-03-19T17:21:13Z",
+      "side": 1,
+      "message": "Lajos, would it be a good idea to add a warning/error here in case size + sPadding exceeds SIZE_MAX?",
+      "range": {
+        "startLine": 388,
+        "startChar": 11,
+        "endLine": 388,
+        "endChar": 20
+      },
+      "revId": "e7f061becbcf8049d96247572a28c0d6f4b9e0cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
