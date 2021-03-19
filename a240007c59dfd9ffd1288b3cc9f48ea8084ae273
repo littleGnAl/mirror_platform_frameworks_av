@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6199766a_095081e3",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 625,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-03-19T03:01:31Z",
+      "side": 1,
+      "message": "Yes, I think MODE_CONTINUOUS is wrong here. It should be MODE_ZERO to be more inline with the intent of the other statistics resets.",
+      "parentUuid": "f89e8804_594b378f",
+      "range": {
+        "startLine": 625,
+        "startChar": 0,
+        "endLine": 625,
+        "endChar": 87
+      },
+      "revId": "a240007c59dfd9ffd1288b3cc9f48ea8084ae273",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ebe554c_6f6c2583",
@@ -102,6 +126,30 @@
       "writtenOn": "2021-03-18T17:17:50Z",
       "side": 1,
       "message": "As I understand it, DIRECT and linear PCM should still be continuous.\nMikhail landed a CL for clarification go/aog/1623059.  Typically flush will be handled for offload cases only.",
+      "range": {
+        "startLine": 6180,
+        "startChar": 56,
+        "endLine": 6180,
+        "endChar": 79
+      },
+      "revId": "a240007c59dfd9ffd1288b3cc9f48ea8084ae273",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c79a63f6_ce630c2a",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 6180,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-03-19T03:01:31Z",
+      "side": 1,
+      "message": "Are you able to share the CL clarification (via email?).\n\nIn any case, I can change this to be consistent with the other thread type / format check in collectTimestamps_l() and move that into a helper.",
+      "parentUuid": "0ebe554c_6f6c2583",
       "range": {
         "startLine": 6180,
         "startChar": 56,
