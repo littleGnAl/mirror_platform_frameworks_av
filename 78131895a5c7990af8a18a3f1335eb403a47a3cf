@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6556092a_b8f2dca1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 14
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1132642
+      },
+      "writtenOn": "2021-03-19T12:25:47Z",
+      "side": 1,
+      "message": "This change has been tested with Netflix \u0026 Exoplayer playback. Verified that pause/seek resume are all working as expected without any regressions. A/V Sync is good after the playback resume.",
+      "revId": "78131895a5c7990af8a18a3f1335eb403a47a3cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
