@@ -70,6 +70,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3695a8f0_35488a03",
+        "filename": "media/codec2/sfplugin/CCodecConfig.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 328,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-03-19T04:58:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aeecaa29_de6b352a",
+      "range": {
+        "startLine": 325,
+        "startChar": 4,
+        "endLine": 328,
+        "endChar": 0
+      },
+      "revId": "0fab7fc57d3c068954bf7f37ded0d2149376393a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "83abc934_13f5e116",
@@ -83,6 +107,30 @@
       "writtenOn": "2021-03-17T08:10:27Z",
       "side": 1,
       "message": "or FFFF if not found?",
+      "range": {
+        "startLine": 182,
+        "startChar": 27,
+        "endLine": 182,
+        "endChar": 32
+      },
+      "revId": "0fab7fc57d3c068954bf7f37ded0d2149376393a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3046a8eb_38f21a99",
+        "filename": "media/codec2/sfplugin/ReflectedParamUpdater.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 182,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-03-19T04:58:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "83abc934_13f5e116",
       "range": {
         "startLine": 182,
         "startChar": 27,
@@ -116,6 +164,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "83afd38f_7c6f73ee",
+        "filename": "media/libstagefright/include/media/stagefright/CodecBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-03-19T04:58:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7069228e_c8e75268",
+      "range": {
+        "startLine": 237,
+        "startChar": 4,
+        "endLine": 240,
+        "endChar": 38
+      },
+      "revId": "0fab7fc57d3c068954bf7f37ded0d2149376393a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a6e01b1_d5dfe251",
@@ -129,6 +201,30 @@
       "writtenOn": "2021-03-17T08:10:27Z",
       "side": 1,
       "message": "seems this could be at the top of this header instead of predeclaration.\n\nAlso add description please.",
+      "range": {
+        "startLine": 397,
+        "startChar": 7,
+        "endLine": 397,
+        "endChar": 31
+      },
+      "revId": "0fab7fc57d3c068954bf7f37ded0d2149376393a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f8613f4e_7b75d91c",
+        "filename": "media/libstagefright/include/media/stagefright/CodecBase.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-03-19T04:58:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a6e01b1_d5dfe251",
       "range": {
         "startLine": 397,
         "startChar": 7,
