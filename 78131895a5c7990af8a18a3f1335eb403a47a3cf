@@ -33,6 +33,29 @@
       "message": "Thanks Dean and Sampath. This looks good, I will verify locally.",
       "revId": "78131895a5c7990af8a18a3f1335eb403a47a3cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8150bf33_dba7b4b3",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 3976,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-03-20T01:56:08Z",
+      "side": 1,
+      "message": "Dean, when I tested on crosshatch with offload and mixer threads, this code has an issue. I will send you a patch by e-mail.  After that patch, it seems okay to me.",
+      "range": {
+        "startLine": 3972,
+        "startChar": 0,
+        "endLine": 3976,
+        "endChar": 5
+      },
+      "revId": "78131895a5c7990af8a18a3f1335eb403a47a3cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
