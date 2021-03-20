@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f4905e0_642e4cc8",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2316,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-03-20T19:05:54Z",
+      "side": 1,
+      "message": "given that this is to cross an interface (aka the hal)\ndo we want to explicitly call out the values here.\nor at least the starting value.\n\ne.g. \"NONE \u003d 0\"",
+      "range": {
+        "startLine": 2316,
+        "startChar": 3,
+        "endLine": 2316,
+        "endChar": 9
+      },
+      "revId": "652498752f144f794bc27f54a5650608ca257ab0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
