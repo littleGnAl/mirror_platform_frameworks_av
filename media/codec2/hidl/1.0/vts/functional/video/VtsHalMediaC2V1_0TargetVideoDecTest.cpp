@@ -18,6 +18,7 @@
 #define LOG_TAG "codec2_hidl_hal_video_dec_test"
 
 #include <android-base/logging.h>
+#include <binder/ProcessState.h>
 #include <gtest/gtest.h>
 #include <hidl/GtestPrinter.h>
 #include <stdio.h>
@@ -43,12 +44,6 @@ static std::vector<DecodeTestParameters> gDecodeTestParameters;
 using CsdFlushTestParameters = std::tuple<std::string, std::string, bool>;
 static std::vector<CsdFlushTestParameters> gCsdFlushTestParameters;
 
-struct CompToFiles {
-    std::string mime;
-    std::string inputFile;
-    std::string infoFile;
-    std::string chksumFile;
-};
 std::vector<CompToFiles> gCompToFiles = {
         {"avc", "bbb_avc_176x144_300kbps_60fps.h264", "bbb_avc_176x144_300kbps_60fps.info",
          "bbb_avc_176x144_300kbps_60fps_chksum.md5"},
@@ -1058,7 +1053,9 @@ INSTANTIATE_TEST_SUITE_P(CsdInputs, Codec2VideoDecCsdInputTests,
 
 // TODO : Video specific configuration Test
 int main(int argc, char** argv) {
+    android::ProcessState::self()->startThreadPool();
     parseArgs(argc, argv);
+    addCustomTestParamsFromFile(sResourceDir + "VideoDecTest.txt", gCompToFiles);
     gTestParameters = getTestParameters(C2Component::DOMAIN_VIDEO, C2Component::KIND_DECODER);
     for (auto params : gTestParameters) {
         gDecodeTestParameters.push_back(
