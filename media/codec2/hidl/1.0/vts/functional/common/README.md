@@ -22,3 +22,16 @@ Functionality of video test is to validate video specific functionality of Codec
 
 usage: `atest VtsHalMediaC2V1_0TargetVideoDecTest`
 usage: `atest VtsHalMediaC2V1_0TargetVideoEncTest`
+
+VTS tests have provision for running not only the default test vectors (test vectors present in res folder) but also additional test vectors. For this, the vendor needs to feed parameters for these components externally.
+
+All these tests parses text file in resourceFolder/{ClassName}.txt for any additional parameters. The contents of the file should follow the same pattern as the pattern of actual parameters present at the default location.
+
+For instance, for VtsHalMediaC2V1_0TargetVideoDecTest, the contents of the file should have the pattern
+// inputClip
+
+We can also provide checksum file if vendor wants the codecs to be validated against checksum. In that case, the content of the file will be:
+// inputClip, checksumFile
+
+To test VtsHalMediaC2V1_0TargetAudioDecTest, the contents of the file should have the pattern
+// inputClip
