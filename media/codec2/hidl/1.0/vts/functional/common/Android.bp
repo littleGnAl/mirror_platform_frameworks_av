@@ -18,6 +18,10 @@ cc_library_static {
         "frameworks/av/media/codec2/hidl/client/include",
     ],
 
+    shared_libs: [
+        "libmediandk",
+    ],
+
     srcs: [
         "media_c2_hidl_test_common.cpp",
     ],
@@ -39,6 +43,7 @@ cc_defaults {
 
     shared_libs: [
         "libcodec2_client",
+        "libmediandk",
     ],
     test_suites: [
         "vts",
