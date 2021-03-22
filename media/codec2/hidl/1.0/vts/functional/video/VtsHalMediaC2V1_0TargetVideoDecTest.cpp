@@ -18,6 +18,7 @@
 #define LOG_TAG "codec2_hidl_hal_video_dec_test"
 
 #include <android-base/logging.h>
+#include <binder/ProcessState.h>
 #include <gtest/gtest.h>
 #include <hidl/GtestPrinter.h>
 #include <stdio.h>
@@ -46,12 +47,6 @@ static std::vector<DecodeTestParameters> gDecodeTestParameters;
 using CsdFlushTestParameters = std::tuple<std::string, std::string, bool>;
 static std::vector<CsdFlushTestParameters> gCsdFlushTestParameters;
 
-struct CompToURL {
-    std::string mime;
-    std::string mURL;
-    std::string info;
-    std::string chksum;
-};
 std::vector<CompToURL> gCompToURL = {
         {"avc", "bbb_avc_176x144_300kbps_60fps.h264", "bbb_avc_176x144_300kbps_60fps.info",
          "bbb_avc_176x144_300kbps_60fps_chksum.md5"},
@@ -550,6 +545,9 @@ TEST_P(Codec2VideoDecDecodeTest, DecodeTest) {
     strcpy(mURL, sResourceDir.c_str());
     strcpy(info, sResourceDir.c_str());
     strcpy(chksum, sResourceDir.c_str());
+
+    int32_t numEntries = getNumTestEntries(mMime, gCompToURL);
+    ASSERT_GT(numEntries, 0) << "No entry found for mime " << mMime;
 
     GetURLChksmForComponent(mURL, info, chksum, streamIndex);
     if (!(strcmp(mURL, sResourceDir.c_str())) || !(strcmp(info, sResourceDir.c_str()))) {
@@ -1090,6 +1088,7 @@ INSTANTIATE_TEST_SUITE_P(CsdInputs, Codec2VideoDecCsdInputTests,
 
 // TODO : Video specific configuration Test
 int main(int argc, char** argv) {
+    android::ProcessState::self()->startThreadPool();
     parseArgs(argc, argv);
     gTestParameters = getTestParameters(C2Component::DOMAIN_VIDEO, C2Component::KIND_DECODER);
     for (auto params : gTestParameters) {
@@ -1111,6 +1110,7 @@ int main(int argc, char** argv) {
         gCsdFlushTestParameters.push_back(
                 std::make_tuple(std::get<0>(params), std::get<1>(params), false));
     }
+    addCustomTestParamsFromFile(sResourceDir + "Codec2VideoDecHidlTestBase.txt", gCompToURL);
 
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
