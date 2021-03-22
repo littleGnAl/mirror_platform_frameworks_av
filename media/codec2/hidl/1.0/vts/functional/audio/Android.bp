@@ -30,6 +30,9 @@ cc_test {
     srcs: [
         "VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
     ],
+    shared_libs: [
+        "libbinder",
+    ],
     data: [":media_c2_v1_audio_decode_res"],
     test_config: "VtsHalMediaC2V1_0TargetAudioDecTest.xml",
 }

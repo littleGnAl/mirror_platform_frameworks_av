@@ -42,11 +42,24 @@ using namespace ::std::chrono;
 
 static std::vector<std::tuple<std::string, std::string>> kTestParameters;
 
+// Resource directory
+static std::string sResourceDir = "";
+
 struct FrameInfo {
     int bytesCount;
     uint32_t flags;
     int64_t timestamp;
 };
+
+struct CompToURL {
+    std::string mime;
+    std::string mURL;
+    std::string info;
+    std::string chksum;
+};
+
+constexpr uint32_t kCsdFlag = 32;
+constexpr uint32_t kMaxBufferSize = 1024 * 1024 * 2;
 
 /*
  * Handle Callback functions onWorkDone(), onTripped(),
@@ -138,4 +151,11 @@ int32_t populateInfoVector(std::string info, android::Vector<FrameInfo>* frameIn
 void verifyFlushOutput(std::list<std::unique_ptr<C2Work>>& flushedWork,
                        std::list<std::unique_ptr<C2Work>>& workQueue,
                        std::list<uint64_t>& flushedIndices, std::mutex& queueLock);
+
+int32_t extractBitstreamAndInfoFile(std::string inputFile, std::string extractedBitstream,
+                                    std::string infoFile, char* mimeType);
+
+int32_t getNumTestEntries(std::string mime, std::vector<CompToURL> lookUpTable);
+
+void addCustomTestParamsFromFile(std::string filePath, std::vector<CompToURL> lookUpTable);
 #endif  // MEDIA_C2_HIDL_TEST_COMMON_H

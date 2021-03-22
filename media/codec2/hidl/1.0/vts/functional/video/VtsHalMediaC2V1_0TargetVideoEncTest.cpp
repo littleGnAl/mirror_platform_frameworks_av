@@ -46,9 +46,6 @@ static std::vector<std::tuple<std::string, std::string, std::string, std::string
 static std::vector<std::tuple<std::string, std::string, std::string, std::string>>
         kEncodeResolutionTestParameters;
 
-// Resource directory
-static std::string sResourceDir = "";
-
 namespace {
 
 class Codec2VideoEncHidlTestBase : public ::testing::Test {

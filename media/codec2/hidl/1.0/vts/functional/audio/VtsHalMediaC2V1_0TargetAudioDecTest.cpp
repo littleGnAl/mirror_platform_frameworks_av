@@ -18,6 +18,7 @@
 #define LOG_TAG "codec2_hidl_hal_audio_dec_test"
 
 #include <android-base/logging.h>
+#include <binder/ProcessState.h>
 #include <gtest/gtest.h>
 #include <hidl/GtestPrinter.h>
 #include <stdio.h>
@@ -39,46 +40,37 @@ static std::vector<std::tuple<std::string, std::string, std::string, std::string
 
 static std::vector<std::tuple<std::string, std::string, std::string>> kCsdFlushTestParameters;
 
-// Resource directory
-static std::string sResourceDir = "";
-
-struct CompToURL {
-    std::string mime;
-    std::string mURL;
-    std::string info;
-};
-
 std::vector<CompToURL> kCompToURL = {
     {"mp4a-latm",
-     "bbb_aac_stereo_128kbps_48000hz.aac", "bbb_aac_stereo_128kbps_48000hz.info"},
+     "bbb_aac_stereo_128kbps_48000hz.aac", "bbb_aac_stereo_128kbps_48000hz.info", ""},
     {"mp4a-latm",
-     "bbb_aac_stereo_128kbps_48000hz.aac", "bbb_aac_stereo_128kbps_48000hz_multi_frame.info"},
+     "bbb_aac_stereo_128kbps_48000hz.aac", "bbb_aac_stereo_128kbps_48000hz_multi_frame.info", ""},
     {"audio/mpeg",
-     "bbb_mp3_stereo_192kbps_48000hz.mp3", "bbb_mp3_stereo_192kbps_48000hz.info"},
+     "bbb_mp3_stereo_192kbps_48000hz.mp3", "bbb_mp3_stereo_192kbps_48000hz.info", ""},
     {"audio/mpeg",
-     "bbb_mp3_stereo_192kbps_48000hz.mp3", "bbb_mp3_stereo_192kbps_48000hz_multi_frame.info"},
+     "bbb_mp3_stereo_192kbps_48000hz.mp3", "bbb_mp3_stereo_192kbps_48000hz_multi_frame.info", ""},
     {"3gpp",
-     "sine_amrnb_1ch_12kbps_8000hz.amrnb", "sine_amrnb_1ch_12kbps_8000hz.info"},
+     "sine_amrnb_1ch_12kbps_8000hz.amrnb", "sine_amrnb_1ch_12kbps_8000hz.info", ""},
     {"3gpp",
-     "sine_amrnb_1ch_12kbps_8000hz.amrnb", "sine_amrnb_1ch_12kbps_8000hz_multi_frame.info"},
+     "sine_amrnb_1ch_12kbps_8000hz.amrnb", "sine_amrnb_1ch_12kbps_8000hz_multi_frame.info", ""},
     {"amr-wb",
-     "bbb_amrwb_1ch_14kbps_16000hz.amrwb", "bbb_amrwb_1ch_14kbps_16000hz.info"},
+     "bbb_amrwb_1ch_14kbps_16000hz.amrwb", "bbb_amrwb_1ch_14kbps_16000hz.info", ""},
     {"amr-wb",
-     "bbb_amrwb_1ch_14kbps_16000hz.amrwb", "bbb_amrwb_1ch_14kbps_16000hz_multi_frame.info"},
+     "bbb_amrwb_1ch_14kbps_16000hz.amrwb", "bbb_amrwb_1ch_14kbps_16000hz_multi_frame.info", ""},
     {"vorbis",
-     "bbb_vorbis_stereo_128kbps_48000hz.vorbis", "bbb_vorbis_stereo_128kbps_48000hz.info"},
+     "bbb_vorbis_stereo_128kbps_48000hz.vorbis", "bbb_vorbis_stereo_128kbps_48000hz.info", ""},
     {"opus",
-     "bbb_opus_stereo_128kbps_48000hz.opus", "bbb_opus_stereo_128kbps_48000hz.info"},
+     "bbb_opus_stereo_128kbps_48000hz.opus", "bbb_opus_stereo_128kbps_48000hz.info", ""},
     {"g711-alaw",
-     "bbb_g711alaw_1ch_8khz.raw", "bbb_g711alaw_1ch_8khz.info"},
+     "bbb_g711alaw_1ch_8khz.raw", "bbb_g711alaw_1ch_8khz.info", ""},
     {"g711-mlaw",
-     "bbb_g711mulaw_1ch_8khz.raw", "bbb_g711mulaw_1ch_8khz.info"},
+     "bbb_g711mulaw_1ch_8khz.raw", "bbb_g711mulaw_1ch_8khz.info", ""},
     {"gsm",
-     "bbb_gsm_1ch_8khz_13kbps.raw", "bbb_gsm_1ch_8khz_13kbps.info"},
+     "bbb_gsm_1ch_8khz_13kbps.raw", "bbb_gsm_1ch_8khz_13kbps.info", ""},
     {"raw",
-     "bbb_raw_1ch_8khz_s32le.raw", "bbb_raw_1ch_8khz_s32le.info"},
+     "bbb_raw_1ch_8khz_s32le.raw", "bbb_raw_1ch_8khz_s32le.info", ""},
     {"flac",
-     "bbb_flac_stereo_680kbps_48000hz.flac", "bbb_flac_stereo_680kbps_48000hz.info"},
+     "bbb_flac_stereo_680kbps_48000hz.flac", "bbb_flac_stereo_680kbps_48000hz.info", ""},
 };
 
 class LinearBuffer : public C2Buffer {
@@ -464,6 +456,10 @@ TEST_P(Codec2AudioDecDecodeTest, DecodeTest) {
 
     strcpy(mURL, sResourceDir.c_str());
     strcpy(info, sResourceDir.c_str());
+
+    int32_t numEntries = getNumTestEntries(mMime, kCompToURL);
+    ASSERT_GT(numEntries, 0) << "No entry found for mime " << mMime;
+
     GetURLForComponent(mURL, info, streamIndex);
     if (!strcmp(mURL, sResourceDir.c_str())) {
         ALOGV("EMPTY INPUT sResourceDir.c_str() %s mURL  %s ", sResourceDir.c_str(), mURL);
@@ -892,6 +888,7 @@ INSTANTIATE_TEST_SUITE_P(CsdInputs, Codec2AudioDecCsdInputTests,
 }  // anonymous namespace
 
 int main(int argc, char** argv) {
+    android::ProcessState::self()->startThreadPool();
     kTestParameters = getTestParameters(C2Component::DOMAIN_AUDIO, C2Component::KIND_DECODER);
     for (auto params : kTestParameters) {
         kDecodeTestParameters.push_back(
@@ -917,6 +914,8 @@ int main(int argc, char** argv) {
             break;
         }
     }
+
+    addCustomTestParamsFromFile(sResourceDir + "Codec2AudioDecHidlTestBase.txt", kCompToURL);
 
     ::testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
