@@ -75,6 +75,17 @@ public:
                             struct audio_patch *patch);
     void notifyStreamClosed(audio_io_handle_t stream);
 
+    /**
+     * @brief isSwPatchPlayback a software audio patch (aka patch connecting a source device from a
+     * given audio HW module to a sink device on an other audio HW module) has 2 "internal" patches
+     * to handle playback and capture. Playback may use an existing thread. In order to prevent
+     * the patch garbage collector, this function identify the internal playback patch from its
+     * patch handle
+     * @param handle to consider
+     * @return true if handle corresponds to a Sw AudioPatch playback patch, false otherwise.
+     */
+    bool isSwPatchPlayback(audio_patch_handle_t handle) const;
+
     void dump(int fd) const;
 
     template<typename ThreadType, typename TrackType>
