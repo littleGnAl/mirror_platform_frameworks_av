@@ -4058,17 +4058,20 @@ status_t AudioPolicyManager::releaseAudioPatchInternal(audio_patch_handle_t hand
                     // releaseOutput has already called closeOuput in case of direct output
                     return NO_ERROR;
                 }
-                if (patchDesc->getHandle() != outputDesc->getPatchHandle()) {
-                    // force SwOutput patch removal as AF counter part patch has already gone.
-                    ALOGV("%s reset patch handle on Output as different from SWBridge", __func__);
-                    removeAudioPatch(outputDesc->getPatchHandle());
+                if (patchDesc->getHandle() != outputDesc->getPatchHandle() &&
+                        !outputDesc->isActive()) {
+                    // SwOutput routed before SwBridge established: AF will destroy its counter part
+                    // SwOutput routed after SwBridge established: APM must destroy both patches
+                    ALOGV("%s reset routing on inactive output as bridge disconnected", __func__);
+                    resetOutputDevice(outputDesc, 0 /*delaysMs*/, nullptr);
                 }
-                outputDesc->setPatchHandle(AUDIO_PATCH_HANDLE_NONE);
+                // Reuse patch handle if still valid / do not force rerouting if still routed
+                audio_patch_handle_t patchHandle = outputDesc->getPatchHandle();
                 setOutputDevices(outputDesc,
                                  getNewOutputDevices(outputDesc, true /*fromCache*/),
-                                 true, /*force*/
+                                 patchHandle == AUDIO_PATCH_HANDLE_NONE, /*force*/
                                  0,
-                                 NULL);
+                                 patchHandle == AUDIO_PATCH_HANDLE_NONE ? nullptr : &patchHandle);
             }
         } else {
             return BAD_VALUE;
