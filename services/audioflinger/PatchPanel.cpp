@@ -396,8 +396,11 @@ status_t AudioFlinger::PatchPanel::createAudioPatch(const struct audio_patch *pa
             }
 
             // remove stale audio patch with same output as source if any
+            // Ensure not to remove SW bridge Patch as an sw output involved in a SW bridge also
+            // has an audio patch created to route this output.
             for (auto& iter : mPatches) {
-                if (iter.second.mAudioPatch.sources[0].ext.mix.handle == thread->id()) {
+                if (iter.second.mAudioPatch.sources[0].ext.mix.handle == thread->id() &&
+                        !iter.second.isInvolvedInSwBridge()) {
                     erasePatch(iter.first);
                     break;
                 }
@@ -449,6 +452,12 @@ status_t AudioFlinger::PatchPanel::Patch::createConnections(PatchPanel *panel)
         if (status != NO_ERROR) {
             *mPlayback.handlePtr() = AUDIO_PATCH_HANDLE_NONE;
             return status;
+        }
+        if (isSoftware()) {
+            auto iter = panel->mPatches.find(mPlayback.handle());
+            if (iter != panel->mPatches.end()) {
+                iter->second.setInvolvedInSwBridge();
+            }
         }
     } else {
         *mPlayback.handlePtr() = AUDIO_PATCH_HANDLE_NONE;

@@ -218,6 +218,11 @@ public:
         Endpoint<RecordThread, RecordThread::PatchRecord> mRecord;
 
         wp<ThreadBase> mThread;
+
+        void setInvolvedInSwBridge() { mIsInvolvedInSwBridge = true; }
+        bool isInvolvedInSwBridge() const { return mIsInvolvedInSwBridge; }
+
+        bool mIsInvolvedInSwBridge = false;
     };
 
     // Call with AudioFlinger mLock held
