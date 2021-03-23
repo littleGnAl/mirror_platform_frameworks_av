@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "60125704_a2a3e3b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-23T23:50:38Z",
+      "side": 1,
+      "message": "Thanks!",
+      "revId": "385d7a0e679dc7decc5977ecb3e0843e5ff59b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68ec6ccc_8466aa06",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-23T23:50:38Z",
+      "side": 1,
+      "message": "I think the fence is a key part of this API. Perhaps:\n\nBlocking fetch for linear block. Obtains a linear writeable block of given\n|capacity| and |usage|, or a |fence|. If a block can be successfully obtained,\nthe block is stored in |block|, |fence| is set to a null-fence and C2_OK is returned. If a block cannot be temporarily obtained, |block| is set to nullptr,\na waitable fence is stored into |fence| and C2_BLOCKING is returned. Otherwise,\n|block| is set to nullptr and |fence| is set to a null-fence. The waitable fence\nis signaled when the temporary restriction on fetch is lifted, e.g. more memory\nis available to fetch because some memory or prior blocks were released.",
+      "range": {
+        "startLine": 993,
+        "startChar": 73,
+        "endLine": 993,
+        "endChar": 74
+      },
+      "revId": "385d7a0e679dc7decc5977ecb3e0843e5ff59b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb68409d_f2e38eaf",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-23T23:50:38Z",
+      "side": 1,
+      "message": "Otherwise? we should return nullptr in all other case. The only possible change in the future to return a fence on C2_TIMED_OUT, but the reasons to return C2_TIMED_OUT may prevent us from returning a fence.",
+      "range": {
+        "startLine": 1001,
+        "startChar": 88,
+        "endLine": 1001,
+        "endChar": 98
+      },
+      "revId": "385d7a0e679dc7decc5977ecb3e0843e5ff59b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a3f0441_3f914547",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-23T23:50:38Z",
+      "side": 1,
+      "message": "I was thinking myself whether to expose this. Given that we have not fully defined fetchCircularBlock, perhaps this is premature.",
+      "range": {
+        "startLine": 1023,
+        "startChar": 0,
+        "endLine": 1056,
+        "endChar": 5
+      },
+      "revId": "385d7a0e679dc7decc5977ecb3e0843e5ff59b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
