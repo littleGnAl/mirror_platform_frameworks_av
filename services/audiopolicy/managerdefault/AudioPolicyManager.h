@@ -998,9 +998,13 @@ private:
          * @brief releaseAudioPatchInternal internal function to remove an audio patch
          * @param[in] handle of the patch to be removed
          * @param[in] delayMs if required
+         * @param[in] sourceDesc [optional] in case of external source, source client to be
+         * unrouted from the patch, i.e. assigning an Output (HW or SW)
          * @return NO_ERROR if patch removed correctly, error code otherwise.
          */
-        status_t releaseAudioPatchInternal(audio_patch_handle_t handle, uint32_t delayMs = 0);
+        status_t releaseAudioPatchInternal(audio_patch_handle_t handle,
+                                           uint32_t delayMs = 0,
+                                           const sp<SourceClientDescriptor>& sourceDesc = nullptr);
 
         status_t installPatch(const char *caller,
                 audio_patch_handle_t *patchHandle,
