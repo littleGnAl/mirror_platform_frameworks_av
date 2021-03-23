@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c97d0665_a995cd9c",
+        "filename": "services/audioflinger/PatchPanel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-03-23T16:49:09Z",
+      "side": 1,
+      "message": "This seems to be a very ad-hoc solution. Nothing explains what an \"sw bridge\" is, how many patches does it consist of, how these patches are identified, can there be multiple \"sw bridges\", etc.\n\nI would prefer a more explicit way for linking patches involved in some more complex construction.",
+      "range": {
+        "startLine": 225,
+        "startChar": 13,
+        "endLine": 225,
+        "endChar": 43
+      },
+      "revId": "c5f19d0a82feb6de8fb5abba3db62c2f62429074",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
