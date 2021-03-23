@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ea72e0a_838a4695",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-23T22:49:47Z",
+      "side": 1,
+      "message": "What\u0027s the main difference between the relanded version and the original one? It seems originally we determined dataspace in configure from format, which we no longer do. (We maybe doing it during reading back the format.)\n\nNow we read dataspace on start and clear on stop. We also seem to handle change in dataspace.",
+      "revId": "673dd1917a4765740908e357fc5b5223d12826d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
