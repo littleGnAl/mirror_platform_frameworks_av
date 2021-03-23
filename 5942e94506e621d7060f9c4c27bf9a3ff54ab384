@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a721236_7c1183f0",
+        "filename": "media/codec2/sfplugin/C2OMXNode.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 96,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-03-23T18:51:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "90a2f16e_d03ecb82",
+      "range": {
+        "startLine": 96,
+        "startChar": 0,
+        "endLine": 96,
+        "endChar": 37
+      },
+      "revId": "5942e94506e621d7060f9c4c27bf9a3ff54ab384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "29c428d2_549b33e1",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ba22d4d_e7769006",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1132,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-03-23T18:51:26Z",
+      "side": 1,
+      "message": "This means that the domain includes output domain of the component.",
+      "parentUuid": "29c428d2_549b33e1",
+      "range": {
+        "startLine": 1132,
+        "startChar": 15,
+        "endLine": 1132,
+        "endChar": 39
+      },
+      "revId": "5942e94506e621d7060f9c4c27bf9a3ff54ab384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a3654832_5d413cf4",
@@ -60,6 +108,24 @@
       "writtenOn": "2021-03-23T05:04:56Z",
       "side": 1,
       "message": "Description for this interface?",
+      "revId": "5942e94506e621d7060f9c4c27bf9a3ff54ab384",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "561ecc00_0501a583",
+        "filename": "media/codec2/sfplugin/InputSurfaceWrapper.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-03-23T18:51:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a3654832_5d413cf4",
       "revId": "5942e94506e621d7060f9c4c27bf9a3ff54ab384",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
