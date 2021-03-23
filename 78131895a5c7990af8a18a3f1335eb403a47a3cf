@@ -56,6 +56,30 @@
       },
       "revId": "78131895a5c7990af8a18a3f1335eb403a47a3cf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "917baff0_fd03839e",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 3976,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-03-23T16:02:28Z",
+      "side": 1,
+      "message": "Done, latest patch verified by Sampath that there are no regressions to the A/V sync while testing with Netflix/Youtube playbacks pause/resume/seek etc on Broadcom device.",
+      "parentUuid": "8150bf33_dba7b4b3",
+      "range": {
+        "startLine": 3972,
+        "startChar": 0,
+        "endLine": 3976,
+        "endChar": 5
+      },
+      "revId": "78131895a5c7990af8a18a3f1335eb403a47a3cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
