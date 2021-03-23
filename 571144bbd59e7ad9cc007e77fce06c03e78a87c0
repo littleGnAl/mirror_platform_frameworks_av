@@ -16,6 +16,41 @@
       "message": "This will cause quite a bit of issues as I am trying to autogenerate this file...",
       "revId": "571144bbd59e7ad9cc007e77fce06c03e78a87c0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80fc4305_0bf6ffe9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-23T23:26:21Z",
+      "side": 1,
+      "message": "Lajos, \nThis change brings MediaCodecConstants.h in aosp/master in sync with the internal one w.r.t. qp params (There is still one line change between internal and aosp/master for this file after this is submitted)\n\nThis is necessary to bring qp bound changes to aosp/master.\nAs this file is already updated in internal branches, bringing this change in aosp/master should be fine right?",
+      "parentUuid": "1a19bfe6_54a0d0f6",
+      "revId": "571144bbd59e7ad9cc007e77fce06c03e78a87c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f3ead8d_49f21294",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-23T23:26:21Z",
+      "side": 1,
+      "message": "This CL is still needed to bring qp changes in avc encoder to aosp/master.",
+      "revId": "571144bbd59e7ad9cc007e77fce06c03e78a87c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
