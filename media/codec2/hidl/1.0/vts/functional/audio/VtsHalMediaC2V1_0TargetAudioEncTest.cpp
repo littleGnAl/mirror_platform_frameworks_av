@@ -38,9 +38,6 @@ using android::C2AllocatorIon;
 static std::vector<std::tuple<std::string, std::string, std::string, std::string>>
         kEncodeTestParameters;
 
-// Resource directory
-static std::string sResourceDir = "";
-
 class LinearBuffer : public C2Buffer {
   public:
     explicit LinearBuffer(const std::shared_ptr<C2LinearBlock>& block)

@@ -17,10 +17,12 @@
 // #define LOG_NDEBUG 0
 #define LOG_TAG "media_c2_hidl_test_common"
 #include <stdio.h>
+#include <algorithm>
 
 #include "media_c2_hidl_test_common.h"
 
 #include <android/hardware/media/c2/1.0/IComponentStore.h>
+#include <media/NdkMediaExtractor.h>
 
 // Test the codecs for NullBuffer, Empty Input Buffer with(out) flags set
 void testInputBuffer(const std::shared_ptr<android::Codec2Client::Component>& component,
@@ -216,4 +218,178 @@ void verifyFlushOutput(std::list<std::unique_ptr<C2Work>>& flushedWork,
     }
     ASSERT_EQ(flushedIndices.empty(), true);
     flushedWork.clear();
+}
+
+int32_t extractBitstreamAndInfoFile(std::string inputFile, std::string extractedBitstream,
+                                    std::string infoFile, char* mimeType) {
+    FILE* inputFp = fopen(inputFile.c_str(), "rb");
+    if (inputFp == nullptr) {
+        std::cout << "[   WARN   ] Unable to open input file, skipping test.\n";
+        return 0;
+    }
+
+    // Read file properties
+    struct stat buf;
+    stat(inputFile.c_str(), &buf);
+    size_t fileSize = buf.st_size;
+    int32_t fd = fileno(inputFp);
+
+    AMediaExtractor* extractor = AMediaExtractor_new();
+    if (extractor == nullptr) {
+        ALOGE("extractor creation failed");
+        return -1;
+    }
+
+    media_status_t status = AMediaExtractor_setDataSourceFd(extractor, fd, 0, fileSize);
+    if (status != AMEDIA_OK) {
+        ALOGE("set datasource failed for extractor");
+        return -1;
+    }
+
+    int32_t trackCount = AMediaExtractor_getTrackCount(extractor);
+    if (trackCount > 1) {
+        ALOGW("multi track inputs are not supported yet. Using 0th track");
+    }
+
+    AMediaFormat* format = AMediaExtractor_getTrackFormat(extractor, 0);
+    if (format == nullptr) {
+        ALOGE("Input file has no format");
+        return -1;
+    }
+
+    AMediaExtractor_selectTrack(extractor, 0);
+
+    const char* mime = nullptr;
+    if (!AMediaFormat_getString(format, AMEDIAFORMAT_KEY_MIME, &mime)) {
+        ALOGE("Failed to get mime from input file");
+        AMediaFormat_delete(format);
+        AMediaExtractor_delete(extractor);
+        fclose(inputFp);
+        return -1;
+    }
+
+    strcpy(mimeType, mime);
+    std::ofstream eleStream;
+    eleStream.open(extractedBitstream.c_str(), std::ofstream::binary | std::ofstream::out);
+    if (eleStream.is_open() != true) {
+        ALOGE("unable to create temp file for dumping elementary stream");
+        return -1;
+    }
+
+    std::ofstream eleInfo;
+    eleInfo.open(infoFile.c_str(), std::ofstream::out);
+    if (eleInfo.is_open() != true) {
+        ALOGE( "unable to create temp info file");
+        return -1;
+    }
+
+    int64_t timeStamp = 0;
+    int32_t csdIndex = 0;
+    std::string info;
+    while (1) {
+        size_t size = 0;
+        char csdName[100];
+        void* csdBuffer = nullptr;
+        snprintf(csdName, sizeof(csdName), "csd-%d", csdIndex);
+        bool csdFound = AMediaFormat_getBuffer(format, csdName, &csdBuffer, &size);
+        if (csdFound) {
+            // bitstream write
+            eleStream.write((char*)csdBuffer, size);
+            // info file write
+            info = std::to_string(size) + " " + std::to_string(kCsdFlag) + " " +
+                   std::to_string(timeStamp) + "\n";
+            eleInfo << info;
+            csdIndex++;
+        } else break;
+    }
+
+    int32_t bufferSize = 0;
+    if (!AMediaFormat_getInt32(format, AMEDIAFORMAT_KEY_MAX_INPUT_SIZE, &bufferSize)) {
+        bufferSize = kMaxBufferSize;
+    }
+    AMediaFormat_delete(format);
+
+    uint8_t* frameBuf = (uint8_t*)malloc(bufferSize * sizeof(uint8_t));
+    if (frameBuf == nullptr) {
+        ALOGE("unable to allocate memory for extractor's output");
+        AMediaExtractor_delete(extractor);
+        fclose(inputFp);
+        eleStream.close();
+        eleInfo.close();
+        return -1;
+    }
+
+    uint32_t flag = 0;
+    ssize_t size = 0;
+    int32_t frameId = 0;
+    while (1) {
+        size = AMediaExtractor_readSampleData(extractor, frameBuf, bufferSize);
+        if (size <= 0) break;
+        // First frame after CSD for decoders is a SYNC Frame
+        flag = frameId == 0 ? AMEDIAEXTRACTOR_SAMPLE_FLAG_SYNC
+                            : AMediaExtractor_getSampleFlags(extractor);
+        timeStamp = AMediaExtractor_getSampleTime(extractor);
+        AMediaExtractor_advance(extractor);
+        // bitstream write
+        eleStream.write((char*)frameBuf, size);
+        // info file write
+        info = std::to_string(size) + " " + std::to_string(flag) + " " + std::to_string(timeStamp) +
+               "\n";
+        eleInfo << info;
+        frameId++;
+    }
+    AMediaExtractor_delete(extractor);
+
+    free(frameBuf);
+    frameBuf = nullptr;
+
+    fclose(inputFp);
+    eleStream.close();
+    eleInfo.close();
+    return 0;
+}
+
+// returns number of entries for a given mime
+int32_t getNumTestEntries(std::string mime, std::vector<CompToURL> lookUpTable) {
+    int32_t streamCount = 0;
+    for (size_t i = 0; i < lookUpTable.size(); ++i) {
+        if (mime.find(lookUpTable[i].mime) != std::string::npos) {
+            streamCount++;
+        }
+    }
+    return streamCount;
+}
+
+int32_t addCustomTestParamsFromFile(std::string filePath, std::vector<CompToURL> lookUpTable) {
+    std::ifstream infile(filePath);
+    if (infile.is_open() == true) {
+        std::string line = "";
+        static std::string externalInput = "";
+        static std::string externalChecksum = "";
+        while (std::getline(infile, line)) {
+            std::istringstream inputString(line);
+            if (!(inputString >> externalInput)) {
+                std::cout << "[   WARN   ] Improper input in text file. Skipping the test \n";
+                continue;
+            }
+            inputString >> externalChecksum;
+            externalInput.erase(std::remove(externalInput.begin(), externalInput.end(), ','),
+                                 externalInput.end());
+            externalChecksum.erase(
+                    std::remove(externalChecksum.begin(), externalChecksum.end(), ','),
+                    externalChecksum.end());
+
+            std::string url = externalInput + ".bitstrm";
+            std::string info = externalInput + ".info";
+            char mimeType[50];
+            int32_t err =
+                extractBitstreamAndInfoFile(externalInput, (sResourceDir + url),
+                                            (sResourceDir + info), mimeType);
+            if (err) return err;
+
+            lookUpTable.push_back({mimeType, url, info, externalChecksum});
+        }
+        infile.close();
+    }
+    return 0;
 }
