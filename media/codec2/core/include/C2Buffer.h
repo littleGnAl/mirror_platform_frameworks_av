@@ -642,7 +642,8 @@ public:
      * \retval C2_REFUSED   no permission to complete the allocation
      * \retval C2_BAD_VALUE capacity or usage are not supported (invalid) (caller error)
      * \retval C2_OMITTED   this allocator does not support 1D allocations
-     * \retval C2_CORRUPTED some unknown, unrecoverable error occured during allocation (unexpected)
+     * \retval C2_CORRUPTED some unknown, unrecoverable error occurred during allocation
+     *                      (unexpected)
      */
     virtual c2_status_t newLinearAllocation(
             uint32_t capacity __unused, C2MemoryUsage usage __unused,
@@ -666,7 +667,8 @@ public:
      * \retval C2_REFUSED   no permission to recreate the allocation
      * \retval C2_BAD_VALUE invalid handle (caller error)
      * \retval C2_OMITTED   this allocator does not support 1D allocations
-     * \retval C2_CORRUPTED some unknown, unrecoverable error occured during allocation (unexpected)
+     * \retval C2_CORRUPTED some unknown, unrecoverable error occurred during allocation
+     *                      (unexpected)
      */
     virtual c2_status_t priorLinearAllocation(
             const C2Handle *handle __unused,
@@ -699,7 +701,8 @@ public:
      * \retval C2_REFUSED   no permission to complete the allocation
      * \retval C2_BAD_VALUE width, height, format or usage are not supported (invalid) (caller error)
      * \retval C2_OMITTED   this allocator does not support 2D allocations
-     * \retval C2_CORRUPTED some unknown, unrecoverable error occured during allocation (unexpected)
+     * \retval C2_CORRUPTED some unknown, unrecoverable error occurred during allocation
+     *                      (unexpected)
      */
     virtual c2_status_t newGraphicAllocation(
             uint32_t width __unused, uint32_t height __unused, uint32_t format __unused,
@@ -724,7 +727,8 @@ public:
      * \retval C2_REFUSED   no permission to recreate the allocation
      * \retval C2_BAD_VALUE invalid handle (caller error)
      * \retval C2_OMITTED   this allocator does not support 2D allocations
-     * \retval C2_CORRUPTED some unknown, unrecoverable error occured during recreation (unexpected)
+     * \retval C2_CORRUPTED some unknown, unrecoverable error occurred during recreation
+     *                      (unexpected)
      */
     virtual c2_status_t priorGraphicAllocation(
             const C2Handle *handle __unused,
@@ -908,7 +912,8 @@ public:
      * \retval C2_REFUSED   no permission to complete any required allocation
      * \retval C2_BAD_VALUE capacity or usage are not supported (invalid) (caller error)
      * \retval C2_OMITTED   this pool does not support linear blocks
-     * \retval C2_CORRUPTED some unknown, unrecoverable error occured during operation (unexpected)
+     * \retval C2_CORRUPTED some unknown, unrecoverable error occurred during operation
+     *                      (unexpected)
      */
     virtual c2_status_t fetchLinearBlock(
             uint32_t capacity __unused, C2MemoryUsage usage __unused,
@@ -937,7 +942,8 @@ public:
      * \retval C2_REFUSED   no permission to complete any required allocation
      * \retval C2_BAD_VALUE capacity or usage are not supported (invalid) (caller error)
      * \retval C2_OMITTED   this pool does not support circular blocks
-     * \retval C2_CORRUPTED some unknown, unrecoverable error occured during operation (unexpected)
+     * \retval C2_CORRUPTED some unknown, unrecoverable error occurred during operation
+     *                      (unexpected)
      */
     virtual c2_status_t fetchCircularBlock(
             uint32_t capacity __unused, C2MemoryUsage usage __unused,
@@ -969,7 +975,8 @@ public:
      * \retval C2_BAD_VALUE width, height, format or usage are not supported (invalid) (caller
      *                      error)
      * \retval C2_OMITTED   this pool does not support 2D blocks
-     * \retval C2_CORRUPTED some unknown, unrecoverable error occured during operation (unexpected)
+     * \retval C2_CORRUPTED some unknown, unrecoverable error occurred during operation
+     *                      (unexpected)
      */
     virtual c2_status_t fetchGraphicBlock(
             uint32_t width __unused, uint32_t height __unused, uint32_t format __unused,
@@ -980,6 +987,111 @@ public:
     }
 
     virtual ~C2BlockPool() = default;
+
+    /**
+     * Obtains a linear writeable block of given |capacity| and |usage|. If successful, the
+     * block is stored in |block|. Otherwise, |block| is set to 'nullptr'.
+     *
+     * \param capacity the size of requested block.
+     * \param usage    the memory usage info for the requested block. Returned blocks will be
+     *                 optimized for this usage, but may be used with any usage. One exception:
+     *                 protected blocks/buffers can only be used in a protected scenario.
+     * \param block    pointer to where the obtained block shall be stored on success. nullptr will
+     *                 be stored here on failure
+     * \param fence    pointer to where the fence shall be stored on C2_BLOCKING error. In certain
+     *                 cases, nullptr may be stored. In that case retrying is required.
+     *
+     * \retval C2_OK        the operation was successful
+     * \retval C2_NO_MEMORY not enough memory to complete any required allocation
+     * \retval C2_TIMED_OUT the operation timed out
+     * \retval C2_BLOCKING  the operation is blocked
+     * \retval C2_REFUSED   no permission to complete any required allocation
+     * \retval C2_BAD_VALUE capacity or usage are not supported (invalid) (caller error)
+     * \retval C2_OMITTED   this pool does not support linear blocks nor fence.
+     * \retval C2_CORRUPTED some unknown, unrecoverable error occurred during operation
+     *                      (unexpected)
+     */
+    virtual c2_status_t fetchLinearBlock(
+            uint32_t capacity __unused, C2MemoryUsage usage __unused,
+            std::shared_ptr<C2LinearBlock> *block /* nonnull */,
+            C2Fence *fence /* nonnull */) {
+        *block = nullptr;
+        (void) fence;
+        return C2_OMITTED;
+    }
+
+    /**
+     * Obtains a circular writeable block of given |capacity| and |usage|. If successful, the
+     * block is stored in |block|. Otherwise, |block| is set to 'nullptr'.
+     *
+     * \param capacity the size of requested circular block. (note: the size of the obtained
+     *                 block could be slightly larger, e.g. to accommodate any system-required
+     *                 alignment)
+     * \param usage    the memory usage info for the requested block. Returned blocks will be
+     *                 optimized for this usage, but may be used with any usage. One exception:
+     *                 protected blocks/buffers can only be used in a protected scenario.
+     * \param block    pointer to where the obtained block shall be stored on success. nullptr
+     *                 will be stored here on failure
+     * \param fence    pointer to where the fence shall be stored on C2_BLOCKING error. In certain
+     *                 cases, nullptr may be stored. In that case retrying is required.
+     *
+     *
+     * \retval C2_OK        the operation was successful
+     * \retval C2_NO_MEMORY not enough memory to complete any required allocation
+     * \retval C2_TIMED_OUT the operation timed out
+     * \retval C2_BLOCKING  the operation is blocked
+     * \retval C2_REFUSED   no permission to complete any required allocation
+     * \retval C2_BAD_VALUE capacity or usage are not supported (invalid) (caller error)
+     * \retval C2_OMITTED   this pool does not support circular blocks
+     * \retval C2_CORRUPTED some unknown, unrecoverable error occurred during operation
+     *                      (unexpected)
+     */
+    virtual c2_status_t fetchCircularBlock(
+            uint32_t capacity __unused, C2MemoryUsage usage __unused,
+            std::shared_ptr<C2CircularBlock> *block /* nonnull */,
+            C2Fence *fence /* nonnull */) {
+        *block = nullptr;
+        (void) fence;
+        return C2_OMITTED;
+    }
+
+    /**
+     * Obtains a 2D graphic block of given |width|, |height|, |format| and |usage|. If successful,
+     * the block is stored in |block|. Otherwise, |block| is set to 'nullptr'.
+     *
+     * \param width  the width of requested block (the obtained block could be slightly larger, e.g.
+     *               to accommodate any system-required alignment)
+     * \param height the height of requested block (the obtained block could be slightly larger,
+     *               e.g. to accommodate any system-required alignment)
+     * \param format the pixel format of requested block. This could be a vendor specific format.
+     * \param usage  the memory usage info for the requested block. Returned blocks will be
+     *               optimized for this usage, but may be used with any usage. One exception:
+     *               protected blocks/buffers can only be used in a protected scenario.
+     * \param block  pointer to where the obtained block shall be stored on success. nullptr
+     *               will be stored here on failure
+     * \param fence  pointer to where the fence shall be stored on C2_BLOCKING error. In certain
+     *               cases, nullptr may be stored. In that case retrying is required.
+     *
+     * \retval C2_OK        the operation was successful
+     * \retval C2_NO_MEMORY not enough memory to complete any required allocation
+     * \retval C2_TIMED_OUT the operation timed out
+     * \retval C2_BLOCKING  the operation is blocked
+     * \retval C2_REFUSED   no permission to complete any required allocation
+     * \retval C2_BAD_VALUE width, height, format or usage are not supported (invalid) (caller
+     *                      error)
+     * \retval C2_OMITTED   this pool does not support 2D blocks
+     * \retval C2_CORRUPTED some unknown, unrecoverable error occurred during operation
+     *                      (unexpected)
+     */
+    virtual c2_status_t fetchGraphicBlock(
+            uint32_t width __unused, uint32_t height __unused, uint32_t format __unused,
+            C2MemoryUsage usage __unused,
+            std::shared_ptr<C2GraphicBlock> *block /* nonnull */,
+            C2Fence *fence /* nonnull */) {
+        *block = nullptr;
+        (void) fence;
+        return C2_OMITTED;
+    }
 protected:
     C2BlockPool() = default;
 };
