@@ -22,6 +22,30 @@
       },
       "revId": "c5f19d0a82feb6de8fb5abba3db62c2f62429074",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f07e9511_842ebd85",
+        "filename": "services/audioflinger/PatchPanel.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 225,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-03-23T17:47:51Z",
+      "side": 1,
+      "message": "yes, it was a quite opportunistic approach.\nLet me propose another solution based only on mPatch collection analysis. No ack in mPatch or boolean added",
+      "parentUuid": "c97d0665_a995cd9c",
+      "range": {
+        "startLine": 225,
+        "startChar": 13,
+        "endLine": 225,
+        "endChar": 43
+      },
+      "revId": "c5f19d0a82feb6de8fb5abba3db62c2f62429074",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
