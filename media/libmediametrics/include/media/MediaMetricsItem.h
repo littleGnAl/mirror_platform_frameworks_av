@@ -960,6 +960,9 @@ public:
     Item &setCString(const char *key, const char *value) {
         return set(key, value);
     }
+    Item &setFloat(const char *key, float value) {
+        return set(key, value);
+    }
 
     // fused get/add/set; if attr wasn't there, it's a simple set.
     // type-mismatch counts as "wasn't there".

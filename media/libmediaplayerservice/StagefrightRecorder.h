@@ -125,7 +125,7 @@ private:
     int32_t mAudioChannels;
     int32_t mSampleRate;
     int32_t mInterleaveDurationUs;
-    int32_t mIFramesIntervalSec;
+    float   mIFramesIntervalSec;
     int32_t mCameraId;
     int32_t mVideoEncoderProfile;
     int32_t mVideoEncoderLevel;
@@ -220,7 +220,7 @@ private:
     status_t setParamCaptureFps(double fps);
     status_t setParamVideoEncodingBitRate(int32_t bitRate);
     status_t setParamVideoBitRateMode(int32_t bitRateMode);
-    status_t setParamVideoIFramesInterval(int32_t seconds);
+    status_t setParamVideoIFramesInterval(float seconds);
     status_t setParamVideoEncoderProfile(int32_t profile);
     status_t setParamVideoEncoderLevel(int32_t level);
     status_t setParamVideoCameraId(int32_t cameraId);
