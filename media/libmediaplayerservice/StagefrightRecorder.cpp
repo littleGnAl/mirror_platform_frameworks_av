@@ -172,7 +172,7 @@ void StagefrightRecorder::updateMetrics() {
     mMetricsItem->setInt32(kRecorderAudioChannels, mAudioChannels);
     mMetricsItem->setInt32(kRecorderAudioBitrate, mAudioBitRate);
     // TBD mInterleaveDurationUs = 0;
-    mMetricsItem->setInt32(kRecorderVideoIframeInterval, mIFramesIntervalSec);
+    mMetricsItem->setFloat(kRecorderVideoIframeInterval, mIFramesIntervalSec);
     // TBD mAudioSourceNode = 0;
     // TBD mUse64BitFileOffset = false;
     if (mMovieTimeScale != -1)
@@ -448,6 +448,31 @@ status_t StagefrightRecorder::setNextOutputFile(int fd) {
 
 // Attempt to parse an float literal optionally surrounded by whitespace,
 // returns true on success, false otherwise.
+static bool safe_strtof(const char *s, float *val) {
+    char *end;
+
+    // It is lame, but according to man page, we have to set errno to 0
+    // before calling strtod().
+    errno = 0;
+    *val = strtof(s, &end);
+
+    if (end == s || errno == ERANGE) {
+        return false;
+    }
+
+    // Skip trailing whitespace
+    while (isspace(*end)) {
+        ++end;
+    }
+
+    // For a successful return, the string must contain nothing but a valid
+    // float literal optionally surrounded by whitespace.
+
+    return *end == '\0';
+}
+
+// Attempt to parse an float literal optionally surrounded by whitespace,
+// returns true on success, false otherwise.
 static bool safe_strtod(const char *s, double *val) {
     char *end;
 
@@ -682,8 +707,8 @@ status_t StagefrightRecorder::setParamInterleaveDuration(int32_t durationUs) {
 // If seconds <  0, only the first frame is I frame, and rest are all P frames
 // If seconds == 0, all frames are encoded as I frames. No P frames
 // If seconds >  0, it is the time spacing (seconds) between 2 neighboring I frames
-status_t StagefrightRecorder::setParamVideoIFramesInterval(int32_t seconds) {
-    ALOGV("setParamVideoIFramesInterval: %d seconds", seconds);
+status_t StagefrightRecorder::setParamVideoIFramesInterval(float seconds) {
+    ALOGV("setParamVideoIFramesInterval: %f seconds", seconds);
     mIFramesIntervalSec = seconds;
     return OK;
 }
@@ -992,8 +1017,8 @@ status_t StagefrightRecorder::setParameter(
             return setParamVideoRotation(degrees);
         }
     } else if (key == "video-param-i-frames-interval") {
-        int32_t seconds;
-        if (safe_strtoi32(value.string(), &seconds)) {
+        float seconds;
+        if (safe_strtof(value.string(), &seconds)) {
             return setParamVideoIFramesInterval(seconds);
         }
     } else if (key == "video-param-encoder-profile") {
@@ -2000,7 +2025,7 @@ status_t StagefrightRecorder::setupVideoEncoder(
     format->setInt32("bitrate", mVideoBitRate);
     format->setInt32("bitrate-mode", mVideoBitRateMode);
     format->setInt32("frame-rate", mFrameRate);
-    format->setInt32("i-frame-interval", mIFramesIntervalSec);
+    format->setFloat("i-frame-interval", mIFramesIntervalSec);
 
     if (mVideoTimeScale > 0) {
         format->setInt32("time-scale", mVideoTimeScale);
@@ -2632,7 +2657,7 @@ status_t StagefrightRecorder::dump(
     result.append(buffer);
     snprintf(buffer, SIZE, "     Encoder level: %d\n", mVideoEncoderLevel);
     result.append(buffer);
-    snprintf(buffer, SIZE, "     I frames interval (s): %d\n", mIFramesIntervalSec);
+    snprintf(buffer, SIZE, "     I frames interval (s): %f\n", mIFramesIntervalSec);
     result.append(buffer);
     snprintf(buffer, SIZE, "     Frame size (pixels): %dx%d\n", mVideoWidth, mVideoHeight);
     result.append(buffer);

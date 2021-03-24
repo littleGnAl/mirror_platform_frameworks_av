@@ -47,6 +47,8 @@ void mediametrics_setInt64(mediametrics_handle_t handle, attr_t attr,
                            int64_t value);
 void mediametrics_setDouble(mediametrics_handle_t handle, attr_t attr,
                             double value);
+void mediametrics_setFloat(mediametrics_handle_t handle, attr_t attr,
+                            float value);
 void mediametrics_setRate(mediametrics_handle_t handle, attr_t attr,
                           int64_t count, int64_t duration);
 void mediametrics_setCString(mediametrics_handle_t handle, attr_t attr,
@@ -60,6 +62,8 @@ void mediametrics_addInt64(mediametrics_handle_t handle, attr_t attr,
                            int64_t value);
 void mediametrics_addDouble(mediametrics_handle_t handle, attr_t attr,
                             double value);
+void mediametrics_addFloat(mediametrics_handle_t handle, attr_t attr,
+                            float value);
 void mediametrics_addRate(mediametrics_handle_t handle, attr_t attr,
                           int64_t count, int64_t duration);
 
@@ -72,6 +76,8 @@ bool mediametrics_getInt64(mediametrics_handle_t handle, attr_t attr,
                            int64_t * value);
 bool mediametrics_getDouble(mediametrics_handle_t handle, attr_t attr,
                             double *value);
+bool mediametrics_getFloat(mediametrics_handle_t handle, attr_t attr,
+                            float *value);
 bool mediametrics_getRate(mediametrics_handle_t handle, attr_t attr,
                           int64_t * count, int64_t * duration, double *rate);
 bool mediametrics_getCString(mediametrics_handle_t handle, attr_t attr,

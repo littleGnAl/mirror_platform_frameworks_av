@@ -960,6 +960,9 @@ public:
     Item &setCString(const char *key, const char *value) {
         return set(key, value);
     }
+    Item &setFloat(const char *key, float value) {
+        return set(key, value);
+    }
 
     // fused get/add/set; if attr wasn't there, it's a simple set.
     // type-mismatch counts as "wasn't there".
@@ -981,6 +984,9 @@ public:
     Item &addRate(const char *key, int64_t count, int64_t duration) {
         return add(key, std::make_pair(count, duration));
     }
+    Item &addFloat(const char *key, float value) {
+        return add(key, value);
+    }
 
     // find & extract values
     // return indicates whether attr exists (and thus value filled in)
@@ -998,6 +1004,9 @@ public:
         return get(key, value);
     }
     bool getDouble(const char *key, double *value) const {
+        return get(key, value);
+    }
+    bool getFloat(const char *key, float *value) const {
         return get(key, value);
     }
     bool getRate(const char *key, int64_t *count, int64_t *duration, double *rate) const {

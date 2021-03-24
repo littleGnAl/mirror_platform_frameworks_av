@@ -80,6 +80,12 @@ void mediametrics_setDouble(mediametrics_handle_t handle, attr_t attr,
     if (item != NULL) item->setDouble(attr, value);
 }
 
+void mediametrics_setFloat(mediametrics_handle_t handle, attr_t attr,
+                                 float value) {
+    Item *item = (Item *) handle;
+    if (item != NULL) item->setFloat(attr, value);
+}
+
 void mediametrics_setRate(mediametrics_handle_t handle, attr_t attr,
                                int64_t count, int64_t duration) {
     Item *item = (Item *) handle;
@@ -113,6 +119,12 @@ void mediametrics_addDouble(mediametrics_handle_t handle, attr_t attr,
     if (item != NULL) item->addDouble(attr, value);
 }
 
+void mediametrics_addFloat(mediametrics_handle_t handle, attr_t attr,
+                            float value) {
+    Item *item = (Item *) handle;
+    if (item != NULL) item->addFloat(attr, value);
+}
+
 void mediametrics_addRate(mediametrics_handle_t handle, attr_t attr,
                                int64_t count, int64_t duration) {
     Item *item = (Item *) handle;
@@ -143,6 +155,13 @@ bool mediametrics_getDouble(mediametrics_handle_t handle, attr_t attr,
     Item *item = (Item *) handle;
     if (item == NULL) return false;
     return item->getDouble(attr, value);
+}
+
+bool mediametrics_getFloat(mediametrics_handle_t handle, attr_t attr,
+                                 float *value) {
+    Item *item = (Item *) handle;
+    if (item == NULL) return false;
+    return item->getFloat(attr, value);
 }
 
 bool mediametrics_getRate(mediametrics_handle_t handle, attr_t attr,

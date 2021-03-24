@@ -161,8 +161,8 @@ bool statsd_recorder(const mediametrics::Item *item)
         metrics_proto.set_video_bitrate(videoBitRate);
     }
     // int32 kRecorderVideoIframeInterval = "android.media.mediarecorder.video-iframe-interval";
-    int32_t iFrameInterval = -1;
-    if (item->getInt32("android.media.mediarecorder.video-iframe-interval", &iFrameInterval)) {
+    float iFrameInterval = -1.0;
+    if (item->getFloat("android.media.mediarecorder.video-iframe-interval", &iFrameInterval)) {
         metrics_proto.set_iframe_interval(iFrameInterval);
     }
 
