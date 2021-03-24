@@ -198,6 +198,30 @@
       },
       "revId": "f7d6d9e059307fb94958b67841e9ce77a1c23d08",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "708ff753_57299c41",
+        "filename": "media/codec2/hidl/client/client.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1466,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-03-24T12:43:21Z",
+      "side": 1,
+      "message": "HAL v1.2 setoutputsurfacewithsyncobj passes consumer usage.\n\nIGBP interface does not have getConsumerUsage() though BQ interface have it.\nIt is also possible to dequeue a random buffer and get consumer usage there,\nBut there is a slight possibility of failure due to cleaning up BQ is lingering.\n\n(I came across the issue when I try to get generation number by same logic.)",
+      "parentUuid": "311422dd_67e5d9c7",
+      "range": {
+        "startLine": 1466,
+        "startChar": 12,
+        "endLine": 1466,
+        "endChar": 19
+      },
+      "revId": "f7d6d9e059307fb94958b67841e9ce77a1c23d08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
