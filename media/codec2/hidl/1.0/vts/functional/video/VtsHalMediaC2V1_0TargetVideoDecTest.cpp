@@ -45,9 +45,6 @@ static std::vector<std::tuple<std::string, std::string, std::string, std::string
 
 static std::vector<std::tuple<std::string, std::string, std::string>> kCsdFlushTestParameters;
 
-// Resource directory
-static std::string sResourceDir = "";
-
 class LinearBuffer : public C2Buffer {
   public:
     explicit LinearBuffer(const std::shared_ptr<C2LinearBlock>& block)
@@ -1137,6 +1134,7 @@ INSTANTIATE_TEST_SUITE_P(CsdInputs, Codec2VideoDecCsdInputTests,
 
 // TODO : Video specific configuration Test
 int main(int argc, char** argv) {
+    parseArgs(argc, argv);
     kTestParameters = getTestParameters(C2Component::DOMAIN_VIDEO, C2Component::KIND_DECODER);
     for (auto params : kTestParameters) {
         kDecodeTestParameters.push_back(
