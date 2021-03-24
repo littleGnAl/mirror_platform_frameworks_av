@@ -391,6 +391,7 @@ enum : uint32_t {
     _C2_PL_MP4V_BASE = 0x4000,
     _C2_PL_AVC_BASE  = 0x5000,
     _C2_PL_HEVC_BASE = 0x6000,
+    _C2_PL_VP8_BASE  = 0x6800,
     _C2_PL_VP9_BASE  = 0x7000,
     _C2_PL_DV_BASE   = 0x8000,
     _C2_PL_AV1_BASE  = 0x9000,
@@ -523,6 +524,12 @@ enum C2Config::profile_t : uint32_t {
     PROFILE_HEVC_SCALABLE_MONO_16,              ///< HEVC (H.265) Scalable Monochrome 16
     PROFILE_HEVC_SCALABLE_MAIN_444,             ///< HEVC (H.265) Scalable Main 4:4:4
     PROFILE_HEVC_3D_MAIN = _C2_PL_HEVC_BASE + 0x700,  ///< HEVC (H.265) 3D Main
+
+    // VP8 profiles
+    PROFILE_VP8_0 = _C2_PL_VP8_BASE,            ///< VP8 Profile 0
+    PROFILE_VP8_1,                              ///< VP8 Profile 1
+    PROFILE_VP8_2,                              ///< VP8 Profile 2
+    PROFILE_VP8_3,                              ///< VP8 Profile 3
 
     // VP9 profiles
     PROFILE_VP9_0 = _C2_PL_VP9_BASE,            ///< VP9 Profile 0 (4:2:0)
