@@ -29,6 +29,11 @@ cc_test {
     name: "Mpeg4H263DecoderTest",
     gtest: true,
 
+    test_suites: [
+        "general-tests",
+        "mts"
+    ],
+
     srcs: [
         "Mpeg4H263DecoderTest.cpp",
     ],
