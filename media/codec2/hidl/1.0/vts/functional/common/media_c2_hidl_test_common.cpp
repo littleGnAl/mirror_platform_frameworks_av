@@ -22,6 +22,33 @@
 
 #include <android/hardware/media/c2/1.0/IComponentStore.h>
 
+std::string sResourceDir = "";
+
+std::string sComponentNamePrefix = "";
+
+static constexpr struct option kArgOptions[] = {
+    {"res", required_argument, 0, 'P'},
+    {"prefix", required_argument, 0, 'p'},
+    {nullptr, 0, nullptr, 0},
+};
+
+void parseArgs(int argc, char** argv) {
+    int arg;
+    int option_index;
+    while ((arg = getopt_long(argc, argv, ":P:p:", kArgOptions, &option_index)) != -1) {
+        switch (arg) {
+        case 'P':
+            sResourceDir = optarg;
+            break;
+        case 'p':
+            sComponentNamePrefix = optarg;
+            break;
+        default:
+            break;
+        }
+    }
+}
+
 // Test the codecs for NullBuffer, Empty Input Buffer with(out) flags set
 void testInputBuffer(const std::shared_ptr<android::Codec2Client::Component>& component,
                      std::mutex& queueLock, std::list<std::unique_ptr<C2Work>>& workQueue,
@@ -157,11 +184,18 @@ const std::vector<std::tuple<std::string, std::string>>& getTestParameters(
                 (traits.domain != domain || traits.kind != kind)) {
                 continue;
             }
-
+            if (traits.name.rfind(sComponentNamePrefix, 0) != 0) {
+                ALOGD("Skipping tests for %s. Prefix specified is %s", traits.name.c_str(),
+                      sComponentNamePrefix.c_str());
+                continue;
+            }
             parameters.push_back(std::make_tuple(instance, traits.name));
         }
     }
 
+    if (parameters.empty()) {
+        ALOGE("No test parameters added. Verify component prefix passed to the test");
+    }
     return parameters;
 }
 
