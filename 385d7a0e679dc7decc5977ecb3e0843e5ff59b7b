@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9d551b9_50716a8f",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-03-24T03:26:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68ec6ccc_8466aa06",
+      "range": {
+        "startLine": 993,
+        "startChar": 73,
+        "endLine": 993,
+        "endChar": 74
+      },
+      "revId": "385d7a0e679dc7decc5977ecb3e0843e5ff59b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "eb68409d_f2e38eaf",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "94c3e709_cdf1acec",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-03-24T03:26:45Z",
+      "side": 1,
+      "message": "I see. C2_BLOCKING means returning a fence, so I removed the comments.",
+      "parentUuid": "eb68409d_f2e38eaf",
+      "range": {
+        "startLine": 1001,
+        "startChar": 88,
+        "endLine": 1001,
+        "endChar": 98
+      },
+      "revId": "385d7a0e679dc7decc5977ecb3e0843e5ff59b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6a3f0441_3f914547",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-03-23T23:50:38Z",
       "side": 1,
       "message": "I was thinking myself whether to expose this. Given that we have not fully defined fetchCircularBlock, perhaps this is premature.",
+      "range": {
+        "startLine": 1023,
+        "startChar": 0,
+        "endLine": 1056,
+        "endChar": 5
+      },
+      "revId": "385d7a0e679dc7decc5977ecb3e0843e5ff59b7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f47cc941_e679a6a1",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1056,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-03-24T03:26:45Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a3f0441_3f914547",
       "range": {
         "startLine": 1023,
         "startChar": 0,
