@@ -283,8 +283,8 @@ void LVM_SetTrebleBoost(LVM_Instance_t* pInstance, LVM_ControlParams_t* pParams)
             std::array<LVM_FLOAT, android::audio_utils::kBiquadNumCoefs> coefs = {
                     LVM_TrebleBoostCoefs[Offset].A0, LVM_TrebleBoostCoefs[Offset].A1, 0.0,
                     -(LVM_TrebleBoostCoefs[Offset].B1), 0.0};
-            pInstance->pTEBiquad.reset(
-                    new android::audio_utils::BiquadFilter<LVM_FLOAT>(pParams->NrChannels, coefs));
+            pInstance->pTEBiquad.reset(new android::audio_utils::BiquadFilter<LVM_FLOAT>(
+                    (FCC_1 == pParams->NrChannels ? FCC_2 : pParams->NrChannels), coefs));
 #else
             FO_2I_D16F32Css_LShx_TRC_WRA_01_Init(&pInstance->pTE_State->TrebleBoost_State,
                                                  &pInstance->pTE_Taps->TrebleBoost_Taps,

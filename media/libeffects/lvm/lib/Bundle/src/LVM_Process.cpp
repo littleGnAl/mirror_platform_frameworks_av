@@ -23,6 +23,9 @@
 #include <system/audio.h>
 
 #include "LVM_Private.h"
+#ifdef BIQUAD_OPT
+#include "ScalarArithmetic.h"
+#endif
 #include "VectorArithmetic.h"
 #include "LVM_Coeffs.h"
 #include <math.h>
@@ -194,6 +197,9 @@ LVM_ReturnStatus_en LVM_Process(LVM_Handle_t hInstance, const LVM_FLOAT* pInData
                  */
 #ifdef BIQUAD_OPT
                 pInstance->pTEBiquad->process(pProcessed, pProcessed, NrFrames);
+                for (auto i = 0; i < NrChannels * NrFrames; i++) {
+                    pProcessed[i] = LVM_Clamp(pProcessed[i]);
+                }
 #else
                 FO_Mc_D16F32C15_LShx_TRC_WRA_01(&pInstance->pTE_State->TrebleBoost_State,
                                                 pProcessed, pProcessed, (LVM_INT16)NrFrames,
