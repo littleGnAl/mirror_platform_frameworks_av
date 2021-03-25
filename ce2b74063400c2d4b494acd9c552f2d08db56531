@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "de941536_54491beb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-25T05:18:02Z",
+      "side": 1,
+      "message": "libeffects: Clamp output after Treble biquad",
+      "range": {
+        "startLine": 6,
+        "startChar": 0,
+        "endLine": 7,
+        "endChar": 45
+      },
+      "revId": "ce2b74063400c2d4b494acd9c552f2d08db56531",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1531738_fa53dab6",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-25T05:18:02Z",
+      "side": 1,
+      "message": "Bug: 183674870",
+      "revId": "ce2b74063400c2d4b494acd9c552f2d08db56531",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
