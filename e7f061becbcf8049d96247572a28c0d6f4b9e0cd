@@ -39,6 +39,30 @@
       },
       "revId": "e7f061becbcf8049d96247572a28c0d6f4b9e0cd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "59071477_11414882",
+        "filename": "media/codec2/vndk/C2AllocatorIon.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-03-25T17:42:45Z",
+      "side": 1,
+      "message": "yes, probably we should fail the allocation in fact",
+      "parentUuid": "7f202331_1d2b0529",
+      "range": {
+        "startLine": 388,
+        "startChar": 11,
+        "endLine": 388,
+        "endChar": 20
+      },
+      "revId": "e7f061becbcf8049d96247572a28c0d6f4b9e0cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
