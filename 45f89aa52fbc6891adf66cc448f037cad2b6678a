@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fcc5a24_3ca897ba",
+        "filename": "media/libmedia/tests/fuzzer/libmedia_metadata_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1559553
+      },
+      "writtenOn": "2021-03-25T17:19:08Z",
+      "side": 1,
+      "message": "It seems like this will always add both a bool and an int. Would it be better to choose just one or the other based on the input data? That way you can get int-int-int or bool-bool-bool patterns.",
+      "range": {
+        "startLine": 21,
+        "startChar": 8,
+        "endLine": 21,
+        "endChar": 58
+      },
+      "revId": "45f89aa52fbc6891adf66cc448f037cad2b6678a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
