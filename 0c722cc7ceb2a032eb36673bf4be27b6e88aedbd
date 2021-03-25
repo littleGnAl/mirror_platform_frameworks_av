@@ -16,6 +16,24 @@
       "message": "Could you add some description regarding the expected format?",
       "revId": "0c722cc7ceb2a032eb36673bf4be27b6e88aedbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "70e535ba_6c51d044",
+        "filename": "media/codec2/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-03-25T23:24:15Z",
+      "side": 1,
+      "message": "Added a function to print usage.",
+      "parentUuid": "2c0f13aa_351b441d",
+      "revId": "0c722cc7ceb2a032eb36673bf4be27b6e88aedbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
