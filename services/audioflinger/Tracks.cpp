@@ -1313,14 +1313,13 @@ VolumeShaper::Status AudioFlinger::PlaybackThread::Track::applyVolumeShaper(
 {
     sp<VolumeShaper::Configuration> newConfiguration;
 
-    if (isOffloadedOrDirect()) {
+    if (isOffloaded()) {
         const VolumeShaper::Configuration::OptionFlag optionFlag
             = configuration->getOptionFlags();
         if ((optionFlag & VolumeShaper::Configuration::OPTION_FLAG_CLOCK_TIME) == 0) {
-            ALOGW("%s(%d): %s tracks do not support frame counted VolumeShaper,"
+            ALOGW("%s(%d): Offload tracks do not support frame counted VolumeShaper,"
                     " using clock time instead",
-                    __func__, mId,
-                    isOffloaded() ? "Offload" : "Direct");
+                    __func__, mId);
             newConfiguration = new VolumeShaper::Configuration(*configuration);
             newConfiguration->setOptionFlags(
                 VolumeShaper::Configuration::OptionFlag(optionFlag

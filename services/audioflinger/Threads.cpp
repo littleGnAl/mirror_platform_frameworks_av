@@ -5722,11 +5722,14 @@ void AudioFlinger::DirectOutputThread::setMasterBalance(float balance)
 void AudioFlinger::DirectOutputThread::processVolume_l(Track *track, bool lastTrack)
 {
     float left, right;
+    uint64_t frames = 0;
+    struct timespec timestamp;
 
     // Ensure volumeshaper state always advances even when muted.
     const sp<AudioTrackServerProxy> proxy = track->mAudioTrackServerProxy;
+    mOutput->getPresentationPosition(&frames, &timestamp);
     const auto [shaperVolume, shaperActive] = track->getVolumeHandler()->getVolume(
-            proxy->framesReleased());
+            frames);
     mVolumeShaperActive = shaperActive;
 
     if (mMasterMute || mStreamTypes[track->streamType()].mute || track->isPlaybackRestricted()) {
