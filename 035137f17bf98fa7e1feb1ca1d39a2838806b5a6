@@ -16,6 +16,23 @@
       "message": "Hello, any news about this?\nAs far as I understand, this issue breaks pretty basic GSI functionnality (except when used for certification)",
       "revId": "035137f17bf98fa7e1feb1ca1d39a2838806b5a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "997fb005_066a4373",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-03-29T22:29:59Z",
+      "side": 1,
+      "message": "this certainly feels like an improvement on top of the mentioned CL.\n\nconvention is that we have \"Test: \" lines that indicate what tests were run to ensure that we\ndid fix the bug. we should also have a bug number....\n\nlook at the referenced CL from before -- it has both a Bug: and multiple Test: lines included.",
+      "revId": "035137f17bf98fa7e1feb1ca1d39a2838806b5a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
