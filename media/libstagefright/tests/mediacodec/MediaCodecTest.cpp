@@ -24,6 +24,7 @@
 #include <mediadrm/ICrypto.h>
 #include <media/stagefright/CodecBase.h>
 #include <media/stagefright/MediaCodec.h>
+#include <media/stagefright/MediaCodecConstants.h>
 #include <media/stagefright/MediaCodecListWriter.h>
 #include <media/MediaCodecInfo.h>
 
@@ -348,4 +349,56 @@ TEST(MediaCodecTest, ErrorWhileStopping) {
     // upon receiving the error, client tries to release the codec.
     codec->release();
     looper->stop();
+}
+
+TEST(MediaCodecTest, LegacyByteBufferColorFormat) {
+    // TODO: cut dependency to the underlying component
+    sp<ALooper> looper{new ALooper};
+    looper->start();
+    sp<MediaCodec> codec = MediaCodec::CreateByType(
+            looper, MIMETYPE_VIDEO_AVC, false /* encoder */);
+    if (!codec) {
+        GTEST_SKIP() << "Failed to create a codec for video/avc";
+        return;
+    }
+    class AutoCleaner {
+    public:
+        AutoCleaner(const sp<MediaCodec> &codec) : mCodec(codec) {}
+        ~AutoCleaner() {
+            if (mCodec) {
+                mCodec->release();
+            }
+        }
+    private:
+        sp<MediaCodec> mCodec;
+    } cleaner(codec);
+    AString name;
+    codec->getName(&name);
+    sp<AMessage> format{new AMessage};
+    format->setString(KEY_MIME, MIMETYPE_VIDEO_AVC);
+    format->setInt32(KEY_WIDTH, 320);
+    format->setInt32(KEY_HEIGHT, 240);
+    status_t err = codec->configure(
+            format, nullptr /* surface */, nullptr /* crypto */, 0 /* flags */);
+    if (err == BAD_VALUE) {
+        GTEST_SKIP() << name.c_str() << " does not support 320x240 resolution";
+        return;
+    }
+    ASSERT_EQ(OK, err) << name.c_str() << " failed to configure";
+    sp<AMessage> outputFormat;
+    ASSERT_EQ(OK, codec->getOutputFormat(&outputFormat))
+            << name.c_str() << " failed to get output format";
+    int32_t colorFormat = 0;
+    ASSERT_TRUE(outputFormat->findInt32(KEY_COLOR_FORMAT, &colorFormat));
+    std::set<int32_t> knownFormats({
+        COLOR_FormatYUV420Planar,
+        COLOR_FormatYUV420PackedPlanar,
+        COLOR_FormatYUV420SemiPlanar,
+        COLOR_FormatYUV420PackedSemiPlanar,
+        COLOR_QCOM_FormatYUV420SemiPlanar,
+        COLOR_TI_FormatYUV420PackedSemiPlanar,
+    });
+    ASSERT_EQ(1u, knownFormats.count(colorFormat))
+            << name.c_str() << " does not report back a known color format: "
+            << std::hex << colorFormat;
 }
