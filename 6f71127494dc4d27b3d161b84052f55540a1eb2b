@@ -22,6 +22,30 @@
       },
       "revId": "6f71127494dc4d27b3d161b84052f55540a1eb2b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b9625049_63bbabc0",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 266,
+      "author": {
+        "id": 1238042
+      },
+      "writtenOn": "2021-04-01T05:48:19Z",
+      "side": 1,
+      "message": "Yes, I remembered the code below map the block again while wView is still alive.",
+      "parentUuid": "071eec37_baee001a",
+      "range": {
+        "startLine": 266,
+        "startChar": 30,
+        "endLine": 266,
+        "endChar": 35
+      },
+      "revId": "6f71127494dc4d27b3d161b84052f55540a1eb2b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
