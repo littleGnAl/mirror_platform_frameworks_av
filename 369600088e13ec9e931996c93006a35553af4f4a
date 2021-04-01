@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "91166584_87230e1b",
+        "filename": "media/utils/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-01T01:04:44Z",
+      "side": 1,
+      "message": "why is this a static lib?\n- it doesn\u0027t really matter in this case\n- merge conflict downstream",
+      "range": {
+        "startLine": 40,
+        "startChar": 9,
+        "endLine": 40,
+        "endChar": 29
+      },
+      "revId": "369600088e13ec9e931996c93006a35553af4f4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
