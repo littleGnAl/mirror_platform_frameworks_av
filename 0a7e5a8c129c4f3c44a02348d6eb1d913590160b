@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90e00d1e_08b5ba2c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2021-04-01T22:46:41Z",
+      "side": 1,
+      "message": "Do you mean \"so the\"?",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 2
+      },
+      "revId": "0a7e5a8c129c4f3c44a02348d6eb1d913590160b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7dd30543_e1d89151",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2021-04-01T22:46:41Z",
+      "side": 1,
+      "message": "For proper tracking, should be:\n\nBug: 184132692",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "0a7e5a8c129c4f3c44a02348d6eb1d913590160b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d8d7920_fc412c68",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 6871,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2021-04-01T22:46:41Z",
+      "side": 1,
+      "message": "This method is very similar to the definition in PlaybackThread except for this thread promotion and the use of thread-\u003emPatch. Why?",
+      "range": {
+        "startLine": 6871,
+        "startChar": 25,
+        "endLine": 6871,
+        "endChar": 31
+      },
+      "revId": "0a7e5a8c129c4f3c44a02348d6eb1d913590160b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
