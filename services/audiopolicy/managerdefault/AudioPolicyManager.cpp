@@ -6064,10 +6064,14 @@ uint32_t AudioPolicyManager::setOutputDevices(const sp<SwAudioOutputDescriptor>&
         muteWaitMs = 0;
     }
 
+    static bool unrouteWhenIdle =
+            property_get_bool("ro.audio.unroute_when_idle", false /*default_value*/);
+    bool resetRequired = !outputDesc->isActive() && unrouteWhenIdle;
+
     // no need to proceed if new device is not AUDIO_DEVICE_NONE and not supported by current
     // output profile or if new device is not supported AND previous device(s) is(are) still
     // available (otherwise reset device must be done on the output)
-    if (!devices.isEmpty() && filteredDevices.isEmpty() &&
+    if (!resetRequired && !devices.isEmpty() && filteredDevices.isEmpty() &&
             !mAvailableOutputDevices.filter(prevDevices).empty()) {
         ALOGV("%s: unsupported device %s for output", __func__, devices.toString().c_str());
         // restore previous device after evaluating strategy mute state
@@ -6081,7 +6085,7 @@ uint32_t AudioPolicyManager::setOutputDevices(const sp<SwAudioOutputDescriptor>&
     //  AND force is not specified
     //  AND the output is connected by a valid audio patch.
     // Doing this check here allows the caller to call setOutputDevices() without conditions
-    if ((filteredDevices.isEmpty() || filteredDevices == prevDevices) &&
+    if (!resetRequired && (filteredDevices.isEmpty() || filteredDevices == prevDevices) &&
             !force && outputDesc->getPatchHandle() != 0) {
         ALOGV("%s setting same device %s or null device, force=%d, patch handle=%d", __func__,
               filteredDevices.toString().c_str(), force, outputDesc->getPatchHandle());
@@ -6091,7 +6095,7 @@ uint32_t AudioPolicyManager::setOutputDevices(const sp<SwAudioOutputDescriptor>&
     ALOGV("%s changing device to %s", __func__, filteredDevices.toString().c_str());
 
     // do the routing
-    if (filteredDevices.isEmpty()) {
+    if (resetRequired || filteredDevices.isEmpty()) {
         resetOutputDevice(outputDesc, delayMs, NULL);
     } else {
         PatchBuilder patchBuilder;
