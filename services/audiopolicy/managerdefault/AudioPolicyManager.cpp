@@ -4008,7 +4008,8 @@ status_t AudioPolicyManager::releaseAudioPatch(audio_patch_handle_t handle,
 }
 
 status_t AudioPolicyManager::releaseAudioPatchInternal(audio_patch_handle_t handle,
-                                                       uint32_t delayMs)
+                                                       uint32_t delayMs,
+                                                       const sp<SourceClientDescriptor>& sourceDesc)
 {
     ALOGV("%s patch %d", __func__, handle);
     if (mAudioPatches.indexOfKey(handle) < 0) {
@@ -4049,27 +4050,32 @@ status_t AudioPolicyManager::releaseAudioPatchInternal(audio_patch_handle_t hand
             removeAudioPatch(patchDesc->getHandle());
             nextAudioPortGeneration();
             mpClientInterface->onAudioPatchListUpdate();
-            // SW Bridge
+            // SW or HW Bridge
+            sp<SwAudioOutputDescriptor> outputDesc = nullptr;
+            audio_patch_handle_t patchHandle = AUDIO_PATCH_HANDLE_NONE;
             if (patch->num_sources > 1 && patch->sources[1].type == AUDIO_PORT_TYPE_MIX) {
-                sp<SwAudioOutputDescriptor> outputDesc =
-                        mOutputs.getOutputFromId(patch->sources[1].id);
-                if (outputDesc == NULL) {
-                    ALOGW("%s output not found for id %d", __func__, patch->sources[0].id);
-                    // releaseOutput has already called closeOuput in case of direct output
-                    return NO_ERROR;
-                }
-                if (patchDesc->getHandle() != outputDesc->getPatchHandle()) {
-                    // force SwOutput patch removal as AF counter part patch has already gone.
-                    ALOGV("%s reset patch handle on Output as different from SWBridge", __func__);
-                    removeAudioPatch(outputDesc->getPatchHandle());
-                }
-                outputDesc->setPatchHandle(AUDIO_PATCH_HANDLE_NONE);
-                setOutputDevices(outputDesc,
-                                 getNewOutputDevices(outputDesc, true /*fromCache*/),
-                                 true, /*force*/
-                                 0,
-                                 NULL);
+                outputDesc = mOutputs.getOutputFromId(patch->sources[1].id);
+            } else if (patch->num_sources == 1 && sourceDesc != nullptr) {
+                outputDesc = sourceDesc->swOutput().promote();
             }
+            if (outputDesc == nullptr) {
+                ALOGW("%s no output for id %d", __func__, patch->sources[0].id);
+                // releaseOutput has already called closeOuput in case of direct output
+                return NO_ERROR;
+            }
+            if (patchDesc->getHandle() != outputDesc->getPatchHandle() && !outputDesc->isActive()) {
+                // SwOutput routed before Bridge established: AF will destroy its counter part
+                // SwOutput routed after Bridge established: APM must destroy both patches
+                ALOGV("%s reset routing on inactive output as bridge disconnected", __func__);
+                resetOutputDevice(outputDesc, 0 /*delaysMs*/, nullptr);
+            }
+            // Reuse patch handle if still valid / do not force rerouting if still routed
+            patchHandle = outputDesc->getPatchHandle();
+            setOutputDevices(outputDesc,
+                             getNewOutputDevices(outputDesc, true /*fromCache*/),
+                             patchHandle == AUDIO_PATCH_HANDLE_NONE, /*force*/
+                             0,
+                             patchHandle == AUDIO_PATCH_HANDLE_NONE ? nullptr : &patchHandle);
         } else {
             return BAD_VALUE;
         }
@@ -4646,7 +4652,7 @@ status_t AudioPolicyManager::disconnectAudioSource(const sp<SourceClientDescript
             ALOGW("%s source has neither SW nor HW output", __FUNCTION__);
         }
     }
-    status_t status = releaseAudioPatchInternal(sourceDesc->getPatchHandle());
+    status_t status = releaseAudioPatchInternal(sourceDesc->getPatchHandle(), 0, sourceDesc);
     sourceDesc->disconnect();
     return status;
 }
