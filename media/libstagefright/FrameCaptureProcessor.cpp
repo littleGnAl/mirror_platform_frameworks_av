@@ -152,6 +152,13 @@ status_t FrameCaptureProcessor::onCapture(const sp<Layer> &layer,
 
     clientCompositionLayers.push_back(&layerSettings);
 
+    ui::Dataspace standard = (ui::Dataspace)(layerSettings.sourceDataspace & ui::Dataspace::STANDARD_MASK);
+    ui::Dataspace transfer = (ui::Dataspace)(layerSettings.sourceDataspace & ui::Dataspace::TRANSFER_MASK);
+    if ((standard == ui::Dataspace::STANDARD_BT2020) &&
+        (transfer == ui::Dataspace::TRANSFER_ST2084)) {
+        clientCompositionDisplay.outputDataspace = ui::Dataspace::BT2020_PQ;
+    }
+
     // Use an empty fence for the buffer fence, since we just created the buffer so
     // there is no need for synchronization with the GPU.
     base::unique_fd bufferFence;
