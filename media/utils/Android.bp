@@ -40,6 +40,7 @@ cc_library {
     ],
     shared_libs: [
         "libaudioutils", // for clock.h
+        "libbatterystats_aidl",
         "libbinder",
         "libcutils",
         "liblog",
@@ -47,6 +48,9 @@ cc_library {
         "libhidlbase",
         "android.hardware.graphics.bufferqueue@1.0",
         "android.hidl.token@1.0-utils",
+    ],
+    export_shared_lib_headers: [
+        "libbatterystats_aidl",
     ],
 
     logtags: ["EventLogTags.logtags"],
