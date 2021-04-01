@@ -981,6 +981,20 @@ private:
         }
 
         /**
+         * @brief hasSourceOnOutput checks if a SwOutput hosts one or more Audio Source.
+         * Note: an output may be inactive but hosting an Audio Source. This is the case when a
+         * AudioSource was disconnected due to an audio device becoming unavailable. The audio
+         * source is kept as inactive on SwOuput, but SwOutput is inactive. It allows auto connect
+         * if the audio device become available again.
+         * @param output to consider
+         * @param sourceToExclude to exclude from the reseach
+         * @return true if hosting an audio source except sourceToExclude (if not null), false
+         * otherwise
+         */
+        bool hasSourceOnOutput(audio_io_handle_t output,
+                               const sp<SourceClientDescriptor>& sourceToExclude = nullptr) const;
+
+        /**
          * @brief createAudioPatchInternal internal function to manage audio patch creation
          * @param[in] patch structure containing sink and source ports configuration
          * @param[out] handle patch handle to be provided if patch installed correctly
