@@ -1750,11 +1750,10 @@ status_t AudioPolicyManager::startSource(const sp<SwAudioOutputDescriptor>& outp
         // some playback other than beacon starts
         beaconMuteLatency = handleEventForBeacon(STARTING_OUTPUT);
     }
-
+    bool isOutputRouted = outputDesc->isRouted();
     // force device change if the output is inactive and no audio patch is already present.
     // check active before incrementing usage count
-    bool force = !outputDesc->isActive() &&
-            (outputDesc->getPatchHandle() == AUDIO_PATCH_HANDLE_NONE);
+    bool force = !outputDesc->isActive() && !isOutputRouted;
 
     DeviceVector devices;
     sp<AudioPolicyMix> policyMix = outputDesc->mPolicyMix.promote();
@@ -3958,6 +3957,7 @@ status_t AudioPolicyManager::createAudioPatchInternal(const struct audio_patch *
                                       __FUNCTION__, sinkDevice->toString().c_str());
                                 return INVALID_OPERATION;
                             }
+                            outputDesc->mSwBridgeWithoutAudioSourceCount++;
                         }
                     }
                     if (outputDesc != nullptr) {
@@ -4008,7 +4008,8 @@ status_t AudioPolicyManager::releaseAudioPatch(audio_patch_handle_t handle,
 }
 
 status_t AudioPolicyManager::releaseAudioPatchInternal(audio_patch_handle_t handle,
-                                                       uint32_t delayMs)
+                                                       uint32_t delayMs,
+                                                       const sp<SourceClientDescriptor>& sourceDesc)
 {
     ALOGV("%s patch %d", __func__, handle);
     if (mAudioPatches.indexOfKey(handle) < 0) {
@@ -4049,27 +4050,35 @@ status_t AudioPolicyManager::releaseAudioPatchInternal(audio_patch_handle_t hand
             removeAudioPatch(patchDesc->getHandle());
             nextAudioPortGeneration();
             mpClientInterface->onAudioPatchListUpdate();
-            // SW Bridge
+            // SW or HW Bridge
+            sp<SwAudioOutputDescriptor> outputDesc = nullptr;
+            audio_patch_handle_t patchHandle = AUDIO_PATCH_HANDLE_NONE;
             if (patch->num_sources > 1 && patch->sources[1].type == AUDIO_PORT_TYPE_MIX) {
-                sp<SwAudioOutputDescriptor> outputDesc =
-                        mOutputs.getOutputFromId(patch->sources[1].id);
-                if (outputDesc == NULL) {
-                    ALOGW("%s output not found for id %d", __func__, patch->sources[0].id);
-                    // releaseOutput has already called closeOuput in case of direct output
-                    return NO_ERROR;
-                }
-                if (patchDesc->getHandle() != outputDesc->getPatchHandle()) {
-                    // force SwOutput patch removal as AF counter part patch has already gone.
-                    ALOGV("%s reset patch handle on Output as different from SWBridge", __func__);
-                    removeAudioPatch(outputDesc->getPatchHandle());
-                }
-                outputDesc->setPatchHandle(AUDIO_PATCH_HANDLE_NONE);
-                setOutputDevices(outputDesc,
-                                 getNewOutputDevices(outputDesc, true /*fromCache*/),
-                                 true, /*force*/
-                                 0,
-                                 NULL);
+                outputDesc = mOutputs.getOutputFromId(patch->sources[1].id);
+            } else if (patch->num_sources == 1 && sourceDesc != nullptr) {
+                outputDesc = sourceDesc->swOutput().promote();
             }
+            if (outputDesc == nullptr) {
+                ALOGW("%s no output for id %d", __func__, patch->sources[0].id);
+                // releaseOutput has already called closeOuput in case of direct output
+                return NO_ERROR;
+            }
+            if (sourceDesc == nullptr) {
+                outputDesc->mSwBridgeWithoutAudioSourceCount--;
+            }
+            if (!outputDesc->isActiveOrHasActiveBridge()) {
+                // SwOutput routed before Bridge established: AF will destroy its counter part
+                // SwOutput routed after Bridge established: APM must destroy both patches
+                ALOGV("%s reset routing on inactive output as bridge disconnected", __func__);
+                resetOutputDevice(outputDesc, 0 /*delaysMs*/, nullptr);
+            }
+            // Reuse patch handle if still valid / do not force rerouting if still routed
+            patchHandle = outputDesc->getPatchHandle();
+            setOutputDevices(outputDesc,
+                             getNewOutputDevices(outputDesc, true /*fromCache*/),
+                             patchHandle == AUDIO_PATCH_HANDLE_NONE, /*force*/
+                             0,
+                             patchHandle == AUDIO_PATCH_HANDLE_NONE ? nullptr : &patchHandle);
         } else {
             return BAD_VALUE;
         }
@@ -4646,7 +4655,7 @@ status_t AudioPolicyManager::disconnectAudioSource(const sp<SourceClientDescript
             ALOGW("%s source has neither SW nor HW output", __FUNCTION__);
         }
     }
-    status_t status = releaseAudioPatchInternal(sourceDesc->getPatchHandle());
+    status_t status = releaseAudioPatchInternal(sourceDesc->getPatchHandle(), 0, sourceDesc);
     sourceDesc->disconnect();
     return status;
 }
@@ -6038,6 +6047,7 @@ uint32_t AudioPolicyManager::setOutputDevices(const sp<SwAudioOutputDescriptor>&
     // filter devices according to output selected
     DeviceVector filteredDevices = outputDesc->filterSupportedDevices(devices);
     DeviceVector prevDevices = outputDesc->devices();
+    DeviceVector availPrevDevices = mAvailableOutputDevices.filter(prevDevices);
 
     ALOGV("setOutputDevices() prevDevice %s", prevDevices.toString().c_str());
 
@@ -6053,11 +6063,13 @@ uint32_t AudioPolicyManager::setOutputDevices(const sp<SwAudioOutputDescriptor>&
         muteWaitMs = 0;
     }
 
+    bool outputActive = outputDesc->isActiveOrHasActiveBridge();
+    bool outputRouted = outputDesc->isRouted();
+
     // no need to proceed if new device is not AUDIO_DEVICE_NONE and not supported by current
     // output profile or if new device is not supported AND previous device(s) is(are) still
     // available (otherwise reset device must be done on the output)
-    if (!devices.isEmpty() && filteredDevices.isEmpty() &&
-            !mAvailableOutputDevices.filter(prevDevices).empty()) {
+    if (!devices.isEmpty() && filteredDevices.isEmpty() && !availPrevDevices.empty()) {
         ALOGV("%s: unsupported device %s for output", __func__, devices.toString().c_str());
         // restore previous device after evaluating strategy mute state
         outputDesc->setDevices(prevDevices);
@@ -6070,8 +6082,7 @@ uint32_t AudioPolicyManager::setOutputDevices(const sp<SwAudioOutputDescriptor>&
     //  AND force is not specified
     //  AND the output is connected by a valid audio patch.
     // Doing this check here allows the caller to call setOutputDevices() without conditions
-    if ((filteredDevices.isEmpty() || filteredDevices == prevDevices) &&
-            !force && outputDesc->getPatchHandle() != 0) {
+    if ((filteredDevices.isEmpty() || filteredDevices == prevDevices) && !force && outputRouted) {
         ALOGV("%s setting same device %s or null device, force=%d, patch handle=%d", __func__,
               filteredDevices.toString().c_str(), force, outputDesc->getPatchHandle());
         return muteWaitMs;
@@ -6080,7 +6091,7 @@ uint32_t AudioPolicyManager::setOutputDevices(const sp<SwAudioOutputDescriptor>&
     ALOGV("%s changing device to %s", __func__, filteredDevices.toString().c_str());
 
     // do the routing
-    if (filteredDevices.isEmpty()) {
+    if (filteredDevices.isEmpty() || mAvailableOutputDevices.filter(filteredDevices).empty()) {
         resetOutputDevice(outputDesc, delayMs, NULL);
     } else {
         PatchBuilder patchBuilder;
@@ -6107,6 +6118,9 @@ status_t AudioPolicyManager::resetOutputDevice(const sp<AudioOutputDescriptor>& 
                                                audio_patch_handle_t *patchHandle)
 {
     ssize_t index;
+    if (patchHandle == nullptr || !outputDesc->isRouted()) {
+        return INVALID_OPERATION;
+    }
     if (patchHandle) {
         index = mAudioPatches.indexOfKey(*patchHandle);
     } else {
