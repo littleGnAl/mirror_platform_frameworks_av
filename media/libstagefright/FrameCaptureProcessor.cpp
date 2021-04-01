@@ -141,7 +141,6 @@ status_t FrameCaptureProcessor::onCapture(const sp<Layer> &layer,
     clientCompositionDisplay.physicalDisplay = sourceCrop;
     clientCompositionDisplay.clip = sourceCrop;
 
-    clientCompositionDisplay.outputDataspace = ui::Dataspace::V0_SRGB;
     clientCompositionDisplay.maxLuminance = sDefaultMaxLumiance;
     clientCompositionDisplay.clearRegion = Region::INVALID_REGION;
 
@@ -151,6 +150,17 @@ status_t FrameCaptureProcessor::onCapture(const sp<Layer> &layer,
     layer->getLayerSettings(sourceCrop, mTextureName, &layerSettings);
 
     clientCompositionLayers.push_back(&layerSettings);
+
+    // to set outputDataspace
+    ui::Dataspace standard, transfer;
+    standard = (ui::Dataspace)(layerSettings.sourceDataspace & ui::Dataspace::STANDARD_MASK);
+    transfer = (ui::Dataspace)(layerSettings.sourceDataspace & ui::Dataspace::TRANSFER_MASK);
+    if ((standard == ui::Dataspace::STANDARD_BT2020) &&
+        (transfer == ui::Dataspace::TRANSFER_ST2084)) {
+        clientCompositionDisplay.outputDataspace = ui::Dataspace::BT2020_PQ;
+    } else {
+        clientCompositionDisplay.outputDataspace = ui::Dataspace::V0_SRGB;
+    }
 
     // Use an empty fence for the buffer fence, since we just created the buffer so
     // there is no need for synchronization with the GPU.
