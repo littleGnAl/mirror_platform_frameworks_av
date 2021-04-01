@@ -302,6 +302,7 @@ public:
     {
         return !devices().isEmpty() ? devices().itemAt(0)->hasGainController() : false;
     }
+    bool isRouted() const { return getPatchHandle() != AUDIO_PATCH_HANDLE_NONE; }
 
     DeviceVector mDevices; /**< current devices this output is routed to */
     wp<AudioPolicyMix> mPolicyMix;  // non NULL when used by a dynamic policy
@@ -403,6 +404,15 @@ public:
      */
     DeviceVector filterSupportedDevices(const DeviceVector &devices) const;
 
+    /**
+     * @brief isActiveOrActiveBridge
+     * @return true if the Ouput is active, i.e. hosting an active volume source or a SwBridge w/o
+     * audio source, aka created from createAudioPatch API.
+     */
+    bool isActiveOrActiveBridge() const {
+        return mSwBridgeWithoutAudioSourceCount > 0 || isActive();
+    }
+
     const sp<IOProfile> mProfile;          // I/O profile this output derives from
     audio_io_handle_t mIoHandle;           // output handle
     uint32_t mLatency;                  //
@@ -411,6 +421,7 @@ public:
     sp<SwAudioOutputDescriptor> mOutput2;    // used by duplicated outputs: second output
     uint32_t mDirectOpenCount; // number of clients using this output (direct outputs only)
     audio_session_t mDirectClientSession; // session id of the direct output client
+    uint32_t mSwBridgeWithoutAudioSourceCount = 0;
 };
 
 // Audio output driven by an input device directly.
