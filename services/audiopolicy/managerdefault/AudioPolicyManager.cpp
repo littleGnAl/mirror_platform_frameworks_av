@@ -775,7 +775,9 @@ void AudioPolicyManager::setPhoneState(audio_mode_t state)
         sp<SwAudioOutputDescriptor> desc = mOutputs.valueAt(i);
         DeviceVector newDevices = getNewOutputDevices(desc, true /*fromCache*/);
         if (state != AUDIO_MODE_IN_CALL || desc != mPrimaryOutput) {
-            setOutputDevices(desc, newDevices, !newDevices.isEmpty(), 0 /*delayMs*/);
+            bool forceRouting = !newDevices.isEmpty() && (desc->devices() != newDevices);
+            setOutputDevices(desc, newDevices, forceRouting, 0 /*delayMs*/, nullptr,
+                             true /*requiresMuteCheck*/, !forceRouting /*requiresVolumeCheck*/);
         }
     }
 
@@ -3274,7 +3276,10 @@ void AudioPolicyManager::updateCallAndOutputRouting(bool forceVolumeReeval, uint
             // As done in setDeviceConnectionState, we could also fix default device issue by
             // preventing the force re-routing in case of default dev that distinguishes on address.
             // Let's give back to engine full device choice decision however.
-            waitMs = setOutputDevices(outputDesc, newDevices, !newDevices.isEmpty(), delayMs);
+            bool forceRouting = !newDevices.isEmpty() && (outputDesc->devices() != newDevices);
+            waitMs = setOutputDevices(outputDesc, newDevices, forceRouting, delayMs, nullptr,
+                                      true /*requiresMuteCheck*/,
+                                      !forceRouting /*requiresVolumeCheck*/);
             // Only apply special touch sound delay once
             delayMs = 0;
         }
