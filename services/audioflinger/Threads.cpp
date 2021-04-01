@@ -6860,6 +6860,42 @@ void AudioFlinger::DuplicatingThread::cacheParameters_l()
 }
 
 
+
+void AudioFlinger::DuplicatingThread::ioConfigChanged(audio_io_config_event event, pid_t pid,
+                                                   audio_port_handle_t portId) {
+    sp<AudioIoDescriptor> desc = new AudioIoDescriptor();
+    ALOGV("DuplicatingThread::ioConfigChanged, thread %p, event %d, mId %d, device ID %d",
+          this, event, mId, mPatch.sinks[0].id);
+
+    desc->mIoHandle = mId;
+    const sp<ThreadBase> thread = mOutputTracks[0]->thread().promote();
+
+    switch (event) {
+    case AUDIO_OUTPUT_OPENED:
+    case AUDIO_OUTPUT_REGISTERED:
+    case AUDIO_OUTPUT_CONFIG_CHANGED:
+        desc->mPatch = thread->mPatch;
+        ALOGD("DuplicatingThread::ioConfigChanged, event %d, mId %d, device Id %d",
+              event, mId, mPatch.sinks[0].id);
+        desc->mChannelMask = mChannelMask;
+        desc->mSamplingRate = mSampleRate;
+        desc->mFormat = mFormat;
+        desc->mFrameCount = mNormalFrameCount; // FIXME see
+                                             // AudioFlinger::frameCount(audio_io_handle_t)
+        desc->mFrameCountHAL = mFrameCount;
+        desc->mLatency = latency_l();
+        break;
+    case AUDIO_CLIENT_STARTED:
+        desc->mPatch = thread->mPatch;
+        desc->mPortId = portId;
+        break;
+    case AUDIO_OUTPUT_CLOSED:
+    default:
+        break;
+    }
+    mAudioFlinger->ioConfigChanged(event, desc, pid);
+}
+
 // ----------------------------------------------------------------------------
 //      Record
 // ----------------------------------------------------------------------------
