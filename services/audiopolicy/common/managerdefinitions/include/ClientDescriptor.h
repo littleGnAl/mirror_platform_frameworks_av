@@ -203,6 +203,9 @@ public:
         mPatchHandle = AUDIO_PATCH_HANDLE_NONE;
         mSinkDevice = nullptr;
     }
+    void setUseSwBridge() { mUseSwBridge = true; }
+    bool useSwBridge() const { return mUseSwBridge; }
+    bool isInternal() const { return stream() == AUDIO_STREAM_PATCH; }
     bool isConnected() const { return mPatchHandle != AUDIO_PATCH_HANDLE_NONE; }
     audio_patch_handle_t getPatchHandle() const { return mPatchHandle; }
     sp<DeviceDescriptor> srcDevice() const { return mSrcDevice; }
@@ -221,6 +224,24 @@ public:
     sp<DeviceDescriptor> mSinkDevice;
     wp<SwAudioOutputDescriptor> mSwOutput;
     wp<HwAudioOutputDescriptor> mHwOutput;
+    bool mUseSwBridge = false;
+};
+
+class InternalSourceClientDescriptor: public SourceClientDescriptor
+{
+public:
+    InternalSourceClientDescriptor(
+            audio_port_handle_t portId, uid_t uid, audio_attributes_t attributes,
+            const struct audio_port_config &config, const sp<DeviceDescriptor>& srcDevice,
+             const sp<DeviceDescriptor>& sinkDevice,
+            product_strategy_t strategy, VolumeSource volumeSource) :
+        SourceClientDescriptor(
+            portId, uid, attributes, config, srcDevice, AUDIO_STREAM_PATCH, strategy, volumeSource)
+    {
+        setPreferredDeviceId(sinkDevice->getId());
+    }
+
+    ~InternalSourceClientDescriptor() override = default;
 };
 
 class SourceClientCollection :
