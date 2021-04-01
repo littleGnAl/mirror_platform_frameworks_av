@@ -292,6 +292,7 @@ void SwAudioOutputDescriptor::dump(String8 *dst) const
 {
     dst->appendFormat(" Latency: %d\n", mLatency);
     dst->appendFormat(" Flags %08x\n", mFlags);
+    dst->appendFormat(" SwBridge w/o AudioSource: %u\n", mSwBridgeWithoutAudioSourceCount);
     AudioOutputDescriptor::dump(dst);
 }
 
