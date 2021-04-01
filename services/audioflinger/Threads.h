@@ -1539,6 +1539,7 @@ public:
         }
         return INVALID_OPERATION;
     }
+    virtual    void        ioConfigChanged(audio_io_config_event event, pid_t pid = 0,audio_port_handle_t portId = AUDIO_PORT_HANDLE_NONE);
 };
 
 // record thread
