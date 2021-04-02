@@ -41,10 +41,11 @@ class GraphicBuffer : public C2Buffer {
         : C2Buffer({block->share(C2Rect(block->width(), block->height()), ::C2Fence())}) {}
 };
 
-static std::vector<std::tuple<std::string, std::string, std::string, std::string, std::string>>
-        kEncodeTestParameters;
-static std::vector<std::tuple<std::string, std::string, std::string, std::string>>
-        kEncodeResolutionTestParameters;
+using EncodeTestParameters = std::tuple<std::string, std::string, bool, bool, bool>;
+static std::vector<EncodeTestParameters>kEncodeTestParameters;
+
+using EncodeResolutionTestParameters = std::tuple<std::string, std::string, int32_t, int32_t>;
+static std::vector<EncodeResolutionTestParameters> kEncodeResolutionTestParameters;
 
 // Resource directory
 static std::string sResourceDir = "";
@@ -209,7 +210,7 @@ class Codec2VideoEncHidlTestBase : public ::testing::Test {
 
 class Codec2VideoEncHidlTest
     : public Codec2VideoEncHidlTestBase,
-      public ::testing::WithParamInterface<std::tuple<std::string, std::string>> {
+      public ::testing::WithParamInterface<TestParameters> {
     void getParams() {
         mInstanceName = std::get<0>(GetParam());
         mComponentName = std::get<1>(GetParam());
@@ -380,8 +381,7 @@ TEST_P(Codec2VideoEncHidlTest, validateCompName) {
 
 class Codec2VideoEncEncodeTest
     : public Codec2VideoEncHidlTestBase,
-      public ::testing::WithParamInterface<
-              std::tuple<std::string, std::string, std::string, std::string, std::string>> {
+      public ::testing::WithParamInterface<EncodeTestParameters> {
     void getParams() {
         mInstanceName = std::get<0>(GetParam());
         mComponentName = std::get<1>(GetParam());
@@ -395,10 +395,10 @@ TEST_P(Codec2VideoEncEncodeTest, EncodeTest) {
     char mURL[512];
     int32_t nWidth = ENC_DEFAULT_FRAME_WIDTH;
     int32_t nHeight = ENC_DEFAULT_FRAME_HEIGHT;
-    bool signalEOS = !std::get<2>(GetParam()).compare("true");
+    bool signalEOS = std::get<3>(GetParam());
     // Send an empty frame to receive CSD data from encoder.
-    bool sendEmptyFirstFrame = !std::get<3>(GetParam()).compare("true");
-    mConfigBPictures = !std::get<4>(GetParam()).compare("true");
+    bool sendEmptyFirstFrame = std::get<3>(GetParam());
+    mConfigBPictures = std::get<4>(GetParam());
 
     strcpy(mURL, sResourceDir.c_str());
     GetURLForComponent(mURL);
@@ -667,8 +667,7 @@ TEST_P(Codec2VideoEncHidlTest, InvalidBufferTest) {
 
 class Codec2VideoEncResolutionTest
     : public Codec2VideoEncHidlTestBase,
-      public ::testing::WithParamInterface<
-              std::tuple<std::string, std::string, std::string, std::string>> {
+      public ::testing::WithParamInterface<EncodeResolutionTestParameters> {
     void getParams() {
         mInstanceName = std::get<0>(GetParam());
         mComponentName = std::get<1>(GetParam());
@@ -680,8 +679,8 @@ TEST_P(Codec2VideoEncResolutionTest, ResolutionTest) {
     if (mDisableTest) GTEST_SKIP() << "Test is disabled";
 
     std::ifstream eleStream;
-    int32_t nWidth = std::stoi(std::get<2>(GetParam()));
-    int32_t nHeight = std::stoi(std::get<3>(GetParam()));
+    int32_t nWidth = std::get<2>(GetParam());
+    int32_t nHeight = std::get<3>(GetParam());
     ALOGD("Trying encode for width %d height %d", nWidth, nHeight);
     mEos = false;
 
@@ -713,14 +712,16 @@ TEST_P(Codec2VideoEncResolutionTest, ResolutionTest) {
 }
 
 INSTANTIATE_TEST_SUITE_P(PerInstance, Codec2VideoEncHidlTest, testing::ValuesIn(kTestParameters),
-                         android::hardware::PrintInstanceTupleNameToString<>);
+                         PrintInstanceTupleNameToString<>);
 
 INSTANTIATE_TEST_SUITE_P(NonStdSizes, Codec2VideoEncResolutionTest,
-                         ::testing::ValuesIn(kEncodeResolutionTestParameters));
+                         ::testing::ValuesIn(kEncodeResolutionTestParameters),
+                         PrintInstanceTupleNameToString<>);
 
 // EncodeTest with EOS / No EOS
 INSTANTIATE_TEST_SUITE_P(EncodeTestwithEOS, Codec2VideoEncEncodeTest,
-                         ::testing::ValuesIn(kEncodeTestParameters));
+                         ::testing::ValuesIn(kEncodeTestParameters),
+                         PrintInstanceTupleNameToString<>);
 
 TEST_P(Codec2VideoEncHidlTest, AdaptiveBitrateTest) {
     description("Encodes input file for different bitrates");
@@ -813,27 +814,26 @@ TEST_P(Codec2VideoEncHidlTest, AdaptiveBitrateTest) {
 int main(int argc, char** argv) {
     kTestParameters = getTestParameters(C2Component::DOMAIN_VIDEO, C2Component::KIND_ENCODER);
     for (auto params : kTestParameters) {
-        constexpr char const* kBoolString[] = { "false", "true" };
         for (size_t i = 0; i < 1 << 3; ++i) {
             kEncodeTestParameters.push_back(std::make_tuple(
                     std::get<0>(params), std::get<1>(params),
-                    kBoolString[i & 1],
-                    kBoolString[(i >> 1) & 1],
-                    kBoolString[(i >> 2) & 1]));
+                    i & 1,
+                    (i >> 1) & 1,
+                    (i >> 2) & 1));
         }
 
         kEncodeResolutionTestParameters.push_back(
-                std::make_tuple(std::get<0>(params), std::get<1>(params), "52", "18"));
+                std::make_tuple(std::get<0>(params), std::get<1>(params), 52, 18));
         kEncodeResolutionTestParameters.push_back(
-                std::make_tuple(std::get<0>(params), std::get<1>(params), "365", "365"));
+                std::make_tuple(std::get<0>(params), std::get<1>(params), 365, 365));
         kEncodeResolutionTestParameters.push_back(
-                std::make_tuple(std::get<0>(params), std::get<1>(params), "484", "362"));
+                std::make_tuple(std::get<0>(params), std::get<1>(params), 484, 362));
         kEncodeResolutionTestParameters.push_back(
-                std::make_tuple(std::get<0>(params), std::get<1>(params), "244", "488"));
+                std::make_tuple(std::get<0>(params), std::get<1>(params), 244, 488));
         kEncodeResolutionTestParameters.push_back(
-                std::make_tuple(std::get<0>(params), std::get<1>(params), "852", "608"));
+                std::make_tuple(std::get<0>(params), std::get<1>(params), 852, 608));
         kEncodeResolutionTestParameters.push_back(
-                std::make_tuple(std::get<0>(params), std::get<1>(params), "1400", "442"));
+                std::make_tuple(std::get<0>(params), std::get<1>(params), 1400, 442));
     }
 
     // Set the resource directory based on command line args.
