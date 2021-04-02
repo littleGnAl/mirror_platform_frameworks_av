@@ -33,6 +33,23 @@
       "message": "get treehugger\u0027s attention",
       "revId": "a9a724a0d1b6947c280fd2e3f01b78f3b12bb9a4",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "32813eca_baa95402",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-04-02T02:19:10Z",
+      "side": 1,
+      "message": "need\u0027s lajos\u0027s approval for the C2Config.h changes.\n\nnote -- this is art of a pair that mirror what we did put into internal/sc-dev;\nthis is cherry picking so that we\u0027ll be able to update the other software codecs\nhere in aosp.",
+      "revId": "a9a724a0d1b6947c280fd2e3f01b78f3b12bb9a4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
