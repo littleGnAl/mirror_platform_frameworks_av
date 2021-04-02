@@ -730,6 +730,17 @@ void CCodecConfig::initializeStandardParams() {
             return C2Value();
         }));
 
+    add(ConfigMapper(KEY_AAC_PROFILE, C2_PARAMKEY_PROFILE_LEVEL, "profile")
+        .limitTo(D::AUDIO & D::ENCODER & (D::CONFIG | D::PARAM | D::READ))
+        .withMapper([mapper](C2Value v) -> C2Value {
+            C2Config::profile_t c2 = PROFILE_UNUSED;
+            int32_t sdk;
+            if (mapper && v.get(&sdk) && mapper->mapProfile(sdk, &c2)) {
+                return c2;
+            }
+            return PROFILE_UNUSED;
+        }));
+
     // convert to dBFS and add default
     add(ConfigMapper(KEY_AAC_DRC_TARGET_REFERENCE_LEVEL, C2_PARAMKEY_DRC_TARGET_REFERENCE_LEVEL, "value")
         .limitTo(D::AUDIO & D::DECODER & (D::CONFIG | D::PARAM | D::READ))
@@ -1260,6 +1271,13 @@ sp<AMessage> CCodecConfig::getFormatForDomain(
             continue;
         }
         msg->setItem(key.c_str(), item);
+    }
+
+    { // Remove "aac-profile" from SDK message. It is signalled as profile.
+        int profile;
+        if (msg->findInt32(KEY_AAC_PROFILE, &profile)) {
+            msg->removeEntryAt(msg->findEntryByName(KEY_AAC_PROFILE));
+        }
     }
 
     { // convert from Codec 2.0 rect to MediaFormat rect and add crop rect if not present
