@@ -33,6 +33,24 @@
       "message": "Instead of including(referring), defining here is better.\n\ne.g) frameworks/av/services/mediatranscoding/.clang-format , frameworks/av/media/tests/benchmark/.clang-format",
       "revId": "b58afa74d3bc8c2bf3696f8b2f73a0c3c2d1b308",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff306b94_41b58c95",
+        "filename": "media/codec2/hidl/1.0/vts/.clang-format",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-02T22:49:03Z",
+      "side": 1,
+      "message": "Sungtak,\nIt seems including a symbolic link is the preferred way now.\nPlease refer to the discussion at\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1443655/4..5/media/libeffects/lvm/.clang-format#b17\n\nIf the default format can be used, then that is the preferred approach, as per the above discussion.\n\nPlease let me know if you still prefer to define it here.",
+      "parentUuid": "c992435f_c72a7bd8",
+      "revId": "b58afa74d3bc8c2bf3696f8b2f73a0c3c2d1b308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
