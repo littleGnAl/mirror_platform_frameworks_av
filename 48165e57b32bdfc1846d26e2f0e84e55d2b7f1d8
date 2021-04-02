@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb299ae4_18150797",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-02T00:15:00Z",
+      "side": 1,
+      "message": "minor nits.",
+      "revId": "48165e57b32bdfc1846d26e2f0e84e55d2b7f1d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17a999b0_df0d3750",
+        "filename": "media/libaudiohal/impl/StreamHalHidl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-02T00:15:00Z",
+      "side": 1,
+      "message": "nit: needed?  isn\u0027t getAudioProperties present in StreamHalInterface?",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 39
+      },
+      "revId": "48165e57b32bdfc1846d26e2f0e84e55d2b7f1d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f188becd_bc7f8eae",
+        "filename": "media/libaudiohal/include/media/audiohal/StreamHalInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-02T00:15:00Z",
+      "side": 1,
+      "message": "nit: seems the initializer is not needed if result is NO_ERROR.\n\nAlso seems unnecessary in AudioStreamInSource, AudioStreamOutSink, etc.",
+      "range": {
+        "startLine": 46,
+        "startChar": 37,
+        "endLine": 46,
+        "endChar": 66
+      },
+      "revId": "48165e57b32bdfc1846d26e2f0e84e55d2b7f1d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef8c601_f7e639fb",
+        "filename": "services/audioflinger/AudioStreamOut.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-02T00:15:00Z",
+      "side": 1,
+      "message": "not needed?",
+      "range": {
+        "startLine": 178,
+        "startChar": 33,
+        "endLine": 178,
+        "endChar": 62
+      },
+      "revId": "48165e57b32bdfc1846d26e2f0e84e55d2b7f1d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fd14828a_944650ca",
+        "filename": "services/audioflinger/AudioStreamOut.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-02T00:15:00Z",
+      "side": 1,
+      "message": "not for this CL, just a thought at this time, but it seems we might need an AUDIO_CONFIG_BASE_INVALID :-). and perhaps a method bool audio_is_invalid(audio_config_base_t config).",
+      "range": {
+        "startLine": 180,
+        "startChar": 29,
+        "endLine": 180,
+        "endChar": 31
+      },
+      "revId": "48165e57b32bdfc1846d26e2f0e84e55d2b7f1d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
