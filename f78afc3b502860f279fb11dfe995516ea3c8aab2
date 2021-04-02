@@ -50,6 +50,24 @@
       "message": "nit: acquire lock (e.g. setProfileParams())",
       "revId": "f78afc3b502860f279fb11dfe995516ea3c8aab2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eadc88e1_4bb24cd0",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-04-02T17:26:22Z",
+      "side": 1,
+      "message": "thanks,\ni\u0027ll do it in a separate CL, so that all the cherry picks stay in sync.",
+      "parentUuid": "d7866e8e_40c9fe5b",
+      "revId": "f78afc3b502860f279fb11dfe995516ea3c8aab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
