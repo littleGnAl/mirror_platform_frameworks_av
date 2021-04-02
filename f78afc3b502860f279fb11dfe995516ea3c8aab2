@@ -33,6 +33,23 @@
       "message": "get treehugger\u0027s attention",
       "revId": "f78afc3b502860f279fb11dfe995516ea3c8aab2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7866e8e_40c9fe5b",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 705,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-04-02T02:04:50Z",
+      "side": 1,
+      "message": "nit: acquire lock (e.g. setProfileParams())",
+      "revId": "f78afc3b502860f279fb11dfe995516ea3c8aab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
