@@ -21,7 +21,6 @@
 
 #include <android/binder_manager.h>
 #include <android/binder_process.h>
-#include <binder/IMediaResourceMonitor.h>
 #include <binder/IServiceManager.h>
 #include <cutils/sched_policy.h>
 #include <dirent.h>
@@ -35,6 +34,7 @@
 #include <sys/time.h>
 #include <unistd.h>
 
+#include "IMediaResourceMonitor.h"
 #include "ResourceManagerService.h"
 #include "ServiceLog.h"
 
