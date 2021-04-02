@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc0cd85a_3b5eb656",
+        "filename": "media/libaudiohal/impl/StreamHalHidl.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-04-02T00:38:55Z",
+      "side": 1,
+      "message": "Oh, I\u0027ve ended up adding it two times. Thanks for noticing this! Removed.",
+      "parentUuid": "17a999b0_df0d3750",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 39
+      },
+      "revId": "48165e57b32bdfc1846d26e2f0e84e55d2b7f1d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f188becd_bc7f8eae",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "92d42639_56e20ebc",
+        "filename": "media/libaudiohal/include/media/audiohal/StreamHalInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-04-02T00:38:55Z",
+      "side": 1,
+      "message": "My opinion on this--since it\u0027s a C structure, it must be initialized explicitly, even if we are sure that the function we are calling also does that. I would refer to this style guide item: https://google.github.io/styleguide/cppguide.html#Local_Variables",
+      "parentUuid": "f188becd_bc7f8eae",
+      "range": {
+        "startLine": 46,
+        "startChar": 37,
+        "endLine": 46,
+        "endChar": 66
+      },
+      "revId": "48165e57b32bdfc1846d26e2f0e84e55d2b7f1d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ef8c601_f7e639fb",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-04-02T00:15:00Z",
       "side": 1,
       "message": "not needed?",
+      "range": {
+        "startLine": 178,
+        "startChar": 33,
+        "endLine": 178,
+        "endChar": 62
+      },
+      "revId": "48165e57b32bdfc1846d26e2f0e84e55d2b7f1d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "51303771_f394a73e",
+        "filename": "services/audioflinger/AudioStreamOut.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 178,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-04-02T00:38:55Z",
+      "side": 1,
+      "message": "Same thought about the need of an explicit initialization.",
+      "parentUuid": "8ef8c601_f7e639fb",
       "range": {
         "startLine": 178,
         "startChar": 33,
