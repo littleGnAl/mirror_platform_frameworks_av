@@ -112,6 +112,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0d03a100_28458f82",
+        "filename": "media/libaudiohal/include/media/audiohal/StreamHalInterface.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-02T00:44:34Z",
+      "side": 1,
+      "message": "yeah, the style guide isn\u0027t explicit on that point, but i can see the preference for initializing C structs - explicit initialization makes static analysis of initialization before use easier.",
+      "parentUuid": "92d42639_56e20ebc",
+      "range": {
+        "startLine": 46,
+        "startChar": 37,
+        "endLine": 46,
+        "endChar": 66
+      },
+      "revId": "48165e57b32bdfc1846d26e2f0e84e55d2b7f1d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ef8c601_f7e639fb",
