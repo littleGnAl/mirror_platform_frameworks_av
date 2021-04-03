@@ -87,6 +87,24 @@
       "parentUuid": "086f3fdc_a7572153",
       "revId": "b58afa74d3bc8c2bf3696f8b2f73a0c3c2d1b308",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "83a2d318_7d874232",
+        "filename": "media/codec2/hidl/1.0/vts/.clang-format",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-03T01:30:24Z",
+      "side": 1,
+      "message": "I think it\u0027s great, though:\n- this should also add a PREUPLOAD.cfg - currently there is nothing enforcing that clang-format is used automatically (and usually, an incremental clang-format is preferred - it makes it easier to code review, and helps with merge conflicts, though that\u0027s up to you)\n- I\u0027m not sure if anything else in frameworks/av uses another format. If it does, then this might want to use that as well. For instance frameworks/native has a different clang format.\n- it might be better to add the format in a higher directory (maybe even frameworks/av) and apply it everywhere, rather than having such specific configuration in this small subdirectory",
+      "parentUuid": "e1a3b97d_1223f012",
+      "revId": "b58afa74d3bc8c2bf3696f8b2f73a0c3c2d1b308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
