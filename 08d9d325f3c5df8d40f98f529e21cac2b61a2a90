@@ -22,6 +22,30 @@
       },
       "revId": "08d9d325f3c5df8d40f98f529e21cac2b61a2a90",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6397824_c569e730",
+        "filename": "media/libeffects/lvm/tests/lvmtest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1778105
+      },
+      "writtenOn": "2021-04-05T05:54:18Z",
+      "side": 0,
+      "message": "In line 288, this is already done. Removed the repitition.",
+      "parentUuid": "6c044a2d_524d60a2",
+      "range": {
+        "startLine": 306,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 0
+      },
+      "revId": "08d9d325f3c5df8d40f98f529e21cac2b61a2a90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
