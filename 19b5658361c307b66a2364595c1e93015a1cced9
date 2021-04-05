@@ -16,6 +16,23 @@
       "message": "Please review changes for supporting 24 bit packed and 32 bit integral PCM encoding formats in CCodec and C2 Software Raw Decoder",
       "revId": "19b5658361c307b66a2364595c1e93015a1cced9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4f8123e_d601c398",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-05T16:03:42Z",
+      "side": 1,
+      "message": "Checking up on the audio side for this change.  Is there a CTS test for this?  Thanks!",
+      "revId": "19b5658361c307b66a2364595c1e93015a1cced9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
