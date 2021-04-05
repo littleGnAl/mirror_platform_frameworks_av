@@ -105,6 +105,24 @@
       "parentUuid": "e1a3b97d_1223f012",
       "revId": "b58afa74d3bc8c2bf3696f8b2f73a0c3c2d1b308",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "adfa8a29_3924e9cd",
+        "filename": "media/codec2/hidl/1.0/vts/.clang-format",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-05T03:22:08Z",
+      "side": 1,
+      "message": "Steven,\nThanks for the review comments.\n\n- PREUPLOAD.cfg in frameworks/av in aosp/master and internal branches have diverged now and that means the one in aosp/master can\u0027t be updated currently till the internal changes are merged to aosp/master. For the time being we will manually format before uploading (till we get a way to add this in PREUPLOAD.cfg by uploading a CL that can be cherry-picked to internal branches)\n\n- Since C2 VTS tests are undergoing some refactoring, this is a good time to format everything once and use that as a baseline (anyway not many lines actually change in this CL). For rest of the source files, when clang-format can be added to the hooks, it will be done as an incremental clang-format as you have suggested.\n\n- frameworks/av is a large repo with lots of code, not sure if we can come up with a common format that works across all of them. We will probably start with frameworks/av/media/codec2 first.\n\nSungtak,\nOnce this is submitted, I will upload a CL on partner gerrit to update PREUPLOAD.cfg.",
+      "parentUuid": "83a2d318_7d874232",
+      "revId": "b58afa74d3bc8c2bf3696f8b2f73a0c3c2d1b308",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
