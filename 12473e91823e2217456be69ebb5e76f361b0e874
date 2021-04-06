@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5424e579_8b35a613",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 15
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-04-06T03:50:20Z",
+      "side": 1,
+      "message": "Thanks Andy for merging this change.",
+      "revId": "12473e91823e2217456be69ebb5e76f361b0e874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f98165f_a5e08667",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 15
+      },
+      "lineNbr": 3982,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-04-06T03:50:20Z",
+      "side": 1,
+      "message": "with the change in PS15, this comment is no longer correct.\nIn HW pause we now return without timestamp update, so any small duration buffered data draining by HAL will not be accounted for until resume.",
+      "range": {
+        "startLine": 3981,
+        "startChar": 4,
+        "endLine": 3982,
+        "endChar": 74
+      },
+      "revId": "12473e91823e2217456be69ebb5e76f361b0e874",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
