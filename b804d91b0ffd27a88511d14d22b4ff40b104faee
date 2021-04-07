@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "a9d9c5a2_8c5c6015",
         "filename": "/PATCHSET_LEVEL",
@@ -14,10 +15,10 @@
       "side": 1,
       "message": "Hi google friends,\nas we discussed in https://issuetracker.google.com/issues/153613044, Pawin agree to increase the timeout, can you approve this commit ?",
       "revId": "b804d91b0ffd27a88511d14d22b4ff40b104faee",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "913d2f07_9ec3f617",
         "filename": "/PATCHSET_LEVEL",
@@ -31,8 +32,24 @@
       "side": 1,
       "message": "\u003e Patch Set 2:\n\u003e \n\u003e \u003e Patch Set 2:\n\u003e \u003e \n\u003e \u003e Xiahong, Could you file a bug and add a bug number to this CL?\n\u003e \n\u003e Hi Lee, bug number is 153613044, https://issuetracker.google.com/issues/153613044\n\nHi Lee and Pawin,\n\nCan you help review this patch ? In https://issuetracker.google.com/issues/153613044, Pawin agree with this change, I am still waiting for your response.",
       "revId": "b804d91b0ffd27a88511d14d22b4ff40b104faee",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a66290f_8f0f476c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1105578
+      },
+      "writtenOn": "2021-04-07T09:25:59Z",
+      "side": 1,
+      "message": "\u003e Patch Set 2:\n\u003e \n\u003e Xiahong, Could you file a bug and add a bug number to this CL?\n\nHi Lee,\nCould you help review this patch ?",
+      "revId": "b804d91b0ffd27a88511d14d22b4ff40b104faee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
