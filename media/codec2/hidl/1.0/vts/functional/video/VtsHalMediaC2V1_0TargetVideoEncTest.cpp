@@ -46,9 +46,6 @@ static std::vector<std::tuple<std::string, std::string, std::string, std::string
 static std::vector<std::tuple<std::string, std::string, std::string, std::string>>
         kEncodeResolutionTestParameters;
 
-// Resource directory
-static std::string sResourceDir = "";
-
 namespace {
 
 class Codec2VideoEncHidlTestBase : public ::testing::Test {
@@ -78,26 +75,13 @@ class Codec2VideoEncHidlTestBase : public ::testing::Test {
         mGraphicPool = std::make_shared<C2PooledBlockPool>(mGraphicAllocator, mBlockPoolId++);
         ASSERT_NE(mGraphicPool, nullptr);
 
-        mCompName = unknown_comp;
-        struct StringToName {
-            const char* Name;
-            standardComp CompName;
-        };
+        std::vector<std::unique_ptr<C2Param>> queried;
+        mComponent->query({}, {C2PortMediaTypeSetting::output::PARAM_TYPE}, C2_DONT_BLOCK,
+                          &queried);
+        ASSERT_GT(queried.size(), 0);
 
-        const StringToName kStringToName[] = {
-                {"h263", h263}, {"avc", avc}, {"mpeg4", mpeg4},
-                {"hevc", hevc}, {"vp8", vp8}, {"vp9", vp9},
-        };
-
-        const size_t kNumStringToName = sizeof(kStringToName) / sizeof(kStringToName[0]);
-
-        // Find the component type
-        for (size_t i = 0; i < kNumStringToName; ++i) {
-            if (strcasestr(mComponentName.c_str(), kStringToName[i].Name)) {
-                mCompName = kStringToName[i].CompName;
-                break;
-            }
-        }
+        mMime = ((C2PortMediaTypeSetting::output*)queried[0].get())->m.value;
+        std::cout << "mime : " << mMime << "\n";
         mEos = false;
         mCsd = false;
         mConfigBPictures = false;
@@ -106,7 +90,6 @@ class Codec2VideoEncHidlTestBase : public ::testing::Test {
         mTimestampUs = 0u;
         mOutputSize = 0u;
         mTimestampDevTest = false;
-        if (mCompName == unknown_comp) mDisableTest = true;
 
         C2SecureModeTuning secureModeTuning{};
         mComponent->query({&secureModeTuning}, {}, C2_MAY_BLOCK, nullptr);
@@ -188,16 +171,7 @@ class Codec2VideoEncHidlTestBase : public ::testing::Test {
         }
     }
 
-    enum standardComp {
-        h263,
-        avc,
-        mpeg4,
-        hevc,
-        vp8,
-        vp9,
-        unknown_comp,
-    };
-
+    std::string mMime;
     std::string mInstanceName;
     std::string mComponentName;
     bool mEos;
@@ -205,7 +179,6 @@ class Codec2VideoEncHidlTestBase : public ::testing::Test {
     bool mDisableTest;
     bool mConfigBPictures;
     bool mTimestampDevTest;
-    standardComp mCompName;
     uint32_t mFramesReceived;
     uint32_t mFailedWorkReceived;
     uint64_t mTimestampUs;
@@ -242,7 +215,7 @@ class Codec2VideoEncHidlTest
 };
 
 void validateComponent(const std::shared_ptr<android::Codec2Client::Component>& component,
-                       Codec2VideoEncHidlTest::standardComp compName, bool& disableTest) {
+                       bool& disableTest) {
     // Validate its a C2 Component
     if (component->getName().find("c2") == std::string::npos) {
         ALOGE("Not a c2 component");
@@ -268,13 +241,6 @@ void validateComponent(const std::shared_ptr<android::Codec2Client::Component>& 
             disableTest = true;
             return;
         }
-    }
-
-    // Validates component name
-    if (compName == Codec2VideoEncHidlTest::unknown_comp) {
-        ALOGE("Component InValid");
-        disableTest = true;
-        return;
     }
     ALOGV("Component Valid");
 }
@@ -406,7 +372,7 @@ void encodeNFrames(const std::shared_ptr<android::Codec2Client::Component>& comp
 TEST_P(Codec2VideoEncHidlTest, validateCompName) {
     if (mDisableTest) GTEST_SKIP() << "Test is disabled";
     ALOGV("Checks if the given component is a valid video component");
-    validateComponent(mComponent, mCompName, mDisableTest);
+    validateComponent(mComponent, mDisableTest);
     ASSERT_EQ(mDisableTest, false);
 }
 
@@ -518,9 +484,10 @@ TEST_P(Codec2VideoEncEncodeTest, EncodeTest) {
         ASSERT_TRUE(false);
     }
 
-    if (mCompName == vp8 || mCompName == h263) {
+    if ((mMime.find("vp8") != std::string::npos) ||
+        (mMime.find("3gpp") != std::string::npos)) {
         ASSERT_FALSE(mCsd) << "CSD Buffer not expected";
-    } else if (mCompName != vp9) {
+    } else if (mMime.find("vp9") == std::string::npos) {
         ASSERT_TRUE(mCsd) << "CSD Buffer not received";
     }
 
@@ -842,6 +809,7 @@ TEST_P(Codec2VideoEncHidlTest, AdaptiveBitrateTest) {
 }  // anonymous namespace
 
 int main(int argc, char** argv) {
+    parseArgs(argc, argv);
     kTestParameters = getTestParameters(C2Component::DOMAIN_VIDEO, C2Component::KIND_ENCODER);
     for (auto params : kTestParameters) {
         constexpr char const* kBoolString[] = { "false", "true" };
@@ -865,15 +833,6 @@ int main(int argc, char** argv) {
                 std::make_tuple(std::get<0>(params), std::get<1>(params), "852", "608"));
         kEncodeResolutionTestParameters.push_back(
                 std::make_tuple(std::get<0>(params), std::get<1>(params), "1400", "442"));
-    }
-
-    // Set the resource directory based on command line args.
-    // Test will fail to set up if the argument is not set.
-    for (int i = 1; i < argc; i++) {
-        if (strcmp(argv[i], "-P") == 0 && i < argc - 1) {
-            sResourceDir = argv[i + 1];
-            break;
-        }
     }
 
     ::testing::InitGoogleTest(&argc, argv);

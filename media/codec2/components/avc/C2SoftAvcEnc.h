@@ -24,8 +24,7 @@
 #include <SimpleC2Component.h>
 
 #include "ih264_typedefs.h"
-#include "iv2.h"
-#include "ive2.h"
+#include "ih264e.h"
 
 namespace android {
 
@@ -99,6 +98,11 @@ namespace android {
 #define DEFAULT_INTRA4x4            0
 #define STRLENGTH                   500
 #define DEFAULT_CONSTRAINED_INTRA   0
+
+/** limits as specified by h264 */
+#define CODEC_QP_MIN                0
+#define CODEC_QP_MAX                51
+
 
 #define MIN(a, b) ((a) < (b))? (a) : (b)
 #define MAX(a, b) ((a) > (b))? (a) : (b)
