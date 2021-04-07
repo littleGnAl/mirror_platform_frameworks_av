@@ -625,21 +625,27 @@ void CCodecBufferChannel::feedInputBufferIfAvailableInternal() {
         Mutexed<Output>::Locked output(mOutput);
         if (!output->buffers ||
                 output->buffers->hasPending() ||
-                output->buffers->numClientBuffers() >= output->numSlots) {
+                output->buffers->numActiveSlots() >= output->numSlots) {
             return;
         }
     }
+<<<<<<< TARGET BRANCH (443ce9 Merge "Camera: Fix deadlock in ACameraCaptureSession destruc)
     size_t numInputSlots = mInput.lock()->numSlots;
     for (size_t i = 0; i < numInputSlots; ++i) {
         if (mPipelineWatcher.lock()->pipelineFull()) {
             return;
         }
+=======
+    size_t numActiveSlots = 0;
+    while (!mPipelineWatcher.lock()->pipelineFull()) {
+>>>>>>> SOURCE BRANCH (1ca499 Snap for 7192656 from 666782ff2f186feb21b6ce38b7700f90a809f6)
         sp<MediaCodecBuffer> inBuffer;
         size_t index;
         {
             Mutexed<Input>::Locked input(mInput);
-            if (input->buffers->numClientBuffers() >= input->numSlots) {
-                return;
+            numActiveSlots = input->buffers->numActiveSlots();
+            if (numActiveSlots >= input->numSlots) {
+                break;
             }
             if (!input->buffers->requestNewBuffer(&index, &inBuffer)) {
                 ALOGV("[%s] no new buffer available", mName);
@@ -649,6 +655,7 @@ void CCodecBufferChannel::feedInputBufferIfAvailableInternal() {
         ALOGV("[%s] new input index = %zu [%p]", mName, index, inBuffer.get());
         mCallback->onInputBufferAvailable(index, inBuffer);
     }
+    ALOGV("[%s] # active slots after feedInputBufferIfAvailable = %zu", mName, numActiveSlots);
 }
 
 status_t CCodecBufferChannel::renderOutputBuffer(
