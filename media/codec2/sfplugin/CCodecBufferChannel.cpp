@@ -149,6 +149,7 @@ CCodecBufferChannel::CCodecBufferChannel(
       mFirstValidFrameIndex(0u),
       mMetaMode(MODE_NONE),
       mInputMetEos(false),
+      mIsHWDecoder(false),
       mSendEncryptedInfoBuffer(false) {
     mOutputSurface.lock()->maxDequeueBuffers = kSmoothnessFactor + kRenderingDepth;
     {
@@ -183,6 +184,8 @@ void CCodecBufferChannel::setComponent(
     mComponent = component;
     mComponentName = component->getName() + StringPrintf("#%d", int(uintptr_t(component.get()) % 997));
     mName = mComponentName.c_str();
+    std::regex pattern{"c2\\.qti\\..*\\.decoder.*"};
+    mIsHWDecoder = std::regex_match(mComponentName, pattern);
 }
 
 status_t CCodecBufferChannel::setInputSurface(
@@ -725,13 +728,26 @@ void CCodecBufferChannel::feedInputBufferIfAvailableInternal() {
         }
     }
     size_t numActiveSlots = 0;
-    while (!mPipelineWatcher.lock()->pipelineFull()) {
+    size_t pipelineRoom = 0;
+    size_t numInputBuffersAvailable = 0;
+    while (!mPipelineWatcher.lock()->pipelineFull(&pipelineRoom)) {
         sp<MediaCodecBuffer> inBuffer;
         size_t index;
         {
             Mutexed<Input>::Locked input(mInput);
             numActiveSlots = input->buffers->numActiveSlots();
             if (numActiveSlots >= input->numSlots) {
+                break;
+            }
+
+            // Control the inputs based on pipelineRoom only for HW decoder
+            if (!mIsHWDecoder) {
+                pipelineRoom = SIZE_MAX;
+            }
+            if (pipelineRoom <= input->buffers->numClientBuffers()) {
+                ALOGV("pipelineRoom(%zu) is <= numClientBuffers(%zu). "
+                    "Not signalling any more buffers to client",
+                    pipelineRoom, input->buffers->numClientBuffers());
                 break;
             }
             if (!input->buffers->requestNewBuffer(&index, &inBuffer)) {
@@ -741,6 +757,11 @@ void CCodecBufferChannel::feedInputBufferIfAvailableInternal() {
         }
         ALOGV("[%s] new input index = %zu [%p]", mName, index, inBuffer.get());
         mCallback->onInputBufferAvailable(index, inBuffer);
+        if (++numInputBuffersAvailable >= pipelineRoom) {
+            ALOGV("[%s] pipeline will overflow after %zu queueInputBuffer", mName,
+                    numInputBuffersAvailable);
+            break;
+        }
     }
     ALOGV("[%s] # active slots after feedInputBufferIfAvailable = %zu", mName, numActiveSlots);
 }
