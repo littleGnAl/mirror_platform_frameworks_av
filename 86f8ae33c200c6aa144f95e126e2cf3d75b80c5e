@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c4b1699_b1e5b057",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-08T23:40:37Z",
+      "side": 1,
+      "message": "Wonsik,\nAddding support for aac-profile exposes some issues in muxer/extractor which result in couple of failures in mediav2 CTS.\nI have uploaded a CL to disable these muxer/extractor validations for failing cases and will track those failures in separate bugs.\nhttps://android-review.googlesource.com/c/platform/cts/+/1670631",
+      "revId": "86f8ae33c200c6aa144f95e126e2cf3d75b80c5e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
