@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b96601c8_4ba1e2da",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-04-08T17:44:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d61f9ba3_d27f8b87",
+      "range": {
+        "startLine": 828,
+        "startChar": 0,
+        "endLine": 829,
+        "endChar": 62
+      },
+      "revId": "3c5b5cfa5a45fa8f8f74ad5f20bef47cbbd57b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "07edc951_46f3ca73",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15be2dbb_17ab045e",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-04-08T17:44:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "07edc951_46f3ca73",
+      "range": {
+        "startLine": 1037,
+        "startChar": 3,
+        "endLine": 1037,
+        "endChar": 11
+      },
+      "revId": "3c5b5cfa5a45fa8f8f74ad5f20bef47cbbd57b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ef4470cb_95ada2de",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-04-08T15:58:06Z",
       "side": 1,
       "message": "input-\u003ewidth() as UV plane size is same as Y plane",
+      "range": {
+        "startLine": 1491,
+        "startChar": 0,
+        "endLine": 1491,
+        "endChar": 59
+      },
+      "revId": "3c5b5cfa5a45fa8f8f74ad5f20bef47cbbd57b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d952f29_d8d025df",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-04-08T17:44:23Z",
+      "side": 1,
+      "message": "That led to decoder error in my testing. Could you please double check?",
+      "parentUuid": "ef4470cb_95ada2de",
       "range": {
         "startLine": 1491,
         "startChar": 0,
