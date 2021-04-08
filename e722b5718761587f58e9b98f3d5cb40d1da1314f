@@ -60,6 +60,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0ed17157_05ef7947",
+        "filename": "media/libmediaplayerservice/StagefrightRecorder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-04-08T17:18:42Z",
+      "side": 1,
+      "message": "with just this change, we\u0027ll get a no-data on the metrics side.\nbecause it only looks for an int value and won\u0027t see the float value.\n\nand since we can\u0027t redefine keys that go up through statsd, we will need\na new key, defined as float.",
+      "parentUuid": "8aa4c5b0_0f38e51f",
+      "range": {
+        "startLine": 175,
+        "startChar": 27,
+        "endLine": 175,
+        "endChar": 55
+      },
+      "revId": "e722b5718761587f58e9b98f3d5cb40d1da1314f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "7e8fdb73_b9a11184",
         "filename": "media/libmediaplayerservice/StagefrightRecorder.cpp",
         "patchSetId": 1
@@ -71,6 +95,30 @@
       "writtenOn": "2021-04-08T06:23:34Z",
       "side": 1,
       "message": "strtof()?",
+      "range": {
+        "startLine": 455,
+        "startChar": 22,
+        "endLine": 455,
+        "endChar": 28
+      },
+      "revId": "e722b5718761587f58e9b98f3d5cb40d1da1314f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7630c3e7_5c0b0bd4",
+        "filename": "media/libmediaplayerservice/StagefrightRecorder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-04-08T17:18:42Z",
+      "side": 1,
+      "message": "make it agree with the code -- so that would be strtof() according to line 457",
+      "parentUuid": "7e8fdb73_b9a11184",
       "range": {
         "startLine": 455,
         "startChar": 22,
