@@ -16,6 +16,24 @@
       "message": "Wonsik,\nShould I instead look at aac-profile from configure format in CCodec.cpp?\n\nTwo SDK keys currently map to one C2 key. I am not sure if that is acceptable.\nI am not mapping c2 key back to SDK key and removing aac-profile from output formats at line 1276.",
       "revId": "285fba4a7197d154fc63dced4f3c05502e6226c3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea9a006_980e2049",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 733,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-04-08T16:33:35Z",
+      "side": 1,
+      "message": "Please remove D::READ flag below to prevent aac-profile to show up in the output format.",
+      "parentUuid": "c9dd3543_83262f78",
+      "revId": "285fba4a7197d154fc63dced4f3c05502e6226c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
