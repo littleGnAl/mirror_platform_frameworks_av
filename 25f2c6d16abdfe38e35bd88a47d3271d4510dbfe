@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a4038f98_752bf8dd",
+        "filename": "services/audioflinger/PlaybackTracks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-08T23:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "58682c84_26cabd54",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 3
+      },
+      "revId": "25f2c6d16abdfe38e35bd88a47d3271d4510dbfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "41a02e97_3bde959d",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-04-08T16:09:32Z",
       "side": 1,
       "message": "isOffloadedOrDirect",
+      "range": {
+        "startLine": 1085,
+        "startChar": 16,
+        "endLine": 1085,
+        "endChar": 24
+      },
+      "revId": "25f2c6d16abdfe38e35bd88a47d3271d4510dbfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "65ecc12a_3cfbb80f",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-08T23:54:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "41a02e97_3bde959d",
       "range": {
         "startLine": 1085,
         "startChar": 16,
