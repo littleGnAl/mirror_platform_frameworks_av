@@ -16,6 +16,69 @@
       "message": "depend",
       "revId": "e722b5718761587f58e9b98f3d5cb40d1da1314f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ad6529e_f43e02e4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-04-08T06:23:34Z",
+      "side": 1,
+      "message": "Hello Zhen Yang,\n \nThanks for sharing the change with us.  i-frame-interval value is also reported from MediaRecorder as a metric through mediametrics module.  Hence, if we change this from Int32 to Float corresponding changes also have to be made in mediametrics module.\nframeworks/av/services/mediametrics/statsd_recorder.cpp\nframeworks/av/media/libmediametrics/include/media/MediaMetricsItem.h and other related files.\n\nI checked those modules and they don\u0027t seem have support for float yet, I guess we could use functions that are for double to report this float value.",
+      "revId": "e722b5718761587f58e9b98f3d5cb40d1da1314f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aa4c5b0_0f38e51f",
+        "filename": "media/libmediaplayerservice/StagefrightRecorder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-04-08T06:23:34Z",
+      "side": 1,
+      "message": "Changes are required in mediametrics modules also to read this float as float, otherwise it would be read as Int32 as it is now?",
+      "range": {
+        "startLine": 175,
+        "startChar": 27,
+        "endLine": 175,
+        "endChar": 55
+      },
+      "revId": "e722b5718761587f58e9b98f3d5cb40d1da1314f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e8fdb73_b9a11184",
+        "filename": "media/libmediaplayerservice/StagefrightRecorder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-04-08T06:23:34Z",
+      "side": 1,
+      "message": "strtof()?",
+      "range": {
+        "startLine": 455,
+        "startChar": 22,
+        "endLine": 455,
+        "endChar": 28
+      },
+      "revId": "e722b5718761587f58e9b98f3d5cb40d1da1314f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
