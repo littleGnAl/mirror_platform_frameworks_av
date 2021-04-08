@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d61f9ba3_d27f8b87",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 829,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-08T15:58:06Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 828,
+        "startChar": 0,
+        "endLine": 829,
+        "endChar": 62
+      },
+      "revId": "3c5b5cfa5a45fa8f8f74ad5f20bef47cbbd57b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "07edc951_46f3ca73",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1037,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-08T15:58:06Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 1037,
+        "startChar": 3,
+        "endLine": 1037,
+        "endChar": 11
+      },
+      "revId": "3c5b5cfa5a45fa8f8f74ad5f20bef47cbbd57b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef4470cb_95ada2de",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-08T15:58:06Z",
+      "side": 1,
+      "message": "input-\u003ewidth() as UV plane size is same as Y plane",
+      "range": {
+        "startLine": 1491,
+        "startChar": 0,
+        "endLine": 1491,
+        "endChar": 59
+      },
+      "revId": "3c5b5cfa5a45fa8f8f74ad5f20bef47cbbd57b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
