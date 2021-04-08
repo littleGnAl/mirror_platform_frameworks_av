@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f2c8eb5_35ed7cdc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-08T16:09:32Z",
+      "side": 1,
+      "message": "Some minor nits.",
+      "revId": "25f2c6d16abdfe38e35bd88a47d3271d4510dbfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "58682c84_26cabd54",
+        "filename": "services/audioflinger/PlaybackTracks.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 309,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-08T16:09:32Z",
+      "side": 1,
+      "message": "maybe make a comment:\n// For direct or offloaded tracks ensure that the pause state is acknowledged\n// by the PlaybackThread in case of an immediate following flush.",
+      "range": {
+        "startLine": 309,
+        "startChar": 0,
+        "endLine": 309,
+        "endChar": 3
+      },
+      "revId": "25f2c6d16abdfe38e35bd88a47d3271d4510dbfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41a02e97_3bde959d",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1085,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-08T16:09:32Z",
+      "side": 1,
+      "message": "isOffloadedOrDirect",
+      "range": {
+        "startLine": 1085,
+        "startChar": 16,
+        "endLine": 1085,
+        "endChar": 24
+      },
+      "revId": "25f2c6d16abdfe38e35bd88a47d3271d4510dbfe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
