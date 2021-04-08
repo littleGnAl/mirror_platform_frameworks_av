@@ -1384,7 +1384,7 @@ status_t GraphicBufferSource::setTimeLapseConfig(double fps, double captureFps) 
         mSnapTimestamps = 1 == base::GetIntProperty(
                 "debug.stagefright.snap_timestamps", int64_t(0));
     } else {
-        mSnapTimestamps = false;
+        mSnapTimestamps = true;
     }
 
     return OK;
