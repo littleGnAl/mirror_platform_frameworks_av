@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41516285_f7fa8732",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-08T18:46:13Z",
+      "side": 1,
+      "message": "Wonsik,\nThis CL conflicts with a recent change that went in as part of a security fix to internal branches.\nsecurity fix had two CLs (one in the libavc which was the actual fix and one in C2SoftAVCEnc to set the dimensions accordingly). CL in C2SoftAVCEnc can be cherry-picked to aosp/master (as that wasn\u0027t the security fix) and will work without changes to libavc and then this CL can be rebased on that.\nOr this CL can be merged in internal branches for now and cherry-picked to aosp later.\nPlease let me know if I should CP that C2SoftAVCEnc.cpp change to aosp/master.",
+      "revId": "6ab577dc0215623980525235cbbabe913ffeeab2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

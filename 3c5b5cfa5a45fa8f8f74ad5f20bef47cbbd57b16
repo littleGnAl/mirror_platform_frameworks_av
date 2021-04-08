@@ -140,6 +140,30 @@
       },
       "revId": "3c5b5cfa5a45fa8f8f74ad5f20bef47cbbd57b16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c7b0de64_9dd3d538",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1491,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-08T18:46:13Z",
+      "side": 1,
+      "message": "sorry, my bad.\nOnly stride needs to be same.",
+      "parentUuid": "7d952f29_d8d025df",
+      "range": {
+        "startLine": 1491,
+        "startChar": 0,
+        "endLine": 1491,
+        "endChar": 59
+      },
+      "revId": "3c5b5cfa5a45fa8f8f74ad5f20bef47cbbd57b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
