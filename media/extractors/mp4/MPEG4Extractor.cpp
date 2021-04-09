@@ -139,6 +139,7 @@ private:
     bool mIsHEVC;
     bool mIsDolbyVision;
     bool mIsAC4;
+    bool mIsMpegH = false;
     bool mIsPcm;
     size_t mNALLengthSize;
 
@@ -377,6 +378,10 @@ static const char *FourCC2MIME(uint32_t fourcc) {
         case FOURCC(".mp3"):
         case 0x6D730055: // "ms U" mp3 audio
             return MEDIA_MIMETYPE_AUDIO_MPEG;
+        case FOURCC("mha1"):
+            return MEDIA_MIMETYPE_AUDIO_MHA1;
+        case FOURCC("mhm1"):
+            return MEDIA_MIMETYPE_AUDIO_MHM1;
         default:
             ALOGW("Unknown fourcc: %c%c%c%c",
                    (fourcc >> 24) & 0xff,
@@ -1760,6 +1765,8 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
         case FOURCC("fLaC"):
         case FOURCC(".mp3"):
         case 0x6D730055: // "ms U" mp3 audio
+        case FOURCC("mha1"):
+        case FOURCC("mhm1"):
         {
             if (mIsQT && depth >= 1 && mPath[depth - 1] == FOURCC("wave")) {
 
@@ -1959,7 +1966,109 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
             }
             break;
         }
+        case FOURCC("mhaC"):
+        {
+            // See ISO_IEC_23008-3;2019 MHADecoderConfigurationRecord
+            constexpr uint32_t mhac_header_size = 4 /* size */ + 4 /* boxtype 'mhaC' */
+                    + 1 /* configurationVersion */ + 1 /* mpegh3daProfileLevelIndication */
+                    + 1 /* referenceChannelLayout */ + 2 /* mpegh3daConfigLength */;
+            uint8_t mhac_header[mhac_header_size];
+            off64_t data_offset = *offset;
 
+            if (chunk_data_size < sizeof(mhac_header)) {
+                return ERROR_MALFORMED;
+            }
+
+            if (mDataSource->readAt(data_offset, mhac_header, sizeof(mhac_header))
+                    < (ssize_t)sizeof(mhac_header)) {
+                return ERROR_IO;
+            }
+
+            // These keys are available only from SDK 31:
+            // AMEDIAFORMAT_KEY_MPEGH_3DA_PROFILE_LEVEL_INDICATION,
+            // AMEDIAFORMAT_KEY_MPEGH_REFERENCE_CHANNEL_LAYOUT.
+            // The mp4 extractor is part of mainline and builds against SDK 29 as of
+            // writing. This hard-coded string can be replaced with the named constant once
+            // the mp4 extractor is built against SDK >= 31.
+
+            //get mpegh3daProfileLevelIndication
+            const uint32_t mpegh3daProfileLevelIndication = mhac_header[9];
+            AMediaFormat_setInt32(mLastTrack->meta,
+                    // TODO: replace with AMEDIAFORMAT_KEY_MPEGH_3DA_PROFILE_LEVEL_INDICATION
+                    "mpegh-3da-profile-level-indication",
+                    mpegh3daProfileLevelIndication);
+
+             //get referenceChannelLayout
+            const uint32_t referenceChannelLayout = mhac_header[10];
+            AMediaFormat_setInt32(mLastTrack->meta,
+                    // TODO: replace with AMEDIAFORMAT_KEY_MPEGH_REFERENCE_CHANNEL_LAYOUT
+                    "mpegh-reference-channel-layout",
+                    referenceChannelLayout);
+
+            // get mpegh3daConfigLength
+            const uint32_t mhac_config_size = U16_AT(&mhac_header[11]);
+            if (chunk_size != sizeof(mhac_header) + mhac_config_size) {
+                return ERROR_MALFORMED;
+            }
+
+            data_offset += sizeof(mhac_header);
+            uint8_t mhac_config[mhac_config_size];
+            if (mDataSource->readAt(data_offset, mhac_config, sizeof(mhac_config))
+                    < (ssize_t)sizeof(mhac_config)) {
+                return ERROR_IO;
+            }
+
+            AMediaFormat_setBuffer(mLastTrack->meta,
+                    AMEDIAFORMAT_KEY_CSD_0, mhac_config, sizeof(mhac_config));
+            data_offset += sizeof(mhac_config);
+            *offset = data_offset;
+            break;
+        }
+        case FOURCC("mhaP"):
+        {
+            // FDAmd_2 of ISO_IEC_23008-3;2019 MHAProfileAndLevelCompatibilitySetBox
+            constexpr uint32_t mhap_header_size = 4 /* size */ + 4 /* boxtype 'mhaP' */
+                    + 1 /* numCompatibleSets */;
+
+            uint8_t mhap_header[mhap_header_size];
+            off64_t data_offset = *offset;
+
+            if (chunk_data_size < (ssize_t)mhap_header_size) {
+                return ERROR_MALFORMED;
+            }
+
+            if (mDataSource->readAt(data_offset, mhap_header, sizeof(mhap_header))
+                    < (ssize_t)sizeof(mhap_header)) {
+                return ERROR_IO;
+            }
+
+            // mhap_compatible_sets_size = numCompatibleSets * sizeof(uint8_t)
+            const uint32_t mhap_compatible_sets_size = mhap_header[8];
+            if (chunk_size != sizeof(mhap_header) + mhap_compatible_sets_size) {
+                return ERROR_MALFORMED;
+            }
+
+            data_offset += sizeof(mhap_header);
+            uint8_t mhap_compatible_sets[mhap_compatible_sets_size];
+            if (mDataSource->readAt(
+                    data_offset, mhap_compatible_sets, sizeof(mhap_compatible_sets))
+                            < (ssize_t)sizeof(mhap_compatible_sets)) {
+                return ERROR_IO;
+            }
+
+            // These keys are available only from SDK 31:
+            // AMEDIAFORMAT_KEY_MPEGH_COMPATIBLE_SETS.
+            // The mp4 extractor is part of mainline and builds against SDK 29 as of
+            // writing. This hard-coded string can be replaced with the named constant once
+            // the mp4 extractor is built against SDK >= 31.
+            AMediaFormat_setBuffer(mLastTrack->meta,
+                    // TODO: replace with AMEDIAFORMAT_KEY_MPEGH_COMPATIBLE_SETS
+                    "mpegh-compatible-sets",
+                    mhap_compatible_sets, sizeof(mhap_compatible_sets));
+            data_offset += sizeof(mhap_compatible_sets);
+            *offset = data_offset;
+            break;
+        }
         case FOURCC("mp4v"):
         case FOURCC("encv"):
         case FOURCC("s263"):
@@ -4944,6 +5053,8 @@ MPEG4Source::MPEG4Source(
               !strcasecmp(mime, MEDIA_MIMETYPE_IMAGE_ANDROID_HEIC);
     mIsAC4 = !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_AC4);
     mIsDolbyVision = !strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_DOLBY_VISION);
+    mIsMpegH = !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_MHA1) ||
+               !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_MHM1);
 
     if (mIsAVC) {
         void *data;
@@ -6011,7 +6122,7 @@ media_status_t MPEG4Source::read(
             // assume every non-USAC audio sample is a sync sample. This works around
             // seek issues with files that were incorrectly written with an
             // empty or single-sample stss block for the audio track
-            if (err == OK && (!mIsAudio || mIsUsac)) {
+            if (err == OK && (!mIsAudio || mIsUsac || mIsMpegH)) {
                 err = mSampleTable->findSyncSampleNear(
                         sampleIndex, &syncSampleIndex, findFlags);
             }
