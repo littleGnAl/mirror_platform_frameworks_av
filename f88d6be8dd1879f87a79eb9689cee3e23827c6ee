@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9e49b35_abaeb756",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-09T16:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4080fd94_a1876f2e",
+      "range": {
+        "startLine": 7,
+        "startChar": 37,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "f88d6be8dd1879f87a79eb9689cee3e23827c6ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "fd38c3dc_58b3d5a0",
@@ -70,6 +94,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda0180d_8da919ce",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-09T16:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fd38c3dc_58b3d5a0",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "f88d6be8dd1879f87a79eb9689cee3e23827c6ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3acb638d_a64a6388",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-09T16:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "674f8af0_ec210095",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "f88d6be8dd1879f87a79eb9689cee3e23827c6ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ca52be10_88b88e4e",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-09T09:16:32Z",
       "side": 1,
       "message": "positive",
+      "range": {
+        "startLine": 11,
+        "startChar": 65,
+        "endLine": 11,
+        "endChar": 72
+      },
+      "revId": "f88d6be8dd1879f87a79eb9689cee3e23827c6ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0bb3bac2_21d3e66b",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-09T16:36:15Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ca52be10_88b88e4e",
       "range": {
         "startLine": 11,
         "startChar": 65,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e86ab8d8_a7d841bb",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5838,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-09T16:36:15Z",
+      "side": 1,
+      "message": "This is because the pause must be performed in this cycle before the flush.  If this were moved into the isPausing() block then an immediate flush after pause would never do the pause.",
+      "parentUuid": "f14a45d9_7af4367a",
+      "range": {
+        "startLine": 5835,
+        "startChar": 12,
+        "endLine": 5838,
+        "endChar": 13
+      },
+      "revId": "f88d6be8dd1879f87a79eb9689cee3e23827c6ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f502f12b_f346fd62",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-04-09T09:16:32Z",
       "side": 1,
       "message": "same here",
+      "range": {
+        "startLine": 6382,
+        "startChar": 0,
+        "endLine": 6382,
+        "endChar": 12
+      },
+      "revId": "f88d6be8dd1879f87a79eb9689cee3e23827c6ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc411f4b_0fb240ff",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 6382,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-09T16:36:15Z",
+      "side": 1,
+      "message": "Ditto",
+      "parentUuid": "f502f12b_f346fd62",
       "range": {
         "startLine": 6382,
         "startChar": 0,
