@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b070d538_764d3cb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-04-09T04:35:17Z",
+      "side": 1,
+      "message": "Thanks for reviewing.  Have replied to the recent comments.",
+      "revId": "e722b5718761587f58e9b98f3d5cb40d1da1314f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8aa4c5b0_0f38e51f",
@@ -72,6 +89,30 @@
       "side": 1,
       "message": "with just this change, we\u0027ll get a no-data on the metrics side.\nbecause it only looks for an int value and won\u0027t see the float value.\n\nand since we can\u0027t redefine keys that go up through statsd, we will need\na new key, defined as float.",
       "parentUuid": "8aa4c5b0_0f38e51f",
+      "range": {
+        "startLine": 175,
+        "startChar": 27,
+        "endLine": 175,
+        "endChar": 55
+      },
+      "revId": "e722b5718761587f58e9b98f3d5cb40d1da1314f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62c86b20_a39922ce",
+        "filename": "media/libmediaplayerservice/StagefrightRecorder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-04-09T04:35:17Z",
+      "side": 1,
+      "message": "Have made a new CL before I saw this reply.\nAlso, I see that there isn\u0027t complete support to set float values all the way from StagefrightRecorder to metrics side.\nFor example, MediaMetricsItem.h file doesn\u0027t have addFloat() and getFloat() functions and can we define all the missing pieces for this?",
+      "parentUuid": "0ed17157_05ef7947",
       "range": {
         "startLine": 175,
         "startChar": 27,
