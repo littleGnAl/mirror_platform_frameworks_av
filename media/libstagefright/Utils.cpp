@@ -1837,6 +1837,24 @@ status_t convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
             meta->setInt32(kKeyIsADTS, isADTS);
         }
 
+        // See AMEDIAFORMAT_KEY_MPEGH_PROFILE_LEVEL_INDICATION
+        int32_t mpeghProfileLevelIndication = -1;
+        if (msg->findInt32("mpegh-profile-level-indication",
+                &mpeghProfileLevelIndication)) {
+            meta->setInt32(kKeyMpeghProfileLevelIndication, mpeghProfileLevelIndication);
+        }
+        // See AMEDIAFORMAT_KEY_MPEGH_REFERENCE_CHANNEL_LAYOUT
+        int32_t mpeghReferenceChannelLayout = -1;
+        if (msg->findInt32("mpegh-reference-channel-layout", &mpeghReferenceChannelLayout)) {
+            meta->setInt32(kKeyMpeghReferenceChannelLayout, mpeghReferenceChannelLayout);
+        }
+        // See AMEDIAFORMAT_KEY_MPEGH_COMPATIBLE_SETS
+        sp<ABuffer> mpeghCompatibleSets;
+        if (msg->findBuffer("mpegh-compatible-sets", &mpeghCompatibleSets)) {
+            meta->setData(kKeyMpeghCompatibleSets, kTypeHCOS,
+                    mpeghCompatibleSets->data(), mpeghCompatibleSets->size());
+        }
+
         int32_t aacProfile = -1;
         if (msg->findInt32("aac-profile", &aacProfile)) {
             meta->setInt32(kKeyAACAOT, aacProfile);
