@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d00d95cb_4bba2d15",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-04-09T23:53:45Z",
+      "side": 1,
+      "message": "Since this is vector and initalized dynamically this is not constant. so k prefix is not proper.",
+      "range": {
+        "startLine": 37,
+        "startChar": 41,
+        "endLine": 37,
+        "endChar": 62
+      },
+      "revId": "fdd62ff68eb897b17134caafdf75609d0b207f02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1adbf1ab_5eed29d1",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-04-09T23:53:45Z",
+      "side": 1,
+      "message": "ditto. (also for encoders.)",
+      "range": {
+        "startLine": 40,
+        "startChar": 43,
+        "endLine": 40,
+        "endChar": 66
+      },
+      "revId": "fdd62ff68eb897b17134caafdf75609d0b207f02",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
