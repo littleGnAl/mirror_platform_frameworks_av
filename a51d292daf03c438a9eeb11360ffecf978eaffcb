@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e17f9f23_53962772",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1326,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-09T04:57:56Z",
+      "side": 1,
+      "message": "Wonsik,\nI wasn\u0027t sure if there is a better way to remove a key from sdk message only when it is a certain value.\nPlease let me know if such a thing can be done in mapper function and I will do that change.",
+      "revId": "a51d292daf03c438a9eeb11360ffecf978eaffcb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
