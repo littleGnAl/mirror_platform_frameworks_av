@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "769619c8_aef2b548",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1837205
+      },
+      "writtenOn": "2021-04-09T17:50:45Z",
+      "side": 1,
+      "message": "For encode via MediaRecorder API, StagefrightRecorder sends an OMX specific profile value which I\u0027m not sure if C2 mapper will understand:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libmediaplayerservice/StagefrightRecorder.cpp;l\u003d1375?q\u003dstagefrightrecorder.cpp\n\nThese look like the profiles that can be mapped by Codec2Mapper:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/codec2/sfplugin/utils/Codec2Mapper.cpp;l\u003d36?q\u003dCodec2Mapper.cpp",
+      "range": {
+        "startLine": 738,
+        "startChar": 49,
+        "endLine": 738,
+        "endChar": 59
+      },
+      "revId": "189d4db8f57825721b4f4b44220a77b3aed2796e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
