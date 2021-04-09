@@ -1078,6 +1078,23 @@ status_t convertMetaDataToMessage(
             msg->setInt32("is-adts", isADTS);
         }
 
+        int32_t mpeghProfileLevelIndication;
+        if (meta->findInt32(kKeyMpeghProfileLevelIndication, &mpeghProfileLevelIndication)) {
+            msg->setInt32("mpegh-profile-level-indication", mpeghProfileLevelIndication);
+        }
+        int32_t mpeghReferenceChannelLayout;
+        if (meta->findInt32(kKeyMpeghReferenceChannelLayout, &mpeghReferenceChannelLayout)) {
+            msg->setInt32("mpegh-reference-channel-layout", mpeghReferenceChannelLayout);
+        }
+        if (meta->findData(kKeyMpeghCompatibleSets, &type, &data, &size)) {
+            sp<ABuffer> buffer = new (std::nothrow) ABuffer(size);
+            if (buffer.get() == NULL || buffer->base() == NULL) {
+                return NO_MEMORY;
+            }
+            msg->setBuffer("mpegh-compatible-sets", buffer);
+            memcpy(buffer->data(), data, size);
+        }
+
         int32_t aacProfile = -1;
         if (meta->findInt32(kKeyAACAOT, &aacProfile)) {
             msg->setInt32("aac-profile", aacProfile);
@@ -1835,6 +1852,24 @@ status_t convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
         int32_t isADTS;
         if (msg->findInt32("is-adts", &isADTS)) {
             meta->setInt32(kKeyIsADTS, isADTS);
+        }
+
+        // See AMEDIAFORMAT_KEY_MPEGH_PROFILE_LEVEL_INDICATION
+        int32_t mpeghProfileLevelIndication = -1;
+        if (msg->findInt32("mpegh-profile-level-indication",
+                &mpeghProfileLevelIndication)) {
+            meta->setInt32(kKeyMpeghProfileLevelIndication, mpeghProfileLevelIndication);
+        }
+        // See AMEDIAFORMAT_KEY_MPEGH_REFERENCE_CHANNEL_LAYOUT
+        int32_t mpeghReferenceChannelLayout = -1;
+        if (msg->findInt32("mpegh-reference-channel-layout", &mpeghReferenceChannelLayout)) {
+            meta->setInt32(kKeyMpeghReferenceChannelLayout, mpeghReferenceChannelLayout);
+        }
+        // See AMEDIAFORMAT_KEY_MPEGH_COMPATIBLE_SETS
+        sp<ABuffer> mpeghCompatibleSets;
+        if (msg->findBuffer("mpegh-compatible-sets", &mpeghCompatibleSets)) {
+            meta->setData(kKeyMpeghCompatibleSets, kTypeHCOS,
+                    mpeghCompatibleSets->data(), mpeghCompatibleSets->size());
         }
 
         int32_t aacProfile = -1;
