@@ -139,6 +139,7 @@ private:
     bool mIsHEVC;
     bool mIsDolbyVision;
     bool mIsAC4;
+    bool mIsMpegh;
     bool mIsPcm;
     size_t mNALLengthSize;
 
@@ -377,6 +378,10 @@ static const char *FourCC2MIME(uint32_t fourcc) {
         case FOURCC(".mp3"):
         case 0x6D730055: // "ms U" mp3 audio
             return MEDIA_MIMETYPE_AUDIO_MPEG;
+        case FOURCC("mha1"):
+            return MEDIA_MIMETYPE_AUDIO_MHA1;
+        case FOURCC("mhm1"):
+            return MEDIA_MIMETYPE_AUDIO_MHM1;
         default:
             ALOGW("Unknown fourcc: %c%c%c%c",
                    (fourcc >> 24) & 0xff,
@@ -1760,6 +1765,8 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
         case FOURCC("fLaC"):
         case FOURCC(".mp3"):
         case 0x6D730055: // "ms U" mp3 audio
+        case FOURCC("mha1"):
+        case FOURCC("mhm1"):
         {
             if (mIsQT && depth >= 1 && mPath[depth - 1] == FOURCC("wave")) {
 
@@ -1959,7 +1966,41 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
             }
             break;
         }
+        case FOURCC("mhaC"):
+        {
+            // ISO/IEC 23008-3
+            constexpr uint32_t mhac_header_size = 4 /* mhaC size */ + 4 /* mhaC string */
+                                                + 3 /* version */   + 2 /* config size */;
+            uint8_t mhac_info[mhac_header_size];
+            off64_t data_offset = *offset;
 
+            if (chunk_data_size < (ssize_t)sizeof(mhac_info)) {
+                return ERROR_MALFORMED;
+            }
+
+            if (mDataSource->readAt(
+                    data_offset, mhac_info, sizeof(mhac_info)) < (ssize_t)sizeof(mhac_info)) {
+                return ERROR_IO;
+            }
+
+            const uint32_t mhac_size = U16_AT(&mhac_info[11]);
+            if (chunk_size != mhac_header_size + mhac_size) {
+                return ERROR_MALFORMED;
+            }
+
+            data_offset += mhac_header_size;
+            uint8_t cookie[chunk_size - mhac_header_size];
+            if (mDataSource->readAt(
+                    data_offset, cookie, sizeof(cookie)) < (ssize_t)sizeof(cookie)) {
+                return ERROR_IO;
+            }
+
+            AMediaFormat_setBuffer(mLastTrack->meta,
+                    AMEDIAFORMAT_KEY_CSD_0, cookie, sizeof(cookie));
+            data_offset += sizeof(cookie);
+            *offset = data_offset;
+            break;
+        }
         case FOURCC("mp4v"):
         case FOURCC("encv"):
         case FOURCC("s263"):
@@ -4904,6 +4945,7 @@ MPEG4Source::MPEG4Source(
       mIsHEVC(false),
       mIsDolbyVision(false),
       mIsAC4(false),
+      mIsMpegh(false),
       mIsPcm(false),
       mNALLengthSize(0),
       mStarted(false),
@@ -4944,6 +4986,8 @@ MPEG4Source::MPEG4Source(
               !strcasecmp(mime, MEDIA_MIMETYPE_IMAGE_ANDROID_HEIC);
     mIsAC4 = !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_AC4);
     mIsDolbyVision = !strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_DOLBY_VISION);
+    mIsMpegh = !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_MHA1) ||
+               !strcasecmp(mime, MEDIA_MIMETYPE_AUDIO_MHM1);
 
     if (mIsAVC) {
         void *data;
@@ -6011,7 +6055,7 @@ media_status_t MPEG4Source::read(
             // assume every non-USAC audio sample is a sync sample. This works around
             // seek issues with files that were incorrectly written with an
             // empty or single-sample stss block for the audio track
-            if (err == OK && (!mIsAudio || mIsUsac)) {
+            if (err == OK && (!mIsAudio || mIsUsac || mIsMpegh)) {
                 err = mSampleTable->findSyncSampleNear(
                         sampleIndex, &syncSampleIndex, findFlags);
             }
