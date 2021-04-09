@@ -22,6 +22,30 @@
       },
       "revId": "189d4db8f57825721b4f4b44220a77b3aed2796e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bf0ee073_34ffc863",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 738,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-09T18:13:33Z",
+      "side": 1,
+      "message": "This change maps KEY_AAC_PROFILE to c2\u0027s profile similar to the way KEY_PROFILE is mapped.\n\nOMX specific values\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/native/headers/media_plugin/media/openmax/OMX_Audio.h;l\u003d256;drc\u003dmaster;bpv\u003d1;bpt\u003d1\n\nand \nsdk values\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libstagefright/include/media/stagefright/MediaCodecConstants.h;drc\u003dmaster;l\u003d247\n\nhave different enums but the values are same.\nSo this mapper is fine and should work with StagefrightRecorder as expected.",
+      "parentUuid": "769619c8_aef2b548",
+      "range": {
+        "startLine": 738,
+        "startChar": 49,
+        "endLine": 738,
+        "endChar": 59
+      },
+      "revId": "189d4db8f57825721b4f4b44220a77b3aed2796e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
