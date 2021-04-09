@@ -1,6 +1,98 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "4080fd94_a1876f2e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-04-09T09:16:32Z",
+      "side": 1,
+      "message": "occupied for too",
+      "range": {
+        "startLine": 7,
+        "startChar": 37,
+        "endLine": 7,
+        "endChar": 48
+      },
+      "revId": "f88d6be8dd1879f87a79eb9689cee3e23827c6ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd38c3dc_58b3d5a0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-04-09T09:16:32Z",
+      "side": 1,
+      "message": "overwritten",
+      "range": {
+        "startLine": 9,
+        "startChar": 51,
+        "endLine": 9,
+        "endChar": 61
+      },
+      "revId": "f88d6be8dd1879f87a79eb9689cee3e23827c6ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "674f8af0_ec210095",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-04-09T09:16:32Z",
+      "side": 1,
+      "message": "follows",
+      "range": {
+        "startLine": 9,
+        "startChar": 12,
+        "endLine": 9,
+        "endChar": 27
+      },
+      "revId": "f88d6be8dd1879f87a79eb9689cee3e23827c6ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ca52be10_88b88e4e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-04-09T09:16:32Z",
+      "side": 1,
+      "message": "positive",
+      "range": {
+        "startLine": 11,
+        "startChar": 65,
+        "endLine": 11,
+        "endChar": 72
+      },
+      "revId": "f88d6be8dd1879f87a79eb9689cee3e23827c6ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "b7dc5cb5_28c49991",
@@ -14,6 +106,52 @@
       "writtenOn": "2021-04-08T23:54:37Z",
       "side": 1,
       "message": "Tested for offloaded MediaPlayer playback.",
+      "revId": "f88d6be8dd1879f87a79eb9689cee3e23827c6ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f14a45d9_7af4367a",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 5838,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-04-09T09:16:32Z",
+      "side": 1,
+      "message": "why was this moved outside of isPausing() block?\nif isPausePending() is equivalent to isPausing() then the if (isPausing()) {} block should be removed.",
+      "range": {
+        "startLine": 5835,
+        "startChar": 12,
+        "endLine": 5838,
+        "endChar": 13
+      },
+      "revId": "f88d6be8dd1879f87a79eb9689cee3e23827c6ee",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f502f12b_f346fd62",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 6382,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-04-09T09:16:32Z",
+      "side": 1,
+      "message": "same here",
+      "range": {
+        "startLine": 6382,
+        "startChar": 0,
+        "endLine": 6382,
+        "endChar": 12
+      },
       "revId": "f88d6be8dd1879f87a79eb9689cee3e23827c6ee",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
