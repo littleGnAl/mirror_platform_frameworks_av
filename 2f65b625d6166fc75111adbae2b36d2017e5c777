@@ -16,6 +16,57 @@
       "message": "This CL conflicts with a change in s-fs-release w.r.t. qp bounding changes that are being done.\nKishore, \nCan you please remove this CL from topic branch as the other two CLs aren\u0027t dependent on this change to build. We can submit this later.",
       "revId": "2f65b625d6166fc75111adbae2b36d2017e5c777",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9a3680b8_34683b45",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 20
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-04-12T19:54:40Z",
+      "side": 1,
+      "message": "Please resolve merge conflict",
+      "revId": "2f65b625d6166fc75111adbae2b36d2017e5c777",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d4bfb9c_a19aaf65",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1243,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-04-12T19:54:40Z",
+      "side": 1,
+      "message": "HDR static params are not supposed to be updated mid-stream. Should these be in HDR10PlusInfo?",
+      "revId": "2f65b625d6166fc75111adbae2b36d2017e5c777",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d41f85c_84938ba5",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1859,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-04-12T19:54:40Z",
+      "side": 1,
+      "message": "nit: HDR static info should not change mid-stream, so this may not be needed.",
+      "revId": "2f65b625d6166fc75111adbae2b36d2017e5c777",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
