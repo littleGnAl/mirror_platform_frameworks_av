@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12b98fcb_3c2c8783",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 43
+      },
+      "lineNbr": 1568,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-04-12T19:46:47Z",
+      "side": 1,
+      "message": "why floats for flags?",
+      "revId": "5f0bd2ffa9846665ca960779a434852db917201f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f74acc21_5a499d5f",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 43
+      },
+      "lineNbr": 1607,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-04-12T19:46:47Z",
+      "side": 1,
+      "message": "why floats here?",
+      "revId": "5f0bd2ffa9846665ca960779a434852db917201f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16904df9_0fc490ac",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 43
+      },
+      "lineNbr": 1784,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-04-12T19:46:47Z",
+      "side": 1,
+      "message": "remove these entries from msg (similar to L1542-1553).",
+      "revId": "5f0bd2ffa9846665ca960779a434852db917201f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
