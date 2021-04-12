@@ -52,6 +52,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a0ddfc6_9aa439e3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1869714
+      },
+      "writtenOn": "2021-04-12T03:30:07Z",
+      "side": 1,
+      "message": "sorry for late and thanks for reviewing.\ni\u0027ll try to change the related modules.",
+      "parentUuid": "6ad6529e_f43e02e4",
+      "revId": "e722b5718761587f58e9b98f3d5cb40d1da1314f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8aa4c5b0_0f38e51f",
@@ -160,6 +178,30 @@
       "side": 1,
       "message": "make it agree with the code -- so that would be strtof() according to line 457",
       "parentUuid": "7e8fdb73_b9a11184",
+      "range": {
+        "startLine": 455,
+        "startChar": 22,
+        "endLine": 455,
+        "endChar": 28
+      },
+      "revId": "e722b5718761587f58e9b98f3d5cb40d1da1314f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dc42d6d_6440250b",
+        "filename": "media/libmediaplayerservice/StagefrightRecorder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 455,
+      "author": {
+        "id": 1869714
+      },
+      "writtenOn": "2021-04-12T03:30:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7630c3e7_5c0b0bd4",
       "range": {
         "startLine": 455,
         "startChar": 22,
