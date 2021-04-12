@@ -68,6 +68,23 @@
       "message": "These don\u0027t appear to be official mime types.\n",
       "revId": "d856b6408d936c1ac6b0fc39a122fc54c015c179",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c1f2884_089c90ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-12T17:31:10Z",
+      "side": 1,
+      "message": "As Marco points out these aren\u0027t official audio mime types\n\nhttp://www.iana.org/assignments/media-types/media-types.xhtml\n\nbut I see we have other unofficial audio mime types here to identify audio content.\n\nJean-Michel, do we have any guidance from Fraunhofer?",
+      "revId": "d856b6408d936c1ac6b0fc39a122fc54c015c179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
