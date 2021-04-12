@@ -132,6 +132,30 @@
       },
       "revId": "d856b6408d936c1ac6b0fc39a122fc54c015c179",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5c66841_30a849d2",
+        "filename": "media/libstagefright/foundation/MediaDefs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-04-12T22:50:40Z",
+      "side": 1,
+      "message": "i was looking around to see if i could find any \u0027audio/mha1\u0027 or \u0027audio/mhm1\u0027 references anywhere on the net -- I didn\u0027t find any, but i did find the audio/mhas that marco mentioned.\n\nas a comparison -- i see that we have fourcc entries \u0027hvc1\u0027 and \u0027hev1\u0027 that line up with audio/hevc for a mime type. I was expecting something fitting that pattern.",
+      "parentUuid": "6a23a2ec_32ef9b38",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "d856b6408d936c1ac6b0fc39a122fc54c015c179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
