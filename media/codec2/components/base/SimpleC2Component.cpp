@@ -105,6 +105,7 @@ void SimpleC2Component::WorkHandler::onMessageReceived(const sp<AMessage> &msg) 
             [[fallthrough]];
         }
         case kWhatStart: {
+            thiz->mOutputBlockPool.reset();
             mRunning = true;
             break;
         }
