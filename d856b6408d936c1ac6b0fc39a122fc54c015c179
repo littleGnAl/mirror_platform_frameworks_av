@@ -156,6 +156,30 @@
       },
       "revId": "d856b6408d936c1ac6b0fc39a122fc54c015c179",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "328c4855_176cf1a4",
+        "filename": "media/libstagefright/foundation/MediaDefs.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1024540
+      },
+      "writtenOn": "2021-04-13T08:31:01Z",
+      "side": 1,
+      "message": "\u0027audio/mhas\u0027 is a mime type for MPEG-H 3D audio stream (MHAS), which is generally transmitted via HDMI. \u0027mhm1\u0027 file format includes MHAS audio packet but \u0027mha1\u0027 file format doesn\u0027t include.\n\nMost mime types are defined to identify containers and may not always identify codecs. So HTML \u0027canPlayType\u0027 API (https://html.spec.whatwg.org/multipage/media.html#dom-navigator-canplaytype) uses \u0027codec\u0027 field along with mime type. In this case, we can describe media type by the string \u0027audio/mp4; codecs\u003d\"mhm1.0x0D\"\u0027 like Chromecast (https://developers.google.com/cast/docs/media#audio_passthrough). \u0027codec\u0027 field is defined in mp4ra (http://mp4ra.org/#/codecs) for mp4 file.\n\nOn the other hand this MIMETYPE in the file is used by app to search suitable MediaCodec by like \u0027MediaCodecInfo.getSupportedType()[0].equalsIgnoreCase(\"audio/eac3)\u0027. So the string of mime type should present codec capability. Therefore I suggested the word \u0027audio/mha1\u0027 and \u0027audio/mhm1\u0027. Could you tell me better idea to present codec capability if you have?",
+      "parentUuid": "c5c66841_30a849d2",
+      "range": {
+        "startLine": 60,
+        "startChar": 0,
+        "endLine": 62,
+        "endChar": 0
+      },
+      "revId": "d856b6408d936c1ac6b0fc39a122fc54c015c179",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
