@@ -1496,7 +1496,12 @@ off64_t MPEG4Writer::addSample_l(
     off64_t old_offset = mOffset;
 
     if (usePrefix) {
-        addMultipleLengthPrefixedSamples_l(buffer);
+        int32_t isSingleNAL = false;
+        if (buffer->meta_data().findInt32(kKeyIsSingleNAL, &isSingleNAL) && isSingleNAL) {
+            addLengthPrefixedSample_l(buffer);
+        } else {
+            addMultipleLengthPrefixedSamples_l(buffer);
+        }
     } else {
         if (tiffHdrOffset > 0) {
             tiffHdrOffset = htonl(tiffHdrOffset);
@@ -3435,6 +3440,11 @@ status_t MPEG4Writer::Track::threadEntry() {
         bool usePrefix = this->usePrefix() && !isExif;
 
         if (usePrefix) StripStartcode(copy);
+
+        int32_t isSingleNAL = false;
+        if (meta_data->findInt32(kKeyIsSingleNAL, &isSingleNAL)) {
+            copy->meta_data().setInt32(kKeyIsSingleNAL, isSingleNAL);
+        }
 
         size_t sampleSize = copy->range_length();
         if (usePrefix) {

@@ -1003,6 +1003,9 @@ void MediaCodecSource::onMessageReceived(const sp<AMessage> &msg) {
             if (flags & MediaCodec::BUFFER_FLAG_SYNCFRAME) {
                 mbuf->meta_data().setInt32(kKeyIsSyncFrame, true);
             }
+            if (flags & MediaCodec::BUFFER_FLAG_SINGLE_NAL) {
+                mbuf->meta_data().setInt32(kKeyIsSingleNAL, true);
+            }
             memcpy(mbuf->data(), outbuf->data(), outbuf->size());
 
             {

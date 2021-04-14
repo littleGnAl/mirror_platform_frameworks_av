@@ -168,7 +168,12 @@ struct C2FrameData {
          * will try to recover on successive input frames.
          */
         FLAG_CORRUPT = (1 << 5),
-
+        /**
+         * This frame contains only one NAL unit.
+         *
+         * This flag is set by components for writer to skip NAL parsing.
+         */
+        FLAG_SINGLE_NAL = (1 << 30),
         /**
          * This frame contains only codec-specific configuration data, and no actual access unit.
          *

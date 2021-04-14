@@ -1799,6 +1799,10 @@ bool CCodecBufferChannel::handleWork(
         flags |= MediaCodec::BUFFER_FLAG_EOS;
         ALOGV("[%s] onWorkDone: output EOS", mName);
     }
+    if (worklet->output.flags & C2FrameData::FLAG_SINGLE_NAL) {
+        flags |= MediaCodec::BUFFER_FLAG_SINGLE_NAL;
+        ALOGV("[%s] onWorkDone: output SINGLE NAL", mName);
+    }
 
     // WORKAROUND: adjust output timestamp based on client input timestamp and codec
     // input timestamp. Codec output timestamp (in the timestamp field) shall correspond to

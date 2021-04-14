@@ -217,6 +217,10 @@ status_t MediaMuxer::writeSampleData(const sp<ABuffer> &buffer, size_t trackInde
         ALOGV("BUFFER_FLAG_EOS");
     }
 
+    if (flags & MediaCodec::BUFFER_FLAG_SINGLE_NAL) {
+        sampleMetaData.setInt32(kKeyIsSingleNAL, 1);
+    }
+
     sp<MediaAdapter> currentTrack = mTrackList[trackIndex];
     // This pushBuffer will wait until the mediaBuffer is consumed.
     return currentTrack->pushBuffer(mediaBuffer);
