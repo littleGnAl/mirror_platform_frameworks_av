@@ -16,6 +16,23 @@
       "message": "Would prefer not to submit this for couple of reasons:\n\n1) Direct Tracks may not have stable timestamps on startup.\n2) The sample rate for a Direct Track may not be correct.  This can occur for AUDIO_ENCAPSULATION_TYPE_IEC61937.\n\nIt might be possible to narrow the scope of this change to PCM only.",
       "revId": "68593a7b23230978c994f7c8bcfefbb8df74f185",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c9f024a_f7fb81ee",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1833861
+      },
+      "writtenOn": "2021-04-15T04:31:24Z",
+      "side": 1,
+      "message": "Thanks for the feedback Andy!\n\nInstead of relying on presentation position, is it possible to improve the timer based volume shaping on Direct tracks to account for start latency and paused state?  i.e. do not start the volume timer until the first valid frame position has been presented, and pause the timer when the track is paused?",
+      "revId": "68593a7b23230978c994f7c8bcfefbb8df74f185",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
