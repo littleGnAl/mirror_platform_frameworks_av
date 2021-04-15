@@ -1796,17 +1796,19 @@ void CCodec::release(bool sendCallback) {
 }
 
 status_t CCodec::setSurface(const sp<Surface> &surface) {
-    Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
-    const std::unique_ptr<Config> &config = *configLocked;
-    if (config->mTunneled && config->mSidebandHandle != nullptr) {
-        sp<ANativeWindow> nativeWindow = static_cast<ANativeWindow *>(surface.get());
-        status_t err = native_window_set_sideband_stream(
-                nativeWindow.get(),
-                const_cast<native_handle_t *>(config->mSidebandHandle->handle()));
-        if (err != OK) {
-            ALOGE("NativeWindow(%p) native_window_set_sideband_stream(%p) failed! (err %d).",
-                    nativeWindow.get(), config->mSidebandHandle->handle(), err);
-            return err;
+    {
+        Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
+        const std::unique_ptr<Config> &config = *configLocked;
+        if (config->mTunneled && config->mSidebandHandle != nullptr) {
+            sp<ANativeWindow> nativeWindow = static_cast<ANativeWindow *>(surface.get());
+            status_t err = native_window_set_sideband_stream(
+                    nativeWindow.get(),
+                    const_cast<native_handle_t *>(config->mSidebandHandle->handle()));
+            if (err != OK) {
+                ALOGE("NativeWindow(%p) native_window_set_sideband_stream(%p) failed! (err %d).",
+                        nativeWindow.get(), config->mSidebandHandle->handle(), err);
+                return err;
+            }
         }
     }
     return mChannel->setSurface(surface);
@@ -2305,9 +2307,13 @@ void CCodec::initiateReleaseIfStuck() {
             pendingDeadline = true;
         }
     }
-    Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
-    const std::unique_ptr<Config> &config = *configLocked;
-    if (config->mTunneled == false && name.empty()) {
+    bool tunneled = false;
+    {
+        Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
+        const std::unique_ptr<Config> &config = *configLocked;
+        tunneled = config->mTunneled;
+    }
+    if (!tunneled && name.empty()) {
         constexpr std::chrono::steady_clock::duration kWorkDurationThreshold = 3s;
         std::chrono::steady_clock::duration elapsed = mChannel->elapsed();
         if (elapsed >= kWorkDurationThreshold) {
