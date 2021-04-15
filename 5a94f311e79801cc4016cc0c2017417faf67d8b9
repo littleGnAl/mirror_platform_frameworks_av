@@ -16,6 +16,24 @@
       "message": "Kei, in the interests of time, I made a few edits with a new PS (it keeps the original authorship).  The new PS incorporates some ideas from Fraunhofer. Please let me know if this works for you.  Thanks!",
       "revId": "5a94f311e79801cc4016cc0c2017417faf67d8b9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ad215f6_3d3efa2a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1024540
+      },
+      "writtenOn": "2021-04-15T14:14:48Z",
+      "side": 1,
+      "message": "I think it\u0027s good improvement thanks to Fraunhofer. We\u0027ve confirmed that several contents Sony has can be decoded properly. It looks better to retrieve profile level and reference channel layout from app with next MediaFormat API changes.",
+      "parentUuid": "083fe941_dd4e4aef",
+      "revId": "5a94f311e79801cc4016cc0c2017417faf67d8b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
