@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "786a763e_f752bf3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-15T14:37:04Z",
+      "side": 1,
+      "message": "Also remove LoadConst definition and the file if that is hte only function",
+      "revId": "54826175b03291ec148fb04e9e7c5a778da9b2d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eb326ced_28aa8d67",
+        "filename": "media/libeffects/lvm/lib/StereoWidening/src/LVCS_ReverbGenerator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 84,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-15T14:37:04Z",
+      "side": 1,
+      "message": "pConfig-\u003eStereoSamples?",
+      "range": {
+        "startLine": 84,
+        "startChar": 15,
+        "endLine": 84,
+        "endChar": 53
+      },
+      "revId": "54826175b03291ec148fb04e9e7c5a778da9b2d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
