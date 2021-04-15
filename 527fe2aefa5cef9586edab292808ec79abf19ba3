@@ -270,6 +270,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e194321_a0b3bb35",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1988,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-15T02:28:51Z",
+      "side": 1,
+      "message": "Sounds reasonable, I did change the naming to be consistent.",
+      "parentUuid": "35c6ed51_3047411e",
+      "range": {
+        "startLine": 1988,
+        "startChar": 27,
+        "endLine": 1988,
+        "endChar": 57
+      },
+      "revId": "527fe2aefa5cef9586edab292808ec79abf19ba3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b9afe002_2a6ca5e4",
