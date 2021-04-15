@@ -16,6 +16,24 @@
       "message": "default color aspects are not for encoders",
       "revId": "b03d5baf8c450e535f877904a840e91e1bbb9349",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b9f374df_f1aa52a1",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 213,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-04-15T07:18:32Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a3cb376_9f7e4271",
+      "revId": "b03d5baf8c450e535f877904a840e91e1bbb9349",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
