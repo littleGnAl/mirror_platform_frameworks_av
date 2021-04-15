@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c44a61fe_c60e9154",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1024540
+      },
+      "writtenOn": "2021-04-15T01:48:16Z",
+      "side": 1,
+      "message": "I hope I\u0027ve reflected your review comments. I\u0027m not sure if using sizeof() for uint8_t array is redundant or sometimes useful for readability.",
+      "revId": "2957bc6baa08b9f675220af6eab7dff16790f4d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

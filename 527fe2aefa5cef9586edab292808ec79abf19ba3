@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "66aadc80_6f5b2d7e",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1972,
+      "author": {
+        "id": 1024540
+      },
+      "writtenOn": "2021-04-15T01:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "29013825_10a9b7cb",
+      "range": {
+        "startLine": 1972,
+        "startChar": 12,
+        "endLine": 1972,
+        "endChar": 17
+      },
+      "revId": "527fe2aefa5cef9586edab292808ec79abf19ba3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c65947e0_99ab1dfa",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-04-12T15:40:21Z",
       "side": 1,
       "message": "this should check that chunk_data_size is greater or equal to sizeof(mhac_info) before reading, like is done in the cases below for other types.",
+      "range": {
+        "startLine": 1977,
+        "startChar": 0,
+        "endLine": 1979,
+        "endChar": 1
+      },
+      "revId": "527fe2aefa5cef9586edab292808ec79abf19ba3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61dc6821_bc3bf841",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1979,
+      "author": {
+        "id": 1024540
+      },
+      "writtenOn": "2021-04-15T01:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c65947e0_99ab1dfa",
       "range": {
         "startLine": 1977,
         "startChar": 0,
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0e3dddcb_152e2a9c",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1982,
+      "author": {
+        "id": 1024540
+      },
+      "writtenOn": "2021-04-15T01:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ddbb3533_5517f74c",
+      "range": {
+        "startLine": 1982,
+        "startChar": 12,
+        "endLine": 1982,
+        "endChar": 20
+      },
+      "revId": "527fe2aefa5cef9586edab292808ec79abf19ba3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d69fa70a_edca4067",
@@ -127,6 +199,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb43e2ab_54dcd4f8",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1987,
+      "author": {
+        "id": 1024540
+      },
+      "writtenOn": "2021-04-15T01:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d69fa70a_edca4067",
+      "range": {
+        "startLine": 1987,
+        "startChar": 27,
+        "endLine": 1987,
+        "endChar": 44
+      },
+      "revId": "527fe2aefa5cef9586edab292808ec79abf19ba3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "373d1466_a0adf676",
@@ -140,6 +236,30 @@
       "writtenOn": "2021-04-12T17:34:01Z",
       "side": 1,
       "message": "nit: mhac_size. could use this instead of sizeof(cookie) if you want.",
+      "range": {
+        "startLine": 1988,
+        "startChar": 27,
+        "endLine": 1988,
+        "endChar": 57
+      },
+      "revId": "527fe2aefa5cef9586edab292808ec79abf19ba3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35c6ed51_3047411e",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1988,
+      "author": {
+        "id": 1024540
+      },
+      "writtenOn": "2021-04-15T01:48:16Z",
+      "side": 1,
+      "message": "Using sizeof(cookie) at readAt() is consistent with other part of codes and readable to me.",
+      "parentUuid": "373d1466_a0adf676",
       "range": {
         "startLine": 1988,
         "startChar": 27,
@@ -187,6 +307,30 @@
       "side": 1,
       "message": "After discussion, please remove this and add mIsMpegH on line 6057.",
       "parentUuid": "b9afe002_2a6ca5e4",
+      "range": {
+        "startLine": 5058,
+        "startChar": 8,
+        "endLine": 5058,
+        "endChar": 15
+      },
+      "revId": "527fe2aefa5cef9586edab292808ec79abf19ba3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c14d1b68_cfd8af55",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 5058,
+      "author": {
+        "id": 1024540
+      },
+      "writtenOn": "2021-04-15T01:48:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b0841319_b5739aab",
       "range": {
         "startLine": 5058,
         "startChar": 8,
