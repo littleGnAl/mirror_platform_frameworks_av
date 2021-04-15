@@ -211,8 +211,6 @@ public:
                 (OMX_INDEXTYPE)OMX_IndexParamConsumerUsageBits,
                 &usage, sizeof(usage));
 
-        // NOTE: we do not use/pass through color aspects from GraphicBufferSource as we
-        // communicate that directly to the component.
         mSource->configure(
                 mOmxNode, static_cast<hardware::graphics::common::V1_0::Dataspace>(mDataSpace));
         return OK;
@@ -409,6 +407,10 @@ public:
 
     void onInputBufferDone(c2_cntr64_t index) override {
         mNode->onInputBufferDone(index);
+    }
+
+    android_dataspace getDataspace() override {
+        return mNode->getDataspace();
     }
 
 private:
@@ -994,7 +996,15 @@ void CCodec::configure(const sp<AMessage> &msg) {
                 // needed for decoders.
                 if (!(config->mDomain & Config::IS_ENCODER)) {
                     if (surface == nullptr) {
-                        format = flexPixelFormat.value_or(COLOR_FormatYUV420Flexible);
+                        const char *prefix = "";
+                        if (flexSemiPlanarPixelFormat) {
+                            format = COLOR_FormatYUV420SemiPlanar;
+                            prefix = "semi-";
+                        } else {
+                            format = COLOR_FormatYUV420Planar;
+                        }
+                        ALOGD("Client requested ByteBuffer mode decoder w/o color format set: "
+                                "using default %splanar color format", prefix);
                     } else {
                         format = COLOR_FormatSurface;
                     }
@@ -1083,6 +1093,45 @@ void CCodec::configure(const sp<AMessage> &msg) {
                 uint32_t(maxBframes)
             };
             configUpdate.push_back(std::move(gop));
+        }
+
+        if ((config->mDomain & Config::IS_ENCODER)
+                && (config->mDomain & Config::IS_VIDEO)) {
+            // we may not use all 3 of these entries
+            std::unique_ptr<C2StreamPictureQuantizationTuning::output> qp =
+                C2StreamPictureQuantizationTuning::output::AllocUnique(3 /* flexCount */,
+                                                                       0u /* stream */);
+
+            int ix = 0;
+
+            int32_t iMax = INT32_MAX;
+            int32_t iMin = INT32_MIN;
+            (void) sdkParams->findInt32(KEY_VIDEO_QP_I_MAX, &iMax);
+            (void) sdkParams->findInt32(KEY_VIDEO_QP_I_MIN, &iMin);
+            if (iMax != INT32_MAX || iMin != INT32_MIN) {
+                qp->m.values[ix++] = {I_FRAME, iMin, iMax};
+            }
+
+            int32_t pMax = INT32_MAX;
+            int32_t pMin = INT32_MIN;
+            (void) sdkParams->findInt32(KEY_VIDEO_QP_P_MAX, &pMax);
+            (void) sdkParams->findInt32(KEY_VIDEO_QP_P_MIN, &pMin);
+            if (pMax != INT32_MAX || pMin != INT32_MIN) {
+                qp->m.values[ix++] = {P_FRAME, pMin, pMax};
+            }
+
+            int32_t bMax = INT32_MAX;
+            int32_t bMin = INT32_MIN;
+            (void) sdkParams->findInt32(KEY_VIDEO_QP_B_MAX, &bMax);
+            (void) sdkParams->findInt32(KEY_VIDEO_QP_B_MIN, &bMin);
+            if (bMax != INT32_MAX || bMin != INT32_MIN) {
+                qp->m.values[ix++] = {B_FRAME, bMin, bMax};
+            }
+
+            // adjust to reflect actual use.
+            qp->setFlexCount(ix);
+
+            configUpdate.push_back(std::move(qp));
         }
 
         err = config->setParameters(comp, configUpdate, C2_DONT_BLOCK);
@@ -1571,6 +1620,7 @@ void CCodec::start() {
         outputFormat = config->mOutputFormat = config->mOutputFormat->dup();
         if (config->mInputSurface) {
             err2 = config->mInputSurface->start();
+            config->mInputSurfaceDataspace = config->mInputSurface->getDataspace();
         }
         buffersBoundToCodec = config->mBuffersBoundToCodec;
     }
@@ -1658,6 +1708,7 @@ void CCodec::stop() {
         if (config->mInputSurface) {
             config->mInputSurface->disconnect();
             config->mInputSurface = nullptr;
+            config->mInputSurfaceDataspace = HAL_DATASPACE_UNKNOWN;
         }
     }
     {
@@ -1707,6 +1758,7 @@ void CCodec::initiateRelease(bool sendCallback /* = true */) {
         if (config->mInputSurface) {
             config->mInputSurface->disconnect();
             config->mInputSurface = nullptr;
+            config->mInputSurfaceDataspace = HAL_DATASPACE_UNKNOWN;
         }
     }
 
@@ -1889,6 +1941,12 @@ void CCodec::signalSetParameters(const sp<AMessage> &msg) {
         params->removeEntryAt(params->findEntryByName(KEY_BIT_RATE));
     }
 
+    int32_t syncId = 0;
+    if (params->findInt32("audio-hw-sync", &syncId)
+            || params->findInt32("hw-av-sync-id", &syncId)) {
+        configureTunneledVideoPlayback(comp, nullptr, params);
+    }
+
     Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
     const std::unique_ptr<Config> &config = *configLocked;
 
@@ -1958,6 +2016,39 @@ void CCodec::signalRequestIDRFrame() {
     params.push_back(
             std::make_unique<C2StreamRequestSyncFrameTuning::output>(0u, true));
     config->setParameters(comp, params, C2_MAY_BLOCK);
+}
+
+status_t CCodec::querySupportedParameters(std::vector<std::string> *names) {
+    Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
+    const std::unique_ptr<Config> &config = *configLocked;
+    return config->querySupportedParameters(names);
+}
+
+status_t CCodec::describeParameter(
+        const std::string &name, CodecParameterDescriptor *desc) {
+    Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
+    const std::unique_ptr<Config> &config = *configLocked;
+    return config->describe(name, desc);
+}
+
+status_t CCodec::subscribeToParameters(const std::vector<std::string> &names) {
+    std::shared_ptr<Codec2Client::Component> comp = mState.lock()->comp;
+    if (!comp) {
+        return INVALID_OPERATION;
+    }
+    Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
+    const std::unique_ptr<Config> &config = *configLocked;
+    return config->subscribeToVendorConfigUpdate(comp, names);
+}
+
+status_t CCodec::unsubscribeFromParameters(const std::vector<std::string> &names) {
+    std::shared_ptr<Codec2Client::Component> comp = mState.lock()->comp;
+    if (!comp) {
+        return INVALID_OPERATION;
+    }
+    Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
+    const std::unique_ptr<Config> &config = *configLocked;
+    return config->unsubscribeFromVendorConfigUpdate(comp, names);
 }
 
 void CCodec::onWorkDone(std::list<std::unique_ptr<C2Work>> &workItems) {
@@ -2177,6 +2268,10 @@ status_t CCodec::configureTunneledVideoPlayback(
     c2_status_t c2err = comp->config({ tunneledPlayback.get() }, C2_MAY_BLOCK, &failures);
     if (c2err != C2_OK) {
         return UNKNOWN_ERROR;
+    }
+
+    if (sidebandHandle == nullptr) {
+        return OK;
     }
 
     std::vector<std::unique_ptr<C2Param>> params;

@@ -638,7 +638,6 @@ AudioFlinger::PlaybackThread::Track::Track(
     mOpPlayAudioMonitor(OpPlayAudioMonitor::createIfNeeded(
             uid, attr, id(), streamType, opPackageName)),
     // mSinkTimestamp
-    mFrameCountToBeReady(frameCountToBeReady),
     mFastIndex(-1),
     mCachedVolume(1.0),
     /* The track might not play immediately after being active, similarly as if its volume was 0.
@@ -672,6 +671,7 @@ AudioFlinger::PlaybackThread::Track::Track(
                 mFrameSize, sampleRate);
     }
     mServerProxy = mAudioTrackServerProxy;
+    mServerProxy->setStartThresholdInFrames(frameCountToBeReady); // update the Cblk value
 
     // only allocate a fast track index if we were able to allocate a normal track name
     if (flags & AUDIO_OUTPUT_FLAG_FAST) {
@@ -999,7 +999,10 @@ bool AudioFlinger::PlaybackThread::Track::isReady() const {
     }
 
     size_t bufferSizeInFrames = mServerProxy->getBufferSizeInFrames();
-    size_t framesToBeReady = std::min(mFrameCountToBeReady, bufferSizeInFrames);
+    // Note: mServerProxy->getStartThresholdInFrames() is clamped.
+    const size_t startThresholdInFrames = mServerProxy->getStartThresholdInFrames();
+    const size_t framesToBeReady = std::clamp(  // clamp again to validate client values.
+            std::min(startThresholdInFrames, bufferSizeInFrames), size_t(1), mFrameCount);
 
     if (framesReady() >= framesToBeReady || (mCblk->mFlags & CBLK_FORCEREADY)) {
         ALOGV("%s(%d): consider track ready with %zu/%zu, target was %zu)",
@@ -1037,6 +1040,11 @@ status_t AudioFlinger::PlaybackThread::Track::start(AudioSystem::sync_event_t ev
 
         // initial state-stopping. next state-pausing.
         // What if resume is called ?
+
+        if (state == FLUSHED) {
+            // avoid underrun glitches when starting after flush
+            reset();
+        }
 
         if (state == PAUSED || state == PAUSING) {
             if (mResumeToStopping) {
@@ -1169,6 +1177,9 @@ void AudioFlinger::PlaybackThread::Track::pause()
             mState = PAUSING;
             ALOGV("%s(%d): ACTIVE/RESUMING => PAUSING on thread %d",
                     __func__, mId, (int)mThreadIoHandle);
+            if (isOffloadedOrDirect()) {
+                mPauseHwPending = true;
+            }
             playbackThread->broadcast_l();
             break;
 
@@ -1254,6 +1265,11 @@ void AudioFlinger::PlaybackThread::Track::flushAck()
     mServerProxy->flushBufferIfNeeded();
 
     mFlushHwPending = false;
+}
+
+void AudioFlinger::PlaybackThread::Track::pauseAck()
+{
+    mPauseHwPending = false;
 }
 
 void AudioFlinger::PlaybackThread::Track::reset()

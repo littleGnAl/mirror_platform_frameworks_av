@@ -622,7 +622,7 @@ void AudioFlinger::ThreadBase::sendIoConfigEvent_l(audio_io_config_event event, 
     mIoJitterMs.reset();
     mLatencyMs.reset();
     mProcessTimeMs.reset();
-    mTimestampVerifier.discontinuity();
+    mTimestampVerifier.discontinuity(mTimestampVerifier.DISCONTINUITY_MODE_CONTINUOUS);
 
     sp<ConfigEvent> configEvent = (ConfigEvent *)new IoConfigEvent(event, pid, portId);
     sendConfigEvent_l(configEvent);
@@ -2719,7 +2719,7 @@ void AudioFlinger::PlaybackThread::resetDraining(uint32_t sequence)
         // the timestamp frame position to reset to 0 for direct and offload threads.
         // (Out of sequence requests are ignored, since the discontinuity would be handled
         // elsewhere, e.g. in flush).
-        mTimestampVerifier.discontinuity();
+        mTimestampVerifier.discontinuity(mTimestampVerifier.DISCONTINUITY_MODE_ZERO);
         mDrainSequence &= ~1;
         mWaitWorkCV.signal();
     }
@@ -2728,8 +2728,9 @@ void AudioFlinger::PlaybackThread::resetDraining(uint32_t sequence)
 void AudioFlinger::PlaybackThread::readOutputParameters_l()
 {
     // unfortunately we have no way of recovering from errors here, hence the LOG_ALWAYS_FATAL
-    mSampleRate = mOutput->getSampleRate();
-    mChannelMask = mOutput->getChannelMask();
+    const audio_config_base_t audioConfig = mOutput->getAudioProperties();
+    mSampleRate = audioConfig.sample_rate;
+    mChannelMask = audioConfig.channel_mask;
     if (!audio_is_output_channel(mChannelMask)) {
         LOG_ALWAYS_FATAL("HAL channel mask %#x not valid for output", mChannelMask);
     }
@@ -2742,11 +2743,11 @@ void AudioFlinger::PlaybackThread::readOutputParameters_l()
     mBalance.setChannelMask(mChannelMask);
 
     // Get actual HAL format.
-    status_t result = mOutput->stream->getFormat(&mHALFormat);
+    status_t result = mOutput->stream->getAudioProperties(nullptr, nullptr, &mHALFormat);
     LOG_ALWAYS_FATAL_IF(result != OK, "Error when retrieving output stream format: %d", result);
     // Get format from the shim, which will be different than the HAL format
     // if playing compressed audio over HDMI passthrough.
-    mFormat = mOutput->getFormat();
+    mFormat = audioConfig.format;
     if (!audio_is_valid_format(mFormat)) {
         LOG_ALWAYS_FATAL("HAL format %#x not valid for output", mFormat);
     }
@@ -3408,7 +3409,6 @@ bool AudioFlinger::PlaybackThread::threadLoop()
 
     mStandbyTimeNs = systemTime();
     int64_t lastLoopCountWritten = -2; // never matches "previous" loop, when loopCount = 0.
-    int64_t lastFramesWritten = -1;    // track changes in timestamp server frames written
 
     // MIXER
     nsecs_t lastWarning = 0;
@@ -3444,14 +3444,6 @@ bool AudioFlinger::PlaybackThread::threadLoop()
 
     checkSilentMode_l();
 
-    // DIRECT and OFFLOAD threads should reset frame count to zero on stop/flush
-    // TODO: add confirmation checks:
-    // 1) DIRECT threads and linear PCM format really resets to 0?
-    // 2) Is frame count really valid if not linear pcm?
-    // 3) Are all 64 bits of position returned, not just lowest 32 bits?
-    if (mType == OFFLOAD || mType == DIRECT) {
-        mTimestampVerifier.setDiscontinuityMode(mTimestampVerifier.DISCONTINUITY_MODE_ZERO);
-    }
     audio_patch_handle_t lastDownstreamPatchHandle = AUDIO_PATCH_HANDLE_NONE;
 
     // loopCount is used for statistics and diagnostics.
@@ -3523,135 +3515,8 @@ bool AudioFlinger::PlaybackThread::threadLoop()
                 logString = NULL;
             }
 
-            // Collect timestamp statistics for the Playback Thread types that support it.
-            if (mType == MIXER
-                    || mType == DUPLICATING
-                    || mType == DIRECT
-                    || mType == OFFLOAD) { // no indentation
-            // Gather the framesReleased counters for all active tracks,
-            // and associate with the sink frames written out.  We need
-            // this to convert the sink timestamp to the track timestamp.
-            bool kernelLocationUpdate = false;
-            ExtendedTimestamp timestamp; // use private copy to fetch
-            if (mStandby) {
-                mTimestampVerifier.discontinuity();
-            } else if (threadloop_getHalTimestamp_l(&timestamp) == OK) {
-                mTimestampVerifier.add(timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL],
-                        timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL],
-                        mSampleRate);
+            collectTimestamps_l();
 
-                if (isTimestampCorrectionEnabled()) {
-                    ALOGVV("TS_BEFORE: %d %lld %lld", id(),
-                            (long long)timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL],
-                            (long long)timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]);
-                    auto correctedTimestamp = mTimestampVerifier.getLastCorrectedTimestamp();
-                    timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]
-                            = correctedTimestamp.mFrames;
-                    timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL]
-                            = correctedTimestamp.mTimeNs;
-                    ALOGVV("TS_AFTER: %d %lld %lld", id(),
-                            (long long)timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL],
-                            (long long)timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]);
-
-                    // Note: Downstream latency only added if timestamp correction enabled.
-                    if (mDownstreamLatencyStatMs.getN() > 0) { // we have latency info.
-                        const int64_t newPosition =
-                                timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]
-                                - int64_t(mDownstreamLatencyStatMs.getMean() * mSampleRate * 1e-3);
-                        // prevent retrograde
-                        timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL] = max(
-                                newPosition,
-                                (mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]
-                                        - mSuspendedFrames));
-                    }
-                }
-
-                // We always fetch the timestamp here because often the downstream
-                // sink will block while writing.
-
-                // We keep track of the last valid kernel position in case we are in underrun
-                // and the normal mixer period is the same as the fast mixer period, or there
-                // is some error from the HAL.
-                if (mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL] >= 0) {
-                    mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL_LASTKERNELOK] =
-                            mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL];
-                    mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL_LASTKERNELOK] =
-                            mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL];
-
-                    mTimestamp.mPosition[ExtendedTimestamp::LOCATION_SERVER_LASTKERNELOK] =
-                            mTimestamp.mPosition[ExtendedTimestamp::LOCATION_SERVER];
-                    mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_SERVER_LASTKERNELOK] =
-                            mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_SERVER];
-                }
-
-                if (timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL] >= 0) {
-                    kernelLocationUpdate = true;
-                } else {
-                    ALOGVV("getTimestamp error - no valid kernel position");
-                }
-
-                // copy over kernel info
-                mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL] =
-                        timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]
-                        + mSuspendedFrames; // add frames discarded when suspended
-                mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL] =
-                        timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL];
-            } else {
-                mTimestampVerifier.error();
-            }
-
-            // mFramesWritten for non-offloaded tracks are contiguous
-            // even after standby() is called. This is useful for the track frame
-            // to sink frame mapping.
-            bool serverLocationUpdate = false;
-            if (mFramesWritten != lastFramesWritten) {
-                serverLocationUpdate = true;
-                lastFramesWritten = mFramesWritten;
-            }
-            // Only update timestamps if there is a meaningful change.
-            // Either the kernel timestamp must be valid or we have written something.
-            if (kernelLocationUpdate || serverLocationUpdate) {
-                if (serverLocationUpdate) {
-                    // use the time before we called the HAL write - it is a bit more accurate
-                    // to when the server last read data than the current time here.
-                    //
-                    // If we haven't written anything, mLastIoBeginNs will be -1
-                    // and we use systemTime().
-                    mTimestamp.mPosition[ExtendedTimestamp::LOCATION_SERVER] = mFramesWritten;
-                    mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_SERVER] = mLastIoBeginNs == -1
-                            ? systemTime() : mLastIoBeginNs;
-                }
-
-                for (const sp<Track> &t : mActiveTracks) {
-                    if (!t->isFastTrack()) {
-                        t->updateTrackFrameInfo(
-                                t->mAudioTrackServerProxy->framesReleased(),
-                                mFramesWritten,
-                                mSampleRate,
-                                mTimestamp);
-                    }
-                }
-            }
-
-            if (audio_has_proportional_frames(mFormat)) {
-                const double latencyMs = mTimestamp.getOutputServerLatencyMs(mSampleRate);
-                if (latencyMs != 0.) { // note 0. means timestamp is empty.
-                    mLatencyMs.add(latencyMs);
-                }
-            }
-
-            } // if (mType ... ) { // no indentation
-#if 0
-            // logFormat example
-            if (z % 100 == 0) {
-                timespec ts;
-                clock_gettime(CLOCK_MONOTONIC, &ts);
-                LOGT("This is an integer %d, this is a float %f, this is my "
-                    "pid %p %% %s %t", 42, 3.14, "and this is a timestamp", ts);
-                LOGT("A deceptive null-terminated string %\0");
-            }
-            ++z;
-#endif
             saveOutputTracks();
             if (mSignalPending) {
                 // A signal was raised while we were unlocked
@@ -4091,6 +3956,148 @@ bool AudioFlinger::PlaybackThread::threadLoop()
     return false;
 }
 
+void AudioFlinger::PlaybackThread::collectTimestamps_l()
+{
+    // Collect timestamp statistics for the Playback Thread types that support it.
+    if (mType != MIXER
+            && mType != DUPLICATING
+            && mType != DIRECT
+            && mType != OFFLOAD) {
+        return;
+    }
+    if (mStandby) {
+        mTimestampVerifier.discontinuity(discontinuityForStandbyOrFlush());
+        return;
+    } else if (mHwPaused) {
+        mTimestampVerifier.discontinuity(mTimestampVerifier.DISCONTINUITY_MODE_CONTINUOUS);
+        return;
+    }
+
+    // Gather the framesReleased counters for all active tracks,
+    // and associate with the sink frames written out.  We need
+    // this to convert the sink timestamp to the track timestamp.
+    bool kernelLocationUpdate = false;
+    ExtendedTimestamp timestamp; // use private copy to fetch
+
+    // Always query HAL timestamp and update timestamp verifier. In standby or pause,
+    // HAL may be draining some small duration buffered data for fade out.
+    if (threadloop_getHalTimestamp_l(&timestamp) == OK) {
+        mTimestampVerifier.add(timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL],
+                timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL],
+                mSampleRate);
+
+        if (isTimestampCorrectionEnabled()) {
+            ALOGVV("TS_BEFORE: %d %lld %lld", id(),
+                    (long long)timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL],
+                    (long long)timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]);
+            auto correctedTimestamp = mTimestampVerifier.getLastCorrectedTimestamp();
+            timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]
+                    = correctedTimestamp.mFrames;
+            timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL]
+                    = correctedTimestamp.mTimeNs;
+            ALOGVV("TS_AFTER: %d %lld %lld", id(),
+                    (long long)timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL],
+                    (long long)timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]);
+
+            // Note: Downstream latency only added if timestamp correction enabled.
+            if (mDownstreamLatencyStatMs.getN() > 0) { // we have latency info.
+                const int64_t newPosition =
+                        timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]
+                        - int64_t(mDownstreamLatencyStatMs.getMean() * mSampleRate * 1e-3);
+                // prevent retrograde
+                timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL] = max(
+                        newPosition,
+                        (mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]
+                                - mSuspendedFrames));
+            }
+        }
+
+        // We always fetch the timestamp here because often the downstream
+        // sink will block while writing.
+
+        // We keep track of the last valid kernel position in case we are in underrun
+        // and the normal mixer period is the same as the fast mixer period, or there
+        // is some error from the HAL.
+        if (mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL] >= 0) {
+            mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL_LASTKERNELOK] =
+                    mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL];
+            mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL_LASTKERNELOK] =
+                    mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL];
+
+            mTimestamp.mPosition[ExtendedTimestamp::LOCATION_SERVER_LASTKERNELOK] =
+                    mTimestamp.mPosition[ExtendedTimestamp::LOCATION_SERVER];
+            mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_SERVER_LASTKERNELOK] =
+                    mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_SERVER];
+        }
+
+        if (timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL] >= 0) {
+            kernelLocationUpdate = true;
+        } else {
+            ALOGVV("getTimestamp error - no valid kernel position");
+        }
+
+        // copy over kernel info
+        mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL] =
+                timestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL]
+                + mSuspendedFrames; // add frames discarded when suspended
+        mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL] =
+                timestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL];
+    } else {
+        mTimestampVerifier.error();
+    }
+
+    // mFramesWritten for non-offloaded tracks are contiguous
+    // even after standby() is called. This is useful for the track frame
+    // to sink frame mapping.
+    bool serverLocationUpdate = false;
+    if (mFramesWritten != mLastFramesWritten) {
+        serverLocationUpdate = true;
+        mLastFramesWritten = mFramesWritten;
+    }
+    // Only update timestamps if there is a meaningful change.
+    // Either the kernel timestamp must be valid or we have written something.
+    if (kernelLocationUpdate || serverLocationUpdate) {
+        if (serverLocationUpdate) {
+            // use the time before we called the HAL write - it is a bit more accurate
+            // to when the server last read data than the current time here.
+            //
+            // If we haven't written anything, mLastIoBeginNs will be -1
+            // and we use systemTime().
+            mTimestamp.mPosition[ExtendedTimestamp::LOCATION_SERVER] = mFramesWritten;
+            mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_SERVER] = mLastIoBeginNs == -1
+                    ? systemTime() : mLastIoBeginNs;
+        }
+
+        for (const sp<Track> &t : mActiveTracks) {
+            if (!t->isFastTrack()) {
+                t->updateTrackFrameInfo(
+                        t->mAudioTrackServerProxy->framesReleased(),
+                        mFramesWritten,
+                        mSampleRate,
+                        mTimestamp);
+            }
+        }
+    }
+
+    if (audio_has_proportional_frames(mFormat)) {
+        const double latencyMs = mTimestamp.getOutputServerLatencyMs(mSampleRate);
+        if (latencyMs != 0.) { // note 0. means timestamp is empty.
+            mLatencyMs.add(latencyMs);
+        }
+    }
+#if 0
+    // logFormat example
+    if (z % 100 == 0) {
+        timespec ts;
+        clock_gettime(CLOCK_MONOTONIC, &ts);
+        LOGT("This is an integer %d, this is a float %f, this is my "
+            "pid %p %% %s %t", 42, 3.14, "and this is a timestamp", ts);
+        LOGT("A deceptive null-terminated string %\0");
+    }
+    ++z;
+#endif
+}
+
 // removeTracks_l() must be called with ThreadBase::mLock held
 void AudioFlinger::PlaybackThread::removeTracks_l(const Vector< sp<Track> >& tracksToRemove)
 {
@@ -4137,20 +4144,15 @@ status_t AudioFlinger::PlaybackThread::getTimestamp_l(AudioTimestamp& timestamp)
         return status;
     }
     if ((mType == OFFLOAD || mType == DIRECT) && mOutput != NULL) {
-        uint64_t position64;
-        if (mOutput->getPresentationPosition(&position64, &timestamp.mTime) == OK) {
-            timestamp.mPosition = (uint32_t)position64;
-            if (mDownstreamLatencyStatMs.getN() > 0) {
-                const uint32_t positionOffset =
-                    (uint32_t)(mDownstreamLatencyStatMs.getMean() * mSampleRate * 1e-3);
-                if (positionOffset > timestamp.mPosition) {
-                    timestamp.mPosition = 0;
-                } else {
-                    timestamp.mPosition -= positionOffset;
-                }
-            }
-            return NO_ERROR;
+        collectTimestamps_l();
+        if (mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL] <= 0) {
+            return INVALID_OPERATION;
         }
+        timestamp.mPosition = mTimestamp.mPosition[ExtendedTimestamp::LOCATION_KERNEL];
+        const int64_t timeNs = mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL];
+        timestamp.mTime.tv_sec = timeNs / NANOS_PER_SECOND;
+        timestamp.mTime.tv_nsec = timeNs - (timestamp.mTime.tv_sec * NANOS_PER_SECOND);
+        return NO_ERROR;
     }
     return INVALID_OPERATION;
 }
@@ -5551,8 +5553,6 @@ bool AudioFlinger::MixerThread::checkForNewParameter_l(const String8& keyValuePa
                                                        status_t& status)
 {
     bool reconfig = false;
-    bool a2dpDeviceChanged = false;
-
     status = NO_ERROR;
 
     AutoPark<FastMixer> park(mFastMixer);
@@ -5624,7 +5624,7 @@ bool AudioFlinger::MixerThread::checkForNewParameter_l(const String8& keyValuePa
         }
     }
 
-    return reconfig || a2dpDeviceChanged;
+    return reconfig;
 }
 
 
@@ -5825,8 +5825,15 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::DirectOutputThread::prep
         sp<Track> l = mActiveTracks.getLatest();
         bool last = l.get() == track;
 
-        if (track->isPausing()) {
-            track->setPaused();
+        if (track->isPausePending()) {
+            track->pauseAck();
+            // It is possible a track might have been flushed or stopped.
+            // Other operations such as flush pending might occur on the next prepare.
+            if (track->isPausing()) {
+                track->setPaused();
+            }
+            // Always perform pause, as an immediate flush will change
+            // the pause state to be no longer isPausing().
             if (mHwSupportsPause && last && !mHwPaused) {
                 doHwPause = true;
                 mHwPaused = true;
@@ -6085,8 +6092,6 @@ bool AudioFlinger::DirectOutputThread::checkForNewParameter_l(const String8& key
                                                               status_t& status)
 {
     bool reconfig = false;
-    bool a2dpDeviceChanged = false;
-
     status = NO_ERROR;
 
     AudioParameter param = AudioParameter(keyValuePair);
@@ -6121,7 +6126,7 @@ bool AudioFlinger::DirectOutputThread::checkForNewParameter_l(const String8& key
         }
     }
 
-    return reconfig || a2dpDeviceChanged;
+    return reconfig;
 }
 
 uint32_t AudioFlinger::DirectOutputThread::activeSleepTimeUs() const
@@ -6178,7 +6183,7 @@ void AudioFlinger::DirectOutputThread::flushHw_l()
     mOutput->flush();
     mHwPaused = false;
     mFlushPending = false;
-    mTimestampVerifier.discontinuity(); // DIRECT and OFFLOADED flush resets frame count.
+    mTimestampVerifier.discontinuity(discontinuityForStandbyOrFlush());
     mTimestamp.clear();
 }
 
@@ -6370,8 +6375,15 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::OffloadThread::prepareTr
             continue;
         }
 
-        if (track->isPausing()) {
-            track->setPaused();
+        if (track->isPausePending()) {
+            track->pauseAck();
+            // It is possible a track might have been flushed or stopped.
+            // Other operations such as flush pending might occur on the next prepare.
+            if (track->isPausing()) {
+                track->setPaused();
+            }
+            // Always perform pause if last, as an immediate flush will change
+            // the pause state to be no longer isPausing().
             if (last) {
                 if (mHwSupportsPause && !mHwPaused) {
                     doHwPause = true;
@@ -6514,13 +6526,14 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::OffloadThread::prepareTr
                     track->presentationComplete(framesWritten, audioHALFrames);
                     track->reset();
                     tracksToRemove->add(track);
-                    // DIRECT and OFFLOADED stop resets frame counts.
+                    // OFFLOADED stop resets frame counts.
                     if (!mUseAsyncWrite) {
                         // If we don't get explicit drain notification we must
                         // register discontinuity regardless of whether this is
                         // the previous (!last) or the upcoming (last) track
                         // to avoid skipping the discontinuity.
-                        mTimestampVerifier.discontinuity();
+                        mTimestampVerifier.discontinuity(
+                                mTimestampVerifier.DISCONTINUITY_MODE_ZERO);
                     }
                 }
             } else {
@@ -7378,7 +7391,9 @@ reacquire_wakelock:
         if (mPipeSource.get() == nullptr /* don't obtain for FastCapture, could block */) {
             int64_t position, time;
             if (mStandby) {
-                mTimestampVerifier.discontinuity();
+                mTimestampVerifier.discontinuity(audio_is_linear_pcm(mFormat) ?
+                    mTimestampVerifier.DISCONTINUITY_MODE_CONTINUOUS :
+                    mTimestampVerifier.DISCONTINUITY_MODE_ZERO);
             } else if (mSource->getCapturePosition(&position, &time) == NO_ERROR
                     && time > mTimestamp.mTimeNs[ExtendedTimestamp::LOCATION_KERNEL]) {
 
@@ -8370,13 +8385,11 @@ bool AudioFlinger::RecordThread::checkForNewParameter_l(const String8& keyValueP
         }
         if (reconfig) {
             if (status == BAD_VALUE) {
-                uint32_t sRate;
-                audio_channel_mask_t channelMask;
-                audio_format_t format;
-                if (mInput->stream->getAudioProperties(&sRate, &channelMask, &format) == OK &&
-                        audio_is_linear_pcm(format) && audio_is_linear_pcm(reqFormat) &&
-                        sRate <= (AUDIO_RESAMPLER_DOWN_RATIO_MAX * samplingRate) &&
-                        audio_channel_count_from_in_mask(channelMask) <= FCC_8) {
+                audio_config_base_t config = AUDIO_CONFIG_BASE_INITIALIZER;
+                if (mInput->stream->getAudioProperties(&config) == OK &&
+                        audio_is_linear_pcm(config.format) && audio_is_linear_pcm(reqFormat) &&
+                        config.sample_rate <= (AUDIO_RESAMPLER_DOWN_RATIO_MAX * samplingRate) &&
+                        audio_channel_count_from_in_mask(config.channel_mask) <= FCC_8) {
                     status = NO_ERROR;
                 }
             }

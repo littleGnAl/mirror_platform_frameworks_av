@@ -33,14 +33,40 @@
 using android::C2AllocatorIon;
 
 #include "media_c2_hidl_test_common.h"
+using DecodeTestParameters = std::tuple<std::string, std::string, uint32_t, bool>;
+static std::vector<DecodeTestParameters> kDecodeTestParameters;
 
-static std::vector<std::tuple<std::string, std::string, std::string, std::string>>
-        kDecodeTestParameters;
+using CsdFlushTestParameters = std::tuple<std::string, std::string, bool>;
+static std::vector<CsdFlushTestParameters> kCsdFlushTestParameters;
 
-static std::vector<std::tuple<std::string, std::string, std::string>> kCsdFlushTestParameters;
+struct CompToURL {
+    std::string mime;
+    std::string mURL;
+    std::string info;
+};
 
-// Resource directory
-static std::string sResourceDir = "";
+std::vector<CompToURL> kCompToURL = {
+        {"mp4a-latm", "bbb_aac_stereo_128kbps_48000hz.aac", "bbb_aac_stereo_128kbps_48000hz.info"},
+        {"mp4a-latm", "bbb_aac_stereo_128kbps_48000hz.aac",
+         "bbb_aac_stereo_128kbps_48000hz_multi_frame.info"},
+        {"audio/mpeg", "bbb_mp3_stereo_192kbps_48000hz.mp3", "bbb_mp3_stereo_192kbps_48000hz.info"},
+        {"audio/mpeg", "bbb_mp3_stereo_192kbps_48000hz.mp3",
+         "bbb_mp3_stereo_192kbps_48000hz_multi_frame.info"},
+        {"3gpp", "sine_amrnb_1ch_12kbps_8000hz.amrnb", "sine_amrnb_1ch_12kbps_8000hz.info"},
+        {"3gpp", "sine_amrnb_1ch_12kbps_8000hz.amrnb",
+         "sine_amrnb_1ch_12kbps_8000hz_multi_frame.info"},
+        {"amr-wb", "bbb_amrwb_1ch_14kbps_16000hz.amrwb", "bbb_amrwb_1ch_14kbps_16000hz.info"},
+        {"amr-wb", "bbb_amrwb_1ch_14kbps_16000hz.amrwb",
+         "bbb_amrwb_1ch_14kbps_16000hz_multi_frame.info"},
+        {"vorbis", "bbb_vorbis_stereo_128kbps_48000hz.vorbis",
+         "bbb_vorbis_stereo_128kbps_48000hz.info"},
+        {"opus", "bbb_opus_stereo_128kbps_48000hz.opus", "bbb_opus_stereo_128kbps_48000hz.info"},
+        {"g711-alaw", "bbb_g711alaw_1ch_8khz.raw", "bbb_g711alaw_1ch_8khz.info"},
+        {"g711-mlaw", "bbb_g711mulaw_1ch_8khz.raw", "bbb_g711mulaw_1ch_8khz.info"},
+        {"gsm", "bbb_gsm_1ch_8khz_13kbps.raw", "bbb_gsm_1ch_8khz_13kbps.info"},
+        {"raw", "bbb_raw_1ch_8khz_s32le.raw", "bbb_raw_1ch_8khz_s32le.info"},
+        {"flac", "bbb_flac_stereo_680kbps_48000hz.flac", "bbb_flac_stereo_680kbps_48000hz.info"},
+};
 
 class LinearBuffer : public C2Buffer {
   public:
@@ -76,33 +102,17 @@ class Codec2AudioDecHidlTestBase : public ::testing::Test {
         mLinearPool = std::make_shared<C2PooledBlockPool>(mLinearAllocator, mBlockPoolId++);
         ASSERT_NE(mLinearPool, nullptr);
 
-        mCompName = unknown_comp;
-        struct StringToName {
-            const char* Name;
-            standardComp CompName;
-        };
-        const StringToName kStringToName[] = {
-                {"xaac", xaac},          {"mp3", mp3}, {"amrnb", amrnb},
-                {"amrwb", amrwb},        {"aac", aac}, {"vorbis", vorbis},
-                {"opus", opus},          {"pcm", pcm}, {"g711.alaw", g711alaw},
-                {"g711.mlaw", g711mlaw}, {"gsm", gsm}, {"raw", raw},
-                {"flac", flac},
-        };
-        const size_t kNumStringToName = sizeof(kStringToName) / sizeof(kStringToName[0]);
+        std::vector<std::unique_ptr<C2Param>> queried;
+        mComponent->query({}, {C2PortMediaTypeSetting::input::PARAM_TYPE}, C2_DONT_BLOCK, &queried);
+        ASSERT_GT(queried.size(), 0);
 
-        // Find the component type
-        for (size_t i = 0; i < kNumStringToName; ++i) {
-            if (strcasestr(mComponentName.c_str(), kStringToName[i].Name)) {
-                mCompName = kStringToName[i].CompName;
-                break;
-            }
-        }
+        mMime = ((C2PortMediaTypeSetting::input*)queried[0].get())->m.value;
+
         mEos = false;
         mFramesReceived = 0;
         mTimestampUs = 0u;
         mWorkResult = C2_OK;
         mTimestampDevTest = false;
-        if (mCompName == unknown_comp) mDisableTest = true;
         if (mDisableTest) std::cout << "[   WARN   ] Test Disabled \n";
     }
 
@@ -118,6 +128,8 @@ class Codec2AudioDecHidlTestBase : public ::testing::Test {
     virtual void getParams() {}
 
     virtual void validateTimestampList(int32_t* bitStreamInfo);
+
+    void GetURLForComponent(char* mURL, char* info, size_t streamIndex = 0);
 
     struct outputMetaData {
         uint64_t timestampUs;
@@ -158,29 +170,12 @@ class Codec2AudioDecHidlTestBase : public ::testing::Test {
         }
     }
 
-    enum standardComp {
-        xaac,
-        mp3,
-        amrnb,
-        amrwb,
-        aac,
-        vorbis,
-        opus,
-        pcm,
-        g711alaw,
-        g711mlaw,
-        gsm,
-        raw,
-        flac,
-        unknown_comp,
-    };
-
+    std::string mMime;
     std::string mInstanceName;
     std::string mComponentName;
     bool mEos;
     bool mDisableTest;
     bool mTimestampDevTest;
-    standardComp mCompName;
 
     int32_t mWorkResult;
     uint64_t mTimestampUs;
@@ -207,9 +202,8 @@ class Codec2AudioDecHidlTestBase : public ::testing::Test {
     }
 };
 
-class Codec2AudioDecHidlTest
-    : public Codec2AudioDecHidlTestBase,
-      public ::testing::WithParamInterface<std::tuple<std::string, std::string>> {
+class Codec2AudioDecHidlTest : public Codec2AudioDecHidlTestBase,
+                               public ::testing::WithParamInterface<TestParameters> {
     void getParams() {
         mInstanceName = std::get<0>(GetParam());
         mComponentName = std::get<1>(GetParam());
@@ -217,7 +211,7 @@ class Codec2AudioDecHidlTest
 };
 
 void validateComponent(const std::shared_ptr<android::Codec2Client::Component>& component,
-                       Codec2AudioDecHidlTest::standardComp compName, bool& disableTest) {
+                       bool& disableTest) {
     // Validate its a C2 Component
     if (component->getName().find("c2") == std::string::npos) {
         ALOGE("Not a c2 component");
@@ -244,13 +238,6 @@ void validateComponent(const std::shared_ptr<android::Codec2Client::Component>& 
             return;
         }
     }
-
-    // Validates component name
-    if (compName == Codec2AudioDecHidlTest::unknown_comp) {
-        ALOGE("Component InValid");
-        disableTest = true;
-        return;
-    }
     ALOGV("Component Valid");
 }
 
@@ -271,7 +258,7 @@ bool setupConfigParam(const std::shared_ptr<android::Codec2Client::Component>& c
 // parsing the header of elementary stream. Client needs to collect this
 // information and reconfigure
 void getInputChannelInfo(const std::shared_ptr<android::Codec2Client::Component>& component,
-                         Codec2AudioDecHidlTest::standardComp compName, int32_t* bitStreamInfo) {
+                         std::string mime, int32_t* bitStreamInfo) {
     // query nSampleRate and nChannels
     std::initializer_list<C2Param::Index> indices{
             C2StreamSampleRateInfo::output::PARAM_TYPE,
@@ -288,89 +275,29 @@ void getInputChannelInfo(const std::shared_ptr<android::Codec2Client::Component>
             C2Param* param = inParams[i].get();
             bitStreamInfo[i] = *(int32_t*)((uint8_t*)param + offset);
         }
-        switch (compName) {
-            case Codec2AudioDecHidlTest::amrnb: {
-                ASSERT_EQ(bitStreamInfo[0], 8000);
-                ASSERT_EQ(bitStreamInfo[1], 1);
-                break;
-            }
-            case Codec2AudioDecHidlTest::amrwb: {
-                ASSERT_EQ(bitStreamInfo[0], 16000);
-                ASSERT_EQ(bitStreamInfo[1], 1);
-                break;
-            }
-            case Codec2AudioDecHidlTest::gsm: {
-                ASSERT_EQ(bitStreamInfo[0], 8000);
-                break;
-            }
-            default:
-                break;
+        if (mime.find("3gpp") != std::string::npos) {
+            ASSERT_EQ(bitStreamInfo[0], 8000);
+            ASSERT_EQ(bitStreamInfo[1], 1);
+        } else if (mime.find("amr-wb") != std::string::npos) {
+            ASSERT_EQ(bitStreamInfo[0], 16000);
+            ASSERT_EQ(bitStreamInfo[1], 1);
+        } else if (mime.find("gsm") != std::string::npos) {
+            ASSERT_EQ(bitStreamInfo[0], 8000);
         }
     }
 }
 
-// number of elementary streams per component
-#define STREAM_COUNT 2
-
 // LookUpTable of clips and metadata for component testing
-void GetURLForComponent(Codec2AudioDecHidlTest::standardComp comp, char* mURL, char* info,
-                        size_t streamIndex = 0) {
-    struct CompToURL {
-        Codec2AudioDecHidlTest::standardComp comp;
-        const char mURL[STREAM_COUNT][512];
-        const char info[STREAM_COUNT][512];
-    };
-    ASSERT_TRUE(streamIndex < STREAM_COUNT);
-
-    static const CompToURL kCompToURL[] = {
-            {Codec2AudioDecHidlTest::standardComp::xaac,
-             {"bbb_aac_stereo_128kbps_48000hz.aac", "bbb_aac_stereo_128kbps_48000hz.aac"},
-             {"bbb_aac_stereo_128kbps_48000hz.info",
-              "bbb_aac_stereo_128kbps_48000hz_multi_frame.info"}},
-            {Codec2AudioDecHidlTest::standardComp::mp3,
-             {"bbb_mp3_stereo_192kbps_48000hz.mp3", "bbb_mp3_stereo_192kbps_48000hz.mp3"},
-             {"bbb_mp3_stereo_192kbps_48000hz.info",
-              "bbb_mp3_stereo_192kbps_48000hz_multi_frame.info"}},
-            {Codec2AudioDecHidlTest::standardComp::aac,
-             {"bbb_aac_stereo_128kbps_48000hz.aac", "bbb_aac_stereo_128kbps_48000hz.aac"},
-             {"bbb_aac_stereo_128kbps_48000hz.info",
-              "bbb_aac_stereo_128kbps_48000hz_multi_frame.info"}},
-            {Codec2AudioDecHidlTest::standardComp::amrnb,
-             {"sine_amrnb_1ch_12kbps_8000hz.amrnb", "sine_amrnb_1ch_12kbps_8000hz.amrnb"},
-             {"sine_amrnb_1ch_12kbps_8000hz.info",
-              "sine_amrnb_1ch_12kbps_8000hz_multi_frame.info"}},
-            {Codec2AudioDecHidlTest::standardComp::amrwb,
-             {"bbb_amrwb_1ch_14kbps_16000hz.amrwb", "bbb_amrwb_1ch_14kbps_16000hz.amrwb"},
-             {"bbb_amrwb_1ch_14kbps_16000hz.info",
-              "bbb_amrwb_1ch_14kbps_16000hz_multi_frame.info"}},
-            {Codec2AudioDecHidlTest::standardComp::vorbis,
-             {"bbb_vorbis_stereo_128kbps_48000hz.vorbis", ""},
-             {"bbb_vorbis_stereo_128kbps_48000hz.info", ""}},
-            {Codec2AudioDecHidlTest::standardComp::opus,
-             {"bbb_opus_stereo_128kbps_48000hz.opus", ""},
-             {"bbb_opus_stereo_128kbps_48000hz.info", ""}},
-            {Codec2AudioDecHidlTest::standardComp::g711alaw,
-             {"bbb_g711alaw_1ch_8khz.raw", ""},
-             {"bbb_g711alaw_1ch_8khz.info", ""}},
-            {Codec2AudioDecHidlTest::standardComp::g711mlaw,
-             {"bbb_g711mulaw_1ch_8khz.raw", ""},
-             {"bbb_g711mulaw_1ch_8khz.info", ""}},
-            {Codec2AudioDecHidlTest::standardComp::gsm,
-             {"bbb_gsm_1ch_8khz_13kbps.raw", ""},
-             {"bbb_gsm_1ch_8khz_13kbps.info", ""}},
-            {Codec2AudioDecHidlTest::standardComp::raw,
-             {"bbb_raw_1ch_8khz_s32le.raw", ""},
-             {"bbb_raw_1ch_8khz_s32le.info", ""}},
-            {Codec2AudioDecHidlTest::standardComp::flac,
-             {"bbb_flac_stereo_680kbps_48000hz.flac", ""},
-             {"bbb_flac_stereo_680kbps_48000hz.info", ""}},
-    };
-
-    for (size_t i = 0; i < sizeof(kCompToURL) / sizeof(kCompToURL[0]); ++i) {
-        if (kCompToURL[i].comp == comp) {
-            strcat(mURL, kCompToURL[i].mURL[streamIndex]);
-            strcat(info, kCompToURL[i].info[streamIndex]);
-            return;
+void Codec2AudioDecHidlTestBase::GetURLForComponent(char* mURL, char* info, size_t streamIndex) {
+    int streamCount = 0;
+    for (size_t i = 0; i < kCompToURL.size(); ++i) {
+        if (mMime.find(kCompToURL[i].mime) != std::string::npos) {
+            if (streamCount == streamIndex) {
+                strcat(mURL, kCompToURL[i].mURL.c_str());
+                strcat(info, kCompToURL[i].info.c_str());
+                return;
+            }
+            streamCount++;
         }
     }
 }
@@ -461,7 +388,7 @@ void decodeNFrames(const std::shared_ptr<android::Codec2Client::Component>& comp
 void Codec2AudioDecHidlTestBase::validateTimestampList(int32_t* bitStreamInfo) {
     uint32_t samplesReceived = 0;
     // Update SampleRate and ChannelCount
-    ASSERT_NO_FATAL_FAILURE(getInputChannelInfo(mComponent, mCompName, bitStreamInfo));
+    ASSERT_NO_FATAL_FAILURE(getInputChannelInfo(mComponent, mMime, bitStreamInfo));
     int32_t nSampleRate = bitStreamInfo[0];
     int32_t nChannels = bitStreamInfo[1];
     std::list<uint64_t>::iterator itIn = mTimestampUslist.begin();
@@ -486,7 +413,7 @@ void Codec2AudioDecHidlTestBase::validateTimestampList(int32_t* bitStreamInfo) {
 TEST_P(Codec2AudioDecHidlTest, validateCompName) {
     if (mDisableTest) GTEST_SKIP() << "Test is disabled";
     ALOGV("Checks if the given component is a valid audio component");
-    validateComponent(mComponent, mCompName, mDisableTest);
+    validateComponent(mComponent, mDisableTest);
     ASSERT_EQ(mDisableTest, false);
 }
 
@@ -495,15 +422,13 @@ TEST_P(Codec2AudioDecHidlTest, configComp) {
     if (mDisableTest) GTEST_SKIP() << "Test is disabled";
     ASSERT_EQ(mComponent->start(), C2_OK);
     int32_t bitStreamInfo[2] = {0};
-    ASSERT_NO_FATAL_FAILURE(getInputChannelInfo(mComponent, mCompName, bitStreamInfo));
+    ASSERT_NO_FATAL_FAILURE(getInputChannelInfo(mComponent, mMime, bitStreamInfo));
     setupConfigParam(mComponent, bitStreamInfo);
     ASSERT_EQ(mComponent->stop(), C2_OK);
 }
 
-class Codec2AudioDecDecodeTest
-    : public Codec2AudioDecHidlTestBase,
-      public ::testing::WithParamInterface<
-              std::tuple<std::string, std::string, std::string, std::string>> {
+class Codec2AudioDecDecodeTest : public Codec2AudioDecHidlTestBase,
+                                 public ::testing::WithParamInterface<DecodeTestParameters> {
     void getParams() {
         mInstanceName = std::get<0>(GetParam());
         mComponentName = std::get<1>(GetParam());
@@ -514,16 +439,15 @@ TEST_P(Codec2AudioDecDecodeTest, DecodeTest) {
     description("Decodes input file");
     if (mDisableTest) GTEST_SKIP() << "Test is disabled";
 
-    uint32_t streamIndex = std::stoi(std::get<2>(GetParam()));
-    ;
-    bool signalEOS = !std::get<3>(GetParam()).compare("true");
+    uint32_t streamIndex = std::get<2>(GetParam());
+    bool signalEOS = std::get<3>(GetParam());
     mTimestampDevTest = true;
     char mURL[512], info[512];
     android::Vector<FrameInfo> Info;
 
     strcpy(mURL, sResourceDir.c_str());
     strcpy(info, sResourceDir.c_str());
-    GetURLForComponent(mCompName, mURL, info, streamIndex);
+    GetURLForComponent(mURL, info, streamIndex);
     if (!strcmp(mURL, sResourceDir.c_str())) {
         ALOGV("EMPTY INPUT sResourceDir.c_str() %s mURL  %s ", sResourceDir.c_str(), mURL);
         return;
@@ -536,11 +460,11 @@ TEST_P(Codec2AudioDecDecodeTest, DecodeTest) {
     mFramesReceived = 0;
     mTimestampUs = 0;
     int32_t bitStreamInfo[2] = {0};
-    if (mCompName == raw) {
+    if (mMime.find("raw") != std::string::npos) {
         bitStreamInfo[0] = 8000;
         bitStreamInfo[1] = 1;
     } else {
-        ASSERT_NO_FATAL_FAILURE(getInputChannelInfo(mComponent, mCompName, bitStreamInfo));
+        ASSERT_NO_FATAL_FAILURE(getInputChannelInfo(mComponent, mMime, bitStreamInfo));
     }
     if (!setupConfigParam(mComponent, bitStreamInfo)) {
         std::cout << "[   WARN   ] Test Skipped \n";
@@ -591,17 +515,17 @@ TEST_P(Codec2AudioDecHidlTest, ThumbnailTest) {
 
     strcpy(mURL, sResourceDir.c_str());
     strcpy(info, sResourceDir.c_str());
-    GetURLForComponent(mCompName, mURL, info);
+    GetURLForComponent(mURL, info);
 
     int32_t numCsds = populateInfoVector(info, &Info, mTimestampDevTest, &mTimestampUslist);
     ASSERT_GE(numCsds, 0) << "Error in parsing input info file: " << info;
 
     int32_t bitStreamInfo[2] = {0};
-    if (mCompName == raw) {
+    if (mMime.find("raw") != std::string::npos) {
         bitStreamInfo[0] = 8000;
         bitStreamInfo[1] = 1;
     } else {
-        ASSERT_NO_FATAL_FAILURE(getInputChannelInfo(mComponent, mCompName, bitStreamInfo));
+        ASSERT_NO_FATAL_FAILURE(getInputChannelInfo(mComponent, mMime, bitStreamInfo));
     }
     if (!setupConfigParam(mComponent, bitStreamInfo)) {
         std::cout << "[   WARN   ] Test Skipped \n";
@@ -683,17 +607,17 @@ TEST_P(Codec2AudioDecHidlTest, FlushTest) {
 
     strcpy(mURL, sResourceDir.c_str());
     strcpy(info, sResourceDir.c_str());
-    GetURLForComponent(mCompName, mURL, info);
+    GetURLForComponent(mURL, info);
 
     int32_t numCsds = populateInfoVector(info, &Info, mTimestampDevTest, &mTimestampUslist);
     ASSERT_GE(numCsds, 0) << "Error in parsing input info file: " << info;
 
     int32_t bitStreamInfo[2] = {0};
-    if (mCompName == raw) {
+    if (mMime.find("raw") != std::string::npos) {
         bitStreamInfo[0] = 8000;
         bitStreamInfo[1] = 1;
     } else {
-        ASSERT_NO_FATAL_FAILURE(getInputChannelInfo(mComponent, mCompName, bitStreamInfo));
+        ASSERT_NO_FATAL_FAILURE(getInputChannelInfo(mComponent, mMime, bitStreamInfo));
     }
     if (!setupConfigParam(mComponent, bitStreamInfo)) {
         std::cout << "[   WARN   ] Test Skipped \n";
@@ -768,7 +692,7 @@ TEST_P(Codec2AudioDecHidlTest, DecodeTestEmptyBuffersInserted) {
 
     strcpy(mURL, sResourceDir.c_str());
     strcpy(info, sResourceDir.c_str());
-    GetURLForComponent(mCompName, mURL, info);
+    GetURLForComponent(mURL, info);
 
     eleInfo.open(info);
     ASSERT_EQ(eleInfo.is_open(), true) << mURL << " - file not found";
@@ -798,11 +722,11 @@ TEST_P(Codec2AudioDecHidlTest, DecodeTestEmptyBuffersInserted) {
     }
     eleInfo.close();
     int32_t bitStreamInfo[2] = {0};
-    if (mCompName == raw) {
+    if (mMime.find("raw") != std::string::npos) {
         bitStreamInfo[0] = 8000;
         bitStreamInfo[1] = 1;
     } else {
-        ASSERT_NO_FATAL_FAILURE(getInputChannelInfo(mComponent, mCompName, bitStreamInfo));
+        ASSERT_NO_FATAL_FAILURE(getInputChannelInfo(mComponent, mMime, bitStreamInfo));
     }
     if (!setupConfigParam(mComponent, bitStreamInfo)) {
         std::cout << "[   WARN   ] Test Skipped \n";
@@ -833,9 +757,8 @@ TEST_P(Codec2AudioDecHidlTest, DecodeTestEmptyBuffersInserted) {
     ASSERT_EQ(mComponent->stop(), C2_OK);
 }
 
-class Codec2AudioDecCsdInputTests
-    : public Codec2AudioDecHidlTestBase,
-      public ::testing::WithParamInterface<std::tuple<std::string, std::string, std::string>> {
+class Codec2AudioDecCsdInputTests : public Codec2AudioDecHidlTestBase,
+                                    public ::testing::WithParamInterface<CsdFlushTestParameters> {
     void getParams() {
         mInstanceName = std::get<0>(GetParam());
         mComponentName = std::get<1>(GetParam());
@@ -853,7 +776,7 @@ TEST_P(Codec2AudioDecCsdInputTests, CSDFlushTest) {
 
     strcpy(mURL, sResourceDir.c_str());
     strcpy(info, sResourceDir.c_str());
-    GetURLForComponent(mCompName, mURL, info);
+    GetURLForComponent(mURL, info);
     if (!strcmp(mURL, sResourceDir.c_str())) {
         ALOGV("EMPTY INPUT sResourceDir.c_str() %s mURL  %s ", sResourceDir.c_str(), mURL);
         return;
@@ -864,11 +787,11 @@ TEST_P(Codec2AudioDecCsdInputTests, CSDFlushTest) {
     ASSERT_GE(numCsds, 0) << "Error in parsing input info file";
 
     int32_t bitStreamInfo[2] = {0};
-    if (mCompName == raw) {
+    if (mMime.find("raw") != std::string::npos) {
         bitStreamInfo[0] = 8000;
         bitStreamInfo[1] = 1;
     } else {
-        ASSERT_NO_FATAL_FAILURE(getInputChannelInfo(mComponent, mCompName, bitStreamInfo));
+        ASSERT_NO_FATAL_FAILURE(getInputChannelInfo(mComponent, mMime, bitStreamInfo));
     }
     if (!setupConfigParam(mComponent, bitStreamInfo)) {
         std::cout << "[   WARN   ] Test Skipped \n";
@@ -881,7 +804,7 @@ TEST_P(Codec2AudioDecCsdInputTests, CSDFlushTest) {
     ASSERT_EQ(eleStream.is_open(), true);
 
     bool signalEOS = false;
-    bool flushCsd = !std::get<2>(GetParam()).compare("true");
+    bool flushCsd = std::get<2>(GetParam());
     ALOGV("sending %d csd data ", numCsds);
     int framesToDecode = numCsds;
     ASSERT_NO_FATAL_FAILURE(decodeNFrames(mComponent, mQueueLock, mQueueCondition, mWorkQueue,
@@ -937,44 +860,36 @@ TEST_P(Codec2AudioDecCsdInputTests, CSDFlushTest) {
 }
 
 INSTANTIATE_TEST_SUITE_P(PerInstance, Codec2AudioDecHidlTest, testing::ValuesIn(kTestParameters),
-                         android::hardware::PrintInstanceTupleNameToString<>);
+                         PrintInstanceTupleNameToString<>);
 
 // DecodeTest with StreamIndex and EOS / No EOS
 INSTANTIATE_TEST_SUITE_P(StreamIndexAndEOS, Codec2AudioDecDecodeTest,
                          testing::ValuesIn(kDecodeTestParameters),
-                         android::hardware::PrintInstanceTupleNameToString<>);
+                         PrintInstanceTupleNameToString<>);
 
 INSTANTIATE_TEST_SUITE_P(CsdInputs, Codec2AudioDecCsdInputTests,
                          testing::ValuesIn(kCsdFlushTestParameters),
-                         android::hardware::PrintInstanceTupleNameToString<>);
+                         PrintInstanceTupleNameToString<>);
 
 }  // anonymous namespace
 
 int main(int argc, char** argv) {
+    parseArgs(argc, argv);
     kTestParameters = getTestParameters(C2Component::DOMAIN_AUDIO, C2Component::KIND_DECODER);
     for (auto params : kTestParameters) {
         kDecodeTestParameters.push_back(
-                std::make_tuple(std::get<0>(params), std::get<1>(params), "0", "false"));
+                std::make_tuple(std::get<0>(params), std::get<1>(params), 0, false));
         kDecodeTestParameters.push_back(
-                std::make_tuple(std::get<0>(params), std::get<1>(params), "0", "true"));
+                std::make_tuple(std::get<0>(params), std::get<1>(params), 0, true));
         kDecodeTestParameters.push_back(
-                std::make_tuple(std::get<0>(params), std::get<1>(params), "1", "false"));
+                std::make_tuple(std::get<0>(params), std::get<1>(params), 1, false));
         kDecodeTestParameters.push_back(
-                std::make_tuple(std::get<0>(params), std::get<1>(params), "1", "true"));
+                std::make_tuple(std::get<0>(params), std::get<1>(params), 1, true));
 
         kCsdFlushTestParameters.push_back(
-                std::make_tuple(std::get<0>(params), std::get<1>(params), "true"));
+                std::make_tuple(std::get<0>(params), std::get<1>(params), true));
         kCsdFlushTestParameters.push_back(
-                std::make_tuple(std::get<0>(params), std::get<1>(params), "false"));
-    }
-
-    // Set the resource directory based on command line args.
-    // Test will fail to set up if the argument is not set.
-    for (int i = 1; i < argc; i++) {
-        if (strcmp(argv[i], "-P") == 0 && i < argc - 1) {
-            sResourceDir = argv[i + 1];
-            break;
-        }
+                std::make_tuple(std::get<0>(params), std::get<1>(params), false));
     }
 
     ::testing::InitGoogleTest(&argc, argv);

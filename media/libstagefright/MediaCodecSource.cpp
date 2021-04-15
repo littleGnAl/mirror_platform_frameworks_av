@@ -715,6 +715,9 @@ void MediaCodecSource::resume(int64_t resumeStartTimeUs) {
 status_t MediaCodecSource::feedEncoderInputBuffers() {
     MediaBufferBase* mbuf = NULL;
     while (!mAvailEncoderInputIndices.empty() && mPuller->readBuffer(&mbuf)) {
+        if (!mEncoder) {
+            return BAD_VALUE;
+        }
         size_t bufferIndex = *mAvailEncoderInputIndices.begin();
         mAvailEncoderInputIndices.erase(mAvailEncoderInputIndices.begin());
 
@@ -775,12 +778,9 @@ status_t MediaCodecSource::feedEncoderInputBuffers() {
                     android_dataspace dataspace = static_cast<android_dataspace>(ds);
                     ColorUtils::convertDataSpaceToV0(dataspace);
                     ALOGD("Updating dataspace to %x", dataspace);
-                    int32_t standard = (int32_t(dataspace) & HAL_DATASPACE_STANDARD_MASK)
-                        >> HAL_DATASPACE_STANDARD_SHIFT;
-                    int32_t transfer = (int32_t(dataspace) & HAL_DATASPACE_TRANSFER_MASK)
-                        >> HAL_DATASPACE_TRANSFER_SHIFT;
-                    int32_t range = (int32_t(dataspace) & HAL_DATASPACE_RANGE_MASK)
-                        >> HAL_DATASPACE_RANGE_SHIFT;
+                    int32_t standard, transfer, range;
+                    ColorUtils::getColorConfigFromDataSpace(
+                            dataspace, &range, &standard, &transfer);
                     sp<AMessage> msg = new AMessage;
                     msg->setInt32(KEY_COLOR_STANDARD, standard);
                     msg->setInt32(KEY_COLOR_TRANSFER, transfer);
@@ -1151,7 +1151,7 @@ void MediaCodecSource::onMessageReceived(const sp<AMessage> &msg) {
         if (mFlags & FLAG_USE_SURFACE_INPUT) {
             sp<AMessage> params = new AMessage;
             params->setInt64(PARAMETER_KEY_OFFSET_TIME, mInputBufferTimeOffsetUs);
-            err = mEncoder->setParameters(params);
+            err = mEncoder ? mEncoder->setParameters(params) : BAD_VALUE;
         }
 
         sp<AMessage> response = new AMessage;
@@ -1171,7 +1171,7 @@ void MediaCodecSource::onMessageReceived(const sp<AMessage> &msg) {
         if (mFlags & FLAG_USE_SURFACE_INPUT) {
             sp<AMessage> params = new AMessage;
             params->setInt64("stop-time-us", stopTimeUs);
-            err = mEncoder->setParameters(params);
+            err = mEncoder ? mEncoder->setParameters(params) : BAD_VALUE;
         } else {
             err = mPuller->setStopTimeUs(stopTimeUs);
         }
