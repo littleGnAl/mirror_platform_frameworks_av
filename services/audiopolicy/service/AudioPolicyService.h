@@ -312,7 +312,7 @@ public:
 
             status_t clientCreateAudioPatch(const struct audio_patch *patch,
                                       audio_patch_handle_t *handle,
-                                      int delayMs);
+                                      int delayMs, uid_t uid);
             status_t clientReleaseAudioPatch(audio_patch_handle_t handle,
                                              int delayMs);
             virtual status_t clientSetAudioPortConfig(const struct audio_port_config *config,
@@ -604,6 +604,7 @@ private:
         public:
             struct audio_patch mPatch;
             audio_patch_handle_t mHandle;
+            uid_t mUid;
         };
 
         class ReleaseAudioPatchData : public AudioCommandData {
@@ -738,7 +739,7 @@ private:
         /* Create a patch between several source and sink ports */
         virtual status_t createAudioPatch(const struct audio_patch *patch,
                                            audio_patch_handle_t *handle,
-                                           int delayMs);
+                                           int delayMs, uid_t uid);
 
         /* Release a patch */
         virtual status_t releaseAudioPatch(audio_patch_handle_t handle,

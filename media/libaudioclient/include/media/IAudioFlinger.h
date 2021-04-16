@@ -516,7 +516,7 @@ public:
 
     /* Create an audio patch between several source and sink ports */
     virtual status_t createAudioPatch(const struct audio_patch *patch,
-                                       audio_patch_handle_t *handle) = 0;
+                                       audio_patch_handle_t *handle, uid_t uid) = 0;
 
     /* Release an audio patch */
     virtual status_t releaseAudioPatch(audio_patch_handle_t handle) = 0;
