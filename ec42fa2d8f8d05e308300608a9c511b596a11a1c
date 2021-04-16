@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8d8d0f6_3850a9a0",
+        "filename": "media/codec2/components/flac/C2SoftFlacDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-04-16T23:33:44Z",
+      "side": 1,
+      "message": "if i understand properly.\n\nif I was sending \"config1\" and then \"config2\" -- such that config2 was conflicting as in the bug..... this will solve that by discarding config2. always.\n\nthat means that a config1, followed by a \"flush, config2\" because I changed my mind -- will never have config2 be accepted.\ne.g. if config1 and config2 are different -- we\u0027ll be stuck with config1.\n\nshould we perhaps be discarding the mFLACDecoder instance and re-initializing a new one in this case?",
+      "range": {
+        "startLine": 224,
+        "startChar": 11,
+        "endLine": 224,
+        "endChar": 29
+      },
+      "revId": "ec42fa2d8f8d05e308300608a9c511b596a11a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
