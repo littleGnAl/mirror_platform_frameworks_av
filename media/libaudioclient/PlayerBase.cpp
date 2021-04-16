@@ -46,11 +46,12 @@ PlayerBase::~PlayerBase() {
     baseDestroy();
 }
 
-void PlayerBase::init(player_type_t playerType, audio_usage_t usage) {
+void PlayerBase::init(player_type_t playerType, audio_usage_t usage, uid_t appUid) {
     if (mAudioManager == 0) {
                 ALOGE("AudioPlayer realize: no audio service, player will not be registered");
     } else {
-        mPIId = mAudioManager->trackPlayer(playerType, usage, AUDIO_CONTENT_TYPE_UNKNOWN, this);
+        mPIId = mAudioManager->trackPlayer(
+                    playerType, appUid, usage, AUDIO_CONTENT_TYPE_UNKNOWN, this);
     }
 }
 

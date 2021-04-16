@@ -411,6 +411,7 @@ public:
                                    size_t frameCount,
                                    void *buffer,
                                    size_t bufferSize,
+                                   uid_t uid,
                                    audio_output_flags_t flags,
                                    const Timeout& timeout = {},
                                    size_t frameCountToBeReady = 1 /** Default behaviour is to start
@@ -425,6 +426,7 @@ public:
                                     AudioSystem::SYNC_EVENT_NONE,
                              audio_session_t triggerSession = AUDIO_SESSION_NONE);
 
+            void        stop() override;
     // AudioBufferProvider interface
     virtual status_t getNextBuffer(AudioBufferProvider::Buffer* buffer);
     virtual void releaseBuffer(AudioBufferProvider::Buffer* buffer);
@@ -437,3 +439,36 @@ public:
 private:
             void restartIfDisabled();
 };  // end of PatchTrack
+
+
+class PatchTrackPlayerBase : public PlayerBase
+{
+public:
+    explicit PatchTrackPlayerBase(PatchTrack* pat, audio_usage_t usage);
+    ~PatchTrackPlayerBase() override;
+
+    void destroy() override;
+
+    //IPlayer implementation
+    binder::Status applyVolumeShaper(
+            const media::VolumeShaper::Configuration& configuration,
+            const media::VolumeShaper::Operation& operation) override;
+
+    PatchTrack &mPatchTrack;
+
+    void setPlayerVolume(float vl, float vr);
+
+protected:
+    //PlayerBase virtuals
+    status_t playerStart() override;
+    status_t playerPause() override;
+    status_t playerStop() override;
+    status_t playerSetVolume() override;
+
+private:
+    void doDestroy();
+    status_t doSetVolume();
+
+    // volume coming from the player volume API
+    float mPlayerVolumeL, mPlayerVolumeR;
+};

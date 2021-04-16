@@ -1525,7 +1525,7 @@ status_t AudioPolicyManager::setMsdOutputPatches(const DeviceVector *outputDevic
     status_t status = NO_ERROR;
     for (const auto &p : patchesToCreate) {
         auto currStatus = installPatch(__func__, -1 /*index*/, nullptr /*patchHandle*/,
-                p.patch(), 0 /*delayMs*/, mUidCached, nullptr /*patchDescPtr*/);
+                p.patch(), 0 /*delayMs*/, mUidCached, mUidCached, nullptr /*patchDescPtr*/);
         char message[256];
         snprintf(message, sizeof(message), "%s() %s: creating MSD patch from device:IN_BUS to "
             "device:%#x (format:%#x channels:%#x samplerate:%d)", __func__,
@@ -4049,7 +4049,9 @@ status_t AudioPolicyManager::createAudioPatchInternal(const struct audio_patch *
                         audio_port_config srcMixPortConfig = {};
                         outputDesc->toAudioPortConfig(&srcMixPortConfig, &patch->sources[0]);
                         // for volume control, we may need a valid stream
-                        srcMixPortConfig.ext.mix.usecase.stream = sourceDesc->stream();
+                        srcMixPortConfig.ext.mix.usecase.stream = !sourceDesc->isInternal() ?
+                                    sourceDesc->stream() :
+                                    AUDIO_STREAM_PATCH;
                         patchBuilder.addSource(srcMixPortConfig);
                     }
                 }
@@ -4057,8 +4059,10 @@ status_t AudioPolicyManager::createAudioPatchInternal(const struct audio_patch *
             // TODO: check from routing capabilities in config file and other conflicting patches
 
 installPatch:
+            uid_t appUid = sourceDesc != nullptr ? sourceDesc->uid() : mUidCached;
             status_t status = installPatch(
-                        __func__, index, handle, patchBuilder.patch(), delayMs, uid, &patchDesc);
+                        __func__, index, handle, patchBuilder.patch(), delayMs, uid, appUid,
+                        &patchDesc);
             if (status != NO_ERROR) {
                 ALOGW("%s patch panel could not connect device patch, error %d", __func__, status);
                 return INVALID_OPERATION;
@@ -6837,7 +6841,7 @@ status_t AudioPolicyManager::installPatch(const char *caller,
             *patchHandle : ioDescriptor->getPatchHandle());
     sp<AudioPatch> patchDesc;
     status_t status = installPatch(
-            caller, index, patchHandle, patch, delayMs, mUidCached, &patchDesc);
+            caller, index, patchHandle, patch, delayMs, mUidCached, mUidCached, &patchDesc);
     if (status == NO_ERROR) {
         ioDescriptor->setPatchHandle(patchDesc->getHandle());
     }
@@ -6850,6 +6854,7 @@ status_t AudioPolicyManager::installPatch(const char *caller,
                                           const struct audio_patch *patch,
                                           int delayMs,
                                           uid_t uid,
+                                          uid_t appUid,
                                           sp<AudioPatch> *patchDescPtr)
 {
     sp<AudioPatch> patchDesc;
@@ -6859,7 +6864,7 @@ status_t AudioPolicyManager::installPatch(const char *caller,
         afPatchHandle = patchDesc->getAfHandle();
     }
 
-    status_t status = mpClientInterface->createAudioPatch(patch, &afPatchHandle, delayMs);
+    status_t status = mpClientInterface->createAudioPatch(patch, &afPatchHandle, delayMs, appUid);
     ALOGV("%s() AF::createAudioPatch returned %d patchHandle %d num_sources %d num_sinks %d",
             caller, status, afPatchHandle, patch->num_sources, patch->num_sinks);
     if (status == NO_ERROR) {

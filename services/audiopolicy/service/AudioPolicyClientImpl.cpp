@@ -182,9 +182,9 @@ void AudioPolicyService::AudioPolicyClient::setEffectSuspended(int effectId,
 
 status_t AudioPolicyService::AudioPolicyClient::createAudioPatch(const struct audio_patch *patch,
                                                                   audio_patch_handle_t *handle,
-                                                                  int delayMs)
+                                                                  int delayMs, uid_t uid)
 {
-    return mAudioPolicyService->clientCreateAudioPatch(patch, handle, delayMs);
+    return mAudioPolicyService->clientCreateAudioPatch(patch, handle, delayMs, uid);
 }
 
 status_t AudioPolicyService::AudioPolicyClient::releaseAudioPatch(audio_patch_handle_t handle,
