@@ -63,10 +63,10 @@ status_t AudioFlinger::getAudioPort(struct audio_port *port)
 
 /* Connect a patch between several source and sink ports */
 status_t AudioFlinger::createAudioPatch(const struct audio_patch *patch,
-                                   audio_patch_handle_t *handle)
+                                   audio_patch_handle_t *handle, uid_t uid)
 {
     Mutex::Autolock _l(mLock);
-    return mPatchPanel.createAudioPatch(patch, handle);
+    return mPatchPanel.createAudioPatch(patch, handle, uid);
 }
 
 /* Disconnect a patch */
@@ -111,8 +111,8 @@ status_t AudioFlinger::PatchPanel::getAudioPort(struct audio_port *port __unused
 
 /* Connect a patch between several source and sink ports */
 status_t AudioFlinger::PatchPanel::createAudioPatch(const struct audio_patch *patch,
-                                   audio_patch_handle_t *handle,
-                                   bool endpointPatch)
+                                                    audio_patch_handle_t *handle, uid_t uid,
+                                                    bool endpointPatch)
 {
     if (handle == NULL || patch == NULL) {
         return BAD_VALUE;
@@ -305,7 +305,7 @@ status_t AudioFlinger::PatchPanel::createAudioPatch(const struct audio_patch *pa
                     goto exit;
                 }
                 newPatch.mRecord.setThread(reinterpret_cast<RecordThread*>(thread.get()));
-                status = newPatch.createConnections(this);
+                status = newPatch.createConnections(this, uid);
                 if (status != NO_ERROR) {
                     goto exit;
                 }
@@ -435,7 +435,7 @@ AudioFlinger::PatchPanel::Patch::~Patch()
             mRecord.handle(), mPlayback.handle());
 }
 
-status_t AudioFlinger::PatchPanel::Patch::createConnections(PatchPanel *panel)
+status_t AudioFlinger::PatchPanel::Patch::createConnections(PatchPanel *panel, uid_t uid)
 {
     // create patch from source device to record thread input
     status_t status = panel->createAudioPatch(
@@ -560,6 +560,7 @@ status_t AudioFlinger::PatchPanel::Patch::createConnections(PatchPanel *panel)
                                            frameCount,
                                            tempRecordTrack->buffer(),
                                            tempRecordTrack->bufferSize(),
+                                           uid,
                                            outputFlags);
     status = mPlayback.checkTrack(tempPatchTrack.get());
     if (status != NO_ERROR) {
