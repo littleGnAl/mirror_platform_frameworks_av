@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0486d33f_32055428",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-16T18:41:35Z",
+      "side": 1,
+      "message": "Patchset 2 was uploaded to resolve a merge conflict with a change in internal branches.\nParts of the conflicting CL from the internal branch is now uploaded with a Merged-In to aosp/master and this CL is updated to resolve the conflict.\nWith patchset 2, I have verified that mts built in aosp/master (S) works as expected on a device running Q.",
+      "revId": "b7d64b55a35205bdd56fa15a95e6ffb1ea013e0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
