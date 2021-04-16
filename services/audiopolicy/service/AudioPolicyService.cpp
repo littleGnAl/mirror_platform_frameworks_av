@@ -276,9 +276,9 @@ void AudioPolicyService::doOnRecordingConfigurationUpdate(
 
 status_t AudioPolicyService::clientCreateAudioPatch(const struct audio_patch *patch,
                                                 audio_patch_handle_t *handle,
-                                                int delayMs)
+                                                int delayMs, uid_t uid)
 {
-    return mAudioCommandThread->createAudioPatchCommand(patch, handle, delayMs);
+    return mAudioCommandThread->createAudioPatchCommand(patch, handle, delayMs, uid);
 }
 
 status_t AudioPolicyService::clientReleaseAudioPatch(audio_patch_handle_t handle,
@@ -1258,7 +1258,8 @@ bool AudioPolicyService::AudioCommandThread::threadLoop()
                         command->mStatus = PERMISSION_DENIED;
                     } else {
                         mLock.unlock();
-                        command->mStatus = af->createAudioPatch(&data->mPatch, &data->mHandle);
+                        command->mStatus = af->createAudioPatch(
+                                    &data->mPatch, &data->mHandle, data->mUid);
                         mLock.lock();
                     }
                     } break;
@@ -1540,7 +1541,7 @@ void AudioPolicyService::AudioCommandThread::releaseOutputCommand(audio_port_han
 status_t AudioPolicyService::AudioCommandThread::createAudioPatchCommand(
                                                 const struct audio_patch *patch,
                                                 audio_patch_handle_t *handle,
-                                                int delayMs)
+                                                int delayMs, uid_t uid)
 {
     status_t status = NO_ERROR;
 
@@ -1549,6 +1550,7 @@ status_t AudioPolicyService::AudioCommandThread::createAudioPatchCommand(
     CreateAudioPatchData *data = new CreateAudioPatchData();
     data->mPatch = *patch;
     data->mHandle = *handle;
+    data->mUid = uid;
     command->mParam = data;
     command->mWaitStatus = true;
     ALOGV("AudioCommandThread() adding create patch delay %d", delayMs);
@@ -1775,18 +1777,22 @@ void AudioPolicyService::AudioCommandThread::insertCommand_l(sp<AudioCommand>& c
         case RELEASE_AUDIO_PATCH: {
             audio_patch_handle_t handle;
             struct audio_patch patch;
+            uid_t uid;
             if (command->mCommand == CREATE_AUDIO_PATCH) {
                 handle = ((CreateAudioPatchData *)command->mParam.get())->mHandle;
                 patch = ((CreateAudioPatchData *)command->mParam.get())->mPatch;
+                uid = ((CreateAudioPatchData *)command->mParam.get())->mUid;
             } else {
                 handle = ((ReleaseAudioPatchData *)command->mParam.get())->mHandle;
                 memset(&patch, 0, sizeof(patch));
             }
             audio_patch_handle_t handle2;
             struct audio_patch patch2;
+            uid_t uid2;
             if (command2->mCommand == CREATE_AUDIO_PATCH) {
                 handle2 = ((CreateAudioPatchData *)command2->mParam.get())->mHandle;
                 patch2 = ((CreateAudioPatchData *)command2->mParam.get())->mPatch;
+                uid2 = ((CreateAudioPatchData *)command->mParam.get())->mUid;
             } else {
                 handle2 = ((ReleaseAudioPatchData *)command2->mParam.get())->mHandle;
                 memset(&patch2, 0, sizeof(patch2));

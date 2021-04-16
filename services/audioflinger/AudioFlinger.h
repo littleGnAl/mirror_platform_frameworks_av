@@ -48,6 +48,7 @@
 #include <media/AudioTrack.h>
 #include <media/MmapStreamInterface.h>
 #include <media/MmapStreamCallback.h>
+#include <media/PlayerBase.h>
 
 #include <utils/Errors.h>
 #include <utils/threads.h>
@@ -268,7 +269,7 @@ public:
 
     /* Create an audio patch between several source and sink ports */
     virtual status_t createAudioPatch(const struct audio_patch *patch,
-                                       audio_patch_handle_t *handle);
+                                       audio_patch_handle_t *handle, uid_t uid);
 
     /* Release an audio patch */
     virtual status_t releaseAudioPatch(audio_patch_handle_t handle);
