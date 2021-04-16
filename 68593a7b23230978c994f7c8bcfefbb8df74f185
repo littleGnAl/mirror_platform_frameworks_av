@@ -33,6 +33,24 @@
       "message": "Thanks for the feedback Andy!\n\nInstead of relying on presentation position, is it possible to improve the timer based volume shaping on Direct tracks to account for start latency and paused state?  i.e. do not start the volume timer until the first valid frame position has been presented, and pause the timer when the track is paused?",
       "revId": "68593a7b23230978c994f7c8bcfefbb8df74f185",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "716d4e10_4710b3d8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-16T04:22:58Z",
+      "side": 1,
+      "message": "Edwin, improving the timer-based volume shaping is possible, but there is complexity involved in state tracking (and as you mention, tracking when the action actually occurs) that didn\u0027t seem like a good trade-off at the time.\n\nPerhaps we could make the DirectThread frame count volumeshaper an option (enabled by property) for device testing.",
+      "parentUuid": "2c9f024a_f7fb81ee",
+      "revId": "68593a7b23230978c994f7c8bcfefbb8df74f185",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
