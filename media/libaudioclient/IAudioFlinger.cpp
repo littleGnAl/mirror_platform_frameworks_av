@@ -812,7 +812,7 @@ public:
         return status;
     }
     virtual status_t createAudioPatch(const struct audio_patch *patch,
-                                       audio_patch_handle_t *handle)
+                                       audio_patch_handle_t *handle, uid_t uid)
     {
         if (patch == NULL || handle == NULL) {
             return BAD_VALUE;
@@ -821,6 +821,7 @@ public:
         data.writeInterfaceToken(IAudioFlinger::getInterfaceDescriptor());
         data.write(patch, sizeof(struct audio_patch));
         data.write(handle, sizeof(audio_patch_handle_t));
+        data.writeInt32(static_cast<int32_t>(uid));
         status_t status = remote()->transact(CREATE_AUDIO_PATCH, data, &reply);
         if (status != NO_ERROR ||
                 (status = (status_t)reply.readInt32()) != NO_ERROR) {
@@ -1512,9 +1513,11 @@ status_t BnAudioFlinger::onTransact(
                 ALOGE("b/23905951");
                 return status;
             }
+            int32_t uid;
+            data.readInt32(&uid);
             status = AudioSanitizer::sanitizeAudioPatch(&patch);
             if (status == NO_ERROR) {
-                status = createAudioPatch(&patch, &handle);
+                status = createAudioPatch(&patch, &handle, uid);
             }
             reply->writeInt32(status);
             if (status == NO_ERROR) {
