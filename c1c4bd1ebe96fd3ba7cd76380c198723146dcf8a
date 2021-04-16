@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67fe12ec_f409c7a7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-04-16T14:02:55Z",
+      "side": 1,
+      "message": "Eric, we do have PCTS test (AA conformance test) requesting to duck FM while transient media.\nHowever, on our project, FM is a SW bridge, and routed on same media bus.\nWe requested a waiver to stop FM rather than ducking but I took it as a challenge to be able to duck SW Bridge.\nWould you be interested in such a feature?\nThe topic has 2 patches.",
+      "revId": "c1c4bd1ebe96fd3ba7cd76380c198723146dcf8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
