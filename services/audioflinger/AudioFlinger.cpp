@@ -932,6 +932,7 @@ sp<IAudioTrack> AudioFlinger::createTrack(const CreateTrackInput& input,
                                                                frameCount,
                                                                patchRecord->buffer(),
                                                                patchRecord->bufferSize(),
+                                                               AID_AUDIOSERVER,
                                                                outputFlags,
                                                                0ns /* timeout */,
                                                                frameCountToBeReady);
