@@ -51,6 +51,24 @@
       "parentUuid": "2c9f024a_f7fb81ee",
       "revId": "68593a7b23230978c994f7c8bcfefbb8df74f185",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3d932a67_3a67d47c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1833861
+      },
+      "writtenOn": "2021-04-17T00:20:51Z",
+      "side": 1,
+      "message": "\u003e Perhaps we could make the DirectThread frame count volumeshaper an option (enabled by property) for device testing.\n\nThat sounds like a good idea.",
+      "parentUuid": "716d4e10_4710b3d8",
+      "revId": "68593a7b23230978c994f7c8bcfefbb8df74f185",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
