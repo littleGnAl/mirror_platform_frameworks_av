@@ -22,6 +22,30 @@
       },
       "revId": "ec42fa2d8f8d05e308300608a9c511b596a11a1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "94034639_9fe7bd0e",
+        "filename": "media/codec2/components/flac/C2SoftFlacDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-17T05:11:11Z",
+      "side": 1,
+      "message": "Ray,\nAudio decoders aren\u0027t tested for cases where config changes. If the plan is to support multiple configs, then more changes will be required and mostly in other audio decoder plugins as well.\nAlso need to see how change in sample rate and number of channels will need to be handled if they change in config2, whether audio playout supports such changes in the middle of a stream.\nIMHO, we shouldn\u0027t try and support multiple CSDs by re-initializing in this CL. That needs to be taken up after some discussions on defining the requirements for codecs and playout path.",
+      "parentUuid": "c8d8d0f6_3850a9a0",
+      "range": {
+        "startLine": 224,
+        "startChar": 11,
+        "endLine": 224,
+        "endChar": 29
+      },
+      "revId": "ec42fa2d8f8d05e308300608a9c511b596a11a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
