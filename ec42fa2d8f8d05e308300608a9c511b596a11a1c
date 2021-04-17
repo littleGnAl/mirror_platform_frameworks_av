@@ -46,6 +46,30 @@
       },
       "revId": "ec42fa2d8f8d05e308300608a9c511b596a11a1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d0eb971_bd80d5b0",
+        "filename": "media/codec2/components/flac/C2SoftFlacDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-04-17T20:27:55Z",
+      "side": 1,
+      "message": "i was looking at reset() which moves the codec back to a state where one can invoke configure() again [which would mean a new/different csd]\n\nthis points me to a conclusion that the two CSDs should be the same.\nand that we should return ok/error based on same/different.",
+      "parentUuid": "94034639_9fe7bd0e",
+      "range": {
+        "startLine": 224,
+        "startChar": 11,
+        "endLine": 224,
+        "endChar": 29
+      },
+      "revId": "ec42fa2d8f8d05e308300608a9c511b596a11a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
