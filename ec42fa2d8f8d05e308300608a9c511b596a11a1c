@@ -70,6 +70,30 @@
       },
       "revId": "ec42fa2d8f8d05e308300608a9c511b596a11a1c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aab97d28_1876ce05",
+        "filename": "media/codec2/components/flac/C2SoftFlacDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-17T23:10:07Z",
+      "side": 1,
+      "message": "Ray,\nThe CSD buffers aren\u0027t stored anywhere, so comparing the CSDs isn\u0027t feasible either.",
+      "parentUuid": "6d0eb971_bd80d5b0",
+      "range": {
+        "startLine": 224,
+        "startChar": 11,
+        "endLine": 224,
+        "endChar": 29
+      },
+      "revId": "ec42fa2d8f8d05e308300608a9c511b596a11a1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
