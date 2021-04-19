@@ -103,6 +103,24 @@
       "parentUuid": "1d41f85c_84938ba5",
       "revId": "2f65b625d6166fc75111adbae2b36d2017e5c777",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7fa20af4_3a01ae69",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1859,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2021-04-19T20:01:52Z",
+      "side": 1,
+      "message": "Added to handle Extended HDR parameters which has flexibility to be updated mid-stream.\n\n - Colour Colour Volume (CCV) has flxibility to change every frame.\n - MDCV,CLL and AVE has flexibility to change at IDR pictures.",
+      "parentUuid": "62d3140d_67cbca5b",
+      "revId": "2f65b625d6166fc75111adbae2b36d2017e5c777",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
