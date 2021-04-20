@@ -38,20 +38,27 @@ cc_test {
 cc_test {
     name: "codec2_vndk_test",
 
+    defaults: [
+        "libcodec2-internal-defaults",
+    ],
+
     srcs: [
         "C2_test.cpp",
         "C2SampleComponent_test.cpp",
         "C2UtilTest.cpp",
         "vndk/C2BufferTest.cpp",
+        "vndk/C2LinearAllocatorTest.cpp",
     ],
 
     include_dirs: [
     ],
 
     shared_libs: [
+        "android.hardware.graphics.bufferqueue@2.0",
         "libcodec2",
         "libcodec2_vndk",
         "libcutils",
+        "libdmabufheap",
         "liblog",
         "libutils",
     ],
