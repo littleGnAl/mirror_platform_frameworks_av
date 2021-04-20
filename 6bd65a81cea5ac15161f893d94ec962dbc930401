@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67b94c7b_11ce36b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-20T18:28:14Z",
+      "side": 1,
+      "message": "I have updated the CL to resolve treehugger failures seen for some platforms.\nI have validated that mts test built on aosp/master passes on Q and S builds",
+      "revId": "6bd65a81cea5ac15161f893d94ec962dbc930401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
