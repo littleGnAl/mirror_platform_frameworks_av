@@ -16,6 +16,29 @@
       "message": "Sungtak,\nThis refactor CL removes some hard-coded configurations in audio encoder tests.\ncan you please review?\nThanks.",
       "revId": "d8e46ca7cf092b61f93ac7678231a33cfe013359",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ac71d302_084eab26",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-20T18:56:03Z",
+      "side": 1,
+      "message": "this can fit in line 301",
+      "range": {
+        "startLine": 302,
+        "startChar": 21,
+        "endLine": 302,
+        "endChar": 48
+      },
+      "revId": "d8e46ca7cf092b61f93ac7678231a33cfe013359",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
