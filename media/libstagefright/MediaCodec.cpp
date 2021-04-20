@@ -1338,31 +1338,27 @@ status_t MediaCodec::configure(
             if (!mResourceManagerProxy->reclaimResource(resources)) {
                 break;
             }
-        }
 
-        sp<AMessage> response;
-        err = PostAndAwaitResponse(msg, &response);
-        if (err != OK && err != INVALID_OPERATION) {
             // MediaCodec now set state to UNINITIALIZED upon any fatal error.
             // To maintain backward-compatibility, do a reset() to put codec
             // back into INITIALIZED state.
-            // But don't reset if the err is INVALID_OPERATION, which means
-            // the configure failure is due to wrong state.
-
             ALOGE("configure failed with err 0x%08x, resetting...", err);
-            status_t err2 = reset();
-            if (err2 != OK) {
-                ALOGE("retrying configure: failed to reset codec (%08x)", err2);
+            err = reset();
+            if (err != OK) {
+                ALOGE("retrying configure: failed to reset codec (%08x)", err);
                 break;
             }
             if (callback != nullptr) {
-                err2 = setCallback(callback);
-                if (err2 != OK) {
-                    ALOGE("retrying configure: failed to set callback (%08x)", err2);
+                err = setCallback(callback);
+                if (err != OK) {
+                    ALOGE("retrying configure: failed to set callback (%08x)", err);
                     break;
                 }
             }
         }
+
+        sp<AMessage> response;
+        err = PostAndAwaitResponse(msg, &response);
         if (!isResourceError(err)) {
             break;
         }
