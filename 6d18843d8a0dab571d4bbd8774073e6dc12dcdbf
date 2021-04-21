@@ -16,6 +16,23 @@
       "message": "I expect that this is going to be worse even than just backing this out.\n\nwhen I turned this off for my local build -- the next reboot never came fully up because the\nsystem claimed that it has 2 copies of the apex.  I had to clean stuff out of /data/apex to make\nthis work correctly.",
       "revId": "6d18843d8a0dab571d4bbd8774073e6dc12dcdbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c059e6ad_4d86e4b7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-04-21T14:22:13Z",
+      "side": 1,
+      "message": "(hold off on submitting; a different remedy is being prepared)",
+      "revId": "6d18843d8a0dab571d4bbd8774073e6dc12dcdbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
