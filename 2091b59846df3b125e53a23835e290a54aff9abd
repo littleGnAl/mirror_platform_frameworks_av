@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5f5c3bb_08bc0c6f",
+        "filename": "media/codec2/tests/vndk/C2LinearAllocatorTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 46,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-04-21T18:41:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ed237809_7d7c256b",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 46,
+        "endChar": 10
+      },
+      "revId": "2091b59846df3b125e53a23835e290a54aff9abd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cfb52a67_4b886947",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-20T23:54:03Z",
       "side": 1,
       "message": "technically the writer should not hold onto a write view at the time of sharing the block. we should still test it as this should at worst be suboptimal.",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 58,
+        "endChar": 5
+      },
+      "revId": "2091b59846df3b125e53a23835e290a54aff9abd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61a4f9dc_307742bf",
+        "filename": "media/codec2/tests/vndk/C2LinearAllocatorTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-04-21T18:41:10Z",
+      "side": 1,
+      "message": "Modified the test scenario so that we are handling two read mappings vs. read \u0026 write mappings",
+      "parentUuid": "cfb52a67_4b886947",
       "range": {
         "startLine": 54,
         "startChar": 4,
