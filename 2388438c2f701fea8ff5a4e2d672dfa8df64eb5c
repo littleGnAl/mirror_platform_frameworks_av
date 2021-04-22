@@ -16,6 +16,24 @@
       "message": "removing this means that it breaks for a 64-bit mediaserver on a system where we have OMX codecs.\n\npixels have gone all Codec2, so it works for them. But this would impact other OEMs who still use OMX codecs.\n\nwe still need to figure a better solution here.",
       "revId": "2388438c2f701fea8ff5a4e2d672dfa8df64eb5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "120dfa06_200f8d36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-22T00:28:45Z",
+      "side": 1,
+      "message": "Ray,\nIn my last tests on Pixel 3, issue wasn\u0027t really with omx codecs but was with the input surface.\nwhen debug.stagefright.c2inputsurface is 0, 64 bit mediaserver didn\u0027t work.\nBut with debug.stagefright.c2inputsurface set to -1, even OMX codecs worked as expected with 64bit mediaserver. \nI will test this again.\nI will also see how this CL can be updated to throw an error when mediaserver runs as 64 bit but debug.stagefright.c2inputsurface is 0.",
+      "parentUuid": "66b9851e_a7b54f4b",
+      "revId": "2388438c2f701fea8ff5a4e2d672dfa8df64eb5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
