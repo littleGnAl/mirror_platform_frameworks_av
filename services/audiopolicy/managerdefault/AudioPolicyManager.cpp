@@ -69,6 +69,8 @@ static const std::vector<audio_channel_mask_t> msdSurroundChannelMasksOrder = {{
         AUDIO_CHANNEL_OUT_2POINT1POINT2, AUDIO_CHANNEL_OUT_2POINT0POINT2,
         AUDIO_CHANNEL_OUT_5POINT1, AUDIO_CHANNEL_OUT_STEREO }};
 
+static bool unrouteWhenIdle = property_get_bool("ro.audio.unroute_when_idle", false/*default*/);
+
 template <typename T>
 bool operator== (const SortedVector<T> &left, const SortedVector<T> &right)
 {
@@ -3971,6 +3973,12 @@ status_t AudioPolicyManager::createAudioPatchInternal(const struct audio_patch *
                                 return INVALID_OPERATION;
                             }
                             outputDesc->mSwBridgeWithoutAudioSourceCount++;
+                            if (unrouteWhenIdle && !outputDesc->isRouted()) {
+                                ALOGV("%s SwBridge w/o Audio Source on output=%d, route output",
+                                      __func__, outputDesc->mIoHandle);
+                                (void) setOutputDevices(outputDesc, DeviceVector(sinkDevice),
+                                                        true, 0, NULL, false);
+                            }
                         }
                     }
                     if (outputDesc != nullptr) {
@@ -6078,6 +6086,12 @@ uint32_t AudioPolicyManager::setOutputDevices(const sp<SwAudioOutputDescriptor>&
 
     bool outputActive = outputDesc->isActiveOrHasActiveBridge();
     bool outputRouted = outputDesc->isRouted();
+    if (unrouteWhenIdle && outputRouted && !outputActive) {
+        ALOGV("%s calling resetOutputDevice() requested by unrouteWhenIdle handle=%d on output=%d",
+            __func__, outputDesc->getPatchHandle(), outputDesc->mIoHandle);
+        resetOutputDevice(outputDesc, delayMs, NULL);
+        goto applyVolumes;
+    }
 
     // no need to proceed if new device is not AUDIO_DEVICE_NONE and not supported by current
     // output profile or if new device is not supported AND previous device(s) is(are) still
@@ -6086,6 +6100,17 @@ uint32_t AudioPolicyManager::setOutputDevices(const sp<SwAudioOutputDescriptor>&
         ALOGV("%s: unsupported device %s for output", __func__, devices.toString().c_str());
         // restore previous device after evaluating strategy mute state
         outputDesc->setDevices(prevDevices);
+        if (unrouteWhenIdle && !outputRouted && outputActive) {
+            PatchBuilder patchBuilder;
+            patchBuilder.addSource(outputDesc);
+            ALOG_ASSERT(availPrevDevices.size() <= AUDIO_PATCH_PORTS_MAX, "Too many sink ports");
+            for (const auto &availPrevDevice : availPrevDevices) {
+                patchBuilder.addSink(availPrevDevice);
+            }
+            installPatch(__func__, patchHandle, outputDesc.get(), patchBuilder.patch(), delayMs);
+            ALOGV("%s routing SwOutput=%d as still in use patchHandle=%d",
+                  __func__, outputDesc->mIoHandle, outputDesc->getPatchHandle());
+        }
         return muteWaitMs;
     }
 
@@ -6124,6 +6149,7 @@ uint32_t AudioPolicyManager::setOutputDevices(const sp<SwAudioOutputDescriptor>&
                 muteWaitMs == 0 ? (delayMs + (outputDesc->latency() / 2)) : delayMs);
     }
 
+applyVolumes:
     // update stream volumes according to new device
     applyStreamVolumes(outputDesc, filteredDevices.types(), delayMs);
 
