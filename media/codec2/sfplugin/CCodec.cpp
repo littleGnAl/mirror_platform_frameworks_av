@@ -397,6 +397,14 @@ public:
 
         // consumer usage is queried earlier.
 
+        // priority
+        if (mConfig.mPriority != config.mPriority) {
+            if (config.mPriority != INT_MAX) {
+                mNode->setPriority(config.mPriority);
+            }
+            mConfig.mPriority = config.mPriority;
+        }
+
         if (status.str().empty()) {
             ALOGD("ISConfig not changed");
         } else {
@@ -943,6 +951,7 @@ void CCodec::configure(const sp<AMessage> &msg) {
                 }
             }
             config->mISConfig->mUsage = 0;
+            config->mISConfig->mPriority = INT_MAX;
         }
 
         /*
@@ -1132,6 +1141,16 @@ void CCodec::configure(const sp<AMessage> &msg) {
             qp->setFlexCount(ix);
 
             configUpdate.push_back(std::move(qp));
+        }
+
+        int32_t background = 0;
+        if ((config->mDomain & Config::IS_VIDEO)
+                && msg->findInt32("android.background-mode", &background)
+                && background) {
+            androidSetThreadPriority(gettid(), ANDROID_PRIORITY_BACKGROUND);
+            if (config->mISConfig) {
+                config->mISConfig->mPriority = ANDROID_PRIORITY_BACKGROUND;
+            }
         }
 
         err = config->setParameters(comp, configUpdate, C2_DONT_BLOCK);
