@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66b9851e_a7b54f4b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-04-22T00:10:30Z",
+      "side": 1,
+      "message": "removing this means that it breaks for a 64-bit mediaserver on a system where we have OMX codecs.\n\npixels have gone all Codec2, so it works for them. But this would impact other OEMs who still use OMX codecs.\n\nwe still need to figure a better solution here.",
+      "revId": "2388438c2f701fea8ff5a4e2d672dfa8df64eb5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
