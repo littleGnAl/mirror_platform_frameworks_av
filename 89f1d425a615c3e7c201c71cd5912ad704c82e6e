@@ -16,6 +16,75 @@
       "message": "Please forget above comments. I reverted to patchset 7 because I had submitted duplicate change.",
       "revId": "89f1d425a615c3e7c201c71cd5912ad704c82e6e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4953aac_c8d9f670",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1993,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-04-23T04:42:54Z",
+      "side": 1,
+      "message": "the way i handled this in another module was to:\n\n(1) a comment like this [all of this at the top of the file]\n(2) #define AMEDIAFORMAT_KEY_MPEGH_PROFILE_LEVEL_INDICATION \".....\"\n\nthat lets me use the AMEDIAFORMAT_ form throughout the file; which is what I really want as it simplifies looking for \"hey, where do we play with that....\"\n\nI\u0027d like to see that pattern used here.",
+      "range": {
+        "startLine": 1987,
+        "startChar": 8,
+        "endLine": 1993,
+        "endChar": 0
+      },
+      "revId": "89f1d425a615c3e7c201c71cd5912ad704c82e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3c7a469_af916c97",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 2060,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-04-23T04:42:54Z",
+      "side": 1,
+      "message": "same as my comment above.  If there are other similar construct that I didn\u0027t flag, assume that I meant to do so and convert them along the same lines.",
+      "range": {
+        "startLine": 2060,
+        "startChar": 14,
+        "endLine": 2060,
+        "endChar": 54
+      },
+      "revId": "89f1d425a615c3e7c201c71cd5912ad704c82e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7f18cf47_16ef9f8c",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1851,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-04-23T04:42:54Z",
+      "side": 1,
+      "message": "let\u0027s use this AMEDIAFORMAT_* form for the actual code here.\nit looks like this file is compiled both for framework and mainline.\n\nSo we might have to add some compilation flags in Android.bp so that it\nsays \"if i\u0027m compiling for the mainline library, do that #define trick\"\nand when compiling for the framework, we\u0027ll want to get the constant out of ... I think it\u0027s media_ndk_headers that defines it for us.",
+      "range": {
+        "startLine": 1851,
+        "startChar": 15,
+        "endLine": 1851,
+        "endChar": 53
+      },
+      "revId": "89f1d425a615c3e7c201c71cd5912ad704c82e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
