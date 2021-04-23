@@ -45,6 +45,7 @@ cc_defaults {
     ],
 
     header_libs: [
+        "libbinder_headers",
         "libstagefright_foundation_headers",
         "media_ndk_headers",
         "media_plugin_headers",
