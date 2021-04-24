@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d4c74b8_5432219c",
+        "filename": "media/codec2/sfplugin/utils/Codec2Mapper.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 314,
+      "author": {
+        "id": 1872927
+      },
+      "writtenOn": "2021-04-24T00:40:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5cd25322_775bb1f9",
+      "range": {
+        "startLine": 314,
+        "startChar": 52,
+        "endLine": 314,
+        "endChar": 53
+      },
+      "revId": "d7b548d54f108e8f0e9bf22e2cc02e37ad2cb673",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6152d5ec_46bf1c2e",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-23T23:47:33Z",
       "side": 1,
       "message": "nit: space",
+      "range": {
+        "startLine": 315,
+        "startChar": 46,
+        "endLine": 315,
+        "endChar": 47
+      },
+      "revId": "d7b548d54f108e8f0e9bf22e2cc02e37ad2cb673",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d7e6285_1212e0d4",
+        "filename": "media/codec2/sfplugin/utils/Codec2Mapper.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 315,
+      "author": {
+        "id": 1872927
+      },
+      "writtenOn": "2021-04-24T00:40:04Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6152d5ec_46bf1c2e",
       "range": {
         "startLine": 315,
         "startChar": 46,
