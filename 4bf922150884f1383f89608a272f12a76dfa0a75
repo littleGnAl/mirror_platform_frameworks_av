@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "806d6af8_ae897577",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-26T23:20:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a6d880b5_677c1ce8",
+      "range": {
+        "startLine": 67,
+        "startChar": 47,
+        "endLine": 67,
+        "endChar": 50
+      },
+      "revId": "4bf922150884f1383f89608a272f12a76dfa0a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b584ce7c_446d1a83",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7280eb9a_c5540f7c",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 6120,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-26T23:20:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b584ce7c_446d1a83",
+      "range": {
+        "startLine": 6120,
+        "startChar": 53,
+        "endLine": 6120,
+        "endChar": 62
+      },
+      "revId": "4bf922150884f1383f89608a272f12a76dfa0a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5714b2e2_89315397",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-04-26T22:51:06Z",
       "side": 1,
       "message": "would love to get these using the AMEDIAFORMAT_KEY_MPEGH_PROFILE.... information instead of the literal strings.",
+      "range": {
+        "startLine": 1084,
+        "startChar": 26,
+        "endLine": 1084,
+        "endChar": 58
+      },
+      "revId": "4bf922150884f1383f89608a272f12a76dfa0a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1efe8cb9_b27b7518",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-26T23:20:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5714b2e2_89315397",
       "range": {
         "startLine": 1084,
         "startChar": 26,
