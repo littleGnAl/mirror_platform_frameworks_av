@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53f7db74_18ae885c",
+        "filename": "media/libmedia/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-26T17:12:40Z",
+      "side": 1,
+      "message": "this code could probably be rewritten to avoid these, since it doesn\u0027t actually use binder directly?",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 6
+      },
+      "revId": "2087f21a36b21f526ca9da0b7bcda316b30dca54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
