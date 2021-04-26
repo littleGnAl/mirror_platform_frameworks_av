@@ -45,6 +45,30 @@
       },
       "revId": "b93c0042953b3e2b8a4a0432b343ae27a5061195",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c2fd8aa_db2d8aa3",
+        "filename": "media/libstagefright/foundation/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1121838
+      },
+      "writtenOn": "2021-04-26T17:47:36Z",
+      "side": 1,
+      "message": "target.vendor doesn\u0027t support header_libs at this moment.\n\nAdding global libbinder_headers would achieve the same result, so I did that instead.",
+      "parentUuid": "8cb53745_4fe1a695",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 14
+      },
+      "revId": "b93c0042953b3e2b8a4a0432b343ae27a5061195",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
