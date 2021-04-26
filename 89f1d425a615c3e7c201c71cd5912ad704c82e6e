@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "894eebde_1e49d351",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1993,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-26T22:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1c1f1257_db9ac653",
+      "range": {
+        "startLine": 1987,
+        "startChar": 8,
+        "endLine": 1993,
+        "endChar": 0
+      },
+      "revId": "89f1d425a615c3e7c201c71cd5912ad704c82e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b3c7a469_af916c97",
@@ -149,6 +173,30 @@
       "side": 1,
       "message": "It is difficult for me to reflect your suggestion since I don\u0027t have an access to mainline library. Wouldn\u0027t it be nice to refactor it with another CL?",
       "parentUuid": "7f18cf47_16ef9f8c",
+      "range": {
+        "startLine": 1851,
+        "startChar": 15,
+        "endLine": 1851,
+        "endChar": 53
+      },
+      "revId": "89f1d425a615c3e7c201c71cd5912ad704c82e6e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cda375e4_dd93fcbb",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 1851,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-26T22:05:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3cde7f81_b525da36",
       "range": {
         "startLine": 1851,
         "startChar": 15,
