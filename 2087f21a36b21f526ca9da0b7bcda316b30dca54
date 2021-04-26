@@ -70,6 +70,30 @@
       },
       "revId": "2087f21a36b21f526ca9da0b7bcda316b30dca54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7be26b02_a11e926f",
+        "filename": "media/libmedia/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1039918
+      },
+      "writtenOn": "2021-04-26T20:52:07Z",
+      "side": 1,
+      "message": "Yifan, \n\nI don\u0027t really have time to look into this right now, I\u0027m just saying you could leave a TODO here \"TODO: this could be potentially avoided if we clean up files in includes that doesn\u0027t depend on binder.\"\n\nIt\u0027s fine to merge it as-is as well.",
+      "parentUuid": "d248eed3_38b75bc1",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 6
+      },
+      "revId": "2087f21a36b21f526ca9da0b7bcda316b30dca54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
