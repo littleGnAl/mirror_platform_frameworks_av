@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c74f64da_bc591603",
+        "filename": "media/libstagefright/foundation/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-26T17:33:02Z",
+      "side": 1,
+      "message": "we should already have the headers from this?",
+      "range": {
+        "startLine": 66,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 20
+      },
+      "revId": "b93c0042953b3e2b8a4a0432b343ae27a5061195",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cb53745_4fe1a695",
+        "filename": "media/libstagefright/foundation/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-26T17:33:02Z",
+      "side": 1,
+      "message": "except here, so maybe add the additional header_libs here?\n\nAlso, probably we should try to wrap ifdef around the includes as well here, since libbinder_headers shouldn\u0027t really be needed?",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 14
+      },
+      "revId": "b93c0042953b3e2b8a4a0432b343ae27a5061195",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
