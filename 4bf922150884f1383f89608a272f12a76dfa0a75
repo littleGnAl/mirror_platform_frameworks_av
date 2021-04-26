@@ -16,6 +16,75 @@
       "message": "Minor rearrange to avoid downstream merge conflict.",
       "revId": "4bf922150884f1383f89608a272f12a76dfa0a75",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d880b5_677c1ce8",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 67,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-04-26T22:51:06Z",
+      "side": 1,
+      "message": "nit:  ndk, since we\u0027re in native code.",
+      "range": {
+        "startLine": 67,
+        "startChar": 47,
+        "endLine": 67,
+        "endChar": 50
+      },
+      "revId": "4bf922150884f1383f89608a272f12a76dfa0a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b584ce7c_446d1a83",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 6120,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-04-26T22:51:06Z",
+      "side": 1,
+      "message": "the comment no longer agrees with the code.\n\nthe new semantics are \"non-usac, non-mpegh\".  is that correct?",
+      "range": {
+        "startLine": 6120,
+        "startChar": 53,
+        "endLine": 6120,
+        "endChar": 62
+      },
+      "revId": "4bf922150884f1383f89608a272f12a76dfa0a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5714b2e2_89315397",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 14
+      },
+      "lineNbr": 1084,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-04-26T22:51:06Z",
+      "side": 1,
+      "message": "would love to get these using the AMEDIAFORMAT_KEY_MPEGH_PROFILE.... information instead of the literal strings.",
+      "range": {
+        "startLine": 1084,
+        "startChar": 26,
+        "endLine": 1084,
+        "endChar": 58
+      },
+      "revId": "4bf922150884f1383f89608a272f12a76dfa0a75",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
