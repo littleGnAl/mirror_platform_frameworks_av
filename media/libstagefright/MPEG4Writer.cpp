@@ -544,6 +544,7 @@ void MPEG4Writer::initInternal(int fd, bool isFirstSession) {
     mHasRefs = false;
     mPreAllocFirstTime = true;
     mPrevAllTracksTotalMetaDataSizeEstimate = 0;
+    mResetPending = false;
 
     // Following variables only need to be set for the first recording session.
     // And they will stay the same for all the recording sessions.
@@ -1184,8 +1185,14 @@ status_t MPEG4Writer::switchFd() {
 
 status_t MPEG4Writer::reset(bool stopSource) {
     ALOGD("reset()");
+    if(mResetPending) {
+        ALOGI("reset is pending");
+        return OK;
+    }
     std::lock_guard<std::mutex> l(mResetMutex);
+    mResetPending = true;
     if (mInitCheck != OK) {
+        mResetPending = false;
         return OK;
     } else {
         if (!mWriterThreadStarted ||
@@ -1198,6 +1205,7 @@ status_t MPEG4Writer::reset(bool stopSource) {
             if (writerErr != OK) {
                 retErr = writerErr;
             }
+            mResetPending = false;
             return retErr;
         }
     }
@@ -1245,6 +1253,7 @@ status_t MPEG4Writer::reset(bool stopSource) {
     if (err != OK && err != ERROR_MALFORMED) {
         // Ignoring release() return value as there was an "err" already.
         release();
+        mResetPending = false;
         return err;
     }
 
@@ -1303,6 +1312,7 @@ status_t MPEG4Writer::reset(bool stopSource) {
     if (err == OK) {
         err = errRelease;
     }
+    mResetPending = false;
     return err;
 }
 

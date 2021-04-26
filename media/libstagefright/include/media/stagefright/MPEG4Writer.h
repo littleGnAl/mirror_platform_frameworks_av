@@ -97,6 +97,7 @@ private:
     sp<MetaData> mStartMeta;
     status_t mInitCheck;
     bool mIsRealTimeRecording;
+    bool mResetPending;
     bool mUse4ByteNalLength;
     bool mIsFileSizeLimitExplicitlyRequested;
     bool mPaused;
