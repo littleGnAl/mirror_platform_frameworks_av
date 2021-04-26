@@ -118,6 +118,30 @@
       },
       "revId": "2087f21a36b21f526ca9da0b7bcda316b30dca54",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "916323fe_42d1386b",
+        "filename": "media/libmedia/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-04-26T20:54:27Z",
+      "side": 1,
+      "message": "Yeah, as-is, this has the effect of moving part of a hack from the core build system to here. It\u0027s an improvement.",
+      "parentUuid": "67485682_c5287745",
+      "range": {
+        "startLine": 46,
+        "startChar": 0,
+        "endLine": 51,
+        "endChar": 6
+      },
+      "revId": "2087f21a36b21f526ca9da0b7bcda316b30dca54",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
