@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f25ab8a_995ab948",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-04-26T18:24:29Z",
+      "side": 1,
+      "message": "it looks like this code has been restructured in internal branches.",
+      "revId": "631404aa4c66def0386d34c2691396a1412e8eab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c2af7faf_69d7a50f",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-04-26T18:24:29Z",
+      "side": 1,
+      "message": "this will still be a race that can deadlock.  it may be a smaller window of vulnerability, but it can still get into the situation described in the bug.\n\nthread1 hits line 1188 sees mResetPending false;\nthread2 hits line 1188 sees mResetPending false\nthread1 gets the lock at 1192 and goes into .... stopWriterThread() / release() for unknown time\nthread2 tries for lock and 1192 and is blocked until thread1 finishes.\n\nand we\u0027re at the same point as described in the bug that this purports to fix.",
+      "range": {
+        "startLine": 1188,
+        "startChar": 3,
+        "endLine": 1193,
+        "endChar": 25
+      },
+      "revId": "631404aa4c66def0386d34c2691396a1412e8eab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
