@@ -22,6 +22,30 @@
       },
       "revId": "702108925b3f62b18aa130d29b69758cec3e8747",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "098318f0_9a2460c8",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-27T22:12:49Z",
+      "side": 1,
+      "message": "Sungtak,\nb/147348711 was automatically marked as obsolete by a tool as the bug didn\u0027t have any activity for a long period.\nIssue listed in that bug is still valid and needs a fix.",
+      "parentUuid": "8f1f9220_34f8a702",
+      "range": {
+        "startLine": 640,
+        "startChar": 16,
+        "endLine": 640,
+        "endChar": 27
+      },
+      "revId": "702108925b3f62b18aa130d29b69758cec3e8747",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
