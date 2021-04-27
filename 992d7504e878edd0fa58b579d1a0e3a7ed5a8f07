@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "10d7775c_4d4f74be",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-04-27T13:04:05Z",
+      "side": 1,
+      "message": "This is only one case where we do not release the patch.\nIf the HAL implementer is really worried about unreleased audio patches they should implement a garbage collector anyway although the condition that triggers the collection is not obvious.\n\nI don;t see why it is a problem is a patch is left unreleased released given given in this case it means there is a chance it is used again in the future. The HAL can very well implements own resource conservation mechanism and release internal resources when the HAL stream goes into standby and keep the patch definition around until next time the stream is started.",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 36
+      },
+      "revId": "992d7504e878edd0fa58b579d1a0e3a7ed5a8f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
