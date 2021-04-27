@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "672a2049_087b89aa",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-04-27T14:11:40Z",
+      "side": 1,
+      "message": "1.5? see below.",
+      "range": {
+        "startLine": 37,
+        "startChar": 30,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "36ac1681d8ae04b6d1af49883cb0b4c83da23bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02758b8a_049ba8a1",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-04-27T14:11:40Z",
+      "side": 1,
+      "message": "this will loose some precision as the division is performed only on this term. It could also overflow at multiple places:\n\nbaseJitter + dynamicJitter could overflow,\nthen the product could overflow.\n\nCould this become:\n\nuint64_t jitterTimeRtp \u003d (baseJitter + (uint64_t)dynamicJitter) * source-\u003emClockRate / 1000;",
+      "range": {
+        "startLine": 135,
+        "startChar": 66,
+        "endLine": 135,
+        "endChar": 93
+      },
+      "revId": "36ac1681d8ae04b6d1af49883cb0b4c83da23bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b09e5b4_4b49f25f",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-04-27T14:11:40Z",
+      "side": 1,
+      "message": "this becomes a float which is only 24-bit precision. Can JITTER_MULTIPLE be a double instead?",
+      "range": {
+        "startLine": 140,
+        "startChar": 66,
+        "endLine": 140,
+        "endChar": 97
+      },
+      "revId": "36ac1681d8ae04b6d1af49883cb0b4c83da23bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dbe6f120_108d18a6",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-04-27T14:11:40Z",
+      "side": 1,
+      "message": "same comments here",
+      "range": {
+        "startLine": 44,
+        "startChar": 30,
+        "endLine": 44,
+        "endChar": 34
+      },
+      "revId": "36ac1681d8ae04b6d1af49883cb0b4c83da23bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fbb58a0_2b1b7711",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-04-27T14:11:40Z",
+      "side": 1,
+      "message": "and here.",
+      "range": {
+        "startLine": 145,
+        "startChar": 10,
+        "endLine": 145,
+        "endChar": 94
+      },
+      "revId": "36ac1681d8ae04b6d1af49883cb0b4c83da23bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4a000dd_705e3ac5",
+        "filename": "media/libstagefright/rtsp/ARTPSource.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-04-27T14:11:40Z",
+      "side": 1,
+      "message": "I thought this was previously gated on being audio or video track. Is this selection due to RTP protocol?",
+      "range": {
+        "startLine": 106,
+        "startChar": 17,
+        "endLine": 106,
+        "endChar": 34
+      },
+      "revId": "36ac1681d8ae04b6d1af49883cb0b4c83da23bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
