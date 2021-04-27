@@ -22,6 +22,30 @@
       },
       "revId": "652498752f144f794bc27f54a5650608ca257ab0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe152c99_29bb5f81",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 2316,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-04-27T20:42:06Z",
+      "side": 1,
+      "message": "We have not really done so in this file for other constants, but we can do this in the future. afaik, c++ standard specifies starting value as 0.",
+      "parentUuid": "0f4905e0_642e4cc8",
+      "range": {
+        "startLine": 2316,
+        "startChar": 3,
+        "endLine": 2316,
+        "endChar": 9
+      },
+      "revId": "652498752f144f794bc27f54a5650608ca257ab0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
