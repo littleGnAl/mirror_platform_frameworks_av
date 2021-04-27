@@ -158,6 +158,30 @@
       },
       "revId": "b93c0042953b3e2b8a4a0432b343ae27a5061195",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d1dc98bd_d59d6aef",
+        "filename": "media/libstagefright/foundation/Android.bp",
+        "patchSetId": 3
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-04-27T14:27:40Z",
+      "side": 1,
+      "message": "Should we add some TODO-s at least or some comments on why we are adding both header libs?",
+      "parentUuid": "217c4167_47aab9ef",
+      "range": {
+        "startLine": 102,
+        "startChar": 0,
+        "endLine": 104,
+        "endChar": 14
+      },
+      "revId": "b93c0042953b3e2b8a4a0432b343ae27a5061195",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
