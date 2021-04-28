@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5058f94c_b8f4232d",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-04-28T07:41:15Z",
+      "side": 1,
+      "message": "What happen if it is multi channel(\u003e2) case?",
+      "range": {
+        "startLine": 246,
+        "startChar": 16,
+        "endLine": 246,
+        "endChar": 25
+      },
+      "revId": "23f0402fc5d2f228596da84c930290d0f5ac36c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2368aec8_4d52a9e7",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-04-28T07:41:15Z",
+      "side": 1,
+      "message": "Should we consider multi-channel(\u003e2) case?\n\nnChannels holds only one value? if this has multiple values, this loop will set nChannels as the last value. Will it bo OK?",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 17
+      },
+      "revId": "23f0402fc5d2f228596da84c930290d0f5ac36c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22045859_463244b3",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 367,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-04-28T07:41:15Z",
+      "side": 1,
+      "message": "nit: remove whitespace",
+      "revId": "23f0402fc5d2f228596da84c930290d0f5ac36c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
