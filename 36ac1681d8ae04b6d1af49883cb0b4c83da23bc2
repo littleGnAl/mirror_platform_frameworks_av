@@ -142,6 +142,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54b22a8a_00ea8280",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2021-04-28T16:39:30Z",
+      "side": 1,
+      "message": "OK.\nIf jitterTimeRtp is very big value what you worry can happen.\nThe variables have\n40 \u003c\u003d baseJitter \u003c\u003d 3000\n0  \u003c\u003d dynamicJitter \u003c\u003d 150\nranges so don\u0027t need to worry.\nBut your suggestion is safer then I changed it into double.",
+      "parentUuid": "6b89e38c_8d6ea7d6",
+      "range": {
+        "startLine": 140,
+        "startChar": 66,
+        "endLine": 140,
+        "endChar": 97
+      },
+      "revId": "36ac1681d8ae04b6d1af49883cb0b4c83da23bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbe6f120_108d18a6",
