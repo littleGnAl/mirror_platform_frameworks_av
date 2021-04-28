@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c79aefe8_d0220852",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 16
+      },
+      "lineNbr": 53,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-04-28T22:36:15Z",
+      "side": 1,
+      "message": "we need to use KEY_PROFILE and or KEY_LEVEL for this.",
+      "range": {
+        "startLine": 53,
+        "startChar": 8,
+        "endLine": 53,
+        "endChar": 55
+      },
+      "revId": "1fe12f27721e4998d598d8bebc793d03e5ce04a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31f66b68_93cd7589",
+        "filename": "media/libstagefright/include/media/stagefright/MetaDataBase.h",
+        "patchSetId": 16
+      },
+      "lineNbr": 155,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-04-28T22:36:15Z",
+      "side": 1,
+      "message": "I think we need to use the standard kKeyProfile and kKeyLevel indicators. I see that here they are called \"kKeyVideoProfile\" and \"kKeyAudioProfile\" but in MediaCodec we have codec-agnostic keys for that. Where are the profiles and levels defined?",
+      "range": {
+        "startLine": 155,
+        "startChar": 4,
+        "endLine": 155,
+        "endChar": 35
+      },
+      "revId": "1fe12f27721e4998d598d8bebc793d03e5ce04a3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
