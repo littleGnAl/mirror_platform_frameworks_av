@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5d990067_8302ac52",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-04-28T16:07:32Z",
+      "side": 1,
+      "message": "we have multichannel count test for this requirement.",
+      "parentUuid": "5058f94c_b8f4232d",
+      "range": {
+        "startLine": 246,
+        "startChar": 16,
+        "endLine": 246,
+        "endChar": 25
+      },
+      "revId": "23f0402fc5d2f228596da84c930290d0f5ac36c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2368aec8_4d52a9e7",
         "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
         "patchSetId": 2
