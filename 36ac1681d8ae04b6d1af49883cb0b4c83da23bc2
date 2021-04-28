@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f25de39_e8371bd4",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2021-04-28T15:30:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "672a2049_087b89aa",
+      "range": {
+        "startLine": 37,
+        "startChar": 30,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "36ac1681d8ae04b6d1af49883cb0b4c83da23bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "02758b8a_049ba8a1",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-04-27T14:11:40Z",
       "side": 1,
       "message": "this will loose some precision as the division is performed only on this term. It could also overflow at multiple places:\n\nbaseJitter + dynamicJitter could overflow,\nthen the product could overflow.\n\nCould this become:\n\nuint64_t jitterTimeRtp \u003d (baseJitter + (uint64_t)dynamicJitter) * source-\u003emClockRate / 1000;",
+      "range": {
+        "startLine": 135,
+        "startChar": 66,
+        "endLine": 135,
+        "endChar": 93
+      },
+      "revId": "36ac1681d8ae04b6d1af49883cb0b4c83da23bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87e38bea_610ed1c1",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2021-04-28T15:30:50Z",
+      "side": 1,
+      "message": "You\u0027re right.\nI changed uint32_t into int64_t as like other similar variables around.",
+      "parentUuid": "02758b8a_049ba8a1",
       "range": {
         "startLine": 135,
         "startChar": 66,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6b89e38c_8d6ea7d6",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2021-04-28T15:30:50Z",
+      "side": 1,
+      "message": "I think current precision is enough.\nIts natural number part already have 1.111.. millisecond unit precision.\n(1 xxxTimeRtp \u003d 1/90000 sec \u003d 1.111 ms)\nIts only 1/15 frame time although FPS is 60FPS.",
+      "parentUuid": "0b09e5b4_4b49f25f",
+      "range": {
+        "startLine": 140,
+        "startChar": 66,
+        "endLine": 140,
+        "endChar": 97
+      },
+      "revId": "36ac1681d8ae04b6d1af49883cb0b4c83da23bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbe6f120_108d18a6",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-04-27T14:11:40Z",
       "side": 1,
       "message": "same comments here",
+      "range": {
+        "startLine": 44,
+        "startChar": 30,
+        "endLine": 44,
+        "endChar": 34
+      },
+      "revId": "36ac1681d8ae04b6d1af49883cb0b4c83da23bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "11c5feac_a7b2e496",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2021-04-28T15:30:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "dbe6f120_108d18a6",
       "range": {
         "startLine": 44,
         "startChar": 30,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4c0c02f_5b4a1a2e",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 145,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2021-04-28T15:30:50Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3fbb58a0_2b1b7711",
+      "range": {
+        "startLine": 145,
+        "startChar": 10,
+        "endLine": 145,
+        "endChar": 94
+      },
+      "revId": "36ac1681d8ae04b6d1af49883cb0b4c83da23bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f4a000dd_705e3ac5",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-04-27T14:11:40Z",
       "side": 1,
       "message": "I thought this was previously gated on being audio or video track. Is this selection due to RTP protocol?",
+      "range": {
+        "startLine": 106,
+        "startChar": 17,
+        "endLine": 106,
+        "endChar": 34
+      },
+      "revId": "36ac1681d8ae04b6d1af49883cb0b4c83da23bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a34d8ad_811e67b1",
+        "filename": "media/libstagefright/rtsp/ARTPSource.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2021-04-28T15:30:50Z",
+      "side": 1,
+      "message": "Background\n  Originally this member variable is created by us.\n  So legacy AOSP codes don\u0027t use the variable.\n  Till now, we have implemented video media part so it has been static 90000 value.\n\nI implement Jitter Calculator and decided to place the object.\nThe jitter is common concept in RTP, so it\u0027s in this ARTPSource layer.\nFrom this point, I realized it may be used if concrete ARTPSource is audio type.\nThe object needs clock rate for the calculation,\nso I opened initializing interface of JitterCalc for audio extension case.\n\nI have thought it is hard to know a media is audio or video.\nSo I used mIssueFIRRequests a flag to know a media type.\nWhile I\u0027m writing this it seems I can write proper code for this.\nWill update this on the next day.",
+      "parentUuid": "f4a000dd_705e3ac5",
       "range": {
         "startLine": 106,
         "startChar": 17,
