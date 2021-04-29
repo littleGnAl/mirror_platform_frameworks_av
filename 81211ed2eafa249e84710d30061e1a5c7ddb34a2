@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "98dc041a_94edceeb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-04-29T02:27:47Z",
+      "side": 1,
+      "message": "Sungtak,\nCan you please review and submit this?\nC2AllocatorIon.h was unnecessarily included. Not sure if this will have any impact on the failing VTS tests but, still good to merge this.",
+      "revId": "81211ed2eafa249e84710d30061e1a5c7ddb34a2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
