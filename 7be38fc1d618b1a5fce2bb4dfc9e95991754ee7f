@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1fa4c9f1_cf419a4c",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-29T17:59:46Z",
+      "side": 1,
+      "message": "Seems the rest of these profiles are sorted for other standards.\nShould be baseline, lc, main, high right?",
+      "range": {
+        "startLine": 569,
+        "startChar": 0,
+        "endLine": 571,
+        "endChar": 28
+      },
+      "revId": "7be38fc1d618b1a5fce2bb4dfc9e95991754ee7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
