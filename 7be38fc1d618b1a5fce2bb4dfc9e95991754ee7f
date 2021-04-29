@@ -22,6 +22,30 @@
       },
       "revId": "7be38fc1d618b1a5fce2bb4dfc9e95991754ee7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40f21179_79288042",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-04-29T19:23:38Z",
+      "side": 1,
+      "message": "I intentionally sorted this as such. Profiles at initial definition are sorted based on the order they appear in their standard document, and afterwards chronologically.",
+      "parentUuid": "1fa4c9f1_cf419a4c",
+      "range": {
+        "startLine": 569,
+        "startChar": 0,
+        "endLine": 571,
+        "endChar": 28
+      },
+      "revId": "7be38fc1d618b1a5fce2bb4dfc9e95991754ee7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
