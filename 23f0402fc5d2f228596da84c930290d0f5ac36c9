@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b885c899_92cc245e",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-04-29T07:18:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5d990067_8302ac52",
+      "range": {
+        "startLine": 246,
+        "startChar": 16,
+        "endLine": 246,
+        "endChar": 25
+      },
+      "revId": "23f0402fc5d2f228596da84c930290d0f5ac36c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2368aec8_4d52a9e7",
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "set a default value for nChannel.\nif our if condition fails, we will use the default channelCount as 1",
       "parentUuid": "2368aec8_4d52a9e7",
+      "range": {
+        "startLine": 255,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 17
+      },
+      "revId": "23f0402fc5d2f228596da84c930290d0f5ac36c9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "acb7fc2d_ce241bc4",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-04-29T07:18:34Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "96cc582a_191283aa",
       "range": {
         "startLine": 255,
         "startChar": 0,
