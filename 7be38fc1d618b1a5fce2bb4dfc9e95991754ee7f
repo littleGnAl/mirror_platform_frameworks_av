@@ -46,6 +46,30 @@
       },
       "revId": "7be38fc1d618b1a5fce2bb4dfc9e95991754ee7f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1c739b4_da8f24d9",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 571,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-04-29T19:26:41Z",
+      "side": 1,
+      "message": "perhaps there should be a comment about this procedure so that consistency is maintained?",
+      "parentUuid": "40f21179_79288042",
+      "range": {
+        "startLine": 569,
+        "startChar": 0,
+        "endLine": 571,
+        "endChar": 28
+      },
+      "revId": "7be38fc1d618b1a5fce2bb4dfc9e95991754ee7f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
