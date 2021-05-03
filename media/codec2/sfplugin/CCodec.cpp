@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 #define LOG_TAG "CCodec"
 #include <utils/Log.h>
 
@@ -38,6 +38,7 @@
 #include <media/omx/1.0/WOmxNode.h>
 #include <media/openmax/OMX_Core.h>
 #include <media/openmax/OMX_IndexExt.h>
+#include <media/stagefright/foundation/avc_utils.h>
 #include <media/stagefright/omx/1.0/WGraphicBufferSource.h>
 #include <media/stagefright/omx/OmxGraphicBufferSource.h>
 #include <media/stagefright/CCodec.h>
@@ -2149,7 +2150,7 @@ void CCodec::onMessageReceived(const sp<AMessage> &msg) {
             }
 
             // handle configuration changes in work done
-            std::unique_ptr<C2Param> initData;
+            std::shared_ptr<const C2StreamInitDataInfo::output> initData;
             sp<AMessage> outputFormat = nullptr;
             {
                 Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
@@ -2228,13 +2229,48 @@ void CCodec::onMessageReceived(const sp<AMessage> &msg) {
                     config->mInputSurface->onInputBufferDone(work->input.ordinal.frameIndex);
                 }
                 if (initDataWatcher.hasChanged()) {
-                    initData = C2Param::Copy(*initDataWatcher.update().get());
+                    initData = initDataWatcher.update();
+
+                    const uint8_t *data = initData->m.value;
+                    size_t size = initData->flexCount();
+                    if (config->mCodingMediaType == MIMETYPE_VIDEO_AVC) {
+                        // Codec specific data should be SPS and PPS in a single buffer,
+                        // each prefixed by a startcode (0x00 0x00 0x00 0x01).
+                        // We separate the two and put them into the output format
+                        // under the keys "csd-0" and "csd-1".
+
+                        unsigned csdIndex = 0;
+
+                        const uint8_t *nalStart;
+                        size_t nalSize;
+                        while (getNextNALUnit(&data, &size, &nalStart, &nalSize, true) == OK) {
+                            sp<ABuffer> csd = new ABuffer(nalSize + 4);
+                            memcpy(csd->data(), "\x00\x00\x00\x01", 4);
+                            memcpy(csd->data() + 4, nalStart, nalSize);
+
+                            config->mOutputFormat->setBuffer(
+                                    AStringPrintf("csd-%u", csdIndex).c_str(), csd);
+
+                            ++csdIndex;
+                        }
+
+                        if (csdIndex != 2) {
+                            ALOGW("Expected two NAL units from AVC codec config, but %u found",
+                                    csdIndex);
+                        }
+                    } else {
+                        // For everything else we just stash the codec specific data into
+                        // the output format as a single piece of csd under "csd-0".
+                        sp<ABuffer> csd = new ABuffer(size);
+                        memcpy(csd->data(), data, size);
+                        csd->setRange(0, size);
+                        config->mOutputFormat->setBuffer("csd-0", csd);
+                    }
                 }
                 outputFormat = config->mOutputFormat;
             }
             mChannel->onWorkDone(
-                    std::move(work), outputFormat,
-                    initData ? (C2StreamInitDataInfo::output *)initData.get() : nullptr);
+                    std::move(work), outputFormat, initData ? initData.get() : nullptr);
             break;
         }
         case kWhatWatch: {
