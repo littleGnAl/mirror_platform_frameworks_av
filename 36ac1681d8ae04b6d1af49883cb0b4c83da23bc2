@@ -305,6 +305,30 @@
       },
       "revId": "36ac1681d8ae04b6d1af49883cb0b4c83da23bc2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29c1dbbb_1eeb804d",
+        "filename": "media/libstagefright/rtsp/ARTPSource.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 106,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2021-05-03T07:36:56Z",
+      "side": 1,
+      "message": "Hi Lajos.\nI have modified your point not to use hard coded value.\nNow it uses a value that derived from media format describing object.\n\nAs similar as I have done here, I also replaced hard coded value into more generic in RTPSource.cpp.\nPlease check\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1652258/10..11",
+      "parentUuid": "9a34d8ad_811e67b1",
+      "range": {
+        "startLine": 106,
+        "startChar": 17,
+        "endLine": 106,
+        "endChar": 34
+      },
+      "revId": "36ac1681d8ae04b6d1af49883cb0b4c83da23bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
