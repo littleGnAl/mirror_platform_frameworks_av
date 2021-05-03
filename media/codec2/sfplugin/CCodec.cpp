@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 #define LOG_TAG "CCodec"
 #include <utils/Log.h>
 
@@ -2169,6 +2169,8 @@ void CCodec::onMessageReceived(const sp<AMessage> &msg) {
                     unsigned stream = 0;
                     std::vector<std::shared_ptr<C2Buffer>> &outputBuffers =
                         work->worklets.front()->output.buffers;
+                    bool codecConfig =
+                        (work->worklets.front()->output.flags & C2FrameData::FLAG_CODEC_CONFIG);
                     for (const std::shared_ptr<C2Buffer> &buf : outputBuffers) {
                         for (const std::shared_ptr<const C2Info> &info : buf->info()) {
                             // move all info into output-stream #0 domain
@@ -2189,6 +2191,21 @@ void CCodec::onMessageReceived(const sp<AMessage> &msg) {
                             updates.emplace_back(new C2StreamPictureSizeInfo::output(
                                     stream, block.crop().width, block.crop().height));
                         }
+
+                        const std::vector<C2ConstLinearBlock> linearBlocks =
+                            buf->data().linearBlocks();
+                        if (codecConfig && stream == 0 && !linearBlocks.empty()) {
+                            const C2ConstLinearBlock &block = linearBlocks[0];
+                            const C2ReadView &view = block.map().get();
+                            if (view.error() == C2_OK) {
+                                std::unique_ptr<C2StreamInitDataInfo::output> initData =
+                                    C2StreamInitDataInfo::output::AllocUnique(stream, view.capacity());
+                                memcpy(initData->m.value, view.data(), view.capacity());
+                                updates.push_back(std::move(initData));
+                                ALOGV("init data pushed (capacity=%u)", view.capacity());
+                            }
+                        }
+
                         ++stream;
                     }
 

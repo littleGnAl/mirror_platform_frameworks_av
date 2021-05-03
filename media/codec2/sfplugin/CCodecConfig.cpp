@@ -24,6 +24,7 @@
 #include <C2Param.h>
 #include <util/C2InterfaceHelper.h>
 
+#include <media/stagefright/foundation/avc_utils.h>
 #include <media/stagefright/CodecBase.h>
 #include <media/stagefright/MediaCodecConstants.h>
 
@@ -1496,6 +1497,37 @@ sp<AMessage> CCodecConfig::getFormatForDomain(
             msg->removeEntryAt(msg->findEntryByName("smpte2086.min-luminance"));
             msg->removeEntryAt(msg->findEntryByName("cta861.max-cll"));
             msg->removeEntryAt(msg->findEntryByName("cta861.max-fall"));
+        }
+    }
+
+    sp<ABuffer> buffer;
+    if (mCodingMediaType == MIMETYPE_VIDEO_AVC && msg->findBuffer("csd-0", &buffer)) {
+        // Codec specific data should be SPS and PPS in a single buffer,
+        // each prefixed by a startcode (0x00 0x00 0x00 0x01).
+        // We separate the two and put them into the output format
+        // under the keys "csd-0" and "csd-1".
+
+        unsigned csdIndex = 0;
+
+        const uint8_t *data = buffer->data();
+        size_t size = buffer->size();
+
+        const uint8_t *nalStart;
+        size_t nalSize;
+        while (getNextNALUnit(&data, &size, &nalStart, &nalSize, true) == OK) {
+            sp<ABuffer> csd = new ABuffer(nalSize + 4);
+            memcpy(csd->data(), "\x00\x00\x00\x01", 4);
+            memcpy(csd->data() + 4, nalStart, nalSize);
+
+            msg->setBuffer(
+                    AStringPrintf("csd-%u", csdIndex).c_str(), csd);
+
+            ++csdIndex;
+
+        }
+        if (csdIndex != 2) {
+            ALOGW("CSD from AVC is expected to have two NAL units: SPS & PPS, "
+                  "but we have %u NAL units in it.", csdIndex);
         }
     }
 
