@@ -1629,7 +1629,8 @@ bool CCodecBufferChannel::handleWork(
         }
     }
 
-    std::optional<uint32_t> newInputDelay, newPipelineDelay;
+    std::optional<uint32_t> newInputDelay, newPipelineDelay, newReorderDepth;
+    std::optional<C2Config::ordinal_key_t> newReorderKey;
     bool needMaxDequeueBufferCountUpdate = false;
     while (!worklet->output.configUpdate.empty()) {
         std::unique_ptr<C2Param> param;
@@ -1641,7 +1642,7 @@ bool CCodecBufferChannel::handleWork(
                 if (reorderDepth.updateFrom(*param)) {
                     ALOGV("[%s] onWorkDone: updated reorder depth to %u",
                           mName, reorderDepth.value);
-                    mOutput.lock()->buffers->setReorderDepth(reorderDepth.value);
+                    newReorderDepth = reorderDepth.value;
                     needMaxDequeueBufferCountUpdate = true;
                 } else {
                     ALOGD("[%s] onWorkDone: failed to read reorder depth",
@@ -1652,7 +1653,7 @@ bool CCodecBufferChannel::handleWork(
             case C2PortReorderKeySetting::CORE_INDEX: {
                 C2PortReorderKeySetting::output reorderKey;
                 if (reorderKey.updateFrom(*param)) {
-                    mOutput.lock()->buffers->setReorderKey(reorderKey.value);
+                    newReorderKey = reorderKey.value;
                     ALOGV("[%s] onWorkDone: updated reorder key to %u",
                           mName, reorderKey.value);
                 } else {
@@ -1755,14 +1756,23 @@ bool CCodecBufferChannel::handleWork(
             input->numSlots = newNumSlots;
         }
     }
-    if (needMaxDequeueBufferCountUpdate) {
-        size_t numOutputSlots = 0;
-        uint32_t reorderDepth = 0;
-        {
-            Mutexed<Output>::Locked output(mOutput);
-            numOutputSlots = output->numSlots;
-            reorderDepth = output->buffers ? output->buffers->getReorderDepth() : 0;
+    size_t numOutputSlots = 0;
+    uint32_t reorderDepth = 0;
+    if (newReorderKey || newReorderDepth || needMaxDequeueBufferCountUpdate) {
+        Mutexed<Output>::Locked output(mOutput);
+        if (!output->buffers) {
+            return false;
         }
+        numOutputSlots = output->numSlots;
+        if (newReorderKey) {
+            output->buffers->setReorderKey(newReorderKey.value());
+        }
+        if (newReorderDepth) {
+            output->buffers->setReorderDepth(newReorderDepth.value());
+        }
+        reorderDepth = output->buffers->getReorderDepth();
+    }
+    if (needMaxDequeueBufferCountUpdate) {
         Mutexed<OutputSurface>::Locked output(mOutputSurface);
         output->maxDequeueBuffers = numOutputSlots + reorderDepth + kRenderingDepth;
         if (output->surface) {
