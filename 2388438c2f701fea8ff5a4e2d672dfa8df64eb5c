@@ -34,6 +34,24 @@
       "parentUuid": "66b9851e_a7b54f4b",
       "revId": "2388438c2f701fea8ff5a4e2d672dfa8df64eb5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e2eff80_d2446b34",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-03T01:54:24Z",
+      "side": 1,
+      "message": "Ray,\nInstead of removing the check in Codec2Buffer.cpp completely, I have updated it to fail in 64bit builds on 32bit + 64bit devices if debug.stagefright.c2inputsurface is 0.\nWith this on Pixel 3, I have verified that Qcom h/w codecs work with 64 bit mediaserver when debug.stagefright.c2inputsurface is -1.",
+      "parentUuid": "120dfa06_200f8d36",
+      "revId": "2388438c2f701fea8ff5a4e2d672dfa8df64eb5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
