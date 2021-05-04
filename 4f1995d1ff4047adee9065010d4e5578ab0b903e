@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7018d9d4_611b72dc",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2021-05-04T14:03:14Z",
+      "side": 1,
+      "message": "Added this static(base) jitter rebalancing part based on China site field test result.\nThis covers for bad \u0026 practical N/W situation rather than LAB environment of b/183578712",
+      "range": {
+        "startLine": 150,
+        "startChar": 4,
+        "endLine": 152,
+        "endChar": 81
+      },
+      "revId": "4f1995d1ff4047adee9065010d4e5578ab0b903e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2697fcda_c8f00eac",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 662,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2021-05-04T14:03:14Z",
+      "side": 1,
+      "message": "Please see the same part of the AAVCAssembler.h",
+      "range": {
+        "startLine": 646,
+        "startChar": 0,
+        "endLine": 662,
+        "endChar": 1
+      },
+      "revId": "4f1995d1ff4047adee9065010d4e5578ab0b903e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26a66d9d_dababbd5",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2021-05-04T14:03:14Z",
+      "side": 1,
+      "message": "I\u0027m considering to move this part into ARTPAssembler as common thing of the AAVCAssembler \u0026 AHEVCAssembler.\nThis is just utility function that can be static also.\nLajos, does it sound fine ?",
+      "range": {
+        "startLine": 71,
+        "startChar": 3,
+        "endLine": 74,
+        "endChar": 81
+      },
+      "revId": "4f1995d1ff4047adee9065010d4e5578ab0b903e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e51d90c_6c4862af",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 677,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2021-05-04T14:03:14Z",
+      "side": 1,
+      "message": "Please see the same part of the AAVCAssembler.h",
+      "range": {
+        "startLine": 660,
+        "startChar": 1,
+        "endLine": 677,
+        "endChar": 0
+      },
+      "revId": "4f1995d1ff4047adee9065010d4e5578ab0b903e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fcca81b8_2d471eec",
+        "filename": "media/libstagefright/rtsp/AHEVCAssembler.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2021-05-04T14:03:14Z",
+      "side": 1,
+      "message": "Please see the same part of the AAVCAssembler.h",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 75,
+        "endChar": 81
+      },
+      "revId": "4f1995d1ff4047adee9065010d4e5578ab0b903e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
