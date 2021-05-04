@@ -166,6 +166,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb54ae7c_fe145cc7",
+        "filename": "media/libstagefright/rtsp/AAVCAssembler.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-05-04T14:32:15Z",
+      "side": 1,
+      "message": "this information about expected ranges for base and dynamic jitter would be very good to add as comments in the code. It seems you completely reworked the math, so may not be relevant now, and saw you added comments for dynamicJbTimeRtp.",
+      "parentUuid": "54b22a8a_00ea8280",
+      "range": {
+        "startLine": 140,
+        "startChar": 66,
+        "endLine": 140,
+        "endChar": 97
+      },
+      "revId": "36ac1681d8ae04b6d1af49883cb0b4c83da23bc2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dbe6f120_108d18a6",
