@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdc205c5_a113dfc6",
+        "filename": "services/audioflinger/PatchPanel.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 165,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-05-04T16:27:17Z",
+      "side": 1,
+      "message": "Please remove \u0027explicit\u0027 since the constructor now takes 2 arguments.",
+      "range": {
+        "startLine": 165,
+        "startChar": 8,
+        "endLine": 165,
+        "endChar": 16
+      },
+      "revId": "577f25bc69f44d235493a7e498cbfd251134c985",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
