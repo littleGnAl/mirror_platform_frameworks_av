@@ -67,6 +67,24 @@
       "message": "follow along in b/185708645 for where the fix is (or is not)\nI think that things have moved on beyond this particular revert.\nso -- hold it for now, don\u0027t submit it.",
       "revId": "6d18843d8a0dab571d4bbd8774073e6dc12dcdbf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a020e835_130933d2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1432579
+      },
+      "writtenOn": "2021-05-04T16:30:38Z",
+      "side": 1,
+      "message": "Please check https://b.corp.google.com/issues/185708645#comment7 and https://b.corp.google.com/issues/185708645#comment11, this is not the correct CL to revert. Revert to uncompressed apexes was done in https://android-review.googlesource.com/c/platform/build/+/1688389/",
+      "parentUuid": "5062c7d4_ac059f57",
+      "revId": "6d18843d8a0dab571d4bbd8774073e6dc12dcdbf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
