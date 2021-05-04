@@ -70,6 +70,24 @@
       "parentUuid": "6e2eff80_d2446b34",
       "revId": "2388438c2f701fea8ff5a4e2d672dfa8df64eb5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6590f0d7_1fdd4901",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-04T16:22:11Z",
+      "side": 1,
+      "message": "Ray,\nIn order to make it as simple as possible to switch to 64 bit mediaserver at a later date, I have split this CL into two CLs.\nChanges in Codec2Buffer.cpp are now in https://android-review.googlesource.com/c/platform/frameworks/av/+/1684305.\nThat change can be merged without switching mediaserver to 64bit.\nOnce that is merged, only change that is needed to switch to 64bit is to remove compile_multilib from mediaserver\u0027s Android.bp. This change can be merged whenever appropriate later.",
+      "parentUuid": "4c964739_25604ac4",
+      "revId": "2388438c2f701fea8ff5a4e2d672dfa8df64eb5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
