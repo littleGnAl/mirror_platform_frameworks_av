@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c7da8ba_190c8a37",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4074,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-05-04T15:17:45Z",
+      "side": 1,
+      "message": "as AF leak is fixed with CL https://android-review.googlesource.com/c/platform/frameworks/av/+/1650308, this can be removed",
+      "range": {
+        "startLine": 4069,
+        "startChar": 0,
+        "endLine": 4074,
+        "endChar": 13
+      },
+      "revId": "48aca38b5d3d8eb6201a6687cb5e5d227311d14f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d608a605_2a8c8344",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 6121,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-05-04T15:17:45Z",
+      "side": 1,
+      "message": "\u0026\u0026",
+      "range": {
+        "startLine": 6121,
+        "startChar": 31,
+        "endLine": 6121,
+        "endChar": 33
+      },
+      "revId": "48aca38b5d3d8eb6201a6687cb5e5d227311d14f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
