@@ -22,6 +22,30 @@
       },
       "revId": "992d7504e878edd0fa58b579d1a0e3a7ed5a8f07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad4ab08_c9401d96",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-05-04T15:08:44Z",
+      "side": 1,
+      "message": "As a \"former\" hal implementer, I agree with you. I think what disturbed our HAL implementer was the leak in AudioFlinger that may result in closing the Swoutput patch in AF but not in APM. Now that this bug is fixed, I really do not see any more reason to release the audio patch.\nI propose to abandon this patch, we may keep it as tech debt if our hal implementor cannot live without this.",
+      "parentUuid": "10d7775c_4d4f74be",
+      "range": {
+        "startLine": 13,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 36
+      },
+      "revId": "992d7504e878edd0fa58b579d1a0e3a7ed5a8f07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
