@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "63085dc8_a3bb6e76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-05-05T13:58:45Z",
+      "side": 1,
+      "message": "Thanks for sharing this change.  Kindly go through the review comments to discuss further.",
+      "revId": "631404aa4c66def0386d34c2691396a1412e8eab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c2af7faf_69d7a50f",
@@ -31,6 +48,30 @@
       "writtenOn": "2021-04-26T18:24:29Z",
       "side": 1,
       "message": "this will still be a race that can deadlock.  it may be a smaller window of vulnerability, but it can still get into the situation described in the bug.\n\nthread1 hits line 1188 sees mResetPending false;\nthread2 hits line 1188 sees mResetPending false\nthread1 gets the lock at 1192 and goes into .... stopWriterThread() / release() for unknown time\nthread2 tries for lock and 1192 and is blocked until thread1 finishes.\n\nand we\u0027re at the same point as described in the bug that this purports to fix.",
+      "range": {
+        "startLine": 1188,
+        "startChar": 3,
+        "endLine": 1193,
+        "endChar": 25
+      },
+      "revId": "631404aa4c66def0386d34c2691396a1412e8eab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ffcd55e_34475a42",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1193,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-05-05T13:58:45Z",
+      "side": 1,
+      "message": "Agree with Ray Essick\u0027s comment.  Would you like to try to reproduce this issue with the new code in S as we have fixed/improved some code in the function\nstatus_t MPEG4Writer::reset(bool stopSource, bool waitForAnyPreviousCallToComplete)",
+      "parentUuid": "c2af7faf_69d7a50f",
       "range": {
         "startLine": 1188,
         "startChar": 3,
