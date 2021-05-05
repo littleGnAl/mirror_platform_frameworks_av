@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ab22930_54df3602",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-05-05T18:10:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "85adf21f_8444b6de",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "8bb6f18c381492b23a666d7246c4a305a13dd73b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8ef8f0ea_98b121a1",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-05T17:51:55Z",
       "side": 1,
       "message": "Will it be better to make a separate method for updating csd?",
+      "range": {
+        "startLine": 2232,
+        "startChar": 0,
+        "endLine": 2268,
+        "endChar": 21
+      },
+      "revId": "8bb6f18c381492b23a666d7246c4a305a13dd73b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8beaa6ee_b051e114",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2268,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-05-05T18:10:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8ef8f0ea_98b121a1",
       "range": {
         "startLine": 2232,
         "startChar": 0,
