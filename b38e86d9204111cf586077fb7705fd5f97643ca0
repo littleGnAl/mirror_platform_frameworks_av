@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd2dbdd1_6632f3d7",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-05-05T13:36:43Z",
+      "side": 1,
+      "message": "the goal of using fore here is to bypass the check in setOutputDevices() that exits if the new device is the same as current device.\nadding the condition here defeats the purpose of forced routing in this case.",
+      "range": {
+        "startLine": 778,
+        "startChar": 56,
+        "endLine": 778,
+        "endChar": 88
+      },
+      "revId": "b38e86d9204111cf586077fb7705fd5f97643ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ba58c90b_71bbb96f",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-05-05T13:36:43Z",
+      "side": 1,
+      "message": "remove?",
+      "range": {
+        "startLine": 780,
+        "startChar": 57,
+        "endLine": 780,
+        "endChar": 58
+      },
+      "revId": "b38e86d9204111cf586077fb7705fd5f97643ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
