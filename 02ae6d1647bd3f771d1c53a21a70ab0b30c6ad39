@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "393f4258_4e1c65e9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 7
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-05-05T13:48:00Z",
+      "side": 1,
+      "message": "rerouted",
+      "range": {
+        "startLine": 13,
+        "startChar": 44,
+        "endLine": 13,
+        "endChar": 53
+      },
+      "revId": "02ae6d1647bd3f771d1c53a21a70ab0b30c6ad39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6005ab92_9ae97a51",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 3960,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-05-05T13:48:00Z",
+      "side": 1,
+      "message": "would it make sense to create a local SourceClientDescriptor in createAudioPatch() before calling createAudioPatchInternal() to have a consistent way of managing SW output patches and volume? We would pick the AudioAttributes so that the volume behavior is the same as current raw audio patches and it would solve this kind of problems no?",
+      "range": {
+        "startLine": 3960,
+        "startChar": 0,
+        "endLine": 3960,
+        "endChar": 75
+      },
+      "revId": "02ae6d1647bd3f771d1c53a21a70ab0b30c6ad39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
