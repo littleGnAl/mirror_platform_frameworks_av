@@ -577,6 +577,12 @@ status_t AudioFlinger::PatchPanel::Patch::createConnections(
 
     // create a special playback track to render to playback thread.
     // this track is given the same buffer as the PatchRecord buffer
+
+    // Default behaviour is to start as soon as possible to have the lowest possible latency even if
+    // it might glitch.
+    // Disable this behavior for FM Tuner source if no fast capture/mixer available.
+    const bool isFmBridge = mAudioPatch.sources[0].ext.device.type == AUDIO_DEVICE_IN_FM_TUNER;
+    const size_t frameCountToBeReady = isFmBridge && !usePassthruPatchRecord ? frameCount / 4 : 1;
     sp<PlaybackThread::PatchTrack> tempPatchTrack = new PlaybackThread::PatchTrack(
                                            mPlayback.thread().get(),
                                            streamType,
@@ -587,7 +593,9 @@ status_t AudioFlinger::PatchPanel::Patch::createConnections(
                                            tempRecordTrack->buffer(),
                                            tempRecordTrack->bufferSize(),
                                            clientAttSource,
-                                           outputFlags);
+                                           outputFlags,
+                                           {} /*timeout*/,
+                                           frameCountToBeReady);
     status = mPlayback.checkTrack(tempPatchTrack.get());
     if (status != NO_ERROR) {
         return status;
