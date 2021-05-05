@@ -45,6 +45,30 @@
       },
       "revId": "02ae6d1647bd3f771d1c53a21a70ab0b30c6ad39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "213e4c74_a79cd248",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 3960,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-05-05T14:38:36Z",
+      "side": 1,
+      "message": "I really like this idea, better to avoid new counter, cherry on the cake, it will allow to track volume activity and dispatch volume change correctly.\nWill provide new patch set with this idea.",
+      "parentUuid": "6005ab92_9ae97a51",
+      "range": {
+        "startLine": 3960,
+        "startChar": 0,
+        "endLine": 3960,
+        "endChar": 75
+      },
+      "revId": "02ae6d1647bd3f771d1c53a21a70ab0b30c6ad39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
