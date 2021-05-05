@@ -16,6 +16,24 @@
       "message": "Order of KeyValue pair params(createVideoCodec/createAudioCodec) seems to be fixed. Could this be fixed later? (maybe TODO?)",
       "revId": "28091438b3e358a0583c2d7832f08c6d96bf98a6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a394dd9_0fffeef4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-05-05T17:08:18Z",
+      "side": 1,
+      "message": "Completely agree. For this CL I did not want to introduce risk at this stage. We should probably completely rework this so that it allows unrecognized tags, similarly to how media_codecs.xml is parsed.",
+      "parentUuid": "148c74d5_c11f56e0",
+      "revId": "28091438b3e358a0583c2d7832f08c6d96bf98a6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
