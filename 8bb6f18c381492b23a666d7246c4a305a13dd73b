@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "85adf21f_8444b6de",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-05-05T17:51:55Z",
+      "side": 1,
+      "message": "nit; Lint warning",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "8bb6f18c381492b23a666d7246c4a305a13dd73b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ef8f0ea_98b121a1",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2268,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-05-05T17:51:55Z",
+      "side": 1,
+      "message": "Will it be better to make a separate method for updating csd?",
+      "range": {
+        "startLine": 2232,
+        "startChar": 0,
+        "endLine": 2268,
+        "endChar": 21
+      },
+      "revId": "8bb6f18c381492b23a666d7246c4a305a13dd73b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
