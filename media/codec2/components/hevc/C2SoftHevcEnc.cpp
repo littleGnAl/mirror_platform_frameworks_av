@@ -245,6 +245,19 @@ class C2SoftHevcEnc::IntfImpl : public SimpleInterface<void>::BaseParams {
                 })
                 .withSetter(CodedColorAspectsSetter, mColorAspects)
                 .build());
+
+        addParameter(
+                DefineParam(mPictureQuantization, C2_PARAMKEY_PICTURE_QUANTIZATION)
+                .withDefault(C2StreamPictureQuantizationTuning::output::AllocShared(
+                        0 /* flexCount */, 0u /* stream */))
+                .withFields({C2F(mPictureQuantization, m.values[0].type_).oneOf(
+                                {C2Config::picture_type_t(I_FRAME),
+                                  C2Config::picture_type_t(P_FRAME),
+                                  C2Config::picture_type_t(B_FRAME)}),
+                             C2F(mPictureQuantization, m.values[0].min).any(),
+                             C2F(mPictureQuantization, m.values[0].max).any()})
+                .withSetter(PictureQuantizationSetter)
+                .build());
     }
 
     static C2R InputDelaySetter(
@@ -464,9 +477,80 @@ class C2SoftHevcEnc::IntfImpl : public SimpleInterface<void>::BaseParams {
         me.set().matrix = coded.v.matrix;
         return C2R::Ok();
     }
+    static C2R PictureQuantizationSetter(bool mayBlock,
+                                         C2P<C2StreamPictureQuantizationTuning::output> &me) {
+        (void)mayBlock;
+
+        // these are the ones we're going to set, so want them to default ....
+        // to the DEFAULT values for the codec instead of CODEC_ bounding
+        int32_t iMin = INT32_MIN, pMin = INT32_MIN, bMin = INT32_MIN;
+        int32_t iMax = INT32_MAX, pMax = INT32_MAX, bMax = INT32_MAX;
+
+        for (size_t i = 0; i < me.v.flexCount(); ++i) {
+            const C2PictureQuantizationStruct &layer = me.v.m.values[i];
+
+            if (layer.type_ == C2Config::picture_type_t(I_FRAME)) {
+                iMax = layer.max;
+                iMin = layer.min;
+                ALOGV("iMin %d iMax %d", iMin, iMax);
+            } else if (layer.type_ == C2Config::picture_type_t(P_FRAME)) {
+                pMax = layer.max;
+                pMin = layer.min;
+                ALOGV("pMin %d pMax %d", pMin, pMax);
+            } else if (layer.type_ == C2Config::picture_type_t(B_FRAME)) {
+                bMax = layer.max;
+                bMin = layer.min;
+                ALOGV("bMin %d bMax %d", bMin, bMax);
+            }
+        }
+
+        ALOGV("PictureQuantizationSetter(entry): i %d-%d p %d-%d b %d-%d",
+              iMin, iMax, pMin, pMax, bMin, bMax);
+
+        // INT32_{MIN,MAX} means unspecified, so use the codec's default
+        if (iMax == INT32_MAX) iMax = CODEC_QP_MAX;
+        if (iMin == INT32_MIN) iMin = CODEC_QP_MIN;
+        if (pMax == INT32_MAX) pMax = CODEC_QP_MAX;
+        if (pMin == INT32_MIN) pMin = CODEC_QP_MIN;
+        if (bMax == INT32_MAX) bMax = CODEC_QP_MAX;
+        if (bMin == INT32_MIN) bMin = CODEC_QP_MIN;
+
+        // ensure we have legal values
+        iMax = std::clamp(iMax, CODEC_QP_MIN, CODEC_QP_MAX);
+        iMin = std::clamp(iMin, CODEC_QP_MIN, CODEC_QP_MAX);
+        pMax = std::clamp(pMax, CODEC_QP_MIN, CODEC_QP_MAX);
+        pMin = std::clamp(pMin, CODEC_QP_MIN, CODEC_QP_MAX);
+        bMax = std::clamp(bMax, CODEC_QP_MIN, CODEC_QP_MAX);
+        bMin = std::clamp(bMin, CODEC_QP_MIN, CODEC_QP_MAX);
+
+        // put them back into the structure
+        for (size_t i = 0; i < me.v.flexCount(); ++i) {
+            const C2PictureQuantizationStruct &layer = me.v.m.values[i];
+
+            if (layer.type_ == C2Config::picture_type_t(I_FRAME)) {
+                me.set().m.values[i].max = iMax;
+                me.set().m.values[i].min = iMin;
+            }
+            if (layer.type_ == C2Config::picture_type_t(P_FRAME)) {
+                me.set().m.values[i].max = pMax;
+                me.set().m.values[i].min = pMin;
+            }
+            if (layer.type_ == C2Config::picture_type_t(B_FRAME)) {
+                me.set().m.values[i].max = bMax;
+                me.set().m.values[i].min = bMin;
+            }
+        }
+
+        ALOGV("PictureQuantizationSetter(exit): i %d-%d p %d-%d b %d-%d",
+              iMin, iMax, pMin, pMax, bMin, bMax);
+
+        return C2R::Ok();
+    }
     std::shared_ptr<C2StreamColorAspectsInfo::output> getCodedColorAspects_l() {
         return mCodedColorAspects;
     }
+    std::shared_ptr<C2StreamPictureQuantizationTuning::output> getPictureQuantization_l() const
+    { return mPictureQuantization; }
 
    private:
     std::shared_ptr<C2StreamUsageTuning::input> mUsage;
@@ -482,6 +566,7 @@ class C2SoftHevcEnc::IntfImpl : public SimpleInterface<void>::BaseParams {
     std::shared_ptr<C2StreamGopTuning::output> mGop;
     std::shared_ptr<C2StreamColorAspectsInfo::input> mColorAspects;
     std::shared_ptr<C2StreamColorAspectsInfo::output> mCodedColorAspects;
+    std::shared_ptr<C2StreamPictureQuantizationTuning::output> mPictureQuantization;
 };
 
 static size_t GetCPUCoreCount() {
@@ -654,12 +739,59 @@ c2_status_t C2SoftHevcEnc::initEncParams() {
         mEncParams.s_coding_tools_prms.i4_max_temporal_layers = 3;
     }
 
+    int32_t maxFrameQP = CODEC_QP_MAX;
+    int32_t minFrameQP = CODEC_QP_MIN;
+    if (mQpBounds->flexCount() > 0) {
+        // set max and min frame qp
+        int32_t iMin = CODEC_QP_MIN, pMin = CODEC_QP_MIN, bMin = CODEC_QP_MIN;
+        int32_t iMax = CODEC_QP_MAX, pMax = CODEC_QP_MAX, bMax = CODEC_QP_MAX;
+
+        for (size_t i = 0; i < mQpBounds->flexCount(); ++i) {
+            const C2PictureQuantizationStruct &layer = mQpBounds->m.values[i];
+
+            if (layer.type_ == C2Config::picture_type_t(I_FRAME)) {
+                iMax = layer.max;
+                iMin = layer.min;
+                ALOGV("iMin %d iMax %d", iMin, iMax);
+            } else if (layer.type_ == C2Config::picture_type_t(P_FRAME)) {
+                pMax = layer.max;
+                pMin = layer.min;
+                ALOGV("pMin %d pMax %d", pMin, pMax);
+            } else if (layer.type_ == C2Config::picture_type_t(B_FRAME)) {
+                bMax = layer.max;
+                bMin = layer.min;
+                ALOGV("bMin %d bMax %d", bMin, bMax);
+            }
+        }
+        maxFrameQP = std::min(std::min(iMax, pMax), bMax);
+        minFrameQP = std::max(std::max(iMin, pMin), bMin);
+    }
+    if (abs(maxFrameQP - minFrameQP) < mEncParams.s_coding_tools_prms.i4_max_temporal_layers + 1) {
+        maxFrameQP = CODEC_QP_MAX;
+        minFrameQP = CODEC_QP_MIN;
+    }
+    mEncParams.s_config_prms.i4_max_frame_qp = maxFrameQP;
+    mEncParams.s_config_prms.i4_min_frame_qp = minFrameQP;
+
+    ALOGV("MaxFrameQp: %d MinFrameQp: %d", maxFrameQP, minFrameQP);
+
+    // ai4_frame_qp can take a max value upto : qp + max_temporal_layer + 1
+    // which should be less than maxFrameQP. So, we clip the frame_qp accordingly.
+    if (maxFrameQP > (mEncParams.s_coding_tools_prms.i4_max_temporal_layers + 1)) {
+        maxFrameQP -= (mEncParams.s_coding_tools_prms.i4_max_temporal_layers + 1);
+    }
+    mEncParams.s_tgt_lyr_prms.as_tgt_params[0].ai4_frame_qp[0] =
+        std::clamp(kDefaultInitQP, minFrameQP, maxFrameQP);
+
     switch (mBitrateMode->value) {
-        case C2Config::BITRATE_IGNORE:
+        case C2Config::BITRATE_IGNORE: {
             mEncParams.s_config_prms.i4_rate_control_mode = 3;
+            // ensure initial qp values are within our newly configured bounds
+            int32_t frameQp = getQpFromQuality(mQuality->value);
             mEncParams.s_tgt_lyr_prms.as_tgt_params[0].ai4_frame_qp[0] =
-                getQpFromQuality(mQuality->value);
+                std::clamp(frameQp, minFrameQP, maxFrameQP);
             break;
+        }
         case C2Config::BITRATE_CONST:
             mEncParams.s_config_prms.i4_rate_control_mode = 5;
             break;
@@ -723,6 +855,7 @@ c2_status_t C2SoftHevcEnc::initEncoder() {
         mGop = mIntf->getGop_l();
         mRequestSync = mIntf->getRequestSync_l();
         mColorAspects = mIntf->getCodedColorAspects_l();
+        mQpBounds = mIntf->getPictureQuantization_l();;
     }
 
     c2_status_t status = initEncParams();
