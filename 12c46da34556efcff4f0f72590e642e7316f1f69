@@ -1,6 +1,24 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "42fbd5b5_bf9b1576",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-05-06T21:56:56Z",
+      "side": 1,
+      "message": "Kuowei, is there any update on this CL?  Can it be abandoned?  Thanks!",
+      "revId": "12c46da34556efcff4f0f72590e642e7316f1f69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "0b3a69c7_56a1bd34",
         "filename": "services/oboeservice/TimestampScheduler.cpp",
@@ -20,10 +38,10 @@
         "endChar": 39
       },
       "revId": "12c46da34556efcff4f0f72590e642e7316f1f69",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "f8399aa8_2fc28957",
         "filename": "services/oboeservice/TimestampScheduler.cpp",
@@ -43,10 +61,10 @@
         "endChar": 11
       },
       "revId": "12c46da34556efcff4f0f72590e642e7316f1f69",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "76ab3f15_7d1e2948",
         "filename": "services/oboeservice/TimestampScheduler.h",
@@ -66,10 +84,10 @@
         "endChar": 25
       },
       "revId": "12c46da34556efcff4f0f72590e642e7316f1f69",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "4695d60a_6e17be87",
         "filename": "services/oboeservice/TimestampScheduler.h",
@@ -89,8 +107,7 @@
         "endChar": 37
       },
       "revId": "12c46da34556efcff4f0f72590e642e7316f1f69",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
