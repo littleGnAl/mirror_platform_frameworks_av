@@ -289,13 +289,26 @@ c2_status_t C2SoftAacDec::onStop() {
     mOutputDelayRingBufferFilled = 0;
     mBuffersInfo.clear();
 
+    status_t status = UNKNOWN_ERROR;
+    if (mAACDecoder) {
+        aacDecoder_Close(mAACDecoder);
+        mAACDecoder = nullptr;
+        mAACDecoder = aacDecoder_Open(TT_MP4_ADIF, /* num layers */ 1);
+        if (mAACDecoder != nullptr) {
+            mStreamInfo = aacDecoder_GetStreamInfo(mAACDecoder);
+            if (mStreamInfo != nullptr) {
+                status = OK;
+            }
+        }
+    }
+
     // To make the codec behave the same before and after a reset, we need to invalidate the
     // streaminfo struct. This does that:
     mStreamInfo->sampleRate = 0; // TODO: mStreamInfo is read only
 
     mSignalledError = false;
 
-    return C2_OK;
+    return status == OK ? C2_OK : C2_CORRUPTED;
 }
 
 void C2SoftAacDec::onReset() {
