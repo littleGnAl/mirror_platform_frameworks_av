@@ -76,6 +76,7 @@ private:
 
     void initPorts();
     status_t initDecoder();
+    void resetStreamInfo();
     bool isConfigured() const;
     void drainDecoder();
 

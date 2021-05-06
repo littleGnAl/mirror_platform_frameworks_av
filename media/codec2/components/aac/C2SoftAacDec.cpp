@@ -295,6 +295,7 @@ c2_status_t C2SoftAacDec::onStop() {
 
     mSignalledError = false;
 
+    resetStreamInfo();
     return C2_OK;
 }
 
@@ -386,6 +387,37 @@ status_t C2SoftAacDec::initDecoder() {
     aacDecoder_SetParam(mAACDecoder, AAC_PCM_MAX_OUTPUT_CHANNELS, maxChannelCount);
 
     return status;
+}
+
+void C2SoftAacDec::resetStreamInfo() {
+    // CStreamInfoInit
+    mStreamInfo->aacSampleRate = 0;
+    mStreamInfo->profile = -1;
+    mStreamInfo->aot = AOT_NONE;
+
+    mStreamInfo->channelConfig = -1;
+    mStreamInfo->bitRate = 0;
+    mStreamInfo->aacSamplesPerFrame = 0;
+
+    mStreamInfo->extAot = AOT_NONE;
+    mStreamInfo->extSamplingRate = 0;
+
+    mStreamInfo->flags = 0;
+
+    mStreamInfo->epConfig = -1; /* default: no ER */
+
+    mStreamInfo->numChannels = 0;
+    mStreamInfo->sampleRate = 0;
+    mStreamInfo->frameSize = 0;
+
+    mStreamInfo->outputDelay = 0;
+
+    /* DRC */
+    mStreamInfo->drcProgRefLev =
+        -1; /* set program reference level to not indicated */
+    mStreamInfo->drcPresMode = -1; /* default: presentation mode not indicated */
+
+    mStreamInfo->outputLoudness = -1; /* default: no loudness metadata present */
 }
 
 bool C2SoftAacDec::outputDelayRingBufferPutSamples(INT_PCM *samples, int32_t numSamples) {
