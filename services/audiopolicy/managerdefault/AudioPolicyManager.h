@@ -579,6 +579,20 @@ protected:
                                            const sp<DeviceDescriptor> &sinkDevice,
                                            uint32_t delayMs);
 
+        bool isTelephonyRxOrTx(const sp<SwAudioOutputDescriptor>& desc) const {
+            return isTelephonyOutput(desc, mCallRxSourceClientPort)
+                    || isTelephonyOutput(desc, mCallTxSourceClientPort);
+        }
+        bool isTelephonyOutput(const sp<SwAudioOutputDescriptor>& desc,
+                               const audio_port_handle_t &portHandle) const {
+            if (portHandle != AUDIO_PORT_HANDLE_NONE) {
+                sp<SourceClientDescriptor> sourceDesc = mAudioSources.valueFor(portHandle);
+                if (sourceDesc != nullptr && desc == sourceDesc->swOutput().promote()) {
+                    return true;
+                }
+            }
+            return false;
+        }
 
         /**
          * @brief updates routing for all inputs.
