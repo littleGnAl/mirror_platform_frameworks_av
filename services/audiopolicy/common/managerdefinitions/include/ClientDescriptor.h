@@ -191,7 +191,7 @@ public:
                            const struct audio_port_config &config,
                            const sp<DeviceDescriptor>& srcDevice,
                            audio_stream_type_t stream, product_strategy_t strategy,
-                           VolumeSource volumeSource);
+                           VolumeSource volumeSource, bool isInternal = false);
 
     ~SourceClientDescriptor() override = default;
 
@@ -203,6 +203,15 @@ public:
         mPatchHandle = AUDIO_PATCH_HANDLE_NONE;
         mSinkDevice = nullptr;
     }
+    void setUseSwBridge() { mUseSwBridge = true; }
+    bool useSwBridge() const { return mUseSwBridge; }
+    /**
+     * @brief isInternal
+     * @return true if the client internal to APM, aka is routed through a "raw patch" aka either
+     * created from createAudioPatch API or internally e.g. for call or false is created from
+     * startAudioSource API
+     */
+    bool isInternal() const { return mIsInternal; }
     bool isConnected() const { return mPatchHandle != AUDIO_PATCH_HANDLE_NONE; }
     audio_patch_handle_t getPatchHandle() const { return mPatchHandle; }
     sp<DeviceDescriptor> srcDevice() const { return mSrcDevice; }
@@ -221,6 +230,36 @@ public:
     sp<DeviceDescriptor> mSinkDevice;
     wp<SwAudioOutputDescriptor> mSwOutput;
     wp<HwAudioOutputDescriptor> mHwOutput;
+    bool mUseSwBridge = false;
+    const bool mIsInternal;
+};
+
+/**
+ * @brief The InternalSourceClientDescriptor class
+ * Specialized Client Descriptor for a either a raw patch created from @see createAudioPatch API
+ * or for internal audio patches managed by APM (e.g. phone call patches).
+ * Whatever the bridge created (software or hardware), we need a client to track the activity
+ * and manage volumes.
+ * The Audio Patch requested sink is expressed as a preferred device which allows to route
+ * the SwOutput. Then APM will performs checks on the UID (against UID of Audioserver) of the
+ * requester to prevent rerouting SwOutput involved in raw patches.
+ */
+class InternalSourceClientDescriptor: public SourceClientDescriptor
+{
+public:
+    InternalSourceClientDescriptor(
+            audio_port_handle_t portId, uid_t uid, audio_attributes_t attributes,
+            const struct audio_port_config &config, const sp<DeviceDescriptor>& srcDevice,
+             const sp<DeviceDescriptor>& sinkDevice,
+            product_strategy_t strategy, VolumeSource volumeSource) :
+        SourceClientDescriptor(
+            portId, uid, attributes, config, srcDevice, AUDIO_STREAM_PATCH, strategy,
+            volumeSource, true /*isInternal*/)
+    {
+        setPreferredDeviceId(sinkDevice->getId());
+    }
+
+    ~InternalSourceClientDescriptor() override = default;
 };
 
 class SourceClientCollection :
