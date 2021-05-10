@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4950d1e_b8c60804",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 518,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2021-05-10T19:53:13Z",
+      "side": 1,
+      "message": "We should be able to take \u0027mediaType\u0027 by const reference here, to avoid making a copy of the string argument when this is called.  I\u0027ve put up a follow-up for this: https://android-review.googlesource.com/c/platform/frameworks/av/+/1701666",
+      "revId": "1f5063d7ecbbbc0fca6f5f82ad63b40ff061b2d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
