@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c4d9111_c7f342cc",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 778,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-05-10T13:48:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3e394b7a_f6cf06b1",
+      "range": {
+        "startLine": 778,
+        "startChar": 56,
+        "endLine": 778,
+        "endChar": 88
+      },
+      "revId": "b38e86d9204111cf586077fb7705fd5f97643ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ba58c90b_71bbb96f",
@@ -109,6 +133,30 @@
       "side": 1,
       "message": "Sorry, I did not see it was the last argument...",
       "parentUuid": "f214ee46_8ff30c37",
+      "range": {
+        "startLine": 780,
+        "startChar": 57,
+        "endLine": 780,
+        "endChar": 58
+      },
+      "revId": "b38e86d9204111cf586077fb7705fd5f97643ca0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3530fa8c_75938525",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 780,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-05-10T13:48:35Z",
+      "side": 1,
+      "message": "ack",
+      "parentUuid": "c6183d6b_b037acc6",
       "range": {
         "startLine": 780,
         "startChar": 57,
