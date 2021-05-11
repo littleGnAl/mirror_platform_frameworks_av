@@ -607,6 +607,7 @@ constexpr int32_t COLOR_FormatYCbYCr                  = 25;
 constexpr int32_t COLOR_FormatYCrYCb                  = 26;
 constexpr int32_t COLOR_FormatYUV411PackedPlanar      = 18;
 constexpr int32_t COLOR_FormatYUV411Planar            = 17;
+constexpr int32_t COLOR_FormatYUV420Aligned10BitFlexible = 0x7F420016;
 constexpr int32_t COLOR_FormatYUV420Flexible          = 0x7F420888;
 constexpr int32_t COLOR_FormatYUV420PackedPlanar      = 20;
 constexpr int32_t COLOR_FormatYUV420PackedSemiPlanar  = 39;
