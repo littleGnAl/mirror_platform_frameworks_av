@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "07e62ad2_9f752d1e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-05-11T13:55:40Z",
+      "side": 1,
+      "message": "Yes, issue is for IDevice \u003c 6.0. With the introduction of updateAudioPatch API, the bug has gone.\nPatchPanel will do the job correctly.\nI will refine commit msg, this CL is for \u003e\u003d6.0 a matter of optimization.",
+      "parentUuid": "be1f4966_e1ceef9a",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "8604c080db95eab59d4a4af10e04007bd11b4951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d6b2527_62b9c2d8",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-11T12:38:51Z",
       "side": 1,
       "message": "there is nothing telephony specific in the method implementation. May be rename to isAudioSourceOnOutput",
+      "range": {
+        "startLine": 586,
+        "startChar": 13,
+        "endLine": 586,
+        "endChar": 30
+      },
+      "revId": "8604c080db95eab59d4a4af10e04007bd11b4951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb125b49_03469726",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-05-11T13:55:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9d6b2527_62b9c2d8",
       "range": {
         "startLine": 586,
         "startChar": 13,
