@@ -16,6 +16,46 @@
       "message": "bug is closed/obsolete.\ndoes this point to the wrong bug, or is the bug perhaps in the wrong state?",
       "revId": "79cd32c51ea29a999df0804444835833b4c61a4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d494d69_f283e787",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-05-11T02:44:46Z",
+      "side": 1,
+      "message": "i see that we\u0027re doing this for 2 of the plugins. \nis it something that should be applied to all of the plugins?",
+      "revId": "79cd32c51ea29a999df0804444835833b4c61a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec7748aa_49858e24",
+        "filename": "media/codec2/components/aac/C2SoftAacDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-05-11T02:44:46Z",
+      "side": 1,
+      "message": "would it simpler to discard the current mStreanInfo\nand do a mStreamInfo \u003d new xxx\n\nthat way, all the fields would get initialized to whatever we\u0027re initializing them to as part of the constructor  (it appears that this is what we\u0027re trying to do with this).",
+      "range": {
+        "startLine": 392,
+        "startChar": 14,
+        "endLine": 392,
+        "endChar": 38
+      },
+      "revId": "79cd32c51ea29a999df0804444835833b4c61a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
