@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c85e3dd_b19932a9",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-05-11T15:06:01Z",
+      "side": 1,
+      "message": "But I thought this problem of lacking updateAudioPatch( )was taken care of by the HIDL to legacy HAL wrapper. I think it makes sense got native HIDL HAL implementations to include the same workaround.\nFixing this in APM is fine for this particular case but I can imagine there are other situations where we do not release the patch properly for HAL \u003c 6.0. We are not going to fix them all given the number of implementations that will keep running a HAL V5.0 with a system built for S or more is likely very small.",
+      "parentUuid": "07e62ad2_9f752d1e",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "8604c080db95eab59d4a4af10e04007bd11b4951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d6b2527_62b9c2d8",
