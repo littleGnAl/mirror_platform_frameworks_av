@@ -53,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "adba5950_3fa97dea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1237180
+      },
+      "writtenOn": "2021-05-11T14:57:16Z",
+      "side": 1,
+      "message": "We are currently looking into cts decoder bugs. In decoder failure are seen only for aac and amrwb decoder.",
+      "parentUuid": "5d494d69_f283e787",
+      "revId": "79cd32c51ea29a999df0804444835833b4c61a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ec7748aa_49858e24",
@@ -66,6 +84,30 @@
       "writtenOn": "2021-05-11T02:44:46Z",
       "side": 1,
       "message": "would it simpler to discard the current mStreanInfo\nand do a mStreamInfo \u003d new xxx\n\nthat way, all the fields would get initialized to whatever we\u0027re initializing them to as part of the constructor  (it appears that this is what we\u0027re trying to do with this).",
+      "range": {
+        "startLine": 392,
+        "startChar": 14,
+        "endLine": 392,
+        "endChar": 38
+      },
+      "revId": "79cd32c51ea29a999df0804444835833b4c61a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "738f41ba_d6750a35",
+        "filename": "media/codec2/components/aac/C2SoftAacDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1237180
+      },
+      "writtenOn": "2021-05-11T14:57:16Z",
+      "side": 1,
+      "message": "Inside mStreamInfo structure there are other members(like pChannelIndices etc.) which are not initialized inside this function, those member are initialized once  and used across runs.",
+      "parentUuid": "ec7748aa_49858e24",
       "range": {
         "startLine": 392,
         "startChar": 14,
