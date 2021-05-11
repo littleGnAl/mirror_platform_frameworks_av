@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "c6cc1423_298c7c56",
         "filename": "media/libstagefright/include/media/stagefright/ACodec.h",
@@ -20,10 +21,34 @@
         "endChar": 103
       },
       "revId": "ceedc4d4a8cca71574b7e94a4334bac247a8f474",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9ce0d1d2_48a2eb28",
+        "filename": "media/libstagefright/include/media/stagefright/ACodec.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 490,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2021-05-11T06:39:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c6cc1423_298c7c56",
+      "range": {
+        "startLine": 490,
+        "startChar": 82,
+        "endLine": 490,
+        "endChar": 103
+      },
+      "revId": "ceedc4d4a8cca71574b7e94a4334bac247a8f474",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "5ab5831a_f1c6e774",
         "filename": "media/ndk/NdkMediaFormat.cpp",
@@ -43,10 +68,34 @@
         "endChar": 70
       },
       "revId": "ceedc4d4a8cca71574b7e94a4334bac247a8f474",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fdfa1ce_d0e07a01",
+        "filename": "media/ndk/NdkMediaFormat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 397,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2021-05-11T06:39:10Z",
+      "side": 1,
+      "message": "no need anymore",
+      "parentUuid": "5ab5831a_f1c6e774",
+      "range": {
+        "startLine": 397,
+        "startChar": 0,
+        "endLine": 397,
+        "endChar": 70
+      },
+      "revId": "ceedc4d4a8cca71574b7e94a4334bac247a8f474",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "9cab09b5_0a8238bd",
         "filename": "media/ndk/include/media/NdkMediaFormat.h",
@@ -66,10 +115,34 @@
         "endChar": 71
       },
       "revId": "ceedc4d4a8cca71574b7e94a4334bac247a8f474",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c775a96_0e56b5db",
+        "filename": "media/ndk/include/media/NdkMediaFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 202,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2021-05-11T06:39:10Z",
+      "side": 1,
+      "message": "no need anymore",
+      "parentUuid": "9cab09b5_0a8238bd",
+      "range": {
+        "startLine": 202,
+        "startChar": 0,
+        "endLine": 202,
+        "endChar": 71
+      },
+      "revId": "ceedc4d4a8cca71574b7e94a4334bac247a8f474",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "c0ef7d12_07837ebe",
         "filename": "media/ndk/libmediandk.map.txt",
@@ -89,8 +162,31 @@
         "endChar": 52
       },
       "revId": "ceedc4d4a8cca71574b7e94a4334bac247a8f474",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40a92d48_dfde47d5",
+        "filename": "media/ndk/libmediandk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2021-05-11T06:39:10Z",
+      "side": 1,
+      "message": "no need anymore",
+      "parentUuid": "c0ef7d12_07837ebe",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 52
+      },
+      "revId": "ceedc4d4a8cca71574b7e94a4334bac247a8f474",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
