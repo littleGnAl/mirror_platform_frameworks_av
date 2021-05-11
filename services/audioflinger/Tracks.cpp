@@ -1047,6 +1047,7 @@ status_t AudioFlinger::PlaybackThread::Track::start(AudioSystem::sync_event_t ev
         }
 
         if (state == PAUSED || state == PAUSING) {
+            mPauseHwPending = false;
             if (mResumeToStopping) {
                 // happened we need to resume to STOPPING_1
                 mState = TrackBase::STOPPING_1;
