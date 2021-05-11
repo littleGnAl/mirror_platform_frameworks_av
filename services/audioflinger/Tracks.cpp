@@ -1177,7 +1177,7 @@ void AudioFlinger::PlaybackThread::Track::pause()
             mState = PAUSING;
             ALOGV("%s(%d): ACTIVE/RESUMING => PAUSING on thread %d",
                     __func__, mId, (int)mThreadIoHandle);
-            if (isOffloadedOrDirect()) {
+            if (isOffloadedOrDirect() && !playbackThread->mActiveTracks.isEmpty()) {
                 mPauseHwPending = true;
             }
             playbackThread->broadcast_l();
