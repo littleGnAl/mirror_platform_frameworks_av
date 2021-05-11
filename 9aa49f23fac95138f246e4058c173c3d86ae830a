@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "028a59dd_760b0ea4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2021-05-11T05:36:34Z",
+      "side": 1,
+      "message": "Done",
+      "revId": "9aa49f23fac95138f246e4058c173c3d86ae830a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f97d79d6_ca3a40a9",
@@ -72,6 +89,30 @@
       "side": 1,
       "message": "removed",
       "parentUuid": "f97d79d6_ca3a40a9",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 396,
+        "endChar": 60
+      },
+      "revId": "9aa49f23fac95138f246e4058c173c3d86ae830a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3fba474a_7a0d8a80",
+        "filename": "media/ndk/NdkMediaFormat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 396,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2021-05-11T05:36:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2c6d7bf4_090d409c",
       "range": {
         "startLine": 388,
         "startChar": 0,
@@ -190,6 +231,30 @@
       "side": 1,
       "message": "removed",
       "parentUuid": "f21ca83f_83347709",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 160,
+        "endChar": 47
+      },
+      "revId": "9aa49f23fac95138f246e4058c173c3d86ae830a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69369149_b4a3b213",
+        "filename": "media/ndk/libmediandk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 160,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2021-05-11T05:36:34Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ff7b402_462ec35d",
       "range": {
         "startLine": 152,
         "startChar": 0,
