@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be1f4966_e1ceef9a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-05-11T12:38:51Z",
+      "side": 1,
+      "message": "Do we understand the root cause of this. Even forcing a patch creation in audio policy should not cause a leak in the HAL. The Patch panel should reuse the HAL patch handle  or first release the HAL patch and then create a new one.",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "8604c080db95eab59d4a4af10e04007bd11b4951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d6b2527_62b9c2d8",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 586,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-05-11T12:38:51Z",
+      "side": 1,
+      "message": "there is nothing telephony specific in the method implementation. May be rename to isAudioSourceOnOutput",
+      "range": {
+        "startLine": 586,
+        "startChar": 13,
+        "endLine": 586,
+        "endChar": 30
+      },
+      "revId": "8604c080db95eab59d4a4af10e04007bd11b4951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
