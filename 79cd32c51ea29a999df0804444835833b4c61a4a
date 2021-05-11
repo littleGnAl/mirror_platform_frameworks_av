@@ -116,6 +116,30 @@
       },
       "revId": "79cd32c51ea29a999df0804444835833b4c61a4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "08814678_724e0175",
+        "filename": "media/codec2/components/aac/C2SoftAacDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-11T16:10:04Z",
+      "side": 1,
+      "message": "Rakesh, \nI think it is better to reset it completely.\nAlso can you add some logs and confirm mStreamInfo is initialized appropriately after onStop() again when new data is fed?",
+      "parentUuid": "738f41ba_d6750a35",
+      "range": {
+        "startLine": 392,
+        "startChar": 14,
+        "endLine": 392,
+        "endChar": 38
+      },
+      "revId": "79cd32c51ea29a999df0804444835833b4c61a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
