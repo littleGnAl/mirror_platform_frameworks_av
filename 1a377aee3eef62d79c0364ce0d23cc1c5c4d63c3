@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "638e8515_bb8f8640",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2021-05-11T06:31:13Z",
+      "side": 1,
+      "message": "\u003e Patch Set 3: Code-Review-1\n\u003e \n\u003e i am currently NOT inclined to take this, based on my reading of the spec this evening.\n\u003e let\u0027s discuss further in the bug.\nAs in the bug 140010602, comment#5 from James Zern \"The check mentioned in comment #1 is redundant after the change in comment #2, though.\"\nIt seems the CL we upstream is needed.",
+      "revId": "1a377aee3eef62d79c0364ce0d23cc1c5c4d63c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
