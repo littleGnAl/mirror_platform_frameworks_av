@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "eeb705b9_7b857c12",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 10
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-05-11T15:19:10Z",
+      "side": 1,
+      "message": "This is the reason why I even want to speak only as an optimization, as the SwOuput hosting the call has already been evaluated and can be skipped. \nFor sure, fixing in APM (more likely in PatchPanel by removing the check when patch reuse of same HwModule) all leak due to reuse of APM/Hal handle is not the goal.\nI even struggle to ensure we keep also for SwOutput involved in bridge same APM handle. \nLet s say that path garbage collector for HAL \u003c 6.0 is likely to be implemented by checking ports involved. This is the way I did in my former intel HAL implementation.\nI can provide a fix in native HIDL HAL if you wish.",
+      "parentUuid": "4c85e3dd_b19932a9",
+      "range": {
+        "startLine": 12,
+        "startChar": 16,
+        "endLine": 13,
+        "endChar": 23
+      },
+      "revId": "8604c080db95eab59d4a4af10e04007bd11b4951",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9d6b2527_62b9c2d8",
