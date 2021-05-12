@@ -16,6 +16,24 @@
       "message": "setOutputSurface() in internal branches has changed now to accept 4 arguments.\nWe will upload a new CL to s-fs-release that works with the new interface.",
       "revId": "8158abf6beacb17e31b3d3621cc87de23fa6ac12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ca2ae0b_202ec5f6",
+        "filename": "media/codec2/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-05-12T18:54:08Z",
+      "side": 1,
+      "message": "Then could you make a CL for s-fs-release first and abandon this?",
+      "parentUuid": "a086bb3e_398b3d02",
+      "revId": "8158abf6beacb17e31b3d3621cc87de23fa6ac12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
