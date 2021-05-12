@@ -140,6 +140,30 @@
       },
       "revId": "79cd32c51ea29a999df0804444835833b4c61a4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d29e2abc_d04e581c",
+        "filename": "media/codec2/components/aac/C2SoftAacDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-12T05:00:06Z",
+      "side": 1,
+      "message": "Ray,\nAfter offline discussions with Rakesh and looking further into mStreamInfo, \n\"mStreamInfo \u003d new \" can\u0027t be done.\n\nmStremInfo is a pointer to a structure that holds the stream info in the \ndecoder\u0027s context. So the plugin doesn\u0027t hold the info in its own structure.\nC2SoftAacDecoder gets this address in initDecoder() and the address has to be retained through out.\n\npChannelIndices and pChannelType that aren\u0027t being reset in this function are pointers and those can\u0027t be reset as such.\n\nSo based on that, the current reset() looks complete.",
+      "parentUuid": "08814678_724e0175",
+      "range": {
+        "startLine": 392,
+        "startChar": 14,
+        "endLine": 392,
+        "endChar": 38
+      },
+      "revId": "79cd32c51ea29a999df0804444835833b4c61a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
