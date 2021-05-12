@@ -16,6 +16,24 @@
       "message": "Dean, has this CL been verified to work recently?  Thanks!",
       "revId": "11a6e6367cbd26cc76b51d3c9e6d3b94c565a821",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e3fc84d_6736931b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1133568
+      },
+      "writtenOn": "2021-05-12T10:35:22Z",
+      "side": 1,
+      "message": "Hi Andy, I\u0027ve verified this today.\n\nFor example. with an MSD software bridge patch reporting \"latency: 57.31 ms\", this patch allows for the MSD input record thread to report its track latency as \"32.23 t\" and the playback thread track latency as \"25.08 t\".",
+      "parentUuid": "36a1dbab_88b9cd4a",
+      "revId": "11a6e6367cbd26cc76b51d3c9e6d3b94c565a821",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
