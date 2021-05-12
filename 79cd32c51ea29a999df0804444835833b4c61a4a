@@ -164,6 +164,30 @@
       },
       "revId": "79cd32c51ea29a999df0804444835833b4c61a4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a3eb60c_edc246a9",
+        "filename": "media/codec2/components/aac/C2SoftAacDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 392,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-05-12T05:48:12Z",
+      "side": 1,
+      "message": "stop() returns us to an unintialized state -- so we shouldn\u0027t have any\nstate that we need to preserve within the underlying aac library.\n\ni\u0027d think that actually the way to implement this routine would be to\naacDecoder_Close(current);  aacDecoder_Open() to get a new.",
+      "parentUuid": "d29e2abc_d04e581c",
+      "range": {
+        "startLine": 392,
+        "startChar": 14,
+        "endLine": 392,
+        "endChar": 38
+      },
+      "revId": "79cd32c51ea29a999df0804444835833b4c61a4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
