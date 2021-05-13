@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b099ed71_93a6f8f6",
+        "filename": "camera/CaptureResult.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T00:55:40Z",
+      "side": 1,
+      "message": "hahahahahaha @ X.remove(X.size())\n\n\u003e mPhysicalCameraId.setTo(u\"\")\n\nBtw - this function doesn\u0027t do the empty string optimization, so this will do another allocation (unless you do \u0027\u003d String16()\u0027). Any interest in fixing that up while you\u0027re at this?",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 33
+      },
+      "revId": "4550ed484982dc42906dcf42cb7fb5abcff8284e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
