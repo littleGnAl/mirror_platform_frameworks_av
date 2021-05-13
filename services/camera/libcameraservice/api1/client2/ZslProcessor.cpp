@@ -232,8 +232,8 @@ status_t ZslProcessor::updateStream(const Parameters &params) {
     }
 
     if (mInputStreamId == NO_STREAM) {
-        res = device->createInputStream(params.fastInfo.maxZslSize.width,
-            params.fastInfo.maxZslSize.height, HAL_PIXEL_FORMAT_IMPLEMENTATION_DEFINED,
+        res = device->createInputStream(params.fastInfo.usedZslSize.width,
+            params.fastInfo.usedZslSize.height, HAL_PIXEL_FORMAT_IMPLEMENTATION_DEFINED,
             &mInputStreamId);
         if (res != OK) {
             ALOGE("%s: Camera %d: Can't create input stream: "
@@ -255,8 +255,8 @@ status_t ZslProcessor::updateStream(const Parameters &params) {
         mProducer->setName(String8("Camera2-ZslRingBufferConsumer"));
         sp<Surface> outSurface = new Surface(producer);
 
-        res = device->createStream(outSurface, params.fastInfo.maxZslSize.width,
-            params.fastInfo.maxZslSize.height, HAL_PIXEL_FORMAT_IMPLEMENTATION_DEFINED,
+        res = device->createStream(outSurface, params.fastInfo.usedZslSize.width,
+            params.fastInfo.usedZslSize.height, HAL_PIXEL_FORMAT_IMPLEMENTATION_DEFINED,
             HAL_DATASPACE_UNKNOWN, CAMERA3_STREAM_ROTATION_0, &mZslStreamId,
             String8());
         if (res != OK) {
