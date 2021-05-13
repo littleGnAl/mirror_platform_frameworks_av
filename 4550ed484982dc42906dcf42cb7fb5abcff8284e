@@ -39,6 +39,30 @@
       },
       "revId": "4550ed484982dc42906dcf42cb7fb5abcff8284e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51aeef61_10897d4c",
+        "filename": "camera/CaptureResult.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1003224
+      },
+      "writtenOn": "2021-05-13T01:04:22Z",
+      "side": 1,
+      "message": "/me checks... yeah, String8 does, but String16 doesn\u0027t. i\u0027ll fix that separately in my 100% coverage CL.",
+      "parentUuid": "b099ed71_93a6f8f6",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 33
+      },
+      "revId": "4550ed484982dc42906dcf42cb7fb5abcff8284e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
