@@ -63,6 +63,30 @@
       },
       "revId": "4550ed484982dc42906dcf42cb7fb5abcff8284e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29d12c42_c848b243",
+        "filename": "camera/CaptureResult.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 92,
+      "author": {
+        "id": 1120458
+      },
+      "writtenOn": "2021-05-13T01:05:15Z",
+      "side": 1,
+      "message": "thanks! (on my mind b/c I just fixed it for hidl_string :)",
+      "parentUuid": "51aeef61_10897d4c",
+      "range": {
+        "startLine": 91,
+        "startChar": 0,
+        "endLine": 92,
+        "endChar": 33
+      },
+      "revId": "4550ed484982dc42906dcf42cb7fb5abcff8284e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
