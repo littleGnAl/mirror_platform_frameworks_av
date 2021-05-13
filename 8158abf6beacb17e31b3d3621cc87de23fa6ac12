@@ -34,6 +34,24 @@
       "parentUuid": "a086bb3e_398b3d02",
       "revId": "8158abf6beacb17e31b3d3621cc87de23fa6ac12",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bcef5c0_1e5386ca",
+        "filename": "media/codec2/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 414,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-05-13T04:25:51Z",
+      "side": 1,
+      "message": "Sungtak, we have uploaded a CL for this here: https://partner-android-review.googlesource.com/c/platform/frameworks/av/+/1925956",
+      "parentUuid": "9ca2ae0b_202ec5f6",
+      "revId": "8158abf6beacb17e31b3d3621cc87de23fa6ac12",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
