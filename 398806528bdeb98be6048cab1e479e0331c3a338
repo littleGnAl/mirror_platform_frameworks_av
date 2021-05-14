@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5053fcb_1ea8ec0e",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1181,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-05-14T04:33:09Z",
+      "side": 1,
+      "message": "perhaps it would be more consistent on line 1050 to add\n\nmPauseHwPending \u003d false;\n\nthat way the state change logic is handled in start().",
+      "range": {
+        "startLine": 1181,
+        "startChar": 16,
+        "endLine": 1181,
+        "endChar": 31
+      },
+      "revId": "398806528bdeb98be6048cab1e479e0331c3a338",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
