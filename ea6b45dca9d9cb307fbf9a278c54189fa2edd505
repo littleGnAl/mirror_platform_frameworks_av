@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "400fdd51_0f050d6b",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-14T23:46:21Z",
+      "side": 1,
+      "message": "Should this be\n\nif (getLocalId() \u003d\u003d BASIC_GRAPHIC) {",
+      "range": {
+        "startLine": 174,
+        "startChar": 8,
+        "endLine": 174,
+        "endChar": 44
+      },
+      "revId": "ea6b45dca9d9cb307fbf9a278c54189fa2edd505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
