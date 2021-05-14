@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0420c6fc_93c361fb",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-05-14T07:12:11Z",
+      "side": 1,
+      "message": "Clear mPauseHwPending when updating track state on start().",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 0
+      },
+      "revId": "7078fcd7d581305f8d2e97fddda2893e5a9d2e8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6959ecd_85058fa2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-05-14T07:12:11Z",
+      "side": 1,
+      "message": "One more minor nit - maybe just directly edit the comment?",
+      "revId": "7078fcd7d581305f8d2e97fddda2893e5a9d2e8a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
