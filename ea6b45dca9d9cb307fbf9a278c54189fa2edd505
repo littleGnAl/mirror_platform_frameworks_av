@@ -22,6 +22,53 @@
       },
       "revId": "ea6b45dca9d9cb307fbf9a278c54189fa2edd505",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8cc15a8b_32dd3cbf",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 174,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-05-16T15:49:18Z",
+      "side": 1,
+      "message": "that would invalidate all the performance numbers in the  commit message.\nand we\u0027d have to go back and re-measure everything.\n\nthat doesn\u0027t mean that flipping the comparison won\u0027t yield an improvement.\n\ni don\u0027t remember whether these set permissions (e.g. dropping the READ flag means that the process is not allowed to read) or if it is more of an access-hint to help with cache settings.\n\nIf it\u0027s cache settings -- I want some more investigation to make sure that we\u0027re not flirting with coherency problems here, especially on the ARM cores where coherency was managed in software.",
+      "parentUuid": "400fdd51_0f050d6b",
+      "range": {
+        "startLine": 174,
+        "startChar": 8,
+        "endLine": 174,
+        "endChar": 44
+      },
+      "revId": "ea6b45dca9d9cb307fbf9a278c54189fa2edd505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0893af14_a6abead4",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-05-16T15:49:18Z",
+      "side": 1,
+      "message": "for completeness, should we be considering WRITE_RARELY here?",
+      "range": {
+        "startLine": 64,
+        "startChar": 83,
+        "endLine": 64,
+        "endChar": 88
+      },
+      "revId": "ea6b45dca9d9cb307fbf9a278c54189fa2edd505",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
