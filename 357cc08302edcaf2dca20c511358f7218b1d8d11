@@ -34,6 +34,46 @@
       "parentUuid": "f1bdfc78_bf7dad22",
       "revId": "357cc08302edcaf2dca20c511358f7218b1d8d11",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81310803_5e330257",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-17T22:35:23Z",
+      "side": 1,
+      "message": "Treehugger failure seen is a valid failure and happens because Qp bounds are not getting set to the encoder correctly when QP bounds aren\u0027t specified in the format during configure.",
+      "revId": "357cc08302edcaf2dca20c511358f7218b1d8d11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ef59262c_5e3c1f6e",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-17T22:35:23Z",
+      "side": 1,
+      "message": "int32_t iMin \u003d DEFAULT_I_QP_MIN, pMin \u003d DEFAULT_P_QP_MIN, bMin \u003d DEFAULT_B_QP_MIN;\n    int32_t iMax \u003d DEFAULT_I_QP_MAX, pMax \u003d DEFAULT_P_QP_MAX, bMax \u003d DEFAULT_B_QP_MAX;\n\nwhen qp bounds aren\u0027t specified in the config params,\nlines 772-788 won\u0027t get called and these values remain at INT32_*.\n\nSo instead of keeping them as INT32_* set them to default max and min values.",
+      "range": {
+        "startLine": 765,
+        "startChar": 0,
+        "endLine": 766,
+        "endChar": 65
+      },
+      "revId": "357cc08302edcaf2dca20c511358f7218b1d8d11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
