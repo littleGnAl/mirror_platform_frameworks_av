@@ -16,6 +16,29 @@
       "message": "Eric can you please help review this CL?  There is an analysis doc from MTK in the bug b/187780419.  Thanks!",
       "revId": "5e8d376c9bdd71b4f0da90538fa244f747660a0e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "52085223_7b6ea17b",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1050,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-05-17T07:53:15Z",
+      "side": 1,
+      "message": "shouldn\u0027t we reset mPauseHwPending unconditionally?\n\nFor instance if the track is flushed after pause or stopped while pausing, don\u0027t we have the same problem when resuming?",
+      "range": {
+        "startLine": 1050,
+        "startChar": 0,
+        "endLine": 1050,
+        "endChar": 36
+      },
+      "revId": "5e8d376c9bdd71b4f0da90538fa244f747660a0e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
