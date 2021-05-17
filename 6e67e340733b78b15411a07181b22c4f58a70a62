@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8ef096e_42d78ff6",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-17T23:21:13Z",
+      "side": 1,
+      "message": "though the min and max lines at 766 take care of it currently,\nit is still better to set these to CODEC_QP_MAX and CODEC_QP_MIN instead of INT32_* values\n\nthat way if hevc encoder library is updated in the future to accept min and max for I,P,B separately and min and max lines at 766/767 are removed, these values will remain valid when some of the bounds aren\u0027t specified.",
+      "range": {
+        "startLine": 746,
+        "startChar": 0,
+        "endLine": 747,
+        "endChar": 69
+      },
+      "revId": "6e67e340733b78b15411a07181b22c4f58a70a62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3fafabe6_63e08c63",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-17T23:21:13Z",
+      "side": 1,
+      "message": "move outside the if block\n\nand instead of average, clip ai4_frame_qp[] as well",
+      "range": {
+        "startLine": 768,
+        "startChar": 0,
+        "endLine": 773,
+        "endChar": 43
+      },
+      "revId": "6e67e340733b78b15411a07181b22c4f58a70a62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
