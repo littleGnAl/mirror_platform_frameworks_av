@@ -202,6 +202,8 @@ enum {
     // MPEG user data offsets
     kKeyMpegUserData      = 'mpud', // size_t[]
 
+    kKeyGroup             = '_grp',  // int32_t
+
     // HDR related
     kKeyHdrStaticInfo    = 'hdrS', // HDRStaticInfo
     kKeyHdr10PlusInfo    = 'hdrD', // raw data
