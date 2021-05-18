@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d229a75b_6913955f",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 747,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-05-18T09:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c8ef096e_42d78ff6",
+      "range": {
+        "startLine": 746,
+        "startChar": 0,
+        "endLine": 747,
+        "endChar": 69
+      },
+      "revId": "6e67e340733b78b15411a07181b22c4f58a70a62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3fafabe6_63e08c63",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-17T23:21:13Z",
       "side": 1,
       "message": "move outside the if block\n\nand instead of average, clip ai4_frame_qp[] as well",
+      "range": {
+        "startLine": 768,
+        "startChar": 0,
+        "endLine": 773,
+        "endChar": 43
+      },
+      "revId": "6e67e340733b78b15411a07181b22c4f58a70a62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13c9eb9a_3bfc2952",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 773,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-05-18T09:30:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3fafabe6_63e08c63",
       "range": {
         "startLine": 768,
         "startChar": 0,
