@@ -494,6 +494,9 @@ private:
 
     status_t setupEAC3Codec(bool encoder, int32_t numChannels, int32_t sampleRate);
 
+    status_t setupADPCMCodec(
+            bool encoder, int32_t numChannels, int32_t sampleRate, int32_t blockAlign);
+
     status_t setupAC4Codec(bool encoder, int32_t numChannels, int32_t sampleRate);
 
     status_t selectAudioPortFormat(
