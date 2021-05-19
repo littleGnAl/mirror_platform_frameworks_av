@@ -47,6 +47,7 @@ const char *MEDIA_MIMETYPE_VIDEO_AVS = "video/avs";
 const char *MEDIA_MIMETYPE_VIDEO_AVS2 = "video/avs2";
 const char *MEDIA_MIMETYPE_VIDEO_VC1 = "video/VC1";
 const char *MEDIA_MIMETYPE_VIDEO_SHVC = "video/vnd.shvc";
+const char *MEDIA_MIMETYPE_VIDEO_FLV = "video/flv";
 
 const char *MEDIA_MIMETYPE_AUDIO_AMR_NB = "audio/3gpp";
 const char *MEDIA_MIMETYPE_AUDIO_AMR_WB = "audio/amr-wb";
