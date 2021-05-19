@@ -26,8 +26,10 @@
 #define FLAC_COMPRESSION_LEVEL_MAX     8
 
 #define FLAC_HEADER_SIZE               128
+#define FLAC_INP_MAX_BUFFER_SIZE       4608
 
 #define MIN(a, b)                      (((a) < (b)) ? (a) : (b))
+#define MAX(a, b)                      (((a) > (b)) ? (a) : (b))
 
 namespace android {
 

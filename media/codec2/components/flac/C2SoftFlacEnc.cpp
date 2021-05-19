@@ -83,7 +83,7 @@ public:
                 .build());
         addParameter(
                 DefineParam(mInputMaxBufSize, C2_PARAMKEY_INPUT_MAX_BUFFER_SIZE)
-                .withConstValue(new C2StreamMaxBufferSizeInfo::input(0u, 4608))
+                .withConstValue(new C2StreamMaxBufferSizeInfo::input(0u, FLAC_INP_MAX_BUFFER_SIZE))
                 .build());
 
         addParameter(
@@ -373,12 +373,16 @@ status_t C2SoftFlacEnc::configureEncoder() {
 
     const bool inputFloat = mIntf->getPcmEncodingInfo() == C2Config::PCM_FLOAT;
     const int bitsPerSample = inputFloat ? 24 : 16;
+    const uint32_t channelCount = mIntf->getChannelCount();
     FLAC__bool ok = true;
-    ok = ok && FLAC__stream_encoder_set_channels(mFlacStreamEncoder, mIntf->getChannelCount());
+    ok = ok && FLAC__stream_encoder_set_channels(mFlacStreamEncoder, channelCount);
     ok = ok && FLAC__stream_encoder_set_sample_rate(mFlacStreamEncoder, mIntf->getSampleRate());
     ok = ok && FLAC__stream_encoder_set_bits_per_sample(mFlacStreamEncoder, bitsPerSample);
     ok = ok && FLAC__stream_encoder_set_compression_level(mFlacStreamEncoder,
                     mIntf->getComplexity());
+    const int bytesPerSample = bitsPerSample >> 3;
+    mBlockSize = MAX(kInBlockSize, (FLAC_INP_MAX_BUFFER_SIZE / (bytesPerSample * channelCount)));
+    ok = ok && FLAC__stream_encoder_set_blocksize(mFlacStreamEncoder, mBlockSize);
     ok = ok && FLAC__stream_encoder_set_verify(mFlacStreamEncoder, false);
     if (!ok) {
         ALOGE("unknown error when configuring encoder");
@@ -397,8 +401,6 @@ status_t C2SoftFlacEnc::configureEncoder() {
         ALOGE("unknown error when configuring encoder");
         return UNKNOWN_ERROR;
     }
-
-    mBlockSize = FLAC__stream_encoder_get_blocksize(mFlacStreamEncoder);
 
     ALOGV("encoder successfully configured");
     return OK;
