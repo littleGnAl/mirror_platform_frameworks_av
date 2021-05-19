@@ -149,7 +149,7 @@ bool AudioOutputDescriptor::isFixedVolume(const DeviceTypeSet& deviceTypes __unu
     return false;
 }
 
-bool AudioOutputDescriptor::setVolume(float volumeDb,
+bool AudioOutputDescriptor::setVolume(float volumeDb, bool /*muted*/,
                                       VolumeSource volumeSource,
                                       const StreamTypeVector &/*streams*/,
                                       const DeviceTypeSet& deviceTypes,
@@ -413,14 +413,40 @@ void SwAudioOutputDescriptor::toAudioPort(
             mFlags & AUDIO_OUTPUT_FLAG_FAST ? AUDIO_LATENCY_LOW : AUDIO_LATENCY_NORMAL;
 }
 
-bool SwAudioOutputDescriptor::setVolume(float volumeDb,
+void SwAudioOutputDescriptor::setSwMute(
+        bool muted, VolumeSource vs, const StreamTypeVector &streamTypes,
+        const DeviceTypeSet& deviceTypes, uint32_t delayMs) {
+    // volume source active and more than one volume source is active, otherwise, no-op or let
+    // setVolume controlling SW and/or HW Gains
+    if (isActive(vs) && (getActiveVolumeSources().size() > 1)) {
+        for (const auto& devicePort : devices()) {
+            if (isSingleDeviceType(deviceTypes, devicePort->type()) &&
+                    devicePort->hasGainController(true)) {
+                float volumeAmpl = muted ? 0.0f : Volume::DbToAmpl(0);
+                ALOGV("%s: output: %d, vs: %d, muted: %d, active vs count: %zu", __func__,
+                        mIoHandle, vs, muted, getActiveVolumeSources().size());
+                StreamTypeVector streams = streamTypes;
+                if (streams.empty()) {
+                    streams.push_back(AUDIO_STREAM_MUSIC);
+                }
+                for (const auto &stream : streams) {
+                    mClientInterface->setStreamVolume(stream, volumeAmpl, mIoHandle, delayMs);
+                }
+                return;
+            }
+        }
+    }
+}
+
+bool SwAudioOutputDescriptor::setVolume(float volumeDb, bool muted,
                                         VolumeSource vs, const StreamTypeVector &streamTypes,
                                         const DeviceTypeSet& deviceTypes,
                                         uint32_t delayMs,
                                         bool force)
 {
     StreamTypeVector streams = streamTypes;
-    if (!AudioOutputDescriptor::setVolume(volumeDb, vs, streamTypes, deviceTypes, delayMs, force)) {
+    if (!AudioOutputDescriptor::setVolume(
+            volumeDb, muted, vs, streamTypes, deviceTypes, delayMs, force)) {
         return false;
     }
     if (streams.empty()) {
@@ -437,11 +463,10 @@ bool SwAudioOutputDescriptor::setVolume(float volumeDb,
             // different Volume Source (or if we allow several curves within same volume group)
             //
             // @todo: default stream volume to max (0) when using HW Port gain?
-            float volumeAmpl = Volume::DbToAmpl(0);
+            float volumeAmpl = muted ? 0.0f : Volume::DbToAmpl(0);
             for (const auto &stream : streams) {
                 mClientInterface->setStreamVolume(stream, volumeAmpl, mIoHandle, delayMs);
             }
-
             AudioGains gains = devicePort->getGains();
             int gainMinValueInMb = gains[0]->getMinValueInMb();
             int gainMaxValueInMb = gains[0]->getMaxValueInMb();
@@ -658,14 +683,14 @@ void HwAudioOutputDescriptor::toAudioPort(
 }
 
 
-bool HwAudioOutputDescriptor::setVolume(float volumeDb,
+bool HwAudioOutputDescriptor::setVolume(float volumeDb, bool muted,
                                         VolumeSource volumeSource, const StreamTypeVector &streams,
                                         const DeviceTypeSet& deviceTypes,
                                         uint32_t delayMs,
                                         bool force)
 {
     bool changed = AudioOutputDescriptor::setVolume(
-            volumeDb, volumeSource, streams, deviceTypes, delayMs, force);
+            volumeDb, muted, volumeSource, streams, deviceTypes, delayMs, force);
 
     if (changed) {
       // TODO: use gain controller on source device if any to adjust volume
