@@ -58,6 +58,7 @@ extern const char *MEDIA_MIMETYPE_AUDIO_MPEG_LAYER_I;
 extern const char *MEDIA_MIMETYPE_AUDIO_MPEG_LAYER_II;
 extern const char *MEDIA_MIMETYPE_AUDIO_MIDI;
 extern const char *MEDIA_MIMETYPE_AUDIO_AAC;
+extern const char *MEDIA_MIMETYPE_AUDIO_HW_AAC;
 extern const char *MEDIA_MIMETYPE_AUDIO_QCELP;
 extern const char *MEDIA_MIMETYPE_AUDIO_VORBIS;
 extern const char *MEDIA_MIMETYPE_AUDIO_OPUS;

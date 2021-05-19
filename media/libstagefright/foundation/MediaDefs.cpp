@@ -56,6 +56,7 @@ const char *MEDIA_MIMETYPE_AUDIO_MPEG_LAYER_I = "audio/mpeg-L1";
 const char *MEDIA_MIMETYPE_AUDIO_MPEG_LAYER_II = "audio/mpeg-L2";
 const char *MEDIA_MIMETYPE_AUDIO_MIDI = "audio/midi";
 const char *MEDIA_MIMETYPE_AUDIO_AAC = "audio/mp4a-latm";
+const char *MEDIA_MIMETYPE_AUDIO_HW_AAC = "audio/mp4a-latm-hw";
 const char *MEDIA_MIMETYPE_AUDIO_QCELP = "audio/qcelp";
 const char *MEDIA_MIMETYPE_AUDIO_VORBIS = "audio/vorbis";
 const char *MEDIA_MIMETYPE_AUDIO_OPUS = "audio/opus";

@@ -130,6 +130,8 @@ const char *GetComponentRole(bool isEncoder, const char *mime) {
             "audio_decoder.amrwb", "audio_encoder.amrwb" },
         { MEDIA_MIMETYPE_AUDIO_AAC,
             "audio_decoder.aac", "audio_encoder.aac" },
+        { MEDIA_MIMETYPE_AUDIO_HW_AAC,
+            "audio_decoder.hwaac", "audio_encoder.hwaac" },
         { MEDIA_MIMETYPE_AUDIO_VORBIS,
             "audio_decoder.vorbis", "audio_encoder.vorbis" },
         { MEDIA_MIMETYPE_AUDIO_OPUS,
