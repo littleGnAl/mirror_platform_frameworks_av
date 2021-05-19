@@ -126,7 +126,7 @@ class Codec2AudioDecHidlTestBase : public ::testing::Test {
 
     virtual void validateTimestampList(int32_t* bitStreamInfo);
 
-    void GetURLForComponent(char* mURL, char* info, size_t streamIndex = 0);
+    bool GetURLForComponent(char* mURL, char* info, size_t streamIndex = 0);
 
     struct outputMetaData {
         uint64_t timestampUs;
@@ -285,18 +285,22 @@ void getInputChannelInfo(const std::shared_ptr<android::Codec2Client::Component>
 }
 
 // LookUpTable of clips and metadata for component testing
-void Codec2AudioDecHidlTestBase::GetURLForComponent(char* mURL, char* info, size_t streamIndex) {
+bool Codec2AudioDecHidlTestBase::GetURLForComponent(char* mURL, char* info, size_t streamIndex) {
     int streamCount = 0;
+    strcpy(mURL, sResourceDir.c_str());
+    strcpy(info, sResourceDir.c_str());
+
     for (size_t i = 0; i < gCompToURL.size(); ++i) {
         if (mMime.find(gCompToURL[i].mime) != std::string::npos) {
             if (streamCount == streamIndex) {
                 strcat(mURL, gCompToURL[i].mURL.c_str());
                 strcat(info, gCompToURL[i].info.c_str());
-                return;
+                return true;
             }
             streamCount++;
         }
     }
+    return false;
 }
 
 void decodeNFrames(const std::shared_ptr<android::Codec2Client::Component>& component,
@@ -442,12 +446,13 @@ TEST_P(Codec2AudioDecDecodeTest, DecodeTest) {
     char mURL[512], info[512];
     android::Vector<FrameInfo> Info;
 
-    strcpy(mURL, sResourceDir.c_str());
-    strcpy(info, sResourceDir.c_str());
-    GetURLForComponent(mURL, info, streamIndex);
-    if (!strcmp(mURL, sResourceDir.c_str())) {
-        ALOGV("EMPTY INPUT sResourceDir.c_str() %s mURL  %s ", sResourceDir.c_str(), mURL);
-        return;
+    bool valid = GetURLForComponent(mURL, info, streamIndex);
+    if (!valid) {
+        if (streamIndex) {
+            GTEST_SKIP() << "No test file for  mime " << mMime << " index: " << streamIndex;
+        } else {
+            FAIL() << "No test file for  mime " << mMime << " index: " << streamIndex;
+        }
     }
 
     int32_t numCsds = populateInfoVector(info, &Info, mTimestampDevTest, &mTimestampUslist);
@@ -510,9 +515,8 @@ TEST_P(Codec2AudioDecHidlTest, ThumbnailTest) {
     char mURL[512], info[512];
     android::Vector<FrameInfo> Info;
 
-    strcpy(mURL, sResourceDir.c_str());
-    strcpy(info, sResourceDir.c_str());
-    GetURLForComponent(mURL, info);
+    bool valid = GetURLForComponent(mURL, info);
+    ASSERT_EQ(valid, true) << "No test file for  mime " << mMime;
 
     int32_t numCsds = populateInfoVector(info, &Info, mTimestampDevTest, &mTimestampUslist);
     ASSERT_GE(numCsds, 0) << "Error in parsing input info file: " << info;
@@ -602,9 +606,8 @@ TEST_P(Codec2AudioDecHidlTest, FlushTest) {
     char mURL[512], info[512];
     android::Vector<FrameInfo> Info;
 
-    strcpy(mURL, sResourceDir.c_str());
-    strcpy(info, sResourceDir.c_str());
-    GetURLForComponent(mURL, info);
+    bool valid = GetURLForComponent(mURL, info);
+    ASSERT_EQ(valid, true) << "No test file for  mime " << mMime;
 
     int32_t numCsds = populateInfoVector(info, &Info, mTimestampDevTest, &mTimestampUslist);
     ASSERT_GE(numCsds, 0) << "Error in parsing input info file: " << info;
@@ -687,9 +690,8 @@ TEST_P(Codec2AudioDecHidlTest, DecodeTestEmptyBuffersInserted) {
     char mURL[512], info[512];
     std::ifstream eleStream, eleInfo;
 
-    strcpy(mURL, sResourceDir.c_str());
-    strcpy(info, sResourceDir.c_str());
-    GetURLForComponent(mURL, info);
+    bool valid = GetURLForComponent(mURL, info);
+    ASSERT_EQ(valid, true) << "No test file for  mime " << mMime;
 
     eleInfo.open(info);
     ASSERT_EQ(eleInfo.is_open(), true) << mURL << " - file not found";
@@ -771,14 +773,8 @@ TEST_P(Codec2AudioDecCsdInputTests, CSDFlushTest) {
     char mURL[512], info[512];
     android::Vector<FrameInfo> Info;
 
-    strcpy(mURL, sResourceDir.c_str());
-    strcpy(info, sResourceDir.c_str());
-    GetURLForComponent(mURL, info);
-    if (!strcmp(mURL, sResourceDir.c_str())) {
-        ALOGV("EMPTY INPUT sResourceDir.c_str() %s mURL  %s ", sResourceDir.c_str(), mURL);
-        return;
-    }
-    ALOGV("mURL : %s", mURL);
+    bool valid = GetURLForComponent(mURL, info);
+    ASSERT_EQ(valid, true) << "No test file for  mime " << mMime;
 
     int32_t numCsds = populateInfoVector(info, &Info, mTimestampDevTest, &mTimestampUslist);
     ASSERT_GE(numCsds, 0) << "Error in parsing input info file";

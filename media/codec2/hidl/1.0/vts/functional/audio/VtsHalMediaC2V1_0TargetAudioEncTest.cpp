@@ -320,6 +320,7 @@ void Codec2AudioEncHidlTestBase::GetURLForComponent(char* mURL, int32_t channelC
         rawInput = "bbb_raw_2ch_48khz_s16le.raw";
     }
 
+    strcpy(mURL, sResourceDir.c_str());
     strcat(mURL, rawInput.c_str());
 }
 
@@ -460,7 +461,6 @@ TEST_P(Codec2AudioEncEncodeTest, EncodeTest) {
         return;
     }
     char mURL[512];
-    strcpy(mURL, sResourceDir.c_str());
     GetURLForComponent(mURL, nChannels, nSampleRate);
 
     ASSERT_EQ(mComponent->start(), C2_OK);
@@ -560,7 +560,6 @@ TEST_P(Codec2AudioEncHidlTest, FlushTest) {
         return;
     }
     char mURL[512];
-    strcpy(mURL, sResourceDir.c_str());
     GetURLForComponent(mURL, nChannels, nSampleRate);
 
     ASSERT_EQ(mComponent->start(), C2_OK);
@@ -621,7 +620,6 @@ TEST_P(Codec2AudioEncHidlTest, MultiChannelCountTest) {
         return;
     }
     char mURL[512];
-    strcpy(mURL, sResourceDir.c_str());
     GetURLForComponent(mURL, nChannels, nSampleRate);
 
     std::ifstream eleStream;
@@ -722,7 +720,6 @@ TEST_P(Codec2AudioEncHidlTest, MultiSampleRateTest) {
         return;
     }
     char mURL[512];
-    strcpy(mURL, sResourceDir.c_str());
     GetURLForComponent(mURL, nChannels, nSampleRate);
 
     std::ifstream eleStream;
