@@ -21,6 +21,7 @@ namespace android {
 const char *MEDIA_MIMETYPE_IMAGE_JPEG = "image/jpeg";
 const char *MEDIA_MIMETYPE_IMAGE_ANDROID_HEIC = "image/vnd.android.heic";
 
+const char *MEDIA_MIMETYPE_VIDEO_VP6 = "video/x-vp6";
 const char *MEDIA_MIMETYPE_VIDEO_VP8 = "video/x-vnd.on2.vp8";
 const char *MEDIA_MIMETYPE_VIDEO_VP9 = "video/x-vnd.on2.vp9";
 const char *MEDIA_MIMETYPE_VIDEO_AV1 = "video/av01";
