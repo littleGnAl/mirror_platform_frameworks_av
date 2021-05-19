@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f749232_0ef12d0f",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-05-19T14:45:35Z",
+      "side": 1,
+      "message": "are we sure setVolume is called with \"force\u003dtrue\" and the SW mute state is reset for all volume sources when the output is routed v\u003dback to a device that does not support HW Gain?",
+      "range": {
+        "startLine": 437,
+        "startChar": 30,
+        "endLine": 437,
+        "endChar": 39
+      },
+      "revId": "7688c442cafd14a511dc0887aea8c531536da295",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
