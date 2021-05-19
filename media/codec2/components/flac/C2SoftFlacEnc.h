@@ -64,12 +64,12 @@ private:
     std::shared_ptr<IntfImpl> mIntf;
     const unsigned int kInBlockSize = 1152;
     const unsigned int kMaxNumChannels = 2;
+    const uint32_t kBlockSize = 2304;
     FLAC__StreamEncoder* mFlacStreamEncoder;
     FLAC__int32* mInputBufferPcm32;
     std::shared_ptr<C2LinearBlock> mOutputBlock;
     bool mSignalledError;
     bool mSignalledOutputEos;
-    uint32_t mBlockSize;
     bool mIsFirstFrame;
     uint64_t mAnchorTimeStamp;
     uint64_t mProcessedSamples;

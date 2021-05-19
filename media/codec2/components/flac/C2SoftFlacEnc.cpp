@@ -253,7 +253,7 @@ void C2SoftFlacEnc::process(
     const uint64_t outTimeStamp = mProcessedSamples * 1000000ll / sampleRate;
 
     size_t outCapacity = inSize;
-    outCapacity += mBlockSize * frameSize;
+    outCapacity += kBlockSize * frameSize;
 
     C2MemoryUsage usage = { C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE };
     c2_status_t err = pool->fetchLinearBlock(outCapacity, usage, &mOutputBlock);
@@ -379,6 +379,7 @@ status_t C2SoftFlacEnc::configureEncoder() {
     ok = ok && FLAC__stream_encoder_set_bits_per_sample(mFlacStreamEncoder, bitsPerSample);
     ok = ok && FLAC__stream_encoder_set_compression_level(mFlacStreamEncoder,
                     mIntf->getComplexity());
+    ok = ok && FLAC__stream_encoder_set_blocksize(mFlacStreamEncoder, kBlockSize);
     ok = ok && FLAC__stream_encoder_set_verify(mFlacStreamEncoder, false);
     if (!ok) {
         ALOGE("unknown error when configuring encoder");
@@ -397,8 +398,6 @@ status_t C2SoftFlacEnc::configureEncoder() {
         ALOGE("unknown error when configuring encoder");
         return UNKNOWN_ERROR;
     }
-
-    mBlockSize = FLAC__stream_encoder_get_blocksize(mFlacStreamEncoder);
 
     ALOGV("encoder successfully configured");
     return OK;
