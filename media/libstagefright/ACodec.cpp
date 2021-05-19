@@ -3756,6 +3756,7 @@ static const struct VideoCodingMapEntry {
     { MEDIA_MIMETYPE_IMAGE_ANDROID_HEIC, OMX_VIDEO_CodingImageHEIC },
     { MEDIA_MIMETYPE_VIDEO_AV1, OMX_VIDEO_CodingAV1 },
     { MEDIA_MIMETYPE_VIDEO_MJPEG, OMX_VIDEO_CodingMJPEG},
+    { MEDIA_MIMETYPE_VIDEO_WMV, OMX_VIDEO_CodingWMV},
 };
 
 static status_t GetVideoCodingTypeFromMime(
