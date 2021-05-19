@@ -93,7 +93,8 @@ public:
     int getMuteCount() const { return mMuteCount; }
     int incMuteCount() { return ++mMuteCount; }
     int decMuteCount() { return mMuteCount > 0 ? --mMuteCount : -1; }
-
+    void setSwMuted(bool isMuted) { mIsSwMuted = isMuted; }
+    bool isSwMuted() const { return mIsSwMuted; }
     void dump(String8 *dst, int spaces) const override
     {
         ActivityTracking::dump(dst, spaces);
@@ -103,6 +104,7 @@ public:
     float getVolume() const { return mCurVolumeDb; }
 
 private:
+    bool mIsSwMuted = false;
     int mMuteCount = 0; /**< mute request counter */
     float mCurVolumeDb = NAN; /**< current volume in dB. */
 };
@@ -207,6 +209,15 @@ public:
     {
         return mVolumeActivities.find(vs) != std::end(mVolumeActivities)?
                     mVolumeActivities.at(vs).isMuted() : false;
+    }
+    void setSwMuted(VolumeSource vs, bool isMuted)
+    {
+        mVolumeActivities[vs].setSwMuted(isMuted);
+    }
+    bool isSwMuted(VolumeSource vs) const
+    {
+        return mVolumeActivities.find(vs) != std::end(mVolumeActivities)?
+                    mVolumeActivities.at(vs).isSwMuted() : false;
     }
     int getMuteCount(VolumeSource vs) const
     {
@@ -350,6 +361,20 @@ public:
             setClientActive(client, false);
         }
     }
+
+    /**
+     * @brief setSwMute for SwOutput routed on a device that supports Hw Gain, this function allows
+     * to mute the tracks associated to a given volume source only.
+     * As an output may host one or more source(s), and as AudioPolicyManager may dispatch or not
+     * the volume change request according to the priority of the volume source to control the
+     * unique hw gain controller, a separated API allows to force a mute/unmute of a volume source.
+     * @param isMuted true to mute, false otherwise
+     * @param vs volume source to be considered
+     * @param device scoped for the change
+     * @param delayMs potentially applyed to prevent cut sounds.
+     */
+    void setSwMute(bool isMuted, VolumeSource vs, const DeviceTypeSet& device, uint32_t delayMs);
+
     virtual bool setVolume(float volumeDb,
                            VolumeSource volumeSource, const StreamTypeVector &streams,
                            const DeviceTypeSet& device,
