@@ -64,6 +64,7 @@ extern const char *MEDIA_MIMETYPE_AUDIO_MPEGH_MHM1;
 extern const char *MEDIA_MIMETYPE_AUDIO_SCRAMBLED;
 extern const char *MEDIA_MIMETYPE_AUDIO_ALAC;
 extern const char *MEDIA_MIMETYPE_AUDIO_WMA;
+extern const char *MEDIA_MIMETYPE_AUDIO_WMAPRO;
 extern const char *MEDIA_MIMETYPE_AUDIO_MS_ADPCM;
 extern const char *MEDIA_MIMETYPE_AUDIO_DVI_IMA_ADPCM;
 

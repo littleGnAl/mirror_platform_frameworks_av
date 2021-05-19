@@ -203,6 +203,11 @@ enum {
     kKeyMpegUserData      = 'mpud', // size_t[]
 
     kKeyGroup             = '_grp',  // int32_t
+    kKeyAudioFormat      = 'afmt',
+    kKeyAudioProfile     = 'apro',
+    kKeySuperBlockAlign  = 'sblk',
+    kKeyEncodeOptions    = 'enop',
+    kKeyBlockAlign       = 'blka',  // int32_t
 
     // HDR related
     kKeyHdrStaticInfo    = 'hdrS', // HDRStaticInfo

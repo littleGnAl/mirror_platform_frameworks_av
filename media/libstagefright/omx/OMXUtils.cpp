@@ -176,6 +176,10 @@ const char *GetComponentRole(bool isEncoder, const char *mime) {
             "audio_decoder.adpcmms", "audio_encoder.adpcmms" },
         { MEDIA_MIMETYPE_AUDIO_DVI_IMA_ADPCM,
             "audio_decoder.adpcmima", "audio_encoder.adpcmima" },
+        { MEDIA_MIMETYPE_AUDIO_WMA,
+            "audio_decoder.wma", "audio_encoder.wma" },
+        { MEDIA_MIMETYPE_AUDIO_WMAPRO,
+            "audio_decoder.wmapro", "audio_encoder.wmapro" },
     };
 
     static const size_t kNumMimeToRole =
