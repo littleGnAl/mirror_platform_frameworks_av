@@ -209,6 +209,12 @@ enum {
     kKeyBufferSize        = 'bsiz',  // int32_t
 
     kKeyGroup             = '_grp',  // int32_t
+
+    // Dolby vision related
+    kKeyDolbyVisionPrivate = 'dvpr', // raw data (dolby vision csd0 information)
+    kKeyAVCE             = 'avce', // raw data (dolby vision csd2 information)
+    kKeyHVCE             = 'hvce', // raw data (dolby vision csd2 information)
+
     kKeyAudioFormat      = 'afmt',
     kKeyAudioProfile     = 'apro',
     kKeySuperBlockAlign  = 'sblk',
@@ -284,6 +290,9 @@ enum {
     kTypeDVCC        = 'dvcc',
     kTypeD263        = 'd263',
     kTypeHCOS        = 'hcos',
+    kTypeDVPR        = 'dvpr',
+    kTypeAVCE        = 'avce',
+    kTypeHVCE        = 'hcos',
 };
 
 enum {
