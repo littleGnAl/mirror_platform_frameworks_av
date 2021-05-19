@@ -1126,6 +1126,31 @@ status_t convertMetaDataToMessage(
         if (meta->findInt32(kKeyHapticChannelCount, &hapticChannelCount)) {
             msg->setInt32("haptic-channel-count", hapticChannelCount);
         }
+
+        int32_t blockAlign;
+        if (meta->findInt32(kKeyBlockAlign, &blockAlign)) {
+            msg->setInt32("block-align", blockAlign);
+        }
+
+        int32_t audioFormat;
+        if (meta->findInt32(kKeyAudioFormat, &audioFormat)) {
+            msg->setInt32("audio-format", audioFormat);
+        }
+
+        int32_t audioProfile;
+        if (meta->findInt32(kKeyAudioProfile, &audioProfile)) {
+            msg->setInt32("audio-profile", audioProfile);
+        }
+
+        int32_t sBlockAlign;
+        if (meta->findInt32(kKeySuperBlockAlign, &sBlockAlign)) {
+            msg->setInt32("sblock-align", sBlockAlign);
+        }
+
+        int32_t encodeOp;
+        if (meta->findInt32(kKeyEncodeOptions, &encodeOp)) {
+            msg->setInt32("encode-op", encodeOp);
+        }
     }
 
     int32_t maxInputSize;
@@ -1906,6 +1931,31 @@ status_t convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
         int32_t hapticChannelCount;
         if (msg->findInt32("haptic-channel-count", &hapticChannelCount)) {
             meta->setInt32(kKeyHapticChannelCount, hapticChannelCount);
+        }
+
+        int32_t blockAlign;
+        if (msg->findInt32("block-align", &blockAlign)) {
+            meta->setInt32(kKeyBlockAlign, blockAlign);
+        }
+
+        int32_t audioFormat;
+        if (msg->findInt32("audio-format", &audioFormat)) {
+            meta->setInt32(kKeyAudioFormat, audioFormat);
+        }
+
+        int32_t audioProfile;
+        if (msg->findInt32("audio-profile", &audioProfile)) {
+            meta->setInt32(kKeyAudioProfile, audioProfile);
+        }
+
+        int32_t sBlockAlign;
+        if (msg->findInt32("sblock-align", &sBlockAlign)) {
+            meta->setInt32(kKeySuperBlockAlign, sBlockAlign);
+        }
+
+        int32_t encodeOp;
+        if (msg->findInt32("encode-op", &encodeOp)) {
+            meta->setInt32(kKeyEncodeOptions, encodeOp);
         }
     }
 
