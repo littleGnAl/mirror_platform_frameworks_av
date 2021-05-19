@@ -70,6 +70,7 @@ extern const char *MEDIA_MIMETYPE_AUDIO_DVI_IMA_ADPCM;
 extern const char *MEDIA_MIMETYPE_AUDIO_DTS;
 extern const char *MEDIA_MIMETYPE_AUDIO_DTS_HD;
 extern const char *MEDIA_MIMETYPE_AUDIO_DTS_EXPRESS;
+extern const char *MEDIA_MIMETYPE_AUDIO_APE;
 
 
 extern const char *MEDIA_MIMETYPE_CONTAINER_MPEG4;

@@ -68,6 +68,7 @@ const char *MEDIA_MIMETYPE_AUDIO_DVI_IMA_ADPCM = "audio/x-adpcm-dvi-ima";
 const char *MEDIA_MIMETYPE_AUDIO_DTS = "audio/vnd.dts";
 const char *MEDIA_MIMETYPE_AUDIO_DTS_HD = "audio/vnd.dts.hd";
 const char *MEDIA_MIMETYPE_AUDIO_DTS_EXPRESS = "audio/vnd.dts.hd;profile=lbr";
+const char *MEDIA_MIMETYPE_AUDIO_APE = "audio/ape";
 
 
 const char *MEDIA_MIMETYPE_CONTAINER_MPEG4 = "video/mp4";

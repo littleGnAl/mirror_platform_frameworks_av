@@ -202,6 +202,12 @@ enum {
     // MPEG user data offsets
     kKeyMpegUserData      = 'mpud', // size_t[]
 
+    kKeyCompType          = 'cmpt',  // int32_t, compression type
+    kKeySamplesPerFrame   = 'smpf',  // int32_t
+    kKeyTotalFrame        = 'totf',  // int32_t
+    kKeyFinalSample       = 'fsmp',  // int32_t
+    kKeyBufferSize        = 'bsiz',  // int32_t
+
     kKeyGroup             = '_grp',  // int32_t
     kKeyAudioFormat      = 'afmt',
     kKeyAudioProfile     = 'apro',

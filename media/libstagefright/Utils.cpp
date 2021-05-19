@@ -1127,6 +1127,36 @@ status_t convertMetaDataToMessage(
             msg->setInt32("haptic-channel-count", hapticChannelCount);
         }
 
+        int32_t finalSample;
+        if (meta->findInt32(kKeyFinalSample, &finalSample)) {
+            msg->setInt32("final-sample", finalSample);
+        }
+
+        int32_t totalFrame;
+        if (meta->findInt32(kKeyTotalFrame, &totalFrame)) {
+            msg->setInt32("total-frame", totalFrame);
+        }
+
+        int32_t sampPerFrame;
+        if (meta->findInt32(kKeySamplesPerFrame, &sampPerFrame)) {
+            msg->setInt32("sample-per-frame", sampPerFrame);
+        }
+
+        int32_t compType;
+        if (meta->findInt32(kKeyCompType, &compType)) {
+            msg->setInt32("compression-type", compType);
+        }
+
+        int32_t fileType;
+        if (meta->findInt32(kKeyFileType, &fileType)) {
+            msg->setInt32("file-type", fileType);
+        }
+
+        int32_t bufferSize;
+        if (meta->findInt32(kKeyBufferSize, &bufferSize)) {
+            msg->setInt32("buffer-size", bufferSize);
+        }
+
         int32_t blockAlign;
         if (meta->findInt32(kKeyBlockAlign, &blockAlign)) {
             msg->setInt32("block-align", blockAlign);
@@ -1931,6 +1961,36 @@ status_t convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
         int32_t hapticChannelCount;
         if (msg->findInt32("haptic-channel-count", &hapticChannelCount)) {
             meta->setInt32(kKeyHapticChannelCount, hapticChannelCount);
+        }
+
+        int32_t compType;
+        if (msg->findInt32("compression-type", &compType)) {
+            meta->setInt32(kKeyCompType, compType);
+        }
+
+        int32_t fileType;
+        if (msg->findInt32("file-type", &fileType)) {
+            meta->setInt32(kKeyFileType, fileType);
+        }
+
+        int32_t sampPerFrame;
+        if (msg->findInt32("sample-per-frame", &sampPerFrame)) {
+            meta->setInt32(kKeySamplesPerFrame, sampPerFrame);
+        }
+
+        int32_t totalFrame;
+        if (msg->findInt32("total-frame", &totalFrame)) {
+            meta->setInt32(kKeyTotalFrame, totalFrame);
+        }
+
+        int32_t finalSample;
+        if (msg->findInt32("final-sample", &finalSample)) {
+            meta->setInt32(kKeyFinalSample, finalSample);
+        }
+
+        int32_t bufferSize;
+        if (msg->findInt32("buffer-size", &bufferSize)) {
+            meta->setInt32(kKeyBufferSize, bufferSize);
         }
 
         int32_t blockAlign;

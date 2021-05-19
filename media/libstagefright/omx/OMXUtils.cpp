@@ -186,6 +186,8 @@ const char *GetComponentRole(bool isEncoder, const char *mime) {
             "audio_decoder.dtshd", "audio_encoder.dtshd" },
         { MEDIA_MIMETYPE_AUDIO_DTS_EXPRESS,
             "audio_decoder.dtse", "audio_encoder.dtse" },
+        { MEDIA_MIMETYPE_AUDIO_APE,
+            "audio_decoder.ape", "audio_encoder.ape" },
     };
 
     static const size_t kNumMimeToRole =
