@@ -39,6 +39,8 @@ const char *MEDIA_MIMETYPE_VIDEO_XVID = "video/xvid";
 const char *MEDIA_MIMETYPE_VIDEO_MJPEG = "video/x-motion-jpeg";
 const char *MEDIA_MIMETYPE_VIDEO_WMV = "video/x-ms-wmv";
 const char *MEDIA_MIMETYPE_VIDEO_REAL_VIDEO = "video/vnd.rn-realvideo";
+const char *MEDIA_MIMETYPE_VIDEO_AVS = "video/avs";
+const char *MEDIA_MIMETYPE_VIDEO_AVS2 = "video/avs2";
 
 const char *MEDIA_MIMETYPE_AUDIO_AMR_NB = "audio/3gpp";
 const char *MEDIA_MIMETYPE_AUDIO_AMR_WB = "audio/amr-wb";

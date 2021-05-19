@@ -41,6 +41,8 @@ extern const char *MEDIA_MIMETYPE_VIDEO_XVID;
 extern const char *MEDIA_MIMETYPE_VIDEO_MJPEG;
 extern const char *MEDIA_MIMETYPE_VIDEO_WMV;
 extern const char *MEDIA_MIMETYPE_VIDEO_REAL_VIDEO;
+extern const char *MEDIA_MIMETYPE_VIDEO_AVS;
+extern const char *MEDIA_MIMETYPE_VIDEO_AVS2;
 
 extern const char *MEDIA_MIMETYPE_AUDIO_AMR_NB;
 extern const char *MEDIA_MIMETYPE_AUDIO_AMR_WB;
