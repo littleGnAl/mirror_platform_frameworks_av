@@ -413,6 +413,27 @@ void SwAudioOutputDescriptor::toAudioPort(
             mFlags & AUDIO_OUTPUT_FLAG_FAST ? AUDIO_LATENCY_LOW : AUDIO_LATENCY_NORMAL;
 }
 
+void SwAudioOutputDescriptor::setSwMute(
+        bool isMuted, VolumeSource vs, const DeviceTypeSet& deviceTypes, uint32_t delayMs) {
+    if (isSwMuted(vs) != isMuted) {
+        setSwMuted(vs, isMuted);
+        // volume source active and more than one volume source is active, otherwise, no-op or let
+        // setVolume controlling both SW / HW Gains
+        if (isActive(vs) && (getActiveVolumeSources().size() > 1)) {
+            for (const auto& devicePort : devices()) {
+                if (isSingleDeviceType(deviceTypes, devicePort->type()) &&
+                        devicePort->hasGainController(true)) {
+                    float volumeAmpl = isMuted ? 0.0f : Volume::DbToAmpl(0);
+                    ALOGV("%s: output: %d, vs: %d, muted: %d, active vs count: %zu", __func__,
+                          mIoHandle, vs, isMuted, getActiveVolumeSources().size());
+                    mClientInterface->setPortsVolume(getPorts(vs), volumeAmpl, mIoHandle, delayMs);
+                    return;
+                }
+            }
+        }
+    }
+}
+
 bool SwAudioOutputDescriptor::setVolume(float volumeDb,
                                         VolumeSource vs, const StreamTypeVector &streamTypes,
                                         const DeviceTypeSet& deviceTypes,
@@ -420,7 +441,8 @@ bool SwAudioOutputDescriptor::setVolume(float volumeDb,
                                         bool force)
 {
     StreamTypeVector streams = streamTypes;
-    if (!AudioOutputDescriptor::setVolume(volumeDb, vs, streamTypes, deviceTypes, delayMs, force)) {
+    if (!AudioOutputDescriptor::setVolume(
+            volumeDb, vs, streamTypes, deviceTypes, delayMs, force | isSwMuted(vs))) {
         return false;
     }
     if (streams.empty()) {
@@ -437,11 +459,10 @@ bool SwAudioOutputDescriptor::setVolume(float volumeDb,
             // different Volume Source (or if we allow several curves within same volume group)
             //
             // @todo: default stream volume to max (0) when using HW Port gain?
-            float volumeAmpl = Volume::DbToAmpl(0);
+            float volumeAmpl = isSwMuted(vs) ? 0.0f : Volume::DbToAmpl(0);
             for (const auto &stream : streams) {
                 mClientInterface->setStreamVolume(stream, volumeAmpl, mIoHandle, delayMs);
             }
-
             AudioGains gains = devicePort->getGains();
             int gainMinValueInMb = gains[0]->getMinValueInMb();
             int gainMaxValueInMb = gains[0]->getMaxValueInMb();
@@ -456,6 +477,8 @@ bool SwAudioOutputDescriptor::setVolume(float volumeDb,
             return mClientInterface->setAudioPortConfig(&config, 0) == NO_ERROR;
         }
     }
+    // Not routed anymore on device with Hw gain, reset SwMute
+    setSwMuted(vs, false);
     // Force VOICE_CALL to track BLUETOOTH_SCO stream volume when bluetooth audio is enabled
     float volumeAmpl = Volume::DbToAmpl(getCurVolume(vs));
     if (hasStream(streams, AUDIO_STREAM_BLUETOOTH_SCO)) {

@@ -2687,6 +2687,9 @@ status_t AudioPolicyManager::setVolumeIndexForAttributes(const audio_attributes_
         // HW Gain management, do not change the volume
         if (desc->useHwGain()) {
             applyVolume = false;
+            // If the volume source is active with other higher priority source, at least Sw Muted
+            const bool muteRequested = (index == curves.getVolumeIndexMin());
+            desc->setSwMute(muteRequested, vs, curDevices, 0 /*delayMs*/);
             for (const auto &productStrategy : mEngine->getOrderedProductStrategies()) {
                 auto activeClients = desc->clientsList(true /*activeOnly*/, productStrategy,
                                                        false /*preferredDevice*/);
