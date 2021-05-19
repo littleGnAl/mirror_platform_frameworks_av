@@ -22,6 +22,30 @@
       },
       "revId": "7688c442cafd14a511dc0887aea8c531536da295",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a47eb2c0_64ff118c",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 437,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-05-19T15:43:18Z",
+      "side": 1,
+      "message": "good catch, enforcement proposed: force shall be inconditional if sw muted.\nsw mute is reset if not routed anymore on hw gain\u0027ed device",
+      "parentUuid": "5f749232_0ef12d0f",
+      "range": {
+        "startLine": 437,
+        "startChar": 30,
+        "endLine": 437,
+        "endChar": 39
+      },
+      "revId": "7688c442cafd14a511dc0887aea8c531536da295",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
