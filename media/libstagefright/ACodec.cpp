@@ -3757,6 +3757,7 @@ static const struct VideoCodingMapEntry {
     { MEDIA_MIMETYPE_VIDEO_AV1, OMX_VIDEO_CodingAV1 },
     { MEDIA_MIMETYPE_VIDEO_MJPEG, OMX_VIDEO_CodingMJPEG},
     { MEDIA_MIMETYPE_VIDEO_WMV, OMX_VIDEO_CodingWMV},
+    { MEDIA_MIMETYPE_VIDEO_REAL_VIDEO, OMX_VIDEO_CodingRV},
 };
 
 static status_t GetVideoCodingTypeFromMime(
