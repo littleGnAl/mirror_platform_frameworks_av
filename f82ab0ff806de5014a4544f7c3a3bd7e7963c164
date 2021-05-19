@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e229c051_0b7a08ca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-19T18:23:16Z",
+      "side": 1,
+      "message": "Sungtak, \nCan you please review this?\nThis adds support to test additional files which is needed to test vendor specific codecs.\n\nThis adds similar functionality to VTS tests as the following CTS CL does\nhttps://android-review.googlesource.com/c/platform/cts/+/1606495\n",
+      "revId": "f82ab0ff806de5014a4544f7c3a3bd7e7963c164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
