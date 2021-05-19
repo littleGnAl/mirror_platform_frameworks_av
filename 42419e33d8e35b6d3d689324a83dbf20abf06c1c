@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": true,
       "key": {
         "uuid": "86b60ca4_2dd11ee2",
         "filename": "media/libstagefright/Utils.cpp",
@@ -20,10 +21,10 @@
         "endChar": 104
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "6666931a_c2e43fd7",
         "filename": "media/libstagefright/Utils.cpp",
@@ -44,10 +45,10 @@
         "endChar": 104
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "1bda4f6d_b3dc8722",
         "filename": "media/libstagefright/Utils.cpp",
@@ -67,10 +68,10 @@
         "endChar": 51
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "fbdb6aa4_17fe2e7a",
         "filename": "media/libstagefright/Utils.cpp",
@@ -91,10 +92,10 @@
         "endChar": 51
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "02d711cb_a8b07bdc",
         "filename": "media/libstagefright/Utils.cpp",
@@ -114,10 +115,10 @@
         "endChar": 29
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "e19bc63d_08716ae1",
         "filename": "media/libstagefright/Utils.cpp",
@@ -138,10 +139,10 @@
         "endChar": 29
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "31eff1f9_d3a46c9f",
         "filename": "media/libstagefright/Utils.cpp",
@@ -161,10 +162,10 @@
         "endChar": 13
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "e92a4338_de78e6f2",
         "filename": "media/libstagefright/Utils.cpp",
@@ -184,10 +185,34 @@
         "endChar": 78
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "458f1830_ebd0df88",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2189,
+      "author": {
+        "id": 1402841
+      },
+      "writtenOn": "2021-05-19T07:20:05Z",
+      "side": 1,
+      "message": "This part special means DolbyVision AVCC/AVCE/HVCC/HVCE sub-part.\ncsd-0,csd-1,csd2, etc. seems common name.",
+      "parentUuid": "e92a4338_de78e6f2",
+      "range": {
+        "startLine": 2189,
+        "startChar": 69,
+        "endLine": 2189,
+        "endChar": 78
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "40ca9927_5203136b",
         "filename": "media/libstagefright/Utils.cpp",
@@ -207,10 +232,10 @@
         "endChar": 43
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "865a89c8_f2f9c728",
         "filename": "media/libstagefright/Utils.cpp",
@@ -230,10 +255,10 @@
         "endChar": 35
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "dd92fd45_67da1ed2",
         "filename": "media/libstagefright/Utils.cpp",
@@ -254,10 +279,10 @@
         "endChar": 43
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "e7bccc0b_e3b8b53c",
         "filename": "media/libstagefright/Utils.cpp",
@@ -278,10 +303,10 @@
         "endChar": 35
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "35c20c7c_f812ac6b",
         "filename": "media/libstagefright/Utils.cpp",
@@ -301,10 +326,10 @@
         "endChar": 41
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "b2f01a57_1045a1da",
         "filename": "media/libstagefright/Utils.cpp",
@@ -325,10 +350,10 @@
         "endChar": 41
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "9e591b2f_8e6dceee",
         "filename": "media/libstagefright/Utils.cpp",
@@ -348,10 +373,10 @@
         "endChar": 41
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "82070150_f6d6ff93",
         "filename": "media/libstagefright/Utils.cpp",
@@ -372,10 +397,10 @@
         "endChar": 41
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
       "key": {
         "uuid": "0755a936_dc5b2dc8",
         "filename": "media/ndk/NdkMediaFormat.cpp",
@@ -395,10 +420,34 @@
         "endChar": 46
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "de30d1c8_9e193f7a",
+        "filename": "media/ndk/NdkMediaFormat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 388,
+      "author": {
+        "id": 1402841
+      },
+      "writtenOn": "2021-05-19T07:20:05Z",
+      "side": 1,
+      "message": "No need anymore",
+      "parentUuid": "0755a936_dc5b2dc8",
+      "range": {
+        "startLine": 388,
+        "startChar": 19,
+        "endLine": 388,
+        "endChar": 46
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "5e7a89e5_4e37f967",
         "filename": "media/ndk/NdkMediaFormat.cpp",
@@ -418,10 +467,34 @@
         "endChar": 58
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9641fc47_70f0f635",
+        "filename": "media/ndk/NdkMediaFormat.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 390,
+      "author": {
+        "id": 1402841
+      },
+      "writtenOn": "2021-05-19T07:20:05Z",
+      "side": 1,
+      "message": "No need anymore",
+      "parentUuid": "5e7a89e5_4e37f967",
+      "range": {
+        "startLine": 388,
+        "startChar": 0,
+        "endLine": 390,
+        "endChar": 58
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "f69dcefd_a70fbbaa",
         "filename": "media/ndk/include/media/NdkMediaFormat.h",
@@ -441,10 +514,34 @@
         "endChar": 46
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "69625e41_eda04cc9",
+        "filename": "media/ndk/include/media/NdkMediaFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 193,
+      "author": {
+        "id": 1402841
+      },
+      "writtenOn": "2021-05-19T07:20:05Z",
+      "side": 1,
+      "message": "No need anymore",
+      "parentUuid": "f69dcefd_a70fbbaa",
+      "range": {
+        "startLine": 193,
+        "startChar": 19,
+        "endLine": 193,
+        "endChar": 46
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "e639779c_7fbd4dfe",
         "filename": "media/ndk/include/media/NdkMediaFormat.h",
@@ -464,10 +561,34 @@
         "endChar": 65
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "114cbe6c_9d9176dc",
+        "filename": "media/ndk/include/media/NdkMediaFormat.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 195,
+      "author": {
+        "id": 1402841
+      },
+      "writtenOn": "2021-05-19T07:20:05Z",
+      "side": 1,
+      "message": "No need anymore",
+      "parentUuid": "e639779c_7fbd4dfe",
+      "range": {
+        "startLine": 193,
+        "startChar": 0,
+        "endLine": 195,
+        "endChar": 65
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
       "key": {
         "uuid": "daef5e23_57fb7414",
         "filename": "media/ndk/libmediandk.map.txt",
@@ -487,8 +608,31 @@
         "endChar": 46
       },
       "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": true
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18545f3a_86fe9eec",
+        "filename": "media/ndk/libmediandk.map.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 154,
+      "author": {
+        "id": 1402841
+      },
+      "writtenOn": "2021-05-19T07:20:05Z",
+      "side": 1,
+      "message": "No need anymore",
+      "parentUuid": "daef5e23_57fb7414",
+      "range": {
+        "startLine": 152,
+        "startChar": 0,
+        "endLine": 154,
+        "endChar": 46
+      },
+      "revId": "42419e33d8e35b6d3d689324a83dbf20abf06c1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
