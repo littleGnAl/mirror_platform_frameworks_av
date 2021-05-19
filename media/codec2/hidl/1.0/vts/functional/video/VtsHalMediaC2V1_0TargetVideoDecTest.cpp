@@ -149,8 +149,8 @@ class Codec2VideoDecHidlTestBase : public ::testing::Test {
     // Get the test parameters from GetParam call.
     virtual void getParams() {}
 
-    void GetURLChksmForComponent(char* mURL, char* info, char* chksum, size_t streamIndex);
-    void GetURLForComponent(char* mURL, char* info, size_t streamIndex = 0);
+    bool GetURLChksmForComponent(char* mURL, char* info, char* chksum, size_t streamIndex);
+    bool GetURLForComponent(char* mURL, char* info, size_t streamIndex = 0);
 
     /* Calculate the CKSUM for the data in inbuf */
     void calc_md5_cksum(uint8_t* pu1_inbuf, uint32_t u4_stride, uint32_t u4_width,
@@ -359,26 +359,30 @@ void validateComponent(const std::shared_ptr<android::Codec2Client::Component>& 
 // number of elementary streams per component
 #define STREAM_COUNT 3
 // LookUpTable of clips, metadata and chksum for component testing
-void Codec2VideoDecHidlTestBase::GetURLChksmForComponent(char* mURL, char* info, char* chksum,
+bool Codec2VideoDecHidlTestBase::GetURLChksmForComponent(char* mURL, char* info, char* chksum,
                                                          size_t streamIndex) {
     int streamCount = 0;
+    strcpy(mURL, sResourceDir.c_str());
+    strcpy(info, sResourceDir.c_str());
+    strcpy(chksum, sResourceDir.c_str());
+
     for (size_t i = 0; i < gCompToURL.size(); ++i) {
         if (mMime.find(gCompToURL[i].mime) != std::string::npos) {
             if (streamCount == streamIndex) {
                 strcat(mURL, gCompToURL[i].mURL.c_str());
                 strcat(info, gCompToURL[i].info.c_str());
                 strcat(chksum, gCompToURL[i].chksum.c_str());
-                return;
+                return true;
             }
             streamCount++;
         }
     }
+    return false;
 }
 
-void Codec2VideoDecHidlTestBase::GetURLForComponent(char* mURL, char* info, size_t streamIndex) {
+bool Codec2VideoDecHidlTestBase::GetURLForComponent(char* mURL, char* info, size_t streamIndex) {
     char chksum[512];
-    strcpy(chksum, sResourceDir.c_str());
-    GetURLChksmForComponent(mURL, info, chksum, streamIndex);
+    return GetURLChksmForComponent(mURL, info, chksum, streamIndex);
 }
 
 void decodeNFrames(const std::shared_ptr<android::Codec2Client::Component>& component,
@@ -544,15 +548,15 @@ TEST_P(Codec2VideoDecDecodeTest, DecodeTest) {
     char mURL[512], info[512], chksum[512];
     android::Vector<FrameInfo> Info;
 
-    strcpy(mURL, sResourceDir.c_str());
-    strcpy(info, sResourceDir.c_str());
-    strcpy(chksum, sResourceDir.c_str());
-
-    GetURLChksmForComponent(mURL, info, chksum, streamIndex);
-    if (!(strcmp(mURL, sResourceDir.c_str())) || !(strcmp(info, sResourceDir.c_str()))) {
-        ALOGV("Skipping Test, Stream not available");
-        return;
+    bool valid = GetURLChksmForComponent(mURL, info, chksum, streamIndex);
+    if (!valid) {
+        if (streamIndex) {
+            GTEST_SKIP() << "No test file for  mime " << mMime << " index: " << streamIndex;
+        } else {
+            FAIL() << "No test file for  mime " << mMime << " index: " << streamIndex;
+        }
     }
+
     mMd5Enable = true;
     if (!strcmp(chksum, sResourceDir.c_str())) mMd5Enable = false;
 
@@ -654,10 +658,8 @@ TEST_P(Codec2VideoDecHidlTest, AdaptiveDecodeTest) {
         char mURL[512], info[512];
         std::ifstream eleStream, eleInfo;
 
-        strcpy(mURL, sResourceDir.c_str());
-        strcpy(info, sResourceDir.c_str());
-        GetURLForComponent(mURL, info, i % STREAM_COUNT);
-        if (!(strcmp(mURL, sResourceDir.c_str())) || !(strcmp(info, sResourceDir.c_str()))) {
+        bool valid = GetURLForComponent(mURL, info, i % STREAM_COUNT);
+        if (!valid) {
             ALOGV("Stream not available, skipping this index");
             continue;
         }
@@ -750,9 +752,10 @@ TEST_P(Codec2VideoDecHidlTest, ThumbnailTest) {
     char mURL[512], info[512];
     android::Vector<FrameInfo> Info;
 
-    strcpy(mURL, sResourceDir.c_str());
-    strcpy(info, sResourceDir.c_str());
-    GetURLForComponent(mURL, info);
+    bool valid = GetURLForComponent(mURL, info);
+    if (!valid) {
+        GTEST_SKIP() << "No test file for  mime " << mMime;
+    }
 
     int32_t numCsds = populateInfoVector(info, &Info, mTimestampDevTest, &mTimestampUslist);
     ASSERT_GE(numCsds, 0) << "Error in parsing input info file: " << info;
@@ -837,9 +840,10 @@ TEST_P(Codec2VideoDecHidlTest, FlushTest) {
     char mURL[512], info[512];
     android::Vector<FrameInfo> Info;
 
-    strcpy(mURL, sResourceDir.c_str());
-    strcpy(info, sResourceDir.c_str());
-    GetURLForComponent(mURL, info);
+    bool valid = GetURLForComponent(mURL, info);
+    if (!valid) {
+        GTEST_SKIP() << "No test file for  mime " << mMime;
+    }
 
     mFlushedIndices.clear();
 
@@ -913,9 +917,10 @@ TEST_P(Codec2VideoDecHidlTest, DecodeTestEmptyBuffersInserted) {
     char mURL[512], info[512];
     std::ifstream eleStream, eleInfo;
 
-    strcpy(mURL, sResourceDir.c_str());
-    strcpy(info, sResourceDir.c_str());
-    GetURLForComponent(mURL, info);
+    bool valid = GetURLForComponent(mURL, info);
+    if (!valid) {
+        GTEST_SKIP() << "No test file for  mime " << mMime;
+    }
 
     eleInfo.open(info);
     ASSERT_EQ(eleInfo.is_open(), true) << mURL << " - file not found";
@@ -986,9 +991,10 @@ TEST_P(Codec2VideoDecCsdInputTests, CSDFlushTest) {
 
     android::Vector<FrameInfo> Info;
 
-    strcpy(mURL, sResourceDir.c_str());
-    strcpy(info, sResourceDir.c_str());
-    GetURLForComponent(mURL, info);
+    bool valid = GetURLForComponent(mURL, info);
+    if (!valid) {
+        GTEST_SKIP() << "No test file for  mime " << mMime;
+    }
 
     int32_t numCsds = populateInfoVector(info, &Info, mTimestampDevTest, &mTimestampUslist);
     ASSERT_GE(numCsds, 0) << "Error in parsing input info file";

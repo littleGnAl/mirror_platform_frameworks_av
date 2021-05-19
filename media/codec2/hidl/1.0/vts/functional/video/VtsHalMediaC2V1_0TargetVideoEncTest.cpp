@@ -286,6 +286,7 @@ bool Codec2VideoEncHidlTestBase::setupConfigParam(int32_t nWidth, int32_t nHeigh
 
 // LookUpTable of clips for component testing
 void GetURLForComponent(char* URL) {
+    strcpy(URL, sResourceDir.c_str());
     strcat(URL, "bbb_352x288_420p_30fps_32frames.yuv");
 }
 
@@ -491,13 +492,12 @@ TEST_P(Codec2VideoEncEncodeTest, EncodeTest) {
     description("Encodes input file");
     if (mDisableTest) GTEST_SKIP() << "Test is disabled";
 
-    char mURL[512];
     bool signalEOS = std::get<3>(GetParam());
     // Send an empty frame to receive CSD data from encoder.
     bool sendEmptyFirstFrame = std::get<3>(GetParam());
     mConfigBPictures = std::get<4>(GetParam());
 
-    strcpy(mURL, sResourceDir.c_str());
+    char mURL[512];
     GetURLForComponent(mURL);
 
     std::ifstream eleStream;
@@ -641,8 +641,6 @@ TEST_P(Codec2VideoEncHidlTest, FlushTest) {
     if (mDisableTest) GTEST_SKIP() << "Test is disabled";
 
     char mURL[512];
-
-    strcpy(mURL, sResourceDir.c_str());
     GetURLForComponent(mURL);
 
     if (!setupConfigParam(mWidth, mHeight)) {
@@ -821,8 +819,6 @@ TEST_P(Codec2VideoEncHidlTest, AdaptiveBitrateTest) {
     if (mDisableTest) GTEST_SKIP() << "Test is disabled";
 
     char mURL[512];
-
-    strcpy(mURL, sResourceDir.c_str());
     GetURLForComponent(mURL);
 
     std::ifstream eleStream;
