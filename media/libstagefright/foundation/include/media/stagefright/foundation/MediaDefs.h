@@ -48,6 +48,7 @@ extern const char *MEDIA_MIMETYPE_VIDEO_REAL_VIDEO;
 extern const char *MEDIA_MIMETYPE_VIDEO_AVS;
 extern const char *MEDIA_MIMETYPE_VIDEO_AVS2;
 extern const char *MEDIA_MIMETYPE_VIDEO_VC1;
+extern const char *MEDIA_MIMETYPE_VIDEO_SHVC;
 
 extern const char *MEDIA_MIMETYPE_AUDIO_AMR_NB;
 extern const char *MEDIA_MIMETYPE_AUDIO_AMR_WB;
