@@ -214,6 +214,7 @@ enum {
     kKeySuperBlockAlign  = 'sblk',
     kKeyEncodeOptions    = 'enop',
     kKeyBlockAlign       = 'blka',  // int32_t
+    kKeyBitsPerFrame     = 'btpf',  // int32_t
 
     // HDR related
     kKeyHdrStaticInfo    = 'hdrS', // HDRStaticInfo
