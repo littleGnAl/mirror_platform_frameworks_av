@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "95754542_17069a97",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-05-20T15:45:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "03678582_78f51229",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 452,
+        "endChar": 0
+      },
+      "revId": "f82ab0ff806de5014a4544f7c3a3bd7e7963c164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "38c98116_3e11b6c6",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a65ed221_a994edd2",
+        "filename": "media/codec2/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-05-20T15:45:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "38c98116_3e11b6c6",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 17
+      },
+      "revId": "f82ab0ff806de5014a4544f7c3a3bd7e7963c164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bc432416_cb7f2e0a",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-05-20T15:22:03Z",
       "side": 1,
       "message": "remove\nwill be handled in another CL",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 0
+      },
+      "revId": "f82ab0ff806de5014a4544f7c3a3bd7e7963c164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "57c490cf_d2ca466a",
+        "filename": "media/codec2/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-05-20T15:45:51Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bc432416_cb7f2e0a",
       "range": {
         "startLine": 549,
         "startChar": 0,
