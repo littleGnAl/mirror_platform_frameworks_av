@@ -2057,9 +2057,7 @@ AudioFlinger::PlaybackThread::PatchTrack::PatchTrack(PlaybackThread *playbackThr
                                       __func__, mId, sampleRate,
                                       (int)mPeerTimeout.tv_sec,
                                       (int)(mPeerTimeout.tv_nsec / 1000000));
-
-    audio_attributes_t aa = AudioSystem::streamTypeToAttributes(streamType);
-    mPatchTrackPlayer = new PatchTrackPlayerBase(this, aa.usage);
+    mPatchTrackPlayer = new PatchTrackPlayerBase(this, attributes.usage);
 }
 
 AudioFlinger::PlaybackThread::PatchTrack::~PatchTrack()
