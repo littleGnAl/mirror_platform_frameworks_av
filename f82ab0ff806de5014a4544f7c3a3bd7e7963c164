@@ -16,6 +16,75 @@
       "message": "Sungtak, \nCan you please review this?\nThis adds support to test additional files which is needed to test vendor specific codecs.\n\nThis adds similar functionality to VTS tests as the following CTS CL does\nhttps://android-review.googlesource.com/c/platform/cts/+/1606495\n",
       "revId": "f82ab0ff806de5014a4544f7c3a3bd7e7963c164",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03678582_78f51229",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioDecTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 452,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-20T15:22:03Z",
+      "side": 1,
+      "message": "remove this,\nI have another CL that will ensure that the tests will fail if a codec doesn\u0027t contain mime",
+      "range": {
+        "startLine": 449,
+        "startChar": 0,
+        "endLine": 452,
+        "endChar": 0
+      },
+      "revId": "f82ab0ff806de5014a4544f7c3a3bd7e7963c164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38c98116_3e11b6c6",
+        "filename": "media/codec2/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-20T15:22:03Z",
+      "side": 1,
+      "message": "ALOGE and return -1 for consistency with rest of calls here",
+      "range": {
+        "startLine": 274,
+        "startChar": 0,
+        "endLine": 275,
+        "endChar": 17
+      },
+      "revId": "f82ab0ff806de5014a4544f7c3a3bd7e7963c164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc432416_cb7f2e0a",
+        "filename": "media/codec2/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoDecTest.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 551,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-20T15:22:03Z",
+      "side": 1,
+      "message": "remove\nwill be handled in another CL",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 551,
+        "endChar": 0
+      },
+      "revId": "f82ab0ff806de5014a4544f7c3a3bd7e7963c164",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
