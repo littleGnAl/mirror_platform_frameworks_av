@@ -38,6 +38,7 @@
 #include <media/omx/1.0/WOmxNode.h>
 #include <media/openmax/OMX_Core.h>
 #include <media/openmax/OMX_IndexExt.h>
+#include <media/stagefright/foundation/avc_utils.h>
 #include <media/stagefright/omx/1.0/WGraphicBufferSource.h>
 #include <media/stagefright/omx/OmxGraphicBufferSource.h>
 #include <media/stagefright/CCodec.h>
@@ -510,6 +511,44 @@ void RevertOutputFormatIfNeeded(
     }
     if (diff->countEntries() == 0) {
         currentFormat = oldFormat;
+    }
+}
+
+void AmendOutputFormatWithCodecSpecificData(
+        const uint8_t *data, size_t size, const std::string &mediaType,
+        const sp<AMessage> &outputFormat) {
+    if (mediaType == MIMETYPE_VIDEO_AVC) {
+        // Codec specific data should be SPS and PPS in a single buffer,
+        // each prefixed by a startcode (0x00 0x00 0x00 0x01).
+        // We separate the two and put them into the output format
+        // under the keys "csd-0" and "csd-1".
+
+        unsigned csdIndex = 0;
+
+        const uint8_t *nalStart;
+        size_t nalSize;
+        while (getNextNALUnit(&data, &size, &nalStart, &nalSize, true) == OK) {
+            sp<ABuffer> csd = new ABuffer(nalSize + 4);
+            memcpy(csd->data(), "\x00\x00\x00\x01", 4);
+            memcpy(csd->data() + 4, nalStart, nalSize);
+
+            outputFormat->setBuffer(
+                    AStringPrintf("csd-%u", csdIndex).c_str(), csd);
+
+            ++csdIndex;
+        }
+
+        if (csdIndex != 2) {
+            ALOGW("Expected two NAL units from AVC codec config, but %u found",
+                    csdIndex);
+        }
+    } else {
+        // For everything else we just stash the codec specific data into
+        // the output format as a single piece of csd under "csd-0".
+        sp<ABuffer> csd = new ABuffer(size);
+        memcpy(csd->data(), data, size);
+        csd->setRange(0, size);
+        outputFormat->setBuffer("csd-0", csd);
     }
 }
 
@@ -1440,13 +1479,11 @@ void CCodec::createInputSurface() {
     status_t err;
     sp<IGraphicBufferProducer> bufferProducer;
 
-    sp<AMessage> inputFormat;
     sp<AMessage> outputFormat;
     uint64_t usage = 0;
     {
         Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
         const std::unique_ptr<Config> &config = *configLocked;
-        inputFormat = config->mInputFormat;
         outputFormat = config->mOutputFormat;
         usage = config->mISConfig ? config->mISConfig->mUsage : 0;
     }
@@ -1482,6 +1519,14 @@ void CCodec::createInputSurface() {
         return;
     }
 
+    // Formats can change after setupInputSurface
+    sp<AMessage> inputFormat;
+    {
+        Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
+        const std::unique_ptr<Config> &config = *configLocked;
+        inputFormat = config->mInputFormat;
+        outputFormat = config->mOutputFormat;
+    }
     mCallback->onInputSurfaceCreated(
             inputFormat,
             outputFormat,
@@ -1531,13 +1576,11 @@ void CCodec::initiateSetInputSurface(const sp<PersistentSurface> &surface) {
 }
 
 void CCodec::setInputSurface(const sp<PersistentSurface> &surface) {
-    sp<AMessage> inputFormat;
     sp<AMessage> outputFormat;
     uint64_t usage = 0;
     {
         Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
         const std::unique_ptr<Config> &config = *configLocked;
-        inputFormat = config->mInputFormat;
         outputFormat = config->mOutputFormat;
         usage = config->mISConfig ? config->mISConfig->mUsage : 0;
     }
@@ -1568,6 +1611,14 @@ void CCodec::setInputSurface(const sp<PersistentSurface> &surface) {
         ALOGE("Failed to set input surface: Corrupted surface.");
         mCallback->onInputSurfaceDeclined(UNKNOWN_ERROR);
         return;
+    }
+    // Formats can change after setupInputSurface
+    sp<AMessage> inputFormat;
+    {
+        Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
+        const std::unique_ptr<Config> &config = *configLocked;
+        inputFormat = config->mInputFormat;
+        outputFormat = config->mOutputFormat;
     }
     mCallback->onInputSurfaceAccepted(inputFormat, outputFormat);
 }
@@ -1796,17 +1847,19 @@ void CCodec::release(bool sendCallback) {
 }
 
 status_t CCodec::setSurface(const sp<Surface> &surface) {
-    Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
-    const std::unique_ptr<Config> &config = *configLocked;
-    if (config->mTunneled && config->mSidebandHandle != nullptr) {
-        sp<ANativeWindow> nativeWindow = static_cast<ANativeWindow *>(surface.get());
-        status_t err = native_window_set_sideband_stream(
-                nativeWindow.get(),
-                const_cast<native_handle_t *>(config->mSidebandHandle->handle()));
-        if (err != OK) {
-            ALOGE("NativeWindow(%p) native_window_set_sideband_stream(%p) failed! (err %d).",
-                    nativeWindow.get(), config->mSidebandHandle->handle(), err);
-            return err;
+    {
+        Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
+        const std::unique_ptr<Config> &config = *configLocked;
+        if (config->mTunneled && config->mSidebandHandle != nullptr) {
+            sp<ANativeWindow> nativeWindow = static_cast<ANativeWindow *>(surface.get());
+            status_t err = native_window_set_sideband_stream(
+                    nativeWindow.get(),
+                    const_cast<native_handle_t *>(config->mSidebandHandle->handle()));
+            if (err != OK) {
+                ALOGE("NativeWindow(%p) native_window_set_sideband_stream(%p) failed! (err %d).",
+                        nativeWindow.get(), config->mSidebandHandle->handle(), err);
+                return err;
+            }
         }
     }
     return mChannel->setSurface(surface);
@@ -2147,80 +2200,99 @@ void CCodec::onMessageReceived(const sp<AMessage> &msg) {
             }
 
             // handle configuration changes in work done
-            Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
-            const std::unique_ptr<Config> &config = *configLocked;
-            Config::Watcher<C2StreamInitDataInfo::output> initData =
-                config->watch<C2StreamInitDataInfo::output>();
-            if (!work->worklets.empty()
-                    && (work->worklets.front()->output.flags
-                            & C2FrameData::FLAG_DISCARD_FRAME) == 0) {
+            std::shared_ptr<const C2StreamInitDataInfo::output> initData;
+            sp<AMessage> outputFormat = nullptr;
+            {
+                Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
+                const std::unique_ptr<Config> &config = *configLocked;
+                Config::Watcher<C2StreamInitDataInfo::output> initDataWatcher =
+                    config->watch<C2StreamInitDataInfo::output>();
+                if (!work->worklets.empty()
+                        && (work->worklets.front()->output.flags
+                                & C2FrameData::FLAG_DISCARD_FRAME) == 0) {
 
-                // copy buffer info to config
-                std::vector<std::unique_ptr<C2Param>> updates;
-                for (const std::unique_ptr<C2Param> &param
-                        : work->worklets.front()->output.configUpdate) {
-                    updates.push_back(C2Param::Copy(*param));
-                }
-                unsigned stream = 0;
-                for (const std::shared_ptr<C2Buffer> &buf : work->worklets.front()->output.buffers) {
-                    for (const std::shared_ptr<const C2Info> &info : buf->info()) {
-                        // move all info into output-stream #0 domain
-                        updates.emplace_back(C2Param::CopyAsStream(*info, true /* output */, stream));
+                    // copy buffer info to config
+                    std::vector<std::unique_ptr<C2Param>> updates;
+                    for (const std::unique_ptr<C2Param> &param
+                            : work->worklets.front()->output.configUpdate) {
+                        updates.push_back(C2Param::Copy(*param));
+                    }
+                    unsigned stream = 0;
+                    std::vector<std::shared_ptr<C2Buffer>> &outputBuffers =
+                        work->worklets.front()->output.buffers;
+                    for (const std::shared_ptr<C2Buffer> &buf : outputBuffers) {
+                        for (const std::shared_ptr<const C2Info> &info : buf->info()) {
+                            // move all info into output-stream #0 domain
+                            updates.emplace_back(
+                                    C2Param::CopyAsStream(*info, true /* output */, stream));
+                        }
+
+                        const std::vector<C2ConstGraphicBlock> blocks = buf->data().graphicBlocks();
+                        // for now only do the first block
+                        if (!blocks.empty()) {
+                            // ALOGV("got output buffer with crop %u,%u+%u,%u and size %u,%u",
+                            //      block.crop().left, block.crop().top,
+                            //      block.crop().width, block.crop().height,
+                            //      block.width(), block.height());
+                            const C2ConstGraphicBlock &block = blocks[0];
+                            updates.emplace_back(new C2StreamCropRectInfo::output(
+                                    stream, block.crop()));
+                            updates.emplace_back(new C2StreamPictureSizeInfo::output(
+                                    stream, block.crop().width, block.crop().height));
+                        }
+                        ++stream;
                     }
 
-                    const std::vector<C2ConstGraphicBlock> blocks = buf->data().graphicBlocks();
-                    // for now only do the first block
-                    if (!blocks.empty()) {
-                        // ALOGV("got output buffer with crop %u,%u+%u,%u and size %u,%u",
-                        //      block.crop().left, block.crop().top,
-                        //      block.crop().width, block.crop().height,
-                        //      block.width(), block.height());
-                        const C2ConstGraphicBlock &block = blocks[0];
-                        updates.emplace_back(new C2StreamCropRectInfo::output(stream, block.crop()));
-                        updates.emplace_back(new C2StreamPictureSizeInfo::output(
-                                stream, block.crop().width, block.crop().height));
-                    }
-                    ++stream;
-                }
+                    sp<AMessage> oldFormat = config->mOutputFormat;
+                    config->updateConfiguration(updates, config->mOutputDomain);
+                    RevertOutputFormatIfNeeded(oldFormat, config->mOutputFormat);
 
-                sp<AMessage> outputFormat = config->mOutputFormat;
-                config->updateConfiguration(updates, config->mOutputDomain);
-                RevertOutputFormatIfNeeded(outputFormat, config->mOutputFormat);
-
-                // copy standard infos to graphic buffers if not already present (otherwise, we
-                // may overwrite the actual intermediate value with a final value)
-                stream = 0;
-                const static C2Param::Index stdGfxInfos[] = {
-                    C2StreamRotationInfo::output::PARAM_TYPE,
-                    C2StreamColorAspectsInfo::output::PARAM_TYPE,
-                    C2StreamDataSpaceInfo::output::PARAM_TYPE,
-                    C2StreamHdrStaticInfo::output::PARAM_TYPE,
-                    C2StreamHdr10PlusInfo::output::PARAM_TYPE,
-                    C2StreamPixelAspectRatioInfo::output::PARAM_TYPE,
-                    C2StreamSurfaceScalingInfo::output::PARAM_TYPE
-                };
-                for (const std::shared_ptr<C2Buffer> &buf : work->worklets.front()->output.buffers) {
-                    if (buf->data().graphicBlocks().size()) {
-                        for (C2Param::Index ix : stdGfxInfos) {
-                            if (!buf->hasInfo(ix)) {
-                                const C2Param *param =
-                                    config->getConfigParameterValue(ix.withStream(stream));
-                                if (param) {
-                                    std::shared_ptr<C2Param> info(C2Param::Copy(*param));
-                                    buf->setInfo(std::static_pointer_cast<C2Info>(info));
+                    // copy standard infos to graphic buffers if not already present (otherwise, we
+                    // may overwrite the actual intermediate value with a final value)
+                    stream = 0;
+                    const static C2Param::Index stdGfxInfos[] = {
+                        C2StreamRotationInfo::output::PARAM_TYPE,
+                        C2StreamColorAspectsInfo::output::PARAM_TYPE,
+                        C2StreamDataSpaceInfo::output::PARAM_TYPE,
+                        C2StreamHdrStaticInfo::output::PARAM_TYPE,
+                        C2StreamHdr10PlusInfo::output::PARAM_TYPE,
+                        C2StreamPixelAspectRatioInfo::output::PARAM_TYPE,
+                        C2StreamSurfaceScalingInfo::output::PARAM_TYPE
+                    };
+                    for (const std::shared_ptr<C2Buffer> &buf : outputBuffers) {
+                        if (buf->data().graphicBlocks().size()) {
+                            for (C2Param::Index ix : stdGfxInfos) {
+                                if (!buf->hasInfo(ix)) {
+                                    const C2Param *param =
+                                        config->getConfigParameterValue(ix.withStream(stream));
+                                    if (param) {
+                                        std::shared_ptr<C2Param> info(C2Param::Copy(*param));
+                                        buf->setInfo(std::static_pointer_cast<C2Info>(info));
+                                    }
                                 }
                             }
                         }
+                        ++stream;
                     }
-                    ++stream;
                 }
-            }
-            if (config->mInputSurface) {
-                config->mInputSurface->onInputBufferDone(work->input.ordinal.frameIndex);
+                if (config->mInputSurface) {
+                    if (work->worklets.empty()
+                           || !work->worklets.back()
+                           || (work->worklets.back()->output.flags
+                                  & C2FrameData::FLAG_INCOMPLETE) == 0) {
+                        config->mInputSurface->onInputBufferDone(work->input.ordinal.frameIndex);
+                    }
+                }
+                if (initDataWatcher.hasChanged()) {
+                    initData = initDataWatcher.update();
+                    AmendOutputFormatWithCodecSpecificData(
+                            initData->m.value, initData->flexCount(), config->mCodingMediaType,
+                            config->mOutputFormat);
+                }
+                outputFormat = config->mOutputFormat;
             }
             mChannel->onWorkDone(
-                    std::move(work), config->mOutputFormat,
-                    initData.hasChanged() ? initData.update().get() : nullptr);
+                    std::move(work), outputFormat, initData ? initData.get() : nullptr);
             break;
         }
         case kWhatWatch: {
@@ -2305,9 +2377,44 @@ void CCodec::initiateReleaseIfStuck() {
             pendingDeadline = true;
         }
     }
-    Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
-    const std::unique_ptr<Config> &config = *configLocked;
-    if (config->mTunneled == false && name.empty()) {
+    bool tunneled = false;
+    bool isMediaTypeKnown = false;
+    {
+        static const std::set<std::string> kKnownMediaTypes{
+            MIMETYPE_VIDEO_VP8,
+            MIMETYPE_VIDEO_VP9,
+            MIMETYPE_VIDEO_AV1,
+            MIMETYPE_VIDEO_AVC,
+            MIMETYPE_VIDEO_HEVC,
+            MIMETYPE_VIDEO_MPEG4,
+            MIMETYPE_VIDEO_H263,
+            MIMETYPE_VIDEO_MPEG2,
+            MIMETYPE_VIDEO_RAW,
+            MIMETYPE_VIDEO_DOLBY_VISION,
+
+            MIMETYPE_AUDIO_AMR_NB,
+            MIMETYPE_AUDIO_AMR_WB,
+            MIMETYPE_AUDIO_MPEG,
+            MIMETYPE_AUDIO_AAC,
+            MIMETYPE_AUDIO_QCELP,
+            MIMETYPE_AUDIO_VORBIS,
+            MIMETYPE_AUDIO_OPUS,
+            MIMETYPE_AUDIO_G711_ALAW,
+            MIMETYPE_AUDIO_G711_MLAW,
+            MIMETYPE_AUDIO_RAW,
+            MIMETYPE_AUDIO_FLAC,
+            MIMETYPE_AUDIO_MSGSM,
+            MIMETYPE_AUDIO_AC3,
+            MIMETYPE_AUDIO_EAC3,
+
+            MIMETYPE_IMAGE_ANDROID_HEIC,
+        };
+        Mutexed<std::unique_ptr<Config>>::Locked configLocked(mConfig);
+        const std::unique_ptr<Config> &config = *configLocked;
+        tunneled = config->mTunneled;
+        isMediaTypeKnown = (kKnownMediaTypes.count(config->mCodingMediaType) != 0);
+    }
+    if (!tunneled && isMediaTypeKnown && name.empty()) {
         constexpr std::chrono::steady_clock::duration kWorkDurationThreshold = 3s;
         std::chrono::steady_clock::duration elapsed = mChannel->elapsed();
         if (elapsed >= kWorkDurationThreshold) {
@@ -2549,7 +2656,11 @@ static status_t CalculateMinMaxUsage(
             *maxUsage = 0;
             continue;
         }
-        *minUsage |= supported.values[0].u64;
+        if (supported.values.size() > 1) {
+            *minUsage |= supported.values[1].u64;
+        } else {
+            *minUsage |= supported.values[0].u64;
+        }
         int64_t currentMaxUsage = 0;
         for (const C2Value::Primitive &flags : supported.values) {
             currentMaxUsage |= flags.u64;

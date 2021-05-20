@@ -19,6 +19,8 @@
 #define LOG_TAG "MediaCodec"
 #include <utils/Log.h>
 
+#include <set>
+
 #include <inttypes.h>
 #include <stdlib.h>
 
@@ -201,6 +203,10 @@ struct MediaCodec::ResourceManagerServiceProxy : public RefBase {
     // implements DeathRecipient
     static void BinderDiedCallback(void* cookie);
     void binderDied();
+    static Mutex sLockCookies;
+    static std::set<void*> sCookies;
+    static void addCookie(void* cookie);
+    static void removeCookie(void* cookie);
 
     void addResource(const MediaResourceParcel &resource);
     void removeResource(const MediaResourceParcel &resource);
@@ -227,8 +233,15 @@ MediaCodec::ResourceManagerServiceProxy::ResourceManagerServiceProxy(
 }
 
 MediaCodec::ResourceManagerServiceProxy::~ResourceManagerServiceProxy() {
+
+    // remove the cookie, so any in-flight death notification will get dropped
+    // by our handler.
+    removeCookie(this);
+
+    Mutex::Autolock _l(mLock);
     if (mService != nullptr) {
         AIBinder_unlinkToDeath(mService->asBinder().get(), mDeathRecipient.get(), this);
+        mService = nullptr;
     }
 }
 
@@ -240,6 +253,10 @@ void MediaCodec::ResourceManagerServiceProxy::init() {
         return;
     }
 
+    // so our handler will process the death notifications
+    addCookie(this);
+
+    // after this, require mLock whenever using mService
     AIBinder_linkToDeath(mService->asBinder().get(), mDeathRecipient.get(), this);
 
     // Kill clients pending removal.
@@ -247,9 +264,28 @@ void MediaCodec::ResourceManagerServiceProxy::init() {
 }
 
 //static
+Mutex MediaCodec::ResourceManagerServiceProxy::sLockCookies;
+std::set<void*> MediaCodec::ResourceManagerServiceProxy::sCookies;
+
+//static
+void MediaCodec::ResourceManagerServiceProxy::addCookie(void* cookie) {
+    Mutex::Autolock _l(sLockCookies);
+    sCookies.insert(cookie);
+}
+
+//static
+void MediaCodec::ResourceManagerServiceProxy::removeCookie(void* cookie) {
+    Mutex::Autolock _l(sLockCookies);
+    sCookies.erase(cookie);
+}
+
+//static
 void MediaCodec::ResourceManagerServiceProxy::BinderDiedCallback(void* cookie) {
-    auto thiz = static_cast<ResourceManagerServiceProxy*>(cookie);
-    thiz->binderDied();
+    Mutex::Autolock _l(sLockCookies);
+    if (sCookies.find(cookie) != sCookies.end()) {
+        auto thiz = static_cast<ResourceManagerServiceProxy*>(cookie);
+        thiz->binderDied();
+    }
 }
 
 void MediaCodec::ResourceManagerServiceProxy::binderDied() {
@@ -1333,16 +1369,12 @@ status_t MediaCodec::configure(
     // the reclaimResource call doesn't consider the requester's buffer size for now.
     resources.push_back(MediaResource::GraphicMemoryResource(1));
     for (int i = 0; i <= kMaxRetry; ++i) {
-        if (i > 0) {
-            // Don't try to reclaim resource for the first time.
-            if (!mResourceManagerProxy->reclaimResource(resources)) {
-                break;
-            }
-        }
-
         sp<AMessage> response;
         err = PostAndAwaitResponse(msg, &response);
         if (err != OK && err != INVALID_OPERATION) {
+            if (isResourceError(err) && !mResourceManagerProxy->reclaimResource(resources)) {
+                break;
+            }
             // MediaCodec now set state to UNINITIALIZED upon any fatal error.
             // To maintain backward-compatibility, do a reset() to put codec
             // back into INITIALIZED state.
@@ -2247,6 +2279,11 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                         case STOPPING:
                         {
                             if (mFlags & kFlagSawMediaServerDie) {
+                                bool postPendingReplies = true;
+                                if (mState == RELEASING && !mReplyID) {
+                                    ALOGD("Releasing asynchronously, so nothing to reply here.");
+                                    postPendingReplies = false;
+                                }
                                 // MediaServer died, there definitely won't
                                 // be a shutdown complete notification after
                                 // all.
@@ -2258,7 +2295,9 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                                 if (mState == RELEASING) {
                                     mComponentName.clear();
                                 }
-                                postPendingRepliesAndDeferredMessages(origin + ":dead");
+                                if (postPendingReplies) {
+                                    postPendingRepliesAndDeferredMessages(origin + ":dead");
+                                }
                                 sendErrorResponse = false;
                             } else if (!mReplyID) {
                                 sendErrorResponse = false;
@@ -3656,7 +3695,8 @@ void MediaCodec::handleOutputFormatChangeIfNeeded(const sp<MediaCodecBuffer> &bu
         // format as necessary.
         int32_t flags = 0;
         (void) buffer->meta()->findInt32("flags", &flags);
-        if ((flags & BUFFER_FLAG_CODECCONFIG) && !(mFlags & kFlagIsSecure)) {
+        if ((flags & BUFFER_FLAG_CODECCONFIG) && !(mFlags & kFlagIsSecure)
+                && !mOwnerName.startsWith("codec2::")) {
             status_t err =
                 amendOutputFormatWithCodecSpecificData(buffer);
 
