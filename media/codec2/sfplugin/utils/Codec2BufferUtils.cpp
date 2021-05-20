@@ -507,9 +507,19 @@ MediaImage2 CreateYUV420SemiPlanarMediaImage2(
     };
 }
 
+// Matrix coefficient to convert RGB to Planar YUV data.
+// Each sub-array represents the 3X3 coeff values in a 1D array
+static const int16_t bt601Matrix[2][9] = {
+        {66, 129, 25, -38, -74, 112, 112, -94, -18},   /* RANGE_LIMITED */
+        {76, 150, 29, -43, -85, 128, 128, -107, -21}}; /* RANGE_FULL */
+
+static const int16_t bt709Matrix[2][9] = {
+        {47, 157, 16, -26, -86, 112, 112, -102, -10},  /* RANGE_LIMITED */
+        {54, 183, 18, -29, -99, 128, 128, -116, -12}}; /* RANGE_FULL */
+
 status_t ConvertRGBToPlanarYUV(
         uint8_t *dstY, size_t dstStride, size_t dstVStride, size_t bufferSize,
-        const C2GraphicView &src) {
+        const C2GraphicView &src, C2Color::matrix_t colorMatrix, C2Color::range_t colorRange) {
     CHECK(dstY != nullptr);
     CHECK((src.width() & 1) == 0);
     CHECK((src.height() & 1) == 0);
@@ -527,6 +537,26 @@ status_t ConvertRGBToPlanarYUV(
     const uint8_t *pGreen = src.data()[C2PlanarLayout::PLANE_G];
     const uint8_t *pBlue  = src.data()[C2PlanarLayout::PLANE_B];
 
+    // using ITU-R BT.601 conversion matrix and RANGE_LIMITED by default
+    const int16_t *weights = bt601Matrix[0];
+    uint8_t lumaOffset = 16;
+
+    if (colorRange == C2Color::RANGE_FULL) {
+        weights = bt601Matrix[1];
+        lumaOffset = 0;
+    }
+
+    // set coefficients for BT.709
+    if (colorMatrix == C2Color::MATRIX_BT709) {
+        if (colorRange == C2Color::RANGE_FULL) {
+            weights = bt709Matrix[1];
+            lumaOffset = 0;
+        }
+        else {
+            weights = bt709Matrix[0];
+        }
+    }
+
 #define CLIP3(x,y,z) (((z) < (x)) ? (x) : (((z) > (y)) ? (y) : (z)))
     for (size_t y = 0; y < src.height(); ++y) {
         for (size_t x = 0; x < src.width(); ++x) {
@@ -534,21 +564,20 @@ status_t ConvertRGBToPlanarYUV(
             uint8_t green = *pGreen;
             uint8_t blue = *pBlue;
 
-            // using ITU-R BT.601 conversion matrix
-            unsigned luma =
-                CLIP3(0, (((red * 66 + green * 129 + blue * 25) >> 8) + 16), 255);
+            unsigned luma = ((red * weights[0] + green * weights[1] + blue * weights[2]) >> 8) +
+                             lumaOffset;
 
-            dstY[x] = luma;
+            dstY[x] = CLIP3(0, luma, 255);
 
             if ((x & 1) == 0 && (y & 1) == 0) {
-                unsigned U =
-                    CLIP3(0, (((-red * 38 - green * 74 + blue * 112) >> 8) + 128), 255);
+                unsigned U = ((red * weights[3] + green * weights[4] + blue * weights[5]) >> 8) +
+                              128;
 
-                unsigned V =
-                    CLIP3(0, (((red * 112 - green * 94 - blue * 18) >> 8) + 128), 255);
+                unsigned V = ((red * weights[6] + green * weights[7] + blue * weights[8]) >> 8) +
+                              128;
 
-                dstU[x >> 1] = U;
-                dstV[x >> 1] = V;
+                dstU[x >> 1] = CLIP3(0, U, 255);
+                dstV[x >> 1] = CLIP3(0, V, 255);
             }
             pRed   += layout.planes[C2PlanarLayout::PLANE_R].colInc;
             pGreen += layout.planes[C2PlanarLayout::PLANE_G].colInc;
