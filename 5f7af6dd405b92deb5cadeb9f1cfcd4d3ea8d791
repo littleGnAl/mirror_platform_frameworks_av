@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f30f89f_b3c4cae4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010681
+      },
+      "writtenOn": "2021-05-20T10:45:10Z",
+      "side": 1,
+      "message": "Presubmit failures cannot be caused by this CL since it only changes OWNERS.",
+      "revId": "5f7af6dd405b92deb5cadeb9f1cfcd4d3ea8d791",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b60e7f95_71899cbc",
