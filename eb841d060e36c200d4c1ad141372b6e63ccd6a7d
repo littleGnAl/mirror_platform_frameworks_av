@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2449b4e1_aa53d089",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-20T18:02:44Z",
+      "side": 1,
+      "message": "This is a refactor CL that will mark the tests as failed when testing vendor\u0027s custom codecs with the following CL.\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1651007\n\nBoth the CLs can be built and merged independently.\nCan you please review?",
+      "revId": "eb841d060e36c200d4c1ad141372b6e63ccd6a7d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
