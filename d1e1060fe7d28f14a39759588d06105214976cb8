@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56abaf0c_2835d2f4",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 385,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-05-20T14:35:58Z",
+      "side": 1,
+      "message": "set_blocksize documentation in flac says:\n\n * The number of samples to use per frame.  Use \\c 0 to let the encoder\n * estimate a blocksize; this is usually best.\n\n\nany particular reason we don\u0027t use 0 here and let the encoder choose\nwhat is best (and then we can use the get_blocksize() to find out what it chose).\n\n[it would differ from the old method because before this, we didn\u0027t set blocksize\nat all, this would be an explicit set_blocksize(0) to ask flac to calculate one]",
+      "range": {
+        "startLine": 385,
+        "startChar": 69,
+        "endLine": 385,
+        "endChar": 82
+      },
+      "revId": "d1e1060fe7d28f14a39759588d06105214976cb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
