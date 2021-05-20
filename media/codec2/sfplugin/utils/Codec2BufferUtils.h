@@ -18,6 +18,7 @@
 #define CODEC2_BUFFER_UTILS_H_
 
 #include <C2Buffer.h>
+#include <C2Config.h>
 #include <C2ParamDef.h>
 
 #include <media/hardware/VideoAPI.h>
@@ -37,9 +38,15 @@ namespace android {
  * \retval NO_MEMORY media image is too small
  * \retval OK on success
  */
+
+// default matrix and range values for conversion
+static C2Color::matrix_t defMatrix = C2Color::MATRIX_BT601;
+static C2Color::range_t defRange = C2Color::RANGE_LIMITED;
+
 status_t ConvertRGBToPlanarYUV(
         uint8_t *dstY, size_t dstStride, size_t dstVStride, size_t bufferSize,
-        const C2GraphicView &src);
+        const C2GraphicView &src, C2Color::matrix_t &colorMatrix = defMatrix,
+        C2Color::range_t &colorRange = defRange);
 
 /**
  * Returns a planar YUV 420 8-bit media image descriptor.
