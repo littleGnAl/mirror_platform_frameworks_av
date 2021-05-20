@@ -39,6 +39,24 @@
       "message": "const int bytesPerSample \u003d bitsPerSample \u003e\u003e 3;\nmBlockSize \u003d MIN(kInBlockSize, MAX_INPUT_BUFFER_SIZE / (bytesPerSample * ChannelCount));\nok \u003d ok \u0026\u0026 FLAC__stream_encoder_set_blocksize(mFlacStreamEncoder, kBlockSize);",
       "revId": "7a500d3a7d4b033ec601573879ae1ed05d1808b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4bc3837d_b8e420ca",
+        "filename": "media/codec2/components/flac/C2SoftFlacEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 382,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2021-05-20T03:51:35Z",
+      "side": 1,
+      "message": "mBlockSize \u003d MAX(kInBlockSize, MAX_INPUT_BUFFER_SIZE / (bytesPerSample * ChannelCount));",
+      "parentUuid": "efd3aa37_07b3921a",
+      "revId": "7a500d3a7d4b033ec601573879ae1ed05d1808b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
