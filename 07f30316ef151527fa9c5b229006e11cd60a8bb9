@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2cb8b4b2_bcc7f31f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-05-21T13:50:04Z",
+      "side": 1,
+      "message": "@Eric: here we are, 32bit limit reached for criterion type... This is a WA to relax the build.\nNeed to do a common filter of devices, update the engine code also to prevent translating these filtered devices...",
+      "revId": "07f30316ef151527fa9c5b229006e11cd60a8bb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
