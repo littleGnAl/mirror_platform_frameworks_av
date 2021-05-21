@@ -33,6 +33,24 @@
       "message": "Is this still needed with this CL?\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1693605\n",
       "revId": "07f30316ef151527fa9c5b229006e11cd60a8bb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8b5c96ad_7ef15ce0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-05-21T14:26:15Z",
+      "side": 1,
+      "message": "Unfortunately yes, it will fail when calling the script of PFW (appending criterion type). When adding the first over limit, the script will set back the numerical value to \"1\" as a bit shift, thus will detect duplicated value and failing.\nI have been struggling since yesterday on this!",
+      "parentUuid": "41145c28_ab737735",
+      "revId": "07f30316ef151527fa9c5b229006e11cd60a8bb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
