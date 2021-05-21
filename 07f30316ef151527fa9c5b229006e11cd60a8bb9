@@ -16,6 +16,23 @@
       "message": "@Eric: here we are, 32bit limit reached for criterion type... This is a WA to relax the build.\nNeed to do a common filter of devices, update the engine code also to prevent translating these filtered devices...",
       "revId": "07f30316ef151527fa9c5b229006e11cd60a8bb9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41145c28_ab737735",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-05-21T14:22:36Z",
+      "side": 1,
+      "message": "Is this still needed with this CL?\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1693605\n",
+      "revId": "07f30316ef151527fa9c5b229006e11cd60a8bb9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
