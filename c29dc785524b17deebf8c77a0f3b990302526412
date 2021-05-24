@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91744c3f_c86db87e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-24T23:42:31Z",
+      "side": 1,
+      "message": "As per discussion with Lajos, \nWe can not expect MediaExtractor to support all the codecs that are present on the device.\nSo we would need to add support to accept custom elementary stream and info file as well.\nSo this CL will need some more work.",
+      "revId": "c29dc785524b17deebf8c77a0f3b990302526412",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
