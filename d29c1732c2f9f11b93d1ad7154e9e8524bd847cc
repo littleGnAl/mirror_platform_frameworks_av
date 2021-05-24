@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7321e2fe_74ab852d",
+        "filename": "media/codec2/components/aac/C2SoftAacDec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 302,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-05-24T18:48:31Z",
+      "side": 1,
+      "message": "why not:\n\naacDecoder_Close()\nmAACDecoder \u003d null;\nC2SoftAacDec::initDecoder()\n\nit looks like there are a number of DRC-related parameters there.",
+      "range": {
+        "startLine": 293,
+        "startChar": 4,
+        "endLine": 302,
+        "endChar": 5
+      },
+      "revId": "d29c1732c2f9f11b93d1ad7154e9e8524bd847cc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
