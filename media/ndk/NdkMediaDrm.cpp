@@ -98,62 +98,70 @@ void DrmListener::notify(DrmPlugin::EventType eventType, int extra, const Parcel
 
     AMediaDrmSessionId sessionId = {NULL, 0};
     int32_t sessionIdSize = obj->readInt32();
+    status_t err  = 0;
     if (sessionIdSize <= 0) {
-        ALOGE("Invalid session id size");
-        return;
-    }
-
-    std::unique_ptr<uint8_t[]> sessionIdData(new uint8_t[sessionIdSize]);
-    sessionId.ptr = sessionIdData.get();
-    sessionId.length = sessionIdSize;
-    status_t err = obj->read(sessionIdData.get(), sessionId.length);
-    if (err != OK) {
-        ALOGE("Failed to read session id, error=%d", err);
-        return;
-    }
-
-    if (DrmPlugin::kDrmPluginEventExpirationUpdate == eventType) {
-        int64_t expiryTimeInMS = obj->readInt64();
-        if (expiryTimeInMS >= 0) {
-            (*mExpirationUpdateListener)(mObj, &sessionId, expiryTimeInMS);
-        } else {
-            ALOGE("Failed to read expiry time, status=%" PRId64 "", expiryTimeInMS);
-        }
-        return;
-    } else if (DrmPlugin::kDrmPluginEventKeysChange == eventType) {
-        int32_t numKeys = 0;
-        err = obj->readInt32(&numKeys);
+        ALOGW("Invalid sessionIdSize is 0x%x eventType is %d", sessionIdSize, eventType);
+        sessionIdSize = 0;
+    } else {
+        std::unique_ptr<uint8_t[]> sessionIdData(new uint8_t[sessionIdSize]);
+        sessionId.ptr = sessionIdData.get();
+        sessionId.length = sessionIdSize;
+        err = obj->read(sessionIdData.get(), sessionId.length);
         if (err != OK) {
-            ALOGE("Failed to read number of keys status, error=%d", err);
+            ALOGE("Failed to read session id, error=%d", err);
             return;
         }
 
-        Vector<AMediaDrmKeyStatus> keysStatus;
-        std::vector<std::unique_ptr<uint8_t[]> > dataPointers;
-        AMediaDrmKeyStatus keyStatus;
-
-        for (size_t i = 0; i < numKeys; ++i) {
-            keyStatus.keyId.ptr = nullptr;
-            keyStatus.keyId.length = 0;
-            int32_t idSize = obj->readInt32();
-            if (idSize > 0) {
-                std::unique_ptr<uint8_t[]> data(new uint8_t[idSize]);
-                err = obj->read(data.get(), idSize);
-                if (err != OK) {
-                    ALOGE("Failed to read key data, error=%d", err);
-                    return;
-                }
-                keyStatus.keyId.ptr = data.get();
-                keyStatus.keyId.length = idSize;
-                dataPointers.push_back(std::move(data));
+        if (DrmPlugin::kDrmPluginEventExpirationUpdate == eventType) {
+            if (mExpirationUpdateListener == NULL) {
+                ALOGW("ExpirationUpdateListener not set");
+                return;
             }
-            keyStatus.keyType = static_cast<AMediaDrmKeyStatusType>(obj->readInt32());
-            keysStatus.push(keyStatus);
-        }
+            int64_t expiryTimeInMS = obj->readInt64();
+            if (expiryTimeInMS >= 0) {
+                (*mExpirationUpdateListener)(mObj, &sessionId, expiryTimeInMS);
+            } else {
+                ALOGE("Failed to read expiry time, status=%" PRId64 "", expiryTimeInMS);
+            }
+            return;
+        } else if (DrmPlugin::kDrmPluginEventKeysChange == eventType) {
+            if (mKeysChangeListener == NULL) {
+                ALOGW("KeysChangeListener not set");
+                return;
+            }
+            int32_t numKeys = 0;
+            err = obj->readInt32(&numKeys);
+            if (err != OK) {
+                ALOGE("Failed to read number of keys status, error=%d", err);
+                return;
+            }
 
-        bool hasNewUsableKey = obj->readInt32();
-        (*mKeysChangeListener)(mObj, &sessionId, keysStatus.array(), numKeys, hasNewUsableKey);
-        return;
+            Vector<AMediaDrmKeyStatus> keysStatus;
+            std::vector<std::unique_ptr<uint8_t[]> > dataPointers;
+            AMediaDrmKeyStatus keyStatus;
+
+            for (size_t i = 0; i < numKeys; ++i) {
+                keyStatus.keyId.ptr = nullptr;
+                keyStatus.keyId.length = 0;
+                int32_t idSize = obj->readInt32();
+                if (idSize > 0) {
+                    std::unique_ptr<uint8_t[]> data(new uint8_t[idSize]);
+                    err = obj->read(data.get(), idSize);
+                    if (err != OK) {
+                        ALOGE("Failed to read key data, error=%d", err);
+                        return;
+                    }
+                    keyStatus.keyId.ptr = data.get();
+                    keyStatus.keyId.length = idSize;
+                    dataPointers.push_back(std::move(data));
+                }
+                keyStatus.keyType = static_cast<AMediaDrmKeyStatusType>(obj->readInt32());
+                keysStatus.push(keyStatus);
+            }
+            bool hasNewUsableKey = obj->readInt32();
+            (*mKeysChangeListener)(mObj, &sessionId, keysStatus.array(), numKeys, hasNewUsableKey);
+            return;
+        }
     }
 
     // Handles AMediaDrmEventListener below:
@@ -192,7 +200,8 @@ void DrmListener::notify(DrmPlugin::EventType eventType, int extra, const Parcel
         }
         delete [] data;
     } else {
-        ALOGE("Error reading parcel: invalid event data size=%d", dataSize);
+        ALOGW("Event is %d have ignore the external data", ndkEventType);
+        (*mEventListener)(mObj, &sessionId, ndkEventType, extra, NULL, 0);
     }
 }
 
