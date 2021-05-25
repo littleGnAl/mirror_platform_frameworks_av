@@ -375,6 +375,7 @@ status_t C2SoftVpxEnc::initEncoder() {
         mRequestSync = mIntf->getRequestSync_l();
         mLayering = mIntf->getTemporalLayers_l();
         mTemporalLayers = mLayering->m.layerCount;
+        mQpBounds = mIntf->getPictureQuantization_l();
     }
 
     switch (mBitrateMode->value) {
@@ -386,6 +387,13 @@ status_t C2SoftVpxEnc::initEncoder() {
         default:
             mBitrateControlMode = VPX_VBR;
             break;
+    }
+
+    if (mQpBounds->flexCount() > 0) {
+        // no need to loop, vpx library takes same range for I/P/B picture type
+        const C2PictureQuantizationStruct &layer = mQpBounds->m.values[0];
+        mMaxQuantizer = layer.max;
+        mMinQuantizer = layer.min;
     }
 
     setCodecSpecificInterface();

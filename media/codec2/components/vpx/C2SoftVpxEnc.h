@@ -45,6 +45,10 @@ typedef enum TemporalPatternType {
     VPXTemporalLayerPatternMax = 0x7FFFFFFF
 } TemporalPatternType;
 
+/* Quantization param values defined by the spec */
+#define VPX_QP_MIN 0
+#define VPX_QP_MAX 63
+
 // Base class for a VPX Encoder Component
 //
 // Only following encoder settings are available (codec specific settings might
@@ -219,6 +223,7 @@ struct C2SoftVpxEnc : public SimpleC2Component {
     std::shared_ptr<C2StreamBitrateModeTuning::output> mBitrateMode;
     std::shared_ptr<C2StreamRequestSyncFrameTuning::output> mRequestSync;
     std::shared_ptr<C2StreamTemporalLayeringTuning::output> mLayering;
+    std::shared_ptr<C2StreamPictureQuantizationTuning::output> mQpBounds;
 
      C2_DO_NOT_COPY(C2SoftVpxEnc);
 };
@@ -248,6 +253,58 @@ class C2SoftVpxEnc::IntfImpl : public SimpleInterface<void>::BaseParams {
             C2P<C2StreamProfileLevelInfo::output> &me);
 
     static C2R LayeringSetter(bool mayBlock, C2P<C2StreamTemporalLayeringTuning::output>& me);
+
+    static C2R PictureQuantizationSetter(bool mayBlock,
+                                         C2P<C2StreamPictureQuantizationTuning::output> &me) {
+        (void)mayBlock;
+
+        // these are the ones we're going to set, so want them to default
+        // to the DEFAULT values for the codec
+        int32_t iMin = VPX_QP_MIN, pMin = VPX_QP_MIN, bMin = VPX_QP_MIN;
+        int32_t iMax = VPX_QP_MAX, pMax = VPX_QP_MAX, bMax = VPX_QP_MAX;
+
+        for (size_t i = 0; i < me.v.flexCount(); ++i) {
+            const C2PictureQuantizationStruct &layer = me.v.m.values[i];
+
+            // layerMin is clamped to [VPX_QP_MIN, layerMax] to avoid error
+            // cases where layer.min > layer.max
+            int32_t layerMax = std::clamp(layer.max, VPX_QP_MIN, VPX_QP_MAX);
+            int32_t layerMin = std::clamp(layer.min, VPX_QP_MIN, layerMax);
+            if (layer.type_ == C2Config::picture_type_t(I_FRAME)) {
+                iMax = layerMax;
+                iMin = layerMin;
+                ALOGV("iMin %d iMax %d", iMin, iMax);
+            } else if (layer.type_ == C2Config::picture_type_t(P_FRAME)) {
+                pMax = layerMax;
+                pMin = layerMin;
+                ALOGV("pMin %d pMax %d", pMin, pMax);
+            } else if (layer.type_ == C2Config::picture_type_t(B_FRAME)) {
+                bMax = layerMax;
+                bMin = layerMin;
+                ALOGV("bMin %d bMax %d", bMin, bMax);
+            }
+        }
+
+        ALOGV("PictureQuantizationSetter(entry): i %d-%d p %d-%d b %d-%d",
+              iMin, iMax, pMin, pMax, bMin, bMax);
+
+        int32_t maxFrameQP = std::min(std::min(iMax, pMax), bMax);
+        int32_t minFrameQP = std::max(std::max(iMin, pMin), bMin);
+        if (minFrameQP > maxFrameQP) {
+            minFrameQP = maxFrameQP;
+        }
+
+        // put them back into the structure
+        for (size_t i = 0; i < me.v.flexCount(); ++i) {
+            me.set().m.values[i].max = maxFrameQP;
+            me.set().m.values[i].min = minFrameQP;
+        }
+
+        ALOGV("PictureQuantizationSetter(exit): i %d-%d p %d-%d b %d-%d",
+              iMin, iMax, pMin, pMax, bMin, bMax);
+
+        return C2R::Ok();
+    }
 
     // unsafe getters
     std::shared_ptr<C2StreamPictureSizeInfo::input> getSize_l() const { return mSize; }
@@ -283,6 +340,7 @@ class C2SoftVpxEnc::IntfImpl : public SimpleInterface<void>::BaseParams {
     std::shared_ptr<C2StreamProfileLevelInfo::output> mProfileLevel;
     std::shared_ptr<C2StreamColorAspectsInfo::input> mColorAspects;
     std::shared_ptr<C2StreamColorAspectsInfo::output> mCodedColorAspects;
+    std::shared_ptr<C2StreamPictureQuantizationTuning::output> mPictureQuantization;
 };
 
 }  // namespace android
