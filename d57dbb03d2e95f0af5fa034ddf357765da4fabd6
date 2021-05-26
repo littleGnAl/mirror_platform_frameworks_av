@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2e5e176_c2485719",
+        "filename": "media/ndk/NdkMediaDrm.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 117,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2021-05-26T01:54:45Z",
+      "side": 1,
+      "message": "based on the check on line 92 above it seems that not having an expirationupdatelistener is fine, and not something we should log a warning for every time",
+      "revId": "d57dbb03d2e95f0af5fa034ddf357765da4fabd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c839e4cf_a61af962",
+        "filename": "media/ndk/NdkMediaDrm.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2021-05-26T01:54:45Z",
+      "side": 1,
+      "message": "same",
+      "revId": "d57dbb03d2e95f0af5fa034ddf357765da4fabd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5de1bff_5fe3aebd",
+        "filename": "media/ndk/NdkMediaDrm.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2021-05-26T01:54:45Z",
+      "side": 1,
+      "message": "again based on the check on line 92, it seems like not having an event listener is valid, so there should be a null check here and on line 204 as well",
+      "revId": "d57dbb03d2e95f0af5fa034ddf357765da4fabd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
