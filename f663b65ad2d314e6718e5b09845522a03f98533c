@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5cfebc63_cbe07b1f",
+        "filename": "media/codec2/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-27T22:46:59Z",
+      "side": 1,
+      "message": "we are currently expecting that the clips for custom codec are also pushed in the same directory where rest of the files are present.\nThis works fine when we run the binaries directly.\n\nNeed to see how to get this to work when run as part of atest or as part of vts-tradefed.",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 61
+      },
+      "revId": "f663b65ad2d314e6718e5b09845522a03f98533c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
