@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1904e6e_09e94677",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-28T16:15:26Z",
+      "side": 1,
+      "message": "for limited range clip to 0 to 255 was anyway a NOP(), hence this didn\u0027t really matter earlier.\nNo need for a separate CL for this fix.\n\n\nagree on changing from x,y,z to min, value, max",
+      "parentUuid": "158ff971_990cd250",
+      "range": {
+        "startLine": 549,
+        "startChar": 0,
+        "endLine": 549,
+        "endChar": 12
+      },
+      "revId": "c0ad1ae87fe01cbd5e013f7e89a46a1a5b55c9b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "711976c9_30deb006",
         "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
         "patchSetId": 2
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-28T15:40:04Z",
       "side": 1,
       "message": "nitpick: can rename it to wghts so that expression fits in one line. If you want to use weights then make it 1D array and use indices as [4], [5], [6] and not 2d subscripts",
+      "range": {
+        "startLine": 556,
+        "startChar": 34,
+        "endLine": 556,
+        "endChar": 41
+      },
+      "revId": "c0ad1ae87fe01cbd5e013f7e89a46a1a5b55c9b4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0cb22d6f_e97fddf0",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 556,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-28T16:15:26Z",
+      "side": 1,
+      "message": "2d is more readable. and weights is also more readble.\nSo let us not change this.",
+      "parentUuid": "711976c9_30deb006",
       "range": {
         "startLine": 556,
         "startChar": 34,
