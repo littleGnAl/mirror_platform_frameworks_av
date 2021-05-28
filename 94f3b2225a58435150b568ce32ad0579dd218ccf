@@ -46,6 +46,30 @@
       },
       "revId": "94f3b2225a58435150b568ce32ad0579dd218ccf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "727e8c8c_36b26fc3",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2021-05-28T19:55:10Z",
+      "side": 1,
+      "message": "just clip range to 1 to 2.",
+      "parentUuid": "01e7cc19_14195cf1",
+      "range": {
+        "startLine": 544,
+        "startChar": 24,
+        "endLine": 544,
+        "endChar": 34
+      },
+      "revId": "94f3b2225a58435150b568ce32ad0579dd218ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
