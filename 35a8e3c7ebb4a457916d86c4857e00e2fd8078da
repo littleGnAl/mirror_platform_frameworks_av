@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ee3c7017_146dedb5",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2021-05-28T09:38:55Z",
+      "side": 1,
+      "message": "// Matrix coefficient to convert RGB to Planar YUV data.\n// Each sub-array represents the 3X3 coeff values in a 1D array\nstatic const int16_t bt601Matrix[2][9] \u003d {\n        {76, 150, 29, -43, -85, 128, 128, -107, -21},  /* RANGE_FULL */\n        {66, 129, 25, -38, -74, 112, 112, -94, -18},  /* RANGE_LIMITED */\n};\n\nstatic const int16_t bt709Matrix[2][9] \u003d {\n        {54, 183, 18, -29, -99, 128, 128, -116, -12},  /* RANGE_FULL */\n        {47, 157, 16, -26, -86, 112, 112, -102, -10},  /* RANGE_LIMITED */\n};",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 519,
+        "endChar": 0
+      },
+      "revId": "35a8e3c7ebb4a457916d86c4857e00e2fd8078da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dce83a3e_63bac0a3",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2021-05-28T09:38:55Z",
+      "side": 1,
+      "message": "weights \u003d (colorMatrix \u003d\u003d C2Color::MATRIX_BT709) ? bt709Matrix[colorRange - 1] : bt601Matrix[colorRange - 1];",
+      "range": {
+        "startLine": 541,
+        "startChar": 4,
+        "endLine": 541,
+        "endChar": 44
+      },
+      "revId": "35a8e3c7ebb4a457916d86c4857e00e2fd8078da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9c38cf6b_68d69786",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2021-05-28T09:38:55Z",
+      "side": 1,
+      "message": "lumaOffset \u003d colorRange \u003d\u003d C2Color::RANGE_FULL ? 16 : 0",
+      "range": {
+        "startLine": 542,
+        "startChar": 12,
+        "endLine": 542,
+        "endChar": 23
+      },
+      "revId": "35a8e3c7ebb4a457916d86c4857e00e2fd8078da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e70b49c_6d5bc7ec",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2021-05-28T09:38:55Z",
+      "side": 1,
+      "message": "can be removed?",
+      "range": {
+        "startLine": 544,
+        "startChar": 3,
+        "endLine": 558,
+        "endChar": 5
+      },
+      "revId": "35a8e3c7ebb4a457916d86c4857e00e2fd8078da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9714034c_29b57dad",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2021-05-28T09:38:55Z",
+      "side": 1,
+      "message": "shouldnt the clipping be based on target range, For full range 0 - 255 and for limited range it needs to be 16-235",
+      "range": {
+        "startLine": 570,
+        "startChar": 21,
+        "endLine": 570,
+        "endChar": 42
+      },
+      "revId": "35a8e3c7ebb4a457916d86c4857e00e2fd8078da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "99fab3ef_826130f3",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2021-05-28T09:38:55Z",
+      "side": 1,
+      "message": "shouldnt the clipping be based on target range, For full range 0 - 255 and for limited range it needs to be 16-240",
+      "range": {
+        "startLine": 579,
+        "startChar": 16,
+        "endLine": 580,
+        "endChar": 48
+      },
+      "revId": "35a8e3c7ebb4a457916d86c4857e00e2fd8078da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
