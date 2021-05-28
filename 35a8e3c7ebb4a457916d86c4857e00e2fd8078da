@@ -95,6 +95,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "61f36c3b_546361b7",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1150374
+      },
+      "writtenOn": "2021-05-28T10:04:31Z",
+      "side": 1,
+      "message": "CLIP3 is wrong, \n#define CLIP3(miny, maxy, y) (((y) \u003c (miny))?(miny):(((y) \u003e (maxy))?(maxy):(y)))",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 31
+      },
+      "revId": "35a8e3c7ebb4a457916d86c4857e00e2fd8078da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9714034c_29b57dad",
         "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
         "patchSetId": 1
