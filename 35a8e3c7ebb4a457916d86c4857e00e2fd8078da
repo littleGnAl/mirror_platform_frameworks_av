@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "62a423f6_73e5ab35",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-05-28T14:25:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ee3c7017_146dedb5",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 519,
+        "endChar": 0
+      },
+      "revId": "35a8e3c7ebb4a457916d86c4857e00e2fd8078da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dce83a3e_63bac0a3",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-05-28T09:38:55Z",
       "side": 1,
       "message": "weights \u003d (colorMatrix \u003d\u003d C2Color::MATRIX_BT709) ? bt709Matrix[colorRange - 1] : bt601Matrix[colorRange - 1];",
+      "range": {
+        "startLine": 541,
+        "startChar": 4,
+        "endLine": 541,
+        "endChar": 44
+      },
+      "revId": "35a8e3c7ebb4a457916d86c4857e00e2fd8078da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "766bc6d4_7323f994",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 541,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-05-28T14:25:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dce83a3e_63bac0a3",
       "range": {
         "startLine": 541,
         "startChar": 4,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8aa82a9d_a686b772",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 542,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-05-28T14:25:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9c38cf6b_68d69786",
+      "range": {
+        "startLine": 542,
+        "startChar": 12,
+        "endLine": 542,
+        "endChar": 23
+      },
+      "revId": "35a8e3c7ebb4a457916d86c4857e00e2fd8078da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1e70b49c_6d5bc7ec",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-05-28T09:38:55Z",
       "side": 1,
       "message": "can be removed?",
+      "range": {
+        "startLine": 544,
+        "startChar": 3,
+        "endLine": 558,
+        "endChar": 5
+      },
+      "revId": "35a8e3c7ebb4a457916d86c4857e00e2fd8078da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be6e4932_1717b35e",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 558,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-05-28T14:25:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1e70b49c_6d5bc7ec",
       "range": {
         "startLine": 544,
         "startChar": 3,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a54627b_b35285c4",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 560,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-05-28T14:25:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61f36c3b_546361b7",
+      "range": {
+        "startLine": 560,
+        "startChar": 0,
+        "endLine": 560,
+        "endChar": 31
+      },
+      "revId": "35a8e3c7ebb4a457916d86c4857e00e2fd8078da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9714034c_29b57dad",
@@ -139,6 +259,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0e286ac_0d81b0fc",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 570,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-05-28T14:25:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9714034c_29b57dad",
+      "range": {
+        "startLine": 570,
+        "startChar": 21,
+        "endLine": 570,
+        "endChar": 42
+      },
+      "revId": "35a8e3c7ebb4a457916d86c4857e00e2fd8078da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "99fab3ef_826130f3",
@@ -152,6 +296,30 @@
       "writtenOn": "2021-05-28T09:38:55Z",
       "side": 1,
       "message": "shouldnt the clipping be based on target range, For full range 0 - 255 and for limited range it needs to be 16-240",
+      "range": {
+        "startLine": 579,
+        "startChar": 16,
+        "endLine": 580,
+        "endChar": 48
+      },
+      "revId": "35a8e3c7ebb4a457916d86c4857e00e2fd8078da",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "377e1a33_e5e6b502",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 580,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-05-28T14:25:20Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "99fab3ef_826130f3",
       "range": {
         "startLine": 579,
         "startChar": 16,
