@@ -22,6 +22,30 @@
       },
       "revId": "94f3b2225a58435150b568ce32ad0579dd218ccf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01e7cc19_14195cf1",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 544,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-28T18:26:22Z",
+      "side": 1,
+      "message": "Good catch.\nSo either create a new variable rangeIdx and ensure it is 0 or 1 based on range passed and then use it\n\nor\n\nkeep the matrices as bt601Matrix_full, bt601Matrix_limited and so on and access them using ? :",
+      "parentUuid": "f1b9d231_b31ac02f",
+      "range": {
+        "startLine": 544,
+        "startChar": 24,
+        "endLine": 544,
+        "endChar": 34
+      },
+      "revId": "94f3b2225a58435150b568ce32ad0579dd218ccf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
