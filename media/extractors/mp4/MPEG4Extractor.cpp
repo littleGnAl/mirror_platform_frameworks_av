@@ -2431,7 +2431,7 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
             if (mLastTrack == NULL)
                 return ERROR_MALFORMED;
 
-            AMediaFormat_setBuffer(mLastTrack->meta, 
+            AMediaFormat_setBuffer(mLastTrack->meta,
                     AMEDIAFORMAT_KEY_ESDS, &buffer[4], chunk_data_size - 4);
 
             if (mPath.size() >= 2
@@ -2513,7 +2513,7 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
             if (mLastTrack == NULL)
                 return ERROR_MALFORMED;
 
-            AMediaFormat_setBuffer(mLastTrack->meta, 
+            AMediaFormat_setBuffer(mLastTrack->meta,
                     AMEDIAFORMAT_KEY_CSD_AVC, buffer.get(), chunk_data_size);
 
             break;
@@ -2535,7 +2535,7 @@ status_t MPEG4Extractor::parseChunk(off64_t *offset, int depth) {
             if (mLastTrack == NULL)
                 return ERROR_MALFORMED;
 
-            AMediaFormat_setBuffer(mLastTrack->meta, 
+            AMediaFormat_setBuffer(mLastTrack->meta,
                     AMEDIAFORMAT_KEY_CSD_HEVC, buffer.get(), chunk_data_size);
 
             *offset += chunk_size;
@@ -4086,13 +4086,13 @@ status_t MPEG4Extractor::parseITunesMetaData(off64_t offset, size_t size) {
                 // custom genre string
                 buffer[size] = '\0';
 
-                AMediaFormat_setString(mFileMetaData, 
+                AMediaFormat_setString(mFileMetaData,
                         metadataKey, (const char *)buffer + 8);
             }
         } else {
             buffer[size] = '\0';
 
-            AMediaFormat_setString(mFileMetaData, 
+            AMediaFormat_setString(mFileMetaData,
                     metadataKey, (const char *)buffer + 8);
         }
     }
@@ -6308,7 +6308,7 @@ media_status_t MPEG4Source::read(
                 if (isSyncSample) {
                     AMediaFormat_setInt32(meta, AMEDIAFORMAT_KEY_IS_SYNC_FRAME, 1);
                 }
- 
+
                 ++mCurrentSampleIndex;
             }
         }
@@ -7048,6 +7048,7 @@ ExtractorDef GETEXTRACTORDEF() {
         2, // version
         "MP4 Extractor",
         { .v3 = {Sniff, extensions} },
+        0.4,
     };
 }
 

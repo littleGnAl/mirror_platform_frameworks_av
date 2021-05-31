@@ -145,6 +145,8 @@ struct ExtractorDef {
             const char **supported_types;
         } v3;
     } u;
+
+    float confidence;
 };
 
 // the C++ based API which first shipped in P and is no longer supported

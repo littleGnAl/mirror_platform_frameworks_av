@@ -1414,6 +1414,7 @@ ExtractorDef GETEXTRACTORDEF() {
         1, // version
         "Ogg Extractor",
         { .v3 = {Sniff, extensions} },
+        0.5,
     };
 }
 

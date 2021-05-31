@@ -398,6 +398,7 @@ ExtractorDef GETEXTRACTORDEF() {
         1, // version
         "AAC Extractor",
         { .v3 = {Sniff, extensions} },
+        0.2,
     };
 }
 

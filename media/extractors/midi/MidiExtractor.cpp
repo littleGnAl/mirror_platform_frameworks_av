@@ -378,6 +378,7 @@ ExtractorDef GETEXTRACTORDEF() {
                 extensions
             }
         },
+        0.8,
     };
 }
 

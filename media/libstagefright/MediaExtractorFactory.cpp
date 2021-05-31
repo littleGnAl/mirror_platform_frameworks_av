@@ -144,42 +144,26 @@ void *MediaExtractorFactory::sniff(
         plugins = gPlugins;
     }
 
-    void *bestCreator = NULL;
     for (auto it = plugins->begin(); it != plugins->end(); ++it) {
         ALOGV("sniffing %s", (*it)->def.extractor_name);
-        float newConfidence;
-        void *newMeta = nullptr;
-        FreeMetaFunc newFreeMeta = nullptr;
 
-        void *curCreator = NULL;
+        void *creator = NULL;
         if ((*it)->def.def_version == EXTRACTORDEF_VERSION_NDK_V1) {
-            curCreator = (void*) (*it)->def.u.v2.sniff(
-                    source->wrap(), &newConfidence, &newMeta, &newFreeMeta);
+            creator = (void*) (*it)->def.u.v2.sniff(
+                    source->wrap(), confidence, meta, freeMeta);
         } else if ((*it)->def.def_version == EXTRACTORDEF_VERSION_NDK_V2) {
-            curCreator = (void*) (*it)->def.u.v3.sniff(
-                    source->wrap(), &newConfidence, &newMeta, &newFreeMeta);
+            creator = (void*) (*it)->def.u.v3.sniff(
+                    source->wrap(), confidence, meta, freeMeta);
         }
 
-        if (curCreator) {
-            if (newConfidence > *confidence) {
-                *confidence = newConfidence;
-                if (*meta != nullptr && *freeMeta != nullptr) {
-                    (*freeMeta)(*meta);
-                }
-                *meta = newMeta;
-                *freeMeta = newFreeMeta;
-                plugin = *it;
-                bestCreator = curCreator;
-                *creatorVersion = (*it)->def.def_version;
-            } else {
-                if (newMeta != nullptr && newFreeMeta != nullptr) {
-                    newFreeMeta(newMeta);
-                }
-            }
+        if (creator && *confidence > 0) {
+            plugin = *it;
+            *creatorVersion = (*it)->def.def_version;
+            return creator;
         }
     }
 
-    return bestCreator;
+    return NULL;
 }
 
 // static
@@ -263,7 +247,11 @@ void MediaExtractorFactory::RegisterExtractors(
 }
 
 static bool compareFunc(const sp<ExtractorPlugin>& first, const sp<ExtractorPlugin>& second) {
-    return strcmp(first->def.extractor_name, second->def.extractor_name) < 0;
+    if (abs(first->def.confidence - second->def.confidence) <= 0.0001) {
+        return strcmp(first->def.extractor_name, second->def.extractor_name) < 0;
+    } else {
+        return (first->def.confidence > second->def.confidence);
+    }
 }
 
 static std::vector<std::string> gSupportedExtensions;
@@ -312,6 +300,7 @@ void MediaExtractorFactory::LoadExtractors() {
     gPlugins = newList;
 
     for (auto it = gPlugins->begin(); it != gPlugins->end(); ++it) {
+        ALOGV("extractor %s confidence %f", (*it)->def.extractor_name, (*it)->def.confidence);
         if ((*it)->def.def_version == EXTRACTORDEF_VERSION_NDK_V2) {
             for (size_t i = 0;; i++) {
                 const char* ext = (*it)->def.u.v3.supported_types[i];

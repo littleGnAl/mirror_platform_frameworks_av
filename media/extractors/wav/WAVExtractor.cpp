@@ -628,6 +628,7 @@ ExtractorDef GETEXTRACTORDEF() {
         1, // version
         "WAV Extractor",
         { .v3 = {Sniff, extensions} },
+        0.3,
     };
 }
 
