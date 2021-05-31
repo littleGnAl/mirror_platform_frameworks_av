@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6001be2c_a7dc4b17",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1487,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-31T15:48:40Z",
+      "side": 1,
+      "message": "this isn\u0027t really useful as by the time we get first input buffer, header is already encoded and VUI parameters are set with old values and output format already is sent with old values.\neven if we update format again later, muxer doesn\u0027t support changing format in the run time.\n\nso for now, for RGB input color aspects signalled will be wrong if they are anything other than 601/709 full/limited combinations.",
+      "range": {
+        "startLine": 1482,
+        "startChar": 0,
+        "endLine": 1487,
+        "endChar": 13
+      },
+      "revId": "fa045bbc51dc93efe4d03b2ce66b996f808256cf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
