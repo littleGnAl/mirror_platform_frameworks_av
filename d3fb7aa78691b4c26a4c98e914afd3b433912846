@@ -16,6 +16,24 @@
       "message": "constexpr and kDefaultMatrix, kDefaultRange for names\n\nand move this declaration to header file itself as extern constexpr can\u0027t be done.",
       "revId": "d3fb7aa78691b4c26a4c98e914afd3b433912846",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "37595c98_149a4835",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-05-31T16:59:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "efacd35d_2717ffe7",
+      "revId": "d3fb7aa78691b4c26a4c98e914afd3b433912846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
