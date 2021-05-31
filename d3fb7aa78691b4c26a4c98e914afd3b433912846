@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "efacd35d_2717ffe7",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-05-31T15:45:32Z",
+      "side": 1,
+      "message": "constexpr and kDefaultMatrix, kDefaultRange for names\n\nand move this declaration to header file itself as extern constexpr can\u0027t be done.",
+      "revId": "d3fb7aa78691b4c26a4c98e914afd3b433912846",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
