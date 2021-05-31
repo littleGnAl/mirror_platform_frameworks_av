@@ -24,12 +24,18 @@
 #include <sys/stat.h>
 
 #include <android/log.h>
+#ifndef BUILD_NDK
+#include <android/binder_process.h>
+#endif
 
 #include "Decoder.h"
 
 extern "C" JNIEXPORT int JNICALL Java_com_android_media_benchmark_library_Native_Decode(
         JNIEnv *env, jobject thiz, jstring jFilePath, jstring jFileName, jstring jStatsFile,
         jstring jCodecName, jboolean asyncMode) {
+#ifndef BUILD_NDK
+    ABinderProcess_startThreadPool();
+#endif
     const char *filePath = env->GetStringUTFChars(jFilePath, nullptr);
     const char *fileName = env->GetStringUTFChars(jFileName, nullptr);
     string sFilePath = string(filePath) + string(fileName);

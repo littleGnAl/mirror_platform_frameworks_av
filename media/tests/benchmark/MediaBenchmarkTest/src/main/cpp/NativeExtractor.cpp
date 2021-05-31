@@ -21,12 +21,18 @@
 #include <fstream>
 #include <string>
 #include <sys/stat.h>
+#ifndef BUILD_NDK
+#include <android/binder_process.h>
+#endif
 
 #include "Extractor.h"
 
 extern "C" JNIEXPORT int32_t JNICALL Java_com_android_media_benchmark_library_Native_Extract(
         JNIEnv *env, jobject thiz, jstring jInputFilePath, jstring jInputFileName,
         jstring jStatsFile) {
+#ifndef BUILD_NDK
+    ABinderProcess_startThreadPool();
+#endif
     UNUSED(thiz);
     const char *inputFilePath = env->GetStringUTFChars(jInputFilePath, nullptr);
     const char *inputFileName = env->GetStringUTFChars(jInputFileName, nullptr);
