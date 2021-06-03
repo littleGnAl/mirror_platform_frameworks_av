@@ -16,6 +16,46 @@
       "message": "Please review",
       "revId": "2f3ffbb39ad212a060f44cfaff053ef0c20c7586",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bed8f4de_6726eb3a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-03T23:07:53Z",
+      "side": 1,
+      "message": "otherwise looks ok to me",
+      "revId": "2f3ffbb39ad212a060f44cfaff053ef0c20c7586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f0fd9af5_5f205148",
+        "filename": "media/codec2/components/opus/C2SoftOpusEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-03T23:07:53Z",
+      "side": 1,
+      "message": "i like the idea of an else {  its an error because it\u0027s not a valid bitratemode }\nat this point. even though we have some paramter validation around like 82",
+      "range": {
+        "startLine": 224,
+        "startChar": 3,
+        "endLine": 224,
+        "endChar": 5
+      },
+      "revId": "2f3ffbb39ad212a060f44cfaff053ef0c20c7586",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
