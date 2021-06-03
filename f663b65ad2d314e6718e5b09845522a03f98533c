@@ -22,6 +22,30 @@
       },
       "revId": "f663b65ad2d314e6718e5b09845522a03f98533c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1809c883_f9573e52",
+        "filename": "media/codec2/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 423,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-03T04:15:03Z",
+      "side": 1,
+      "message": "I checked this again, though the files are in res folder, they are pushed to /data/local/tmp/media. This patch is specified in AndroidTest.xml and we can use the same folder to store files for testing custom codecs.\n\nPlease update README.md to mention this path and also create VideoDec.txt and AudioDec.txt in res folder with avc decoder and aac decoder entries as example.\nREADME.md can then mention the paths as example.",
+      "parentUuid": "5cfebc63_cbe07b1f",
+      "range": {
+        "startLine": 422,
+        "startChar": 0,
+        "endLine": 423,
+        "endChar": 61
+      },
+      "revId": "f663b65ad2d314e6718e5b09845522a03f98533c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
