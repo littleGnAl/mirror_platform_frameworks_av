@@ -1,0 +1,84 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75dd2cd8_739e831a",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 55,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2021-06-04T23:31:14Z",
+      "side": 1,
+      "message": "this was updated to 4K in ag/13401142.",
+      "revId": "1ad8c3b373172356f56393c0bf2016bc77a080f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b12aca34_07af101f",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2021-06-04T23:31:14Z",
+      "side": 1,
+      "message": "these haven\u0027t been defined yet, but I\u0027d expect them to be below level 3.\n\nhttps://aomediacodec.github.io/av1-spec/#levels",
+      "range": {
+        "startLine": 69,
+        "startChar": 41,
+        "endLine": 69,
+        "endChar": 91
+      },
+      "revId": "1ad8c3b373172356f56393c0bf2016bc77a080f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7197638_ac45fd3d",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2021-06-04T23:31:14Z",
+      "side": 1,
+      "message": "from here onward wouldn\u0027t be fully compliant given the resolution restriction above.",
+      "range": {
+        "startLine": 70,
+        "startChar": 42,
+        "endLine": 70,
+        "endChar": 63
+      },
+      "revId": "1ad8c3b373172356f56393c0bf2016bc77a080f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96e1d254_1d0bb644",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2021-06-04T23:31:14Z",
+      "side": 1,
+      "message": "the decoder does support all levels, but of course performance will be poor at higher levels / resolutions.",
+      "revId": "1ad8c3b373172356f56393c0bf2016bc77a080f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
