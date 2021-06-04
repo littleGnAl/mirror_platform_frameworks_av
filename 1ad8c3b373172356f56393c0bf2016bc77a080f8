@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e1988081_9f077592",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-04T23:43:03Z",
+      "side": 1,
+      "message": "Yes, had seen that, but still included them with the same assumption for completion.",
+      "parentUuid": "b12aca34_07af101f",
+      "range": {
+        "startLine": 69,
+        "startChar": 41,
+        "endLine": 69,
+        "endChar": 91
+      },
+      "revId": "1ad8c3b373172356f56393c0bf2016bc77a080f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7197638_ac45fd3d",
         "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
         "patchSetId": 1
@@ -66,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fccc1e2_c9b14459",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-04T23:43:03Z",
+      "side": 1,
+      "message": "Yes, I added level 5 with the resolution restriction in mind as that was necessary to support 2048x2048.\n\nBut with resolution support increased to 4k in the CL you mentioned above, the new levels added also should be fine. Level 5 is enough to support 4k resolutions.",
+      "parentUuid": "f7197638_ac45fd3d",
+      "range": {
+        "startLine": 70,
+        "startChar": 42,
+        "endLine": 70,
+        "endChar": 63
+      },
+      "revId": "1ad8c3b373172356f56393c0bf2016bc77a080f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "96e1d254_1d0bb644",
         "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
         "patchSetId": 1
@@ -77,6 +125,24 @@
       "writtenOn": "2021-06-04T23:31:14Z",
       "side": 1,
       "message": "the decoder does support all levels, but of course performance will be poor at higher levels / resolutions.",
+      "revId": "1ad8c3b373172356f56393c0bf2016bc77a080f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40227adc_78aa8547",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-04T23:43:03Z",
+      "side": 1,
+      "message": "Agreed.",
+      "parentUuid": "96e1d254_1d0bb644",
       "revId": "1ad8c3b373172356f56393c0bf2016bc77a080f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
