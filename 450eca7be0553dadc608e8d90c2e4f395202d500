@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24e8be83_ebca2fbb",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-04T20:01:05Z",
+      "side": 1,
+      "message": "Lajos,\nis there any other file in android which uses these constants?\nWe derived these values by rounding from ITU float values.\nAnd The limited range values for 601 differ from the ones used in omx path earlier at\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libstagefright/omx/SoftVideoEncoderOMXComponent.cpp;l\u003d494;drc\u003dmaster\n66, 129, 25 (values used here are same as current values in Codec2BufferUtils.cpp:ConvertRGBToPlanarYuv()\n65, 129, 25 (values in SoftVideoEncoderOMXComponent.cpp:ConvertRGB32ToPlanar()\n\nWhen all the three RGB values are 255, first one results in Y to be 236, where as in the second one results in 235 and 235 is the correct value.",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 521,
+        "endChar": 0
+      },
+      "revId": "450eca7be0553dadc608e8d90c2e4f395202d500",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
