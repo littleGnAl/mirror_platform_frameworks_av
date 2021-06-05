@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08b0cc31_69f8fda7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-05T22:40:10Z",
+      "side": 1,
+      "message": "some of these observations also apply to what I implemented earlier in the AVC encoder, the example on which this is based.  this means that a number of the changes we do to resolve comments here should also be applied to that plugin.",
+      "revId": "8fb217faccdec3cd94940c8b59d1e585493e25b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f5603a9_84a638cd",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-05T22:40:10Z",
+      "side": 1,
+      "message": "we should ensure that Min \u003c\u003d Max before we put them back into the structure.\n\nif someone configured min\u003emax, we should probably reject the setting (somehow...)",
+      "range": {
+        "startLine": 526,
+        "startChar": 8,
+        "endLine": 526,
+        "endChar": 11
+      },
+      "revId": "8fb217faccdec3cd94940c8b59d1e585493e25b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31d76619_1e8d1a12",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-05T22:40:10Z",
+      "side": 1,
+      "message": "if we\u0027re going to treat all 3 picture types as the same, then we should\nput the same value into the structure that we send back to the user as\npart of the PictureQuantizationSetter().\n\nI\u0027m ok with the codec not having different values for I/P/B, but let\u0027s make sure that the information is conveyed back to the user via the Setter() function.",
+      "range": {
+        "startLine": 766,
+        "startChar": 8,
+        "endLine": 766,
+        "endChar": 20
+      },
+      "revId": "8fb217faccdec3cd94940c8b59d1e585493e25b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6087a02_b9400ac3",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-05T22:40:10Z",
+      "side": 1,
+      "message": "I see the intent here to keep them from being too restrictive (there must be a certain range).   but since I don\u0027t see that we\u0027ve validated that max\u003emin,\nthis will allow something that\u0027s wildly out of whack (say max\u003d10, min\u003d40) through, which I do not think we want.\n\nif we\u0027ve validated that max\u003e\u003dmin, then we don\u0027t need the abs at this point.\n\ni think this really points to making sure that we validate max \u003e\u003d min somewhere in the process, probably as part of the setter.\n\nand should we be doing this math in the Setter, so that we are giving the final values back to the caller through the setter?",
+      "range": {
+        "startLine": 769,
+        "startChar": 11,
+        "endLine": 769,
+        "endChar": 35
+      },
+      "revId": "8fb217faccdec3cd94940c8b59d1e585493e25b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "319f534e_f1b61e70",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-05T22:40:10Z",
+      "side": 1,
+      "message": "i\u0027d probably say HEVC_QP_MIN / HEVC_QP_MAX\nto indicate that it\u0027s related to the standard.\n\n[i know that the avc encoder on which this is based does not follow that suggestion... at least not yet]",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "8fb217faccdec3cd94940c8b59d1e585493e25b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
