@@ -16,6 +16,29 @@
       "message": "this is fine from the av1 perspective. it matches vp8/9.",
       "revId": "5bbb89df1fc4328ec59ece9b59fb97f556b08fc6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7130c82b_292d0299",
+        "filename": "media/libstagefright/data/media_codecs_sw.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-05T22:44:58Z",
+      "side": 1,
+      "message": "should we also populate a slow-cpu version -- one that maybe only lets us go to 512x512\n\nsomething that at least gives us a little av1 support on the slower machines.\n[this is really going in a slightly different direction than the original\nbug that this is fixing ]",
+      "range": {
+        "startLine": 185,
+        "startChar": 77,
+        "endLine": 185,
+        "endChar": 88
+      },
+      "revId": "5bbb89df1fc4328ec59ece9b59fb97f556b08fc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
