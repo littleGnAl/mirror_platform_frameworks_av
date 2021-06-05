@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21b26e5b_58bdf92d",
+        "filename": "media/ndk/NdkMediaDrm.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1557693
+      },
+      "writtenOn": "2021-06-05T21:49:13Z",
+      "side": 1,
+      "message": "Is it ok to read a 0 length parcel. Should this be conditional?",
+      "range": {
+        "startLine": 109,
+        "startChar": 19,
+        "endLine": 109,
+        "endChar": 28
+      },
+      "revId": "e86b692453a193a17f4d78d0cd95f32197ee3ccb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
