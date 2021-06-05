@@ -16,6 +16,24 @@
       "message": "Lajos,\nApproach we are taking now in VTS is,\nif the MediaExtractor supports the codec that needs to be tested, then single file per codec is to be provided, else extracted raw bitstream and another file which lists the sizes, flags and timestamps for each of the independent units are needed.\nIn case the vendor doesn\u0027t provide a clip, test currently doesn\u0027t fail, it is instead marked as skipped.\nBased on how the first round of tests are done by few vendors, we can change this behavior later.\nCan you please review and let us know if this is fine?",
       "revId": "d2c7e1f80b807e109b6baf0dde8ce3ab69c8972d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a661d718_694a2785",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-05T00:39:05Z",
+      "side": 1,
+      "message": "Keeping this comment open.",
+      "parentUuid": "0235935a_8f27eeaa",
+      "revId": "d2c7e1f80b807e109b6baf0dde8ce3ab69c8972d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
