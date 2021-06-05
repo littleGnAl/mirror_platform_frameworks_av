@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2103b9b0_e1e08c48",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 9
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-05T18:08:37Z",
+      "side": 1,
+      "message": "Sungtak,\nThis CL is only specific to adding support for BT.601/BT.709 full/limited range for s/w encoders. I am not sure if this is related to the problem seen in b/186503024",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 14
+      },
+      "revId": "9d44c2c7c70456a36bca1996ab56cb34cf30d045",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
