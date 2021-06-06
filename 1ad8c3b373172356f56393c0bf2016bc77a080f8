@@ -37,6 +37,23 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "e973a81d_6cb71eb0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-06T04:48:39Z",
+      "side": 1,
+      "message": "Marking the comments as resolved as the CL has a Code-Review +2 now.\n",
+      "revId": "1ad8c3b373172356f56393c0bf2016bc77a080f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "75dd2cd8_739e831a",
         "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
         "patchSetId": 1
@@ -99,6 +116,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "50d36980_65a9f2e9",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 69,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-06T04:48:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e1988081_9f077592",
+      "range": {
+        "startLine": 69,
+        "startChar": 41,
+        "endLine": 69,
+        "endChar": 91
+      },
+      "revId": "1ad8c3b373172356f56393c0bf2016bc77a080f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f7197638_ac45fd3d",
@@ -146,6 +187,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9447e488_a1661b2e",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-06T04:48:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0fccc1e2_c9b14459",
+      "range": {
+        "startLine": 70,
+        "startChar": 42,
+        "endLine": 70,
+        "endChar": 63
+      },
+      "revId": "1ad8c3b373172356f56393c0bf2016bc77a080f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "96e1d254_1d0bb644",
@@ -177,6 +242,24 @@
       "side": 1,
       "message": "Agreed.",
       "parentUuid": "96e1d254_1d0bb644",
+      "revId": "1ad8c3b373172356f56393c0bf2016bc77a080f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "26e784ee_e246ee22",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 75,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-06T04:48:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "40227adc_78aa8547",
       "revId": "1ad8c3b373172356f56393c0bf2016bc77a080f8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
