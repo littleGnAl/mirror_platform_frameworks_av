@@ -73,6 +73,30 @@
       },
       "revId": "5bbb89df1fc4328ec59ece9b59fb97f556b08fc6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ed546cf_013b4580",
+        "filename": "media/libstagefright/data/media_codecs_sw.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 185,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-06T04:47:28Z",
+      "side": 1,
+      "message": "b/190231238 is filed to review and update media_codecs_sw.xml\nOther changes will be done as part of that.",
+      "parentUuid": "7130c82b_292d0299",
+      "range": {
+        "startLine": 185,
+        "startChar": 77,
+        "endLine": 185,
+        "endChar": 88
+      },
+      "revId": "5bbb89df1fc4328ec59ece9b59fb97f556b08fc6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
