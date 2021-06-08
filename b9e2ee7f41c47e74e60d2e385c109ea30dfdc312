@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f0fbae3_5fb54353",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 6867,
+      "author": {
+        "id": 1869710
+      },
+      "writtenOn": "2021-06-08T12:47:59Z",
+      "side": 1,
+      "message": "\u003e Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.\n\nPlease fix.",
+      "parentUuid": "71fcccb6_1b8c2739",
+      "range": {
+        "startLine": 6867,
+        "startChar": 0,
+        "endLine": 6867,
+        "endChar": 129
+      },
+      "revId": "b9e2ee7f41c47e74e60d2e385c109ea30dfdc312",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

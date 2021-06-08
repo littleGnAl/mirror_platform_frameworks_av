@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa647d45_7f1ba39a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 8,
+      "author": {
+        "id": 1869710
+      },
+      "writtenOn": "2021-06-08T12:47:59Z",
+      "side": 1,
+      "message": "I mean fix",
+      "parentUuid": "90e00d1e_08b5ba2c",
+      "range": {
+        "startLine": 8,
+        "startChar": 0,
+        "endLine": 8,
+        "endChar": 2
+      },
+      "revId": "0a7e5a8c129c4f3c44a02348d6eb1d913590160b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7dd30543_e1d89151",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "235164b4_747d5562",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1869710
+      },
+      "writtenOn": "2021-06-08T12:47:59Z",
+      "side": 1,
+      "message": "ok, I have been updated",
+      "parentUuid": "7dd30543_e1d89151",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 15,
+        "endChar": 9
+      },
+      "revId": "0a7e5a8c129c4f3c44a02348d6eb1d913590160b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1d8d7920_fc412c68",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-04-01T22:46:41Z",
       "side": 1,
       "message": "This method is very similar to the definition in PlaybackThread except for this thread promotion and the use of thread-\u003emPatch. Why?",
+      "range": {
+        "startLine": 6871,
+        "startChar": 25,
+        "endLine": 6871,
+        "endChar": 31
+      },
+      "revId": "0a7e5a8c129c4f3c44a02348d6eb1d913590160b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7a89f50_98e2a0d6",
+        "filename": "services/audioflinger/Threads.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 6871,
+      "author": {
+        "id": 1869710
+      },
+      "writtenOn": "2021-06-08T12:47:59Z",
+      "side": 1,
+      "message": "Because Duplicating output do not createAudioPatch, it has two subthreads and these two subthreads will createAudioPatch. Two subthreads include remotesubmix output and primary output. The thread here is remotesubmix thread",
+      "parentUuid": "1d8d7920_fc412c68",
       "range": {
         "startLine": 6871,
         "startChar": 25,
