@@ -126,7 +126,7 @@ C2SoftOpusEnc::~C2SoftOpusEnc() {
 }
 
 c2_status_t C2SoftOpusEnc::onInit() {
-    return initEncoder();
+    return C2_OK;
 }
 
 c2_status_t C2SoftOpusEnc::configureEncoder() {
@@ -259,6 +259,7 @@ c2_status_t C2SoftOpusEnc::onStop() {
 
 void C2SoftOpusEnc::onReset() {
     (void)onStop();
+    mEncoder = nullptr;
 }
 
 void C2SoftOpusEnc::onRelease() {
@@ -306,6 +307,19 @@ void C2SoftOpusEnc::process(const std::unique_ptr<C2Work>& work,
     if (mSignalledError || mSignalledEos) {
         work->result = C2_BAD_VALUE;
         return;
+    }
+
+    // Initialize encoder if not already initialized
+    if (mEncoder == nullptr) {
+        c2_status_t status = C2_OK;
+        status = initEncoder();
+        if (C2_OK != status) {
+            ALOGE("Failed to initialize encoder : 0x%x", status);
+            mSignalledError = true;
+            work->result = status;
+            work->workletsProcessed = 1u;
+            return;
+        }
     }
 
     bool eos = (work->input.flags & C2FrameData::FLAG_END_OF_STREAM) != 0;
