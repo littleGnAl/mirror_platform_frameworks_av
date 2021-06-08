@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68ac421c_840d2f75",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-08T09:39:05Z",
+      "side": 1,
+      "message": "it\u0027s more appropriately a consequence of the threadpool management (e.g. we didn\u0027t have a threadpool).\n\nit\u0027s less a leak (which implies that it was unintentional) than it was a deliberate choice to throw away the memory.",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "34dd20b02af142a4e0aae19c5d3d9e7affec2e88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4b2ec420_20ffc548",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-08T09:39:05Z",
+      "side": 1,
+      "message": "is this bumped for access to ABinderProcess_startThreadPool()?\nor some other reason?",
+      "range": {
+        "startLine": 73,
+        "startChar": 24,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "34dd20b02af142a4e0aae19c5d3d9e7affec2e88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a6c4d69_f8f6f92f",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-08T09:39:05Z",
+      "side": 1,
+      "message": "if this is a jni call, that would mean it\u0027s called from the java side.\nand i think the java side should have already set up a threadpool.",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "34dd20b02af142a4e0aae19c5d3d9e7affec2e88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d8c9b45c_fcd183dd",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-08T09:39:05Z",
+      "side": 1,
+      "message": "it seems this will start a threadpool each time the java side invokes this routine. I would think that we only want to invoke startThreadPool() 1 time.",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "34dd20b02af142a4e0aae19c5d3d9e7affec2e88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
