@@ -128,25 +128,7 @@ C2SoftFlacEnc::~C2SoftFlacEnc() {
 }
 
 c2_status_t C2SoftFlacEnc::onInit() {
-    mFlacStreamEncoder = FLAC__stream_encoder_new();
-    if (!mFlacStreamEncoder) return C2_CORRUPTED;
-
-    mInputBufferPcm32 = (FLAC__int32*) malloc(
-            kInBlockSize * kMaxNumChannels * sizeof(FLAC__int32));
-    if (!mInputBufferPcm32) return C2_NO_MEMORY;
-
-    mSignalledError = false;
-    mSignalledOutputEos = false;
-    mIsFirstFrame = true;
-    mAnchorTimeStamp = 0ull;
-    mProcessedSamples = 0u;
-    mEncoderWriteData = false;
-    mEncoderReturnedNbBytes = 0;
-    mHeaderOffset = 0;
-    mWroteHeader = false;
-
-    status_t err = configureEncoder();
-    return err == OK ? C2_OK : C2_CORRUPTED;
+    return C2_OK;
 }
 
 void C2SoftFlacEnc::onRelease() {
@@ -163,6 +145,7 @@ void C2SoftFlacEnc::onRelease() {
 
 void C2SoftFlacEnc::onReset() {
     (void) onStop();
+    mFlacStreamEncoder = nullptr;
 }
 
 c2_status_t C2SoftFlacEnc::onStop() {
@@ -205,6 +188,35 @@ void C2SoftFlacEnc::process(
     if (mSignalledError || mSignalledOutputEos) {
         work->result = C2_BAD_VALUE;
         return;
+    }
+
+    // Initialize encoder if not already initialized
+    if (mFlacStreamEncoder == nullptr) {
+        mFlacStreamEncoder = FLAC__stream_encoder_new();
+        if (!mFlacStreamEncoder) return;
+
+        mInputBufferPcm32 = (FLAC__int32*) malloc(
+                kInBlockSize * kMaxNumChannels * sizeof(FLAC__int32));
+        if (!mInputBufferPcm32) return;
+
+        mSignalledError = false;
+        mSignalledOutputEos = false;
+        mIsFirstFrame = true;
+        mAnchorTimeStamp = 0ull;
+        mProcessedSamples = 0u;
+        mEncoderWriteData = false;
+        mEncoderReturnedNbBytes = 0;
+        mHeaderOffset = 0;
+        mWroteHeader = false;
+
+        status_t status = configureEncoder();
+        if (C2_OK != status) {
+            ALOGE("Failed to initialize encoder : 0x%x", status);
+            mSignalledError = true;
+            work->result = C2_CORRUPTED;
+            work->workletsProcessed = 1u;
+            return;
+        }
     }
 
     bool eos = ((work->input.flags & C2FrameData::FLAG_END_OF_STREAM) != 0);
