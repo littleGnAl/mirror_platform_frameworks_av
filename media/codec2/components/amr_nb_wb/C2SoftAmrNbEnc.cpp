@@ -109,37 +109,6 @@ C2SoftAmrNbEnc::~C2SoftAmrNbEnc() {
 }
 
 c2_status_t C2SoftAmrNbEnc::onInit() {
-    bool dtx_enable = false;
-
-    if (AMREncodeInit(&mEncState, &mSidState, dtx_enable) != 0)
-        return C2_CORRUPTED;
-    // TODO: get mode directly from config
-    switch(mIntf->getBitrate()) {
-        case 4750: mMode = MR475;
-            break;
-        case 5150: mMode = MR515;
-            break;
-        case 5900: mMode = MR59;
-            break;
-        case 6700: mMode = MR67;
-            break;
-        case 7400: mMode = MR74;
-            break;
-        case 7950: mMode = MR795;
-            break;
-        case 10200: mMode = MR102;
-            break;
-        case 12200: mMode = MR122;
-            break;
-        default: mMode = MR795;
-    }
-    mIsFirst = true;
-    mSignalledError = false;
-    mSignalledOutputEos = false;
-    mAnchorTimeStamp = 0;
-    mProcessedSamples = 0;
-    mFilledLen = 0;
-
     return C2_OK;
 }
 
@@ -151,14 +120,17 @@ void C2SoftAmrNbEnc::onRelease() {
 }
 
 c2_status_t C2SoftAmrNbEnc::onStop() {
-    if (AMREncodeReset(mEncState, mSidState) != 0)
-        return C2_CORRUPTED;
+    if (mEncState != nullptr) {
+        if (AMREncodeReset(mEncState, mSidState) != 0)
+            return C2_CORRUPTED;
+    }
     mIsFirst = true;
     mSignalledError = false;
     mSignalledOutputEos = false;
     mAnchorTimeStamp = 0;
     mProcessedSamples = 0;
     mFilledLen = 0;
+    mEncState = nullptr;
 
     return C2_OK;
 }
@@ -189,6 +161,46 @@ void C2SoftAmrNbEnc::process(
     if (mSignalledError || mSignalledOutputEos) {
         work->result = C2_BAD_VALUE;
         return;
+    }
+
+    // Initialize encoder if not already initialized
+    if (mEncState == nullptr) {
+        bool dtx_enable = false;
+
+        if (AMREncodeInit(&mEncState, &mSidState, dtx_enable) != 0){
+            ALOGE("Failed to initialize encoder");
+            mSignalledError = true;
+            work->result = C2_CORRUPTED;
+            work->workletsProcessed = 1u;
+            return;
+        }
+
+        // TODO: get mode directly from config
+        switch(mIntf->getBitrate()) {
+            case 4750: mMode = MR475;
+                break;
+            case 5150: mMode = MR515;
+                break;
+            case 5900: mMode = MR59;
+                break;
+            case 6700: mMode = MR67;
+                break;
+            case 7400: mMode = MR74;
+                break;
+            case 7950: mMode = MR795;
+                break;
+            case 10200: mMode = MR102;
+                break;
+            case 12200: mMode = MR122;
+                break;
+            default: mMode = MR795;
+        }
+        mIsFirst = true;
+        mSignalledError = false;
+        mSignalledOutputEos = false;
+        mAnchorTimeStamp = 0;
+        mProcessedSamples = 0;
+        mFilledLen = 0;
     }
 
     bool eos = ((work->input.flags & C2FrameData::FLAG_END_OF_STREAM) != 0);

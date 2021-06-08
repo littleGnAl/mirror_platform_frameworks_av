@@ -111,37 +111,7 @@ C2SoftAmrWbEnc::~C2SoftAmrWbEnc() {
 }
 
 c2_status_t C2SoftAmrWbEnc::onInit() {
-    // TODO: get mode directly from config
-    switch(mIntf->getBitrate()) {
-        case 6600: mMode = VOAMRWB_MD66;
-            break;
-        case 8850: mMode = VOAMRWB_MD885;
-            break;
-        case 12650: mMode = VOAMRWB_MD1265;
-            break;
-        case 14250: mMode = VOAMRWB_MD1425;
-            break;
-        case 15850: mMode = VOAMRWB_MD1585;
-            break;
-        case 18250: mMode = VOAMRWB_MD1825;
-            break;
-        case 19850: mMode = VOAMRWB_MD1985;
-            break;
-        case 23050: mMode = VOAMRWB_MD2305;
-            break;
-        case 23850: mMode = VOAMRWB_MD2385;
-            break;
-        default: mMode = VOAMRWB_MD2305;
-    }
-    status_t err = initEncoder();
-    mIsFirst = true;
-    mSignalledError = false;
-    mSignalledOutputEos = false;
-    mAnchorTimeStamp = 0;
-    mProcessedSamples = 0;
-    mFilledLen = 0;
-
-    return err == OK ? C2_OK : C2_NO_MEMORY;
+    return C2_OK;
 }
 
 void C2SoftAmrWbEnc::onRelease() {
@@ -164,13 +134,17 @@ c2_status_t C2SoftAmrWbEnc::onStop() {
         mInputFrame[i] = 0x0008; /* EHF_MASK */
     }
     uint8_t outBuffer[kNumBytesPerInputFrame];
-    (void) encodeInput(outBuffer, kNumBytesPerInputFrame);
+    if (mEncoderHandle != nullptr) {
+        (void) encodeInput(outBuffer, kNumBytesPerInputFrame);
+    }
     mIsFirst = true;
     mSignalledError = false;
     mSignalledOutputEos = false;
     mAnchorTimeStamp = 0;
     mProcessedSamples = 0;
     mFilledLen = 0;
+    mApiHandle = nullptr;
+    mEncoderHandle = nullptr;
 
     return C2_OK;
 }
@@ -271,6 +245,46 @@ void C2SoftAmrWbEnc::process(
     if (mSignalledError || mSignalledOutputEos) {
         work->result = C2_BAD_VALUE;
         return;
+    }
+
+    // Initialize encoder if not already initialized
+    if (mApiHandle == nullptr) {
+        // TODO: get mode directly from config
+        switch(mIntf->getBitrate()) {
+            case 6600: mMode = VOAMRWB_MD66;
+                break;
+            case 8850: mMode = VOAMRWB_MD885;
+                break;
+            case 12650: mMode = VOAMRWB_MD1265;
+                break;
+            case 14250: mMode = VOAMRWB_MD1425;
+                break;
+            case 15850: mMode = VOAMRWB_MD1585;
+                break;
+            case 18250: mMode = VOAMRWB_MD1825;
+                break;
+            case 19850: mMode = VOAMRWB_MD1985;
+                break;
+            case 23050: mMode = VOAMRWB_MD2305;
+                break;
+            case 23850: mMode = VOAMRWB_MD2385;
+                break;
+            default: mMode = VOAMRWB_MD2305;
+        }
+
+        if (OK != initEncoder()) {
+            ALOGE("Failed to initialize encoder");
+            mSignalledError = true;
+            work->result = C2_CORRUPTED;
+            work->workletsProcessed = 1u;
+            return;
+        }
+        mIsFirst = true;
+        mSignalledError = false;
+        mSignalledOutputEos = false;
+        mAnchorTimeStamp = 0;
+        mProcessedSamples = 0;
+        mFilledLen = 0;
     }
 
     size_t inOffset = 0u;
