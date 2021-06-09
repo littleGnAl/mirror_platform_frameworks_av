@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5475b69_e961fe44",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-09T07:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "68ac421c_840d2f75",
+      "range": {
+        "startLine": 7,
+        "startChar": 11,
+        "endLine": 7,
+        "endChar": 34
+      },
+      "revId": "34dd20b02af142a4e0aae19c5d3d9e7affec2e88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4b2ec420_20ffc548",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-08T09:39:05Z",
       "side": 1,
       "message": "is this bumped for access to ABinderProcess_startThreadPool()?\nor some other reason?",
+      "range": {
+        "startLine": 73,
+        "startChar": 24,
+        "endLine": 73,
+        "endChar": 29
+      },
+      "revId": "34dd20b02af142a4e0aae19c5d3d9e7affec2e88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c4970712_8c64c151",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 73,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-09T07:50:58Z",
+      "side": 1,
+      "message": "Ray,\nsdk_version: \"system_current\", needs to be removed for ABinderProcess_startThreadPool calls. \nUpdated target SDK to remove warnings in Gradle build.",
+      "parentUuid": "4b2ec420_20ffc548",
       "range": {
         "startLine": 73,
         "startChar": 24,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9fbf0ffc_83459a45",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-09T07:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a6c4d69_f8f6f92f",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 17
+      },
+      "revId": "34dd20b02af142a4e0aae19c5d3d9e7affec2e88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8c9b45c_fcd183dd",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-06-08T09:39:05Z",
       "side": 1,
       "message": "it seems this will start a threadpool each time the java side invokes this routine. I would think that we only want to invoke startThreadPool() 1 time.",
+      "range": {
+        "startLine": 37,
+        "startChar": 4,
+        "endLine": 37,
+        "endChar": 34
+      },
+      "revId": "34dd20b02af142a4e0aae19c5d3d9e7affec2e88",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dcf3d38d_2df76dd2",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/NativeDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-09T07:50:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8c9b45c_fcd183dd",
       "range": {
         "startLine": 37,
         "startChar": 4,
