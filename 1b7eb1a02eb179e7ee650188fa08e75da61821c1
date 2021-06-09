@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "51d0ed52_6c4f9c15",
+        "filename": "media/codec2/components/amr_nb_wb/C2SoftAmrDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-09T23:55:38Z",
+      "side": 1,
+      "message": "would it be better to use calOutSize instead?\nas this is what was effectively used so far when allocated size matched what was requested.",
+      "range": {
+        "startLine": 365,
+        "startChar": 37,
+        "endLine": 365,
+        "endChar": 78
+      },
+      "revId": "1b7eb1a02eb179e7ee650188fa08e75da61821c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dea53a22_bff5c9b9",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-09T23:55:38Z",
+      "side": 1,
+      "message": "this needs to move to line 384",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 35
+      },
+      "revId": "1b7eb1a02eb179e7ee650188fa08e75da61821c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
