@@ -1,0 +1,36 @@
+From 916230f16b3b0f06a4aaa9603e34903dba23320e Mon Sep 17 00:00:00 2001
+From: mtk17886 <kelvin.shih@mediatek.com>
+Date: Tue, 18 May 2021 16:41:16 +0800
+Subject: [PATCH] [DTV03166596][]Fix CTS HevcYuv420BitstreamsTest
+
+[Description]
+Root cause:
+In the case of supporting only one instance of HAL layer,
+when in reclaimResource progressing,
+removeResource already removed the client,
+and reclaimResource returned with *_aidl_return = false.
+It would not trigger to init again.
+Solution:
+In reclaimResource, add *_aidl_return = true
+for this return case.
+
+[Test Report]
+1. build ok
+2. android.media.cts.bitstreams.HevcYuv420BitstreamsTest pass
+
+Change-Id: I7b0cfbaa3bd5cc82be178382a0f54d84b3eb152b
+CR-Id: DTV03166596
+---
+
+diff --git a/services/mediaresourcemanager/ResourceManagerService.cpp b/services/mediaresourcemanager/ResourceManagerService.cpp
+index 3d36f8e..60cb044 100644
+--- a/services/mediaresourcemanager/ResourceManagerService.cpp
++++ b/services/mediaresourcemanager/ResourceManagerService.cpp
+@@ -576,6 +576,7 @@
+     }
+ 
+     if (clients.size() == 0) {
++        *_aidl_return = true;
+         return Status::ok();
+     }
+ 
