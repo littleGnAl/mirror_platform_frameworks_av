@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "45e7b0f5_e0db1c5b",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-09T18:05:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5f5603a9_84a638cd",
+      "range": {
+        "startLine": 526,
+        "startChar": 8,
+        "endLine": 526,
+        "endChar": 11
+      },
+      "revId": "8fb217faccdec3cd94940c8b59d1e585493e25b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "31d76619_1e8d1a12",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-05T22:40:10Z",
       "side": 1,
       "message": "if we\u0027re going to treat all 3 picture types as the same, then we should\nput the same value into the structure that we send back to the user as\npart of the PictureQuantizationSetter().\n\nI\u0027m ok with the codec not having different values for I/P/B, but let\u0027s make sure that the information is conveyed back to the user via the Setter() function.",
+      "range": {
+        "startLine": 766,
+        "startChar": 8,
+        "endLine": 766,
+        "endChar": 20
+      },
+      "revId": "8fb217faccdec3cd94940c8b59d1e585493e25b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e2edefbd_37770b4c",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 766,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-09T18:05:44Z",
+      "side": 1,
+      "message": "Done\nMoved this to setter function. Simplified qp handling code in initEncParam ()",
+      "parentUuid": "31d76619_1e8d1a12",
       "range": {
         "startLine": 766,
         "startChar": 8,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9b4ef879_c79516a1",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 769,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-09T18:05:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e6087a02_b9400ac3",
+      "range": {
+        "startLine": 769,
+        "startChar": 11,
+        "endLine": 769,
+        "endChar": 35
+      },
+      "revId": "8fb217faccdec3cd94940c8b59d1e585493e25b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "319f534e_f1b61e70",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-06-05T22:40:10Z",
       "side": 1,
       "message": "i\u0027d probably say HEVC_QP_MIN / HEVC_QP_MAX\nto indicate that it\u0027s related to the standard.\n\n[i know that the avc encoder on which this is based does not follow that suggestion... at least not yet]",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 20
+      },
+      "revId": "8fb217faccdec3cd94940c8b59d1e585493e25b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d979dc98_d5db010e",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-09T18:05:44Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "319f534e_f1b61e70",
       "range": {
         "startLine": 45,
         "startChar": 8,
