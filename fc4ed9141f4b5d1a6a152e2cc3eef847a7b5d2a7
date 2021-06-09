@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "09ad0f07_b19ce5aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-09T18:41:26Z",
+      "side": 1,
+      "message": "this is better structure.\nsome more questions as I re-read things.",
+      "revId": "fc4ed9141f4b5d1a6a152e2cc3eef847a7b5d2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2b5964f7_7a2c8444",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-09T18:41:26Z",
+      "side": 1,
+      "message": "always good to include the values here\n\nALOGV( \"...... minQp %d must be \u003c\u003d maxQp %d\",   layer.min, layer.max)",
+      "range": {
+        "startLine": 511,
+        "startChar": 50,
+        "endLine": 511,
+        "endChar": 57
+      },
+      "revId": "fc4ed9141f4b5d1a6a152e2cc3eef847a7b5d2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "172fabf2_1cded7ad",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-09T18:41:26Z",
+      "side": 1,
+      "message": "we need to do the min\u003cmax check again down here.\n\notherwise, we have issues in situations like\nthe legal imin/max \u003d\u003d 10/12 and the legal pmin/max are 20/21 \n\nwhich sets up minFrameQp \u003d\u003d max(10,20)  and maxFrameQp \u003d\u003d min(11,21)\nso we get min\u003d\u003d20, max\u003d11",
+      "range": {
+        "startLine": 519,
+        "startChar": 16,
+        "endLine": 519,
+        "endChar": 26
+      },
+      "revId": "fc4ed9141f4b5d1a6a152e2cc3eef847a7b5d2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a160071_f2eae9d3",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-09T18:41:26Z",
+      "side": 1,
+      "message": "instead of needing the \"+1\" on all the uses of maxTemporalLayer on lines 535..539,\nwe could make the variable hold the right value -- so that instead of 0/1/2/3, it holds 1/2/3/4 after the calculations on line 525..533.  Might chose to rename the variable, but consider that.",
+      "range": {
+        "startLine": 535,
+        "startChar": 37,
+        "endLine": 535,
+        "endChar": 58
+      },
+      "revId": "fc4ed9141f4b5d1a6a152e2cc3eef847a7b5d2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fe7b9048_40e0e6bb",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-09T18:41:26Z",
+      "side": 1,
+      "message": "here\u0027s where i have some questions and maybe a better algorithm.\n\nsuppose maxLayer \u003d\u003d 3 (current semantics, not after any possible movement of the +1 as suggested in my comment above). and we have min/maxFrameQp \u003d\u003d 48,49.\n\nthis if will say \"I can\u0027t move the max that far out, because it exceeds HEVC_QP_MAX.  so we\u0027ll make min \u003d max(49) - (3+1) \u003d\u003d 49-4 \u003d\u003d 45\nand we get a min/max of 45/49\n\nWhat if we first move max as far as it can go (50 seems the limit given that it has to be \u003c HEVC_QP_MAX which is 51).\nthen, if they aren\u0027t spread enough after that adjustment, we\u0027ll move the \nminimum down...\nso that we end up with min/max \u003d\u003d 46/50\n\n\nthe followup question, a little independent of that last bit is:\n\nthis approach \u0027expands\" the range into less restrictive, aka allowing\nlesser quality.   should we prefer that if the values are too close that\nwe try to move min and leave max where it is?  that would seem to bias\ntowards a \"better encoding\".  This is thinking aloud here -- I absolutely want to hear if you have a different opinion about this.\n\n[such a change would mean that we still need the does-it-go-beyond-bounds logic that we have here, but it would be \"does min go below HEVC_QP_MIN\" instead of \"does max go above HEVC_QP_MAX\".]",
+      "range": {
+        "startLine": 536,
+        "startChar": 16,
+        "endLine": 536,
+        "endChar": 63
+      },
+      "revId": "fc4ed9141f4b5d1a6a152e2cc3eef847a7b5d2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
