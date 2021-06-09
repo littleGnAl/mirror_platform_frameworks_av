@@ -166,8 +166,7 @@ C2SoftAacEnc::~C2SoftAacEnc() {
 }
 
 c2_status_t C2SoftAacEnc::onInit() {
-    status_t err = initEncoder();
-    return err == OK ? C2_OK : C2_CORRUPTED;
+    return C2_OK;
 }
 
 status_t C2SoftAacEnc::initEncoder() {
@@ -190,7 +189,10 @@ c2_status_t C2SoftAacEnc::onStop() {
 
 void C2SoftAacEnc::onReset() {
     (void)onStop();
-    aacEncClose(&mAACEncoder);
+    if (mAACEncoder != nullptr) {
+        aacEncClose(&mAACEncoder);
+    }
+    mAACEncoder = nullptr;
 }
 
 void C2SoftAacEnc::onRelease() {
@@ -329,6 +331,18 @@ void C2SoftAacEnc::process(
     if (mSignalledError) {
         return;
     }
+
+    // Initialize encoder if not already initialized
+    if (mAACEncoder == nullptr) {
+        if (OK != initEncoder()) {
+            ALOGE("Failed to initialize encoder");
+            mSignalledError = true;
+            work->result = C2_CORRUPTED;
+            work->workletsProcessed = 1u;
+            return;
+        }
+    }
+
     bool eos = (work->input.flags & C2FrameData::FLAG_END_OF_STREAM) != 0;
 
     uint32_t sampleRate = mIntf->getSampleRate();
