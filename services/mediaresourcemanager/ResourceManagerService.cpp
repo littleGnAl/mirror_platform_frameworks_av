@@ -573,6 +573,10 @@ Status ResourceManagerService::reclaimResource(
                 MediaResource temp(MediaResource::Type::kSecureCodec, 1);
                 getClientForResource_l(callingPid, &temp, &clients);
             }
+            if (clients.size() == 0) {
+                *_aidl_return = true;
+                return Status::ok();
+            }
         }
     }
 
