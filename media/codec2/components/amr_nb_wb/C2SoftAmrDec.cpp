@@ -361,7 +361,8 @@ void C2SoftAmrDec::process(
 
     work->worklets.front()->output.flags = work->input.flags;
     work->worklets.front()->output.buffers.clear();
-    work->worklets.front()->output.buffers.push_back(createLinearBuffer(block));
+    work->worklets.front()->output.buffers.push_back(
+        createLinearBuffer(block, 0, (intptr_t)output - (intptr_t)wView.data()));
     work->worklets.front()->output.ordinal = work->input.ordinal;
     if (eos) {
         mSignalledOutputEos = true;

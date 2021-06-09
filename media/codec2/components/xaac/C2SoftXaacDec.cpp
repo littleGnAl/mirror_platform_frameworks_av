@@ -363,7 +363,7 @@ void C2SoftXaacDec::finishWork(const std::unique_ptr<C2Work>& work,
     memcpy(outBuffer, mOutputDrainBuffer, mOutputDrainBufferWritePos);
     mOutputDrainBufferWritePos = 0;
 
-    auto fillWork = [buffer = createLinearBuffer(block)](
+    auto fillWork = [buffer = createLinearBuffer(block, 0, mOutputDrainBufferWritePos)](
         const std::unique_ptr<C2Work>& work) {
         uint32_t flags = 0;
         if (work->input.flags & C2FrameData::FLAG_END_OF_STREAM) {
