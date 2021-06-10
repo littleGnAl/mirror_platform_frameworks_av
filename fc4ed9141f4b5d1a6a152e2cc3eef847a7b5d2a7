@@ -132,6 +132,30 @@
       },
       "revId": "fc4ed9141f4b5d1a6a152e2cc3eef847a7b5d2a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9f74361e_46f47b33",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-10T13:12:48Z",
+      "side": 1,
+      "message": "if the library can change such that min/max don\u0027t need to be separated by the number of temporal layers is a good thing; it improves the codec. I have no expectation on how long this would day -- day, week, month, etc.\n\nbut until then ... we have to live with it being \"min + layers \u003c\u003d max\" instead of the simpler \"min \u003c\u003d max\". and while we live with that....\ni was exploring whether there was a better approach to how we adjusted things when we enforced the needed separation.\n\ngiven that Android 12 has a push towards improving video quality, i would like the first thought to spreading this to be adjusting the minQP value; that biases us towards a final qp range that is lower (e.g. more restrictive) which should generate a better video encoding.",
+      "parentUuid": "4a416cb5_e7ce47e9",
+      "range": {
+        "startLine": 536,
+        "startChar": 16,
+        "endLine": 536,
+        "endChar": 63
+      },
+      "revId": "fc4ed9141f4b5d1a6a152e2cc3eef847a7b5d2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
