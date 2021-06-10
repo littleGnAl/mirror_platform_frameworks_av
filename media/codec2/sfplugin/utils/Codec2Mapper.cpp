@@ -384,7 +384,7 @@ ALookup<C2Config::level_t, int32_t> sAv1Levels = {
 ALookup<C2Config::profile_t, int32_t> sAv1Profiles = {
     // TODO: will need to disambiguate between Main8 and Main10
     { C2Config::PROFILE_AV1_0, AV1ProfileMain8 },
-    { C2Config::PROFILE_AV1_0, AV1ProfileMain10 },
+    { C2Config::PROFILE_AV1_0_1,AV1ProfileMain10 },
     { C2Config::PROFILE_AV1_0, AV1ProfileMain10HDR10 },
     { C2Config::PROFILE_AV1_0, AV1ProfileMain10HDR10Plus },
 };
