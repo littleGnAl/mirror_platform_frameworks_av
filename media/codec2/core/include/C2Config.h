@@ -558,6 +558,7 @@ enum C2Config::profile_t : uint32_t {
 
     // AV1 profiles
     PROFILE_AV1_0 = _C2_PL_AV1_BASE,            ///< AV1 Profile 0 (4:2:0, 8 to 10 bit)
+    PROFILE_AV1_0_1,                            ///< AV1 Profile 0 Main10(4:2:0, 8 to 10 bit)
     PROFILE_AV1_1,                              ///< AV1 Profile 1 (8 to 10 bit)
     PROFILE_AV1_2,                              ///< AV1 Profile 2 (8 to 12 bit)
 
