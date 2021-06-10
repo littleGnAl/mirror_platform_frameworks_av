@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6d870e1_390ebd8b",
+        "filename": "media/codec2/components/amr_nb_wb/C2SoftAmrDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-06-10T16:51:34Z",
+      "side": 1,
+      "message": "I could not see a guarantee that output actually moved by calOutSize. Could it be that calOutSize was overestimated? The view will automatically be cropped to the allocated size if that is the concern, although at that point an overflow already occurred on line 353.\n\nI guess the question is if output move less than calOutSize (or more) which is better to return to the client? I feel the true filled size is the best answer.",
+      "parentUuid": "51d0ed52_6c4f9c15",
+      "range": {
+        "startLine": 365,
+        "startChar": 37,
+        "endLine": 365,
+        "endChar": 78
+      },
+      "revId": "1b7eb1a02eb179e7ee650188fa08e75da61821c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dea53a22_bff5c9b9",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-09T23:55:38Z",
       "side": 1,
       "message": "this needs to move to line 384",
+      "range": {
+        "startLine": 364,
+        "startChar": 0,
+        "endLine": 364,
+        "endChar": 35
+      },
+      "revId": "1b7eb1a02eb179e7ee650188fa08e75da61821c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dff5dd36_77c39c20",
+        "filename": "media/codec2/components/xaac/C2SoftXaacDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 364,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-06-10T16:51:34Z",
+      "side": 1,
+      "message": "Ooops, so true :)",
+      "parentUuid": "dea53a22_bff5c9b9",
       "range": {
         "startLine": 364,
         "startChar": 0,
