@@ -252,6 +252,30 @@
       },
       "revId": "fc4ed9141f4b5d1a6a152e2cc3eef847a7b5d2a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "019b62b4_29a85496",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-10T15:21:04Z",
+      "side": 1,
+      "message": "Ray,\nFollowing change in libhevc removes the unnecessary error check\nhttps://android-review.googlesource.com/c/platform/external/libhevc/+/1733733\nWe haven\u0027t put them in a topic as libhevc change can be merged without waiting for this CL to be merged.",
+      "parentUuid": "99c13b6f_be9c8790",
+      "range": {
+        "startLine": 536,
+        "startChar": 16,
+        "endLine": 536,
+        "endChar": 63
+      },
+      "revId": "fc4ed9141f4b5d1a6a152e2cc3eef847a7b5d2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
