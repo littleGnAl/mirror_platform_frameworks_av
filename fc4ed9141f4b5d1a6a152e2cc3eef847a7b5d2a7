@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c875eac3_e5171ba6",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 511,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-10T15:12:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2b5964f7_7a2c8444",
+      "range": {
+        "startLine": 511,
+        "startChar": 50,
+        "endLine": 511,
+        "endChar": 57
+      },
+      "revId": "fc4ed9141f4b5d1a6a152e2cc3eef847a7b5d2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "172fabf2_1cded7ad",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "19ec2761_3b058472",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 519,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-10T15:12:13Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "172fabf2_1cded7ad",
+      "range": {
+        "startLine": 519,
+        "startChar": 16,
+        "endLine": 519,
+        "endChar": 26
+      },
+      "revId": "fc4ed9141f4b5d1a6a152e2cc3eef847a7b5d2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4a160071_f2eae9d3",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-06-09T18:41:26Z",
       "side": 1,
       "message": "instead of needing the \"+1\" on all the uses of maxTemporalLayer on lines 535..539,\nwe could make the variable hold the right value -- so that instead of 0/1/2/3, it holds 1/2/3/4 after the calculations on line 525..533.  Might chose to rename the variable, but consider that.",
+      "range": {
+        "startLine": 535,
+        "startChar": 37,
+        "endLine": 535,
+        "endChar": 58
+      },
+      "revId": "fc4ed9141f4b5d1a6a152e2cc3eef847a7b5d2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "732b3f3a_3bb094e3",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 535,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-10T15:12:13Z",
+      "side": 1,
+      "message": "Done\nthis part of the code is not needed any more",
+      "parentUuid": "4a160071_f2eae9d3",
       "range": {
         "startLine": 535,
         "startChar": 37,
@@ -147,6 +219,30 @@
       "writtenOn": "2021-06-10T13:12:48Z",
       "side": 1,
       "message": "if the library can change such that min/max don\u0027t need to be separated by the number of temporal layers is a good thing; it improves the codec. I have no expectation on how long this would day -- day, week, month, etc.\n\nbut until then ... we have to live with it being \"min + layers \u003c\u003d max\" instead of the simpler \"min \u003c\u003d max\". and while we live with that....\ni was exploring whether there was a better approach to how we adjusted things when we enforced the needed separation.\n\ngiven that Android 12 has a push towards improving video quality, i would like the first thought to spreading this to be adjusting the minQP value; that biases us towards a final qp range that is lower (e.g. more restrictive) which should generate a better video encoding.",
+      "parentUuid": "4a416cb5_e7ce47e9",
+      "range": {
+        "startLine": 536,
+        "startChar": 16,
+        "endLine": 536,
+        "endChar": 63
+      },
+      "revId": "fc4ed9141f4b5d1a6a152e2cc3eef847a7b5d2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99c13b6f_be9c8790",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-10T15:12:13Z",
+      "side": 1,
+      "message": "Done",
       "parentUuid": "4a416cb5_e7ce47e9",
       "range": {
         "startLine": 536,
