@@ -1,0 +1,165 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26d26edf_1e5165ed",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-10T21:18:53Z",
+      "side": 1,
+      "message": "Change this to \nMediaCodec based application to set qp bounds and review the resulting clip\u0027s Qp values",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 22
+      },
+      "revId": "a1ae985e3a8e302cd58754dc39232f304c92c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4104a788_73042c6d",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-10T21:18:53Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 484,
+        "startChar": 74,
+        "endLine": 484,
+        "endChar": 78
+      },
+      "revId": "a1ae985e3a8e302cd58754dc39232f304c92c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b8df9b1_ff3efdb0",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-10T21:18:53Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 485,
+        "startChar": 46,
+        "endLine": 485,
+        "endChar": 73
+      },
+      "revId": "a1ae985e3a8e302cd58754dc39232f304c92c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f54ea401_2dc9d86b",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-10T21:18:53Z",
+      "side": 1,
+      "message": "qpVerifyMinMaxOrdering prioritizes maxQp and adjusts minQp if minQp \u003e maxQp.\n\nWe can do the same here as well by clamping layer.min to HEVC_QP_MIN and layerMax\n\nint32_t layerMax \u003d std::clamp(layer.max, HEVC_QP_MIN, HEVC_QP_MAX);\n/* layer.min is clamped to [HEVC_QP_MIN, layerMax] to avoid error cases where\n layer.min \u003e layer.max */\nint32_t layerMin \u003d std::clamp(layer.min, HEVC_QP_MIN, layerMax);\n\n\nWith this we can remove the if () condition on 492",
+      "range": {
+        "startLine": 492,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 83
+      },
+      "revId": "a1ae985e3a8e302cd58754dc39232f304c92c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67fdda76_18bed359",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-10T21:18:53Z",
+      "side": 1,
+      "message": "Instead of changing both maxFrameQP and minFrameQP to default values, \nlet us set minFrameQP \u003d maxFrameQP in this error case.",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 521,
+        "endChar": 37
+      },
+      "revId": "a1ae985e3a8e302cd58754dc39232f304c92c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c670f50c_7471cf25",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-10T21:18:53Z",
+      "side": 1,
+      "message": "next line.",
+      "range": {
+        "startLine": 539,
+        "startChar": 35,
+        "endLine": 539,
+        "endChar": 36
+      },
+      "revId": "a1ae985e3a8e302cd58754dc39232f304c92c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d714fe1a_95cacb1a",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-10T21:18:53Z",
+      "side": 1,
+      "message": "move this to previous line",
+      "range": {
+        "startLine": 539,
+        "startChar": 4,
+        "endLine": 539,
+        "endChar": 5
+      },
+      "revId": "a1ae985e3a8e302cd58754dc39232f304c92c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
