@@ -108,6 +108,30 @@
       },
       "revId": "fc4ed9141f4b5d1a6a152e2cc3eef847a7b5d2a7",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a416cb5_e7ce47e9",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 536,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-10T05:09:49Z",
+      "side": 1,
+      "message": "Ray,\nWe are exploring if we can update the library to see if few of these restrictions can be cleaned up so that max and min qp are independent of max temporal layers.\nIf that is possible, we will do that and then update this CL.",
+      "parentUuid": "fe7b9048_40e0e6bb",
+      "range": {
+        "startLine": 536,
+        "startChar": 16,
+        "endLine": 536,
+        "endChar": 63
+      },
+      "revId": "fc4ed9141f4b5d1a6a152e2cc3eef847a7b5d2a7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
