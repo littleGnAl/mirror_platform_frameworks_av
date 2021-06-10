@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b5a67d59_05b617b7",
+        "filename": "media/codec2/components/amr_nb_wb/C2SoftAmrDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-10T17:20:08Z",
+      "side": 1,
+      "message": "calOutSize is derived from outSamples (line 295) and outSamples is used to increment output (line 358 in a while loop that runs frameSizeList.size() times)\nI thought using calOutSize would keep it closer to the older code (calOutSize would be same as the pointer subtraction done now) just from readability.",
+      "parentUuid": "c6d870e1_390ebd8b",
+      "range": {
+        "startLine": 365,
+        "startChar": 37,
+        "endLine": 365,
+        "endChar": 78
+      },
+      "revId": "1b7eb1a02eb179e7ee650188fa08e75da61821c1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dea53a22_bff5c9b9",
