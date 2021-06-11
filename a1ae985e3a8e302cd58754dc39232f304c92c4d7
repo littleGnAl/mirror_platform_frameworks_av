@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c87d4911_c48ab086",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-11T04:49:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "26d26edf_1e5165ed",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 22
+      },
+      "revId": "a1ae985e3a8e302cd58754dc39232f304c92c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "4104a788_73042c6d",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-06-10T21:18:53Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 484,
+        "startChar": 74,
+        "endLine": 484,
+        "endChar": 78
+      },
+      "revId": "a1ae985e3a8e302cd58754dc39232f304c92c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "991672f2_cfb4f0c0",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 484,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-11T04:49:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4104a788_73042c6d",
       "range": {
         "startLine": 484,
         "startChar": 74,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c79fa41c_1467a76d",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 485,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-11T04:49:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7b8df9b1_ff3efdb0",
+      "range": {
+        "startLine": 485,
+        "startChar": 46,
+        "endLine": 485,
+        "endChar": 73
+      },
+      "revId": "a1ae985e3a8e302cd58754dc39232f304c92c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f54ea401_2dc9d86b",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4132c340_b295c188",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 494,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-11T04:49:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f54ea401_2dc9d86b",
+      "range": {
+        "startLine": 492,
+        "startChar": 0,
+        "endLine": 494,
+        "endChar": 83
+      },
+      "revId": "a1ae985e3a8e302cd58754dc39232f304c92c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67fdda76_18bed359",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-06-10T21:18:53Z",
       "side": 1,
       "message": "Instead of changing both maxFrameQP and minFrameQP to default values, \nlet us set minFrameQP \u003d maxFrameQP in this error case.",
+      "range": {
+        "startLine": 520,
+        "startChar": 0,
+        "endLine": 521,
+        "endChar": 37
+      },
+      "revId": "a1ae985e3a8e302cd58754dc39232f304c92c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8f201f06_ad63c738",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-11T04:49:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67fdda76_18bed359",
       "range": {
         "startLine": 520,
         "startChar": 0,
@@ -152,6 +272,54 @@
       "writtenOn": "2021-06-10T21:18:53Z",
       "side": 1,
       "message": "move this to previous line",
+      "range": {
+        "startLine": 539,
+        "startChar": 4,
+        "endLine": 539,
+        "endChar": 5
+      },
+      "revId": "a1ae985e3a8e302cd58754dc39232f304c92c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe13fb84_a1f5a843",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-11T04:49:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c670f50c_7471cf25",
+      "range": {
+        "startLine": 539,
+        "startChar": 35,
+        "endLine": 539,
+        "endChar": 36
+      },
+      "revId": "a1ae985e3a8e302cd58754dc39232f304c92c4d7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "361960a8_ea8a9242",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 539,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-11T04:49:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d714fe1a_95cacb1a",
       "range": {
         "startLine": 539,
         "startChar": 4,
