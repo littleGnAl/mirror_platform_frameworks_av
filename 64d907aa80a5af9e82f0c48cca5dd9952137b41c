@@ -33,6 +33,24 @@
       "message": "Hi, this appears to be hitting a deadlock on CameraProviderManager::mInterfaceMutex when CameraService::getSystemCameraKind() ends up calling CameraProviderManager::mCameraProviderManager here https://android.googlesource.com/platform/frameworks/av/+/refs/tags/android-11.0.0_r38/services/camera/libcameraservice/CameraService.cpp#306\n",
       "revId": "64d907aa80a5af9e82f0c48cca5dd9952137b41c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0b2919d0_a8b9935e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365444
+      },
+      "writtenOn": "2021-06-11T13:43:50Z",
+      "side": 1,
+      "message": "Sorry, typos:\n\nThis appears to be hitting a deadlock on CameraProviderManager::mInterfaceMutex when CameraService::getSystemCameraKind ends up calling CameraProviderManager::getSystemCameraKind here https://android.googlesource.com/platform/frameworks/av/+/refs/tags/android-11.0.0_r38/services/camera/libcameraservice/CameraService.cpp#306",
+      "parentUuid": "dd80247d_69f81ef8",
+      "revId": "64d907aa80a5af9e82f0c48cca5dd9952137b41c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
