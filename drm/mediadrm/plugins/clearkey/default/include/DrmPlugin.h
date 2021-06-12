@@ -262,7 +262,11 @@ private:
     void initProperties();
     void setPlayPolicy();
 
+<<<<<<< HEAD   (b1ba87 Merge "MTP: add a new parameter for cancelEvents function")
     android::Mutex mPlayPolicyLock;
+=======
+    mutable android::Mutex mPlayPolicyLock;
+>>>>>>> BRANCH (283433 resolve merge conflicts of 3d7f7608701355ddcbf98eb2b62639e06)
     android::KeyedVector<String8, String8> mPlayPolicy;
     android::KeyedVector<String8, String8> mStringProperties;
     android::KeyedVector<String8, Vector<uint8_t>> mByteArrayProperties;
