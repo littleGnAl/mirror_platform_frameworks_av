@@ -56,6 +56,30 @@
       },
       "revId": "4d86bf0c01c1512ee6110aa62d417d9c886fc91a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9391b448_588b86bc",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1481,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-06-16T22:06:16Z",
+      "side": 1,
+      "message": "Not needed at this time.  It is possible to use time based presentation for mixed audio tracks for testing purposes, but frame based should be better due to speed settings.",
+      "parentUuid": "2fbf766c_52c38009",
+      "range": {
+        "startLine": 1481,
+        "startChar": 4,
+        "endLine": 1481,
+        "endChar": 38
+      },
+      "revId": "4d86bf0c01c1512ee6110aa62d417d9c886fc91a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
