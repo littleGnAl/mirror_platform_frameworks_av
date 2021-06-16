@@ -1,0 +1,13 @@
+#EXTM3U
+#EXT-X-VERSION:4
+#EXT-X-TARGETDURATION:5
+#EXT-X-KEY:METHOD=AES-128,URI="https://demo.unified-streaming.com/video/tears-of-steel/aes.key",IV=0X99b74007b6254e4bd1c6e03631cad15b
+#EXT-X-PLAYLIST-TYPE:VOD
+#EXTINF:5,
+https://storage.googleapis.com/shaka-demo-assets/apple-advanced-stream-ts/v2/fileSequence1.ts
+#EXT-X-DISCONTINUITY
+#EXTINF:5,
+https://storage.googleapis.com/shaka-demo-assets/apple-advanced-stream-ts/v2/fileSequence2.ts
+#EXTINF:5,
+https://storage.googleapis.com/shaka-demo-assets/apple-advanced-stream-ts/v2/fileSequence3.ts
+#EXT-X-ENDLIST
