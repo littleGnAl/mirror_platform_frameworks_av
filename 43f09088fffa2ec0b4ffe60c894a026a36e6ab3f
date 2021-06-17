@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7a52c5fc_cabe9b3b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-17T21:11:48Z",
+      "side": 1,
+      "message": "want lajos to see if this follows the spirit of the performance class tests \u0026 standards\nthat are leading us to make this decision.",
+      "revId": "43f09088fffa2ec0b4ffe60c894a026a36e6ab3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a51ac4ed_cf96cb63",
+        "filename": "media/codec2/components/aac/C2SoftAacEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 173,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-17T21:11:48Z",
+      "side": 1,
+      "message": "assert that mAACEncoder \u003d\u003d nullptr before we call aacEncOpen()",
+      "range": {
+        "startLine": 173,
+        "startChar": 32,
+        "endLine": 173,
+        "endChar": 43
+      },
+      "revId": "43f09088fffa2ec0b4ffe60c894a026a36e6ab3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76fa550e_2ff5f95e",
+        "filename": "media/codec2/components/aac/C2SoftAacEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 192,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-17T21:11:48Z",
+      "side": 1,
+      "message": "with this restructuring, probably wrap this with\nif (mAACEncoder !\u003d null)",
+      "range": {
+        "startLine": 192,
+        "startChar": 16,
+        "endLine": 192,
+        "endChar": 28
+      },
+      "revId": "43f09088fffa2ec0b4ffe60c894a026a36e6ab3f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
