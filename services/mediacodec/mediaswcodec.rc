@@ -4,4 +4,4 @@ service media.swcodec /system/bin/mediaswcodec
     group camera drmrpc mediadrm
     updatable
     ioprio rt 4
-    writepid /dev/cpuset/foreground/tasks
+    task_profiles ProcessCapacityHigh
