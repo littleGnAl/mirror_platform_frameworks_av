@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db749f7e_df4b099e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-20T15:06:56Z",
+      "side": 1,
+      "message": "i thought we needed to the BUILD_NDK flag so that we know whether we should be starting\nthe threadpool.  with this CL, that appears no longer to be needed.\n\nonce i understand what\u0027s going on there, it should be good.",
+      "revId": "b1af375641e7c80a6c11122beb001aebcbdb49ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9ce352bf_470c9d7c",
+        "filename": "media/tests/benchmark/MediaBenchmarkTest/src/main/cpp/CMakeLists.txt",
+        "patchSetId": 2
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-06-20T15:06:56Z",
+      "side": 1,
+      "message": "I didn\u0027t see where this gets referenced.",
+      "range": {
+        "startLine": 20,
+        "startChar": 54,
+        "endLine": 20,
+        "endChar": 66
+      },
+      "revId": "b1af375641e7c80a6c11122beb001aebcbdb49ec",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
