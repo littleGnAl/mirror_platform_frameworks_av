@@ -62,7 +62,7 @@ constexpr float IN_CALL_EARPIECE_HEADROOM_DB = 3.f;
 // Compressed formats for MSD module, ordered from most preferred to least preferred.
 static const std::vector<audio_format_t> msdCompressedFormatsOrder = {{
         AUDIO_FORMAT_IEC60958, AUDIO_FORMAT_MAT_2_1, AUDIO_FORMAT_MAT_2_0, AUDIO_FORMAT_E_AC3,
-        AUDIO_FORMAT_AC3, AUDIO_FORMAT_PCM_16_BIT }};
+        AUDIO_FORMAT_AC3, AUDIO_FORMAT_PCM_32_BIT, AUDIO_FORMAT_PCM_16_BIT }};
 // Channel masks for MSD module, 3D > 2D > 1D ordering (most preferred to least preferred).
 static const std::vector<audio_channel_mask_t> msdSurroundChannelMasksOrder = {{
         AUDIO_CHANNEL_OUT_3POINT1POINT2, AUDIO_CHANNEL_OUT_3POINT0POINT2,
