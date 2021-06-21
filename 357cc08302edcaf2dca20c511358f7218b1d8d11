@@ -55,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8e5894e1_4066acea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-21T15:15:26Z",
+      "side": 1,
+      "message": "Following CL includes these changes and few other changes as per the review comments in hevc changes.\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1740750/",
+      "parentUuid": "81310803_5e330257",
+      "revId": "357cc08302edcaf2dca20c511358f7218b1d8d11",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ef59262c_5e3c1f6e",
         "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
         "patchSetId": 2
