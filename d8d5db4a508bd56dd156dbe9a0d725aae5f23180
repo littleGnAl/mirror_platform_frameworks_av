@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2d1a194_ccef6feb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-21T15:17:06Z",
+      "side": 1,
+      "message": "Ray,\nPatchset 1 is https://android-review.googlesource.com/c/platform/frameworks/av/+/1740750/\nPatchset 2 includes changes as per review comments in hevc encoder plugin and as well as min qp is now 4 instead of zero as library supports only upto 4.",
+      "revId": "d8d5db4a508bd56dd156dbe9a0d725aae5f23180",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
