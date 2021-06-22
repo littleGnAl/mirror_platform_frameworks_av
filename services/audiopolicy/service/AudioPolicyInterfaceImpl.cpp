@@ -95,6 +95,28 @@ void AudioPolicyService::doOnNewAudioModulesAvailable()
     mAudioPolicyManager->onNewAudioModulesAvailable();
 }
 
+Status AudioPolicyService::onAudioDevicePortGainsChanged(
+        int32_t reasons,
+        const std::vector<media::AudioPortConfig>& gainsAidl)
+{
+    std::vector<audio_port_config> gains;
+    for(const auto& gainAidl : gainsAidl) {
+        audio_port_config gain = VALUE_OR_RETURN_BINDER_STATUS(
+                aidl2legacy_AudioPortConfig_audio_port_config(gainAidl));
+        RETURN_IF_BINDER_ERROR(
+                binderStatusFromStatusT(AudioValidator::validateAudioPortConfig(gain)));
+        gains.push_back(gain);
+    }
+    if (mAudioPolicyManager == NULL) {
+        return binderStatusFromStatusT(NO_INIT);
+    }
+    Mutex::Autolock _l(mLock);
+    AutoCallerClear acc;
+    mAudioPolicyManager->onAudioDevicePortGainsChanged(
+                static_cast<audio_gain_mask_t>(reasons), gains);
+    return Status::ok();
+}
+
 Status AudioPolicyService::setDeviceConnectionState(
         const media::AudioDevice& deviceAidl,
         media::AudioPolicyDeviceState stateAidl,

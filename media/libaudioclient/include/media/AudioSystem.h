@@ -253,6 +253,8 @@ public:
     //
     // IAudioPolicyService interface (see AudioPolicyInterface for method descriptions)
     //
+    static void onAudioDevicePortGainsChanged(
+            audio_gain_mask_t reasons, const std::vector<audio_port_config>& gains);
     static void onNewAudioModulesAvailable();
     static status_t setDeviceConnectionState(audio_devices_t device, audio_policy_dev_state_t state,
                                              const char *device_address, const char *device_name,
@@ -518,6 +520,8 @@ public:
         AudioVolumeGroupCallback() {}
         virtual ~AudioVolumeGroupCallback() {}
 
+        virtual void onAudioDevicePortGainsChanged(
+                audio_gain_mask_t reasons, const std::vector<audio_port_config>& gains) = 0;
         virtual void onAudioVolumeGroupChanged(volume_group_t group, int flags) = 0;
     };
 
@@ -630,6 +634,9 @@ private:
         virtual void binderDied(const wp<IBinder>& who);
 
         // IAudioPolicyServiceClient
+        binder::Status onAudioDevicePortGainsChanged(
+                int32_t reasons,
+                const std::vector<media::AudioPortConfig>& gainsAidl) override;
         binder::Status onAudioVolumeGroupChanged(int32_t group, int32_t flags) override;
         binder::Status onAudioPortListUpdate() override;
         binder::Status onAudioPatchListUpdate() override;

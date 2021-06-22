@@ -294,6 +294,21 @@ void AudioPolicyService::doOnAudioVolumeGroupChanged(volume_group_t group, int f
     }
 }
 
+void AudioPolicyService::notifyOnAudioDevicePortGainsChanged(
+        audio_gain_mask_t reasons, const std::vector<audio_port_config>& gains)
+{
+    mOutputCommandThread->notifyAudioDevicePortGainsChangedCommand(reasons, gains);
+}
+
+void AudioPolicyService::doNotifyOnAudioDevicePortGainsChanged(
+        audio_gain_mask_t reasons, const std::vector<audio_port_config>& gains)
+{
+    Mutex::Autolock _l(mNotificationClientsLock);
+    for (size_t i = 0; i < mNotificationClients.size(); i++) {
+        mNotificationClients.valueAt(i)->onAudioDevicePortGainsChanged(reasons, gains);
+    }
+}
+
 void AudioPolicyService::onDynamicPolicyMixStateUpdate(const String8& regId, int32_t state)
 {
     ALOGV("AudioPolicyService::onDynamicPolicyMixStateUpdate(%s, %d)",
@@ -417,6 +432,27 @@ void AudioPolicyService::NotificationClient::onAudioVolumeGroupChanged(volume_gr
     }
 }
 
+void AudioPolicyService::NotificationClient::onAudioDevicePortGainsChanged(
+        audio_gain_mask_t reasons, const std::vector<audio_port_config>& gains)
+{
+    std::vector<media::AudioPortConfig> gainsAidl;
+    for(const auto &gain : gains) {
+        media::AudioPortConfig gainAidl;
+        status_t status = [&]() -> status_t {
+            gainAidl = VALUE_OR_RETURN_STATUS(legacy2aidl_audio_port_config_AudioPortConfig(gain));
+            return NO_ERROR;
+        }();
+        if (status == NO_ERROR) {
+            media::AudioPortConfig gainAidl = VALUE_OR_FATAL(
+                    legacy2aidl_audio_port_config_AudioPortConfig(gain));
+            gainsAidl.push_back(gainAidl);
+        }
+    }
+
+    if (mAudioPolicyServiceClient != 0 && mAudioVolumeGroupCallbacksEnabled) {
+        mAudioPolicyServiceClient->onAudioDevicePortGainsChanged(reasons, gainsAidl);
+    }
+}
 
 void AudioPolicyService::NotificationClient::onDynamicPolicyMixStateUpdate(
         const String8& regId, int32_t state)
@@ -934,6 +970,7 @@ status_t AudioPolicyService::onTransact(
         case TRANSACTION_getStrategyForStream:
         case TRANSACTION_getOutputForAttr:
         case TRANSACTION_moveEffectsToIo:
+        case TRANSACTION_onAudioDevicePortGainsChanged:
             ALOGW("%s: transaction %d received from PID %d",
                   __func__, code, IPCThreadState::self()->getCallingPid());
             return INVALID_OPERATION;
@@ -1682,6 +1719,18 @@ bool AudioPolicyService::AudioCommandThread::threadLoop()
                     svc->doOnAudioVolumeGroupChanged(data->mGroup, data->mFlags);
                     mLock.lock();
                     }break;
+                case NOTIFY_AUDIO_DEVICE_PORT_GAINS_CHANGED: {
+                    AudioDevicePortGainsData *data =
+                            static_cast<AudioDevicePortGainsData *>(command->mParam.get());
+                    ALOGV("AudioCommandThread() processing notify audio device port gains changed");
+                    svc = mService.promote();
+                    if (svc == 0) {
+                        break;
+                    }
+                    mLock.unlock();
+                    svc->doNotifyOnAudioDevicePortGainsChanged(data->mReasons, data->mPortGains);
+                    mLock.lock();
+                    }break;
                 case SET_AUDIOPORT_CONFIG: {
                     SetAudioPortConfigData *data = (SetAudioPortConfigData *)command->mParam.get();
                     ALOGV("AudioCommandThread() processing set port config");
@@ -2003,6 +2052,19 @@ void AudioPolicyService::AudioCommandThread::changeAudioVolumeGroupCommand(volum
     data->mFlags = flags;
     command->mParam = data;
     ALOGV("AudioCommandThread() adding audio volume group changed");
+    sendCommand(command);
+}
+
+void AudioPolicyService::AudioCommandThread::notifyAudioDevicePortGainsChangedCommand(
+        audio_gain_mask_t reasons, const std::vector<audio_port_config>& gains)
+{
+    sp<AudioCommand>command = new AudioCommand();
+    command->mCommand = NOTIFY_AUDIO_DEVICE_PORT_GAINS_CHANGED;
+    sp<AudioDevicePortGainsData> data= new AudioDevicePortGainsData();
+    data->mReasons = reasons;
+    data->mPortGains = gains;
+    command->mParam = data;
+    ALOGV("AudioCommandThread() adding audio device port gains changed");
     sendCommand(command);
 }
 
@@ -2331,7 +2393,6 @@ Status AudioPolicyService::onNewAudioModulesAvailable()
     mOutputCommandThread->audioModulesUpdateCommand();
     return Status::ok();
 }
-
 
 extern "C" {
 audio_module_handle_t aps_load_hw_module(void *service __unused,

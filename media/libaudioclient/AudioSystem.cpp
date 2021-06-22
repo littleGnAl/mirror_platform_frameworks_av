@@ -827,6 +827,21 @@ void AudioSystem::onNewAudioModulesAvailable() {
     aps->onNewAudioModulesAvailable();
 }
 
+void AudioSystem::onAudioDevicePortGainsChanged(
+        audio_gain_mask_t reasons, const std::vector<audio_port_config>& gains)
+{
+    const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
+    if (aps == 0) return;
+
+    std::vector<media::AudioPortConfig> gainsAidl;
+    for(const auto &gain : gains) {
+        media::AudioPortConfig gainAidl = VALUE_OR_FATAL(
+                legacy2aidl_audio_port_config_AudioPortConfig(gain));
+        gainsAidl.push_back(gainAidl);
+    }
+    aps->onAudioDevicePortGainsChanged(reasons, gainsAidl);
+}
+
 status_t AudioSystem::setDeviceConnectionState(audio_devices_t device,
                                                audio_policy_dev_state_t state,
                                                const char* device_address,
@@ -2386,6 +2401,26 @@ Status AudioSystem::AudioPolicyServiceClient::onAudioVolumeGroupChanged(int32_t 
     }
     return Status::ok();
 }
+
+Status AudioSystem::AudioPolicyServiceClient::onAudioDevicePortGainsChanged(
+        int32_t reasons, const ::std::vector<::android::media::AudioPortConfig>& gainsAidl)
+{
+    audio_gain_mask_t legacyReasons = static_cast<audio_gain_mask_t>(reasons);
+
+    std::vector<audio_port_config> gains;
+    for(const auto& gainAidl : gainsAidl) {
+        audio_port_config gain = VALUE_OR_RETURN_BINDER_STATUS(
+                aidl2legacy_AudioPortConfig_audio_port_config(gainAidl));
+        gains.push_back(gain);
+    }
+
+    Mutex::Autolock _l(mLock);
+    for (size_t i = 0; i < mAudioVolumeGroupCallback.size(); i++) {
+        mAudioVolumeGroupCallback[i]->onAudioDevicePortGainsChanged(legacyReasons, gains);
+    }
+    return Status::ok();
+}
+
 // ----------------------------------------------------------------------------
 
 Status AudioSystem::AudioPolicyServiceClient::onDynamicPolicyMixStateUpdate(

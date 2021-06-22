@@ -66,6 +66,9 @@ public:
     //
     // BnAudioPolicyService (see AudioPolicyInterface for method descriptions)
     //
+    binder::Status onAudioDevicePortGainsChanged(
+            int32_t reasons,
+            const std::vector<media::AudioPortConfig>& gains) override;
     binder::Status onNewAudioModulesAvailable() override;
     binder::Status setDeviceConnectionState(
             const media::AudioDevice& device,
@@ -309,6 +312,10 @@ public:
 
     void onAudioVolumeGroupChanged(volume_group_t group, int flags);
     void doOnAudioVolumeGroupChanged(volume_group_t group, int flags);
+    void notifyOnAudioDevicePortGainsChanged(
+            audio_gain_mask_t reasons, const std::vector<audio_port_config>& gains);
+    void doNotifyOnAudioDevicePortGainsChanged(
+            audio_gain_mask_t reasons, const std::vector<audio_port_config>& gains);
 
     void onRoutingUpdated();
     void doOnRoutingUpdated();
@@ -477,6 +484,7 @@ private:
             UPDATE_AUDIOPORT_LIST,
             UPDATE_AUDIOPATCH_LIST,
             CHANGED_AUDIOVOLUMEGROUP,
+            NOTIFY_AUDIO_DEVICE_PORT_GAINS_CHANGED,
             SET_AUDIOPORT_CONFIG,
             DYN_POLICY_MIX_STATE_UPDATE,
             RECORDING_CONFIGURATION_UPDATE,
@@ -513,6 +521,9 @@ private:
                     void        updateAudioPortListCommand();
                     void        updateAudioPatchListCommand();
                     void        changeAudioVolumeGroupCommand(volume_group_t group, int flags);
+                    void        notifyAudioDevicePortGainsChangedCommand(
+                            audio_gain_mask_t reasons,
+                            const std::vector<audio_port_config>& gain);
                     status_t    setAudioPortConfigCommand(const struct audio_port_config *config,
                                                           int delayMs);
                     void        dynamicPolicyMixStateUpdateCommand(const String8& regId,
@@ -530,6 +541,9 @@ private:
                                                           audio_session_t sessionId,
                                                           bool suspended);
                     void        audioModulesUpdateCommand();
+//                    void        audioDevicePortGainsUpdateCommand(
+//                            audio_gain_mask_t reasons,
+//                            const std::vector<audio_port_config>& gains);
                     void        routingChangedCommand();
                     void        updateUidStatesCommand();
                     void        insertCommand_l(AudioCommand *command, int delayMs = 0);
@@ -604,6 +618,12 @@ private:
         public:
             volume_group_t mGroup;
             int mFlags;
+        };
+
+        class AudioDevicePortGainsData : public AudioCommandData {
+        public:
+            audio_gain_mask_t mReasons;
+            std::vector<audio_port_config> mPortGains;
         };
 
         class SetAudioPortConfigData : public AudioCommandData {
@@ -749,6 +769,9 @@ private:
                                                     audio_source_t source);
 
         virtual void onAudioVolumeGroupChanged(volume_group_t group, int flags);
+                void onAudioDevicePortGainsChanged(
+                        audio_gain_mask_t reasons,
+                        const std::vector<audio_port_config>& gains) override;
 
         virtual void onRoutingUpdated();
 
@@ -778,6 +801,9 @@ private:
                             void      onDynamicPolicyMixStateUpdate(const String8& regId,
                                                                     int32_t state);
                             void      onAudioVolumeGroupChanged(volume_group_t group, int flags);
+                            void      onAudioDevicePortGainsChanged(
+                                    audio_gain_mask_t reasons,
+                                    const std::vector<audio_port_config>& gains);
                             void      onRecordingConfigurationUpdate(
                                                     int event,
                                                     const record_client_info_t *clientInfo,

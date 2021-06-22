@@ -58,6 +58,10 @@ import android.media.SoundTriggerSession;
  * {@hide}
  */
 interface IAudioPolicyService {
+    /** Notifies a change of Audio Device Port Gains. */
+    oneway void onAudioDevicePortGainsChanged(int /* Bitmask, indexed by ReasonMask */ reasons,
+                                              in AudioPortConfig[] gains);
+
     oneway void onNewAudioModulesAvailable();
 
     void setDeviceConnectionState(in AudioDevice device,

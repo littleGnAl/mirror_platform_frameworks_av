@@ -266,6 +266,12 @@ void AudioPolicyService::AudioPolicyClient::onAudioVolumeGroupChanged(volume_gro
     mAudioPolicyService->onAudioVolumeGroupChanged(group, flags);
 }
 
+void AudioPolicyService::AudioPolicyClient::onAudioDevicePortGainsChanged(
+        audio_gain_mask_t reasons, const std::vector<audio_port_config>& gains)
+{
+    mAudioPolicyService->notifyOnAudioDevicePortGainsChanged(reasons, gains);
+}
+
 void AudioPolicyService::AudioPolicyClient::onRoutingUpdated()
 {
     mAudioPolicyService->onRoutingUpdated();

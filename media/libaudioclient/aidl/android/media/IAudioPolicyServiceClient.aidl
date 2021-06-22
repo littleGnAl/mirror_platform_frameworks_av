@@ -17,6 +17,7 @@
 package android.media;
 
 import android.media.AudioConfigBase;
+import android.media.AudioPortConfig;
 import android.media.AudioSourceType;
 import android.media.EffectDescriptor;
 import android.media.RecordClientInfo;
@@ -28,6 +29,9 @@ oneway interface IAudioPolicyServiceClient {
     /** Notifies a change of volume group. */
     void onAudioVolumeGroupChanged(int /* volume_group_t */ group,
                                    int flags);
+    /** Notifies a change of Audio Device Port Gains. */
+    void onAudioDevicePortGainsChanged(int /* Bitmask, indexed by ReasonMask */ reasons, 
+                                       in AudioPortConfig[] gains);
     /** Notifies a change of audio port configuration. */
     void onAudioPortListUpdate();
     /** Notifies a change of audio patch configuration. */
