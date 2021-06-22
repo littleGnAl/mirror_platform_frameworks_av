@@ -210,11 +210,13 @@ void AudioPolicyService::AudioPolicyClient::setEffectSuspended(int effectId,
     mAudioPolicyService->setEffectSuspended(effectId, sessionId, suspended);
 }
 
-status_t AudioPolicyService::AudioPolicyClient::createAudioPatch(const struct audio_patch *patch,
-                                                                  audio_patch_handle_t *handle,
-                                                                  int delayMs)
+status_t AudioPolicyService::AudioPolicyClient::createAudioPatch(
+        const struct audio_patch *patch,
+        audio_patch_handle_t *handle,
+        int delayMs,
+        const content::AttributionSourceState& clientAttSource)
 {
-    return mAudioPolicyService->clientCreateAudioPatch(patch, handle, delayMs);
+    return mAudioPolicyService->clientCreateAudioPatch(patch, handle, delayMs, clientAttSource);
 }
 
 status_t AudioPolicyService::AudioPolicyClient::releaseAudioPatch(audio_patch_handle_t handle,

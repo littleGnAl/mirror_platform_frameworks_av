@@ -57,6 +57,7 @@ public:
     /* Create a patch between several source and sink ports */
     status_t createAudioPatch(const struct audio_patch *patch,
                               audio_patch_handle_t *handle,
+                              const content::AttributionSourceState& clientAttSource,
                               bool endpointPatch = false);
 
     /* Release a patch */
@@ -194,7 +195,8 @@ public:
             a.swap(b);
         }
 
-        status_t createConnections(PatchPanel *panel);
+        status_t createConnections(PatchPanel *panel,
+                                   const content::AttributionSourceState& clientAttSource);
         void clearConnections(PatchPanel *panel);
         bool isSoftware() const {
             return mRecord.handle() != AUDIO_PATCH_HANDLE_NONE ||
