@@ -662,8 +662,9 @@ status_t AudioFlingerClientAdapter::getAudioPort(struct audio_port_v7* port) {
     return OK;
 }
 
-status_t AudioFlingerClientAdapter::createAudioPatch(const struct audio_patch* patch,
-                                                     audio_patch_handle_t* handle) {
+status_t AudioFlingerClientAdapter::createAudioPatch(
+        const struct audio_patch* patch, audio_patch_handle_t* handle,
+        const content::AttributionSourceState& clientAttSource) {
     media::AudioPatch patchAidl = VALUE_OR_RETURN_STATUS(legacy2aidl_audio_patch_AudioPatch(*patch));
     int32_t aidlRet = VALUE_OR_RETURN_STATUS(legacy2aidl_audio_patch_handle_t_int32_t(
                     AUDIO_PATCH_HANDLE_NONE));
@@ -671,7 +672,7 @@ status_t AudioFlingerClientAdapter::createAudioPatch(const struct audio_patch* p
         aidlRet = VALUE_OR_RETURN_STATUS(legacy2aidl_audio_patch_handle_t_int32_t(*handle));
     }
     RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(
-            mDelegate->createAudioPatch(patchAidl, &aidlRet)));
+            mDelegate->createAudioPatch(patchAidl, clientAttSource, &aidlRet)));
     if (handle != nullptr) {
         *handle = VALUE_OR_RETURN_STATUS(aidl2legacy_int32_t_audio_patch_handle_t(aidlRet));
     }
@@ -1141,12 +1142,14 @@ Status AudioFlingerServerAdapter::getAudioPort(const media::AudioPort& port,
     return Status::ok();
 }
 
-Status AudioFlingerServerAdapter::createAudioPatch(const media::AudioPatch& patch,
-                                                   int32_t* _aidl_return) {
+Status AudioFlingerServerAdapter::createAudioPatch(
+        const media::AudioPatch& patch, const content::AttributionSourceState& clientAttSource,
+        int32_t* _aidl_return) {
     audio_patch patchLegacy = VALUE_OR_RETURN_BINDER(aidl2legacy_AudioPatch_audio_patch(patch));
     audio_patch_handle_t handleLegacy = VALUE_OR_RETURN_BINDER(
             aidl2legacy_int32_t_audio_patch_handle_t(*_aidl_return));
-    RETURN_BINDER_IF_ERROR(mDelegate->createAudioPatch(&patchLegacy, &handleLegacy));
+    RETURN_BINDER_IF_ERROR(mDelegate->createAudioPatch(
+                               &patchLegacy, &handleLegacy, clientAttSource));
     *_aidl_return = VALUE_OR_RETURN_BINDER(legacy2aidl_audio_patch_handle_t_int32_t(handleLegacy));
     return Status::ok();
 }

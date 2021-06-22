@@ -312,7 +312,8 @@ public:
 
     /* Create an audio patch between several source and sink ports */
     virtual status_t createAudioPatch(const struct audio_patch *patch,
-                                       audio_patch_handle_t *handle) = 0;
+                                      audio_patch_handle_t *handle,
+                                      const content::AttributionSourceState& clientAttSource) = 0;
 
     /* Release an audio patch */
     virtual status_t releaseAudioPatch(audio_patch_handle_t handle) = 0;
@@ -425,7 +426,8 @@ public:
     status_t setLowRamDevice(bool isLowRamDevice, int64_t totalMemory) override;
     status_t getAudioPort(struct audio_port_v7* port) override;
     status_t createAudioPatch(const struct audio_patch* patch,
-                              audio_patch_handle_t* handle) override;
+                              audio_patch_handle_t* handle,
+                              const content::AttributionSourceState& clientAttSource) override;
     status_t releaseAudioPatch(audio_patch_handle_t handle) override;
     status_t listAudioPatches(unsigned int* num_patches,
                               struct audio_patch* patches) override;
@@ -617,7 +619,9 @@ public:
     Status getPrimaryOutputFrameCount(int64_t* _aidl_return) override;
     Status setLowRamDevice(bool isLowRamDevice, int64_t totalMemory) override;
     Status getAudioPort(const media::AudioPort& port, media::AudioPort* _aidl_return) override;
-    Status createAudioPatch(const media::AudioPatch& patch, int32_t* _aidl_return) override;
+    Status createAudioPatch(const media::AudioPatch& patch,
+                            const content::AttributionSourceState& clientAttSource,
+                            int32_t* _aidl_return) override;
     Status releaseAudioPatch(int32_t handle) override;
     Status listAudioPatches(int32_t maxCount,
                             std::vector<media::AudioPatch>* _aidl_return) override;
