@@ -22,6 +22,30 @@
       },
       "revId": "450eca7be0553dadc608e8d90c2e4f395202d500",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7d4464c6_8d5318ea",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 521,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-22T21:47:09Z",
+      "side": 1,
+      "message": "Sungtak,\nWe can go ahead and land this now. We will revisit the coefficients later.",
+      "parentUuid": "24e8be83_ebca2fbb",
+      "range": {
+        "startLine": 510,
+        "startChar": 0,
+        "endLine": 521,
+        "endChar": 0
+      },
+      "revId": "450eca7be0553dadc608e8d90c2e4f395202d500",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
