@@ -1067,6 +1067,7 @@ private:
                 const struct audio_patch *patch,
                 int delayMs,
                 uid_t uid,
+                uid_t clientAppUid,
                 sp<AudioPatch> *patchDescPtr);
 
         bool areAllDevicesSupported(

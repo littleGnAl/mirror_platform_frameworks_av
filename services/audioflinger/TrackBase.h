@@ -445,5 +445,5 @@ protected:
     sp<RefBase>                 mPeerReferenceHold;   // keeps mPeerProxy alive during access.
     PatchProxyBufferProvider*   mPeerProxy = nullptr;
     struct timespec             mPeerTimeout{};
-
+    sp<PlayerBase> mPatchTrackPlayer;
 };
