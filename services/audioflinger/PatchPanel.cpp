@@ -68,7 +68,8 @@ status_t AudioFlinger::getAudioPort(struct audio_port_v7 *port) {
 
 /* Connect a patch between several source and sink ports */
 status_t AudioFlinger::createAudioPatch(const struct audio_patch *patch,
-                                   audio_patch_handle_t *handle)
+                                        audio_patch_handle_t *handle,
+                                        const content::AttributionSourceState& clientAttSource)
 {
     status_t status = AudioValidator::validateAudioPatch(*patch);
     if (status != NO_ERROR) {
@@ -76,7 +77,7 @@ status_t AudioFlinger::createAudioPatch(const struct audio_patch *patch,
     }
 
     Mutex::Autolock _l(mLock);
-    return mPatchPanel.createAudioPatch(patch, handle);
+    return mPatchPanel.createAudioPatch(patch, handle, clientAttSource);
 }
 
 /* Disconnect a patch */
@@ -132,9 +133,9 @@ status_t AudioFlinger::PatchPanel::getAudioPort(struct audio_port_v7 *port)
 }
 
 /* Connect a patch between several source and sink ports */
-status_t AudioFlinger::PatchPanel::createAudioPatch(const struct audio_patch *patch,
-                                   audio_patch_handle_t *handle,
-                                   bool endpointPatch)
+status_t AudioFlinger::PatchPanel::createAudioPatch(
+        const struct audio_patch *patch, audio_patch_handle_t *handle,
+        const content::AttributionSourceState& clientAttSource, bool endpointPatch)
 {
     if (handle == NULL || patch == NULL) {
         return BAD_VALUE;
@@ -327,7 +328,7 @@ status_t AudioFlinger::PatchPanel::createAudioPatch(const struct audio_patch *pa
                     goto exit;
                 }
                 newPatch.mRecord.setThread(reinterpret_cast<RecordThread*>(thread.get()));
-                status = newPatch.createConnections(this);
+                status = newPatch.createConnections(this, clientAttSource);
                 if (status != NO_ERROR) {
                     goto exit;
                 }
@@ -457,13 +458,15 @@ AudioFlinger::PatchPanel::Patch::~Patch()
             mRecord.handle(), mPlayback.handle());
 }
 
-status_t AudioFlinger::PatchPanel::Patch::createConnections(PatchPanel *panel)
+status_t AudioFlinger::PatchPanel::Patch::createConnections(
+        PatchPanel *panel, const content::AttributionSourceState& clientAttSource)
 {
     // create patch from source device to record thread input
     status_t status = panel->createAudioPatch(
             PatchBuilder().addSource(mAudioPatch.sources[0]).
                 addSink(mRecord.thread(), { .source = AUDIO_SOURCE_MIC }).patch(),
             mRecord.handlePtr(),
+            clientAttSource,
             true /*endpointPatch*/);
     if (status != NO_ERROR) {
         *mRecord.handlePtr() = AUDIO_PATCH_HANDLE_NONE;
@@ -475,6 +478,7 @@ status_t AudioFlinger::PatchPanel::Patch::createConnections(PatchPanel *panel)
         status = panel->createAudioPatch(
                 PatchBuilder().addSource(mPlayback.thread()).addSink(mAudioPatch.sinks[0]).patch(),
                 mPlayback.handlePtr(),
+                clientAttSource,
                 true /*endpointPatch*/);
         if (status != NO_ERROR) {
             *mPlayback.handlePtr() = AUDIO_PATCH_HANDLE_NONE;
@@ -582,6 +586,7 @@ status_t AudioFlinger::PatchPanel::Patch::createConnections(PatchPanel *panel)
                                            frameCount,
                                            tempRecordTrack->buffer(),
                                            tempRecordTrack->bufferSize(),
+                                           clientAttSource,
                                            outputFlags);
     status = mPlayback.checkTrack(tempPatchTrack.get());
     if (status != NO_ERROR) {

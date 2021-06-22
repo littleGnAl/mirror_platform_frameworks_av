@@ -55,7 +55,8 @@ public:
 
 protected:
 
-            void init(player_type_t playerType, audio_usage_t usage, audio_session_t sessionId);
+            void init(player_type_t playerType, audio_usage_t usage, audio_session_t sessionId,
+                    uid_t appUid = -1);
             void baseDestroy();
 
     //IPlayer methods handlers for derived classes

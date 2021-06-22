@@ -276,7 +276,8 @@ public:
 
     status_t clientCreateAudioPatch(const struct audio_patch *patch,
                               audio_patch_handle_t *handle,
-                              int delayMs);
+                              int delayMs,
+                              const content::AttributionSourceState& clientAttSource);
     status_t clientReleaseAudioPatch(audio_patch_handle_t handle,
                                      int delayMs);
     virtual status_t clientSetAudioPortConfig(const struct audio_port_config *config,
@@ -505,9 +506,11 @@ private:
                     void        releaseOutputCommand(audio_port_handle_t portId);
                     status_t    sendCommand(sp<AudioCommand>& command, int delayMs = 0);
                     void        insertCommand_l(sp<AudioCommand>& command, int delayMs = 0);
-                    status_t    createAudioPatchCommand(const struct audio_patch *patch,
-                                                        audio_patch_handle_t *handle,
-                                                        int delayMs);
+                    status_t    createAudioPatchCommand(
+                            const struct audio_patch *patch,
+                            audio_patch_handle_t *handle,
+                            int delayMs,
+                            const content::AttributionSourceState& clientAttSource);
                     status_t    releaseAudioPatchCommand(audio_patch_handle_t handle,
                                                          int delayMs);
                     void        updateAudioPortListCommand();
@@ -593,6 +596,7 @@ private:
         public:
             struct audio_patch mPatch;
             audio_patch_handle_t mHandle;
+            content::AttributionSourceState mClientAttSource;
         };
 
         class ReleaseAudioPatchData : public AudioCommandData {
@@ -726,8 +730,9 @@ private:
 
         /* Create a patch between several source and sink ports */
         virtual status_t createAudioPatch(const struct audio_patch *patch,
-                                           audio_patch_handle_t *handle,
-                                           int delayMs);
+                                          audio_patch_handle_t *handle,
+                                          int delayMs,
+                                          const content::AttributionSourceState& clientAttSource);
 
         /* Release a patch */
         virtual status_t releaseAudioPatch(audio_patch_handle_t handle,

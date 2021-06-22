@@ -831,6 +831,14 @@ void AudioFlinger::unregisterWriter(const sp<NBLog::Writer>& writer)
 }
 
 // IAudioFlinger interface
+// TODO b/182392769: use attribution source util
+static AttributionSourceState audioServerAttributionSource(pid_t pid) {
+    AttributionSourceState attributionSource{};
+    attributionSource.uid = AID_AUDIOSERVER;
+    attributionSource.pid = pid;
+    attributionSource.token = sp<BBinder>::make();
+    return attributionSource;
+}
 
 status_t AudioFlinger::createTrack(const media::CreateTrackRequest& _input,
                                    media::CreateTrackResponse& _output)
@@ -3457,6 +3465,7 @@ void AudioFlinger::updateSecondaryOutputsForTrack_l(
                                                        frameCount,
                                                        patchRecord->buffer(),
                                                        patchRecord->bufferSize(),
+                                                       audioServerAttributionSource(getpid()),
                                                        outputFlags,
                                                        0ns /* timeout */,
                                                        frameCountToBeReady);

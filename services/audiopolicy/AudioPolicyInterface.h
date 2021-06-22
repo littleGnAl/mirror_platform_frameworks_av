@@ -418,8 +418,9 @@ public:
 
     /* Create a patch between several source and sink ports */
     virtual status_t createAudioPatch(const struct audio_patch *patch,
-                                       audio_patch_handle_t *handle,
-                                       int delayMs) = 0;
+                                      audio_patch_handle_t *handle,
+                                      int delayMs,
+                                      const content::AttributionSourceState& clientAttSource) = 0;
 
     /* Release a patch */
     virtual status_t releaseAudioPatch(audio_patch_handle_t handle,

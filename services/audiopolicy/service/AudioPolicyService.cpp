@@ -353,11 +353,11 @@ void AudioPolicyService::doOnRoutingUpdated()
     }
 }
 
-status_t AudioPolicyService::clientCreateAudioPatch(const struct audio_patch *patch,
-                                                audio_patch_handle_t *handle,
-                                                int delayMs)
+status_t AudioPolicyService::clientCreateAudioPatch(
+        const struct audio_patch *patch, audio_patch_handle_t *handle, int delayMs,
+        const content::AttributionSourceState& clientAttSource)
 {
-    return mAudioCommandThread->createAudioPatchCommand(patch, handle, delayMs);
+    return mAudioCommandThread->createAudioPatchCommand(patch, handle, delayMs, clientAttSource);
 }
 
 status_t AudioPolicyService::clientReleaseAudioPatch(audio_patch_handle_t handle,
@@ -1634,7 +1634,8 @@ bool AudioPolicyService::AudioCommandThread::threadLoop()
                         command->mStatus = PERMISSION_DENIED;
                     } else {
                         mLock.unlock();
-                        command->mStatus = af->createAudioPatch(&data->mPatch, &data->mHandle);
+                        command->mStatus = af->createAudioPatch(
+                                    &data->mPatch, &data->mHandle, data->mClientAttSource);
                         mLock.lock();
                     }
                     } break;
@@ -1935,9 +1936,8 @@ void AudioPolicyService::AudioCommandThread::releaseOutputCommand(audio_port_han
 }
 
 status_t AudioPolicyService::AudioCommandThread::createAudioPatchCommand(
-                                                const struct audio_patch *patch,
-                                                audio_patch_handle_t *handle,
-                                                int delayMs)
+        const struct audio_patch *patch, audio_patch_handle_t *handle, int delayMs,
+        const content::AttributionSourceState& clientAttSource)
 {
     status_t status = NO_ERROR;
 
@@ -1946,6 +1946,7 @@ status_t AudioPolicyService::AudioCommandThread::createAudioPatchCommand(
     CreateAudioPatchData *data = new CreateAudioPatchData();
     data->mPatch = *patch;
     data->mHandle = *handle;
+    data->mClientAttSource = clientAttSource;
     command->mParam = data;
     command->mWaitStatus = true;
     ALOGV("AudioCommandThread() adding create patch delay %d", delayMs);
@@ -2188,18 +2189,22 @@ void AudioPolicyService::AudioCommandThread::insertCommand_l(sp<AudioCommand>& c
         case RELEASE_AUDIO_PATCH: {
             audio_patch_handle_t handle;
             struct audio_patch patch;
+            content::AttributionSourceState clientAttSource{};
             if (command->mCommand == CREATE_AUDIO_PATCH) {
                 handle = ((CreateAudioPatchData *)command->mParam.get())->mHandle;
                 patch = ((CreateAudioPatchData *)command->mParam.get())->mPatch;
+                clientAttSource = ((CreateAudioPatchData *)command->mParam.get())->mClientAttSource;
             } else {
                 handle = ((ReleaseAudioPatchData *)command->mParam.get())->mHandle;
                 memset(&patch, 0, sizeof(patch));
             }
             audio_patch_handle_t handle2;
             struct audio_patch patch2;
+            content::AttributionSourceState clientAttSource2{};
             if (command2->mCommand == CREATE_AUDIO_PATCH) {
                 handle2 = ((CreateAudioPatchData *)command2->mParam.get())->mHandle;
                 patch2 = ((CreateAudioPatchData *)command2->mParam.get())->mPatch;
+                clientAttSource = ((CreateAudioPatchData *)command->mParam.get())->mClientAttSource;
             } else {
                 handle2 = ((ReleaseAudioPatchData *)command2->mParam.get())->mHandle;
                 memset(&patch2, 0, sizeof(patch2));
