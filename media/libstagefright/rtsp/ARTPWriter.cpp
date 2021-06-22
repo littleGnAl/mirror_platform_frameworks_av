@@ -646,6 +646,7 @@ void ARTPWriter::addSR(const sp<ABuffer> &buffer) {
     data[6] = (mSourceID >> 8) & 0xff;
     data[7] = mSourceID & 0xff;
 
+    mLastNTPTime = GetNowNTP();
     data[8] = mLastNTPTime >> (64 - 8);
     data[9] = (mLastNTPTime >> (64 - 16)) & 0xff;
     data[10] = (mLastNTPTime >> (64 - 24)) & 0xff;
@@ -655,6 +656,7 @@ void ARTPWriter::addSR(const sp<ABuffer> &buffer) {
     data[14] = (mLastNTPTime >> 8) & 0xff;
     data[15] = mLastNTPTime & 0xff;
 
+    mLastRTPTime = ALooper::GetNowUs() * 9 / 100LL;
     data[16] = (mLastRTPTime >> 24) & 0xff;
     data[17] = (mLastRTPTime >> 16) & 0xff;
     data[18] = (mLastRTPTime >> 8) & 0xff;
@@ -1158,7 +1160,6 @@ void ARTPWriter::sendHEVCData(MediaBufferBase *mediaBuf) {
     }
 
     mLastRTPTime = rtpTime;
-    mLastNTPTime = GetNowNTP();
 }
 
 void ARTPWriter::sendAVCData(MediaBufferBase *mediaBuf) {
@@ -1345,7 +1346,6 @@ void ARTPWriter::sendAVCData(MediaBufferBase *mediaBuf) {
     }
 
     mLastRTPTime = rtpTime;
-    mLastNTPTime = GetNowNTP();
 }
 
 void ARTPWriter::sendH263Data(MediaBufferBase *mediaBuf) {
@@ -1407,7 +1407,6 @@ void ARTPWriter::sendH263Data(MediaBufferBase *mediaBuf) {
     }
 
     mLastRTPTime = rtpTime;
-    mLastNTPTime = GetNowNTP();
 }
 
 void ARTPWriter::updateCVODegrees(int32_t cvoDegrees) {
@@ -1566,7 +1565,6 @@ void ARTPWriter::sendAMRData(MediaBufferBase *mediaBuf) {
     mNumRTPOctetsSent += buffer->size() - 12;
 
     mLastRTPTime = rtpTime;
-    mLastNTPTime = GetNowNTP();
 }
 
 void ARTPWriter::makeSocketPairAndBind(String8& localIp, int localPort,
