@@ -43,6 +43,8 @@ import android.media.RenderPosition;
 import android.media.TrackSecondaryOutputInfo;
 import android.media.audio.common.AudioFormat;
 
+import android.content.AttributionSourceState;
+
 /**
  * {@hide}
  */
@@ -181,7 +183,8 @@ interface IAudioFlingerService {
     AudioPort getAudioPort(in AudioPort port);
 
     /* Create an audio patch between several source and sink ports */
-    int /* audio_patch_handle_t */ createAudioPatch(in AudioPatch patch);
+    int /* audio_patch_handle_t */ createAudioPatch(in AudioPatch patch,
+                                                    in AttributionSourceState clientAttSource);
 
     /* Release an audio patch */
     void releaseAudioPatch(int /* audio_patch_handle_t */ handle);

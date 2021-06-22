@@ -2112,6 +2112,7 @@ AudioFlinger::PlaybackThread::PatchTrack::PatchTrack(PlaybackThread *playbackThr
                                                      size_t frameCount,
                                                      void *buffer,
                                                      size_t bufferSize,
+                                                     const AttributionSourceState& clientAttSource,
                                                      audio_output_flags_t flags,
                                                      const Timeout& timeout,
                                                      size_t frameCountToBeReady)
@@ -2119,7 +2120,7 @@ AudioFlinger::PlaybackThread::PatchTrack::PatchTrack(PlaybackThread *playbackThr
               audio_attributes_t{} /* currently unused for patch track */,
               sampleRate, format, channelMask, frameCount,
               buffer, bufferSize, nullptr /* sharedBuffer */,
-              AUDIO_SESSION_NONE, getpid(), audioServerAttributionSource(getpid()), flags,
+              AUDIO_SESSION_NONE, getpid(), clientAttSource, flags,
               TYPE_PATCH, AUDIO_PORT_HANDLE_NONE, frameCountToBeReady),
         PatchTrackBase(new ClientProxy(mCblk, mBuffer, frameCount, mFrameSize, true, true),
                        *playbackThread, timeout)
@@ -2128,11 +2129,16 @@ AudioFlinger::PlaybackThread::PatchTrack::PatchTrack(PlaybackThread *playbackThr
                                       __func__, mId, sampleRate,
                                       (int)mPeerTimeout.tv_sec,
                                       (int)(mPeerTimeout.tv_nsec / 1000000));
+
+    mPatchTrackPlayer = new PatchTrackPlayerBase(this, attributes.usage, clientAttSource);
 }
 
 AudioFlinger::PlaybackThread::PatchTrack::~PatchTrack()
 {
     ALOGV("%s(%d)", __func__, mId);
+    mPatchTrackPlayer->stop();
+    mPatchTrackPlayer->destroy();
+    mPatchTrackPlayer.clear();
 }
 
 size_t AudioFlinger::PlaybackThread::PatchTrack::framesReady() const
@@ -2151,8 +2157,15 @@ status_t AudioFlinger::PlaybackThread::PatchTrack::start(AudioSystem::sync_event
     if (status != NO_ERROR) {
         return status;
     }
+    mPatchTrackPlayer->start();
     android_atomic_and(~CBLK_DISABLED, &mCblk->mFlags);
     return status;
+}
+
+void AudioFlinger::PlaybackThread::PatchTrack::stop()
+{
+    mPatchTrackPlayer->stop();
+    Track::stop();
 }
 
 // AudioBufferProvider interface
@@ -2240,6 +2253,92 @@ void AudioFlinger::PlaybackThread::PatchTrack::restartIfDisabled()
         ALOGW("%s(%d): disabled due to previous underrun, restarting", __func__, mId);
         start();
     }
+}
+
+//--------------------------------------------------------------------------------------------------
+AudioFlinger::PlaybackThread::PatchTrackPlayerBase::PatchTrackPlayerBase(
+        PatchTrack* patchTrack, audio_usage_t usage,
+        const content::AttributionSourceState& clientAttSource)
+    : PlayerBase(),
+      mPatchTrack(*patchTrack), mPlayerVolumeL(1.0f), mPlayerVolumeR(1.0f)
+{
+    ALOGD("%s uid=%d",  __func__, mPatchTrack.uid());
+    PlayerBase::init(
+                PLAYER_TYPE_HW_SOURCE_SW_BRIDGE, usage, AUDIO_SESSION_NONE, clientAttSource.uid);
+}
+
+AudioFlinger::PlaybackThread::PatchTrackPlayerBase::~PatchTrackPlayerBase() {
+    ALOGD("%s",  __func__);
+    doDestroy();
+}
+
+void AudioFlinger::PlaybackThread::PatchTrackPlayerBase::destroy() {
+    doDestroy();
+    baseDestroy();
+}
+
+void AudioFlinger::PlaybackThread::PatchTrackPlayerBase::doDestroy() {
+}
+
+void AudioFlinger::PlaybackThread::PatchTrackPlayerBase::setPlayerVolume(float vl, float vr) {
+    ALOGV("%s", __func__);
+    {
+        Mutex::Autolock _l(mSettingsLock);
+        mPlayerVolumeL = vl;
+        mPlayerVolumeR = vr;
+    }
+    doSetVolume();
+}
+
+//------------------------------------------------------------------------------
+// Implementation of IPlayer
+status_t AudioFlinger::PlaybackThread::PatchTrackPlayerBase::playerStart() {
+    ALOGV("%s from IPlayer", __func__);
+    return NO_ERROR;
+}
+
+status_t AudioFlinger::PlaybackThread::PatchTrackPlayerBase::playerPause() {
+    ALOGV("%s from IPlayer", __func__);
+    return NO_ERROR;
+}
+
+
+status_t AudioFlinger::PlaybackThread::PatchTrackPlayerBase::playerStop() {
+    ALOGV("%s from IPlayer", __func__);
+    return NO_ERROR;
+}
+
+status_t AudioFlinger::PlaybackThread::PatchTrackPlayerBase::playerSetVolume() {
+    ALOGV("%s from IPlayer", __func__);
+    return doSetVolume();
+}
+
+status_t AudioFlinger::PlaybackThread::PatchTrackPlayerBase::doSetVolume() {
+    ALOGV("%s from IPlayer", __func__);
+    float tl = mPlayerVolumeL * mPanMultiplierL * mVolumeMultiplierL;
+    float tr = mPlayerVolumeR * mPanMultiplierR * mVolumeMultiplierR;
+    mPatchTrack.setFinalVolume(gain_minifloat_pack(gain_from_float(tl), gain_from_float(tr)));
+    return NO_ERROR;
+}
+
+binder::Status AudioFlinger::PlaybackThread::PatchTrackPlayerBase::applyVolumeShaper(
+        const ::android::media::VolumeShaperConfiguration& configuration,
+        const ::android::media::VolumeShaperOperation& operation) {
+
+    sp<VolumeShaper::Configuration> spConfiguration = new VolumeShaper::Configuration();
+    sp<VolumeShaper::Operation> spOperation = new VolumeShaper::Operation();
+
+    status_t s = spConfiguration->readFromParcelable(configuration)
+            ?: spOperation->readFromParcelable(operation);
+    if (s != OK) {
+        return binderStatusFromStatusT(s);
+    }
+    ALOGV("%s from IPlayer", __func__);
+    VolumeShaper::Status status = mPatchTrack.applyVolumeShaper(spConfiguration, spOperation);
+    if (status < 0) { // a non-negative value is the volume shaper id.
+        ALOGE("%s failed with status %d", __func__, status);
+    }
+    return binder::Status::fromStatusT(status);
 }
 
 // ----------------------------------------------------------------------------
