@@ -240,10 +240,7 @@ public:
         virtual status_t getAudioPort(struct audio_port_v7 *port);
         virtual status_t createAudioPatch(const struct audio_patch *patch,
                                            audio_patch_handle_t *handle,
-                                           uid_t uid) {
-            return createAudioPatchInternal(patch, handle, uid);
-        }
-
+                                           uid_t uid);
         virtual status_t releaseAudioPatch(audio_patch_handle_t handle,
                                               uid_t uid);
         virtual status_t listAudioPatches(unsigned int *num_patches,
@@ -571,7 +568,12 @@ protected:
 
         void connectTelephonyRxAudioSource();
 
-        void disconnectTelephonyRxAudioSource();
+        void disconnectTelephonyAudioSource(audio_port_handle_t &portHandle);
+
+        void connectTelephonyTxAudioSource(const sp<DeviceDescriptor> &srcdevice,
+                                           const sp<DeviceDescriptor> &sinkDevice,
+                                           uint32_t delayMs);
+
 
         /**
          * @brief updates routing for all inputs.
@@ -778,6 +780,12 @@ protected:
         status_t connectAudioSource(const sp<SourceClientDescriptor>& sourceDesc);
         status_t disconnectAudioSource(const sp<SourceClientDescriptor>& sourceDesc);
 
+        status_t connectAudioSourceToSink(const sp<SourceClientDescriptor>& sourceDesc,
+                                          const sp<DeviceDescriptor> &sinkDevice,
+                                          const struct audio_patch *patch,
+                                          audio_patch_handle_t &handle,
+                                          uid_t uid, uint32_t delayMs);
+
         sp<SourceClientDescriptor> getSourceForAttributesOnOutput(audio_io_handle_t output,
                                                                   const audio_attributes_t &attr);
         void clearAudioSourcesForOutput(audio_io_handle_t output);
@@ -826,8 +834,6 @@ protected:
 
         SoundTriggerSessionCollection mSoundTriggerSessions;
 
-        sp<AudioPatch> mCallTxPatch;
-
         HwAudioOutputCollection mHwOutputs;
         SourceClientCollection mAudioSources;
 
@@ -868,6 +874,7 @@ protected:
         // The port handle of the hardware audio source created internally for the Call RX audio
         // end point.
         audio_port_handle_t mCallRxSourceClientPort = AUDIO_PORT_HANDLE_NONE;
+        audio_port_handle_t mCallTxSourceClientPort = AUDIO_PORT_HANDLE_NONE;
 
         // Support for Multi-Stream Decoder (MSD) module
         sp<DeviceDescriptor> getMsdAudioInDevice() const;
@@ -888,6 +895,7 @@ protected:
         PatchBuilder buildMsdPatch(bool msdIsSource, const sp<DeviceDescriptor> &device) const;
         status_t setMsdOutputPatches(const DeviceVector *outputDevices = nullptr);
         void releaseMsdOutputPatches(const DeviceVector& devices);
+        bool isMsdPatch(const audio_patch_handle_t &handle) const;
 private:
         void onNewAudioModulesAvailableInt(DeviceVector *newDevices);
 
@@ -998,21 +1006,25 @@ private:
          * @param[out] handle patch handle to be provided if patch installed correctly
          * @param[in] uid of the client
          * @param[in] delayMs if required
-         * @param[in] sourceDesc [optional] in case of external source, source client to be
-         * configured by the patch, i.e. assigning an Output (HW or SW)
+         * @param[in] sourceDesc source client to be configured when creating the patch, i.e.
+         *            assigning an Output (HW or SW) used for volume control.
          * @return NO_ERROR if patch installed correctly, error code otherwise.
          */
         status_t createAudioPatchInternal(const struct audio_patch *patch,
                                           audio_patch_handle_t *handle,
-                                          uid_t uid, uint32_t delayMs = 0,
-                                          const sp<SourceClientDescriptor>& sourceDesc = nullptr);
+                                          uid_t uid, uint32_t delayMs,
+                                          const sp<SourceClientDescriptor>& sourceDesc);
         /**
          * @brief releaseAudioPatchInternal internal function to remove an audio patch
          * @param[in] handle of the patch to be removed
          * @param[in] delayMs if required
+         * @param[in] sourceDesc [optional] in case of external source, source client to be
+         * unrouted from the patch, i.e. assigning an Output (HW or SW)
          * @return NO_ERROR if patch removed correctly, error code otherwise.
          */
-        status_t releaseAudioPatchInternal(audio_patch_handle_t handle, uint32_t delayMs = 0);
+        status_t releaseAudioPatchInternal(audio_patch_handle_t handle,
+                                           uint32_t delayMs = 0,
+                                           const sp<SourceClientDescriptor>& sourceDesc = nullptr);
 
         status_t installPatch(const char *caller,
                 audio_patch_handle_t *patchHandle,
