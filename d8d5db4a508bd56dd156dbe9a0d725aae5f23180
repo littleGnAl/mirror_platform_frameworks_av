@@ -16,6 +16,29 @@
       "message": "Ray,\nPatchset 1 is https://android-review.googlesource.com/c/platform/frameworks/av/+/1740750/\nPatchset 2 includes changes as per review comments in hevc encoder plugin and as well as min qp is now 4 instead of zero as library supports only upto 4.",
       "revId": "d8d5db4a508bd56dd156dbe9a0d725aae5f23180",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ea0ff3e9_c3d22db3",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-24T17:36:03Z",
+      "side": 1,
+      "message": "Looking at Ray\u0027s comment in his version of the code, I realized we are missing one case here.\n\nWhen QP bounds aren\u0027t specified, we need to use the default bounds which are different (10 to 40) from supported bounds (4 to 51). When at least one of them is specified, we will use this updated logic.\n\nManisha,\nDo this only when flexCount() \u003e 0 and in the else path, initialize i/p/b Min/Max to DEFAULT_{I/P/B}_QP_{MIN/MAX}",
+      "range": {
+        "startLine": 820,
+        "startChar": 0,
+        "endLine": 847,
+        "endChar": 0
+      },
+      "revId": "d8d5db4a508bd56dd156dbe9a0d725aae5f23180",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
