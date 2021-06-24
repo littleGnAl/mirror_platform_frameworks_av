@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b2a54b_475d7144",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-06-24T17:45:46Z",
+      "side": 1,
+      "message": "Let us initialize these to which are set to default in ihevce_set_def_params()\nmEncParams.s_config_prms.i4_max_frame_qp and mEncParams.s_config_prms.i4_min_frame_qp\n\nThis way, in case flexCount() is 0, behaviour remains same as existing code.",
+      "range": {
+        "startLine": 725,
+        "startChar": 0,
+        "endLine": 727,
+        "endChar": 0
+      },
+      "revId": "e37b634c623d2fd84c9befc831c52e3fb65703d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
