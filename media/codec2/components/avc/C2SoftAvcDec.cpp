@@ -924,6 +924,7 @@ void C2SoftAvcDec::process(
                 work->result = C2_CORRUPTED;
                 return;
             }
+            continue;
         }
         if (0 < ps_decode_op->u4_pic_wd && 0 < ps_decode_op->u4_pic_ht) {
             if (mHeaderDecoded == false) {
