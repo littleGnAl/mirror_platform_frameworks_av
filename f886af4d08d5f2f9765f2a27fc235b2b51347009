@@ -50,6 +50,24 @@
       "message": "Hi Santiago,\n\nBranch android11-gsi can only backport patches from master. Is this patch cherrypicked from master? Or, this is a special patch for android11?\n",
       "revId": "f886af4d08d5f2f9765f2a27fc235b2b51347009",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad81b6f5_73fab127",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-06-24T14:32:39Z",
+      "side": 1,
+      "message": "I have sent a cherry-pick to aosp/master.",
+      "parentUuid": "15855c5a_2d433d7b",
+      "revId": "f886af4d08d5f2f9765f2a27fc235b2b51347009",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
