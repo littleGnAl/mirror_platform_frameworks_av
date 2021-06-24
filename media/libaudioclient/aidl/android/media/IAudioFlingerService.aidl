@@ -87,13 +87,10 @@ interface IAudioFlingerService {
     float getMasterBalance();
 
     /*
-     * Set/gets stream type state. This will probably be used by
-     * the preference panel, mostly.
+     * Set stream type state. This will probably be used by the preference panel, mostly.
      */
     void setStreamVolume(AudioStreamType stream, float value, int /* audio_io_handle_t */ output);
     void setStreamMute(AudioStreamType stream, boolean muted);
-    float streamVolume(AudioStreamType stream, int /* audio_io_handle_t */ output);
-    boolean streamMute(AudioStreamType stream);
 
     // set audio mode.
     void setMode(AudioMode mode);
