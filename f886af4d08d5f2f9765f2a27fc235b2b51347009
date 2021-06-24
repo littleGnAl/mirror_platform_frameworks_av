@@ -33,6 +33,23 @@
       "message": "Friendly ping, szuweilin@.",
       "revId": "f886af4d08d5f2f9765f2a27fc235b2b51347009",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15855c5a_2d433d7b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1128729
+      },
+      "writtenOn": "2021-06-24T10:03:46Z",
+      "side": 1,
+      "message": "Hi Santiago,\n\nBranch android11-gsi can only backport patches from master. Is this patch cherrypicked from master? Or, this is a special patch for android11?\n",
+      "revId": "f886af4d08d5f2f9765f2a27fc235b2b51347009",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
