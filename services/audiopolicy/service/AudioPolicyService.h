@@ -42,6 +42,7 @@
 #include <android/hardware/BnSensorPrivacyListener.h>
 #include <android/content/AttributionSourceState.h>
 
+#include <numeric>
 #include <unordered_map>
 
 namespace android {
@@ -264,10 +265,12 @@ public:
                                const char *keyValuePairs,
                                int delayMs);
 
-    virtual status_t setStreamVolume(audio_stream_type_t stream,
-                                     float volume,
-                                     audio_io_handle_t output,
-                                     int delayMs = 0);
+    // set a volume on port(s) for a particular output. For the same user setting, a given port
+    // can have different volumes for each output (destination device) it is attached to.
+    virtual status_t setPortsVolume(const std::vector<audio_port_handle_t> &ports,
+                                    float volume,
+                                    audio_io_handle_t output,
+                                    int delayMs = 0);
     virtual status_t setVoiceVolume(float volume, int delayMs = 0);
 
     void doOnNewAudioModulesAvailable();
@@ -468,7 +471,7 @@ private:
 
         // commands for tone AudioCommand
         enum {
-            SET_VOLUME,
+            SET_PORTS_VOLUME,
             SET_PARAMETERS,
             SET_VOICE_VOLUME,
             STOP_OUTPUT,
@@ -497,8 +500,9 @@ private:
         virtual     bool        threadLoop();
 
                     void        exit();
-                    status_t    volumeCommand(audio_stream_type_t stream, float volume,
-                                            audio_io_handle_t output, int delayMs = 0);
+                    status_t    volumePortsCommand(const std::vector<audio_port_handle_t> &ports,
+                                                   float volume, audio_io_handle_t output,
+                                                   int delayMs = 0);
                     status_t    parametersCommand(audio_io_handle_t ioHandle,
                                             const char *keyValuePairs, int delayMs = 0);
                     status_t    voiceVolumeCommand(float volume, int delayMs = 0);
@@ -564,11 +568,16 @@ private:
             AudioCommandData() {}
         };
 
-        class VolumeData : public AudioCommandData {
+        class VolumePortsData : public AudioCommandData {
         public:
-            audio_stream_type_t mStream;
+            std::vector<audio_port_handle_t> mPorts;
             float mVolume;
             audio_io_handle_t mIO;
+            std::string dumpPorts() {
+                return std::accumulate(std::begin(mPorts), std::end(mPorts), std::string{},
+                                       [] (std::string& ls, int rs) {
+                    return ls +=  std::to_string(rs) + " "; });
+            }
         };
 
         class ParametersData : public AudioCommandData {
@@ -706,7 +715,8 @@ private:
 
         // set a stream volume for a particular output. For the same user setting, a given stream type can have different volumes
         // for each output (destination device) it is attached to.
-        virtual status_t setStreamVolume(audio_stream_type_t stream, float volume, audio_io_handle_t output, int delayMs = 0);
+        status_t setPortsVolume(const std::vector<audio_port_handle_t> &ports,
+                                float volume, audio_io_handle_t output, int delayMs = 0) override;
 
         // invalidate a stream type, causing a reroute to an unspecified new output
         virtual status_t invalidateStream(audio_stream_type_t stream);

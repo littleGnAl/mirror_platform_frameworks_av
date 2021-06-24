@@ -159,7 +159,7 @@ public:
     virtual uint32_t latency() { return 0; }
     virtual bool isFixedVolume(const DeviceTypeSet& deviceTypes);
     virtual bool setVolume(float volumeDb, bool muted,
-                           VolumeSource volumeSource, const StreamTypeVector &streams,
+                           VolumeSource volumeSource,
                            const DeviceTypeSet& deviceTypes,
                            uint32_t delayMs,
                            bool force);
@@ -365,11 +365,10 @@ public:
      * @param device scoped for the change
      * @param delayMs potentially applyed to prevent cut sounds.
      */
-    void setSwMute(bool muted, VolumeSource vs, const StreamTypeVector &streams,
-                   const DeviceTypeSet& device, uint32_t delayMs);
+    void setSwMute(bool muted, VolumeSource vs, const DeviceTypeSet& device, uint32_t delayMs);
 
     virtual bool setVolume(float volumeDb, bool muted,
-                           VolumeSource volumeSource, const StreamTypeVector &streams,
+                           VolumeSource volumeSource,
                            const DeviceTypeSet& device,
                            uint32_t delayMs,
                            bool force);
@@ -430,6 +429,13 @@ public:
      */
     DeviceVector filterSupportedDevices(const DeviceVector &devices) const;
 
+    /**
+     * @brief getPortsForVolumeSource finds all ports matching the given volume source.
+     * @param vs to be considered
+     * @return vector of ports following the given volume source.
+     */
+    std::vector<audio_port_handle_t> getPortsForVolumeSource(const VolumeSource& vs);
+
     const sp<IOProfile> mProfile;          // I/O profile this output derives from
     audio_io_handle_t mIoHandle;           // output handle
     uint32_t mLatency;                  //
@@ -452,7 +458,7 @@ public:
             void dump(String8 *dst) const override;
 
     virtual bool setVolume(float volumeDb, bool muted,
-                           VolumeSource volumeSource, const StreamTypeVector &streams,
+                           VolumeSource volumeSource,
                            const DeviceTypeSet& deviceTypes,
                            uint32_t delayMs,
                            bool force);
