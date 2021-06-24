@@ -34,6 +34,8 @@
 
 namespace android {
 
+const double JITTER_MULTIPLE = 1.5f;
+
 // static
 AAVCAssembler::AAVCAssembler(const sp<AMessage> &notify)
     : mNotifyMsg(notify),
@@ -43,6 +45,7 @@ AAVCAssembler::AAVCAssembler(const sp<AMessage> &notify)
       mAccessUnitDamaged(false),
       mFirstIFrameProvided(false),
       mLastIFrameProvidedAtMs(0),
+      mLastRtpTimeJitterDataUs(0),
       mWidth(0),
       mHeight(0) {
 }
@@ -121,24 +124,70 @@ ARTPAssembler::AssemblyStatus AAVCAssembler::addNALUnit(
     sp<ABuffer> buffer = *queue->begin();
     buffer->meta()->setObject("source", source);
 
+    /**
+     * RFC3550 calculates the interarrival jitter time for 'ALL packets'.
+     * But that is not useful as an ingredient of buffering time.
+     * Instead, we calculates the time only for all 'NAL units'.
+     */
     int64_t rtpTime = findRTPTime(firstRTPTime, buffer);
+    int64_t nowTimeUs = ALooper::GetNowUs();
+    if (rtpTime != mLastRtpTimeJitterDataUs) {
+        source->putBaseJitterData(rtpTime, nowTimeUs);
+        mLastRtpTimeJitterDataUs = rtpTime;
+    }
+    source->putInterArrivalJitterData(rtpTime, nowTimeUs);
 
-    int64_t startTime = source->mFirstSysTime / 1000;
-    int64_t nowTime = ALooper::GetNowUs() / 1000;
-    int64_t playedTime = nowTime - startTime;
+    const int64_t startTimeMs = source->mFirstSysTime / 1000;
+    const int64_t nowTimeMs = nowTimeUs / 1000;
+    const int32_t staticJitterTimeMs = source->getStaticJitterTimeMs();
+    const int32_t baseJitterTimeMs = source->getBaseJitterTimeMs();
+    const int32_t dynamicJitterTimeMs = source->getInterArrivalJitterTimeMs();
+    const int64_t clockRate = source->mClockRate;
 
-    int64_t playedTimeRtp = source->mFirstRtpTime + playedTime * (int64_t)source->mClockRate / 1000;
-    const int64_t jitterTime = source->mJbTimeMs * (int64_t)source->mClockRate / 1000;
+    int64_t playedTimeMs = nowTimeMs - startTimeMs;
+    int64_t playedTimeRtp = source->mFirstRtpTime + MsToRtp(playedTimeMs, clockRate);
 
-    int64_t expiredTimeInJb = rtpTime + jitterTime;
-    bool isExpired = expiredTimeInJb <= (playedTimeRtp);
-    bool isTooLate200 = expiredTimeInJb < (playedTimeRtp - jitterTime);
-    bool isTooLate300 = expiredTimeInJb < (playedTimeRtp - (jitterTime * 3 / 2));
+    /**
+     * Based on experiences in real commercial network services,
+     * 300 ms is a maximum heuristic jitter buffer time for video RTP service.
+     */
+
+    /**
+     * The base jitter is an expected additional propagation time.
+     * We can drop packets if the time doesn't meet our standards.
+     * If it gets shorter, we can get faster response but should drop delayed packets.
+     * Expecting range : 50ms ~ 1000ms (But 300 ms would be practical upper bound)
+     */
+    const int32_t baseJbTimeMs = std::min(std::max(staticJitterTimeMs, baseJitterTimeMs), 300);
+    /**
+     * Dynamic jitter is a variance of interarrival time as defined in the 6.4.1 of RFC 3550.
+     * We can regard this as a tolerance of every data putting moments.
+     * Expecting range : 0ms ~ 150ms (Not to over 300 ms practically)
+     */
+    const int32_t dynamicJbTimeMs = std::min(dynamicJitterTimeMs, 150);
+    const int64_t dynamicJbTimeRtp = MsToRtp(dynamicJbTimeMs, clockRate);
+    /* Fundamental jitter time */
+    const int32_t jitterTimeMs = baseJbTimeMs;
+    const int64_t jitterTimeRtp = MsToRtp(jitterTimeMs, clockRate);
+
+    // Till (T), this assembler waits unconditionally to collect current NAL unit
+    int64_t expiredTimeRtp = rtpTime + jitterTimeRtp;       // When does this buffer expire ? (T)
+    int64_t diffTimeRtp = playedTimeRtp - expiredTimeRtp;
+    bool isExpired = (diffTimeRtp >= 0);                    // It's expired if T is passed away
+
+    // From (T), this assembler tries to complete the NAL till (T + try)
+    int32_t tryJbTimeMs = baseJitterTimeMs / 2 + dynamicJbTimeMs;
+    int64_t tryJbTimeRtp = MsToRtp(tryJbTimeMs, clockRate);
+    bool isFirstLineBroken = (diffTimeRtp > tryJbTimeRtp);
+
+    // After (T + try), it gives last chance till (T + try + a) with warning messages.
+    int64_t alpha = dynamicJbTimeRtp * JITTER_MULTIPLE;     // Use Dyn as 'a'
+    bool isSecondLineBroken = (diffTimeRtp > (tryJbTimeRtp + alpha));   // The Maginot line
 
     if (mShowQueue && mShowQueueCnt < 20) {
         showCurrentQueue(queue);
-        printNowTimeUs(startTime, nowTime, playedTime);
-        printRTPTime(rtpTime, playedTimeRtp, expiredTimeInJb, isExpired);
+        printNowTimeMs(startTimeMs, nowTimeMs, playedTimeMs);
+        printRTPTime(rtpTime, playedTimeRtp, expiredTimeRtp, isExpired);
         mShowQueueCnt++;
     }
 
@@ -149,17 +198,23 @@ ARTPAssembler::AssemblyStatus AAVCAssembler::addNALUnit(
         return NOT_ENOUGH_DATA;
     }
 
-    if (isTooLate200) {
-        ALOGW("=== WARNING === buffer arrived 200ms late. === WARNING === ");
-    }
+    if (isFirstLineBroken) {
+        if (isSecondLineBroken) {
+            int64_t totalDiffTimeMs = RtpToMs(diffTimeRtp + jitterTimeRtp, clockRate);
+            ALOGE("buffer too late... \t RTP diff from exp =%lld \t MS diff from stamp = %lld\t\t"
+                    "Seq# %d \t ExpSeq# %d \t"
+                    "JitterMs %d + (%d + %d * %.3f)",
+                    (long long)diffTimeRtp, (long long)totalDiffTimeMs,
+                    buffer->int32Data(), mNextExpectedSeqNo,
+                    jitterTimeMs, tryJbTimeMs, dynamicJbTimeMs, JITTER_MULTIPLE);
+            printNowTimeMs(startTimeMs, nowTimeMs, playedTimeMs);
+            printRTPTime(rtpTime, playedTimeRtp, expiredTimeRtp, isExpired);
 
-    if (isTooLate300) {
-        ALOGW("buffer arrived after 300ms ... \t Diff in Jb=%lld \t Seq# %d",
-                (long long)(playedTimeRtp - expiredTimeInJb), buffer->int32Data());
-        printNowTimeUs(startTime, nowTime, playedTime);
-        printRTPTime(rtpTime, playedTimeRtp, expiredTimeInJb, isExpired);
-
-        mNextExpectedSeqNo = pickProperSeq(queue, firstRTPTime, playedTimeRtp, jitterTime);
+            mNextExpectedSeqNo = pickProperSeq(queue, firstRTPTime, playedTimeRtp, jitterTimeRtp);
+        }  else {
+            ALOGW("=== WARNING === buffer arrived after %d + %d = %d ms === WARNING === ",
+                    jitterTimeMs, tryJbTimeMs, jitterTimeMs + tryJbTimeMs);
+        }
     }
 
     if (mNextExpectedSeqNoValid) {
@@ -170,6 +225,7 @@ ARTPAssembler::AssemblyStatus AAVCAssembler::addNALUnit(
             source->noticeAbandonBuffer(cntRemove);
             ALOGW("delete %d of %d buffers", cntRemove, size);
         }
+
         if (queue->empty()) {
             return NOT_ENOUGH_DATA;
         }
@@ -565,17 +621,6 @@ void AAVCAssembler::submitAccessUnit() {
     msg->post();
 }
 
-inline int64_t AAVCAssembler::findRTPTime(
-        const uint32_t& firstRTPTime, const sp<ABuffer>& buffer) {
-    /* If you want to +, -, * rtpTime, recommend to declare rtpTime as int64_t.
-       Because rtpTime can be near UINT32_MAX. Beware the overflow. */
-    int64_t rtpTime = 0;
-    CHECK(buffer->meta()->findInt32("rtp-time", (int32_t *)&rtpTime));
-    // If the first overs 2^31 and rtp unders 2^31, the rtp value is overflowed one.
-    int64_t overflowMask = (firstRTPTime & 0x80000000 & ~rtpTime) << 1;
-    return rtpTime | overflowMask;
-}
-
 int32_t AAVCAssembler::pickProperSeq(const Queue *queue,
         uint32_t first, int64_t play, int64_t jit) {
     sp<ABuffer> buffer = *(queue->begin());
@@ -618,16 +663,6 @@ int32_t AAVCAssembler::deleteUnitUnderSeq(Queue *queue, uint32_t seq) {
     }
     queue->erase(queue->begin(), it);
     return initSize - queue->size();
-}
-
-inline void AAVCAssembler::printNowTimeUs(int64_t start, int64_t now, int64_t play) {
-    ALOGD("start=%lld, now=%lld, played=%lld",
-            (long long)start, (long long)now, (long long)play);
-}
-
-inline void AAVCAssembler::printRTPTime(int64_t rtp, int64_t play, int64_t exp, bool isExp) {
-    ALOGD("rtp-time(JB)=%lld, played-rtp-time(JB)=%lld, expired-rtp-time(JB)=%lld expired=%d",
-            (long long)rtp, (long long)play, (long long)exp, isExp);
 }
 
 ARTPAssembler::AssemblyStatus AAVCAssembler::assembleMore(

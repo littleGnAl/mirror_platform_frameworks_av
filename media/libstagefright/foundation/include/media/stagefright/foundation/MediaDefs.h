@@ -59,6 +59,8 @@ extern const char *MEDIA_MIMETYPE_AUDIO_AC3;
 extern const char *MEDIA_MIMETYPE_AUDIO_EAC3;
 extern const char *MEDIA_MIMETYPE_AUDIO_EAC3_JOC;
 extern const char *MEDIA_MIMETYPE_AUDIO_AC4;
+extern const char *MEDIA_MIMETYPE_AUDIO_MPEGH_MHA1;
+extern const char *MEDIA_MIMETYPE_AUDIO_MPEGH_MHM1;
 extern const char *MEDIA_MIMETYPE_AUDIO_SCRAMBLED;
 extern const char *MEDIA_MIMETYPE_AUDIO_ALAC;
 extern const char *MEDIA_MIMETYPE_AUDIO_WMA;
@@ -89,6 +91,8 @@ enum AudioEncoding {
     kAudioEncodingPcm16bit = 2,
     kAudioEncodingPcm8bit = 3,
     kAudioEncodingPcmFloat = 4,
+    kAudioEncodingPcm24bitPacked = 21,
+    kAudioEncodingPcm32bit = 22,
 };
 
 }  // namespace android

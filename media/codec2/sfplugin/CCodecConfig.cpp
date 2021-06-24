@@ -362,7 +362,10 @@ void CCodecConfig::initializeStandardParams() {
         .limitTo(D::OUTPUT & D::READ));
 
     add(ConfigMapper(KEY_BIT_RATE, C2_PARAMKEY_BITRATE, "value")
-        .limitTo(D::ENCODER & D::OUTPUT));
+        .limitTo(D::ENCODER & D::CODED));
+    // Some audio decoders require bitrate information to be set
+    add(ConfigMapper(KEY_BIT_RATE, C2_PARAMKEY_BITRATE, "value")
+        .limitTo(D::AUDIO & D::DECODER & D::CODED));
     // we also need to put the bitrate in the max bitrate field
     add(ConfigMapper(KEY_MAX_BIT_RATE, C2_PARAMKEY_BITRATE, "value")
         .limitTo(D::ENCODER & D::READ & D::OUTPUT));
@@ -728,6 +731,17 @@ void CCodecConfig::initializeStandardParams() {
                 return sdk;
             }
             return C2Value();
+        }));
+
+    add(ConfigMapper(KEY_AAC_PROFILE, C2_PARAMKEY_PROFILE_LEVEL, "profile")
+        .limitTo(D::AUDIO & D::ENCODER & (D::CONFIG | D::PARAM))
+        .withMapper([mapper](C2Value v) -> C2Value {
+            C2Config::profile_t c2 = PROFILE_UNUSED;
+            int32_t sdk;
+            if (mapper && v.get(&sdk) && mapper->mapProfile(sdk, &c2)) {
+                return c2;
+            }
+            return PROFILE_UNUSED;
         }));
 
     // convert to dBFS and add default
@@ -1174,11 +1188,14 @@ bool CCodecConfig::updateFormats(Domain domain) {
 
     bool changed = false;
     if (domain & mInputDomain) {
-        sp<AMessage> oldFormat = mInputFormat->dup();
+        sp<AMessage> oldFormat = mInputFormat;
+        mInputFormat = mInputFormat->dup(); // trigger format changed
         mInputFormat->extend(getFormatForDomain(reflected, mInputDomain));
         if (mInputFormat->countEntries() != oldFormat->countEntries()
                 || mInputFormat->changesFrom(oldFormat)->countEntries() > 0) {
             changed = true;
+        } else {
+            mInputFormat = oldFormat; // no change
         }
     }
     if (domain & mOutputDomain) {
@@ -1317,6 +1334,14 @@ sp<AMessage> CCodecConfig::getFormatForDomain(
             }
             msg->removeEntryAt(msg->findEntryByName(C2_PARAMKEY_TEMPORAL_LAYERING));
         }
+    }
+
+    // Remove KEY_AAC_SBR_MODE from SDK message if it is outside supported range
+    // as SDK doesn't have a way to signal default sbr mode based on profile and
+    // requires that the key isn't present in format to signal that
+    int sbrMode;
+    if (msg->findInt32(KEY_AAC_SBR_MODE, &sbrMode) && (sbrMode < 0 || sbrMode > 2)) {
+        msg->removeEntryAt(msg->findEntryByName(KEY_AAC_SBR_MODE));
     }
 
     { // convert color info

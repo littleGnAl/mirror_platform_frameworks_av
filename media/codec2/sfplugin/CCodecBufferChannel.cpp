@@ -1348,7 +1348,7 @@ status_t CCodecBufferChannel::start(
     // about buffers from the previous generation do not interfere with the
     // newly initialized pipeline capacity.
 
-    {
+    if (inputFormat || outputFormat) {
         Mutexed<PipelineWatcher>::Locked watcher(mPipelineWatcher);
         watcher->inputDelay(inputDelayValue)
                 .pipelineDelay(pipelineDelayValue)
@@ -1448,14 +1448,14 @@ status_t CCodecBufferChannel::requestInitialInputBuffers() {
 void CCodecBufferChannel::stop() {
     mSync.stop();
     mFirstValidFrameIndex = mFrameIndex.load(std::memory_order_relaxed);
-    if (mInputSurface != nullptr) {
-        mInputSurface.reset();
-    }
-    mPipelineWatcher.lock()->flush();
 }
 
 void CCodecBufferChannel::reset() {
     stop();
+    if (mInputSurface != nullptr) {
+        mInputSurface.reset();
+    }
+    mPipelineWatcher.lock()->flush();
     {
         Mutexed<Input>::Locked input(mInput);
         input->buffers.reset(new DummyInputBuffers(""));
@@ -1483,8 +1483,10 @@ void CCodecBufferChannel::release() {
 
 void CCodecBufferChannel::flush(const std::list<std::unique_ptr<C2Work>> &flushedWork) {
     ALOGV("[%s] flush", mName);
+    std::vector<uint64_t> indices;
     std::list<std::unique_ptr<C2Work>> configs;
     for (const std::unique_ptr<C2Work> &work : flushedWork) {
+        indices.push_back(work->input.ordinal.frameIndex.peeku());
         if (!(work->input.flags & C2FrameData::FLAG_CODEC_CONFIG)) {
             continue;
         }
@@ -1497,6 +1499,7 @@ void CCodecBufferChannel::flush(const std::list<std::unique_ptr<C2Work>> &flushe
         std::unique_ptr<C2Work> copy(new C2Work);
         copy->input.flags = C2FrameData::flags_t(work->input.flags | C2FrameData::FLAG_DROP_FRAME);
         copy->input.ordinal = work->input.ordinal;
+        copy->input.ordinal.frameIndex = mFrameIndex++;
         copy->input.buffers.insert(
                 copy->input.buffers.begin(),
                 work->input.buffers.begin(),
@@ -1525,7 +1528,12 @@ void CCodecBufferChannel::flush(const std::list<std::unique_ptr<C2Work>> &flushe
             output->buffers->flushStash();
         }
     }
-    mPipelineWatcher.lock()->flush();
+    {
+        Mutexed<PipelineWatcher>::Locked watcher(mPipelineWatcher);
+        for (uint64_t index : indices) {
+            watcher->onWorkDone(index);
+        }
+    }
 }
 
 void CCodecBufferChannel::onWorkDone(
@@ -1621,7 +1629,8 @@ bool CCodecBufferChannel::handleWork(
         }
     }
 
-    std::optional<uint32_t> newInputDelay, newPipelineDelay;
+    std::optional<uint32_t> newInputDelay, newPipelineDelay, newOutputDelay, newReorderDepth;
+    std::optional<C2Config::ordinal_key_t> newReorderKey;
     bool needMaxDequeueBufferCountUpdate = false;
     while (!worklet->output.configUpdate.empty()) {
         std::unique_ptr<C2Param> param;
@@ -1633,7 +1642,7 @@ bool CCodecBufferChannel::handleWork(
                 if (reorderDepth.updateFrom(*param)) {
                     ALOGV("[%s] onWorkDone: updated reorder depth to %u",
                           mName, reorderDepth.value);
-                    mOutput.lock()->buffers->setReorderDepth(reorderDepth.value);
+                    newReorderDepth = reorderDepth.value;
                     needMaxDequeueBufferCountUpdate = true;
                 } else {
                     ALOGD("[%s] onWorkDone: failed to read reorder depth",
@@ -1644,7 +1653,7 @@ bool CCodecBufferChannel::handleWork(
             case C2PortReorderKeySetting::CORE_INDEX: {
                 C2PortReorderKeySetting::output reorderKey;
                 if (reorderKey.updateFrom(*param)) {
-                    mOutput.lock()->buffers->setReorderKey(reorderKey.value);
+                    newReorderKey = reorderKey.value;
                     ALOGV("[%s] onWorkDone: updated reorder key to %u",
                           mName, reorderKey.value);
                 } else {
@@ -1679,35 +1688,9 @@ bool CCodecBufferChannel::handleWork(
                         ALOGV("[%s] onWorkDone: updating output delay %u",
                               mName, outputDelay.value);
                         (void)mPipelineWatcher.lock()->outputDelay(outputDelay.value);
+                        newOutputDelay = outputDelay.value;
                         needMaxDequeueBufferCountUpdate = true;
 
-                        bool outputBuffersChanged = false;
-                        size_t numOutputSlots = 0;
-                        {
-                            Mutexed<Output>::Locked output(mOutput);
-                            if (!output->buffers) {
-                                return false;
-                            }
-                            output->outputDelay = outputDelay.value;
-                            numOutputSlots = outputDelay.value +
-                                             kSmoothnessFactor;
-                            if (output->numSlots < numOutputSlots) {
-                                output->numSlots = numOutputSlots;
-                                if (output->buffers->isArrayMode()) {
-                                    OutputBuffersArray *array =
-                                        (OutputBuffersArray *)output->buffers.get();
-                                    ALOGV("[%s] onWorkDone: growing output buffer array to %zu",
-                                          mName, numOutputSlots);
-                                    array->grow(numOutputSlots);
-                                    outputBuffersChanged = true;
-                                }
-                            }
-                            numOutputSlots = output->numSlots;
-                        }
-
-                        if (outputBuffersChanged) {
-                            mCCodecCallback->onOutputBuffersChanged();
-                        }
                     }
                 }
                 break;
@@ -1747,14 +1730,43 @@ bool CCodecBufferChannel::handleWork(
             input->numSlots = newNumSlots;
         }
     }
-    if (needMaxDequeueBufferCountUpdate) {
-        size_t numOutputSlots = 0;
-        uint32_t reorderDepth = 0;
-        {
-            Mutexed<Output>::Locked output(mOutput);
-            numOutputSlots = output->numSlots;
-            reorderDepth = output->buffers->getReorderDepth();
+    size_t numOutputSlots = 0;
+    uint32_t reorderDepth = 0;
+    bool outputBuffersChanged = false;
+    if (newReorderKey || newReorderDepth || needMaxDequeueBufferCountUpdate) {
+        Mutexed<Output>::Locked output(mOutput);
+        if (!output->buffers) {
+            return false;
         }
+        numOutputSlots = output->numSlots;
+        if (newReorderKey) {
+            output->buffers->setReorderKey(newReorderKey.value());
+        }
+        if (newReorderDepth) {
+            output->buffers->setReorderDepth(newReorderDepth.value());
+        }
+        reorderDepth = output->buffers->getReorderDepth();
+        if (newOutputDelay) {
+            output->outputDelay = newOutputDelay.value();
+            numOutputSlots = newOutputDelay.value() + kSmoothnessFactor;
+            if (output->numSlots < numOutputSlots) {
+                output->numSlots = numOutputSlots;
+                if (output->buffers->isArrayMode()) {
+                    OutputBuffersArray *array =
+                        (OutputBuffersArray *)output->buffers.get();
+                    ALOGV("[%s] onWorkDone: growing output buffer array to %zu",
+                          mName, numOutputSlots);
+                    array->grow(numOutputSlots);
+                    outputBuffersChanged = true;
+                }
+            }
+        }
+        numOutputSlots = output->numSlots;
+    }
+    if (outputBuffersChanged) {
+        mCCodecCallback->onOutputBuffersChanged();
+    }
+    if (needMaxDequeueBufferCountUpdate) {
         Mutexed<OutputSurface>::Locked output(mOutputSurface);
         output->maxDequeueBuffers = numOutputSlots + reorderDepth + kRenderingDepth;
         if (output->surface) {

@@ -120,12 +120,26 @@ namespace android {
 // 50 * ~20msecs = 1 second
 static const int8_t kMaxTrackRetries = 50;
 static const int8_t kMaxTrackStartupRetries = 50;
+
 // allow less retry attempts on direct output thread.
 // direct outputs can be a scarce resource in audio hardware and should
 // be released as quickly as possible.
-static const int8_t kMaxTrackRetriesDirect = 2;
-
-
+// Notes:
+// 1) The retry duration kMaxTrackRetriesDirectMs may be increased
+//    in case the data write is bursty for the AudioTrack.  The application
+//    should endeavor to write at least once every kMaxTrackRetriesDirectMs
+//    to prevent an underrun situation.  If the data is bursty, then
+//    the application can also throttle the data sent to be even.
+// 2) For compressed audio data, any data present in the AudioTrack buffer
+//    will be sent and reset the retry count.  This delivers data as
+//    it arrives, with approximately kDirectMinSleepTimeUs = 10ms checking interval.
+// 3) For linear PCM or proportional PCM, we wait one period for a period's worth
+//    of data to be available, then any remaining data is delivered.
+//    This is required to ensure the last bit of data is delivered before underrun.
+//
+// Sleep time per cycle is kDirectMinSleepTimeUs for compressed tracks
+// or the size of the HAL period for proportional / linear PCM tracks.
+static const int32_t kMaxTrackRetriesDirectMs = 200;
 
 // don't warn about blocked writes or record buffer overflows more often than this
 static const nsecs_t kWarningThrottleNs = seconds(5);
@@ -785,7 +799,7 @@ String8 channelMaskToString(audio_channel_mask_t mask, bool output) {
             if (mask & AUDIO_CHANNEL_OUT_FRONT_LEFT) s.append("front-left, ");
             if (mask & AUDIO_CHANNEL_OUT_FRONT_RIGHT) s.append("front-right, ");
             if (mask & AUDIO_CHANNEL_OUT_FRONT_CENTER) s.append("front-center, ");
-            if (mask & AUDIO_CHANNEL_OUT_LOW_FREQUENCY) s.append("low freq, ");
+            if (mask & AUDIO_CHANNEL_OUT_LOW_FREQUENCY) s.append("low-frequency, ");
             if (mask & AUDIO_CHANNEL_OUT_BACK_LEFT) s.append("back-left, ");
             if (mask & AUDIO_CHANNEL_OUT_BACK_RIGHT) s.append("back-right, ");
             if (mask & AUDIO_CHANNEL_OUT_FRONT_LEFT_OF_CENTER) s.append("front-left-of-center, ");
@@ -798,12 +812,16 @@ String8 channelMaskToString(audio_channel_mask_t mask, bool output) {
             if (mask & AUDIO_CHANNEL_OUT_TOP_FRONT_CENTER) s.append("top-front-center, ");
             if (mask & AUDIO_CHANNEL_OUT_TOP_FRONT_RIGHT) s.append("top-front-right, ");
             if (mask & AUDIO_CHANNEL_OUT_TOP_BACK_LEFT) s.append("top-back-left, ");
-            if (mask & AUDIO_CHANNEL_OUT_TOP_BACK_CENTER) s.append("top-back-center, " );
-            if (mask & AUDIO_CHANNEL_OUT_TOP_BACK_RIGHT) s.append("top-back-right, " );
-            if (mask & AUDIO_CHANNEL_OUT_TOP_SIDE_LEFT) s.append("top-side-left, " );
-            if (mask & AUDIO_CHANNEL_OUT_TOP_SIDE_RIGHT) s.append("top-side-right, " );
-            if (mask & AUDIO_CHANNEL_OUT_HAPTIC_B) s.append("haptic-B, " );
-            if (mask & AUDIO_CHANNEL_OUT_HAPTIC_A) s.append("haptic-A, " );
+            if (mask & AUDIO_CHANNEL_OUT_TOP_BACK_CENTER) s.append("top-back-center, ");
+            if (mask & AUDIO_CHANNEL_OUT_TOP_BACK_RIGHT) s.append("top-back-right, ");
+            if (mask & AUDIO_CHANNEL_OUT_TOP_SIDE_LEFT) s.append("top-side-left, ");
+            if (mask & AUDIO_CHANNEL_OUT_TOP_SIDE_RIGHT) s.append("top-side-right, ");
+            if (mask & AUDIO_CHANNEL_OUT_BOTTOM_FRONT_LEFT) s.append("bottom-front-left, ");
+            if (mask & AUDIO_CHANNEL_OUT_BOTTOM_FRONT_CENTER) s.append("bottom-front-center, ");
+            if (mask & AUDIO_CHANNEL_OUT_BOTTOM_FRONT_RIGHT) s.append("bottom-front-right, ");
+            if (mask & AUDIO_CHANNEL_OUT_LOW_FREQUENCY_2) s.append("low-frequency-2, ");
+            if (mask & AUDIO_CHANNEL_OUT_HAPTIC_B) s.append("haptic-B, ");
+            if (mask & AUDIO_CHANNEL_OUT_HAPTIC_A) s.append("haptic-A, ");
             if (mask & ~AUDIO_CHANNEL_OUT_ALL) s.append("unknown,  ");
         } else {
             if (mask & AUDIO_CHANNEL_IN_LEFT) s.append("left, ");
@@ -821,9 +839,9 @@ String8 channelMaskToString(audio_channel_mask_t mask, bool output) {
             if (mask & AUDIO_CHANNEL_IN_BACK_LEFT) s.append("back-left, ");
             if (mask & AUDIO_CHANNEL_IN_BACK_RIGHT) s.append("back-right, ");
             if (mask & AUDIO_CHANNEL_IN_CENTER) s.append("center, ");
-            if (mask & AUDIO_CHANNEL_IN_LOW_FREQUENCY) s.append("low freq, ");
-            if (mask & AUDIO_CHANNEL_IN_TOP_LEFT) s.append("top-left, " );
-            if (mask & AUDIO_CHANNEL_IN_TOP_RIGHT) s.append("top-right, " );
+            if (mask & AUDIO_CHANNEL_IN_LOW_FREQUENCY) s.append("low-frequency, ");
+            if (mask & AUDIO_CHANNEL_IN_TOP_LEFT) s.append("top-left, ");
+            if (mask & AUDIO_CHANNEL_IN_TOP_RIGHT) s.append("top-right, ");
             if (mask & AUDIO_CHANNEL_IN_VOICE_UPLINK) s.append("voice-uplink, ");
             if (mask & AUDIO_CHANNEL_IN_VOICE_DNLINK) s.append("voice-dnlink, ");
             if (mask & ~AUDIO_CHANNEL_IN_ALL) s.append("unknown,  ");
@@ -2550,7 +2568,7 @@ status_t AudioFlinger::PlaybackThread::addTrack_l(const sp<Track>& track)
         }
 
         track->mResetDone = false;
-        track->mPresentationCompleteFrames = 0;
+        track->resetPresentationComplete();
         mActiveTracks.add(track);
         sp<EffectChain> chain = getEffectChain_l(track->sessionId());
         if (chain != 0) {
@@ -5825,8 +5843,15 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::DirectOutputThread::prep
         sp<Track> l = mActiveTracks.getLatest();
         bool last = l.get() == track;
 
-        if (track->isPausing()) {
-            track->setPaused();
+        if (track->isPausePending()) {
+            track->pauseAck();
+            // It is possible a track might have been flushed or stopped.
+            // Other operations such as flush pending might occur on the next prepare.
+            if (track->isPausing()) {
+                track->setPaused();
+            }
+            // Always perform pause, as an immediate flush will change
+            // the pause state to be no longer isPausing().
             if (mHwSupportsPause && last && !mHwPaused) {
                 doHwPause = true;
                 mHwPaused = true;
@@ -5852,11 +5877,19 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::DirectOutputThread::prep
         // Allow draining the buffer in case the client
         // app does not call stop() and relies on underrun to stop:
         // hence the test on (track->mRetryCount > 1).
-        // If retryCount<=1 then track is about to underrun and be removed.
+        // If track->mRetryCount <= 1 then track is about to be disabled, paused, removed,
+        // so we accept any nonzero amount of data delivered by the AudioTrack (which will
+        // reset the retry counter).
         // Do not use a high threshold for compressed audio.
+
+        // target retry count that we will use is based on the time we wait for retries.
+        const int32_t targetRetryCount = kMaxTrackRetriesDirectMs * 1000 / mActiveSleepTimeUs;
+        // the retry threshold is when we accept any size for PCM data.  This is slightly
+        // smaller than the retry count so we can push small bits of data without a glitch.
+        const int32_t retryThreshold = targetRetryCount > 2 ? targetRetryCount - 1 : 1;
         uint32_t minFrames;
         if ((track->sharedBuffer() == 0) && !track->isStopping_1() && !track->isPausing()
-            && (track->mRetryCount > 1) && audio_has_proportional_frames(mFormat)) {
+            && (track->mRetryCount > retryThreshold) && audio_has_proportional_frames(mFormat)) {
             minFrames = mNormalFrameCount;
         } else {
             minFrames = 1;
@@ -5900,7 +5933,7 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::DirectOutputThread::prep
                 mPreviousTrack = track;
 
                 // reset retry count
-                track->mRetryCount = kMaxTrackRetriesDirect;
+                track->mRetryCount = targetRetryCount;
                 mActiveTrack = t;
                 mixerStatus = MIXER_TRACKS_READY;
                 if (mHwPaused) {
@@ -5925,16 +5958,8 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::DirectOutputThread::prep
                     track->isStopping_2() || track->isPaused()) {
                 // We have consumed all the buffers of this track.
                 // Remove it from the list of active tracks.
-                size_t audioHALFrames;
-                if (audio_has_proportional_frames(mFormat)) {
-                    audioHALFrames = (latency_l() * mSampleRate) / 1000;
-                } else {
-                    audioHALFrames = 0;
-                }
-
-                int64_t framesWritten = mBytesWritten / mFrameSize;
                 if (mStandby || !last ||
-                        track->presentationComplete(framesWritten, audioHALFrames) ||
+                        track->presentationComplete(latency_l()) ||
                         track->isPaused() || mHwPaused) {
                     if (track->isStopping_2()) {
                         track->mState = TrackBase::STOPPED;
@@ -5954,15 +5979,17 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::DirectOutputThread::prep
                     // indicate to client process that the track was disabled because of underrun;
                     // it will then automatically call start() when data is available
                     track->disable();
-                } else if (last) {
+                    // only do hw pause when track is going to be removed due to BUFFER TIMEOUT.
+                    // unlike mixerthread, HAL can be paused for direct output
                     ALOGW("pause because of UNDERRUN, framesReady = %zu,"
                             "minFrames = %u, mFormat = %#x",
                             framesReady, minFrames, mFormat);
-                    mixerStatus = MIXER_TRACKS_ENABLED;
-                    if (mHwSupportsPause && !mHwPaused && !mStandby) {
+                    if (last && mHwSupportsPause && !mHwPaused && !mStandby) {
                         doHwPause = true;
                         mHwPaused = true;
                     }
+                } else if (last) {
+                    mixerStatus = MIXER_TRACKS_ENABLED;
                 }
             }
         }
@@ -6034,16 +6061,13 @@ void AudioFlinger::DirectOutputThread::threadLoop_sleepTime()
         mSleepTimeUs = mIdleSleepTimeUs;
         return;
     }
-    if (mSleepTimeUs == 0) {
-        if (mMixerStatus == MIXER_TRACKS_ENABLED) {
-            mSleepTimeUs = mActiveSleepTimeUs;
-        } else {
-            mSleepTimeUs = mIdleSleepTimeUs;
-        }
-    } else if (mBytesWritten != 0 && audio_has_proportional_frames(mFormat)) {
-        memset(mSinkBuffer, 0, mFrameCount * mFrameSize);
-        mSleepTimeUs = 0;
+    if (mMixerStatus == MIXER_TRACKS_ENABLED) {
+        mSleepTimeUs = mActiveSleepTimeUs;
+    } else {
+        mSleepTimeUs = mIdleSleepTimeUs;
     }
+    // Note: In S or later, we do not write zeroes for
+    // linear or proportional PCM direct tracks in underrun.
 }
 
 void AudioFlinger::DirectOutputThread::threadLoop_exit()
@@ -6368,8 +6392,15 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::OffloadThread::prepareTr
             continue;
         }
 
-        if (track->isPausing()) {
-            track->setPaused();
+        if (track->isPausePending()) {
+            track->pauseAck();
+            // It is possible a track might have been flushed or stopped.
+            // Other operations such as flush pending might occur on the next prepare.
+            if (track->isPausing()) {
+                track->setPaused();
+            }
+            // Always perform pause if last, as an immediate flush will change
+            // the pause state to be no longer isPausing().
             if (last) {
                 if (mHwSupportsPause && !mHwPaused) {
                     doHwPause = true;
@@ -6502,14 +6533,7 @@ AudioFlinger::PlaybackThread::mixer_state AudioFlinger::OffloadThread::prepareTr
                 // Drain has completed or we are in standby, signal presentation complete
                 if (!(mDrainSequence & 1) || !last || mStandby) {
                     track->mState = TrackBase::STOPPED;
-                    uint32_t latency = 0;
-                    status_t result = mOutput->stream->getLatency(&latency);
-                    ALOGE_IF(result != OK,
-                            "Error when retrieving output stream latency: %d", result);
-                    size_t audioHALFrames = (latency * mSampleRate) / 1000;
-                    int64_t framesWritten =
-                            mBytesWritten / mOutput->getFrameSize();
-                    track->presentationComplete(framesWritten, audioHALFrames);
+                    track->presentationComplete(latency_l());
                     track->reset();
                     tracksToRemove->add(track);
                     // OFFLOADED stop resets frame counts.

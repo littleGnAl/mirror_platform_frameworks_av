@@ -1,5 +1,5 @@
 /*
- * Copyright (C) 2020 The Android Open Source Project
+ * Copyright 2021 The Android Open Source Project
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -17,42 +17,32 @@
 package {
     // See: http://go/android-license-faq
     // A large-scale-change added 'default_applicable_licenses' to import
-    // all of the 'license_kinds' from "frameworks_av_media_codecs_m4v_h263_enc_license"
+    // all of the 'license_kinds' from "frameworks_av_media_libmedia_license"
     // to get the below license kinds:
     //   SPDX-license-identifier-Apache-2.0
-    //   SPDX-license-identifier-BSD
-    default_applicable_licenses: [
-        "frameworks_av_media_codecs_m4v_h263_enc_license",
-    ],
+    default_applicable_licenses: ["frameworks_av_media_libmedia_license"],
 }
 
 cc_test {
-    name: "Mpeg4H263EncoderTest",
+    name: "IMediaPlayerTest",
+    test_suites: ["device-tests", "mts"],
     gtest: true,
-    test_suites: ["device-tests"],
 
-    srcs : [ "Mpeg4H263EncoderTest.cpp" ],
+    srcs: [
+        "IMediaPlayerTest.cpp",
+    ],
 
     shared_libs: [
-        "libutils",
+        "libbinder",
         "liblog",
+        "libmedia",
+        "libstagefright",
+        "libstagefright_foundation",
+        "libutils",
     ],
-
-    static_libs: [
-        "libstagefright_m4vh263enc",
-    ],
-
+    compile_multilib: "first",
     cflags: [
-        "-DOSCL_IMPORT_REF=",
-        "-Wall",
         "-Werror",
+        "-Wall",
     ],
-
-    sanitize: {
-        misc_undefined: [
-            "signed-integer-overflow",
-            "unsigned-integer-overflow",
-        ],
-        cfi: true,
-    },
 }
