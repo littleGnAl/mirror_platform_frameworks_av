@@ -22,6 +22,30 @@
       },
       "revId": "e37b634c623d2fd84c9befc831c52e3fb65703d5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68a06853_e3b28e8b",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-25T17:43:08Z",
+      "side": 1,
+      "message": "Default qp bounds used in ihevce_set_def_params() are same as HEVC_QP min and max",
+      "parentUuid": "16b2a54b_475d7144",
+      "range": {
+        "startLine": 725,
+        "startChar": 0,
+        "endLine": 727,
+        "endChar": 0
+      },
+      "revId": "e37b634c623d2fd84c9befc831c52e3fb65703d5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
