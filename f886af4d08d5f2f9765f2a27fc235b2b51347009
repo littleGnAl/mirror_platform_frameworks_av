@@ -68,6 +68,24 @@
       "parentUuid": "15855c5a_2d433d7b",
       "revId": "f886af4d08d5f2f9765f2a27fc235b2b51347009",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d403f789_4d063928",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1061057
+      },
+      "writtenOn": "2021-06-25T02:05:02Z",
+      "side": 1,
+      "message": "The CL has been merged internally (ag/13054154) so it\u0027s ok that we take it here.",
+      "parentUuid": "ad81b6f5_73fab127",
+      "revId": "f886af4d08d5f2f9765f2a27fc235b2b51347009",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
