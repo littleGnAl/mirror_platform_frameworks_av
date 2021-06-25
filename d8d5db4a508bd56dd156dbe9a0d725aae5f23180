@@ -39,6 +39,30 @@
       },
       "revId": "d8d5db4a508bd56dd156dbe9a0d725aae5f23180",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "825cf9f6_5c79a4a2",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 847,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-06-25T17:42:58Z",
+      "side": 1,
+      "message": "Done\nThe for loop will take care of the else part",
+      "parentUuid": "ea0ff3e9_c3d22db3",
+      "range": {
+        "startLine": 820,
+        "startChar": 0,
+        "endLine": 847,
+        "endChar": 0
+      },
+      "revId": "d8d5db4a508bd56dd156dbe9a0d725aae5f23180",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
