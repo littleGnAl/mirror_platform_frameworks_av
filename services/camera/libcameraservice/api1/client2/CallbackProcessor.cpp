@@ -370,8 +370,10 @@ status_t CallbackProcessor::processNewCallback(sp<Camera2Client> &client) {
                 imgBuffer.width, imgBuffer.height,
                 previewFormat, destYStride);
         size_t currentBufferSize = (mCallbackHeap == 0) ?
-                0 : (mCallbackHeap->mHeap->getSize() / kCallbackHeapCount);
-        if (bufferSize != currentBufferSize) {
+                0 : (mCallbackHeap->mBufSize);
+        size_t totalHeapSize = (mCallbackHeap == 0) ?
+                0 : (mCallbackHeap->mHeap->getSize());
+        if (bufferSize != currentBufferSize || totalHeapSize == 0) {
             mCallbackHeap.clear();
             mCallbackHeap = new Camera2Heap(bufferSize, kCallbackHeapCount,
                     "Camera2Client::CallbackHeap");
