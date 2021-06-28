@@ -206,6 +206,7 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexLayerIndex,
     kParamIndexLayerCount,
     kParamIndexIntraRefresh,
+    kParamVideoEncodingQuality,
 
     /* ------------------------------------ image components ------------------------------------ */
 
@@ -1244,6 +1245,25 @@ constexpr char C2_PARAMKEY_QUALITY[] = "algo.quality";
 typedef C2StreamParam<C2Tuning, C2Uint32Value, kParamIndexComplexity> C2StreamComplexityTuning;
 typedef C2PortParam<C2Tuning, C2Uint32Value, kParamIndexComplexity> C2ComplexityTuning;
 constexpr char C2_PARAMKEY_COMPLEXITY[] = "algo.complexity";
+
+/**
+ * Video Encoding Quality
+ *
+ * This signals the 'minimum encoding quality' introduced in Android 12/S. It indicates
+ * whether the underlying codec is expected to take extra steps to ensure quality meets the
+ * appropriate minimum. A value of 0 indicates that the framework has taken steps to ensure
+ * the minimum (e.g. usually by enforcing a minimum bitrate or QP values).
+ * Non-zero indicates the codec takes these actions,
+ */
+
+typedef C2StreamParam<C2Tuning, C2Uint32Value, kParamVideoEncodingQuality> C2StreamVideoEncodingQuality;
+constexpr char C2_PARAMKEY_ENCODING_QUALITY_LEVEL[] = "algo.encoding-quality-level";
+
+C2ENUM(C2PlatformConfig::encoding_quality_level_t, uint32_t,
+    NONE = 0,
+    S_HANDHELD = 1
+);
+
 
 /**
  * Header (init-data) handling around sync frames.
@@ -2364,12 +2384,6 @@ constexpr char C2_PARAMKEY_OUTPUT_TUNNEL_HANDLE[] = "output.tunnel-handle";
 typedef C2PortParam<C2Info, C2SimpleValueStruct<int64_t>, kParamIndexTunnelSystemTime>
         C2PortTunnelSystemTime;
 constexpr char C2_PARAMKEY_OUTPUT_RENDER_TIME[] = "output.render-time";
-
-C2ENUM(C2PlatformConfig::encoding_quality_level_t, uint32_t,
-    NONE,
-    S_HANDHELD,
-    S_HANDHELD_PC
-);
 
 namespace android {
 
