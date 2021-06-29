@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2254f7a_eefd9ead",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2021-06-29T19:13:16Z",
+      "side": 1,
+      "message": "\u003e From L588 to L595 (height + 1)/2 and (width + 1)/2 was used instead. (Since I don\u0027t know very well about YV12, I am just curious to see 0 plane for 1 height or 1 width.)\n\nyou\u0027re right, that would be more correct, but the codec2 layer doesn\u0027t support odd dimensions and there was some concern about enabling it to do so.",
+      "parentUuid": "3d635292_22d55ac4",
+      "range": {
+        "startLine": 483,
+        "startChar": 27,
+        "endLine": 483,
+        "endChar": 37
+      },
+      "revId": "ca7d1abcfa0f628d3bea2ffda393c2d013f58360",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d581d861_6ff2dd32",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-06-29T19:03:17Z",
       "side": 1,
       "message": "isMonochrome does not need to be true in this case?",
+      "range": {
+        "startLine": 654,
+        "startChar": 32,
+        "endLine": 654,
+        "endChar": 59
+      },
+      "revId": "ca7d1abcfa0f628d3bea2ffda393c2d013f58360",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e31f3df6_d07606cd",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2021-06-29T19:13:16Z",
+      "side": 1,
+      "message": "\u003e isMonochrome does not need to be true in this case?\n\nIf I understand the question correctly, yes monochrome signaling is separate from 420 [1]. The library reports this with the other kImageFormat when that\u0027s the case. In the follow up to this change the CHECK becomes an error report to indicate that only these 2 conditions are supported currently.\n\n[1] https://aomediacodec.github.io/av1-spec/#general-sequence-header-obu-semantics",
+      "parentUuid": "d581d861_6ff2dd32",
       "range": {
         "startLine": 654,
         "startChar": 32,
