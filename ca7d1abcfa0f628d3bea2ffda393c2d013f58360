@@ -16,6 +16,52 @@
       "message": "a cherry pick to get an internal fix back out to aosp.",
       "revId": "ca7d1abcfa0f628d3bea2ffda393c2d013f58360",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3d635292_22d55ac4",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 483,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-06-29T19:03:17Z",
+      "side": 1,
+      "message": "From L588 to L595 (height + 1)/2 and (width + 1)/2 was used instead. (Since I don\u0027t know very well about YV12, I am just curious to see 0 plane for 1 height or 1 width.)",
+      "range": {
+        "startLine": 483,
+        "startChar": 27,
+        "endLine": 483,
+        "endChar": 37
+      },
+      "revId": "ca7d1abcfa0f628d3bea2ffda393c2d013f58360",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d581d861_6ff2dd32",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 654,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-06-29T19:03:17Z",
+      "side": 1,
+      "message": "isMonochrome does not need to be true in this case?",
+      "range": {
+        "startLine": 654,
+        "startChar": 32,
+        "endLine": 654,
+        "endChar": 59
+      },
+      "revId": "ca7d1abcfa0f628d3bea2ffda393c2d013f58360",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
