@@ -419,7 +419,6 @@ status_t AudioFlinger::openMmapStream(MmapStreamInterface::stream_direction_t di
     if (actualSessionId == AUDIO_SESSION_ALLOCATE) {
         actualSessionId = (audio_session_t) newAudioUniqueId(AUDIO_UNIQUE_ID_USE_SESSION);
     }
-    audio_stream_type_t streamType = AUDIO_STREAM_DEFAULT;
     audio_io_handle_t io = AUDIO_IO_HANDLE_NONE;
     audio_port_handle_t portId = AUDIO_PORT_HANDLE_NONE;
     audio_attributes_t localAttr = *attr;
@@ -432,7 +431,7 @@ status_t AudioFlinger::openMmapStream(MmapStreamInterface::stream_direction_t di
 
         ret = AudioSystem::getOutputForAttr(&localAttr, &io,
                                             actualSessionId,
-                                            &streamType, client.attributionSource,
+                                            client.attributionSource,
                                             &fullConfig,
                                             (audio_output_flags_t)(AUDIO_OUTPUT_FLAG_MMAP_NOIRQ |
                                                     AUDIO_OUTPUT_FLAG_DIRECT),
@@ -851,7 +850,6 @@ status_t AudioFlinger::createTrack(const media::CreateTrackRequest& _input,
     sp<TrackHandle> trackHandle;
     sp<Client> client;
     status_t lStatus;
-    audio_stream_type_t streamType;
     audio_port_handle_t portId = AUDIO_PORT_HANDLE_NONE;
     std::vector<audio_io_handle_t> secondaryOutputs;
 
@@ -895,19 +893,12 @@ status_t AudioFlinger::createTrack(const media::CreateTrackRequest& _input,
     output.sessionId = sessionId;
     output.outputId = AUDIO_IO_HANDLE_NONE;
     output.selectedDeviceId = input.selectedDeviceId;
-    lStatus = AudioSystem::getOutputForAttr(&localAttr, &output.outputId, sessionId, &streamType,
+    lStatus = AudioSystem::getOutputForAttr(&localAttr, &output.outputId, sessionId,
                                             adjAttributionSource, &input.config, input.flags,
                                             &output.selectedDeviceId, &portId, &secondaryOutputs);
 
     if (lStatus != NO_ERROR || output.outputId == AUDIO_IO_HANDLE_NONE) {
         ALOGE("createTrack() getOutputForAttr() return error %d or invalid output handle", lStatus);
-        goto Exit;
-    }
-    // client AudioTrack::set already implements AUDIO_STREAM_DEFAULT => AUDIO_STREAM_MUSIC,
-    // but if someone uses binder directly they could bypass that and cause us to crash
-    if (uint32_t(streamType) >= AUDIO_STREAM_CNT) {
-        ALOGE("createTrack() invalid stream type %d", streamType);
-        lStatus = BAD_VALUE;
         goto Exit;
     }
 
@@ -955,9 +946,9 @@ status_t AudioFlinger::createTrack(const media::CreateTrackRequest& _input,
         output.frameCount = input.frameCount;
         output.notificationFrameCount = input.notificationFrameCount;
         output.flags = input.flags;
-        output.streamType = streamType;
+        output.streamType = AudioSystem::attributesToStreamType(localAttr);
 
-        track = thread->createTrack_l(client, streamType, localAttr, &output.sampleRate,
+        track = thread->createTrack_l(client, localAttr, &output.sampleRate,
                                       input.config.format, input.config.channel_mask,
                                       &output.frameCount, &output.notificationFrameCount,
                                       input.notificationsPerBuffer, input.speed,
@@ -3435,8 +3426,7 @@ void AudioFlinger::updateSecondaryOutputsForTrack_l(
         const audio_output_flags_t outputFlags =
                 (audio_output_flags_t)(track->getOutputFlags() & ~AUDIO_OUTPUT_FLAG_FAST);
         sp patchTrack = new PlaybackThread::PatchTrack(secondaryThread,
-                                                       AudioSystem::attributesToStreamType(
-                                                           track->attributes()),
+                                                       track->attributes(),
                                                        track->sampleRate(),
                                                        track->channelMask(),
                                                        track->format(),
