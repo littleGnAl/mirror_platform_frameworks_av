@@ -747,6 +747,9 @@ TEST_P(Codec2VideoDecHidlTest, ThumbnailTest) {
     int32_t numCsds = populateInfoVector(mInfoFile, &Info, mTimestampDevTest, &mTimestampUslist);
     ASSERT_GE(numCsds, 0) << "Error in parsing input info file: " << mInfoFile;
 
+    //if there is no video file for current codec, return directly
+    if (Info.size() == 0) return;
+
     uint32_t flags = 0;
     for (size_t i = 0; i < MAX_ITERATIONS; i++) {
         ASSERT_EQ(mComponent->start(), C2_OK);
