@@ -1051,28 +1051,6 @@ Status AudioPolicyService::getMaxVolumeIndexForAttributes(
     return Status::ok();
 }
 
-Status AudioPolicyService::getStrategyForStream(media::AudioStreamType streamAidl,
-                                                int32_t* _aidl_return) {
-    audio_stream_type_t stream = VALUE_OR_RETURN_BINDER_STATUS(
-            aidl2legacy_AudioStreamType_audio_stream_type_t(streamAidl));
-
-    if (uint32_t(stream) >= AUDIO_STREAM_PUBLIC_CNT) {
-        *_aidl_return = VALUE_OR_RETURN_BINDER_STATUS(
-                convertReinterpret<int32_t>(PRODUCT_STRATEGY_NONE));
-        return Status::ok();
-    }
-    if (mAudioPolicyManager == NULL) {
-        return binderStatusFromStatusT(NO_INIT);
-    }
-
-    // DO NOT LOCK, may be called from AudioFlinger with lock held, reaching deadlock
-    AutoCallerClear acc;
-    *_aidl_return = VALUE_OR_RETURN_BINDER_STATUS(
-            legacy2aidl_product_strategy_t_int32_t(
-                    mAudioPolicyManager->getStrategyForStream(stream)));
-    return Status::ok();
-}
-
 //audio policy: use audio_device_t appropriately
 
 Status AudioPolicyService::getDevicesForStream(media::AudioStreamType streamAidl,

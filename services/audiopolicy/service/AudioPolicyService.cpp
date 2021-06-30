@@ -931,7 +931,6 @@ status_t AudioPolicyService::onTransact(
         case TRANSACTION_registerEffect:
         case TRANSACTION_unregisterEffect:
         case TRANSACTION_setEffectEnabled:
-        case TRANSACTION_getStrategyForStream:
         case TRANSACTION_getOutputForAttr:
         case TRANSACTION_moveEffectsToIo:
             ALOGW("%s: transaction %d received from PID %d",
