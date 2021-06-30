@@ -456,7 +456,7 @@ status_t AudioFlinger::openMmapStream(MmapStreamInterface::stream_direction_t di
     sp<MmapThread> thread = mMmapThreads.valueFor(io);
     if (thread != 0) {
         interface = new MmapThreadHandle(thread);
-        thread->configure(&localAttr, streamType, actualSessionId, callback, *deviceId, portId);
+        thread->configure(&localAttr, actualSessionId, callback, *deviceId, portId);
         *handle = portId;
         *sessionId = actualSessionId;
         config->sample_rate = thread->sampleRate();
@@ -3435,7 +3435,8 @@ void AudioFlinger::updateSecondaryOutputsForTrack_l(
         const audio_output_flags_t outputFlags =
                 (audio_output_flags_t)(track->getOutputFlags() & ~AUDIO_OUTPUT_FLAG_FAST);
         sp patchTrack = new PlaybackThread::PatchTrack(secondaryThread,
-                                                       track->streamType(),
+                                                       AudioSystem::attributesToStreamType(
+                                                           track->attributes()),
                                                        track->sampleRate(),
                                                        track->channelMask(),
                                                        track->format(),
