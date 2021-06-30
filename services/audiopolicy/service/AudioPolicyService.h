@@ -116,8 +116,6 @@ public:
                                                   int32_t* _aidl_return) override;
     binder::Status getMinVolumeIndexForAttributes(const media::AudioAttributesInternal& attr,
                                                   int32_t* _aidl_return) override;
-    binder::Status getStrategyForStream(media::AudioStreamType stream,
-                                        int32_t* _aidl_return) override;
     binder::Status getDevicesForStream(media::AudioStreamType stream,
                                        int32_t* _aidl_return) override;
     binder::Status getDevicesForAttributes(const media::AudioAttributesEx& attr,

@@ -194,9 +194,6 @@ public:
     virtual status_t getMinVolumeIndexForAttributes(const audio_attributes_t &attr,
                                                     int &index) = 0;
 
-    // return the strategy corresponding to a given stream type
-    virtual product_strategy_t getStrategyForStream(audio_stream_type_t stream) = 0;
-
     // return the enabled output devices for the given stream type
     virtual audio_devices_t getDevicesForStream(audio_stream_type_t stream) = 0;
 

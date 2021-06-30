@@ -1237,21 +1237,6 @@ status_t AudioSystem::getMinVolumeIndexForAttributes(const audio_attributes_t& a
     return OK;
 }
 
-product_strategy_t AudioSystem::getStrategyForStream(audio_stream_type_t stream) {
-    const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
-    if (aps == 0) return PRODUCT_STRATEGY_NONE;
-
-    auto result = [&]() -> ConversionResult<product_strategy_t> {
-        media::AudioStreamType streamAidl = VALUE_OR_RETURN(
-                legacy2aidl_audio_stream_type_t_AudioStreamType(stream));
-        int32_t resultAidl;
-        RETURN_IF_ERROR(statusTFromBinderStatus(
-                aps->getStrategyForStream(streamAidl, &resultAidl)));
-        return aidl2legacy_int32_t_product_strategy_t(resultAidl);
-    }();
-    return result.value_or(PRODUCT_STRATEGY_NONE);
-}
-
 audio_devices_t AudioSystem::getDevicesForStream(audio_stream_type_t stream) {
     const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
     if (aps == 0) return AUDIO_DEVICE_NONE;

@@ -131,8 +131,6 @@ interface IAudioPolicyService {
 
     int getMinVolumeIndexForAttributes(in AudioAttributesInternal attr);
 
-    int /* product_strategy_t */ getStrategyForStream(AudioStreamType stream);
-
     int /* bitmask of audio_devices_t */ getDevicesForStream(AudioStreamType stream);
 
     AudioDevice[] getDevicesForAttributes(in AudioAttributesEx attr);
