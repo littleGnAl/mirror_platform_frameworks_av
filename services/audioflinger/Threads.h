@@ -908,7 +908,6 @@ public:
 
                 sp<Track>   createTrack_l(
                                 const sp<AudioFlinger::Client>& client,
-                                audio_stream_type_t streamType,
                                 const audio_attributes_t& attr,
                                 uint32_t *sampleRate,
                                 audio_format_t format,
