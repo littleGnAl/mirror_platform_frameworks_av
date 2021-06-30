@@ -2100,6 +2100,13 @@ bool AudioSystem::followsSameRouting(
     return lStrategy == rStrategy;
 }
 
+bool AudioSystem::isInternal(const audio_attributes_t &attributes)
+{
+    static constexpr const char* AUDIO_TAG_APM_RESERVED_INTERNAL = "reserved_internal_strategy";
+    return (strlen(attributes.tags) != 0) &&
+                 (std::strcmp(attributes.tags, AUDIO_TAG_APM_RESERVED_INTERNAL) == 0);
+}
+
 status_t AudioSystem::listAudioVolumeGroups(AudioVolumeGroupVector& groups) {
     const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
     if (aps == 0) return PERMISSION_DENIED;
