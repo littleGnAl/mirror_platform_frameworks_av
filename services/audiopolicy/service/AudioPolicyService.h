@@ -124,7 +124,8 @@ public:
                                            std::vector<media::AudioDevice>* _aidl_return) override;
     binder::Status getOutputForEffect(const media::EffectDescriptor& desc,
                                       int32_t* _aidl_return) override;
-    binder::Status registerEffect(const media::EffectDescriptor& desc, int32_t io, int32_t strategy,
+    binder::Status registerEffect(const media::EffectDescriptor& desc, int32_t io,
+                                  const media::AudioAttributesInternal& attr,
                                   int32_t session, int32_t id) override;
     binder::Status unregisterEffect(int32_t id) override;
     binder::Status setEffectEnabled(int32_t id, bool enabled) override;

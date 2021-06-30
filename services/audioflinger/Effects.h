@@ -59,7 +59,7 @@ public:
     virtual bool updateOrphanEffectChains(const sp<EffectBase>& effect) = 0;
 
     // Methods usually implemented with help from EffectChain: pay attention to mutex locking order
-    virtual product_strategy_t strategy() const = 0;
+    virtual audio_attributes_t attributes() const = 0;
     virtual int32_t activeTrackCnt() const = 0;
     virtual void resetVolume() = 0;
 
@@ -468,9 +468,10 @@ public:
     void decActiveTrackCnt() { android_atomic_dec(&mActiveTrackCnt); }
     int32_t activeTrackCnt() const { return android_atomic_acquire_load(&mActiveTrackCnt); }
 
-    product_strategy_t strategy() const { return mStrategy; }
-    void setStrategy(product_strategy_t strategy)
-            { mStrategy = strategy; }
+    audio_attributes_t attributes() const { return mAttributes; }
+    void setAttributes(const audio_attributes_t& attributes) {
+        mAttributes = attributes;
+    }
 
     // suspend or restore effects of the specified type. The number of suspend requests is counted
     // and restore occurs once all suspend requests are cancelled.
@@ -559,7 +560,7 @@ private:
         void checkSuspendOnEffectEnabled(const sp<EffectBase>& effect,
                               bool enabled, bool threadLocked) override;
         void resetVolume() override;
-        product_strategy_t strategy() const override;
+        audio_attributes_t attributes() const override;
         int32_t activeTrackCnt() const override;
         void onEffectEnable(const sp<EffectBase>& effect) override;
         void onEffectDisable(const sp<EffectBase>& effect) override;
@@ -629,7 +630,7 @@ private:
              uint32_t mRightVolume;      // previous volume on right channel
              uint32_t mNewLeftVolume;       // new volume on left channel
              uint32_t mNewRightVolume;      // new volume on right channel
-             product_strategy_t mStrategy; // strategy for this effect chain
+             audio_attributes_t mAttributes; // attributes for this effect chain
              // mSuspendedEffects lists all effects currently suspended in the chain.
              // Use effect type UUID timelow field as key. There is no real risk of identical
              // timeLow fields among effect type UUIDs.
@@ -709,7 +710,7 @@ private:
         void checkSuspendOnEffectEnabled(const sp<EffectBase>& effect __unused,
                               bool enabled __unused, bool threadLocked __unused) override {}
         void resetVolume() override {}
-        product_strategy_t strategy() const override  { return static_cast<product_strategy_t>(0); }
+        audio_attributes_t attributes() const override { return AUDIO_ATTRIBUTES_INITIALIZER; }
         int32_t activeTrackCnt() const override { return 0; }
         void onEffectEnable(const sp<EffectBase>& effect __unused) override {}
         void onEffectDisable(const sp<EffectBase>& effect __unused) override {}

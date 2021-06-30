@@ -183,7 +183,7 @@ public:
     void checkSuspendOnEffectEnabled(const sp<EffectBase>& effect __unused,
                           bool enabled __unused, bool threadLocked __unused) override {}
     void resetVolume() override {}
-    product_strategy_t strategy() const override  { return static_cast<product_strategy_t>(0); }
+    audio_attributes_t attributes() const override { return AUDIO_ATTRIBUTES_INITIALIZER; }
     int32_t activeTrackCnt() const override { return 0; }
     void onEffectEnable(const sp<EffectBase>& effect __unused) override {}
     void onEffectDisable(const sp<EffectBase>& effect __unused) override {}
