@@ -443,10 +443,11 @@ status_t AudioFlingerClientAdapter::closeInput(audio_io_handle_t input) {
     return statusTFromBinderStatus(mDelegate->closeInput(inputAidl));
 }
 
-status_t AudioFlingerClientAdapter::invalidateStream(audio_stream_type_t stream) {
-    media::AudioStreamType streamAidl = VALUE_OR_RETURN_STATUS(
-            legacy2aidl_audio_stream_type_t_AudioStreamType(stream));
-    return statusTFromBinderStatus(mDelegate->invalidateStream(streamAidl));
+status_t AudioFlingerClientAdapter::invalidatePorts(const std::vector<int32_t>& portIds) {
+    std::vector<audio_port_handle_t> portIdsAidl = VALUE_OR_RETURN_STATUS(
+            convertContainer<std::vector<int32_t>>(
+                    portIds, legacy2aidl_audio_port_handle_t_int32_t));
+    return statusTFromBinderStatus(mDelegate->invalidatePorts(portIdsAidl));
 }
 
 status_t AudioFlingerClientAdapter::setVoiceVolume(float volume) {
@@ -952,10 +953,11 @@ Status AudioFlingerServerAdapter::closeInput(int32_t input) {
     return Status::fromStatusT(mDelegate->closeInput(inputLegacy));
 }
 
-Status AudioFlingerServerAdapter::invalidateStream(media::AudioStreamType stream) {
-    audio_stream_type_t streamLegacy = VALUE_OR_RETURN_BINDER(
-            aidl2legacy_AudioStreamType_audio_stream_type_t(stream));
-    return Status::fromStatusT(mDelegate->invalidateStream(streamLegacy));
+Status AudioFlingerServerAdapter::invalidatePorts(const std::vector<int32_t>& portIds) {
+    std::vector<audio_port_handle_t> portIdsLegacy = VALUE_OR_RETURN_BINDER(
+            convertContainer<std::vector<audio_port_handle_t>>(
+                    portIds, aidl2legacy_int32_t_audio_port_handle_t));
+    return Status::fromStatusT(mDelegate->invalidatePorts(portIdsLegacy));
 }
 
 Status AudioFlingerServerAdapter::setVoiceVolume(float volume) {

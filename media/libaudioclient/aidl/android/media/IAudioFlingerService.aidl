@@ -128,7 +128,7 @@ interface IAudioFlingerService {
     OpenInputResponse openInput(in OpenInputRequest request);
     void closeInput(int /* audio_io_handle_t */ input);
 
-    void invalidateStream(AudioStreamType stream);
+    void invalidatePorts(in int[] /* audio_port_handle_t[] */ portIds);
 
     void setVoiceVolume(float volume);
 
