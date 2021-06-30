@@ -1902,7 +1902,6 @@ class MmapThread : public ThreadBase
     virtual     ~MmapThread();
 
     virtual     void        configure(const audio_attributes_t *attr,
-                                      audio_stream_type_t streamType,
                                       audio_session_t sessionId,
                                       const sp<MmapStreamCallback>& callback,
                                       audio_port_handle_t deviceId,
@@ -1965,8 +1964,6 @@ class MmapThread : public ThreadBase
     virtual     void        processVolume_l() {}
                 void        checkInvalidTracks_l();
 
-    virtual     audio_stream_type_t streamType() { return AUDIO_STREAM_DEFAULT; }
-
                 /**
                  * @brief invalidateTracks invalidates all tracks identified by their port ids.
                  * @param ports to be considered
@@ -2013,7 +2010,6 @@ public:
     virtual     ~MmapPlaybackThread() {}
 
     virtual     void        configure(const audio_attributes_t *attr,
-                                      audio_stream_type_t streamType,
                                       audio_session_t sessionId,
                                       const sp<MmapStreamCallback>& callback,
                                       audio_port_handle_t deviceId,
@@ -2034,7 +2030,6 @@ public:
 
                 void        invalidateTracks(std::vector<audio_port_handle_t> &ports) override;
 
-    virtual     audio_stream_type_t streamType() { return mStreamType; }
     virtual     void        checkSilentMode_l();
                 void        processVolume_l() override;
 
@@ -2051,7 +2046,6 @@ public:
 protected:
                 void        dumpInternals_l(int fd, const Vector<String16>& args) override;
 
-                audio_stream_type_t         mStreamType;
                 float                       mMasterVolume;
                 float                       mPortVolume = 1.0f;
                 bool                        mMasterMute;

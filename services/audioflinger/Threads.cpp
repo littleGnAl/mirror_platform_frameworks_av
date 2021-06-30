@@ -1913,7 +1913,6 @@ AudioFlinger::PlaybackThread::PlaybackThread(const sp<AudioFlinger>& audioFlinge
         mFramesWritten(0),
         mSuspendedFrames(0),
         mActiveTracks(&this->mLocalLog),
-        // mStreamTypes[] initialized in constructor body
         mTracks(type == MIXER),
         mOutput(output),
         mNumWrites(0), mNumDelayedWrites(0), mInWrite(false),
@@ -2388,14 +2387,13 @@ sp<AudioFlinger::PlaybackThread::Track> AudioFlinger::PlaybackThread::createTrac
         // all tracks in same audio session must share the same routing strategy otherwise
         // conflicts will happen when tracks are moved from one output to another by audio policy
         // manager
-        product_strategy_t strategy = AudioSystem::getStrategyForStream(streamType);
         for (size_t i = 0; i < mTracks.size(); ++i) {
             sp<Track> t = mTracks[i];
             if (t != 0 && t->isExternalTrack()) {
-                product_strategy_t actual = AudioSystem::getStrategyForStream(t->streamType());
-                if (sessionId == t->sessionId() && strategy != actual) {
-                    ALOGE("createTrack_l() mismatched strategy; expected %u but found %u",
-                            strategy, actual);
+                if (sessionId == t->sessionId() &&
+                        !AudioSystem::followsSameRouting(attr, t->attributes())) {
+                    ALOGE("createTrack_l() mismatched routing between %s and %s",
+                            toString(attr).c_str(), toString(t->attributes()).c_str());
                     lStatus = BAD_VALUE;
                     goto Exit;
                 }
@@ -2993,7 +2991,7 @@ void AudioFlinger::PlaybackThread::updateMetadata_l()
     for (const sp<Track> &track : mActiveTracks) {
         // No track is invalid as this is called after prepareTrack_l in the same critical section
         // Do not forward metadata for PatchTrack with unspecified stream type
-        if (track->streamType() != AUDIO_STREAM_PATCH) {
+        if (!AudioSystem::isInternal(track->attributes())) {
             track->copyMetadataTo(backInserter);
         }
     }
@@ -9136,11 +9134,10 @@ void AudioFlinger::MmapThread::disconnect()
 
 
 void AudioFlinger::MmapThread::configure(const audio_attributes_t *attr,
-                                                audio_stream_type_t streamType __unused,
-                                                audio_session_t sessionId,
-                                                const sp<MmapStreamCallback>& callback,
-                                                audio_port_handle_t deviceId,
-                                                audio_port_handle_t portId)
+                                         audio_session_t sessionId,
+                                         const sp<MmapStreamCallback>& callback,
+                                         audio_port_handle_t deviceId,
+                                         audio_port_handle_t portId)
 {
     mAttr = *attr;
     mSessionId = sessionId;
@@ -9210,7 +9207,7 @@ status_t AudioFlinger::MmapThread::start(const AudioClient& client,
         config.sample_rate = mSampleRate;
         config.channel_mask = mChannelMask;
         config.format = mFormat;
-        audio_stream_type_t stream = streamType();
+        audio_stream_type_t stream = AUDIO_STREAM_MUSIC;
         audio_output_flags_t flags =
                 (audio_output_flags_t)(AUDIO_OUTPUT_FLAG_MMAP_NOIRQ | AUDIO_OUTPUT_FLAG_DIRECT);
         audio_port_handle_t deviceId = mDeviceId;
@@ -9828,7 +9825,6 @@ AudioFlinger::MmapPlaybackThread::MmapPlaybackThread(
         const sp<AudioFlinger>& audioFlinger, audio_io_handle_t id,
         AudioHwDevice *hwDev,  AudioStreamOut *output, bool systemReady)
     : MmapThread(audioFlinger, id, hwDev, output->stream, systemReady, true /* isOut */),
-      mStreamType(AUDIO_STREAM_MUSIC),
       mOutput(output)
 {
     snprintf(mThreadName, kThreadNameLength, "AudioMmapOut_%X", id);
@@ -9847,14 +9843,12 @@ AudioFlinger::MmapPlaybackThread::MmapPlaybackThread(
 }
 
 void AudioFlinger::MmapPlaybackThread::configure(const audio_attributes_t *attr,
-                                                audio_stream_type_t streamType,
                                                 audio_session_t sessionId,
                                                 const sp<MmapStreamCallback>& callback,
                                                 audio_port_handle_t deviceId,
                                                 audio_port_handle_t portId)
 {
-    MmapThread::configure(attr, streamType, sessionId, callback, deviceId, portId);
-    mStreamType = streamType;
+    MmapThread::configure(attr, sessionId, callback, deviceId, portId);
 }
 
 AudioStreamOut* AudioFlinger::MmapPlaybackThread::clearOutput()

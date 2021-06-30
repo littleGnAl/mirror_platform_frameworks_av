@@ -437,6 +437,7 @@ public:
             bool fallbackOnDefault = true);
     static bool followsSameRouting(
             const audio_attributes_t &lAttr, const audio_attributes_t &rAttr);
+    static bool isInternal(const audio_attributes_t &attributes);
     static audio_attributes_t streamTypeToAttributes(audio_stream_type_t stream);
     static audio_stream_type_t attributesToStreamType(const audio_attributes_t &attr);
 
