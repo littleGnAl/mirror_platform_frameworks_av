@@ -321,7 +321,7 @@ public:
     static audio_io_handle_t getOutputForEffect(const effect_descriptor_t *desc);
     static status_t registerEffect(const effect_descriptor_t *desc,
                                     audio_io_handle_t io,
-                                    product_strategy_t strategy,
+                                    const audio_attributes_t& attributes,
                                     audio_session_t session,
                                     int id);
     static status_t unregisterEffect(int id);

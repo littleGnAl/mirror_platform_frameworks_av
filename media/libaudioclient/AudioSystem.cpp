@@ -1304,7 +1304,7 @@ audio_io_handle_t AudioSystem::getOutputForEffect(const effect_descriptor_t* des
 
 status_t AudioSystem::registerEffect(const effect_descriptor_t* desc,
                                      audio_io_handle_t io,
-                                     product_strategy_t strategy,
+                                     const audio_attributes_t& attributes,
                                      audio_session_t session,
                                      int id) {
     const sp<IAudioPolicyService>& aps = AudioSystem::get_audio_policy_service();
@@ -1313,11 +1313,12 @@ status_t AudioSystem::registerEffect(const effect_descriptor_t* desc,
     media::EffectDescriptor descAidl = VALUE_OR_RETURN_STATUS(
             legacy2aidl_effect_descriptor_t_EffectDescriptor(*desc));
     int32_t ioAidl = VALUE_OR_RETURN_STATUS(legacy2aidl_audio_io_handle_t_int32_t(io));
-    int32_t strategyAidl = VALUE_OR_RETURN_STATUS(aidl2legacy_int32_t_product_strategy_t(strategy));
+    media::AudioAttributesInternal attributesAidl = VALUE_OR_RETURN_STATUS(
+            legacy2aidl_audio_attributes_t_AudioAttributesInternal(attributes));
     int32_t sessionAidl = VALUE_OR_RETURN_STATUS(legacy2aidl_audio_session_t_int32_t(session));
     int32_t idAidl = VALUE_OR_RETURN_STATUS(convertReinterpret<int32_t>(id));
     return statusTFromBinderStatus(
-            aps->registerEffect(descAidl, ioAidl, strategyAidl, sessionAidl, idAidl));
+            aps->registerEffect(descAidl, ioAidl, attributesAidl, sessionAidl, idAidl));
 }
 
 status_t AudioSystem::unregisterEffect(int id) {

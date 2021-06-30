@@ -1133,14 +1133,17 @@ Status AudioPolicyService::getOutputForEffect(const media::EffectDescriptor& des
 }
 
 Status AudioPolicyService::registerEffect(const media::EffectDescriptor& descAidl, int32_t ioAidl,
-                                          int32_t strategyAidl, int32_t sessionAidl,
+                                          const media::AudioAttributesInternal& attributesAidl,
+                                          int32_t sessionAidl,
                                           int32_t idAidl) {
     effect_descriptor_t desc = VALUE_OR_RETURN_BINDER_STATUS(
             aidl2legacy_EffectDescriptor_effect_descriptor_t(descAidl));
     audio_io_handle_t io = VALUE_OR_RETURN_BINDER_STATUS(
             aidl2legacy_int32_t_audio_io_handle_t(ioAidl));
-    product_strategy_t strategy = VALUE_OR_RETURN_BINDER_STATUS(
-            aidl2legacy_int32_t_product_strategy_t(strategyAidl));
+    audio_attributes_t attributes = VALUE_OR_RETURN_BINDER_STATUS(
+            aidl2legacy_AudioAttributesInternal_audio_attributes_t(attributesAidl));
+    RETURN_IF_BINDER_ERROR(binderStatusFromStatusT(
+            AudioValidator::validateAudioAttributes(attributes, "68953950")));
     audio_session_t session = VALUE_OR_RETURN_BINDER_STATUS(
             aidl2legacy_int32_t_audio_session_t(sessionAidl));
     int id = VALUE_OR_RETURN_BINDER_STATUS(convertReinterpret<int>(idAidl));
@@ -1153,7 +1156,7 @@ Status AudioPolicyService::registerEffect(const media::EffectDescriptor& descAid
     Mutex::Autolock _l(mLock);
     AutoCallerClear acc;
     return binderStatusFromStatusT(
-            mAudioPolicyManager->registerEffect(&desc, io, strategy, session, id));
+            mAudioPolicyManager->registerEffect(&desc, io, attributes, session, id));
 }
 
 Status AudioPolicyService::unregisterEffect(int32_t idAidl)

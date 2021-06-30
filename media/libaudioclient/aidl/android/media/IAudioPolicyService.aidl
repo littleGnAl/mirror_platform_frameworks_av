@@ -141,7 +141,7 @@ interface IAudioPolicyService {
 
     void registerEffect(in EffectDescriptor desc,
                         int /* audio_io_handle_t */ io,
-                        int /* product_strategy_t */ strategy,
+                        in AudioAttributesInternal attributes,
                         int /* audio_session_t */ session,
                         int id);
 

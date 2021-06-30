@@ -2965,7 +2965,7 @@ audio_io_handle_t AudioPolicyManager::getOutputForEffect(const effect_descriptor
 
 status_t AudioPolicyManager::registerEffect(const effect_descriptor_t *desc,
                                 audio_io_handle_t io,
-                                product_strategy_t strategy,
+                                const audio_attributes_t &attributes,
                                 int session,
                                 int id)
 {
@@ -2979,9 +2979,10 @@ status_t AudioPolicyManager::registerEffect(const effect_descriptor_t *desc,
             }
         }
     }
-    return mEffects.registerEffect(desc, io, session, id,
-                                   (strategy == streamToStrategy(AUDIO_STREAM_MUSIC) ||
-                                   strategy == PRODUCT_STRATEGY_NONE));
+    return mEffects.registerEffect(
+                desc, io, session, id,
+                (followsSameRouting(attributes, attributes_initializer(AUDIO_USAGE_MEDIA)) ||
+                 attributes == AUDIO_ATTRIBUTES_INITIALIZER));
 }
 
 status_t AudioPolicyManager::unregisterEffect(int id)
