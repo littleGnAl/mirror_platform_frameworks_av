@@ -238,7 +238,7 @@ status_t AudioFlinger::EffectBase::updatePolicyState()
     bool doEnable = false;
     bool enabled = false;
     audio_io_handle_t io = AUDIO_IO_HANDLE_NONE;
-    product_strategy_t strategy = PRODUCT_STRATEGY_NONE;
+    audio_attributes_t attributes = AUDIO_ATTRIBUTES_INITIALIZER;
 
     {
         Mutex::Autolock _l(mLock);
@@ -249,7 +249,7 @@ status_t AudioFlinger::EffectBase::updatePolicyState()
             if (mPolicyRegistered) {
                 const auto callback = getCallback();
                 io = callback->io();
-                strategy = callback->strategy();
+                attributes = callback->attributes();
             }
         }
         // enable effect when registered according to enable state requested by controlling handle
@@ -277,7 +277,7 @@ status_t AudioFlinger::EffectBase::updatePolicyState()
             status = AudioSystem::registerEffect(
                 &mDescriptor,
                 io,
-                strategy,
+                attributes,
                 mSessionId,
                 mId);
         } else {
@@ -2048,7 +2048,7 @@ AudioFlinger::EffectChain::EffectChain(const wp<ThreadBase>& thread,
       mNewLeftVolume(UINT_MAX), mNewRightVolume(UINT_MAX),
       mEffectCallback(new EffectCallback(wp<EffectChain>(this), thread))
 {
-    mStrategy = AudioSystem::getStrategyForStream(AUDIO_STREAM_MUSIC);
+    mAttributes = attributes_initializer(AUDIO_USAGE_MEDIA);
     sp<ThreadBase> p = thread.promote();
     if (p == nullptr) {
         return;
@@ -3034,12 +3034,12 @@ void AudioFlinger::EffectChain::EffectCallback::resetVolume() {
 
 }
 
-product_strategy_t AudioFlinger::EffectChain::EffectCallback::strategy() const {
+audio_attributes_t AudioFlinger::EffectChain::EffectCallback::attributes() const {
     sp<EffectChain> c = chain().promote();
     if (c == nullptr) {
-        return PRODUCT_STRATEGY_NONE;
+        return AUDIO_ATTRIBUTES_INITIALIZER;
     }
-    return c->strategy();
+    return c->attributes();
 }
 
 int32_t AudioFlinger::EffectChain::EffectCallback::activeTrackCnt() const {
