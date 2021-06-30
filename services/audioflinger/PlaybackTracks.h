@@ -27,8 +27,7 @@ public:
 
     static sp<OpPlayAudioMonitor> createIfNeeded(
             const AttributionSourceState& attributionSource,
-            const audio_attributes_t& attr, int id,
-            audio_stream_type_t streamType);
+            const audio_attributes_t& attr, int id);
 
 private:
     OpPlayAudioMonitor(const AttributionSourceState& attributionSource,
@@ -62,8 +61,7 @@ class Track : public TrackBase, public VolumeProvider, public VolumePortInterfac
 public:
                         Track(  PlaybackThread *thread,
                                 const sp<Client>& client,
-                                audio_stream_type_t streamType,
-                                const audio_attributes_t& attr,
+                                const audio_attributes_t& attributes,
                                 uint32_t sampleRate,
                                 audio_format_t format,
                                 audio_channel_mask_t channelMask,
@@ -427,7 +425,7 @@ class PatchTrack : public Track, public PatchTrackBase {
 public:
 
                         PatchTrack(PlaybackThread *playbackThread,
-                                   audio_stream_type_t streamType,
+                                   const audio_attributes_t& attributes,
                                    uint32_t sampleRate,
                                    audio_channel_mask_t channelMask,
                                    audio_format_t format,

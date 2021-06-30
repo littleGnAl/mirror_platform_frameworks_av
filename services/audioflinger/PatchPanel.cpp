@@ -513,11 +513,11 @@ status_t AudioFlinger::PatchPanel::Patch::createConnections(PatchPanel *panel)
 
     audio_output_flags_t outputFlags = mAudioPatch.sinks[0].config_mask & AUDIO_PORT_CONFIG_FLAGS ?
             mAudioPatch.sinks[0].flags.output : AUDIO_OUTPUT_FLAG_NONE;
-    audio_stream_type_t streamType = AUDIO_STREAM_PATCH;
-    if (mAudioPatch.num_sources == 2 && mAudioPatch.sources[1].type == AUDIO_PORT_TYPE_MIX) {
-        // "reuse one existing output mix" case
-        streamType = mAudioPatch.sources[1].ext.mix.usecase.stream;
-    }
+    // "reuse one existing output mix" case
+    audio_stream_type_t streamType =
+            (mAudioPatch.num_sources == 2 && mAudioPatch.sources[1].type == AUDIO_PORT_TYPE_MIX)?
+                mAudioPatch.sources[1].ext.mix.usecase.stream : AUDIO_STREAM_PATCH;
+    auto attributes = AudioSystem::streamTypeToAttributes(streamType);
     if (mPlayback.thread()->hasFastMixer()) {
         // Create a fast track if the playback thread has fast mixer to get better performance.
         // Note: we should have matching channel mask, sample rate, and format by the logic above.
@@ -581,7 +581,7 @@ status_t AudioFlinger::PatchPanel::Patch::createConnections(PatchPanel *panel)
     const size_t frameCountToBeReady = isFmBridge && !usePassthruPatchRecord ? frameCount / 4 : 1;
     sp<PlaybackThread::PatchTrack> tempPatchTrack = new PlaybackThread::PatchTrack(
                                            mPlayback.thread().get(),
-                                           streamType,
+                                           attributes,
                                            sampleRate,
                                            outChannelMask,
                                            format,

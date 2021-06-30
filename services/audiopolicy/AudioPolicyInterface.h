@@ -123,16 +123,16 @@ public:
     // request an output appropriate for playback of the supplied stream type and parameters
     virtual audio_io_handle_t getOutput(audio_stream_type_t stream) = 0;
     virtual status_t getOutputForAttr(const audio_attributes_t *attr,
-                                        audio_io_handle_t *output,
-                                        audio_session_t session,
-                                        audio_stream_type_t *stream,
-                                        const AttributionSourceState& attributionSouce,
-                                        const audio_config_t *config,
-                                        audio_output_flags_t *flags,
-                                        audio_port_handle_t *selectedDeviceId,
-                                        audio_port_handle_t *portId,
-                                        std::vector<audio_io_handle_t> *secondaryOutputs,
-                                        output_type_t *outputType) = 0;
+                                      audio_io_handle_t *output,
+                                      audio_session_t session,
+                                      audio_stream_type_t &stream,
+                                      const AttributionSourceState& attributionSouce,
+                                      const audio_config_t *config,
+                                      audio_output_flags_t *flags,
+                                      audio_port_handle_t *selectedDeviceId,
+                                      audio_port_handle_t *portId,
+                                      std::vector<audio_io_handle_t> *secondaryOutputs,
+                                      output_type_t *outputType) = 0;
     // indicates to the audio policy manager that the output starts being used by corresponding stream.
     virtual status_t startOutput(audio_port_handle_t portId) = 0;
     // indicates to the audio policy manager that the output stops being used by corresponding stream.

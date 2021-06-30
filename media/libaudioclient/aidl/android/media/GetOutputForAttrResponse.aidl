@@ -24,7 +24,6 @@ import android.media.AudioStreamType;
 parcelable GetOutputForAttrResponse {
     /** Interpreted as audio_io_handle_t. */
     int output;
-    AudioStreamType stream;
     /** Interpreted as audio_port_handle_t. */
     int selectedDeviceId;
     /** Interpreted as audio_port_handle_t. */

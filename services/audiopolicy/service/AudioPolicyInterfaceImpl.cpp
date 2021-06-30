@@ -290,7 +290,6 @@ Status AudioPolicyService::getOutputForAttr(const media::AudioAttributesInternal
             aidl2legacy_AudioAttributesInternal_audio_attributes_t(attrAidl));
     audio_session_t session = VALUE_OR_RETURN_BINDER_STATUS(
             aidl2legacy_int32_t_audio_session_t(sessionAidl));
-    audio_stream_type_t stream = AUDIO_STREAM_DEFAULT;
     audio_config_t config = VALUE_OR_RETURN_BINDER_STATUS(
             aidl2legacy_AudioConfig_audio_config_t(configAidl));
     audio_output_flags_t flags = VALUE_OR_RETURN_BINDER_STATUS(
@@ -335,8 +334,8 @@ Status AudioPolicyService::getOutputForAttr(const media::AudioAttributesInternal
     }
     AutoCallerClear acc;
     AudioPolicyInterface::output_type_t outputType;
-    status_t result = mAudioPolicyManager->getOutputForAttr(&attr, &output, session,
-                                                            &stream,
+    audio_stream_type_t stream;
+    status_t result = mAudioPolicyManager->getOutputForAttr(&attr, &output, session, stream,
                                                             adjAttributionSource,
                                                             &config,
                                                             &flags, &selectedDeviceId, &portId,
@@ -378,8 +377,6 @@ Status AudioPolicyService::getOutputForAttr(const media::AudioAttributesInternal
 
         _aidl_return->output = VALUE_OR_RETURN_BINDER_STATUS(
                 legacy2aidl_audio_io_handle_t_int32_t(output));
-        _aidl_return->stream = VALUE_OR_RETURN_BINDER_STATUS(
-                legacy2aidl_audio_stream_type_t_AudioStreamType(stream));
         _aidl_return->selectedDeviceId = VALUE_OR_RETURN_BINDER_STATUS(
                 legacy2aidl_audio_port_handle_t_int32_t(selectedDeviceId));
         _aidl_return->portId = VALUE_OR_RETURN_BINDER_STATUS(

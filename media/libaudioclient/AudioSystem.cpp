@@ -956,7 +956,6 @@ audio_io_handle_t AudioSystem::getOutput(audio_stream_type_t stream) {
 status_t AudioSystem::getOutputForAttr(audio_attributes_t* attr,
                                        audio_io_handle_t* output,
                                        audio_session_t session,
-                                       audio_stream_type_t* stream,
                                        const AttributionSourceState& attributionSource,
                                        const audio_config_t* config,
                                        audio_output_flags_t flags,
@@ -1006,10 +1005,6 @@ status_t AudioSystem::getOutputForAttr(audio_attributes_t* attr,
     *output = VALUE_OR_RETURN_STATUS(
             aidl2legacy_int32_t_audio_io_handle_t(responseAidl.output));
 
-    if (stream != nullptr) {
-        *stream = VALUE_OR_RETURN_STATUS(
-                aidl2legacy_AudioStreamType_audio_stream_type_t(responseAidl.stream));
-    }
     *selectedDeviceId = VALUE_OR_RETURN_STATUS(
             aidl2legacy_int32_t_audio_port_handle_t(responseAidl.selectedDeviceId));
     *portId = VALUE_OR_RETURN_STATUS(aidl2legacy_int32_t_audio_port_handle_t(responseAidl.portId));
