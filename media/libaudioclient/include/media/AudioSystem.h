@@ -435,7 +435,8 @@ public:
     static status_t getProductStrategyFromAudioAttributes(
             const AudioAttributes &aa, product_strategy_t &productStrategy,
             bool fallbackOnDefault = true);
-
+    static bool followsSameRouting(
+            const audio_attributes_t &lAttr, const audio_attributes_t &rAttr);
     static audio_attributes_t streamTypeToAttributes(audio_stream_type_t stream);
     static audio_stream_type_t attributesToStreamType(const audio_attributes_t &attr);
 
@@ -651,6 +652,7 @@ private:
     static audio_io_handle_t getOutput(audio_stream_type_t stream);
     static const sp<AudioFlingerClient> getAudioFlingerClient();
     static sp<AudioIoDescriptor> getIoDescriptor(audio_io_handle_t ioHandle);
+    static product_strategy_t getDefaultAudioProductStrategy();
 
     // Invokes all registered error callbacks with the given error code.
     static void reportError(status_t err);
@@ -676,6 +678,9 @@ private:
     static audio_channel_mask_t gPrevInChannelMask;
 
     static sp<media::IAudioPolicyService> gAudioPolicyService;
+
+    static AudioProductStrategyVector gAudioProductStrategies;
+    static AudioProductStrategy gDefaultAudioProductStrategy;
 };
 
 };  // namespace android

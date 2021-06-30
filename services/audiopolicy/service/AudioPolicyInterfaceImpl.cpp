@@ -1970,7 +1970,8 @@ Status AudioPolicyService::listAudioProductStrategies(
     if (mAudioPolicyManager == NULL) {
         return binderStatusFromStatusT(NO_INIT);
     }
-    Mutex::Autolock _l(mLock);
+    // No need to lock as accessing here to the list of strategies, which is parsed at policy
+    // initialization and can be considered as a static const list.
     RETURN_IF_BINDER_ERROR(
             binderStatusFromStatusT(mAudioPolicyManager->listAudioProductStrategies(strategies)));
     *_aidl_return = VALUE_OR_RETURN_BINDER_STATUS(
@@ -1989,7 +1990,8 @@ Status AudioPolicyService::getProductStrategyFromAudioAttributes(
     if (mAudioPolicyManager == NULL) {
         return binderStatusFromStatusT(NO_INIT);
     }
-    Mutex::Autolock _l(mLock);
+    // No need to lock as accessing here to the list of strategies, which is parsed at policy
+    // initialization and can be considered as a static const list.
     RETURN_IF_BINDER_ERROR(binderStatusFromStatusT(
             mAudioPolicyManager->getProductStrategyFromAudioAttributes(
                     aa, productStrategy, fallbackOnDefault)));
