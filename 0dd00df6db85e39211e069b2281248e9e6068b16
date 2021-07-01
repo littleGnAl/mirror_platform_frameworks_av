@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7e41fc74_fa756157",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-07-01T17:37:47Z",
+      "side": 1,
+      "message": "Yes, this was a concern for us as well. AV1 does not distinguish main8 and main10 profiles (http://aomedia.org/av1/specification/annex-a/), so C2 cannot distinguish this. However, these can be distinguished at stagefright level.",
+      "revId": "0dd00df6db85e39211e069b2281248e9e6068b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
