@@ -51,6 +51,7 @@ AHEVCAssembler::AHEVCAssembler(const sp<AMessage> &notify)
       mNextExpectedSeqNo(0),
       mAccessUnitDamaged(false),
       mFirstIFrameProvided(false),
+      mLastCvo(-1),
       mLastIFrameProvidedAtMs(0),
       mLastRtpTimeJitterDataUs(0),
       mWidth(0),
@@ -583,6 +584,9 @@ ARTPAssembler::AssemblyStatus AHEVCAssembler::addFragmentedNALUnit(
 
     if (cvo >= 0) {
         unit->meta()->setInt32("cvo", cvo);
+        mLastCvo = cvo;
+    } else if (mLastCvo >= 0) {
+        unit->meta()->setInt32("cvo", mLastCvo);
     }
 
     addSingleNALUnit(unit);
