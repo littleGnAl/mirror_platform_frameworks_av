@@ -3768,7 +3768,9 @@ void CameraService::updateStatus(StatusInternal status, const String8& cameraId,
     if (!sRet.isOk()) {
         ALOGW("%s: Failed to determine if device supports HAL3 %s, supportsCameraApi call failed",
                 __FUNCTION__, cameraId.string());
-        return;
+        // supportsCameraApi will be failed when camera provider died, however we still want to
+        // notify the listeners of device NOT_PRESENT event.
+        if (status != StatusInternal::NOT_PRESENT) return;
     }
 
     // Collect the logical cameras without holding mStatusLock in updateStatus
