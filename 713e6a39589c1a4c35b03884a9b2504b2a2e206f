@@ -33,6 +33,23 @@
       "message": "Ready for review\n",
       "revId": "713e6a39589c1a4c35b03884a9b2504b2a2e206f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e09dda04_7f70bced",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2021-07-07T16:23:15Z",
+      "side": 1,
+      "message": "Thanks for the patch Jiahui!\n\nWe merged a slightly different fix for this issue in Android S. \nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1758410\n\nPlease let me know if that fix is sufficient. ",
+      "revId": "713e6a39589c1a4c35b03884a9b2504b2a2e206f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
