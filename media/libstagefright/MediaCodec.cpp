@@ -3105,8 +3105,8 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
             State targetState =
                 (msg->what() == kWhatStop) ? INITIALIZED : UNINITIALIZED;
 
-            if ((mState == RELEASING && targetState == UNINITIALIZED)
-                    || (mState == STOPPING && targetState == INITIALIZED)) {
+            if (mReplyID && ((mState == RELEASING && targetState == UNINITIALIZED)
+                    || (mState == STOPPING && targetState == INITIALIZED))) {
                 mDeferredMessages.push_back(msg);
                 break;
             }
@@ -3190,7 +3190,7 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
             // received a release request, post the reply for the pending call
             // first, and consider it done. The reply token will be replaced
             // after this, and we'll no longer be able to reply.
-            if (mState == FLUSHING || mState == CONFIGURING || mState == STARTING) {
+            if (mReplyID && (mState == FLUSHING || mState == CONFIGURING || mState == STARTING)) {
                 // mReply is always set if in these states.
                 postPendingRepliesAndDeferredMessages(
                         std::string("kWhatRelease:") + stateString(mState));
