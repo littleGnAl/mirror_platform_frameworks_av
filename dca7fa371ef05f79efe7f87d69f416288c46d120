@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "35e50825_0d5be55c",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-07-08T20:18:47Z",
+      "side": 1,
+      "message": "blindly? or should we make sure that layer.type_ is one of the defined\npicture types I_FRAME, P_FRAME, or B_FRAME?",
+      "range": {
+        "startLine": 522,
+        "startChar": 11,
+        "endLine": 522,
+        "endChar": 47
+      },
+      "revId": "dca7fa371ef05f79efe7f87d69f416288c46d120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b29ddcdd_d7957720",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-07-08T20:18:47Z",
+      "side": 1,
+      "message": "understand on them all being the same.\nbut should we at least verify that the [0] entry is one of our picture types?",
+      "range": {
+        "startLine": 730,
+        "startChar": 11,
+        "endLine": 730,
+        "endChar": 27
+      },
+      "revId": "dca7fa371ef05f79efe7f87d69f416288c46d120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bacbb9e9_5318d9d1",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-07-08T20:18:47Z",
+      "side": 1,
+      "message": "if i\u0027m reading correctly, we don\u0027t allow _CONST and _VARIABLE to\nset an initial QP -- those appear to get a kDefaultInitQP (clamped to\nthe min/max range we allow, but we don\u0027t get to specify anyting.",
+      "range": {
+        "startLine": 749,
+        "startChar": 16,
+        "endLine": 749,
+        "endChar": 27
+      },
+      "revId": "dca7fa371ef05f79efe7f87d69f416288c46d120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
