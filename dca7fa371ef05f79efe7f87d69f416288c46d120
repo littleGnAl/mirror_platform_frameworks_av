@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a38d2c6a_a8005811",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-07-08T20:41:03Z",
+      "side": 1,
+      "message": "This brings a question on what is to be done if frame type is SYNC_FRAME?\nOr for QP bound code, we assume only I, P and B are supported frame types?",
+      "parentUuid": "35e50825_0d5be55c",
+      "range": {
+        "startLine": 522,
+        "startChar": 11,
+        "endLine": 522,
+        "endChar": 47
+      },
+      "revId": "dca7fa371ef05f79efe7f87d69f416288c46d120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b29ddcdd_d7957720",
         "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
         "patchSetId": 8
@@ -60,6 +84,30 @@
       "writtenOn": "2021-07-08T20:18:47Z",
       "side": 1,
       "message": "if i\u0027m reading correctly, we don\u0027t allow _CONST and _VARIABLE to\nset an initial QP -- those appear to get a kDefaultInitQP (clamped to\nthe min/max range we allow, but we don\u0027t get to specify anyting.",
+      "range": {
+        "startLine": 749,
+        "startChar": 16,
+        "endLine": 749,
+        "endChar": 27
+      },
+      "revId": "dca7fa371ef05f79efe7f87d69f416288c46d120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "84929869_4b21e432",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-07-08T20:41:03Z",
+      "side": 1,
+      "message": "Yes, init qp is kDefaultInitQp clamped to the min/max range for const and variable rate control modes.\nOnly in BITRATE_IGNORE mode where quality is passed as an argument, init qp is derived from quality.",
+      "parentUuid": "bacbb9e9_5318d9d1",
       "range": {
         "startLine": 749,
         "startChar": 16,
