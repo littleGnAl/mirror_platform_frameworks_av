@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8b18fc7c_f353f1e1",
+        "filename": "media/libstagefright/httplive/fuzzer/corpus/hls.m3u8",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-07-08T14:41:30Z",
+      "side": 1,
+      "message": "i know they have to be out on some server as part of the test,\nbut we also need a copy of them under source control somewhere\nso that we\u0027d be able to spin up a new server if necessary.",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 93
+      },
+      "revId": "abf894f36c578401dd2034fac401b670d4cf1733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9d7b2a4_ab7be905",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-07-08T14:41:30Z",
+      "side": 1,
+      "message": "\u003cfuzzer/FuzzedDataProvider.h\u003e since it comes from outside of this project.",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 38
+      },
+      "revId": "abf894f36c578401dd2034fac401b670d4cf1733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6949b9d_720fbb3e",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-07-08T14:41:30Z",
+      "side": 1,
+      "message": "the string here is \"httplive.m3u8\"\nso we are\n-- opening in the current directory\n-- is that specified as part of the test environment, or are we getting lucky?\n\nI think we should be constructing a pathname that is in a known, writable,\nlocation.   /tmp works for linux (but not for on-the-android-device).\n\nand it probably needs to do something to protect against multiple fuzzers\non the same host at the same time.  the typical way to do that is to salt\nthe filename with the pid of the current process.\nin a shell, i\u0027d probably say   /tmp/httplive-$$.m3u8\n\nbut that may not work quite as simply here.",
+      "range": {
+        "startLine": 156,
+        "startChar": 16,
+        "endLine": 156,
+        "endChar": 25
+      },
+      "revId": "abf894f36c578401dd2034fac401b670d4cf1733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
