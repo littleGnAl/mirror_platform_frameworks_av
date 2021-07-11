@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0fe412ae_044d4dc4",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-07-11T04:57:19Z",
+      "side": 1,
+      "message": "the space *_FRAME space is certainly not limited to I/P/B.\nas you point out, there is SYNC_FRAME.\n\nbut the only ones that have meaning to the hevc encoder are I/P/B.\nmaybe lines 254..256 ensure that the I/P/B entries are the only form we\u0027ll\nsee at this point.\n\nthe longer picture -- there can be more picture types, but the extra ones are\nmeaningless to an hevc codec. maybe the AV2 standard will have additional picture\ntypes...",
+      "parentUuid": "a38d2c6a_a8005811",
+      "range": {
+        "startLine": 522,
+        "startChar": 11,
+        "endLine": 522,
+        "endChar": 47
+      },
+      "revId": "dca7fa371ef05f79efe7f87d69f416288c46d120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b29ddcdd_d7957720",
         "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
         "patchSetId": 8
@@ -108,6 +132,30 @@
       "side": 1,
       "message": "Yes, init qp is kDefaultInitQp clamped to the min/max range for const and variable rate control modes.\nOnly in BITRATE_IGNORE mode where quality is passed as an argument, init qp is derived from quality.",
       "parentUuid": "bacbb9e9_5318d9d1",
+      "range": {
+        "startLine": 749,
+        "startChar": 16,
+        "endLine": 749,
+        "endChar": 27
+      },
+      "revId": "dca7fa371ef05f79efe7f87d69f416288c46d120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6c14226_84db97c8",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-07-11T04:57:19Z",
+      "side": 1,
+      "message": "is there a reason to restrict it to only this mode?\n\nNot that I\u0027m a big fan of messing with initial QP -- when some people at other companies played with it a year ago, they got encouraging results for the first few frames/seconds of a video, but the codec seemed to overcorrect later to recover into the desired bitrate target...  So I don\u0027t see it as particularly useful.\n\nbut if we\u0027re going to allow it, I\u0027m not sure that it should be limited to\njust the bitrate_ignore setting; it always needs to be clamped into the allowed range, but i like the idea of setting it to be independent of the bitrate mode.",
+      "parentUuid": "84929869_4b21e432",
       "range": {
         "startLine": 749,
         "startChar": 16,
