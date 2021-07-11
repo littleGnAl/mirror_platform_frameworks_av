@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8cab668b_29ae6354",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-07-11T15:34:52Z",
+      "side": 1,
+      "message": "Ray,\nThanks for clarifications.\n\nManisha,\nPlease add a check for I_FRAME or P_FRAME or B_FRAME here and line 730",
+      "parentUuid": "0fe412ae_044d4dc4",
+      "range": {
+        "startLine": 522,
+        "startChar": 11,
+        "endLine": 522,
+        "endChar": 47
+      },
+      "revId": "dca7fa371ef05f79efe7f87d69f416288c46d120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b29ddcdd_d7957720",
         "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
         "patchSetId": 8
@@ -156,6 +180,30 @@
       "side": 1,
       "message": "is there a reason to restrict it to only this mode?\n\nNot that I\u0027m a big fan of messing with initial QP -- when some people at other companies played with it a year ago, they got encouraging results for the first few frames/seconds of a video, but the codec seemed to overcorrect later to recover into the desired bitrate target...  So I don\u0027t see it as particularly useful.\n\nbut if we\u0027re going to allow it, I\u0027m not sure that it should be limited to\njust the bitrate_ignore setting; it always needs to be clamped into the allowed range, but i like the idea of setting it to be independent of the bitrate mode.",
       "parentUuid": "84929869_4b21e432",
+      "range": {
+        "startLine": 749,
+        "startChar": 16,
+        "endLine": 749,
+        "endChar": 27
+      },
+      "revId": "dca7fa371ef05f79efe7f87d69f416288c46d120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3468e1dc_7daccc49",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-07-11T15:34:52Z",
+      "side": 1,
+      "message": "Ray,\nLine 740-741 clamps kDefaultInitQP to min/max range and assigns it to ai4_frame_qp.\nSo the clamping part is being done.\n\nNow regarding why only bitrate_ignore mode,\n\nthere are three rate control modes library supports\nconstant bitrate, variable bitrate where library needs bitrate to be configured from the plugin/application\n\nand constant qp mode where it expects ai4_frame_qp to be configured from the plugin/application.\n\nin constant bitrate, variable bitrate modes, ai4_frame_qp acts as an initial qp and it is set to clamped kDefaultInitQp. There are no keys in MediaFormat to control init qp that are currently (only qp bounds were made available now).\nAs and when mediaformat has these keys, we can propagate those values. \n\nAnd mQuality that is being used in BITRATE_IGNORE mode is only expected to be set in format for this mode i.e. for BITRATE_CONST and BITRATE_VARIABLE bitrate is set, and for BITRATE_IGNORE quality is set.\n\nplugin accordingly picks either bitrate or quality based on the mode.",
+      "parentUuid": "b6c14226_84db97c8",
       "range": {
         "startLine": 749,
         "startChar": 16,
