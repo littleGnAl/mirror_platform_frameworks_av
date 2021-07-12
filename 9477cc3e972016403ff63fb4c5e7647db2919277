@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a57caf4_c1801163",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/PolicyAudioPort.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-07-12T16:38:23Z",
+      "side": 1,
+      "message": "wouldn\u0027t it be easier to swap the original line 34 with original line 35?   Then you don\u0027t need to redo this check?",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "9477cc3e972016403ff63fb4c5e7647db2919277",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
