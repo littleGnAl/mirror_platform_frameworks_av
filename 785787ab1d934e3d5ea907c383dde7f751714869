@@ -33,6 +33,24 @@
       "message": "gentle ping! ",
       "revId": "785787ab1d934e3d5ea907c383dde7f751714869",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "34fa00da_d6d0588e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1365444
+      },
+      "writtenOn": "2021-07-13T17:07:57Z",
+      "side": 1,
+      "message": "Hi, sorry for the delay. I appreciate your interest!\n\nI\u0027ve debugged the deadlock and it\u0027s actually a single thread trying to lock mInterfaceMutex twice. Here\u0027s the backtrace: https://pastebin.com/raw/RSKB8YkM\n\nWhile the backtrace is not entirely clear to me (why do i receive the torchModeStatusChange callback in this call stack?), but the first lock happens in android::CameraProviderManager::onRegistration, and the second one in the android::CameraProviderManager::ProviderInfo::torchModeStatusChange callback.\n\nThis happens 100% consistently on a small set of QCOM devices (msm899x only, as far as we can see)\n\nI hope this is enough info for you to come to a better conclusion...",
+      "parentUuid": "ce2bf2af_6b69789a",
+      "revId": "785787ab1d934e3d5ea907c383dde7f751714869",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
