@@ -22,6 +22,30 @@
       },
       "revId": "9477cc3e972016403ff63fb4c5e7647db2919277",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4d34458a_83323b2e",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/PolicyAudioPort.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1887150
+      },
+      "writtenOn": "2021-07-13T02:29:44Z",
+      "side": 1,
+      "message": "Your suggestion is better. It is easier and less code, I\u0027ll redo this change. Thanks a lot!",
+      "parentUuid": "4a57caf4_c1801163",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 34,
+        "endChar": 49
+      },
+      "revId": "9477cc3e972016403ff63fb4c5e7647db2919277",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
