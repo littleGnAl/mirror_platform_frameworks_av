@@ -74,7 +74,7 @@ static int64_t kPauseDelayUs = 3000000ll;
 
 // The allowed maximum number of stale access units at the beginning of
 // a new sequence.
-static int32_t kMaxAllowedStaleAccessUnits = 20;
+static int32_t kMaxAllowedStaleAccessUnits = 400;
 
 static int64_t kTearDownTimeoutUs = 3000000ll;
 
