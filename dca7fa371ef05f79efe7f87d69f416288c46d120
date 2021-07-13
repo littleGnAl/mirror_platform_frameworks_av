@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a955cf5f_973aaddd",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 522,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-07-13T05:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8cab668b_29ae6354",
+      "range": {
+        "startLine": 522,
+        "startChar": 11,
+        "endLine": 522,
+        "endChar": 47
+      },
+      "revId": "dca7fa371ef05f79efe7f87d69f416288c46d120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b29ddcdd_d7957720",
@@ -109,6 +133,30 @@
       "writtenOn": "2021-07-08T20:18:47Z",
       "side": 1,
       "message": "understand on them all being the same.\nbut should we at least verify that the [0] entry is one of our picture types?",
+      "range": {
+        "startLine": 730,
+        "startChar": 11,
+        "endLine": 730,
+        "endChar": 27
+      },
+      "revId": "dca7fa371ef05f79efe7f87d69f416288c46d120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "344f1b40_7e7e55dc",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 730,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-07-13T05:13:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b29ddcdd_d7957720",
       "range": {
         "startLine": 730,
         "startChar": 11,
