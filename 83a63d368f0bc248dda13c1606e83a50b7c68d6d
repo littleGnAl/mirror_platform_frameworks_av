@@ -80,6 +80,30 @@
       },
       "revId": "83a63d368f0bc248dda13c1606e83a50b7c68d6d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6caf56dd_ba2d9c81",
+        "filename": "media/libstagefright/FrameCaptureProcessor.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 163,
+      "author": {
+        "id": 1501832
+      },
+      "writtenOn": "2021-07-14T03:26:49Z",
+      "side": 1,
+      "message": "From this implementation of file, the thumbnail of HDR content is captured from Surface.\nMay we learn that the frame should be HDR or SDR format after capturing Surface for Google expectation?",
+      "parentUuid": "584c86f1_e86ebb7c",
+      "range": {
+        "startLine": 154,
+        "startChar": 0,
+        "endLine": 163,
+        "endChar": 5
+      },
+      "revId": "83a63d368f0bc248dda13c1606e83a50b7c68d6d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
