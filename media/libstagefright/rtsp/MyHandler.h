@@ -1330,7 +1330,9 @@ struct MyHandler : public AHandler {
 
                         ALOGV("rtp-info: %s", response->mHeaders.valueAt(i).c_str());
 
-                        ALOGI("seek completed.");
+                        mRTPConn->seekStream();
+
+                        ALOGI("seek completed..");
                     }
                 }
 
