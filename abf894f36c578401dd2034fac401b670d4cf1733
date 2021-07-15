@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4338241_0ea66753",
+        "filename": "media/libstagefright/httplive/fuzzer/corpus/hls.m3u8",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-07-15T23:03:06Z",
+      "side": 1,
+      "message": "Ray,\nthe fuzzer doesn\u0027t actually stream from these links.\nthe syntax of these m3u8 files are more important to the httplive_fuzzer than the links themeselves. \nSo the ts files aren\u0027t required to be stored anywhere.\n\nFuzzer plugin runs without the corpus folder, but in order to improve code coverage these m3u8 files are being checked in as corpus files.",
+      "parentUuid": "8b18fc7c_f353f1e1",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 93
+      },
+      "revId": "abf894f36c578401dd2034fac401b670d4cf1733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9d7b2a4_ab7be905",
         "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
         "patchSetId": 2
@@ -60,6 +84,30 @@
       "writtenOn": "2021-07-08T14:41:30Z",
       "side": 1,
       "message": "the string here is \"httplive.m3u8\"\nso we are\n-- opening in the current directory\n-- is that specified as part of the test environment, or are we getting lucky?\n\nI think we should be constructing a pathname that is in a known, writable,\nlocation.   /tmp works for linux (but not for on-the-android-device).\n\nand it probably needs to do something to protect against multiple fuzzers\non the same host at the same time.  the typical way to do that is to salt\nthe filename with the pid of the current process.\nin a shell, i\u0027d probably say   /tmp/httplive-$$.m3u8\n\nbut that may not work quite as simply here.",
+      "range": {
+        "startLine": 156,
+        "startChar": 16,
+        "endLine": 156,
+        "endChar": 25
+      },
+      "revId": "abf894f36c578401dd2034fac401b670d4cf1733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61f08b45_5ac6f42b",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 156,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-07-15T23:03:06Z",
+      "side": 1,
+      "message": "we will update the path to /data/local/tmp as this is running on device. There is no host version of this fuzzer, so /data/local/tmp is fine for now.",
+      "parentUuid": "e6949b9d_720fbb3e",
       "range": {
         "startLine": 156,
         "startChar": 16,
