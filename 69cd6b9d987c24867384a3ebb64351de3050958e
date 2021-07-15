@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a5484fda_33dc789d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-07-15T22:41:10Z",
+      "side": 1,
+      "message": "\u003e Found ambiguous Merge keyword in commit message. Did you mean \"Merged-In\"?\n\nPlease fix.",
+      "parentUuid": "0a510bd2_102137b6",
+      "range": {
+        "startLine": 14,
+        "startChar": 0,
+        "endLine": 14,
+        "endChar": 52
+      },
+      "revId": "69cd6b9d987c24867384a3ebb64351de3050958e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
