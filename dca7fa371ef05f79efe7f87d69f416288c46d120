@@ -260,6 +260,30 @@
       },
       "revId": "dca7fa371ef05f79efe7f87d69f416288c46d120",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb1efce1_7d9240a5",
+        "filename": "media/codec2/components/hevc/C2SoftHevcEnc.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 749,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-07-15T22:26:33Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3468e1dc_7daccc49",
+      "range": {
+        "startLine": 749,
+        "startChar": 16,
+        "endLine": 749,
+        "endChar": 27
+      },
+      "revId": "dca7fa371ef05f79efe7f87d69f416288c46d120",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
