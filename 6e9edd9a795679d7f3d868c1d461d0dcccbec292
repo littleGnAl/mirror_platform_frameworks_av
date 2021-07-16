@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "a00e8d97_4871c0d4",
+        "filename": "media/libstagefright/rtsp/ARTPSource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1488927
+      },
+      "writtenOn": "2021-07-16T08:29:14Z",
+      "side": 1,
+      "message": "Sorry for an incomplete commit.\nI updated it as you suggested.",
+      "parentUuid": "a1573871_afd8654f",
+      "range": {
+        "startLine": 169,
+        "startChar": 42,
+        "endLine": 169,
+        "endChar": 52
+      },
+      "revId": "6e9edd9a795679d7f3d868c1d461d0dcccbec292",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "834e6f68_6dbbe38c",
         "filename": "media/libstagefright/rtsp/MyHandler.h",
         "patchSetId": 1
