@@ -22,6 +22,30 @@
       },
       "revId": "9a881664ac0a542dc1317510b82daf899f47ea74",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67e90884_1dbb010a",
+        "filename": "media/libstagefright/rtsp/MyHandler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1488927
+      },
+      "writtenOn": "2021-07-16T08:26:38Z",
+      "side": 1,
+      "message": "Dear Lajos.\n\nThanks for kind review.\n\nI have updated a logic to apply separate limits.",
+      "parentUuid": "cff892f7_ee665581",
+      "range": {
+        "startLine": 77,
+        "startChar": 15,
+        "endLine": 77,
+        "endChar": 42
+      },
+      "revId": "9a881664ac0a542dc1317510b82daf899f47ea74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
