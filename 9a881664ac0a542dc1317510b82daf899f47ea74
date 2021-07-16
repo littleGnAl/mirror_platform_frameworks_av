@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cff892f7_ee665581",
+        "filename": "media/libstagefright/rtsp/MyHandler.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-07-16T05:03:46Z",
+      "side": 1,
+      "message": "this seems to adjust it for both video and audio. Should we use two separate limits depending on whether it is an audio or video stream?",
+      "range": {
+        "startLine": 77,
+        "startChar": 15,
+        "endLine": 77,
+        "endChar": 42
+      },
+      "revId": "9a881664ac0a542dc1317510b82daf899f47ea74",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
