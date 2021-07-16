@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da2fd34b_f002e338",
+        "filename": "services/mediametrics/TransactionLog.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 161,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-07-16T18:30:52Z",
+      "side": 1,
+      "message": "either this or put lines 146-148 in braced block.  slight preference for the latter, but up to you.",
+      "range": {
+        "startLine": 161,
+        "startChar": 0,
+        "endLine": 161,
+        "endChar": 26
+      },
+      "revId": "d2d7433af55c0b7df12ca65c387ab84f91ee22a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
