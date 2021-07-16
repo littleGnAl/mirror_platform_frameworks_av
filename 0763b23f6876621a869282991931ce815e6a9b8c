@@ -16,6 +16,24 @@
       "message": "is this cherry picking what is in sc-dev so that aosp/master aligns with that?",
       "revId": "0763b23f6876621a869282991931ce815e6a9b8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "948361f0_949078fc",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-07-16T19:13:59Z",
+      "side": 1,
+      "message": "Ray,\nThis is a new change. This handles a case where min qp passed is greater than max and also brings avc in sync with hevc changes.\n\nCherry-pick CL is at https://android-review.googlesource.com/c/platform/frameworks/av/+/1763068.",
+      "parentUuid": "93703159_c9853059",
+      "revId": "0763b23f6876621a869282991931ce815e6a9b8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
