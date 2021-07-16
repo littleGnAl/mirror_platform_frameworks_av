@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "14f16c32_c6f46c0a",
+        "filename": "media/libstagefright/httplive/fuzzer/corpus/hls.m3u8",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-07-16T03:27:50Z",
+      "side": 1,
+      "message": "then let\u0027s make that clear.\neither comments in this file (I think that we can add comments, but don\u0027t\nremember my m3u8 syntax that well)\nor we change the URLs that we\u0027re using---\n\nhttps://non.existentsite.com/test-doesnt-dereference-these-paths/fileSequence1.ts",
+      "parentUuid": "b4338241_0ea66753",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 93
+      },
+      "revId": "abf894f36c578401dd2034fac401b670d4cf1733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d9d7b2a4_ab7be905",
         "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
         "patchSetId": 2
