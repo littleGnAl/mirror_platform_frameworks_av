@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2e4d8b4_09964947",
+        "filename": "media/libstagefright/httplive/fuzzer/corpus/hls.m3u8",
+        "patchSetId": 2
+      },
+      "lineNbr": 5,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2021-07-18T16:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "14f16c32_c6f46c0a",
+      "range": {
+        "startLine": 5,
+        "startChar": 1,
+        "endLine": 5,
+        "endChar": 93
+      },
+      "revId": "abf894f36c578401dd2034fac401b670d4cf1733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d9d7b2a4_ab7be905",
@@ -85,6 +109,30 @@
       "writtenOn": "2021-07-08T14:41:30Z",
       "side": 1,
       "message": "\u003cfuzzer/FuzzedDataProvider.h\u003e since it comes from outside of this project.",
+      "range": {
+        "startLine": 17,
+        "startChar": 9,
+        "endLine": 17,
+        "endChar": 38
+      },
+      "revId": "abf894f36c578401dd2034fac401b670d4cf1733",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c98cea50_2581d13e",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2021-07-18T16:51:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d9d7b2a4_ab7be905",
       "range": {
         "startLine": 17,
         "startChar": 9,
