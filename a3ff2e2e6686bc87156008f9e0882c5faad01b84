@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8960ed97_be6b2d9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-07-19T20:26:41Z",
+      "side": 1,
+      "message": "Thanks.",
+      "revId": "a3ff2e2e6686bc87156008f9e0882c5faad01b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8c385f0a_31be1a66",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2858,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-07-19T20:26:41Z",
+      "side": 1,
+      "message": "style: we normally list each variable declaration on its own line.",
+      "range": {
+        "startLine": 2857,
+        "startChar": 4,
+        "endLine": 2858,
+        "endChar": 40
+      },
+      "revId": "a3ff2e2e6686bc87156008f9e0882c5faad01b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8338798a_8fecea44",
+        "filename": "media/libstagefright/rtsp/ARTPSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-07-19T20:26:41Z",
+      "side": 1,
+      "message": "can we add a comment here? Is this averaging per spec, or is it a decision by this implementation?",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 24
+      },
+      "revId": "a3ff2e2e6686bc87156008f9e0882c5faad01b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
