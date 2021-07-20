@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c343e2b_e6ea9c75",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1488927
+      },
+      "writtenOn": "2021-07-20T08:26:21Z",
+      "side": 1,
+      "message": "Thanks for review.\nIt seems mLastNTPTime doesn\u0027t need to be a member variable.\nI have replaced it to local variable.",
+      "parentUuid": "bef535c4_901909d8",
+      "range": {
+        "startLine": 649,
+        "startChar": 4,
+        "endLine": 649,
+        "endChar": 16
+      },
+      "revId": "f8cc6f7a88008e1b322ea002fb0b1d9130933975",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a067305d_a18353de",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-07-19T20:21:25Z",
       "side": 1,
       "message": "e.g. in this method mRTPTime is updated based on timebase, not directly from GetNowUs()... this makes the updating above confusing. Perhaps a comment here as to why the two time bases are equivalent.",
+      "range": {
+        "startLine": 1174,
+        "startChar": 13,
+        "endLine": 1174,
+        "endChar": 20
+      },
+      "revId": "f8cc6f7a88008e1b322ea002fb0b1d9130933975",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "04c1136c_6126aa1a",
+        "filename": "media/libstagefright/rtsp/ARTPWriter.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1174,
+      "author": {
+        "id": 1488927
+      },
+      "writtenOn": "2021-07-20T08:26:21Z",
+      "side": 1,
+      "message": "Thanks for review.\n\nI have updated a comment to describe a logic to get a rtp timestamp from kKeyTime of ABuffer",
+      "parentUuid": "a067305d_a18353de",
       "range": {
         "startLine": 1174,
         "startChar": 13,
