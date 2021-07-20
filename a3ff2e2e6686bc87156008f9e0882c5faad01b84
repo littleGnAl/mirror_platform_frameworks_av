@@ -62,6 +62,30 @@
       },
       "revId": "a3ff2e2e6686bc87156008f9e0882c5faad01b84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "800f5541_497d49f2",
+        "filename": "media/libstagefright/rtsp/ARTPSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1488927
+      },
+      "writtenOn": "2021-07-20T10:34:37Z",
+      "side": 1,
+      "message": "Thanks for review.\n\nI have update some comments to describe the variable\n\nand. the an idea of avg calculation formal is come from a way to measure \u0027interarrival jitter\u0027 of rfc3500.\n\nBut this variable is not belong to any spec..\nIt will to be referred for an A/V sync and a checking delay.",
+      "parentUuid": "8338798a_8fecea44",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 24
+      },
+      "revId": "a3ff2e2e6686bc87156008f9e0882c5faad01b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
