@@ -86,6 +86,30 @@
       },
       "revId": "a3ff2e2e6686bc87156008f9e0882c5faad01b84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83857874_9977b4f9",
+        "filename": "media/libstagefright/rtsp/ARTPSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 187,
+      "author": {
+        "id": 1488927
+      },
+      "writtenOn": "2021-07-20T10:37:20Z",
+      "side": 1,
+      "message": "i decided this formal because i worried overflow case when we keep a total of rtprtcpgap to calculate average.",
+      "parentUuid": "800f5541_497d49f2",
+      "range": {
+        "startLine": 187,
+        "startChar": 8,
+        "endLine": 187,
+        "endChar": 24
+      },
+      "revId": "a3ff2e2e6686bc87156008f9e0882c5faad01b84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
