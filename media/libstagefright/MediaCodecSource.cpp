@@ -944,7 +944,7 @@ void MediaCodecSource::onMessageReceived(const sp<AMessage> &msg) {
             sp<MediaCodecBuffer> outbuf;
             status_t err = mEncoder->getOutputBuffer(index, &outbuf);
             if (err != OK || outbuf == NULL || outbuf->data() == NULL
-                || outbuf->size() == 0) {
+                || (outbuf->size() == 0 && (flags & MediaCodec::BUFFER_FLAG_CODECCONFIG) == 0)) {
                 signalEOS();
                 break;
             }
