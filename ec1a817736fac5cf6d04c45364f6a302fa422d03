@@ -16,6 +16,24 @@
       "message": "Ray,\nOther option is to relase the buffer and continue without signalling EOS()\nif (err !\u003d OK || outbuf \u003d\u003d NULL || outbuf-\u003edata() \u003d\u003d NULL\n                || outbuf-\u003esize() \u003d\u003d 0) {\n   if (outbuf-\u003esize() \u003d\u003d 0 \u0026\u0026 (flags \u0026 MediaCodec::BUFFER_FLAG_CODECCONFIG) \u003d\u003d 0)){\n       mEncoder-\u003ereleaseOutputBuffer(index);\n       break;\n    }\n}\n\nplease let me know if this is preferred.",
       "revId": "ec1a817736fac5cf6d04c45364f6a302fa422d03",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c2ffddc_d6ffc285",
+        "filename": "media/libstagefright/MediaCodecSource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 947,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-07-21T00:00:13Z",
+      "side": 1,
+      "message": "above condition should be\nif (outbuf-\u003esize() \u003d\u003d 0 \u0026\u0026 (flags \u0026 MediaCodec::BUFFER_FLAG_CODECCONFIG)){\n\nCL below is the other implementation\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1773665",
+      "parentUuid": "27cebdc1_f8f323ae",
+      "revId": "ec1a817736fac5cf6d04c45364f6a302fa422d03",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
