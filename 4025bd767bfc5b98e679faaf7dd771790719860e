@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d5e6aef1_58044eee",
+        "filename": "media/libstagefright/MediaCodecSource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-07-21T03:45:01Z",
+      "side": 1,
+      "message": "Handled in patchset 2.",
+      "parentUuid": "edcf0f28_34adb5a8",
+      "range": {
+        "startLine": 948,
+        "startChar": 20,
+        "endLine": 948,
+        "endChar": 26
+      },
+      "revId": "4025bd767bfc5b98e679faaf7dd771790719860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "729da1c1_db60f017",
@@ -90,6 +114,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c6713970_d7fb5141",
+        "filename": "media/libstagefright/MediaCodecSource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-07-21T03:45:01Z",
+      "side": 1,
+      "message": "Changed the checks to handle size() \u003d\u003d 0 case separately.",
+      "parentUuid": "81427c90_60519dde",
+      "range": {
+        "startLine": 952,
+        "startChar": 12,
+        "endLine": 952,
+        "endChar": 17
+      },
+      "revId": "4025bd767bfc5b98e679faaf7dd771790719860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "403cd16f_72eb2b4f",
         "filename": "media/libstagefright/MediaCodecSource.cpp",
         "patchSetId": 1
@@ -101,6 +149,30 @@
       "writtenOn": "2021-07-21T00:42:53Z",
       "side": 1,
       "message": "as this CL is written, this gets skipped for a non-data CONFIG buffer.\n\ndon\u0027t we need these operations to happen?",
+      "range": {
+        "startLine": 1003,
+        "startChar": 11,
+        "endLine": 1006,
+        "endChar": 0
+      },
+      "revId": "4025bd767bfc5b98e679faaf7dd771790719860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "53315788_af134b79",
+        "filename": "media/libstagefright/MediaCodecSource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-07-21T03:45:01Z",
+      "side": 1,
+      "message": "This is needed only when there is a valid CSD.\nFor zero byte CSD, mbuf will not be allocated as per the updated changes.",
+      "parentUuid": "403cd16f_72eb2b4f",
       "range": {
         "startLine": 1003,
         "startChar": 11,
