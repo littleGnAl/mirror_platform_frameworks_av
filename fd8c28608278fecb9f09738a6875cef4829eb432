@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "284854c1_d096596f",
+        "filename": "services/audiopolicy/config/bluetooth_audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1087037
+      },
+      "writtenOn": "2021-07-21T16:22:04Z",
+      "side": 1,
+      "message": "put that one line below, to keep the \"Out\" devices definitoin together.",
+      "range": {
+        "startLine": 51,
+        "startChar": 8,
+        "endLine": 51,
+        "endChar": 95
+      },
+      "revId": "fd8c28608278fecb9f09738a6875cef4829eb432",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "9b2c8505_a1d828c9",
         "filename": "services/audiopolicy/config/le_audio_policy_configuration.xml",
         "patchSetId": 1
@@ -19,6 +42,29 @@
         "startChar": 49,
         "endLine": 13,
         "endChar": 52
+      },
+      "revId": "fd8c28608278fecb9f09738a6875cef4829eb432",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a651312_5c25294a",
+        "filename": "services/audiopolicy/config/le_audio_policy_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1087037
+      },
+      "writtenOn": "2021-07-21T16:22:04Z",
+      "side": 1,
+      "message": "I fought that Headset is the device that have both in and out, speaker is just output. Is that typo ?",
+      "range": {
+        "startLine": 19,
+        "startChar": 71,
+        "endLine": 19,
+        "endChar": 78
       },
       "revId": "fd8c28608278fecb9f09738a6875cef4829eb432",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
