@@ -49,7 +49,7 @@
         -->
         <devicePort tagName="BLE Headset Out" type="AUDIO_DEVICE_OUT_BLE_HEADSET" role="sink"/>
         <devicePort tagName="BLE Headset In" type="AUDIO_DEVICE_IN_BLE_HEADSET" role="source"/>
-        <devicePort tagName="BLE Speaker Out" type="AUDIO_DEVICE_OUT_BLE_SPEAKER" role="sink"/>
+        <devicePort tagName="BLE Speaker Out" type="AUDIO_DEVICE_IN_BLE_SPEAKER" role="sink"/>
     </devicePorts>
     <routes>
         <route type="mix" sink="BT A2DP Out"
