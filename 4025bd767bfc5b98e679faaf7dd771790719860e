@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "81427c90_60519dde",
+        "filename": "media/libstagefright/MediaCodecSource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-07-21T01:20:13Z",
+      "side": 1,
+      "message": "Yes, this is getting complicated,\nI think at this point, it is better to just ensure h263 doesn\u0027t send a 0 byte CSD.\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1773666",
+      "parentUuid": "729da1c1_db60f017",
+      "range": {
+        "startLine": 952,
+        "startChar": 12,
+        "endLine": 952,
+        "endChar": 17
+      },
+      "revId": "4025bd767bfc5b98e679faaf7dd771790719860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "403cd16f_72eb2b4f",
         "filename": "media/libstagefright/MediaCodecSource.cpp",
         "patchSetId": 1
