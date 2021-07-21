@@ -320,6 +320,13 @@ c2_status_t C2SoftMP3::drain(
     return C2_OK;
 }
 
+static void fillEmptyWork(const std::unique_ptr<C2Work> &work) {
+    work->worklets.front()->output.flags = work->input.flags;
+    work->worklets.front()->output.buffers.clear();
+    work->worklets.front()->output.ordinal = work->input.ordinal;
+    work->workletsProcessed = 1u;
+}
+
 // TODO: Can overall error checking be improved? As in the check for validity of
 //       work, pool ptr, work->input.buffers.size() == 1, ...
 // TODO: Blind removal of 529 samples from the output may not work. Because
@@ -485,17 +492,17 @@ void C2SoftMP3::process(
         }
     }
 
-    uint64_t outTimeStamp = mProcessedSamples * 1000000ll / samplingRate;
-    mProcessedSamples += ((outSize - outOffset) / (numChannels * sizeof(int16_t)));
-    ALOGV("out buffer attr. offset %d size %d timestamp %u", outOffset, outSize - outOffset,
-          (uint32_t)(mAnchorTimeStamp + outTimeStamp));
-    decodedSizes.clear();
-    work->worklets.front()->output.flags = work->input.flags;
-    work->worklets.front()->output.buffers.clear();
-    work->worklets.front()->output.buffers.push_back(
-            createLinearBuffer(block, outOffset, outSize - outOffset));
-    work->worklets.front()->output.ordinal = work->input.ordinal;
-    work->worklets.front()->output.ordinal.timestamp = mAnchorTimeStamp + outTimeStamp;
+    fillEmptyWork(work);
+    if (samplingRate > 0) {
+        uint64_t outTimeStamp = mProcessedSamples * 1000000ll / samplingRate;
+        mProcessedSamples += ((outSize - outOffset) / (numChannels * sizeof(int16_t)));
+        ALOGV("out buffer attr. offset %d size %d timestamp %u", outOffset, outSize - outOffset,
+            (uint32_t)(mAnchorTimeStamp + outTimeStamp));
+        decodedSizes.clear();
+        work->worklets.front()->output.buffers.push_back(
+                createLinearBuffer(block, outOffset, outSize - outOffset));
+        work->worklets.front()->output.ordinal.timestamp = mAnchorTimeStamp + outTimeStamp;
+    }
     if (eos) {
         mSignalledOutputEos = true;
         ALOGV("signalled EOS");
