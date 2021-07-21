@@ -517,8 +517,9 @@ sp<DeviceDescriptor> Engine::getDeviceForInputSource(audio_source_t inputSource)
             break;
         default:    // FORCE_NONE
             device = availableDevices.getFirstExistingDevice({
-                    AUDIO_DEVICE_IN_WIRED_HEADSET, AUDIO_DEVICE_IN_USB_HEADSET,
-                    AUDIO_DEVICE_IN_USB_DEVICE, AUDIO_DEVICE_IN_BLUETOOTH_BLE,
+                    AUDIO_DEVICE_IN_BLE_HEADSET, AUDIO_DEVICE_IN_WIRED_HEADSET,
+                    AUDIO_DEVICE_IN_USB_HEADSET, AUDIO_DEVICE_IN_USB_DEVICE,
+                    AUDIO_DEVICE_IN_BLUETOOTH_BLE,
                     AUDIO_DEVICE_IN_BUILTIN_MIC});
             break;
 
