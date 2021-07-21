@@ -16,6 +16,75 @@
       "message": "Alternate implementation of https://android-review.googlesource.com/c/platform/frameworks/av/+/1773645\n\nOnly one of these two is to be merged.",
       "revId": "4025bd767bfc5b98e679faaf7dd771790719860e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "edcf0f28_34adb5a8",
+        "filename": "media/libstagefright/MediaCodecSource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 948,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-07-21T00:42:53Z",
+      "side": 1,
+      "message": "outbuf can be null.",
+      "range": {
+        "startLine": 948,
+        "startChar": 20,
+        "endLine": 948,
+        "endChar": 26
+      },
+      "revId": "4025bd767bfc5b98e679faaf7dd771790719860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "729da1c1_db60f017",
+        "filename": "media/libstagefright/MediaCodecSource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-07-21T00:42:53Z",
+      "side": 1,
+      "message": "this entire block seems filled with very complicated conditions...\na structure that seems easier to read is (although Im not sure I have the\nsemantics exactly correct here...)\n\nbool isEmpty \u003d (outbuf\u003d\u003dnull || outbuf-\u003edata()\u003d\u003dnull || outbuf-\u003esize() \u003d\u003d 0);\n\nif (err !\u003d OK) {\n   signalEOS() ; break;\n}\nif (isEmpty \u0026\u0026 flag\u0026CODECCONFIG) { ... whatever needs doing}\nif (isEmpty) { sounds like you want to signal EOS(); break;}",
+      "range": {
+        "startLine": 952,
+        "startChar": 12,
+        "endLine": 952,
+        "endChar": 17
+      },
+      "revId": "4025bd767bfc5b98e679faaf7dd771790719860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "403cd16f_72eb2b4f",
+        "filename": "media/libstagefright/MediaCodecSource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-07-21T00:42:53Z",
+      "side": 1,
+      "message": "as this CL is written, this gets skipped for a non-data CONFIG buffer.\n\ndon\u0027t we need these operations to happen?",
+      "range": {
+        "startLine": 1003,
+        "startChar": 11,
+        "endLine": 1006,
+        "endChar": 0
+      },
+      "revId": "4025bd767bfc5b98e679faaf7dd771790719860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
