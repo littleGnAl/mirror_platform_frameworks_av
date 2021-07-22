@@ -28,11 +28,6 @@ package {
 
 cc_defaults {
     name: "extractor-fuzzerbase-defaults",
-
-    local_include_dirs: [
-        "include",
-    ],
-
     export_include_dirs: [
         "include",
     ],
