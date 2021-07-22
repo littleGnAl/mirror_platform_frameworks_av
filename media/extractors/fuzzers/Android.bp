@@ -29,8 +29,8 @@ package {
 cc_defaults {
     name: "extractor-fuzzerbase-defaults",
 
-    local_include_dirs: [
-        "include",
+    include_dirs: [
+        "frameworks/av/media/extractors/fuzzers/include",
     ],
 
     export_include_dirs: [
