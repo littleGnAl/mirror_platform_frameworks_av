@@ -33,6 +33,24 @@
       "message": "Looking at the logs in the bug,\nit looks weird that output_present is not getting set to 1.\nAlso the delay seems to have changed to 16, which is too large.\n\nLooks like encoder is producing a bitstream which doesn\u0027t have num_reorder_frames information in VUI and has set a level which is more than what is required for the given resolution and bitrate. Setting an appropriate level or signalling VUI will reduce the delay.\n\nIs it possible to dump the output from the encoder (i.e. input to the decoder), so that I can take a look at why this continue is needed? Also enable logs in C2SoftAvcDec.cpp using #define LOG_NDEBUG 0\n\nRecently in hevc decoder plugin, we had removed the continue to fix another error.\nSo before bringing back the continue again, we would need to investigate this a bit more.",
       "revId": "e376938dee954a3eabf515d7d14fecd174d20c3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15588d7a_b1c6406c",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 927,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2021-07-23T01:11:43Z",
+      "side": 1,
+      "message": "we run cts testcase (VideoEncoderDecoderTest#testAvcOther0Qual0720x0480) to capture HW AVC encoder output (file:venc_dump.264) and open logs in C2SoftAvcDec.cpp.\nDetail please check https://partnerissuetracker.corp.google.com/issues/191728808\ncomment #5. Thank you.",
+      "parentUuid": "00fccee6_e6f35264",
+      "revId": "e376938dee954a3eabf515d7d14fecd174d20c3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
