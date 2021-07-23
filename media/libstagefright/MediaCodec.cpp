@@ -4069,6 +4069,12 @@ status_t MediaCodec::onQueueInputBuffer(const sp<AMessage> &msg) {
     CHECK(msg->findSize("index", &index));
     CHECK(msg->findInt64("timeUs", &timeUs));
     CHECK(msg->findInt32("flags", (int32_t *)&flags));
+
+    if (timeUs < 0) {
+        ALOGW("%s,timeUs:%lld is invalid, changed to 0!", __func__, (long long)timeUs);
+        timeUs = 0;
+    }
+
     std::shared_ptr<C2Buffer> c2Buffer;
     sp<hardware::HidlMemory> memory;
     sp<RefBase> obj;
