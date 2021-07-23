@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0d536ba9_ff428fb2",
+        "filename": "media/extractors/fuzzers/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-23T16:48:33Z",
+      "side": 1,
+      "message": "An alternate solution would be to create a cc_library_headers here that exports the include directory and then reference it from the defaults with header_libs and export_header_lib_headers",
+      "revId": "c71e911b89b78cdf807fe438762e11029b92cc62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e62a2ac_218b25e4",
+        "filename": "media/extractors/fuzzers/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-07-23T16:48:33Z",
+      "side": 1,
+      "message": "This line may also be a problem",
+      "revId": "c71e911b89b78cdf807fe438762e11029b92cc62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
