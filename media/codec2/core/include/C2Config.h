@@ -1902,7 +1902,7 @@ C2ENUM(C2Config::tiling_mode_t, uint32_t,
     TILING_CONCATENATE  ///< output one work completion per frame (concatenate tiles)
 )
 
-typedef C2StreamParam<C2Tuning, C2TileLayoutStruct, kParamIndexTileHandling>
+typedef C2StreamParam<C2Tuning, C2SimpleValueStruct<C2Config::tiling_mode_t>, kParamIndexTileHandling>
         C2StreamTileHandlingTuning;
 constexpr char C2_PARAMKEY_TILE_HANDLING[] = "coding.tile-handling";
 
