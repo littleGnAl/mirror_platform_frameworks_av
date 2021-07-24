@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6e1d9d0_6e31e11a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-07-24T01:27:08Z",
+      "side": 1,
+      "message": "i\u0027m just going to go ahead and say hard no to an absolute path. reasons below.",
+      "revId": "c71e911b89b78cdf807fe438762e11029b92cc62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d536ba9_ff428fb2",
@@ -14,6 +31,24 @@
       "writtenOn": "2021-07-23T16:48:33Z",
       "side": 1,
       "message": "An alternate solution would be to create a cc_library_headers here that exports the include directory and then reference it from the defaults with header_libs and export_header_lib_headers",
+      "revId": "c71e911b89b78cdf807fe438762e11029b92cc62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40b0825c_2a55fc5d",
+        "filename": "media/extractors/fuzzers/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-07-24T01:27:08Z",
+      "side": 1,
+      "message": "agree with Colin\u0027s assessment on the way forward.\n\ni intend to be pretty hard on including absolute paths within the media source because I\u0027m contemplating some rearrangements -- which will break those.",
+      "parentUuid": "0d536ba9_ff428fb2",
       "revId": "c71e911b89b78cdf807fe438762e11029b92cc62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
