@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d3a97b9e_41109e52",
+        "filename": "services/audiopolicy/config/bluetooth_audio_policy_configuration.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 66,
+      "author": {
+        "id": 1687135
+      },
+      "writtenOn": "2021-07-26T10:50:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4643beee_2bf997bf",
+      "range": {
+        "startLine": 65,
+        "startChar": 0,
+        "endLine": 66,
+        "endChar": 41
+      },
+      "revId": "b5b7dc661d872be21986a60ee25340882d44ade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "35c55348_c54eb612",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "708e50b6_4577d2c9",
+        "filename": "services/audiopolicy/config/le_audio_policy_configuration.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1687135
+      },
+      "writtenOn": "2021-07-26T10:50:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "35c55348_c54eb612",
+      "range": {
+        "startLine": 19,
+        "startChar": 33,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "b5b7dc661d872be21986a60ee25340882d44ade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f6048bc_ad4ed5bb",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-07-26T09:39:25Z",
       "side": 1,
       "message": "\u003croute type\u003d\"mix\" sink\u003d\"le audio input\" sources\u003d\"BLE Headset In\"/\u003e",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 24,
+        "endChar": 74
+      },
+      "revId": "b5b7dc661d872be21986a60ee25340882d44ade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b3165d08_1f8e849d",
+        "filename": "services/audiopolicy/config/le_audio_policy_configuration.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 24,
+      "author": {
+        "id": 1687135
+      },
+      "writtenOn": "2021-07-26T10:50:31Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f6048bc_ad4ed5bb",
       "range": {
         "startLine": 24,
         "startChar": 0,
