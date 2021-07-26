@@ -97,6 +97,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60d1dbf9_9750cf1a",
+        "filename": "services/audiopolicy/config/le_audio_policy_configuration.xml",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1087037
+      },
+      "writtenOn": "2021-07-26T11:29:50Z",
+      "side": 1,
+      "message": "Still not done, check the tagName value",
+      "parentUuid": "708e50b6_4577d2c9",
+      "range": {
+        "startLine": 19,
+        "startChar": 33,
+        "endLine": 19,
+        "endChar": 40
+      },
+      "revId": "b5b7dc661d872be21986a60ee25340882d44ade4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8f6048bc_ad4ed5bb",
         "filename": "services/audiopolicy/config/le_audio_policy_configuration.xml",
         "patchSetId": 3
