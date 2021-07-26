@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000013824150",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1772635?revision\u003d6",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "0fce0807_7ffa1ba6",
+        "filename": "services/audiopolicy/config/le_audio_policy_configuration.xml",
+        "patchSetId": 6
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-07-26T11:36:45Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 109
+      },
+      "revId": "f5648a1b5cb70a0f93e8defea5400070217465b6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
