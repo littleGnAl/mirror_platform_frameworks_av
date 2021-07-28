@@ -261,6 +261,7 @@ void Codec2Fuzzer::decodeFrames(const uint8_t* data, size_t size) {
         work.swap(mWorkQueue.front());
         mWorkQueue.pop_front();
       } else {
+        delete mBufferSource;
         return;
       }
     }
@@ -275,11 +276,13 @@ void Codec2Fuzzer::decodeFrames(const uint8_t* data, size_t size) {
     status = mLinearPool->fetchLinearBlock(
         alignedSize, {C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE}, &block);
     if (status != C2_OK || block == nullptr) {
+      delete mBufferSource;
       return;
     }
 
     C2WriteView view = block->map().get();
     if (view.error() != C2_OK) {
+      delete mBufferSource;
       return;
     }
     memcpy(view.base(), frame, frameSize);
@@ -291,6 +294,7 @@ void Codec2Fuzzer::decodeFrames(const uint8_t* data, size_t size) {
     items.push_back(std::move(work));
     status = mComponent->queue_nb(&items);
     if (status != C2_OK) {
+      delete mBufferSource;
       return;
     }
   }
