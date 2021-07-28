@@ -270,6 +270,7 @@ bool setupConfigParam(const std::shared_ptr<android::Codec2Client::Component>& c
 // information and reconfigure
 void getInputChannelInfo(const std::shared_ptr<android::Codec2Client::Component>& component,
                          std::string mime, int32_t* bitStreamInfo) {
+    (void)mime;
     // query nSampleRate and nChannels
     std::initializer_list<C2Param::Index> indices{
             C2StreamSampleRateInfo::output::PARAM_TYPE,
@@ -285,15 +286,6 @@ void getInputChannelInfo(const std::shared_ptr<android::Codec2Client::Component>
         for (size_t i = 0; i < inParams.size(); ++i) {
             C2Param* param = inParams[i].get();
             bitStreamInfo[i] = *(int32_t*)((uint8_t*)param + offset);
-        }
-        if (mime.find("3gpp") != std::string::npos) {
-            ASSERT_EQ(bitStreamInfo[0], 8000);
-            ASSERT_EQ(bitStreamInfo[1], 1);
-        } else if (mime.find("amr-wb") != std::string::npos) {
-            ASSERT_EQ(bitStreamInfo[0], 16000);
-            ASSERT_EQ(bitStreamInfo[1], 1);
-        } else if (mime.find("gsm") != std::string::npos) {
-            ASSERT_EQ(bitStreamInfo[0], 8000);
         }
     }
 }
