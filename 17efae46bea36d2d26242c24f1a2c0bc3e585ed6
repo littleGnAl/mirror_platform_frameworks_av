@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000013989838",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1782529?revision\u003d4",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "083addbf_1dbb15f9",
+        "filename": "services/audiopolicy/engine/common/src/EngineDefaultConfig.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-07-30T09:54:17Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 33,
+        "startChar": 0,
+        "endLine": 33,
+        "endChar": 104
+      },
+      "revId": "17efae46bea36d2d26242c24f1a2c0bc3e585ed6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000013989838",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1782529?revision\u003d4",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "2069e3e4_64212763",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 5269,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-07-30T09:54:17Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 5269,
+        "startChar": 72,
+        "endLine": 5269,
+        "endChar": 73
+      },
+      "revId": "17efae46bea36d2d26242c24f1a2c0bc3e585ed6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
