@@ -2079,7 +2079,7 @@ status_t AudioPolicyManager::getInputForAttr(const audio_attributes_t *attr,
     }
 
     // Explicit routing?
-    sp<DeviceDescriptor> explicitRoutingDevice = 
+    sp<DeviceDescriptor> explicitRoutingDevice =
             mAvailableInputDevices.getDeviceFromId(*selectedDeviceId);
 
     // special case for mmap capture: if an input IO handle is specified, we reuse this input if
@@ -2261,7 +2261,7 @@ audio_io_handle_t AudioPolicyManager::getInputForDevice(const sp<DeviceDescripto
             profileFlags = AUDIO_INPUT_FLAG_NONE; // retry
         } else { // fail
             ALOGW("%s could not find profile for device %s, sampling rate %u, format %#x, "
-                  "channel mask 0x%X, flags %#x", __func__, device->toString().c_str(), 
+                  "channel mask 0x%X, flags %#x", __func__, device->toString().c_str(),
                   config->sample_rate, config->format, config->channel_mask, flags);
             return input;
         }
@@ -5266,7 +5266,7 @@ status_t AudioPolicyManager::checkInputsForDevice(const sp<DeviceDescriptor>& de
             } // endif input != 0
 
             if (input == AUDIO_IO_HANDLE_NONE) {
-                ALOGW("%s could not open input for device %s", __func__,  
+                ALOGW("%s could not open input for device %s", __func__,
                        device->toString().c_str());
                 profiles.removeAt(profile_index);
                 profile_index--;
@@ -6541,6 +6541,9 @@ bool AudioPolicyManager::isValidAttributes(const audio_attributes_t *paa)
     case AUDIO_USAGE_SAFETY:
     case AUDIO_USAGE_VEHICLE_STATUS:
     case AUDIO_USAGE_ANNOUNCEMENT:
+    case AUDIO_USAGE_ENFORCED_AUDIBLE:
+    case AUDIO_USAGE_BLUETOOTH_SCO:
+    case AUDIO_USAGE_TTS:
         break;
     default:
         return false;
