@@ -5266,7 +5266,7 @@ status_t AudioPolicyManager::checkInputsForDevice(const sp<DeviceDescriptor>& de
             } // endif input != 0
 
             if (input == AUDIO_IO_HANDLE_NONE) {
-                ALOGW("%s could not open input for device %s", __func__,  
+                ALOGW("%s could not open input for device %s", __func__, 
                        device->toString().c_str());
                 profiles.removeAt(profile_index);
                 profile_index--;
@@ -6541,6 +6541,9 @@ bool AudioPolicyManager::isValidAttributes(const audio_attributes_t *paa)
     case AUDIO_USAGE_SAFETY:
     case AUDIO_USAGE_VEHICLE_STATUS:
     case AUDIO_USAGE_ANNOUNCEMENT:
+    case AUDIO_USAGE_ENFORCED_AUDIBLE:
+    case AUDIO_USAGE_BLUETOOTH_SCO:
+    case AUDIO_USAGE_TTS:
         break;
     default:
         return false;
