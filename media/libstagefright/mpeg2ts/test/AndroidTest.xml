@@ -15,9 +15,10 @@
 -->
 <configuration description="Test module config for Mpeg2ts unit tests">
     <option name="test-suite-tag" value="Mpeg2tsUnitTest" />
-    <target_preparer class="com.android.tradefed.targetprep.PushFilePreparer">
+    <target_preparer class="com.android.compatibility.common.tradefed.targetprep.FilePusher">
         <option name="cleanup" value="true" />
         <option name="push" value="Mpeg2tsUnitTest->/data/local/tmp/Mpeg2tsUnitTest" />
+        <option name="append-bitness" value="true" />
         <option name="push-file"
             key="https://storage.googleapis.com/android_media/frameworks/av/media/libstagefright/mpeg2ts/test/Mpeg2tsUnitTest.zip?unzip=true"
             value="/data/local/tmp/Mpeg2tsUnitTestRes/" />
