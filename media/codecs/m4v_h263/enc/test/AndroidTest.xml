@@ -15,9 +15,10 @@
 -->
 <configuration description="Test module config for MPEG4H263 encoder unit tests">
     <option name="test-suite-tag" value="Mpeg4H263EncoderTest" />
-    <target_preparer class="com.android.tradefed.targetprep.PushFilePreparer">
+    <target_preparer class="com.android.compatibility.common.tradefed.targetprep.FilePusher">
         <option name="cleanup" value="true" />
         <option name="push" value="Mpeg4H263EncoderTest->/data/local/tmp/Mpeg4H263EncoderTest/" />
+        <option name="append-bitness" value="true" />
         <option name="push-file"
             key="https://storage.googleapis.com/android_media/frameworks/av/media/libstagefright/codecs/m4v_h263/enc/test/Mpeg4H263Encoder.zip?unzip=true"
             value="/data/local/tmp/Mpeg4H263EncoderTestRes/" />
