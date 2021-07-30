@@ -6541,6 +6541,9 @@ bool AudioPolicyManager::isValidAttributes(const audio_attributes_t *paa)
     case AUDIO_USAGE_SAFETY:
     case AUDIO_USAGE_VEHICLE_STATUS:
     case AUDIO_USAGE_ANNOUNCEMENT:
+    case AUDIO_USAGE_ENFORCED_AUDIBLE:
+    case AUDIO_USAGE_BLUETOOTH_SCO:
+    case AUDIO_USAGE_TTS:
         break;
     default:
         return false;
