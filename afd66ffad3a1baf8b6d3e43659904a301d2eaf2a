@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f7a8f802_ecc71abf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2021-07-31T13:25:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0e0c9cfe_e12d261d",
+      "range": {
+        "startLine": 13,
+        "startChar": 0,
+        "endLine": 13,
+        "endChar": 37
+      },
+      "revId": "afd66ffad3a1baf8b6d3e43659904a301d2eaf2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "95e9bb47_0f2f4944",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-07-30T15:28:50Z",
       "side": 1,
       "message": "Remove topic branch on these two CLs for now..\nThat way, this CL can be merged before and the CL where we add this test to mts-media-test-lists.xml can have more tests enabled simultaneously.\n\ntest this CL alone with atest and verify it works fine.",
+      "revId": "afd66ffad3a1baf8b6d3e43659904a301d2eaf2a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad080d8a_8eebe3d6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2021-07-31T13:25:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "95e9bb47_0f2f4944",
       "revId": "afd66ffad3a1baf8b6d3e43659904a301d2eaf2a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
