@@ -464,7 +464,10 @@ bool HeifDecoderImpl::getEncodedColor(HeifEncodedColor* /*outColor*/) const {
 }
 
 bool HeifDecoderImpl::setOutputColor(HeifColorFormat heifColor) {
+#pragma GCC diagnostic push
+#pragma GCC diagnostic ignored "-Wenum-compare"
     if (heifColor == mOutputColor) {
+#pragma GCC diagnostic pop
         return true;
     }
 
