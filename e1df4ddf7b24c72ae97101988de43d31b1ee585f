@@ -1,0 +1,61 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e868b9b9_90dfe308",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-08-03T14:23:20Z",
+      "side": 1,
+      "message": "confirm if all of these tests pass.\nIn case there are any failing cases, before enabling them in MTS we will need to update the tests to add a TODO (b/) and disable them.",
+      "revId": "e1df4ddf7b24c72ae97101988de43d31b1ee585f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "149d6f0d_d2737748",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 4
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-08-03T14:23:20Z",
+      "side": 1,
+      "message": "since this isn\u0027t a codec, let us keep this in a separate CL that we created for extractors",
+      "range": {
+        "startLine": 27,
+        "startChar": 0,
+        "endLine": 28,
+        "endChar": 38
+      },
+      "revId": "e1df4ddf7b24c72ae97101988de43d31b1ee585f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "202dcd5f_10ce9876",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-08-03T14:23:20Z",
+      "side": 1,
+      "message": "Do not put them in a topic branch yet.\nWe will first land the changes in Android.bp and AndroidTest.xml and after that merge the mts change.\n\n\nRemove mpeg2ts changes from this CL.",
+      "revId": "e1df4ddf7b24c72ae97101988de43d31b1ee585f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
