@@ -61,6 +61,7 @@ class Codec2ComponentHidlTestBase : public ::testing::Test {
   public:
     virtual void SetUp() override {
         getParams();
+        mDisableTest = false;
         mEos = false;
         mClient = android::Codec2Client::CreateFromService(mInstanceName.c_str());
         ASSERT_NE(mClient, nullptr);
@@ -73,6 +74,15 @@ class Codec2ComponentHidlTestBase : public ::testing::Test {
         for (int i = 0; i < MAX_INPUT_BUFFERS; ++i) {
             mWorkQueue.emplace_back(new C2Work);
         }
+
+        C2SecureModeTuning secureModeTuning{};
+        mComponent->query({&secureModeTuning}, {}, C2_MAY_BLOCK, nullptr);
+        if (secureModeTuning.value == C2Config::SM_READ_PROTECTED ||
+            secureModeTuning.value == C2Config::SM_READ_PROTECTED_WITH_ENCRYPTED) {
+            mDisableTest = true;
+        }
+
+        if (mDisableTest) std::cout << "[   WARN   ] Test Disabled \n";
     }
 
     virtual void TearDown() override {
@@ -105,6 +115,7 @@ class Codec2ComponentHidlTestBase : public ::testing::Test {
     std::string mInstanceName;
     std::string mComponentName;
     bool mEos;
+    bool mDisableTest;
     std::mutex mQueueLock;
     std::condition_variable mQueueCondition;
     std::list<std::unique_ptr<C2Work>> mWorkQueue;
@@ -129,6 +140,7 @@ class Codec2ComponentHidlTest : public Codec2ComponentHidlTestBase,
 
 // Test Empty Flush
 TEST_P(Codec2ComponentHidlTest, EmptyFlush) {
+    if (mDisableTest) GTEST_SKIP() << "Test is disabled";
     ALOGV("Empty Flush Test");
     c2_status_t err = mComponent->start();
     ASSERT_EQ(err, C2_OK);
@@ -145,6 +157,7 @@ TEST_P(Codec2ComponentHidlTest, EmptyFlush) {
 
 // Test Queue Empty Work
 TEST_P(Codec2ComponentHidlTest, QueueEmptyWork) {
+    if (mDisableTest) GTEST_SKIP() << "Test is disabled";
     ALOGV("Queue Empty Work Test");
     c2_status_t err = mComponent->start();
     ASSERT_EQ(err, C2_OK);
@@ -159,6 +172,7 @@ TEST_P(Codec2ComponentHidlTest, QueueEmptyWork) {
 
 // Test Component Configuration
 TEST_P(Codec2ComponentHidlTest, Config) {
+    if (mDisableTest) GTEST_SKIP() << "Test is disabled";
     ALOGV("Configuration Test");
 
     C2String name = mComponent->getName();
@@ -188,6 +202,7 @@ TEST_P(Codec2ComponentHidlTest, Config) {
 
 // Test Multiple Start Stop Reset Test
 TEST_P(Codec2ComponentHidlTest, MultipleStartStopReset) {
+    if (mDisableTest) GTEST_SKIP() << "Test is disabled";
     ALOGV("Multiple Start Stop and Reset Test");
 
     for (size_t i = 0; i < MAX_RETRY; i++) {
@@ -210,6 +225,7 @@ TEST_P(Codec2ComponentHidlTest, MultipleStartStopReset) {
 
 // Test Component Release API
 TEST_P(Codec2ComponentHidlTest, MultipleRelease) {
+    if (mDisableTest) GTEST_SKIP() << "Test is disabled";
     ALOGV("Multiple Release Test");
     c2_status_t err = mComponent->start();
     ASSERT_EQ(err, C2_OK);
@@ -235,6 +251,7 @@ TEST_P(Codec2ComponentHidlTest, MultipleRelease) {
 
 // Test API's Timeout
 TEST_P(Codec2ComponentHidlTest, Timeout) {
+    if (mDisableTest) GTEST_SKIP() << "Test is disabled";
     ALOGV("Timeout Test");
     c2_status_t err = C2_OK;
 
@@ -324,6 +341,7 @@ class Codec2ComponentInputTests : public Codec2ComponentHidlTestBase,
 };
 
 TEST_P(Codec2ComponentInputTests, InputBufferTest) {
+    if (mDisableTest) GTEST_SKIP() << "Test is disabled";
     description("Tests for different inputs");
 
     uint32_t flags = std::get<2>(GetParam());
