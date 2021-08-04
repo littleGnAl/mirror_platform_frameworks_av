@@ -16,6 +16,29 @@
       "message": "With this cl the line coverage improves from 68.21% to 75.34%.",
       "revId": "532fa7d29a181368d468cc76605928d977020956",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d839c0b9_e9c5a0e3",
+        "filename": "services/mediacodec/registrant/fuzzer/codecServiceRegistrant_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-04T18:36:59Z",
+      "side": 1,
+      "message": "should we check that mH2C2-\u003egetParamReflector()\nreturns a non-null result before we invoke describe()?\n\notherwise, seems good to me.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 77
+      },
+      "revId": "532fa7d29a181368d468cc76605928d977020956",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
