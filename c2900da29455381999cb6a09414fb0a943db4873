@@ -16,6 +16,98 @@
       "message": "With this CL, line coverage improves from 53% to 60%.",
       "revId": "c2900da29455381999cb6a09414fb0a943db4873",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3277ba3b_0a576d0d",
+        "filename": "media/libstagefright/httplive/fuzzer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-04T18:51:53Z",
+      "side": 1,
+      "message": "probably \"libstagefright_headers\" instead of an absolute path.\n\nand that probably says this should be in the header_libs instead \nof here as include_dirs.",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 45
+      },
+      "revId": "c2900da29455381999cb6a09414fb0a943db4873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab5bb67c_1407f1ce",
+        "filename": "media/libstagefright/httplive/fuzzer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-04T18:51:53Z",
+      "side": 1,
+      "message": "these get downloaded automatically to /data/local/tmp/ as part of\nthe fuzzing process?",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "c2900da29455381999cb6a09414fb0a943db4873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3680a3cf_f2b0b2e4",
+        "filename": "media/libstagefright/httplive/fuzzer/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-04T18:51:53Z",
+      "side": 1,
+      "message": "there\u0027s a lot of potential for pushing other stuff to the device as part\nof this operation.\ncan we come up with some steps here such that the only thing sent to the\ndevice are the files needed for this test.",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 17
+      },
+      "revId": "c2900da29455381999cb6a09414fb0a943db4873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "789fdcdf_0ce9d220",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-04T18:51:53Z",
+      "side": 1,
+      "message": "i like a single routine\n\nstring currentFileName \u003d generateFileName()\nboth here and at line 228\n\nwhich does the kFileNamePrefix + getpid() + kFileNameSuffix work",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 62
+      },
+      "revId": "c2900da29455381999cb6a09414fb0a943db4873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
