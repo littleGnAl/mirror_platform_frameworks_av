@@ -34,6 +34,9 @@ sp<IBatteryStats> getBatteryService() {
     const sp<IServiceManager> sm(defaultServiceManager());
     if (sm != nullptr) {
         const String16 name("batterystats");
+        if (!sm->checkService(name)) {
+            return nullptr;
+        }
         batteryStatService = checked_interface_cast<IBatteryStats>(sm->checkService(name));
         if (batteryStatService == nullptr) {
             ALOGW("batterystats service unavailable!");
