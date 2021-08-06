@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "70628690_49032b22",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1889119
+      },
+      "writtenOn": "2021-08-06T06:03:26Z",
+      "side": 1,
+      "message": "Dear Colin and Ray, \nMay I know when you will complete 194478451 (which will use new solution about header_libs)?",
+      "revId": "c71e911b89b78cdf807fe438762e11029b92cc62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0d536ba9_ff428fb2",
         "filename": "media/extractors/fuzzers/Android.bp",
         "patchSetId": 2
@@ -49,6 +66,24 @@
       "side": 1,
       "message": "agree with Colin\u0027s assessment on the way forward.\n\ni intend to be pretty hard on including absolute paths within the media source because I\u0027m contemplating some rearrangements -- which will break those.",
       "parentUuid": "0d536ba9_ff428fb2",
+      "revId": "c71e911b89b78cdf807fe438762e11029b92cc62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "62264ff9_b50b7614",
+        "filename": "media/extractors/fuzzers/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1889119
+      },
+      "writtenOn": "2021-08-06T06:03:26Z",
+      "side": 1,
+      "message": "May I know when you will complete 194478451 (which will use new solution about header_libs)?",
+      "parentUuid": "40b0825c_2a55fc5d",
       "revId": "c71e911b89b78cdf807fe438762e11029b92cc62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
