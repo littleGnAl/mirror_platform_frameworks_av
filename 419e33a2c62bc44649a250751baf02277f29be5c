@@ -16,6 +16,24 @@
       "message": "what about this property halVersion\u003d\"2.0\" there is no input support in 2.0, it\u0027s introduced in 2.1",
       "revId": "419e33a2c62bc44649a250751baf02277f29be5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0fe33b89_07e2951c",
+        "filename": "services/audiopolicy/config/bluetooth_audio_policy_configuration_7_0.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 3,
+      "author": {
+        "id": 1087037
+      },
+      "writtenOn": "2021-08-06T14:11:18Z",
+      "side": 1,
+      "message": "Leaving it same as in services/audiopolicy/config/bluetooth_audio_policy_configuration.xml\n\nI believe it\u0027s not being checked anywhere.",
+      "parentUuid": "be5dbc21_ebe7120b",
+      "revId": "419e33a2c62bc44649a250751baf02277f29be5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
