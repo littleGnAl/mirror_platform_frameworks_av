@@ -87,6 +87,9 @@ void WriterFuzzerBase::BufferSource::getFrameInfo() {
                     flags = flagTypes[framePtr[0] % size(flagTypes)];
                     ++framePtr;
                     copy(framePtr, framePtr + sizeof(int64_t), reinterpret_cast<uint8_t *>(&pts));
+                    if (pts < 0) {
+                        pts = 0;
+                    }
                     framePtr += sizeof(int64_t);
                     bufferSize = frameSize - (sizeof(uint8_t) + sizeof(int64_t)) - 1;
                 } else {
