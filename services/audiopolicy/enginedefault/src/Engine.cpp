@@ -205,6 +205,8 @@ DeviceVector Engine::getDevicesForStrategyInt(legacy_strategy strategy,
                     primaryOutput->supportedDevices().types());
             availPrimaryOutputDevices.add(
                     availableOutputDevices.getDevicesFromType(AUDIO_DEVICE_OUT_HEARING_AID));
+            availPrimaryOutputDevices.add(
+                    availableOutputDevices.getDevicesFromType(AUDIO_DEVICE_OUT_BLE_HEADSET));
 
             if ((availableInputDevices.getDevice(AUDIO_DEVICE_IN_TELEPHONY_RX,
                                                  String8(""), AUDIO_FORMAT_DEFAULT) == nullptr) ||
