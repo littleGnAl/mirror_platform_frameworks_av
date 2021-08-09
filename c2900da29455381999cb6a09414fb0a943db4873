@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d9c5bec_91b2f9b9",
+        "filename": "media/libstagefright/httplive/fuzzer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2021-08-09T03:49:06Z",
+      "side": 1,
+      "message": "\"frameworks/av/media/libstagefright\" is used to refer to \u0027httplive/LiveDataSource.h\u0027 and \u0027httplive/LiveSession.h\u0027 from httplive_fuzzer.cpp. These are not part of \"libstagefright_headers\". Hence could you please let us know how to proceed ?",
+      "parentUuid": "3277ba3b_0a576d0d",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 45
+      },
+      "revId": "c2900da29455381999cb6a09414fb0a943db4873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab5bb67c_1407f1ce",
         "filename": "media/libstagefright/httplive/fuzzer/Android.bp",
         "patchSetId": 4
@@ -54,6 +78,30 @@
       "writtenOn": "2021-08-04T18:51:53Z",
       "side": 1,
       "message": "these get downloaded automatically to /data/local/tmp/ as part of\nthe fuzzing process?",
+      "range": {
+        "startLine": 48,
+        "startChar": 4,
+        "endLine": 49,
+        "endChar": 39
+      },
+      "revId": "c2900da29455381999cb6a09414fb0a943db4873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c36de0f4_c8caca3e",
+        "filename": "media/libstagefright/httplive/fuzzer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2021-08-09T03:49:06Z",
+      "side": 1,
+      "message": "the corpus/* and httplive_fuzzer.dict each gets copied to data/fuzz/arm64/httplive_fuzzer, the same directory where the fuzzer is present",
+      "parentUuid": "ab5bb67c_1407f1ce",
       "range": {
         "startLine": 48,
         "startChar": 4,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c77a96d2_8e495855",
+        "filename": "media/libstagefright/httplive/fuzzer/README.md",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2021-08-09T03:49:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3680a3cf_f2b0b2e4",
+      "range": {
+        "startLine": 49,
+        "startChar": 2,
+        "endLine": 49,
+        "endChar": 17
+      },
+      "revId": "c2900da29455381999cb6a09414fb0a943db4873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "789fdcdf_0ce9d220",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-08-04T18:51:53Z",
       "side": 1,
       "message": "i like a single routine\n\nstring currentFileName \u003d generateFileName()\nboth here and at line 228\n\nwhich does the kFileNamePrefix + getpid() + kFileNameSuffix work",
+      "range": {
+        "startLine": 157,
+        "startChar": 2,
+        "endLine": 158,
+        "endChar": 62
+      },
+      "revId": "c2900da29455381999cb6a09414fb0a943db4873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "536be3f4_5c2df276",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2021-08-09T03:49:06Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "789fdcdf_0ce9d220",
       "range": {
         "startLine": 157,
         "startChar": 2,
