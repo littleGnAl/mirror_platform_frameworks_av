@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "ac3ac637_abd9ba84",
+        "filename": "media/libstagefright/httplive/fuzzer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-09T16:37:53Z",
+      "side": 1,
+      "message": "let\u0027s update frameworks/av/media/libstagefright/httplive/Android.bp so that it exports its headers and then we use that definition from the fuzzer.",
+      "parentUuid": "0d9c5bec_91b2f9b9",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 39,
+        "endChar": 45
+      },
+      "revId": "c2900da29455381999cb6a09414fb0a943db4873",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "ab5bb67c_1407f1ce",
         "filename": "media/libstagefright/httplive/fuzzer/Android.bp",
         "patchSetId": 4
