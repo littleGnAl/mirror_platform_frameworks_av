@@ -16,6 +16,23 @@
       "message": "i want mediatek to have an opportunity to tell us whether this breaks the use case that lead to the original CL for passing these through.\nI don\u0027t expect it will break it, but want them to look at it.",
       "revId": "9c3fe83d7bbac196fd8a5bcdc9c7f479f0dfc716",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87cfab62_2c071737",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-10T19:25:01Z",
+      "side": 1,
+      "message": "i think this new expression has better fallback behavior than the original -- if the codec doesn\u0027t provide the Drc fields, we leave them blank rather than failing the operation.",
+      "revId": "9c3fe83d7bbac196fd8a5bcdc9c7f479f0dfc716",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
