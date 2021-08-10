@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9b91bbc_08b6a39f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-08-10T15:29:33Z",
+      "side": 1,
+      "message": "BLE device selection is supposed to happen with AudioManager API setCommunicationDevice().\n\nThis change is not needed if this API is used which is the desired selection mode for LE audio in call",
+      "revId": "48dfdcf5a6ebe66debdcfe285b9a849a497a9d18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
