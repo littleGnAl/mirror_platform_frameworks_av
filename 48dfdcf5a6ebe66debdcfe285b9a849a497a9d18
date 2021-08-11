@@ -106,6 +106,24 @@
       "parentUuid": "4af7d1e6_61402818",
       "revId": "48dfdcf5a6ebe66debdcfe285b9a849a497a9d18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b7dc40a_fa26575a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687135
+      },
+      "writtenOn": "2021-08-11T09:45:14Z",
+      "side": 1,
+      "message": "Could you point to code in cs.android ? I can\u0027t find example. I\u0027ve already have code for picker ready, will try to extend it with communication device set.\nhttps://cs.android.com/search?q\u003dsetCommunicationDevice\u0026sq\u003d\n\nI\u0027ve investigated code and it points me to:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/audiopolicy/managerdefault/AudioPolicyManager.cpp;drc\u003dmaster;l\u003d3231\n\nand setting preferred device for strategy",
+      "parentUuid": "1e761980_c9516eef",
+      "revId": "48dfdcf5a6ebe66debdcfe285b9a849a497a9d18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
