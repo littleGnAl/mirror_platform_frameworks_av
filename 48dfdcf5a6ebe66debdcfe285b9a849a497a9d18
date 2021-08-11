@@ -52,6 +52,24 @@
       "parentUuid": "3872a6af_465dbb94",
       "revId": "48dfdcf5a6ebe66debdcfe285b9a849a497a9d18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "81eccbcf_7b82299d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1687135
+      },
+      "writtenOn": "2021-08-11T09:34:43Z",
+      "side": 1,
+      "message": "It\u0027ll follow this switch with probably communication device set to NONE:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/audiopolicy/enginedefault/src/Engine.cpp;drc\u003d86dcd0781c6ff22d3cbf44e072c80ae02b0f39fb;l\u003d479\n\nI\u0027ve also noticed that for VoIP (tested with skype), communication device is OUT_SPEAKER.",
+      "parentUuid": "3872a6af_465dbb94",
+      "revId": "48dfdcf5a6ebe66debdcfe285b9a849a497a9d18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
