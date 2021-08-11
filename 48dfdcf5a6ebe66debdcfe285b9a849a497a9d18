@@ -88,6 +88,24 @@
       "parentUuid": "81eccbcf_7b82299d",
       "revId": "48dfdcf5a6ebe66debdcfe285b9a849a497a9d18",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e761980_c9516eef",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-08-11T09:41:56Z",
+      "side": 1,
+      "message": "If the phone app UI has been updated to support LE audio in the device picker, then it must also select LE audio with AudioManager.setCommunicationDevice() like it does start BT SCO audio explicitly when BT device is selected.\nWe must file a feature request to the dialer team",
+      "parentUuid": "4af7d1e6_61402818",
+      "revId": "48dfdcf5a6ebe66debdcfe285b9a849a497a9d18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
