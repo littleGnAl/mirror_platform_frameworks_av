@@ -204,7 +204,8 @@ struct Codec2Client : public Codec2ConfigurableClient {
             char const* componentName,
             std::shared_ptr<Listener> const& listener,
             std::shared_ptr<Codec2Client>* owner = nullptr,
-            size_t numberOfAttempts = 10);
+            size_t numberOfAttempts = 10,
+            c2_status_t* c2status = nullptr);
 
     // Try to create a component interface with a given name from all known
     // IComponentStore services. numberOfAttempts determines the number of times

@@ -1003,12 +1003,15 @@ c2_status_t Codec2Client::ForAllServices(
         Cache& cache = Cache::List()[index];
         for (size_t tries = numberOfAttempts; tries > 0; --tries) {
             std::shared_ptr<Codec2Client> client{cache.getClient()};
-            status = predicate(client);
-            if (status == C2_OK) {
+            c2_status_t c2err = predicate(client);
+            if (status == C2_NO_INIT || c2err != C2_NOT_FOUND) {
+                status = c2err;  // copy actual error from client
+            }
+            if (c2err == C2_OK) {
                 std::scoped_lock lock{key2IndexMutex};
                 key2Index[key] = index; // update last known client index
                 return C2_OK;
-            } else if (status == C2_TRANSACTION_FAILED) {
+            } else if (c2err == C2_TRANSACTION_FAILED) {
                 LOG(WARNING) << "\"" << key << "\" failed for service \""
                              << client->getName()
                              << "\" due to transaction failure. "
@@ -1033,7 +1036,8 @@ std::shared_ptr<Codec2Client::Component>
         const char* componentName,
         const std::shared_ptr<Listener>& listener,
         std::shared_ptr<Codec2Client>* owner,
-        size_t numberOfAttempts) {
+        size_t numberOfAttempts,
+        c2_status_t* c2status) {
     std::string key{"create:"};
     key.append(componentName);
     std::shared_ptr<Component> component;
@@ -1063,6 +1067,10 @@ std::shared_ptr<Codec2Client::Component>
         LOG(DEBUG) << "Failed to create component \"" << componentName
                    << "\" from all known services. "
                       "Last returned status = " << status << ".";
+    }
+
+    if (c2status) {
+        *c2status = status;
     }
     return component;
 }
