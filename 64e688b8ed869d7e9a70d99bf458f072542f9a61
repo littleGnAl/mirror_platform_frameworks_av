@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1bf839f_db3895fd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1146974
+      },
+      "writtenOn": "2021-08-12T07:32:38Z",
+      "side": 1,
+      "message": "Brian, could you fix forward the build breaks, instead of reverting it?\nThe fix must be simply replacing `libavservices_minijail_vendor` with `libavservices_minijail`.\nPlease ping me if you need more details.",
+      "revId": "64e688b8ed869d7e9a70d99bf458f072542f9a61",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
