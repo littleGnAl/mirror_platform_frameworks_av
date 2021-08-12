@@ -164,12 +164,14 @@ c2_status_t FrameReassembler::process(
         ALOGV("buffer={offset=%zu size=%zu) copySize=%zu",
                 buffer->offset(), buffer->size(), copySize);
         memcpy(mWriteView->base(), buffer->data(), copySize);
-        mWriteView->setOffset(0u);
-        mWriteView->setSize(copySize);
-        buffer->setRange(buffer->offset() + copySize, buffer->size() - copySize);
-        if (copySize == frameSizeBytes) {
-            finishCurrentBlock(items);
+        if (copySize < frameSizeBytes) {
+            // Data in buffer lesser than expected frame size, append zeros for remaining bytes
+            memset(mWriteView->base() + copySize, 0u, frameSizeBytes - copySize);
         }
+        mWriteView->setOffset(0u);
+        mWriteView->setSize(frameSizeBytes);
+        buffer->setRange(buffer->offset() + copySize, buffer->size() - copySize);
+        finishCurrentBlock(items);
     }
 
     int32_t eos = 0;
