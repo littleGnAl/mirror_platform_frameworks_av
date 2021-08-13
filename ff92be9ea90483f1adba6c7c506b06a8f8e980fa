@@ -33,6 +33,24 @@
       "message": "Ray, please could you take a look? I don\u0027t feel confident enough about our policies and the way OWNERS works in AOSP to approve this. Thanks!",
       "revId": "ff92be9ea90483f1adba6c7c506b06a8f8e980fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "355c3722_ce3ae4aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1408266
+      },
+      "writtenOn": "2021-08-13T16:55:19Z",
+      "side": 1,
+      "message": "To provide some context, the impact of this CL is that all bugs about VTS module vts_mediaCodecs_validate_test will be filed to component id 151862 by default, and sundongahn@ will be the default contact point. If this is not accurate any more, please let me know.",
+      "parentUuid": "cc329bd3_cc033508",
+      "revId": "ff92be9ea90483f1adba6c7c506b06a8f8e980fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
