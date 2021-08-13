@@ -16,6 +16,24 @@
       "message": "Is this line covers the case of maxInputSize being 0 from L310?\n(I don\u0027t know whether this can happen.)",
       "revId": "e7b6c263d65a44a565bb03a998628b21e981b71c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0d5873e_2fee5bb7",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-08-13T02:25:34Z",
+      "side": 1,
+      "message": "yes. If line 310 sets maxInputSize to 0 or if C2StreamAudioFrameSizeInfo isn\u0027t supported,\nwe fall back to old approach.\nCurrent s/w codecs do not support C2StreamAudioFrameSizeInfo and the following call in 314 gets maxInputSize",
+      "parentUuid": "aed3391c_2f37d89f",
+      "revId": "e7b6c263d65a44a565bb03a998628b21e981b71c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
