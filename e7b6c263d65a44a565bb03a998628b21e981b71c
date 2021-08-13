@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aed3391c_2f37d89f",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 313,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-08-13T02:07:44Z",
+      "side": 1,
+      "message": "Is this line covers the case of maxInputSize being 0 from L310?\n(I don\u0027t know whether this can happen.)",
+      "revId": "e7b6c263d65a44a565bb03a998628b21e981b71c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
