@@ -15,17 +15,18 @@
 -->
 <configuration description="Test module config for AVC Utils unit tests">
     <option name="test-suite-tag" value="AVCUtilsUnitTest" />
-    <target_preparer class="com.android.tradefed.targetprep.PushFilePreparer">
+    <target_preparer class="com.android.compatibility.common.tradefed.targetprep.FilePusher">
         <option name="cleanup" value="false" />
         <option name="push" value="AVCUtilsUnitTest->/data/local/tmp/AVCUtilsUnitTest" />
+        <option name="append-bitness" value="true" />
         <option name="push-file"
             key="https://storage.googleapis.com/android_media/frameworks/av/media/libstagefright/foundation/tests/AVCUtils/AVCUtilsUnitTest.zip?unzip=true"
-            value="/data/local/tmp/AVCUtilsUnitTest/" />
+            value="/data/local/tmp/AVCUtilsUnitTestRes/" />
     </target_preparer>
 
     <test class="com.android.tradefed.testtype.GTest" >
         <option name="native-test-device-path" value="/data/local/tmp" />
         <option name="module-name" value="AVCUtilsUnitTest" />
-        <option name="native-test-flag" value="-P /data/local/tmp/AVCUtilsUnitTest/" />
+        <option name="native-test-flag" value="-P /data/local/tmp/AVCUtilsUnitTestRes/" />
     </test>
 </configuration>
