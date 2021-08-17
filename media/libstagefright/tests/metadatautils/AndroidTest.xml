@@ -15,9 +15,10 @@
 -->
 <configuration description="Test module config for MetaDataUtils unit test">
     <option name="test-suite-tag" value="MetaDataUtilsTest" />
-    <target_preparer class="com.android.tradefed.targetprep.PushFilePreparer">
+    <target_preparer class="com.android.compatibility.common.tradefed.targetprep.FilePusher">
         <option name="cleanup" value="false" />
         <option name="push" value="MetaDataUtilsTest->/data/local/tmp/MetaDataUtilsTest" />
+        <option name="append-bitness" value="true" />
         <option name="push-file"
             key="https://storage.googleapis.com/android_media/frameworks/av/media/libstagefright/tests/metadatautils/MetaDataUtilsTestRes-1.0.zip?unzip=true"
             value="/data/local/tmp/MetaDataUtilsTestRes/" />
