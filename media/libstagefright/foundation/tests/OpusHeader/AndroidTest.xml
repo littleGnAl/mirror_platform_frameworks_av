@@ -15,9 +15,10 @@
 -->
 <configuration description="Test module config for opus header unit tests">
     <option name="test-suite-tag" value="OpusHeaderTest" />
-    <target_preparer class="com.android.tradefed.targetprep.PushFilePreparer">
+    <target_preparer class="com.android.compatibility.common.tradefed.targetprep.FilePusher">
         <option name="cleanup" value="true" />
         <option name="push" value="OpusHeaderTest->/data/local/tmp/OpusHeaderTest" />
+        <option name="append-bitness" value="true" />
         <option name="push-file"
             key="https://storage.googleapis.com/android_media/frameworks/av/media/libstagefright/foundation/tests/OpusHeader/OpusHeader.zip?unzip=true"
             value="/data/local/tmp/OpusHeaderTestRes/" />
