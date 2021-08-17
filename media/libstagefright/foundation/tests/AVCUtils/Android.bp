@@ -29,6 +29,27 @@ cc_test {
     name: "AVCUtilsUnitTest",
     gtest: true,
 
+    test_suites: [
+        "mts",
+    ],
+
+    // Support multilib variants (using different suffix per sub-architecture), which is needed on
+    // build targets with secondary architectures, as the MTS test suite packaging logic flattens
+    // all test artifacts into a single `testcases` directory.
+    compile_multilib: "both",
+    multilib: {
+        lib32: {
+            suffix: "32",
+        },
+        lib64: {
+            suffix: "64",
+        },
+    },
+
+    // this unit test also runs within the mainline tests (MTS),
+    // so it must be compatible back to Android Q/10 (sdk 29)
+    min_sdk_version: "29",
+
     srcs: [
         "AVCUtilsUnitTest.cpp",
     ],
