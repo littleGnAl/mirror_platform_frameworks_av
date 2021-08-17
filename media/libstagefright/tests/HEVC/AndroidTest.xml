@@ -15,17 +15,18 @@
 -->
 <configuration description="Test module config for HEVC Utils unit tests">
     <option name="test-suite-tag" value="HEVCUtilsUnitTest" />
-    <target_preparer class="com.android.tradefed.targetprep.PushFilePreparer">
+    <target_preparer class="com.android.compatibility.common.tradefed.targetprep.FilePusher">
         <option name="cleanup" value="false" />
         <option name="push" value="HEVCUtilsUnitTest->/data/local/tmp/HEVCUtilsUnitTest" />
+        <option name="append-bitness" value="true" />
         <option name="push-file"
             key="https://storage.googleapis.com/android_media/frameworks/av/media/libstagefright/foundation/tests/HEVCUtils/HEVCUtilsUnitTest.zip?unzip=true"
-            value="/data/local/tmp/HEVCUtilsUnitTest/" />
+            value="/data/local/tmp/HEVCUtilsUnitTestRes/" />
     </target_preparer>
 
     <test class="com.android.tradefed.testtype.GTest" >
         <option name="native-test-device-path" value="/data/local/tmp" />
         <option name="module-name" value="HEVCUtilsUnitTest" />
-        <option name="native-test-flag" value="-P /data/local/tmp/HEVCUtilsUnitTest/" />
+        <option name="native-test-flag" value="-P /data/local/tmp/HEVCUtilsUnitTestRes/" />
     </test>
 </configuration>
