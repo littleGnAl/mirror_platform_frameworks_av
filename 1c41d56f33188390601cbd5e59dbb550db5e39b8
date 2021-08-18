@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f93c9c84_3368f3bf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-08-18T16:10:34Z",
+      "side": 1,
+      "message": "Please add tests for this.\n\nI\u0027m still not clear on whether the flag is available through the SDK, can you clarify that? If yes, then the added tests should be part of CTS.",
+      "revId": "1c41d56f33188390601cbd5e59dbb550db5e39b8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
