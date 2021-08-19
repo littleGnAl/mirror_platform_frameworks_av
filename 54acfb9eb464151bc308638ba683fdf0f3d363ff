@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "615299d2_ee339d5a",
+        "filename": "media/ndk/NdkMediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 415,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-19T22:58:52Z",
+      "side": 1,
+      "message": "worth adding a comment that we recognize that dup() is shallow\nand does not copy objects/buffers.",
+      "range": {
+        "startLine": 415,
+        "startChar": 47,
+        "endLine": 415,
+        "endChar": 55
+      },
+      "revId": "54acfb9eb464151bc308638ba683fdf0f3d363ff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
