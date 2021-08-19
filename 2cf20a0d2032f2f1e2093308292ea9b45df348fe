@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "218469c6_4b28e91c",
+        "filename": "OWNERS_MEDIA_SOLUTIONS",
+        "patchSetId": 4
+      },
+      "lineNbr": 4,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-19T18:56:30Z",
+      "side": 1,
+      "message": "names listed here are fine with me.\n\ni mentioned frameworks/av/media/janitors/codecs_OWNERS in the bug; I used to have it as \"OWNERS-codecs\" or something like that, but got dinged to make it fit the standardized pattern \"whatever_OWNERS\" -- so you probably want to make it fit that pattern, with a name like \"media_solutions_OWNERS\" (and you\u0027ll want to update the other OWNERS files that reference this one)\n\nconsider whether to put this into frameworks/av/media/janitors, with the other owners file that we have there -- trying to collect these meta-owner files\ninto a single place",
+      "range": {
+        "startLine": 3,
+        "startChar": 0,
+        "endLine": 4,
+        "endChar": 13
+      },
+      "revId": "2cf20a0d2032f2f1e2093308292ea9b45df348fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ffaeae1_95adc62f",
+        "filename": "media/OWNERS",
+        "patchSetId": 4
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-19T18:56:30Z",
+      "side": 1,
+      "message": "wjia moved to a different part of the company",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 15
+      },
+      "revId": "2cf20a0d2032f2f1e2093308292ea9b45df348fe",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
