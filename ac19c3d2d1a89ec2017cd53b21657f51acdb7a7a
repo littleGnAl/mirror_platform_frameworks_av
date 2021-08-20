@@ -68,6 +68,24 @@
       "message": "Hi, google friends, the change status is \"Merged\", which branch is it merged to? Thanks!",
       "revId": "ac19c3d2d1a89ec2017cd53b21657f51acdb7a7a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9784e814_d79cdd01",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2021-08-20T17:13:09Z",
+      "side": 1,
+      "message": "This was merged to the master branch here and cherry-picked to android11-gsi. Given the merge process it made it to quite a few other branches, a variant was added in mainline as noted above. The fix should also be available in android 12.",
+      "parentUuid": "d0c76d3a_136c303b",
+      "revId": "ac19c3d2d1a89ec2017cd53b21657f51acdb7a7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
