@@ -136,6 +136,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1511665e_6be36afe",
+        "filename": "media/libstagefright/MediaCodecSource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 952,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-20T21:22:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c6713970_d7fb5141",
+      "range": {
+        "startLine": 952,
+        "startChar": 12,
+        "endLine": 952,
+        "endChar": 17
+      },
+      "revId": "4025bd767bfc5b98e679faaf7dd771790719860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "403cd16f_72eb2b4f",
@@ -173,6 +197,30 @@
       "side": 1,
       "message": "This is needed only when there is a valid CSD.\nFor zero byte CSD, mbuf will not be allocated as per the updated changes.",
       "parentUuid": "403cd16f_72eb2b4f",
+      "range": {
+        "startLine": 1003,
+        "startChar": 11,
+        "endLine": 1006,
+        "endChar": 0
+      },
+      "revId": "4025bd767bfc5b98e679faaf7dd771790719860e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8dd16db0_cebd619f",
+        "filename": "media/libstagefright/MediaCodecSource.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-20T21:22:47Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "53315788_af134b79",
       "range": {
         "startLine": 1003,
         "startChar": 11,
