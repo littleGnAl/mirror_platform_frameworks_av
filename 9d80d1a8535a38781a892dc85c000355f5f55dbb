@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05febc77_000d26cb",
+        "filename": "media/libstagefright/httplive/LiveSession.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-21T02:39:47Z",
+      "side": 1,
+      "message": "\u003cAnotherPacketSource.h\u003e\n\ngeneral rule is that \"...\" is for within the current package\nanything else is done with \u003c\u003e",
+      "range": {
+        "startLine": 26,
+        "startChar": 9,
+        "endLine": 26,
+        "endChar": 32
+      },
+      "revId": "9d80d1a8535a38781a892dc85c000355f5f55dbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15f08fed_394daac3",
+        "filename": "media/libstagefright/httplive/LiveSession.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 27,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-21T02:39:47Z",
+      "side": 1,
+      "message": "\u003cATSParser.h\u003e  since it comes from outside of our tree.",
+      "range": {
+        "startLine": 27,
+        "startChar": 9,
+        "endLine": 27,
+        "endChar": 22
+      },
+      "revId": "9d80d1a8535a38781a892dc85c000355f5f55dbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d9590c66_b99a32d1",
+        "filename": "media/libstagefright/httplive/PlaylistFetcher.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-21T02:39:47Z",
+      "side": 1,
+      "message": "you know what i\u0027m going to talk about by now...",
+      "range": {
+        "startLine": 28,
+        "startChar": 9,
+        "endLine": 29,
+        "endChar": 31
+      },
+      "revId": "9d80d1a8535a38781a892dc85c000355f5f55dbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "363de688_102c9b4c",
+        "filename": "media/libstagefright/httplive/PlaylistFetcher.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-21T02:39:47Z",
+      "side": 1,
+      "message": "ATSParser needs to move\nbut LiveSession looks to be part of this package and is therefore ok as \"\"",
+      "range": {
+        "startLine": 24,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 0
+      },
+      "revId": "9d80d1a8535a38781a892dc85c000355f5f55dbb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
