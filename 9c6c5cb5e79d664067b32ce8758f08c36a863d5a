@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "710bed1e_3b0728cf",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-22T04:25:32Z",
+      "side": 1,
+      "message": "we\u0027re ignoring the errors.\nwe\u0027ve decided that in the affected routines, they are not a problem and so we\u0027re not going to watch for them within those\nroutines.",
+      "range": {
+        "startLine": 7,
+        "startChar": 9,
+        "endLine": 7,
+        "endChar": 22
+      },
+      "revId": "9c6c5cb5e79d664067b32ce8758f08c36a863d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c470fa85_e8f37631",
+        "filename": "media/codecs/m4v_h263/enc/src/fastidct.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-22T04:25:32Z",
+      "side": 1,
+      "message": "add 1-liner comments about why we\u0027re turning it off.",
+      "range": {
+        "startLine": 79,
+        "startChar": 25,
+        "endLine": 79,
+        "endChar": 44
+      },
+      "revId": "9c6c5cb5e79d664067b32ce8758f08c36a863d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
