@@ -51,7 +51,9 @@ AHEVCAssembler::AHEVCAssembler(const sp<AMessage> &notify)
       mNextExpectedSeqNo(0),
       mAccessUnitDamaged(false),
       mFirstIFrameProvided(false),
+      mLastCvo(-1),
       mLastIFrameProvidedAtMs(0),
+      mLastRtpTimeJitterDataUs(0),
       mWidth(0),
       mHeight(0) {
 
@@ -133,45 +135,65 @@ ARTPAssembler::AssemblyStatus AHEVCAssembler::addNALUnit(
     sp<ABuffer> buffer = *queue->begin();
     buffer->meta()->setObject("source", source);
 
+    /**
+     * RFC3550 calculates the interarrival jitter time for 'ALL packets'.
+     * But that is not useful as an ingredient of buffering time.
+     * Instead, we calculates the time only for all 'NAL units'.
+     */
     int64_t rtpTime = findRTPTime(firstRTPTime, buffer);
+    int64_t nowTimeUs = ALooper::GetNowUs();
+    if (rtpTime != mLastRtpTimeJitterDataUs) {
+        source->putBaseJitterData(rtpTime, nowTimeUs);
+        mLastRtpTimeJitterDataUs = rtpTime;
+    }
+    source->putInterArrivalJitterData(rtpTime, nowTimeUs);
 
-    const int64_t startTimeMs = source->mFirstSysTime / 1000;
-    const int64_t nowTimeMs = ALooper::GetNowUs() / 1000;
-    const int64_t staticJbTimeMs = source->getStaticJitterTimeMs();
-    const int64_t dynamicJbTimeMs = source->getDynamicJitterTimeMs();
+    const int64_t startTimeMs = source->mSysAnchorTime / 1000;
+    const int64_t nowTimeMs = nowTimeUs / 1000;
+    const int32_t staticJitterTimeMs = source->getStaticJitterTimeMs();
+    const int32_t baseJitterTimeMs = source->getBaseJitterTimeMs();
+    const int32_t dynamicJitterTimeMs = source->getInterArrivalJitterTimeMs();
     const int64_t clockRate = source->mClockRate;
 
     int64_t playedTimeMs = nowTimeMs - startTimeMs;
     int64_t playedTimeRtp = source->mFirstRtpTime + MsToRtp(playedTimeMs, clockRate);
 
     /**
-     * Based on experience in real commercial network services,
+     * Based on experiences in real commercial network services,
      * 300 ms is a maximum heuristic jitter buffer time for video RTP service.
      */
 
     /**
-     * The static(base) jitter is a kind of expected propagation time that we desire.
-     * We can drop packets if it doesn't meet our standards.
-     * If it gets shorter we can get faster response but can lose packets.
+     * The base jitter is an expected additional propagation time.
+     * We can drop packets if the time doesn't meet our standards.
+     * If it gets shorter, we can get faster response but should drop delayed packets.
      * Expecting range : 50ms ~ 1000ms (But 300 ms would be practical upper bound)
      */
-    const int64_t baseJbTimeRtp = MsToRtp(staticJbTimeMs, clockRate);
+    const int32_t baseJbTimeMs = std::min(std::max(staticJitterTimeMs, baseJitterTimeMs), 300);
     /**
      * Dynamic jitter is a variance of interarrival time as defined in the 6.4.1 of RFC 3550.
-     * We can regard this as a tolerance of every moments.
+     * We can regard this as a tolerance of every data putting moments.
      * Expecting range : 0ms ~ 150ms (Not to over 300 ms practically)
      */
-    const int64_t dynamicJbTimeRtp =                        // Max 150
-            std::min(MsToRtp(dynamicJbTimeMs, clockRate), MsToRtp(150, clockRate));
-    const int64_t jitterTimeRtp = baseJbTimeRtp + dynamicJbTimeRtp; // Total jitter time
+    const int32_t dynamicJbTimeMs = std::min(dynamicJitterTimeMs, 150);
+    const int64_t dynamicJbTimeRtp = MsToRtp(dynamicJbTimeMs, clockRate);
+    /* Fundamental jitter time */
+    const int32_t jitterTimeMs = baseJbTimeMs;
+    const int64_t jitterTimeRtp = MsToRtp(jitterTimeMs, clockRate);
 
+    // Till (T), this assembler waits unconditionally to collect current NAL unit
     int64_t expiredTimeRtp = rtpTime + jitterTimeRtp;       // When does this buffer expire ? (T)
     int64_t diffTimeRtp = playedTimeRtp - expiredTimeRtp;
     bool isExpired = (diffTimeRtp >= 0);                    // It's expired if T is passed away
-    bool isFirstLineBroken = (diffTimeRtp > jitterTimeRtp); // (T + jitter) is a standard tolerance
 
-    int64_t finalMargin = dynamicJbTimeRtp * JITTER_MULTIPLE;
-    bool isSecondLineBroken = (diffTimeRtp > jitterTimeRtp + finalMargin); // The Maginot line
+    // From (T), this assembler tries to complete the NAL till (T + try)
+    int32_t tryJbTimeMs = baseJitterTimeMs / 2 + dynamicJbTimeMs;
+    int64_t tryJbTimeRtp = MsToRtp(tryJbTimeMs, clockRate);
+    bool isFirstLineBroken = (diffTimeRtp > tryJbTimeRtp);
+
+    // After (T + try), it gives last chance till (T + try + a) with warning messages.
+    int64_t alpha = dynamicJbTimeRtp * JITTER_MULTIPLE;     // Use Dyn as 'a'
+    bool isSecondLineBroken = (diffTimeRtp > (tryJbTimeRtp + alpha));   // The Maginot line
 
     if (mShowQueueCnt < 20) {
         showCurrentQueue(queue);
@@ -184,33 +206,38 @@ ARTPAssembler::AssemblyStatus AHEVCAssembler::addNALUnit(
 
     if (!isExpired) {
         ALOGV("buffering in jitter buffer.");
+        // set an alarm for jitter buffer time expiration.
+        // adding 1ms because jitter buffer time is keep changing.
+        int64_t expTimeUs = (RtpToMs(std::abs(diffTimeRtp), clockRate) + 1) * 1000;
+        source->setJbAlarmTime(nowTimeUs, expTimeUs);
         return NOT_ENOUGH_DATA;
     }
 
     if (isFirstLineBroken) {
-        if (isSecondLineBroken) {
-            ALOGW("buffer too late ... \t Diff in Jb=%lld \t "
+        int64_t totalDiffTimeMs = RtpToMs(diffTimeRtp + jitterTimeRtp, clockRate);
+        String8 info;
+        info.appendFormat("RTP diff from exp =%lld \t MS diff from stamp = %lld\t\t"
                     "Seq# %d \t ExpSeq# %d \t"
-                    "JitterMs %lld + (%lld * %.3f)",
-                    (long long)(diffTimeRtp),
+                    "JitterMs %d + (%d + %d * %.3f)",
+                    (long long)diffTimeRtp, (long long)totalDiffTimeMs,
                     buffer->int32Data(), mNextExpectedSeqNo,
-                    (long long)staticJbTimeMs, (long long)dynamicJbTimeMs, JITTER_MULTIPLE + 1);
+                    jitterTimeMs, tryJbTimeMs, dynamicJbTimeMs, JITTER_MULTIPLE);
+        if (isSecondLineBroken) {
+            ALOGE("%s", info.string());
             printNowTimeMs(startTimeMs, nowTimeMs, playedTimeMs);
             printRTPTime(rtpTime, playedTimeRtp, expiredTimeRtp, isExpired);
 
-            mNextExpectedSeqNo = pickProperSeq(queue, firstRTPTime, playedTimeRtp, jitterTimeRtp);
         }  else {
-            ALOGW("=== WARNING === buffer arrived after %lld + %lld = %lld ms === WARNING === ",
-                    (long long)staticJbTimeMs, (long long)dynamicJbTimeMs,
-                    (long long)RtpToMs(jitterTimeRtp, clockRate));
+            ALOGW("%s", info.string());
         }
     }
 
     if (mNextExpectedSeqNoValid) {
-        int32_t size = queue->size();
+        mNextExpectedSeqNo = pickStartSeq(queue, firstRTPTime, playedTimeRtp, jitterTimeRtp);
         int32_t cntRemove = deleteUnitUnderSeq(queue, mNextExpectedSeqNo);
 
         if (cntRemove > 0) {
+            int32_t size = queue->size();
             source->noticeAbandonBuffer(cntRemove);
             ALOGW("delete %d of %d buffers", cntRemove, size);
         }
@@ -445,7 +472,6 @@ ARTPAssembler::AssemblyStatus AHEVCAssembler::addFragmentedNALUnit(
     uint32_t rtpTimeStartAt;
     CHECK(buffer->meta()->findInt32("rtp-time", (int32_t *)&rtpTimeStartAt));
     uint32_t startSeqNo = buffer->int32Data();
-    bool pFrame = (nalType < 0x10);
 
     if (data[2] & 0x40) {
         // Huh? End bit also set on the first buffer.
@@ -455,8 +481,6 @@ ARTPAssembler::AssemblyStatus AHEVCAssembler::addFragmentedNALUnit(
         complete = true;
     } else {
         List<sp<ABuffer> >::iterator it = ++queue->begin();
-        int32_t connected = 1;
-        bool snapped = false;
         while (it != queue->end()) {
             ALOGV("sequence length %zu", totalCount);
 
@@ -467,33 +491,26 @@ ARTPAssembler::AssemblyStatus AHEVCAssembler::addFragmentedNALUnit(
 
             if ((uint32_t)buffer->int32Data() != expectedSeqNo) {
                 ALOGV("sequence not complete, expected seqNo %u, got %u, nalType %u",
-                     expectedSeqNo, (uint32_t)buffer->int32Data(), nalType);
-                snapped = true;
-
-                if (!pFrame) {
-                    return WRONG_SEQUENCE_NUMBER;
-                }
-            }
-
-            if (!snapped) {
-                connected++;
+                     expectedSeqNo, (unsigned)buffer->int32Data(), nalType);
             }
 
             uint32_t rtpTime;
             CHECK(buffer->meta()->findInt32("rtp-time", (int32_t *)&rtpTime));
-            if (size < 3
-                    || ((data[0] >> 1) & H265_NALU_MASK) != indicator
+            if (size < 3) {
+                ALOGV("Ignoring malformed FU buffer.");
+                it = queue->erase(it);
+                continue;
+            }
+            if (((data[0] >> 1) & H265_NALU_MASK) != indicator
                     || (data[2] & H265_NALU_MASK) != nalType
                     || (data[2] & 0x80)
                     || rtpTime != rtpTimeStartAt) {
-                ALOGV("Ignoring malformed FU buffer.");
-
-                // Delete the whole start of the FU.
-
-                mNextExpectedSeqNo = expectedSeqNo + 1;
-                deleteUnitUnderSeq(queue, mNextExpectedSeqNo);
-
-                return MALFORMED_PACKET;
+                // Assembler already have given enough time by jitter buffer
+                ALOGD("Seems another frame. Incomplete frame [%d ~ %d) \t %d FUs",
+                        startSeqNo, expectedSeqNo, (int)queue->distance(queue->begin(), it));
+                expectedSeqNo = (uint32_t)buffer->int32Data();
+                complete = true;
+                break;
             }
 
             totalSize += size - 3;
@@ -502,13 +519,6 @@ ARTPAssembler::AssemblyStatus AHEVCAssembler::addFragmentedNALUnit(
             expectedSeqNo = (uint32_t)buffer->int32Data() + 1;
 
             if (data[2] & 0x40) {
-                if (pFrame && !recycleUnit(startSeqNo, expectedSeqNo,
-                        connected, totalCount, 0.5f)) {
-                    mNextExpectedSeqNo = expectedSeqNo;
-                    deleteUnitUnderSeq(queue, mNextExpectedSeqNo);
-
-                    return MALFORMED_PACKET;
-                }
                 // This is the last fragment.
                 complete = true;
                 break;
@@ -558,6 +568,9 @@ ARTPAssembler::AssemblyStatus AHEVCAssembler::addFragmentedNALUnit(
 
     if (cvo >= 0) {
         unit->meta()->setInt32("cvo", cvo);
+        mLastCvo = cvo;
+    } else if (mLastCvo >= 0) {
+        unit->meta()->setInt32("cvo", mLastCvo);
     }
 
     addSingleNALUnit(unit);
@@ -614,35 +627,32 @@ void AHEVCAssembler::submitAccessUnit() {
     msg->post();
 }
 
-int32_t AHEVCAssembler::pickProperSeq(const Queue *queue,
+int32_t AHEVCAssembler::pickStartSeq(const Queue *queue,
         uint32_t first, int64_t play, int64_t jit) {
+    // pick the first sequence number has the start bit.
     sp<ABuffer> buffer = *(queue->begin());
-    int32_t nextSeqNo = buffer->int32Data();
+    int32_t firstSeqNo = buffer->int32Data();
 
-    Queue::const_iterator it = queue->begin();
-    while (it != queue->end()) {
-        int64_t rtpTime = findRTPTime(first, *it);
-        // if pkt in time exists, that should be the next pivot
+    // This only works for FU-A type & non-start sequence
+    unsigned nalType = buffer->data()[0] & 0x1f;
+    if (nalType != 28 || buffer->data()[2] & 0x80) {
+        return firstSeqNo;
+    }
+
+    for (auto it : *queue) {
+        const uint8_t *data = it->data();
+        int64_t rtpTime = findRTPTime(first, it);
         if (rtpTime + jit >= play) {
-            nextSeqNo = (*it)->int32Data();
             break;
         }
-        it++;
+        if ((data[2] & 0x80)) {
+            const int32_t seqNo = it->int32Data();
+            ALOGE("finding [HEAD] pkt. \t Seq# (%d ~ )[%d", firstSeqNo, seqNo);
+            firstSeqNo = seqNo;
+            break;
+        }
     }
-    return nextSeqNo;
-}
-
-bool AHEVCAssembler::recycleUnit(uint32_t start, uint32_t end,  uint32_t connected,
-         size_t avail, float goodRatio) {
-    float total = end - start;
-    float valid = connected;
-    float exist = avail;
-    bool isRecycle = (valid / total) >= goodRatio;
-
-    ALOGV("checking p-frame losses.. recvBufs %f valid %f diff %f recycle? %d",
-            exist, valid, total, isRecycle);
-
-    return isRecycle;
+    return firstSeqNo;
 }
 
 int32_t AHEVCAssembler::deleteUnitUnderSeq(Queue *queue, uint32_t seq) {
