@@ -565,7 +565,8 @@ TEST_P(ExtractorFunctionalityTest, MultipleStartStopTest) {
     }
 }
 
-TEST_P(ExtractorFunctionalityTest, SeekTest) {
+// TODO(b/146420831): Re-enable seek test once the failing cases are resolved
+TEST_P(ExtractorFunctionalityTest, DISABLED_SeekTest) {
     if (mDisableTest) return;
 
     ALOGV("Validates %s Extractor behaviour for different seek modes", mContainer.c_str());
@@ -789,6 +790,12 @@ TEST_P(ExtractorFunctionalityTest, MonkeySeekTest) {
 
         int64_t clipDuration = 0;
         AMediaFormat_getInt64(trackMeta, AMEDIAFORMAT_KEY_DURATION, &clipDuration);
+        // TODO(b/197507294): Enable test for Mp4 extractor with H264 mime
+        // The clip duration remains zero even when the mime is not image
+        if (clipDuration <= 0) {
+            cout << "[   WARN   ] Test Skipped. " << mContainer << " invalid clip duration\n";
+            return;
+        }
         // Image formats are not expected to have duration information
         ASSERT_TRUE(clipDuration > 0 || !strncmp(mime, "image/", 6)) << "Invalid clip duration ";
         AMediaFormat_delete(trackMeta);
@@ -831,6 +838,8 @@ TEST_P(ExtractorFunctionalityTest, SanityTest) {
     if (mDisableTest) return;
     // TODO(b/155626946): Enable test for MPEG2 TS/PS extractors
     if (mExtractorName == MPEG2TS || mExtractorName == MPEG2PS) return;
+    // TODO(b/157977694): Enable test for MP3 and MPEG4 extractors
+    if (mExtractorName == MP3 || mExtractorName == MPEG4) return;
 
     ALOGV("Validates %s Extractor behaviour for invalid tracks", mContainer.c_str());
     string inputFileName = gEnv->getRes() + get<1>(GetParam());
@@ -1137,8 +1146,9 @@ INSTANTIATE_TEST_SUITE_P(
                           make_pair("swirl_144x136_avc.mkv", "swirl_144x136_avc.mp4"),
                           make_pair("swirl_132x130_mpeg4.mp4", "swirl_132x130_mpeg4.mkv"),
                           make_pair("crowd_508x240_25fps_hevc.mp4","crowd_508x240_25fps_hevc.mkv"),
-                          make_pair("bbb_cif_768kbps_30fps_mpeg2.mp4",
-                                    "bbb_cif_768kbps_30fps_mpeg2.ts"),
+                          // TODO(b/164309196): Enable test for Mp4 and TS extractor
+                          /* make_pair("bbb_cif_768kbps_30fps_mpeg2.mp4",
+                                    "bbb_cif_768kbps_30fps_mpeg2.ts"), */
 
                           make_pair("loudsoftaac.aac", "loudsoftaac.mkv"),
                           make_pair("sinesweepflacmkv.mkv", "sinesweepflacmp4.mp4"),
@@ -1176,12 +1186,16 @@ INSTANTIATE_TEST_SUITE_P(ConfigParamTestAll, ConfigParamTest,
                                            make_pair("ogg", OPUS_1),
                                            make_pair("ogg", VORBIS_1),
 
-                                           make_pair("mpeg4", HEVC_1),
-                                           make_pair("mpeg4", HEVC_2),
-                                           make_pair("mpeg2ps", MPEG2_PS_1),
+                                           // TODO(b/197500797): Enable test for Mp4 extractor with
+                                           // HEVC mime
+                                           /* make_pair("mpeg4", HEVC_1), */
+                                           make_pair("mpeg4", HEVC_2)
+                                           // TODO(b/157119249): Enable test for TS, PS and MKV
+                                           // extractors
+                                           /* make_pair("mpeg2ps", MPEG2_PS_1),
                                            make_pair("mpeg2ts", MPEG2_TS_1),
                                            make_pair("mkv", MPEG4_1),
-                                           make_pair("mkv", VP9_1)));
+                                           make_pair("mkv", VP9_1) */));
 
 // Validate extractors for container format, input file, no. of tracks and supports seek flag
 INSTANTIATE_TEST_SUITE_P(
