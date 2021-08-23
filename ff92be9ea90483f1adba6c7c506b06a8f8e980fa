@@ -51,6 +51,52 @@
       "parentUuid": "cc329bd3_cc033508",
       "revId": "ff92be9ea90483f1adba6c7c506b06a8f8e980fa",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a6d5b454_e12bebf2",
+        "filename": "media/libstagefright/xmlparser/vts/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-23T21:25:50Z",
+      "side": 1,
+      "message": "if i understand, this means any failures of this test will go to component 151862\ninstead of the video framework component (1344) where it is currently reported.\n\nhow does the video framework team learn about these failures, since they will no longer be coming through our triage pipeline?",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 23
+      },
+      "revId": "ff92be9ea90483f1adba6c7c506b06a8f8e980fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d73ffa0e_b8300038",
+        "filename": "media/libstagefright/xmlparser/vts/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-23T21:25:50Z",
+      "side": 1,
+      "message": "probably should make it clear that this intended to add, not replace, the current\nowners (e.g. the media framework team).",
+      "range": {
+        "startLine": 2,
+        "startChar": 6,
+        "endLine": 2,
+        "endChar": 7
+      },
+      "revId": "ff92be9ea90483f1adba6c7c506b06a8f8e980fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
