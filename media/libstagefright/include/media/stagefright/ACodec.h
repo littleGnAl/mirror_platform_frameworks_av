@@ -69,6 +69,11 @@ struct ACodec : public AHierarchicalStateMachine, public CodecBase {
     virtual void initiateSetInputSurface(const sp<PersistentSurface> &surface);
     virtual void initiateStart();
     virtual void initiateShutdown(bool keepComponentAllocated = false);
+    virtual status_t querySupportedParameters(std::vector<std::string> *names) override;
+    virtual status_t subscribeToParameters(
+            [[maybe_unused]] const std::vector<std::string> &names) override;
+    virtual status_t unsubscribeFromParameters(
+            [[maybe_unused]] const std::vector<std::string> &names)  override;
 
     status_t queryCapabilities(
             const char* owner, const char* name,
