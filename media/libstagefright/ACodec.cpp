@@ -5397,6 +5397,7 @@ status_t ACodec::getPortFormat(OMX_U32 portIndex, sp<AMessage> &notify) {
                     notify->setInt32("channel-count", params.nChannels);
                     notify->setInt32("sample-rate", params.nSampleRate);
                     notify->setInt32("bitrate", params.nBitRate);
+                    notify->setInt32("aac-profile", params.eAACProfile);
                     break;
                 }
 
@@ -9156,4 +9157,23 @@ status_t ACodec::getOMXChannelMapping(size_t numChannels, OMX_AUDIO_CHANNELTYPE 
     return OK;
 }
 
+// for CTS MediaCodecTest#testVendorParameters
+status_t ACodec::querySupportedParameters(std::vector<std::string> *names) {
+
+    ALOGD("querySupportedParameters");
+    if (!names) {
+        return BAD_VALUE;
+    }
+    return OK;
+}
+status_t ACodec::subscribeToParameters([[maybe_unused]] const std::vector<std::string> &names) {
+
+    ALOGD("subscribeToParameters");
+    return OK;
+}
+status_t ACodec::unsubscribeFromParameters([[maybe_unused]] const std::vector<std::string> &names) {
+
+    ALOGD("unsubscribeFromParameters");
+    return OK;
+}
 }  // namespace android
