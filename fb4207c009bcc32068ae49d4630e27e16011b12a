@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6754e89_ca26e287",
+        "filename": "media/codecs/m4v_h263/enc/src/fastidct.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-25T04:56:40Z",
+      "side": 1,
+      "message": "I was intending that we\u0027d add those comments to all of the places\nwhere we turned off overflow checking, not just the first.",
+      "range": {
+        "startLine": 107,
+        "startChar": 0,
+        "endLine": 108,
+        "endChar": 9
+      },
+      "revId": "fb4207c009bcc32068ae49d4630e27e16011b12a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
