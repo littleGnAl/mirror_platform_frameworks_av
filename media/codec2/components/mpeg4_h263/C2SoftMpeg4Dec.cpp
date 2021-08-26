@@ -248,8 +248,6 @@ c2_status_t C2SoftMpeg4Dec::onStop() {
             PVCleanUpVideoDecoder(mDecHandle);
             mInitialized = false;
         }
-        delete mDecHandle;
-        mDecHandle = nullptr;
     }
     for (int32_t i = 0; i < kNumOutputBuffers; ++i) {
         if (mOutputBuffer[i]) {
@@ -272,6 +270,10 @@ void C2SoftMpeg4Dec::onReset() {
 
 void C2SoftMpeg4Dec::onRelease() {
     (void)onStop();
+    if (mDecHandle) {
+        delete mDecHandle;
+        mDecHandle = nullptr;
+    }
     if (mOutBlock) {
         mOutBlock.reset();
     }
