@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e7f559a7_6a391c6a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-26T02:52:38Z",
+      "side": 1,
+      "message": "bug says that the related CL aosp/1766145 masks this problem.\nfor testing, did we revert that other CL so that the fuzzer would get\nto this point, where it would then trigger the over flows?\n\nI think we need to do that experiment, and document it in Test: lines\nbefore we can merge this.\n\notherwise, the contents of the cl appear fine to me.",
+      "revId": "b8155bb20a2ca7e2bc06345b176db827ea771220",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
