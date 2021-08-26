@@ -231,6 +231,7 @@ C2SoftMpeg4Dec::C2SoftMpeg4Dec(
       mDecHandle(nullptr),
       mOutputBuffer{},
       mInitialized(false) {
+        mDecHandle =  &mVideoDecControls;
 }
 
 C2SoftMpeg4Dec::~C2SoftMpeg4Dec() {
@@ -248,8 +249,6 @@ c2_status_t C2SoftMpeg4Dec::onStop() {
             PVCleanUpVideoDecoder(mDecHandle);
             mInitialized = false;
         }
-        delete mDecHandle;
-        mDecHandle = nullptr;
     }
     for (int32_t i = 0; i < kNumOutputBuffers; ++i) {
         if (mOutputBuffer[i]) {
@@ -294,13 +293,7 @@ status_t C2SoftMpeg4Dec::initDecoder() {
 #else
     mIsMpeg4 = false;
 #endif
-    if (!mDecHandle) {
-        mDecHandle = new tagvideoDecControls;
-    }
-    if (!mDecHandle) {
-        ALOGE("mDecHandle is null");
-        return NO_MEMORY;
-    }
+
     memset(mDecHandle, 0, sizeof(tagvideoDecControls));
 
     /* TODO: bring these values to 352 and 288. It cannot be done as of now
@@ -357,10 +350,6 @@ void C2SoftMpeg4Dec::finishWork(uint64_t index, const std::unique_ptr<C2Work> &w
 }
 
 c2_status_t C2SoftMpeg4Dec::ensureDecoderState(const std::shared_ptr<C2BlockPool> &pool) {
-    if (!mDecHandle) {
-        ALOGE("not supposed to be here, invalid decoder context");
-        return C2_CORRUPTED;
-    }
 
     mOutputBufferSize = align(mIntf->getMaxWidth(), 16) * align(mIntf->getMaxHeight(), 16) * 3 / 2;
     for (int32_t i = 0; i < kNumOutputBuffers; ++i) {
