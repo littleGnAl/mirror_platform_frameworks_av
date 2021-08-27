@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "69641d65_6baa0ab7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-27T02:19:12Z",
+      "side": 1,
+      "message": "changes look good, but raises some structural questions about\nwhy these addParameter() calls are in *.cpp for decoding but *.h for encoding.",
+      "revId": "22cb9d0d280c5177f548c90d64f57f5c0cce4f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "47c7b995_d7101f8e",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-27T02:19:12Z",
+      "side": 1,
+      "message": "from a structural perspective.\nfor vpx decode, this stuff is in the C2...Dec.cpp file\nbut here for encode, it\u0027s in the C2...Enc.h file\n\nwondering why they are structured differently.",
+      "range": {
+        "startLine": 342,
+        "startChar": 8,
+        "endLine": 342,
+        "endChar": 21
+      },
+      "revId": "22cb9d0d280c5177f548c90d64f57f5c0cce4f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
