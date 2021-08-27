@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c9ceb5f1_b58908b8",
+        "filename": "media/libstagefright/timedtext/test/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-08-27T23:53:19Z",
+      "side": 1,
+      "message": "libstagefright_timedtext isn\u0027t used in a mainline module.\nLet us remove this one from this CL.",
+      "revId": "cb456e00a358e5af9a115979004402bcff7d0172",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
