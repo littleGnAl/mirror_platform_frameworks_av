@@ -39,6 +39,30 @@
       },
       "revId": "22cb9d0d280c5177f548c90d64f57f5c0cce4f45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1532a012_86174ce7",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 342,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-08-27T19:50:55Z",
+      "side": 1,
+      "message": "Post S will move these to *.cpp file\nFiled b/1810582 to track this.",
+      "parentUuid": "47c7b995_d7101f8e",
+      "range": {
+        "startLine": 342,
+        "startChar": 8,
+        "endLine": 342,
+        "endChar": 21
+      },
+      "revId": "22cb9d0d280c5177f548c90d64f57f5c0cce4f45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
