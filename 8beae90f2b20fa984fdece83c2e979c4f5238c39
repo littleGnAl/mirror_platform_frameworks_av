@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f32d6908_4d02acdc",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 5
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-08-28T00:34:47Z",
+      "side": 1,
+      "message": "Add the following line after making two changes as per review comments in AndroidTest.xml\n\nAlso remove trailing \"/\" in AndroidTest.xml in \"push\" entries for the test folder.",
+      "revId": "8beae90f2b20fa984fdece83c2e979c4f5238c39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "89da85fc_eda21973",
         "filename": "/COMMIT_MSG",
         "patchSetId": 5
@@ -19,6 +36,52 @@
         "startChar": 32,
         "endLine": 13,
         "endChar": 34
+      },
+      "revId": "8beae90f2b20fa984fdece83c2e979c4f5238c39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f46b759e_a37f8d2c",
+        "filename": "media/codecs/m4v_h263/enc/test/AndroidTest.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-08-28T00:34:47Z",
+      "side": 1,
+      "message": "Remove this.\n\natest fails with an error because of this.",
+      "range": {
+        "startLine": 20,
+        "startChar": 93,
+        "endLine": 20,
+        "endChar": 94
+      },
+      "revId": "8beae90f2b20fa984fdece83c2e979c4f5238c39",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ceb45e2_e8346371",
+        "filename": "media/libstagefright/flac/dec/test/AndroidTest.xml",
+        "patchSetId": 5
+      },
+      "lineNbr": 20,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-08-28T00:34:47Z",
+      "side": 1,
+      "message": "Remove this",
+      "range": {
+        "startLine": 20,
+        "startChar": 83,
+        "endLine": 20,
+        "endChar": 84
       },
       "revId": "8beae90f2b20fa984fdece83c2e979c4f5238c39",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
