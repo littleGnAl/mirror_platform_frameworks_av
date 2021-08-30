@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cfbe4e3d_b29bb13e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2021-08-30T20:26:57Z",
+      "side": 1,
+      "message": "Checked with smoreland@ and this indeed seems to be an issue. He filed b/198186200 to see how this can be resolved. For now I\u0027ll drop the changes in APEXes to prevent such breakages. aosp/1740280 seems would have the same issue, so I\u0027ll revert it.",
+      "parentUuid": "a98508a5_8f38e405",
+      "revId": "cda73391a68997462d47a3179f6c3a115223c2d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d931150f_d15a22c7",
         "filename": "apex/mediaswcodec.rc",
         "patchSetId": 2
