@@ -59,7 +59,8 @@ void JitterCalc::putInterArrivalData(int64_t rtpTime, int64_t arrivalTimeUs) {
     int64_t tempLastTimeStamp = mLastTimeStamp;
 
     // A RTP time wraps around after UINT32_MAX. We must consider this case.
-    int64_t overflowMask = (mLastTimeStamp ^ rtpTime) & UINT32_MSB;
+    // If the first stamp overs 2^31 and the two stamps have different 32th bit, it's overflow.
+    int64_t overflowMask = (mFirstTimeStamp & (mLastTimeStamp ^ rtpTime)) & UINT32_MSB;
     tempRtpTime |= ((overflowMask & ~rtpTime) << 1);
     tempLastTimeStamp |= ((overflowMask & ~mLastTimeStamp) << 1);
 
