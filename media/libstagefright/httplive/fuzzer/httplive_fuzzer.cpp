@@ -231,7 +231,7 @@ void HttpLiveFuzzer::invokeConnectAsync() {
   string currentFileName = generateFileName();
   size_t fileUrlLength =
       strlen(currentFileName.c_str()) + strlen(kFileUrlPrefix);
-  char *url = new char[fileUrlLength + 1];
+  char url[fileUrlLength + 1];
   strcpy(url, kFileUrlPrefix);
   strcat(url, currentFileName.c_str());
   string str_1 = mFDP->ConsumeRandomLengthString(kRandomStringLength);
