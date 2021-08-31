@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9f0181c_1fadd86c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-08-31T23:35:18Z",
+      "side": 1,
+      "message": "These 4 need more work before these can be run as part of MTS.\nThese currently fail with the following error on Q\ncannot locate symbol \"_ZN7android23sp_report_stack_pointerEv\" referenced by\n\nFix is to move libutils from shared_libs to static_libs in all these tests.",
+      "revId": "f544d127b9acc7cb72e000d79f2f1a801bc7f4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19eb609e_032d9d54",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-08-31T23:35:18Z",
+      "side": 1,
+      "message": "remove libutils from shared_libs and add after libstagefright_foundation in static_libs.\n\nsame for other tests as well",
+      "range": {
+        "startLine": 58,
+        "startChar": 0,
+        "endLine": 58,
+        "endChar": 19
+      },
+      "revId": "f544d127b9acc7cb72e000d79f2f1a801bc7f4f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
