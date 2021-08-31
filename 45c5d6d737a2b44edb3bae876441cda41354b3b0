@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ed0df5f_79745bf4",
+        "filename": "media/libstagefright/httplive/fuzzer/httplive_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 234,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-08-31T15:48:39Z",
+      "side": 1,
+      "message": "I don\u0027t like variable length arrays in the stack frame; I\u0027m ok with doing them\nin the heap, but do not like them on the stack.\na simpler 1-line change would have been to add the matching delete call at the\nend of the routine.\n\nan even better improveiment is changing url to a std::string.\nreworking lines 235/236 where we initialize the string\nand changing line 242 to say url.c_str() instead of url.\nThis approach also eliminates the need for the \u0027fileUrlLength\u0027 variable\ndefined on line 232-233.\n\nplease re-work to use the std::string approach.",
+      "range": {
+        "startLine": 234,
+        "startChar": 10,
+        "endLine": 234,
+        "endChar": 28
+      },
+      "revId": "45c5d6d737a2b44edb3bae876441cda41354b3b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
