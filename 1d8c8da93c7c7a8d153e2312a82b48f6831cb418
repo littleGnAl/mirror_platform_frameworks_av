@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a2e915b0_538b3ed2",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-01T00:51:20Z",
+      "side": 1,
+      "message": "Add the following instead.\nI have tested these on latest Android S with both CLs\n(one that changed onStop and onRelease and this CL)\n\nTest: atest CtsMediaTestCases:android.media.cts.AdaptivePlaybackTest \nTest: atest CtsMediaV2TestCases -- --module-arg  \\ CtsMediaV2TestCases:instrumentation-arg:codec-prefix:\u003d\\\nc2.android.mpeg4.decoder\nTest: atest CtsMediaV2TestCases -- --module-arg  \\ CtsMediaV2TestCases:instrumentation-arg:codec-prefix:\u003d\\\nc2.android.h263.decoder\nTest: atest VtsHalMediaC2V1_0TargetVideoDecTest",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 118
+      },
+      "revId": "1d8c8da93c7c7a8d153e2312a82b48f6831cb418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "131c75a0_1bca4931",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-01T00:51:20Z",
+      "side": 1,
+      "message": "Bug: 197525621\n\nadd this as well",
+      "revId": "1d8c8da93c7c7a8d153e2312a82b48f6831cb418",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
