@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0bfbb636_d3a2721f",
+        "filename": "media/codec2/components/mpeg4_h263/C2SoftMpeg4Dec.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-01T18:32:58Z",
+      "side": 1,
+      "message": "Ray,\nAll the checks on mDecHandle have already been removed completely.\n\nThere is just one occurrence of mDecHandle-\u003e and rest all are passing mDecHandle to different functions.\n\nPlease suggest if you prefer changing mDecHandle to \u0026mVideoDecControls (15 calls) and mDecHandle-\u003e to mVideoDecControls. (1 call).",
+      "parentUuid": "8287cb9e_1990c81d",
+      "range": {
+        "startLine": 231,
+        "startChar": 5,
+        "endLine": 231,
+        "endChar": 37
+      },
+      "revId": "ce14091ab09074d50e727680a5041dac351b55fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "448fd031_76bb4ea9",
         "filename": "media/codec2/components/mpeg4_h263/C2SoftMpeg4Dec.h",
         "patchSetId": 6
