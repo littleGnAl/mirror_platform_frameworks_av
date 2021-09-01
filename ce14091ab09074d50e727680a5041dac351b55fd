@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "da8c7fe7_9524bf39",
+        "filename": "media/codec2/components/mpeg4_h263/C2SoftMpeg4Dec.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-01T23:00:34Z",
+      "side": 1,
+      "message": "i want to remove all references to mDecHandle; no longer declare it as a class member. all the uses should use mVideoDecComtrols, with the appropriate changes\nto deal with it being  being the object instead of a pointer to the object",
+      "parentUuid": "0bfbb636_d3a2721f",
+      "range": {
+        "startLine": 231,
+        "startChar": 5,
+        "endLine": 231,
+        "endChar": 37
+      },
+      "revId": "ce14091ab09074d50e727680a5041dac351b55fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "448fd031_76bb4ea9",
         "filename": "media/codec2/components/mpeg4_h263/C2SoftMpeg4Dec.h",
         "patchSetId": 6
