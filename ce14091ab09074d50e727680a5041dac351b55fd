@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8287cb9e_1990c81d",
+        "filename": "media/codec2/components/mpeg4_h263/C2SoftMpeg4Dec.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 231,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-01T14:41:37Z",
+      "side": 1,
+      "message": "i like the idea that the controls are part of the class; \nit makes it impossible to leak. which is good.\n\nbut if we\u0027re going to do this, let\u0027s reference it directly.\nwhich means changing \"mDecHandle-\u003e\" to \"mVideoDecControls.\" everywhere\nand anything that says \"if (mDecHandle)\" becomes always true, so drop the\nconditional.\nand getting rid of mDecHandle completely.",
+      "range": {
+        "startLine": 231,
+        "startChar": 5,
+        "endLine": 231,
+        "endChar": 37
+      },
+      "revId": "ce14091ab09074d50e727680a5041dac351b55fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "448fd031_76bb4ea9",
+        "filename": "media/codec2/components/mpeg4_h263/C2SoftMpeg4Dec.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 22,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-01T14:41:37Z",
+      "side": 1,
+      "message": "\u003c\u003e not \"\" \nsince it is not part of the plugin.",
+      "range": {
+        "startLine": 22,
+        "startChar": 9,
+        "endLine": 22,
+        "endChar": 23
+      },
+      "revId": "ce14091ab09074d50e727680a5041dac351b55fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
