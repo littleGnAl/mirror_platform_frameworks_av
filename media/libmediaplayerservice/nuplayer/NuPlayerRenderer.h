@@ -154,7 +154,7 @@ private:
     bool mUseVirtualAudioSink;
     sp<AMessage> mNotify;
     Mutex mLock;
-    uint32_t mFlags;
+    const uint32_t mFlags;
     List<QueueEntry> mAudioQueue;
     List<QueueEntry> mVideoQueue;
     uint32_t mNumFramesWritten;
