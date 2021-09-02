@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "982c1a4d_7d9bd8ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-09-02T14:37:48Z",
+      "side": 1,
+      "message": "Perhaps you can clarify this for me: So far I believed that most of media development (exceptions are eg. OWNERS files) should go into internal. Is there a reason you send this to AOSP?",
+      "revId": "bff7395262647eff62d59aa45815b9345e2a741f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fca94e0_6dcab797",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerRenderer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-09-02T14:37:48Z",
+      "side": 1,
+      "message": "Please check that the presubmit is complaining about a modification being made on this field.",
+      "range": {
+        "startLine": 157,
+        "startChar": 19,
+        "endLine": 157,
+        "endChar": 25
+      },
+      "revId": "bff7395262647eff62d59aa45815b9345e2a741f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
