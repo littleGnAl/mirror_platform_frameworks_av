@@ -69,6 +69,30 @@
       },
       "revId": "a5d7acc3fbf9b4798b85ed160ba2dbae0593270b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f05bfc0d_f20b5a6b",
+        "filename": "media/libstagefright/rtsp/JitterCalculator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2021-09-03T12:52:25Z",
+      "side": 1,
+      "message": "because line 74 mInterArrivalJitterUs is int32",
+      "parentUuid": "0e392d3c_53211b78",
+      "range": {
+        "startLine": 68,
+        "startChar": 34,
+        "endLine": 68,
+        "endChar": 65
+      },
+      "revId": "a5d7acc3fbf9b4798b85ed160ba2dbae0593270b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
