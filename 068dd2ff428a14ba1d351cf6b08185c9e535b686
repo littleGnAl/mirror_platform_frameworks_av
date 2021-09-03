@@ -16,6 +16,41 @@
       "message": "internal vs aosp version drift. changes in the internal branch that\nare not yet reflected here in the aosp branch are keeping the CL from\npropagating properly.",
       "revId": "068dd2ff428a14ba1d351cf6b08185c9e535b686",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e71bb11_58a854b9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-03T03:11:15Z",
+      "side": 1,
+      "message": "i looked at latest on partner branch and confirmed that there is no change in these two files w.r.t. aosp/master.\nThis conflict here appears to be an error in treehugger and not a real conflict.",
+      "parentUuid": "994653d1_5158b6cd",
+      "revId": "068dd2ff428a14ba1d351cf6b08185c9e535b686",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bd327a78_300e05cd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-03T03:11:15Z",
+      "side": 1,
+      "message": "Ray/Wonsik,\nCan you please submit this?\nThanks.",
+      "revId": "068dd2ff428a14ba1d351cf6b08185c9e535b686",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
