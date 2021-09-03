@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "78cc58c3_af8f91af",
+        "filename": "media/libstagefright/rtsp/JitterCalculator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 48,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-09-03T08:51:09Z",
+      "side": 1,
+      "message": "could it be this the logic that\u0027s overflowing? If so a similar adjustment as there is originally in putInterArrivalData() could solve that.",
+      "range": {
+        "startLine": 48,
+        "startChar": 31,
+        "endLine": 48,
+        "endChar": 69
+      },
+      "revId": "a5d7acc3fbf9b4798b85ed160ba2dbae0593270b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "820e5dd4_ba318580",
         "filename": "media/libstagefright/rtsp/JitterCalculator.cpp",
         "patchSetId": 1
