@@ -78,6 +78,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "528c3076_53b3149c",
+        "filename": "media/libstagefright/xmlparser/vts/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1408266
+      },
+      "writtenOn": "2021-09-03T23:43:19Z",
+      "side": 1,
+      "message": "It looks like this ownership information is different from your current triage practice. I would suggest your team double check the ownership information in https://docs.google.com/spreadsheets/d/1Mwnb6juZBiRH9_l3Wa6Gm8q6xpj9bsHK1YNL8yo3APc/edit#gid\u003d1880379107\u0026range\u003dD121, a spreadsheet used by TVC team to find the right contact point when routing issues.",
+      "parentUuid": "a6d5b454_e12bebf2",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 23
+      },
+      "revId": "ff92be9ea90483f1adba6c7c506b06a8f8e980fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d73ffa0e_b8300038",
         "filename": "media/libstagefright/xmlparser/vts/OWNERS",
         "patchSetId": 1
