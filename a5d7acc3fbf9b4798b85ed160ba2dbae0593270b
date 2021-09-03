@@ -45,6 +45,30 @@
       },
       "revId": "a5d7acc3fbf9b4798b85ed160ba2dbae0593270b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e392d3c_53211b78",
+        "filename": "media/libstagefright/rtsp/JitterCalculator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2021-09-03T11:53:03Z",
+      "side": 1,
+      "message": "Hi Lajos.\nLet me present an example when the fix is not applied.\nLet 2 consecutive RTP time as\n\nA \u003d 2^31 - a    (a \u0026 b are a few kilo scale natural number)\nB \u003d 2^31 + b\n\nBecause of the bug,\nthe two temporal value in line 64 \u0026 65 for calculation will be\nA\u0027 \u003d 2^31 - a + 2^32 (wrong overflow masking added 2^32)\nB\u0027 \u003d 2^31 + b        \n\nAnd a difference D of the two temporal will be,\nD \u003d A\u0027 - B\u0027 \u003d 2^32 - a + b\nSo the difference D will be around 2^32. Then line 68 is\ndiffTimeStampUs \u003d D * 1000000 / 90000 \u003d D * 11.1111\n\nThe diffTimeStampUs definitely overs int32 range.\nSo varianceUs in line 73 also be over the range,\nthen line 74 makes overflow when adding the varianceUs.",
+      "parentUuid": "820e5dd4_ba318580",
+      "range": {
+        "startLine": 68,
+        "startChar": 34,
+        "endLine": 68,
+        "endChar": 65
+      },
+      "revId": "a5d7acc3fbf9b4798b85ed160ba2dbae0593270b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
