@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1c908c68_a6b378c1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-03T16:39:49Z",
+      "side": 1,
+      "message": "Lajos,\nEven the InputBufferTest doesn\u0027t actually queue any input.\nIt either queues work with a null input buffer or no input buffer. So even this is expected to pass.",
+      "parentUuid": "437c87bf_cf0da655",
+      "revId": "24b36080772ad9f0e496edc2099954a241c54690",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de662b0f_5de51c69",
         "filename": "media/codec2/hidl/1.0/vts/functional/component/VtsHalMediaC2V1_0TargetComponentTest.cpp",
         "patchSetId": 1
