@@ -93,6 +93,30 @@
       },
       "revId": "a5d7acc3fbf9b4798b85ed160ba2dbae0593270b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a7b0b07_7dd4fb11",
+        "filename": "media/libstagefright/rtsp/JitterCalculator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2021-09-04T06:34:07Z",
+      "side": 1,
+      "message": "In a testing, a variance D was\n47721825566 (\u003d 4294964305 * 11.1, \u003d 0xfffffff4 e38ec70a)\nIt would be saved in mInterArrivalJitterUs as 0xe38exxxx .\nThis makes overflows on the next calling when (mInterArrivalJitterUs * 15) executes\n\nHm..turning mInterArrivalUs \u0026 mBaseJitterUs into int64 from int32 would makes safer. Shall I ?",
+      "parentUuid": "f05bfc0d_f20b5a6b",
+      "range": {
+        "startLine": 68,
+        "startChar": 34,
+        "endLine": 68,
+        "endChar": 65
+      },
+      "revId": "a5d7acc3fbf9b4798b85ed160ba2dbae0593270b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
