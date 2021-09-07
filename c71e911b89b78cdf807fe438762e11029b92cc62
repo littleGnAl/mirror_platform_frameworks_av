@@ -103,6 +103,24 @@
       "message": "This line may also be a problem",
       "revId": "c71e911b89b78cdf807fe438762e11029b92cc62",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a5de1b1_4edf84ea",
+        "filename": "media/extractors/fuzzers/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 37,
+      "author": {
+        "id": 1002751
+      },
+      "writtenOn": "2021-09-07T17:43:32Z",
+      "side": 1,
+      "message": "export_include_dirs is a superset of local_include_dirs, I don\u0027t understand how this patch will fix anything if it leaves export_include_dirs here.",
+      "parentUuid": "5e62a2ac_218b25e4",
+      "revId": "c71e911b89b78cdf807fe438762e11029b92cc62",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
