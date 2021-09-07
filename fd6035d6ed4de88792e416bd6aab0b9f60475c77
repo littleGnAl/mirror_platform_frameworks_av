@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f1e3a7a_bc1e9d4e",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-07T20:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9a94d51d_befc5119",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 50
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc5939e7_f071acde",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-07T18:30:07Z",
       "side": 1,
       "message": "nit: alphabetical",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4748c66b_c093bf57",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-07T20:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc5939e7_f071acde",
       "range": {
         "startLine": 26,
         "startChar": 0,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fda79b47_4a61a91b",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-07T20:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "81bd8e13_dab6af8d",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dcfcebe9_fe00a61d",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-09-07T18:30:07Z",
       "side": 1,
       "message": "nit: alphabetical",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 26
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7818229d_54bf360f",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-07T20:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "dcfcebe9_fe00a61d",
       "range": {
         "startLine": 38,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6d4e650c_fca51bdd",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-07T20:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f87a4bbb_73c65048",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 7
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "61d7b773_2f08adf6",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-09-07T18:30:07Z",
       "side": 1,
       "message": "nit: would prefer to keep a value, not a pointer here, due to lifetime risk.",
+      "range": {
+        "startLine": 226,
+        "startChar": 23,
+        "endLine": 226,
+        "endChar": 31
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9fc77f1_72b041a6",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-07T20:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "61d7b773_2f08adf6",
       "range": {
         "startLine": 226,
         "startChar": 23,
@@ -181,6 +325,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f1c7a4f8_4d6058d9",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-07T20:01:37Z",
+      "side": 1,
+      "message": "added a comment and used a variable now instead.",
+      "parentUuid": "cd5adbcf_05cdb932",
+      "range": {
+        "startLine": 236,
+        "startChar": 29,
+        "endLine": 236,
+        "endChar": 30
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e7f2d8e7_f1152153",
         "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
         "patchSetId": 3
@@ -192,6 +360,30 @@
       "writtenOn": "2021-09-07T18:30:07Z",
       "side": 1,
       "message": "nit: call this out as a constexpr constant? INPUT_AMPLITUDE?",
+      "range": {
+        "startLine": 238,
+        "startChar": 42,
+        "endLine": 238,
+        "endChar": 52
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e5403fb_7ef55278",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-07T20:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e7f2d8e7_f1152153",
       "range": {
         "startLine": 238,
         "startChar": 42,
@@ -225,6 +417,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0540791_9bb57133",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-07T20:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1d0d408e_55fd2f2f",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 16
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "33c6a5f9_0f70aaa3",
@@ -248,6 +464,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9805df5_a9acd553",
+        "filename": "media/libeffects/lvm/tests/EffectTestHelper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-07T20:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "33c6a5f9_0f70aaa3",
+      "range": {
+        "startLine": 86,
+        "startChar": 44,
+        "endLine": 86,
+        "endChar": 45
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e3fa8ba5_d7b32bb4",
@@ -261,6 +501,30 @@
       "writtenOn": "2021-09-07T18:30:07Z",
       "side": 1,
       "message": "just allocate on a stack.  it\u0027s a c++ extension supported by clang?  then the delete on line 100 is not required.",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ba2b3c98_f6a179d6",
+        "filename": "media/libeffects/lvm/tests/EffectTestHelper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-07T20:01:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e3fa8ba5_d7b32bb4",
       "range": {
         "startLine": 90,
         "startChar": 5,
