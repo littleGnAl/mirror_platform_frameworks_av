@@ -1,0 +1,274 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb566e1e_f5c4e88d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-09-07T18:30:07Z",
+      "side": 1,
+      "message": "looks good, minor nits.",
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a94d51d_befc5119",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 19,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-09-07T18:30:07Z",
+      "side": 1,
+      "message": "nit: alphabetical",
+      "range": {
+        "startLine": 19,
+        "startChar": 0,
+        "endLine": 19,
+        "endChar": 50
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc5939e7_f071acde",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-09-07T18:30:07Z",
+      "side": 1,
+      "message": "nit: alphabetical",
+      "range": {
+        "startLine": 26,
+        "startChar": 0,
+        "endLine": 26,
+        "endChar": 21
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81bd8e13_dab6af8d",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 28,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-09-07T18:30:07Z",
+      "side": 1,
+      "message": "nit: prefer effect_type_t if you are using a typedef.",
+      "range": {
+        "startLine": 28,
+        "startChar": 2,
+        "endLine": 28,
+        "endChar": 15
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dcfcebe9_fe00a61d",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-09-07T18:30:07Z",
+      "side": 1,
+      "message": "nit: alphabetical",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 26
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f87a4bbb_73c65048",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 205,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-09-07T18:30:07Z",
+      "side": 1,
+      "message": "nit: using is preferred over typedef.\n  using SingleEffect... \u003d std::tuple\u003c...",
+      "range": {
+        "startLine": 205,
+        "startChar": 0,
+        "endLine": 205,
+        "endChar": 7
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "61d7b773_2f08adf6",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 226,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-09-07T18:30:07Z",
+      "side": 1,
+      "message": "nit: would prefer to keep a value, not a pointer here, due to lifetime risk.",
+      "range": {
+        "startLine": 226,
+        "startChar": 23,
+        "endLine": 226,
+        "endChar": 31
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cd5adbcf_05cdb932",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-09-07T18:30:07Z",
+      "side": 1,
+      "message": "what is the 2 for here and below?  Can you call this out as a constant?",
+      "range": {
+        "startLine": 236,
+        "startChar": 29,
+        "endLine": 236,
+        "endChar": 30
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e7f2d8e7_f1152153",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 238,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-09-07T18:30:07Z",
+      "side": 1,
+      "message": "nit: call this out as a constexpr constant? INPUT_AMPLITUDE?",
+      "range": {
+        "startLine": 238,
+        "startChar": 42,
+        "endLine": 238,
+        "endChar": 52
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1d0d408e_55fd2f2f",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-09-07T18:30:07Z",
+      "side": 1,
+      "message": "nit: prefer to assert if not one of these 4 effects.",
+      "range": {
+        "startLine": 261,
+        "startChar": 0,
+        "endLine": 261,
+        "endChar": 16
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33c6a5f9_0f70aaa3",
+        "filename": "media/libeffects/lvm/tests/EffectTestHelper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-09-07T18:30:07Z",
+      "side": 1,
+      "message": "const reference would sometimes be more specific in matching.",
+      "range": {
+        "startLine": 86,
+        "startChar": 44,
+        "endLine": 86,
+        "endChar": 45
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3fa8ba5_d7b32bb4",
+        "filename": "media/libeffects/lvm/tests/EffectTestHelper.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 91,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-09-07T18:30:07Z",
+      "side": 1,
+      "message": "just allocate on a stack.  it\u0027s a c++ extension supported by clang?  then the delete on line 100 is not required.",
+      "range": {
+        "startLine": 90,
+        "startChar": 5,
+        "endLine": 91,
+        "endChar": 34
+      },
+      "revId": "fd6035d6ed4de88792e416bd6aab0b9f60475c77",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
