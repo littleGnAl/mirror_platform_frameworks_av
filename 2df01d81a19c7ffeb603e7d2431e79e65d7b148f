@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b82cf98a_5434749f",
+        "filename": "media/libeffects/lvm/tests/EffectBundleTest.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 240,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-08T05:00:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "e81dfbac_33710eba",
+      "range": {
+        "startLine": 240,
+        "startChar": 2,
+        "endLine": 240,
+        "endChar": 4
+      },
+      "revId": "2df01d81a19c7ffeb603e7d2431e79e65d7b148f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "949c4895_0d8eb552",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-09-08T03:05:35Z",
       "side": 1,
       "message": "no need to change, but nit: was thinking const ref.",
+      "range": {
+        "startLine": 86,
+        "startChar": 45,
+        "endLine": 86,
+        "endChar": 50
+      },
+      "revId": "2df01d81a19c7ffeb603e7d2431e79e65d7b148f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4b841fbd_db595fe6",
+        "filename": "media/libeffects/lvm/tests/EffectTestHelper.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 86,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-08T05:00:25Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "949c4895_0d8eb552",
       "range": {
         "startLine": 86,
         "startChar": 45,
