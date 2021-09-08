@@ -246,6 +246,31 @@ bool OutputBufferQueue::registerBuffer(const C2ConstGraphicBlock& block) {
     LOG(WARNING) << "receiving stale buffer: generation "
                  << mGeneration << " , diff " << d  << " : slot "
                  << oldSlot;
+    if (d > 0 && data) {
+        // migrate a stale buffer
+        _C2BlockFactory::HoldBlockFromBufferQueue(data, mOwner, getHgbp(mIgbp));
+        if (!_C2BlockFactory::BeginAttachBlockToBufferQueue(data)) {
+            return false;
+        }
+
+        int bqSlot;
+        auto gb = createGraphicBuffer(block);
+        gb->setGenerationNumber(mGeneration);
+        if (OK != mIgbp->attachBuffer(&bqSlot, gb)) {
+            return false;
+        }
+        bool attach =
+                _C2BlockFactory::EndAttachBlockToBufferQueue(
+                        data, mOwner, getHgbp(mIgbp),
+                        mGeneration, mBqId, bqSlot);
+        if (!attach) {
+            mIgbp->cancelBuffer(bqSlot, Fence::NO_FENCE);
+            return false;
+        }
+        mBuffers[bqSlot] = gb;
+        mPoolDatas[bqSlot] = data;
+        return true;
+    }
     return false;
 }
 

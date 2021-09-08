@@ -589,6 +589,12 @@ public:
                             mProducer->detachBuffer(static_cast<int32_t>(i));
                     noInit = !transResult.isOk() ||
                              static_cast<HStatus>(transResult) == HStatus::NO_INIT;
+                    if (transResult.isOk() &&
+                            static_cast<HStatus>(transResult) == HStatus::BAD_VALUE) {
+                        std::shared_ptr<C2BufferQueueBlockPoolData> data = mPoolDatas[i].lock();
+                        if (data)
+                            data->display = true;
+                    }
                 }
             }
             int32_t oldGeneration = mGeneration;
@@ -702,7 +708,7 @@ int C2BufferQueueBlockPoolData::migrate(
         uint32_t toGeneration, uint64_t toBqId,
         sp<GraphicBuffer> *buffers, uint32_t oldGeneration) {
     std::scoped_lock<std::mutex> l(lock);
-    if (!held || bqId == 0) {
+    if ((!held || bqId == 0) && !display) {
         ALOGV("buffer is not owned");
         return -1;
     }
@@ -753,6 +759,10 @@ int C2BufferQueueBlockPoolData::migrate(
     if (!transResult.isOk() || !converted || bStatus != android::OK) {
         ALOGD("attach failed %d", static_cast<int>(bStatus));
         return -1;
+    }
+    if (display) {
+        (void)producer->cancelBuffer(slot, hidl_handle{}).isOk();
+        display = false;
     }
     ALOGV("local migration from gen %u : %u slot %d : %d",
           generation, toGeneration, bqSlot, slot);
