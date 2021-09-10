@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6613a9f0_d700e932",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-10T00:19:41Z",
+      "side": 1,
+      "message": "happy to see this move out of the header.\n\nthe comments on the stuff moved into the C++ -- they are more questions than suggestions; but the answers to the questions may lead us to making some other changes.",
+      "revId": "a2848a6925adf61779c71ea3664f01a8762bcd69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a50fa8f_cd47d909",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-10T00:19:41Z",
+      "side": 1,
+      "message": "\u003c 4096 is what we\u0027re worried about.\n\nin the \u003d\u003d 4096 case, this marks as changed something that we didn\u0027t actually change. doesn\u0027t that signal something back to the client side? so the client might\nget something that says we changed it .... to the same thing.",
+      "range": {
+        "startLine": 197,
+        "startChar": 19,
+        "endLine": 197,
+        "endChar": 24
+      },
+      "revId": "a2848a6925adf61779c71ea3664f01a8762bcd69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4cdcd31_c7d19f99",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-10T00:19:41Z",
+      "side": 1,
+      "message": "with these 2 independent tests, i can see someone leaving profile blank\nbut specifying a high level (higher than profile vp9_0 might support).\n\nis that sort of invalid combination detected elsewhere?  e.g. does the\ncodec itself say \"that\u0027s nonsense\" and reject it?  or do we need to\ncatch such invalid things here?",
+      "range": {
+        "startLine": 222,
+        "startChar": 26,
+        "endLine": 222,
+        "endChar": 54
+      },
+      "revId": "a2848a6925adf61779c71ea3664f01a8762bcd69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "187fd6ae_930b4f8b",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 235,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-10T00:19:41Z",
+      "side": 1,
+      "message": "to go with my comments about the \u003c\u003d 4096 above, this is the good\nexample of \u0027we\u0027re only doing this if we\u0027re going to change the value\u0027.",
+      "range": {
+        "startLine": 235,
+        "startChar": 24,
+        "endLine": 235,
+        "endChar": 30
+      },
+      "revId": "a2848a6925adf61779c71ea3664f01a8762bcd69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
