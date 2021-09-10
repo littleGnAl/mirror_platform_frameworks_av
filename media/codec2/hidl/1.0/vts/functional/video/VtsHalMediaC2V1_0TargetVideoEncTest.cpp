@@ -817,6 +817,10 @@ INSTANTIATE_TEST_SUITE_P(EncodeTestwithEOS, Codec2VideoEncEncodeTest,
 TEST_P(Codec2VideoEncHidlTest, AdaptiveBitrateTest) {
     description("Encodes input file for different bitrates");
     if (mDisableTest) GTEST_SKIP() << "Test is disabled";
+    if ((mMime.find("avc") == std::string::npos) && (mMime.find("hevc") == std::string::npos) &&
+        (mMime.find("vp8") == std::string::npos) && (mMime.find("vp9") == std::string::npos)) {
+        GTEST_SKIP() << "AdaptiveBitrateTest is enabled only for avc, hevc, vp8 and vp9 encoders";
+    }
 
     std::ifstream eleStream;
     eleStream.open(mInputFile, std::ifstream::binary);
