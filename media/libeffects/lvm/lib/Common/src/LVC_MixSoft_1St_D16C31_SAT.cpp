@@ -19,7 +19,6 @@
    INCLUDE FILES
 ***********************************************************************************/
 
-#include <string.h>
 #include "LVC_Mixer_Private.h"
 #include "VectorArithmetic.h"
 #include "ScalarArithmetic.h"
@@ -69,7 +68,7 @@ void LVC_MixSoft_1St_D16C31_SAT(LVMixer3_1St_FLOAT_st* ptrInstance, const LVM_FL
 
     if (HardMixing) {
         if (pInstance->Target == 0)
-            memset(dst, 0, n * sizeof(*dst));
+            LoadConst_Float(0.0, dst, n);
         else {
             if ((pInstance->Target) != 1.0f)
                 Mult3s_Float(src, (pInstance->Target), dst, n);
@@ -151,7 +150,7 @@ void LVC_MixSoft_Mc_D16C31_SAT(LVMixer3_1St_FLOAT_st* ptrInstance, const LVM_FLO
 
     if (HardMixing) {
         if (pInstance->Target == 0)
-            memset(dst, 0, NrFrames * NrChannels * sizeof(*dst));
+            LoadConst_Float(0.0, dst, NrFrames * NrChannels);
         else {
             if ((pInstance->Target) != 1.0f)
                 Mult3s_Float(src, (pInstance->Target), dst, NrFrames * NrChannels);

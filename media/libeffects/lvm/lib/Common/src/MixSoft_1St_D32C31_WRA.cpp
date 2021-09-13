@@ -19,7 +19,6 @@
    INCLUDE FILES
 ***********************************************************************************/
 
-#include <string.h>
 #include "Mixer_private.h"
 #include "VectorArithmetic.h"
 
@@ -62,7 +61,7 @@ void MixSoft_1St_D32C31_WRA(Mix_1St_Cll_FLOAT_t* pInstance, const LVM_FLOAT* src
 
     if (HardMixing) {
         if (pInstance->Target == 0)
-            memset(dst, 0, n * sizeof(*dst));
+            LoadConst_Float(0, dst, n);
         else if ((pInstance->Target) == 1.0f) {
             if (src != dst) Copy_Float((LVM_FLOAT*)src, (LVM_FLOAT*)dst, (LVM_INT16)(n));
         } else

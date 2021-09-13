@@ -15,7 +15,9 @@
  * limitations under the License.
  */
 
+#ifdef BIQUAD_OPT
 #include <system/audio.h>
+#endif
 #include "LVPSA.h"
 #include "LVPSA_Private.h"
 #include "VectorArithmetic.h"
@@ -183,11 +185,13 @@ LVPSA_RETURN LVPSA_ApplyNewSettings(LVPSA_InstancePr_t* pInst) {
                 break;
             }
         }
+#ifdef BIQUAD_OPT
         /*
          * Create biquad instance
          */
         pInst->specBiquad.resize(pInst->nRelevantFilters,
                                  android::audio_utils::BiquadFilter<LVM_FLOAT>(FCC_1));
+#endif
         LVPSA_SetBPFiltersType(pInst, &Params);
         LVPSA_SetBPFCoefficients(pInst, &Params);
         LVPSA_SetQPFCoefficients(pInst, &Params);
@@ -308,6 +312,7 @@ LVPSA_RETURN LVPSA_SetBPFCoefficients(LVPSA_InstancePr_t* pInst, LVPSA_ControlPa
                 /*
                  * Set the coefficients
                  */
+#ifdef BIQUAD_OPT
                 const std::array<LVM_FLOAT, android::audio_utils::kBiquadNumCoefs> coefs = {
                         Coefficients.A0, 0.0, -(Coefficients.A0), -(Coefficients.B1),
                         -(Coefficients.B2)};
@@ -315,6 +320,10 @@ LVPSA_RETURN LVPSA_SetBPFCoefficients(LVPSA_InstancePr_t* pInst, LVPSA_ControlPa
                         .setCoefficients<
                                 std::array<LVM_FLOAT, android::audio_utils::kBiquadNumCoefs>>(
                                 coefs);
+#else
+                BP_1I_D16F32Cll_TRC_WRA_01_Init(&pInst->pBP_Instances[ii], &pInst->pBP_Taps[ii],
+                                                &Coefficients);
+#endif
                 break;
             }
 
@@ -330,6 +339,7 @@ LVPSA_RETURN LVPSA_SetBPFCoefficients(LVPSA_InstancePr_t* pInst, LVPSA_ControlPa
                 /*
                  * Set the coefficients
                  */
+#ifdef BIQUAD_OPT
                 const std::array<LVM_FLOAT, android::audio_utils::kBiquadNumCoefs> coefs = {
                         Coefficients.A0, 0.0, -(Coefficients.A0), -(Coefficients.B1),
                         -(Coefficients.B2)};
@@ -337,6 +347,10 @@ LVPSA_RETURN LVPSA_SetBPFCoefficients(LVPSA_InstancePr_t* pInst, LVPSA_ControlPa
                         .setCoefficients<
                                 std::array<LVM_FLOAT, android::audio_utils::kBiquadNumCoefs>>(
                                 coefs);
+#else
+                BP_1I_D16F16Css_TRC_WRA_01_Init(&pInst->pBP_Instances[ii], &pInst->pBP_Taps[ii],
+                                                &Coefficients);
+#endif
                 break;
             }
         }
@@ -620,9 +634,25 @@ LVPSA_RETURN LVPSA_BPDoublePrecCoefs(LVM_UINT16 Fs, LVPSA_FilterParam_t* pFilter
 /*                                                                                  */
 /************************************************************************************/
 LVPSA_RETURN LVPSA_ClearFilterHistory(LVPSA_InstancePr_t* pInst) {
+#ifdef BIQUAD_OPT
     for (size_t i = 0; i < pInst->specBiquad.size(); i++) {
         pInst->specBiquad[i].clear();
     }
+#else
+    LVM_INT8* pTapAddress;
+    LVM_UINT32 i;
+
+    /* Band Pass filters taps */
+    pTapAddress = (LVM_INT8*)pInst->pBP_Taps;
+    for (i = 0; i < pInst->nBands * sizeof(Biquad_1I_Order2_FLOAT_Taps_t); i++) {
+        pTapAddress[i] = 0;
+    }
+    /* Quasi-peak filters taps */
+    pTapAddress = (LVM_INT8*)pInst->pQPD_Taps;
+    for (i = 0; i < pInst->nBands * sizeof(QPD_Taps_t); i++) {
+        pTapAddress[i] = 0;
+    }
+#endif
 
     return (LVPSA_OK);
 }
