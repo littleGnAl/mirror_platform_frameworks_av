@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a21ae5d_665c6bf1",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-09-13T14:54:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a50fa8f_cd47d909",
+      "range": {
+        "startLine": 197,
+        "startChar": 19,
+        "endLine": 197,
+        "endChar": 24
+      },
+      "revId": "a2848a6925adf61779c71ea3664f01a8762bcd69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e4cdcd31_c7d19f99",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-09-10T00:19:41Z",
       "side": 1,
       "message": "with these 2 independent tests, i can see someone leaving profile blank\nbut specifying a high level (higher than profile vp9_0 might support).\n\nis that sort of invalid combination detected elsewhere?  e.g. does the\ncodec itself say \"that\u0027s nonsense\" and reject it?  or do we need to\ncatch such invalid things here?",
+      "range": {
+        "startLine": 222,
+        "startChar": 26,
+        "endLine": 222,
+        "endChar": 54
+      },
+      "revId": "a2848a6925adf61779c71ea3664f01a8762bcd69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2b128e3_c0265975",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 222,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-09-13T14:54:42Z",
+      "side": 1,
+      "message": "profile and level are independent and checked independently\nif any of those is not supported, then it gets updated to default values.",
+      "parentUuid": "e4cdcd31_c7d19f99",
       "range": {
         "startLine": 222,
         "startChar": 26,
