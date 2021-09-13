@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000015315613",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1624799?revision\u003d5",
+      "fixSuggestions": [
+        {
+          "fixId": "19b243b7_d596c1c9",
+          "description": "Change to \"media/libeffects/lvm/lib/Common/lib/InstAlloc.h\"",
+          "replacements": [
+            {
+              "path": "media/libeffects/lvm/lib/Common/lib/InstAlloc.h",
+              "range": {
+                "startLine": 52,
+                "startChar": 28,
+                "endLine": 52,
+                "endChar": 36
+              },
+              "replacement": "aligned"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "57d7af62_2a8f3934",
+        "filename": "media/libeffects/lvm/lib/Common/lib/InstAlloc.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-09-13T22:06:54Z",
+      "side": 1,
+      "message": "Common typo found: \"alligned\" -- should it be \"aligned\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 52,
+        "startChar": 28,
+        "endLine": 52,
+        "endChar": 36
+      },
+      "revId": "3dc159062b9cf81e1e436530cd23e1c88e0e7502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000015315613",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1624799?revision\u003d5",
+      "fixSuggestions": [
+        {
+          "fixId": "fc3c1a54_fbc7bc65",
+          "description": "Change to \"media/libeffects/lvm/lib/Common/src/InstAlloc.cpp\"",
+          "replacements": [
+            {
+              "path": "media/libeffects/lvm/lib/Common/src/InstAlloc.cpp",
+              "range": {
+                "startLine": 41,
+                "startChar": 28,
+                "endLine": 41,
+                "endChar": 36
+              },
+              "replacement": "aligned"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "27e57177_a3852577",
+        "filename": "media/libeffects/lvm/lib/Common/src/InstAlloc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-09-13T22:06:54Z",
+      "side": 1,
+      "message": "Common typo found: \"alligned\" -- should it be \"aligned\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 41,
+        "startChar": 28,
+        "endLine": 41,
+        "endChar": 36
+      },
+      "revId": "3dc159062b9cf81e1e436530cd23e1c88e0e7502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000015315613",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1624799?revision\u003d5",
+      "fixSuggestions": [
+        {
+          "fixId": "8d3a8393_7db4a338",
+          "description": "Change to \"media/libeffects/lvm/lib/Common/src/InstAlloc.cpp\"",
+          "replacements": [
+            {
+              "path": "media/libeffects/lvm/lib/Common/src/InstAlloc.cpp",
+              "range": {
+                "startLine": 102,
+                "startChar": 18,
+                "endLine": 102,
+                "endChar": 28
+              },
+              "replacement": "initializes"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "ea770748_da836e92",
+        "filename": "media/libeffects/lvm/lib/Common/src/InstAlloc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 102,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-09-13T22:06:54Z",
+      "side": 1,
+      "message": "Common typo found: \"intializes\" -- should it be \"initializes\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 102,
+        "startChar": 18,
+        "endLine": 102,
+        "endChar": 28
+      },
+      "revId": "3dc159062b9cf81e1e436530cd23e1c88e0e7502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000015315613",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1624799?revision\u003d5",
+      "fixSuggestions": [
+        {
+          "fixId": "b0e030d2_82d6a5ed",
+          "description": "Change to \"media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp\"",
+          "replacements": [
+            {
+              "path": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+              "range": {
+                "startLine": 694,
+                "startChar": 7,
+                "endLine": 694,
+                "endChar": 18
+              },
+              "replacement": "successfully"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "d82d2ff5_94b06d82",
+        "filename": "media/libeffects/lvm/wrapper/Reverb/EffectReverb.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-09-13T22:06:54Z",
+      "side": 1,
+      "message": "Common typo found: \"succesfully\" -- should it be \"successfully\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 694,
+        "startChar": 7,
+        "endLine": 694,
+        "endChar": 18
+      },
+      "revId": "3dc159062b9cf81e1e436530cd23e1c88e0e7502",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
