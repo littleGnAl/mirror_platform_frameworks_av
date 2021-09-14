@@ -117,6 +117,30 @@
       },
       "revId": "a5d7acc3fbf9b4798b85ed160ba2dbae0593270b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "734deba5_d84c97df",
+        "filename": "media/libstagefright/rtsp/JitterCalculator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-09-14T20:00:26Z",
+      "side": 1,
+      "message": "I am wondering if a more direct calculation could be simpler to understand here. Since you are using abs(A-B), you could use similar logic to c2_cntr_t-s diff calculation:\n\nbasically calculate A-B (with overflow allowed) - cast it to int, and see if a-b was negative or positive, which abs already does.\n\n__attribute__((no_sanitize(\"integer\")))\nuint32_t diffTime \u003d abs((int32_t)(tempRtpTime - tempLastTimeStamp))\n\nIf I understand the issue is that A could be both before or after B, hence the traditional overflow correction does not work here.",
+      "parentUuid": "1a7b0b07_7dd4fb11",
+      "range": {
+        "startLine": 68,
+        "startChar": 34,
+        "endLine": 68,
+        "endChar": 65
+      },
+      "revId": "a5d7acc3fbf9b4798b85ed160ba2dbae0593270b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
