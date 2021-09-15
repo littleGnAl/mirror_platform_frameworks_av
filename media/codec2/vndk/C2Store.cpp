@@ -914,6 +914,7 @@ C2PlatformComponentStore::C2PlatformComponentStore()
       mReflector(std::make_shared<C2ReflectorHelper>()),
       mInterface(mReflector) {
 
+#if 0
     auto emplace = [this](const char *libPath) {
         mComponents.emplace(libPath, libPath);
     };
@@ -950,6 +951,7 @@ C2PlatformComponentStore::C2PlatformComponentStore()
     emplace("libcodec2_soft_vp8enc.so");
     emplace("libcodec2_soft_vp9dec.so");
     emplace("libcodec2_soft_vp9enc.so");
+#endif
 }
 
 c2_status_t C2PlatformComponentStore::copyBuffer(
