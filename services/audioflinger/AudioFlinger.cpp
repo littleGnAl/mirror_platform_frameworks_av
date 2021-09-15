@@ -3808,6 +3808,7 @@ status_t AudioFlinger::moveEffectChain_l(audio_session_t sessionId,
 
     if (status != NO_ERROR) {
         for (size_t i = 0; i < removed.size(); i++) {
+            dstThread->removeEffect_l(removed[i]);
             srcThread->addEffect_l(removed[i]);
         }
     }
