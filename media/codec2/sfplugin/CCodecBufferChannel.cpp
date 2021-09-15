@@ -948,6 +948,7 @@ status_t CCodecBufferChannel::discardBuffer(const sp<MediaCodecBuffer> &buffer) 
 }
 
 void CCodecBufferChannel::getInputBufferArray(Vector<sp<MediaCodecBuffer>> *array) {
+    ALOGD("[%s] FlushConfig ArrayMode input buffer get", mName);
     array->clear();
     Mutexed<Input>::Locked input(mInput);
 
@@ -1183,6 +1184,7 @@ status_t CCodecBufferChannel::start(
         }
 
         if (forceArrayMode) {
+            ALOGD("[%s] FlushConfig forcing input buffer to ArrayMode", mName);
             input->buffers = input->buffers->toArrayMode(numInputSlots);
         }
     }
@@ -1429,7 +1431,9 @@ status_t CCodecBufferChannel::requestInitialInputBuffers() {
             });
 
     std::list<std::unique_ptr<C2Work>> flushedConfigs;
+    ALOGD("[%s] FlushConfig SWAP start", mName);
     mFlushedConfigs.lock()->swap(flushedConfigs);
+    ALOGD("[%s] FlushConfig SWAP end %zu", mName, flushedConfigs.size());
     if (!flushedConfigs.empty()) {
         err = mComponent->queue(&flushedConfigs);
         if (err != C2_OK) {
@@ -1502,6 +1506,7 @@ void CCodecBufferChannel::flush(const std::list<std::unique_ptr<C2Work>> &flushe
     ALOGV("[%s] flush", mName);
     std::vector<uint64_t> indices;
     std::list<std::unique_ptr<C2Work>> configs;
+    ALOGD("[%s] FlushConfig flush ready", mName);
     for (const std::unique_ptr<C2Work> &work : flushedWork) {
         indices.push_back(work->input.ordinal.frameIndex.peeku());
         if (!(work->input.flags & C2FrameData::FLAG_CODEC_CONFIG)) {
@@ -1532,7 +1537,11 @@ void CCodecBufferChannel::flush(const std::list<std::unique_ptr<C2Work>> &flushe
         configs.push_back(std::move(copy));
         ALOGV("[%s] stashed flushed codec config data", mName);
     }
+    ALOGD("[%s] FlushConfig flush start", mName);
+    auto nc = configs.size();
+    auto oc = mFlushedConfigs.lock()->size();
     mFlushedConfigs.lock()->swap(configs);
+    ALOGD("[%s] FlushConfig flush end (%zu) -> (%zu)", mName, oc, nc);
     {
         Mutexed<Input>::Locked input(mInput);
         input->buffers->flush();

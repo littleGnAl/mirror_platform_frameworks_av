@@ -168,6 +168,7 @@ struct BufferPoolClient::Impl::BlockPoolDataDtor {
             : mImpl(impl) {}
 
     void operator()(BufferPoolData *buffer) {
+        ALOGD("FlushConfig destructing bufferpooldata");
         BufferId id = buffer->mId;
         delete buffer;
 

@@ -480,6 +480,7 @@ bool FlexBuffersImpl::expireComponentBuffer(const std::shared_ptr<C2Buffer> &c2b
 
 void FlexBuffersImpl::flush() {
     ALOGV("[%s] buffers are flushed %zu", mName, mBuffers.size());
+    ALOGD("FlushConfig [%s] buffers are flushed %zu", mName, mBuffers.size());
     mBuffers.clear();
 }
 
@@ -761,6 +762,7 @@ bool LinearInputBuffers::expireComponentBuffer(
 void LinearInputBuffers::flush() {
     // This is no-op by default unless we're in array mode where we need to keep
     // track of the flushed work.
+    ALOGD("FlushConfig LinearInputBuffers flushing");
     mImpl.flush();
 }
 

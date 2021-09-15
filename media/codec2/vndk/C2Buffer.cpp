@@ -358,9 +358,13 @@ struct C2_HIDE C2PooledBlockPoolData : _C2BlockPoolData {
         *data = mData;
     }
 
-    C2PooledBlockPoolData(const std::shared_ptr<BufferPoolData> &data) : mData(data) {}
+    C2PooledBlockPoolData(const std::shared_ptr<BufferPoolData> &data) : mData(data) {
+        ALOGD("FlushConfig bufferpool data created %ld", mData.use_count());
+    }
 
-    virtual ~C2PooledBlockPoolData() override {}
+    virtual ~C2PooledBlockPoolData() override {
+        ALOGD("FlushConfig bufferpool data destructed %ld", mData.use_count());
+    }
 
 private:
     std::shared_ptr<BufferPoolData> mData;
