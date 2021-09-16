@@ -434,8 +434,10 @@ media_status_t AMediaCodec_setAsyncNotifyCallback(
         AMediaCodec *mData,
         AMediaCodecOnAsyncNotifyCallback callback,
         void *userdata) {
-    if (mData->mAsyncNotify == NULL && userdata != NULL) {
-        mData->mAsyncNotify = new AMessage(kWhatAsyncNotify, mData->mHandler);
+    if (userdata != NULL) {
+        if (mData->mAsyncNotify == NULL) {
+            mData->mAsyncNotify = new AMessage(kWhatAsyncNotify, mData->mHandler);
+        }
         status_t err = mData->mCodec->setCallback(mData->mAsyncNotify);
         if (err != OK) {
             ALOGE("setAsyncNotifyCallback: err(%d), failed to set async callback", err);
