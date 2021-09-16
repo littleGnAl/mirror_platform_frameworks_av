@@ -72,4 +72,5 @@ cc_test {
         ],
         cfi: true,
     },
+    min_sdk_version: "29",
 }
