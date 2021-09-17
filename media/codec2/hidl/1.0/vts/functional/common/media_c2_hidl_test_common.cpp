@@ -146,7 +146,9 @@ void workDone(const std::shared_ptr<android::Codec2Client::Component>& component
         component->config(configParam, C2_DONT_BLOCK, &failures);
         ASSERT_EQ(failures.size(), 0u);
     }
-    if (work->worklets.front()->output.flags != C2FrameData::FLAG_INCOMPLETE) {
+    // Add to workQueue only when FLAG_INCOMPLETE and FLAG_DISCARD_FRAME are not set
+    if (!(work->worklets.front()->output.flags & C2FrameData::FLAG_INCOMPLETE) &&
+        !(work->worklets.front()->output.flags & C2FrameData::FLAG_DISCARD_FRAME)) {
         framesReceived++;
         eos = (work->worklets.front()->output.flags & C2FrameData::FLAG_END_OF_STREAM) != 0;
         auto frameIndexIt = std::find(flushedIndices.begin(), flushedIndices.end(),
