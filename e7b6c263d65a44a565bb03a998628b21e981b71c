@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d35acf8a_9b770a34",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-17T22:40:57Z",
+      "side": 1,
+      "message": "Regarding queried.size() is \u003e offset + sizeof(uint32_t)\n\n\"queried\" is a vector and size() will be filled with number of parameters \nreturned. In this case it can be 0 when query() fails and 1 when it succeeds.\nqueried.size() \u003e\u003d offset + sizeof(uint32) isn\u0027t a correct check.\nparam is accessed only when vector is valid and hence there is no OOB read.\n\nRegarding the access with typecast,\nAgreed. I will upload a CL that will update all such occurrences.",
+      "parentUuid": "262fef13_4f8d49b4",
+      "range": {
+        "startLine": 310,
+        "startChar": 22,
+        "endLine": 310,
+        "endChar": 61
+      },
+      "revId": "e7b6c263d65a44a565bb03a998628b21e981b71c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aed3391c_2f37d89f",
         "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
         "patchSetId": 1
@@ -89,6 +113,30 @@
       "writtenOn": "2021-09-17T20:04:09Z",
       "side": 1,
       "message": "this particular construct... will return C2_OK in the event that \nwe successfully query, but it was empty.\nand we won\u0027t have put a value into *samplesPerFrame -- so we\u0027ll have returned\nOK without having updated the value. This needs to be reworked.\n[and since this is a cherry pick from what is already in master -- the copy that merged to master needs to be reworked]\n\nand I think it needs to be queried.size() \u003c offset + sizeof(uint32_t) that\nis the failing case, not queried.size \u003d\u003d 0.",
+      "range": {
+        "startLine": 316,
+        "startChar": 9,
+        "endLine": 316,
+        "endChar": 64
+      },
+      "revId": "e7b6c263d65a44a565bb03a998628b21e981b71c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2f73b02_d52ea041",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-17T22:40:57Z",
+      "side": 1,
+      "message": "will update the checks to ensure that c2err is C2_OK and queried.size() is 1.\nInstead of if(), will change these to ASSERT_EQ() so that test would fail instead of returning C2_OK in case of empty \"queried\".\n\nfor queried.size(), please refer to response to previous comment on line 310.",
+      "parentUuid": "810513ad_dd501265",
       "range": {
         "startLine": 316,
         "startChar": 9,
