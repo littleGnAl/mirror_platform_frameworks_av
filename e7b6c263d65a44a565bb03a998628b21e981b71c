@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "262fef13_4f8d49b4",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 310,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-17T20:04:09Z",
+      "side": 1,
+      "message": "we haven\u0027t validated that queried.size() is \u003e offset + sizeof(uint32_t)\nso we have a potential OOB read here. i think we need to address that.\n\nI also worry about the sort of casting we\u0027re doing here. it\u0027s too easy to generate a mis-aligned address with this approach. this case works because sizeof(C2Param) is going to be at least uint32_t aligned because it contains one of those.\n\ni\u0027d have thought we would have some class derived from C2Param that would have those extra fields included in it.",
+      "range": {
+        "startLine": 310,
+        "startChar": 22,
+        "endLine": 310,
+        "endChar": 61
+      },
+      "revId": "e7b6c263d65a44a565bb03a998628b21e981b71c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aed3391c_2f37d89f",
         "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
         "patchSetId": 1
@@ -49,6 +72,29 @@
       "side": 1,
       "message": "yes. If line 310 sets maxInputSize to 0 or if C2StreamAudioFrameSizeInfo isn\u0027t supported,\nwe fall back to old approach.\nCurrent s/w codecs do not support C2StreamAudioFrameSizeInfo and the following call in 314 gets maxInputSize",
       "parentUuid": "aed3391c_2f37d89f",
+      "revId": "e7b6c263d65a44a565bb03a998628b21e981b71c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "810513ad_dd501265",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 316,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-17T20:04:09Z",
+      "side": 1,
+      "message": "this particular construct... will return C2_OK in the event that \nwe successfully query, but it was empty.\nand we won\u0027t have put a value into *samplesPerFrame -- so we\u0027ll have returned\nOK without having updated the value. This needs to be reworked.\n[and since this is a cherry pick from what is already in master -- the copy that merged to master needs to be reworked]\n\nand I think it needs to be queried.size() \u003c offset + sizeof(uint32_t) that\nis the failing case, not queried.size \u003d\u003d 0.",
+      "range": {
+        "startLine": 316,
+        "startChar": 9,
+        "endLine": 316,
+        "endChar": 64
+      },
       "revId": "e7b6c263d65a44a565bb03a998628b21e981b71c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
