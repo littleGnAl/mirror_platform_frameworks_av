@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "afe26c5c_1a4ecbbd",
+        "filename": "media/codec2/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoEncTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-09-17T18:50:33Z",
+      "side": 1,
+      "message": "h264 is not a valid alternate name for this? (I mean for vendors.)",
+      "range": {
+        "startLine": 820,
+        "startChar": 21,
+        "endLine": 820,
+        "endChar": 24
+      },
+      "revId": "661f0ce918830a177712b395ba37d868ed807122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
