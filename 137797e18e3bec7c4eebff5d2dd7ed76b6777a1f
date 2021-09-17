@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c193b0c6_c4c2b816",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-17T20:12:47Z",
+      "side": 1,
+      "message": "we don\u0027t know that queried.size() is \u003e\u003d offset + sizeof(uint32_t)\nso we could be running off the end of the buffer.",
+      "range": {
+        "startLine": 311,
+        "startChar": 30,
+        "endLine": 311,
+        "endChar": 66
+      },
+      "revId": "137797e18e3bec7c4eebff5d2dd7ed76b6777a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "657a6924_dabdda7d",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-17T20:12:47Z",
+      "side": 1,
+      "message": "this block from 309..324  is structured differently in the decode\nCL.\n\nso that in the other one it\u0027s a chained set of if() and only\na single assignment to *samplesPerFrame at the end:\n\nmaybe make them consistent style. (this is style vs correctness).",
+      "range": {
+        "startLine": 318,
+        "startChar": 3,
+        "endLine": 318,
+        "endChar": 20
+      },
+      "revId": "137797e18e3bec7c4eebff5d2dd7ed76b6777a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1ca4e960_16251609",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-17T20:12:47Z",
+      "side": 1,
+      "message": "as pointed in a related review.\nif we successfull query and the size is 0, we return OK without having\nfilled in *samplesPerFrame. that needs to be fixed.\n\nalso I think we should be looking at queried.size() \u003e\u003d offset + sizeof(uint32_t)\nas the boundary for whether we have enough information.",
+      "range": {
+        "startLine": 320,
+        "startChar": 5,
+        "endLine": 320,
+        "endChar": 60
+      },
+      "revId": "137797e18e3bec7c4eebff5d2dd7ed76b6777a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
