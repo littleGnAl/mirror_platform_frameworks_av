@@ -22,6 +22,30 @@
       },
       "revId": "661f0ce918830a177712b395ba37d868ed807122",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7dc77ae0_d3b58392",
+        "filename": "media/codec2/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoEncTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 820,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-17T18:58:58Z",
+      "side": 1,
+      "message": "No, \"video/avc\" is the mime for h264 codec.\nSince we are looking at mime and not name, no alternates are allowed here.",
+      "parentUuid": "afe26c5c_1a4ecbbd",
+      "range": {
+        "startLine": 820,
+        "startChar": 21,
+        "endLine": 820,
+        "endChar": 24
+      },
+      "revId": "661f0ce918830a177712b395ba37d868ed807122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
