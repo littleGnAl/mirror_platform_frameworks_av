@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "c746382a_a5ea44e2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-18T00:31:05Z",
+      "side": 1,
+      "message": "Ray,\nThanks for the review comments on this CL.\nFollowing CL cleans up the code around query().\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1830697 \n\nCan you please review that and suggest any further changes that are needed?\nThanks.",
+      "revId": "e7b6c263d65a44a565bb03a998628b21e981b71c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "262fef13_4f8d49b4",
         "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
         "patchSetId": 1
