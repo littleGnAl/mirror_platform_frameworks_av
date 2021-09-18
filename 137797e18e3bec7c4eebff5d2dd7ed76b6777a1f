@@ -3,6 +3,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4b5f62f6_d98b24bd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-18T00:43:09Z",
+      "side": 1,
+      "message": "Ray,\nThanks for the review.\n\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1830697 is uploaded to address the review comments on both CLs.\n\n",
+      "revId": "137797e18e3bec7c4eebff5d2dd7ed76b6777a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c193b0c6_c4c2b816",
         "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
         "patchSetId": 2
@@ -14,6 +31,30 @@
       "writtenOn": "2021-09-17T20:12:47Z",
       "side": 1,
       "message": "we don\u0027t know that queried.size() is \u003e\u003d offset + sizeof(uint32_t)\nso we could be running off the end of the buffer.",
+      "range": {
+        "startLine": 311,
+        "startChar": 30,
+        "endLine": 311,
+        "endChar": 66
+      },
+      "revId": "137797e18e3bec7c4eebff5d2dd7ed76b6777a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "06569b29_4cc994b0",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 311,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-18T00:43:09Z",
+      "side": 1,
+      "message": "queried.size() is size of the vector and is expected to 1 in this case.\nThis code is updated in \nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1830697",
+      "parentUuid": "c193b0c6_c4c2b816",
       "range": {
         "startLine": 311,
         "startChar": 30,
@@ -49,6 +90,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "76bf8c75_a6cf1b81",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 318,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-18T00:43:09Z",
+      "side": 1,
+      "message": "Please correct, if I have misunderstood this comment.\n\nThe other CL (where *samplesPerFrame was set in the end) was also in encoder tests and this CL updated the other CL as it didn\u0027t interpret C2StreamAudioFrameSizeInfo correctly.\n\nSo there is no inconsistency between decoder and encoder tests w.r.t. this.",
+      "parentUuid": "657a6924_dabdda7d",
+      "range": {
+        "startLine": 318,
+        "startChar": 3,
+        "endLine": 318,
+        "endChar": 20
+      },
+      "revId": "137797e18e3bec7c4eebff5d2dd7ed76b6777a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1ca4e960_16251609",
         "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
         "patchSetId": 2
@@ -60,6 +125,30 @@
       "writtenOn": "2021-09-17T20:12:47Z",
       "side": 1,
       "message": "as pointed in a related review.\nif we successfull query and the size is 0, we return OK without having\nfilled in *samplesPerFrame. that needs to be fixed.\n\nalso I think we should be looking at queried.size() \u003e\u003d offset + sizeof(uint32_t)\nas the boundary for whether we have enough information.",
+      "range": {
+        "startLine": 320,
+        "startChar": 5,
+        "endLine": 320,
+        "endChar": 60
+      },
+      "revId": "137797e18e3bec7c4eebff5d2dd7ed76b6777a1f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fdda1fe0_696c0e8c",
+        "filename": "media/codec2/hidl/1.0/vts/functional/audio/VtsHalMediaC2V1_0TargetAudioEncTest.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-18T00:43:09Z",
+      "side": 1,
+      "message": "Replaced the if () with two independent ASSERT_EQ() calls to ensure both are valid in follow up CL.",
+      "parentUuid": "1ca4e960_16251609",
       "range": {
         "startLine": 320,
         "startChar": 5,
