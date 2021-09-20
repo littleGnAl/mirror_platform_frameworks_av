@@ -38,6 +38,8 @@ namespace android {
 #define ivdext_ctl_set_num_cores_op_t   ih264d_ctl_set_num_cores_op_t
 #define ivdext_ctl_get_vui_params_ip_t  ih264d_ctl_get_vui_params_ip_t
 #define ivdext_ctl_get_vui_params_op_t  ih264d_ctl_get_vui_params_op_t
+#define ivdext_ctl_get_sei_fgc_params_ip_t  ih264d_ctl_get_sei_fgc_params_ip_t
+#define ivdext_ctl_get_sei_fgc_params_op_t  ih264d_ctl_get_sei_fgc_params_op_t
 #define ALIGN32(x)                      ((((x) + 31) >> 5) << 5)
 #define MAX_NUM_CORES                   4
 #define IVDEXT_CMD_CTL_SET_NUM_CORES    \
@@ -128,6 +130,7 @@ private:
                        size_t inSize,
                        uint32_t tsMarker);
     bool getVuiParams();
+    bool getFGCParams();
     c2_status_t ensureDecoderState(const std::shared_ptr<C2BlockPool> &pool);
     void finishWork(uint64_t index, const std::unique_ptr<C2Work> &work);
     status_t setFlushMode();
