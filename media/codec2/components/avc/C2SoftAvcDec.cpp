@@ -626,6 +626,33 @@ bool C2SoftAvcDec::getVuiParams() {
     return true;
 }
 
+bool C2SoftAvcDec::getFGCParams() {
+
+    ivdext_ctl_get_sei_fgc_params_ip_t s_ctl_get_sei_fgc_params_ip;
+    ivdext_ctl_get_sei_fgc_params_op_t s_ctl_get_sei_fgc_params_op;
+
+    memset(&s_ctl_get_sei_fgc_params_ip, 0, sizeof(ivdext_ctl_get_sei_fgc_params_ip_t));
+    memset(&s_ctl_get_sei_fgc_params_op, 0, sizeof(ivdext_ctl_get_sei_fgc_params_op_t));
+
+    s_ctl_get_sei_fgc_params_ip.e_cmd = IVD_CMD_VIDEO_CTL;
+    s_ctl_get_sei_fgc_params_ip.e_sub_cmd =
+                            (IVD_CONTROL_API_COMMAND_TYPE_T)IH264D_CMD_CTL_GET_SEI_FGC_PARAMS;
+    s_ctl_get_sei_fgc_params_ip.u4_size = sizeof(ivdext_ctl_get_sei_fgc_params_ip_t);
+    s_ctl_get_sei_fgc_params_op.u4_size = sizeof(ivdext_ctl_get_sei_fgc_params_op_t);
+
+    IV_API_CALL_STATUS_T status = ivdec_api_function(mDecHandle,
+                                                    (void *)&s_ctl_get_sei_fgc_params_ip,
+                                                    (void *)&s_ctl_get_sei_fgc_params_op);
+
+    if(status != IV_SUCCESS)
+    {
+        ALOGD("error in %s: 0x%x", __func__, s_ctl_get_sei_fgc_params_op.u4_error_code);
+        return false;
+    }
+
+    return true;
+}
+
 status_t C2SoftAvcDec::setFlushMode() {
     ivd_ctl_flush_ip_t s_set_flush_ip = {};
     ivd_ctl_flush_op_t s_set_flush_op = {};
@@ -953,6 +980,9 @@ void C2SoftAvcDec::process(
             }
         }
         (void)getVuiParams();
+
+        (void)getFGCParams();
+
         hasPicture |= (1 == ps_decode_op->u4_frame_decoded_flag);
         if (ps_decode_op->u4_output_present) {
             finishWork(ps_decode_op->u4_ts, work);
