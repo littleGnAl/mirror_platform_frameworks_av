@@ -46,6 +46,23 @@
       },
       "revId": "661f0ce918830a177712b395ba37d868ed807122",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cd130fb_b013fa85",
+        "filename": "media/codec2/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoEncTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-09-21T00:04:53Z",
+      "side": 1,
+      "message": "I think we\u0027d prefer exact mime check vs. substr check here.",
+      "revId": "661f0ce918830a177712b395ba37d868ed807122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
