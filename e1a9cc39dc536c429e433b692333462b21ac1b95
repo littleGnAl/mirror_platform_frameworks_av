@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0de21d0c_598edb1f",
+        "filename": "media/libstagefright/rtsp/JitterCalculator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1136369
+      },
+      "writtenOn": "2021-09-21T14:58:29Z",
+      "side": 1,
+      "message": "This is going to overflow int32_t if rtpTime \u003c mFirstTimeStamp \u003d\u003e diff \u003e INT_MAX, which is undefined behaviour in C++ \u003c 2020.\n\nI think this is C++ 2020, so it should be fine.",
+      "range": {
+        "startLine": 47,
+        "startChar": 31,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "e1a9cc39dc536c429e433b692333462b21ac1b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
