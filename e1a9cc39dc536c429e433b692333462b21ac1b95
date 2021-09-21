@@ -22,6 +22,30 @@
       },
       "revId": "e1a9cc39dc536c429e433b692333462b21ac1b95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "411bd72a_11deaa11",
+        "filename": "media/libstagefright/rtsp/JitterCalculator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1136369
+      },
+      "writtenOn": "2021-09-21T15:56:27Z",
+      "side": 1,
+      "message": "Source: \"Change Conversion from signed to unsigned is always well-defined: the result is the unique value of the destination type that is congruent to the source integer modulo 2N.\"\nhttp://www.open-std.org/jtc1/sc22/wg14/www/docs/n2218.htm\n\nGiven that clang already have this behaviour for C++17, even if C++20 is not enabled yet, this is safe.",
+      "parentUuid": "0de21d0c_598edb1f",
+      "range": {
+        "startLine": 47,
+        "startChar": 31,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "e1a9cc39dc536c429e433b692333462b21ac1b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
