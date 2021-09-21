@@ -63,6 +63,24 @@
       "message": "I think we\u0027d prefer exact mime check vs. substr check here.",
       "revId": "661f0ce918830a177712b395ba37d868ed807122",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "55d49cd6_1704c979",
+        "filename": "media/codec2/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoEncTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-21T01:39:07Z",
+      "side": 1,
+      "message": "Wonsik,\nI have updated the strings to include full mime.\n\nCurrently VTS doesn\u0027t depend on any headers or libraries in libstagefright.\nIn the past when writing OMX tests this wasn\u0027t allowed.\n\nHence for now, I have hard-coded the mimes (also this CL needs to be backported to S tests).\n\nI will replace all mimes with definitions in stagefright_foundation that codec2 framework uses in a separate CL for master.\n\nPlease let me know if this approach sounds fine.\nThanks.",
+      "parentUuid": "6cd130fb_b013fa85",
+      "revId": "661f0ce918830a177712b395ba37d868ed807122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
