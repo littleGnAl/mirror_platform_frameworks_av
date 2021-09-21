@@ -81,6 +81,24 @@
       "parentUuid": "6cd130fb_b013fa85",
       "revId": "661f0ce918830a177712b395ba37d868ed807122",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6df4c379_0e02c201",
+        "filename": "media/codec2/hidl/1.0/vts/functional/video/VtsHalMediaC2V1_0TargetVideoEncTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 821,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-09-21T01:55:39Z",
+      "side": 1,
+      "message": "SGTM. Thanks for looking at this!",
+      "parentUuid": "55d49cd6_1704c979",
+      "revId": "661f0ce918830a177712b395ba37d868ed807122",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
