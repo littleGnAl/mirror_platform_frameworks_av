@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "31cf3e72_07984736",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-21T17:15:36Z",
+      "side": 1,
+      "message": "Please update the CL to address the review comments (i.e. only InputBufferTest can be skipped for secure codecs)",
+      "parentUuid": "1c908c68_a6b378c1",
+      "revId": "24b36080772ad9f0e496edc2099954a241c54690",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "de662b0f_5de51c69",
         "filename": "media/codec2/hidl/1.0/vts/functional/component/VtsHalMediaC2V1_0TargetComponentTest.cpp",
         "patchSetId": 1
