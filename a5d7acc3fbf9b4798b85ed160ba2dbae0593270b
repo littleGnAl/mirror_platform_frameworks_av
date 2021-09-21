@@ -141,6 +141,30 @@
       },
       "revId": "a5d7acc3fbf9b4798b85ed160ba2dbae0593270b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec724e69_1ee56457",
+        "filename": "media/libstagefright/rtsp/JitterCalculator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1647935
+      },
+      "writtenOn": "2021-09-21T11:36:38Z",
+      "side": 1,
+      "message": "Thanks for your advise.\nYes. The codes were written like that because basically frameworks codes don\u0027t allow to make overflows. If the overflows are permitted, your suggestion is much better as you said.\nSo I updated codes to disable UBSan \u0026 simplify calculation. Because of the no_sanitize attribute doesn\u0027t works for a line unit, I used clang\u0027s one to narrow a range of the disabling as https://source.android.com/devices/tech/debug/intsan recommended.",
+      "parentUuid": "734deba5_d84c97df",
+      "range": {
+        "startLine": 68,
+        "startChar": 34,
+        "endLine": 68,
+        "endChar": 65
+      },
+      "revId": "a5d7acc3fbf9b4798b85ed160ba2dbae0593270b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
