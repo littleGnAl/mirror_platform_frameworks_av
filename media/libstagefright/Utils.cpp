@@ -1747,6 +1747,10 @@ status_t convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
         int32_t width;
         int32_t height;
         if (msg->findInt32("width", &width) && msg->findInt32("height", &height)) {
+            if (width <= 0 || height <= 0) {
+                ALOGE("Invalid value of width: %d and/or height: %d", width, height);
+                return BAD_VALUE;
+            }
             meta->setInt32(kKeyWidth, width);
             meta->setInt32(kKeyHeight, height);
         } else {
@@ -1842,10 +1846,19 @@ status_t convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
             ALOGE("did not find channel-count and/or sample-rate");
             return BAD_VALUE;
         }
+        if (sampleRate <= 0 || numChannels <= 0) {
+            ALOGE("Invalid value of channel-count: %d and/or sample-rate: %d",
+                   numChannels, sampleRate);
+            return BAD_VALUE;
+        }
         meta->setInt32(kKeyChannelCount, numChannels);
         meta->setInt32(kKeySampleRate, sampleRate);
         int32_t bitsPerSample;
         if (msg->findInt32("bits-per-sample", &bitsPerSample)) {
+            if (bitsPerSample <= 0) {
+                ALOGE("Invalid value of bitsPerSample: %d", bitsPerSample);
+                return BAD_VALUE;
+            }
             meta->setInt32(kKeyBitsPerSample, bitsPerSample);
         }
         int32_t channelMask;
