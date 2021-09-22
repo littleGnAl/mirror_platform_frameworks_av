@@ -149,6 +149,11 @@ public:
      */
     sp<Codec2Buffer> cloneAndReleaseBuffer(const sp<MediaCodecBuffer> &buffer);
 
+    /**
+     * Clone |orig| using the internal block pool.
+     */
+    std::shared_ptr<C2Buffer> clone(const std::shared_ptr<C2Buffer> &orig);
+
 protected:
     virtual sp<Codec2Buffer> createNewBuffer() = 0;
 

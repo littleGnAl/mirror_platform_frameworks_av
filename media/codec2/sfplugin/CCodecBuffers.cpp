@@ -132,6 +132,20 @@ sp<Codec2Buffer> InputBuffers::cloneAndReleaseBuffer(const sp<MediaCodecBuffer> 
     return copy;
 }
 
+std::shared_ptr<C2Buffer> InputBuffers::clone(const std::shared_ptr<C2Buffer> &orig) {
+    sp<Codec2Buffer> copy = createNewBuffer();
+    if (copy == nullptr) {
+        return nullptr;
+    }
+    if (!copy->canCopy(orig)) {
+        return nullptr;
+    }
+    if (!copy->copy(orig)) {
+        return nullptr;
+    }
+    return copy->asC2Buffer();
+}
+
 // OutputBuffers
 
 OutputBuffers::OutputBuffers(const char *componentName, const char *name)

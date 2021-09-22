@@ -1496,42 +1496,42 @@ void CCodecBufferChannel::flush(const std::list<std::unique_ptr<C2Work>> &flushe
     ALOGV("[%s] flush", mName);
     std::vector<uint64_t> indices;
     std::list<std::unique_ptr<C2Work>> configs;
-    for (const std::unique_ptr<C2Work> &work : flushedWork) {
-        indices.push_back(work->input.ordinal.frameIndex.peeku());
-        if (!(work->input.flags & C2FrameData::FLAG_CODEC_CONFIG)) {
-            continue;
-        }
-        if (work->input.buffers.empty()
-                || work->input.buffers.front() == nullptr
-                || work->input.buffers.front()->data().linearBlocks().empty()) {
-            ALOGD("[%s] no linear codec config data found", mName);
-            continue;
-        }
-        std::unique_ptr<C2Work> copy(new C2Work);
-        copy->input.flags = C2FrameData::flags_t(work->input.flags | C2FrameData::FLAG_DROP_FRAME);
-        copy->input.ordinal = work->input.ordinal;
-        copy->input.ordinal.frameIndex = mFrameIndex++;
-        copy->input.buffers.insert(
-                copy->input.buffers.begin(),
-                work->input.buffers.begin(),
-                work->input.buffers.end());
-        for (const std::unique_ptr<C2Param> &param : work->input.configUpdate) {
-            copy->input.configUpdate.push_back(C2Param::Copy(*param));
-        }
-        copy->input.infoBuffers.insert(
-                copy->input.infoBuffers.begin(),
-                work->input.infoBuffers.begin(),
-                work->input.infoBuffers.end());
-        copy->worklets.emplace_back(new C2Worklet);
-        configs.push_back(std::move(copy));
-        ALOGV("[%s] stashed flushed codec config data", mName);
-    }
-    mFlushedConfigs.lock()->swap(configs);
     {
         Mutexed<Input>::Locked input(mInput);
+        for (const std::unique_ptr<C2Work> &work : flushedWork) {
+            indices.push_back(work->input.ordinal.frameIndex.peeku());
+            if (!(work->input.flags & C2FrameData::FLAG_CODEC_CONFIG)) {
+                continue;
+            }
+            if (work->input.buffers.empty()
+                    || work->input.buffers.front() == nullptr
+                    || work->input.buffers.front()->data().linearBlocks().empty()) {
+                ALOGD("[%s] no linear codec config data found", mName);
+                continue;
+            }
+            std::unique_ptr<C2Work> copy(new C2Work);
+            copy->input.flags = C2FrameData::flags_t(
+                    work->input.flags | C2FrameData::FLAG_DROP_FRAME);
+            copy->input.ordinal = work->input.ordinal;
+            copy->input.ordinal.frameIndex = mFrameIndex++;
+            for (const std::shared_ptr<C2Buffer> &buffer : work->input.buffers) {
+                copy->input.buffers.push_back(input->buffers->clone(buffer));
+            }
+            for (const std::unique_ptr<C2Param> &param : work->input.configUpdate) {
+                copy->input.configUpdate.push_back(C2Param::Copy(*param));
+            }
+            copy->input.infoBuffers.insert(
+                    copy->input.infoBuffers.begin(),
+                    work->input.infoBuffers.begin(),
+                    work->input.infoBuffers.end());
+            copy->worklets.emplace_back(new C2Worklet);
+            configs.push_back(std::move(copy));
+            ALOGV("[%s] stashed flushed codec config data", mName);
+        }
         input->buffers->flush();
         input->extraBuffers.flush();
     }
+    mFlushedConfigs.lock()->swap(configs);
     {
         Mutexed<Output>::Locked output(mOutput);
         if (output->buffers) {
