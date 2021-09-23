@@ -55,6 +55,13 @@ CameraClient::CameraClient(const sp<CameraService>& cameraService,
     mPreviewCallbackFlag = CAMERA_FRAME_CALLBACK_FLAG_NOOP;
     mOrientation = getOrientation(0, mCameraFacing == CAMERA_FACING_FRONT);
     mPlayShutterSound = true;
+
+    if (clientFeatureId) {
+        mClientFeatureId = std::unique_ptr<String16>(new String16(*clientFeatureId));
+    } else {
+        mClientFeatureId = std::unique_ptr<String16>();
+    }
+
     LOG1("CameraClient::CameraClient X (pid %d, id %d)", callingPid, cameraId);
 }
 

@@ -94,6 +94,9 @@ public:
     // Event log ID
     static const int SN_EVENT_LOG_ID = 0x534e4554;
 
+    // Client Feature ID
+    std::unique_ptr<String16>       mClientFeatureId;
+
     // Implementation of BinderService<T>
     static char const* getServiceName() { return "media.camera"; }
 
@@ -162,6 +165,12 @@ public:
 
     virtual binder::Status    getLegacyParameters(
             int32_t cameraId,
+            /*out*/
+            String16* parameters);
+
+    virtual binder::Status    getLegacyParametersOverride(
+            int32_t cameraId,
+            const std::unique_ptr<String16>& clientFeatureId,
             /*out*/
             String16* parameters);
 

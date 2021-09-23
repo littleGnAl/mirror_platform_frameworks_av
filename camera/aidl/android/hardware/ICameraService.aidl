@@ -166,6 +166,11 @@ interface ICameraService
     String getLegacyParameters(int cameraId);
 
     /**
+     * Read the legacy camera1 parameters into a String
+     */
+    String getLegacyParametersOverride(int cameraId, @nullable String featureId);
+
+    /**
      * apiVersion constants for supportsCameraApi
      */
     const int API_VERSION_1 = 1;
