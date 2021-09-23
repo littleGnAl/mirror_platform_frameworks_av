@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ad8cf243_f3780324",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1895629
+      },
+      "writtenOn": "2021-09-23T01:30:29Z",
+      "side": 1,
+      "message": "in my opinion(I just reviewed a code),\non my understand, why you changed to latest code is for keeping \"CSD\" buffers without data accessing while secure playback.\nis it OK to clone \"CSD\" buffers?  \nbecuase \"secure\" buffer never have UVA(user virtual address), \"nullptr\" will be returned. then, \"CSD\" data will be missing after flush.\nhow about assigning newly created buffer to slot and old buffer is moved out from array and return this, instead of \"clone\" like as export?",
+      "range": {
+        "startLine": 140,
+        "startChar": 7,
+        "endLine": 140,
+        "endChar": 29
+      },
+      "revId": "951ea1bee36b9f248c7afe99b13c29b59284846c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
