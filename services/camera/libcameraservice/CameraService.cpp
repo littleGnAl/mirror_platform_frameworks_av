@@ -1503,7 +1503,7 @@ Status CameraService::connectLegacy(
     Status ret = Status::ok();
     sp<Client> client = nullptr;
     ret = connectHelper<ICameraClient,Client>(cameraClient, id, api1CameraId, halVersion,
-            clientPackageName, std::unique_ptr<String16>(), clientUid, USE_CALLING_PID, API_1,
+            clientPackageName, mClientFeatureId, clientUid, USE_CALLING_PID, API_1,
             /*shimUpdateOnly*/ false, /*out*/client);
 
     if(!ret.isOk()) {
@@ -2277,6 +2277,39 @@ Status CameraService::getLegacyParameters(int cameraId, /*out*/String16* paramet
     }
 
     Status ret = Status::ok();
+
+    CameraParameters shimParams;
+    if (!(ret = getLegacyParametersLazy(cameraId, /*out*/&shimParams)).isOk()) {
+        // Error logged by caller
+        return ret;
+    }
+
+    String8 shimParamsString8 = shimParams.flatten();
+    String16 shimParamsString16 = String16(shimParamsString8);
+
+    *parameters = shimParamsString16;
+
+    return ret;
+}
+
+Status CameraService::getLegacyParametersOverride(int cameraId,
+        const std::unique_ptr<String16>& clientFeatureId, /*out*/String16* parameters) {
+
+    ATRACE_CALL();
+    ALOGV("%s: for camera ID = %d", __FUNCTION__, cameraId);
+
+    if (parameters == NULL) {
+        ALOGE("%s: parameters must not be null", __FUNCTION__);
+        return STATUS_ERROR(ERROR_ILLEGAL_ARGUMENT, "Parameters must not be null");
+    }
+
+    Status ret = Status::ok();
+
+    if (clientFeatureId) {
+        mClientFeatureId = std::unique_ptr<String16>(new String16(*clientFeatureId));
+    } else {
+        mClientFeatureId = std::unique_ptr<String16>();
+    }
 
     CameraParameters shimParams;
     if (!(ret = getLegacyParametersLazy(cameraId, /*out*/&shimParams)).isOk()) {
