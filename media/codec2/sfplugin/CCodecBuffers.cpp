@@ -21,10 +21,12 @@
 #include <C2PlatformSupport.h>
 
 #include <media/stagefright/foundation/ADebug.h>
+#include <media/stagefright/foundation/MediaDefs.h>
 #include <media/stagefright/MediaCodec.h>
 #include <media/stagefright/MediaCodecConstants.h>
 #include <media/stagefright/SkipCutBuffer.h>
 #include <mediadrm/ICrypto.h>
+#include <DataConverter.h>
 
 #include "CCodecBuffers.h"
 #include "Codec2Mapper.h"
@@ -1059,12 +1061,10 @@ status_t OutputBuffersArray::registerBuffer(
         size_t *index,
         sp<MediaCodecBuffer> *clientBuffer) {
     sp<Codec2Buffer> c2Buffer;
-    status_t err = mImpl.grabBuffer(
-            index,
-            &c2Buffer,
-            [buffer](const sp<Codec2Buffer> &clientBuffer) {
-                return clientBuffer->canCopy(buffer);
-            });
+    auto canCopy = [buffer](const sp<Codec2Buffer> &clientBuffer) {
+        return clientBuffer->canCopy(buffer);
+    };
+    status_t err = mImpl.grabBuffer(index, &c2Buffer, canCopy);
     if (err == WOULD_BLOCK) {
         ALOGV("[%s] buffers temporarily not available", mName);
         return err;
@@ -1076,6 +1076,26 @@ status_t OutputBuffersArray::registerBuffer(
     if (!c2Buffer->copy(buffer)) {
         ALOGD("[%s] copy buffer failed", mName);
         return WOULD_BLOCK;
+    }
+    int32_t fwkEncoding = kAudioEncodingPcm16bit;
+    int32_t codecEncoding = kAudioEncodingPcm16bit;
+    sp<DataConverter> converter = nullptr;
+    if (mFormat->findInt32(KEY_PCM_ENCODING, &fwkEncoding)
+            && mFormat->findInt32("android._raw-pcm-encoding", &codecEncoding)
+            && fwkEncoding != codecEncoding) {
+        converter = AudioConverter::Create(
+                (AudioEncoding)codecEncoding, (AudioEncoding)fwkEncoding);
+        if (converter == nullptr) {
+            mFormat->setInt32(KEY_PCM_ENCODING, codecEncoding);
+        }
+    }
+    if (converter) {
+        sp<MediaCodecBuffer> convBuffer = c2Buffer;
+        err = converter->convert(c2Buffer, convBuffer);
+        if (err != OK) {
+            ALOGD("[%s] buffer conversion failed: %d", mName, err);
+            return err;
+        }
     }
     submit(c2Buffer);
     handleImageData(c2Buffer);
@@ -1193,10 +1213,33 @@ status_t FlexOutputBuffers::registerBuffer(
     if (newBuffer == nullptr) {
         return NO_MEMORY;
     }
+    int32_t fwkEncoding = kAudioEncodingPcm16bit;
+    int32_t codecEncoding = kAudioEncodingPcm16bit;
+    sp<DataConverter> converter = nullptr;
+    if (mFormat->findInt32(KEY_PCM_ENCODING, &fwkEncoding)
+            && mFormat->findInt32("android._raw-pcm-encoding", &codecEncoding)
+            && fwkEncoding != codecEncoding) {
+        converter = AudioConverter::Create(
+                (AudioEncoding)codecEncoding, (AudioEncoding)fwkEncoding);
+        if (converter == nullptr) {
+            mFormat->setInt32(KEY_PCM_ENCODING, codecEncoding);
+        }
+    }
     newBuffer->setFormat(mFormat);
     *index = mImpl.assignSlot(newBuffer);
     handleImageData(newBuffer);
     *clientBuffer = newBuffer;
+    if (converter) {
+        sp<MediaCodecBuffer> convBuffer = new MediaCodecBuffer(
+                mFormat, new ABuffer(converter->targetSize(newBuffer->size())));
+        status_t err = converter->convert(newBuffer, convBuffer);
+        if (err == OK) {
+            *clientBuffer = convBuffer;
+        } else {
+            ALOGD("[%s] buffer conversion failed: %d", mName, err);
+            return err;
+        }
+    }
     ALOGV("[%s] registered buffer %zu", mName, *index);
     return OK;
 }
