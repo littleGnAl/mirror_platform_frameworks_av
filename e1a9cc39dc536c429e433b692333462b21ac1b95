@@ -46,6 +46,30 @@
       },
       "revId": "e1a9cc39dc536c429e433b692333462b21ac1b95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c92d6b_d271ee38",
+        "filename": "media/libstagefright/rtsp/JitterCalculator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-09-24T18:48:25Z",
+      "side": 1,
+      "message": "Kevin, we have been using these conversions since the beginning of android media. Could these be well defined for our compilers even if they were not technically well defined for C++? Same for the integer overflow above.",
+      "parentUuid": "411bd72a_11deaa11",
+      "range": {
+        "startLine": 47,
+        "startChar": 31,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "e1a9cc39dc536c429e433b692333462b21ac1b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
