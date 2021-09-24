@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "7bdd1df6_2193b6a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-24T03:29:15Z",
+      "side": 1,
+      "message": "Can you please try with the two CLs below and check if these two fix the failures seen on your side?\nhttps://android-review.googlesource.com/c/platform/external/libavc/+/1398927 \nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1398270\n\nReason for this is, the encoder is producing a level 3.1 clip without signalling num_reorder_frames in VUI and decoder is defaulting to a delay larger than 8. This updated delay wasn\u0027t getting communicated to the framework and the above two CLs fix that.\n\nCan you please try these two CLs and let us know if the failures are fixed?\nThanks.\n",
+      "revId": "e376938dee954a3eabf515d7d14fecd174d20c3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00fccee6_e6f35264",
         "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
         "patchSetId": 2
