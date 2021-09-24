@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1133aada_ed8b3bf8",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1527754
+      },
+      "writtenOn": "2021-09-24T17:53:40Z",
+      "side": 1,
+      "message": "if mFormat does not have KEY_PCM_ENCODING (pcm-encoding) key then conveter won\u0027t be created, this needs to be moved out from if condition.",
+      "revId": "a55976ff4dd3b65ae36df527216902d3cc3311e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b063070f_eb938ebc",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1094,
+      "author": {
+        "id": 1527754
+      },
+      "writtenOn": "2021-09-24T17:53:40Z",
+      "side": 1,
+      "message": "can\u0027t use the same buffer reference to call convert.\nDataConverter asserts if base pointer for source and destination are same.\n\n09-22 14:46:20.741  6838  6987 F DataConverter: frameworks/av/media/libstagefright/DataConverter.cpp:34 CHECK(source-\u003ebase() !\u003d target-\u003ebase()) failed.",
+      "revId": "a55976ff4dd3b65ae36df527216902d3cc3311e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
