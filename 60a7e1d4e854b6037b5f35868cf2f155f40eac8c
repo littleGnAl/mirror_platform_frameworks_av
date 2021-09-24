@@ -33,6 +33,52 @@
       "message": "Hi google friends, \n    Please help to review this patch. SkipCutBuffer can\u0027t work properly in this special case.",
       "revId": "60a7e1d4e854b6037b5f35868cf2f155f40eac8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "925fa53c_03f1577c",
+        "filename": "media/libstagefright/SkipCutBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-24T17:35:54Z",
+      "side": 1,
+      "message": "this new logic looks correct to me.",
+      "range": {
+        "startLine": 148,
+        "startChar": 14,
+        "endLine": 149,
+        "endChar": 22
+      },
+      "revId": "60a7e1d4e854b6037b5f35868cf2f155f40eac8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78215e5c_5ecd1f04",
+        "filename": "media/libstagefright/SkipCutBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-24T17:35:54Z",
+      "side": 1,
+      "message": "this memcpy() in the else clause looks correct as written.\n\nbut we should shove the valid bytes to the front of the new buffer so that we\ngo that much longer before we need to wrap\n\nmemcpy(newbuffer, mCutBuffer + mReadHead, mWriteHead-mReadHead);\nmWriteHead -\u003d mReadHead;\nmReadHead \u003d 0;\n\nthis would also copy less data and means that inserting the new bytes just below here won\u0027t require wrapping in the buffer",
+      "range": {
+        "startLine": 157,
+        "startChar": 19,
+        "endLine": 157,
+        "endChar": 49
+      },
+      "revId": "60a7e1d4e854b6037b5f35868cf2f155f40eac8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
