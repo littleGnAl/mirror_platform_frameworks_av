@@ -79,6 +79,30 @@
       },
       "revId": "60a7e1d4e854b6037b5f35868cf2f155f40eac8c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f594b4d1_b13d09da",
+        "filename": "media/libstagefright/SkipCutBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1105578
+      },
+      "writtenOn": "2021-09-26T01:26:44Z",
+      "side": 1,
+      "message": "You\u0027re right. Thanks for your comments.\nBut I can\u0027t push another patch under current change id due to unknown reason.\nSo please help move to https://android-review.googlesource.com/c/platform/frameworks/av/+/1836241 to review.",
+      "parentUuid": "78215e5c_5ecd1f04",
+      "range": {
+        "startLine": 157,
+        "startChar": 19,
+        "endLine": 157,
+        "endChar": 49
+      },
+      "revId": "60a7e1d4e854b6037b5f35868cf2f155f40eac8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
