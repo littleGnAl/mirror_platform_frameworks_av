@@ -16,6 +16,24 @@
       "message": "Yes, this was a concern for us as well. AV1 does not distinguish main8 and main10 profiles (http://aomedia.org/av1/specification/annex-a/), so C2 cannot distinguish this. However, these can be distinguished at stagefright level.",
       "revId": "0dd00df6db85e39211e069b2281248e9e6068b16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eae21048_cf505005",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1837035
+      },
+      "writtenOn": "2021-09-27T06:09:56Z",
+      "side": 1,
+      "message": "Hi Lajos,\n\nIn MediaCodecInfo.java and MediaCodecConstants.h, there are two different profiles\nfor them. They are AV1ProfileMain8 and AV1ProfileMain10. So, we should provide the\nsupported profiles from our component in the beginning to let application know our\ncapability. That\u0027s why we must distinguish them in Codec2 level. If Codec2 don\u0027t\nknow how to distinguish them, we think we should modify MediaCodecInfo.java and\nMediaCodecConstants.h to combine AV1ProfileMain8 and AV1ProfileMain10 into\nonly one AV1ProfileMain. Then, we don\u0027t need to distinguish them anymore.\n\nHow is your opinion?\n\nThanks",
+      "parentUuid": "7e41fc74_fa756157",
+      "revId": "0dd00df6db85e39211e069b2281248e9e6068b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
