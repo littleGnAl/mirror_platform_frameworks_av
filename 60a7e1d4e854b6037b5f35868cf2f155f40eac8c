@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab9e1433_2820b9f0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-27T18:40:37Z",
+      "side": 1,
+      "message": "this is the \u0027before\u0027 CL;\nthe one we\u0027re submitting is at \nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1836241",
+      "revId": "60a7e1d4e854b6037b5f35868cf2f155f40eac8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "925fa53c_03f1577c",
@@ -48,6 +65,54 @@
       "writtenOn": "2021-09-24T17:35:54Z",
       "side": 1,
       "message": "this new logic looks correct to me.",
+      "range": {
+        "startLine": 148,
+        "startChar": 14,
+        "endLine": 149,
+        "endChar": 22
+      },
+      "revId": "60a7e1d4e854b6037b5f35868cf2f155f40eac8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef057fdc_381b01a7",
+        "filename": "media/libstagefright/SkipCutBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-27T18:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "925fa53c_03f1577c",
+      "range": {
+        "startLine": 148,
+        "startChar": 14,
+        "endLine": 149,
+        "endChar": 22
+      },
+      "revId": "60a7e1d4e854b6037b5f35868cf2f155f40eac8c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ab3aee7_d291d9b5",
+        "filename": "media/libstagefright/SkipCutBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 149,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-27T18:40:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "925fa53c_03f1577c",
       "range": {
         "startLine": 148,
         "startChar": 14,
