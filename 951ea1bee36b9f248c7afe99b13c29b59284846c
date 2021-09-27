@@ -22,6 +22,30 @@
       },
       "revId": "951ea1bee36b9f248c7afe99b13c29b59284846c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "76ffb84d_3e4be9e1",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 140,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-09-27T07:37:54Z",
+      "side": 1,
+      "message": "Thanks for pointing out the bit about secure buffers. Now I remember that was what we wanted to address in the first place.\n\n\u003e how about assigning newly created buffer to slot and old buffer is moved out from array and return this, instead of \"clone\" like as export?\n\nUnfortunately this does not work in array mode (as there is no way to swap input buffer array that is already reported to the client side). I will need to figure out a different solution.",
+      "parentUuid": "ad8cf243_f3780324",
+      "range": {
+        "startLine": 140,
+        "startChar": 7,
+        "endLine": 140,
+        "endChar": 29
+      },
+      "revId": "951ea1bee36b9f248c7afe99b13c29b59284846c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
