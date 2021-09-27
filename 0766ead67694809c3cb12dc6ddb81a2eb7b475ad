@@ -16,6 +16,46 @@
       "message": "Hi Ray,\nI post a new patch here, please help to review it.",
       "revId": "0766ead67694809c3cb12dc6ddb81a2eb7b475ad",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d8a18a45_79b90052",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-27T18:40:56Z",
+      "side": 1,
+      "message": "oroginally submitted and reviewed at https://android-review.googlesource.com/c/platform/frameworks/av/+/1517617",
+      "revId": "0766ead67694809c3cb12dc6ddb81a2eb7b475ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec0b5e27_ea1e286d",
+        "filename": "media/libstagefright/SkipCutBuffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 157,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-27T18:40:56Z",
+      "side": 1,
+      "message": "this looks good; better than the initial CL.",
+      "range": {
+        "startLine": 157,
+        "startChar": 12,
+        "endLine": 157,
+        "endChar": 32
+      },
+      "revId": "0766ead67694809c3cb12dc6ddb81a2eb7b475ad",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
