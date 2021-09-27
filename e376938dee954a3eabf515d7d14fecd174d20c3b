@@ -37,6 +37,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "91ac7d2d_decc22bb",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1608690
+      },
+      "writtenOn": "2021-09-27T16:12:50Z",
+      "side": 1,
+      "message": "Copy Mediatek comment in b/191728808 here\n\nYes, this is fixed after merge the two CLs. Thank you.",
+      "parentUuid": "7bdd1df6_2193b6a4",
+      "revId": "e376938dee954a3eabf515d7d14fecd174d20c3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00fccee6_e6f35264",
         "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
         "patchSetId": 2
