@@ -34,6 +34,24 @@
       "parentUuid": "7e41fc74_fa756157",
       "revId": "0dd00df6db85e39211e069b2281248e9e6068b16",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d0a56b7a_78167535",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1837035
+      },
+      "writtenOn": "2021-09-27T07:41:10Z",
+      "side": 1,
+      "message": "Hi Lajos,\n\nActually, we don\u0027t understand how to distinguish them in stagefright level because the supported profiles are provided by Codec2 component. Could you give us the examples or directions to show us how to solve this problem only in stagefright level?\n\nThanks a lot",
+      "parentUuid": "eae21048_cf505005",
+      "revId": "0dd00df6db85e39211e069b2281248e9e6068b16",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
