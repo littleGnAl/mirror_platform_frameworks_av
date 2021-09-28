@@ -39,6 +39,30 @@
       },
       "revId": "0c951050c3e158ee99b9715eab64eb06d7f85f4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "94049766_5f30b341",
+        "filename": "media/libmediaplayerservice/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2021-09-28T17:07:08Z",
+      "side": 1,
+      "message": "Hmm you are right. packagemanager_aidl-cpp should be added to export_shared_lib_headers iff libbinder is included. Otherwise, there is no need for exposure.\n\nI tried building the module without this line it and it was successful. I must have mixed up something along the way. Thanks for flagging it.\n\nI will create a follow up CL to remove packagemanager_aidl-cpp from export_shared_lib_headers in all the CLs. That way, if I just merge in AOSP, it will get propagated to all the branches below (I really hope there won\u0027t be merge conflicts).",
+      "parentUuid": "7827e96f_d957b12b",
+      "range": {
+        "startLine": 81,
+        "startChar": 7,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "0c951050c3e158ee99b9715eab64eb06d7f85f4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
