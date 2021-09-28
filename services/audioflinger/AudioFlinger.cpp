@@ -49,6 +49,7 @@
 #include <utils/String16.h>
 #include <utils/threads.h>
 
+#include <cutils/ashmem.h>
 #include <cutils/atomic.h>
 #include <cutils/properties.h>
 
@@ -1962,7 +1963,12 @@ AudioFlinger::Client::Client(const sp<AudioFlinger>& audioFlinger, pid_t pid)
 {
     mMemoryDealer = new MemoryDealer(
             audioFlinger->getClientSharedHeapSize(),
-            (std::string("AudioFlinger::Client(") + std::to_string(pid) + ")").c_str());
+            (std::string("AudioFlinger::Client(") + std::to_string(pid) + ")").c_str(),
+            MemoryHeapBase::FORCE_MEMFD);
+    int fd = mMemoryDealer->getMemoryHeap()->getHeapID();
+    ALOGD("%s: File region: %s. Current seals are %#x, sealseal is %#x, write is %#x.\n",
+            __func__, ashmem_valid(fd) ? "ashmem" : "memfd",
+            fcntl(fd, F_GET_SEALS), F_SEAL_SEAL, F_SEAL_FUTURE_WRITE);
 }
 
 // Client destructor must be called with AudioFlinger::mClientLock held
