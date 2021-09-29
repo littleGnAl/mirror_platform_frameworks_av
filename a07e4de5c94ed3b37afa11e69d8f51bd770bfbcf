@@ -22,6 +22,30 @@
       },
       "revId": "a07e4de5c94ed3b37afa11e69d8f51bd770bfbcf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "65f19ebc_bc569958",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1572,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-09-29T02:03:11Z",
+      "side": 1,
+      "message": "all flushed works will be marked as done in L1547-1550, and that will clear the references inside PipelineWatcher. Since non-CSD buffers are not stashed, the buffers will be naturally expired by reference count check, while the reference count will be still alive for the CSD buffers.",
+      "parentUuid": "dd10a4ec_ee35ec91",
+      "range": {
+        "startLine": 1572,
+        "startChar": 12,
+        "endLine": 1572,
+        "endChar": 47
+      },
+      "revId": "a07e4de5c94ed3b37afa11e69d8f51bd770bfbcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
