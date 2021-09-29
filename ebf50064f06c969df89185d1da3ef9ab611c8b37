@@ -52,6 +52,41 @@
       "parentUuid": "99c040e1_00740f96",
       "revId": "ebf50064f06c969df89185d1da3ef9ab611c8b37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "15736d59_9791b60c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-29T02:19:20Z",
+      "side": 1,
+      "message": "i\u0027m also working to see if I can restructure this similarly to how code_coverage or crash_dump is done with a single crash_dump.def file that gets pre-processed into the appropriate policy files for each of the arm/x86 32/64 variants.  That\u0027s not ready yet, but I\u0027ll be sure to fold this into that when I do it.\n(or the eventual version will include the crash_dump file so that we don\u0027t need our own copy of those syscalls).",
+      "revId": "ebf50064f06c969df89185d1da3ef9ab611c8b37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "caefb2e3_51f987a8",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-29T02:19:20Z",
+      "side": 1,
+      "message": "there are some limitations in the underlying minijail-constructed BPF constructs that doesn\u0027t like multiple instances of the same syscall with different parameters. I expect this is the failure you\u0027re seeing.\n\nThere was some relatively recent minijail change that made it mode verbose about replicated lines, even if they are still working correctly in the BPF world.",
+      "parentUuid": "3a157b9c_3b8d7886",
+      "revId": "ebf50064f06c969df89185d1da3ef9ab611c8b37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
