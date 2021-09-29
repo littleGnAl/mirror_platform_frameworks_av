@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b36426b5_55ac0ab9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2021-09-29T00:38:25Z",
+      "side": 1,
+      "message": "I did try to include the crash_dump policy but it didn\u0027t work. I believe it\u0027s because there is a conflict between the crash_dump policy and one of the current policies. Since I\u0027m not familiar with the original reasons for the swcodec policy, I\u0027m only adding the new syscall.",
+      "revId": "ebf50064f06c969df89185d1da3ef9ab611c8b37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
