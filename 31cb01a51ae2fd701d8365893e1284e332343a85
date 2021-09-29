@@ -39,6 +39,30 @@
       },
       "revId": "31cb01a51ae2fd701d8365893e1284e332343a85",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4ac529f_79037bd3",
+        "filename": "media/codec2/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-09-29T23:06:42Z",
+      "side": 1,
+      "message": "Lajos, \nThanks for the details.\nFor now, this change is not required (the actual issue was in the component).\nI will abandon this CL.",
+      "parentUuid": "67571f92_5357dcfc",
+      "range": {
+        "startLine": 152,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 22
+      },
+      "revId": "31cb01a51ae2fd701d8365893e1284e332343a85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
