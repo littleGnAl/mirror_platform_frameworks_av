@@ -34,6 +34,24 @@
       "parentUuid": "b36426b5_55ac0ab9",
       "revId": "ebf50064f06c969df89185d1da3ef9ab611c8b37",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a157b9c_3b8d7886",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1019050
+      },
+      "writtenOn": "2021-09-29T01:29:57Z",
+      "side": 1,
+      "message": "The media.swcodec problem aborts trying to process the seccomp file. I couldn\u0027t find an exact message for the failure, but did see a lot of redefinition warnings. There wasn\u0027t a clear, this is why the parsing failed message though.",
+      "parentUuid": "99c040e1_00740f96",
+      "revId": "ebf50064f06c969df89185d1da3ef9ab611c8b37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
