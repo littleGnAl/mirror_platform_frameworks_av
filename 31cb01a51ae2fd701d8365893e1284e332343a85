@@ -16,6 +16,29 @@
       "message": "Will keep this as WIP for now as this doesn\u0027t fix the issue seen in these bugs.",
       "revId": "31cb01a51ae2fd701d8365893e1284e332343a85",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67571f92_5357dcfc",
+        "filename": "media/codec2/hidl/1.0/vts/functional/common/media_c2_hidl_test_common.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 152,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-09-29T23:00:08Z",
+      "side": 1,
+      "message": "what is the purpose of this workQueue? input work is completed when INCOMPLETE flag is not set. (E.g. !(work-\u003eworklets.front()-\u003eoutput.flags \u0026 C2FrameData::FLAG_INCOMPLETE)).\n\nDISCARD_FRAME flag signals that the output frame and metadata should be discarded\nDROP_FRAME flag signals that the output frame should be discarded, but the metadata is valid.\n\nEOS can be signaled on INCOMPLETE work, but all further partial works must have no frame data (but could contain metadata). DISCARD_FRAME or DROP_FRAME shall not be used for this scenario in the further partial work.\n\nThe following flag combinations are invalid:\n\nDISCARD_FRAME | DROP_FRAME -- DISCARD_FRAME alone should be used",
+      "range": {
+        "startLine": 152,
+        "startChar": 8,
+        "endLine": 152,
+        "endChar": 22
+      },
+      "revId": "31cb01a51ae2fd701d8365893e1284e332343a85",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
