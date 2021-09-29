@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd10a4ec_ee35ec91",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1572,
+      "author": {
+        "id": 1895629
+      },
+      "writtenOn": "2021-09-29T01:55:53Z",
+      "side": 1,
+      "message": "if there is \"non-CSD\" inputs in flushed works,\nCCodecBufferChannel will not also handle it to \"expired\",and\nslots which owns \"non-CSD\" inputs could be missing forever because those inputs will not be stored into mFlushedConfigs and resumibted to codec component.\nso, in my opinion, need also to check an input flag(C2FrameData::FLAG_CODEC_CONFIG)  when deciding it as \"expired\".",
+      "range": {
+        "startLine": 1572,
+        "startChar": 12,
+        "endLine": 1572,
+        "endChar": 47
+      },
+      "revId": "a07e4de5c94ed3b37afa11e69d8f51bd770bfbcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
