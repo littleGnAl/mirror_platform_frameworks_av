@@ -70,6 +70,30 @@
       },
       "revId": "e1a9cc39dc536c429e433b692333462b21ac1b95",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "40f82f46_883ebdaf",
+        "filename": "media/libstagefright/rtsp/JitterCalculator.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1136369
+      },
+      "writtenOn": "2021-09-29T20:27:30Z",
+      "side": 1,
+      "message": "cast overflow have usually be safe, compilers have been conservative about it and C++20 even requires it now. Arithmetic overflow lead to more issues, especially in for loops. That\u0027s why gcc and clang have the -fwrap (https://gcc.gnu.org/onlinedocs/gcc-4.0.2/gcc/Code-Gen-Options.html) and integer overflow sanitizer.",
+      "parentUuid": "02c92d6b_d271ee38",
+      "range": {
+        "startLine": 47,
+        "startChar": 31,
+        "endLine": 47,
+        "endChar": 44
+      },
+      "revId": "e1a9cc39dc536c429e433b692333462b21ac1b95",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
