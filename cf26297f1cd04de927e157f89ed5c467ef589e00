@@ -33,6 +33,121 @@
       "message": "Not sure if this is still relevant",
       "revId": "cf26297f1cd04de927e157f89ed5c467ef589e00",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c7508f0a_5fa9c511",
+        "filename": "media/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 727,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-29T17:49:53Z",
+      "side": 1,
+      "message": "this looks like a loop invariant; do we want to hoist it out of the loop?",
+      "range": {
+        "startLine": 727,
+        "startChar": 8,
+        "endLine": 727,
+        "endChar": 49
+      },
+      "revId": "cf26297f1cd04de927e157f89ed5c467ef589e00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7b5bd771_e4679788",
+        "filename": "media/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 765,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-29T17:49:53Z",
+      "side": 1,
+      "message": "confirming that lacing implies equal sized frames within the block.\nthe code treats it that way, with the exception of handling remainders (so we treat it as almost equal sizes).",
+      "range": {
+        "startLine": 765,
+        "startChar": 25,
+        "endLine": 765,
+        "endChar": 40
+      },
+      "revId": "cf26297f1cd04de927e157f89ed5c467ef589e00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a32fa9a_b8333fc0",
+        "filename": "media/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-29T17:49:53Z",
+      "side": 1,
+      "message": "looks like we don\u0027t come through here if the final block is laced, so we\u0027ll\nstill get a stutter on that final batch of laced frames.\n\nwhich means ...   an audio-only mkv that puts the entire track into a single\nlacing would not get this processing to adjust the timestamps.",
+      "range": {
+        "startLine": 768,
+        "startChar": 47,
+        "endLine": 768,
+        "endChar": 76
+      },
+      "revId": "cf26297f1cd04de927e157f89ed5c467ef589e00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae046c65_9bc85e00",
+        "filename": "media/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 771,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-29T17:49:53Z",
+      "side": 1,
+      "message": "since these are in units of microseconds...\n\na 10 frame lacing, if we ignore the remainder, has at most 9 microseconds\nof timing misalignment by the end of the block. That puts a little perspective\non the limited impact of processing the remainder incorrectly.",
+      "range": {
+        "startLine": 771,
+        "startChar": 17,
+        "endLine": 771,
+        "endChar": 58
+      },
+      "revId": "cf26297f1cd04de927e157f89ed5c467ef589e00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dec6d3d_5123d615",
+        "filename": "media/extractors/mkv/MatroskaExtractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 779,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-09-29T17:49:53Z",
+      "side": 1,
+      "message": "feels a little complicated.\nperhaps\nframeRemainder \u003d (durationRemainder-- \u003e 0) ?1:0;\n\nwhich also highlights that we\u0027re eating through the remainder.",
+      "range": {
+        "startLine": 779,
+        "startChar": 10,
+        "endLine": 779,
+        "endChar": 81
+      },
+      "revId": "cf26297f1cd04de927e157f89ed5c467ef589e00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
