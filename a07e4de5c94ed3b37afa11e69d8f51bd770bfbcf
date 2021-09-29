@@ -46,6 +46,30 @@
       },
       "revId": "a07e4de5c94ed3b37afa11e69d8f51bd770bfbcf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d4b8420a_392f23a2",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1572,
+      "author": {
+        "id": 1895629
+      },
+      "writtenOn": "2021-09-29T02:17:31Z",
+      "side": 1,
+      "message": "thank you.\nI was missing that point.\n(ref count about each none stored buffers will be zero. weak ptr about compBuffer will be expired naturally)",
+      "parentUuid": "65f19ebc_bc569958",
+      "range": {
+        "startLine": 1572,
+        "startChar": 12,
+        "endLine": 1572,
+        "endChar": 47
+      },
+      "revId": "a07e4de5c94ed3b37afa11e69d8f51bd770bfbcf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
