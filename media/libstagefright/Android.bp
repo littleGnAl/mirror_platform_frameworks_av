@@ -364,7 +364,6 @@ cc_library {
         "libhidlmemory",
         "libmedia",
         "android.hidl.allocator@1.0",
-        "packagemanager_aidl-cpp",
     ],
 
     export_include_dirs: [
