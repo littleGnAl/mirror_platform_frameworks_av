@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "27f0644c_3ec12328",
+        "filename": "media/codec2/components/gav1/C2SoftGav1Dec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 681,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2021-09-30T18:28:15Z",
+      "side": 1,
+      "message": "it\u0027s interesting this branch has a follow up fix to the original patch, but not the patch itself.\n\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1393891",
+      "range": {
+        "startLine": 681,
+        "startChar": 26,
+        "endLine": 681,
+        "endChar": 55
+      },
+      "revId": "ebd444f17884a83ba3a305a7c6a9b7a4ad114ecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
