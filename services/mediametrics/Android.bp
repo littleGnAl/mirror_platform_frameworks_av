@@ -113,6 +113,7 @@ cc_binary {
         "libmediametricsservice",
         "libmediautils",
         "libutils",
+        "packagemanager_aidl-cpp",
     ],
     header_libs: [
         "libaudioutils_headers",
@@ -166,10 +167,6 @@ cc_library {
         "libprotobuf-cpp-lite",
         "libstatslog",
         "libutils",
-        "packagemanager_aidl-cpp",
-    ],
-
-    export_shared_lib_headers: [
         "packagemanager_aidl-cpp",
     ],
 
