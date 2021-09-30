@@ -135,6 +135,30 @@
       },
       "revId": "0c951050c3e158ee99b9715eab64eb06d7f85f4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "97cc3749_be631ff8",
+        "filename": "media/libmediaplayerservice/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1439319
+      },
+      "writtenOn": "2021-09-30T20:13:20Z",
+      "side": 1,
+      "message": "Seems like removing it from export_shared_lib_headers breaks the build. But that just means some module were importing packagemanager_aidl via these export_shared_lib_headers. Updated those modules accordingly.\n\nPTAL at aosp/1842424.",
+      "parentUuid": "28aad9cb_d1037e61",
+      "range": {
+        "startLine": 81,
+        "startChar": 7,
+        "endLine": 81,
+        "endChar": 31
+      },
+      "revId": "0c951050c3e158ee99b9715eab64eb06d7f85f4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
