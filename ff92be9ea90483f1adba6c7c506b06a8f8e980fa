@@ -102,6 +102,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1df1c913_cdba1f4b",
+        "filename": "media/libstagefright/xmlparser/vts/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1408266
+      },
+      "writtenOn": "2021-09-30T23:40:47Z",
+      "side": 1,
+      "message": "If video framework component (1344) is the preferred component I think we should stick to it. The only thing I\u0027m confused about is why the ownership of this test is shared by video and treble team.",
+      "parentUuid": "528c3076_53b3149c",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 23
+      },
+      "revId": "ff92be9ea90483f1adba6c7c506b06a8f8e980fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "d73ffa0e_b8300038",
         "filename": "media/libstagefright/xmlparser/vts/OWNERS",
         "patchSetId": 1
@@ -113,6 +137,30 @@
       "writtenOn": "2021-08-23T21:25:50Z",
       "side": 1,
       "message": "probably should make it clear that this intended to add, not replace, the current\nowners (e.g. the media framework team).",
+      "range": {
+        "startLine": 2,
+        "startChar": 6,
+        "endLine": 2,
+        "endChar": 7
+      },
+      "revId": "ff92be9ea90483f1adba6c7c506b06a8f8e980fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6ffa975_69313890",
+        "filename": "media/libstagefright/xmlparser/vts/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1408266
+      },
+      "writtenOn": "2021-09-30T23:40:47Z",
+      "side": 1,
+      "message": "Oh right. Do we have an existing OWNERS file where the current owners are recorded? I can include it here + sundongahn@.",
+      "parentUuid": "d73ffa0e_b8300038",
       "range": {
         "startLine": 2,
         "startChar": 6,
