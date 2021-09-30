@@ -169,10 +169,6 @@ cc_library {
         "packagemanager_aidl-cpp",
     ],
 
-    export_shared_lib_headers: [
-        "packagemanager_aidl-cpp",
-    ],
-
     static_libs: [
         "libplatformprotos",
     ],
