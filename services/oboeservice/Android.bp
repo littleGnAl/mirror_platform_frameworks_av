@@ -64,6 +64,7 @@ cc_library {
         "libcutils",
         "liblog",
         "libutils",
+        "packagemanager_aidl-cpp",
     ],
 
     header_libs: [

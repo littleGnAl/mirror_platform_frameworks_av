@@ -34,6 +34,7 @@ LOCAL_SHARED_LIBRARIES := \
     libmediautils \
     libeffectsconfig \
     libsensorprivacy \
+    packagemanager_aidl-cpp \
     capture_state_listener-aidl-cpp
 
 LOCAL_EXPORT_SHARED_LIBRARY_HEADERS := \

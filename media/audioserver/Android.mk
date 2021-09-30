@@ -20,7 +20,9 @@ LOCAL_SHARED_LIBRARIES := \
 	libnbaio \
 	libnblog \
 	libutils \
-	libvibrator
+	libvibrator \
+	packagemanager_aidl-cpp
+
 
 LOCAL_HEADER_LIBRARIES := \
 	libaudiohal_headers \
