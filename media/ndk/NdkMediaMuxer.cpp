@@ -46,6 +46,35 @@ extern "C" {
 EXPORT
 AMediaMuxer* AMediaMuxer_new(int fd, OutputFormat format) {
     ALOGV("ctor");
+    // check for invalid file descriptor.
+    int flags = fcntl(fd, F_GETFL);
+    if (flags == -1) {
+        ALOGE("Invalid File Status Flags: %d", flags);
+        return nullptr;
+    }
+    // fd must be in read-write mode or write-only mode.
+    if ((flags & (O_RDWR | O_WRONLY)) == 0) {
+        ALOGE("File descriptor is not in read-write mode or write-only mode");
+        return nullptr;
+    }
+    // fd must be in read-write for webm writer
+    if (((MediaMuxer::OutputFormat)format == MediaMuxer::OUTPUT_FORMAT_WEBM) &&
+        (flags & O_RDWR) == 0) {
+        ALOGE("File descriptor must be in read-write mode for webm writer");
+        return nullptr;
+    }
+    // Verify fd is seekable
+    off64_t off = lseek64(fd, 0, SEEK_SET);
+    if (off < 0) {
+        ALOGE("File descriptor is not seekable");
+        return nullptr;
+    }
+    // check for valid output format
+    if (((MediaMuxer::OutputFormat)format < MediaMuxer::OUTPUT_FORMAT_MPEG_4) ||
+        ((MediaMuxer::OutputFormat)format >= MediaMuxer::OUTPUT_FORMAT_LIST_END)) {
+        ALOGE("Invalid output format given to muxer : %d", format);
+        return nullptr;
+    }
     AMediaMuxer *mData = new AMediaMuxer();
     mData->mImpl = new MediaMuxer(fd, (android::MediaMuxer::OutputFormat)format);
     return mData;
