@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000015849559",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1842949?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "e0b072ee_49c58c31",
+          "description": "Change to \"media/ndk/NdkMediaMuxer.cpp\"",
+          "replacements": [
+            {
+              "path": "media/ndk/NdkMediaMuxer.cpp",
+              "range": {
+                "startLine": 49,
+                "startChar": 30,
+                "endLine": 49,
+                "endChar": 40
+              },
+              "replacement": "descriptor"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "114c4051_abf6a640",
+        "filename": "media/ndk/NdkMediaMuxer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-10-01T10:56:35Z",
+      "side": 1,
+      "message": "Common typo found: \"descritpor\" -- should it be \"descriptor\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 49,
+        "startChar": 30,
+        "endLine": 49,
+        "endChar": 40
+      },
+      "revId": "e4dc9eb8ca6b41695f61c1c024fe8dc133910d1c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
