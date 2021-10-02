@@ -16,6 +16,69 @@
       "message": "This will have merge conflicts with internal branches.\nWe will rebase this after Android S merges to aosp/master.",
       "revId": "4ba7cf52065da24b1d8b421e7a7c101e37ad8e01",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cad204d4_226b048a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-02T00:14:32Z",
+      "side": 1,
+      "message": "and it seems that we need to document these requirements\n(e.g. the current NDK documentation doesn\u0027t say that the fd must be\nwritable or seeakable).",
+      "revId": "4ba7cf52065da24b1d8b421e7a7c101e37ad8e01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ebbe2253_e1b1a1d7",
+        "filename": "media/ndk/NdkMediaMuxer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-02T00:14:32Z",
+      "side": 1,
+      "message": "this is webm-specific and should be in the webm writer.\n\nand it should report an appropriate \u0027failed to init\u0027 that causes a null\nto be sent back.",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 5
+      },
+      "revId": "4ba7cf52065da24b1d8b421e7a7c101e37ad8e01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cafc4ec5_69d34dd9",
+        "filename": "media/ndk/NdkMediaMuxer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-02T00:14:32Z",
+      "side": 1,
+      "message": "I\u0027m inclined towards tossing this to the \u0027new MediaMuxer()\u0027 and\nwe report failure if it comes back with null.\n\n[there would need to be a little restructuring since \u0027new xxx\u0027 has to\nreturn either a valid object or throw an exception.",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 5
+      },
+      "revId": "4ba7cf52065da24b1d8b421e7a7c101e37ad8e01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
