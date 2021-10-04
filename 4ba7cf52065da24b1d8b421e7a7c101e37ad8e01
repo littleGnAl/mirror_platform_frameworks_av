@@ -35,6 +35,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b63e68d6_3dcf8607",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-10-04T19:08:28Z",
+      "side": 1,
+      "message": "Thank you very much for your contributions!",
+      "revId": "4ba7cf52065da24b1d8b421e7a7c101e37ad8e01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebbe2253_e1b1a1d7",
@@ -48,6 +65,30 @@
       "writtenOn": "2021-10-02T00:14:32Z",
       "side": 1,
       "message": "this is webm-specific and should be in the webm writer.\n\nand it should report an appropriate \u0027failed to init\u0027 that causes a null\nto be sent back.",
+      "range": {
+        "startLine": 60,
+        "startChar": 4,
+        "endLine": 65,
+        "endChar": 5
+      },
+      "revId": "4ba7cf52065da24b1d8b421e7a7c101e37ad8e01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dad0fc41_7ccef913",
+        "filename": "media/ndk/NdkMediaMuxer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 65,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-10-04T19:08:28Z",
+      "side": 1,
+      "message": "I agree with the idea that the failure detection should be kept in a single place. Seems aosp/1842097 duplicates these changes. Hopefully the logic to detects these issues does not end up being duplicated.",
+      "parentUuid": "ebbe2253_e1b1a1d7",
       "range": {
         "startLine": 60,
         "startChar": 4,
