@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9a426ded_0bcf377b",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-10-05T22:13:09Z",
+      "side": 1,
+      "message": "Is this being the case of memory insufficient? Could we have some explanation comments here?",
+      "range": {
+        "startLine": 233,
+        "startChar": 9,
+        "endLine": 233,
+        "endChar": 18
+      },
+      "revId": "6f23cfc95aab653873bfc31f0d70e2f286660839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
