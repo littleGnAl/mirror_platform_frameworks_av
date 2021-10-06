@@ -1,0 +1,377 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "368755c5_b73fa779",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 7
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-06T18:26:03Z",
+      "side": 1,
+      "message": "added few comments after first pass..\nhaven\u0027t looked at core functions yet..",
+      "revId": "aa2cc77c148ffffa61151f39b887509a845ed4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa7f8fad_1ac6eb26",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-06T18:26:03Z",
+      "side": 1,
+      "message": "2021",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "aa2cc77c148ffffa61151f39b887509a845ed4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56e2afe8_18edbe9c",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 68,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-06T18:26:03Z",
+      "side": 1,
+      "message": "do we need windows threads? can we remove them here?",
+      "revId": "aa2cc77c148ffffa61151f39b887509a845ed4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "116c5f5b_bd27734b",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 911,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-06T18:26:03Z",
+      "side": 1,
+      "message": "remove commented code",
+      "range": {
+        "startLine": 911,
+        "startChar": 0,
+        "endLine": 911,
+        "endChar": 66
+      },
+      "revId": "aa2cc77c148ffffa61151f39b887509a845ed4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49dc3df4_fb297443",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1018,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-06T18:26:03Z",
+      "side": 1,
+      "message": "this may be an issue as files may have dimensions that are non-multiple of 4.\ncan we get this to work for even dimensions?",
+      "range": {
+        "startLine": 1018,
+        "startChar": 52,
+        "endLine": 1018,
+        "endChar": 63
+      },
+      "revId": "aa2cc77c148ffffa61151f39b887509a845ed4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "05850d7c_1705fc2b",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1028,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-06T18:26:03Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 1028,
+        "startChar": 50,
+        "endLine": 1028,
+        "endChar": 67
+      },
+      "revId": "aa2cc77c148ffffa61151f39b887509a845ed4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "86178e35_d476b1b4",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1029,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-06T18:26:03Z",
+      "side": 1,
+      "message": "not consistent",
+      "range": {
+        "startLine": 1029,
+        "startChar": 1,
+        "endLine": 1029,
+        "endChar": 3
+      },
+      "revId": "aa2cc77c148ffffa61151f39b887509a845ed4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf0ee43d_1484426d",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1130,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-06T18:26:03Z",
+      "side": 1,
+      "message": "not consistent",
+      "range": {
+        "startLine": 1130,
+        "startChar": 10,
+        "endLine": 1130,
+        "endChar": 11
+      },
+      "revId": "aa2cc77c148ffffa61151f39b887509a845ed4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "90bb3590_3b89cebc",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1194,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-06T18:26:03Z",
+      "side": 1,
+      "message": "move the comments after { or above this line\n\notherwise \"{\" are not placed consistently",
+      "range": {
+        "startLine": 1194,
+        "startChar": 36,
+        "endLine": 1194,
+        "endChar": 53
+      },
+      "revId": "aa2cc77c148ffffa61151f39b887509a845ed4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d3d1567c_a896fb31",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1530,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-06T18:26:03Z",
+      "side": 1,
+      "message": "8bit and 10bit functions seem to have lot of duplicated code.\n\ncan we look at templates and reduce duplication where possible?",
+      "revId": "aa2cc77c148ffffa61151f39b887509a845ed4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2dac0287_00425749",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1549,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-06T18:26:03Z",
+      "side": 1,
+      "message": "is this redundant?",
+      "range": {
+        "startLine": 1548,
+        "startChar": 0,
+        "endLine": 1549,
+        "endChar": 17
+      },
+      "revId": "aa2cc77c148ffffa61151f39b887509a845ed4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab41d99a_9bd93b1d",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1564,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-06T18:26:03Z",
+      "side": 1,
+      "message": "redundant",
+      "range": {
+        "startLine": 1564,
+        "startChar": 0,
+        "endLine": 1564,
+        "endChar": 5
+      },
+      "revId": "aa2cc77c148ffffa61151f39b887509a845ed4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2db87cba_59e37394",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 1690,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-06T18:26:03Z",
+      "side": 1,
+      "message": "previous line",
+      "range": {
+        "startLine": 1690,
+        "startChar": 22,
+        "endLine": 1690,
+        "endChar": 41
+      },
+      "revId": "aa2cc77c148ffffa61151f39b887509a845ed4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0cea17f7_770053eb",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 2992,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-06T18:26:03Z",
+      "side": 1,
+      "message": "instead of polling, need a better way to wait for threads to complete.",
+      "range": {
+        "startLine": 2989,
+        "startChar": 0,
+        "endLine": 2992,
+        "endChar": 5
+      },
+      "revId": "aa2cc77c148ffffa61151f39b887509a845ed4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa473700_abed63da",
+        "filename": "media/libstagefright/filters/grainBlending.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-06T18:26:03Z",
+      "side": 1,
+      "message": "2021",
+      "range": {
+        "startLine": 2,
+        "startChar": 17,
+        "endLine": 2,
+        "endChar": 21
+      },
+      "revId": "aa2cc77c148ffffa61151f39b887509a845ed4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bf577ee_df42de4d",
+        "filename": "media/libstagefright/filters/grainBlending.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 35,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-06T18:26:03Z",
+      "side": 1,
+      "message": "GRAIN_BLENDING_H",
+      "range": {
+        "startLine": 35,
+        "startChar": 8,
+        "endLine": 35,
+        "endChar": 22
+      },
+      "revId": "aa2cc77c148ffffa61151f39b887509a845ed4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0fd531bc_2fd3b99a",
+        "filename": "media/libstagefright/filters/grainBlending.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-06T18:26:03Z",
+      "side": 1,
+      "message": "i think this can fit in line 86",
+      "range": {
+        "startLine": 87,
+        "startChar": 2,
+        "endLine": 87,
+        "endChar": 57
+      },
+      "revId": "aa2cc77c148ffffa61151f39b887509a845ed4e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
