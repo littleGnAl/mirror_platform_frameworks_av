@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f31c3ba3_8c9ec563",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 635,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-06T18:05:50Z",
+      "side": 1,
+      "message": "remove this and instead initialize the structures on line 631 and 632.\nRefer line 581 and 582",
+      "range": {
+        "startLine": 634,
+        "startChar": 0,
+        "endLine": 635,
+        "endChar": 88
+      },
+      "revId": "0e0bd48f7d6910cc602c6018d3278d76af9f4947",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
