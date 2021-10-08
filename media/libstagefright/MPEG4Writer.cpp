@@ -482,6 +482,11 @@ private:
     Track &operator=(const Track &);
 };
 
+bool MPEG4Writer::validateArguments(int fd) {
+    (void)fd;
+    return true;
+}
+
 MPEG4Writer::MPEG4Writer(int fd) {
     initInternal(dup(fd), true /*isFirstSession*/);
 }

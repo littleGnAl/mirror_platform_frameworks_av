@@ -46,6 +46,49 @@ static bool isMp4Format(MediaMuxer::OutputFormat format) {
            format == MediaMuxer::OUTPUT_FORMAT_HEIF;
 }
 
+MediaMuxer* MediaMuxer::create(int fd, OutputFormat format) {
+    // check for invalid file descriptor.
+    int flags = fcntl(fd, F_GETFL);
+    if (flags == -1) {
+        ALOGE("Invalid File Status Flags: %d", flags);
+        return nullptr;
+    }
+    // fd must be in read-write mode or write-only mode.
+    if ((flags & (O_RDWR | O_WRONLY)) == 0) {
+        ALOGE("File descriptor is not in read-write mode or write-only mode");
+        return nullptr;
+    }
+    // Verify fd is seekable
+    off64_t off = lseek64(fd, 0, SEEK_SET);
+    if (off < 0) {
+        ALOGE("File descriptor is not seekable");
+        return nullptr;
+    }
+
+    bool isInputValid = true;
+    if (isMp4Format(format)) {
+        isInputValid = MPEG4Writer::validateArguments(fd);
+    } else if (format == OUTPUT_FORMAT_WEBM) {
+        isInputValid = WebmWriter::validateArguments(fd);
+    } else if (format == OUTPUT_FORMAT_OGG) {
+        isInputValid = OggWriter::validateArguments(fd);
+    } else {
+        ALOGE("Invalid output format given to muxer : %d", format);
+        return nullptr;
+    }
+    if (!isInputValid) {
+        ALOGE("Invalid file descriptor");
+        return nullptr;
+    }
+
+    MediaMuxer *muxer = new (std::nothrow) MediaMuxer(fd, (MediaMuxer::OutputFormat)format);
+    if (muxer == nullptr) {
+        ALOGE("Failed to create writer object");
+        return nullptr;
+    }
+    return std::move(muxer);
+}
+
 MediaMuxer::MediaMuxer(int fd, OutputFormat format)
     : mFormat(format),
       mState(UNINITIALIZED) {

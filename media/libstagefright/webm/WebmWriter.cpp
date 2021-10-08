@@ -54,6 +54,19 @@ namespace android {
 
 static const int64_t kMinStreamableFileSizeInBytes = 5 * 1024 * 1024;
 
+bool WebmWriter::validateArguments(int fd) {
+    // check for invalid file descriptor.
+    int flags = fcntl(fd, F_GETFL);
+    if (flags == -1) {
+        ALOGE("Invalid File Status Flags and/or mode : %d", flags);
+        return false;
+    } else if ((flags & O_RDWR) == 0) {
+        ALOGE("File should be in read-write mode for webm writer");
+        return false;
+    }
+    return true;
+}
+
 WebmWriter::WebmWriter(int fd)
     : mFd(dup(fd)),
       mInitCheck(mFd < 0 ? NO_INIT : OK),
