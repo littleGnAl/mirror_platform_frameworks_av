@@ -55,6 +55,14 @@ public:
     virtual ~MediaMuxer();
 
     /**
+     * Creates the muxer for a given output format.
+     * @param fd : file descriptor of the output file.
+     * @param format : ouput format of the muxer. e.g: webm/mp4/ogg
+     * @return writer's object or nullptr if error.
+     */
+    static MediaMuxer* create(int fd, OutputFormat format);
+
+    /**
      * Add a track with its format information. This should be
      * called before start().
      * @param format the track's format.

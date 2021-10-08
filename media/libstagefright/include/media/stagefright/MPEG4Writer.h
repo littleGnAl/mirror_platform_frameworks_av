@@ -77,6 +77,7 @@ public:
     virtual void setStartTimeOffsetMs(int ms) { mStartTimeOffsetMs = ms; }
     virtual int32_t getStartTimeOffsetMs() const { return mStartTimeOffsetMs; }
     virtual status_t setNextFd(int fd);
+    static bool validateArguments(int fd);
 
 protected:
     virtual ~MPEG4Writer();
