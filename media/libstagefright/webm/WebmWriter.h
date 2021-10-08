@@ -36,6 +36,9 @@ namespace android {
 
 class WebmWriter : public MediaWriter {
 public:
+    // Returns true if the file descriptor is opened using a mode
+    // which is compatible with WebmWriter.
+    static bool isFdOpenModeValid(int fd);
     explicit WebmWriter(int fd);
     ~WebmWriter() { reset(); }
 
