@@ -84,6 +84,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "328ab996_a6d83786",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-10-08T19:04:03Z",
+      "side": 1,
+      "message": "You are right. But interface definition is as below.\nWe need to change the interface definition also as using double ptr or rewriting is required.\n\n    /**\n     * Apply DataConverter from |src| to |*dst| if needed. If |dst| is nullptr,\n     * a new buffer is allocated.\n     *\n     * Returns true if conversion was needed and executed; false otherwise.\n     */\n    bool convert(const std::shared_ptr\u003cC2Buffer\u003e \u0026src, sp\u003cCodec2Buffer\u003e *dst);",
+      "parentUuid": "5eabe39c_a1d06194",
+      "revId": "6f23cfc95aab653873bfc31f0d70e2f286660839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e6c228d_1747df2a",
         "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
         "patchSetId": 3
