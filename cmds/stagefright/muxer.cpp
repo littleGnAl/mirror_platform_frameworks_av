@@ -81,7 +81,11 @@ static int muxing(
         ALOGE("couldn't open file");
         return fd;
     }
-    sp<MediaMuxer> muxer = new MediaMuxer(fd, container);
+    sp<MediaMuxer> muxer = MediaMuxer::create(fd, container);
+    if (muxer == nullptr) {
+        fprintf(stderr, "unable to instantiate muxer for format %d\n", container);
+        return 1;
+    }
     close(fd);
 
     size_t trackCount = extractor->countTracks();
