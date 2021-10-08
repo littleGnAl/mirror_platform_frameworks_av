@@ -50,6 +50,11 @@ struct OggStreamState : public ogg_stream_state {};
 
 namespace android {
 
+bool OggWriter::validateArguments(int fd) {
+    (void)fd;
+    return true;
+}
+
 OggWriter::OggWriter(int fd)
       : mFd(dup(fd)),
         mHaveAllCodecSpecificData(false),

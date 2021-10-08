@@ -49,6 +49,7 @@ public:
     virtual void setStartTimeOffsetMs(int ms) { mStartTimeOffsetMs = ms; }
     virtual int32_t getStartTimeOffsetMs() const { return mStartTimeOffsetMs; }
 
+    static bool validateArguments(int fd);
 private:
     int mFd;
     status_t mInitCheck;

@@ -37,6 +37,7 @@ struct OggWriter : public MediaWriter {
     virtual status_t start(MetaData* params = NULL);
     virtual status_t stop() { return reset(); }
     virtual status_t pause();
+    static bool validateArguments(int fd);
 
 protected:
     ~OggWriter();
