@@ -67,6 +67,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5eabe39c_a1d06194",
+        "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 236,
+      "author": {
+        "id": 1096713
+      },
+      "writtenOn": "2021-10-08T14:02:43Z",
+      "side": 1,
+      "message": "This line seems like it almost certainly intended to be:\n\n  if (!*dst) {\n\nadding the \u0027*\u0027 dereference.  Otherwise, if this check was correct, we\u0027d crash on the very next line, dereferencing a nullptr.\n\nAs is, I think this check always ends up \u0027false\u0027 in the code, which is not what I think we intend.\n\nI\u0027ve put up a follow-up fix: https://android-review.googlesource.com/c/platform/frameworks/av/+/1850314",
+      "revId": "6f23cfc95aab653873bfc31f0d70e2f286660839",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "3e6c228d_1747df2a",
         "filename": "media/codec2/sfplugin/CCodecBuffers.cpp",
         "patchSetId": 3
