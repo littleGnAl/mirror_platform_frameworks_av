@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "623b2517_968661ce",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-08T17:45:41Z",
+      "side": 1,
+      "message": "Instead of switching mediaserver to 64 bit, this was merged internally by adding a instructions on how to switch to 64bit in the following commit.\n\nhttps://android.googlesource.com/platform/frameworks/av/+/be541a59f3fc15685e52cdb52b5316b5ad7dcfbf",
+      "revId": "467e9cfa3d5b1d813b5c5b5ec71288a2b63affb7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
