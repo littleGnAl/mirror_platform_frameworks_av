@@ -89,6 +89,7 @@ class Codec2VideoEncHidlTestBase : public ::testing::Test {
         mTimestampUs = 0u;
         mOutputSize = 0u;
         mTimestampDevTest = false;
+<<<<<<< HEAD   (479853 Merge "Merge "[automerger skipped] Merge "RESTRICT AUTOMERGE)
         mWidth = ENC_DEFAULT_FRAME_WIDTH;
         mHeight = ENC_DEFAULT_FRAME_HEIGHT;
         mMaxWidth = 0;
@@ -109,6 +110,16 @@ class Codec2VideoEncHidlTestBase : public ::testing::Test {
         }
 
         getFile();
+=======
+        if (mCompName == unknown_comp) mDisableTest = true;
+
+        C2SecureModeTuning secureModeTuning{};
+        mComponent->query({&secureModeTuning}, {}, C2_MAY_BLOCK, nullptr);
+        if (secureModeTuning.value == C2Config::SM_READ_PROTECTED) {
+            mDisableTest = true;
+        }
+
+>>>>>>> BRANCH (3dc355 Merge "media/codec2: skip secure encoders in VtsHalMediaC2V1)
         if (mDisableTest) std::cout << "[   WARN   ] Test Disabled \n";
     }
 
