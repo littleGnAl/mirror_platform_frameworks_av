@@ -186,6 +186,30 @@
       },
       "revId": "4ba7cf52065da24b1d8b421e7a7c101e37ad8e01",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f92d07a_46d86c09",
+        "filename": "media/ndk/NdkMediaMuxer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 77,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-11T16:10:09Z",
+      "side": 1,
+      "message": "Ray,\nAs discussed, native code is compiled with -fno-exceptions and hence can\u0027t throw any exceptions.\nSo we have created a static create() and are using that instead.\n\nIn order to keep the webm specific check inside webm writer, we have added a validateArguments() method to writers (As these are created in MediaMuxer\u0027s constructor, we couldn\u0027t follow the static create() approach in these)\n\nIf this is an overkill, please let us know and we will move the webm check back to this function.",
+      "parentUuid": "22f754f7_a79c1cf6",
+      "range": {
+        "startLine": 72,
+        "startChar": 4,
+        "endLine": 77,
+        "endChar": 5
+      },
+      "revId": "4ba7cf52065da24b1d8b421e7a7c101e37ad8e01",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
