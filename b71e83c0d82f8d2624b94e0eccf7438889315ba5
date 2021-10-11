@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000016128619",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1842949?revision\u003d3",
+      "fixSuggestions": [
+        {
+          "fixId": "505f5e98_c4803c60",
+          "description": "Change to \"media/libstagefright/MediaMuxer.cpp\"",
+          "replacements": [
+            {
+              "path": "media/libstagefright/MediaMuxer.cpp",
+              "range": {
+                "startLine": 50,
+                "startChar": 30,
+                "endLine": 50,
+                "endChar": 40
+              },
+              "replacement": "descriptor"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "691ddb74_31d7c90b",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-10-11T15:34:28Z",
+      "side": 1,
+      "message": "Common typo found: \"descritpor\" -- should it be \"descriptor\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 50,
+        "startChar": 30,
+        "endLine": 50,
+        "endChar": 40
+      },
+      "revId": "b71e83c0d82f8d2624b94e0eccf7438889315ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000016128619",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1842949?revision\u003d3",
+      "fixSuggestions": [
+        {
+          "fixId": "278f7b96_398fc46a",
+          "description": "Change to \"media/libstagefright/include/media/stagefright/MediaMuxer.h\"",
+          "replacements": [
+            {
+              "path": "media/libstagefright/include/media/stagefright/MediaMuxer.h",
+              "range": {
+                "startLine": 60,
+                "startChar": 49,
+                "endLine": 60,
+                "endChar": 54
+              },
+              "replacement": " e.g.:"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "3094f380_037696a9",
+        "filename": "media/libstagefright/include/media/stagefright/MediaMuxer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-10-11T15:34:28Z",
+      "side": 1,
+      "message": "Common typo found: \" e.g:\" -- should it be \" e.g.:\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 60,
+        "startChar": 49,
+        "endLine": 60,
+        "endChar": 54
+      },
+      "revId": "b71e83c0d82f8d2624b94e0eccf7438889315ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000016128619",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1842949?revision\u003d3",
+      "fixSuggestions": [
+        {
+          "fixId": "e3133cb1_4f84fdad",
+          "description": "Change to \"media/libstagefright/include/media/stagefright/MediaMuxer.h\"",
+          "replacements": [
+            {
+              "path": "media/libstagefright/include/media/stagefright/MediaMuxer.h",
+              "range": {
+                "startLine": 60,
+                "startChar": 23,
+                "endLine": 60,
+                "endChar": 28
+              },
+              "replacement": "output"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "87b46655_707a5a64",
+        "filename": "media/libstagefright/include/media/stagefright/MediaMuxer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-10-11T15:34:28Z",
+      "side": 1,
+      "message": "Common typo found: \"ouput\" -- should it be \"output\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 60,
+        "startChar": 23,
+        "endLine": 60,
+        "endChar": 28
+      },
+      "revId": "b71e83c0d82f8d2624b94e0eccf7438889315ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000016128619",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1842949?revision\u003d3",
+      "fixSuggestions": [
+        {
+          "fixId": "ae9da366_3ec1ae02",
+          "description": "Change to \"media/libstagefright/webm/WebmWriter.cpp\"",
+          "replacements": [
+            {
+              "path": "media/libstagefright/webm/WebmWriter.cpp",
+              "range": {
+                "startLine": 58,
+                "startChar": 30,
+                "endLine": 58,
+                "endChar": 40
+              },
+              "replacement": "descriptor"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "89784671_2a08b871",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 58,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-10-11T15:34:28Z",
+      "side": 1,
+      "message": "Common typo found: \"descritpor\" -- should it be \"descriptor\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 58,
+        "startChar": 30,
+        "endLine": 58,
+        "endChar": 40
+      },
+      "revId": "b71e83c0d82f8d2624b94e0eccf7438889315ba5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
