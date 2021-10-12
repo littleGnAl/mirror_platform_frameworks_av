@@ -85,6 +85,30 @@
       },
       "revId": "685a0d8951641558d668527a4a5cc93f13daecc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc393c74_8ace9e3b",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-12T22:52:09Z",
+      "side": 1,
+      "message": "Ray, \nSince MediaMuxer::MediaMuxer() can\u0027t throw an exception, adding a MPEG4Writer::create(fd) to return null won\u0027t help right?\n\nThis was the reason we added a static create to MediaMuxer class and a validateArguments method to individual writers.",
+      "parentUuid": "d087dc1d_9597c0ad",
+      "range": {
+        "startLine": 99,
+        "startChar": 7,
+        "endLine": 99,
+        "endChar": 38
+      },
+      "revId": "685a0d8951641558d668527a4a5cc93f13daecc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
