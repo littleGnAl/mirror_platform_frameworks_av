@@ -1,0 +1,90 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0a9c1d67_e33e3f0d",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 492,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-12T22:34:01Z",
+      "side": 1,
+      "message": "i was thinking\n\nMPEG4Writer *MPEG4Writer::create(int fd) {\n    validate fd\n    if (invalid) return nullptr;\n    p \u003d new Mpeg4Writer(fd);\n    return p;\n}\n\nand make the constructor private, so that the only way to get a writer is\nwith this new create(fd) method.",
+      "revId": "685a0d8951641558d668527a4a5cc93f13daecc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c3225bc_c7ebc983",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-12T22:34:01Z",
+      "side": 1,
+      "message": "this isn\u0027t the approach i wanted to take.\nNote that it can still be bypassed -- people can call \u0027new MPEG4Writer()\u0027\ndirectly without this, so we haven\u0027t prevented it from going bad.",
+      "range": {
+        "startLine": 49,
+        "startChar": 23,
+        "endLine": 49,
+        "endChar": 35
+      },
+      "revId": "685a0d8951641558d668527a4a5cc93f13daecc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f088763c_658764c2",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 81,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-12T22:34:01Z",
+      "side": 1,
+      "message": "note that if we have an else {} clause here\nwe are at a point where we know we don\u0027t have a valid format.\nthis means that we can delete lines 67..81 and replace them with\nelse { ALOGE(\"unhandled format\"); return nullptr;}\nright here.",
+      "range": {
+        "startLine": 81,
+        "startChar": 3,
+        "endLine": 81,
+        "endChar": 5
+      },
+      "revId": "685a0d8951641558d668527a4a5cc93f13daecc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d087dc1d_9597c0ad",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-12T22:34:01Z",
+      "side": 1,
+      "message": "in my world, this gets replaced with\n\nmWriter \u003d MPEG4Writer::create(fd);\n\nwhich does the parameter validation (e.g. fd is appropriately writeable, other writers will look at seekable, r/w [not just write], etc).",
+      "range": {
+        "startLine": 99,
+        "startChar": 7,
+        "endLine": 99,
+        "endChar": 38
+      },
+      "revId": "685a0d8951641558d668527a4a5cc93f13daecc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
