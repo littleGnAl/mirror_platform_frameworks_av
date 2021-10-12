@@ -1502,6 +1502,9 @@ c2_status_t Codec2Client::Component::setOutputSurface(
         igbp = new B2HGraphicBufferProducer2(surface);
     }
 
+    static std::mutex surfaceMutex;
+    std::scoped_lock lock{surfaceMutex};
+
     std::shared_ptr<SurfaceSyncObj> syncObj;
 
     if (!surface) {
