@@ -138,6 +138,7 @@ public:
                 uint32_t toGeneration, uint64_t toUsage, uint64_t toBqId,
                 android::sp<android::GraphicBuffer>& graphicBuffer, uint32_t oldGeneration,
                 std::shared_ptr<C2SurfaceSyncMemory> syncMem);
+    void setDisplayStatus(bool display);
 
 private:
     friend struct _C2BlockFactory;
