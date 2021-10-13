@@ -85,6 +85,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "102a6561_e5962ba2",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 49,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-13T14:29:09Z",
+      "side": 1,
+      "message": "my suggestion was that we do these writer-dependent checks down in the writers themselves.\n\nI wanted to replace \"new MPEG4Writer()\" with a (static) Mpeg4Writer::create()\nthat validated parameters and instantiated the object if they pass.  I would\nthen make MPEG4Writer\u0027s constructor private.  [repeat for all of the Writers]",
+      "parentUuid": "8d4de72a_7cb616fc",
+      "range": {
+        "startLine": 49,
+        "startChar": 23,
+        "endLine": 49,
+        "endChar": 35
+      },
+      "revId": "685a0d8951641558d668527a4a5cc93f13daecc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f088763c_658764c2",
         "filename": "media/libstagefright/MediaMuxer.cpp",
         "patchSetId": 4
@@ -167,6 +191,30 @@
       "side": 1,
       "message": "Ray, \nSince MediaMuxer::MediaMuxer() can\u0027t throw an exception, adding a MPEG4Writer::create(fd) to return null won\u0027t help right?\n\nThis was the reason we added a static create to MediaMuxer class and a validateArguments method to individual writers.",
       "parentUuid": "d087dc1d_9597c0ad",
+      "range": {
+        "startLine": 99,
+        "startChar": 7,
+        "endLine": 99,
+        "endChar": 38
+      },
+      "revId": "685a0d8951641558d668527a4a5cc93f13daecc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d71295fd_1e25adb2",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-13T14:29:09Z",
+      "side": 1,
+      "message": "even before...   new MediaMuxer always returned an instance.\nbut if the parameters were bad, the internal field \"mWriter\" would be\nnull and the muxer\u0027s state would remain uninitialized.",
+      "parentUuid": "cc393c74_8ace9e3b",
       "range": {
         "startLine": 99,
         "startChar": 7,
