@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8c0604cb_8b3748a1",
+        "filename": "media/libstagefright/include/media/stagefright/MPEG4Writer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-10-13T13:53:13Z",
+      "side": 1,
+      "message": "Ditto, would you mind putting above the constructor? \n\nAlso, would you please rename to \"isFdOpenModeValid\"?\n\nIf you could add documentation to the function, that would be great. I don\u0027t know how you document functions in Android C++, but the documentation would be something along the lines of:\n\nReturns whether the given file descriptor is opened using a mode which is compatible with  MPEG4Writer.\n\nEDIT: Actually Ray\u0027s comment about having a static Create which does the fd validation is probably better. The documentation and location parts of the comment still help, I believe.",
+      "range": {
+        "startLine": 80,
+        "startChar": 4,
+        "endLine": 80,
+        "endChar": 10
+      },
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "637ffe64_f44c8ffa",
+        "filename": "media/libstagefright/include/media/stagefright/MediaMuxer.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-10-13T13:53:13Z",
+      "side": 1,
+      "message": "Super nit: Would you kindly put this above the constructor? Rationale: This groups non-static members. If there\u0027s something in the style guide to make it this way, feel free to point me to the relevant info and ignore.",
+      "range": {
+        "startLine": 63,
+        "startChar": 4,
+        "endLine": 63,
+        "endChar": 59
+      },
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
