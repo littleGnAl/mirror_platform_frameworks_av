@@ -223,6 +223,30 @@
       },
       "revId": "685a0d8951641558d668527a4a5cc93f13daecc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "59a8c99b_4804acb4",
+        "filename": "media/libstagefright/MediaMuxer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-13T16:12:37Z",
+      "side": 1,
+      "message": "Ray,\n\nObjective targeted with this CL in frameworks/av and \nhttps://android-review.googlesource.com/c/platform/frameworks/base/+/1842097 in frameworks/base\n\nWhen fd is invalid\n- AMediaMuxer_new in NDK api needs to return nullptr\n- MediaMuxer() in SDK api throws an exception \n\nIn order to do the above, setting the state as uninitialized won\u0027t suffice.\nWith that approach, muxer would only return an error in later calls, which isn\u0027t the right thing to do as per the API.\n\nOther objectives (based on the review comments in these CLs)\n- not to duplicate error checks in frameworks/base and frameworks/av\n- to keep webm specific checks to webm writer\n\nSo in order to achieve the above objectives (and given that native code is compiled with -fno-exceptions)\n\n- we need a static create() method for MediaMuxer class which can validate the arguments before calling new MediaMuxer(). In case of errors it will return nullptr and calling functions can appropriately return null in NDK and throw an exception in SDK path.\n- we also need a way to validate arguments in webm writer.\nSince individual writers are instantiated in MediaMuxer\u0027s constructor, adding a static create() to individual writers will not help as we won\u0027t be able to return null from MediaMuxer()\u0027s constructor when the individual writer\u0027s create() returns null.\n\nIf we are missing something in the objectives listed here, please let us know and we will accordingly change the CLs.\nThanks.",
+      "parentUuid": "d71295fd_1e25adb2",
+      "range": {
+        "startLine": 99,
+        "startChar": 7,
+        "endLine": 99,
+        "endChar": 38
+      },
+      "revId": "685a0d8951641558d668527a4a5cc93f13daecc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
