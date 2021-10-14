@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "474fecf8_dc1776b3",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1772,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-14T22:36:34Z",
+      "side": 1,
+      "message": "convoluted flow here.\nlet\u0027s restructure as\n\nif (they aren\u0027t found) { return }\nif (they are out of bounds) { return }\nset them\n\nas an example, lines 1856..1868 for how audio handles channel count / sample rate\nthat\u0027s the pattern i\u0027d like here.",
+      "range": {
+        "startLine": 1762,
+        "startChar": 8,
+        "endLine": 1772,
+        "endChar": 9
+      },
+      "revId": "59cf923eb02e2fef8bdff7f58b1955b1c48f312b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b55b9e60_b48d67ef",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1777,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-14T22:36:34Z",
+      "side": 1,
+      "message": "let\u0027s update these bounds checks one time... \n\nthese probably both need to be \u003e 0 if present.",
+      "range": {
+        "startLine": 1777,
+        "startChar": 10,
+        "endLine": 1777,
+        "endChar": 27
+      },
+      "revId": "59cf923eb02e2fef8bdff7f58b1955b1c48f312b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c21fe41_afeff3ab",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1784,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-14T22:36:34Z",
+      "side": 1,
+      "message": "similarly here.  we\u0027re making 1 set of changes.\nif we get values for these, the values should be \u003e 0",
+      "range": {
+        "startLine": 1784,
+        "startChar": 12,
+        "endLine": 1784,
+        "endChar": 25
+      },
+      "revId": "59cf923eb02e2fef8bdff7f58b1955b1c48f312b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67408122_1f51577b",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1794,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-14T22:36:34Z",
+      "side": 1,
+      "message": "need some bounds checks in here.\n\nand while we don\u0027t require tile ht/w, it probably is an error if we get only 1 of them.\n\nsame with the grid rows/columns -- both or none, and bounds checks on both.",
+      "range": {
+        "startLine": 1793,
+        "startChar": 22,
+        "endLine": 1794,
+        "endChar": 42
+      },
+      "revId": "59cf923eb02e2fef8bdff7f58b1955b1c48f312b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "63482fb0_0bdf6814",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1819,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-14T22:36:34Z",
+      "side": 1,
+      "message": "validate these? \n0 \u003c\u003d cropleft \u003c\u003d cropright \u003c width\nand similarly for botton/top/height.",
+      "range": {
+        "startLine": 1819,
+        "startChar": 15,
+        "endLine": 1819,
+        "endChar": 29
+      },
+      "revId": "59cf923eb02e2fef8bdff7f58b1955b1c48f312b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b6146284_d6672b3f",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1874,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-14T22:36:34Z",
+      "side": 1,
+      "message": "this one is ok nested like this, since it\u0027s an optional value.\n\nbut the ht/wid that I wanted to restructured above... those are required fields.",
+      "range": {
+        "startLine": 1874,
+        "startChar": 10,
+        "endLine": 1874,
+        "endChar": 13
+      },
+      "revId": "59cf923eb02e2fef8bdff7f58b1955b1c48f312b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
