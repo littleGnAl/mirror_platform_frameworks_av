@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c7bbd0d_61c66db9",
+        "filename": "media/ndk/NdkMediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 473,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-14T22:13:54Z",
+      "side": 1,
+      "message": "this doesn\u0027t let me set it back to synchronous; does that require\na codec.reset/start sequence?\n[that\u0027s a general question, not a critique of this cl]",
+      "range": {
+        "startLine": 473,
+        "startChar": 27,
+        "endLine": 473,
+        "endChar": 50
+      },
+      "revId": "84987b74384d981149ded65b35a9dcc41848c5ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c8d0daca_62b5e5f0",
+        "filename": "media/ndk/NdkMediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-14T22:13:54Z",
+      "side": 1,
+      "message": "it\u0027s not clear to me why userdata has to be non-null.\nI don\u0027t see documentation saying that it has to contain anything in particular.\nIt\u0027s just a token that we\u0027re passing along and will pass back -- so the content\nis purely up to the app to decide what (if anything) it means.  and the app\nshould probably be able to say \"i want it to be null\".\n\nshould this routine be: \n\nif (mAsyncNotify\u003d\u003dnull) {\n    masyncnotify \u003d new ...\n    err \u003d mdata-\u003emcodec-\u003esetCallback()\n    if (err) { appropriate log/return }\n}\n\nmutex\nsave callback\nsave userdata\nreturn ok",
+      "range": {
+        "startLine": 477,
+        "startChar": 8,
+        "endLine": 477,
+        "endChar": 27
+      },
+      "revId": "84987b74384d981149ded65b35a9dcc41848c5ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
