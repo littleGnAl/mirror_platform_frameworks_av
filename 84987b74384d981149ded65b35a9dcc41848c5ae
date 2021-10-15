@@ -117,6 +117,30 @@
       },
       "revId": "84987b74384d981149ded65b35a9dcc41848c5ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b5282590_a132f7bc",
+        "filename": "media/ndk/NdkMediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-15T01:03:45Z",
+      "side": 1,
+      "message": "Ray,\nWithout using a global structure, I don\u0027t think there is anyway an application can use media codec in async mode without a valid userdata passed to this function even when running single instance (Using a global structure for this isn\u0027t anyway a good practice).\n\nI believe removing null check on userdata is a significant change in behavior (which needs to be discussed further) and I don\u0027t think it is a good idea to make that functionality change in this CL which is just trying to ensure that once component is configured, setCallback returns an error (SDK API does this already).\n\nI agree that documentation doesn\u0027t impose must be non-null for userdata, but it doesn\u0027t say the same for four function pointers in callback as well. Documentation for NDK API isn\u0027t as exhaustive as it is for SDK API.\n\nI will file a separate bug to discuss userdata.",
+      "parentUuid": "a4cffbb6_12e829e8",
+      "range": {
+        "startLine": 477,
+        "startChar": 8,
+        "endLine": 477,
+        "endChar": 27
+      },
+      "revId": "84987b74384d981149ded65b35a9dcc41848c5ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
