@@ -20,7 +20,9 @@
 #include <gtest/gtest.h>
 #include <utils/RefBase.h>
 
+#include <media/stagefright/foundation/ABuffer.h>
 #include <media/stagefright/foundation/AMessage.h>
+#include <media/stagefright/foundation/AString.h>
 
 using namespace android;
 
@@ -123,3 +125,36 @@ TEST(AMessage_tests, item_manipulation) {
 
 }
 
+TEST(AMessage_tests, debug_print) {
+    sp<AMessage> msg = new AMessage();
+    sp<AMessage> msg2 = new AMessage();
+
+    msg->setInt32("int32", 32);
+    msg->setInt64("int64", 64);
+    msg->setFloat("flaot", 1.0f);
+    msg->setDouble("double", 1.01);
+    msg->setSize("size", 4096);
+
+    msg2->setString("str", "");
+    msg2->setString("bad-str", AString(nullptr, 15));
+    msg->setString("str", "str");
+    msg->setRect("rect", 0, 1, 2, 3);
+    msg2->setPointer("ptr", nullptr);
+    msg->setPointer("ptr", msg2.get());
+
+    msg2->setBuffer("buf", nullptr);
+    msg->setBuffer("buf", ABuffer::CreateAsCopy("BUFFER", 7));
+    sp<ABuffer> nullBuf = new ABuffer(nullptr, 15);
+    msg->setBuffer("bad-buf", nullBuf);
+
+    msg2->setMessage("msg", nullptr);
+    msg->setMessage("msg", msg2);
+
+    msg2->setObject("obj", nullptr);
+    msg->setObject("obj", msg);
+
+    // create a debug string
+    const char *dbg = msg->debugString(4).c_str();
+
+    EXPECT_TRUE(false) << dbg;
+}

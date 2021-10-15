@@ -627,13 +627,22 @@ AString AMessage::debugString(int32_t indent) const {
                 break;
             }
             case kTypeMessage:
-                tmp = AStringPrintf(
-                        "AMessage %s = %s",
-                        item.mName,
-                        static_cast<AMessage *>(
-                            item.u.refValue)->debugString(
-                                indent + strlen(item.mName) + 14).c_str());
+            {
+                sp<AMessage> msg = static_cast<AMessage *>(item.u.refValue);
+
+                if (msg != NULL) {
+                    tmp = AStringPrintf(
+                            "AMessage %s = %s",
+                            item.mName,
+                            msg->debugString(indent + strlen(item.mName) + 14).c_str());
+                } else {
+                    tmp = AStringPrintf(
+                            "AMessage %s = %p",
+                            item.mName,
+                            msg.get());
+                }
                 break;
+            }
             case kTypeRect:
                 tmp = AStringPrintf(
                         "Rect %s(%d, %d, %d, %d)",
