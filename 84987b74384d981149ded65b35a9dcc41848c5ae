@@ -93,6 +93,30 @@
       },
       "revId": "84987b74384d981149ded65b35a9dcc41848c5ae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4cffbb6_12e829e8",
+        "filename": "media/ndk/NdkMediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 477,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-15T00:23:47Z",
+      "side": 1,
+      "message": "I get the AMediaCodec instance and the userdata in the callback, so I can\ndifferentiate between different codec instances using the AMediaCodec, if i want to do so.  It\u0027s easier if I get that info handed to me instead of inventing my own mechanism to map between AMediaCodec and something else.  But it\u0027s not required.\n\ni\u0027m not required to pass information through that userdata, the underlying mechanism doesn\u0027t impose any structure -- it\u0027s an opaque handle that is\ncompletely at the app\u0027s discretion about how to use.\n\nThe documentation does not impose any \"must be non-null\" requirements on the\nvalue that I pass through there.  Most people will likely pass some sort of structure through there, but that does not mean it is required.\n\nIn a nutshell, i agree that passing some data through userdata is very useful,\nbut it\u0027s not a requirement.",
+      "parentUuid": "eb0be612_38f7025c",
+      "range": {
+        "startLine": 477,
+        "startChar": 8,
+        "endLine": 477,
+        "endChar": 27
+      },
+      "revId": "84987b74384d981149ded65b35a9dcc41848c5ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
