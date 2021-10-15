@@ -124,6 +124,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "7ce8e08f_98c5c81f",
+        "filename": "media/libstagefright/xmlparser/vts/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1408266
+      },
+      "writtenOn": "2021-10-15T23:49:56Z",
+      "side": 1,
+      "message": "After a second look, I found this parent OWNERS file: frameworks/av/media/libstagefright/OWNERS. I think we should respect the current triage workflow. Abandon this CL.",
+      "parentUuid": "1df1c913_cdba1f4b",
+      "range": {
+        "startLine": 1,
+        "startChar": 17,
+        "endLine": 1,
+        "endChar": 23
+      },
+      "revId": "ff92be9ea90483f1adba6c7c506b06a8f8e980fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d73ffa0e_b8300038",
@@ -161,6 +185,30 @@
       "side": 1,
       "message": "Oh right. Do we have an existing OWNERS file where the current owners are recorded? I can include it here + sundongahn@.",
       "parentUuid": "d73ffa0e_b8300038",
+      "range": {
+        "startLine": 2,
+        "startChar": 6,
+        "endLine": 2,
+        "endChar": 7
+      },
+      "revId": "ff92be9ea90483f1adba6c7c506b06a8f8e980fa",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cd72878a_13177bf8",
+        "filename": "media/libstagefright/xmlparser/vts/OWNERS",
+        "patchSetId": 1
+      },
+      "lineNbr": 2,
+      "author": {
+        "id": 1408266
+      },
+      "writtenOn": "2021-10-15T23:49:56Z",
+      "side": 1,
+      "message": "After a second look, I found this parent OWNERS file: frameworks/av/media/libstagefright/OWNERS. I think we should respect the current triage workflow. Abandon this CL.",
+      "parentUuid": "d6ffa975_69313890",
       "range": {
         "startLine": 2,
         "startChar": 6,
