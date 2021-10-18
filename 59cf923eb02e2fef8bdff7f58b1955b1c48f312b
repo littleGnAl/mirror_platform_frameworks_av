@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c6633356_7ec50197",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1772,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-10-18T09:23:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "474fecf8_dc1776b3",
+      "range": {
+        "startLine": 1762,
+        "startChar": 8,
+        "endLine": 1772,
+        "endChar": 9
+      },
+      "revId": "59cf923eb02e2fef8bdff7f58b1955b1c48f312b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b55b9e60_b48d67ef",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-14T22:36:34Z",
       "side": 1,
       "message": "let\u0027s update these bounds checks one time... \n\nthese probably both need to be \u003e 0 if present.",
+      "range": {
+        "startLine": 1777,
+        "startChar": 10,
+        "endLine": 1777,
+        "endChar": 27
+      },
+      "revId": "59cf923eb02e2fef8bdff7f58b1955b1c48f312b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "275d888f_0bc6232d",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1777,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-10-18T09:23:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b55b9e60_b48d67ef",
       "range": {
         "startLine": 1777,
         "startChar": 10,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a434817b_247684dd",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1784,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-10-18T09:23:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5c21fe41_afeff3ab",
+      "range": {
+        "startLine": 1784,
+        "startChar": 12,
+        "endLine": 1784,
+        "endChar": 25
+      },
+      "revId": "59cf923eb02e2fef8bdff7f58b1955b1c48f312b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67408122_1f51577b",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-14T22:36:34Z",
       "side": 1,
       "message": "need some bounds checks in here.\n\nand while we don\u0027t require tile ht/w, it probably is an error if we get only 1 of them.\n\nsame with the grid rows/columns -- both or none, and bounds checks on both.",
+      "range": {
+        "startLine": 1793,
+        "startChar": 22,
+        "endLine": 1794,
+        "endChar": 42
+      },
+      "revId": "59cf923eb02e2fef8bdff7f58b1955b1c48f312b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7278ef0_5150206e",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1794,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-10-18T09:23:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67408122_1f51577b",
       "range": {
         "startLine": 1793,
         "startChar": 22,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a829fe6_ea140e84",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1819,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-10-18T09:23:41Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "63482fb0_0bdf6814",
+      "range": {
+        "startLine": 1819,
+        "startChar": 15,
+        "endLine": 1819,
+        "endChar": 29
+      },
+      "revId": "59cf923eb02e2fef8bdff7f58b1955b1c48f312b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b6146284_d6672b3f",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-10-14T22:36:34Z",
       "side": 1,
       "message": "this one is ok nested like this, since it\u0027s an optional value.\n\nbut the ht/wid that I wanted to restructured above... those are required fields.",
+      "range": {
+        "startLine": 1874,
+        "startChar": 10,
+        "endLine": 1874,
+        "endChar": 13
+      },
+      "revId": "59cf923eb02e2fef8bdff7f58b1955b1c48f312b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "080103e7_45047d6a",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1874,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-10-18T09:23:41Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "b6146284_d6672b3f",
       "range": {
         "startLine": 1874,
         "startChar": 10,
