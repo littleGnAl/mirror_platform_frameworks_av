@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40ebd1f5_a5d009e5",
+        "filename": "media/libstagefright/foundation/AMessage.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-10-18T19:03:31Z",
+      "side": 1,
+      "message": "nit: maybe we could just say \"nullptr\"?",
+      "range": {
+        "startLine": 640,
+        "startChar": 43,
+        "endLine": 640,
+        "endChar": 45
+      },
+      "revId": "d5bbb38c7bdc04b52305a5ad7a4ac1be9a9d234c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e820b732_ffa04b31",
+        "filename": "media/libstagefright/foundation/tests/AMessage_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-10-18T19:03:31Z",
+      "side": 1,
+      "message": "- dbg gets released because we discard the AString returned from debugString()\n\n- EXPECT_TRUE(false) would fail the test",
+      "range": {
+        "startLine": 156,
+        "startChar": 28,
+        "endLine": 159,
+        "endChar": 30
+      },
+      "revId": "d5bbb38c7bdc04b52305a5ad7a4ac1be9a9d234c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
