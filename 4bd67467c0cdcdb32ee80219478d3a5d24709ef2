@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c02328ac_348e4c7c",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1802,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-18T15:53:18Z",
+      "side": 1,
+      "message": "looking at this one... this ignores the \"tile-width but not tile-height\" case.\nit corrects it by dropping the one present so that neither is present.\n\ndo we want to flag an error if just 1 is provided? I think so.\n\nstructure for this is close here:\ntileWidth \u003d tileHeight \u003d -1\nif (find(tile-width) ||  find (tile-height)) {      // note: find either\n    if (width \u003c\u003d0 || height \u003c\u003d 0) error   // init of -1 flags the missing one\n    set(width)\n    set(height)\n}",
+      "range": {
+        "startLine": 1802,
+        "startChar": 30,
+        "endLine": 1802,
+        "endChar": 56
+      },
+      "revId": "4bd67467c0cdcdb32ee80219478d3a5d24709ef2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5986bcd2_3347ba91",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-18T15:53:18Z",
+      "side": 1,
+      "message": "same comment as for the tile-width/height above.\nso we need to initialize tileHeight, tileWidth, gridRows, gridCols all to -1",
+      "range": {
+        "startLine": 1812,
+        "startChar": 16,
+        "endLine": 1814,
+        "endChar": 53
+      },
+      "revId": "4bd67467c0cdcdb32ee80219478d3a5d24709ef2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb4c5aa8_1770c7b8",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-18T15:53:18Z",
+      "side": 1,
+      "message": "I thinkk cropRight \u003e\u003d width\nsince the pixels are 0 .. (width-1)\nthe index \"width\" is the first pixel outside of the bounds.",
+      "range": {
+        "startLine": 1835,
+        "startChar": 65,
+        "endLine": 1835,
+        "endChar": 68
+      },
+      "revId": "4bd67467c0cdcdb32ee80219478d3a5d24709ef2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad9a005_0cc39dca",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1839,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-18T15:53:18Z",
+      "side": 1,
+      "message": "same observation here about 0-based height.",
+      "range": {
+        "startLine": 1839,
+        "startChar": 64,
+        "endLine": 1839,
+        "endChar": 71
+      },
+      "revId": "4bd67467c0cdcdb32ee80219478d3a5d24709ef2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
