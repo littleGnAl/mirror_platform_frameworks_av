@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48d539d9_dce66f18",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1802,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-10-19T13:34:49Z",
+      "side": 1,
+      "message": "Done\nmade similar changes for display wd/ht and sar wd/ht",
+      "parentUuid": "c02328ac_348e4c7c",
+      "range": {
+        "startLine": 1802,
+        "startChar": 30,
+        "endLine": 1802,
+        "endChar": 56
+      },
+      "revId": "4bd67467c0cdcdb32ee80219478d3a5d24709ef2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "5986bcd2_3347ba91",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-10-18T15:53:18Z",
       "side": 1,
       "message": "same comment as for the tile-width/height above.\nso we need to initialize tileHeight, tileWidth, gridRows, gridCols all to -1",
+      "range": {
+        "startLine": 1812,
+        "startChar": 16,
+        "endLine": 1814,
+        "endChar": 53
+      },
+      "revId": "4bd67467c0cdcdb32ee80219478d3a5d24709ef2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f1b06cb_b6cee3de",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-10-19T13:34:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "5986bcd2_3347ba91",
       "range": {
         "startLine": 1812,
         "startChar": 16,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9027410_1f84ad7a",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1835,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-10-19T13:34:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb4c5aa8_1770c7b8",
+      "range": {
+        "startLine": 1835,
+        "startChar": 65,
+        "endLine": 1835,
+        "endChar": 68
+      },
+      "revId": "4bd67467c0cdcdb32ee80219478d3a5d24709ef2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ad9a005_0cc39dca",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-10-18T15:53:18Z",
       "side": 1,
       "message": "same observation here about 0-based height.",
+      "range": {
+        "startLine": 1839,
+        "startChar": 64,
+        "endLine": 1839,
+        "endChar": 71
+      },
+      "revId": "4bd67467c0cdcdb32ee80219478d3a5d24709ef2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0c8d8986_59e9705e",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1839,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-10-19T13:34:49Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ad9a005_0cc39dca",
       "range": {
         "startLine": 1839,
         "startChar": 64,
