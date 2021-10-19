@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a33f79e7_1edafe1c",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1541,
+      "author": {
+        "id": 1307008
+      },
+      "writtenOn": "2021-10-19T12:44:14Z",
+      "side": 1,
+      "message": "The copy will be null after line#1537, do you want to check info before line#1537 ?",
+      "range": {
+        "startLine": 1541,
+        "startChar": 14,
+        "endLine": 1541,
+        "endChar": 18
+      },
+      "revId": "57ee6ef50393132d5e15d912e3597a5375c3dbd2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
