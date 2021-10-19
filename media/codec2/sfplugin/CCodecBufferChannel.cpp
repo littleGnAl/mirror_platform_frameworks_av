@@ -269,6 +269,10 @@ status_t CCodecBufferChannel::queueInputBufferInternal(
                 output->rotation[frameIndex] = rotation;
             }
             work->input.buffers.push_back(c2buffer);
+            if (flags & C2FrameData::FLAG_CODEC_CONFIG) {
+                ALOGI("[%s] TRACK FLUSHED CSD queueInputBuffer #%lld %p",
+                      mName, work->input.ordinal.frameIndex.peekll(), c2buffer.get());
+            }
             if (encryptedBlock) {
                 work->input.infoBuffers.emplace_back(C2InfoBuffer::CreateLinearBuffer(
                         kParamIndexEncryptedBuffer,
@@ -725,6 +729,7 @@ void CCodecBufferChannel::feedInputBufferIfAvailableInternal() {
             }
         }
         ALOGV("[%s] new input index = %zu [%p]", mName, index, inBuffer.get());
+        ALOGI("[%s] TRACK FLUSHED CSD onInputBufferAvailable [%zu]", mName, index);
         mCallback->onInputBufferAvailable(index, inBuffer);
     }
     ALOGV("[%s] # active slots after feedInputBufferIfAvailable = %zu", mName, numActiveSlots);
@@ -1529,6 +1534,9 @@ void CCodecBufferChannel::flush(const std::list<std::unique_ptr<C2Work>> &flushe
                 work->input.infoBuffers.begin(),
                 work->input.infoBuffers.end());
         copy->worklets.emplace_back(new C2Worklet);
+        ALOGI("[%s] TRACK FLUSHED CSD stashed %p",
+              mName,
+              copy->input.buffers.empty() ? nullptr : copy->input.buffers[0].get());
         configs.push_back(std::move(copy));
         ALOGV("[%s] stashed flushed codec config data", mName);
     }
@@ -1579,6 +1587,8 @@ void CCodecBufferChannel::onInputBufferDone(
     if (newInputSlotAvailable) {
         feedInputBufferIfAvailable();
     }
+    ALOGI("[%s] TRACK FLUSHED CSD onInputBufferDone #%lld [%zu] %p",
+          mName, (long long)frameIndex, arrayIndex, buffer.get());
 }
 
 bool CCodecBufferChannel::handleWork(
