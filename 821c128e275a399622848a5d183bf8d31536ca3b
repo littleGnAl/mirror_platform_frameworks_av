@@ -16,6 +16,24 @@
       "message": "Is this addressing the case of missing several buffer during migration?",
       "revId": "821c128e275a399622848a5d183bf8d31536ca3b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "39d376d3_ce8b636c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1105578
+      },
+      "writtenOn": "2021-10-20T00:21:37Z",
+      "side": 1,
+      "message": "yes, exactly. There are two cases that buffers might be missing during migration.\n1. buffers are queued to surface and being held by surface, my modification in C2BqBuffer.cpp helps to migrate them.\n2. buffers which are stale buffers in Codec2-OutputBufferQueue, it\u0027s like a timing issue because these buffers come to OutputBufferQueue just after OutputBufferQueue::configure, call sequence is like: onWorkDone -\u003e setSurface(configure producer) -\u003e OutputBufferQueue::registerBuffer, my modification in output.cpp helps to migrate them.",
+      "parentUuid": "04b90c54_970482c6",
+      "revId": "821c128e275a399622848a5d183bf8d31536ca3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
