@@ -1,0 +1,56 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000016410810",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1702507?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "eb880f4a_ec4a18dc",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 17,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-10-20T07:25:49Z",
+      "side": 1,
+      "message": "Verbose debugging should only be enabled in local builds; see https://source.android.com/setup/contribute/code-style#log-sparingly for more details.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 17,
+        "endChar": 20
+      },
+      "revId": "9ad2ccf233f07876580110b9f7f2b98b00e31b99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000016410810",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1702507?revision\u003d2",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "cd3e584a_3bc02416",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 6721,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-10-20T07:25:49Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 6721,
+        "startChar": 0,
+        "endLine": 6721,
+        "endChar": 103
+      },
+      "revId": "9ad2ccf233f07876580110b9f7f2b98b00e31b99",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
