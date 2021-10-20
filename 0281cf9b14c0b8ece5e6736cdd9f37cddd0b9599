@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "1129f4b6_86516514",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1774,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-10-20T03:56:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4ff537fa_558b3e2c",
+      "range": {
+        "startLine": 1773,
+        "startChar": 7,
+        "endLine": 1774,
+        "endChar": 34
+      },
+      "revId": "0281cf9b14c0b8ece5e6736cdd9f37cddd0b9599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "904513bc_07f7ed45",
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-19T16:03:39Z",
       "side": 1,
       "message": "combine declaration and initialization",
+      "range": {
+        "startLine": 1785,
+        "startChar": 7,
+        "endLine": 1786,
+        "endChar": 15
+      },
+      "revId": "0281cf9b14c0b8ece5e6736cdd9f37cddd0b9599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "667844bf_3d230fab",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1786,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-10-20T03:56:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "904513bc_07f7ed45",
       "range": {
         "startLine": 1785,
         "startChar": 7,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a81d4740_8fe8997a",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1804,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-10-20T03:56:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "af3eace7_84a3d9c9",
+      "range": {
+        "startLine": 1803,
+        "startChar": 11,
+        "endLine": 1804,
+        "endChar": 15
+      },
+      "revId": "0281cf9b14c0b8ece5e6736cdd9f37cddd0b9599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b80e2eb6_5419bc5a",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-10-19T16:03:39Z",
       "side": 1,
       "message": "also move the declaration of gridRows and gridCols down here, so that they\nsit next to where we use them.\n\nso line 1803/1804 is \"int32_t tileWidth \u003d -1, tileHeight \u003d -1;\n\nand down here we have int32_t gridRows \u003d -1, gridCols \u003d -1;",
+      "range": {
+        "startLine": 1814,
+        "startChar": 11,
+        "endLine": 1814,
+        "endChar": 13
+      },
+      "revId": "0281cf9b14c0b8ece5e6736cdd9f37cddd0b9599",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc1805bd_99f221c9",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-10-20T03:56:35Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b80e2eb6_5419bc5a",
       "range": {
         "startLine": 1814,
         "startChar": 11,
