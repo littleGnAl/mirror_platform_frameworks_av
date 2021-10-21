@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e980e20_c787546b",
+        "filename": "cmds/stagefright/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-21T16:58:49Z",
+      "side": 1,
+      "message": "i\u0027ve been working hard to eliminate use of this within the media code\nbecause we\u0027re going to need to rearrange some directory structures \nfor mainline.\n\nat least some of these have header_libs that we can use instead.",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "bdff543f0e52930eff21964c3ace769d7d625984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
