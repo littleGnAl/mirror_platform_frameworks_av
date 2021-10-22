@@ -114,6 +114,53 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e2cbc37f_266c9c0a",
+        "filename": "apex/mediaswcodec.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-22T03:03:48Z",
+      "side": 1,
+      "message": "i think we drop this change, since this file has to work on Q.\n\ni understand that writepid works for Q/R/S.\nWe can make an sdk\u003d32 specific file that changes to the new command.",
+      "parentUuid": "d931150f_d15a22c7",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "cda73391a68997462d47a3179f6c3a115223c2d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b8c31c4_54edfa97",
+        "filename": "services/mediacodec/mediaswcodec.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 7,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-22T03:03:48Z",
+      "side": 1,
+      "message": "this file doesn\u0027t exist in the aosp/master;\n\nnot sure where this came from; but the only mediaswcodec.rc should\nbe the one in frameworks/av/apex/mediaswcodec.rc",
+      "range": {
+        "startLine": 7,
+        "startChar": 4,
+        "endLine": 7,
+        "endChar": 17
+      },
+      "revId": "cda73391a68997462d47a3179f6c3a115223c2d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "1e2a6fce_c27214ad",
         "filename": "services/mediaextractor/mediaextractor.rc",
         "patchSetId": 2
@@ -173,6 +220,30 @@
       "side": 1,
       "message": "Hmm. I thought we only need to make the change version-specific for APEX\u0027es, no?",
       "parentUuid": "e90b96ff_01671d16",
+      "range": {
+        "startLine": 6,
+        "startChar": 4,
+        "endLine": 6,
+        "endChar": 19
+      },
+      "revId": "cda73391a68997462d47a3179f6c3a115223c2d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc92ad8b_e8ff0335",
+        "filename": "services/mediaextractor/mediaextractor.rc",
+        "patchSetId": 2
+      },
+      "lineNbr": 6,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-22T03:03:48Z",
+      "side": 1,
+      "message": "your change for this file is good.\ni was trying to read too many CLs at the same time.",
+      "parentUuid": "43e0267f_35ad1a62",
       "range": {
         "startLine": 6,
         "startChar": 4,
