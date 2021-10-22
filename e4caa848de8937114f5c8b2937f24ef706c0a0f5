@@ -58,6 +58,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "39126c6a_68ea0f04",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1775,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-10-22T07:48:58Z",
+      "side": 1,
+      "message": "Done\nI have kept the setInt32 also under if (foundWidth || foundHeight) {} to avoid setting negative values for SAR wd/ht keys",
+      "parentUuid": "8ebe08b4_04a18699",
+      "range": {
+        "startLine": 1774,
+        "startChar": 12,
+        "endLine": 1775,
+        "endChar": 62
+      },
+      "revId": "e4caa848de8937114f5c8b2937f24ef706c0a0f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "271ba7ab_ada8fe61",
@@ -71,6 +95,30 @@
       "writtenOn": "2021-10-22T02:24:26Z",
       "side": 1,
       "message": "we need to do the same thing here.\n\nwe can reuse the foundWidth and foundHeight variables if you want.",
+      "range": {
+        "startLine": 1785,
+        "startChar": 8,
+        "endLine": 1786,
+        "endChar": 70
+      },
+      "revId": "e4caa848de8937114f5c8b2937f24ef706c0a0f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bfe4fe9a_e03fd8b9",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1786,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-10-22T07:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "271ba7ab_ada8fe61",
       "range": {
         "startLine": 1785,
         "startChar": 8,
@@ -104,6 +152,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b191bcce_9d024af4",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1803,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-10-22T07:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6ea0b399_547b28ca",
+      "range": {
+        "startLine": 1802,
+        "startChar": 14,
+        "endLine": 1803,
+        "endChar": 68
+      },
+      "revId": "e4caa848de8937114f5c8b2937f24ef706c0a0f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8bac03e0_5492e5b7",
@@ -117,6 +189,30 @@
       "writtenOn": "2021-10-22T02:24:26Z",
       "side": 1,
       "message": "and here.",
+      "range": {
+        "startLine": 1813,
+        "startChar": 13,
+        "endLine": 1814,
+        "endChar": 63
+      },
+      "revId": "e4caa848de8937114f5c8b2937f24ef706c0a0f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1bf4b88e_f3637302",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-10-22T07:48:58Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8bac03e0_5492e5b7",
       "range": {
         "startLine": 1813,
         "startChar": 13,
