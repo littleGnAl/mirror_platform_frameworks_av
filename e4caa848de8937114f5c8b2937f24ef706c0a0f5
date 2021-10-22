@@ -16,6 +16,115 @@
       "message": "let\u0027s run TH one more time; make sure it wasn\u0027t bad timing with something else.\nwhen I looked at logs, I didn\u0027t notice any of the new diagnostics that are added in this CL -- but I did only a quick scan.",
       "revId": "e4caa848de8937114f5c8b2937f24ef706c0a0f5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9c1e7783_73c315a0",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-22T02:24:26Z",
+      "side": 1,
+      "message": "i steered you a little in the wrong direction with the if (find() || find())\n\nthe old if (find() \u0026\u0026 find())  didn\u0027t have this problem, but it didn\u0027t\nexpose the case where only 1 of the parameters was set -- and I wanted to detect\nthat.",
+      "revId": "e4caa848de8937114f5c8b2937f24ef706c0a0f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ebe08b4_04a18699",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1775,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-22T02:24:26Z",
+      "side": 1,
+      "message": "here\u0027s the problem (and I urged you to use this structure).\n\nincoming msg has both sar-width and sar-height\nbut the phrasing \"if (has width || has height)\" means that as soon as it\ndetects the width, it knows that it can skip the other side of the ||.\n\nand as a results we get sarWidth \u003e 0 but sarHeight is still -1.\n\nthis probably means a restructuring like:\n\nint32_t sarWidth \u003d -1, sarHeight \u003d -1;\nboolean foundWidth, foundHeight;\nfoundWidth \u003d msg-\u003efindInt32(\"sar-width\", \u0026sarWidth);\nfoundHeight \u003d msg-\u003efindInt32(\"sar-height\", \u0026sarHeight);\nif (foundWidth || foundHeight) {\n    the if (\u003c\u003d0) clause from lines 1776..1779",
+      "range": {
+        "startLine": 1774,
+        "startChar": 12,
+        "endLine": 1775,
+        "endChar": 62
+      },
+      "revId": "e4caa848de8937114f5c8b2937f24ef706c0a0f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "271ba7ab_ada8fe61",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1786,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-22T02:24:26Z",
+      "side": 1,
+      "message": "we need to do the same thing here.\n\nwe can reuse the foundWidth and foundHeight variables if you want.",
+      "range": {
+        "startLine": 1785,
+        "startChar": 8,
+        "endLine": 1786,
+        "endChar": 70
+      },
+      "revId": "e4caa848de8937114f5c8b2937f24ef706c0a0f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6ea0b399_547b28ca",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1803,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-22T02:24:26Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 1802,
+        "startChar": 14,
+        "endLine": 1803,
+        "endChar": 68
+      },
+      "revId": "e4caa848de8937114f5c8b2937f24ef706c0a0f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8bac03e0_5492e5b7",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1814,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-22T02:24:26Z",
+      "side": 1,
+      "message": "and here.",
+      "range": {
+        "startLine": 1813,
+        "startChar": 13,
+        "endLine": 1814,
+        "endChar": 63
+      },
+      "revId": "e4caa848de8937114f5c8b2937f24ef706c0a0f5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
