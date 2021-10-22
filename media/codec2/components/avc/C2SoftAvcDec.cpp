@@ -382,7 +382,7 @@ void C2SoftAvcDec::onRelease() {
 c2_status_t C2SoftAvcDec::onFlush_sm() {
     if (OK != setFlushMode()) return C2_CORRUPTED;
 
-    uint32_t bufferSize = mStride * mHeight * 3 / 2;
+    uint32_t bufferSize = mWidth * mHeight * 3 / 2;
     mOutBufferFlush = (uint8_t *)ivd_aligned_malloc(nullptr, 128, bufferSize);
     if (!mOutBufferFlush) {
         ALOGE("could not allocate tmp output buffer (for flush) of size %u ", bufferSize);
@@ -458,7 +458,7 @@ status_t C2SoftAvcDec::setNumCores() {
     return OK;
 }
 
-status_t C2SoftAvcDec::setParams(size_t stride, IVD_VIDEO_DECODE_MODE_T dec_mode) {
+status_t C2SoftAvcDec::setParams(IVD_VIDEO_DECODE_MODE_T dec_mode) {
     ih264d_ctl_set_config_ip_t s_h264d_set_dyn_params_ip = {};
     ih264d_ctl_set_config_op_t s_h264d_set_dyn_params_op = {};
     ivd_ctl_set_config_ip_t *ps_set_dyn_params_ip =
@@ -469,7 +469,7 @@ status_t C2SoftAvcDec::setParams(size_t stride, IVD_VIDEO_DECODE_MODE_T dec_mode
     ps_set_dyn_params_ip->u4_size = sizeof(ih264d_ctl_set_config_ip_t);
     ps_set_dyn_params_ip->e_cmd = IVD_CMD_VIDEO_CTL;
     ps_set_dyn_params_ip->e_sub_cmd = IVD_CMD_CTL_SETPARAMS;
-    ps_set_dyn_params_ip->u4_disp_wd = (UWORD32) stride;
+    ps_set_dyn_params_ip->u4_disp_wd = 0;
     ps_set_dyn_params_ip->e_frm_skip_mode = IVD_SKIP_NONE;
     ps_set_dyn_params_ip->e_frm_out_mode = IVD_DISPLAY_FRAME_OUT;
     ps_set_dyn_params_ip->e_vid_dec_mode = dec_mode;
@@ -511,11 +511,11 @@ void C2SoftAvcDec::getVersion() {
 status_t C2SoftAvcDec::initDecoder() {
     if (OK != createDecoder()) return UNKNOWN_ERROR;
     mNumCores = MIN(getCpuCoreCount(), MAX_NUM_CORES);
-    mStride = ALIGN128(mWidth);
+
     mSignalledError = false;
     resetPlugin();
     (void) setNumCores();
-    if (OK != setParams(mStride, IVD_DECODE_FRAME)) return UNKNOWN_ERROR;
+    if (OK != setParams(IVD_DECODE_FRAME)) return UNKNOWN_ERROR;
     (void) getVersion();
 
     return OK;
@@ -528,20 +528,19 @@ bool C2SoftAvcDec::setDecodeArgs(ivd_video_decode_ip_t *ps_decode_ip,
                                  size_t inOffset,
                                  size_t inSize,
                                  uint32_t tsMarker) {
-    uint32_t displayStride = mStride;
+    uint32_t yStride = mWidth;
+    uint32_t uStride = mWidth >> 1;
+    uint32_t vStride = mWidth >> 1;
     if (outBuffer) {
         C2PlanarLayout layout;
         layout = outBuffer->layout();
-        displayStride = layout.planes[C2PlanarLayout::PLANE_Y].rowInc;
+        yStride = layout.planes[C2PlanarLayout::PLANE_Y].rowInc;
+        uStride = layout.planes[C2PlanarLayout::PLANE_U].rowInc;
+        vStride = layout.planes[C2PlanarLayout::PLANE_V].rowInc;
     }
     uint32_t displayHeight = mHeight;
-    size_t lumaSize = displayStride * displayHeight;
-    size_t chromaSize = lumaSize >> 2;
-
-    if (mStride != displayStride) {
-        mStride = displayStride;
-        if (OK != setParams(mStride, IVD_DECODE_FRAME)) return false;
-    }
+    size_t lumaSize =  displayHeight;
+    size_t chromaSize = uStride * displayHeight >> 1;
 
     ps_decode_ip->u4_size = sizeof(ih264d_video_decode_ip_t);
     ps_decode_ip->e_cmd = IVD_CMD_VIDEO_DECODE;
@@ -554,15 +553,14 @@ bool C2SoftAvcDec::setDecodeArgs(ivd_video_decode_ip_t *ps_decode_ip,
         ps_decode_ip->pv_stream_buffer = nullptr;
         ps_decode_ip->u4_num_Bytes = 0;
     }
-    ps_decode_ip->s_out_buffer.u4_min_out_buf_size[0] = lumaSize;
-    ps_decode_ip->s_out_buffer.u4_min_out_buf_size[1] = chromaSize;
-    ps_decode_ip->s_out_buffer.u4_min_out_buf_size[2] = chromaSize;
+    ps_decode_ip->s_out_buffer.u4_stride[0] = yStride;
+    ps_decode_ip->s_out_buffer.u4_stride[1] = uStride;
+    ps_decode_ip->s_out_buffer.u4_stride[2] = vStride;
+
+    ps_decode_ip->s_out_buffer.u4_min_out_buf_size[0] = yStride * mHeight;
+    ps_decode_ip->s_out_buffer.u4_min_out_buf_size[1] = uStride * mHeight >> 1;
+    ps_decode_ip->s_out_buffer.u4_min_out_buf_size[2] = vStride * mHeight >> 1;
     if (outBuffer) {
-        if (outBuffer->height() < displayHeight) {
-            ALOGE("Output buffer too small: provided (%dx%d) required (%ux%u)",
-                  outBuffer->width(), outBuffer->height(), displayStride, displayHeight);
-            return false;
-        }
         ps_decode_ip->s_out_buffer.pu1_bufs[0] = outBuffer->data()[C2PlanarLayout::PLANE_Y];
         ps_decode_ip->s_out_buffer.pu1_bufs[1] = outBuffer->data()[C2PlanarLayout::PLANE_U];
         ps_decode_ip->s_out_buffer.pu1_bufs[2] = outBuffer->data()[C2PlanarLayout::PLANE_V];
@@ -660,7 +658,6 @@ status_t C2SoftAvcDec::resetDecoder() {
         ALOGE("error in %s: 0x%x", __func__, s_reset_op.u4_error_code);
         return UNKNOWN_ERROR;
     }
-    mStride = 0;
     (void) setNumCores();
     mSignalledError = false;
     mHeaderDecoded = false;
@@ -777,20 +774,20 @@ c2_status_t C2SoftAvcDec::ensureDecoderState(const std::shared_ptr<C2BlockPool> 
         return C2_CORRUPTED;
     }
     if (mOutBlock &&
-            (mOutBlock->width() != ALIGN128(mWidth) || mOutBlock->height() != mHeight)) {
+            (mOutBlock->width() != mWidth || mOutBlock->height() != mHeight)) {
         mOutBlock.reset();
     }
     if (!mOutBlock) {
         uint32_t format = HAL_PIXEL_FORMAT_YV12;
         C2MemoryUsage usage = { C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE };
         c2_status_t err =
-            pool->fetchGraphicBlock(ALIGN128(mWidth), mHeight, format, usage, &mOutBlock);
+            pool->fetchGraphicBlock(mWidth, mHeight, format, usage, &mOutBlock);
         if (err != C2_OK) {
             ALOGE("fetchGraphicBlock for Output failed with status %d", err);
             return err;
         }
         ALOGV("provided (%dx%d) required (%dx%d)",
-              mOutBlock->width(), mOutBlock->height(), ALIGN128(mWidth), mHeight);
+              mOutBlock->width(), mOutBlock->height(), mWidth, mHeight);
     }
 
     return C2_OK;
@@ -863,7 +860,7 @@ void C2SoftAvcDec::process(
 
             if (false == mHeaderDecoded) {
                 /* Decode header and get dimensions */
-                setParams(mStride, IVD_DECODE_HEADER);
+                setParams(IVD_DECODE_HEADER);
             }
 
             WORD32 delay;
@@ -897,7 +894,7 @@ void C2SoftAvcDec::process(
             work->workletsProcessed = 0u;
 
             /* Decode header and get new dimensions */
-            setParams(mStride, IVD_DECODE_HEADER);
+            setParams(IVD_DECODE_HEADER);
             (void) ivdec_api_function(mDecHandle, ps_decode_ip, ps_decode_op);
         } else if (IS_IVD_FATAL_ERROR(ps_decode_op->u4_error_code)) {
             ALOGE("Fatal error in decoder 0x%x", ps_decode_op->u4_error_code);
@@ -928,8 +925,7 @@ void C2SoftAvcDec::process(
         if (0 < ps_decode_op->u4_pic_wd && 0 < ps_decode_op->u4_pic_ht) {
             if (mHeaderDecoded == false) {
                 mHeaderDecoded = true;
-                mStride = ALIGN128(ps_decode_op->u4_pic_wd);
-                setParams(mStride, IVD_DECODE_FRAME);
+                setParams(IVD_DECODE_FRAME);
             }
             if (ps_decode_op->u4_pic_wd != mWidth || ps_decode_op->u4_pic_ht != mHeight) {
                 mWidth = ps_decode_op->u4_pic_wd;
