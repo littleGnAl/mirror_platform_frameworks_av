@@ -38,7 +38,7 @@ namespace android {
 #define ivdext_ctl_set_num_cores_op_t   ih264d_ctl_set_num_cores_op_t
 #define ivdext_ctl_get_vui_params_ip_t  ih264d_ctl_get_vui_params_ip_t
 #define ivdext_ctl_get_vui_params_op_t  ih264d_ctl_get_vui_params_op_t
-#define ALIGN128(x)                     ((((x) + 127) >> 7) << 7)
+
 #define MAX_NUM_CORES                   4
 #define IVDEXT_CMD_CTL_SET_NUM_CORES    \
         (IVD_CONTROL_API_COMMAND_TYPE_T)IH264D_CMD_CTL_SET_NUM_CORES
@@ -117,7 +117,7 @@ public:
 private:
     status_t createDecoder();
     status_t setNumCores();
-    status_t setParams(size_t stride, IVD_VIDEO_DECODE_MODE_T dec_mode);
+    status_t setParams(IVD_VIDEO_DECODE_MODE_T dec_mode);
     void getVersion();
     status_t initDecoder();
     bool setDecodeArgs(ivd_video_decode_ip_t *ps_decode_ip,
@@ -159,7 +159,6 @@ private:
     uint32_t mOutputDelay;
     uint32_t mWidth;
     uint32_t mHeight;
-    uint32_t mStride;
     bool mSignalledOutputEos;
     bool mSignalledError;
     bool mHeaderDecoded;
