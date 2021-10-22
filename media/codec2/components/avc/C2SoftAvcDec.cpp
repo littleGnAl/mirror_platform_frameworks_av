@@ -343,6 +343,7 @@ C2SoftAvcDec::C2SoftAvcDec(
       mOutputDelay(kDefaultOutputDelay),
       mWidth(320),
       mHeight(240),
+      mStrideAlignment(0),
       mHeaderDecoded(false),
       mOutIndex(0u) {
     GENERATE_FILE_NAMES();
@@ -508,10 +509,37 @@ void C2SoftAvcDec::getVersion() {
     }
 }
 
+size_t getChromaStrideAlignment(const std::shared_ptr<C2BlockPool> &pool)
+{
+    std::shared_ptr<C2GraphicBlock> outBlock;
+    uint32_t format = HAL_PIXEL_FORMAT_YV12;
+    C2MemoryUsage usage = { C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE };
+    // Set dimensions of buffer to be allocated to 2x2.
+    c2_status_t err = pool->fetchGraphicBlock(2, 2, format, usage, &outBlock);
+    if (err != C2_OK) {
+        ALOGE("fetchGraphicBlock for Output failed with status %d", err);
+        return -1;
+    }
+    C2GraphicView view = outBlock->map().get();
+    if (view.error()) {
+        ALOGE("graphic view map failed %d", view.error());
+        return -1;
+    }
+
+    C2PlanarLayout layout;
+    layout = view.layout();
+    //size_t yStride = layout.planes[C2PlanarLayout::PLANE_Y].rowInc;
+
+    outBlock.reset();
+    // difference between yStride and width are the extra bytes due to alignement
+    // add 2 to that as
+    return layout.planes[C2PlanarLayout::PLANE_U].rowInc;
+
+}
 status_t C2SoftAvcDec::initDecoder() {
     if (OK != createDecoder()) return UNKNOWN_ERROR;
     mNumCores = MIN(getCpuCoreCount(), MAX_NUM_CORES);
-    mStride = ALIGN128(mWidth);
+    mStride = ALIGN(mWidth, 32);
     mSignalledError = false;
     resetPlugin();
     (void) setNumCores();
@@ -776,21 +804,32 @@ c2_status_t C2SoftAvcDec::ensureDecoderState(const std::shared_ptr<C2BlockPool> 
         ALOGE("not supposed to be here, invalid decoder context");
         return C2_CORRUPTED;
     }
+    // Determine stride alignment requirement, if it hasn't been computed yet.
+    if (mStrideAlignment <= 0) {
+        // Use 2 times chroma stride alignment requirements of graphic buffer allocator
+        // as stride alignment requirement. This ensures luma stride is 2 times chroma
+        // stride as decoder requires
+        mStrideAlignment = getChromaStrideAlignment(pool) * 2;
+        if (mStrideAlignment <= 0) {
+            return C2_CORRUPTED;
+        }
+    }
+    uint32_t alignedWidth = ALIGN(mWidth, mStrideAlignment);
     if (mOutBlock &&
-            (mOutBlock->width() != ALIGN128(mWidth) || mOutBlock->height() != mHeight)) {
+            (mOutBlock->width() != alignedWidth || mOutBlock->height() != mHeight)) {
         mOutBlock.reset();
     }
     if (!mOutBlock) {
         uint32_t format = HAL_PIXEL_FORMAT_YV12;
         C2MemoryUsage usage = { C2MemoryUsage::CPU_READ, C2MemoryUsage::CPU_WRITE };
         c2_status_t err =
-            pool->fetchGraphicBlock(ALIGN128(mWidth), mHeight, format, usage, &mOutBlock);
+            pool->fetchGraphicBlock(alignedWidth, mHeight, format, usage, &mOutBlock);
         if (err != C2_OK) {
             ALOGE("fetchGraphicBlock for Output failed with status %d", err);
             return err;
         }
         ALOGV("provided (%dx%d) required (%dx%d)",
-              mOutBlock->width(), mOutBlock->height(), ALIGN128(mWidth), mHeight);
+              mOutBlock->width(), mOutBlock->height(), alignedWidth, mHeight);
     }
 
     return C2_OK;
@@ -928,7 +967,7 @@ void C2SoftAvcDec::process(
         if (0 < ps_decode_op->u4_pic_wd && 0 < ps_decode_op->u4_pic_ht) {
             if (mHeaderDecoded == false) {
                 mHeaderDecoded = true;
-                mStride = ALIGN128(ps_decode_op->u4_pic_wd);
+                mStride = ALIGN(ps_decode_op->u4_pic_wd, mStrideAlignment);
                 setParams(mStride, IVD_DECODE_FRAME);
             }
             if (ps_decode_op->u4_pic_wd != mWidth || ps_decode_op->u4_pic_ht != mHeight) {
