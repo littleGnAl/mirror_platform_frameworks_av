@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "219ef617_c18d2086",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1905,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-24T15:24:46Z",
+      "side": 0,
+      "message": "this test breaks CTS: CtsMediaV2TestCases android.mediav2.cts.ExtractorTest$ValidateKeyValuePairs#validateKeyValuePairs[13(audio/mp4a-latm)]",
+      "range": {
+        "startLine": 1902,
+        "startChar": 11,
+        "endLine": 1905,
+        "endChar": 13
+      },
+      "revId": "10f165c2d036f94348f9aa6c5e049eacbb131180",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
