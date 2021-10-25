@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e6c60d56_1f0b3b16",
+        "filename": "apex/mediaswcodec.32rc",
+        "patchSetId": 6
+      },
+      "lineNbr": 1,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-25T19:08:12Z",
+      "side": 1,
+      "message": "this file is good.\nit would be great to have the Android.bp modified to install this file\nas well as the existing mediaswcodec.rc.\nsame thing for the transcoding rc file.",
+      "range": {
+        "startLine": 1,
+        "startChar": 6,
+        "endLine": 1,
+        "endChar": 16
+      },
+      "revId": "33ca53a2821d2bb539a647d194567ee5f456ca3c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
