@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c953048a_198a9101",
+        "filename": "cmds/stagefright/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2021-10-25T20:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9e980e20_c787546b",
+      "range": {
+        "startLine": 34,
+        "startChar": 4,
+        "endLine": 34,
+        "endChar": 17
+      },
+      "revId": "bdff543f0e52930eff21964c3ace769d7d625984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "568542c3_70ce19b9",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "fb4a24db_bafa91af",
+        "filename": "cmds/stagefright/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2021-10-25T20:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "568542c3_70ce19b9",
+      "range": {
+        "startLine": 36,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 53
+      },
+      "revId": "bdff543f0e52930eff21964c3ace769d7d625984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5cf199e_09ec07bb",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-10-25T17:44:50Z",
       "side": 1,
       "message": "when I was recently doing this, i found that a lot of places included this\nbut did not actually need it.\ntry building with these commented out to verify whether they are needed or not.",
+      "range": {
+        "startLine": 137,
+        "startChar": 8,
+        "endLine": 138,
+        "endChar": 50
+      },
+      "revId": "bdff543f0e52930eff21964c3ace769d7d625984",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "86e292a9_5ab70f62",
+        "filename": "cmds/stagefright/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 138,
+      "author": {
+        "id": 1076723
+      },
+      "writtenOn": "2021-10-25T20:19:52Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5cf199e_09ec07bb",
       "range": {
         "startLine": 137,
         "startChar": 8,
