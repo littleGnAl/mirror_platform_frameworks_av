@@ -789,43 +789,36 @@ MtpResponseCode MtpServer::doGetObject() {
 
     auto start = std::chrono::steady_clock::now();
 
-    const char* filePath = (const char *)pathBuf;
-    mtp_file_range mfr;
-    struct stat sstat;
-    uint64_t finalsize;
+    const char* filePath = pathBuf;
     bool transcode = android::base::GetBoolProperty("sys.fuse.transcode_mtp", false);
-    bool filePathAccess = true;
     ALOGD("Mtp transcode = %d", transcode);
+    int fd = -1;
 
     // For performance reasons, only attempt a ContentResolver open when transcode is required.
     // This is fine as long as we don't transcode by default on the device. If we suddenly
     // transcode by default, we'll need to ensure that MTP doesn't transcode by default and we
     // might need to make a binder call to avoid transcoding or come up with a better strategy.
     if (transcode) {
-        mfr.fd = mDatabase->openFilePath(filePath, true);
-        fstat(mfr.fd, &sstat);
-        finalsize = sstat.st_size;
-        fileLength = finalsize;
-        if (mfr.fd < 0) {
+        fd = mDatabase->openFilePath(filePath, /* transcode= */true);
+        if (fd >= 0) {
+            fstat(mfr.fd, &sstat);
+            fileSize = sstat.st_size;
+        } else {
             ALOGW("Mtp open via IMtpDatabase failed for %s. Falling back to the original",
                   filePath);
-            filePathAccess = true;
-        } else {
-            filePathAccess = false;
         }
     }
-
-    if (filePathAccess) {
+    if (fd < 0) {
         mfr.fd = open(filePath, O_RDONLY);
-        if (mfr.fd < 0) {
-            return MTP_RESPONSE_GENERAL_ERROR;
-        }
-        fstat(mfr.fd, &sstat);
-        finalsize = sstat.st_size;
+    }
+    if (fd < 0) {
+       return MTP_RESPONSE_GENERAL_ERROR;
     }
 
+    mtp_file_range mfr;
+    mfr.fd = fd;
     mfr.offset = 0;
-    mfr.length = fileLength;
+    mfr.length = fileSize;
     mfr.command = mRequest.getOperationCode();
     mfr.transaction_id = mRequest.getTransactionID();
 
@@ -845,7 +838,7 @@ MtpResponseCode MtpServer::doGetObject() {
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> diff = end - start;
     ALOGV("Sent a file over MTP. Time: %f s, Size: %" PRIu64 ", Rate: %f bytes/s",
-            diff.count(), finalsize, ((double) finalsize) / diff.count());
+            diff.count(), fileSize, ((double) fileSize) / diff.count());
     closeObjFd(mfr.fd, filePath);
     return result;
 }
