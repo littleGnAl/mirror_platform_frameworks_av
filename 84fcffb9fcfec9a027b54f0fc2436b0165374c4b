@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0c800e31_9fdf9a63",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-10-27T18:00:47Z",
+      "side": 1,
+      "message": "I believe a buffer level estimate is still needed for TRANSFER_SYNC_NOTIF_CALLBACK. Off the top of my head, a simple fix is either we mutex the obtainBuffer in AudioTrackShared (prefer not to given that we want to avoid mutexes in this logic) or we issue a nonblocking request for NOTIF_CALLBACK (with some wait timing done here).  Jean-Michel did the logic for TRANSFER_SYNC_NOTIF_CALLBACK so probably could comment better.\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/base/core/jni/android_media_AudioTrack.cpp;l\u003d168",
+      "range": {
+        "startLine": 2449,
+        "startChar": 0,
+        "endLine": 2449,
+        "endChar": 56
+      },
+      "revId": "84fcffb9fcfec9a027b54f0fc2436b0165374c4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
