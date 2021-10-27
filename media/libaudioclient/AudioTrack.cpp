@@ -2443,15 +2443,20 @@ nsecs_t AudioTrack::processAudioBuffer()
 
         Buffer audioBuffer;
         audioBuffer.frameCount = mRemainingFrames;
-        size_t nonContig;
-        status_t err = obtainBuffer(&audioBuffer, requested, NULL, &nonContig);
-        LOG_ALWAYS_FATAL_IF((err != NO_ERROR) != (audioBuffer.frameCount == 0),
-                "%s(%d): obtainBuffer() err=%d frameCount=%zu",
-                 __func__, mPortId, err, audioBuffer.frameCount);
+        size_t nonContig = 0;
+        status_t err = NO_ERROR;
+        size_t avail = 0;
+        if (mTransfer != TRANSFER_SYNC_NOTIF_CALLBACK) {
+            err = obtainBuffer(&audioBuffer, requested, NULL, &nonContig);
+            LOG_ALWAYS_FATAL_IF((err != NO_ERROR) != (audioBuffer.frameCount == 0),
+                    "%s(%d): obtainBuffer() err=%d frameCount=%zu",
+                     __func__, mPortId, err, audioBuffer.frameCount);
+            avail = audioBuffer.frameCount + nonContig;
+            ALOGV("%s(%d): obtainBuffer(%u) returned %zu = %zu + %zu err %d",
+                    __func__, mPortId, mRemainingFrames, avail,
+                    audioBuffer.frameCount, nonContig, err);
+        }
         requested = &ClientProxy::kNonBlocking;
-        size_t avail = audioBuffer.frameCount + nonContig;
-        ALOGV("%s(%d): obtainBuffer(%u) returned %zu = %zu + %zu err %d",
-                __func__, mPortId, mRemainingFrames, avail, audioBuffer.frameCount, nonContig, err);
         if (err != NO_ERROR) {
             if (err == TIMED_OUT || err == WOULD_BLOCK || err == -EINTR ||
                     (isOffloaded() && (err == DEAD_OBJECT))) {
