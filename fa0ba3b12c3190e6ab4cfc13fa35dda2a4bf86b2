@@ -16,6 +16,24 @@
       "message": "This still needs to be tested exhaustively.\n\nWill mark this comment as resolved, once tested.",
       "revId": "fa0ba3b12c3190e6ab4cfc13fa35dda2a4bf86b2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f98112e_1a760e14",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-27T01:46:04Z",
+      "side": 1,
+      "message": "Setting code-review to -1 to ensure this doesn\u0027t get merged till it is fully tested.",
+      "parentUuid": "fb346b6c_a94e8402",
+      "revId": "fa0ba3b12c3190e6ab4cfc13fa35dda2a4bf86b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
