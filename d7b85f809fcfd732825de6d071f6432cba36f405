@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "21766deb_c7b3f2ec",
+        "filename": "media/codec2/components/hevc/C2SoftHevcDec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 920,
+      "author": {
+        "id": 1597963
+      },
+      "writtenOn": "2021-10-27T11:14:04Z",
+      "side": 0,
+      "message": "Aligned 128. not 32",
+      "range": {
+        "startLine": 920,
+        "startChar": 26,
+        "endLine": 920,
+        "endChar": 34
+      },
+      "revId": "d7b85f809fcfd732825de6d071f6432cba36f405",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
