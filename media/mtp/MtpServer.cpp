@@ -795,7 +795,7 @@ MtpResponseCode MtpServer::doGetObject() {
     uint64_t finalsize;
     bool transcode = android::base::GetBoolProperty("sys.fuse.transcode_mtp", false);
     bool filePathAccess = true;
-    ALOGD("Mtp transcode = %d", transcode);
+    ALOGD("Mtp transcode = %d original size %" PRIi64, transcode, fileLength);
 
     // For performance reasons, only attempt a ContentResolver open when transcode is required.
     // This is fine as long as we don't transcode by default on the device. If we suddenly
@@ -811,6 +811,7 @@ MtpResponseCode MtpServer::doGetObject() {
                   filePath);
             filePathAccess = true;
         } else {
+            ALOGD("Mtp transcoded file size from stat %" PRIi64, sstat.st_size);
             filePathAccess = false;
         }
     }
@@ -822,6 +823,7 @@ MtpResponseCode MtpServer::doGetObject() {
         }
         fstat(mfr.fd, &sstat);
         finalsize = sstat.st_size;
+        ALOGD("Mtp original file size from stat %" PRIi64, sstat.st_size);
     }
 
     mfr.offset = 0;
@@ -844,7 +846,7 @@ MtpResponseCode MtpServer::doGetObject() {
 
     auto end = std::chrono::steady_clock::now();
     std::chrono::duration<double> diff = end - start;
-    ALOGV("Sent a file over MTP. Time: %f s, Size: %" PRIu64 ", Rate: %f bytes/s",
+    ALOGD("Sent a file over MTP. Time: %f s, Size: %" PRIu64 ", Rate: %f bytes/s",
             diff.count(), finalsize, ((double) finalsize) / diff.count());
     closeObjFd(mfr.fd, filePath);
     return result;
