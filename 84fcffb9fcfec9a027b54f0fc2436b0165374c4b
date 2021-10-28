@@ -39,6 +39,30 @@
       },
       "revId": "84fcffb9fcfec9a027b54f0fc2436b0165374c4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e974a165_cf776ab3",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1902032
+      },
+      "writtenOn": "2021-10-28T01:53:35Z",
+      "side": 1,
+      "message": "I check the logic of TRANSFER_SYNC_NOTIF_CALLBACK, I thought it only want to notice the AudioTrack.java can write more data, so it no need call obtainBuffer. and I agree with that should not mutex the obtainBuffer. however as you said, Jean-Michel did the logic, so please Jean-Michel confirm this, thanks.",
+      "parentUuid": "0c800e31_9fdf9a63",
+      "range": {
+        "startLine": 2449,
+        "startChar": 0,
+        "endLine": 2449,
+        "endChar": 56
+      },
+      "revId": "84fcffb9fcfec9a027b54f0fc2436b0165374c4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
