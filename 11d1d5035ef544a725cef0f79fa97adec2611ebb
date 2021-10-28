@@ -16,6 +16,24 @@
       "message": "if I understand the bug correctly, if i were to configure in the original with these smaller ht/width/framerate values, i\u0027m not getting the correct calculated profile.\n\nlooking at the CTS test line that this is to re-enable: we specify all 3 of those parameters.  To me, that should result in a proper setting of the profile.\n\nthat seems more a problem in how (or when)  we calculate the profile than anything else. Changing the defaults doesn\u0027t feel like the correct answer; it seems to mask the problem rather than fix it.\n\nso I\u0027m going to -1 this for the time being until that\u0027s been answered.",
       "revId": "11d1d5035ef544a725cef0f79fa97adec2611ebb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea597f77_c5229ded",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-28T23:51:34Z",
+      "side": 1,
+      "message": "Ray,\nProfileLevelSetter() is called first with default values (320x240 30fps 64kbps) and the following line\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/codec2/components/hevc/C2SoftHevcEnc.cpp;l\u003d353;drc\u003dmaster?q\u003dC2SoftHevcEnc.cpp\n\nadjusts the level to 2.0 as for the default values, as level 1.0 isn\u0027t sufficient for default values.\n\nAfter this, ProfileLevelSetter() is called with actual values and by this time, level is already adjusted to 2.0 and the function checks if the levels starting from 2.0 are enough to meet the given requirements.\n\nSince level 2.0 is sufficient for lower resolutions, it stays with level 2.0.",
+      "parentUuid": "937eda92_be7422af",
+      "revId": "11d1d5035ef544a725cef0f79fa97adec2611ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
