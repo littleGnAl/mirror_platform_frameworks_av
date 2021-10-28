@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "937eda92_be7422af",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-28T22:58:16Z",
+      "side": 1,
+      "message": "if I understand the bug correctly, if i were to configure in the original with these smaller ht/width/framerate values, i\u0027m not getting the correct calculated profile.\n\nlooking at the CTS test line that this is to re-enable: we specify all 3 of those parameters.  To me, that should result in a proper setting of the profile.\n\nthat seems more a problem in how (or when)  we calculate the profile than anything else. Changing the defaults doesn\u0027t feel like the correct answer; it seems to mask the problem rather than fix it.\n\nso I\u0027m going to -1 this for the time being until that\u0027s been answered.",
+      "revId": "11d1d5035ef544a725cef0f79fa97adec2611ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
