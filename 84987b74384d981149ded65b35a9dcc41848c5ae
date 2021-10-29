@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "40715975_c0514ab4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-29T04:31:52Z",
+      "side": 1,
+      "message": "As this particular change is unrelated to userdata \u003d\u003d null,\nwouldn\u0027t it be better to keep these two independent? \n\nOnce this CL lands, TODO in CTS will be removed and if at a later point, for some reason the userdata change needs to be reverted, then this CL alone can\u0027t be reverted (CTS CL also will also need to be reverted).\n\nIMHO, I don\u0027t think it is a good idea to combine change in api behavior along with a bug fix which is trying to get the ndk api consistent with SDK api.\n\nb/203147387 is filed to discuss what is the expected behavior and we can get opinion from Wonsik and Lajos (and few more people if required) in the bug and take it to closure based on that.\n\nAs mentioned in the bug (and as a response in one of the comments earlier), question is not just about userdata being null, we also need to decide about the null checks on callback functions too.",
+      "parentUuid": "aba98e3b_b54c43be",
+      "revId": "84987b74384d981149ded65b35a9dcc41848c5ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2c7bbd0d_61c66db9",
