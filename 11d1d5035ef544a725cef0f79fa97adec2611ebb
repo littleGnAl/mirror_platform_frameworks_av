@@ -34,6 +34,24 @@
       "parentUuid": "937eda92_be7422af",
       "revId": "11d1d5035ef544a725cef0f79fa97adec2611ebb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abe723c2_60254c80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-29T01:50:45Z",
+      "side": 1,
+      "message": "i think that ProfileLevelSetter() needs to start at 1 each time called.\n\nthe current semantics as you explain them are:\n  the plugin will auto-raise the level even if I set it to a low number.\nBut it won\u0027t auto-lower the level.\n\nthis actually works against a user.  If I\u0027ve specified a level (because the entity I\u0027m giving the output to accepts only up to that level), then this behavior will generate an incompatible encoding (my recipient can not handle the auto-raised higher level).  If I can\u0027t fit in that level, then the configure() should fail.\n\nThe principle of least surprise says that if the plugin is going to change the level, it can only be to a lower level -- because it stays within the bounds\nset by the user.\n\n\nif we don\u0027t want to reject the configure when the user specified parms that need a higher level -- which seems to be what it intended by this loop -- then we really should make this loop always set the level, whether it be higher or lower than what the user may have indicated.  I think that\u0027s the correct change here.",
+      "parentUuid": "ea597f77_c5229ded",
+      "revId": "11d1d5035ef544a725cef0f79fa97adec2611ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
