@@ -86,6 +86,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ad0b8a38_a3a6fef4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1001525
+      },
+      "writtenOn": "2021-10-29T20:10:19Z",
+      "side": 1,
+      "message": "b/122435290 has some context (basically, this change originated in an Android offshoot, then was uploaded to AOSP)",
+      "parentUuid": "751da1e8_2c9a639e",
+      "revId": "cf26297f1cd04de927e157f89ed5c467ef589e00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c7508f0a_5fa9c511",
