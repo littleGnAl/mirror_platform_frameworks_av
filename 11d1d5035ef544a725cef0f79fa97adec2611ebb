@@ -52,6 +52,24 @@
       "parentUuid": "ea597f77_c5229ded",
       "revId": "11d1d5035ef544a725cef0f79fa97adec2611ebb",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "114c9a07_48cb7e18",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-10-29T03:20:52Z",
+      "side": 1,
+      "message": "Ray,\nAs you have pointed out, design has always been to not fail for a level that is insufficient and instead increase it appropriately.\n\nNow keeping the failing case aside,\nonly time where it is necessary to change the level is when the configured level is not sufficient to cover other parameters passed. Not increasing the level would produce a stream that is not compliant to specification. Hence it is necessary to increase the level.\n\nOther case where user configures a higher level than what is required for configured width, height, frame rate and bitrate, level must not be lowered as there is no reason to do so. User may have valid reasons to ask for a level that is larger (like increasing bitrate later for eg) and also specification allows for a higher level for a given set of parameters.",
+      "parentUuid": "abe723c2_60254c80",
+      "revId": "11d1d5035ef544a725cef0f79fa97adec2611ebb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
