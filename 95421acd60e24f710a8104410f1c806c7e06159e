@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "160bb1ea_0fb9d2ab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-31T05:25:00Z",
+      "side": 1,
+      "message": "\u003e Patch Set 2:\n\u003e \n\u003e \u003e Patch Set 2:\n\u003e \u003e \n\u003e \u003e \u003e Patch Set 2:\n\u003e \u003e \u003e \n\u003e \u003e \u003e \u003e Patch Set 2:\n\u003e \u003e \u003e \u003e \n\u003e \u003e \u003e \u003e \u003e Patch Set 2:\n\u003e \u003e \u003e \u003e \u003e \n\u003e \u003e \u003e \u003e \u003e \u003e Patch Set 2:\n\u003e \u003e \u003e \u003e \u003e \u003e \n\u003e \u003e \u003e \u003e \u003e \u003e Why is this a necessary change? What does this solve?\n\u003e \u003e \u003e \u003e \u003e \n\u003e \u003e \u003e \u003e \u003e Attached detailed report in b/138260251\n\u003e \u003e \u003e \u003e \n\u003e \u003e \u003e \u003e I don\u0027t see anything in that bug report that explains why we are stripping the first 4 bytes for the AV1 codec? Can you add more detail, perhaps in this CL description, as to why the first 4 bytes need to be stripped?\n\u003e \u003e \u003e \n\u003e \u003e \u003e Nevermind, I see the bug report now. Why can\u0027t the decoder just ignore those 4-bytes? I don\u0027t think we should strip 4 bytes off a standardized (AV1) header. What about decoder implementations from other Android vendors that expect these 4 bytes to be there?\n\u003e \u003e \n\u003e \u003e From MTK:\n\u003e \u003e \"Why can\u0027t the decoder just ignore those 4-bytes?\"\n\u003e \u003e \u003d\u003eIt\u0027s not very standard for decoders to do this.\n\u003e \u003e \n\u003e \u003e And we think the first 4 bytes are just config data and are useless to decoders.\n\u003e \u003e HVCC and AVCC are also skipping the config data in AOSP.\n\u003e \u003e \n\u003e \u003e 880    } else if (meta-\u003efindData(kKeyHVCC, \u0026type, \u0026data, \u0026size)) {\n\u003e \u003e 881        const uint8_t *ptr \u003d (const uint8_t *)data;\n\u003e \u003e 882\n\u003e \u003e 883        if (size \u003c 23 || ptr[0] !\u003d 1) {  // configurationVersion \u003d\u003d 1\n\u003e \u003e 884            ALOGE(\"b/23680780\");\n\u003e \u003e 885            return BAD_VALUE;\n\u003e \u003e 886        }\n\u003e \u003e 887\n\u003e \u003e 888        const size_t dataSize \u003d size; // save for later\n\u003e \u003e 889        ptr +\u003d 22;\n\u003e \u003e 890        size -\u003d 22;\n\u003e \n\u003e What about decoder implementations from other Android vendors that might be expecting these 4 bytes to be there?\n\n",
+      "revId": "95421acd60e24f710a8104410f1c806c7e06159e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b4a3ce9b_ed229a93",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1393,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-10-31T05:25:00Z",
+      "side": 1,
+      "message": "this flow is confusing.\n\nmove the ptr/size adjustment to after 1398, so we have:\n\n// copy the full buffer\n// adjust ptr/size\n// copy the (stripped) csd-0 buffer",
+      "range": {
+        "startLine": 1390,
+        "startChar": 7,
+        "endLine": 1393,
+        "endChar": 0
+      },
+      "revId": "95421acd60e24f710a8104410f1c806c7e06159e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
