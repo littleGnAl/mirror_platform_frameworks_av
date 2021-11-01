@@ -106,6 +106,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fa6842ed_e4ebc5a6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-11-01T11:20:29Z",
+      "side": 1,
+      "message": "As things stand, we won\u0027t be looking into this. In order for us to pick this up we need:\n- A bug which describes the issue and includes sample media with which we can study the problem.\n- The CL to be rebased (currently merge-conflicting).\n\nIf Pawit is no longer a stakeholder, this CL is onwerless and should be abandoned.",
+      "revId": "cf26297f1cd04de927e157f89ed5c467ef589e00",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "c7508f0a_5fa9c511",
         "filename": "media/extractors/mkv/MatroskaExtractor.cpp",
         "patchSetId": 2
