@@ -16,6 +16,24 @@
       "message": "\u003e fix transcode error when clip duration is longer than 1 minutes.\n\nCan you provide steps to reproduce the issue. Media longer than 1 minute are not transcoded by default, in which situation does the watchdog trigger?",
       "revId": "bea9111716f72eab7c5c5903ae9339f7c6916eae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25630b5d_8ecdddab",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1733827
+      },
+      "writtenOn": "2021-11-01T02:55:01Z",
+      "side": 1,
+      "message": "Just follow the session \"Extending video length limitation\" in https://source.android.com/devices/media/media-transcoding\n\ntest the translate with a longer duration video to check translate performance.\nlog shows in below order.\n\nMPEG4Writer: release()\nTranscodingSessionController: Watchdog timeout: {client:0, session:1}\nMPEG4Writer: final fsync() takes 5736 ms, file size 252498538",
+      "parentUuid": "421fcc55_fcbf1f25",
+      "revId": "bea9111716f72eab7c5c5903ae9339f7c6916eae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
