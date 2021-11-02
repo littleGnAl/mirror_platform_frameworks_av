@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-//#define LOG_NDEBUG 0
+#define LOG_NDEBUG 0
 #ifdef MPEG4
   #define LOG_TAG "C2SoftMpeg4Dec"
 #else
