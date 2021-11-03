@@ -99,6 +99,7 @@ bool addSupportedProfileLevels(
     // determine if codec supports HDR
     bool supportsHdr = false;
     bool supportsHdr10Plus = false;
+    bool supports10Bit = false;
 
     std::vector<std::shared_ptr<C2ParamDescriptor>> paramDescs;
     c2_status_t err1 = intf->querySupportedParams(&paramDescs);
@@ -125,6 +126,10 @@ bool addSupportedProfileLevels(
     // For VP9/AV1, the static info is always propagated by framework.
     supportsHdr |= (mediaType == MIMETYPE_VIDEO_VP9);
     supportsHdr |= (mediaType == MIMETYPE_VIDEO_AV1);
+
+    // HDR support implies 10-bit support.
+    // TODO: directly check this from the component interface
+    supports10Bit = (supportsHdr || supportsHdr10Plus);
 
     bool added = false;
 
@@ -163,6 +168,12 @@ bool addSupportedProfileLevels(
                     if (hdrMapper && hdrMapper->mapProfile(pl.profile, &sdkProfile)) {
                         caps->addProfileLevel((uint32_t)sdkProfile, (uint32_t)sdkLevel);
                     }
+                }
+            }
+            if (supports10Bit) {
+                auto bitnessMapper = C2Mapper::GetBitDepthProfileLevelMapper(trait.mediaType, 10);
+                if (bitnessMapper && bitnessMapper->mapProfile(pl.profile, &sdkProfile)) {
+                    caps->addProfileLevel((uint32_t)sdkProfile, (uint32_t)sdkLevel);
                 }
             }
         } else if (!mapper) {
