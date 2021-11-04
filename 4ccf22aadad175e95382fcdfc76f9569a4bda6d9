@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "43f592ac_5ddb0c55",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-11-04T19:31:59Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "d1316e1c_142869d9",
+      "range": {
+        "startLine": 564,
+        "startChar": 12,
+        "endLine": 564,
+        "endChar": 13
+      },
+      "revId": "4ccf22aadad175e95382fcdfc76f9569a4bda6d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72b8ef0b_65e8cc17",
@@ -601,6 +625,24 @@
       "side": 1,
       "message": "I have tried using getopt_long. Please review further if this was what intended",
       "parentUuid": "2f528f92_ad3bfc15",
+      "revId": "4ccf22aadad175e95382fcdfc76f9569a4bda6d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fe3f3c5b_0da8d4a1",
+        "filename": "media/libstagefright/filters/test/grainBlending/grainBlending_test.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-11-04T19:31:59Z",
+      "side": 1,
+      "message": "This looks better.\nThanks.",
+      "parentUuid": "bbed4a8c_3062c056",
       "revId": "4ccf22aadad175e95382fcdfc76f9569a4bda6d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
