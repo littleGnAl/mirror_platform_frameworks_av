@@ -16,6 +16,23 @@
       "message": "The patch does not affect functionality, only replaces deprecated command with a new one.\n\nProcessCapacityHigh is defined in https://cs.android.com/android/platform/superproject/+/master:system/core/libprocessgroup/profiles/task_profiles.json;l\u003d333 and causes the process to be added into foreground group of cpuset controller, same as \"writepid /dev/cpuset/foreground/tasks\" which it replaces.\nServiceCapacityLow is defined in https://cs.android.com/android/platform/superproject/+/master:system/core/libprocessgroup/profiles/task_profiles.json;l\u003d360 and causes the process to be added into system-background group of cpuset controller, same as \"writepid /dev/cpuset/system-background/tasks\" which it replaces.\n\nDocumentation on task_profiles command can be found at https://source.android.com/devices/tech/perf/cgroups#taskprofiles-init-language-command",
       "revId": "cdc135c3197c5d812275bfd5ace3c9f0af486736",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d572e8c_c78dba82",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2021-11-04T18:39:36Z",
+      "side": 1,
+      "message": "Adding more owners. Need owners approval, this CL is blocking further progress on cgroups migration to v2. My first comment on CL provides detailed explanation about the change and why it does not affect functionality. Please review.",
+      "revId": "cdc135c3197c5d812275bfd5ace3c9f0af486736",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
