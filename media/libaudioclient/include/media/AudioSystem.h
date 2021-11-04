@@ -415,8 +415,15 @@ public:
 
     static status_t getMicrophones(std::vector<media::MicrophoneInfo> *microphones);
 
-    static status_t getHwOffloadEncodingFormatsSupportedForA2DP(
-                                    std::vector<audio_format_t> *formats);
+    enum hw_offload_device_type_t{
+        DEVICE_A2DP_ENCODE = 0,
+        DEVICE_A2DP_DECODE,
+        DEVICE_LE_AUDIO_ENCODE,
+        DEVICE_LE_AUDIO_DECODE,
+    };
+
+    static status_t getHwOffloadFormatsSupported(
+                                    int deviceType, std::vector<audio_format_t> *formats);
 
     // numSurroundFormats holds the maximum number of formats and bool value allowed in the array.
     // When numSurroundFormats is 0, surroundFormats and surroundFormatsEnabled will not be

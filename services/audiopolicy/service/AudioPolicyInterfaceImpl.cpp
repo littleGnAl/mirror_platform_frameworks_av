@@ -1877,8 +1877,8 @@ Status AudioPolicyService::getReportedSurroundFormats(
     return Status::ok();
 }
 
-Status AudioPolicyService::getHwOffloadEncodingFormatsSupportedForA2DP(
-        std::vector<media::audio::common::AudioFormat>* _aidl_return) {
+Status AudioPolicyService::getHwOffloadFormatsSupported(
+        int deviceType, std::vector<media::audio::common::AudioFormat>* _aidl_return) {
     std::vector<audio_format_t> formats;
 
     if (mAudioPolicyManager == NULL) {
@@ -1887,7 +1887,7 @@ Status AudioPolicyService::getHwOffloadEncodingFormatsSupportedForA2DP(
     Mutex::Autolock _l(mLock);
     AutoCallerClear acc;
     RETURN_IF_BINDER_ERROR(binderStatusFromStatusT(
-            mAudioPolicyManager->getHwOffloadEncodingFormatsSupportedForA2DP(&formats)));
+            mAudioPolicyManager->getHwOffloadFormatsSupported(deviceType, &formats)));
     *_aidl_return = VALUE_OR_RETURN_BINDER_STATUS(
             convertContainer<std::vector<media::audio::common::AudioFormat>>(
                     formats,

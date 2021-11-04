@@ -525,10 +525,10 @@ status_t AudioPolicyManager::handleDeviceConfigChange(audio_devices_t device,
     return NO_ERROR;
 }
 
-status_t AudioPolicyManager::getHwOffloadEncodingFormatsSupportedForA2DP(
-                                    std::vector<audio_format_t> *formats)
+status_t AudioPolicyManager::getHwOffloadFormatsSupported(
+                                    int deviceType, std::vector<audio_format_t> *formats)
 {
-    ALOGV("getHwOffloadEncodingFormatsSupportedForA2DP()");
+    ALOGV("getHwOffloadFormatsSupported()");
     status_t status = NO_ERROR;
     std::unordered_set<audio_format_t> formatSet;
     sp<HwModule> primaryModule =
@@ -537,8 +537,23 @@ status_t AudioPolicyManager::getHwOffloadEncodingFormatsSupportedForA2DP(
         ALOGE("%s() unable to get primary module", __func__);
         return NO_INIT;
     }
+
+    DeviceTypeSet audioDeviceSet;
+
+    switch(deviceType) {
+    case AudioSystem::DEVICE_A2DP_ENCODE:
+        audioDeviceSet = getAudioDeviceOutAllA2dpSet();
+        break;
+    case AudioSystem::DEVICE_LE_AUDIO_ENCODE:
+        audioDeviceSet = getAudioDeviceOutAllBleSet();
+        break;
+    default:
+        break;
+    }
+
+
     DeviceVector declaredDevices = primaryModule->getDeclaredDevices().getDevicesFromTypes(
-            getAudioDeviceOutAllA2dpSet());
+            audioDeviceSet);
     for (const auto& device : declaredDevices) {
         formatSet.insert(device->encodedFormats().begin(), device->encodedFormats().end());
     }
@@ -2147,7 +2162,7 @@ status_t AudioPolicyManager::getInputForAttr(const audio_attributes_t *attr,
     }
 
     // Explicit routing?
-    sp<DeviceDescriptor> explicitRoutingDevice = 
+    sp<DeviceDescriptor> explicitRoutingDevice =
             mAvailableInputDevices.getDeviceFromId(*selectedDeviceId);
 
     // special case for mmap capture: if an input IO handle is specified, we reuse this input if
@@ -2333,7 +2348,7 @@ audio_io_handle_t AudioPolicyManager::getInputForDevice(const sp<DeviceDescripto
             profileFlags = AUDIO_INPUT_FLAG_NONE; // retry
         } else { // fail
             ALOGW("%s could not find profile for device %s, sampling rate %u, format %#x, "
-                  "channel mask 0x%X, flags %#x", __func__, device->toString().c_str(), 
+                  "channel mask 0x%X, flags %#x", __func__, device->toString().c_str(),
                   config->sample_rate, config->format, config->channel_mask, flags);
             return input;
         }
@@ -5352,7 +5367,7 @@ status_t AudioPolicyManager::checkInputsForDevice(const sp<DeviceDescriptor>& de
             } // endif input != 0
 
             if (input == AUDIO_IO_HANDLE_NONE) {
-                ALOGW("%s could not open input for device %s", __func__,  
+                ALOGW("%s could not open input for device %s", __func__,
                        device->toString().c_str());
                 profiles.removeAt(profile_index);
                 profile_index--;

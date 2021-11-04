@@ -1960,8 +1960,8 @@ bool AudioSystem::isHapticPlaybackSupported() {
     return result.value_or(false);
 }
 
-status_t AudioSystem::getHwOffloadEncodingFormatsSupportedForA2DP(
-        std::vector<audio_format_t>* formats) {
+status_t AudioSystem::getHwOffloadFormatsSupported(
+        int deviceType, std::vector<audio_format_t>* formats) {
     if (formats == nullptr) {
         return BAD_VALUE;
     }
@@ -1972,7 +1972,7 @@ status_t AudioSystem::getHwOffloadEncodingFormatsSupportedForA2DP(
 
     std::vector<media::audio::common::AudioFormat> formatsAidl;
     RETURN_STATUS_IF_ERROR(statusTFromBinderStatus(
-            aps->getHwOffloadEncodingFormatsSupportedForA2DP(&formatsAidl)));
+            aps->getHwOffloadFormatsSupported(deviceType, &formatsAidl)));
     *formats = VALUE_OR_RETURN_STATUS(
             convertContainer<std::vector<audio_format_t>>(formatsAidl,
                                                           aidl2legacy_AudioFormat_audio_format_t));
