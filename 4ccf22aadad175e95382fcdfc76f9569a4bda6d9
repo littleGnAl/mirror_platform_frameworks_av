@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d1316e1c_142869d9",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 564,
+      "author": {
+        "id": 1896400
+      },
+      "writtenOn": "2021-11-04T19:08:24Z",
+      "side": 1,
+      "message": "Harish the convention for this variable is coming from SMPTE-RDD5 . let me know if we have to change this.",
+      "parentUuid": "9ae4c3c6_8ee25b1a",
+      "range": {
+        "startLine": 564,
+        "startChar": 12,
+        "endLine": 564,
+        "endChar": 13
+      },
+      "revId": "4ccf22aadad175e95382fcdfc76f9569a4bda6d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "72b8ef0b_65e8cc17",
         "filename": "media/libstagefright/filters/grainBlending.cpp",
         "patchSetId": 10
@@ -54,6 +78,30 @@
       "writtenOn": "2021-10-22T05:39:48Z",
       "side": 1,
       "message": "does this need to be caps?",
+      "range": {
+        "startLine": 566,
+        "startChar": 11,
+        "endLine": 566,
+        "endChar": 22
+      },
+      "revId": "4ccf22aadad175e95382fcdfc76f9569a4bda6d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29d6946a_376b2761",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 566,
+      "author": {
+        "id": 1896400
+      },
+      "writtenOn": "2021-11-04T19:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "72b8ef0b_65e8cc17",
       "range": {
         "startLine": 566,
         "startChar": 11,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "709963e4_5ed1b938",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 979,
+      "author": {
+        "id": 1896400
+      },
+      "writtenOn": "2021-11-04T19:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cc0923be_5c4ce483",
+      "range": {
+        "startLine": 978,
+        "startChar": 0,
+        "endLine": 979,
+        "endChar": 37
+      },
+      "revId": "4ccf22aadad175e95382fcdfc76f9569a4bda6d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b12e6df8_c2c1ac76",
@@ -100,6 +172,30 @@
       "writtenOn": "2021-10-22T05:39:48Z",
       "side": 1,
       "message": "is this block necessary?\n\nif not remove { } and indent appropriately",
+      "range": {
+        "startLine": 1043,
+        "startChar": 0,
+        "endLine": 1044,
+        "endChar": 25
+      },
+      "revId": "4ccf22aadad175e95382fcdfc76f9569a4bda6d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d833d0c7_c5eb9f07",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1044,
+      "author": {
+        "id": 1896400
+      },
+      "writtenOn": "2021-11-04T19:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b12e6df8_c2c1ac76",
       "range": {
         "startLine": 1043,
         "startChar": 0,
@@ -133,6 +229,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90cb55eb_56009669",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1083,
+      "author": {
+        "id": 1896400
+      },
+      "writtenOn": "2021-11-04T19:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c2281746_a7bd49f0",
+      "range": {
+        "startLine": 1082,
+        "startChar": 0,
+        "endLine": 1083,
+        "endChar": 25
+      },
+      "revId": "4ccf22aadad175e95382fcdfc76f9569a4bda6d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8e4edb6_0fa7b2e8",
@@ -146,6 +266,30 @@
       "writtenOn": "2021-10-22T05:39:48Z",
       "side": 1,
       "message": "prefer i",
+      "range": {
+        "startLine": 1586,
+        "startChar": 13,
+        "endLine": 1586,
+        "endChar": 15
+      },
+      "revId": "4ccf22aadad175e95382fcdfc76f9569a4bda6d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b1eb46ce_a50b74e0",
+        "filename": "media/libstagefright/filters/grainBlending.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 1896400
+      },
+      "writtenOn": "2021-11-04T19:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "d8e4edb6_0fa7b2e8",
       "range": {
         "startLine": 1586,
         "startChar": 13,
@@ -179,6 +323,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2d300f15_7c344904",
+        "filename": "media/libstagefright/filters/grainBlending.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 76,
+      "author": {
+        "id": 1896400
+      },
+      "writtenOn": "2021-11-04T19:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fb807a4c_5bd5200d",
+      "range": {
+        "startLine": 76,
+        "startChar": 8,
+        "endLine": 76,
+        "endChar": 20
+      },
+      "revId": "4ccf22aadad175e95382fcdfc76f9569a4bda6d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0bac953b_07f9ef31",
@@ -192,6 +360,30 @@
       "writtenOn": "2021-10-22T05:39:48Z",
       "side": 1,
       "message": "NUM_BLOCK_IDX",
+      "range": {
+        "startLine": 88,
+        "startChar": 8,
+        "endLine": 88,
+        "endChar": 18
+      },
+      "revId": "4ccf22aadad175e95382fcdfc76f9569a4bda6d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83991a6a_f14ffe43",
+        "filename": "media/libstagefright/filters/grainBlending.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 88,
+      "author": {
+        "id": 1896400
+      },
+      "writtenOn": "2021-11-04T19:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0bac953b_07f9ef31",
       "range": {
         "startLine": 88,
         "startChar": 8,
@@ -225,6 +417,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "77caa44b_70e0b067",
+        "filename": "media/libstagefright/filters/grainBlending.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 94,
+      "author": {
+        "id": 1896400
+      },
+      "writtenOn": "2021-11-04T19:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bd5c84d0_957516f4",
+      "range": {
+        "startLine": 94,
+        "startChar": 19,
+        "endLine": 94,
+        "endChar": 20
+      },
+      "revId": "4ccf22aadad175e95382fcdfc76f9569a4bda6d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "12d94d87_ecfc2549",
@@ -238,6 +454,30 @@
       "writtenOn": "2021-10-22T05:39:48Z",
       "side": 1,
       "message": "will there ever be a file i/o error possible?",
+      "range": {
+        "startLine": 104,
+        "startChar": 8,
+        "endLine": 104,
+        "endChar": 26
+      },
+      "revId": "4ccf22aadad175e95382fcdfc76f9569a4bda6d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c65142a_bb211c8b",
+        "filename": "media/libstagefright/filters/grainBlending.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1896400
+      },
+      "writtenOn": "2021-11-04T19:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "12d94d87_ecfc2549",
       "range": {
         "startLine": 104,
         "startChar": 8,
@@ -271,6 +511,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "109460b0_099b462d",
+        "filename": "media/libstagefright/filters/grainBlending.h",
+        "patchSetId": 10
+      },
+      "lineNbr": 338,
+      "author": {
+        "id": 1896400
+      },
+      "writtenOn": "2021-11-04T19:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bcb9438c_e7c560e0",
+      "range": {
+        "startLine": 338,
+        "startChar": 5,
+        "endLine": 338,
+        "endChar": 21
+      },
+      "revId": "4ccf22aadad175e95382fcdfc76f9569a4bda6d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3f79d66a_a6317df8",
@@ -288,6 +552,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e795cb65_09d87380",
+        "filename": "media/libstagefright/filters/test/grainBlending/grainBlending.cfg",
+        "patchSetId": 10
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1896400
+      },
+      "writtenOn": "2021-11-04T19:08:24Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3f79d66a_a6317df8",
+      "revId": "4ccf22aadad175e95382fcdfc76f9569a4bda6d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2f528f92_ad3bfc15",
@@ -301,6 +583,24 @@
       "writtenOn": "2021-10-22T05:39:48Z",
       "side": 1,
       "message": "can we try using getlong_opt \n\nyou can read all the lines from the file that don\u0027t start with # and create an array of strings and pass that as argument",
+      "revId": "4ccf22aadad175e95382fcdfc76f9569a4bda6d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bbed4a8c_3062c056",
+        "filename": "media/libstagefright/filters/test/grainBlending/grainBlending_test.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 114,
+      "author": {
+        "id": 1896400
+      },
+      "writtenOn": "2021-11-04T19:08:24Z",
+      "side": 1,
+      "message": "I have tried using getopt_long. Please review further if this was what intended",
+      "parentUuid": "2f528f92_ad3bfc15",
       "revId": "4ccf22aadad175e95382fcdfc76f9569a4bda6d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
