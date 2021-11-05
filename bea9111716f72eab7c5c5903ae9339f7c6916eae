@@ -34,6 +34,23 @@
       "parentUuid": "421fcc55_fcbf1f25",
       "revId": "bea9111716f72eab7c5c5903ae9339f7c6916eae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7e5c69e2_df0cfec2",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1136369
+      },
+      "writtenOn": "2021-11-05T16:03:17Z",
+      "side": 1,
+      "message": "I\u0027m concern about this patch. The watchdog is meant to make sure that continuous progress is always made. If for whatever reason the write doesn\u0027t progress for 3 second, it is very significant system health issue and we would want to surface it through a failure.\n\nIt\u0027s surprising that a file system write would take so long. If it really does, than maybe it should report progress too. This would be a better fix than stopping the watchdog.",
+      "revId": "bea9111716f72eab7c5c5903ae9339f7c6916eae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
