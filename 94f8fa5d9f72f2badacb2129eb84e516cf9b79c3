@@ -49,6 +49,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f4b9ea59_55ec3da7",
+        "filename": "media/libaudioclient/aidl/android/media/IAudioPolicyService.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-11-05T15:30:30Z",
+      "side": 1,
+      "message": "This is AIDL. Should be \u0027in AudioDevice device\u0027. If we want to use the device type only, the type for that is different for the moment between AOSP and internal. In AOSP \u0027int\u0027 is still used (see \u0027type\u0027 here https://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libaudioclient/aidl/android/media/AudioDevice.aidl), whereas in internal we use \u0027AudioDeviceDescription\u0027 (see http://cs/android/frameworks/base/media/aidl/android/media/audio/common/AudioDevice.aidl). Thus, to proceed with the device type, different versions of the patch would be needed for AOSP and internal, until we upstream type system changes to AOSP.",
+      "parentUuid": "8f8c5eb8_e5946491",
+      "range": {
+        "startLine": 296,
+        "startChar": 47,
+        "endLine": 296,
+        "endChar": 50
+      },
+      "revId": "94f8fa5d9f72f2badacb2129eb84e516cf9b79c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2497196e_7e8125cf",
         "filename": "media/libaudioclient/include/media/AudioSystem.h",
         "patchSetId": 1
