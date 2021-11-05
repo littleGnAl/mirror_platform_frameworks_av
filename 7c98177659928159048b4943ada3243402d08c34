@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "acfaba17_16b5cd86",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-11-05T10:56:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24c5c371_5a4bac43",
+      "range": {
+        "startLine": 21,
+        "startChar": 0,
+        "endLine": 21,
+        "endChar": 14
+      },
+      "revId": "7c98177659928159048b4943ada3243402d08c34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "64887e57_ea24bb44",
         "filename": "/PATCHSET_LEVEL",
         "patchSetId": 2
@@ -54,6 +78,30 @@
       "writtenOn": "2021-11-05T06:15:52Z",
       "side": 1,
       "message": "nit: no need for the .get() here and on line 104.",
+      "range": {
+        "startLine": 105,
+        "startChar": 65,
+        "endLine": 105,
+        "endChar": 71
+      },
+      "revId": "7c98177659928159048b4943ada3243402d08c34",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "047e38eb_8f7143d2",
+        "filename": "media/utils/ServiceUtilities.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 105,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-11-05T10:56:59Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e8b052be_48c73ef0",
       "range": {
         "startLine": 105,
         "startChar": 65,
