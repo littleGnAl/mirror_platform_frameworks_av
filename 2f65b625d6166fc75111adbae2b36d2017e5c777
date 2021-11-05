@@ -121,6 +121,24 @@
       "parentUuid": "62d3140d_67cbca5b",
       "revId": "2f65b625d6166fc75111adbae2b36d2017e5c777",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6fd2e354_38f4bbab",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 20
+      },
+      "lineNbr": 1859,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-11-05T02:38:21Z",
+      "side": 1,
+      "message": "do we really intend \"if the pointers are different, that\u0027s enough to declare\nthe info has changed\".\nshould we be checking the content of the two structs that the pointers reference?",
+      "parentUuid": "7fa20af4_3a01ae69",
+      "revId": "2f65b625d6166fc75111adbae2b36d2017e5c777",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
