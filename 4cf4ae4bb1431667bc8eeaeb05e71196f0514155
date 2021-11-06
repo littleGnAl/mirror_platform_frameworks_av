@@ -16,6 +16,24 @@
       "message": "i don\u0027t see that this improves over the existing ALOGV.\nthat does allow us to change logging for specific tags\nwith things like:\n\nsetprop log.tag.XXX V\n",
       "revId": "4cf4ae4bb1431667bc8eeaeb05e71196f0514155",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d1deeea_3e63b1aa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1402841
+      },
+      "writtenOn": "2021-11-06T08:03:04Z",
+      "side": 1,
+      "message": "Hi, Ray,\n\"setprop log.tag.XXX V\"\nThis way is used in Java layer, but can\u0027t be used in native layer.\nWe may not upstream to aosp/master, but expect for partner br.\nhttps://partner-android-review.googlesource.com/c/platform/frameworks/av/+/1996821",
+      "parentUuid": "823dc849_4a21e8d7",
+      "revId": "4cf4ae4bb1431667bc8eeaeb05e71196f0514155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
