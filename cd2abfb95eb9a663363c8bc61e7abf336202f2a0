@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fb957c22_bea6ee6b",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1396,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2021-11-06T02:09:16Z",
+      "side": 1,
+      "message": "in text this is referred to as AV1CodecConfigurationBox. I think that would help with the readability. you could also say ...codec configuration data... and link the reference:\nhttps://aomediacodec.github.io/av1-isobmff/#av1codecconfigurationbox-section",
+      "range": {
+        "startLine": 1396,
+        "startChar": 52,
+        "endLine": 1396,
+        "endChar": 76
+      },
+      "revId": "cd2abfb95eb9a663363c8bc61e7abf336202f2a0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
