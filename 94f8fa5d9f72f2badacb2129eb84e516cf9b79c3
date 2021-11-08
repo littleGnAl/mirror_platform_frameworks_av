@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc2464e1_201a9abc",
+        "filename": "media/libaudioclient/AudioSystem.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1975,
+      "author": {
+        "id": 1875587
+      },
+      "writtenOn": "2021-11-08T13:45:43Z",
+      "side": 1,
+      "message": "legacy2aidl_audio_devices_t_AudioDeviceDescription is for internal branch, for the AOSP I used legacy2aidl_audio_devices_t_int32_t instead.",
+      "parentUuid": "bf5adf15_f93ff875",
+      "range": {
+        "startLine": 1975,
+        "startChar": 46,
+        "endLine": 1975,
+        "endChar": 56
+      },
+      "revId": "94f8fa5d9f72f2badacb2129eb84e516cf9b79c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8f8c5eb8_e5946491",
@@ -71,6 +95,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9582300_6cf0b599",
+        "filename": "media/libaudioclient/aidl/android/media/IAudioPolicyService.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1875587
+      },
+      "writtenOn": "2021-11-08T13:45:43Z",
+      "side": 1,
+      "message": "Only device type will be used in this function. AudioDevice includes the device type and address, so I would prefer to use audio_devices_t.\nI will create the related patches to the internal branch once these patches are reviewed.",
+      "parentUuid": "f4b9ea59_55ec3da7",
+      "range": {
+        "startLine": 296,
+        "startChar": 47,
+        "endLine": 296,
+        "endChar": 50
+      },
+      "revId": "94f8fa5d9f72f2badacb2129eb84e516cf9b79c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2497196e_7e8125cf",
@@ -84,6 +132,30 @@
       "writtenOn": "2021-11-05T13:29:51Z",
       "side": 1,
       "message": "see comment in aog/1881112 about use of audio device types",
+      "range": {
+        "startLine": 418,
+        "startChar": 9,
+        "endLine": 418,
+        "endChar": 33
+      },
+      "revId": "94f8fa5d9f72f2badacb2129eb84e516cf9b79c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c35c8849_957c0b46",
+        "filename": "media/libaudioclient/include/media/AudioSystem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 418,
+      "author": {
+        "id": 1875587
+      },
+      "writtenOn": "2021-11-08T13:45:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2497196e_7e8125cf",
       "range": {
         "startLine": 418,
         "startChar": 9,
