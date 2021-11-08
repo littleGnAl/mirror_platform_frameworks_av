@@ -121,6 +121,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "15e7e828_ee01746a",
+        "filename": "media/libaudioclient/aidl/android/media/IAudioPolicyService.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-11-08T18:48:24Z",
+      "side": 1,
+      "message": "\u003e I will create the related patches to the internal branch once these patches are reviewed.\n\nSince the patch from AOSP will not merge into internal due to conflicts, I would suggest starting with a patch on internal, merging it, and then either backporting to AOSP using the type system from Android S, or waiting for us to upstream our type system changes and then simply cherry-picking to AOSP with no changes.\n\nPlease note that on internal you will need to use http://cs/android/frameworks/base/media/aidl/android/media/audio/common/AudioDeviceDescription.aidl type instead of an int carrying \u0027audio_devices_t\u0027. There is a mapping between AudioDeviceDescription and audio_devices_t: http://cs/android/frameworks/av/media/libaudioclient/include/media/AidlConversion.h;l\u003d137;rcl\u003d5640c290d823164a362a55393d53e6d40be8db71",
+      "parentUuid": "e9582300_6cf0b599",
+      "range": {
+        "startLine": 296,
+        "startChar": 47,
+        "endLine": 296,
+        "endChar": 50
+      },
+      "revId": "94f8fa5d9f72f2badacb2129eb84e516cf9b79c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2497196e_7e8125cf",
         "filename": "media/libaudioclient/include/media/AudioSystem.h",
         "patchSetId": 1
