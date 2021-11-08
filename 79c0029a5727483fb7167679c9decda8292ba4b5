@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e8bdc872_a564bebe",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 4956,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-11-08T08:48:35Z",
+      "side": 1,
+      "message": "We still need a comment explaining that direct outputs are closed immediately after being opened here. \nThe wording \"open all output streams needed to access attached devices\" is ambiguous as it meant that those output streams will remain open except for direct output that need to be closed by default.\nWe can add:\n// direct outputs are closed immediately after checking the availability of attached devices",
+      "range": {
+        "startLine": 4956,
+        "startChar": 0,
+        "endLine": 4956,
+        "endChar": 69
+      },
+      "revId": "79c0029a5727483fb7167679c9decda8292ba4b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
