@@ -51,6 +51,23 @@
       "message": "I\u0027m concern about this patch. The watchdog is meant to make sure that continuous progress is always made. If for whatever reason the write doesn\u0027t progress for 3 second, it is very significant system health issue and we would want to surface it through a failure.\n\nIt\u0027s surprising that a file system write would take so long. If it really does, than maybe it should report progress too. This would be a better fix than stopping the watchdog.",
       "revId": "bea9111716f72eab7c5c5903ae9339f7c6916eae",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "25f33679_edb41e23",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1733827
+      },
+      "writtenOn": "2021-11-09T09:28:56Z",
+      "side": 1,
+      "message": "Checked emmc write speed on the board, it is 45MB/s for write.\nthe time cost for fsync is reasonable.\nWhen decoder and encoder run fast, transcoding is finished in short time.\nI will check for other solution in MPEG4Writer later.",
+      "revId": "bea9111716f72eab7c5c5903ae9339f7c6916eae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
