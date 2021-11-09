@@ -16,6 +16,29 @@
       "message": "Need to ensure OMX path is verified as well.",
       "revId": "c186a4170580823e1230cb0456fc0907bddfb566",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a214eb68_3755e029",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 533,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-11-09T00:20:26Z",
+      "side": 1,
+      "message": "the codec has all sorts of logic to calculated these based on YUV_420, RGB565, etc.\n\nbut we\u0027re just hardwiring them here.\nshouldn\u0027t there be some calculation based on  YUV_* and RGB565 chroma formats?\n\nreading through the parameters, it seems like yuv420 is the default, but\nthat it does allow setting to other values.",
+      "range": {
+        "startLine": 531,
+        "startChar": 3,
+        "endLine": 533,
+        "endChar": 35
+      },
+      "revId": "c186a4170580823e1230cb0456fc0907bddfb566",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
