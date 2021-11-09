@@ -145,6 +145,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d0b28641_27775a52",
+        "filename": "media/libaudioclient/aidl/android/media/IAudioPolicyService.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1875587
+      },
+      "writtenOn": "2021-11-09T02:31:16Z",
+      "side": 1,
+      "message": "will create the related patches to internal branch first, and after merged the internal branch, will merge this(AOSP) patch.",
+      "parentUuid": "15e7e828_ee01746a",
+      "range": {
+        "startLine": 296,
+        "startChar": 47,
+        "endLine": 296,
+        "endChar": 50
+      },
+      "revId": "94f8fa5d9f72f2badacb2129eb84e516cf9b79c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2497196e_7e8125cf",
         "filename": "media/libaudioclient/include/media/AudioSystem.h",
         "patchSetId": 1
