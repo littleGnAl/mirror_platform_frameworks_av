@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc235bb6_224be422",
+        "filename": "media/codec2/sfplugin/Codec2InfoBuilder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 99,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-11-10T20:14:45Z",
+      "side": 1,
+      "message": "How about adding set relation comments between \u0027supportsHdr\u0027 , \u0027supportsHdr10Plus\u0027 and \u0027supports10Bit\u0027 (also little bit of explanation of each.)",
+      "revId": "086332c82f18b67540ea7f5ae51d00a4b556c1d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
