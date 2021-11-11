@@ -104,15 +104,22 @@ public:
         }
 
         static bool IsFilteringEnabled(const std::shared_ptr<C2ComponentInterface> &intf) {
-            C2StreamColorAspectsRequestInfo::output info(0u);
+            C2StreamColorAspectsRequestInfo::output request(0u);
+            C2StreamColorAspectsInfo::input actual(0u);
             std::vector<std::unique_ptr<C2Param>> heapParams;
-            c2_status_t err = intf->query_vb({&info}, {}, C2_MAY_BLOCK, &heapParams);
+            c2_status_t err = intf->query_vb({&request, &actual}, {}, C2_MAY_BLOCK, &heapParams);
             if (err != C2_OK && err != C2_BAD_INDEX) {
                 LOG(WARNING) << "SampleToneMappingFilter::Interface::IsFilteringEnabled: "
                         << "query failed for " << intf->getName();
                 return false;
             }
-            return info && info.transfer == C2Color::TRANSFER_170M;
+            LOG(VERBOSE) << "SampleToneMappingFilter::Interface::IsFilteringEnabled: "
+                         << "requested transfer: "
+                         << (request ? request.transfer : C2Color::TRANSFER_UNSPECIFIED)
+                         << "actual transfer: "
+                         << (actual ? actual.transfer : C2Color::TRANSFER_UNSPECIFIED);
+            return (request && request.transfer == C2Color::TRANSFER_170M) &&
+                   (actual  && actual.transfer  != C2Color::TRANSFER_170M);
         }
 
         static c2_status_t QueryParamsForPreviousComponent(
