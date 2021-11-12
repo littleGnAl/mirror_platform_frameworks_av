@@ -16,6 +16,24 @@
       "message": "James, Ray,\nFew things that need to be considered before we decide to go this route\n- this would deviate from older Android versions and if any h/w decoders were relying on this syntax for csd, they would break with this change (and this CL isn\u0027t part of mainline as well)\n- this is deviating from libwebm\u0027s codec private data\n  mkvparser_sample shows codec private length as 17 bytes, which includes first four bytes\n\nHaving the first four bytes in this buffer is quite useful as it makes it quite simple to parse profile and bit depth information.\n\nGiven that CSD is optional for AV1 (like it was for VP9), can the h/w decoder completely ignore the CSD in this particular case to solve the issues seen?",
       "revId": "d1df675c6522f6fa617ef4bfc948d5c7d838dbd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a31dc18e_252fec54",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1055713
+      },
+      "writtenOn": "2021-11-12T19:00:24Z",
+      "side": 1,
+      "message": "\u003e James, Ray,\n\u003e Few things that need to be considered before we decide to go this route\n\u003e - this would deviate from older Android versions and if any h/w decoders were relying on this syntax for csd, they would break with this change (and this CL isn\u0027t part of mainline as well)\n\u003e - this is deviating from libwebm\u0027s codec private data\n\u003e   mkvparser_sample shows codec private length as 17 bytes, which includes first four bytes\n\u003e \n\u003e Having the first four bytes in this buffer is quite useful as it makes it quite simple to parse profile and bit depth information.\n\u003e \n\u003e Given that CSD is optional for AV1 (like it was for VP9), can the h/w decoder completely ignore the CSD in this particular case to solve the issues seen?\n\nI think that should be an option. I was just looking at this one as aligning all the branches since the code was already submitted in partner changes I wasn\u0027t involved in. We should keep them in sync whichever direction we go in.",
+      "parentUuid": "38c82510_6ed8fc9d",
+      "revId": "d1df675c6522f6fa617ef4bfc948d5c7d838dbd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
