@@ -953,6 +953,9 @@ void CCodecConfig::initializeStandardParams() {
             return value == 0 ? C2_FALSE : C2_TRUE;
         }));
 
+    add(ConfigMapper("android._encoding-stats-level", C2_PARAMKEY_ENCODING_STATS_LEVEL, "value")
+        .limitTo(D::ENCODER & D::VIDEO & (D::CONFIG | D::PARAM)));
+
     /* still to do
     constexpr char KEY_PUSH_BLANK_BUFFERS_ON_STOP[] = "push-blank-buffers-on-shutdown";
 
