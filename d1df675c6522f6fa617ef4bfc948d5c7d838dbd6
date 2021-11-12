@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "38c82510_6ed8fc9d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-11-12T16:43:31Z",
+      "side": 1,
+      "message": "James, Ray,\nFew things that need to be considered before we decide to go this route\n- this would deviate from older Android versions and if any h/w decoders were relying on this syntax for csd, they would break with this change (and this CL isn\u0027t part of mainline as well)\n- this is deviating from libwebm\u0027s codec private data\n  mkvparser_sample shows codec private length as 17 bytes, which includes first four bytes\n\nHaving the first four bytes in this buffer is quite useful as it makes it quite simple to parse profile and bit depth information.\n\nGiven that CSD is optional for AV1 (like it was for VP9), can the h/w decoder completely ignore the CSD in this particular case to solve the issues seen?",
+      "revId": "d1df675c6522f6fa617ef4bfc948d5c7d838dbd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
