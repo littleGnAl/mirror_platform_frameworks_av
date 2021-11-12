@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b1b5c2d6_842eac56",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-11-12T16:12:22Z",
+      "side": 1,
+      "message": "As done in the following CL for hevc encoder plugin,\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1279373\n\nthis also sets defaults to lower values.\n\nWhatever decision is taken for hevc CL applies to this too.",
+      "range": {
+        "startLine": 62,
+        "startChar": 64,
+        "endLine": 62,
+        "endChar": 66
+      },
+      "revId": "66baa614a299d1b4ac4df495de440ef32a3760e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
