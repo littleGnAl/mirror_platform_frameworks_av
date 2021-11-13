@@ -74,10 +74,10 @@ int main(int argc __unused, char **argv)
         for (;;) {
             siginfo_t info;
             int ret = waitid(P_PID, childPid, &info, WEXITED | WSTOPPED | WCONTINUED);
-            if (ret == EINTR) {
-                continue;
-            }
             if (ret < 0) {
+                if (errno == EINTR) {
+                    continue;
+                }
                 break;
             }
             char buffer[32];
