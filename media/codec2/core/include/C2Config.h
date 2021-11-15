@@ -270,6 +270,9 @@ enum C2ParamIndexKind : C2Param::type_index_t {
 
     // encoding quality requirements
     kParamIndexEncodingQualityLevel, // encoders, enum
+
+    // average_qp, encoding statistics
+    kParamIndexAverageQp, // int32
 };
 
 }
@@ -2410,6 +2413,18 @@ C2ENUM(C2PlatformConfig::encoding_quality_level_t, uint32_t,
     NONE = 0,
     S_HANDHELD = 1              // corresponds to VMAF=70
 );
+
+/* ========================= VIDEO ENCODING STATISTICS EXPORT =============================== */
+/**
+ * Encoding Statistics
+ */
+
+/**
+ * Per-frame average QP exported from H/W video encoder.
+ */
+typedef C2GlobalParam<C2Info, C2SimpleValueStruct<int32_t>, kParamIndexAverageQp>
+        C2GlobalAverageQpInfo;
+constexpr char C2_PARAMKEY_AVERAGE_QP[] = "coded.average-qp";
 
 /// @}
 
