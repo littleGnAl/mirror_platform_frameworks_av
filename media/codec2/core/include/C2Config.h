@@ -77,6 +77,7 @@ struct C2Config {
 
 struct C2PlatformConfig {
     enum encoding_quality_level_t : uint32_t; ///< encoding quality level
+    enum video_encoding_stats_level_t : uint32_t; ///< video encoding statistics level
 };
 
 namespace {
@@ -270,6 +271,12 @@ enum C2ParamIndexKind : C2Param::type_index_t {
 
     // encoding quality requirements
     kParamIndexEncodingQualityLevel, // encoders, enum
+
+    // average_qp, encoding statistics
+    kParamIndexAverageQp, // bool
+
+    // picture_type, encoding statistics
+    kParamIndexPictureType, // bool
 };
 
 }
@@ -2410,6 +2417,24 @@ C2ENUM(C2PlatformConfig::encoding_quality_level_t, uint32_t,
     NONE = 0,
     S_HANDHELD = 1              // corresponds to VMAF=70
 );
+
+/* ========================= VIDEO ENCODING STATISTICS EXPORT =============================== */
+
+/**
+ * Enable/disable an export of per-frame average QP by a H/W video encoder.
+ * If true, the H/W encoder is requested to export a per-frame average QP.
+ */
+typedef C2GlobalParam<C2Tuning, C2EasyBoolValue, kParamIndexAverageQp>
+        C2GlobalAverageQpTuning;
+constexpr char C2_PARAMKEY_AVERAGE_QP[] = "algo.average-qp";
+
+/**
+ * Enable/disable an export of picture type for a frame by a H/W video encoder.
+ * If true, the H/W encoder is requested to export a picture type for a frame.
+ */
+typedef C2GlobalParam<C2Tuning, C2EasyBoolValue, kParamIndexPictureType>
+        C2GlobalPictureTypeTuning;
+constexpr char C2_PARAMKEY_PICTURE_TYPE[] = "algo.picture-type";
 
 /// @}
 
