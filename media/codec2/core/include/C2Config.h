@@ -270,6 +270,9 @@ enum C2ParamIndexKind : C2Param::type_index_t {
 
     // encoding quality requirements
     kParamIndexEncodingQualityLevel, // encoders, enum
+
+    // average_qp, encoding statistics
+    kParamIndexAverageQp, // int32
 };
 
 }
@@ -2410,6 +2413,37 @@ C2ENUM(C2PlatformConfig::encoding_quality_level_t, uint32_t,
     NONE = 0,
     S_HANDHELD = 1              // corresponds to VMAF=70
 );
+
+/* ========================= VIDEO ENCODING STATISTICS EXPORT =============================== */
+/**
+ * Encoding Statistics
+ */
+
+// TODO: Wouldn't this struct be helpful for encoder to group and control encoding statistics
+// at one place? (For it, C2Config requires kParamIndexEncodingStatistics and concept about it,
+// though the level of stat can be determied by MediaCodec)
+/*
+struct C2EncodingStatistics {
+
+    int32_t average_qp;
+    C2Config::picture_type_t picture_type;
+    // int32_t max_qp;
+    // int32_t min_qp;
+
+    DEFINE_AND_DESCRIBE_C2STRUCT(EncodingStatistics)
+    C2FIELD(average_qp, "average_qp")
+    C2FIELD(picture_type, "picture_type")
+    // C2FIELD(max_qp, "max_qp")
+    // C2FIELD(min_qp, "min_qp")
+};
+*/
+
+/**
+ * Per-frame average QP exported from H/W video encoder.
+ */
+typedef C2GlobalParam<C2Info, C2SimpleValueStruct<int32_t>, kParamIndexAverageQp>
+        C2GlobalAverageQpInfo;
+constexpr char C2_PARAMKEY_AVERAGE_QP[] = "coded.average-qp";
 
 /// @}
 
