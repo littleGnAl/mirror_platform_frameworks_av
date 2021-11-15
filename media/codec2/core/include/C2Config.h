@@ -193,6 +193,9 @@ enum C2ParamIndexKind : C2Param::type_index_t {
 
     kParamIndexPictureQuantization,
 
+    // encoding statistics, average block qp of a frame
+    kParamIndexAverageBlockQuantizationPerFrame, // int32
+
     /* ------------------------------------ video components ------------------------------------ */
 
     kParamIndexFrameRate = C2_PARAM_INDEX_VIDEO_PARAM_START,
@@ -2410,6 +2413,18 @@ C2ENUM(C2PlatformConfig::encoding_quality_level_t, uint32_t,
     NONE = 0,
     S_HANDHELD = 1              // corresponds to VMAF=70
 );
+
+/* ========================= VIDEO ENCODING STATISTICS EXPORT =============================== */
+/**
+ * Encoding Statistics
+ */
+
+/**
+ * Per-frame average QP exported from video encoder.
+ */
+typedef C2StreamParam<C2Info, C2SimpleValueStruct<int32_t>, kParamIndexAverageBlockQuantizationPerFrame>
+        C2StreamQpAverageInfo;
+constexpr char C2_PARAMKEY_QP_AVERAGE[] = "coded.average-qp";
 
 /// @}
 
