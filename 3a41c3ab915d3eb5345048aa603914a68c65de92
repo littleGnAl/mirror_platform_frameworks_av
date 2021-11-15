@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d7cd08df_9cbfaa60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-11-15T05:18:28Z",
+      "side": 1,
+      "message": "Split from previous CL in order to separate any files touching framework/av/codec2/core/include in another CL.",
+      "revId": "3a41c3ab915d3eb5345048aa603914a68c65de92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
