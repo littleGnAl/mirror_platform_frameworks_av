@@ -1,0 +1,31 @@
+diff --git a/media/codec2/core/include/C2Config.h b/media/codec2/core/include/C2Config.h
+index 49f353d774..d11d10688b 100644
+--- a/media/codec2/core/include/C2Config.h
++++ b/media/codec2/core/include/C2Config.h
+@@ -2420,8 +2420,10 @@ C2ENUM(C2PlatformConfig::encoding_quality_level_t, uint32_t,
+  * Encoding Statistics
+  */
+ 
+-// TODO: Wouldn't this struct be helpfulto for encoder to keep and control  encoding statistics
+-// at one place?
++// TODO: Wouldn't this struct be helpful for encoder to group and control encoding statistics
++// at one place? (For it, C2Config requires kParamIndexEncodingStatistics and concept about it,
++// though the level of stat can be determied by MediaCodec)
++/*
+ struct C2EncodingStatistics {
+ 
+     int32_t average_qp;
+@@ -2429,11 +2431,13 @@ struct C2EncodingStatistics {
+     // int32_t max_qp;
+     // int32_t min_qp;
+ 
++    DEFINE_AND_DESCRIBE_C2STRUCT(EncodingStatistics)
+     C2FIELD(average_qp, "average_qp")
+     C2FIELD(picture_type, "picture_type")
+     // C2FIELD(max_qp, "max_qp")
+     // C2FIELD(min_qp, "min_qp")
+ };
++*/
+ 
+ /**
+  * Per-frame average QP exported from H/W video encoder.

@@ -684,6 +684,7 @@ inline static const char *asString_ColorFormat(int32_t i, const char *def = "??"
 }
 
 constexpr char FEATURE_AdaptivePlayback[]       = "adaptive-playback";
+constexpr char FEATURE_EncodingStatistics[]     = "encoding-statistics";
 constexpr char FEATURE_IntraRefresh[] = "intra-refresh";
 constexpr char FEATURE_PartialFrame[] = "partial-frame";
 constexpr char FEATURE_QpBounds[] = "qp-bounds";
@@ -750,6 +751,7 @@ constexpr char KEY_AAC_PROFILE[] = "aac-profile";
 constexpr char KEY_AAC_SBR_MODE[] = "aac-sbr-mode";
 constexpr char KEY_ALLOW_FRAME_DROP[] = "allow-frame-drop";
 constexpr char KEY_AUDIO_SESSION_ID[] = "audio-session-id";
+constexpr char KEY_AVERAGE_QP[] = "average-qp";
 constexpr char KEY_BIT_RATE[] = "bitrate";
 constexpr char KEY_BITRATE_MODE[] = "bitrate-mode";
 constexpr char KEY_CA_SESSION_ID[] = "ca-session-id";
@@ -795,6 +797,7 @@ constexpr char KEY_MIME[] = "mime";
 constexpr char KEY_OPERATING_RATE[] = "operating-rate";
 constexpr char KEY_OUTPUT_REORDER_DEPTH[] = "output-reorder-depth";
 constexpr char KEY_PCM_ENCODING[] = "pcm-encoding";
+constexpr char KEY_PICTURE_TYPE[] = "picture_type";
 constexpr char KEY_PIXEL_ASPECT_RATIO_HEIGHT[] = "sar-height";
 constexpr char KEY_PIXEL_ASPECT_RATIO_WIDTH[] = "sar-width";
 constexpr char KEY_PREPEND_HEADER_TO_SYNC_FRAMES[] = "prepend-sps-pps-to-idr-frames";
