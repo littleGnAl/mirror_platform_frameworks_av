@@ -77,6 +77,7 @@ struct C2Config {
 
 struct C2PlatformConfig {
     enum encoding_quality_level_t : uint32_t; ///< encoding quality level
+    enum video_encoding_stats_level_t : uint32_t; ///< video encoding statistics level
 };
 
 namespace {
@@ -270,6 +271,9 @@ enum C2ParamIndexKind : C2Param::type_index_t {
 
     // encoding quality requirements
     kParamIndexEncodingQualityLevel, // encoders, enum
+
+    // encoding statistics export level
+    kParamIndexEncodingStatsLevel, // bool
 };
 
 }
@@ -2409,6 +2413,18 @@ constexpr char C2_PARAMKEY_ENCODING_QUALITY_LEVEL[] = "algo.encoding-quality-lev
 C2ENUM(C2PlatformConfig::encoding_quality_level_t, uint32_t,
     NONE = 0,
     S_HANDHELD = 1              // corresponds to VMAF=70
+);
+
+/* ========================= VIDEO ENCODER STATISTICS LEVEL =============================== */
+
+typedef C2GlobalParam<C2Setting,
+        C2SimpleValueStruct<C2EasyEnum<C2PlatformConfig::video_encoding_stats_level_t>>,
+        kParamIndexEncodingStatsLevel> C2EncodingStatsLevel;
+constexpr char C2_PARAMKEY_ENCODING_STATS_LEVEL[] = "algo.encoding-stats-level";
+
+C2ENUM(C2PlatformConfig::video_encoding_stats_level_t, uint32_t,
+    NONE,
+    FRAME              // frame level statistics
 );
 
 /// @}
