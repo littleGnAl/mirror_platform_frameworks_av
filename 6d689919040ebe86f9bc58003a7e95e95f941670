@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017330012",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1580452?revision\u003d43",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "3a5707a3_e04d4e61",
+        "filename": "media/libaudiohal/impl/DeviceHalHidl.h",
+        "patchSetId": 43
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-16T13:21:01Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 151,
+        "startChar": 0,
+        "endLine": 151,
+        "endChar": 116
+      },
+      "revId": "6d689919040ebe86f9bc58003a7e95e95f941670",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
