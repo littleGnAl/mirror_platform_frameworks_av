@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ce431f6_ceee8020",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-11-17T16:18:49Z",
+      "side": 1,
+      "message": "Eric, i found this bug when connecting / disconnecting a device. I was failing in AudioManager#updateAudioPortCache while associating port configuration and port id in the patch... This was the easiest way to fix, rather than changing device equality, forcing patch re-creation...",
+      "revId": "b55ddcf7a6e06bb62f10c21ac0929ac645dfcdb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
