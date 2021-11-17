@@ -143,6 +143,7 @@ status_t AudioPolicyManager::setDeviceConnectionStateInt(const sp<DeviceDescript
     // handle output devices
     if (audio_is_output_device(device->type())) {
         SortedVector <audio_io_handle_t> outputs;
+        SortedVector <audio_io_handle_t> outputsToReroute;
 
         ssize_t index = mAvailableOutputDevices.indexOf(device);
 
@@ -169,7 +170,7 @@ status_t AudioPolicyManager::setDeviceConnectionStateInt(const sp<DeviceDescript
             // parameters on newly connected devices (instead of opening the outputs...)
             broadcastDeviceConnectionState(device, state);
 
-            if (checkOutputsForDevice(device, state, outputs) != NO_ERROR) {
+            if (checkOutputsForDevice(device, state, outputs, outputsToReroute) != NO_ERROR) {
                 mAvailableOutputDevices.remove(device);
 
                 mHwModules.cleanUpForDevice(device);
@@ -204,7 +205,7 @@ status_t AudioPolicyManager::setDeviceConnectionStateInt(const sp<DeviceDescript
 
             mOutputs.clearSessionRoutesForDevice(device);
 
-            checkOutputsForDevice(device, state, outputs);
+            checkOutputsForDevice(device, state, outputs, outputsToReroute);
 
             // Reset active device codec
             device->setEncodedFormat(AUDIO_FORMAT_DEFAULT);
@@ -240,6 +241,13 @@ status_t AudioPolicyManager::setDeviceConnectionStateInt(const sp<DeviceDescript
         }
 
         auto checkCloseOutputs = [&]() {
+            if (state == AUDIO_POLICY_DEVICE_STATE_UNAVAILABLE && !outputsToReroute.isEmpty()) {
+                for (audio_io_handle_t outputToReroute : outputsToReroute) {
+                    sp<SwAudioOutputDescriptor> desc = mOutputs.valueFor(outputToReroute);
+                    const auto devices = mAvailableOutputDevices.filter(desc->supportedDevices());
+                    setOutputDevices(desc, devices, false/*force*/, 0);
+                }
+            }
             // outputs must be closed after checkOutputForAllStrategies() is executed
             if (!outputs.isEmpty()) {
                 for (audio_io_handle_t output : outputs) {
@@ -5218,8 +5226,12 @@ status_t AudioPolicyManager::checkOutputsForDevice(const sp<DeviceDescriptor>& d
             if (!desc->isDuplicated()) {
                 // exact match on device
                 if (device_distinguishes_on_address(deviceType) && desc->supportsDevice(device)
-                        && desc->containsSingleDeviceSupportingEncodedFormats(device)
-                        && !mAvailableOutputDevices.containsAtLeastOne(desc->supportedDevices())) {
+                        && desc->containsSingleDeviceSupportingEncodedFormats(device)) {
+                    if (mAvailableOutputDevices.containsAtLeastOne(desc->supportedDevices())) {
+                                mOutputs.keyAt(i), mAvailableOutputDevices.toString().c_str(), desc->supportedDevices().toString().c_str());
+                        rerouteOutputs.add(mOutputs.keyAt(i));
+                        continue;
+                    }
                     outputs.add(mOutputs.keyAt(i));
                 } else if (!mAvailableOutputDevices.containsAtLeastOne(desc->supportedDevices())) {
                     ALOGV("checkOutputsForDevice(): disconnecting adding output %d",

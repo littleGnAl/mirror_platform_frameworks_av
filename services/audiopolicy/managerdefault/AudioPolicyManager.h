@@ -541,7 +541,8 @@ protected:
         // transfers the audio tracks and effects from one output thread to another accordingly.
         status_t checkOutputsForDevice(const sp<DeviceDescriptor>& device,
                                        audio_policy_dev_state_t state,
-                                       SortedVector<audio_io_handle_t>& outputs);
+                                       SortedVector<audio_io_handle_t>& outputs,
+                                       SortedVector<audio_io_handle_t>& rerouteOutputs);
 
         status_t checkInputsForDevice(const sp<DeviceDescriptor>& device,
                                       audio_policy_dev_state_t state);
