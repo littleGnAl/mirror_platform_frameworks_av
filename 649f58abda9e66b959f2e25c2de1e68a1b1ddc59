@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f34ecd63_7cfeae35",
+        "filename": "media/audioserver/main_audioserver.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-11-17T21:08:46Z",
+      "side": 1,
+      "message": "Perhaps, just wrap the call to `waitid` into `TEMP_FAILURE_RETRY` for consistency?",
+      "range": {
+        "startLine": 78,
+        "startChar": 16,
+        "endLine": 80,
+        "endChar": 17
+      },
+      "revId": "649f58abda9e66b959f2e25c2de1e68a1b1ddc59",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
