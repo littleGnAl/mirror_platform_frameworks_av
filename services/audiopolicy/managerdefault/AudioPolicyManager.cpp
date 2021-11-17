@@ -249,6 +249,17 @@ status_t AudioPolicyManager::setDeviceConnectionStateInt(const sp<DeviceDescript
                     if ((state == AUDIO_POLICY_DEVICE_STATE_UNAVAILABLE) ||
                             (((desc->mFlags & AUDIO_OUTPUT_FLAG_DIRECT) != 0) &&
                                 (desc->mDirectOpenCount == 0))) {
+                        // Before closing output, ensure this output may not be used to
+                        // reach still available device, particularily for the primary output that
+                        // may not be assigned anymore until a device supported is (re)connected
+                        const auto newDevices = desc->isActive() ?
+                                    getNewOutputDevices(desc, false /*fromCache*/) :
+                                    desc->supportedDevices();
+                        if (!mAvailableOutputDevices.filter(newDevices).empty()) {
+                            auto newDevice = newDevices.itemAt(0);
+                            setOutputDevices(desc, DeviceVector(newDevice), false/*force*/, 0);
+                            continue;
+                        }
                         clearAudioSourcesForOutput(output);
                         closeOutput(output);
                     }
@@ -5218,8 +5229,9 @@ status_t AudioPolicyManager::checkOutputsForDevice(const sp<DeviceDescriptor>& d
             if (!desc->isDuplicated()) {
                 // exact match on device
                 if (device_distinguishes_on_address(deviceType) && desc->supportsDevice(device)
-                        && desc->containsSingleDeviceSupportingEncodedFormats(device)
-                        && !mAvailableOutputDevices.containsAtLeastOne(desc->supportedDevices())) {
+                        && desc->containsSingleDeviceSupportingEncodedFormats(device)) {
+                    ALOGV("checkOutputsForDevice(): disconnecting device %s adding output %d",
+                            device->toString().c_str(), mOutputs.keyAt(i));
                     outputs.add(mOutputs.keyAt(i));
                 } else if (!mAvailableOutputDevices.containsAtLeastOne(desc->supportedDevices())) {
                     ALOGV("checkOutputsForDevice(): disconnecting adding output %d",
