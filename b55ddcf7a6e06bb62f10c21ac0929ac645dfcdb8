@@ -1,6 +1,29 @@
 {
   "comments": [
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c84bac2a_e68b1dd8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-11-17T17:14:19Z",
+      "side": 1,
+      "message": "normally the client process cache is invalidated and refreshed when a device is connected. The new audio port list should be reloaded with the new device IDs on java side.\nI am curious to see exactly how we end up with this mismatch between native and java.\n\nI also thought that all audio patches referring to a given device where cleared when this device is connected",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 67
+      },
+      "revId": "b55ddcf7a6e06bb62f10c21ac0929ac645dfcdb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3ce431f6_ceee8020",
