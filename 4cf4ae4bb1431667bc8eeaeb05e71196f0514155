@@ -34,6 +34,24 @@
       "parentUuid": "823dc849_4a21e8d7",
       "revId": "4cf4ae4bb1431667bc8eeaeb05e71196f0514155",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "751d1519_83996074",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1339029
+      },
+      "writtenOn": "2021-11-17T06:04:51Z",
+      "side": 1,
+      "message": "Hi, Ray,\nIt seems dynamic enable logv is needed for it already have prop in Java layer.\nDoes Google have any other ways to dynamic enable logv in native?",
+      "parentUuid": "9d1deeea_3e63b1aa",
+      "revId": "4cf4ae4bb1431667bc8eeaeb05e71196f0514155",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
