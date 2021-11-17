@@ -63,10 +63,11 @@ DeviceDescriptor::DeviceDescriptor(const AudioDeviceTypeAddr &deviceTypeAddr,
 void DeviceDescriptor::attach(const sp<HwModule>& module)
 {
     PolicyAudioPort::attach(module);
-    mId = getNextUniqueId();
+    mId = ((mInitialId != AUDIO_PORT_HANDLE_NONE) ? mInitialId : getNextUniqueId());
 }
 
 void DeviceDescriptor::detach() {
+    mInitialId = mId;
     mId = AUDIO_PORT_HANDLE_NONE;
     PolicyAudioPort::detach();
     // The device address may have been overwritten on device connection

@@ -110,6 +110,20 @@ private:
     audio_format_t      mCurrentEncodedFormat;
     bool                mIsDynamic = false;
     const std::string   mDeclaredAddress; // Original device address
+
+    /**
+     * @brief mInitialId: unique id assigned the first time device is attached to a module.
+     * As device equality is based on {type,address} couple.
+     * If a device is mounted, attached to a  module, an id is assigned.
+     * if the device is unmounted, thus detached from module, id is resetted.
+     * If this device is mounted again, thus attached to same module, the routing may not have
+     * change (aka same output device for the concerned SwOutput), setOutputDevice will not
+     * recreate/refresh the patch associated.
+     * It may lead to misalignement with JAVA listAudioPort/listAudioPatch API based on the mId
+     * to associated sources/sink of a patch to the port.
+     * Keeping track of the original id help ensures the synchronisation of JAVA / native layers.
+     */
+    audio_port_handle_t mInitialId = AUDIO_PORT_HANDLE_NONE;
 };
 
 class DeviceVector : public SortedVector<sp<DeviceDescriptor> >
