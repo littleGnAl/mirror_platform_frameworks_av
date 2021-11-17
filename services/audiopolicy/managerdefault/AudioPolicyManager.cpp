@@ -5218,8 +5218,12 @@ status_t AudioPolicyManager::checkOutputsForDevice(const sp<DeviceDescriptor>& d
             if (!desc->isDuplicated()) {
                 // exact match on device
                 if (device_distinguishes_on_address(deviceType) && desc->supportsDevice(device)
-                        && desc->containsSingleDeviceSupportingEncodedFormats(device)
-                        && !mAvailableOutputDevices.containsAtLeastOne(desc->supportedDevices())) {
+                        && desc->containsSingleDeviceSupportingEncodedFormats(device)) {
+                    const auto devices = mAvailableOutputDevices.filter(desc->supportedDevices());
+                    if (!devices.empty()) {
+                        setOutputDevices(desc, devices, false/*force*/, 0);
+                        continue;
+                    }
                     outputs.add(mOutputs.keyAt(i));
                 } else if (!mAvailableOutputDevices.containsAtLeastOne(desc->supportedDevices())) {
                     ALOGV("checkOutputsForDevice(): disconnecting adding output %d",
