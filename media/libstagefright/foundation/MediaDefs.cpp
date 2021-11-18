@@ -68,6 +68,7 @@ const char *MEDIA_MIMETYPE_AUDIO_DVI_IMA_ADPCM = "audio/x-adpcm-dvi-ima";
 
 
 const char *MEDIA_MIMETYPE_CONTAINER_MPEG4 = "video/mp4";
+const char *MEDIA_MIMETYPE_CONTAINER_MPEG4_AUDIO = "audio/mp4";
 const char *MEDIA_MIMETYPE_CONTAINER_WAV = "audio/x-wav";
 const char *MEDIA_MIMETYPE_CONTAINER_OGG = "audio/ogg";
 const char *MEDIA_MIMETYPE_CONTAINER_MATROSKA = "video/x-matroska";
