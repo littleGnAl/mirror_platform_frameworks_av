@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "53a25e30_3333e938",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-11-18T09:31:32Z",
+      "side": 1,
+      "message": "So at step \"I umount bus_ws. The Output is not closed since it still support bus_media\": shouldn;t we go over all outputs route and clear the routes that are using the disconnected device?\nThis will force a new patch creation with the correct device ID when playback resumes later on bus_ws route.",
+      "parentUuid": "f7bf0599_fbdf9403",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 67
+      },
+      "revId": "b55ddcf7a6e06bb62f10c21ac0929ac645dfcdb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3ce431f6_ceee8020",
