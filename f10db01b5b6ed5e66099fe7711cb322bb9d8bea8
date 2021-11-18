@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5eeefe7_e92b72f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1107294
+      },
+      "writtenOn": "2021-11-18T02:38:09Z",
+      "side": 1,
+      "message": "Hi Gopalakrishnan:\nWhen integrating nxp media extractor into android s12 , it doesn\u0027t work with MediaAppender because nxp extractor has a unified name \"ImxExtractor\" for all file formats, but MediaAppender requires a name like \"MPEG4Extractor\". Other vendors probably have similar issue. If replace name-checking with mime-checking, this code shall work better, no matter how they name their extractors. Could you take some time to review this change? Thanks in advance.",
+      "revId": "f10db01b5b6ed5e66099fe7711cb322bb9d8bea8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
