@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "d2a821f8_d1f16d5a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-11-18T14:36:23Z",
+      "side": 1,
+      "message": "Yes, definitely what you proposed is the cleanest solution, we need to close and re-open the SwOutput as it can still be used to reach bus_media (which is available). Otherwise,if playback is triggered for media, it will fail as no output to reach media bus is opened (bug related to this CL:\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1863726)\nI will try to rework setDeviceConnectionState to do so.",
+      "parentUuid": "53a25e30_3333e938",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 67
+      },
+      "revId": "b55ddcf7a6e06bb62f10c21ac0929ac645dfcdb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3ce431f6_ceee8020",
