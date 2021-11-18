@@ -16,6 +16,69 @@
       "message": "Hi Gopalakrishnan:\nWhen integrating nxp media extractor into android s12 , it doesn\u0027t work with MediaAppender because nxp extractor has a unified name \"ImxExtractor\" for all file formats, but MediaAppender requires a name like \"MPEG4Extractor\". Other vendors probably have similar issue. If replace name-checking with mime-checking, this code shall work better, no matter how they name their extractors. Could you take some time to review this change? Thanks in advance.",
       "revId": "f10db01b5b6ed5e66099fe7711cb322bb9d8bea8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2f215152_c2ca7512",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-11-18T15:48:39Z",
+      "side": 1,
+      "message": "changing from extractor name to container-mime is a good thing. I agree with that.\nbut the CL itself -- i want some rework.",
+      "revId": "f10db01b5b6ed5e66099fe7711cb322bb9d8bea8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7bda3eed_f5171269",
+        "filename": "media/libstagefright/MediaAppender.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-11-18T15:48:39Z",
+      "side": 1,
+      "message": "i would prefer this to be\n\nif (getFileFormat() fails) {  ALOGE(); return; }\nif (findstring() fails) { ALOGE(); return; }\n\nrather than letting it fall through the rest of the code with an empty mime.\nit lets us highlight the specific cause of the failure.",
+      "range": {
+        "startLine": 81,
+        "startChar": 3,
+        "endLine": 83,
+        "endChar": 5
+      },
+      "revId": "f10db01b5b6ed5e66099fe7711cb322bb9d8bea8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bf1fae1a_50ee0ba8",
+        "filename": "media/libstagefright/MediaAppender.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-11-18T15:48:39Z",
+      "side": 1,
+      "message": "(1) when we write the resulting file, it will be written as video/mp4, so the container type is going to change to video/mp4.  (I think this may match current behavior because mpeg4extractor recognizes both of those types so we would have come down this path)\n\n(2) this needs to be a MEDIA_MIMETYPE_CONTAINER_ definition instead of the literal string audio/mp4.",
+      "range": {
+        "startLine": 85,
+        "startChar": 10,
+        "endLine": 85,
+        "endChar": 41
+      },
+      "revId": "f10db01b5b6ed5e66099fe7711cb322bb9d8bea8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
