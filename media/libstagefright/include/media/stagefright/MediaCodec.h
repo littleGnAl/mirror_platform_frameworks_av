@@ -400,6 +400,12 @@ private:
 
     struct ResourceManagerServiceProxy;
 
+    bool mIsInitialization;
+    int64_t mMediaCodecCreationStartNs = 0;
+    int64_t mMediaCodecConfigurationStartNs = 0;
+    int64_t mMediaCodecStartingStartNs = 0;
+    int64_t mMediaCodecStartingEndNs = 0;
+
     State mState;
     uid_t mUid;
     bool mReleasedByResourceManager;
