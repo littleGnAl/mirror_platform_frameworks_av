@@ -161,6 +161,12 @@ static const char *kCodecVideoInputBytes = "android.media.mediacodec.video.input
 static const char *kCodecVideoInputFrames = "android.media.mediacodec.video.input.frames";
 static const char *kCodecVideoEncodedDurationUs = "android.media.mediacodec.vencode.durationUs";
 
+static const char *kCodecInitializationLatency = "android.media.mediacodec.initialization-latency";
+static const char *kCodecCreationLatency = "android.media.mediacodec.creation-latency";
+static const char *kCodecConfigurationLatency = "android.media.mediacodec.configuration-latency";
+static const char *kCodecStartingLatency = "android.media.mediacodec.starting-latency";
+static const char *kCodecFirstBufferOutLatency = "android.media.mediacodec.firstBufferOut-latency";
+
 // the kCodecRecent* fields appear only in getMetrics() results
 static const char *kCodecRecentLatencyMax = "android.media.mediacodec.recent.max";      /* in us */
 static const char *kCodecRecentLatencyMin = "android.media.mediacodec.recent.min";      /* in us */
@@ -736,7 +742,9 @@ MediaCodec::MediaCodec(
         const sp<ALooper> &looper, pid_t pid, uid_t uid,
         std::function<sp<CodecBase>(const AString &, const char *)> getCodecBase,
         std::function<status_t(const AString &, sp<MediaCodecInfo> *)> getCodecInfo)
-    : mState(UNINITIALIZED),
+    : mIsInitialization(true),
+      mMediaCodecCreationStartNs(systemTime(SYSTEM_TIME_MONOTONIC)),
+      mState(UNINITIALIZED),
       mReleasedByResourceManager(false),
       mLooper(looper),
       mCodec(NULL),
@@ -844,6 +852,10 @@ void MediaCodec::initMediametrics() {
     }
 
     mLifetimeStartNs = systemTime(SYSTEM_TIME_MONOTONIC);
+    if (mMetricsHandle != 0) {
+        mCodecCreationLatency = mLifetimeStartNs - mMediaCodecCreationStartNs;
+        mediametrics_setInt64(mMetricsHandle, kCodecCreationLatency, mCodecCreationLatency);
+    }
 }
 
 void MediaCodec::updateMediametrics() {
@@ -1509,6 +1521,8 @@ status_t MediaCodec::configure(
         const sp<ICrypto> &crypto,
         const sp<IDescrambler> &descrambler,
         uint32_t flags) {
+    mMediaCodecConfigurationStartNs = systemTime(SYSTEM_TIME_MONOTONIC);
+
     sp<AMessage> msg = new AMessage(kWhatConfigure, this);
 
     if (mMetricsHandle != 0) {
@@ -2252,6 +2266,8 @@ uint64_t MediaCodec::getGraphicBufferSize() {
 }
 
 status_t MediaCodec::start() {
+    mMediaCodecStartingStartNs = systemTime(SYSTEM_TIME_MONOTONIC);
+
     sp<AMessage> msg = new AMessage(kWhatStart, this);
 
     sp<AMessage> callback;
@@ -2394,6 +2410,8 @@ status_t MediaCodec::queueInputBuffer(
     if (errorDetailMsg != NULL) {
         errorDetailMsg->clear();
     }
+
+    mQueueInputBufferNs = systemTime(SYSTEM_TIME_MONOTONIC);
 
     sp<AMessage> msg = new AMessage(kWhatQueueInputBuffer, this);
     msg->setSize("index", index);
@@ -3273,6 +3291,15 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                             // decoder specific values
                         }
                     }
+
+                    if (mMetricsHandle != 0) {
+                        int64_t configurationEndNs = systemTime(SYSTEM_TIME_MONOTONIC);
+                        mCodecConfigurationLatency =
+                            configurationEndNs - mMediaCodecConfigurationStartNs;
+                        mediametrics_setInt64(mMetricsHandle,
+                            kCodecConfigurationLatency, mCodecConfigurationLatency);
+                    }
+
                     break;
                 }
 
@@ -3363,6 +3390,15 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                     }
                     setState(STARTED);
                     postPendingRepliesAndDeferredMessages("kWhatStartCompleted");
+
+                    if (mMetricsHandle != 0) {
+                        int64_t startingEndNs = systemTime(SYSTEM_TIME_MONOTONIC);
+                        mCodecStartingLatency =
+                            startingEndNs - mMediaCodecStartingStartNs;
+                        mediametrics_setInt64(mMetricsHandle,
+                            kCodecStartingLatency, mCodecStartingLatency);
+                    }
+
                     break;
                 }
 
@@ -3516,6 +3552,21 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                             postActivityNotificationIfPossible();
                         }
                         mBufferChannel->discardBuffer(buffer);
+
+                        if (mMetricsHandle != 0 && mIsInitialization) {
+                            int64_t firstBufferOutNs = systemTime(SYSTEM_TIME_MONOTONIC);
+                            mCodecFirstBufferOutLatency =
+                                firstBufferOutNs - mQueueInputBufferNs;
+                            int64_t mediaCodecInitializationLatency = mCodecCreationLatency
+                                + mCodecConfigurationLatency + mCodecStartingLatency
+                                + mCodecFirstBufferOutLatency;
+                            mediametrics_setInt64(mMetricsHandle,
+                                kCodecFirstBufferOutLatency, mCodecFirstBufferOutLatency);
+                            mediametrics_setInt64(mMetricsHandle,
+                                kCodecInitializationLatency, mediaCodecInitializationLatency);
+                            mIsInitialization = false;
+                        }
+
                         break;
                     }
 

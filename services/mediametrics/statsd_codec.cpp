@@ -390,6 +390,37 @@ bool statsd_codec(const std::shared_ptr<const mediametrics::Item>& item,
     }
     AStatsEvent_writeInt32(event, qpBMaxOri);
 
+    int64_t initialLatency = -1;
+    if ( item->getInt64("android.media.mediacodec.initialization-latency", &initialLatency)) {
+        metrics_proto.set_initialization_latency(initialLatency);
+    }
+    AStatsEvent_writeInt64(event, initialLatency);
+
+    int64_t creationLatency = -1;
+    if ( item->getInt64("android.media.mediacodec.creation-latency", &creationLatency)) {
+        metrics_proto.set_creation_latency(creationLatency);
+    }
+    AStatsEvent_writeInt64(event, creationLatency);
+
+    int64_t configurationLatency = -1;
+    if ( item->getInt64("android.media.mediacodec.configuration-latency", &configurationLatency)) {
+        metrics_proto.set_configuration_latency(configurationLatency);
+    }
+    AStatsEvent_writeInt64(event, configurationLatency);
+
+    int64_t startingLatency = -1;
+    if ( item->getInt64("android.media.mediacodec.starting-latency", &startingLatency)) {
+        metrics_proto.set_starting_latency(startingLatency);
+    }
+    AStatsEvent_writeInt64(event, startingLatency);
+
+    int64_t firstBufferOutLatency = -1;
+    if ( item->getInt64(
+        "android.media.mediacodec.first-buffer-out-latency", &firstBufferOutLatency)) {
+        metrics_proto.set_first_buffer_out_latency(firstBufferOutLatency);
+    }
+    AStatsEvent_writeInt64(event, firstBufferOutLatency);
+
     int err = AStatsEvent_write(event);
     if (err < 0) {
       ALOGE("Failed to write codec metrics to statsd (%d)", err);
