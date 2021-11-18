@@ -19,6 +19,7 @@
 
 #include <media/stagefright/MediaAppender.h>
 #include <media/stagefright/MediaCodec.h>
+#include <media/stagefright/MediaDefs.h>
 #include <media/stagefright/foundation/ABuffer.h>
 #include <utils/Log.h>
 // TODO : check if this works for NDK apps without JVM
@@ -75,10 +76,17 @@ status_t MediaAppender::init() {
         return status;
     }
 
-    if (strcmp("MPEG4Extractor", mExtractor->getName()) == 0) {
+    sp<AMessage> format;
+    AString mime;
+    if(OK == mExtractor->getFileFormat(&format)){
+        format->findString("mime", &mime);
+    }
+    if(!strcmp(MEDIA_MIMETYPE_CONTAINER_MPEG4, mime.c_str())
+        || !strcmp("audio/mp4", mime.c_str())){
         mFormat = MediaMuxer::OUTPUT_FORMAT_MPEG_4;
-    } else {
-        ALOGE("Unsupported format, extractor name:%s", mExtractor->getName());
+    }
+    else{
+        ALOGE("Unsupported format: %s", mime.c_str());
         return ERROR_UNSUPPORTED;
     }
 
