@@ -161,6 +161,8 @@ static const char *kCodecVideoInputBytes = "android.media.mediacodec.video.input
 static const char *kCodecVideoInputFrames = "android.media.mediacodec.video.input.frames";
 static const char *kCodecVideoEncodedDurationUs = "android.media.mediacodec.vencode.durationUs";
 
+static const char *kCodecInitializationLatency = "android.media.mediacodec.initialization.latency";
+
 // the kCodecRecent* fields appear only in getMetrics() results
 static const char *kCodecRecentLatencyMax = "android.media.mediacodec.recent.max";      /* in us */
 static const char *kCodecRecentLatencyMin = "android.media.mediacodec.recent.min";      /* in us */
@@ -736,7 +738,9 @@ MediaCodec::MediaCodec(
         const sp<ALooper> &looper, pid_t pid, uid_t uid,
         std::function<sp<CodecBase>(const AString &, const char *)> getCodecBase,
         std::function<status_t(const AString &, sp<MediaCodecInfo> *)> getCodecInfo)
-    : mState(UNINITIALIZED),
+    : mIsInitialization(true),
+      mMediaCodecInitNs(systemTime(SYSTEM_TIME_MONOTONIC)),
+      mState(UNINITIALIZED),
       mReleasedByResourceManager(false),
       mLooper(looper),
       mCodec(NULL),
@@ -1508,7 +1512,7 @@ status_t MediaCodec::configure(
         const sp<Surface> &surface,
         const sp<ICrypto> &crypto,
         const sp<IDescrambler> &descrambler,
-        uint32_t flags) {
+        uint32_t flags) {    
     sp<AMessage> msg = new AMessage(kWhatConfigure, this);
 
     if (mMetricsHandle != 0) {
@@ -3516,6 +3520,14 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                             postActivityNotificationIfPossible();
                         }
                         mBufferChannel->discardBuffer(buffer);
+
+                        if (mMetricsHandle != 0 && mIsInitialization) {
+                            int64_t mFirstFrameGenerated = systemTime(SYSTEM_TIME_MONOTONIC);
+                            int64_t mInitializationTime = mFirstFrameGenerated - mMediaCodecInitNs;
+                            mediametrics_setInt64(mMetricsHandle, kCodecInitializationLatency, mInitializationTime);
+                            mIsInitialization = false;
+                        }
+                        
                         break;
                     }
 
