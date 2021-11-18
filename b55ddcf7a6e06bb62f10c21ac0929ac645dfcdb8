@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "f7bf0599_fbdf9403",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-11-18T07:30:03Z",
+      "side": 1,
+      "message": "We do have a SwOutput that can be routed on 2 bus devices (lets call them bus_music and bus_ws). bus_music is always available, whereas bus_ws can be mounted/unmounted.\nWhen starting the platform, a patch is created to ensure bus_music is reachable. Then bus_ws is mounted, and I trigger a play using the right attributes to be routed on the strategy forcing bus_ws. I checks the patch at java layer, all is ok.\nPrevious patch is updated with the new sink, patch id is unchanged.\n\nI umount bus_ws. The Output is not closed since it still support bus_media\n(remember: https://android-review.googlesource.com/c/platform/frameworks/av/+/1863726).\nPatch is still alive with same id.\n\nI mount again bus_ws (so attached again, and a new id is assigned) and trigger a playback. The setOutputDevices detect that SwOutput is routed on same device (bus_ws), thus, does not force the patch update.\nSo, patch is still alive, with same id, but the sink bus_ws is holding the previous id.\nWhen calling listAudioPatch, listAudioPort, AudioManager fails to associate the port id of the patch sink and the port. Thus, I cannot ensure the patch is correctly routed (sink is declared as null). And the track cannot infer it is correctly routed.",
+      "parentUuid": "c84bac2a_e68b1dd8",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 67
+      },
+      "revId": "b55ddcf7a6e06bb62f10c21ac0929ac645dfcdb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3ce431f6_ceee8020",
