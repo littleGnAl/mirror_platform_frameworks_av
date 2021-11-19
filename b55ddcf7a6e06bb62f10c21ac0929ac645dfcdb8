@@ -96,6 +96,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "c561458d_8c71e48c",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 16,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-11-19T12:10:06Z",
+      "side": 1,
+      "message": "Here is my newest proposal. Note that if it is the primary output (which is our case), if we go for a closeOutput if the output can still be used to reach an available device, mPrimaryOutput will be reset until next bus connection...\nSo, either we go for a setOutputDevices (that lead to restore the still avail device on the concerned output without reset the mPrimaryOutput, as at policy initialization), or we need more code to reassign primary output.",
+      "parentUuid": "d2a821f8_d1f16d5a",
+      "range": {
+        "startLine": 15,
+        "startChar": 0,
+        "endLine": 16,
+        "endChar": 67
+      },
+      "revId": "b55ddcf7a6e06bb62f10c21ac0929ac645dfcdb8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3ce431f6_ceee8020",
