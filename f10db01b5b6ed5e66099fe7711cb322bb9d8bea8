@@ -127,6 +127,30 @@
       },
       "revId": "f10db01b5b6ed5e66099fe7711cb322bb9d8bea8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f13b16fa_17c6f386",
+        "filename": "media/libstagefright/MediaAppender.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 85,
+      "author": {
+        "id": 1107294
+      },
+      "writtenOn": "2021-11-19T04:58:22Z",
+      "side": 1,
+      "message": "how about MEDIA_MIMETYPE_CONTAINER_MPEG4_AUDIO ? \nlet it follow MEDIA_MIMETYPE_CONTAINER_MPEG4 in MediaDefs.cpp, and switch to this macro in code here and in MPEG4Extractor.cpp",
+      "parentUuid": "eb5dfb79_0f4d9020",
+      "range": {
+        "startLine": 85,
+        "startChar": 10,
+        "endLine": 85,
+        "endChar": 41
+      },
+      "revId": "f10db01b5b6ed5e66099fe7711cb322bb9d8bea8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
