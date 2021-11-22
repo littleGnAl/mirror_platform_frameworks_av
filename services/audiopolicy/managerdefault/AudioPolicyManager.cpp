@@ -2905,7 +2905,19 @@ audio_io_handle_t AudioPolicyManager::selectOutputForMusicEffects()
     SortedVector<audio_io_handle_t> outputs = getOutputsForDevices(devices, mOutputs);
 
     if (outputs.size() == 0) {
-        return AUDIO_IO_HANDLE_NONE;
+        if (mOutputs.size() == 0 || mPrimaryOutput != nullptr) {
+            return AUDIO_IO_HANDLE_NONE;
+        }
+        // AF will save all effects to the default thread, loosing the sync between APM & AF...
+        // As AF, take first output to save effects, and be able to move them later...
+        audio_io_handle_t output = mOutputs.keyAt(0);
+        if (output != mMusicEffectOutput) {
+            mEffects.moveEffects(AUDIO_SESSION_OUTPUT_MIX, mMusicEffectOutput, output);
+            mpClientInterface->moveEffects(AUDIO_SESSION_OUTPUT_MIX, mMusicEffectOutput, output);
+            mMusicEffectOutput = output;
+        }
+        ALOGV("selectOutputForMusicEffects selected output %d for storing orphans", output);
+        return output;
     }
 
     audio_io_handle_t output = AUDIO_IO_HANDLE_NONE;
