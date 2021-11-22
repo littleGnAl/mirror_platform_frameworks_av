@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c5bccc70_96f10bbf",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-11-22T17:30:56Z",
+      "side": 1,
+      "message": "Eric,\nYet another side effect of temporary disappear of PrimaryOutput. We are loosing track of effects...I am unable to move them back when primary output is made available again.\nHere is a first attempt to fix this...",
+      "revId": "42d95ddf8725e6429b28e79dfe765b869f38f450",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
