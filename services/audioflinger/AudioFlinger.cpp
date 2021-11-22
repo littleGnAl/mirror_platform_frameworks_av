@@ -2714,6 +2714,14 @@ status_t AudioFlinger::closeOutput_nonvirtual(audio_io_handle_t output)
 
 
             mPlaybackThreads.removeItem(output);
+            // Save AUDIO_SESSION_OUTPUT_MIX effect to chain orphans
+            if (playbackThread->hasAudioSession(AUDIO_SESSION_OUTPUT_MIX)) {
+                Mutex::Autolock _sppl(playbackThread->mLock);
+                auto mixChain = playbackThread->getEffectChain_l(AUDIO_SESSION_OUTPUT_MIX);
+                ALOGV("%s() output %d moving mix session to orphans", __func__, output);
+                putOrphanEffectChain_l(mixChain);
+                playbackThread->removeEffectChain_l(mixChain);
+            }
             // save all effects to the default thread
             if (mPlaybackThreads.size()) {
                 PlaybackThread *dstThread = checkPlaybackThread_l(mPlaybackThreads.keyAt(0));
@@ -3780,7 +3788,8 @@ status_t AudioFlinger::createEffect(const media::CreateEffectRequest& request,
             // before creating the AudioEffect or the io handle must be specified.
             //
             // Detect if the effect is created after an AudioRecord is destroyed.
-            if (getOrphanEffectChain_l(sessionId).get() != nullptr) {
+            if (getOrphanEffectChain_l(sessionId).get() != nullptr &&
+                    (sessionId != AUDIO_SESSION_OUTPUT_MIX)) {
                 ALOGE("%s: effect %s with no specified io handle is denied because the AudioRecord"
                       " for session %d no longer exists",
                       __func__, descOut.name, sessionId);
@@ -3915,7 +3924,19 @@ status_t AudioFlinger::moveEffects(audio_session_t sessionId, audio_io_handle_t 
         return NO_ERROR;
     }
     PlaybackThread *srcThread = checkPlaybackThread_l(srcOutput);
-    if (srcThread == NULL) {
+    bool isSessionIdOrphan = (mOrphanEffectChains.indexOfKey(sessionId) >= 0);
+    if (srcThread == NULL && !isSessionIdOrphan && sessionId == AUDIO_SESSION_OUTPUT_MIX) {
+        ALOGW("%s() session %d not found in orphans, checking other mix", __func__, sessionId);
+        for (size_t i = 0; i < mPlaybackThreads.size(); i++) {
+            if (mPlaybackThreads.valueAt(i)->hasAudioSession(sessionId)) {
+                srcThread = mPlaybackThreads.valueAt(i).get();
+                ALOGW("%s() found srcOutput %d hosting session %d", __func__,
+                      mPlaybackThreads.keyAt(i), sessionId);
+                break;
+            }
+        }
+    }
+    if (srcThread == NULL && !isSessionIdOrphan) {
         ALOGW("moveEffects() bad srcOutput %d", srcOutput);
         return BAD_VALUE;
     }
@@ -3926,6 +3947,11 @@ status_t AudioFlinger::moveEffects(audio_session_t sessionId, audio_io_handle_t 
     }
 
     Mutex::Autolock _dl(dstThread->mLock);
+    if (isSessionIdOrphan) {
+        ALOGW("moveEffects() found session %d in orphan chains", sessionId);
+        sp<EffectChain> chain = getOrphanEffectChain_l(sessionId);
+        return dstThread->addEffectChain_l(chain);
+    }
     Mutex::Autolock _sl(srcThread->mLock);
     return moveEffectChain_l(sessionId, srcThread, dstThread);
 }
