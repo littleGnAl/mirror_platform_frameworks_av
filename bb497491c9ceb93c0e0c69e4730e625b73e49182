@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017560330",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1893636?revision\u003d2",
+      "fixSuggestions": [
+        {
+          "fixId": "7c88e86c_0806783d",
+          "description": "Change to \"services/audiopolicy/managerdefault/AudioPolicyManager.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+              "range": {
+                "startLine": 4241,
+                "startChar": 57,
+                "endLine": 4241,
+                "endChar": 62
+              },
+              "replacement": "Output"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "9dfd6258_5b63fee9",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4241,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-22T13:40:23Z",
+      "side": 1,
+      "message": "Common typo found: \"Ouput\" -- should it be \"Output\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 4241,
+        "startChar": 57,
+        "endLine": 4241,
+        "endChar": 62
+      },
+      "revId": "bb497491c9ceb93c0e0c69e4730e625b73e49182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
