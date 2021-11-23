@@ -1512,7 +1512,7 @@ status_t MediaCodec::configure(
         const sp<Surface> &surface,
         const sp<ICrypto> &crypto,
         const sp<IDescrambler> &descrambler,
-        uint32_t flags) {    
+        uint32_t flags) {
     sp<AMessage> msg = new AMessage(kWhatConfigure, this);
 
     if (mMetricsHandle != 0) {
@@ -3524,10 +3524,11 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                         if (mMetricsHandle != 0 && mIsInitialization) {
                             int64_t mFirstFrameGenerated = systemTime(SYSTEM_TIME_MONOTONIC);
                             int64_t mInitializationTime = mFirstFrameGenerated - mMediaCodecInitNs;
-                            mediametrics_setInt64(mMetricsHandle, kCodecInitializationLatency, mInitializationTime);
+                            mediametrics_setInt64(mMetricsHandle, 
+                                kCodecInitializationLatency, mInitializationTime);
                             mIsInitialization = false;
                         }
-                        
+
                         break;
                     }
 
