@@ -29,6 +29,7 @@
 
 #include <cutils/properties.h>
 #include <media/stagefright/CodecBase.h>
+#include <media/stagefright/foundation/ABitReader.h>
 #include <media/stagefright/foundation/ABuffer.h>
 #include <media/stagefright/foundation/ADebug.h>
 #include <media/stagefright/foundation/ALookup.h>
@@ -1432,6 +1433,159 @@ status_t convertMetaDataToMessage(
         }
 
         parseHevcProfileLevelFromHvcc((const uint8_t *)data, dataSize, msg);
+    } else if (meta->findData(kKeyVVCC, &type, &data, &size)) {
+        const uint8_t *ptr = (const uint8_t *)data;
+        ABitReader br(ptr, size);
+
+        /* VvcDecoderConfigurationRecord */
+        if (size < 5 || br.getBits(32) != 0) {
+            // configurationVersion == 0, flags == 0
+            ALOGE("b/23680780");
+            return BAD_VALUE;
+        }
+        uint32_t totalBits = size * 8;
+
+        br.skipBits(5); // bit(5) reserved = '11111'b;
+        br.skipBits(2); // unsigned int(2) LengthSizeMinusOne;
+        const uint8_t ptl_present_flag = br.getBits(1); // unsigned int(1) ptl_present_flag;
+
+        if (ptl_present_flag) {
+            if (br.numBitsLeft() < 26) {
+                ALOGE("b/23680780");
+                return BAD_VALUE;
+            }
+            br.skipBits(9); // unsigned int(9) ols_idx;
+            const uint8_t  num_sublayers = br.getBits(3); // unsigned int(3) num_sublayers;
+            br.skipBits(2); // unsigned int(2) constant_frame_rate;
+            br.skipBits(2); // unsigned int(2) chroma_format_idc;
+            br.skipBits(3); // unsigned int(3) bit_depth_minus8;
+
+            br.skipBits(5); // bit(5) reserved = '11111'b;
+            /* VvcPTLRecord(num_sublayers) native_ptl */
+            br.skipBits(2); // bit(2) reserved = 0;
+            // unsigned int(6) num_bytes_constraint_info;
+
+            if (br.numBitsLeft() < 24) {
+                ALOGE("b/23680780");
+                return BAD_VALUE;
+            }
+            const uint8_t  num_bytes_constraint_info = br.getBits(6);
+            br.skipBits(7); // unsigned int(7) general_profile_idc;
+            br.skipBits(1); // unsigned int(1) general_tier_flag;
+            br.skipBits(8); // unsigned int(8) general_level_idc;
+            br.skipBits(1); // unsigned int(1) ptl_frame_only_constraint_flag;
+            br.skipBits(1); // unsigned int(1) ptl_multi_layer_enabled_flag;
+
+            if (num_bytes_constraint_info) {
+                if (br.numBitsLeft() < 8*num_bytes_constraint_info - 2) {
+                    ALOGE("b/23680780");
+                    return BAD_VALUE;
+                }
+                // unsigned int(8*num_bytes_constraint_info - 2) general_constraint_info;
+                br.skipBits(8*num_bytes_constraint_info - 2);
+            }
+
+            uint8_t  ptl_sublayer_level_present_flag[8] = {0};
+            for (int8_t j = num_sublayers - 2; j >= 0; j--) {
+                if (br.numBitsLeft() < 1) {
+                    ALOGE("b/23680780");
+                    return BAD_VALUE;
+                }
+                // unsigned int(1) ptl_sublayer_level_present_flag[i];
+                ptl_sublayer_level_present_flag[j] = br.getBits(1);
+            }
+
+            for (uint8_t k = num_sublayers; k <= 8 && num_sublayers > 1; k++) {
+                if (br.numBitsLeft() < 1) {
+                    ALOGE("b/23680780");
+                    return BAD_VALUE;
+                }
+                br.skipBits(1); // bit(1) ptl_reserved_zero_bit = 0;
+            }
+
+            for (int8_t n = num_sublayers - 2; n >= 0; n--) {
+                if (ptl_sublayer_level_present_flag[n]) {
+                    if (br.numBitsLeft() < 8) {
+                        ALOGE("b/23680780");
+                        return BAD_VALUE;
+                    }
+                    br.skipBits(8); // unsigned int(8) sublayer_level_idc[i];
+                }
+            }
+
+            if (br.numBitsLeft() < 8) {
+                ALOGE("b/23680780");
+                return BAD_VALUE;
+            }
+
+            // unsigned int(8) ptl_num_sub_profiles;
+            const uint16_t ptl_num_sub_profiles = br.getBits(8);
+            for (uint16_t m = 0; m < ptl_num_sub_profiles; m++) {
+                if (br.numBitsLeft() < 32) {
+                    ALOGE("b/23680780");
+                    return BAD_VALUE;
+                }
+                br.skipBits(32); // unsigned int(32) general_sub_profile_idc[j];
+            }
+
+            if (br.numBitsLeft() < 48) {
+                ALOGE("b/23680780");
+                return BAD_VALUE;
+            }
+            br.skipBits(16); // unsigned_int(16) max_picture_width;
+            br.skipBits(16); // unsigned_int(16) max_picture_height;
+            br.skipBits(16); // unsigned int(16) avg_frame_rate;
+        }
+
+        if (br.numBitsLeft() < 8) {
+            ALOGE("b/23680780");
+            return BAD_VALUE;
+        }
+        const uint8_t num_of_arrays = br.getBits(8); // unsigned int(8) num_of_arrays;
+        sp<ABuffer> buffer = new (std::nothrow) ABuffer(1024);
+        if (buffer.get() == NULL || buffer->base() == NULL) {
+            return NO_MEMORY;
+        }
+        buffer->setRange(0, 0);
+
+        for (uint8_t i = 0; i < num_of_arrays; i++) {
+            if (br.numBitsLeft() < 8 /* 1 + 2 + 5 */) {
+                ALOGE("b/23680780");
+                return BAD_VALUE;
+            }
+            br.skipBits(1); // unsigned int(1) array_completeness;
+            br.skipBits(2); // bit(2) reserved = 0;
+            uint8_t NAL_unit_type = br.getBits(5); // unsigned int(5) NAL_unit_type;
+            uint16_t num_nalus = 0;
+            if (NAL_unit_type != 13/*DCI_NUT*/ && NAL_unit_type != 12/*OPI_NUT*/) {
+                if (br.numBitsLeft() < 16) {
+                    ALOGE("b/23680780");
+                    return BAD_VALUE;
+                }
+                num_nalus = br.getBits(16); // unsigned int(16) num_nalus;
+            }
+            for (int j = 0; j < num_nalus; j++) {
+                if (br.numBitsLeft() < 16) {
+                    ALOGE("b/23680780");
+                    return BAD_VALUE;
+                }
+                uint16_t nal_unit_length = br.getBits(16); // unsigned int(16) nal_unit_length;
+                if (nal_unit_length * 8 > br.numBitsLeft()) {
+                    ALOGE("b/23680780");
+                    return BAD_VALUE;
+                }
+                status_t err = copyNALUToABuffer(&buffer,
+                        ptr + (totalBits - br.numBitsLeft()) / 8, nal_unit_length);
+                if (err != OK) {
+                    return err;
+                }
+                br.skipBits(8 * nal_unit_length); // bit(8*nal_unit_length) nal_unit;
+            }
+        }
+
+        buffer->meta()->setInt32("csd", true);
+        buffer->meta()->setInt64("timeUs", 0);
+        msg->setBuffer("csd-0", buffer);
     } else if (meta->findData(kKeyAV1C, &type, &data, &size)) {
         sp<ABuffer> buffer = new (std::nothrow) ABuffer(size);
         if (buffer.get() == NULL || buffer->base() == NULL) {
@@ -2091,6 +2245,8 @@ status_t convertMessageToMetaData(const sp<AMessage> &msg, sp<MetaData> &meta) {
         } else if (mime == MEDIA_MIMETYPE_VIDEO_AV1 ||
                    mime == MEDIA_MIMETYPE_IMAGE_AVIF) {
             meta->setData(kKeyAV1C, 0, csd0->data(), csd0->size());
+        } else if (mime == MEDIA_MIMETYPE_VIDEO_VVC) {
+            meta->setData(kKeyVVCC, 0, csd0->data(), csd0->size());
         } else if (mime == MEDIA_MIMETYPE_VIDEO_DOLBY_VISION) {
             int32_t profile = -1;
             uint8_t blCompatibilityId = -1;
