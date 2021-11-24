@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1e0474fe_6ec9ffc7",
+        "filename": "services/audiopolicy/common/managerdefinitions/src/AudioOutputDescriptor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-11-24T17:01:35Z",
+      "side": 1,
+      "message": "is hasGainController() the only condition driving the fact that volume own this SwOutput is controlled by the HW gain controller?",
+      "range": {
+        "startLine": 446,
+        "startChar": 32,
+        "endLine": 446,
+        "endChar": 49
+      },
+      "revId": "fef83a904d73fda43fc5ca5c7a609301d7ea51f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
