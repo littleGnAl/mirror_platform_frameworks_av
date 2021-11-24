@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a481e530_2e3eef80",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 18
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-11-24T18:13:39Z",
+      "side": 1,
+      "message": "Ideally we should control this behavior from APM. Maybe use the source audio attributes but those are not conveyed to audio flinger.\nSo lets take this fix as is for now.\n",
+      "revId": "bac19fb8eb7ad1c760e370afdc49fbc9ee670763",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
