@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7772d5ec_a8ffd147",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 591,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-11-24T16:53:45Z",
+      "side": 1,
+      "message": "wouldn\u0027t it be more straightforward to implement it from the source descriptor point of view:\nif ( mCallRxSourceClient-\u003e\u003eswOutput().promote() \u003d\u003d desc || mCallTxSourceClient-\u003e\u003eswOutput().promote() \u003d\u003d desc)\n\nThis would require to store the mCallRxSourceClient pointer intead of port ID but thist maybe more efficient at other places too no?\nstartAudioSource woiuld return a sp\u003cSourceClientDescriptor\u003e instead of a port ID.",
+      "range": {
+        "startLine": 591,
+        "startChar": 0,
+        "endLine": 591,
+        "endChar": 77
+      },
+      "revId": "d835d12913ecc4d95926b49c1d637423401706a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
