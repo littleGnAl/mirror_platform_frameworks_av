@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fce6600b_863db927",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2021,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-11-24T16:43:35Z",
+      "side": 1,
+      "message": "requiresMuteCheck was true as default before",
+      "range": {
+        "startLine": 2021,
+        "startChar": 38,
+        "endLine": 2021,
+        "endChar": 43
+      },
+      "revId": "a2b644cdb4318ed93959b4deeb66a5b2ea984f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
