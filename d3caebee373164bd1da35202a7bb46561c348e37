@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5b0b9f58_bea30f67",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 46
+      },
+      "lineNbr": 422,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-11-24T18:09:19Z",
+      "side": 1,
+      "message": "can you document the rule that governs falling back to default or not when calling this method?",
+      "range": {
+        "startLine": 422,
+        "startChar": 55,
+        "endLine": 422,
+        "endChar": 72
+      },
+      "revId": "d3caebee373164bd1da35202a7bb46561c348e37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
