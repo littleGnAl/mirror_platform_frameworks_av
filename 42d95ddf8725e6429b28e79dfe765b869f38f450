@@ -16,6 +16,24 @@
       "message": "Eric,\nYet another side effect of temporary disappear of PrimaryOutput. We are loosing track of effects...I am unable to move them back when primary output is made available again.\nHere is a first attempt to fix this...",
       "revId": "42d95ddf8725e6429b28e79dfe765b869f38f450",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "66cd91e1_f5d85a99",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-11-24T09:13:03Z",
+      "side": 1,
+      "message": "I do have another variant to solve it using the orphan management in AudioFlinger.\nWhen we detect the effect is of type AUDIO_SESSION_OUTPUT_MIX (we could also filter on if the thread is the primary), we prevent to move chain to first (\"default\") thread and move it to the orphan chain list. \nBoth solution works here, first one gives full power to APM to control music effect, second one give full power to audio flinger to manager such case.",
+      "parentUuid": "c5bccc70_96f10bbf",
+      "revId": "42d95ddf8725e6429b28e79dfe765b869f38f450",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
