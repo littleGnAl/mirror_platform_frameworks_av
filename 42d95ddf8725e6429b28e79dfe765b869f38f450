@@ -34,6 +34,24 @@
       "parentUuid": "c5bccc70_96f10bbf",
       "revId": "42d95ddf8725e6429b28e79dfe765b869f38f450",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0f0d86c8_58646eb3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-11-24T09:34:07Z",
+      "side": 1,
+      "message": "What are the drawbacks of the second solution? \nGiven effect chain parking is a behavior entirely managed by AudioFlinger so far, why not fix the problem in AudioFlinger only if possible?",
+      "parentUuid": "66cd91e1_f5d85a99",
+      "revId": "42d95ddf8725e6429b28e79dfe765b869f38f450",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
