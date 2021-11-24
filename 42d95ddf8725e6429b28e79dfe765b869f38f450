@@ -52,6 +52,24 @@
       "parentUuid": "66cd91e1_f5d85a99",
       "revId": "42d95ddf8725e6429b28e79dfe765b869f38f450",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "012db25a_58b01a04",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-11-24T13:27:42Z",
+      "side": 1,
+      "message": "No drawbacks except if unluckily effects output mix are created while primary output is not available. \nSo, I fixed the creation, thus, i updated moveEffects to also check amount other output if the outmix session was found if neither the source output nor the orphans list contains the given session id.",
+      "parentUuid": "0f0d86c8_58646eb3",
+      "revId": "42d95ddf8725e6429b28e79dfe765b869f38f450",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
