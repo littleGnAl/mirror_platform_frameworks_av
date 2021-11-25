@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3866cac8_78230a38",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 5224,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-11-25T10:27:48Z",
+      "side": 1,
+      "message": "This does not seem to be the right place to update an output route.\nAlso here we select all devices still supported by the output profile which is done regardless of the actual activity on the output.\n\n\nmaybe move this to checkCloseOutputs () or checkForDeviceAndOutputChanges()",
+      "range": {
+        "startLine": 5224,
+        "startChar": 24,
+        "endLine": 5224,
+        "endChar": 40
+      },
+      "revId": "1e78b29ef906862b7e1f2c8ef36702776a9cd0e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
