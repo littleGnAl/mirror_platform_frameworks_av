@@ -269,6 +269,10 @@ DeviceVector Engine::getDevicesForStrategyInt(legacy_strategy strategy,
     case STRATEGY_PHONE: {
         devices = availableOutputDevices.getDevicesFromType(AUDIO_DEVICE_OUT_HEARING_AID);
         if (!devices.isEmpty()) break;
+//ELDEBUG
+        devices = availableOutputDevices.getDevicesFromType(AUDIO_DEVICE_OUT_BLE_HEADSET);
+        if (!devices.isEmpty()) break;
+
         devices = availableOutputDevices.getFirstDevicesFromTypes(
                                           getLastRemovableMediaDevices());
         if (!devices.isEmpty()) break;
@@ -505,6 +509,7 @@ sp<DeviceDescriptor> Engine::getDeviceForInputSource(audio_source_t inputSource)
                 break;
             }
         }
+
         switch (commDeviceType) {
         case AUDIO_DEVICE_OUT_BLE_HEADSET:
             device = availableDevices.getDevice(
@@ -517,6 +522,8 @@ sp<DeviceDescriptor> Engine::getDeviceForInputSource(audio_source_t inputSource)
             break;
         default:    // FORCE_NONE
             device = availableDevices.getFirstExistingDevice({
+//ELDEBUG
+                    AUDIO_DEVICE_IN_BLE_HEADSET,
                     AUDIO_DEVICE_IN_WIRED_HEADSET, AUDIO_DEVICE_IN_USB_HEADSET,
                     AUDIO_DEVICE_IN_USB_DEVICE, AUDIO_DEVICE_IN_BLUETOOTH_BLE,
                     AUDIO_DEVICE_IN_BUILTIN_MIC});
