@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e659960c_8358e674",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2717,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-11-26T07:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9526d692_5ba96efc",
+      "range": {
+        "startLine": 2717,
+        "startChar": 55,
+        "endLine": 2717,
+        "endChar": 68
+      },
+      "revId": "2b9b3b213ede31d3275a67801f7fa556a2fb0442",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6bb9c110_2d699533",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-25T10:45:10Z",
       "side": 1,
       "message": "you can use thread-\u003etype() \u003d\u003d ThreadBase::RECORD for that or add an isRecord()  method to ThreadBase",
+      "range": {
+        "startLine": 3837,
+        "startChar": 19,
+        "endLine": 3837,
+        "endChar": 34
+      },
+      "revId": "2b9b3b213ede31d3275a67801f7fa556a2fb0442",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "83cbf795_ff30b937",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 3837,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-11-26T07:44:42Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6bb9c110_2d699533",
       "range": {
         "startLine": 3837,
         "startChar": 19,
