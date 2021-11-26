@@ -352,8 +352,8 @@ void AudioTrack::stopAndJoinCallbacks() {
     // Otherwise the callback thread will never exit.
     stop();
     if (mAudioTrackThread != 0) { // not thread safe
-        mProxy->interrupt();
         mAudioTrackThread->requestExit();   // see comment in AudioTrack.h
+        Proxy->interrupt();
         mAudioTrackThread->requestExitAndWait();
         mAudioTrackThread.clear();
     }
@@ -2322,6 +2322,7 @@ nsecs_t AudioTrack::processAudioBuffer()
                 // instead, the application should handle the EVENT_NEW_IAUDIOTRACK.
                 mCbf(EVENT_STREAM_END, mUserData, NULL);
             }
+        case -EINTR:
             {
                 AutoMutex lock(mLock);
                 // The previously assigned value of waitStreamEnd is no longer valid,
