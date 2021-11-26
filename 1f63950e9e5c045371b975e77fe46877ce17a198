@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0c0cb00_9484067e",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 5222,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-11-26T14:48:29Z",
+      "side": 0,
+      "message": "why are we changing this condition if we had the test in checkCloseOutputs() to not close the primary output? \nchanging this condition will change the behavior for non primary outputs.",
+      "range": {
+        "startLine": 5220,
+        "startChar": 16,
+        "endLine": 5222,
+        "endChar": 98
+      },
+      "revId": "1f63950e9e5c045371b975e77fe46877ce17a198",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

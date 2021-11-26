@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d888727_2ae05993",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-11-26T14:48:29Z",
+      "side": 1,
+      "message": "remove",
+      "range": {
+        "startLine": 253,
+        "startChar": 54,
+        "endLine": 253,
+        "endChar": 58
+      },
+      "revId": "5531007d7574aecaf5c9ee9487b8590f5a72822e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49a838e3_5cb6e626",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-11-26T14:48:29Z",
+      "side": 1,
+      "message": "as this is a default route we should pick the 1st device in the list instead of selecting all possible devices for the primary output.\nOr pick what ever device is still available after the test in line 260",
+      "range": {
+        "startLine": 259,
+        "startChar": 40,
+        "endLine": 259,
+        "endChar": 64
+      },
+      "revId": "5531007d7574aecaf5c9ee9487b8590f5a72822e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
