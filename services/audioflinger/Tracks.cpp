@@ -1401,6 +1401,46 @@ void AudioFlinger::PlaybackThread::Track::copyMetadataTo(MetadataInserter& backI
             .content_type = mAttr.content_type,
             .gain = mFinalVolume,
     };
+
+    if (mAttr.usage == AUDIO_USAGE_UNKNOWN) {
+        switch (mStreamType) {
+        case AUDIO_STREAM_VOICE_CALL:
+            metadata.base.usage = AUDIO_USAGE_VOICE_COMMUNICATION;
+            break;
+        case AUDIO_STREAM_SYSTEM:
+            metadata.base.usage = AUDIO_USAGE_ASSISTANCE_SONIFICATION;
+            break;
+        case AUDIO_STREAM_RING:
+            metadata.base.usage = AUDIO_USAGE_NOTIFICATION_TELEPHONY_RINGTONE;
+            break;
+        case AUDIO_STREAM_MUSIC:
+            metadata.base.usage = AUDIO_USAGE_MEDIA;
+            break;
+        case AUDIO_STREAM_ALARM:
+            metadata.base.usage = AUDIO_USAGE_ALARM;
+            break;
+        case AUDIO_STREAM_NOTIFICATION:
+            metadata.base.usage = AUDIO_USAGE_NOTIFICATION;
+            break;
+        case AUDIO_STREAM_DTMF:
+            metadata.base.usage = AUDIO_USAGE_VOICE_COMMUNICATION_SIGNALLING;
+            break;
+        case AUDIO_STREAM_ACCESSIBILITY:
+            metadata.base.usage = AUDIO_USAGE_ASSISTANCE_ACCESSIBILITY;
+            break;
+        case AUDIO_STREAM_ASSISTANT:
+            metadata.base.usage = AUDIO_USAGE_ASSISTANT;
+            break;
+        case AUDIO_STREAM_REROUTING:
+            metadata.base.usage = AUDIO_USAGE_VIRTUAL_SOURCE;
+            break;
+        case AUDIO_STREAM_CALL_ASSISTANT:
+            metadata.base.usage = AUDIO_USAGE_CALL_ASSISTANT;
+            break;
+        default:
+            break;
+        }
+    }
     metadata.channel_mask = mChannelMask,
     strncpy(metadata.tags, mAttr.tags, AUDIO_ATTRIBUTES_TAGS_MAX_SIZE);
     *backInserter++ = metadata;
