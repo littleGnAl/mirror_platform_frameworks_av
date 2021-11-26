@@ -1,0 +1,47 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000017703490",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1898998?revision\u003d5",
+      "fixSuggestions": [
+        {
+          "fixId": "0c4115b1_05558e9d",
+          "description": "Change to \"services/audioflinger/AudioFlinger.cpp\"",
+          "replacements": [
+            {
+              "path": "services/audioflinger/AudioFlinger.cpp",
+              "range": {
+                "startLine": 2719,
+                "startChar": 25,
+                "endLine": 2719,
+                "endChar": 32
+              },
+              "replacement": "across"
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "bb00dc5d_c52a0e0c",
+        "filename": "services/audioflinger/AudioFlinger.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 2719,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-11-26T14:11:58Z",
+      "side": 1,
+      "message": "Common typo found: \"accross\" -- should it be \"across\"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 2719,
+        "startChar": 25,
+        "endLine": 2719,
+        "endChar": 32
+      },
+      "revId": "5d079706b2821bde98a3f8c1b66a1b4a55df112f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
