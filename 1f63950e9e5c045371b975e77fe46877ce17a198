@@ -46,6 +46,30 @@
       },
       "revId": "1f63950e9e5c045371b975e77fe46877ce17a198",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c793858c_23d619d6",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 5222,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-11-26T15:42:19Z",
+      "side": 0,
+      "message": "This behavior would be aligned with what is done at policy startup, by taking first device as you proposed, or rerouting on avail dev is active",
+      "parentUuid": "689e02a3_dcc485ac",
+      "range": {
+        "startLine": 5220,
+        "startChar": 16,
+        "endLine": 5222,
+        "endChar": 98
+      },
+      "revId": "1f63950e9e5c045371b975e77fe46877ce17a198",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
