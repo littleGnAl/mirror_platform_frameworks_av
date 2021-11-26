@@ -22,6 +22,30 @@
       },
       "revId": "1f63950e9e5c045371b975e77fe46877ce17a198",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "689e02a3_dcc485ac",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 5222,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-11-26T15:39:00Z",
+      "side": 0,
+      "message": "exact, i feel we shall even not make primary output case a particular case, and considering as well other output. It will prevent delete output, remove patches, and so one for the other outputs.",
+      "parentUuid": "d0c0cb00_9484067e",
+      "range": {
+        "startLine": 5220,
+        "startChar": 16,
+        "endLine": 5222,
+        "endChar": 98
+      },
+      "revId": "1f63950e9e5c045371b975e77fe46877ce17a198",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
