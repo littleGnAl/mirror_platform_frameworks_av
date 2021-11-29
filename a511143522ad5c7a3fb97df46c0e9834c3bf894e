@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "b56ff270_0cb1abc7",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-11-29T19:46:34Z",
+      "side": 1,
+      "message": "Sorry, I just noticed that!  Still the commit message is confusing.",
+      "parentUuid": "86211976_b8ceea90",
+      "range": {
+        "startLine": 10,
+        "startChar": 52,
+        "endLine": 10,
+        "endChar": 61
+      },
+      "revId": "a511143522ad5c7a3fb97df46c0e9834c3bf894e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "3b7c8387_402f5547",
@@ -61,6 +85,29 @@
       "writtenOn": "2021-11-29T18:46:03Z",
       "side": 1,
       "message": "Concerned about some regressions, can you please explain the issue this is trying to fix?  Thanks!",
+      "revId": "a511143522ad5c7a3fb97df46c0e9834c3bf894e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42150a07_7cdd449f",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-11-29T19:46:34Z",
+      "side": 1,
+      "message": "Would swapping this line with line 356 work?  \n\nI\u0027m guessing we want to interrupt *after* we set the exit flag.  That is:\n\n    mAudioTrackThread-\u003erequestExit();\n    mProxy-\u003einterrupt();\n    mAudioTrackThread-\u003erequestExitAndWait();",
+      "range": {
+        "startLine": 355,
+        "startChar": 2,
+        "endLine": 355,
+        "endChar": 28
+      },
       "revId": "a511143522ad5c7a3fb97df46c0e9834c3bf894e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
