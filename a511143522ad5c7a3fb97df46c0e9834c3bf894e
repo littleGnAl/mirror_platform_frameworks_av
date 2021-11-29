@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7d559dd9_4d73c80d",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-11-29T18:46:03Z",
+      "side": 1,
+      "message": "This fix appears to cause the AudioTrack to enter STATE_STOPPED if there is a client interrupt (when the state is in STATE_STOPPING).\n\nIs there a bug number for the issue?  Thanks!",
+      "range": {
+        "startLine": 10,
+        "startChar": 52,
+        "endLine": 10,
+        "endChar": 61
+      },
+      "revId": "a511143522ad5c7a3fb97df46c0e9834c3bf894e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b7c8387_402f5547",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-11-29T18:46:03Z",
+      "side": 1,
+      "message": "Concerned about some regressions, can you please explain the issue this is trying to fix?  Thanks!",
+      "revId": "a511143522ad5c7a3fb97df46c0e9834c3bf894e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f2e6b47c_2e63386d",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2321,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-11-29T18:46:03Z",
+      "side": 1,
+      "message": "if the user has interrupted, should we signaling EVENT_STREAM_END?",
+      "range": {
+        "startLine": 2321,
+        "startChar": 37,
+        "endLine": 2321,
+        "endChar": 40
+      },
+      "revId": "a511143522ad5c7a3fb97df46c0e9834c3bf894e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
