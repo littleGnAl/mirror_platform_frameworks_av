@@ -39,6 +39,30 @@
       },
       "revId": "d78d3e5cc3f1ad198d530a93185aa8336d2d455a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "12cb5680_b0e0c991",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1104,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-12-01T09:27:52Z",
+      "side": 1,
+      "message": "If this fixes the problem it means we are in a context of an active effects moved to a new effect chain by  AudioFlinger::moveEffectChain_l() because it is the only place where start() is called (we cannot be in  moveAuxEffectToIo() because we are not using aux effects).\nThe normal way to enable an effect is from EffectChain::process_l() if updateState() indicates we started the effect and we should probably also call resetVolume() before starting the effect in this context. But this is more complex as we cannot call the callback with the EffectModule mutex held.\n\nOne option is to set mSetVolumeReentrantTid \u003d gettid(); before and reset it after and call  getCallback()-\u003eresetVolume() in EffectVolume::start_l()",
+      "parentUuid": "f19113d0_4f3cae97",
+      "range": {
+        "startLine": 1104,
+        "startChar": 0,
+        "endLine": 1104,
+        "endChar": 37
+      },
+      "revId": "d78d3e5cc3f1ad198d530a93185aa8336d2d455a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
