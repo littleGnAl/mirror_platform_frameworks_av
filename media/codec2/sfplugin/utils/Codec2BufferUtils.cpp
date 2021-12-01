@@ -370,6 +370,8 @@ status_t ConvertRGBToPlanarYUV(
             // using ITU-R BT.601 conversion matrix
             unsigned luma =
                 CLIP3(0, (((red * 66 + green * 129 + blue * 25) >> 8) + 16), 255);
+            if (src.width() >= 1280 && src.height() >= 720)
+                luma = 0.183 * red + 0.614 * green + 0.062 * blue + 16;
 
             dstY[x] = luma;
 
@@ -377,8 +379,14 @@ status_t ConvertRGBToPlanarYUV(
                 unsigned U =
                     CLIP3(0, (((-red * 38 - green * 74 + blue * 112) >> 8) + 128), 255);
 
+                if (src.width() >= 1280 && src.height() >= 720)
+                    U = -0.101 * red - 0.339 * green + 0.439 * blue + 128;
+
                 unsigned V =
                     CLIP3(0, (((red * 112 - green * 94 - blue * 18) >> 8) + 128), 255);
+
+                if (src.width() >= 1280 && src.height() >= 720)
+                    V = 0.439 * red - 0.399 * green - 0.040 * blue + 128;
 
                 dstU[x >> 1] = U;
                 dstV[x >> 1] = V;
