@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56e1ddf5_2f30485b",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-12-01T16:51:41Z",
+      "side": 1,
+      "message": "the problem is here.  we interrupt here, with the state STATE_STOPPING - we might prematurely enter the stop state depending on the threading and prior operations.  i\u0027ll comment more on one particular case below.",
+      "range": {
+        "startLine": 876,
+        "startChar": 0,
+        "endLine": 876,
+        "endChar": 24
+      },
+      "revId": "349180633fe7ddb39bc41b776fe579790bd51cdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb917de5_42504544",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2325,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-12-01T16:51:41Z",
+      "side": 1,
+      "message": "i would prefer not to add this particular handling - the reason is that it will risk premature stop on interrupt.\n\nwe are waiting here without the lock, and time has gone by - stopping in offload mode means drain, and in the meantime it is possible to enter STATE_PAUSED_STOPPING via line 966 and return to STATE_STOPPING per line 874.  In that case, i believe this handling would immediately stop.",
+      "range": {
+        "startLine": 2325,
+        "startChar": 0,
+        "endLine": 2325,
+        "endChar": 20
+      },
+      "revId": "349180633fe7ddb39bc41b776fe579790bd51cdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
