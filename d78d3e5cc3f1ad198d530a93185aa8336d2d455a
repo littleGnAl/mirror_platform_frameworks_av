@@ -16,6 +16,29 @@
       "message": "Andy,\nAs discussed, I verified that by setting volume before enabling effects, fixes the volume surge seen.\nBut I am not sure if this is the right way to fix it.\nCan you please take a look?\nThanks.",
       "revId": "d78d3e5cc3f1ad198d530a93185aa8336d2d455a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f19113d0_4f3cae97",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1104,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-12-01T08:55:38Z",
+      "side": 1,
+      "message": "Do we still need to call this twice?",
+      "range": {
+        "startLine": 1104,
+        "startChar": 0,
+        "endLine": 1104,
+        "endChar": 37
+      },
+      "revId": "d78d3e5cc3f1ad198d530a93185aa8336d2d455a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
