@@ -138,6 +138,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f826ebaf_08987157",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 355,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2021-12-01T02:43:04Z",
+      "side": 1,
+      "message": "This modification can work, however, I think it better to keep handle -EINTR while waiting waitStreamEndDone().",
+      "parentUuid": "42150a07_7cdd449f",
+      "range": {
+        "startLine": 355,
+        "startChar": 2,
+        "endLine": 355,
+        "endChar": 28
+      },
+      "revId": "a511143522ad5c7a3fb97df46c0e9834c3bf894e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f2e6b47c_2e63386d",
         "filename": "media/libaudioclient/AudioTrack.cpp",
         "patchSetId": 2
