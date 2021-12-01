@@ -63,6 +63,30 @@
       },
       "revId": "d78d3e5cc3f1ad198d530a93185aa8336d2d455a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56d977c5_957e9fe2",
+        "filename": "services/audioflinger/Effects.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1104,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-12-01T18:28:36Z",
+      "side": 1,
+      "message": "Interesting analysis - perhaps the comment on line 1093 is incorrect.  We need to have the EffectChain::mLock held while calling EffectModule::start() because it may be currently processing.  Simply having the PlaybackThread::mLock is insufficient.\n\nPerhaps we should rearrange the logic here in AudioFlinger::moveEffectChain_l()\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/audioflinger/AudioFlinger.cpp;drc\u003d33223031bc31ca094ca4960cb6cf20ef266834c4;l\u003d3996\n\nto call the EffectModule::start() with the effect chain lock.  With some more modification (i.e. passing the changed effects to the caller, or provide a thunk to do so), we could reenable after all thread locks are released, but that probably is not needed.\n\nTo be honest, I\u0027d like to remove volume control altogether now that we are processing in float.  But that might be a later change.",
+      "parentUuid": "12cb5680_b0e0c991",
+      "range": {
+        "startLine": 1104,
+        "startChar": 0,
+        "endLine": 1104,
+        "endChar": 37
+      },
+      "revId": "d78d3e5cc3f1ad198d530a93185aa8336d2d455a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
