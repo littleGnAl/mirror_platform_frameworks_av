@@ -1,0 +1,139 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e59b1839_0cd3f95b",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-12-01T00:43:51Z",
+      "side": 1,
+      "message": "It may be beneficial to record latencies for the initialization process separately. e.g.: latency for create, configure, start, and first buffer out.\n\nAlso I can imagine having timestamps for each init stage recorded. With this information we can detect whether the app is starting the codec in advance or not.",
+      "revId": "2c27e8c085467bcac66b02d22b20d718cec7a330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "504cf354_034a0f50",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1515,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-12-01T00:43:51Z",
+      "side": 1,
+      "message": "\u003e Please remove the trailing whitespace.\n\nPlease fix.",
+      "parentUuid": "46b0a925_6c220fe9",
+      "range": {
+        "startLine": 1515,
+        "startChar": 25,
+        "endLine": 1515,
+        "endChar": 29
+      },
+      "revId": "2c27e8c085467bcac66b02d22b20d718cec7a330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fc6ff964_aca47041",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3525,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-12-01T00:43:51Z",
+      "side": 1,
+      "message": "m- prefix is for member variables. For local variables we don\u0027t use a prefix. Thus it should be |firstFrameGeneratedNs|",
+      "range": {
+        "startLine": 3525,
+        "startChar": 36,
+        "endLine": 3525,
+        "endChar": 56
+      },
+      "revId": "2c27e8c085467bcac66b02d22b20d718cec7a330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f11fb383_fd204831",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3526,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-12-01T00:43:51Z",
+      "side": 1,
+      "message": "no m- prefix for local var",
+      "range": {
+        "startLine": 3526,
+        "startChar": 36,
+        "endLine": 3526,
+        "endChar": 55
+      },
+      "revId": "2c27e8c085467bcac66b02d22b20d718cec7a330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da036688_7daeb33d",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3527,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-12-01T00:43:51Z",
+      "side": 1,
+      "message": "\u003e Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.\n\nPlease fix.",
+      "parentUuid": "4f402851_f4eb36dd",
+      "range": {
+        "startLine": 3527,
+        "startChar": 0,
+        "endLine": 3527,
+        "endChar": 116
+      },
+      "revId": "2c27e8c085467bcac66b02d22b20d718cec7a330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ad0fa7b_c487edff",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3530,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-12-01T00:43:51Z",
+      "side": 1,
+      "message": "\u003e Please remove the trailing whitespace.\n\nPlease fix.",
+      "parentUuid": "3cd3d29d_69b9081d",
+      "range": {
+        "startLine": 3530,
+        "startChar": 0,
+        "endLine": 3530,
+        "endChar": 24
+      },
+      "revId": "2c27e8c085467bcac66b02d22b20d718cec7a330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
