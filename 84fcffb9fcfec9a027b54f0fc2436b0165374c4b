@@ -63,6 +63,30 @@
       },
       "revId": "84fcffb9fcfec9a027b54f0fc2436b0165374c4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75261b1d_96fc926a",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-12-02T10:27:04Z",
+      "side": 1,
+      "message": "If you don\u0027t call obtain buffer, I would you block until room is available for the next write before you call the callback with EVENT_CAN_WRITE_MORE_DATA?\nAlso I don\u0027t understand how the callback is called if \"avail\" is forced to 0 due to the test at line 2473? mRemainingFrames will never be decremented and we will always exit at line 2500",
+      "parentUuid": "e974a165_cf776ab3",
+      "range": {
+        "startLine": 2449,
+        "startChar": 0,
+        "endLine": 2449,
+        "endChar": 56
+      },
+      "revId": "84fcffb9fcfec9a027b54f0fc2436b0165374c4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
