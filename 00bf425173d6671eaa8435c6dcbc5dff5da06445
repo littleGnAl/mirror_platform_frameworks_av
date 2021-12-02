@@ -16,6 +16,23 @@
       "message": "Hi, what\u0027s the staus of the change? Thanks! ",
       "revId": "00bf425173d6671eaa8435c6dcbc5dff5da06445",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1d38bc6_61507fb5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2021-12-02T15:22:47Z",
+      "side": 1,
+      "message": "We approved the change, but we didn\u0027t trigger presubmit checking on it. Once that\u0027s run, feel free to merge it.",
+      "revId": "00bf425173d6671eaa8435c6dcbc5dff5da06445",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
