@@ -167,6 +167,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "27dc7b67_c4113601",
+        "filename": "media/libaudioclient/aidl/android/media/IAudioPolicyService.aidl",
+        "patchSetId": 1
+      },
+      "lineNbr": 296,
+      "author": {
+        "id": 1875587
+      },
+      "writtenOn": "2021-12-02T15:40:11Z",
+      "side": 1,
+      "message": "Internal patch is merged, cherry pick to this one, please help to review as well, thanks.",
+      "parentUuid": "d0b28641_27775a52",
+      "range": {
+        "startLine": 296,
+        "startChar": 47,
+        "endLine": 296,
+        "endChar": 50
+      },
+      "revId": "94f8fa5d9f72f2badacb2129eb84e516cf9b79c3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2497196e_7e8125cf",
