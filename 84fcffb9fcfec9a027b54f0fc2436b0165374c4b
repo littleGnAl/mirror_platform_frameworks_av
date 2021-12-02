@@ -87,6 +87,30 @@
       },
       "revId": "84fcffb9fcfec9a027b54f0fc2436b0165374c4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "64f304e2_beb162b1",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1902032
+      },
+      "writtenOn": "2021-12-02T11:32:52Z",
+      "side": 1,
+      "message": "This callback is triggered by line 895 when offload mode with mTranser is TRANSFER_SYNC_NOTIF_CALLBACK.\nWhen the mTransfer mode is TRANSFER_SYNC_NOTIF_CALLBACK, this callback thread will always exit at line 2528 and will block until next AudioTrack::write is finished. And mRetryOnPartialBuffer will never get chance to set as true. so it will not exit at line 2500.",
+      "parentUuid": "75261b1d_96fc926a",
+      "range": {
+        "startLine": 2449,
+        "startChar": 0,
+        "endLine": 2449,
+        "endChar": 56
+      },
+      "revId": "84fcffb9fcfec9a027b54f0fc2436b0165374c4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
