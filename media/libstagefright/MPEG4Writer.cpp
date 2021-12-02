@@ -2008,6 +2008,9 @@ bool MPEG4Writer::truncatePreAllocation() {
 
     bool status = true;
     off64_t endOffset = std::max(mMdatEndOffset, mOffset);
+    if (endOffset <= 0) {
+        return true;
+    }
     /* if mPreAllocateFileEndOffset >= endOffset, then preallocation logic works good. (diff >= 0).
      *  Otherwise, the logic needs to be modified.
      */
