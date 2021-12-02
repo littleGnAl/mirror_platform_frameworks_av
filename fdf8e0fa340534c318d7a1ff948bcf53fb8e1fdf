@@ -33,6 +33,24 @@
       "message": "For symmetry we should fix the same problem for AudioRecord: AudioRecord::stopAndJoinCallbacks().\n\nAlthough we are not using offload mode for record it may be the case in the future and it is better to have a symmetric implementation.\n",
       "revId": "fdf8e0fa340534c318d7a1ff948bcf53fb8e1fdf",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2a4143a0_1d81da3e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-12-02T17:29:29Z",
+      "side": 1,
+      "message": "As discussed with Eric, I\u0027ll upload the change for AudioRecord.",
+      "parentUuid": "42ac6dbe_043a451f",
+      "revId": "fdf8e0fa340534c318d7a1ff948bcf53fb8e1fdf",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
