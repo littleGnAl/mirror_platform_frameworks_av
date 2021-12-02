@@ -111,6 +111,30 @@
       },
       "revId": "84fcffb9fcfec9a027b54f0fc2436b0165374c4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46b42d3c_8d7eda04",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-12-02T13:20:10Z",
+      "side": 1,
+      "message": "We need at least to set audioBuffer.size because the JNI does not read audioBuffer.frameCount and the value passed to the app via onDataRequest will be uninitialized.\nAlso nothing guaranties that next time write completes and this method is called again room will be available if we do not call obtainBuffer. So will will call again onDataRequest() with size \u003d\u003d 0 and nothing guaranties the app will write again which will make that we never come back here again.",
+      "parentUuid": "64f304e2_beb162b1",
+      "range": {
+        "startLine": 2449,
+        "startChar": 0,
+        "endLine": 2449,
+        "endChar": 56
+      },
+      "revId": "84fcffb9fcfec9a027b54f0fc2436b0165374c4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
