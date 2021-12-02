@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "54aa1d3a_2da77795",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 356,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2021-12-02T08:17:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6b732308_e197885f",
+      "range": {
+        "startLine": 356,
+        "startChar": 8,
+        "endLine": 356,
+        "endChar": 13
+      },
+      "revId": "349180633fe7ddb39bc41b776fe579790bd51cdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56e1ddf5_2f30485b",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3035bcdd_ca8f7f9d",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 876,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2021-12-02T08:17:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56e1ddf5_2f30485b",
+      "range": {
+        "startLine": 876,
+        "startChar": 0,
+        "endLine": 876,
+        "endChar": 24
+      },
+      "revId": "349180633fe7ddb39bc41b776fe579790bd51cdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bb917de5_42504544",
@@ -60,6 +108,30 @@
       "writtenOn": "2021-12-01T16:51:41Z",
       "side": 1,
       "message": "i would prefer not to add this particular handling - the reason is that it will risk premature stop on interrupt.\n\nwe are waiting here without the lock, and time has gone by - stopping in offload mode means drain, and in the meantime it is possible to enter STATE_PAUSED_STOPPING via line 966 and return to STATE_STOPPING per line 874.  In that case, i believe this handling would immediately stop.",
+      "range": {
+        "startLine": 2325,
+        "startChar": 0,
+        "endLine": 2325,
+        "endChar": 20
+      },
+      "revId": "349180633fe7ddb39bc41b776fe579790bd51cdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c9853403_2e492ce9",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 2325,
+      "author": {
+        "id": 1478901
+      },
+      "writtenOn": "2021-12-02T08:17:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bb917de5_42504544",
       "range": {
         "startLine": 2325,
         "startChar": 0,
