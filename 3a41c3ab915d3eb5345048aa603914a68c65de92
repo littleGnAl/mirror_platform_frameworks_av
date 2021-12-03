@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f41a73b9_33b719c0",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-03T23:42:10Z",
+      "side": 1,
+      "message": "Right, I referenced wrong block of code, i.e. like 948 for tunnel-peek. I needed to base on two blocks of code above (i.e line 940).",
+      "parentUuid": "ed4a991e_f97eca40",
+      "range": {
+        "startLine": 956,
+        "startChar": 22,
+        "endLine": 956,
+        "endChar": 32
+      },
+      "revId": "3a41c3ab915d3eb5345048aa603914a68c65de92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b567646d_6c228fd6",
@@ -54,6 +78,24 @@
       "writtenOn": "2021-12-03T22:25:52Z",
       "side": 1,
       "message": "This does not seem to match your definition at frameworks/base. Typically this file must match the Java definition.",
+      "revId": "3a41c3ab915d3eb5345048aa603914a68c65de92",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "616debed_b8a16055",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 768,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-03T23:42:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b567646d_6c228fd6",
       "revId": "3a41c3ab915d3eb5345048aa603914a68c65de92",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
