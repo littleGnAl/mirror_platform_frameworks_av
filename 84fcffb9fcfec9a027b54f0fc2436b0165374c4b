@@ -135,6 +135,30 @@
       },
       "revId": "84fcffb9fcfec9a027b54f0fc2436b0165374c4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e4e94d3_703c822c",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1902032
+      },
+      "writtenOn": "2021-12-03T02:25:24Z",
+      "side": 1,
+      "message": "Thanks for your reply.\nCan we add lock to guarantee the obtainBuffer not access by two thread?\nIf not, the CTS case AudioTrackOffloadTest should call the first of the AudioTrack.write after the onDataRequest\u0027s size \u003e 0.\nAnd all the third party app which use the AudioTrack.java\u0027s offload mode need follow this design, or they may meet the block issue.",
+      "parentUuid": "46b42d3c_8d7eda04",
+      "range": {
+        "startLine": 2449,
+        "startChar": 0,
+        "endLine": 2449,
+        "endChar": 56
+      },
+      "revId": "84fcffb9fcfec9a027b54f0fc2436b0165374c4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
