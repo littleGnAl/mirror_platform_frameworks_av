@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30014b58_cd5a0660",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 2418,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-12-03T22:23:40Z",
+      "side": 1,
+      "message": "As I mentioned in the meeting, I believe the concept of encoding stat levels does not belong to Codec 2.0. I would prefer to have actual encoding stat params (avg/min/max qp, picture type (already defined?) etc.) in Codec 2.0 and CCodec/MediaCodec to figure out the supported level in the framework layer.",
+      "revId": "7258c4bf3eedd10efa5630298ccecc0e5a0d9af0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
