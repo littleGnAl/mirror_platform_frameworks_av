@@ -16,6 +16,23 @@
       "message": "Hi, this is Hdmi EArc support addition for policy engineconfigurable\u0027s pfw/examples.",
       "revId": "73e7df012c43ebabc8da0ffe9dc4d25c849a9fed",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e23845a9_30913d62",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-12-03T13:45:19Z",
+      "side": 1,
+      "message": "We have a nother st of CLs for that that switch to 64bit bit for parameter framework criteria and help support new devices. See topic https://android-review.googlesource.com/q/topic:pfw_64bit_inclusive_criterion\n",
+      "revId": "73e7df012c43ebabc8da0ffe9dc4d25c849a9fed",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
