@@ -317,6 +317,19 @@ supDomain: DeviceForProductStrategy
 			conf: NotSelected
 				/Policy/policy/product_strategies/media/selected_output_devices/mask/hdmi_arc = 0
 
+		domain: EArc
+			#
+			# these following domains consists in device(s) that can co-exist with others
+			# e.g. ARC, SPDIF, AUX_LINE
+			#
+			conf: Selected
+				AvailableOutputDevices Includes HdmiEArc
+
+				/Policy/policy/product_strategies/media/selected_output_devices/mask/hdmi_earc = 1
+
+			conf: NotSelected
+				/Policy/policy/product_strategies/media/selected_output_devices/mask/hdmi_earc = 0
+
 		domain: Spdif
 			#
 			# these following domains consists in device(s) that can co-exist with others

@@ -801,6 +801,34 @@
       </Configuration>
     </Settings>
   </ConfigurableDomain>
+  <ConfigurableDomain Name="DeviceForStrategy.Media.EArc" SequenceAware="false">
+    <Configurations>
+      <Configuration Name="Selected">
+        <CompoundRule Type="All">
+          <SelectionCriterionRule SelectionCriterion="AvailableOutputDevices" MatchesWhen="Includes" Value="HdmiEArc"/>
+        </CompoundRule>
+      </Configuration>
+      <Configuration Name="NotSelected">
+        <CompoundRule Type="All"/>
+      </Configuration>
+    </Configurations>
+    <ConfigurableElements>
+      <ConfigurableElement Path="/Policy/policy/strategies/media/selected_output_devices/mask/hdmi_earc"/>
+    </ConfigurableElements>
+    <Settings>
+      <Configuration Name="Selected">
+        <ConfigurableElement Path="/Policy/policy/strategies/media/selected_output_devices/mask/hdmi_earc">
+          <BitParameter Name="hdmi_earc">1</BitParameter>
+        </ConfigurableElement>
+      </Configuration>
+      <Configuration Name="NotSelected">
+        <ConfigurableElement Path="/Policy/policy/strategies/media/selected_output_devices/mask/hdmi_earc">
+          <BitParameter Name="hdmi_earc">0</BitParameter>
+        </ConfigurableElement>
+      </Configuration>
+    </Settings>
+  </ConfigurableDomain>
+
   <ConfigurableDomain Name="DeviceForStrategy.Media.Spdif" SequenceAware="false">
     <Configurations>
       <Configuration Name="Selected">
@@ -864,6 +892,7 @@
     <ConfigurableElements>
       <ConfigurableElement Path="/Policy/policy/strategies/phone/selected_output_devices/mask/remote_submix"/>
       <ConfigurableElement Path="/Policy/policy/strategies/phone/selected_output_devices/mask/hdmi_arc"/>
+      <ConfigurableElement Path="/Policy/policy/strategies/phone/selected_output_devices/mask/hdmi_earc"/>
       <ConfigurableElement Path="/Policy/policy/strategies/phone/selected_output_devices/mask/aux_line"/>
       <ConfigurableElement Path="/Policy/policy/strategies/phone/selected_output_devices/mask/spdif"/>
       <ConfigurableElement Path="/Policy/policy/strategies/phone/selected_output_devices/mask/fm"/>
@@ -879,6 +908,9 @@
         </ConfigurableElement>
         <ConfigurableElement Path="/Policy/policy/strategies/phone/selected_output_devices/mask/hdmi_arc">
           <BitParameter Name="hdmi_arc">0</BitParameter>
+        </ConfigurableElement>
+        <ConfigurableElement Path="/Policy/policy/strategies/phone/selected_output_devices/mask/hdmi_earc">
+          <BitParameter Name="hdmi_earc">0</BitParameter>
         </ConfigurableElement>
         <ConfigurableElement Path="/Policy/policy/strategies/phone/selected_output_devices/mask/aux_line">
           <BitParameter Name="aux_line">0</BitParameter>
@@ -1960,6 +1992,7 @@
     <ConfigurableElements>
       <ConfigurableElement Path="/Policy/policy/strategies/sonification/selected_output_devices/mask/remote_submix"/>
       <ConfigurableElement Path="/Policy/policy/strategies/sonification/selected_output_devices/mask/hdmi_arc"/>
+      <ConfigurableElement Path="/Policy/policy/strategies/sonification/selected_output_devices/mask/hdmi_earc"/>
       <ConfigurableElement Path="/Policy/policy/strategies/sonification/selected_output_devices/mask/spdif"/>
       <ConfigurableElement Path="/Policy/policy/strategies/sonification/selected_output_devices/mask/fm"/>
       <ConfigurableElement Path="/Policy/policy/strategies/sonification/selected_output_devices/mask/speaker_safe"/>
@@ -1976,6 +2009,9 @@
         </ConfigurableElement>
         <ConfigurableElement Path="/Policy/policy/strategies/sonification/selected_output_devices/mask/hdmi_arc">
           <BitParameter Name="hdmi_arc">0</BitParameter>
+        </ConfigurableElement>
+        <ConfigurableElement Path="/Policy/policy/strategies/sonification/selected_output_devices/mask/hdmi_earc">
+          <BitParameter Name="hdmi_earc">0</BitParameter>
         </ConfigurableElement>
         <ConfigurableElement Path="/Policy/policy/strategies/sonification/selected_output_devices/mask/spdif">
           <BitParameter Name="spdif">0</BitParameter>
@@ -2952,6 +2988,7 @@
     <ConfigurableElements>
       <ConfigurableElement Path="/Policy/policy/strategies/sonification_respectful/selected_output_devices/mask/remote_submix"/>
       <ConfigurableElement Path="/Policy/policy/strategies/sonification_respectful/selected_output_devices/mask/hdmi_arc"/>
+      <ConfigurableElement Path="/Policy/policy/strategies/sonification_respectful/selected_output_devices/mask/hdmi_earc"/>
       <ConfigurableElement Path="/Policy/policy/strategies/sonification_respectful/selected_output_devices/mask/aux_line"/>
       <ConfigurableElement Path="/Policy/policy/strategies/sonification_respectful/selected_output_devices/mask/spdif"/>
       <ConfigurableElement Path="/Policy/policy/strategies/sonification_respectful/selected_output_devices/mask/fm"/>
@@ -2967,6 +3004,9 @@
         </ConfigurableElement>
         <ConfigurableElement Path="/Policy/policy/strategies/sonification_respectful/selected_output_devices/mask/hdmi_arc">
           <BitParameter Name="hdmi_arc">0</BitParameter>
+        </ConfigurableElement>
+        <ConfigurableElement Path="/Policy/policy/strategies/sonification_respectful/selected_output_devices/mask/hdmi_earc">
+          <BitParameter Name="hdmi_earc">0</BitParameter>
         </ConfigurableElement>
         <ConfigurableElement Path="/Policy/policy/strategies/sonification_respectful/selected_output_devices/mask/aux_line">
           <BitParameter Name="aux_line">0</BitParameter>
@@ -5201,6 +5241,35 @@
       </Configuration>
     </Settings>
   </ConfigurableDomain>
+  <ConfigurableDomain Name="DeviceForStrategy.Dtmf.EArc" SequenceAware="false">
+    <Configurations>
+      <Configuration Name="Selected">
+        <CompoundRule Type="All">
+          <SelectionCriterionRule SelectionCriterion="TelephonyMode" MatchesWhen="IsNot" Value="InCall"/>
+          <SelectionCriterionRule SelectionCriterion="TelephonyMode" MatchesWhen="IsNot" Value="InCommunication"/>
+          <SelectionCriterionRule SelectionCriterion="AvailableOutputDevices" MatchesWhen="Includes" Value="HdmiEArc"/>
+        </CompoundRule>
+      </Configuration>
+      <Configuration Name="NotSelected">
+        <CompoundRule Type="All"/>
+      </Configuration>
+    </Configurations>
+    <ConfigurableElements>
+      <ConfigurableElement Path="/Policy/policy/strategies/dtmf/selected_output_devices/mask/hdmi_earc"/>
+    </ConfigurableElements>
+    <Settings>
+      <Configuration Name="Selected">
+        <ConfigurableElement Path="/Policy/policy/strategies/dtmf/selected_output_devices/mask/hdmi_earc">
+          <BitParameter Name="hdmi_earc">1</BitParameter>
+        </ConfigurableElement>
+      </Configuration>
+      <Configuration Name="NotSelected">
+        <ConfigurableElement Path="/Policy/policy/strategies/dtmf/selected_output_devices/mask/hdmi_earc">
+          <BitParameter Name="hdmi_earc">0</BitParameter>
+        </ConfigurableElement>
+      </Configuration>
+    </Settings>
+  </ConfigurableDomain>
   <ConfigurableDomain Name="DeviceForStrategy.Dtmf.Spdif" SequenceAware="false">
     <Configurations>
       <Configuration Name="Selected">
@@ -5267,6 +5336,7 @@
     </Configurations>
     <ConfigurableElements>
       <ConfigurableElement Path="/Policy/policy/strategies/enforced_audible/selected_output_devices/mask/hdmi_arc"/>
+      <ConfigurableElement Path="/Policy/policy/strategies/enforced_audible/selected_output_devices/mask/hdmi_earc"/>
       <ConfigurableElement Path="/Policy/policy/strategies/enforced_audible/selected_output_devices/mask/spdif"/>
       <ConfigurableElement Path="/Policy/policy/strategies/enforced_audible/selected_output_devices/mask/aux_line"/>
       <ConfigurableElement Path="/Policy/policy/strategies/enforced_audible/selected_output_devices/mask/speaker_safe"/>
@@ -5279,6 +5349,9 @@
       <Configuration Name="Calibration">
         <ConfigurableElement Path="/Policy/policy/strategies/enforced_audible/selected_output_devices/mask/hdmi_arc">
           <BitParameter Name="hdmi_arc">0</BitParameter>
+        </ConfigurableElement>
+        <ConfigurableElement Path="/Policy/policy/strategies/enforced_audible/selected_output_devices/mask/hdmi_earc">
+          <BitParameter Name="hdmi_earc">0</BitParameter>
         </ConfigurableElement>
         <ConfigurableElement Path="/Policy/policy/strategies/enforced_audible/selected_output_devices/mask/spdif">
           <BitParameter Name="spdif">0</BitParameter>
@@ -6156,6 +6229,7 @@
     <ConfigurableElements>
       <ConfigurableElement Path="/Policy/policy/strategies/transmitted_through_speaker/selected_output_devices/mask/remote_submix"/>
       <ConfigurableElement Path="/Policy/policy/strategies/transmitted_through_speaker/selected_output_devices/mask/hdmi_arc"/>
+      <ConfigurableElement Path="/Policy/policy/strategies/transmitted_through_speaker/selected_output_devices/mask/hdmi_earc"/>
       <ConfigurableElement Path="/Policy/policy/strategies/transmitted_through_speaker/selected_output_devices/mask/spdif"/>
       <ConfigurableElement Path="/Policy/policy/strategies/transmitted_through_speaker/selected_output_devices/mask/aux_line"/>
       <ConfigurableElement Path="/Policy/policy/strategies/transmitted_through_speaker/selected_output_devices/mask/fm"/>
@@ -6187,6 +6261,9 @@
         </ConfigurableElement>
         <ConfigurableElement Path="/Policy/policy/strategies/transmitted_through_speaker/selected_output_devices/mask/hdmi_arc">
           <BitParameter Name="hdmi_arc">0</BitParameter>
+        </ConfigurableElement>
+        <ConfigurableElement Path="/Policy/policy/strategies/transmitted_through_speaker/selected_output_devices/mask/hdmi_earc">
+          <BitParameter Name="hdmi_earc">0</BitParameter>
         </ConfigurableElement>
         <ConfigurableElement Path="/Policy/policy/strategies/transmitted_through_speaker/selected_output_devices/mask/spdif">
           <BitParameter Name="spdif">0</BitParameter>
@@ -6295,6 +6372,7 @@
     </Configurations>
     <ConfigurableElements>
       <ConfigurableElement Path="/Policy/policy/strategies/accessibility/selected_output_devices/mask/hdmi_arc"/>
+      <ConfigurableElement Path="/Policy/policy/strategies/accessibility/selected_output_devices/mask/hdmi_earc"/>
       <ConfigurableElement Path="/Policy/policy/strategies/accessibility/selected_output_devices/mask/spdif"/>
       <ConfigurableElement Path="/Policy/policy/strategies/accessibility/selected_output_devices/mask/aux_line"/>
       <ConfigurableElement Path="/Policy/policy/strategies/accessibility/selected_output_devices/mask/fm"/>
@@ -6308,6 +6386,9 @@
       <Configuration Name="Calibration">
         <ConfigurableElement Path="/Policy/policy/strategies/accessibility/selected_output_devices/mask/hdmi_arc">
           <BitParameter Name="hdmi_arc">0</BitParameter>
+        </ConfigurableElement>
+        <ConfigurableElement Path="/Policy/policy/strategies/accessibility/selected_output_devices/mask/hdmi_earc">
+          <BitParameter Name="hdmi_earc">0</BitParameter>
         </ConfigurableElement>
         <ConfigurableElement Path="/Policy/policy/strategies/accessibility/selected_output_devices/mask/spdif">
           <BitParameter Name="spdif">0</BitParameter>
@@ -7563,6 +7644,7 @@
     </Configurations>
     <ConfigurableElements>
       <ConfigurableElement Path="/Policy/policy/strategies/rerouting/selected_output_devices/mask/hdmi_arc"/>
+      <ConfigurableElement Path="/Policy/policy/strategies/rerouting/selected_output_devices/mask/hdmi_earc"/>
       <ConfigurableElement Path="/Policy/policy/strategies/rerouting/selected_output_devices/mask/spdif"/>
       <ConfigurableElement Path="/Policy/policy/strategies/rerouting/selected_output_devices/mask/aux_line"/>
       <ConfigurableElement Path="/Policy/policy/strategies/rerouting/selected_output_devices/mask/fm"/>
@@ -7580,6 +7662,9 @@
       <Configuration Name="Calibration">
         <ConfigurableElement Path="/Policy/policy/strategies/rerouting/selected_output_devices/mask/hdmi_arc">
           <BitParameter Name="hdmi_arc">0</BitParameter>
+        </ConfigurableElement>
+        <ConfigurableElement Path="/Policy/policy/strategies/rerouting/selected_output_devices/mask/hdmi_earc">
+          <BitParameter Name="hdmi_earc">0</BitParameter>
         </ConfigurableElement>
         <ConfigurableElement Path="/Policy/policy/strategies/rerouting/selected_output_devices/mask/spdif">
           <BitParameter Name="spdif">0</BitParameter>

@@ -592,6 +592,22 @@ supDomain: DeviceForProductStrategies
 			conf: NotSelected
 				/Policy/policy/product_strategies/dtmf/selected_output_devices/mask/hdmi_arc = 0
 
+		domain: EArc
+			#
+			# DTMF strategy follows media strategy if not in call
+			# these following domains consists in device(s) that can co-exist with others
+			# e.g. ARC, SPDIF, AUX_LINE
+			#
+			conf: Selected
+				TelephonyMode IsNot InCall
+				TelephonyMode IsNot InCommunication
+				AvailableOutputDevices Includes HdmiEArc
+
+				/Policy/policy/product_strategies/dtmf/selected_output_devices/mask/hdmi_earc = 1
+
+			conf: NotSelected
+				/Policy/policy/product_strategies/dtmf/selected_output_devices/mask/hdmi_earc = 0
+
 		domain: Spdif
 			#
 			# DTMF strategy follows media strategy if not in call

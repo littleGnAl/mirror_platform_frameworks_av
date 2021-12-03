@@ -16,6 +16,7 @@ supDomain: DeviceForProductStrategy
 				component: /Policy/policy/product_strategies/sonification_respectful/selected_output_devices/mask
 					remote_submix = 0
 					hdmi_arc = 0
+					hdmi_earc = 0
 					aux_line = 0
 					spdif = 0
 					fm = 0
