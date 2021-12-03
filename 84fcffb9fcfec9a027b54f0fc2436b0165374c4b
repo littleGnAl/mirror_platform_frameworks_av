@@ -159,6 +159,30 @@
       },
       "revId": "84fcffb9fcfec9a027b54f0fc2436b0165374c4b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "08f62517_29f65f58",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2449,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-12-03T06:41:46Z",
+      "side": 1,
+      "message": "TBH, I am not keen with a special lock on obtainBuffer() as I mentioned before.  It will mean that the callback thread is stalled for write and the write is stalled for the callback.  So long as the write and callback are on the same thread (typical model), this is not material.  Yet, I don\u0027t like extra mutexes.\n\nI would rather use a non-blocking obtainBuffer().  Another approach, perhaps better, is to change the FUTEX_WAKE to wake more than one thread. I believe this is important anyways in case the client calls write() after a stop() - there will be contention for the futex between the notification thread and the caller write thread.  Change the value of (1) here to INT_MAX.\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libaudioclient/AudioTrackShared.cpp;drc\u003d63a3583a3b22bdbb4fbc4a6a707185ff4da86179;l\u003d412\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libaudioclient/AudioTrackShared.cpp;drc\u003d63a3583a3b22bdbb4fbc4a6a707185ff4da86179;l\u003d422\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libaudioclient/AudioTrackShared.cpp;drc\u003d63a3583a3b22bdbb4fbc4a6a707185ff4da86179;l\u003d750\n\nPerhaps that might be the right way to go.  I don\u0027t know whether this works properly in all cases, but maybe this is more promising.",
+      "parentUuid": "4e4e94d3_703c822c",
+      "range": {
+        "startLine": 2449,
+        "startChar": 0,
+        "endLine": 2449,
+        "endChar": 56
+      },
+      "revId": "84fcffb9fcfec9a027b54f0fc2436b0165374c4b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
