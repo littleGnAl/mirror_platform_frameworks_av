@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41b72cd0_14a81352",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-05T18:28:26Z",
+      "side": 1,
+      "message": "After building whole Android, I got compile error and learned that there has been a definition of C2ParamIndex at line 192, so I need change the name.",
+      "revId": "105edda293d438c821fad6e94fae29bec17ebfd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57894965_dd41388b",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2437,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-05T18:28:26Z",
+      "side": 1,
+      "message": "Similarly, there has been a definition of C2ParamIndex at line 1701, so I need change the name.",
+      "revId": "105edda293d438c821fad6e94fae29bec17ebfd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
