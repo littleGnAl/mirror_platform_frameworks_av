@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f27021ea_6ad3bd45",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-05T19:20:26Z",
+      "side": 1,
+      "message": "Would we need also rename MediaFormat Keys to identify that they are for encoding statistics?  I.e. \"KEY_ENC_STAT_***\"\nFor Codec 2 this was done because there has been existing key with the same name, KEY_PICTURE_TYPE.",
+      "revId": "ac8698373de4203758f951978eed295aa95f74b2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
