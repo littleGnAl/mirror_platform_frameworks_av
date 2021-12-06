@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e4f086b7_1eb020e3",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 2422,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-06T19:52:07Z",
+      "side": 1,
+      "message": "Remove this! Replaced by CCodecConfig::subscribeToConfigUpdate().",
+      "revId": "f4be4f4c7717bb5ae1bdfcec2316dd905e626297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
