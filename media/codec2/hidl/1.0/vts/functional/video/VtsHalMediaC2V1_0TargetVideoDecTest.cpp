@@ -33,9 +33,15 @@
 #include <gui/IConsumerListener.h>
 #include <gui/IProducerListener.h>
 #include <system/window.h>
+<<<<<<< HEAD   (c76f7e Merge "Add HwModule::getRoutes method" into android12-tests-)
 #include <gui/GLConsumer.h>
 #include <gui/Surface.h>
 #include <gui/SurfaceComposerClient.h>
+=======
+#include <android-base/properties.h>
+
+using android::C2AllocatorIon;
+>>>>>>> BRANCH (87bcb2 Merge "VTS: Disable codec2 tests if platform does not suppor)
 
 #include "media_c2_hidl_test_common.h"
 #include "media_c2_video_hidl_test_common.h"
@@ -101,8 +107,19 @@ class Codec2VideoDecHidlTestBase : public ::testing::Test {
     // google.codec2 Video test setup
     virtual void SetUp() override {
         getParams();
+<<<<<<< HEAD   (c76f7e Merge "Add HwModule::getRoutes method" into android12-tests-)
 
         mDisableTest = false;
+=======
+        // Disable the tests if device does not support codec2
+        int option = android::base::GetIntProperty("debug.stagefright.ccodec", 4);
+        if (option == 0) {
+            mDisableTest = true;
+        } else {
+            mDisableTest = false;
+        }
+        ALOGV("Codec2VideoDecHidlTest SetUp");
+>>>>>>> BRANCH (87bcb2 Merge "VTS: Disable codec2 tests if platform does not suppor)
         mClient = android::Codec2Client::CreateFromService(
                 mInstanceName.c_str(),
                 !bool(android::Codec2Client::CreateFromService("default", true)));

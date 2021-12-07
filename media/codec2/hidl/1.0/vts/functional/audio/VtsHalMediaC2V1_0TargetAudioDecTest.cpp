@@ -28,6 +28,7 @@
 #include <C2Config.h>
 #include <C2Debug.h>
 #include <codec2/hidl/client.h>
+#include <android-base/properties.h>
 
 #include "media_c2_hidl_test_common.h"
 using DecodeTestParameters = std::tuple<std::string, std::string, uint32_t, bool>;
@@ -78,7 +79,12 @@ class Codec2AudioDecHidlTestBase : public ::testing::Test {
     // google.codec2 Audio test setup
     virtual void SetUp() override {
         getParams();
-        mDisableTest = false;
+        int option = android::base::GetIntProperty("debug.stagefright.ccodec", 4);
+        if (option == 0) {
+            mDisableTest = true;
+        } else {
+            mDisableTest = false;
+        }
         ALOGV("Codec2AudioDecHidlTest SetUp");
         mClient = android::Codec2Client::CreateFromService(
                 mInstanceName.c_str(),
