@@ -28,6 +28,7 @@
 #include <C2Config.h>
 #include <C2Debug.h>
 #include <codec2/hidl/client.h>
+#include <android-base/properties.h>
 
 #include "media_c2_hidl_test_common.h"
 #include "media_c2_video_hidl_test_common.h"
@@ -51,7 +52,12 @@ class Codec2VideoEncHidlTestBase : public ::testing::Test {
     // google.codec2 Video test setup
     virtual void SetUp() override {
         getParams();
-        mDisableTest = false;
+        int option = android::base::GetIntProperty("debug.stagefright.ccodec", 4);
+        if (option == 0) {
+            mDisableTest = true;
+        } else {
+            mDisableTest = false;
+        }
         ALOGV("Codec2VideoEncHidlTest SetUp");
         mClient = android::Codec2Client::CreateFromService(
                 mInstanceName.c_str(),
