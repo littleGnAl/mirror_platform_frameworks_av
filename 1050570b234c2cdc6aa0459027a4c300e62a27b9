@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "33fa6b73_c2d86210",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-12-07T21:29:40Z",
+      "side": 1,
+      "message": "This test will skip if there is no codec2 service in the system. If codec2 is not supported on the platform, it probably should not publish the services as well.",
+      "revId": "1050570b234c2cdc6aa0459027a4c300e62a27b9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
