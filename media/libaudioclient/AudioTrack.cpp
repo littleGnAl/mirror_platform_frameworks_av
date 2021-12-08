@@ -362,7 +362,6 @@ void AudioTrack::stopAndJoinCallbacks() {
         // This may not stop all of these device callbacks!
         // TODO: Add some sort of protection.
         AudioSystem::removeAudioDeviceCallback(this, mOutput, mPortId);
-        mDeviceCallback.clear();
     }
 }
 
