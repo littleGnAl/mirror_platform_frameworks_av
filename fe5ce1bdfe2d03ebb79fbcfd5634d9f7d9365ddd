@@ -46,6 +46,30 @@
       },
       "revId": "fe5ce1bdfe2d03ebb79fbcfd5634d9f7d9365ddd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "41fc4f7e_aa22e0bc",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-12-08T05:05:35Z",
+      "side": 0,
+      "message": "I agree with your assessment that a mismatched weak_ptr count would likely occur if there is mDeviceCallback access while someone modifying mDeviceCallback (either clearing or setting).\n\nRemoving the clear is probably fine (it would be better to put a comment that it was intentionally removed in case someone tries to put it back again).\n\nNevertheless, I would prefer to keep the clear of mDeviceCallback because that would be more consistent if someone calls stopAndJoinCallbacks and then enters the destructor afterwards.  Case in point here:\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libaaudio/src/legacy/AudioStreamTrack.cpp;drc\u003d337611324fb7b22600d588493f938e7df4789e3d;l\u003d277\n\nWhy not take the lock here?  That would be 100% correct and pass thread safety annotation/analysis.\n\nNote that callbacks are called without any AudioSystem locks held.\n\nhttps://source.corp.google.com/android/frameworks/av/media/libaudioclient/AudioSystem.cpp;rcl\u003db05f9cc14b0e86cb11214e2a7e90c3fad06bfbb9;l\u003d662",
+      "parentUuid": "6ab7ee1e_d7d5b7a3",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 32
+      },
+      "revId": "fe5ce1bdfe2d03ebb79fbcfd5634d9f7d9365ddd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
