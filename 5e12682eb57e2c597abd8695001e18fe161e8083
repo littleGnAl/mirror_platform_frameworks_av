@@ -1,0 +1,82 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000018184891",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/480518?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "9f86e940_27a234ae",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/m4v_h263_dec_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-08T19:16:00Z",
+      "side": 1,
+      "message": "Third-party license (BSD) disallowed in repository platform/frameworks/av:\nRedistribution and use in source and binary forms, with or without modification, are permitted provided that the following conditions are met:...Redistributions of source code must retain the above copyright notice, this list of conditions and the following disclaimer. Redistributions in binary form must reproduce the above copyright notice, this list of conditions and the following disclaimer in the documentation and or other materials provided with the distribution.\n",
+      "range": {
+        "startLine": 5,
+        "startChar": 4,
+        "endLine": 13,
+        "endChar": 17
+      },
+      "revId": "5e12682eb57e2c597abd8695001e18fe161e8083",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000018184934",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/480518?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "294c0655_bfb248d6",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/m4v_h263_dec_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-08T19:16:00Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 113
+      },
+      "revId": "5e12682eb57e2c597abd8695001e18fe161e8083",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000018184934",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/480518?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "9c6b9432_7e202291",
+        "filename": "media/libstagefright/codecs/m4v_h263/dec/test/m4v_h263_dec_test.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 211,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-08T19:16:00Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 211,
+        "startChar": 0,
+        "endLine": 211,
+        "endChar": 101
+      },
+      "revId": "5e12682eb57e2c597abd8695001e18fe161e8083",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
