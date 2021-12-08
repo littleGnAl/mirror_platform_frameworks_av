@@ -801,6 +801,11 @@ void AudioPolicyManager::setPhoneState(audio_mode_t state)
                     releaseAudioPatchInternal(mCallTxPatch->getHandle());
                     mCallTxPatch.clear();
                 }
+                DeviceVector newRxDevices = getNewOutputDevices(mPrimaryOutput, false /*fromCache*/);
+                if (!newRxDevices.isEmpty()) {
+                    ALOGD("%s update primary rxDevices and policy engine  %s", __func__, newRxDevices.toString().c_str());
+                    rxDevices = newRxDevices;
+                    updateDevicesAndOutputs();
             }
             setOutputDevices(mPrimaryOutput, rxDevices, force, 0);
         }
