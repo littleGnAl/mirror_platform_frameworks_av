@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d7a8b7f2_c391ef6b",
+        "filename": "media/libaudioclient/AudioRecord.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2021-12-08T19:27:32Z",
+      "side": 1,
+      "message": "Maybe we should promote the mDeviceCallback to an sp\u003c\u003e and then call AudioRecord::removeAudioDeviceCallback() if it succeeds. That will do the locks.",
+      "revId": "3b681f699479b183d69a7d255a580f7b1b528af0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -16,6 +16,23 @@
       "message": "lgtm, thanks!",
       "revId": "116df6ab9075c8296610ac4786f310f017632296",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9d6583f3_93cdcb76",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2021-12-08T19:27:32Z",
+      "side": 1,
+      "message": "Should we do the same for AudioTrack?\n\nWe should also probably add GUARDED_BY(mLock) thread safety annotation to mDeviceLock.\n",
+      "revId": "116df6ab9075c8296610ac4786f310f017632296",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
