@@ -789,17 +789,17 @@ void AudioPolicyManager::setPhoneState(audio_mode_t state)
         if (state == AUDIO_MODE_IN_CALL) {
             (void)updateCallRouting(false /*fromCache*/, delayMs);
         } else {
-            DeviceVector rxDevices = getNewOutputDevices(mPrimaryOutput, false /*fromCache*/);
-            // force routing command to audio hardware when ending call
-            // even if no device change is needed
-            if (isStateInCall(oldState) && rxDevices.isEmpty()) {
-                rxDevices = mPrimaryOutput->devices();
-            }
+            DeviceVector rxDevices = mPrimaryOutput->devices();
             if (oldState == AUDIO_MODE_IN_CALL) {
                 disconnectTelephonyRxAudioSource();
                 if (mCallTxPatch != 0) {
                     releaseAudioPatchInternal(mCallTxPatch->getHandle());
                     mCallTxPatch.clear();
+                }
+                rxDevices = getNewOutputDevices(mPrimaryOutput, false /*fromCache*/);
+                if (isStateInCall(oldState) && rxDevices.isEmpty()) {
+                    rxDevices = mPrimaryOutput->devices();
+                    updateDevicesAndOutputs();
                 }
             }
             setOutputDevices(mPrimaryOutput, rxDevices, force, 0);
