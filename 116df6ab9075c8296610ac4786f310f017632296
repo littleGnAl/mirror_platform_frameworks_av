@@ -33,6 +33,24 @@
       "message": "Should we do the same for AudioTrack?\n\nWe should also probably add GUARDED_BY(mLock) thread safety annotation to mDeviceLock.\n",
       "revId": "116df6ab9075c8296610ac4786f310f017632296",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e6e7cd0_5d54d582",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-12-08T19:38:40Z",
+      "side": 1,
+      "message": "Agree, but we haven\u0027t gone through thread safety annotation in libaudioclient.   This is something discussed with Atneya. Technically speaking mAudioTrackThread.clear() should be done in a lock as well.  But I think we should cross that bridge when we get to it.",
+      "parentUuid": "9d6583f3_93cdcb76",
+      "revId": "116df6ab9075c8296610ac4786f310f017632296",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
