@@ -16,6 +16,23 @@
       "message": "Thanks, lgtm, I modified the commit message with our internal bug number. Let\u0027s see what other Phil and Eric think.  I\u0027ll also trigger treehugger to run some tests too.",
       "revId": "4953a3cbd74caf94118d23163630d45c2c4ef3b0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "042d47a5_c5c5c190",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-12-08T09:00:56Z",
+      "side": 1,
+      "message": "+1 for always holding the mutex when accessing mDeviceCallback.\nPlease also fix the same problem in AudioRecord class.\n",
+      "revId": "4953a3cbd74caf94118d23163630d45c2c4ef3b0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
