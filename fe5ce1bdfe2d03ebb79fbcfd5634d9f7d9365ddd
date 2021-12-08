@@ -22,6 +22,30 @@
       },
       "revId": "fe5ce1bdfe2d03ebb79fbcfd5634d9f7d9365ddd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6ab7ee1e_d7d5b7a3",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1902032
+      },
+      "writtenOn": "2021-12-08T02:52:40Z",
+      "side": 0,
+      "message": "you can check this commit 7a9577cbb13\n\nthe line 360 Annotation \"No lock here: worst case we remove a NULL callback which will be a nop\"\nso it should not to add lock here.\n\nAnd since this is a wp, so do not clear the mDeviceCallback in stopAndJoinCallbacks have no side effect.\n\nyou can check the commit 7a9577cbb13, AudioRecord and AudioTrack have the same logic but not call mDeviceCallback.clear()\n\nalso, the mDeviceCallback.clear() is introduced by 7a9577cbb13.",
+      "parentUuid": "7c5bc845_74e1986e",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 32
+      },
+      "revId": "fe5ce1bdfe2d03ebb79fbcfd5634d9f7d9365ddd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
