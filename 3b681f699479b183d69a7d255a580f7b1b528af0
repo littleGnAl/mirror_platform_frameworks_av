@@ -34,6 +34,24 @@
       "parentUuid": "d7a8b7f2_c391ef6b",
       "revId": "3b681f699479b183d69a7d255a580f7b1b528af0",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "87aa48d5_068cb155",
+        "filename": "media/libaudioclient/AudioRecord.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 214,
+      "author": {
+        "id": 1060750
+      },
+      "writtenOn": "2021-12-08T20:56:02Z",
+      "side": 1,
+      "message": "removeAudioDeviceCallback() takes a lock and prevents the race. I was just trying to reduce code duplication. But the code is small so it may not matter. Anyway, I agree, either way solves the problem.",
+      "parentUuid": "053f35b4_62bd247a",
+      "revId": "3b681f699479b183d69a7d255a580f7b1b528af0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
