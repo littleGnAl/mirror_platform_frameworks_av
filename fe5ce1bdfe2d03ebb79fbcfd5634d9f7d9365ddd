@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c5bc845_74e1986e",
+        "filename": "media/libaudioclient/AudioTrack.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 365,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-12-08T02:32:09Z",
+      "side": 0,
+      "message": "I would prefer not to remove this as stopAndJoinCallbacks is a public method, and may be called multiple times.  (once explicitly, and once on destruction).\n\nRegardless, removing it won\u0027t help the race condition with the reference to mDeviceCallback on line 361. That cannot be left unprotected while mDeviceCallback is cleared.\n\nIt would be better to put this under lock or make mDeviceCallback an atomic_wp.",
+      "range": {
+        "startLine": 365,
+        "startChar": 0,
+        "endLine": 365,
+        "endChar": 32
+      },
+      "revId": "fe5ce1bdfe2d03ebb79fbcfd5634d9f7d9365ddd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
