@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0dc8e86d_05588d33",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-12-09T14:21:48Z",
+      "side": 1,
+      "message": "I think we should change the order of this sequence to avoid calling getNewOutputDevices() twice:\nif (oldState \u003d\u003d AUDIO_MODE_IN_CALL) {\n disconnectTelephonyRxAudioSource();\n if (mCallTxPatch !\u003d 0) {\n   releaseAudioPatchInternal(mCallTxPatch-\u003egetHandle());\n    mCallTxPatch.clear();\n }\n}\n\nrxDevices \u003d getNewOutputDevices(mPrimaryOutput, false /*fromCache*/);\nif (isStateInCall(oldState) \u0026\u0026 rxDevices.isEmpty()) {\n    rxDevices \u003d mPrimaryOutput-\u003edevices();\n}",
+      "range": {
+        "startLine": 792,
+        "startChar": 0,
+        "endLine": 795,
+        "endChar": 0
+      },
+      "revId": "25c0be35f26c6e77b73256d58d3e62d310985243",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
