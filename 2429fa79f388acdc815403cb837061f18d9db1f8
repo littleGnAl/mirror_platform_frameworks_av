@@ -1,0 +1,130 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0aac9a2d_ffa1d572",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-12-09T16:57:00Z",
+      "side": 1,
+      "message": "Thanks for the submission, most of the changes have already been made.  I will go ahead and abandon.",
+      "revId": "2429fa79f388acdc815403cb837061f18d9db1f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d0f96e68_0bb9e9ff",
+        "filename": "services/mediaanalytics/MediaAnalyticsService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 119,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-12-09T16:57:00Z",
+      "side": 1,
+      "message": "Fixed.\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/mediametrics/MediaMetricsService.cpp;drc\u003d58a37f8bb8032c4bb2e7cc6bd00d28c1841e7acb;l\u003d118",
+      "revId": "2429fa79f388acdc815403cb837061f18d9db1f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "964eb597_698cd68d",
+        "filename": "services/mediaanalytics/MediaAnalyticsService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 331,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-12-09T16:57:00Z",
+      "side": 1,
+      "message": "Fixed\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/mediametrics/MediaMetricsService.cpp;drc\u003d58a37f8bb8032c4bb2e7cc6bd00d28c1841e7acb;l\u003d296",
+      "range": {
+        "startLine": 331,
+        "startChar": 0,
+        "endLine": 331,
+        "endChar": 31
+      },
+      "revId": "2429fa79f388acdc815403cb837061f18d9db1f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e91a0bb_28d91eb5",
+        "filename": "services/mediaanalytics/MediaAnalyticsService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 411,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-12-09T16:57:00Z",
+      "side": 1,
+      "message": "Fixed\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/mediametrics/MediaMetricsService.cpp;drc\u003d58a37f8bb8032c4bb2e7cc6bd00d28c1841e7acb;l\u003d369",
+      "range": {
+        "startLine": 411,
+        "startChar": 0,
+        "endLine": 411,
+        "endChar": 49
+      },
+      "revId": "2429fa79f388acdc815403cb837061f18d9db1f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f050c63b_57450ab8",
+        "filename": "services/mediaanalytics/MediaAnalyticsService.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 472,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-12-09T16:57:00Z",
+      "side": 1,
+      "message": "Fixed:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/mediametrics/MediaMetricsService.cpp;drc\u003d58a37f8bb8032c4bb2e7cc6bd00d28c1841e7acb;l\u003d433",
+      "range": {
+        "startLine": 472,
+        "startChar": 0,
+        "endLine": 472,
+        "endChar": 31
+      },
+      "revId": "2429fa79f388acdc815403cb837061f18d9db1f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4fb0a2ef_a3d1e110",
+        "filename": "services/mediaanalytics/MediaAnalyticsService.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-12-09T16:57:00Z",
+      "side": 1,
+      "message": "Fixed:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/mediametrics/MediaMetricsService.h;drc\u003d5be90c892d59b0220e0a10bda28279a78ec4b02f;l\u003d149",
+      "range": {
+        "startLine": 80,
+        "startChar": 0,
+        "endLine": 80,
+        "endChar": 44
+      },
+      "revId": "2429fa79f388acdc815403cb837061f18d9db1f8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
