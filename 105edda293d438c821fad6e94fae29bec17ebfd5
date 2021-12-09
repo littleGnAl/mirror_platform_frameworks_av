@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e140f254_faa0e9e5",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 279,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-09T08:56:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "41b72cd0_14a81352",
+      "revId": "105edda293d438c821fad6e94fae29bec17ebfd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57894965_dd41388b",
@@ -49,6 +67,24 @@
       "side": 1,
       "message": "Below was the error message.\n\nframeworks/av/media/codec2/core/include/C2Config.h:279:5: error: redefinition of enumerator \u0027kParamIndexPictureType\u0027\n    kParamIndexPictureType, // bool\n    ^\nframeworks/av/media/codec2/core/include/C2Config.h:192:5: note: previous definition is here\n    kParamIndexPictureType,\n    ^\nframeworks/av/media/codec2/core/include/C2Config.h:2437:16: error: redefinition of \u0027C2_PARAMKEY_PICTURE_TYPE\u0027\nconstexpr char C2_PARAMKEY_PICTURE_TYPE[] \u003d \"algo.picture-type\";\n               ^\nframeworks/av/media/codec2/core/include/C2Config.h:1701:16: note: previous definition is here\nconstexpr char C2_PARAMKEY_PICTURE_TYPE[] \u003d \"coded.picture-type\";\n               ^\n2 errors generated.",
       "parentUuid": "57894965_dd41388b",
+      "revId": "105edda293d438c821fad6e94fae29bec17ebfd5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2764ece_08467cb8",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 2437,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-09T08:56:37Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "5e7469b0_ff15e184",
       "revId": "105edda293d438c821fad6e94fae29bec17ebfd5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
