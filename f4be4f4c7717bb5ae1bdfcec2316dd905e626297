@@ -16,6 +16,24 @@
       "message": "Remove this! Replaced by CCodecConfig::subscribeToConfigUpdate().",
       "revId": "f4be4f4c7717bb5ae1bdfcec2316dd905e626297",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "46b0abdf_6be07b73",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 2422,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-09T08:56:01Z",
+      "side": 1,
+      "message": "Wonsik\u0027s answer: \"yes, we want to remove that part \u0026 add avg qp param (the actual value)\"",
+      "parentUuid": "e4f086b7_1eb020e3",
+      "revId": "f4be4f4c7717bb5ae1bdfcec2316dd905e626297",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
