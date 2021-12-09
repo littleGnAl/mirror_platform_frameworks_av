@@ -16,6 +16,24 @@
       "message": "Harish, is this something we should take?",
       "revId": "9e000c8941b957780f87f39261eda4a163569fd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7fba1233_4174331e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2021-12-09T22:46:28Z",
+      "side": 1,
+      "message": "As per Marco\u0027s comment in patchset 2, that is against the spec.\ngb18030_5.mp3 is no longer in CTS too.\n\nAdding Ray (as he is owner of the last couple of changes in ID3.cpp) to take a final call on this.",
+      "parentUuid": "3ffb6691_2d0020b5",
+      "revId": "9e000c8941b957780f87f39261eda4a163569fd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
