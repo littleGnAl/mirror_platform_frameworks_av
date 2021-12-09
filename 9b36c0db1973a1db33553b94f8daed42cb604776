@@ -16,6 +16,24 @@
       "message": "I think we don\u0027t need this, since we assume Codec2 is not aware encoding statistics level?",
       "revId": "9b36c0db1973a1db33553b94f8daed42cb604776",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a173ffef_3fb36074",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 6
+      },
+      "lineNbr": 80,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-09T23:10:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "705edc48_39050546",
+      "revId": "9b36c0db1973a1db33553b94f8daed42cb604776",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
