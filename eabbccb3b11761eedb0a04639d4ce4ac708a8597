@@ -1,6 +1,7 @@
 {
   "comments": [
     {
+      "unresolved": false,
       "key": {
         "uuid": "eda8b35d_f9f4bbe1",
         "filename": "/COMMIT_MSG",
@@ -14,10 +15,27 @@
       "side": 1,
       "message": "add a line\n\nBug: 28581069",
       "revId": "eabbccb3b11761eedb0a04639d4ce4ac708a8597",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "57987c1f_0cac1535",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-12-09T16:46:58Z",
+      "side": 1,
+      "message": "Adding Mikhail, I think this is obsolete now.",
+      "revId": "eabbccb3b11761eedb0a04639d4ce4ac708a8597",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
       "key": {
         "uuid": "7e1e41f5_da8065a8",
         "filename": "media/libmedia/Visualizer.cpp",
@@ -37,10 +55,10 @@
         "endChar": 41
       },
       "revId": "eabbccb3b11761eedb0a04639d4ce4ac708a8597",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "de5c8dda_4519ea8f",
         "filename": "media/libmedia/Visualizer.cpp",
@@ -61,10 +79,10 @@
         "endChar": 41
       },
       "revId": "eabbccb3b11761eedb0a04639d4ce4ac708a8597",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
       "key": {
         "uuid": "de5c8dda_e5101661",
         "filename": "media/libmedia/Visualizer.cpp",
@@ -85,8 +103,7 @@
         "endChar": 41
       },
       "revId": "eabbccb3b11761eedb0a04639d4ce4ac708a8597",
-      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889",
-      "unresolved": false
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
