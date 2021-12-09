@@ -16,6 +16,24 @@
       "message": "I\u0027ve remove the \u0027level\u0027 in naming, that also means that enc stats feature is a switch at MediaCodec layer, and Codec2 layer will had each individual feature name such as avg QP, ...",
       "revId": "21cbe326acef9bc91fb5a65278ab965153d3e743",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "99c7482d_c54e277d",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 956,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-09T18:14:13Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "651a9e49_ade6788e",
+      "revId": "21cbe326acef9bc91fb5a65278ab965153d3e743",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
