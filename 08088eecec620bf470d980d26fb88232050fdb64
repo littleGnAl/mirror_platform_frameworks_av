@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8f7919af_3606bc7b",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerDecoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-12-10T13:35:56Z",
+      "side": 1,
+      "message": "Please move the declaration down to the initializatio, in L461.",
+      "range": {
+        "startLine": 439,
+        "startChar": 8,
+        "endLine": 439,
+        "endChar": 28
+      },
+      "revId": "08088eecec620bf470d980d26fb88232050fdb64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "97eb271b_597ff7b1",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerDecoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-12-10T13:35:56Z",
+      "side": 1,
+      "message": "Why convert to int? Why not just operate over the floats?",
+      "range": {
+        "startLine": 462,
+        "startChar": 13,
+        "endLine": 462,
+        "endChar": 37
+      },
+      "revId": "08088eecec620bf470d980d26fb88232050fdb64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2c87a8e5_64d1cd1d",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerDecoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-12-10T13:35:56Z",
+      "side": 1,
+      "message": "Where does 100 come from? Why not a different value?",
+      "range": {
+        "startLine": 462,
+        "startChar": 34,
+        "endLine": 462,
+        "endChar": 37
+      },
+      "revId": "08088eecec620bf470d980d26fb88232050fdb64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bfb3a448_e1ab7645",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerDecoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-12-10T13:35:56Z",
+      "side": 1,
+      "message": "Nit: Please add the curly brackets, even if they are not necessary.",
+      "range": {
+        "startLine": 462,
+        "startChar": 8,
+        "endLine": 463,
+        "endChar": 72
+      },
+      "revId": "08088eecec620bf470d980d26fb88232050fdb64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
