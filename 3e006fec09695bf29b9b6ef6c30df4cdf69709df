@@ -16,6 +16,29 @@
       "message": "My first android cl :)",
       "revId": "3e006fec09695bf29b9b6ef6c30df4cdf69709df",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9d40fbb1_09a557ab",
+        "filename": "media/libstagefright/include/media/stagefright/MediaBuffer.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-12-10T19:50:18Z",
+      "side": 1,
+      "message": "this entire comment is somewhat redundant given the \"do not allow corrupted data\"\nthat is on the next line.\n\nI think rather than re-phrasing this comment on line 108 for inclusive language, I would instead remove it.",
+      "range": {
+        "startLine": 108,
+        "startChar": 8,
+        "endLine": 108,
+        "endChar": 56
+      },
+      "revId": "3e006fec09695bf29b9b6ef6c30df4cdf69709df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
