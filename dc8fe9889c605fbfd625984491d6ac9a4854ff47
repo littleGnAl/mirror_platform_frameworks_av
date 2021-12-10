@@ -34,6 +34,24 @@
       "parentUuid": "9bb25fe5_27c1e6a9",
       "revId": "dc8fe9889c605fbfd625984491d6ac9a4854ff47",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7842eda2_8a137511",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1705037
+      },
+      "writtenOn": "2021-12-10T23:42:28Z",
+      "side": 1,
+      "message": "Hi Harish,\n\nThanks for the suggestions!\n\n\u003e\u003e Can you please try with that updated test once and check if the test still fails on your setup?\n\nI look into the change briefly but I\u0027m not sure if it would work in our case here because the display manager would still think HDR can be supported so the test would not be skipped (or assumption failure).  The limitation here really is that our GPU cannot support the format RGBA1010102 and it is why our gralloc HAL rejects the buffer allocation due to buffer usage of BufferUsage::GPU_TEXTURE.  Thanks",
+      "parentUuid": "dbb04b3a_f253d779",
+      "revId": "dc8fe9889c605fbfd625984491d6ac9a4854ff47",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
