@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f06c39fc_3cf538ba",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-12-10T19:47:28Z",
+      "side": 1,
+      "message": "PTAL",
+      "revId": "92df7e4f953274086fee0d42d04cffb01ba0bac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2eb922fd_ca34c372",
@@ -24,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "6dbbac9a_8a138ece",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-12-10T19:47:28Z",
+      "side": 1,
+      "message": "The config is CSD buffer, so PipelieWatcher should register the buffers.",
+      "parentUuid": "2eb922fd_ca34c372",
+      "range": {
+        "startLine": 1474,
+        "startChar": 25,
+        "endLine": 1474,
+        "endChar": 37
+      },
+      "revId": "92df7e4f953274086fee0d42d04cffb01ba0bac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "752a0b1a_6d707c8a",
@@ -37,6 +78,24 @@
       "writtenOn": "2021-12-10T19:31:48Z",
       "side": 1,
       "message": "onWorkDone is done before actual buffer flushes here. Is there any possibility to introduce new race condition by this changed flow?",
+      "revId": "92df7e4f953274086fee0d42d04cffb01ba0bac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05884c22_8bbd2d8a",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1582,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-12-10T19:47:28Z",
+      "side": 1,
+      "message": "The watcher itself does not trigger callbacks into the client, so I think the order does not matter in this case.",
+      "parentUuid": "752a0b1a_6d707c8a",
       "revId": "92df7e4f953274086fee0d42d04cffb01ba0bac6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
