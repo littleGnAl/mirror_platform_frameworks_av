@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2eb922fd_ca34c372",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1474,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-12-10T19:31:48Z",
+      "side": 1,
+      "message": "I am little bit unfamiliar with piepelinewatcher. I guess this is config only queueing. Do we need PipelineWatcher#onWorkQueued for config only queueing?",
+      "range": {
+        "startLine": 1474,
+        "startChar": 25,
+        "endLine": 1474,
+        "endChar": 37
+      },
+      "revId": "92df7e4f953274086fee0d42d04cffb01ba0bac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "752a0b1a_6d707c8a",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 1582,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2021-12-10T19:31:48Z",
+      "side": 1,
+      "message": "onWorkDone is done before actual buffer flushes here. Is there any possibility to introduce new race condition by this changed flow?",
+      "revId": "92df7e4f953274086fee0d42d04cffb01ba0bac6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
