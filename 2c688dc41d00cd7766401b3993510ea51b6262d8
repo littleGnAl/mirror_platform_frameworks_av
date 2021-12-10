@@ -16,6 +16,46 @@
       "message": "Mikhail, can you please give second party review?  Thanks!",
       "revId": "2c688dc41d00cd7766401b3993510ea51b6262d8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d78f73c5_97b02e71",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-12-10T18:23:06Z",
+      "side": 1,
+      "message": "Looks good. Although as far as I know MSD tends to use HW_AV_SYNC, at least for media playback, so I\u0027m curious how useful in practice this change is.",
+      "revId": "2c688dc41d00cd7766401b3993510ea51b6262d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a6e8cc6_3edac8f0",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 713,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-12-10T18:23:06Z",
+      "side": 1,
+      "message": "For symmetry with recording, could you please make it a function, like this one: https://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/audioflinger/RecordTracks.h;l\u003d84;drc\u003ded726ccd073bbffe0e2b11624cec3ae8c4e2a1a4",
+      "range": {
+        "startLine": 712,
+        "startChar": 30,
+        "endLine": 713,
+        "endChar": 58
+      },
+      "revId": "2c688dc41d00cd7766401b3993510ea51b6262d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
