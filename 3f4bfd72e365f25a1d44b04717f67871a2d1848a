@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e125b54_3501e7ff",
+        "filename": "services/audioflinger/Tracks.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 2133,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-12-10T14:45:59Z",
+      "side": 1,
+      "message": "rebase issue: AudioSystem::streamTypeToAttributes(streamType)",
+      "range": {
+        "startLine": 2133,
+        "startChar": 55,
+        "endLine": 2133,
+        "endChar": 71
+      },
+      "revId": "3f4bfd72e365f25a1d44b04717f67871a2d1848a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
