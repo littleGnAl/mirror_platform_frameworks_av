@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "352d29db_e0870597",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 7
+      },
+      "lineNbr": 2425,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-12-10T08:14:54Z",
+      "side": 1,
+      "message": "I think picture type should be a separate param. It looks okay to me that it has avg/min/max qp together.\n\nI strongly believe the concept of level should not leak from Android to Codec 2.0.",
+      "revId": "a7d65bdf676f68c3a1a9a47a932c38d9d28a7b37",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
