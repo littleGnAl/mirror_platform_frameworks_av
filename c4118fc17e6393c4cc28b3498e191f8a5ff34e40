@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "730bbfb7_371fdc8b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-12-11T08:57:27Z",
+      "side": 1,
+      "message": "Please squash this commit with the parent --- I think it\u0027s nicer if we have the constants (PICTURE_TYPE_*) and the key (KEY_PICTURE_TYPE) together in the same change.",
+      "revId": "c4118fc17e6393c4cc28b3498e191f8a5ff34e40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
