@@ -34,6 +34,24 @@
       "parentUuid": "3ffb6691_2d0020b5",
       "revId": "9e000c8941b957780f87f39261eda4a163569fd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ee2ed305_16a336f6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-12-11T16:39:39Z",
+      "side": 1,
+      "message": "i\u0027m inclined to drop it at this point.\n\nthe failing CTS case has been removed.\nthe behavior is for handling \u0027poorly/non-compliant formatted metadata\u0027.\ni believe this affects only the metadata parsing and does not affect ability to play the actual audio track.\n\nif this was killing the ability to play the music, i might feel differently.",
+      "parentUuid": "7fba1233_4174331e",
+      "revId": "9e000c8941b957780f87f39261eda4a163569fd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
