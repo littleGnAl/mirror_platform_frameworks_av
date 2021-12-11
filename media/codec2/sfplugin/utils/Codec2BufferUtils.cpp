@@ -118,6 +118,21 @@ static status_t _ImageCopy(View &view, const MediaImage2 *img, ImagePixel *imgBa
 
 }  // namespace
 
+bool IsFormatR10G10B10A2Supported() {
+    const AHardwareBuffer_Desc desc = {
+        .width = 320,
+        .height = 240,
+        .format = AHARDWAREBUFFER_FORMAT_R10G10B10A2_UNORM,
+        .layers = 1,
+        .usage = AHARDWAREBUFFER_USAGE_CPU_READ_RARELY | AHARDWAREBUFFER_USAGE_CPU_WRITE_OFTEN,
+        .stride = 0,
+        .rfu0 = 0,
+        .rfu1 = 0,
+    };
+
+    return AHardwareBuffer_isSupported(&desc);
+}
+
 status_t ImageCopy(uint8_t *imgBase, const MediaImage2 *img, const C2GraphicView &view) {
     if (view.crop().width != img->mWidth || view.crop().height != img->mHeight) {
         return BAD_VALUE;

@@ -27,6 +27,11 @@
 namespace android {
 
 /**
+ * Check if R10G10B10A2 is supported
+ */
+bool IsFormatR10G10B10A2Supported();
+
+/**
  * Converts an RGB view to planar YUV 420 media image.
  *
  * \param dstY       pointer to media image buffer
