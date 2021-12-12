@@ -16,6 +16,24 @@
       "message": "Please squash this commit with the parent --- I think it\u0027s nicer if we have the constants (PICTURE_TYPE_*) and the key (KEY_PICTURE_TYPE) together in the same change.",
       "revId": "c4118fc17e6393c4cc28b3498e191f8a5ff34e40",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "db11d5ee_a0d21885",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-12T22:33:29Z",
+      "side": 1,
+      "message": "Sure, thanks and squashed into previous commit.",
+      "parentUuid": "730bbfb7_371fdc8b",
+      "revId": "c4118fc17e6393c4cc28b3498e191f8a5ff34e40",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
