@@ -192,6 +192,13 @@ bool getDstColorFormat(
             *dstBpp = 4;
             return true;
         }
+        case HAL_PIXEL_FORMAT_RGBA_1010102:
+        {
+            *dstFormat = OMX_COLOR_FormatYCbCrP010;
+            *captureFormat = ui::PixelFormat::YCBCR_P010;
+            *dstBpp = 4;
+            return true;
+        }
         default:
         {
             ALOGE("Unsupported color format: %d", colorFormat);
