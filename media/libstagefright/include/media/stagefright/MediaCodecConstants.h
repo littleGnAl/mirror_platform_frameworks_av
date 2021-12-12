@@ -624,6 +624,8 @@ constexpr int32_t COLOR_FormatYUV444Interleaved       = 29;
 constexpr int32_t COLOR_FormatYUVP010                 = 54;
 constexpr int32_t COLOR_QCOM_FormatYUV420SemiPlanar   = 0x7fa30c00;
 constexpr int32_t COLOR_TI_FormatYUV420PackedSemiPlanar = 0x7f000100;
+// TODO : should the following be 43 as it is in android/hardware/graphics/common/1.2/types.h
+constexpr int32_t COLOR_FormatRGBA1010102             = 55;
 
 inline static const char *asString_ColorFormat(int32_t i, const char *def = "??") {
     switch (i) {
