@@ -33,6 +33,29 @@
       "message": "Let\u0027s merge the CL as is \u0026 follow up with 1.2 modifications",
       "revId": "ee6ea6b3ce6a72eee9f8b7ecde7368f3212ae995",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "33d62b62_aab45baa",
+        "filename": "media/codec2/hidl/1.0/utils/Component.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 504,
+      "author": {
+        "id": 1423402
+      },
+      "writtenOn": "2021-12-13T09:42:33Z",
+      "side": 1,
+      "message": "nit: mComponent?",
+      "range": {
+        "startLine": 504,
+        "startChar": 22,
+        "endLine": 504,
+        "endChar": 31
+      },
+      "revId": "ee6ea6b3ce6a72eee9f8b7ecde7368f3212ae995",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
