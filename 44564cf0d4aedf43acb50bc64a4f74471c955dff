@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b63174da_fbef40a8",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-12-13T16:49:48Z",
+      "side": 1,
+      "message": "we cannot use OMX here, use MediaCodecConstants equivalent notation.",
+      "range": {
+        "startLine": 197,
+        "startChar": 25,
+        "endLine": 197,
+        "endChar": 28
+      },
+      "revId": "44564cf0d4aedf43acb50bc64a4f74471c955dff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
