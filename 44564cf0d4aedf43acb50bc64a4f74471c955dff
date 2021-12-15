@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e740e841_b897bf35",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2021-12-15T18:27:27Z",
+      "side": 1,
+      "message": "Here should be RGBA1010102, instead of YCbCrP010.\n\nLajos: why can\u0027t we use OMX here, as other color mappings are all using OMX. MediaCodecConstants doesn\u0027t have RGBA1010102 right now, should we add it, and use value 43 (0x2b)?",
+      "parentUuid": "b63174da_fbef40a8",
+      "range": {
+        "startLine": 197,
+        "startChar": 25,
+        "endLine": 197,
+        "endChar": 28
+      },
+      "revId": "44564cf0d4aedf43acb50bc64a4f74471c955dff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "507a0e2c_9f7a7f6d",
         "filename": "media/libstagefright/FrameDecoder.cpp",
         "patchSetId": 1
