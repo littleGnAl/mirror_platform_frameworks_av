@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e4001bf4_f63b2d10",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerDecoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 439,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2021-12-15T07:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8f7919af_3606bc7b",
+      "range": {
+        "startLine": 439,
+        "startChar": 8,
+        "endLine": 439,
+        "endChar": 28
+      },
+      "revId": "08088eecec620bf470d980d26fb88232050fdb64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "97eb271b_597ff7b1",
@@ -70,6 +94,54 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "831b5a49_8f7740c8",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerDecoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2021-12-15T07:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "97eb271b_597ff7b1",
+      "range": {
+        "startLine": 462,
+        "startChar": 13,
+        "endLine": 462,
+        "endChar": 37
+      },
+      "revId": "08088eecec620bf470d980d26fb88232050fdb64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18b2f284_28b9c0ba",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerDecoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 462,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2021-12-15T07:03:17Z",
+      "side": 1,
+      "message": "In NuPlayerDecoderBase.cpp, the requestInputBufferDelay was hardcoded as 10000us, so the max input buffer fetching rate is 100fps. If the rate is larger than 100, we need to update the requestInputBufferDelay.\n\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1906684/2/media/libmediaplayerservice/nuplayer/NuPlayerDecoderBase.cpp",
+      "parentUuid": "2c87a8e5_64d1cd1d",
+      "range": {
+        "startLine": 462,
+        "startChar": 34,
+        "endLine": 462,
+        "endChar": 37
+      },
+      "revId": "08088eecec620bf470d980d26fb88232050fdb64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "bfb3a448_e1ab7645",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-12-10T13:35:56Z",
       "side": 1,
       "message": "Nit: Please add the curly brackets, even if they are not necessary.",
+      "range": {
+        "startLine": 462,
+        "startChar": 8,
+        "endLine": 463,
+        "endChar": 72
+      },
+      "revId": "08088eecec620bf470d980d26fb88232050fdb64",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "462a42e1_14559335",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerDecoder.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 463,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2021-12-15T07:03:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "bfb3a448_e1ab7645",
       "range": {
         "startLine": 462,
         "startChar": 8,
