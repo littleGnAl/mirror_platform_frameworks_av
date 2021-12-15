@@ -1,0 +1,82 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000018455523",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1896614?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "e6938c89_6623ec3c",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1515,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-15T18:54:15Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 1515,
+        "startChar": 25,
+        "endLine": 1515,
+        "endChar": 29
+      },
+      "revId": "25efd83df38f559395478470acc6696e476067bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000018455523",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1896614?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "9c1d22f2_e734dcbd",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3527,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-15T18:54:15Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 3527,
+        "startChar": 0,
+        "endLine": 3527,
+        "endChar": 116
+      },
+      "revId": "25efd83df38f559395478470acc6696e476067bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000018455523",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1896614?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "2c12fcce_444c8581",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3530,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2021-12-15T18:54:15Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace.",
+      "range": {
+        "startLine": 3530,
+        "startChar": 0,
+        "endLine": 3530,
+        "endChar": 24
+      },
+      "revId": "25efd83df38f559395478470acc6696e476067bb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
