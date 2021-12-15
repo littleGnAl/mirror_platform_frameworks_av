@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2b323d7b_7f37333f",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-12-15T22:57:21Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "720171a1_500fc4d3",
+      "range": {
+        "startLine": 121,
+        "startChar": 5,
+        "endLine": 121,
+        "endChar": 33
+      },
+      "revId": "c79dc486f12b9376880133cea46d46168c8b5b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "503b270b_9f764693",
@@ -37,6 +61,24 @@
       "writtenOn": "2021-12-15T07:47:39Z",
       "side": 1,
       "message": "needs AHARDWAREBUFFER_USAGE_GPU_SAMPLED_IMAGE, since the legacy path requires GPU to read the buffer to render.\n\nOut of curiosity: why READ_RARELY?",
+      "revId": "c79dc486f12b9376880133cea46d46168c8b5b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6afb57d2_1ef587ea",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-12-15T22:57:21Z",
+      "side": 1,
+      "message": "1010102 is used only in surface mode and not in byte buffer mode, so this is never read in CPU.\nplease let me know if I should change this to READ_OFTEN for consistency.",
+      "parentUuid": "503b270b_9f764693",
       "revId": "c79dc486f12b9376880133cea46d46168c8b5b9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
