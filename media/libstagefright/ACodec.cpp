@@ -4754,7 +4754,7 @@ status_t ACodec::configureImageGrid(
 status_t ACodec::setupHEVCEncoderParameters(
         const sp<AMessage> &msg, sp<AMessage> &outputFormat) {
     OMX_VIDEO_CONTROLRATETYPE bitrateMode;
-    int32_t bitrate, quality;
+    int32_t bitrate = 0, quality = 0;
     if (!findVideoBitrateControlInfo(msg, &bitrateMode, &bitrate, &quality)) {
         return INVALID_OPERATION;
     }
