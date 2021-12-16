@@ -35,6 +35,7 @@
 #include <media/stagefright/FrameCaptureProcessor.h>
 #include <media/stagefright/MediaBuffer.h>
 #include <media/stagefright/MediaCodec.h>
+#include <media/stagefright/MediaCodecConstants.h>
 #include <media/stagefright/MediaDefs.h>
 #include <media/stagefright/MediaErrors.h>
 #include <media/stagefright/Utils.h>
@@ -194,8 +195,8 @@ bool getDstColorFormat(
         }
         case HAL_PIXEL_FORMAT_RGBA_1010102:
         {
-            *dstFormat = OMX_COLOR_FormatYCbCrP010;
-            *captureFormat = ui::PixelFormat::YCBCR_P010;
+            *dstFormat = (OMX_COLOR_FORMATTYPE)COLOR_FormatRGBA1010102;
+            *captureFormat = ui::PixelFormat::RGBA_1010102;
             *dstBpp = 4;
             return true;
         }
@@ -530,8 +531,11 @@ sp<AMessage> VideoFrameDecoder::onGetFormatAndSeekOptions(
         return NULL;
     }
 
-    // TODO: Use Flexible color instead
-    videoFormat->setInt32("color-format", OMX_COLOR_FormatYUV420Planar);
+    if (dstFormat() == COLOR_FormatRGBA1010102) {
+        videoFormat->setInt32("color-format", COLOR_FormatYUVP010);
+    } else {
+        videoFormat->setInt32("color-format", OMX_COLOR_FormatYUV420Planar);
+    }
 
     // For the thumbnail extraction case, try to allocate single buffer in both
     // input and output ports, if seeking to a sync frame. NOTE: This request may
@@ -830,8 +834,11 @@ sp<AMessage> MediaImageDecoder::onGetFormatAndSeekOptions(
         return NULL;
     }
 
-    // TODO: Use Flexible color instead
-    videoFormat->setInt32("color-format", OMX_COLOR_FormatYUV420Planar);
+    if (dstFormat() == COLOR_FormatRGBA1010102) {
+        videoFormat->setInt32("color-format", COLOR_FormatYUVP010);
+    } else {
+        videoFormat->setInt32("color-format", OMX_COLOR_FormatYUV420Planar);
+    }
 
     if ((mGridRows == 1) && (mGridCols == 1)) {
         videoFormat->setInt32("android._num-input-buffers", 1);
