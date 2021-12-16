@@ -81,6 +81,24 @@
       "parentUuid": "503b270b_9f764693",
       "revId": "c79dc486f12b9376880133cea46d46168c8b5b9c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "028ffdbf_07c82413",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 127,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-12-16T05:02:04Z",
+      "side": 1,
+      "message": "Marking this as resolved as CL has Code-Review +2.",
+      "parentUuid": "6afb57d2_1ef587ea",
+      "revId": "c79dc486f12b9376880133cea46d46168c8b5b9c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
