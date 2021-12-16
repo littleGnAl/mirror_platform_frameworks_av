@@ -35,6 +35,7 @@
 #include <media/stagefright/FrameCaptureProcessor.h>
 #include <media/stagefright/MediaBuffer.h>
 #include <media/stagefright/MediaCodec.h>
+#include <media/stagefright/MediaCodecConstants.h>
 #include <media/stagefright/MediaDefs.h>
 #include <media/stagefright/MediaErrors.h>
 #include <media/stagefright/Utils.h>
@@ -194,8 +195,8 @@ bool getDstColorFormat(
         }
         case HAL_PIXEL_FORMAT_RGBA_1010102:
         {
-            *dstFormat = OMX_COLOR_FormatYCbCrP010;
-            *captureFormat = ui::PixelFormat::YCBCR_P010;
+            *dstFormat = (OMX_COLOR_FORMATTYPE)COLOR_FormatRGBA1010102;
+            *captureFormat = ui::PixelFormat::RGBA_1010102;
             *dstBpp = 4;
             return true;
         }
