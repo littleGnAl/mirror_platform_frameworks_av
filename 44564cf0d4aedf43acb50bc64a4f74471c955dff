@@ -74,6 +74,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "18c3f756_444f1114",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-12-16T19:34:43Z",
+      "side": 1,
+      "message": "lajos@,\nDefined a new MediaCodecConstant for RGBA 101010. However, the current type is OMX_COLOR_FORMATTYPE for dstFormat,  Can I change the types in the entire file?\n\nDichenzhang@,\nOMX_COLOR_FormatYUV420Planar16 isn\u0027t the right one in my opinion.",
+      "parentUuid": "4a6971d4_2e037b13",
+      "range": {
+        "startLine": 197,
+        "startChar": 25,
+        "endLine": 197,
+        "endChar": 28
+      },
+      "revId": "44564cf0d4aedf43acb50bc64a4f74471c955dff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "507a0e2c_9f7a7f6d",
         "filename": "media/libstagefright/FrameDecoder.cpp",
         "patchSetId": 1
@@ -85,6 +109,30 @@
       "writtenOn": "2021-12-15T18:18:49Z",
       "side": 1,
       "message": "I think this should be RGBA_1010102",
+      "range": {
+        "startLine": 198,
+        "startChar": 46,
+        "endLine": 198,
+        "endChar": 56
+      },
+      "revId": "44564cf0d4aedf43acb50bc64a4f74471c955dff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "18aafdb9_b4a89668",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2021-12-16T19:34:43Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "507a0e2c_9f7a7f6d",
       "range": {
         "startLine": 198,
         "startChar": 46,
