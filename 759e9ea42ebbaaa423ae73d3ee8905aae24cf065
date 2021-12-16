@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b48b8279_4dc26b43",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-12-16T17:36:35Z",
+      "side": 1,
+      "message": "Thanks for adding gralloc4 lock support to C2AllocatorGralloc.",
+      "revId": "759e9ea42ebbaaa423ae73d3ee8905aae24cf065",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d84d713a_34afdcab",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 261,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-12-16T17:36:35Z",
+      "side": 1,
+      "message": "not needed",
+      "range": {
+        "startLine": 257,
+        "startChar": 1,
+        "endLine": 261,
+        "endChar": 15
+      },
+      "revId": "759e9ea42ebbaaa423ae73d3ee8905aae24cf065",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e36ca5c_7f4f3dfe",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 282,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-12-16T17:36:35Z",
+      "side": 1,
+      "message": "we don\u0027t use auto in these constructs",
+      "range": {
+        "startLine": 282,
+        "startChar": 15,
+        "endLine": 282,
+        "endChar": 19
+      },
+      "revId": "759e9ea42ebbaaa423ae73d3ee8905aae24cf065",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5acb8cb3_e76ce084",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 287,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-12-16T17:36:35Z",
+      "side": 1,
+      "message": "we don\u0027t use auto in these constructs",
+      "range": {
+        "startLine": 287,
+        "startChar": 19,
+        "endLine": 287,
+        "endChar": 23
+      },
+      "revId": "759e9ea42ebbaaa423ae73d3ee8905aae24cf065",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c604e5a0_c71d26a3",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-12-16T17:36:35Z",
+      "side": 1,
+      "message": "do these need to be initialized?",
+      "range": {
+        "startLine": 293,
+        "startChar": 12,
+        "endLine": 295,
+        "endChar": 0
+      },
+      "revId": "759e9ea42ebbaaa423ae73d3ee8905aae24cf065",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "eea7f5cf_fd54e964",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 786,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2021-12-16T17:36:35Z",
+      "side": 1,
+      "message": "this could run on a device without gralloc4 support. How would that be caught? I guess getInstance could be null.",
+      "range": {
+        "startLine": 786,
+        "startChar": 26,
+        "endLine": 786,
+        "endChar": 42
+      },
+      "revId": "759e9ea42ebbaaa423ae73d3ee8905aae24cf065",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
