@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bacaeea4_a0c638a7",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 134,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-12-16T00:52:35Z",
+      "side": 1,
+      "message": "This API was introduced in API level 29 (Q/Android 10), so should be fine with all supported releases.",
+      "revId": "f0fa7a231ecd05ad139216153fcd69dd78693ee1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
