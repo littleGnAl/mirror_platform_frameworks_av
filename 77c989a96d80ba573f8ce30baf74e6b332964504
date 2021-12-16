@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "222a31f2_46116001",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-12-16T15:43:14Z",
+      "side": 1,
+      "message": "i think these 2 lines should still be DEFAULT_QP instead of AVC_QP",
+      "range": {
+        "startLine": 398,
+        "startChar": 60,
+        "endLine": 398,
+        "endChar": 65
+      },
+      "revId": "77c989a96d80ba573f8ce30baf74e6b332964504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "57b0b9d9_c9b06b0c",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-12-16T15:43:14Z",
+      "side": 1,
+      "message": "the clamping -- that is correct to use AVC_QP_*\n\nalthough I prefer the clamping post-loop, the way it was before.\nAlthough we don\u0027t do it currently, if we wanted to do any adjustment\nbetween picture types -- say we wanted to enforce an ordering between iMax, pMax, and bMax -- the only place we can do that is after the loop.\nSo i\u0027d like the flow to be:\n-- get any values the user specified\n-- do our bounding / adjusting\nrather than fusing the operations as this change does.",
+      "range": {
+        "startLine": 406,
+        "startChar": 64,
+        "endLine": 406,
+        "endChar": 75
+      },
+      "revId": "77c989a96d80ba573f8ce30baf74e6b332964504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
