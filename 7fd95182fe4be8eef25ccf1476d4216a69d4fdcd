@@ -16,6 +16,46 @@
       "message": "Thanks Matthew! I\u0027ll let Andy to approve as he has more knowledge about this logic.",
       "revId": "7fd95182fe4be8eef25ccf1476d4216a69d4fdcd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e158e68_3cd8541d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-12-20T22:32:11Z",
+      "side": 1,
+      "message": "Good catch!  This is another issue with offload handling, similar to aosp/1869481.\n\nWe need to remove this direct futex use and wrap it properly with a testable construct - this is a legacy issue for some time, b/28819659.\n",
+      "revId": "7fd95182fe4be8eef25ccf1476d4216a69d4fdcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b3630926_ff309b6d",
+        "filename": "media/libaudioclient/AudioTrackShared.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 606,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2021-12-20T22:32:11Z",
+      "side": 1,
+      "message": "Up to you if you want to fix it.  It isn\u0027t a regression...\n\nnit: errno are positive numbers.  status errors are negative.\n\n  status \u003d -error;\n  ALOGE(\"... strerror(error));\n  \n\nSee also here.\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libaudioclient/AudioTrack.cpp;drc\u003d2f6c0e514cbb3dabe23ad43ce27a72600c3eb307;l\u003d2355\n\nThis is also broken in obtainBuffer().",
+      "range": {
+        "startLine": 606,
+        "startChar": 25,
+        "endLine": 606,
+        "endChar": 30
+      },
+      "revId": "7fd95182fe4be8eef25ccf1476d4216a69d4fdcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
