@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "801d1237_e46b6c37",
+        "filename": "media/libaudioclient/AudioTrackShared.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2021-12-20T19:46:12Z",
+      "side": 1,
+      "message": "Is this a safe place to measure the initial time? Similar code in ClientProxy::obtainBuffer (line 322) does that closer to the wait. My concern is—if someone adds a potentially long operation between this \u0027gettime\u0027 call and the wait (e.g. some retrieval of some exclusive access counter), will it affect anything?",
+      "range": {
+        "startLine": 513,
+        "startChar": 4,
+        "endLine": 513,
+        "endChar": 44
+      },
+      "revId": "42d672685769f3a5b0e36e8573a7ee7e37f0ddab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "dc80296d_8d892bf8",
         "filename": "media/libaudioclient/AudioTrackShared.cpp",
         "patchSetId": 1
