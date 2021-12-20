@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "51f9d351_22da81cc",
+        "filename": "media/libaudioclient/AudioTrackShared.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 513,
+      "author": {
+        "id": 1275732
+      },
+      "writtenOn": "2021-12-20T20:33:21Z",
+      "side": 1,
+      "message": "Updated initialization of \u0027before\u0027 to be more similar to ClientProxy::obtainBuffer",
+      "parentUuid": "801d1237_e46b6c37",
+      "range": {
+        "startLine": 513,
+        "startChar": 4,
+        "endLine": 513,
+        "endChar": 44
+      },
+      "revId": "42d672685769f3a5b0e36e8573a7ee7e37f0ddab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "dc80296d_8d892bf8",
@@ -64,6 +88,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2821f0ac_02c536a1",
+        "filename": "media/libaudioclient/AudioTrackShared.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1275732
+      },
+      "writtenOn": "2021-12-20T20:33:21Z",
+      "side": 1,
+      "message": "Leaving this the same to match the code in ClientProxy::obtainBuffer",
+      "parentUuid": "dc80296d_8d892bf8",
+      "range": {
+        "startLine": 578,
+        "startChar": 12,
+        "endLine": 578,
+        "endChar": 20
+      },
+      "revId": "42d672685769f3a5b0e36e8573a7ee7e37f0ddab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d171a160_23c03b5f",
@@ -77,6 +125,30 @@
       "writtenOn": "2021-12-20T19:33:17Z",
       "side": 1,
       "message": "Just use timersub(3)?",
+      "range": {
+        "startLine": 582,
+        "startChar": 0,
+        "endLine": 594,
+        "endChar": 0
+      },
+      "revId": "42d672685769f3a5b0e36e8573a7ee7e37f0ddab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "308bc714_43c27358",
+        "filename": "media/libaudioclient/AudioTrackShared.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1275732
+      },
+      "writtenOn": "2021-12-20T20:33:21Z",
+      "side": 1,
+      "message": "That method is for a \u0027struct timeval\u0027 not a \u0027struct timespec\u0027, right? I don\u0027t believe there is a comparable method for timespec. Note that this matches the logic in ClientProxy::obtainBuffer (lines 325-338).",
+      "parentUuid": "d171a160_23c03b5f",
       "range": {
         "startLine": 582,
         "startChar": 0,
