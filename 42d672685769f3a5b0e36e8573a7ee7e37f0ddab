@@ -157,6 +157,30 @@
       },
       "revId": "42d672685769f3a5b0e36e8573a7ee7e37f0ddab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2ed4257c_653160f5",
+        "filename": "media/libaudioclient/AudioTrackShared.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1895601
+      },
+      "writtenOn": "2021-12-20T21:39:58Z",
+      "side": 1,
+      "message": "It\u0027s a macro so it wouldn\u0027t matter, but unfortunately one uses nanoseconds while the other uses microseconds. :(\n\nYou could use TIMEVAL_TO_TIMESPEC() to convert, but that\u0027s admittedly not as clean, but at least does eliminate some boilerplate.\n\nhttp://cs/rvc-wear-dev/bionic/libc/include/sys/time.h;l\u003d93;rcl\u003df2b61d92b751c818d528abc7f41388802f8c8247\n\nAnyway, no objection to this commit as is, though it\u0027s too bad this repetition is necessary.",
+      "parentUuid": "308bc714_43c27358",
+      "range": {
+        "startLine": 582,
+        "startChar": 0,
+        "endLine": 594,
+        "endChar": 0
+      },
+      "revId": "42d672685769f3a5b0e36e8573a7ee7e37f0ddab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
