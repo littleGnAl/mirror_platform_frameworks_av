@@ -16,6 +16,52 @@
       "message": "Hi Andy and Mikhail! Would you be the correct reviewers for this change?",
       "revId": "42d672685769f3a5b0e36e8573a7ee7e37f0ddab",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc80296d_8d892bf8",
+        "filename": "media/libaudioclient/AudioTrackShared.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 578,
+      "author": {
+        "id": 1895601
+      },
+      "writtenOn": "2021-12-20T19:33:17Z",
+      "side": 1,
+      "message": "nit: errno is an int",
+      "range": {
+        "startLine": 578,
+        "startChar": 12,
+        "endLine": 578,
+        "endChar": 20
+      },
+      "revId": "42d672685769f3a5b0e36e8573a7ee7e37f0ddab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d171a160_23c03b5f",
+        "filename": "media/libaudioclient/AudioTrackShared.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 594,
+      "author": {
+        "id": 1895601
+      },
+      "writtenOn": "2021-12-20T19:33:17Z",
+      "side": 1,
+      "message": "Just use timersub(3)?",
+      "range": {
+        "startLine": 582,
+        "startChar": 0,
+        "endLine": 594,
+        "endChar": 0
+      },
+      "revId": "42d672685769f3a5b0e36e8573a7ee7e37f0ddab",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
