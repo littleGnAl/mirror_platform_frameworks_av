@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0b0fde48_5dd058cc",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 792,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-12-20T10:15:36Z",
+      "side": 1,
+      "message": "if you do this you will not update the primary output device when transitioning form RINGTONE to NORMAL mode for instance. getNewOutputDevices() must be called at some point.\n\nWhat is wrong with my suggestion on PS #2?",
+      "range": {
+        "startLine": 792,
+        "startChar": 0,
+        "endLine": 792,
+        "endChar": 63
+      },
+      "revId": "85cee140bdfde0d984ddde83e97ab3772292ba81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5f43edfb_3cb0bdfb",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 800,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-12-20T10:15:36Z",
+      "side": 1,
+      "message": "This must be true here given \"oldState \u003d\u003d AUDIO_MODE_IN_CALL\" at line 793",
+      "range": {
+        "startLine": 800,
+        "startChar": 20,
+        "endLine": 800,
+        "endChar": 44
+      },
+      "revId": "85cee140bdfde0d984ddde83e97ab3772292ba81",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
