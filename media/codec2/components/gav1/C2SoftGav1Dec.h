@@ -21,8 +21,8 @@
 
 #include <SimpleC2Component.h>
 #include <C2Config.h>
-#include "libgav1/src/gav1/decoder.h"
-#include "libgav1/src/gav1/decoder_settings.h"
+#include "src/gav1/decoder.h"
+#include "src/gav1/decoder_settings.h"
 
 #define GETTIME(a, b) gettimeofday(a, b);
 #define TIME_DIFF(start, end, diff)     \
