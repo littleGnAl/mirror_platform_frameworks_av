@@ -22,6 +22,30 @@
       },
       "revId": "a2b644cdb4318ed93959b4deeb66a5b2ea984f84",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38e8299f_3f440bf6",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2021,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-12-21T08:48:17Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fce6600b_863db927",
+      "range": {
+        "startLine": 2021,
+        "startChar": 38,
+        "endLine": 2021,
+        "endChar": 43
+      },
+      "revId": "a2b644cdb4318ed93959b4deeb66a5b2ea984f84",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
