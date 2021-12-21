@@ -26,6 +26,98 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6a785048_d972dbba",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-12-21T19:23:28Z",
+      "side": 1,
+      "message": "i\u0027d drop this, in favor of making the switch() express all the options.",
+      "range": {
+        "startLine": 1443,
+        "startChar": 10,
+        "endLine": 1443,
+        "endChar": 46
+      },
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e9109964_d22a8cd4",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1444,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-12-21T19:23:28Z",
+      "side": 1,
+      "message": "4 character indent steps. so L1444..1455 should be re-indented.",
+      "range": {
+        "startLine": 1444,
+        "startChar": 9,
+        "endLine": 1444,
+        "endChar": 16
+      },
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "337a5663_b2987eb9",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-12-21T19:23:28Z",
+      "side": 1,
+      "message": "case 3 adds nothing at this point.\ncase 2 should be enough for the pattern.",
+      "range": {
+        "startLine": 1445,
+        "startChar": 11,
+        "endLine": 1446,
+        "endChar": 89
+      },
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb92c376_2d0970d9",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1448,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-12-21T19:23:28Z",
+      "side": 1,
+      "message": "i expect that level2 will be \"lvel 1 + some new stuff\"\nso document here that we are explicitly doing a fall through.",
+      "range": {
+        "startLine": 1448,
+        "startChar": 15,
+        "endLine": 1448,
+        "endChar": 26
+      },
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4967b153_10e38ec5",
         "filename": "media/codec2/sfplugin/CCodec.cpp",
         "patchSetId": 1
@@ -37,6 +129,75 @@
       "writtenOn": "2021-12-21T19:18:36Z",
       "side": 1,
       "message": "Let\u0027s use CCodecConfig::subscribeToConfigUpdate() (we\u0027ll need to change the method\u0027s visibility to public as well).",
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "baeda57e_0dc3e549",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1454,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-12-21T19:23:28Z",
+      "side": 1,
+      "message": "I think you want a case 0 -- for \"turn off the reporting\".",
+      "range": {
+        "startLine": 1454,
+        "startChar": 15,
+        "endLine": 1454,
+        "endChar": 20
+      },
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bb246616_3263aa2a",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1456,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-12-21T19:23:28Z",
+      "side": 1,
+      "message": "after looking at this switch, I think that perhaps a better expression of what you want to achieve is a pattern like:\n\n   if (we have a level -- any level) {\n       if (level \u003c\u003d 0) {\n           turn it off\n       }\n       if (level \u003e\u003d 1) {\n           add the level 1 things\n       }\n       if (level \u003e\u003d 2) {\n           // we take the level 1 stuff plus\n           l2 features added\n       }\n       if (level \u003e\u003d 3) {\n           // we take the L1 + L2 stuff\n           if L3 meant removing something that was in L2.\n               we can mess with configUpdate to remove/alter that at this point.\n       }\n       if (level \u003e\u003d 4) {\n           ALOGD(\" we only understand to level 3, so that\u0027s all you get\");\n       }\n   }",
+      "range": {
+        "startLine": 1456,
+        "startChar": 6,
+        "endLine": 1456,
+        "endChar": 9
+      },
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "21644285_ec94f376",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1458,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-12-21T19:23:28Z",
+      "side": 1,
+      "message": "it\u0027s worth including the encoding stats level in this set of messages.",
+      "range": {
+        "startLine": 1458,
+        "startChar": 15,
+        "endLine": 1458,
+        "endChar": 28
+      },
       "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
