@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9577042c_7a674972",
+        "filename": "services/audiopolicy/common/managerdefinitions/include/ClientDescriptor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 60,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-12-21T08:44:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2d53478f_35f14970",
+      "range": {
+        "startLine": 60,
+        "startChar": 78,
+        "endLine": 60,
+        "endChar": 80
+      },
+      "revId": "bb497491c9ceb93c0e0c69e4730e625b73e49182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0d139b02_3e9b4a8a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-11-24T16:32:59Z",
       "side": 1,
       "message": "remove",
+      "range": {
+        "startLine": 251,
+        "startChar": 37,
+        "endLine": 251,
+        "endChar": 38
+      },
+      "revId": "bb497491c9ceb93c0e0c69e4730e625b73e49182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9f294b79_250102db",
+        "filename": "services/audiopolicy/common/managerdefinitions/include/ClientDescriptor.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 251,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-12-21T08:44:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0d139b02_3e9b4a8a",
       "range": {
         "startLine": 251,
         "startChar": 37,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a701bfed_fb9f8b69",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 719,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-12-21T08:44:05Z",
+      "side": 1,
+      "message": "done with the typo ;-)",
+      "parentUuid": "23048f4d_0af050d9",
+      "range": {
+        "startLine": 719,
+        "startChar": 16,
+        "endLine": 719,
+        "endChar": 60
+      },
+      "revId": "bb497491c9ceb93c0e0c69e4730e625b73e49182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "94a145fa_f47b28da",
@@ -83,6 +155,30 @@
       "writtenOn": "2021-11-24T16:32:59Z",
       "side": 1,
       "message": "connectAudioSourceToSink",
+      "range": {
+        "startLine": 3826,
+        "startChar": 38,
+        "endLine": 3826,
+        "endChar": 54
+      },
+      "revId": "bb497491c9ceb93c0e0c69e4730e625b73e49182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "05aa0ead_f76e60ec",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3826,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-12-21T08:44:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "94a145fa_f47b28da",
       "range": {
         "startLine": 3826,
         "startChar": 38,
@@ -116,6 +212,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a19e671a_be69777d",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3831,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-12-21T08:44:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3b6ab936_b1ca8ec6",
+      "range": {
+        "startLine": 3831,
+        "startChar": 0,
+        "endLine": 3831,
+        "endChar": 63
+      },
+      "revId": "bb497491c9ceb93c0e0c69e4730e625b73e49182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b09bffe6_ac98e643",
@@ -129,6 +249,30 @@
       "writtenOn": "2021-11-24T16:32:59Z",
       "side": 1,
       "message": "FailurePatchAdded for consistency\n\nwhy don\u0027t we need to call wOutput-\u003estop() when jumping from here?",
+      "range": {
+        "startLine": 3833,
+        "startChar": 13,
+        "endLine": 3833,
+        "endChar": 32
+      },
+      "revId": "bb497491c9ceb93c0e0c69e4730e625b73e49182",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "bc320974_2ae16882",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3833,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-12-21T08:44:05Z",
+      "side": 1,
+      "message": "if inverting the order as proposed previously, no more need to stop",
+      "parentUuid": "b09bffe6_ac98e643",
       "range": {
         "startLine": 3833,
         "startChar": 13,
