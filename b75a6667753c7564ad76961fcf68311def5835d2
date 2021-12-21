@@ -47,6 +47,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aec4dd55_393aec84",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-21T21:03:25Z",
+      "side": 1,
+      "message": "Ack, Sure!",
+      "parentUuid": "7985f583_20d104dc",
+      "range": {
+        "startLine": 1443,
+        "startChar": 42,
+        "endLine": 1443,
+        "endChar": 43
+      },
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9109964_d22a8cd4",
@@ -129,6 +153,24 @@
       "writtenOn": "2021-12-21T19:18:36Z",
       "side": 1,
       "message": "Let\u0027s use CCodecConfig::subscribeToConfigUpdate() (we\u0027ll need to change the method\u0027s visibility to public as well).",
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "be27d28d_b2f9b271",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1450,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-21T21:03:25Z",
+      "side": 1,
+      "message": "Sure! Let me figure out how to use that function here.",
+      "parentUuid": "4967b153_10e38ec5",
       "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
