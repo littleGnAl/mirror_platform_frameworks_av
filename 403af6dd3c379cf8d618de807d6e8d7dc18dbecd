@@ -22,6 +22,30 @@
       },
       "revId": "403af6dd3c379cf8d618de807d6e8d7dc18dbecd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fafaf825_6ff8f7e3",
+        "filename": "services/camera/libcameraservice/CameraService.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 3738,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2021-12-21T21:59:29Z",
+      "side": 1,
+      "message": "Correct. This is part of camera characteristics. so should be immutable.",
+      "parentUuid": "1a65cf94_c1a1591d",
+      "range": {
+        "startLine": 3738,
+        "startChar": 21,
+        "endLine": 3738,
+        "endChar": 37
+      },
+      "revId": "403af6dd3c379cf8d618de807d6e8d7dc18dbecd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
