@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68332cab_4c4e6323",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-12-21T23:34:41Z",
+      "side": 1,
+      "message": "i want to think through whether these test the appropriate library versions.\ne.g. as an MTS test, it needs to test the binary that is within the apex.\ni don\u0027t thnk that the shared_libs: [] construct is setting that up properly for us.",
+      "revId": "f2abc2ea5edd899b3b9488f602c83b902e422d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
