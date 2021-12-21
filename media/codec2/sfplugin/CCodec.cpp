@@ -1434,6 +1434,29 @@ void CCodec::configure(const sp<AMessage> &msg) {
             config->mOutputFormat->setInt32("android._tunneled", 1);
         }
 
+        // Convert an encoding statistics level to corresponding encoding statistics
+        // kinds
+        int32_t encodingStatisticsLevel = 0;
+        if ((config->mDomain & Config::IS_ENCODER)
+            && (config->mDomain & Config::IS_VIDEO)
+            && msg->findInt32(KEY_VIDEO_ENCODING_STATISTICS_LEVEL, &encodingStatisticsLevel)
+            && encodingStatisticsLevel >= VIDEO_ENCODING_STATISTICS_LEVEL_1) {
+          // Higher level include all the enc stats belong to lower level.
+          switch (encodingStatisticsLevel) {
+            case VIDEO_ENCODING_STATISTICS_LEVEL_2: // reserved for the future level
+                                                    // VIDEO_ENCODING_STATISTICS_LEVEL_2
+                                                    // with more enc stat kinds
+              // Future extended encoding statistics for the level 2 should be added here
+            case VIDEO_ENCODING_STATISTICS_LEVEL_1:
+              std::unique_ptr<C2StreamAverageQpInfo::output> avg_qp;
+              std::unique_ptr<C2StreamPictureTypeInfo::output> pict_type;
+              configUpdate.push_back(std::move(avg_qp));
+              configUpdate.push_back(std::move(pict_type));
+              // TODO: Use CCodecConfig::subscribeToConfigUpdate()
+              break;
+          }
+        }
+
         ALOGD("setup formats input: %s",
                 config->mInputFormat->debugString().c_str());
         ALOGD("setup formats output: %s",
