@@ -1,0 +1,142 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "739ad64f_e597cdf5",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-12-21T23:36:33Z",
+      "side": 1,
+      "message": "i\u0027m not convinced this tests the on-device instance of the library.\nIt looks like it is all static linked library, so it\u0027ll test what\u0027s\nincluded in this binary.",
+      "range": {
+        "startLine": 29,
+        "startChar": 10,
+        "endLine": 29,
+        "endChar": 29
+      },
+      "revId": "d45793ee6fe261de96448f704a3223f969f447c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a713bc57_52a549d8",
+        "filename": "media/libstagefright/foundation/tests/AVCUtils/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-12-21T23:36:33Z",
+      "side": 1,
+      "message": "device-tests also?\n[looks like this is going to be common across all of the Android.bp\u0027s in here.\n\nas native code, it\u0027s probably legitimate to want that.",
+      "range": {
+        "startLine": 33,
+        "startChar": 8,
+        "endLine": 33,
+        "endChar": 14
+      },
+      "revId": "d45793ee6fe261de96448f704a3223f969f447c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9e5afbda_a8363535",
+        "filename": "media/libstagefright/foundation/tests/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-12-21T23:36:33Z",
+      "side": 1,
+      "message": "device-tests, too?",
+      "range": {
+        "startLine": 45,
+        "startChar": 8,
+        "endLine": 45,
+        "endChar": 14
+      },
+      "revId": "d45793ee6fe261de96448f704a3223f969f447c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f8f1a70c_29f1a9ba",
+        "filename": "media/libstagefright/foundation/tests/colorutils/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 59,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-12-21T23:36:33Z",
+      "side": 1,
+      "message": "is this going to test the version of the library within the apex\nor the one in /system/lib*/\n\nas an MTS test it needs to test the one within the apex.",
+      "range": {
+        "startLine": 59,
+        "startChar": 7,
+        "endLine": 59,
+        "endChar": 19
+      },
+      "revId": "d45793ee6fe261de96448f704a3223f969f447c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bc71b1df_e2d477f0",
+        "filename": "media/libstagefright/tests/ESDS/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-12-21T23:36:33Z",
+      "side": 1,
+      "message": "not sure we test the right instance of the library here, when we do it to the old base systems.",
+      "range": {
+        "startLine": 63,
+        "startChar": 7,
+        "endLine": 63,
+        "endChar": 34
+      },
+      "revId": "d45793ee6fe261de96448f704a3223f969f447c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4e243e03_5700a6f2",
+        "filename": "media/libstagefright/tests/HEVC/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2021-12-21T23:36:33Z",
+      "side": 1,
+      "message": "having both 32- and 64- bit flavors of the test is good.\nI\u0027m not convinced (as you can probably tell from my review notes going through\nthese CLs) that we can use these for MTS at this time -- i\u0027m not convinced that\nwe test the correct versions of the shared libraries.",
+      "range": {
+        "startLine": 49,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 0
+      },
+      "revId": "d45793ee6fe261de96448f704a3223f969f447c0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
