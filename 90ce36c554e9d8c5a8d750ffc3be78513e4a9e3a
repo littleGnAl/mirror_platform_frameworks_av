@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "40272b7f_079b9880",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 741,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-12-21T19:19:15Z",
+      "side": 1,
+      "message": "Need to match the Java name (PICTURE_TYPE_UNKNOWN)",
+      "range": {
+        "startLine": 741,
+        "startChar": 18,
+        "endLine": 741,
+        "endChar": 35
+      },
+      "revId": "90ce36c554e9d8c5a8d750ffc3be78513e4a9e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6e3d399_d4debf74",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 19
+      },
+      "lineNbr": 759,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2021-12-21T19:19:15Z",
+      "side": 1,
+      "message": "Need to match the Java name (KEY_VIDEO_QP_AVERAGE)",
+      "range": {
+        "startLine": 759,
+        "startChar": 15,
+        "endLine": 759,
+        "endChar": 29
+      },
+      "revId": "90ce36c554e9d8c5a8d750ffc3be78513e4a9e3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
