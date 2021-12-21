@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "5147477c_e19fa00a",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 50
+      },
+      "lineNbr": 5929,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-12-21T15:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a2395d8_7a53e00e",
+      "range": {
+        "startLine": 5929,
+        "startChar": 0,
+        "endLine": 5929,
+        "endChar": 81
+      },
+      "revId": "863f3864071f75bf834b17cf46cd8f7d316e7b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ad989d4d_bf511f8a",
@@ -37,6 +61,30 @@
       "writtenOn": "2021-12-21T14:39:15Z",
       "side": 1,
       "message": "why is it OK to fallback here?",
+      "range": {
+        "startLine": 6025,
+        "startChar": 0,
+        "endLine": 6025,
+        "endChar": 66
+      },
+      "revId": "863f3864071f75bf834b17cf46cd8f7d316e7b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f806def_6d809339",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 50
+      },
+      "lineNbr": 6025,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-12-21T15:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ad989d4d_bf511f8a",
       "range": {
         "startLine": 6025,
         "startChar": 0,
@@ -70,6 +118,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a2aeb68f_92879890",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 50
+      },
+      "lineNbr": 6619,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-12-21T15:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "79e6c242_572414db",
+      "range": {
+        "startLine": 6618,
+        "startChar": 0,
+        "endLine": 6619,
+        "endChar": 74
+      },
+      "revId": "863f3864071f75bf834b17cf46cd8f7d316e7b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "acf83e76_26f9fb8e",
@@ -93,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6603d62_847856f3",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 50
+      },
+      "lineNbr": 6690,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-12-21T15:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "acf83e76_26f9fb8e",
+      "range": {
+        "startLine": 6690,
+        "startChar": 0,
+        "endLine": 6690,
+        "endChar": 57
+      },
+      "revId": "863f3864071f75bf834b17cf46cd8f7d316e7b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "56e4a836_3dfd9e86",
@@ -106,6 +202,30 @@
       "writtenOn": "2021-12-21T14:39:15Z",
       "side": 1,
       "message": "Something is wrong with this sentence?",
+      "range": {
+        "startLine": 425,
+        "startChar": 66,
+        "endLine": 425,
+        "endChar": 98
+      },
+      "revId": "863f3864071f75bf834b17cf46cd8f7d316e7b3a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "426dfbb7_d59af0d0",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 50
+      },
+      "lineNbr": 425,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-12-21T15:08:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "56e4a836_3dfd9e86",
       "range": {
         "startLine": 425,
         "startChar": 66,
