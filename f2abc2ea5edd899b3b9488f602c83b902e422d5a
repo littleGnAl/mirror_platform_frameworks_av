@@ -16,6 +16,24 @@
       "message": "i want to think through whether these test the appropriate library versions.\ne.g. as an MTS test, it needs to test the binary that is within the apex.\ni don\u0027t thnk that the shared_libs: [] construct is setting that up properly for us.",
       "revId": "f2abc2ea5edd899b3b9488f602c83b902e422d5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d1fd5ac7_98c79be7",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-12-21T23:42:13Z",
+      "side": 1,
+      "message": "Ray,\nThese unit tests are used to test the code which is being built and not the libraries on the device.\nAll these tests include the libraries that are being tested as static_libs and not as shared_libs.\nIdea is, these CLs need to be cherry-picked to mainline branches (thus they test what is being included in mainline modules) and then mts that gets built on that branch will build and include these tests.",
+      "parentUuid": "68332cab_4c4e6323",
+      "revId": "f2abc2ea5edd899b3b9488f602c83b902e422d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
