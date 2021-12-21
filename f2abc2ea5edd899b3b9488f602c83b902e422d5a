@@ -34,6 +34,74 @@
       "parentUuid": "68332cab_4c4e6323",
       "revId": "f2abc2ea5edd899b3b9488f602c83b902e422d5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3ef1f54a_fc77bbfd",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 6
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-12-21T23:46:38Z",
+      "side": 1,
+      "message": "Ruchika,\nplease add \"device-tests\" to three Android.bp files where it is missing.",
+      "revId": "f2abc2ea5edd899b3b9488f602c83b902e422d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24d17823_3556b65c",
+        "filename": "media/codecs/amrwb/dec/test/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-12-21T23:46:38Z",
+      "side": 1,
+      "message": "based on review comments on other CL, add \"device-tests\".",
+      "revId": "f2abc2ea5edd899b3b9488f602c83b902e422d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "23c648bf_c68c5d42",
+        "filename": "media/codecs/amrwb/enc/test/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-12-21T23:46:38Z",
+      "side": 1,
+      "message": "based on review comments on other CL, add \"device-tests\".",
+      "revId": "f2abc2ea5edd899b3b9488f602c83b902e422d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48a86f7f_c07e9d48",
+        "filename": "media/libstagefright/flac/dec/test/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2021-12-21T23:46:38Z",
+      "side": 1,
+      "message": "based on review comments on other CL, add \"device-tests\".",
+      "revId": "f2abc2ea5edd899b3b9488f602c83b902e422d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
