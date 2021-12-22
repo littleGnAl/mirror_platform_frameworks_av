@@ -1318,6 +1318,11 @@ void CCodec::configure(const sp<AMessage> &msg) {
             } else {
                 config->mOutputFormat->setInt32(KEY_COLOR_FORMAT, format);
             }
+            if (width > 0 && height > 0) {
+                ALOGV("Force setting stride %d slice-height %d", width, height);
+                config->mOutputFormat->setInt32("stride", width);
+                config->mOutputFormat->setInt32("slice-height", height);
+            }
         }
 
         // propagate encoder delay and padding to output format
