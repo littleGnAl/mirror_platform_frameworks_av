@@ -70,6 +70,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8e2e2010_6248eadb",
+        "filename": "media/codecs/amrwb/dec/test/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 34,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2021-12-22T07:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24d17823_3556b65c",
+      "revId": "f2abc2ea5edd899b3b9488f602c83b902e422d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "23c648bf_c68c5d42",
@@ -87,6 +105,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b0fa4b8_d52bb8fb",
+        "filename": "media/codecs/amrwb/enc/test/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2021-12-22T07:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23c648bf_c68c5d42",
+      "revId": "f2abc2ea5edd899b3b9488f602c83b902e422d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "48a86f7f_c07e9d48",
@@ -100,6 +136,24 @@
       "writtenOn": "2021-12-21T23:46:38Z",
       "side": 1,
       "message": "based on review comments on other CL, add \"device-tests\".",
+      "revId": "f2abc2ea5edd899b3b9488f602c83b902e422d5a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "62a274d5_393f8e4d",
+        "filename": "media/libstagefright/flac/dec/test/Android.bp",
+        "patchSetId": 6
+      },
+      "lineNbr": 33,
+      "author": {
+        "id": 1554022
+      },
+      "writtenOn": "2021-12-22T07:55:09Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "48a86f7f_c07e9d48",
       "revId": "f2abc2ea5edd899b3b9488f602c83b902e422d5a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
