@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "36143910_6b9a805e",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4131,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-12-22T13:33:08Z",
+      "side": 1,
+      "message": "if output \u003d\u003d AUDIO_IO_HANDLE_NONE we should return an error.\nOtherwise we will end up with no SW output set in the source descriptor and connectAudioSourceToSink will assert at line 3841.\nThere may be a problem with sink devices only reachable via direct outputs. In this case, the output may not be opened when the patch is created from createAudioPatch API.",
+      "range": {
+        "startLine": 4131,
+        "startChar": 0,
+        "endLine": 4131,
+        "endChar": 21
+      },
+      "revId": "99b971023c75e9cee471759c8e5174ce53250517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "610f5ff6_3870d554",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4200,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-12-22T13:33:08Z",
+      "side": 1,
+      "message": "space",
+      "range": {
+        "startLine": 4200,
+        "startChar": 43,
+        "endLine": 4200,
+        "endChar": 45
+      },
+      "revId": "99b971023c75e9cee471759c8e5174ce53250517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f66651fc_2752370b",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 1009,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2021-12-22T13:33:08Z",
+      "side": 1,
+      "message": "comment needs update",
+      "range": {
+        "startLine": 1008,
+        "startChar": 0,
+        "endLine": 1009,
+        "endChar": 71
+      },
+      "revId": "99b971023c75e9cee471759c8e5174ce53250517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
