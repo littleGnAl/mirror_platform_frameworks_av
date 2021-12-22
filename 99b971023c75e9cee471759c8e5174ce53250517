@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d82de9fd_3e2085c2",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4200,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-12-22T17:20:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "610f5ff6_3870d554",
+      "range": {
+        "startLine": 4200,
+        "startChar": 43,
+        "endLine": 4200,
+        "endChar": 45
+      },
+      "revId": "99b971023c75e9cee471759c8e5174ce53250517",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f66651fc_2752370b",
