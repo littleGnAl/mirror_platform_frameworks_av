@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0eb60550_405486f5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-12-23T18:35:33Z",
+      "side": 1,
+      "message": "Hi Sanghwan, thank you very much for your change request.\n\nFollowing Eric\u0027s opinion on b/168585081#comment21, I don\u0027t think we should merge this change to AOSP. The reasons:\n- We are trying to move away from the C++ MediaPlayer implementation in favor of an ExoPlayer-based implementation. So this change will be eventually overwritten by the migration to ExoPlayer. Please considering checking whether this change would be useful in ExoPlayer.\n- MediaPlayer is in maintenance mode (for the reason explained in the item above), and this change might be risky without a clear benefit to AOSP (considering offload with video playback is not enabled by default, I believe).\n- It would be safe for you to keep this customization locally, since it is unlikely it will ever conflict with our changes to AOSP (until we eventually migrate the entire media player implementation, naturally).\n\nPlease let me know if there\u0027s an important aspect of this change I am missing, thank you for your contributions, and apologies for the inconvenience and delay in responding.\n",
+      "revId": "fa914979a715860e68efa45acc1c0831f3c44c80",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
