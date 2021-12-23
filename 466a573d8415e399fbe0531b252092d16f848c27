@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d314fad_d7ba2a42",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 13
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2021-12-23T11:21:36Z",
+      "side": 1,
+      "message": "Eric, while running my test suite on patches/audio sources to ensure no reg with all the review comment done yesterday, I caught a regression with AudioSource while using direct output. The output was already closed when reconsidering checkAudioSourceForAttributes.\nI enforced it in the lambda",
+      "revId": "466a573d8415e399fbe0531b252092d16f848c27",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
