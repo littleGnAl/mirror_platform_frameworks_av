@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e12ed8ef_d1d58bf4",
+        "filename": "media/libmediaplayerservice/nuplayer/NuPlayerDecoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 465,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2021-12-24T14:55:11Z",
+      "side": 1,
+      "message": "I added a comment, and I will discuss with the codec team to check this is sensible, and whether there is a simpler solution.\n\nAside, please extract a constant for \"default input buffer request delay\" and use it in the initialization of mRequestInputBufferDelay, and also add an else in this if, to use the default value when the operating rate goes back under 100f. Otherwise, let\u0027s say the playback speed goes up and then down, we will end up keeping the shorter delay (I think).",
+      "range": {
+        "startLine": 465,
+        "startChar": 8,
+        "endLine": 465,
+        "endChar": 37
+      },
+      "revId": "008b26c505186be1bbabc95229ee750a7fc65e70",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
