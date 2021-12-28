@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d73ce10_7539579a",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1323,
+      "author": {
+        "id": 1931936
+      },
+      "writtenOn": "2021-12-28T08:55:02Z",
+      "side": 1,
+      "message": "Hulu apk need stide and slice_height, if not exists, the surface will be destory  immediate and the playback will be abort, so use width and height value as stride and slic-height here.",
+      "range": {
+        "startLine": 1323,
+        "startChar": 39,
+        "endLine": 1323,
+        "endChar": 47
+      },
+      "revId": "f2f3570cf2b7d27edeacb5043b91012ca3950bf6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
