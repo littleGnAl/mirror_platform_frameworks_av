@@ -1,0 +1,211 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "082415b4_5fccf1b1",
+        "filename": "media/bufferpool/2.0/tests/BenchmarkBufferpoolTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 39,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-12-28T14:30:17Z",
+      "side": 1,
+      "message": "make it static const",
+      "range": {
+        "startLine": 39,
+        "startChar": 18,
+        "endLine": 39,
+        "endChar": 31
+      },
+      "revId": "246c106d5b9f85820038eafb9dc154345664a6e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "01f1c80a_dd59c099",
+        "filename": "media/bufferpool/2.0/tests/BenchmarkBufferpoolTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 47,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-12-28T14:30:17Z",
+      "side": 1,
+      "message": ": mAddr(nullptr), mLinearAllocator(nullptr), mLinearAllocation(nullptr)\n\n\nall pointers must always be initialized to null in initializer list",
+      "range": {
+        "startLine": 47,
+        "startChar": 31,
+        "endLine": 47,
+        "endChar": 33
+      },
+      "revId": "246c106d5b9f85820038eafb9dc154345664a6e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3a549370_ea682d02",
+        "filename": "media/bufferpool/2.0/tests/BenchmarkBufferpoolTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 50,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-12-28T14:30:17Z",
+      "side": 1,
+      "message": "instead of default, implement the destructor\n\n{\nif (mLinearAllocation) mLinearAllocation.reset();\nmLinearAllocation \u003d nullptr;\n}\nsame for other 2 pointers",
+      "range": {
+        "startLine": 50,
+        "startChar": 32,
+        "endLine": 50,
+        "endChar": 43
+      },
+      "revId": "246c106d5b9f85820038eafb9dc154345664a6e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa991777_29f7979e",
+        "filename": "media/bufferpool/2.0/tests/BenchmarkBufferpoolTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 136,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-12-28T14:30:17Z",
+      "side": 1,
+      "message": "k is only for static constants. rename the variable",
+      "range": {
+        "startLine": 136,
+        "startChar": 11,
+        "endLine": 136,
+        "endChar": 21
+      },
+      "revId": "246c106d5b9f85820038eafb9dc154345664a6e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a2f9aaf_a66ae9b5",
+        "filename": "media/bufferpool/2.0/tests/BenchmarkBufferpoolTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 141,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-12-28T14:30:17Z",
+      "side": 1,
+      "message": "nullptr",
+      "range": {
+        "startLine": 141,
+        "startChar": 30,
+        "endLine": 141,
+        "endChar": 34
+      },
+      "revId": "246c106d5b9f85820038eafb9dc154345664a6e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a7461642_44593a1c",
+        "filename": "media/bufferpool/2.0/tests/BenchmarkBufferpoolTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 142,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-12-28T14:30:17Z",
+      "side": 1,
+      "message": "declare outside;",
+      "range": {
+        "startLine": 142,
+        "startChar": 8,
+        "endLine": 142,
+        "endChar": 26
+      },
+      "revId": "246c106d5b9f85820038eafb9dc154345664a6e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a8225fc2_55a9cf0e",
+        "filename": "media/bufferpool/2.0/tests/BenchmarkBufferpoolTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 146,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-12-28T14:30:17Z",
+      "side": 1,
+      "message": "assert_true(!mLinearAllocation || status \u003d\u003d C2_OK)) \u003c\u003c \"error msg\";",
+      "range": {
+        "startLine": 144,
+        "startChar": 8,
+        "endLine": 146,
+        "endChar": 90
+      },
+      "revId": "246c106d5b9f85820038eafb9dc154345664a6e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d201b2bc_1d8a6daa",
+        "filename": "media/bufferpool/2.0/tests/BenchmarkBufferpoolTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-12-28T14:30:17Z",
+      "side": 1,
+      "message": "instead of prints, let us maintain the stats class for these data like how we did in benchmark module",
+      "range": {
+        "startLine": 150,
+        "startChar": 4,
+        "endLine": 151,
+        "endChar": 83
+      },
+      "revId": "246c106d5b9f85820038eafb9dc154345664a6e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c79ac03b_5d82252f",
+        "filename": "media/bufferpool/2.0/tests/BenchmarkBufferpoolTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2021-12-28T14:30:17Z",
+      "side": 1,
+      "message": "same comments as above. \napplicable to all other places as well",
+      "range": {
+        "startLine": 169,
+        "startChar": 12,
+        "endLine": 169,
+        "endChar": 90
+      },
+      "revId": "246c106d5b9f85820038eafb9dc154345664a6e4",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
