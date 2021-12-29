@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "733c89c0_43a0bdf6",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1310614
+      },
+      "writtenOn": "2021-12-29T07:38:44Z",
+      "side": 1,
+      "message": "Add Robin as reviewer, since AML added more info for the cl as per b/208702600#comment25.",
+      "revId": "e7bb0664221659e257c27172015c2985b131d5cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "631b67f9_ffcb4083",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1324,
+      "author": {
+        "id": 1310614
+      },
+      "writtenOn": "2021-12-29T07:38:44Z",
+      "side": 1,
+      "message": "From shipeng.sun@amlogic.com in https://android-review.googlesource.com/c/platform/frameworks/av/+/1933190/comment/86354798_55a011c3/\n\n\u003e Only can get the similar value frame width and height value from here, I use it direct, I am not sure it\u0027s the most appropriate change or not.",
+      "range": {
+        "startLine": 1323,
+        "startChar": 0,
+        "endLine": 1324,
+        "endChar": 72
+      },
+      "revId": "e7bb0664221659e257c27172015c2985b131d5cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
