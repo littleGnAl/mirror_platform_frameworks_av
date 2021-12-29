@@ -40,6 +40,7 @@ const DeviceTypeSet& getAudioDeviceOutAllScoSet();
 const DeviceTypeSet& getAudioDeviceOutAllUsbSet();
 const DeviceTypeSet& getAudioDeviceInAllSet();
 const DeviceTypeSet& getAudioDeviceInAllUsbSet();
+const DeviceTypeSet& getAudioDeviceInAllBleSet();
 const DeviceTypeSet& getAudioDeviceOutAllBleSet();
 
 template<typename T>

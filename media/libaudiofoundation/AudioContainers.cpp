@@ -63,6 +63,13 @@ const DeviceTypeSet& getAudioDeviceInAllUsbSet() {
     return audioDeviceInAllUsbSet;
 }
 
+const DeviceTypeSet& getAudioDeviceInAllBleSet() {
+    static const DeviceTypeSet audioDeviceInAllBleSet = DeviceTypeSet(
+            std::begin(AUDIO_DEVICE_IN_ALL_BLE_ARRAY),
+            std::end(AUDIO_DEVICE_IN_ALL_BLE_ARRAY));
+    return audioDeviceInAllBleSet;
+}
+
 const DeviceTypeSet& getAudioDeviceOutAllBleSet() {
     static const DeviceTypeSet audioDeviceOutAllBleSet = DeviceTypeSet(
             std::begin(AUDIO_DEVICE_OUT_ALL_BLE_ARRAY),

@@ -547,6 +547,9 @@ status_t AudioPolicyManager::getHwOffloadFormatsSupportedForBluetoothMedia(
     case AUDIO_DEVICE_OUT_BLE_HEADSET:
         audioDeviceSet = getAudioDeviceOutAllBleSet();
         break;
+    case AUDIO_DEVICE_IN_BLE_HEADSET:
+        audioDeviceSet = getAudioDeviceInAllBleSet();
+        break;
     default:
         ALOGE("%s() device type 0x%08x not supported", __func__, device);
         return BAD_VALUE;
