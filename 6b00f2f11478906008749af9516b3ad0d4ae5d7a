@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "14412494_ff2aa5f0",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1310614
+      },
+      "writtenOn": "2021-12-29T06:07:40Z",
+      "side": 1,
+      "message": "Please update the format to: \n```\n[Title]\n\n[Explanation]\n\nBug: 208702600\nChange-Id: If28261d33a158d91e562ee9a10e15d87efda7d61\nSigned-off-by: shipeng.sun \u003cshipeng.sun@amlogic.com\u003e\n```",
+      "range": {
+        "startLine": 9,
+        "startChar": 0,
+        "endLine": 9,
+        "endChar": 13
+      },
+      "revId": "6b00f2f11478906008749af9516b3ad0d4ae5d7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82b9c003_4fa6e38f",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1310614
+      },
+      "writtenOn": "2021-12-29T06:07:40Z",
+      "side": 1,
+      "message": "not sure if it\u0027s ok to mention specific app in AOSP commit message.",
+      "range": {
+        "startLine": 11,
+        "startChar": 0,
+        "endLine": 11,
+        "endChar": 8
+      },
+      "revId": "6b00f2f11478906008749af9516b3ad0d4ae5d7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7a5eee3c_82c1e51e",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 12,
+      "author": {
+        "id": 1310614
+      },
+      "writtenOn": "2021-12-29T06:07:40Z",
+      "side": 1,
+      "message": "if stide and slice_height do not exist, the surface will be destroyed immediately",
+      "range": {
+        "startLine": 12,
+        "startChar": 0,
+        "endLine": 12,
+        "endChar": 52
+      },
+      "revId": "6b00f2f11478906008749af9516b3ad0d4ae5d7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1b6a61d3_a160aea3",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 13,
+      "author": {
+        "id": 1310614
+      },
+      "writtenOn": "2021-12-29T06:07:40Z",
+      "side": 1,
+      "message": "not needed.",
+      "range": {
+        "startLine": 13,
+        "startChar": 22,
+        "endLine": 13,
+        "endChar": 24
+      },
+      "revId": "6b00f2f11478906008749af9516b3ad0d4ae5d7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "824dfcc4_0754e324",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 3
+      },
+      "lineNbr": 14,
+      "author": {
+        "id": 1310614
+      },
+      "writtenOn": "2021-12-29T06:07:40Z",
+      "side": 1,
+      "message": "Please elaborate where the width and height value come from.",
+      "range": {
+        "startLine": 14,
+        "startChar": 3,
+        "endLine": 14,
+        "endChar": 29
+      },
+      "revId": "6b00f2f11478906008749af9516b3ad0d4ae5d7a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
