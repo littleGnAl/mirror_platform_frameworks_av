@@ -68,6 +68,54 @@
       },
       "revId": "2a25319d2445a42cafae6ab7dd3a068cd86ab3de",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0ca51a1_48299776",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1791212
+      },
+      "writtenOn": "2021-12-29T07:00:44Z",
+      "side": 1,
+      "message": "Omx have handle stide slice_height attribute, codec2 hasn\u0027t added those attribute. So need added them to compatible apk which use stide and slice_height.",
+      "parentUuid": "67111eac_a40e2ccc",
+      "range": {
+        "startLine": 9,
+        "startChar": 3,
+        "endLine": 9,
+        "endChar": 39
+      },
+      "revId": "2a25319d2445a42cafae6ab7dd3a068cd86ab3de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3aecab42_5f03b54a",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 6
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1791212
+      },
+      "writtenOn": "2021-12-29T07:00:44Z",
+      "side": 1,
+      "message": "Only can get the similar value frame width and height value from here, i use it direct, i am not sure it\u0027s the most appropriate change or not.",
+      "parentUuid": "86354798_55a011c3",
+      "range": {
+        "startLine": 9,
+        "startChar": 110,
+        "endLine": 9,
+        "endChar": 195
+      },
+      "revId": "2a25319d2445a42cafae6ab7dd3a068cd86ab3de",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
