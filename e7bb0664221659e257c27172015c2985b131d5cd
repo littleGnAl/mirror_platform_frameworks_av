@@ -20,6 +20,24 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "0220b7e6_1f1e9a63",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1045544
+      },
+      "writtenOn": "2021-12-29T17:24:56Z",
+      "side": 1,
+      "message": "Thanks but I\u0027m still not the correct reviewer for codec2 internals, so I\u0027ll move myself to CC.",
+      "parentUuid": "733c89c0_43a0bdf6",
+      "revId": "e7bb0664221659e257c27172015c2985b131d5cd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "631b67f9_ffcb4083",
         "filename": "media/codec2/sfplugin/CCodec.cpp",
         "patchSetId": 10
