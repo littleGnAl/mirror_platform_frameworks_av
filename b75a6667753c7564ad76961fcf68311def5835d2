@@ -71,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "37f59fc1_afd7bd42",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1443,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-31T23:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "6a785048_d972dbba",
+      "range": {
+        "startLine": 1443,
+        "startChar": 10,
+        "endLine": 1443,
+        "endChar": 46
+      },
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e9109964_d22a8cd4",
@@ -84,6 +108,30 @@
       "writtenOn": "2021-12-21T19:23:28Z",
       "side": 1,
       "message": "4 character indent steps. so L1444..1455 should be re-indented.",
+      "range": {
+        "startLine": 1444,
+        "startChar": 9,
+        "endLine": 1444,
+        "endChar": 16
+      },
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5b4aaa96_52893ab7",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1444,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-31T23:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e9109964_d22a8cd4",
       "range": {
         "startLine": 1444,
         "startChar": 9,
@@ -117,6 +165,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "abcaa346_92b4d358",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1446,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-31T23:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "337a5663_b2987eb9",
+      "range": {
+        "startLine": 1445,
+        "startChar": 11,
+        "endLine": 1446,
+        "endChar": 89
+      },
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cb92c376_2d0970d9",
@@ -130,6 +202,30 @@
       "writtenOn": "2021-12-21T19:23:28Z",
       "side": 1,
       "message": "i expect that level2 will be \"lvel 1 + some new stuff\"\nso document here that we are explicitly doing a fall through.",
+      "range": {
+        "startLine": 1448,
+        "startChar": 15,
+        "endLine": 1448,
+        "endChar": 26
+      },
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a2ee345_f9e564a0",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1448,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-31T23:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cb92c376_2d0970d9",
       "range": {
         "startLine": 1448,
         "startChar": 15,
@@ -175,6 +271,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f2617ccd_c7d6ec02",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1450,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-31T23:55:05Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "be27d28d_b2f9b271",
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baeda57e_0dc3e549",
@@ -188,6 +302,30 @@
       "writtenOn": "2021-12-21T19:23:28Z",
       "side": 1,
       "message": "I think you want a case 0 -- for \"turn off the reporting\".",
+      "range": {
+        "startLine": 1454,
+        "startChar": 15,
+        "endLine": 1454,
+        "endChar": 20
+      },
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "61591032_621c6118",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1454,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-31T23:55:05Z",
+      "side": 1,
+      "message": "I think level 0 case is equivalent to the case that App client does not subscribe to this feature when encoder is created? With that, I\u0027d recommend that level should not be zero when subscribing, but added LEVEL_NONE just in case we allow App client do that and it is also used for internal initialization.",
+      "parentUuid": "baeda57e_0dc3e549",
       "range": {
         "startLine": 1454,
         "startChar": 15,
@@ -221,6 +359,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "287c4c2e_84361d08",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1456,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-31T23:55:05Z",
+      "side": 1,
+      "message": "Because the upper level include all of lower level stats, i.e. incremental stat kinds as level increases, the switch statement well serve that purposes w/o using \u0027break;\u0027 and doing fall through.",
+      "parentUuid": "bb246616_3263aa2a",
+      "range": {
+        "startLine": 1456,
+        "startChar": 6,
+        "endLine": 1456,
+        "endChar": 9
+      },
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "21644285_ec94f376",
@@ -234,6 +396,30 @@
       "writtenOn": "2021-12-21T19:23:28Z",
       "side": 1,
       "message": "it\u0027s worth including the encoding stats level in this set of messages.",
+      "range": {
+        "startLine": 1458,
+        "startChar": 15,
+        "endLine": 1458,
+        "endChar": 28
+      },
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2300b2ce_f36898d6",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1458,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2021-12-31T23:55:05Z",
+      "side": 1,
+      "message": "In fact, I wanted that but I was not sure I can just add the parameter in config-\u003emOutpufFormat, since the para seems all required to be set with meaningful values in the cases in the same file.",
+      "parentUuid": "21644285_ec94f376",
       "range": {
         "startLine": 1458,
         "startChar": 15,
