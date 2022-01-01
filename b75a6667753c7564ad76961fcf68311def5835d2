@@ -289,6 +289,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "96135a95_0a78b26a",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1450,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2022-01-01T01:57:02Z",
+      "side": 1,
+      "message": "I followed your recommendation, but could you help me understand why you recommended using subscribeToConfigUpdate(), which there has been no such practices in the codebase please?",
+      "parentUuid": "f2617ccd_c7d6ec02",
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "baeda57e_0dc3e549",
