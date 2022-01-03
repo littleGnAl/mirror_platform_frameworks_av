@@ -70,6 +70,30 @@
       },
       "revId": "ad222fef9977acba0cc426591bf2a936eb9d65e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fddae89e_6e31643a",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1875587
+      },
+      "writtenOn": "2022-01-03T14:28:16Z",
+      "side": 1,
+      "message": "For le auido, offload would support both media and conversation, hence, we would need this information.",
+      "parentUuid": "aafa50b2_2843d7de",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 14
+      },
+      "revId": "ad222fef9977acba0cc426591bf2a936eb9d65e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
