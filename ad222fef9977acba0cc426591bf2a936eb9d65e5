@@ -94,6 +94,30 @@
       },
       "revId": "ad222fef9977acba0cc426591bf2a936eb9d65e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "70e663e4_8da61a3c",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-01-03T15:57:37Z",
+      "side": 1,
+      "message": "I still don\u0027t understand how querying the codec capabilities for the input device and for offload mode only helps you getting this information.\nA better solution if I understand your problem correctly would maybe to add audio attributes to the API and query for media independently from voice communication",
+      "parentUuid": "fddae89e_6e31643a",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 14
+      },
+      "revId": "ad222fef9977acba0cc426591bf2a936eb9d65e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
