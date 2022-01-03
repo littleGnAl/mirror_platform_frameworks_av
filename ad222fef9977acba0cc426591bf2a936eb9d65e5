@@ -46,6 +46,30 @@
       },
       "revId": "ad222fef9977acba0cc426591bf2a936eb9d65e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aafa50b2_2843d7de",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-01-03T10:49:21Z",
+      "side": 1,
+      "message": "I have the same question as Alice: when do we need this information for an input device?\nThis API was initially created for media playback capabilities. Please explain whay it is needed for capture, for which use cases and how the fact that it is supported by the offload path matters.",
+      "parentUuid": "dd244b2e_170924ec",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 14
+      },
+      "revId": "ad222fef9977acba0cc426591bf2a936eb9d65e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
