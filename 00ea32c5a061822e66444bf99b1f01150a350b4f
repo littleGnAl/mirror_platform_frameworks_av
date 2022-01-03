@@ -34,6 +34,24 @@
       "parentUuid": "e7eedcbe_ffea48e6",
       "revId": "00ea32c5a061822e66444bf99b1f01150a350b4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "44f026af_7742e866",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 53
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2022-01-03T10:16:44Z",
+      "side": 1,
+      "message": "Guilty patch for regression is in fact: \nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1893636\n\nCL updated, test OK",
+      "parentUuid": "153824ca_409e0be1",
+      "revId": "00ea32c5a061822e66444bf99b1f01150a350b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
