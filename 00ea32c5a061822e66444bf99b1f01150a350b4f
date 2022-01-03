@@ -16,6 +16,24 @@
       "message": "Francois,\n\nWhen we run the test audiopolicy_tests.AudioPolicyManagerTest#CreateAudioPatchFailure on this CL plus its 4 ancestors , it fails  with the following crash:\n12-23 12:36:37.427  8877  8877 F DEBUG   : *** *** *** *** *** *** *** *** *** *** *** *** *** *** *** ***\n12-23 12:36:37.427  8877  8877 F DEBUG   : Build fingerprint: \u0027generic/cf_x86_64_phone/vsoc_x86_64:Tiramisu/MASTER/P28515444:userdebug/dev-keys\u0027\n12-23 12:36:37.427  8877  8877 F DEBUG   : Revision: \u00270\u0027\n12-23 12:36:37.427  8877  8877 F DEBUG   : ABI: \u0027x86_64\u0027\n12-23 12:36:37.427  8877  8877 F DEBUG   : Timestamp: 2021-12-23 12:36:37.397457551+0000\n12-23 12:36:37.427  8877  8877 F DEBUG   : Process uptime: 1s\n12-23 12:36:37.427  8877  8877 F DEBUG   : Cmdline: /data/local/tmp/audiopolicy_tests/x86_64/audiopolicy_tests --gtest_print_time --gtest_filter\u003d-AudioPolicyManagerTestInit.EngineFailure:AudioPolicyManagerTestInit.ClientFailure:AudioPolicyManagerTestInit.ConfigLoadingIsTransactional:AudioPolicyManagerTest.InitSuccess:AudioPolicyManagerTest.Dump\n12-23 12:36:37.427  8877  8877 F DEBUG   : pid: 8874, tid: 8874, name: audiopolicy_tes  \u003e\u003e\u003e /data/local/tmp/audiopolicy_tests/x86_64/audiopolicy_tests \u003c\u003c\u003c\n12-23 12:36:37.427  8877  8877 F DEBUG   : uid: 2000\n12-23 12:36:37.427  8877  8877 F DEBUG   : signal 11 (SIGSEGV), code 1 (SEGV_MAPERR), fault addr 0x0000000000000008\n12-23 12:36:37.427  8877  8877 F DEBUG   : Cause: null pointer dereference\n12-23 12:36:37.427  8877  8877 F DEBUG   :     rax 0000000000000008  rbx 0000772f44b348b0  rcx 00005d0a1f4ee000  rdx 0000000000000000\n12-23 12:36:37.427  8877  8877 F DEBUG   :     r8  0000000000000110  r9  0000000000000001  r10 0000000000000000  r11 0000000000000000\n12-23 12:36:37.427  8877  8877 F DEBUG   :     r12 0000772dbc816d20  r13 00007ffe02aafe1c  r14 0000772dbc816f00  r15 0000000000000000\n12-23 12:36:37.427  8877  8877 F DEBUG   :     rdi ab4b105371f11461  rsi 00005d0a1f551438\n12-23 12:36:37.427  8877  8877 F DEBUG   :     rbp 00007ffe02aafdd0  rsp 00007ffe02aaf9f0  rip 0000772f44acd6b7\n12-23 12:36:37.427  8877  8877 F DEBUG   : backtrace:\n12-23 12:36:37.427  8877  8877 F DEBUG   :   NOTE: Function names and BuildId information is missing for some frames due\n12-23 12:36:37.427  8877  8877 F DEBUG   :   NOTE: to unreadable libraries. For unwinds of apps, only shared libraries\n12-23 12:36:37.427  8877  8877 F DEBUG   :   NOTE: found under the lib/ directory are readable.\n12-23 12:36:37.427  8877  8877 F DEBUG   :   NOTE: On this device, run setenforce 0 to make the libraries readable.\n12-23 12:36:37.427  8877  8877 F DEBUG   :       #00 pc 000000000008a6b7  /system/lib64/libaudiopolicymanagerdefault.so (android::AudioPolicyManager::createAudioPatch(audio_patch const*, int*, unsigned int)+135) (BuildId: 4fc2623a1a78541ba0037216e2d58d6a)\n12-23 12:36:37.427  8877  8877 F DEBUG   :       #01 pc 000000000007295e  /data/local/tmp/audiopolicy_tests/x86_64/audiopolicy_tests\n12-23 12:36:37.427  8877  8877 F DEBUG   :       #02 pc 00000000000bf57e  /data/local/tmp/audiopolicy_tests/x86_64/audiopolicy_tests\n12-23 12:36:37.427  8877  8877 F DEBUG   :       #03 pc 00000000000c00f3  /data/local/tmp/audiopolicy_tests/x86_64/audiopolicy_tests\n12-23 12:36:37.427  8877  8877 F DEBUG   :       #04 pc 00000000000c0b54  /data/local/tmp/audiopolicy_tests/x86_64/audiopolicy_tests\n12-23 12:36:37.427  8877  8877 F DEBUG   :       #05 pc 00000000000cefcf  /data/local/tmp/audiopolicy_tests/x86_64/audiopolicy_tests\n12-23 12:36:37.427  8877  8877 F DEBUG   :       #06 pc 00000000000ce811  /data/local/tmp/audiopolicy_tests/x86_64/audiopolicy_tests\n12-23 12:36:37.427  8877  8877 F DEBUG   :       #07 pc 00000000000799da  /data/local/tmp/audiopolicy_tests/x86_64/audiopolicy_tests\n12-23 12:36:37.427  8877  8877 F DEBUG   :       #08 pc 0000000000050056  /apex/com.android.runtime/lib64/bionic/libc.so (__libc_init+86) (BuildId: 2340a1ea73bd3828fbf783059de471fa)\n\nCan you see if you repro on your end?\n",
       "revId": "00ea32c5a061822e66444bf99b1f01150a350b4f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "153824ca_409e0be1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 53
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2022-01-03T10:07:23Z",
+      "side": 1,
+      "message": "Reproduced \u0026 fixed",
+      "parentUuid": "e7eedcbe_ffea48e6",
+      "revId": "00ea32c5a061822e66444bf99b1f01150a350b4f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
