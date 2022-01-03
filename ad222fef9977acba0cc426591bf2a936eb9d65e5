@@ -22,6 +22,30 @@
       },
       "revId": "ad222fef9977acba0cc426591bf2a936eb9d65e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dd244b2e_170924ec",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1875587
+      },
+      "writtenOn": "2022-01-03T06:45:30Z",
+      "side": 1,
+      "message": "This would be used for getting the supported format for le audio decode",
+      "parentUuid": "0380318a_f7f9ce32",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 14
+      },
+      "revId": "ad222fef9977acba0cc426591bf2a936eb9d65e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
