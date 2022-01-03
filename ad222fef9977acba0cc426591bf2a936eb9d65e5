@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0380318a_f7f9ce32",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1730162
+      },
+      "writtenOn": "2022-01-03T02:41:56Z",
+      "side": 1,
+      "message": "This would not be used for BluetoothMedia. The function name is not suitable for this device type.",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 14
+      },
+      "revId": "ad222fef9977acba0cc426591bf2a936eb9d65e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
