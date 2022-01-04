@@ -118,6 +118,30 @@
       },
       "revId": "ad222fef9977acba0cc426591bf2a936eb9d65e5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75427fd6_f45eeac6",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 552,
+      "author": {
+        "id": 1875587
+      },
+      "writtenOn": "2022-01-04T09:42:37Z",
+      "side": 1,
+      "message": "Please give me some time to check the design for audio policy file for conversation and recording and get back to you. Maybe the function name let you feel confused or maybe I misunderstand the design of the audio policy file, I will figure out it, and provide a way to get the supported codec for decoding.",
+      "parentUuid": "70e663e4_8da61a3c",
+      "range": {
+        "startLine": 550,
+        "startChar": 0,
+        "endLine": 552,
+        "endChar": 14
+      },
+      "revId": "ad222fef9977acba0cc426591bf2a936eb9d65e5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
