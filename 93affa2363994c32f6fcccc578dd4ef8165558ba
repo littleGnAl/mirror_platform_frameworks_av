@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a25f5650_43686b59",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 158,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-01-04T21:49:01Z",
+      "side": 1,
+      "message": "should we restructure this so that both bitrate and quality are populated\nfor all invocations?",
+      "range": {
+        "startLine": 157,
+        "startChar": 4,
+        "endLine": 158,
+        "endChar": 56
+      },
+      "revId": "93affa2363994c32f6fcccc578dd4ef8165558ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd5303a1_3c6a7ce1",
+        "filename": "media/libstagefright/ACodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4758,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-01-04T21:49:01Z",
+      "side": 1,
+      "message": "would we better off making sure that the findVideoBitrateControlInfo() \nroutine always fills in all values if it\u0027s returning true.\n[i would not be opposed to *both* that change and this one here.]\n\n\nmedia code has many many instances of this pattern:\n   int foo;\n   if (!find_int32(\"key\", \u0026foo) {\n       // wasn\u0027t there, so foo isn\u0027t valid\n       return ...\n   }\n   // use foo \n   \nsometimes \u0027foo\u0027 is initialized at declaration, but often not -- because\nthe \u0027contract\u0027 with the find_XXX routine is \"the value will be filled in if the routine returns true\".  in this particular case, the findxxx() routine is not\nfollowing that pattern/contract.\n\ni can\u0027t tell you how many of those findXXX() routines return a single variable vs multiple variables (as this one does).\n\nmy intent here is to spark some discussion about what we think the preferred pattern should be.",
+      "range": {
+        "startLine": 4758,
+        "startChar": 9,
+        "endLine": 4758,
+        "endChar": 36
+      },
+      "revId": "93affa2363994c32f6fcccc578dd4ef8165558ba",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
