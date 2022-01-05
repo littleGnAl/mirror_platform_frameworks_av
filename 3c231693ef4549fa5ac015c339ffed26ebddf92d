@@ -16,6 +16,24 @@
       "message": "it seems the dev branch where this is needed, now includes this CL.\nWill mark this as WIP till there is clarity on whether this is really needed in android11-gsi branch.",
       "revId": "3c231693ef4549fa5ac015c339ffed26ebddf92d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "765b78db_63defc28",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-01-05T22:07:37Z",
+      "side": 1,
+      "message": "Marking this as resolved as this fix is needed in android11-gsi branch for non tv devices as well.",
+      "parentUuid": "0fa05011_33b73f92",
+      "revId": "3c231693ef4549fa5ac015c339ffed26ebddf92d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
