@@ -16,6 +16,24 @@
       "message": "Thanks for this patch. Have you seen crashes that you think are related to this problem?\n\n",
       "revId": "ac16d54f3a444c7024e0b77359f9a7041c4ea40a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "615b99fa_4d4cf39c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1422811
+      },
+      "writtenOn": "2022-01-05T01:52:10Z",
+      "side": 1,
+      "message": "yes，in some game app using aaudio；I tried a scene ，When I call the setvolume interface of AudioPlaybackConfiguration from trackPlayer in PlaybackActivityMonitor，app will crash.",
+      "parentUuid": "14f6a55c_d202e14a",
+      "revId": "ac16d54f3a444c7024e0b77359f9a7041c4ea40a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
