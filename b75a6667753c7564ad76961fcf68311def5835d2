@@ -494,6 +494,30 @@
       },
       "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "48c7e28d_a77d8312",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1458,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2022-01-07T07:11:39Z",
+      "side": 1,
+      "message": "re: Wonsik, Aha, that\u0027s it? Thanks a lot!\nI thought I should do something like:\nALOGD(\"........: %s\", config-\u003emInputFormat-\u003edebugString().c_str());\n\nre: Ray, I see. My response above to Wonsik was written (right after Patch around 5pm) before your last comment here but has not submitted. \nIs there any way for config-\u003emInputFormat-\u003edebugString() to even have encodingStatisticsLevel as well? So that, we don\u0027t add \"encodingStatisticsLevel\"?",
+      "parentUuid": "22f01c35_90f4fa12",
+      "range": {
+        "startLine": 1458,
+        "startChar": 15,
+        "endLine": 1458,
+        "endChar": 28
+      },
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
