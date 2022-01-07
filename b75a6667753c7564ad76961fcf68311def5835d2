@@ -470,6 +470,30 @@
       },
       "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "81f35fc8_ae87b2a2",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1458,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-01-07T04:07:48Z",
+      "side": 1,
+      "message": "The specific thing I was thinking would be to change line 1458 to:\n\nALOGD(\"setup formats, level %d input: %s\", encodingStatisticsLevel,\n       config-\u003emInputFormat-\u003edebugString().c_str());\n\ni prefer that all on a single line, rather than having an extra line as wonsik\u0027s suggestion would yield. i prefer a slightly more complicated single llogcat ine over having multiple logcat lines.",
+      "parentUuid": "22f01c35_90f4fa12",
+      "range": {
+        "startLine": 1458,
+        "startChar": 15,
+        "endLine": 1458,
+        "endChar": 28
+      },
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
