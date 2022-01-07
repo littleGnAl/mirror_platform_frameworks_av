@@ -518,6 +518,30 @@
       },
       "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cdb170ed_8e4127e2",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1458,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-07T22:28:31Z",
+      "side": 1,
+      "message": "We could add an internal param for the logging in mInputFormat, such as:\n\n  config-\u003emInputFormat-\u003esetInt32(\"android._encoding-statistics-level\", encodingStatisticsLevel);",
+      "parentUuid": "48c7e28d_a77d8312",
+      "range": {
+        "startLine": 1458,
+        "startChar": 15,
+        "endLine": 1458,
+        "endChar": 28
+      },
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
