@@ -309,6 +309,14 @@ void C2PlatformAllocatorStoreImpl::setComponentStore(std::shared_ptr<C2Component
     if (allocator) {
         UseComponentStoreForIonAllocator(allocator, store);
     }
+    std::shared_ptr<C2DmaBufAllocator> dmaAllocator;
+    {
+        std::lock_guard<std::mutex> lock(gDmaBufAllocatorMutex);
+        dmaAllocator = gDmaBufAllocator.lock();
+    }
+    if (dmaAllocator) {
+        UseComponentStoreForDmaBufAllocator(dmaAllocator, store);
+    }
 }
 
 std::shared_ptr<C2Allocator> C2PlatformAllocatorStoreImpl::fetchIonAllocator() {
