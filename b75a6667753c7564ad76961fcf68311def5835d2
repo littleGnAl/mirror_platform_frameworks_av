@@ -446,6 +446,30 @@
       },
       "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "22f01c35_90f4fa12",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1458,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-07T00:13:49Z",
+      "side": 1,
+      "message": "You could just log it separately:\n\n  ALOGD(\"encoding statistics level \u003d %d\", encodingStatisticsLevel);",
+      "parentUuid": "2300b2ce_f36898d6",
+      "range": {
+        "startLine": 1458,
+        "startChar": 15,
+        "endLine": 1458,
+        "endChar": 28
+      },
+      "revId": "b75a6667753c7564ad76961fcf68311def5835d2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
