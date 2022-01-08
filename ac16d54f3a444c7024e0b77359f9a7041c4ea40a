@@ -70,6 +70,24 @@
       "parentUuid": "9ee240d3_8c3fe2ab",
       "revId": "ac16d54f3a444c7024e0b77359f9a7041c4ea40a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "772d2074_2bf03da9",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2022-01-08T06:29:49Z",
+      "side": 1,
+      "message": "Thanks for filing the bug and the bugreport. It is clear that setVolume is called after the audio stream is closed.\n\nThe CL looks reasonable to me. But I will need to do some more tests before merging the CL. Thanks,",
+      "parentUuid": "3eb8deef_613dd0ee",
+      "revId": "ac16d54f3a444c7024e0b77359f9a7041c4ea40a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
