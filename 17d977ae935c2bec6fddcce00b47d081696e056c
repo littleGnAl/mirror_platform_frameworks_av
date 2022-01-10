@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aec9fd0b_68ab3cc7",
+        "filename": "media/libmediaplayerservice/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 74,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-01-10T16:55:06Z",
+      "side": 1,
+      "message": "merge conflict getting to internal/master here because\nthere is a different change (for a different reason) that\nadded another entry here in the internal tree.\n\nso git sees 2 changes that add different lines at the same place and doesn\u0027t\nlike that.",
+      "range": {
+        "startLine": 73,
+        "startChar": 5,
+        "endLine": 74,
+        "endChar": 6
+      },
+      "revId": "17d977ae935c2bec6fddcce00b47d081696e056c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
