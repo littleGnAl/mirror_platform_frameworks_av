@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "da408482_8fb9d8f8",
+        "filename": "services/camera/libcameraservice/device3/Camera3Device.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 4665,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2022-01-10T18:16:51Z",
+      "side": 1,
+      "message": "We seem to be doing a nested lock here. Previous lock is at line 2289. \n\nLock, Lock, Unlock, Unlock. The 2nd Lock and 2nd unlock are no-ops.",
+      "range": {
+        "startLine": 4665,
+        "startChar": 71,
+        "endLine": 4665,
+        "endChar": 81
+      },
+      "revId": "f7057ca95ee4f70a0199592761fbf8235a1855c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
