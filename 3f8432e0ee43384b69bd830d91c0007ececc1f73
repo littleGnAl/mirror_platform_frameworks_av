@@ -22,6 +22,30 @@
       },
       "revId": "3f8432e0ee43384b69bd830d91c0007ececc1f73",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "31d71b16_e1d86a33",
+        "filename": "media/codec2/vndk/C2Store.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 304,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-01-10T20:07:10Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c3cbd167_696e249f",
+      "range": {
+        "startLine": 304,
+        "startChar": 36,
+        "endLine": 304,
+        "endChar": 45
+      },
+      "revId": "3f8432e0ee43384b69bd830d91c0007ececc1f73",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
