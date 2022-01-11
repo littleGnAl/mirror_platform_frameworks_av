@@ -16,6 +16,29 @@
       "message": "let\u0027s see if treehugger likes it after the last round of changes to the CL.",
       "revId": "0fd2f9582579bf229ea794a8fd928d93a6c48c51",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03e3807c_ed50c3df",
+        "filename": "media/codecs/amrwb/enc/test/Android.bp",
+        "patchSetId": 7
+      },
+      "lineNbr": 30,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-01-11T04:54:07Z",
+      "side": 1,
+      "message": "Ruchika,\nPlease remove this line.",
+      "range": {
+        "startLine": 30,
+        "startChar": 0,
+        "endLine": 30,
+        "endChar": 34
+      },
+      "revId": "0fd2f9582579bf229ea794a8fd928d93a6c48c51",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
