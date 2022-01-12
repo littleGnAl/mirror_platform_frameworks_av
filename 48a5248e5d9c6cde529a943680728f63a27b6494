@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4dbcaca_d300fef5",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2022-01-12T00:12:16Z",
+      "side": 1,
+      "message": "Vendor verified that this CL fixes the issue. Also verified that when setting ENABLE_ZSL tag in repeating request, the mRequestLastFrameNumbersList list isn\u0027t increasing. ",
+      "revId": "48a5248e5d9c6cde529a943680728f63a27b6494",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
