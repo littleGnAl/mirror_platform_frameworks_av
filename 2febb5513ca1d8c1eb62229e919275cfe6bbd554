@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4f975408_6d5d621f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2022-01-12T00:06:44Z",
+      "side": 1,
+      "message": "This bug is only causing a memory leak, not functionalities. So it\u0027s a bit hard to test in CTS. ",
+      "revId": "2febb5513ca1d8c1eb62229e919275cfe6bbd554",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
