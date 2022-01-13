@@ -542,7 +542,7 @@ void CCodecConfig::initializeStandardParams() {
                .limitTo(D::ENCODER & D::VIDEO));
     // convert to timestamp base
     add(ConfigMapper(KEY_I_FRAME_INTERVAL, C2_PARAMKEY_SYNC_FRAME_INTERVAL, "value")
-        .limitTo(D::VIDEO & D::ENCODER & D::CONFIG)
+        .limitTo(D::VIDEO & D::ENCODER & (D::CONFIG | D::PARAM))
         .withMapper([](C2Value v) -> C2Value {
             // convert from i32 to float
             int32_t i32Value;
