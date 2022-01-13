@@ -1034,7 +1034,7 @@ bool C2BufferQueueBlockPoolData::displayBlockToBufferQueue() {
 
 C2BufferQueueBlockPool::C2BufferQueueBlockPool(
         const std::shared_ptr<C2Allocator> &allocator, const local_id_t localId)
-        : mAllocator(allocator), mLocalId(localId), mImpl(new Impl(allocator)) {}
+        : mAllocator(allocator), mLocalId(localId), mConsumerUsage(0), mImpl(new Impl(allocator)) {}
 
 C2BufferQueueBlockPool::~C2BufferQueueBlockPool() {}
 
@@ -1079,6 +1079,7 @@ void C2BufferQueueBlockPool::configureProducer(
         mImpl->configureProducer(
                producer, syncMemory, bqId, generationId, consumerUsage, true);
     }
+    mConsumerUsage = consumerUsage;
 }
 
 void C2BufferQueueBlockPool::setRenderCallback(const OnRenderCallback &renderCallback) {
