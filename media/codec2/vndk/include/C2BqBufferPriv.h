@@ -101,7 +101,7 @@ public:
             uint32_t generationId,
             uint64_t consumerUsage);
 
-    virtual uint64_t getConsumerUsage() { return mConsumerUsage; }
+    virtual void getConsumerUsage(uint64_t *consumerUsage);
 
 private:
     const std::shared_ptr<C2Allocator> mAllocator;
