@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ff002bdb_4cda2d4a",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-14T20:10:41Z",
+      "side": 1,
+      "message": "see the name change below. This must match the name of the struct.",
+      "range": {
+        "startLine": 197,
+        "startChar": 4,
+        "endLine": 197,
+        "endChar": 47
+      },
+      "revId": "668a01a9188e2cc469dc0aa7d9be2cdddbbf3485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b305b9f7_b86d8c17",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 2425,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-14T20:10:41Z",
+      "side": 1,
+      "message": "I recommend that we make a more generic QP statistics structure to account for any future evolution of the stats. E.g. x264 seems to return average QP per MB-type, and I remember some developers asking for additional statistics beyond average (min/max/std). E.g. the following structure:\n\nstruct C2PictureQuantizationStatisticsStruct {\n    C2PictureQuantizationStatisticsStruct() : type_((C2Config::picture_type_t)0),\n                                         count(0), average(NaN), std_dev(NaN)\n                                         min(NaN), max(NaN),\n                                          {}\n    C2PictureQuantizationStatisticsStruct(C2Config::picture_type_t type, float count_,\n        float average_, float std_dev_, float min_, float max_)\n        : type_(type), count(count_), average(average_), std_dev(std_dev_), min(min_), max(max_) { }\n\n    C2Config::picture_type_t type_;\n    uint32_t count;  // \u003c\u003c\u003c number of equivalent macroblocks for this type\n    float average;   // \u003c\u003c\u003c average QP value weighted by equivalent macroblocks\n    float std_dev;   // \u003c\u003c\u003c standard deviation in QP value weighted by equivalent macroblocks; \n    float min;       // \u003c\u003c\u003c minimum QP value\n    float max;       // \u003c\u003c\u003c maximum QP value\n\n    DEFINE_AND_DESCRIBE_C2STRUCT(PictureQuantization)\n    C2FIELD(type_, \"type\")\n    C2FIELD(count, \"count\")\n    C2FIELD(average, \"avg\")  // abbreviated\n    C2FIELD(std_dev, \"std\")  // abbreviated\n    C2FIELD(min, \"min\")\n    C2FIELD(max, \"max\")\n};\n\nThere type_ could be a composite type, e.g. I | P to account for combined stats - if the per type stats is not available.\n\nThen make it \n\ntypedef C2StreamParam\u003cC2Info, C2SimpleArrayStruct\u003cC2PictureQuantizationStatisticsStruct\u003e,\n        kParamIndexPictureQuantizationStatistics\u003e C2StreamPictureQuantizationStatisticsInfo;\nconstexpr char C2_PARAMKEY_PICTURE_QP_STATS[] \u003d \"coded.qp-stats\";",
+      "range": {
+        "startLine": 2425,
+        "startChar": 0,
+        "endLine": 2425,
+        "endChar": 7
+      },
+      "revId": "668a01a9188e2cc469dc0aa7d9be2cdddbbf3485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
