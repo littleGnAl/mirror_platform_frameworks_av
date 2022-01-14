@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5a21e96c_7aed8510",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 22
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-01-14T04:24:22Z",
+      "side": 1,
+      "message": "for me, after the 2 recommendations I made, I think it\u0027s good.\nLajos is code owner who will have to approve, but I would expect him to\nmake similar recommendations",
+      "revId": "a443817ed41afc47f05985f2e42ea7f5f7a5ea8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "540ea0c7_d975c03c",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-01-14T04:24:22Z",
+      "side": 1,
+      "message": "since this is a video-specific value, i wonder if it should be up around\nline 208, with the rest of the video/picture parameter constants.\n\nor maybe after line 194, where we define kParamIndexPictureQuantization,\n\nas for naming....   maybe \u0027picturequantization\u0027 instead of \u0027qp\u0027 [i had initially done kParamIndexQP and discussion moved it to picturequantization.\n\ni think that my recommendation out of this is\n(1) call it  kParamIndexAveragePictureQuantization\n(2) put it after line 194.",
+      "range": {
+        "startLine": 275,
+        "startChar": 4,
+        "endLine": 275,
+        "endChar": 24
+      },
+      "revId": "a443817ed41afc47f05985f2e42ea7f5f7a5ea8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
