@@ -45,6 +45,30 @@
       },
       "revId": "668a01a9188e2cc469dc0aa7d9be2cdddbbf3485",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6b790431_1d4db0a0",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 2425,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-14T20:34:32Z",
+      "side": 1,
+      "message": "I guess count could also be a float to allow NaN. This however would make re-averaging difficult. So perhaps this could be a required value and stay as uint. For whole frame this would be (width-in-blocks)*(height-in-blocks)",
+      "parentUuid": "b305b9f7_b86d8c17",
+      "range": {
+        "startLine": 2425,
+        "startChar": 0,
+        "endLine": 2425,
+        "endChar": 7
+      },
+      "revId": "668a01a9188e2cc469dc0aa7d9be2cdddbbf3485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
