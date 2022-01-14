@@ -39,6 +39,30 @@
       },
       "revId": "a443817ed41afc47f05985f2e42ea7f5f7a5ea8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5807843b_fba8da21",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2022-01-14T19:52:56Z",
+      "side": 1,
+      "message": "Done\n\nre (1), since average qp precisely indicates the average of block QPs in a frame, I rename it reflecting that sense, \u0027kParamIndexAverageBlockQuantizationPerFrame\u0027.\nBtw, I think lines 271 and 272 (min quality for video only, correct?) also should move to video section? :)",
+      "parentUuid": "540ea0c7_d975c03c",
+      "range": {
+        "startLine": 275,
+        "startChar": 4,
+        "endLine": 275,
+        "endChar": 24
+      },
+      "revId": "a443817ed41afc47f05985f2e42ea7f5f7a5ea8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
