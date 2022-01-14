@@ -26,6 +26,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8c86e0db_f0863412",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-14T20:41:29Z",
+      "side": 1,
+      "message": "after this is the next platform-specific index.",
+      "range": {
+        "startLine": 275,
+        "startChar": 4,
+        "endLine": 275,
+        "endChar": 35
+      },
+      "revId": "668a01a9188e2cc469dc0aa7d9be2cdddbbf3485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b305b9f7_b86d8c17",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 23
@@ -61,6 +84,30 @@
       "side": 1,
       "message": "I guess count could also be a float to allow NaN. This however would make re-averaging difficult. So perhaps this could be a required value and stay as uint. For whole frame this would be (width-in-blocks)*(height-in-blocks)",
       "parentUuid": "b305b9f7_b86d8c17",
+      "range": {
+        "startLine": 2425,
+        "startChar": 0,
+        "endLine": 2425,
+        "endChar": 7
+      },
+      "revId": "668a01a9188e2cc469dc0aa7d9be2cdddbbf3485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "049f062a_b27df1ae",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 2425,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-14T20:41:29Z",
+      "side": 1,
+      "message": "If you want to keep this whole-frame, this needs to move to the platform-specific section recommend dropping the \"per frame\" as all infos are per frame. I am also requesting a new naming for platform structs to start with C2Android*Domain*ParamName*Type, so Domain\u003dStream, Type\u003dInfo, ParamName\u003dAverageBlockQuantization in this case\n\n\ntypedef C2StreamParam\u003cC2Info, C2SimpleValueStruct\u003cint32_t\u003e, kParamIndexAverageBlockQuantization\u003e\n        C2AndroidStreamAverageBlockQuantizationInfo;\nconstexpr char C2_PARAMKEY_AVERAGE_QP[] \u003d \"coded.average-qp\";",
+      "parentUuid": "6b790431_1d4db0a0",
       "range": {
         "startLine": 2425,
         "startChar": 0,
