@@ -1243,8 +1243,16 @@ status_t CCodecBufferChannel::start(
                     if (allocator) {
                         pools->outputAllocatorId = allocator->getId();
                     } else {
-                        ALOGD("[%s] component requested invalid output allocator ID %u",
+                        //Vendor allocator IDs do not need to verify, use component provide
+                        if (outputAllocators->m.values[0] >= C2PlatformAllocatorStore::PLATFORM_END) {
+                            ALOGD("[%s] component requested vendor surface output allocator ID %u",
                                 mName, outputAllocators->m.values[0]);
+                            pools->outputAllocatorId = outputAllocators->m.values[0];
+                        } else {
+                            ALOGD("[%s] component requested invalid output allocator ID %u",
+                                    mName, outputAllocators->m.values[0]);
+
+                        }
                     }
                 }
             }
@@ -1271,9 +1279,16 @@ status_t CCodecBufferChannel::start(
                         if (allocator) {
                             pools->outputAllocatorId = allocator->getId();
                         } else {
-                            ALOGD("[%s] component requested invalid surface output allocator ID %u",
+                            //Vendor allocator IDs do not need to verify, use component provide
+                            if (surfaceAllocator->value >= C2PlatformAllocatorStore::PLATFORM_END) {
+                                ALOGD("[%s] component requested vendor surface output allocator ID %u",
                                     mName, surfaceAllocator->value);
-                            err = C2_BAD_VALUE;
+                                pools->outputAllocatorId = surfaceAllocator->value;
+                            } else {
+                                ALOGD("[%s] component requested invalid surface output allocator ID %u",
+                                    mName, surfaceAllocator->value);
+                                err = C2_BAD_VALUE;
+                            }
                         }
                     }
                 }
