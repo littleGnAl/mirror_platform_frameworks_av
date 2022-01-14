@@ -116,6 +116,30 @@
       },
       "revId": "668a01a9188e2cc469dc0aa7d9be2cdddbbf3485",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cb0efa0a_4f07705f",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 2425,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2022-01-14T20:43:18Z",
+      "side": 1,
+      "message": "float average;  \u003d\u003d\u003e If float type, Wonsik and I expected possible compatibility issues with h/w driver to HAL to Codec2, so preferred rounded down integer.\n\nfloat min;       // \u003c\u003c\u003c minimum QP value.   \u003c\u003d\u003d\u003d the QP value is always integer, hence these \nfloat max;       // \u003c\u003c\u003c maximum QP value\n                                                  min max just need be interger?",
+      "parentUuid": "6b790431_1d4db0a0",
+      "range": {
+        "startLine": 2425,
+        "startChar": 0,
+        "endLine": 2425,
+        "endChar": 7
+      },
+      "revId": "668a01a9188e2cc469dc0aa7d9be2cdddbbf3485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
