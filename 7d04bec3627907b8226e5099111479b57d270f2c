@@ -22,6 +22,30 @@
       },
       "revId": "7d04bec3627907b8226e5099111479b57d270f2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9dce6e43_53265217",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-01-14T18:56:09Z",
+      "side": 1,
+      "message": "Wonsik,\nI borrowed this from https://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/codec2/components/vpx/C2SoftVpxDec.cpp;l\u003d819?q\u003dC2SoftVpxDec.cpp\n\nIs that wrong too?",
+      "parentUuid": "a06be1a2_15222a38",
+      "range": {
+        "startLine": 608,
+        "startChar": 82,
+        "endLine": 608,
+        "endChar": 87
+      },
+      "revId": "7d04bec3627907b8226e5099111479b57d270f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
