@@ -16,6 +16,24 @@
       "message": "(not req for this CL) we can further optimize it using libyuv",
       "revId": "1b1aef259e55e6778f90846d1a4d20b9c90c7033",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "becd3ff5_f2650cec",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-01-14T19:50:37Z",
+      "side": 1,
+      "message": "Sure. will take that up in a separate CL.",
+      "parentUuid": "a0fb356e_45cb6c10",
+      "revId": "1b1aef259e55e6778f90846d1a4d20b9c90c7033",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
