@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a06be1a2_15222a38",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 608,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-14T18:49:39Z",
+      "side": 1,
+      "message": "For RGBA_1010102 we want to put GPU_SAMPLED_IMAGE usage.",
+      "range": {
+        "startLine": 608,
+        "startChar": 82,
+        "endLine": 608,
+        "endChar": 87
+      },
+      "revId": "7d04bec3627907b8226e5099111479b57d270f2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
