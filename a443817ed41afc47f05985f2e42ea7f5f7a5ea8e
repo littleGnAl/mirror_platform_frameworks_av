@@ -63,6 +63,30 @@
       },
       "revId": "a443817ed41afc47f05985f2e42ea7f5f7a5ea8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5e1df3f_58bd6804",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 22
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-01-14T19:58:10Z",
+      "side": 1,
+      "message": "we can\u0027t move these once they\u0027ve been published -- /vendor codec hal-side has this value compiled in, so if we move it they won\u0027t understand the new value.\nAn aspect of native code;  Java\u0027s JIT/runtime behavior opens the door for changes].\n\nMy recollection is that this kParamIndexEncodingQualityLevel is whether the device supports the quality level feature, and is a query-only operation.",
+      "parentUuid": "5807843b_fba8da21",
+      "range": {
+        "startLine": 275,
+        "startChar": 4,
+        "endLine": 275,
+        "endChar": 24
+      },
+      "revId": "a443817ed41afc47f05985f2e42ea7f5f7a5ea8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
