@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "76dd9e8c_70823fd3",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2022-01-15T05:10:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ff002bdb_4cda2d4a",
+      "range": {
+        "startLine": 197,
+        "startChar": 4,
+        "endLine": 197,
+        "endChar": 47
+      },
+      "revId": "668a01a9188e2cc469dc0aa7d9be2cdddbbf3485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "8c86e0db_f0863412",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-01-14T20:41:29Z",
       "side": 1,
       "message": "after this is the next platform-specific index.",
+      "range": {
+        "startLine": 275,
+        "startChar": 4,
+        "endLine": 275,
+        "endChar": 35
+      },
+      "revId": "668a01a9188e2cc469dc0aa7d9be2cdddbbf3485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d2aac825_e8658e54",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2022-01-15T05:10:33Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8c86e0db_f0863412",
       "range": {
         "startLine": 275,
         "startChar": 4,
