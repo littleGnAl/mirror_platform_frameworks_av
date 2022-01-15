@@ -22,6 +22,30 @@
       },
       "revId": "1994c677a794d6df4606f6442aa6cf81ec680d4a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "35e82dd0_a8c18bd0",
+        "filename": "media/TEST_MAPPING",
+        "patchSetId": 4
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-01-15T22:36:56Z",
+      "side": 1,
+      "message": "Marking this as resolved, as I was able to trigger presubmit run.",
+      "parentUuid": "b4e7ee1c_c9c1f8a7",
+      "range": {
+        "startLine": 9,
+        "startChar": 53,
+        "endLine": 9,
+        "endChar": 59
+      },
+      "revId": "1994c677a794d6df4606f6442aa6cf81ec680d4a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
