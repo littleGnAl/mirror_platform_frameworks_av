@@ -140,6 +140,30 @@
       },
       "revId": "668a01a9188e2cc469dc0aa7d9be2cdddbbf3485",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "73d20203_8143de04",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 23
+      },
+      "lineNbr": 2425,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2022-01-15T01:18:46Z",
+      "side": 1,
+      "message": "I think I am not clear with the meaning of \"If you want to keep this whole-frame,\" please?\n\nAssuming this is \"platform-specific\" feature, I think it is already under\n/* \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d PLATFORM-DEFINED PARAMETERS \u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d\u003d */\n\nFrom there to the end of the file are all for platform-specific features, I think?\n\nbtw, I forgot to say thank you for your recommendation about struct C2PictureQuantizationStatisticsStruct { }. I agree that it will be better if statistics info are maintained together as a struct here.\nFrom that sense, I\u0027d like to propose (not for this CL, but for the next version Android) extending the proposed quantization struct further to accommodate remaining other types of possible future stats such as distortion and MVs as well, i.e. struct C2PictureEncodingStatisticsStruct { }.",
+      "parentUuid": "cb0efa0a_4f07705f",
+      "range": {
+        "startLine": 2425,
+        "startChar": 0,
+        "endLine": 2425,
+        "endChar": 7
+      },
+      "revId": "668a01a9188e2cc469dc0aa7d9be2cdddbbf3485",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
