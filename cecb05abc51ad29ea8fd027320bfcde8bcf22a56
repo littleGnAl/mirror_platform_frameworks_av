@@ -1,0 +1,82 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000019326501",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1951596?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "6419e13b_8ec036d8",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1247,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-01-17T07:53:50Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 1247,
+        "startChar": 0,
+        "endLine": 1247,
+        "endChar": 102
+      },
+      "revId": "cecb05abc51ad29ea8fd027320bfcde8bcf22a56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000019326501",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1951596?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "01551e0a_4777060c",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1284,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-01-17T07:53:50Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 1284,
+        "startChar": 0,
+        "endLine": 1284,
+        "endChar": 103
+      },
+      "revId": "cecb05abc51ad29ea8fd027320bfcde8bcf22a56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000019326501",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1951596?revision\u003d3",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "739c7ee2_6842b18e",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1288,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-01-17T07:53:50Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 1288,
+        "startChar": 0,
+        "endLine": 1288,
+        "endChar": 104
+      },
+      "revId": "cecb05abc51ad29ea8fd027320bfcde8bcf22a56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
