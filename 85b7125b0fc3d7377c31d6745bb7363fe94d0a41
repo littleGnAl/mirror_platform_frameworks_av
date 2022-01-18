@@ -16,6 +16,29 @@
       "message": "@Lajos, since this CL aims for merging before Jan 26 IC due, could you finish your review by end of this week, Friday,Jan 14 please?",
       "revId": "85b7125b0fc3d7377c31d6745bb7363fe94d0a41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16b38693_9542a227",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 2426,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-18T22:58:29Z",
+      "side": 1,
+      "message": "manual lint check: this does not follow the naming convention:\n\nC2Android + Stream + AverageQp + Info",
+      "range": {
+        "startLine": 2426,
+        "startChar": 8,
+        "endLine": 2426,
+        "endChar": 29
+      },
+      "revId": "85b7125b0fc3d7377c31d6745bb7363fe94d0a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
