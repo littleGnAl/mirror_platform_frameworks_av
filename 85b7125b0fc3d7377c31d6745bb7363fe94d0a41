@@ -39,6 +39,30 @@
       },
       "revId": "85b7125b0fc3d7377c31d6745bb7363fe94d0a41",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e344edba_4fcb31f8",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 21
+      },
+      "lineNbr": 2426,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2022-01-18T23:33:35Z",
+      "side": 1,
+      "message": "It has been \"C2AndroidStreamAverageBlockQuantizationInfo\" since Patch 25. (The one you commented was old Patch 21)\nDo you prefer \u0027AverageQp\u0027 to \u0027AverageBlockQuantization\u0027?",
+      "parentUuid": "16b38693_9542a227",
+      "range": {
+        "startLine": 2426,
+        "startChar": 8,
+        "endLine": 2426,
+        "endChar": 29
+      },
+      "revId": "85b7125b0fc3d7377c31d6745bb7363fe94d0a41",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
