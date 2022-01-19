@@ -20,6 +20,7 @@
 #include <functional>
 
 #include <C2Buffer.h>
+#include <C2Config.h>
 
 namespace android {
 
@@ -62,6 +63,36 @@ void _UnwrapNativeCodec2GrallocMetadata(
         const C2Handle *const handle,
         uint32_t *width, uint32_t *height, uint32_t *format, uint64_t *usage, uint32_t *stride,
         uint32_t *generation, uint64_t *igbp_id, uint32_t *igbp_slot);
+
+/**
+ * Get HDR metadata from Gralloc4 handle.
+ *
+ * \param[in]   handle      handle of the allocation
+ * \param[out]  staticInfo  HDR static info to be filled. Ignored if null;
+ *                          if |handle| is invalid or does not contain the metadata,
+ *                          the shared_ptr is reset.
+ * \param[out]  dynamicInfo HDR dynamic info to be filled. Ignored if null;
+ *                          if |handle| is invalid or does not contain the metadata,
+ *                          the shared_ptr is reset.
+ * \return C2_OK if successful
+ */
+c2_status_t GetHdrMetadataFromGralloc4Handle(
+        const C2Handle *const handle,
+        std::shared_ptr<C2StreamHdrStaticInfo::input> *staticInfo,
+        std::shared_ptr<C2StreamHdrDynamicInfo::input> *dynamicInfo);
+
+/**
+ * Set HDR metadata to Gralloc4 handle.
+ *
+ * \param[in]   staticInfo  HDR static info to set. Ignored if null or invalid.
+ * \param[in]   dynamicInfo HDR dynamic info to set. Ignored if null or invalid.
+ * \param[out]  handle      handle of the allocation.
+ * \return C2_OK if successful
+ */
+c2_status_t SetHdrMetadataToGralloc4Handle(
+        const std::shared_ptr<const C2StreamHdrStaticInfo::output> &staticInfo,
+        const std::shared_ptr<const C2StreamHdrDynamicInfo::output> &dynamicInfo,
+        const C2Handle *const handle);
 
 class C2AllocatorGralloc : public C2Allocator {
 public:

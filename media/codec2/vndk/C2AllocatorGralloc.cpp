@@ -20,8 +20,12 @@
 
 #include <mutex>
 
+#include <aidl/android/hardware/graphics/common/Cta861_3.h>
+#include <aidl/android/hardware/graphics/common/Smpte2086.h>
 #include <android/hardware/graphics/common/1.2/types.h>
+#include <android/hardware/graphics/mapper/4.0/IMapper.h>
 #include <cutils/native_handle.h>
+#include <gralloctypes/Gralloc4.h>
 #include <hardware/gralloc.h>
 #include <ui/GraphicBufferAllocator.h>
 #include <ui/GraphicBufferMapper.h>
@@ -31,7 +35,19 @@
 #include <C2Buffer.h>
 #include <C2PlatformSupport.h>
 
+using ::aidl::android::hardware::graphics::common::Cta861_3;
+using ::aidl::android::hardware::graphics::common::Smpte2086;
+
+using ::android::gralloc4::MetadataType_Cta861_3;
+using ::android::gralloc4::MetadataType_Smpte2086;
+using ::android::gralloc4::MetadataType_Smpte2094_40;
+
+using ::android::hardware::Return;
 using ::android::hardware::hidl_handle;
+using ::android::hardware::hidl_vec;
+
+using Error4 = ::android::hardware::graphics::mapper::V4_0::Error;
+using IMapper4 = ::android::hardware::graphics::mapper::V4_0::IMapper;
 using PixelFormat4 = ::android::hardware::graphics::common::V1_2::PixelFormat;
 
 namespace android {
@@ -83,6 +99,23 @@ bool native_handle_is_invalid(const native_handle_t *const handle) {
             // for sanity assume handles must occupy less memory than INT_MAX bytes
             handle->numFds > int((INT_MAX - handle->version) / sizeof(int)) - handle->numInts);
 }
+
+sp<IMapper4> GetMapper4() {
+    static sp<IMapper4> sMapper = IMapper4::getService();
+    return sMapper;
+}
+
+class NativeHandleDeleter {
+public:
+    explicit NativeHandleDeleter(native_handle_t *handle) : mHandle(handle) {}
+    ~NativeHandleDeleter() {
+        if (mHandle) {
+            native_handle_delete(mHandle);
+        }
+    }
+private:
+    native_handle_t *mHandle;
+};
 
 class C2HandleGralloc : public C2Handle {
 private:
@@ -250,6 +283,179 @@ bool MigrateNativeCodec2GrallocHandle(
     return C2HandleGralloc::MigrateNativeHandle(handle, generation, igbp_id, igbp_slot);
 }
 
+c2_status_t GetHdrMetadataFromGralloc4Handle(
+        const C2Handle *const handle,
+        std::shared_ptr<C2StreamHdrStaticInfo::input> *staticInfo,
+        std::shared_ptr<C2StreamHdrDynamicInfo::input> *dynamicInfo) {
+    c2_status_t err = C2_OK;
+    native_handle_t *nativeHandle = C2HandleGralloc::UnwrapNativeHandle(handle);
+    if (nativeHandle == nullptr) {
+        // Nothing to do
+        return err;
+    }
+    // TRICKY: C2HandleGralloc::UnwrapNativeHandle creates a new handle but
+    //         does not clone the fds. Thus we need to delete the handle
+    //         without closing it when going out of scope.
+    NativeHandleDeleter nhd(nativeHandle);
+    sp<IMapper4> mapper = GetMapper4();
+    if (!mapper) {
+        // Gralloc4 not supported; nothing to do
+        return err;
+    }
+    Error4 mapperErr = Error4::NONE;
+    if (staticInfo) {
+        staticInfo->reset(new C2StreamHdrStaticInfo::input(0u));
+        memset(&(*staticInfo)->mastering, 0, sizeof((*staticInfo)->mastering));
+        (*staticInfo)->maxCll = 0;
+        (*staticInfo)->maxFall = 0;
+        IMapper4::get_cb cb = [&mapperErr, staticInfo](Error4 err, const hidl_vec<uint8_t> &vec) {
+            mapperErr = err;
+            if (err != Error4::NONE) {
+                return;
+            }
+
+            std::optional<Smpte2086> smpte2086;
+            gralloc4::decodeSmpte2086(vec, &smpte2086);
+            if (smpte2086) {
+                (*staticInfo)->mastering.red.x    = smpte2086->primaryRed.x;
+                (*staticInfo)->mastering.red.y    = smpte2086->primaryRed.y;
+                (*staticInfo)->mastering.green.x  = smpte2086->primaryGreen.x;
+                (*staticInfo)->mastering.green.y  = smpte2086->primaryGreen.y;
+                (*staticInfo)->mastering.blue.x   = smpte2086->primaryBlue.x;
+                (*staticInfo)->mastering.blue.y   = smpte2086->primaryBlue.y;
+                (*staticInfo)->mastering.white.x  = smpte2086->whitePoint.x;
+                (*staticInfo)->mastering.white.y  = smpte2086->whitePoint.y;
+
+                (*staticInfo)->mastering.maxLuminance = smpte2086->maxLuminance;
+                (*staticInfo)->mastering.minLuminance = smpte2086->minLuminance;
+            }
+        };
+        Return<void> ret = mapper->get(nativeHandle, MetadataType_Smpte2086, cb);
+        if (!ret.isOk()) {
+            err = C2_REFUSED;
+        } else if (mapperErr != Error4::NONE) {
+            err = C2_CORRUPTED;
+        }
+        cb = [&mapperErr, staticInfo](Error4 err, const hidl_vec<uint8_t> &vec) {
+            mapperErr = err;
+            if (err != Error4::NONE) {
+                return;
+            }
+
+            std::optional<Cta861_3> cta861_3;
+            gralloc4::decodeCta861_3(vec, &cta861_3);
+            if (cta861_3) {
+                (*staticInfo)->maxCll   = cta861_3->maxContentLightLevel;
+                (*staticInfo)->maxFall  = cta861_3->maxFrameAverageLightLevel;
+            }
+        };
+        ret = mapper->get(nativeHandle, MetadataType_Cta861_3, cb);
+        if (!ret.isOk()) {
+            err = C2_REFUSED;
+        } else if (mapperErr != Error4::NONE) {
+            err = C2_CORRUPTED;
+        }
+    }
+    if (dynamicInfo) {
+        dynamicInfo->reset();
+        IMapper4::get_cb cb = [&mapperErr, dynamicInfo](Error4 err, const hidl_vec<uint8_t> &vec) {
+            mapperErr = err;
+            if (err != Error4::NONE) {
+                return;
+            }
+            if (!dynamicInfo) {
+                return;
+            }
+            *dynamicInfo = C2StreamHdrDynamicInfo::input::AllocShared(
+                    vec.size(), 0u, C2Config::HDR_DYNAMIC_METADATA_TYPE_SMPTE_2094_40);
+            memcpy((*dynamicInfo)->m.data, vec.data(), vec.size());
+        };
+        Return<void> ret = mapper->get(nativeHandle, MetadataType_Smpte2094_40, cb);
+        if (!ret.isOk() || mapperErr != Error4::NONE) {
+            dynamicInfo->reset();
+        }
+    }
+
+    return err;
+}
+
+c2_status_t SetHdrMetadataToGralloc4Handle(
+        const std::shared_ptr<const C2StreamHdrStaticInfo::output> &staticInfo,
+        const std::shared_ptr<const C2StreamHdrDynamicInfo::output> &dynamicInfo,
+        const C2Handle *const handle) {
+    c2_status_t err = C2_OK;
+    native_handle_t *nativeHandle = C2HandleGralloc::UnwrapNativeHandle(handle);
+    if (nativeHandle == nullptr) {
+        // Nothing to do
+        return err;
+    }
+    // TRICKY: C2HandleGralloc::UnwrapNativeHandle creates a new handle but
+    //         does not clone the fds. Thus we need to delete the handle
+    //         without closing it when going out of scope.
+    NativeHandleDeleter nhd(nativeHandle);
+    sp<IMapper4> mapper = GetMapper4();
+    if (!mapper) {
+        // Gralloc4 not supported; nothing to do
+        return err;
+    }
+    if (staticInfo && *staticInfo) {
+        std::optional<Smpte2086> smpte2086 = Smpte2086{
+            {staticInfo->mastering.red.x, staticInfo->mastering.red.y},
+            {staticInfo->mastering.green.x, staticInfo->mastering.green.y},
+            {staticInfo->mastering.blue.x, staticInfo->mastering.blue.y},
+            {staticInfo->mastering.white.x, staticInfo->mastering.white.y},
+            staticInfo->mastering.maxLuminance,
+            staticInfo->mastering.minLuminance,
+        };
+        hidl_vec<uint8_t> vec;
+        if (gralloc4::encodeSmpte2086(smpte2086, &vec) == OK) {
+            Return<Error4> ret = mapper->set(nativeHandle, MetadataType_Smpte2086, vec);
+            if (!ret.isOk()) {
+                err = C2_REFUSED;
+            } else if (ret != Error4::NONE) {
+                err = C2_CORRUPTED;
+            }
+        }
+        std::optional<Cta861_3> cta861_3 = Cta861_3{
+            staticInfo->maxCll,
+            staticInfo->maxFall,
+        };
+        if (gralloc4::encodeCta861_3(cta861_3, &vec) == OK) {
+            Return<Error4> ret = mapper->set(nativeHandle, MetadataType_Cta861_3, vec);
+            if (!ret.isOk()) {
+                err = C2_REFUSED;
+            } else if (ret != Error4::NONE) {
+                err = C2_CORRUPTED;
+            }
+        }
+    }
+    if (dynamicInfo && *dynamicInfo) {
+        hidl_vec<uint8_t> vec;
+        vec.resize(dynamicInfo->flexCount());
+        memcpy(vec.data(), dynamicInfo->m.data, dynamicInfo->flexCount());
+        std::optional<IMapper4::MetadataType> metadataType;
+        switch (dynamicInfo->m.type_) {
+        case C2Config::HDR_DYNAMIC_METADATA_TYPE_SMPTE_2094_10:
+            // TODO
+            break;
+        case C2Config::HDR_DYNAMIC_METADATA_TYPE_SMPTE_2094_40:
+            metadataType = MetadataType_Smpte2094_40;
+            break;
+        }
+        if (metadataType) {
+            Return<Error4> ret = mapper->set(nativeHandle, *metadataType, vec);
+            if (!ret.isOk()) {
+                err = C2_REFUSED;
+            } else if (ret != Error4::NONE) {
+                err = C2_CORRUPTED;
+            }
+        } else {
+            err = C2_BAD_VALUE;
+        }
+    }
+
+    return err;
+}
 
 class C2AllocationGralloc : public C2GraphicAllocation {
 public:

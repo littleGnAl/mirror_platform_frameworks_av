@@ -840,6 +840,14 @@ status_t CCodecBufferChannel::renderOutputBuffer(
         hdr10PlusInfo.reset();
     }
 
+    // HDR dynamic info
+    std::shared_ptr<const C2StreamHdrDynamicInfo::output> hdrDynamicInfo =
+        std::static_pointer_cast<const C2StreamHdrDynamicInfo::output>(
+                c2Buffer->getInfo(C2StreamHdrDynamicInfo::output::PARAM_TYPE));
+    if (hdrDynamicInfo && hdrDynamicInfo->flexCount() == 0) {
+        hdrDynamicInfo.reset();
+    }
+
     std::vector<C2ConstGraphicBlock> blocks = c2Buffer->data().graphicBlocks();
     if (blocks.size() != 1u) {
         ALOGD("[%s] expected 1 graphic block, but got %zu", mName, blocks.size());
@@ -859,7 +867,7 @@ status_t CCodecBufferChannel::renderOutputBuffer(
             videoScalingMode,
             transform,
             Fence::NO_FENCE, 0);
-    if (hdrStaticInfo || hdr10PlusInfo) {
+    if (hdrStaticInfo || hdr10PlusInfo || hdrDynamicInfo) {
         HdrMetadata hdr;
         if (hdrStaticInfo) {
             // If mastering max and min luminance fields are 0, do not use them.
@@ -902,7 +910,25 @@ status_t CCodecBufferChannel::renderOutputBuffer(
                     hdr10PlusInfo->m.value,
                     hdr10PlusInfo->m.value + hdr10PlusInfo->flexCount());
         }
+        if (hdrDynamicInfo
+                && hdrDynamicInfo->m.type_ == C2Config::HDR_DYNAMIC_METADATA_TYPE_SMPTE_2094_40) {
+            hdr.validTypes |= HdrMetadata::HDR10PLUS;
+            hdr.hdr10plus.assign(
+                    hdrDynamicInfo->m.data,
+                    hdrDynamicInfo->m.data + hdrDynamicInfo->flexCount());
+        }
         qbi.setHdrMetadata(hdr);
+
+        if (hdr10PlusInfo && !hdrDynamicInfo) {
+            std::shared_ptr<C2StreamHdrDynamicInfo::output> info =
+                    C2StreamHdrDynamicInfo::output::AllocShared(
+                            hdr10PlusInfo->flexCount(),
+                            0u,
+                            C2Config::HDR_DYNAMIC_METADATA_TYPE_SMPTE_2094_40);
+            memcpy(info->m.data, hdr10PlusInfo->m.value, hdr10PlusInfo->flexCount());
+            hdrDynamicInfo = info;
+        }
+        SetHdrMetadataToGralloc4Handle(hdrStaticInfo, hdrDynamicInfo, block.handle());
     }
     // we don't have dirty regions
     qbi.setSurfaceDamage(Region::INVALID_REGION);
