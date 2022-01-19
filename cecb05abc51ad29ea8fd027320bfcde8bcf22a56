@@ -16,6 +16,24 @@
       "message": "Components need to use the allocators that platform understands.",
       "revId": "cecb05abc51ad29ea8fd027320bfcde8bcf22a56",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f49884e2_fcee91f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1238369
+      },
+      "writtenOn": "2022-01-19T05:58:14Z",
+      "side": 1,
+      "message": "Our existing framework must extend blockpool, so libc2plugin.so is extended.But libc2plugin_ store.so is a vendor lib, the system does not. In order to access our blockpool, we must have the allocator ID of our vendor. However, in allocatorStore-\u003efetchAllocator, the system donot load libc2plugin_store.so,so cannot get allocator, and cannot get ringht allocatorID. But the allocatorID from vendor component it is useful for vendor.\nWhy can not use vendor allocatorID? Any others suggest if we must extend BlockPool?",
+      "parentUuid": "855b1349_4e9649e2",
+      "revId": "cecb05abc51ad29ea8fd027320bfcde8bcf22a56",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
