@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "da1cce24_616b654f",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 164,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2022-01-19T23:09:23Z",
+      "side": 1,
+      "message": "Sure. I recorded the latency for create, configure, start, and first buffer out. The initialization latency is the sum of them. These latencies are all added to the metric.",
+      "parentUuid": "e59b1839_0cd3f95b",
+      "revId": "2c27e8c085467bcac66b02d22b20d718cec7a330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "504cf354_034a0f50",
@@ -32,6 +50,30 @@
       "side": 1,
       "message": "\u003e Please remove the trailing whitespace.\n\nPlease fix.",
       "parentUuid": "46b0a925_6c220fe9",
+      "range": {
+        "startLine": 1515,
+        "startChar": 25,
+        "endLine": 1515,
+        "endChar": 29
+      },
+      "revId": "2c27e8c085467bcac66b02d22b20d718cec7a330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "689caa50_4d5b9f5b",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1515,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2022-01-19T23:09:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "504cf354_034a0f50",
       "range": {
         "startLine": 1515,
         "startChar": 25,
@@ -65,6 +107,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f65e3515_b882f1e8",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3525,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2022-01-19T23:09:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "fc6ff964_aca47041",
+      "range": {
+        "startLine": 3525,
+        "startChar": 36,
+        "endLine": 3525,
+        "endChar": 56
+      },
+      "revId": "2c27e8c085467bcac66b02d22b20d718cec7a330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f11fb383_fd204831",
@@ -78,6 +144,30 @@
       "writtenOn": "2021-12-01T00:43:51Z",
       "side": 1,
       "message": "no m- prefix for local var",
+      "range": {
+        "startLine": 3526,
+        "startChar": 36,
+        "endLine": 3526,
+        "endChar": 55
+      },
+      "revId": "2c27e8c085467bcac66b02d22b20d718cec7a330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "29c91aad_adc36c7d",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3526,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2022-01-19T23:09:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "f11fb383_fd204831",
       "range": {
         "startLine": 3526,
         "startChar": 36,
@@ -112,6 +202,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f077653e_f425710e",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3527,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2022-01-19T23:09:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "da036688_7daeb33d",
+      "range": {
+        "startLine": 3527,
+        "startChar": 0,
+        "endLine": 3527,
+        "endChar": 116
+      },
+      "revId": "2c27e8c085467bcac66b02d22b20d718cec7a330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0ad0fa7b_c487edff",
@@ -126,6 +240,30 @@
       "side": 1,
       "message": "\u003e Please remove the trailing whitespace.\n\nPlease fix.",
       "parentUuid": "3cd3d29d_69b9081d",
+      "range": {
+        "startLine": 3530,
+        "startChar": 0,
+        "endLine": 3530,
+        "endChar": 24
+      },
+      "revId": "2c27e8c085467bcac66b02d22b20d718cec7a330",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67deb9e8_2c618925",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 3530,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2022-01-19T23:09:23Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0ad0fa7b_c487edff",
       "range": {
         "startLine": 3530,
         "startChar": 0,
