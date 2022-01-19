@@ -39,6 +39,30 @@
       },
       "revId": "c5a432bbd48737a341f7979f823a8386489c5c2c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "24643127_6d6ce97f",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 2426,
+      "author": {
+        "id": 1903520
+      },
+      "writtenOn": "2022-01-19T18:40:47Z",
+      "side": 1,
+      "message": "I found the building conflicts with Exynos, since they use exactly the same name. It is filed,  https://b.corp.google.com/issues/213921100\nI\u0027ve asked them (via Wen Chang Liu, since their team requested this KEY for ECO/EAF for P21) to fix this and they seem to plan to work on this.\nWith that, would it be fine to change \"coded.[average-qp]\" to \"coded.[qp-average]\"?",
+      "parentUuid": "6d841c6a_cf730256",
+      "range": {
+        "startLine": 2426,
+        "startChar": 27,
+        "endLine": 2426,
+        "endChar": 37
+      },
+      "revId": "c5a432bbd48737a341f7979f823a8386489c5c2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
