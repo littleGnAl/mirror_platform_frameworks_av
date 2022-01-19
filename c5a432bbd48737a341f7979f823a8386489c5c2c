@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7c5ebc59_2b124d02",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 25
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-19T18:34:22Z",
+      "side": 1,
+      "message": "sorry for commenting on an old PS.",
+      "revId": "c5a432bbd48737a341f7979f823a8386489c5c2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6d841c6a_cf730256",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 25
+      },
+      "lineNbr": 2426,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-19T18:34:22Z",
+      "side": 1,
+      "message": "sorry, missed another manual lint.\nC2_PARAMKEY_[QP_AVERAGE] must match \"coded.[average-qp]\".\n\nSo the paramkey should be C2_PARAMKEY_AVERAGE_QP",
+      "range": {
+        "startLine": 2426,
+        "startChar": 27,
+        "endLine": 2426,
+        "endChar": 37
+      },
+      "revId": "c5a432bbd48737a341f7979f823a8386489c5c2c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
