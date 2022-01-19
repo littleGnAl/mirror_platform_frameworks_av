@@ -140,6 +140,24 @@
       "message": "This got merged into master as:\nhttps://googleplex-android-review.git.corp.google.com/c/platform/frameworks/av/+/16633808/\n\nDo we want to abandon this or merge it here in AOSP after adding this line:\n\nMerged-In: I866fbb6ee4452372d6bedab44345de28fdadda7f\n",
       "revId": "ac16d54f3a444c7024e0b77359f9a7041c4ea40a",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fd5936b9_314d9ff4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1102563
+      },
+      "writtenOn": "2022-01-19T00:41:47Z",
+      "side": 1,
+      "message": "If we want to have it on AOSP, we need to add merged-in. Otherwise, the change will only be available after next release.",
+      "parentUuid": "0a822b97_62b979b8",
+      "revId": "ac16d54f3a444c7024e0b77359f9a7041c4ea40a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
