@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "8045c1aa_44217df5",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 197,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2022-01-19T19:19:39Z",
+      "side": 1,
+      "message": "Is this change still active? It looks to me that the change will be submitted in aosp/1952839.",
+      "parentUuid": "18c3f756_444f1114",
+      "range": {
+        "startLine": 197,
+        "startChar": 25,
+        "endLine": 197,
+        "endChar": 28
+      },
+      "revId": "44564cf0d4aedf43acb50bc64a4f74471c955dff",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "507a0e2c_9f7a7f6d",
         "filename": "media/libstagefright/FrameDecoder.cpp",
         "patchSetId": 1
