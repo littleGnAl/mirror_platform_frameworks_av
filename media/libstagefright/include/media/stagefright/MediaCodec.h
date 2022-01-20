@@ -445,6 +445,8 @@ private:
     int32_t mRotationDegrees;
     int32_t mAllowFrameDroppingBySurface;
 
+    uint32_t mHDRMetadataFlags; /* 0x1 for HDR static info; 0x2 for HDR10+ info */
+
     // initial create parameters
     AString mInitName;
 
