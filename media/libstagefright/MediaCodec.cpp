@@ -112,6 +112,10 @@ static const char *kCodecFrameRate = "android.media.mediacodec.frame-rate";
 static const char *kCodecCaptureRate = "android.media.mediacodec.capture-rate";
 static const char *kCodecOperatingRate = "android.media.mediacodec.operating-rate";
 static const char *kCodecPriority = "android.media.mediacodec.priority";
+static const char *kCodecColorStandard = "android.media.mediacodec.color-standard";
+static const char *kCodecColorRange = "android.media.mediacodec.color-range";
+static const char *kCodecColorTransfer = "android.media.mediacodec.color-transfer";
+static const char *kCodecHdrStaticInfoExist = "android.media.mediacodec.hdr-static-info-exist";
 
 // Min/Max QP before shaping
 static const char *kCodecOriginalVideoQPIMin = "android.media.mediacodec.original-video-qp-i-min";
@@ -1565,6 +1569,24 @@ status_t MediaCodec::configure(
             int32_t priority = -1;
             if (format->findInt32("priority", &priority)) {
                 mediametrics_setInt32(mMetricsHandle, kCodecPriority, priority);
+            }
+            int32_t colorStandard = -1;
+            if (format->findInt32("color-standard", &colorStandard)) {
+                mediametrics_setInt32(mMetricsHandle, kCodecColorStandard, colorStandard);
+            }
+            int32_t colorRange = -1;
+            if (format->findInt32("color-range", &colorRange)) {
+                mediametrics_setInt32(mMetricsHandle, kCodecColorRange, colorRange);
+            }
+            int32_t colorTransfer = -1;
+            if (format->findInt32("color-transfer", &colorTransfer)) {
+                mediametrics_setInt32(mMetricsHandle, kCodecColorTransfer, colorTransfer);
+            }
+            int32_t hdrStaticInfoExist = -1;
+            sp<ABuffer> hdrStaticInfo;
+            if (format->findBuffer("hdr-static-info", &hdrStaticInfo)) {
+                hdrStaticInfoExist = (hdrStaticInfo != nullptr) ? 1 : 0;
+                mediametrics_setInt32(mMetricsHandle, kCodecHdrStaticInfoExist, hdrStaticInfoExist);
             }
         }
 

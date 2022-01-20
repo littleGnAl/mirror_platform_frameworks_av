@@ -390,6 +390,30 @@ bool statsd_codec(const std::shared_ptr<const mediametrics::Item>& item,
     }
     AStatsEvent_writeInt32(event, qpBMaxOri);
 
+    int32_t colorStandard = -1;
+    if (item->getInt32("android.media.mediacodec.color-standard", &colorStandard)) {
+        metrics_proto.set_color_standard(colorStandard);
+    }
+    AStatsEvent_writeInt32(event, colorStandard);
+
+    int32_t colorRange = -1;
+    if (item->getInt32("android.media.mediacodec.color-range", &colorRange)) {
+        metrics_proto.set_color_range(colorRange);
+    }
+    AStatsEvent_writeInt32(event, colorRange);
+
+    int32_t colorTransfer = -1;
+    if (item->getInt32("android.media.mediacodec.color-transfer", &colorTransfer)) {
+        metrics_proto.set_color_transfer(colorTransfer);
+    }
+    AStatsEvent_writeInt32(event, colorTransfer);
+
+    int32_t hdrStaticInfoExist = -1;
+    if (item->getInt32("android.media.mediacodec.hdr-static-info-exist", &hdrStaticInfoExist)) {
+        metrics_proto.set_hdr_static_info_exist(hdrStaticInfoExist);
+    }
+    AStatsEvent_writeInt32(event, hdrStaticInfoExist);
+
     int err = AStatsEvent_write(event);
     if (err < 0) {
       ALOGE("Failed to write codec metrics to statsd (%d)", err);
