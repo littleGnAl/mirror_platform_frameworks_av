@@ -16,6 +16,121 @@
       "message": "Adding Praveen(QCOM) too.",
       "revId": "0d848f14bf2b2572357cbca173b29d831864bbc8",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "324fb709_72e8f762",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-20T05:07:01Z",
+      "side": 1,
+      "message": "this seems to be a follow-up on https://android-review.googlesource.com/c/platform/frameworks/av/+/1919778/2. Could this be incorporated into that CL?",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 12
+      },
+      "revId": "0d848f14bf2b2572357cbca173b29d831864bbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "974936aa_9ce82c9c",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 169,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-20T05:07:01Z",
+      "side": 1,
+      "message": "it seems that P010 behaves like these, but mBpp \u003d 2.",
+      "range": {
+        "startLine": 165,
+        "startChar": 1,
+        "endLine": 169,
+        "endChar": 0
+      },
+      "revId": "0d848f14bf2b2572357cbca173b29d831864bbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "00d0cecd_058a0837",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-20T05:07:01Z",
+      "side": 1,
+      "message": "it will flow similarly like this.",
+      "range": {
+        "startLine": 247,
+        "startChar": 8,
+        "endLine": 253,
+        "endChar": 18
+      },
+      "revId": "0d848f14bf2b2572357cbca173b29d831864bbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5aba181e_c7104e64",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-20T05:07:01Z",
+      "side": 1,
+      "message": "we need to do something similar to this but actually do the color conversion. You will (in a follow-up CL) also need to support multiple matrices (BT.2020 above).\n\nNote that in Planar16 0-s are on the higher bits, so you will also need to right shift by 6.",
+      "range": {
+        "startLine": 626,
+        "startChar": 9,
+        "endLine": 626,
+        "endChar": 53
+      },
+      "revId": "0d848f14bf2b2572357cbca173b29d831864bbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "87a5bb28_6002d47d",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-20T05:07:01Z",
+      "side": 1,
+      "message": "note: this is doing 8 pixels at a time... it may be easier to do 4.",
+      "range": {
+        "startLine": 653,
+        "startChar": 0,
+        "endLine": 653,
+        "endChar": 50
+      },
+      "revId": "0d848f14bf2b2572357cbca173b29d831864bbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
