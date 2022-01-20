@@ -330,6 +330,8 @@ private:
     // set of high resolution camera id (logical / physical)
     std::unordered_set<std::string> mHighResolutionSensors;
 
+    // Syncronize access to 'mCompositeStreamMap'
+    Mutex mCompositeLock;
     KeyedVector<sp<IBinder>, sp<CompositeStream>> mCompositeStreamMap;
 
     sp<CameraProviderManager> mProviderManager;
