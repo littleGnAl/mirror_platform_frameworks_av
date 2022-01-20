@@ -390,6 +390,48 @@ bool statsd_codec(const std::shared_ptr<const mediametrics::Item>& item,
     }
     AStatsEvent_writeInt32(event, qpBMaxOri);
 
+    int32_t configColorStandard = -1;
+    if (item->getInt32("android.media.mediacodec.configured-color-standard", &configColorStandard)) {
+        metrics_proto.set_configured_color_standard(configColorStandard);
+    }
+    AStatsEvent_writeInt32(event, configColorStandard);
+
+    int32_t configColorRange = -1;
+    if (item->getInt32("android.media.mediacodec.configured-color-range", &configColorRange)) {
+        metrics_proto.set_configured_color_range(configColorRange);
+    }
+    AStatsEvent_writeInt32(event, configColorRange);
+
+    int32_t configColorTransfer = -1;
+    if (item->getInt32("android.media.mediacodec.configured-color-transfer", &configColorTransfer)) {
+        metrics_proto.set_configured_color_transfer(configColorTransfer);
+    }
+    AStatsEvent_writeInt32(event, configColorTransfer);
+
+    int32_t parsedColorStandard = -1;
+    if (item->getInt32("android.media.mediacodec.parsed-color-standard", &parsedColorStandard)) {
+        metrics_proto.set_parsed_color_standard(parsedColorStandard);
+    }
+    AStatsEvent_writeInt32(event, parsedColorStandard);
+
+    int32_t parsedColorRange = -1;
+    if (item->getInt32("android.media.mediacodec.parsed-color-range", &parsedColorRange)) {
+        metrics_proto.set_parsed_color_range(parsedColorRange);
+    }
+    AStatsEvent_writeInt32(event, parsedColorRange);
+
+    int32_t parsedColorTransfer = -1;
+    if (item->getInt32("android.media.mediacodec.parsed-color-transfer", &parsedColorTransfer)) {
+        metrics_proto.set_parsed_color_transfer(parsedColorTransfer);
+    }
+    AStatsEvent_writeInt32(event, parsedColorTransfer);
+
+    int32_t hdrMetadataExist = -1;
+    if (item->getInt32("android.media.mediacodec.hdr-metadata-exist", &hdrMetadataExist)) {
+        metrics_proto.set_hdr_metadata_exist(hdrMetadataExist);
+    }
+    AStatsEvent_writeInt32(event, hdrMetadataExist);
+
     int err = AStatsEvent_write(event);
     if (err < 0) {
       ALOGE("Failed to write codec metrics to statsd (%d)", err);

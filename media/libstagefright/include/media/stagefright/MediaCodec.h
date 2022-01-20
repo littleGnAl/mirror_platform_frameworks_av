@@ -445,6 +445,8 @@ private:
     int32_t mRotationDegrees;
     int32_t mAllowFrameDroppingBySurface;
 
+    uint32_t mHDRMetadataFlags;
+
     // initial create parameters
     AString mInitName;
 
