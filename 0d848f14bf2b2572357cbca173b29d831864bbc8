@@ -43,6 +43,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e42d03be_28dd6dd3",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 83,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2022-01-20T05:11:19Z",
+      "side": 1,
+      "message": "need to add P010 here",
+      "range": {
+        "startLine": 83,
+        "startChar": 21,
+        "endLine": 83,
+        "endChar": 28
+      },
+      "revId": "0d848f14bf2b2572357cbca173b29d831864bbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "974936aa_9ce82c9c",
         "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
         "patchSetId": 1
@@ -100,6 +123,30 @@
       "writtenOn": "2022-01-20T05:07:01Z",
       "side": 1,
       "message": "we need to do something similar to this but actually do the color conversion. You will (in a follow-up CL) also need to support multiple matrices (BT.2020 above).\n\nNote that in Planar16 0-s are on the higher bits, so you will also need to right shift by 6.",
+      "range": {
+        "startLine": 626,
+        "startChar": 9,
+        "endLine": 626,
+        "endChar": 53
+      },
+      "revId": "0d848f14bf2b2572357cbca173b29d831864bbc8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4beace3a_a9420701",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 626,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2022-01-20T05:11:19Z",
+      "side": 1,
+      "message": "Something like https://source.corp.google.com/android/frameworks/av/media/codec2/components/base/SimpleC2Component.cpp;rcl\u003dHEAD;l\u003d170",
+      "parentUuid": "5aba181e_c7104e64",
       "range": {
         "startLine": 626,
         "startChar": 9,
