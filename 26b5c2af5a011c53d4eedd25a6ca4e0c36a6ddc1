@@ -16,6 +16,23 @@
       "message": "Mikhail,\nFailures seen in patchset 1\u0027s run were unrelated to the current CL, I have triggered another run.\nCan you please take a look and approve?\nThanks.",
       "revId": "26b5c2af5a011c53d4eedd25a6ca4e0c36a6ddc1",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0400cb70_0986c247",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-01-20T01:29:23Z",
+      "side": 1,
+      "message": "Agree, the test failures seem to be flakes. Thanks for the contribution!",
+      "revId": "26b5c2af5a011c53d4eedd25a6ca4e0c36a6ddc1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
