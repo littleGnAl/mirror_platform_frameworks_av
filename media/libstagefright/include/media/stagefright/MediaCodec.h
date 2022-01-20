@@ -445,6 +445,9 @@ private:
     int32_t mRotationDegrees;
     int32_t mAllowFrameDroppingBySurface;
 
+    int32_t mHDRStaticInfoExist;
+    int32_t mHDR10PlusInfoExist;
+
     // initial create parameters
     AString mInitName;
 

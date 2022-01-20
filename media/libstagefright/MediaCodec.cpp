@@ -112,6 +112,11 @@ static const char *kCodecFrameRate = "android.media.mediacodec.frame-rate";
 static const char *kCodecCaptureRate = "android.media.mediacodec.capture-rate";
 static const char *kCodecOperatingRate = "android.media.mediacodec.operating-rate";
 static const char *kCodecPriority = "android.media.mediacodec.priority";
+static const char *kCodecColorStandard = "android.media.mediacodec.color-standard";
+static const char *kCodecColorRange = "android.media.mediacodec.color-range";
+static const char *kCodecColorTransfer = "android.media.mediacodec.color-transfer";
+static const char *kCodecHDRStaticInfoExist = "android.media.mediacodec.hdr-static-info-exist";
+static const char *kCodecHDR10PlusInfoExist = "android.media.mediacodec.hdr10-plus-info-exist";
 
 // Min/Max QP before shaping
 static const char *kCodecOriginalVideoQPIMin = "android.media.mediacodec.original-video-qp-i-min";
@@ -898,6 +903,9 @@ void MediaCodec::updateMediametrics() {
         mediametrics_setInt64(mMetricsHandle, kCodecFirstFrameIndexLowLatencyModeOn,
                               mIndexOfFirstFrameWhenLowLatencyOn);
     }
+
+    mediametrics_setInt32(mMetricsHandle, kCodecHDRStaticInfoExist, mHDRStaticInfoExist);
+    mediametrics_setInt32(mMetricsHandle, kCodecHDR10PlusInfoExist, mHDR10PlusInfoExist);
 #if 0
     // enable for short term, only while debugging
     updateEphemeralMediametrics(mMetricsHandle);
@@ -1565,6 +1573,27 @@ status_t MediaCodec::configure(
             int32_t priority = -1;
             if (format->findInt32("priority", &priority)) {
                 mediametrics_setInt32(mMetricsHandle, kCodecPriority, priority);
+            }
+            int32_t colorStandard = -1;
+            if (format->findInt32("color-standard", &colorStandard)) {
+                mediametrics_setInt32(mMetricsHandle, kCodecColorStandard, colorStandard);
+            }
+            int32_t colorRange = -1;
+            if (format->findInt32("color-range", &colorRange)) {
+                mediametrics_setInt32(mMetricsHandle, kCodecColorRange, colorRange);
+            }
+            int32_t colorTransfer = -1;
+            if (format->findInt32("color-transfer", &colorTransfer)) {
+                mediametrics_setInt32(mMetricsHandle, kCodecColorTransfer, colorTransfer);
+            }
+            mHDRStaticInfoExist = 0;
+            HDRStaticInfo info;
+            if (ColorUtils::getHDRStaticInfoFromFormat(format, &info)
+                    && info->sType1.mMaxDisplayLuminance > 0.0f
+                    && info->sType1.mMinDisplayLuminance > 0.0f
+                    && info->sType1.mMaxContentLightLevel > 0.0f
+                    && info->sType1.mMaxFrameAverageLightLevel > 0.0f) {
+                mHDRStaticInfoExist = 1;
             }
         }
 
@@ -4516,6 +4545,12 @@ void MediaCodec::handleOutputFormatChangeIfNeeded(const sp<MediaCodecBuffer> &bu
             HDRStaticInfo info;
             if (ColorUtils::getHDRStaticInfoFromFormat(mOutputFormat, &info)) {
                 setNativeWindowHdrMetadata(mSurface.get(), &info);
+                if (info->sType1.mMaxDisplayLuminance > 0.0f
+                        && info->sType1.mMinDisplayLuminance > 0.0f
+                        && info->sType1.mMaxContentLightLevel > 0.0f
+                        && info->sType1.mMaxFrameAverageLightLevel > 0.0f) {
+                    mHDRStaticInfoExist = 1;
+                }
             }
         }
 
@@ -4524,6 +4559,7 @@ void MediaCodec::handleOutputFormatChangeIfNeeded(const sp<MediaCodecBuffer> &bu
                 && hdr10PlusInfo != nullptr && hdr10PlusInfo->size() > 0) {
             native_window_set_buffers_hdr10_plus_metadata(mSurface.get(),
                     hdr10PlusInfo->size(), hdr10PlusInfo->data());
+            mHDR10PlusInfoExist = 1;
         }
 
         if (mime.startsWithIgnoreCase("video/")) {
