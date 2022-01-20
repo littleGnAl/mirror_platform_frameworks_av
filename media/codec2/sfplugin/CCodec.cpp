@@ -1026,6 +1026,23 @@ void CCodec::configure(const sp<AMessage> &msg) {
                 for (size_t i = 0; i < pixelFormatInfo->flexCount(); ++i) {
                     const C2FlexiblePixelFormatDescriptorStruct &desc =
                         pixelFormatInfo->m.values[i];
+                    ALOGD("found flex format %#08x %db %s %s",
+                          desc.pixelFormat,
+                          desc.bitDepth,
+                          desc.subsampling == C2Color::MONOCHROME ? "Y" :
+                          desc.subsampling == C2Color::MONOCHROME_ALPHA ? "YA" :
+                          desc.subsampling == C2Color::RGB ? "RGB" :
+                          desc.subsampling == C2Color::RGBA ? "RGBA" :
+                          desc.subsampling == C2Color::YUV_420 ? "420" :
+                          desc.subsampling == C2Color::YUV_422 ? "422" :
+                          desc.subsampling == C2Color::YUV_444 ? "444" :
+                          desc.subsampling == C2Color::YUVA_444 ? "444A" : "(?)",
+                          desc.layout == C2Color::UNKNOWN_LAYOUT ? "?" :
+                          desc.layout == C2Color::PLANAR_PACKED ? "pp" :
+                          desc.layout == C2Color::SEMIPLANAR_PACKED ? "spp" :
+                          desc.layout == C2Color::INTERLEAVED_PACKED ? "ip" :
+                          desc.layout == C2Color::INTERLEAVED_ALIGNED ? "ia" : "(?)");
+
                     if (desc.subsampling != C2Color::YUV_420
                             // TODO(b/180076105): some device report wrong layout
                             // || desc.layout == C2Color::INTERLEAVED_PACKED
