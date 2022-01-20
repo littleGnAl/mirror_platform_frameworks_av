@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ced3c669_e876bb38",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2022-01-20T07:02:12Z",
+      "side": 1,
+      "message": "I think Mapping color format to pixel format on Codec2Mapper such as mapPixelFormatFrameworkToCodec or mapPixelFormatCodecToFramework is required.\n\nCOLOR_FormatYUVP010 \u003c-\u003e HAL_PIXEL_FORMAT_YCBCR_P010\n",
+      "revId": "4dd0267f52f15c0967f41a29db2b0bbab4c2f393",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
