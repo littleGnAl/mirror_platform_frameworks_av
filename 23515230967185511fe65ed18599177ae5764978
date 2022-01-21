@@ -16,6 +16,29 @@
       "message": "I am unsure whether I could give +2 for C2Config change. (A review from Lajos might be required.)",
       "revId": "23515230967185511fe65ed18599177ae5764978",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8ece7913_8e376e44",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 1652,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-21T18:54:47Z",
+      "side": 1,
+      "message": "nit: this should really be C2StreamHdrDynamicMetadataInfo (I see that you followed the C2StreamHdr10PlusInfo and C2StreamHdrStaticInfo)",
+      "range": {
+        "startLine": 1652,
+        "startChar": 8,
+        "endLine": 1652,
+        "endChar": 30
+      },
+      "revId": "23515230967185511fe65ed18599177ae5764978",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
