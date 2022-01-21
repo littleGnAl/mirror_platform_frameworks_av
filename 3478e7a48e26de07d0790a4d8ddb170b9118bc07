@@ -3,6 +3,75 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d8b96ecf_9ce58232",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-21T19:08:46Z",
+      "side": 1,
+      "message": "HDR metadata (and many others) should be sticky... and potentially can be unset by sending an empty info (vs not sending info).\n\nI think it is also sticky in IGBP, but I don\u0027t think it can be unset.\n\nWe would ideally need to keep the metadata in some local state and apply the changes from c2Buffer (handle unset vs keep previous).\n\nWe could do this in a follow up CL as we did not do it for HDR10+ either.",
+      "range": {
+        "startLine": 839,
+        "startChar": 4,
+        "endLine": 849,
+        "endChar": 5
+      },
+      "revId": "3478e7a48e26de07d0790a4d8ddb170b9118bc07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "67fe6902_97dfcb95",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-21T19:08:46Z",
+      "side": 1,
+      "message": "this is nice! perhaps a not to explain HDR Dynamic Info takes priority.",
+      "range": {
+        "startLine": 922,
+        "startChar": 0,
+        "endLine": 922,
+        "endChar": 47
+      },
+      "revId": "3478e7a48e26de07d0790a4d8ddb170b9118bc07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ab5dfc47_49afe0e8",
+        "filename": "media/codec2/vndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-21T19:08:46Z",
+      "side": 1,
+      "message": "this .so is shared via mainline back to Q? devices. Can we assume Q devices will have this shared lib?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 50
+      },
+      "revId": "3478e7a48e26de07d0790a4d8ddb170b9118bc07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "db4860df_2ed20443",
         "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
         "patchSetId": 1
@@ -32,6 +101,29 @@
       "side": 1,
       "message": "Could you please elaborate on what you meant here? FWIW, HdrStaticInfo has smpte2086 \u0026 cta861_3, and HdrDynamicInfo has smpte2094_40.",
       "parentUuid": "db4860df_2ed20443",
+      "revId": "3478e7a48e26de07d0790a4d8ddb170b9118bc07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "514f9201_121a983c",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-21T19:08:46Z",
+      "side": 1,
+      "message": "could this be in a separate .so that is not used by mainline/codec implementations? It seems this would only be used by CCodec.",
+      "range": {
+        "startLine": 286,
+        "startChar": 12,
+        "endLine": 286,
+        "endChar": 44
+      },
       "revId": "3478e7a48e26de07d0790a4d8ddb170b9118bc07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
