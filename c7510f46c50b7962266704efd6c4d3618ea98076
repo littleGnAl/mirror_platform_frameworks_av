@@ -33,6 +33,24 @@
       "message": "Francois,\n\nCan you check why this patch is breaking the test : AudioPolicyManagerTestMsd?\n",
       "revId": "c7510f46c50b7962266704efd6c4d3618ea98076",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cafc723c_8c370161",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 8
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2022-01-21T11:44:53Z",
+      "side": 1,
+      "message": "Reproduced \u0026 fixed, will update CL asap",
+      "parentUuid": "af91b19c_9980dcb8",
+      "revId": "c7510f46c50b7962266704efd6c4d3618ea98076",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
