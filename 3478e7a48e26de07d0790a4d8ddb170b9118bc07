@@ -18,6 +18,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "baeaaa4c_e3591b60",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-21T21:00:41Z",
+      "side": 1,
+      "message": "It seems the libgralloctypes is specifically available for mainline so removing do not submit",
+      "revId": "3478e7a48e26de07d0790a4d8ddb170b9118bc07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "d8b96ecf_9ce58232",
