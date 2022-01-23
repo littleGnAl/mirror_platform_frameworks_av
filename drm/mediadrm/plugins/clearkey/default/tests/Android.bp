@@ -32,6 +32,8 @@ cc_test {
 
     cflags: ["-Wall", "-Werror"],
 
+    tidy: false,
+
     srcs: [
         "AesCtrDecryptorUnittest.cpp",
         "InitDataParserUnittest.cpp",
