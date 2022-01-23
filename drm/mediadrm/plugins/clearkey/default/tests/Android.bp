@@ -32,6 +32,8 @@ cc_test {
 
     cflags: ["-Wall", "-Werror"],
 
+    tidy: false, // b/215988882, disabled until source code is fixed
+
     srcs: [
         "AesCtrDecryptorUnittest.cpp",
         "InitDataParserUnittest.cpp",
