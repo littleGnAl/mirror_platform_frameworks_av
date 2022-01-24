@@ -18,6 +18,9 @@
 #define LOG_TAG "Codec2Mapper"
 #include <utils/Log.h>
 
+#include <map>
+#include <optional>
+
 #include <media/stagefright/MediaCodecConstants.h>
 #include <media/stagefright/SurfaceUtils.h>
 #include <media/stagefright/foundation/ALookup.h>
@@ -975,41 +978,36 @@ bool C2Mapper::map(ColorAspects::Transfer from, C2Color::transfer_t *to) {
 // static
 bool C2Mapper::mapPixelFormatFrameworkToCodec(
         int32_t frameworkValue, uint32_t *c2Value) {
-    switch (frameworkValue) {
-        case COLOR_FormatSurface:
-            *c2Value = HAL_PIXEL_FORMAT_IMPLEMENTATION_DEFINED;
-            return true;
-        case COLOR_FormatYUV420Flexible:
-        case COLOR_FormatYUV420Planar:
-        case COLOR_FormatYUV420SemiPlanar:
-        case COLOR_FormatYUV420PackedPlanar:
-        case COLOR_FormatYUV420PackedSemiPlanar:
-            *c2Value = HAL_PIXEL_FORMAT_YCBCR_420_888;
-            return true;
-        default:
-            // Passthrough
-            *c2Value = uint32_t(frameworkValue);
-            return true;
-    }
+    static const std::map<int32_t, std::optional<uint32_t>> sMap = {
+        {COLOR_FormatSurface,                 HAL_PIXEL_FORMAT_IMPLEMENTATION_DEFINED},
+        {COLOR_FormatYUV420Flexible,          HAL_PIXEL_FORMAT_YCBCR_420_888},
+        {COLOR_FormatYUV420Planar,            HAL_PIXEL_FORMAT_YCBCR_420_888},
+        {COLOR_FormatYUV420SemiPlanar,        HAL_PIXEL_FORMAT_YCBCR_420_888},
+        {COLOR_FormatYUV420PackedPlanar,      HAL_PIXEL_FORMAT_YCBCR_420_888},
+        {COLOR_FormatYUV420PackedSemiPlanar,  HAL_PIXEL_FORMAT_YCBCR_420_888},
+        {COLOR_Format32bitABGR2101010,        HAL_PIXEL_FORMAT_RGBA_1010102},
+        {COLOR_Format64bitABGRFloat,          HAL_PIXEL_FORMAT_RGBA_FP16},
+    };
+    // passthrough if not mapped
+    *c2Value = sMap.at(frameworkValue).value_or(uint32_t(frameworkValue));
+    return true;
 }
 
 // static
 bool C2Mapper::mapPixelFormatCodecToFramework(
         uint32_t c2Value, int32_t *frameworkValue) {
-    switch (c2Value) {
-        case HAL_PIXEL_FORMAT_IMPLEMENTATION_DEFINED:
-            *frameworkValue = COLOR_FormatSurface;
-            return true;
-        case HAL_PIXEL_FORMAT_YCBCR_422_SP:
-        case HAL_PIXEL_FORMAT_YCRCB_420_SP:
-        case HAL_PIXEL_FORMAT_YCBCR_422_I:
-        case HAL_PIXEL_FORMAT_YCBCR_420_888:
-        case HAL_PIXEL_FORMAT_YV12:
-            *frameworkValue = COLOR_FormatYUV420Flexible;
-            return true;
-        default:
-            // Passthrough
-            *frameworkValue = int32_t(c2Value);
-            return true;
-    }
+    static const std::map<uint32_t, std::optional<int32_t>> sMap = {
+        {HAL_PIXEL_FORMAT_IMPLEMENTATION_DEFINED, COLOR_FormatSurface},
+        {HAL_PIXEL_FORMAT_YCBCR_422_SP,           COLOR_FormatYUV420Flexible},
+        {HAL_PIXEL_FORMAT_YCRCB_420_SP,           COLOR_FormatYUV420Flexible},
+        {HAL_PIXEL_FORMAT_YCBCR_422_I,            COLOR_FormatYUV420Flexible},
+        {HAL_PIXEL_FORMAT_YCBCR_420_888,          COLOR_FormatYUV420Flexible},
+        {HAL_PIXEL_FORMAT_YV12,                   COLOR_FormatYUV420Flexible},
+        {HAL_PIXEL_FORMAT_YCBCR_P010,             COLOR_FormatYUVP010},
+        {HAL_PIXEL_FORMAT_RGBA_1010102,           COLOR_Format32bitABGR2101010},
+        {HAL_PIXEL_FORMAT_RGBA_FP16,              COLOR_Format64bitABGRFloat},
+    };
+    // passthrough if not mapped
+    *frameworkValue = sMap.at(c2Value).value_or(int32_t(c2Value));
+    return true;
 }
