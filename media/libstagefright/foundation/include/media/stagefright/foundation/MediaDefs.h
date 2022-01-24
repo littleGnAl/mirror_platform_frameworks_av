@@ -96,6 +96,13 @@ enum AudioEncoding {
     kAudioEncodingPcm32bit = 22,
 };
 
+// Codec priority.
+// These are not constants defined in MediaFormat.java.
+enum {
+    PRIORITY_REALTIME = 0,
+    PRIORITY_NONREALTIME,
+};
+
 }  // namespace android
 
 #endif  // MEDIA_DEFS_H_
