@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "20c436db_d622f38b",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-24T22:18:41Z",
+      "side": 1,
+      "message": "nit: we also have an sp\u003cNativeHandle\u003e that was trying to solve a similar issue.",
+      "range": {
+        "startLine": 993,
+        "startChar": 4,
+        "endLine": 996,
+        "endChar": 42
+      },
+      "revId": "9c66304d92399d816e0e716451f0b6ebe6468cdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "125372d8_472a3acd",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-24T22:18:41Z",
+      "side": 1,
+      "message": "nit: C2StreamHdrStaticMetadataInfo",
+      "revId": "9c66304d92399d816e0e716451f0b6ebe6468cdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "374547f3_8406ef03",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-24T22:18:41Z",
+      "side": 1,
+      "message": "is this \"guaranteed\" to be non-false if we got this far? Or does this do additional validation? If this fails should we somehow fail the Get method?",
+      "range": {
+        "startLine": 1016,
+        "startChar": 16,
+        "endLine": 1016,
+        "endChar": 25
+      },
+      "revId": "9c66304d92399d816e0e716451f0b6ebe6468cdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
