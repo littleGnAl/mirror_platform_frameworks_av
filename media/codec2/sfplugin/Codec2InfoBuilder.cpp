@@ -212,26 +212,67 @@ void addSupportedColorFormats(
         std::shared_ptr<Codec2Client::Interface> intf,
         MediaCodecInfo::CapabilitiesWriter *caps,
         const Traits& trait, const std::string &mediaType) {
-    (void)intf;
-
     // TODO: get this from intf() as well, but how do we map them to
     // MediaCodec color formats?
     bool encoder = trait.kind == C2Component::KIND_ENCODER;
     if (mediaType.find("video") != std::string::npos
             || mediaType.find("image") != std::string::npos) {
+
+        std::vector<C2FieldSupportedValuesQuery> query;
+        if (encoder) {
+            C2StreamPixelFormatInfo::input pixelFormat;
+            query.push_back(C2FieldSupportedValuesQuery::Possible(
+                    C2ParamField::Make(pixelFormat, pixelFormat.value)));
+        } else {
+            C2StreamPixelFormatInfo::output pixelFormat;
+            query.push_back(C2FieldSupportedValuesQuery::Possible(
+                    C2ParamField::Make(pixelFormat, pixelFormat.value)));
+        }
+        std::list<int32_t> supportedColorFormats;
+        if (intf->querySupportedValues(query, C2_DONT_BLOCK) == C2_OK) {
+            if (query[0].status == C2_OK) {
+                const C2FieldSupportedValues &fsv = query[0].values;
+                if (fsv.type == C2FieldSupportedValues::VALUES) {
+                    for (C2Value::Primitive value : fsv.values) {
+                        int32_t colorFormat = 0;
+                        if (C2Mapper::mapPixelFormatCodecToFramework(value.u32, &colorFormat)) {
+                            auto it = std::find(
+                                    supportedColorFormats.begin(),
+                                    supportedColorFormats.end(),
+                                    colorFormat);
+                            if (it == supportedColorFormats.end()) {
+                                supportedColorFormats.push_back(colorFormat);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        auto addDefaultColorFormat = [caps, &supportedColorFormats](int32_t colorFormat) {
+            caps->addColorFormat(colorFormat);
+            auto it = std::find(
+                    supportedColorFormats.begin(), supportedColorFormats.end(), colorFormat);
+            if (it != supportedColorFormats.end()) {
+                supportedColorFormats.erase(it);
+            }
+        };
+
         // vendor video codecs prefer opaque format
         if (trait.name.find("android") == std::string::npos) {
-            caps->addColorFormat(COLOR_FormatSurface);
+            addDefaultColorFormat(COLOR_FormatSurface);
         }
-        caps->addColorFormat(COLOR_FormatYUV420Flexible);
-        caps->addColorFormat(COLOR_FormatYUV420Planar);
-        caps->addColorFormat(COLOR_FormatYUV420SemiPlanar);
-        caps->addColorFormat(COLOR_FormatYUV420PackedPlanar);
-        caps->addColorFormat(COLOR_FormatYUV420PackedSemiPlanar);
+        addDefaultColorFormat(COLOR_FormatYUV420Flexible);
+        addDefaultColorFormat(COLOR_FormatYUV420Planar);
+        addDefaultColorFormat(COLOR_FormatYUV420SemiPlanar);
+        addDefaultColorFormat(COLOR_FormatYUV420PackedPlanar);
+        addDefaultColorFormat(COLOR_FormatYUV420PackedSemiPlanar);
         // framework video encoders must support surface format, though it is unclear
         // that they will be able to map it if it is opaque
         if (encoder && trait.name.find("android") != std::string::npos) {
-            caps->addColorFormat(COLOR_FormatSurface);
+            addDefaultColorFormat(COLOR_FormatSurface);
+        }
+        for (int32_t colorFormat : supportedColorFormats) {
+            caps->addColorFormat(colorFormat);
         }
     }
 }
