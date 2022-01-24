@@ -60,6 +60,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "92a770a6_7547a9de",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 849,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-24T21:42:57Z",
+      "side": 1,
+      "message": "Added TODO",
+      "parentUuid": "d8b96ecf_9ce58232",
+      "range": {
+        "startLine": 839,
+        "startChar": 4,
+        "endLine": 849,
+        "endChar": 5
+      },
+      "revId": "3478e7a48e26de07d0790a4d8ddb170b9118bc07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "67fe6902_97dfcb95",
         "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
         "patchSetId": 1
@@ -71,6 +95,30 @@
       "writtenOn": "2022-01-21T19:08:46Z",
       "side": 1,
       "message": "this is nice! perhaps a not to explain HDR Dynamic Info takes priority.",
+      "range": {
+        "startLine": 922,
+        "startChar": 0,
+        "endLine": 922,
+        "endChar": 47
+      },
+      "revId": "3478e7a48e26de07d0790a4d8ddb170b9118bc07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5ac3e295_85316176",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 922,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-24T21:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67fe6902_97dfcb95",
       "range": {
         "startLine": 922,
         "startChar": 0,
@@ -94,6 +142,30 @@
       "writtenOn": "2022-01-21T19:08:46Z",
       "side": 1,
       "message": "this .so is shared via mainline back to Q? devices. Can we assume Q devices will have this shared lib?",
+      "range": {
+        "startLine": 70,
+        "startChar": 0,
+        "endLine": 70,
+        "endChar": 50
+      },
+      "revId": "3478e7a48e26de07d0790a4d8ddb170b9118bc07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "03da0495_7e9d86cb",
+        "filename": "media/codec2/vndk/Android.bp",
+        "patchSetId": 1
+      },
+      "lineNbr": 70,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-24T21:42:57Z",
+      "side": 1,
+      "message": "removed the dependency",
+      "parentUuid": "ab5dfc47_49afe0e8",
       "range": {
         "startLine": 70,
         "startChar": 0,
@@ -152,6 +224,30 @@
       "writtenOn": "2022-01-21T19:08:46Z",
       "side": 1,
       "message": "could this be in a separate .so that is not used by mainline/codec implementations? It seems this would only be used by CCodec.",
+      "range": {
+        "startLine": 286,
+        "startChar": 12,
+        "endLine": 286,
+        "endChar": 44
+      },
+      "revId": "3478e7a48e26de07d0790a4d8ddb170b9118bc07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "249aa387_9d4938b7",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-24T21:42:57Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "514f9201_121a983c",
       "range": {
         "startLine": 286,
         "startChar": 12,
