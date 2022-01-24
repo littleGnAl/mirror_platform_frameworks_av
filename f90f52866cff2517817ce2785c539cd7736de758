@@ -16,6 +16,115 @@
       "message": "PTAL",
       "revId": "f90f52866cff2517817ce2785c539cd7736de758",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "74fd4cf8_31b4e888",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-24T22:23:59Z",
+      "side": 1,
+      "message": "I apologize for the confusion",
+      "revId": "f90f52866cff2517817ce2785c539cd7736de758",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fa2dff31_83ff8bcb",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1610,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-24T22:23:59Z",
+      "side": 1,
+      "message": "another thing we used to do was to change this to C2StreamHdrStaticMetadataInfo, then typedef C2StreamHdrStaticMetadataInfo C2StreamHdrStaticInfo; // deprecated...\nto account for the old name.",
+      "range": {
+        "startLine": 1609,
+        "startChar": 0,
+        "endLine": 1610,
+        "endChar": 29
+      },
+      "revId": "f90f52866cff2517817ce2785c539cd7736de758",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8aacdd19_e912aefd",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-24T22:23:59Z",
+      "side": 1,
+      "message": "we can keep this as this maps to \"hdr-static-info\"",
+      "range": {
+        "startLine": 1612,
+        "startChar": 15,
+        "endLine": 1612,
+        "endChar": 42
+      },
+      "revId": "f90f52866cff2517817ce2785c539cd7736de758",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "029746d2_ffa4c26e",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1621,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-24T22:23:59Z",
+      "side": 1,
+      "message": "nit: C2StreamHdrDynamicMetadataInfo",
+      "range": {
+        "startLine": 1621,
+        "startChar": 19,
+        "endLine": 1621,
+        "endChar": 41
+      },
+      "revId": "f90f52866cff2517817ce2785c539cd7736de758",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9908b98c_97a50912",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1662,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-24T22:23:59Z",
+      "side": 1,
+      "message": "can we keep this \"HDR_DYNAMIC_INFO\"?",
+      "range": {
+        "startLine": 1662,
+        "startChar": 33,
+        "endLine": 1662,
+        "endChar": 58
+      },
+      "revId": "f90f52866cff2517817ce2785c539cd7736de758",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
