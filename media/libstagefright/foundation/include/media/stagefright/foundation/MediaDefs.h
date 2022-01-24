@@ -97,6 +97,16 @@ enum AudioEncoding {
     kAudioEncodingPcm32bit = 22,
 };
 
+// Codec priority.
+// These are values exported to JAVA API that need to be in sync with
+// frameworks/base/media/java/android/media/MediaFormat.java. Unfortunately,
+// they are not defined in frameworks/av, so defining them here.
+typedef enum
+{
+    PRIORITY_REALTIME = 0,
+    PRIORITY_NONREALTIME,
+} CodecPriority;
+
 }  // namespace android
 
 #endif  // MEDIA_DEFS_H_

@@ -545,6 +545,8 @@ sp<AMessage> VideoFrameDecoder::onGetFormatAndSeekOptions(
         }
     }
 
+    videoFormat->setInt32("priority", PRIORITY_NONREALTIME);
+
     int32_t frameRate;
     if (trackMeta()->findInt32(kKeyFrameRate, &frameRate) && frameRate > 0) {
         mDefaultSampleDurationUs = 1000000LL / frameRate;
@@ -830,6 +832,11 @@ sp<AMessage> MediaImageDecoder::onGetFormatAndSeekOptions(
         videoFormat->setInt32("android._num-input-buffers", 1);
         videoFormat->setInt32("android._num-output-buffers", 1);
     }
+
+    if (frameTimeUs < 0) {
+        videoFormat->setInt32("priority", PRIORITY_NONREALTIME);
+    }
+
     return videoFormat;
 }
 
