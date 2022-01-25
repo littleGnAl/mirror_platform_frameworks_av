@@ -26,6 +26,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "7a5b2a09_0d3192d7",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 996,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-25T01:00:40Z",
+      "side": 1,
+      "message": "NativeHandle cannot solve this issue unfortunately --- it either close \u0026 delete or do nothing. What we need here is to delete only.",
+      "parentUuid": "20c436db_d622f38b",
+      "range": {
+        "startLine": 993,
+        "startChar": 4,
+        "endLine": 996,
+        "endChar": 42
+      },
+      "revId": "9c66304d92399d816e0e716451f0b6ebe6468cdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "125372d8_472a3acd",
         "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
         "patchSetId": 3
@@ -37,6 +61,24 @@
       "writtenOn": "2022-01-24T22:18:41Z",
       "side": 1,
       "message": "nit: C2StreamHdrStaticMetadataInfo",
+      "revId": "9c66304d92399d816e0e716451f0b6ebe6468cdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f287160_90843070",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1004,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-25T01:00:40Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "125372d8_472a3acd",
       "revId": "9c66304d92399d816e0e716451f0b6ebe6468cdd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -54,6 +96,30 @@
       "writtenOn": "2022-01-24T22:18:41Z",
       "side": 1,
       "message": "is this \"guaranteed\" to be non-false if we got this far? Or does this do additional validation? If this fails should we somehow fail the Get method?",
+      "range": {
+        "startLine": 1016,
+        "startChar": 16,
+        "endLine": 1016,
+        "endChar": 25
+      },
+      "revId": "9c66304d92399d816e0e716451f0b6ebe6468cdd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "044b8c31_c2af085d",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1016,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-25T01:00:40Z",
+      "side": 1,
+      "message": "decodeSmpte2086 (and its friends) does additional validations of metadata type, size of the vector, etc, and will fail if the validation goes wrong for some reason.",
+      "parentUuid": "374547f3_8406ef03",
       "range": {
         "startLine": 1016,
         "startChar": 16,
