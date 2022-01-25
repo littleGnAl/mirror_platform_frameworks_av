@@ -83,6 +83,30 @@
     {
       "unresolved": false,
       "key": {
+        "uuid": "fccf0e8d_fe56950b",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1612,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-25T01:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "8aacdd19_e912aefd",
+      "range": {
+        "startLine": 1612,
+        "startChar": 15,
+        "endLine": 1612,
+        "endChar": 42
+      },
+      "revId": "f90f52866cff2517817ce2785c539cd7736de758",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
         "uuid": "029746d2_ffa4c26e",
         "filename": "media/codec2/core/include/C2Config.h",
         "patchSetId": 2
@@ -117,6 +141,30 @@
       "writtenOn": "2022-01-24T22:23:59Z",
       "side": 1,
       "message": "can we keep this \"HDR_DYNAMIC_INFO\"?",
+      "range": {
+        "startLine": 1662,
+        "startChar": 33,
+        "endLine": 1662,
+        "endChar": 58
+      },
+      "revId": "f90f52866cff2517817ce2785c539cd7736de758",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1afec54b_0e31c927",
+        "filename": "media/codec2/core/include/C2Config.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 1662,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-25T01:01:38Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9908b98c_97a50912",
       "range": {
         "startLine": 1662,
         "startChar": 33,
