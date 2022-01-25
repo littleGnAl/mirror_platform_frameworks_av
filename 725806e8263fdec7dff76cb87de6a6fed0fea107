@@ -1,0 +1,89 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4f2616fd_640e3fcb",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-25T08:49:01Z",
+      "side": 1,
+      "message": "we may want to log hdr dynamic info detection here..",
+      "revId": "725806e8263fdec7dff76cb87de6a6fed0fea107",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3c75e54f_497e460f",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-25T08:49:01Z",
+      "side": 1,
+      "message": "In case of decoders, HDR static info may be parsed from the bitstream \u0026 reported to the app later. You might want to store the existence in a member var \u0026 log the existence later (e.g. at updateMediaMetrics()).",
+      "revId": "725806e8263fdec7dff76cb87de6a6fed0fea107",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5e5dd83c_79540849",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-25T08:49:01Z",
+      "side": 1,
+      "message": "hdrStaticInfo could be non-null but still invalid. See https://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/codec2/sfplugin/CCodecBufferChannel.cpp;drc\u003d92df7e4f953274086fee0d42d04cffb01ba0bac6;l\u003d864",
+      "revId": "725806e8263fdec7dff76cb87de6a6fed0fea107",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "42ea9868_eb13075e",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4537,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-25T08:49:01Z",
+      "side": 1,
+      "message": "we could update hdr info existence here",
+      "revId": "725806e8263fdec7dff76cb87de6a6fed0fea107",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1a656ef8_cbfbbc4e",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4544,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-25T08:49:01Z",
+      "side": 1,
+      "message": "we could store existence of hdr10plus info here.",
+      "revId": "725806e8263fdec7dff76cb87de6a6fed0fea107",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
