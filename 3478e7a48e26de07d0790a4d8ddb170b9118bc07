@@ -256,6 +256,24 @@
       },
       "revId": "3478e7a48e26de07d0790a4d8ddb170b9118bc07",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3e67884e_4fbfadcb",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 286,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-25T18:20:27Z",
+      "side": 1,
+      "message": "Talked offline. The metadata are not mutually exclusive.",
+      "parentUuid": "3126040f_00db11a2",
+      "revId": "3478e7a48e26de07d0790a4d8ddb170b9118bc07",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
