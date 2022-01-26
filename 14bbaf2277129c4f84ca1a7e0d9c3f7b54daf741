@@ -1,0 +1,55 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f4c8f168_af4323cf",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1577,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-26T07:25:09Z",
+      "side": 1,
+      "message": "color standard/range/transfer may be different between what is configured vs. what is parsed from the bitstream (shown at handleOutputFormatChangeIfNeeded). Should we log them separately?",
+      "revId": "14bbaf2277129c4f84ca1a7e0d9c3f7b54daf741",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44c1c821_304268c0",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 4562,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-26T07:25:09Z",
+      "side": 1,
+      "message": "check size \u003e 0 here?",
+      "revId": "14bbaf2277129c4f84ca1a7e0d9c3f7b54daf741",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c6507b9e_8cf2dbf4",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodec.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-26T07:25:09Z",
+      "side": 1,
+      "message": "could be bools, or mHdrMetadataFlags?\n\ne.g. 0x1 for static info, 0x2 for hdr10+ dynamic info",
+      "revId": "14bbaf2277129c4f84ca1a7e0d9c3f7b54daf741",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
