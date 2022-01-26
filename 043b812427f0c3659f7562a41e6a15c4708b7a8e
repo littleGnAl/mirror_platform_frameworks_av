@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "30eeac52_51c64dd5",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-26T20:52:15Z",
+      "side": 1,
+      "message": "https://source.corp.google.com/android/system/core/libutils/include/utils/Singleton.h;rcl\u003d799bc366e53ecd6f87e1a1d48027a7c7b19e2ece;l\u003d42",
+      "range": {
+        "startLine": 237,
+        "startChar": 32,
+        "endLine": 237,
+        "endChar": 41
+      },
+      "revId": "043b812427f0c3659f7562a41e6a15c4708b7a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "349a29d2_16ad2103",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-26T20:52:15Z",
+      "side": 1,
+      "message": "We should lock P010 w/ gralloc4 if available",
+      "revId": "043b812427f0c3659f7562a41e6a15c4708b7a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
