@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f9e1c4b6_11205fe8",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 853,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2022-01-26T03:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4f2616fd_640e3fcb",
+      "revId": "725806e8263fdec7dff76cb87de6a6fed0fea107",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3c75e54f_497e460f",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-01-25T08:49:01Z",
       "side": 1,
       "message": "In case of decoders, HDR static info may be parsed from the bitstream \u0026 reported to the app later. You might want to store the existence in a member var \u0026 log the existence later (e.g. at updateMediaMetrics()).",
+      "revId": "725806e8263fdec7dff76cb87de6a6fed0fea107",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cb382726_0e8c96e2",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1586,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2022-01-26T03:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3c75e54f_497e460f",
       "revId": "725806e8263fdec7dff76cb87de6a6fed0fea107",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -52,6 +88,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "833faa20_f221a019",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1589,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2022-01-26T03:51:54Z",
+      "side": 1,
+      "message": "Add checking if hdrStaticInfo\u0027s max and min luminance, light level fields are 0.",
+      "parentUuid": "5e5dd83c_79540849",
+      "revId": "725806e8263fdec7dff76cb87de6a6fed0fea107",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "42ea9868_eb13075e",
@@ -69,6 +123,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "418ffed9_a024e2f1",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4537,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2022-01-26T03:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "42ea9868_eb13075e",
+      "revId": "725806e8263fdec7dff76cb87de6a6fed0fea107",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1a656ef8_cbfbbc4e",
@@ -82,6 +154,24 @@
       "writtenOn": "2022-01-25T08:49:01Z",
       "side": 1,
       "message": "we could store existence of hdr10plus info here.",
+      "revId": "725806e8263fdec7dff76cb87de6a6fed0fea107",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a5ce820_080ae0bd",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4544,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2022-01-26T03:51:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1a656ef8_cbfbbc4e",
       "revId": "725806e8263fdec7dff76cb87de6a6fed0fea107",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
