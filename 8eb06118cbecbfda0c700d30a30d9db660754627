@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "401011b3_918f5a1d",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 247,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-26T19:34:28Z",
+      "side": 1,
+      "message": "GraphicBufferMapper also does a preload() method? E.g. mMapper-\u003epreload();\n\nShould we do that in the singleton creation?",
+      "range": {
+        "startLine": 247,
+        "startChar": 8,
+        "endLine": 247,
+        "endChar": 15
+      },
+      "revId": "8eb06118cbecbfda0c700d30a30d9db660754627",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36cc7b2f_061af88b",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 255,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-26T19:34:28Z",
+      "side": 1,
+      "message": "this ensures the Gralloc4 is on the device, so this should be safe for mainline.",
+      "range": {
+        "startLine": 255,
+        "startChar": 21,
+        "endLine": 255,
+        "endChar": 38
+      },
+      "revId": "8eb06118cbecbfda0c700d30a30d9db660754627",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
