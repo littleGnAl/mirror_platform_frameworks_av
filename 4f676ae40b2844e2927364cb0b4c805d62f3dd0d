@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9970bacf_2c4a133e",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-26T19:12:55Z",
+      "side": 0,
+      "message": "P010 is defined as little endian. See https://developer.android.com/reference/android/graphics/ImageFormat#YCBCR_P010",
+      "range": {
+        "startLine": 649,
+        "startChar": 29,
+        "endLine": 649,
+        "endChar": 39
+      },
+      "revId": "4f676ae40b2844e2927364cb0b4c805d62f3dd0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
