@@ -70,6 +70,30 @@
       },
       "revId": "4f676ae40b2844e2927364cb0b4c805d62f3dd0d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4025fc7c_799c0c1e",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 6
+      },
+      "lineNbr": 649,
+      "author": {
+        "id": 1847017
+      },
+      "writtenOn": "2022-01-27T18:03:51Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "6584dbe2_630aea9a",
+      "range": {
+        "startLine": 649,
+        "startChar": 29,
+        "endLine": 649,
+        "endChar": 39
+      },
+      "revId": "4f676ae40b2844e2927364cb0b4c805d62f3dd0d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
