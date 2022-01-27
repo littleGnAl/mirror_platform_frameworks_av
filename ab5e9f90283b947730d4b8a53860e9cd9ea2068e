@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "aec8c91c_5b015c18",
+        "filename": "media/codec2/vndk/Android.bp",
+        "patchSetId": 9
+      },
+      "lineNbr": 87,
+      "author": {
+        "id": 1847017
+      },
+      "writtenOn": "2022-01-27T16:52:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "067eecb0_f1e88c47",
+      "revId": "ab5e9f90283b947730d4b8a53860e9cd9ea2068e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "7cf5cf99_fe386926",
@@ -43,6 +61,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "347e6aff_79cc696f",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 252,
+      "author": {
+        "id": 1847017
+      },
+      "writtenOn": "2022-01-27T16:52:58Z",
+      "side": 1,
+      "message": "I am worried if line #242 is threadsafe. I believe C++11 and beyond, it should be. Wasn\u0027t sure. \nIf you think it is, I will remove once-initialization and simplify",
+      "parentUuid": "7cf5cf99_fe386926",
+      "range": {
+        "startLine": 243,
+        "startChar": 18,
+        "endLine": 252,
+        "endChar": 27
+      },
+      "revId": "ab5e9f90283b947730d4b8a53860e9cd9ea2068e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f33f140e_e0d971ff",
         "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
         "patchSetId": 9
@@ -54,6 +96,30 @@
       "writtenOn": "2022-01-27T09:02:44Z",
       "side": 1,
       "message": "nit: c2_status_t",
+      "range": {
+        "startLine": 796,
+        "startChar": 12,
+        "endLine": 796,
+        "endChar": 16
+      },
+      "revId": "ab5e9f90283b947730d4b8a53860e9cd9ea2068e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0be02c43_bfd6204e",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 9
+      },
+      "lineNbr": 796,
+      "author": {
+        "id": 1847017
+      },
+      "writtenOn": "2022-01-27T16:52:58Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f33f140e_e0d971ff",
       "range": {
         "startLine": 796,
         "startChar": 12,
