@@ -16,6 +16,23 @@
       "message": "CP-ed (and fixed up) from partner",
       "revId": "a547a3dd4c0ff166be319562306e78040d7eca28",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6f26bcfc_61132405",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-27T19:58:01Z",
+      "side": 1,
+      "message": "Build error seems to come from android.hardware.biometrics.fingerprint-V2-ndk. Retrying",
+      "revId": "a547a3dd4c0ff166be319562306e78040d7eca28",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
