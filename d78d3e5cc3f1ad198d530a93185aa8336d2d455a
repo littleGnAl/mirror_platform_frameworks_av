@@ -53,6 +53,23 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "2c438617_ee543281",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-01-27T20:12:27Z",
+      "side": 1,
+      "message": "Harish, I\u0027m not able to reproduce this issue either (just checked this week).  However, I think we should obtain the chain lock when starting the effect in moveEffectChain_l().",
+      "revId": "d78d3e5cc3f1ad198d530a93185aa8336d2d455a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f19113d0_4f3cae97",
