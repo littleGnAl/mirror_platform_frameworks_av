@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "5f1f1d10_7707b42c",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1847017
+      },
+      "writtenOn": "2022-01-27T08:07:34Z",
+      "side": 1,
+      "message": "I could not access the link Wonsik shared. So did not realize the issue earlier. I see the concern.\nCleaned up usage of Singleton\u003c\u003e wrapper.\n\nPlease review the new singleton implementation",
+      "parentUuid": "22775064_f62c6578",
+      "range": {
+        "startLine": 237,
+        "startChar": 32,
+        "endLine": 237,
+        "endChar": 41
+      },
+      "revId": "043b812427f0c3659f7562a41e6a15c4708b7a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "349a29d2_16ad2103",
         "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
         "patchSetId": 7
