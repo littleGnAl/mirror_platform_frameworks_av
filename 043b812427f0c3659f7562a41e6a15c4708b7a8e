@@ -141,6 +141,24 @@
       "parentUuid": "df60743e_50600893",
       "revId": "043b812427f0c3659f7562a41e6a15c4708b7a8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2dc45e0_b56a2ca1",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-27T09:02:44Z",
+      "side": 1,
+      "message": "GraphicBufferMapper::lock locks a single buffer, so no way to know the planar layout unless locking with Gralloc4 directly.",
+      "parentUuid": "143a5c2a_ca238580",
+      "revId": "043b812427f0c3659f7562a41e6a15c4708b7a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
