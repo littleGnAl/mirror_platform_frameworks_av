@@ -22,6 +22,30 @@
       },
       "revId": "b7d129a6fc182ddb48a6de109550455e304ddf7b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7436c051_9eafbb97",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1847017
+      },
+      "writtenOn": "2022-01-27T01:19:26Z",
+      "side": 1,
+      "message": "using \u0027color-format\u0027 in lieu of \u0027android._color-format\u0027 is helping the case where P010 is substituted by vendor-P010 on older devices",
+      "parentUuid": "869d057b_a9e35912",
+      "range": {
+        "startLine": 791,
+        "startChar": 0,
+        "endLine": 795,
+        "endChar": 45
+      },
+      "revId": "b7d129a6fc182ddb48a6de109550455e304ddf7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
