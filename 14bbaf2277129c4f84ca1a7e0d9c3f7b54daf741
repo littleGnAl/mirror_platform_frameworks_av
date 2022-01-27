@@ -71,6 +71,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "72bbed36_37cda9cf",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 4562,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-27T22:29:38Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "c0b60181_59e23e02",
+      "revId": "14bbaf2277129c4f84ca1a7e0d9c3f7b54daf741",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6507b9e_8cf2dbf4",
@@ -102,6 +120,24 @@
       "side": 1,
       "message": "Cannot be bools but can be done by using flags. Incorporated them by using a uint32 flag. I am wondering if it is for saving space or cover hdr metadata into a single variable or something else.",
       "parentUuid": "c6507b9e_8cf2dbf4",
+      "revId": "14bbaf2277129c4f84ca1a7e0d9c3f7b54daf741",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "685b0545_06923dd8",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodec.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-27T22:29:38Z",
+      "side": 1,
+      "message": "saving space + ease of adding a new type",
+      "parentUuid": "1e7035ad_659bda8d",
       "revId": "14bbaf2277129c4f84ca1a7e0d9c3f7b54daf741",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }

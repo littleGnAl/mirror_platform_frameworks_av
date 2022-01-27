@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "b4861490_2bc3173b",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-27T22:29:38Z",
+      "side": 1,
+      "message": "maybe kCodecHdrMetadataFlags or simply kCodecHdrMetadata?",
+      "range": {
+        "startLine": 121,
+        "startChar": 19,
+        "endLine": 121,
+        "endChar": 41
+      },
+      "revId": "b2a5465f389fbdd3179901fa95b789a75f7066df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "2efd7439_dc935cee",
         "filename": "media/libstagefright/MediaCodec.cpp",
         "patchSetId": 8
