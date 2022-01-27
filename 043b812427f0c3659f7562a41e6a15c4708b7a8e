@@ -57,6 +57,24 @@
       "parentUuid": "349a29d2_16ad2103",
       "revId": "043b812427f0c3659f7562a41e6a15c4708b7a8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df60743e_50600893",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1847017
+      },
+      "writtenOn": "2022-01-27T01:51:44Z",
+      "side": 1,
+      "message": "I feel Wonsik\u0027s comment is a good idea.\nExplicitly trying with gralloc4 is required if we want to replace vendor-P010 (with a HW alignment) with android-P010.\n\ngralloc4\u0027s mapper would help us retrieve the stride reliably rather than use mStride (which is 8 aligned)",
+      "parentUuid": "44b088ff_06c989fc",
+      "revId": "043b812427f0c3659f7562a41e6a15c4708b7a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
