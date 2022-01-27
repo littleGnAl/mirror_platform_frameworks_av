@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2efd7439_dc935cee",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-27T22:14:15Z",
+      "side": 1,
+      "message": "this should be some name constant near where these flags are defined, e.g.\nconstexpr kHDRMetadataFlag_Static \u003d 0x01000000;",
+      "range": {
+        "startLine": 1597,
+        "startChar": 37,
+        "endLine": 1597,
+        "endChar": 47
+      },
+      "revId": "b2a5465f389fbdd3179901fa95b789a75f7066df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "67eddbb9_a80f24de",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 4563,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-27T22:14:15Z",
+      "side": 1,
+      "message": "similarly, e.g.\nconstexpr kHDRMetadataFlag_HDR10Plus \u003d 0x00100000;\n\n(recommend 0x1 and 0x2 instead of these random values)",
+      "range": {
+        "startLine": 4563,
+        "startChar": 33,
+        "endLine": 4563,
+        "endChar": 43
+      },
+      "revId": "b2a5465f389fbdd3179901fa95b789a75f7066df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
