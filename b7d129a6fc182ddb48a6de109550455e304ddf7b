@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "869d057b_a9e35912",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 795,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-27T00:07:19Z",
+      "side": 1,
+      "message": "Wonsik, do we now have to support RGBA color formats here? Can android._color-format contain some vendor specific format here?",
+      "range": {
+        "startLine": 791,
+        "startChar": 0,
+        "endLine": 795,
+        "endChar": 45
+      },
+      "revId": "b7d129a6fc182ddb48a6de109550455e304ddf7b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
