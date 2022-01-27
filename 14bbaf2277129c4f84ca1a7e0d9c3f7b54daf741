@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b030df82_a9c9d948",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1577,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2022-01-27T07:25:28Z",
+      "side": 1,
+      "message": "Sure. Used different metrics to log them separately.",
+      "parentUuid": "f4c8f168_af4323cf",
+      "revId": "14bbaf2277129c4f84ca1a7e0d9c3f7b54daf741",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "44c1c821_304268c0",
@@ -35,6 +53,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c0b60181_59e23e02",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 4562,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2022-01-27T07:25:28Z",
+      "side": 1,
+      "message": "It is already covered by line 4559?",
+      "parentUuid": "44c1c821_304268c0",
+      "revId": "14bbaf2277129c4f84ca1a7e0d9c3f7b54daf741",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c6507b9e_8cf2dbf4",
@@ -48,6 +84,24 @@
       "writtenOn": "2022-01-26T07:25:09Z",
       "side": 1,
       "message": "could be bools, or mHdrMetadataFlags?\n\ne.g. 0x1 for static info, 0x2 for hdr10+ dynamic info",
+      "revId": "14bbaf2277129c4f84ca1a7e0d9c3f7b54daf741",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1e7035ad_659bda8d",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodec.h",
+        "patchSetId": 5
+      },
+      "lineNbr": 449,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2022-01-27T07:25:28Z",
+      "side": 1,
+      "message": "Cannot be bools but can be done by using flags. Incorporated them by using a uint32 flag. I am wondering if it is for saving space or cover hdr metadata into a single variable or something else.",
+      "parentUuid": "c6507b9e_8cf2dbf4",
       "revId": "14bbaf2277129c4f84ca1a7e0d9c3f7b54daf741",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
