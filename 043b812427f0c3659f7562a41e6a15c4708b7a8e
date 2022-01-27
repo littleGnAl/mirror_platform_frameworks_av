@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "22775064_f62c6578",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 237,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-27T05:16:54Z",
+      "side": 1,
+      "message": "To decipher Wonsik\u0027s comment:\n\n// DO NOT USE: Please use scoped static initialization. For instance:\n//     MyClass\u0026 getInstance() {\n//         static MyClass gInstance(...);\n//         return gInstance;\n//     }",
+      "parentUuid": "30eeac52_51c64dd5",
+      "range": {
+        "startLine": 237,
+        "startChar": 32,
+        "endLine": 237,
+        "endChar": 41
+      },
+      "revId": "043b812427f0c3659f7562a41e6a15c4708b7a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "349a29d2_16ad2103",
         "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
         "patchSetId": 7
@@ -73,6 +97,24 @@
       "side": 1,
       "message": "I feel Wonsik\u0027s comment is a good idea.\nExplicitly trying with gralloc4 is required if we want to replace vendor-P010 (with a HW alignment) with android-P010.\n\ngralloc4\u0027s mapper would help us retrieve the stride reliably rather than use mStride (which is 8 aligned)",
       "parentUuid": "44b088ff_06c989fc",
+      "revId": "043b812427f0c3659f7562a41e6a15c4708b7a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "143a5c2a_ca238580",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-27T05:16:54Z",
+      "side": 1,
+      "message": "where does that leave us? I think this color format (P010) will get reliably locked an all grallocs - we will only map relaxed P010 PixelFormat4::P010 on gralloc 4 as that is only relaxed on gralloc 4. Am I missing something?",
+      "parentUuid": "df60743e_50600893",
       "revId": "043b812427f0c3659f7562a41e6a15c4708b7a8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
