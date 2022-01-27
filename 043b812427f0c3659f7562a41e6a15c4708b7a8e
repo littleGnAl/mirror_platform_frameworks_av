@@ -39,6 +39,24 @@
       "message": "We should lock P010 w/ gralloc4 if available",
       "revId": "043b812427f0c3659f7562a41e6a15c4708b7a8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44b088ff_06c989fc",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 724,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-27T00:03:09Z",
+      "side": 1,
+      "message": "I believe GraphicBufferMapper::lock does that internally. Did you mean something else?",
+      "parentUuid": "349a29d2_16ad2103",
+      "revId": "043b812427f0c3659f7562a41e6a15c4708b7a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
