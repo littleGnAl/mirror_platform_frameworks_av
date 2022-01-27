@@ -46,6 +46,30 @@
       },
       "revId": "8a08d7e102d3933a0a366e97b2d8e7c2ef5c0c45",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3cd62796_b5155dfe",
+        "filename": "media/codec2/sfplugin/Codec2InfoBuilder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 259,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-27T23:50:57Z",
+      "side": 1,
+      "message": "Currently I am limiting this to defined color formats.",
+      "parentUuid": "a685751f_700ba8f8",
+      "range": {
+        "startLine": 251,
+        "startChar": 0,
+        "endLine": 259,
+        "endChar": 0
+      },
+      "revId": "8a08d7e102d3933a0a366e97b2d8e7c2ef5c0c45",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
