@@ -16,6 +16,121 @@
       "message": "CP-ed from partner",
       "revId": "a474a45695a1252b34623050eba887a6f56f5604",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "68259a53_fd838faf",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 637,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-01-27T23:21:55Z",
+      "side": 1,
+      "message": "Super-Nit: Considering there are already usages of nullptr in this file, can we changes uses of NULL in this CL to nullptr? I\u0027m not sure whether we\u0027d need the cast.",
+      "range": {
+        "startLine": 637,
+        "startChar": 24,
+        "endLine": 637,
+        "endChar": 28
+      },
+      "revId": "a474a45695a1252b34623050eba887a6f56f5604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09c489af_ec1ec1fc",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-01-27T23:21:55Z",
+      "side": 1,
+      "message": "My impression is that this branch is needed because getFourCCForMime does not support the Dolby MIME type (and the reason for that is that Dolby FourCCs need the profile besides the mimetype). If my interpretation is right then we would benefit from a comment in this branch explaining the why. Something like:\n\n// getFourCCForMime does not support MEDIA_MIMETYPE_VIDEO_DOLBY_VISION, but we do support dolby vision, so we allow the creation of a new track for this MIME type.\n\nYou might want to reword the comment.",
+      "range": {
+        "startLine": 694,
+        "startChar": 9,
+        "endLine": 694,
+        "endChar": 55
+      },
+      "revId": "a474a45695a1252b34623050eba887a6f56f5604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4634ead5_e395fd7f",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3384,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-01-27T23:21:55Z",
+      "side": 1,
+      "message": "Do you know why we need a copy of mDoviConfigData? It\u0027s a copy of the contents of one of kKeyDVCC, kKeyDVVC, kKeyDVWC, and those contents are already contained in mMeta, of which we own a reference, so we could save a bunch of code by not keeping a copy in the internal state of this class.",
+      "range": {
+        "startLine": 3384,
+        "startChar": 4,
+        "endLine": 3384,
+        "endChar": 19
+      },
+      "revId": "a474a45695a1252b34623050eba887a6f56f5604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "50d0778d_bb63c2eb",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3393,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-01-27T23:21:55Z",
+      "side": 1,
+      "message": "Can we add a reference to the standard where this is specified. I don\u0027t know about dolby vision, but for HDR static info it would be something like CTA-861, Section x.y.z. I don\u0027t know the equivalent for dolby.\n\nIf there is no standard, hopefully we\u0027d have a reference to an internal bug, maybe?",
+      "range": {
+        "startLine": 3393,
+        "startChar": 4,
+        "endLine": 3393,
+        "endChar": 74
+      },
+      "revId": "a474a45695a1252b34623050eba887a6f56f5604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0897a9e9_354d5447",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4435,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-01-27T23:21:55Z",
+      "side": 1,
+      "message": "What happens otherwise? Would it be a malfromed file, or the dovi config box suffices? A reference to a spec would be really useful for these magic numbers.",
+      "range": {
+        "startLine": 4435,
+        "startChar": 8,
+        "endLine": 4435,
+        "endChar": 9
+      },
+      "revId": "a474a45695a1252b34623050eba887a6f56f5604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
