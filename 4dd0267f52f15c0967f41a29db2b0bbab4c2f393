@@ -34,6 +34,24 @@
       "parentUuid": "ced3c669_e876bb38",
       "revId": "4dd0267f52f15c0967f41a29db2b0bbab4c2f393",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e9cd7ac3_49826e36",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-27T00:22:34Z",
+      "side": 1,
+      "message": "This CL adds vendor specific P010 support, so I may track that in another CL.",
+      "parentUuid": "6d0dbb22_6d669eb3",
+      "revId": "4dd0267f52f15c0967f41a29db2b0bbab4c2f393",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
