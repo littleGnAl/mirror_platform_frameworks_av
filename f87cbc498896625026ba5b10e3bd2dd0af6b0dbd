@@ -1,0 +1,96 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c69e7010_970d7dc5",
+        "filename": "media/codec2/sfplugin/Codec2InfoBuilder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 79,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-28T00:51:38Z",
+      "side": 1,
+      "message": "For these specific cases we could also return YUV420PackedPlanar/Semiplanar (if the U/V offsets are multiple of stride) so that we would directly use these buffers for MediaCodec ByteBuffer.",
+      "range": {
+        "startLine": 79,
+        "startChar": 0,
+        "endLine": 79,
+        "endChar": 50
+      },
+      "revId": "f87cbc498896625026ba5b10e3bd2dd0af6b0dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4e0e71e1_52e94c90",
+        "filename": "media/codec2/sfplugin/Codec2InfoBuilder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-28T00:51:38Z",
+      "side": 1,
+      "message": "nit: we should filter out defined color formats to avoid confusion on whether this value is a color format or a vendor-specific pixel format",
+      "range": {
+        "startLine": 268,
+        "startChar": 32,
+        "endLine": 268,
+        "endChar": 53
+      },
+      "revId": "f87cbc498896625026ba5b10e3bd2dd0af6b0dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "851f6b93_74967c42",
+        "filename": "media/codec2/sfplugin/Codec2InfoBuilder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 702,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-28T00:51:38Z",
+      "side": 1,
+      "message": "This is nice. In the end we probably want this info from the default store, e.g. SW codec process may want to know if vendor\u0027s gralloc supports a specialized P010.\n\nIf there are multiple vendor stores, that could possibly be a use case for having multiple maps, but not sure if in effect we should do the same.",
+      "range": {
+        "startLine": 702,
+        "startChar": 26,
+        "endLine": 702,
+        "endChar": 46
+      },
+      "revId": "f87cbc498896625026ba5b10e3bd2dd0af6b0dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6103c37a_2c071ef6",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodecConstants.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 589,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-28T00:51:38Z",
+      "side": 1,
+      "message": "thanks for adding these! You are the first who\u0027s using them.",
+      "range": {
+        "startLine": 589,
+        "startChar": 18,
+        "endLine": 589,
+        "endChar": 46
+      },
+      "revId": "f87cbc498896625026ba5b10e3bd2dd0af6b0dbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
