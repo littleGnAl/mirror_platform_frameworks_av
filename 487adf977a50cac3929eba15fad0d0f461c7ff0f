@@ -16,6 +16,29 @@
       "message": "tested with stagefright -P 43 -t \u003c10-bit HEVC\u003e",
       "revId": "487adf977a50cac3929eba15fad0d0f461c7ff0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2e0708d6_c260c958",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2022-01-28T16:49:50Z",
+      "side": 1,
+      "message": "Why divide by 2?",
+      "range": {
+        "startLine": 738,
+        "startChar": 8,
+        "endLine": 742,
+        "endChar": 9
+      },
+      "revId": "487adf977a50cac3929eba15fad0d0f461c7ff0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
