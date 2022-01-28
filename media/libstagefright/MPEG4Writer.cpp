@@ -4349,11 +4349,11 @@ void MPEG4Writer::Track::writeColrBox() {
     memset(&aspects, 0, sizeof(aspects));
     // Color metadata may have changed.
     sp<MetaData> meta = mSource->getFormat();
-    // TRICKY: using | instead of || because we want to execute all findInt32-s
-    if (meta->findInt32(kKeyColorPrimaries, (int32_t*)&aspects.mPrimaries)
-            | meta->findInt32(kKeyTransferFunction, (int32_t*)&aspects.mTransfer)
-            | meta->findInt32(kKeyColorMatrix, (int32_t*)&aspects.mMatrixCoeffs)
-            | meta->findInt32(kKeyColorRange, (int32_t*)&aspects.mRange)) {
+    bool findPrimaries = meta->findInt32(kKeyColorPrimaries, (int32_t*)&aspects.mPrimaries);
+    bool findTransfer = meta->findInt32(kKeyTransferFunction, (int32_t*)&aspects.mTransfer);
+    bool findMatrix = meta->findInt32(kKeyColorMatrix, (int32_t*)&aspects.mMatrixCoeffs);
+    bool findRange = meta->findInt32(kKeyColorRange, (int32_t*)&aspects.mRange);
+    if (findPrimaries || findTransfer || findMatrix || findRange) {
         int32_t primaries, transfer, coeffs;
         bool fullRange;
         ALOGV("primaries=%s transfer=%s matrix=%s range=%s",
