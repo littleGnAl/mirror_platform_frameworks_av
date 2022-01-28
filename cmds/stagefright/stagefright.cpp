@@ -630,6 +630,12 @@ static void usage(const char *me) {
     fprintf(stderr, "       -b bug to reproduce\n");
     fprintf(stderr, "       -i(nfo) dump codec info (profiles and color formats supported, details)\n");
     fprintf(stderr, "       -t(humbnail) extract video thumbnail or album art\n");
+    fprintf(stderr, "       -P(ixelFormat) pixel format to use for raw thumbnail "
+                    "(/sdcard/out.raw)\n");
+    fprintf(stderr, "          %d: RGBA_565\n", HAL_PIXEL_FORMAT_RGB_565);
+    fprintf(stderr, "          %d: RGBA_8888\n", HAL_PIXEL_FORMAT_RGBA_8888);
+    fprintf(stderr, "          %d: BGRA_8888\n", HAL_PIXEL_FORMAT_BGRA_8888);
+    fprintf(stderr, "          %d: RGBA_1010102\n", HAL_PIXEL_FORMAT_RGBA_1010102);
     fprintf(stderr, "       -s(oftware) prefer software codec\n");
     fprintf(stderr, "       -r(hardware) force to use hardware codec\n");
     fprintf(stderr, "       -o playback audio\n");
@@ -787,6 +793,7 @@ int main(int argc, char **argv) {
     bool useSurfaceTexAlloc = false;
     bool dumpStream = false;
     bool dumpPCMStream = false;
+    uint32_t pixelFormat = 0;
     String8 dumpStreamFilename;
     gNumRepetitions = 1;
     gMaxNumFrames = 0;
@@ -800,7 +807,7 @@ int main(int argc, char **argv) {
     sp<android::ALooper> looper;
 
     int res;
-    while ((res = getopt(argc, argv, "vhaqn:lm:b:itsrow:kN:xSTd:D:")) >= 0) {
+    while ((res = getopt(argc, argv, "vhaqn:lm:b:itsrow:kN:xSTd:D:P:")) >= 0) {
         switch (res) {
             case 'a':
             {
@@ -841,6 +848,7 @@ int main(int argc, char **argv) {
                 break;
             }
 
+            case 'P':
             case 'm':
             case 'n':
             case 'b':
@@ -856,6 +864,8 @@ int main(int argc, char **argv) {
                     gNumRepetitions = x;
                 } else if (res == 'm') {
                     gMaxNumFrames = x;
+                } else if (res == 'P') {
+                    pixelFormat = x;
                 } else {
                     CHECK_EQ(res, 'b');
                     gReproduceBug = x;
@@ -981,21 +991,44 @@ int main(int argc, char **argv) {
             sp<IMemory> mem =
                     retriever->getFrameAtTime(-1,
                             MediaSource::ReadOptions::SEEK_PREVIOUS_SYNC,
-                            HAL_PIXEL_FORMAT_RGB_565,
+                            pixelFormat ? : HAL_PIXEL_FORMAT_RGB_565,
                             false /*metaOnly*/);
 
             if (mem != NULL) {
                 failed = false;
-                printf("getFrameAtTime(%s) => OK\n", filename);
+                printf("getFrameAtTime(%s) format %d => OK\n", filename, pixelFormat);
 
                 VideoFrame *frame = (VideoFrame *)mem->unsecurePointer();
 
-                CHECK_EQ(writeJpegFile("/sdcard/out.jpg",
-                            frame->getFlattenedData(),
-                            frame->mWidth, frame->mHeight), 0);
+                if (pixelFormat) {
+                    int bpp = 0;
+                    switch (pixelFormat) {
+                        case HAL_PIXEL_FORMAT_RGB_565:
+                            bpp = 2;
+                            break;
+                        case HAL_PIXEL_FORMAT_RGBA_8888:
+                        case HAL_PIXEL_FORMAT_BGRA_8888:
+                        case HAL_PIXEL_FORMAT_RGBA_1010102:
+                            bpp = 4;
+                            break;
+                    }
+                    if (bpp) {
+                        FILE *out = fopen("/sdcard/out.raw", "wb");
+                        fwrite(frame->getFlattenedData(), bpp * frame->mWidth, frame->mHeight, out);
+                        fclose(out);
+
+                        printf("write out %d x %d x %db\n", frame->mWidth, frame->mHeight, bpp);
+                    } else {
+                        printf("unknown pixel format.\n");
+                    }
+                } else {
+                    CHECK_EQ(writeJpegFile("/sdcard/out.jpg",
+                                frame->getFlattenedData(),
+                                frame->mWidth, frame->mHeight), 0);
+                }
             }
 
-            {
+            if (!pixelFormat) {
                 mem = retriever->extractAlbumArt();
 
                 if (mem != NULL) {
