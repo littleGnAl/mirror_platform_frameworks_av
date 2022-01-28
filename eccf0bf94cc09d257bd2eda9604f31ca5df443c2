@@ -16,6 +16,24 @@
       "message": "We need to add the dependency here as well: frameworks/av/media/codec2/components/tests/Android.bp\n\nGiven we have two places that are breaking with this change, it may be beneficial to have the static default defined.",
       "revId": "eccf0bf94cc09d257bd2eda9604f31ca5df443c2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc450bd6_e5ef497a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-28T20:16:42Z",
+      "side": 1,
+      "message": "Yes I also found that - but I found other components since then... that is why I propose to split this into two changes.",
+      "parentUuid": "53a7b464_a14d3ba4",
+      "revId": "eccf0bf94cc09d257bd2eda9604f31ca5df443c2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
