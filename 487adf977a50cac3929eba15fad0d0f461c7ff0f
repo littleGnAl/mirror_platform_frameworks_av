@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "79b14ceb_c5d40650",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-28T18:31:59Z",
+      "side": 1,
+      "message": "This CL replaces aosp/1952839. These are all MediaCodec / OMX formats here, so RGBA_1010102 does not work - this is the MediaCodec constant for RGBA_1010102.",
+      "parentUuid": "4638a764_3e92a659",
+      "range": {
+        "startLine": 167,
+        "startChar": 9,
+        "endLine": 167,
+        "endChar": 37
+      },
+      "revId": "487adf977a50cac3929eba15fad0d0f461c7ff0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e56eecc5_59ae6e31",
         "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
         "patchSetId": 1
@@ -54,6 +78,30 @@
       "writtenOn": "2022-01-28T17:21:04Z",
       "side": 1,
       "message": "delete",
+      "range": {
+        "startLine": 653,
+        "startChar": 1,
+        "endLine": 653,
+        "endChar": 52
+      },
+      "revId": "487adf977a50cac3929eba15fad0d0f461c7ff0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7f64378b_0168c0fb",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-28T18:31:59Z",
+      "side": 1,
+      "message": "I left it here in case we want to expand it to other formats. We have similar commented out line in other places.",
+      "parentUuid": "e56eecc5_59ae6e31",
       "range": {
         "startLine": 653,
         "startChar": 1,
@@ -100,6 +148,30 @@
       "writtenOn": "2022-01-28T17:07:31Z",
       "side": 1,
       "message": "This is for BT.2020. Use -1109 and 2149 for BT.709",
+      "range": {
+        "startLine": 1165,
+        "startChar": 4,
+        "endLine": 1166,
+        "endChar": 40
+      },
+      "revId": "487adf977a50cac3929eba15fad0d0f461c7ff0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d97b50a4_84db45b7",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1166,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-28T18:31:59Z",
+      "side": 1,
+      "message": "We need to use the larger range so this does not overflow for either BT.2020 or BT.709.",
+      "parentUuid": "656493d9_9a884102",
       "range": {
         "startLine": 1165,
         "startChar": 4,
