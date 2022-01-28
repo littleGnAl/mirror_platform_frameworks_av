@@ -48,7 +48,7 @@ status_t AudioValidator::validateEffectDescriptor(
 {
     status_t status = NO_ERROR;
     if (checkStringOverflow(desc.name)
-        | /* always */ checkStringOverflow(desc.implementor)) {
+        || checkStringOverflow(desc.implementor)) {
         status = BAD_VALUE;
     }
     return safetyNetLog(status, bugNumber);
