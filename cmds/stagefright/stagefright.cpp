@@ -1005,9 +1005,21 @@ int main(int argc, char **argv) {
                     case HAL_PIXEL_FORMAT_RGB_565:
                         bpp = 2;
                         break;
+                    case HAL_PIXEL_FORMAT_RGBA_1010102:
+                        // convert RGBA_1010102 to RGBA_8888
+                        {
+                            uint32_t *data = (uint32_t *)frame->getFlattenedData();
+                            uint32_t *end = data + frame->mWidth * frame->mHeight;
+                            for (; data < end; ++data) {
+                                *data = ((*data & 0x3fc) >> 2) | ((*data & 0xff000) >> 4) |
+                                    ((*data & 0x3fc00000) >> 6) | (((*data & 0xc0000000) >> 6) * 0x55);
+                            }
+                        }
+
+                        FALLTHROUGH_INTENDED;
+
                     case HAL_PIXEL_FORMAT_RGBA_8888:
                     case HAL_PIXEL_FORMAT_BGRA_8888:
-                    case HAL_PIXEL_FORMAT_RGBA_1010102:
                         bpp = 4;
                         break;
                     }
