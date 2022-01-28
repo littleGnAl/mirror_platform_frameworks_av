@@ -16,6 +16,23 @@
       "message": "This seems to fail for us with:\n\nIn file included from frameworks/av/media/codec2/vndk/C2AllocatorGralloc.cpp:29:\nframeworks/native/libs/ui/include/ui/Gralloc4.h:20:10: fatal error: \u0027aidl/android/hardware/graphics/allocator/IAllocator.h\u0027 file not found\n#include \u003caidl/android/hardware/graphics/allocator/IAllocator.h\u003e",
       "revId": "ae5e80d08dccbb5d3ae70f6ed3708800fb765e4d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d14d994f_36a90132",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 10
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-28T06:31:53Z",
+      "side": 1,
+      "message": "I think it\u0027s because Gralloc4.h now also support the 4.1 AIDL-based HAL",
+      "revId": "ae5e80d08dccbb5d3ae70f6ed3708800fb765e4d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
