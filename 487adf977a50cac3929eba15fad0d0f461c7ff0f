@@ -112,6 +112,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "15ebc239_dc6088ba",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 653,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-28T18:39:41Z",
+      "side": 1,
+      "message": "maybe add a TODO here?",
+      "parentUuid": "7f64378b_0168c0fb",
+      "range": {
+        "startLine": 653,
+        "startChar": 1,
+        "endLine": 653,
+        "endChar": 52
+      },
+      "revId": "487adf977a50cac3929eba15fad0d0f461c7ff0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2e0708d6_c260c958",
@@ -125,6 +149,30 @@
       "writtenOn": "2022-01-28T16:49:50Z",
       "side": 1,
       "message": "Why divide by 2?",
+      "range": {
+        "startLine": 738,
+        "startChar": 8,
+        "endLine": 742,
+        "endChar": 9
+      },
+      "revId": "487adf977a50cac3929eba15fad0d0f461c7ff0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6cd39673_77272484",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-01-28T18:39:41Z",
+      "side": 1,
+      "message": "src_y \u0026 src_uv are uint16_t*",
+      "parentUuid": "2e0708d6_c260c958",
       "range": {
         "startLine": 738,
         "startChar": 8,
