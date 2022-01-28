@@ -39,6 +39,29 @@
       },
       "revId": "487adf977a50cac3929eba15fad0d0f461c7ff0f",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "656493d9_9a884102",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1166,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2022-01-28T17:07:31Z",
+      "side": 1,
+      "message": "This is for BT.2020. Use -1109 and 2149 for BT.709",
+      "range": {
+        "startLine": 1165,
+        "startChar": 4,
+        "endLine": 1166,
+        "endChar": 40
+      },
+      "revId": "487adf977a50cac3929eba15fad0d0f461c7ff0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
