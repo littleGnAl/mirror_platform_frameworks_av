@@ -217,6 +217,10 @@ status_t ColorConverter::convert(
             dstWidth, dstHeight, dstStride,
             dstCropLeft, dstCropTop, dstCropRight, dstCropBottom, mDstFormat);
 
+    ALOGI("converting %zux%zu[+%zu] (%zu,%zu..%zu,%zu) %d => %zux%zu[+%zu] (%zu,%zu..%zu,%zu) %d",
+          srcWidth, srcHeight, srcStride, srcCropLeft, srcCropTop, srcCropRight, srcCropBottom, mSrcFormat,
+          dstWidth, dstHeight, dstStride, dstCropLeft, dstCropTop, dstCropRight, dstCropBottom, mDstFormat);
+
     if (!((src.mCropLeft & 1) == 0
         && src.cropWidth() == dst.cropWidth()
         && src.cropHeight() == dst.cropHeight())) {
@@ -255,7 +259,7 @@ status_t ColorConverter::convert(
             err = convertYUVP010(src, dst);
 #if PERF_PROFILING
             int64_t endTimeUs = ALooper::GetNowUs();
-            ALOGD("convertYUVP010 took %lld us", (long long) (endTimeUs - startTimeUs));
+            ALOGD("convertYUV420Planar16 took %lld us", (long long) (endTimeUs - startTimeUs));
 #endif
             break;
         }
@@ -663,6 +667,8 @@ status_t ColorConverter::convertYUVP010ToRGBA1010102(
             + src.mStride * src.mHeight
             + (src.mCropTop / 2) * src.mStride + src.mCropLeft * src.mBpp);
 
+    ALOGI("P010ToRGBA1010102 y:%p[%zu] uv:%p => %p[%zu]", src_y, src.mBpp, src_uv, dst_ptr, dst.mBpp);
+
     // BT.2020 Limited Range conversion
 
     // B = 1.168  *(Y - 64) + 2.148  *(U - 512)
@@ -743,6 +749,8 @@ status_t ColorConverter::convertYUVP010ToRGBA1010102(
 
         dst_ptr += dst.mStride;
     }
+
+    ALOGI("P010ToRGBA1010102 finished y:%p[%zu] uv:%p => %p[%zu]", src_y, src.mBpp, src_uv, dst_ptr, dst.mBpp);
 
     return OK;
 }

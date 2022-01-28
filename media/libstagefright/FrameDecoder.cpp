@@ -687,6 +687,9 @@ status_t VideoFrameDecoder::onOutputReceived(
     }
     converter.setSrcColorSpace(standard, range, transfer);
 
+    ALOGI("outputformat = %s", outputFormat->debugString(4).c_str());
+
+
     if (converter.isValid()) {
         converter.convert(
                 (const uint8_t *)videoFrameBuffer->data(),
@@ -899,6 +902,8 @@ status_t MediaImageDecoder::onOutputReceived(
     if (outputFormat == NULL) {
         return ERROR_MALFORMED;
     }
+
+    ALOGI("outputformat = %s", outputFormat->debugString(4).c_str());
 
     int32_t width, height, stride;
     if (outputFormat->findInt32("width", &width) == false) {
