@@ -1,0 +1,119 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d25466f3_bef2709d",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1580,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-01-28T23:39:42Z",
+      "side": 1,
+      "message": "we have the defined strings -- see my comment below about \"color-range\"",
+      "range": {
+        "startLine": 1580,
+        "startChar": 34,
+        "endLine": 1580,
+        "endChar": 50
+      },
+      "revId": "62715081be1981a4c10747a44381f81f4772623d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "96d5bde3_39ef7df3",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 1594,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-01-28T23:39:42Z",
+      "side": 1,
+      "message": "re: the \u0026\u0026 -- must all of the sType1.XXX values be \u003e0,  or it sufficient if just 1 of them is?",
+      "range": {
+        "startLine": 1594,
+        "startChar": 19,
+        "endLine": 1594,
+        "endChar": 22
+      },
+      "revId": "62715081be1981a4c10747a44381f81f4772623d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "75ce804e_23a3c3ab",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 4552,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-01-28T23:39:42Z",
+      "side": 1,
+      "message": "repeated phrasing, which makes it seem that perhaps\nwe should have a ColorUtils::isStaticHdrValid() helper routine.\n\nlikely home for that would be frameworks/av/media/libstagefright/foundation/ColorUtils.cpp",
+      "range": {
+        "startLine": 4549,
+        "startChar": 20,
+        "endLine": 4552,
+        "endChar": 75
+      },
+      "revId": "62715081be1981a4c10747a44381f81f4772623d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f25c54f7_92049d41",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 11
+      },
+      "lineNbr": 4615,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-01-28T23:39:42Z",
+      "side": 1,
+      "message": "let\u0027s use the defined constants here instead of using literal strings:\n\nlibstagefright/include/media/stagefright/MediaCodecConstants.h:constexpr char KEY_COLOR_RANGE[] \u003d \"color-range\";\n\nthat\u0027s for all of them, not just color-range.",
+      "range": {
+        "startLine": 4615,
+        "startChar": 30,
+        "endLine": 4615,
+        "endChar": 43
+      },
+      "revId": "62715081be1981a4c10747a44381f81f4772623d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7081a0c0_228c016e",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodec.h",
+        "patchSetId": 11
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-01-28T23:39:42Z",
+      "side": 1,
+      "message": "I think it\u0027s worth a comment that this is a bitmask.\nespecially since it\u0027ll help the next person to add a field below to use \u00274\u0027 instead of \u00273\u0027.\n\nanother way to make it obvious that this is a bitmask is to use \"1\u003c\u003c0\" and \"1\u003c\u003c1\"\ninstead 1 and 2 for the values below.",
+      "range": {
+        "startLine": 448,
+        "startChar": 13,
+        "endLine": 448,
+        "endChar": 30
+      },
+      "revId": "62715081be1981a4c10747a44381f81f4772623d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
