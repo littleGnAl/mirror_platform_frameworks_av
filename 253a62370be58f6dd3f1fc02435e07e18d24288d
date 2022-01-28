@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "dc15cc9b_a2b3235d",
+        "filename": "media/codec2/sfplugin/utils/Codec2Mapper.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 992,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-28T00:13:58Z",
+      "side": 1,
+      "message": "I don\u0027t think this is supposed to work by C++ standard.\n\nmap.at throws std::out_of_range if frameworkValue is not in the map.\n\nNote that we use ALookup in this file. It may not be as optimal as std::map, but that\u0027s an optimization we can add later.",
+      "range": {
+        "startLine": 992,
+        "startChar": 15,
+        "endLine": 992,
+        "endChar": 47
+      },
+      "revId": "253a62370be58f6dd3f1fc02435e07e18d24288d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "41395a24_88171e09",
+        "filename": "media/codec2/sfplugin/utils/Codec2Mapper.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1001,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-28T00:13:58Z",
+      "side": 1,
+      "message": "this is 422 (we defined a COLOR_FormatYUV422Flexible but are not using it). This could be COLOR_FormatYUV422PackedSemiPlanar.",
+      "range": {
+        "startLine": 1001,
+        "startChar": 9,
+        "endLine": 1001,
+        "endChar": 38
+      },
+      "revId": "253a62370be58f6dd3f1fc02435e07e18d24288d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "930aa883_4b67c280",
+        "filename": "media/codec2/sfplugin/utils/Codec2Mapper.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1003,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-01-28T00:13:58Z",
+      "side": 1,
+      "message": "same here, but COLOR_FormatYUV422PackedPlanar",
+      "range": {
+        "startLine": 1003,
+        "startChar": 0,
+        "endLine": 1003,
+        "endChar": 78
+      },
+      "revId": "253a62370be58f6dd3f1fc02435e07e18d24288d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
