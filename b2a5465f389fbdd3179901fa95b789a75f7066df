@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e440a61f_6185278b",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 121,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2022-01-28T00:02:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "b4861490_2bc3173b",
+      "range": {
+        "startLine": 121,
+        "startChar": 19,
+        "endLine": 121,
+        "endChar": 41
+      },
+      "revId": "b2a5465f389fbdd3179901fa95b789a75f7066df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "2efd7439_dc935cee",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "8ab35096_8e404609",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 1597,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2022-01-28T00:02:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2efd7439_dc935cee",
+      "range": {
+        "startLine": 1597,
+        "startChar": 37,
+        "endLine": 1597,
+        "endChar": 47
+      },
+      "revId": "b2a5465f389fbdd3179901fa95b789a75f7066df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "67eddbb9_a80f24de",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-01-27T22:14:15Z",
       "side": 1,
       "message": "similarly, e.g.\nconstexpr kHDRMetadataFlag_HDR10Plus \u003d 0x00100000;\n\n(recommend 0x1 and 0x2 instead of these random values)",
+      "range": {
+        "startLine": 4563,
+        "startChar": 33,
+        "endLine": 4563,
+        "endChar": 43
+      },
+      "revId": "b2a5465f389fbdd3179901fa95b789a75f7066df",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85aee62f_225c1293",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 8
+      },
+      "lineNbr": 4563,
+      "author": {
+        "id": 1895465
+      },
+      "writtenOn": "2022-01-28T00:02:28Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67eddbb9_a80f24de",
       "range": {
         "startLine": 4563,
         "startChar": 33,
