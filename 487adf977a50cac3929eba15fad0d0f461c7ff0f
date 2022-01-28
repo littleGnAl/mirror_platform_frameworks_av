@@ -89,6 +89,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbbb322e_178cddc5",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2022-01-28T18:51:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "1cf42c26_b39daaca",
+      "range": {
+        "startLine": 167,
+        "startChar": 9,
+        "endLine": 167,
+        "endChar": 37
+      },
+      "revId": "487adf977a50cac3929eba15fad0d0f461c7ff0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e56eecc5_59ae6e31",
@@ -197,6 +221,30 @@
       "side": 1,
       "message": "src_y \u0026 src_uv are uint16_t*",
       "parentUuid": "2e0708d6_c260c958",
+      "range": {
+        "startLine": 738,
+        "startChar": 8,
+        "endLine": 742,
+        "endChar": 9
+      },
+      "revId": "487adf977a50cac3929eba15fad0d0f461c7ff0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "be571c19_756c87af",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 742,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2022-01-28T18:51:23Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6cd39673_77272484",
       "range": {
         "startLine": 738,
         "startChar": 8,
