@@ -20,6 +20,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "4638a764_3e92a659",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2022-01-28T18:14:45Z",
+      "side": 1,
+      "message": "This and other places change to RGBA_1010102 after aosp/1952839 merges",
+      "range": {
+        "startLine": 167,
+        "startChar": 9,
+        "endLine": 167,
+        "endChar": 37
+      },
+      "revId": "487adf977a50cac3929eba15fad0d0f461c7ff0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e56eecc5_59ae6e31",
         "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
         "patchSetId": 1
