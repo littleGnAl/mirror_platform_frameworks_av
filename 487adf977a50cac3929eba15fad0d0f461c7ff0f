@@ -67,6 +67,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "1cf42c26_b39daaca",
+        "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 167,
+      "author": {
+        "id": 1396722
+      },
+      "writtenOn": "2022-01-28T18:40:06Z",
+      "side": 1,
+      "message": "saw the definition of         COLOR_Format32bitABGR2101010 in  frameworks/base/media/java/android/media/MediaCodecInfo.java, so that is good.",
+      "parentUuid": "4638a764_3e92a659",
+      "range": {
+        "startLine": 167,
+        "startChar": 9,
+        "endLine": 167,
+        "endChar": 37
+      },
+      "revId": "487adf977a50cac3929eba15fad0d0f461c7ff0f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "e56eecc5_59ae6e31",
         "filename": "media/libstagefright/colorconversion/ColorConverter.cpp",
         "patchSetId": 1
