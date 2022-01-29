@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d6ba1c73_0ff7160f",
+        "filename": "cmds/stagefright/stagefright.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 633,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2022-01-29T17:34:17Z",
+      "side": 1,
+      "message": "\u003e Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.\n\nPlease fix.",
+      "parentUuid": "e8ac15bf_758035d7",
+      "range": {
+        "startLine": 633,
+        "startChar": 0,
+        "endLine": 633,
+        "endChar": 103
+      },
+      "revId": "9281f7e722c14f195d2ff779af1edd182d8f9a69",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
