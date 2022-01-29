@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "013a30cf_7e5b2ad5",
+        "filename": "media/libstagefright/foundation/ColorUtils.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 790,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-01-29T01:48:44Z",
+      "side": 1,
+      "message": "this is ok phrasing.\nbut the one I find easier to follow is:\n\n  if (maxDisplayLuminance \u003e 0 \u0026\u0026 minDisplayLuminance \u003e 0)  return true;\n  if (maxLightlevel \u003e 0 \u0026\u0026 maxframeaveragelightlevel \u003e 0)  return true;\n  return false.\n  \ni also think it reduces the chance of a logic error.\n\nThere are times when you need the more complex logic, but this is not one.\nGenerated code is going to be the same -- so there\u0027s no runtime advantage.\n\nthis is style/maintainability, not correctness... so up to you about adopting it.",
+      "range": {
+        "startLine": 786,
+        "startChar": 4,
+        "endLine": 790,
+        "endChar": 20
+      },
+      "revId": "6e13b4d72d2504121fb0f396ca967d6e7a2d5635",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
