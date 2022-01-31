@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8a4a8982_4131ccb8",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 10,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-01-31T21:41:30Z",
+      "side": 1,
+      "message": "why not separate files?\n\nit seems that none of the m3u8 files include more than 1 such file.\nit seems that several binary files contain multiple _MARK markers, but I think I\u0027d be happier seeing there be a set of 3-4 separate files than having the fuzzer parse a binary file...\n\nso for example corpus/index9 seems to be one that defines\nan m3u8 file and 3 media (_MARK_B) files.  why\ndon\u0027t we have a corpus/index9 (or corpus/index9.m3u8)\nand have three corpus/index9_binary1   or something like that\nfor each of those dependent files.",
+      "range": {
+        "startLine": 10,
+        "startChar": 26,
+        "endLine": 10,
+        "endChar": 47
+      },
+      "revId": "19db76acace69f0cdf376fec429ab20e867143d8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
