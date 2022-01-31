@@ -75,6 +75,9 @@ cc_defaults {
     ],
 
     ldflags: ["-Wl,-Bsymbolic"],
+
+    min_sdk_version: "29",
+    apex_available: ["com.android.media.swcodec"],
 }
 
 // public dependency for software codec implementation
