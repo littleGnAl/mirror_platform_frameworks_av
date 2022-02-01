@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "2e23df19_cec98003",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-02-01T06:07:07Z",
+      "side": 1,
+      "message": "Mikhail,\nIs this an acceptable change?\nThis is needed to enable including libaudioclient_aidl_conversion as a static library instead of a shared library in the unit tests.\n",
+      "revId": "2f87219ff44d7f0d991d02da1e8a860b753b60c5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
