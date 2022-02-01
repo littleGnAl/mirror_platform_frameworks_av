@@ -344,6 +344,8 @@ public:
 
     virtual status_t updateSecondaryOutputs(
             const TrackSecondaryOutputsMap& trackSecondaryOutputs) = 0;
+
+    virtual status_t setDeviceConnectedState(const struct audio_port_v7 *port, bool connected) = 0;
 };
 
 /**
@@ -438,6 +440,7 @@ public:
     status_t setVibratorInfos(const std::vector<media::AudioVibratorInfo>& vibratorInfos) override;
     status_t updateSecondaryOutputs(
             const TrackSecondaryOutputsMap& trackSecondaryOutputs) override;
+    status_t setDeviceConnectedState(const struct audio_port_v7 *port, bool connected) override;
 
 private:
     const sp<media::IAudioFlingerService> mDelegate;
@@ -522,6 +525,7 @@ public:
             SET_AUDIO_HAL_PIDS = media::BnAudioFlingerService::TRANSACTION_setAudioHalPids,
             SET_VIBRATOR_INFOS = media::BnAudioFlingerService::TRANSACTION_setVibratorInfos,
             UPDATE_SECONDARY_OUTPUTS = media::BnAudioFlingerService::TRANSACTION_updateSecondaryOutputs,
+            SET_DEVICE_CONNECTED_STATE = media::BnAudioFlingerService::TRANSACTION_setDeviceConnectedState,
         };
 
         /**
@@ -630,6 +634,7 @@ public:
     Status setVibratorInfos(const std::vector<media::AudioVibratorInfo>& vibratorInfos) override;
     Status updateSecondaryOutputs(
             const std::vector<media::TrackSecondaryOutputInfo>& trackSecondaryOutputInfos) override;
+    Status setDeviceConnectedState(const media::AudioPort& port, bool connected) override;
 
 private:
     const sp<AudioFlingerServerAdapter::Delegate> mDelegate;
