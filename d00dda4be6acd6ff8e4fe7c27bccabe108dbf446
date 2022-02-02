@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0799b31e_389e05bf",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 797,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-02-02T18:54:42Z",
+      "side": 1,
+      "message": "nit: !allowRGBA1010102",
+      "range": {
+        "startLine": 797,
+        "startChar": 8,
+        "endLine": 797,
+        "endChar": 33
+      },
+      "revId": "d00dda4be6acd6ff8e4fe7c27bccabe108dbf446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9664499d_dbbb51bb",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 798,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-02-02T18:54:42Z",
+      "side": 1,
+      "message": "nit: indent",
+      "revId": "d00dda4be6acd6ff8e4fe7c27bccabe108dbf446",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
