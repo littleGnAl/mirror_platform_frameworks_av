@@ -16,6 +16,115 @@
       "message": "This is just a +1 for the libcameraservice files.",
       "revId": "0464b9c176e78df859c7980f59bf9e82339dee82",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "eb3562e7_0d66351e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-02-03T04:48:07Z",
+      "side": 1,
+      "message": "i think a couple of them can be re-phrased even better.",
+      "revId": "0464b9c176e78df859c7980f59bf9e82339dee82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f661729_5c17b7a5",
+        "filename": "media/libmediahelper/AudioValidator.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 52,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-02-03T04:48:07Z",
+      "side": 1,
+      "message": "I think this one could safely go to checkString() || checkString()\nwithout any temp variables.\n\nthe two calls don\u0027t have any side effects, so I don\u0027t see that we need to\nmake sure that both are invoked.",
+      "range": {
+        "startLine": 52,
+        "startChar": 3,
+        "endLine": 52,
+        "endChar": 46
+      },
+      "revId": "0464b9c176e78df859c7980f59bf9e82339dee82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "299098a2_bea4b11c",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4356,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-02-03T04:48:07Z",
+      "side": 1,
+      "message": "i think this entire routine becomes cleaner if we recast as:\n\nif (!find(primariers) || !find(transfer) || !find(matrix) || !find(range)) {\n    alogv (\"no color info\"); \n} else {\n    lines 4357..4372\n}\n\navoids the temp variables.  ensure that all have been evaluated.\ni\u0027d even be tempted to:\n\nif (!find(primariers) || !find(transfer) || !find(matrix) || !find(range)) {\n    alogv (\"no color info\"); \n    return\n}\nlines 4357..4372\n\n[to reduce the indentation level...]",
+      "range": {
+        "startLine": 4356,
+        "startChar": 0,
+        "endLine": 4356,
+        "endChar": 67
+      },
+      "revId": "0464b9c176e78df859c7980f59bf9e82339dee82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26132a10_c0c9c97c",
+        "filename": "media/libstagefright/foundation/ColorUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 596,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-02-03T04:48:07Z",
+      "side": 1,
+      "message": "i know its equivalent.\nbut wonder about phrasing:\n\n   if (! (mappedR \u0026\u0026 mappedS \u0026\u0026 mappedT))   \n\ntrying to decide if that\u0027s cleaner expression for the user.\n\ni\u0027ve also seen people do:\n\nbool mapped \u003d sGfxRanges.map(range,....)\nmapped |\u003d sGfxStandards.map(standard,...)\nmapped |\u003d sGfxTransfers.map(transfer,...)\n\nif (!mapped) { ... }\n\n\ni think if I have a preference here, it\u0027s the\nif (! (mapperR \u0026\u0026 mappedS \u0026\u0026 mappedT)) \nnotation. but as pointed out, that\u0027s semantically the same as what you\u0027ve marked.",
+      "range": {
+        "startLine": 596,
+        "startChar": 8,
+        "endLine": 596,
+        "endChar": 59
+      },
+      "revId": "0464b9c176e78df859c7980f59bf9e82339dee82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec0be0f6_df67add4",
+        "filename": "media/libstagefright/foundation/ColorUtils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 630,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-02-03T04:48:07Z",
+      "side": 1,
+      "message": "spacing after \u003d",
+      "range": {
+        "startLine": 630,
+        "startChar": 21,
+        "endLine": 630,
+        "endChar": 24
+      },
+      "revId": "0464b9c176e78df859c7980f59bf9e82339dee82",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
