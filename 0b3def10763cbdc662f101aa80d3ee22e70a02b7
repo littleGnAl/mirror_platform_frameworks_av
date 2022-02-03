@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38577979_bf3a541a",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-02-03T18:20:20Z",
+      "side": 1,
+      "message": "I incorporated the follow-up CL into this as we will want to output RGBA_1010102 as 8888 as a supported value.",
+      "revId": "0b3def10763cbdc662f101aa80d3ee22e70a02b7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
