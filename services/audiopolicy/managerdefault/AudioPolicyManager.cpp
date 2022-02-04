@@ -1032,13 +1032,13 @@ status_t AudioPolicyManager::getOutputForAttrInt(
     }
 
     // Explicit routing is higher priority then any dynamic policy primary output
-    bool usePrimaryOutputFromPolicyMixes = requestedDevice == nullptr && primaryMix != nullptr;
+    bool usePrimaryOutputFromPolicyMixes = requestedDevice == nullptr && primaryMix != nullptr
+            && audio_is_linear_pcm(config->format);
 
     // FIXME: in case of RENDER policy, the output capabilities should be checked
-    if ((usePrimaryOutputFromPolicyMixes
-            || (secondaryMixes != nullptr && !secondaryMixes->empty()))
-        && !audio_is_linear_pcm(config->format)) {
-        ALOGD("%s: rejecting request as dynamic audio policy only support pcm", __func__);
+    if ((secondaryMixes != nullptr && !secondaryMixes->empty())
+            && !audio_is_linear_pcm(config->format)) {
+        ALOGD("%s: rejecting request as secondary mixes only support pcm", __func__);
         return BAD_VALUE;
     }
     if (usePrimaryOutputFromPolicyMixes) {
