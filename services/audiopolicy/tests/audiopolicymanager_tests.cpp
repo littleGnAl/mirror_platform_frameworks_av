@@ -1450,6 +1450,45 @@ INSTANTIATE_TEST_CASE_P(
                 )
         );
 
+class AudioPolicyManagerCarTest : public AudioPolicyManagerTestDynamicPolicy {
+protected:
+    std::string getConfigFile() override { return sCarConfig; }
+
+    static const std::string sCarConfig;
+};
+
+const std::string AudioPolicyManagerCarTest::sCarConfig =
+        AudioPolicyManagerCarTest::sExecutableDir + "test_car_ap_atmos_offload_configuration.xml";
+
+TEST_F(AudioPolicyManagerCarTest, InitSuccess) {
+    // SetUp must finish with no assertions.
+}
+
+TEST_F(AudioPolicyManagerCarTest, Dump) {
+    dumpToLog();
+}
+
+TEST_F(AudioPolicyManagerCarTest, GetOutputForAttrEncodedOutputAfterRegisteringPolicyMix) {
+    status_t ret;
+    audio_config_t audioConfig = AUDIO_CONFIG_INITIALIZER;
+    ret = addPolicyMix(MIX_TYPE_PLAYERS, MIX_ROUTE_FLAG_RENDER,
+            AUDIO_DEVICE_OUT_BUS, "bus0_media_out", audioConfig, std::vector<PolicyMixTuple>());
+    ASSERT_EQ(NO_ERROR, ret);
+
+    audio_port_handle_t selectedDeviceId = AUDIO_PORT_HANDLE_NONE;
+    audio_io_handle_t output;
+    audio_port_handle_t portId;
+    getOutputForAttr(&selectedDeviceId,
+            AUDIO_FORMAT_E_AC3_JOC, AUDIO_CHANNEL_OUT_5POINT1, 48000, AUDIO_OUTPUT_FLAG_DIRECT,
+            &output, &portId);
+    ASSERT_NE(AUDIO_PORT_HANDLE_NONE, selectedDeviceId);
+    sp<SwAudioOutputDescriptor> outDesc = mManager->getOutputs().valueFor(output);
+    ASSERT_NE(nullptr, outDesc.get());
+    ASSERT_EQ(AUDIO_FORMAT_E_AC3_JOC, outDesc->getFormat());
+    ASSERT_EQ(AUDIO_CHANNEL_OUT_5POINT1, outDesc->getChannelMask());
+    ASSERT_EQ(48000, outDesc->getSamplingRate());
+}
+
 class AudioPolicyManagerTVTest : public AudioPolicyManagerTestWithConfigurationFile {
 protected:
     std::string getConfigFile() override { return sTvConfig; }
