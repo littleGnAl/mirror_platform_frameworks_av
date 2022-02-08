@@ -16,6 +16,23 @@
       "message": "Assuming that intention here is to allow any of userdata or callback function pointers to be NULL, change looks good.\n\nHowever, we need to confirm if this is indeed the intended behavior.\n- What happens when some of the function pointers are NULL? In the current setup, they would show up as NPD but with this CL, they will quietly be ignored and app will not get those callbacks.\n \n- What happens when userdata is NULL? How are apps supposed to get a pointer to application context? Are we suggesting that api documentation for this will say NULL is allowed and applications use a global context? \n",
       "revId": "4e5af24f3f1cb88bc06c48cc0d2ca4d014f24fbd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c48f1636_fab7b4b1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-02-08T04:36:04Z",
+      "side": 1,
+      "message": "lgtm, removes some dubious null check logic.",
+      "revId": "4e5af24f3f1cb88bc06c48cc0d2ca4d014f24fbd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
