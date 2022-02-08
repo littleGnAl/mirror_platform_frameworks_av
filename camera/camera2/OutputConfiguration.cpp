@@ -76,6 +76,10 @@ const std::vector<int32_t> &OutputConfiguration::getSensorPixelModesUsed() const
     return mSensorPixelModesUsed;
 }
 
+int OutputConfiguration::getFacing() const {
+    return mFacing;
+}
+
 OutputConfiguration::OutputConfiguration() :
         mRotation(INVALID_ROTATION),
         mSurfaceSetID(INVALID_SET_ID),
@@ -84,7 +88,8 @@ OutputConfiguration::OutputConfiguration() :
         mHeight(0),
         mIsDeferred(false),
         mIsShared(false),
-        mIsMultiResolution(false) {
+        mIsMultiResolution(false),
+        mFacing(-1) {
 }
 
 OutputConfiguration::OutputConfiguration(const android::Parcel& parcel) :
@@ -165,6 +170,13 @@ status_t OutputConfiguration::readFromParcel(const android::Parcel* parcel) {
         ALOGE("%s: Failed to read sensor pixel mode(s) from parcel", __FUNCTION__);
         return err;
     }
+
+    int facing = -1;
+    if ((err = parcel->readInt32(&facing)) != OK) {
+        ALOGE("%s: Failed to read facing value from parcel", __FUNCTION__);
+        return err;
+    }
+
     mRotation = rotation;
     mSurfaceSetID = setID;
     mSurfaceType = surfaceType;
@@ -181,10 +193,11 @@ status_t OutputConfiguration::readFromParcel(const android::Parcel* parcel) {
     }
 
     mSensorPixelModesUsed = std::move(sensorPixelModesUsed);
+    mFacing = facing;
 
     ALOGV("%s: OutputConfiguration: rotation = %d, setId = %d, surfaceType = %d,"
-          " physicalCameraId = %s, isMultiResolution = %d", __FUNCTION__, mRotation,
-          mSurfaceSetID, mSurfaceType, String8(mPhysicalCameraId).string(), mIsMultiResolution);
+          " physicalCameraId = %s, isMultiResolution = %d, facing = %d", __FUNCTION__, mRotation,
+          mSurfaceSetID, mSurfaceType, String8(mPhysicalCameraId).string(), mIsMultiResolution, mFacing);
 
     return err;
 }
@@ -199,6 +212,7 @@ OutputConfiguration::OutputConfiguration(sp<IGraphicBufferProducer>& gbp, int ro
     mIsShared = isShared;
     mPhysicalCameraId = physicalId;
     mIsMultiResolution = false;
+    mFacing = -1;
 }
 
 OutputConfiguration::OutputConfiguration(
@@ -207,7 +221,7 @@ OutputConfiguration::OutputConfiguration(
     int width, int height, bool isShared)
   : mGbps(gbps), mRotation(rotation), mSurfaceSetID(surfaceSetID), mSurfaceType(surfaceType),
     mWidth(width), mHeight(height), mIsDeferred(false), mIsShared(isShared),
-    mPhysicalCameraId(physicalCameraId), mIsMultiResolution(false) { }
+    mPhysicalCameraId(physicalCameraId), mIsMultiResolution(false), mFacing(-1) { }
 
 status_t OutputConfiguration::writeToParcel(android::Parcel* parcel) const {
 
@@ -252,6 +266,9 @@ status_t OutputConfiguration::writeToParcel(android::Parcel* parcel) const {
     if (err != OK) return err;
 
     err = parcel->writeParcelableVector(mSensorPixelModesUsed);
+    if (err != OK) return err;
+
+    err = parcel->writeInt32(mFacing);
     if (err != OK) return err;
 
     return OK;

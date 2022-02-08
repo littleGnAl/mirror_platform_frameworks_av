@@ -40,6 +40,7 @@ class CameraUtils {
          * Returns OK on success, or a negative error code.
          */
         static status_t getRotationTransform(const CameraMetadata& staticInfo,
+                int facing,
                 /*out*/int32_t* transform);
 
         /**

@@ -48,6 +48,7 @@ public:
     bool                       isShared() const;
     String16                   getPhysicalCameraId() const;
     bool                       isMultiResolution() const;
+    int                        getFacing() const;
 
     // set of sensor pixel mode resolutions allowed {MAX_RESOLUTION, DEFAULT_MODE};
     const std::vector<int32_t>&            getSensorPixelModesUsed() const;
@@ -89,7 +90,8 @@ public:
                 gbpsEqual(other) &&
                 mPhysicalCameraId == other.mPhysicalCameraId &&
                 mIsMultiResolution == other.mIsMultiResolution &&
-                sensorPixelModesUsedEqual(other));
+                sensorPixelModesUsedEqual(other) &&
+                mFacing == other.mFacing);
     }
     bool operator != (const OutputConfiguration& other) const {
         return !(*this == other);
@@ -126,6 +128,9 @@ public:
         if (!sensorPixelModesUsedEqual(other)) {
             return sensorPixelModesUsedLessThan(other);
         }
+        if (mFacing != other.mFacing) {
+            return mFacing < other.mFacing;
+        }
         return gbpsLessThan(other);
     }
 
@@ -150,6 +155,7 @@ private:
     String16                   mPhysicalCameraId;
     bool                       mIsMultiResolution;
     std::vector<int32_t>       mSensorPixelModesUsed;
+    int                        mFacing;
 };
 } // namespace params
 } // namespace camera2
