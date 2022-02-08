@@ -907,7 +907,7 @@ binder::Status CameraDeviceClient::createStream(
                   streamInfo.height, streamInfo.format);
 
         // Set transform flags to ensure preview to be rotated correctly.
-        res = setStreamTransformLocked(streamId);
+        res = setStreamTransformLocked(streamId, outputConfiguration.getFacing());
 
         // Fill in mHighResolutionCameraIdToStreamIdSet map
         const String8 &cameraIdUsed =
@@ -995,7 +995,7 @@ binder::Status CameraDeviceClient::createDeferredSurfaceStreamLocked(
               __FUNCTION__, mCameraIdStr.string(), streamId, width, height, format);
 
         // Set transform flags to ensure preview to be rotated correctly.
-        res = setStreamTransformLocked(streamId);
+        res = setStreamTransformLocked(streamId, outputConfiguration.getFacing());
 
         *newStreamId = streamId;
         // Fill in mHighResolutionCameraIdToStreamIdSet
@@ -1009,7 +1009,7 @@ binder::Status CameraDeviceClient::createDeferredSurfaceStreamLocked(
     return res;
 }
 
-binder::Status CameraDeviceClient::setStreamTransformLocked(int streamId) {
+binder::Status CameraDeviceClient::setStreamTransformLocked(int streamId, int facing) {
     int32_t transform = 0;
     status_t err;
     binder::Status res;
@@ -1018,7 +1018,7 @@ binder::Status CameraDeviceClient::setStreamTransformLocked(int streamId) {
         return STATUS_ERROR(CameraService::ERROR_DISCONNECTED, "Camera device no longer alive");
     }
 
-    err = getRotationTransformLocked(&transform);
+    err = getRotationTransformLocked(facing, &transform);
     if (err != OK) {
         // Error logged by getRotationTransformLocked.
         return STATUS_ERROR(CameraService::ERROR_INVALID_OPERATION,
@@ -1990,11 +1990,11 @@ bool CameraDeviceClient::enforceRequestPermissions(CameraMetadata& metadata) {
     return true;
 }
 
-status_t CameraDeviceClient::getRotationTransformLocked(int32_t* transform) {
+status_t CameraDeviceClient::getRotationTransformLocked(int facing, int32_t* transform) {
     ALOGV("%s: begin", __FUNCTION__);
 
     const CameraMetadata& staticInfo = mDevice->info();
-    return CameraUtils::getRotationTransform(staticInfo, transform);
+    return CameraUtils::getRotationTransform(staticInfo, facing, transform);
 }
 
 binder::Status CameraDeviceClient::mapRequestTemplate(int templateId,
