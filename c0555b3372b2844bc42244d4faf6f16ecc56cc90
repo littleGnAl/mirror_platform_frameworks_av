@@ -1,0 +1,30 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000020217902",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1977106?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "4344db25_6554d6cd",
+        "filename": "camera/camera2/OutputConfiguration.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-02-08T16:39:02Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 105
+      },
+      "revId": "c0555b3372b2844bc42244d4faf6f16ecc56cc90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
