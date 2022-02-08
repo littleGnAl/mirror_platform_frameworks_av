@@ -1,0 +1,28 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4ac4b5ae_304e8dd3",
+        "filename": "camera/camera2/OutputConfiguration.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 200,
+      "author": {
+        "id": 1765482
+      },
+      "writtenOn": "2022-02-08T17:08:38Z",
+      "side": 1,
+      "message": "\u003e Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.\n\nFixed.",
+      "parentUuid": "4344db25_6554d6cd",
+      "range": {
+        "startLine": 200,
+        "startChar": 0,
+        "endLine": 200,
+        "endChar": 105
+      },
+      "revId": "c0555b3372b2844bc42244d4faf6f16ecc56cc90",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
