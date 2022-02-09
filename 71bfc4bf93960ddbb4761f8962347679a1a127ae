@@ -1,0 +1,307 @@
+{
+  "comments": [
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000020259551",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1978270?revision\u003d1",
+      "fixSuggestions": [
+        {
+          "fixId": "02ffc398_4cfd0c00",
+          "description": "Change to \"services/audiopolicy/tests/resources/test_car_ap_configuration.xml\"",
+          "replacements": [
+            {
+              "path": "services/audiopolicy/tests/resources/test_car_ap_configuration.xml",
+              "range": {
+                "startLine": 18,
+                "startChar": 83,
+                "endLine": 18,
+                "endChar": 88
+              },
+              "replacement": " e.g. "
+            }
+          ]
+        }
+      ],
+      "key": {
+        "uuid": "1ebc667a_a5fe07eb",
+        "filename": "services/audiopolicy/tests/resources/test_car_ap_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-02-09T10:53:17Z",
+      "side": 1,
+      "message": "Common typo found: \" e.g \" -- should it be \" e.g. \"?\nNote: a line containing \"common_typos_disable\" or \"common_typos_enable\" will turn off or on (respectively) the linter for subsequent lines in the file. Alternatively include the token \"NOTYPO\" within a line to skip typo linting that line or include \u0027No-Typo-Check: \u003creason\u003e\u0027in the commit message.",
+      "range": {
+        "startLine": 18,
+        "startChar": 83,
+        "endLine": 18,
+        "endChar": 88
+      },
+      "revId": "71bfc4bf93960ddbb4761f8962347679a1a127ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000020259549",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1978270?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "7da8d504_fc358300",
+        "filename": "services/audiopolicy/tests/resources/test_car_ap_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 29,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-02-09T10:53:17Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 29,
+        "startChar": 0,
+        "endLine": 29,
+        "endChar": 108
+      },
+      "revId": "71bfc4bf93960ddbb4761f8962347679a1a127ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000020259549",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1978270?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "508035aa_f9d3e905",
+        "filename": "services/audiopolicy/tests/resources/test_car_ap_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-02-09T10:53:17Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 38,
+        "endChar": 105
+      },
+      "revId": "71bfc4bf93960ddbb4761f8962347679a1a127ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000020259549",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1978270?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "89e5a9d1_b71b6e52",
+        "filename": "services/audiopolicy/tests/resources/test_car_ap_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 41,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-02-09T10:53:17Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 41,
+        "startChar": 0,
+        "endLine": 41,
+        "endChar": 101
+      },
+      "revId": "71bfc4bf93960ddbb4761f8962347679a1a127ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000020259549",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1978270?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "a863ff8b_c38b0b54",
+        "filename": "services/audiopolicy/tests/resources/test_car_ap_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 135,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-02-09T10:53:17Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 135,
+        "startChar": 0,
+        "endLine": 135,
+        "endChar": 119
+      },
+      "revId": "71bfc4bf93960ddbb4761f8962347679a1a127ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000020259549",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1978270?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "55a96c7a_b72b50fc",
+        "filename": "services/audiopolicy/tests/resources/test_car_ap_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 159,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-02-09T10:53:17Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 159,
+        "startChar": 0,
+        "endLine": 159,
+        "endChar": 117
+      },
+      "revId": "71bfc4bf93960ddbb4761f8962347679a1a127ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000020259549",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1978270?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "a838de43_d0d16302",
+        "filename": "services/audiopolicy/tests/resources/test_car_ap_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 162,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-02-09T10:53:17Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 162,
+        "startChar": 0,
+        "endLine": 162,
+        "endChar": 106
+      },
+      "revId": "71bfc4bf93960ddbb4761f8962347679a1a127ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000020259549",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1978270?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "b52f396f_b367780e",
+        "filename": "services/audiopolicy/tests/resources/test_car_ap_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 171,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-02-09T10:53:17Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 171,
+        "startChar": 0,
+        "endLine": 171,
+        "endChar": 106
+      },
+      "revId": "71bfc4bf93960ddbb4761f8962347679a1a127ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000020259549",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1978270?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "dade81e4_ef1a92e0",
+        "filename": "services/audiopolicy/tests/resources/test_car_ap_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 180,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-02-09T10:53:17Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 180,
+        "startChar": 0,
+        "endLine": 180,
+        "endChar": 106
+      },
+      "revId": "71bfc4bf93960ddbb4761f8962347679a1a127ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000020259549",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1978270?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "84c0ae94_72660cee",
+        "filename": "services/audiopolicy/tests/resources/test_car_ap_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-02-09T10:53:17Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 189,
+        "startChar": 0,
+        "endLine": 189,
+        "endChar": 106
+      },
+      "revId": "71bfc4bf93960ddbb4761f8962347679a1a127ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "robotId": "ayeaye",
+      "robotRunId": "AR00000000000020259549",
+      "url": "https://android-build.googleplex.com/builds/treetop/android-review/1978270?revision\u003d1",
+      "fixSuggestions": [],
+      "key": {
+        "uuid": "d2246294_317e53d9",
+        "filename": "services/audiopolicy/tests/resources/test_car_ap_configuration.xml",
+        "patchSetId": 1
+      },
+      "lineNbr": 198,
+      "author": {
+        "id": 1757831
+      },
+      "writtenOn": "2022-02-09T10:53:17Z",
+      "side": 1,
+      "message": "Lines longer than 100 characters should be wrapped to improve readability; see https://source.android.com/setup/contribute/code-style#limit-line-length for more details.",
+      "range": {
+        "startLine": 198,
+        "startChar": 0,
+        "endLine": 198,
+        "endChar": 106
+      },
+      "revId": "71bfc4bf93960ddbb4761f8962347679a1a127ae",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
