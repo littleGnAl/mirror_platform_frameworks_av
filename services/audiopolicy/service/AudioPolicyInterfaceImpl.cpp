@@ -1750,6 +1750,9 @@ Status AudioPolicyService::startAudioSource(const media::AudioPortConfig& source
             AudioValidator::validateAudioAttributes(attributes, "68953950")));
 
     Mutex::Autolock _l(mLock);
+    if (!modifyAudioRoutingAllowed()) {
+        return binderStatusFromStatusT(PERMISSION_DENIED);
+    }
     if (mAudioPolicyManager == NULL) {
         return binderStatusFromStatusT(NO_INIT);
     }
