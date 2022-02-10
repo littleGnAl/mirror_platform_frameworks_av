@@ -105,7 +105,7 @@ void DrmManager::onMessageReceived(const sp<AMessage> &msg) {
 }
 
 int64_t DrmManager::getMetricsFlushPeriodUs() {
-    return 1000 * 1000 * std::max(1ll, (long long)property_get_int64("drmmanager.metrics.period", 86400));
+    return 1000 * 1000 * std::max(1LL, (long long)property_get_int64("drmmanager.metrics.period", 86400));
 }
 
 void DrmManager::recordEngineMetrics(

@@ -930,7 +930,7 @@ status_t ARTPConnection::parseBYE(
 
     // Report a final stastics to be used for rtp data usage.
     int64_t nowUs = ALooper::GetNowUs();
-    int32_t timeDiff = (nowUs - mLastBitrateReportTimeUs) / 1000000ll;
+    int32_t timeDiff = (nowUs - mLastBitrateReportTimeUs) / 1000000LL;
     int32_t bitrate = mCumulativeBytes * 8 / timeDiff;
     source->notifyPktInfo(bitrate, nowUs, true /* isRegular */);
 
@@ -956,7 +956,7 @@ status_t ARTPConnection::parseSR(
     ALOGI("XXX timeUpdate: ssrc=0x%08x, rtpTime %u == ntpTime %.3f",
          id,
          rtpTime,
-         (ntpTime >> 32) + (double)(ntpTime & 0xffffffff) / (1ll << 32));
+         (ntpTime >> 32) + (double)(ntpTime & 0xffffffff) / (1LL << 32));
 #endif
 
     sp<ARTPSource> source = findSource(s, id);
@@ -1154,8 +1154,8 @@ void ARTPConnection::checkRxBitrate(int64_t nowUs) {
         mCumulativeBytes = 0;
         mLastBitrateReportTimeUs = nowUs;
     }
-    else if (mLastEarlyNotifyTimeUs + 100000ll <= nowUs) {
-        int32_t timeDiff = (nowUs - mLastBitrateReportTimeUs) / 1000000ll;
+    else if (mLastEarlyNotifyTimeUs + 100000LL <= nowUs) {
+        int32_t timeDiff = (nowUs - mLastBitrateReportTimeUs) / 1000000LL;
         int32_t bitrate = mCumulativeBytes * 8 / timeDiff;
         mLastEarlyNotifyTimeUs = nowUs;
 
@@ -1170,14 +1170,14 @@ void ARTPConnection::checkRxBitrate(int64_t nowUs) {
                 sp<ARTPSource> source = s->mSources.valueAt(i);
                 if (source->isNeedToEarlyNotify()) {
                     source->notifyPktInfo(bitrate, nowUs, false /* isRegular */);
-                    mLastEarlyNotifyTimeUs = nowUs + (1000000ll * 3600 * 24); // after 1 day
+                    mLastEarlyNotifyTimeUs = nowUs + (1000000LL * 3600 * 24); // after 1 day
                 }
             }
             ++it;
         }
     }
-    else if (mLastBitrateReportTimeUs + 1000000ll <= nowUs) {
-        int32_t timeDiff = (nowUs - mLastBitrateReportTimeUs) / 1000000ll;
+    else if (mLastBitrateReportTimeUs + 1000000LL <= nowUs) {
+        int32_t timeDiff = (nowUs - mLastBitrateReportTimeUs) / 1000000LL;
         int32_t bitrate = mCumulativeBytes * 8 / timeDiff;
         ALOGI("Actual Rx bitrate : %d bits/sec", bitrate);
 

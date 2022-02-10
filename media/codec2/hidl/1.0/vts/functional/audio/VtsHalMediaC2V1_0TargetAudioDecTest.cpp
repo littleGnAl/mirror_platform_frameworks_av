@@ -411,7 +411,7 @@ void Codec2AudioDecHidlTestBase::validateTimestampList(int32_t* bitStreamInfo) {
         if (expectedTimeStamp != itOut->timestampUs) break;
         // buffer samples = ((total bytes) / (ac * (bits per sample / 8))
         samplesReceived += ((itOut->rangeLength) / (nChannels * 2));
-        expectedTimeStamp = samplesReceived * 1000000ll / nSampleRate;
+        expectedTimeStamp = samplesReceived * 1000000LL / nSampleRate;
         itOut++;
     }
     itIn = mTimestampUslist.end();

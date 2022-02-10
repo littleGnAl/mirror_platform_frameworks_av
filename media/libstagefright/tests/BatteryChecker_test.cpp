@@ -28,8 +28,8 @@
 
 namespace android {
 
-static const int kBatteryTimeoutUs = 1000000ll; // 1 seconds
-static const int kTestMarginUs = 50000ll; // 50ms
+static const int kBatteryTimeoutUs = 1000000LL; // 1 seconds
+static const int kTestMarginUs = 50000LL; // 50ms
 static const int kWaitStatusChangeUs = kBatteryTimeoutUs + kTestMarginUs;
 static const int kSparseFrameIntervalUs = kBatteryTimeoutUs - kTestMarginUs;
 
@@ -73,7 +73,7 @@ class BatteryCheckerTestHandler : public AHandler {
 
         // wait for done
         AutoMutex lock(mLock);
-        EXPECT_NE(TIMED_OUT, mDone.waitRelative(mLock, timeoutUs * 1000ll));
+        EXPECT_NE(TIMED_OUT, mDone.waitRelative(mLock, timeoutUs * 1000LL));
     }
 
     virtual void onMessageReceived(const sp<AMessage> &msg);
@@ -153,90 +153,90 @@ void BatteryCheckerTestHandler::onMessageReceived(const sp<AMessage> &msg) {
 
 TEST_F(BatteryCheckerTest, testNormalOperations) {
     runTest({
-        {EventType::kWhatStart,        0ll},
-        {EventType::kWhatCheckpoint,   0ll, 0, 0, 0},
-        {EventType::kWhatActivity,     33333ll},
-        {EventType::kWhatCheckpoint,   0ll, 0, 1, 0},                 // ON
-        {EventType::kWhatActivity,     33333ll, 2*kWaitStatusChangeUs/33333ll},
-        {EventType::kWhatCheckpoint,   0ll, 0, 1, 0},
+        {EventType::kWhatStart,        0LL},
+        {EventType::kWhatCheckpoint,   0LL, 0, 0, 0},
+        {EventType::kWhatActivity,     33333LL},
+        {EventType::kWhatCheckpoint,   0LL, 0, 1, 0},                 // ON
+        {EventType::kWhatActivity,     33333LL, 2*kWaitStatusChangeUs/33333LL},
+        {EventType::kWhatCheckpoint,   0LL, 0, 1, 0},
         {EventType::kWhatCheckpoint,   kWaitStatusChangeUs, 0, 1, 1}, // OFF
-    }, 10000000ll);
+    }, 10000000LL);
 }
 
 TEST_F(BatteryCheckerTest, testPauseResume) {
     runTest({
-        {EventType::kWhatStart,        0ll},
-        {EventType::kWhatCheckpoint,   0ll, 0, 0, 0},
-        {EventType::kWhatActivity,     33333ll},
-        {EventType::kWhatCheckpoint,   0ll, 0, 1, 0},                 // ON
+        {EventType::kWhatStart,        0LL},
+        {EventType::kWhatCheckpoint,   0LL, 0, 0, 0},
+        {EventType::kWhatActivity,     33333LL},
+        {EventType::kWhatCheckpoint,   0LL, 0, 1, 0},                 // ON
         {EventType::kWhatCheckpoint,   kWaitStatusChangeUs, 0, 1, 1}, // OFF
-        {EventType::kWhatActivity,     33333ll},
-        {EventType::kWhatCheckpoint,   0ll, 0, 2, 1},                 // ON
+        {EventType::kWhatActivity,     33333LL},
+        {EventType::kWhatCheckpoint,   0LL, 0, 2, 1},                 // ON
         {EventType::kWhatCheckpoint,   kWaitStatusChangeUs, 0, 2, 2}, // OFF
-    }, 10000000ll);
+    }, 10000000LL);
 }
 
 TEST_F(BatteryCheckerTest, testClientRemovedAndRestart) {
     runTest({
-        {EventType::kWhatStart,        0ll},
-        {EventType::kWhatActivity,     33333ll, kWaitStatusChangeUs/33333ll},
-        {EventType::kWhatCheckpoint,   0ll, 0, 1, 0},
+        {EventType::kWhatStart,        0LL},
+        {EventType::kWhatActivity,     33333LL, kWaitStatusChangeUs/33333LL},
+        {EventType::kWhatCheckpoint,   0LL, 0, 1, 0},
 
         // stop executing state itself shouldn't trigger any calls
-        {EventType::kWhatStop,         0ll},
-        {EventType::kWhatCheckpoint,   0ll, 0, 1, 0},
+        {EventType::kWhatStop,         0LL},
+        {EventType::kWhatCheckpoint,   0LL, 0, 1, 0},
 
         // release shouldn't trigger any calls either,
         // client resource will be removed entirely
-        {EventType::kWhatReleased,     0ll},
-        {EventType::kWhatCheckpoint,   0ll, 0, 1, 0},
+        {EventType::kWhatReleased,     0LL},
+        {EventType::kWhatCheckpoint,   0LL, 0, 1, 0},
         {EventType::kWhatCheckpoint,   kWaitStatusChangeUs, 0, 1, 0},
 
         // start pushing buffers again, On should be received without any Off
-        {EventType::kWhatStart,        0ll},
-        {EventType::kWhatActivity,     33333ll},
-        {EventType::kWhatCheckpoint,   0ll, 0, 2, 0},
+        {EventType::kWhatStart,        0LL},
+        {EventType::kWhatActivity,     33333LL},
+        {EventType::kWhatCheckpoint,   0LL, 0, 2, 0},
 
         // double check that only new checker msg triggers OFF,
         // left-over checker msg from stale generate discarded
         {EventType::kWhatCheckpoint,   kWaitStatusChangeUs, 0, 2, 1},
-    }, 10000000ll);
+    }, 10000000LL);
 }
 
 TEST_F(BatteryCheckerTest, testActivityWhileNotExecuting) {
     runTest({
         // activity before start shouldn't trigger
-        {EventType::kWhatActivity,     0ll},
-        {EventType::kWhatCheckpoint,   0ll, 0, 0, 0},
+        {EventType::kWhatActivity,     0LL},
+        {EventType::kWhatCheckpoint,   0LL, 0, 0, 0},
 
-        {EventType::kWhatStart,        0ll},
-        {EventType::kWhatCheckpoint,   0ll, 0, 0, 0},
+        {EventType::kWhatStart,        0LL},
+        {EventType::kWhatCheckpoint,   0LL, 0, 0, 0},
 
         // activity after start before stop should trigger
-        {EventType::kWhatActivity,     33333ll},
-        {EventType::kWhatCheckpoint,   0ll, 0, 1, 0},
+        {EventType::kWhatActivity,     33333LL},
+        {EventType::kWhatCheckpoint,   0LL, 0, 1, 0},
 
         // stop executing state itself shouldn't trigger any calls
-        {EventType::kWhatStop,         0ll},
-        {EventType::kWhatCheckpoint,   0ll, 0, 1, 0},
+        {EventType::kWhatStop,         0LL},
+        {EventType::kWhatCheckpoint,   0LL, 0, 1, 0},
 
         // keep pushing another 3 seconds after stop, expected to OFF
-        {EventType::kWhatActivity,     33333ll, kWaitStatusChangeUs/33333ll},
-        {EventType::kWhatCheckpoint,   0ll, 0, 1, 1},
-    }, 10000000ll);
+        {EventType::kWhatActivity,     33333LL, kWaitStatusChangeUs/33333LL},
+        {EventType::kWhatCheckpoint,   0LL, 0, 1, 1},
+    }, 10000000LL);
 }
 
 TEST_F(BatteryCheckerTest, testSparseActivity) {
     runTest({
-        {EventType::kWhatStart,        0ll},
-        {EventType::kWhatCheckpoint,   0ll, 0, 0, 0},
+        {EventType::kWhatStart,        0LL},
+        {EventType::kWhatCheckpoint,   0LL, 0, 0, 0},
 
         // activity arrives sparsely with interval only slightly small than timeout
         // should only trigger 1 ON
         {EventType::kWhatActivity,     kSparseFrameIntervalUs, 2},
-        {EventType::kWhatCheckpoint,   0ll, 0, 1, 0},
+        {EventType::kWhatCheckpoint,   0LL, 0, 1, 0},
         {EventType::kWhatCheckpoint,   kSparseFrameIntervalUs, 0, 1, 0},
         {EventType::kWhatCheckpoint,   kTestMarginUs, 0, 1, 1}, // OFF
-    }, 10000000ll);
+    }, 10000000LL);
 }
 } // namespace android

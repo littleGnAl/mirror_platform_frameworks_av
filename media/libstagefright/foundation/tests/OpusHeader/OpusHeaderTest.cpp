@@ -45,7 +45,7 @@ constexpr size_t kMaxOpusHeaderSize = 100;
 constexpr size_t kOpusHeaderChannelMapOffset = 86;
 constexpr uint32_t kOpusSampleRate = 48000;
 constexpr uint64_t kOpusSeekPrerollNs = 80000000;
-constexpr int64_t kNsecPerSec = 1000000000ll;
+constexpr int64_t kNsecPerSec = 1000000000LL;
 
 // Opus uses Vorbis channel mapping, and Vorbis channel mapping specifies
 // mappings for up to 8 channels. This information is part of the Vorbis I

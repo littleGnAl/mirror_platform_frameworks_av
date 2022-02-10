@@ -53,7 +53,7 @@ namespace android {
 class CCodecConfigTest : public ::testing::Test {
 public:
     constexpr static int32_t kCodec2Int32 = 0xC0DEC2;
-    constexpr static int64_t kCodec2Int64 = 0xC0DEC2C0DEC2ll;
+    constexpr static int64_t kCodec2Int64 = 0xC0DEC2C0DEC2LL;
     constexpr static char kCodec2Str[] = "codec2";
 
     CCodecConfigTest()

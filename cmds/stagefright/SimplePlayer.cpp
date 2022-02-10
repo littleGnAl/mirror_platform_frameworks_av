@@ -38,7 +38,7 @@ namespace android {
 SimplePlayer::SimplePlayer()
     : mState(UNINITIALIZED),
       mDoMoreStuffGeneration(0),
-      mStartTimeRealUs(-1ll) {
+      mStartTimeRealUs(-1LL) {
 }
 
 SimplePlayer::~SimplePlayer() {
@@ -259,7 +259,7 @@ void SimplePlayer::onMessageReceived(const sp<AMessage> &msg) {
             status_t err = onDoMoreStuff();
 
             if (err == OK) {
-                msg->post(10000ll);
+                msg->post(10000LL);
             }
             break;
         }
@@ -353,7 +353,7 @@ status_t SimplePlayer::onPrepare() {
             const sp<ABuffer> &srcBuffer = state->mCSD.itemAt(j);
 
             size_t index;
-            err = state->mCodec->dequeueInputBuffer(&index, -1ll);
+            err = state->mCodec->dequeueInputBuffer(&index, -1LL);
             CHECK_EQ(err, (status_t)OK);
 
             const sp<MediaCodecBuffer> &dstBuffer = state->mBuffers[0].itemAt(index);
@@ -366,7 +366,7 @@ status_t SimplePlayer::onPrepare() {
                     index,
                     0,
                     dstBuffer->size(),
-                    0ll,
+                    0LL,
                     MediaCodec::BUFFER_FLAG_CODECCONFIG);
             CHECK_EQ(err, (status_t)OK);
         }
@@ -378,7 +378,7 @@ status_t SimplePlayer::onPrepare() {
 status_t SimplePlayer::onStart() {
     CHECK_EQ(mState, STOPPED);
 
-    mStartTimeRealUs = -1ll;
+    mStartTimeRealUs = -1LL;
 
     sp<AMessage> msg = new AMessage(kWhatDoMoreStuff, this);
     msg->setInt32("generation", ++mDoMoreStuffGeneration);
@@ -404,7 +404,7 @@ status_t SimplePlayer::onReset() {
         CHECK_EQ(state->mCodec->release(), (status_t)OK);
     }
 
-    mStartTimeRealUs = -1ll;
+    mStartTimeRealUs = -1LL;
 
     mStateByTrackIndex.clear();
     mCodecLooper.clear();
@@ -511,8 +511,8 @@ status_t SimplePlayer::onDoMoreStuff() {
 
     int64_t nowUs = ALooper::GetNowUs();
 
-    if (mStartTimeRealUs < 0ll) {
-        mStartTimeRealUs = nowUs + 1000000ll;
+    if (mStartTimeRealUs < 0LL) {
+        mStartTimeRealUs = nowUs + 1000000LL;
     }
 
     for (size_t i = 0; i < mStateByTrackIndex.size(); ++i) {
@@ -524,10 +524,10 @@ status_t SimplePlayer::onDoMoreStuff() {
             int64_t whenRealUs = info->mPresentationTimeUs + mStartTimeRealUs;
             int64_t lateByUs = nowUs - whenRealUs;
 
-            if (lateByUs > -10000ll) {
+            if (lateByUs > -10000LL) {
                 bool release = true;
 
-                if (lateByUs > 30000ll) {
+                if (lateByUs > 30000LL) {
                     ALOGI("track %zu buffer late by %lld us, dropping.",
                           mStateByTrackIndex.keyAt(i), (long long)lateByUs);
                     state->mCodec->releaseOutputBuffer(info->mIndex);
@@ -637,7 +637,7 @@ void SimplePlayer::renderAudio(
 
     uint32_t numFramesWritten = nbytes / state->mAudioTrack->frameSize();
 
-    if (delayUs > 2000ll) {
+    if (delayUs > 2000LL) {
         ALOGW("AudioTrack::write took %lld us, numFramesAvailableToWrite=%u, "
               "numFramesWritten=%u",
               (long long)delayUs, numFramesAvailableToWrite, numFramesWritten);

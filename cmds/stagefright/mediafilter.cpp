@@ -44,7 +44,7 @@
 // test parameters
 static const bool kTestFlush = true;        // Note: true will drop 1 out of
 static const int kFlushAfterFrames = 25;    // kFlushAfterFrames output frames
-static const int64_t kTimeout = 500ll;
+static const int64_t kTimeout = 500LL;
 
 // built-in filter parameters
 static const int32_t kInvert = false;   // ZeroFilter param
@@ -317,7 +317,7 @@ static int decode(
         bool useTimestamp,
         FilterType filterType) {
 
-    static int64_t kTimeout = 500ll;
+    static int64_t kTimeout = 500LL;
 
     sp<NuMediaExtractor> extractor = new NuMediaExtractor(NuMediaExtractor::EntryPoint::OTHER);
 
@@ -571,7 +571,7 @@ static int decode(
 
                         err = state->mCodec->queueInputBuffer(
                                 index, 0 /* offset */, 0 /* size */,
-                                0ll /* timeUs */, MediaCodec::BUFFER_FLAG_EOS);
+                                0LL /* timeUs */, MediaCodec::BUFFER_FLAG_EOS);
 
                         CHECK(err == OK);
 
