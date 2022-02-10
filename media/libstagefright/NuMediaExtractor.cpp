@@ -858,7 +858,7 @@ bool NuMediaExtractor::getCachedDuration(
     int64_t bitrate;
     if (cachedDataRemaining >= 0
             && getTotalBitrate(&bitrate)) {
-        *durationUs = cachedDataRemaining * 8000000ll / bitrate;
+        *durationUs = cachedDataRemaining * 8000000LL / bitrate;
         *eos = (finalStatus != OK);
         return true;
     }

@@ -172,7 +172,7 @@ int64_t getNowUs() {
     struct timeval tv;
     gettimeofday(&tv, NULL);
 
-    return (int64_t)tv.tv_usec + tv.tv_sec * 1000000ll;
+    return (int64_t)tv.tv_usec + tv.tv_sec * 1000000LL;
 }
 
 // Return all test parameters, a list of tuple of <instance, component>

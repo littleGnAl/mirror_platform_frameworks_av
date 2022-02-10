@@ -213,7 +213,7 @@ bool ALooper::loop() {
             if (delayUs > INT64_MAX / 1000) {
                 delayUs = INT64_MAX / 1000;
             }
-            mQueueChangedCondition.waitRelative(mLock, delayUs * 1000ll);
+            mQueueChangedCondition.waitRelative(mLock, delayUs * 1000LL);
 
             return true;
         }

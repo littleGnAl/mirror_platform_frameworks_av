@@ -22,7 +22,7 @@
 namespace android {
 
 struct BatteryChecker : public RefBase {
-    BatteryChecker(const sp<AMessage> &msg, int64_t timeout = 3000000ll);
+    BatteryChecker(const sp<AMessage> &msg, int64_t timeout = 3000000LL);
 
     void setExecuting(bool executing) { mIsExecuting = executing; }
     void onCodecActivity(std::function<void()> batteryOnCb);

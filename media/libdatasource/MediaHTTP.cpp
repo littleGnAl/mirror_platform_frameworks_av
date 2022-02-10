@@ -32,7 +32,7 @@ MediaHTTP::MediaHTTP(const sp<MediaHTTPConnection> &conn)
     : mInitCheck((conn != NULL) ? OK : NO_INIT),
       mHTTPConnection(conn),
       mCachedSizeValid(false),
-      mCachedSize(0ll) {
+      mCachedSize(0LL) {
 }
 
 MediaHTTP::~MediaHTTP() {

@@ -461,7 +461,7 @@ void ARTPWriter::onMessageReceived(const sp<AMessage> &msg) {
         case kWhatStart:
         {
             sp<MetaData> meta = new MetaData();
-            meta->setInt64(kKeyTime, 10ll);
+            meta->setInt64(kKeyTime, 10LL);
             CHECK_EQ(mSource->start(meta.get()), (status_t)OK);
 
 #if 0
@@ -638,7 +638,7 @@ void ARTPWriter::send(const sp<ABuffer> &buffer, bool isRTCP) {
 #if LOG_TO_FILES
     int fd = isRTCP ? mRTCPFd : mRTPFd;
 
-    uint32_t ms = tolel(ALooper::GetNowUs() / 1000ll);
+    uint32_t ms = tolel(ALooper::GetNowUs() / 1000LL);
     uint32_t length = tolel(buffer->size());
     write(fd, &ms, sizeof(ms));
     write(fd, &length, sizeof(length));
@@ -790,7 +790,7 @@ void ARTPWriter::addTMMBN(const sp<ABuffer> &buffer) {
 
 // static
 uint64_t ARTPWriter::GetNowNTP() {
-    uint64_t nowUs = systemTime(SYSTEM_TIME_REALTIME) / 1000ll;
+    uint64_t nowUs = systemTime(SYSTEM_TIME_REALTIME) / 1000LL;
 
     nowUs += ((70LL * 365 + 17) * 24) * 60 * 60 * 1000000LL;
 

@@ -74,7 +74,7 @@ struct NuMediaExtractor : public RefBase {
 
     status_t getExifOffsetSize(off64_t *offset, size_t *size) const;
 
-    status_t selectTrack(size_t index, int64_t startTimeUs = -1ll,
+    status_t selectTrack(size_t index, int64_t startTimeUs = -1LL,
             MediaSource::ReadOptions::SeekMode mode =
                 MediaSource::ReadOptions::SEEK_CLOSEST_SYNC);
     status_t unselectTrack(size_t index);
@@ -150,12 +150,12 @@ private:
     void setEntryPointToRemoteMediaExtractor();
 
     ssize_t fetchAllTrackSamples(
-            int64_t seekTimeUs = -1ll,
+            int64_t seekTimeUs = -1LL,
             MediaSource::ReadOptions::SeekMode mode =
                 MediaSource::ReadOptions::SEEK_CLOSEST_SYNC);
     void fetchTrackSamples(
             TrackInfo *info,
-            int64_t seekTimeUs = -1ll,
+            int64_t seekTimeUs = -1LL,
             MediaSource::ReadOptions::SeekMode mode =
                 MediaSource::ReadOptions::SEEK_CLOSEST_SYNC);
 
