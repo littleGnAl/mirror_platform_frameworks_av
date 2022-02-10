@@ -19,20 +19,19 @@
 
 #include <atomic>
 
-#include PATH(android/hardware/audio/FILE_VERSION/IStream.h)
+#include PATH(android/hardware/audio/CORE_TYPES_FILE_VERSION/IStream.h)
 #include PATH(android/hardware/audio/FILE_VERSION/IStreamIn.h)
 #include PATH(android/hardware/audio/FILE_VERSION/IStreamOut.h)
 #include <fmq/EventFlag.h>
 #include <fmq/MessageQueue.h>
+#include <media/audiohal/EffectHalInterface.h>
 #include <media/audiohal/StreamHalInterface.h>
 #include <mediautils/Synchronization.h>
 
 #include "ConversionHelperHidl.h"
 #include "StreamPowerLog.h"
 
-using ::android::hardware::audio::CPP_VERSION::IStream;
-using ::android::hardware::audio::CPP_VERSION::IStreamIn;
-using ::android::hardware::audio::CPP_VERSION::IStreamOut;
+using ::android::hardware::audio::CORE_TYPES_CPP_VERSION::IStream;
 using ::android::hardware::EventFlag;
 using ::android::hardware::MessageQueue;
 using ::android::hardware::Return;
@@ -42,7 +41,6 @@ using WriteCommand = ::android::hardware::audio::CPP_VERSION::IStreamOut::WriteC
 using WriteStatus = ::android::hardware::audio::CPP_VERSION::IStreamOut::WriteStatus;
 
 namespace android {
-namespace CPP_VERSION {
 
 class DeviceHalHidl;
 
@@ -191,6 +189,13 @@ class StreamOutHalHidl : public StreamOutHalInterface, public StreamHalHidl {
     // Methods used by StreamCodecFormatCallback (HIDL).
     void onCodecFormatChanged(const std::basic_string<uint8_t>& metadataBs);
 
+    status_t setLatencyMode(audio_latency_mode_t mode) override;
+    status_t getRecommendedLatencyModes(std::vector<audio_latency_mode_t> *modes) override;
+    status_t setLatencyModeCallback(
+            const sp<StreamOutHalInterfaceLatencyModeCallback>& callback) override;
+
+    void onRecommendedLatencyModeChanged(const std::vector<audio_latency_mode_t>& modes);
+
   private:
     friend class DeviceHalHidl;
     typedef MessageQueue<WriteCommand, hardware::kSynchronizedReadWrite> CommandMQ;
@@ -199,7 +204,9 @@ class StreamOutHalHidl : public StreamOutHalInterface, public StreamHalHidl {
 
     mediautils::atomic_wp<StreamOutHalInterfaceCallback> mCallback;
     mediautils::atomic_wp<StreamOutHalInterfaceEventCallback> mEventCallback;
-    const sp<IStreamOut> mStream;
+    mediautils::atomic_wp<StreamOutHalInterfaceLatencyModeCallback> mLatencyModeCallback;
+
+    const sp<::android::hardware::audio::CPP_VERSION::IStreamOut> mStream;
     std::unique_ptr<CommandMQ> mCommandMQ;
     std::unique_ptr<DataMQ> mDataMQ;
     std::unique_ptr<StatusMQ> mStatusMQ;
@@ -207,7 +214,7 @@ class StreamOutHalHidl : public StreamOutHalInterface, public StreamHalHidl {
     EventFlag* mEfGroup;
 
     // Can not be constructed directly by clients.
-    StreamOutHalHidl(const sp<IStreamOut>& stream);
+    StreamOutHalHidl(const sp<::android::hardware::audio::CPP_VERSION::IStreamOut>& stream);
 
     virtual ~StreamOutHalHidl();
 
@@ -255,7 +262,7 @@ class StreamInHalHidl : public StreamInHalInterface, public StreamHalHidl {
     typedef MessageQueue<uint8_t, hardware::kSynchronizedReadWrite> DataMQ;
     typedef MessageQueue<ReadStatus, hardware::kSynchronizedReadWrite> StatusMQ;
 
-    const sp<IStreamIn> mStream;
+    const sp<::android::hardware::audio::CPP_VERSION::IStreamIn> mStream;
     std::unique_ptr<CommandMQ> mCommandMQ;
     std::unique_ptr<DataMQ> mDataMQ;
     std::unique_ptr<StatusMQ> mStatusMQ;
@@ -263,7 +270,7 @@ class StreamInHalHidl : public StreamInHalInterface, public StreamHalHidl {
     EventFlag* mEfGroup;
 
     // Can not be constructed directly by clients.
-    StreamInHalHidl(const sp<IStreamIn>& stream);
+    StreamInHalHidl(const sp<::android::hardware::audio::CPP_VERSION::IStreamIn>& stream);
 
     virtual ~StreamInHalHidl();
 
@@ -273,7 +280,6 @@ class StreamInHalHidl : public StreamInHalInterface, public StreamHalHidl {
     status_t prepareForReading(size_t bufferSize);
 };
 
-} // namespace CPP_VERSION
 } // namespace android
 
 #endif // ANDROID_HARDWARE_STREAM_HAL_HIDL_H
