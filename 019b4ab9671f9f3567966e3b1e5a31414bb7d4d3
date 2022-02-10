@@ -1,4 +1,21 @@
 {
-  "comments": [],
-  "submitRequirementResults": []
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0210dfa4_4e6ff10b",
+        "filename": "services/audiopolicy/common/include/Volume.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1927775
+      },
+      "writtenOn": "2022-02-10T08:53:20Z",
+      "side": 1,
+      "message": "Broadcast device seems to be not explicit categorized, it can be \"earpiece\", \"headset\" \"hearing aid\" \"speaker\" - was this considered in this classification to make it \"headset\" in term of volume curve ?",
+      "revId": "019b4ab9671f9f3567966e3b1e5a31414bb7d4d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
 }
