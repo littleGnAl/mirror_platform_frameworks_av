@@ -115,7 +115,7 @@ private:
     // from GraphicBufferSource with timestamp larger or equal to
     // resumeStartTimeUs will be encoded. resumeStartTimeUs uses
     // SYSTEM_TIME_MONOTONIC time base.
-    void resume(int64_t resumeStartTimeUs = -1ll);
+    void resume(int64_t resumeStartTimeUs = -1LL);
     void signalEOS(status_t err = ERROR_END_OF_STREAM);
     bool reachedEOS();
     status_t postSynchronouslyAndReturnError(const sp<AMessage> &msg);

@@ -92,7 +92,7 @@ const NuPlayer::Renderer::PcmInfo NuPlayer::Renderer::AUDIO_PCMINFO_INITIALIZER 
 };
 
 // static
-const int64_t NuPlayer::Renderer::kMinPositionUpdateDelayUs = 100000ll;
+const int64_t NuPlayer::Renderer::kMinPositionUpdateDelayUs = 100000LL;
 
 static audio_format_t constexpr audioFormatFromEncoding(int32_t pcmEncoding) {
     switch (pcmEncoding) {

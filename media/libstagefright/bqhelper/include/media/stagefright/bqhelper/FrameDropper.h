@@ -38,7 +38,7 @@ struct FrameDropper : public RefBase {
     bool shouldDrop(int64_t timeUs);
 
     // Returns true if all frame drop logic should be disabled.
-    bool disabled() { return (mMinIntervalUs == -1ll); }
+    bool disabled() { return (mMinIntervalUs == -1LL); }
 
 protected:
     virtual ~FrameDropper();

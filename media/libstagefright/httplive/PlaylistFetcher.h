@@ -68,8 +68,8 @@ struct PlaylistFetcher : public AHandler {
             const sp<AnotherPacketSource> &videoSource,
             const sp<AnotherPacketSource> &subtitleSource,
             const sp<AnotherPacketSource> &metadataSource,
-            int64_t startTimeUs = -1ll,         // starting timestamps
-            int64_t segmentStartTimeUs = -1ll, // starting position within playlist
+            int64_t startTimeUs = -1LL,         // starting timestamps
+            int64_t segmentStartTimeUs = -1LL, // starting position within playlist
             // startTimeUs!=segmentStartTimeUs only when playlist is live
             int32_t startDiscontinuitySeq = -1,
             LiveSession::SeekMode seekMode = LiveSession::kSeekModeExactPosition);

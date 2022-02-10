@@ -77,7 +77,7 @@ static int decode(
         bool useTimestamp) {
     using namespace android;
 
-    static int64_t kTimeout = 500ll;
+    static int64_t kTimeout = 500LL;
 
     sp<NuMediaExtractor> extractor = new NuMediaExtractor(NuMediaExtractor::EntryPoint::OTHER);
     if (extractor->setDataSource(NULL /* httpService */, path) != OK) {
@@ -217,7 +217,7 @@ static int decode(
                                 index,
                                 0 /* offset */,
                                 0 /* size */,
-                                0ll /* timeUs */,
+                                0LL /* timeUs */,
                                 MediaCodec::BUFFER_FLAG_EOS);
 
                         CHECK_EQ(err, (status_t)OK);

@@ -211,7 +211,7 @@ struct MediaCodec : public AHandler {
             CryptoPlugin::Mode mode,
             const CryptoPlugin::Pattern &pattern);
 
-    status_t dequeueInputBuffer(size_t *index, int64_t timeoutUs = 0ll);
+    status_t dequeueInputBuffer(size_t *index, int64_t timeoutUs = 0LL);
 
     status_t dequeueOutputBuffer(
             size_t *index,
@@ -219,7 +219,7 @@ struct MediaCodec : public AHandler {
             size_t *size,
             int64_t *presentationTimeUs,
             uint32_t *flags,
-            int64_t timeoutUs = 0ll);
+            int64_t timeoutUs = 0LL);
 
     status_t renderOutputBufferAndRelease(size_t index, int64_t timestampNs);
     status_t renderOutputBufferAndRelease(size_t index);

@@ -174,8 +174,8 @@ private:
               }
         void reset() {
             mCurDiscontinuitySeq = 0;
-            mLastDequeuedTimeUs = -1ll;
-            mLastSampleDurationUs = 0ll;
+            mLastDequeuedTimeUs = -1LL;
+            mLastSampleDurationUs = 0LL;
         }
         AString uriKey() {
             AString key(mType);
@@ -266,7 +266,7 @@ private:
 
     bool resumeFetcher(
             const AString &uri, uint32_t streamMask,
-            int64_t timeUs = -1ll, bool newUri = false);
+            int64_t timeUs = -1LL, bool newUri = false);
 
     float getAbortThreshold(
             ssize_t currentBWIndex, ssize_t targetBWIndex) const;

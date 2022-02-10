@@ -2842,7 +2842,7 @@ void MediaCodec::requestCpuBoostIfNeeded() {
 
 BatteryChecker::BatteryChecker(const sp<AMessage> &msg, int64_t timeoutUs)
     : mTimeoutUs(timeoutUs)
-    , mLastActivityTimeUs(-1ll)
+    , mLastActivityTimeUs(-1LL)
     , mBatteryStatNotified(false)
     , mBatteryCheckerGeneration(0)
     , mIsExecuting(false)
@@ -2861,7 +2861,7 @@ void BatteryChecker::onCodecActivity(std::function<void()> batteryOnCb) {
 
         // post checker and clear last activity time
         msg->post(mTimeoutUs);
-        mLastActivityTimeUs = -1ll;
+        mLastActivityTimeUs = -1LL;
     } else {
         // update last activity time
         mLastActivityTimeUs = ALooper::GetNowUs();
@@ -2877,14 +2877,14 @@ void BatteryChecker::onCheckBatteryTimer(
         return;
     }
 
-    if (mLastActivityTimeUs < 0ll) {
+    if (mLastActivityTimeUs < 0LL) {
         // timed out inactive, do not repost checker
         batteryOffCb();
         mBatteryStatNotified = false;
     } else {
         // repost checker and clear last activity time
         msg->post(mTimeoutUs + mLastActivityTimeUs - ALooper::GetNowUs());
-        mLastActivityTimeUs = -1ll;
+        mLastActivityTimeUs = -1LL;
     }
 }
 

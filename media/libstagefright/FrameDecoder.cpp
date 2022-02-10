@@ -514,7 +514,7 @@ sp<AMessage> VideoFrameDecoder::onGetFormatAndSeekOptions(
     mIsHevc = !strcasecmp(mime, MEDIA_MIMETYPE_VIDEO_HEVC);
 
     if (frameTimeUs < 0) {
-        int64_t thumbNailTime = -1ll;
+        int64_t thumbNailTime = -1LL;
         if (!trackMeta()->findInt64(kKeyThumbnailTime, &thumbNailTime)
                 || thumbNailTime < 0) {
             thumbNailTime = 0;

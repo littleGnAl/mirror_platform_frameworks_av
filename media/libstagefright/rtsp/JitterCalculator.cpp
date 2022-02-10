@@ -44,7 +44,7 @@ void JitterCalc::putBaseData(uint32_t rtpTime, int64_t arrivalTimeUs) {
     __builtin_usub_overflow(rtpTime, mFirstTimeStamp, &diff);
 
     // Base jitter implementation can be various
-    int64_t scheduledTimeUs = ((int32_t)diff) * 1000000ll / mClockRate;
+    int64_t scheduledTimeUs = ((int32_t)diff) * 1000000LL / mClockRate;
     int64_t elapsedTimeUs = arrivalTimeUs - mFirstArrivalTimeUs;
     int64_t correctionTimeUs = elapsedTimeUs - scheduledTimeUs; // additional propagation delay;
     mBaseJitterUs = (mBaseJitterUs * 15 + correctionTimeUs) / 16;
@@ -58,7 +58,7 @@ void JitterCalc::putInterArrivalData(uint32_t rtpTime, int64_t arrivalTimeUs) {
     __builtin_usub_overflow(rtpTime, mLastTimeStamp, &diff);
 
     // 6.4.1 of RFC3550 defines this interarrival jitter value.
-    int64_t diffTimeStampUs = abs((int32_t)diff) * 1000000ll / mClockRate;
+    int64_t diffTimeStampUs = abs((int32_t)diff) * 1000000LL / mClockRate;
     int64_t diffArrivalUs = arrivalTimeUs - mLastArrivalTimeUs; // Can't be minus
     ALOGV("diffTimeStampUs %lld \t\t diffArrivalUs %lld",
             (long long)diffTimeStampUs, (long long)diffArrivalUs);
