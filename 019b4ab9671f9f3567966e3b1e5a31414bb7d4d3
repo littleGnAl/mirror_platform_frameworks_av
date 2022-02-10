@@ -16,6 +16,24 @@
       "message": "Broadcast device seems to be not explicit categorized, it can be \"earpiece\", \"headset\" \"hearing aid\" \"speaker\" - was this considered in this classification to make it \"headset\" in term of volume curve ?",
       "revId": "019b4ab9671f9f3567966e3b1e5a31414bb7d4d3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0f73ad82_123a90d7",
+        "filename": "services/audiopolicy/common/include/Volume.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 130,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-02-10T09:48:28Z",
+      "side": 1,
+      "message": "I used what made sense based on the most common expect use of broadcast mode which is share music listening with friends wearing headsets.\nIf you want to take a look at the default volume curves they are defined here:\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/audiopolicy/config/audio_policy_volumes.xml?q\u003daudio_policy_volumes\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/audiopolicy/config/default_volume_tables.xml\n\nFor media, a headset uses the DEFAULT_MEDIA_VOLUME_CURVE whereas a speaker uses the DEFAULT_DEVICE_CATEGORY_SPEAKER_VOLUME_CURVE which are identical by default but OEMs can tweak them. You might find differences on some use cases in the S curve shape or the minimum volume in dB",
+      "parentUuid": "0210dfa4_4e6ff10b",
+      "revId": "019b4ab9671f9f3567966e3b1e5a31414bb7d4d3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
