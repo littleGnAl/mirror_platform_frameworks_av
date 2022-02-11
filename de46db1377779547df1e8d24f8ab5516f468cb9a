@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e695f346_42b369fe",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 10
+      },
+      "lineNbr": 1422,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-02-11T18:26:48Z",
+      "side": 1,
+      "message": "if (msdModule \u003d\u003d nullptr) {\n  return false;\n}",
+      "range": {
+        "startLine": 1422,
+        "startChar": 4,
+        "endLine": 1422,
+        "endChar": 31
+      },
+      "revId": "de46db1377779547df1e8d24f8ab5516f468cb9a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
