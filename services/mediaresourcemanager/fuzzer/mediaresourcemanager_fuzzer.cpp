@@ -226,29 +226,30 @@ void ResourceManagerServiceFuzzer::setResources() {
         mFuzzedDataProvider->ConsumeIntegralInRange<size_t>(kMinThreadPairs, kMaxThreadPairs);
     // Make even number of threads
     size_t numThreads = numThreadPairs * 2;
-    resourceThreadArgs threadArgs;
+    resourceThreadArgs threadArgs[numThreadPairs];
     vector<MediaResourceParcel> mediaResource;
     pthread_t pt[numThreads];
     int i;
     for (i = 0; i < numThreads - 1; i += 2) {
-        threadArgs.pid = mFuzzedDataProvider->ConsumeIntegral<int32_t>();
-        threadArgs.uid = mFuzzedDataProvider->ConsumeIntegral<int32_t>();
+        int k = i / 2;
+        threadArgs[k].pid = mFuzzedDataProvider->ConsumeIntegral<int32_t>();
+        threadArgs[k].uid = mFuzzedDataProvider->ConsumeIntegral<int32_t>();
         int32_t mediaResourceType = mFuzzedDataProvider->ConsumeIntegralInRange<int32_t>(
             kMinResourceType, kMaxResourceType);
         int32_t mediaResourceSubType = mFuzzedDataProvider->ConsumeIntegralInRange<int32_t>(
             kMinResourceType, kMaxResourceType);
         uint64_t mediaResourceValue = mFuzzedDataProvider->ConsumeIntegral<uint64_t>();
-        threadArgs.service = mService;
+        threadArgs[k].service = mService;
         shared_ptr<IResourceManagerClient> testClient =
-            ::ndk::SharedRefBase::make<TestClient>(threadArgs.pid, mService);
-        threadArgs.testClient = testClient;
-        threadArgs.testClientId = getId(testClient);
+                ::ndk::SharedRefBase::make<TestClient>(threadArgs[k].pid, mService);
+        threadArgs[k].testClient = testClient;
+        threadArgs[k].testClientId = getId(testClient);
         mediaResource.push_back(MediaResource(static_cast<MedResType>(mediaResourceType),
                                               static_cast<MedResSubType>(mediaResourceSubType),
                                               mediaResourceValue));
-        threadArgs.mediaResource = mediaResource;
-        pthread_create(&pt[i], nullptr, addResource, &threadArgs);
-        pthread_create(&pt[i + 1], nullptr, removeResource, &threadArgs);
+        threadArgs[k].mediaResource = mediaResource;
+        pthread_create(&pt[i], nullptr, addResource, &threadArgs[k]);
+        pthread_create(&pt[i + 1], nullptr, removeResource, &threadArgs[k]);
         mediaResource.clear();
     }
 
