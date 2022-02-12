@@ -34,6 +34,23 @@
       "parentUuid": "38c82510_6ed8fc9d",
       "revId": "d1df675c6522f6fa617ef4bfc948d5c7d838dbd6",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "3b41fc78_1e6e4229",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-02-12T16:51:45Z",
+      "side": 1,
+      "message": "let the plugins decide how they want to handle those bytes.",
+      "revId": "d1df675c6522f6fa617ef4bfc948d5c7d838dbd6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
