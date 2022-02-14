@@ -69,4 +69,9 @@ cc_defaults {
             "signed-integer-overflow",
         ],
     },
+    // Enable LTO, it is enabled implicitly by CFI above but causes
+    // differences in compilation on platforms that don't support CFI.
+    lto: {
+        full: true,
+    },
 }
