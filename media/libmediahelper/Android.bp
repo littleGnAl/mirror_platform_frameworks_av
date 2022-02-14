@@ -29,6 +29,7 @@ cc_library_headers {
 cc_library {
     name: "libmedia_helper",
     vendor_available: true,
+    min_sdk_version: "29",
     vndk: {
         enabled: true,
     },
