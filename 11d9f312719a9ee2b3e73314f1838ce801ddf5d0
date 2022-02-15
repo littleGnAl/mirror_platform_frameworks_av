@@ -20,6 +20,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a7dd6b74_9cf4a83d",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 912,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-02-15T23:58:13Z",
+      "side": 1,
+      "message": "Let\u0027s log them as int32 for now. e.g.:\n\n  setInt32(mMetricsHandle, kCodecHDRStaticInfo, mHDRStaticInfo ? 1 : 0);",
+      "revId": "11d9f312719a9ee2b3e73314f1838ce801ddf5d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "b543c92a_7e49daef",
         "filename": "media/libstagefright/include/media/stagefright/MediaCodec.h",
         "patchSetId": 1
