@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "902eb835_5a9e07f3",
+        "filename": "media/libmediametrics/include/media/MediaMetricsItem.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 966,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-02-15T22:46:12Z",
+      "side": 1,
+      "message": "I\u0027m not sure if this would work w/o changing Item::Prop",
+      "revId": "11d9f312719a9ee2b3e73314f1838ce801ddf5d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b543c92a_7e49daef",
+        "filename": "media/libstagefright/include/media/stagefright/MediaCodec.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 448,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-02-15T22:46:12Z",
+      "side": 1,
+      "message": "mHasHdrStaticInfo / mHasHdr10PlusInfo",
+      "revId": "11d9f312719a9ee2b3e73314f1838ce801ddf5d0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
