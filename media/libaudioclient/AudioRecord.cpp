@@ -1431,7 +1431,7 @@ status_t AudioRecord::restoreRecord_l(const char *from)
     ALOGW("%s(%d): dead IAudioRecord, creating a new one from %s()", __func__, mPortId, from);
     ++mSequence;
 
-    const int INITIAL_RETRIES = 3;
+    const int INITIAL_RETRIES = 101;
     int retries = INITIAL_RETRIES;
 retry:
     if (retries < INITIAL_RETRIES) {
@@ -1461,8 +1461,8 @@ retry:
     if (result != NO_ERROR) {
         ALOGW("%s(%d): failed status %d, retries %d", __func__, mPortId, result, retries);
         if (--retries > 0) {
-            // leave time for an eventual race condition to clear before retrying
-            usleep(500000);
+            // leave minimal time for an eventual race condition to clear before retrying
+            usleep(10000);
             goto retry;
         }
         // if no retries left, set invalid bit to force restoring at next occasion
