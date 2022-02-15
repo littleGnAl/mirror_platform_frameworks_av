@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "760e6c15_ea274cd1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-02-15T13:50:49Z",
+      "side": 1,
+      "message": "I would prefer that we understand why the time stamp adjustment logic does not take the time it took to restore the AudioRecord into account and fix the root cause",
+      "revId": "e56a431ece56c5dc33bab7fe4e0592510a68b391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1bca00e6_b83b9fdb",
+        "filename": "media/libaudioclient/AudioRecord.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-02-15T13:50:49Z",
+      "side": 1,
+      "message": "Why 101?",
+      "range": {
+        "startLine": 1434,
+        "startChar": 32,
+        "endLine": 1434,
+        "endChar": 35
+      },
+      "revId": "e56a431ece56c5dc33bab7fe4e0592510a68b391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a695644b_76225282",
+        "filename": "media/libaudioclient/AudioRecord.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-02-15T13:50:49Z",
+      "side": 1,
+      "message": "This is too short and will cause unnecessary churn.",
+      "range": {
+        "startLine": 1465,
+        "startChar": 19,
+        "endLine": 1465,
+        "endChar": 24
+      },
+      "revId": "e56a431ece56c5dc33bab7fe4e0592510a68b391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
