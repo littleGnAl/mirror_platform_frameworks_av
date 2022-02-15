@@ -118,7 +118,8 @@ static const char *kCodecConfigColorTransfer = "android.media.mediacodec.config-
 static const char *kCodecParsedColorStandard = "android.media.mediacodec.parsed-color-standard";
 static const char *kCodecParsedColorRange = "android.media.mediacodec.parsed-color-range";
 static const char *kCodecParsedColorTransfer = "android.media.mediacodec.parsed-color-transfer";
-static const char *kCodecHDRMetadataFlags = "android.media.mediacodec.hdr-metadata-flags";
+static const char *kCodecHDRStaticInfo = "android.media.mediacodec.hdr-static-info";
+static const char *kCodecHDR10PlusInfo = "android.media.mediacodec.hdr10-plus-info";
 
 // Min/Max QP before shaping
 static const char *kCodecOriginalVideoQPIMin = "android.media.mediacodec.original-video-qp-i-min";
@@ -755,7 +756,8 @@ MediaCodec::MediaCodec(
       mVideoWidth(0),
       mVideoHeight(0),
       mRotationDegrees(0),
-      mHDRMetadataFlags(0),
+      mHDRStaticInfo(false),
+      mHDR10PlusInfo(false),
       mDequeueInputTimeoutGeneration(0),
       mDequeueInputReplyID(0),
       mDequeueOutputTimeoutGeneration(0),
@@ -907,7 +909,8 @@ void MediaCodec::updateMediametrics() {
                               mIndexOfFirstFrameWhenLowLatencyOn);
     }
 
-    mediametrics_setInt32(mMetricsHandle, kCodecHDRMetadataFlags, mHDRMetadataFlags);
+    mediametrics_setBool(mMetricsHandle, kCodecHDRStaticInfo, mHDRStaticInfo);
+    mediametrics_setBool(mMetricsHandle, kCodecHDR10PlusInfo, mHDR10PlusInfo);
 #if 0
     // enable for short term, only while debugging
     updateEphemeralMediametrics(mMetricsHandle);
@@ -1591,7 +1594,7 @@ status_t MediaCodec::configure(
             HDRStaticInfo info;
             if (ColorUtils::getHDRStaticInfoFromFormat(format, &info)
                     && ColorUtils::isHDRStaticInfoValid(&info)) {
-                mHDRMetadataFlags |= kFlagHDRStaticInfo;
+                mHDRStaticInfo = true;
             }
         }
 
@@ -4544,7 +4547,7 @@ void MediaCodec::handleOutputFormatChangeIfNeeded(const sp<MediaCodecBuffer> &bu
             if (ColorUtils::getHDRStaticInfoFromFormat(mOutputFormat, &info)) {
                 setNativeWindowHdrMetadata(mSurface.get(), &info);
                 if (ColorUtils::isHDRStaticInfoValid(&info)) {
-                    mHDRMetadataFlags |= kFlagHDRStaticInfo;
+                    mHDRStaticInfo = true;
                 }
             }
         }
@@ -4554,7 +4557,7 @@ void MediaCodec::handleOutputFormatChangeIfNeeded(const sp<MediaCodecBuffer> &bu
                 && hdr10PlusInfo != nullptr && hdr10PlusInfo->size() > 0) {
             native_window_set_buffers_hdr10_plus_metadata(mSurface.get(),
                     hdr10PlusInfo->size(), hdr10PlusInfo->data());
-            mHDRMetadataFlags |= kFlagHDR10PlusInfo;
+            mHDR10PlusInfo = true;
         }
 
         if (mime.startsWithIgnoreCase("video/")) {

@@ -51,6 +51,8 @@ void mediametrics_setRate(mediametrics_handle_t handle, attr_t attr,
                           int64_t count, int64_t duration);
 void mediametrics_setCString(mediametrics_handle_t handle, attr_t attr,
                             const char * value);
+void mediametrics_setBool(mediametrics_handle_t handle, attr_t attr,
+                            bool value);
 
 // fused get/add/set; if attr wasn't there, it's a simple set.
 // these do not provide atomicity or mutual exclusion, only simpler code sequences.
