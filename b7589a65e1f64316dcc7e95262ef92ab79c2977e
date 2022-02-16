@@ -158,6 +158,30 @@
       },
       "revId": "b7589a65e1f64316dcc7e95262ef92ab79c2977e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c92c970_67cabb01",
+        "filename": "drm/drmserver/DrmManager.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 108,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-02-16T14:50:09Z",
+      "side": 1,
+      "message": "my min/max internals were all backwards.\nwhat that phrasing did was ensure that the result was at least 1\ninstead of capping it at 1.",
+      "parentUuid": "12034226_1a7e3656",
+      "range": {
+        "startLine": 108,
+        "startChar": 97,
+        "endLine": 108,
+        "endChar": 104
+      },
+      "revId": "b7589a65e1f64316dcc7e95262ef92ab79c2977e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
