@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "bb1c0dc5_30dad4de",
+        "filename": "media/libaudioclient/AudioRecord.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1434,
+      "author": {
+        "id": 1936120
+      },
+      "writtenOn": "2022-02-16T02:22:19Z",
+      "side": 1,
+      "message": "Set the time to 10ms and retries to 101 to ensure that the audioserver restart time can still be guaranteed to be 1s.",
+      "parentUuid": "2674a836_0fccaeb2",
+      "range": {
+        "startLine": 1434,
+        "startChar": 32,
+        "endLine": 1434,
+        "endChar": 35
+      },
+      "revId": "e56a431ece56c5dc33bab7fe4e0592510a68b391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a695644b_76225282",
@@ -102,6 +126,30 @@
       "side": 1,
       "message": "Agree, this value is too small. I suspect we are concerned about buffer overrun which would show up on a logcat.\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/audioflinger/Threads.cpp;drc\u003d542ae9bfe8b911a5c0adef14e8e20402424ab3f5;l\u003d7454\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/services/audioflinger/Threads.cpp;drc\u003d542ae9bfe8b911a5c0adef14e8e20402424ab3f5;l\u003d7476\n\nIf we recreate an AudioRecord, the buffer should be empty.  At a minimum we can wait for half the buffer fill time in ms.",
       "parentUuid": "a695644b_76225282",
+      "range": {
+        "startLine": 1465,
+        "startChar": 19,
+        "endLine": 1465,
+        "endChar": 24
+      },
+      "revId": "e56a431ece56c5dc33bab7fe4e0592510a68b391",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "250d586c_42af326d",
+        "filename": "media/libaudioclient/AudioRecord.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1465,
+      "author": {
+        "id": 1936120
+      },
+      "writtenOn": "2022-02-16T02:22:19Z",
+      "side": 1,
+      "message": "We found that when the start of the recording fails, the recording can be restarted successfully when retry is executed for the first time. Setting 10ms can ensure the synchronization of the sound and picture of the recording.",
+      "parentUuid": "363420cf_4c18b78a",
       "range": {
         "startLine": 1465,
         "startChar": 19,
