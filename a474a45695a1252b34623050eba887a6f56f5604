@@ -66,6 +66,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "e3916849_cf08a73f",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 694,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-02-17T18:34:38Z",
+      "side": 1,
+      "message": "For MEDIA_MIMETYPE_VIDEO_DOLBY_VISION, getFourCCForMime() requires profile information to decide the final FourCC codes. So we let the creation of the new track now and assign FourCC codes later using getDoviFourCC()",
+      "parentUuid": "09c489af_ec1ec1fc",
+      "range": {
+        "startLine": 694,
+        "startChar": 9,
+        "endLine": 694,
+        "endChar": 55
+      },
+      "revId": "a474a45695a1252b34623050eba887a6f56f5604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4634ead5_e395fd7f",
         "filename": "media/libstagefright/MPEG4Writer.cpp",
         "patchSetId": 1
@@ -77,6 +101,30 @@
       "writtenOn": "2022-01-27T23:21:55Z",
       "side": 1,
       "message": "Do you know why we need a copy of mDoviConfigData? It\u0027s a copy of the contents of one of kKeyDVCC, kKeyDVVC, kKeyDVWC, and those contents are already contained in mMeta, of which we own a reference, so we could save a bunch of code by not keeping a copy in the internal state of this class.",
+      "range": {
+        "startLine": 3384,
+        "startChar": 4,
+        "endLine": 3384,
+        "endChar": 19
+      },
+      "revId": "a474a45695a1252b34623050eba887a6f56f5604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1cfd60ce_37e33313",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3384,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-02-17T18:34:38Z",
+      "side": 1,
+      "message": "Agree, this is just a copy of these keys. We can get-rid of this copy and use the mMeta in Track::writeDoviConfigBox()",
+      "parentUuid": "4634ead5_e395fd7f",
       "range": {
         "startLine": 3384,
         "startChar": 4,
@@ -112,6 +160,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d0d1100_d73ce1ed",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 3393,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-02-17T18:34:38Z",
+      "side": 1,
+      "message": "Page 11 of the below doc has this info, https://dolby.my.salesforce.com/sfc/p/#700000009YuG/a/4u000000l6FB/076wHYEmyEfz09m0V1bo85_25hlUJjaiWTbzorNmYY4",
+      "parentUuid": "50d0778d_bb63c2eb",
+      "range": {
+        "startLine": 3393,
+        "startChar": 4,
+        "endLine": 3393,
+        "endChar": 74
+      },
+      "revId": "a474a45695a1252b34623050eba887a6f56f5604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "0897a9e9_354d5447",
         "filename": "media/libstagefright/MPEG4Writer.cpp",
         "patchSetId": 1
@@ -123,6 +195,30 @@
       "writtenOn": "2022-01-27T23:21:55Z",
       "side": 1,
       "message": "What happens otherwise? Would it be a malfromed file, or the dovi config box suffices? A reference to a spec would be really useful for these magic numbers.",
+      "range": {
+        "startLine": 4435,
+        "startChar": 8,
+        "endLine": 4435,
+        "endChar": 9
+      },
+      "revId": "a474a45695a1252b34623050eba887a6f56f5604",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "15136b0b_bfecf7b7",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 4435,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-02-17T18:34:38Z",
+      "side": 1,
+      "message": "Dolby Vision MP4 should write all boxes required for the underlying codec.\nThe Only profile that is not covered is profile 10 ( DolbyVisionProfileDvav110 ). This is an AV1 based profile. \n\nMPEG4Writer should have something like writeAv1cBox() and that should be added with Dolby Vision profile 10. At this point, this is relying on the fact that Dolby Vision profile 10 mp4 encoders doesn\u0027t exist as of now.\n\nAndroid Defines Dolby profile like (1 \u003c\u003c mDoviProfile)\nDolby Profile 8 \u003d DolbyVisionProfileDvheSt\n\nhttps://www.diversifiedvideosolutions.com/Dolby_Vision/Dolby_Vision_profiles_and_levels-Dolby_Laboratories.pdf",
+      "parentUuid": "0897a9e9_354d5447",
       "range": {
         "startLine": 4435,
         "startChar": 8,
