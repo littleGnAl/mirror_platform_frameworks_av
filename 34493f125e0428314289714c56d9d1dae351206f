@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "266bce9c_9b56b909",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-02-18T19:02:18Z",
+      "side": 1,
+      "message": "we should unmap here.",
+      "range": {
+        "startLine": 268,
+        "startChar": 16,
+        "endLine": 268,
+        "endChar": 36
+      },
+      "revId": "34493f125e0428314289714c56d9d1dae351206f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3da7bbad_ed0226d0",
+        "filename": "media/codec2/vndk/C2AllocatorGralloc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 290,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-02-18T19:02:18Z",
+      "side": 1,
+      "message": "and here",
+      "range": {
+        "startLine": 290,
+        "startChar": 20,
+        "endLine": 290,
+        "endChar": 40
+      },
+      "revId": "34493f125e0428314289714c56d9d1dae351206f",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
