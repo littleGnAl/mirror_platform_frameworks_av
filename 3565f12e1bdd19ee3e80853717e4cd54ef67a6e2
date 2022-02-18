@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "d45bc1dd_245957b1",
+        "filename": "media/libstagefright/tests/fuzzers/FuzzerMediaUtility.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 45,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-02-18T21:53:02Z",
+      "side": 1,
+      "message": "to me this hints towards \"this is what the device supports\".\nI want to stay away from that.\n\nI think kTestedMimeTypes[] is a better name.",
+      "range": {
+        "startLine": 45,
+        "startChar": 19,
+        "endLine": 45,
+        "endChar": 38
+      },
+      "revId": "3565f12e1bdd19ee3e80853717e4cd54ef67a6e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
