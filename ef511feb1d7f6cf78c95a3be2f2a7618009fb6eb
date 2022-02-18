@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "fbace64a_39492555",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-02-18T05:25:35Z",
+      "side": 1,
+      "message": "This is same as the following CL which was reverted due to a conflict in internal branch.\nAs the CTS CL in this topic has moved files that aren\u0027t identical between internal and aosp branches, the internal conflict is expected and a manual cherry-pick will resolve the conflict.\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1987046",
+      "revId": "ef511feb1d7f6cf78c95a3be2f2a7618009fb6eb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
