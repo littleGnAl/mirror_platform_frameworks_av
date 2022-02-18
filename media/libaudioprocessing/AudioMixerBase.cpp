@@ -250,7 +250,7 @@ static inline bool setVolumeRampVariables(float newVolume, int32_t ramp,
     // We do not use a tolerance here (and reject changes too small)
     // as it may be confusing to use a different value than the one set.
     // If the resulting volume is too small to ramp, it is a direct set of the volume.
-    if (newVolume == *pSetVolume) {
+    if ((newVolume == *pSetVolume) && (*pPrevVolume == *pSetVolume)) {
         return false;
     }
     if (newVolume < 0) {
