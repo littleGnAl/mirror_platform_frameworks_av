@@ -40,6 +40,8 @@ cc_test {
         "libaudiopolicymanager_interface_headers",
     ],
 
+    tidy_timeout_srcs: ["audiopolicymanager_tests.cpp"],
+
     srcs: ["audiopolicymanager_tests.cpp"],
 
     data: [":audiopolicytest_configuration_files",],

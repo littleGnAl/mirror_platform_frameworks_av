@@ -60,6 +60,7 @@ cc_test {
     name: "TranscodingSessionController_tests",
     defaults: ["libmediatranscoding_test_defaults"],
 
+    tidy_timeout_srcs: ["TranscodingSessionController_tests.cpp"],
     srcs: ["TranscodingSessionController_tests.cpp"],
 }
 

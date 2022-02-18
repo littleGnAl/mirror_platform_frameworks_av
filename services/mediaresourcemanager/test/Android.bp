@@ -10,6 +10,7 @@ package {
 
 cc_test {
     name: "ResourceManagerService_test",
+    tidy_timeout_srcs: ["ResourceManagerService_test.cpp"],
     srcs: ["ResourceManagerService_test.cpp"],
     test_suites: ["device-tests"],
     static_libs: ["libresourcemanagerservice"],
@@ -52,6 +53,7 @@ cc_test {
 
 cc_test {
     name: "ResourceObserverService_test",
+    tidy_timeout_srcs: ["ResourceObserverService_test.cpp"],
     srcs: ["ResourceObserverService_test.cpp"],
     test_suites: ["device-tests"],
     static_libs: [

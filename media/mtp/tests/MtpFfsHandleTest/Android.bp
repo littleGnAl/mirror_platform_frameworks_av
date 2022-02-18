@@ -26,6 +26,7 @@ package {
 cc_test {
     name: "mtp_ffs_handle_test",
     test_suites: ["device-tests"],
+    tidy_timeout_srcs: ["MtpFfsHandle_test.cpp"],
     srcs: ["MtpFfsHandle_test.cpp"],
     shared_libs: [
         "libbase",

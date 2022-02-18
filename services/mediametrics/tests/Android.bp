@@ -40,6 +40,10 @@ cc_test {
         "libaudioutils_headers",
     ],
 
+    tidy_timeout_srcs: [
+        "mediametrics_tests.cpp",
+    ],
+
     srcs: [
         "mediametrics_tests.cpp",
     ],

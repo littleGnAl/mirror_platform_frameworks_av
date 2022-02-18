@@ -29,6 +29,10 @@ cc_test {
     name: "ColorUtilsTest",
     gtest: true,
 
+    tidy_timeout_srcs: [
+        "ColorUtilsTest.cpp",
+    ],
+
     srcs: [
         "ColorUtilsTest.cpp",
     ],

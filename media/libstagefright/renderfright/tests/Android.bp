@@ -25,6 +25,9 @@ cc_test {
     name: "librenderfright_test",
     defaults: ["surfaceflinger_defaults"],
     test_suites: ["device-tests"],
+    tidy_timeout_srcs: [
+        "RenderEngineTest.cpp",
+    ],
     srcs: [
         "RenderEngineTest.cpp",
         "RenderEngineThreadedTest.cpp",
