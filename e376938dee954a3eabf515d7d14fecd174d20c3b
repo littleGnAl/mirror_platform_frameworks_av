@@ -73,6 +73,23 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "66a94580_51b6aeaa",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1546599
+      },
+      "writtenOn": "2022-02-18T21:54:36Z",
+      "side": 1,
+      "message": "This can be abandoned as bug is marked as fixed.",
+      "revId": "e376938dee954a3eabf515d7d14fecd174d20c3b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "00fccee6_e6f35264",
         "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
         "patchSetId": 2
