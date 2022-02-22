@@ -2378,9 +2378,9 @@ status_t MediaCodec::reset() {
     mDequeueOutputTimeoutGeneration = 0;
     mHaveInputSurface = false;
 
-    if (err == OK) {
-        err = init(mInitName);
-    }
+    //if (err == OK) {
+        //err = init(mInitName);
+    //}
     return err;
 }
 
