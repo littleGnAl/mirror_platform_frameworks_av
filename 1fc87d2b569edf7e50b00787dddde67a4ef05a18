@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c433ba99_c63f5c33",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1040213
+      },
+      "writtenOn": "2022-02-23T16:53:16Z",
+      "side": 1,
+      "message": "Thanks for the proposed CL.  This has been fixed internally by creating a callback interface, so \"class CallbackData : public AudioTrack::IAudioTrackCallback\".  Internal CL ag/16113216.\n",
+      "revId": "1fc87d2b569edf7e50b00787dddde67a4ef05a18",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
