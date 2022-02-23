@@ -1832,6 +1832,7 @@ MediaPlayerService::AudioOutput::~AudioOutput()
     close();
     free(mAttributes);
     delete mCallbackData;
+    mCallbackData = NULL;
 }
 
 //static
@@ -2660,6 +2661,10 @@ sp<VolumeShaper::State> MediaPlayerService::AudioOutput::getVolumeShaperState(in
 void MediaPlayerService::AudioOutput::CallbackWrapper(
         int event, void *cookie, void *info) {
     //ALOGV("callbackwrapper");
+    if (mCallbackData == NULL) {
+        ALOGD("return when mCallbackData have been destroyed.");
+        return;
+    }
     CallbackData *data = (CallbackData*)cookie;
     // lock to ensure we aren't caught in the middle of a track switch.
     data->lock();
