@@ -240,6 +240,7 @@ private:
     sp<FlushingState> mFlushingState;
     sp<SkipCutBuffer> mSkipCutBuffer;
     int32_t mSampleRate;
+    ColorAspects::Primaries mACodecPrimaries;
 
     AString mComponentName;
     uint32_t mFlags;

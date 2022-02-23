@@ -592,6 +592,7 @@ ACodec::ACodec()
       mDescribeHDR10PlusInfoIndex((OMX_INDEXTYPE)0),
       mStateGeneration(0),
       mVendorExtensionsStatus(kExtensionsUnchecked) {
+    mACodecPrimaries = ColorAspects::PrimariesUnspecified;
     memset(&mLastHDRStaticInfo, 0, sizeof(mLastHDRStaticInfo));
 
     mUninitializedState = new UninitializedState(this);
@@ -3688,12 +3689,18 @@ status_t ACodec::setColorAspectsForVideoDecoder(
     params.nPortIndex = kPortIndexOutput;
 
     getColorAspectsFromFormat(configFormat, params.sAspects);
+    if(mACodecPrimaries != ColorAspects::PrimariesUnspecified
+           && params.sAspects.mPrimaries == ColorAspects::PrimariesUnspecified){
+       params.sAspects.mPrimaries = mACodecPrimaries;
+    }
     if (usingNativeWindow) {
         setDefaultCodecColorAspectsIfNeeded(params.sAspects, width, height);
         // The default aspects will be set back to the output format during the
         // getFormat phase of configure(). Set non-Unspecified values back into the
         // format, in case component does not support this enumeration.
         setColorAspectsIntoFormat(params.sAspects, outputFormat);
+        //Save current primaries setting in ACodec.
+        mACodecPrimaries = params.sAspects.mPrimaries;
     }
 
     (void)initDescribeColorAspectsIndex();
@@ -3778,6 +3785,10 @@ status_t ACodec::getColorAspectsAndDataSpaceForVideoDecoder(
 
     // reset default format and get resulting format
     getColorAspectsFromFormat(configFormat, params.sAspects);
+    if(mACodecPrimaries != ColorAspects::PrimariesUnspecified
+           && params.sAspects.mPrimaries == ColorAspects::PrimariesUnspecified){
+       params.sAspects.mPrimaries = mACodecPrimaries;
+    }
     if (dataSpace != NULL) {
         setDefaultCodecColorAspectsIfNeeded(params.sAspects, width, height);
     }
@@ -3785,6 +3796,8 @@ status_t ACodec::getColorAspectsAndDataSpaceForVideoDecoder(
 
     // we always set specified aspects for decoders
     setColorAspectsIntoFormat(params.sAspects, outputFormat);
+    //Save current primaries setting in ACodec.
+    mACodecPrimaries = params.sAspects.mPrimaries;
 
     if (dataSpace != NULL) {
         status_t res = getDataSpace(params, dataSpace, err == OK /* tryCodec */);
