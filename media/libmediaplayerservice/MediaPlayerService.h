@@ -161,7 +161,7 @@ class MediaPlayerService : public BnMediaPlayerService
         sp<AudioOutput>         mNextOutput;
         AudioCallback           mCallback;
         void *                  mCallbackCookie;
-        CallbackData *          mCallbackData;
+        static CallbackData *   mCallbackData;
         audio_stream_type_t     mStreamType;
         audio_attributes_t *    mAttributes;
         float                   mLeftVolume;

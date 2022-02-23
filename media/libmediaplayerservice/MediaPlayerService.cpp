@@ -437,6 +437,7 @@ static void dumpCodecDetails(int fd, const sp<IMediaCodecList> &codecList, bool 
 // TODO: Find real cause of Audio/Video delay in PV framework and remove this workaround
 /* static */ int MediaPlayerService::AudioOutput::mMinBufferCount = 4;
 /* static */ bool MediaPlayerService::AudioOutput::mIsOnEmulator = false;
+/* static */ android::MediaPlayerService::AudioOutput::CallbackData * MediaPlayerService::AudioOutput::mCallbackData = NULL;
 
 void MediaPlayerService::instantiate() {
     defaultServiceManager()->addService(
@@ -1794,7 +1795,6 @@ MediaPlayerService::AudioOutput::AudioOutput(audio_session_t sessionId,
         const sp<AudioSystem::AudioDeviceCallback>& deviceCallback)
     : mCallback(NULL),
       mCallbackCookie(NULL),
-      mCallbackData(NULL),
       mStreamType(AUDIO_STREAM_MUSIC),
       mLeftVolume(1.0),
       mRightVolume(1.0),
@@ -1832,6 +1832,7 @@ MediaPlayerService::AudioOutput::~AudioOutput()
     close();
     free(mAttributes);
     delete mCallbackData;
+    mCallbackData = NULL;
 }
 
 //static
@@ -2417,14 +2418,13 @@ void MediaPlayerService::AudioOutput::switchToNextOutput() {
             // Presuming it isn't advisable to force the track over.
              if (mNextOutput->mTrack == NULL) {
                 ALOGD("Recycling track for gapless playback");
-                delete mNextOutput->mCallbackData;
-                mNextOutput->mCallbackData = mCallbackData;
                 mNextOutput->mRecycledTrack = mTrack;
                 mNextOutput->mSampleRateHz = mSampleRateHz;
                 mNextOutput->mMsecsPerFrame = mMsecsPerFrame;
                 mNextOutput->mFlags = mFlags;
                 mNextOutput->mFrameSize = mFrameSize;
                 close_l();
+                delete mCallbackData;
                 mCallbackData = NULL;  // destruction handled by mNextOutput
             } else {
                 ALOGW("Ignoring gapless playback because next player has already started");
@@ -2661,6 +2661,10 @@ void MediaPlayerService::AudioOutput::CallbackWrapper(
         int event, void *cookie, void *info) {
     //ALOGV("callbackwrapper");
     CallbackData *data = (CallbackData*)cookie;
+    if (mCallbackData == NULL) {
+        ALOGD("callbackwrapper: CallbackData have been destroyed, and return.");
+        return;
+    }
     // lock to ensure we aren't caught in the middle of a track switch.
     data->lock();
     AudioOutput *me = data->getOutput();
