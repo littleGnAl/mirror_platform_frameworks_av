@@ -47,11 +47,11 @@ cc_test{
         "libbinder",
         "libbinder_ndk",
         "libutils",
+        "libstagefright",
     ],
 
     static_libs: [
         "libdatasource",
-        "libstagefright",
         "libstagefright_foundation",
         "libstagefright_metadatautils",
         "libstagefright_mpeg2support",
