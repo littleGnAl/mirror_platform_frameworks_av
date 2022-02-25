@@ -736,6 +736,8 @@ protected:
                     // to a new track (even though it may be on the same session).
                     // Used for OffloadThread to ensure that volume and mixer state is
                     // taken from the latest track added.
+                    // Used for SpatializerThread to ensure that channel mask is
+                    // taken from the latest track added.
                     //
                     // The latest track is saved with a weak pointer to prevent keeping an
                     // otherwise useless track alive. Thus the function will return nullptr
@@ -1375,6 +1377,8 @@ protected:
                 struct audio_patch mDownStreamPatch;
 
                 std::atomic_bool mCheckOutputStageEffects{};
+
+                void notifyTracksInfoToSpatializer(ActiveTracks<Track>& tracks);
 
                 // A differential check on the timestamps to see if there is a change in the
                 // timestamp frame position between the last call to checkRunningTimestamp.

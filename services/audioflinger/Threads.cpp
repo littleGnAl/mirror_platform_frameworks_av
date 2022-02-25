@@ -2728,6 +2728,9 @@ status_t AudioFlinger::PlaybackThread::addTrack_l(const sp<Track>& track)
         track->mResetDone = false;
         track->resetPresentationComplete();
         mActiveTracks.add(track);
+        if(mType == SPATIALIZER) {
+            notifyTracksInfoToSpatializer(mActiveTracks);
+        }
         if (chain != 0) {
             ALOGV("addTrack_l() starting track on chain %p for session %d", chain.get(),
                     track->sessionId());
@@ -4407,6 +4410,9 @@ void AudioFlinger::PlaybackThread::removeTracks_l(const Vector< sp<Track> >& tra
 {
     for (const auto& track : tracksToRemove) {
         mActiveTracks.remove(track);
+        if(mType == SPATIALIZER) {
+            notifyTracksInfoToSpatializer(mActiveTracks);
+        }
         ALOGV("%s(%d): removing track on session %d", __func__, track->id(), track->sessionId());
         sp<EffectChain> chain = getEffectChain_l(track->sessionId());
         if (chain != 0) {
@@ -5891,6 +5897,56 @@ bool AudioFlinger::PlaybackThread::checkRunningTimestamp()
         }
     }
     return false;
+}
+
+void AudioFlinger::PlaybackThread::notifyTracksInfoToSpatializer(
+                                      ActiveTracks<Track>& tracks) {
+    sp<EffectModule> spatializer;
+    sp<EffectChain> chain = getEffectChain_l(AUDIO_SESSION_OUTPUT_STAGE);
+    if(chain != nullptr) {
+        spatializer = chain->getEffectFromType_l(FX_IID_SPATIALIZER);
+    }
+    if(spatializer == nullptr) return;
+
+    uint32_t param = SPATIALIZER_PARAM_TRACK_CHANNEL_MASKS;
+    // see SPATIALIZER_PARAM_TRACK_CHANNEL_MASKS spec in effect_spatializer.h
+    size_t maxCmdSize = sizeof(uint32_t) * 3 + (sizeof(uint32_t) * 2) * tracks.size();
+    uint32_t cmdData[sizeof(effect_param_t) / sizeof(uint32_t) + 1 + maxCmdSize / sizeof(uint32_t)];
+    auto effectParam = (effect_param_t *)cmdData;
+    *(uint32_t *)effectParam->data = param;
+    effectParam->psize = sizeof(param);
+
+    uint32_t *pData = (uint32_t *)effectParam->data + 1;
+
+    // latest active track
+    sp<Track> latestTrack = tracks.getLatest();
+    if(latestTrack == nullptr) {
+        return;
+    }
+    pData[0] = latestTrack->id();
+    pData[1] = latestTrack->channelMask();
+
+    // active tracks
+    uint32_t activeTracks = 0;
+    uint32_t *pActiveTracks = (uint32_t *)&pData[3];
+    for (uint32_t i = 0; i < tracks.size(); ++i) {
+        const sp<Track> track = tracks[i];
+        if(track->isTerminated() || track->isInvalid()) {
+            continue;
+        }
+        *(pActiveTracks++) = track->id();
+        *(pActiveTracks++) = track->channelMask();
+        activeTracks++;
+    }
+    pData[2] = activeTracks;
+    effectParam->vsize = sizeof(uint32_t) * 3 + (sizeof(uint32_t) * 2) * activeTracks;
+    size_t cmdSize = sizeof(effect_param_t) + sizeof(param) + effectParam->vsize;
+    std::vector<uint8_t> cmd((uint8_t *)effectParam, (uint8_t *)effectParam + cmdSize);
+    std::vector<uint8_t> reply(sizeof(int));
+    spatializer->command(EFFECT_CMD_SET_PARAM,
+			 cmd,
+			 reply.size(),
+			 &reply);
 }
 
 // isTrackAllowed_l() must be called with ThreadBase::mLock held
