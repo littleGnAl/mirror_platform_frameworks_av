@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "13f12893_4c4a2b2d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-02-25T23:46:18Z",
+      "side": 1,
+      "message": "we use this test within our mainline testing, so falling back to /system/lib*/libstagefright.so is not allowed.\n\nis this not building/linking for you, or are you trying to do some link-time optimization (the GLOBAL_THINLTO\u003dtrue) makes me think it\u0027s the latter.\n\nI want to leave this as-is.\n\n",
+      "revId": "f195cc538306238a159a28cf577d42ba68987401",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
