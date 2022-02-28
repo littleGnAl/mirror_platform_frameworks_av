@@ -79,4 +79,8 @@ cc_test{
             "signed-integer-overflow",
         ],
     },
+
+    lto: {
+        never: true,
+    },
 }
