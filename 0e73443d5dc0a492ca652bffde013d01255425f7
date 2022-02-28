@@ -1,0 +1,73 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0773c1e9_198873d5",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-02-28T18:34:02Z",
+      "side": 1,
+      "message": "Why patches created via `APM::createAudioPatch` are called \"raw\"? Unless \"call patches\" are also returned by `AudioManager.listAudioPatches`, we probably should call \"raw patches\" as \"externally visible\" instead.",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "0e73443d5dc0a492ca652bffde013d01255425f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4a0fd6d8_f6a8ca10",
+        "filename": "services/audiopolicy/common/managerdefinitions/include/ClientDescriptor.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-02-28T18:34:02Z",
+      "side": 1,
+      "message": "I think this could be rewritten for clarity, currently there are too many \u0027aka\u0027 and \u0027or\u0027s in a row.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 27
+      },
+      "revId": "0e73443d5dc0a492ca652bffde013d01255425f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc2a2a8b_bab63be0",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 12
+      },
+      "lineNbr": 1418,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-02-28T18:34:02Z",
+      "side": 1,
+      "message": "This seems to partially duplicate `AudioPolicyManager::getMsdOutputPatches()`, but it seems to be different in some details. That\u0027s not good, because it\u0027s confusing. What I would like to see is that this function is implemented via `getMsdOutputPatches`.",
+      "range": {
+        "startLine": 1418,
+        "startChar": 5,
+        "endLine": 1418,
+        "endChar": 71
+      },
+      "revId": "0e73443d5dc0a492ca652bffde013d01255425f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
