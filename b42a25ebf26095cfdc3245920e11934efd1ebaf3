@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26bf5c2c_ab657163",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-02-28T18:50:11Z",
+      "side": 1,
+      "message": "help me understand the need here; from this description it seems an optimization rather than a correctness issue.\n\nwill it break without this change?\nwill the compilation/linking time skyrocket without this change?\nis the resulting object much larger without the change?",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 65
+      },
+      "revId": "b42a25ebf26095cfdc3245920e11934efd1ebaf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "36bcbbac_165d2258",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-02-28T18:50:11Z",
+      "side": 1,
+      "message": "help me understand the need.\nis it broken without this change?\ndoes it take 10x longer to build without this change (the commit",
+      "revId": "b42a25ebf26095cfdc3245920e11934efd1ebaf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
