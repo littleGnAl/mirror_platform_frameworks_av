@@ -48,6 +48,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": true,
+      "key": {
+        "uuid": "67a1d235_8ab60008",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 1
+      },
+      "lineNbr": 11,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-02-28T22:11:28Z",
+      "side": 1,
+      "message": "as a developer, how can i tell why that failure is happening -- I can look at the my *.bp file and see that I\u0027ve specified my libraries.\n\ni\u0027m all for LTO being able to produce a smaller object; but i expect the tools to gracefully degrade --",
+      "parentUuid": "40001375_9f8ac547",
+      "range": {
+        "startLine": 10,
+        "startChar": 22,
+        "endLine": 11,
+        "endChar": 65
+      },
+      "revId": "b42a25ebf26095cfdc3245920e11934efd1ebaf3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": false,
       "key": {
         "uuid": "36bcbbac_165d2258",
