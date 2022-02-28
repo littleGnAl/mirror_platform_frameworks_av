@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f480f890_7f9512a5",
+        "filename": "services/audiopolicy/common/managerdefinitions/include/ClientDescriptor.h",
+        "patchSetId": 13
+      },
+      "lineNbr": 227,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-02-28T18:15:59Z",
+      "side": 1,
+      "message": "I think, similar to `isCallRxAudioSource` we need to check either the result of promotion or `swOutput` for being a nullptr. Probably better to do this check at this level rather than relying on every caller to do this, as done in `isTelephonyRxOrTx`.",
+      "range": {
+        "startLine": 227,
+        "startChar": 8,
+        "endLine": 227,
+        "endChar": 47
+      },
+      "revId": "68731029ba1d376bcc71620291b7f5f1c69a29d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4ef4ae3a_a10ed2b2",
+        "filename": "services/audiopolicy/managerdefault/AudioPolicyManager.cpp",
+        "patchSetId": 13
+      },
+      "lineNbr": 718,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-02-28T18:15:59Z",
+      "side": 1,
+      "message": "This can return an error, it makes sense at least to log it here.",
+      "range": {
+        "startLine": 718,
+        "startChar": 4,
+        "endLine": 718,
+        "endChar": 42
+      },
+      "revId": "68731029ba1d376bcc71620291b7f5f1c69a29d6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
