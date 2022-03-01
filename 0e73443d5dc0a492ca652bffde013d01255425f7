@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb20fb44_aca3b164",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-03-01T18:33:16Z",
+      "side": 1,
+      "message": "I think raw here indicates they are not associated with an active use case like mixport patches or patches started with startAudioSource API.",
+      "parentUuid": "0773c1e9_198873d5",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "0e73443d5dc0a492ca652bffde013d01255425f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a0fd6d8_f6a8ca10",
         "filename": "services/audiopolicy/common/managerdefinitions/include/ClientDescriptor.h",
         "patchSetId": 12
@@ -37,6 +61,30 @@
       "writtenOn": "2022-02-28T18:34:02Z",
       "side": 1,
       "message": "I think this could be rewritten for clarity, currently there are too many \u0027aka\u0027 and \u0027or\u0027s in a row.",
+      "range": {
+        "startLine": 59,
+        "startChar": 0,
+        "endLine": 61,
+        "endChar": 27
+      },
+      "revId": "0e73443d5dc0a492ca652bffde013d01255425f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1d082e2e_279db682",
+        "filename": "services/audiopolicy/common/managerdefinitions/include/ClientDescriptor.h",
+        "patchSetId": 12
+      },
+      "lineNbr": 61,
+      "author": {
+        "id": 1003259
+      },
+      "writtenOn": "2022-03-01T18:33:16Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "4a0fd6d8_f6a8ca10",
       "range": {
         "startLine": 59,
         "startChar": 0,
