@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d62faf85_d0b97384",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 12
+      },
+      "lineNbr": 18,
+      "author": {
+        "id": 1491204
+      },
+      "writtenOn": "2022-03-02T09:50:30Z",
+      "side": 1,
+      "message": "That s right, patches from either internal APM (call / mixPort) or from API createAudioPatch",
+      "parentUuid": "cb20fb44_aca3b164",
+      "range": {
+        "startLine": 17,
+        "startChar": 0,
+        "endLine": 18,
+        "endChar": 22
+      },
+      "revId": "0e73443d5dc0a492ca652bffde013d01255425f7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "4a0fd6d8_f6a8ca10",
         "filename": "services/audiopolicy/common/managerdefinitions/include/ClientDescriptor.h",
         "patchSetId": 12
