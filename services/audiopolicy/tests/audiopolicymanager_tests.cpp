@@ -1468,7 +1468,7 @@ TEST_F(AudioPolicyManagerCarTest, Dump) {
     dumpToLog();
 }
 
-TEST_F(AudioPolicyManagerCarTest, GetOutputForAttrEncodedOutputAfterRegisteringPolicyMix) {
+TEST_F(AudioPolicyManagerCarTest, GetOutputForAttrAtmosOutputAfterRegisteringPolicyMix) {
     status_t ret;
     audio_config_t audioConfig = AUDIO_CONFIG_INITIALIZER;
     ret = addPolicyMix(MIX_TYPE_PLAYERS, MIX_ROUTE_FLAG_RENDER,
@@ -1486,6 +1486,18 @@ TEST_F(AudioPolicyManagerCarTest, GetOutputForAttrEncodedOutputAfterRegisteringP
     ASSERT_NE(nullptr, outDesc.get());
     ASSERT_EQ(AUDIO_FORMAT_E_AC3_JOC, outDesc->getFormat());
     ASSERT_EQ(AUDIO_CHANNEL_OUT_5POINT1, outDesc->getChannelMask());
+    ASSERT_EQ(48000, outDesc->getSamplingRate());
+
+    selectedDeviceId = AUDIO_PORT_HANDLE_NONE;
+    output = AUDIO_IO_HANDLE_NONE;
+    portId = AUDIO_PORT_HANDLE_NONE;
+    getOutputForAttr(&selectedDeviceId, AUDIO_FORMAT_PCM_16_BIT, AUDIO_CHANNEL_OUT_7POINT1POINT4,
+            48000, AUDIO_OUTPUT_FLAG_DIRECT, &output, &portId);
+    ASSERT_NE(AUDIO_PORT_HANDLE_NONE, selectedDeviceId);
+    outDesc = mManager->getOutputs().valueFor(output);
+    ASSERT_NE(nullptr, outDesc.get());
+    ASSERT_EQ(AUDIO_FORMAT_PCM_16_BIT, outDesc->getFormat());
+    ASSERT_EQ(AUDIO_CHANNEL_OUT_7POINT1POINT4, outDesc->getChannelMask());
     ASSERT_EQ(48000, outDesc->getSamplingRate());
 }
 
