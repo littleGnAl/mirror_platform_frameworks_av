@@ -1060,6 +1060,30 @@ status_t AudioPolicyManager::getOutputForAttrInt(
                 policyDesc = mOutputs.valueFor(newOutput);
                 primaryMix->setOutput(policyDesc);
             }
+        } else if (deviceDesc != nullptr && policyDesc != nullptr
+                    && (audio_channel_count_from_out_mask(policyDesc->getConfig().channel_mask) <
+                        audio_channel_count_from_out_mask(config->channel_mask))) {
+            ALOGD("%s() try a direct output to deliver the multi-channel content", __func__);
+            // if a direct output can be opened to deliver the track's multi-channel content to the
+            // output rather than being downmixed by the primary output, then use this direct
+            // output by by-passing the primary mix if possible, otherwise fall-through to primary
+            // mix.
+            audio_io_handle_t newOutput;
+            status = openDirectOutput(
+                    *stream, session, config,
+                    (audio_output_flags_t)(*flags | AUDIO_OUTPUT_FLAG_DIRECT),
+                    DeviceVector(deviceDesc), &newOutput);
+            if (status == NO_ERROR) {
+                *output = newOutput;
+                ALOGV("direct output found, getOutputForAttr() returns output %d", *output);
+                *selectedDeviceId = deviceDesc != 0 ? deviceDesc->getId() : AUDIO_PORT_HANDLE_NONE;
+                if (resultAttr->usage == AUDIO_USAGE_VIRTUAL_SOURCE) {
+                    *outputType = API_OUT_MIX_PLAYBACK;
+                } else {
+                    *outputType = API_OUTPUT_LEGACY;
+                }
+                return NO_ERROR;
+            }
         }
         if (policyDesc != nullptr) {
             policyDesc->mPolicyMix = primaryMix;
