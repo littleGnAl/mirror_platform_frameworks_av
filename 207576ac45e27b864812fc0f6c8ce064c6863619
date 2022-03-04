@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6c8bbbe3_d04dd988",
+        "filename": "/COMMIT_MSG",
+        "patchSetId": 2
+      },
+      "lineNbr": 15,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-03-04T20:18:15Z",
+      "side": 1,
+      "message": "R is not correct.",
+      "range": {
+        "startLine": 15,
+        "startChar": 49,
+        "endLine": 15,
+        "endChar": 64
+      },
+      "revId": "207576ac45e27b864812fc0f6c8ce064c6863619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5c4e0b2f_02d5b614",
+        "filename": "apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-03-04T20:18:15Z",
+      "side": 1,
+      "message": "this change seems that it would only affect the final packaging of the apex.\nThis isn\u0027t going to force things for all of my native/jni libraries that\nget linked into the module.  THose all still have \"min_sdk_version: 29\" in their Android.bp files.",
+      "range": {
+        "startLine": 176,
+        "startChar": 7,
+        "endLine": 177,
+        "endChar": 39
+      },
+      "revId": "207576ac45e27b864812fc0f6c8ce064c6863619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
