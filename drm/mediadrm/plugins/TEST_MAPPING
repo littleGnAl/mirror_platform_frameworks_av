@@ -1,19 +1,19 @@
 {
   "presubmit": [
     {
-      "name": "CtsMediaDrmTestCases",
+      "name": "CtsMediaDrmFrameworkTestCases",
       "options" : [
         {
           "include-annotation": "android.platform.test.annotations.Presubmit"
         },
         {
-          "include-filter": "android.mediadrm.cts.MediaDrmClearkeyTest"
+          "include-filter": "android.media.drmframework.cts.MediaDrmClearkeyTest"
         },
         {
-          "include-filter": "android.mediadrm.cts.MediaDrmMetricsTest"
+          "include-filter": "android.media.drmframework.cts.MediaDrmMetricsTest"
         },
         {
-          "include-filter": "android.mediadrm.cts.NativeMediaDrmClearkeyTest"
+          "include-filter": "android.media.drmframework.cts.NativeMediaDrmClearkeyTest"
         }
       ]
     }
