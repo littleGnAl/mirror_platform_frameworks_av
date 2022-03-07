@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "19873e3d_5c4410a9",
+        "filename": "drm/mediadrm/plugins/TEST_MAPPING",
+        "patchSetId": 2
+      },
+      "lineNbr": 9,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-03-07T23:21:11Z",
+      "side": 0,
+      "message": "Earlier this TEST_MAPPING called CtsMediaTestCases which includes lot mroe presubmit tests and thus required a include-filter specify which of the tests needed to be run in presubmit.\nAfter the split, CtsMediaDrmFrameworkTestCases contains only drm related tests and include-filter is no longer required. Hence removed.",
+      "revId": "2f4a6222eeaa3edfac6c08b640374fa1dd35fbdc",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
