@@ -45,6 +45,30 @@
       },
       "revId": "207576ac45e27b864812fc0f6c8ce064c6863619",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f0a8bb36_7ef661de",
+        "filename": "apex/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1060959
+      },
+      "writtenOn": "2022-03-07T15:24:23Z",
+      "side": 1,
+      "message": "Correct. But setting min_sdk_version here applies a transitive requirement that those deps also set min_sdk_version appropriately. (None of that is changing with this CL, it\u0027s only changing how this apex sets min_sdk_version..)",
+      "parentUuid": "5c4e0b2f_02d5b614",
+      "range": {
+        "startLine": 176,
+        "startChar": 7,
+        "endLine": 177,
+        "endChar": 39
+      },
+      "revId": "207576ac45e27b864812fc0f6c8ce064c6863619",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
