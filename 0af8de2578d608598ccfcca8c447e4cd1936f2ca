@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ea4a995f_9ea25581",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-03-07T17:45:04Z",
+      "side": 1,
+      "message": "Kyle, Edwin,\nThis updates the TEST_MAPPING as per new test case name and package name.\nTwo CLs that this depends on are needed to bring aosp/master and internal branches in sync. They are cherry-pick CLs with a Merged-In added in commit message.\nCan you please review and approve these?\nThanks. ",
+      "revId": "0af8de2578d608598ccfcca8c447e4cd1936f2ca",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
