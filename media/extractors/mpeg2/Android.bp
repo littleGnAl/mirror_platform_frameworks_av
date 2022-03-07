@@ -41,6 +41,7 @@ cc_library {
     shared_libs: [
         "libbase",
         "libcgrouprc#29",
+        "libprocessgroup",
     ],
 
     header_libs: [
@@ -62,7 +63,6 @@ cc_library {
         "libhidlmemory",
         "libjsoncpp",
         "libmedia_helper",
-        "libprocessgroup",
         "libstagefright_esds",
         "libstagefright_foundation_without_imemory",
         "libstagefright_mpeg2extractor",
