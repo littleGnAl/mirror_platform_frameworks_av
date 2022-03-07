@@ -56,8 +56,8 @@
 #define ALOGVV(a...) do { } while (0)
 #endif
 
-// Set to default copy buffer size in frames for input processing.
-static constexpr size_t kCopyBufferFrameCount = 256;
+// Set to default copy buffer size in ms for input processing.
+static constexpr size_t kCopyBufferFrameSize = 5;
 
 namespace android {
 
@@ -172,6 +172,7 @@ status_t AudioMixer::Track::prepareForDownmix()
                     && isAudioChannelPositionMask(mMixerChannelMask))) {
         return NO_ERROR;
     }
+    uint32_t copyBufferFrameCount = (sampleRate / 1000) * kCopyBufferFrameSize;
     // DownmixerBufferProvider is only used for position masks.
     if (audio_channel_mask_get_representation(channelMask)
                 == AUDIO_CHANNEL_REPRESENTATION_POSITION
@@ -182,7 +183,7 @@ status_t AudioMixer::Track::prepareForDownmix()
             mDownmixerBufferProvider.reset(new DownmixerBufferProvider(
                     channelMask, mMixerChannelMask,
                     format,
-                    sampleRate, sessionId, kCopyBufferFrameCount));
+                    sampleRate, sessionId, copyBufferFrameCount));
             if (static_cast<DownmixerBufferProvider *>(mDownmixerBufferProvider.get())
                     ->isValid()) {
                 mDownmixRequiresFormat = format;
@@ -195,7 +196,7 @@ status_t AudioMixer::Track::prepareForDownmix()
 
     // Effect downmixer does not accept the channel conversion.  Let's use our remixer.
     mDownmixerBufferProvider.reset(new RemixBufferProvider(channelMask,
-            mMixerChannelMask, mMixerInFormat, kCopyBufferFrameCount));
+            mMixerChannelMask, mMixerInFormat, copyBufferFrameCount));
     // Remix always finds a conversion whereas Downmixer effect above may fail.
     reconfigureBufferProviders();
     return NO_ERROR;
@@ -226,12 +227,13 @@ status_t AudioMixer::Track::prepareForReformat()
     const audio_format_t targetFormat = mDownmixRequiresFormat != AUDIO_FORMAT_INVALID
             ? mDownmixRequiresFormat : mMixerInFormat;
     bool requiresReconfigure = false;
+    uint32_t copyBufferFrameCount = (sampleRate / 1000) * kCopyBufferFrameSize;
     if (mFormat != targetFormat) {
         mReformatBufferProvider.reset(new ReformatBufferProvider(
                 audio_channel_count_from_out_mask(channelMask),
                 mFormat,
                 targetFormat,
-                kCopyBufferFrameCount));
+                copyBufferFrameCount));
         requiresReconfigure = true;
     } else if (mFormat == AUDIO_FORMAT_PCM_FLOAT) {
         // Input and output are floats, make sure application did not provide > 3db samples
@@ -239,7 +241,7 @@ status_t AudioMixer::Track::prepareForReformat()
         // TODO: add a trusted source flag to avoid the overhead
         mReformatBufferProvider.reset(new ClampFloatBufferProvider(
                 audio_channel_count_from_out_mask(channelMask),
-                kCopyBufferFrameCount));
+                copyBufferFrameCount));
         requiresReconfigure = true;
     }
     if (targetFormat != mMixerInFormat) {
@@ -247,7 +249,7 @@ status_t AudioMixer::Track::prepareForReformat()
                 audio_channel_count_from_out_mask(mMixerChannelMask),
                 targetFormat,
                 mMixerInFormat,
-                kCopyBufferFrameCount));
+                copyBufferFrameCount));
         requiresReconfigure = true;
     }
     if (requiresReconfigure) {
@@ -270,9 +272,10 @@ status_t AudioMixer::Track::prepareForAdjustChannels()
     ALOGV("AudioMixer::prepareForAdjustChannels(%p) with inChannelCount: %u, outChannelCount: %u",
             this, mAdjustInChannelCount, mAdjustOutChannelCount);
     unprepareForAdjustChannels();
+    uint32_t copyBufferFrameCount = (sampleRate / 1000) * kCopyBufferFrameSize;
     if (mAdjustInChannelCount != mAdjustOutChannelCount) {
         mAdjustChannelsBufferProvider.reset(new AdjustChannelsBufferProvider(
-                mFormat, mAdjustInChannelCount, mAdjustOutChannelCount, kCopyBufferFrameCount));
+                mFormat, mAdjustInChannelCount, mAdjustOutChannelCount, copyBufferFrameCount));
         reconfigureBufferProviders();
     }
     return NO_ERROR;
@@ -572,6 +575,37 @@ status_t AudioMixer::postCreateTrack(TrackBase *track)
     t->prepareForAdjustChannelsNonDestructive(mFrameCount);
     t->prepareForAdjustChannels();
     return OK;
+}
+
+
+void AudioMixer::Track::onSamplerateChange()
+{
+    auto frameCount = sampleRate / 1000 * kCopyBufferFrameSize;
+
+    if (mAdjustChannelsBufferProvider.get() != nullptr
+         && mAdjustChannelsBufferProvider->getFrameCount()) {
+        mAdjustChannelsBufferProvider->setFrameCount(frameCount);
+    }
+    if (mContractChannelsNonDestructiveBufferProvider.get() != nullptr
+         && mContractChannelsNonDestructiveBufferProvider->getFrameCount()) {
+        mContractChannelsNonDestructiveBufferProvider->setFrameCount(frameCount);
+    }
+    if (mReformatBufferProvider.get() != nullptr
+         && mReformatBufferProvider->getFrameCount()) {
+        mReformatBufferProvider->setFrameCount(frameCount);
+    }
+    if (mDownmixerBufferProvider.get() != nullptr
+         && mDownmixerBufferProvider->getFrameCount()) {
+        mDownmixerBufferProvider->setFrameCount(frameCount);
+    }
+    if (mPostDownmixReformatBufferProvider.get() != nullptr
+         && mPostDownmixReformatBufferProvider->getFrameCount()) {
+        mPostDownmixReformatBufferProvider->setFrameCount(frameCount);
+    }
+    if (mTimestretchBufferProvider.get() != nullptr
+         && mTimestretchBufferProvider->getFrameCount()) {
+        mTimestretchBufferProvider->setFrameCount(frameCount);
+    }
 }
 
 void AudioMixer::preProcess()

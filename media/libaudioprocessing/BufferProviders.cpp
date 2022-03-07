@@ -130,6 +130,20 @@ void CopyBufferProvider::reset()
     mConsumed = 0;
 }
 
+size_t CopyBufferProvider::getFrameCount()
+{
+    return mLocalBufferFrameCount;
+}
+
+void CopyBufferProvider::setFrameCount(size_t frameCount)
+{
+    if (mLocalBufferFrameCount) {
+       free(mLocalBufferData);
+       mLocalBufferFrameCount = frameCount;
+       (void)posix_memalign(&mLocalBufferData, 32, mLocalBufferFrameCount * mOutputFrameSize);
+    }
+}
+
 void CopyBufferProvider::setBufferProvider(AudioBufferProvider *p) {
     ALOGV("%s(%p): mTrackBufferProvider:%p  mBuffer.frameCount:%zu",
             __func__, p, mTrackBufferProvider, mBuffer.frameCount);
@@ -278,6 +292,33 @@ DownmixerBufferProvider::~DownmixerBufferProvider()
     ALOGV("~DownmixerBufferProvider (%p)", this);
     if (mDownmixInterface != 0) {
         mDownmixInterface->close();
+    }
+}
+
+void DownmixerBufferProvider::setFrameCount(size_t frameCount)
+{
+    if (getFrameCount()) {
+        status_t status;
+        status = mEffectsFactory->mirrorBuffer(
+                nullptr, mInFrameSize * frameCount, &mInBuffer);
+        if (status != 0) {
+            ALOGE("DownmixerBufferProvider() error %d while creating input buffer", status);
+            mDownmixInterface.clear();
+            mEffectsFactory.clear();
+            return;
+        }
+        status = mEffectsFactory->mirrorBuffer(
+                nullptr, mOutFrameSize * frameCount, &mOutBuffer);
+        if (status != 0) {
+            ALOGE("DownmixerBufferProvider() error %d while creating output buffer", status);
+            mInBuffer.clear();
+            mDownmixInterface.clear();
+            mEffectsFactory.clear();
+            return;
+        }
+        mDownmixInterface->setInBuffer(mInBuffer);
+        mDownmixInterface->setOutBuffer(mOutBuffer);
+        CopyBufferProvider::setFrameCount(frameCount);
     }
 }
 
@@ -650,6 +691,14 @@ AdjustChannelsBufferProvider::AdjustChannelsBufferProvider(
     if (mContractedFormat != AUDIO_FORMAT_INVALID && mInChannelCount > mOutChannelCount) {
         mContractedFrameSize = audio_bytes_per_frame(mContractedChannelCount, mContractedFormat);
     }
+}
+
+void AdjustChannelsBufferProvider::setFrameCount(size_t frameCount)
+{
+     if (getFrameCount()) {
+         mFrameCount = frameCount;
+         CopyBufferProvider::setFrameCount(frameCount);
+     }
 }
 
 status_t AdjustChannelsBufferProvider::getNextBuffer(AudioBufferProvider::Buffer* pBuffer)

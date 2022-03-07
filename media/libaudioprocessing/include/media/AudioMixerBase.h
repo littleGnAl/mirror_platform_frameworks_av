@@ -216,6 +216,7 @@ public:
 
         virtual uint32_t getOutputChannelCount() { return channelCount; }
         virtual uint32_t getMixerChannelCount() { return mMixerChannelCount; }
+        virtual void     onSamplerateChange() {}
 
         bool        needsRamp() { return (volumeInc[0] | volumeInc[1] | auxInc) != 0; }
         bool        setResampler(uint32_t trackSampleRate, uint32_t devSampleRate);

@@ -101,6 +101,7 @@ private:
         void        clearContractedBuffer();
         bool        setPlaybackRate(const AudioPlaybackRate &playbackRate);
         void        reconfigureBufferProviders();
+        void        onSamplerateChange() override;
 
         /* Buffer providers are constructed to translate the track input data as needed.
          * See DownmixerBufferProvider below for how the Track buffer provider

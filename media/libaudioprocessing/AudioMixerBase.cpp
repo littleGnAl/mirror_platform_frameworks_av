@@ -474,6 +474,7 @@ bool AudioMixerBase::TrackBase::setResampler(uint32_t trackSampleRate, uint32_t 
     if (trackSampleRate != devSampleRate || mResampler.get() != nullptr) {
         if (sampleRate != trackSampleRate) {
             sampleRate = trackSampleRate;
+            onSamplerateChange();
             if (mResampler.get() == nullptr) {
                 ALOGV("Creating resampler from track %d Hz to device %d Hz",
                         trackSampleRate, devSampleRate);
