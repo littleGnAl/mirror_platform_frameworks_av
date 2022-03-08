@@ -26,6 +26,7 @@ package {
 cc_defaults {
     name: "libcameraservice_fuzz_defaults",
     fuzz_config: {
+        cc: ["brarcher@google.com"],
         componentid: 41727
     },
 }
