@@ -26,6 +26,14 @@ package {
 cc_defaults {
     name: "libcameraservice_fuzz_defaults",
     fuzz_config: {
+        cc: [
+            "etalvala@google.com",
+            "arakesh@google.com",
+            "epeev@google.com",
+            "jchowdhary@google.com",
+            "shuzhenwang@google.com",
+            "ruchamk@google.com",
+        ],
         componentid: 41727
     },
 }
