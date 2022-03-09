@@ -174,6 +174,18 @@ const char *GetComponentRole(bool isEncoder, const char *mime) {
             "image_decoder.heic", "image_encoder.heic" },
         { MEDIA_MIMETYPE_IMAGE_AVIF,
             "image_decoder.avif", "image_encoder.avif" },
+        { MEDIA_MIMETYPE_AUDIO_VND_DTS,
+            "audio_decoder.dts", "audio_encoder.dts" },
+        { MEDIA_MIMETYPE_AUDIO_VND_DTSHD,
+            "audio_decoder.dtshd", "audio_encoder.dtshd" },
+        { MEDIA_MIMETYPE_AUDIO_VND_DTSHD_PROFILE_MA,
+            "audio_decoder.dtshd_ma", "audio_encoder.dtshd_ma" },
+        { MEDIA_MIMETYPE_AUDIO_VND_DTSHD_PROFILE_LBR,
+            "audio_decoder.dtshd_lbr", "audio_encoder.dtshd_lbr" },
+        { MEDIA_MIMETYPE_AUDIO_VND_DTSUHD_PROFILE_P1,
+            "audio_decoder.dtsuhd_p1", "audio_encoder.dtsuhd_p1" },
+        { MEDIA_MIMETYPE_AUDIO_VND_DTSUHD_PROFILE_P2,
+            "audio_decoder.dtsuhd_p2", "audio_encoder.dtsuhd_p2" },
     };
 
     static const size_t kNumMimeToRole =
