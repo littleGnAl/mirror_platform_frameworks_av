@@ -1044,6 +1044,18 @@ const detail::AudioFormatPairs& getAudioFormatPairs() {
         },
         {
             AUDIO_FORMAT_DRA, make_AudioFormatDescription(MEDIA_MIMETYPE_AUDIO_DRA)
+<<<<<<< PATCH SET (ee78e5 Stagefright: Add support for DTS stream types)
+        },
+        {
+            AUDIO_FORMAT_DTS_HD_MA, make_AudioFormatDescription(MEDIA_MIMETYPE_AUDIO_DTS_HD_MA)
+        },
+        {
+            AUDIO_FORMAT_DTS_UHD, make_AudioFormatDescription(MEDIA_MIMETYPE_AUDIO_DTS_UHD_P1)
+        },
+        {
+            AUDIO_FORMAT_DTS_UHD_P2, make_AudioFormatDescription(MEDIA_MIMETYPE_AUDIO_DTS_UHD_P2)
+=======
+>>>>>>> BASE      (bfa466 Merge "Group additional DTS encodings under the surround sou)
         },
         {
             // Note: not in the IANA registry.
