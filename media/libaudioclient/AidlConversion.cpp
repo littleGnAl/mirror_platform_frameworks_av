@@ -1039,6 +1039,15 @@ const detail::AudioFormatPairs& getAudioFormatPairs() {
         {
             AUDIO_FORMAT_DRA, make_AudioFormatDescription(MEDIA_MIMETYPE_AUDIO_DRA)
         },
+        {
+            AUDIO_FORMAT_DTS_HD_MA, make_AudioFormatDescription(MEDIA_MIMETYPE_AUDIO_DTS_HD_MA)
+        },
+        {
+            AUDIO_FORMAT_DTS_UHD, make_AudioFormatDescription(MEDIA_MIMETYPE_AUDIO_DTS_UHD_P1)
+        },
+        {
+            AUDIO_FORMAT_DTS_UHD_P2, make_AudioFormatDescription(MEDIA_MIMETYPE_AUDIO_DTS_UHD_P2)
+        },
     }};
     return pairs;
 }
