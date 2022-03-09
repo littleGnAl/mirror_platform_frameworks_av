@@ -74,6 +74,11 @@ extern const char *MEDIA_MIMETYPE_AUDIO_DVI_IMA_ADPCM;
 extern const char *MEDIA_MIMETYPE_AUDIO_DTS;
 extern const char *MEDIA_MIMETYPE_AUDIO_DTS_HD;
 extern const char *MEDIA_MIMETYPE_AUDIO_DTS_HD_MA;
+<<<<<<< PATCH SET (ee78e5 Stagefright: Add support for DTS stream types)
+extern const char *MEDIA_MIMETYPE_AUDIO_DTS_HD_LBR;
+extern const char *MEDIA_MIMETYPE_AUDIO_DTS_UHD;
+=======
+>>>>>>> BASE      (bfa466 Merge "Group additional DTS encodings under the surround sou)
 extern const char *MEDIA_MIMETYPE_AUDIO_DTS_UHD_P1;
 extern const char *MEDIA_MIMETYPE_AUDIO_DTS_UHD_P2;
 extern const char *MEDIA_MIMETYPE_AUDIO_EVRC;
