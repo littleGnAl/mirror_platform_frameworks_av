@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0a0346e2_70ae273e",
+        "filename": "services/mediaresourcemanager/fuzzer/mediaresourcemanager_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 233,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2022-03-11T17:53:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "71f93d49_ea772959",
+      "range": {
+        "startLine": 233,
+        "startChar": 15,
+        "endLine": 233,
+        "endChar": 45
+      },
+      "revId": "bc8292c135e04ec95c175d04265898246cb24bf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a13e6578_f190b647",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-03-04T04:09:40Z",
       "side": 1,
       "message": "we don\u0027t reuse the threadArgs -- making it be threadArgs[k] instead.\nshould the MeduaResource be similarly an array?\n\nbut it fields strange here -- based on process scheduling, there\u0027s a great chance that we\u0027ll clear out mediaResource before the child thread gets a chance to read it.",
+      "range": {
+        "startLine": 253,
+        "startChar": 7,
+        "endLine": 253,
+        "endChar": 30
+      },
+      "revId": "bc8292c135e04ec95c175d04265898246cb24bf7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5dfa8eea_28e59088",
+        "filename": "services/mediaresourcemanager/fuzzer/mediaresourcemanager_fuzzer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 253,
+      "author": {
+        "id": 1619864
+      },
+      "writtenOn": "2022-03-11T17:53:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a13e6578_f190b647",
       "range": {
         "startLine": 253,
         "startChar": 7,
