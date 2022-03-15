@@ -57,6 +57,30 @@
       },
       "revId": "40c674e88922609393aa2726d8f7009068842658",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9893eb0d_da807c1e",
+        "filename": "media/libstagefright/tests/mediacodec/MediaCodecTest.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 441,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-03-15T18:04:57Z",
+      "side": 1,
+      "message": "Here we are not working with the actual component, and longer wait is unnecessary.",
+      "parentUuid": "9419c076_0353d848",
+      "range": {
+        "startLine": 441,
+        "startChar": 58,
+        "endLine": 441,
+        "endChar": 61
+      },
+      "revId": "40c674e88922609393aa2726d8f7009068842658",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
