@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a0be2c89_792c80a4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-03-15T19:09:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "17cc43ed_626e6dca",
+      "revId": "b77f0ec773e1a47e8ce19b972b6587755a935523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "72691335_89d464d0",
@@ -243,6 +261,30 @@
       "side": 1,
       "message": "MP4 extractors are guaranteed to put this key as it is defined in the spec.\nBut encoders may/may-not send this. But according to the spec \nhttps://professionalsupport.dolby.com/s/article/How-to-signal-Dolby-Vision-in-ISOBMFF-format-AKA-mp4-container?language\u003den_US\n\nthe framework has the information to create this key if not present. This will help to maximize the success rate. This is needed for the muxer to create the tracks during muxing.",
       "parentUuid": "cc5c4b1b_54a4bdb0",
+      "range": {
+        "startLine": 2052,
+        "startChar": 19,
+        "endLine": 2052,
+        "endChar": 51
+      },
+      "revId": "b77f0ec773e1a47e8ce19b972b6587755a935523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1f5f814e_2aa6b417",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2052,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-03-15T19:09:07Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "596fe1e1_38a61855",
       "range": {
         "startLine": 2052,
         "startChar": 19,
