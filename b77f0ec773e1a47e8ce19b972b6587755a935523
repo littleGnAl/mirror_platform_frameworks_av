@@ -1,0 +1,136 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "17cc43ed_626e6dca",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-03-15T00:31:23Z",
+      "side": 1,
+      "message": "Is there a tracking bug for supporting dolby vision? If so can we add it to the CL?\n\nCan we also add a link to a specification in the CL description? ",
+      "revId": "b77f0ec773e1a47e8ce19b972b6587755a935523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "72691335_89d464d0",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-03-15T00:31:23Z",
+      "side": 1,
+      "message": "It seems this was originally pretty off. Is the CSD buffers assignment documented somewhere so that I can inform myself before properly reviewing this?",
+      "range": {
+        "startLine": 1130,
+        "startChar": 47,
+        "endLine": 1131,
+        "endChar": 54
+      },
+      "revId": "b77f0ec773e1a47e8ce19b972b6587755a935523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3ca9f6da_0509b6a9",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2619,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-03-15T00:31:23Z",
+      "side": 1,
+      "message": "I see we check mLastTrack \u003d\u003d null, but I don\u0027t know whether -\u003emeta can be null and, if so, what would happen. If a crash is a possibility, that\u0027s something we should also check, as in (above):\n\nif (mLastTrack \u003d\u003d nullptr || mLastTrack-\u003emeta \u003d\u003d nullptr) return ERROR_MALFORMED;\n\nBut then again, I\u0027m not sure my concern is valid.",
+      "range": {
+        "startLine": 2619,
+        "startChar": 35,
+        "endLine": 2619,
+        "endChar": 51
+      },
+      "revId": "b77f0ec773e1a47e8ce19b972b6587755a935523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b22a5644_86a3ac11",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-03-15T00:31:23Z",
+      "side": 1,
+      "message": "From what I talked with krocard@, the best way to do this would be having two different static functions that return a ref to a static const local variable.\n\nLike:\n\nstatic ALookup\u003c...\u003e\u0026 getDolbyVisionProfileTable() {\n  static const profilesTable \u003d {{...}, {...}, ...};\n  return profilesTable;\n}\n\nstatic ALookup\u003c...\u003e\u0026 getDolbyVisionLevelsTable() {\n  static const levelsTable \u003d {{...}, {...}, ...};\n  return levelsTable;\n}\n\nWhich is probably the closest we can get to a local static const in the places where it\u0027s needed. Another option would be a file-level static constant, but that would execute before main in an undefined order and is apparently frowned upon.\n\nLet me know your thoughts. I feel at least avoiding the assignment each time makes sense from a readability perspective.",
+      "range": {
+        "startLine": 246,
+        "startChar": 12,
+        "endLine": 246,
+        "endChar": 31
+      },
+      "revId": "b77f0ec773e1a47e8ce19b972b6587755a935523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0e63747b_89ae1f96",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2040,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-03-15T00:31:23Z",
+      "side": 1,
+      "message": "Uber-nit: I appreciate this already exited, but I think we should move towards consistent naming (snake lowercase vs lower camelcase in the same block). I think this should be blCompatibility, as per the style guide (syntax specifications are generally ignored for variable naming conventions).\n\nThis is copied from the Java style guide: go/java-style#s5.3-camel-case",
+      "range": {
+        "startLine": 2040,
+        "startChar": 20,
+        "endLine": 2040,
+        "endChar": 36
+      },
+      "revId": "b77f0ec773e1a47e8ce19b972b6587755a935523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc5c4b1b_54a4bdb0",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2052,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-03-15T00:31:23Z",
+      "side": 1,
+      "message": "Could you please expand this comment to say why we do this?\n\nIt\u0027s kind of unclear that a key is not found and therefor we \"create dvcc\".",
+      "range": {
+        "startLine": 2052,
+        "startChar": 19,
+        "endLine": 2052,
+        "endChar": 51
+      },
+      "revId": "b77f0ec773e1a47e8ce19b972b6587755a935523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "575680ec_d7ad93cc",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1530,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-03-15T00:31:23Z",
+      "side": 1,
+      "message": "Uber-nit: Can we use nullptr?",
+      "range": {
+        "startLine": 1530,
+        "startChar": 28,
+        "endLine": 1530,
+        "endChar": 32
+      },
+      "revId": "241c4550e0da89225fef29bf1445a2b2d84252fd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
