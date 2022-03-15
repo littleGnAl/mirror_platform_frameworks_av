@@ -41,6 +41,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "9e0cc735_4b2445d5",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1131,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-03-15T19:08:21Z",
+      "side": 1,
+      "message": "Dolby Vision is not a standalone codec like hevc/avc/av1, it is a HDR specification that is defined over existing codecs. \nCurrently extractor is extracting Dolby Vision CSD ( dv(cc|vc|wc) box) data to csd_2. This is because this was an unused key so far in the code. We can add additional keys like \"csd-dv\". Such keys were added to hevc/avc but not for av1, not sure why.\n\nFor Extractors:\nHEVC define csd-hevc\nAVC define csd-avc\nAV1 is using csd-0\n\nI think there was some legacy code for which the avc was was using csd-0 and csd-1. \nhevce, dolby vision config boxes were defined in csd-2. \n\nDolby Vision CSD is in DV(CC|VC/WC) information. Some decoders use that and some may not. \n\nDolby Vision configuration boxes (dvcc) are defined according to \nhttps://professionalsupport.dolby.com/s/article/How-to-signal-Dolby-Vision-in-ISOBMFF-format-AKA-mp4-container?language\u003den_US \n\nThis \"if\" block is trying to address the requirements on https://source.android.com/compatibility/12/android-12-cdd#538_dolby_vision\n\nThe backward compatibility tracks are created based on BL signal cross-compatibility ID defined as per.\n\nhttps://www.diversifiedvideosolutions.com/Dolby_Vision/Dolby_Vision_profiles_and_levels-Dolby_Laboratories.pdf",
+      "parentUuid": "72691335_89d464d0",
+      "range": {
+        "startLine": 1130,
+        "startChar": 47,
+        "endLine": 1131,
+        "endChar": 54
+      },
+      "revId": "b77f0ec773e1a47e8ce19b972b6587755a935523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3ca9f6da_0509b6a9",
@@ -54,6 +78,30 @@
       "writtenOn": "2022-03-15T00:31:23Z",
       "side": 1,
       "message": "I see we check mLastTrack \u003d\u003d null, but I don\u0027t know whether -\u003emeta can be null and, if so, what would happen. If a crash is a possibility, that\u0027s something we should also check, as in (above):\n\nif (mLastTrack \u003d\u003d nullptr || mLastTrack-\u003emeta \u003d\u003d nullptr) return ERROR_MALFORMED;\n\nBut then again, I\u0027m not sure my concern is valid.",
+      "range": {
+        "startLine": 2619,
+        "startChar": 35,
+        "endLine": 2619,
+        "endChar": 51
+      },
+      "revId": "b77f0ec773e1a47e8ce19b972b6587755a935523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5c01f8ad_fc5047aa",
+        "filename": "media/extractors/mp4/MPEG4Extractor.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2619,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-03-15T19:08:21Z",
+      "side": 1,
+      "message": "sure, we can add that check to make sure of the condition but\n \njust FYI:\nlooks like meta is allocated line 1033 and also the boxes coming before in the hierarchy ( hvcc/avcc) are using this without that check",
+      "parentUuid": "3ca9f6da_0509b6a9",
       "range": {
         "startLine": 2619,
         "startChar": 35,
@@ -87,6 +135,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c8aa1636_7100a176",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 246,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-03-15T19:08:21Z",
+      "side": 1,
+      "message": "Agree, it is good to avoid assignment each time. will make it static const and keep the function.",
+      "parentUuid": "b22a5644_86a3ac11",
+      "range": {
+        "startLine": 246,
+        "startChar": 12,
+        "endLine": 246,
+        "endChar": 31
+      },
+      "revId": "b77f0ec773e1a47e8ce19b972b6587755a935523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "0e63747b_89ae1f96",
@@ -110,6 +182,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c5e8fcf_675608a7",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2040,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-03-15T19:08:21Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "0e63747b_89ae1f96",
+      "range": {
+        "startLine": 2040,
+        "startChar": 20,
+        "endLine": 2040,
+        "endChar": 36
+      },
+      "revId": "b77f0ec773e1a47e8ce19b972b6587755a935523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cc5c4b1b_54a4bdb0",
@@ -123,6 +219,30 @@
       "writtenOn": "2022-03-15T00:31:23Z",
       "side": 1,
       "message": "Could you please expand this comment to say why we do this?\n\nIt\u0027s kind of unclear that a key is not found and therefor we \"create dvcc\".",
+      "range": {
+        "startLine": 2052,
+        "startChar": 19,
+        "endLine": 2052,
+        "endChar": 51
+      },
+      "revId": "b77f0ec773e1a47e8ce19b972b6587755a935523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "596fe1e1_38a61855",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2052,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-03-15T19:08:21Z",
+      "side": 1,
+      "message": "MP4 extractors are guaranteed to put this key as it is defined in the spec.\nBut encoders may/may-not send this. But according to the spec \nhttps://professionalsupport.dolby.com/s/article/How-to-signal-Dolby-Vision-in-ISOBMFF-format-AKA-mp4-container?language\u003den_US\n\nthe framework has the information to create this key if not present. This will help to maximize the success rate. This is needed for the muxer to create the tracks during muxing.",
+      "parentUuid": "cc5c4b1b_54a4bdb0",
       "range": {
         "startLine": 2052,
         "startChar": 19,
