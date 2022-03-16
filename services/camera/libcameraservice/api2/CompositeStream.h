@@ -117,6 +117,9 @@ protected:
     // Composite streams should behave accordingly.
     void enableErrorState();
 
+    // Utility function to call unlockAsync on a GraphicBuffer
+    void unlockAsyncBuffer(sp<GraphicBuffer> buffer);
+
     wp<CameraDeviceBase>   mDevice;
     wp<camera3::StatusTracker> mStatusTracker;
     wp<hardware::camera2::ICameraDeviceCallbacks> mRemoteCallback;

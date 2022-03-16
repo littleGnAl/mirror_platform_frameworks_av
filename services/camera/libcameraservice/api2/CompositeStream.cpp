@@ -214,5 +214,18 @@ void CompositeStream::switchToOffline() {
     mDevice.clear();
 }
 
+void CompositeStream::unlockAsyncBuffer(sp<GraphicBuffer> buffer) {
+    if (buffer == nullptr) {
+        return;
+    }
+
+    int fd = -1;
+    auto res = buffer->unlockAsync(&fd);
+    if (res != OK) {
+        ALOGE("%s: Error trying to unlock output buffer fence: %s (%d)", __FUNCTION__,
+                strerror(-res), res);
+    }
+}
+
 }; // namespace camera3
 }; // namespace android
