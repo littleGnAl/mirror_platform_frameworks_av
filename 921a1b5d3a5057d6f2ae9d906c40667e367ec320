@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6aaf993f_57744d46",
+        "filename": "media/libstagefright/rtsp/ARTPConnection.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 526,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-03-16T05:55:26Z",
+      "side": 1,
+      "message": "seems to me that the even safer one is to replace the while() with\n\nfor( ; it !\u003d mStreams.end(); ++it)\n\nand drop all of the ++it lines within the body of the loop.\n\nif we\u0027re really ambitions, we could put the declaration/initiailization into\nthe for () control logic. But that\u0027s not needed.",
+      "range": {
+        "startLine": 526,
+        "startChar": 7,
+        "endLine": 526,
+        "endChar": 38
+      },
+      "revId": "921a1b5d3a5057d6f2ae9d906c40667e367ec320",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
