@@ -308,6 +308,7 @@ status_t DepthCompositeStream::processInputFrame(nsecs_t ts, const InputFrame &i
     if ((gb->getWidth() < finalJpegBufferSize) || (gb->getHeight() != 1)) {
         ALOGE("%s: Blob buffer size mismatch, expected %dx%d received %zux%u", __FUNCTION__,
                 gb->getWidth(), gb->getHeight(), finalJpegBufferSize, 1U);
+        unlockAsyncBuffer(gb);
         outputANW->cancelBuffer(mOutputSurface.get(), anb, /*fence*/ -1);
         return BAD_VALUE;
     }
@@ -362,6 +363,7 @@ status_t DepthCompositeStream::processInputFrame(nsecs_t ts, const InputFrame &i
     res = processDepthPhotoFrame(depthPhoto, finalJpegBufferSize, dstBuffer, &actualJpegSize);
     if (res != 0) {
         ALOGE("%s: Depth photo processing failed: %s (%d)", __FUNCTION__, strerror(-res), res);
+        unlockAsyncBuffer(gb);
         outputANW->cancelBuffer(mOutputSurface.get(), anb, /*fence*/ -1);
         return res;
     }
@@ -369,6 +371,7 @@ status_t DepthCompositeStream::processInputFrame(nsecs_t ts, const InputFrame &i
     size_t finalJpegSize = actualJpegSize + sizeof(struct camera_jpeg_blob);
     if (finalJpegSize > finalJpegBufferSize) {
         ALOGE("%s: Final jpeg buffer not large enough for the jpeg blob header", __FUNCTION__);
+        unlockAsyncBuffer(gb);
         outputANW->cancelBuffer(mOutputSurface.get(), anb, /*fence*/ -1);
         return NO_MEMORY;
     }
@@ -377,6 +380,7 @@ status_t DepthCompositeStream::processInputFrame(nsecs_t ts, const InputFrame &i
     if (res != OK) {
         ALOGE("%s: Stream %d: Error setting timestamp: %s (%d)", __FUNCTION__,
                 getStreamId(), strerror(-res), res);
+        unlockAsyncBuffer(gb);
         return res;
     }
 
@@ -388,6 +392,7 @@ status_t DepthCompositeStream::processInputFrame(nsecs_t ts, const InputFrame &i
     blob->jpeg_size = actualJpegSize;
     outputANW->queueBuffer(mOutputSurface.get(), anb, /*fence*/ -1);
 
+    unlockAsyncBuffer(gb);
     return res;
 }
 

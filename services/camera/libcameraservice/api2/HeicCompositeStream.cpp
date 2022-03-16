@@ -1130,6 +1130,7 @@ status_t HeicCompositeStream::processCompletedInputFrame(int64_t frameNumber,
     // Copy the content of the file to memory.
     sp<GraphicBuffer> gb = GraphicBuffer::from(inputFrame.anb);
     void* dstBuffer;
+    ALOGI("%s: Heictest: lockAsync", __FUNCTION__);
     auto res = gb->lockAsync(GRALLOC_USAGE_SW_WRITE_OFTEN, &dstBuffer, inputFrame.fenceFd);
     if (res != OK) {
         ALOGE("%s: Error trying to lock output buffer fence: %s (%d)", __FUNCTION__,
@@ -1141,6 +1142,8 @@ status_t HeicCompositeStream::processCompletedInputFrame(int64_t frameNumber,
     if (static_cast<size_t>(fSize) > mMaxHeicBufferSize - sizeof(CameraBlob)) {
         ALOGE("%s: Error: MediaMuxer output size %ld is larger than buffer sizer %zu",
                 __FUNCTION__, fSize, mMaxHeicBufferSize - sizeof(CameraBlob));
+
+        unlockAsyncBuffer(gb);
         return BAD_VALUE;
     }
 
@@ -1148,6 +1151,8 @@ status_t HeicCompositeStream::processCompletedInputFrame(int64_t frameNumber,
     ssize_t bytesRead = read(inputFrame.fileFd, dstBuffer, fSize);
     if (bytesRead < fSize) {
         ALOGE("%s: Only %zd of %ld bytes read", __FUNCTION__, bytesRead, fSize);
+
+        unlockAsyncBuffer(gb);
         return BAD_VALUE;
     }
 
@@ -1165,6 +1170,8 @@ status_t HeicCompositeStream::processCompletedInputFrame(int64_t frameNumber,
     if (res != OK) {
         ALOGE("%s: Stream %d: Error setting timestamp: %s (%d)",
                __FUNCTION__, getStreamId(), strerror(-res), res);
+
+        unlockAsyncBuffer(gb);
         return res;
     }
 
@@ -1172,10 +1179,15 @@ status_t HeicCompositeStream::processCompletedInputFrame(int64_t frameNumber,
     if (res != OK) {
         ALOGE("%s: Failed to queueBuffer to Heic stream: %s (%d)", __FUNCTION__,
                 strerror(-res), res);
+
+        unlockAsyncBuffer(gb);
         return res;
     }
     inputFrame.anb = nullptr;
     mDequeuedOutputBufferCnt--;
+
+    ALOGI("%s: Heictest: unlockAsync", __FUNCTION__);
+    unlockAsyncBuffer(gb);
 
     ALOGV("%s: [%" PRId64 "]", __FUNCTION__, frameNumber);
     ATRACE_ASYNC_END("HEIC capture", frameNumber);
