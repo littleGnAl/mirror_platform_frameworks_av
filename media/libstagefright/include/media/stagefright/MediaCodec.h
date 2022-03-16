@@ -25,6 +25,7 @@
 #include <media/hardware/CryptoAPI.h>
 #include <media/MediaCodecInfo.h>
 #include <media/MediaMetrics.h>
+#include <media/MediaProfiles.h>
 #include <media/stagefright/foundation/AHandler.h>
 #include <media/stagefright/FrameRenderTracker.h>
 #include <utils/Vector.h>
@@ -445,11 +446,10 @@ private:
     int32_t mRotationDegrees;
     int32_t mAllowFrameDroppingBySurface;
 
-    uint32_t mHDRMetadataFlags; /* bitmask of kFlagHDR* */
-    enum {
-        kFlagHDRStaticInfo = 1 << 0,
-        kFlagHDR10PlusInfo = 1 << 1,
-    };
+    AString mConfigColorTransfer;
+    int32_t mHDRStaticInfo = 0;
+    int32_t mHDR10PlusInfo = 0;
+    hdr_format getHDRFormat(const AString &profile, const AString &transfer, const AString &mediaType);
 
     // initial create parameters
     AString mInitName;
