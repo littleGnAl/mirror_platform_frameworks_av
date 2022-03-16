@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "75c9266e_e135d17d",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2022-03-16T22:24:02Z",
+      "side": 1,
+      "message": "at first glance this looks error-prone. What if a new error condition is added and we forget to call unlockAsync?\n\ni would consider defining a RAII-style struct that\u0027s created after lock() is called, and on destruction will call unlock().",
+      "revId": "3d8827057050d340d227b9588af0d3111a3627b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae861c58_ffabc993",
+        "filename": "services/camera/libcameraservice/api2/CompositeStream.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1470474
+      },
+      "writtenOn": "2022-03-16T22:24:02Z",
+      "side": 1,
+      "message": "this risks leaking a file descriptor on some gralloc implementations.\n\nso you\u0027ll probably want to use the blocking unlock() call.",
+      "range": {
+        "startLine": 222,
+        "startChar": 4,
+        "endLine": 224,
+        "endChar": 0
+      },
+      "revId": "3d8827057050d340d227b9588af0d3111a3627b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
