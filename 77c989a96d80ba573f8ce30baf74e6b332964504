@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "60741ed1_cb6f5c6d",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-03-17T04:54:55Z",
+      "side": 1,
+      "message": "i\u0027ll disagree.\n\ni don\u0027t think that we should restrict avc because of limitations in hevc.",
+      "parentUuid": "8ec0ca8a_a598534f",
+      "range": {
+        "startLine": 398,
+        "startChar": 60,
+        "endLine": 398,
+        "endChar": 65
+      },
+      "revId": "77c989a96d80ba573f8ce30baf74e6b332964504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57b0b9d9_c9b06b0c",
         "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
         "patchSetId": 7
@@ -85,6 +109,30 @@
       "side": 1,
       "message": "Ray,\nWe were trying to get the change here in sync with the one in C2SoftHevcEnc.cpp\nreviewed at\nhttps://android-review.googlesource.com/c/platform/frameworks/av/+/1709436\n\nPlease let us know if you still prefer that this clamping be moved outside?\nIn that case we will also update C2SoftHevcEnc.cpp for consistency.",
       "parentUuid": "57b0b9d9_c9b06b0c",
+      "range": {
+        "startLine": 406,
+        "startChar": 64,
+        "endLine": 406,
+        "endChar": 75
+      },
+      "revId": "77c989a96d80ba573f8ce30baf74e6b332964504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2ef1d9aa_b11b7598",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-03-17T04:54:55Z",
+      "side": 1,
+      "message": "i prefer it outside.\n\ni understand that HEVC works differently, so it\u0027s loop can be different.",
+      "parentUuid": "217397c1_67170083",
       "range": {
         "startLine": 406,
         "startChar": 64,
