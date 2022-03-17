@@ -22,6 +22,30 @@
       },
       "revId": "66baa614a299d1b4ac4df495de440ef32a3760e2",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "106e559d_0625e66f",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 62,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-03-17T05:08:13Z",
+      "side": 1,
+      "message": "https://android-review.googlesource.com/c/platform/frameworks/av/+/1279373 now has a Code-Review +2.\nThis change here is fine now.",
+      "parentUuid": "b1b5c2d6_842eac56",
+      "range": {
+        "startLine": 62,
+        "startChar": 64,
+        "endLine": 62,
+        "endChar": 66
+      },
+      "revId": "66baa614a299d1b4ac4df495de440ef32a3760e2",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
