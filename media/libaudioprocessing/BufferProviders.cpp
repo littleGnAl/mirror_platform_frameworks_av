@@ -130,6 +130,21 @@ void CopyBufferProvider::reset()
     mConsumed = 0;
 }
 
+size_t CopyBufferProvider::getFrameCount()
+{
+    return mLocalBufferFrameCount;
+}
+
+void CopyBufferProvider::setFrameCount(size_t frameCount)
+{
+    if (!mLocalBufferFrameCount) {
+        return;
+    }
+    free(mLocalBufferData);
+    mLocalBufferFrameCount = frameCount;
+    (void)posix_memalign(&mLocalBufferData, 32, mLocalBufferFrameCount * mOutputFrameSize);
+}
+
 void CopyBufferProvider::setBufferProvider(AudioBufferProvider *p) {
     ALOGV("%s(%p): mTrackBufferProvider:%p  mBuffer.frameCount:%zu",
             __func__, p, mTrackBufferProvider, mBuffer.frameCount);
@@ -279,6 +294,34 @@ DownmixerBufferProvider::~DownmixerBufferProvider()
     if (mDownmixInterface != 0) {
         mDownmixInterface->close();
     }
+}
+
+void DownmixerBufferProvider::setFrameCount(size_t frameCount)
+{
+    if (!getFrameCount()) {
+        return;
+    }
+    status_t status;
+    status = mEffectsFactory->mirrorBuffer(
+            nullptr, mInFrameSize * frameCount, &mInBuffer);
+    if (status != 0) {
+        ALOGE("DownmixerBufferProvider() error %d while creating input buffer", status);
+        mDownmixInterface.clear();
+        mEffectsFactory.clear();
+        return;
+    }
+    status = mEffectsFactory->mirrorBuffer(
+            nullptr, mOutFrameSize * frameCount, &mOutBuffer);
+    if (status != 0) {
+        ALOGE("DownmixerBufferProvider() error %d while creating output buffer", status);
+        mInBuffer.clear();
+        mDownmixInterface.clear();
+        mEffectsFactory.clear();
+        return;
+    }
+    mDownmixInterface->setInBuffer(mInBuffer);
+    mDownmixInterface->setOutBuffer(mOutBuffer);
+    CopyBufferProvider::setFrameCount(frameCount);
 }
 
 void DownmixerBufferProvider::copyFrames(void *dst, const void *src, size_t frames)

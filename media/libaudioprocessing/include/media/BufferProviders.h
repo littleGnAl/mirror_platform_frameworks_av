@@ -54,6 +54,9 @@ public:
         mTrackBufferProvider = p;
     }
 
+    virtual size_t getFrameCount() { return 0;}
+    virtual void setFrameCount(size_t frameCount __unused) { return;}
+
 protected:
     AudioBufferProvider *mTrackBufferProvider;
 };
@@ -87,12 +90,14 @@ public:
     // of the internal buffers.
     virtual void copyFrames(void *dst, const void *src, size_t frames) = 0;
 
+    virtual size_t getFrameCount();
+    virtual void setFrameCount(size_t frameCount);
 protected:
     const size_t         mInputFrameSize;
     const size_t         mOutputFrameSize;
 private:
     AudioBufferProvider::Buffer mBuffer;
-    const size_t         mLocalBufferFrameCount;
+    size_t               mLocalBufferFrameCount;
     void                *mLocalBufferData;
     size_t               mConsumed;
 };
@@ -111,6 +116,7 @@ public:
     bool isValid() const { return mDownmixInterface.get() != NULL; }
     static status_t init();
     static bool isMultichannelCapable() { return sIsMultichannelCapable; }
+    void setFrameCount(size_t frameCount);
 
 protected:
     sp<EffectsFactoryHalInterface> mEffectsFactory;
