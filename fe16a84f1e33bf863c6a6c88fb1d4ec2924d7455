@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "cb1b6a36_902b60d6",
+        "filename": "media/libaudioprocessing/AudioMixer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 175,
+      "author": {
+        "id": 1944155
+      },
+      "writtenOn": "2022-03-17T12:39:26Z",
+      "side": 1,
+      "message": "This is framecount per channel. BufferProvider will internally account for channel count while creating local buffer based of their output framesize.\n\nLike below :         \n(void)posix_memalign(\u0026mLocalBufferData, 32, mLocalBufferFrameCount * mOutputFrameSize);",
+      "parentUuid": "8fa3581a_c1807803",
+      "revId": "fe16a84f1e33bf863c6a6c88fb1d4ec2924d7455",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "303e9fbb_0e59a38f",
         "filename": "media/libaudioprocessing/AudioMixer.cpp",
         "patchSetId": 1
@@ -37,6 +55,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "0d98ce3d_f9d507d1",
+        "filename": "media/libaudioprocessing/AudioMixer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 230,
+      "author": {
+        "id": 1944155
+      },
+      "writtenOn": "2022-03-17T12:39:26Z",
+      "side": 1,
+      "message": "Same as above",
+      "parentUuid": "303e9fbb_0e59a38f",
+      "revId": "fe16a84f1e33bf863c6a6c88fb1d4ec2924d7455",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "590007d2_dfb9d3a3",
         "filename": "media/libaudioprocessing/AudioMixer.cpp",
         "patchSetId": 1
@@ -48,6 +84,24 @@
       "writtenOn": "2022-03-17T01:44:05Z",
       "side": 1,
       "message": "ditto",
+      "revId": "fe16a84f1e33bf863c6a6c88fb1d4ec2924d7455",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9319e3ce_fe2aae61",
+        "filename": "media/libaudioprocessing/AudioMixer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 275,
+      "author": {
+        "id": 1944155
+      },
+      "writtenOn": "2022-03-17T12:39:26Z",
+      "side": 1,
+      "message": "same as above",
+      "parentUuid": "590007d2_dfb9d3a3",
       "revId": "fe16a84f1e33bf863c6a6c88fb1d4ec2924d7455",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
