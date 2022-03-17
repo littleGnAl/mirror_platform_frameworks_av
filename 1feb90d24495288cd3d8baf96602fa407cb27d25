@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "09a630af_e0068cb0",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-03-17T05:01:26Z",
+      "side": 1,
+      "message": "this answers my question in the header file.\nit\u0027s worth putting a parallel comment over there.",
+      "range": {
+        "startLine": 393,
+        "startChar": 11,
+        "endLine": 393,
+        "endChar": 60
+      },
+      "revId": "1feb90d24495288cd3d8baf96602fa407cb27d25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8e54615b_d3cb7c47",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-03-17T05:01:26Z",
+      "side": 1,
+      "message": "the vpx encoder only supports a single QP parameter? not differentiated by\npicture type?",
+      "range": {
+        "startLine": 291,
+        "startChar": 7,
+        "endLine": 291,
+        "endChar": 66
+      },
+      "revId": "1feb90d24495288cd3d8baf96602fa407cb27d25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
