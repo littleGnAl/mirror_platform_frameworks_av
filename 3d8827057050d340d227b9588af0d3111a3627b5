@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f6691467_a48183b3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2022-03-17T00:13:37Z",
+      "side": 1,
+      "message": "Switched to an utility class to call unlock on destruction.",
+      "parentUuid": "75c9266e_e135d17d",
+      "revId": "3d8827057050d340d227b9588af0d3111a3627b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ae861c58_ffabc993",
@@ -31,6 +49,30 @@
       "writtenOn": "2022-03-16T22:24:02Z",
       "side": 1,
       "message": "this risks leaking a file descriptor on some gralloc implementations.\n\nso you\u0027ll probably want to use the blocking unlock() call.",
+      "range": {
+        "startLine": 222,
+        "startChar": 4,
+        "endLine": 224,
+        "endChar": 0
+      },
+      "revId": "3d8827057050d340d227b9588af0d3111a3627b5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "38061aa8_ea53611b",
+        "filename": "services/camera/libcameraservice/api2/CompositeStream.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 224,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2022-03-17T00:13:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ae861c58_ffabc993",
       "range": {
         "startLine": 222,
         "startChar": 4,
