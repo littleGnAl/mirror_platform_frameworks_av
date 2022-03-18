@@ -64,6 +64,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d9a9d6ac_7e6d09d3",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3392,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-03-18T20:37:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "66c13bb8_dcdf8fda",
+      "range": {
+        "startLine": 3391,
+        "startChar": 7,
+        "endLine": 3392,
+        "endChar": 63
+      },
+      "revId": "03061fcbc45b819ed440396e3942518f903fcb08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db5f281e_d4c85dfb",
@@ -87,6 +111,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "f4479d7e_40e8a705",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3393,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-03-18T20:37:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "db5f281e_d4c85dfb",
+      "range": {
+        "startLine": 3393,
+        "startChar": 8,
+        "endLine": 3393,
+        "endChar": 83
+      },
+      "revId": "03061fcbc45b819ed440396e3942518f903fcb08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "6e63c3db_8a7c4fec",
@@ -100,6 +148,30 @@
       "writtenOn": "2022-03-18T14:35:49Z",
       "side": 1,
       "message": "Nit: I think this can be simplified as \n\nTRESPASS(\"Unsupported Dolby Vision profile\");\n\ne.g. https://source.corp.google.com/android/frameworks/av/media/codec2/sfplugin/CCodec.cpp",
+      "range": {
+        "startLine": 4440,
+        "startChar": 0,
+        "endLine": 4441,
+        "endChar": 21
+      },
+      "revId": "03061fcbc45b819ed440396e3942518f903fcb08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b4c3079c_9c5dd33a",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 4441,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-03-18T20:37:08Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "6e63c3db_8a7c4fec",
       "range": {
         "startLine": 4440,
         "startChar": 0,
