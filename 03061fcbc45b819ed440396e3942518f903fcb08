@@ -1,0 +1,113 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b463c388_65eff9d1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 5
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-03-18T14:35:49Z",
+      "side": 1,
+      "message": "Please kindly add android-fwk-media-solutions+reviews@google.com (when you remember) to CC for future CLs we might be interested in.",
+      "revId": "03061fcbc45b819ed440396e3942518f903fcb08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7846c13b_056b593b",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3379,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-03-18T14:35:49Z",
+      "side": 1,
+      "message": "I appreciate this is not part of this CL, but perhaps you can shed some light.\n\nThe styleguide says that static constants should follow the naming kConstantName, as you can observe for mMeta keys. Any clue why this is this way? Do you think it\u0027s worth fixing in this CL or should we do it in a following CL?",
+      "range": {
+        "startLine": 3379,
+        "startChar": 12,
+        "endLine": 3379,
+        "endChar": 37
+      },
+      "revId": "03061fcbc45b819ed440396e3942518f903fcb08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "66c13bb8_dcdf8fda",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3392,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-03-18T14:35:49Z",
+      "side": 1,
+      "message": "Uber-nit: I think it\u0027s fine to exceed the column limit for URLs like this one, in which case we can just collapse into a single line.",
+      "range": {
+        "startLine": 3391,
+        "startChar": 7,
+        "endLine": 3392,
+        "endChar": 63
+      },
+      "revId": "03061fcbc45b819ed440396e3942518f903fcb08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "db5f281e_d4c85dfb",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3393,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-03-18T14:35:49Z",
+      "side": 1,
+      "message": "Sorry for another nit, do you think we can extract \n\n((((char *)data)[2] \u003e\u003e 1) into a local variable which reflects the name of the field we are parsing? I assume those bytes have a name in the specification?\n\nUnrelated ubernit: Commas are generally followed by a space, so we should preppend a space before \u0026mDoviProfile.",
+      "range": {
+        "startLine": 3393,
+        "startChar": 8,
+        "endLine": 3393,
+        "endChar": 83
+      },
+      "revId": "03061fcbc45b819ed440396e3942518f903fcb08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6e63c3db_8a7c4fec",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 4441,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-03-18T14:35:49Z",
+      "side": 1,
+      "message": "Nit: I think this can be simplified as \n\nTRESPASS(\"Unsupported Dolby Vision profile\");\n\ne.g. https://source.corp.google.com/android/frameworks/av/media/codec2/sfplugin/CCodec.cpp",
+      "range": {
+        "startLine": 4440,
+        "startChar": 0,
+        "endLine": 4441,
+        "endChar": 21
+      },
+      "revId": "03061fcbc45b819ed440396e3942518f903fcb08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
