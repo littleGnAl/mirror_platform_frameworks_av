@@ -43,6 +43,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "d93f0870_4cfb4ea7",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3379,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-03-18T20:42:55Z",
+      "side": 1,
+      "message": "Not sure i understand the comment here. But prefer to do this in another CL",
+      "parentUuid": "7846c13b_056b593b",
+      "range": {
+        "startLine": 3379,
+        "startChar": 12,
+        "endLine": 3379,
+        "endChar": 37
+      },
+      "revId": "03061fcbc45b819ed440396e3942518f903fcb08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "66c13bb8_dcdf8fda",
         "filename": "media/libstagefright/MPEG4Writer.cpp",
         "patchSetId": 5
