@@ -293,6 +293,30 @@
       },
       "revId": "b77f0ec773e1a47e8ce19b972b6587755a935523",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "5eafcd40_9c657ef9",
+        "filename": "media/libstagefright/Utils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2052,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-03-18T14:22:43Z",
+      "side": 1,
+      "message": "That\u0027s exactly the kind of context I\u0027m missing. My comment was aimed at putting this info in the comment. So the comment would become something along the lines of:\n\n```\n// MP4 extractors are expected to generate a csd-2 byte buffer. However,\n// some encoders might not be generating it, in which case we populate\n// the csd-2 key ourselves using the information in xyz, so that muxers\n// can generate track metadata accordingly.\n```\n\nThe comment might not be 100% accurate (I\u0027m not super clear on what xyz should be replaced with, but I hope the spirit of the comment makes sense.",
+      "parentUuid": "1f5f814e_2aa6b417",
+      "range": {
+        "startLine": 2052,
+        "startChar": 19,
+        "endLine": 2052,
+        "endChar": 51
+      },
+      "revId": "b77f0ec773e1a47e8ce19b972b6587755a935523",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
