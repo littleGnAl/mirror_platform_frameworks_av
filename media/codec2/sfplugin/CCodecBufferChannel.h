@@ -181,6 +181,8 @@ public:
 
     void setMetaMode(MetaMode mode);
 
+    status_t pushBlankBuffer();
+
 private:
     class QueueGuard;
 
