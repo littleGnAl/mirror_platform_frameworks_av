@@ -338,6 +338,20 @@ static size_t getFrameSize(unsigned FT) {
     return frameSize;
 }
 
+static bool isSuffixDatafromCMCC(const uint8_t *inputPtr, const uint8_t len)
+{
+    if (len%2 != 0)
+        return false;
+
+    for (int i = 0; i < len; i += 2) {
+        if((inputPtr[i] == 0x0D) && (inputPtr[i+1] == 0x0A))
+            continue;
+        else
+            return false;
+    }
+    return true;
+}
+
 void SoftAMR::onQueueFilled(OMX_U32 /* portIndex */) {
     List<BufferInfo *> &inQueue = getPortQueue(0);
     List<BufferInfo *> &outQueue = getPortQueue(1);
@@ -398,6 +412,12 @@ void SoftAMR::onQueueFilled(OMX_U32 /* portIndex */) {
 
             if (inHeader->nFilledLen < frameSize) {
                 ALOGE("b/27662364: expected %zu bytes vs %u", frameSize, inHeader->nFilledLen);
+                if (isSuffixDatafromCMCC(inputPtr, inHeader->nFilledLen)) {
+                    ALOGW("ingore the error notify when play the sound received by cu from cmcc");
+                    inHeader->nFlags |= OMX_BUFFERFLAG_EOS;
+                    inHeader->nFilledLen = 0;
+                    continue;
+                }
                 notify(OMX_EventError, OMX_ErrorStreamCorrupt, 0, NULL);
                 mSignalledError = true;
                 return;
