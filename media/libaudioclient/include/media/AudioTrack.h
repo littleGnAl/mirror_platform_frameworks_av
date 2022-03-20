@@ -1157,6 +1157,7 @@ public:
     uint32_t                mOriginalSampleRate;
     AudioPlaybackRate       mPlaybackRate;
     float                   mMaxRequiredSpeed;      // use PCM buffer size to allow this speed
+    Vector<String8>         mParamPairs;            // restore parameters from application
 
     // Corresponds to current IAudioTrack, value is reported back by AudioFlinger to the client.
     // This allocated buffer size is maintained by the proxy.
