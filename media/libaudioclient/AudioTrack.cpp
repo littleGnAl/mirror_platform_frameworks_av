@@ -339,6 +339,7 @@ AudioTrack::~AudioTrack()
         mAudioTrack.clear();
         mCblkMemory.clear();
         mSharedBuffer.clear();
+        mParamPairs.clear();
         IPCThreadState::self()->flushCommands();
         pid_t clientPid = VALUE_OR_FATAL(aidl2legacy_int32_t_pid_t(mClientAttributionSource.pid));
         ALOGV("%s(%d), releasing session id %d from %d on behalf of %d",
@@ -676,6 +677,7 @@ status_t AudioTrack::set(
     mFramesWrittenServerOffset = 0;
     mFramesWrittenAtRestore = -1; // -1 is a unique initializer.
     mVolumeHandler = new media::VolumeHandler();
+    mParamPairs.clear();
 
 error:
     if (status != NO_ERROR) {
@@ -897,6 +899,7 @@ void AudioTrack::stop()
     mProxy->stop(); // notify server not to read beyond current client position until start().
     mProxy->interrupt();
     mAudioTrack->stop();
+    mParamPairs.clear();
 
     // Note: legacy handling - stop does not clear playback marker
     // and periodic update counter, but flush does for streaming tracks.
@@ -2829,6 +2832,12 @@ retry:
         mFramesWrittenServerOffset =
                 mStaticProxy.get() != nullptr ? staticPosition : mFramesWritten;
         mFramesWrittenAtRestore = mFramesWrittenServerOffset;
+        status_t status;
+        for (size_t i = 0; i < mParamPairs.size(); i++) {
+            AutoMutex lock(mLock);
+            mAudioTrack->setParameters((mParamPairs[i]).c_str(), &status);
+            ALOGI("recover parameter %s status %d form dead Track", (mParamPairs[i]).string(), status);
+        }
     }
     if (result != NO_ERROR) {
         ALOGW("%s(%d): failed status %d, retries %d", __func__, mPortId, result, retries);
@@ -2895,6 +2904,7 @@ status_t AudioTrack::setParameters(const String8& keyValuePairs)
     AutoMutex lock(mLock);
     status_t status;
     mAudioTrack->setParameters(keyValuePairs.c_str(), &status);
+    mParamPairs.add(keyValuePairs);
     return status;
 }
 
