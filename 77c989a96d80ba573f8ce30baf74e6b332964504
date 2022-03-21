@@ -72,6 +72,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "b62b21b6_53a7d62d",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2022-03-21T15:24:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "60741ed1_cb6f5c6d",
+      "range": {
+        "startLine": 398,
+        "startChar": 60,
+        "endLine": 398,
+        "endChar": 65
+      },
+      "revId": "77c989a96d80ba573f8ce30baf74e6b332964504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57b0b9d9_c9b06b0c",
@@ -133,6 +157,30 @@
       "side": 1,
       "message": "i prefer it outside.\n\ni understand that HEVC works differently, so it\u0027s loop can be different.",
       "parentUuid": "217397c1_67170083",
+      "range": {
+        "startLine": 406,
+        "startChar": 64,
+        "endLine": 406,
+        "endChar": 75
+      },
+      "revId": "77c989a96d80ba573f8ce30baf74e6b332964504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a9b4e757_4c34ab30",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 406,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2022-03-21T15:24:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "2ef1d9aa_b11b7598",
       "range": {
         "startLine": 406,
         "startChar": 64,

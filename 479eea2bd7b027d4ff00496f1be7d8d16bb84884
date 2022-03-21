@@ -22,6 +22,30 @@
       },
       "revId": "479eea2bd7b027d4ff00496f1be7d8d16bb84884",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6963c155_02f13066",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 424,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2022-03-21T15:24:37Z",
+      "side": 0,
+      "message": "Done",
+      "parentUuid": "4bc55c1a_7598b261",
+      "range": {
+        "startLine": 424,
+        "startChar": 45,
+        "endLine": 424,
+        "endChar": 60
+      },
+      "revId": "479eea2bd7b027d4ff00496f1be7d8d16bb84884",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
