@@ -65,6 +65,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90e57db8_1bb71f42",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 3379,
+      "author": {
+        "id": 1576211
+      },
+      "writtenOn": "2022-03-21T12:26:36Z",
+      "side": 1,
+      "message": "My impression is that DolbyVisionProfileDvavPen should instead be kDolbyVisionProfileDvavPen, because as far as I can tell, DolbyVisionProfileDvavPen is a constant. That being said, taking a look at https://source.corp.google.com/android/frameworks/av/media/libstagefright/include/media/stagefright/MediaCodecConstants.h, it seems all of the constants don\u0027t have the k prefix, so you can ignore my comment.",
+      "parentUuid": "d93f0870_4cfb4ea7",
+      "range": {
+        "startLine": 3379,
+        "startChar": 12,
+        "endLine": 3379,
+        "endChar": 37
+      },
+      "revId": "03061fcbc45b819ed440396e3942518f903fcb08",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "66c13bb8_dcdf8fda",
