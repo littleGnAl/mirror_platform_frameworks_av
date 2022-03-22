@@ -543,6 +543,7 @@ private:
                                 slotBuffer->getGenerationNumber(),
                                 mProducerId, slot,
                                 mProducer, mSyncMem, 0);
+                poolData->setBlockPool((void *)this);
                 mPoolDatas[slot] = poolData;
                 *block = _C2BlockFactory::CreateGraphicBlock(alloc, poolData);
                 return C2_OK;
@@ -576,6 +577,24 @@ public:
     }
 
     ~Impl() {
+        {
+            std::scoped_lock<std::mutex> l(mBufferQueueMapLock);
+            std::map<uint64_t, void *>::iterator it;
+            it = mBufferQueueMap.find(mProducerId);
+            if (it != mBufferQueueMap.end())
+            {
+                void *pPointer = it->second;
+                if (pPointer != (void *)this)
+                {
+                    ALOGW("[%p][%s] producer id: %" PRIx64 ", pointer: %p, skip detach",
+                            this, __FUNCTION__, mProducerId, pPointer);
+                    return;
+                }
+                else
+                    mBufferQueueMap.erase(it);
+            }
+        }
+
         bool noInit = false;
         for (int i = 0; i < NUM_BUFFER_SLOTS; ++i) {
             if (!noInit && mProducer) {
@@ -713,6 +732,16 @@ public:
                 ALOGW("invalid producer producer(%d), generation(%d)",
                       (bool)producer, bqInformation);
             }
+
+            {
+                std::scoped_lock<std::mutex> l(mBufferQueueMapLock);
+                std::map<uint64_t, void *>::iterator it;
+                it = mBufferQueueMap.find(mProducerId);
+                if (it != mBufferQueueMap.end())
+                    mBufferQueueMap.erase(it);
+                mBufferQueueMap.emplace(mProducerId, (void *)this);
+            }
+
             oldMem = mSyncMem; // preven destruction while locked.
             mSyncMem = c2SyncMem;
             C2SyncVariables *syncVar = mSyncMem ? mSyncMem->mem() : nullptr;
@@ -777,7 +806,16 @@ private:
     std::weak_ptr<C2BufferQueueBlockPoolData> mPoolDatas[NUM_BUFFER_SLOTS];
 
     std::shared_ptr<C2SurfaceSyncMemory> mSyncMem;
+
+public:
+    static std::map<uint64_t, void *> mBufferQueueMap;
+    static std::mutex mBufferQueueMapLock;
 };
+
+// static
+std::map<uint64_t, void *> C2BufferQueueBlockPool::Impl::mBufferQueueMap;
+// static
+std::mutex C2BufferQueueBlockPool::Impl::mBufferQueueMapLock;
 
 C2BufferQueueBlockPoolData::C2BufferQueueBlockPoolData(
         uint32_t generation, uint64_t bqId, int32_t bqSlot,
@@ -805,6 +843,23 @@ C2BufferQueueBlockPoolData::C2BufferQueueBlockPoolData(
 C2BufferQueueBlockPoolData::~C2BufferQueueBlockPoolData() {
     if (!mHeld || mBqId == 0 || !mIgbp) {
         return;
+    }
+
+    if (mpBlockPool)
+    {
+        std::scoped_lock<std::mutex> l(C2BufferQueueBlockPool::Impl::mBufferQueueMapLock);
+        std::map<uint64_t, void *>::iterator it;
+        it = C2BufferQueueBlockPool::Impl::mBufferQueueMap.find(mBqId);
+        if (it != C2BufferQueueBlockPool::Impl::mBufferQueueMap.end())
+        {
+            void *pPointer = it->second;
+            if (pPointer != mpBlockPool)
+            {
+                ALOGW("[%s] producer id: %" PRIx64 ", block pool: %p, pointer: %p, skip cancel",
+                        __FUNCTION__, mBqId, mpBlockPool, pPointer);
+                return;
+            }
+        }
     }
 
     if (mLocal) {

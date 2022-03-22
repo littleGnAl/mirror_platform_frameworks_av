@@ -140,6 +140,8 @@ public:
                 uint32_t toGeneration, uint64_t toUsage, uint64_t toBqId,
                 android::sp<android::GraphicBuffer>& graphicBuffer, uint32_t oldGeneration,
                 std::shared_ptr<C2SurfaceSyncMemory> syncMem);
+
+    void setBlockPool(void *pBlockPool) { mpBlockPool = pBlockPool; }
 private:
     friend struct _C2BlockFactory;
 
@@ -178,6 +180,8 @@ private:
     android::sp<HGraphicBufferProducer> mIgbp;
     std::shared_ptr<C2SurfaceSyncMemory> mSyncMem;
     mutable std::mutex mLock;
+
+    void *mpBlockPool = nullptr;
 };
 
 #endif // STAGEFRIGHT_CODEC2_BUFFER_PRIV_H_
