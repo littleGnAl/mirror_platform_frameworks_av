@@ -3539,12 +3539,8 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                         sp<RefBase> obj;
                         CHECK(msg->findObject("buffer", &obj));
                         sp<MediaCodecBuffer> buffer = static_cast<MediaCodecBuffer *>(obj.get());
-                        if (mFlags & kFlagIsAsync) {
-                            // In asynchronous mode, output format change is processed immediately.
-                            handleOutputFormatChangeIfNeeded(buffer);
-                        } else {
-                            postActivityNotificationIfPossible();
-                        }
+                        // Output format change is processed immediately.
+                        handleOutputFormatChangeIfNeeded(buffer);
                         mBufferChannel->discardBuffer(buffer);
                         break;
                     }
