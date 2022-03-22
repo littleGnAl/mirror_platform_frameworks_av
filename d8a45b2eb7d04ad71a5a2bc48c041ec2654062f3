@@ -33,6 +33,24 @@
       "message": "those files also have to run on android Q.\n\nwe\u0027ve already handled this through the addition of mediaswcodec.32rc and mediatranscoding.32rc",
       "revId": "d8a45b2eb7d04ad71a5a2bc48c041ec2654062f3",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6e23fa77_f13abb74",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2022-03-22T16:49:42Z",
+      "side": 1,
+      "message": "Ay, indeed. Sorry, I forgot about that requirement for apex\u0027es and out previous discussion.",
+      "parentUuid": "6157c18b_ae4e146e",
+      "revId": "d8a45b2eb7d04ad71a5a2bc48c041ec2654062f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
