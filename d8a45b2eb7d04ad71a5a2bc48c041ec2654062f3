@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "9216a71d_68ee6e75",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1157738
+      },
+      "writtenOn": "2022-03-22T16:16:46Z",
+      "side": 1,
+      "message": "The patch does not affect functionality, only replaces deprecated command with a new one.\n\nProcessCapacityHigh is defined in https://cs.android.com/android/platform/superproject/+/master:system/core/libprocessgroup/profiles/task_profiles.json;l\u003d333 and causes the process to be added into foreground group of cpuset controller, same as \"writepid /dev/cpuset/foreground/tasks\" which it replaces.\nServiceCapacityLow is defined in https://cs.android.com/android/platform/superproject/+/master:system/core/libprocessgroup/profiles/task_profiles.json;l\u003d360 and causes the process to be added into system-background group of cpuset controller, same as \"writepid /dev/cpuset/system-background/tasks\" which it replaces.\n\nDocumentation on task_profiles command can be found at https://source.android.com/devices/tech/perf/cgroups#taskprofiles-init-language-command",
+      "revId": "d8a45b2eb7d04ad71a5a2bc48c041ec2654062f3",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
