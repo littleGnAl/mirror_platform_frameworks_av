@@ -212,9 +212,8 @@ public:
                 (OMX_INDEXTYPE)OMX_IndexParamConsumerUsageBits,
                 &usage, sizeof(usage));
 
-        mSource->configure(
-                mOmxNode, static_cast<hardware::graphics::common::V1_0::Dataspace>(mDataSpace));
-        return OK;
+        return GetStatus(mSource->configure(
+                mOmxNode, static_cast<hardware::graphics::common::V1_0::Dataspace>(mDataSpace)));
     }
 
     void disconnect() override {
@@ -1018,29 +1017,31 @@ void CCodec::configure(const sp<AMessage> &msg) {
             } else {
                 pixelFormatInfo = nullptr;
             }
-            std::optional<uint32_t> flexPixelFormat{};
-            std::optional<uint32_t> flexPlanarPixelFormat{};
-            std::optional<uint32_t> flexSemiPlanarPixelFormat{};
+            // bit depth -> format
+            std::map<uint32_t, uint32_t> flexPixelFormat;
+            std::map<uint32_t, uint32_t> flexPlanarPixelFormat;
+            std::map<uint32_t, uint32_t> flexSemiPlanarPixelFormat;
             if (pixelFormatInfo && *pixelFormatInfo) {
                 for (size_t i = 0; i < pixelFormatInfo->flexCount(); ++i) {
                     const C2FlexiblePixelFormatDescriptorStruct &desc =
                         pixelFormatInfo->m.values[i];
-                    if (desc.bitDepth != 8
-                            || desc.subsampling != C2Color::YUV_420
+                    if (desc.subsampling != C2Color::YUV_420
                             // TODO(b/180076105): some device report wrong layout
                             // || desc.layout == C2Color::INTERLEAVED_PACKED
                             // || desc.layout == C2Color::INTERLEAVED_ALIGNED
                             || desc.layout == C2Color::UNKNOWN_LAYOUT) {
                         continue;
                     }
-                    if (!flexPixelFormat) {
-                        flexPixelFormat = desc.pixelFormat;
+                    if (flexPixelFormat.count(desc.bitDepth) == 0) {
+                        flexPixelFormat.emplace(desc.bitDepth, desc.pixelFormat);
                     }
-                    if (desc.layout == C2Color::PLANAR_PACKED && !flexPlanarPixelFormat) {
-                        flexPlanarPixelFormat = desc.pixelFormat;
+                    if (desc.layout == C2Color::PLANAR_PACKED
+                            && flexPlanarPixelFormat.count(desc.bitDepth) == 0) {
+                        flexPlanarPixelFormat.emplace(desc.bitDepth, desc.pixelFormat);
                     }
-                    if (desc.layout == C2Color::SEMIPLANAR_PACKED && !flexSemiPlanarPixelFormat) {
-                        flexSemiPlanarPixelFormat = desc.pixelFormat;
+                    if (desc.layout == C2Color::SEMIPLANAR_PACKED
+                            && flexSemiPlanarPixelFormat.count(desc.bitDepth) == 0) {
+                        flexSemiPlanarPixelFormat.emplace(desc.bitDepth, desc.pixelFormat);
                     }
                 }
             }
@@ -1050,7 +1051,7 @@ void CCodec::configure(const sp<AMessage> &msg) {
                 if (!(config->mDomain & Config::IS_ENCODER)) {
                     if (surface == nullptr) {
                         const char *prefix = "";
-                        if (flexSemiPlanarPixelFormat) {
+                        if (flexSemiPlanarPixelFormat.count(8) != 0) {
                             format = COLOR_FormatYUV420SemiPlanar;
                             prefix = "semi-";
                         } else {
@@ -1067,17 +1068,34 @@ void CCodec::configure(const sp<AMessage> &msg) {
                 if ((config->mDomain & Config::IS_ENCODER) || !surface) {
                     switch (format) {
                         case COLOR_FormatYUV420Flexible:
-                            format = flexPixelFormat.value_or(COLOR_FormatYUV420Planar);
+                            format = COLOR_FormatYUV420Planar;
+                            if (flexPixelFormat.count(8) != 0) {
+                                format = flexPixelFormat[8];
+                            }
                             break;
                         case COLOR_FormatYUV420Planar:
                         case COLOR_FormatYUV420PackedPlanar:
-                            format = flexPlanarPixelFormat.value_or(
-                                    flexPixelFormat.value_or(format));
+                            if (flexPlanarPixelFormat.count(8) != 0) {
+                                format = flexPlanarPixelFormat[8];
+                            } else if (flexPixelFormat.count(8) != 0) {
+                                format = flexPixelFormat[8];
+                            }
                             break;
                         case COLOR_FormatYUV420SemiPlanar:
                         case COLOR_FormatYUV420PackedSemiPlanar:
-                            format = flexSemiPlanarPixelFormat.value_or(
-                                    flexPixelFormat.value_or(format));
+                            if (flexSemiPlanarPixelFormat.count(8) != 0) {
+                                format = flexSemiPlanarPixelFormat[8];
+                            } else if (flexPixelFormat.count(8) != 0) {
+                                format = flexPixelFormat[8];
+                            }
+                            break;
+                        case COLOR_FormatYUVP010:
+                            format = COLOR_FormatYUVP010;
+                            if (flexSemiPlanarPixelFormat.count(10) != 0) {
+                                format = flexSemiPlanarPixelFormat[10];
+                            } else if (flexPixelFormat.count(10) != 0) {
+                                format = flexPixelFormat[10];
+                            }
                             break;
                         default:
                             // No-op
@@ -2600,7 +2618,10 @@ public:
         std::vector<std::unique_ptr<C2Param>> params;
         err = intf->query(
                 {&mApiFeatures},
-                {C2PortAllocatorsTuning::input::PARAM_TYPE},
+                {
+                    C2StreamBufferTypeSetting::input::PARAM_TYPE,
+                    C2PortAllocatorsTuning::input::PARAM_TYPE
+                },
                 C2_MAY_BLOCK,
                 &params);
         if (err != C2_OK && err != C2_BAD_INDEX) {
@@ -2613,7 +2634,10 @@ public:
             if (!param) {
                 continue;
             }
-            if (param->type() == C2PortAllocatorsTuning::input::PARAM_TYPE) {
+            if (param->type() == C2StreamBufferTypeSetting::input::PARAM_TYPE) {
+                mInputStreamFormat.reset(
+                        C2StreamBufferTypeSetting::input::From(param));
+            } else if (param->type() == C2PortAllocatorsTuning::input::PARAM_TYPE) {
                 mInputAllocators.reset(
                         C2PortAllocatorsTuning::input::From(param));
             }
@@ -2633,6 +2657,16 @@ public:
         return mApiFeatures;
     }
 
+    const C2StreamBufferTypeSetting::input &getInputStreamFormat() const {
+        static std::unique_ptr<C2StreamBufferTypeSetting::input> sInvalidated = []{
+            std::unique_ptr<C2StreamBufferTypeSetting::input> param;
+            param.reset(new C2StreamBufferTypeSetting::input(0u, C2BufferData::INVALID));
+            param->invalidate();
+            return param;
+        }();
+        return mInputStreamFormat ? *mInputStreamFormat : *sInvalidated;
+    }
+
     const C2PortAllocatorsTuning::input &getInputAllocators() const {
         static std::unique_ptr<C2PortAllocatorsTuning::input> sInvalidated = []{
             std::unique_ptr<C2PortAllocatorsTuning::input> param =
@@ -2648,6 +2682,7 @@ private:
 
     std::vector<C2FieldSupportedValuesQuery> mFields;
     C2ApiFeaturesSetting mApiFeatures;
+    std::unique_ptr<C2StreamBufferTypeSetting::input> mInputStreamFormat;
     std::unique_ptr<C2PortAllocatorsTuning::input> mInputAllocators;
 };
 
@@ -2689,6 +2724,24 @@ static status_t GetCommonAllocatorIds(
         if (intfCache.initCheck() != OK) {
             continue;
         }
+        const C2StreamBufferTypeSetting::input &streamFormat = intfCache.getInputStreamFormat();
+        if (streamFormat) {
+            C2Allocator::type_t allocatorType = C2Allocator::LINEAR;
+            if (streamFormat.value == C2BufferData::GRAPHIC
+                    || streamFormat.value == C2BufferData::GRAPHIC_CHUNKS) {
+                allocatorType = C2Allocator::GRAPHIC;
+            }
+
+            if (type != allocatorType) {
+                // requested type is not supported at input allocators
+                ids->clear();
+                ids->insert(defaultAllocatorId);
+                ALOGV("name(%s) does not support a type(0x%x) as input allocator."
+                        " uses default allocator id(%d)", name.c_str(), type, defaultAllocatorId);
+                break;
+            }
+        }
+
         const C2PortAllocatorsTuning::input &allocators = intfCache.getInputAllocators();
         if (firstIteration) {
             firstIteration = false;

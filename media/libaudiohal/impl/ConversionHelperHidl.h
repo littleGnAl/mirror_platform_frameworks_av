@@ -17,26 +17,28 @@
 #ifndef ANDROID_HARDWARE_CONVERSION_HELPER_HIDL_H
 #define ANDROID_HARDWARE_CONVERSION_HELPER_HIDL_H
 
-#include PATH(android/hardware/audio/FILE_VERSION/types.h)
+#include PATH(android/hardware/audio/CORE_TYPES_FILE_VERSION/types.h)
 #include <hidl/HidlSupport.h>
 #include <system/audio.h>
 #include <utils/String8.h>
+#include <utils/String16.h>
+#include <utils/Vector.h>
 
-using ::android::hardware::audio::CPP_VERSION::ParameterValue;
-using CoreResult = ::android::hardware::audio::CPP_VERSION::Result;
+using ::android::hardware::audio::CORE_TYPES_CPP_VERSION::ParameterValue;
+using CoreResult = ::android::hardware::audio::CORE_TYPES_CPP_VERSION::Result;
 
 using ::android::hardware::Return;
 using ::android::hardware::hidl_string;
 using ::android::hardware::hidl_vec;
 
 namespace android {
-namespace CPP_VERSION {
 
 class ConversionHelperHidl {
   protected:
     static status_t keysFromHal(const String8& keys, hidl_vec<hidl_string> *hidlKeys);
     static status_t parametersFromHal(const String8& kvPairs, hidl_vec<ParameterValue> *hidlParams);
     static void parametersToHal(const hidl_vec<ParameterValue>& parameters, String8 *values);
+    static void argsFromHal(const Vector<String16>& args, hidl_vec<hidl_string> *hidlArgs);
 
     ConversionHelperHidl(const char* className);
 
@@ -82,7 +84,6 @@ class ConversionHelperHidl {
     void emitError(const char* funcName, const char* description);
 };
 
-}  // namespace CPP_VERSION
 }  // namespace android
 
 #endif // ANDROID_HARDWARE_CONVERSION_HELPER_HIDL_H

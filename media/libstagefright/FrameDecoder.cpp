@@ -35,6 +35,7 @@
 #include <media/stagefright/FrameCaptureProcessor.h>
 #include <media/stagefright/MediaBuffer.h>
 #include <media/stagefright/MediaCodec.h>
+#include <media/stagefright/MediaCodecConstants.h>
 #include <media/stagefright/MediaDefs.h>
 #include <media/stagefright/MediaErrors.h>
 #include <media/stagefright/Utils.h>
@@ -189,6 +190,13 @@ bool getDstColorFormat(
         {
             *dstFormat = OMX_COLOR_Format32bitBGRA8888;
             *captureFormat = ui::PixelFormat::BGRA_8888;
+            *dstBpp = 4;
+            return true;
+        }
+        case HAL_PIXEL_FORMAT_RGBA_1010102:
+        {
+            *dstFormat = (OMX_COLOR_FORMATTYPE)COLOR_Format32bitABGR2101010;
+            *captureFormat = ui::PixelFormat::RGBA_1010102;
             *dstBpp = 4;
             return true;
         }
@@ -523,8 +531,12 @@ sp<AMessage> VideoFrameDecoder::onGetFormatAndSeekOptions(
         return NULL;
     }
 
-    // TODO: Use Flexible color instead
-    videoFormat->setInt32("color-format", OMX_COLOR_FormatYUV420Planar);
+    if (dstFormat() == COLOR_Format32bitABGR2101010) {
+        videoFormat->setInt32("color-format", COLOR_FormatYUVP010);
+    } else {
+        // TODO: Use Flexible color instead
+        videoFormat->setInt32("color-format", OMX_COLOR_FormatYUV420Planar);
+    }
 
     // For the thumbnail extraction case, try to allocate single buffer in both
     // input and output ports, if seeking to a sync frame. NOTE: This request may
@@ -630,6 +642,11 @@ status_t VideoFrameDecoder::onOutputReceived(
         crop_left = crop_top = 0;
         crop_right = width - 1;
         crop_bottom = height - 1;
+    }
+
+    int32_t slice_height;
+    if (outputFormat->findInt32("slice-height", &slice_height) && slice_height > 0) {
+        height = slice_height;
     }
 
     if (mFrame == NULL) {
@@ -793,8 +810,16 @@ sp<AMessage> MediaImageDecoder::onGetFormatAndSeekOptions(
     if (overrideMeta == NULL) {
         // check if we're dealing with a tiled heif
         int32_t tileWidth, tileHeight, gridRows, gridCols;
+        int32_t widthColsProduct = 0;
+        int32_t heightRowsProduct = 0;
         if (findGridInfo(trackMeta(), &tileWidth, &tileHeight, &gridRows, &gridCols)) {
-            if (mWidth <= tileWidth * gridCols && mHeight <= tileHeight * gridRows) {
+            if (__builtin_mul_overflow(tileWidth, gridCols, &widthColsProduct) ||
+                    __builtin_mul_overflow(tileHeight, gridRows, &heightRowsProduct)) {
+                ALOGE("Multiplication overflowed Grid size: %dx%d, Picture size: %dx%d",
+                        gridCols, gridRows, tileWidth, tileHeight);
+                return nullptr;
+            }
+            if (mWidth <= widthColsProduct && mHeight <= heightRowsProduct) {
                 ALOGV("grid: %dx%d, tile size: %dx%d, picture size: %dx%d",
                         gridCols, gridRows, tileWidth, tileHeight, mWidth, mHeight);
 
@@ -823,8 +848,12 @@ sp<AMessage> MediaImageDecoder::onGetFormatAndSeekOptions(
         return NULL;
     }
 
-    // TODO: Use Flexible color instead
-    videoFormat->setInt32("color-format", OMX_COLOR_FormatYUV420Planar);
+    if (dstFormat() == COLOR_Format32bitABGR2101010) {
+        videoFormat->setInt32("color-format", COLOR_FormatYUVP010);
+    } else {
+        // TODO: Use Flexible color instead
+        videoFormat->setInt32("color-format", OMX_COLOR_FormatYUV420Planar);
+    }
 
     if ((mGridRows == 1) && (mGridCols == 1)) {
         videoFormat->setInt32("android._num-input-buffers", 1);
@@ -928,6 +957,11 @@ status_t MediaImageDecoder::onOutputReceived(
         crop_left = crop_top = 0;
         crop_right = width - 1;
         crop_bottom = height - 1;
+    }
+
+    int32_t slice_height;
+    if (outputFormat->findInt32("slice-height", &slice_height) && slice_height > 0) {
+        height = slice_height;
     }
 
     int32_t crop_width, crop_height;

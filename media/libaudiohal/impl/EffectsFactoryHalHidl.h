@@ -24,10 +24,9 @@
 
 namespace android {
 namespace effect {
-namespace CPP_VERSION {
 
 using ::android::hardware::hidl_vec;
-using ::android::CPP_VERSION::ConversionHelperHidl;
+using ::android::ConversionHelperHidl;
 using namespace ::android::hardware::audio::effect::CPP_VERSION;
 
 class EffectsFactoryHalHidl : public EffectsFactoryHalInterface, public ConversionHelperHidl
@@ -44,6 +43,9 @@ class EffectsFactoryHalHidl : public EffectsFactoryHalInterface, public Conversi
 
     virtual status_t getDescriptor(const effect_uuid_t *pEffectUuid,
             effect_descriptor_t *pDescriptor);
+
+    virtual status_t getDescriptors(const effect_uuid_t *pEffectType,
+                                    std::vector<effect_descriptor_t> *descriptors);
 
     // Creates an effect engine of the specified type.
     // To release the effect engine, it is necessary to release references
@@ -67,7 +69,6 @@ class EffectsFactoryHalHidl : public EffectsFactoryHalInterface, public Conversi
     status_t queryAllDescriptors();
 };
 
-} // namespace CPP_VERSION
 } // namespace effect
 } // namespace android
 

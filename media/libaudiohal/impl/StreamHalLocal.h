@@ -21,7 +21,6 @@
 #include "StreamPowerLog.h"
 
 namespace android {
-namespace CPP_VERSION {
 
 class DeviceHalLocal;
 
@@ -50,7 +49,7 @@ class StreamHalLocal : public virtual StreamHalInterface
     // Put the audio hardware input/output into standby mode.
     virtual status_t standby();
 
-    virtual status_t dump(int fd);
+    virtual status_t dump(int fd, const Vector<String16>& args) override;
 
     // Start a stream operating in mmap mode.
     virtual status_t start() = 0;
@@ -169,6 +168,18 @@ class StreamOutHalLocal : public StreamOutHalInterface, public StreamHalLocal {
 
     status_t setEventCallback(const sp<StreamOutHalInterfaceEventCallback>& callback) override;
 
+    status_t setLatencyMode(audio_latency_mode_t mode __unused) override {
+        return INVALID_OPERATION;
+    }
+    status_t getRecommendedLatencyModes(
+            std::vector<audio_latency_mode_t> *modes __unused) override {
+        return INVALID_OPERATION;
+    }
+    status_t setLatencyModeCallback(
+            const sp<StreamOutHalInterfaceLatencyModeCallback>& callback __unused) override {
+        return INVALID_OPERATION;
+    }
+
   private:
     audio_stream_out_t *mStream;
     wp<StreamOutHalInterfaceCallback> mCallback;
@@ -246,7 +257,6 @@ class StreamInHalLocal : public StreamInHalInterface, public StreamHalLocal {
     void doUpdateSinkMetadataV7(const SinkMetadata& sinkMetadata);
 };
 
-} // namespace CPP_VERSION
 } // namespace android
 
 #endif // ANDROID_HARDWARE_STREAM_HAL_LOCAL_H

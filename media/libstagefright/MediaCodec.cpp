@@ -112,6 +112,13 @@ static const char *kCodecFrameRate = "android.media.mediacodec.frame-rate";
 static const char *kCodecCaptureRate = "android.media.mediacodec.capture-rate";
 static const char *kCodecOperatingRate = "android.media.mediacodec.operating-rate";
 static const char *kCodecPriority = "android.media.mediacodec.priority";
+static const char *kCodecConfigColorStandard = "android.media.mediacodec.config-color-standard";
+static const char *kCodecConfigColorRange = "android.media.mediacodec.config-color-range";
+static const char *kCodecConfigColorTransfer = "android.media.mediacodec.config-color-transfer";
+static const char *kCodecParsedColorStandard = "android.media.mediacodec.parsed-color-standard";
+static const char *kCodecParsedColorRange = "android.media.mediacodec.parsed-color-range";
+static const char *kCodecParsedColorTransfer = "android.media.mediacodec.parsed-color-transfer";
+static const char *kCodecHDRMetadataFlags = "android.media.mediacodec.hdr-metadata-flags";
 
 // Min/Max QP before shaping
 static const char *kCodecOriginalVideoQPIMin = "android.media.mediacodec.original-video-qp-i-min";
@@ -748,6 +755,7 @@ MediaCodec::MediaCodec(
       mVideoWidth(0),
       mVideoHeight(0),
       mRotationDegrees(0),
+      mHDRMetadataFlags(0),
       mDequeueInputTimeoutGeneration(0),
       mDequeueInputReplyID(0),
       mDequeueOutputTimeoutGeneration(0),
@@ -898,6 +906,8 @@ void MediaCodec::updateMediametrics() {
         mediametrics_setInt64(mMetricsHandle, kCodecFirstFrameIndexLowLatencyModeOn,
                               mIndexOfFirstFrameWhenLowLatencyOn);
     }
+
+    mediametrics_setInt32(mMetricsHandle, kCodecHDRMetadataFlags, mHDRMetadataFlags);
 #if 0
     // enable for short term, only while debugging
     updateEphemeralMediametrics(mMetricsHandle);
@@ -1511,6 +1521,9 @@ status_t MediaCodec::configure(
         uint32_t flags) {
     sp<AMessage> msg = new AMessage(kWhatConfigure, this);
 
+    // TODO: validity check log-session-id: it should be a 32-hex-digit.
+    format->findString("log-session-id", &mLogSessionId);
+
     if (mMetricsHandle != 0) {
         int32_t profile = 0;
         if (format->findInt32("profile", &profile)) {
@@ -1522,11 +1535,11 @@ status_t MediaCodec::configure(
         }
         mediametrics_setInt32(mMetricsHandle, kCodecEncoder,
                               (flags & CONFIGURE_FLAG_ENCODE) ? 1 : 0);
+
+        mediametrics_setCString(mMetricsHandle, kCodecLogSessionId, mLogSessionId.c_str());
     }
 
     if (mIsVideo) {
-        // TODO: validity check log-session-id: it should be a 32-hex-digit.
-        format->findString("log-session-id", &mLogSessionId);
         format->findInt32("width", &mVideoWidth);
         format->findInt32("height", &mVideoHeight);
         if (!format->findInt32("rotation-degrees", &mRotationDegrees)) {
@@ -1534,7 +1547,6 @@ status_t MediaCodec::configure(
         }
 
         if (mMetricsHandle != 0) {
-            mediametrics_setCString(mMetricsHandle, kCodecLogSessionId, mLogSessionId.c_str());
             mediametrics_setInt32(mMetricsHandle, kCodecWidth, mVideoWidth);
             mediametrics_setInt32(mMetricsHandle, kCodecHeight, mVideoHeight);
             mediametrics_setInt32(mMetricsHandle, kCodecRotation, mRotationDegrees);
@@ -1565,6 +1577,23 @@ status_t MediaCodec::configure(
             int32_t priority = -1;
             if (format->findInt32("priority", &priority)) {
                 mediametrics_setInt32(mMetricsHandle, kCodecPriority, priority);
+            }
+            int32_t colorStandard = -1;
+            if (format->findInt32(KEY_COLOR_STANDARD, &colorStandard)) {
+                mediametrics_setInt32(mMetricsHandle, kCodecConfigColorStandard, colorStandard);
+            }
+            int32_t colorRange = -1;
+            if (format->findInt32(KEY_COLOR_RANGE, &colorRange)) {
+                mediametrics_setInt32(mMetricsHandle, kCodecConfigColorRange, colorRange);
+            }
+            int32_t colorTransfer = -1;
+            if (format->findInt32(KEY_COLOR_TRANSFER, &colorTransfer)) {
+                mediametrics_setInt32(mMetricsHandle, kCodecConfigColorTransfer, colorTransfer);
+            }
+            HDRStaticInfo info;
+            if (ColorUtils::getHDRStaticInfoFromFormat(format, &info)
+                    && ColorUtils::isHDRStaticInfoValid(&info)) {
+                mHDRMetadataFlags |= kFlagHDRStaticInfo;
             }
         }
 
@@ -3032,10 +3061,8 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                         case STOPPING:
                         {
                             if (mFlags & kFlagSawMediaServerDie) {
-                                bool postPendingReplies = true;
                                 if (mState == RELEASING && !mReplyID) {
                                     ALOGD("Releasing asynchronously, so nothing to reply here.");
-                                    postPendingReplies = false;
                                 }
                                 // MediaServer died, there definitely won't
                                 // be a shutdown complete notification after
@@ -3048,8 +3075,11 @@ void MediaCodec::onMessageReceived(const sp<AMessage> &msg) {
                                 if (mState == RELEASING) {
                                     mComponentName.clear();
                                 }
-                                if (postPendingReplies) {
+                                if (mReplyID) {
                                     postPendingRepliesAndDeferredMessages(origin + ":dead");
+                                } else {
+                                    ALOGD("no pending replies: %s:dead following %s",
+                                          origin.c_str(), mLastReplyOrigin.c_str());
                                 }
                                 sendErrorResponse = false;
                             } else if (!mReplyID) {
@@ -4516,6 +4546,9 @@ void MediaCodec::handleOutputFormatChangeIfNeeded(const sp<MediaCodecBuffer> &bu
             HDRStaticInfo info;
             if (ColorUtils::getHDRStaticInfoFromFormat(mOutputFormat, &info)) {
                 setNativeWindowHdrMetadata(mSurface.get(), &info);
+                if (ColorUtils::isHDRStaticInfoValid(&info)) {
+                    mHDRMetadataFlags |= kFlagHDRStaticInfo;
+                }
             }
         }
 
@@ -4524,6 +4557,7 @@ void MediaCodec::handleOutputFormatChangeIfNeeded(const sp<MediaCodecBuffer> &bu
                 && hdr10PlusInfo != nullptr && hdr10PlusInfo->size() > 0) {
             native_window_set_buffers_hdr10_plus_metadata(mSurface.get(),
                     hdr10PlusInfo->size(), hdr10PlusInfo->data());
+            mHDRMetadataFlags |= kFlagHDR10PlusInfo;
         }
 
         if (mime.startsWithIgnoreCase("video/")) {
@@ -4566,6 +4600,21 @@ void MediaCodec::handleOutputFormatChangeIfNeeded(const sp<MediaCodecBuffer> &bu
         } else if (mOutputFormat->findInt32("width", &width)
                 && mOutputFormat->findInt32("height", &height)) {
             mCrypto->notifyResolution(width, height);
+        }
+    }
+
+    if (mMetricsHandle != 0) {
+        int32_t colorStandard = -1;
+        if (format->findInt32(KEY_COLOR_STANDARD, &colorStandard)) {
+            mediametrics_setInt32(mMetricsHandle, kCodecParsedColorStandard, colorStandard);
+        }
+        int32_t colorRange = -1;
+        if (format->findInt32( KEY_COLOR_RANGE, &colorRange)) {
+            mediametrics_setInt32(mMetricsHandle, kCodecParsedColorRange, colorRange);
+        }
+        int32_t colorTransfer = -1;
+        if (format->findInt32(KEY_COLOR_TRANSFER, &colorTransfer)) {
+            mediametrics_setInt32(mMetricsHandle, kCodecParsedColorTransfer, colorTransfer);
         }
     }
 }

@@ -520,6 +520,8 @@ ConversionResult<audio_input_flags_t> aidl2legacy_AudioInputFlags_audio_input_fl
             return AUDIO_INPUT_FLAG_HW_AV_SYNC;
         case media::AudioInputFlags::DIRECT:
             return AUDIO_INPUT_FLAG_DIRECT;
+        case media::AudioInputFlags::ULTRASOUND:
+            return AUDIO_INPUT_FLAG_ULTRASOUND;
     }
     return unexpected(BAD_VALUE);
 }
@@ -545,6 +547,8 @@ ConversionResult<media::AudioInputFlags> legacy2aidl_audio_input_flags_t_AudioIn
             return media::AudioInputFlags::HW_AV_SYNC;
         case AUDIO_INPUT_FLAG_DIRECT:
             return media::AudioInputFlags::DIRECT;
+        case AUDIO_INPUT_FLAG_ULTRASOUND:
+            return media::AudioInputFlags::ULTRASOUND;
     }
     return unexpected(BAD_VALUE);
 }
@@ -584,6 +588,10 @@ ConversionResult<audio_output_flags_t> aidl2legacy_AudioOutputFlags_audio_output
             return AUDIO_OUTPUT_FLAG_INCALL_MUSIC;
         case media::AudioOutputFlags::GAPLESS_OFFLOAD:
             return AUDIO_OUTPUT_FLAG_GAPLESS_OFFLOAD;
+        case media::AudioOutputFlags::SPATIALIZER:
+            return AUDIO_OUTPUT_FLAG_SPATIALIZER;
+        case media::AudioOutputFlags::ULTRASOUND:
+            return AUDIO_OUTPUT_FLAG_ULTRASOUND;
     }
     return unexpected(BAD_VALUE);
 }
@@ -625,6 +633,10 @@ ConversionResult<media::AudioOutputFlags> legacy2aidl_audio_output_flags_t_Audio
             return media::AudioOutputFlags::INCALL_MUSIC;
         case AUDIO_OUTPUT_FLAG_GAPLESS_OFFLOAD:
             return media::AudioOutputFlags::GAPLESS_OFFLOAD;
+        case AUDIO_OUTPUT_FLAG_SPATIALIZER:
+            return media::AudioOutputFlags::SPATIALIZER;
+        case AUDIO_OUTPUT_FLAG_ULTRASOUND:
+            return media::AudioOutputFlags::ULTRASOUND;
     }
     return unexpected(BAD_VALUE);
 }
@@ -850,6 +862,8 @@ ConversionResult<audio_source_t> aidl2legacy_AudioSourceType_audio_source_t(
             return AUDIO_SOURCE_FM_TUNER;
         case media::AudioSourceType::HOTWORD:
             return AUDIO_SOURCE_HOTWORD;
+        case media::AudioSourceType::ULTRASOUND:
+            return AUDIO_SOURCE_ULTRASOUND;
     }
     return unexpected(BAD_VALUE);
 }
@@ -887,6 +901,8 @@ ConversionResult<media::AudioSourceType> legacy2aidl_audio_source_t_AudioSourceT
             return media::AudioSourceType::FM_TUNER;
         case AUDIO_SOURCE_HOTWORD:
             return media::AudioSourceType::HOTWORD;
+        case AUDIO_SOURCE_ULTRASOUND:
+            return media::AudioSourceType::ULTRASOUND;
     }
     return unexpected(BAD_VALUE);
 }
@@ -1207,6 +1223,8 @@ aidl2legacy_AudioContentType_audio_content_type_t(media::AudioContentType aidl) 
             return AUDIO_CONTENT_TYPE_MOVIE;
         case media::AudioContentType::SONIFICATION:
             return AUDIO_CONTENT_TYPE_SONIFICATION;
+        case media::AudioContentType::ULTRASOUND:
+            return AUDIO_CONTENT_TYPE_ULTRASOUND;
     }
     return unexpected(BAD_VALUE);
 }
@@ -1224,6 +1242,8 @@ legacy2aidl_audio_content_type_t_AudioContentType(audio_content_type_t legacy) {
             return media::AudioContentType::MOVIE;
         case AUDIO_CONTENT_TYPE_SONIFICATION:
             return media::AudioContentType::SONIFICATION;
+        case AUDIO_CONTENT_TYPE_ULTRASOUND:
+            return media::AudioContentType::ULTRASOUND;
     }
     return unexpected(BAD_VALUE);
 }
@@ -1361,6 +1381,10 @@ aidl2legacy_AudioFlag_audio_flags_mask_t(media::AudioFlag aidl) {
             return AUDIO_FLAG_NO_SYSTEM_CAPTURE;
         case media::AudioFlag::CAPTURE_PRIVATE:
             return AUDIO_FLAG_CAPTURE_PRIVATE;
+        case media::AudioFlag::CONTENT_SPATIALIZED:
+            return AUDIO_FLAG_CONTENT_SPATIALIZED;
+        case media::AudioFlag::NEVER_SPATIALIZE:
+            return AUDIO_FLAG_NEVER_SPATIALIZE;
     }
     return unexpected(BAD_VALUE);
 }
@@ -1398,6 +1422,10 @@ legacy2aidl_audio_flags_mask_t_AudioFlag(audio_flags_mask_t legacy) {
             return media::AudioFlag::NO_SYSTEM_CAPTURE;
         case AUDIO_FLAG_CAPTURE_PRIVATE:
             return media::AudioFlag::CAPTURE_PRIVATE;
+        case AUDIO_FLAG_CONTENT_SPATIALIZED:
+            return media::AudioFlag::CONTENT_SPATIALIZED;
+        case AUDIO_FLAG_NEVER_SPATIALIZE:
+            return media::AudioFlag::NEVER_SPATIALIZE;
     }
     return unexpected(BAD_VALUE);
 }

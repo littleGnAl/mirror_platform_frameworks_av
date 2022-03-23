@@ -30,27 +30,40 @@
 #include <util/CoreUtils.h>
 
 #include "DeviceHalHidl.h"
-#include "EffectHalHidl.h"
 #include "ParameterUtils.h"
 #include "StreamHalHidl.h"
 
-using ::android::hardware::audio::common::CPP_VERSION::implementation::HidlUtils;
+using ::android::hardware::audio::common::COMMON_TYPES_CPP_VERSION::implementation::HidlUtils;
 using ::android::hardware::audio::common::utils::EnumBitfield;
-using ::android::hardware::audio::CPP_VERSION::implementation::CoreUtils;
+using ::android::hardware::audio::CORE_TYPES_CPP_VERSION::implementation::CoreUtils;
 using ::android::hardware::hidl_string;
 using ::android::hardware::hidl_vec;
 
 namespace android {
-namespace CPP_VERSION {
 
-using namespace ::android::hardware::audio::common::CPP_VERSION;
-using namespace ::android::hardware::audio::CPP_VERSION;
+using namespace ::android::hardware::audio::common::COMMON_TYPES_CPP_VERSION;
+using namespace ::android::hardware::audio::CORE_TYPES_CPP_VERSION;
 
-using EffectHalHidl = ::android::effect::CPP_VERSION::EffectHalHidl;
+DeviceHalHidl::DeviceHalHidl(const sp<::android::hardware::audio::CPP_VERSION::IDevice>& device)
+        : ConversionHelperHidl("Device"), mDevice(device) {
+}
 
-DeviceHalHidl::DeviceHalHidl(const sp<IDevice>& device)
-        : ConversionHelperHidl("Device"), mDevice(device),
-          mPrimaryDevice(IPrimaryDevice::castFrom(device)) {
+DeviceHalHidl::DeviceHalHidl(
+        const sp<::android::hardware::audio::CPP_VERSION::IPrimaryDevice>& device)
+        : ConversionHelperHidl("Device"),
+#if MAJOR_VERSION <= 6 || (MAJOR_VERSION == 7 && MINOR_VERSION == 0)
+          mDevice(device),
+#endif
+          mPrimaryDevice(device) {
+#if MAJOR_VERSION == 7 && MINOR_VERSION == 1
+    auto getDeviceRet = mPrimaryDevice->getDevice();
+    if (getDeviceRet.isOk()) {
+        mDevice = getDeviceRet;
+    } else {
+        ALOGE("Call to IPrimaryDevice.getDevice has failed: %s",
+                getDeviceRet.description().c_str());
+    }
+#endif
 }
 
 DeviceHalHidl::~DeviceHalHidl() {
@@ -209,12 +222,17 @@ status_t DeviceHalHidl::openOutputStream(
         return status;
     }
     Result retval = Result::NOT_INITIALIZED;
+#if MAJOR_VERSION == 7 && MINOR_VERSION == 1
+    Return<void> ret = mDevice->openOutputStream_7_1(
+#else
     Return<void> ret = mDevice->openOutputStream(
+#endif
             handle, hidlDevice, hidlConfig, hidlFlags,
 #if MAJOR_VERSION >= 4
             {} /* metadata */,
 #endif
-            [&](Result r, const sp<IStreamOut>& result, const AudioConfig& suggestedConfig) {
+            [&](Result r, const sp<::android::hardware::audio::CPP_VERSION::IStreamOut>& result,
+                    const AudioConfig& suggestedConfig) {
                 retval = r;
                 if (retval == Result::OK) {
                     *outStream = new StreamOutHalHidl(result);
@@ -284,7 +302,9 @@ status_t DeviceHalHidl::openInputStream(
 #endif
     Return<void> ret = mDevice->openInputStream(
             handle, hidlDevice, hidlConfig, hidlFlags, sinkMetadata,
-            [&](Result r, const sp<IStreamIn>& result, const AudioConfig& suggestedConfig) {
+            [&](Result r,
+                const sp<::android::hardware::audio::CORE_TYPES_CPP_VERSION::IStreamIn>& result,
+                    const AudioConfig& suggestedConfig) {
                 retval = r;
                 if (retval == Result::OK) {
                     *inStream = new StreamInHalHidl(result);
@@ -432,8 +452,7 @@ status_t DeviceHalHidl::addDeviceEffect(
         audio_port_handle_t device, sp<EffectHalInterface> effect) {
     if (mDevice == 0) return NO_INIT;
     return processReturn("addDeviceEffect", mDevice->addDeviceEffect(
-            static_cast<AudioPortHandle>(device),
-            static_cast<EffectHalHidl*>(effect.get())->effectId()));
+            static_cast<AudioPortHandle>(device), effect->effectId()));
 }
 #else
 status_t DeviceHalHidl::addDeviceEffect(
@@ -447,8 +466,7 @@ status_t DeviceHalHidl::removeDeviceEffect(
         audio_port_handle_t device, sp<EffectHalInterface> effect) {
     if (mDevice == 0) return NO_INIT;
     return processReturn("removeDeviceEffect", mDevice->removeDeviceEffect(
-            static_cast<AudioPortHandle>(device),
-            static_cast<EffectHalHidl*>(effect.get())->effectId()));
+            static_cast<AudioPortHandle>(device), effect->effectId()));
 }
 #else
 status_t DeviceHalHidl::removeDeviceEffect(
@@ -457,11 +475,39 @@ status_t DeviceHalHidl::removeDeviceEffect(
 }
 #endif
 
-status_t DeviceHalHidl::dump(int fd) {
+status_t DeviceHalHidl::setConnectedState(const struct audio_port_v7 *port, bool connected) {
+    if (mDevice == 0) return NO_INIT;
+#if MAJOR_VERSION == 7 && MINOR_VERSION == 1
+    if (supportsSetConnectedState7_1) {
+        AudioPort hidlPort;
+        if (status_t result = HidlUtils::audioPortFromHal(*port, &hidlPort); result != NO_ERROR) {
+            return result;
+        }
+        Return<Result> ret = mDevice->setConnectedState_7_1(hidlPort, connected);
+        if (!ret.isOk() || ret != Result::NOT_SUPPORTED) {
+            return processReturn("setConnectedState_7_1", ret);
+        } else if (ret == Result::OK) {
+            return NO_ERROR;
+        }
+        supportsSetConnectedState7_1 = false;
+    }
+#endif
+    DeviceAddress hidlAddress;
+    if (status_t result = CoreUtils::deviceAddressFromHal(
+                    port->ext.device.type, port->ext.device.address, &hidlAddress);
+            result != NO_ERROR) {
+        return result;
+    }
+    return processReturn("setConnectedState", mDevice->setConnectedState(hidlAddress, connected));
+}
+
+status_t DeviceHalHidl::dump(int fd, const Vector<String16>& args) {
     if (mDevice == 0) return NO_INIT;
     native_handle_t* hidlHandle = native_handle_create(1, 0);
     hidlHandle->data[0] = fd;
-    Return<void> ret = mDevice->debug(hidlHandle, {} /* options */);
+    hidl_vec<hidl_string> hidlArgs;
+    argsFromHal(args, &hidlArgs);
+    Return<void> ret = mDevice->debug(hidlHandle, hidlArgs);
     native_handle_delete(hidlHandle);
 
     // TODO(b/111997867, b/177271958)  Workaround - remove when fixed.
@@ -478,5 +524,4 @@ status_t DeviceHalHidl::dump(int fd) {
     return processReturn("dump", ret);
 }
 
-} // namespace CPP_VERSION
 } // namespace android
