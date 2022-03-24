@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "31c6ebf1_ee48a20f",
+        "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-03-24T22:36:18Z",
+      "side": 1,
+      "message": "is this intentional? non-secure-codec with secureCodec subType?",
+      "range": {
+        "startLine": 674,
+        "startChar": 56,
+        "endLine": 674,
+        "endChar": 84
+      },
+      "revId": "b3639012e28bc7c89128ac12a646df0750cdfedb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
