@@ -16,6 +16,23 @@
       "message": "I\u0027m coming back to the bug and this change is still needed.  Ray, can you take a look?",
       "revId": "6dada6be7f5340a06a1ae175226ccabbfe56ce0c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "cc6be56d_62844eec",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-03-24T22:24:27Z",
+      "side": 1,
+      "message": "i\u0027m working through the following concern....\n\nif we\u0027re using this as a mainline test, we built it against (currently) T but we\u0027ll want to run the test on R devices with our module. Where this has exploded is that the R and T libraries have different internals and can\u0027t be switched back and forth. (I think AMessage was what highlighted this for us).\n\nthus, the shared library introduces a potential cross-module-boundary interaction that can be problematic for us. This is pretty much why most of those media unit tests use static libraries instead of shared libraries for some of those things.\n\nI don\u0027t think we use timedtext that way at this time. But I want to be deliberate about thinking through that situation before we change it over.",
+      "revId": "6dada6be7f5340a06a1ae175226ccabbfe56ce0c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
