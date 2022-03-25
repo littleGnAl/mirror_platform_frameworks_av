@@ -573,7 +573,9 @@ Status ResourceManagerService::removeResource(int pid, int64_t clientId, bool ch
         onLastRemoved(it->second, info);
     }
 
-    removeCookieAndUnlink_l(info.client->asBinder(), info.cookie);
+    if (info.client != nullptr) {
+        removeCookieAndUnlink_l(info.client->asBinder(), info.cookie);
+    }
 
     if (mObserverService != nullptr && !info.resources.empty()) {
         mObserverService->onResourceRemoved(info.uid, pid, info.resources);
