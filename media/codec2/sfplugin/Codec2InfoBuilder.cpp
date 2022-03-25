@@ -290,9 +290,7 @@ void addSupportedColorFormats(
         addDefaultColorFormat(COLOR_FormatYUV420SemiPlanar);
         addDefaultColorFormat(COLOR_FormatYUV420PackedPlanar);
         addDefaultColorFormat(COLOR_FormatYUV420PackedSemiPlanar);
-        // framework video encoders must support surface format, though it is unclear
-        // that they will be able to map it if it is opaque
-        if (encoder && trait.name.find("android") != std::string::npos) {
+        if (trait.name.find("android") != std::string::npos) {
             addDefaultColorFormat(COLOR_FormatSurface);
         }
         for (int32_t colorFormat : supportedColorFormats) {
