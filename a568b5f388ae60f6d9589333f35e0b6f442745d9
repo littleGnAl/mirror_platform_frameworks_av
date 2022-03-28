@@ -22,6 +22,30 @@
       },
       "revId": "a568b5f388ae60f6d9589333f35e0b6f442745d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e68df3b7_ca2dd84c",
+        "filename": "media/codec2/sfplugin/Codec2InfoBuilder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-03-28T20:54:49Z",
+      "side": 1,
+      "message": "+1 to Arun, addDefaultColorFormat(COLOR_FormatSurface) should be done regardless of the condition if we consider \u0027if\u0027 statements in L285 and here(L293).",
+      "parentUuid": "8442c270_9a70c8dd",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 295,
+        "endChar": 9
+      },
+      "revId": "a568b5f388ae60f6d9589333f35e0b6f442745d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
