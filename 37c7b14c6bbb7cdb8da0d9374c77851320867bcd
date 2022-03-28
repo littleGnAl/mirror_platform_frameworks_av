@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cc3ee42d_bb9e977a",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-03-28T15:08:04Z",
+      "side": 1,
+      "message": "i wonder if this should be 1 instead of 0.\nSimilarly to how the h/w fields for video get set to 1 instead of 0.\nor should the h/w fields be set to 0 like this one?\nRight now -- it feels a little inconsistent between the two.\n\ni expect part of the choice of the value is whether the CHECK() failures that this prevents are of the \"the value is missing\" vs \"the value is invalid\" variety.",
+      "range": {
+        "startLine": 177,
+        "startChar": 37,
+        "endLine": 177,
+        "endChar": 40
+      },
+      "revId": "37c7b14c6bbb7cdb8da0d9374c77851320867bcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
