@@ -17,7 +17,7 @@
 //#define LOG_NDEBUG 0
 #define LOG_TAG "SimpleC2Component"
 #include <log/log.h>
-
+#include <android-modules-utils/sdk_level.h>
 #include <cutils/properties.h>
 #include <media/stagefright/foundation/AMessage.h>
 
@@ -767,9 +767,9 @@ int SimpleC2Component::getHalPixelFormatForBitDepth10(bool allowRGBA1010102) {
     // Save supported hal pixel formats for bit depth of 10, the first time this is called
     if (!mBitDepth10HalPixelFormats.size()) {
         std::vector<int> halPixelFormats;
-        // TODO(b/178229371) Enable HAL_PIXEL_FORMAT_YCBCR_P010 once framework supports it
-        // halPixelFormats.push_back(HAL_PIXEL_FORMAT_YCBCR_P010);
-
+        if (android::modules::sdklevel::IsAtLeastT()) {
+            halPixelFormats.push_back(HAL_PIXEL_FORMAT_YCBCR_P010);
+        }
         // since allowRGBA1010102 can chance in each call, but mBitDepth10HalPixelFormats
         // is populated only once, allowRGBA1010102 is not considered at this stage.
         halPixelFormats.push_back(HAL_PIXEL_FORMAT_RGBA_1010102);
