@@ -46,6 +46,30 @@
       },
       "revId": "a568b5f388ae60f6d9589333f35e0b6f442745d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b88dfb7c_88ccc975",
+        "filename": "media/codec2/sfplugin/Codec2InfoBuilder.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 295,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-03-29T19:36:48Z",
+      "side": 1,
+      "message": "This CL removes \"encoder \u0026\u0026\"",
+      "parentUuid": "e68df3b7_ca2dd84c",
+      "range": {
+        "startLine": 293,
+        "startChar": 0,
+        "endLine": 295,
+        "endChar": 9
+      },
+      "revId": "a568b5f388ae60f6d9589333f35e0b6f442745d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
