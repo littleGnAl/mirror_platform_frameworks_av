@@ -1,0 +1,38 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "b65ebe9d_190a634b",
+        "filename": "media/codec2/vndk/include/C2BqBufferPriv.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-03-29T18:03:47Z",
+      "side": 1,
+      "message": "Can we know why this API is needed? (If there is a good reason for requesting this API, I feel this API should be added to C2BlockPool interface.)",
+      "revId": "eef103402194825405587aef8a25c0f734d32e8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "929cda2c_9c571808",
+        "filename": "media/codec2/vndk/include/C2BqBufferPriv.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-03-29T18:03:47Z",
+      "side": 1,
+      "message": "Since we have \u0027mImpl\u0027 here, retrieving from mImpl looks more natural than storing ConsumerUsage in this class.",
+      "revId": "eef103402194825405587aef8a25c0f734d32e8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
