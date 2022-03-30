@@ -22,6 +22,30 @@
       },
       "revId": "37c7b14c6bbb7cdb8da0d9374c77851320867bcd",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4210b4f4_0e49f756",
+        "filename": "media/libstagefright/writer_fuzzers/WriterFuzzerBase.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 177,
+      "author": {
+        "id": 1858334
+      },
+      "writtenOn": "2022-03-30T03:11:32Z",
+      "side": 1,
+      "message": "CHECK() failures that this fix prevents are of the \"the value is missing\" variety. there is a if-condition before channel and sample-rate are set and the permissible value for channel-count is any value greater than or equal to 0, whereas for sample-rate , the valid value is greater than 0.(link: https://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/libstagefright/Utils.cpp;l\u003d1923;drc\u003dd9b5671909e09b037e105bd5418b22c051a34934)\nAlso, In the comments ,it is mentioned that \"channel count can be zero in some cases like mpeg h\". So passing \u00270\u0027 for channel-count.",
+      "parentUuid": "cc3ee42d_bb9e977a",
+      "range": {
+        "startLine": 177,
+        "startChar": 37,
+        "endLine": 177,
+        "endChar": 40
+      },
+      "revId": "37c7b14c6bbb7cdb8da0d9374c77851320867bcd",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
