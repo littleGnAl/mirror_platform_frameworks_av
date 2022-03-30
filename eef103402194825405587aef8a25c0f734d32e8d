@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "763b3b08_e65e860f",
+        "filename": "media/codec2/vndk/include/C2BqBufferPriv.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 104,
+      "author": {
+        "id": 1238369
+      },
+      "writtenOn": "2022-03-30T03:00:58Z",
+      "side": 1,
+      "message": "This API add to C2BufferQueueBlockPool is enough, do not need add to C2BlockPool .\nVendor components need to know whether the surface is a surface texture or a surface view through consumer usage. And we have some different memory optimization for surface texture and surface view.\nThe video of our platform has a special compression mode, which has the following advantages:\n1. It can save bandwidth\n2. It can effectively save the use of memory\nThis is particularly important for low memory and low memory platforms.\nHowever, we just need to get this usage to distinguish whether the surface is surface view or texture view. Then decide whether to turn on this mode to achieve the purpose of optimization.\nSo only C2BufferQueueBlockPool what use GraphicBuffer need this API.",
+      "parentUuid": "b65ebe9d_190a634b",
+      "revId": "eef103402194825405587aef8a25c0f734d32e8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "929cda2c_9c571808",
