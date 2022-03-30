@@ -22,12 +22,15 @@
 
 #include <android/hardware/camera/device/3.7/ICameraDevice.h>
 
+#include <aidl/android/apex/IApexService.h>
+#include <aidl/android/apex/ApexCertificationInfo.h>
 #include <algorithm>
 #include <chrono>
 #include "common/DepthPhotoProcessor.h"
 #include <dlfcn.h>
 #include <future>
 #include <inttypes.h>
+#include <android/binder_manager.h>
 #include <android/hidl/manager/1.2/IServiceManager.h>
 #include <hidl/ServiceManagement.h>
 #include <functional>
@@ -140,6 +143,16 @@ std::vector<std::string> CameraProviderManager::getCameraDeviceIds() const {
     for (auto& provider : mProviders) {
         for (auto& id : provider->mUniqueCameraIds) {
             deviceIds.push_back(id);
+        }
+        aidl::android::apex::ApexCertificationInfo certificationInfo;
+        mApexService->getCertificationInfo(
+            // TODO(before merging) stop hardcoding this
+            "android.hardware.camera.provider@2.7::ICameraProvider/internal/0",
+            &certificationInfo);
+        if (certificationInfo.certificationRequired) {
+            mApexService->reportHealthCheck(
+                "android.hardware.camera.provider@2.7::ICameraProvider/internal/0",
+                certificationInfo.versionCode, /*success=*/!deviceIds.empty());
         }
     }
     return deviceIds;
@@ -1247,6 +1260,15 @@ CameraProviderManager::isHiddenPhysicalCameraInternal(const std::string& cameraI
 status_t CameraProviderManager::tryToInitializeProviderLocked(
         const std::string& providerName, const sp<ProviderInfo>& providerInfo) {
     sp<provider::V2_4::ICameraProvider> interface;
+
+    if (mApexService == nullptr) {
+      mApexService = aidl::android::apex::IApexService::fromBinder(
+          ndk::SpAIBinder(AServiceManager_getService("apexservice")));
+    }
+    // TODO(before merging) stop hardcoding this
+    mApexService->startCertificationByClient(
+        "android.hardware.camera.provider@2.7::ICameraProvider/internal/0");
+
     interface = mServiceProxy->tryGetService(providerName);
 
     if (interface == nullptr) {
