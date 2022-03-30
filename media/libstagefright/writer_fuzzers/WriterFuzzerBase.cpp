@@ -192,7 +192,9 @@ void WriterFuzzerBase::addWriterSource(int32_t trackIndex) {
     sp<MetaData> trackMeta = new MetaData;
     convertMessageToMetaData(format, trackMeta);
     mCurrentTrack[trackIndex] = new MediaAdapter(trackMeta);
-    mWriter->addSource(mCurrentTrack[trackIndex]);
+    if (mWriter->addSource(mCurrentTrack[trackIndex]) == OK) {
+        mTrackAdded[trackIndex] = true;
+    }
 }
 
 void WriterFuzzerBase::start() {
@@ -208,7 +210,9 @@ void WriterFuzzerBase::sendBuffersToWriter(sp<MediaAdapter> &currentTrack, int32
         MediaBuffer *mediaBuffer = new MediaBuffer(buffer);
 
         // Released in MediaAdapter::signalBufferReturned().
-        mediaBuffer->add_ref();
+        if (mTrackAdded[trackIndex]) {
+            mediaBuffer->add_ref();
+        }
         mediaBuffer->set_range(buffer->offset(), buffer->size());
         MetaDataBase &sampleMetaData = mediaBuffer->meta_data();
         sampleMetaData.setInt64(kKeyTime, bufferInfo[idx].timeUs);
@@ -220,7 +224,9 @@ void WriterFuzzerBase::sendBuffersToWriter(sp<MediaAdapter> &currentTrack, int32
         }
 
         // This pushBuffer will wait until the mediaBuffer is consumed.
-        currentTrack->pushBuffer(mediaBuffer);
+        if (currentTrack->pushBuffer(mediaBuffer) != OK) {
+            mediaBuffer->release();
+        }
     }
 }
 
