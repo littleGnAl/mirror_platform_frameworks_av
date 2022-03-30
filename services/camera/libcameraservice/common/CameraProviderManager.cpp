@@ -22,6 +22,8 @@
 
 #include <android/hardware/camera/device/3.7/ICameraDevice.h>
 
+#include <aidl/android/apex/IApexService.h>
+#include <aidl/android/apex/ApexCertificationInfo.h>
 #include <algorithm>
 #include <chrono>
 #include "common/DepthPhotoProcessor.h"
@@ -140,6 +142,12 @@ std::vector<std::string> CameraProviderManager::getCameraDeviceIds() const {
     for (auto& provider : mProviders) {
         for (auto& id : provider->mUniqueCameraIds) {
             deviceIds.push_back(id);
+        }
+        aidl::android::apex::ApexCertificationInfo certificationInfo;
+        mApexService->getCertificationInfo(provider->mProviderName, &certificationInfo);
+        if (certificationInfo.certificationRequired) {
+            mApexService->reportHealthCheck(
+                provider->mProviderName, certificationInfo.versionCode, /*success=*/!deviceIds.empty());
         }
     }
     return deviceIds;
@@ -1247,6 +1255,13 @@ CameraProviderManager::isHiddenPhysicalCameraInternal(const std::string& cameraI
 status_t CameraProviderManager::tryToInitializeProviderLocked(
         const std::string& providerName, const sp<ProviderInfo>& providerInfo) {
     sp<provider::V2_4::ICameraProvider> interface;
+
+    if (mApexService == nullptr) {
+      mApexService = aidl::android::apex::IApexService::fromBinder(
+          ndk::SpAIBinder(AServiceManager_getService("apexservice")));
+    }
+    mApexService->startCertificationByClient(providerName);
+
     interface = mServiceProxy->tryGetService(providerName);
 
     if (interface == nullptr) {

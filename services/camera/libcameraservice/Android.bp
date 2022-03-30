@@ -107,6 +107,7 @@ cc_library_shared {
     ],
 
     shared_libs: [
+        "apex_aidl_interface-ndk",
         "libbase",
         "libdl",
         "libexif",
