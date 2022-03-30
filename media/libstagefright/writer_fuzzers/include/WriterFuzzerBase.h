@@ -204,6 +204,7 @@ class WriterFuzzerBase {
     sp<MediaWriter> mWriter = nullptr;
     sp<MetaData> mFileMeta = nullptr;
     sp<MediaAdapter> mCurrentTrack[kMaxTrackCount] = {};
+    bool mTrackAdded[kMaxTrackCount] = {0};
 };
 
 }  // namespace android
