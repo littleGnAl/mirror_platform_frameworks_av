@@ -30,6 +30,7 @@
 #include <camera/CameraMetadata.h>
 #include <camera/CameraBase.h>
 #include <utils/Errors.h>
+#include <aidl/android/apex/IApexService.h>
 #include <android/hardware/camera/common/1.0/types.h>
 #include <android/hardware/camera/provider/2.5/ICameraProvider.h>
 #include <android/hardware/camera/provider/2.6/ICameraProviderCallback.h>
@@ -329,6 +330,8 @@ public:
 
     static const float kDepthARTolerance;
 private:
+    std::shared_ptr<aidl::android::apex::IApexService> mApexService;
+
     // All private members, unless otherwise noted, expect mInterfaceMutex to be locked before use
     mutable std::mutex mInterfaceMutex;
 

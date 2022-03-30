@@ -107,6 +107,7 @@ cc_library_shared {
     ],
 
     shared_libs: [
+        "apex_aidl_interface-ndk",
         "libbase",
         "libdl",
         "libexif",
@@ -115,6 +116,7 @@ cc_library_shared {
         "libutilscallstack",
         "libutils",
         "libbinder",
+        "libbinder_ndk",
         "libactivitymanager_aidl",
         "libpermission",
         "libcutils",
