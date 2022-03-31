@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "71e95f8b_6d8cc7c1",
+        "filename": "services/mediaresourcemanager/ResourceManagerService.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 576,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-03-31T16:36:52Z",
+      "side": 0,
+      "message": "Another invocations of removeCokieAndUnlink_l() are safe with nullptr dereferencing?",
+      "revId": "5307c587cb731178a1872fe6eb471a50f13e85a1",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
