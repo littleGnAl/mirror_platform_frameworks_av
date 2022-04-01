@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dc6f4255_8f35f20b",
+        "filename": "media/codecs/m4v_h263/dec/src/vop.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-01T21:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "91b575cf_3fa90b12",
+      "range": {
+        "startLine": 120,
+        "startChar": 46,
+        "endLine": 120,
+        "endChar": 68
+      },
+      "revId": "c809a29eca5453c4fcd7065886544a8911b4316a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "aa626cb5_282ec652",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-01T14:59:21Z",
       "side": 1,
       "message": "recast this as a switch; mostly for clarity and perhaps a little performance.",
+      "range": {
+        "startLine": 122,
+        "startChar": 47,
+        "endLine": 122,
+        "endChar": 73
+      },
+      "revId": "c809a29eca5453c4fcd7065886544a8911b4316a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "5d636dfd_5efbcfe9",
+        "filename": "media/codecs/m4v_h263/dec/src/vop.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-01T21:05:36Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "aa626cb5_282ec652",
       "range": {
         "startLine": 122,
         "startChar": 47,
