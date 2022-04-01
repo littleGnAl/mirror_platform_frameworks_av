@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "cbddf0b5_29808f4e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-01T02:13:30Z",
+      "side": 1,
+      "message": "Please add bug id before Change-Id line of the CL description.\nBug: 123123XXXX",
+      "revId": "eef103402194825405587aef8a25c0f734d32e8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "b65ebe9d_190a634b",
