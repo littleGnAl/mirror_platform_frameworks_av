@@ -1,0 +1,44 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0ccea7b5_5b13a8b4",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-01T22:34:36Z",
+      "side": 1,
+      "message": "This depends on https://android-review.googlesource.com/c/platform/frameworks/libs/modules-utils/+/2051532.",
+      "revId": "4e95f2abc0a2633554d83ef81cd7e9349a555644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "56352aef_356d87a6",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-01T22:34:36Z",
+      "side": 1,
+      "message": "Using this requires the following CL\nhttps://android-review.googlesource.com/c/platform/frameworks/libs/modules-utils/+/2051532\n\nC2SoftAacDec.cpp calls android_get_device_api_level() directly and that approach doesn\u0027t require any changes.\n\nhttps://cs.android.com/android/platform/superproject/+/master:frameworks/av/media/codec2/components/aac/C2SoftAacDec.cpp;l\u003d884?q\u003dc2softaacdec\u0026ss\u003dandroid%2Fplatform%2Fsuperproject\n\nBased on what is the preferred option, i will update this CL.",
+      "range": {
+        "startLine": 770,
+        "startChar": 8,
+        "endLine": 770,
+        "endChar": 53
+      },
+      "revId": "4e95f2abc0a2633554d83ef81cd7e9349a555644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
