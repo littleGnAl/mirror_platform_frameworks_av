@@ -86,6 +86,24 @@
       "message": "Since we have \u0027mImpl\u0027 here, retrieving from mImpl looks more natural than storing ConsumerUsage in this class.",
       "revId": "eef103402194825405587aef8a25c0f734d32e8d",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "842aac9e_f80e246e",
+        "filename": "media/codec2/vndk/include/C2BqBufferPriv.h",
+        "patchSetId": 1
+      },
+      "lineNbr": 109,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-01T20:31:20Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "929cda2c_9c571808",
+      "revId": "eef103402194825405587aef8a25c0f734d32e8d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
