@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ebf91d26_a0f548f3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-04-01T22:47:28Z",
+      "side": 1,
+      "message": "change itself is ok, but exposes some higher level issues around tests that require higher levels of functionality than the CDD requires.\n\nnot to be merged until we resolve that.\n\nadditional comments in the bug.",
+      "revId": "ae437a9e3627f7859604f153da692d20d737c441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
