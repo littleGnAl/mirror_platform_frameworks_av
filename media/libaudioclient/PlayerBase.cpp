@@ -62,6 +62,7 @@ void PlayerBase::baseDestroy() {
     serviceReleasePlayer();
     if (mAudioManager != 0) {
         mAudioManager.clear();
+        mAudioManager = 0;
     }
 }
 
