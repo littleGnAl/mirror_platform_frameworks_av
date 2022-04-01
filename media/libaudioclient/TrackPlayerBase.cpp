@@ -71,6 +71,7 @@ void TrackPlayerBase::doDestroy() {
         mSelfAudioDeviceCallback.clear();
         // Note that there may still be another reference in post-unlock phase of SetPlayState
         mAudioTrack.clear();
+        mAudioTrack = 0;
     }
 }
 
