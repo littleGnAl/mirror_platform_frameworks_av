@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "91b575cf_3fa90b12",
+        "filename": "media/codecs/m4v_h263/dec/src/vop.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 120,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-04-01T14:59:21Z",
+      "side": 1,
+      "message": "i don\u0027t know if this holds true any longer; we\u0027ve allowed the sizes to get much larger (from the 352x288 to 1920x1920 on the mpeg4 side).\n\nso are we still in a position of saying that any spl6 files we won\u0027t be able to decode will be rejected by a size check?",
+      "range": {
+        "startLine": 120,
+        "startChar": 46,
+        "endLine": 120,
+        "endChar": 68
+      },
+      "revId": "c809a29eca5453c4fcd7065886544a8911b4316a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "aa626cb5_282ec652",
+        "filename": "media/codecs/m4v_h263/dec/src/vop.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 122,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-04-01T14:59:21Z",
+      "side": 1,
+      "message": "recast this as a switch; mostly for clarity and perhaps a little performance.",
+      "range": {
+        "startLine": 122,
+        "startChar": 47,
+        "endLine": 122,
+        "endChar": 73
+      },
+      "revId": "c809a29eca5453c4fcd7065886544a8911b4316a",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
