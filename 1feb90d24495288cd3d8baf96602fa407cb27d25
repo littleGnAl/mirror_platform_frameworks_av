@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "d84b728b_0df013cb",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 393,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2022-04-05T10:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "09a630af_e0068cb0",
+      "range": {
+        "startLine": 393,
+        "startChar": 11,
+        "endLine": 393,
+        "endChar": 60
+      },
+      "revId": "1feb90d24495288cd3d8baf96602fa407cb27d25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "76db27ea_0cf64193",
@@ -47,6 +71,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "90dd9c2b_6acd0f92",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 394,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2022-04-05T10:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "76db27ea_0cf64193",
+      "range": {
+        "startLine": 394,
+        "startChar": 59,
+        "endLine": 394,
+        "endChar": 74
+      },
+      "revId": "1feb90d24495288cd3d8baf96602fa407cb27d25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "24be58d8_39c9a252",
@@ -60,6 +108,30 @@
       "writtenOn": "2022-03-17T05:09:21Z",
       "side": 1,
       "message": "this is in header file here, but in hevc and avc this code is in the *.cpp file\ninstead.  consistency please.",
+      "range": {
+        "startLine": 257,
+        "startChar": 15,
+        "endLine": 257,
+        "endChar": 40
+      },
+      "revId": "1feb90d24495288cd3d8baf96602fa407cb27d25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a5d84d80_571914e0",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 257,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2022-04-05T10:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "24be58d8_39c9a252",
       "range": {
         "startLine": 257,
         "startChar": 15,
@@ -116,6 +188,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a93942cf_64557824",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 291,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2022-04-05T10:37:02Z",
+      "side": 1,
+      "message": "Added a comment for the same.",
+      "parentUuid": "8e54615b_d3cb7c47",
+      "range": {
+        "startLine": 291,
+        "startChar": 7,
+        "endLine": 291,
+        "endChar": 66
+      },
+      "revId": "1feb90d24495288cd3d8baf96602fa407cb27d25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "1beced76_d745ea46",
@@ -129,6 +225,30 @@
       "writtenOn": "2022-03-17T05:09:21Z",
       "side": 1,
       "message": "check picture type.  while right now we have I/P/B and they are all the same, the intent of this structure was that we might have other picture types at some point.",
+      "range": {
+        "startLine": 299,
+        "startChar": 12,
+        "endLine": 299,
+        "endChar": 17
+      },
+      "revId": "1feb90d24495288cd3d8baf96602fa407cb27d25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "b84a1eae_ce3f40d5",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 299,
+      "author": {
+        "id": 1572775
+      },
+      "writtenOn": "2022-04-05T10:37:02Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "1beced76_d745ea46",
       "range": {
         "startLine": 299,
         "startChar": 12,
