@@ -992,22 +992,26 @@ c2_status_t GetHdrMetadataFromGralloc4Handle(
         std::shared_ptr<C2StreamHdrStaticMetadataInfo::input> *staticInfo,
         std::shared_ptr<C2StreamHdrDynamicMetadataInfo::input> *dynamicInfo) {
     c2_status_t err = C2_OK;
-    native_handle_t *nativeHandle = UnwrapNativeCodec2GrallocHandle(handle);
-    if (nativeHandle == nullptr) {
-        // Nothing to do
-        return err;
-    }
-    // TRICKY: UnwrapNativeCodec2GrallocHandle creates a new handle but
-    //         does not clone the fds. Thus we need to delete the handle
-    //         without closing it when going out of scope.
-    //         NativeHandle cannot solve this problem, as it would close and
-    //         delete the handle, while we need delete only.
-    NativeHandleDeleter nhd(nativeHandle);
+
     sp<IMapper4> mapper = GetMapper4();
     if (!mapper) {
         // Gralloc4 not supported; nothing to do
         return err;
     }
+
+    native_handle_t* nativeHandle = nullptr;
+    Error4 error = Error4::NONE;
+    mapper->importBuffer(handle, [&](const auto& tmpError, const auto& tmpBuffer) {
+        error = tmpError;
+        if (error != Error4::NONE) {
+            return;
+        }
+        nativeHandle = static_cast<native_handle_t *>(tmpBuffer);
+    });
+    if (error != Error4::NONE) {
+        return C2_CORRUPTED;
+    }
+
     Error4 mapperErr = Error4::NONE;
     if (staticInfo) {
         staticInfo->reset(new C2StreamHdrStaticMetadataInfo::input(0u));
@@ -1086,6 +1090,8 @@ c2_status_t GetHdrMetadataFromGralloc4Handle(
         }
     }
 
+    mapper->freeBuffer(nativeHandle);
+
     return err;
 }
 
@@ -1094,20 +1100,26 @@ c2_status_t SetHdrMetadataToGralloc4Handle(
         const std::shared_ptr<const C2StreamHdrDynamicMetadataInfo::output> &dynamicInfo,
         const C2Handle *const handle) {
     c2_status_t err = C2_OK;
-    native_handle_t *nativeHandle = UnwrapNativeCodec2GrallocHandle(handle);
-    if (nativeHandle == nullptr) {
-        // Nothing to do
-        return err;
-    }
-    // TRICKY: UnwrapNativeCodec2GrallocHandle creates a new handle but
-    //         does not clone the fds. Thus we need to delete the handle
-    //         without closing it when going out of scope.
-    NativeHandleDeleter nhd(nativeHandle);
+
     sp<IMapper4> mapper = GetMapper4();
     if (!mapper) {
         // Gralloc4 not supported; nothing to do
         return err;
     }
+
+    native_handle_t* nativeHandle = nullptr;
+    Error4 error = Error4::NONE;
+    mapper->importBuffer(handle, [&](const auto& tmpError, const auto& tmpBuffer) {
+        error = tmpError;
+        if (error != Error4::NONE) {
+            return;
+        }
+        nativeHandle = static_cast<native_handle_t *>(tmpBuffer);
+    });
+    if (error != Error4::NONE) {
+        return C2_CORRUPTED;
+    }
+
     if (staticInfo && *staticInfo) {
         std::optional<Smpte2086> smpte2086 = Smpte2086{
             {staticInfo->mastering.red.x, staticInfo->mastering.red.y},
@@ -1163,6 +1175,8 @@ c2_status_t SetHdrMetadataToGralloc4Handle(
             err = C2_BAD_VALUE;
         }
     }
+
+    mapper->freeBuffer(nativeHandle);
 
     return err;
 }
