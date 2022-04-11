@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7ebdd629_fa0e7347",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 540,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-04-11T22:52:27Z",
+      "side": 1,
+      "message": "This is here because HDR thumbnail is only supported via surface mode.\nOur system health team asked us to avoid surface mode as much as possible,\nbut this could be an OEM decision, so perhaps an OEM property that defaults\nto false can work here instead of always being true.",
+      "range": {
+        "startLine": 540,
+        "startChar": 8,
+        "endLine": 540,
+        "endChar": 12
+      },
+      "revId": "8571044105464854b282ad442f002383581857e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "907cf987_3a0531f2",
+        "filename": "media/libstagefright/FrameDecoder.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 623,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-04-11T22:52:27Z",
+      "side": 1,
+      "message": "Thanks for this addition. Is there a value of using this check here if slice height is not used by this function?",
+      "range": {
+        "startLine": 620,
+        "startChar": 4,
+        "endLine": 623,
+        "endChar": 30
+      },
+      "revId": "8571044105464854b282ad442f002383581857e6",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
