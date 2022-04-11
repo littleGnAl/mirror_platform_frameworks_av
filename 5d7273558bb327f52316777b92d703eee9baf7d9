@@ -16,6 +16,24 @@
       "message": "i remember there was some reason that things in the fuzzers were done with static instead of shared libraries, but don\u0027t remember the reason itself.",
       "revId": "5d7273558bb327f52316777b92d703eee9baf7d9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "720e0079_dd545bc3",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1058860
+      },
+      "writtenOn": "2022-04-11T18:29:52Z",
+      "side": 1,
+      "message": "Could it be that the function being fuzzed cannot be from a shared library?  I am not sure.  In this case though, the libutils being shared or static should not impact the fuzzer.",
+      "parentUuid": "c584b5fc_e331359d",
+      "revId": "5d7273558bb327f52316777b92d703eee9baf7d9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
