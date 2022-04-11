@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "a1dd0612_5e8cd7ed",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2022-04-11T18:15:54Z",
+      "side": 1,
+      "message": "Is there a reason the closest OWNERS file can\u0027t just be used directly? Having this hardcoded means we have to keep it up to date, which probably won\u0027t happen since everything else is centralized to a single OWNERS.",
+      "revId": "7ee07dda3a3d460cd59c53f8ff2ef89f540de696",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "e31d5974_49baad35",
