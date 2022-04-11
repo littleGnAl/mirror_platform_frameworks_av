@@ -34,6 +34,23 @@
       "parentUuid": "ebf91d26_a0f548f3",
       "revId": "ae437a9e3627f7859604f153da692d20d737c441",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "1c2fd11c_496b5021",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-04-11T23:37:41Z",
+      "side": 1,
+      "message": "round of failures here appears to be related to \ncts/apps/CtsVerifier/src/com/android/cts/verifier/TestListAdapter.java\nwhich is not part of our changes nor related to our changes.",
+      "revId": "ae437a9e3627f7859604f153da692d20d737c441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
