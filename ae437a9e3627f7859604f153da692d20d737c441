@@ -16,6 +16,24 @@
       "message": "change itself is ok, but exposes some higher level issues around tests that require higher levels of functionality than the CDD requires.\n\nnot to be merged until we resolve that.\n\nadditional comments in the bug.",
       "revId": "ae437a9e3627f7859604f153da692d20d737c441",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ab52698c_4624888f",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-04-11T22:49:28Z",
+      "side": 1,
+      "message": "Harish assures me that the comment is levels, not profiles, and that the codec will accept any constructs from SPL 4/5/6 despite what that comment had said.",
+      "parentUuid": "ebf91d26_a0f548f3",
+      "revId": "ae437a9e3627f7859604f153da692d20d737c441",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
