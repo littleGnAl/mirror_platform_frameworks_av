@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3c755b33_f892e755",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 978,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-11T21:27:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "318c878d_6e1b295a",
+      "range": {
+        "startLine": 978,
+        "startChar": 19,
+        "endLine": 978,
+        "endChar": 45
+      },
+      "revId": "d0311000e0e8f33518237cd5dfb28d854ad06ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "861df02d_7c1d1341",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-09T00:09:57Z",
       "side": 1,
       "message": "I do not see the need of keeping the `mHandle` at all in this class. You can simply delete this handle once a buffer has been imported.",
+      "range": {
+        "startLine": 1003,
+        "startChar": 0,
+        "endLine": 1006,
+        "endChar": 0
+      },
+      "revId": "d0311000e0e8f33518237cd5dfb28d854ad06ffb",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "0080d8bf_765dd657",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1006,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-11T21:27:54Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "861df02d_7c1d1341",
       "range": {
         "startLine": 1003,
         "startChar": 0,
