@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e31d5974_49baad35",
+        "filename": "services/camera/libcameraservice/fuzzer/Android.bp",
+        "patchSetId": 4
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1900056
+      },
+      "writtenOn": "2022-04-11T18:10:41Z",
+      "side": 1,
+      "message": "seems like the OWNERS file is slightly out of date, could you add \"borgera@google.com\" and \"rdhanjal@google.com\" here as well.",
+      "range": {
+        "startLine": 29,
+        "startChar": 8,
+        "endLine": 36,
+        "endChar": 10
+      },
+      "revId": "7ee07dda3a3d460cd59c53f8ff2ef89f540de696",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
