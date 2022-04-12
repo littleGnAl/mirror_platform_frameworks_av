@@ -135,6 +135,8 @@ private:
     status_t resetDecoder();
     void resetPlugin();
     status_t deleteDecoder();
+    void getHDRStaticParams(ivd_video_decode_op_t* ps_decode_op,
+                            const std::unique_ptr<C2Work>& work);
 
     std::shared_ptr<IntfImpl> mIntf;
 
@@ -179,6 +181,8 @@ private:
         }
     } mBitstreamColorAspects;
 
+    bool getMDCV(C2StreamHdrStaticMetadataInfo::output* HDRStaticMetadataInfo);
+    bool getCLL(C2StreamHdrStaticMetadataInfo::output* HDRStaticMetadataInfo);
     // profile
     nsecs_t mTimeStart = 0;
     nsecs_t mTimeEnd = 0;
