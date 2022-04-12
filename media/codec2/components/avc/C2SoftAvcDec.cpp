@@ -22,6 +22,7 @@
 
 #include <C2Debug.h>
 #include <C2PlatformSupport.h>
+#include <Codec2BufferUtils.h>
 #include <Codec2Mapper.h>
 #include <SimpleC2Interface.h>
 
@@ -202,6 +203,29 @@ public:
                 .withConstValue(new C2StreamPixelFormatInfo::output(
                                      0u, HAL_PIXEL_FORMAT_YCBCR_420_888))
                 .build());
+
+        // default BT.2020 static info
+        C2HdrStaticMetadataStruct defaultStaticInfo{};
+        helper->addStructDescriptors<C2ColorXyStruct, C2MasteringDisplayColorVolumeStruct>();
+        addParameter(
+                DefineParam(mC2HdrStaticInfo, C2_PARAMKEY_HDR_STATIC_INFO)
+                .withDefault(new C2StreamHdrStaticInfo::output(0u, defaultStaticInfo))
+                .withFields({
+                    C2F(mC2HdrStaticInfo, mastering.red.x).inRange(0, 1),
+                    C2F(mC2HdrStaticInfo, mastering.red.y).inRange(0, 1),
+                    C2F(mC2HdrStaticInfo, mastering.green.x).inRange(0, 1),
+                    C2F(mC2HdrStaticInfo, mastering.green.y).inRange(0, 1),
+                    C2F(mC2HdrStaticInfo, mastering.blue.x).inRange(0, 1),
+                    C2F(mC2HdrStaticInfo, mastering.blue.y).inRange(0, 1),
+                    C2F(mC2HdrStaticInfo, mastering.white.x).inRange(0, 1),
+                    C2F(mC2HdrStaticInfo, mastering.white.x).inRange(0, 1),
+                    C2F(mC2HdrStaticInfo, mastering.maxLuminance).inRange(0, 65535),
+                    C2F(mC2HdrStaticInfo, mastering.minLuminance).inRange(0, 6.5535),
+                    C2F(mC2HdrStaticInfo, maxCll).inRange(0, 0XFFFF),
+                    C2F(mC2HdrStaticInfo, maxFall).inRange(0, 0XFFFF)
+                })
+                .withSetter(HdrStaticInfoSetter)
+                .build());
     }
     static C2R SizeSetter(bool mayBlock, const C2P<C2StreamPictureSizeInfo::output> &oldMe,
                           C2P<C2StreamPictureSizeInfo::output> &me) {
@@ -292,8 +316,53 @@ public:
         return C2R::Ok();
     }
 
+    static C2R HdrStaticInfoSetter(bool mayBlock, C2P<C2StreamHdrStaticInfo::output> &me) {
+        (void)mayBlock;
+        if (me.v.mastering.red.x > 1) {
+            me.set().mastering.red.x = 1;
+        }
+        if (me.v.mastering.red.y > 1) {
+            me.set().mastering.red.y = 1;
+        }
+        if (me.v.mastering.green.x > 1) {
+            me.set().mastering.green.x = 1;
+        }
+        if (me.v.mastering.green.y > 1) {
+            me.set().mastering.green.y = 1;
+        }
+        if (me.v.mastering.blue.x > 1) {
+            me.set().mastering.blue.x = 1;
+        }
+        if (me.v.mastering.blue.y > 1) {
+            me.set().mastering.blue.y = 1;
+        }
+        if (me.v.mastering.white.x > 1) {
+            me.set().mastering.white.x = 1;
+        }
+        if (me.v.mastering.white.y > 1) {
+            me.set().mastering.white.y = 1;
+        }
+        if (me.v.mastering.maxLuminance > 65535) {
+            me.set().mastering.maxLuminance = 65535;
+        }
+        if (me.v.mastering.minLuminance > 6.5535) {
+            me.set().mastering.minLuminance = 6.5535;
+        }
+        if (me.v.maxCll > 0XFFFF) {
+            me.set().maxCll = 0XFFFF;
+        }
+        if (me.v.maxFall > 0XFFFF) {
+            me.set().maxFall = 0XFFFF;
+        }
+        return C2R::Ok();
+    }
+
     std::shared_ptr<C2StreamColorAspectsInfo::output> getColorAspects_l() {
         return mColorAspects;
+    }
+
+    std::shared_ptr<C2StreamHdrStaticInfo::output> getHdrStaticInfo_l() const {
+        return mC2HdrStaticInfo;
     }
 
 private:
@@ -306,6 +375,7 @@ private:
     std::shared_ptr<C2StreamColorAspectsTuning::output> mDefaultColorAspects;
     std::shared_ptr<C2StreamColorAspectsInfo::output> mColorAspects;
     std::shared_ptr<C2StreamPixelFormatInfo::output> mPixelFormat;
+    std::shared_ptr<C2StreamHdrStaticInfo::output> mC2HdrStaticInfo;
 };
 
 static size_t getCpuCoreCount() {
@@ -329,6 +399,71 @@ static void *ivd_aligned_malloc(void *ctxt, WORD32 alignment, WORD32 size) {
 static void ivd_aligned_free(void *ctxt, void *mem) {
     (void) ctxt;
     free(mem);
+}
+
+bool C2SoftAvcDec::getMDCV(HDRStaticInfo* hdrStaticInfo) {
+    WORD32 ret = IV_SUCCESS;
+    ih264d_ctl_get_sei_mdcv_params_ip_t s_mdcv_ip;
+    ih264d_ctl_get_sei_mdcv_params_op_t s_mdcv_op;
+
+    memset(&s_mdcv_ip, 0, sizeof(ih264d_ctl_get_sei_mdcv_params_ip_t));
+    memset(&s_mdcv_op, 0, sizeof(ih264d_ctl_get_sei_mdcv_params_op_t));
+
+    s_mdcv_ip.e_cmd = IVD_CMD_VIDEO_CTL;
+    s_mdcv_ip.e_sub_cmd =
+        (IVD_CONTROL_API_COMMAND_TYPE_T)IH264D_CMD_CTL_GET_SEI_MDCV_PARAMS;
+    s_mdcv_ip.u4_size =
+        sizeof(ih264d_ctl_get_sei_mdcv_params_ip_t);
+    s_mdcv_op.u4_size =
+        sizeof(ih264d_ctl_get_sei_mdcv_params_op_t);
+
+    ret = ivdec_api_function(mDecHandle, (void *)&s_mdcv_ip, (void *)&s_mdcv_op);
+
+    if (IV_SUCCESS != ret) {
+        ALOGV("Failed to get MDCV params: 0x%x", s_mdcv_op.u4_error_code);
+        return false;
+    }
+
+    hdrStaticInfo->sType1.mG.x = s_mdcv_op.au2_display_primaries_x[0];
+    hdrStaticInfo->sType1.mB.x = s_mdcv_op.au2_display_primaries_x[1];
+    hdrStaticInfo->sType1.mR.x = s_mdcv_op.au2_display_primaries_x[2];
+    hdrStaticInfo->sType1.mG.y = s_mdcv_op.au2_display_primaries_y[0];
+    hdrStaticInfo->sType1.mB.y = s_mdcv_op.au2_display_primaries_y[1];
+    hdrStaticInfo->sType1.mR.y = s_mdcv_op.au2_display_primaries_y[2];
+    hdrStaticInfo->sType1.mW.x = s_mdcv_op.u2_white_point_x;
+    hdrStaticInfo->sType1.mW.y = s_mdcv_op.u2_white_point_y;
+    // conversion to cd/m^2
+    hdrStaticInfo->sType1.mMaxDisplayLuminance =
+        (UWORD16)(s_mdcv_op.u4_max_display_mastering_luminance / 10000);
+    hdrStaticInfo->sType1.mMinDisplayLuminance = s_mdcv_op.u4_min_display_mastering_luminance;
+
+    return true;
+}
+
+bool C2SoftAvcDec::getCLL(HDRStaticInfo*  hdrStaticInfo) {
+    WORD32 ret = IV_SUCCESS;
+    ih264d_ctl_get_sei_cll_params_ip_t s_cll_ip;
+    ih264d_ctl_get_sei_cll_params_op_t s_cll_op;
+
+    memset(&s_cll_ip, 0, sizeof(ih264d_ctl_get_sei_cll_params_ip_t));
+    memset(&s_cll_op, 0, sizeof(ih264d_ctl_get_sei_cll_params_op_t));
+
+    s_cll_ip.e_cmd = IVD_CMD_VIDEO_CTL;
+    s_cll_ip.e_sub_cmd =
+        (IVD_CONTROL_API_COMMAND_TYPE_T)IH264D_CMD_CTL_GET_SEI_CLL_PARAMS;
+    s_cll_ip.u4_size = sizeof(ih264d_ctl_get_sei_cll_params_ip_t);
+    s_cll_op.u4_size = sizeof(ih264d_ctl_get_sei_cll_params_op_t);
+
+    ret = ivdec_api_function(mDecHandle, (void *)&s_cll_ip, (void *)&s_cll_op);
+
+    if (IV_SUCCESS != ret) {
+        ALOGV("Failed to get CLL params: 0x%x", s_cll_op.u4_error_code);
+        return false;
+    }
+
+    hdrStaticInfo->sType1.mMaxContentLightLevel = s_cll_op.u2_max_content_light_level;
+    hdrStaticInfo->sType1.mMaxFrameAverageLightLevel = s_cll_op.u2_max_pic_average_light_level;
+    return true;
 }
 
 C2SoftAvcDec::C2SoftAvcDec(
@@ -508,6 +643,55 @@ void C2SoftAvcDec::getVersion() {
     }
 }
 
+void C2SoftAvcDec::getHDRStaticParams(ivd_video_decode_op_t *ps_decode_op,
+                                      const std::unique_ptr<C2Work> &work) {
+    HDRStaticInfo hdrStaticInfoLocal;
+    memset(&hdrStaticInfoLocal, 0, sizeof(HDRStaticInfo));
+    hdrStaticInfoLocal.mID = HDRStaticInfo::kType1;
+    // Get mastering display color volume parameters if they have changed
+    if (1 == ps_decode_op->s_sei_decode_op.u1_sei_mdcv_params_present_flag) {
+        if(!getMDCV(&hdrStaticInfoLocal)) {
+            ALOGV("Unable to find MDCV SEI params");
+            return;
+        }
+    }
+
+    // Get content light level parameters if they have changed
+    if (1 == ps_decode_op->s_sei_decode_op.u1_sei_cll_params_present_flag) {
+        if(!getCLL(&hdrStaticInfoLocal)) {
+            ALOGV("Unable to find CLL SEI params");
+            return;
+        }
+    }
+
+    // Assign parameters in respective fields
+    {
+        mHdrStaticInfo.mID = HDRStaticInfo::kType1;
+        mHdrStaticInfo.sType1 = hdrStaticInfoLocal.sType1;
+
+        //Convert HDRStaticInfo to C2StreamHdrStaticInfo
+        C2StreamHdrStaticInfo::output c2HdrStaticInfo;
+        c2HdrStaticInfo.mastering.red.x = mHdrStaticInfo.sType1.mR.x * 0.00002;
+        c2HdrStaticInfo.mastering.red.y = mHdrStaticInfo.sType1.mR.y * 0.00002;
+        c2HdrStaticInfo.mastering.green.x = mHdrStaticInfo.sType1.mG.x * 0.00002;
+        c2HdrStaticInfo.mastering.green.y = mHdrStaticInfo.sType1.mG.y * 0.00002;
+        c2HdrStaticInfo.mastering.blue.x = mHdrStaticInfo.sType1.mB.x * 0.00002;
+        c2HdrStaticInfo.mastering.blue.y = mHdrStaticInfo.sType1.mB.y * 0.00002;
+        c2HdrStaticInfo.mastering.white.x = mHdrStaticInfo.sType1.mW.x * 0.00002;
+        c2HdrStaticInfo.mastering.white.y = mHdrStaticInfo.sType1.mW.y * 0.00002;
+        c2HdrStaticInfo.mastering.maxLuminance = mHdrStaticInfo.sType1.mMaxDisplayLuminance;
+        c2HdrStaticInfo.mastering.minLuminance =
+                mHdrStaticInfo.sType1.mMinDisplayLuminance * 0.0001;
+        c2HdrStaticInfo.maxCll = mHdrStaticInfo.sType1.mMaxContentLightLevel;
+        c2HdrStaticInfo.maxFall = mHdrStaticInfo.sType1.mMaxFrameAverageLightLevel;
+
+        std::vector<std::unique_ptr<C2SettingResult>> failures;
+        (void)mIntf->config({&c2HdrStaticInfo}, C2_MAY_BLOCK, &failures);
+        work->worklets.front()->output.configUpdate.push_back(
+                C2Param::Copy(c2HdrStaticInfo));
+    }
+}
+
 status_t C2SoftAvcDec::initDecoder() {
     if (OK != createDecoder()) return UNKNOWN_ERROR;
     mNumCores = MIN(getCpuCoreCount(), MAX_NUM_CORES);
@@ -517,6 +701,7 @@ status_t C2SoftAvcDec::initDecoder() {
     (void) setNumCores();
     if (OK != setParams(mStride, IVD_DECODE_FRAME)) return UNKNOWN_ERROR;
     (void) getVersion();
+    memset(&mHdrStaticInfo, 0, sizeof(HDRStaticInfo));
 
     return OK;
 }
@@ -906,6 +1091,7 @@ void C2SoftAvcDec::process(
             work->result = C2_CORRUPTED;
             return;
         }
+
         if (ps_decode_op->i4_reorder_depth >= 0 && mOutputDelay != ps_decode_op->i4_reorder_depth) {
             mOutputDelay = ps_decode_op->i4_reorder_depth;
             ALOGV("New Output delay %d ", mOutputDelay);
@@ -953,6 +1139,7 @@ void C2SoftAvcDec::process(
             }
         }
         (void)getVuiParams();
+        getHDRStaticParams(ps_decode_op, work);
         hasPicture |= (1 == ps_decode_op->u4_frame_decoded_flag);
         if (ps_decode_op->u4_output_present) {
             finishWork(ps_decode_op->u4_ts, work);

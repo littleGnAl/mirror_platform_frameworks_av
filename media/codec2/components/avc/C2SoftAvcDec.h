@@ -128,6 +128,8 @@ private:
                        size_t inSize,
                        uint32_t tsMarker);
     bool getVuiParams();
+    bool getMDCV(HDRStaticInfo* hdrStaticInfo);
+    bool getCLL(HDRStaticInfo* hdrStaticInfo);
     c2_status_t ensureDecoderState(const std::shared_ptr<C2BlockPool> &pool);
     void finishWork(uint64_t index, const std::unique_ptr<C2Work> &work);
     status_t setFlushMode();
@@ -138,6 +140,8 @@ private:
     status_t resetDecoder();
     void resetPlugin();
     status_t deleteDecoder();
+    void getHDRStaticParams(ivd_video_decode_op_t *ps_decode_op,
+                            const std::unique_ptr<C2Work> &work);
 
     std::shared_ptr<IntfImpl> mIntf;
 
@@ -188,6 +192,8 @@ private:
 #ifdef FILE_DUMP_ENABLE
     char mInFile[200];
 #endif /* FILE_DUMP_ENABLE */
+
+    HDRStaticInfo mHdrStaticInfo;
 
     C2_DO_NOT_COPY(C2SoftAvcDec);
 };
