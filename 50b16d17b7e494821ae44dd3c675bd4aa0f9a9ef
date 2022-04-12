@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "126065af_b6071461",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2022-04-12T23:50:46Z",
+      "side": 1,
+      "message": "oh. I missed \"operator overriding\".",
+      "parentUuid": "f6be403b_8102545f",
+      "range": {
+        "startLine": 1023,
+        "startChar": 20,
+        "endLine": 1023,
+        "endChar": 26
+      },
+      "revId": "50b16d17b7e494821ae44dd3c675bd4aa0f9a9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "49385e13_825b5292",
@@ -37,6 +61,30 @@
       "writtenOn": "2022-04-12T01:00:12Z",
       "side": 1,
       "message": "buffer.get()",
+      "range": {
+        "startLine": 1117,
+        "startChar": 20,
+        "endLine": 1117,
+        "endChar": 26
+      },
+      "revId": "50b16d17b7e494821ae44dd3c675bd4aa0f9a9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "124cd46d_0c79d003",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1765237
+      },
+      "writtenOn": "2022-04-12T23:50:46Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "49385e13_825b5292",
       "range": {
         "startLine": 1117,
         "startChar": 20,
