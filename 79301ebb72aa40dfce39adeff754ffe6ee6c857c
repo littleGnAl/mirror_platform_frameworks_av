@@ -20,6 +20,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "fbed351a_74934798",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1806,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-04-12T19:34:36Z",
+      "side": 1,
+      "message": "The ANR bug was due to out-of-memory with the looper. But i also see that the out-of memory causes the function requestInitialInputBuffers() to fail sometimes ( not always ). Doing this was propagating the error earlier than later. \n\nBut if there is a other issue, we can pull this out of this commit.",
+      "parentUuid": "f070aa67_5cc9bf62",
+      "revId": "79301ebb72aa40dfce39adeff754ffe6ee6c857c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78c0cab8_a888782a",
         "filename": "media/codec2/sfplugin/CCodec.cpp",
         "patchSetId": 3
@@ -31,6 +49,30 @@
       "writtenOn": "2022-04-12T19:14:14Z",
       "side": 1,
       "message": "Buffers",
+      "range": {
+        "startLine": 1810,
+        "startChar": 41,
+        "endLine": 1810,
+        "endChar": 47
+      },
+      "revId": "79301ebb72aa40dfce39adeff754ffe6ee6c857c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef77a72c_eb96e755",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1810,
+      "author": {
+        "id": 1939216
+      },
+      "writtenOn": "2022-04-12T19:34:36Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "78c0cab8_a888782a",
       "range": {
         "startLine": 1810,
         "startChar": 41,
