@@ -3,6 +3,46 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "f070aa67_5cc9bf62",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1806,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-12T19:14:14Z",
+      "side": 1,
+      "message": "This part of the change does not seem to match the commit message. Is this also required for resolving the bug?",
+      "revId": "79301ebb72aa40dfce39adeff754ffe6ee6c857c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "78c0cab8_a888782a",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1810,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-12T19:14:14Z",
+      "side": 1,
+      "message": "Buffers",
+      "range": {
+        "startLine": 1810,
+        "startChar": 41,
+        "endLine": 1810,
+        "endChar": 47
+      },
+      "revId": "79301ebb72aa40dfce39adeff754ffe6ee6c857c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f7443cf8_5331b9fb",
         "filename": "media/codec2/sfplugin/CCodec.cpp",
         "patchSetId": 3
