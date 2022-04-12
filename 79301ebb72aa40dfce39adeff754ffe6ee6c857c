@@ -38,6 +38,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "250966ca_2ffc1537",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1806,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-12T20:05:39Z",
+      "side": 1,
+      "message": "Let\u0027s include this part in the change \u0026 update the commit message",
+      "parentUuid": "fbed351a_74934798",
+      "revId": "79301ebb72aa40dfce39adeff754ffe6ee6c857c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "78c0cab8_a888782a",
         "filename": "media/codec2/sfplugin/CCodec.cpp",
         "patchSetId": 3
@@ -96,6 +114,30 @@
       "writtenOn": "2022-04-07T23:49:32Z",
       "side": 1,
       "message": "I have no idea whether this could be reversed or not.\nWonsik\u0027s review is required.",
+      "range": {
+        "startLine": 1806,
+        "startChar": 0,
+        "endLine": 1813,
+        "endChar": 5
+      },
+      "revId": "79301ebb72aa40dfce39adeff754ffe6ee6c857c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "755b440e_068614a9",
+        "filename": "media/codec2/sfplugin/CCodec.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 1813,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-12T20:05:39Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f7443cf8_5331b9fb",
       "range": {
         "startLine": 1806,
         "startChar": 0,
