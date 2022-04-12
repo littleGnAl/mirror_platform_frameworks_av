@@ -22,6 +22,30 @@
       },
       "revId": "60fa4b987672408d6eef105e93184c5cdd4e8d91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "325b1745_1ab67254",
+        "filename": "services/camera/libcameraservice/api2/HeicCompositeStream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2022-04-12T17:12:54Z",
+      "side": 1,
+      "message": "Dichen, do you see any adverse effect of doing this?\n\nAt least from camera side, we are not doing any explicit cropping.",
+      "parentUuid": "2f2278e3_8728515a",
+      "range": {
+        "startLine": 446,
+        "startChar": 43,
+        "endLine": 446,
+        "endChar": 84
+      },
+      "revId": "60fa4b987672408d6eef105e93184c5cdd4e8d91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
