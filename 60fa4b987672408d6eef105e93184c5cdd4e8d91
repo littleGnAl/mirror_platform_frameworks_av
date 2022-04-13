@@ -70,6 +70,30 @@
       },
       "revId": "60fa4b987672408d6eef105e93184c5cdd4e8d91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "4dda9a1b_42890f78",
+        "filename": "services/camera/libcameraservice/api2/HeicCompositeStream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2022-04-13T23:38:21Z",
+      "side": 1,
+      "message": "Well I\u0027m sorry I need to correct myself. There is a crop method in MediaCodec, though not via public keys: \"crop-left/right/bottom/top\", sample code:\n\n MediaFormat format \u003d decoder.getOutputFormat(…);\n int width \u003d format.getInteger(MediaFormat.KEY_WIDTH);\n if (format.containsKey(\"crop-left\") \u0026\u0026 format.containsKey(\"crop-right\")) {\n    width \u003d format.getInteger(\"crop-right\") + 1 - format.getInteger(\"crop-left\");\n }\n int height \u003d format.getInteger(MediaFormat.KEY_HEIGHT);\n if (format.containsKey(\"crop-top\") \u0026\u0026 format.containsKey(\"crop-bottom\")) {\n    height \u003d format.getInteger(\"crop-bottom\") + 1 - format.getInteger(\"crop-top\");\n }",
+      "parentUuid": "c51babab_f43af710",
+      "range": {
+        "startLine": 446,
+        "startChar": 43,
+        "endLine": 446,
+        "endChar": 84
+      },
+      "revId": "60fa4b987672408d6eef105e93184c5cdd4e8d91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
