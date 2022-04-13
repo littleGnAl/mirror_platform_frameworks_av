@@ -218,9 +218,9 @@ public:
 
         // TODO: support more formats?
         std::vector<uint32_t> pixelFormats = {HAL_PIXEL_FORMAT_YCBCR_420_888};
-#ifdef VP9
+#ifdef VP9        
         // TODO(b/229387180) Enable once P010 is fully supported
-        if (false && isAtLeastT()) {
+        if (false && isAtLeastT() && isHalPixelFormatSupported(HAL_PIXEL_FORMAT_YCBCR_P010)) {
             pixelFormats.push_back(HAL_PIXEL_FORMAT_YCBCR_P010);
         }
 #endif
