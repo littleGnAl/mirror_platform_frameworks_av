@@ -18,6 +18,7 @@
 #define LOG_TAG "SimpleC2Component"
 #include <log/log.h>
 
+#include <android/hardware_buffer.h>
 #include <cutils/properties.h>
 #include <media/stagefright/foundation/AMessage.h>
 
@@ -26,6 +27,7 @@
 #include <C2Config.h>
 #include <C2Debug.h>
 #include <C2PlatformSupport.h>
+#include <Codec2BufferUtils.h>
 #include <SimpleC2Component.h>
 
 namespace android {
@@ -893,17 +895,7 @@ int SimpleC2Component::getHalPixelFormatForBitDepth10(bool allowRGBA1010102) {
         halPixelFormats.push_back(HAL_PIXEL_FORMAT_RGBA_1010102);
 
         for (int halPixelFormat : halPixelFormats) {
-            std::shared_ptr<C2GraphicBlock> block;
-
-            uint32_t gpuConsumerFlags = halPixelFormat == HAL_PIXEL_FORMAT_RGBA_1010102
-                                                ? C2AndroidMemoryUsage::HW_TEXTURE_READ
-                                                : 0;
-            C2MemoryUsage usage = {C2MemoryUsage::CPU_READ | gpuConsumerFlags,
-                                   C2MemoryUsage::CPU_WRITE};
-            // TODO(b/214411172) Use AHardwareBuffer_isSupported once it supports P010
-            c2_status_t status =
-                    mOutputBlockPool->fetchGraphicBlock(320, 240, halPixelFormat, usage, &block);
-            if (status == C2_OK) {
+            if (isHalPixelFormatSupported((AHardwareBuffer_Format)halPixelFormat)) {
                 mBitDepth10HalPixelFormats.push_back(halPixelFormat);
             }
         }
