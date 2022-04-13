@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "abf031aa_b70a215c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 1
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1010050
+      },
+      "writtenOn": "2022-04-13T01:31:06Z",
+      "side": 1,
+      "message": "Looking through the code, this should indeed return -1, not 0, so even if the compiler wasn\u0027t complaining, this is a bug.",
+      "revId": "0807790216981c19a8931ff742a0c62b9290b063",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
