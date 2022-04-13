@@ -24,6 +24,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "67a67fb9_c1358106",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-13T20:19:08Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "93345281_732f8903",
+      "range": {
+        "startLine": 983,
+        "startChar": 0,
+        "endLine": 993,
+        "endChar": 19
+      },
+      "revId": "50b16d17b7e494821ae44dd3c675bd4aa0f9a9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "f6be403b_8102545f",
@@ -60,6 +84,30 @@
       "writtenOn": "2022-04-12T23:50:46Z",
       "side": 1,
       "message": "oh. I missed \"operator overriding\".",
+      "parentUuid": "f6be403b_8102545f",
+      "range": {
+        "startLine": 1023,
+        "startChar": 20,
+        "endLine": 1023,
+        "endChar": 26
+      },
+      "revId": "50b16d17b7e494821ae44dd3c675bd4aa0f9a9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "904f6b73_9edc86e9",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1023,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-13T20:19:08Z",
+      "side": 1,
+      "message": "operator bool() defined in L1009 does the same thing (i.e. returning false if the buffer handle is null).",
       "parentUuid": "f6be403b_8102545f",
       "range": {
         "startLine": 1023,
@@ -118,6 +166,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "c3a4141c_ad2d1ce1",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1117,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-13T20:19:08Z",
+      "side": 1,
+      "message": "Please see the comment above.",
+      "parentUuid": "49385e13_825b5292",
+      "range": {
+        "startLine": 1117,
+        "startChar": 20,
+        "endLine": 1117,
+        "endChar": 26
+      },
+      "revId": "50b16d17b7e494821ae44dd3c675bd4aa0f9a9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3084d6ac_9b706d72",
@@ -154,6 +226,30 @@
       "writtenOn": "2022-04-13T20:02:45Z",
       "side": 1,
       "message": "gralloc4::encodeSmpte2086 and gralloc4::encodeCta861_3 might do that? we may not need double-check values here.",
+      "parentUuid": "3084d6ac_9b706d72",
+      "range": {
+        "startLine": 1121,
+        "startChar": 34,
+        "endLine": 1121,
+        "endChar": 35
+      },
+      "revId": "50b16d17b7e494821ae44dd3c675bd4aa0f9a9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "c2f8e8dd_77382266",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-13T20:19:08Z",
+      "side": 1,
+      "message": "encode* does not do the validity checks, added simple checks.",
       "parentUuid": "3084d6ac_9b706d72",
       "range": {
         "startLine": 1121,
