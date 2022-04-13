@@ -46,6 +46,30 @@
       },
       "revId": "60fa4b987672408d6eef105e93184c5cdd4e8d91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c51babab_f43af710",
+        "filename": "services/camera/libcameraservice/api2/HeicCompositeStream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1392607
+      },
+      "writtenOn": "2022-04-13T22:03:41Z",
+      "side": 1,
+      "message": "On HEIF decoding side, I don\u0027t think we are doing this.",
+      "parentUuid": "325b1745_1ab67254",
+      "range": {
+        "startLine": 446,
+        "startChar": 43,
+        "endLine": 446,
+        "endChar": 84
+      },
+      "revId": "60fa4b987672408d6eef105e93184c5cdd4e8d91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
