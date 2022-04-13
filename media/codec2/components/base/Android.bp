@@ -30,6 +30,7 @@ cc_library {
     shared_libs: [
         "libcutils", // for properties
         "liblog", // for ALOG
+        "libnativewindow", // for AHardwareBuffer_isSupported
         "libsfplugin_ccodec_utils", // for ImageCopy
         "libstagefright_foundation", // for Mutexed
     ],
@@ -65,6 +66,7 @@ cc_defaults {
         "libcodec2_soft_common",
         "libcutils", // for properties
         "liblog", // for ALOG
+        "libnativewindow", // for AHardwareBuffer_isSupported
         "libsfplugin_ccodec_utils", // for ImageCopy
         "libstagefright_foundation", // for ColorUtils and MIME
     ],
