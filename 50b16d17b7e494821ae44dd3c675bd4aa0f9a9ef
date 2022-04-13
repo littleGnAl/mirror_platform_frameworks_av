@@ -3,6 +3,29 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "93345281_732f8903",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 993,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-13T20:02:45Z",
+      "side": 1,
+      "message": "Could we have some comments on this?",
+      "range": {
+        "startLine": 983,
+        "startChar": 0,
+        "endLine": 993,
+        "endChar": 19
+      },
+      "revId": "50b16d17b7e494821ae44dd3c675bd4aa0f9a9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "f6be403b_8102545f",
         "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
         "patchSetId": 2
@@ -108,6 +131,30 @@
       "writtenOn": "2022-04-12T01:00:12Z",
       "side": 1,
       "message": "need to check a validation of values in static info",
+      "range": {
+        "startLine": 1121,
+        "startChar": 34,
+        "endLine": 1121,
+        "endChar": 35
+      },
+      "revId": "50b16d17b7e494821ae44dd3c675bd4aa0f9a9ef",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "875dad0b_6fbe0235",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 1121,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-13T20:02:45Z",
+      "side": 1,
+      "message": "gralloc4::encodeSmpte2086 and gralloc4::encodeCta861_3 might do that? we may not need double-check values here.",
+      "parentUuid": "3084d6ac_9b706d72",
       "range": {
         "startLine": 1121,
         "startChar": 34,
