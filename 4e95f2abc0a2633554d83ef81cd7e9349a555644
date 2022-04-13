@@ -39,6 +39,30 @@
       },
       "revId": "4e95f2abc0a2633554d83ef81cd7e9349a555644",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "02c96f9b_681660ab",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 770,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-13T17:08:56Z",
+      "side": 1,
+      "message": "Let\u0027s use android_get_device_api_level()",
+      "parentUuid": "56352aef_356d87a6",
+      "range": {
+        "startLine": 770,
+        "startChar": 8,
+        "endLine": 770,
+        "endChar": 53
+      },
+      "revId": "4e95f2abc0a2633554d83ef81cd7e9349a555644",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
