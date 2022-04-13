@@ -289,11 +289,19 @@ public:
      *
      * \param   format  mandatory buffer format for MediaCodecBuffer
      * \param   alloc   a function to allocate backing ABuffer if needed.
+     * \param   buffer  C2Buffer object to be copied; nullptr if not known
      * \return          ConstGraphicBlockBuffer object with no wrapping buffer.
      */
     static sp<ConstGraphicBlockBuffer> AllocateEmpty(
             const sp<AMessage> &format,
-            std::function<sp<ABuffer>(size_t)> alloc);
+            std::function<sp<ABuffer>(size_t)> alloc,
+            const std::shared_ptr<C2Buffer> &buffer = nullptr);
+
+    /**
+     * Calculate the size of back buffer given |format| and |buffer|.
+     */
+    static size_t CalculateBackBufferSize(
+            const sp<AMessage> &format, const std::shared_ptr<C2Buffer> &buffer);
 
     virtual ~ConstGraphicBlockBuffer() = default;
 
