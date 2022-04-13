@@ -226,7 +226,6 @@ public:
           mView(view),
           mWidth(view.width()),
           mHeight(view.height()),
-          mAllocatedDepth(0),
           mBackBufferSize(0),
           mMediaImage(new ABuffer(sizeof(MediaImage2))) {
         if (!format->findInt32(KEY_COLOR_FORMAT, &mClientColorFormat)) {
@@ -248,11 +247,24 @@ public:
             return;
         }
         memset(mediaImage, 0, sizeof(*mediaImage));
-        mAllocatedDepth = layout.planes[0].allocatedDepth;
+        uint32_t allocDepth = layout.planes[0].allocatedDepth;
         uint32_t bitDepth = layout.planes[0].bitDepth;
 
+        uint32_t bytesPerSample = divUp(allocDepth, 8u);
+        switch (mClientColorFormat) {
+            case COLOR_FormatYUV420Flexible:
+            case COLOR_FormatYUV420Planar:
+            case COLOR_FormatYUV420PackedPlanar:
+            case COLOR_FormatYUV420SemiPlanar:
+            case COLOR_FormatYUV420PackedSemiPlanar:
+                bytesPerSample = 1;
+                break;
+            case COLOR_FormatYUVP010:
+                bytesPerSample = 2;
+                break;
+        }
         // align width and height to support subsampling cleanly
-        uint32_t stride = align(view.crop().width, 2) * divUp(layout.planes[0].allocatedDepth, 8u);
+        uint32_t stride = align(view.crop().width, 2) * bytesPerSample;
         uint32_t vStride = align(view.crop().height, 2);
 
         bool tryWrapping = !copy;
@@ -289,21 +301,26 @@ public:
                     yuv420888 = yuv420888 && yPlane.colInc == 1 && uPlane.rowInc == vPlane.rowInc;
                 }
                 int32_t copyFormat = mClientColorFormat;
-                if (yuv420888 && mClientColorFormat == COLOR_FormatYUV420Flexible) {
-                    if (uPlane.colInc == 2 && vPlane.colInc == 2
-                            && yPlane.rowInc == uPlane.rowInc) {
-                        copyFormat = COLOR_FormatYUV420PackedSemiPlanar;
-                    } else if (uPlane.colInc == 1 && vPlane.colInc == 1
-                            && yPlane.rowInc == uPlane.rowInc * 2) {
-                        copyFormat = COLOR_FormatYUV420PackedPlanar;
+                if (mClientColorFormat == COLOR_FormatYUV420Flexible) {
+                    if (yuv420888) {
+                        if (uPlane.colInc == 2 && vPlane.colInc == 2
+                                && yPlane.rowInc == uPlane.rowInc) {
+                            copyFormat = COLOR_FormatYUV420PackedSemiPlanar;
+                        } else if (uPlane.colInc == 1 && vPlane.colInc == 1
+                                && yPlane.rowInc == uPlane.rowInc * 2) {
+                            copyFormat = COLOR_FormatYUV420PackedPlanar;
+                        }
+                    } else {
+                        tryWrapping = false;
                     }
                 }
-                ALOGV("client_fmt=0x%x y:{colInc=%d rowInc=%d} u:{colInc=%d rowInc=%d} "
-                        "v:{colInc=%d rowInc=%d}",
-                        mClientColorFormat,
-                        yPlane.colInc, yPlane.rowInc,
-                        uPlane.colInc, uPlane.rowInc,
-                        vPlane.colInc, vPlane.rowInc);
+                ALOGV("client_fmt=0x%x y:{colInc=%d rowInc=%d allocDetph=%u bitDepth=%u} "
+                      "u:{colInc=%d rowInc=%d allocDepth=%u bitDepth=%u} "
+                      "v:{colInc=%d rowInc=%d allocDepth=%u bitDepth=%u}",
+                      mClientColorFormat,
+                      yPlane.colInc, yPlane.rowInc, yPlane.allocatedDepth, yPlane.bitDepth,
+                      uPlane.colInc, uPlane.rowInc, uPlane.allocatedDepth, uPlane.bitDepth,
+                      vPlane.colInc, vPlane.rowInc, vPlane.allocatedDepth, vPlane.bitDepth);
                 switch (copyFormat) {
                     case COLOR_FormatYUV420Flexible:
                     case COLOR_FormatYUV420Planar:
@@ -405,7 +422,7 @@ public:
                     default: {
                         // default to fully planar format --- this will be overridden if wrapping
                         // TODO: keep interleaved format
-                        int32_t colInc = divUp(mAllocatedDepth, 8u);
+                        int32_t colInc = bytesPerSample;
                         int32_t rowInc = stride * colInc / yPlane.colSampling;
                         mediaImage->mPlane[mediaImage->Y].mOffset = 0;
                         mediaImage->mPlane[mediaImage->Y].mColInc = colInc;
@@ -493,7 +510,7 @@ public:
                 if (maxPtr < mView.data()[i] + maxOffset) {
                     maxPtr = mView.data()[i] + maxOffset;
                 }
-                planeSize += planeStride * divUp(mAllocatedDepth, 8u)
+                planeSize += planeStride * divUp(allocDepth, 8u)
                         * align(mHeight, 64) / plane.rowSampling;
             }
 
@@ -517,8 +534,8 @@ public:
         mediaImage->mNumPlanes = layout.numPlanes;
         mediaImage->mWidth = view.crop().width;
         mediaImage->mHeight = view.crop().height;
-        mediaImage->mBitDepth = bitDepth;
-        mediaImage->mBitDepthAllocated = mAllocatedDepth;
+        mediaImage->mBitDepthAllocated = bytesPerSample * 8;
+        mediaImage->mBitDepth = std::min(mediaImage->mBitDepthAllocated, bitDepth);
 
         uint32_t bufferSize = 0;
         for (uint32_t i = 0; i < layout.numPlanes; ++i) {
@@ -534,7 +551,7 @@ public:
                 mInitCheck = BAD_VALUE;
                 return;
             }
-            if (plane.allocatedDepth != mAllocatedDepth || plane.bitDepth != bitDepth) {
+            if (plane.allocatedDepth != allocDepth || plane.bitDepth != bitDepth) {
                 ALOGD("different allocatedDepth/bitDepth per plane unsupported");
                 mInitCheck = BAD_VALUE;
                 return;
@@ -598,7 +615,6 @@ private:
     int32_t mClientColorFormat;  ///< SDK color format for MediaImage
     int32_t mComponentColorFormat;  ///< SDK color format from component
     sp<ABuffer> mWrapped;  ///< wrapped buffer (if we can map C2Buffer to an ABuffer)
-    uint32_t mAllocatedDepth;
     uint32_t mBackBufferSize;
     sp<ABuffer> mMediaImage;
     std::function<sp<ABuffer>(size_t)> mAlloc;
@@ -786,7 +802,8 @@ sp<ConstGraphicBlockBuffer> ConstGraphicBlockBuffer::Allocate(
 // static
 sp<ConstGraphicBlockBuffer> ConstGraphicBlockBuffer::AllocateEmpty(
         const sp<AMessage> &format,
-        std::function<sp<ABuffer>(size_t)> alloc) {
+        std::function<sp<ABuffer>(size_t)> alloc,
+        size_t bufferSize) {
     int32_t width, height;
     if (!format->findInt32("width", &width)
             || !format->findInt32("height", &height)) {
@@ -800,7 +817,8 @@ sp<ConstGraphicBlockBuffer> ConstGraphicBlockBuffer::AllocateEmpty(
             bpp = 24;  // 16(Y) + 4(U) + 4(V)
         }
     }
-    sp<ABuffer> aBuffer(alloc(align(width, 16) * align(height, 16) * bpp / 8));
+    bufferSize = std::max(bufferSize, size_t(align(width, 16) * align(height, 16) * bpp / 8));
+    sp<ABuffer> aBuffer(alloc(bufferSize));
     return new ConstGraphicBlockBuffer(
             format,
             aBuffer,

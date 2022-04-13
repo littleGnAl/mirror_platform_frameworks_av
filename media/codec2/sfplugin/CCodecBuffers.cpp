@@ -1188,10 +1188,10 @@ void OutputBuffersArray::realloc(const std::shared_ptr<C2Buffer> &c2buffer) {
     switch (c2buffer->data().type()) {
         case C2BufferData::LINEAR: {
             uint32_t size = kLinearBufferSize;
-            const std::vector<C2ConstLinearBlock> &linear_blocks = c2buffer->data().linearBlocks();
-            const uint32_t block_size = linear_blocks.front().size();
-            if (block_size < kMaxLinearBufferSize / 2) {
-                size = block_size * 2;
+            const std::vector<C2ConstLinearBlock> &linearBlocks = c2buffer->data().linearBlocks();
+            const uint32_t blockSize = linearBlocks.front().size();
+            if (blockSize < kMaxLinearBufferSize / 2) {
+                size = blockSize * 2;
             } else {
                 size = kMaxLinearBufferSize;
             }
@@ -1204,13 +1204,14 @@ void OutputBuffersArray::realloc(const std::shared_ptr<C2Buffer> &c2buffer) {
 
         case C2BufferData::GRAPHIC: {
             // This is only called for RawGraphicOutputBuffers.
-            mAlloc = [format = mFormat,
-                      lbp = LocalBufferPool::Create()] {
-                return ConstGraphicBlockBuffer::AllocateEmpty(
-                        format,
-                        [lbp](size_t capacity) {
-                            return lbp->newBuffer(capacity);
-                        });
+            std::shared_ptr<LocalBufferPool> lbp = LocalBufferPool::Create();
+            auto lbpAlloc = [lbp](size_t capacity) {
+                return lbp->newBuffer(capacity);
+            };
+            sp<ConstGraphicBlockBuffer> buffer =
+                ConstGraphicBlockBuffer::Allocate(mFormat, c2buffer, lbpAlloc);
+            mAlloc = [format = mFormat, lbpAlloc, bufferSize = buffer->capacity()]() {
+                return ConstGraphicBlockBuffer::AllocateEmpty(format, lbpAlloc, bufferSize);
             };
             ALOGD("[%s] reallocating with graphic buffer: format = %s",
                   mName, mFormat->debugString().c_str());
