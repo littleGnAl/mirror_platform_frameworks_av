@@ -19,6 +19,7 @@
 #include <log/log.h>
 
 #include <cutils/properties.h>
+#include <media/hardware/HardwareAPI.h>
 #include <media/stagefright/foundation/AMessage.h>
 
 #include <inttypes.h>
@@ -37,6 +38,26 @@ bool isAtLeastT() {
     __system_property_get("ro.build.version.codename", deviceCodeName);
     return android_get_device_api_level() >= __ANDROID_API_T__ ||
            !strcmp(deviceCodeName, "Tiramisu");
+}
+
+bool isHalPixelFormatSupported(AHardwareBuffer_Format format) {
+    // TODO(b/229387180) Enable once P010 is fully supported
+    if (format == (AHardwareBuffer_Format)HAL_PIXEL_FORMAT_YCBCR_P010) {
+        return false;
+    }
+    const AHardwareBuffer_Desc desc = {
+            .width = 320,
+            .height = 240,
+            .format = format,
+            .layers = 1,
+            .usage = AHARDWAREBUFFER_USAGE_CPU_READ_RARELY | AHARDWAREBUFFER_USAGE_CPU_WRITE_OFTEN |
+                     AHARDWAREBUFFER_USAGE_GPU_SAMPLED_IMAGE,
+            .stride = 0,
+            .rfu0 = 0,
+            .rfu1 = 0,
+    };
+
+    return AHardwareBuffer_isSupported(&desc);
 }
 
 void convertYUV420Planar8ToYV12(uint8_t *dstY, uint8_t *dstU, uint8_t *dstV, const uint8_t *srcY,
@@ -774,8 +795,7 @@ int SimpleC2Component::getHalPixelFormatForBitDepth10(bool allowRGBA1010102) {
     // Save supported hal pixel formats for bit depth of 10, the first time this is called
     if (!mBitDepth10HalPixelFormats.size()) {
         std::vector<int> halPixelFormats;
-        // TODO(b/229387180) Enable once P010 is fully supported
-        if (false && isAtLeastT()) {
+        if (isAtLeastT()) {
             halPixelFormats.push_back(HAL_PIXEL_FORMAT_YCBCR_P010);
         }
         // since allowRGBA1010102 can chance in each call, but mBitDepth10HalPixelFormats
@@ -783,17 +803,7 @@ int SimpleC2Component::getHalPixelFormatForBitDepth10(bool allowRGBA1010102) {
         halPixelFormats.push_back(HAL_PIXEL_FORMAT_RGBA_1010102);
 
         for (int halPixelFormat : halPixelFormats) {
-            std::shared_ptr<C2GraphicBlock> block;
-
-            uint32_t gpuConsumerFlags = halPixelFormat == HAL_PIXEL_FORMAT_RGBA_1010102
-                                                ? C2AndroidMemoryUsage::HW_TEXTURE_READ
-                                                : 0;
-            C2MemoryUsage usage = {C2MemoryUsage::CPU_READ | gpuConsumerFlags,
-                                   C2MemoryUsage::CPU_WRITE};
-            // TODO(b/214411172) Use AHardwareBuffer_isSupported once it supports P010
-            c2_status_t status =
-                    mOutputBlockPool->fetchGraphicBlock(320, 240, halPixelFormat, usage, &block);
-            if (status == C2_OK) {
+            if (isHalPixelFormatSupported((AHardwareBuffer_Format)halPixelFormat)) {
                 mBitDepth10HalPixelFormats.push_back(halPixelFormat);
             }
         }
