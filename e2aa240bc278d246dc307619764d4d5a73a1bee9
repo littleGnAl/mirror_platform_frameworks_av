@@ -39,6 +39,30 @@
       },
       "revId": "e2aa240bc278d246dc307619764d4d5a73a1bee9",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "68b425a5_f0a08301",
+        "filename": "media/codec2/sfplugin/Codec2Buffer.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 1008,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-13T22:34:58Z",
+      "side": 1,
+      "message": "The C2Buffer object will be holding the reference so this freeBuffer() here won\u0027t free the buffer until the C2Buffer goes away \u0026 releases its references.",
+      "parentUuid": "d75c8f9f_ba8f5627",
+      "range": {
+        "startLine": 1007,
+        "startChar": 48,
+        "endLine": 1008,
+        "endChar": 39
+      },
+      "revId": "e2aa240bc278d246dc307619764d4d5a73a1bee9",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ],
   "submitRequirementResults": [
