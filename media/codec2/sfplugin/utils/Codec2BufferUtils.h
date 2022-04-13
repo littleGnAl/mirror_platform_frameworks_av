@@ -27,6 +27,11 @@
 namespace android {
 
 /**
+ * Check if a given pixel format is supported.
+ */
+bool isHalPixelFormatSupported(uint32_t format);
+
+/**
  * Converts an RGB view to planar YUV 420 media image.
  *
  * \param dstY       pointer to media image buffer
