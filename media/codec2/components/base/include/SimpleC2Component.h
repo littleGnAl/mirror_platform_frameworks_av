@@ -19,7 +19,6 @@
 
 #include <list>
 #include <unordered_map>
-
 #include <C2Component.h>
 
 #include <media/stagefright/foundation/AHandler.h>
