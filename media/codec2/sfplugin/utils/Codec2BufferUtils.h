@@ -21,10 +21,19 @@
 #include <C2Config.h>
 #include <C2ParamDef.h>
 
+#include <android/hardware_buffer.h>
 #include <media/hardware/VideoAPI.h>
 #include <utils/Errors.h>
 
 namespace android {
+
+/**
+ * Check if a given pixel format is supported.
+ * enums listed in android_pixel_format_t, android_pixel_format_v1_1_t
+ * and so on can be passed as these enums have an equivalent definition in
+ * AHardwareBuffer_Format as well.
+ */
+bool isHalPixelFormatSupported(AHardwareBuffer_Format format);
 
 /**
  * Converts an RGB view to planar YUV 420 media image.
