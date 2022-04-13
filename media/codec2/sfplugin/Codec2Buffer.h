@@ -289,11 +289,13 @@ public:
      *
      * \param   format  mandatory buffer format for MediaCodecBuffer
      * \param   alloc   a function to allocate backing ABuffer if needed.
+     * \param   minBufferSize  minimum size of the backing buffer.
      * \return          ConstGraphicBlockBuffer object with no wrapping buffer.
      */
     static sp<ConstGraphicBlockBuffer> AllocateEmpty(
             const sp<AMessage> &format,
-            std::function<sp<ABuffer>(size_t)> alloc);
+            std::function<sp<ABuffer>(size_t)> alloc,
+            size_t minBufferSize = 0);
 
     virtual ~ConstGraphicBlockBuffer() = default;
 

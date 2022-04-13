@@ -66,24 +66,41 @@ struct MemCopier<false, S> {
 template<bool ToMediaImage, typename View, typename ImagePixel>
 static status_t _ImageCopy(View &view, const MediaImage2 *img, ImagePixel *imgBase) {
     // TODO: more efficient copying --- e.g. copy interleaved planes together, etc.
-    const C2PlanarLayout &layout = view.layout();
-    const size_t bpp = divUp(img->mBitDepthAllocated, 8u);
+    C2PlanarLayout layout = view.layout();
+    const size_t bpp = divUp(
+            ToMediaImage ? img->mBitDepthAllocated : layout.planes[0].allocatedDepth, 8u);
+    uint32_t imgBitDepth = img->mBitDepth;
 
     for (uint32_t i = 0; i < layout.numPlanes; ++i) {
         typename std::conditional<ToMediaImage, uint8_t, const uint8_t>::type *imgRow =
             imgBase + img->mPlane[i].mOffset;
         typename std::conditional<ToMediaImage, const uint8_t, uint8_t>::type *viewRow =
             viewRow = view.data()[i];
-        const C2PlaneInfo &plane = layout.planes[i];
+        C2PlaneInfo &plane = layout.planes[i];
         if (plane.colSampling != img->mPlane[i].mHorizSubsampling
                 || plane.rowSampling != img->mPlane[i].mVertSubsampling
-                || plane.allocatedDepth != img->mBitDepthAllocated
                 || plane.allocatedDepth < plane.bitDepth
                 // MediaImage only supports MSB values
                 || plane.rightShift != plane.allocatedDepth - plane.bitDepth
                 || (bpp > 1 && plane.endianness != plane.NATIVE)) {
             return BAD_VALUE;
         }
+        if (ToMediaImage && plane.bitDepth > imgBitDepth) {
+            uint32_t diff = plane.bitDepth - imgBitDepth;
+            ALOGV("view->img: handling different bit depth: "
+                  "plane.bitDepth %u imgBitDepth %u plane.rightShift %u",
+                  plane.bitDepth, imgBitDepth, plane.rightShift);
+            plane.bitDepth -= diff;
+            plane.rightShift += diff;
+        }
+        if (!ToMediaImage && plane.bitDepth < imgBitDepth) {
+            ALOGV("img->view: handling different bit depth: "
+                  "plane.bitDepth %u imgBitDepth %u img->mBitDepthAllocated %u",
+                  plane.bitDepth, imgBitDepth, img->mBitDepthAllocated);
+            imgBitDepth = plane.bitDepth;
+        }
+        imgRow += (img->mBitDepthAllocated - imgBitDepth) / 8u;
+        viewRow += plane.rightShift / 8u;
 
         uint32_t planeW = img->mWidth / plane.colSampling;
         uint32_t planeH = img->mHeight / plane.rowSampling;
