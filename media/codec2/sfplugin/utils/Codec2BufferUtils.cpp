@@ -66,23 +66,66 @@ struct MemCopier<false, S> {
 template<bool ToMediaImage, typename View, typename ImagePixel>
 static status_t _ImageCopy(View &view, const MediaImage2 *img, ImagePixel *imgBase) {
     // TODO: more efficient copying --- e.g. copy interleaved planes together, etc.
-    const C2PlanarLayout &layout = view.layout();
-    const size_t bpp = divUp(img->mBitDepthAllocated, 8u);
+    C2PlanarLayout layout = view.layout();
+    const size_t bpp = divUp(
+            ToMediaImage ? img->mBitDepthAllocated : layout.planes[0].allocatedDepth, 8u);
+    uint32_t imgBitDepth = img->mBitDepth;
 
     for (uint32_t i = 0; i < layout.numPlanes; ++i) {
         typename std::conditional<ToMediaImage, uint8_t, const uint8_t>::type *imgRow =
             imgBase + img->mPlane[i].mOffset;
         typename std::conditional<ToMediaImage, const uint8_t, uint8_t>::type *viewRow =
             viewRow = view.data()[i];
-        const C2PlaneInfo &plane = layout.planes[i];
+        C2PlaneInfo &plane = layout.planes[i];
         if (plane.colSampling != img->mPlane[i].mHorizSubsampling
                 || plane.rowSampling != img->mPlane[i].mVertSubsampling
-                || plane.allocatedDepth != img->mBitDepthAllocated
                 || plane.allocatedDepth < plane.bitDepth
                 // MediaImage only supports MSB values
                 || plane.rightShift != plane.allocatedDepth - plane.bitDepth
                 || (bpp > 1 && plane.endianness != plane.NATIVE)) {
             return BAD_VALUE;
+        }
+        // When copying from high bitdepth image to low bitdepth image, adjust
+        // the source layout to read high N bits.
+        if (ToMediaImage && plane.bitDepth > imgBitDepth) {
+            uint32_t diff = plane.bitDepth - imgBitDepth;
+            ALOGV("view->img: handling different bit depth: "
+                  "plane.bitDepth %u imgBitDepth %u plane.rightShift %u",
+                  plane.bitDepth, imgBitDepth, plane.rightShift);
+            // C2GraphicView has more bits than MediaImage:
+            // Adjust plane.bitDepth & plane.rightShift so that it matches
+            // the bitdepth of MediaImage. This makes the
+            // C2GraphicView to expose high N bits.
+            //
+            // e.g. if imgBitdepth = 8, plane.bitDepth = 10, plane.rightShift = 6
+            // adjust to plane.bitDepth = 8, plane.rightShift = 8.
+            // In this example, C2GraphicView is adjusted to expose high 8 bits
+            // of the total 10-bit data in 16-bit allocation.
+            plane.bitDepth -= diff;
+            plane.rightShift += diff;
+        }
+        if (!ToMediaImage && plane.bitDepth < imgBitDepth) {
+            ALOGV("img->view: handling different bit depth: "
+                  "plane.bitDepth %u imgBitDepth %u img->mBitDepthAllocated %u",
+                  plane.bitDepth, imgBitDepth, img->mBitDepthAllocated);
+            // MediaImage has more bits than C2GraphicView:
+            // Adjust imgBitdepth to the bitdepth of plane. This makes the
+            // MediaImage to expose high N bits.
+            //
+            // e.g. if imgBitdepth = 10, plane.bitDepth = 8, plane.rightShift = 0
+            // adjust to imgBitdepth = 8
+            // In this example, MediaImage is adjusted to expose high 8 bits
+            // of the total 10-bit data in 16-bit allocation.
+            imgBitDepth = plane.bitDepth;
+        }
+        // If the shift is not multiple of 8, the copy logic below does not work
+        if ((plane.rightShift % 8) != 0 || ((img->mBitDepthAllocated - imgBitDepth) % 8) != 0) {
+            return BAD_VALUE;
+        }
+        // MediaImage is always in native endianness, which is little endian for Android
+        imgRow += (img->mBitDepthAllocated - imgBitDepth) / 8u;
+        if (plane.endianness != plane.BIG_END) {
+            viewRow += plane.rightShift / 8u;
         }
 
         uint32_t planeW = img->mWidth / plane.colSampling;
