@@ -120,6 +120,22 @@ static status_t _ImageCopy(View &view, const MediaImage2 *img, ImagePixel *imgBa
 
 }  // namespace
 
+bool isHalPixelFormatSupported(AHardwareBuffer_Format format) {
+    const AHardwareBuffer_Desc desc = {
+            .width = 320,
+            .height = 240,
+            .format = format,
+            .layers = 1,
+            .usage = AHARDWAREBUFFER_USAGE_CPU_READ_RARELY | AHARDWAREBUFFER_USAGE_CPU_WRITE_OFTEN |
+                     AHARDWAREBUFFER_USAGE_GPU_SAMPLED_IMAGE,
+            .stride = 0,
+            .rfu0 = 0,
+            .rfu1 = 0,
+    };
+
+    return AHardwareBuffer_isSupported(&desc);
+}
+
 status_t ImageCopy(uint8_t *imgBase, const MediaImage2 *img, const C2GraphicView &view) {
     if (view.crop().width != img->mWidth || view.crop().height != img->mHeight) {
         return BAD_VALUE;
