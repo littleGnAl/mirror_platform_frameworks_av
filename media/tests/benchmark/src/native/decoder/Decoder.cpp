@@ -148,7 +148,39 @@ AMediaFormat *Decoder::getFormat() {
     ALOGV("In %s", __func__);
     return AMediaCodec_getOutputFormat(mCodec);
 }
+int32_t  Decoder::initCodec(AMediaFormat * format, string &codecName, bool asyncMode) {
 
+    const char * mime = nullptr;
+
+    if (format == nullptr) {
+        ALOGE("Cannot initialize decoder with empty format");
+        return AMEDIA_ERROR_INVALID_OBJECT;
+    }
+    AMediaFormat_getString(format, AMEDIAFORMAT_KEY_MIME, &mime);
+
+    if (!mime) {
+        return AMEDIA_ERROR_INVALID_OBJECT;
+    }
+    int64_t sTime = mStats->getCurTime();
+    mCodec = createMediaCodec(format, mime, codecName, false /*isEncoder*/);
+
+    if (!mCodec) return AMEDIA_ERROR_INVALID_OBJECT;
+
+    if (asyncMode) {
+        AMediaCodecOnAsyncNotifyCallback aCB = {OnInputAvailableCB, OnOutputAvailableCB,
+                                                OnFormatChangedCB, OnErrorCB};
+        AMediaCodec_setAsyncNotifyCallback(mCodec, aCB, this);
+        mIOThread = thread(&CallBackHandle::ioThread, this);
+        mAsyncMode = true;
+    }
+    AMediaCodec_start(mCodec);
+
+    int64_t eTime = mStats->getCurTime();
+    int64_t timeTaken = mStats->getTimeDiff(sTime, eTime);
+    mStats->setInitTime(timeTaken);
+    return AMEDIA_OK;
+
+}
 int32_t Decoder::decode(uint8_t *inputBuffer, vector<AMediaCodecBufferInfo> &frameInfo,
                         string &codecName, bool asyncMode, FILE *outFp) {
     ALOGV("In %s", __func__);
@@ -157,29 +189,16 @@ int32_t Decoder::decode(uint8_t *inputBuffer, vector<AMediaCodecBufferInfo> &fra
     mOffset = 0;
     mOutFp = outFp;
 
-    const char *mime = nullptr;
-    AMediaFormat_getString(mFormat, AMEDIAFORMAT_KEY_MIME, &mime);
-    if (!mime) return AMEDIA_ERROR_INVALID_OBJECT;
-
-    int64_t sTime = mStats->getCurTime();
-    mCodec = createMediaCodec(mFormat, mime, codecName, false /*isEncoder*/);
-    if (!mCodec) return AMEDIA_ERROR_INVALID_OBJECT;
-
-    if (asyncMode) {
-        AMediaCodecOnAsyncNotifyCallback aCB = {OnInputAvailableCB, OnOutputAvailableCB,
-                                                OnFormatChangedCB, OnErrorCB};
-        AMediaCodec_setAsyncNotifyCallback(mCodec, aCB, this);
-
-        mIOThread = thread(&CallBackHandle::ioThread, this);
+    if (!mCodec) {
+        int32_t status = initCodec(mFormat, codecName, asyncMode);
+        if (AMEDIA_OK != status) {
+            ALOGE("Codec initialization failed");
+            return status;
+        }
     }
 
-    AMediaCodec_start(mCodec);
-    int64_t eTime = mStats->getCurTime();
-    int64_t timeTaken = mStats->getTimeDiff(sTime, eTime);
-    mStats->setInitTime(timeTaken);
-
     mStats->setStartTime();
-    if (!asyncMode) {
+    if (!mAsyncMode) {
         while (!mSawOutputEOS && !mSignalledError) {
             /* Queue input data */
             if (!mSawInputEOS) {
@@ -238,6 +257,7 @@ void Decoder::deInitCodec() {
     int64_t sTime = mStats->getCurTime();
     AMediaCodec_stop(mCodec);
     AMediaCodec_delete(mCodec);
+    mCodec = nullptr;
     int64_t eTime = mStats->getCurTime();
     int64_t timeTaken = mStats->getTimeDiff(sTime, eTime);
     mStats->setDeInitTime(timeTaken);
