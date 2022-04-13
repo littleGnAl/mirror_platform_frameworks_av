@@ -32,6 +32,7 @@ class Decoder : public CallBackHandle {
     Decoder()
         : mCodec(nullptr),
           mFormat(nullptr),
+          mAsyncMode(false),
           mExtractor(nullptr),
           mNumInputFrame(0),
           mNumOutputFrame(0),
@@ -52,6 +53,8 @@ class Decoder : public CallBackHandle {
 
     // Decoder related utilities
     void setupDecoder();
+
+    int32_t initCodec(AMediaFormat *fmt, string &codecName, bool asyncMode);
 
     void deInitCodec();
 
@@ -79,6 +82,8 @@ class Decoder : public CallBackHandle {
   private:
     AMediaCodec *mCodec;
     AMediaFormat *mFormat;
+
+    bool mAsyncMode;
 
     Extractor *mExtractor;
 
