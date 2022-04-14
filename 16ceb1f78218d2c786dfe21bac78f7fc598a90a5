@@ -57,6 +57,48 @@
       },
       "revId": "16ceb1f78218d2c786dfe21bac78f7fc598a90a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "16e49d05_f87ab7dd",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-14T23:18:40Z",
+      "side": 1,
+      "message": "There are three android_pixel_format_t, android_pixel_format_v1_1_t and android_pixel_format_v1_2_t.\nAnd format in AHardwareBuffer_Desc is uint32_t (enum named as AHardwareBuffer_Format).\n\nTo avoid any confusion, I used uint32_t as that is the type of AHardwareBuffer_Desc.format.",
+      "parentUuid": "0aa3fdf1_ac8ac426",
+      "range": {
+        "startLine": 44,
+        "startChar": 31,
+        "endLine": 44,
+        "endChar": 39
+      },
+      "revId": "16ceb1f78218d2c786dfe21bac78f7fc598a90a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "e60e06e9_bdb15d5a",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-14T23:18:40Z",
+      "side": 1,
+      "message": "AHardwareBuffer_isSupported() is available since API 29.\nhttps://developer.android.com/ndk/reference/group/a-hardware-buffer#ahardwarebuffer_issupported\n\nIs it okay to not check version here?",
+      "parentUuid": "a53eb379_6002cfe7",
+      "revId": "16ceb1f78218d2c786dfe21bac78f7fc598a90a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
