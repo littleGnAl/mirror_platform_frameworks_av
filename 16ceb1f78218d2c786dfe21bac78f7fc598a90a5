@@ -16,6 +16,47 @@
       "message": "should we check the platform version here? (for mainline)",
       "revId": "16ceb1f78218d2c786dfe21bac78f7fc598a90a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e3670dc3_6a4a6fbc",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-04-14T23:03:27Z",
+      "side": 1,
+      "message": "it looks like it\u0027s been there since Q, so we should be ok.\n\nframeworks/native/libs/nativewindow/libnativewindo.map.txt\n AHardwareBuffer_isSupported; # introduced\u003d29\n \nframeworks/native/libs/nativewindow/include/android/hardware_buffer.h:int AHardwareBuffer_isSupported(const AHardwareBuffer_Desc* _Nonnull desc) __INTRODUCED_IN(29);",
+      "parentUuid": "a53eb379_6002cfe7",
+      "revId": "16ceb1f78218d2c786dfe21bac78f7fc598a90a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "0aa3fdf1_ac8ac426",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-04-14T23:03:27Z",
+      "side": 1,
+      "message": "instead of uint32_t for the argument, I think android_pixel_format_t",
+      "range": {
+        "startLine": 44,
+        "startChar": 31,
+        "endLine": 44,
+        "endChar": 39
+      },
+      "revId": "16ceb1f78218d2c786dfe21bac78f7fc598a90a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
