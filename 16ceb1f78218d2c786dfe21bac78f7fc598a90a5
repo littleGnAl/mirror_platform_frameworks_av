@@ -123,6 +123,30 @@
       },
       "revId": "16ceb1f78218d2c786dfe21bac78f7fc598a90a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fae21b65_312f8293",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-15T14:25:17Z",
+      "side": 1,
+      "message": "Ray,\nIMHO, it should match the datatype of AHardwareBuffer_Desc.format to avoid any confusion.\nChanging this argument type to AHardwareBuffer_Format will convey that enums AHARDWAREBUFFER_FORMAT_* are expected, but enums that we pass to this are from android_pixel_format_* when we call this function.\nSince format is uint32_t, it is better left as uint32_t.",
+      "parentUuid": "244443ac_11af92b8",
+      "range": {
+        "startLine": 44,
+        "startChar": 31,
+        "endLine": 44,
+        "endChar": 39
+      },
+      "revId": "16ceb1f78218d2c786dfe21bac78f7fc598a90a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
