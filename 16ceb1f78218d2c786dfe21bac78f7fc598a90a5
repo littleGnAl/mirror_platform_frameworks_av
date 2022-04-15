@@ -99,6 +99,30 @@
       "parentUuid": "a53eb379_6002cfe7",
       "revId": "16ceb1f78218d2c786dfe21bac78f7fc598a90a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "244443ac_11af92b8",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-04-15T14:16:17Z",
+      "side": 1,
+      "message": "sounds like AHardwareBuffer_Format is a better choice than what I had suggested.",
+      "parentUuid": "16e49d05_f87ab7dd",
+      "range": {
+        "startLine": 44,
+        "startChar": 31,
+        "endLine": 44,
+        "endChar": 39
+      },
+      "revId": "16ceb1f78218d2c786dfe21bac78f7fc598a90a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
