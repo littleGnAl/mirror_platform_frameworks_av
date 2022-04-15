@@ -171,6 +171,30 @@
       },
       "revId": "16ceb1f78218d2c786dfe21bac78f7fc598a90a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "949bf016_1b106b5e",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-15T22:32:41Z",
+      "side": 1,
+      "message": "Updated to use AHardwareBuffer_Format as suggested.",
+      "parentUuid": "f8cb0260_7426ced4",
+      "range": {
+        "startLine": 44,
+        "startChar": 31,
+        "endLine": 44,
+        "endChar": 39
+      },
+      "revId": "16ceb1f78218d2c786dfe21bac78f7fc598a90a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
