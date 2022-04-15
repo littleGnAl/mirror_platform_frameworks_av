@@ -213,6 +213,24 @@
       "parentUuid": "e60e06e9_bdb15d5a",
       "revId": "16ceb1f78218d2c786dfe21bac78f7fc598a90a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3dcaf303_9879cb01",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-15T23:32:52Z",
+      "side": 1,
+      "message": "P010 will be queried on T and above only.\nFollowing check in getHalPixelFormatForBitDepth10() will ensure that.\n```\n        if (isAtLeastT()) {\n            halPixelFormats.push_back(HAL_PIXEL_FORMAT_YCBCR_P010);\n        }\n```\nOn older versions, AHardwareBuffer_isSupported was returning as not supported for P010. So even if we add, it would return fail. But to be on a safer side we don\u0027t even attempt P010 on versions before T.",
+      "parentUuid": "e510d3a8_37cce715",
+      "revId": "16ceb1f78218d2c786dfe21bac78f7fc598a90a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
