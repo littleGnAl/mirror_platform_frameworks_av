@@ -1,0 +1,67 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "7c30fb40_27301432",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2176,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-15T09:09:00Z",
+      "side": 1,
+      "message": "Need to consider the case of output-\u003esurface is being null?",
+      "range": {
+        "startLine": 2176,
+        "startChar": 64,
+        "endLine": 2176,
+        "endChar": 79
+      },
+      "revId": "6bb5b170332b030ac24db2696e8c957299f2cde0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a4f38b06_f49452b0",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-15T09:09:00Z",
+      "side": 1,
+      "message": "Since it is not intuitive to have pushBlankBuffer interface in CCodecBufferChannel, could we have more illustrative name for the interface?\n\ne.g) pushBlankBufferToOutputSurface (This seems too verbose though.)",
+      "revId": "6bb5b170332b030ac24db2696e8c957299f2cde0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "977069b9_12fae432",
+        "filename": "media/libstagefright/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-15T09:09:00Z",
+      "side": 1,
+      "message": "spaces instead of tabs.",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 12
+      },
+      "revId": "6bb5b170332b030ac24db2696e8c957299f2cde0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
