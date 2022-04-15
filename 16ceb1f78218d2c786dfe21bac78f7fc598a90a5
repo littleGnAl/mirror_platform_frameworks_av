@@ -195,6 +195,24 @@
       },
       "revId": "16ceb1f78218d2c786dfe21bac78f7fc598a90a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e510d3a8_37cce715",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-15T22:39:07Z",
+      "side": 1,
+      "message": "What was the behavior when P010 was not fully supported? If the behavior is different between the latest vs. old API versions, we might want to check the version.",
+      "parentUuid": "e60e06e9_bdb15d5a",
+      "revId": "16ceb1f78218d2c786dfe21bac78f7fc598a90a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
