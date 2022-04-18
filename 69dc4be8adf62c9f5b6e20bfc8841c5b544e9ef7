@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "4bd6a4f9_9f7e136c",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2022-04-18T21:36:54Z",
+      "side": 1,
+      "message": "Verified combinations:\n  - Updated just system libraries, and verified playback in combination with old \n    vendor libraries.\n  - Updated just vendor libraries, and verified playback in combination with old \n    system libraries (vice versa of above).",
+      "revId": "69dc4be8adf62c9f5b6e20bfc8841c5b544e9ef7",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
