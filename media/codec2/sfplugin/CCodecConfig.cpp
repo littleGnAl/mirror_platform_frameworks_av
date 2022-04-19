@@ -20,6 +20,8 @@
 #include <log/log.h>
 #include <utils/NativeHandle.h>
 
+#include <android-base/properties.h>
+
 #include <C2Component.h>
 #include <C2Param.h>
 #include <util/C2InterfaceHelper.h>
@@ -1109,9 +1111,15 @@ status_t CCodecConfig::subscribeToConfigUpdate(
         const std::shared_ptr<Codec2Client::Configurable> &configurable,
         const std::vector<C2Param::Index> &indices,
         c2_blocking_t blocking) {
+    static const int32_t kProductFirstApiLevel =
+        base::GetIntProperty<int32_t>("ro.product.first_api_level", 0);
+    static const int32_t kBoardApiLevel =
+        base::GetIntProperty<int32_t>("ro.board.first_api_level", 0);
+    static const int32_t kFirstApiLevel =
+        (kBoardApiLevel != 0) ? kBoardApiLevel : kProductFirstApiLevel;
     mSubscribedIndices.insert(indices.begin(), indices.end());
-    // TODO: enable this when components no longer crash on this config
-    if (mSubscribedIndices.size() != mSubscribedIndicesSize && false) {
+    if (mSubscribedIndices.size() != mSubscribedIndicesSize
+            && kFirstApiLevel >= __ANDROID_API_T__) {
         std::vector<uint32_t> indices;
         for (C2Param::Index ix : mSubscribedIndices) {
             indices.push_back(ix);
