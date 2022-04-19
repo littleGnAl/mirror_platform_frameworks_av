@@ -41,6 +41,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "640a464c_0413c3cf",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.h",
+        "patchSetId": 2
+      },
+      "lineNbr": 184,
+      "author": {
+        "id": 1516942
+      },
+      "writtenOn": "2022-04-19T16:20:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a4f38b06_f49452b0",
+      "revId": "6bb5b170332b030ac24db2696e8c957299f2cde0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "977069b9_12fae432",
@@ -54,6 +72,30 @@
       "writtenOn": "2022-04-15T09:09:00Z",
       "side": 1,
       "message": "spaces instead of tabs.",
+      "range": {
+        "startLine": 267,
+        "startChar": 0,
+        "endLine": 268,
+        "endChar": 12
+      },
+      "revId": "6bb5b170332b030ac24db2696e8c957299f2cde0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "6a4ce4aa_6e494e6d",
+        "filename": "media/libstagefright/Android.bp",
+        "patchSetId": 2
+      },
+      "lineNbr": 268,
+      "author": {
+        "id": 1516942
+      },
+      "writtenOn": "2022-04-19T16:20:26Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "977069b9_12fae432",
       "range": {
         "startLine": 267,
         "startChar": 0,
