@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e2ee22d4_18936b94",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1115,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-19T20:26:10Z",
+      "side": 0,
+      "message": "Could we have a difference name for this, since it could confuse with the parameter named as \u0027indices\u0027.",
+      "range": {
+        "startLine": 1115,
+        "startChar": 30,
+        "endLine": 1115,
+        "endChar": 37
+      },
+      "revId": "657dd4cc6cbdf9cbf9547b30aa2cc32d2150ff5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
