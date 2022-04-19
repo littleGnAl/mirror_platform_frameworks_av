@@ -50,6 +50,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "25d7df97_6cda1f83",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2176,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-19T17:17:05Z",
+      "side": 1,
+      "message": "pushBlankBuffersToNativeWindow decl says it is taking non-null.\n\nThough I didn\u0027t look into the implementation, there is possibility of crash when null parameter is passed.\nSo we\u0027d better avoid crash by checking null and not calling pushBlankBuffersToNativeWindow.",
+      "parentUuid": "a73c61aa_3840302c",
+      "range": {
+        "startLine": 2176,
+        "startChar": 64,
+        "endLine": 2176,
+        "endChar": 79
+      },
+      "revId": "6bb5b170332b030ac24db2696e8c957299f2cde0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4f38b06_f49452b0",
         "filename": "media/codec2/sfplugin/CCodecBufferChannel.h",
         "patchSetId": 2
