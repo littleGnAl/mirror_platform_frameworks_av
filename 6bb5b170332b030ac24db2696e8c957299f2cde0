@@ -26,6 +26,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "a73c61aa_3840302c",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 2176,
+      "author": {
+        "id": 1516942
+      },
+      "writtenOn": "2022-04-19T16:47:26Z",
+      "side": 1,
+      "message": "How would we typically handle this case? I suspect we can either ignore it (because there is no output surface to paint on), or log an error because this function should not have been called if there is not output surface.",
+      "parentUuid": "7c30fb40_27301432",
+      "range": {
+        "startLine": 2176,
+        "startChar": 64,
+        "endLine": 2176,
+        "endChar": 79
+      },
+      "revId": "6bb5b170332b030ac24db2696e8c957299f2cde0",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "a4f38b06_f49452b0",
         "filename": "media/codec2/sfplugin/CCodecBufferChannel.h",
         "patchSetId": 2
