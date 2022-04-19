@@ -118,6 +118,30 @@
       },
       "revId": "60fa4b987672408d6eef105e93184c5cdd4e8d91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f234522d_248a80af",
+        "filename": "services/camera/libcameraservice/api2/HeicCompositeStream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-19T22:25:27Z",
+      "side": 1,
+      "message": "For grid mode, it should be safe to set the crop to width x height.",
+      "parentUuid": "55eaab7d_d6eac4e9",
+      "range": {
+        "startLine": 446,
+        "startChar": 43,
+        "endLine": 446,
+        "endChar": 84
+      },
+      "revId": "60fa4b987672408d6eef105e93184c5cdd4e8d91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
