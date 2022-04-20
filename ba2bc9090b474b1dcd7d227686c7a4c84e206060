@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c2d947b_6c1e7448",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4649,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-20T17:35:17Z",
+      "side": 0,
+      "message": "nit: I guess this is from the other CL. could you rebase this CL to rule out the change which happened outside of this CL?",
+      "revId": "ba2bc9090b474b1dcd7d227686c7a4c84e206060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
