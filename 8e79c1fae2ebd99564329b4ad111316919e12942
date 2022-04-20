@@ -18,6 +18,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "e5f52bc0_c004087f",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 332,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-20T16:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ceaadbee_ab4ffa31",
+      "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "3475584a_3dd07028",
@@ -31,6 +49,24 @@
       "writtenOn": "2022-04-12T23:25:52Z",
       "side": 1,
       "message": "braces are redundant here.\n\nplease remove here and few more places below.",
+      "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "7455fbde_ee02bccc",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-20T16:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "3475584a_3dd07028",
       "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -58,6 +94,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "407b409a_8bd5146c",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 417,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-20T16:32:37Z",
+      "side": 1,
+      "message": "yes",
+      "parentUuid": "593b74bc_28748b24",
+      "range": {
+        "startLine": 417,
+        "startChar": 22,
+        "endLine": 417,
+        "endChar": 56
+      },
+      "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "9fcb3985_b3c9619d",
@@ -71,6 +131,24 @@
       "writtenOn": "2022-04-12T23:25:52Z",
       "side": 1,
       "message": "make this a void, not being able to get HDR static info doesn\u0027t need to stop further decoding. (similar approach is used in returning color aspects)",
+      "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "88a3cb43_066c2806",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 632,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-20T16:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "9fcb3985_b3c9619d",
       "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -92,6 +170,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "dead061d_476e7ae1",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 640,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-20T16:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "0c41597a_4fa06588",
+      "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9c5d2bc_33095798",
@@ -105,6 +201,24 @@
       "writtenOn": "2022-04-12T23:25:52Z",
       "side": 1,
       "message": "return after log",
+      "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f1d7197f_78b19b2b",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 648,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-20T16:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9c5d2bc_33095798",
       "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
@@ -126,6 +240,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ff723767_0fb90847",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 678,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-20T16:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "7a45f34c_1a9cc73c",
+      "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "cf51a0eb_be4897f2",
@@ -139,6 +271,30 @@
       "writtenOn": "2022-04-12T23:25:52Z",
       "side": 1,
       "message": "remove once function is changed to void",
+      "range": {
+        "startLine": 689,
+        "startChar": 0,
+        "endLine": 689,
+        "endChar": 16
+      },
+      "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d29e86c9_39363f31",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 689,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-20T16:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "cf51a0eb_be4897f2",
       "range": {
         "startLine": 689,
         "startChar": 0,
@@ -172,6 +328,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4c85510b_c8c110bd",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1092,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-20T16:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "23d2a3f5_cfb2f687",
+      "range": {
+        "startLine": 1092,
+        "startChar": 7,
+        "endLine": 1092,
+        "endChar": 37
+      },
+      "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a523fa94_3559fc7d",
@@ -185,6 +365,30 @@
       "writtenOn": "2022-04-12T23:25:52Z",
       "side": 1,
       "message": "no need to stop further decoding.\nChange the function to void",
+      "range": {
+        "startLine": 1094,
+        "startChar": 0,
+        "endLine": 1098,
+        "endChar": 9
+      },
+      "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "d97a7b3a_ba0311ce",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1098,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-20T16:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a523fa94_3559fc7d",
       "range": {
         "startLine": 1094,
         "startChar": 0,
@@ -212,6 +416,24 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "0ab754cf_c8d7b3dd",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1102,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-20T16:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "67c25b61_ee0ca65e",
+      "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "c9d83f87_03f87633",
@@ -225,6 +447,30 @@
       "writtenOn": "2022-04-12T23:25:52Z",
       "side": 1,
       "message": "is this change necessary?",
+      "range": {
+        "startLine": 25,
+        "startChar": 0,
+        "endLine": 36,
+        "endChar": 25
+      },
+      "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a841ebb3_686b334a",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 36,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-20T16:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "c9d83f87_03f87633",
       "range": {
         "startLine": 25,
         "startChar": 0,
@@ -258,6 +504,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "4043d309_ad12e813",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1128,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-20T16:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "e888128d_f26d0a5b",
+      "range": {
+        "startLine": 1120,
+        "startChar": 0,
+        "endLine": 1128,
+        "endChar": 5
+      },
+      "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "ebc45ec6_dc351954",
@@ -271,6 +541,30 @@
       "writtenOn": "2022-04-12T23:25:52Z",
       "side": 1,
       "message": "please remove",
+      "range": {
+        "startLine": 1143,
+        "startChar": 3,
+        "endLine": 1143,
+        "endChar": 5
+      },
+      "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "a31ffd31_3887cf5e",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1143,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-20T16:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "ebc45ec6_dc351954",
       "range": {
         "startLine": 1143,
         "startChar": 3,
@@ -304,6 +598,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "48d6d269_0e3128f3",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1144,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-20T16:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "47098f3d_de8dd29a",
+      "range": {
+        "startLine": 1144,
+        "startChar": 15,
+        "endLine": 1144,
+        "endChar": 40
+      },
+      "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "a5e5ba2c_1930cd8e",
@@ -317,6 +635,30 @@
       "writtenOn": "2022-04-12T23:25:52Z",
       "side": 1,
       "message": "Setting CLL params",
+      "range": {
+        "startLine": 1199,
+        "startChar": 15,
+        "endLine": 1199,
+        "endChar": 38
+      },
+      "revId": "8e79c1fae2ebd99564329b4ad111316919e12942",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "80f7cf61_36fec20c",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 1199,
+      "author": {
+        "id": 1572455
+      },
+      "writtenOn": "2022-04-20T16:32:37Z",
+      "side": 1,
+      "message": "Done",
+      "parentUuid": "a5e5ba2c_1930cd8e",
       "range": {
         "startLine": 1199,
         "startChar": 15,
