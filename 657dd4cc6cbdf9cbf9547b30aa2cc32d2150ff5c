@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "fa0f3a96_34bd783e",
+        "filename": "media/codec2/components/base/SimpleC2Interface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-21T03:26:36Z",
+      "side": 0,
+      "message": "BTW, why does this crash? Is the newly defined SubscribedParamIndicesSetter just no-op?",
+      "range": {
+        "startLine": 189,
+        "startChar": 64,
+        "endLine": 189,
+        "endChar": 89
+      },
+      "revId": "657dd4cc6cbdf9cbf9547b30aa2cc32d2150ff5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
