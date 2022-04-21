@@ -22,6 +22,30 @@
       },
       "revId": "657dd4cc6cbdf9cbf9547b30aa2cc32d2150ff5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "04449905_4ea2086a",
+        "filename": "media/codec2/components/base/SimpleC2Interface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-21T17:40:28Z",
+      "side": 0,
+      "message": "The new one\u0027s no-op \u0026 it\u0027s a workaround --- NonStrictValuesWithNoDeps seems to be accessing nullptr but not clear where it does.",
+      "parentUuid": "fa0f3a96_34bd783e",
+      "range": {
+        "startLine": 189,
+        "startChar": 64,
+        "endLine": 189,
+        "endChar": 89
+      },
+      "revId": "657dd4cc6cbdf9cbf9547b30aa2cc32d2150ff5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
