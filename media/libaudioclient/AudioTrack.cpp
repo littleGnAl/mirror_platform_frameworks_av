@@ -2394,7 +2394,6 @@ nsecs_t AudioTrack::processAudioBuffer()
     //     mTransfer, mCbf, mUserData, mFormat, mFrameSize, mFlags
     // mFlags is also assigned by createTrack_l(), but not the bit we care about.
 
-    mLock.unlock();
 
     // get anchor time to account for callbacks.
     const nsecs_t timeBeforeCallbacks = systemTime();
@@ -2600,6 +2599,9 @@ nsecs_t AudioTrack::processAudioBuffer()
         }
         mCbf(mTransfer == TRANSFER_CALLBACK ? EVENT_MORE_DATA : EVENT_CAN_WRITE_MORE_DATA,
                 mUserData, &audioBuffer);
+
+        mLock.unlock();
+
         size_t writtenSize = audioBuffer.size;
 
         // Validate on returned size
