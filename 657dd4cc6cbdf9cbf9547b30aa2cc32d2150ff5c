@@ -46,6 +46,30 @@
       },
       "revId": "657dd4cc6cbdf9cbf9547b30aa2cc32d2150ff5c",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a50c32e0_07ebd946",
+        "filename": "media/codec2/components/base/SimpleC2Interface.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 189,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-21T18:03:51Z",
+      "side": 0,
+      "message": "Could we have a TODO comment for fixing the crash?",
+      "parentUuid": "04449905_4ea2086a",
+      "range": {
+        "startLine": 189,
+        "startChar": 64,
+        "endLine": 189,
+        "endChar": 89
+      },
+      "revId": "657dd4cc6cbdf9cbf9547b30aa2cc32d2150ff5c",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
