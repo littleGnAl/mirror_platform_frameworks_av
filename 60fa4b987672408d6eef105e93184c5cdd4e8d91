@@ -142,6 +142,30 @@
       },
       "revId": "60fa4b987672408d6eef105e93184c5cdd4e8d91",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "72eadd9e_82bbb666",
+        "filename": "services/camera/libcameraservice/api2/HeicCompositeStream.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 446,
+      "author": {
+        "id": 1092583
+      },
+      "writtenOn": "2022-04-21T16:57:10Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "f234522d_248a80af",
+      "range": {
+        "startLine": 446,
+        "startChar": 43,
+        "endLine": 446,
+        "endChar": 84
+      },
+      "revId": "60fa4b987672408d6eef105e93184c5cdd4e8d91",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
