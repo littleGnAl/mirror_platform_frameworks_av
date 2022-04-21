@@ -16,6 +16,24 @@
       "message": "nit: I guess this is from the other CL. could you rebase this CL to rule out the change which happened outside of this CL?",
       "revId": "ba2bc9090b474b1dcd7d227686c7a4c84e206060",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "8594ec94_7bed693c",
+        "filename": "media/libstagefright/MediaCodec.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 4649,
+      "author": {
+        "id": 1516942
+      },
+      "writtenOn": "2022-04-21T15:23:56Z",
+      "side": 0,
+      "message": "This is not a mistake, I took the liberty to clean up dead code while I\u0027m here, because the change is trivial, and CLs are expensive 😊",
+      "parentUuid": "1c2d947b_6c1e7448",
+      "revId": "ba2bc9090b474b1dcd7d227686c7a4c84e206060",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
