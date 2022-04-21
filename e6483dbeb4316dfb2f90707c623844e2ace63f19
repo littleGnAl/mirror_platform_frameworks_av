@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd33eb02_dc1d3d99",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 893,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-04-21T16:06:00Z",
+      "side": 1,
+      "message": "i think a preferred option would be to mark it to what\nused to be our standard max size -- which was either 2gb or 4gb\n\nand that allows us to continue with the recording.",
+      "range": {
+        "startLine": 893,
+        "startChar": 8,
+        "endLine": 893,
+        "endChar": 29
+      },
+      "revId": "e6483dbeb4316dfb2f90707c623844e2ace63f19",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
