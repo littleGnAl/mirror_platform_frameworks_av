@@ -3,6 +3,52 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "88d34c6a_caf3c96c",
+        "filename": "media/libstagefright/MPEG4Writer.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 487,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-04-22T03:57:17Z",
+      "side": 1,
+      "message": "do the validation\n-- must be an open file descriptor\n-- must be opened writable (wronly or rdwr)",
+      "range": {
+        "startLine": 486,
+        "startChar": 8,
+        "endLine": 487,
+        "endChar": 14
+      },
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ae6a95ba_58a18648",
+        "filename": "media/libstagefright/OggWriter.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 54,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-04-22T03:57:17Z",
+      "side": 1,
+      "message": "needs to be a legal file descriptor\nneeds to be opened in a writable way (either WRONLY or RDWR\n\nwe should be testing those here.",
+      "range": {
+        "startLine": 54,
+        "startChar": 4,
+        "endLine": 54,
+        "endChar": 13
+      },
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8c0604cb_8b3748a1",
         "filename": "media/libstagefright/include/media/stagefright/MPEG4Writer.h",
         "patchSetId": 5
@@ -42,6 +88,52 @@
         "startChar": 4,
         "endLine": 63,
         "endChar": 59
+      },
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "69ba3fbb_3d745ccb",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 63,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-04-22T03:57:17Z",
+      "side": 1,
+      "message": "no need for the else here.\n\nif (fcntl fails)\n  return false\nif (flags are not rdwr)\n  return false;",
+      "range": {
+        "startLine": 63,
+        "startChar": 6,
+        "endLine": 63,
+        "endChar": 10
+      },
+      "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "bd796b2d_cdf9daf2",
+        "filename": "media/libstagefright/webm/WebmWriter.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 64,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-04-22T03:57:17Z",
+      "side": 1,
+      "message": "s/should/must/",
+      "range": {
+        "startLine": 64,
+        "startChar": 20,
+        "endLine": 64,
+        "endChar": 26
       },
       "revId": "bcb46e3395a5adf2ed3a53474369871a5dd46451",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
