@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "85e39b7e_f47280ea",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1422811
+      },
+      "writtenOn": "2022-04-22T08:56:11Z",
+      "side": 1,
+      "message": "exception message:\n04-06 08:55:23.415  9770 10073 D ue426xiaomites: PlayerBase::setVolume() from IPlayer\n04-06 08:55:23.415  9770  9998 D ue426xiaomites: PlayerBase::stop() from IPlayer\n04-06 08:55:23.415  9770  9998 D AudioTrack: stop(sessionID\u003d337)\n04-06 08:55:23.415  9770  9998 D AudioTrack: stop(68): prior state:STATE_ACTIVE\n04-06 08:55:23.415  9770  9998 D AudioTrack: stop(68): called with 820 frames delivered\n04-06 08:55:23.415  1162  1946 D AF::Track: setFadeType1 type \u003d 2 mFadeType \u003d 0 isFadeNeeded \u003d 0\n04-06 08:55:23.415  1162  1946 E audioserver: open /proc/9770/cmdline error\n04-06 08:55:23.415  1162  1946 I audioserver: setAppName(), name\u003d[], active\u003d[0]\n04-06 08:55:23.415   979  2745 V EffectMiSound: MiSound_command() start, cmdCode\u003d24\n04-06 08:55:23.415   979  2745 V EffectMiSound: MiSound_Command EFFECT_CMD_SET_APP_NAME: stream\u003d3, name\u003d-\n04-06 08:55:23.415  9770  9998 D AudioTrack: stop(sessionID\u003d337)\n04-06 08:55:23.415  9770  9998 D AudioTrack: stop(68): prior state:STATE_STOPPED\n04-06 08:55:23.415  9770  9998 D AudioTrack: ~AudioTrack(sessionID\u003d337)\n04-06 08:55:23.415  9770  9998 D AudioTrack: stop(sessionID\u003d337)\n04-06 08:55:23.415  9770  9998 D AudioTrack: stop(68): prior state:STATE_STOPPED\n04-06 08:55:23.418  9770 10073 I AudioTrack: AudioTrack::setVolume L:1.000000 R:1.000000 and the pakage is com.dolbygametest.ue426xiaomitest\n--------- beginning of crash\n04-06 08:55:23.418  9770 10073 F libc    : FORTIFY: pthread_mutex_lock called on a destroyed mutex (0xef223b18)\n04-06 08:55:23.418  9770 10073 F libc    : Fatal signal 6 (SIGABRT), code -1 (SI_QUEUE) in tid 10073 (Binder:9770_6), pid 9770 (main)",
+      "revId": "3a7916362edc4211584ce028a41242c39d82c949",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
