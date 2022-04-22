@@ -2480,18 +2480,34 @@ status_t ACodec::setTunnelPeek(int32_t tunnelPeek) {
         return BAD_VALUE;
     }
 
-    OMX_CONFIG_BOOLEANTYPE config;
-    InitOMXParams(&config);
-    config.bEnabled = (OMX_BOOL)(tunnelPeek != 0);
-    status_t err = mOMXNode->setConfig(
-            (OMX_INDEXTYPE)OMX_IndexConfigAndroidTunnelPeek,
-            &config, sizeof(config));
-    if (err != OK) {
+    {
+      OMX_CONFIG_BOOLEANTYPE tunnelPeekConfig;
+      InitOMXParams(&tunnelPeekConfig);
+      tunnelPeekConfig.bEnabled = (OMX_BOOL)(tunnelPeek != 0);
+      status_t err = mOMXNode->setConfig(
+          (OMX_INDEXTYPE)OMX_IndexConfigAndroidTunnelPeek,
+          &tunnelPeekConfig, sizeof(tunnelPeekConfig));
+      if (err != OK) {
         ALOGE("decoder cannot set %s to %d (err %d)",
               TUNNEL_PEEK_KEY, tunnelPeek, err);
+        return err;
+      }
     }
 
-    return err;
+    {
+      OMX_CONFIG_BOOLEANTYPE tunnelPeekLegacyModeConfig;
+      InitOMXParams(&tunnelPeekLegacyModeConfig);
+      tunnelPeekLegacyModeConfig.bEnabled = OMX_FALSE;
+      status_t err = mOMXNode->setConfig(
+          (OMX_INDEXTYPE)OMX_IndexConfigAndroidTunnelPeekLegacyMode,
+          &tunnelPeekLegacyModeConfig, sizeof(tunnelPeekLegacyModeConfig));
+      if (err != OK) {
+        ALOGE("Error disabling video peek legacy mode: %d", err);
+        return err;
+      }
+    }
+
+    return OK;
 }
 
 status_t ACodec::setAudioPresentation(int32_t presentationId, int32_t programId) {

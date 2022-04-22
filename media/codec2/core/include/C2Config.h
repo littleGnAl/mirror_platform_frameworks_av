@@ -74,6 +74,7 @@ struct C2Config {
     enum secure_mode_t : uint32_t;          ///< secure/protected modes
     enum supplemental_info_t : uint32_t;    ///< supplemental information types
     enum tiling_mode_t : uint32_t;          ///< tiling modes
+    enum tunnel_peek_mode_tuning_t: uint32_t; ///< tunnel peek mode tuning
 };
 
 struct C2PlatformConfig {
@@ -268,6 +269,7 @@ enum C2ParamIndexKind : C2Param::type_index_t {
     kParamIndexTunnelSystemTime, // int64
     kParamIndexTunnelHoldRender, // bool
     kParamIndexTunnelStartRender, // bool
+    kParamIndexTunnelPeekModeTuning, // bool
 
     // dmabuf allocator
     kParamIndexStoreDmaBufUsage,  // store, struct
@@ -2442,6 +2444,28 @@ constexpr char C2_PARAMKEY_TUNNEL_HOLD_RENDER[] = "output.tunnel-hold-render";
 typedef C2StreamParam<C2Info, C2EasyBoolValue, kParamIndexTunnelStartRender>
         C2StreamTunnelStartRender;
 constexpr char C2_PARAMKEY_TUNNEL_START_RENDER[] = "output.tunnel-start-render";
+
+/** Tunnel Peek Mode Tuning. */
+C2ENUM(C2Config::tunnel_peek_mode_tuning_t, uint32_t,
+    UNSPECIFIED_PEEK_MODE = 0,
+    SPECIFIED_PEEK_MODE = 1
+);
+
+/**
+ * Tunnel Peek Mode Tuning parameter.
+ *
+ * If set to UNSPECIFIED_PEEK_MODE, the decoder is free to ignore the
+ * C2StreamTunnelHoldRender and C2StreamTunnelStartRender flags and associated
+ * features. Additionally, it becomes up to the decoder to display any frame
+ * before receiving synchronization information.
+ *
+ * Note: This parameter allows a decoder to ignore the video peek machinery and
+ * to revert to its preferred behavior.
+ */
+typedef C2StreamParam<C2Info, C2EasyEnum<C2Config::tunnel_peek_mode_tuning_t>,
+        kParamIndexTunnelPeekModeTuning> C2StreamTunnelPeekModeTuning;
+constexpr char C2_PARAMKEY_TUNNEL_PEEK_MODE_TUNING[] =
+        "output.tunnel-peek-mode-tuning";
 
 /**
  * Encoding quality level signaling.
