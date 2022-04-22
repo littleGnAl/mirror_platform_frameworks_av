@@ -15,6 +15,7 @@
  */
 
 //#define LOG_NDEBUG 0
+#include "C2Config.h"
 #define LOG_TAG "CCodecConfig"
 #include <cutils/properties.h>
 #include <log/log.h>
@@ -952,6 +953,16 @@ void CCodecConfig::initializeStandardParams() {
             int32_t value = 0;
             (void)v.get(&value);
             return value == 0 ? C2_FALSE : C2_TRUE;
+        }));
+
+    add(ConfigMapper("android._tunnel-peek-set-legacy", C2_PARAMKEY_TUNNEL_PEEK_MODE_TUNING, "value")
+        .limitTo(D::PARAM & D::VIDEO & D::DECODER)
+        .withMapper([](C2Value v) -> C2Value {
+          int32_t value = 0;
+          (void)v.get(&value);
+          return value == 0
+              ? C2Value(C2Config::SPECIFIED_PEEK_MODE)
+              : C2Value(C2Config::UNSPECIFIED_PEEK_MODE);
         }));
 
     add(ConfigMapper(KEY_VIDEO_QP_AVERAGE, C2_PARAMKEY_AVERAGE_QP, "value")
