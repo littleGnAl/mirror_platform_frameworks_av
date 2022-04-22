@@ -66,6 +66,8 @@ private:
 
     // volume coming from the player volume API
     float mPlayerVolumeL, mPlayerVolumeR;
+    // for synchronizing track start/stop/close/setvolume
+    Mutex mTrackStateLock;
 
    sp<SelfAudioDeviceCallback> mSelfAudioDeviceCallback;
 };
