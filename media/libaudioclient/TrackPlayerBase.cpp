@@ -36,11 +36,14 @@ TrackPlayerBase::~TrackPlayerBase() {
 void TrackPlayerBase::init(AudioTrack* pat, player_type_t playerType, audio_usage_t usage,
         audio_session_t sessionId) {
     PlayerBase::init(playerType, usage, sessionId);
-    mAudioTrack = pat;
-    if (mAudioTrack != 0) {
-        mSelfAudioDeviceCallback = new SelfAudioDeviceCallback(*this);
-        mAudioTrack->addAudioDeviceCallback(mSelfAudioDeviceCallback);
-        mAudioTrack->setPlayerIId(mPIId); // set in PlayerBase::init().
+    Mutex::Autolock _l(mTrackStateLock);
+    {
+        mAudioTrack = pat;
+        if (mAudioTrack != 0) {
+            mSelfAudioDeviceCallback = new SelfAudioDeviceCallback(*this);
+            mAudioTrack->addAudioDeviceCallback(mSelfAudioDeviceCallback);
+            mAudioTrack->setPlayerIId(mPIId); // set in PlayerBase::init().
+        }
     }
 }
 
@@ -62,6 +65,7 @@ void TrackPlayerBase::SelfAudioDeviceCallback::onAudioDeviceUpdate(audio_io_hand
 }
 
 void TrackPlayerBase::doDestroy() {
+    Mutex::Autolock _l(mTrackStateLock);
     if (mAudioTrack != 0) {
         mAudioTrack->stop();
         mAudioTrack->removeAudioDeviceCallback(mSelfAudioDeviceCallback);
@@ -84,6 +88,7 @@ void TrackPlayerBase::setPlayerVolume(float vl, float vr) {
 // Implementation of IPlayer
 status_t TrackPlayerBase::playerStart() {
     status_t status = NO_INIT;
+    Mutex::Autolock _l(mTrackStateLock);
     if (mAudioTrack != 0) {
         status = mAudioTrack->start();
     }
@@ -92,6 +97,7 @@ status_t TrackPlayerBase::playerStart() {
 
 status_t TrackPlayerBase::playerPause() {
     status_t status = NO_INIT;
+    Mutex::Autolock _l(mTrackStateLock);
     if (mAudioTrack != 0) {
         mAudioTrack->pause();
         status = NO_ERROR;
@@ -102,6 +108,7 @@ status_t TrackPlayerBase::playerPause() {
 
 status_t TrackPlayerBase::playerStop() {
     status_t status = NO_INIT;
+    Mutex::Autolock _l(mTrackStateLock);
     if (mAudioTrack != 0) {
         mAudioTrack->stop();
         status = NO_ERROR;
@@ -115,6 +122,7 @@ status_t TrackPlayerBase::playerSetVolume() {
 
 status_t TrackPlayerBase::doSetVolume() {
     status_t status = NO_INIT;
+    Mutex::Autolock _l(mTrackStateLock);
     if (mAudioTrack != 0) {
         float tl = mPlayerVolumeL * mPanMultiplierL * mVolumeMultiplierL;
         float tr = mPlayerVolumeR * mPanMultiplierR * mVolumeMultiplierR;
@@ -137,18 +145,20 @@ binder::Status TrackPlayerBase::applyVolumeShaper(
     if (s != OK) {
         return binderStatusFromStatusT(s);
     }
-
-    if (mAudioTrack != 0) {
-        ALOGD("TrackPlayerBase::applyVolumeShaper() from IPlayer");
-        VolumeShaper::Status status = mAudioTrack->applyVolumeShaper(spConfiguration, spOperation);
-        if (status < 0) { // a non-negative value is the volume shaper id.
-            ALOGE("TrackPlayerBase::applyVolumeShaper() failed with status %d", status);
+    Mutex::Autolock _l(mTrackStateLock);
+    {
+        if (mAudioTrack != 0) {
+            ALOGD("TrackPlayerBase::applyVolumeShaper() from IPlayer");
+            VolumeShaper::Status status = mAudioTrack->applyVolumeShaper(spConfiguration, spOperation);
+            if (status < 0) { // a non-negative value is the volume shaper id.
+                ALOGE("TrackPlayerBase::applyVolumeShaper() failed with status %d", status);
+            }
+            return binderStatusFromStatusT(status);
+        } else {
+            ALOGD("TrackPlayerBase::applyVolumeShaper()"
+                  " no AudioTrack for volume control from IPlayer");
+            return binder::Status::ok();
         }
-        return binderStatusFromStatusT(status);
-    } else {
-        ALOGD("TrackPlayerBase::applyVolumeShaper()"
-              " no AudioTrack for volume control from IPlayer");
-        return binder::Status::ok();
     }
 }
 
