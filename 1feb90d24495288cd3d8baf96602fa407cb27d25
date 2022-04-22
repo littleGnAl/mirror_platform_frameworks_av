@@ -191,6 +191,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "24e1660c_b6767c4a",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 263,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-04-22T03:11:51Z",
+      "side": 1,
+      "message": "so the codec\u0027s defaults are the min/max allowed in the vpx standard?\ne.g the encoder defaults to min\u003d0, max\u003d63?\n\nI\u0027d still like us to have default min/max and use those in the other section.",
+      "parentUuid": "ea11cf05_355d1d19",
+      "range": {
+        "startLine": 263,
+        "startChar": 28,
+        "endLine": 263,
+        "endChar": 34
+      },
+      "revId": "1feb90d24495288cd3d8baf96602fa407cb27d25",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "8e54615b_d3cb7c47",
         "filename": "media/codec2/components/vpx/C2SoftVpxEnc.h",
         "patchSetId": 3

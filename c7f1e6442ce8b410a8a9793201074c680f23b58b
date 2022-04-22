@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "f61f8ac3_6824b853",
+        "filename": "media/codec2/components/vpx/C2SoftVpxEnc.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 277,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-04-22T03:11:51Z",
+      "side": 1,
+      "message": "i really want these to be marked with a default min/max instead of the min/max that the vpx standard allows.  even if they are the same value.",
+      "range": {
+        "startLine": 276,
+        "startChar": 18,
+        "endLine": 277,
+        "endChar": 68
+      },
+      "revId": "c7f1e6442ce8b410a8a9793201074c680f23b58b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
