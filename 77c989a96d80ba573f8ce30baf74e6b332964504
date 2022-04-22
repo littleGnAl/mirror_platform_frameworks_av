@@ -98,6 +98,30 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "3d555c53_b27b3ced",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1108919
+      },
+      "writtenOn": "2022-04-22T04:13:13Z",
+      "side": 1,
+      "message": "this is also setting up so that the values we put back into place after\nwe\u0027ve done all the min/max calculations includes the values we\u0027re going to \nuse for anything that was not specified.\n\nthat\u0027s why the need to be the default values.",
+      "parentUuid": "60741ed1_cb6f5c6d",
+      "range": {
+        "startLine": 398,
+        "startChar": 60,
+        "endLine": 398,
+        "endChar": 65
+      },
+      "revId": "77c989a96d80ba573f8ce30baf74e6b332964504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "57b0b9d9_c9b06b0c",
         "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
         "patchSetId": 7
