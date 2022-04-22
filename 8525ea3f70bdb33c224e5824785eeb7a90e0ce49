@@ -22,6 +22,30 @@
       },
       "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "ef7a39a9_419bb7db",
+        "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
+        "patchSetId": 3
+      },
+      "lineNbr": 904,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2022-04-22T03:35:54Z",
+      "side": 1,
+      "message": "Yes, it\u0027s a write fence. Decoder\u0027s onWorkDone sends a output buffer which is not actually filled, the consumer needs to wait for the fence before consuming it.",
+      "parentUuid": "db9fbaf9_a6666bdc",
+      "range": {
+        "startLine": 904,
+        "startChar": 12,
+        "endLine": 904,
+        "endChar": 17
+      },
+      "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
