@@ -120,6 +120,30 @@
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     },
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "ae9709a8_bd56703a",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 7
+      },
+      "lineNbr": 398,
+      "author": {
+        "id": 1202200
+      },
+      "writtenOn": "2022-04-22T06:10:40Z",
+      "side": 1,
+      "message": "Ack",
+      "parentUuid": "3d555c53_b27b3ced",
+      "range": {
+        "startLine": 398,
+        "startChar": 60,
+        "endLine": 398,
+        "endChar": 65
+      },
+      "revId": "77c989a96d80ba573f8ce30baf74e6b332964504",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "57b0b9d9_c9b06b0c",
