@@ -1,6 +1,23 @@
 {
   "comments": [
     {
+      "unresolved": false,
+      "key": {
+        "uuid": "3a57a6e6_97b1e04b",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 3
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1928501
+      },
+      "writtenOn": "2022-04-23T03:55:09Z",
+      "side": 1,
+      "message": "Verified playback sessions with new(with this vndk change)/old(without this vndk change) system/vendor combinations.\n1. New system + old vendor\n2. Old system + new vendor\n3. New system + new vendor\n",
+      "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
       "unresolved": true,
       "key": {
         "uuid": "db9fbaf9_a6666bdc",
