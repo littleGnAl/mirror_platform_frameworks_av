@@ -1,0 +1,262 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "cbff804c_41a9d1fb",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 320,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-25T20:14:29Z",
+      "side": 1,
+      "message": "nit: please change to the following for consistency with rest\n\n(void)mayBlock;",
+      "range": {
+        "startLine": 320,
+        "startChar": 8,
+        "endLine": 320,
+        "endChar": 25
+      },
+      "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "03c06918_058e12a7",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 322,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-25T20:14:29Z",
+      "side": 1,
+      "message": "nit: 4 space indentation",
+      "range": {
+        "startLine": 322,
+        "startChar": 8,
+        "endLine": 322,
+        "endChar": 16
+      },
+      "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "a9948ea1_7c40e82b",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 404,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-25T20:14:29Z",
+      "side": 1,
+      "message": "remove this argument and add getMDCV as a member method (similar to getVuiParams)",
+      "range": {
+        "startLine": 404,
+        "startChar": 20,
+        "endLine": 404,
+        "endChar": 41
+      },
+      "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "659238a5_f3527284",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 443,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-25T20:14:29Z",
+      "side": 1,
+      "message": "remove this argument and add getCLL as a member method (similar to getVuiParams)",
+      "range": {
+        "startLine": 443,
+        "startChar": 19,
+        "endLine": 443,
+        "endChar": 39
+      },
+      "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "c5149e34_21d9346b",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 457,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-25T20:14:29Z",
+      "side": 1,
+      "message": "these two will fit in one line each (100 chars max)",
+      "range": {
+        "startLine": 454,
+        "startChar": 0,
+        "endLine": 457,
+        "endChar": 51
+      },
+      "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "19eef0d0_47ce8349",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 669,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-25T20:14:29Z",
+      "side": 1,
+      "message": "nit: please remove redundant {}",
+      "range": {
+        "startLine": 669,
+        "startChar": 0,
+        "endLine": 669,
+        "endChar": 5
+      },
+      "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "89062086_9e58ca30",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 674,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-25T20:14:29Z",
+      "side": 1,
+      "message": "nit: remove",
+      "range": {
+        "startLine": 674,
+        "startChar": 0,
+        "endLine": 674,
+        "endChar": 9
+      },
+      "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "665204bb_8f6c0756",
+        "filename": "media/codec2/components/avc/C2SoftAvcDec.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1097,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-25T20:14:29Z",
+      "side": 1,
+      "message": "move this after getVuiParams() on line 1145",
+      "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "533afa0b_adaa753a",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 26,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-25T20:14:29Z",
+      "side": 1,
+      "message": "why this change?",
+      "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "df52b5c0_72b7e440",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 319,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-25T20:14:29Z",
+      "side": 1,
+      "message": "nit: 4 space indentation",
+      "range": {
+        "startLine": 319,
+        "startChar": 8,
+        "endLine": 319,
+        "endChar": 16
+      },
+      "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "ec31f0b2_2f7c018c",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1167,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-25T20:14:29Z",
+      "side": 1,
+      "message": "indent 8 spaces",
+      "range": {
+        "startLine": 1161,
+        "startChar": 0,
+        "endLine": 1167,
+        "endChar": 44
+      },
+      "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "1c4a60cb_1d50e3b9",
+        "filename": "media/codec2/components/avc/C2SoftAvcEnc.cpp",
+        "patchSetId": 5
+      },
+      "lineNbr": 1558,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-25T20:14:29Z",
+      "side": 1,
+      "message": "move after setVuiParams()",
+      "revId": "f03508fe570798c6fdba103411a9a66c5985de13",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
