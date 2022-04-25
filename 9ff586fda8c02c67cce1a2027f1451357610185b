@@ -1,0 +1,21 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "82cbbfcf_9ac502f1",
+        "filename": "media/libstagefright/MediaCodecSource.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 555,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-25T18:24:30Z",
+      "side": 1,
+      "message": "I think this only works with FLAG_USE_SURFACE_INPUT.",
+      "revId": "9ff586fda8c02c67cce1a2027f1451357610185b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
