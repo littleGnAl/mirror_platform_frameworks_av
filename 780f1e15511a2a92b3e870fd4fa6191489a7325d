@@ -1,0 +1,27 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "3467416c_0b6459b6",
+        "filename": "media/utils/fuzzers/SchedulingPolicyServiceFuzz.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 40,
+      "author": {
+        "id": 1042638
+      },
+      "writtenOn": "2022-04-26T22:43:27Z",
+      "side": 1,
+      "message": "I would suggest moving the ALOGW from line 43 here, and change the one on line 43 to the following:\n\n  ALOGW(\"batterystats service interface is invalid\");\n  \nBecause the cast will fail if the actual interface is not the one expected.",
+      "range": {
+        "startLine": 38,
+        "startChar": 0,
+        "endLine": 40,
+        "endChar": 9
+      },
+      "revId": "780f1e15511a2a92b3e870fd4fa6191489a7325d",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
