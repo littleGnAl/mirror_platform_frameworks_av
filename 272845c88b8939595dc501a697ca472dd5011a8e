@@ -16,6 +16,23 @@
       "message": "refresh the presubmit results. appears to have all needed approvals.",
       "revId": "272845c88b8939595dc501a697ca472dd5011a8e",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "29d23c08_d6d292f1",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 2
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-27T00:06:43Z",
+      "side": 1,
+      "message": "For the last one week, enabling P010 in s/w codecs hasn\u0027t caused a SIGABRT in continuous runs internally. I am guessing that SIGABRT in surfaceflinger is only seen in aosp/master and not in internal builds.\nWill keep this change in WIP till there is a confirmation that these aborts are seen in internal branches as well.",
+      "revId": "272845c88b8939595dc501a697ca472dd5011a8e",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
