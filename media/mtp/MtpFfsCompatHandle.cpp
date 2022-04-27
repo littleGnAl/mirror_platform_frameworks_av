@@ -224,7 +224,7 @@ int MtpFfsCompatHandle::receiveFile(mtp_file_range mfr, bool zero_packet) {
                 file_length -= ret;
             }
             // Enqueue a new write request
-            aio_prepare(&aio, data, length, offset);
+            aio_prepare(&aio, data, ret, offset);
             aio_write(&aio);
 
             offset += ret;
