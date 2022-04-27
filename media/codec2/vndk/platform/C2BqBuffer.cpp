@@ -542,7 +542,7 @@ private:
                         std::make_shared<C2BufferQueueBlockPoolData>(
                                 slotBuffer->getGenerationNumber(),
                                 mProducerId, slot,
-                                mProducer, mSyncMem, 0);
+                                mOwner, mProducer, mSyncMem);
                 mPoolDatas[slot] = poolData;
                 *block = _C2BlockFactory::CreateGraphicBlock(alloc, poolData);
                 return C2_OK;
@@ -572,10 +572,11 @@ public:
     Impl(const std::shared_ptr<C2Allocator> &allocator)
         : mInit(C2_OK), mProducerId(0), mGeneration(0),
           mConsumerUsage(0), mDqFailure(0), mLastDqTs(0),
-          mLastDqLogTs(0), mAllocator(allocator) {
+          mLastDqLogTs(0), mAllocator(allocator), mOwner(std::make_shared<int>(0)) {
     }
 
     ~Impl() {
+        mOwner = std::make_shared<int>(0);
         for (int i = 0; i < NUM_BUFFER_SLOTS; ++i) {
             mBuffers[i].clear();
         }
@@ -618,7 +619,7 @@ public:
             }
             std::shared_ptr<C2BufferQueueBlockPoolData> poolData =
                     std::make_shared<C2BufferQueueBlockPoolData>(
-                            0, (uint64_t)0, ~0, nullptr, nullptr, 0);
+                            0, (uint64_t)0, ~0, nullptr, nullptr, nullptr);
             *block = _C2BlockFactory::CreateGraphicBlock(alloc, poolData);
             ALOGV("allocated a buffer successfully");
 
@@ -720,6 +721,8 @@ public:
                         }
                     }
                 }
+            } else {
+                mOwner = std::make_shared<int>(0); // old buffers will not be canceled.
             }
             for (int i = 0; i < NUM_BUFFER_SLOTS; ++i) {
                 mBuffers[i] = buffers[i];
@@ -761,6 +764,7 @@ private:
     std::weak_ptr<C2BufferQueueBlockPoolData> mPoolDatas[NUM_BUFFER_SLOTS];
 
     std::shared_ptr<C2SurfaceSyncMemory> mSyncMem;
+    std::shared_ptr<int> mOwner;
 };
 
 C2BufferQueueBlockPoolData::C2BufferQueueBlockPoolData(
@@ -776,14 +780,14 @@ C2BufferQueueBlockPoolData::C2BufferQueueBlockPoolData(
 
 C2BufferQueueBlockPoolData::C2BufferQueueBlockPoolData(
         uint32_t generation, uint64_t bqId, int32_t bqSlot,
+        const std::shared_ptr<int> &owner,
         const android::sp<HGraphicBufferProducer>& producer,
-        std::shared_ptr<C2SurfaceSyncMemory> syncMem, int noUse) :
+        std::shared_ptr<C2SurfaceSyncMemory> syncMem) :
         mLocal(true), mHeld(true),
         mGeneration(generation), mBqId(bqId), mBqSlot(bqSlot),
         mCurrentGeneration(generation), mCurrentBqId(bqId),
         mTransfer(false), mAttach(false), mDisplay(false),
-        mIgbp(producer), mSyncMem(syncMem) {
-            (void)noUse;
+        mOwner(owner), mIgbp(producer), mSyncMem(syncMem) {
 }
 
 C2BufferQueueBlockPoolData::~C2BufferQueueBlockPoolData() {
@@ -792,7 +796,7 @@ C2BufferQueueBlockPoolData::~C2BufferQueueBlockPoolData() {
     }
 
     if (mLocal) {
-        if (mGeneration == mCurrentGeneration && mBqId == mCurrentBqId) {
+        if (mGeneration == mCurrentGeneration && mBqId == mCurrentBqId && !mOwner.expired()) {
             C2SyncVariables *syncVar = mSyncMem ? mSyncMem->mem() : nullptr;
             if (syncVar) {
                 syncVar->lock();
