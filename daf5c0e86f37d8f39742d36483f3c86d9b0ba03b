@@ -16,6 +16,29 @@
       "message": "Since I have limited understanding on MediaImage2, gave +1.",
       "revId": "daf5c0e86f37d8f39742d36483f3c86d9b0ba03b",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e0c0ff9f_eb0b9757",
+        "filename": "media/codec2/sfplugin/utils/Codec2BufferUtils.cpp",
+        "patchSetId": 2
+      },
+      "lineNbr": 103,
+      "author": {
+        "id": 1021605
+      },
+      "writtenOn": "2022-04-27T18:51:01Z",
+      "side": 1,
+      "message": "I feel that here you are trying to be very generic where this may only work for certain values.\n\nE.g. this will shift imgRow only if ~ bitDepthAllocated is bigDepth + 8, but will not work if it is e.g. bitDepth + 10\n\nSimilarly if rightShift is not 0 or 8, or if the plane is not NATIVE/LITTLE endian, viewRow shift logic will fail.\n\nWe should at least add some comments that this is not a generic solution.",
+      "range": {
+        "startLine": 102,
+        "startChar": 8,
+        "endLine": 103,
+        "endChar": 41
+      },
+      "revId": "daf5c0e86f37d8f39742d36483f3c86d9b0ba03b",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
