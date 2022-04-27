@@ -1,0 +1,176 @@
+{
+  "comments": [
+    {
+      "unresolved": false,
+      "key": {
+        "uuid": "f82a1a62_397dfb9e",
+        "filename": "/PATCHSET_LEVEL",
+        "patchSetId": 4
+      },
+      "lineNbr": 0,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-27T20:39:35Z",
+      "side": 1,
+      "message": "I guess you already knew that we have 2 style guides for c++.\n(I recap here FYI purpose.)\ngoogle c++ style guid\nhttps://engdoc.corp.google.com/eng/doc/devguide/cpp/styleguide.md?cl\u003dhead\ndroidstyle\nAndroid Framework C++ Code Style Guidelines\ngo/droidcppstyle\n ",
+      "revId": "2f0f32eb7440ec5c984563379d6c6164f1cac7a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "e411b28f_0cbec436",
+        "filename": "media/tests/benchmark/src/native/decoder/Decoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 151,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-27T20:39:35Z",
+      "side": 1,
+      "message": "goolge c++ style guide says spaces on both sides of * as bad. https://engdoc.corp.google.com/eng/doc/devguide/cpp/styleguide.md?cl\u003dhead#Pointer_and_Reference_Expressions",
+      "range": {
+        "startLine": 151,
+        "startChar": 28,
+        "endLine": 151,
+        "endChar": 49
+      },
+      "revId": "2f0f32eb7440ec5c984563379d6c6164f1cac7a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "49ac48d0_3ca5b37c",
+        "filename": "media/tests/benchmark/src/native/decoder/Decoder.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 153,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-27T20:39:35Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 153,
+        "startChar": 4,
+        "endLine": 153,
+        "endChar": 21
+      },
+      "revId": "2f0f32eb7440ec5c984563379d6c6164f1cac7a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "8d19d70d_55814575",
+        "filename": "media/tests/stress/DecoderTestStress.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 38,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-27T20:39:35Z",
+      "side": 1,
+      "message": "std::string and string are both used throughout this file.",
+      "range": {
+        "startLine": 38,
+        "startChar": 4,
+        "endLine": 38,
+        "endChar": 10
+      },
+      "revId": "2f0f32eb7440ec5c984563379d6c6164f1cac7a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "2edd2390_20fb862b",
+        "filename": "media/tests/stress/DecoderTestStress.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 51,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-27T20:39:35Z",
+      "side": 1,
+      "message": "nit: NE was not checked.",
+      "range": {
+        "startLine": 51,
+        "startChar": 15,
+        "endLine": 51,
+        "endChar": 24
+      },
+      "revId": "2f0f32eb7440ec5c984563379d6c6164f1cac7a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "26df8a4e_480d1183",
+        "filename": "media/tests/stress/DecoderTestStress.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 107,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-27T20:39:35Z",
+      "side": 1,
+      "message": "Please remove the trailing whitespace as lint said.",
+      "range": {
+        "startLine": 107,
+        "startChar": 38,
+        "endLine": 107,
+        "endChar": 39
+      },
+      "revId": "2f0f32eb7440ec5c984563379d6c6164f1cac7a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "44511678_bc31ac3f",
+        "filename": "media/tests/stress/DecoderTestStress.cpp",
+        "patchSetId": 4
+      },
+      "lineNbr": 123,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-27T20:39:35Z",
+      "side": 1,
+      "message": "ditto.",
+      "range": {
+        "startLine": 123,
+        "startChar": 15,
+        "endLine": 123,
+        "endChar": 24
+      },
+      "revId": "2f0f32eb7440ec5c984563379d6c6164f1cac7a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "346adc84_1a86252c",
+        "filename": "media/tests/stress/StressTestEnvironment.h",
+        "patchSetId": 4
+      },
+      "lineNbr": 21,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-27T20:39:35Z",
+      "side": 1,
+      "message": "nit: Do we need to include \u0027getopt.h\u0027 here? Could we have it on \u0027StressTestEnviroment.cpp\u0027?",
+      "revId": "2f0f32eb7440ec5c984563379d6c6164f1cac7a8",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
