@@ -1104,15 +1104,19 @@ c2_status_t GetHdrMetadataFromGralloc4Handle(
         dynamicInfo->reset();
         IMapper4::get_cb cb = [&mapperErr, dynamicInfo](Error4 err, const hidl_vec<uint8_t> &vec) {
             mapperErr = err;
+            std::optional<std::vector<uint8_t>> outSmpte2094_40Vec;
             if (err != Error4::NONE) {
                 return;
             }
             if (!dynamicInfo) {
                 return;
             }
+            gralloc4::decodeSmpte2094_40(vec, &outSmpte2094_40Vec);
             *dynamicInfo = C2StreamHdrDynamicMetadataInfo::input::AllocShared(
-                    vec.size(), 0u, C2Config::HDR_DYNAMIC_METADATA_TYPE_SMPTE_2094_40);
-            memcpy((*dynamicInfo)->m.data, vec.data(), vec.size());
+                    outSmpte2094_40Vec->size(), 0u,
+                    C2Config::HDR_DYNAMIC_METADATA_TYPE_SMPTE_2094_40);
+            
+            memcpy((*dynamicInfo)->m.data, outSmpte2094_40Vec->data(), outSmpte2094_40Vec->size());
         };
         Return<void> ret = mapper->get(buffer.get(), MetadataType_Smpte2094_40, cb);
         if (!ret.isOk() || mapperErr != Error4::NONE) {
@@ -1178,20 +1182,23 @@ c2_status_t SetHdrMetadataToGralloc4Handle(
     }
     if (dynamicInfo && *dynamicInfo && dynamicInfo->flexCount() > 0) {
         ALOGV("Setting dynamic HDR info as gralloc4 metadata");
-        hidl_vec<uint8_t> vec;
-        vec.resize(dynamicInfo->flexCount());
-        memcpy(vec.data(), dynamicInfo->m.data, dynamicInfo->flexCount());
+        std::optional<std::vector<uint8_t>> smpte2094_40Vec;
+        hidl_vec<uint8_t> outSmpte2094_40Vec;
+        smpte2094_40Vec->resize(dynamicInfo->flexCount());
+        memcpy(smpte2094_40Vec->data(), dynamicInfo->m.data, dynamicInfo->flexCount());
         std::optional<IMapper4::MetadataType> metadataType;
         switch (dynamicInfo->m.type_) {
         case C2Config::HDR_DYNAMIC_METADATA_TYPE_SMPTE_2094_10:
             // TODO
             break;
         case C2Config::HDR_DYNAMIC_METADATA_TYPE_SMPTE_2094_40:
-            metadataType = MetadataType_Smpte2094_40;
+            if (gralloc4::encodeSmpte2094_40(smpte2094_40Vec, &outSmpte2094_40Vec) == OK) {
+                metadataType = MetadataType_Smpte2094_40;
+            }
             break;
         }
         if (metadataType) {
-            Return<Error4> ret = mapper->set(buffer.get(), *metadataType, vec);
+            Return<Error4> ret = mapper->set(buffer.get(), *metadataType, outSmpte2094_40Vec);
             if (!ret.isOk()) {
                 err = C2_REFUSED;
             } else if (ret != Error4::NONE) {
