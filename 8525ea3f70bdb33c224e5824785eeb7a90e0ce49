@@ -136,6 +136,24 @@
     {
       "unresolved": true,
       "key": {
+        "uuid": "6d39cb3c_e6634dc8",
+        "filename": "media/codec2/core/include/C2Buffer.h",
+        "patchSetId": 3
+      },
+      "lineNbr": 128,
+      "author": {
+        "id": 1156740
+      },
+      "writtenOn": "2022-04-28T20:10:45Z",
+      "side": 1,
+      "message": "Adding type() and toHandle() as non-virtual seems fine.\nAlso adding Fence type enum for 3 fences seems fine. \n(If there is any vendor fence, we could treat it as opaque fence type afterwards.)\n\nAnyhow, I understand your point.\nI will discuss this /w Lajos.",
+      "parentUuid": "b6ec5584_93934b3d",
+      "revId": "8525ea3f70bdb33c224e5824785eeb7a90e0ce49",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
         "uuid": "aff09766_e9295688",
         "filename": "media/codec2/sfplugin/CCodecBufferChannel.cpp",
         "patchSetId": 3
