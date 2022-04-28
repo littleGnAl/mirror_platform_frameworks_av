@@ -231,6 +231,30 @@
       "parentUuid": "e510d3a8_37cce715",
       "revId": "16ceb1f78218d2c786dfe21bac78f7fc598a90a5",
       "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9714d62f_c9b79613",
+        "filename": "media/codec2/components/base/SimpleC2Component.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 44,
+      "author": {
+        "id": 1047003
+      },
+      "writtenOn": "2022-04-28T23:32:45Z",
+      "side": 1,
+      "message": "Using AHardwareBuffer_Format as the type requires few more dependencies and typecasts as the plugins.\nPatchset 13 is using AHardwareBuffer_Format and patchset 14 onwards is uint32_t.\nCan you please review the diff between patchset 13 and patchset 14 to see if those extra dependencies and typecasts are ok.\nBased on that I will update the CL accordingly.",
+      "parentUuid": "949bf016_1b106b5e",
+      "range": {
+        "startLine": 44,
+        "startChar": 31,
+        "endLine": 44,
+        "endChar": 39
+      },
+      "revId": "16ceb1f78218d2c786dfe21bac78f7fc598a90a5",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
     }
   ]
 }
