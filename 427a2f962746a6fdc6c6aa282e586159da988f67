@@ -1,0 +1,50 @@
+{
+  "comments": [
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "9bdc6748_25c4cc7d",
+        "filename": "media/codec2/sfplugin/CCodecConfig.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 516,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-28T18:11:49Z",
+      "side": 1,
+      "message": "do we want to use C2_PARAMKEY for media format? We might want android._ prefix to filter out from the app.",
+      "range": {
+        "startLine": 516,
+        "startChar": 21,
+        "endLine": 516,
+        "endChar": 43
+      },
+      "revId": "427a2f962746a6fdc6c6aa282e586159da988f67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    },
+    {
+      "unresolved": true,
+      "key": {
+        "uuid": "6a6a27f2_bffaa7db",
+        "filename": "media/codec2/sfplugin/utils/Codec2Mapper.cpp",
+        "patchSetId": 1
+      },
+      "lineNbr": 549,
+      "author": {
+        "id": 1018606
+      },
+      "writtenOn": "2022-04-28T18:11:49Z",
+      "side": 1,
+      "message": "is it always true? I thought there were some SDR profiles",
+      "range": {
+        "startLine": 549,
+        "startChar": 30,
+        "endLine": 549,
+        "endChar": 33
+      },
+      "revId": "427a2f962746a6fdc6c6aa282e586159da988f67",
+      "serverId": "85c56323-6fa9-3386-8a01-6480fb634889"
+    }
+  ]
+}
